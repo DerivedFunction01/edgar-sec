@@ -1,0 +1,7323 @@
+{
+ "accession": "0001193125-10-073394",
+ "cik": "0001014041",
+ "form": "10-K",
+ "filing_date": "2010-03-31",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "59-3252632"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "12425 Race Track Road Tampa, Florida",
+     "33626"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark one)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2009\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 000-20997\nSRI/SURGICAL EXPRESS, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code:\n(813) 891-9550\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $.001",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code:\n(813) 891-9550\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Section",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "10"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "10"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "12"
+    ],
+    [
+     "Item 4.",
+     "Reserved",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "13"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "14"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "24"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "25"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants On Accounting and Financial Disclosure",
+     "48"
+    ],
+    [
+     "Item 9A(T).",
+     "Controls and Procedures",
+     "48"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "50"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "50"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "50"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "50"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "55"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 83,
+    "end_line": 117
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the voting common stock held by non-affiliates of the registrant, based on the closing sale price of the common stock on June 30, 2009, as reported on the NASDAQ Global Market, was approximately $7,645,000. For purposes of this determination, the registrant excluded shares of common stock known to be held by officers, directors, and 10% shareholders, because those persons might be deemed affiliates. This determination of affiliate status is not necessarily conclusive for other purposes.\nThe registrant had 6,485,978 shares of common stock outstanding as of February 26, 2010.\nDOCUMENTS INCORPORATED BY REFERENCE\nList hereunder the following documents if incorporated by reference and the Part of the Form 10-K (e.g., Part I, Part II, etc.) into which the document is incorporated.\nPortions of the Proxy Statement for the registrant\u2019s 2010 Annual Meeting of Shareholders are incorporated by reference into Part III of this Annual Report on Form 10-K.\nFORM 10-K\nYEAR ENDED DECEMBER 31, 2009",
+   "prose_after": "PART I\nItem 1. Business\nThis Annual Report on Form 10-K, other documents that we publicly disseminate, and oral statements that are made on our behalf might contain both statements of historical fact and forward-looking statements. These forward-looking statements do not guarantee future performance, and our actual results could differ materially from those indicated by the forward-looking statements. Examples of forward-looking statements include: (i) projections of our revenue, earnings, capital structure, and other financial items, (ii) statements of our plans and objectives, (iii) statements of our expected future economic performance, and (iv) assumptions underlying our statements regarding SRI/Surgical Express, Inc. and our business. Among the factors that could cause or contribute to differences are those discussed below under the section entitled \u201cRisk Factors\u201d. We do not undertake to update our forward-looking statements.\nThe Company\nSRI Surgical Express, Inc. (\u201cSRI Surgical\u201d, the \u201cCompany\u201d, \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d) is a supplier and reprocessor of reusable surgical linen and instrumentation. Our slogan, Environmental Solutions, Delivered Daily\u00ae reflects SRI Surgical\u2019s commitment to provide our healthcare clients with high quality reusable products, and the opportunity to reduce waste in the Operating Room (\u201cOR\u201d). Reducing waste in the OR begins with purchasing the appropriate reusable products that meet the needs of the clinical user, and minimize the use of disposable products in the surgical environment. We believe our reusable surgical gowns, drapes, table covers, towels, and instruments provide the opportunity for waste avoidance and environmental sustainability in the surgical arena. We start with products that have been manufactured specifically to be reusable and to be reprocessed. Our products are not single use products that are reprocessed for economic benefit.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Square Footage (Approx.)",
+     "Lease Expiration",
+     "Selected Markets Served"
+    ],
+    [
+     "Processing Facilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Baltimore, Maryland",
+     "58,700",
+     "May 31, 2012\n\n\n\n    (Options to 2022)",
+     "Baltimore, Philadelphia, Richmond, New Jersey"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chattanooga, Tennessee",
+     "50,000",
+     "Owned",
+     "Atlanta, Birmingham, Nashville, Mississippi"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cincinnati, Ohio",
+     "50,000",
+     "Owned",
+     "Columbus, Cincinnati, Louisville, Lexington, Detroit, Cleveland"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dallas, Texas",
+     "31,000",
+     "March 31, 2013",
+     "Dallas, Oklahoma City, Tulsa"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Houston, Texas",
+     "30,000",
+     "Owned",
+     "Houston, San Antonio, Austin"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Los Angeles, California",
+     "30,400",
+     "November 30, 2012",
+     "San Diego, Los Angeles"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raleigh, North Carolina",
+     "63,500",
+     "March 31, 2012 (Options to 2022)",
+     "South Carolina, North Carolina"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salt Lake City, Utah",
+     "31,800",
+     "July 6, 2012",
+     "Utah, Idaho"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockton, California",
+     "57,000",
+     "Owned",
+     "Sacramento, San Francisco, Oakland"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tampa, Florida",
+     "63,000",
+     "January 23, 2012 (Options to 2032)",
+     "Florida, Georgia"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service Centers:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Detroit, Michigan",
+     "7,300",
+     "November 30, 2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Louisville, Kentucky",
+     "10,000",
+     "December 31, 2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Miami, Florida",
+     "4,000",
+     "January 31, 2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oklahoma City, Oklahoma",
+     "3,600",
+     "February 28, 2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Disposable Products:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Plant City, Florida",
+     "40,800",
+     "February 28, 2010 (Notice given to terminate lease on April 7, 2009)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate Office:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tampa, Florida",
+     "42,000",
+     "Owned",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 299,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "We maintain service centers in Detroit, Louisville, Miami and Oklahoma City to facilitate distribution of our products to our customers.\nWe operated a disposable accessory products facility in Plant City, Florida, where we assembled and packaged single-use surgical products into customized disposable accessory packs. We transported these disposable accessory packs to a third-party facility for sterilization before they were sent to our processing facilities for final delivery. As part of the Co-Marketing Agreement we signed with Cardinal Health in November 2008, we agreed to close the Plant City facility which was substantially completed in March 2009. As a result, we source our disposable products through Cardinal Health.\nWe own our Chattanooga, Cincinnati, Houston, and Stockton processing facilities and our corporate headquarters; we lease the remaining processing facilities, service centers, and the disposable accessory products facility.\nWe believe that our existing facilities adequately serve our current requirements. The table below summarizes our properties and the major markets they serve as of December 31, 2009:",
+   "prose_after": "Item 3. Legal Proceedings\nFrom time to time, we are subject to legal proceedings that arise in the ordinary course of our business. We do not believe these proceedings, individually or in the aggregate, will have a material adverse effect on our financial position, results of operations, or cash flows.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 289,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 342,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 4.",
+     "Reserved"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 348,
+    "end_line": 351
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Legal Proceedings"
+    },
+    "note": null
+   },
+   "prose_before": "Item 3. Legal Proceedings\nFrom time to time, we are subject to legal proceedings that arise in the ordinary course of our business. We do not believe these proceedings, individually or in the aggregate, will have a material adverse effect on our financial position, results of operations, or cash flows.",
+   "prose_after": "PART II\nItem 5. Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nCommon Stock Information\nOur common stock trades publicly on The NASDAQ Stock Market LLC (NASDAQ Global Market) (the \u201cNASDAQ\u201d) under the symbol \u201cSTRC\u201d. On February 26, 2010, there were approximately 39 holders of record of our common stock. The table below sets forth the high and low sales prices for our common stock for fiscal years 2008 and 2009, as reported on the NASDAQ.\nCommon Stock Price Range",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 342,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 352,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31, 2008",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "6.44",
+     "$",
+     "3.52"
+    ],
+    [
+     "Second quarter",
+     "$",
+     "4.69",
+     "$",
+     "3.00"
+    ],
+    [
+     "Third quarter",
+     "$",
+     "4.10",
+     "$",
+     "3.30"
+    ],
+    [
+     "Fourth quarter",
+     "$",
+     "3.96",
+     "$",
+     "0.59"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2009",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "1.80",
+     "$",
+     "0.76"
+    ],
+    [
+     "Second quarter",
+     "$",
+     "1.58",
+     "$",
+     "1.00"
+    ],
+    [
+     "Third quarter",
+     "$",
+     "2.82",
+     "$",
+     "1.30"
+    ],
+    [
+     "Fourth quarter",
+     "$",
+     "3.40",
+     "$",
+     "1.50"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 364,
+    "end_line": 379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "PART II\nItem 5. Market for the Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nCommon Stock Information\nOur common stock trades publicly on The NASDAQ Stock Market LLC (NASDAQ Global Market) (the \u201cNASDAQ\u201d) under the symbol \u201cSTRC\u201d. On February 26, 2010, there were approximately 39 holders of record of our common stock. The table below sets forth the high and low sales prices for our common stock for fiscal years 2008 and 2009, as reported on the NASDAQ.\nCommon Stock Price Range",
+   "prose_after": "We have never declared or paid cash dividends on our common stock and do not anticipate paying dividends on our common stock in the foreseeable future. Additionally, financial covenants in our credit facility prohibit the payment of cash dividends. See \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations \u2013 Liquidity and Capital Resources\u201d a\u2022d \u201cNotes to Financial Statements\u201d.\nStock Performance Graph\nThe following graph shows a comparison of our cumulative total shareholder return, NASDAQ Global Market (U.S.), and the NASDAQ Health Care Index. This graph assumes that $100 was invested on December 31, 2004 in our common stock and in the other indices and in each case, assumes reinvestment of all dividends. Historic stock price performance does not necessarily indicate future stock price performance.\nItem 6. Selected Financial Data\nThe following table contains certain selected financial data that have been derived from our audited financial statements. The data should be read in conjunction with the Financial Statements and Notes thereto incorporated into Item 8 and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d incorporated into Item 7.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 352,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 386,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     "",
+     "2006",
+     "",
+     "",
+     "2005",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except per share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of operations data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "98,453",
+     "",
+     "$",
+     "97,028",
+     "",
+     "$",
+     "94,201",
+     "",
+     "$",
+     "93,831",
+     "",
+     "$",
+     "91,734"
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "78,355",
+     "",
+     "",
+     "75,599",
+     "",
+     "",
+     "73,947",
+     "",
+     "",
+     "71,534",
+     "",
+     "",
+     "68,554"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "20,098",
+     "",
+     "",
+     "21,429",
+     "",
+     "",
+     "20,254",
+     "",
+     "",
+     "22,297",
+     "",
+     "",
+     "23,180"
+    ],
+    [
+     "Distribution expenses",
+     "",
+     "6,933",
+     "",
+     "",
+     "7,227",
+     "",
+     "",
+     "6,394",
+     "",
+     "",
+     "6,327",
+     "",
+     "",
+     "6,261"
+    ],
+    [
+     "Selling and administrative expenses",
+     "",
+     "16,607",
+     "",
+     "",
+     "16,289",
+     "",
+     "",
+     "17,775",
+     "",
+     "",
+     "17,574",
+     "",
+     "",
+     "15,092"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "(3,442)",
+     "",
+     "",
+     "(2,087)",
+     "",
+     "",
+     "(3,915)",
+     "",
+     "",
+     "(1,604)",
+     "",
+     "",
+     "1,827"
+    ],
+    [
+     "Interest expense",
+     "",
+     "619",
+     "",
+     "",
+     "1,077",
+     "",
+     "",
+     "1,385",
+     "",
+     "",
+     "1,206",
+     "",
+     "",
+     "1,197"
+    ],
+    [
+     "Other income",
+     "",
+     "(367)",
+     "",
+     "",
+     "(396)",
+     "",
+     "",
+     "(342)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "(3,694)",
+     "",
+     "",
+     "(2,768)",
+     "",
+     "",
+     "(4,958)",
+     "",
+     "",
+     "(2,810)",
+     "",
+     "",
+     "630"
+    ],
+    [
+     "Income tax expense (benefit)",
+     "",
+     "82",
+     "",
+     "",
+     "(212)",
+     "",
+     "",
+     "(1,765)",
+     "",
+     "",
+     "(857)",
+     "",
+     "",
+     "237"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(3,776)",
+     "",
+     "$",
+     "(2,556)",
+     "",
+     "$",
+     "(3,193)",
+     "",
+     "$",
+     "(1,953)",
+     "",
+     "$",
+     "393"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings (loss) per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per common share",
+     "$",
+     "(0.58)",
+     "",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "(0.50)",
+     "",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "0.06"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings (loss) per diluted share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per diluted share",
+     "$",
+     "(0.58)",
+     "",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "(0.50)",
+     "",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "0.06"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     "",
+     "",
+     "6,338",
+     "",
+     "",
+     "6,277"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     "",
+     "",
+     "6,338",
+     "",
+     "",
+     "6,311"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance sheet data (at end of period):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reusable surgical products, net",
+     "$",
+     "18,151",
+     "",
+     "$",
+     "20,577",
+     "",
+     "$",
+     "19,416",
+     "",
+     "$",
+     "20,954",
+     "",
+     "$",
+     "22,416"
+    ],
+    [
+     "Total assets",
+     "",
+     "62,928",
+     "",
+     "",
+     "69,746",
+     "",
+     "",
+     "71,968",
+     "",
+     "",
+     "74,354",
+     "",
+     "",
+     "76,432"
+    ],
+    [
+     "Notes payable",
+     "",
+     "6,124",
+     "",
+     "",
+     "8,434",
+     "",
+     "",
+     "2,493",
+     "",
+     "",
+     "2,497",
+     "",
+     "",
+     "3,229"
+    ],
+    [
+     "Mortgages payable",
+     "",
+     "4,013",
+     "",
+     "",
+     "4,228",
+     "",
+     "",
+     "4,286",
+     "",
+     "",
+     "4,524",
+     "",
+     "",
+     "4,763"
+    ],
+    [
+     "Bonds payable",
+     "",
+     "520",
+     "",
+     "",
+     "520",
+     "",
+     "",
+     "7,060",
+     "",
+     "",
+     "7,720",
+     "",
+     "",
+     "8,380"
+    ],
+    [
+     "Obligation under capital lease",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "23,063",
+     "",
+     "",
+     "26,764",
+     "",
+     "",
+     "27,342",
+     "",
+     "",
+     "27,636",
+     "",
+     "",
+     "28,349"
+    ],
+    [
+     "Shareholders\u2019 equity",
+     "",
+     "39,865",
+     "",
+     "",
+     "42,982",
+     "",
+     "",
+     "44,626",
+     "",
+     "",
+     "46,718",
+     "",
+     "",
+     "48,083"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 392,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "We have never declared or paid cash dividends on our common stock and do not anticipate paying dividends on our common stock in the foreseeable future. Additionally, financial covenants in our credit facility prohibit the payment of cash dividends. See \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations \u2013 Liquidity and Capital Resources\u201d a\u2022d \u201cNotes to Financial Statements\u201d.\nStock Performance Graph\nThe following graph shows a comparison of our cumulative total shareholder return, NASDAQ Global Market (U.S.), and the NASDAQ Health Care Index. This graph assumes that $100 was invested on December 31, 2004 in our common stock and in the other indices and in each case, assumes reinvestment of all dividends. Historic stock price performance does not necessarily indicate future stock price performance.\nItem 6. Selected Financial Data\nThe following table contains certain selected financial data that have been derived from our audited financial statements. The data should be read in conjunction with the Financial Statements and Notes thereto incorporated into Item 8 and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d incorporated into Item 7.",
+   "prose_after": "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion and analysis should be read with our financial statements and Notes included elsewhere in this Annual Report on Form 10-K. This discussion and analysis contains trend analysis and might contain forward-looking statements. These statements are based on current expectations and actual results might differ materially. Among the factors that could cause actual results to vary are those described in the \u201cOverview\u201d section below and in Item 1A. \u2013 Risk Factors.\nOverview\nWe provide daily processing, assembly and delivery of reusable and disposable surgical products and instruments through our state-of-the-art, FDA-regulated service centers. Our integrated \u201cclosed-loop\u201d process starts with daily delivery of reusable and disposable surgical supplies and instruments to healthcare providers. After use, we pick up the reusable textiles, basins and instruments used in surgery and return them to our processing facilities. Used products arriving at our processing facilities are sorted, cleaned, inspected, packaged, sterilized and shipped back to the healthcare providers. We also manage the instrumentation and supply chain of hospitals, surgery centers and operating rooms and their central sterilization facilities.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 386,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 446,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Revenues",
+     "100.0",
+     "%",
+     "100.0",
+     "%",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of revenues",
+     "79.6",
+     "",
+     "77.9",
+     "",
+     "78.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "20.4",
+     "",
+     "22.1",
+     "",
+     "21.5",
+     ""
+    ],
+    [
+     "Distribution expenses",
+     "7.0",
+     "",
+     "7.4",
+     "",
+     "6.8",
+     ""
+    ],
+    [
+     "Selling and administrative expenses",
+     "16.9",
+     "",
+     "16.8",
+     "",
+     "18.9",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(3.5)",
+     "",
+     "(2.1)",
+     "",
+     "(4.2)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "0.6",
+     "",
+     "1.1",
+     "",
+     "1.5",
+     ""
+    ],
+    [
+     "Other income",
+     "(0.4)",
+     "",
+     "(0.4)",
+     "",
+     "(0.4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "(3.7)",
+     "",
+     "(2.8)",
+     "",
+     "(5.3)",
+     ""
+    ],
+    [
+     "Income tax provision (benefit)",
+     "0.1",
+     "",
+     "(0.2)",
+     "",
+     "(1.9)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "(3.8)",
+     "%",
+     "(2.6)",
+     "%",
+     "(3.4)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 518,
+    "end_line": 543
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "In January 2010, the FASB issued ASU No. 2010-6, Improving Disclosures About Fair Value Measurements, that amends existing disclosure requirements under ASC 820 by adding required disclosures about items transferring into and out of levels 1 and 2 in the fair value hierarchy; adding separate disclosures about purchase, sales, issuances, and settlements relative to level 3 measurements; and clarifying, among other things, the existing fair value disclosures about the level of disaggregation. This ASU is effective for us for the\nfirst quarter of 2010, except for the requirement to provide level 3 activities of purchases, sales, issuances, and settlements on a gross basis, which is effective beginning the first quarter of 2011. Since this standard impacts disclosure requirements only and we do not have any items that meet the classification as Level 2 or Level 3 items, its adoption will not have a material impact on our results of operations or financial condition.\nResults of Operations\nWe operate on a 52-53 week fiscal year ending the Sunday nearest December 31st. The financial statements are reflected as of December 31, 2009, 2008, and 2007 for presentation purposes only. The actual end of each period was January 3, 2010, December 28, 2008, and December 30, 2007, respectively. There are 53 weeks in 2009 and 52 weeks in 2008 and 2007.\nThe following table sets forth for the periods shown the percentage of revenues represented by certain items reflected in our statements of operations:",
+   "prose_after": "Year ended December 31, 2009 compared to year ended December 31, 2008\nRevenues\nRevenues increased $1.4 million, or 1.5%, to $98.4 million for the year ended December 31, 2009, compared to $97.0 million for the year ended December 31, 2008. The increase in revenues is primarily attributable to the growth of our management of instrumentation and central sterilization department service offering and an extra week of operations in fiscal 2009, partially offset by industry pricing trends. Also, our 2008 revenues were favorably impacted by the reversal of an accrued customer discount of $440,000 that was not realized.\nGross Profit\nGross profit decreased $1.3 million, or 6.1%, to $20.1 million for the year ended December 31, 2009 compared to $21.4 million for the prior year. As a percentage of revenues, gross profit decreased by 1.7 percentage points to 20.4% for the year ended December 31, 2009 compared to 22.1% for the prior year. The decrease in gross profit was primarily due to our reusable surgical product loss being higher than normal in our Tampa facility by approximately $500,000, as well as product loss recognized in 2009 that was not previously captured by our information system in a prior year. As part of our efforts to reduce the level of loss and scrap costs, we performed additional operational reviews of the reusable surgical product usage during the third quarter of 2009, which resulted in identification of additional losses that were not known at January 1, 2009. The amount of the adjustments related to periods prior to January 1, 2009 that were recognized in the three months ended September 30, 2009 decreased gross profit by $591,000.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Payments due by period (000\u2019s)",
+     "Total",
+     "",
+     "Less than 1 year",
+     "",
+     "2-3 years",
+     "",
+     "4-5 years",
+     "",
+     "More than\n5 years",
+     ""
+    ],
+    [
+     "Notes payable, mortgage and bonds payable",
+     "$",
+     "10,657",
+     "$",
+     "215",
+     "$",
+     "9,922",
+     "$",
+     "520",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Operating leases",
+     "",
+     "6,920",
+     "",
+     "2,404",
+     "",
+     "3,423",
+     "",
+     "634",
+     "",
+     "459"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total contractual cash obligations",
+     "$",
+     "17,577",
+     "$",
+     "2,619",
+     "$",
+     "13,345",
+     "$",
+     "1,154",
+     "$",
+     "459"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We have outstanding public bonds that we issued to fund the construction of two of our reusable processing facilities. Interest expense on these bonds adjusts based on rates that approximate LIBOR (0.29% at December 31, 2009). Starting in 2004, we began amortizing the bonds through quarterly payments of $165,000. A balloon principal payment of $3.1 million is due on the bonds in 2014. The bonds are secured by the two reusable processing facilities and backed by letters of credit issued under the Credit Facility. The letters of credit must be renewed in January of each year through maturity in 2014 and we have complied with this requirement.\nIn October 2008, $6.0 million of the bonds were tendered. The holders of the tendered bonds were paid from draws against the letters of credit under our Credit Facility, and will be reflected as outstanding notes payable until they are remarketed. Under the terms of the indentures relating to the bonds, the tendered bonds can be remarketed at any time prior to their maturity in 2014. Letters of credit issued by our lenders for amounts totaling $7.2 million secure these bonds; however, only $520,000 of the letters of credit are outstanding as of December 31, 2009 as a result of the bonds being tendered.\nContractual Obligations\nOur contractual cash obligations for future minimum payments, including interest, under our notes payable to bank, bonds payable, mortgage and operating leases as of December 31, 2009, are as follows:",
+   "prose_after": "In addition, as part of our ReadyCaseSM delivery system, we offer instruments for use and reprocessing pursuant to our Joint Marketing Agreement with Aesculap. Under the terms of this agreement, Aesculap furnishes and repairs the surgical instruments that we deliver to customers and receives an agreed upon fee for each procedure. We also had a procurement agreement with Standard Textile under which we agreed to purchase 90% of our reusable surgical products from them. We are not bound to purchase any minimum quantity of products under these agreements; however, we expect to make payments under the contracts to fulfill our requirements. Our agreement with Standard Textile expired in August 2008. We are currently working with Standard Textile on a month-to-month basis until a new agreement can be reached. Our purchases under these agreements in 2009 were $16.1 million. Amounts paid under these agreements will vary based upon changes in customer demand, amortization rates, product prices, and other variables affecting our business.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 634,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ GRANT THORNTON LLP"
+    ],
+    [
+     ""
+    ],
+    [
+     "Tampa, Florida"
+    ],
+    [
+     "March 30, 2010"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ GRANT THORNTON LLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 693,
+    "end_line": 699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of SRI/Surgical Express, Inc. as of December 31, 2009 and 2008, and the results of its operations and its cash flows for each of the three years in the period ended December 31, 2009 in conformity with accounting principles generally accepted in the United States of America. Also in our opinion, the related financial statement schedule, when considered in relation to the basic financial statements taken as a whole, presents fairly, in all material respects, the information set forth therein.",
+   "prose_after": "BALANCE SHEETS\n(in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "802",
+     "$",
+     "484"
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "11,460",
+     "",
+     "11,200"
+    ],
+    [
+     "Inventories, net",
+     "",
+     "2,903",
+     "",
+     "5,727"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "1,947",
+     "",
+     "2,271"
+    ],
+    [
+     "Reusable surgical products, net",
+     "",
+     "18,151",
+     "",
+     "20,577"
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "27,665",
+     "",
+     "29,487"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "62,928",
+     "$",
+     "69,746"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND SHAREHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "$",
+     "6,124",
+     "$",
+     "8,434"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "7,439",
+     "",
+     "8,461"
+    ],
+    [
+     "Employee related accrued expenses",
+     "",
+     "1,919",
+     "",
+     "1,984"
+    ],
+    [
+     "Other accrued expenses",
+     "",
+     "3,048",
+     "",
+     "3,137"
+    ],
+    [
+     "Mortgage payable",
+     "",
+     "4,013",
+     "",
+     "4,228"
+    ],
+    [
+     "Bonds payable",
+     "",
+     "520",
+     "",
+     "520"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "23,063",
+     "",
+     "26,764"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock \u2013 authorized 5,000,000 shares of $0.001 par value; no shares issued and outstanding at December 31, 2009 and 2008",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common Stock \u2013 authorized 30,000,000 shares of $0.001 par value; issued and outstanding 6,485,978 and 6,495,978 shares at December 31, 2009 and 2008, respectively",
+     "",
+     "6",
+     "",
+     "6"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "33,025",
+     "",
+     "32,366"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "6,834",
+     "",
+     "10,610"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "39,865",
+     "",
+     "42,982"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$",
+     "62,928",
+     "$",
+     "69,746"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEETS\n(in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 702,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "98,453",
+     "",
+     "$",
+     "97,028",
+     "",
+     "$",
+     "94,201",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "78,355",
+     "",
+     "",
+     "75,599",
+     "",
+     "",
+     "73,947",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "20,098",
+     "",
+     "",
+     "21,429",
+     "",
+     "",
+     "20,254",
+     ""
+    ],
+    [
+     "Distribution expenses",
+     "",
+     "6,933",
+     "",
+     "",
+     "7,227",
+     "",
+     "",
+     "6,394",
+     ""
+    ],
+    [
+     "Selling and administrative expenses",
+     "",
+     "16,607",
+     "",
+     "",
+     "16,289",
+     "",
+     "",
+     "17,775",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(3,442)",
+     "",
+     "",
+     "(2,087)",
+     "",
+     "",
+     "(3,915)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "619",
+     "",
+     "",
+     "1,077",
+     "",
+     "",
+     "1,385",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "(367)",
+     "",
+     "",
+     "(396)",
+     "",
+     "",
+     "(342)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(3,694)",
+     "",
+     "",
+     "(2,768)",
+     "",
+     "",
+     "(4,958)",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "",
+     "82",
+     "",
+     "",
+     "(212)",
+     "",
+     "",
+     "(1,765)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,776)",
+     "",
+     "$",
+     "(2,556)",
+     "",
+     "$",
+     "(3,193)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic loss per common share:",
+     "$",
+     "(0.58)",
+     "",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "(0.50)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted loss per common share:",
+     "$",
+     "(0.58)",
+     "",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "(0.50)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 basic",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 diluted",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 761,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS\n(in thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF SHAREHOLDERS\u2019 EQUITY\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 755,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2007",
+     "6,459,021",
+     "",
+     "$",
+     "6",
+     "$",
+     "30,353",
+     "$",
+     "16,359",
+     "",
+     "$",
+     "46,718",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise of stock options",
+     "61,957",
+     "",
+     "",
+     "\u2014",
+     "",
+     "318",
+     "",
+     "\u2014",
+     "",
+     "",
+     "318",
+     ""
+    ],
+    [
+     "Restricted stock forfeited",
+     "(50,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation expense on stock options",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "783",
+     "",
+     "\u2014",
+     "",
+     "",
+     "783",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,193)",
+     "",
+     "",
+     "(3,193)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2007",
+     "6,470,978",
+     "",
+     "",
+     "6",
+     "",
+     "31,454",
+     "",
+     "13,166",
+     "",
+     "",
+     "44,626",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted stock issued",
+     "25,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation expense on stock options",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "912",
+     "",
+     "\u2014",
+     "",
+     "",
+     "912",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,556)",
+     "",
+     "",
+     "(2,556)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2008",
+     "6,495,978",
+     "",
+     "",
+     "6",
+     "",
+     "32,366",
+     "",
+     "10,610",
+     "",
+     "",
+     "42,982",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock cancelled",
+     "(10,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation expense on stock options",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "659",
+     "",
+     "\u2014",
+     "",
+     "",
+     "659",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,776)",
+     "",
+     "",
+     "(3,776)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "6,485,978",
+     "",
+     "$",
+     "6",
+     "$",
+     "33,025",
+     "$",
+     "6,834",
+     "",
+     "$",
+     "39,865",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 809,
+    "end_line": 838
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF SHAREHOLDERS\u2019 EQUITY\n(In thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 841,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,776)",
+     "",
+     "$",
+     "(2,556)",
+     "",
+     "$",
+     "(3,193)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "3,368",
+     "",
+     "",
+     "3,537",
+     "",
+     "",
+     "3,376",
+     ""
+    ],
+    [
+     "Amortization of reusable surgical products",
+     "",
+     "5,175",
+     "",
+     "",
+     "5,180",
+     "",
+     "",
+     "5,955",
+     ""
+    ],
+    [
+     "Gain on sale of property, plant and equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(44)",
+     ""
+    ],
+    [
+     "Stock based compensation expense",
+     "",
+     "659",
+     "",
+     "",
+     "912",
+     "",
+     "",
+     "783",
+     ""
+    ],
+    [
+     "(Reduction) provision for doubtful accounts",
+     "",
+     "18",
+     "",
+     "",
+     "(759)",
+     "",
+     "",
+     "791",
+     ""
+    ],
+    [
+     "(Reduction) provision for slow moving inventory",
+     "",
+     "48",
+     "",
+     "",
+     "(211)",
+     "",
+     "",
+     "501",
+     ""
+    ],
+    [
+     "Provision for reusable surgical products\u2019 shrinkage",
+     "",
+     "3,155",
+     "",
+     "",
+     "1,275",
+     "",
+     "",
+     "994",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(55)",
+     "",
+     "",
+     "(1,651)",
+     ""
+    ],
+    [
+     "Change in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in accounts receivable",
+     "",
+     "(278)",
+     "",
+     "",
+     "1,172",
+     "",
+     "",
+     "(1,013)",
+     ""
+    ],
+    [
+     "Decrease in inventories",
+     "",
+     "2,776",
+     "",
+     "",
+     "643",
+     "",
+     "",
+     "55",
+     ""
+    ],
+    [
+     "Decrease in prepaid expenses and other assets",
+     "",
+     "323",
+     "",
+     "",
+     "1,843",
+     "",
+     "",
+     "259",
+     ""
+    ],
+    [
+     "(Decrease) increase in accounts payable",
+     "",
+     "(1,022)",
+     "",
+     "",
+     "477",
+     "",
+     "",
+     "1,121",
+     ""
+    ],
+    [
+     "(Decrease) increase in employee related and other accrued expenses",
+     "",
+     "(117)",
+     "",
+     "",
+     "(303)",
+     "",
+     "",
+     "1,097",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "10,329",
+     "",
+     "",
+     "11,155",
+     "",
+     "",
+     "9,031",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property, plant and equipment",
+     "",
+     "(1,582)",
+     "",
+     "",
+     "(1,394)",
+     "",
+     "",
+     "(2,269)",
+     ""
+    ],
+    [
+     "Purchases of reusable surgical products",
+     "",
+     "(5,904)",
+     "",
+     "",
+     "(7,616)",
+     "",
+     "",
+     "(5,411)",
+     ""
+    ],
+    [
+     "Proceeds from sale of property, plant and equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "87",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(7,486)",
+     "",
+     "",
+     "(9,010)",
+     "",
+     "",
+     "(7,593)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings on notes payable",
+     "",
+     "98,215",
+     "",
+     "",
+     "43,907",
+     "",
+     "",
+     "36,172",
+     ""
+    ],
+    [
+     "Repayments on notes payable",
+     "",
+     "(100,513)",
+     "",
+     "",
+     "(39,600)",
+     "",
+     "",
+     "(36,641)",
+     ""
+    ],
+    [
+     "Repayment on bonds payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,540)",
+     "",
+     "",
+     "(660)",
+     ""
+    ],
+    [
+     "Proceeds from mortgage refinancing",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,300",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repayments on mortgage payable",
+     "",
+     "(215)",
+     "",
+     "",
+     "(4,358)",
+     "",
+     "",
+     "(238)",
+     ""
+    ],
+    [
+     "Payments on obligation under capital lease",
+     "",
+     "(12)",
+     "",
+     "",
+     "(26)",
+     "",
+     "",
+     "(16)",
+     ""
+    ],
+    [
+     "Net proceeds from issuance of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "318",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(2,525)",
+     "",
+     "",
+     "(2,317)",
+     "",
+     "",
+     "(1,065)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash and cash equivalents",
+     "",
+     "318",
+     "",
+     "",
+     "(172)",
+     "",
+     "",
+     "373",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of year",
+     "",
+     "484",
+     "",
+     "",
+     "656",
+     "",
+     "",
+     "283",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of year",
+     "$",
+     "802",
+     "",
+     "$",
+     "484",
+     "",
+     "$",
+     "656",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "644",
+     "",
+     "$",
+     "1,172",
+     "",
+     "$",
+     "1,366",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash received for income taxes",
+     "$",
+     "(111)",
+     "",
+     "$",
+     "(364)",
+     "",
+     "$",
+     "(410)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental schedule of non-cash investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets acquired under capital lease",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "353",
+     "",
+     "$",
+     "40",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash insurance financing",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "782",
+     "",
+     "$",
+     "465",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 849,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNOTE A \u2013 DESCRIPTION OF ORGANIZATION AND BUSINESS\nSRI/Surgical Express, Inc. (\u201cSRI\u201d or the \u201cCompany\u201d) provides central processing and supply chain management services to hospitals and surgery centers across the United States. The Company offers a combination of high quality reusable surgical products (including gowns, towels, drapes, basins and surgical instruments), disposable surgical products, and instruments in a comprehensive case cart management system. At ten regional facilities, the Company collects, sorts, cleans, inspects, packages, and sterilizes its reusable surgical products and instruments, and delivers daily on a just-in-time basis. The Company also provides an outsource solution for the management of hospital instrumentation and central sterilization. The Company operates in one industry segment.\nNOTE B \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nFinancial Statement Presentation",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 843,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in 000\u2019s)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "1,274",
+     "",
+     "$",
+     "2,665",
+     ""
+    ],
+    [
+     "Work in progress",
+     "",
+     "\u2014",
+     "",
+     "",
+     "104",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "1,992",
+     "",
+     "",
+     "3,272",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,266",
+     "",
+     "",
+     "6,041",
+     ""
+    ],
+    [
+     "Less: Inventory reserve",
+     "",
+     "(363)",
+     "",
+     "",
+     "(314)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,903",
+     "",
+     "$",
+     "5,727",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 965,
+    "end_line": 982
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "For the year ended December 31, 2009, revenues relating to hospitals belonging to three group purchasing organizations (Novation, LLC, HealthTrust Purchasing Group, L.P., and MedAssets, Inc.) collectively accounted for approximately 62% of the Company\u2019s revenues. For the years ended December 31, 2008 and 2007, revenues relating to hospitals belonging to these group purchasing organizations collectively accounted for approximately 65% and 63%, respectively, of the Company\u2019s revenues. The Company had one customer, a healthcare provider, which accounted for approximately 10%, 11% and 11% of revenue for the years ended December 31, 2009, 2008 and 2007.\nUnbilled Receivable\nIncluded in prepaid expenses and other assets are unbilled receivables related to certain instruments purchased on behalf of a vendor in the amounts of $49,000 and $86,000 at December 31, 2009 and 2008, respectively.\nInventories, Net\nInventories consist of raw materials, principally consumables, supplies, and disposable surgical products; work in progress consisting of partially assembled reusable and disposable packs; and finished goods consisting of company-assembled packs of various combinations of raw materials and reusable surgical products, and disposable accessory packs purchased from third parties. Inventories are valued at the lower of cost or market, with cost being determined on the first-in, first-out method. As of December 31, 2009 and 2008, inventory consists of the following:",
+   "prose_after": "Reusable Surgical Products, Net\nThe Company\u2019s reusable surgical products, consisting principally of linens (gowns, towels, and drapes), basins (stainless steel medicine cups, carafes, trays, basins) and owned surgical instruments, are stated at cost. Amortization of linens and basins is computed on a basis similar to the units of production method. Estimated useful lives for each product are based on the estimated total number of available uses for each product. The expected total available usage for our linen products using the three principal fabrics (accounting for approximately 74% of the reusable surgical products) is 75, 100, and 125 uses, based on several factors, including our actual historical experience with these products. The Company believes RFID technology enables it to evaluate the useful lives of linen products more efficiently. Basins are amortized on a straight-line basis over their estimated useful life, up to 20 years. Owned surgical instruments are amortized straight line over a period of four years. Accumulated amortization as of December 31, 2009 and 2008 was approximately $13.9 million and $14.1 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 989,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Useful Lives In Years",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(in 000\u2019s)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "\u2014",
+     "$",
+     "1,582",
+     "",
+     "$",
+     "1,582",
+     ""
+    ],
+    [
+     "Land improvements",
+     "15",
+     "",
+     "646",
+     "",
+     "",
+     "646",
+     ""
+    ],
+    [
+     "Construction in process\n\n\n\nBuildings and improvements",
+     "\u2014  \n\n 20-40",
+     "",
+     "1,607\n\n 16,093",
+     "",
+     "",
+     "1,326\n\n 16,016",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "2-18",
+     "",
+     "7,935",
+     "",
+     "",
+     "8,141",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "3-12",
+     "",
+     "25,226",
+     "",
+     "",
+     "25,314",
+     ""
+    ],
+    [
+     "Office furniture, equipment and computers",
+     "3-10",
+     "",
+     "8,602",
+     "",
+     "",
+     "8,529",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "61,691",
+     "",
+     "",
+     "61,554",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "",
+     "",
+     "(34,026)",
+     "",
+     "",
+     "(32,067)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "27,665",
+     "",
+     "$",
+     "29,487",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1075,
+    "end_line": 1099
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In January 2010, the FASB issued ASU No. 2010-6, Improving Disclosures About Fair Value Measurements, that amends existing disclosure requirements under ASC 820 by adding required disclosures about items transferring into and out of levels 1 and 2 in the fair value hierarchy; adding separate disclosures about purchase, sales, issuances, and settlements relative to level 3 measurements; and clarifying, among other things, the existing fair value disclosures about the level of disaggregation. For SRI, this ASU is effective for the first quarter of 2010, except for the requirement to provide level 3 activities of purchases, sales, issuances, and settlements on a gross basis, which is effective beginning the first quarter of 2011. Since this standard impacts disclosure requirements only and SRI does not have any items recorded at fair value that meet the classification as Level 2 or Level 3 items, its adoption will not have a material impact on SRI\u2019s results of operations or financial condition.\nNOTE C \u2013 PROPERTY, PLANT AND EQUIPMENT\nProperty, plant and equipment consist of the following:",
+   "prose_after": "In accordance with ASC Topic 350, Intangible-Goodwill and Other (\u201cASC 350\u201d), certain external direct costs of materials and services, and other qualifying costs incurred in connection with developing or obtaining internal use software are capitalized. The Company capitalized costs of internally developed software in the amounts of approximately $306,000 and $725,000 during the years ended December 31, 2009 and 2008, respectively. Such capitalized costs primarily relate to the cost of software and certain contracted programming costs, as well as other such qualifying costs.\nConstruction in process primarily relates to internally developed software-related costs for electronic data interchange, quoting, and data management tools to be used in the Company\u2019s daily operations.\nFor the years ended December 31, 2009, 2008 and 2007, depreciation and amortization expense was approximately $3.4 million, $3.5 million, and $3.4 million, respectively.\nNOTE D \u2013 NOTES PAYABLE\nOn August 7, 2008, the Company entered into a three-year $24.3 million credit facility with a financial institution to replace an expiring $20 million credit facility and $4.2 million mortgage loan on its Tampa headquarters. The credit facility includes a revolving loan of up to $20 million for working capital, letters of credit, capital expenditures and other purposes, and a $4.3 million term loan, which replaces the mortgage loan. Actual amounts available under the revolving loan are determined by a defined borrowing base, which primarily relates to outstanding receivables, inventories and reusable surgical products. As a result of the borrowing base calculation, as of December 31, 2009, the Company had $17.6 million available for advances of which the Company had used $10.5 million of the revolving loan, including $6.1 million of advances, $2.2 million of availability for letters of credit to support the Company\u2019s bonds and self-insurance policies and $2.2 million maintained as a required reserve. As a result, at December 31, 2009, the Company had excess availability of $7.1 million. As of December 31, 2009, the Company had $4.0 million outstanding on the term loan, which is classified as a mortgage payable. The term loan amortizes based on a 20-year schedule, with the remaining principal balance due on the expiration date of the facility, which is August 7, 2011. The credit facility is secured by substantially all of the Company\u2019s assets.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2010",
+     "$",
+     "215"
+    ],
+    [
+     "2011",
+     "",
+     "3,798"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "4,013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1130,
+    "end_line": 1137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "and $219,000, respectively, of interest related to a mortgage, see Note E \u2013 Mortgage Payable. Interest expense in 2009 and 2008 included approximately $76,000 and $192,000, respectively, of interest related to the bonds, see Note F \u2013 Bonds Payable.\nNOTE E \u2013 MORTGAGE PAYABLE\nAs noted above under Note D \u2013 Notes Payable, on August 7, 2008, the Company replaced the previous mortgage note on the Company\u2019s corporate headquarters with a new $4.3 million mortgage. The mortgage loan has a term of three (3) years and an amortization schedule based on 20 years, with a balloon payment due on August 7, 2011. As amended pursuant to the Waiver and Amendment No. 1 to the Loan Agreement described in Note D above, interest on the loan varies between 200 and 300 basis points over LIBOR or 175 basis points over the Prime Rate. The type of interest rate is an election made periodically by the Company. At December 31, 2009, $3.9 million of the mortgage bears an interest rate of LIBOR plus 2.25% (2.625% at November 6, 2009) and the remaining outstanding balance of $100,000 was at the Prime Rate of 3.25%.\nMortgage payments as of December 31, 2009 for the next two years are as follows (in 000\u2019s):",
+   "prose_after": "NOTE F \u2013 BONDS PAYABLE\nIn 1999, the Company issued public bonds to fund the construction of two of its reusable processing facilities. Interest expense adjusts based on rates that approximate LIBOR (0.29% at December 31, 2009). Starting in 2004, the Company began amortizing the bonds through quarterly payments of $165,000. A balloon principal payment of $3.1 million on the bonds is due in 2014. The bonds payable are secured by the two reusable processing facilities.\nIn October 2008, $6.0 million of the Company\u2019s bonds were tendered. The holders of the tendered bonds were paid from draws against the letters of credit under the Company\u2019s credit facility, see Note D \u2013 Notes Payable above, and will be reflected as outstanding notes payable until they are remarketed. Under the terms of the indentures relating to the bonds, the tendered bonds can be remarketed at any time prior to their maturity in 2014.\nLetters of credit issued by the Company\u2019s lenders for amounts totaling $7.2 million secure these bonds; however, only $520,000 of the letters of credit are outstanding as of December 31, 2009 as a result of the bonds being tendered. The Company paid a commitment fee of approximately $76,000 for the letters of credit in 2009. The letters of credit must be renewed each year through the bonds\u2019 maturity in 2014, which the Company has complied with.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending December 31",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "\u2014"
+    ],
+    [
+     "2011",
+     "",
+     "\u2014"
+    ],
+    [
+     "2012",
+     "",
+     "\u2014"
+    ],
+    [
+     "2013",
+     "",
+     "\u2014"
+    ],
+    [
+     "2014",
+     "",
+     "520"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "520"
+    ]
+   ],
+   "caption_stack": [
+    "Years ending December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1148,
+    "end_line": 1160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In 1999, the Company issued public bonds to fund the construction of two of its reusable processing facilities. Interest expense adjusts based on rates that approximate LIBOR (0.29% at December 31, 2009). Starting in 2004, the Company began amortizing the bonds through quarterly payments of $165,000. A balloon principal payment of $3.1 million on the bonds is due in 2014. The bonds payable are secured by the two reusable processing facilities.\nIn October 2008, $6.0 million of the Company\u2019s bonds were tendered. The holders of the tendered bonds were paid from draws against the letters of credit under the Company\u2019s credit facility, see Note D \u2013 Notes Payable above, and will be reflected as outstanding notes payable until they are remarketed. Under the terms of the indentures relating to the bonds, the tendered bonds can be remarketed at any time prior to their maturity in 2014.\nLetters of credit issued by the Company\u2019s lenders for amounts totaling $7.2 million secure these bonds; however, only $520,000 of the letters of credit are outstanding as of December 31, 2009 as a result of the bonds being tendered. The Company paid a commitment fee of approximately $76,000 for the letters of credit in 2009. The letters of credit must be renewed each year through the bonds\u2019 maturity in 2014, which the Company has complied with.\nBond payments as of December 31, 2009 for the next five years are as follows (in 000\u2019s):",
+   "prose_after": "NOTE G \u2013 COMMITMENTS AND CONTINGENCIES\nOperating Leases\nThe Company leases facilities, office equipment, and distribution vehicles under non-cancelable operating leases with terms ranging from one to fifteen years. The processing facility leases contain various renewal options and escalating payments. The Company intends to exercise certain aspects of these renewal options when the initial terms expire. The vehicle leases contain contingent rentals based on mileage.\nFuture minimum lease payments as of December 31, 2009 are as follows (in 000\u2019s):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending December 31",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "2,404"
+    ],
+    [
+     "2011",
+     "",
+     "2,157"
+    ],
+    [
+     "2012",
+     "",
+     "1,266"
+    ],
+    [
+     "2013",
+     "",
+     "407"
+    ],
+    [
+     "2014",
+     "",
+     "227"
+    ],
+    [
+     "Thereafter",
+     "",
+     "459"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,920"
+    ]
+   ],
+   "caption_stack": [
+    "Years ending December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1171,
+    "end_line": 1184
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "NOTE G \u2013 COMMITMENTS AND CONTINGENCIES\nOperating Leases\nThe Company leases facilities, office equipment, and distribution vehicles under non-cancelable operating leases with terms ranging from one to fifteen years. The processing facility leases contain various renewal options and escalating payments. The Company intends to exercise certain aspects of these renewal options when the initial terms expire. The vehicle leases contain contingent rentals based on mileage.\nFuture minimum lease payments as of December 31, 2009 are as follows (in 000\u2019s):",
+   "prose_after": "Rental expense for the years ended December 31, 2009, 2008 and 2007 totaled approximately $3.5 million, $3.5 million, and $3.9 million (including contingent rentals of approximately $313,000, $275,000, and $275,000), respectively.\nContractual Obligations\nThe Company offers instruments pursuant to a Joint Marketing Agreement with Aesculap, Inc. (\u201cAesculap\u201d). Under the terms of this agreement, Aesculap furnishes and repairs most of the surgical instruments that are delivered to customers and receives an agreed upon fee for each procedure. The Company had a procurement agreement with Standard Textile Co., Inc. (\u201cStandard Textile\u201d) under which the Company agreed to purchase 90% of its reusable surgical linens from Standard Textile through August 2008. The Company is currently working with Standard Textile on a month-to-month basis until a new agreement can be reached.\nThe Company\u2019s management believes that Aesculap and Standard Textile\u2019s prices are and will be comparable to prices available from other vendors. Standard Textile is a shareholder of the Company. If Aesculap or Standard Textile were unable to perform under these procurement agreements, the Company would need to obtain alternate sources for its reusable surgical products. The Company is not bound to purchase any minimum quantity of products under these agreements; however, the Company expects to make payments under them to fulfill its requirements. The Company estimates that its payments under these agreements will be between $14.0 and $16.0 million in 2010. Amounts in subsequent years will be comparable, adjusted by changes in the Company\u2019s customer demand, amortization rates, product prices, and other variables affecting its business. During the years ended December 31, 2009, 2008, and 2007, the Company purchased products in the amounts of $4.8 million, $5.6 million, and $3.0 million, respectively, from Standard Textile. During the years ended December 31, 2009, 2008, and 2007, the Company incurred fees of $11.3 million, $11.9 million, and $11.0 million, respectively, to Aesculap for instrument usage.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "$82",
+     "",
+     "$(157)",
+     "",
+     "",
+     "$(115)",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     "",
+     "(55)",
+     "",
+     "",
+     "(1,650)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "82",
+     "$",
+     "(212)",
+     "",
+     "$",
+     "(1,765)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1209,
+    "end_line": 1218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has an employment agreement with its Chief Executive Officer and Chief Financial Officer that provides for payment of twelve months and nine months base salary, respectively, and a pro-rated bonus as severance, if involuntarily terminated by the Company. The officers are prohibited from competing with the\nCompany during the two-year period following termination of their employment. The Company incurred a charge of approximately $238,000 in 2009 in connection with the termination agreement between the Company and the former Chief Financial Officer. The Company incurred a charge of approximately $370,000 in 2007 in connection with the termination agreement between the Company and the former Chief Executive Officer.\nLegal Proceedings\nFrom time to time, the Company is involved in claims that arise in the ordinary course of business. The Company does not believe these proceedings, individually or in the aggregate, will have a material adverse effect on its financial position, results of operations, or cash flows.\nNOTE H \u2013 INCOME TAX\nThe expense (benefit) for income taxes from continuing operations for the three years ended December 31 were as follows (in 000\u2019s):",
+   "prose_after": "The reconciliation of the federal statutory income tax rate of 34.0% to the effective income tax rate for the three years ended December 31 was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     "",
+     "2007",
+     ""
+    ],
+    [
+     "Federal statutory income tax rate",
+     "34.0",
+     "%",
+     "34.0",
+     "%",
+     "34.0",
+     "%"
+    ],
+    [
+     "State income taxes, net of federal",
+     "4.8",
+     "",
+     "3.0",
+     "",
+     "3.8",
+     ""
+    ],
+    [
+     "Non-deductible items",
+     "(2.7)",
+     "",
+     "(2.3)",
+     "",
+     "(2.1)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(38.6)",
+     "",
+     "(27.2)",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Other",
+     "0.3",
+     "",
+     "0.2",
+     "",
+     "(0.6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(2.2)",
+     "%",
+     "7.7",
+     "%",
+     "35.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1221,
+    "end_line": 1233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The reconciliation of the federal statutory income tax rate of 34.0% to the effective income tax rate for the three years ended December 31 was as follows:",
+   "prose_after": "Significant components of the Company\u2019s deferred tax assets and liabilities were as follows (in 000\u2019s):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "$",
+     "603",
+     "",
+     "$",
+     "613",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "47",
+     "",
+     "",
+     "40",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "878",
+     "",
+     "",
+     "713",
+     ""
+    ],
+    [
+     "State tax credits",
+     "",
+     "796",
+     "",
+     "",
+     "695",
+     ""
+    ],
+    [
+     "AMT tax credit carryforward",
+     "",
+     "\u2014",
+     "",
+     "",
+     "40",
+     ""
+    ],
+    [
+     "Federal and state net operating losses",
+     "",
+     "930",
+     "",
+     "",
+     "1,335",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "46",
+     "",
+     "",
+     "56",
+     ""
+    ],
+    [
+     "Stock options",
+     "",
+     "674",
+     "",
+     "",
+     "495",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "31",
+     "",
+     "",
+     "68",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "4,005",
+     "",
+     "",
+     "4,055",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(2,741)",
+     "",
+     "",
+     "(1,296)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,264",
+     "",
+     "",
+     "2,759",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant & equipment",
+     "",
+     "(1,135)",
+     "",
+     "",
+     "(2,538)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "(129)",
+     "",
+     "",
+     "(221)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(1,264)",
+     "",
+     "",
+     "(2,759)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred income tax asset (liability)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1236,
+    "end_line": 1270
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Significant components of the Company\u2019s deferred tax assets and liabilities were as follows (in 000\u2019s):",
+   "prose_after": "As of December 31, 2009, the Company has federal net operating loss carry-forwards of $2.1 million that will expire between 2027 and 2029, as well as state net operating loss carry-forwards of $5.9 million that expire between 2011 and 2029. At December 31, 2009, the Company also has a net state tax credit carry-forward of approximately $796,000. Approximately $30,000 of the state tax credit carry-forward has a 15-year carry-forward limitation, which begins to expire in 2012. The remaining state tax credit carry-forward amounts have no expiration period.\nASC 740 requires a valuation allowance to reduce reported deferred tax assets if, based on the weight of the evidence, it is more likely than not that some portion or all of the deferred tax assets will not be realized. After consideration of all the evidence, an allowance of $2,741,000 has been established to reduce the deferred tax assets to the amount that will more likely than not be realized. During 2008, the valuation allowance increased $752,000 primarily as a result of the loss incurred during the year. During 2009, the valuation allowance increased $1,445,000.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding as of January 1, 2007",
+     "819,100",
+     "",
+     "$",
+     "8.21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "298,000",
+     "",
+     "",
+     "4.77"
+    ],
+    [
+     "Exercised",
+     "(61,957)",
+     "",
+     "",
+     "5.15"
+    ],
+    [
+     "Forfeited",
+     "(171,543)",
+     "",
+     "",
+     "7.87"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2007",
+     "883,600",
+     "",
+     "$",
+     "7.33"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "310,500",
+     "",
+     "",
+     "4.06"
+    ],
+    [
+     "Exercised",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "(87,700)",
+     "",
+     "",
+     "10.21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2008",
+     "1,106,400",
+     "",
+     "$",
+     "6.18"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "328,350",
+     "",
+     "",
+     "1.21"
+    ],
+    [
+     "Exercised",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "(229,100)",
+     "",
+     "",
+     "8.17"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding as of December 31, 2009",
+     "1,205,650",
+     "",
+     "$",
+     "4.45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1323,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The 2009 Stock Compensation Plan is designed to further the interests of the Company and its shareholders by providing incentives in the form of incentive or non-qualified stock options or restricted stock grants to key employees and non-employee directors who contribute materially to the success and profitability of the Company. Under this Plan, restricted stock grants are not considered outstanding options upon grant but are considered issued and outstanding stock. Any forfeited restricted stock awards are considered to be available for grant. Except for annual grants to non-employee directors described above, the equity awards typically vest ratably over five years from the date of the grant. All outstanding grants vest upon a change in control of the Company. Options granted under this Plan expire no later than ten years after the date granted or sooner in the event of death, disability, retirement, or termination of employment. At the Company\u2019s annual meeting of shareholders on May 21, 2009, the shareholders approved the 2009 Stock Compensation Plan and authorized 600,000 shares available for grant under the Plan, all of which were available at December 31, 2009. As of December 31, 2009, there were no options outstanding under this Plan.\nSummary Stock Option Information\nThe fair value of each option grant is estimated on the date of grant using a Binomial options-pricing model. The Company\u2019s stock-based compensation expense model uses graded vesting, with shares being earned per day under the accrual method. In addition, the Company estimates forfeitures on the date of grant. The following weighted-average assumptions were used for grants in the years ended December 31, 2009, 2008 and 2007, respectively; no dividend yield for all years; expected volatility of 108%, 101% and 63%; risk-free interest rates of approximately 3.5%, 2.6%, and 3.8%; and expected lives of 7.2, 6.9, and 6.5 years. The weighted average fair value of options granted during the years ended December 31, 2009, 2008 and 2007 were $1.03, $2.76, and $3.01, respectively.\nA summary of the status of the Company\u2019s stock option plans as of December 31, 2009, 2008 and 2007 and changes during the years ended on those dates is presented below:",
+   "prose_after": "The following table summarizes information concerning outstanding and exercisable stock options as of December 31, 2009:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1315,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1379,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Range of Exercise Prices",
+     "Number Outstanding",
+     "Weighted Average Remaining Contractual Life (years)",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "All Outstanding Options",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$  0.93 \u2013 $ 5.85",
+     "1,097,150",
+     "7.5",
+     "$",
+     "3.63"
+    ],
+    [
+     "    5.86 \u2013    9.50",
+     "41,500",
+     "4.1",
+     "",
+     "6.70"
+    ],
+    [
+     "    9.51 \u2013  17.50",
+     "52,000",
+     "1.9",
+     "",
+     "15.68"
+    ],
+    [
+     "  17.51 \u2013  25.00",
+     "15,000",
+     "1.2",
+     "",
+     "19.39"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1,205,650",
+     "",
+     "$",
+     "4.45"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable Options",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$  0.93 \u2013 $ 5.85",
+     "412,700",
+     "",
+     "$",
+     "4.80"
+    ],
+    [
+     "    5.86 \u2013    9.50",
+     "41,500",
+     "",
+     "",
+     "6.70"
+    ],
+    [
+     "    9.51 \u2013  17.50",
+     "52,000",
+     "",
+     "",
+     "15.68"
+    ],
+    [
+     "  17.51 \u2013  25.00",
+     "15,000",
+     "",
+     "",
+     "19.39"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "521,200",
+     "",
+     "$",
+     "6.46"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1355,
+    "end_line": 1378
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The following table summarizes information concerning outstanding and exercisable stock options as of December 31, 2009:",
+   "prose_after": "As of December 31, 2008 and December 31, 2007, there were 483,633 and 405,686 exercisable options outstanding at weighted average exercise prices of $6.53 and $10.27, respectively.\nThe following table summarizes option grant activity from January 1, 2009 through December 31, 2009:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1315,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1379,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares Available for Grant",
+     "",
+     "Options Outstanding",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life"
+    ],
+    [
+     "Balance at January 1, 2009",
+     "553,700",
+     "",
+     "1,106,400",
+     "",
+     "$",
+     "6.18",
+     "6.85"
+    ],
+    [
+     "Options and restricted stock authorized",
+     "600,000",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Options expired",
+     "52,500",
+     "",
+     "(148,500)",
+     "",
+     "$",
+     "10,39",
+     ""
+    ],
+    [
+     "Options and restricted stock granted",
+     "(328,350)",
+     "",
+     "328,350",
+     "",
+     "$",
+     "1.21",
+     ""
+    ],
+    [
+     "Options and restricted stock forfeited",
+     "72,000",
+     "",
+     "(80,600)",
+     "",
+     "$",
+     "4.07",
+     ""
+    ],
+    [
+     "Options canceled",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Options exercised",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "949,850",
+     "",
+     "1,205,650",
+     "",
+     "$",
+     "4.45",
+     "7.05"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercisable at December 31, 2009",
+     "\u2014",
+     "",
+     "521,000",
+     "",
+     "$",
+     "6.46",
+     "5.21"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1385,
+    "end_line": 1403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2008 and December 31, 2007, there were 483,633 and 405,686 exercisable options outstanding at weighted average exercise prices of $6.53 and $10.27, respectively.\nThe following table summarizes option grant activity from January 1, 2009 through December 31, 2009:",
+   "prose_after": "The weighted-average grant date fair value of options granted during the years ended December 31, 2009, 2008 and 2007 was $1.03, $2.76 and $3.01, respectively. There were no options exercised during the year ended December 31, 2009. For the year ended December 31, 2007, the total intrinsic value of options exercised was $13,600. As of December 31, 2009, there was $561,000 of unrecognized compensation cost related to non-vested options and restricted stock that is expected to be recognized over a weighted average period of 1.0 years. The total fair value of options and restricted stock vested during the years ended December 31, 2009 and 2008 was $659,000 and $912,000, respectively. The total fair value of options vested during the year ended December 31, 2009 that were issued prior to adoption of ASC 718 was $35,000. The aggregate intrinsic value of options fully vested at December 31, 2009 was $0. The aggregate intrinsic value of options outstanding at December 31, 2009 and expected to vest was $267,000.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1379,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1428,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "December 31,",
+     "December 31,"
+    ],
+    [
+     "",
+     "2009",
+     "2008",
+     "2007"
+    ],
+    [
+     "",
+     "(Binomial)",
+     "",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "0.0%",
+     "0.0%",
+     "0.0%"
+    ],
+    [
+     "Risk-free interest rate",
+     "1.10 to 3.96%",
+     "0.81 to 4.34%",
+     "3.03 to 5.12%"
+    ],
+    [
+     "Weighted-average expected volatility",
+     "108.32%",
+     "100.75%",
+     "62.5%"
+    ],
+    [
+     "Expected term",
+     "2.5 to 8.8 years",
+     "1.8 to 9.5 years",
+     "1.8 to 9.4 years"
+    ],
+    [
+     "Forfeiture rate",
+     "0.59 to 28.01%",
+     "0.14 to 41.76%",
+     "0.18 to 41.76%"
+    ],
+    [
+     "Respective service period",
+     "3 to 5 years",
+     "3 to 5 years",
+     "3 to 5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1410,
+    "end_line": 1427
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company consistently used the binomial model for estimating the fair value of options granted in the years ended December 31, 2009, 2008 and 2007. The Company used historical data to estimate the option exercise and employee departure behavior used in the binomial valuation model. Forfeitures are estimated on the date of grant and shares vest on a graded schedule, with shares being earned per day under the accrual method. The expected term of options granted is derived from the output of the option pricing model and represents the period of time that options granted are expected to be outstanding. The risk-free rates for periods within the contractual term of the options are based on the U.S. Treasury stripped coupon interest in effect at the end of the quarter. Because the binomial valuation model accommodates multiple input values, the risk free interest rates and expected term rates used in calculating the fair value of the options, are expressed in ranges. Expected volatility is based on historical volatility of the Company\u2019s stock.\nFollowing are the weighted-average and range assumptions, where applicable, used for each respective period:",
+   "prose_after": "Restricted Stock Awards\nIn fiscal year 2006, the Company granted unvested common stock awards (\u201crestricted stock\u201d) to certain key employees pursuant to the 2004 Stock Compensation Plan. The shares vest ratably over five years. The restricted stock awards granted in 2006 were accounted for using the measurement and recognition principles of ASC 718. Compensation for restricted stock awards is measured at fair value on the date of grant based on the number of shares expected to vest and the quoted market price of the Company\u2019s common stock. Compensation cost for all awards will be recognized in earnings, net of estimated forfeitures, on a straight-line basis over the requisite service period.\nThe Company recorded $83,000, $107,000 and $76,000 in compensation expense related to the restricted stock that vested during the years ended December 31, 2009, 2008 and 2007, respectively. As of December 31, 2009, there was approximately $85,000 of total unrecognized compensation cost related to restricted stock awards granted under the Plan which is expected to be recognized over a period of one year.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1379,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1428,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in 000\u2019s except per share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss available for common shareholders",
+     "$",
+     "(3,776)",
+     "",
+     "$",
+     "(2,556)",
+     "",
+     "$",
+     "(3,193)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share \u2013 basic",
+     "$",
+     "(0.58)",
+     "",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "(0.50)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,776)",
+     "",
+     "$",
+     "(2,556)",
+     "",
+     "$",
+     "(3,193)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee stock options",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding \u2013 Diluted",
+     "",
+     "6,464",
+     "",
+     "",
+     "6,434",
+     "",
+     "",
+     "6,399",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share \u2013 diluted",
+     "$",
+     "(0.58)",
+     "",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "(0.50)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1440,
+    "end_line": 1475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In fiscal year 2006, the Company granted unvested common stock awards (\u201crestricted stock\u201d) to certain key employees pursuant to the 2004 Stock Compensation Plan. The shares vest ratably over five years. The restricted stock awards granted in 2006 were accounted for using the measurement and recognition principles of ASC 718. Compensation for restricted stock awards is measured at fair value on the date of grant based on the number of shares expected to vest and the quoted market price of the Company\u2019s common stock. Compensation cost for all awards will be recognized in earnings, net of estimated forfeitures, on a straight-line basis over the requisite service period.\nThe Company recorded $83,000, $107,000 and $76,000 in compensation expense related to the restricted stock that vested during the years ended December 31, 2009, 2008 and 2007, respectively. As of December 31, 2009, there was approximately $85,000 of total unrecognized compensation cost related to restricted stock awards granted under the Plan which is expected to be recognized over a period of one year.\nNOTE K \u2013 LOSS PER SHARE\nThe following table sets forth the computation of basic and diluted loss per share:",
+   "prose_after": "Options to purchase 1,161,710, 1,046,569 and 820,675 shares of common stock for the years ended December 31, 2009, 2008 and 2007, respectively, were not included in the computation of diluted earnings per common share, because the assumed proceeds per share were greater than the average market price, and therefore, were anti-dilutive. The dilutive effect of 15,633, 0 and 44,185 options with assumed proceeds per share less than the average market price, were not included for the years ended December 31, 2009, 2008 and 2007, respectively, because the effect would be anti-dilutive due to the Company\u2019s net loss for the period.\nNOTE L \u2013 LEASE AGREEMENT\nEffective March 1, 2007, the Company entered into an agreement to lease to a third party a portion of its corporate headquarters under the terms of a non-cancelable operating lease. The lease calls for an initial term of\nfive (5) years with a tenant option to renew for one extension period of five years. The lease agreement provides for escalating rental payments over its term. Under the agreement, the tenant pays an allocated share of the increase over the base year of certain costs, including utilities, maintenance costs and property taxes.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1428,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "375"
+    ],
+    [
+     "2011",
+     "",
+     "387"
+    ],
+    [
+     "2012",
+     "",
+     "97"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "859"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1488,
+    "end_line": 1498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Options to purchase 1,161,710, 1,046,569 and 820,675 shares of common stock for the years ended December 31, 2009, 2008 and 2007, respectively, were not included in the computation of diluted earnings per common share, because the assumed proceeds per share were greater than the average market price, and therefore, were anti-dilutive. The dilutive effect of 15,633, 0 and 44,185 options with assumed proceeds per share less than the average market price, were not included for the years ended December 31, 2009, 2008 and 2007, respectively, because the effect would be anti-dilutive due to the Company\u2019s net loss for the period.\nNOTE L \u2013 LEASE AGREEMENT\nEffective March 1, 2007, the Company entered into an agreement to lease to a third party a portion of its corporate headquarters under the terms of a non-cancelable operating lease. The lease calls for an initial term of\nfive (5) years with a tenant option to renew for one extension period of five years. The lease agreement provides for escalating rental payments over its term. Under the agreement, the tenant pays an allocated share of the increase over the base year of certain costs, including utilities, maintenance costs and property taxes.\nFuture minimum lease payments expected to be received as of December 31, 2009 are as follows (in 000\u2019s):",
+   "prose_after": "Rental income, which is included in other income in the statements of operations, was approximately $361,000 for each of the years ended December 31, 2009 and 2008.\nNOTE M \u2013 SRI 401(k) PLAN\nThe Company sponsors the SRI/Surgical Express, Inc. 401(k) Plan (the \u201cPlan\u201d), a defined contribution plan established under Section 401(k) of the U.S. Internal Revenue Code. Employees are eligible to contribute voluntarily to the Plan after six months of continued service, satisfying 1,000 hours of service and attaining age 21. In addition to the employees\u2019 contributions, at its discretion, the Company may contribute 50% of the first 4% of the employee\u2019s contribution. The Plan allows for employee elective contributions up to an amount equivalent to 15% of salary. Employees are always vested in their contributed balance and vest ratably in the Company\u2019s contribution over three years. For the years ended December 31, 2009, 2008, and 2007, the Company\u2019s expense related to the Plan was approximately $303,000, $269,000, and $228,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1513,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mar. 31, 2009",
+     "",
+     "",
+     "Jun. 30, 2009",
+     "",
+     "",
+     "Sep. 30, 2009",
+     "",
+     "",
+     "Dec. 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except per share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "23,926",
+     "",
+     "$",
+     "24,617",
+     "",
+     "$",
+     "24,120",
+     "",
+     "$",
+     "25,790",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "5,034",
+     "",
+     "$",
+     "5,344",
+     "",
+     "$",
+     "4,094",
+     "",
+     "$",
+     "5,626",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(894)",
+     "",
+     "$",
+     "(704)",
+     "",
+     "$",
+     "(1,755)",
+     "",
+     "$",
+     "(422)",
+     ""
+    ],
+    [
+     "Basic loss per share",
+     "$",
+     "(0.14)",
+     "",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.27)",
+     "",
+     "$",
+     "(0.07)",
+     ""
+    ],
+    [
+     "Diluted loss per share",
+     "$",
+     "(0.14)",
+     "",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.27)",
+     "",
+     "$",
+     "(0.07)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Quarters Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1531
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company had a procurement agreement with Standard Textile under which the Company agreed to purchase 90% of its reusable surgical products from Standard Textile through August 2008. The Company is currently working with Standard Textile on a month-to-month basis until a new agreement can be reached. Standard Textile is a shareholder of the Company. During the years ended December 31, 2009, 2008, and 2007, the Company purchased products in the amounts of $4.8 million, $5.6 million, and $3.0 million, respectively, from Standard Textile.\nDuring the years ended December 31, 2009, 2008 and 2007, the Company paid approximately $1,000, $4,500, and $13,500, respectively, to a company to design and supply the components for water reclamation systems for Company facilities. A shareholder of the Company owns the business providing these services.\nDuring the years ended December 31, 2009,2008 and 2007, the Company paid approximately $93,000, $258,000, and $243,000 respectively, in consulting fees to a director and shareholder of the Company for assistance with managing the facilities operations while the Company searched for a new operations leader.\nNOTE O \u2013 SELECTED QUARTERLY FINANCIAL DATA (Unaudited)\nThe following selected unaudited quarterly information is being disclosed in accordance with Regulation S-K (Item 302):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1513,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1545,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarters Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mar. 31, 2008",
+     "",
+     "",
+     "Jun. 30, 2008",
+     "",
+     "",
+     "Sep. 30, 2008",
+     "",
+     "",
+     "Dec. 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except per share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "23,968",
+     "",
+     "$",
+     "25,113",
+     "",
+     "$",
+     "23,959",
+     "",
+     "$",
+     "23,988",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "5,043",
+     "",
+     "$",
+     "5,847",
+     "",
+     "$",
+     "5,318",
+     "",
+     "$",
+     "5,221",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,294)",
+     "",
+     "$",
+     "(390)",
+     "",
+     "$",
+     "(173)",
+     "",
+     "$",
+     "(699)",
+     ""
+    ],
+    [
+     "Basic loss per share",
+     "$",
+     "(0.20)",
+     "",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "Diluted loss per share",
+     "$",
+     "(0.20)",
+     "",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Quarters Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1532,
+    "end_line": 1544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SCHEDULE II \u2013 VALUATION AND QUALIFYING ACCOUNTS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1513,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1545,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Balance at Beginning of Period",
+     "",
+     "Charged to Costs and Expenses",
+     "",
+     "Write-offs/ Reductions",
+     "",
+     "",
+     "Balance at end of Period",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2007",
+     "$",
+     "474,000",
+     "$",
+     "791,000",
+     "$",
+     "(400,000)",
+     "",
+     "$",
+     "865,000"
+    ],
+    [
+     "Year ended December 31, 2008",
+     "",
+     "865,000",
+     "",
+     "\u2014",
+     "",
+     "(759,000)",
+     "",
+     "",
+     "106,000"
+    ],
+    [
+     "Year ended December 31, 2009",
+     "",
+     "106,000",
+     "",
+     "74,000",
+     "",
+     "(56,000)",
+     "",
+     "",
+     "124,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserve for shrinkage, obsolescence, and scrap: reusable surgical products",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2007",
+     "$",
+     "1,554,000",
+     "$",
+     "994,000",
+     "$",
+     "(1,337,000)",
+     "",
+     "$",
+     "1,211,000"
+    ],
+    [
+     "Year ended December 31, 2008",
+     "",
+     "1,211,000",
+     "",
+     "1,275,000",
+     "",
+     "(1,099,000)",
+     "",
+     "",
+     "1,387,000"
+    ],
+    [
+     "Year ended December 31, 2009",
+     "",
+     "1,387,000",
+     "",
+     "3,155,000",
+     "",
+     "(3,329,000)",
+     "",
+     "",
+     "1,213,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserve for shrinkage and obsolescence: disposable products",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2007",
+     "$",
+     "400,000",
+     "$",
+     "501,000",
+     "$",
+     "(376,000)",
+     "",
+     "$",
+     "525,000"
+    ],
+    [
+     "Year ended December 31, 2008",
+     "",
+     "525,000",
+     "",
+     "\u2014",
+     "",
+     "(211,000)",
+     "",
+     "",
+     "314,000"
+    ],
+    [
+     "Year ended December 31, 2009",
+     "",
+     "314,000",
+     "",
+     "145,000",
+     "",
+     "(96,000)",
+     "",
+     "",
+     "362,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1551,
+    "end_line": 1570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "SCHEDULE II \u2013 VALUATION AND QUALIFYING ACCOUNTS",
+   "prose_after": "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A(T). Controls and Procedures\nManagement\u2019s Report on Internal Control Over Financial Reporting\nOur management is responsible for establishing and maintaining adequate internal control over financial reporting (as defined in Rule 13a and 15(f)). Our internal control over financial reporting process was designed to provide reasonable assurance to our management and our Board of Directors regarding the reliability of financial reporting and the preparation of our financial statements in accordance with generally accepted accounting principles. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree or compliance with the policies or procedures may deteriorate.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1549,
+     "token": "REPEATING_HEADER",
+     "id": 55,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1571,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "25"
+    ],
+    [
+     "Balance Sheets at December 31, 2009 and 2008",
+     "26"
+    ],
+    [
+     "Statements of Operations for Years Ended December 31, 2009, 2008 and 2007",
+     "27"
+    ],
+    [
+     "Statements of Shareholders\u2019 Equity for Years Ended December 31, 2009, 2008 and 2007",
+     "28"
+    ],
+    [
+     "Statements of Cash Flows for Years Ended December 31, 2009, 2008 and 2007",
+     "29"
+    ],
+    [
+     "Notes to Financial Statements",
+     "30"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1643,
+    "end_line": 1651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Item 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by this item is incorporated by reference to the information set forth under the caption \u201cCertain Relationships and Related Transactions\u201d and \u201cCorporate Governance\u201d in our Definitive Proxy Statement for the 2010 Annual Meeting of Shareholders to be filed with the SEC within 120 days after the end of our fiscal year ended December 31, 2009.\nItem 14. Principal Accountant Fees and Services\nThe information required by this item is incorporated by reference to the information set forth under the caption \u201cRatification of Appointment of Independent Auditors \u2013 Fees Paid to Independent Auditors\u201d in our Definitive Proxy Statement for the 2010 Annual Meeting of Shareholders to be filed with the SEC within 120 days after the end of our fiscal year ended December 31, 2009.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) 1. The following Financial Statements of the Registrant are included in Part II, Item 8, Page 20:",
+   "prose_after": "2. Financial Statement Schedules of the Registrant: See (c) below.\n(b) Exhibits: See Exhibit Index\n(c) Financial Statements Schedule: The valuation and qualifying accounts schedule is provided and all other financial statement schedules are omitted because of the absence of conditions requiring them.\nEXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1691,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description"
+    ],
+    [
+     "3.1",
+     "Restated Articles of Incorporation of the Company (incorporated herein by reference to Exhibit 3.1 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "First Amendment to Restated Articles of Incorporation dated as of August 31, 1998, of the Company (for Series A Preferred Stock) (incorporated herein by reference to Exhibit 4.4 to the Current Report on Form 8-K dated August 31, 1998 filed by the Registrant on September 9, 1998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Amended and Restated Bylaws of the Company (incorporated herein by reference to Exhibit 3.3 to the Annual Report on Form 10-K for the 2006 year filed by the Registrant on March 23, 2007)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Trust Indenture dated as of February 1, 1999, between First Union National Bank and the Industrial Development Board of Hamilton County, Tennessee (incorporated herein by reference to Exhibit 4.2 to the Annual Report on Form 10-K for the 1998 year filed by the Registrant on March 23, 1999)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Trust Indenture dated as of June 1, 1999, between First Union National Bank and First Security Bank, National Association (incorporated herein by reference to Exhibit 4.3 to the Quarterly Report on Form 10-Q for the 1999 third quarter filed by the Registrant on November 12, 1999)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1*",
+     "1995 Stock Option Plan, as amended, of the Company (incorporated herein by reference to Exhibit 10.1 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2*",
+     "Form of Stock Option Agreement between the Company and participants under the 1995 Stock Option Plan (incorporated herein by reference to Exhibit 10.2 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Texas Industrial Net Lease dated March 19, 1992, between the Trustees of the Estate of James Campbell, Deceased, and Amsco SRI/Surgical Express, Inc., as assigned to the Company (incorporated herein by reference to Exhibit 10.18 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Lease dated March 30, 1992, between Walter D\u2019Aloisio and Amsco SRI/Surgical Express, Inc., as assigned to the Company (incorporated herein by reference to Exhibit 10.19 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1660,
+    "end_line": 1690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "2. Financial Statement Schedules of the Registrant: See (c) below.\n(b) Exhibits: See Exhibit Index\n(c) Financial Statements Schedule: The valuation and qualifying accounts schedule is provided and all other financial statement schedules are omitted because of the absence of conditions requiring them.\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1691,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description"
+    ],
+    [
+     "10.5",
+     "Standard Industrial Lease \u2013 Multi-Tenant (American Industrial Real Estate Association) dated February 24, 1992, between Borstein Enterprises and Amsco SRI/Surgical Express, Inc., as assigned to the Company (incorporated herein by reference to Exhibit 10.20 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Carolina Central Industrial Center Lease dated April 22, 1992, between Industrial Development Associates and Amsco SRI/Surgical Express, Inc., as assigned to the Company (incorporated herein by reference to Exhibit 10.21 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Lease Agreement dated September 2, 1993, between Price Pioneer Company, Ltd., and AmscoSRI/Surgical Express, Inc., as assigned to the Company (incorporated herein by reference to Exhibit 10.22 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Service Center Lease dated December 4, 1991, between QP One Corporation and Amsco SRI/Surgical Express, Inc., as assigned to the Company (incorporated herein by reference to Exhibit 10.23 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9*",
+     "1996 Non-Employee Director Stock Option Plan of the Company (incorporated herein by reference to Exhibit 10.29 to the Registration Statement on Form S-1 filed by the Registrant on May 15, 1996)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10*",
+     "Amendments No. 2 and 3 to the 1995 Stock Option Plan of the Company (incorporated herein by reference to Exhibit 10.24 to the Annual Report on Form 10-K for the 1996 year filed by the Registrant on March 24, 1997)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Corporate Service Agreement dated October 21, 1997, between Standard Textile Co., Inc. and the Company (incorporated herein by reference to Exhibit 10.26 to the Annual Report on Form 10-K for the 1997 year filed by the Registrant on March 30, 1998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.12*",
+     "1998 Stock Option Plan of the Company (incorporated herein by reference to Exhibit 10.28 to the Annual Report on Form 10-K for the 1997 year filed by the Registrant on March 30, 1998)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "Lease Agreement dated as of June 15, 1999, between the Company and ProLogis Limited Partnership IV (incorporated herein by reference to Exhibit 10.32 to the Quarterly Report on Form 10-Q for the 1999 third quarter filed by the Registrant on November 12, 1999)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "Lease Agreement dated as of June 10, 1999, between the Company and Riggs & Company, a division of Riggs Bank, N.A., as Trustee of the Multi-Employer Property Trust, a trust organized under 12 C.F.R. Section 9.18 (incorporated by reference to the Annual Report on Form 10-K for the 1999 year filed by the Registrant on March 30, 2000)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "Purchasing Agreement dated as of May 1, 2001, between the Company and HealthTrust Purchasing Group, L.P. (incorporated herein by reference to Exhibit 10.46 to the Quarterly Report on Form 10-Q for the 2001 second quarter filed by the Registrant on July 26, 2001)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.16*",
+     "Form of stock option agreement between the Company and non-employee directors (incorporated herein by reference to Exhibit 10.47 to the Annual Report on Form 10-K for the 2001 year filed by the Registrant on April 1, 2002)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "Joint Marketing Agreement dated as of March 1, 2003 between the Company and Aesculap, Inc. (incorporated herein by reference to Exhibit 10.54 to the Quarterly Report on Form 10-Q for the 2003 first quarter filed by the Registrant on May 14, 2003)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.18*",
+     "2004 Stock Compensation Plan of the Company (incorporated herein by reference to Exhibit 4.1 to the Registration Statement on Form S-8 filed by the Registrant on March 28, 2005)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1693,
+    "end_line": 1740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1691,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1741,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description"
+    ],
+    [
+     "10.19*",
+     "Employment Agreement dated as of July 1, 2005, between Wallace D. Ruiz and the Company (incorporated herein by reference to Exhibit 99.4 to the Current Report on Form 8-K filed by the Registrant on June 24, 2005)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.20*",
+     "Notice of Restricted Stock Grant and Stock Restriction Agreement (incorporated herein by reference to Exhibit 99.1 to the Current Report on Form 8-K filed by the Registrant on February 3, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.21*",
+     "Amendment No. 1 to 1998 Stock Option Plan of the Company (as Amended and Restated as of June 17, 2005) (incorporated herein by reference to Exhibit 10.1 to the Quarterly Report on Form 10-Q for the 2006 first quarter filed by the Registrant on May 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.22*",
+     "Amendment No. 1 to 2004 Stock Compensation Plan of the Company (incorporated herein by reference to Exhibit 10.2 to the Quarterly Report on Form 10-Q for the 2006 first quarter filed by the Registrant on May 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.23*",
+     "Letter Agreement dated as of March 22, 2006, between Wayne R. Peterson and the Company (incorporated herein by reference to Exhibit 10.3 to the Quarterly Report on Form 10-Q for the 2006 first quarter filed by the Registrant on May 9, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.24*",
+     "Retention Agreement dated as of February 2, 2005, between D. Jon McGuire and the Company (incorporated herein by reference to Exhibit 10.1 to the Current Report on Form 8-K filed by the Registrant on February 5, 2007)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.25*",
+     "Employment Agreement dated as of December 31, 2007, between Gerald Woodard and the Company (incorporated herein by reference to Exhibit 10.1 to the Current Report on Form 8-K filed by the Registrant on January 7, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.26*",
+     "Restricted Stock Grant Agreement dated as of February 6, 2008, between Gerald Woodard and the Company (incorporated herein by reference to Exhibit 10.1 to the Current Report on Form 8-K filed by the Registrant on February 7, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.27*",
+     "Stock Option Agreement dated as of February 6, 2008, between Gerald Woodard and the Company (incorporated herein by reference to Exhibit 10.2 to the Current Report on Form 8-K filed by the Registrant on February 7, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.28*",
+     "First Amendment to Retention Agreement dated November 4, 2008 between D. Jon McGuire and the Company (incorporated herein by reference to Exhibit 10.1 to the Quarterly Report on Form 10-Q for the 2008 third quarter filed by the Registrant on November 4, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.29*",
+     "First Amendment to Retention Agreement dated December 23, 2008 between Gerald Woodard and the Company (incorporated herein by reference to Exhibit 10.29 to the Annual Report on Form 10-K for the 2008 fiscal year filed by the Registrant on March 10, 2009)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.30*",
+     "First Amendment to Retention Agreement dated December 24, 2008 between Wallace D. Ruiz and the Company (incorporated herein by reference to Exhibit 10.30 to the Annual Report on Form 10-K for the 2008 fiscal year filed by the Registrant on March 10, 2009)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.31**",
+     "Supply and Co-Marketing Agreement dated November 26, 2008 between Cardinal Health 200, Inc. and the Company(incorporated herein by reference to Exhibit 10.30 to the Annual Report on Form 10-K for the 2008 fiscal year filed by the Registrant on March 10, 2009)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.32",
+     "Loan and Security Agreement dated August 7, 2008, between the Company and Bank of America, N.A. (incorporated herein by reference to Exhibit 10.1 to the Quarterly Report on Form 10-Q for the 2008 second quarter filed by the Registrant on August 13, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.33",
+     "Revolving Loan Note dated August 7, 2008, executed by the Company in favor of Bank of America, N.A. (incorporated herein by reference to Exhibit 10.2 to the Quarterly Report on Form 10-Q for the 2008 second quarter filed by the Registrant on August 13, 2008)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1743,
+    "end_line": 1791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1741,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description"
+    ],
+    [
+     "10.34",
+     "Term Loan Note dated August 7, 2008, executed by the Company in favor of Bank of America, N.A. (incorporated herein by reference to Exhibit 10.3 to the Quarterly Report on Form 10-Q for the 2008 second quarter filed by the Registrant on August 13, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.35",
+     "Waiver and Amendment No. 1 to Loan and Security Agreement dated November 13, 2009, between the Company and Bank of America, N.A. (incorporated herein by reference to Exhibit 10.1 to the Quarterly Report on Form 10-Q for the 2009 third quarter filed by the Registrant on November 16, 2009)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.36**",
+     "Amended and Restated Co-Marketing Agreement dated February 1, 2010 between Cardinal Health 200, LLC, formerly known as Cardinal Health 200, Inc., and the Company."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.37**",
+     "National Brand Distribution Agreement dated June 15, 2009 between Cardinal Health 200, Inc. and the Company."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.38*",
+     "Retention Agreement dated as of December 23, 2009, between Mark R. Faris and the Company (incorporated herein by reference to Exhibit 10.1 to the Current Report on Form 8-K filed by the Registrant on December 23, 2009)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.39",
+     "Waiver and Amendment No. 2 to Loan and Security Agreement dated March 30, 2010, between the Company and Bank of America, N.A."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Grant Thornton LLP."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31",
+     "Certifications by the Chief Executive Officer (CEO) and Chief Financial Officer (CFO) of the Company under Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certification by the CEO and CFO of the Company under Section 906 of the Sarbanes-Oxley Act of 2002. (Not deemed to be \u201cfiled\u201d with the Securities and Exchange Commission.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1794,
+    "end_line": 1819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Indicates management contract or compensation plan or arrangement.\n** Certain parts of this exhibit have not been disclosed and have been filed separately with the Secretary of the Securities and Exchange Commission, and are subject to a confidential treatment request pursuant to Rule 24b-2 of the Securities Exchange Act of 1934.\nSIGNATURES\nPURSUANT TO THE REQUIREMENTS OF SECTION 13 OR 15(d) OF THE SECURITIES AND EXCHANGE ACT OF 1934, THE REGISTRANT HAS DULY CAUSED THIS REPORT TO BE SIGNED ON ITS BEHALF BY THE UNDERSIGNED, THEREUNTO DULY AUTHORIZED.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1824,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SRI/SURGICAL EXPRESS, INC.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BY:",
+     "/s/    GERALD WOODARD",
+     "BY:",
+     "/s/    MA[ ]K R. FARIS"
+    ],
+    [
+     "",
+     "Gerald Woodard,\n\n\n\nChief Executive Officer",
+     "",
+     "Mark R. Faris,\n\n\n\nVice President & Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "SRI/SURGICAL EXPRESS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1830,
+    "end_line": 1839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "* Indicates management contract or compensation plan or arrangement.\n** Certain parts of this exhibit have not been disclosed and have been filed separately with the Secretary of the Securities and Exchange Commission, and are subject to a confidential treatment request pursuant to Rule 24b-2 of the Securities Exchange Act of 1934.\nSIGNATURES\nPURSUANT TO THE REQUIREMENTS OF SECTION 13 OR 15(d) OF THE SECURITIES AND EXCHANGE ACT OF 1934, THE REGISTRANT HAS DULY CAUSED THIS REPORT TO BE SIGNED ON ITS BEHALF BY THE UNDERSIGNED, THEREUNTO DULY AUTHORIZED.",
+   "prose_after": "Dated: March 30, 2010\nPURSUANT TO THE REQUIREMENTS OF THE SECURITIES AND EXCHANGE ACT OF 1934, THIS REPORT HAS BEEN SIGNED BELOW BY THE FOLLOWING PERSONS ON BEHALF OF THE REGISTRANT AND IN THE CAPACITIES AND ON THE DATES INDICATED.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1824,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1889,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    CHARLES W. FEDERICO        \n\n\n\nCharles W. Federico",
+     "Chairman and Director",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    GERALD WOODARD        \n\n\n\nGerald Woodard",
+     "Chief Executive Officer and Director",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    MA[ ]K R. FARIS        \n\n\n\nMark R. Faris",
+     "Vice President & Chief Financial Officer",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    JAMES T. BOOSALES        \n\n\n\nJames T. Boosales",
+     "Director",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    JAMES M. EMANUEL        \n\n\n\nJames M. Emanuel",
+     "Director",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    CHARLES T. ORSATTI        \n\n\n\nCharles T. Orsatti",
+     "Director",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    WAYNE R. PETERSON        \n\n\n\nWayne R. Peterson",
+     "Director",
+     "March 30, 2010"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    MICHAEL D. ISRAEL        \n\n\n\nMichael D. Israel",
+     "Director",
+     "March 30, 2010"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1844,
+    "end_line": 1888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Dated: March 30, 2010\nPURSUANT TO THE REQUIREMENTS OF THE SECURITIES AND EXCHANGE ACT OF 1934, THIS REPORT HAS BEEN SIGNED BELOW BY THE FOLLOWING PERSONS ON BEHALF OF THE REGISTRANT AND IN THE CAPACITIES AND ON THE DATES INDICATED.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1824,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1889,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,4988 @@
+{
+ "accession": "0001289863-13-000005",
+ "cik": "0001289863",
+ "form": "10-K",
+ "filing_date": "2013-03-22",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "spro10-k2012.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SMARTPROS LTD."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(Name of Registrant in its Charter)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SMARTPROS LTD."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  Annual Report Pursuant to Section 13 or 15(D) of the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2012\nor\n[ ]  Transition Report Pursuant to Section 13 or 15(D) of the Securities Exchange Act of 1934\nFor the transition period from _______________ to _______________\nCommission File Number 001-32300",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Delaware",
+     "",
+     "13-4100476"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "12 Skyline Drive, Hawthorne, New York       10532"
+    ],
+    [
+     ""
+    ],
+    [
+     "(Address of Principal Executive Office)          (Zip Code)"
+    ],
+    [
+     ""
+    ],
+    [
+     "(914) 345-2620"
+    ],
+    [
+     ""
+    ],
+    [
+     "Issuer\u2019s Telephone Number Including Area Code"
+    ]
+   ],
+   "caption_stack": [
+    "12 Skyline Drive, Hawthorne, New York       10532"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 35,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered under Section 12(b) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Title of Each Class",
+     "",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, par value $.0001 per share",
+     "",
+     "NASDAQ Capital Market",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 47,
+    "end_line": 52
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered under Section 12(b) of the Exchange Act:",
+   "prose_after": "Securities registered under Section 12(g) of the Exchange Act: NONE",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.",
+     "Yes [ ]  No [X]"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Indicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act.",
+     "Yes [ ]  No [X]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 55,
+    "end_line": 60
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered under Section 12(g) of the Exchange Act: NONE",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\nYes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Description of Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "15"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "18"
+    ],
+    [
+     "Item 2.",
+     "Description of Property",
+     "18"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "18"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosure",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "18"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "20"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "20"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure about Market Risk",
+     "26"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements",
+     "26"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "27"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "27"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance with Section 16(a) of the Exchange Act",
+     "27"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "27"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "28"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "28"
+    ],
+    [
+     "Item 14",
+     "Principal Accountant Fees and Services",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 95,
+    "end_line": 126
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [ ] (Do not check if a smaller reporting company)  Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant was $6,947,524 based on the price at which the common equity was last sold, or the average bid and ask price of such common equity on the Nasdaq Capital Market as of June 29, 2012, the last business day of the registrant\u2019s most recently completed second fiscal quarter.\nThe number of shares outstanding of each of the registrant\u2019s classes of common equity, as of March 21, 2013: 4,682,941\nDOCUMENTS INCORPORATED BY REFERENCE\nThe information in response to Part III of this Report are incorporated herein by reference to the registrant\u2019s Definitive Proxy Statement, to be filed on or before April 30, 2013, with respect to its 2013 Annual Meeting of Stockholders.\nForm 10-K Annual Report\nTABLE OF CONTENTS",
+   "prose_after": "________________________________________________________________________________________________________________________\ni\nFORWARD LOOKING STATEMENTS\nCertain statements made in this Annual Report on Form 10-K are \u201cforward-looking statements\u201d within the meaning of Section 21E of the Securities and Exchange Act of 1934 regarding the plans and objectives of management for future operations and market trends and expectations. Such statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by such forward-looking statements. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. Our plans and objectives are based, in part, on assumptions involving the continued expansion of our business. Assumptions relating to the foregoing involve judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond our control. Although we believe that our assumptions underlying the forward-looking statements are reasonable, any of the assumptions could prove inaccurate and, therefore, there can be no assurance that the forward-looking statements included in this report will prove to be accurate. In light of the significant uncertainties inherent in the forward-looking statements included herein, the inclusion of such information should not be regarded as a representation by us or any other person that our objectives and plans will be achieved.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 4.",
+     "Mine Safety Disclosure"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "        None.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 593,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Legal Proceedings"
+    },
+    "note": null
+   },
+   "prose_before": "We are not an investment company under the Investment Company Act of 1940 and we intend to conduct our operations so that we will not be deemed an investment company. However, if we were to be deemed an investment company, restrictions imposed by the Investment Company Act of 1940, including limitations on our capital structure and our ability to transact with affiliates, could make it impractical for us to continue our business as contemplated and would harm our business and the price of our common stock.\nItem 1B. Unresolved Staff Comments\nWe are a \u201csmaller reporting company\u201d as defined by Regulation S-K and, as such, we are not required to provide the information contained in this item.\nItem 2. Description of Property\nOur executive offices, production facility, technology center and fulfillment center are located on Route 9A in Hawthorne, New York, where we lease 17,850 square feet. The lease expires January 31, 2019. We leased 1,250 square feet in Westborough, Massachusetts, where SLE is based. The lease expired on January 31, 2013 and SLE is currently occupying this office on a month-to month basis. Skye leases 2,320 square feet in Bridgewater, New Jersey, which expires in January 2014. Finally, we lease 2,700 square feet in Shrewsbury, New Jersey, for our Loscalzo subsidiary, which expires on December 31, 2016.\nItem 3. Legal Proceedings\nAt the present time, we are not a party to any material legal proceedings.",
+   "prose_after": "PART II\nItem 5. Market for Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities\n(a) Market Information\nOur common stock is currently traded on the NASDAQ Capital Market under the symbol \u201cSPRO.\u201d\nThe following table sets forth, for the periods indicated, the high and low sales information for our Common Stock.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Price Range of Common Stock",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Sales Information",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "2.11",
+     "$",
+     "1.80"
+    ],
+    [
+     "First Quarter",
+     "$",
+     "2.21",
+     "$",
+     "1.62"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "1.99",
+     "$",
+     "1.56"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "1.80",
+     "$",
+     "1.25"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "2.50",
+     "$",
+     "2.18"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.33",
+     "$",
+     "2.03"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "2.37",
+     "$",
+     "1.99"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "2.19",
+     "$",
+     "1.72"
+    ]
+   ],
+   "caption_stack": [
+    "Price Range of Common Stock",
+    "Sales Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 610,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "PART II\nItem 5. Market for Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities\n(a) Market Information\nOur common stock is currently traded on the NASDAQ Capital Market under the symbol \u201cSPRO.\u201d\nThe following table sets forth, for the periods indicated, the high and low sales information for our Common Stock.",
+   "prose_after": "________________________________________________________________________________________________________________________\nAt March 21, 2013, the closing sale price per share for our common stock, as reported on the NASDAQ Capital Market was $1.46.\n(b) Holders\nAs of the close of business March 21, 2013, the number of record holders of our common stock was 94.\n(c) Dividends\nThe holders of our common stock are entitled to receive dividends as may be declared by the Board of Directors. During 2012, the Board of Directors approved four quarterly dividend payments of $.0125 per common share, for a total of $.05 per common share. Payment of future dividends are within the discretion of our Board of Directors and will depend on, among other factors, our retained earnings, capital requirements, acquisitions, operations and financial condition. On March 7, 2013, the Board of Directors approved a dividend payment of a $.015 per common share payable on April 5, 2013, to shareholders of record on March 22, 2013.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 642,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "(a)\nTotal Number of Shares (or Units)\nPurchased",
+     "(b)\nAverage Price Paid per Share (or Unit)",
+     "",
+     "(c)\nTotal Number of Shares (or Units)\nPurchased as Part of Publicly Announced Plans or Programs",
+     "(d)\nMaximum Number (or Approximate Dollar Value) of Shares (or Units) that May Yet Be Purchased Under the Plans or Programs",
+     ""
+    ],
+    [
+     "Month #1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(October 1-31, 2012)",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Month #2",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(November 1-30, 2012)",
+     "\u2014",
+     "$",
+     "\u2014",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Month #3",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(December 1-31, 2012)",
+     "747",
+     "$",
+     "1.50",
+     "747",
+     "$",
+     "748,879"
+    ],
+    [
+     "Total",
+     "747",
+     "$",
+     "1.50",
+     "747",
+     "$",
+     "748,879"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "The holders of our common stock are entitled to receive dividends as may be declared by the Board of Directors. During 2012, the Board of Directors approved four quarterly dividend payments of $.0125 per common share, for a total of $.05 per common share. Payment of future dividends are within the discretion of our Board of Directors and will depend on, among other factors, our retained earnings, capital requirements, acquisitions, operations and financial condition. On March 7, 2013, the Board of Directors approved a dividend payment of a $.015 per common share payable on April 5, 2013, to shareholders of record on March 22, 2013.\nCompany Purchases of its Equity Securities\nOn November 6, 2012, our Board of Directors approved an extension of the stock buy-back program under which $750,000 of company funds may be used to purchase shares of our common stock. During March 2013, we purchased 73,473 shares of our common stock for $116,087 at an average price of $1.58 per share. As a result, $632,792 remain available for repurchases under our stock buy-back program.\nISSUER PURCHASES OF EQUITY SECURITIES",
+   "prose_after": "Item 6. Selected Financial Data\nWe are a \u201csmaller reporting company\u201d as defined by Regulation S-K and, as such, we are not required to provide the information contained in this item.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion of our financial condition and results of operations should be read in conjunction with our audited consolidated financial statements and related notes included elsewhere in this Form 10-K. Certain statements in this discussion and elsewhere in this report constitute forward-looking statements within the meaning of Section 21E of the Securities and Exchange Act of 1934. See \u201cForward-Looking Statements\u201d following the Table of Contents of this 10-K. Because this discussion involves risk and uncertainties, our actual results may differ materially from those anticipated in these forward-looking statements.\nOverview\nWe measure our operations using both financial and other metrics. The financial metrics include revenues, gross margins, operating expenses and income from continuing operations. Other key metrics include (i) revenues by sales source, (ii) online sales, (iii) cash flows and (iv) EBITDA.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 642,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 667,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Percentage",
+     "",
+     "Amount",
+     "",
+     "",
+     "Percentage",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Net revenues",
+     "$",
+     "15,883,212",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "16,988,691",
+     "",
+     "100.0",
+     "%",
+     "(6.5)",
+     "%"
+    ],
+    [
+     "Cost of revenues",
+     "7,028,032",
+     "",
+     "",
+     "44.2",
+     "%",
+     "7,048,316",
+     "",
+     "",
+     "41.5",
+     "%",
+     "(0.3)",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "8,855,180",
+     "",
+     "",
+     "55.8",
+     "%",
+     "9,940,375",
+     "",
+     "",
+     "58.5",
+     "%",
+     "(10.9)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative",
+     "8,346,635",
+     "",
+     "",
+     "52.6",
+     "%",
+     "8,563,993",
+     "",
+     "",
+     "50.4",
+     "%",
+     "(2.5)",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "1,118,157",
+     "",
+     "",
+     "7.0",
+     "%",
+     "1,178,538",
+     "",
+     "",
+     "6.9",
+     "%",
+     "(5.1)",
+     "%"
+    ],
+    [
+     "Impairment of goodwill",
+     "568,000",
+     "",
+     "",
+     "3.6",
+     "%",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "%",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "10,032,792",
+     "",
+     "",
+     "63.2",
+     "%",
+     "9,742,531",
+     "",
+     "",
+     "57.3",
+     "%",
+     "3.0",
+     "%"
+    ],
+    [
+     "Operating (loss) income",
+     "(1,177,612)",
+     "",
+     "",
+     "(7.4)",
+     "%",
+     "197,844",
+     "",
+     "",
+     "1.2",
+     "%",
+     "695.2",
+     "%"
+    ],
+    [
+     "Other income, net",
+     "17,526",
+     "",
+     "",
+     "0.1",
+     "%",
+     "897",
+     "",
+     "",
+     "\u2014",
+     "%",
+     "1,853.8",
+     "%"
+    ],
+    [
+     "(Loss) income before provision for income taxes",
+     "(1,160,086)",
+     "",
+     "",
+     "(7.3)",
+     "%",
+     "198,741",
+     "",
+     "",
+     "1.2",
+     "%",
+     "683.7",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "(735,379)",
+     "",
+     "",
+     "(10.5)",
+     "%",
+     "(44,614)",
+     "",
+     "",
+     "(0.3)",
+     "%",
+     "(1,548.3)",
+     "%"
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(1,895,465)",
+     "",
+     "(11.9)",
+     "%",
+     "$",
+     "154,127",
+     "",
+     "0.9",
+     "%",
+     "1,329.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We account for deferred tax assets available principally from our fixed and intangible assets and our net operating loss carryforwards in accordance with the Accounting Standards Codification. We make significant estimates and assumptions in calculating our current period income tax liability and deferred tax assets. The most significant of these are estimates regarding future period earnings. Our net deferred tax asset is estimated by management using a three-year taxable income projection that incorporates significant estimates and assumptions of future operating periods, including potential new business from either the introduction of new products or greater sales efforts, as well as planned cost reductions.\nResults of Operations\nComparison of the years ended December 31, 2012, and 2011\nThe following table compares our statement of operations data for the years ended December 31, 2012, and 2011. The trends suggested by this table may not be indicative of future operating results, which will depend on various factors including the relative mix of products sold (accounting/finance, engineering or corporate training) and the method of sale (video or online).",
+   "prose_after": "Net revenues\nNet revenues for 2012 decreased 6.5%, compared to net revenues for 2011, primarily as a result of the decrease in subscription based revenue in accounting/finance and financial services as well as decreases in other product lines. Our live training businesses represents approximately 25% of our net revenues. Net revenues from subscription-based products delivered on-line and other related net revenues accounted for approximately $6.1 million, or 38%, of our net revenues.\nNet revenues from our accounting/finance division decreased in absolute dollars by approximately $684,000 but increased as a percentage of total net revenues. Net revenues from our accounting/finance and related products decreased from approximately $13 million in 2011 to $12.3 million in 2012. Net revenues from accounting/finance products including both subscription and non-subscription based revenue was $8.2 million in 2012 and $8.7 million in 2011. Net revenues from live training, custom work and advertising were approximately $4.0 and $4.2 million in 2012 and 2011, respectively.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 780,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation, as amended (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated By-Laws, as amended (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen stock certificate (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "**2009 Incentive Compensation Plan (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "**Employment Agreement, dated as of February 1, 2007, between Allen S. Greene and SmartPros, Ltd. (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "**Seconded Amended Employment Agreement, dated as of October 1, 2008, between SmartPros Ltd. and Jack Fingerhut, dated as of (4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "**Amended Employment Agreement, dated as of July 1, 2008, between SmartPros Ltd. and Stanley Wirtheim, dated as of (4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "**First Amendment to Employment Agreement, dated as of October 1, 2008, between SmartPros Ltd. and Joseph Fish, dated as of (4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Lease for premises at 12 Skyline Drive, Hawthorne, New York (7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "**Letter of Agreement between SmartPros Ltd. and Allen S. Greene re: restricted stock (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "**Final form of Restricted Stock Agreement, dated as of January 29, 2007, executed by Allen S. Greene, Jack Fingerhut, Stanley Wirtheim, Joseph Fish and David Gebler (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "**Amendment to Employment Agreement between SmartPros.Ltd and Jack Fingerhut, dated March 8, 2012 (5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "**Amendment to Employment Agreement between Smartpros.Ltd and Joseph Fish, dated March 8, 2012 (5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "**Amendment to Employment Agreement between SmartPros.Ltd. and Stanley Wirtheim, dated March 8, 2012 (5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14.1",
+     "Code of Ethics (6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Holtz Rubenstein Reminick LLP*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Principal Executive Officer Certification pursuant to section 302 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Principal Financial Officer Certification pursuant to section 302 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Principal Executive Officer Certification pursuant to section 906 of the Sarbanes-Oxley Act of 2002*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Principal Financial Officer Certification pursuant to section 906 of the Sarbanes-Oxley Act of 2002*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 975
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The information in response to this Item will be included in our Proxy Statement in connection with our 2013 annual meeting of stockholders, scheduled to be held in June 2013, which information is incorporated by reference herein.\nItem 13. Certain Relationships and Related Transactions and Director Independence\nThe information in response to this Item will be included in our Proxy Statement in connection with our 2013 annual meeting of stockholders, scheduled to be held in June 2013, which information is incorporated by reference herein.\nItem 14. Principal Accountant Fees and Services\nThe information in response to this Item will be included in our Proxy Statement in connection with our 2013 annual meeting of stockholders, scheduled to be held in June 2013, which information is incorporated by reference herein.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) The following documents are filed as part of this report:\n(1) Financial Statements \u2013 See the Index to the consolidated financial statements on page F-2.\n(b) Exhibits:",
+   "prose_after": "101.INS*** XBRL Instance Document 101.SCH*** XBRL Taxonomy Extension Schema Document 101.CAL*** XBRL Taxonomy Extension Calculation Linkbase Document 101.LAB*** XBRL Taxonomy Extension Label Linkbase Document 101.PRE*** XBRL Taxonomy Extension Presentation Linkbase Document 101.DEF*** XBRL Taxonomy Extension Definition Linkbase Document\nNotes to Exhibit Index\n* Filed herewith.\n** This exhibit is a management contract or compensatory plan or arrangement.\n*** Furnished with this report. In accordance with Rule 406T of Regulation S-T, the information in these exhibits shall not be deemed to be \"filed\" for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to liability under that section, and shall not be incorporated by reference into any registration statement or other document filed under the Securities Act of 1933, as amended, except as expressly set forth by specific reference in such filing.\n(1) Filed as an exhibit to our Registration Statement on Form SB-2 (No. 333-115454), effective as of October 19, 2004, and incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 920,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "SmartPros Ltd.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "By:",
+     "/s/ Allen S. Greene"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Allen S. Greene"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "March 22, 2013",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SmartPros Ltd."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 997,
+    "end_line": 1007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Filed on April 27, 2009, as Appendix A to our Definitive Proxy Statement, DEF14A, for the 2009 annual meeting of stockholders and incorporated herein by reference.\n(3) Filed on February 2, 2007, as an exhibit to our Current Report on Form 8-K and incorporated herein by reference.\n(4) Filed as an exhibit to our Annual Report on From 10-K for the year ended December 31, 2008, and incorporated herein by reference.\n(5) Filed as an exhibit to our Current Report on Form 8-K, on March 8, 2012, and incorporated herein by reference.\n(6) The Code of Ethics is posted on our Website at http://ir.smartpros.com.\n(7) Filed as an exhibit to our Annual Report on Form 10-K for the fiscal year ended December 31, 2009, and incorporated herein by reference.\n(c) Information required by schedules called for under Regulation S-X is either not applicable or is included in the consolidated financial statements or notes thereto.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act of 1934, the registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "________________________________________________________________________________________________________________________\nIn accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated on March 22, 2013.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Signature",
+     "Title"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal Executive Officer",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Allen S. Greene",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Allen S. Greene",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal Financial Officer",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Stanley P. Wirtheim",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stanley P. Wirtheim",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Allen S. Greene",
+     "",
+     "Chairman of the Board of Directors"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Allen S. Greene",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ John J. Gorman",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "John J. Gorman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Jack Fingerhut",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Jack Fingerhut",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Leonard J. Stanley",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Leonard J. Stanley",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Martin H. Lager",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Martin H. Lager",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1012,
+    "end_line": 1050
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "________________________________________________________________________________________________________________________\nIn accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated on March 22, 2013.",
+   "prose_after": "__________________________________________________________________________________________________________________________________________________\nREPORT ON AUDITS OF CONSOLIDATED\nFINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contents",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Pages"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8 \u2013 F-16"
+    ]
+   ],
+   "caption_stack": [
+    "Contents"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1061,
+    "end_line": 1080
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "__________________________________________________________________________________________________________________________________________________\nREPORT ON AUDITS OF CONSOLIDATED\nFINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nBoard of Directors\nHawthorne, New York\nWe have audited the accompanying consolidated balance sheets of SmartPros Ltd. and Subsidiaries (the \u201cCompany\u201d) as of December 31, 2012 and 2011, and the related consolidated statements of operations, stockholders\u2019 equity, and cash flows for the years then ended. The consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": null,
+     "page_number": 1
+    },
+    "after": {
+     "line": 1080,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consolidated Balance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31,",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "4,918,543",
+     "",
+     "$",
+     "6,281,725",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "500,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts of approximately $20,000 and $39,000 at December 31, 2012 and 2011, respectively",
+     "2,612,709",
+     "",
+     "",
+     "1,868,063",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "331,493",
+     "",
+     "",
+     "334,826",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "8,362,745",
+     "",
+     "",
+     "8,484,614",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "547,448",
+     "",
+     "",
+     "645,325",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "2,807,257",
+     "",
+     "",
+     "3,375,257",
+     "",
+     ""
+    ],
+    [
+     "Other Intangibles, net",
+     "3,530,744",
+     "",
+     "",
+     "3,933,738",
+     "",
+     ""
+    ],
+    [
+     "Other Assets, including restricted cash of $75,000 at December 31, 2012 and 2011, respectively",
+     "104,515",
+     "",
+     "",
+     "92,965",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Asset",
+     "600,000",
+     "",
+     "",
+     "1,290,000",
+     "",
+     ""
+    ],
+    [
+     "Investment in Joint Venture",
+     "3,245",
+     "",
+     "",
+     "2,742",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "15,955,954",
+     "",
+     "$",
+     "17,824,641",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "706,948",
+     "",
+     "$",
+     "712,978",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "272,921",
+     "",
+     "",
+     "338,713",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "5,006,496",
+     "",
+     "",
+     "4,606,255",
+     "",
+     ""
+    ],
+    [
+     "  Dividend payable",
+     "58,936",
+     "",
+     "",
+     "60,749",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "6,045,301",
+     "",
+     "",
+     "5,718,695",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "63,598",
+     "",
+     "",
+     "66,504",
+     "",
+     ""
+    ],
+    [
+     "Total Long-Term Liabilities",
+     "63,598",
+     "",
+     "",
+     "66,504",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "6,108,899",
+     "",
+     "",
+     "5,785,199",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.001 par value; 1,000,000 shares authorized, no shares issued and outstanding",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.0001 par value; 30,000,000 shares authorized, 5,622,433 and 5,615,433 shares issued as of December 31, 2012 and 2011, respectively, and 4,714,914 and 4,797,231 shares outstanding as of December 31, 2012 and 2011, respectively",
+     "563",
+     "",
+     "",
+     "562",
+     "",
+     ""
+    ],
+    [
+     "Common stock in treasury, at cost - 907,519 and 818,202 shares as of December 31, 2012 and 2011, respectively",
+     "(2,569,625)",
+     "",
+     "",
+     "(2,393,717)",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "17,393,260",
+     "",
+     "",
+     "17,514,275",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(4,977,143)",
+     "",
+     "",
+     "(3,081,678)",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "9,847,055",
+     "",
+     "",
+     "12,039,442",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "15,955,954",
+     "",
+     "$",
+     "17,824,641",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Consolidated Balance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the consolidated financial position of SmartPros Ltd. and Subsidiaries as of December 31, 2012 and 2011, and the results of their operations and their cash flows for each of the years then ended, in conformity with accounting principles generally accepted in the United States of America.\n/s/ Holtz Rubenstein Reminick LLP\nNew York, New York\nMarch 22, 2013",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consolidated Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Years Ended December 31,",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Net Revenues",
+     "$",
+     "15,883,212",
+     "",
+     "$",
+     "16,988,691",
+     ""
+    ],
+    [
+     "Cost of Revenues",
+     "7,028,032",
+     "",
+     "",
+     "7,048,316",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "8,855,180",
+     "",
+     "",
+     "9,940,375",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "8,346,635",
+     "",
+     "",
+     "8,563,993",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "1,118,157",
+     "",
+     "",
+     "1,178,538",
+     "",
+     ""
+    ],
+    [
+     "  Impairment of goodwill",
+     "568,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "10,032,792",
+     "",
+     "",
+     "9,742,531",
+     "",
+     ""
+    ],
+    [
+     "Operating (Loss) income",
+     "(1,177,612)",
+     "",
+     "",
+     "197,844",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and dividend income, net",
+     "27,023",
+     "",
+     "",
+     "12,022",
+     "",
+     ""
+    ],
+    [
+     "Loss from joint venture",
+     "(9,497)",
+     "",
+     "",
+     "(11,125)",
+     "",
+     ""
+    ],
+    [
+     "Total Other Income",
+     "17,526",
+     "",
+     "",
+     "897",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income before Provision for Income Taxes",
+     "(1,160,086)",
+     "",
+     "",
+     "198,741",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "(735,379)",
+     "",
+     "",
+     "(44,614)",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(1,895,465)",
+     "",
+     "$",
+     "154,127",
+     ""
+    ],
+    [
+     "Net (loss) income per Common Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net (loss) income per common share",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "Diluted net (loss) income per common share",
+     "$",
+     "(0.40)",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "Weighted Average Number of Common Shares Outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "4,748,764",
+     "",
+     "",
+     "4,888,977",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "4,748,764",
+     "",
+     "",
+     "4,888,977",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Consolidated Statements of Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1161,
+    "end_line": 1204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Consolidated Statements of Stockholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Total Stockholders\u2019 Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2010",
+     "\u2014",
+     "$",
+     "\u2014",
+     "5,561,100",
+     "",
+     "$",
+     "556",
+     "$",
+     "17,607,921",
+     "",
+     "$",
+     "(3,235,805)",
+     "",
+     "$",
+     "(2,122,490)",
+     "",
+     "$",
+     "12,250,182",
+     ""
+    ],
+    [
+     "Dividends",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(244,493)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(244,493)",
+     "",
+     ""
+    ],
+    [
+     "Surrender of Shares from Restricted Stock Plan",
+     "\u2014",
+     "\u2014",
+     "",
+     "(1,500)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Stock Compensation Expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "55,833",
+     "",
+     "6",
+     "",
+     "150,847",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "150,853",
+     "",
+     ""
+    ],
+    [
+     "Purchase of Treasury Shares",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(271,227)",
+     "",
+     "",
+     "(271,227)",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "154,127",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "154,127",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2011",
+     "\u2014",
+     "\u2014",
+     "",
+     "5,615,433",
+     "",
+     "562",
+     "",
+     "17,514,275",
+     "",
+     "",
+     "(3,081,678)",
+     "",
+     "",
+     "(2,393,717)",
+     "",
+     "",
+     "12,039,442",
+     "",
+     ""
+    ],
+    [
+     "Shares issued from Restricted Stock Plan",
+     "",
+     "",
+     "",
+     "7,000",
+     "",
+     "1",
+     "",
+     "(1)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Stock Compensation Expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "115,691",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "115,691",
+     "",
+     ""
+    ],
+    [
+     "Dividends",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(236,705)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(236,705)",
+     "",
+     ""
+    ],
+    [
+     "Purchase of Treasury Shares",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(175,908)",
+     "",
+     "",
+     "(175,908)",
+     "",
+     ""
+    ],
+    [
+     "Net (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,895,465)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,895,465)",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2012",
+     "\u2014",
+     "\u2014",
+     "",
+     "5,622,433",
+     "",
+     "$",
+     "563",
+     "$",
+     "17,393,260",
+     "",
+     "$",
+     "(4,977,143)",
+     "",
+     "$",
+     "(2,569,625)",
+     "",
+     "$",
+     "9,847,055",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See notes to consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders\u2019 Equity",
+   "prose_after": "Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1208,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31,",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(1,895,465)",
+     "",
+     "$",
+     "154,127",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net (loss) income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "1,118,157",
+     "",
+     "",
+     "1,178,538",
+     "",
+     ""
+    ],
+    [
+     "Stock compensation expense",
+     "115,691",
+     "",
+     "",
+     "150,853",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax provision",
+     "690,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Impairment of goodwill",
+     "568,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Loss from joint venture",
+     "9,497",
+     "",
+     "",
+     "11,125",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "(2,906)",
+     "",
+     "",
+     "33,603",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Increase) decrease in operating assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(744,646)",
+     "",
+     "",
+     "281,004",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "3,333",
+     "",
+     "",
+     "56,310",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "(11,550)",
+     "",
+     "",
+     "(7,339)",
+     "",
+     ""
+    ],
+    [
+     "(Decrease) increase in operating liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "(73,635)",
+     "",
+     "",
+     "(62,618)",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "400,241",
+     "",
+     "",
+     "(908,133)",
+     "",
+     ""
+    ],
+    [
+     "Total adjustments",
+     "2,072,182",
+     "",
+     "",
+     "733,343",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided by Operating Activities",
+     "176,717",
+     "",
+     "",
+     "887,470",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in certificates of deposit",
+     "(500,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property and equipment",
+     "(183,482)",
+     "",
+     "",
+     "(228,018)",
+     "",
+     ""
+    ],
+    [
+     "Capitalized course costs and software development",
+     "(343,930)",
+     "",
+     "",
+     "(896,297)",
+     "",
+     ""
+    ],
+    [
+     "Investment in joint venture",
+     "(10,000)",
+     "",
+     "",
+     "(10,000)",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for business assets",
+     "(89,874)",
+     "",
+     "",
+     "(24,000)",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "(1,127,286)",
+     "",
+     "",
+     "(1,158,315)",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of treasury shares",
+     "(175,908)",
+     "",
+     "",
+     "(271,227)",
+     "",
+     ""
+    ],
+    [
+     "Dividends paid",
+     "(236,705)",
+     "",
+     "",
+     "(183,744)",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Financing Activities",
+     "(412,613)",
+     "",
+     "",
+     "(454,971)",
+     "",
+     ""
+    ],
+    [
+     "Net Decrease in Cash and Cash Equivalents",
+     "(1,363,182)",
+     "",
+     "",
+     "(725,816)",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, beginning of year",
+     "6,281,725",
+     "",
+     "",
+     "7,007,541",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, end of year",
+     "$",
+     "4,918,543",
+     "",
+     "$",
+     "6,281,725",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "45,400",
+     "",
+     "$",
+     "7,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1239,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows",
+   "prose_after": "1. Description of Business and Summary of Significant Accounting Policies\nNature of operations - SmartPros Ltd. and Subsidiaries (\u201cSmartPros\u201d or the \u201cCompany\u201d), a Delaware corporation, was organized in 1981 for the purpose of producing educational videos primarily directed to the accounting profession. SmartPros' primary products are periodic subscription and non-subscriptions services delivered in either video format or over the internet directed to corporate accountants and financial managers, and accountants in public practice. As a result of its acquisitions of Loscalzo Associates, Ltd. (\u201cLoscalzo\u201d), and Executive Enterprises Institute (\u201cEEI\u201d), the Company is now a leading provider of live training to accounting, legal, and financial services professionals. In addition, the Company produces a series of continuing education courses directed to the engineering profession, a series of courses designed for candidates for various professional engineering exams and training for information technology professionals. Its wholly-owned subsidiary, SmartPros Legal and Ethics, Ltd. (\u201cSLE\u201d) produces ethics, governance, and compliance programs for corporate clients and, through its Cognistar division, produces online and customized training courses for the legal profession. Its wholly-owned subsidiary, Skye Multimedia Ltd. (\u201cSkye\u201d), produces customized training solutions for a number of industries, including pharmaceuticals, professional services, and others. The Company also has various other online content including a library of nationally certified training solutions for the banking, securities, and insurance industries, as well as a library for health, safety and human resources professionals. Some of these courses may also be designed for live training. SmartPros also develops and hosts Websites, produces custom videos and rents out its video production studio for a fee. SmartPros' corporate headquarters is located in Hawthorne, New York, where it maintains its corporate offices, new media lab, and video production studio.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1292,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31,",
+     "2012",
+     "2011"
+    ],
+    [
+     "Weighted Average Number of Shares Outstanding",
+     "4,748,764",
+     "4,888,977"
+    ],
+    [
+     "Effect of Dilutive Securities, common stock equivalents",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Weighted Average Number of Shares Outstanding, used for computing diluted earnings per share",
+     "4,748,764",
+     "4,888,977"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1346,
+    "end_line": 1355
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Description of Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company measures and recognizes the tax implications of positions taken or expected to be taken in its tax returns on an ongoing basis. The Company had no unrecognized tax benefits or liabilities, and no adjustment to its financial position, results of operations, or cash flows relating to uncertain tax positions taken on all open tax years. The Company is no longer subject to federal, state or local income tax examinations by tax authorities for the years before 2009.\nNet income (loss) per share - Basic net income (loss) per share is computed by dividing income (loss) available to common stockholders by the weighted-average number of common shares outstanding. Diluted earnings per share reflect, in periods in which they have a dilutive effect, the impact of common shares issuable upon exercise of stock options and warrants and non-vested shares of common stock. For the years ended December 31, 2012 and 2011, the inclusion of common stock equivalents of 310,487 and 334,587, respectively would be anti-dilutive.\nThe reconciliation is as follows:",
+   "prose_after": "Stock-based compensation - The Company accounts for stock-based compensation in accordance with ASC Topic 718, \u201cStock Compensation\u201d. Under the fair value recognition provisions of this topic, stock-based compensation cost is measured at the grant date based on the fair value of the award and is recognized as expense on a straight-line basis over the vesting period. Determining the fair value of share-based awards at the grant date requires assumptions and judgments about expected volatility and forfeiture rates, among other factors.\nAdvertising costs - Advertising costs are expensed as incurred and were approximately $147,000 and $121,000 for the years ended December 31, 2012 and 2011, respectively.\nNew accounting pronouncements - In July 2012, the Financial Accounting Standards Board (FASB) issued an amendment to Topic 350-Intangibles-Goodwill and Other. This amendment is intended to simplify how entities test indefinite lived intangible assets for impairment. The amendment permits an entity to first assess qualitative factors to determine whether it is more likely than not that the fair value of a reporting unit is less than its carrying amount as a basis for determining whether it is necessary to perform the two-step quantitative impairment test described in Topic 350. No further testing is required if the qualitative factors indicate that it is not more likely than not that the indefinite-lived intangible asset is impaired. This amendment is effective for annual and interim impairment tests performed for fiscal years beginning after September 15, 2012. The Company does not expect this amendment to have any significant impact on the current year.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1330,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "Furniture, Fixtures and Equipment",
+     "$",
+     "4,869,450",
+     "$",
+     "4,685,968"
+    ],
+    [
+     "Leasehold Improvements",
+     "189,709",
+     "",
+     "189,709",
+     ""
+    ],
+    [
+     "",
+     "5,059,159",
+     "",
+     "4,875,677",
+     ""
+    ],
+    [
+     "Less Accumulated Depreciation",
+     "4,511,711",
+     "",
+     "4,230,352",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "547,448",
+     "$",
+     "645,325"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1367,
+    "end_line": 1379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Property and Equipment, net"
+    }
+   },
+   "prose_before": "New accounting pronouncements - In July 2012, the Financial Accounting Standards Board (FASB) issued an amendment to Topic 350-Intangibles-Goodwill and Other. This amendment is intended to simplify how entities test indefinite lived intangible assets for impairment. The amendment permits an entity to first assess qualitative factors to determine whether it is more likely than not that the fair value of a reporting unit is less than its carrying amount as a basis for determining whether it is necessary to perform the two-step quantitative impairment test described in Topic 350. No further testing is required if the qualitative factors indicate that it is not more likely than not that the indefinite-lived intangible asset is impaired. This amendment is effective for annual and interim impairment tests performed for fiscal years beginning after September 15, 2012. The Company does not expect this amendment to have any significant impact on the current year.\n2. Property and Equipment, net\nThe components of property and equipment are as follows:",
+   "prose_after": "Depreciation expense for the years ended December 31, 2012 and 2011 was approximately $281,000 and $300,000, respectively.\n3. Goodwill and Other Intangible Assets, net\nThe components of other intangible assets are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "Engineering Courses",
+     "$",
+     "2,766,837",
+     "$",
+     "2,766,837"
+    ],
+    [
+     "Rights to CPA Report (\u201cCPAR\u201d)",
+     "1,700,000",
+     "",
+     "1,700,000",
+     ""
+    ],
+    [
+     "SmartPros Advantage Courses (\"SPA\")",
+     "837,504",
+     "",
+     "837,504",
+     ""
+    ],
+    [
+     "Course Costs",
+     "1,340,169",
+     "",
+     "1,210,178",
+     ""
+    ],
+    [
+     "Customer Lists",
+     "1,041,746",
+     "",
+     "1,041,746",
+     ""
+    ],
+    [
+     "Restrictive Covenant",
+     "200,000",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Trade Name",
+     "350,000",
+     "",
+     "350,000",
+     ""
+    ],
+    [
+     "Capitalized Software",
+     "2,748,111",
+     "",
+     "2,478,847",
+     ""
+    ],
+    [
+     "Financial Campus",
+     "370,569",
+     "",
+     "340,894",
+     ""
+    ],
+    [
+     "Other Intangible Assets",
+     "832,204",
+     "",
+     "827,330",
+     ""
+    ],
+    [
+     "",
+     "12,187,140",
+     "",
+     "11,753,336",
+     ""
+    ],
+    [
+     "Less Accumulated Amortization",
+     "8,656,396",
+     "",
+     "7,819,598",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "3,530,744",
+     "$",
+     "3,933,738"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1386,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Goodwill and Other Intangible Assets, net"
+    }
+   },
+   "prose_before": "Depreciation expense for the years ended December 31, 2012 and 2011 was approximately $281,000 and $300,000, respectively.\n3. Goodwill and Other Intangible Assets, net\nThe components of other intangible assets are as follows:",
+   "prose_after": "The aggregate amortization expense for the years ended December 31, 2012 and 2011 was $836,798 and $878,416, respectively.\nEstimated amortization expense for each of the five years subsequent to December 31, 2012 is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2013",
+     "$",
+     "733,000"
+    ],
+    [
+     "2014",
+     "$",
+     "558,000"
+    ],
+    [
+     "2015",
+     "$",
+     "448,000"
+    ],
+    [
+     "2016",
+     "$",
+     "317,000"
+    ],
+    [
+     "2017",
+     "$",
+     "191,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1412,
+    "end_line": 1421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Goodwill and Other Intangible Assets, net"
+    }
+   },
+   "prose_before": "The aggregate amortization expense for the years ended December 31, 2012 and 2011 was $836,798 and $878,416, respectively.\nEstimated amortization expense for each of the five years subsequent to December 31, 2012 is as follows:",
+   "prose_after": "The following table presents the changes in the carrying amount of goodwill and other intangible assets during the years ended December 31, 2012 and 2011:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Goodwill",
+     "",
+     "",
+     "Other Intangible Assets",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2011",
+     "$",
+     "3,375,257",
+     "",
+     "$",
+     "3,891,858",
+     ""
+    ],
+    [
+     "Amortization Expense",
+     "",
+     "",
+     "",
+     "(878,416)",
+     "",
+     ""
+    ],
+    [
+     "Goodwill and Intangible Assets Acquired and Developed",
+     "",
+     "",
+     "",
+     "920,296",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2011",
+     "3,375,257",
+     "",
+     "",
+     "3,933,738",
+     "",
+     ""
+    ],
+    [
+     "Amortization Expense",
+     "",
+     "",
+     "",
+     "(836,798)",
+     "",
+     ""
+    ],
+    [
+     "Intangible Assets Acquired and Developed",
+     "",
+     "",
+     "",
+     "433,804",
+     "",
+     ""
+    ],
+    [
+     "Impairment of goodwill",
+     "(568,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2012",
+     "$",
+     "2,807,257",
+     "",
+     "$",
+     "3,530,744",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1424,
+    "end_line": 1441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Goodwill and Other Intangible Assets, net"
+    }
+   },
+   "prose_before": "The following table presents the changes in the carrying amount of goodwill and other intangible assets during the years ended December 31, 2012 and 2011:",
+   "prose_after": "The Company tested goodwill for impairment at the reporting unit level for its Skye subsidiary. Skye's continued losses indicated that future cash flows may not support the carrying value of the associated goodwill. As a result, management proceeded to perform the first step of the goodwill assessment which is to compare the fair value of the reporting unit to the carrying amount, including goodwill. In estimating the fair value of Skye, the Company used a combination of cost and market based approaches. The cost approach is based on the amount that currently would be required to replace the service capacity of an asset, or in this case the reporting unit. The market approach uses prices and other relevant information generated by market transactions involving similar or comparable businesses. Management uses available market multiples for transaction of similar businesses and makes necessary adjustments in arriving at fair value of Skye. In making these adjustments management considers both quantitative and qualitative factors in evaluating available information and exercises significant judgment in aligning the valuations with the reporting unit being tested. The results of the valuation performed by management in the first step indicated the carrying amount of Skye was in excess of its fair value.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31,",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "State",
+     "(45,379)",
+     "",
+     "",
+     "(44,614)",
+     "",
+     ""
+    ],
+    [
+     "Total Current",
+     "(45,379)",
+     "",
+     "",
+     "(44,614)",
+     "",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "(690,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "State",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total Deferred",
+     "(690,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(735,379)",
+     "",
+     "$",
+     "(44,614)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1455,
+    "end_line": 1472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "At December 31, 2012 and 2011, the Company has a net deferred tax asset of $600,000 and $1,290,000, respectively primarily resulting from the expected future benefit of available net operating loss carryforwards and other temporary differences. Realization of deferred tax assets depends on the Company's estimate of sufficient future taxable income during the period that deductible temporary differences and loss carryforwards are expected to be available to offset future taxable income of approximately $3,500,000 which expire through 2027. In determining the valuation allowance required at each reporting period, management considers all available evidence, both positive and negative, based on the weight of that evidence, including historical\ninformation that is supplemented by currently available information about future years. In weighing the available evidence, management uses the more likely than not threshold for recognition of a valuation allowance. Due to the loss in the current year and uncertainties about events that could adversely affect future projected taxable income, the Company increased the valuation allowance relating to its deferred tax assets by $690,000.\nThe components of the provision for income taxes are as follows:",
+   "prose_after": "The temporary differences and net operating loss carryforward give rise to the following deferred tax assets:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Loss",
+     "$",
+     "1,480,000",
+     "",
+     "$",
+     "1,170,000",
+     ""
+    ],
+    [
+     "Depreciation and Amortization of Property, Equipment and Intangibles",
+     "404,000",
+     "",
+     "",
+     "469,000",
+     "",
+     ""
+    ],
+    [
+     "Stock Option and Restricted Stock Compensation Expense",
+     "231,000",
+     "",
+     "",
+     "205,000",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "23,000",
+     "",
+     "",
+     "27,000",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2,138,000",
+     "",
+     "",
+     "1,871,000",
+     "",
+     ""
+    ],
+    [
+     "Less Valuation Allowance",
+     "(1,538,000)",
+     "",
+     "",
+     "(581,000)",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Asset",
+     "$",
+     "600,000",
+     "",
+     "$",
+     "1,290,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1475,
+    "end_line": 1489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The temporary differences and net operating loss carryforward give rise to the following deferred tax assets:",
+   "prose_after": "These amounts have been classified on the accompanying consolidated balance sheets as non-current.\nA reconciliation of income tax expense at the federal statutory rate to income tax expense at the Company\u2019s effective rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31,",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "U.S. Federal Statutory Income Tax Rate",
+     "(34)",
+     "%",
+     "34",
+     "%"
+    ],
+    [
+     "State Income Tax Rate, net of federal benefit",
+     "4",
+     "%",
+     "14",
+     "%"
+    ],
+    [
+     "Travel and Entertainment",
+     "\u2014",
+     "%",
+     "6",
+     "%"
+    ],
+    [
+     "Prior Years\u2019 True-ups",
+     "(3)",
+     "%",
+     "48",
+     "%"
+    ],
+    [
+     "Change in Valuation Allowance",
+     "83",
+     "%",
+     "(81)",
+     "%"
+    ],
+    [
+     "Goodwill Impairment",
+     "17",
+     "%",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Other",
+     "(4)",
+     "%",
+     "1",
+     "%"
+    ],
+    [
+     "Effective Income Tax Rate",
+     "63",
+     "%",
+     "22",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1494,
+    "end_line": 1505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "These amounts have been classified on the accompanying consolidated balance sheets as non-current.\nA reconciliation of income tax expense at the federal statutory rate to income tax expense at the Company\u2019s effective rate is as follows:",
+   "prose_after": "5. Stock Incentive Plan\nIn June 2009 the Company adopted, with shareholder approval, its 2009 Incentive Compensation Plan (the \u201cPlan\u201d), replacing the expired 1999 Stock Option Plan. The Plan provides for the grant of up to 800,000 shares of non-qualified stock options and restricted stock awards to employees, directors and consultants. Future restricted stock grants may not exceed 200,000 shares. The Plan incorporated the outstanding shares at the time of adoption. As of December 31, 2012, there were 310,487 options outstanding, of which 225,987 are currently exercisable and there were 54,222 restricted stock grants outstanding. As of December 31, 2012, the Plan had a net balance of 425,180 shares reserved for the issuance of future grants. The Plan is administered by the Compensation Committee of the Board of Directors of the Company. The administrator of the Plan determines the terms of options, including the exercise price, expiration date, number of shares, and vesting provisions.\nThe weighted average estimated fair value of stock options granted for the year ended December 31, 2012 and 2011 was $1.80 and $2.01, respectively. The fair value of options at the date of grant was estimated using the Black-Scholes Option Pricing Model. The Company takes into consideration guidance under ASC Topic 718, \u201cStock Compensation\u201d when reviewing and updating assumptions. The expected volatility is based upon historical volatility of the Company\u2019s stock and other contributing factors. The expected term is based upon observation of the actual time elapsed between the date of grant and the exercise of options for all employees. Previously, such assumptions were determined based on historical data.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1449,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31,",
+     "2012",
+     "2011"
+    ],
+    [
+     "Contractual Term",
+     "10 years",
+     "10 years"
+    ],
+    [
+     "Expected Volatility",
+     "40%",
+     "40%"
+    ],
+    [
+     "Expected Dividend Yield",
+     "2.0%-2.5%",
+     "2.0%-2.5%"
+    ],
+    [
+     "Risk-Free Interest Rate",
+     ".4%-1.15%",
+     "2.3%-4.0%"
+    ],
+    [
+     "Expected Term",
+     "5.0 years",
+     "5.0 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1515,
+    "end_line": 1524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock Incentive Plan"
+    }
+   },
+   "prose_before": "In June 2009 the Company adopted, with shareholder approval, its 2009 Incentive Compensation Plan (the \u201cPlan\u201d), replacing the expired 1999 Stock Option Plan. The Plan provides for the grant of up to 800,000 shares of non-qualified stock options and restricted stock awards to employees, directors and consultants. Future restricted stock grants may not exceed 200,000 shares. The Plan incorporated the outstanding shares at the time of adoption. As of December 31, 2012, there were 310,487 options outstanding, of which 225,987 are currently exercisable and there were 54,222 restricted stock grants outstanding. As of December 31, 2012, the Plan had a net balance of 425,180 shares reserved for the issuance of future grants. The Plan is administered by the Compensation Committee of the Board of Directors of the Company. The administrator of the Plan determines the terms of options, including the exercise price, expiration date, number of shares, and vesting provisions.\nThe weighted average estimated fair value of stock options granted for the year ended December 31, 2012 and 2011 was $1.80 and $2.01, respectively. The fair value of options at the date of grant was estimated using the Black-Scholes Option Pricing Model. The Company takes into consideration guidance under ASC Topic 718, \u201cStock Compensation\u201d when reviewing and updating assumptions. The expected volatility is based upon historical volatility of the Company\u2019s stock and other contributing factors. The expected term is based upon observation of the actual time elapsed between the date of grant and the exercise of options for all employees. Previously, such assumptions were determined based on historical data.\nThe assumptions made in calculating the fair values of options are as follows:",
+   "prose_after": "For the years ended December 31, 2012 and 2011, stock-based compensation expense related to stock options granted was approximately $31,000 and $46,000, respectively. As of December 31, 2012, the fair value of unamortized compensation cost related to non-vested stock option awards was approximately $29,400. Unamortized compensation cost as of December 31, 2012 is expected to be recognized over a remaining weighted-average vesting period of three years.\nAs of December 31, 2012 and 2011, the options had no intrinsic value.\nIn January 2012, the Company granted 15,000 options to an employee, exercisable over 10 years from the date of grant at $1.80 per share. These options vest one-third each year commencing one year from date of grant.\nIn July 2012, the Company granted 7,000 shares of its restricted common stock to an employee. The grant vests three years from date of issue and the grant price was $1.98 per share.\nA summary of all stock option activity is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1552,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended December 31, 2012 and 2011",
+     "Number [ ]f Options",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding, January 1, 2011",
+     "409,798",
+     "",
+     "$",
+     "4.37"
+    ],
+    [
+     "Options granted",
+     "104,500",
+     "",
+     "2.01",
+     ""
+    ],
+    [
+     "Options forfeited/expired",
+     "(179,711)",
+     "",
+     "5.29",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2011",
+     "334,587",
+     "",
+     "3.14",
+     ""
+    ],
+    [
+     "Options granted",
+     "15,000",
+     "",
+     "1.80",
+     ""
+    ],
+    [
+     "Options forfeited/expired",
+     "(39,100)",
+     "",
+     "2.88",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2012",
+     "310,487",
+     "",
+     "$",
+     "3.11"
+    ],
+    [
+     "Exercisable, December 31, 2012",
+     "225,987",
+     "",
+     "$",
+     "3.53"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1535,
+    "end_line": 1552
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock Incentive Plan"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2012 and 2011, stock-based compensation expense related to stock options granted was approximately $31,000 and $46,000, respectively. As of December 31, 2012, the fair value of unamortized compensation cost related to non-vested stock option awards was approximately $29,400. Unamortized compensation cost as of December 31, 2012 is expected to be recognized over a remaining weighted-average vesting period of three years.\nAs of December 31, 2012 and 2011, the options had no intrinsic value.\nIn January 2012, the Company granted 15,000 options to an employee, exercisable over 10 years from the date of grant at $1.80 per share. These options vest one-third each year commencing one year from date of grant.\nIn July 2012, the Company granted 7,000 shares of its restricted common stock to an employee. The grant vests three years from date of issue and the grant price was $1.98 per share.\nA summary of all stock option activity is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1552,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     ""
+    ],
+    [
+     "Exercise Price",
+     "Number Outstanding",
+     "Weighted Average Remaining Contractual Life (Years)",
+     "Weighted Average Exercise Price",
+     "",
+     "Number Exercisable",
+     "Weighted Average Remaining Contractual Life (Years)"
+    ],
+    [
+     "$.01-$1.99",
+     "114,500",
+     "8.85",
+     "$",
+     "1.97",
+     "33,334",
+     "8.83"
+    ],
+    [
+     "$2.00-$2.99",
+     "74,600",
+     "6.11",
+     "2.57",
+     "",
+     "71,266",
+     "5.79"
+    ],
+    [
+     "$3.00-$3.99",
+     "35,150",
+     "4.23",
+     "3.34",
+     "",
+     "35,150",
+     "4.23"
+    ],
+    [
+     "$4.00-$4.99",
+     "28,642",
+     "2.72",
+     "4.13",
+     "",
+     "28,642",
+     "2.72"
+    ],
+    [
+     "$5.00-$5.99",
+     "57,595",
+     "5.51",
+     "5.44",
+     "",
+     "57,595",
+     "5.51"
+    ],
+    [
+     "",
+     "310,487",
+     "\u2014",
+     "$",
+     "3.11",
+     "225,987",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1554,
+    "end_line": 1569
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock Incentive Plan"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "A summary of the non-vested options and activity for the year ended December 31, 2012 is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1552,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options",
+     "",
+     "Weighted Average Grant Date Fair Value"
+    ],
+    [
+     "Non-vested, January 1, 2012",
+     "113,100",
+     "",
+     "2.12"
+    ],
+    [
+     "Granted",
+     "15,000",
+     "",
+     "1.8"
+    ],
+    [
+     "Vested",
+     "(38,600)",
+     "",
+     "2.3"
+    ],
+    [
+     "Forfeited",
+     "(5,000)",
+     "",
+     "2.34"
+    ],
+    [
+     "Non-vested, December 31, 2012",
+     "84,500",
+     "",
+     "2.12"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1572,
+    "end_line": 1585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock Incentive Plan"
+    }
+   },
+   "prose_before": "A summary of the non-vested options and activity for the year ended December 31, 2012 is as follows:",
+   "prose_after": "In February 2013, the Company granted 37,000 options to various employees, exercisable over 10 years from date of grant at$1.47 per share. Of these options, 7,500 vest on February 1, 2014 and 2015 respectively, the remaining 22,000 options vest on February 1, 2016. In addition, the Company granted 41,500 restricted common shares to various employees and independent members of the board of directors at a price of $1.47. Of these shares 7,500 each vest on February 1, 2014 and 2015, 22,000 shares vest on February 1, 2016 and 4,500 shares vest one-third each on February 1, 2014, 2015 and 2016.\n6. Stockholders' Equity\nIn 2012 and 2011 the Company purchased 89,317 and 130,928 shares of its common stock for $175,908 and $271,227, respectively.\nIn March 2013, the Company purchased 73,473 of it's common stock for $116,087.\n7. Commitments and Contingencies\nOperating leases- The Company leases office space and production and warehouse facilities in Hawthorne, New York; Westborough, Massachusetts; Bridgewater, New Jersey; and Shrewsbury, New Jersey. Future minimum lease payments are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1552,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2013",
+     "$",
+     "425,000"
+    ],
+    [
+     "2014",
+     "389,000",
+     ""
+    ],
+    [
+     "2015",
+     "387,000",
+     ""
+    ],
+    [
+     "2016",
+     "405,000",
+     ""
+    ],
+    [
+     "2017",
+     "357,000",
+     ""
+    ],
+    [
+     "Thereafter",
+     "387,000",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,350,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1599,
+    "end_line": 1612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "In February 2013, the Company granted 37,000 options to various employees, exercisable over 10 years from date of grant at$1.47 per share. Of these options, 7,500 vest on February 1, 2014 and 2015 respectively, the remaining 22,000 options vest on February 1, 2016. In addition, the Company granted 41,500 restricted common shares to various employees and independent members of the board of directors at a price of $1.47. Of these shares 7,500 each vest on February 1, 2014 and 2015, 22,000 shares vest on February 1, 2016 and 4,500 shares vest one-third each on February 1, 2014, 2015 and 2016.\n6. Stockholders' Equity\nIn 2012 and 2011 the Company purchased 89,317 and 130,928 shares of its common stock for $175,908 and $271,227, respectively.\nIn March 2013, the Company purchased 73,473 of it's common stock for $116,087.\n7. Commitments and Contingencies\nOperating leases- The Company leases office space and production and warehouse facilities in Hawthorne, New York; Westborough, Massachusetts; Bridgewater, New Jersey; and Shrewsbury, New Jersey. Future minimum lease payments are as follows:",
+   "prose_after": "Rent expense is recorded on a straight-line basis over the lease term. Rent expense for the years ended December 31, 2012 and 2011 was approximately $380,000 and $450,000, respectively.\nThe Company arranged for a $75,000 letter of credit representing a security deposit for the Hawthorne, New York lease. The Company has pledged a $75,000 certificate of deposit to the bank, issuing the letter of credit as collateral for the letter of credit and the restricted cash account is included in other assets.\nEmployment agreements- The Company has entered into employment agreements with its key senior executives.\n\u2022 The employment agreement with the Company\u2019s chief executive officer was renewed in February 2007, and was for an initial term of three years. The agreement renews automatically for a new three-year term at the end of the first year of each three-year term, unless either party gives notice of their intent not to renew before the end of the first year of each three-year term.\n\u2022 The chief financial officer\u2019s agreement was renewed in June 2011 and expires in June 2013.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1629,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

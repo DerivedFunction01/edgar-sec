@@ -1,0 +1,7354 @@
+{
+ "accession": "0001615219-19-000008",
+ "cik": "0001615219",
+ "form": "10-K",
+ "filing_date": "2019-03-06",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "flks2018123110-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware (State or Other Jurisdiction of Incorporation or Organization)",
+     "2834 (Primary Standard Industrial Classification Code Number)",
+     "46-5087339 (I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended December 31, 2018\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from                                  to\nCommission File Number: 001-36812\nFLEX PHARMA, INC.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "31 St. James Avenue, 6th Floor\nBoston, MA 02116\n(617) 874-1821\n(Address, Including Zip Code, and Telephone Number, Including Area Code, of Registrant's Principal Executive Offices)\nWilliam McVicar, Ph.D.\nPresident and Chief Executive Officer\nFlex Pharma, Inc.\n31 St. James Avenue, 6th Floor\nBoston, MA 02116\n(617) 874-1821",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common Stock, $ 0.0001 par value",
+     "Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 48,
+    "end_line": 53
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(617) 874-1821\n(Address, Including Zip Code, and Telephone Number, Including Area Code, of Registrant's Principal Executive Offices)\nWilliam McVicar, Ph.D.\nPresident and Chief Executive Officer\nFlex Pharma, Inc.\n31 St. James Avenue, 6th Floor\nBoston, MA 02116\n(617) 874-1821\n(Name, Address, Including Zip Code, and Telephone Number, Including Area Code, of Agent for Service)\nSecurities registered pursuant to Section 12(b) of the Act",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Securities Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to the filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "17"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "28"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "28"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "28"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "29"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuers Purchases of Equity Securities",
+     "29"
+    ],
+    [
+     "Item 6.",
+     "Selected Consolidated Financial Data",
+     "30"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "32"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "47"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "47"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "47"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "47"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "48"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "48"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "49"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "49"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "49"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "49"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "49"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.) Yes [ ] No [X]\nAs of June 30, 2018, the last day of the registrant\u2019s most recently completed second fiscal quarter, the aggregate market value of the Common Stock held by non-affiliates of the registrant was approximately $9.8 million, based on the closing price of the registrant\u2019s common stock on June 29, 2018.\nAs of March 1, 2019, there were 18,069,476 shares of common stock outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the registrant\u2019s definitive Proxy Statement relating to its 2019 Annual Meeting of Stockholders are incorporated by reference into Part III of this Annual Report on Form 10-K where indicated. Such Proxy Statement will be filed with the U.S. Securities and Exchange Commission within 120 days after the end of the fiscal year to which this report relates.\n2018 ANNUAL REPORT ON FORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K, or Annual Report, contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. All statements other than statements of historical fact are \"forward-looking statements\" for purposes of this Annual Report. In some cases, you can identify forward-looking statements by terminology such as \"anticipate,\" \"believe,\" \"could,\" \"estimate,\" \"expects,\" \"intend,\" \"may,\" \"plan,\" \"potential,\" \"predict,\" \"project,\" \"should,\" \"will,\" \"would\" or the negative of those terms, and similar expressions. Forward-looking statements include, but are not limited to, statements about:\n\u2022 the timing and anticipated completion of the merger with Salarius Pharmaceuticals, LLC;\n\u2022 the expected benefits and growth potential of HOTSHOT;\n\u2022 our ability to obtain funding for our operations if the merger is not completed;\n\u2022 our ability to expand the sales of our consumer product;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     "",
+     "Year Ended December 31, 2015",
+     "",
+     "",
+     "Period from February 26, 2014 (Inception) to December 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Operations Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "826,515",
+     "",
+     "$",
+     "1,260,973",
+     "",
+     "$",
+     "989,918",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other revenue",
+     "11,627",
+     "",
+     "",
+     "13,526",
+     "",
+     "",
+     "20,745",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "838,142",
+     "",
+     "",
+     "1,274,499",
+     "",
+     "",
+     "1,010,663",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "430,750",
+     "",
+     "",
+     "506,530",
+     "",
+     "",
+     "662,747",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "11,908,294",
+     "",
+     "",
+     "16,989,911",
+     "",
+     "",
+     "20,378,161",
+     "",
+     "",
+     "12,749,379",
+     "",
+     "",
+     "4,003,911",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "10,573,321",
+     "",
+     "",
+     "18,503,684",
+     "",
+     "",
+     "19,855,987",
+     "",
+     "",
+     "16,464,279",
+     "",
+     "",
+     "4,025,895",
+     "",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "22,912,365",
+     "",
+     "",
+     "36,000,125",
+     "",
+     "",
+     "40,896,895",
+     "",
+     "",
+     "29,213,658",
+     "",
+     "",
+     "8,029,806",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(22,074,223)",
+     "",
+     "",
+     "(34,725,626)",
+     "",
+     "",
+     "(39,886,232)",
+     "",
+     "",
+     "(29,213,658)",
+     "",
+     "",
+     "(8,029,806)",
+     "",
+     ""
+    ],
+    [
+     "Interest income, net",
+     "152,006",
+     "",
+     "",
+     "291,964",
+     "",
+     "",
+     "393,109",
+     "",
+     "",
+     "72,028",
+     "",
+     "",
+     "18,946",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders",
+     "$",
+     "(21,922,217)",
+     "",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "(39,493,123)",
+     "",
+     "$",
+     "(29,141,630)",
+     "",
+     "$",
+     "(8,010,860)",
+     ""
+    ],
+    [
+     "Net loss per share attributable to common stockholders \u2014 basic and diluted(1)",
+     "$",
+     "(1.22)",
+     "",
+     "$",
+     "(1.99)",
+     "",
+     "$",
+     "(2.43)",
+     "",
+     "$",
+     "(2.08)",
+     "",
+     "$",
+     "(4.57)",
+     ""
+    ],
+    [
+     "Weighted-average number of common shares outstanding \u2014 basic and diluted(1)",
+     "18,016,841",
+     "",
+     "",
+     "17,260,626",
+     "",
+     "",
+     "16,233,985",
+     "",
+     "",
+     "14,032,916",
+     "",
+     "",
+     "1,753,024",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 800,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Consolidated Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth our selected consolidated financial data. We derived the consolidated statement of operations data for each of the years ended December 31, 2018, December 31, 2017 and December 31, 2016, and the consolidated balance sheet data as of December 31, 2018 and December 31, 2017 from our audited consolidated financial statements, included elsewhere in this Annual Report. The statements of operations data for the year ended December 31, 2015 and the period from inception (February 26, 2014) to December 31, 2014, and the balance sheet data as of December 31, 2016, December 31, 2015 and December 21, 2014, are derived from our audited financial statements, which are not included herein. Our historical results are not necessarily indicative of results to be expected for any period in the future. The selected consolidated financial data presented below should be read in conjunction with \"Management's Discussion and Analysis of Financial Condition and Results of Operations\" and our consolidated financial statements and the related notes thereto, included elsewhere in this Annual Report. The selected consolidated financial data in this section is not intended to replace our consolidated financial statements and the related notes thereto.",
+   "prose_after": "(1) See Note 2 and Note 15 of our consolidated financial statements included elsewhere herein for an explanation of the method used to compute basic and diluted net loss per share of common stock and the weighted-average number of shares used in computation of the per share amounts.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 832,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2018",
+     "",
+     "",
+     "As of December 31, 2017",
+     "",
+     "",
+     "As of December 31, 2016",
+     "",
+     "",
+     "As of December 31, 2015",
+     "",
+     "",
+     "As of December 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheet Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and marketable securities",
+     "$",
+     "9,829,624",
+     "",
+     "$",
+     "33,315,759",
+     "",
+     "$",
+     "61,074,973",
+     "",
+     "$",
+     "93,651,992",
+     "",
+     "$",
+     "33,854,153",
+     ""
+    ],
+    [
+     "Working capital(2)",
+     "9,208,296",
+     "",
+     "",
+     "28,687,467",
+     "",
+     "",
+     "58,578,074",
+     "",
+     "",
+     "89,400,216",
+     "",
+     "",
+     "33,157,388",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "10,389,626",
+     "",
+     "",
+     "34,992,772",
+     "",
+     "",
+     "63,214,979",
+     "",
+     "",
+     "95,069,838",
+     "",
+     "",
+     "35,611,398",
+     "",
+     ""
+    ],
+    [
+     "Convertible preferred stock",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "41,031,167",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(132,961,275)",
+     "",
+     "",
+     "(111,079,275)",
+     "",
+     "",
+     "(76,645,613)",
+     "",
+     "",
+     "(37,152,490)",
+     "",
+     "",
+     "(8,010,860)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' equity (deficit)",
+     "9,282,756",
+     "",
+     "",
+     "29,105,888",
+     "",
+     "",
+     "59,317,386",
+     "",
+     "",
+     "92,192,408",
+     "",
+     "",
+     "(6,538,340)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Consolidated Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "(1) See Note 2 and Note 15 of our consolidated financial statements included elsewhere herein for an explanation of the method used to compute basic and diluted net loss per share of common stock and the weighted-average number of shares used in computation of the per share amounts.",
+   "prose_after": "(2) We define working capital as current assets less current liabilities.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion and analysis should be read in conjunction with \"Selected Consolidated Financial Data\" and our consolidated financial statements and related notes included elsewhere in this Annual Report. This discussion and analysis and other parts of this Annual Report contain forward-looking statements based upon current beliefs, plans and expectations that involve risks, uncertainties and assumptions, such as statements regarding our plans, objectives, expectations, intentions and projections. Our actual results and the timing of selected events could differ materially from those anticipated in these forward-looking statements as a result of several factors, including those set forth under \"Risk Factors\" and elsewhere in this Annual Report. You should carefully read the \"Risk Factors\" section of this Annual Report to gain an understanding of the important factors that could cause actual results to differ materially from our forward-looking statements. Please also see the section entitled \"Special Note Regarding Forward-Looking Statements.\"",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 832,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "826,515",
+     "",
+     "$",
+     "1,260,973",
+     "",
+     "$",
+     "(434,458)",
+     "",
+     "(34)",
+     "%"
+    ],
+    [
+     "Other revenue",
+     "11,627",
+     "",
+     "",
+     "13,526",
+     "",
+     "",
+     "(1,899)",
+     "",
+     "",
+     "(14)",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "838,142",
+     "",
+     "",
+     "1,274,499",
+     "",
+     "",
+     "(436,357)",
+     "",
+     "",
+     "(34)",
+     "%"
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "430,750",
+     "",
+     "",
+     "506,530",
+     "",
+     "",
+     "(75,780)",
+     "",
+     "",
+     "(15)",
+     "%"
+    ],
+    [
+     "Research and development",
+     "11,908,294",
+     "",
+     "",
+     "16,989,911",
+     "",
+     "",
+     "(5,081,617)",
+     "",
+     "",
+     "(30)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative",
+     "10,573,321",
+     "",
+     "",
+     "18,503,684",
+     "",
+     "",
+     "(7,930,363)",
+     "",
+     "",
+     "(43)",
+     "%"
+    ],
+    [
+     "Total costs and expenses",
+     "22,912,365",
+     "",
+     "",
+     "36,000,125",
+     "",
+     "",
+     "(13,087,760)",
+     "",
+     "",
+     "(36)",
+     "%"
+    ],
+    [
+     "Loss from operations",
+     "(22,074,223)",
+     "",
+     "",
+     "(34,725,626)",
+     "",
+     "",
+     "12,651,403",
+     "",
+     "",
+     "(36)",
+     "%"
+    ],
+    [
+     "Interest income, net",
+     "152,006",
+     "",
+     "",
+     "291,964",
+     "",
+     "",
+     "(139,958)",
+     "",
+     "",
+     "(48)",
+     "%"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21,922,217)",
+     "",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "12,511,445",
+     "",
+     "(36)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Change"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 985,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Selling, general and administrative expenses also include costs related to our Consumer Operations segment for our consumer brand and HOTSHOT. These costs include personnel costs, costs related to our marketing, sales and promotional activities, including print and digital media campaigns, public relations activities, field marketing efforts, market research, other sales and promotional activities and costs related to the distribution of HOTSHOT. These distribution costs include shipping and handling costs incurred once the product is in salable condition.\nOur selling, general and administrative expenses may increase as we incur costs related to the merger, operate as a public company and continue to sell HOTSHOT.\nInterest Income, Net\nInterest income, net primarily consists of interest income from our cash, cash equivalents and marketable securities, amortization and accretion of investment premiums and realized gains and losses.\nResults of Operations\nYear Ended December 31, 2018 Compared to the Year Ended December 31, 2017\nThe following table sets forth our results of operations for the year ended December 31, 2018 compared to the year ended December 31, 2017.",
+   "prose_after": "Revenue\nOur Consumer Operations segment generated all of our revenue during the year ended December 31, 2018, totaling $0.8 million, as compared to $1.3 million for the year ended December 31, 2017, through sales of HOTSHOT and expedited shipping and handling purchases. The decrease in revenue of $0.4 million primarily relates to decreased marketing spend and activity during the year ended December 31, 2018 compared to the year ended December 31, 2017, as we reduced our Consumer Operations spending while we have been evaluating strategic alternatives for the segment.\nSales via e-commerce represented approximately 85% of our total revenue for the year ended December 31, 2018 compared to 82% for the year ended December 31, 2017.\nDuring the year ended December 31, 2018, we sold approximately 184,000 bottles of HOTSHOT at an average total revenue per bottle of $4.56, compared to 298,000 bottles at an average total revenue per bottle of $4.28 during the year ended December 31, 2017. The increase in average total revenue per bottle is primarily related to fewer price promotions in 2018 compared to 2017, as well a change to the e-commerce trial pack offer in 2018, resulting in higher revenue per bottle compared to the prior year. The decrease in volume of bottles sold in the comparative periods was primarily due to decreased marketing efforts and resulting demand. In addition, the decrease in the number of bottles sold relates to our adoption of ASC 606, as revenue we deferred in the fourth quarter of 2016 was recognized during the first quarter of 2017 under ASC 605.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 962,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "1,260,973",
+     "",
+     "$",
+     "989,918",
+     "",
+     "$",
+     "271,055",
+     "",
+     "27",
+     "%"
+    ],
+    [
+     "Other revenue",
+     "13,526",
+     "",
+     "",
+     "20,745",
+     "",
+     "",
+     "(7,219)",
+     "",
+     "",
+     "(35)",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "1,274,499",
+     "",
+     "",
+     "1,010,663",
+     "",
+     "",
+     "263,836",
+     "",
+     "",
+     "26",
+     "%"
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "506,530",
+     "",
+     "",
+     "662,747",
+     "",
+     "",
+     "(156,217)",
+     "",
+     "",
+     "(24)",
+     "%"
+    ],
+    [
+     "Research and development",
+     "16,989,911",
+     "",
+     "",
+     "20,378,161",
+     "",
+     "",
+     "(3,388,250)",
+     "",
+     "",
+     "(17)",
+     "%"
+    ],
+    [
+     "Selling, general and administrative",
+     "18,503,684",
+     "",
+     "",
+     "19,855,987",
+     "",
+     "",
+     "(1,352,303)",
+     "",
+     "",
+     "(7)",
+     "%"
+    ],
+    [
+     "Total costs and expenses",
+     "36,000,125",
+     "",
+     "",
+     "40,896,895",
+     "",
+     "",
+     "(4,896,770)",
+     "",
+     "",
+     "(12)",
+     "%"
+    ],
+    [
+     "Loss from operations",
+     "(34,725,626)",
+     "",
+     "",
+     "(39,886,232)",
+     "",
+     "",
+     "5,160,606",
+     "",
+     "",
+     "(13)",
+     "%"
+    ],
+    [
+     "Interest income, net",
+     "291,964",
+     "",
+     "",
+     "393,109",
+     "",
+     "",
+     "(101,145)",
+     "",
+     "",
+     "(26)",
+     "%"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "(39,493,123)",
+     "",
+     "$",
+     "5,059,461",
+     "",
+     "(13)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Change"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1060,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Our consolidated loss from operations for the year ended December 31, 2018 totaled $22.1 million. Of this total, $2.0 million of the operating loss was incurred by our Consumer Operations segment, $11.9 million was incurred by our Drug Development segment and the remaining $8.2 million related to corporate and unallocated costs. The operating loss incurred by the Consumer Operations segment was driven by sales, marketing, promotional and distribution costs related to HOTSHOT, and personnel-related expenses, including stock-based compensation. These costs were slightly offset by the total revenue generated from HOTSHOT sales during the year ended December 31, 2018. The operating loss incurred by the Drug Development segment relates to costs incurred for FLX-787 formulation, production and clinical study costs, other clinical study activities and personnel-related expenses, including stock-based compensation and restructuring-related expenses, as well as consulting costs.\nInterest Income, net\nInterest income, net, decreased by $0.1 million in the year ended December 31, 2018 compared to the year ended December 31, 2017 as we had lower available cash to invest.\nYear Ended December 31, 2017 Compared to the Year Ended December 31, 2016\nThe following table sets forth our results of operations for the year ended December 31, 2017 compared to the year ended December 31, 2016.",
+   "prose_after": "Revenue\nOur Consumer Operations segment generated all of our revenue during the year ended December 31, 2017, totaling $1.3 million, as compared to $1.0 million for the year ended December 31, 2016 through sales of HOTSHOT and expedited shipping and handling purchases. HOTSHOT launched in the second quarter of 2016. Revenue was driven by our HOTSHOT marketing, sales and promotional efforts, including our print and digital media campaigns, public relation efforts, field marketing efforts and other sales and promotional activities.\nSales via e-commerce represented approximately 82% of our total revenue for the year ended December 31, 2017 compared to 92% for the year ended December 31, 2016. E-commerce revenue decreased as a percentage of total revenue in the comparative periods due to an increase in specialty retailer and sports team revenue in 2017.\nDuring the year ended December 31, 2017, we sold approximately 298,000 bottles of HOTSHOT at an average total revenue per bottle of $4.28, compared to 210,000 bottles at an average total revenue per bottle of $4.81 during the year ended December 31, 2016. The decrease in average total revenue per bottle is due to various price promotions that were offered to customers during 2017 to attract new and repeat customers. The increase in the number of bottles sold was a result of HOTSHOT being sold for a full year in 2017, compared to a partial year in 2016.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1103,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(23,598,660)",
+     "",
+     "$",
+     "(27,722,198)",
+     "",
+     "$",
+     "(32,052,113)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "14,124,238",
+     "",
+     "",
+     "24,489,562",
+     "",
+     "",
+     "(12,240,880)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "118,010",
+     "",
+     "",
+     "2,632",
+     "",
+     "",
+     "22,098",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "$",
+     "(9,356,412)",
+     "",
+     "$",
+     "(3,230,004)",
+     "",
+     "$",
+     "(44,270,895)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1178,
+    "end_line": 1190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "On January 22, 2018, we disclosed that we engaged an investment banking firm to assist with the consideration of strategic alternatives for our consumer business segment. In connection with the restructuring plan announced in June 2018, we elected to reduce the expenses associated with our consumer business segment while we assessed strategic alternatives for the Company and this segment. The Company is continuing to assess alternatives for the Consumer Operations segment.\nOutlook\nBased on our research and development plans, our consumer brand and HOTSHOT expenditure plans and the ending of the Phase 2 clinical trials in MND and CMT and the related drug development work, we expect that our existing cash resources will enable us to fund our costs and expenses, working capital and capital expenditure requirements for at least 12 months from the date the financial statements are issued. We based this estimate on assumptions that may prove to be wrong, however, and we could use our capital resources sooner than expected.\nCash Flows",
+   "prose_after": "Operating activities\nNet cash used in operating activities for the year ended December 31, 2018 was $23.6 million, a decrease of $4.1 million compared to the same period in the prior year. The use of cash for the year ended December 31, 2018 was primarily related to our net loss for the period of $21.9 million, offset by non-cash charges consisting of stock compensation expense of $1.9 million, and depreciation, amortization and accretion on investments, and other non-cash items, which totaled $0.3 million. Cash used in operations was increased by a $3.9 million cash outflow from changes in operating assets and liabilities. This outflow was driven by a decrease in accounts payable, accrued expenses and other current liabilities, and deferred rent, which together totaled $4.7 million. The decrease in accounts payable relates to decreased spending at December 31, 2018 compared to December 31, 2017. The decrease in accrued expenses and other current liabilities relates primarily to decreased clinical activity due to the close out of the MND and CMT Phase 2 clinical trials in third quarter of 2018, and decreases in accrued bonus and accrued vacation due to the terminations related to the corporate restructuring, as well as payment of prior year employee-related accruals, partially offset by the accrual for restructuring-related activities as of December 31, 2018. The decrease in deferred rent is due to terminating the operating lease for the company's former corporate headquarters in December 2018. These outflows were offset by inflows from decreases in prepaid expenses and other current assets of $0.6 million and inventory of $0.2 million. The decrease in prepaid expenses and other",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1195,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2018",
+     "Year ended December 31, 2017",
+     "Year ended December 31, 2016"
+    ],
+    [
+     "Expected volatility",
+     "81.56% to 82.41%",
+     "73.87% to 81.04%",
+     "71.01% to 74.20%"
+    ],
+    [
+     "Risk-free interest rate",
+     "2.45% to 2.91%",
+     "1.83% to 2.40%",
+     "1.23% to 2.40%"
+    ],
+    [
+     "Expected term",
+     "5.3 - 10 years",
+     "5.3 - 9.5 years",
+     "5.3 - 10 years"
+    ],
+    [
+     "Expected dividend yield",
+     "0%",
+     "0%",
+     "0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1284,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Fair value of our common stock \u2014 Because our stock was not publicly traded prior to the completion of our IPO in February 2015, we estimated the fair value of our common stock, as discussed below. As a result of the completion of our IPO, our common stock is now valued by reference to the publicly-traded closing price of our common stock on the date of grant.\n\u2022 Risk-free interest rate \u2014 The risk-free interest rate is based on the yields of U.S. Treasury securities with maturities similar to the expected term of the options for each option group.\n\u2022 Expected term \u2014 The expected term represents the period that our stock-based awards are expected to be outstanding.\n\u2022 Expected volatility \u2014 As we do not have a significant trading history for our common stock, the expected stock price volatility for our common stock was estimated by taking the volatility for industry peers over a period equivalent to the expected term of the stock option grants.\n\u2022 Expected dividend yield \u2014 We have never declared or paid any cash dividends and do not presently plan to pay cash dividends in the foreseeable future. Consequently, we used an expected dividend yield of zero.\nThe following table presents the weighted-average assumptions used to estimate the fair value of options granted during the periods presented:",
+   "prose_after": "We will continue to use judgment in evaluating the assumptions utilized for our stock-based compensation expense calculations on a prospective basis.\nPrior to adoption of ASU No. 2016-09 Stock Compensation (Topic 718): Improvements to Employee Share-Based Payment Accounting, or ASU No. 2016-09, stock-based compensation expense was recognized net of estimated forfeitures, such that expense was recognized only for share-based awards that were expected to vest. A forfeiture rate was estimated annually and revised, if necessary, in subsequent periods if actual forfeitures differed from initial\nestimates. Upon adoption of ASU No. 2016-09 on January 1, 2017, we no longer apply a forfeiture rate and instead account for forfeitures as they occur. We recorded the difference in forfeiture estimate as a cumulative adjustment to retained earnings in the first quarter of 2017.\nPrior to the completion of our IPO, our board of directors determined the fair value of our common stock considering, in part, the work of an independent third-party valuation specialist. The board determined the estimated per share fair value of our common stock at various dates considering valuations performed in accordance with the guidance outlined in the American Institute of Certified Public Accountants Practice Aid, Valuation of Privately-Held Company Equity Securities Issued as Compensation, or Practice Aid.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1266,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Pages"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Pages"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1385,
+    "end_line": 1396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The information required by this item is incorporated by reference to the information set forth in the sections titled \u201cTransactions with Related Persons\u201d and \u201cInformation Regarding the Board of Directors and Corporate Governance\u201d in our proxy statement for our 2019 Annual Meeting of Stockholders. If such proxy statement is not filed on or before April 30, 2019, the information called for by this item will be filed as part of an amendment to this Annual Report on Form 10-K on or before such date.\nItem 14. Principal Accountant Fees and Services\nThe information required by this item is incorporated by reference to the information set forth in the section titled \u201cIndependent Registered Public Accounting Firm Fees\" contained in Proposal 2 in our proxy statement for our 2019 Annual Meeting of Stockholders. If such proxy statement is not filed on or before April 30, 2019, the information called for by this item will be filed as part of an amendment to this Annual Report on Form 10-K on or before such date.\nPART IV\nItem 15. Exhibits and Consolidated Financial Statement Schedules\nConsolidated Financial Statements\nThe following consolidated financial statements are filed as a part of this Annual Report on Form 10-K:",
+   "prose_after": "Financial Statement Schedules\nAll other schedules are omitted because they are not required or the required information is included in the financial statements or notes thereto.\nExhibits\nThe exhibits listed below are filed as part of this Form 10-K other than Exhibit 32.1, which shall be deemed furnished.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1360,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Incorporated by reference herein",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Description",
+     "Form",
+     "Date Filed with SEC"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "",
+     "Agreement and Plan of Merger dated January 3, 2019 by and among the Registrant, Falcon Acquisition Sub, LLC and Salarius Pharmaceuticals, LLC.",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "January 4, 2019"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Amended and Restated Certificate of Incorporation of the Registrant",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "February 9, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Amended and Restated Bylaws of the Registrant",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "February 9, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Form of Common Stock Certificate of the Registrant",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "January 13, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "",
+     "Amended and Restated Investors' Rights Agreement, dated July 23, 2014, by and among the Registrant and certain of its stockholders",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "December 29, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "+",
+     "Form of Indemnity Agreement by and between the Registrant and its directors and officers",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "January 13, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "+",
+     "Flex Pharma, Inc. 2014 Equity Incentive Plan, as amended, and Forms of Stock Option Agreement, Notice of Exercise and Stock Option Grant Notice thereunder",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "December 29, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "+",
+     "Flex Pharma, Inc. 2015 Equity Incentive Plan",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "January 13, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "+",
+     "Forms of Stock Option Agreement, Notice of Exercise and Stock Option Grant Notice under the Flex Pharma, Inc. 2015 Equity Incentive Plan",
+     "Annual Report on Form 10-K (File No. 001-36812)",
+     "March 24, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "+",
+     "Flex Pharma, Inc. 2015 Employee Stock Purchase Plan",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "January 13, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "+",
+     "Flex Pharma, Inc. Non-Employee Director Compensation Policy, as revised",
+     "Annual Report on Form 10-K (File No. 001-36812)",
+     "March 8, 2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "+",
+     "Offer Letter, dated December 23, 2014, by and between the Registrant and Thomas Wessel",
+     "Annual Report on Form 10-K (File No. 001-36812)",
+     "March 8, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "+",
+     "Amendment to Offer Letter, dated May 27, 2015, by and between the Registrant and Thomas Wessel",
+     "Annual Report on Form 10-K (File No. 001-36812)",
+     "March 8, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "+",
+     "Separation Agreement, effective as of June 26, 2018, by and between the Registrant and Thomas Wessel",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "August 1, 2018"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "+",
+     "Advisor Agreement, dated June 26, 2018, by and between the Registrant and Thomas Wessel",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "August 1, 2018"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "",
+     "Royalty Agreement, dated March 20, 2014, by and between the Registrant, Bruce Bean, Donald MacKinnon, Roderick MacKinnon and Christoph Westphal",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "December 29, 2014"
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by reference herein"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1406,
+    "end_line": 1454
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Financial Statement Schedules\nAll other schedules are omitted because they are not required or the required information is included in the financial statements or notes thereto.\nExhibits\nThe exhibits listed below are filed as part of this Form 10-K other than Exhibit 32.1, which shall be deemed furnished.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1455,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Incorporated by reference herein",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Description",
+     "Form",
+     "Date Filed with SEC"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "",
+     "Founders Agreement, dated February 25, 2014, by and among Bruce Bean, Donald MacKinnon, Roderick MacKinnon and Christoph Westphal, as adopted by the Registrant on February 27, 2014, as amended",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "December 29, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "",
+     "Technology Assignment Agreement, dated March 20, 2014, by and between the Registrant, Catalyst Research, LLC, Bruce Bean, Donald MacKinnon and Roderick MacKinnon",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "December 29, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "",
+     "Patent Assignment Agreement, dated March 20, 2014, by and between the Registrant, Bruce Bean, Donald MacKinnon and Roderick MacKinnon",
+     "Registration Statement on Form S-1 (File No. 333-201276), as amended.",
+     "December 29, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "",
+     "Lease Agreement, dated January 27, 2017, between the Registrant and BP Prucenter Acquisition LLC",
+     "Current Report on Form 8-K (File No. 001-36812), as amended.",
+     "February 2, 2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "",
+     "License Agreement, dated May 1, 2014, by and between the Registrant and ECLDS, LLC, as amended",
+     "Current Report on Form 10-Q (File No. 001-36812)",
+     "August 3, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "+",
+     "Executive Employment Agreement, dated as of May 27, 2015, by and between the Registrant and John McCabe",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "June 2, 2015"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "+",
+     "Amendment to Executive Employment Agreement dated December 14, 2016 between John McCabe and the Registrant",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "December 15, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "+",
+     "Amendment to Executive Employment Agreement, effective as of June 20, 2018, by and between the Registrant and John McCabe",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "August 1, 2018"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "+",
+     "Executive Employment Agreement, dated as of May 27, 2015, by and between the Registrant and Elizabeth Woo",
+     "Annual Report on Form 10-K (File No. 001-36812)",
+     "March 8, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "+",
+     "Executive Employment Agreement, dated as of April 5, 2017, by and between the Registrant and William McVicar",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "April 5, 2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.22",
+     "+",
+     "Amendment to Executive Employment Agreement, dated as of July 6, 2017, by and between the Registrant and William McVicar",
+     "Current Report on Form 8-K (File No. 001-36812)",
+     "July 11, 2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.23",
+     "+",
+     "Amended and Restated Executive Employment Agreement, dated as of August 1, 2017, by and between the Registrant and William McVicar",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "November 6, 2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.24",
+     "+",
+     "Amendment to Executive Employment Agreement, effective as of June 20, 2018, by and between the Registrant and William McVicar",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "August 1, 2018"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.25",
+     "\u2020",
+     "Production Agreement with Aseptic Solutions USA, LLC and Flex Innovation Group LLC",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "May 4, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.26",
+     "\u2020",
+     "Supply Agreement dated May 9, 2016 by and between Trilogy Essential Ingredients Inc. and Flex Innovation Group LLC",
+     "Quarterly Report on Form 10-Q (File No. 001-36812)",
+     "August 3, 2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "",
+     "Subsidiaries of the Registrant",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "",
+     "Consent of Ernst & Young LLP, Independent Registered Public Accounting Firm",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "24.1",
+     "",
+     "Power of Attorney is made to the signature page hereto",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by reference herein"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1456,
+    "end_line": 1515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1455,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1516,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Incorporated by reference herein",
+     ""
+    ],
+    [
+     "Number",
+     "",
+     "Description",
+     "Form",
+     "Date Filed with SEC"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of the Principal Executive Officer pursuant to Rule 13a-14(a) or 15d-14(a) of the Securities Exchange Act of 1934",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of the Principal Financial Officer pursuant to Rule 13a-14(a) or 15d-14(a) of the Securities Exchange Act of 1934",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "#",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Rule 13a-14(b) or 15d-14(b) of the Exchange Act and 18 U.S.C. Section 1350",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by reference herein"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1517,
+    "end_line": 1542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "+ Indicates management contract or compensatory plan.\n\u2020 Confidential treatment granted as to portions of the exhibit. Confidential materials omitted and filed separately with the SEC.\n# Furnished herewith and not deemed to be \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), and shall not be deemed to be incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act.\nIndex to Consolidated Financial Statements\nAs of December 31, 2018 and 2017, for the year ended December 31, 2018, 2017 and 2016",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1516,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1549,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Pages"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Pages"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1555,
+    "end_line": 1566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "+ Indicates management contract or compensatory plan.\n\u2020 Confidential treatment granted as to portions of the exhibit. Confidential materials omitted and filed separately with the SEC.\n# Furnished herewith and not deemed to be \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), and shall not be deemed to be incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act.\nIndex to Consolidated Financial Statements\nAs of December 31, 2018 and 2017, for the year ended December 31, 2018, 2017 and 2016",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nThe Stockholders and Board of Directors of\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Flex Pharma, Inc. (the \u201cCompany\u201d) as of December 31, 2018 and 2017, and the related consolidated statements of operations, comprehensive loss, stockholders\u2019 equity and cash flows for each of the three years in the period ended December 31, 2018, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at December 31, 2018 and 2017, and the results of its operations and its cash flows for each of the three years in the period ended December 31, 2018, in conformity with U.S. generally accepted accounting principles.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1549,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1566,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 0.6,
+   "rows": [
+    [
+     "/s/ Ernst & Young LLP"
+    ],
+    [
+     ""
+    ],
+    [
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2014."
+    ],
+    [
+     ""
+    ],
+    [
+     "Boston, Massachusetts"
+    ],
+    [
+     "March 6, 2019"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Ernst & Young LLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1585,
+    "end_line": 1593
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1571,
+     "token": "REPEATING_HEADER",
+     "id": 58,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1593,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "9,829,624",
+     "",
+     "$",
+     "19,186,036",
+     ""
+    ],
+    [
+     "  Restricted cash",
+     "126,595",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities",
+     "\u2014",
+     "",
+     "",
+     "14,129,723",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "9,939",
+     "",
+     "",
+     "10,385",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "186,920",
+     "",
+     "",
+     "431,891",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "162,088",
+     "",
+     "",
+     "777,102",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "10,315,166",
+     "",
+     "",
+     "34,535,137",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "74,460",
+     "",
+     "",
+     "331,040",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "\u2014",
+     "",
+     "",
+     "126,595",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "10,389,626",
+     "",
+     "$",
+     "34,992,772",
+     ""
+    ],
+    [
+     "Liabilities and stockholders' equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "342,530",
+     "",
+     "$",
+     "2,004,440",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "764,340",
+     "",
+     "",
+     "3,712,221",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "\u2014",
+     "",
+     "",
+     "72,188",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent, current portion",
+     "\u2014",
+     "",
+     "",
+     "58,821",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "1,106,870",
+     "",
+     "",
+     "5,847,670",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent, net of current portion",
+     "\u2014",
+     "",
+     "",
+     "39,214",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "1,106,870",
+     "",
+     "",
+     "5,886,884",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 10,000,000 shares authorized at December 31, 2018 and December 31, 2017; none issued or outstanding at December 31, 2018 and December 31, 2017",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 100,000,000 shares authorized at December 31, 2018 and December 31, 2017, 18,069,476 and 17,972,166 shares issued at December 31, 2018 and December 31, 2017, respectively, and 18,067,392 and 17,797,178 shares outstanding at December 31, 2018 and December 31, 2017, respectively",
+     "1,807",
+     "",
+     "",
+     "1,780",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "142,242,224",
+     "",
+     "",
+     "140,184,630",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "\u2014",
+     "",
+     "",
+     "(1,247)",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(132,961,275)",
+     "",
+     "",
+     "(111,079,275)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "9,282,756",
+     "",
+     "",
+     "29,105,888",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "10,389,626",
+     "",
+     "$",
+     "34,992,772",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1597,
+    "end_line": 1643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1593,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1644,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "826,515",
+     "",
+     "$",
+     "1,260,973",
+     "",
+     "$",
+     "989,918",
+     ""
+    ],
+    [
+     "Other revenue",
+     "11,627",
+     "",
+     "",
+     "13,526",
+     "",
+     "",
+     "20,745",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "838,142",
+     "",
+     "",
+     "1,274,499",
+     "",
+     "",
+     "1,010,663",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "430,750",
+     "",
+     "",
+     "506,530",
+     "",
+     "",
+     "662,747",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "11,908,294",
+     "",
+     "",
+     "16,989,911",
+     "",
+     "",
+     "20,378,161",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "10,573,321",
+     "",
+     "",
+     "18,503,684",
+     "",
+     "",
+     "19,855,987",
+     "",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "22,912,365",
+     "",
+     "",
+     "36,000,125",
+     "",
+     "",
+     "40,896,895",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(22,074,223)",
+     "",
+     "",
+     "(34,725,626)",
+     "",
+     "",
+     "(39,886,232)",
+     "",
+     ""
+    ],
+    [
+     "Interest income, net",
+     "152,006",
+     "",
+     "",
+     "291,964",
+     "",
+     "",
+     "393,109",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21,922,217)",
+     "",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "(39,493,123)",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders",
+     "$",
+     "(21,922,217)",
+     "",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "(39,493,123)",
+     ""
+    ],
+    [
+     "Net loss per share attributable to common stockholders \u2014 basic and diluted",
+     "$",
+     "(1.22)",
+     "",
+     "$",
+     "(1.99)",
+     "",
+     "$",
+     "(2.43)",
+     ""
+    ],
+    [
+     "Weighted-average number of common shares outstanding \u2014 basic and diluted",
+     "18,016,841",
+     "",
+     "",
+     "17,260,626",
+     "",
+     "",
+     "16,233,985",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1648,
+    "end_line": 1675
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1644,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21,922,217)",
+     "",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "(39,493,123)",
+     ""
+    ],
+    [
+     "Other comprehensive gain:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in net unrealized gains on available-for-sale securities",
+     "1,247",
+     "",
+     "",
+     "367",
+     "",
+     "",
+     "23,040",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(21,920,970)",
+     "",
+     "$",
+     "(34,433,295)",
+     "",
+     "$",
+     "(39,470,083)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1680,
+    "end_line": 1692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 1693,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total Stockholders' Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total Stockholders' Equity",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2015",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "15,741,618",
+     "$",
+     "1,574",
+     "$",
+     "129,367,978",
+     "",
+     "",
+     "$",
+     "(24,654)",
+     "",
+     "$",
+     "(37,152,490)",
+     "",
+     "",
+     "$",
+     "92,192,408",
+     ""
+    ],
+    [
+     "Vesting of restricted common stock",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,023,664",
+     "102",
+     "",
+     "(102)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock from option exercises",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "8,516",
+     "2",
+     "",
+     "22,096",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "22,098",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "6,572,963",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "6,572,963",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on available-for-sale securities",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "23,040",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "23,040",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(39,493,123)",
+     "",
+     "",
+     "",
+     "(39,493,123)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2016",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "16,773,798",
+     "$",
+     "1,678",
+     "$",
+     "135,962,935",
+     "",
+     "",
+     "$",
+     "(1,614)",
+     "",
+     "$",
+     "(76,645,613)",
+     "",
+     "",
+     "$",
+     "59,317,386",
+     ""
+    ],
+    [
+     "Vesting of restricted common stock",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,021,804",
+     "102",
+     "",
+     "(102)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock from option exercises",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,576",
+     "\u2014",
+     "",
+     "2,632",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "2,632",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "4,219,165",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "4,219,165",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on available-for-sale securities",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "367",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "367",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(34,433,662)",
+     "",
+     "",
+     "",
+     "(34,433,662)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2017",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "17,797,178",
+     "$",
+     "1,780",
+     "$",
+     "140,184,630",
+     "",
+     "",
+     "$",
+     "(1,247)",
+     "",
+     "$",
+     "(111,079,275)",
+     "",
+     "",
+     "$",
+     "29,105,888",
+     ""
+    ],
+    [
+     "Vesting of restricted common stock",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "172,904",
+     "17",
+     "",
+     "(17)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock from option exercises",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "97,310",
+     "10",
+     "",
+     "118,000",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "118,010",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,939,611",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "1,939,611",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on available-for-sale securities",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "1,247",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "1,247",
+     "",
+     ""
+    ],
+    [
+     "Adjustment related to adoption of new accounting pronouncement using the modified retrospective transition method (Note 2)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "40,217",
+     "",
+     "",
+     "",
+     "40,217",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(21,922,217)",
+     "",
+     "",
+     "",
+     "(21,922,217)",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "18,067,392",
+     "$",
+     "1,807",
+     "$",
+     "142,242,224",
+     "",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(132,961,275)",
+     "",
+     "",
+     "$",
+     "9,282,756",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total Stockholders' Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1697,
+    "end_line": 1741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+   "prose_after": "See accompanying notes to consolidated financial statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1693,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": null,
+     "page_number": 5
+    },
+    "after": {
+     "line": 1743,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(21,922,217)",
+     "",
+     "$",
+     "(34,433,662)",
+     "",
+     "$",
+     "(39,493,123)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "228,158",
+     "",
+     "",
+     "324,548",
+     "",
+     "",
+     "277,231",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "1,939,611",
+     "",
+     "",
+     "4,219,165",
+     "",
+     "",
+     "6,572,963",
+     "",
+     ""
+    ],
+    [
+     "Amortization and accretion on investments",
+     "11,537",
+     "",
+     "",
+     "(68,139)",
+     "",
+     "",
+     "16,161",
+     "",
+     ""
+    ],
+    [
+     "Other non-cash items",
+     "20,310",
+     "",
+     "",
+     "1,781",
+     "",
+     "",
+     "3,434",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "7,206",
+     "",
+     "",
+     "1,796",
+     "",
+     "",
+     "(12,181)",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "227,979",
+     "",
+     "",
+     "22,241",
+     "",
+     "",
+     "(454,132)",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "600,121",
+     "",
+     "",
+     "148,881",
+     "",
+     "",
+     "(17,409)",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "\u2014",
+     "",
+     "",
+     "64,800",
+     "",
+     "",
+     "(64,800)",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(1,661,910)",
+     "",
+     "",
+     "819,357",
+     "",
+     "",
+     "309,437",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "(2,951,420)",
+     "",
+     "",
+     "1,124,648",
+     "",
+     "",
+     "746,879",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "\u2014",
+     "",
+     "",
+     "(16,156)",
+     "",
+     "",
+     "88,344",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "(98,035)",
+     "",
+     "",
+     "68,542",
+     "",
+     "",
+     "(9,475)",
+     "",
+     ""
+    ],
+    [
+     "Other long term liabilities",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(15,442)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(23,598,660)",
+     "",
+     "",
+     "(27,722,198)",
+     "",
+     "",
+     "(32,052,113)",
+     "",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of marketable securities",
+     "(1,997,751)",
+     "",
+     "",
+     "(32,987,697)",
+     "",
+     "",
+     "(38,682,081)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from maturities and sales of marketable securities",
+     "16,117,184",
+     "",
+     "",
+     "57,585,413",
+     "",
+     "",
+     "26,995,324",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "\u2014",
+     "",
+     "",
+     "(113,498)",
+     "",
+     "",
+     "(559,378)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales of property and equipment",
+     "4,805",
+     "",
+     "",
+     "5,344",
+     "",
+     "",
+     "5,255",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "14,124,238",
+     "",
+     "",
+     "24,489,562",
+     "",
+     "",
+     "(12,240,880)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from exercise of common stock",
+     "118,010",
+     "",
+     "",
+     "2,632",
+     "",
+     "",
+     "22,098",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "118,010",
+     "",
+     "",
+     "2,632",
+     "",
+     "",
+     "22,098",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash, cash equivalents and restricted cash",
+     "(9,356,412)",
+     "",
+     "",
+     "(3,230,004)",
+     "",
+     "",
+     "(44,270,895)",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at beginning of period",
+     "19,312,631",
+     "",
+     "",
+     "22,542,635",
+     "",
+     "",
+     "66,813,530",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at end of period",
+     "$",
+     "9,956,219",
+     "",
+     "$",
+     "19,312,631",
+     "",
+     "$",
+     "22,542,635",
+     ""
+    ],
+    [
+     "Supplemental cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment purchases included in accounts payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "7,100",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1747,
+    "end_line": 1794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n1. Organization and operations\nThe Company\nFlex Pharma Inc. (the \u201cCompany\u201d) is a biotechnology company that was previously focused on developing innovative and proprietary treatments for muscle cramps, spasms and spasticity associated with severe neurological conditions. In June 2018, the Company announced that it was ending the Company's ongoing Phase 2 clinical trials of the Company's lead drug product candidate, FLX-787, in patients with motor neuron disease, or MND, primarily with amyotrophic lateral sclerosis, or ALS, and in patients with Charcot-Marie-Tooth disease, or CMT, due to oral tolerability concerns observed in both studies. The wind-down of the activities associated with these studies was completed in the third quarter of 2018.\nIn 2016, the Company launched its consumer product, HOTSHOT\u00ae, to prevent and treat exercise-associated muscle cramps, or EAMCs. The Company continues to market and sell HOTSHOT to endurance athletes who drink it before, during and after exercise to prevent and treat EAMCs.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1743,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1795,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": null,
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Asset type",
+     "Estimated useful life"
+    ],
+    [
+     "Computers and computer equipment",
+     "3 years"
+    ],
+    [
+     "Laboratory equipment",
+     "3 years"
+    ],
+    [
+     "Manufacturing equipment",
+     "3 years"
+    ],
+    [
+     "Website development costs",
+     "1-2 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1891,
+    "end_line": 1899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "Restructuring-related costs are recorded within research and development expenses and selling, general and administrative expenses on the Company's consolidated statement of operations. Liabilities associated with the Company's restructuring activities are recorded as a component of accrued expenses and other current liabilities on its consolidated balance sheet. See Note 9 for additional information on the Company's current restructuring plan.\nProperty and equipment\nProperty and equipment are stated at cost, less accumulated depreciation. Maintenance and repairs that do not improve or extend the lives of the respective assets are expensed to operations as incurred, while costs of major additions and betterments are capitalized. Upon disposal, the related cost and accumulated depreciation is removed from the accounts and any resulting gain or loss is included in the results of operations. Depreciation is recorded, once assets are placed in service, using the straight-line method over the estimated useful lives of the respective assets, which are as follows:",
+   "prose_after": "Impairment of long-lived assets\nThe Company evaluates long-lived assets for potential impairment when events or changes in circumstances indicate the carrying value of the assets may not be recoverable. Recoverability is measured by comparing the book values of the assets to the expected future net undiscounted cash flows that the assets are expected to generate. If such assets are considered to be impaired, the impairment to be recognized is measured by the amount by which\nthe book value of the assets exceed their fair value. The Company has not recognized any impairment losses through December 31, 2018.\nResearch and development expense\nResearch and development costs are charged to expense as incurred in performing research and development activities. The costs include employee compensation costs, clinical study costs, external consultant costs, regulatory costs and facilities and overhead costs. Facilities and overhead costs have primarily included the allocation of insurance, rent, utility and office-related expenses attributable to research and development personnel. The Company records payments made to outside vendors in advance of services performed or goods being delivered for use in research and development activities as prepaid expenses, which are expensed as services are performed or goods are delivered.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1872,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1903,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "December 31, 2017",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "9,829,624",
+     "$",
+     "19,186,036"
+    ],
+    [
+     "Restricted cash",
+     "126,595",
+     "",
+     "126,595",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash shown on the condensed consolidated statement of cash flows",
+     "$",
+     "9,956,219",
+     "$",
+     "19,312,631"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1952,
+    "end_line": 1961
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of significant accounting policies"
+    }
+   },
+   "prose_before": "In November 2016, the FASB issued ASU No. 2016-18, Statement of Cash Flows (\u201cASU 2016-18\u201d). ASU 2016-18 requires entities to show the changes in the total of cash, cash equivalents, restricted cash and restricted cash equivalents in the statement of cash flows. As a result, entities are no longer required to present transfers between cash and cash equivalents and restricted cash and restricted cash equivalents in the statement of cash flows. When cash, cash equivalents, restricted cash and restricted cash equivalents are presented in more than one line item on the balance sheet, the new guidance requires a reconciliation of the totals in the statement of cash flows to the related captions in the balance sheet. The Company adopted ASU No. 2016-18 in the first quarter of 2018, retrospectively, resulting in a change to the presentation of restricted cash on the condensed consolidated statement of cash flows.\nThe following table provides a reconciliation of cash and cash equivalents and restricted cash reported within the condensed consolidated balance sheets that sum to the total of such amounts in the condensed consolidated statements of cash flows:",
+   "prose_after": "In May 2017, the FASB issued ASU No. 2017-09, Stock Compensation (Topic 718): Scope of Modification Accounting (\u201cASU 2017-09\u201d), to provide clarity and reduce diversity in practice, cost and complexity when applying the guidance of Topic 718. The guidance is effective for fiscal years beginning after December 15, 2017 and interim periods within those years. Early adoption is permitted, and the guidance should be applied prospectively. The Company adopted ASU 2017-09 in the first quarter of 2018, which did not impact the Company's condensed consolidated financial statements or disclosures.\nIn June 2018, the FASB issued ASU 2018-07. This ASU is intended to simplify aspects of share-based compensation issued to non-employees by making the guidance consistent with the accounting for employee share-based compensation. The guidance is effective for fiscal years beginning after December 15, 2018, including interim periods within that year. Early adoption is permitted, but not before an entity has adopted ASC 606, and the guidance should be applied using a modified retrospective transition approach. The Company early adopted ASU 2018-07 on July 1, 2018 and revalued its unvested nonemployee awards as of the July 1, 2018 adoption date. The",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1965,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Balance at December 31, 2018",
+     ""
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "2,333,771",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "2,333,771"
+    ],
+    [
+     "",
+     "$",
+     "2,333,771",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "2,333,771"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2033,
+    "end_line": 2042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Fair value measurements"
+    }
+   },
+   "prose_before": "The Company records cash equivalents and marketable securities at fair value. ASC Topic 820, Fair Value Measurements and Disclosures established a fair value hierarchy for those instruments measured at fair value that distinguishes between assumptions based on market data (observable inputs) and the Company\u2019s own assumptions (unobservable inputs). The hierarchy consists of three levels:\nLevel 1 \u2013 Unadjusted quoted prices in active markets for identical assets or liabilities.\nLevel 2 \u2013 Quoted prices for similar assets and liabilities in active markets, quoted prices in markets that are not active, or inputs which are observable, directly or indirectly, for substantially the full term of the asset or liability.\nLevel 3 \u2013 Unobservable inputs that reflect the Company\u2019s own assumptions about the assumptions market participants would use in pricing the asset or liability in which there is little, if any, market activity for the asset or liability at the measurement date.\nThe following table summarizes the cash equivalents and marketable securities measured at fair value on a recurring basis as of December 31, 2018 and December 31, 2017:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2028,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2068,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Balance at December 31, 2017",
+     ""
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "5,046,205",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "5,046,205"
+    ],
+    [
+     "Marketable securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency securities",
+     "\u2014",
+     "",
+     "8,986,259",
+     "",
+     "\u2014",
+     "",
+     "8,986,259",
+     ""
+    ],
+    [
+     "Commercial paper",
+     "\u2014",
+     "",
+     "4,440,689",
+     "",
+     "\u2014",
+     "",
+     "4,440,689",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "702,775",
+     "",
+     "\u2014",
+     "",
+     "702,775",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,046,205",
+     "$",
+     "14,129,723",
+     "$",
+     "\u2014",
+     "$",
+     "19,175,928"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2043,
+    "end_line": 2056
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Fair value measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Cash equivalents and marketable securities have been initially valued at the transaction price and subsequently valued, at the end of each reporting period, utilizing third-party pricing services or other market observable data. The pricing services utilize industry standard valuation models, including both income and market based approaches and observable market inputs to determine value. The Company's cash equivalents consist of money market funds that are valued based on publicly available quoted market prices for identical securities as of December 31, 2018. After completing its validation procedures, the Company did not adjust or override any fair value carrying amounts of as of December 31, 2018.\nThe carrying amounts reflected in the consolidated balance sheets for cash, restricted cash, accounts receivable, prepaid expenses and other current assets, accounts payable, accrued expenses and other current liabilities approximate their fair values at December 31, 2018 and 2017, due to their short-term nature.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2028,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2068,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Unrealized Gains",
+     "",
+     "Unrealized Losses",
+     "",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "As of December 31, 2017",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current (due within 1 year):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency securities",
+     "$",
+     "8,987,254",
+     "$",
+     "38",
+     "$",
+     "(1,033)",
+     "",
+     "$",
+     "8,986,259"
+    ],
+    [
+     "Commercial paper",
+     "4,440,689",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,440,689",
+     ""
+    ],
+    [
+     "  Corporate debt securities",
+     "703,027",
+     "",
+     "\u2014",
+     "",
+     "(252)",
+     "",
+     "",
+     "702,775",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "14,130,970",
+     "$",
+     "38",
+     "$",
+     "(1,285)",
+     "",
+     "$",
+     "14,129,723"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2075,
+    "end_line": 2088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Cash equivalents and marketable securities"
+    }
+   },
+   "prose_before": "other comprehensive income (loss) in stockholders\u2019 equity and a component of total comprehensive income (loss) in the consolidated statement of comprehensive income (loss), until realized. Realized gains and losses are included in investment income on a specific-identification basis. There were no realized gains on marketable securities during the years ended December 31, 2018 or December 31, 2017.\nThe Company reviews marketable securities for other-than-temporary impairment whenever the fair value of a marketable security is less than the amortized cost and evidence indicates that a marketable security\u2019s carrying amount is not recoverable within a reasonable period of time. Other-than-temporary impairments of investments are recognized in the consolidated statement of operations if the Company has experienced a credit loss, has the intent to sell the marketable security, or if it is more likely than not that the Company will be required to sell the marketable security before recovery of the amortized cost basis. Evidence considered in this assessment includes reasons for the impairment, compliance with the Company\u2019s investment policy, the severity and the duration of the impairment and changes in value subsequent to the end of the period.\nThe Company held no marketable securities at December 31, 2018. Marketable securities at December 31, 2017 consisted of the following:",
+   "prose_after": "At December 31, 2017, the Company held six debt securities that were in an unrealized loss position, all of which had been in a continuous loss position for less than 12 months. The aggregate fair value of securities in an unrealized loss position was $8,191,315 at and December 31, 2017. There were no individual securities that were in a significant unrealized loss position as of December 31, 2017. The Company evaluated its securities for other-than-temporary impairment and considered the decline in market value for the securities to be primarily attributable to economic and market conditions. The Company had the intent and ability to hold such securities until recovery. Based on this analysis, these marketable securities were not considered to be other-than-temporarily impaired as of December 31, 2017.\nAt December 31, 2017, all investments held by the Company were classified as current. Investments classified as current have maturities of less than one year. Investments classified as noncurrent are those that (i) have a maturity greater than one year and (ii) management does not intend to liquidate within the next year, although these funds are available for use and therefore classified as available-for-sale.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2068,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2098,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "December 31, 2017",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "7,247",
+     "$",
+     "17,411"
+    ],
+    [
+     "Finished goods",
+     "179,673",
+     "",
+     "414,480",
+     ""
+    ],
+    [
+     "Total inventory",
+     "$",
+     "186,920",
+     "$",
+     "431,891"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2099,
+    "end_line": 2108
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "At December 31, 2017, the Company held six debt securities that were in an unrealized loss position, all of which had been in a continuous loss position for less than 12 months. The aggregate fair value of securities in an unrealized loss position was $8,191,315 at and December 31, 2017. There were no individual securities that were in a significant unrealized loss position as of December 31, 2017. The Company evaluated its securities for other-than-temporary impairment and considered the decline in market value for the securities to be primarily attributable to economic and market conditions. The Company had the intent and ability to hold such securities until recovery. Based on this analysis, these marketable securities were not considered to be other-than-temporarily impaired as of December 31, 2017.\nAt December 31, 2017, all investments held by the Company were classified as current. Investments classified as current have maturities of less than one year. Investments classified as noncurrent are those that (i) have a maturity greater than one year and (ii) management does not intend to liquidate within the next year, although these funds are available for use and therefore classified as available-for-sale.\n7. Inventory\nInventory has been recorded at cost as of December 31, 2018 and December 31, 2017. Costs capitalized at December 31, 2018 and December 31, 2017 relate to HOTSHOT finished goods and raw materials available to be used for future production runs.\nThe following table presents inventory:",
+   "prose_after": "In the second quarter of 2018, the Company wrote off raw materials that are not expected to be used in future production runs, as well as finished goods inventory no longer expected to be used. In 2017, the Company wrote off raw materials not expected to be used in future production runs and expiring finished goods not anticipated to be sold. In 2016, the Company wrote off raw materials purchased for production runs of HOTSHOT that were not expected to be used in future production runs, as well as finished goods not expected to be sold based upon projected sales, estimated product shelf life, the number of units produced and production level requirements.\nWrite-offs totaled approximately $85,000, $42,000 and $282,000 for the years ended December 31, 2018, December 31, 2017 and December 31, 2016, respectively, and are included in cost of product revenue in the accompanying consolidated statement of operations.\n8. Property and equipment, net\nProperty and equipment, net consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2098,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2143,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Manufacturing equipment",
+     "$",
+     "421,999",
+     "",
+     "$",
+     "421,999",
+     ""
+    ],
+    [
+     "Computers and computer equipment",
+     "275,670",
+     "",
+     "",
+     "311,847",
+     "",
+     ""
+    ],
+    [
+     "Website development costs",
+     "177,886",
+     "",
+     "",
+     "177,886",
+     "",
+     ""
+    ],
+    [
+     "Laboratory equipment",
+     "\u2014",
+     "",
+     "",
+     "13,368",
+     "",
+     ""
+    ],
+    [
+     "Capital in progress",
+     "\u2014",
+     "",
+     "",
+     "28,823",
+     "",
+     ""
+    ],
+    [
+     "Total property and equipment",
+     "875,555",
+     "",
+     "",
+     "953,923",
+     "",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "(801,095)",
+     "",
+     "",
+     "(622,883)",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "74,460",
+     "",
+     "$",
+     "331,040",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2117,
+    "end_line": 2133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Property and equipment, net"
+    }
+   },
+   "prose_before": "In the second quarter of 2018, the Company wrote off raw materials that are not expected to be used in future production runs, as well as finished goods inventory no longer expected to be used. In 2017, the Company wrote off raw materials not expected to be used in future production runs and expiring finished goods not anticipated to be sold. In 2016, the Company wrote off raw materials purchased for production runs of HOTSHOT that were not expected to be used in future production runs, as well as finished goods not expected to be sold based upon projected sales, estimated product shelf life, the number of units produced and production level requirements.\nWrite-offs totaled approximately $85,000, $42,000 and $282,000 for the years ended December 31, 2018, December 31, 2017 and December 31, 2016, respectively, and are included in cost of product revenue in the accompanying consolidated statement of operations.\n8. Property and equipment, net\nProperty and equipment, net consists of the following:",
+   "prose_after": "Capital in progress consists of assets acquired but not yet placed into service. There was no capital in progress at December 31, 2018. At December 31, 2017 capital in progress consisted of computers and computer equipment.\nDepreciation expense was $228,158, $324,548 and $277,231 for the years ended December 31, 2018, December 31, 2017, and December 31, 2016, respectively.\nIn 2018, the Company disposed of computer and computer equipment, laboratory equipment and capital in progress that was sold or no longer in use. Property and equipment disposals, net, for the year ended December 31, 2018 totaled $28,422. The Company received proceeds of $4,805 related to these disposals, resulting in a loss of $23,617, included in research and development expense and selling, general and administrative expense in the accompanying consolidated statement of operations. Disposals in prior years were immaterial.\n9. Accrued expenses and other current liabilities\nAccrued expenses and other current liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2098,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2143,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "December 31, 2017",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payroll and employee-related costs",
+     "$",
+     "417,997",
+     "$",
+     "874,246"
+    ],
+    [
+     "Professional fees",
+     "269,544",
+     "",
+     "227,980",
+     ""
+    ],
+    [
+     "Restructuring-related costs",
+     "68,593",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Consumer product-related costs",
+     "5,360",
+     "",
+     "107,595",
+     ""
+    ],
+    [
+     "Research and development costs",
+     "2,846",
+     "",
+     "2,502,400",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "764,340",
+     "$",
+     "3,712,221"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2144,
+    "end_line": 2157
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Accrued expenses and other current liabilities"
+    }
+   },
+   "prose_before": "Capital in progress consists of assets acquired but not yet placed into service. There was no capital in progress at December 31, 2018. At December 31, 2017 capital in progress consisted of computers and computer equipment.\nDepreciation expense was $228,158, $324,548 and $277,231 for the years ended December 31, 2018, December 31, 2017, and December 31, 2016, respectively.\nIn 2018, the Company disposed of computer and computer equipment, laboratory equipment and capital in progress that was sold or no longer in use. Property and equipment disposals, net, for the year ended December 31, 2018 totaled $28,422. The Company received proceeds of $4,805 related to these disposals, resulting in a loss of $23,617, included in research and development expense and selling, general and administrative expense in the accompanying consolidated statement of operations. Disposals in prior years were immaterial.\n9. Accrued expenses and other current liabilities\nAccrued expenses and other current liabilities consist of the following:",
+   "prose_after": "Restructuring-related costs\nIn June 2018, the Company's Board of Directors (\"Board\") approved a corporate restructuring plan to reduce the Company's cost structure. In connection with the corporate restructuring plan, the Company reduced its workforce by approximately 60%, with the reduction completed as of September 30, 2018.\nAlso, in June 2018, the Board approved employee retention arrangements and certain increased severance payments related to the corporate restructuring plan, to incentivize certain employees to remain with the Company through a potential sale or merger. As of December 31, 2018, the Company had paid $205,000 in retention bonuses and had paid or accrued approximately $186,000 in severance benefits associated with these arrangements. As of December 31, 2018, cash retention benefits totaling approximately $1,006,000 will be payable to the remaining employees and certain former employees who continue to provide service as consultants, upon the occurrence of a change in control event, including a sale or merger of the Company. Of this total, $603,000 relates to amounts payable to certain employees and former employees who continue to provide service as consultants only upon a change in control event, and $403,000 relates to amounts payable upon a change in control event or at certain timepoints through early 2019 if the individuals are employed by the Company and in good standing at the date of payment, even if a change in control event has not occurred. Upon a change in control event and termination without cause, the remaining employees will be eligible for up to approximately $928,000, in the aggregate, of severance benefits.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2143,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2169,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Accrued restructuring balance as of December 31, 2017",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Charges:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Employee termination benefits",
+     "1,136,388",
+     "",
+     ""
+    ],
+    [
+     "  Employee retention benefits",
+     "214,417",
+     "",
+     ""
+    ],
+    [
+     "  Other",
+     "14,995",
+     "",
+     ""
+    ],
+    [
+     "Payments",
+     "(1,297,207)",
+     "",
+     ""
+    ],
+    [
+     "Accrued restructuring balance as of December 31, 2018",
+     "$",
+     "68,593",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2170,
+    "end_line": 2182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Accrued expenses and other current liabilities"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2018, the Company recognized expense for restructuring-related activities of approximately $1,366,000 which is comprised of approximately $1,037,000 recorded as termination benefits under ongoing benefit arrangements for terminated employees, approximately $100,000 as one-time termination benefit costs for terminated employees, approximately $214,000 in retention benefits for retained employees and approximately $15,000 of other restructuring related costs, including consulting and legal fees. There are currently no assurances a change in control event will take place. The Company does not consider the payment of severance benefits for retained employees or the payment of retention benefits only payable upon a change in control to be probable for accounting purposes as of December 31, 2018. On January 3, 2019, the Company entered into a Merger Agreement with Salarius. Unless and until the Company's shareholders have approved this specific transaction, the Company's probability assessment regarding a change in control event is not expected to change.\nThe Company expects to incur between approximately $1,769,000 and $3,354,000 in total costs for its restructuring-related activities, including approximately $1,366,000 that was recorded during 2018, included in the table below and $403,000 related to the annual bonus program that was recorded during 2018, included in payroll and employee-related costs. Based on the Company's current probability assessment regarding a change in control event and termination of retained employees, there are no anticipated charges in 2019. The range noted above includes approximately $603,000 related to retention benefits only payable upon a change in control event and $928,000 of severance benefits only payable upon a change in control event and termination under certain circumstances.\nThe following table outlines the Company's restructuring activities during the year ended December 31, 2018:",
+   "prose_after": "The Company's accrued restructuring balance as of December 31, 2018 is included as a component of accrued expenses and other current liabilities on the Company's condensed consolidated balance sheet as of December 31, 2018. For the twelve months ended December 31, 2018, approximately $968,000 of the restructuring-related charges are included in research and development expenses and approximately $398,000 are included in selling, general and administrative expenses in the Company's condensed consolidated statement of operations.\nFor the twelve months ended December 31, 2018, approximately $81,000 of the restructuring-related charges were incurred by the Company's Consumer Operations segment, approximately $968,000 were incurred by the Company's Drug Development segment and the remaining charges of approximately $317,000 related to corporate costs. In total, the Company may incur restructuring-related charges of up to approximately $113,000 and $1,036,000 within the Company's Consumer Operations and Drug Development segments, respectively. The Company may incur up to $2,205,000 of corporate costs that do not relate to a reportable segment.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2169,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2202,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted-Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Unvested at December 31, 2017",
+     "169,654",
+     "",
+     "$",
+     "0.10"
+    ],
+    [
+     "Issued",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Vested",
+     "(169,654)",
+     "",
+     "0.10",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unvested at December 31, 2018",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2225,
+    "end_line": 2237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Common stock"
+    }
+   },
+   "prose_before": "In March 2014, the Company sold 4,553,415 shares of restricted common stock to the founders of the Company (\"recipients\"), for $0.0004 per share, for total proceeds of $1,950. In April 2014, based upon anti-dilution provisions granted to the founders, an additional 867,314 shares of restricted common stock were sold to the same founders, after which the anti-dilution provisions were terminated. The restricted common stock vested 25% upon issuance, and the remaining 75% vested ratably over four years, during which time the Company had the right to repurchase the unvested shares held by a recipient if the relationship between such recipient and the Company ceased. Such shares were not accounted for as outstanding until they vested. Unvested restricted common stock awards to non-employees were re-measured at each vest date and each financial reporting date. All restricted common stock sold to the founders of the Company had vested as of December 31, 2018 and is no longer eligible for repurchase.\nThe following is a summary of restricted common stock activity:",
+   "prose_after": "The total fair value of shares vested during the twelve months ended 2018, 2017 and 2016 was approximately $725,000, $3,840,000 and $9,646,000 respectively.\nRestricted common stock to consultants\nThere were no shares of restricted common stock granted to non-employee consultants and advisors during 2018 or 2017. During 2016, the Company granted a total of 18,194 of shares of restricted common stock to non-employee consultants and advisors. Such shares are not accounted for as outstanding until they vest. There were 16,110 shares of restricted common stock issued to consultants outstanding as of December 31, 2018. Prior to July 1, 2018, unvested restricted common stock awards to non-employees were re-measured at each vest date and each financial reporting date. On July 1, 2018, the Company adopted ASU 2018-07 using a modified retrospective transition approach. As a result, the Company permanently revalued all unvested stock awards granted to non-employees as of July 1, 2018. The adoption-date fair value did not materially change from the fair value as of June 30, 2018 and therefore, a cumulative-effect adjustment was not required.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2202,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2239,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted-Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Unvested at December 31, 2017",
+     "5,334",
+     "",
+     "$",
+     "10.51"
+    ],
+    [
+     "Issued",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Vested",
+     "(3,250)",
+     "",
+     "10.16",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unvested at December 31, 2018",
+     "2,084",
+     "",
+     "$",
+     "11.05"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2246,
+    "end_line": 2258
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Common stock"
+    }
+   },
+   "prose_before": "There were no shares of restricted common stock granted to non-employee consultants and advisors during 2018 or 2017. During 2016, the Company granted a total of 18,194 of shares of restricted common stock to non-employee consultants and advisors. Such shares are not accounted for as outstanding until they vest. There were 16,110 shares of restricted common stock issued to consultants outstanding as of December 31, 2018. Prior to July 1, 2018, unvested restricted common stock awards to non-employees were re-measured at each vest date and each financial reporting date. On July 1, 2018, the Company adopted ASU 2018-07 using a modified retrospective transition approach. As a result, the Company permanently revalued all unvested stock awards granted to non-employees as of July 1, 2018. The adoption-date fair value did not materially change from the fair value as of June 30, 2018 and therefore, a cumulative-effect adjustment was not required.\nThe following is a summary of restricted common stock activity:",
+   "prose_after": "The total fair value of shares vested during the twelve months ended 2018, 2017 and 2016 was approximately $9,000, $22,000 and $71,000 respectively.\nEmployee stock purchase plan\nAs of the December 31, 2018, no shares of common stock have been purchased under the 2015 Employee Stock Purchase Plan (the \"ESPP\").\nShares reserved for future issuance\nThe Company has reserved the following number of shares of common stock for future issuance:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2239,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2285,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "2017"
+    ],
+    [
+     "Stock-based compensation awards",
+     "4,061,397",
+     "3,439,820"
+    ],
+    [
+     "Vesting of restricted common stock",
+     "2,084",
+     "174,988"
+    ],
+    [
+     "Employee stock purchase plan",
+     "713,996",
+     "534,274"
+    ],
+    [
+     "Total",
+     "4,777,477",
+     "4,149,082"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2269,
+    "end_line": 2281
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Common stock"
+    }
+   },
+   "prose_before": "The total fair value of shares vested during the twelve months ended 2018, 2017 and 2016 was approximately $9,000, $22,000 and $71,000 respectively.\nEmployee stock purchase plan\nAs of the December 31, 2018, no shares of common stock have been purchased under the 2015 Employee Stock Purchase Plan (the \"ESPP\").\nShares reserved for future issuance\nThe Company has reserved the following number of shares of common stock for future issuance:",
+   "prose_after": "13. Stock-based compensation\nIn March 2014, the Company adopted the Flex Pharma, Inc. 2014 Equity Incentive Plan (the \"2014 Plan\"), under which it had the ability to grant incentive stock options (\"ISOs\"), non-qualified stock options, restricted stock awards, restricted stock units and stock appreciation rights. Terms of stock award agreements, including vesting requirements, were determined by the board of directors, subject to the provisions of the 2014 Plan. For options granted under the 2014 Plan, the exercise price equaled the fair market value of the common stock as determined by the board of directors on the date of grant. No further awards will be granted under the 2014 Plan.\nIn January 2015, the Company's board of directors adopted, and the Company's stockholders approved, the 2015 Equity Incentive Plan (the \"2015 Plan\"), which became effective immediately prior to the closing of the Company's IPO. The 2015 Plan provides for the grant of ISOs, nonstatutory stock options, restricted stock awards, restricted stock units, stock appreciation rights, performance-based stock awards and other stock-based awards. Additionally, the 2015 Plan provides for the grant of performance-based cash awards. ISOs may be granted only to the Company's employees. All other awards may be granted to the Company's employees, including officers, and to non-employee directors and consultants. As of December 31, 2018, there were 1,740,416 shares remaining available for the grant of stock awards under the 2015 Plan.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2239,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2285,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "Weighted-Average Exercise Price",
+     "",
+     "Weighted-Average Remaining Contractual Term (in years)",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2017",
+     "2,580,491",
+     "",
+     "$",
+     "6.65",
+     "7.55",
+     "$",
+     "803,600"
+    ],
+    [
+     "Granted",
+     "1,517,544",
+     "",
+     "2.74",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(97,310)",
+     "",
+     "1.21",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(859,543)",
+     "",
+     "5.76",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "(820,201)",
+     "",
+     "8.19",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2018",
+     "2,320,981",
+     "",
+     "$",
+     "4.10",
+     "7.61",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable at December 31, 2018",
+     "1,149,927",
+     "",
+     "$",
+     "5.53",
+     "6.07",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested or expected to vest at December 31, 2018",
+     "2,320,981",
+     "",
+     "$",
+     "4.10",
+     "7.53",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2294,
+    "end_line": 2311
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock-based compensation"
+    }
+   },
+   "prose_before": "The Company has awarded stock options to its employees, directors, advisors and consultants, pursuant to the plans described above. Stock options subsequent to the completion of the Company's IPO are granted with an exercise price equal to the closing market price of the Company's common stock on the date of grant. Stock options generally vest over one to four years and have a contractual term of ten years. Stock options are valued using the Black-Scholes option pricing model and compensation cost is recognized based on the resulting value over the service period. Prior to July 1, 2018, unvested awards to non-employees were re-measured at each vest date and at each financial reporting date. On July 1, 2018, the Company adopted ASU 2018-07 using a modified retrospective transition approach. As a result, the Company permanently revalued all unvested stock options granted to non-employees as of July 1, 2018. The adoption-date fair value did not materially change from the fair value as of June 30, 2018 and therefore, a cumulative-effect adjustment was not required.\nThe following table summarizes stock option activity for employees and non-employees for the twelve months ended December 31, 2018:",
+   "prose_after": "During 2018, 2017 and 2016, the Company granted stock options to purchase an aggregate of 1,517,544, 1,059,500, and 763,320 shares of its common stock, respectively. The weighted-average grant date fair value of option awards granted during 2018, 2017 and 2016 were $1.95, $2.80, and $6.35, respectively.\nThe number of stock options exercised during 2018, 2017 and 2016 were 97,310, 1,576, and 8,516, respectively. The weighted-average exercise price of options exercised during 2018, 2017 and 2016 was $1.21, $1.67, and $2.59, respectively. The total intrinsic value of options exercised during 2018, 2017 and 2016 was $349,974, $2,606, and $64,302, respectively. The intrinsic value is calculated as the difference between the fair value of the Company's common stock and the exercise price of the options at the date of exercise.\nThe Company estimates the fair value of each stock option award on the grant date using the Black-Scholes option-pricing model based on the following assumptions regarding the fair value of the underlying Common Stock on each measurement date:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2285,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2315,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "Year Ended December 31, 2016",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "81.56% to 82.41%",
+     "",
+     "73.87% to 81.04%",
+     "",
+     "71.01% to 74.20%",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "2.45% to 2.91%",
+     "",
+     "1.83% to 2.40%",
+     "",
+     "1.23% to 2.40%",
+     ""
+    ],
+    [
+     "Expected term",
+     "5.3 - 10 years",
+     "",
+     "5.3 - 9.5 years",
+     "",
+     "5.3 - 10 years",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "0",
+     "%",
+     "0",
+     "%",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2318,
+    "end_line": 2326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock-based compensation"
+    }
+   },
+   "prose_before": "During 2018, 2017 and 2016, the Company granted stock options to purchase an aggregate of 1,517,544, 1,059,500, and 763,320 shares of its common stock, respectively. The weighted-average grant date fair value of option awards granted during 2018, 2017 and 2016 were $1.95, $2.80, and $6.35, respectively.\nThe number of stock options exercised during 2018, 2017 and 2016 were 97,310, 1,576, and 8,516, respectively. The weighted-average exercise price of options exercised during 2018, 2017 and 2016 was $1.21, $1.67, and $2.59, respectively. The total intrinsic value of options exercised during 2018, 2017 and 2016 was $349,974, $2,606, and $64,302, respectively. The intrinsic value is calculated as the difference between the fair value of the Company's common stock and the exercise price of the options at the date of exercise.\nThe Company estimates the fair value of each stock option award on the grant date using the Black-Scholes option-pricing model based on the following assumptions regarding the fair value of the underlying Common Stock on each measurement date:",
+   "prose_after": "Total stock-based compensation expense recognized for employee and non-employee restricted common stock, and stock options granted to employees and non-employees is included in the Company's consolidated statements of operations and comprehensive loss as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2315,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2346,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "Year Ended December 31, 2016",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "705,687",
+     "$",
+     "1,545,737",
+     "$",
+     "2,435,565"
+    ],
+    [
+     "Selling, general and administrative",
+     "1,233,924",
+     "",
+     "2,673,428",
+     "",
+     "4,137,398",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,939,611",
+     "$",
+     "4,219,165",
+     "$",
+     "6,572,963"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2329,
+    "end_line": 2338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock-based compensation"
+    }
+   },
+   "prose_before": "Total stock-based compensation expense recognized for employee and non-employee restricted common stock, and stock options granted to employees and non-employees is included in the Company's consolidated statements of operations and comprehensive loss as follows:",
+   "prose_after": "Selling, general and administrative expense for the year ended December 31, 2016 included $285,000 related to stock options that were modified in connection with an employee termination agreement.\nAs of December 31, 2018, there was approximately $2,160,000 of total unrecognized compensation cost related to unvested equity awards. Total unrecognized compensation cost will be adjusted for future changes in employee and non-employee forfeitures, if any. The Company expects to recognize that cost over a remaining weighted-average period of 2.74 years.\nIn June 2018, the Company extended the three-month post termination exercisability of 877,137 option awards held by six employees and one adviser to one-year post termination. As of December 31, 2018, three of the six employees had been terminated, but continue to provide consulting services. The Company also extended the three-month post termination exercisability of 500,000 option awards held by one employee to three-years post termination. The valuation of these awards did not change as a result of the modification of these awards and as such, the Company did not recognize any additional compensation expense related to the modification.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2315,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2346,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "",
+     "Year Ended December 31, 2017",
+     "",
+     "Year Ended December 31, 2016",
+     ""
+    ],
+    [
+     "Federal income tax expense at statutory rate",
+     "21.0",
+     "%",
+     "35.0",
+     "%",
+     "35.0",
+     "%"
+    ],
+    [
+     "State income tax, net of federal benefit",
+     "6.0",
+     "%",
+     "5.0",
+     "%",
+     "5.0",
+     "%"
+    ],
+    [
+     "Permanent differences",
+     "(0.1)",
+     "%",
+     "(0.7)",
+     "%",
+     "0.0",
+     "%"
+    ],
+    [
+     "Stock-based compensation",
+     "(2.8)",
+     "%",
+     "(1.9)",
+     "%",
+     "(2.6)",
+     "%"
+    ],
+    [
+     "Research credits",
+     "2.6",
+     "%",
+     "2.2",
+     "%",
+     "1.9",
+     "%"
+    ],
+    [
+     "Other, net",
+     "(1.6)",
+     "%",
+     "(1.3)",
+     "%",
+     "(0.1)",
+     "%"
+    ],
+    [
+     "Payroll tax credit election",
+     "(1.1)",
+     "%",
+     "(0.7)",
+     "%",
+     "0.0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "(24.0)",
+     "%",
+     "(1.1)",
+     "%",
+     "(39.2)",
+     "%"
+    ],
+    [
+     "Deferred rate change",
+     "0.0",
+     "%",
+     "(36.5)",
+     "%",
+     "0.0",
+     "%"
+    ],
+    [
+     "Effective tax rate",
+     "0.0",
+     "%",
+     "0.0",
+     "%",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2357,
+    "end_line": 2373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income taxes"
+    }
+   },
+   "prose_before": "On December 22, 2017, the SEC staff issued Staff Accounting Bulletin No. 118, or SAB 118, to address the application of U.S. GAAP in situations when a registrant does not have the necessary information available, prepared, or analyzed, including computations, in reasonable detail to complete the accounting for certain income tax effects of the Tax Reform Act. The Company recognized the provisional tax impacts related to the revaluation of the deferred tax assets and liabilities and included these amounts in its consolidated financial statements for the year ended December 31, 2017. The ultimate impact may differ from these provisional amounts due to, among other things, additional analysis, changes in interpretations and assumptions the Company has made, additional regulatory guidance that may be issued, and actions the Company may take as a result of the Tax Reform Act. In 2018, the Company completed the analysis of the 2017 Tax Act with no material changes.\nThe following table presents a reconciliation of income tax expense (benefit) computed at the statutory federal income tax rate to the effective income tax rate as reflected in the consolidated financial statements:",
+   "prose_after": "Deferred income tax assets and liabilities are determined based upon temporary differences between the financial reporting and tax bases of assets and liabilities and are measured using the enacted tax rates and laws that will be in effect when the differences are expected to reverse.\nThe following table presents the significant components of the Company's deferred tax assets and liabilities:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2346,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 2377,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. and state net operating loss carryforwards",
+     "$",
+     "29,902,019",
+     "",
+     "$",
+     "24,744,841",
+     ""
+    ],
+    [
+     "Accruals and other temporary differences",
+     "336,229",
+     "",
+     "",
+     "202,301",
+     "",
+     ""
+    ],
+    [
+     "Amortization",
+     "50,688",
+     "",
+     "",
+     "35,783",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "1,220,546",
+     "",
+     "",
+     "1,591,131",
+     "",
+     ""
+    ],
+    [
+     "Tax credit carryforward",
+     "2,277,428",
+     "",
+     "",
+     "1,964,189",
+     "",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "33,786,910",
+     "",
+     "",
+     "28,538,245",
+     "",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "(33,786,910)",
+     "",
+     "",
+     "(28,533,755)",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "\u2014",
+     "",
+     "",
+     "4,490",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "",
+     "",
+     "(4,490)",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "\u2014",
+     "",
+     "",
+     "(4,490)",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2378,
+    "end_line": 2402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income taxes"
+    }
+   },
+   "prose_before": "Deferred income tax assets and liabilities are determined based upon temporary differences between the financial reporting and tax bases of assets and liabilities and are measured using the enacted tax rates and laws that will be in effect when the differences are expected to reverse.\nThe following table presents the significant components of the Company's deferred tax assets and liabilities:",
+   "prose_after": "As of December 31, 2018, the Company has U.S. federal net operating loss carryforwards of approximately $110,900,000 and U.S. state net operating loss carryforwards of approximately $105,400,000 ($8,400,000 tax affected), which are available to reduce future taxable income. The Company also had federal research and development tax credit carryforwards of approximately $1,800,000 and state research and development tax credit carryforwards of approximately $570,000, which may be used to offset future tax liabilities.\nThe Company's pre-2018 federal loss carryforwards will expire at various dates through 2037. Any federal net operating losses generated in 2018 or after will not expire as a result of the Tax Cuts and Jobs Act. Any state operating loss carryforwards and tax credit carryforwards will expire at various dates through 2038. Under the provisions of the Internal Revenue Code, the net operating loss and tax credit carryforwards are subject to review and possible adjustment by the Internal Revenue Service and state tax authorities. Net operating loss and tax credit carryforwards may become subject to an annual limitation in the event of certain cumulative changes in the ownership interest of significant shareholders over a three-year period in excess of 50 percent, as defined under Sections 382 and 383 of the Internal Revenue Code, respectively, as well as similar state provisions. This could limit the amount of tax attributes that can be utilized annually to offset future taxable income or tax liabilities. The amount of the annual limitation is determined based on the value of the Company immediately prior to the ownership change. Subsequent ownership changes may further affect the limitation in future years. The Company has completed financings since its inception which may have resulted in a change in control as defined by Sections 382 and 383 of the Internal Revenue Code, or the merger with Salarius could result in a change in control. The Company has not conducted an assessment to determine whether there may have been a Section 382 or 383 ownership changes.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2377,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 2410,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2018",
+     "Year Ended December 31, 2017",
+     "Year Ended December 31, 2016"
+    ],
+    [
+     "Options to purchase common stock",
+     "2,320,981",
+     "2,580,491",
+     "2,156,250"
+    ],
+    [
+     "Unvested restricted common stock",
+     "2,084",
+     "174,988",
+     "1,196,792"
+    ],
+    [
+     "Total",
+     "2,323,065",
+     "2,755,479",
+     "3,353,042"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2421,
+    "end_line": 2430
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Net loss per share"
+    }
+   },
+   "prose_before": "15. Net loss per share\nBasic net loss per share is computed by dividing the net loss attributable to common stockholders by the weighted-average number of common shares outstanding for the period. Diluted net loss per share is computed by dividing the net loss attributable to common stockholders by the weighted-average number of common shares and dilutive common stock equivalents outstanding for the period, determined using the treasury stock method and the if-converted method, for convertible securities, if inclusion of these is dilutive.\nBecause the Company has reported net losses for the periods presented, diluted net loss per common share is the same as basic net loss per common share.\nThe following potentially dilutive securities outstanding, prior to the use of the treasury stock method or if-converted method, have been excluded from the computation of diluted weighted-average shares outstanding for the periods indicated, because including them would have had an anti-dilutive impact:",
+   "prose_after": "16. Segment Information\nEffective as of the second quarter of 2016 and in connection with the launch of HOTSHOT, the Company operates as two reportable segments:\n\u2022 The Consumer Operations segment, which reflects the total revenue and costs and expenses related to HOTSHOT and the Company's consumer operations.\n\u2022 The Drug Development segment, which reflects the costs and expenses related to the Company's efforts to develop innovative and proprietary drug products; previously to treat muscle cramps, spasms and spasticity associated with severe neurological conditions.\nThe Company discloses information about its reportable segments based on the way that the Company's Chief Operating Decision Maker, who the Company has identified as the Chief Executive Officer, and management, organizes segments within the Company for making operating decisions and assessing financial performance. The Company evaluates the performance of its reportable segments based on revenue and operating income or loss. The accounting policies of the segments are the same as those described herein as well as those described in Note 2. Corporate and unallocated amounts that do not relate to a reportable segment have been allocated to \"Corporate.\" No asset information has been provided for the Company's reportable segments as management does not measure or allocate such assets on a reportable segment basis.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2410,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2440,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2018",
+     "Consumer Operations",
+     "",
+     "Drug Development",
+     "Corporate",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "838,142",
+     "\u2014",
+     "\u2014",
+     "$",
+     "838,142"
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "1,975,792",
+     "11,887,108",
+     "8,211,323",
+     "$",
+     "22,074,223"
+    ],
+    [
+     "Interest income, net",
+     "$",
+     "\u2014",
+     "\u2014",
+     "152,006",
+     "$",
+     "152,006"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2441,
+    "end_line": 2449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "\u2022 The Drug Development segment, which reflects the costs and expenses related to the Company's efforts to develop innovative and proprietary drug products; previously to treat muscle cramps, spasms and spasticity associated with severe neurological conditions.\nThe Company discloses information about its reportable segments based on the way that the Company's Chief Operating Decision Maker, who the Company has identified as the Chief Executive Officer, and management, organizes segments within the Company for making operating decisions and assessing financial performance. The Company evaluates the performance of its reportable segments based on revenue and operating income or loss. The accounting policies of the segments are the same as those described herein as well as those described in Note 2. Corporate and unallocated amounts that do not relate to a reportable segment have been allocated to \"Corporate.\" No asset information has been provided for the Company's reportable segments as management does not measure or allocate such assets on a reportable segment basis.\nInformation for the Company's reportable segments for the years ended December 31, 2018, December 31, 2017, and December 31, 2016 are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2440,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2485,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2017",
+     "Consumer Operations",
+     "",
+     "Drug Development",
+     "Corporate",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "1,274,499",
+     "\u2014",
+     "\u2014",
+     "$",
+     "1,274,499"
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "8,877,330",
+     "16,715,752",
+     "9,132,544",
+     "$",
+     "34,725,626"
+    ],
+    [
+     "Interest income, net",
+     "$",
+     "\u2014",
+     "\u2014",
+     "291,964",
+     "$",
+     "291,964"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2450,
+    "end_line": 2458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2440,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2485,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31, 2016",
+     "Consumer Operations",
+     "",
+     "Drug Development",
+     "Corporate",
+     "Consolidated",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "1,010,663",
+     "\u2014",
+     "\u2014",
+     "$",
+     "1,010,663"
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "10,023,137",
+     "19,620,338",
+     "10,242,757",
+     "$",
+     "39,886,232"
+    ],
+    [
+     "Interest income, net",
+     "$",
+     "\u2014",
+     "\u2014",
+     "393,109",
+     "$",
+     "393,109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2459,
+    "end_line": 2467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "17. Related parties\nRoyalty agreement\nIn 2014, the Company entered into a royalty agreement with certain of the Company's founders under which these founders are paid a royalty of 2%, in the aggregate, of gross sales of any product sold by the Company or by any of the Company's licensees for use in the treatment of any neuromuscular disorder, and that uses, incorporates or embodies, or is made using, any of the Company's intellectual property, including any know-how.\nUpon the launch of HOTSHOT in the second quarter of 2016, the Company's founders began earning royalties under this agreement. Royalty amounts earned by the founders during the years ended December 31, 2018, December 31, 2017 and December 31, 2016 totaled approximately $17,000, $25,000 and $20,000, respectively, including approximately $3,000, $3,000 and $4,000 not yet paid as of year end, respectively. Royalty expense is recorded in cost of product revenue in the consolidated statement of operations.\nIn January 2019, the Founders entered into a royalty agreement with Flex Innovation Group LLC, which, in part, replaces the royalty agreement with Flex Pharma, Inc. described above. The royalty is payable over twenty years from the date of the agreement, with a 2% royalty due on product sales, as defined in the agreement, for the first ten years and a 1% royalty due for the following ten years.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2440,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2485,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "First Quarter Ended March 31, 2018",
+     "",
+     "",
+     "Second Quarter Ended June 30, 2018",
+     "",
+     "",
+     "Third Quarter Ended September 30, 2018",
+     "",
+     "",
+     "Fourth Quarter Ended December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "176,255",
+     "",
+     "$",
+     "241,416",
+     "",
+     "$",
+     "247,284",
+     "",
+     "$",
+     "161,560",
+     ""
+    ],
+    [
+     "Other revenue",
+     "2,327",
+     "",
+     "",
+     "4,086",
+     "",
+     "",
+     "3,707",
+     "",
+     "",
+     "1,507",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "178,582",
+     "",
+     "",
+     "245,502",
+     "",
+     "",
+     "250,991",
+     "",
+     "",
+     "163,067",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "83,934",
+     "",
+     "",
+     "179,945",
+     "",
+     "",
+     "91,937",
+     "",
+     "",
+     "74,934",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "4,680,181",
+     "",
+     "",
+     "6,174,589",
+     "",
+     "",
+     "865,765",
+     "",
+     "",
+     "187,759",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "3,697,287",
+     "",
+     "",
+     "2,994,649",
+     "",
+     "",
+     "1,959,872",
+     "",
+     "",
+     "1,921,513",
+     "",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "8,461,402",
+     "",
+     "",
+     "9,349,183",
+     "",
+     "",
+     "2,917,574",
+     "",
+     "",
+     "2,184,206",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(8,282,820)",
+     "",
+     "",
+     "(9,103,681)",
+     "",
+     "",
+     "(2,666,583)",
+     "",
+     "",
+     "(2,021,139)",
+     "",
+     ""
+    ],
+    [
+     "Interest income, net",
+     "59,593",
+     "",
+     "",
+     "51,809",
+     "",
+     "",
+     "28,210",
+     "",
+     "",
+     "12,394",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(8,223,227)",
+     "",
+     "$",
+     "(9,051,872)",
+     "",
+     "$",
+     "(2,638,373)",
+     "",
+     "$",
+     "(2,008,745)",
+     ""
+    ],
+    [
+     "Net loss per share attributable to common stockholders \u2014 basic and diluted",
+     "$",
+     "(0.46)",
+     "",
+     "$",
+     "(0.50)",
+     "",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "Weighted-average number of common shares outstanding \u2014 basic and diluted",
+     "17,893,912",
+     "",
+     "",
+     "18,037,274",
+     "",
+     "",
+     "18,066,548",
+     "",
+     "",
+     "18,067,179",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2486,
+    "end_line": 2513
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Related parties"
+    }
+   },
+   "prose_before": "In January 2019, the Founders entered into a royalty agreement with Flex Innovation Group LLC, which, in part, replaces the royalty agreement with Flex Pharma, Inc. described above. The royalty is payable over twenty years from the date of the agreement, with a 2% royalty due on product sales, as defined in the agreement, for the first ten years and a 1% royalty due for the following ten years.\nLicense agreement\nFor the period from May 2014 through July 2016, the Company licensed a portion of its office space to ECLDS, LLC, which was controlled by the Company's former Chief Executive Officer. In October 2015, the license agreement was assigned by ECLDS, LLC to a third party, that was not owned by the Company's former Chief Executive Officer, but for which a business relationship existed. In July 2016, the license agreement terminated.\nUnder the terms of the license, the entity charged the same rental rate as that was charged to the Company. During the year ended December 31, 2016, the Company received approximately $32,000 in license fees from the aforementioned related party, and such amounts received have been recorded as a reduction to rent expense.\n18. Quarterly financial information (unaudited)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2485,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 2548,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "First Quarter Ended March 31, 2017",
+     "",
+     "",
+     "Second Quarter Ended June 30, 2017",
+     "",
+     "",
+     "Third Quarter Ended September 30, 2017",
+     "",
+     "",
+     "Fourth Quarter Ended December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Net product revenue",
+     "$",
+     "240,292",
+     "",
+     "$",
+     "330,688",
+     "",
+     "$",
+     "407,241",
+     "",
+     "$",
+     "282,752",
+     ""
+    ],
+    [
+     "Other revenue",
+     "2,255",
+     "",
+     "",
+     "4,835",
+     "",
+     "",
+     "6,360",
+     "",
+     "",
+     "76",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "242,547",
+     "",
+     "",
+     "335,523",
+     "",
+     "",
+     "413,601",
+     "",
+     "",
+     "282,828",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "79,106",
+     "",
+     "",
+     "145,325",
+     "",
+     "",
+     "148,756",
+     "",
+     "",
+     "133,343",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "3,914,974",
+     "",
+     "",
+     "4,076,220",
+     "",
+     "",
+     "4,739,360",
+     "",
+     "",
+     "4,259,357",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "4,594,716",
+     "",
+     "",
+     "4,990,943",
+     "",
+     "",
+     "4,934,937",
+     "",
+     "",
+     "3,983,088",
+     "",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "8,588,796",
+     "",
+     "",
+     "9,212,488",
+     "",
+     "",
+     "9,823,053",
+     "",
+     "",
+     "8,375,788",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(8,346,249)",
+     "",
+     "",
+     "(8,876,965)",
+     "",
+     "",
+     "(9,409,452)",
+     "",
+     "",
+     "(8,092,960)",
+     "",
+     ""
+    ],
+    [
+     "Interest income, net",
+     "77,854",
+     "",
+     "",
+     "72,342",
+     "",
+     "",
+     "77,339",
+     "",
+     "",
+     "64,429",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(8,268,395)",
+     "",
+     "$",
+     "(8,804,623)",
+     "",
+     "$",
+     "(9,332,113)",
+     "",
+     "$",
+     "(8,028,531)",
+     ""
+    ],
+    [
+     "Net loss per share attributable to common stockholders \u2014 basic and diluted",
+     "$",
+     "(0.49)",
+     "",
+     "$",
+     "(0.51)",
+     "",
+     "$",
+     "(0.54)",
+     "",
+     "$",
+     "(0.46)",
+     ""
+    ],
+    [
+     "Weighted-average number of common shares outstanding \u2014 basic and diluted",
+     "16,873,512",
+     "",
+     "",
+     "17,130,264",
+     "",
+     "",
+     "17,386,249",
+     "",
+     "",
+     "17,642,646",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2514,
+    "end_line": 2542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Related parties"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "On January 1, 2018, the Company adopted ASC 606 using the modified retrospective method applied to contracts not yet completed as of January 1, 2018. Results for reporting periods beginning after January 1, 2018 are presented under ASC 606, while prior period amounts are not adjusted and are reported in accordance with the Company's historical accounting under ASC 605.\nThe Company would have recognized approximately $18,000, $10,000, $1,000 and $15,000 of additional total revenue during the quarters ended March 31, 2018, June 30, 2018, September 30, 2018 and December 31, 2018, respectively, if the Company had continued to recognize revenue under ASC 605.\n19. Subsequent events\nThe Company has completed an evaluation of all subsequent events after the balance sheet date of December 31, 2018 through the date these consolidated financial statements were issued. The Company has concluded that no subsequent events have occurred that require disclosure, except as described below.\nAgreement and Plan of Merger",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2485,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 29
+    },
+    "after": {
+     "line": 2548,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FLEX PHARMA, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ William McVicar"
+    ],
+    [
+     "",
+     "William McVicar, Ph.D.\nPresident and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "FLEX PHARMA, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2578,
+    "end_line": 2586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "The Warrant Aggregate Value generally represents the difference between (i) the Company's value and (ii) the value of the Company\u2019s common stock that the Company\u2019s current stockholders will have in the combined company. Accordingly, the Warrant Aggregate Value will be based in part on the Company\u2019s net cash balance at the time of\nclosing of the merger and adjusted for the amount of additional financing consummated by Salarius at or before the closing of the merger, as further described in the Merger Agreement.\nThe Merger Agreement contains certain termination rights for both the Company and Salarius, and further provides that, upon termination of the Merger Agreement under specified circumstances, either party may be required to pay the other party a termination fee of $0.35 million, or in some circumstances the Company may be required to reimburse Salarius\u2019 expenses up to a maximum of $0.2 million. In addition, in certain specified circumstances, Salarius may be required to pay us a termination fee of $1.0 million.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nKnow All Persons By These Presents, that each person whose signature appears below constitutes and appoints William McVicar, Ph.D. and John McCabe, and each of them, his true and lawful attorneys-in-fact and agents, with full power of substitution and resubstitution, for him and in his name, place and stead, in any and all capacities, to sign any and all amendments to this report, and to file the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or either of them, or their or his substitutes or substitute, may lawfully do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2573,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 32
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William McVicar",
+     "President, Chief Executive Officer, Member of the Board of Directors (Principal Executive Officer)",
+     "March 6, 2019"
+    ],
+    [
+     "William McVicar, Ph.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John McCabe",
+     "Chief Financial Officer (Principal Financial and Accounting Officer)",
+     "March 6, 2019"
+    ],
+    [
+     "John McCabe",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Peter Barton Hutt",
+     "Member of the Board of Directors",
+     "March 6, 2019"
+    ],
+    [
+     "Peter Barton Hutt",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Marc Kozin",
+     "Member of the Board of Directors",
+     "March 6, 2019"
+    ],
+    [
+     "Marc Kozin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Stuart Randle",
+     "Member of the Board of Directors",
+     "March 6, 2019"
+    ],
+    [
+     "Stuart Randle",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michelle Stacy",
+     "Member of the Board of Directors",
+     "March 6, 2019"
+    ],
+    [
+     "Michelle Stacy",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Roger Tung",
+     "Member of the Board of Directors",
+     "March 6, 2019"
+    ],
+    [
+     "Roger Tung",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2593,
+    "end_line": 2624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "Know All Persons By These Presents, that each person whose signature appears below constitutes and appoints William McVicar, Ph.D. and John McCabe, and each of them, his true and lawful attorneys-in-fact and agents, with full power of substitution and resubstitution, for him and in his name, place and stead, in any and all capacities, to sign any and all amendments to this report, and to file the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents, and each of them, full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or either of them, or their or his substitutes or substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2573,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 32
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

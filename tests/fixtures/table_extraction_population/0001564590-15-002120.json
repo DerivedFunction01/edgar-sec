@@ -1,0 +1,4742 @@
+{
+ "accession": "0001564590-15-002120",
+ "cik": "0000088000",
+ "form": "10-K",
+ "filing_date": "2015-03-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "slgd-10k_20141231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "84-0920811"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2014\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-13458\nSCOTT\u2019S LIQUID GOLD-INC.\n(Name of small business as specified in its charter)",
+   "prose_after": "4880 Havana Street, Suite 400, Denver, CO 80239\n(Address of principal executive offices and Zip Code)\n(303) 373-4860\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: Common Stock, $0.10 Par Value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "9"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "9"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "9"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "9"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "10"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "10"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "11"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "16"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "32"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "32"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "33"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "33"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "33"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "33"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "33"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "33"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 127
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u00b7 changes in the regulation of our products, including applicable environmental and U.S. Food And Drug Administration (\u201cFDA\u201d) regulations;\n\u00b7 the continuing availability of financing on terms and conditions that are acceptable to us;\n\u00b7 future losses which could affect our liquidity;\n\u00b7 the loss of any executive officer; and\n\u00b7 other matters discussed in this Report, including the risks described in the Risk Factors section of this Report.\nWe caution you that forward-looking statements are not guarantees of future performance and that actual results or performance may be materially different from those expressed or implied in the forward-looking statements. The forward-looking statements in this Report speak as of the filing date of this Report. Although we may from time to time voluntarily update our prior forward-looking statements, we undertake no obligation to revise any forward-looking statements in order to reflect events or circumstances that may arise after the date of this Report.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nITEM 1. BUSINESS\nGeneral\nScott\u2019s Liquid Gold-Inc., a Colorado corporation, was incorporated on February 15, 1954. Through our wholly-owned subsidiaries, we develop, manufacture, market and sell quality household and skin and hair care products. These products include:\n\u00b7 Scott\u2019s Liquid Gold\u00ae, our wood cleaner and preservative that has been sold in the United States for over 60 years;\n\u00b7 Alpha Hydrox\u00ae, our skin care brand, which was one of the first to use alpha hydroxy acids (\u201cAHAs\u201d);\n\u00b7 Our Neoteric Diabetic\u00ae products which were specially developed to address the skin conditions of persons living with diabetes;\n\u00b7 Montagne Jeunesse face masque sachets, which are manufactured by another company and distributed exclusively by us in the United States under a distribution agreement with the manufacturer; and\n\u00b7 Batiste Dry Shampoo, which is manufactured by another company and distributed exclusively by us to the specialty retailer channel in the United States under a distribution agreement with the manufacturer.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Operating Segment",
+     "Key Products"
+    ],
+    [
+     "Household",
+     "Scott\u2019s Liquid Gold\u00ae Wood Cleaner and Preservative"
+    ],
+    [
+     "",
+     "Scott\u2019s Liquid Gold\u00ae Floor Restore"
+    ],
+    [
+     "",
+     "Scott\u2019s Liquid Gold\u00ae Wood Wash"
+    ],
+    [
+     "",
+     "Scott\u2019s Liquid Gold\u00ae Dust \u2019N Go Wipes"
+    ],
+    [
+     "",
+     "Touch of Scent\u00ae Air Freshener"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 150,
+    "end_line": 159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 Scott\u2019s Liquid Gold\u00ae, our wood cleaner and preservative that has been sold in the United States for over 60 years;\n\u00b7 Alpha Hydrox\u00ae, our skin care brand, which was one of the first to use alpha hydroxy acids (\u201cAHAs\u201d);\n\u00b7 Our Neoteric Diabetic\u00ae products which were specially developed to address the skin conditions of persons living with diabetes;\n\u00b7 Montagne Jeunesse face masque sachets, which are manufactured by another company and distributed exclusively by us in the United States under a distribution agreement with the manufacturer; and\n\u00b7 Batiste Dry Shampoo, which is manufactured by another company and distributed exclusively by us to the specialty retailer channel in the United States under a distribution agreement with the manufacturer.\nIn this Report the terms \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d refers to Scott\u2019s Liquid Gold-Inc. and our subsidiaries, collectively. Our business is divided into two operating segments, household products and skin and hair care products.\nThe following table sets forth the principal products in our household products segment.",
+   "prose_after": "The following table sets forth the principal products in our skin and hair care products segment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Operating Segment",
+     "Key Products"
+    ],
+    [
+     "Skin and Hair Care",
+     "Alpha Hydrox\u00ae Skin Care Products"
+    ],
+    [
+     "",
+     "Neoteric Diabetic\u00ae Healing Cream"
+    ],
+    [
+     "",
+     "Neoteric Diabetic\u00ae Shampoo and Scalp Care"
+    ],
+    [
+     "",
+     "Montagne Jeunesse Face Masque Sachets"
+    ],
+    [
+     "",
+     "Batiste Dry Shampoos"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 162,
+    "end_line": 171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth the principal products in our skin and hair care products segment.",
+   "prose_after": "For information on our operating segments, please see Note 8 to our Consolidated Financial Statements in Item 8.\nStrategy\nWe are focused on strategies that we believe will enhance our long-term financial health and deliver long-term shareholder value. In order to achieve these objectives, we plan to generate continued growth of our existing brands and products, as well as pursue new opportunities to develop, acquire or distribute new brands and products. We believe that we made substantial progress on increasing our profitability and increasing the value of our common stock during 2014.\nFor 2015, we plan to pursue the following primary goals: (1) continue to increase sales by strengthening and broadening consumer awareness of our products; (2) continue to add additional products to the mix of products that one or more of our existing major customers already buy from us; and (3) continue to obtain new distribution of our products at retailers that currently do not buy products from us. In order to achieve these goals, we have made a strategic decision to, among other things, increase our advertising and marketing spending in 2015 compared to 2014. We believe it is necessary and in our long-term best interests for us to make a",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 127,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2014\n\n\n\nThree Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "2013\n\n\n\nThree Months Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     "",
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "March 31",
+     "$",
+     "0.80",
+     "$",
+     "0.55",
+     "March 31",
+     "$",
+     "0.38",
+     "$",
+     "0.26"
+    ],
+    [
+     "June 30",
+     "$",
+     "0.73",
+     "$",
+     "0.52",
+     "June 30",
+     "$",
+     "0.46",
+     "$",
+     "0.24"
+    ],
+    [
+     "September 30",
+     "$",
+     "0.79",
+     "$",
+     "0.64",
+     "September 30",
+     "$",
+     "0.50",
+     "$",
+     "0.38"
+    ],
+    [
+     "December 31",
+     "$",
+     "0.96",
+     "$",
+     "0.70",
+     "December 31",
+     "$",
+     "0.65",
+     "$",
+     "0.41"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 365,
+    "end_line": 377
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "Until February 1, 2013, we owned real property, buildings and related improvements located in Denver, Colorado consisting of four connected buildings and a parking garage (approximately 241,684 square feet in total) and about 16.3 acres of land (the \u201cProperty\u201d). These buildings range in age from approximately 16 to 39 years (126,600 square feet having been added in 1995 and 1996). We sold the Property on February 1, 2013 and leased the portion of the Property used by our facilities back from the purchaser. Our facilities house our corporate headquarters and all of our manufacturing and warehouse operations, which are used by both of our operating segments. Until the sale of the Property on February 1, 2013, it served as collateral for a $5.2 million bank loan. Please see Note 12 to our Consolidated Financial Statements in Item 8 for information on the sale of our Property, the leasing back of certain of the facilities that we sold and the repayment of our bank loan. We believe that our current leased space will provide capacity for growth for the foreseeable future.\nITEM 3. LEGAL PROCEEDINGS.\nWe are subject to lawsuits from time to time in the ordinary course of business. While we expect those lawsuits not to have a material effect on us, an adverse development in any such lawsuit could materially and adversely affect our financial condition and cash flow.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information\nOur $0.10 par value common stock is traded on the OTC Bulletin Board (a regulated quotation service) under the ticker symbol \u201cSLGD\u201d. Over-the-counter market quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not necessarily represent actual transactions. The high and low prices of our common stock as traded on the OTC Bulletin Board were as follows.",
+   "prose_after": "Shareholders\nAs of March 30, 2015, based on inquiry, we had approximately 730 shareholders of record.\nDividends\nWe did not pay any cash dividends during the two most recent fiscal years. No decision has been made as to future dividends.\nEquity Plans\nThe following table provides, as of December 31, 2014, information regarding our 2005 Stock Option Plan. We also have an employee stock ownership plan which invests only in our common stock, but which is not included in the table below.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 356,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 408,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights\n(a)",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights\n(b)",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))\n(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "918,969",
+     "$",
+     "0.53",
+     "",
+     "2,081,031"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Total",
+     "",
+     "918,969",
+     "$",
+     "0.53",
+     "",
+     "2,081,031"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 390,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "Shareholders\nAs of March 30, 2015, based on inquiry, we had approximately 730 shareholders of record.\nDividends\nWe did not pay any cash dividends during the two most recent fiscal years. No decision has been made as to future dividends.\nEquity Plans\nThe following table provides, as of December 31, 2014, information regarding our 2005 Stock Option Plan. We also have an employee stock ownership plan which invests only in our common stock, but which is not included in the table below.",
+   "prose_after": "ITEM 6. SELECTED FINANCIAL DATA.\nNot applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS.\nCritical Accounting Policies\nWe have identified the accounting policies summarized below as critical to our business operations and the understanding of our results of operations. These policies involve significant judgments, estimates and assumptions by us. For a detailed discussion on the application of these and other accounting policies, see Note 1 to our Consolidated Financial Statements in Item 8.\nRevenue Recognition\nOur revenue recognition policy is significant because the amount and timing of revenue is a key component of our results of operations. We follow guidance issued by the Financial Accounting Standards Board (\u201cFASB\u201d), which requires that certain criteria be met in order to recognize revenue. If these criteria are not met, then the associated revenue is deferred until it is met. In our case, the criteria generally are met when we have an arrangement to sell a product, we have delivered the product in accordance with that arrangement, the sales price of the product is determinable and we believe that we will be paid for the sale.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 356,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 408,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Household products",
+     "",
+     "24.2",
+     "%",
+     "",
+     "27.7",
+     "%"
+    ],
+    [
+     "Skin and hair care products",
+     "",
+     "75.8",
+     "%",
+     "",
+     "72.3",
+     "%"
+    ],
+    [
+     "Total net sales",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "56.2",
+     "%",
+     "",
+     "54.3",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "43.8",
+     "%",
+     "",
+     "45.7",
+     "%"
+    ],
+    [
+     "Other revenue",
+     "",
+     "0.2",
+     "%",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "44.0",
+     "%",
+     "",
+     "45.9",
+     "%"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "35.1",
+     "%",
+     "",
+     "41.7",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "",
+     "0.1",
+     "%",
+     "",
+     "0.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "35.2",
+     "%",
+     "",
+     "42.1",
+     "%"
+    ],
+    [
+     "Income before taxes",
+     "",
+     "8.8",
+     "%",
+     "",
+     "3.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 452,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "In August 2014, the FASB issued ASU No. 2014-015, \u201cPresentation of Financial Statements - Going Concern\u201d (\u201cASU 2014-15\u201d). ASU 2014-15 requires management to assess, at each interim and annual reporting period, whether substantial doubt exists about an entity\u2019s ability to continue as a going concern within one year after the date that the financial statements are issued and, when necessary, provide related footnote disclosures. Management\u2019s assessment should be based on relevant conditions and events that are known and reasonably knowable at the date that the financial statements are issued. ASU 2014-15 is effective for fiscal years ending after December 15, 2016, which for the Company means the year ending December 31, 2016; however, early adoption is permitted. The adoption of this guidance did not have a material effect on the Company\u2019s consolidated financial position, results of operations, or cash flows as the Company does not have any substantial doubt about its ability to continue as a going concern.\nResults of Operations\nOur consolidated net sales for 2014 were $24,343,600 compared to $19,292,200 for 2013, an increase of $5,051,400 or 26.2%. We saw a 56.8% increase in net sales of the skin and hair care products that we distribute for other companies and a 26.8% decrease in net sales of our own line of skin care products. We saw a 10.4% increase in net sales of our household products. The reasons for the foregoing changes in net sales of our products are described below.\nOur net income for 2014 was $2,093,400 compared to a net income of $643,900 for 2013, an increase of $1,449,500 or 225.1%. The increase in net income for 2014 compared to the net income for 2013 resulted primarily from: (1) increased sales; (2) changes in our trade promotions to our customers; (3) changes in costs of sales; and (4) changes in operating expenses, as discussed below.\nSummary of Results as a Percentage of Net Sales",
+   "prose_after": "Our gross margins may not be comparable to those of other companies that include all of the costs related to their distribution network in cost of sales because we, like some other companies, exclude a portion of these costs (i.e., freight out to customers) from gross margin. Instead, we include them as part of selling expenses. See Note 1(n) to our Consolidated Financial Statements in Item 8.\nComparative Net Sales",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 435,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "Percentage\n\n\n\nIncrease",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "2013",
+     "",
+     "(Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Scott\u2019s Liquid Gold\u00ae and other household products",
+     "$",
+     "5,890,200",
+     "$",
+     "5,335,500",
+     "",
+     "10.4",
+     "%"
+    ],
+    [
+     "Total household products",
+     "",
+     "5,890,200",
+     "",
+     "5,335,500",
+     "",
+     "10.4",
+     "%"
+    ],
+    [
+     "Alpha Hydrox\u00ae , Diabetic cream and shampoo and other skin care products",
+     "",
+     "3,005,400",
+     "",
+     "4,105,000",
+     "",
+     "(26.8",
+     "%)"
+    ],
+    [
+     "Montagne Jeunesse and Batiste Dry Shampoo",
+     "",
+     "15,448,000",
+     "",
+     "9,851,700",
+     "",
+     "56.8",
+     "%"
+    ],
+    [
+     "Total skin and hair care products",
+     "",
+     "18,453,400",
+     "",
+     "13,956,700",
+     "",
+     "32.2",
+     "%"
+    ],
+    [
+     "Total net sales",
+     "$",
+     "24,343,600",
+     "$",
+     "19,292,200",
+     "",
+     "26.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 482,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "Our gross margins may not be comparable to those of other companies that include all of the costs related to their distribution network in cost of sales because we, like some other companies, exclude a portion of these costs (i.e., freight out to customers) from gross margin. Instead, we include them as part of selling expenses. See Note 1(n) to our Consolidated Financial Statements in Item 8.\nComparative Net Sales",
+   "prose_after": "During 2014, net sales of skin and hair care products accounted for 75.8% of consolidated net sales compared to 72.3% in 2013. The net sales of these products were $18,453,400 in 2014 compared to $13,956,700 in 2013, an increase of $4,496,700 or 32.2%.\nThe net sales of our Alpha Hydrox\u00ae, Neoteric Diabetic\u00ae and other manufactured skin care products were $3,005,400 in 2014 compared to $4,105,000 in 2013, a decrease of $1,099,600 or 26.8%. This decrease is primarily attributable to: (1) a decrease in net sales of our Alpha Hydrox products resulting from one of our customers reducing the number of products that it carries in its stores; (2) a decrease in the sale of Alpha Hydrox sales on our website; (3) a decrease in the number of displays of our Alpha Hydrox products sold to certain of our customers; (4) a decrease in net sales of our Neoteric Diabetic\u00ae skin cream due to one of our customers returning the skin cream from certain of its stores and no longer carrying the skin cream in those stores; and (5) increased competition for diabetic skin care products.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "Percentage Increase",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "2013",
+     "",
+     "(Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising",
+     "$",
+     "812,700",
+     "$",
+     "657,500",
+     "",
+     "23.6",
+     "%"
+    ],
+    [
+     "Selling",
+     "",
+     "4,848,900",
+     "",
+     "4,598,600",
+     "",
+     "5.4",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "",
+     "2,876,000",
+     "",
+     "2,782,200",
+     "",
+     "3.4",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "$",
+     "8,537,600",
+     "$",
+     "8,038,300",
+     "",
+     "6.2",
+     "%"
+    ],
+    [
+     "Rental and Other Income",
+     "$",
+     "52,200",
+     "$",
+     "34,000",
+     "",
+     "53.5",
+     "%"
+    ],
+    [
+     "Interest Expense",
+     "$",
+     "29,200",
+     "$",
+     "80,000",
+     "",
+     "(63.5",
+     "%)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 522,
+    "end_line": 539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": null
+   },
+   "prose_before": "From time to time, our customers return products to us. For our household products, we permit returns only for a limited time. With regard to our skin and hair care products, returns are more frequent under an unwritten industry standard that permits returns for a variety of reasons. In the event a skin and hair care customer requests a return of a product, we will consider the request, and may grant such request in order to maintain or enhance our relationship with the customer, even in the absence of an enforceable right of the customer to do so. Typically, customers that return products to us take a credit on our invoice equal to the original sale price plus a handling charge ranging from 8-10% of the original sales price. Our product returns (as a percentage of net sales) were 0.31% in 2014 compared to 0.79% in 2013. This decrease is primarily attributable to one of our customers returning our Diabetic shampoo from certain of their stores that will no longer carry our Diabetic shampoo in 2013, which occurred to a lesser extent in 2014.\nOn a consolidated basis, cost of sales was $13,691,700 for 2014 compared to $10,469,800 for 2013, an increase of $3,221,900 or 30.8%, on a net sales increase of 26.2%. As a percentage of consolidated net sales, cost of sales was 56.2% in 2014 compared to 54.3% in 2013.\nAs a percentage of net sales of our skin and hair care products, the cost of sales for our skin and hair care products increased to 57.3% in 2014 compared to 54.5% in 2013. The increase reflects primarily a higher percentage of net sales of the skin and hair care products that we distribute for other companies, which have a higher cost than the skin care products that we manufacture.\nAs a percentage of net sales of our household products, the costs of sales for our household products decreased to 53.0% of net sales in 2014 compared to 53.7% in 2013. This decrease is primarily attributable to a reduction in our costs of certain raw materials.\nOperating Expenses, Interest Expense and Other Income",
+   "prose_after": "Our operating expenses for 2014 were $8,537,600 compared to $8,038,300 for 2013, an increase of $499,300 or 6.2%. These expenses consisted primarily of advertising, selling, and general and administrative expenses, which are discussed below.\nAdvertising expenses for 2014 were $812,700 compared to $657,500 for 2013, an increase of $155,200 or 23.6%. The increase is primarily attributable to the cost of shooting commercials for Scott\u2019s Liquid Gold\u00ae Floor Restore and the initial cost of repositioning our Alpha Hydrox\u00ae skin care products in the marketplace. These costs were offset, in part, by doing a national coupon program in 2013 as part of a national television campaign for Scott\u2019s Liquid Gold\u00ae Wood Cleaner and Preservative. Although we did a national television campaign in 2014, we did not do a national coupon program.\nSelling expenses for 2014 were $4,848,900 compared to $4,598,600 for 2013, an increase of $250,300 or 5.4%. The increase is primarily attributable to changes in personnel within our sales organization starting in the second quarter of 2013 and an increase in salaries, payroll taxes and health benefits for our sales organization.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "24,343,600",
+     "",
+     "$",
+     "19,292,200",
+     ""
+    ],
+    [
+     "Operating costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "13,691,700",
+     "",
+     "",
+     "10,469,800",
+     ""
+    ],
+    [
+     "Advertising",
+     "",
+     "812,700",
+     "",
+     "",
+     "657,500",
+     ""
+    ],
+    [
+     "Selling",
+     "",
+     "4,848,900",
+     "",
+     "",
+     "4,598,600",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "2,876,000",
+     "",
+     "",
+     "2,782,200",
+     ""
+    ],
+    [
+     "Total operating costs and expenses",
+     "",
+     "22,229,300",
+     "",
+     "",
+     "18,508,100",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "2,114,300",
+     "",
+     "",
+     "784,100",
+     ""
+    ],
+    [
+     "Rental and other income",
+     "",
+     "52,200",
+     "",
+     "",
+     "34,000",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(29,200)",
+     "",
+     "",
+     "(80,000)",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "2,137,300",
+     "",
+     "",
+     "738,100",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "43,900",
+     "",
+     "",
+     "94,200",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,093,400",
+     "",
+     "$",
+     "643,900",
+     ""
+    ],
+    [
+     "Net income per common share :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.18",
+     "",
+     "$",
+     "0.06",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.18",
+     "",
+     "$",
+     "0.06",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "11,507,944",
+     "",
+     "",
+     "11,251,637",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "11,781,839",
+     "",
+     "",
+     "11,347,418",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 599,
+    "end_line": 633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of Scott\u2019s Liquid Gold-Inc. and subsidiaries as of December 31, 2014 and 2013, and the results of their operations and their cash flows for each of the two years in the period ended December 31, 2014, in conformity with accounting principles generally accepted in the United States of America.\n/s/ EKS&H LLLP\nMarch 30, 2015\nDenver, Colorado\nConsolidated Statements of Operations",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "5,896,600",
+     "$",
+     "3,126,200"
+    ],
+    [
+     "Trade receivables, net",
+     "",
+     "1,041,100",
+     "",
+     "1,182,300"
+    ],
+    [
+     "Inventories, net",
+     "",
+     "2,689,700",
+     "",
+     "3,211,200"
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "3,700",
+     "",
+     "0"
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "346,000",
+     "",
+     "269,200"
+    ],
+    [
+     "Total current assets",
+     "",
+     "9,977,100",
+     "",
+     "7,788,900"
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "400,800",
+     "",
+     "518,200"
+    ],
+    [
+     "Other assets",
+     "",
+     "51,000",
+     "",
+     "51,000"
+    ],
+    [
+     "Total assets",
+     "$",
+     "10,428,900",
+     "$",
+     "8,358,100"
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "616,300",
+     "$",
+     "860,900"
+    ],
+    [
+     "Accrued payroll and benefits",
+     "",
+     "665,900",
+     "",
+     "553,300"
+    ],
+    [
+     "Accrued property taxes",
+     "",
+     "34,200",
+     "",
+     "33,400"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "1,316,400",
+     "",
+     "1,447,600"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "1,316,400",
+     "",
+     "1,447,600"
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock; $0.10 par value, authorized 50,000,000 shares; issued and outstanding 11,549,789 shares (2014) and 11,446,800 shares (2013)",
+     "",
+     "1,155,000",
+     "",
+     "1,144,700"
+    ],
+    [
+     "Capital in excess of par",
+     "",
+     "5,713,800",
+     "",
+     "5,615,500"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "2,243,700",
+     "",
+     "150,300"
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "9,112,500",
+     "",
+     "6,910,500"
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$",
+     "10,428,900",
+     "$",
+     "8,358,100"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 639,
+    "end_line": 678
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Balance Sheets",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Shareholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Capital in Excess of Pa[ ]",
+     "",
+     "Retained Earnings (deficit)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2012",
+     "",
+     "10,937,000",
+     "$",
+     "1,093,700",
+     "$",
+     "5,502,600",
+     "$",
+     "(493,600)",
+     "",
+     "$",
+     "6,102,700"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "55,300",
+     "",
+     "0",
+     "",
+     "",
+     "55,300"
+    ],
+    [
+     "Stock options exercised",
+     "",
+     "509,800",
+     "",
+     "51,000",
+     "",
+     "57,600",
+     "",
+     "0",
+     "",
+     "",
+     "108,600"
+    ],
+    [
+     "Net income",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "643,900",
+     "",
+     "",
+     "643,900"
+    ],
+    [
+     "Balance, December 31, 2013",
+     "",
+     "11,446,800",
+     "$",
+     "1,144,700",
+     "$",
+     "5,615,500",
+     "$",
+     "150,300",
+     "",
+     "$",
+     "6,910,500"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "66,700",
+     "",
+     "0",
+     "",
+     "",
+     "66,700"
+    ],
+    [
+     "Stock options exercised",
+     "",
+     "102,989",
+     "",
+     "10,300",
+     "",
+     "31,600",
+     "",
+     "0",
+     "",
+     "",
+     "41,900"
+    ],
+    [
+     "Net income",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "2,093,400",
+     "",
+     "",
+     "2,093,400"
+    ],
+    [
+     "Balance, December 31, 2014",
+     "",
+     "11,549,789",
+     "",
+     "1,155,000",
+     "",
+     "5,713,800",
+     "",
+     "2,243,700",
+     "",
+     "",
+     "9,112,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 684,
+    "end_line": 703
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Shareholders\u2019 Equity",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 706,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,093,400",
+     "",
+     "$",
+     "643,900",
+     ""
+    ],
+    [
+     "Adjustment to reconcile net income to net cash provided (used) by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "173,600",
+     "",
+     "",
+     "135,000",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "66,700",
+     "",
+     "",
+     "55,300",
+     ""
+    ],
+    [
+     "Loss on disposal of assets",
+     "",
+     "800",
+     "",
+     "",
+     "7,200",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "",
+     "141,200",
+     "",
+     "",
+     "(213,100)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "521,500",
+     "",
+     "",
+     "(1,235,400)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "(76,800)",
+     "",
+     "",
+     "(98,300)",
+     ""
+    ],
+    [
+     "Net payments on obligations collateralized by receivables and inventory",
+     "",
+     "0",
+     "",
+     "",
+     "(1,201,400)",
+     ""
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "(3,700)",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(131,200)",
+     "",
+     "",
+     "(680,800)",
+     ""
+    ],
+    [
+     "Total adjustments to net income",
+     "",
+     "692,100",
+     "",
+     "",
+     "(3,231,500)",
+     ""
+    ],
+    [
+     "Net Cash Provided (Used) by Operating Activities",
+     "",
+     "2,785,500",
+     "",
+     "",
+     "(2,587,600)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets held for sale",
+     "",
+     "0",
+     "",
+     "",
+     "8,922,600",
+     ""
+    ],
+    [
+     "Purchase of property, plant and equipment",
+     "",
+     "(57,000)",
+     "",
+     "",
+     "(208,000)",
+     ""
+    ],
+    [
+     "Net Cash (Used) Provided by Investing Activities",
+     "",
+     "(57,000)",
+     "",
+     "",
+     "8,714,600",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payments on long-term debt",
+     "",
+     "0",
+     "",
+     "",
+     "(3,363,300)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "41,900",
+     "",
+     "",
+     "108,600",
+     ""
+    ],
+    [
+     "Net Cash Provided (Used) by Financing Activities",
+     "",
+     "41,900",
+     "",
+     "",
+     "(3,254,700)",
+     ""
+    ],
+    [
+     "Net Increase in Cash and Cash Equivalents",
+     "",
+     "2,770,400",
+     "",
+     "",
+     "2,872,300",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, beginning of year",
+     "",
+     "3,126,200",
+     "",
+     "",
+     "253,900",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, end of year",
+     "$",
+     "5,896,600",
+     "",
+     "$",
+     "3,126,200",
+     ""
+    ],
+    [
+     "Supplemental disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for interest",
+     "$",
+     "29,200",
+     "",
+     "$",
+     "48,400",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 709,
+    "end_line": 754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to these Consolidated Financial Statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "See accompanying notes to these Consolidated Financial Statements.\nNote 1. Organization and Summary of Significant Accounting Policies\n(a) Company Background and Management\u2019s Plans\nScott\u2019s Liquid Gold-Inc. (a Colorado corporation) was incorporated on February 15, 1954. Scott\u2019s Liquid Gold-Inc. and its wholly-owned subsidiaries (collectively, the \u201cCompany\u201d, \u201cwe\u201d, \u201cour\u201d, or \u201cus\u201d) develop, manufacture, market and sell quality household and skin and hair care products. We are also a distributor in the United States of Montagne Jeunesse skin sachets and Batiste Dry Shampoo manufactured by two other companies. Our business is comprised of two segments, household products and skin and hair care products.\n(b) Principles of Consolidation\nOur consolidated financial statements include our accounts and those of our wholly-owned subsidiaries. All intercompany accounts and transactions have been eliminated.\n(c) Use of Estimates\nThe preparation of financial statements in conformity with accounting principles generally accepted in the United States requires us to make estimates and assumptions that affect the reported amounts in our financial statements of assets and liabilities, the disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenues and expenses during the reporting period. Significant estimates include, but are not limited to, the realization of deferred tax assets, reserves for slow moving and obsolete inventory, customer returns and allowances, coupon redemptions and stock-based compensation. Actual results could differ from our estimates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 706,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 757,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Expected life of options (using the \u201csimplified method\u201d)",
+     "",
+     "4.5 \u2013 5.5 years",
+     "",
+     "",
+     "4.5 years",
+     ""
+    ],
+    [
+     "Average risk-free interest rate",
+     "",
+     "1.6%-1.7",
+     "%",
+     "",
+     "0.8%- 1.5",
+     "%"
+    ],
+    [
+     "Average expected volatility of stock",
+     "",
+     "121%-128%",
+     "%",
+     "",
+     "137%-141",
+     "%"
+    ],
+    [
+     "Expected dividend rate",
+     "",
+     "None",
+     "",
+     "",
+     "None",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "During 2013, we granted: (i) options to acquire 85,000 shares of our common stock to two of our executive officers at a price of $0.41 per share; (ii) an option to acquire 30,000 shares of our common stock to one of our board members at a price of $0.55 per share; (iii) an option to acquire 15,000 shares of our common stock to a regional sales manager at a price of $0.55 per share; (iv) an option to acquire 15,000 shares of our common stock to a regional sales manager at a price of $0.49 per share; and (v) an option to acquire 50,000 shares of our common stock to an executive officer at a price of $0.78 per share. These options which vest ratably over 48 months, or upon a change in control, and which expire after five years, were granted at 120% of the market value as of the date of grant. In addition, during 2013, we granted options to acquire 90,000 shares of our common stock to three of our non-employee directors. These options which vested upon the date of grant, and which expire after five years, were granted at 120% of the market value as of the date of grant. The options granted in 2013 had a weighted average fair market value on the date of grant of $0.30 per share. The weighted average fair market value of the options granted in 2013 were estimated on the date of grant, using a Black-Scholes option pricing model with the assumptions set forth below.\nThe weighted average fair market value of the options granted in the years ended December 31, 2014 and 2013 were estimated on the date of grant, using a Black-Scholes option pricing model with the following assumptions:",
+   "prose_after": "Compensation cost related to stock options recognized in operating results (included in general and administrative expenses) under authoritative guidance issued by the FASB was $66,700 and $55,300 for the years ended December 31, 2014 and 2013, respectively. Approximately $242,500 of total unrecognized compensation costs related to non-vested stock options is expected to be recognized over the next 48-60 months, depending on the vesting provisions of the options. In accordance with this same authoritative guidance, there was no tax benefit from recording the non-cash expense as it relates to the options granted to our employees, as these were qualified stock options which are not normally tax deductible. With respect to the non-cash expense associated with the options granted to our non-employee directors, no tax benefit was recognized due to the existence of as yet unutilized net operating losses. At such time as these operating losses have been utilized and a tax benefit is realized from the issuance of non-qualified stock options, a corresponding tax benefit may be recognized.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(\u2022)",
+     "Operating Costs and Expenses Classification"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 863,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Compensation cost related to stock options recognized in operating results (included in general and administrative expenses) under authoritative guidance issued by the FASB was $66,700 and $55,300 for the years ended December 31, 2014 and 2013, respectively. Approximately $242,500 of total unrecognized compensation costs related to non-vested stock options is expected to be recognized over the next 48-60 months, depending on the vesting provisions of the options. In accordance with this same authoritative guidance, there was no tax benefit from recording the non-cash expense as it relates to the options granted to our employees, as these were qualified stock options which are not normally tax deductible. With respect to the non-cash expense associated with the options granted to our non-employee directors, no tax benefit was recognized due to the existence of as yet unutilized net operating losses. At such time as these operating losses have been utilized and a tax benefit is realized from the issuance of non-qualified stock options, a corresponding tax benefit may be recognized.",
+   "prose_after": "Cost of sales includes costs associated with manufacturing and distribution including labor, materials, freight-in, purchasing and receiving, quality control, internal transfer costs, repairs, maintenance and other indirect costs, as well as warehousing and distribution costs. We classify shipping and handling costs comprised primarily of freight-out as selling expenses. Other selling expenses consist primarily of wages and benefits for sales and sales support personnel, travel, brokerage commissions and promotional costs, as well as certain other indirect costs. Shipping and handling costs totaled $1,517,500 and $1,461,700, for the years ended December 31, 2014 and 2013, respectively.\nGeneral and administrative expenses consist primarily of wages and benefits associated with management and administrative support departments, business insurance costs, professional fees, office facility rent and related expenses and other general support costs.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "([ ])",
+     "Recently Issued Accounting Standards"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 874
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Cost of sales includes costs associated with manufacturing and distribution including labor, materials, freight-in, purchasing and receiving, quality control, internal transfer costs, repairs, maintenance and other indirect costs, as well as warehousing and distribution costs. We classify shipping and handling costs comprised primarily of freight-out as selling expenses. Other selling expenses consist primarily of wages and benefits for sales and sales support personnel, travel, brokerage commissions and promotional costs, as well as certain other indirect costs. Shipping and handling costs totaled $1,517,500 and $1,461,700, for the years ended December 31, 2014 and 2013, respectively.\nGeneral and administrative expenses consist primarily of wages and benefits associated with management and administrative support departments, business insurance costs, professional fees, office facility rent and related expenses and other general support costs.",
+   "prose_after": "In May 2014, the FASB issued ASU No. 2014-09, \u201cRevenue from Contracts with Customers (Topic 606)\u201d (\u201cASU 2014-09\u201d). ASU 2014-09 amends the guidance for revenue recognition to replace numerous industry-specific requirements and converges areas under this topic with those of the International Financial Reporting Standards. The ASU implements a five-step process for customer contract revenue recognition that focuses on transfer of control, as opposed to transfer of risk and rewards. The amendment also requires enhanced disclosures regarding the nature, amount, timing and uncertainty of revenues and cash flows from contracts and customers. Other major provisions include the capitalization and amortization of certain contract costs, ensuring the time value of money is considered in the transaction price, and allowing estimates of variable consideration to be recognized before contingencies are resolved in certain circumstances. The amendments in this ASU are effective for reporting periods beginning after December 15, 2016, and early adoption is prohibited. Entities can transition to the standard either retrospectively or as a cumulative-effect adjustment as of the date of the adoption. We are currently assessing the impact, if any, that the adoption of ASU 2014-09 will have on our financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "1,626,300",
+     "",
+     "$",
+     "1,636,500",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "1,117,800",
+     "",
+     "",
+     "1,621,000",
+     ""
+    ],
+    [
+     "Inventory reserve for obsolescence",
+     "",
+     "(54,400)",
+     "",
+     "",
+     "(46,300)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,689,700",
+     "",
+     "$",
+     "3,211,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 885,
+    "end_line": 895
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "In August 2014, the FASB issued ASU No. 2014-015, \u201cPresentation of Financial Statements - Going Concern\u201d (\u201cASU 2014-15\u201d). ASU 2014-15 requires management to assess, at each interim and annual reporting period, whether substantial doubt exists about an entity\u2019s ability to continue as a going concern within one year after the date that the financial statements are issued and, when necessary, provide related footnote disclosures. Management\u2019s assessment should be based on relevant conditions and events that are known and reasonably knowable at the date that the financial statements are issued. ASU 2014-15 is effective for fiscal years ending after December 15, 2016, which for the Company means the year ending December 31, 2016; however, early adoption is permitted. The adoption of this guidance did not have a material effect on the Company\u2019s consolidated financial position, results of operations, or cash flows as the Company does not have any substantial doubt about its ability to continue as a going concern.\nNote 2: Inventories\nInventories, consisting of materials, labor and overhead at December 31 were comprised of the following:",
+   "prose_after": "Note 3: Property, Plant and Equipment\nProperty, plant and equipment at December 31 were comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Production equipment",
+     "$",
+     "5,039,900",
+     "",
+     "$",
+     "4,989,900",
+     ""
+    ],
+    [
+     "Office furniture and equipment",
+     "",
+     "778,700",
+     "",
+     "",
+     "794,000",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "188,200",
+     "",
+     "",
+     "188,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "6,006,800",
+     "",
+     "",
+     "5,972,100",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(5,606,000)",
+     "",
+     "",
+     "(5,453,900)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "400,800",
+     "",
+     "$",
+     "518,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 901,
+    "end_line": 914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Note 3: Property, Plant and Equipment\nProperty, plant and equipment at December 31 were comprised of the following:",
+   "prose_after": "Depreciation expense for the years ended December 31, 2014 and 2013 was $173,600 and $135,000, respectively. Please see Note 12 for information on the sale of our Property.\nNote 4: Debt\nOn June 28, 2006, we entered into a loan with a fifteen year amortization with Citywide Banks (the \u201cBank\u201d) for $5,156,600 secured by the land, building and fixtures at our Denver, Colorado facilities and repaid the loan in full at the closing on the sale of our Property on February 1, 2013.\nPlease see Note 1(e) for information on our financing agreements with Summit and Wells Fargo. Note 1(e) also includes a discussion of the accounting treatment of the funds borrowed pursuant to these agreements.\nNote 5: Income Taxes\nThe provision for income tax for the years ended December 31 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Current provision (benefit):",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "33,900",
+     "",
+     "$",
+     "32,800"
+    ],
+    [
+     "State",
+     "",
+     "10,000",
+     "",
+     "",
+     "61,400"
+    ],
+    [
+     "Total current provision (benefit)",
+     "",
+     "43,900",
+     "",
+     "",
+     "94,200"
+    ],
+    [
+     "Deferred provision (benefit):",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "724,700",
+     "",
+     "",
+     "42,600"
+    ],
+    [
+     "State",
+     "",
+     "61,800",
+     "",
+     "",
+     "3,800"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(786,500)",
+     "",
+     "",
+     "(46,400)"
+    ],
+    [
+     "Total deferred provision (benefit)",
+     "",
+     "0",
+     "",
+     "",
+     "0"
+    ],
+    [
+     "Provision (benefit):",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "33,900",
+     "",
+     "",
+     "32,800"
+    ],
+    [
+     "State",
+     "",
+     "10,000",
+     "",
+     "",
+     "61,400"
+    ],
+    [
+     "Total provision (benefit)",
+     "$",
+     "43,900",
+     "",
+     "$",
+     "94,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 950
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Depreciation expense for the years ended December 31, 2014 and 2013 was $173,600 and $135,000, respectively. Please see Note 12 for information on the sale of our Property.\nNote 4: Debt\nOn June 28, 2006, we entered into a loan with a fifteen year amortization with Citywide Banks (the \u201cBank\u201d) for $5,156,600 secured by the land, building and fixtures at our Denver, Colorado facilities and repaid the loan in full at the closing on the sale of our Property on February 1, 2013.\nPlease see Note 1(e) for information on our financing agreements with Summit and Wells Fargo. Note 1(e) also includes a discussion of the accounting treatment of the funds borrowed pursuant to these agreements.\nNote 5: Income Taxes\nThe provision for income tax for the years ended December 31 is as follows:",
+   "prose_after": "Income tax expense (benefit) at the statutory tax rate is reconciled to the overall income tax expense (benefit) as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Federal income tax at statutory rates",
+     "$",
+     "726,700",
+     "",
+     "$",
+     "251,000",
+     ""
+    ],
+    [
+     "State income taxes, net of federal tax effect",
+     "",
+     "61,900",
+     "",
+     "",
+     "22,500",
+     ""
+    ],
+    [
+     "Change in unrecognized benefit",
+     "",
+     "(17,600)",
+     "",
+     "",
+     "(6,300)",
+     ""
+    ],
+    [
+     "Trade Promotions",
+     "",
+     "0",
+     "",
+     "",
+     "(152,700)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "59,400",
+     "",
+     "",
+     "26,100",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "830,400",
+     "",
+     "",
+     "140,600",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(786,500)",
+     "",
+     "",
+     "(46,400)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "43,900",
+     "",
+     "$",
+     "94,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 953,
+    "end_line": 968
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Income tax expense (benefit) at the statutory tax rate is reconciled to the overall income tax expense (benefit) as follows:",
+   "prose_after": "Deferred income taxes are based on estimated future tax effects of differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amount used for income tax purposes given the provision of enacted tax laws. The net deferred tax assets and liabilities as of December 31, 2014 and 2013 are comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "2,840,800",
+     "",
+     "$",
+     "3,647,400",
+     ""
+    ],
+    [
+     "Tax credit and other carryforwards",
+     "",
+     "344,800",
+     "",
+     "",
+     "302,500",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "",
+     "178,000",
+     "",
+     "",
+     "160,200",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "28,200",
+     "",
+     "",
+     "26,900",
+     ""
+    ],
+    [
+     "Accrued vacation",
+     "",
+     "35,400",
+     "",
+     "",
+     "87,800",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "10,300",
+     "",
+     "",
+     "46,100",
+     ""
+    ],
+    [
+     "Total deferred taxes",
+     "",
+     "3,437,500",
+     "",
+     "",
+     "4,270,900",
+     ""
+    ],
+    [
+     "Deferred tax liability:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated depreciation for tax purposes",
+     "",
+     "(58,400)",
+     "",
+     "",
+     "(105,300)",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "",
+     "(58,400)",
+     "",
+     "",
+     "(105,300)",
+     ""
+    ],
+    [
+     "Net deferred tax asset, before allowance",
+     "",
+     "3,379,100",
+     "",
+     "",
+     "4,165,600",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(3,379,100)",
+     "",
+     "",
+     "(4,165,600)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 996
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Deferred income taxes are based on estimated future tax effects of differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amount used for income tax purposes given the provision of enacted tax laws. The net deferred tax assets and liabilities as of December 31, 2014 and 2013 are comprised of the following:",
+   "prose_after": "At December 31, 2014, we had federal net operating loss carryforwards of approximately $7,043,000 and federal tax credit carryforwards related to research and development efforts of approximately $278,200, both of which expire over a period ending in 2033. At December 31, 2014, there was approximately $66,600 of alternative minimum tax credits which have no expiration period. State tax loss carryforwards at December 31, 2014 are approximately $14,998,600 expiring over a period ending in 2033.\nA valuation allowance was established due mainly to the uncertainty relating to the future utilization of net operating loss carryforwards. The valuation allowance was decreased by $786,500 for 2014 and decreased by $46,400 for 2013, primarily related to utilization of net operating losses and tax credits for these years. The amount of the deferred tax assets considered realizable could be adjusted in the future based upon changes in circumstances that result in a change in our assessment of our ability to realize those deferred tax assets through the generation of taxable income or other tax events.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Balance at January 1,",
+     "$",
+     "395,100",
+     "",
+     "$",
+     "",
+     "412,100"
+    ],
+    [
+     "Additions based on tax positions related to current year",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "320,000"
+    ],
+    [
+     "Reductions for tax positions of prior years or change in valuation",
+     "",
+     "(395,100)",
+     "",
+     "",
+     "",
+     "(337,000)"
+    ],
+    [
+     "Balance at December 31,",
+     "$",
+     "0",
+     "",
+     "$",
+     "",
+     "395,100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1005,
+    "end_line": 1015
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "A valuation allowance was established due mainly to the uncertainty relating to the future utilization of net operating loss carryforwards. The valuation allowance was decreased by $786,500 for 2014 and decreased by $46,400 for 2013, primarily related to utilization of net operating losses and tax credits for these years. The amount of the deferred tax assets considered realizable could be adjusted in the future based upon changes in circumstances that result in a change in our assessment of our ability to realize those deferred tax assets through the generation of taxable income or other tax events.\nWe adhere to the authoritative guidance with respect to accounting for uncertainty in income taxes. This guidance prescribes a recognition threshold and measurement attribute for the financial statement recognition and measurement of a tax position taken or expected to be taken in a tax return. It requires that we recognize in our consolidated financial statements, only those tax positions that are \u201cmore-likely-than-not\u201d of being sustained as of the adoption date, based on the technical merits of the position. As a result of the implementation of this guidance, each year we perform a comprehensive review of our material tax positions.\nAs a result of this review, we identified certain uncertain tax positions that need to be adjusted. As of December 31, 2014 and December 31, 2013, we identified approximately $0 and $395,100 of related tax positions, respectively.",
+   "prose_after": "Due to our net operating loss carryforward position and valuation allowance against our net deferred tax assets, the recognition of the unrecognized tax benefits detailed above would not affect our effective tax rate. We do not expect that the amount of unrecognized benefits will change significantly within the next 12 months.\nOur policy is to recognize interest and penalties related to uncertain tax benefits in income tax expense. As a result of our net operating loss carryforward position, we have no accrued interest or penalties related to uncertain tax positions as of December 31, 2014 or December 31, 2013.\nWe and our subsidiaries are subject to the following material taxing jurisdictions: United States and Colorado. The tax years that remain open to examination by the Internal Revenue Service are 2011 and years thereafter. However, due to our net operating loss carryforwards from prior periods, the Internal Revenue Service could potentially review the losses back to 2000. The tax years that remain open to examination by the State of Colorado are 2010 and years thereafter.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Life",
+     "",
+     "Aggregate Intrinsic Value",
+     "",
+     ""
+    ],
+    [
+     "Maximum number of shares under the plan",
+     "3,000,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2012",
+     "1,263,350",
+     "",
+     "$",
+     "0.22",
+     "",
+     "2.1 years",
+     "",
+     "$",
+     "73,600"
+    ],
+    [
+     "Granted in 2013",
+     "285,000",
+     "",
+     "",
+     "0.52",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised in 2013",
+     "(509,830)",
+     "",
+     "",
+     "0.21",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled/Expired in 2013",
+     "(344,000)",
+     "",
+     "",
+     "0.21",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2013",
+     "694,520",
+     "",
+     "$",
+     "0.35",
+     "",
+     "3.1 years",
+     "",
+     "$",
+     "211,100"
+    ],
+    [
+     "Granted in 2014",
+     "377,500",
+     "",
+     "",
+     "0.84",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised in 2014",
+     "(102,958)",
+     "",
+     "",
+     "0.41",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled/Expired in 2014",
+     "(50,093)",
+     "",
+     "",
+     "0.51",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2014",
+     "918,969",
+     "",
+     "$",
+     "0.53",
+     "",
+     "4.4 years",
+     "",
+     "$",
+     "374,600"
+    ],
+    [
+     "Exercisable, December 31, 2014",
+     "442,414",
+     "",
+     "$",
+     "0.33",
+     "",
+     "2.0 years",
+     "",
+     "$",
+     "269,800"
+    ],
+    [
+     "Available for issuance, December 31, 2014",
+     "2,081,031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1029,
+    "end_line": 1052
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "In 2005, we adopted a stock option plan for our employees, officers and directors (the \u201c2005 Plan\u201d). At the Annual Shareholders\u2019 Meeting in May 2011, shareholders approved an amendment to the 2005 Plan to increase the number of shares issuable under the plan from 1,500,000 shares to a total of 3,000,000 shares. Options granted before May 2011 are granted at not less than current market price of the stock on the date of grant and are exercisable from five to ten years from the grant date. Options granted after May 2011, pursuant to the plan amendment in May 2011, are required to be granted at not less than the higher of (1) 120% of current market price on the date of grant or (2) the average of market price over the prior 30 trading days. Except for the grant of 30,000 options to one of our board members in 2014 and the grant of 90,000 options to three of our board members in 2013 that vested upon the date of grant, the options granted in 2014 and 2013 vest each month over 48-60 months or upon a change in control.\nStock option activity under the 2005 Plan is as follows:",
+   "prose_after": "A summary of the status of non-vested shares underlying the options outstanding as of December 31, 2014 under the 2005 Plan is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "Non-vested, December 31, 2012",
+     "445,192",
+     "",
+     "$",
+     "0.22"
+    ],
+    [
+     "Granted in 2013",
+     "285,000",
+     "",
+     "",
+     "0.52"
+    ],
+    [
+     "Vested in 2013",
+     "(304,844)",
+     "",
+     "",
+     "0.21"
+    ],
+    [
+     "Cancelled/Expired in 2013",
+     "(110,663)",
+     "",
+     "",
+     "0.21"
+    ],
+    [
+     "Non-vested, December 31, 2013",
+     "314,685",
+     "",
+     "$",
+     "0.35"
+    ],
+    [
+     "Granted in 2014",
+     "377,500",
+     "",
+     "",
+     "0.84"
+    ],
+    [
+     "Vested in 2014",
+     "(194,214)",
+     "",
+     "",
+     "0.41"
+    ],
+    [
+     "Cancelled/Expired in 2014",
+     "(21,416)",
+     "",
+     "",
+     "0.51"
+    ],
+    [
+     "Non-vested, December 31, 2014",
+     "476,555",
+     "",
+     "$",
+     "0.53"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1055,
+    "end_line": 1072
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "A summary of the status of non-vested shares underlying the options outstanding as of December 31, 2014 under the 2005 Plan is as follows:",
+   "prose_after": "A summary of additional information related to the options outstanding as of December 31, 2014 under the 2005 Plan is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Range of Exercise Prices",
+     "Number of Options",
+     "Weighted Average Remaining Contractual Life",
+     "",
+     "Weighted Average Exercise Price"
+    ],
+    [
+     "$0.17-$0.39",
+     "353,525",
+     "1.2 years\n\n\n\n \n\n\n\n1.2 years",
+     "$",
+     "0.23"
+    ],
+    [
+     "$0.40-$0.62",
+     "167,944",
+     "3.4 years",
+     "$",
+     "0.45"
+    ],
+    [
+     "$0.63-$0.86",
+     "397,500",
+     "7.7 years",
+     "$",
+     "0.83"
+    ],
+    [
+     "Total",
+     "918,969",
+     "4.4 years",
+     "$",
+     "0.53"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1076,
+    "end_line": 1089
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "A summary of additional information related to the options outstanding as of December 31, 2014 under the 2005 Plan is as follows:",
+   "prose_after": "We have an Employee Stock Ownership Plan (\u201cPlan\u201d) to provide retirement benefits for our employees. The Plan is designed to invest primarily in our common stock and is non-contributory on the part of our employees. Contributions to the Plan are discretionary as determined by our Board of Directors. We expense the cost of contributions to the Plan. No contributions were made to the Plan in 2014 or 2013. At December 31, 2014 and 2013, a total of 830,682 and 860,053 shares of our common stock, respectively, have been allocated and earned by our employees.\nNote 7: Earnings per Share\nWe present basic and diluted earnings per share in accordance with authoritative guidance which establishes standards for computing and presenting basic and diluted earnings per share. Per share data is determined by using the weighted average number of common shares outstanding. Common equivalent shares are considered only for diluted earnings per share, unless considered anti-dilutive. Common equivalent shares, determined using the treasury stock method, result from stock options with exercise prices that are below the average market price of the common stock.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Common shares outstanding, beginning of the year",
+     "",
+     "11,446,800",
+     "",
+     "10,937,000"
+    ],
+    [
+     "Weighted average common shares issued",
+     "",
+     "61,144",
+     "",
+     "314,637"
+    ],
+    [
+     "Weighted average number of common shares outstanding",
+     "",
+     "11,507,944",
+     "",
+     "11,251,637"
+    ],
+    [
+     "Dilutive effect of common share equivalents",
+     "",
+     "273,895",
+     "",
+     "95,781"
+    ],
+    [
+     "Diluted weighted average number of common shares outstanding",
+     "",
+     "11,781,839",
+     "",
+     "11,347,418"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1100,
+    "end_line": 1112
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We present basic and diluted earnings per share in accordance with authoritative guidance which establishes standards for computing and presenting basic and diluted earnings per share. Per share data is determined by using the weighted average number of common shares outstanding. Common equivalent shares are considered only for diluted earnings per share, unless considered anti-dilutive. Common equivalent shares, determined using the treasury stock method, result from stock options with exercise prices that are below the average market price of the common stock.\nBasic earnings per share include no dilution and are computed by dividing income available to common shareholders by the weighted-average number of shares outstanding during the period. Diluted earnings per share reflect the potential of securities that could share in our earnings. There were common stock equivalents of 427,500 and 106,778 shares outstanding at December 31, 2014 and 2013, respectively, consisting of stock options that were not included in the calculation of earnings per share because they would have been anti-dilutive.\nA reconciliation of the weighted average number of common shares outstanding for the years ended December 31 is as follows:",
+   "prose_after": "We have authorized 20,000,000 shares of preferred stock issuable in one or more series, none of which are issued or outstanding as of December 31, 2014.\nNote 8: Segment Information\nWe operate in two different segments: household products and skin and hair care products. Our products are sold nationally and internationally (primarily Canada), directly through our sales force and indirectly through independent brokers and manufacturer\u2019s representatives, to mass merchandisers, drugstores, supermarkets, hardware stores and other retail outlets and to wholesale distributors. Management has chosen to organize our business around these segments based on differences in the products sold.\nAccounting policies for our segments are the same as those described in Note 1. We evaluate segment performance based on segment income or loss before income taxes.\nThe following provides information on our segments as of and for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1073,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Household Products",
+     "",
+     "",
+     "Skin and Hair Care Products",
+     "",
+     "Household Products",
+     "",
+     "",
+     "Skin and Hair Care Products",
+     ""
+    ],
+    [
+     "Net sales to external customers",
+     "$",
+     "5,890,200",
+     "",
+     "$",
+     "18,453,400",
+     "$",
+     "5,335,500",
+     "",
+     "$",
+     "13,956,700"
+    ],
+    [
+     "(Loss) income before income taxes",
+     "$",
+     "(666,200)",
+     "",
+     "$",
+     "2,803,500",
+     "$",
+     "(990,900)",
+     "",
+     "$",
+     "1,729,000"
+    ],
+    [
+     "Identifiable assets",
+     "$",
+     "4,119,400",
+     "",
+     "$",
+     "3,471,800",
+     "$",
+     "3,514,000",
+     "",
+     "$",
+     "3,733,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1124,
+    "end_line": 1137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We have authorized 20,000,000 shares of preferred stock issuable in one or more series, none of which are issued or outstanding as of December 31, 2014.\nNote 8: Segment Information\nWe operate in two different segments: household products and skin and hair care products. Our products are sold nationally and internationally (primarily Canada), directly through our sales force and indirectly through independent brokers and manufacturer\u2019s representatives, to mass merchandisers, drugstores, supermarkets, hardware stores and other retail outlets and to wholesale distributors. Management has chosen to organize our business around these segments based on differences in the products sold.\nAccounting policies for our segments are the same as those described in Note 1. We evaluate segment performance based on segment income or loss before income taxes.\nThe following provides information on our segments as of and for the years ended December 31:",
+   "prose_after": "The following is a reconciliation of segment information to consolidated information:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Net sales to external customers",
+     "$",
+     "24,343,600",
+     "$",
+     "19,292,200"
+    ],
+    [
+     "Income before income taxes",
+     "$",
+     "2,137,300",
+     "$",
+     "738,100"
+    ],
+    [
+     "Consolidated income before income taxes",
+     "$",
+     "2,137,300",
+     "$",
+     "738,100"
+    ],
+    [
+     "Identifiable assets",
+     "$",
+     "7,591,200",
+     "$",
+     "7,247,800"
+    ],
+    [
+     "Corporate assets",
+     "",
+     "2,837,700",
+     "",
+     "1,110,300"
+    ],
+    [
+     "Consolidated total assets",
+     "$",
+     "10,428,900",
+     "$",
+     "8,358,100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1140,
+    "end_line": 1155
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The following is a reconciliation of segment information to consolidated information:",
+   "prose_after": "Corporate assets noted above are comprised primarily of our cash and property and equipment not directly associated with manufacturing, warehousing, shipping and receiving activities.\nWe attribute our net sales to different geographic areas based on the location of the customer. All of our long-lived assets are located in the United States. For the year ended December 31, revenues for each geographical area are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "24,236,000",
+     "$",
+     "19,190,300"
+    ],
+    [
+     "Foreign countries",
+     "",
+     "107,600",
+     "",
+     "101,900"
+    ],
+    [
+     "Total net sales",
+     "$",
+     "24,343,600",
+     "$",
+     "19,292,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1160,
+    "end_line": 1169
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Corporate assets noted above are comprised primarily of our cash and property and equipment not directly associated with manufacturing, warehousing, shipping and receiving activities.\nWe attribute our net sales to different geographic areas based on the location of the customer. All of our long-lived assets are located in the United States. For the year ended December 31, revenues for each geographical area are as follows:",
+   "prose_after": "In 2014 and 2013, Ulta accounted for approximately $4,741,400 and $3,253,400, respectively, of our consolidated net sales and Wal-Mart accounted for approximately $4,409,600 and $4,130,300, respectively, of our consolidated net sales. We sell both household products and skin and hair care products to Wal-Mart, but we sell only skin and hair care products to Ulta. These customers are not related to us.\nThe outstanding trade receivables from Ulta accounted for 19.5% and 20.9% of our total trade receivables at December 31, 2014 and 2013, respectively. The outstanding trade receivables from Wal-Mart accounted for 14.0% and 13.7% of our total trade receivables at December 31, 2014 and 2013, respectively. A loss of one or both of these customers could have a material adverse effect on us because it is uncertain whether our consumer base served by these customers would purchase our products at other retail outlets. No long-term contracts exist between us and these customers or any other customer.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance at beginning of year",
+     "",
+     "Additions charged to expense",
+     "",
+     "Deductions",
+     "",
+     "Balance at end of year",
+     ""
+    ],
+    [
+     "Year ended December 31, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Returns and allowances and doubtful accounts reserve",
+     "$",
+     "468,400",
+     "$",
+     "2,039,300",
+     "$",
+     "1,686,000",
+     "$",
+     "821,700"
+    ],
+    [
+     "Year ended December 31, 2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Returns and allowances and doubtful accounts reserve",
+     "$",
+     "821,700",
+     "$",
+     "2,056,300",
+     "$",
+     "2,082,700",
+     "$",
+     "795,300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1191,
+    "end_line": 1200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We have entered into various operating lease agreements, primarily for office equipment. Annual rental expense under these leases totaled $50,300 and $78,500 in 2014 and 2013, respectively. Minimum annual rental payments under noncancellable operating leases are approximately $46,700, $33,700 and $19,900 for the years ending December 31, 2015, 2016 and 2017, respectively. Presently we have no lease commitments beyond 2017.\nIn connection with the sale of our Property on February 1, 2013, we assigned the following leases to the purchaser. In October 2009, we entered into a five-year operating lease agreement for one floor of our five-story office building to an established subsidiary of an international company. We began to receive rent payments in November 2009 that would have continued through October 2014. In September of 2012, we entered into a lease expiring December 31, 2015 for one-half of a floor of our office building. We began to receive rent payments in November 2012. In December of 2012, we entered into a lease expiring March 31, 2016 for one of our warehouse buildings. Rent payments started in May 2013.\nNote 11. Valuation and Qualifying Accounts",
+   "prose_after": "Note 12. Sale of Property\nOn February 1, 2013, we consummated the sale of our Property located at 4880 Havana Street, Denver, Colorado, consisting of approximately 10.8 acres of land improved with four buildings containing approximately 241,684 square feet of office, warehouse, and manufacturing space, with associated improvements and personal property, and adjacent vacant land of approximately 5.5 acres. We sold the Property for a purchase price of $9,500,000 and incurred selling expenses of $579,800, including $570,000 for real estate brokerage commissions.\nIn connection with the sale, we entered into the Office Lease with the purchaser to lease approximately 16,078 square feet of office space and entered into the Warehouse Lease to lease approximately 113,620 square feet of manufacturing and warehouse space currently used by us. Each of the Office Lease and the Warehouse Lease has an initial term of three years, with options to extend the term for two additional terms of three years each. Rent for the Office Lease is $13.00 per square foot per annum, with annual 3% increases. Rent for the Warehouse Lease is $3.25 per square foot per annum, with annual 3% increases, and we will pay an additional $1.25 per square foot per annum as our share of the purchaser\u2019s operating expenses under the Warehouse Lease (including taxes, insurance and common area maintenance charges). If certain uncontrollable operating expenses increase by more than 5% per year, our share of operating expenses under the Warehouse Lease may be increased.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1178,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1207,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SCOTT\u2019S LIQUID GOLD-INC.,\n\n\n\na Colorado corporation",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Mark E. Goldstein"
+    ],
+    [
+     "",
+     "Mark E. Goldstein, President and Chief Executive Officer\n\n\n\n(Principal Executive Officer)"
+    ],
+    [
+     "By:",
+     "/s/ Barry J. Levine"
+    ],
+    [
+     "",
+     "Barry J. Levine, Treasurer, Chief Financial Officer,\n\n\n\nChief Operating Officer and Corporate Secretary"
+    ],
+    [
+     "",
+     "(Principal Financial and Chief Accounting Officer)"
+    ],
+    [
+     "Date:",
+     "March 30, 2015"
+    ]
+   ],
+   "caption_stack": [
+    "SCOTT\u2019S LIQUID GOLD-INC.,\n\n\n\na Colorado corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1280,
+    "end_line": 1297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "See Exhibit Index at page 35 of this Report\nConsolidated Financial Statements:\nReport of Independent Registered Public Accounting Firm\nConsolidated Statements of Operations for the years ended December 31, 2014 and 2013\nConsolidated Balance Sheets as of December 31, 2014 and 2013\nConsolidated Statements of Shareholders\u2019 Equity for the years ended December 31, 2014 and 2013\nConsolidated Statements of Cash Flows for the years ended December 31, 2014 and 2013\nNotes to Consolidated Financial Statements\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date",
+     "",
+     "",
+     "Name and Title",
+     "",
+     "",
+     "Signature",
+     ""
+    ],
+    [
+     "March 30, 2015",
+     "",
+     "Mark E. Goldstein,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director, President and Chief Executive Officer",
+     "",
+     "",
+     "/s/ Mark E. Goldstein",
+     "",
+     ""
+    ],
+    [
+     "March 30, 2015",
+     "",
+     "Sharon D. Garrett, Director",
+     "",
+     "",
+     "Mark E. Goldstein, for himself and as",
+     "",
+     ""
+    ],
+    [
+     "March 30, 2015",
+     "",
+     "Gerald J. Laber, Director",
+     "",
+     "",
+     "Attorney-in-Fact for the named directors",
+     "",
+     ""
+    ],
+    [
+     "March 30, 2015",
+     "",
+     "Philip A. Neri, Director",
+     "",
+     "",
+     "who constitute all of the members of the",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "the Board of Directors and for the named officers",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "March 30, 2015",
+     "",
+     "Barry J. Levine, Director, Treasurer, Chief Financial Officer, Chief Operating Officer and Corporate Secretary",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1300,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "",
+     "Document",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Restated Articles of Incorporation, as amended and restated through May 1, 1996, incorporated by reference to Exhibit 3.1 of our Annual Report on Form 10-KSB for the year ended December 31, 2007.",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Bylaws, as amended through July 13, 2011, incorporated by reference to Exhibit 99.1 of our Current Report on Form 8-K filed on July 19, 2011.",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Change in Terms Agreement with Citywide Banks, dated June 28, 2006, between us and Citywide Banks, incorporated by reference to Exhibit 10.1 of our Current Report on Form 8-K filed on June 30, 2006.",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "",
+     "Business Loan Agreement, dated June 28, 2006, between us and Citywide Banks, incorporated by reference to Exhibit 10.2 of our Current Report on Form 8-K filed on June 30, 2006.",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "",
+     "Addendum to Loan Documents, dated June 28, 2006, incorporated by reference to Exhibit 10.3 of our Current Report on Form 8-K filed on June 30, 2006.",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "",
+     "Promissory Note dated June 7, 2006 by us to Citywide Banks; Deed of Trust dated June 7, 2006 among us, Citywide Banks and the Public Trustee of the City and County of Denver, Colorado; Assignment of Rents dated June 7, 2006 between us and Citywide Banks; letter agreement dated June 7, 2006 regarding the change in the amount under the existing bank line of credit with Citywide Banks, incorporated by reference to Exhibit 10.0 of our Current Report on Form 8-K filed on June 12, 2006.",
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "",
+     "Second Amendment to Shareholder Rights Agreement, dated as of January 6, 2012, between the Company and Broadridge Corporate Issuer Solutions, Inc., as Rights Agent, incorporated by reference to Exhibit 4.1 of our Current Report on Form 8-K filed with the Commission on January 10, 2012.",
+     "",
+     ""
+    ],
+    [
+     "10.1*",
+     "",
+     "Scott\u2019s Liquid Gold-Inc. Health and Accident Plan, Plan Document and Summary Plan Description Amended and Restated Effective October 1, 2003 incorporated by reference to Exhibit 10.1 of our Annual Report on Form 10-K for the year ended December 31, 2004.",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Scott\u2019s Liquid Gold & Affiliated Companies Employee Benefit Health And Welfare Plan Amendment #1-2004 incorporated by reference to Exhibit 10.2 of our Annual Report on Form 10-K for the year ended December 31, 2004.",
+     "",
+     ""
+    ],
+    [
+     "10.3*",
+     "",
+     "Form of Indemnification Agreement for executive officers and directors incorporated by reference to Exhibit 10.3 of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2012.",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "",
+     "Exclusive Distribution Agreement, effective September 15, 2014, between Montagne Jeunesse International Limited and Neoteric Cosmetics, Inc. incorporated by reference to Exhibit 10.1 of the Company\u2019s Quarterly Report on Form 10-Q, filed with the Commission on November 14, 2014.",
+     "",
+     ""
+    ],
+    [
+     "10.5*",
+     "",
+     "Employment Agreement dated as of March 26, 2014 between Scott\u2019s Liquid Gold-Inc. and Mark Goldstein incorporated by reference to Exhibit 10.5 of the Company\u2019s Annual Report on Form 10-K, filed with the Commission on March 28, 2014. .",
+     "",
+     ""
+    ],
+    [
+     "10.6*",
+     "",
+     "Employment Agreement dated as of March 26, 2014 between Scott\u2019s Liquid Gold-Inc. and Barry Levine incorporated by reference to Exhibit 10.6 of the Company\u2019s Annual Report on Form 10-K, filed with the Commission on March 28, 2014. .",
+     "",
+     ""
+    ],
+    [
+     "10.7*",
+     "",
+     "2005 Stock Incentive Plan, as amended, incorporated by reference to Exhibit 4 of our Registration Statement No. 333-156191, filed with the Commission on December 16, 2008.",
+     "",
+     ""
+    ],
+    [
+     "10.8*",
+     "",
+     "Amendment to the 2005 Stock Incentive Plan, incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K, filed with the Commission on September 8, 2014.",
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "",
+     "Form of 2005 Stock Option Plan Incentive Stock Option Agreement, incorporated by reference to Exhibit 10.4 of our Quarterly Report on Form 10-QSB for the quarter ended March 31, 2007.",
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "",
+     "Form of 2005 Stock Incentive Plan Nonqualified Stock Option Agreement, incorporated by reference to Exhibit 10.6 of our Quarterly Report on Form 10-QSB for the quarter ended March 31, 2007.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1320,
+    "end_line": 1382
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1383,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "",
+     "Document",
+     ""
+    ],
+    [
+     "10.11",
+     "",
+     "Financing Agreement and Addendum to Financing Agreement, both dated October 31, 2008, between Summit Financial Resources, L.P. and the Company, incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the Commission on November 4, 2008.",
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "",
+     "Guarantees, dated October 31, 2008, by SLG Plastics, Inc. Advertising Promotions Incorporated, Colorado Product Concepts, Inc., Neoteric Cosmetics, Inc., and SLG Chemicals, Inc., incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the Commission on November 4, 2008.",
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "",
+     "First Amendment to Financing Agreement dated March 12, 2009 between Summit Financial Resources, L.P. and the Company, incorporated by reference to Exhibit 10.18 of our Annual Report on Form 10-K for the year ended December 31, 2008.",
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "",
+     "Second Amended and Restated Financing Agreement and Addendum to dated March 16, 2011 between Summit Financial Resources, L.P. and the Company, incorporated by reference to Exhibit 10.19 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on March 29, 2011.",
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "",
+     "First Amendment to the Second Amended and Restated Financing Agreement, dated June 29, 2012, between Summit Financial Resources, L.P. and the Company, incorporated by reference to Exhibit 99.1 of the Current Report on Form 8-K filed with the Commission on July 2, 2012.",
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "",
+     "Receivables Purchase Agreement dated March 16, 2011 between Wells Fargo Bank, National Association and Scott\u2019s Liquid Gold, Inc., incorporated by reference to Exhibit 10.20 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on March 29, 2011.",
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "",
+     "Receivables Purchase Agreement dated March 16, 2011 between Wells Fargo Bank, National Association and Neoteric Cosmetics, Inc., incorporated by reference to Exhibit 10.21 of the Company\u2019s Annual Report on Form 10-K filed with the Commission on March 29, 2011.",
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "",
+     "Customer Agreement, dated July 15, 2014, between Church & Dwight Co. Inc. and Neoteric Cosmetics, Inc. incorporated by reference to Exhibit 10.1 of the Company\u2019s Quarterly Report on Form 10-Q, filed with the Commission on August 14, 2014.",
+     "",
+     ""
+    ],
+    [
+     "10.19",
+     "",
+     "Purchase and Sale Agreement, dated November 21, 2012, between the Company and Havana Gold, LLC. incorporated by reference to Exhibit 10.24 of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2012.",
+     "",
+     ""
+    ],
+    [
+     "10.20",
+     "",
+     "Real Property Lease (Warehouse Lease), dated February 1, 2013, between the Company and Havana Gold, LLC. incorporated by reference to Exhibit 10.25 of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2012.",
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "",
+     "Real Property Lease (Office Lease), dated February 1, 2013, between the Company and Havana Gold, LLC. incorporated by reference to Exhibit 10.26 of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2012.",
+     "",
+     ""
+    ],
+    [
+     "10.22*",
+     "",
+     "Scott\u2019s Liquid Gold-Inc. Employee Stock Ownership Plan and Trust Agreement, Amended and Restated effective January 1, 2012 incorporated by reference to Exhibit 10.27 of the Company\u2019s Annual Report on Form 10-K, filed with the Commission on March 28, 2014..",
+     "",
+     ""
+    ],
+    [
+     "21",
+     "",
+     "List of Subsidiaries.",
+     "",
+     ""
+    ],
+    [
+     "23",
+     "",
+     "Consent of EKS&H LLLP.",
+     "",
+     ""
+    ],
+    [
+     "24",
+     "",
+     "Powers of Attorney.",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Rule 13a-14(a) Certification of the Chief Executive Officer.",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Rule 13a-14(a) Certification of the Chief Financial Officer.",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "",
+     "Section 1350 Certification.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1384,
+    "end_line": 1440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1383,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1441,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "",
+     "Document",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1442,
+    "end_line": 1460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Management contract or compensatory plan or arrangement.\n** Furnished, not filed.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1441,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1465,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

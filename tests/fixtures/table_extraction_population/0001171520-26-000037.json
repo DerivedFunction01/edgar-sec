@@ -1,0 +1,4284 @@
+{
+ "accession": "0001171520-26-000037",
+ "cik": "0001807689",
+ "form": "10-K",
+ "filing_date": "2026-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "eps12514_fcci.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Wyoming",
+     "",
+     "83-4100110"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ending December 31, 2025\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from______to______\nCommission File Number 000-54457\nFAST CASUAL CONCEPTS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "141 Amsterdam Rd. Grove City, PA 16127\n(Address of principal executive offices) (Zip Code)\nRegistrant\u2019s telephone number, including area code: (727)-692-3348\nSecurities to be registered under Section 12(b) of the Act: None\nSecurities to be registered under Section 12(g) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common",
+     "FCCI",
+     "OTCID"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "141 Amsterdam Rd. Grove City, PA 16127\n(Address of principal executive offices) (Zip Code)\nRegistrant\u2019s telephone number, including area code: (727)-692-3348\nSecurities to be registered under Section 12(b) of the Act: None\nSecurities to be registered under Section 12(g) of the Exchange Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "5"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "9"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "9"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "9"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "9"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "9"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "9"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "9"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "13"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "13"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements With Accountants On Accounting and Financial Disclosure",
+     "31"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "31"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "32"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "32"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, and Corporate Governance",
+     "33"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "33"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "34"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "35"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "35"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "36"
+    ],
+    [
+     "",
+     "Signatures",
+     "37"
+    ]
+   ],
+   "caption_stack": [
+    "PART I",
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 104
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the voting stock held by non-affiliates of the registrant, based upon the closing sale price of the registrant\u2019s common stock of $1.18 per share on September 30, 2025, the last business day of the registrants most recent completed third quarter, and 11,114,754 shares held by non-affiliates was $13,115,410.\nAs of December 31, 2025, the Registrant had 26,112,754 issued and outstanding shares of Common Stock.\nTABLE OF CONTENTS",
+   "prose_after": "Part 1\nItem 1. Business.\nForward-Looking and Cautionary Statements\nThere are statements in this registration statement that are not historical facts. These \u201cforward-looking statements\u201d can be identified by the use of terminology such as \u201cbelieve,\u201d \u201chope,\u201d \u201cmay,\u201d \u201canticipate,\u201d \u201cshould,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201cestimate,\u201d \u201cproject,\u201d \u201cpositioned,\u201d \u201cstrategy\u201d and similar expressions. You should be aware that these forward-looking statements are subject to risks and uncertainties beyond our control. To discuss these risks, you should read this entire registration statement carefully, especially the risks discussed under the \u201cRisk Factors\u201d section. Although management believes that the assumptions underlying the forward-looking statements included in this registration statement are reasonable, they do not guarantee our future performance, and actual results could differ from those contemplated by these forward-looking statements. The assumptions used for purposes of the forward-looking statements specified in the following information represent estimates of future events and are subject to uncertainty as to possible changes in economic, legislative, industry, and other circumstances. As a result, the identification and interpretation of data and additional information and their use in developing and selecting assumptions from and among reasonable alternatives require the exercise of judgment. To the extent that the assumed events do not occur, the outcome may vary substantially from anticipated or projected results. Accordingly, no opinion is expressed on the achievability of those forward-looking statements. In light of these risks and uncertainties, there can be no assurance that the results and events contemplated by the forward-looking statements contained in this registration statement will transpire. You are cautioned not to place undue reliance on these forward-looking statements, which speak only as of their dates. We do not undertake any obligation to update or revise any forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Agency Name",
+     "Key Strengths and Services"
+    ],
+    [
+     "WebFX",
+     "SEO, PPC, web design, content marketing, CRO; data-driven with proprietary tools for ROI tracking."
+    ],
+    [
+     "SmartSites",
+     "SEO, PPC, social media, web development; fast-growing with a focus on small to mid-sized businesses."
+    ],
+    [
+     "Ignite Visibility",
+     "Full-funnel SEO, paid media, social, email; award-winning for performance marketing."
+    ],
+    [
+     "Disruptive Advertising",
+     "PPC and paid search expertise; automation and AI for scaling campaigns."
+    ],
+    [
+     "Thrive Internet Marketing Agency",
+     "SEO, PPC, social media, reputation management; emphasis on measurable growth."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 143,
+    "end_line": 158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "The digital marketing space is highly competitive and fragmented, encompassing a mix of full-service agencies, specialized firms (e.g., in SEO, PPC, content, or AI-driven strategies), and larger holding companies. As of 2025, the global digital marketing market is projected to reach approximately USD $1.18 trillion by 2033, growing at a CAGR of 11.22% from 2025 onward, driven by AI integration, personalization, and data analytics. Competitors range from established giants like WebFX and SmartSites to innovative players leveraging AI tools for competitive intelligence and automation. Key players dominate through services like SEO, PPC, social media management, content marketing, email campaigns, and programmatic advertising. Below, the top competitors are categorized based on recent industry rankings and analyses from sources like Clutch.co, DesignRush, Semrush, and GoodFirms. These are selected for their proven track records, client results, and relevance in 2025 trends such as hyper-personalization, AI optimization, and full-funnel strategies.",
+   "prose_after": "2. Specialized Agencies (SEO, Content, AI-Focused) These excel in niche areas like SEO tools, content creation, or AI-powered marketing, often competing by offering targeted expertise amid 2025's rise in generative AI and voice search.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 142,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 211,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Agency Name",
+     "Key Strengths and Services"
+    ],
+    [
+     "Higher Visibility",
+     "SEO, content marketing, link building; data analytics for competitive analysis."
+    ],
+    [
+     "Victorious",
+     "SEO strategy, on-page optimization, technical audits; AI-enhanced keyword research."
+    ],
+    [
+     "Siege Media",
+     "Content marketing, SEO, digital PR; generates high-traffic value."
+    ],
+    [
+     "Omniscient Digital",
+     "Data-driven content strategies, SEO for B2B; focuses on organic lead generation."
+    ],
+    [
+     "Moburst",
+     "Mobile-first digital marketing, app growth, AI personalization; global scaling."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "2. Specialized Agencies (SEO, Content, AI-Focused) These excel in niche areas like SEO tools, content creation, or AI-powered marketing, often competing by offering targeted expertise amid 2025's rise in generative AI and voice search.",
+   "prose_after": "3. Global and Holding Company Affiliates and Larger networks or affiliates under holding companies provide scalable, international services, competing through resources and tech integration like AR/VR and predictive analytics.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 142,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 211,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Agency Name",
+     "Key Strengths and Services"
+    ],
+    [
+     "Merkle (Dentsu)",
+     "Performance media, CRM, loyalty programs; AI for customer experience."
+    ],
+    [
+     "DEPT\u00ae",
+     "Creative tech, AI consulting, digital experiences; full-funnel media."
+    ],
+    [
+     "REQ",
+     "Omnichannel strategy, SEO, traditional-digital blend."
+    ],
+    [
+     "Power Digital",
+     "Online marketing, SEO, social; proprietary tech for eCommerce."
+    ],
+    [
+     "NoGood",
+     "AI-driven growth, paid media, SEO; hubs across North America."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 179,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "3. Global and Holding Company Affiliates and Larger networks or affiliates under holding companies provide scalable, international services, competing through resources and tech integration like AR/VR and predictive analytics.",
+   "prose_after": "Additional Insights\n\u2022 Challenges for Competitors: High competition leads to consolidation via M&A, with independents like SmartSites gaining ground against holding companies. Economic factors, like potential TikTok disruptions, could shift ad spends.\nBusiness Opportunities\nThe Company intends to leverage a relationship built client base and use our relationships as a competitive advantage. We also intend to integrate data driven results through AI integration and data aggregation.\nSWOT Analysis\nStrengths\n1. Strong Client Relationships: Personalized, trust-based relationships with clients foster loyalty, repeat business, and referrals, giving the Company a competitive edge over larger, less agile firms.\n2. AI Integration: Early adoption of AI tools (e.g., predictive analytics, programmatic advertising, sentiment analysis) enhances campaign efficiency, targeting, and ROI, positioning the Company as innovative.\n3. Agility and Flexibility: As a smaller firm, we can quickly adapt strategies, customize campaigns, and pivot to meet client needs compared to larger agencies with bureaucratic processes.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 142,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 211,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "202",
+     "",
+     "$",
+     "247",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "9,300",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "625",
+     "",
+     "",
+     "495",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "10,127",
+     "",
+     "",
+     "742",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER NON-CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "130,236",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "10,127",
+     "",
+     "$",
+     "130,978",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "30,981",
+     "",
+     "$",
+     "12,356",
+     ""
+    ],
+    [
+     "Notes and advances payable, related party",
+     "",
+     "19,481",
+     "",
+     "",
+     "17,329",
+     ""
+    ],
+    [
+     "Liabilities from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "45,418",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "50,462",
+     "",
+     "",
+     "75,103",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER NON-CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "62,000",
+     ""
+    ],
+    [
+     "SBA EID Loan 2020",
+     "",
+     "114,484",
+     "",
+     "",
+     "114,400",
+     ""
+    ],
+    [
+     "Liabilities from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "41,086",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "",
+     "114,484",
+     "",
+     "",
+     "217,486",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "164,946",
+     "",
+     "",
+     "292,589",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; $0.001 par value, 10,000,000,000 and 10,000,000,000 shares authorized and 10,000,000 and 10,000,000 shares issued and outstanding",
+     "",
+     "10,000",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Common stock; $0.001 par value, 750,000,000 and 750,000,000 shares authorized and 26,124,754 and 26,112,754 shares issued and outstanding",
+     "",
+     "26,125",
+     "",
+     "",
+     "26,113",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "1,856,254",
+     "",
+     "",
+     "1,850,266",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(2,047,198)",
+     "",
+     "",
+     "(2,047,990)",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(154,819)",
+     "",
+     "",
+     "(161,611)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "10,127",
+     "",
+     "$",
+     "130,978",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Critical Audit Matters\nCritical audit matters are matters arising from the current period audit of the consolidated financial statements that were communicated or required to be communicated to the audit committee and that (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgements.We determined that there are no critical audit matters to communicate.\n6945\nFor M N Vijay Kumar\nM N Vijay Kumar\nWe have served as the Company\u2019s auditor since 2024\nBengaluru, India\nDate\n\u2013 30th March 2026\nFAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "FAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales \u2013 Digital marketing",
+     "$",
+     "65,700",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "",
+     "65,700",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contract labor and services",
+     "",
+     "27,219",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "12,356",
+     "",
+     "",
+     "19,283",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "56,971",
+     "",
+     "",
+     "23,815",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "96,546",
+     "",
+     "",
+     "43,098",
+     ""
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "(30,846)",
+     "",
+     "",
+     "(43,098)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSES)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on disposal of subsidiary",
+     "",
+     "94,854",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on extinguishment of debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "124,685",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(4,377)",
+     "",
+     "",
+     "(4,801)",
+     ""
+    ],
+    [
+     "Total other income (expenses)",
+     "",
+     "90,477",
+     "",
+     "",
+     "119,884",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "59,631",
+     "",
+     "",
+     "76,786",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "",
+     "59,631",
+     "",
+     "",
+     "76,786",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "(58,839)",
+     "",
+     "",
+     "(6,599)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "792",
+     "",
+     "$",
+     "70,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income (loss) per common share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing operations",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic net income per common share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Basic weighted average common shares outstanding",
+     "",
+     "26,112,754",
+     "",
+     "",
+     "26,112,754",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income (loss) per common share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing operations",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Fully diluted net income per common share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 676
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "FAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "FAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Series A",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total Stockholders' Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2024",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "26,112,754",
+     "$",
+     "26,113",
+     "$",
+     "1,850,266",
+     "",
+     "(2,047,990)",
+     "",
+     "$",
+     "(161,611)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for cash",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "12,000",
+     "",
+     "12",
+     "",
+     "5,988",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income for the year ended December 31, 2025",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "792",
+     "",
+     "",
+     "792",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2025",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "26,124,754",
+     "$",
+     "26,125",
+     "$",
+     "1,856,254",
+     "",
+     "(2,047,198)",
+     "",
+     "$",
+     "(154,819)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 680,
+    "end_line": 696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "FAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Series A",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total Stockholders' Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2023",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "26,112,754",
+     "$",
+     "26,113",
+     "$",
+     "1,850,266",
+     "$",
+     "(2,118,177)",
+     "",
+     "$",
+     "(231,798)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income for the year ended December 31, 2024",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "70,187",
+     "",
+     "",
+     "70,187",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2024",
+     "",
+     "10,000,000",
+     "$",
+     "10,000",
+     "",
+     "26,112,754",
+     "$",
+     "26,113",
+     "$",
+     "1,850,266",
+     "$",
+     "(2,047,990)",
+     "",
+     "$",
+     "(161,611)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "FAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 677,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "792",
+     "",
+     "$",
+     "70,187",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on disposal of assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "30,216",
+     ""
+    ],
+    [
+     "Gain on disposal of subsidiary",
+     "",
+     "(94,854)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on forgiveness of debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(124,685)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(9,300)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Decrease in accounts receivable from related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,296",
+     ""
+    ],
+    [
+     "Prepaid assets",
+     "",
+     "(130)",
+     "",
+     "",
+     "(495)",
+     ""
+    ],
+    [
+     "Leased assets",
+     "",
+     "34,127",
+     "",
+     "",
+     "5,624",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "29,311",
+     "",
+     "",
+     "4,509",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "",
+     "(22,200)",
+     "",
+     "",
+     "(49,356)",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "",
+     "(62,254)",
+     "",
+     "",
+     "(60,704)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash (distributed to) acquired from acquisition of subsidiary",
+     "",
+     "(273)",
+     "",
+     "",
+     "1,401",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(273)",
+     "",
+     "",
+     "1,401",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock and shares to be issued for cash",
+     "",
+     "6,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from the issuance of notes payable, related party",
+     "",
+     "56,565",
+     "",
+     "",
+     "90,588",
+     ""
+    ],
+    [
+     "Payments on notes payable, related party",
+     "",
+     "(83)",
+     "",
+     "",
+     "(61,780)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "62,482",
+     "",
+     "",
+     "28,808",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "$",
+     "(45)",
+     "",
+     "$",
+     "(30,495)",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "$",
+     "247",
+     "",
+     "$",
+     "30,742",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "202",
+     "",
+     "$",
+     "247",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "5,366",
+     "",
+     "$",
+     "1,949",
+     ""
+    ],
+    [
+     "Cash paid for taxes",
+     "$",
+     "3,212",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NON-CASH FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use assets acquired through lease",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "135,860",
+     ""
+    ],
+    [
+     "Loan fees applied to debt principal",
+     "$",
+     "84",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 715,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "FAST CASUAL CONCEPTS, INC. AND SUBSIDIARY CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTE 1 - ORGANIZATION AND SIGNIFICANT ACCOUNTING POLICIES\nThe financial statements presented are those of Fast Casual Concepts, Inc. (\u201cFast Casual\u201d, or the \u201cCompany\u201d) and its wholly owned subsidiary, GDS Lumina, Inc. (\u201cGDS\u201d). Fast Casual was originally incorporated on March 23, 2019, under the laws of the State of Pennsylvania. On April 13, 2020, the Company re-domiciled in the state of Wyoming, increasing its authorized number common shares available to be issued to 750,000,000 and effectuating a 10-for-1 forward-split of its common stock. During October 2024, Fast Casual effectuated a 4:1 reverse split of its common stock.\nFast Casual was incorporated to develop, build, operate and franchise casual eating establishments. All restaurant development, building and operations were discontinued on October 1, 2022. The remaining franchising operations were discontinued during 2024 with the shuttering of the last franchised eating establishment. As such, all balances and activity related to the franchising business have been shown as discontinued operations as of and for the year ended December 31, 2024 (see Note 7).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of basic and diluted loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Basic Net Income (Loss) Per Common Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income from continuing operations",
+     "$",
+     "59,631",
+     "",
+     "$",
+     "76,786",
+     ""
+    ],
+    [
+     "Net loss loss from discontinued operations",
+     "$",
+     "(58,839)",
+     "",
+     "$",
+     "(6,599)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "792",
+     "",
+     "$",
+     "70,187",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted-average common shares outstanding",
+     "",
+     "26,112,754",
+     "",
+     "",
+     "26,112,754",
+     ""
+    ],
+    [
+     "Net income per share from continuing operations",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Net loss per share from discontinued operations",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic net incomeper share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of basic and diluted loss per share",
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 869,
+    "end_line": 894
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "ORGANIZATION AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Fast Casual presents both basic and diluted earnings per share (EPS) on the face of the consolidated statements of operations for both continuing and discontinued operations. Basic EPS is computed by dividing net income (loss) from continuing and discontinued operations available to common shareholders (numerator) by the weighted average number of shares outstanding (denominator) during the period. Diluted EPS gives effect to all dilutive potential common shares outstanding during the period including convertible debt, stock options, and warrants, using the treasury stock method, and convertible debt instrument, using the if-converted method. In computing diluted EPS, the average stock price for the period is used in determining the number of shares assumed to be purchased from the exercise of stock options or warrants. Diluted EPS excludes all dilutive potential shares if their effect is anti-dilutive. There are no outstanding dilutive instruments as of December 31, 2025 or 2024.\nThe calculation of basic and diluted net income (loss) per share are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Fully Diluted Net Income (Loss) Per Common Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income from continuing operations",
+     "$",
+     "59631",
+     "",
+     "$",
+     "76,786",
+     ""
+    ],
+    [
+     "Net income loss from discontinued operations",
+     "$",
+     "(58,839)",
+     "",
+     "$",
+     "(6,599)",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "792",
+     "",
+     "$",
+     "70,187",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted-average common shares outstanding",
+     "",
+     "26,112,754",
+     "",
+     "",
+     "26,112,754",
+     ""
+    ],
+    [
+     "Net income per share from continuing operations",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "Net loss per share from discontinued operations",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "Basic net income per share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 895,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "ORGANIZATION AND SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Income Taxes\nFast Casual records income taxes under the asset and liability method, whereby deferred tax assets and liabilities are recognized based on the future tax consequences attributable to temporary differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases, and attributable to operating loss and tax credit carryforwards. Accounting standards regarding income taxes requires a reduction of the carrying amounts of deferred tax assets by a valuation allowance, if based on the available evidence, it is more likely than not that such assets will not be realized. Accordingly, the need to establish valuation allowances for deferred tax assets is assessed at each reporting period based on a \u201cmore likely than not\u201d realization threshold. This assessment considers, among other matters, the nature, frequency and severity of current and cumulative losses, forecasts of future profitability, the duration of statutory carryforward periods, the Company\u2019s experience with operating loss and tax credit carryforwards not expiring unused, and tax planning alternatives.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of notes payable to related parties",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, interest at 0%, unsecured, due December 31, 2026",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "62,000",
+     ""
+    ],
+    [
+     "Note payable, no interest, unsecured, due upon demand",
+     "",
+     "17,000",
+     "",
+     "",
+     "17,000",
+     ""
+    ],
+    [
+     "Note payable, no interest, unsecured, due upon demand",
+     "",
+     "\u2014",
+     "",
+     "",
+     "329",
+     ""
+    ],
+    [
+     "Total:",
+     "",
+     "17,000",
+     "",
+     "",
+     "79,329",
+     ""
+    ],
+    [
+     "Less: current portion",
+     "$",
+     "(17,000)",
+     "",
+     "$",
+     "(17,329)",
+     ""
+    ],
+    [
+     "Long-term notes payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "62,000",
+     ""
+    ],
+    [
+     "Long-term notes payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "62,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of notes payable to related parties",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "During the years ended December 31, 2025 and 2024, a former officer and director of Fast Casual loaned the Company $15,000 and $329, respectively. The loans were due on demand, unsecured and did not bare interest. During the year ended December 31, 2025, Fast Casual repaid $83 and assumed the remaining $15,246 in an acquisition recission agreement (see Note 7). The balance of the loan was $0 and $329 at December 31, 2025 and 2024, respectively.During the year ended December 31, 2025, a former officer of Fast Casual loaned the Company $15,000 as a short-term advance. Fast Casual repaid $83 and the remaining $15,246 of advances from the former officer were disposed as part of the disposal of CK Distribution, Inc upon his resignation in September 2025.\nNotes Payable\nDuring November 2024, as a result of the acquisition of CK, the Company entered into a note payable with an officer and director of Fast Casual in the amount of $62,000. The note is unsecured, does not bear interest and is due December 31, 2026. During the year ended December 31, 2025, the officer and director loaned another $39,000 under this note. The balance of the loan was $101,000 and $62,000 at December 31, 2025 and 2024, respectively.\nFast Casual\u2019s notes payable to related parties consist of the following at:",
+   "prose_after": "NOTE 3 - STOCKHOLDERS\u2019 DEFICIT\nDuring the year ended December 31, 2025 Fast Casual issued 12,000 shares of its common stock for cash of $6,000, or $0.50 per share. The value of the share transaction was determine through negotiations with third party purchasers of the common stock as approved by the Fast Casual board of directors.\nNOTE 4 - OPERATING LEASE\nDuring November 2024, the Company entered into a lease agreement for operating and administrative space in Tarpon Springs, Florida. The lease term was two 2 years, called for an upfront payment of $50,000 and monthly payments of $4,280 beginning January 1, 2025. Fast Casual recorded a right-to-use lease asset and lease liability totaling $135,860 related to the above-described lease. On June 30, 2025, as part of its termination of acquisition of CK, Fast Casual derecognized the net lease assets of $96,109 and liabilities of $64,304, recognizing a loss of $31,805, which is netted with other items in the total net loss on disposal of subsidiary (see Note 7).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 941,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of EIDL payable",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "A summary of the EIDL payable are as follows:",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "EIDL, interest at 3.75% per annum, due in monthly payments beginning 2021",
+     "",
+     "114,484",
+     "",
+     "114,400"
+    ],
+    [
+     "Total:",
+     "",
+     "114,484",
+     "",
+     "114,400"
+    ],
+    [
+     "Less: current portion",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Long-term debt, net",
+     "$",
+     "114,484",
+     "$",
+     "114,400"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of EIDL payable"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 977,
+    "end_line": 991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CARES ACT FUNDING"
+    }
+   },
+   "prose_before": "During November 2024, the Company entered into a lease agreement for operating and administrative space in Tarpon Springs, Florida. The lease term was two 2 years, called for an upfront payment of $50,000 and monthly payments of $4,280 beginning January 1, 2025. Fast Casual recorded a right-to-use lease asset and lease liability totaling $135,860 related to the above-described lease. On June 30, 2025, as part of its termination of acquisition of CK, Fast Casual derecognized the net lease assets of $96,109 and liabilities of $64,304, recognizing a loss of $31,805, which is netted with other items in the total net loss on disposal of subsidiary (see Note 7).\nNOTE 5 - CARES ACT FUNDING\nAs part of the Coronavirus Aid, Relief and Economic Security Act, during 2020 through 2021, Fast Casual borrowed a total of $114,400 in Economic Injury Disaster Loans (EIDL). The terms call for interest at 3.75% and installment payments of principal and interest of $577 per month beginning twenty-four months from the date of the original note in 2020. During 2024, the Company was granted partial payment relief through a hardship accommodation plan, temporarily reducing the monthly payment to $58 per month in interest only payments until March 2025. During 2025, $84 of fees were added to the principal balance of the loan.",
+   "prose_after": "Maturities of the above note payable are as follows at December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 941,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of maturities",
+     "",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "\u2014"
+    ],
+    [
+     "2026",
+     "",
+     "\u2014"
+    ],
+    [
+     "2027",
+     "",
+     "\u2014"
+    ],
+    [
+     "2028",
+     "",
+     "\u2014"
+    ],
+    [
+     "2029",
+     "",
+     "\u2014"
+    ],
+    [
+     "Thereafter",
+     "",
+     "114,484"
+    ],
+    [
+     "Total",
+     "$",
+     "114,484"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of maturities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CARES ACT FUNDING"
+    }
+   },
+   "prose_before": "Maturities of the above note payable are as follows at December 31, 2025:",
+   "prose_after": "NOTE 6 - GOING CONCERN\nFast Casual's financial statements are prepared using Generally Accepted Accounting Principles applicable to a going concern that contemplates the realization of assets and liquidation of liabilities in the normal course of business. However, Fast Casual has accumulated losses since its inception and has negative cash flows from operations, which raise substantial doubt about its ability to continue as a going concern. Management's plans with respect to alleviating the adverse financial conditions that caused management to express substantial doubt about Fast Casual's ability to continue as a going concern are as follows:\nTo date, Fast Casual has raised over $1,000,000 and is seeking to raise up to $5,000,000 total through private placements of its common stock. Funds received from the issuance of debt and equity will be used to increase production, marketing and sale of specialty drink mixes and expand brand identity to ultimately achieve profitability. The continuation of Fast Casual as a going concern is dependent upon its ability to generate profitable operations that produce positive cash flows. If Fast Casual is not successful, it may be forced to raise additional debt or equity financing.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of disposal of subsidiary",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net lease assets and liabilities",
+     "$",
+     "(31,805)",
+     ""
+    ],
+    [
+     "Cash in bank",
+     "",
+     "273",
+     ""
+    ],
+    [
+     "Notes payable, related party",
+     "",
+     "116,246",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "10,686",
+     ""
+    ],
+    [
+     "Net gain on disposal of subsidiary",
+     "$",
+     "94,854",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of disposal of subsidiary"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1025,
+    "end_line": 1035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "DISCONTINUED OPERATIONS"
+    }
+   },
+   "prose_before": "There can be no assurance that Fast Casual will be able to achieve its business plans, raise any more required capital or secure the financing necessary to achieve its current operating plan. The ability of Fast Casual to continue as a going concern is dependent upon its ability to successfully accomplish the plan described in the preceding paragraph and attain profitable operations. The accompanying financial statements do not include any adjustments that might be necessary if the Company is unable to continue as a going concern.\nNOTE 7 - DISCONTINUED OPERATIONS\nCK Distribution\nDuring September 2025, the Company terminated its acquisition of CK from November 2024. The parties agreed to return the privately held common stock shares of Fast Casual and the owner of CK assumed all liabilities and obligations of CK as of September 30, 2025. The historical statement of operations of the specialty beverage business of CK for the year ended December 31, 2025 has been presented as discontinued operations in the consolidated financial statements.\nFast Casual recognized a gain on disposal of subsidiary as follows:",
+   "prose_after": "Fast Casual Franchising\nDuring 2024, the Company was notified that its only franchisee was ceasing operations at its restaurants. The discontinuation of the restaurants lead the Company to abandon its franchise business and shift its focus to the specialty beverage business as described above. As such, the franchise operations business qualified as discontinued operations as it represented a significant strategic shift in the Company\u2019s operations and financial results. In addition, the operations and cash flows of the franchise operations business can be distinguished, operationally and for financial reporting purposes, from the remaining operations of the Company. The historical statement of operations of the franchise business as of December 31, 2025 and 2024 have been presented as discontinued operations in the consolidated financial statements.\nThe operating results of the Company\u2019s discontinued operations for the years ended December 31, 2025 and 2024 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beverage sales, net of fees",
+     "$",
+     "36,854",
+     "",
+     "$",
+     "3,312",
+     ""
+    ],
+    [
+     "Franchise income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "22,154",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "36,854",
+     "",
+     "",
+     "25,466",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beverage product costs",
+     "",
+     "10,495",
+     "",
+     "",
+     "3,268",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "75,998",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "9,200",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "95,693",
+     "",
+     "",
+     "3,268",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING INCOME (LOSS)",
+     "",
+     "(58,839)",
+     "",
+     "",
+     "22,198",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset impairment expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(30,216)",
+     ""
+    ],
+    [
+     "Gain from debt extinguishment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,419",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(28,797)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "$",
+     "(58,839)",
+     "",
+     "$",
+     "(6,599)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of operations",
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1044,
+    "end_line": 1080
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "DISCONTINUED OPERATIONS"
+    }
+   },
+   "prose_before": "Fast Casual Franchising\nDuring 2024, the Company was notified that its only franchisee was ceasing operations at its restaurants. The discontinuation of the restaurants lead the Company to abandon its franchise business and shift its focus to the specialty beverage business as described above. As such, the franchise operations business qualified as discontinued operations as it represented a significant strategic shift in the Company\u2019s operations and financial results. In addition, the operations and cash flows of the franchise operations business can be distinguished, operationally and for financial reporting purposes, from the remaining operations of the Company. The historical statement of operations of the franchise business as of December 31, 2025 and 2024 have been presented as discontinued operations in the consolidated financial statements.\nThe operating results of the Company\u2019s discontinued operations for the years ended December 31, 2025 and 2024 are as follows:",
+   "prose_after": "Revenues from discontinued operations of beverage sales during the years ended December 31, 2025 and 2024 are net of $772 and $92 in processing fees, respectively.\nTotal cash provided by operating activities of discontinued operations were $38,913 and $23,413 for the years ended December 31, 2025 and 2024, respectively.\nNOTE 8 - INCOME TAXES\nFast Casual files income tax returns in the U.S. federal jurisdiction and the state of Pennsylvania. Fast Casual\u2019s policy is to recognize interest accrued related to unrecognized tax benefits in interest expense and penalties in operating expenses. Deferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carry forwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax bases. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of net deferred tax assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "712,604",
+     "",
+     "$",
+     "692,851",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(712,604)",
+     "",
+     "",
+     "(692,851)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of net deferred tax assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1104
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Fast Casual files income tax returns in the U.S. federal jurisdiction and the state of Pennsylvania. Fast Casual\u2019s policy is to recognize interest accrued related to unrecognized tax benefits in interest expense and penalties in operating expenses. Deferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carry forwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax bases. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment.\nNet deferred tax assets consist of the following components as of December 31, 2025 and 2024:",
+   "prose_after": "The federal income tax provision differs from the amount of income tax determined by applying the U.S. federal income tax rate of 21% to pretax income from continuing operations for the years ended December 31, 2025 and 2024 due to the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of federal income tax rate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Pre-tax book income",
+     "$",
+     "166",
+     "",
+     "$",
+     "14,739",
+     ""
+    ],
+    [
+     "Gain on disposal of subsidiary",
+     "",
+     "(19,919)",
+     "",
+     "",
+     "(26,183)",
+     ""
+    ],
+    [
+     "Gain on debt extinguishment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(26,183)",
+     ""
+    ],
+    [
+     "Loss on asset impairment and disposal",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,345",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "19,753",
+     "",
+     "",
+     "5,099",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of federal income tax rate"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1107,
+    "end_line": 1120
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The federal income tax provision differs from the amount of income tax determined by applying the U.S. federal income tax rate of 21% to pretax income from continuing operations for the years ended December 31, 2025 and 2024 due to the following:",
+   "prose_after": "The Company had net operating losses of approximately $4,787,245 with state net operating losses beginning to expire in 2041. Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carryforwards for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, net operating loss carryforwards may be limited as to use in future years. In accordance with the statute of limitations for federal tax returns, the Company\u2019s federal tax returns for the years 2020 through 2024 are subject to examination.\nSupplemental income tax disclosures follow:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1085,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of deferred tax asset",
+     "",
+     ""
+    ],
+    [
+     "Income taxes paid:",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "3,212"
+    ],
+    [
+     "State",
+     "",
+     "\u2014"
+    ],
+    [
+     "Foreign",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total income taxes paid",
+     "$",
+     "3,212"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations before income taxes:",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Foreign",
+     "",
+     "\u2014"
+    ],
+    [
+     "Income from continuing operations before income taxes",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Income tax expense from continuing operations:",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State",
+     "",
+     "\u2014"
+    ],
+    [
+     "Foreign",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Income Tax Expense (Benefit)",
+     "$",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of deferred tax asset",
+    "Income taxes paid:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1126,
+    "end_line": 1150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company had net operating losses of approximately $4,787,245 with state net operating losses beginning to expire in 2041. Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carryforwards for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur, net operating loss carryforwards may be limited as to use in future years. In accordance with the statute of limitations for federal tax returns, the Company\u2019s federal tax returns for the years 2020 through 2024 are subject to examination.\nSupplemental income tax disclosures follow:",
+   "prose_after": "A reconciliation of income tax expense to the income tax expense computed at the statutory rate follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of statutory rate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Federal income tax expense (benefit)- at the statutory rate of 21%",
+     "$",
+     "166",
+     "",
+     "",
+     "21%",
+     ""
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other nontaxable and nondeductible items",
+     "",
+     "(19,919)",
+     "",
+     "",
+     "(2515%)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(19,753)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "(2494%)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of statutory rate"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1153,
+    "end_line": 1165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "A reconciliation of income tax expense to the income tax expense computed at the statutory rate follows:",
+   "prose_after": "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures\nDisclosure controls and procedures are the controls and other procedures that are designed to ensure that information required to be disclosed in the reports that the Company files or submits under the Exchange Act is recorded, processed, summarized, and reported within the time periods specified in the SEC\u2019s rules and forms. Disclosure controls and procedures include, without limitation, controls and procedures designed to ensure that information required to be disclosed in the reports that the Company files or submits under the Exchange Act is accumulated and communicated to management, including the Chief Executive Officer and Principal Financial Officer, as appropriate, to allow timely decisions regarding required disclosure.\nAs of December 31, 2025, we carried out an evaluation, under the supervision and with the participation of our management, including our Chief Executive Officer and Chief Financial Officer of the effectiveness of the design and operation of our disclosure controls and procedures pursuant to Exchange Act Rules 13a-15(e) and 15d-15(e) under the Securities Exchange Act of 1934, as amended. Based on this evaluation, our Chief Executive Officer and Chief Financial Officer concluded that our financial disclosure controls and procedures were not effective due to our limited internal resources and lack of ability to have multiple levels of transaction review.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Age",
+     "Start Date"
+    ],
+    [
+     "George Athanasiadis",
+     "CEO/Director",
+     "49",
+     "March 2019"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, and Corporate Governance"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting identified in connection with the evaluation required by Rule 13a-15(d) and 15d-15(d) of the Exchange Act that occurred during the year ended December 31, 2025 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information\nDuring the year ended December 31, 2025, no director or officer (as defined in SEC Rule 16a-1(f) of the Company adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term is defined in Item 405 of Regulation S-K.\nItem 9C. Disclosures Regarding Foreign Jurisdictions That Prevent Inspection\nNot Applicable.\nPart III\nItem 10. Directors, Executive Officers, and Corporate Governance\nInformation Concerning Directors\nEach of the persons named below currently serve as a director of the Company.",
+   "prose_after": "MBA.Mr. Athanasiadis joined the Company as Chief Executive Officer, Secretary, and Principal Financial Officer in March 2019. Mr. Athanasiadis has a history of managing multiple successful businesses. He has experience at an executive level and has served on multiple boards and as an officer of multiple companies. He graduated from University of Florida with a Bachelor\u2019s of Science in electrical engineering. He also has a masters degree in business and a masters degree in information technology.\nRecent Work History:\nBright Business LLC \u2013 Owner and operator of import of LED light fixtures for multi family construction for the last 15 years.\n2G Group LLC \u2013 Managing director of marketing group that specializes in information technology and business development\nCorporate Governance\nDirector Independence\nApplying the definition of independence under Nasdaq rules, the board has determined that there are no independent directors on the board currently.\nFamily Relationships\nThere are no family relationships among any of our executive officers or directors.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1246,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees earned or paid in cash ($) (Wages Earned and Accrued)",
+     "Stock awards ($)",
+     "Option awards ($)",
+     "Non-equity incentive compensation plan ($)",
+     "Nonqualified deferred compensation earnings ($)",
+     "All other compensation ($)",
+     "Total ($)"
+    ],
+    [
+     "George Athanasiadis",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1251,
+    "end_line": 1259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "During 2025, the Board of Directors met (or acted via written consent) 2 times. Each director during this time frame attended at least 75% of the aggregate number of meetings held during his term of service.\nBoard Committees\nThe board does not have committees established at this time.\nItem 11. Executive Compensation\nDuring the previous year and through the 1st quarter of this year Executive Compensation has been zero. Executive Compensation will begin as revenues increase. It is expected that compensation will begin in 2026 and will initially be $120,000 per year for executive board members that are working full time. Any additional board members that are not full time will be compensated on a contract basis and will be individually negotiated. Amount paid will not exceed the full time board members.\nReview process for executive compensation is currently done between executives. As we increase revenues and growth there will be a specific committee established for the future. This committee will be The Compensation Committee. It is not yet established.\nThe following table illustrates compensation accrued to director during the most recently ended fiscal year:",
+   "prose_after": "There are no outstanding equity awards and no new employment contracts have been signed during the most recent fiscal year.\nIndemnification\nOur articles of incorporation, by-laws and director indemnification agreements provide that each person who was or is made a party or is threatened to be made a party to or is otherwise involved (including, without limitation, as a witness) in any action, suit or proceeding, whether civil, criminal, administrative or investigative, by reason of the fact that he or she is or was a director or an officer of the Company or, in the case of a director, is or was serving at our request as a director, officer, or trustee of another corporation, or of a partnership, joint venture, trust or other enterprise, including service with respect to an employee benefit plan, whether the basis of such proceeding is alleged action in an official capacity as a director, officer or trustee or in any other capacity while serving as a director, officer or trustee, shall be indemnified and held harmless by us to the fullest extent authorized by the Wyoming General Corporation Law against all expense, liability and loss reasonably incurred or suffered by such.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1246,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1272,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and address of Beneficial Owner",
+     "Amount of shares owned",
+     "Nature of beneficial ownership",
+     "Percent of class",
+     "Voting Power"
+    ],
+    [
+     "Common",
+     "George Athanasiadis",
+     "14,998,000",
+     "Officer/Director",
+     "57.4%",
+     "11.8%"
+    ],
+    [
+     "Preferred Series A",
+     "George Athanasiadis",
+     "10,000,000",
+     "Officer/Director",
+     "100%",
+     "79.2%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1285,
+    "end_line": 1294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Beneficial Owners and Management, and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Beneficial ownership is determined in accordance with the rules of the SEC and includes voting or investment power with respect to the securities. In computing the number of shares beneficially owned by a person and the percentage of ownership of that person, shares of common stock subject to options and warrants held by that person that are exercisable as of the Record Date or become exercisable within 60 days of the Record Date are deemed outstanding even if they have not actually been exercised. Those shares, however, are not deemed outstanding for the purpose of computing the percentage ownership of any other person.\nThe following tables set forth certain information with respect to beneficial ownership of the Company\u2019s common stock as of March 31, 2026, based on 26,124,754 issued and outstanding shares of common stock, by:\n\u25cf Each director and director nominee;\n\u25cf Each named executive officer; and\n\u25cf All of the executive officers and directors as a group.\n\u25cf Each person known to be the beneficial owner of 5% or more of the Company\u2019s outstanding common stock\nTo our knowledge each person named in the tables below has sole voting and investment power with respect to the number of shares of common stock set forth opposite such person\u2019s name.",
+   "prose_after": "Item 13. Certain Relationships and Related Transactions, and Director Independence\nDuring the year ended December 31, 2025, George Athanasiadis, an officer and director of the Company, lent a total of $2,481 in short-term advances. The advances are unsecured, do not bear interest and are due on demand. As of December 31, 2025, the Company owes $2,481 under these short-term advances and $17,000 under a note payable issued in 2024.\nDuring the year ended December 31, 2025, George Athanasiadis, an officer and director of the Company, lent a total of $39,000 under unsecured, non-interest-bearing notes payable to the Company\u2019s former subsidiary, CK Distribution, 99Inc. During 2025, as part of the disposal of CK Distribution, Inc., a total of $101,000 in notes payable to George Athanasiadis was disposed and recorded as part of the $94,854 gain on disposition of subsidiary.\nDuring the year ended December 31, 2025, a former officer of Fast Casual loaned the Company $15,000 as a short-term advance. Fast Casual repaid $83 and the remaining $15,246 of advances from the former officer were disposed as part of the disposal of CK Distribution, Inc upon his resignation in September 2025.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1272,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "",
+     "Audit Fees",
+     "",
+     "Audit Related Fees",
+     "",
+     "Total Fees",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "$25,000",
+     "",
+     "$0",
+     "",
+     "$25,000"
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "$25,000",
+     "",
+     "$0",
+     "",
+     "$25,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1309,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2025, a former officer of Fast Casual loaned the Company $15,000 as a short-term advance. Fast Casual repaid $83 and the remaining $15,246 of advances from the former officer were disposed as part of the disposal of CK Distribution, Inc upon his resignation in September 2025.\nItem 14. Principal Accountant Fees and Services\nOur auditor for the fiscal years ended December 31, 2025 and 2024, is M/s M.N. Vijay Kumar. The Company has ratified M/s M.N. Vijay Kumar, Independent Registered Public Accounting Firm, to audit our books, records and accounting for the year ended December 31, 2025. Our auditor for the fiscal year ended December 31, 2024, was also M/s M.N. Vijay Kumar.\nThe aggregate fees billed for professional services rendered by the principal accountant for the audit of our annual financial statements and review of the financial statements included in our quarterly reports on Form 10-Q and services that are normally provided by the principal accountant in connection with statutory and regulatory filings or engagements for these fiscal periods were as follows:",
+   "prose_after": "Audit Fees: The aggregate fees billed for professional services rendered by the principal accountant for the audit of our annual financial statements and review of financial statements included in our Form 10-K and other services that are normally provided by the principal accountant in connection with statutory and regulatory filings or engagements for those fiscal years.\nAudit-Related Fees: The aggregate fees billed for assurance and related services rendered by the former principal accountant that are reasonably related to the performance of the audit or review of our financial statements and are not reported under the previous item, Audit Fees.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\nThe following Exhibits are filed with this Report:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1272,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Name"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of Fast Casual, Inc. (incorporated by reference)"
+    ],
+    [
+     "3.2",
+     "Articles of Incorporation Amended and Restated of Fast Casual, Inc. (incorporated by reference)"
+    ],
+    [
+     "3.3",
+     "Corporate Bylaws of Fast Casual, Inc. (incorporated by reference)"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350, as Adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.XSD",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File - formatted in Inline XBRL and contained in Exhibit 101"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1328,
+    "end_line": 1345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Audit Fees: The aggregate fees billed for professional services rendered by the principal accountant for the audit of our annual financial statements and review of financial statements included in our Form 10-K and other services that are normally provided by the principal accountant in connection with statutory and regulatory filings or engagements for those fiscal years.\nAudit-Related Fees: The aggregate fees billed for assurance and related services rendered by the former principal accountant that are reasonably related to the performance of the audit or review of our financial statements and are not reported under the previous item, Audit Fees.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\nThe following Exhibits are filed with this Report:",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FAST CASUAL CONCEPTS, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ George Athanasiadis",
+     ""
+    ],
+    [
+     "",
+     "Name:",
+     "George Athanasiadis"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "FAST CASUAL CONCEPTS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1351,
+    "end_line": 1359
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this Report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1370,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ George Athanasiadis",
+     "Chief Executive Officer, President, Secretary and Director (Principal Executive Officer and Principal Accounting and Financial Officer)",
+     "March 31, 2026"
+    ],
+    [
+     "George Athanasiadis",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1362,
+    "end_line": 1369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this Report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1370,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

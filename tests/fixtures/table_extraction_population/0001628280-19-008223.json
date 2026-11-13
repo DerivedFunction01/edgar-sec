@@ -1,0 +1,362 @@
+{
+ "accession": "0001628280-19-008223",
+ "cik": "0001659122",
+ "form": "10-K/A",
+ "filing_date": "2019-06-21",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "rose10-kaxdecember312018.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "47-5500436"
+    ],
+    [
+     "State or Other Jurisdiction of Incorporation or Organization",
+     "I.R.S. Employer Identification No."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "16200 Park Row, Suite 300, Houston, TX",
+     "77084"
+    ],
+    [
+     "Address of Principal Executive Offices",
+     "Zip Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2018\n[ ][ ]\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCommission file number 001-37712\nROSEHILL RESOURCES INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "Registrant's telephone number, including area code (281) 675-3400\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock",
+     "ROSE",
+     "The NASDAQ Capital Market"
+    ],
+    [
+     "Class A Common Stock Public Warrants",
+     "ROSEW",
+     "The NASDAQ Capital Market"
+    ],
+    [
+     "Class A Common Stock Public Units",
+     "ROSEU",
+     "The NASDAQ Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant's telephone number, including area code (281) 675-3400\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nNote \u2013 Checking the box above will not relieve any registrant required to file reports pursuant to Section 13 or 15(d) of the Exchange Act from their obligations under those Sections.\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Business Combination Agreement, dated as of December 20, 2016, by and between KLR Energy Acquisition Corp. and Tema Oil and Gas Company. (9)"
+    ],
+    [
+     "2.2",
+     "Purchase and Sale Agreement, dated as of October 24, 2017, among Whitehorse Energy, LLC, Whitehorse Energy Delaware, LLC, Whitehorse Delaware Operating, LLC, Siltstone Resources II - Permian, LLC, Siltstone Resources II-B-Permian, LLC, Rosehill Operating Company, LLC, and Rosehill Resources Inc. (3)"
+    ],
+    [
+     "2.3",
+     "First Amendment to Purchase and Sale Agreement, dated as of October 24, 2017, among Whitehorse Energy, LLC, Whitehorse Energy Delaware, LLC, Whitehorse Delaware Operating, LLC, Siltstone Resources II - Permian, LLC, Siltstone Resources II-B-Permian, LLC, Rosehill Operating Company, LLC, and Rosehill Resources Inc. (3)"
+    ],
+    [
+     "2.4",
+     "Second Amendment to Purchase and Sale Agreement, dated as of October 24, 2017, among Whitehorse Energy, LLC, Whitehorse Energy Delaware, LLC, Whitehorse Delaware Operating, LLC, Siltstone Resources II - Permian, LLC, Siltstone Resources II-B-Permian, LLC, Rosehill Operating Company, LLC, and Rosehill Resources Inc. (3)"
+    ],
+    [
+     "2.5",
+     "Third Amendment to Purchase and Sale Agreement, dated as of October 24, 2017, among Whitehorse Energy, LLC, Whitehorse Energy Delaware, LLC, Whitehorse Delaware Operating, LLC, Siltstone Resources II - Permian, LLC, Siltstone Resources II-B-Permian, LLC, Rosehill Operating Company, LLC, and Rosehill Resources Inc. (11)"
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of Rosehill Resources Inc. (1)"
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment of the Second Amended and Restated Certificate of Incorporation of Rosehill Resources Inc. (2)"
+    ],
+    [
+     "3.3",
+     "Certificate of Designation for the Series A Preferred Stock of Rosehill Resources Inc. (1)"
+    ],
+    [
+     "3.4",
+     "Amended and Restated Bylaws of Rosehill Resources Inc. (1)"
+    ],
+    [
+     "3.5",
+     "Certificate of Designations for the Series B Preferred Stock of Rosehill Resources Inc. (3)"
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate (6)"
+    ],
+    [
+     "4.2",
+     "Specimen Class A Common Stock Certificate (6)"
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate (6)"
+    ],
+    [
+     "4.4",
+     "Warrant Agreement, dated March 10, 2016, between the Company and Continental Stock Transfer & Trust Company (8)"
+    ],
+    [
+     "4.5",
+     "Shareholders\u2019 and Registration Rights Agreement, dated as of December 20, 2016, by and among Tema Oil and Gas Company, KLR Energy Sponsor, LLC, KLR Energy Acquisition Corp., Anchorage Illiquid Opportunities V, L.P. and AIO V AIV 3 Holdings, L.P. (9)"
+    ],
+    [
+     "10.1",
+     "Amended and Restated Rosehill Resources Inc. Long-Term Incentive Plan. (4)\u2020"
+    ],
+    [
+     "10.2",
+     "Global Amendment to Outstanding Awards under the Rosehill Resources Inc. Long-Term Incentive Plan, effective as of July 23, 2018. (4)\u2020"
+    ],
+    [
+     "10.3",
+     "Restricted Stock Grant Notice (10)\u2020"
+    ],
+    [
+     "10.4",
+     "Form of Indemnification Agreement. (1)\u2020"
+    ],
+    [
+     "10.5",
+     "Form of Employment Agreement. (1)\u2020"
+    ],
+    [
+     "10.6",
+     "Tax Receivable Agreement, dated as of April 27, 2017, by and between Rosehill Resources Inc. and Tema. (1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 102,
+    "end_line": 132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Except as noted above, this Form 10-K/A does not amend, modify or otherwise update any other information in the Original Form 10-K or reflect any events occurring after the filing of the Original Form 10-K. Accordingly, this Form 10-K/A should be read in conjunction with the Original Form 10-K.\nPart IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(1) Consolidated Financial Statements\nThe consolidated financial statements of the Company and reports of independent registered public accounting firms listed in Section 8 of the Original Form 10-K were filed as a part of the Original Form 10-K.\n(2) Consolidated Financial Statement Schedules\nAll financial statement schedules are omitted because they are either not required, inapplicable or because the required information is presented in the Company\u2019s consolidated financial statements and related notes in the Original Form 10-K.\n(3) Exhibits\nThe following is a complete list of exhibits filed as part of this Form 10-K/A. Exhibit number corresponds to the numbers in the Exhibit table of Item 601 of Regulation S-K.",
+   "prose_after": "10.7 First Amendment to Note Purchase Agreement, dated as of March 28, 2018, among Rosehill Operating Company, LLC, as issuer, Rosehill Resources Inc., each of the holders from time to time party thereto and U.S. Bank National Association, as agent and collateral agent for the holders. (17) 10.8 Form of Restricted Stock Grant Notice and Agreement for Non-Employee Directors. (1)\u2020 10.9 Form of Performance Share Unit Grant Notice and Agreement for Executives. (12)\u2020 10.10 Form of Restricted Stock Unit Grant Notice and Agreement for Executives. (12)\u2020 10.11 Second Amended and Restated Limited Liability Company Agreement of Rosehill Operating Company, LLC, dated as of December 8, 2017. (3) 10.12 Amended and Restated Credit Agreement, dated as of March 28, 2018, among Rosehill Operating Company, LLC, as borrower, Rosehill Resources Inc., as parent, JPMorgan Chase Bank, N.A., as administrative agent, and the financial institutions party thereto as lenders. (13) 10.13 Offer Letter between Gary C. Hanna and Rosehill Operating Company, LLC, dated as of September 6, 2018. (5)\u2020 10.14 Crude Oil Gathering Agreement, dated April 27, 2017, by and between Rosehill Operating Company, LLC and Gateway Gathering and Marketing Company. (1) 10.15 Gas Gathering Agreement, dated April 27, 2017, by and between Rosehill Operating Company, LLC and Gateway Gathering and Marketing Company. (1) 10.16 Subscription Agreement, dated as of December 20, 2016, by and between KLR Energy Acquisition Corp. and AIO V AIV 3 Holdings, L.P. (9) 10.17 Subscription Agreement, dated as of December 20, 2016, by and between KLR Energy Acquisition Corp. and Anchorage Illiquid Opportunities V, L.P. (9) 10.18 Subscription Agreement, dated as of December 20, 2016, by and between KLR Energy Acquisition Corp. and Geode Diversified Fund, a segregated account of Geode Capital Master Fund Ltd. (9) 10.19 Subscription Agreement, dated as of December 20, 2016, by and between KLR Energy Acquisition Corp. and The K2 Principal Fund, L.P. (9) 10.20 Securities Subscription Agreement, dated November 20, 2015, between the Registrant and KLR Energy Sponsor, LLC. (15) 10.21 Third Amended and Restated Sponsor Warrants Purchase Agreement between Rosehill Resources Inc. and KLR Energy Sponsor, LLC. (8) 10.22 Amended and Restated Warrants Purchase Agreement between Rosehill Resources Inc. and EarlyBird Capital, Inc. (8) 10.23 Registration Rights Agreement, dated March 10, 2016, between Rosehill Resources Inc., KLR Energy Sponsor, LLC, EarlyBirdCapital, Inc. and Chardan Capital Markets, LLC. (8) 10.24 Series B Redeemable Preferred Stock Purchase Agreement among Rosehill Resources Inc. and the Purchasers party thereto. (3) 10.25 Transition, Resignation and Consulting Agreement and General Release of Claims among J. A. (Alan) Townsend, Rosehill Operating Company, LLC and Rosehill Resources Inc., dated as of May 2, 2018. (16) 10.26 Employment Agreement between Brian K. Ayers and Rosehill Operating Company, LLC, dated April 27, 2017. (18) 10.27 Employment Agreement between R. Colby Williford and Rosehill Operating Company, LLC, dated April 27, 2017. (18) 10.28 Employment Agreement between Craig Owen and Rosehill Operating company, LLC, dated as of June 5, 2017. (18) 10.29* Employment Agreement between Donald Bryan Freeman and Rosehill Operating Company, LLC, dated April 27, 2017. 23.1 Consent of Independent Registered Public Accounting Firm, BDO USA, LLP (14) 23.2 Consent of Ryder Scott Company, LP. (14) 23.3 Consent of Netherland, Sewell & Associates, Inc. (14) 31.1 Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. (14) 31.2 Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. (14) 31.3* Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.4* Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1 Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. (14) 32.2 Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. (14) 99.1 Ryder Scott Company, LP., Summary of Reserves at December 31, 2017 (7) 99.2 Ryder Scott Company, LP., Summary of Reserves at December 31, 2016 (7) 99.3 Netherland, Sewell & Associates, Inc., Summary of Reserves at December 31, 2018. (14)",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 85,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ROSEHILL RESOURCES INC.",
+     ""
+    ],
+    [
+     "June 21, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ David L. French"
+    ],
+    [
+     "",
+     "David L. French",
+     ""
+    ],
+    [
+     "",
+     "President and Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ROSEHILL RESOURCES INC.",
+    "June 21, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 181,
+    "end_line": 189
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "(12) Incorporated by reference to the Company\u2019s Form 10-K, filed with the Commission on April 17, 2018.\n(13) Incorporated by reference to the Company\u2019s Form 8-K, filed with the Commission on March 29, 2018.\n(14) Incorporated by reference to the Company\u2019s Form 10-K, filed with the Commission on March 29, 2019.\n(15) Incorporated by reference to the Company\u2019s Registration Statement (File no. 333-209041) on Form S-1, filed with the Commission on January 19, 2016.\n(16) Incorporated by reference to the Company\u2019s Form 8-K, filed with the Commission on May 2, 2018.\n(17) Incorporated by reference to the Company's Form 8-K, filed with the Commission on March 29, 2018.\n(18) Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the quarterly period ended June 30, 2017, filed with the Commission on August 15, 2017.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 176,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

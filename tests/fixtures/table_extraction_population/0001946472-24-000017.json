@@ -1,0 +1,397 @@
+{
+ "accession": "0001946472-24-000017",
+ "cik": "0001946472",
+ "form": "10-K",
+ "filing_date": "2024-03-22",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "aart2022-212_31x2310xk.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "DELAWARE",
+     "88-6738580"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Exact name of issuing entity as specified in its charter)\nCommission file number of issuing entity: 333-262894-02\nCentral Index Key Number of issuing entity: 0001946472\nAlly Auto Assets LLC\n(Exact name of depositor as specified in its charter)\nCommission file number of depositor: 333-262894\nCentral Index Key Number of depositor: 0001477336\nAlly Bank\n(Exact name of sponsor as specified in its charter)\nCentral Index Key Number of sponsor (if applicable): 0001601846",
+   "prose_after": "Ally Auto Assets LLC\n500 Woodward Avenue\nDetroit, Michigan\n48226\n(Address of principal executive offices)\n(Zip Code)\n(866) 710-4623\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(a)",
+     "List the following documents filed as a part of the report:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(1)",
+     "Financial Statements \u2014 Not Applicable.",
+     ""
+    ],
+    [
+     "",
+     "(2)",
+     "Financial Statement Schedules \u2014 Not Applicable.",
+     ""
+    ],
+    [
+     "",
+     "(3)",
+     "Exhibits",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Second Amended and Restated Limited Liability Company Agreement of Ally Auto Assets LLC, dated as of November 7, 2018."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Indenture between Ally Auto Receivables Trust 2022-2 and U.S. Bank Trust Company, National Association, as Indenture Trustee, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Trust Agreement between Ally Auto Assets LLC, as Depositor and BNY Mellon Trust of Delaware, as Owner Trustee and Paying Agent, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Pooling Agreement between Ally Bank, as Seller, and Ally Auto Assets LLC, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Rule 13a-14(d)/15d-14(d) Certification (Section 302 Certification)."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Report on Assessment of Compliance with SEC Regulation AB Servicing Criteria concerning activities of Ally Bank for the year ended December 31, 2023."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Report on Assessment of Compliance with SEC Regulation AB Servicing Criteria concerning activities of U.S. Bank Trust Company, National Association for the year ended December 31, 2023."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Registered Public Accounting Firm Attestation Report on Assessment of Compliance with applicable Servicing Criteria of Ally Bank dated March 8, 2024 for the year ended December 31, 2023."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Registered Public Accounting Firm Attestation Report on Assessment of Compliance with applicable Servicing Criteria of U.S. Bank Trust Company, National Association dated February 27, 2024 for the year ended December 31, 2023."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Servicer Compliance Statement of Ally Bank for the year ended December 31, 2023."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Trust Sale Agreement between Ally Auto Assets LLC, as Depositor, and Ally Auto Receivables Trust 2022-2, as Issuing Entity, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Custodian Agreement between Ally Bank, as Custodian, and Ally Auto Assets LLC, as Depositor, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Administration Agreement among Ally Auto Receivables Trust 2022-2, as Issuing Entity, Ally Bank, as Administrator, and U.S. Bank Trust Company, National Association, as Indenture Trustee, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Servicing Agreement among Ally Bank, as Servicer, Ally Auto Assets LLC, as Depositor, and Ally Auto Receivables Trust 2022-2, as Issuing Entity, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Asset Representations Review Agreement among Ally Auto Receivables Trust 2022-2, as Issuing Entity, Ally Bank, as Sponsor, and Clayton Fixed Income Services LLC, as Asset Representations Reviewer, dated as of October 12, 2022."
+    ],
+    [
+     "",
+     "",
+     "\u2022",
+     "Securities Account Control Agreement among Ally Auto Receivables Trust 2022-2, as Issuing Entity, U.S. Bank Trust Company, National Association, as Indenture Trustee, and U.S. Bank National Association, as Securities Intermediary, dated as of October 12, 2022."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 184,
+    "end_line": 214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Each of Ally Bank and U.S. Bank Trust Company, National Association (each, a \u201cServicing Participant\u201d) has been identified by the registrant as a party participating in the servicing function with respect to the pool assets held by the Issuing Entity during the reporting period. Each of the Servicing Participants has completed a report on an assessment of compliance with the servicing criteria applicable to such Servicing Participant (each, a \u201cReport on Assessment\u201d) during the Issuing Entity\u2019s year ended December 31, 2023, which Reports on Assessment are attached as exhibits to this Form 10-K. In addition, each of the Servicing Participants has provided an attestation report (each, an \u201cAttestation Report\u201d) by a registered independent public accounting firm regarding its related Report on Assessment. Each Attestation Report is attached as an exhibit to this Form 10-K.\nNone of the Reports on Assessment or the related Attestation Reports has identified any material instances of noncompliance with the servicing criteria described in the related Report on Assessment as being applicable to each such Servicing Participant.\nItem 1123 of Regulation AB. Servicer Compliance Statement.\nAlly Bank has been identified as the servicer during the reporting period with respect to the pool assets held by the Issuing Entity. Ally Bank has provided a statement of compliance with the applicable servicing activities (the \u201cCompliance Statement\u201d), signed by an authorized officer, and such Compliance Statement is attached as an exhibit to this Form 10-K.\nPart IV\nItem 15. Exhibit and Financial Statement Schedules.",
+   "prose_after": "Item 16. Form 10-K Summary.\nNone.\nSignature\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nAlly Auto Assets LLC, as Depositor /s/ Elliot Kahan Elliot Kahan President (Senior Officer in charge of securitization of the depositor)\nDate: March 22, 2024\nIndex of Exhibits",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 179,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 219,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit",
+     "Description",
+     "Method of Filing"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Limited Liability Company Agreement of Ally Auto Assets LLC, dated as of November 7, 2018.",
+     "**"
+    ],
+    [
+     "4.1",
+     "Indenture between Ally Auto Receivables Trust 2022-2 and U.S. Bank Trust Company, National Association, as Indenture Trustee, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "4.2",
+     "Trust Agreement between Ally Auto Assets LLC, as Depositor and BNY Mellon Trust of Delaware, as Owner Trustee and Paying Agent, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "4.3",
+     "Pooling Agreement between Ally Bank, as Seller, and Ally Auto Assets LLC, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "31.1",
+     "Certification of Executive Officer Pursuant to Rule 13a-14(d)/15d-14(d).",
+     "Filed herewith."
+    ],
+    [
+     "33.1",
+     "Report on Assessment of Compliance with SEC Regulation AB Servicing Criteria concerning activities of Ally Bank for the year ended December 31, 2023.",
+     "Filed herewith."
+    ],
+    [
+     "33.2",
+     "Report on Assessment of Compliance with SEC Regulation AB Servicing Criteria concerning activities of U.S. Bank Trust Company, National Association for the year ended December 31, 2023.",
+     "Filed herewith."
+    ],
+    [
+     "34.1",
+     "Registered Public Accounting Firm Attestation Report on Assessment of Compliance with applicable Servicing Criteria of Ally Bank dated March 8, 2024 for the year ended December 31, 2023.",
+     "Filed herewith."
+    ],
+    [
+     "34.2",
+     "Registered Public Accounting Firm Attestation Report on Assessment of Compliance with applicable Servicing Criteria of U.S. Bank Trust Company, National Association, dated February 27, 2024 for the year ended December 31, 2023.",
+     "Filed herewith."
+    ],
+    [
+     "35.1",
+     "Servicer Compliance Statement of Ally Bank for the year ended December 31, 2023.",
+     "Filed herewith."
+    ],
+    [
+     "99.1",
+     "Trust Sale Agreement between Ally Auto Assets LLC, as Depositor, and Ally Auto Receivables Trust 2022-2, as Issuing Entity, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "99.2",
+     "Custodian Agreement between Ally Bank, as Custodian, and Ally Auto Assets LLC, as Depositor, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "99.3",
+     "Administration Agreement among Ally Auto Receivables Trust 2022-2, as Issuing Entity, Ally Bank, as Administrator, and U.S. Bank Trust Company, National Association, as Indenture Trustee, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "99.4",
+     "Servicing Agreement among Ally Bank, as Servicer, Ally Auto Assets LLC, as Depositor, and Ally Auto Receivables Trust 2022-2, as Issuing Entity, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "99.5",
+     "Asset Representations Review Agreement among Ally Auto Receivables Trust 2022-2, as Issuing Entity, Ally Bank, as Sponsor, and Clayton Fixed Income Services LLC, as Asset Representations Reviewer, dated as of October 12, 2022.",
+     "*"
+    ],
+    [
+     "99.6",
+     "Securities Account Control Agreement among Ally Auto Receivables Trust 2022-2, as Issuing Entity, U.S. Bank Trust Company, National Association, as Indenture Trustee, and U.S. Bank National Association, as Securities Intermediary, dated as of October 12, 2022.",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 231,
+    "end_line": 261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "Item 16. Form 10-K Summary.\nNone.\nSignature\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nAlly Auto Assets LLC, as Depositor /s/ Elliot Kahan Elliot Kahan President (Senior Officer in charge of securitization of the depositor)\nDate: March 22, 2024\nIndex of Exhibits",
+   "prose_after": "* Incorporated by reference to the corresponding Exhibit to the Issuing Entity\u2019s Current Report on Form 8-K filed on October 12, 2022 (File No. 333-262894-02).\n** Incorporated by reference to Exhibit 3.1 of Ally Auto Assets LLC's Form SF-3 Registration Statement filed on February 22, 2022 (File No. 333-262894).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,903 @@
+{
+ "accession": "0000950170-25-052609",
+ "cik": "0001901799",
+ "form": "10-K/A",
+ "filing_date": "2025-04-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "btm-20241231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "87-3219029"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "(IRS Employer\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3343 Peachtree Road NE, Suite 750\n\nAtlanta, GA",
+     "30326"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Amendment No. 1)\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the annual period ended December 31, 2024\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File Number: 001-41305\nBitcoin Depot Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(687) 435-9604\n(Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading\n\nSymbol(s)",
+     "Name of each exchange\n\non which registered"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock, par value $0.0001 per share",
+     "BTM",
+     "The NASDAQ Stock Market LLC"
+    ],
+    [
+     "Warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50 per share",
+     "BTMWW",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 49,
+    "end_line": 58
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(687) 435-9604\n(Registrant\u2019s telephone number, including area code)\nNot applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description",
+     "Schedule/Form",
+     "Exhibit No.",
+     "Filing Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.1\u2020",
+     "Transaction Agreement, dated as of August 24, 2022, by and among by and among GSRM, the Sponsor, BT Assets and BT OpCo.",
+     "8-K",
+     "2.1",
+     "August 25, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "First Amendment to the Transaction Agreement, dated February 13, 2023 by and among GSRM, the Sponsor, BT Assets and BT OpCo.",
+     "8-K",
+     "2.1",
+     "February 14, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.3",
+     "Second Amendment to the Transaction Agreement, dated April 4, 2023 by and among GSRM, the Sponsor, BT Assets and BT OpCo.",
+     "8-K",
+     "2.1",
+     "April 4, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.4",
+     "Third Amendment to the Transaction Agreement, dated May 11, 2023 by and among GSRM, the Sponsor, BT Assets and BT OpCo.",
+     "8-K",
+     "2.1",
+     "May 11, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.5\u2020",
+     "Fourth Amendment and Joinder to the Transaction Agreement, dated June 7, 2023 by and among GSRM, the Sponsor, BT Assets and BT OpCo.",
+     "8-K",
+     "2.1",
+     "June 13, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of Bitcoin Depot Inc.",
+     "8-K",
+     "3.1",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Bitcoin Depot Inc.",
+     "8-K",
+     "3.2",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Designation of Rights and Preferences of Series A Convertible Preferred Stock of Bitcoin Depot Inc.",
+     "8-K",
+     "3.3",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen Warrant Certificate (included in Exhibit 4.2).",
+     "S-1/A",
+     "4.3",
+     "February 23, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Warrant Agreement, dated as of February 24, 2022 by and between GSRM and Continental Stock Transfer & Trust Company, as warrant agent.",
+     "8-K",
+     "4.5",
+     "March 2, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "BT HoldCo LLC Amended and Restated Limited Liability Company Agreement.",
+     "8-K",
+     "10.1",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Indemnification Agreement.",
+     "8-K",
+     "10.6",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "PIPE Agreement, dated as of June 23, 2023, by and among the Company, GSRM and the investors listed therein.",
+     "8-K",
+     "10.1",
+     "June 26, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Amendment No. 1 to the PIPE Agreement, dated October 2, 2023, by and among the Company and the investors listed therein.",
+     "8-K",
+     "10.1",
+     "October 2, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "Registration Rights Agreement, dated October 3, 2023, by and among the Company and the holders listed therein.",
+     "8-K",
+     "10.2",
+     "October 2, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.10#",
+     "Form of Bitcoin Depot Inc. 2023 Omnibus Incentive Plan.",
+     "8-K",
+     "10.8",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Form of Voting and Non-Redemption Agreement.",
+     "8-K",
+     "10.1",
+     "May 19, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "Form of Non-Redemption Agreement.",
+     "8-K",
+     "10.1",
+     "June 2, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 97,
+    "end_line": 139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "This Form 10-K/A is filed to amend Part IV, Item 15 (Exhibits and Financial Statement Schedules) of the Annual Report on Form 10-K for the fiscal year ended December 31, 2024, as filed on March 24, 2025 (the \"Original Form 10-K\"), to include as exhibits the Bitcoin Depot, Inc. Clawback Policy and the Bitcoin Depot, Inc. Insider Trading Policy.\nExcept as described above, this Form 10-K/A does not modify or update disclosure in, or exhibits to, the Original Form 10-K. Furthermore, this Form 10-K/A does not change any previously reported financial results, nor does it reflect events occurring after the date of the Original Form 10-K. As such, information not affected by this Form 10-K/A remains unchanged and reflects the disclosures made at the time the Original Form 10-K was filed. Accordingly, this Form 10-K/A should be read in conjunction with the Original Form 10-K and other filings of Bitcoin Depot, Inc. with the Securities and Exchange Commission.\nPart IV\nItem 15. Exhibits and Financial Statement Schedules.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 139,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description",
+     "Schedule/Form",
+     "Exhibit No.",
+     "Filing Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.13#",
+     "Form of Phantom Equity Award Termination Agreement and General Release.",
+     "8-K",
+     "10.11",
+     "July 7, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.14\u2020+",
+     "Amended and Restated Credit Agreement, dated as of June 23, 2023, by and among BT OpCo, as the borrower, BT Assets, as the initial holding company, Express Vending Inc., a corporation incorporated under the laws of British Columbia, Mintz Assets, Inc., a Georgia corporation, BitAccess Inc., a corporation incorporated under the federal laws of Canada, Digital Gold Ventures Inc., a corporation incorporated under the laws of Ontario, Intuitive Software LLC, a Delaware limited liability company, the financial institutions and institutional investors from time to time party thereto as Lenders, and Silverview Credit Partners LP (f/k/a Silverpeak Credit Partners, LP).",
+     "8-K",
+     "10.1",
+     "June 28, 2023"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "19.1***",
+     "Insider Trading Policy",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "21.1*",
+     "List of Subsidiaries of Bitcoin Depot Inc.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.1*",
+     "Consent of Wolf",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "23.2*",
+     "Consent of KPMG",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer (Principal Executive Officer) Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer (Principal Financial and Accounting Officer) Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Chief Executive Officer (Principal Executive Officer) Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "Certification of Chief Financial Officer (Principal Financial and Accounting Officer) Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "97",
+     "Clawback policy of Bitcoin Depot, Inc.",
+     "10-K",
+     "97.1",
+     "April 15, 2024"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document).",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Filed with the Original Form 10-K.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "**",
+     "Furnished with the Original Form 10-K.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "***",
+     "Filed herewith.",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 140,
+    "end_line": 187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 139,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description",
+     "Schedule/Form",
+     "Exhibit No.",
+     "Filing Date"
+    ],
+    [
+     "#",
+     "Indicates a management contract or compensatory plan, contract or arrangement.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2020",
+     "Schedules and exhibits to this Exhibit omitted pursuant to Regulation S-K Item 601(b)(2). The Registrant agrees to furnish supplementally a copy of any omitted schedule or exhibit to the SEC upon request.",
+     "",
+     "",
+     "l"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 188,
+    "end_line": 196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 9, 2025",
+     "By:",
+     "/s/ Brandon Mintz"
+    ],
+    [
+     "",
+     "Name:",
+     "Brandon Mintz"
+    ],
+    [
+     "",
+     "Title:",
+     "President and Chief Executive Officer (Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 201,
+    "end_line": 207
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

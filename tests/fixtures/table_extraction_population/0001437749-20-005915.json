@@ -1,0 +1,5782 @@
+{
+ "accession": "0001437749-20-005915",
+ "cik": "0001025953",
+ "form": "10-K",
+ "filing_date": "2020-03-23",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "novc20191231_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "74-2830661"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "9229 Ward Parkway, Suite 340, Kansas City, MO",
+     "64114"
+    ],
+    [
+     "(Address of Principal Executive Office)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended December 31, 2019\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period From __________to __________\nCommission File Number 000-22897\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "Registrant\u2019s Telephone Number, Including Area Code: (816) 237-7000\nSecurities Registered Pursuant to Section 12(b) of the Act:\nNone\nSecurities Registered Pursuant to Section 12(g) of the Act:\nTitle of Each Class\nCommon Stock, $0.01 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 17,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 31,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "3"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "6"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "6"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market For Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "8"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "9"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "12"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "13"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "30"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "30"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "31"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "34"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "36"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "37"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "38"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "38"
+    ],
+    [
+     "",
+     "Exhibit Index",
+     "39"
+    ],
+    [
+     "",
+     "Signatures",
+     "41"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Exchange Act Rule 12b-2). Yes [ ] No [X]\nThe aggregate market value of voting and non-voting stock held by non-affiliates of the registrant as of June 30, 2019 was approximately $1,961,807, based upon the closing sales price of the registrant\u2019s common stock on that date ($.03).\nIndicate by check mark whether the registrant has filed all documents and reports required to be filed by Section 12, 13 or 15(d) of the Securities Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Yes [X] No [ ]\nThe number of shares of the registrant's common stock outstanding on March 17, 2020 was 114,655,893.\nFORM 10-K\nFor the Fiscal Year ended December 31, 2019\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nUnless the context otherwise requires, references in this Annual Report on Form 10-K to \u201cNovation,\u201d the \u201cCompany,\u201d \u201cNOVC,\u201d \u201cwe,\u201d \u201cus\u201d and \u201cour,\u201d refer to Novation Companies, Inc. and its consolidated subsidiaries and their respective predecessors.\nForward-Looking Statements\nStatements in this report regarding Novation and its business that are not historical facts are \u201cforward-looking statements\u201d within the meaning of Section 21E of the Securities Exchange Act of 1934, as amended (the \"Exchange Act\"). Forward-looking statements are those that predict or describe future events, do not relate solely to historical matters and include statements regarding management's beliefs, estimates, projections, and assumptions with respect to, among other things, our future operations, business plans and strategies, as well as industry and market conditions, all of which are subject to change at any time without notice. Words such as \u201cbelieve,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cpromise,\u201d \u201cplan,\u201d and other expressions or words of similar meanings, as well as future or conditional auxiliary verbs such as \u201cwould,\u201d \u201cshould,\u201d \u201ccould,\u201d or \u201cmay\u201d are generally intended to identify forward-looking statements. Risks, uncertainties, contingencies, and developments, including those discussed in \u201cRisk Factors\u201d and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d in this report could cause our future operating results to differ materially from those set forth in any forward-looking statement. Given these uncertainties, readers are cautioned not to place undue reliance on such forward-looking statements. We disclaim any obligation to update any such factors or to publicly announce the results of any revisions to any of the forward-looking statements contained herein to reflect future results, events or developments.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "2019",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.08",
+     "$",
+     "0.02"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "0.07",
+     "",
+     "0.02"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "0.07",
+     "",
+     "0.02"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "0.06",
+     "",
+     "0.02"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2018",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.10",
+     "$",
+     "0.03"
+    ],
+    [
+     "Second Quarter",
+     "",
+     "0.08",
+     "",
+     "0.03"
+    ],
+    [
+     "Third Quarter",
+     "",
+     "0.05",
+     "",
+     "0.02"
+    ],
+    [
+     "Fourth Quarter",
+     "",
+     "0.05",
+     "",
+     "0.02"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 325,
+    "end_line": 340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "The parties have reached a settlement of this matter. On October 25, 2018, the bankruptcy court overseeing the Company's bankruptcy case entered an order approving the settlement, and on November 19, 2018, the New York State Court \u201cso ordered\u201d a Stipulation of Voluntary Discontinuance terminating the case. Pursuant to the terms of the settlement agreement, the required upfront payment of $0.3 million was made on March 1, 2019. The settlement also requires equal quarterly installments over a three years period, which total an additional $0.3 million. Based on the probability of all contingencies associated with the settlement being satisfied, the Company has recorded an expense in the second quarter of 2018 in the Reorganization Items, net expense line item of the income statement and the short and long-term liability totals in the applicable Accrued Settlement Claims lines per the balance sheet.\nSee \"Reorganization\" in Part I, Item 1. Business of the Form 10-K and Note 2 to the consolidated financial statements for a description of the Chapter 11 cases of Novation and the other Debtors.\nItem 4. Mine Safety Disclosures\nNone.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nThe Company's common stock currently trades on OTC Pink under the symbol \u201cNOVC\u201d. Prior to the commencement of the Company's Chapter 11 case, the Company's common stock traded on the OTCQB market of the OTC Markets Group, Inc. under the symbol \"NOVC.\" There is no established public trading market for teh Company's common stock. The following table sets forth the high and low bid prices as reported by these quotation services, for the periods indicated. The quotations represent inter-dealer prices without adjustment for retail markups, markdowns or commissions, and may not necessarily represent actual transactions.",
+   "prose_after": "As of March 17, 2020, we had approximately 713 shareholders of record of the Company's common stock. This figure does not represent the actual number of beneficial owners of our common stock because such stock is frequently held in \"street name\" by securities dealers and others for the benefit of individual owners who may vote the shares.\nNo dividends were declared during 2019 or 2018 nor do we expect to declare any stock dividend distributions in the near future. The Note Purchase Agreement governing the Company's senior notes contains restrictive covenants which prohibit the Company and its subsidiaries, from among other things, making any cash dividend or distribution to Novation shareholders. Should the restrictions be relieved, any future determination to pay dividends will be made at the discretion of our Board and will depend on earnings, financial condition, cost of equity, investment opportunities and other factors as our Board may deem relevant.\nItem 6. Selected Financial Data\nNot applicable.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "2,032",
+     "",
+     "$",
+     "9,249"
+    ],
+    [
+     "Service fee income",
+     "$",
+     "63,474",
+     "",
+     "$",
+     "55,126"
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "8,345",
+     "",
+     "$",
+     "8,089"
+    ],
+    [
+     "Net income (loss) available to common shareholders, per basic share",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "0.07"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 361,
+    "end_line": 371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Through our wholly-owned subsidiary HCS, acquired on July 27, 2017, we provide outsourced health care staffing and related services in the State of Georgia. The Company also owned a portfolio of mortgage securities which generated earnings to support on-going financial obligations. These securities were sold during 2018 for $13.0 million. See Note 5 to the consolidated financial statements for additional information regarding the sale of these securities. Our common stock, par value $0.01 per share, is traded on OTC Pink under the symbol \u201cNOVC\u201d.\nSee Part I, Item 1 of this Form 10-K for a discussion of our emergence from bankruptcy and note refinancing, which both occurred in the third quarter of 2017, and the note amendment, which occurred in the third quarter of 2019.\nFinancial Highlights and Key Performance Metrics. The following key performance metrics (in thousands, except per share amounts) are derived from our consolidated financial statements for the periods presented and should be read in conjunction with the more detailed information therein and with the disclosure included in this report under the heading \u201cManagement's Discussion and Analysis of Financial Condition and Results of Operations.\u201d",
+   "prose_after": "Consolidated Results of Operations\nYear Ended December 31, 2019 as Compared to the Year Ended December 31, 2018\nService Fee Income and Cost of Services\nHCS delivers outsourced full-time and part-time employees primarily to Community Service Boards (\u201cCSBs\u201d), quasi state organizations that provide behavioral health services at facilities across Georgia including mental health services, developmental disabilities programs and substance abuse treatments. The State of Georgia has a total of 25 CSBs. Each CSB has a number of facilities, including crisis centers, outpatient centers and 24-hour group homes that require a broad range of employees, such as registered nurses, social workers, house parents and supervisors. The CSB market in Georgia is large and growing steadily, as the demand for the services provided by the CSBs continues to grow. In addition to providing outsourced employees to CSBs, HCS also provides healthcare outsourcing and staffing services to hospitals, schools and a variety of privately owned businesses. The services and positions provided to non-CSB clients are similar to the ones provided to CSB clients. The service fee income and costs of services in the consolidated statement of operations and comprehensive income (loss) are from the operations of HCS.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 395,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "1",
+     "",
+     "$",
+     "10"
+    ],
+    [
+     "Gain (loss) on sales of investments",
+     "",
+     "(1)",
+     "",
+     "",
+     "12,881"
+    ],
+    [
+     "Other income",
+     "",
+     "39",
+     "",
+     "",
+     "401"
+    ],
+    [
+     "Total",
+     "$",
+     "39",
+     "",
+     "$",
+     "13,292"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 404,
+    "end_line": 417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "All of our mortgage securities were sold in December 2018, and therefore the Company will have no future interest income or cash flow from these securities. For the year ended December 31, 2018, interest income on our mortgage securities was approximately $1.1 million.\nImpairment on Mortgage Securities\nTo the extent that the cost basis of mortgage securities exceeds the fair value and the unrealized loss is considered to be other than temporary, an impairment charge is recognized and the amount recorded in accumulated other comprehensive income or loss is reclassified to earnings as a realized loss. The impairment of $0.3 million on the 2002-3 AIO security recorded in 2018 was primarily driven by the deteriorating credit quality of the loans underlying the security.\nOther Income\nFluctuations in the income received from the Company's mortgage securities results from the timing of purchases/sales and amounts of dividends and interest paid. Subsequent to the HCS Acquisition, the Company had significantly less available funds to invest. In 2018, other income consisted primarily of the gains on sale of the Company's mortgage securities.",
+   "prose_after": "Reorganization items, net\nThe Company incurred approximately $0.06 million and $1.9 million in reorganization related expenses for the years ended December 31, 2019 and 2018, respectively. During 2019, these costs related to professional fees paid and during 2018 this expense was comprised of $0.4 million in professional fees and $1.5 in settlement claims. These costs have decreased significantly as a result of the completion of the Company's reorganization. See Note 2 to the consolidated financial statements.\nInterest Expense\nInterest expense decreased period over period, with the Company incurring $4.5 million in 2019 and $5.3 million in 2018. See \"Liquidity and Capital Resources\" below and Note 8 to the consolidated financial statements for a discussion of the Note Purchase Agreement and the 2017 Notes, which were amended on August 9, 2019. This Amendment, among other things, significantly reduced the interest rate applicable from January 2019 through the third quarter of 2028 and allows the Company to apply certain surplus interest payments against future quarterly interest payments.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 395,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Cash flows used in operating activities",
+     "$",
+     "(5,168)",
+     "",
+     "$",
+     "(5,056)",
+     ""
+    ],
+    [
+     "Cash flows (used in) provided by investing activities",
+     "",
+     "(70)",
+     "",
+     "",
+     "13,031",
+     ""
+    ],
+    [
+     "Cash flows used in financing activities",
+     "",
+     "(1,979)",
+     "",
+     "",
+     "(1,466)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "As discussed, the Amendment to the Note Purchase Agreement and waiver of interest payments through April 2022, has significantly improved our forecasted cash position over the next year. However, our historical operating results and poor cash flow suggest substantial doubt exists related to the Company's ability to continue as a going concern. In addition, based on the recent global developments regarding the coronavirus (COVID-19) situation, there is significant uncertainty regarding the potential impact to our business. Based on these uncertainties, there is no guarantee the Company's cash position will cover current obligations. As a result, we have not been able to alleviate the substantial doubt about the Company's ability to continue as a going concern for at least one year after the date that these consolidated financial statements are issued.\nOverview of Cash Flow for the Year Ended December 31, 2019\nThe following table provides a summary of our operating, investing and financing cash flows as taken from our consolidated statements of cash flows for 2019 and 2018 (in thousands).",
+   "prose_after": "Operating Activities\nThe increase in net cash flows used in operating activities to approximately $5.2 million during 2019 from cash used in operating activities of $5.1 million during 2018 was immaterial.\nInvesting Activities\nThe decrease in the net cash flows provided by (used in) investing activities is mainly due to the sale of the Company's marketable securities in 2018, compared to no sales of securities in 2019.\nFinancing Activities\nThe increase in cash used in financing activities is mainly due to the payoff of HCS\u2019s line of credit in 2019 and additional fees associated with the payoff.\nCritical Accounting Estimates\nWe prepare our consolidated financial statements in conformity with GAAP and, therefore, are required to make estimates regarding the values of our assets and liabilities and in recording income and expenses. These estimates are based, in part, on our judgment and assumptions regarding various economic conditions that we believe are reasonable based on facts and circumstances existing at the time of reporting. These estimates affect reported amounts of assets, liabilities and accumulated other comprehensive income at the date of the consolidated financial statements and the reported amounts of income, expenses and other comprehensive income during the periods presented. The following summarizes the components of our consolidated financial statements where understanding accounting policies is critical to understanding and evaluating our reported financial results, especially given the significant estimates used in applying the policies. The discussion is intended to demonstrate the significance of estimates to our consolidated financial statements and the related accounting policies. Management has discussed the development and selection of these critical accounting estimates with the Audit Committee of our Board and the Audit Committee has reviewed our disclosure.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "17"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "18"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Income (Loss)",
+     "19"
+    ],
+    [
+     "Consolidated Statements of Shareholders' Deficit",
+     "20"
+    ],
+    [
+     "Consolidated Statements of Cash Flow",
+     "21"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company currently evaluates estimates of uncertainty in income taxes based upon a framework established in the income tax accounting guidance. The guidance prescribes a recognition threshold and measurement standard for the recognition and measurement of tax positions taken or expected to be taken in a tax return. In accordance with the guidance, the Company evaluates whether a tax position will more likely than not be sustained upon examination by the appropriate taxing authority. The Company measures the amount to recognize in its consolidated financial statements as the largest amount that is greater than 50% likely of being realized upon ultimate settlement. The recognition and measurement of tax benefits is often judgmental, and determinations regarding the tax benefit can change as additional developments occur relative to the issue.\nImpact of Recently Issued Accounting Pronouncements\nInformation regarding the impact of recently issued accounting pronouncements is included in Note 3 to the consolidated financial statements.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nNot applicable.\nItem 8. Financial Statements and Supplementary Data\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS\nNOVATION COMPANIES, INC. AND SUBSIDIARIES",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of Novation Companies, Inc.\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Novation Companies, Inc. (the Company) as of December 31, 2019 and 2018, and the related consolidated statements of operations and comprehensive income (loss), shareholders' deficit, and cash flows for each of the years in the two year period ended December 31, 2019, and the related notes (collectively referred to as the consolidated financial statements). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2019 and 2018, and the results of its operations and its cash flows for each of the years in the two year period ended December 31, 2019, in conformity with accounting principles generally accepted in the United States of America.\nSubstantial Doubt About the Company's Ability to Continue as a Going Concern",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 517,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "2,032",
+     "",
+     "$",
+     "9,249",
+     ""
+    ],
+    [
+     "Accounts and unbilled receivables",
+     "",
+     "6,583",
+     "",
+     "",
+     "6,122",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "647",
+     "",
+     "",
+     "350",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "21",
+     "",
+     "",
+     "131",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "9,283",
+     "",
+     "",
+     "15,852",
+     ""
+    ],
+    [
+     "Non-current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "3,905",
+     "",
+     "",
+     "8,205",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "5,784",
+     "",
+     "",
+     "6,978",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "125",
+     "",
+     "",
+     "91",
+     ""
+    ],
+    [
+     "Operating lease right-of-use asset",
+     "",
+     "316",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "4",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Total non-current assets",
+     "",
+     "10,134",
+     "",
+     "",
+     "15,278",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "19,417",
+     "",
+     "$",
+     "31,130",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and current maturities of long-term debt",
+     "$",
+     "524",
+     "",
+     "$",
+     "670",
+     ""
+    ],
+    [
+     "Accrued compensation and benefits payable",
+     "",
+     "2,717",
+     "",
+     "",
+     "2,731",
+     ""
+    ],
+    [
+     "Health and wellness program liability",
+     "",
+     "492",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Borrowings under revolving line of credit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,948",
+     ""
+    ],
+    [
+     "Operating lease liability",
+     "",
+     "205",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,295",
+     ""
+    ],
+    [
+     "Accrued claim settlements",
+     "",
+     "246",
+     "",
+     "",
+     "459",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "36",
+     "",
+     "",
+     "35",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "4,220",
+     "",
+     "",
+     "7,138",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, including debt premium",
+     "",
+     "86,824",
+     "",
+     "",
+     "85,969",
+     ""
+    ],
+    [
+     "Accrued claim settlements",
+     "",
+     "307",
+     "",
+     "",
+     "553",
+     ""
+    ],
+    [
+     "Operating lease liability",
+     "",
+     "125",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "\u2014",
+     "",
+     "",
+     "426",
+     ""
+    ],
+    [
+     "Total non-current liabilities",
+     "",
+     "87,256",
+     "",
+     "",
+     "86,948",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "91,476",
+     "",
+     "",
+     "94,086",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value per share, 780,000,000 shares authorized:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "112,355,893 and 99,137,893 shares issued and outstanding as of December 31, 2019 and 2018, respectively",
+     "",
+     "1,123",
+     "",
+     "",
+     "991",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "746,112",
+     "",
+     "",
+     "745,104",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(819,294)",
+     "",
+     "",
+     "(809,050)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Total shareholders' deficit",
+     "",
+     "(72,059)",
+     "",
+     "",
+     "(62,956)",
+     ""
+    ],
+    [
+     "Total liabilities and shareholders' deficit",
+     "$",
+     "19,417",
+     "",
+     "$",
+     "31,130",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ BOULAY PLLP\nWe have served as the Company's auditor since 2016.\nMinneapolis, Minnesota\nMarch 23, 2020\nCONSOLIDATED BALANCE SHEETS\n(in thousands, except share and per share amounts)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)\n(in thousands, except share and per share amounts)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 551,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": null,
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Service fee income",
+     "$",
+     "63,474",
+     "",
+     "$",
+     "55,126",
+     ""
+    ],
+    [
+     "Cost and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of services",
+     "",
+     "56,483",
+     "",
+     "",
+     "48,149",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "8,345",
+     "",
+     "",
+     "8,089",
+     ""
+    ],
+    [
+     "Goodwill impairment charge",
+     "",
+     "4,300",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(5,654)",
+     "",
+     "",
+     "(1,112)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income - mortgage securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,133",
+     ""
+    ],
+    [
+     "Impairment on mortgage securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(325)",
+     ""
+    ],
+    [
+     "Gains on sales of investments",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12,881",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "39",
+     "",
+     "",
+     "411",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(4,522)",
+     "",
+     "",
+     "(5,279)",
+     ""
+    ],
+    [
+     "Reorganization items, net",
+     "",
+     "(63)",
+     "",
+     "",
+     "(1,864)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "(10,200)",
+     "",
+     "",
+     "5,845",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "",
+     "25",
+     "",
+     "",
+     "(289)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "(10,225)",
+     "",
+     "",
+     "6,134",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reclassification gain on marketable securities included in net income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(12,881)",
+     ""
+    ],
+    [
+     "Unrealized gains on marketable securities",
+     "",
+     "1",
+     "",
+     "",
+     "1,486",
+     ""
+    ],
+    [
+     "Total other comprehensive income (loss)",
+     "",
+     "1",
+     "",
+     "",
+     "(11,395)",
+     ""
+    ],
+    [
+     "Total comprehensive loss",
+     "$",
+     "(10,224)",
+     "",
+     "$",
+     "(5,261)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "0.07",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "0.06",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "100,472,515",
+     "",
+     "",
+     "93,961,799",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "100,472,515",
+     "",
+     "",
+     "94,470,057",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 670
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME (LOSS)\n(in thousands, except share and per share amounts)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 DEFICIT\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": null,
+     "page_number": 15
+    },
+    "after": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": null,
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "",
+     "Total Shareholders\u2019 Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "$",
+     "991",
+     "$",
+     "745,104",
+     "",
+     "$",
+     "(809,050)",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "(62,956)",
+     ""
+    ],
+    [
+     "Issuances and cancellations of nonvested stock",
+     "",
+     "42",
+     "",
+     "(42)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock granted in debt restructure",
+     "",
+     "90",
+     "",
+     "(90)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock and common stock warrants granted in debt restructure",
+     "",
+     "\u2014",
+     "",
+     "916",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "916",
+     ""
+    ],
+    [
+     "Compensation recognized under stock compensation plans",
+     "",
+     "\u2014",
+     "",
+     "224",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "224",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(10,225)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(10,225)",
+     ""
+    ],
+    [
+     "Adjustment to retained earnings for adoption of accounting standard",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(19)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "$",
+     "1,123",
+     "$",
+     "746,112",
+     "",
+     "$",
+     "(819,294)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(72,059)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2017",
+     "$",
+     "971",
+     "$",
+     "744,937",
+     "",
+     "$",
+     "(815,184)",
+     "",
+     "$",
+     "11,394",
+     "",
+     "$",
+     "(57,882)",
+     ""
+    ],
+    [
+     "Issuances and cancellations of nonvested stock",
+     "",
+     "20",
+     "",
+     "(20)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation recognized under stock compensation plans",
+     "",
+     "\u2014",
+     "",
+     "187",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "187",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,134",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,134",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,395)",
+     "",
+     "",
+     "(11,395)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "$",
+     "991",
+     "$",
+     "745,104",
+     "",
+     "$",
+     "(809,050)",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "(62,956)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 DEFICIT\n(in thousands)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 671,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": null,
+     "page_number": 16
+    },
+    "after": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": null,
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(10,225)",
+     "",
+     "$",
+     "6,134",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of marketable securities, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(76)",
+     ""
+    ],
+    [
+     "Impairment on mortgage securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "325",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "1,194",
+     "",
+     "",
+     "1,194",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "1,262",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Realized gain on marketable securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(12,881)",
+     ""
+    ],
+    [
+     "Settlement claims",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,012",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "27",
+     "",
+     "",
+     "334",
+     ""
+    ],
+    [
+     "Loss on disposal of fixed assets",
+     "",
+     "9",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Lease expense",
+     "",
+     "(5)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Goodwill impairment",
+     "",
+     "4,300",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Compensation recognized under stock compensation plans",
+     "",
+     "224",
+     "",
+     "",
+     "187",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts and unbilled receivables",
+     "",
+     "(461)",
+     "",
+     "",
+     "1,800",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(146)",
+     "",
+     "",
+     "(2,012)",
+     ""
+    ],
+    [
+     "Accrued compensation and benefits payable",
+     "",
+     "(14)",
+     "",
+     "",
+     "(1,482)",
+     ""
+    ],
+    [
+     "Accrued health and wellness program payable",
+     "",
+     "492",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "(754)",
+     "",
+     "",
+     "245",
+     ""
+    ],
+    [
+     "Accrued claim settlements",
+     "",
+     "(459)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other current assets and liabilities, net",
+     "",
+     "(186)",
+     "",
+     "",
+     "128",
+     ""
+    ],
+    [
+     "Other noncurrent assets and liabilities, net",
+     "",
+     "(426)",
+     "",
+     "",
+     "36",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(5,168)",
+     "",
+     "",
+     "(5,056)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales and maturities of marketable securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "13,031",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(96)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of property and equipment",
+     "",
+     "26",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "(70)",
+     "",
+     "",
+     "13,031",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings under revolving line of credit",
+     "",
+     "8,685",
+     "",
+     "",
+     "55,537",
+     ""
+    ],
+    [
+     "Repayments of borrowings under revolving line of credit",
+     "",
+     "(10,633)",
+     "",
+     "",
+     "(56,922)",
+     ""
+    ],
+    [
+     "Paydowns of long-term debt",
+     "",
+     "(31)",
+     "",
+     "",
+     "(81)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(1,979)",
+     "",
+     "",
+     "(1,466)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "",
+     "(7,217)",
+     "",
+     "",
+     "6,509",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "9,249",
+     "",
+     "",
+     "2,740",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "2,032",
+     "",
+     "$",
+     "9,249",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "4,030",
+     "",
+     "$",
+     "5,034",
+     ""
+    ],
+    [
+     "Cash paid for reorganization items",
+     "$",
+     "94",
+     "",
+     "$",
+     "1,175",
+     ""
+    ],
+    [
+     "Cash paid for income taxes, net",
+     "$",
+     "30",
+     "",
+     "$",
+     "75",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock in restructure of debt (Note 8)",
+     "$",
+     "311",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Issuance of common stock warrants in restructure of debt (Note 8)",
+     "$",
+     "605",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 774
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(in thousands)",
+   "prose_after": "NOVATION COMPANIES, INC. NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNote 1. Basis of Presentation, Business Plan and Liquidity\nDescription of Operations \u2013 Novation Companies, Inc. and its subsidiaries (the \u201cCompany,\u201d \u201cNovation,\u201d \u201cwe,\u201d or \u201cus\u201d), through Healthcare Staffing, Inc. (\"HCS\"), our wholly-owned subsidiary acquired on July 27, 2017, provides outsourced health care staffing and related services in the State of Georgia. Our common stock, par value $0.01 per share, is traded on the OTC Pink marketplace of the OTC Markets Group, Inc. under the symbol \u201cNOVC\u201d.\nLiquidity and Going Concern \u2013 During 2019, the Company incurred a net loss of $10.2 million and generated negative operating cash flow of $5.2 million. As of December 31, 2019, the Company has an overall shareholders deficit of $72.1 million, an aggregate of $2.0 million in cash and cash equivalents and total liabilities of $91.5 million. Of the $2.0 million in cash, $0.7 million is held by the Company's subsidiary NovaStar Mortgage LLC (\"NMLLC\"). This cash is available only to pay only general creditors and expenses of NMLLC.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 702,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": null,
+     "page_number": 17
+    },
+    "after": {
+     "line": 775,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": null,
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2019",
+     "",
+     "",
+     "",
+     "For the Year Ended December 31, 2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Type of Customer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CSB",
+     "$",
+     "61,620",
+     "97.1",
+     "%",
+     "$",
+     "52,491",
+     "95.2",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "1,854",
+     "2.9",
+     "%",
+     "",
+     "2,635",
+     "4.8",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "63,474",
+     "100.0",
+     "%",
+     "$",
+     "55,126",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 842,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue; Accounts and Unbilled Receivables"
+    }
+   },
+   "prose_before": "Performance Obligations \u2014 A performance obligation is a promise in a contract to transfer a distinct good or service to the customer. A contract's transaction price is allocated to each distinct performance obligation and recognized as revenue when, or as, the performance obligation is satisfied. The Company's customer contracts have a single performance obligation to transfer the individual goods or services, and it is not separately identifiable from other promises in the contracts and is, therefore, not distinct. Performance obligations are satisfied at the point in time the HCS employees work on behalf of the customer. Contract costs include compensation, benefits and overhead when appropriate. Because of the nature of the contracts and the fact that revenue is earned at the time the employee works for the customer, no contract estimates are necessary.\nContract Balances \u2014 The timing of revenue recognition, billings and cash collections results in accounts receivable and unbilled receivables (the \"contract assets\"). The Company bills customers generally every other week based on the work performed during the two-week period ended the week prior to billing. Generally, billing occurs after revenue recognition, resulting in contract assets. The Company does not receive advances or deposits from its customers.\nDisaggregation of Revenue \u2014 All revenue is generated from customers that provide healthcare services in Georgia. The following is a disaggregation of the Company\u2019s revenue, in thousands, into categories that best depict how the nature, amount, timing, and uncertainty of revenues and cash flows are affected by economic factors.",
+   "prose_after": "Accounts and unbilled receivables are summarized as follows, in thousands:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "December 31, 2018",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "$",
+     "4,083",
+     "$",
+     "3,952"
+    ],
+    [
+     "Unbilled receivables (Contract Assets)",
+     "",
+     "2,500",
+     "",
+     "2,170"
+    ],
+    [
+     "Total accounts and unbilled receivables",
+     "$",
+     "6,583",
+     "$",
+     "6,122"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 855,
+    "end_line": 864
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue; Accounts and Unbilled Receivables"
+    }
+   },
+   "prose_before": "Accounts and unbilled receivables are summarized as follows, in thousands:",
+   "prose_after": "As of December 31, 2019 and December 31, 2018, management has determined no allowance for doubtful accounts is necessary. For the years ended December 31, 2019 and December 31, 2018, 63.1% and 44.6% of service fee income was generated from four and two customers, respectively. As of December 31, 2019, 61.6% of accounts and unbilled receivables was due from four customers and 96.6% was due from 14 CSB customers. As of December 31, 2018, 60.9% of accounts and unbilled receivables was due from four customers and 95.3% was due from 14 CSB customers.\nNote 5. Marketable Securities\nPrior to 2018, the Company originated, purchased, securitized, sold, invested in and serviced residential nonconforming mortgage loans and mortgage securities. As a result of those activities, the Company held mortgage securities that were a source of its earnings and cash flow. These mortgage securities consisted entirely of the Company's investment in the interest-only and overcollateralization bonds issued by securitization trusts sponsored by the Company. Maturities of these retained mortgage securities depend on repayment characteristics, performance and other experience of the underlying financial instruments. During 2018, the Company sold all but 33 non-performing mortgage securities. These sales generated proceeds of $13.0 million and realized gains of $12.9 million recognized, included in other income in the Company's consolidated statements of operations and comprehensive income (loss). Of the 33 mortgage securities retained, the Company determined that these securities have no fair value. There were other-than-temporary impairments relating to available-for-sale securities in 2018 of $0.3 million.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 823,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Amount",
+     "",
+     "Gross Carrying Amount",
+     "",
+     "Accumulated Amortization",
+     "",
+     "Net Carrying Amount",
+     ""
+    ],
+    [
+     "Indefinite-lived assets (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "$",
+     "3,905",
+     "$",
+     "\u2014",
+     "$",
+     "3,905",
+     "$",
+     "8,205",
+     "$",
+     "\u2014",
+     "$",
+     "8,205"
+    ],
+    [
+     "Tradenames",
+     "",
+     "1,147",
+     "",
+     "\u2014",
+     "",
+     "1,147",
+     "",
+     "1,147",
+     "",
+     "\u2014",
+     "",
+     "1,147"
+    ],
+    [
+     "",
+     "$",
+     "5,052",
+     "$",
+     "\u2014",
+     "$",
+     "5,052",
+     "$",
+     "9,352",
+     "$",
+     "\u2014",
+     "$",
+     "9,352"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finite-lived assets (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "6,895",
+     "$",
+     "2,380",
+     "$",
+     "4,515",
+     "$",
+     "6,895",
+     "$",
+     "1,395",
+     "$",
+     "5,500"
+    ],
+    [
+     "Non-compete agreement",
+     "",
+     "627",
+     "",
+     "505",
+     "",
+     "122",
+     "",
+     "627",
+     "",
+     "296",
+     "",
+     "331"
+    ],
+    [
+     "",
+     "$",
+     "7,522",
+     "$",
+     "2,885",
+     "$",
+     "4,637",
+     "$",
+     "7,522",
+     "$",
+     "1,691",
+     "$",
+     "5,831"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 875,
+    "end_line": 895
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "Prior to 2018, the Company originated, purchased, securitized, sold, invested in and serviced residential nonconforming mortgage loans and mortgage securities. As a result of those activities, the Company held mortgage securities that were a source of its earnings and cash flow. These mortgage securities consisted entirely of the Company's investment in the interest-only and overcollateralization bonds issued by securitization trusts sponsored by the Company. Maturities of these retained mortgage securities depend on repayment characteristics, performance and other experience of the underlying financial instruments. During 2018, the Company sold all but 33 non-performing mortgage securities. These sales generated proceeds of $13.0 million and realized gains of $12.9 million recognized, included in other income in the Company's consolidated statements of operations and comprehensive income (loss). Of the 33 mortgage securities retained, the Company determined that these securities have no fair value. There were other-than-temporary impairments relating to available-for-sale securities in 2018 of $0.3 million.\nAs part of the mortgage securitization process, the Company owned the mortgage servicing rights on the mortgage loans in each securitization deal. These servicing rights were sold to a third party on October 12, 2007 as documented in the Servicing Rights Transfer Agreement by and between Saxon Mortgage Services as purchaser and NovaStar Mortgage, Inc. as seller, which was discussed in the Company's third quarter 2007 report on Form 10-Q. As part of this transaction, the Company retained the clean-up call rights for most of the securitization deals. The Company attempted to sell those clean-up call rights with the securities sold in 2018. However, no bids were received for the clean-up call rights and the Company determined that such clean-up call rights have no fair value.\nNote 6. Goodwill and Intangible Assets",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Goodwill activity (in thousands):",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "8,205",
+     "",
+     "$",
+     "8,205"
+    ],
+    [
+     "Impairment charge",
+     "",
+     "(4,300)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Ending balance",
+     "$",
+     "3,905",
+     "",
+     "$",
+     "8,205"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 896,
+    "end_line": 909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Management completed its annual goodwill impairment assessment as of April 30, 2019. Increased cost of services and administrative expenses at HCS have resulted in declining cash flow for the business. Based on the likelihood of these expenses remaining higher than initially forecast, management determined that the carrying value of the HCS goodwill exceeded its fair value by $2.6 million. A goodwill impairment charge in this amount was recorded during the second quarter of 2019. Management assessed the other indefinite and definite lived intangible assets and determined no impairment was necessary.\nDuring the fourth quarter of 2019, HCS was notified by a significant customer of its intent to terminate its contract services as of January 29, 2020. As a result, confirmation of the loss of the customer represented a triggering event for analysis of impairment of our intangible asset and goodwill balances as of September 30, 2019. It was determined that the carrying value of the HCS goodwill exceeded the fair value by $1.7 million, and this adjustment was recorded during the third quarter of 2019.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Amortization expense (in thousands):",
+     "",
+     ""
+    ],
+    [
+     "2018",
+     "$",
+     "1,194"
+    ],
+    [
+     "2019",
+     "",
+     "1,194"
+    ],
+    [
+     "Estimated future amortization expense (in thousands):",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "1,107"
+    ],
+    [
+     "2021",
+     "",
+     "985"
+    ],
+    [
+     "2022",
+     "",
+     "985"
+    ],
+    [
+     "2023",
+     "",
+     "985"
+    ],
+    [
+     "Thereafter",
+     "",
+     "575"
+    ],
+    [
+     "Total estimated amortization expense",
+     "$",
+     "4,637"
+    ]
+   ],
+   "caption_stack": [
+    "Amortization expense (in thousands):"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 914,
+    "end_line": 928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Goodwill and Intangible Assets"
+    }
+   },
+   "prose_before": "Management completed its annual goodwill impairment assessment as of April 30, 2019. Increased cost of services and administrative expenses at HCS have resulted in declining cash flow for the business. Based on the likelihood of these expenses remaining higher than initially forecast, management determined that the carrying value of the HCS goodwill exceeded its fair value by $2.6 million. A goodwill impairment charge in this amount was recorded during the second quarter of 2019. Management assessed the other indefinite and definite lived intangible assets and determined no impairment was necessary.\nDuring the fourth quarter of 2019, HCS was notified by a significant customer of its intent to terminate its contract services as of January 29, 2020. As a result, confirmation of the loss of the customer represented a triggering event for analysis of impairment of our intangible asset and goodwill balances as of September 30, 2019. It was determined that the carrying value of the HCS goodwill exceeded the fair value by $1.7 million, and this adjustment was recorded during the third quarter of 2019.",
+   "prose_after": "Note 7. Leases\nWe adopted ASU No. 2016-02\u2014Leases (Topic 842), as amended, as of January 1, 2019, using the modified retrospective approach. The modified retrospective approach provides a method for recording existing leases at adoption and in comparative periods that approximates the results of a full retrospective approach. The Company elected to adopt the \u2018package of practical expedients\u2019, which permitted the Company not to reassess under the new standard our prior conclusions about lease identification, lease classification and initial direct costs, the practical expedients pertaining to land easements, the use-of hindsight, the short-term lease recognition exemption for all leases that qualified, and the practical expedient to not separate lease and non-lease components for all leases other than leases of real estate.\nAdoption of the new standard resulted in the recording of an additional net operating lease right-of-use asset and operating lease liability of approximately $0.2 million each, as of January 1, 2019. The difference between the additional lease assets and lease liabilities was recorded as an adjustment to accumulated deficit. The standard did not materially impact our consolidated net loss and had no impact on cash flows. The Company does not have any finance leases.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "220"
+    ],
+    [
+     "2021",
+     "",
+     "110"
+    ],
+    [
+     "2022",
+     "",
+     "20"
+    ],
+    [
+     "Thereafter",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "350"
+    ],
+    [
+     "Less interest",
+     "",
+     "20"
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "330"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 941,
+    "end_line": 955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Adoption of the new standard resulted in the recording of an additional net operating lease right-of-use asset and operating lease liability of approximately $0.2 million each, as of January 1, 2019. The difference between the additional lease assets and lease liabilities was recorded as an adjustment to accumulated deficit. The standard did not materially impact our consolidated net loss and had no impact on cash flows. The Company does not have any finance leases.\nOur leases consist primarily of office space. Leases with an initial term of 12 months or less, and leases which are on a month-to-month basis, are not recorded on the balance sheet. For these leases we recognize lease expense on a straight-line basis over the lease term.\nMost leases include one or more options to renew, with renewal terms that can extend the lease term from one to three years or more. The exercise of lease renewal options is at our discretion. Our lease agreements do not contain any variable lease payments, residual value guarantees or restrictive covenants. The components of lease expense for the twelve months ended December 31, 2019 were immaterial. As our leases do not provide an implicit interest rate, we use our incremental current borrowing rate in determining the present value of lease payments.\nMaturities of lease liabilities were as follows (in thousands):",
+   "prose_after": "Other information related to the Company's operating leases was as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from leases",
+     "$",
+     "(5)",
+     ""
+    ],
+    [
+     "Lease Term and Discount Rate",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term (years)",
+     "",
+     "1.67",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "6.75",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2019",
+    "Supplemental Cash Flow Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 958,
+    "end_line": 967
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Other information related to the Company's operating leases was as follows (in thousands):",
+   "prose_after": "Note 8. Borrowings\nNote Refinancing and 2017 Notes \u2014 On August 9, 2019, the Company and Taberna Preferred Funding I, Ltd. (\u201cTaberna I\u201d), Taberna Preferred Funding II, Ltd. (\u201cTaberna II\u201d) and Kodiak CDO I, Ltd. (\u201cKodiak\u201d and, together with Taberna I and Taberna II, the \u201cNoteholders\u201d) executed a First Amendment to Senior Secured Note Purchase Agreement (the \u201cAmendment\u201d) amending the terms of the Note Purchase Agreement (as defined below) and the 2017 Notes (as defined below) to, among other things, significantly reduce the interest rate applicable from January 2019 through the third quarter of 2028 and allow the Company to apply certain surplus interest payments against future quarterly interest payments. As of December 31, 2019, the Company had $85.9 million in aggregate borrowings outstanding under three senior secured promissory notes (the \u201c2017 Notes\u201d). The unpaid principal amounts of the 2017 Notes bear interest at the following rates until the maturity date on March 30, 2033, with interest payable quarterly in arrears as follows: 1% per annum from April 1, 2019 through December 31, 2023; 2% per annum from January 1, 2024 through December 31, 2028; and 10% per annum from January 1, 2029 through the maturity date. Commencing with the delivery to the Noteholders of the financial statements for the fiscal year ending December 31, 2019, the Company is required to remit 50% of excess cash flow each year to the Noteholders to be applied as a principal reduction to the outstanding balance of the debt. The 2017 Notes generally rank senior in right of payment to any existing or future subordinated indebtedness of the Credit Parties (as defined below). The Company may at any time upon 30 days\u2019 notice to the Noteholders redeem all or part of the 2017 Notes at a redemption price equal to 101% of the principal amount redeemed plus any accrued and unpaid interest thereon. The 2017 Notes were entered into on July 27, 2017 as a result of a refinancing of the Company\u2019s then outstanding senior notes with the same aggregate principal amount through the execution of the Senior Secured Note Purchase Agreement, dated as of the same date (as amended, the \u201cNote Purchase Agreement\u201d), with NHI and HCS as guarantors (together with the Company, collectively, the \u201cCredit Parties\u201d).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "December 31, 2018",
+     ""
+    ],
+    [
+     "Principal balance, 2017 Notes",
+     "$",
+     "85,938",
+     "$",
+     "85,938"
+    ],
+    [
+     "Unamortized debt premium, 2017 Notes",
+     "",
+     "886",
+     "",
+     "-"
+    ],
+    [
+     "Other long-term debt",
+     "",
+     "-",
+     "",
+     "31"
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "86,824",
+     "$",
+     "85,969"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1010,
+    "end_line": 1020
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Troubled Debt Restructuring"
+    }
+   },
+   "prose_before": "The Company evaluated whether the terms of the Amendment, as discussed in Note 8 to the consolidated financial statements, qualified as a troubled debt restructuring under applicable accounting standards. The Company determined that this transaction did qualify. Under the terms of the Amendment, there were no transfers of other assets and there was no gain or loss recorded on this transaction.\nThe outstanding balance on the 2017 Notes as of December 31, 2019 and 2018 was $86.8 and $85.9, respectively. At the time of the troubled debt restructuring, the carrying value of the debt was decreased by the fair value of the common stock and warrants issued by the Company under the terms of the Amendment of $0.3 and $0.6 million, respectively, less the total accrued interest from July 1, 2019 through August 8, 2019 of $0.5 million at the original variable rate equal to LIBOR plus 3.5% per annum. Future interest expense is computed using the effective interest method.\nThe carrying value of long-term debt is as follows (in thousands):",
+   "prose_after": "Note 11. Fair Value Accounting\nFair Value Measurements\nThe Company's valuation techniques are based upon observable and unobservable inputs. Observable inputs reflect market data obtained from independent sources, while unobservable inputs reflect the Company's market assumptions. These two types of inputs create the following fair value hierarchy:\n\u2022 Level 1 \u2013 Valuations based on quoted prices in active markets for identical assets and liabilities.\n\u2022 Level 2 \u2013 Valuations based on observable inputs in active markets for similar assets and liabilities, other than Level 1 prices, such as quoted interest or currency exchange rates for substantially the full term of the asset or liability.\n\u2022 Level 3 \u2013 Valuations based on significant unobservable inputs that are supported by little or no market activity, such as discounted cash flow methodologies based on internal cash flow forecasts.\nThe following table provides the estimated fair value of financial instruments and presents amounts that have been determined using available market information and appropriate valuation methodologies. However, considerable judgment is required to interpret market data to develop the estimates of fair value. Accordingly, the estimates presented herein are not necessarily indicative of the amounts that could be realized in a current market exchange. The use of different market assumptions or estimation methodologies could have a material impact on the estimated fair value amounts. The fair value of short-term financial assets and liabilities, such as service fees receivable, notes receivable, and accounts payable and accrued expenses are not included in the following table as their carrying value approximates their fair value.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 997,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     "",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Financial assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity securities (Level 1)",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1",
+     "$",
+     "1"
+    ],
+    [
+     "Financial liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Senior notes (Level 3)",
+     "$",
+     "86,824",
+     "$",
+     "21,289",
+     "$",
+     "85,938",
+     "$",
+     "24,659"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1035,
+    "end_line": 1049
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Accounting"
+    }
+   },
+   "prose_before": "\u2022 Level 3 \u2013 Valuations based on significant unobservable inputs that are supported by little or no market activity, such as discounted cash flow methodologies based on internal cash flow forecasts.\nThe following table provides the estimated fair value of financial instruments and presents amounts that have been determined using available market information and appropriate valuation methodologies. However, considerable judgment is required to interpret market data to develop the estimates of fair value. Accordingly, the estimates presented herein are not necessarily indicative of the amounts that could be realized in a current market exchange. The use of different market assumptions or estimation methodologies could have a material impact on the estimated fair value amounts. The fair value of short-term financial assets and liabilities, such as service fees receivable, notes receivable, and accounts payable and accrued expenses are not included in the following table as their carrying value approximates their fair value.\nThe estimated fair values of the Company's financial instruments are as follows as of December 31, 2019 and 2018 (in thousands):",
+   "prose_after": "Valuation Methods and Processes\nThe equity securities are valued based on quoted market prices and are included in other current assets on the consolidated balance sheets. All equity securities held by the Company were sold during the third quarter of 2019. The senior notes in the table above are not measured at fair value in the consolidated balance sheets but are required to be disclosed at fair value. The fair value of the senior notes has been estimated using Level 3 methodologies, based on significant unobservable inputs that are supported by little or no market activity, such as discounted cash flow calculations based on internal cash flow forecasts. No assets or liabilities have been transferred between levels during any period presented.\nSenior Notes \u2014 The fair value is estimated by discounting future projected cash flows using a discount rate commensurate with the risks involved. The interest rate used in calculating the fair value on the senior notes is three-month LIBOR plus 3.5% per annum until maturity in March 2033. The three-month LIBOR used in the analysis was projected using a forward interest rate curve.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 997,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value (Level 3)",
+     "",
+     "Gains and (Losses)",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "$",
+     "3,905",
+     "$",
+     "(4,300)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1060,
+    "end_line": 1069
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Accounting"
+    }
+   },
+   "prose_before": "The equity securities are valued based on quoted market prices and are included in other current assets on the consolidated balance sheets. All equity securities held by the Company were sold during the third quarter of 2019. The senior notes in the table above are not measured at fair value in the consolidated balance sheets but are required to be disclosed at fair value. The fair value of the senior notes has been estimated using Level 3 methodologies, based on significant unobservable inputs that are supported by little or no market activity, such as discounted cash flow calculations based on internal cash flow forecasts. No assets or liabilities have been transferred between levels during any period presented.\nSenior Notes \u2014 The fair value is estimated by discounting future projected cash flows using a discount rate commensurate with the risks involved. The interest rate used in calculating the fair value on the senior notes is three-month LIBOR plus 3.5% per annum until maturity in March 2033. The three-month LIBOR used in the analysis was projected using a forward interest rate curve.\nGoodwill \u2014 See Note 6 to the consolidated financial statements for more information on the goodwill impairment assessments performed in 2019.\nFinancial assets reported at fair value on a nonrecurring basis include the following (in thousands):",
+   "prose_after": "Activity during 2019 for Goodwill, the Company's only Level 3 asset, measured on a nonrecurring basis is included in the following table (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Goodwill Activity:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "$",
+     "8,205",
+     ""
+    ],
+    [
+     "Impairment charge",
+     "",
+     "(4,300)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "$",
+     "3,905",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Goodwill Activity:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1072,
+    "end_line": 1080
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Accounting"
+    }
+   },
+   "prose_before": "Activity during 2019 for Goodwill, the Company's only Level 3 asset, measured on a nonrecurring basis is included in the following table (in thousands):",
+   "prose_after": "Note 12. Earnings (Loss) Per Share\nBasic earnings (loss) per share is computed by dividing net earnings (loss) available to common shareholders by the weighted average number of shares of common stock outstanding during the period. Diluted earnings per share include the effect of conversions of stock options and nonvested shares. The computations of basic and diluted earnings per share for 2019 and 2018 (dollars in thousands, except share and per share amounts) are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Numerator, in thousands:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) available to common shareholders",
+     "$",
+     "(10,225)",
+     "",
+     "$",
+     "6,134"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 basic",
+     "",
+     "100,472,515",
+     "",
+     "",
+     "93,961,799"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 dilutive:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 basic",
+     "",
+     "100,472,515",
+     "",
+     "",
+     "93,961,799"
+    ],
+    [
+     "Stock options",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Nonvested shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "508,258"
+    ],
+    [
+     "Weighted average common shares outstanding \u2013 dilutive",
+     "",
+     "100,472,515",
+     "",
+     "",
+     "94,470,057"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) available to common shareholders",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "0.07"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) available to common shareholders",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "0.06"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1085,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Earnings (Loss) Per Share"
+    }
+   },
+   "prose_before": "Note 12. Earnings (Loss) Per Share\nBasic earnings (loss) per share is computed by dividing net earnings (loss) available to common shareholders by the weighted average number of shares of common stock outstanding during the period. Diluted earnings per share include the effect of conversions of stock options and nonvested shares. The computations of basic and diluted earnings per share for 2019 and 2018 (dollars in thousands, except share and per share amounts) are as follows:",
+   "prose_after": "Options and warrants to purchase shares of common stock were outstanding during each period as presented below (in thousands, except exercise price), but were not included in the computation of diluted earnings (loss) per share because the number of shares assumed to be repurchased was greater than the number of shares to be obtained upon exercise, therefore, the effect would be anti-dilutive.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Number of stock options (in thousands)",
+     "",
+     "24",
+     "",
+     "72"
+    ],
+    [
+     "Weighted average exercise price of stock options",
+     "$",
+     "1.00",
+     "$",
+     "1.17"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1120,
+    "end_line": 1128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Earnings (Loss) Per Share"
+    }
+   },
+   "prose_before": "Options and warrants to purchase shares of common stock were outstanding during each period as presented below (in thousands, except exercise price), but were not included in the computation of diluted earnings (loss) per share because the number of shares assumed to be repurchased was greater than the number of shares to be obtained upon exercise, therefore, the effect would be anti-dilutive.",
+   "prose_after": "There have been no options granted during 2018 or 2019. During 2018, the Company granted 3.3 million shares to the Board, and all of these shares vested in 2019. During 2019, the Company granted 4.5 million shares to the directors, officers and other members of management, of which 2.4 million of these shares vested during the year. The remaining 2.1 million shares will vest equally in 2020 and 2021, assuming the grantees are still directors at the vest date. As of December 31, 2019 and 2018, respectively, the Company had approximately 2.2 million and 4.2 million non-vested shares outstanding. The weighted average impact of 0.1 million and 0.8 million non-vested shares and common stock warrants of 22.3 million granted in the debt restructure were not included in the calculation of earnings per share for 2019 and 2018, respectively, because they were anti-dilutive.\nNote 13. Income Taxes\nThe components of income tax expense (benefit) from continuing operations are (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "(11)",
+     "",
+     "$",
+     "(113)",
+     ""
+    ],
+    [
+     "State and local",
+     "",
+     "36",
+     "",
+     "",
+     "(176)",
+     ""
+    ],
+    [
+     "Total current",
+     "$",
+     "25",
+     "",
+     "$",
+     "(289)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1135,
+    "end_line": 1148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "There have been no options granted during 2018 or 2019. During 2018, the Company granted 3.3 million shares to the Board, and all of these shares vested in 2019. During 2019, the Company granted 4.5 million shares to the directors, officers and other members of management, of which 2.4 million of these shares vested during the year. The remaining 2.1 million shares will vest equally in 2020 and 2021, assuming the grantees are still directors at the vest date. As of December 31, 2019 and 2018, respectively, the Company had approximately 2.2 million and 4.2 million non-vested shares outstanding. The weighted average impact of 0.1 million and 0.8 million non-vested shares and common stock warrants of 22.3 million granted in the debt restructure were not included in the calculation of earnings per share for 2019 and 2018, respectively, because they were anti-dilutive.\nNote 13. Income Taxes\nThe components of income tax expense (benefit) from continuing operations are (in thousands):",
+   "prose_after": "Below is a reconciliation of the expected federal income tax expense (benefit) using the federal statutory tax rate of 21% to the Company\u2019s actual income tax benefit and resulting effective tax rate (in thousands).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense (benefit) at statutory rate",
+     "$",
+     "(2,949)",
+     "",
+     "$",
+     "984",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State income taxes, net of federal tax benefit",
+     "",
+     "36",
+     "",
+     "",
+     "36",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "2,528",
+     "",
+     "",
+     "(688)",
+     ""
+    ],
+    [
+     "Change in federal tax rate",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in state tax rate",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Bankruptcy reorganization",
+     "",
+     "9",
+     "",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Uncertain tax positions",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(371)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "401",
+     "",
+     "",
+     "(267)",
+     ""
+    ],
+    [
+     "Total income tax expense (benefit)",
+     "$",
+     "25",
+     "",
+     "$",
+     "(289)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Below is a reconciliation of the expected federal income tax expense (benefit) using the federal statutory tax rate of 21% to the Company\u2019s actual income tax benefit and resulting effective tax rate (in thousands).",
+   "prose_after": "Prior to 2018, the Company concluded that it was no longer more likely than not that it would realize a portion of its deferred tax assets. As such, the Company maintained a full valuation allowance against its net deferred tax assets as of both December 31, 2019 and 2018.\nThe Company's determination of the realizable deferred tax assets requires the exercise of significant judgment, based in part on business plans and expectations about future outcomes. In the event the actual results differ from these estimates in future periods, the Company may need to adjust the valuation allowance, which could materially impact our financial position and results of operations. The Company will continue to assess the need for a valuation allowance in future periods. As of December 31, 2019 and 2018, the Company maintained a valuation allowance of $166.5 million and $164.0 million, respectively, for its deferred tax assets.\nSignificant components of the Company\u2019s deferred tax assets and liabilities as of December 31, 2019 and 2018 are (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1117,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal NOL carryforwards",
+     "$",
+     "152,705",
+     "",
+     "$",
+     "153,139",
+     ""
+    ],
+    [
+     "State NOL carryforwards",
+     "",
+     "9,003",
+     "",
+     "",
+     "9,016",
+     ""
+    ],
+    [
+     "Goodwill impairment, HCS",
+     "",
+     "1,084",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Business interest expense limitation",
+     "",
+     "1,877",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "1,876",
+     "",
+     "",
+     "1,866",
+     ""
+    ],
+    [
+     "Gross deferred tax asset",
+     "",
+     "166,545",
+     "",
+     "",
+     "164,021",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(166,545)",
+     "",
+     "",
+     "(163,992)",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Deferred tax liability",
+     "",
+     "\u2014",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1178,
+    "end_line": 1203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Prior to 2018, the Company concluded that it was no longer more likely than not that it would realize a portion of its deferred tax assets. As such, the Company maintained a full valuation allowance against its net deferred tax assets as of both December 31, 2019 and 2018.\nThe Company's determination of the realizable deferred tax assets requires the exercise of significant judgment, based in part on business plans and expectations about future outcomes. In the event the actual results differ from these estimates in future periods, the Company may need to adjust the valuation allowance, which could materially impact our financial position and results of operations. The Company will continue to assess the need for a valuation allowance in future periods. As of December 31, 2019 and 2018, the Company maintained a valuation allowance of $166.5 million and $164.0 million, respectively, for its deferred tax assets.\nSignificant components of the Company\u2019s deferred tax assets and liabilities as of December 31, 2019 and 2018 are (in thousands):",
+   "prose_after": "The other deferred tax assets consist of differences in various accrued expenses, debt restructuring expenses, goodwill and intangible asset book to tax differences, and various other book to tax differences.\nAs of December 31, 2019, the Company had a federal NOL of approximately $727.2 million, including $250.3 million in losses on mortgage securities that have not been recognized for income tax purposes. The federal NOL may be carried forward to offset future taxable income, subject to applicable provisions of the Internal Revenue Code (the \"Code\"). If not used, these NOLs will expire in years 2025 through 2037. Due to tax reform enacted in 2017, NOLs created after 2017 carry forward indefinitely; the portion of NOLs that will not expire is $92.6 million. The Company has state NOL carryforwards arising from both combined and separate filings from as early as 2004. The state NOL carryforwards may expire as early as 2018 and as late as 2037.\nThe activity in the accrued liability for unrecognized tax benefits for the years ended December 31, 2019 and 2018 was (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "11",
+     "",
+     "$",
+     "328",
+     ""
+    ],
+    [
+     "Gross increases \u2013 tax positions in current period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Lapse of statute of limitations",
+     "",
+     "(11)",
+     "",
+     "",
+     "(318)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "11",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The other deferred tax assets consist of differences in various accrued expenses, debt restructuring expenses, goodwill and intangible asset book to tax differences, and various other book to tax differences.\nAs of December 31, 2019, the Company had a federal NOL of approximately $727.2 million, including $250.3 million in losses on mortgage securities that have not been recognized for income tax purposes. The federal NOL may be carried forward to offset future taxable income, subject to applicable provisions of the Internal Revenue Code (the \"Code\"). If not used, these NOLs will expire in years 2025 through 2037. Due to tax reform enacted in 2017, NOLs created after 2017 carry forward indefinitely; the portion of NOLs that will not expire is $92.6 million. The Company has state NOL carryforwards arising from both combined and separate filings from as early as 2004. The state NOL carryforwards may expire as early as 2018 and as late as 2037.\nThe activity in the accrued liability for unrecognized tax benefits for the years ended December 31, 2019 and 2018 was (in thousands):",
+   "prose_after": "Accounting for income taxes, including uncertain tax positions, represents management's best estimate of various events and transactions, and requires significant judgment. As of December 31, 2019, there were no unrecognized tax benefits, and as of December 31, 2018, the total gross amount of unrecognized tax benefits was $0.01 million, which also represents the total amount of unrecognized tax benefits that would impact the effective tax rate. The change in unrecognized tax benefits of $0.01 million was due the lapse of statute of limitations in 2019. The Company does not expect any other significant change in the liability for unrecognized tax benefits in the next twelve months. It is the Company\u2019s policy to recognize interest and penalties related to income tax matters in income tax expense. The benefit for interest and penalties recorded in income tax expense was not significant for 2019 and 2018. There were accrued interest and penalties of less than $0.1 million as of both December 31, 2019 and 2018. The Company and its subsidiaries are subject to U.S. federal income tax as well as income tax of multiple state and local jurisdictions. Tax years 2016 to 2019 remain open to examination for both U.S. federal income tax and major state tax jurisdictions.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees earned or paid in cash",
+     "",
+     "Stock Awards\n(1) (2)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Barry A. Igdaloff",
+     "$",
+     "60,875",
+     "$",
+     "23,400",
+     "$",
+     "84,275"
+    ],
+    [
+     "Howard M. Amster",
+     "$",
+     "27,750",
+     "$",
+     "19,500",
+     "$",
+     "47,250"
+    ],
+    [
+     "Howard Timothy Eriksen",
+     "$",
+     "27,750",
+     "$",
+     "19,500",
+     "$",
+     "47,250"
+    ],
+    [
+     "Lee D. Keddie",
+     "$",
+     "32,750",
+     "$",
+     "19,500",
+     "$",
+     "52,250"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1350,
+    "end_line": 1359
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "V.I. Capital Management, LLC (\u201cV.I. Capital\u201d) and Chief Executive Officer and Chairman of the Board David W. Pointer are subject to a consent order (the \u201cConsent Order\u201d) from the State of Washington Department of Financial Institutions, Securities Division, dated March 12, 2018 (Order Number S-16-2093-17-CO01), relating to alleged breaches of their fiduciary duty as investment advisors to their clients, including (i) failure to disclose certain conflict of interest stemming from Mr. Pointer\u2019s service on the Boards of Directors of CompuMed and Solitron Devices, Inc., (ii) pledging V.I. Capital investment fund assets as collateral for a line of credit for CompuMed, Inc. and failing to disclose such pledge to V.I. Capital\u2019s year-end auditor, and (iii) failure to timely distribute audited financial statements and a final fund audit to investors. As conditions of the Consent Order, V.I. Capital and Mr. Pointer agreed to (i) cease and desist from violating the Securities Act of 1933, (ii) pay a fine of $10,000 and (iii) pay costs of $2,500. Mr. Pointer also agreed that he will not be a principal, officer or owner of an investment adviser or broker-dealer for 10 years following the entry of the Consent Order, but he may apply for a securities salesperson or investment adviser representative registration with an acceptable plan of supervision.\nItem 11. Executive Compensation\nDIRECTOR COMPENSATION\nThe following table presents a summary of the compensation earned by each director who served on the Board during the fiscal year ended December 31, 2019, other than our Chief Executive Officer Mr. Pointer, whose compensation is described in the Executive Compensation section below:",
+   "prose_after": "(1) Represents the aggregate grant date fair value computed in accordance with Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) Topic 718.\n(2) Represents the grant date fair value of 500,000 shares of restricted stock granted to each of the non-employee directors, except Mr. Igdaloff received 600,000 shares, on October 1, 2019, pursuant to the terms and conditions of the 2015 Incentive Plan and each director\u2019s respective award agreement. These shares vest 50% on the first anniversary of the grant date and 50% on the second anniversary of the grant date.\nOn September 20, 2019, the Board approved base compensation for each of the Company\u2019s non-employee directors, Barry A. Igdaloff, Howard M. Amster, Howard Timothy Eriksen and Lee D. Keddie, in an amount of $36,000 per annum, payable in cash on a quarterly basis and 500,000 shares of restricted stock. The Board approved additional compensation for the chairmen of the Audit Committee, Compensation Committee and Nominating and Corporate Governance Committee in the amounts of $15,000, $5,000, and $5,000 per annum, respectively, payable in cash on a quarterly basis. In addition, the Board approved additional compensation for the Lead Director of 100,000 shares of restricted stock.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards (1)",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "David W. Pointer (2) (3)",
+     "2019",
+     "$",
+     "131,154",
+     "$",
+     "150,000",
+     "$",
+     "100,000",
+     "$",
+     "90",
+     "$",
+     "381,244"
+    ],
+    [
+     "Chief Executive Officer and Chairman",
+     "2018",
+     "$",
+     "72,693",
+     "$",
+     "60,000",
+     "$",
+     "\u2014",
+     "$",
+     "66",
+     "$",
+     "132,758"
+    ],
+    [
+     "Carolyn K. Campbell (4)",
+     "2019",
+     "$",
+     "150,000",
+     "$",
+     "46,750",
+     "$",
+     "12,500",
+     "$",
+     "340",
+     "$",
+     "209,590"
+    ],
+    [
+     "Chief Financial Officer",
+     "2018",
+     "$",
+     "144,904",
+     "$",
+     "42,500",
+     "$",
+     "\u2014",
+     "$",
+     "356",
+     "$",
+     "187,760"
+    ],
+    [
+     "Richard M. Rector (5)",
+     "2019",
+     "$",
+     "80,524",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "112,500",
+     "$",
+     "193,025"
+    ],
+    [
+     "Former President, Healthcare Staffing, Inc.",
+     "2018",
+     "$",
+     "225,000",
+     "$",
+     "52,000",
+     "$",
+     "\u2014",
+     "$",
+     "64,095",
+     "$",
+     "341,095"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1375,
+    "end_line": 1386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "On September 20, 2019, the Board approved base compensation for each of the Company\u2019s non-employee directors, Barry A. Igdaloff, Howard M. Amster, Howard Timothy Eriksen and Lee D. Keddie, in an amount of $36,000 per annum, payable in cash on a quarterly basis and 500,000 shares of restricted stock. The Board approved additional compensation for the chairmen of the Audit Committee, Compensation Committee and Nominating and Corporate Governance Committee in the amounts of $15,000, $5,000, and $5,000 per annum, respectively, payable in cash on a quarterly basis. In addition, the Board approved additional compensation for the Lead Director of 100,000 shares of restricted stock.\nIn payment of the equity component of the directors' base compensation as discussed above, on October 1, 2019, each of the non-employee directors received 500,000 shares of restricted stock, except Mr. Igdaloff received 600,000 shares, pursuant to the terms and conditions of the 2015 Incentive Plan and each director\u2019s respective award agreement. These shares vest at 50% on the first anniversary of the grant date and 50% on the second anniversary of the grant date.\nEXECUTIVE COMPENSATION\nOur named executive officers during 2019 (each a \u201cNamed Executive Officer\u201d) were(i) David W. Pointer, our Chief Executive Officer and Chairman of the Board, (ii) Carolyn K. Campbell, our Chief Financial Officer and (iii) Richard M. Rector, formerly President of HCS.\nSummary Compensation Table\nThe following table sets forth the compensation of our Named Executive Officers for the periods indicated.",
+   "prose_after": "(1) Represents the aggregate grant date fair value computed in accordance with FASB ASC Topic 718.\n(2) Mr. Pointer serves as the Chief Executive Officer of both Novation and HCS.\n(3) Represents the grant date fair value of 2,000,000 shares of restricted stock granted to Mr. Pointer on January 22, 2019. 100% of these shares vested on October 1, 2019.\n(4) Represents the grant date fair value of 250,000 shares of restricted stock granted to Ms. Campbell on January 22, 2019. 100% of these shares vested on October 1, 2019.\n(5) Mr. Rector resigned from his positions with HCS effective April 2019. Other compensation for 2019 includes severance paid to Mr. Rector under the terms of his employment agreement. Other compensation for 2018 includes a payment to Mr. Rector for his buyout of accrued paid time off pursuant to the HCS paid time off policy and certain tax waivers per the HCS Purchase Agreement.\nOutstanding Equity Awards at Fiscal Year-End 2019\nThere were no outstanding equity incentive plan awards for our Named Executive Officers as of December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Beneficial Ownership of Common Stock",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name of Beneficial Owner",
+     "Shares",
+     "",
+     "Percent of Class (1)",
+     "",
+     ""
+    ],
+    [
+     "Directors and Named Executive Officers",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard M. Amster (2)",
+     "",
+     "3,538,623",
+     "",
+     "3.1",
+     "%"
+    ],
+    [
+     "Howard Timothy Eriksen (3)",
+     "",
+     "1,333,333",
+     "",
+     "1.2",
+     "%"
+    ],
+    [
+     "Barry A. Igdaloff (4)",
+     "",
+     "10,170,376",
+     "",
+     "9.1",
+     "%"
+    ],
+    [
+     "Lee D. Keddie (5)",
+     "",
+     "1,333,333",
+     "",
+     "1.2",
+     "%"
+    ],
+    [
+     "Carolyn K. Campbell (6)",
+     "",
+     "565,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "David W. Pointer (7)",
+     "",
+     "4,000,000",
+     "",
+     "3.6",
+     "%"
+    ],
+    [
+     "Richard M. Rector (8)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All current directors and executive officers as a group (6 persons) (9)",
+     "",
+     "20,940,665",
+     "",
+     "18.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% Beneficial Owners",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Massachusetts Mutual Life Insurance Company (10)",
+     "",
+     "19,258,775",
+     "",
+     "17.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Beneficial Ownership of Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1415,
+    "end_line": 1434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Richard M. Rector, formerly President of HCS,resigned from his positions with HCS effective April 2019. Mr. Rector entered an employment agreement with the Company and HCS on July 27, 2017 (the \u201cRector Employment Agreement\u201d). Mr. Rector\u2019s base salary was $225,000, and he was eligible to earn a quarterly bonus, based on the Company\u2019s EBITA achievement, and to participate in the Company\u2019s 2015 Incentive Stock Plan. The Rector Employment Agreement also provided for a grant of 1,000,000 restricted shares of the Company\u2019s common stock pursuant to the terms of the Rector Employment Agreement and the Company\u2019s 2015 Incentive Stock Plan. The Rector Employment Agreement had an indefinite term and provided that Mr. Rector was an employee \u201cat-will,\u201d and his employment could be terminated at any time by either party, with or without cause, for any reason or no reason. If Mr. Rector\u2019s employment was terminated by the Company other than for \u201ccause\u201d or by Mr. Rector for \u201cgood reason\u201d (each as defined in the Rector Employment Agreement), Mr. Rector would receive, over a period of 6 months following termination, compensation at an annual rate equal to his then-existing annual base salary and immediate vesting of any Novation restricted shares that were scheduled to vest within one year after the date of termination of employment, if any, pursuant to Novation\u2019s 2015 Incentive Stock Plan.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth sets forth certain information with respect to beneficial ownership of the Company\u2019s common stock as of March 23, 2020 by: (i) each person, or group of affiliated persons, known to us to beneficially own more than 5% of our outstanding common stock, (ii) each of our directors and named executive officers, and (iii) all of our current directors and executive officers as a group. The amounts and percentages of common stock beneficially owned are reported on the basis of regulations of the SEC governing the determination of beneficial ownership of securities. The information relating to 5% beneficial owners is based on information we received from such holders. Except as otherwise set forth below, the address of the persons listed below is c/o Novation Companies, Inc., 9229 Ward Parkway, Suite 340, Kansas City, MO 64114.",
+   "prose_after": "* Less than 1%\n(1) Based on 114,655,893 shares of common stock outstanding as of March 17, 2020. Shares of common stock issuable upon exercise of options, warrants or other rights or the conversion of other convertible securities beneficially owned that are exercisable or convertible within 60 days are deemed outstanding for the purpose of computing the percentage ownership of the person holding such securities and rights and all directors and executive officers as a group.\n(2) Consists of 3,026,567 shares of common stock, 500,000 shares of unvested restricted stock and 12,056 shares of common stock issuable upon exercise of options held directly.\n(3) Consists of 833,333 shares of common stock and 500,000 shares unvested restricted stock.\n(4) Consists of 6,101,306 shares of common stock, 600,000 shares of unvested restricted stock and 12,056 shares of common stock issuable upon exercise of options held directly; and 3,457,014 shares of common stock controlled by Mr. Igdaloff as a registered investment advisor.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of\n\n\n\nSecurities to be\n\n\n\nIssued Upon\n\n\n\nExercise of\n\n\n\nOutstanding\n\n\n\nOptions, Warrants\n\n\n\nand Rights",
+     "",
+     "Weighted Average\n\n\n\nExercise Price of\n\n\n\nOutstanding\n\n\n\nOptions, Warrants\n\n\n\nand Rights",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nRemaining Available\n\n\n\nfor Future Issuance\n\n\n\nUnder Equity\n\n\n\nCompensation Plans\n\n\n\n(Excluding Shares\n\n\n\nReflected in the First\n\n\n\nColumn)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by stockholders (1)",
+     "",
+     "24,112",
+     "$",
+     "1.00",
+     "",
+     "6,274,211"
+    ],
+    [
+     "Equity compensation plans not approved by stockholder",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "24,112",
+     "$",
+     "1.00",
+     "",
+     "6,274,211"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1451,
+    "end_line": 1476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "(8) Mr. Rector resigned from his positions with the Company and its subsidiaries effective April 2019.\n(9) Consists of 16,651,553 shares of common stock; 4,265,000 shares of unvested restricted stock; and 24,112 shares of common stock issuable upon exercise of options. Excludes shares beneficially owned by Mr. Rector who is no longer an executive officer of the Company.\n(10) Based on a Form 3 filed on December 14, 2011, Massachusetts Mutual Life Insurance Company (\u201cMassMutual\u201d) may be deemed to own beneficially and indirectly 19,258,775 shares of common stock held in one or more advisory accounts and private investment funds. Babson Capital Management LLC acts as investment adviser to these advisory accounts and private investment funds, and in such capacities may also be deemed to be the beneficial owner of such shares. The address of MassMutual is 1295 State Street, Springfield, MA 01111.\nEquity Compensation Plan Information\nThe following table sets forth information as of December 31, 2019 with respect to compensation plans under which the Company\u2019s common stock may be issued.",
+   "prose_after": "(1) Represents shares that may be issued pursuant to outstanding options awarded under the 2015 Incentive Plan.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nRelated Party Transactions\nThe Company has adopted a written policy that addresses the review, approval or ratification of any transaction, arrangement, or relationship or series of similar transactions, arrangements or relationships, including any indebtedness or guarantee of indebtedness, between the Company and any related party, in which the aggregate amount involved exceeds the lesser of $120,000 or 1% of the average of the Company\u2019s total assets at year-end for the last two completed fiscal years. Under the policy, a related party of the Company includes:\n\u2022 Any executive officer, or any director or nominee for election as a director;\n\u2022 Any person who owns more than 5% of the Company\u2019s voting securities;\n\u2022 Any immediate family member of any of the foregoing; or\n\u2022 Any entity in which any of the foregoing persons is employed or is a partner or principal or in a similar position or in which such person has a 10% beneficial ownership interest.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1497,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Fiscal Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "122,000",
+     "$",
+     "118,449"
+    ],
+    [
+     "Tax (2)",
+     "",
+     "11,000",
+     "",
+     "60,249"
+    ],
+    [
+     "Total",
+     "$",
+     "133,000",
+     "$",
+     "178,698"
+    ]
+   ],
+   "caption_stack": [
+    "For the Fiscal Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1504,
+    "end_line": 1515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "No director may engage in any Board discussion or approval of any related party transaction in which he or she is a related party, but that director is required to provide the Board with all material information reasonably requested concerning the transaction.\nDirector Independence\nThe Board has determined that all of our non-employee directors are independent within the meaning of SEC and NASDAQ rules. The Board has also determined that all directors serving on the Audit Committee, Compensation Committee and Nominating and Corporate Governance Committee are independent within the meaning of SEC and NASDAQ rules. Although the Company\u2019s securities are not listed on NASDAQ, the Company uses the independence standards provided in NASDAQ rules in determining whether or not our directors are independent.\nItem 14. Principal Accountant Fees and Services\nAudit Fees\nThe following table presents aggregate fees billed for professional services rendered by Boulay PLLP. There were no other professional services rendered or fees billed by Boulay PLLP.",
+   "prose_after": "(1) Annual audit and quarterly reviews of our consolidated financial statements, assistance with and review of documents filed with the SEC.\n(2) Preparation and filing of annual state and federal income taxes.\nPre-Approval Policies and Procedures\nThe Audit Committee has adopted a policy with respect to the pre-approval of all audit and non-audit services provided by our independent registered public accounting firm. All fees paid to our independent registered public accounting firm for fiscal years 2019 and 2018 were pre-approved in accordance with these policies. Generally, the policy requires that the Audit Committee annually approve fees exceeding $50,000 for audit services, audit-related and tax services. Fees expected to exceed $10,000 for all other services must be approved prior to engagement for those services.\nPART IV\nItem 15. Exhibits and Financial Statements Schedules\nFinancial Statements and Schedules\n(1) The financial statements as set forth under Item 8 of this Form 10-K are included herein.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1497,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description of Document"
+    ],
+    [
+     "2.1",
+     "Membership Interest Purchase Agreement, dated as of December 21, 2015, by and among Novation Companies, Inc., Corvisa Services LLC and ShoreTel, Inc. (incorporated by reference to Exhibit 2.1 to the Current Report on Form 8-K filed on December 21, 2015)."
+    ],
+    [
+     "2.2",
+     "Stock Purchase Agreement, dated as of February 1, 2017, by and among Novation Companies, Inc., Novation Holding, Inc., Healthcare Staffing, Inc. and Butler America, LLC (incorporated by reference to Exhibit 2.1 on the Current Report on Form 8-K filed on February 3, 2017).**"
+    ],
+    [
+     "2.3",
+     "Closing Agreement, dated as of July 27, 2017, by and among Novation Companies, Inc., Novation Holding, Inc., Healthcare Staffing, Inc. and Butler America, LLC (incorporated by reference to Exhibit 2.1 on the Quarterly Report on Form 10-Q filed on February 26, 2018)."
+    ],
+    [
+     "3.1",
+     "Articles of Amendment and Restatement (incorporated by reference to Exhibit 3.1 to the Current Report on Form 8-K filed on August 2, 2017)."
+    ],
+    [
+     "3.2",
+     "Articles of Amendment to Articles of Amendment and Restatement (incorporated by reference to Exhibit 3.1 to the Current Report on Form 8-K filed on December 14, 2018)."
+    ],
+    [
+     "3.3",
+     "Second Amended and Restated Bylaws (incorporated by reference to Exhibit 3.2 to the Current Report on Form 8-K filed on August 2, 2017)."
+    ],
+    [
+     "4.1",
+     "Specimen Common Stock Certificate (incorporated by reference to Exhibit 4.1 to the Quarterly Report Form 10-Q filed on August 5, 2005)."
+    ],
+    [
+     "4.2",
+     "Rights Agreement, dated as of September 15, 2011, by and between NovaStar Financial, Inc. and Computershare Trust Company, N.A., as rights agent (incorporated by reference to Exhibit 4.1 to the Current Report on Form 8-K filed on September 21, 2011)."
+    ],
+    [
+     "4.3",
+     "First Amendment to Rights Agreement, dated June 20, 2014, by and between the Company and Computershare Trust Company, N.A. (incorporated by reference to Exhibit 4.2 to Form 8-A/A filed on June 20, 2014)."
+    ],
+    [
+     "4.4",
+     "Second Amendment to Rights Agreement, dated August 24, 2015, by and between the Company and Computershare Trust Company, N.A. (incorporated by reference to Exhibit 4.3 to the Form 8-A12G filed on August 28, 2015)."
+    ],
+    [
+     "4.5",
+     "Third Amendment to Rights Agreement, dated as of July 20, 2018, between Novation Companies, Inc. and Computershare Trust Company, N.A. (incorporated by reference to Exhibit 4.1 on the Current Report on Form 8-K filed on July 25, 2018)."
+    ],
+    [
+     "4.6",
+     "Description of the Company's Securities"
+    ],
+    [
+     "10.1",
+     "Novation Companies, Inc. 2015 Incentive Stock Plan (incorporated by reference to Exhibit 10.1 to the Quarterly Report on Form 10-Q filed on August 7, 2015).*"
+    ],
+    [
+     "10.2",
+     "Form of Restricted Stock Award Agreement for Non-Employee Directors under the Novation Companies, Inc. 2015 Incentive Stock Plan (incorporated by reference to Exhibit 10.3 to the Annual Report on Form 10-K filed on October 26, 2017).*"
+    ],
+    [
+     "10.3",
+     "Form of Restricted Stock Award Agreement for Employees under the Novation Companies, Inc. 2015 Incentive Stock Plan (incorporated by reference to Exhibit 10.4 to the Annual Report on Form 10-K filed on October 26, 2017).*"
+    ],
+    [
+     "10.4",
+     "Amended and Restated 2004 Incentive Stock Plan (as amended May 29, 2014) (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on May 30, 2014).*"
+    ],
+    [
+     "10.5",
+     "First Amendment to the Company's Amended and Restated 2004 Incentive Stock Plan (incorporated by reference to Appendix A to Form DEF 14A filed on April 25, 2014).*"
+    ],
+    [
+     "10.6",
+     "Form of Stock Option Agreement under NovaStar Financial, Inc. 2004 Incentive Stock Plan (incorporated by reference to Exhibit 10.25.1 to the Current Report on Form 8-K filed on February 4, 2005).*"
+    ],
+    [
+     "10.7",
+     "Form of Restricted Stock Award Agreement under NovaStar Financial, Inc. 2004 Incentive Stock Plan (incorporated by reference to Exhibit 10.25.2 to the Current Report on Form 8-K filed on February 4, 2005).*"
+    ],
+    [
+     "10.8",
+     "Form of Employee Non-Qualified Stock Option Agreement under the Company's Amended and Restated 2004 Incentive Stock Plan (incorporated by reference to Exhibit 10.4 to the Annual Report on Form 10-Q filed on August 7, 2014).*"
+    ],
+    [
+     "10.9",
+     "Employment Agreement, dated as of October 1, 2019, by and between Novation Companies, Inc. and David W. Pointer (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed on September 25, 2019).*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1542,
+    "end_line": 1582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "PART IV\nItem 15. Exhibits and Financial Statements Schedules\nFinancial Statements and Schedules\n(1) The financial statements as set forth under Item 8 of this Form 10-K are included herein.\n(2) The required financial statement schedules are omitted because the information is disclosed elsewhere herein.\nExhibits\nWe describe the exhibits filed as part of, or incorporated by reference into, this Form 10-K in the Exhibit Index below.\nItem 16. Form 10-K Summary\nNone.\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.10",
+     "Employment Agreement, dated as of August 9, 2017, by and between Novation Companies, Inc. and Carolyn Campbell (incorporated by reference to Exhibit 10.11 to the Annual Report on Form 10-K filed on April 10, 2018).*"
+    ],
+    [
+     "10.11",
+     "Senior Secured Note Purchase Agreement, dated as of July 27, 2017, among Novation Companies, Inc., Novation Holding, Inc., Healthcare Staffing, Inc., Taberna Preferred Funding I, Ltd., Taberna Preferred Funding II, Ltd., Kodiak CDO I, Ltd., and Wilmington Savings Fund Society, FSB (incorporated by reference to Exhibit 10.1 on the Quarterly Report on Form 10-Q filed on February 26, 2018)."
+    ],
+    [
+     "10.12",
+     "First Amendment to Senior Secured Note Purchase Agreement (incorporated by reference to Exhibit 10.1 on the Quarterly Report on Form 10-Q filed on August 12, 2019)."
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Registrant."
+    ],
+    [
+     "23.1",
+     "Consent of Boulay PLLP."
+    ],
+    [
+     "31.1",
+     "Principal Executive Officer Certification filed pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Principal Financial Officer Certification filed pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Principal Executive Officer Certification furnished pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "Principal Financial Officer Certification furnished pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101",
+     "The following financial information from Novation Companies, Inc.'s Annual Report on Form 10-K for the year ended December 31, 2019, formatted in XBRL (Extensible Business Reporting Language) includes: (i) Consolidated Balance Sheets as of December 31, 2019 and December 31, 2018, (ii) Consolidated Statements of Operations for the years ended December 31, 2019 and 2018, (iii) Consolidated Statements of Comprehensive Income for the years ended December 31, 2019 and 2018, (iv) Consolidated Statements of Shareholders' Deficit for the years ended December 31, 2019 and 2018, (v) Consolidated Statements of Cash Flows for the years ended December 31, 2019 and 2018, and (vi) the Notes to Consolidated Financial Statements."
+    ],
+    [
+     "* Management contract or compensatory plan or arrangement.",
+     ""
+    ],
+    [
+     "** The registrant has omitted certain schedules and exhibits to this agreement in accordance with Item 601(b)(2) of Regulation S-K, and will supplementally furnish a copy of any omitted schedule and/or exhibit to the Securities and Exchange Commission upon request.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1583,
+    "end_line": 1605
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1582,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1605,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ DAVID W. POINTER"
+    ],
+    [
+     "",
+     "",
+     "",
+     "David W. Pointer, Chief Executive Officer and Chairman"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1612,
+    "end_line": 1617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1610,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1653,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ CAROLYN K. CAMPBELL"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Carolyn K. Campbell, Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1618,
+    "end_line": 1623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1610,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1653,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ DAVID W. POINTER"
+    ],
+    [
+     "",
+     "",
+     "",
+     "David W. Pointer, Chief Executive Officer and Chairman"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ CAROLYN K. CAMPBELL"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Carolyn K. Campbell, Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ HOWARD M. AMSTER"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Howard M. Amster, Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ HOWARD TIMOTHY ERIKSEN"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Howard T. Eriksen, Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ BARRY A. IGDALOFF"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Barry A. Igdaloff, Director"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATE:",
+     "March 23, 2020",
+     "",
+     "/s/ LEE D. KEDDIE"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Lee D. Keddie, Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1626,
+    "end_line": 1653
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1610,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1653,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

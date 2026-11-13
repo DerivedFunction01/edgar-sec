@@ -1,0 +1,7317 @@
+{
+ "accession": "0001654954-24-003228",
+ "cik": "0001101026",
+ "form": "10-K",
+ "filing_date": "2024-03-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "zivo_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "87-0699977"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "",
+     "(IRS Employer\n\nIdentification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "21 East Long Lake Road, Suite 100 Bloomfield Hills, MI",
+     "",
+     "48304"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, DC 20549\nForm 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______\nCommission file number 000-30415\nZIVO BIOSCIENCE, INC. (Exact name of Registrant as specified in its charter)",
+   "prose_after": "(248) 452 9866\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 169,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.001 par value per share",
+     "ZIVO",
+     "OTCQB"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants to Purchase Common Stock, $0.001 par value per share",
+     "ZIVOW",
+     "OTC Pink"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(248) 452 9866\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 169,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "37"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "46"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "46"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "48"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "49"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 144
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAs of June 30, 2023, the last business day of the registrant\u2019s most recently completed second fiscal quarter, the aggregate market value of shares of the registrant\u2019s common stock held by non-affiliates of the registrant based upon the June 30, 2023 price at which the common equity was last sold was approximately $17.3 million. The number of outstanding shares of the registrant\u2019s common stock as of March 12, 2024 was 2,777,639.\n..\nDocuments Incorporated by Reference\nPortions of the Company\u2019s proxy statement for the Annual Meeting of the Stockholders to be held June 11, 2024 are incorporated by reference into Part III of this report. Such proxy statement will be filed with the Securities and Exchange Commission within 120 days of the registrant\u2019s fiscal year ended December 31, 2023. Additionally, portions of the Annual Report are incorporated by reference in this Form 10-K in response to Items within part II.\nFORM 10-K\nZIVO BIOSCIENCE, INC. AND SUBSIDIARIES INDEX",
+   "prose_after": "2\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nSome of the statements contained in this Annual Report are forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These statements involve known and unknown risks, uncertainties and other factors which may cause our or our industry\u2019s actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by the forward-looking statements. Forward-looking statements include, but are not limited to statements regarding:\n\u00b7 our ability to continue as a going concern and our history of losses;\n\u00b7 our ability to obtain additional financing;\n\u00b7 our relatively new business model and lack of revenues;\n\u00b7 our ability to prosecute, maintain or enforce our intellectual property rights;\n\u00b7 disputes or other developments relating to proprietary rights and claims of infringement;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 169,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Product",
+     "Stage of Development and/or\n\nRegulatory Status to Date",
+     "Next Steps"
+    ],
+    [
+     "Bovine Mastitis",
+     "The Company has conducted multiple in vitro and ex vivo experiments as well as four clinical trials to determine general effects and to evaluate product modalities and methods of administration.\n\n \n\nThese studies include two (2) multianalyte in vivo studies of mastitis-inducing pathogens, most recently staph aureus.\n\n \n\nDiscovery Stage, pre-GMP, pre-GLP",
+     "The Company expects to conduct three or more small studies to validate a product candidate previously validated in poultry, among other similar candidates and to make refinements to same before offering to potential licensees."
+    ],
+    [
+     "Canine Joint Health",
+     "The Company has conducted multiple in vitro inflammatory experiments, followed by two in vivo trials with mice, and two ex vivo experiments using canine hip joint tissue.\n\n \n\nDiscovery Stage, pre-GMP, pre-GLP",
+     "Additional ex vivo experiments are necessary to gauge effectiveness of product candidate, to be followed by two in vivo studies to determine dosage and tolerance, likely followed by one or more validation studies on behalf of prospective licensees."
+    ],
+    [
+     "Human Immune Modulation\n\n \n\n \n\nAgtech:",
+     "The Company has conducted six in vitro experiments using human immune cells attenuated by proprietary TLR4 inhibitor.",
+     "The Company has additional testing planned, beginning with repeated in vitro testing of different dosages and purities."
+    ],
+    [
+     "Algal biomass for human consumption",
+     "The Company completed the self-affirmed GRAS in November 2018, and the dossier was updated to current FDA standards and Zivo production methods in May 2023.\n\n \n\nNo clinical testing is required for commercialization.",
+     "ZivolifeTM met safe human consumption requirements and sales began in June 2023.\n\n \n\nZIVO continues to review its GRAS status to be current with new FDA regulations and to complete studies supporting increases in the allowable daily intake (ADI).\n\n \n\nIn addition, ZIVO is looking into regulatory requirements to sell ZivolifeTM outside United States"
+    ],
+    [
+     "Biomass for supporting skin health / anti-aging",
+     "The Company is planning several investigations to establish definitive support for the mechanism of action associated with skin health / anti-aging. Support for the indication is a prerequisite to the human new dietary ingredient (NDI) application.\n\n \n\nTopical skin product testing began in 2020.",
+     "The Company is planning additional studies to support skin health/anti-aging.\n\n \n\nPending the outcome of these tests, we expect to notify the Food and Drug Administration about these ingredients and our intent to market according to Section 413(d) of the FD&C Act, 21 U.S.C. 350b(d)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 309,
+    "end_line": 363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "ZIVO\u2019s approach for developing our coccidiosis product candidate as feed additives enables us to generate products that boost the immune response and reduce the effects of disease, while maintaining a single regulatory relationship, which is with the U.S. Department of Agriculture (USDA).\nWe recently announced receipt of a letter from the USDA\u2019s Center for Veterinary Biologics (CVB) affirming that the agency has claimed jurisdiction for reviewing our immune-modulating biologic for treating coccidiosis in broiler chickens. This important jurisdictional announcement de-risks our regulatory path and opens the door to further discussions with the CVB on the final product development plan, regulatory strategy, and data requirements for licensure. This was a significant milestone as USDA approval is likely to provide a favorable timeline to approval relative to the alternative involving the FDA.\nPotential Additional Indications\nFollowing development of our initial product candidate for poultry gut health, the Company intends to continue to pursue the below indications:\nBiotech:",
+   "prose_after": "Competition and Functional Equivalents\nBiotech (Therapeutic)\nOur industries are all very competitive and subject to rapid and significant innovation and change. In addition to companies cultivating and creating homeopathic and natural remedies, our potential competitors and functional equivalents include large pharmaceutical and biopharmaceutical companies, specialty pharmaceutical and generic drug companies, academic institutions, government agencies and research institutions. Key competitive factors affecting our products\u2019 commercial success will include efficacy, safety, tolerability, reliability and price.\nPoultry Gut Health: Conventional poultry production typically involves the use of ionophores and other anticoccidial compounds, some of which are produced by HuvePharma, Elanco, Zoetis, and Phibro, among others. No Antibiotics Ever (NAE) poultry production, relies on effective and economically sound alternatives, such as vaccines and antimicrobial chemicals, as well as product candidates offered by ZIVO.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 301,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 364,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Application Name",
+     "Country",
+     "Application No.",
+     "Status"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agents and Method for improving Gut Health",
+     "US",
+     "17/465,457",
+     "Under Prosecution; Published April 28, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "US",
+     "17/415,221",
+     "Under Prosecution; Notice of Publication March 10, 2022"
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "Brazil",
+     "12021012229",
+     "Under Prosecution"
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "Canada",
+     "3124190",
+     "Under Prosecution"
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "Hong Kong",
+     "62022046143",
+     "Under Prosecution"
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "Mexico",
+     "MX/a/a2021/007359",
+     "Under Prosecution"
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "Peru",
+     "1048-2021",
+     "Under Prosecution"
+    ],
+    [
+     "Algal Feed Ingredient for Controlling Coccidiosis and Necrotic Enteritis in Poultry",
+     "Thailand",
+     "2101003721",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "US",
+     "17/576,237",
+     "Under Prosecution; published July 21, 2022"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Australia",
+     "202209715",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Canada",
+     "3,204,145",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "New Zealand",
+     "801560",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 466,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "Under the Hatch-Waxman Act, the term of a patent that covers an FDA-approved drug or biological product may also be eligible for patent term extension (\u201cPTE\u201d). PTE permits restoration of a portion of the patent term of a U.S. patent as compensation for the patent term lost during product development and the FDA regulatory review process if approval of the application for the product is the first permitted commercial marketing of a drug or biological product containing the active ingredient. The patent term restoration period is generally one-half the time between the effective date of an investigational new drug (IND) and the submission date of a biological license application (\u201cBLA\u201d) plus the time between the submission date of a BLA and the approval of that application. The Hatch-Waxman Act permits a PTE for only one patent applicable to an approved drug, and the maximum period of restoration is five years beyond the expiration of the patent. A PTE cannot extend the remaining term of a patent beyond a total of 14 years from the date of product approval, and a patent can only be extended once, and thus, even if a single patent is applicable to multiple products, it can only be extended based on one product. Similar provisions may be available in Europe and certain other foreign jurisdictions to extend the term of a patent that covers an approved drug. When possible, depending upon the length of clinical trials and other factors involved in the filing of a BLA, we expect to apply for PTEs for patents covering our therapeutic candidates and products and their methods of use.\nThe following patent filings are pertinent to the operation of the ZIVO business:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 460,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Japan",
+     "2023-542922",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Russia",
+     "2023118590",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "China",
+     "202280010396.0",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Brazil",
+     "BR 11 2023 014244 0",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Europe",
+     "22743011.3",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Mexico",
+     "MX/a/2023/008373",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "Peru",
+     "2054-2023",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Complete)",
+     "South Africa",
+     "2023/069858",
+     "Under Prosecution"
+    ],
+    [
+     "Algoriphagus SP, Bosea SP, Brevundimonas SP, Desulfovibrio SP, Microbacterium SP, Sphingomonas SP, and Variovorax SP for Use in Disease Prevention and Treatment (Simplified)",
+     "US",
+     "17/576,444",
+     "Under Prosecution; Published July 21, 2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brevundimonas SP for Use in Disease Prevention",
+     "US",
+     "PCT 18/077,132",
+     "National Stage Deadline June 7, 2024"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 541
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Composition and Method For Affecting Cytokines and NF-\u03baB",
+     "Brazil",
+     "BR 11 2012 011678 9",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dietary Supplements, Food Ingredients and Foods Comprising High-Protein Algal Biomass",
+     "Mexico",
+     "MX/a/2019/010670",
+     "Under Prosecution"
+    ],
+    [
+     "Dietary Supplements, Food Ingredients and Foods Comprising High-Protein Algal Biomass",
+     "Peru",
+     "1820-2019",
+     "Under Prosecution"
+    ],
+    [
+     "Dietary Supplements, Food Ingredients and Foods Comprising High-Protein Algal Biomass",
+     "Thailand",
+     "190105502",
+     "Under Prosecution"
+    ],
+    [
+     "Dietary Supplements, Food Ingredients and Foods Comprising High-Protein Algal Biomass",
+     "China",
+     "201880030155",
+     "Under Prosecution"
+    ],
+    [
+     "Dietary Supplements, Food Ingredients and Foods Comprising High-Protein Algal Biomass",
+     "Hong Kong",
+     "62020009617",
+     "Under Prosecution"
+    ],
+    [
+     "Dietary Supplements, Food, Ingredients and Foods Comprising High-Protein Algal Biomass",
+     "Europe",
+     "18763110.5",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Enhancement of Vaccine Efficacy Via Biomass and/or Related Material in Animal Feed",
+     "US",
+     "17/367,193",
+     "Under Prosecution; Published March 3, 2022; National Stage Deadline December 26, 2022"
+    ],
+    [
+     "Enhancement of Vaccine Efficacy Via Biomass and/or Related Material in Animal Feed",
+     "Europe",
+     "22182898.1",
+     "Under Prosecution"
+    ],
+    [
+     "Enhancement of Vaccine Efficacy Via Biomass and/or Related Material in Animal Feed",
+     "Brazil",
+     "BR 102022013331.0",
+     "Under Prosecution"
+    ],
+    [
+     "Enhancement of Vaccine Efficacy Via Biomass and/or Related Material in Animal Feed",
+     "China",
+     "202210757383.1",
+     "Under Prosecution"
+    ],
+    [
+     "Enhancement of Vaccine Efficacy Via Biomass and/or Related Material in Animal Feed",
+     "India",
+     "202244038199",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "US",
+     "17/358,878",
+     "Under Prosecution; Published January 20, 2022"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Austria",
+     "2021296916",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Brazil",
+     "112022026479.8",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Canada",
+     "3182630",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 544,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "China",
+     "202180050311.7",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Europe",
+     "218288421",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Japan",
+     "2022-580155",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Mexico",
+     "Mx/a/2023/000158",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "New Zealand",
+     "795393",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Peru",
+     "00344-2022-DIN",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "Russia",
+     "2022133478",
+     "Under Prosecution"
+    ],
+    [
+     "Immune Priming To Accelerate/Enhance Immune Response Through Administration of Natural Immune Modulator",
+     "South Africa",
+     "2022-13483",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 602,
+    "end_line": 620
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "US",
+     "17/587,582",
+     "Under Prosecution; Published August 4, 2022"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "New Zealand",
+     "801882",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Australia",
+     "2022213400",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Japan",
+     "2023-546076",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Russia",
+     "2023118986",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Brazil",
+     "BR 11 2023 0149223",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Canada",
+     "3,205,544",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "China",
+     "202280012094.7",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Europe",
+     "22746711.5",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Mexico",
+     "MX/a/2023/008874",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "Peru",
+     "002229-2023/DIN",
+     "Under Prosecution"
+    ],
+    [
+     "Maturation of Immune and Metabolic Processes via Algal Biomass and/or Related Material Administered to Animals",
+     "South Africa",
+     "2023/07227",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Method of Modulating Immune Response and Inflammatory Response Via Administration Algal Biomass",
+     "Brazil",
+     "BR 1120170175991",
+     "Under Prosecution"
+    ],
+    [
+     "Methods of Modulating Immune Response and Inflammatory Response Via Administration of Algal Biomass",
+     "Hong Kong",
+     "18108238.5",
+     "Under Prosecution"
+    ],
+    [
+     "Methods of Modulating Immune Response and Inflammatory Response Via Administration of Algal Biomass",
+     "Canada",
+     "3,011,687",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural Feed Composition Derived from Fresh Water Algal Cultures for the Promotion of Animal Growth",
+     "US",
+     "17/410,016",
+     "Under Prosecution; Published July 28, 2022"
+    ],
+    [
+     "Natural Feed Composition Derived from Fresh Water Algal Cultures for the Promotion of Animal Growth",
+     "Brazil",
+     "BR 112023001466-2",
+     "Under Prosecution"
+    ],
+    [
+     "Natural Feed Composition Derived from Fresh Water Algal Cultures for the Promotion of Animal Growth",
+     "Russia",
+     "2023100901",
+     "Under Prosecution"
+    ],
+    [
+     "Natural Feed Composition Derived from Fresh Water Algal Cultures for the Promotion of Animal Growth",
+     "China",
+     "202180064154.5",
+     "Under Prosecution"
+    ],
+    [
+     "Natural Feed Composition Derived from Fresh Water Algal Cultures for the Promotion of Animal Growth",
+     "Mexico",
+     "MX/a/2023/001221",
+     "Under Prosecution"
+    ],
+    [
+     "Natural Feed Composition Derived from Fresh Water Algal Cultures for the Promotion of Animal Growth",
+     "Europe",
+     "21848954",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nutritional Support for Animals Via Administration of an Algal Derived Supplement",
+     "Europe",
+     "17753729.7",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 640,
+    "end_line": 682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nutritional Support for Animals Via Administration of an Algal Derived Supplement",
+     "Mexico",
+     "MX/a/2018/009818",
+     "Under Prosecution"
+    ],
+    [
+     "Nutritional Support for Animals Via Administration of an Algal Derived Supplement",
+     "Hong Kong",
+     "19,125,173",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "US",
+     "17/358,953",
+     "Under Prosecution; Published February 24, 2022"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Australia",
+     "202129453",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Brazil",
+     "112022026461-5",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Canada",
+     "3,182,236",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "China",
+     "417764600",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Europe",
+     "2182917.9",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Japan",
+     "TBD",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Mexico",
+     "Mx/a/2023/000166",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "New Zealand",
+     "795328",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Peru",
+     "003043-2022-DIN",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "Russia",
+     "2022133470",
+     "Under Prosecution"
+    ],
+    [
+     "Positive Latency Effects on Coccidiosis Prevention and Treatment via Animal Feed",
+     "South Africa",
+     "2022/13479",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "US",
+     "17/400,790",
+     "Under Prosecution; Published February 17, 2022"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Canada",
+     "3,187,128",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Australia",
+     "202136515",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Peru",
+     "000249-2023/DIN",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Brazil",
+     "BR 112023001738-6",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Russia",
+     "2023101488",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "South Africa",
+     "2023/00973",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Japan",
+     "2023-509572",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "China",
+     "202180055783.1",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Europe",
+     "21856718.8",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "Mexico",
+     "MX/a/2023/001775",
+     "Under Prosecution"
+    ],
+    [
+     "The Use of Variovorax Microbes as a Coccidiostat",
+     "New Zealand",
+     "796429",
+     "Under Prosecution"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "US",
+     "17/320,706",
+     "Under Prosecution; Published November 18, 2021"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Australia",
+     "2021271805",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Brazil",
+     "BR 11 2022 022083 9",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Canada",
+     "3177327",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "China",
+     "202180034578.7",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Europe",
+     "21805132.4",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Japan",
+     "2022-560562",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Mexico",
+     "MX/a/2022/04213",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "New Zealand",
+     "793737",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "Russia",
+     "2022128942",
+     "Under Prosecution"
+    ],
+    [
+     "Use of TLR4 Modulator in the Treatment of Coccidiosis",
+     "South Africa",
+     "2022/11691",
+     "Under Prosecution"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 742,
+    "end_line": 775
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The following trademark filings are pertinent to the operation of ZIVO\u2019s business:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Trademark",
+     "Filing Date",
+     "Application No.",
+     "Country",
+     "Status"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ZIVO",
+     "7/22/2022",
+     "97/516,573",
+     "US",
+     "Under Prosecution"
+    ],
+    [
+     "ZIVO",
+     "7/30/2020",
+     "48512762 (Class 29)",
+     "CN",
+     "Issued"
+    ],
+    [
+     "ZIVO",
+     "7/30/2020",
+     "48512762 (Class 5)",
+     "CN",
+     "Issued"
+    ],
+    [
+     "ZIVO",
+     "7/30/2020",
+     "48512744 (Class 31)",
+     "CN",
+     "Issued"
+    ],
+    [
+     "ZIVO Bioscience",
+     "1/18/2023",
+     "97/759,042",
+     "US",
+     "Under Prosecution"
+    ],
+    [
+     "ZIVO Bioscience and Device",
+     "7/30/2020",
+     "48512743 (Class 5)",
+     "CN",
+     "Issued"
+    ],
+    [
+     "ZIVO Bioscience and Device",
+     "7/30/2020",
+     "48512742 (Class 29)",
+     "CN",
+     "Issued"
+    ],
+    [
+     "ZIVO Bioscience and Device",
+     "7/30/2020",
+     "48512741 (Class 31)",
+     "CN",
+     "Issued"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 778,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "The following trademark filings are pertinent to the operation of ZIVO\u2019s business:",
+   "prose_after": "Trade Secrets\nWe also rely on trade secrets, technical know-how and continuing innovation to develop and maintain our competitive position. We seek to protect such intellectual property and proprietary information by generally requiring our employees, consultants, contractors, scientific collaborators and other advisors to execute non-disclosure and assignment of invention agreements upon the commencement of their employment or engagement as the case may be. Our agreements with our employees prohibit them from providing us with any intellectual property or proprietary information of third parties. We also generally require confidentiality agreements or material transfer agreements with third parties that receive or have access to our confidential information, data or other materials. Notwithstanding the foregoing, there can be no assurance that our employees and third parties that have access to our confidential proprietary information will abide by the terms of their agreements. Despite the measures that we take to protect our intellectual property and confidential information, unauthorized third parties may copy aspects of our products or obtain and use our proprietary information.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "27,650",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total cost of goods sold",
+     "",
+     "(16,040)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Gross margin",
+     "$",
+     "11,610",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "5,897,594",
+     "",
+     "",
+     "6,491,704",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "1,377,028",
+     "",
+     "",
+     "2,240,270",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "$",
+     "7,274,622",
+     "",
+     "$",
+     "8,731,974",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "(7,263,012)",
+     "",
+     "$",
+     "(8,731,974)",
+     ""
+    ],
+    [
+     "Total interest and other (expense), net",
+     "",
+     "(514,172)",
+     "",
+     "$",
+     "(13,319)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(7,777,184)",
+     "",
+     "$",
+     "(8,745,293)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1214,
+    "end_line": 1234
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Research and development expenses are incurred in developing our product candidates, compensation and benefits for research and development employees, including stock-based compensation, research related overhead expenses, cost of laboratory supplies, clinical trial and related clinical manufacturing expenses, costs related to regulatory operations, fees paid to research consultants and other outside expenses. Research and development costs are expensed as incurred and costs incurred by third parties are expensed as the contracted work is performed.\nWe expect our research and development expenses to significantly increase over the next several years as we continue to develop product candidates targeting additional pharma and algal biomass applications. These additional activities will increase the need to conduct preclinical testing and clinical trials and will depend on the duration, costs and timing to complete our preclinical programs and clinical trials.\nInterest Expense\nInterest expense primarily consists of interest costs related to our convertible notes and for interest on short term debt, as discussed in detail below.\nOther Income\nOther income consists of proceeds derived from activity outside of normal operating activity, including amortization of debt discounts where appropriate.\nResults of Operations\nComparison of Year Ended December 31, 2023 and 2022\nThe following table summarizes our results of operations for the year ended December 31, 2023 and 2022:",
+   "prose_after": "Revenue\nDuring the year ended December 31, 2023, the Company recorded commercial revenue relating to sales of the Company\u2019s dried algal biomass product as a human food or food ingredient. The $27,650 for the year ending December 31, 2023 is an increase over the $0 in revenue in the prior year. The $27,650 increase is the result of product volume sold in the year ended December 31, 2023, versus no recorded product volume or revenue in the year ended December 31, 2022.\nCosts of Goods Sold\nCost of goods sold for the year ended December 31, 2023 was $16,040. This is $16,040 higher than the same period last year, attributable to product volume as no product was shipped in the comparable prior year period.\nGeneral and Administrative Expenses\nGeneral and administrative expenses were $5.9 million for the 12 months ended December 31, 2023, which is about $600,000 lower than the approximately $6.5 million for the comparable prior period, explained by the following changes: a decrease of $270,000 in labor expense ($750,000 non-cash decrease due to stock options issued to employees partially offset by a roughly $480,000 increase in cash compensation and benefits), and a decrease in overhead expense of $330,000 ($820,000 decrease in directors fees, $290,000 decrease in consultant expense, partially offset by an increase of $260,000 in accounting, increase of $430,000 in legal, and increase in other overhead of $90,000). The increases in accounting and legal fees versus the prior year period were largely the result of legal and accounting fees incurred in capital raising efforts in 2023.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1184,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Labor and other internal expenses",
+     "$",
+     "1,222,280",
+     "",
+     "$",
+     "1,582,628",
+     ""
+    ],
+    [
+     "External research expenses",
+     "",
+     "856,080",
+     "",
+     "",
+     "1,431,667",
+     ""
+    ],
+    [
+     "Total gross R&D expenses",
+     "$",
+     "2,078,360",
+     "",
+     "$",
+     "3,014,295",
+     ""
+    ],
+    [
+     "Less contra-expense for amortization of deferred R&D obligation - Participation Agreements",
+     "",
+     "(701,332)",
+     "",
+     "",
+     "(774,025)",
+     ""
+    ],
+    [
+     "Net R&D expenses",
+     "$",
+     "1,377,028",
+     "",
+     "$",
+     "2,240,270",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1255,
+    "end_line": 1267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "For the 12 months ended December 31, 2023, we incurred $1.4 million in net R&D expenses, as compared to $2.2 million for the comparable period in 2022.\nOf these costs in 2023, $1.2 million is for salary and other internal costs, a decrease of approximately $325,000 from the prior year. The decrease is primarily explained by lower stock related compensation costs of $260,000 and lower travel expense by $30,000. Third party research and development spending of $856,000 was $610,000 lower than the prior year due to fewer third-party research studies and the end of our development program in our nutrition business. For the year ending December 31, 2023, the Company recognized a reduction in gross research and development spending of roughly $700,000 to account for the amortization of the spending obligation created through the complete funding of the Participation Agreements, roughly $70,000 lower than the amount research and development was reduced in 2022. (See Note 8: Deferred R&D Obligations - Participation Agreements)",
+   "prose_after": "Subject to the availability of funding, we expect our R&D costs to grow as we work to complete the research in the development of natural bioactive compounds for use as dietary supplements and food ingredients, as well as biologics for medicinal and pharmaceutical applications in humans and animals. The Company\u2019s scientific efforts presently are focused on the licensing products for healthy immune response in livestock and growing of our proprietary algal culture in commercial scale facilities.\nLiquidity and Capital Resources\nHistorical Capital Resources\nAs of December 31, 2023, our principal source of liquidity consisted of cash deposits of 274,380. We expect to continue to incur significant expenses and increasing operating and net losses for the foreseeable future until and unless we generate an adequate level of revenue from potential commercial sales to cover expenses.\nWe anticipate that our expenses will increase substantially as we develop and seek to commercialize our product candidates and continue to pursue pre-clinical and clinical trials, seek regulatory approvals, manufacture product candidates, hire additional staff, add operational, financial and management systems and continue to operate as a public company.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve months ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(5,799,893)",
+     "",
+     "$",
+     "(7,102,612)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "4,275,010",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "$",
+     "(1,524,883)",
+     "",
+     "$",
+     "(7,102,612)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Twelve months ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1312,
+    "end_line": 1326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Cash Flows from Investing Activities. During the 12 months ended December 31, 2023 and 2022, there were no investing activities.\nCash Flows from Financing Activities. During the 12 months ended December 31, 2023, we generated $4.3 million in cash from financing activities; a private placement of stock and warrants in July 2023 in the amount of $3.6 million, and several private placements of common stock in December 2023 totaling $640,000, compared to zero provided in the prior year.\nWe estimate that we would require approximately $5 million in cash over the next 12 months in order to fund our basic operations, excluding our R&D initiatives. Based on this cash requirement, we have a near-term need for additional funding to continue to develop our products and intellectual property. Historically, we have had substantial difficulty raising funds from external sources. If we are unable to raise the required capital, we will be forced to curtail our business operations, including our R&D activities. The following table shows a summary of our cash flows for the periods indicated:",
+   "prose_after": "Critical Accounting Estimates\nOur management\u2019s discussion and analysis of our financial condition and results of operations is based on our financial statements, which have been prepared in accordance with accounting principles generally accepted in the United States of America, or GAAP. The preparation of these financial statements requires us to make estimates, judgments and assumptions that affect the reported amounts of assets and liabilities, disclosure of contingent assets and liabilities as of the dates of the balance sheets and the reported amounts of revenue and expenses during the reporting periods. In accordance with GAAP, we base our estimates on historical experience and on various other assumptions that we believe are reasonable under the circumstances at the time such estimates are made. Actual results may differ materially from our estimates and judgments under different assumptions or conditions. We periodically review our estimates in light of changes in circumstances, facts and experience. The effects of material revisions in estimates are reflected in our financial statements prospectively from the date of the change in estimate.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1300,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT",
+     ""
+    ],
+    [
+     "NUMBER",
+     "DESCRIPTION OF DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of the Registrant as amended (incorporated by reference to Exhibit 3.1 to the Registrant\u2019s Quarterly Report on Form 10-Q filed on August 22, 2011)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Articles of Incorporation dated October 16, 2014 (incorporated by reference to Exhibit 3.12 to the Registrant\u2019s Quarterly Report on Form 10-Q filed on November 14, 2014)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate to Amendment dated May 28, 2021 (incorporated by reference to Exhibit 3.1 to the Registrant\u2019s Quarterly Report on Form 8-K filed on June 2, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "Amended and Restated By-laws of the Registrant (incorporated by reference to Exhibit 3.2 to the Registrant\u2019s Quarterly Report on Form 10-Q filed on May 17, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "Second Amended and Restated By-laws of the Registrant (incorporated by reference to Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K filed on July 7, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2*",
+     "Form of Warrant (incorporated by reference to Exhibit 4.2 to the Registrant\u2019s Annual Report on Form 10-K filed on April 22, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of Representative\u2019s Warrant (incorporated by reference to Exhibit 4.1 to the Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on June 2, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Form of Common Stock Purchase Warrant by and between the Registrant and Direct Transfer LLC (incorporated by reference to Exhibit 4.2 to the Registrant\u2019s Current Report on Form 8-K filed on June 2, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Warrant Agency Agreement (incorporated by reference to Exhibit 4.3 to the Registrant\u2019s Registration Statement on Form S-1/A filed on May 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1+",
+     "2019 Omnibus Long-Term Incentive Plan (incorporated by reference to Exhibit 10.34 of the Registrant\u2019s Annual Report on Form 10-K filed on March 26, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1.1+",
+     "Stock Option Grant Notice for 2019 Omnibus Long-Term Incentive Plan (incorporated by reference to Exhibit 10.37 of the Registrant\u2019s Annual Report on Form 10-K filed on March 26, 2020)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2+",
+     "2021 Equity Incentive Plan (incorporated by reference to Exhibit 10.2 of the Registrant\u2019s Current Report on Form 8-K filed on February 16, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Supply Chain Agreement with Aegle Partners 2 LLC, dated February 27, 2019 (incorporated by reference to Exhibit 10.38 to the Registrant\u2019s Registration Statement on Form S-1/A filed on May 26, 2021)"
+    ]
+   ],
+   "caption_stack": [
+    "EXHIBIT"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1479,
+    "end_line": 1516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Incorporated by reference to \u201cCertain Relationships and Related Transactions\u201d and \u201cProposal No. 1 - Election of Directors\u201din the Registrant\u2019s 2024 Proxy Statement to be filed within 120 days after the Registrant\u2019s fiscal year end.\nItem 14. Principal Accountant Fees and Services\nIncorporated by reference to \u201cProposal No. 2 - Ratification of Independent Registered Public Accounting Firm\u201d in the Registrant\u2019s 2024 Proxy Statement to be filed within 120 days after the Registrant\u2019s fiscal year end. Information about aggregate fees billed to us by our principal accountant, BDO USA, P.C. (PCAOB ID No. 243) will be included under the caption \u201cIndependent Auditor Fees\u201d in the 2024 Proxy Statement, and that information is incorporated by reference herein.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(a) (1) (2) Financial Statements.\nFinancial Statements begin on page F-1 of this report.\nAll schedules have been omitted because they are not applicable or the required information is included in the Consolidated Financial Statements or Notes thereto.\n(3) Exhibits.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1465,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1517,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.3.1",
+     "First Amendment to Supply Chain Agreement with Aegle Partners 2 LLC, dated September 14, 2019 (incorporated by reference to Exhibit 10.39 to the Registrant\u2019s Registration Statement on Form S-1/A filed on May 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3.2",
+     "Second Amendment to Supply Chain Agreement with Aegle Partners 2 LLC, dated November 24, 2020 (incorporated by reference to Exhibit 10.40 to the Registrant\u2019s Registration Statement on Form S-1/A filed on May 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4+",
+     "Employment Agreement, dated as of February 15, 2022, by and between John Payne and the Company (incorporated by reference to Exhibit 10.1 of the Registrant\u2019s Current Report on Form 8-K filed on February 16, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5+",
+     "Letter Agreement between Keith Marchiando and Zivo Bioscience, Inc., dated January 1, 2021 (incorporated by reference to Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K filed on January 7, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Paulson Convertible Note (incorporated by reference to Exhibit 10.45 to the Registrant\u2019s Registration Statement on Form S-1/A filed on May 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Form of Shapiro Convertible Note (incorporated by reference to Exhibit 10.46 to the Registrant\u2019s Registration Statement on Form S-1/A filed on May 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8*",
+     "Zivo Bioscience, Inc. Non-Employee Director Compensation Policy (incorporated by reference to Exhibit 10.3 to the Registrant\u2019s Form 10-Q filed with the Securities and Exchange Commission on November 15, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10. 9",
+     "Stock Option Grant Notice and Agreement to Zivo Bioscience, Inc. 2021 Equity Incentive Plan (incorporated by reference to Exhibit 10.2 filed with the Securities and Exchange Commission on November 15, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1*",
+     "Subsidiaries of the Registrant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1*",
+     "Consent of BDO USA, P.C."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of the Principal Executive Officer pursuant to Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as amended"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of the Principal Financial Officer pursuant to Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as amended"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of the Principal Executive Officer pursuant to U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification of the Principal Financial Officer pursuant to U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "____________\n* Filed herewith.\n**Furnished herewith.\n+ Indicates a management contract or compensatory plan.\n\u2020Certain schedules and exhibits have been omitted pursuant to Item 601(a)(5) of Regulation S-K. A copy of any omitted schedule and/or exhibit will be furnished to the SEC upon request.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1517,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ZIVO BIOSCIENCE, INC.",
+     "",
+     ""
+    ],
+    [
+     "Date: March 15, 2024",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Keith R. Marchiando",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Keith R. Marchiando",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer, and Secretary",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ZIVO BIOSCIENCE, INC.",
+    "Date: March 15, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1589,
+    "end_line": 1597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "____________\n* Filed herewith.\n**Furnished herewith.\n+ Indicates a management contract or compensatory plan.\n\u2020Certain schedules and exhibits have been omitted pursuant to Item 601(a)(5) of Regulation S-K. A copy of any omitted schedule and/or exhibit will be furnished to the SEC upon request.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "By:",
+     "/s/ John B. Payne",
+     ""
+    ],
+    [
+     "",
+     "",
+     "John B. Payne,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer, President and Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 15, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Keith R. Marchiando",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Keith R. Marchiando",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer, and Secretary",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 15, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Christopher D. Maggiore",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Christopher D. Maggiore,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 15, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Nola E. Masterson",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Nola E. Masterson,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 15, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Alison A. Cornell",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Alison A. Cornell,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 15, 2024",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1600,
+    "end_line": 1631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nShareholders and Board of Directors\nZivo Bioscience, Inc.\nBloomfield Hills, Michigan\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Zivo Bioscience, Inc. and subsidiaries (the \u201cCompany\u201d) as of December 31, 2023 and 2022, the related consolidated statements of operations, stockholders\u2019 equity (deficit), and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at December 31, 2023 and 2022, and the results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern Uncertainty\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the consolidated financial statements, the Company has suffered recurring losses and negative cash flows from operations that raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1583,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "274,380",
+     "",
+     "$",
+     "1,799,263",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "3,735",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "147,262",
+     "",
+     "",
+     "102,416",
+     ""
+    ],
+    [
+     "Total current assets",
+     "$",
+     "425,377",
+     "",
+     "$",
+     "1,901,679",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT, NET",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "OTHER ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease - right of use asset",
+     "",
+     "98,280",
+     "",
+     "",
+     "189,282",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "32,058",
+     "",
+     "",
+     "32,058",
+     ""
+    ],
+    [
+     "Total other assets",
+     "",
+     "130,338",
+     "",
+     "",
+     "221,340",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "555,715",
+     "",
+     "$",
+     "2,123,019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY (DEFICIT):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "993,090",
+     "",
+     "$",
+     "490,670",
+     ""
+    ],
+    [
+     "Accounts payable \u2013 related party",
+     "",
+     "172,670",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current portion of long-term operating lease",
+     "",
+     "106,342",
+     "",
+     "",
+     "99,259",
+     ""
+    ],
+    [
+     "Convertible debentures payable",
+     "",
+     "240,000",
+     "",
+     "",
+     "240,000",
+     ""
+    ],
+    [
+     "Deferred R&D obligations - participation agreements",
+     "",
+     "-",
+     "",
+     "",
+     "525,904",
+     ""
+    ],
+    [
+     "Deferred R&D obligations - participation agreements related parties",
+     "",
+     "-",
+     "",
+     "",
+     "175,427",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "100,686",
+     "",
+     "",
+     "98,286",
+     ""
+    ],
+    [
+     "Accrued liabilities \u2013 employee bonus",
+     "",
+     "1,148,770",
+     "",
+     "",
+     "398,176",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "$",
+     "2,761,558",
+     "",
+     "$",
+     "2,027,722",
+     ""
+    ],
+    [
+     "LONG TERM LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term operating lease, net of current portion",
+     "",
+     "-",
+     "",
+     "",
+     "105,919",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "105,919",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "$",
+     "2,761,558",
+     "",
+     "$",
+     "2,133,641",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 (DEFICIT):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 25,000,000 and 25,000,000 shares authorized as of December 31, 2023 and December 31, 2022; 2,382,356 and 1,569,943 issued and outstanding at December 31, 2023, and December 31, 2022, respectively (a)",
+     "$",
+     "2,383",
+     "",
+     "$",
+     "1,570",
+     ""
+    ],
+    [
+     "Additional paid-in capital (a)",
+     "",
+     "121,373,488",
+     "",
+     "",
+     "115,792,338",
+     ""
+    ],
+    [
+     "Accumulated deficit (a)",
+     "",
+     "(123,581,714)",
+     "",
+     "",
+     "(115,804,530)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 (deficit)",
+     "$",
+     "(2,205,843)",
+     "",
+     "$",
+     "(10,622)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 (DEFICIT)",
+     "$",
+     "555,715",
+     "",
+     "$",
+     "2,123,019",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1684,
+    "end_line": 1734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "We identified the assessment of the accounting treatment for Private Placement Warrants as equity or liability as a critical audit matter. The principal considerations that led to this determination was the complexity in assessing the warrant features, which requires management to make significant judgments in the interpretation of the terms of the agreements and the application of the appropriate accounting guidance. Auditing the Company\u2019s application of appropriate accounting guidance for the Private Placement Warrants required challenging and complex auditor judgment due to the nature and extent of audit effort required, including the extent of specialized skills and knowledge needed.\nThe primary procedures we performed to address this critical audit matter included:\n\u00b7 Inspecting the agreements and evaluating the completeness and accuracy of the contract terms included in the Company\u2019s technical accounting analyses and testing management\u2019s application of the relevant accounting guidance, including the balance sheet classification and disclosures.\n\u00b7 Utilizing professionals with specialized knowledge and skills in the relevant technical accounting guidance to assist in: (i) evaluating the relevant contract terms of the warrant issuances in relation to the appropriate accounting guidance, and (ii) assessing the appropriateness of conclusions reached by the Company.\n/s/ BDO USA, P.C.\nWe have served as the Company\u2019s auditor since 2022.\nTroy, Michigan\nMarch 15, 2024\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "(a) Results have been adjusted for the 1-6 Reverse Split in October 2023. See Note 9, \u201cStockholders' Equity (Deficit)\u201d for details regarding the stock split.\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended\n\nDecember 31,\n\n2023",
+     "",
+     "",
+     "For the year ended\n\nDecember 31,\n\n2022",
+     "",
+     ""
+    ],
+    [
+     "REVENUE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product revenue",
+     "$",
+     "27,650",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total Revenues",
+     "$",
+     "27,650",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST OF GOODS SOLD",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product costs",
+     "",
+     "16,040",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Cost of Goods Sold",
+     "",
+     "16,040",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS MARGIN",
+     "",
+     "11,610",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COSTS AND EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "5,897,594",
+     "",
+     "",
+     "6,491,704",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "1,377,028",
+     "",
+     "",
+     "2,240,270",
+     ""
+    ],
+    [
+     "Total Costs and Expenses",
+     "$",
+     "7,274,622",
+     "",
+     "$",
+     "8,731,974",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "$",
+     "(7,263,012)",
+     "",
+     "$",
+     "(8,731,974)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER (EXPENSE):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "(439,594)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense - related parties",
+     "",
+     "(50,785)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense - other",
+     "",
+     "(23,793)",
+     "",
+     "",
+     "(13,319)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Expense",
+     "$",
+     "(514,172)",
+     "",
+     "$",
+     "(13,319)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(7,777,184)",
+     "",
+     "$",
+     "(8,745,293)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "$",
+     "(4.60)",
+     "",
+     "$",
+     "(5.57",
+     ")(a)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED SHARES OUTSTANDING",
+     "",
+     "1,690,009",
+     "",
+     "",
+     "1,569,943",
+     "(a)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1742,
+    "end_line": 1786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(a) Results have been adjusted for the 1-6 Reverse Split in October 2023. See Note 9, \u201cStockholders' Equity (Deficit)\u201d for details regarding the stock split.\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "(a) Results have been adjusted for the 1-6 Reverse Split in October 2023. See Note 9, \u201cStockholders' Equity (Deficit)\u201d for details regarding the stock split.\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFOR THE PERIOD JANUARY 1, 2022 THROUGH DECEMBER 31, 2023",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Paid in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares (a)",
+     "",
+     "",
+     "Amount (a)",
+     "",
+     "Capital (a)",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2022",
+     "",
+     "1,569,943",
+     "",
+     "$",
+     "1,570",
+     "$",
+     "113,099,876",
+     "",
+     "$",
+     "(107,059,237)",
+     "",
+     "$",
+     "6,042,209",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee and director equity-based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "2,692,462",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,692,462",
+     ""
+    ],
+    [
+     "Net loss for the twelve months ended December 31, 2022",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(8,745,293)",
+     "",
+     "",
+     "(8,745,293)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "1,569,943",
+     "",
+     "$",
+     "1,570",
+     "$",
+     "115,792,338",
+     "",
+     "$",
+     "(115,804,530)",
+     "",
+     "$",
+     "(10,622)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2023",
+     "",
+     "1,569,943",
+     "",
+     "$",
+     "1,570",
+     "$",
+     "115,792,338",
+     "",
+     "$",
+     "(115,804,530)",
+     "",
+     "$",
+     "(10,622)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee and director equity-based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "867,359",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "867,359",
+     ""
+    ],
+    [
+     "Private offering issuance of stock and warrants,\n\nnet of issuance costs",
+     "",
+     "171,666",
+     "",
+     "",
+     "172",
+     "",
+     "3,634,791",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,634,963",
+     ""
+    ],
+    [
+     "Debt discount for related party loan warrants",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "439,594",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "439,594",
+     ""
+    ],
+    [
+     "Fractional Shares from Split",
+     "",
+     "(290)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued on prefunded warrant exercise",
+     "",
+     "78,021",
+     "",
+     "",
+     "78",
+     "",
+     "(31)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "Private sales of common stock - other",
+     "",
+     "125,324",
+     "",
+     "",
+     "125",
+     "",
+     "154,875",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "155,000",
+     ""
+    ],
+    [
+     "Private sales of common stock \u2013 related party",
+     "",
+     "437,692",
+     "",
+     "",
+     "438",
+     "",
+     "484,562",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "485,000",
+     ""
+    ],
+    [
+     "Net loss for the twelve months ended December 31, 2023",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(7,777,184)",
+     "",
+     "",
+     "(7,777,184)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2023",
+     "",
+     "2,382,356",
+     "",
+     "$",
+     "2,383",
+     "$",
+     "121,373,488",
+     "",
+     "$",
+     "(123,581,714)",
+     "",
+     "$",
+     "(2,205,843)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1796,
+    "end_line": 1824
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(a) Results have been adjusted for the 1-6 Reverse Split in October 2023. See Note 9, \u201cStockholders' Equity (Deficit)\u201d for details regarding the stock split.\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nFOR THE PERIOD JANUARY 1, 2022 THROUGH DECEMBER 31, 2023",
+   "prose_after": "(a) Results have been adjusted for the 1-6 Reverse Split in October 2023. See Note 9, \u201cStockholders' Equity (Deficit)\u201d for details regarding the stock split.\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1828,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "For the Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(7,777,184)",
+     "",
+     "$",
+     "(8,745,293)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization on debt discount",
+     "",
+     "439,594",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Employee and director equity-based compensation expense",
+     "",
+     "867,359",
+     "",
+     "",
+     "2,692,462",
+     ""
+    ],
+    [
+     "Non-cash lease expense",
+     "",
+     "91,002",
+     "",
+     "",
+     "79,637",
+     ""
+    ],
+    [
+     "Amortization of deferred R&D obligations - participation agreements",
+     "",
+     "(701,332)",
+     "",
+     "",
+     "(774,025)",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(44,846)",
+     "",
+     "",
+     "(44,338)",
+     ""
+    ],
+    [
+     "Security deposits",
+     "",
+     "-",
+     "",
+     "",
+     "(29,058)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "502,420",
+     "",
+     "",
+     "(163,663)",
+     ""
+    ],
+    [
+     "Accounts payable \u2013 related party",
+     "",
+     "172,670",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(3,735)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "",
+     "(98,835)",
+     "",
+     "",
+     "(51,695)",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "752,994",
+     "",
+     "",
+     "(66,639)",
+     ""
+    ],
+    [
+     "Net cash (used) in operating activities",
+     "$",
+     "(5,799,893)",
+     "",
+     "$",
+     "(7,102,612)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used) in investing activities",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flow from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds of loans payable, other",
+     "$",
+     "605,600",
+     "",
+     "$",
+     "628,600",
+     ""
+    ],
+    [
+     "Payment of loans payable, other",
+     "",
+     "(605,600)",
+     "",
+     "",
+     "(628,600)",
+     ""
+    ],
+    [
+     "Proceeds of loans payable, related party",
+     "",
+     "1,150,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payment of loans payable, related party",
+     "",
+     "(1,150,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from private placement of registered securities, net",
+     "",
+     "3,634,963",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exercise of common stock warrants",
+     "",
+     "47",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from direct sale of common stock, related party",
+     "",
+     "485,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from direct sales of common stock",
+     "",
+     "155,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "4,275,010",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Decrease in cash",
+     "$",
+     "(1,524,883)",
+     "",
+     "$",
+     "(7,102,612",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "1,799,263",
+     "",
+     "",
+     "8,901,875",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "274,380",
+     "",
+     "$",
+     "1,799,263",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "72,178",
+     "",
+     "$",
+     "10,920",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1832,
+    "end_line": 1880
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(a) Results have been adjusted for the 1-6 Reverse Split in October 2023. See Note 9, \u201cStockholders' Equity (Deficit)\u201d for details regarding the stock split.\nThe accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nSupplemental Schedule of Non-Cash Investing and Financing Activities:\nFor the Year Ended December 31, 2023:\nDuring the year ended December 31, 2023, the Company had no non-cash investing or financing transactions.\nFor the Year Ended December 31, 2022:\nDuring the year ended December 31, 2022, the Company had no non-cash financing transactions.\nDuring the year ended December 31, 2022, the Company had non-cash investing activities in the amount of $241,694 related to ROU assets obtained in exchange for ROU liabilities.\nThe accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 - DESCRIPTION OF BUSINESS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1828,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1882,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets:",
+     "December 31,\n\n2023",
+     "",
+     "December 31,\n\n2022",
+     ""
+    ],
+    [
+     "Operating lease right-of-use asset",
+     "$",
+     "98,280",
+     "$",
+     "189,282"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term operating lease",
+     "$",
+     "106,342",
+     "$",
+     "99,259"
+    ],
+    [
+     "Long-term operating lease, net of current portion",
+     "",
+     "-",
+     "",
+     "105,919"
+    ],
+    [
+     "",
+     "$",
+     "106,342",
+     "$",
+     "205,178"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2008,
+    "end_line": 2021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "On December 17, 2020, the Company entered into a 25 \u00bd month lease agreement for a facility that contains office, warehouse, lab and R&D space in Ft. Myer, Florida. The lease agreement commenced on December 17, 2020 and ends on January 31, 2023. The lease agreement provided for a total rent of $54,993 over the period. Occupancy of the property commenced on December 17, 2020, and there was a 6-week rent holiday and a commencement date of February 1, 2021. Lease expense for operating lease payments is recognized on a straight-line basis over the lease term. Rent is $3,291 per month from January 15, 2021 to January 31, 2022 and $1,154 from February 1, 2022 to January 31, 2023. On June 5, 2022, the Company exercised an option to extend the lease through December 31, 2024. The lease extension rent is $2,261 per month for calendar year 2023, and $2,300 per month for calendar year 2024, and totals an additional rent obligation of $54,743 of rent over the extension period.\nOn January 14, 2022, the Company entered into a 34-month sublease agreement for a 4,843 square-foot office in Bloomfield Hills, Michigan. The Company moved its headquarters to this location. The agreement commenced on January 29, 2022 and ends on November 30, 2024. The agreement provided for a total rent of $232,464. Occupancy of the property commenced on January 29, 2022, there was a three-month rent holiday with a rent commencement date of April 29, 2022. Lease expense for operating lease payments is recognized on a straight-line basis over the lease term. Rent is $7,265 per month from commencement to November 30, 2022, $7,466 from November 30, 2022 to November 30, 2023, and $7,668 from November 30, 2023 to the lease end date.\nThe balances for our operating lease where we are the lessee are presented as follows within our consolidated balance sheet:\nOperating leases:",
+   "prose_after": "The components of lease expense are as follows within our consolidated statement of operations:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1997,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2023",
+     "",
+     "December 31,\n\n2022",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "$",
+     "108,942",
+     "$",
+     "102,249"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2024,
+    "end_line": 2033
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The components of lease expense are as follows within our consolidated statement of operations:",
+   "prose_after": "Other information related to leases where we are the lessee is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1997,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2023",
+     "",
+     "",
+     "December 31,\n\n2022",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "0.94 Years",
+     "",
+     "",
+     "1.94 Years",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discount rate:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "11.00",
+     "%",
+     "",
+     "11.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2036,
+    "end_line": 2049
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Other information related to leases where we are the lessee is as follows:",
+   "prose_after": "Supplemental cash flow information related to leases where we are the lessee is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2096,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2023",
+     "",
+     "December 31,\n\n2022",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "$",
+     "116,209",
+     "$",
+     "74,307"
+    ],
+    [
+     "Non-cash investment in ROU asset",
+     "",
+     "-",
+     "",
+     "241,694"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2052,
+    "end_line": 2062
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Supplemental cash flow information related to leases where we are the lessee is as follows:",
+   "prose_after": "As of December 31, 2023, the maturities of our operating lease liability are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2096,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended:",
+     "Operating Lease",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2024",
+     "",
+     "112,407",
+     ""
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "112,407",
+     ""
+    ],
+    [
+     "Less: Interest",
+     "",
+     "(9,471)",
+     ""
+    ],
+    [
+     "Present value of lease obligations",
+     "$",
+     "102,936",
+     ""
+    ],
+    [
+     "Less: Current portion",
+     "",
+     "102,936",
+     ""
+    ],
+    [
+     "Long-term portion of lease obligations",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2065,
+    "end_line": 2078
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "As of December 31, 2023, the maturities of our operating lease liability are as follows:",
+   "prose_after": "NOTE 5 - LOAN PAYABLE, RELATED PARTIES\nPayne Bridge Loan\nOn April 3, 2023, the Company entered into a Subscription Agreement (the \u201cSubscription Agreement\u201d) with the Company\u2019s Chief Executive Officer (the \u201cSubscriber\u201d), pursuant to which the Company, in a private placement (the \u201cPrivate Placement\u201d), agreed to issue and sell to the Subscriber a 10% promissory note with a principal amount of $1 million (the \u201cPayne Note\u201d) and a warrant (the \u201cPayne Warrant\u201d) to purchase 65,000 shares of the Company\u2019s common stock, par value $0.001 per share (\u201cCommon Stock\u201d). The Company had the ability to prepay all or a portion of the outstanding Payne Note principal and accrued and unpaid interest without any prepayment fee.\nEach warrant is exercisable for a period of three years from issuance at a per-share exercise price equal to $17.46. The exercise price and number of the shares of our Common Stock issuable upon exercising the Payne Warrant will be subject to adjustment in the event of any stock dividends and splits, reverse stock split, recapitalization, reorganization, or similar transaction, as described therein.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2096,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "lease_maturity",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of common stock",
+     "$",
+     "3.11",
+     ""
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "3.73",
+     "%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "99.89",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2089,
+    "end_line": 2096
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "LOAN PAYABLE, RELATED PARTIES"
+    }
+   },
+   "prose_before": "On April 3, 2023, the Company entered into a Subscription Agreement (the \u201cSubscription Agreement\u201d) with the Company\u2019s Chief Executive Officer (the \u201cSubscriber\u201d), pursuant to which the Company, in a private placement (the \u201cPrivate Placement\u201d), agreed to issue and sell to the Subscriber a 10% promissory note with a principal amount of $1 million (the \u201cPayne Note\u201d) and a warrant (the \u201cPayne Warrant\u201d) to purchase 65,000 shares of the Company\u2019s common stock, par value $0.001 per share (\u201cCommon Stock\u201d). The Company had the ability to prepay all or a portion of the outstanding Payne Note principal and accrued and unpaid interest without any prepayment fee.\nEach warrant is exercisable for a period of three years from issuance at a per-share exercise price equal to $17.46. The exercise price and number of the shares of our Common Stock issuable upon exercising the Payne Warrant will be subject to adjustment in the event of any stock dividends and splits, reverse stock split, recapitalization, reorganization, or similar transaction, as described therein.\nThe allocation of fair value between the Payne Note and the Payne Warrant was recorded at the issuance date using a relative fair value allocation method. The Company determined the fair value of the Payne Warrants as of April 3, 2023 using the Black-Scholes option pricing model and applying the following assumptions as of April 3, 20233 not adjusted for the subsequent 1-6 Stock Split in October 2023:",
+   "prose_after": "As a result, $439,594 or the proceeds were allocated to the Payne Warrant and the debt discount. The Payne Warrant, which qualified for the derivatives scope exception, met equity classification, and were recognized as a component of permanent stockholders\u2019 equity within additional paid-in-capital and as a debt discount on the consolidated balance sheet.\nThe Payne Note matured on October 2, 2023, and bore interest at an annual rate of 10.0%. The debt discount was amortized using the effective interest rate method over the term of the Payne Note. The effective interest rate on the Payne Note, including the amortization of the discount was 49.0% as of October 2, 2023. In the year ended December 31, 2023, the Company recorded $489,594 of interest expense related to the Note, which included $439,594 of non-cash amortization of the loan discount. The Payne Note was satisfied in full on October 2, 2023.\nHEP Investments, LLC\nOn November 16, 2023, the Company entered into a Subscription Agreement (the \u201cSubscription Agreement\u201d) with the HEP Investments, LLC a greater than 10% shareholder of the Company (the \u201cNovember Subscriber\u201d), pursuant to which the Company, in a private placement (the \u201cPrivate Placement\u201d), agreed to issue and sell to the November Subscriber a 10% promissory note with a principal amount of $150,000 (the \u201cNovember Note\u201d). The Company had the ability to prepay all or a portion of the outstanding November Note principal and accrued and unpaid interest without any prepayment fee.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2033,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2096,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Buy-back",
+     "",
+     "",
+     "Buy-back",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Minimum",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Premium %",
+     "",
+     "",
+     "Minimum",
+     "",
+     "Premium %",
+     "",
+     "Premium %",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Agreement",
+     "",
+     "Date of",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Revenue",
+     "",
+     "",
+     "Payment",
+     "",
+     "pre-18",
+     "",
+     "",
+     "post 18",
+     "",
+     ""
+    ],
+    [
+     "#",
+     "",
+     "Funding",
+     "Funded",
+     "",
+     "Warrants",
+     "",
+     "Term",
+     "Price",
+     "",
+     "Share",
+     "",
+     "",
+     "Threshold",
+     "",
+     "mos.",
+     "",
+     "",
+     "mos.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1",
+     "April 13, 2020",
+     "$",
+     "100,000",
+     "",
+     "625",
+     "5 Years",
+     "$",
+     "57.60",
+     "",
+     "1.500",
+     "%",
+     "$",
+     "-",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "2",
+     "April 13, 2020",
+     "",
+     "150,000",
+     "",
+     "937",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "2.250",
+     "%",
+     "",
+     "-",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "3",
+     "April 13, 2020",
+     "",
+     "150,000",
+     "",
+     "937",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "2.250",
+     "%",
+     "",
+     "-",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "4",
+     "May 7, 2020",
+     "",
+     "250,000",
+     "",
+     "1,562",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "3.750",
+     "%",
+     "",
+     "-",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "5",
+     "June 1, 2020",
+     "",
+     "275,000",
+     "",
+     "1,718",
+     "5 Years",
+     "",
+     "52.80",
+     "",
+     "4.125",
+     "%",
+     "",
+     "82,500",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "6",
+     "June 3, 2020",
+     "",
+     "225,000",
+     "",
+     "1,406",
+     "5 Years",
+     "",
+     "52.80",
+     "",
+     "3.375",
+     "%",
+     "",
+     "67,500",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "7",
+     "July 8, 2020",
+     "",
+     "100,000",
+     "",
+     "625",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "1.500",
+     "%",
+     "",
+     "30,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "8",
+     "Aug. 24, 2020",
+     "",
+     "125,000",
+     "",
+     "781",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "1.875",
+     "%",
+     "",
+     "37,500",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "9",
+     "Sept. 14, 2020",
+     "",
+     "150,000",
+     "",
+     "937",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "2.250",
+     "%",
+     "",
+     "45,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "10",
+     "Sept.15, 2020",
+     "",
+     "50,000",
+     "",
+     "312",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "0.750",
+     "%",
+     "",
+     "15,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "11",
+     "Sept.15, 2020",
+     "",
+     "50,000",
+     "",
+     "312",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "0.750",
+     "%",
+     "",
+     "15,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "12",
+     "Sept.25, 2020",
+     "",
+     "300,000",
+     "",
+     "937",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "4.500",
+     "%",
+     "",
+     "420,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "13",
+     "Oct. 8, 2020",
+     "",
+     "500,000",
+     "",
+     "3,125",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "7.500",
+     "%",
+     "",
+     "150,000",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "14",
+     "Oct. 4, 2020",
+     "",
+     "100,000",
+     "",
+     "625",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "1.500",
+     "%",
+     "",
+     "40,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "15",
+     "Oct. 4, 2020",
+     "",
+     "250,000",
+     "",
+     "1,562",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "3.750",
+     "%",
+     "",
+     "-",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "16",
+     "Oct. 9, 2020",
+     "",
+     "50,000",
+     "",
+     "312",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "0.750",
+     "%",
+     "",
+     "15,000",
+     "",
+     "40",
+     "%",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "",
+     "17",
+     "Dec. 16, 2020",
+     "",
+     "10,000",
+     "",
+     "62",
+     "5 Years",
+     "",
+     "57.60",
+     "",
+     "0.150",
+     "%",
+     "",
+     "17,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "18",
+     "Jan. 22, 2021",
+     "",
+     "40,000",
+     "",
+     "250",
+     "5 Years",
+     "",
+     "67.20",
+     "",
+     "0.600",
+     "%",
+     "",
+     "12,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "19",
+     "Jan. 25, 2021",
+     "",
+     "40,000",
+     "",
+     "250",
+     "5 Years",
+     "",
+     "67.20",
+     "",
+     "0.600",
+     "%",
+     "",
+     "12,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "20",
+     "Jan. 27, 2021",
+     "",
+     "25,000",
+     "",
+     "156",
+     "5 Years",
+     "",
+     "67.20",
+     "",
+     "0.375",
+     "%",
+     "",
+     "12,000",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "21",
+     "May 14,2021",
+     "",
+     "45,000",
+     "",
+     "281",
+     "5 Years",
+     "",
+     "62.40",
+     "",
+     "0.675",
+     "%",
+     "",
+     "13,500",
+     "",
+     "40",
+     "%",
+     "",
+     "50",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "2,985,000",
+     "",
+     "17,712",
+     "",
+     "",
+     "",
+     "",
+     "44.775",
+     "%",
+     "$",
+     "984,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2129,
+    "end_line": 2161
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "DEFERRED R&D OBLIGATIONS - PARTICIPATION AGREEMENTS"
+    }
+   },
+   "prose_before": "The Participation Agreements allow the Company the option to buy back the right, title and interest in the Revenue Share for an amount equal to the amount funded plus a forty percent (40%) premium, if the option is exercised less than 18 months following execution, and for either forty (40%) or fifty percent (50%) if the option is exercised more than 18 months following execution. Pursuant to the terms of twelve of the Participation Agreements, the Company may not exercise its option until it has paid the Participants a revenue share equal to a minimum of thirty percent (30%) of the amount such Participant\u2019s total payment amount. Pursuant to the terms of one of the Participation Agreements, the Company may not exercise its option until it has paid the Participant a revenue share equal to a minimum of one hundred forty percent (140%) of such Participant\u2019s total payment amount. Five of the Participation Agreements have no minimum threshold payment. Once this minimum threshold is met, the Company may exercise its option by delivering written notice to a Participant of its intent to exercise the option, along with repayment terms of the amount funded, which may be paid, in the Company\u2019s sole discretion, in one lump sum or in four (4) equal quarterly payments. If the Company does not make such quarterly payments timely for any quarter, then the Company shall pay the prorated Revenue Share amount, retroactive on the entire remaining balance owed, that would have been earned during such quarter until the default payments have been made and the payment schedule is no longer in default. See below a summary of the Participation Agreements:",
+   "prose_after": "Certain of the Participation Agreements are owned by related parties. Participation Agreement numbers 8, 14, and 19 totaling $265,000 are owned by HEP Investments, Participation Agreement 21 in the amount of $45,000 is owned by MKY MTS LLC an entity controlled by the owners of HEP Investments, and Participation Agreement 13 in the amount of $500,000 is owned by an investment company owned by a significant shareholder Mark Strome (\u201cStrome\u201d).\nNOTE 9 - STOCKHOLDERS\u2019 EQUITY (DEFICIT)\nJune 2023 Registered Direct Offering and 2023 Private Placement Warrants\nOn July 5, 2023, the Company, closed on a Securities Purchase Agreement dated June 30, 2023 (the \u201cPurchase Agreement\u201d) with a single institutional investor (the \u201cInvestor\u201d), pursuant to which the Investor agreed to purchase from the Company, in a registered direct offering (the \u201cRegistered Offering\u201d), (i) an aggregate of 171,666 shares of the Company\u2019s Class A Common Stock, par value $0.001 per share at a price of $16.02 per share, (ii) an aggregate of 78,021 pre-funded warrants to purchase 78,021 shares of Common Stock, at an offering price of $16.0194 per pre-funded warrant at an exercise price of $0.0006 per share, with a term of exercise of five years (collectively, the \u201cRegistered Offering Securities\u201d). The gross proceeds to the Company from the Registered Offering and concurrent private placement described below were approximately $4,000,000 (before deducting the placement agent\u2019s fees and other offering expenses paid by the Company approximately $365,000).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2128,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2163,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "112.28",
+     "%",
+     "116.42% to 130.18%",
+     "",
+     ""
+    ],
+    [
+     "Expected dividends",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Expected term",
+     "5.31 years",
+     "",
+     "",
+     "5 to 5.75 years",
+     "",
+     ""
+    ],
+    [
+     "Risk free rate",
+     "",
+     "3.88",
+     "%",
+     "1.88 to 3.70%",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2208,
+    "end_line": 2218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "During the month of December 2023, the Company issued 563,016 shares of common stock for proceeds of $640,000 to various investors in private placements. Included in those amounts were issuances of 437,692 shares of common stock for proceeds of $485,000 to two related parties.\nStock Based Compensation\nDuring 2023, options were granted to the directors of the Company, and during 2022 options were granted to the employees and directors of the Company. As a result of these and continued vesting of prior grants, the Company recorded expenses of approximately $870,000 during the year ended December 31, 2023, of which approximately $230,000 of this expense was for R&D and $640,000 was attributed to G&A. During the year ending December 31, 2022 the Company recorded expenses of approximately $2.7 million, of which approximately $500,000 of this expense was for R&D and $2.2 million was attributed to G&A.\nThe fair value of options was estimated on the date of grant using the Black-Scholes option-pricing model based on the following weighted average assumptions:\nYear Ended December 31,",
+   "prose_after": "On February 22, 2022, the Board of directors granted options under its 2021 equity incentive plan (the \u201c2021 Plan\u201d) to purchase 28,747 shares of common stock to certain employees of the Company. The options have a term of ten years and vest over three years. The options were valued at $493,536 using the Black Scholes pricing model relying on the following assumptions: simplified term of 5.75 years; volatility 130.18%; annual rate of dividends 0%; discount rate 1.88%.\nOn August 29, 2022, the Board of directors granted options under its 2021 equity incentive plan (the \u201c2021 Plan\u201d) to purchase 28,831 shares of common stock to certain employees of the Company. The options have a term of ten years and vest over three years. The options were valued at $590,896 using the Black Scholes pricing model relying on the following assumptions: simplified term of 5.75 years; volatility 121.19%; annual rate of dividends 0%; discount rate 3.25%.\nOn December 16, 2022, the Board of directors granted options under its 2021 equity incentive plan (the \u201c2021 Plan\u201d) to purchase 31,836 shares of common stock to the Chief Executive Officer of the Company. The options have a term of ten years and vested immediately upon issuance. The options were valued at $450,000 using the Black Scholes pricing model relying on the following assumptions: simplified term of 5.0 years; volatility 116.41%; annual rate of dividends 0%; discount rate 3.6%.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2183,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2222,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of\n\nOptions",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Number of\n\nOptions",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     ""
+    ],
+    [
+     "Outstanding, beginning of year",
+     "",
+     "281,637",
+     "$",
+     "36.29",
+     "",
+     "286,838",
+     "",
+     "$",
+     "44.28"
+    ],
+    [
+     "Forfeited",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(127,872)",
+     "",
+     "",
+     "40.88"
+    ],
+    [
+     "Issued",
+     "",
+     "10,878",
+     "",
+     "16.74",
+     "",
+     "122,671",
+     "",
+     "",
+     "22.40"
+    ],
+    [
+     "Outstanding, end of period",
+     "",
+     "292,515",
+     "$",
+     "35.56",
+     "",
+     "281,637",
+     "",
+     "$",
+     "36.29"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2243,
+    "end_line": 2260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Subject to adjustment as described in the 2021 Plan, the aggregate number of shares of common stock available for issuance under the 2021 Plan is initially set at 166,666 shares; this number is automatically increased each January 1st by an amount equal to 5% of the number of common stock shares outstanding at that date. As of December 31, 2023, 232,101 options have been issued under the 2021 Plan, and 91,559 shares remained available for issuance.\n2019 Omnibus Long-Term Incentive Plan\nPrior to the adoption of the 2021 Equity Incentive Plan, the Company maintained a 2019 Omnibus Long-Term Incentive Plan (the \u201c2019 Plan\u201d). Following the approval by the shareholders of the 2021 Equity Incentive Plan, no additional awards have been or will be made under the 2019 Plan. As of December 31, 2023, 130,203 stock options had been issued under the 2019 Plan with terms between 5 years and 10 years, of which 60,414 remained outstanding.\nCommon Stock Options\nA summary of the status of the Company\u2019s options issued under the Company\u2019s equity incentive plans is presented below. As of December 31, 2023 there is no intrinsic value in any of the Company's outstanding options as the market price of the Company's common stock is in all cases lower than the exercise price of options.",
+   "prose_after": "Options outstanding and exercisable by price range as of December 31, 2023 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2222,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2260,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding Options",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercisable Options",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Range of Exercise Price",
+     "",
+     "Number",
+     "",
+     "Average\n\nWeighted\n\nRemaining\n\nContractual\n\nLife in Years",
+     "",
+     "Range of Exercise Price",
+     "",
+     "Number",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     ""
+    ],
+    [
+     "$",
+     "12.00-17.99",
+     "",
+     "68,075",
+     "",
+     "9.05",
+     "$",
+     "12.00-17.99",
+     "",
+     "68,075",
+     "$",
+     "16.58"
+    ],
+    [
+     "",
+     "18.00-23.99",
+     "",
+     "36,727",
+     "",
+     "8.65",
+     "",
+     "18.00-23.99",
+     "",
+     "22,312",
+     "",
+     "22.94"
+    ],
+    [
+     "",
+     "24.00-29.99",
+     "",
+     "8,885",
+     "",
+     "7.78",
+     "",
+     "24.00-29.99",
+     "",
+     "8,885",
+     "$",
+     "26.88"
+    ],
+    [
+     "",
+     "30.00-35.99",
+     "",
+     "118,414",
+     "",
+     "7.89",
+     "",
+     "30.00-35.99",
+     "",
+     "92,875",
+     "",
+     "33.00"
+    ],
+    [
+     "",
+     "48.00-53.99",
+     "",
+     "1,041",
+     "",
+     "1.54",
+     "",
+     "48.00-53.99",
+     "",
+     "1,041",
+     "",
+     "52.80"
+    ],
+    [
+     "",
+     "54.00-59.99",
+     "",
+     "4,166",
+     "",
+     "1.63",
+     "",
+     "54.00-59.99",
+     "",
+     "4,166",
+     "",
+     "57.60"
+    ],
+    [
+     "",
+     "66.00-71.99",
+     "",
+     "27,083",
+     "",
+     "6.80",
+     "",
+     "66.00-71.99",
+     "",
+     "19,271",
+     "",
+     "67.20"
+    ],
+    [
+     "",
+     "72.00-77.99",
+     "",
+     "28,124",
+     "",
+     "1.14",
+     "",
+     "72.00-77.99",
+     "",
+     "28,124",
+     "",
+     "76.80"
+    ],
+    [
+     "",
+     "",
+     "",
+     "292,515",
+     "",
+     "7.39",
+     "",
+     "",
+     "",
+     "244,749",
+     "$",
+     "35.52"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2263,
+    "end_line": 2287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Options outstanding and exercisable by price range as of December 31, 2023 were as follows:",
+   "prose_after": "Common Stock Warrants - Private\nA summary of the status of the Company\u2019s private warrants is presented below.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2260,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2312,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of\n\nWarrants",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Number of\n\nWarrants",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, beginning of year",
+     "",
+     "267,013",
+     "",
+     "$",
+     "47.10",
+     "",
+     "425,606",
+     "",
+     "$",
+     "45.42"
+    ],
+    [
+     "Issued",
+     "",
+     "642,397",
+     "",
+     "",
+     "14.83",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "(78,021)",
+     "",
+     "",
+     "0.00",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Cancelled",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "(159,941)",
+     "",
+     "",
+     "47.53",
+     "",
+     "(158,593)",
+     "",
+     "",
+     "42.60"
+    ],
+    [
+     "Outstanding, end of period",
+     "",
+     "671,448",
+     "",
+     "$",
+     "21.59",
+     "",
+     "267,013",
+     "",
+     "$",
+     "47.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2292,
+    "end_line": 2312
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Common Stock Warrants - Private\nA summary of the status of the Company\u2019s private warrants is presented below.",
+   "prose_after": "Unregistered warrants outstanding and exercisable by price range as of December 31, 2023 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2260,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2312,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding Warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercisable Warrants",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Range of",
+     "",
+     "Number",
+     "",
+     "Average\n\nWeighted\n\nRemaining\n\nContractual\n\nLife in Years",
+     "",
+     "Exercise Price",
+     "",
+     "Number",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$",
+     "12.00-17.99",
+     "",
+     "564,376",
+     "",
+     "2.93",
+     "$",
+     "12.00-17.99",
+     "",
+     "564,376",
+     "",
+     "16.88"
+    ],
+    [
+     "",
+     "30.00.35.99",
+     "",
+     "36,800",
+     "",
+     "2.42",
+     "",
+     "30.00.35.99",
+     "",
+     "36,800",
+     "",
+     "33.00"
+    ],
+    [
+     "",
+     "36.00-41.99",
+     "",
+     "5,309",
+     "",
+     "0.74",
+     "",
+     "36.00-41.99",
+     "",
+     "5,309",
+     "",
+     "38.40"
+    ],
+    [
+     "",
+     "48.00-53.99",
+     "",
+     "24,650",
+     "",
+     "0.67",
+     "",
+     "48.00-53.99",
+     "",
+     "24,650",
+     "",
+     "48.61"
+    ],
+    [
+     "",
+     "54.00-55.99",
+     "",
+     "38,543",
+     "",
+     "1.70",
+     "",
+     "54.00-55.99",
+     "",
+     "38,543",
+     "",
+     "57.60"
+    ],
+    [
+     "",
+     "60.00-65.99",
+     "",
+     "281",
+     "",
+     "2.37",
+     "",
+     "60.00-65.99",
+     "",
+     "281",
+     "",
+     "62.40"
+    ],
+    [
+     "",
+     "66.00-71.99",
+     "",
+     "656",
+     "",
+     "2.07",
+     "",
+     "66.00-71.99",
+     "",
+     "656",
+     "",
+     "67.20"
+    ],
+    [
+     "",
+     "84.00-89.99",
+     "",
+     "833",
+     "",
+     "0.99",
+     "",
+     "84.00-89.99",
+     "",
+     "833",
+     "",
+     "86.40"
+    ],
+    [
+     "",
+     "",
+     "",
+     "671,448",
+     "",
+     "2.72",
+     "",
+     "",
+     "",
+     "671,448",
+     "$",
+     "21.59"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2315,
+    "end_line": 2340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Unregistered warrants outstanding and exercisable by price range as of December 31, 2023 were as follows:",
+   "prose_after": "Common Stock Warrants - Public\nA summary of the status of the Company\u2019s public warrants is presented below:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2312,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2379,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of\n\nRegistered Warrants",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Number of\n\nRegistered Warrants",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     ""
+    ],
+    [
+     "Outstanding, beginning of year",
+     "",
+     "495,917",
+     "$",
+     "33.00",
+     "",
+     "495,917",
+     "$",
+     "33.00"
+    ],
+    [
+     "Issued",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Cancelled",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, end of period",
+     "",
+     "495,917",
+     "$",
+     "33.00",
+     "",
+     "495,917",
+     "$",
+     "33.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2345,
+    "end_line": 2364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Common Stock Warrants - Public\nA summary of the status of the Company\u2019s public warrants is presented below:",
+   "prose_after": "Registered warrants outstanding and exercisable by price range as of December 31, 2023, were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2312,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2379,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding Registered Warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercisable Registered Warrants",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise Price",
+     "",
+     "Number",
+     "",
+     "Average Weighted\n\nRemaining Contractual\n\nLife in Years",
+     "",
+     "Exercise\n\nPrice",
+     "",
+     "Number",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$",
+     "33.00",
+     "",
+     "495,917",
+     "",
+     "2.4",
+     "$",
+     "33.00",
+     "",
+     "495,917",
+     "",
+     "33.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2367,
+    "end_line": 2379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCKHOLDERS\u2019 EQUITY (DEFICIT)"
+    }
+   },
+   "prose_before": "Registered warrants outstanding and exercisable by price range as of December 31, 2023, were as follows:",
+   "prose_after": "NOTE 10 - COMMITMENTS AND CONTINGENCIES\nAlimenta Supply Agreement\nIn July 2023, the Company through it ZIVOLife LLC subsidiary and Alimenta Algae SAC, a Peruvian company, signed a binding Contract Manufacturing Term Sheet (the \u201cTerm Sheet\u201d). This binding Term Sheet commits ZIVOLife to purchase all of the ZivolifeTM product produced by Alimenta at the site subject to certain capacity growth plans and overall capacity limitations. The purchase commitment will end on August 31, 2028. During the year ended December 31, 2023, the Company purchased $16,040 of product subject to this agreement. There were no purchases under this agreement in the year ended December 31, 2022.\nLegal Contingencies\nOn April 13, 2022, AEGLE Partners, 2 LLC (\u201cAEGLE\u201d) initiated an arbitration in Michigan against the Company with the American Arbitration Association. AEGLE asserted claims related to a certain Supply Chain Consulting Agreement entered into between AEGLE and the Company in 2019 (as amended from time to time, the \u201cSupply Chain Consulting Agreement\u201d), and a disagreement between AEGLE and the Company regarding whether AEGLE was entitled to payment of certain fees and warrants pursuant to the Supply Chain Consulting Agreement. AEGLE's complaint sought, among other things, three times the payment of such alleged fees and warrants and recovery of AEGLE's costs and expenses. On April 20, 2023, the Company and AEGLE settled the pending arbitration matter for $13,000.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2312,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2379,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "(7,777,184)",
+     "",
+     "$",
+     "(8,745,293)",
+     ""
+    ],
+    [
+     "(Loss) before provision for income taxes",
+     "",
+     "(7,777,184)",
+     "",
+     "",
+     "(8,745,293)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2414,
+    "end_line": 2422
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Loan Payable - Related Party\nSee \u201cNote 5 - Loan Payable, Related Parties\u201d for disclosure of loans payable to related parties.\nEmployment Agreement\nThe company presently has in place employment agreements with the Chief Executive Officer and the Chief Financial Officer.\nBuilding Lease\nIn January 2022 the Company terminated its agreement for the rental of its office space from M&M Keego Center LLC, an entity controlled by an immediate family member of a principal shareholder.\nStock Issuances\nDuring the month of December 2023, the Company issued 437,692 shares of common stock for proceeds of $485,000 to two related parties.\nNOTE 12 - INCOME TAXES\nThe following table presents the components of net loss before income taxes:",
+   "prose_after": "There was no income tax for the years ended December 31, 2023 and December 31, 2022. The Company\u2019s tax expense differs from the \u201cstatutory\u201d tax expense for the years ended December 31, 2023, and 2022 as noted below:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2379,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax (benefit) / Expense at federal statutory rate",
+     "$",
+     "(1,633,209)",
+     "",
+     "21.0",
+     "%",
+     "$",
+     "(1,836,512)",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "Apportioned state income taxes",
+     "",
+     "(95,082)",
+     "",
+     "1.2",
+     "%",
+     "",
+     "(131,407)",
+     "",
+     "1.5",
+     "%"
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "89,502",
+     "",
+     "(1.2)",
+     "%",
+     "",
+     "297,653",
+     "",
+     "(3.3)",
+     "%"
+    ],
+    [
+     "Rate change",
+     "",
+     "46,848",
+     "",
+     "(0.6)",
+     "%",
+     "",
+     "(31,180)",
+     "",
+     "0.3",
+     "%"
+    ],
+    [
+     "Return to provision adjustments",
+     "",
+     "5,968",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "(1,515)",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Other non-deductible items",
+     "",
+     "1,195",
+     "",
+     "0.0",
+     "%",
+     "",
+     "-",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "1,584,778",
+     "",
+     "(20.3)",
+     "%",
+     "",
+     "1,702,961",
+     "",
+     "(19.5)",
+     "%"
+    ],
+    [
+     "Total income tax provision",
+     "$",
+     "-",
+     "",
+     "0.0",
+     "%",
+     "$",
+     "-",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2425,
+    "end_line": 2441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "There was no income tax for the years ended December 31, 2023 and December 31, 2022. The Company\u2019s tax expense differs from the \u201cstatutory\u201d tax expense for the years ended December 31, 2023, and 2022 as noted below:",
+   "prose_after": "Deferred income taxes reflect the net tax effects of (a) temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes, and (b) operating losses and tax credit carryforwards. The tax effects of significant items comprising the Company\u2019s deferred taxes were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2469,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets/(liabilities)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal net operating loss carryforwards",
+     "$",
+     "8,703,105",
+     "",
+     "$",
+     "7,606,833",
+     ""
+    ],
+    [
+     "State net operating loss carryforwards",
+     "",
+     "130,413",
+     "",
+     "",
+     "74,353",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "2,665,017",
+     "",
+     "",
+     "2,738,159",
+     ""
+    ],
+    [
+     "Section 174 research and experimental expenditures",
+     "",
+     "623,902",
+     "",
+     "",
+     "374,926",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "254,637",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "1,973",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "12,379,047",
+     "",
+     "",
+     "10,794,271",
+     ""
+    ],
+    [
+     "Other deferred tax liabilities",
+     "",
+     "(178)",
+     "",
+     "",
+     "(180)",
+     ""
+    ],
+    [
+     "Total deferred tax assets (liabilities)",
+     "$",
+     "12,378,869",
+     "",
+     "$",
+     "10,794,091",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(12,378,869)",
+     "",
+     "",
+     "(10,794,091)",
+     ""
+    ],
+    [
+     "Total deferred income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2444,
+    "end_line": 2467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Deferred income taxes reflect the net tax effects of (a) temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes, and (b) operating losses and tax credit carryforwards. The tax effects of significant items comprising the Company\u2019s deferred taxes were as follows:",
+   "prose_after": "ASC 740 Income Taxes requires that the tax benefit of net operating losses (\u201cNOLs\u201d), temporary differences and credit carryforwards be recorded as an asset to the extent that management assesses that realization is \u201cmore likely than not.\u201d Realization of the future tax benefits is dependent on the Company\u2019s ability to generate sufficient taxable income within the carryforward period. Management believes that realization of the deferred tax assets arising from the above-mentioned future tax benefits from operating loss carryforwards is currently not more likely than not and, accordingly, has provided a valuation allowance. The valuation allowance increased by $1.6 million for the year ended December 31, 2023 and increased by $1.7 million for the year ended December 31, 2022.\nAs of December 31, 2023 and 2022 the Company\u2019s deferred tax asset contains the tax effect of approximately $41.4 million and $36.2 million of Federal NOLs, respectively. The Federal NOLs generated prior to December 31, 2017 were written off of the deferred tax asset, while NOLs generated subsequent to this date remain. Under the Tax Cuts and Jobs Act, all Federal NOLs incurred after December 31, 2017 are carried forward indefinitely for Federal tax purposes.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2469,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Net Operating Losses recorded as Federal\n\ndeferred tax asset",
+     "",
+     "Net Operating Losses recorded as State\n\ndeferred tax asset",
+     ""
+    ],
+    [
+     "Total expiring operating losses (incurred prior to December 31, 2017)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Non-expiring operating losses (incurred after December 31, 2017)",
+     "",
+     "41,443,359",
+     "",
+     "2,371,136"
+    ],
+    [
+     "Total Operating Loss",
+     "$",
+     "41,443,359",
+     "$",
+     "2,371,136"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2472,
+    "end_line": 2482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "ASC 740 Income Taxes requires that the tax benefit of net operating losses (\u201cNOLs\u201d), temporary differences and credit carryforwards be recorded as an asset to the extent that management assesses that realization is \u201cmore likely than not.\u201d Realization of the future tax benefits is dependent on the Company\u2019s ability to generate sufficient taxable income within the carryforward period. Management believes that realization of the deferred tax assets arising from the above-mentioned future tax benefits from operating loss carryforwards is currently not more likely than not and, accordingly, has provided a valuation allowance. The valuation allowance increased by $1.6 million for the year ended December 31, 2023 and increased by $1.7 million for the year ended December 31, 2022.\nAs of December 31, 2023 and 2022 the Company\u2019s deferred tax asset contains the tax effect of approximately $41.4 million and $36.2 million of Federal NOLs, respectively. The Federal NOLs generated prior to December 31, 2017 were written off of the deferred tax asset, while NOLs generated subsequent to this date remain. Under the Tax Cuts and Jobs Act, all Federal NOLs incurred after December 31, 2017 are carried forward indefinitely for Federal tax purposes.",
+   "prose_after": "In the ordinary course of its business the Company incurs costs that, for tax purposes, may be qualified research expenditures within the meaning of IRC Code Sec. 41 and are, therefore, may be eligible for the Increasing Research Activities credit under IRC Code Sec. 41. The Company has not claimed a credit pursuant to IRC Code Sec. 41 on its federal returns, i.e. no deferred tax asset is recorded on the books.\nAs of December 31, 2023, the Company has no uncertain tax positions. It is the Company\u2019s policy to account for interest and penalties related to uncertain tax positions as interest expense and general and administrative expense, respectively in its statements of operations. No interest or penalties have been recorded related to the uncertain tax positions.\nIt is not expected that there will be a significant change in uncertain tax positions in the next 12 months. The Company is subject to U.S. federal and state income tax as well as to income tax in multiple state jurisdictions. In the normal course of business, the Company is subject to examination by tax authorities. As of the date of the financial statements, there are no tax examinations in progress. The statute of limitations for tax years ended after December 31, 2019, are open for federal and state tax purposes.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2469,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2500,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

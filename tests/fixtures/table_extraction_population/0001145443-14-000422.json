@@ -1,0 +1,4078 @@
+{
+ "accession": "0001145443-14-000422",
+ "cik": "0001560046",
+ "form": "10-K",
+ "filing_date": "2014-03-31",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d31222.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "36-4740732"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer ID No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "110 William Street, 26th Floor New York, NY",
+     "10038"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 17,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE FISCAL YEAR ENDED DECEMBER 31, 2013\nOR\n[ ]  TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION FROM             TO            .\nCOMMISSION FILE NUMBER: 333-184550\nSQN AIF IV, L.P. (Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number: (212) 422-2166 Securities registered pursuant to Section 12 (b) of the Act: None\nSecurities registered pursuant to Section 12 (g) of the Act: Units of Limited Partnership Interests\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 14,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 29,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Properties",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "9"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosure about Market Risk",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 9B. Other Information",
+     "39"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "40"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "41"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "42"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "42"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "43"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "43"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "44"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer or a non-accelerated filer. See definition of \u201caccelerated filer\u201d and \u201clarge accelerated filer\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller Reporting Company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: Not applicable. There is no established market for the units of limited partnership interests of the registrant.\nNumber of outstanding units of limited partnership interests of the registrant on March 28, 2014 was 10,528.77\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nSQN AIF IV L.P. Annual Report on Form 10-K for Year Ended December 31, 2013 Table of Contents",
+   "prose_after": "PART I\nAs used in this Annual Report on Form 10-K, references to \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d or similar terms include SQN AIF IV L.P and its subsidiaries.\nFORWARD LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 (the \u201cSecurities Act\u201d), Section 21E of the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d), the Private Securities Litigation Reform Act of 1995 (the \u201cPSLRA\u201d) or in releases made by the Securities and Exchange Commission (the \u201cSEC\u201d), all as may be amended from time to time, which are subject to the safe harbor created by those sections. Forward-looking statements are those that do not relate solely to historical fact and include, but are not limited to, statements that express our intentions, beliefs, expectations, strategies, predictions or any other statements relating to our future activities or other future events or conditions. These statements are based on current expectations, estimates and projections about our business based, in part, on assumptions made by our General Partner and our Investment Manager. Forward-looking statements can be identified by, among other things, the use of forward-looking language, such as the words \u201cplan,\u201d \u201cbelieve,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cestimate,\u201d \u201cproject,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cwould,\u201d \u201ccould,\u201d \u201cshould,\u201d \u201cseeks,\u201d or \u201cscheduled to,\u201d or other similar words, or the negative of these terms or other variations of these terms or comparable language, or by discussion of strategy or intentions. These statements are not guarantees of future performance and involve risks, uncertainties and assumptions that are difficult to predict. Therefore, actual outcomes and results may, and are likely to, differ materially from what is expressed or forecasted in the forward-looking statements due to numerous factors discussed from time to time in this Annual Report on Form 10-K, including the risks described in greater detail in \u201cRisk Factors\u201d in Item 1A of this report and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operation\u201d in Item 7. In addition, such statements could be affected by risks and uncertainties related to our ability to raise additional equity contributions, investment objectives, competition, government regulations and requirements, the ability to find suitable equipment transactions, as well as general industry and market conditions and general economic conditions. Any forward-looking statements speak only as of the date on which they are made, and we do not undertake any obligation to update any forward-looking statement to reflect events or circumstances after the date of this report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 53,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Number of Partners at March 31, 2014",
+     ""
+    ],
+    [
+     "General Partner",
+     "",
+     "1"
+    ],
+    [
+     "Limited Partners",
+     "",
+     "84"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 234,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "; Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "None.\nItem 2. Properties\nWe neither own nor lease office space or any other real property in our business at the present time.\nItem 3. Legal Proceedings\nWe are not aware of any material legal proceedings that are currently pending against us or against any of our assets.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPART II\nItem 5; Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nOur Units are not publicly traded and there is no established public trading market for our Units. It is unlikely that any such market will develop.",
+   "prose_after": "We pay, at the sole discretion of our Investment Manager and contingent upon the availability of funds, quarterly cash distributions to each Limited Partner computed at 1.625% (pro-rated to the date of admission for each Limited Partner) of each Limited Partner\u2019s capital contribution. On October 1, 2013, we made our first scheduled quarterly distribution to our limited partners totaling approximately $53,700. We have accrued $537 for dividends payable to our General Partner as of December 31, 2013.\nWe are required pursuant to FINRA Rule 2310(b)(5) to disclose in each annual report distributed to our Limited Partners a per Unit estimated value of our Units, the method by which we developed the estimated value, and the date used to develop the estimated value. In addition, our Investment Manager prepares statements of our estimated Unit values to assist fiduciaries of retirement plans subject to the annual reporting requirements of ERISA in the preparation of their reports relating to an investment in our Units. For these purposes, the estimated value of our Units is deemed to be $1,000 per Unit at December 31, 2013. This estimated value is provided to assist plan fiduciaries in fulfilling their annual valuation and reporting responsibilities and should not be used for any other purpose. Because this is only an estimate, we may subsequently revise this valuation.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 226,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended, December 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "298,764",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(862,463)",
+     ""
+    ],
+    [
+     "Net loss allocable to Limited Partners",
+     "$",
+     "(859,475)",
+     ""
+    ],
+    [
+     "Weighted average number of limited partnership interests outstanding",
+     "",
+     "3,940.39",
+     ""
+    ],
+    [
+     "Net loss per weighted average number of limited partnership interests outstanding",
+     "$",
+     "(218.12)",
+     ""
+    ],
+    [
+     "Distributions paid to Limited Partners",
+     "$",
+     "53,706",
+     ""
+    ],
+    [
+     "Distributions per weighted average number of limited partnership interests outstanding",
+     "$",
+     "13.63",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended, December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 269,
+    "end_line": 288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 that the foregoing valuation, or the method used to establish value, will not be subject to challenge by the IRS if used for any tax (income, estate, gift or otherwise) valuation purposes as an indicator of the current value of our Units.\nThe redemption price we offer to repurchase our Units utilizes a different valuation methodology than that which we use to determine the current value of our Units for ERISA and FINRA purposes described above. Therefore, the $1,000 per Unit does not reflect the amount that a Limited Partner should expect to receive under our redemption plan. In addition, there can be no assurance that a Limited Partner will be able to redeem their Units under our redemption plan. A Limited Partner may not redeem their Units without the prior written consent of our General Partner. Our General Partner has the sole discretion to approve or deny any redemption requested by any of our Limited Partners.\nItem 6. Selected Financial Data\nThe selected financial data should be read in conjunction with the financial statements and related notes included in \u201cItem 8. Financial Statements and Supplementary Data\u201d contained elsewhere in this Annual Report on Form 10-K.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2013",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "21,323,745"
+    ],
+    [
+     "Partners\u2019 Equity attributable to the Partnership",
+     "$",
+     "5,090,194"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 289,
+    "end_line": 297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Selected Financial Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Item 7. General Partner\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nForward-Looking Statements\nCertain statements within this Annual Report on Form 10-K may constitute forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995 (\u201cPSLRA\u201d). These statements are being made pursuant to the PSLRA, with the intention of obtaining the benefits of the \u201csafe harbor\u201d provisions of the PSLRA, and, other than as required by law, we assume no obligation to update or supplement such statements. Forward-looking statements are those that do not relate solely to historical fact. They include, but are not limited to, any statement that may predict, forecast, indicate or imply future results, performance, achievements or events. You can identify these statements by the use of words such as \u201cmay,\u201d \u201cwill,\u201d \u201ccould,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cpredict,\u201d \u201ccontinue,\u201d \u201cfurther,\u201d \u201cseek,\u201d \u201cplan,\u201d or \u201cproject\u201d and variations of these words or comparable words or phrases of similar meaning. These forward-looking statements reflect our current beliefs and expectations with respect to future events and are based on assumptions and are subject to risks and uncertainties and other factors outside our control that may cause actual results to differ materially from those projected. We undertake no obligation to update publicly or review any forward-looking statement, whether as a result of new information, future developments or otherwise.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 298,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31 2013",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     ""
+    ],
+    [
+     "Rental income",
+     "$",
+     "127,501"
+    ],
+    [
+     "Interest income",
+     "",
+     "170,263"
+    ],
+    [
+     "Other income",
+     "",
+     "1,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "$",
+     "298,764"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31 2013",
+    "Revenue:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "General Partner\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We are currently in both our Offering Period and our Operating Period. The Offering Period is designated as the period in which we raise capital from investors. During this period we expect to generate the majority of our cash in-flow from financing activities though the sale of our Units to investors. Through December 31, 2013, we admitted 84 Limited Partners with total capital contributions of $7,586,650 resulting in the sale of 7,586.65 Units. We received cash of $7,046,490 and applied $540,160 which would have otherwise been paid as sales commission to the purchase of additional Units. We paid or accrued an underwriting fee to Securities totaling $196,395. On October 1, 2013, Fund IV made its first scheduled quarterly distribution to its limited partners totaling approximately $53,700.\nWe have also entered our Operating Period, which is defined as the period in which we invest the net proceeds from the Offering Period into business-essential, revenue-producing (or cost-saving) equipment and other physical assets with substantial economic lives and, in many cases, associated revenue streams. During this period we anticipate substantial cash out-flows from investing activities as we acquire leased equipment. We also expect our operating activities to generate cash in-flows during this time as we collect rental payments from the leased assets we acquire.\nOur revenue for the year ended December 31, 2013 is summarized as follows:",
+   "prose_after": "For the year ended December 31, 2013 we earned $127,501 in rental income. This revenue is a result of the portfolios of leases obtained by us through the Echo transaction. We also recognized $170,263 in interest income, the majority of which was generated by the equipment notes receivable. As we acquire finance leases and operating leases, as well as, additional project financings we believe that our revenue will grow significantly.\nOur expenses for the year ended December 31, 2013 are summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31 2013",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     ""
+    ],
+    [
+     "Management fees \u2014 Investment Manager",
+     "$",
+     "875,000"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "77,951"
+    ],
+    [
+     "Professional fees",
+     "",
+     "147,556"
+    ],
+    [
+     "Organizational expenses",
+     "",
+     "20,000"
+    ],
+    [
+     "Acquisition costs",
+     "",
+     "4,260"
+    ],
+    [
+     "Administration expense",
+     "",
+     "10,421"
+    ],
+    [
+     "Interest expense",
+     "",
+     "25,755"
+    ],
+    [
+     "Other expenses",
+     "",
+     "283"
+    ],
+    [
+     "Total Expenses",
+     "$",
+     "1,161,226"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31 2013",
+    "Expenses:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 453
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "General Partner\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "For the year ended December 31, 2013 we earned $127,501 in rental income. This revenue is a result of the portfolios of leases obtained by us through the Echo transaction. We also recognized $170,263 in interest income, the majority of which was generated by the equipment notes receivable. As we acquire finance leases and operating leases, as well as, additional project financings we believe that our revenue will grow significantly.\nOur expenses for the year ended December 31, 2013 are summarized as follows:",
+   "prose_after": "For the year ended December 31, 2013 we incurred $1,161,226 in total expenses. Our largest expense during the year was $875,000 for management fees paid to our Investment Manager. We pay our Investment Manager a management fee during the Operating Period and the Liquidation Period equal to the greater of, (i) 2.5% per annum of the aggregate offering proceeds, or (ii) $125,000, payable monthly, until such time as an amount equal to at least 15% of our Limited Partners\u2019 capital contributions have been returned to them, after which the monthly management fee will equal 100% of the management fee as initially calculated above, less 1% for each additional 1% of our Partners\u2019 capital contributions returned to them, such amounts to be measured on the last day of each month. With the addition of the operating leases and initial direct costs from the Echo transaction, we recognized $61,899 and $16,052 in depreciation and amortization expense, respectively. We also incurred $147,556 in professional fees, which were mostly comprised of fees related to compliance with the rules and regulations of the SEC. As the size and complexity of our activities grow we expect professional fees will increase accordingly. We incurred $20,000 in organization expenses, which is a one-time expense and we do not expect this to be a recurring charge. In conjunction with the Echo transaction, we assumed approximately $8,500,000 non-recourse",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31 2013",
+     "",
+     ""
+    ],
+    [
+     "Cash provided by (used in):",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(612,671)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "$",
+     "(12,560,173)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "$",
+     "13,317,584",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31 2013",
+    "Cash provided by (used in):"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "General Partner\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "For the year ended December 31, 2013 we incurred $1,161,226 in total expenses. Our largest expense during the year was $875,000 for management fees paid to our Investment Manager. We pay our Investment Manager a management fee during the Operating Period and the Liquidation Period equal to the greater of, (i) 2.5% per annum of the aggregate offering proceeds, or (ii) $125,000, payable monthly, until such time as an amount equal to at least 15% of our Limited Partners\u2019 capital contributions have been returned to them, after which the monthly management fee will equal 100% of the management fee as initially calculated above, less 1% for each additional 1% of our Partners\u2019 capital contributions returned to them, such amounts to be measured on the last day of each month. With the addition of the operating leases and initial direct costs from the Echo transaction, we recognized $61,899 and $16,052 in depreciation and amortization expense, respectively. We also incurred $147,556 in professional fees, which were mostly comprised of fees related to compliance with the rules and regulations of the SEC. As the size and complexity of our activities grow we expect professional fees will increase accordingly. We incurred $20,000 in organization expenses, which is a one-time expense and we do not expect this to be a recurring charge. In conjunction with the Echo transaction, we assumed approximately $8,500,000 non-recourse\nnotes payable with various financial institutions for the equipment held for lease which resulted in $25,755 in interest expense for the year.\nNet Loss\nAs a result of the factors discussed above we incurred a net loss for the year ended December 31, 2013 of $862,462 prior to the allocation for non-controlling interest. The non-controlling interest represents the 20% investment by Fund III in the Echo participation agreement. The non-controlling interest recognized income of $5,695 due to its interest in Echo.\nLiquidity and Capital Resources\nSources and Uses of Cash",
+   "prose_after": "Sources of Liquidity\nWe are currently in both our Offering Period and our Operating Period. The Offering Period is the time frame in which we raise capital contributions from investors through the sale of our Units. As such, we expect that during our Offering Period a substantial portion of our cash in-flows will be from financing activities. The Operating Period is the time frame in which we acquire equipment under lease or enter into other equipment financing transactions. During this time period we anticipate that a substantial portion of our cash out-flows will be for investing activities. We believe that the cash in-flows will be sufficient to finance our liquidity requirements for the foreseeable future, including quarterly distributions to our Limited Partners, general and administrative expenses, fees paid to our Investment Manager and new investment opportunities.\nOperating Activities\nCash used by operating activities for the year ended December 31, 2013 was $612,671 and was primarily driven by the following factors; (i) an increase in accounts payable and accrued expenses of $217,405, (ii) an increase in accrued interest on loan payable from an unrelated insurance company as part of the Echo transaction and",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page(s)",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "",
+     "20"
+    ],
+    [
+     "Consolidated Financial Statements:",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "",
+     "21"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Income (Loss)",
+     "",
+     "22"
+    ],
+    [
+     "Consolidated Statements of Changes in Shareholders\u2019 Equity",
+     "",
+     "23"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "",
+     "24"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "",
+     "25"
+    ]
+   ],
+   "caption_stack": [
+    "Page(s)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 558,
+    "end_line": 569
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "At times we may have large cash positions in a bank located in the United Kingdom and a substantial portion of our transactions are currently denominated in British Pound Sterling, exposing us to both currency risk, in the form of foreign currency exposure and market risk, in that the majority of our leased assets and financings are located within the United Kingdom. We currently do not anticipate entering into agreements to hedge our foreign currency risk so we may experience large fluctuations in our operating results due to the currency changes in the British Pound Sterling from year to year but we believe this is mitigated by rapid amortization of our leases and our ability to adjust residual pricing to offset currency changes. We do not expect any undue exposure to market risk as our various lease transactions are in diversified industry segments and we believe a downturn in any one industry segment will not have a negative impact on other industry segments.\nWe manage our exposure to equipment and residual risk by monitoring the markets our equipment is in and maximizing remarketing proceeds through the re-lease or sale of equipment.\nItem 8. Financial Statements and Supplementary Data.\nINDEX TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED DECEMBER 31, 2013 and 2012",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Members\nSQN AIF IV, L.P. and Subsidiary\nNew York, NY\nWe have audited the accompanying consolidated balance sheets of SQN AIF IV, L.P. and Subsidiary as of December 31, 2013 and 2012, and the related consolidated statements of operations, changes in partners' equity, and cash flows for the year ended December 31, 2013. These consolidated financial statements are the responsibility of the company's management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of its internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "146,340",
+     "",
+     "$",
+     "1,600"
+    ],
+    [
+     "Investments in equipment subject to operating leases, net",
+     "",
+     "11,165,590",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Equipment notes receivable, including accrued interest of $4,102 and $0",
+     "",
+     "2,692,900",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Equipment loan receivable, including accrued interest of $19,682 and $0",
+     "",
+     "6,550,448",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Initial direct costs, net of accumulated amortization of $16,052 and $0",
+     "",
+     "316,448",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Collateralized loan receivable, including accrued interest of $2,519 and $0",
+     "",
+     "324,519",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other assets",
+     "",
+     "127,500",
+     "",
+     "",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "21,323,745",
+     "",
+     "$",
+     "2,100"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Partner\u2019s Equity",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "217,404",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Unearned interest income",
+     "",
+     "82,024",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Equipment notes payable, non-recourse",
+     "",
+     "8,541,339",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Distributions payable to General Partner",
+     "",
+     "537",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Loan payable, including accrued interest of $25,755 and $0",
+     "",
+     "6,825,755",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Due to SQN AIF IV GP, LLC",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,000"
+    ],
+    [
+     "Due to SQN Securities, LLC",
+     "",
+     "10,797",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "15,677,856",
+     "",
+     "",
+     "1,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Partners\u2019 Equity (Deficit):",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Limited Partners",
+     "",
+     "5,099,313",
+     "",
+     "",
+     "1,000"
+    ],
+    [
+     "General Partner",
+     "",
+     "(9,119)",
+     "",
+     "",
+     "100"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Partners\u2019 Equity attributable to the Partnership",
+     "",
+     "5,090,194",
+     "",
+     "",
+     "1,100"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlling interest in consolidated entity",
+     "",
+     "555,695",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Partners\u2019 Equity",
+     "",
+     "5,645,889",
+     "",
+     "",
+     "1,100"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Partner\u2019s Equity",
+     "$",
+     "21,323,745",
+     "",
+     "$",
+     "2,100"
+    ]
+   ],
+   "caption_stack": [
+    "Assets",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of its internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of SQN AIF IV, L.P. and Subsidiary as of December 31, 2013 and 2012 and the results of their operations and cash flows for the year ended December 31, 2013, in conformity with U.S. generally accepted accounting principles.\n/s/ Baker Tilly Virchow Krause, LLP\nNew York, NY\nMarch 31, 2014\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Balance Sheets",
+   "prose_after": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 592,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 645,
+     "token": "REPEATING_FOOTER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental income",
+     "$",
+     "127,501",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "170,263",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "",
+     "298,764",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management fees \u2014 Investment Manager",
+     "",
+     "875,000",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "77,951",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "147,556",
+     ""
+    ],
+    [
+     "Organizational expenses",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Acquisition costs",
+     "",
+     "4,260",
+     ""
+    ],
+    [
+     "Administration expense",
+     "",
+     "10,421",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "25,755",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "283",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "1,161,226",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(862,462)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to non-controlling interest in consolidated entity",
+     "",
+     "5,695",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to the Partnership",
+     "$",
+     "(868,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to the Partnership:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Limited Partners",
+     "$",
+     "(859,475)",
+     ""
+    ],
+    [
+     "General Partner",
+     "",
+     "(8,682)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to the Partnership",
+     "$",
+     "(868,157)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of limited partnership interests outstanding",
+     "",
+     "3,940.39",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Limited Partners per weighted average number of limited partnership interests outstanding",
+     "$",
+     "(218.12)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31, 2013",
+    "Revenue:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Statement of Operations",
+   "prose_after": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Statement of Changes in Partners\u2019 Equity Year Ended December 31, 2013",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 647,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 702,
+     "token": "REPEATING_FOOTER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Limited Partnership Interests",
+     "",
+     "Total",
+     "",
+     "",
+     "General Partner",
+     "",
+     "",
+     "Limited Partners",
+     "",
+     "",
+     "Non-controlling Interest",
+     ""
+    ],
+    [
+     "Balance, January 1, 2013",
+     "",
+     "1.00",
+     "$",
+     "1,100",
+     "",
+     "$",
+     "100",
+     "",
+     "$",
+     "1,000",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Limited Partner capital contributions",
+     "",
+     "7,586.65",
+     "",
+     "7,586,650",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,586,650",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Non-controlling interest contribution to consolidated entity",
+     "",
+     "\u2014",
+     "",
+     "550,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "550,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Offering expenses",
+     "",
+     "\u2014",
+     "",
+     "(830,391)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(830,391)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Underwriting fees",
+     "",
+     "\u2014",
+     "",
+     "(743,765)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(743,765)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "\u2014",
+     "",
+     "(862,462)",
+     "",
+     "",
+     "(8,682)",
+     "",
+     "",
+     "(859,475)",
+     "",
+     "",
+     "5,695"
+    ],
+    [
+     "Distributions",
+     "",
+     "\u2014",
+     "",
+     "(53,706)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(53,706)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Distributions payable to General Partner",
+     "",
+     "\u2014",
+     "",
+     "(537)",
+     "",
+     "",
+     "(537)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Redemption of initial Limited Partner contribution",
+     "",
+     "\u2014",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, Decmber 31, 2013",
+     "",
+     "7,587.65",
+     "$",
+     "5,645,889",
+     "",
+     "$",
+     "(9,119)",
+     "",
+     "$",
+     "5,099,313",
+     "",
+     "$",
+     "555,695"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 728
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Statement of Changes in Partners\u2019 Equity Year Ended December 31, 2013",
+   "prose_after": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 704,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 729,
+     "token": "REPEATING_FOOTER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(862,462)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued interest income",
+     "",
+     "(26,344)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "77,951",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "(127,000)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilites",
+     "",
+     "217,405",
+     ""
+    ],
+    [
+     "Unearned interest income",
+     "",
+     "82,024",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "25,755",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(612,671)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for purchase of equipment subject to operating leases",
+     "",
+     "(6,276,754)",
+     ""
+    ],
+    [
+     "Cash paid for initial direct costs",
+     "",
+     "(332,500)",
+     ""
+    ],
+    [
+     "Cash paid for collateralized loan receivable",
+     "",
+     "(322,000)",
+     ""
+    ],
+    [
+     "Cash paid for equipment notes receivable",
+     "",
+     "(5,890,162)",
+     ""
+    ],
+    [
+     "Repayment of equipment notes receivable",
+     "",
+     "261,243",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(12,560,173)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash received from loan payable",
+     "",
+     "6,800,000",
+     ""
+    ],
+    [
+     "Cash received from non-controlling interest contribution in consolidated entity",
+     "",
+     "550,000",
+     ""
+    ],
+    [
+     "Cash received from Limited Partner capital contributions",
+     "",
+     "7,046,490",
+     ""
+    ],
+    [
+     "Cash paid for Limited Partner distributions",
+     "",
+     "(53,706)",
+     ""
+    ],
+    [
+     "Initial Limited Partner contribution redemption",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Cash paid for partner advances",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Cash paid for underwriting fees",
+     "",
+     "(192,827)",
+     ""
+    ],
+    [
+     "Cash paid for organizational and offering costs",
+     "",
+     "(830,373)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "13,317,584",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "144,740",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "1,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "146,340",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash investing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Offering expenses paid by SQN Capital Management, LLC",
+     "$",
+     "92,678",
+     ""
+    ],
+    [
+     "Debt assumed in lease purchase agreement",
+     "$",
+     "8,541,339",
+     ""
+    ],
+    [
+     "Units issued as underwriting fee discount",
+     "$",
+     "540,160",
+     ""
+    ],
+    [
+     "Dividend payable to General Partner",
+     "$",
+     "537",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended December 31, 2013",
+    "Cash flows from operating activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 735,
+    "end_line": 796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Consolidated Statement of Cash Flows",
+   "prose_after": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\n1. Nature of Operations and Organization\nOrganization \u2014 The SQN AIF IV, L.P. (the \u201cPartnership\u201d) was formed on August 10, 2012, as a Delaware limited partnership and is engaged in a single business segment, the ownership and investment in leased equipment and related financings which includes: (i) purchasing equipment and leasing it to third-party end users; (ii) providing equipment and other asset financing; (iii) acquiring equipment subject to lease and (iv) acquiring ownership rights (residual value interests) in leased equipment at lease expiration. The Partnership will terminate no later than December 31, 2036.\nDuring December 2013, the Partnership formed a special purpose entity SQN Echo LLC (\u201cEcho\u201d), a Limited Liability Company registered in the state of Delaware which is 80% owned by the Partnership and 20% by SQN Alternate Investment Fund III (\u201cFund III\u201d), an affiliate. Fund III contributed $550,000 to purchase a 20% share of Echo which is presented as non-controlling interest on the accompanying consolidated financial statements. On December 20, 2013, Echo entered into an agreement with an unrelated third party for the purchase of two portfolios of leases for $17,800,000. The first portfolio consists of various types of equipment including material handling, semiconductor test and manufacturing equipment, computer, medical, and telecommunications equipment. The second portfolio consists of lease financings, which have been accounted for as loans receivable in the accompanying consolidated financial statements. Echo paid approximately $9,300,000 in cash and assumed approximately $8,500,000 in non-recourse equipment notes payable.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 797,
+     "token": "REPEATING_FOOTER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2013",
+     "",
+     ""
+    ],
+    [
+     "Underwriting fees earned by Securities",
+     "$",
+     "196,395",
+     ""
+    ],
+    [
+     "Payments by the Partnership to Securities",
+     "",
+     "(185,598)",
+     ""
+    ],
+    [
+     "Balance due to Securities",
+     "$",
+     "10,797",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 909,
+    "end_line": 919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Related Party Transactions"
+    }
+   },
+   "prose_before": "Prior to the Partnership admitting Limited Partners on May 29, 2013, any monies paid by the Investment Manager for offering expenses incurred on behalf of the Partnership, were not the responsibility of the Partnership due to the possibility that the Partnership may not admit Limited Partners. Until such time, these expenses were the responsibility of the General Partner. On May 29, 2013, the Partnership recorded a payable to the Investment Manager for offering expenses previously paid totaling $225,468 which was paid in 2013.\nSecurities is a Delaware limited liability company and is majority-owned subsidiary of the Partnership\u2019s Investment Manager. Securities in its capacity as the Partnership\u2019s selling agent receives an underwriting fee of 3% of the gross proceeds from Limited Partners\u2019 capital contributions (excluding proceeds, if any, the Partnership receives from the sale of the Partnership\u2019s Units to the General Partner or its affiliates). While Securities is initially acting as the Partnership\u2019s exclusive selling agent, the Partnership may engage additional selling agents in the future.\nFor the year ended December 31, 2013, the Partnership incurred the following transactions with Securities:",
+   "prose_after": "For the year ended December 31, 2013, the Partnership incurred the following underwriting fee transactions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 937,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2013",
+     ""
+    ],
+    [
+     "Underwriting discount incurred by the Partnership",
+     "$",
+     "540,160"
+    ],
+    [
+     "Underwriting fees earned by Securities",
+     "",
+     "196,395"
+    ],
+    [
+     "Fees paid to outside brokers",
+     "",
+     "7,210"
+    ],
+    [
+     "Total underwriting fees",
+     "$",
+     "743,765"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 922,
+    "end_line": 932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Related Party Transactions"
+    }
+   },
+   "prose_before": "For the year ended December 31, 2013, the Partnership incurred the following underwriting fee transactions:",
+   "prose_after": "5. Investment in Equipment Subject to Operating Leases\nOn December 20, 2013, Echo entered into a participation agreement with an unrelated third party for the purchase of two portfolios of leases with a combined total of $17,800,000 of assets. One of the portfolios consisted of approximately $11,200,000 of assets subject to operating leases.\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\nThe composition of the equipment subject to operating leases in the Echo transaction as of December 31, 2013 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 937,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "related_party",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Cost Basis",
+     "",
+     "Accumulated Depreciation",
+     "",
+     "Net Book Value",
+     ""
+    ],
+    [
+     "Agricultural equipment",
+     "$",
+     "653,458",
+     "$",
+     "2,382",
+     "$",
+     "651,076"
+    ],
+    [
+     "Computer equipment",
+     "",
+     "1,529,807",
+     "",
+     "17,505",
+     "",
+     "1,512,302"
+    ],
+    [
+     "Forklifts and fuels cells",
+     "",
+     "5,473,816",
+     "",
+     "26,569",
+     "",
+     "5,447,247"
+    ],
+    [
+     "Heavy equipment",
+     "",
+     "2,514,627",
+     "",
+     "10,244",
+     "",
+     "2,504,383"
+    ],
+    [
+     "Industrial",
+     "",
+     "466,618",
+     "",
+     "2,135",
+     "",
+     "464,483"
+    ],
+    [
+     "Machine tools",
+     "",
+     "556,686",
+     "",
+     "2,943",
+     "",
+     "553,743"
+    ],
+    [
+     "Medical",
+     "",
+     "32,476",
+     "",
+     "120",
+     "",
+     "32,356"
+    ],
+    [
+     "",
+     "$",
+     "11,227,488",
+     "$",
+     "61,898",
+     "$",
+     "11,165,590"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 943,
+    "end_line": 958
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Investment in Equipment Subject to Operating Leases"
+    }
+   },
+   "prose_before": "5. Investment in Equipment Subject to Operating Leases\nOn December 20, 2013, Echo entered into a participation agreement with an unrelated third party for the purchase of two portfolios of leases with a combined total of $17,800,000 of assets. One of the portfolios consisted of approximately $11,200,000 of assets subject to operating leases.\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\nThe composition of the equipment subject to operating leases in the Echo transaction as of December 31, 2013 is as follows:",
+   "prose_after": "The Partnership records depreciation expense on equipment when the lease is classified as an operating lease. In order to calculate depreciation, the Partnership first determines the depreciable equipment cost, which is the cost less the estimated residual value. The estimated residual value is the estimate of the value of the equipment at lease termination. Depreciation expense is recorded by applying the straight-line method of depreciation to the depreciable equipment cost over the lease term. Depreciation expense for the year ended December 31, 2013 was $61,899.\n6. Equipment Notes Receivable\nMedical Equipment\nOn June 28, 2013, the Partnership entered into a $150,000 Promissory Note to finance the purchase of medical equipment located in the Tennessee. The Promissory Note will be paid through 36 monthly installments of principal and interest of $5,100. The Promissory Note is secured by the medical equipment and other personal property located at the borrowers principal place of business. The Promissory Note is guaranteed personally by the officer of the borrower who will make all required note payments if the borrower is unable to perform under the Promissory Note. For the year ended December 31, 2013, the medical equipment note earned $9,988 of interest income.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 937,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2014",
+     "$",
+     "478,271"
+    ],
+    [
+     "2015",
+     "",
+     "645,590"
+    ],
+    [
+     "2016",
+     "",
+     "622,434"
+    ],
+    [
+     "2017",
+     "",
+     "946,605"
+    ],
+    [
+     "",
+     "$",
+     "2,692,900"
+    ]
+   ],
+   "caption_stack": [
+    "Years ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 981,
+    "end_line": 992
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Equipment Notes Receivable"
+    }
+   },
+   "prose_before": "On September 27, 2013, the Partnership entered into a loan facility with Andes Construction & Mining, Inc. (\u201cAndes\u201d) to provide financing in an amount up to $3,000,000. Andes is a Florida based company that builds, refurbishes and services mineral refining and mining equipment in the United States, Central and South America. The loan facility is secured by equipment that refines precious metals and other minerals. The Partnership advanced $2,500,000 to Andes during September 2013. The loan facility requires 48 monthly payments of principal and interest of $69,577 and a balloon payment of $500,000 in September 2017 which equates to an effective interest rate of 23.25%. For the year ended December 31, 2013, the mining equipment note earned $126,292 of interest income. The loan facility is scheduled to mature in September 2017. Andes\u2019 obligations under the loan facility are also personally guaranteed by two majority shareholders of Andes.\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\nManufacturing Equipment\nOn October 15, 2013, the Partnership entered into a $300,000 loan facility with Pride Products, Inc. (\u201cPride\u201d) secured by manufacturing equipment owned by Pride. Pride is a New Jersey based manufacturer and assembler of various consumer products. The loan facility is scheduled to be repaid in 29 equal monthly installments of $12,834. For the year ended December 31, 2013, the manufacturing equipment note earned $10,807 of interest income. Pride\u2019s obligations under the loan facility are also personally guaranteed by a majority shareholder of Pride.\nThe future maturities of the Partnership\u2019s notes receivable at December 31, 2013 are as follows:",
+   "prose_after": "7. Equipment loan receivable\nOn December 20, 2013, Echo entered into an agreement with an unrelated third party for the purchase of two portfolios of leases for a combined total purchase price of $17,800,000. One of the portfolios consists of approximately $6,600,000 of equipment loans receivable. The loans accrue interest at rates ranging from 10%. The notes mature on various dates through October 2017. For the year ended December 31, 2013, the loans receivable earned $19,682 of interest income.\nThe composition of the equipment loans receivable in the Echo transaction as of December 31, 2013 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Maturity Date",
+     "Balance",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "06/30/16",
+     "$",
+     "36,860"
+    ],
+    [
+     "Fitness",
+     "06/30/14",
+     "",
+     "34,209"
+    ],
+    [
+     "Computers",
+     "06/30/14",
+     "",
+     "104,008"
+    ],
+    [
+     "Forklifts and fuels cells",
+     "03/31/14 \u2013 10/31/17",
+     "",
+     "5,510,245"
+    ],
+    [
+     "Industrial",
+     "09/30/14",
+     "",
+     "57,060"
+    ],
+    [
+     "Machine tools",
+     "09/01/14",
+     "",
+     "42,221"
+    ],
+    [
+     "Medical",
+     "03/31/16",
+     "",
+     "746,163"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "6,530,766"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 999,
+    "end_line": 1013
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Equipment loan receivable"
+    }
+   },
+   "prose_before": "7. Equipment loan receivable\nOn December 20, 2013, Echo entered into an agreement with an unrelated third party for the purchase of two portfolios of leases for a combined total purchase price of $17,800,000. One of the portfolios consists of approximately $6,600,000 of equipment loans receivable. The loans accrue interest at rates ranging from 10%. The notes mature on various dates through October 2017. For the year ended December 31, 2013, the loans receivable earned $19,682 of interest income.\nThe composition of the equipment loans receivable in the Echo transaction as of December 31, 2013 is as follows:",
+   "prose_after": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\nThe future maturities of the Partnership\u2019s loans receivable at December 31, 2013 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2014",
+     "$",
+     "1,731,048"
+    ],
+    [
+     "2015",
+     "",
+     "1,511,118"
+    ],
+    [
+     "2016",
+     "",
+     "1,422,178"
+    ],
+    [
+     "2017",
+     "",
+     "1,060,421"
+    ],
+    [
+     "2018",
+     "",
+     "736,459"
+    ],
+    [
+     "2019",
+     "",
+     "69,542"
+    ],
+    [
+     "",
+     "$",
+     "6,530,766"
+    ]
+   ],
+   "caption_stack": [
+    "Years ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1020,
+    "end_line": 1033
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Equipment loan receivable"
+    }
+   },
+   "prose_before": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\nThe future maturities of the Partnership\u2019s loans receivable at December 31, 2013 are as follows:",
+   "prose_after": "8. Collateralized Loan Receivable\nOn November 27, 2013, the Partnership entered into a loan agreement with an unrelated third party that allows for the borrower to receive a total of $500,000 in advances from the Partnership. The maximum outstanding amount on any date is the lesser of $500,000 and 50% of the borrower\u2019s eligible receivables due within 90 days of the advance date. The loan accrues interest at 15% per annum and is collateralized by all of the assets of the borrower. As of December 31, 2013, the Partnership had advanced the borrower a total of $322,000, all of which remained outstanding at year end. Subsequent to December 31, 2013, the Partnership received approximately $641,000 from the borrower and also advanced an additional $756,000 to the borrower.\n9. Equipment Notes Payable\nIn connection with the Echo transaction, Echo assumed approximately $8,500,000 in non-recourse debt in connection with the acquisition of a portfolio of assets subject to lease. The debt is held by multiple lenders with interest rates ranging from 2.75% to 6.75% and maturity dates through 2018. The loan is secured by the underlying assets of each lease.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2014",
+     "$",
+     "3,549,741"
+    ],
+    [
+     "2015",
+     "",
+     "2,668,240"
+    ],
+    [
+     "2016",
+     "",
+     "1,675,292"
+    ],
+    [
+     "2017",
+     "",
+     "608,524"
+    ],
+    [
+     "2018",
+     "",
+     "39,542"
+    ],
+    [
+     "",
+     "$",
+     "8,541,339"
+    ]
+   ],
+   "caption_stack": [
+    "Years ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1044,
+    "end_line": 1056
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Equipment Notes Payable"
+    }
+   },
+   "prose_before": "On November 27, 2013, the Partnership entered into a loan agreement with an unrelated third party that allows for the borrower to receive a total of $500,000 in advances from the Partnership. The maximum outstanding amount on any date is the lesser of $500,000 and 50% of the borrower\u2019s eligible receivables due within 90 days of the advance date. The loan accrues interest at 15% per annum and is collateralized by all of the assets of the borrower. As of December 31, 2013, the Partnership had advanced the borrower a total of $322,000, all of which remained outstanding at year end. Subsequent to December 31, 2013, the Partnership received approximately $641,000 from the borrower and also advanced an additional $756,000 to the borrower.\n9. Equipment Notes Payable\nIn connection with the Echo transaction, Echo assumed approximately $8,500,000 in non-recourse debt in connection with the acquisition of a portfolio of assets subject to lease. The debt is held by multiple lenders with interest rates ranging from 2.75% to 6.75% and maturity dates through 2018. The loan is secured by the underlying assets of each lease.\nThe future maturities of the Partnership\u2019s equipment notes payable at December 31, 2013 are as follows:",
+   "prose_after": "10. Loan Payable\nIn connection with the Echo transaction, the Partnership borrowed $6,800,000 with interest accruing at 10% per annum through February 28, 2014 then at 8.9% per annum when the Partnership made a one-time $600,000 payment which was applied to principal. The lender, as collateral, has a first priority security interest in all of the leased assets acquired by Echo. The lender has the right to receive 100% of the cash proceeds from the leased assets until the loan is repaid in full. Beginning January 1, 2014 and monthly thereafter, all of the cash received from these leased assets are applied\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\nfirst against interest with any excess applied against the outstanding principal balance. There is no stated repayment term for the principal.\n11. Fair Value Measurements\nThe Partnership follows the fair value guidance in ASC Topic 820, Fair Value Measurements and Disclosures (\u201cASC 820\u201d) for items that are required to be measured at fair value. ASC 820\u2019s valuation techniques are based on observable and unobservable inputs. Observable inputs reflect readily obtainable data from independent sources, while unobservable inputs reflect the Partnership\u2019s market assumptions. ASC 820 classifies these inputs into the following hierarchy:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equipment Notes Receivable",
+     "",
+     "",
+     "Equipment Loan Receivable",
+     "",
+     "Collateralized Loan Receivable",
+     "",
+     "Equipment Notes Payable",
+     "",
+     "Loan Payable",
+     ""
+    ],
+    [
+     "Beginning balance, January 1, 2013",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of additional notes",
+     "",
+     "2,950,000",
+     "",
+     "",
+     "6,530,766",
+     "",
+     "322,000",
+     "",
+     "8,541,339",
+     "",
+     "6,800,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total gains (losses) included in earnings:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "4,142",
+     "",
+     "",
+     "19,682",
+     "",
+     "2,519",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Interest expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "25,755"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of notes and accrued interest",
+     "",
+     "(261,242)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Unrealized appreciation (depreciation)",
+     "",
+     "55,072",
+     "",
+     "",
+     "\u2014",
+     "",
+     "8,968",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Estimated fair value, December 31, 2013",
+     "$",
+     "2,747,972",
+     "",
+     "$",
+     "6,550,448",
+     "$",
+     "333,487",
+     "$",
+     "8,541,339",
+     "$",
+     "6,825,755"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1083,
+    "end_line": 1102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Level 2 Inputs \u2014 Quoted prices for similar instruments in active markets; quoted prices for identical or similar instruments in markets that are not active; and model-derived valuations whose inputs are observable or whose significant value drivers are observable.\nLevel 3 Inputs \u2014 Instruments with primarily unobservable value drivers.\nFair value information with respect to the Partnership\u2019s leased assets and liabilities are not separately provided for since ASC 820 does not require fair value disclosures of leasing arrangements.\nThe Partnership\u2019s carrying value of cash and cash equivalents, accounts payable and accrued liabilities, due to SQN AIF GP, LLC, due to SQN Securities, LLC and due to SQN Capital Management LLC, approximate fair value due to their short term until maturity.\nThe following is a reconciliation of the beginning and ending balances of the fair value of financial instruments calculated on a recurring basis using significant unobservable inputs (Level 3) during the year ended December 31:",
+   "prose_after": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\n12. Income Tax Reconciliation (unaudited)\nAs of December 31, 2013 and 2012, total Partners\u2019 equity attributable to the Partnership included in the consolidated financial statements was $5,090,192 and $1,100, respectively. As of December 31, 2013 and 2012, total Partners\u2019 equity for federal income tax purposes was $5,067,949 and $0. The primary difference was organizational and offering expenses and distribution expenses which is a reduction in Limited Partners\u2019 capital accounts for financial reporting purposes but not for federal income tax reporting purposes and differences in depreciation and amortization for financial reporting purposes and federal income tax purposes.\nThe following table reconciles the net loss for financial statement reporting purposes to the net income for federal income purposes for the year ended December 31, 2013:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1103,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "December 31, 2013",
+     ""
+    ],
+    [
+     "Net loss per consolidated financial statements",
+     "",
+     "$",
+     "(868,157)",
+     ""
+    ],
+    [
+     "Net income from non-includable U.S. entities",
+     "",
+     "",
+     "(28,478)",
+     ""
+    ],
+    [
+     "Income attributable to non-controlling interest",
+     "",
+     "",
+     "5,696",
+     ""
+    ],
+    [
+     "Organizational costs",
+     "",
+     "",
+     "14,500",
+     ""
+    ],
+    [
+     "SQN Echo LLC",
+     "",
+     "",
+     "(32,603)",
+     ""
+    ],
+    [
+     "Unearned interest income",
+     "",
+     "",
+     "82,024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income for federal income tax purposes",
+     "",
+     "$",
+     "(827,018)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1113,
+    "end_line": 1128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "SQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\n12. Income Tax Reconciliation (unaudited)\nAs of December 31, 2013 and 2012, total Partners\u2019 equity attributable to the Partnership included in the consolidated financial statements was $5,090,192 and $1,100, respectively. As of December 31, 2013 and 2012, total Partners\u2019 equity for federal income tax purposes was $5,067,949 and $0. The primary difference was organizational and offering expenses and distribution expenses which is a reduction in Limited Partners\u2019 capital accounts for financial reporting purposes but not for federal income tax reporting purposes and differences in depreciation and amortization for financial reporting purposes and federal income tax purposes.\nThe following table reconciles the net loss for financial statement reporting purposes to the net income for federal income purposes for the year ended December 31, 2013:",
+   "prose_after": "13. Indemnifications\nThe Partnership enters into contracts that contain a variety of indemnifications. The Partnership\u2019s maximum exposure under these arrangements is not known.\nIn the normal course of business, the Partnership enters into contracts of various types, including lease contracts, contracts for the sale or purchase of lease assets, and management contracts. It is prevalent industry practice for most contracts of any significant value to include provisions that each of the contracting parties, in addition to assuming liability for breaches of the representations, warranties, and covenants that are part of the underlying contractual obligations, to also assume an obligation to indemnify and hold the other contractual party harmless for such breaches, and for harm caused by such party\u2019s gross negligence and willful misconduct, including, in certain instances, certain costs and expenses arising from the contract. Generally, to the extent these contracts are performed in the ordinary course of business under the reasonable business judgment of the General Partner and the Investment Manager, no liability will arise as a result of these provisions. The General Partner and Investment Manager knows of no facts or circumstances that would make the Partnership\u2019s contractual commitments outside standard mutual covenants applicable to commercial transactions between businesses. Accordingly, the Partnership believes that these indemnification obligations are made in the ordinary course of business as part of standard commercial and industry practice, and that any potential liability under the Partnership\u2019s similar commitments is remote. Should any such indemnification obligation become payable, the Partnership would separately record and/or disclose such liability in accordance with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1103,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarterly Information (unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year Ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "June 30,",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "\u2014",
+     "$",
+     "1,129",
+     "",
+     "$",
+     "9,784",
+     "",
+     "$",
+     "287,851",
+     "",
+     "$",
+     "298,764",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss allocable to Limited Partners",
+     "$",
+     "\u2014",
+     "$",
+     "(159,411)",
+     "",
+     "$",
+     "(389,790)",
+     "",
+     "$",
+     "(310,276)",
+     "",
+     "$",
+     "(859,477)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of limited partnership interests outstanding",
+     "",
+     "\u2014",
+     "",
+     "1,687.56",
+     "",
+     "",
+     "2,589.39",
+     "",
+     "",
+     "6,075.97",
+     "",
+     "",
+     "3,940.39",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Limited Partners per weighted average number of limited partnership",
+     "$",
+     "\u2014",
+     "$",
+     "(94.46)",
+     "",
+     "$",
+     "(150.53)",
+     "",
+     "$",
+     "(51.07)",
+     "",
+     "$",
+     "(218.12)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1143,
+    "end_line": 1162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Indemnifications"
+    }
+   },
+   "prose_before": "In the normal course of business, the Partnership enters into contracts of various types, including lease contracts, contracts for the sale or purchase of lease assets, and management contracts. It is prevalent industry practice for most contracts of any significant value to include provisions that each of the contracting parties, in addition to assuming liability for breaches of the representations, warranties, and covenants that are part of the underlying contractual obligations, to also assume an obligation to indemnify and hold the other contractual party harmless for such breaches, and for harm caused by such party\u2019s gross negligence and willful misconduct, including, in certain instances, certain costs and expenses arising from the contract. Generally, to the extent these contracts are performed in the ordinary course of business under the reasonable business judgment of the General Partner and the Investment Manager, no liability will arise as a result of these provisions. The General Partner and Investment Manager knows of no facts or circumstances that would make the Partnership\u2019s contractual commitments outside standard mutual covenants applicable to commercial transactions between businesses. Accordingly, the Partnership believes that these indemnification obligations are made in the ordinary course of business as part of standard commercial and industry practice, and that any potential liability under the Partnership\u2019s similar commitments is remote. Should any such indemnification obligation become payable, the Partnership would separately record and/or disclose such liability in accordance with accounting principles generally accepted in the United States of America.\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012\n14. Selected Quarterly Financial Data (unaudited)\nThe following table is a summary of selected financial data, by quarter:",
+   "prose_after": "15. Business Concentrations\nSignificant concentrations in regards to the number of the Partnership\u2019s types of investments at December 31, 2013 were as follows:\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "#",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "A",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "B",
+     "",
+     "16",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment notes receivable",
+     "",
+     "C",
+     "",
+     "85",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "D",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in SQN Echo LLC",
+     "",
+     "E",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "F",
+     "",
+     "11",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "G",
+     "",
+     "14",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "H",
+     "",
+     "27",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1171,
+    "end_line": 1187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Business Concentrations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Business Concentrations"
+    }
+   },
+   "prose_before": "15. Business Concentrations\nSignificant concentrations in regards to the number of the Partnership\u2019s types of investments at December 31, 2013 were as follows:\nSQN AIF IV, L.P. and Subsidiary (A Delaware Limited Partnership) Notes to Consolidated Financial Statements December 31, 2013 and 2012",
+   "prose_after": "Significant concentrations in regards to the number of the Partnership\u2019s investments and related revenue streams for the year ended December 31, 2013 were as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1213,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "#",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Rental",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "1",
+     "",
+     "80",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1190,
+    "end_line": 1198
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Business Concentrations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Business Concentrations"
+    }
+   },
+   "prose_before": "Significant concentrations in regards to the number of the Partnership\u2019s investments and related revenue streams for the year ended December 31, 2013 were as follows:",
+   "prose_after": "16. Commitments and contingencies\nOn December 18, 2013 the Partnership entered into a forward purchase agreement with an unrelated lender. According to the agreement, the Partnership is obligated to purchase a promissory note secured by the brake manufacturing equipment with an aggregate principal amount of $432,000 prior to April 15, 2014. The promissory note accrues interest at 12.5% per annum and matures in January 2018.\n17. Subsequent Events\nDistribution\nIn January 2014, the Partnership paid a distribution of $100,566 to its Limited Partners.\nContributions\nSubsequent to December 31, 2013, the Partnership admitted 45 partners and issued 2,941.12 units for total capital contribution of $2,768,080.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosures\nNone.\nItem 9A. Controls and Procedures",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1213,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Jeremiah J. Silkowski",
+     "39",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "Michael C. Ponticello",
+     "35",
+     "Senior Vice President and National Sales Manager"
+    ],
+    [
+     "David Kontis",
+     "38",
+     "Chief Compliance Officer"
+    ],
+    [
+     "Matthew Leszyk",
+     "33",
+     "Vice President"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1259,
+    "end_line": 1267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "In October 2013, the Partnership engaged Brio Financial Group (\u201cBrio\u201d), an outsourced financial reporting firm to accommodate the firm\u2019s continued growth and to leverage a deeper base of experience from multiple professionals in public company reporting, GAAP and tax accounting, financial modeling and general audit preparation services. Brio assumed the duties of David Wright, our former Chief Financial Officer. Other than the engagement of Brio, there were no additional material changes in our General Partner\u2019s or our Investment Manager\u2019s internal control over financial reporting during the quarter ended December 31, 2013, that materially affected, or are reasonably likely to materially affect, their internal control over financial reporting.\nItem 9B. Other Information\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nOur General Partner\nOur General Partner is SQN AIF IV GP, LLC, a Delaware limited liability company and was formed in August 2012. The sole member of our General Partner is SQN Capital Management, LLC, our Investment Manager. The executive officers of our General Partner are as follows:",
+   "prose_after": "Biographical information regarding the officers and directors of our General Partner follows the table setting forth information regarding our Investment Manager\u2019s current executive officers and directors.\nOur Investment Manager\nOur Investment Manager is SQN Capital Management, LLC, a Delaware limited liability company that was formed in December 2007 to act as the manager of direct participation programs and its managing directors and executive officers will be responsible for selecting, managing and disposing of our assets, equipment and leases. In this regard, after we receive the minimum offering proceeds and hold our initial closing, we intend to enter into the Management, Origination and Servicing Agreement under which our Investment Manager will originate leases and other investments for us, and our Investment Manager will service our portfolio of leases and other investments. Our Investment Manager is responsible for all aspects of the performance by its affiliates of services necessary to our operation and for the facilities, personnel, equipment, financial and other resources used by its affiliates in the performance of those services. The executive officers of our Investment Manager are as follows:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1249,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1285,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Jeremiah J. Silkowski",
+     "39",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "Michael C. Ponticello",
+     "35",
+     "Senior Vice President and National Sales Manager"
+    ],
+    [
+     "David Konits",
+     "38",
+     "Chief Compliance Officer"
+    ],
+    [
+     "Matthew Leszyk",
+     "34",
+     "Vice President"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1274,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Our Investment Manager\nOur Investment Manager is SQN Capital Management, LLC, a Delaware limited liability company that was formed in December 2007 to act as the manager of direct participation programs and its managing directors and executive officers will be responsible for selecting, managing and disposing of our assets, equipment and leases. In this regard, after we receive the minimum offering proceeds and hold our initial closing, we intend to enter into the Management, Origination and Servicing Agreement under which our Investment Manager will originate leases and other investments for us, and our Investment Manager will service our portfolio of leases and other investments. Our Investment Manager is responsible for all aspects of the performance by its affiliates of services necessary to our operation and for the facilities, personnel, equipment, financial and other resources used by its affiliates in the performance of those services. The executive officers of our Investment Manager are as follows:",
+   "prose_after": "Jeremiah J. Silkowski has been President and Chief Executive Officer of SQN Capital Corporation, a company that provides asset-backed and lease-based financing to multiple under-served market sectors including the off-shore oilfield services industry, since its inception in January 2006. Mr. Silkowski has served as Managing Director of our Investment Manager since December 2007 and President and Chief Executive Officer since April 2010 and has served as President and Chief Executive Officer of our General Partner since March 2010. Prior to forming SQN Capital Corporation, Mr. Silkowski spent 13 years in various capacities with ICON Capital Corp., including Senior Vice President of Operations and head of Portfolio Management, Remarketing, Cash Management, Tax, Middle Market Acquisitions, and Structured Finance. Mr. Silkowski was responsible for the day-to-day management of over $1.0 billion dollars of assets including two securitizations and eight public partnerships. Mr. Silkowski received his B.A. in Economics from New York University. He also holds Series 7, 24, and 63 licenses.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1249,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1285,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Entity",
+     "Capacity",
+     "Description",
+     "Year Ended December 31, 2013",
+     ""
+    ],
+    [
+     "SQN Capital Management, LLC",
+     "Investment Manager",
+     "Management fees (1)",
+     "$",
+     "875,000"
+    ],
+    [
+     "SQN Securities, LLC",
+     "Dealer\u2014Manager",
+     "Underwriting expense (2)",
+     "",
+     "196,395"
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "1,071,395"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1309,
+    "end_line": 1318
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We do not pay the officers or directors of our General Partner, our Investment Manager or their affiliates any compensation. However, we will pay our General Partner, our Investment Manager and their affiliate\u2019s fees and reimburse certain of their expenses incurred on our behalf. These expense reimbursements include reimbursing our General Partner, our Investment Manager and their affiliate\u2019s for certain costs incurred on our behalf, including the cost of personnel, other than controlling persons of our General Partner, our Investment Manager and their affiliates, who will perform administration, accounting, secretarial, transfer and other services required by us. These individuals also will perform similar services for our General Partner, our Investment Manager or their affiliates and other affiliated investment programs, including our Investment Manager\u2019s prior equipment leasing and finance programs, as well as investment programs to be formed in the future by our General Partner and its affiliates. We entered into an agreement which provides that expense reimbursements paid by us to our General Partner, our Investment Manager and their affiliates must be limited to the lesser of their actual cost or the cost of comparable services from third-parties. We expect that we will allocate the cost of compensation and benefits of our General Partner\u2019s officers, the officers and\nemployees of our Investment Manager, and the officers and employees of their affiliates, excluding expenses allocable to their controlling persons, based on the amount of their business time spent on our business.\nOur General Partner, Investment Manager and their affiliates were paid or accrued the following compensation and reimbursement for costs and expenses:",
+   "prose_after": "(1) Amount charged directly to operations.\n(2) Amount charged directly to partners\u2019 equity.\nOur General Partner has a 1% interest in our income, losses and distributions until the Limited Partners have received total distributions equal to each Limited Partners\u2019 capital contribution plus an 8%, compounded annually, cumulative return on each Limited Partners\u2019 capital contribution. After such time, income, losses and distributions will be allocated 20% to our General Partner. We did not pay our General Partner any distributions during 2013 or 2012. As of December 31, 2013, we accrued $537 for distributions payable to our General Partner. For the year ended December 31, 2013, the General Partner\u2019s 1% interest in our net loss was $8,682.\nItem 12. Security Ownership of Certain Beneficial Owners and the General Partner and Related Security Holder Matters\na. We do not have any securities authorized for issuance under any equity compensation plan.\nb. We have one Limited Partner who owns 21.49% of our Units at December 31, 2013.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1303,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1341,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description of fees",
+     "2013",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "24,500"
+    ],
+    [
+     "Tax compliance fees",
+     "",
+     "3,300"
+    ],
+    [
+     "Other fees (2)",
+     "",
+     "35,600"
+    ],
+    [
+     "",
+     "$",
+     "63,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1347,
+    "end_line": 1357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "For information regarding executive compensation and related party transactions refer to Part III Item 11. Executive Compensation and Part II Item. 8. Financial Statements and Supplementary Data, Note 3. Related Party Transactions in our financial statements for a discussion of our related party transactions.\nBecause we are not listed on any national securities exchange or inter-dealer quotation system, we have elected to use the Nasdaq Stock Market\u2019s definition of \u201cindependent director\u201d in evaluating whether any of our General Partner\u2019s and Investment Manager\u2019s directors are independent. Under this definition, the board of directors of both our General Partner and our Investment Manager has determined that they do not have any independent directors, nor are we required to have any.\nItem 14. Principal Accounting Fees and Services\nDuring the years ended December 31, 2013 our auditors provided audit services relating to our Annual Report on Form 10-K and our Quarterly Reports on Form 10-Q. Additionally, our auditors provided other services in the form of tax compliance work. The following table presents the fees for both audit and non\u2014audit services rendered by Baker Tilly Virchow Krause LLP, formerly known as Holtz Rubenstein Reminick, for the year ended December 31, 2013:",
+   "prose_after": "(1) Includes audits and interim quarterly reviews.\n(2) Includes review of S-1 Registration Statement and related matters.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n1) Documents filed as part of this Report.\na) The Following financial statements are filed herewith in Part II Item 8. Financial Statements and Supplementary Data of this Annual Report on Form 10-K:\ni) Report of Independent Registered Public Accounting Firm\nii) Consolidated Balance Sheets at December 31, 2013 and 2012\niii) Consolidated Statement of Operations for the year ended December 31, 2013\niv) Consolidated Statement of Changes in Partners\u2019 Equity for the year ended December 31, 2013",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1341,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "32A.",
+     "Certification of Jeremiah Silkowski, President, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1384,
+    "end_line": 1387
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Item 15. Exhibits, Financial Statement Schedules\n1) Documents filed as part of this Report.\na) The Following financial statements are filed herewith in Part II Item 8. Financial Statements and Supplementary Data of this Annual Report on Form 10-K:\ni) Report of Independent Registered Public Accounting Firm\nii) Consolidated Balance Sheets at December 31, 2013 and 2012\niii) Consolidated Statement of Operations for the year ended December 31, 2013\niv) Consolidated Statement of Changes in Partners\u2019 Equity for the year ended December 31, 2013\nv) Consolidated Statement of Cash Flows for the year ended December 31, 2013\nvi) Notes to Consolidated Financial Statements for the year ended December 31, 2013\nb) Listing of Exhibits: 31.A. Certification of Jeremiah Silkowski, President and Chief Executive Officer, pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+   "prose_after": "101. The following financial statements from SQN Alternative Investment Fund III L.P.\u2019s annual report on Form 10-K for the year ended December 31, 2013, formatted in XBRL (eXtensible Business Reporting Language): (i) Balance Sheets, (ii) Statements of Operations, (iii) Statements of Changes in Partners\u2019 Equity, (iv) Statements of Cash Flows, (v) Notes to Financial Statements and (vi) document and entity information.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacity and on the dates indicated.\nFile No. 333-166195 SQN AIF IVGP, LLC General Partner of the Registrant\nMarch 31, 2014\n/s/ JEREMIAH SILKOWSKI Jeremiah Silkowski President and Chief Executive Officer (Principal Executive Officer)",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1341,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1388,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

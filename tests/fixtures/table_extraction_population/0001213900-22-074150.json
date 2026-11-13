@@ -1,0 +1,8490 @@
+{
+ "accession": "0001213900-22-074150",
+ "cik": "0001553404",
+ "form": "10-Q",
+ "filing_date": "2022-11-21",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0922_pacificgreen.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "36-4966163"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2022\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from [ ] to [ ]\nCommission file number 000-54756\nPACIFIC GREEN TECHNOLOGIES INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Suite 10212, 8 The Green\n\n\n\nDover, DE",
+     "19901"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (302) 601-4659",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "N/A"
+    ],
+    [
+     "(Former name, former address and former fiscal year, if changed since last report)"
+    ]
+   ],
+   "caption_stack": [
+    "N/A",
+    "(Former name, former address and former fiscal year, if changed since last report)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (302) 601-4659",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock",
+     "PGTK",
+     "OTC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 45,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] YES [ ] NO\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] YES [ ] NO\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a small reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "1"
+    ],
+    [
+     "ITEM 1. FINANCIAL STATEMENTS",
+     "1"
+    ],
+    [
+     "ITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "2"
+    ],
+    [
+     "ITEM 3. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "11"
+    ],
+    [
+     "ITEM 4. CONTROLS AND PROCEDURES",
+     "11"
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     "12"
+    ],
+    [
+     "ITEM 1. LEGAL PROCEEDINGS",
+     "12"
+    ],
+    [
+     "ITEM 1A. RISK FACTORS",
+     "12"
+    ],
+    [
+     "ITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES",
+     "12"
+    ],
+    [
+     "ITEM 3. DEFAULTS UPON SENIOR SECURITIES",
+     "12"
+    ],
+    [
+     "ITEM 4. MINE SAFETY DISCLOSURES",
+     "12"
+    ],
+    [
+     "ITEM 5. OTHER INFORMATION",
+     "12"
+    ],
+    [
+     "ITEM 6. EXHIBITS",
+     "12"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) [ ] YES [X] NO\nAPPLICABLE ONLY TO ISSUERS INVOLVED IN BANKRUPTCY PROCEEDINGS DURING THE PRECEDING FIVE YEARS\nCheck whether the registrant has filed all documents and reports required to be filed by Sections 12, 13 or 15(d) of the Exchange Act after the distribution of securities under a plan confirmed by a court. [ ] YES [ ] NO\nAPPLICABLE ONLY TO CORPORATE ISSUERS\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\n47,026,886 common shares issued and outstanding as of November 21, 2022.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nOur unaudited condensed consolidated interim financial statements for the three and six months ended September 30, 2022 form part of this quarterly report. They are stated in United States Dollars (US$) and are prepared in accordance with United States Generally Accepted Accounting Principles for interim financial information and with the instructions to Form 10-Q and Article 8 of Regulation S-X.\nCondensed Consolidated Interim Financial Statements\nSeptember 30, 2022\n(Unaudited)\n(Expressed in U.S. dollars)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Index"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Interim Balance Sheets",
+     "F\u20132"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Interim Statements of Operations and Comprehensive Loss",
+     "F\u20133"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Interim Statements of Stockholders Equity",
+     "F\u20134"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Interim Statements of Cash Flows",
+     "F\u20135"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Condensed Consolidated Interim Financial Statements",
+     "F\u20136"
+    ]
+   ],
+   "caption_stack": [
+    "Index"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 115,
+    "end_line": 129
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nOur unaudited condensed consolidated interim financial statements for the three and six months ended September 30, 2022 form part of this quarterly report. They are stated in United States Dollars (US$) and are prepared in accordance with United States Generally Accepted Accounting Principles for interim financial information and with the instructions to Form 10-Q and Article 8 of Regulation S-X.\nCondensed Consolidated Interim Financial Statements\nSeptember 30, 2022\n(Unaudited)\n(Expressed in U.S. dollars)",
+   "prose_after": "Condensed Consolidated Interim Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 129,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022 $",
+     "",
+     "",
+     "March 31, 2022 $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalent",
+     "",
+     "3,025,506",
+     "",
+     "",
+     "6,286,468",
+     ""
+    ],
+    [
+     "Short-term investments and amounts in escrow (Note 3)",
+     "",
+     "1,540,992",
+     "",
+     "",
+     "1,932,323",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts of $257,991 and $828,461 at September 30, 2022 and March 31, 2022, respectively",
+     "",
+     "1,984,066",
+     "",
+     "",
+     "4,884,101",
+     ""
+    ],
+    [
+     "Other receivable, net of allowance for doubtful accounts of $1,725 and $1,512 at September 30, 2022 and March 31, 2022, respectively",
+     "",
+     "136,117",
+     "",
+     "",
+     "10,599,746",
+     ""
+    ],
+    [
+     "Accrued revenue (Note 8)",
+     "",
+     "237,475",
+     "",
+     "",
+     "531,947",
+     ""
+    ],
+    [
+     "Prepaid expenses, parts inventory and advances",
+     "",
+     "1,600,563",
+     "",
+     "",
+     "582,063",
+     ""
+    ],
+    [
+     "Prepaid manufacturing costs (Note 8)",
+     "",
+     "842,959",
+     "",
+     "",
+     "38,010",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "9,367,678",
+     "",
+     "",
+     "24,854,658",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Project under development (Note 6)",
+     "",
+     "19,172,509",
+     "",
+     "",
+     "3,855,792",
+     ""
+    ],
+    [
+     "Property and equipment (Note 4)",
+     "",
+     "964,261",
+     "",
+     "",
+     "1,166,241",
+     ""
+    ],
+    [
+     "Intangible assets (Note 5)",
+     "",
+     "6,658,772",
+     "",
+     "",
+     "7,099,748",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "527,528",
+     "",
+     "",
+     "739,091",
+     ""
+    ],
+    [
+     "Security deposits and other advances",
+     "",
+     "927,763",
+     "",
+     "",
+     "949,644",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "37,618,511",
+     "",
+     "",
+     "38,665,174",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and shareholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities (Note 9)",
+     "",
+     "5,083,979",
+     "",
+     "",
+     "9,594,787",
+     ""
+    ],
+    [
+     "Warranty provision (Note 11)",
+     "",
+     "822,120",
+     "",
+     "",
+     "865,451",
+     ""
+    ],
+    [
+     "Contract liabilities (Note 8)",
+     "",
+     "10,100,561",
+     "",
+     "",
+     "8,143,109",
+     ""
+    ],
+    [
+     "Loans payable (Note 10)",
+     "",
+     "533,324",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Current portion of lease obligations (Note 15(a))",
+     "",
+     "429,259",
+     "",
+     "",
+     "472,068",
+     ""
+    ],
+    [
+     "Due to related parties (Note 12)",
+     "",
+     "73,797",
+     "",
+     "",
+     "4,250",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "17,043,040",
+     "",
+     "",
+     "19,079,665",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term loans payable (Note 10)",
+     "",
+     "1,134,102",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Non \u2013 current portion of lease obligation (Note 15(a))",
+     "",
+     "48,585",
+     "",
+     "",
+     "341,972",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "18,225,727",
+     "",
+     "",
+     "19,421,637",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, 10,000,000 shares authorized, $0.001 par value nil and nil shares issued and outstanding at September 30, 2022 and March 31, 2022, respectively",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Common stock, 500,000,000 shares authorized, $0.001 par value 47,026,886 and 47,026,886 shares issued and outstanding at September 30, 2022 and March 31, 2022, respectively",
+     "",
+     "47,027",
+     "",
+     "",
+     "47,027",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "92,456,115",
+     "",
+     "",
+     "92,429,203",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "1,853,722",
+     "",
+     "",
+     "2,035,666",
+     ""
+    ],
+    [
+     "Deficit",
+     "",
+     "(91,031,407)",
+     "",
+     "",
+     "(85,530,306)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity before treasury stock",
+     "",
+     "3,325,457",
+     "",
+     "",
+     "8,981,590",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 56,162 shares and 56,162 shares at September 30, 2022 and March 31, 2022, respectively",
+     "",
+     "(99,754)",
+     "",
+     "",
+     "(99,754)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "3,225,703",
+     "",
+     "",
+     "8,881,836",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncontrolling interest (Note 7(a) and (b))",
+     "",
+     "16,167,081",
+     "",
+     "",
+     "10,361,701",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total equity",
+     "",
+     "19,392,784",
+     "",
+     "",
+     "19,243,537",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "37,618,511",
+     "",
+     "",
+     "38,665,174",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 135,
+    "end_line": 209
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Consolidated Interim Balance Sheets",
+   "prose_after": "Nature of Operations (Note 1)\nCommitments (Note 15)\nSubsequent Events (Note 17)\n(The accompanying notes are an integral part of these consolidated financial statements)\nCondensed Consolidated Interim Statements of Operations and Comprehensive Income (Loss)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 133,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2022 $",
+     "",
+     "",
+     "Three Months Ended September 30, 2021 (As restated- Note 2)\n\n\n\n$",
+     "",
+     "",
+     "Six Months Ended September 30, 2022 $",
+     "",
+     "",
+     "Six Months Ended September 30, 2021 (As restated- Note 2)\n\n\n\n$",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products",
+     "",
+     "699,289",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "2,354,447",
+     "",
+     "",
+     "742,291",
+     ""
+    ],
+    [
+     "Services",
+     "",
+     "496,064",
+     "",
+     "",
+     "138,536",
+     "",
+     "",
+     "864,782",
+     "",
+     "",
+     "719,496",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "1,195,353",
+     "",
+     "",
+     "138,536",
+     "",
+     "",
+     "3,219,229",
+     "",
+     "",
+     "1,461,787",
+     ""
+    ],
+    [
+     "Cost of goods sold (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products",
+     "",
+     "713,040",
+     "",
+     "",
+     "474,784",
+     "",
+     "",
+     "1,700,247",
+     "",
+     "",
+     "1,704,902",
+     ""
+    ],
+    [
+     "Services",
+     "",
+     "341,640",
+     "",
+     "",
+     "209,276",
+     "",
+     "",
+     "582,976",
+     "",
+     "",
+     "500,167",
+     ""
+    ],
+    [
+     "Total cost of goods sold",
+     "",
+     "1,054,680",
+     "",
+     "",
+     "684,060",
+     "",
+     "",
+     "2,283,223",
+     "",
+     "",
+     "2,205,069",
+     ""
+    ],
+    [
+     "Gross profit / (loss)",
+     "",
+     "140,673",
+     "",
+     "",
+     "(545,524)",
+     "",
+     "",
+     "936,006",
+     "",
+     "",
+     "(743,282)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising and promotion",
+     "",
+     "158,406",
+     "",
+     "",
+     "148,323",
+     "",
+     "",
+     "301,673",
+     "",
+     "",
+     "317,218",
+     ""
+    ],
+    [
+     "Amortization of intangible assets (Note 5)",
+     "",
+     "662",
+     "",
+     "",
+     "171,821",
+     "",
+     "",
+     "1,350",
+     "",
+     "",
+     "342,944",
+     ""
+    ],
+    [
+     "Bad debts (recovery) / expense",
+     "",
+     "(46,534)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(46,534)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Depreciation (Note 4)",
+     "",
+     "49,487",
+     "",
+     "",
+     "49,777",
+     "",
+     "",
+     "103,071",
+     "",
+     "",
+     "99,543",
+     ""
+    ],
+    [
+     "Foreign exchange (gain) / loss",
+     "",
+     "(393,375)",
+     "",
+     "",
+     "39,705",
+     "",
+     "",
+     "104,321",
+     "",
+     "",
+     "51,578",
+     ""
+    ],
+    [
+     "Management and technical consulting",
+     "",
+     "315,240",
+     "",
+     "",
+     "782,701",
+     "",
+     "",
+     "1,304,324",
+     "",
+     "",
+     "1,528,254",
+     ""
+    ],
+    [
+     "Office and miscellaneous",
+     "",
+     "527,307",
+     "",
+     "",
+     "415,567",
+     "",
+     "",
+     "990,076",
+     "",
+     "",
+     "793,830",
+     ""
+    ],
+    [
+     "Operating lease expense (Note 15)",
+     "",
+     "99,253",
+     "",
+     "",
+     "120,212",
+     "",
+     "",
+     "208,990",
+     "",
+     "",
+     "243,367",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "460,635",
+     "",
+     "",
+     "671,009",
+     "",
+     "",
+     "747,660",
+     "",
+     "",
+     "947,678",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "13,772",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Salaries and wage expenses",
+     "",
+     "1,065,710",
+     "",
+     "",
+     "1,329,480",
+     "",
+     "",
+     "2,048,624",
+     "",
+     "",
+     "2,584,686",
+     ""
+    ],
+    [
+     "Transfer agent and filing fees",
+     "",
+     "17,043",
+     "",
+     "",
+     "148,048",
+     "",
+     "",
+     "30,797",
+     "",
+     "",
+     "161,223",
+     ""
+    ],
+    [
+     "Travel and accommodation",
+     "",
+     "208,463",
+     "",
+     "",
+     "158,502",
+     "",
+     "",
+     "399,230",
+     "",
+     "",
+     "224,615",
+     ""
+    ],
+    [
+     "Warranty and related expense / (recovery) (Note 11)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "18,159",
+     "",
+     "",
+     "181,600",
+     "",
+     "",
+     "(21,648)",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "2,462,297",
+     "",
+     "",
+     "4,053,304",
+     "",
+     "",
+     "6,388,954",
+     "",
+     "",
+     "7,273,288",
+     ""
+    ],
+    [
+     "(Loss) / income before other income (expense)",
+     "",
+     "(2,321,624)",
+     "",
+     "",
+     "(4,598,828)",
+     "",
+     "",
+     "(5,452,948)",
+     "",
+     "",
+     "(8,016,570)",
+     ""
+    ],
+    [
+     "Other income / (expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing interest income",
+     "",
+     "10,031",
+     "",
+     "",
+     "195,325",
+     "",
+     "",
+     "56,300",
+     "",
+     "",
+     "292,951",
+     ""
+    ],
+    [
+     "Interest (expense) / income and other",
+     "",
+     "(39,360)",
+     "",
+     "",
+     "42,318",
+     "",
+     "",
+     "(77,711)",
+     "",
+     "",
+     "100,732",
+     ""
+    ],
+    [
+     "Total other (expense) / income",
+     "",
+     "(29,329)",
+     "",
+     "",
+     "237,643",
+     "",
+     "",
+     "(21,411)",
+     "",
+     "",
+     "393,683",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period before noncontrolling interest",
+     "",
+     "(2,350,953)",
+     "",
+     "",
+     "(4,361,185)",
+     "",
+     "",
+     "(5,474,359)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to noncontrolling interest (Note 7(a) and (b))",
+     "",
+     "(109,082)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "26,742",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "(2,241,871)",
+     "",
+     "",
+     "(4,361,185)",
+     "",
+     "",
+     "(5,501,101)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain / (loss)",
+     "",
+     "202,891",
+     "",
+     "",
+     "41,209",
+     "",
+     "",
+     "(181,944)",
+     "",
+     "",
+     "217,325",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "(2,038,980)",
+     "",
+     "",
+     "(4,319,976)",
+     "",
+     "",
+     "(5,683,045)",
+     "",
+     "",
+     "(7,405,562)",
+     ""
+    ],
+    [
+     "Net income per share, basic and diluted",
+     "",
+     "(0.05)",
+     "",
+     "",
+     "(0.09)",
+     "",
+     "",
+     "(0.12)",
+     "",
+     "",
+     "(0.16)",
+     ""
+    ],
+    [
+     "Weight average number of common shares outstanding, basic (1)",
+     "",
+     "47,339,386",
+     "",
+     "",
+     "47,316,539",
+     "",
+     "",
+     "47,339,386",
+     "",
+     "",
+     "47,309,839",
+     ""
+    ],
+    [
+     "Weight average number of dilutive shares outstanding, diluted",
+     "",
+     "47,339,386",
+     "",
+     "",
+     "47,316,539",
+     "",
+     "",
+     "47,339,386",
+     "",
+     "",
+     "47,309,839",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 223,
+    "end_line": 291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Nature of Operations (Note 1)\nCommitments (Note 15)\nSubsequent Events (Note 17)\n(The accompanying notes are an integral part of these consolidated financial statements)\nCondensed Consolidated Interim Statements of Operations and Comprehensive Income (Loss)",
+   "prose_after": "(1) The period ended September 30, 2022, includes 312,500 (2021 \u2013 312,500) stock options as they are exercisable at any time and for nominal cash consideration.\n(The accompanying notes are an integral part of these consolidated financial statements)\nCondensed Consolidated Interim Statements of Stockholders Equity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 221,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Noncontrolling",
+     "",
+     "",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares #",
+     "",
+     "Amount $",
+     "",
+     "Capital $",
+     "",
+     "Income $",
+     "",
+     "",
+     "Stock $",
+     "",
+     "",
+     "Interest $",
+     "",
+     "Deficit $",
+     "",
+     "",
+     "Equity $",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "",
+     "47,026,886",
+     "",
+     "47,027",
+     "",
+     "92,429,203",
+     "",
+     "2,035,666",
+     "",
+     "",
+     "(99,754)",
+     "",
+     "",
+     "10,361,701",
+     "",
+     "(85,530,306)",
+     "",
+     "",
+     "19,243,537",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of options granted (Note 13)",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "17,718",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "17,718",
+     ""
+    ],
+    [
+     "Noncontrolling interest ((Note 7(a) and (b))",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "67,571",
+     "",
+     "\u2013",
+     "",
+     "",
+     "67,571",
+     ""
+    ],
+    [
+     "Foreign exchange translation loss",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "(384,835)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(384,835)",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(3,259,230)",
+     "",
+     "",
+     "(3,259,230)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2022",
+     "",
+     "47,026,886",
+     "",
+     "47,027",
+     "",
+     "92,446,921",
+     "",
+     "1,650,831",
+     "",
+     "",
+     "(99,754)",
+     "",
+     "",
+     "10,429,272",
+     "",
+     "(88,789,536)",
+     "",
+     "",
+     "15,684,761",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of options granted (Note 13)",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "9,194",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "9,194",
+     ""
+    ],
+    [
+     "Noncontrolling interest ((Note 7(a) and (b))",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "5,737,809",
+     "",
+     "\u2013",
+     "",
+     "",
+     "5,737,809",
+     ""
+    ],
+    [
+     "Foreign exchange translation gain",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "202,891",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "202,891",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "(2,241,871)",
+     "",
+     "",
+     "(2,241,871)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance September 30, 2022",
+     "",
+     "47,026,886",
+     "",
+     "47,027",
+     "",
+     "92,456,115",
+     "",
+     "1,853,722",
+     "",
+     "",
+     "(99,754)",
+     "",
+     "",
+     "16,167,081",
+     "",
+     "(91,031,407)",
+     "",
+     "",
+     "19,392,784",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 301,
+    "end_line": 326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(1) The period ended September 30, 2022, includes 312,500 (2021 \u2013 312,500) stock options as they are exercisable at any time and for nominal cash consideration.\n(The accompanying notes are an integral part of these consolidated financial statements)\nCondensed Consolidated Interim Statements of Stockholders Equity",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 299,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares #",
+     "",
+     "Amount $",
+     "",
+     "Capital $",
+     "",
+     "Income $",
+     "",
+     "Deficit $",
+     "",
+     "",
+     "Equity $",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2021",
+     "",
+     "46,990,565",
+     "",
+     "46,991",
+     "",
+     "92,327,092",
+     "",
+     "892,732",
+     "",
+     "(74,777,848)",
+     "",
+     "",
+     "18,488,967",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of options granted (Note 13)",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "13,788",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "13,788",
+     ""
+    ],
+    [
+     "Foreign exchange translation gain",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "176,116",
+     "",
+     "\u2013",
+     "",
+     "",
+     "176,116",
+     ""
+    ],
+    [
+     "Net loss for the period, as restated",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "(3,261,703)",
+     "",
+     "",
+     "(3,261,703)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2021, as restated",
+     "",
+     "46,990,565",
+     "",
+     "46,991",
+     "",
+     "92,340,880",
+     "",
+     "1,068,848",
+     "",
+     "(78,039,551)",
+     "",
+     "",
+     "15,417,168",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of options granted (Note 13)",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "13,941",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "13,941",
+     ""
+    ],
+    [
+     "Shares issued for service",
+     "",
+     "11,321",
+     "",
+     "11",
+     "",
+     "23,989",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "24,000",
+     ""
+    ],
+    [
+     "Shares issued on the exercise of stock options",
+     "",
+     "25,000",
+     "",
+     "25",
+     "",
+     "225",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "250",
+     ""
+    ],
+    [
+     "Foreign exchange translation gain",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "41,209",
+     "",
+     "\u2013",
+     "",
+     "",
+     "41,209",
+     ""
+    ],
+    [
+     "Net loss for the period, as restated",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "(4,361,185)",
+     "",
+     "",
+     "(4,361,185)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance September 30, 2021, as restated",
+     "",
+     "47,026,886",
+     "",
+     "47,027",
+     "",
+     "92,379,035",
+     "",
+     "1,110,057",
+     "",
+     "(82,400,736)",
+     "",
+     "",
+     "11,135,383",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 327,
+    "end_line": 352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(The accompanying notes are an integral part of these consolidated financial statements)\nCondensed Consolidated Interim Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 299,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended September 30, 2022",
+     "",
+     "",
+     "Six Months Ended September 30, 2021 (As restated- Note 2)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "(5,501,101)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of intangible assets (Note 5)",
+     "",
+     "440,084",
+     "",
+     "",
+     "781,678",
+     ""
+    ],
+    [
+     "Depreciation (Note 4)",
+     "",
+     "103,071",
+     "",
+     "",
+     "99,543",
+     ""
+    ],
+    [
+     "Fair value of stock options granted",
+     "",
+     "26,912",
+     "",
+     "",
+     "27,729",
+     ""
+    ],
+    [
+     "Financing interest",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(292,951)",
+     ""
+    ],
+    [
+     "Gain / (loss) on unrealized foreign exchange",
+     "",
+     "741,527",
+     "",
+     "",
+     "(59,013)",
+     ""
+    ],
+    [
+     "Lease finance charge",
+     "",
+     "\u2013",
+     "",
+     "",
+     "9,453",
+     ""
+    ],
+    [
+     "Operating lease expense (Note 15)",
+     "",
+     "208,990",
+     "",
+     "",
+     "243,367",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "\u2013",
+     "",
+     "",
+     "24,000",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Short-term investments and amounts held in trust",
+     "",
+     "391,331",
+     "",
+     "",
+     "238,149",
+     ""
+    ],
+    [
+     "Accounts receivable and other receivables",
+     "",
+     "3,001,963",
+     "",
+     "",
+     "5,328,353",
+     ""
+    ],
+    [
+     "Accrued revenue",
+     "",
+     "294,472",
+     "",
+     "",
+     "1,574,584",
+     ""
+    ],
+    [
+     "Prepaid expenses, parts inventory and advances",
+     "",
+     "(1,018,499)",
+     "",
+     "",
+     "(816,960)",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "21,881",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Lease payments",
+     "",
+     "(249,024)",
+     "",
+     "",
+     "(273,144)",
+     ""
+    ],
+    [
+     "Prepaid manufacturing costs",
+     "",
+     "(804,949)",
+     "",
+     "",
+     "25,162",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "(4,510,808)",
+     "",
+     "",
+     "(11,633,333)",
+     ""
+    ],
+    [
+     "Warranty provision",
+     "",
+     "(43,331)",
+     "",
+     "",
+     "(274,464)",
+     ""
+    ],
+    [
+     "Contract liabilities",
+     "",
+     "1,957,452",
+     "",
+     "",
+     "5,434,882",
+     ""
+    ],
+    [
+     "Due to related parties",
+     "",
+     "69,547",
+     "",
+     "",
+     "(174,837)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,870,482)",
+     "",
+     "",
+     "(7,360,689)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additions of property and equipment",
+     "",
+     "(9,052)",
+     "",
+     "",
+     "(29,535)",
+     ""
+    ],
+    [
+     "Projects under development",
+     "",
+     "(15,316,717)",
+     "",
+     "",
+     "(235,304)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(15,325,769)",
+     "",
+     "",
+     "(264,839)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncontrolling interest (Note 7(a) and (b))",
+     "",
+     "16,167,081",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Proceeds from loan facility (Note 10)",
+     "",
+     "1,667,426",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Proceeds on option exercise",
+     "",
+     "\u2013",
+     "",
+     "",
+     "250",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "17,834,507",
+     "",
+     "",
+     "250",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of foreign exchange rate changes on cash",
+     "",
+     "(899,218)",
+     "",
+     "",
+     "97,547",
+     ""
+    ],
+    [
+     "Change in cash and cash equivalents",
+     "",
+     "(3,260,962)",
+     "",
+     "",
+     "(7,527,731)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "6,286,468",
+     "",
+     "",
+     "23,436,417",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "",
+     "3,025,506",
+     "",
+     "",
+     "15,908,686",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 360,
+    "end_line": 415
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(The accompanying notes are an integral part of these consolidated financial statements)\nCondensed Consolidated Interim Statements of Cash Flows",
+   "prose_after": "(The accompanying notes are an integral part of these consolidated financial statements)\n(Unaudited)\n1. Nature of Operations\nPacific Green Technologies Inc. (the \u201cCompany\u201d) was incorporated in the state of Delaware, USA on March 10, 1994. The Company is in the business of acquiring, developing, and marketing environmental technologies, with a focus on emission control technologies.\nThe condensed consolidated interim financial statements of the Company should be read in conjunction with the consolidated financial statements and accompanying notes filed with the U.S. Securities and Exchange Commission in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended March 31, 2022. In the opinion of management, the accompanying condensed consolidated interim financial statements reflect all adjustments of a recurring nature considered necessary to present fairly the Company\u2019s financial position and the results of its operations and its cash flows for the periods shown.\nThe preparation of these condensed consolidated interim financial statements in accordance with accounting principles generally accepted in the United States requires management to make estimates and assumptions that affect the amounts reported. Actual results could differ materially from those estimates. The results of operations and cash flows for the periods shown are not necessarily indicative of the results to be expected for the full year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 358,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pacific Green Innoergy Technologies Ltd. (\u201cInnoergy\u201d) (Formerly Innoergy Ltd.)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Marine Technologies Group Inc. (\u201cPGMG\u201d)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Marine Technologies Inc. (PGMT US)",
+     "Wholly-owned subsidiary of PGMG"
+    ],
+    [
+     "Pacific Green Technologies (UK) Ltd. (Formerly Pacific Green Marine Technologies Ltd.) (\u201cPGTU\u201d)",
+     "Wholly-owned subsidiary of PGMG"
+    ],
+    [
+     "Pacific Green Technologies (Middle East) Holdings Ltd. (\u201cPGTME\u201d)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Technologies Arabia LLC (\u201cPGTAL\u201d)",
+     "70% owned subsidiary of PGTME"
+    ],
+    [
+     "Pacific Green Marine Technologies (USA) Inc. (inactive)",
+     "Wholly-owned subsidiary of PGMG"
+    ],
+    [
+     "Pacific Green Technologies (Canada) Inc. (\u201cPGT Can\u201d) (Formerly Pacific Green Marine Technologies Inc.",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Solar Technologies Inc. (\u201cPGST\u201d)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Corporate Development Inc. (\u201cPGCD\u201d) (formerly Pacific Green Hydrogen Technologies Inc.)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Wind Technologies Inc (\u201cPGWT\u201d)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Technologies International Ltd. (\u201cPGTIL\u201d)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Technologies Asia Ltd.(\u201cPGTA\u201d)",
+     "Wholly-owned subsidiary of PGTIL"
+    ],
+    [
+     "Pacific Green Technologies Engineering Services Limited (Formally Pacific Green Technologies China Ltd. (\u201cPGTESL\u201d)",
+     "Wholly-owned subsidiary of PGTA"
+    ],
+    [
+     "Pacific Green Technologies (Australia) Pty Ltd.  (\u201cPGTAPL\u201d)",
+     "Wholly-owned subsidiary of PGTA"
+    ],
+    [
+     "Pacific Green Environmental Technologies (Asia) Ltd. (\u201cPGETA\u201d)",
+     "50.1% owned subsidiary"
+    ],
+    [
+     "Pacific Green Technologies (Shanghai) Co. Ltd. (\u201cEngin\u201d) (Formerly Shanghai Engin Digital Technology Co. Ltd)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Guangdong Northeast Power Engineering Design Co. Ltd. (\u201cGNPE\u201d)",
+     "Wholly-owned subsidiary of ENGIN"
+    ],
+    [
+     "Pacific Green Energy Parks Inc. (\u201cPGEP\u201d)",
+     "Wholly-owned subsidiary"
+    ],
+    [
+     "Pacific Green Energy Storage Technologies Inc. (\u201cPGEST\u201d)",
+     "Wholly-owned subsidiary of PGEP"
+    ],
+    [
+     "Pacific Green Energy Storage (UK) Ltd. (\u201cPGESU\u201d) (Formerly Pacific Green Marine Technologies Trading Ltd.)",
+     "Wholly-owned subsidiary of PGEP"
+    ],
+    [
+     "Pacific Green Battery Energy Parks 1 Ltd. (\u201cPGBEP\u201d)",
+     "50% owned subsidiary of PGESU"
+    ],
+    [
+     "Pacific Green Battery Energy Parks 2 Ltd. (\u201cPGBEP2\u201d)",
+     "Wholly-owned subsidiary of PGESU"
+    ],
+    [
+     "Richborough Energy Park Ltd. (\u201cRichborough\u201d)",
+     "Wholly-owned subsidiary of PGBEP"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 438,
+    "end_line": 464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The condensed consolidated interim financial statements of the Company should be read in conjunction with the consolidated financial statements and accompanying notes filed with the U.S. Securities and Exchange Commission in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended March 31, 2022. In the opinion of management, the accompanying condensed consolidated interim financial statements reflect all adjustments of a recurring nature considered necessary to present fairly the Company\u2019s financial position and the results of its operations and its cash flows for the periods shown.\nThe preparation of these condensed consolidated interim financial statements in accordance with accounting principles generally accepted in the United States requires management to make estimates and assumptions that affect the amounts reported. Actual results could differ materially from those estimates. The results of operations and cash flows for the periods shown are not necessarily indicative of the results to be expected for the full year.\n2. Significant Accounting Policies\n(a) Basis of Presentation\nThese consolidated financial statements and related notes are presented in accordance with accounting principles generally accepted in the United States of America and are expressed in U.S. dollars. The following accounting policies are consistently applied in the preparation of the consolidated financial statements. These consolidated financial statements include the accounts of the Company and the following entities:",
+   "prose_after": "All inter-company balances and transactions have been eliminated upon consolidation.\n2. Significant Accounting Policies (continued)\n(b) Restatement of Financial Statements\nIn June 2022, while preparing the financial statements for the year-ending March 31, 2022, the Company identified errors in previously issued unaudited quarterly financial statements. Refer to Note 2 and Note 22 to the Company\u2019s audited consolidated financial statements included in its Annual Report on Form 10-K for the year ended March 31, 2022, for additional information regarding the impact of the restatement on the Company\u2019s unaudited condensed consolidated statement of operations and certain note presentation.\n- Revenue and cost of sales has been adjusted to record revenue on marine scrubber contracts as a single performance obligation recognized over time.\n- Cost of sales has been adjusted to include amortization of certain intangible assets, commission amounts, salaries and wages, and technical consulting costs that had previously been included within other expense captions in the financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six months ended September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As Previously Reported",
+     "",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "As Restated",
+     "",
+     "",
+     "As Previously Reported",
+     "",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "As Restated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "239,381",
+     "",
+     "",
+     "(100,845)",
+     "",
+     "",
+     "138,536",
+     "",
+     "",
+     "2,892,820",
+     "",
+     "",
+     "(1,431,033)",
+     "",
+     "",
+     "1,461,787",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "106,429",
+     "",
+     "",
+     "577,632",
+     "",
+     "",
+     "684,060",
+     "",
+     "",
+     "1,808,909",
+     "",
+     "",
+     "396,160",
+     "",
+     "",
+     "2,205,069",
+     ""
+    ],
+    [
+     "Gross profit / (loss)",
+     "",
+     "132,952",
+     "",
+     "",
+     "(678,476)",
+     "",
+     "",
+     "(545,524)",
+     "",
+     "",
+     "1,083,911",
+     "",
+     "",
+     "(1,827,194)",
+     "",
+     "",
+     "(743,283)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "391,188",
+     "",
+     "",
+     "(219,367)",
+     "",
+     "",
+     "171,821",
+     "",
+     "",
+     "781,678",
+     "",
+     "",
+     "(438,734)",
+     "",
+     "",
+     "342,944",
+     ""
+    ],
+    [
+     "Consulting fees, technical support, and commissions",
+     "",
+     "991,101",
+     "",
+     "",
+     "(208,400)",
+     "",
+     "",
+     "782,701",
+     "",
+     "",
+     "2,045,454",
+     "",
+     "",
+     "(517,201)",
+     "",
+     "",
+     "1,528,253",
+     ""
+    ],
+    [
+     "Salaries and wage expenses",
+     "",
+     "1,393,514",
+     "",
+     "",
+     "(64,034)",
+     "",
+     "",
+     "1,329,480",
+     "",
+     "",
+     "2,795,494",
+     "",
+     "",
+     "(210,808)",
+     "",
+     "",
+     "2,584,686",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "4,545,105",
+     "",
+     "",
+     "(491,801)",
+     "",
+     "",
+     "4,053,304",
+     "",
+     "",
+     "8,440,030",
+     "",
+     "",
+     "(1,166,742)",
+     "",
+     "",
+     "7,273,288",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "(4,174,510)",
+     "",
+     "",
+     "(186,675)",
+     "",
+     "",
+     "(4,361,185)",
+     "",
+     "",
+     "(6,962,436)",
+     "",
+     "",
+     "(660,451)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ],
+    [
+     "Comprehensive loss for the period",
+     "",
+     "(4,133,301)",
+     "",
+     "",
+     "(186,675)",
+     "",
+     "",
+     "(4,319,976)",
+     "",
+     "",
+     "(6,745,111)",
+     "",
+     "",
+     "(660,451)",
+     "",
+     "",
+     "(7,405,562)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted income / (loss) per share",
+     "",
+     "(0.09)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(0.09)",
+     "",
+     "",
+     "(0.15)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(0.16)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 482,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Significant Accounting Policies"
+    }
+   },
+   "prose_before": "In June 2022, while preparing the financial statements for the year-ending March 31, 2022, the Company identified errors in previously issued unaudited quarterly financial statements. Refer to Note 2 and Note 22 to the Company\u2019s audited consolidated financial statements included in its Annual Report on Form 10-K for the year ended March 31, 2022, for additional information regarding the impact of the restatement on the Company\u2019s unaudited condensed consolidated statement of operations and certain note presentation.\n- Revenue and cost of sales has been adjusted to record revenue on marine scrubber contracts as a single performance obligation recognized over time.\n- Cost of sales has been adjusted to include amortization of certain intangible assets, commission amounts, salaries and wages, and technical consulting costs that had previously been included within other expense captions in the financial statements.\nThe impact on the interim consolidated statement of cash flows has been reclassified within the operating activities for all periods presented.\nCONSOLIDATED STATEMENT OF OPERATIONS AND COMPREHENSIVE INCOME",
+   "prose_after": "2. Significant Accounting Policies (continued)\n(c) Recent Accounting Pronouncements\nIn June 2016, the FASB issued ASU 2016-13, Financial Instruments \u2013 Credit Losses. The ASU sets forth a \u201ccurrent expected credit loss\u201d (CECL) model which requires the Company to measure all expected credit losses for financial instruments held at the reporting date based on historical experience, current conditions, and reasonable supportable forecasts. This replaces the existing incurred loss model and is applicable to the measurement of credit losses on financial assets measured at amortized cost and applies to some off-balance sheet credit exposures. As a smaller reporting company, this ASU is effective for fiscal years beginning after January 1, 2023, including interim periods within those fiscal years. The Company is currently assessing the impact of the adoption of this ASU on its Consolidated Financial Statements.\nThe Company has implemented all new accounting pronouncements that are in effect and that may impact its consolidated financial statements and management does not believe that there are any other new accounting pronouncements that have been issued that might have a material impact on its financial position or results of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 466,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cost $",
+     "",
+     "Accumulated depreciation $",
+     "",
+     "",
+     "September 30, 2022 Net carrying value $",
+     "",
+     "March 31, 2022 Net carrying value $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Building",
+     "",
+     "918,039",
+     "",
+     "(195,542)",
+     "",
+     "",
+     "722,497",
+     "",
+     "857,922"
+    ],
+    [
+     "Furniture and equipment",
+     "",
+     "371,425",
+     "",
+     "(196,760)",
+     "",
+     "",
+     "174,665",
+     "",
+     "202,764"
+    ],
+    [
+     "Computer equipment",
+     "",
+     "15,393",
+     "",
+     "(13,995)",
+     "",
+     "",
+     "1,398",
+     "",
+     "4,368"
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "9,963",
+     "",
+     "(6,974)",
+     "",
+     "",
+     "2,989",
+     "",
+     "19,401"
+    ],
+    [
+     "Testing equipment- scrubber system",
+     "",
+     "132,513",
+     "",
+     "(69,801)",
+     "",
+     "",
+     "62,712",
+     "",
+     "81,786"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,447,333",
+     "",
+     "(483,072)",
+     "",
+     "",
+     "964,261",
+     "",
+     "1,166,241"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "In June 2016, the FASB issued ASU 2016-13, Financial Instruments \u2013 Credit Losses. The ASU sets forth a \u201ccurrent expected credit loss\u201d (CECL) model which requires the Company to measure all expected credit losses for financial instruments held at the reporting date based on historical experience, current conditions, and reasonable supportable forecasts. This replaces the existing incurred loss model and is applicable to the measurement of credit losses on financial assets measured at amortized cost and applies to some off-balance sheet credit exposures. As a smaller reporting company, this ASU is effective for fiscal years beginning after January 1, 2023, including interim periods within those fiscal years. The Company is currently assessing the impact of the adoption of this ASU on its Consolidated Financial Statements.\nThe Company has implemented all new accounting pronouncements that are in effect and that may impact its consolidated financial statements and management does not believe that there are any other new accounting pronouncements that have been issued that might have a material impact on its financial position or results of operations.\n3. Short-term Investments and Amounts in Escrow\nAt September 30, 2022, the Company has a $57,948 (March 31, 2022 - $60,837) Guaranteed Investment Certificate (\u201cGIC\u201d) held as security against a corporate credit card. The GIC bears interest at 0.5% per annum and matures on December 13, 2022.\nAt September 30, 2022, the Company\u2019s solicitor is holding $1,483,044 (March 31, 2022 - $1,871,486) relating to proceeds under customer contracts to be released upon satisfying performance obligations.\n4. Property and Equipment",
+   "prose_after": "For the three and six months ended September 30, 2022, the Company recorded $49,487 (2021 \u2013 $49,777) and $103,071 (2021 \u2013 $99,543) in depreciation expense on property and equipment.\n5. Intangible Assets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Cost $",
+     "",
+     "Accumulated amortization $",
+     "",
+     "",
+     "Cumulative impairment $",
+     "",
+     "",
+     "September 30, 2022 Net carrying value $",
+     "",
+     "March 31, 2022 Net carrying value $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents and technical information",
+     "",
+     "35,852,556",
+     "",
+     "(8,743,147)",
+     "",
+     "",
+     "(20,457,255)",
+     "",
+     "",
+     "6,652,154",
+     "",
+     "7,090,887"
+    ],
+    [
+     "Software licensing",
+     "",
+     "12,830",
+     "",
+     "(6,212)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "6,618",
+     "",
+     "8,861"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "35,865,386",
+     "",
+     "(8,749,359)",
+     "",
+     "",
+     "(20,457,255)",
+     "",
+     "",
+     "6,658,772",
+     "",
+     "7,099,748"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 546,
+    "end_line": 557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Intangible Assets"
+    }
+   },
+   "prose_before": "For the three and six months ended September 30, 2022, the Company recorded $49,487 (2021 \u2013 $49,777) and $103,071 (2021 \u2013 $99,543) in depreciation expense on property and equipment.\n5. Intangible Assets",
+   "prose_after": "For the three and six months ended September 30, 2022, the Company recorded $220,029 (2021 \u2013 $391,188) and $440,084 (2021 \u2013 $781,678) in amortization expense on intangible assets.\nFor the three and six months ended September 30, 2022, the Company has allocated $219,367 (2021 - $219,367) and $438,734 (2021 - $438,734) of amortization of patents and technical information to cost of goods sold. The amount remaining in amortization expense is $662 (2021 - $171,821) and $1,350 (2021\n- $342,944) for the three and six months ended September 30, 2022.\nFuture amortization of intangible assets is as follows based on fiscal year:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "439,984"
+    ],
+    [
+     "2024",
+     "",
+     "880,132"
+    ],
+    [
+     "2025",
+     "",
+     "880,132"
+    ],
+    [
+     "2026",
+     "",
+     "877,452"
+    ],
+    [
+     "2027",
+     "",
+     "877,452"
+    ],
+    [
+     "Thereafter",
+     "",
+     "2,703,620"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "6,658,772"
+    ]
+   ],
+   "caption_stack": [
+    "$"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Intangible Assets"
+    }
+   },
+   "prose_before": "For the three and six months ended September 30, 2022, the Company recorded $220,029 (2021 \u2013 $391,188) and $440,084 (2021 \u2013 $781,678) in amortization expense on intangible assets.\nFor the three and six months ended September 30, 2022, the Company has allocated $219,367 (2021 - $219,367) and $438,734 (2021 - $438,734) of amortization of patents and technical information to cost of goods sold. The amount remaining in amortization expense is $662 (2021 - $171,821) and $1,350 (2021\n- $342,944) for the three and six months ended September 30, 2022.\nFuture amortization of intangible assets is as follows based on fiscal year:",
+   "prose_after": "6. Acquisition of Richborough Energy Park Ltd.\nOn March 18, 2021, the Company acquired all the issued and outstanding stock of Richborough Energy Park Ltd., a United Kingdom company in the business of battery energy storage systems.\nThe purchase consideration included cash payments of $681,957 (\u00a3494,351) made on March 18, 2021 and three conditional payments of $515,622 (\u00a3374,500) each on specified dates according to the share purchase agreement. The first conditional payment was made in May 2021. The second conditional payment was made in June 2022. The third and final payment is planned to be made in March 2023.\nTotal purchase consideration was estimated at $2,166,452, inclusive of the fair value of the conditional payments, which were considered probable at the acquisition date. The value attributed to the identifiable assets acquired and liabilities assumed are cash of $1, other net working capital of $535, security deposit of $164,799, and project under development of $2,001,116. The consideration was allocated on a relative fair value basis to the assets acquired and liabilities assumed. For the year ended March 31, 2022, additions of $1,854,676 to project under development were recorded. For the six months ended September 30, 2022, additions of $15,316,717 to project under development were recorded.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-redeemable noncontrolling interest, March 31, 2022",
+     "",
+     "10,361,701",
+     ""
+    ],
+    [
+     "Noncontrolling interest coupon distribution",
+     "",
+     "115,240",
+     ""
+    ],
+    [
+     "Net income attributable to noncontrolling interest, June 30, 2022",
+     "",
+     "24,464",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-redeemable noncontrolling interest, June 30, 2022",
+     "",
+     "10,501,405",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-redeemable noncontrolling interest contribution",
+     "",
+     "5,778,638",
+     ""
+    ],
+    [
+     "Noncontrolling interest coupon distribution",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Net loss attributable to noncontrolling interest, September 30, 2022",
+     "",
+     "(52,921)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-redeemable noncontrolling interest, September 30, 2022",
+     "",
+     "16,227,122",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "$"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 597,
+    "end_line": 617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Noncontrolling Interest"
+    }
+   },
+   "prose_before": "Total purchase consideration was estimated at $2,166,452, inclusive of the fair value of the conditional payments, which were considered probable at the acquisition date. The value attributed to the identifiable assets acquired and liabilities assumed are cash of $1, other net working capital of $535, security deposit of $164,799, and project under development of $2,001,116. The consideration was allocated on a relative fair value basis to the assets acquired and liabilities assumed. For the year ended March 31, 2022, additions of $1,854,676 to project under development were recorded. For the six months ended September 30, 2022, additions of $15,316,717 to project under development were recorded.\n7. Noncontrolling Interest\n(a) On March 30, 2022, the Company entered into an agreement with Green Power Reserves Limited (\u201cGPR\u201d), wherein GPR agreed to make an equity investment of $16.3 million (\u00a313.0 million) for a fifty percent shareholding in Pacific Green Battery Energy Parks 1 Limited (\u201cPGBEP\u201d). The Company retains control over PGBEP by virtue of holding 65% of the voting rights and appointing two of the three directors. The Company received $9.4 million (\u00a37.2 million) for the three months ended June 30, 2022 and a further $6.7 million (\u00a35.6 million) for the three months ended September 30, 2022. It will receive the remaining $0.2 million (\u00a30.2 million) demand as project cash requirements demand.\nDetails of the carrying amount of the noncontrolling interests are as follows:",
+   "prose_after": "(b) On December 2, 2020, the Company signed an agreement with Amr Khashoggi Trading Company Limited (\u201cAmkest Group\u201d) to incorporate a company in the Kingdom of Saudi Arabia for the sale of Pacific Green\u2019s environmental technologies within the region. The Company holds 70% interest. The Company incorporated Pacific Green Technologies Arabia LLC on November 23, 2021. The Company has paid in share capital and loans amounting to $504,849 to fund operational expenses from April 1, 2022.\nDetails of the carrying amount of the noncontrolling interests are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable noncontrolling interest, March 31, 2022",
+     "\u2013",
+     "",
+     ""
+    ],
+    [
+     "Redeemable noncontrolling interest receivable from Amkest Group",
+     "",
+     "(68,253)",
+     ""
+    ],
+    [
+     "Net loss attributable to noncontrolling interest, June 30, 2022",
+     "",
+     "(3,880)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable noncontrolling interest, June 30, 2022",
+     "",
+     "(72,133)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Written - off redeemable noncontrolling interest receivable from Amkest Group",
+     "",
+     "68,253",
+     ""
+    ],
+    [
+     "Net loss attributable to noncontrolling interest, September 30, 2022",
+     "",
+     "(56,161)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-redeemable noncontrolling interest, September 30, 2022",
+     "",
+     "(60,041)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "$"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Noncontrolling Interest"
+    }
+   },
+   "prose_before": "(b) On December 2, 2020, the Company signed an agreement with Amr Khashoggi Trading Company Limited (\u201cAmkest Group\u201d) to incorporate a company in the Kingdom of Saudi Arabia for the sale of Pacific Green\u2019s environmental technologies within the region. The Company holds 70% interest. The Company incorporated Pacific Green Technologies Arabia LLC on November 23, 2021. The Company has paid in share capital and loans amounting to $504,849 to fund operational expenses from April 1, 2022.\nDetails of the carrying amount of the noncontrolling interests are as follows:",
+   "prose_after": "8. Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities\nThe Company derives revenue from the sale of products and delivery of services. Revenue disaggregated by type for the three and six months ended September 30, 2022, and 2021 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 589,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2022 $",
+     "",
+     "Three Months Ended September 30, 2021 $",
+     "",
+     "Six Months Ended September 30, 2022 $",
+     "",
+     "Six Months Ended September 30, 2021 $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products",
+     "",
+     "699,289",
+     "",
+     "\u2013",
+     "",
+     "2,354,447",
+     "",
+     "742,291"
+    ],
+    [
+     "Services",
+     "",
+     "496,064",
+     "",
+     "138,536",
+     "",
+     "864,782",
+     "",
+     "719,496"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,195,353",
+     "",
+     "138,536",
+     "",
+     "3,219,229",
+     "",
+     "1,461,787"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities"
+    }
+   },
+   "prose_before": "8. Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities\nThe Company derives revenue from the sale of products and delivery of services. Revenue disaggregated by type for the three and six months ended September 30, 2022, and 2021 is as follows:",
+   "prose_after": "Revenue from services include specific services provided to marine scrubber systems as well as design and engineering services for Concentrated Solar Power. Contracts for specific services provided to marine scrubber systems represent maintenance services. Contracts for Concentrated Solar Power include design and engineering services provided to clients. Revenue for service contracts is recognized as the services are provided.\nService revenue by type for the three and six months ended September 30, 2022, and 2021 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2022 $",
+     "",
+     "Three Months Ended September 30, 2021 $",
+     "",
+     "Six Months Ended September 30, 2022 $",
+     "",
+     "Six Months Ended September 30, 2021 $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Specific services provided to marine scrubber systems",
+     "",
+     "362,649",
+     "",
+     "39,674",
+     "",
+     "651,552",
+     "",
+     "408,467"
+    ],
+    [
+     "Design and engineering services for Concentrated Solar Power",
+     "",
+     "133,415",
+     "",
+     "98,862",
+     "",
+     "213,229",
+     "",
+     "311,029"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "496,064",
+     "",
+     "138,536",
+     "",
+     "864,781",
+     "",
+     "719,496"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 680
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities"
+    }
+   },
+   "prose_before": "Revenue from services include specific services provided to marine scrubber systems as well as design and engineering services for Concentrated Solar Power. Contracts for specific services provided to marine scrubber systems represent maintenance services. Contracts for Concentrated Solar Power include design and engineering services provided to clients. Revenue for service contracts is recognized as the services are provided.\nService revenue by type for the three and six months ended September 30, 2022, and 2021 is as follows:",
+   "prose_after": "The Company has analyzed its sales contracts under ASC 606 and has identified that the percentage of completion of the contract often is not directly correlated with contractual billing terms with customers. As a result of the timing differences between customer sales invoices and percentage of completion of the contract, contractual assets and contractual liabilities have been recognized.\n8. Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities (continued)\nChanges in the Company\u2019s contract assets and liabilities for the periods are noted as below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 645,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Accrued Revenue $",
+     "",
+     "",
+     "Prepaid Manufacturing Costs $",
+     "",
+     "",
+     "Sales (Cost of Goods Sold) $",
+     "",
+     "",
+     "Contract Liabilities $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2021",
+     "",
+     "1,574,584",
+     "",
+     "",
+     "1,065,465",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(11,580,894)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer receipts and receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(9,242,318)",
+     ""
+    ],
+    [
+     "Scrubber sales recognized in revenue",
+     "",
+     "\u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "12,680,103",
+     "",
+     "",
+     "12,680,103",
+     ""
+    ],
+    [
+     "Payments and accruals under contracts",
+     "",
+     "(1,042,637)",
+     "",
+     "",
+     "1,478,124",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Cost of goods sold recognized in earnings",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(2,505,579)",
+     "",
+     "",
+     "(2,505,579)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "",
+     "531,947",
+     "",
+     "",
+     "38,010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(8,143,109)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer receipts and receivables",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(4,311,899)",
+     ""
+    ],
+    [
+     "Scrubber sales recognized in revenue",
+     "",
+     "\u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,354,447",
+     "",
+     "",
+     "2,354,447",
+     ""
+    ],
+    [
+     "Payments and accruals under contracts",
+     "",
+     "(294,472)",
+     "",
+     "",
+     "2,505,196",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Cost of goods sold recognized in earnings",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(1,700,247)",
+     "",
+     "",
+     "(1,700,247)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2022",
+     "",
+     "237,475",
+     "",
+     "",
+     "842,959",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(10,100,561)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 712
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities"
+    }
+   },
+   "prose_before": "The Company has analyzed its sales contracts under ASC 606 and has identified that the percentage of completion of the contract often is not directly correlated with contractual billing terms with customers. As a result of the timing differences between customer sales invoices and percentage of completion of the contract, contractual assets and contractual liabilities have been recognized.\n8. Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities (continued)\nChanges in the Company\u2019s contract assets and liabilities for the periods are noted as below:",
+   "prose_after": "8. Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities (continued)\nCost of goods sold for the period ended September 30, 2022 and 2021 is comprised as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 682,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2022 $",
+     "",
+     "Three Months Ended September 30, 2021 $",
+     "",
+     "Six Months Ended September 30, 2022 $",
+     "",
+     "Six Months Ended September 30, 2021 $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Scrubber costs recognized",
+     "",
+     "419,736",
+     "",
+     "\u2013",
+     "",
+     "1,042,901",
+     "",
+     "584,286"
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "23,940",
+     "",
+     "85,623",
+     "",
+     "86,319",
+     "",
+     "250,055"
+    ],
+    [
+     "Amortization of intangibles",
+     "",
+     "219,367",
+     "",
+     "219,367",
+     "",
+     "438,734",
+     "",
+     "438,734"
+    ],
+    [
+     "Commission type costs",
+     "",
+     "49,997",
+     "",
+     "169,794",
+     "",
+     "132,293",
+     "",
+     "431,827"
+    ],
+    [
+     "Design and engineering services for CSP",
+     "",
+     "51,232",
+     "",
+     "16,909",
+     "",
+     "150,200",
+     "",
+     "179,863"
+    ],
+    [
+     "Specific services provided to marine scrubber systems",
+     "",
+     "290,408",
+     "",
+     "192,367",
+     "",
+     "432,776",
+     "",
+     "320,304"
+    ],
+    [
+     "Total",
+     "",
+     "1,054,680",
+     "",
+     "684,060",
+     "",
+     "2,283,223",
+     "",
+     "2,205,069"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 732
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities"
+    }
+   },
+   "prose_before": "8. Sales, Prepaid Manufacturing Costs, Cost of Goods Sold, and Contract Liabilities (continued)\nCost of goods sold for the period ended September 30, 2022 and 2021 is comprised as follows:",
+   "prose_after": "As of September 30, 2022, Contract liabilities included $8,038,674 (March 31, 2022 - $8,098,009) aggregate cash receipts from one customer relating to nineteen vessels. At March 31, 2021 all nineteen had been postponed under the terms of a Postponement Agreement dated February 2, 2021, with an option to either proceed or cancel. Under a subsequent Option Agreement dated August 9, 2021, six of these vessels were contracted by the customer to proceed. None of the total contract liability at September 30, 2022 relates to these six vessels. The contract liability balance was mainly related to the other thirteen postponed vessels in the Postponement Agreement, which is due to expire on February 9, 2023. Should the thirteen vessels that are currently postponed remain as such at the expiry date, since there is no obligation to return the funds to the client, the contract liability would be recognized as revenue in full at that point in time.\n9. Accounts Payable and Accrued Liabilities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022 $",
+     "",
+     "March 31, 2022 $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,210,997",
+     "",
+     "757,102"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "3,712,301",
+     "",
+     "8,567,795"
+    ],
+    [
+     "Loans payable",
+     "",
+     "\u2013",
+     "",
+     "55,003"
+    ],
+    [
+     "Payroll liabilities",
+     "",
+     "160,681",
+     "",
+     "214,887"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total short term accounts payable and accrued liabilities",
+     "",
+     "5,083,979",
+     "",
+     "9,594,787"
+    ],
+    [
+     "Long term accounts payable and accrued liabilities",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "",
+     "5,083,979",
+     "",
+     "9,594,787"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 737,
+    "end_line": 754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Accounts Payable and Accrued Liabilities"
+    }
+   },
+   "prose_before": "As of September 30, 2022, Contract liabilities included $8,038,674 (March 31, 2022 - $8,098,009) aggregate cash receipts from one customer relating to nineteen vessels. At March 31, 2021 all nineteen had been postponed under the terms of a Postponement Agreement dated February 2, 2021, with an option to either proceed or cancel. Under a subsequent Option Agreement dated August 9, 2021, six of these vessels were contracted by the customer to proceed. None of the total contract liability at September 30, 2022 relates to these six vessels. The contract liability balance was mainly related to the other thirteen postponed vessels in the Postponement Agreement, which is due to expire on February 9, 2023. Should the thirteen vessels that are currently postponed remain as such at the expiry date, since there is no obligation to return the funds to the client, the contract liability would be recognized as revenue in full at that point in time.\n9. Accounts Payable and Accrued Liabilities",
+   "prose_after": "10. Loans Payable\nOn June 16, 2022, the Company signed a Facilities Agreement with Close Leasing Limited, for a total of \u00a328.25 million ($34.90 million) for the Richborough project. This constitutes a development facility at 4.5% above bank base rate until December 31, 2023. This will then be refinanced to a 5-year term loan, on a 10-year amortization profile. The term loan will bear interest at 4.5% above bank base rate for 20% of the balance, and a fixed rate of 7.173% for the 5-year period on the remaining 80% of the balance. There is also a revolving credit facility of up to \u00a31.19 million ($1.47 million) available until March 31, 2024.\nAs at September 30, 2022, a total of \u00a31,018,594 ($1,134,102) of the development facility had been utilized. This is not repayable until the development facility has been refinanced into the term facility. Meanwhile a total of \u00a3479,005 ($533,324) of the revolving credit facility was drawn as at September 30, 2022.\nAs at September 30, 2022, the Company is compliant with all financial covenants specified in the Facilities Agreement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022 $",
+     "",
+     "March 31, 2022 $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans payable",
+     "",
+     "533,324",
+     "",
+     "\u2013"
+    ],
+    [
+     "Long term loans payable",
+     "",
+     "1,134,102",
+     "",
+     "\u2013"
+    ],
+    [
+     "Balance, end of period",
+     "",
+     "1,667,426",
+     "",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 774
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Loans Payable"
+    }
+   },
+   "prose_before": "On June 16, 2022, the Company signed a Facilities Agreement with Close Leasing Limited, for a total of \u00a328.25 million ($34.90 million) for the Richborough project. This constitutes a development facility at 4.5% above bank base rate until December 31, 2023. This will then be refinanced to a 5-year term loan, on a 10-year amortization profile. The term loan will bear interest at 4.5% above bank base rate for 20% of the balance, and a fixed rate of 7.173% for the 5-year period on the remaining 80% of the balance. There is also a revolving credit facility of up to \u00a31.19 million ($1.47 million) available until March 31, 2024.\nAs at September 30, 2022, a total of \u00a31,018,594 ($1,134,102) of the development facility had been utilized. This is not repayable until the development facility has been refinanced into the term facility. Meanwhile a total of \u00a3479,005 ($533,324) of the revolving credit facility was drawn as at September 30, 2022.\nAs at September 30, 2022, the Company is compliant with all financial covenants specified in the Facilities Agreement.",
+   "prose_after": "11. Warranty Costs\nDuring the three and six months ended September 30, 2022, the Company recorded a non-cash warranty expense of $nil (2021 - $18,159) and $181,600 (2021 - warranty recovery of $21,648) as the Company provides warranties to customers for the design, materials, and installation of scrubber units. Product warranty is recorded at the time of sale and will be revised based on new information as system performance data becomes available.\nA summary of the changes in the warranty costs is shown below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022 $",
+     "",
+     "",
+     "March 31, 2022 $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "",
+     "865,451",
+     "",
+     "",
+     "2,425,107",
+     ""
+    ],
+    [
+     "Provision for warranty, net of expirations",
+     "",
+     "181,600",
+     "",
+     "",
+     "(731,529)",
+     ""
+    ],
+    [
+     "Warranty recoveries (costs)",
+     "",
+     "(224,931)",
+     "",
+     "",
+     "(828,127)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "",
+     "822,120",
+     "",
+     "",
+     "865,451",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 782,
+    "end_line": 794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Warranty Costs"
+    }
+   },
+   "prose_before": "11. Warranty Costs\nDuring the three and six months ended September 30, 2022, the Company recorded a non-cash warranty expense of $nil (2021 - $18,159) and $181,600 (2021 - warranty recovery of $21,648) as the Company provides warranties to customers for the design, materials, and installation of scrubber units. Product warranty is recorded at the time of sale and will be revised based on new information as system performance data becomes available.\nA summary of the changes in the warranty costs is shown below:",
+   "prose_after": "12. Related Party Transactions\n(a) At September 30, 2022, the Company owed $73,797 to (March 31, 2022 \u2013 $4,250) companies controlled by a director and officer of the Company. The amounts owing are unsecured, non-interest bearing, and due on demand.\n(b) During the three and six months ended September 30, 2022, the Company incurred $206,072 (2021 \u2013 $254,240) and $426,910 (2021 \u2013 $459,992) in consulting fees, salaries, and commissions to companies controlled by a director of the Company.\n(c) During the three and six months ended September 30, 2022, the Company incurred $46,289 (2021\u2013 $12,750) and $101,154 (2021\u2013 $25,500) in consulting fees to a director, or companies controlled by a director of a Subsidiary of the Company.\n(d) During the three and six months ended September 30, 2022, the Company incurred $201,072 (2021\u2013 $nil) and $505,572 (2021\u2013 $nil) in consulting fees to a director, or companies controlled by a director of the Company.\n13. Stock Options\nThe following table summarizes the continuity of stock options:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 804,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of options",
+     "",
+     "",
+     "Weighted average exercise price $",
+     "",
+     "Weighted average remaining contractual life (years)",
+     "",
+     "Aggregate intrinsic value $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2021",
+     "",
+     "3,302,500",
+     "",
+     "",
+     "1.52",
+     "",
+     "0.72",
+     "",
+     "2,300,425"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "125,000",
+     "",
+     "",
+     "1.14",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "0.01",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "(2,865,000)",
+     "",
+     "",
+     "1.70",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "",
+     "537,500",
+     "",
+     "",
+     "0.56",
+     "",
+     "1.43",
+     "",
+     "170,125"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2022",
+     "",
+     "537,500",
+     "",
+     "",
+     "0.56",
+     "",
+     "0.95",
+     "",
+     "227,638"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2022, vested and exercisable",
+     "",
+     "512,500",
+     "",
+     "",
+     "0.55",
+     "",
+     "0.89",
+     "",
+     "225,463"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 810,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock Options"
+    }
+   },
+   "prose_before": "12. Related Party Transactions\n(a) At September 30, 2022, the Company owed $73,797 to (March 31, 2022 \u2013 $4,250) companies controlled by a director and officer of the Company. The amounts owing are unsecured, non-interest bearing, and due on demand.\n(b) During the three and six months ended September 30, 2022, the Company incurred $206,072 (2021 \u2013 $254,240) and $426,910 (2021 \u2013 $459,992) in consulting fees, salaries, and commissions to companies controlled by a director of the Company.\n(c) During the three and six months ended September 30, 2022, the Company incurred $46,289 (2021\u2013 $12,750) and $101,154 (2021\u2013 $25,500) in consulting fees to a director, or companies controlled by a director of a Subsidiary of the Company.\n(d) During the three and six months ended September 30, 2022, the Company incurred $201,072 (2021\u2013 $nil) and $505,572 (2021\u2013 $nil) in consulting fees to a director, or companies controlled by a director of the Company.\n13. Stock Options\nThe following table summarizes the continuity of stock options:",
+   "prose_after": "Additional information regarding stock options outstanding as at September 30, 2022 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 804,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Issued and Outstanding",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of shares",
+     "Weighted average remaining contractual life (years)",
+     "",
+     "Exercise price $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "312,500",
+     "",
+     "0.25",
+     "",
+     "0.01"
+    ],
+    [
+     "25,000",
+     "",
+     "0.29",
+     "",
+     "2.26"
+    ],
+    [
+     "25,000",
+     "",
+     "1.29",
+     "",
+     "1.03"
+    ],
+    [
+     "50,000",
+     "",
+     "1.5",
+     "",
+     "1.50"
+    ],
+    [
+     "25,000",
+     "",
+     "2.30",
+     "",
+     "0.90"
+    ],
+    [
+     "20,000",
+     "",
+     "2.46",
+     "",
+     "1.20"
+    ],
+    [
+     "40,000",
+     "",
+     "2.46",
+     "",
+     "1.20"
+    ],
+    [
+     "40,000",
+     "",
+     "2.84",
+     "",
+     "1.20"
+    ],
+    [
+     "537,500",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Issued and Outstanding"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 832,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock Options"
+    }
+   },
+   "prose_before": "Additional information regarding stock options outstanding as at September 30, 2022 is as follows:",
+   "prose_after": "The estimated fair value of the stock options was being recorded over the requisite service period to vesting. For the three and six months ended September 30, 2022, the fair value of $9,194 (2021 - $13,941) and $26,912 (2021 - $27,729) was recorded as salaries expense.\nThe fair values were estimated using the Black-Scholes option pricing model assuming no expected dividends or forfeitures and the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 804,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three and Six Months Ended September 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.90",
+     "%"
+    ],
+    [
+     "Expected life (in years)",
+     "",
+     "3.12",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "129",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three and Six Months Ended September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 857,
+    "end_line": 865
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Stock Options"
+    }
+   },
+   "prose_before": "The estimated fair value of the stock options was being recorded over the requisite service period to vesting. For the three and six months ended September 30, 2022, the fair value of $9,194 (2021 - $13,941) and $26,912 (2021 - $27,729) was recorded as salaries expense.\nThe fair values were estimated using the Black-Scholes option pricing model assuming no expected dividends or forfeitures and the following weighted average assumptions:",
+   "prose_after": "14. Segmented Information\nThe Company is located and operates in North America and its subsidiaries are primarily located and operating in Europe and Asia.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 804,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "North America $",
+     "",
+     "Europe $",
+     "",
+     "Asia $",
+     "",
+     "Total $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "69,582",
+     "",
+     "170,784",
+     "",
+     "723,895",
+     "",
+     "964,261"
+    ],
+    [
+     "Intangible Assets",
+     "",
+     "6,652,154",
+     "",
+     "\u2013",
+     "",
+     "6,618",
+     "",
+     "6,658,772"
+    ],
+    [
+     "Right of use assets",
+     "",
+     "\u2013",
+     "",
+     "380,696",
+     "",
+     "146,832",
+     "",
+     "527,528"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "6,721,736",
+     "",
+     "551,480",
+     "",
+     "877,345",
+     "",
+     "8,150,561"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Segmented Information"
+    }
+   },
+   "prose_before": "14. Segmented Information\nThe Company is located and operates in North America and its subsidiaries are primarily located and operating in Europe and Asia.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "North America $",
+     "",
+     "Europe $",
+     "",
+     "Asia $",
+     "",
+     "Total $",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "105,599",
+     "",
+     "198,352",
+     "",
+     "862,290",
+     "",
+     "1,166,241"
+    ],
+    [
+     "Intangible Assets",
+     "",
+     "7,090,887",
+     "",
+     "\u2013",
+     "",
+     "8,861",
+     "",
+     "7,099,748"
+    ],
+    [
+     "Right of use assets",
+     "",
+     "10,462",
+     "",
+     "532,976",
+     "",
+     "195,653",
+     "",
+     "739,091"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "7,206,948",
+     "",
+     "731,328",
+     "",
+     "1,066,804",
+     "",
+     "9,005,080"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 902
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Segmented Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "North America $",
+     "",
+     "",
+     "Europe $",
+     "",
+     "",
+     "Asia $",
+     "",
+     "",
+     "South America $",
+     "",
+     "",
+     "Total $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues by customer region",
+     "",
+     "810",
+     "",
+     "",
+     "253,286",
+     "",
+     "",
+     "917,564",
+     "",
+     "",
+     "23,693",
+     "",
+     "",
+     "1,195,353",
+     ""
+    ],
+    [
+     "COGS by customer region",
+     "",
+     "541",
+     "",
+     "",
+     "169,204",
+     "",
+     "",
+     "880,512",
+     "",
+     "",
+     "4,423",
+     "",
+     "",
+     "1,054,680",
+     ""
+    ],
+    [
+     "Gross Profit by customer region",
+     "",
+     "269",
+     "",
+     "",
+     "84,082",
+     "",
+     "",
+     "37,052",
+     "",
+     "",
+     "19,270",
+     "",
+     "",
+     "140,673",
+     ""
+    ],
+    [
+     "GP% by customer region",
+     "",
+     "33",
+     "%",
+     "",
+     "33",
+     "%",
+     "",
+     "4",
+     "%",
+     "",
+     "81",
+     "%",
+     "",
+     "12",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 916
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Segmented Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Europe $",
+     "",
+     "",
+     "Asia $",
+     "",
+     "",
+     "South America $",
+     "",
+     "",
+     "Total $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues by customer region",
+     "",
+     "35,544",
+     "",
+     "",
+     "45,992",
+     "",
+     "",
+     "57,000",
+     "",
+     "",
+     "138,536",
+     ""
+    ],
+    [
+     "COGS by customer region",
+     "",
+     "647,125",
+     "",
+     "",
+     "19,916",
+     "",
+     "",
+     "17,019",
+     "",
+     "",
+     "684,060",
+     ""
+    ],
+    [
+     "Gross Profit by customer region",
+     "",
+     "(611,581)",
+     "",
+     "",
+     "26,076",
+     "",
+     "",
+     "39,981",
+     "",
+     "",
+     "(545,524)",
+     ""
+    ],
+    [
+     "GP% by customer region",
+     "",
+     "-1721",
+     "%",
+     "",
+     "57",
+     "%",
+     "",
+     "70",
+     "%",
+     "",
+     "-394",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended September 30, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 918,
+    "end_line": 932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Segmented Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "North America $",
+     "",
+     "",
+     "Europe $",
+     "",
+     "",
+     "Asia $",
+     "",
+     "",
+     "South America $",
+     "",
+     "",
+     "Total $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues by customer region",
+     "",
+     "20,483",
+     "",
+     "",
+     "2,157,780",
+     "",
+     "",
+     "1,012,272",
+     "",
+     "",
+     "28,694",
+     "",
+     "",
+     "3,219,229",
+     ""
+    ],
+    [
+     "COGS by customer region",
+     "",
+     "10,236",
+     "",
+     "",
+     "1,279,280",
+     "",
+     "",
+     "985,451",
+     "",
+     "",
+     "8,256",
+     "",
+     "",
+     "2,283,223",
+     ""
+    ],
+    [
+     "Gross Profit by customer region",
+     "",
+     "10,247",
+     "",
+     "",
+     "878,500",
+     "",
+     "",
+     "26,821",
+     "",
+     "",
+     "20,438",
+     "",
+     "",
+     "936,006",
+     ""
+    ],
+    [
+     "GP% by customer region",
+     "",
+     "50",
+     "%",
+     "",
+     "41",
+     "%",
+     "",
+     "3",
+     "%",
+     "",
+     "71",
+     "%",
+     "",
+     "29",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 933,
+    "end_line": 947
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Segmented Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Europe $",
+     "",
+     "",
+     "Asia $",
+     "",
+     "",
+     "South America $",
+     "",
+     "",
+     "Total $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues by customer region",
+     "",
+     "1,141,685",
+     "",
+     "",
+     "165,602",
+     "",
+     "",
+     "154,500",
+     "",
+     "",
+     "1,461,787",
+     ""
+    ],
+    [
+     "COGS by customer region",
+     "",
+     "2,003,465",
+     "",
+     "",
+     "155,477",
+     "",
+     "",
+     "46,127",
+     "",
+     "",
+     "2,205,069",
+     ""
+    ],
+    [
+     "Gross Profit by customer region",
+     "",
+     "(861,780)",
+     "",
+     "",
+     "10,125",
+     "",
+     "",
+     "108,373",
+     "",
+     "",
+     "(743,282)",
+     ""
+    ],
+    [
+     "GP% by customer region",
+     "",
+     "-75",
+     "%",
+     "",
+     "6",
+     "%",
+     "",
+     "70",
+     "%",
+     "",
+     "-51",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended September 30, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 948,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Segmented Information"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the three and six months ended September 30, 2022, 59% (2021 \u2013 88%) and 61% (2021 \u2013 21%) of the Company\u2019s revenues were derived from the largest customer.\n15. Commitments\n(a) The Company\u2019s subsidiaries have entered into two long-term operating leases for office premises in London, United Kingdom, and Shanghai, China. These lease assets are categorized as right of use assets under ASU No. 2016-02.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Long-term premises lease",
+     "Lease commencement",
+     "Lease expiry",
+     "Term (years)",
+     "Discount rate*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "London, United Kingdom",
+     "April 1, 2019",
+     "December 25, 2023",
+     "3.75",
+     "4.50%"
+    ],
+    [
+     "Shanghai, China",
+     "March 1, 2020",
+     "May 31, 2025",
+     "5.25",
+     "4.65%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 970,
+    "end_line": 977
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "For the three and six months ended September 30, 2022, 59% (2021 \u2013 88%) and 61% (2021 \u2013 21%) of the Company\u2019s revenues were derived from the largest customer.\n15. Commitments\n(a) The Company\u2019s subsidiaries have entered into two long-term operating leases for office premises in London, United Kingdom, and Shanghai, China. These lease assets are categorized as right of use assets under ASU No. 2016-02.",
+   "prose_after": "* The Company determined the discount rate with reference to mortgages of similar tenure and terms.\nOperating lease assets and operating lease liabilities are recognized based on the present value of the future minimum lease payments over the lease term at the commencement date. As the Company\u2019s operating lease does not provide an implicit rate, the discount rate used to determine the present value of the lease payments is the collateralized incremental borrowing rate based on the remaining lease term. The operating lease asset excludes lease incentives. The operating leases do not contain an option to extend or terminate the lease term at the Company\u2019s discretion, therefore no probable renewal has been added to the expiry date when determining lease term. Operating lease expense is recognized on a straight-line basis over the lease term.\nLease cost for the three and six months are summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2022 $",
+     "",
+     "Three Months Ended September 30, 2021 $",
+     "",
+     "Six Months Ended September 30, 2022 $",
+     "",
+     "Six Months Ended September 30 2021 $",
+     ""
+    ],
+    [
+     "Operating lease expense *",
+     "",
+     "99,253",
+     "",
+     "120,212",
+     "",
+     "208,990",
+     "",
+     "243,367"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 984,
+    "end_line": 991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "* The Company determined the discount rate with reference to mortgages of similar tenure and terms.\nOperating lease assets and operating lease liabilities are recognized based on the present value of the future minimum lease payments over the lease term at the commencement date. As the Company\u2019s operating lease does not provide an implicit rate, the discount rate used to determine the present value of the lease payments is the collateralized incremental borrowing rate based on the remaining lease term. The operating lease asset excludes lease incentives. The operating leases do not contain an option to extend or terminate the lease term at the Company\u2019s discretion, therefore no probable renewal has been added to the expiry date when determining lease term. Operating lease expense is recognized on a straight-line basis over the lease term.\nLease cost for the three and six months are summarized as follows:",
+   "prose_after": "* Including right of use amortization and imputed interest. Lease payments include maintenance, operating expense, and tax.\nThe Company has entered into premises lease agreements with minimum annual lease payments expected over the remaining three fiscal years of the lease as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "293,596",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "144,210",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "49,098",
+     ""
+    ],
+    [
+     "Total future minimum lease payments",
+     "",
+     "486,904",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "(9,060)",
+     ""
+    ],
+    [
+     "Operating lease obligations",
+     "",
+     "477,844",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "$"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 996,
+    "end_line": 1010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Commitments"
+    }
+   },
+   "prose_before": "* Including right of use amortization and imputed interest. Lease payments include maintenance, operating expense, and tax.\nThe Company has entered into premises lease agreements with minimum annual lease payments expected over the remaining three fiscal years of the lease as follows:",
+   "prose_after": "(b) On July 14, 2017, the Company entered into a new memorandum of understanding to establish a new joint venture company in China with a non-related party (the \u201cSupplier\u201d) wherein the Supplier would receive and process orders, manufacture, and install products for the Company\u2019s customers. In return, the Company agreed to design the product, provide strategic pricing, sales and marketing direction, as well as provide technology licenses and technical support (the \u201cTechnology\u201d) to the Supplier. During the term of the agreement, the Company will provide the Supplier with a non-transferrable right and license to use the Technology to manufacture and install the product within the Asia and Russia region. The parties will fund the venture proportionately, 50.1% by the Company and 49.9% by the Supplier, and excess operating cash flows will be distributed on a quarterly basis. Neither party have funded the joint venture to date and there has been no revenue and expense associated with it.\n16. Income Taxes",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 964,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022 $",
+     "",
+     "",
+     "September 30, 2021 $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "",
+     "(3,394,876)",
+     "",
+     "",
+     "(6,683,565)",
+     ""
+    ],
+    [
+     "Foreign",
+     "",
+     "(2,106,225)",
+     "",
+     "",
+     "(939,322)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before taxes",
+     "",
+     "(5,501,101)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1018,
+    "end_line": 1029
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "(b) On July 14, 2017, the Company entered into a new memorandum of understanding to establish a new joint venture company in China with a non-related party (the \u201cSupplier\u201d) wherein the Supplier would receive and process orders, manufacture, and install products for the Company\u2019s customers. In return, the Company agreed to design the product, provide strategic pricing, sales and marketing direction, as well as provide technology licenses and technical support (the \u201cTechnology\u201d) to the Supplier. During the term of the agreement, the Company will provide the Supplier with a non-transferrable right and license to use the Technology to manufacture and install the product within the Asia and Russia region. The parties will fund the venture proportionately, 50.1% by the Company and 49.9% by the Supplier, and excess operating cash flows will be distributed on a quarterly basis. Neither party have funded the joint venture to date and there has been no revenue and expense associated with it.\n16. Income Taxes\nThe majority of our revenues from international sales are invoiced from and collected by our U.S. entity and recognized as a component of income before taxes in the United States as opposed to a foreign jurisdiction. The components of income before income taxes by U.S. and foreign jurisdictions were as follows:",
+   "prose_after": "The following table reconciles the income tax expense (benefit) at the statutory rates to the income tax (benefit) at the Company\u2019s effective tax rate.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022 $",
+     "",
+     "",
+     "September 30 2021 $",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before taxes",
+     "",
+     "(5,501,101)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ],
+    [
+     "Statutory tax rate",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected income tax recovery",
+     "",
+     "(1,155,231)",
+     "",
+     "",
+     "(1,600,806)",
+     ""
+    ],
+    [
+     "Permanent differences and other",
+     "",
+     "40,258",
+     "",
+     "",
+     "18,541",
+     ""
+    ],
+    [
+     "Foreign tax rate difference",
+     "",
+     "1,907",
+     "",
+     "",
+     "(33,116)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "1,113,066",
+     "",
+     "",
+     "1,613,381",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1032,
+    "end_line": 1056
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The following table reconciles the income tax expense (benefit) at the statutory rates to the income tax (benefit) at the Company\u2019s effective tax rate.",
+   "prose_after": "At September 30, 2022, the Company is current with statutory corporate income tax filings. Certain of the amounts presented above are based on estimates and what management believes are prudent filing positions. The actual losses available could differ from these estimates upon assessment and review by taxation authorities. U.S. federal and state income tax returns filed by us remain subject to examination for income tax years 2013 and subsequent. Canadian federal and provincial income tax returns filed by us remain subject to examination for income tax years 2018 and subsequent. Income tax returns associated with our operations located in the United Kingdom and China are subject to examination for income tax years 2017 and subsequent.\nTax positions are evaluated for recognition using a more-likely than-not recognition threshold, and those tax positions eligible for recognition are measured as the largest amount of tax benefit that is greater than 50% likely of being realized upon the effective settlement with a taxing authority that has full knowledge of all relevant information.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1012,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022\n\n\n\n$",
+     "",
+     "",
+     "2021 (As restated- Note 2)\n\n\n\n$",
+     "",
+     "",
+     "2022\n\n\n\n$",
+     "",
+     "",
+     "2021 (As restated- Note 2)\n\n\n\n$",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Products",
+     "",
+     "699,289",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "2,354,447",
+     "",
+     "",
+     "742,291",
+     ""
+    ],
+    [
+     "  Services",
+     "",
+     "496,064",
+     "",
+     "",
+     "138,536",
+     "",
+     "",
+     "864,782",
+     "",
+     "",
+     "719,496",
+     ""
+    ],
+    [
+     "    Total revenues",
+     "",
+     "1,195,353",
+     "",
+     "",
+     "138,536",
+     "",
+     "",
+     "3,219,229",
+     "",
+     "",
+     "1,461,787",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Products",
+     "",
+     "713,040",
+     "",
+     "",
+     "474,784",
+     "",
+     "",
+     "1,700,247",
+     "",
+     "",
+     "1,704,902",
+     ""
+    ],
+    [
+     "  Services",
+     "",
+     "341,640",
+     "",
+     "",
+     "209,276",
+     "",
+     "",
+     "582,976",
+     "",
+     "",
+     "500,167",
+     ""
+    ],
+    [
+     "    Total cost of goods sold",
+     "",
+     "1,054,680",
+     "",
+     "",
+     "684,060",
+     "",
+     "",
+     "2,283,223",
+     "",
+     "",
+     "2,205,069",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "140,673",
+     "",
+     "",
+     "(545,524)",
+     "",
+     "",
+     "936,006",
+     "",
+     "",
+     "(743,282)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising and promotion",
+     "",
+     "158,406",
+     "",
+     "",
+     "148,323",
+     "",
+     "",
+     "301,673",
+     "",
+     "",
+     "317,218",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "662",
+     "",
+     "",
+     "171,821",
+     "",
+     "",
+     "1,350",
+     "",
+     "",
+     "342,944",
+     ""
+    ],
+    [
+     "Bad debts (recovery) / expense",
+     "",
+     "(46,534)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(46,534)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "49,487",
+     "",
+     "",
+     "49,777",
+     "",
+     "",
+     "103,071",
+     "",
+     "",
+     "99,543",
+     ""
+    ],
+    [
+     "Foreign exchange (gain) / loss",
+     "",
+     "(393,375)",
+     "",
+     "",
+     "39,705",
+     "",
+     "",
+     "104,321",
+     "",
+     "",
+     "51,578",
+     ""
+    ],
+    [
+     "Management and technical consulting",
+     "",
+     "315,240",
+     "",
+     "",
+     "782,701",
+     "",
+     "",
+     "1,304,324",
+     "",
+     "",
+     "1,528,254",
+     ""
+    ],
+    [
+     "Office and miscellaneous expense",
+     "",
+     "527,307",
+     "",
+     "",
+     "415,567",
+     "",
+     "",
+     "990,076",
+     "",
+     "",
+     "793,830",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "",
+     "99,253",
+     "",
+     "",
+     "120,212",
+     "",
+     "",
+     "208,990",
+     "",
+     "",
+     "243,367",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "460,635",
+     "",
+     "",
+     "671,009",
+     "",
+     "",
+     "747,660",
+     "",
+     "",
+     "947,678",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "13,772",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "1,065,710",
+     "",
+     "",
+     "1,329,480",
+     "",
+     "",
+     "2,048,624",
+     "",
+     "",
+     "2,584,686",
+     ""
+    ],
+    [
+     "Transfer agent and filing fees",
+     "",
+     "17,043",
+     "",
+     "",
+     "148,048",
+     "",
+     "",
+     "30,797",
+     "",
+     "",
+     "161,223",
+     ""
+    ],
+    [
+     "Travel and accommodation",
+     "",
+     "208,463",
+     "",
+     "",
+     "158,502",
+     "",
+     "",
+     "399,230",
+     "",
+     "",
+     "224,615",
+     ""
+    ],
+    [
+     "Warranty and related expense / (recovery)",
+     "",
+     "\u2013",
+     "",
+     "",
+     "18,159",
+     "",
+     "",
+     "181,600",
+     "",
+     "",
+     "(21,648)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "2,462,297",
+     "",
+     "",
+     "4,053,304",
+     "",
+     "",
+     "6,388,954",
+     "",
+     "",
+     "7,273,288",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income / (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing interest income",
+     "",
+     "10,031",
+     "",
+     "",
+     "195,325",
+     "",
+     "",
+     "56,300",
+     "",
+     "",
+     "292,951",
+     ""
+    ],
+    [
+     "Interest (expense) / income and other",
+     "",
+     "(39,360)",
+     "",
+     "",
+     "42,318",
+     "",
+     "",
+     "(77,711)",
+     "",
+     "",
+     "100,732",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period before noncontrolling interest",
+     "",
+     "(2,350,953)",
+     "",
+     "",
+     "(4,361,185)",
+     "",
+     "",
+     "(5,474,359)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ],
+    [
+     "Share of income attributable to noncontrolling interest",
+     "",
+     "(109,082)",
+     "",
+     "",
+     "\u2013",
+     "",
+     "",
+     "26,742",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "(2,241,871)",
+     "",
+     "",
+     "(4,361,185)",
+     "",
+     "",
+     "(5,501,101)",
+     "",
+     "",
+     "(7,622,887)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1178,
+    "end_line": 1234
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "Expenses for the three and six months ended September 30, 2022, were $2,462,297 and $6,388,954 as compared to $4,053,304 and $7,273,288 for the three and six months ended September 30, 2021. Management and technical consulting fees increased due to increased activity in business development and the management of the BESS development. Management and technical consulting fees were comprised of fees paid to our directors, officers and advisors for business development efforts and advisory services. Office-based costs, travel expenses, and professional fees also increased due to increased business activities. Additionally, the delivery of units resulted in warranty provision being recorded for possible maintenance and claim issues within a prescribed period. For the three and six months period, the Company recorded a warranty expense of $nil (2021 \u2013 $18,159) and $181,600 (2021\n\u2013 warranty expense recovery of $21,648) as a result of nil (2021 \u2013 nil) and 4 (2021 \u2013 2) vessels being commissioned and commencing their warranty period. The impact of various international factors on foreign exchange rates caused fluctuations which saw the Company\u2019s foreign exchange losses increase significantly.\nThe three and six months ended September 30, 2022, our company recorded a net loss of $2,393,250 ($0.05 per share) and $5,652,480 ($0.12 per share) as compared to net loss of $4,361,184 ($0.09 per share) and $7,622,887 ($0.16 per share) for the three and six months ended September 30, 2021.\nOur financial results for the three months ended September 30, 2022 and 2021 are summarized as follows:",
+   "prose_after": "Liquidity and Capital Resources\nWorking Capital",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1175,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022\n\n\n\n$",
+     "",
+     "",
+     "March 31, 2022\n\n\n\n$",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "9,367,678",
+     "",
+     "",
+     "24,854,658"
+    ],
+    [
+     "Current liabilities",
+     "",
+     "17,043,040",
+     "",
+     "",
+     "19,079,665"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Working capital (deficit)",
+     "",
+     "(7,675,362)",
+     "",
+     "",
+     "5,774,993"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1240,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "Liquidity and Capital Resources\nWorking Capital",
+   "prose_after": "Cash Flows",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended September 30,\n\n\n\n2022\n\n\n\n$",
+     "",
+     "",
+     "Six Months Ended September 30,\n\n\n\n2021\n\n\n\n$",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,870,482)",
+     "",
+     "",
+     "(7,360,689)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(15,325,769)",
+     "",
+     "",
+     "(264,839)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "17,834,507",
+     "",
+     "",
+     "250",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "",
+     "(899,218)",
+     "",
+     "",
+     "97,547",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "(3,260,962)",
+     "",
+     "",
+     "(7,527,731)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1255,
+    "end_line": 1271
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "Cash Flows",
+   "prose_after": "As of September 30, 2022, we had $3,025,506 in cash and cash equivalents, $9,367,678 in total current assets, $17,043,040 in total current liabilities and a working capital deficit of $7,675,362 compared to working capital of $5,774,993 as at March 31, 2022. The Company\u2019s working capital reduced due to reduction of receivables.\nDuring the six months ended September 30, 2022, we used $4,870,482 in operating activities, whereas we used $7,360,689 from operating activities for the three months period ended September 30, 2021. The operating cash flow for the six months ended September 30, 2022, was mainly resulted from increased sales and collection of payments.\nDuring the six months ended September 30, 2022, we used $15,325,769 in investing activities, whereas we used $264,839 in investing activities during the three months ended September 30, 2021. Our investing activities for the three months ended September 30, 2022, were primarily related to additions of project under development and equipment.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1235,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Patents",
+     "17 years straight-line"
+    ],
+    [
+     "Software licensing",
+     "10 years straight-line"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1312,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "The preparation of these consolidated financial statements in conformity with United States Generally Accepted Accounting Principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of revenue and expenses during the reporting period. Our company bases its estimates and assumptions on current facts, historical experience and various other factors that it believes to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and liabilities and the accrual of costs and expenses that are not readily apparent from other sources. The actual results experienced by our company may differ materially and adversely from our company\u2019s estimates. To the extent there are material differences between the estimates and the actual results, future results of operations will be affected. Accounting estimates and assumptions discussed in this section are those that we consider to be the most critical to an understanding of our financial statements because they inherently involve significant judgments and uncertainties.\nUseful lives of Intangible Assets\nThe carrying value of our intangible assets represents its original cost at the time of purchase, less accumulated amortization. We amortize our intangible assets using the straight-line method over their estimated useful lives. The estimated useful life of our intangible assets are listed in the table below.",
+   "prose_after": "Impairment of Long-lived Assets\nWe review long-lived assets such as property and equipment and intangible assets with finite useful lives for impairment whenever events or changes in circumstance indicate that the carrying amount may not be recoverable. The determination of whether impairment indicators exist requires significant judgment in evaluating underlying significant assumptions including expected sales contracts, operating costs, and current market value of assets. If an indication is identified, and the total of the expected undiscounted future cash flows is less than the carrying amount of the asset, a loss is recognized for the excess of the carrying amount over the fair value of the asset.\nWe recorded an impairment charge of $2,641,639 on intangible assets during the year ended March 31, 2022 (March 31, 2021- $37,700) as management\u2019s estimated fair value of the assets were less than its carrying value.\nGoodwill\nWe allocate the cost of acquired companies to the identifiable tangible and intangible assets and liabilities acquired, with the remaining amount being classified as goodwill. The allocation of the purchase price of acquired companies requires certain judgments and estimates. Goodwill is not amortized but is evaluated annually for impairment at the reporting unit level or when indicators of a potential impairment are present. The process of evaluating the potential impairment of goodwill requires significant judgment and are based upon existing contracts, historical experience, financial forecasts, and general economic conditions",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1303,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(31)",
+     "Rule 13a-14 (d)/15d-14d) Certifications"
+    ],
+    [
+     "31.1*",
+     "Section 302 Certification by the Principal Executive Officer"
+    ],
+    [
+     "31.2*",
+     "Section 302 Certification by the Principal Financial Officer and Principal Accounting Officer"
+    ],
+    [
+     "(32)",
+     "Section 1350 Certifications"
+    ],
+    [
+     "32.1*",
+     "Section 906 Certification by the Principal Executive Officer"
+    ],
+    [
+     "32.2*",
+     "Section 906 Certification by the Principal Financial Officer and Principal Accounting Officer"
+    ],
+    [
+     "101*",
+     "Interactive Data Files"
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1420,
+    "end_line": 1436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "As a \u201csmaller reporting company\u201d we are not required to provide the information required by this Item.\nItem 2. Unregistered Sales of Equity Securities\nNone.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "prose_after": "* Filed herewith.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PACIFIC GREEN TECHNOLOGIES INC.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: November 21, 2022",
+     "By:",
+     "/s/ Scott Poulter"
+    ],
+    [
+     "",
+     "",
+     "Scott Poulter"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: November 21, 2022",
+     "By:",
+     "/s/ Richard Fraser-Smith"
+    ],
+    [
+     "",
+     "",
+     "Richard Fraser-Smith"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer\n\n\n\n(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "PACIFIC GREEN TECHNOLOGIES INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "* Filed herewith.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: November 21, 2022",
+     "By:",
+     "/s/ Scott Poulter"
+    ],
+    [
+     "",
+     "",
+     "Scott Poulter"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: November 21, 2022",
+     "By:",
+     "/s/ Richard Fraser-Smith"
+    ],
+    [
+     "",
+     "",
+     "Richard Fraser-Smith"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer\n\n\n\n(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1464,
+    "end_line": 1478
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events Funding arrangements"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

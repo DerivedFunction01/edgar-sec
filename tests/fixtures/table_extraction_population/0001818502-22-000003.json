@@ -1,0 +1,1772 @@
+{
+ "accession": "0001818502-22-000003",
+ "cik": "0001818502",
+ "form": "10-K/A",
+ "filing_date": "2022-05-02",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "opfi-20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware (State or other jurisdiction of Incorporation or organization)",
+     "85-1648122 (I.R.S. Employer Identification No.)"
+    ],
+    [
+     "130 E. Randolph Street. Suite 3400 Chicago, IL (Address of principal executive offices)",
+     "60601 (Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from__________to__________\nCommission File Number 001-39550\n__________________________________________________________________\nOppFi Inc.\n(Exact name of registrant as specified in its charter)\n__________________________________________________________________",
+   "prose_after": "(312) 212-8079\n(Registrant\u2019s telephone number, including area code)\nNot Applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Class A common stock, par value $0.0001 per share",
+     "OPFI",
+     "New York Stock Exchange"
+    ],
+    [
+     "Warrants, each whole warrant exercisable for one share of Class A common stock, each at an exercise price of $11.50 per share",
+     "OPFI WS",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 49,
+    "end_line": 56
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(312) 212-8079\n(Registrant\u2019s telephone number, including area code)\nNot Applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "prose_after": "__________________________________________________________________\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Audit Firm Id",
+     "Auditor Name",
+     "Auditor Location"
+    ],
+    [
+     "49",
+     "RSM US LLP",
+     "Raleigh, North Carolina"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of shares of voting and non-voting common equity of the registrant held by non-affiliates of the registrant on June 30, 2021, the last business day of the registrant\u2019s most recently completed second fiscal quarter, was $248,678,589 based on a $10.21 closing price per share as reported on the New York Stock Exchange on such date.\nAs of April 28, 2022, there were 13,349,150 shares of Class A common stock, par value $0.0001 per share, 0 shares of Class B common stock, par value $0.0001 per share and 96,338,474 shares of Class V common stock, par value $0.0001 per share, issued and outstanding.",
+   "prose_after": "Explanatory Note\nOppFi Inc. (the \u201cCompany,\u201d \u201cOppFi,\u201d \u201cwe,\u201d \u201cour,\u201d or \u201cus\u201d) is filing this Amendment No. 1 (the \u201cAmended Report\u201d) to the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2021, filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on March 11, 2022 (the \u201cOriginal Report\u201d), in order to add certain information required by Items 10-14 of Part III of Form 10-K. The Amended Report does not affect any other items in the Original Report.\nExcept as otherwise expressly stated for the Items amended in this Amended Report, this Amended Report continues to speak as of the date of the Original Report and we have not updated the disclosure contained herein to reflect events that have occurred since the filing of the Original Report. Accordingly, this Amended Report should be read in conjunction with the Original Report and our other filings made with the SEC subsequent to the filing of the Original Report. Pursuant to Rule 12b-15 under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), this Amended Report also contains new certifications of the Company\u2019s Chief Executive Officer and Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. Because no financial statements are included in this Amended Report and it does not contain or amend any disclosure with respect to Items 307 or 308 of Regulation S-K promulgated by the SEC under the Exchange Act, paragraphs 3, 4 and 5 of the Section 302 certifications have been omitted. In addition, because no financial statements are included in this Amended Report, new certifications of the Company\u2019s Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 are not required to be included with this Amended Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Part III",
+     "4"
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "4"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "8"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters",
+     "14"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "16"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "20"
+    ],
+    [
+     "Part IV",
+     "22"
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "22"
+    ],
+    [
+     "Signatures",
+     "28"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 107,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Except as otherwise expressly stated for the Items amended in this Amended Report, this Amended Report continues to speak as of the date of the Original Report and we have not updated the disclosure contained herein to reflect events that have occurred since the filing of the Original Report. Accordingly, this Amended Report should be read in conjunction with the Original Report and our other filings made with the SEC subsequent to the filing of the Original Report. Pursuant to Rule 12b-15 under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), this Amended Report also contains new certifications of the Company\u2019s Chief Executive Officer and Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. Because no financial statements are included in this Amended Report and it does not contain or amend any disclosure with respect to Items 307 or 308 of Regulation S-K promulgated by the SEC under the Exchange Act, paragraphs 3, 4 and 5 of the Section 302 certifications have been omitted. In addition, because no financial statements are included in this Amended Report, new certifications of the Company\u2019s Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 are not required to be included with this Amended Report.\nTable of Contents",
+   "prose_after": "3\nPart III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nSet forth below are the names, ages and positions of each of the individuals who serve as our executive officers and directors as of April 29, 2022.\n<TABLE>\nName                       Age    Position(s)\n-----------------------  -------  ----------------------------------------------------\nExecutive Officers\nTodd G. Schwartz              40  Chief Executive Officer and Executive Chairman\nPamela Johnson                61  Chief Financial Officer and Chief Accounting Officer",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)"
+    ],
+    [
+     "Executive Officers",
+     "",
+     ""
+    ],
+    [
+     "Todd G. Schwartz",
+     "40",
+     "Chief Executive Officer and Executive Chairman"
+    ],
+    [
+     "Pamela Johnson",
+     "61",
+     "Chief Financial Officer and Chief Accounting Officer"
+    ],
+    [
+     "Christopher McKay",
+     "45",
+     "Chief Risk and Analytics Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Employee Directors",
+     "",
+     ""
+    ],
+    [
+     "Christina Favilla(1)(2)",
+     "55",
+     "Director"
+    ],
+    [
+     "Jared Kaplan",
+     "41",
+     "Director"
+    ],
+    [
+     "Jocelyn Moore(1)(3)",
+     "45",
+     "Lead Independent Director"
+    ],
+    [
+     "Theodore Schwartz",
+     "68",
+     "Director"
+    ],
+    [
+     "David Vennettilli(2)(3)",
+     "34",
+     "Director"
+    ],
+    [
+     "Greg Zeeman(1)(2)",
+     "53",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) Member of audit committee",
+     "",
+     ""
+    ],
+    [
+     "(2) Member of compensation committee",
+     "",
+     ""
+    ],
+    [
+     "(3) Member of nominating and corporate governance committee",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)(1)",
+     "",
+     "",
+     "Profits Interests ($)(1)",
+     "",
+     "Option Awards ($)(1)",
+     "",
+     "",
+     "Non-Equity Incentive Plan Awards ($)",
+     "",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Jared Kaplan",
+     "2021",
+     "$",
+     "491,346",
+     "$",
+     "\u2014",
+     "$",
+     "1,500,000",
+     "(2)",
+     "$",
+     "\u2014",
+     "$",
+     "4,898,678",
+     "(3)",
+     "$",
+     "450,000",
+     "(4)",
+     "$",
+     "16,352",
+     "(5)",
+     "$",
+     "7,356,376"
+    ],
+    [
+     "  Former Chief Executive   Officer",
+     "2020",
+     "$",
+     "441,346",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "61,002",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "450,707",
+     "",
+     "$",
+     "11,400",
+     "",
+     "$",
+     "964,455"
+    ],
+    [
+     "Neville Crawley",
+     "2021",
+     "$",
+     "176,923",
+     "$",
+     "\u2014",
+     "$",
+     "2,000,000",
+     "(6)",
+     "$",
+     "\u2014",
+     "$",
+     "2,939,207",
+     "(7)",
+     "$",
+     "175,000",
+     "(4)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "5,291,130"
+    ],
+    [
+     "  Former Chief Executive   Officer and Former   President",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shiven Shah",
+     "2021",
+     "$",
+     "364,615",
+     "$",
+     "\u2014",
+     "$",
+     "600,000",
+     "(8)",
+     "$",
+     "\u2014",
+     "$",
+     "1,469,603",
+     "(9)",
+     "$",
+     "202,500",
+     "(4)",
+     "$",
+     "12,580",
+     "(10)",
+     "$",
+     "2,649,298"
+    ],
+    [
+     "  Former Chief Financial   Officer",
+     "2020",
+     "$",
+     "311,538",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "8,938",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "225,000",
+     "",
+     "$",
+     "11,400",
+     "",
+     "$",
+     "556,876"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 333,
+    "end_line": 346
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Company maintains a 401(k) plan for its employees, including its executive officers, to encourage its employees to save some portion of their cash compensation for their eventual retirement. Pursuant to a discretionary employer match, during 2021, the Company matched all employee contributions at (i) 100% of the employee\u2019s contribution up to a limit of 3% of the employee\u2019s eligible compensation and (ii) 50% of the employee\u2019s contribution between 3-5% up to a maximum of 4% of the employee\u2019s eligible compensation. The Company also provides semi-annual HSA matching contributions to those eligible plan participants who are actively employed at the time of each match payment and are enrolled in our high deductible medical plan. Matching payments are generally made on the second pay dates of March and September of each calendar year. Eligible plan participants who elect individual coverage receive a $125 employer contribution on each semiannual payment date, and those who also cover a spouse, child(ren), or family receive a $250 employer contribution on each semiannual payment date.\nSummary Compensation Table\nThe following table presents information regarding the total compensation awarded to, earned by, and paid to OppFi\u2019s named executive officers for the fiscal years ended December 31, 2021 and 2020.",
+   "prose_after": "(1) The amounts in this column reflect the aggregate grant date fair value of awards calculated in accordance with FASB ASC Topic 718. See Note 10 to the Company\u2019s audited consolidated financial statements included in the Original Report for a discussion of all assumptions made by us in determining the grant-date fair value of these awards.\n(2) Represents RSUs granted pursuant to the Plan on October 1, 2021 and does not account for subsequent forfeitures. Mr. Kaplan ceased to be our Chief Executive Officer on December 31, 2021, and 46,209 of such RSUs will vest upon the one-year anniversary of the date of grant, subject to Mr. Kaplan\u2019s continued service as a director. The remaining 138,628 of such RSUs were forfeited by Mr. Kaplan.\n(3) Represents Options granted pursuant to the Plan on July 21, 2021 and does not account for subsequent forfeitures. Mr. Kaplan ceased to be our Chief Executive Officer on December 31, 2021, and 500,000 of such Options will vest upon the one-year anniversary of the date of grant, subject to Mr. Kaplan\u2019s continued service as a director. The remaining 1,500,000 of such Options were forfeited by Mr. Kaplan. Upon vesting, the Options not forfeited will remain exercisable following vesting for 10 years from the date of grant.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 332,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 366,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Number of Securities Underlying Unexercised Stock Options (Excercisable) (#)",
+     "Number of Securities Underlying Unexercised Stock Options (Unexcercisable) (#)",
+     "",
+     "Option Exercise Price ($)",
+     "",
+     "Option Expiration Date",
+     "Number of Shares or Units of Stock That Have Not Vested (#)",
+     "",
+     "Market Value of Shares or Units of Performance-Based Vested Stock That Have Not Vested ($)",
+     "",
+     "Equity incentive plan awards: Number of unearned shares, units or other rights that have not vested (#)",
+     "",
+     "Equity incentive plan awards: Market or payout value of unearned shares, units or other rights that have not vested ($)",
+     "",
+     ""
+    ],
+    [
+     "Jared Kaplan",
+     "\u2014",
+     "1,000,000",
+     "(1)",
+     "$",
+     "10.45",
+     "7/21/2031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2014",
+     "1,000,000",
+     "(1)",
+     "$",
+     "20.00",
+     "7/21/2031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "184,837",
+     "(2)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "",
+     "$",
+     "839,160",
+     "(4)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "70,624",
+     "(3)",
+     "$",
+     "320,633",
+     "(4)"
+    ],
+    [
+     "Neville Crawley",
+     "\u2014",
+     "600,000",
+     "(5)",
+     "$",
+     "10.45",
+     "7/21/2031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2014",
+     "600,000",
+     "(5)",
+     "$",
+     "20.00",
+     "7/21/2031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "246,449",
+     "(6)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "",
+     "$",
+     "1,118,878",
+     "(4)"
+    ],
+    [
+     "Shiven Shah",
+     "\u2014",
+     "300,000",
+     "(7)",
+     "$",
+     "10.45",
+     "7/21/2031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2014",
+     "300,000",
+     "(7)",
+     "$",
+     "20.00",
+     "7/21/2031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "73,935",
+     "(8)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "",
+     "$",
+     "335,665",
+     "(4)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Effective March 25, 2022, Mr. Shah ceased to be our Chief Financial Officer. Mr. Shah has agreed to serve in an advisory role with the Company through the end of the second quarter of 2022, and he will be entitled to receive benefits under his employment agreement. Mr. Shah\u2019s employment agreement provides for (i) cash severance equal to the sum of one year\u2019s base salary, payable in substantially equal installments in accordance with the Company\u2019s regular payroll cycle, (ii) an amount equal Mr. Shah\u2019s 2022 bonus, to the extent earned, which will be prorated based on service through June 30, 2022, to be paid in a lump sum by March 15, 2023 and (iii) accelerated vesting of 150,000 of Mr. Shah\u2019s outstanding Options and 18,484 of his outstanding RSUs granted pursuant to the Plan. Mr. Shah is required to execute a release of claims in favor of the Company and its affiliates and will be subject to customary restrictive covenants, including non-competition and non-solicitation covenants as set forth in his employment agreement.\nEquity Awards at 2021 Fiscal Year-End\nThe following table presents information regarding the outstanding awards held by each of the named executive officers as of December 31, 2021, all of which were made under the Plan and the OFMH Management Plan.",
+   "prose_after": "(1) Represents Options granted pursuant to the Plan on July 21, 2021 and does not account for subsequent forfeitures. Mr. Kaplan ceased to be our Chief Executive Officer on December 31, 2021, and 250,000 of such Options will vest upon the one-year anniversary of the date of grant, subject to Mr. Kaplan\u2019s continued service as a director. The remaining 750,000 of such Options were forfeited by Mr. Kaplan. Upon vesting, the Options not forfeited will remain exercisable following vesting for 10 years from the date of grant.\n(2) Represents RSUs granted pursuant to the Plan on October 1, 2021 and does not account for subsequent forfeitures. Mr. Kaplan ceased to be our Chief Executive Officer on December 31, 2021, and 46,209 of such RSUs will vest upon the one-year anniversary of the date of grant, subject in each case to Mr. Kaplan\u2019s continued service as a director. The remaining 138,628 of such RSUs were forfeited by Mr. Kaplan.\n(3) Represents unvested Class A Shares granted pursuant to the OFMH Management Plan subject to a Management Profits Interest Agreement entered into with OppFi-LLC as of June 8, 2020, which was subsequently amended on January 6, 2022, and does not account for subsequent forfeitures or 25,192 Class A Shares that are subject to certain restrictions and potential forfeiture pending the achievement of certain earnout targets in connection with the Business Combination (\u201cEarnout Units\u201d). 54,156 of such Class A Shares were forfeited on January 6, 2022.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash (Meeting Fees and Retainers) ($)",
+     "",
+     "",
+     "Stock Awards ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Todd Schwartz",
+     "$",
+     "51,250",
+     "(1)",
+     "$",
+     "150,000",
+     "$",
+     "\u2014",
+     "$",
+     "201,250"
+    ],
+    [
+     "Christina Favilla",
+     "$",
+     "30,304",
+     "(2)",
+     "$",
+     "150,000",
+     "$",
+     "\u2014",
+     "$",
+     "180,304"
+    ],
+    [
+     "Jocelyn Moore",
+     "$",
+     "41,000",
+     "(3)",
+     "$",
+     "150,000",
+     "$",
+     "\u2014",
+     "$",
+     "191,000"
+    ],
+    [
+     "Theodore Schwartz",
+     "$",
+     "22,283",
+     "(4)",
+     "$",
+     "150,000",
+     "$",
+     "\u2014",
+     "$",
+     "172,283"
+    ],
+    [
+     "David Vennettilli",
+     "$",
+     "33,424",
+     "(5)",
+     "$",
+     "150,000",
+     "$",
+     "\u2014",
+     "$",
+     "183,424"
+    ],
+    [
+     "Greg Zeeman",
+     "$",
+     "32,310",
+     "(6)",
+     "$",
+     "150,000",
+     "$",
+     "\u2014",
+     "$",
+     "182,310"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Director Compensation Program provides for an annual equity retainer with a grant date fair value equal to $150,000 to our eligible directors. This annual retainer is paid in the form of restricted stock units under the Plan, which will vest in their entirety into shares of our Class A Common Stock on the earlier of (i) the one-year anniversary of the date of grant or (ii) the date of the next annual meeting of stockholders following the grant date, subject to continued service.\nThe Director Compensation Program also provides for quarterly cash payments in the annualized amount of (i) a $50,000 retainer for service on the Board, (ii) a $45,000 retainer for service as Executive Chairman of the Board, (iii) a $25,000 retainer for service as lead independent director, (iv) a $8,000 retainer ($18,000 for the chair) for service on the Compensation Committee, (v) a $10,000 retainer ($22,500 for the chair) for service on the Audit Committee and (vi) a $7,000 retainer ($12,000 for the chair) for service on the Nominating and Corporate Governance Committee. With respect to the directors\u2019 compensation for the period from the Closing through the December 31, 2021, the eligible directors received prorated cash retainers to reflect the shortened service period.\nThe table below summarizes the compensation earned by our directors/and or paid by the Company to our non-employee directors for fiscal year ended December 31, 2021.",
+   "prose_after": "(1) Includes the prorated amounts from the Closing Date for the annual retainers of $50,000 for service on the Board, $45,000 for service as Executive Chairman of the Board, $12,000 for service as the chair of the Nominating and Corporate Governance Committee and $8,000 for service on the Compensation Committee.\n(2) Includes the prorated amounts from the Closing Date for the annual retainers of $50,000 for service on the Board, $10,000 for service on the Audit Committee and $8,000 for service on the Compensation Committee.\n(3) Includes the prorated amounts from the Closing Date for the annual retainers of $50,000 for service on the Board, $25,000 for service as lead independent director, $10,000 for service on the Audit Committee and $7,000 for service on the Nominating and Corporate Governance Committee.\n(4) Includes the prorated amount from the Closing Date for the annual retainer of $50,000 for service on the Board.\n(5) Includes the prorated amounts from the Closing Date for the annual retainers of $50,000 for service on the Board, $18,000 for service as the chair of the Compensation Committee and $7,000 for service on the Nominating and Corporate Governance Committee.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name of Beneficial Owners(1)",
+     "Number of Shares Beneficially Owned",
+     "Percentage of Outstanding Common Stock",
+     ""
+    ],
+    [
+     "Directors and Executive Officers:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Todd G. Schwartz(2)",
+     "96,338,474",
+     "87.83",
+     "%"
+    ],
+    [
+     "Theodore Schwartz(3)",
+     "33,726,877",
+     "30.75",
+     "%"
+    ],
+    [
+     "Jared Kaplan(4)",
+     "8,424,820",
+     "7.68",
+     "%"
+    ],
+    [
+     "Christina Favilla",
+     "\u2014",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Jocelyn Moore",
+     "\u2014",
+     "\u2014",
+     "%"
+    ],
+    [
+     "David Vennettilli(5)",
+     "275,109",
+     "*",
+     ""
+    ],
+    [
+     "Greg Zeeman",
+     "\u2014",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Pamela Johnson",
+     "\u2014",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Christopher McKay(6)",
+     "1,967,030",
+     "1.79",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group",
+     "96,338,474",
+     "87.83",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Five Percent Holders:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OppFi Shares, LLC(7)",
+     "96,338,474",
+     "87.83",
+     "%"
+    ],
+    [
+     "TGS Capital Group, LP(2)",
+     "33,750,962",
+     "30.77",
+     "%"
+    ],
+    [
+     "LTHS Capital Group LP(3)",
+     "33,726,877",
+     "30.75",
+     "%"
+    ],
+    [
+     "Tracy Ward(8)",
+     "7,310,213",
+     "6.66",
+     "%"
+    ],
+    [
+     "LMR Partners(9)",
+     "817,499",
+     "*",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 474,
+    "end_line": 498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": null
+   },
+   "prose_before": "Beneficial ownership for the purposes of the following table is determined according to the rules and regulations of the SEC, which generally provide that a person has beneficial ownership of a security if such person possesses sole or shared voting or investment power over that security, including options, warrants and exchange rights that are currently exercisable or exercisable within 60 days. In computing the number of shares beneficially owned by a person and the percentage ownership of that person in the table below, all shares subject to options, warrants and exchange rights units held by such person were deemed outstanding if such securities are currently exercisable or exercisable within 60 days of April 8, 2022. These shares were not deemed outstanding, however, for the purpose of computing the percentage ownership of any other person. The following table also includes Class A common units of OppFi-LLC (\u201cOppFi Units\u201d), OppFi Units retained by the members of OppFi-LLC prior to Closing (the \u201cMembers\u201d) immediately following the Closing (\u201cRetained OppFi Units\u201d) and Earnout Units, in each case that may be exchanged for shares of Class A Common Stock pursuant to the exercise of pursuant to the Members\u2019 rights to exchange each Retained OppFi Unit from time to time for either one share of Class A Common Stock or, at the election of the Company, the cash equivalent of the market value of one share of Class A Common Stock (\u201cExchange Rights\u201d), whether or not such Exchange Rights are or may be exercisable within 60 days of April 8, 2022.\nThe beneficial ownership of common stock is based on 13,349,150 shares of Class A Common Stock, 0 shares of Class B common stock, par value $0.0001 per share (\u201cClass B Common Stock\u201d), and 96,338,474 shares of Class V common stock, par value $0.0001 per share (\u201cClass V Common Stock\u201d), issued and outstanding as of April 29, 2022.\nUnless otherwise indicated, we believe that each person named in the table below has sole voting and investment power with respect to all shares of Common Stock beneficially owned by them.",
+   "prose_after": "* Less than one percent\n(1) Unless otherwise indicated, the business address of each of the individuals and entities is 130 E. Randolph Street, Suite 3400, Chicago, Illinois 60601\n(2) Represents 96,338,474 shares of Class V Voting Stock held of record by OppFi Shares, LLC (\u201cOFS\u201d) (including 25,500,000 shares of Class V Voting Stock that correspond to an equivalent number of Earnout Units), which has voting power over such shares of Class V Common Stock and which is 100% owned by TGS Revocable Trust, whose sole trustee is Todd G. Schwartz. The shares of Class V Voting Stock held of record by OFS include (i) 33,750,962 shares of Class V Voting Stock that correspond to an equivalent number of Retained OppFi Units (including 8,873,734 Earnout Units) held indirectly by Mr. Schwartz through TGS Capital Group, LP, of which Mr. Schwartz is the general partner, and (ii) 2,641,667 shares of Class V Voting Stock that correspond to an equivalent number of Retained OppFi Units (including 694,542 Earnout Units) held indirectly by Mr. Schwartz through TGS MCS Capital Group LP. The shares of Class V Voting Stock that correspond to Retained OppFi Units held indirectly by Mr. Schwartz include the shares that correspond to 67,867 Retained OppFi Units (including 17,724 Earnout Units) that were reallocated in connection with the forfeiture of unvested OppFi Units by certain Members. Mr. Schwartz disclaims beneficial ownership of the Retained OppFi Units held by TGS Capital Group, LP and TGS MCS Capital Group LP, except to the extent of his pecuniary interest therein. The business address of Mr. Schwartz is c/o TCS Group, LLC, One North Wacker Drive, Suite 3605, Chicago, IL 60606.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "RSM",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "716,000",
+     "(1)",
+     "$",
+     "176,095",
+     "(2)"
+    ],
+    [
+     "Audit-Related Fees",
+     "907,098",
+     "",
+     "(3)",
+     "194,250",
+     "",
+     "(4)"
+    ],
+    [
+     "Tax Fees",
+     "531,750",
+     "",
+     "(5)",
+     "244,989",
+     "",
+     "(5)"
+    ],
+    [
+     "All Other Fees",
+     "56,900",
+     "",
+     "(6)",
+     "18,900",
+     "",
+     "(7)"
+    ],
+    [
+     "Total",
+     "$",
+     "2,211,748",
+     "",
+     "$",
+     "634,234",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "RSM"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 598
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "To be considered independent for purposes of Rule 10C-1 under the Exchange Act and under the rules of the NYSE (\u201cCompensation Committee Independent\u201d), the board of directors must affirmatively determine that the member of the Compensation Committee is independent, including a consideration of all factors specifically relevant to determining whether the director has a relationship to the company which is material to that director\u2019s ability to be independent from management in connection with the duties of a Compensation Committee member, including, but not limited to: (i) the source of compensation of such director, including any consulting, advisory or other compensatory fee paid by the company to such director; and (ii) whether such director is affiliated with the company, a subsidiary of the company or an affiliate of a subsidiary of the company.\nThe Board has undertaken a review of the independence of each director and considered whether each director has a relationship with us that could compromise his or her ability to exercise independent judgment in carrying out his or her responsibilities. As a result of this review, the Board determined that Christina Favilla, Jocelyn Moore and Greg Zeeman are NYSE Independent and Audit Committee Independent, representing three of our seven directors and that Mr. Zeeman is Compensation Committee Independent.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nRSM US LLP (\u201cRSM\u201d) has served as the Company\u2019s independent registered public accounting firm since October 4, 2021 and served as OppFi-LLC\u2019s auditor since 2014. On October 4, 2021, the Audit Committee dismissed Plante & Moran, PLLC (\u201cPlante\u201d), the Company\u2019s independent registered public accounting firm prior to the Business Combination.",
+   "prose_after": "(1) Includes fees billed for professional services rendered for the annual financial statement audit and quarterly reviews.\n(2) Includes fees billed for professional services rendered for the annual financial statement audit.\n(3) Includes fees billed related to (i) the Business Combination, (ii) proxy statement review, (iii) reviews of Current Reports on Form 8-K and (iv) reviews of registration statements on Form S-1 and Form S-8 and consents related thereto.\n(4) Includes fees billed for PCAOB step-up audits, Quality of Earnings workpaper review and expanded audit procedures on fair value models.\n(5) Includes fees billed for tax compliance.\n(6) Includes fees billed for the employee benefit plan (\u201cEBP\u201d) audit and a stand alone entity licensing audit.\n(7) Includes fees billed for the EBP audit.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Plante",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "45,500",
+     "(1)",
+     "$",
+     "20,000",
+     "(2)"
+    ],
+    [
+     "Audit-Related Fees",
+     "17,750",
+     "",
+     "(3)",
+     "19,500",
+     "",
+     "(4)"
+    ],
+    [
+     "Tax Fees",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "63,250",
+     "",
+     "$",
+     "39,500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Plante"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 607,
+    "end_line": 618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Includes fees billed for professional services rendered for the annual financial statement audit and quarterly reviews.\n(2) Includes fees billed for professional services rendered for the annual financial statement audit.\n(3) Includes fees billed related to (i) the Business Combination, (ii) proxy statement review, (iii) reviews of Current Reports on Form 8-K and (iv) reviews of registration statements on Form S-1 and Form S-8 and consents related thereto.\n(4) Includes fees billed for PCAOB step-up audits, Quality of Earnings workpaper review and expanded audit procedures on fair value models.\n(5) Includes fees billed for tax compliance.\n(6) Includes fees billed for the employee benefit plan (\u201cEBP\u201d) audit and a stand alone entity licensing audit.\n(7) Includes fees billed for the EBP audit.",
+   "prose_after": "(1) Includes fees billed for professional services rendered for the audit of FGNA's Annual Report on Form 10-K and quarterly reviews.\n(2) Includes fees billed for professional services rendered for the audit of FGNA\u2019s initial financial statements, audited balance sheet filed after FGNA\u2019s initial public offering, and review of the financial information included in FGNA\u2019s required filings with the SEC for the period from June 24, 2020 (inception) through September 30, 2020. The above amounts include interim procedures and audit fees, as well as attendance at Audit Committee meetings.\n(3) Includes fees billed related to (i) the Business Combination, (ii) proxy statement review, (iii) reviews of Current Reports on Form 8-K and (iv) reviews of registration statements on Form S-1 and Form S-8 and consents related thereto.\n(4) Includes fees billed related to a consent and comfort letter issued in relation to FGNA\u2019s initial public offering.\nPre-Approval Policies and Procedures\nThe formal written charter for our Audit Committee requires that the Audit Committee pre-approve all audit and non-audit services to be provided to us by our independent auditor, and establish policies and procedures for the Audit Committee\u2019s pre-approval of permitted services in compliance with applicable SEC rules and review such pre-approval policies at least quarterly.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Business Combination Agreement, dated as of February 9, 2021, by and among the Company, Opportunity Financial, LLC and Todd Schwartz, in his capacity as the Members\u2019 Representative (incorporated by reference to Exhibit 2.1 of FG New America Acquisition Corp.\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on February 11, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation of OppFi Inc. (Incorporated by reference to Exhibit 3.1 to the Company\u2019s Amendment No. 1 to the Registration Statement on Form 8-A (File No. 001- 39550) filed by the Company with the SEC on July 21, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of OppFi Inc. (Incorporated by reference to Exhibit 3.2 to the Company\u2019s Amendment No. 1 to the Registration Statement on Form 8-A (File No. 001-39550) filed by the Company with the SEC on July 21, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Warrant Certificate (Incorporated by reference to Exhibit 4.1 to the Company\u2019s Amendment No. 1 to the Registration Statement on Form 8-A (File No. 001-39550) filed by the Company with the SEC on July 21, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Warrant Agreement, dated as of September 29, 2020, by and between FG New America Acquisition Corp. and Continental Stock Transfer & Trust Company (Incorporated by reference to Exhibit 4.1 to FG New America Acquisition Corp.\u2019s Current Report on Form 8-K (File No. 001-39550) filed by the Company with the SEC on October 2, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Description of Securities (incorporated by reference to Exhibit 4.3 of the Company\u2019s Annual Report on Form 10-K (File No. 001-96550) filed with the SEC on March 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1*",
+     "Tax Receivable Agreement, dated as of July 20, 2021, by and among the Company, Opportunity Financial, LLC, the Members and the Members\u2019 Representative (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2*",
+     "Investor Rights Agreement, dated as of July 20, 2021, by and among the Company, the Founder Holders, the Members, the Members\u2019 Representative and certain other parties thereto (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Amendment No. 1 to the Registration Statement on Form 8-A (File No. 001-39550) filed by the Company with the SEC on July, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3+",
+     "Third Amended and Restated Limited Liability Company Agreement of Opportunity Financial, LLC (incorporated by reference to Exhibit 10.3 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4*",
+     "Form of Indemnification Agreement (incorporated by reference to Exhibit 10.4 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5+*",
+     "Executive Employment Agreement, dated July 8, 2021, by and between Opportunity Financial, LLC and Neville Crawley (incorporated by reference to Exhibit 10.6 of the Company\u2019s Current Report on Form 8-K (File No. 001- 39550) filed with the SEC on July 26, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6\u2020+*",
+     "Employment Agreement, dated February 28, 2022, by and between Opportunity Financial, LLC and Mr. Shiven Shah."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 688
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "On at least an annual basis, the Audit Committee reviews and generally pre-approves the services (and related fee levels or budgeted amounts) that may be provided by our independent registered public accounting firm without first obtaining specific pre-approval from the Audit Committee. The Audit Committee may revise the list of general pre-approved services from time to time, based on subsequent determinations. Any subcommittee of the Audit Committee to which the Audit Committee delegates authority to make pre-approval decisions must report any such pre-approval decisions to the Audit Committee at its next scheduled meeting. If circumstances arise where it becomes necessary to engage the independent registered public accounting firm for additional services not contemplated in the original pre-approval categories or above the pre-approved amounts, the Audit Committee requires pre-approval for such additional services or such additional amounts.\nPrior to the Business Combination, all the services listed in the table above provided by RSM were approved by OppFi-LLC in accordance with its policies then in effect. Following the Business Combination, all of the services listed in the tables above provided by RSM were approved by our Audit Committee.\nPart IV\nITEM 15. EXHIBIT AND FINANCIAL STATEMENT SCHEDULES\n(a) The following is a list of documents filed as part of this report:\n(1) All financial statements are omitted for the reason that they are not required or the information is otherwise supplied in Item 8. \u201cFinancial Statements and Supplementary Data\u201d in the Original Report\n(2) No financial statement schedules are included because such schedules are not applicable, are not required, or because required information is included in the consolidated financial statements or notes thereto contained in the Original Report.\n(b) The required exhibits are filed as part of this Form 10-K or are incorporated by reference herein.",
+   "prose_after": "10.7\u2020+ Amended and Restated Revolving Credit Agreement, dated January, 31, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE III, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.9 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.8\u2020 Amendment No. 1 to Amended and Restated Revolving Credit Agreement, dated June 5, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE III, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.10 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.9\u2020 Amendment No. 2 to Amended and Restated Revolving Credit Agreement, dated June 26, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE III, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.11 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.10\u2020 Amendment No. 3 to Amended and Restated Revolving Credit Agreement, dated November 13, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE III, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.12 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.11\u2020 Amendment No. 4 to Amended and Restated Revolving Credit Agreement and Amendment No. 2 to Fee Letter, dated December 16, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE III, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.13 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.12\u2020+ Revolving Credit Agreement, dated April 15, 2019, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.14 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.13\u2020 Amendment No. 1 to Revolving Credit Agreement, dated July 18, 2019, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.15 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550)filed with the SEC on July 26, 2021) 10.14\u2020 Amendment No. 2 to Revolving Credit Agreement, dated December 20, 2019, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.16 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.15\u2020 Amendment No. 3 to Revolving Credit Agreement, dated January 31, 2019, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.17 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550)filed with the SEC on July 26, 2021). 10.16\u2020 Amendment No. 4 to Revolving Credit Agreement, dated February 14, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.18 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.17\u2020 Amendment No. 5 to Revolving Credit Agreement, dated June 5, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.19 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.18\u2020 Amendment No. 6 to Revolving Credit Agreement, dated June 26, 2020, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.20 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550)filed with the SEC on July 26, 2021). 10.19\u2020 Amendment No. 7 to Revolving Credit Agreement, dated November 13, 2020 by and among Opportunity Financial, LLC, Opportunity Funding SPE IV, LLC, OppWin, LLC, the Lenders party thereto, and Ares Agent Services, L.P. (incorporated by reference to Exhibit 10.21 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "31.1**",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a) and Rule 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2**",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a) and Rule 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (incorporated by reference to Exhibit 32.1 of the Company\u2019s Annual Report on Form 10-K (File No. 001-39550) filed with the SEC on March 11, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (incorporated by reference to Exhibit 32.1 of the Company\u2019s Annual Report on Form 10-K (File No. 001-39550) filed with the SEC on March 11, 2022)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "10.46\u2020+ Marketing and Program Management Agreement, dated as of April 17, 2020, by and between Capital Community Bank and Opportunity Financial, LLC (incorporated by reference to Exhibit 10.44 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.47 First Amendment to Marketing and Program Management Agreement, dated as of August 10, 2020, by and between Capital Community Bank and Opportunity Financial, LLC (incorporated by reference to Exhibit 10.45 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.48\u2020+ Loan Program Agreement, dated as of October 31, 2017, by and between FinWise Bank and Opportunity Financial, LLC (incorporated by reference to Exhibit 10.46 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.49\u2020 First Amendment to the Loan Program Agreement, dated as of January 18, 2018, by and between FinWise Bank and Opportunity Financial, LLC (incorporated by reference to Exhibit 10.47 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.50* OppFi Inc. 2021 Equity Incentive Plan (incorporated by reference to Annex E of FG New America Acquisition Corp.\u2019s Definitive Proxy Statement (File No. 001-39550) filed with the SEC on June 22, 2021). 10.51* Form of OppFi Inc. Stock Option Agreement (incorporated by reference to Exhibit 10.49 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.52* Form of OppFi Inc. Restricted Stock Unit Agreement (incorporated by reference to Exhibit 10.4 of the Company\u2019s Registration Statement on Form S-8 (File No. 333-259854) filed with the SEC on September 28, 2021). 10.53* OppFi Management Holdings, LLC Profits Interest Plan (incorporated by reference to Exhibit 10.50 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.54* Form of OppFi Management Holdings, LLC Profits Interest Plan Management Profits Interest Agreement (incorporated by reference to Exhibit 10.51 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.55\u2020+ Program Marketing and Servicing Agreement, dated November 1, 2019, by and between First Electronic Bank and Opportunity Financial, LLC (incorporated by reference to Exhibit 10.52 of the Company\u2019s Current Report on Form 8-K (File No. 001-39550) filed with the SEC on July 26, 2021). 10.56 OppFi Inc. 2021 Employee Stock Purchase Plan (incorporated by reference to Annex F of FG New America Acquisition Corp.\u2019s Definitive Proxy Statement (File No. 001-39550) filed with the SEC on June 22, 2021). 10.57\u2020+ Amendment No. 5 to Revolving Credit Agreement, dated August 6, 2021, by and among Opportunity Financial, LLC, Opportunity Funding SPE IV LLC, OppWin, LLC, the Lenders party thereto, and BMO Harris Bank N.A. (incorporated by reference to Exhibit 10.3 of the Company\u2019s Quarterly Report on Form 10-Q (File No. 001-39550) filed with the SEC on August 10, 2021). 21.1 Subsidiaries of OppFi Inc. (incorporated by reference to Exhibit 21.1 of the Company\u2019s Annual Report on Form 10-K (File No. 001-39550) filed with the SEC on March 11, 2022).",
+   "prose_after": "___________________________\n\u2020 Certain portions of this exhibit have been omitted pursuant to Regulation S-K Item (601)(b)(10).\n+ Certain of the exhibits and schedules to this exhibit have been omitted in accordance with Regulation S-K Item 601(a)(5). The Registrant agrees to furnish a copy of all omitted exhibits and schedules to the SEC upon its request.\n* Indicates a contract with management or compensatory plan or arrangement.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 738,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date: May 2, 2022",
+     "OppFi Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Pamela D. Johnson"
+    ],
+    [
+     "",
+     "",
+     "Pamela D. Johnson"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer (Principal Financial and Accounting Officer)"
+    ],
+    [
+     "",
+     "",
+     "(On behalf of the Registrant and as Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "___________________________\n\u2020 Certain portions of this exhibit have been omitted pursuant to Regulation S-K Item (601)(b)(10).\n+ Certain of the exhibits and schedules to this exhibit have been omitted in accordance with Regulation S-K Item 601(a)(5). The Registrant agrees to furnish a copy of all omitted exhibits and schedules to the SEC upon its request.\n* Indicates a contract with management or compensatory plan or arrangement.\n** Furnished herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 738,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

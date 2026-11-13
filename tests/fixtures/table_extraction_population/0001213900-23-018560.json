@@ -1,0 +1,5806 @@
+{
+ "accession": "0001213900-23-018560",
+ "cik": "0001560258",
+ "form": "10-K",
+ "filing_date": "2023-03-08",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ecor-20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "20-3454976"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "200 Forge Way, Suite 205, Rockaway, NJ",
+     "07866"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]       ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM TO\nCommission File Number 001-38538\nelectroCore, Inc.\n(Exact name of Registrant as specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (973) 290-0097\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 52,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, Par Value $0.001 Per Share",
+     "ECOR",
+     "Nasdaq Capital Stock Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 35,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (973) 290-0097\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. YES [ ] NO [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. YES [ ] NO [X]\nIndicate by check mark whether the Registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). YES [X] NO [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 52,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Table of Content",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "11"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "74"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "74"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "74"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "75"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "76"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "76"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "77"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "86"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "86"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "86"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "87"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "88"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "88"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "89"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "89"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "89"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "89"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "89"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "90"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "90"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 111
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the Registrant, based on the closing price of the shares of common stock on the Nasdaq Capital Stock Market on June 30, 2022 was $33,125,433.\nThe number of shares of Registrant\u2019s Common Stock outstanding as of March 1, 2023 was 4,742,450.\nPortions of the Registrant\u2019s Definitive Proxy Statement relating to the2022 Annual Meeting of Stockholders, which will be filed with the Securities Exchange Commission within 120 days after the end of the Registrant\u2019s fiscal year ended December 31, 2022, are incorporated by reference into Part III of this Report.",
+   "prose_after": "i\nCautionary Note Regarding Forward-Looking Statements\nThis Annual Report on Form 10-K, or Annual Report, contains forward-looking statements that involve substantial risks and uncertainties. All statements other than statements of historical facts contained in this Annual Report, including statements regarding our future results of operations and financial position, strategy and plans, and our expectations for future operations, are forward-looking statements. In some cases, you can identify forward-looking statements by terminology such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201canticipates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201ccontinue\u201d or the negative of these terms or other comparable terminology. These forward-looking statements are subject to a number of risks, uncertainties and assumptions, including those described under the heading \u201cRisk Factors\u201d contained in Item 1A of this Annual Report. In light of these risks, uncertainties and assumptions, actual results could differ materially and adversely from those anticipated or implied in the forward-looking statements in this Annual Report and you should not place undue reliance on these forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "8,592",
+     "",
+     "$",
+     "5,451",
+     "",
+     "$",
+     "3,141",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "1,616",
+     "",
+     "",
+     "1,385",
+     "",
+     "",
+     "231",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "6,976",
+     "",
+     "",
+     "4,066",
+     "",
+     "",
+     "2,910",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "5,520",
+     "",
+     "",
+     "2,536",
+     "",
+     "",
+     "2,984",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "24,330",
+     "",
+     "",
+     "21,573",
+     "",
+     "",
+     "2,757",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "29,850",
+     "",
+     "",
+     "24,109",
+     "",
+     "",
+     "5,741",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(22,874)",
+     "",
+     "",
+     "(20,043)",
+     "",
+     "",
+     "(2,831)",
+     ""
+    ],
+    [
+     "Other (income) expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Gain on extinguishment of debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,422)",
+     "",
+     "",
+     "1,422",
+     ""
+    ],
+    [
+     "  Gain on termination of joint venture",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(549)",
+     "",
+     "",
+     "549",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "(287)",
+     "",
+     "",
+     "(11)",
+     "",
+     "",
+     "(276)",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "6",
+     "",
+     "",
+     "8",
+     "",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "Total other (income) expense",
+     "",
+     "(281)",
+     "",
+     "",
+     "(1,974)",
+     "",
+     "",
+     "1,693",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(22,593)",
+     "",
+     "",
+     "(18,069)",
+     "",
+     "",
+     "(4,524)",
+     ""
+    ],
+    [
+     "Benefit from income taxes",
+     "",
+     "431",
+     "",
+     "",
+     "851",
+     "",
+     "",
+     "(420)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(22,162)",
+     "",
+     "$",
+     "(17,218)",
+     "",
+     "$",
+     "(4,944)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2118,
+    "end_line": 2149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "In April 2012, the JOBS Act was enacted by the federal government. Section 107 of the JOBS Act provides that an emerging growth company can take advantage of the extended transition period for complying with new or revised accounting standards. Thus, an emerging growth company can delay the adoption of certain accounting standards until those standards would otherwise apply to private companies. We have irrevocably elected to \u201copt out\u201d of this provision and, as a result, we will comply with new or revised accounting standards when they are required to be adopted by public companies that are not emerging growth companies.\nIn addition, as an emerging growth company, we are not required to provide an auditor\u2019s attestation report on our internal control over financial reporting in future annual reports on Form 10-K.\nWe will remain an emerging growth company until the earlier of (1) the last day of the fiscal year (a) following the fifth anniversary of the completion of our IPO (December 31, 2023), (b) in which we have total annual gross revenue of at least $1.235 billion, or (c) in which we are deemed to be a large accelerated filer, which means the market value of our common stock that is held by non-affiliates exceeds $700 million as of the prior June 30, and (2) the date on which we have issued more than $1.0 billion in non-convertible debt during the prior three-year period.\nResults of Operations\nComparison of the years ended December 31, 2022 and 2021\nThe following table summarizes our results of operations for the years ended December 31, 2022 and 2021 with the changes in those items in dollars.",
+   "prose_after": "Net Sales\nNet sales for the year ended December 31, 2022 increased 58% as compared to the year ended December 31, 2021. The increase of $3.1 million is due to an increase in net sales across all major channels including the U.S. Department of Veteran Affairs, U.S. commercial channel, and sales from outside the U.S. which includes licensing revenue of $139,000.There was no licensing revenue in the comparable prior year. Revenue from outside the U.S. was adversely impacted due to the strengthening of the U.S. dollar during the last half of 2022. We expect that the majority of 2023 fiscal year revenue will continue to come from the U.S. Department of Veterans Affairs and United Kingdom. Additionally, we expect revenues to expand from our cash pay propositions which includeecommerce stores, direct to physician models for traditional neurology headache specialists, as well as the wide range of medical providers who manage patients' headache conditions including primary care physicians, women's health, pain management, sports medicine, functional and integrative medicine professionals, as well as chiropractors, and PharmDs (Doctors of Pharmacy). In addition, we believe we may generate additional revenue from sales of our Truvaga and TAC-STIM products.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 136,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2158,
+     "token": "PAGE_BREAK",
+     "id": 137,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(16,645)",
+     "",
+     "$",
+     "(13,627)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "18,217",
+     ""
+    ],
+    [
+     "Financing activities",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "25,682",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2180,
+    "end_line": 2190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Selling, general and administrative expense of $24.3 million for the year ended December 31, 2022 increased by $2.8 million as we continued to make targeted investments to support our commercial efforts, particularly around sales and marketing efforts for our cash pay propositions which include ecommerce stores, direct to physician models for traditional neurology headache specialists, as well as the wide range of medical providers who manage patients' headache conditions including primary care physicians, women's health, pain management, sports medicine, functional and integrative medicine professionals, as well as chiropractors, and PharmDs (Doctors of Pharmacy). In 2023, we plan on continuing to make targeted investments in sales and marketing to support our commercial efforts.\nOther (Income) Expense\nOther (income) expense for the year ended December 31, 2021 primarily represents the gain of $1.4 million related to the forgiveness of the Paycheck Protection Program loan and the gain of $0.5 million recorded related to the termination of the joint venture in Australia. The increase in Interest and other income is primarily due rising interest rates.\nBenefit from Income Taxes\nThe Benefit from income taxes of $0.4 million and $0.9 million for the years ended December 31, 2022 and 2021, respectively, primarily represent the sale of our state net operating losses and research and development tax credits under the State of New Jersey\u2019s NOL Transfer Program.\nLiquidity and Capital Resources\nAt December 31, 2022 our cash, cash equivalents, and restricted cash was $18.0 million compared to $34.7 million at December 31, 2021.",
+   "prose_after": "Operating Activities\nNet cash used in operating activities was $16.6 million and $13.6 million for the years ended December 31, 2022 and 2021, respectively. This increase is primarily due to the increase in our net loss from operations.\nInvesting Activities\nNo cash was provided by investing activities during the year ended December 31, 2022. For the year ended December 31, 2021, net cash provided by investing activities was $18.2 million reflecting funds received from the maturity of marketable securities partially offset by our purchases of marketable securities.\nFinancing Activities\nNo cash was provided by financing activities during the year ended December 31, 2022. For the year ended December 31, 2021, net cash provided by financing activities was $25.7 million representing proceeds from the sale of our common stock.\nLiquidity Outlook\nIn 2023, we expect to continue to incur substantial negative cash flows from operations. We intend to continue to make targeted investments in sales and marketing, as well as the next generation of our therapy delivery platform.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2158,
+     "token": "PAGE_BREAK",
+     "id": 137,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 2203,
+     "token": "PAGE_BREAK",
+     "id": 138,
+     "namespace": "arabic",
+     "page_number": 84
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID # 688)",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Equity",
+     "F-6"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2336,
+    "end_line": 2345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Item 404 of Regulation S-K. The information required by this Item is incorporated herein by reference to the information that will be contained in our proxy statement related to the 2023 Annual Meeting of Stockholders or an amendment to this Annual Report, which we intend to file with the SEC within 120 days of the end of our fiscal year pursuant to General Instruction G(3) of Form 10-K.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by this Item is incorporated herein by reference to the information that will be contained in our proxy statement related to the 2023 Annual Meeting of Stockholders or an amendment to this Annual Report, which we intend to file with the SEC within 120 days of the end of our fiscal year pursuant to General Instruction G(3) of Form 10-K.\nItem 14. Principal Accountant Fees and Services\nThe information required by this Item is incorporated herein by reference to the information that will be contained in our proxy statement related to the 2023 Annual Meeting of Stockholders or an amendment to this Annual Report, which we intend to file with the SEC within 120 days of the end of our fiscal year pursuant to General Instruction G(3) of Form 10-K.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules\n(a) The following documents are filed as part of this report:\n(1) Financial Statements:",
+   "prose_after": "(2) Financial Statement Schedules:\nAll financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the financial statements or the notes thereto.\n(3) Exhibits. The exhibits filed as part of this Annual Report on Form 10-K are set forth on the Exhibit Index immediately following Item 16. The Exhibit Index is incorporated herein by reference.\nItem 16. Form 10-K Summary\nNot applicable.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2326,
+     "token": "PAGE_BREAK",
+     "id": 147,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2356,
+     "token": "PAGE_BREAK",
+     "id": 148,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description",
+     ""
+    ],
+    [
+     "3.1***",
+     "",
+     "Certificate of Incorporation of electroCore, Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2*****",
+     "",
+     "Amended and Restated Bylaws of electroCore, Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3*******",
+     "",
+     "Certificate of Designation of the Series A Preferred Stock of the Company"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.4*",
+     "",
+     "Certificate of Elimination of the Series A Preferred Stock of the Company, dated March 3, 2023"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.5*",
+     "",
+     "Certificate of Amendment to the Certificate of Incorporation, filed February 13, 2023"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1*****",
+     "",
+     "Registration Rights Agreement, dated March 27, 2020, between electroCore, Inc. and Lincoln Park Capital Fund, LLC"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2*",
+     "",
+     "Description of Capital Stock"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2\u2020**",
+     "",
+     "electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3\u2020*",
+     "",
+     "Form of Employee Restricted Stock Unit Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4\u2020*",
+     "",
+     "Form of Non-qualified Stock Option Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5\u2020**",
+     "",
+     "Form of Employee Restricted Stock Award Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.6\u2020**",
+     "",
+     "Form of Non-Employee Director Inaugural Deferred Stock Unit Award Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.7\u2020**",
+     "",
+     "Form of Non-Employee Director Inaugural Non-qualified Stock Option Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.8\u2020**",
+     "",
+     "Form of Non-Employee Director Inaugural Restricted Stock Unit Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.9\u2020**",
+     "",
+     "Form of Non-Employee Director Annual Deferred Stock Unit Award Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.10\u2020**",
+     "",
+     "Form of Non-Employee Director Annual Non-qualified Stock Option Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.11\u2020**",
+     "",
+     "Form of Non-Employee Director Annual Restricted Stock Unit Agreement for electroCore, Inc. 2018 Omnibus Equity Incentive Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.12\u2020**",
+     "",
+     "Form of Indemnification Agreement between the Registrant and each of its executive officers and directors"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.13\u2020**",
+     "",
+     "Form of electroCore, Inc. Management Severance Plan"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.14\u2020*",
+     "",
+     "electroCore, Inc. Non-Employee Director Compensation Policy"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.15****",
+     "",
+     "Rockaway, NJ Office Lease between Anson Logistics Assets LLC and electroCore, Inc."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.17**",
+     "",
+     "Form of Common Unit Warrant"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.18**",
+     "",
+     "Form of Series A Warrant"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.19**",
+     "",
+     "Form of Bridge Warrant"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2359,
+    "end_line": 2412
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules:\nAll financial statement schedules have been omitted because they are not applicable, not required or the information required is shown in the financial statements or the notes thereto.\n(3) Exhibits. The exhibits filed as part of this Annual Report on Form 10-K are set forth on the Exhibit Index immediately following Item 16. The Exhibit Index is incorporated herein by reference.\nItem 16. Form 10-K Summary\nNot applicable.",
+   "prose_after": "10.20\u2020 Employment Offer Letter, dated as of September 26, 2019, between electroCore, Inc. and Daniel Goldberger, incorporated by reference to the Company's Current Report on Form 8-K, as filed with the Commission on October 2, 2019. 10.21\u2020 Brian Posner Employment Agreement, dated as of January 30, 2019, incorporated by reference to the Company's Current Report on Form 8-K, as filed with the Commission on March 12, 2019. 10.22\u2020 Amendment to Brian Posner Employment Agreement, dated as of August 8, 2019, incorporated by reference to the Company's Quarterly Report on Form 10-Q, as filed with the Commission on August 14, 2019. 21.1* List of subsidiaries of electroCore, Inc. 23.1* Consent of Marcum LLP 31.1* Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2* Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1* Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2* Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 101.INS Inline XBRL Instance Document 101.SCH Inline XBRL Taxonomy Extension Schema Document 101.CAL Inline XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF Inline XBRL Taxonomy Extension Definition Linkbase Document 101.LAB Inline XBRL Taxonomy Extension Label Linkbase Document 101.PRE Inline XBRL Taxonomy Extension Presentation Linkbase Document",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2357,
+     "token": "PAGE_BREAK",
+     "id": 149,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2413,
+     "token": "PAGE_BREAK",
+     "id": 150,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "****",
+     "Incorporated by reference to the Company\u2019s Annual Report on Form 10-K for the period ended December 31, 2018 as filed with the Commission on March 28, 2019."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2424,
+    "end_line": 2427
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "10.20\u2020 Employment Offer Letter, dated as of September 26, 2019, between electroCore, Inc. and Daniel Goldberger, incorporated by reference to the Company's Current Report on Form 8-K, as filed with the Commission on October 2, 2019. 10.21\u2020 Brian Posner Employment Agreement, dated as of January 30, 2019, incorporated by reference to the Company's Current Report on Form 8-K, as filed with the Commission on March 12, 2019. 10.22\u2020 Amendment to Brian Posner Employment Agreement, dated as of August 8, 2019, incorporated by reference to the Company's Quarterly Report on Form 10-Q, as filed with the Commission on August 14, 2019. 21.1* List of subsidiaries of electroCore, Inc. 23.1* Consent of Marcum LLP 31.1* Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2* Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1* Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2* Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 101.INS Inline XBRL Instance Document 101.SCH Inline XBRL Taxonomy Extension Schema Document 101.CAL Inline XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF Inline XBRL Taxonomy Extension Definition Linkbase Document 101.LAB Inline XBRL Taxonomy Extension Label Linkbase Document 101.PRE Inline XBRL Taxonomy Extension Presentation Linkbase Document\n* Filed herewith.\n** Incorporated by reference to the Company\u2019s Registration Statement on Form S\u20111, Registration No. 333\u2011228863.\n*** Incorporated by reference to the Company\u2019s Quarterly Report on Form 10-Q for the period ended June 30, 2019 as filed with the Commission on August 14, 2019.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2414,
+     "token": "PAGE_BREAK",
+     "id": 151,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2439,
+     "token": "PAGE_BREAK",
+     "id": 152,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "*****",
+     "Incorporated by reference to the Company\u2019s Current Report on Form 8-K as filed with Commission on March 27, 2020."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2428,
+    "end_line": 2431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2414,
+     "token": "PAGE_BREAK",
+     "id": 151,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2439,
+     "token": "PAGE_BREAK",
+     "id": 152,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "******",
+     "Incorporated by reference to the Company's Current Report on Form 8-K as filed with Commission on December 23, 2021"
+    ],
+    [
+     "*******",
+     "Incorporated by reference to the Company's Current Report on Form 8-K as filed with the Commission on December 27, 2022."
+    ],
+    [
+     "********",
+     "Incorporated by reference to the Company's Current Report on Form 8-K as filed with the Commission on February 14, 2023."
+    ],
+    [
+     "\u2020",
+     "Indicates management agreement"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2432,
+    "end_line": 2438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2414,
+     "token": "PAGE_BREAK",
+     "id": 151,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2439,
+     "token": "PAGE_BREAK",
+     "id": 152,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "electroCore, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:  March 8, 2023",
+     "By:",
+     "/s/ DANIEL S. GOLDBERGER"
+    ],
+    [
+     "",
+     "",
+     "Daniel S. Goldberger"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director\n\n(Principal Executive Officer)"
+    ],
+    [
+     "Date:  March 8, 2023",
+     "By:",
+     "/s/ BRIAN M. POSNER"
+    ],
+    [
+     "",
+     "",
+     "Brian M. Posner"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer\n\n(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "electroCore, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2446,
+    "end_line": 2462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2440,
+     "token": "PAGE_BREAK",
+     "id": 153,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 154,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Peter Cuneo",
+     "Chairman of the Board",
+     "March 8, 2023"
+    ],
+    [
+     "Peter Cuneo",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Julie A. Goldstein",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Julie A. Goldstein",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Daniel S. Goldberger",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Daniel S. Goldberger",
+     "",
+     ""
+    ],
+    [
+     "/s/ John Gandolfo",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "John Gandolfo",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joseph P. Errico",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Joseph P. Errico",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Thomas Patton",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Thomas Patton",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Thomas J. Errico, M.D.",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Thomas J. Errico, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Patricia Wilber",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Patricia Wilber",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Trevor J. Moody",
+     "Director",
+     "March 8, 2023"
+    ],
+    [
+     "Trevor J. Moody",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2465,
+    "end_line": 2504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this Report has been signed below by the following persons on behalf of the Registrant in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2440,
+     "token": "PAGE_BREAK",
+     "id": 153,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2505,
+     "token": "PAGE_BREAK",
+     "id": 154,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID # 688)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2022 and 2021",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years ended December 31, 2022 and 2021",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss for the Years ended December 31, 2022 and 2021",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Equity for the Years ended December 31, 2022 and 2021",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years ended December 31, 2022 and 2021",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2510,
+    "end_line": 2525
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": ".\nReport of Independent Registered Public Accounting Firm\nTo the Shareholders and Board of Directors of\nelectroCore, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of electroCore, Inc. (the \u201cCompany\u201d) as of December 31, 2022 and 2021, the related consolidated statements of operations, comprehensive loss, equity, and cash flows for each of the two years in the period ended December 31, 2022, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2022 and 2021, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2022, in conformity with accounting principles generally accepted in the United States of America.\nExplanatory Paragraph \u2013 Going Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As more fully described in Note 3, the Company has experienced significant losses and cash used in operations and expects to continue to incur net losses. These conditions raise substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 3. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2506,
+     "token": "PAGE_BREAK",
+     "id": 155,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2525,
+     "token": "PAGE_BREAK",
+     "id": 156,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "17,712",
+     "",
+     "$",
+     "34,689",
+     ""
+    ],
+    [
+     "    Restricted cash",
+     "",
+     "250",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "401",
+     "",
+     "",
+     "438",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "",
+     "1,982",
+     "",
+     "",
+     "1,361",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "828",
+     "",
+     "",
+     "1,053",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "21,173",
+     "",
+     "",
+     "37,541",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventories, noncurrent",
+     "",
+     "2,194",
+     "",
+     "",
+     "3,941",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "50",
+     "",
+     "",
+     "147",
+     ""
+    ],
+    [
+     "Operating lease right of use assets, net",
+     "",
+     "565",
+     "",
+     "",
+     "613",
+     ""
+    ],
+    [
+     "Other assets, net",
+     "",
+     "774",
+     "",
+     "",
+     "591",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "24,756",
+     "",
+     "$",
+     "42,833",
+     ""
+    ],
+    [
+     "Liabilities and Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "2,129",
+     "",
+     "$",
+     "938",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "4,842",
+     "",
+     "",
+     "4,486",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "",
+     "74",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "7,045",
+     "",
+     "",
+     "5,485",
+     ""
+    ],
+    [
+     "Noncurrent liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating lease liabilities, noncurrent",
+     "",
+     "625",
+     "",
+     "",
+     "700",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "7,670",
+     "",
+     "",
+     "6,185",
+     ""
+    ],
+    [
+     "Commitments and contingencies (see Note 13)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Mezzanine equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock, par value $0.001 per share; 10,000,000 shares authorized as of December 31, 2022 and December 31, 2021; 71,173 shares issued and outstanding at December 31, 2022 ($0.001 per share liquidation value) and 0 shares issued and outstanding at December 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, par value $0.001 per share; 500,000,000 shares authorized as of both December 31, 2022 and 2021; 4,744,886 shares issued and outstanding at December 31, 2022, and 4,713,608 shares issued and outstanding at December 31, 2021",
+     "",
+     "5",
+     "",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "163,520",
+     "",
+     "",
+     "160,838",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(146,370)",
+     "",
+     "",
+     "(124,208)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive (loss) income",
+     "",
+     "(69)",
+     "",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "Total equity",
+     "",
+     "17,086",
+     "",
+     "",
+     "36,648",
+     ""
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "24,756",
+     "",
+     "$",
+     "42,833",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2568,
+    "end_line": 2619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Marcum LLP\nMarcum LLP\nWe have served as the Company\u2019s auditor since 2020.\nNew York, NY\nMarch 8, 2022\nELECTROCORE, INC. AND SUBSIDIARIES\nConsolidated Balance Sheets\n(in thousands, except share data)",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Operations\n(in thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2560,
+     "token": "PAGE_BREAK",
+     "id": 157,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 2621,
+     "token": "PAGE_BREAK",
+     "id": 158,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "8,592",
+     "",
+     "$",
+     "5,451",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "1,616",
+     "",
+     "",
+     "1,385",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "6,976",
+     "",
+     "",
+     "4,066",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "5,520",
+     "",
+     "",
+     "2,536",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "24,330",
+     "",
+     "",
+     "21,573",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "29,850",
+     "",
+     "",
+     "24,109",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(22,874)",
+     "",
+     "",
+     "(20,043)",
+     ""
+    ],
+    [
+     "Other (income) expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Gain on extinguishment of debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,422)",
+     ""
+    ],
+    [
+     "  Gain on termination of joint venture",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(549)",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "(287)",
+     "",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "6",
+     "",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "Total other income",
+     "",
+     "(281)",
+     "",
+     "",
+     "(1,974)",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(22,593)",
+     "",
+     "",
+     "(18,069)",
+     ""
+    ],
+    [
+     "Benefit from income taxes",
+     "",
+     "431",
+     "",
+     "",
+     "851",
+     ""
+    ],
+    [
+     "      Net loss",
+     "",
+     "(22,162)",
+     "",
+     "",
+     "(17,218)",
+     ""
+    ],
+    [
+     "    Preferred stock dividend",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss available for common shareholders",
+     "$",
+     "(22,162)",
+     "",
+     "$",
+     "(17,218)",
+     ""
+    ],
+    [
+     "Net loss per share of common stock - Basic and Diluted (see Note 9)",
+     "$",
+     "(4.69)",
+     "",
+     "$",
+     "(4.36)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - Basic and Diluted (see Note 9)",
+     "",
+     "4,729",
+     "",
+     "",
+     "3,945",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2629,
+    "end_line": 2665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Operations\n(in thousands, except per share data)",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Comprehensive Loss\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2623,
+     "token": "REPEATING_HEADER",
+     "id": 159,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2667,
+     "token": "PAGE_BREAK",
+     "id": 160,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(22,162)",
+     "",
+     "$",
+     "(17,218)",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "(82)",
+     "",
+     "",
+     "176",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment - deconsolidation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "86",
+     ""
+    ],
+    [
+     "Unrealized gain on marketable securities, net of taxes as applicable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "  Other comprehensive (loss) income",
+     "",
+     "(82)",
+     "",
+     "",
+     "264",
+     ""
+    ],
+    [
+     "Preferred dividend",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Comprehensive loss available to common shareholders",
+     "$",
+     "(22,244)",
+     "",
+     "$",
+     "(16,954)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2675,
+    "end_line": 2693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Comprehensive Loss\n(in thousands)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nConsolidated Statements of Equity\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2669,
+     "token": "REPEATING_HEADER",
+     "id": 161,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2695,
+     "token": "PAGE_BREAK",
+     "id": 162,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Mezzanine Equity",
+     "",
+     "",
+     "",
+     "Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated other",
+     "",
+     "",
+     "Total electroCore",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "comprehensive",
+     "",
+     "",
+     "Inc.,",
+     "",
+     "",
+     "Noncontrolling",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "capital",
+     "",
+     "deficit",
+     "",
+     "",
+     "income (loss)",
+     "",
+     "",
+     "equity",
+     "",
+     "",
+     "interest",
+     "",
+     "",
+     "equity",
+     "",
+     ""
+    ],
+    [
+     "Balances as of January 1, 2021",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "3,038",
+     "",
+     "45",
+     "",
+     "",
+     "130,205",
+     "",
+     "(106,990)",
+     "",
+     "",
+     "(251)",
+     "",
+     "",
+     "23,009",
+     "",
+     "",
+     "635",
+     "",
+     "",
+     "23,644",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(17,218)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(17,218)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(17,218)",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "264",
+     "",
+     "",
+     "264",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "264",
+     ""
+    ],
+    [
+     "Issuance of stock (see Note 8)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "1,563",
+     "",
+     "24",
+     "",
+     "",
+     "25,658",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,682",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,682",
+     ""
+    ],
+    [
+     "Issuance of stock to satisfy certain obligations (see Note 8)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "77",
+     "",
+     "1",
+     "",
+     "",
+     "1,207",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,208",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,208",
+     ""
+    ],
+    [
+     "Issuance of common stock in connection with employee stock plans, net of forfeitures",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "25",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Settlement of accrued bonus",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "11",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400",
+     ""
+    ],
+    [
+     "Share based compensation",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1",
+     "",
+     "",
+     "3,302",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,303",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,303",
+     ""
+    ],
+    [
+     "Reverse stock split",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(66)",
+     "",
+     "",
+     "66",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Termination of joint venture",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(635)",
+     "",
+     "",
+     "(635)",
+     ""
+    ],
+    [
+     "Balances as of January 1, 2022",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "4,714",
+     "",
+     "5",
+     "",
+     "",
+     "160,838",
+     "",
+     "(124,208)",
+     "",
+     "",
+     "13",
+     "",
+     "",
+     "36,648",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "36,648",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(22,162)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(22,162)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(22,162)",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(82)",
+     "",
+     "",
+     "(82)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(82)",
+     ""
+    ],
+    [
+     "Issuance of common stock in connection with employee stock plans, net of forfeitures",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "31",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dividend preferred (see Note 8)",
+     "",
+     "71",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Share based compensation",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,682",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,682",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,682",
+     ""
+    ],
+    [
+     "Balances as of December 31, 2022",
+     "",
+     "71",
+     "\u2014",
+     "",
+     "",
+     "4,745",
+     "$",
+     "5",
+     "",
+     "$",
+     "163,520",
+     "$",
+     "(146,370)",
+     "",
+     "$",
+     "(69)",
+     "",
+     "$",
+     "17,086",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "17,086",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2703,
+    "end_line": 2736
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nConsolidated Statements of Equity\n(in thousands)",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nELECTROCORE, INC. AND SUBSIDIARIES Consolidated Statements of Cash Flows (in thousands)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2697,
+     "token": "REPEATING_HEADER",
+     "id": 163,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2738,
+     "token": "PAGE_BREAK",
+     "id": 164,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(22,162)",
+     "",
+     "$",
+     "(17,218)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "2,682",
+     "",
+     "",
+     "3,302",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "548",
+     "",
+     "",
+     "382",
+     ""
+    ],
+    [
+     "Amortization of marketable securities premium",
+     "",
+     "\u2014",
+     "",
+     "",
+     "142",
+     ""
+    ],
+    [
+     "        Gain on extinguishment of debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,422)",
+     ""
+    ],
+    [
+     "        Gain on termination of joint venture",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(549)",
+     ""
+    ],
+    [
+     "        Gain on lease settlement",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(57)",
+     ""
+    ],
+    [
+     "  Increase in allowance for doubtful accounts",
+     "",
+     "\u2014",
+     "",
+     "",
+     "49",
+     ""
+    ],
+    [
+     "  (Gain) loss on legal fee obligation settled with stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "Noncash lease expense",
+     "",
+     "48",
+     "",
+     "",
+     "55",
+     ""
+    ],
+    [
+     "        Inventory reserve charge",
+     "",
+     "196",
+     "",
+     "",
+     "70",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "37",
+     "",
+     "",
+     "(217)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "296",
+     "",
+     "",
+     "371",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "225",
+     "",
+     "",
+     "716",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,191",
+     "",
+     "",
+     "464",
+     ""
+    ],
+    [
+     "Accrued expense and other current liabilities",
+     "",
+     "356",
+     "",
+     "",
+     "425",
+     ""
+    ],
+    [
+     "        Right of use operating lease assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(151)",
+     ""
+    ],
+    [
+     "        Operating lease liabilities",
+     "",
+     "(62)",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(16,645)",
+     "",
+     "",
+     "(13,627)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of marketable securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,083)",
+     ""
+    ],
+    [
+     "Proceeds from maturities of marketable securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "23,300",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "18,217",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Proceeds from shares issued, net of related expenses",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,682",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,682",
+     ""
+    ],
+    [
+     "Effect of changes in exchange rates on cash and cash equivalents",
+     "",
+     "(82)",
+     "",
+     "",
+     "175",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "",
+     "(16,727)",
+     "",
+     "",
+     "30,447",
+     ""
+    ],
+    [
+     "Cash and cash equivalents \u2013 beginning of year",
+     "",
+     "34,689",
+     "",
+     "",
+     "4,242",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, and restricted cash \u2013 end of year",
+     "$",
+     "17,962",
+     "",
+     "$",
+     "34,689",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flows disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Proceeds from sale of state net operating losses",
+     "$",
+     "445",
+     "",
+     "$",
+     "877",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "39",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "6",
+     "",
+     "$",
+     "10",
+     ""
+    ],
+    [
+     "Supplemental schedule of noncash activity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Insurance premium financing",
+     "$",
+     "522",
+     "",
+     "$",
+     "874",
+     ""
+    ],
+    [
+     "      Settlement of certain obligations through issuance of common stock",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,275",
+     ""
+    ],
+    [
+     "      2020 bonus paid in stock",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "400",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2742,
+    "end_line": 2800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nELECTROCORE, INC. AND SUBSIDIARIES Consolidated Statements of Cash Flows (in thousands)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nNotes to Consolidated Financial Statements\nNote 1. The Company\nelectroCore, Inc. and its subsidiaries (\u201celectroCore\u201d or the \u201cCompany\u201d) is a commercial stage bioelectronic medicine and wellness company dedicated to improving health through its non-invasive vagus nerve stimulation (\u201cnVNS\u201d) technology platform. The Company\u2019s focus is the commercialization of medical devices for the management and treatment of certain medical conditions and consumer product offerings utilizing nVNS to promote general wellbeing and human performance in the United States and select overseas markets.\nelectroCore, headquartered in Rockaway, NJ, has two wholly owned subsidiaries: electroCore UK Ltd and electroCore Germany GmbH. The Company has paused operations in Germany, with sales into the country and the rest of Europe being managed by electroCore UK Ltd. On November 2, 2021, the Company formally terminated its agreement with electroCore (Aust) Pty Limited (\u201celectroCoreAustralia\u201d). Prior to this termination, electroCoreAustralia was subject to electroCore\u2019s control on a basis other than voting interests and was a variable interest entity (\u201cVIE\u201d), for which electroCore was the primary beneficiary. As of May 2017, the VIE had ceased operations. (see Note 10)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2738,
+     "token": "PAGE_BREAK",
+     "id": 164,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 2802,
+     "token": "PAGE_BREAK",
+     "id": 165,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Year Ended\n\nDecember 31, 2022",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "17,712"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "250"
+    ],
+    [
+     "  Total cash, cash equivalents and restricted cash",
+     "$",
+     "17,962"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2847,
+    "end_line": 2858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The transaction price is based on the consideration that the Company expects to receive in exchange for its products and includes the fixed per-unit price of the product and variable consideration in the form of trade credits, vouchers, rebates, and co-payment assistance. The per-unit price is based on the Company\u2019s established wholesale acquisition cost less a contractually agreed upon distributor discount with the customer.\nTrade credits are discounts that are contingent upon a timely remittance of payment and are estimated based on historical experience. Damaged or defective products are replaced at no charge under the Company\u2019s standard warranty. A cash refund is allowed under specific circumstances for undamaged and non-defective returned products. For the years ended December 31, 2022 and 2021, trade credits and discounts were immaterial.\n(e) Cash, Cash Equivalents and Restricted Cash\nCash and cash equivalents include all highly liquid investments with an original maturity of three months or less when purchased.\nThe following table provides a reconciliation of cash, cash equivalents and restricted cash to the balance reflected on the Consolidated Statement of Cash Flow for the year ended December 31, 2022:",
+   "prose_after": "(f) Restricted Cash\nThe Company's restricted cash consists of cash that the Company is contractually obligated to maintain in accordance with the terms of its corporate credit card arrangement with Citibank.\n(g) Concentration of Credit Risk\nCash equivalents are financial instruments that potentially subject the Company to concentration of credit risk. As of December 31, 2022, the Company's cash equivalents securities were largely comprised of money market funds. The Company has established guidelines relative to diversification and maturities that are designed to help ensure safety and liquidity. These guidelines are periodically reviewed to take advantage of trends in yields and interest rates. As of December 31, 2022, 95% of the Company\u2019s cash and cash equivalents were denominated in U.S. Dollars, the balance is subject to foreign exchange risk. The Company\u2019s accounts are insured by the Federal Deposit Insurance Corporation (\u201cFDIC\u201d) up to $250,000 per financial institution in the United States, and up to \u00a385,000 by the Financial Services Compensation Scheme (\u201cFSCS\u201d) per financial institution in the United Kingdom.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2831,
+     "token": "REPEATING_HEADER",
+     "id": 168,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 2862,
+     "token": "PAGE_BREAK",
+     "id": 169,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Machinery and equipment",
+     "3\u201315 years"
+    ],
+    [
+     "Leasehold improvements",
+     "Lesser of estimated useful life or remaining term of lease"
+    ],
+    [
+     "Furniture and fixtures",
+     "5\u201310 years"
+    ],
+    [
+     "Computer equipment",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2888,
+    "end_line": 2894
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company evaluates inventory with respect to its operating cycle and classifies inventory as current or long-term on its balance sheet. Based upon estimated production needs and current inventory levels, the Company determined the amount of inventory necessary for the next twelve months. Any amounts over this projection are reclassified as Inventories, noncurrent.\nIn addition, the Company\u2019s product is subject to strict quality control and monitoring which the Company performs throughout the manufacturing process. If certain units of product no longer meet quality specification or become obsolete, the Company records a charge to cost of goods sold to write down such unmarketable inventory to zero.\n(j) Property and Equipment\nProperty and equipment are stated at historical cost. Depreciation is computed by the straight-line method based on the estimated useful lives of the respective assets, as discussed below. Amounts expended for maintenance and repairs are charged to expense as incurred.\nDepreciation and leasehold improvement amortization is computed using the following estimated useful lives:",
+   "prose_after": "(k) Leases\nThe Company determines if an arrangement is a lease at inception. For each lease, the lease term is determined at the commencement date and includes renewal options and termination options when it is reasonably certain that the Company will exercise that option. Operating leases with lease terms greater than one year are included in operating lease right-of-use (\u201cROU\u201d) assets and current and long-term operating lease liabilities in the Company\u2019s consolidated balance sheets.\nOperating lease ROU assets represent the right to use an underlying asset for the lease term and lease liabilities represent the obligation to make lease payments arising from the lease. Operating lease liabilities are recognized at commencement date based on the present value of lease payments over the lease term using an estimated rate of interest the Company would have to pay to borrow equivalent funds on a collateralized basis at the lease commencement date. The operating lease ROU assets are based on the liability adjusted for any prepaid or deferred rent and lease incentives. The incremental borrowing rate was utilized to discount lease payments over the expected term given that the Company\u2019s operating leases do not provide an implicit rate. The Company estimates the incremental borrowing rate to reflect the profile of secured borrowing over the expected term of the leases based on the information available at the later of the date of adoption or the lease commencement date. Rent expense for the operating lease is recognized on a straight-line basis over the lease term.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2864,
+     "token": "REPEATING_HEADER",
+     "id": 170,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 2894,
+     "token": "PAGE_BREAK",
+     "id": 171,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Revenue channel:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  VA/DoD",
+     "",
+     "60.8",
+     "%",
+     "59.8",
+     "%"
+    ],
+    [
+     "  National Health Service",
+     "",
+     "15.1",
+     "%",
+     "24.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2968,
+    "end_line": 2977
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Significant Risks and Uncertainties"
+    }
+   },
+   "prose_before": "There is no assurance that the Company will generate sufficient funds through its operating results or financing activity raising substantial doubt about the Company\u2019s ability to continue as a going concern within one year of the date of the accompanying financial statements are issued. The accompanying financial statements do not include any adjustment that might result from the outcome of this uncertainty.\nConcentration of Revenue Risks\nThe Company earns a significant amount of its revenue (i) in the United States from the Department of Veterans Affairs and Department of Defense (\"VA/DoD\") pursuant to its qualifying contract under the Federal Supply Schedule and open market sales to individual Department of Veterans Affairs facilities, and (ii) in the United Kingdom from the National Health Service. The VA/DoD and National Health Service were the Company\u2019s sole customers accounting for 10% or more of total net sales during the years ended December 31, 2022 and 2021. The following table reflects the respective concentration as a percentage of the Company's net sales:",
+   "prose_after": "During the years ended December 30, 2022 and 2021, one and two facilities accounted for more than 10% of total VA/DOD net sales, respectively. During the years ended December 31, 2022 and 2021, one facility accounted for more than 10% of net sales from the National Health Service.\nForeign Currency Exchange Risks\nThe Company has foreign currency exchange risk related to revenue and operating expenses in currencies other than the local currencies in which it operates. The Company is exposed to currency risk from the potential changes in functional currency values of its assets, liabilities, and cash flows denominated in foreign currencies.\nCOVID-19 Risks and Uncertainties\nThe Company continues to monitor the impact of the ongoing coronavirus pandemic on all aspects of its business and geographies, including how it will impact business partners, customers, and the global supply chain. While the Company experienced disruptions during the years ended December 31, 2022 and 2021 from the coronavirus pandemic, it is unable to predict the full impact that the coronavirus pandemic may have on its financial condition, results of operations and cash flows due to numerous uncertainties. These uncertainties include the scope, severity and duration of the pandemic, the actions taken to contain the pandemic or mitigate its impact and the direct and indirect economic effects of the ongoing pandemic and containment measures, the emergence of new viral strains that are not responsive to the vaccines, among others. The coronavirus pandemic has significantly adversely impacted global economic activity and has contributed to significant volatility and negative pressure in financial markets. Depending upon the duration and severity of the pandemic, the continuing effect on the Company's results and outlook over the long term remains uncertain.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2948,
+     "token": "PAGE_BREAK",
+     "id": 175,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2985,
+     "token": "PAGE_BREAK",
+     "id": 176,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Product revenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "6,974",
+     "$",
+     "3,940"
+    ],
+    [
+     "United Kingdom",
+     "",
+     "1,296",
+     "",
+     "1,344"
+    ],
+    [
+     "Other",
+     "",
+     "183",
+     "",
+     "167"
+    ],
+    [
+     "License revenue",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Japan",
+     "",
+     "139",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Net Sales",
+     "$",
+     "8,592",
+     "$",
+     "5,451"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2997,
+    "end_line": 3012
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Revenue Recognition"
+    }
+   },
+   "prose_before": "The Company continues to monitor the impact of the ongoing coronavirus pandemic on all aspects of its business and geographies, including how it will impact business partners, customers, and the global supply chain. While the Company experienced disruptions during the years ended December 31, 2022 and 2021 from the coronavirus pandemic, it is unable to predict the full impact that the coronavirus pandemic may have on its financial condition, results of operations and cash flows due to numerous uncertainties. These uncertainties include the scope, severity and duration of the pandemic, the actions taken to contain the pandemic or mitigate its impact and the direct and indirect economic effects of the ongoing pandemic and containment measures, the emergence of new viral strains that are not responsive to the vaccines, among others. The coronavirus pandemic has significantly adversely impacted global economic activity and has contributed to significant volatility and negative pressure in financial markets. Depending upon the duration and severity of the pandemic, the continuing effect on the Company's results and outlook over the long term remains uncertain.\nNote 4. Revenue Recognition\nGeographical Net Sales\nThe following table presents net sales disaggregated by geographic area:",
+   "prose_after": "Contract Balances\nThe Company generally invoices the customer and recognizes revenue once its performance obligations are satisfied, at which point payment is unconditional. In March 2022, the Company entered into an agreement with Teijin Limited (Teijin), to license certain exclusive rights to its nVNS technology for commercialization in Japan for a range of primary headache disorders. Under the agreement, the Company received a non-refundable, upfront payment for the licenses and rights granted to Teijin. The Company began to recognize revenue for this upfront payment ratably over a period of one year commencing in the second quarter of 2022. As of December 31, 2022, the Company's Consolidated balance sheet included a contract liability related to the Teijin agreement in the amount of $152,000 which is included in Accrued expenses and other current liabilities. No further contracts with customers gave rise to contract assets or liabilities during the year ended December 31, 2022 and 2021. See Note 7 Accrued Expenses and other current liabilities.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2987,
+     "token": "REPEATING_HEADER",
+     "id": 177,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 3041,
+     "token": "PAGE_BREAK",
+     "id": 178,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "944",
+     "$",
+     "769"
+    ],
+    [
+     "Work in process",
+     "",
+     "2,879",
+     "",
+     "4,072"
+    ],
+    [
+     "Finished Goods",
+     "",
+     "353",
+     "",
+     "461"
+    ],
+    [
+     "Total Inventory",
+     "",
+     "4,176",
+     "",
+     "5,302"
+    ],
+    [
+     "Less: noncurrent inventory",
+     "",
+     "2,194",
+     "",
+     "3,941"
+    ],
+    [
+     "Total current inventory",
+     "$",
+     "1,982",
+     "$",
+     "1,361"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3023,
+    "end_line": 3039
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "The Company generally invoices the customer and recognizes revenue once its performance obligations are satisfied, at which point payment is unconditional. In March 2022, the Company entered into an agreement with Teijin Limited (Teijin), to license certain exclusive rights to its nVNS technology for commercialization in Japan for a range of primary headache disorders. Under the agreement, the Company received a non-refundable, upfront payment for the licenses and rights granted to Teijin. The Company began to recognize revenue for this upfront payment ratably over a period of one year commencing in the second quarter of 2022. As of December 31, 2022, the Company's Consolidated balance sheet included a contract liability related to the Teijin agreement in the amount of $152,000 which is included in Accrued expenses and other current liabilities. No further contracts with customers gave rise to contract assets or liabilities during the year ended December 31, 2022 and 2021. See Note 7 Accrued Expenses and other current liabilities.\nAgreed upon payment terms with customers are within 30 days of shipment. Accordingly, contracts with customers do not include a significant financing component.\nNote 5. Inventory\nAs of December 31, 2022 and 2021, inventories consisted of the following:",
+   "prose_after": "As of December 31, 2022 and 2021, the Company reserved $668,000 and $821,000 respectively, for obsolete inventory. During the year ended December 31, 2022, the Company disposed of $110,000 of inventory which was previously reserved against. The Company records charges for obsolete inventory in cost of goods sold. As of December 31, 2022 and 2021, noncurrent inventory was comprised of approximately $0.1 million and $0.9 million of raw materials, respectively, and $2.1 million and $3.0 million of work in process, respectively. Inventory classified under the category Work in process consists of prefabricated assembled product.\nNote 6. Leases\nThe Company accounts for leases in accordance with FASB ASU 2016-02, Leases (Topic 842), and its operating leases consist of manufacturing/warehouse space and office equipment. The Company elected not to recognize right of use assets and lease liabilities for short term leases, i.e., leases with a noncancelable period of 12 months or less. The Company recognized the option to renew its manufacturing/warehouse space (\"Rockaway space\") as part of the right of use asset and the lease liability as the Company deemed that the renewal option was reasonably certain to be exercised.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2987,
+     "token": "REPEATING_HEADER",
+     "id": 177,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 3041,
+     "token": "PAGE_BREAK",
+     "id": 178,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Operating leases:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right of use assets",
+     "$",
+     "565",
+     "",
+     "$",
+     "613",
+     ""
+    ],
+    [
+     "Operating lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "",
+     "74",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Noncurrent operating lease liabilities",
+     "",
+     "625",
+     "",
+     "",
+     "700",
+     ""
+    ],
+    [
+     "Total operating lease liabilities",
+     "$",
+     "699",
+     "",
+     "$",
+     "761",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term (in years)",
+     "",
+     "6.1",
+     "",
+     "",
+     "6.9",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "13.8",
+     "%",
+     "",
+     "13.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3057,
+    "end_line": 3073
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "On September 27, 2021, the Company entered into the Termination and Settlement Agreement (\"Agreement\") with the lessor of the Basking Ridge office space. The Agreement provided for the immediate termination of the Basking Ridge lease in its entirety. In consideration for the lease termination, the Company agreed to pay the lessor a total of $500,000 in cash and issue to the lessor 13,333 shares of its common stock. As of December 31, 2021, such payments were satisfied by the Company. The Company recorded a gain of $57,000 connection with the termination of the Agreement which is included in the accompanying Consolidated Statement of Operations for the year ended December 31, 2021 under the caption Operating expenses - Selling, general and administrative.\nFor the years ended December 31, 2022 and 2021, the Company recognized lease expense of $153,000 and $146,000, respectively. This expense does not include non-lease components associated with the lease agreements as the Company elected not to include such charges as part of the lease expense.\nSupplemental Balance Sheet Information for Operating Leases:",
+   "prose_after": "Future minimum lease payments under non-cancellable operating leases as of December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3043,
+     "token": "REPEATING_HEADER",
+     "id": 179,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 3091,
+     "token": "PAGE_BREAK",
+     "id": 180,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Financial year (in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "$",
+     "164",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "168",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "171",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "161",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "157",
+     ""
+    ],
+    [
+     "2028 and thereafter",
+     "",
+     "216",
+     ""
+    ],
+    [
+     "Total future minimum lease payments",
+     "",
+     "1,037",
+     ""
+    ],
+    [
+     "Less: Amounts representing interest",
+     "",
+     "(338)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "699",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Financial year (in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 3076,
+    "end_line": 3091
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Future minimum lease payments under non-cancellable operating leases as of December 31, 2022:",
+   "prose_after": "Note 7. Accrued Expenses and Other Current Liabilities\nAccrued expenses as of December 31, 2022 and 2021 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3043,
+     "token": "REPEATING_HEADER",
+     "id": 179,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 3091,
+     "token": "PAGE_BREAK",
+     "id": 180,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Accrued professional fees",
+     "$",
+     "524",
+     "$",
+     "468"
+    ],
+    [
+     "Accrued bonuses and incentive compensation",
+     "",
+     "2,042",
+     "",
+     "1,849"
+    ],
+    [
+     "Accrued litigation legal fees expense",
+     "",
+     "1,001",
+     "",
+     "605"
+    ],
+    [
+     "Accrued insurance expense",
+     "",
+     "264",
+     "",
+     "499"
+    ],
+    [
+     "Accrued vacation and other employee related expenses",
+     "",
+     "534",
+     "",
+     "455"
+    ],
+    [
+     "Accrued valued-added tax",
+     "",
+     "133",
+     "",
+     "263"
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "152",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other",
+     "",
+     "192",
+     "",
+     "347"
+    ],
+    [
+     "",
+     "$",
+     "4,842",
+     "$",
+     "4,486"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3099,
+    "end_line": 3116
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued Expenses and Other Current Liabilities"
+    }
+   },
+   "prose_before": "Note 7. Accrued Expenses and Other Current Liabilities\nAccrued expenses as of December 31, 2022 and 2021 consisted of the following:",
+   "prose_after": "Finance and Security Agreements\nOn July 5, 2022, the Company entered into a Commercial Insurance Premium Finance and Security Agreement (\u201cthe 2022 Agreement\u201d). The 2022 Agreement provides for a single borrowing by the Company of approximately $783,000 with a nine-month term and an annual interest rate of 2.49%. The proceeds from this transaction were used to partially fund the premiums due under certain of the Company\u2019s insurance policies. The amounts payable are secured by the Company\u2019s rights under such policies. The Company began to pay monthly installments of approximately $87,900 beginning in July 2022. As of December 31, 2022, the remaining balance under the Agreement was $264,000 and during the year ended December 31, 2022, the Company recognized $4,000 in interest expense.\nOn July 2, 2021, the Company entered into a Commercial Insurance Premium Finance and Security Agreement (\u201cthe 2021 Agreement\u201d). The 2021 Agreement provides for a single borrowing by the Company of $1.2 million, with a ten-month term and an annual interest rate of1.55%. The proceeds from this transaction were used to partially fund the premiums due under some of the Company\u2019s insurance policies. The amounts payable are secured by the Company\u2019s rights under such policies. The Company began to pay monthly installments of approximately $124,800 beginning in July 2021. As of December 31, 2021, the remaining balance under the Agreement was $499,000 and during the year ended December 31, 2021, the Company recognized $5,000 in interest expense.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3093,
+     "token": "REPEATING_HEADER",
+     "id": 181,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 3126,
+     "token": "PAGE_BREAK",
+     "id": 182,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants (in thousands)",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (Years)",
+     "",
+     "",
+     "Aggregate Intrinsic Value"
+    ],
+    [
+     "Outstanding, January 1, 2022",
+     "",
+     "14",
+     "$",
+     "180.60",
+     "",
+     "0.80",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Expired",
+     "",
+     "13",
+     "",
+     "138.05",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Outstanding, December 31, 2022",
+     "",
+     "1",
+     "$",
+     "229.50",
+     "",
+     "2.0",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable, December 31, 2022",
+     "",
+     "1",
+     "$",
+     "229.50",
+     "",
+     "2.0",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3165,
+    "end_line": 3179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stockholders\u2019 Equity"
+    }
+   },
+   "prose_before": "On July 2, 2021, the Company completed a public offering of 1,380,000 shares of its common stock at a purchase price of $15.00 per share. The net proceeds of the offering to the Company were approximately $18.8 million, after deducting the underwriting discounts, commissions, and other offering expenses.\nOther 2021 Securities Purchase Agreements\nOn August 30, 2021, the Company entered into a Securities Purchase Agreement with its legal counsel pursuant to which the Company issued 63,492 shares of common stock, at a purchase price of $15.75 per share. Upon issuance of the shares, certain of the Company's outstanding financial obligations to its legal counsel were deemed paid and satisfied in full.\nSettlement of Lease Liability\nDuring 2021, the Company agreed to issue 13,333 shares of its common stock in connection with the lease termination related to its former headquarters located in Basking Ridge, NJ.\nSettlement of Accrued Bonus\nIn January 2021, the Company issued 11,028 shares of its common stock as payment for certain executive incentive bonuses accrued in 2020.\nStock Purchase Warrants\nThe following table presents a summary of stock purchase warrants outstanding as of December 31, 2022:",
+   "prose_after": "Note 9. Net Loss Per Share\nAll common stock share data reflects the reverse stock split effective February 15, 2023, as described in Note 14. Subsequent Events, Reverse stock split.\nBasic net loss per share is computed by dividing net loss by the weighted-average number of shares of common stock outstanding during the period. Diluted loss per share is computed by dividing net loss by the weighted-average number of shares of common stock outstanding adjusted to give effect to potentially dilutive securities. Restricted stock and unit awards, and stock options have not been included in the diluted loss per share calculation as their inclusion would have had an anti-dilutive effect.\nThe potential common stock equivalents that have been excluded from the computation of diluted loss per share consist of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3143,
+     "token": "REPEATING_HEADER",
+     "id": 185,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 3200,
+     "token": "PAGE_BREAK",
+     "id": 186,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Outstanding stock options",
+     "",
+     "440",
+     "",
+     "342"
+    ],
+    [
+     "Nonvested restricted stock and unit awards",
+     "",
+     "127",
+     "",
+     "72"
+    ],
+    [
+     "Stock purchase warrants",
+     "",
+     "1",
+     "",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "568",
+     "",
+     "428"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3188,
+    "end_line": 3200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Net Loss Per Share"
+    }
+   },
+   "prose_before": "Note 9. Net Loss Per Share\nAll common stock share data reflects the reverse stock split effective February 15, 2023, as described in Note 14. Subsequent Events, Reverse stock split.\nBasic net loss per share is computed by dividing net loss by the weighted-average number of shares of common stock outstanding during the period. Diluted loss per share is computed by dividing net loss by the weighted-average number of shares of common stock outstanding adjusted to give effect to potentially dilutive securities. Restricted stock and unit awards, and stock options have not been included in the diluted loss per share calculation as their inclusion would have had an anti-dilutive effect.\nThe potential common stock equivalents that have been excluded from the computation of diluted loss per share consist of the following:",
+   "prose_after": "Note 10. Variable Interest Entity\nAs discussed in Note 1, electroCore was the primary beneficiary of electroCore (Aust) Pty Limited (\"electroCoreAustralia\"). electroCore has contributed certain intellectual property rights, all rights to distribute, market and sell specified products in Australia and New Zealand, and other rights outlined in the shareholders\u2019 deed of electroCore (Aust) Pty Limited in return for 50% of the shares of such entity. In addition, electroCore had the right to appoint two of the four directors and exercise significant influence. This along with the fact that electroCore was electroCoreAustralia\u2019s only supplier caused electroCore, for accounting purposes, to be the primary beneficiary of electroCoreAustralia. The activities related to electroCoreAustralia were not material to the Company's consolidated financial statements. Effective May 2017, the VIE had ceased operations. On November 2, 2021, the Company terminated its interest in electroCoreAustralia and recorded the related a gain of $0.5 million in the accompanying Consolidated Statement of Operations for the year ended December 31, 2021 under the caption Gain on termination of joint venture.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3143,
+     "token": "REPEATING_HEADER",
+     "id": 185,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 3200,
+     "token": "PAGE_BREAK",
+     "id": 186,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "(21,518)",
+     "",
+     "$",
+     "(16,679)",
+     ""
+    ],
+    [
+     "Foreign",
+     "",
+     "(1,075)",
+     "",
+     "",
+     "(1,390)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "(22,593)",
+     "",
+     "$",
+     "(18,069)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3214,
+    "end_line": 3223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "As discussed in Note 1, electroCore was the primary beneficiary of electroCore (Aust) Pty Limited (\"electroCoreAustralia\"). electroCore has contributed certain intellectual property rights, all rights to distribute, market and sell specified products in Australia and New Zealand, and other rights outlined in the shareholders\u2019 deed of electroCore (Aust) Pty Limited in return for 50% of the shares of such entity. In addition, electroCore had the right to appoint two of the four directors and exercise significant influence. This along with the fact that electroCore was electroCoreAustralia\u2019s only supplier caused electroCore, for accounting purposes, to be the primary beneficiary of electroCoreAustralia. The activities related to electroCoreAustralia were not material to the Company's consolidated financial statements. Effective May 2017, the VIE had ceased operations. On November 2, 2021, the Company terminated its interest in electroCoreAustralia and recorded the related a gain of $0.5 million in the accompanying Consolidated Statement of Operations for the year ended December 31, 2021 under the caption Gain on termination of joint venture.\nNote 11. Income Taxes\nThe benefit for income taxes for the years ended December 31, 2022 and 2021 consisted of foreign taxes, state minimum tax and a benefit from the sale of state net operating losses.\nDomestic and foreign components of the loss before provision for income taxes is as follows:",
+   "prose_after": "The income tax (benefit)/expense from continuing operations contains the following components:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3202,
+     "token": "REPEATING_HEADER",
+     "id": 187,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 3241,
+     "token": "PAGE_BREAK",
+     "id": 188,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "December 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(449)",
+     "",
+     "",
+     "(870)",
+     ""
+    ],
+    [
+     "Foreign",
+     "",
+     "18",
+     "",
+     "",
+     "19",
+     ""
+    ],
+    [
+     "Total current (benefit)/expense",
+     "",
+     "(431)",
+     "",
+     "",
+     "(851)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total deferred",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total income tax (benefit)/expense",
+     "$",
+     "(431)",
+     "",
+     "$",
+     "(851)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3226,
+    "end_line": 3241
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The income tax (benefit)/expense from continuing operations contains the following components:",
+   "prose_after": "The Company has evaluated the available evidence supporting the realization of its deferred tax assets, including the amount and timing of future taxable income, and has determined that it is more likely than not that its net deferred tax assets will not be realized in the United States and certain foreign jurisdictions. Due to uncertainties surrounding the realization of the deferred tax assets, the Company maintains a full valuation allowance against all of its net deferred tax assets. When the Company determines that it will be able to realize some portion or all of its deferred tax assets, an adjustment to its valuation allowance on its deferred tax assets would have the effect of increasing net income in the period such determination is made. The net change in the valuation allowance was an increase of $4.18 million.\nThe significant components of the Company\u2019s deferred income tax assets and liabilities after applying enacted corporate tax rates are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3202,
+     "token": "REPEATING_HEADER",
+     "id": 187,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 3241,
+     "token": "PAGE_BREAK",
+     "id": 188,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "29,854",
+     "",
+     "$",
+     "26,924",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "257",
+     "",
+     "",
+     "579",
+     ""
+    ],
+    [
+     "Intangibles",
+     "",
+     "1,720",
+     "",
+     "",
+     "469",
+     ""
+    ],
+    [
+     "    Fixed assets",
+     "",
+     "5",
+     "",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "165",
+     "",
+     "",
+     "216",
+     ""
+    ],
+    [
+     "    Allowance for bad debt",
+     "",
+     "3",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Charitable contributions",
+     "",
+     "10",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "R&D credit",
+     "",
+     "422",
+     "",
+     "",
+     "430",
+     ""
+    ],
+    [
+     "  Deferred FICA Tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "",
+     "172",
+     "",
+     "",
+     "200",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "4,744",
+     "",
+     "",
+     "4,430",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "37,352",
+     "",
+     "",
+     "33,263",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(37,046)",
+     "",
+     "",
+     "(32,868)",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "306",
+     "",
+     "",
+     "395",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(167)",
+     "",
+     "",
+     "(234)",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "(139)",
+     "",
+     "",
+     "(161)",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "",
+     "(306)",
+     "",
+     "",
+     "(395)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3249,
+    "end_line": 3281
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Company has evaluated the available evidence supporting the realization of its deferred tax assets, including the amount and timing of future taxable income, and has determined that it is more likely than not that its net deferred tax assets will not be realized in the United States and certain foreign jurisdictions. Due to uncertainties surrounding the realization of the deferred tax assets, the Company maintains a full valuation allowance against all of its net deferred tax assets. When the Company determines that it will be able to realize some portion or all of its deferred tax assets, an adjustment to its valuation allowance on its deferred tax assets would have the effect of increasing net income in the period such determination is made. The net change in the valuation allowance was an increase of $4.18 million.\nThe significant components of the Company\u2019s deferred income tax assets and liabilities after applying enacted corporate tax rates are as follows:",
+   "prose_after": "A reconciliation of the income tax expense (benefit) computed at the U.S. federal statutory income tax rate of 21% and the reported income tax expense (benefit) for the years ended December 31, 2022 and 2021 is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3243,
+     "token": "REPEATING_HEADER",
+     "id": 189,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 3302,
+     "token": "PAGE_BREAK",
+     "id": 190,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Statutory rate",
+     "(21.0)",
+     "%",
+     "(21.0)",
+     "%"
+    ],
+    [
+     "State tax expected (recovery), net of federal benefit",
+     "(7.3)",
+     "%",
+     "5.7",
+     "%"
+    ],
+    [
+     "State tax rate change",
+     "9.5",
+     "%",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Stock compensation",
+     "(0.2)",
+     "%",
+     "(5.7)",
+     "%"
+    ],
+    [
+     "State tax NOL sale",
+     "(1.6)",
+     "%",
+     "(3.8)",
+     "%"
+    ],
+    [
+     "Nondeductible expenses",
+     "0.2",
+     "%",
+     "2.1",
+     "%"
+    ],
+    [
+     "PPP loan forgiveness",
+     "\u2014",
+     "%",
+     "(1.7)",
+     "%"
+    ],
+    [
+     "Unrealized gain from termination of joint venture",
+     "\u2014",
+     "%",
+     "(1.8)",
+     "%"
+    ],
+    [
+     "Change in valuation allowance for deferred tax assets",
+     "18.5",
+     "%",
+     "21.5",
+     "%"
+    ],
+    [
+     "Income tax benefit",
+     "(1.9)",
+     "%",
+     "(4.7)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3284,
+    "end_line": 3302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "A reconciliation of the income tax expense (benefit) computed at the U.S. federal statutory income tax rate of 21% and the reported income tax expense (benefit) for the years ended December 31, 2022 and 2021 is as follows:",
+   "prose_after": "As of December 31, 2022 and 2021, the Company had accumulated Federal net operating losses totaling $119.7 million and $103.9 million, respectively. Also, as of December 31, 2022 and 2021, the Company had state post-apportioned net operating losses totaling $47.0 million and $40.5 million, respectively. The net operating losses may be available to carry forward and offset future years' taxable income. U.S. federal losses can be carried forward indefinitely, and state losses expire in various amounts beginning in 2026. The Company also had accumulated losses totaling $3.4 million and $3.6 million for the years ended December 31, 2022 and 2021, respectively, in Germany which can be carried forward indefinitely.\nHowever, the NOL carryforwards may be, or become subject to, an annual limitation in the event of certain cumulative changes in the ownership interest of significant stockholders over a three year period in excess of 50%, as defined under Sections 382 and 383 of the Internal Revenue Code of 1986, as amended, as well as similar state tax provisions. This could limit the amount of NOLs that the Company can utilize annually to offset future taxable income or tax liabilities. The amount of the annual limitation, if any, will be determined based on the value of the Company immediately prior to an ownership change. Subsequent ownership changes may further affect the limitation in future years. If and when the Company utilizes the NOL carryforwards in a future period, it will perform an analysis to determine the effect, if any, of these loss limitation rules on the NOL carryforward balances.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3243,
+     "token": "REPEATING_HEADER",
+     "id": 189,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 3302,
+     "token": "PAGE_BREAK",
+     "id": 190,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "$",
+     "2,319",
+     "$",
+     "2,902"
+    ],
+    [
+     "Research and development",
+     "",
+     "335",
+     "",
+     "332"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "28",
+     "",
+     "68"
+    ],
+    [
+     "Total expense",
+     "$",
+     "2,682",
+     "$",
+     "3,302"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3333,
+    "end_line": 3345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "On June 21, 2018, the Company adopted the 2018 Omnibus Equity Incentive Plan (\u201cPlan\u201d). This plan reserved 0.4 million shares with an increase to be added annually beginning in 2019 through 2028 up to 4% of the total number of shares of common stock issued and outstanding on a fully diluted basis as of the end of the immediately preceding fiscal year, providing that the aggregate number of additional shares shall not exceed a total of 3.0 million shares, and a maximum of 2.7 million shares pursuant to the exercise of stock options. Effective January 1, 2023, the number of shares reserved under the Plan was increased by 0.2 million to approximately 0.9 million. The Company\u2019s policy is to issue new shares of its common stock upon the exercise of stock options, new grants of restricted stock awards, and settlement of restricted stock units. Stock options issued under the plan have a contractual life of 10 years and are generally forfeited upon separation from the Company.\nThe following table presents stock compensation expense recognized by the Company for the years ended December 31, 2022 and 2021. Total unrecognized compensation cost related to equity awards as of December 31, 2022 was $2.8 million and is expected to be recognized over the next 1.5 years.",
+   "prose_after": "The following table presents a summary of stock option award activity during the year ended December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3323,
+     "token": "REPEATING_HEADER",
+     "id": 193,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 3375,
+     "token": "PAGE_BREAK",
+     "id": 194,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options (in thousands)",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (Years)",
+     "",
+     "",
+     "Aggregate Intrinsic Value"
+    ],
+    [
+     "Outstanding, January 1, 2022",
+     "",
+     "342",
+     "",
+     "$",
+     "69.15",
+     "",
+     "8.0",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "105",
+     "",
+     "",
+     "10.05",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(7)",
+     "",
+     "",
+     "30.00",
+     "",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Outstanding, December 31, 2022",
+     "",
+     "440",
+     "",
+     "$",
+     "55.65",
+     "",
+     "7.5",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable, December 31, 2022",
+     "",
+     "230",
+     "",
+     "$",
+     "88.80",
+     "",
+     "6.6",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3348,
+    "end_line": 3362
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "The following table presents a summary of stock option award activity during the year ended December 31, 2022:",
+   "prose_after": "The intrinsic value is calculated as the difference between the fair market value at December 31, 2022 and the exercise price per share of the stock options. Options awards granted to employees generally vest over a four-year period.\nThe following table provides additional information about stock options that are outstanding and exercisable at December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3323,
+     "token": "REPEATING_HEADER",
+     "id": 193,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 3375,
+     "token": "PAGE_BREAK",
+     "id": 194,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "Options Outstanding (in thousands)",
+     "",
+     "Options Outstanding Weighted Average Remaining Contractual Life (Years)",
+     "",
+     "Options Exercisable (in thousands)",
+     ""
+    ],
+    [
+     "$0.01 - $37.50",
+     "",
+     "328",
+     "",
+     "7.9",
+     "",
+     "135"
+    ],
+    [
+     "$37.65 - $112.80",
+     "",
+     "43",
+     "",
+     "7.1",
+     "",
+     "26"
+    ],
+    [
+     "$112.95 - $225.00",
+     "",
+     "69",
+     "",
+     "5.5",
+     "",
+     "69"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3367,
+    "end_line": 3375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "The intrinsic value is calculated as the difference between the fair market value at December 31, 2022 and the exercise price per share of the stock options. Options awards granted to employees generally vest over a four-year period.\nThe following table provides additional information about stock options that are outstanding and exercisable at December 31, 2022:",
+   "prose_after": "The following table presents a summary of restricted and deferred stock unit (\u201cUnit\u201d or \"Units\") activity during the year ended December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3323,
+     "token": "REPEATING_HEADER",
+     "id": 193,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 3375,
+     "token": "PAGE_BREAK",
+     "id": 194,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares (in thousands)",
+     "",
+     "",
+     "Weighted Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Nonvested, January 1, 2022",
+     "",
+     "70",
+     "",
+     "$",
+     "24.90"
+    ],
+    [
+     "Granted",
+     "",
+     "89",
+     "",
+     "",
+     "5.85"
+    ],
+    [
+     "Vested",
+     "",
+     "(31)",
+     "",
+     "",
+     "23.70"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(1)",
+     "",
+     "",
+     "30.90"
+    ],
+    [
+     "Nonvested, December 31, 2022",
+     "",
+     "127",
+     "",
+     "$",
+     "11.85"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3381,
+    "end_line": 3393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "The following table presents a summary of restricted and deferred stock unit (\u201cUnit\u201d or \"Units\") activity during the year ended December 31, 2022:",
+   "prose_after": "In general, Units granted to employees vest over two to four years.\nImmediately following the Company\u2019s annual meeting of stockholders, the Company generally grants each non-employee director an equity award that vests over a 12-month period. Upon a non-employee director\u2019s initial appointment or election to the board of directors, the Company grants such non-employee director an equity award subject to vesting as determined by the board of directors.\nValuation Information for Stock-Based Compensation\nThe fair value of each stock option award granted was estimated on the date of grant using the Black-Scholes model. Expected volatility was based on historical common stock volatility of the Company\u2019s peers. Beginning in December 2022, the Company began incorporating its historical common stock volatility at a weighting of 50% of the total composite volatility rate. During 2023, the Company will continue to evaluate the volatility rate used to value stock options. The risk-free interest rate was based on the average U.S. Treasury rate that most closely resembles the expected life of the related award. The expected term of the award was calculated using the simplified method. No dividend was assumed as the Company does not pay regular dividends on its common stock and does not anticipate paying any dividends in the foreseeable future.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3377,
+     "token": "REPEATING_HEADER",
+     "id": 195,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 3415,
+     "token": "PAGE_BREAK",
+     "id": 196,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "2021"
+    ],
+    [
+     "Fair value at grant date",
+     "$",
+     "7.20",
+     "$",
+     "19.80"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "90.6%",
+     "",
+     "80.2%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "2.1%",
+     "",
+     "0.7%"
+    ],
+    [
+     "Expected holding period, in years",
+     "",
+     "5.8",
+     "",
+     "6.0"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3404,
+    "end_line": 3413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Stock Based Compensation"
+    }
+   },
+   "prose_before": "Valuation Information for Stock-Based Compensation\nThe fair value of each stock option award granted was estimated on the date of grant using the Black-Scholes model. Expected volatility was based on historical common stock volatility of the Company\u2019s peers. Beginning in December 2022, the Company began incorporating its historical common stock volatility at a weighting of 50% of the total composite volatility rate. During 2023, the Company will continue to evaluate the volatility rate used to value stock options. The risk-free interest rate was based on the average U.S. Treasury rate that most closely resembles the expected life of the related award. The expected term of the award was calculated using the simplified method. No dividend was assumed as the Company does not pay regular dividends on its common stock and does not anticipate paying any dividends in the foreseeable future.\nThe weighted average assumptions used in the Black-Scholes option pricing model in valuing stock options granted in the periods presented were:",
+   "prose_after": "The fair value of Units is the market close price of the Company\u2019s common stock on the trading day immediately preceding the date of grant.\nNote 13. Commitments and Contingencies\nStockholders Litigation\nOn July 8, 2019, and August 1, 2019, purported stockholders of the Company served putative class action lawsuits in the Superior Court of New Jersey for Somerset County, captioned Paul Kuehl vs. electroCore, Inc., et al., Docket No. SOM-L 000876-19 and Shirley Stone vs. electroCore, Inc., et al., Docket No. SOM-L 001007-19, respectively. In addition to the Company, the defendants include present and past directors and officers, Evercore Group L.L.C., Cantor Fitzgerald & Co., JMP Securities LLC and BTIG, LLC, the underwriters for its IPO; and two of the Company\u2019s stockholders. On August 15, 2019, the Superior Court entered an order consolidating the Kuehl and Stone actions, which proceeded under Docket No. SOM-L 000876-19.\nEach plaintiff was appointed a co-lead plaintiff. The plaintiffs filed a consolidated amended complaint, which sought certification of a class of stockholders who purchased common stock in the IPO or whose purchases are traceable to that offering. The consolidated amended complaint alleged that the defendants violated Sections 11, 12(a)(2) and 15 of the Securities Act with respect to the registration statement and related prospectus for the IPO. The complaint sought unspecified compensatory damages, interest, costs and attorneys\u2019 fees.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3377,
+     "token": "REPEATING_HEADER",
+     "id": 195,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 3415,
+     "token": "PAGE_BREAK",
+     "id": 196,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

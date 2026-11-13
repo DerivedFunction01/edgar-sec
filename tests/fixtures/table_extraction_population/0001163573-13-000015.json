@@ -1,0 +1,5532 @@
+{
+ "accession": "0001163573-13-000015",
+ "cik": "0001163573",
+ "form": "10-K/A",
+ "filing_date": "2013-04-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10ka_txtm123112.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "11-3621755"
+    ],
+    [
+     "(State or other jurisdiction of Incorporate or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "60 Queens Street, Syosset, NY",
+     "",
+     "11791"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K / Amendment 1\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2012\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 or 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File No: 001-31590\nPROTEXT MOBILITY, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code:\n(516) 802-0223\n(Former name or former address, if changed since last report)\nSecurities registered pursuant to section 12(b) of the Exchange Act: None\nSecurities registered pursuant to section 12(g) of the Exchange Act:\nCommon Stock, $0.0001 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I.",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "3"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1 B. Unresolved Staff Comments",
+     "14"
+    ],
+    [
+     "Item 2. Properties",
+     "14"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "14"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "14"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part II.",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "15"
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "16"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition And Results of Operations",
+     "17"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "31"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting And Financial Disclosure",
+     "21"
+    ],
+    [
+     "Item 9A (T). Controls and Procedures",
+     "21"
+    ],
+    [
+     "Item 9B. Other Information",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part III.",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "22"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "25"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "28"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "29"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part IV.",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "31"
+    ]
+   ],
+   "caption_stack": [
+    "Part I."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 107
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of June 30, 2012, the aggregate market value of the issued and outstanding common stock held by non-affiliates of the registrant, based upon the closing price of the common stock, under the symbol \"TXTM\" as quoted on the National Association of Securities Dealers Inc. OTC Bulletin Board of $0.015 was approximately $3,644,000. For purposes of the statement in the preceding statement, all directors, executive officers and 10% shareholders are assumed to be affiliates. This determination of affiliate status is not necessarily a conclusive determination for any other purpose.\nAPPLICABLE ONLY TO CORPORATE ISSUERS\nNumber of registrant\u2019s shares of common stock outstanding at April 12, 2013 was 449,628,022.\nDocuments incorporated by reference: None.\nExplanatory Note:\nRegistrant is filing this amended annual report on Form 10-K/A to update the original filing which was submitted without including the required XBRL attachment.\nTABLE OF CONTENTS",
+   "prose_after": "SPECIAL NOTE ON FORWARD-LOOKING STATEMENTS\nThis Annual Report contains forward-looking statements. These forward-looking statements are based largely on our expectations and are subject to a number of risks and uncertainties, many of which are beyond our control. Actual results could differ materially from these forward-looking statements as a result of, among other factors, risks related to the large amount of our outstanding term loan; history of net losses and accumulated deficits; reliance on third parties to market, sell and distribute our products; future capital requirements; competition and technical advances; ability to protect our patents and proprietary rights; reliance on a small number of customers for a significant percentage of our revenues; and other risks. In light of these risks and uncertainties, there can be no assurance that the forward-looking information contained in this Annual Report will in fact occur.\nPART I\nItem 1. Description of Business\nProText Mobility Inc. (formerly known as EchoMetrix Inc. and SearchHelp, Inc.) was incorporated in the State of Delaware on September 5, 2001 and completed its initial public offering on July 23, 2003. During the fiscal year ended December 31, 2008, the Company acquired 100% of the stock of EchoMetrix, Inc., a wholly owned subsidiary, and in May of 2009 the Company filed a Certificate of Ownership and Merger with the Secretary of State of Delaware pursuant to which EchoMetrix, Inc. was merged into the Company, and the Company's corporate name was changed from SearchHelp, Inc. to EchoMetrix, Inc. In December of 2010, the Company formed a new subsidiary, ProText Mobility, Inc., and filed a Certificate of Ownership and Merger with the Secretary of State of Delaware pursuant to which ProText Mobility, Inc. was merged into the Company, and the Company\u2019s name changed from EchoMetrix, Inc. to ProText Mobility, Inc.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "March 31, 2012",
+     "",
+     "",
+     "",
+     "June 30, 2012",
+     "",
+     "",
+     "",
+     "September 30, 2012",
+     "",
+     "",
+     "",
+     "December 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "",
+     "$",
+     "0.0309",
+     "",
+     "",
+     "$",
+     "0.038",
+     "",
+     "",
+     "$",
+     "0.0260",
+     "",
+     "",
+     "$",
+     "0.0134",
+     ""
+    ],
+    [
+     "",
+     "L[ ]w",
+     "",
+     "",
+     "$",
+     "0.0060",
+     "",
+     "",
+     "$",
+     "0.014",
+     "",
+     "",
+     "$",
+     "0.0041",
+     "",
+     "",
+     "$",
+     "0.0016",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 464,
+    "end_line": 472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "ProText Mobility Inc's public offering was completed on July 23, 2003. A total of 2,474,000 units were sold in the public offering. Each unit consisted of one share of Common Stock, one Class A Warrant, exercisable for five years, to purchase one share of Common Stock at $0.75 per share (\"Class A Warrant\") and one Class B Warrant, exercisable for seven years, to purchase one share of Common Stock at $1.75 per share (\"Class B Warrant\"). The Common Stock is quoted on the OTC Bulletin Board and trades under the symbol TXTM. The Class A and the Class B Warrant both expired June 30, 2011.\nAs of April 13, 2012, the Company had outstanding 293,313,312 shares of its Common Stock, par value $0.0001 per share.\nPrice Range of Common Stock\nThe following table shows the high and low bid prices of the Company\u2019s Common Stock as quoted on the OTC Bulletin Board by quarter during each of our last two fiscal years ended December 31, 2012 and 2011. These quotes reflect inter-dealer prices, without retail markup, markdown or commissions and may not represent actual transactions. The information below was obtained from those organizations, for the respective periods.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 449,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "",
+     "Quarter Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "March 31, 2011",
+     "",
+     "",
+     "",
+     "June 30, 2011",
+     "",
+     "",
+     "",
+     "September 30, 2011",
+     "",
+     "",
+     "",
+     "December 31, 2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "$",
+     "0.13",
+     "",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "$",
+     "0.05",
+     ""
+    ],
+    [
+     "",
+     "L[ ]w",
+     "",
+     "",
+     "$",
+     "0.10",
+     "",
+     "",
+     "$",
+     "0.06",
+     "",
+     "",
+     "$",
+     "0.04",
+     "",
+     "",
+     "$",
+     "0.01",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 473,
+    "end_line": 481
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The high and low bid prices for shares of the Company\u2019s Common Stock on April 12, 2013 was $0.0014 and $0.001, per share, respectively, based upon bids that represent prices quoted by broker-dealers on the OTC Bulletin Board.\nPenny Stock\nOur stock is considered to be a penny stock. The SEC has adopted rules that regulate broker-dealer practices in connection with transactions in penny stocks. Penny stocks are generally equity securities with a market price of less than $5.00, other than securities registered on certain national securities exchanges or quoted on the NASDAQ system, provided that current price and volume information with respect to transactions in such securities is provided by the exchange or system. The penny stock rules require a broker-dealer, prior to a transaction in a penny stock, to deliver a standardized risk disclosure document prepared by the SEC, that: (a) contains a description of the nature and level of risk in the market for penny stocks in both public offerings and secondary trading; (b) contains a description of the broker's or dealer's duties to the customer and of the rights and remedies available to the customer with respect to a violation of such duties or other requirements of the securities laws; (c) contains a brief, clear, narrative description of a dealer market, including bid and ask prices for penny stocks and the significance of the spread between the bid and ask price; (d) contains a toll-free telephone number for inquiries on disciplinary actions; (e) defines significant terms in the disclosure document or in the conduct of trading in penny stocks; and (f) contains such other information and is in such form, including language, type size and format, as the SEC shall require by rule or regulation.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 449,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "-",
+     "$",
+     "0.00",
+     "",
+     "18,404,071"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "20,267,815",
+     "$",
+     "0.08",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "20,267,815",
+     "$",
+     "0.08",
+     "",
+     "18,404,071"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "In addition, the penny stock rules require that prior to a transaction in a penny stock not otherwise exempt from those rules, the broker-dealer must make a special written determination that the penny stock is a suitable investment for the purchaser and receive the purchaser's written acknowledgment of the receipt of a risk disclosure statement, a written agreement as to transactions involving penny stocks, and a signed and dated copy of a written suitability statement.\nThese disclosure requirements may have the effect of reducing the trading activity for our common stock. Therefore, stockholders may have difficulty selling our securities.\nHolders\nAs of April 12, 2013, the Company had approximately 1,515 holders, of which 185 are record holders of the Company's common stock.\nDividends\nSince its organization, the Company has not paid any cash dividends on its common stock, nor does it plan to do so in the foreseeable future.\nSECURITIES AUTHORIZED FOR ISSUANCE UNDER EQUITY COMPENSATION PLANS\nThe following table provides information regarding the status of our existing equity compensation plans at December 31, 2012.",
+   "prose_after": "The number of securities remaining available for future issuance under equity compensation plans approved by security holders totaled 18,404,071 shares at December 31, 2012.\nSALES OF UNREGISTERED SECURITIES FOR THE FOURTH QUARTER\nIn the fourth quarter of 2012, the Company issued 27,282,564 shares of common stock pursuant to a conversion of a promissory note of $50,000 and accrued interest of $2,000.\nThe above shares of common stock were issued pursuant to the exemption from registration under Section 4(2) of the Securities Act of 1933, as amended, for transactions not involving a public offering.\nItem 6. \u2013 Selected Financial Data\nN/A\nItem 7. - Management's Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion of our financial condition and results of operations should be read in conjunction with the financial statements and the notes to those statements included elsewhere in this prospectus. This discussion includes forward-looking statements that involve risks and uncertainties. As a result of many factors, such as those set forth under \u201cRisk Factors\u201d and elsewhere in this Report, our actual results may differ materially from those anticipated in these forward-looking statements.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year"
+    ],
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position",
+     "",
+     "Began Service"
+    ],
+    [
+     "Peter Charles",
+     "",
+     "43",
+     "",
+     "Director, Interim Chief Executive Officer, Chief Operating Officer",
+     "",
+     "2009"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erica Zalbert (2)",
+     "",
+     "38",
+     "",
+     "Chief Financial Officer",
+     "",
+     "2008"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Frank Chester",
+     "",
+     "63",
+     "",
+     "Director",
+     "",
+     "2009"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David Lewis",
+     "",
+     "43",
+     "",
+     "Director",
+     "",
+     "2009"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tyler Olbres (1)",
+     "",
+     "36",
+     "",
+     "Director",
+     "",
+     "2010"
+    ]
+   ],
+   "caption_stack": [
+    "Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 657,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance With Section 16(a) of the Exchange Act."
+    },
+    "note": null
+   },
+   "prose_before": "The Company's management does not expect that the Company's disclosure controls or the Company's internal controls will prevent all errors and all fraud. A control system, no matter how well conceived and operated, can provide only reasonable, not absolute, assurance that the objectives of the control system are met. Further, the design of a control system must reflect the fact that there are constraints, and the benefits of controls must be considered relative to their costs. Because of the inherent limitations in all control systems, no evaluation of controls can provide absolute assurance that all control issues and instances of fraud, if any, have been detected. Because of the inherent limitations in a cost effective control system, misstatements due to error or fraud may occur and may not be detected.\nItem 9B. Other Information.\nNot Applicable.\nPART III\nItem 10. Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance With Section 16(a) of the Exchange Act.\nThe Company has a seven-member board of directors. The identity of each of our directors and executive officers and their principal occupations for the past five years are as follows.",
+   "prose_after": "(1) Mr. Tyler Olbres resigned from the board of directors on January 4, 2012.\n(2) On May 1, 2012, Erica Zalbert resigned as Chief Financial Officer and Secretary of ProText Mobility, Inc.\nPeter Charles \u2013 Chief Operating Officer and Interim Chief Executive Officer, Member of the Board\nMr. Charles joined the Company in October 2009 as Vice President, Director of Corporate Affairs and has been a director of the Company since November 2009. Currently, Mr. Charles holds the position of Chief Operating Officer and Interim Chief Executive Officer. As part of his day-to-day operational and managerial duties, Mr. Charles oversees corporate and technology development, strategic planning and corporate communications. Prior to joining Protext Mobility, from 2006 to 2009, Mr. Charles was with Thorium Power, now Lightbridge Corporation (NASDAQ: LTBR), a developer of novel nuclear fuels, where his primary responsibilities were to carry out various treasury duties and he played an instrumental role in the company attaining a NASDAQ listing. While at Lightbridge, Mr. Charles was an industry expert for the Nuclear Energy Institute, promoting the use and development of nuclear energy. Prior to joining Thorium Power in 2006, from 2001 to 2006 Mr. Charles was with Oppenheimer & Co., a full service investment firm. At Oppenheimer, Mr. Charles was registered as a General Securities Professional and was licensed for Sales Supervision and Management. Mr. Charles has over 18 years of experience in financial markets, working with various levels of investors including middle-market institutional investors. As a focus, Mr. Charles specialized in Control and Restricted Stock where he is well versed in SEC and NASD rules and the associated filing procedures. Mr. Charles is also well versed in global macroeconomics and regularly studies financial and economic history. Mr. Charles's financial and economic knowledge and experience led to the conclusion he should serve on the Company's board of directors given the Company's business and structure. His business experience provides him with a broad understanding of the operational, financial and strategic issues facing public companies. Through his services as the Company\u2019s Chief Operating Officer and interim Co-Chief Executive Officer, he developed extensive knowledge of the Company\u2019s business.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 650,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SUMMARY COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal",
+     "",
+     "Salary\n\n\n\n(1)",
+     "",
+     "",
+     "Bonuses",
+     "",
+     "Option Grants\n\n\n\n(2)",
+     "",
+     "All Other\n\n\n\nCompensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Position",
+     "Year",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "(a)",
+     "(b)",
+     "(c)",
+     "",
+     "",
+     "(d)",
+     "",
+     "(e)",
+     "",
+     "(f)",
+     "",
+     "(g)",
+     ""
+    ],
+    [
+     "Peter Charles, Chief Operating",
+     "2012",
+     "$",
+     "62,380",
+     "",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "62,380"
+    ],
+    [
+     "Officer, Interim",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Executive Officer",
+     "2011",
+     "$",
+     "135,000",
+     "",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "135,000"
+    ],
+    [
+     "Erica Zalbert, Chief Financial",
+     "2012",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "29,000(4)",
+     "$",
+     "29,000"
+    ],
+    [
+     "Officer,(5)",
+     "2011",
+     "$",
+     "99,358",
+     "(3)",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "99,358"
+    ]
+   ],
+   "caption_stack": [
+    "SUMMARY COMPENSATION TABLE"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "OUTSTANDING OPTION AWARDS (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Total\n\n\n\nOutstanding\n\n\n\nOption\n\n\n\nAward\n\n\n\n(#)",
+     "",
+     "Number of Securities\n\n\n\nUnderlying Exercisable\n\n\n\nbut Unexercised Options\n\n\n\n(#)",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nUnderlying\n\n\n\nUnexercised\n\n\n\nUnearned\n\n\n\nOptions\n\n\n\n(#)",
+     "",
+     "Option\n\n\n\nExercise\n\n\n\nPrice\n\n\n\n($)",
+     "",
+     "Option\n\n\n\nExpiration\n\n\n\nDate"
+    ],
+    [
+     "(a)",
+     "",
+     "",
+     "",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     "",
+     "(d)"
+    ],
+    [
+     "Peter Charles, Chief",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Officer, Interim",
+     "",
+     "2,500,000",
+     "",
+     "2,500,000",
+     "",
+     "-",
+     "$",
+     "0.10",
+     "5/27/15"
+    ],
+    [
+     "Chief Executive Officer",
+     "",
+     "1,750,000",
+     "",
+     "1,750,000",
+     "",
+     "-",
+     "$",
+     "0.01",
+     "12/29/15"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erica Zalbert (1, 2), Chief",
+     "",
+     "1,142,881",
+     "",
+     "1,142,881",
+     "",
+     "-",
+     "$",
+     "0.08",
+     "06/01/14"
+    ],
+    [
+     "Financial Officer,",
+     "",
+     "1,000,000",
+     "",
+     "1,000,000",
+     "",
+     "-",
+     "$",
+     "0.01",
+     "12/31/15"
+    ]
+   ],
+   "caption_stack": [
+    "OUTSTANDING OPTION AWARDS (1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 784,
+    "end_line": 811
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "Officer,(5)                        2011              $ 99,358 (3)              -              $ -  -                         $ 99,358\n</TABLE>\n(1) Salary represents base salary earned in 2012 and 2011.\n(2) Represents the amount recognized by ProText Mobility for financial statement reporting purposes in accordance with the recognition and measurement provisions of Share Based Compensation as defined in FASB Codification, topic 718, which requires compensation costs related to share-based payment transactions, including employee stock options, to be recognized in the financial statements.\n(3) Ms. Zalbert compensation reflects her pro-rata salary for less than full time employment for the year ending December 31, 2011.\n(4) Ms. Zalbert compensation reflects her consulting fees earned in 2012 of which $24,000 was paid in cash and $5,000 paid in stock.\n(5) On May 1, 2012, Erica Zalbert resigned as Chief Financial Officer and Secretary of ProText Mobility, Inc.\nThe following table shows outstanding option awards held by each of the named executive officers as of December 31, 2012.",
+   "prose_after": "(1) Options exercised according to Ms. Zalbert\u2019s 10b5-1 plan as filed with the Securities and Exchange Commission on June 21, 2010. Such plan expired June 21, 2011.\n(2) On May 1, 2012, Erica Zalbert resigned as Chief Financial Officer and Secretary of ProText Mobility, Inc.\nStock Plans\nThe Company\u2019s 2004 Stock Plan, which is shareholder approved, permits the grant of up to 1,500,000 shares of common stock. The Company\u2019s 2009 Incentive Stock Plan, (the \u201c2009 Plan\u201d), which is board of director approved, permits the grant of share options and shares to directors, executives and selected employees and consultants for up to 25,000,000 shares of common stock as stock compensation. The Company filed the 2009 Incentive Stock Plan with the Securities and Exchange Commission on October 19, 2010.\nEmployment and Consulting Agreements\nWe entered into an employment agreement with Erica Zalbert effective as of June 1, 2009 for a term of three years to serve as our Chief Financial Officer. The agreement provides that Ms. Zalbert will receive an annual base salary of One Hundred Fifty Thousand Dollars ($150,000), which is to be increased to $175,000 upon the raise of $3,000,000 in equity/debt or a combination thereof and $200,000 upon the raise of $4,000,000 within the first twelve months of the agreement. Ms. Zalbert receives a salary that is pro-rated for the numbers of days that she works based upon an annual salary of $175,000 per year and is entitled to a minimum 10% raise each year. Ms. Zalbert was issued 250,000 options upon signing the agreement which vested immediately and contained a cashless feature. Ms. Zalbert was also issued 1,500,000 options, 500,000 of which vested on the one year anniversary of the agreement and each subsequent one year anniversary. She also receives certain other benefits such as health insurance. Our company has the right to terminate the agreement for Good Cause as defined in the agreement. If the agreement is terminated by us during the initial term, she is entitled to one month\u2019s salary during year one, two months\u2019 salary during year two and three months\u2019 salary during year three. If Ms. Zalbert terminates the agreement due to a Company Material Breach as defined in the agreement, she is entitled to receive her full salary and benefits for three months after termination. If Ms. Zalbert terminates the agreement within 180 days of any warrant, option or bonus grant not for Good Cause she will forfeit such warrant, option or bonus received within the 180 day period. If we terminate the agreement for Cause as defined in the agreement, Ms. Zalbert will be entitled to receive accrued salary only through the termination date and if she is terminated for any other reason, she is entitled to receive severance equal to one year\u2019s salary. Upon her death or disability she is not entitled to receive any base salary and upon a change of control she is entitled to receive her base salary and benefits specified in the agreement. The agreement also contains non-competition and non-disclosure provisions. On May 1, 2012, Erica Zalbert resigned as Chief Financial Officer and Secretary of ProText Mobility, Inc.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DIRECTOR COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "",
+     "Fees\n\n\n\nEarned\n\n\n\nor Paid in\n\n\n\nCash\n\n\n\n($)",
+     "",
+     "Stock\n\n\n\na\u2022d\n\n\n\nOption\n\n\n\nAwards\n\n\n\n($)",
+     "",
+     "",
+     "Total\n\n\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David Lewis",
+     "",
+     "2012",
+     "$",
+     "-",
+     "$",
+     "80,000",
+     "(4)",
+     "$",
+     "80,000"
+    ],
+    [
+     "",
+     "",
+     "2011",
+     "$",
+     "-",
+     "$",
+     "80,000",
+     "(3)",
+     "$",
+     "80,000"
+    ],
+    [
+     "Frank Chester",
+     "",
+     "2012",
+     "$",
+     "-",
+     "$",
+     "80,000",
+     "(4)",
+     "$",
+     "80,000"
+    ],
+    [
+     "",
+     "",
+     "2011",
+     "$",
+     "-",
+     "$",
+     "80,000",
+     "(3)",
+     "$",
+     "80,000"
+    ],
+    [
+     "Tyler Olbres (2)",
+     "",
+     "2012",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2011",
+     "$",
+     "-",
+     "$",
+     "65,500",
+     "(3)",
+     "$",
+     "65,000"
+    ]
+   ],
+   "caption_stack": [
+    "DIRECTOR COMPENSATION TABLE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "We entered into a consulting agreement with Dmidnights, Inc., a company owned by one of our board members, David Lewis, effective as of October 2010 for a twelve-month term with automatic twelve month renewal periods unless terminated by either party in writing with 90 days advance notice. The agreement provides that Mr. Lewis will receive a monthly consulting fee of Fifteen Thousand Dollars ($15,000) or 2,000,000 shares annualized, commencing upon the effective date of the agreement, and payable in equivalent value in either equity options, and/or company stock. The amount of shares are to be calculated by dividing the dollar amount of compensation by the thirty day volume weighted average for the same month of service. Dmidnights, Inc. is also entitled to an equity bonus at year end at the discretion of our board of directors. The agreement also contains non-disclosure provisions.\nDirector Compensation\nDirectors who are employees of the Company do not receive any fees for their service on the Board. We use equity-based incentive compensation to attract and retain qualified candidates to serve on our Board. Our non-employee directors receive quarterly equity compensation in the form of the Company\u2019s restricted common stock and stock options to purchase shares of the Company's common stock.",
+   "prose_after": "(1) No options were exercised in 2012 or 2011 by any directors.\n(2) Mr. Olbres joined the Board in 2010 and resigned January 4, 2012.\n(3) Represents amounts recognized by ProText Mobility for financial statement reporting purposes of a) Mr. Lewis\u2019 1,658,759 shares of restricted common stock; b) Mr. Chester\u2019s 1,658,759 shares of restricted common stock and c) Mr. Oblres\u2019s 1,540,146 shares of restricted common stock.\n(4) Represents amounts recognized by ProText Mobility for financial statement reporting purposes of a) Mr. Lewis\u2019 10,587,039 shares of restricted common stock; b) Mr. Chester\u2019s 10,587,039 shares of restricted common stock.\nRisk Management\nThe Company does not believe risks arising from its compensation policies and practices for its employees are reasonably likely to have a material adverse effect on the Company.\nItem 12. -Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth certain information, as of April 12, 2013, with respect to the beneficial ownership of our common stock by: (i) each holder of more than five percent (5%) of the outstanding shares of our Common Stock; (ii) our executive officers and directors; and (iii) all our executive officers and directors as a group. The Company's issued and outstanding voting securities at the close of business on April 12, 2013, consisted of 449,628,022 shares of common stock.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 864,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Beneficially",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Owned",
+     "",
+     "",
+     "",
+     "Beneficially",
+     "",
+     ""
+    ],
+    [
+     "Rock Island Capital, LLC (1)",
+     "",
+     "",
+     "119,821,139",
+     "",
+     "",
+     "",
+     "26.65",
+     "%"
+    ],
+    [
+     "Tyler Olbres (3)",
+     "",
+     "",
+     "65,437,053",
+     "",
+     "",
+     "",
+     "14.55",
+     "%"
+    ],
+    [
+     "David Lewis (3)",
+     "",
+     "",
+     "55,520,431",
+     "",
+     "",
+     "",
+     "12.35",
+     "%"
+    ],
+    [
+     "Frank Chester (4)",
+     "",
+     "",
+     "31,815,540",
+     "",
+     "",
+     "",
+     "7.05",
+     "%"
+    ],
+    [
+     "Peter Charles (5)",
+     "",
+     "",
+     "4,250,000",
+     "",
+     "",
+     "",
+     "0.95",
+     "%"
+    ],
+    [
+     "Erica Zalbert (5) (6)",
+     "",
+     "",
+     "2,142,881",
+     "",
+     "",
+     "",
+     "0.48",
+     "%"
+    ],
+    [
+     "All directors and executive officers as a group (4 persons)",
+     "",
+     "",
+     "93,728,852",
+     "",
+     "",
+     "",
+     "20.85",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 877,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Unless otherwise indicated below, to our knowledge, all persons listed below have sole voting and investment power with respect to their shares of common stock, except to the extent authority is shared by spouses under applicable law. Unless otherwise indicated below, each entity or person listed below maintains an address of c/o ProText Mobility, Inc., 60 Queens Street, Syosset, New York 11791.\nThe number of shares beneficially owned by each stockholder is determined under rules promulgated by the Securities and Exchange Commission. The information is not necessarily indicative of beneficial ownership for any other purpose. Under these rules, beneficial ownership includes any shares as to which the individual or entity has sole or shared voting or investment power and any shares as to which the individual or entity has the right to acquire beneficial ownership within 60 days after April 12, 2013 through the exercise of any stock option, warrant or other right. The inclusion in the following table of those shares, however, does not constitute an admission that the named stockholder is a direct or indirect beneficial owner.",
+   "prose_after": "(1) Rock Island Capital, LLC, with an address of 1234 South Dixie Hwy, #342, Coral Gables, FL 33146, has six members, of which two non-managing members serve on our board of directors, David Lewis and Tyler Olbres (a company that Mr. Olbres has 100% control over is the invested member in Rock Island, however Mr. Olbres represents himself on the board). The amounts beneficially owned by Rock Island include Mr. Lewis\u2019 and Mr. Olbres' ownership. Mr. Safier and Mr. Grossfeld are the managing members of Rock Island and as such have voting and disposition control over the shares owned by Rock Island. Neither Mr. Lewis nor Mr. Olbres have voting or disposition control over the shares owned by Rock Island; Mr. Olbres has control over a 60.622% ownership interest in Rock Island and Mr. Lewis has a 6.155 % ownership interest in Rock Island.\nIncluded in the total beneficial ownership of Rock Island are:\n(i) 511,551 shares of Series B Preferred Stock which convert to common stock at a ratio of 100 to 1, of which 77,100 are owned directly by Rock Island and the balance have been assigned to the members of Rock Island.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 864,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 899,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Audit Fees:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2012 -",
+     "",
+     "$",
+     "35,000",
+     ""
+    ],
+    [
+     "Year ended December 31, 2011 -",
+     "",
+     "$",
+     "55,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Audit Fees:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 927,
+    "end_line": 933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "We entered into a consulting agreement with Dmidnights, Inc., a company owned by one of our board members, David Lewis, effective as of October 2010 for a twelve-month term with automatic twelve month renewal periods unless terminated by either party in writing with 90 days advance notice. The agreement provides that Mr. Lewis will receive a monthly consulting fee of Fifteen Thousand Dollars ($15,000) or 2,000,000 shares annualized, commencing upon the effective date of the agreement, and payable in equivalent value in either equity options, and/or company stock. The amount of shares are to be calculated by dividing the dollar amount of compensation by the thirty day volume weighted average for the same month of service. Dmidnights, Inc. is also entitled to an equity bonus at year end at the discretion of our board of directors. The agreement also contains non-disclosure provisions.\nDirector Independence\nThe Board of Directors have determined that Mr. Frank Chester is an independent director as of December 31, 2011.\nItem 14. Principal Accountant Fees and Services",
+   "prose_after": "Fees billed for audit of year end consolidated financial statements and annual reports.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Audit-Related Fees:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2012 -",
+     "",
+     "$",
+     "19,500",
+     ""
+    ],
+    [
+     "Year ended December 31, 2011 -",
+     "",
+     "$",
+     "28,500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Audit-Related Fees:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 941
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Fees billed for audit of year end consolidated financial statements and annual reports.",
+   "prose_after": "Fees billed for quarterly review of unaudited consolidated financial statements and interim reports",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Tax Fees:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2012 -",
+     "",
+     "$",
+     "5,000",
+     ""
+    ],
+    [
+     "Year ended December 31, 2011 -",
+     "",
+     "$",
+     "10,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Tax Fees:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 944,
+    "end_line": 949
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Fees billed for quarterly review of unaudited consolidated financial statements and interim reports",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "All Other Fees:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended December 31, 2012 -",
+     "",
+     "NONE",
+     ""
+    ],
+    [
+     "Year ended December 31, 2011 -",
+     "",
+     "NONE",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "All Other Fees:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 950,
+    "end_line": 955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Audit Committee Pre-Approval Policies and Procedures\nWe currently do not have any members serving on the audit committee.\n<TABLE>\nItem 15. Exhibits\nExhibit No.    Description\n-----------------  -----------------------------------------------------------------------------------------------------------------------------------------------------------------\n3.1  Certificate of Incorporation of the Company (incorporated herein by reference to the Company\u2019s Form SB-2 filed with the Securities and Exchange Commission on May\n22, 2002 (File No. 333-97687)\n3.2  By-laws of the Company (incorporated herein by reference to the Company\u2019s Form SB-2 filed with the Securities and Exchange Commission on May 22, 2002 (File No.\n333-97687)",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 15. Exhibits",
+     "",
+     ""
+    ],
+    [
+     "  Exhibit No.",
+     "",
+     "  Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Certificate of Incorporation of the Company (incorporated herein by reference to the Company\u2019s Form SB-2 filed with the Securities and Exchange Commission on May 22, 2002 (File No. 333-97687)"
+    ],
+    [
+     "3.2",
+     "",
+     "By-laws of the Company (incorporated herein by reference to the Company\u2019s Form SB-2 filed with the Securities and Exchange Commission on May 22, 2002 (File No. 333-97687)"
+    ],
+    [
+     "3.3",
+     "",
+     "Certificate of Amendment effective April 26, 2005 (incorporated herein by reference to the Company\u2019s Form 8-K filed May 2, 2005)"
+    ],
+    [
+     "3.4",
+     "",
+     "Form of Certificate Designations, Voting Powers, Preferences, Limitations, Restrictions, and Relative Rights of Series A 7% Convertible Preferred Stock, $0.0001 par value (incorporated herein by reference to Form 8-K filed on February 13, 2007)"
+    ],
+    [
+     "3.5",
+     "",
+     "Amended By-Laws of the Company (incorporated herein by reference to Form 8-K filed March 4, 2009)"
+    ],
+    [
+     "3.6",
+     "",
+     "Certificate of Designation of Series B Preferred Stock (incorporated herein by reference to the Company\u2019s Form 10-Q filed with the Securities and Exchange Commission on November 16, 2009)"
+    ],
+    [
+     "3.7",
+     "",
+     "Amended and Restated Certificate of Designations of Series B Preferred Stock (incorporated herein by reference to the Company\u2019s Form 10-K filed with the Securities and Exchange Commission on March 31, 2010)"
+    ],
+    [
+     "3.8",
+     "",
+     "Amended and Restated Certificate of Designation of Series B Preferred Stock (Second) (incorporated herein by reference to the Company\u2019s Form 8-K filed with the Securities and Exchange Commission on October 21, 2010)"
+    ],
+    [
+     "3.9",
+     "",
+     "Certificate of Ownership and Merger filed with the State of Delaware (incorporated herein by referent to the Company\u2019s Form 8K filed on December 29, 2010)"
+    ],
+    [
+     "3.10",
+     "",
+     "Certificate of Amendment to Certificate of Incorporation, filed July 7, 2010 *"
+    ],
+    [
+     "4.1",
+     "",
+     "Specimen Common Stock Certificate of the Company*"
+    ],
+    [
+     "4.2",
+     "",
+     "Company 2004 Stock Plan, dated January 1, 2004 (incorporated herein by reference to the Company\u2019s Form 10-KSB filed with the Securities and Exchange Commission on March 16, 2004)"
+    ],
+    [
+     "4.3",
+     "",
+     "2009 Incentive Stock Plan (incorporated by reference to S-8 filed on October 19, 2010)"
+    ],
+    [
+     "4.4",
+     "",
+     "Form of 10% Convertible Promissory Note*"
+    ],
+    [
+     "4.5",
+     "",
+     "Form of 10% Convertible Promissory Note with restrictions *"
+    ],
+    [
+     "4.6",
+     "",
+     "Form of Promissory Note dated May 27, 2010 (10% Interest Rate) *"
+    ],
+    [
+     "4.7",
+     "",
+     "Form of Senior Promissory Note dated May 27, 2010 *"
+    ],
+    [
+     "4.8",
+     "",
+     "Form of Senior Promissory Note dated March 15, 2011*"
+    ],
+    [
+     "4.9",
+     "",
+     "Form of Senior Promissory Note dated December 29, 2010, as amended *"
+    ],
+    [
+     "4.10",
+     "",
+     "Form of Convertible Promissory Note (8% Interest Rate)*"
+    ],
+    [
+     "4.11",
+     "",
+     "Form of Promissory Note (Up to a Maximum of $200,000)*"
+    ],
+    [
+     "4.12",
+     "",
+     "Form of Senior Promissory Note (10% Interest Rate)*"
+    ],
+    [
+     "4.13",
+     "",
+     "Form of Warrant with an exercise price of $.15 per share on a cashless basis*"
+    ],
+    [
+     "4.14",
+     "",
+     "Form of Warrant with an exercise price of $.15 per share (private placement)*"
+    ],
+    [
+     "4.15",
+     "",
+     "Form of Warrant with a ceiling exercise price of $.15 per share at 30 day VWAP*"
+    ],
+    [
+     "4.16",
+     "",
+     "Form of Warrant with an exercise price of $.15 per share (promissory note)*"
+    ],
+    [
+     "4.17",
+     "",
+     "Form of Warrant with an exercise price of $.10 per share*"
+    ],
+    [
+     "4.18",
+     "",
+     "Form of Warrant with an exercise price of $.01 per share*"
+    ],
+    [
+     "4.19",
+     "",
+     "Form of Warrant with an exercise price of $.25 per share*"
+    ],
+    [
+     "4.20",
+     "",
+     "Form of Warrant with an exercise price of $.25 per share and detailed piggyback registration rights*"
+    ],
+    [
+     "4.21",
+     "",
+     "Form of Warrant with an exercise price of $.35 per share and detailed piggyback registration rights*"
+    ],
+    [
+     "4.22",
+     "",
+     "Form of Warrant with an exercise price of $.35 per share*"
+    ],
+    [
+     "4.23",
+     "",
+     "Form of Warrant with an exercise price of $.14 per share and detailed piggyback registration rights*"
+    ],
+    [
+     "4.24",
+     "",
+     "Form of Warrant with an exercise price of $.14 per share*"
+    ],
+    [
+     "4.25",
+     "",
+     "Form of Warrant with an exercise price of $.10 per share (cashless exercise)*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "10.1",
+     "",
+     "Lease Agreement, dated June 1, 2006, between the Company and RA 6800 Jericho Turnpike LLC"
+    ],
+    [
+     "10.3",
+     "",
+     "Separation Agreement between the Company and Mr. William Bozsnyak dated February 10, 2009. (incorporated herein by reference to Form 10-K filed April 14, 2009)"
+    ],
+    [
+     "10.4",
+     "",
+     "Erica Zalbert Employment Agreement dated as of June 1, 2009 (incorporated by reference to the Company\u2019s Form 10-Q on November 16, 2009)"
+    ],
+    [
+     "10.5",
+     "",
+     "Series B Convertible Preferred Stock Purchase Agreement dated September 9, 2009 by and between the Company and Rock Island Capital, LLC (\u201cSeries B Convertible Stock Purchase Agreement\u201d) (incorporated herein by reference to the Company\u2019s 10-Q filed November 16, 2009)"
+    ],
+    [
+     "10.6",
+     "",
+     "Addendum to Series B Convertible Stock Purchase Agreement dated August 13, 2009 (incorporated herein by reference to the Company\u2019s 10-Q filed November 16, 2009)"
+    ],
+    [
+     "10.7",
+     "",
+     "Addendum to Series B Convertible Stock Purchase Agreement dated August 26, 2009 (incorporated herein by reference to the Company\u2019s 10-Q filed November 16, 2009)"
+    ],
+    [
+     "10.8",
+     "",
+     "Amendment No. 1 to Series B Convertible Preferred Stock Purchase Agreement (incorporated herein by reference to 10-Q filed November 16, 2009)"
+    ],
+    [
+     "10.9",
+     "",
+     "Amendment No. 2 to Series B Convertible Preferred Stock Purchase Agreement (incorporated herein by reference to 10-K filed March 31, 2010)"
+    ],
+    [
+     "10.10",
+     "",
+     "Amendment No. 3 to Series B Convertible Preferred Stock Purchase Agreement (incorporated by reference to the Company\u2019s Form 8K filed on June 1, 2010)"
+    ],
+    [
+     "10.11",
+     "",
+     "Amendment No. 4 to Series B Convertible Preferred Stock Purchase Agreement (incorporated by reference to Form 10Q filed on August 23, 2010)"
+    ],
+    [
+     "10.12",
+     "",
+     "Amendment No. 5 to Series B Convertible Preferred Stock Purchase Agreement (incorporated by reference to 10-Q filed November 15, 2010)"
+    ],
+    [
+     "10.13",
+     "",
+     "Investment Agreement dated as of August 24, 2011 between the Company and Eclipse Advisors, LLC (incorporated by reference to Form 8-K filed August 26, 2011)"
+    ],
+    [
+     "10.14",
+     "",
+     "Registration Rights Agreement dated as of August 24, 2011 between the Company and Eclipse Advisors, LLC (incorporated by reference to Form 8-K filed August 26, 2011)"
+    ],
+    [
+     "10.15",
+     "",
+     "Peter Charles Employment Agreement effective as of October 2009*"
+    ],
+    [
+     "10.16",
+     "",
+     "Dmidnights, Inc. Consulting Agreement effective as of October 2010*"
+    ],
+    [
+     "14",
+     "",
+     "Code of Ethics of the Company (incorporated by reference to the Company\u2019s Form 10-KSB filed on March 16, 2004)"
+    ],
+    [
+     "21",
+     "",
+     "List of Subsidiaries (incorporated by reference to the Company\u2019s Form 10-KSB filed on April 17, 2006)"
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer pursuant to Section 302 of The Sarbanes-Oxley Act of 2002 **"
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to Section 302 of The Sarbanes-Oxley Act of 2002. **"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of The Sarbanes-Oxley Act of 2002. **"
+    ],
+    [
+     "32.2",
+     "",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of The Sarbanes-Oxley Act of 2002. **"
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document***"
+    ],
+    [
+     "101.SCHJ",
+     "",
+     "XBRL Taxonomy Schema***"
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Calculation Linbase***"
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Definition Linkbase***"
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Label Linkbase***"
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Presentation Linkbase***"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "",
+     "Incorporated herein by reference to the Company\u2019s Form S-1 filed with the Securities and Exchange Commission on October 21, 2011."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "**",
+     "",
+     "Filed herein"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "***",
+     "",
+     "Furnished herewith. XBRL (eXtensible Business Reporting Language) information is furnished\n\n\n\nand not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12\n\n\n\nof the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the\n\n\n\nSecurities Exchange Act of 1934, as amended, and otherwise is not subject to liability under\n\n\n\nthese sections."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "Item 15. Exhibits"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Peter Charles"
+    ],
+    [
+     "",
+     "Peter Charles, Chief Executive Officer, Principal Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: April 29, 2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "**  Filed herein\n***  Furnished herewith. XBRL (eXtensible Business Reporting Language) information is furnished\nand not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12\nof the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the\nSecurities Exchange Act of 1934, as amended, and otherwise is not subject to liability under\nthese sections.\n</TABLE>\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nProText Mobility, Inc. (Registrant)",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "s/ Frank Chester",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Frank Chester",
+     "",
+     "Director",
+     "",
+     "April 29, 2013"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Lewis",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "David Lewis",
+     "",
+     "Director",
+     "",
+     "April 29, 2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1077,
+    "end_line": 1088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nINDEX",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1060,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCIAL STATEMENTS:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "",
+     "F-1 \u2013 F-2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as at December 31, 2012 and 2011",
+     "",
+     "F-3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations For the Years Ended December 31, 2012 and 2011",
+     "",
+     "F-4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Stockholders' Deficit For the Years ended December 31, 2012 and 2011",
+     "",
+     "F-5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows For the Years Ended December 31, 2012 and 2011",
+     "",
+     "F-6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "",
+     "F-7 - F-17"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1094,
+    "end_line": 1111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nINDEX",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nBoard of Directors and Stockholders\nProtext Mobility, Inc.\nWe have audited the accompanying balance sheet of Protext Mobility, Inc., for the year ended December 31, 2012 and the related statement of operations, stockholders\u2019 deficit and cash flows for the year ended December 31, 2012. These financial statements are the responsibility of Protext Mobility, Inc.\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. We were not engaged to perform an audit of the Company\u2019s internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, and evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "        PROTEXT MOBILITY, INC. AND SUBSIDIARIES                                            CONSOLIDATED BALANCE SHEETS",
+     "    For the Years Ending December 31,",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$               349",
+     "$            3,956"
+    ],
+    [
+     "  Prepaid expenses",
+     "-",
+     "4,997"
+    ],
+    [
+     "      Total current assets",
+     "349",
+     "8,953"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets:",
+     "",
+     ""
+    ],
+    [
+     "  Capitalized software costs, less accumulated amortization of $317,367 and $211,428, respectively",
+     "-",
+     "181,887"
+    ],
+    [
+     "  Website development costs, less accumulated amortization of $17,924 and $7,916, respectively",
+     "-",
+     "22,084"
+    ],
+    [
+     "  Security deposit",
+     "2,700",
+     "9,454"
+    ],
+    [
+     "      Total other assets",
+     "2,700",
+     "213,425"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total assets",
+     "$            3,049",
+     "$         222,378"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     ""
+    ],
+    [
+     "  Current portion of 10% convertible notes payable",
+     "$       114,034",
+     "$        114,034"
+    ],
+    [
+     "  Convertible short term bridge notes payable, net of debt discount of $60,485 and $40,385 respectively",
+     "1,337,656",
+     "885,756"
+    ],
+    [
+     "  Notes payable",
+     "5,000",
+     "-"
+    ],
+    [
+     "  Accounts payable",
+     "750,423",
+     "607,522"
+    ],
+    [
+     "  Accrued expenses",
+     "1,218,039",
+     "729,174"
+    ],
+    [
+     "      Total current liabilities",
+     "3,425,152",
+     "2,336,486"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Dividends payable",
+     "1,033,757",
+     "562,298"
+    ],
+    [
+     "Total liabilities",
+     "4,458,909",
+     "2,898,784"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock - $.0001 par value, authorized - 25,000,000 shares;",
+     "",
+     ""
+    ],
+    [
+     "  Series A Convertible Preferred stock - $.0001 par value, $2.62 liquidation value, 1,526,718 designated;",
+     "",
+     ""
+    ],
+    [
+     "    issued and outstanding - 28,968",
+     "3",
+     "3"
+    ],
+    [
+     "  Series B Convertible Preferred stock - $.0001 par value, $9.09 liquidation value, 1,000,000 designated;",
+     "",
+     ""
+    ],
+    [
+     "    issued and outstanding -511,551",
+     "51",
+     "51"
+    ],
+    [
+     "  Common stock - $.0001 par value, authorized - 750,000,000 shares;",
+     "",
+     ""
+    ],
+    [
+     "    issued and outstanding -293,313,312 and 184,403,757 shares, respectively",
+     "29,330",
+     "18,440"
+    ],
+    [
+     "  Additional paid-in capital",
+     "44,943,481",
+     "44,092,616"
+    ],
+    [
+     "  Accumulated deficit",
+     "(49,428,725)",
+     "(46,787,516)"
+    ],
+    [
+     "    Total stockholders' deficit",
+     "(4,455,860)",
+     "(2,676,406)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities and stockholders' deficit",
+     "$            3,049",
+     "$     222,378"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "See notes to consolidated financial statements",
+     "",
+     ""
+    ],
+    [
+     "F-3",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PROTEXT MOBILITY, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Years Ending December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$                                     10,634",
+     "",
+     "$                          25,692",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Write off of software costs",
+     "75,948",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Amortization of software costs",
+     "105,939",
+     "",
+     "99,178",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "181,887",
+     "",
+     "99,178",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Loss",
+     "(171,253)",
+     "",
+     "(73,486)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Selling",
+     "14,831",
+     "",
+     "21,119",
+     ""
+    ],
+    [
+     "  Web site costs",
+     "132,405",
+     "",
+     "137,917",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "1,189,534",
+     "",
+     "2,510,256",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "10,008",
+     "",
+     "22,563",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "1,346,778",
+     "",
+     "2,691,855",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "(1,518,031)",
+     "",
+     "(2,765,341)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest",
+     "233,941",
+     "",
+     "111,936",
+     ""
+    ],
+    [
+     "  Gain on extinguishment of liabilities",
+     "-",
+     "",
+     "(19,814)",
+     ""
+    ],
+    [
+     "  Other income",
+     "-",
+     "",
+     "(4,000)",
+     ""
+    ],
+    [
+     "  Write-off of website costs",
+     "-",
+     "",
+     "81,307",
+     ""
+    ],
+    [
+     "  Debt conversion expense",
+     "-",
+     "",
+     "27,219",
+     ""
+    ],
+    [
+     "  Amortization of note discounts",
+     "417,779",
+     "",
+     "626,835",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "651,720",
+     "",
+     "823,483",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "(2,169,751)",
+     "",
+     "(3,588,824)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock dividends to be issued",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    for Series B Preferred Stock",
+     "(471,458)",
+     "",
+     "(471,458)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss applicable to common stock holders",
+     "$                              (2,641,209)",
+     "",
+     "$                   (4,060,282)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Per share data",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net Loss per share - basic and diluted",
+     "$                                       (0.01)",
+     "",
+     "$                            (0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  shares outstanding- basic and diluted",
+     "236,288,406",
+     "",
+     "148,194,879",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "        See notes to consolidated financial statements",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "        F-4",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PROTEXT MOBILITY, INC. AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PROTEXT MOBILITY, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  For the Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2012",
+     "",
+     "",
+     "2011"
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$ (2,169,751)",
+     "",
+     "",
+     "$ (3,588,824)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on extinguishment of debt",
+     "-",
+     "",
+     "",
+     "(19,814)"
+    ],
+    [
+     "Debt modification expense",
+     "-",
+     "",
+     "",
+     "27,219"
+    ],
+    [
+     "Write off of website development costs",
+     "12,076",
+     "",
+     "",
+     "81,307"
+    ],
+    [
+     "Warrants/options issued for consulting services",
+     "-",
+     "",
+     "",
+     "61,954"
+    ],
+    [
+     "Common stock issued for services",
+     "82,781",
+     "",
+     "",
+     "369,391"
+    ],
+    [
+     "Common stock issued for compensation",
+     "160,000",
+     "",
+     "",
+     "225,500"
+    ],
+    [
+     "Stock issued for interest",
+     "13,912",
+     "",
+     "",
+     "13,836"
+    ],
+    [
+     "Compensatory element of stock options",
+     "16,182",
+     "",
+     "",
+     "330,379"
+    ],
+    [
+     "Depreciation",
+     "-",
+     "",
+     "",
+     "14,647"
+    ],
+    [
+     "Impairment of software development costs",
+     "75,948",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Amortization of software and website development costs",
+     "115,947",
+     "",
+     "",
+     "107,094"
+    ],
+    [
+     "Amortization of debt discount related to debt",
+     "417,779",
+     "",
+     "",
+     "626,835"
+    ],
+    [
+     "Increase (decrease) in cash flows as a result of changes in asset and liability account balances:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "4,997",
+     "",
+     "",
+     "7,133"
+    ],
+    [
+     "Deferred rent",
+     "-",
+     "",
+     "",
+     "(3,849)"
+    ],
+    [
+     "Deposit",
+     "6,754",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "633,768",
+     "",
+     "",
+     "990,170"
+    ],
+    [
+     "Due to stockholders",
+     "-",
+     "",
+     "",
+     "(4,314)"
+    ],
+    [
+     "Total adjustments",
+     "1,540,144",
+     "",
+     "",
+     "2,827,488"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(629,607)",
+     "",
+     "",
+     "(761,336)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capitalized software costs",
+     "-",
+     "",
+     "",
+     "(161,691)"
+    ],
+    [
+     "Capitalized website development costs",
+     "-",
+     "",
+     "",
+     "(30,000)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "-",
+     "",
+     "",
+     "(191,691)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from sale of common stock",
+     "48,000",
+     "",
+     "",
+     "427,938"
+    ],
+    [
+     "  Proceeds from exercise of stock options",
+     "-",
+     "",
+     "",
+     "28,822"
+    ],
+    [
+     "  Proceeds from bridge notes payable",
+     "655,500",
+     "",
+     "",
+     "476,016"
+    ],
+    [
+     "  Payments of bridge notes payable",
+     "(77,500)",
+     "",
+     "",
+     "(30,000)"
+    ],
+    [
+     "  Payments of note payable - equipment",
+     "-",
+     "",
+     "",
+     "(2,773)"
+    ],
+    [
+     "  Payments under capital lease",
+     "-",
+     "",
+     "",
+     "(3,229)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "626,000",
+     "",
+     "",
+     "896,774"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash",
+     "(3,607)",
+     "",
+     "",
+     "(56,253)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "3,956",
+     "",
+     "",
+     "60,209"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$               349",
+     "",
+     "",
+     "$             3,956"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Schedules of Noncash Investing and Financing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued in connection with extinguishment of payable",
+     "  $                   -",
+     "",
+     "",
+     "$        268,700"
+    ],
+    [
+     "Common stock issued as a result of debt conversion",
+     "$          101,000",
+     "",
+     "",
+     "$     1,283,819"
+    ],
+    [
+     "Common stock issued in lieu of accrued interest",
+     "$              2,000",
+     "",
+     "",
+     "$        127,694"
+    ],
+    [
+     "Restricted stock issued in connection to bridge loans",
+     "$          274,052",
+     "",
+     "",
+     "  $                 -"
+    ],
+    [
+     "Debt discount of beneficial conversion feature in relation to bridge loans",
+     "$          163,828",
+     "",
+     "",
+     "$        132,166"
+    ],
+    [
+     "Common stock dividends payable for Series B Preferred Stock",
+     "$          471,458",
+     "",
+     "",
+     "$        471,458"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See notes to consolidated financial statements",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "F-5",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PROTEXT MOBILITY, INC. AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PROTEXT MOBILITY, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FOR THE YEARS ENDED DECEMBER 31, 2012 AND 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Series A",
+     "",
+     "Series B",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "Preferred Stock",
+     "",
+     "Common Stock",
+     "",
+     "Additional",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "0.0001",
+     "",
+     "0.0001",
+     "",
+     "0.0001",
+     "Paid-In",
+     "Accumulated",
+     "Stockholders"
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "Shares",
+     "Amount",
+     "Shares",
+     "Amount",
+     "Capital",
+     "Deficit",
+     "Deficit"
+    ],
+    [
+     "Balance at December 31, 2010",
+     "269,862",
+     "$       27",
+     "511,551",
+     "$    51",
+     "145,138,192",
+     "$14,514",
+     "$40,926,795",
+     "$(42,727,234)",
+     "$(1,785,847)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued as interest on debt",
+     "",
+     "",
+     "",
+     "",
+     "237,960",
+     "24",
+     "13,812",
+     "",
+     "13,836"
+    ],
+    [
+     "Common stock issued pursuant to Stock Purchase Agreements",
+     "",
+     "",
+     "",
+     "",
+     "7,924,009",
+     "792",
+     "427,146",
+     "",
+     "427,938"
+    ],
+    [
+     "Common stock issued for Debt settlement",
+     "",
+     "",
+     "",
+     "",
+     "2,462,421",
+     "246",
+     "268,453",
+     "",
+     "268,699"
+    ],
+    [
+     "Common stock issued pursuant to Preferred A conversion",
+     "(240,894)",
+     "(24)",
+     "",
+     "",
+     "2,408,940",
+     "241",
+     "(217)",
+     "",
+     "-"
+    ],
+    [
+     "Fair value of common stock issued for services",
+     "",
+     "",
+     "",
+     "",
+     "7,535,702",
+     "754",
+     "368,637",
+     "",
+     "369,391"
+    ],
+    [
+     "Fair value of options issued for consulting services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "61,954",
+     "",
+     "61,954"
+    ],
+    [
+     "Option expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "330,379",
+     "",
+     "330,379"
+    ],
+    [
+     "Common stock issued in connection with option  exercise",
+     "",
+     "",
+     "",
+     "",
+     "714,869",
+     "71",
+     "26,899",
+     "",
+     "26,970"
+    ],
+    [
+     "Common stock issued in connection with warrant exercise",
+     "",
+     "",
+     "",
+     "",
+     "738,273",
+     "74",
+     "1,778",
+     "",
+     "1,852"
+    ],
+    [
+     "Common stock issued board of directors compensation",
+     "",
+     "",
+     "",
+     "",
+     "4,857,663",
+     "486",
+     "225,014",
+     "",
+     "225,500"
+    ],
+    [
+     "Common stock issued pursuant to bridge note holder debt conversion",
+     "",
+     "",
+     "",
+     "",
+     "11,131,767",
+     "1,113",
+     "1,155,013",
+     "",
+     "1,156,126"
+    ],
+    [
+     "Common stock issued for accrued interest",
+     "",
+     "",
+     "",
+     "",
+     "1,253,961",
+     "125",
+     "127,569",
+     "",
+     "127,694"
+    ],
+    [
+     "Modification expense pursuant to warrant",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "966",
+     "",
+     "966"
+    ],
+    [
+     "Modification expense pursuant to conversion of shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "26,252",
+     "",
+     "26,252"
+    ],
+    [
+     "Beneficial conversion feature recognized in connection with issuance of convertible notes payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "132,166",
+     "",
+     "132,166"
+    ],
+    [
+     "Deemed dividend related to Preferred B Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(471,458)",
+     "(471,458)"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,588,824)",
+     "(3,588,824)"
+    ],
+    [
+     "Balance at December 31, 2011",
+     "28,968",
+     "3",
+     "511,551",
+     "51",
+     "184,403,757",
+     "18,440",
+     "44,092,616",
+     "(46,787,516)",
+     "(2,676,406)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued as interest on debt",
+     "",
+     "",
+     "",
+     "",
+     "1,320,180",
+     "132",
+     "13,780",
+     "",
+     "13,912"
+    ],
+    [
+     "Common stock issued pursuant to Stock Purchase Agreements",
+     "",
+     "",
+     "",
+     "",
+     "6,921,086",
+     "692",
+     "47,308",
+     "",
+     "48,000"
+    ],
+    [
+     "Fair value of common stock issued for services",
+     "",
+     "",
+     "",
+     "",
+     "6,511,648",
+     "651",
+     "82,130",
+     "",
+     "82,781"
+    ],
+    [
+     "Common stock issued board of directors compensation",
+     "",
+     "",
+     "",
+     "",
+     "21,174,077",
+     "2,117",
+     "157,883",
+     "",
+     "160,000"
+    ],
+    [
+     "Common stock issued pursuant to bridge note holder debt conversion",
+     "",
+     "",
+     "",
+     "",
+     "30,382,564",
+     "3,038",
+     "97,962",
+     "",
+     "101,000"
+    ],
+    [
+     "Common stock issued for accrued interest",
+     "",
+     "",
+     "",
+     "",
+     "2,000,000",
+     "200",
+     "1,800",
+     "",
+     "2,000"
+    ],
+    [
+     "Option expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "16,182",
+     "",
+     "16,182"
+    ],
+    [
+     "Common stock issued in connection with issuance of debt",
+     "",
+     "",
+     "",
+     "",
+     "40,600,000",
+     "4,060",
+     "269,992",
+     "",
+     "274,052"
+    ],
+    [
+     "Beneficial conversion feature recognized in connection with issuance of convertible notes payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "163,828",
+     "",
+     "163,828"
+    ],
+    [
+     "Deemed dividend related to Preferred B Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(471,458)",
+     "(471,458)"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,169,751)",
+     "(2,169,751)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2012",
+     "28,968",
+     "$            3",
+     "511,551",
+     "$    51",
+     "293,313,312",
+     "$ 29,330",
+     "$44,943,481",
+     "$(49,428,725)",
+     "$(4,455,860)"
+    ]
+   ],
+   "caption_stack": [
+    "PROTEXT MOBILITY, INC. AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' DEFICIT",
+    "FOR THE YEARS ENDED DECEMBER 31, 2012 AND 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1362,
+    "end_line": 1413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "Common stock issued in lieu of accrued interest                                 $ 2,000                  $        127,694\n==========  ================================\nRestricted stock issued in connection to bridge loans                         $ 274,052               $                 -\n==========  ================================\nDebt discount of beneficial conversion feature in relation to bridge loans    $ 163,828                  $        132,166\n==========  ================================\nCommon stock dividends payable for Series B Preferred Stock                   $ 471,458                  $        471,458\n==========  ================================\nSee notes to consolidated financial statements\n</TABLE>",
+   "prose_after": "PROTEXT MOBILITY, INC. AND SUBSIDIARIES\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nDecember 31, 2012 and 2011\nNOTE 1 - DESCRIPTION OF BUSINESS AND GOING CONCERN\nProText Mobility Inc. (formerly known as EchoMetrix Inc. and SearchHelp, Inc) was incorporated in the State of Delaware on September 5, 2001 and completed its initial public offering on July 23, 2003. During the fiscal year ended December 31, 2008, the Company acquired 100% of the stock of EchoMetrix, Inc, a wholly owned subsidiary, and in May of 2009 the Company filed a Certificate of Ownership and Merger with the state of Delaware pursuant to which EchoMetrix was merged into the Company, and the Company's corporate name was changed from SearchHelp, Inc. to EchoMetrix, Inc. In December of 2010, the Company formed a new Corporation (ProText Mobility, Inc) and filed a Certificate of Ownership and Merger with the state of Delaware pursuant to which the Company\u2019s wholly owned subsidiary, ProText Mobility, Inc., was merged into the Company, and the Company\u2019s name changed from Echo Metrix, Inc. to ProText Mobility, Inc.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1413,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     ""
+    ],
+    [
+     "2004 Stock Plan Options",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Non ISO Stock Options",
+     "",
+     "",
+     "20,267,815",
+     "",
+     "",
+     "31,504,900"
+    ],
+    [
+     "Convertible Preferred Stock",
+     "",
+     "",
+     "51,444,780",
+     "",
+     "",
+     "51,444,780"
+    ],
+    [
+     "Convertible Bridge Notes and Notes Payable",
+     "",
+     "",
+     "53,480,601",
+     "",
+     "",
+     "26,436,060"
+    ],
+    [
+     "Warrants",
+     "",
+     "",
+     "33,336,581",
+     "",
+     "",
+     "104,767,316"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES:"
+    }
+   },
+   "prose_before": "The preparation of financial statements in conformity with U.S. GAAP requires management to make estimates and assumptions that affect certain reported amounts and disclosures. Accordingly, actual results could differ from those estimates.\n(d) Earnings Per Share:\nThe Company utilizes the guidance per FASB Codification \u201cASC 260 \"Earnings Per Share\". Basic earnings per share is calculated on the weighted effect of all common shares issued and outstanding, and is calculated by dividing net income available to common stockholders by the weighted average shares outstanding during the period. Diluted earnings per share, which is calculated by dividing net income available to common stockholders by the weighted average number of common shares used in the basic earnings per share calculation, plus the number of common shares that would be issued assuming conversion of all potentially dilutive securities outstanding, is not presented separately as it is anti-dilutive. Such securities, shown below, presented on a common share equivalent basis and outstanding as of December 31, 2012 and 2011 have been excluded from the per share computations as their effect would be anti-dilutive:",
+   "prose_after": "(e) Stock Based Compensation:\nEffective January 1, 2006, the Company\u2019s 2004 Stock Plan and options granted outside of the Plan are accounted for in accordance with the recognition and measurement provisions of Share Based Compensation as defined in FASB Codification, topic 718, which requires compensation costs related to share-based payment transactions, including employee stock options, to be recognized in the financial statements.\n(f) Advertising Costs:\nThe Company expenses ordinary advertising and promotion costs as incurred. Advertising and promotion costs totaled approximately $10,000 and $73,000 for the fiscal year ended December 31, 2012 and 2011 respectively.\n(g) Software Development Costs:\nIn accordance with the provisions of FASB Codification Topic ACS 985-20, \"Costs of Software to be Sold, Leased, or Marketed,\u201d software development costs are subject to capitalization beginning when a product's technological feasibility has been established and ending when a product is available for release to customers. For the years ended December 31, 2012, and 2011 the Company capitalized approximately $0 and $192,000 of software and website development costs, respectively. The software and website costs are amortized on a straight line basis over the estimated useful life of three years. Amortization expense for the years ended December 31, 2012 and 2011 was approximately $117,000 and $107,000 respectively.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1435,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1477,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Data processing equipment",
+     "",
+     "3 to 5 years"
+    ],
+    [
+     "Telecommunication equipment",
+     "",
+     "5 years"
+    ],
+    [
+     "Purchased software",
+     "",
+     "3 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1506,
+    "end_line": 1511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES:"
+    }
+   },
+   "prose_before": "Financial instruments that potentially subject the Company to concentrations of credit risk consist principally of cash and accounts receivable. The Company from time to time may maintain cash balances, which exceed the Federal Depository Insurance Coverage limit. The Company performs periodic reviews of the relative credit rating of its bank to lower its risk. Concentrations of credit risk with respect to accounts receivable are limited because a number of geographically diverse customers make up the Company\u2019s customer base, thus spreading the trade credit risk.\n(m) Property and Equipment and Depreciation:\nProperty and equipment are recorded at cost. Expenditures for major additions and improvements are capitalized and minor replacements, maintenance, and repairs are charged to expense as incurred. When property and equipment are disposed of, the cost and accumulated depreciation are removed from the accounts and any resulting gain or loss is included in the results of operations for the respective period. Depreciation is provided for over the estimated useful lives of the related asset using the straight-line method. The estimated useful lives for significant property and equipment categories are as follows:",
+   "prose_after": "(n) Recently Issued Accounting Pronouncements:\nWe have reviewed accounting pronouncements issued during the past two years and have adopted any that are applicable to our company. We have determined that none had a material impact on our consolidated financial position, results of operations, or cash flows for the years ended December 31, 2012 and 2011.\nNOTE 3 - STOCK COMPENSATION\nThe Company\u2019s 2004 Stock Plan (the \u201c 2004 Plan\u201d), which is shareholder approved, permits the grant of share options and shares to its employees for up to 1,500,000 shares of Common Stock as stock compensation. All stock options under the 2004 Stock Plan are granted at the fair market value of the Common Stock at the grant date. Employee stock options vest ratably over a three-year period and generally expire 5 years from the grant date.\nThe Company\u2019s 2009 Incentive Stock Plan, (the \u201c2009 Plan\u201d), which is Board of Director approved, permits the grant of share options and shares to directors, executives and selected employees and consultants for up to 25,000,000 shares of Common Stock as stock compensation. During the year ended December 31, 2012, 6,511,648 shares of common stock have been issued to employees and consultants for services.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1477,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1511,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "105.96%-108.94%",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "0%",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "1.72%-3.75%",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1532,
+    "end_line": 1542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "STOCK COMPENSATION"
+    }
+   },
+   "prose_before": "As a result of the adoption of the provision of Share Based Compensation, the Company's results for the year ended December 31, 2012 and 2011 include share-based compensation expense for employees and board of directors totaled approximately $160,000 and $714,000, respectively, which have been included in the general and administrative expenses line item in the accompanying consolidated statement of operations. No income tax benefit has been recognized in the income statement for share-based compensation arrangements as the Company has provided a 100% valuation allowance on its\u2019 net deferred tax asset. Stock option compensation expense is the estimated fair value of options granted amortized on a straight-line basis over the requisite service period for the entire portion of the award. The Company has not adjusted the expense by estimated forfeitures, as required for employee options, since the forfeiture rate based upon historical data was determined to be immaterial.\nDuring the year ended December 31, 2012, there were no options granted. In the year December 31, 2011, the Company granted 2,750,000 fully vested options to employees with an exercise price ranging from $0.01 to $0.11 and a five year term.\nThe fair value of options at the date of grant is estimated using the Black-Scholes option pricing model. During the year ended December 31, 2012 and 2011 the assumptions made in calculating the fair values of options are as follows:",
+   "prose_after": "Accounting for Non-employee Awards:\nThe Company records its stock-based compensation expense in accordance with ASC 718-10, formerly SFAS 123R, \u201cShare Based Payment\u201d to its non-employee consultants for stock granted.\nStock compensation expense related to non-employee options was approximately $0 and $0 for the years ended December 31, 2012 and 2011, respectively. These amounts are included in the Consolidated Statements of Operations within the general and administrative expenses line item.\nThere were no options granted to non-employees during the year ended December 31, 2012.\nThe following table represents our stock options granted, exercised, and forfeited during the year ended December 31, 2012.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1511,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "",
+     "",
+     "Remaining",
+     "",
+     "",
+     "",
+     "Aggregate",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number",
+     "",
+     "",
+     "",
+     "Price",
+     "",
+     "",
+     "",
+     "Contractual",
+     "",
+     "",
+     "",
+     "Intrinsic",
+     "",
+     ""
+    ],
+    [
+     "Stock Options",
+     "",
+     "of Shares",
+     "",
+     "",
+     "",
+     "per Share",
+     "",
+     "",
+     "",
+     "Term",
+     "",
+     "",
+     "",
+     "Value",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2010",
+     "",
+     "",
+     "32,473,422",
+     "",
+     "",
+     "$",
+     "0.20",
+     "",
+     "",
+     "",
+     "2.3029",
+     "",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "",
+     "2,750,000",
+     "",
+     "",
+     "",
+     "0.06",
+     "",
+     "",
+     "",
+     "4.6392",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "(746,119)",
+     "",
+     "",
+     "",
+     "0.03",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited/expired",
+     "",
+     "",
+     "(2,972,403)",
+     "",
+     "",
+     "",
+     "0.10",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2011",
+     "",
+     "",
+     "31,504,900",
+     "",
+     "",
+     "$",
+     "0.09",
+     "",
+     "",
+     "",
+     "2.7715",
+     "",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Forfeited/expired",
+     "",
+     "",
+     "(11,237,805)",
+     "",
+     "",
+     "",
+     "0.11",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2012",
+     "",
+     "",
+     "20,267,815",
+     "",
+     "",
+     "$",
+     "0.08",
+     "",
+     "",
+     "",
+     "2.3099",
+     "",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1553,
+    "end_line": 1575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "STOCK COMPENSATION"
+    }
+   },
+   "prose_before": "Accounting for Non-employee Awards:\nThe Company records its stock-based compensation expense in accordance with ASC 718-10, formerly SFAS 123R, \u201cShare Based Payment\u201d to its non-employee consultants for stock granted.\nStock compensation expense related to non-employee options was approximately $0 and $0 for the years ended December 31, 2012 and 2011, respectively. These amounts are included in the Consolidated Statements of Operations within the general and administrative expenses line item.\nThere were no options granted to non-employees during the year ended December 31, 2012.\nThe following table represents our stock options granted, exercised, and forfeited during the year ended December 31, 2012.",
+   "prose_after": "As of December 31, 2012 and 2011, approximately $16,000 and $330,000, respectively, of compensation cost related to non-vested stock options was recognized.\nNOTE 4 - PROPERTY AND EQUIPMENT\nThe following is a summary of property and equipment, at cost less accumulated depreciation, at December 31:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1604,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "$",
+     "3,780",
+     "",
+     "",
+     "$",
+     "3,780",
+     ""
+    ],
+    [
+     "Data processing equipment",
+     "",
+     "",
+     "212,730",
+     "",
+     "",
+     "",
+     "212,730",
+     ""
+    ],
+    [
+     "Telecommunication equipment",
+     "",
+     "",
+     "21,262",
+     "",
+     "",
+     "",
+     "21,262",
+     ""
+    ],
+    [
+     "Purchased software",
+     "",
+     "",
+     "2,395",
+     "",
+     "",
+     "",
+     "2,395",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "240,167",
+     "",
+     "",
+     "",
+     "240,167",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "",
+     "(240,167)",
+     "",
+     "",
+     "",
+     "(240,167)",
+     ""
+    ],
+    [
+     "Total property and equipment, net",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "As of December 31, 2012 and 2011, approximately $16,000 and $330,000, respectively, of compensation cost related to non-vested stock options was recognized.\nNOTE 4 - PROPERTY AND EQUIPMENT\nThe following is a summary of property and equipment, at cost less accumulated depreciation, at December 31:",
+   "prose_after": "Depreciation charged to operations amounted to approximately $0 and $15,000 for the years ended December 31, 2012 and 2011, respectively. Property and equipment include gross assets acquired under capital leases of approximately $0 and $108,000 at December 31, 2012 and 2011, respectively. Capital leases are included as a component of data processing equipment. Amortization of assets under capital leases is included in depreciation expense.\nNOTE 5 - 10% CONVERTIBLE NOTES PAYABLE\nDuring the fiscal year ended December 31, 2011 the remaining 10% convertible notes outstanding were in default. The default provision requires an additional 2% interest per annum until the loans are repaid or converted. The 2% default penalty totaled approximately $3,000 for years ended December 31, 2012 and 2011, respectively and is included in interest expense on the consolidated statement of operations and in accrued expenses on the consolidated balance sheet as of December 30, 2012 and 2011, respectively.\nAs reflected on the balance sheets, the value of the 10% convertible notes at December 31, 2012 and December 31, 2011 amounted to approximately $114,000 and are classified as current due to the fact that they are in default for the non-payment by the maturity date. The Notes are convertible at any time at the option of the holder into Common Stock at the conversion rate of $0.40 per share.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1604,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Operating Losses",
+     "",
+     "$",
+     "10,018,000",
+     "",
+     "",
+     "$",
+     "9,426,000",
+     ""
+    ],
+    [
+     "Option Expense",
+     "",
+     "",
+     "2,469,000",
+     "",
+     "",
+     "",
+     "2,463,000",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "(153,000)",
+     "",
+     "",
+     "",
+     "(130,000)",
+     ""
+    ],
+    [
+     "Valuation Allowances",
+     "",
+     "",
+     "(12,334,000)",
+     "",
+     "",
+     "",
+     "(11,759,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Deferred Tax Asset",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1651,
+    "end_line": 1665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "In October of 2012, the Company entered in to short term note payable totaling $5,000. This note matures on April 17, 2013 and bears interest at 8% per annum.\n2011\nIn March of 2011, the principal balance of the note of approximately $125,000 and accrued interest of approximately $48,000 was converted into 1,424,028 shares of common stock of the Company.\nNOTE 7 - DUE TO STOCKHOLDERS\nAt December 31, 2010, the Company was indebted to its former CEO, William Bozsnyak, in the amount of approximately $196,000, for working capital advances, accrued interest and unpaid salaries and vacation.\nIn March of 2011, the Company settled all outstanding liabilities with Mr. Bozsnyak in exchange for 1,200,000 shares of common stock and recorded a gain on extinguishment of approximately $47,000, which is included in the accompanying consolidated statement of operations for the year ended December 31, 2011.\nNOTE 8 - INCOME TAXES\nThe tax effect of the temporary differences that give rise to deferred tax assets are presented below:",
+   "prose_after": "At December 31, 2012 and 2011, a 100% valuation allowance was recorded to reduce the Company\u2019s net deferred tax asset to $0. The Company could not determine that it was more likely than not that the deferred tax asset resulting from net operating loss carryforwards would be realized.\nThe Company has generated net operating loss carryforwards aggregating approximately $25,687,000 at December 31, 2012 for federal and state income tax purposes. These carryforwards are available to offset future taxable income and expire at various dates through 2032.\nA reconciliation of the difference between the expected tax rate using the statutory federal tax rate (34%) and the Company\u2019s effective tax rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1703,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "U.S federal income tax at statutory rate",
+     "",
+     "$",
+     "(738,000)",
+     "",
+     "",
+     "$",
+     "(1,220,000)",
+     ""
+    ],
+    [
+     "State income tax, net of federal income tax benefit",
+     "",
+     "",
+     "(108,000)",
+     "",
+     "",
+     "",
+     "(180,000)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "5,000",
+     "",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "",
+     "163,000",
+     "",
+     "",
+     "",
+     "244,000",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "",
+     "",
+     "95,000",
+     "",
+     "",
+     "",
+     "232,000",
+     ""
+    ],
+    [
+     "Valuation tax asset allowance",
+     "",
+     "",
+     "583,000",
+     "",
+     "",
+     "",
+     "919,000",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1672,
+    "end_line": 1685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "At December 31, 2012 and 2011, a 100% valuation allowance was recorded to reduce the Company\u2019s net deferred tax asset to $0. The Company could not determine that it was more likely than not that the deferred tax asset resulting from net operating loss carryforwards would be realized.\nThe Company has generated net operating loss carryforwards aggregating approximately $25,687,000 at December 31, 2012 for federal and state income tax purposes. These carryforwards are available to offset future taxable income and expire at various dates through 2032.\nA reconciliation of the difference between the expected tax rate using the statutory federal tax rate (34%) and the Company\u2019s effective tax rate is as follows:",
+   "prose_after": "NOTE 9 - EQUITY TRANSACTIONS\nCommon Stock:\n2012\nPayment of Interest\nFor the year ended December 31, 2012, the Company issued 1,320,180 shares (valued at $13,912) of the Company\u2019s common stock as payment for interest due on the Company\u2019s 10% convertible notes.\nServices Rendered\nThe Company issued 6,511,648 shares (valued at $82,781) for the year ended December 31, 2012 of the Company\u2019s restricted common stock as payment for compensation to consultants and employees. The Company issued 21,174,077 shares (valued at $160,000) for the year ended December 31, 2012 of the Company\u2019s restricted common stock as payment for services to the Board of Directors.\nDebt Conversion of Interest\nIn the year ended December 31, 2012, the Company issued 2,000,000 shares of its common stock as a result of converting $2,000 of accrued interest on the bridge note holders.\nDebt Conversion",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1703,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "Price",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2010",
+     "",
+     "",
+     "113,020,650",
+     "",
+     "",
+     "$",
+     "0.04",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "",
+     "413,025",
+     "",
+     "",
+     "",
+     "0.01",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "(787,099)",
+     "",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "",
+     "(7,879,260)",
+     "",
+     "",
+     "",
+     "(0.21)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2011",
+     "",
+     "",
+     "104,767,316",
+     "",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "",
+     "(71,430,735)",
+     "",
+     "",
+     "",
+     "(0.21)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2012",
+     "",
+     "",
+     "33,336,581",
+     "",
+     "",
+     "$",
+     "0.03",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1756,
+    "end_line": 1776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "EQUITY TRANSACTIONS"
+    }
+   },
+   "prose_before": "In the year ended December 31, 2011, the Company issued 11,131,767 shares of its common stock as a result of converting $1,158,807 of principal on the bridge note holders.\nIssuance of Common Stock as a Result of Sale of Securities\nIn the year ended December 31, 2011, the Company issued 7,924,009 shares of common stock for proceeds from the sale of the Company\u2019s common stock of $427,938.\nConversion of Preferred A\nIn the year ended December 31, 2011, shareholders converted 240,894 shares of Preferred A into 2,408,940 shares of common stock.\nWarrants:\nDuring the year ended December 31, 2012, the Company did not grant any warrants. In the year ended December 31, 2011, the Company granted 413,025 warrants with a 5 year term and a $0.01 cashless exercise price to a consultant and recorded approximately $62,000 of compensation expense which is included in the accompanying consolidated statement of operations in the general and administrative line item. All of these warrants were exercised within the first fiscal quarter of 2011.",
+   "prose_after": "NOTE 10 - PREFERRED STOCK\nSeries A Convertible Preferred Stock\nFor the year ended December 31, 2012 and 2011, the Company has 28,968 shares of Series A Convertible Preferred Stock issued. The holders of outstanding shares of Series A Preferred Stock are entitled to receive, in any fiscal year, when, if and as declared by the Board of Directors, out of any assets at the time legally available, dividends on a pro rata basis in cash at the rate of 7% per annum on the stated value of $2.62 per share. Each holder of shares of Series A Preferred Stock shall have the right, at any time and from time to time, to convert some or all such shares into fully paid and non-assessable shares of common stock at the rate of 10 shares of common stock for every one share of Series A Preferred Stock.\nSeries B Convertible Preferred Stock\nOn July 29, 2009, the Company and Rock Island Capital, LLC (\u201cRock Island\u201d) entered into a Series B Convertible Preferred Stock Purchase Agreement, as amended on September 9, 2009 (the \u201cAgreement\u201d). Pursuant to the Agreement, the Company has sold to assignees of Rock Island an initial tranche of $2,000,000 of its Series B Convertible Preferred Stock (220,022 shares), in the aggregate, at a purchase price per share of $9.09, and has issued to such assignees Warrants to purchase 22,002,200 shares of the Company\u2019s Common Stock, in the aggregate, at an exercise price of $0.15 per share. Each share of Series B Convertible Preferred Stock is convertible into 100 shares of the Company\u2019s Common Stock at the sole discretion of the holder. Pursuant to the Agreement, Rock Island may designate one member for service on the Company\u2019s board of directors. Under the terms of the Agreement, Rock Island and its assignees could, at their discretion, purchase additional shares of Series B Convertible Preferred Stock and Warrants in two additional tranches of $2,000,000 and $1,000,000 payable on or before December 2, 2009, and January 8, 2010, respectively.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "[ ]",
+     "",
+     "The warrants issued or issuable under the Agreement shall be exercisable on a cashless basis.",
+     ""
+    ],
+    [
+     "",
+     "[ ]",
+     "",
+     "On October 20, 2010, the Company filed an Amended and Restated Certificate of Designation of Series B Preferred Stock, pursuant to which:",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u25aa",
+     "",
+     "Pursuant to the commitment of the additional financing of $1,750,000, the number of shares of authorized Series B Preferred Stock was increased from 550,055 to 1,000,000;"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u25aa",
+     "",
+     "Pursuant to the commitment of the additional financing of $1,750,000, the \u201cSpecial Dividend Amount\u201d payable to the holders of Series B Preferred Stock was increased from $2,500,000 to $3,375,000;and"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u25aa",
+     "",
+     "The holders of Series B Preferred Stock shall be entitled to cumulative dividends at a rate of 10% per annum, compounded annually and payable in cash upon conversion of the Series B Preferred Stock into shares of common stock or upon such other date as determined by the Board of Directors of the Company."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1801,
+    "end_line": 1813
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "PREFERRED STOCK"
+    }
+   },
+   "prose_before": "On October 19, 2010 the Company entered into Amendment No. 5 to the Stock Purchase Agreement of its Series B Convertible Preferred Stock with Rock Island Capital LLC (\u201cPurchaser\u201d) whereby the Purchaser agreed to purchase from the Company, and the Company agreed to sell to the Purchaser, up to 192,500 units, with each unit consisting of (i) one share of Series B Preferred Stock, (ii) 81.818181 shares of the Company\u2019s common stock and (iii) five-year warrants to purchase 181.818181 shares of the Company\u2019s common stock at an exercise price of $0.01 (which may be exercised on a cashless basis), for a purchase price of $9.0909 per unit. The units will be sold in installments of at least $100,000 each on before the 30 th day following the prior payment, with the first installment due on or before the thirtieth day following the final payment of the aggregate purchase price under the Agreement. In the event that the Purchaser shall fail to timely pay any installment and does not notify the Company in writing at least five days prior to such installment due date (upon which notice the Purchaser shall be granted a 7-day extension), the Company may, from and after the expiration of any and all applicable cure periods, terminate the Agreement, and the Company shall have no right to pursue any other remedy against Purchaser.",
+   "prose_after": "In accordance with the accounting guidance for modifications, for Amendment No. 5, the Company recorded approximately $760,000 as a deemed preferred dividend relating to warrant modification with a corresponding credit to additional paid in capital.\nFor the year ended December 31, 2010, the Company received $2,650,000 from the sale of Series B Convertible Preferred Stock, and issued an additional 291,529 preferred B shares. The Company recorded the beneficial conversion feature and the warrant associated with such investment as a deemed preferred dividend of $2,650,000 with a corresponding credit to additional paid in capital.\nIn accordance with Amendment No. 5, the Company has accrued dividends payable amounting to approximately $1,034,000 and $562,000 at December 31, 2012 and 2011, respectively which is included in the accompanying consolidated balance sheet.\nNOTE 11 - COMMITMENTS AND CONTINGENCIES\nLegal Proceedings\nOn May 10, 2010, the Company was served with an action from Ms. Von Biederman for breach of contract seeking damages in excess of $75,000. The Company was in mediation proceedings, and has accrued $20,000 of prior consulting fees due to Ms. Von Biederman.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1815,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

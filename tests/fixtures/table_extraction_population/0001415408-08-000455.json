@@ -1,0 +1,2909 @@
+{
+ "accession": "0001415408-08-000455",
+ "cik": "0001378036",
+ "form": "10-K",
+ "filing_date": "2008-10-14",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "danares10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Wyoming",
+     "n/a"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "810 Malecon Cisneros",
+     ""
+    ],
+    [
+     "Miraflores, Lima Peru R5 18",
+     "380 44 331 6201"
+    ],
+    [
+     "(Address of principal executive offices) (Zip Code)",
+     "(Registrant\u2019s telephone number, including area code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-K\n[X] ANNUAL REPORT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2008\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________.\nCommission file number 333-1421-28\nDana Resources\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Danapc.com\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered under Section 12(b) of the Exchange Act: None\nSecurities registered under Section 12(g) of the Exchange Act: None\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.[X]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     ""
+    ],
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "Item 1. Description of Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "6"
+    ],
+    [
+     "Item 2. Description of Property",
+     "7"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "12"
+    ],
+    [
+     "Item 4. Submission of Matters to a Vote of Security Holders",
+     "12"
+    ],
+    [
+     "PART II",
+     "13"
+    ],
+    [
+     "Item 5. Market for Common Equity and Related Stockholder Matters",
+     "13"
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "14"
+    ],
+    [
+     "Item 7. Management's Discussion and Analysis and Results of Operation",
+     "14"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures about Market Risk",
+     "16"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "16"
+    ],
+    [
+     "Item 9. Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "17"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "17"
+    ],
+    [
+     "Item 9A(T). Controls and Procedures",
+     "17"
+    ],
+    [
+     "Item 9B. Other Information",
+     "18"
+    ],
+    [
+     "PART III",
+     "19"
+    ],
+    [
+     "Item 10. Directors, Executive Officers, Promoters and Control Persons; Compliance with Section 16(a) of the Exchange Act",
+     "19"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "21"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "24"
+    ],
+    [
+     "Item 13. Certain Relationships, Related Transactions and Director Independence",
+     ""
+    ],
+    [
+     "Item 14. Principal Accountant Fees and Services",
+     "25"
+    ],
+    [
+     "PART IV",
+     "26"
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "26"
+    ],
+    [
+     "Exhibits",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 55,
+    "end_line": 111
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \u201caccelerated filer and large accelerated filer\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [ ] Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act) N [ ] [X]\nAggregate market value of the voting stock of the registrant held by non-affiliates of the registrant at December 31, 2007 (computed by reference to the latest price at which the common equity was sold; $0.0029): $11,600\nNumber of common shares outstanding at September 25, 2008: 75,280,710",
+   "prose_after": "PART I\nItem 1. Description of Business\nCautionary Statement\nThis Annual Report on Form 10-K contains forward-looking statements that involve risks and uncertainties. These statements relate to future events or our future financial performance. In some cases, you can identify forward-looking statements by terminology including, \"could\" \"may\", \"will\", \"should\", \"expect\", \"plan\", \"anticipate\", \"believe\", \"estimate\", \"predict\", \"potential\" and the negative of these terms or other comparable terminology. These statements are only predictions. Actual events or results may differ materially.\nWhile these forward-looking statements, and any assumptions upon which they are based, are made in good faith and reflect our current judgment regarding the direction of our business, actual results will almost always vary, sometimes materially, from any estimates, predictions, projections, assumptions or other future performance suggested in this Annual Report.\nCurrency\nAll currency references in this Annual Report are in US dollars unless otherwise noted.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 111,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Term",
+     "Definition"
+    ],
+    [
+     "Andes",
+     "the world's longest exposed mountain range. They lie as a continuous chain of highland along the western coast of South America extending over seven countries: Argentina, Bolivia, Chile, Colombia, Ecuador, Peru and Venezuela."
+    ],
+    [
+     "Andesitic (Andesite)",
+     "pertaining to or containing andesite, an extrusive mineral composed dominantly of iron and magnesium."
+    ],
+    [
+     "Argillic",
+     "pertaining to clay or clay minerals"
+    ],
+    [
+     "Basalt",
+     "a common form of extrusive volcanic rock, rich in iron and magnesium."
+    ],
+    [
+     "Biotite",
+     "a common term for a silicate containing iron and magnesium."
+    ],
+    [
+     "Breccia",
+     "A coarse-grained rock, composed of angular broken rock fragments held together by a mineral cement or in a fine-grained matrix; it differs from conglomerate in that the fragments have sharp edges and unworn corners. Breccia may originate as a result of the accumulation of rock fragments from cliffs or slopes, explosive igneous processes, collapse of rock material, or faulting."
+    ],
+    [
+     "Calipuy Group",
+     "a range of volcanic mountains"
+    ],
+    [
+     "Cretaceous",
+     "a geological period reaching from the end of the Jurassic Period (145.5 to 4 million years ago) to the beginning of the Paleocene Period (65.5 to 0.3 million years ago)"
+    ],
+    [
+     "Cu Au",
+     "an alloy of copper and gold"
+    ],
+    [
+     "Dacitic (Dacite)",
+     "pertaining to dacite, a mineral with the same general composition as andesite, but containing more quartz. The intrusive equivalent of andesite."
+    ],
+    [
+     "Diolite",
+     "a group of plutonic rocks intermediate in composition between acidic and basic, sometimes containing a small amount of quartz."
+    ],
+    [
+     "Extrusive",
+     "A body of igneous rock that has crystallized from a molten magma below the surface"
+    ],
+    [
+     "Eocene",
+     "A geological period that extends between 55 and 34 million years ago."
+    ],
+    [
+     "Epithermal Deposit",
+     "a hydrothermal mineral deposit formed within about 1 km of the Earth's surface and in the temperature range of 50 to 200 degrees C, occurring mainly as veins."
+    ],
+    [
+     "Feldspar",
+     "any of a common group of rock forming minerals making up as much as 60% of the earths crust"
+    ],
+    [
+     "Goethite",
+     "a form of iron oxide also known as bog iron that is soft, spongy and porous, formed in bogs, marshes and swamps and having a yellow-ochre color. It is a source of iron and yellow ochre pigment."
+    ],
+    [
+     "Granite",
+     "a commonly occurring variety of intrusive igneous rock."
+    ],
+    [
+     "Granodiorite",
+     "an intrusive igneous rock similar to granite and formed by an intrusion of quartz rich magma"
+    ],
+    [
+     "Ground Scintillation",
+     "a method of uranium prospecting that employs a scintillation counter, a specialized instrument for detecting the presence of radioactive minerals."
+    ],
+    [
+     "Gummite",
+     "a yellow amorphous mineral composed of uranium minerals, oxides, silicates, hydrates and hydrous oxides of uranium, derived from the alteration of uraninite. It is named for its gum-like consistency."
+    ],
+    [
+     "Hematite",
+     "a form of iron oxide appearing in thin tablets or flakes with a metallic steel-gray and reddish-ochre streaked appearance."
+    ],
+    [
+     "Hornblende",
+     "a common dark colored non-metallic rock"
+    ],
+    [
+     "Hydrothermal",
+     "of or pertaining to hot water or magmatic origin."
+    ],
+    [
+     "Illite",
+     "a general term for a group of three-layer clays."
+    ],
+    [
+     "Intrusive",
+     "a body of igneous rock that has crystallized from a molten magma below the surface."
+    ],
+    [
+     "Igneous",
+     "a body of rock that has crystallized from a molten magma."
+    ],
+    [
+     "Ignimbrites",
+     "rocks formed by the widespread deposition and consolidation of ash flows."
+    ],
+    [
+     "Iron Oxide",
+     "a common compound of iron and oxygen; e.g., rust."
+    ],
+    [
+     "Jurassic",
+     "A geological period spanning from 145.5 to 4 million years ago."
+    ],
+    [
+     "Kaolinite",
+     "a soft white oxide of aluminum formed by hydrothermal alteration of aluminum particles."
+    ],
+    [
+     "Lapilli",
+     "rocks produced by explosive or aerial ejection of ash, fragments and glassy material from volcanic vents that may be either essential, accessory, or accidental in origin, of a size range that has been variously defined within the limits of 2 mm and 64 mm. The fragments may be either solidified or still viscous when they land (though some classifications restrict the term to the former)"
+    ],
+    [
+     "Magmatic",
+     "of, pertaining to, or derived from naturally occurring magma (molten rock generated within the Earth)"
+    ],
+    [
+     "Magnetite",
+     "an igneous rock having high iron content and appearing in iron ore formations."
+    ],
+    [
+     "Monzonite",
+     "a common igneous intrusive rock. Quartz is a minor component (less than 10%) or is absent.  Quartz monzonite contains more than 10% quartz."
+    ],
+    [
+     "Oligocene",
+     "a geological period that extends between 34 million to 23 million years ago."
+    ],
+    [
+     "Phenocryst",
+     "a term for large crystals or mineral grains floating in the groundmass of a porphyry."
+    ],
+    [
+     "Paleozoic",
+     "a geological period spanning from roughly 542 million years ago to roughly 251 million years ago"
+    ],
+    [
+     "Phyllitic (Phyllite)",
+     "pertaining to phyllite, a general term for minerals with a layered crystal structure."
+    ],
+    [
+     "Plagioclastic (Plagioclase)",
+     "pertaining to a plagioclase, any of a group of minerals within the feldspar family containing sodium and calcium feldspars."
+    ],
+    [
+     "Plutonic (Pluton)",
+     "pertaining to a pluton, a body of medium to coarse grained igneous rock that formed beneath the surface by crystallization of a magma"
+    ],
+    [
+     "Porphyric (Porphyry)",
+     "pertaining to porphyry, an igneous rock of any composition that contains conspicuous phenocrysts in a fine-grained groundmass."
+    ],
+    [
+     "Pyroclastic",
+     "produced by explosive or aerial ejection of ash, fragments, and glassy material from a volcanic vent. Applied to the rocks and rock layers as well as to the textures so formed."
+    ],
+    [
+     "Pyritic (Pyrite)",
+     "pertaining to pyrite, a bronze to yellow colored mineral containing high quantities of sulfur, commonly known as fool\u2019s gold or iron sulfide."
+    ],
+    [
+     "Quartz",
+     "any hard gold or silver ore, as distinguished from gravel or earth."
+    ],
+    [
+     "Quaternary",
+     "a geological period extending between 2 to 3 million years ago to the present."
+    ],
+    [
+     "Rhyolitic (Rhyolite)",
+     "pertaining to rhyolite, a commonly occurring variety of extrusive igneous rock."
+    ],
+    [
+     "Sediment",
+     "any particulate matter that can be transported by fluid flow and which eventually is deposited as a layer of solid particles on the bed or bottom of a body of water or other liquid."
+    ],
+    [
+     "Sericite",
+     "a white, fine-grained mineral occurring as an alteration product of  aluminum minerals, having a silky luster"
+    ],
+    [
+     "Silica/Silicate",
+     "any of  numerous insoluble often complex metal salts that contain silicon and oxygen and constitute the largest class of minerals. They are used in building materials such as cement, bricks and glass."
+    ],
+    [
+     "Silicification",
+     "the introduction of, or replacement by, silica, generally resulting in the formation of fine-grained quartz, or opal, which may fill pores and replace existing minerals."
+    ],
+    [
+     "Tertiary",
+     "a geological period that extends approximately 65 million to 1.8 million years ago."
+    ],
+    [
+     "Tectonic Pit",
+     "a pit created by the shifting plates that form the earth\u2019s crust"
+    ],
+    [
+     "Tonalitic (Tonalite)",
+     "pertaining to tonalite, an igneous, plutonic rock generally containing more than 20% quartz."
+    ],
+    [
+     "Tuff",
+     "a type of rock formed from volcanic ash ejected from vents during a volcanic eruption and forming on mountain walls."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 269,
+    "end_line": 394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Intellectual Property\nWe have not filed for any protection of our trademark for Dana Resources. We own the copyright of all of the contents of our website, www.danaresources.com.\nItem 1A. Risk Factors\nNot Applicable.\nItem 1B. Unresolved Staff Comments\nNone.\nItem 2. Description of Property\nMineral Properties\nOn June 3, 2008, we completed the purchase of 19 patented and unpatented base and precious metal mining properties located in the provinces of Chumbivilcas, Recuay, Piura, Huaytara, Pallasca, and Huancabamba, Peru, from SMRL Angelo XXI, a Peruvian corporation. The properties are listed in the following tables and described below. Maps of the area and comprehensive information regarding prior exploration of the properties are unavailable at this time.\nGlossary:",
+   "prose_after": "Collota Project",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "COLLOTA XXIII",
+     "01-01806-06",
+     "600",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXIV",
+     "01-02017-06",
+     "100",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXV",
+     "01-01876-06",
+     "300",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXVI",
+     "01-03421-06",
+     "200",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXVII",
+     "01-03438-06",
+     "300",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXVIII",
+     "01-03437-06",
+     "400",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 399,
+    "end_line": 415
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Collota Project",
+   "prose_after": "Location: The Collota project is located in northern Peru, in the District of Catac, province of Recuay, department of Ancash, on the eastern side of the Cordillera Negra mountain range, within the same location as the landmark Pierina gold mine operated by Barrick Gold. The project is 45 km south of the city of Huaraz, lying at an elevation between 4,100 and 4,600 meters above sea level. The project consists of 6 mining properties which cover a total surface area of 1900 hectares or 4694.9 acres.\nThe area is accessible from Lima by traveling through Lima, Huaraz, Conococha, Pumahuain, and Collota by combination of highway (Panamericana (North), paved secondary road and variable compacted mining road.\nGeological Environment: The geology of the properties consists mainly of volcanic and intrusive rocks belonging to the Calipuy Group of the Upper Tertiary. The surface environment consists of tuffs, lapilli, ignimbrites, ash flows and dacitic-rhyolitic blocks probably coming from an extensive magmatic chamber and deposits of glacial flows from the Quaternary.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "COLLOTA XXIX",
+     "01-04368-07",
+     "400",
+     "Marca, Huayllapampa and Tapacocha",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXXI",
+     "03-00001-08",
+     "200",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXXII",
+     "03-00002-08",
+     "200",
+     "Catac",
+     "Recuay",
+     "Ancash"
+    ],
+    [
+     "COLLOTA XXI",
+     "01-00448-05",
+     "800",
+     "Catac, Huayllapampa, Marca and Tapacocha",
+     "Recuay",
+     "Ancash"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 442
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Mineralization: Collota is a gold epithermal deposit, similar to the type of deposit of the Pierina and Yanacocha mines, associated with porphyry Cu-Au. The mineralization is controlled by hydrothermal breccias with silicification and iron oxides (hematite \u2013 goethite) which have settled in fractures, faults and layers of tuffs with quartz-kaolinite and quartz-sericite alteration. Structurally there are parallel faults bearing towards the Andes which form the tectonic pit known as Callejon de Huaylas, controlled by hydrothermal breccias with silicification and iron oxides (hematite \u2013 goethite), which have settled in fractures, faults and tuff strata with quartz-Kaolinite and quartz-sericite alteration.\nThis is a quartz-alunite and quartz-alunite-kaolinite and argillic epithermal mineralization containing high quantities of pyrite. In the high area of the Quebrada Pumahuain the alteration varies to phyllitic, quartz-sericite-illite and may be related to a Cu-Au porphyry.\nCollota One Project",
+   "prose_after": "Location: The Collota One project consists of four mining properties located in northern Peru, reaching the Districts of Catac, Huayllapampa, Marca and Tapacocha in province of Recuay, department of Ancash. The project\u2019s elevation varies between 4400 and 4600 meters above sea level and is accessible by a combination of road (paved and compacted) and foot travel, approximately 3 hours from the town of Huayllapampa.\nGeological Environment: The project\u2019s geology consists mainly of volcanic rocks of the Calipuy Group (Tertiary Period). At the higher areas there is a predominance of pyroclastic volcanic rocks, sequences of andesitic and dacitic lavas which appear as lapilli tuffs of intermediate composition, between andesitic and dacitic tuffs, mostly of a greenish grey color.\nLocroja Project",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 459,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "LOCROJA XXI",
+     "03-00141-04",
+     "200",
+     "Santo Domingo de Capillas",
+     "Huaytar\u00e1",
+     "Huancavelica"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 449,
+    "end_line": 455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Location: The Collota One project consists of four mining properties located in northern Peru, reaching the Districts of Catac, Huayllapampa, Marca and Tapacocha in province of Recuay, department of Ancash. The project\u2019s elevation varies between 4400 and 4600 meters above sea level and is accessible by a combination of road (paved and compacted) and foot travel, approximately 3 hours from the town of Huayllapampa.\nGeological Environment: The project\u2019s geology consists mainly of volcanic rocks of the Calipuy Group (Tertiary Period). At the higher areas there is a predominance of pyroclastic volcanic rocks, sequences of andesitic and dacitic lavas which appear as lapilli tuffs of intermediate composition, between andesitic and dacitic tuffs, mostly of a greenish grey color.\nLocroja Project",
+   "prose_after": "Location: The Locroja project consists of one property located in southern Peru, district of Santo Domingo de Cappelle, province of Huaytar\u00e1, department of Huancavelica. It is accessible via the Panamericana (south) highway from the city of Ica followed by a combination of paved and compacted roads.\nGeological Environment: The geology of the Locroja project belongs to Arequipa segment sector, which is part of Batolito de la Costa compound by plutons (tonalite-monzonite-granodiorite-granite) and middle bodies of diorites and basalt. The property is covered by medium grain volcanic rocks, of acid composition (granite to tonalite).\nLas Horquetas Project",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 459,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "ELMER XXII",
+     "01-0102679-07",
+     "900",
+     "Las Lomas",
+     "Sullana",
+     "Piura"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 464,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Location: The Locroja project consists of one property located in southern Peru, district of Santo Domingo de Cappelle, province of Huaytar\u00e1, department of Huancavelica. It is accessible via the Panamericana (south) highway from the city of Ica followed by a combination of paved and compacted roads.\nGeological Environment: The geology of the Locroja project belongs to Arequipa segment sector, which is part of Batolito de la Costa compound by plutons (tonalite-monzonite-granodiorite-granite) and middle bodies of diorites and basalt. The property is covered by medium grain volcanic rocks, of acid composition (granite to tonalite).\nLas Horquetas Project",
+   "prose_after": "Location: This Las Horquetas Project consists of one mineral property located in northern Peru, at the town of Las Horquetas in the Las Lomas District, Province of Sullana, Department of Piura. The project is approximately 1108 kilometers from Lima, resting at an elevation between 184 to 250 meters above sea level. It is accessible by the Panamericana (north) highway from Lima followed by a series of paved and variable compacted dirt roads.\nGeological Environment: The property is located in the central part of the Las Lomas plutonic complex. Las Lomas has been intruded completely by monzonite/granite. This is a whitish-grey coarse-grained rock with interwoven whitish plagioclase phenocrysts and flat hornblendes also interwoven in netlike shapes; some biotite crystals can be seen. The hornblende is thinly flaked and flexible. The tonalitic composition of the pluton varies towards the centre turning more clear and having a crystalline granular texture with a coarser grain and containing zoned plagioclases and a greater quantity of quartz.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "INFIERNILLO XXI",
+     "01-00594-07",
+     "1000",
+     "Chamaca",
+     "Chumbivilcas",
+     "Cuzco"
+    ],
+    [
+     "INFIERNILLO XXII",
+     "01-00847-07",
+     "952.29",
+     "Chamaca",
+     "Chumbivilcas",
+     "Cuzco"
+    ],
+    [
+     "INFIERNILLO XXIII",
+     "01-00847-07",
+     "1000",
+     "Chamaca",
+     "Chumbivilcas",
+     "Cuzco"
+    ],
+    [
+     "INFIERNILLO XXIV",
+     "01-0848-07",
+     "800",
+     "Chamaca",
+     "Chumbivilcas",
+     "Cuzco"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 477,
+    "end_line": 489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Location: This Las Horquetas Project consists of one mineral property located in northern Peru, at the town of Las Horquetas in the Las Lomas District, Province of Sullana, Department of Piura. The project is approximately 1108 kilometers from Lima, resting at an elevation between 184 to 250 meters above sea level. It is accessible by the Panamericana (north) highway from Lima followed by a series of paved and variable compacted dirt roads.\nGeological Environment: The property is located in the central part of the Las Lomas plutonic complex. Las Lomas has been intruded completely by monzonite/granite. This is a whitish-grey coarse-grained rock with interwoven whitish plagioclase phenocrysts and flat hornblendes also interwoven in netlike shapes; some biotite crystals can be seen. The hornblende is thinly flaked and flexible. The tonalitic composition of the pluton varies towards the centre turning more clear and having a crystalline granular texture with a coarser grain and containing zoned plagioclases and a greater quantity of quartz.\nInfernillo Project",
+   "prose_after": "Location: The Infernillo project consists of four properties located approximately 76 km north east of Santo Tom\u00e1s, district of Chamaca, Province of Chumbivilcas, Department of Cusco, at an elevation of 4000 meters above sea level. The property is approximately 1315 kilometers from Lima, and is accessible by a combination of paved highway, paved secondary roads and compacted back roads.\nGeology:\nThe oldest rocks in the area correspond to a sequence of white quartzite of the Yura Group, locally known as the Mara Formation of the Middle Cretaceous. Overlying the Mara formation there is a series of grey to bluish grey limestone belonging to the Ferrobamba Formation of the Middle Cretaceous. The volcanic material formed by the lava spills of an andesitic nature and white, porous tuffs cover the above described rocks. There are diorite and granodiorite bodies and sometimes hornblende, intruding in the sedimentary rocks which in some places form magnetite-hematite bodies. Intense erosion occurred at a later date which formed the fill material of the Quebradas (ravines) and plains.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "TURMALINA XXII",
+     "01-04120-06",
+     "199.9",
+     "Canchaque and San Miguel De El Faique",
+     "Huancabamba",
+     "Piura"
+    ],
+    [
+     "TURMALINA XXIV",
+     "01-05039-06",
+     "400",
+     "Canchaque and San Miguel de El Faique",
+     "Huancabamba",
+     "Piura"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 500,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "Location: The Infernillo project consists of four properties located approximately 76 km north east of Santo Tom\u00e1s, district of Chamaca, Province of Chumbivilcas, Department of Cusco, at an elevation of 4000 meters above sea level. The property is approximately 1315 kilometers from Lima, and is accessible by a combination of paved highway, paved secondary roads and compacted back roads.\nGeology:\nThe oldest rocks in the area correspond to a sequence of white quartzite of the Yura Group, locally known as the Mara Formation of the Middle Cretaceous. Overlying the Mara formation there is a series of grey to bluish grey limestone belonging to the Ferrobamba Formation of the Middle Cretaceous. The volcanic material formed by the lava spills of an andesitic nature and white, porous tuffs cover the above described rocks. There are diorite and granodiorite bodies and sometimes hornblende, intruding in the sedimentary rocks which in some places form magnetite-hematite bodies. Intense erosion occurred at a later date which formed the fill material of the Quebradas (ravines) and plains.\nTurmalina Project",
+   "prose_after": "Location: The Turmalina Project consists of two properties touching upon the districts of Canchaque and San Miguel De El Faique (known as the Cerro Minas region) province of Huancabamba, Department of Piura, at an average elevation of 2,840 meters above sea level. Both properties are located within the limits of the farming communities Agua Blanca Community (approximately 100 inhabitants and Pampa de Minas Community (approximately 150 inhabitants). The properties are accessible from the city of Huancabamba by series of paved and compacted road.\nThe topography of the area is very rugged. The main cause of the intensive erosion is probably the Los Potreros or Suri Pite rivers, which have caused a marked slope in the northern side of the claims rendering access impossible to that part of the area. The elevations differ within a short space, going from 1000 m to 3200 meters above sea level. Vegetation and recent soil deposits are abundant in the area and some places are covered, and the outcroppings cannot be observed. Water is abundant and is available almost every month of the year. Three lines of electric current provide reliable power sources. The lines are accessible from the mineral deposit.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 497,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Code No.",
+     "Surface Area (Hectares)",
+     "District",
+     "Province",
+     "Department"
+    ],
+    [
+     "ORO CHICAMA XXI",
+     "01-00596-07",
+     "1000",
+     "Bolognesi",
+     "Pallasca",
+     "Ancash"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 519,
+    "end_line": 525
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property"
+    },
+    "note": null
+   },
+   "prose_before": "The topography of the area is very rugged. The main cause of the intensive erosion is probably the Los Potreros or Suri Pite rivers, which have caused a marked slope in the northern side of the claims rendering access impossible to that part of the area. The elevations differ within a short space, going from 1000 m to 3200 meters above sea level. Vegetation and recent soil deposits are abundant in the area and some places are covered, and the outcroppings cannot be observed. Water is abundant and is available almost every month of the year. Three lines of electric current provide reliable power sources. The lines are accessible from the mineral deposit.\nGeology: The rocks found in and around the area of the claims consist mainly of hyalites and andesitic volcanic rocks, which have been affected by a granite-dioritic intrusive. The phyllites are the oldest rocks in the area and are found in Canchaque, west of the claim. These phyllites belong to the Salas Formation of the Lower Paleozoic Period. Towards the eastern part of the claim there is an outcropping of a strong andesitic volcanic sequence, some of which is in pyrite form and in other sectors it was found fresh or in silicate form. Both of the above described units have been intruded by a body as a small medium to coarse grained granite-dioritic stock. Towards the West of the Canchaque site, there are sediments which consist of sandstone and sandstone surrounded by silicates which have been totally folded and faulted.\nChicama Project",
+   "prose_after": "Location: The Chicama Gold prospect is located within the mining district of Bolognesi, in the Province of Pallasca, department of Ancash, in northern Peru. It is accessible by paved and variable compacted roads from the city of Bolognesi.\nGeology: The property presents a volcanic sequence of andesitic spills and tuffs of the Calipuy Group in contact with the Goyllarizquizga Mountain Group (Chulec and Carhuaz Formations) and the Chicama Formation from the Jurassic Period.\nItem 3. Legal Proceedings\nWe know of no material, active or pending legal proceedings against us, nor are we involved as a plaintiff in any material proceedings or pending litigation. There are no proceedings in which any of our directors, officers or affiliates, or any registered or beneficial shareholders are an adverse party or have a material interest adverse to us.\nItem 4. Submission of Matters to a Vote of Security Holders\nOn September 22, 2008, without the formality of convening a meeting, we received approval from holders of 51.9% of our common voting shares to change the par value of our common and preferred shares from $0 to $0.001 per share.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "High",
+     "L[ ]w"
+    ],
+    [
+     "July 1, 2008 \u2013 September 25, 2008",
+     "$1.75",
+     "$0.70"
+    ],
+    [
+     "April 1, 2008 \u2013 June 30, 2008",
+     "$2.25",
+     "$1.00"
+    ],
+    [
+     "January 1, 2008 \u2013 March 31, 2008",
+     "$2.00",
+     "$0.12"
+    ],
+    [
+     "October 1, 2007 \u2013 December 31, 2007",
+     "$0.0029",
+     "$0.0029"
+    ],
+    [
+     "September 1, 2007 \u2013 September 30, 2007",
+     "$0.00",
+     "$0.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 550,
+    "end_line": 564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "There is a limited public market for our common shares. Our common shares are quoted for trading on the OTC Bulletin Board under the symbol \u201cDANR.OB\u201d. Our common shares became eligible for quotation on the OTC Bulletin Board in September, 2007. The market for our stock is highly volatile. We cannot assure you that there will be a market in the future for our common stock. The OTC Bulletin Board securities are not listed and traded on the floor of an organized national or regional stock exchange. Instead, OTC Bulletin Board securities transactions are conducted through a telephone and computer network connecting dealers in stocks. OTC Bulletin Board stocks are traditionally smaller companies that do not meet the financial and other listing requirements of a regional or national stock exchange.\nThe following table shows the high and low prices of our common shares on the OTC Bulletin Board since our common stock began quotation in September, 2007. The following quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not necessarily represent actual transactions:",
+   "prose_after": "Stockholders\nAs of September 25, 2008, there were 75,280,710 common shares outstanding, held by approximately 28 shareholders of record. To date, we have not paid any cash dividends on our common shares and do not expect to declare or pay any cash dividends on our common shares in the foreseeable future. Payment of any cash dividends will depend upon future earnings, if any, our financial condition, and other factors as deemed relevant by our Board of Directors.\nDividend Policy\nWe have not declared or paid any cash dividends since inception. We intend to retain future earnings, if any, for use in the operation and expansion of our business and do not intend to pay any cash dividends in the foreseeable future.\nRecent Purchases of Equity Securities by us and our Affiliated Purchases\nWe have not repurchased any of our common stock and have no publicly announced repurchase plans or programs as of September 25, 2008.\nRecent Sales of Unregistered Securities\nOn May 8, 2008, we issued 25,000,000 restricted common shares valued at $1.15 per share to two non-U.S. individuals for the purchase of 19 patented and unpatented mining concessions pursuant to the Agreement for the Assignment of Mining Rights between us and Angelo XXI entered into on June 3, 2008, which agreement replaced the letter of intent between us and Angelo XXI entered into on March 8, 2008 as disclosed in our report on Form 8-K filed on March 13, 2008. The total value of the transaction was $28,750,000, based on the closing price of our common stock as quoted on the OTC Bulletin Board on June 3, 2008.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 539,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DANA RESOURCES",
+     "",
+     ""
+    ],
+    [
+     "(An Exploration Stage Company)",
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "",
+     ""
+    ],
+    [
+     "(AUDITED)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2008",
+     "June 30, 2007"
+    ],
+    [
+     "ASSETS",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$ 23,466",
+     "$ 484"
+    ],
+    [
+     "Total current assets",
+     "23,466",
+     "484"
+    ],
+    [
+     "Mineral rights",
+     "9,350,000",
+     "-"
+    ],
+    [
+     "Total assets",
+     "$ 9,373,466",
+     "$ 484"
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$ 773",
+     "$ -"
+    ],
+    [
+     "Accounts payable (related party)",
+     "7,679",
+     "23,800"
+    ],
+    [
+     "Accrued expenses",
+     "37,847",
+     "13,160"
+    ],
+    [
+     "Total current liabilities",
+     "46,299",
+     "36,960"
+    ],
+    [
+     "Total liabilities",
+     "46,299",
+     "36,960"
+    ],
+    [
+     "STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; $.001 par value; unlimited authorized; none issued and outstanding",
+     "-",
+     "-"
+    ],
+    [
+     "Common stock; $.001 par value; unlimited authorized 75,280,710 (2008) issued and outstanding; 1,120,000,000 (2007)",
+     "75,281",
+     "1,120,000"
+    ],
+    [
+     "Additional paid in capital",
+     "29,951,810",
+     "500"
+    ],
+    [
+     "Subscriptions receivable",
+     "-",
+     "(11,000)"
+    ],
+    [
+     "Deficit accumulated during the exploration stage",
+     "(20,699,924)",
+     "(1,145,976)"
+    ],
+    [
+     "Total stockholders' equity (deficit)",
+     "9,327,167",
+     "(36,476)"
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "$ 9,373,466",
+     "$ 484"
+    ]
+   ],
+   "caption_stack": [
+    "DANA RESOURCES",
+    "(An Exploration Stage Company)",
+    "BALANCE SHEETS",
+    "(AUDITED)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Dana Resources as of June 30, 2008 and 2007, and the results of its operations and cash flows for the year ended June 30, 2008 and the periods from July 21, 2006 (inception) through June 30, 2007 and 2008 in conformity with U.S. generally accepted accounting principles.\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations, which raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nDe Joya Griffith & Company, LLC\n/s/ De Joya Griffith & Company, LLC\nHenderson, Nevada\nSeptember 29, 2008\n2580 Anthem Village Drive, Henderson, NV 89052\nTelephone (702) 588-5960 \u25cf Facsimile (702) 588-5979",
+   "prose_after": "The Accompanying Notes are an Integral Part of these Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DANA RESOURCES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(An Exploration Stage Company)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(AUDITED)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "July 21, 2006",
+     "July 21, 2006"
+    ],
+    [
+     "",
+     "Year Ended",
+     "(Inception)",
+     "(Inception)"
+    ],
+    [
+     "",
+     "June 30, 2008",
+     "Through June 30, 2007",
+     "Through June 30, 2008"
+    ],
+    [
+     "Revenues",
+     "$ -",
+     "$ -",
+     "$ -"
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "112,355",
+     "41,976",
+     "154,331"
+    ],
+    [
+     "Mining Expenses",
+     "25,000",
+     "-",
+     "25,000"
+    ],
+    [
+     "Land claim fees",
+     "22,253",
+     "-",
+     "22,253"
+    ],
+    [
+     "Total expenses",
+     "159,608",
+     "41,976",
+     "201,584"
+    ],
+    [
+     "Loss from operations",
+     "(159,608)",
+     "(41,976)",
+     "(201,584)"
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on debt settlement",
+     "5,660",
+     "-",
+     "5,660"
+    ],
+    [
+     "Loss on impairment",
+     "(19,400,000)",
+     "-",
+     "(19,400,000)"
+    ],
+    [
+     "Total other income (expense)",
+     "(19,394,340)",
+     "-",
+     "(19,394,340)"
+    ],
+    [
+     "Net loss",
+     "$ (19,553,948)",
+     "$ (41,976)",
+     "$(19,595,924)"
+    ],
+    [
+     "Net loss per share basic",
+     "$ (0.03)",
+     "$ (0.00)",
+     ""
+    ],
+    [
+     "Weighted average number of shares",
+     "729,395,879",
+     "1,120,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "DANA RESOURCES",
+    "(An Exploration Stage Company)",
+    "STATEMENTS OF OPERATIONS",
+    "(AUDITED)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 727,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Accompanying Notes are an Integral Part of these Financial Statements.",
+   "prose_after": "The Accompanying Notes are an Integral Part of these Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 726,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DANA RESOURCES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(An Exploration Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(AUDITED)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "Common",
+     "Deficit Accumulated",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "Preferred Stock",
+     "Common Stock",
+     "Common Stock",
+     "Paid-In",
+     "Stock",
+     "During the",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Value",
+     "Shares",
+     "Value",
+     "Capital",
+     "Subscribed",
+     "Exploration Stage",
+     "Total"
+    ],
+    [
+     "Balance at  Inception July 21, 2006",
+     "-",
+     "$-",
+     "-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "Stock issued for cash and subscription receivable",
+     "-",
+     "-",
+     "1,120,000,000",
+     "1,120,000",
+     "-",
+     "(11,000)",
+     "(1,104,000)",
+     "5,000"
+    ],
+    [
+     "Forgiveness of debt - related party",
+     "-",
+     "-",
+     "-",
+     "-",
+     "500",
+     "",
+     "",
+     "500"
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(41,976)",
+     "(41,976)"
+    ],
+    [
+     "Balance at June 30, 2007",
+     "-",
+     "-",
+     "1,120,000,000",
+     "1,120,000",
+     "500",
+     "(11,000)",
+     "(1,145,976)",
+     "(36,476)"
+    ],
+    [
+     "Shares cancelled",
+     "-",
+     "-",
+     "(1,069,799,290)",
+     "(1,069,799)",
+     "1,069,799",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Proceeds from subscription",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "11,000",
+     "-",
+     "11,000"
+    ],
+    [
+     "Contributed capital",
+     "-",
+     "-",
+     "-",
+     "-",
+     "15,272",
+     "-",
+     "-",
+     "15,272"
+    ],
+    [
+     "Fogiveness of debt - related party",
+     "-",
+     "-",
+     "-",
+     "-",
+     "51,319",
+     "-",
+     "-",
+     "51,319"
+    ],
+    [
+     "Shares issued for mineral rights",
+     "-",
+     "-",
+     "25,000,000",
+     "25,000",
+     "28,725,000",
+     "-",
+     "-",
+     "28,750,000"
+    ],
+    [
+     "Shares issued for cash",
+     "-",
+     "-",
+     "80,000",
+     "80",
+     "79,920",
+     "-",
+     "-",
+     "80,000"
+    ],
+    [
+     "Contributed capital - mining expenses",
+     "-",
+     "-",
+     "-",
+     "-",
+     "10,000",
+     "-",
+     "-",
+     "10,000"
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(19,553,948)",
+     "(19,553,948)"
+    ],
+    [
+     "Balance at June 30, 2008",
+     "-",
+     "$-",
+     "75,280,710",
+     "$75,281",
+     "$29,951,810",
+     "-",
+     "$(20,699,924)",
+     "$9,327,167"
+    ]
+   ],
+   "caption_stack": [
+    "DANA RESOURCES",
+    "(An Exploration Stage Company)",
+    "STATEMENT OF STOCKHOLDERS' EQUITY (DEFICIT)",
+    "(AUDITED)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 766,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Accompanying Notes are an Integral Part of these Financial Statements.",
+   "prose_after": "The Accomanying Notes are an Integral Part of these Financial Statements\n<TABLE>\nDANA RESOURCES\n(An Exploration Stage Company)\nSTATEMENTS OF CASH FLOWS\n(AUDITED)\nJuly 21, 2006\nYear Ended     July 21,     (Inception)\nThrough\n(Inception)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DANA RESOURCES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(An Exploration Stage Company)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(AUDITED)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "July 21, 2006"
+    ],
+    [
+     "",
+     "Year Ended",
+     "July 21, 2006\n\n(Inception)",
+     "(Inception)\n\nThrough"
+    ],
+    [
+     "",
+     "June 30, 2008",
+     "June 30, 2007",
+     "June 30, 2008"
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$(19,553,948)",
+     "$ (41,976)",
+     "$ (19,595,924)4)"
+    ],
+    [
+     "Adustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment of mineral rights",
+     "19,400,000",
+     "-",
+     "19,400,000"
+    ],
+    [
+     "Gain on settlement of debt",
+     "(5,660)",
+     "",
+     "(5,660)"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "773",
+     "-",
+     "773"
+    ],
+    [
+     "Accounts payable (related party)",
+     "40,858",
+     "24,300",
+     "65,158"
+    ],
+    [
+     "Accrued expenses",
+     "24,687",
+     "13,160",
+     "37,847"
+    ],
+    [
+     "Net cash used by operating activities",
+     "(93,290)",
+     "(4,516)",
+     "(97,806)"
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from promissory notes",
+     "4,730",
+     "-",
+     "4,730"
+    ],
+    [
+     "Payment made as settlement of promissory notes",
+     "(4,730)",
+     "-",
+     "(4,730)"
+    ],
+    [
+     "Contributed of capital",
+     "25,272",
+     "-",
+     "25,272"
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "91,000",
+     "5,000",
+     "96,000"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "116,272",
+     "5,000",
+     "121,272"
+    ],
+    [
+     "Change in cash",
+     "22,982",
+     "484",
+     "23,466"
+    ],
+    [
+     "Beginning cash",
+     "484",
+     "-",
+     "-"
+    ],
+    [
+     "Ending cash",
+     "$ 23,466",
+     "$ 484",
+     "$ 23,466"
+    ],
+    [
+     "Supplemental Disclosures",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid For:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$ -",
+     "$ -",
+     "$ -"
+    ],
+    [
+     "Income taxes",
+     "$  -",
+     "$ -",
+     "$ -"
+    ],
+    [
+     "Schedule of Non-Cash Investing and Financing Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of debt (related party)",
+     "$ 51,319",
+     "$ 500",
+     "$ 51,819"
+    ],
+    [
+     "Issuance of common stock for mineral rights",
+     "$ 28,750,000",
+     "$ -",
+     "$28,750,000"
+    ]
+   ],
+   "caption_stack": [
+    "DANA RESOURCES",
+    "(An Exploration Stage Company)",
+    "STATEMENTS OF CASH FLOWS",
+    "(AUDITED)",
+    "July 21, 2006"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "2007"
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$ 58,115",
+     "$ 14,272"
+    ],
+    [
+     "Total deferred tax assets",
+     "58,115",
+     "14,272"
+    ],
+    [
+     "Less: Valuation Allowance",
+     "(58,115)",
+     "(14,272)"
+    ],
+    [
+     "Net Deferred Tax Assets",
+     "$ -",
+     "$ -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 980,
+    "end_line": 991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "In July 2006, the Board of Directors adopted and the stockholders at that time approved the 2006 Stock Option Plan (\"the Plan\"). The Plan provides for the granting of qualified and non-qualified stock options to issue up to 2,000,000 shares of common stock to directors, officers, advisors and employees of the Company as well as to employees of companies that do business with the Company. Awards under the plan will be granted as determined by the Stock Option Committee of the Board of Directors. The Plan limits awards to directors, officers and employees to $100,000 of compensation per year. The options will expire after 10 years or 5 years if the option holder owns at least 10% of the common stock of the Company. The exercise price of a non-qualified option must be at least 85% of the market price. The exercise price of a qualified option must be at least equal to the market price or 110% of the market price if the option holder owns at least 10% of the common stock of the Company. At June 30, 2008, no awards had been made and total awards available to be granted from the Plan amounted to 2,000,000 shares.\n5. Notes Payable\nOn April 22, 2008, the Company received loans of $1,800 and $2,930 bearing interest at 5% per annum and due on April 22, 2009. As of June 30, 2008, these loans have been paid in full.\n6. Income Taxes\nAt June 30, 2008 and 2007, the Company had a federal operating loss carryforward of approximately $171,000 and $42,000, respectively, which begins to expire in 2026. The provision for income taxes are $0, for the years ended June 30, 2008 and 2007.\nComponents of net deferred tax assets, including a valuation allowance, are as follows at June 30:",
+   "prose_after": "6. Income Taxes (Continued)\nThe valuation allowance for deferred tax assets as of June 30, 2008 and 2007 was $58,115 and $14,272, respectively. In assessing the recovery of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income in the periods in which those temporary differences become deductible. Management considers the scheduled reversals of future deferred tax liabilities, projected future taxable income, and tax planning strategies in making this assessment. As a result, management determined it was more likely than not the deferred tax assets would not be realized as of June 30, 2008 and 2007, and recorded a full valuation allowance.\nReconciliation between the statutory rate and the effective tax rate is as follows for the years ended June 30:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 962,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2008",
+     "2007"
+    ],
+    [
+     "Federal statutory tax rate",
+     "(34)%",
+     "(34)%"
+    ],
+    [
+     "Change in valuation allowance",
+     "34%",
+     "34%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 999,
+    "end_line": 1007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "6. Income Taxes (Continued)\nThe valuation allowance for deferred tax assets as of June 30, 2008 and 2007 was $58,115 and $14,272, respectively. In assessing the recovery of the deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income in the periods in which those temporary differences become deductible. Management considers the scheduled reversals of future deferred tax liabilities, projected future taxable income, and tax planning strategies in making this assessment. As a result, management determined it was more likely than not the deferred tax assets would not be realized as of June 30, 2008 and 2007, and recorded a full valuation allowance.\nReconciliation between the statutory rate and the effective tax rate is as follows for the years ended June 30:",
+   "prose_after": "7. Related Party Transactions\na) The Company has not had a need to rent office space. An officer/shareholder of the Company is allowing the Company to use his offices, as needed, at no expense to the Company.\nb) An officer and shareholder advanced $1,800 to pay web development costs during the quarter ended March 31, 2007. The same officer and shareholder have accrued salary of $45,000 for the fifteen months ended March 31, 2008 at the rate of $3,000 per month. As of June 30, 2008 the balance due was forgiven.\nc) During the quarter ended March 31, 2008, the outstanding accounts payable, accrued salary and amounts due to related parties were forgiven by some shareholders and treated as contributed capital totaling $51,319.\nd) On May 2, 2008, the Company entered into an agreement with MRC1 Exploraciones to perform an evaluation of the mineral claims witch $10,000 was contributed by the CEO and has waived any rights of repayment.\n(AUDITED) )\n7. Rlated Party Transaction (Continued)\ne) As of June 30, 2008 and 2007, outstanding advances made to the Company by Len De Melt, the Company\u2019s current president, and by a former shareholder/officer, respectively, were $7,679 and $23,800.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1017,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Len De Melt",
+     "62",
+     "Director, President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary, and Treasurer."
+    ],
+    [
+     "Elmer Moses Rosales Castillo (Elmer Rosales)",
+     "54",
+     "Chairman of the Board of Directors"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1118
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Accordingly, the Company concluded that these control deficiencies resulted in a reasonable possibility that a material misstatement of the annual or interim financial statements will not be prevented or detected on a timely basis by the company\u2019s internal controls.\nAs a result of the material weaknesses described above, management has concluded that the Company did not maintain effective internal control over financial reporting as of June 30, 2008 based on criteria established in Internal Control\u2014Integrated Framework issued by COSO.\nDe Joya Griffith & Company LLC, an independent registered public accounting firm, was not required to and has not issued a report concerning the effectiveness of our internal control over financial reporting as of June 30, 2008.\nItem 9B. Other Information\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors and Officers\nAccording to our bylaws, the authorized number of directors of the corporation shall be not less than one and may be as many as set by resolution of the Board of Directors.\nOur current directors and officer are:",
+   "prose_after": "The directors will serve as directors until our next annual shareholder meeting (or, if such meeting is not held, at a special meeting) or until a successor is elected who accepts the position. Officers hold their positions at the will of the Board of Directors. There are no other arrangements, agreements or understandings between non management shareholders and management under which non-management shareholders may directly or indirectly participate in or influence the management of our affairs.\nLen De Melt, Director President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary, and Treasurer.\nMr. De Melt is an engineering technologist and a graduate of the Haileybury School of Mines. He also holds a Bachelor of Arts degree in business and economics and a diploma of mechanical studies from the British Columbia Institute of Technology. He has held management positions with 12 mining companies internationally and was instrumental in starting and building six mines, including Gulf Oil's Rabbit Lake mine (uranium), Syncrude mine (oil sands), Denison Mines' Quintette (coal), Homestake's Golden Bear mine (gold), BHP's Ekati mine (diamonds) and Goldust's Croiner mine (gold). Mr. De Melt is well known within the mining industry and brings nearly 30 years of project management and mine development experience to the company. He was a director of several public and private mining companies, including Norsemont Resources Inc. and Vena Resources Inc. Mr. De Melt is 62 years old, and has been self-employed for the past five years. Mr. De Melt is currently the Chairman and a Director of Nilam Resources Inc (OTCBB: NILR.OB). He does not hold any other directorships in any other companies subject to U.S. reporting requirements. There are no family relationships between Mr. De Melt and any other directors or officers of the Dana Resources.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Annual Compensation",
+     "",
+     "",
+     "Long Term Compensation",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Awards",
+     "",
+     "Payout(s)",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary\n\n$",
+     "Bonus\n\n$",
+     "Stock Awards\n\n$",
+     "Option Awards\n\n$",
+     "Nonequity incentive plan compensation\n\n$",
+     "Nonqualified deferred compensation earnings\n\n$",
+     "All Other\n\nCompensation\n\n$",
+     "Total $"
+    ],
+    [
+     "Yuri Semenov(1)",
+     "2005",
+     "18,000",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "18,000"
+    ],
+    [
+     "",
+     "2006",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "",
+     "2007",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0"
+    ],
+    [
+     "Len De Melt(2)",
+     "2008",
+     "10,000",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "0",
+     "10,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1184,
+    "end_line": 1205
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The functions of the Audit Committee are currently carried out by our Board of Directors. Our Board of Directors has determined that we do not presently need an audit committee financial expert on our Board of Directors carrying out the duties of the Audit Committee. Our Board of Directors has determined that the cost of hiring a financial expert to act as one of our directors and to be a member of the Audit Committee or otherwise perform Audit Committee functions outweighs the benefits of having a financial expert on the Audit Committee.\nItem 11. Executive Compensation.\nThe following Summary Compensation Table sets forth the total annual compensation paid or accrued by us to or for the account of our Directors, President, Chief Executive Officer and Chief Financial Officer during the last three completed fiscal years. No other officers or directors received annual compensation in excess of $100,000 during the last three complete fiscal years. Subsequent to the end of the last fiscal year represented in the table below, on September 3, 2008, we appointed Mr. Elmer Rosales as Chairman of our Board of Directors. Beginning in September 2008, we have agreed to compensate Mr. Rosales $10,000 per month for both his director services and his managerial services in relation to the operation of our Peruvian subsidiary, Dana Resources SAC.\nSummary Compensation Table for Directors and Officers",
+   "prose_after": "(1) Yuri Semenov is our former President, Chief Financial Officer, Secretary and Director.\n(2) Len De Melt is our President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary, Treasurer and Director\nMr. De Melt and Mr. Rosales each spend approximately 30 hours per week on our business. Except for the salaries granted to Mr. De Melt and Mr. Rosales, they do not receive any other compensation as directors or officers or any health, pension or employment benefits.\nManagement and Consulting Agreements\nOn April 29, 2008, we entered into a Management Agreement with our Director, President, Chief Executive Officer, Chief Financial Officer, Len De Melt, regarding Mr. De Melt\u2019s services as our President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary and Treasurer. Pursuant to the agreement, we have agreed to pay to Mr. De Melt $5,000 per month payable at the conclusion of each month during which he provides his management services. Payments to Mr. De Melt are to begin at the end of May, 2008.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1181,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1218,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Owner",
+     "Amount and Nature of Beneficial Ownership",
+     "Percent of Class (1)"
+    ],
+    [
+     "Common",
+     "Yuri Semenov (2)\nPushkinska 20-3\n\nKiev, Ukraine",
+     "10,000,000",
+     "13.28%"
+    ],
+    [
+     "Common",
+     "Jehu Hand (3)\n\n24351 Pasto Road,\n\nSuite B\n\nDana Point, California 92629",
+     "2,000,000   (4)",
+     "2.65%"
+    ],
+    [
+     "Common",
+     "Len De Melt (5)\n810 Malecon Cisneros Miraflores\n\nLima, Peru\n\nR5 18",
+     "12,000,000",
+     "15.94%"
+    ],
+    [
+     "Common",
+     "Elmer Moses Rosales Castillo\n\nCasimiro Espejo 150\n\nSan Isidro, Lima\n\nPeru (6)",
+     "25,000,000 (7)",
+     "33.20%"
+    ],
+    [
+     "",
+     "All Officers and Directors as a Group",
+     "49,000,000",
+     "65.07%"
+    ],
+    [
+     "Total",
+     "",
+     "49,000,000",
+     "65.07%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1245,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We have no standard arrangement pursuant to which our directors are compensated for their services in their capacity as directors. The Board of Directors may award special remuneration to any director undertaking any special services on behalf of our company other than services ordinarily required of a director. No director received and/or accrued any compensation for his services as a director, including committee participation and/or special assignments.\nChange of Control\nAs of September 25, 2008, we had no pension plans or compensatory plans or other arrangements which provide compensation on the event of termination of employment or change in control of our company.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe following table sets forth the ownership, as of September 25, 2008, of our common stock by each of our directors, and by all executive officers and directors as a group, and by each person known to us who is the beneficial owner of more than 5% of any class of our securities. As of September 25, 2008, there were 75,280,710 common shares issued and outstanding. All persons named have sole voting and investment power with respect to the shares, except as otherwise noted. The number of shares described below includes shares which the beneficial owner described has the right to acquire within 60 days of the date of this Annual Report.",
+   "prose_after": "(1) Based on 75,280,710 issued and outstanding shares of common stock as of September 25, 2008 plus common shares issuable to the individual security holder upon exercise of options and warrants.\n(2) Yuri Semenov resigned as our President and Chief Financial Officer as of April 28, 2008, and as our director effective April 29, 2008.\n(3) Jehu Hand resigned as our Secretary as of February 22, 2008.\n(4) Includes 1,000,000 shares held by Ecco Petroleum Family Limited Partnership and1,000,000 shares held by Sheridan Clearing Corporation. To our knowledge, Mr. Hand has voting and dispositive control over securities held by Ecco Petroleum Family Limited Partnership. Sheridan Clearing Corporation is the nominee Arrakis Select Inc. To our knowledge, Mr. Hand has sole voting and dispositive control over securities held by Arrakis Select Inc.\n(5) Len De Melt is our President, Secretary, Treasurer, Chief Executive Officer, Principal Accounting Officer and our director.\n(6) Elmer Moses Rosales Castillo is our director and the Chairman of our Board of Directors",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1240,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description of Service",
+     "Fees (July 1, 2007 to June 30, 2008)\n\n($)",
+     "Fees (July 21, 2006 (Inception) June 30, 2007)\n\n($)"
+    ],
+    [
+     "Audit fees",
+     "20,000",
+     "7,750"
+    ],
+    [
+     "Audit-related fees",
+     "Nil",
+     "Nil"
+    ],
+    [
+     "Tax fees",
+     "Nil",
+     "Nil"
+    ],
+    [
+     "All other fees",
+     "Nil",
+     "Nil"
+    ],
+    [
+     "Total",
+     "20,000",
+     "7,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1333,
+    "end_line": 1350
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Other than as described above, we have not entered into any transactions with our officers, directors, persons nominated for these positions, beneficial owners of 5% or more of our common stock, or family members of these persons wherein the amount involved in the transaction or a series of similar transactions exceeded the lesser of $120,000 or 1% of our total assets for the last one fiscal year.\nDirector Independence\nOur securities are quoted on the OTC Bulletin Board which does not have any director independence requirements. Mr. Len De Melt and Mr. Elmer Rosales are presently our only two directors and do not meet any of the definitions for independent directors. Once we engage further directors and officers, we will develop a definition of independence and scrutinize our Board of Directors with regard to this definition.\nItem 14. Principal Accountant Fees and Services\nAudit, Audit-Related and Non-Audit Fees\nThe following table represents fees for the professional audit services and fees billed for other services rendered by our current auditors, De Joya Griffith & Company LLC, for the audit of our annual financial statements for the years ended June 30, 2008 and June 30, 2007 and any other fees billed for other services rendered De Joya Griffith & Company LLC during that period.",
+   "prose_after": "Part IV\nItem 15. Exhibits and Financial Statement Schedules\na)\n(1) Financial Statements\nSee \u201cIndex to Financial Statements\u201d set forth on page F-1.\n(a)\n(2) Financial Statement Schedules\nNone. The financial statement schedules are omitted because they are inapplicable or the requested information is shown in our financial statements or related notes thereto.\nExhibits",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1296,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1350,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit\n\nDescription"
+    ],
+    [
+     "3.1",
+     "Certificate (Articles) of Incorporation as filed with the Wyoming Secretary of State on July 21, 2006."
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment changing our name from Dana PC Inc., to Dana Resources filed with the Wyoming Secretary of State on February 5, 2008."
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment establishing a par value of 0.001 for our common and preferred stock filed with the Wyoming Secretary of State on September 25, 2008."
+    ],
+    [
+     "10.1",
+     "Letter of Intent between Dana Resources and SMRL Angelo XXI dated March 8, 2008. (1)"
+    ],
+    [
+     "10.2",
+     "Management Agreement between Dana Resources and Len De Melt dated April 29, 2008."
+    ],
+    [
+     "10.3",
+     "Agreement for the Assignment of Mining Rights between Dana Resources and SMRL Angelo XXI date June 3, 2008. (2)"
+    ],
+    [
+     "31.1",
+     "Certification of the Chief Executive Officer and Chief Financial Officer Pursuant to Rule 13a-14 or 15d-14 of the Exchange Act pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1369,
+    "end_line": 1393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Part IV\nItem 15. Exhibits and Financial Statement Schedules\na)\n(1) Financial Statements\nSee \u201cIndex to Financial Statements\u201d set forth on page F-1.\n(a)\n(2) Financial Statement Schedules\nNone. The financial statement schedules are omitted because they are inapplicable or the requested information is shown in our financial statements or related notes thereto.\nExhibits",
+   "prose_after": "(1) Incorporated by reference as exhibit 10.2 of our Report on Form 8-K filed on March 13, 2008.\n(2) Incorporated by reference as exhibit 10.2 of our Report on Form 8-K filed on June 9, 2008.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act, the Registrant has duly caused this Annual Report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1397,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Dana Resources"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: October 14, 2008",
+     "By: /s/ Len De Melt"
+    ],
+    [
+     "",
+     "Len De Melt"
+    ],
+    [
+     "",
+     "President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary, Treasurer and Director"
+    ]
+   ],
+   "caption_stack": [
+    "Dana Resources"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1404,
+    "end_line": 1411
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Incorporated by reference as exhibit 10.2 of our Report on Form 8-K filed on March 13, 2008.\n(2) Incorporated by reference as exhibit 10.2 of our Report on Form 8-K filed on June 9, 2008.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act, the Registrant has duly caused this Annual Report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Exchange Act this Report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Len De Melt\n\nLen De Melt",
+     "President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary, Treasurer and Director",
+     "October 14, 2008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1414,
+    "end_line": 1422
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Exchange Act this Report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

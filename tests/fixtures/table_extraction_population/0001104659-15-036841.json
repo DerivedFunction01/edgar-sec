@@ -1,0 +1,6637 @@
+{
+ "accession": "0001104659-15-036841",
+ "cik": "0001182325",
+ "form": "10-Q",
+ "filing_date": "2015-05-11",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a15-7874_110q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n\n\n(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "06-1571143\n\n\n\n(I.R.S. Employer\n\n\n\nIdentification Number)"
+    ],
+    [
+     "35 Executive Blvd.\n\n\n\nOrange, Connecticut\n\n\n\n(Address of principal executive offices)",
+     "06477\n\n\n\n(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2015\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-35247\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(203) 859-9300\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 39,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I - FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Financial Statements (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of December 31, 2014 and March 31, 2015",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations for the Three Months Ended March 31, 2014 and 2015",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Comprehensive Loss for the Three Months Ended March 31, 2014 and 2015",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statement of Changes in Stockholders\u2019 Equity for the Three Months Ended March 31, 2015",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2014 and 2015",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "46"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "48"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I - FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]               Accelerated filer [X]\nNon-accelerated filer [ ]            Smaller reporting company [ ]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThere were 38,999,522 shares of our common stock outstanding on April 30, 2015.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPRELIMINARY NOTES\nWhen we use the terms \u201cTangoe,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cus\u201d and \u201cour,\u201d we mean Tangoe, Inc. and its consolidated subsidiaries.\nForward-Looking Statements\nThis quarterly report on Form 10-Q contains forward-looking statements that involve substantial risks and uncertainties. All statements, other than statements of historical facts, included in this quarterly report regarding our strategy, future operations, future financial position, future revenue, projected costs, prospects, plans and objectives of management are forward-looking statements. The words \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cplan,\u201d \u201ctarget,\u201d \u201cwould\u201d and similar expressions are intended to identify forward-looking statements, although not all forward-looking statements contain these identifying words. These forward-looking statements include, among other things, statements about:\n\u00b7 our estimates regarding expenses and future revenue;\n\u00b7 our plans to develop, improve and market our products and services;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "51,279",
+     "",
+     "$",
+     "52,543",
+     ""
+    ],
+    [
+     "Accounts receivable, less allowances of $588 and $565, respectively",
+     "",
+     "56,948",
+     "",
+     "",
+     "58,695",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "5,901",
+     "",
+     "",
+     "10,769",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "114,128",
+     "",
+     "",
+     "122,007",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMPUTERS, FURNITURE AND EQUIPMENT-NET",
+     "",
+     "5,217",
+     "",
+     "",
+     "5,280",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets-net",
+     "",
+     "28,753",
+     "",
+     "",
+     "27,063",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "65,348",
+     "",
+     "",
+     "64,857",
+     "",
+     ""
+    ],
+    [
+     "Security deposits and other non-current assets",
+     "",
+     "1,566",
+     "",
+     "",
+     "1,480",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "215,012",
+     "",
+     "$",
+     "220,687",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "10,733",
+     "",
+     "$",
+     "9,584",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "8,283",
+     "",
+     "",
+     "8,931",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue-current portion",
+     "",
+     "10,858",
+     "",
+     "",
+     "10,925",
+     "",
+     ""
+    ],
+    [
+     "Notes payable-current portion",
+     "",
+     "1,400",
+     "",
+     "",
+     "2,288",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "31,274",
+     "",
+     "",
+     "31,728",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred taxes and other non-current liabilities",
+     "",
+     "4,372",
+     "",
+     "",
+     "4,529",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue-less current portion",
+     "",
+     "1,030",
+     "",
+     "",
+     "797",
+     "",
+     ""
+    ],
+    [
+     "Notes payable-less current portion",
+     "",
+     "166",
+     "",
+     "",
+     "2,555",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "36,842",
+     "",
+     "",
+     "39,609",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (NOTE 10)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.0001 per share-150,000,000 shares authorized as of December 31, 2014 and March 31, 2015; 38,621,169 and 38,967,058 shares issued and outstanding as of December 31, 2014 and March 31, 2015, respectively",
+     "",
+     "4",
+     "",
+     "",
+     "4",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "215,491",
+     "",
+     "",
+     "219,180",
+     "",
+     ""
+    ],
+    [
+     "Warrants for common stock",
+     "",
+     "10,610",
+     "",
+     "",
+     "10,610",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(45,859)",
+     "",
+     "",
+     "(45,607)",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(2,076)",
+     "",
+     "",
+     "(3,109)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "178,170",
+     "",
+     "",
+     "181,078",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "$",
+     "215,012",
+     "",
+     "$",
+     "220,687",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 141,
+    "end_line": 197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "We may not actually achieve the plans, intentions or expectations disclosed in our forward-looking statements, and you should not place undue reliance on our forward-looking statements. Actual results or events could differ materially from the plans, intentions and expectations disclosed in the forward-looking statements we make. The important factors discussed below under Part II \u201cOther Information\u201d, Item 1A. \u201cRisk Factors\u201d, among others, could cause actual results or events to differ materially from the forward-looking statements that we make. Our forward-looking statements do not reflect the potential impact of any future acquisitions, mergers, dispositions, joint ventures or investments we may make.\nYou should read this quarterly report and the documents that we have filed as exhibits to this quarterly report with the understanding that our actual future results may be materially different from what we expect. We do not assume any obligation to update any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by law.\nWe expressly qualify in their entirety all forward-looking statements attributable to us or any person acting on our behalf by the cautionary statements contained or referred to in this section.\nPART I - FINANCIAL INFORMATION\nItem 1. Condensed Consolidated Financial Statements\nCondensed Consolidated Balance Sheets\n(in thousands, except share and per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations (unaudited)\n(in thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 135,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring technology and services",
+     "",
+     "$",
+     "45,999",
+     "",
+     "$",
+     "48,916",
+     ""
+    ],
+    [
+     "Strategic consulting, software licenses and other",
+     "",
+     "4,395",
+     "",
+     "",
+     "4,553",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "50,394",
+     "",
+     "",
+     "53,469",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring technology and services",
+     "",
+     "21,398",
+     "",
+     "",
+     "21,630",
+     "",
+     ""
+    ],
+    [
+     "Strategic consulting, software licenses and other",
+     "",
+     "2,334",
+     "",
+     "",
+     "2,245",
+     "",
+     ""
+    ],
+    [
+     "Total cost of revenue",
+     "",
+     "23,732",
+     "",
+     "",
+     "23,875",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "26,662",
+     "",
+     "",
+     "29,594",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "9,945",
+     "",
+     "",
+     "10,374",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "8,788",
+     "",
+     "",
+     "10,103",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "5,129",
+     "",
+     "",
+     "6,127",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "2,607",
+     "",
+     "",
+     "2,052",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "193",
+     "",
+     "",
+     "938",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(37)",
+     "",
+     "",
+     "(64)",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "9",
+     "",
+     "",
+     "9",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "13",
+     "",
+     "",
+     "(2)",
+     "",
+     ""
+    ],
+    [
+     "Income before income tax provision",
+     "",
+     "178",
+     "",
+     "",
+     "881",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "445",
+     "",
+     "",
+     "629",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "$",
+     "(267)",
+     "",
+     "$",
+     "252",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "38,364",
+     "",
+     "",
+     "38,724",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "38,364",
+     "",
+     "",
+     "40,715",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 208,
+    "end_line": 262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations (unaudited)\n(in thousands, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Comprehensive Loss (unaudited)\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 202,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 265,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "$",
+     "(267)",
+     "",
+     "$",
+     "252",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "(158)",
+     "",
+     "",
+     "(1,033)",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "(425)",
+     "",
+     "$",
+     "(781)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 273,
+    "end_line": 287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Comprehensive Loss (unaudited)\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statement of Changes in Stockholders\u2019 Equity (unaudited)\nFor the Three Months Ended March 31, 2015\n(in thousands, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 267,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 290,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Warrants",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2014",
+     "",
+     "38,621,169",
+     "",
+     "$",
+     "4",
+     "",
+     "$",
+     "215,491",
+     "",
+     "$",
+     "10,610",
+     "",
+     "$",
+     "(45,859)",
+     "",
+     "$",
+     "(2,076)",
+     "",
+     "$",
+     "178,170",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "252",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "252",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,033)",
+     "",
+     "",
+     "(1,033)",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares to certain employees",
+     "",
+     "87,117",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,301",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,301",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares from exercise of stock options",
+     "",
+     "182,296",
+     "",
+     "\u2014",
+     "",
+     "",
+     "665",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "665",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares from vesting of restricted stock units",
+     "",
+     "250,752",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "",
+     "(174,276)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,000)",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,723",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,723",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2015",
+     "",
+     "38,967,058",
+     "",
+     "$",
+     "4",
+     "",
+     "$",
+     "219,180",
+     "",
+     "$",
+     "10,610",
+     "",
+     "$",
+     "(45,607)",
+     "",
+     "$",
+     "(3,109)",
+     "",
+     "$",
+     "181,078",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 300,
+    "end_line": 319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statement of Changes in Stockholders\u2019 Equity (unaudited)\nFor the Three Months Ended March 31, 2015\n(in thousands, except share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows (unaudited)\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 292,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "$",
+     "(267)",
+     "",
+     "$",
+     "252",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net (loss) income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "25",
+     "",
+     "",
+     "7",
+     "",
+     ""
+    ],
+    [
+     "Amortization of leasehold interest",
+     "",
+     "(24)",
+     "",
+     "",
+     "(24)",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "2,607",
+     "",
+     "",
+     "2,052",
+     "",
+     ""
+    ],
+    [
+     "(Decrease) increase in deferred rent liability",
+     "",
+     "(31)",
+     "",
+     "",
+     "71",
+     "",
+     ""
+    ],
+    [
+     "Amortization of marketing agreement intangible assets",
+     "",
+     "108",
+     "",
+     "",
+     "161",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubful accounts",
+     "",
+     "30",
+     "",
+     "",
+     "90",
+     "",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "307",
+     "",
+     "",
+     "131",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "4,197",
+     "",
+     "",
+     "5,024",
+     "",
+     ""
+    ],
+    [
+     "Loss on disposal of fixed asset",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities, net of acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(1,593)",
+     "",
+     "",
+     "(2,002)",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "(1,035)",
+     "",
+     "",
+     "(1,458)",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "(340)",
+     "",
+     "",
+     "86",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "183",
+     "",
+     "",
+     "(1,120)",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(807)",
+     "",
+     "",
+     "852",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(283)",
+     "",
+     "",
+     "(138)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "3,077",
+     "",
+     "",
+     "4,001",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of computers, furniture and equipment",
+     "",
+     "(1,218)",
+     "",
+     "",
+     "(794)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,218)",
+     "",
+     "",
+     "(794)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings of debt",
+     "",
+     "177",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Repayment of debt",
+     "",
+     "(276)",
+     "",
+     "",
+     "(226)",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,000)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options and stock warrants",
+     "",
+     "1,172",
+     "",
+     "",
+     "665",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "1,073",
+     "",
+     "",
+     "(1,561)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate on cash",
+     "",
+     "(35)",
+     "",
+     "",
+     "(382)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "2,897",
+     "",
+     "",
+     "1,264",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "43,182",
+     "",
+     "",
+     "51,279",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "",
+     "$",
+     "46,079",
+     "",
+     "$",
+     "52,543",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 330,
+    "end_line": 379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows (unaudited)\n(in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nNotes to Condensed Consolidated Financial Statements (Unaudited)\n1. Organization, Description of Business\nNature of Operations\nTangoe, Inc. (the \u201cCompany\u201d), a Delaware corporation, was incorporated on February 9, 2000 as TelecomRFQ, Inc. During 2001, the Company changed its name to Tangoe, Inc. The Company provides connection lifecycle management software and related services to a wide range of global enterprises and service providers. Connection lifecycle management encompasses the entire spectrum of an enterprise\u2019s connection-based assets and services, such as voice and data services, mobile devices and usage, cloud software, infrastructure and services, machine-to-machine connections, enterprise social and information technology connections, including planning and sourcing, procurement and provisioning, inventory and usage management, mobile device management, real-time telecommunication expense management, invoice processing and payment, expense allocation and accounting and asset decommissioning and disposal. The Company\u2019s on-demand Matrix Solution Suite is a suite of software designed to manage IT expenses and to manage and optimize the complex processes and expenses associated with this connection lifecycle. The Company\u2019s Matrix Solution Suite and related services have historically focused on enterprises\u2019 fixed and mobile connections and related assets, usage, expenses and analytics. The Company continues to enhance and expand its software and service offerings by developing and implementing additional capabilities, including capabilities designed to manage the entire range of an enterprise\u2019s IT expenses, and to turn on, track, manage, secure and support various connections in an enterprise\u2019s connection lifecycle, such as cloud software, infrastructure and services, machine-to-machine, enterprise social and information technology connections. The Company refers to its Matrix Solution Suite and related service offerings as Matrix.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 324,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share amounts)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net (loss) income per common share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "$",
+     "(267)",
+     "",
+     "$",
+     "252",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted-average common shares used to compute basic net (loss) income per share",
+     "",
+     "38,364",
+     "",
+     "",
+     "38,724",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding stock options",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,991",
+     "",
+     ""
+    ],
+    [
+     "Outstanding restricted stock units",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted weighted-average common shares used to compute diluted net (loss) income per share",
+     "",
+     "38,364",
+     "",
+     "",
+     "40,715",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic (loss) income per common share",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted (loss) income per common share",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "0.01",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 440
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization, Description of Business"
+    }
+   },
+   "prose_before": "The consolidated balance sheet at December 31, 2014 has been derived from the audited financial statements at that date, but does not include all of the disclosures required by GAAP. The accompanying condensed consolidated financial statements should be read in conjunction with the consolidated financial statements and notes thereto contained in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2014 as filed with the Securities Exchange Commission (\u201cSEC\u201d) on March 16, 2015 (the \u201c2014 Form 10-K\u201d).\nSignificant Accounting Policies\nThe Company\u2019s significant accounting policies are disclosed in the audited consolidated financial statements for the year ended December 31, 2014 included in the 2014 Form 10-K. Since the date of those financial statements, there have been no material changes to the Company\u2019s significant accounting policies.\n2. (Loss) Income per Share Applicable to Common Stockholders\nThe following table sets forth the computations of (loss) income per share applicable to common stockholders for the three months ended March 31, 2014 and 2015:",
+   "prose_after": "Diluted (loss) income per common share for the periods presented does not reflect the following potential common shares as the effect would be anti-dilutive either because the proceeds under the treasury stock method were in excess of the average fair market value for the period or because the Company had a net loss in the period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding stock options",
+     "",
+     "2,240",
+     "",
+     "3,388",
+     ""
+    ],
+    [
+     "Outstanding restricted stock units",
+     "",
+     "1,020",
+     "",
+     "1,401",
+     ""
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "8",
+     "",
+     "10",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 448
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Organization, Description of Business"
+    }
+   },
+   "prose_before": "Diluted (loss) income per common share for the periods presented does not reflect the following potential common shares as the effect would be anti-dilutive either because the proceeds under the treasury stock method were in excess of the average fair market value for the period or because the Company had a net loss in the period.",
+   "prose_after": "3. Computers, Furniture and Equipment-Net\nComputers, furniture and equipment-net consist of:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computers and software",
+     "",
+     "$",
+     "14,386",
+     "",
+     "$",
+     "15,019",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "1,345",
+     "",
+     "",
+     "1,351",
+     "",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "1,595",
+     "",
+     "",
+     "1,651",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "17,326",
+     "",
+     "",
+     "18,021",
+     "",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(12,109)",
+     "",
+     "",
+     "(12,741)",
+     "",
+     ""
+    ],
+    [
+     "Computers, furniture and equipment-net",
+     "",
+     "$",
+     "5,217",
+     "",
+     "$",
+     "5,280",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Computers, Furniture and Equipment-Net"
+    }
+   },
+   "prose_before": "3. Computers, Furniture and Equipment-Net\nComputers, furniture and equipment-net consist of:",
+   "prose_after": "Computers and software includes equipment under capital leases totaling approximately $2.5 million at each of December 31, 2014 and March 31, 2015. Accumulated depreciation on equipment under capital leases totaled approximately $2.5 million at each of December 31, 2014 and March 31, 2015. Depreciation and amortization expense associated with computers, furniture and equipment for the three months ended March 31, 2014 and 2015 was $0.6 million and $0.7 million, respectively.\n4. Intangible Assets and Goodwill\nThe following table presents the components of the Company\u2019s intangible assets as of December 31, 2014 and March 31, 2015:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 406,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "Average Useful",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "Life (in years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents",
+     "",
+     "$",
+     "1,054",
+     "",
+     "$",
+     "1,054",
+     "",
+     "8.0",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(1,029)",
+     "",
+     "",
+     "(1,035)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents, net",
+     "",
+     "25",
+     "",
+     "",
+     "19",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Technological know-how",
+     "",
+     "14,802",
+     "",
+     "",
+     "14,591",
+     "",
+     "",
+     "6.1",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(10,245)",
+     "",
+     "",
+     "(10,552)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Technological know-how, net",
+     "",
+     "4,557",
+     "",
+     "",
+     "4,039",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "",
+     "37,758",
+     "",
+     "",
+     "37,614",
+     "",
+     "",
+     "8.7",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(19,208)",
+     "",
+     "",
+     "(20,002)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships, net",
+     "",
+     "18,550",
+     "",
+     "",
+     "17,612",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convenants not to compete",
+     "",
+     "1,094",
+     "",
+     "",
+     "1,046",
+     "",
+     "",
+     "2.0",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(1,049)",
+     "",
+     "",
+     "(1,012)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convenants not to compete, net",
+     "",
+     "45",
+     "",
+     "",
+     "34",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Strategic marketing agreement",
+     "",
+     "6,203",
+     "",
+     "",
+     "6,203",
+     "",
+     "",
+     "10.0",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(1,090)",
+     "",
+     "",
+     "(1,252)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Strategic marketing agreement, net",
+     "",
+     "5,113",
+     "",
+     "",
+     "4,951",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tradenames",
+     "",
+     "857",
+     "",
+     "",
+     "834",
+     "",
+     "",
+     "3.8",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(641)",
+     "",
+     "",
+     "(673)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tradenames, net",
+     "",
+     "216",
+     "",
+     "",
+     "161",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trademarks",
+     "",
+     "247",
+     "",
+     "",
+     "247",
+     "",
+     "",
+     "Indefinite",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "$",
+     "28,753",
+     "",
+     "$",
+     "27,063",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Intangible Assets and Goodwill"
+    }
+   },
+   "prose_before": "Computers and software includes equipment under capital leases totaling approximately $2.5 million at each of December 31, 2014 and March 31, 2015. Accumulated depreciation on equipment under capital leases totaled approximately $2.5 million at each of December 31, 2014 and March 31, 2015. Depreciation and amortization expense associated with computers, furniture and equipment for the three months ended March 31, 2014 and 2015 was $0.6 million and $0.7 million, respectively.\n4. Intangible Assets and Goodwill\nThe following table presents the components of the Company\u2019s intangible assets as of December 31, 2014 and March 31, 2015:",
+   "prose_after": "The related amortization expense of intangible assets for the three months ended March 31, 2014 and 2015 was $2.0 million and $1.4 million, respectively. The Company\u2019s estimate of future amortization expense for acquired intangible assets that exist at March 31, 2015 is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "April 1, 2015 to December 31, 2015",
+     "",
+     "$",
+     "4,502",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "5,521",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "",
+     "4,946",
+     "",
+     ""
+    ],
+    [
+     "2018",
+     "",
+     "4,527",
+     "",
+     ""
+    ],
+    [
+     "2019",
+     "",
+     "3,507",
+     "",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "3,813",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "26,816",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 519,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Intangible Assets and Goodwill"
+    }
+   },
+   "prose_before": "The related amortization expense of intangible assets for the three months ended March 31, 2014 and 2015 was $2.0 million and $1.4 million, respectively. The Company\u2019s estimate of future amortization expense for acquired intangible assets that exist at March 31, 2015 is as follows:",
+   "prose_after": "The following table presents the changes in the carrying amounts of goodwill for the three months ended March 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 473,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 533,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Carrying",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2014",
+     "",
+     "$",
+     "65,348",
+     ""
+    ],
+    [
+     "Foreign exchange translation effect",
+     "",
+     "(491)",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2015",
+     "",
+     "$",
+     "64,857",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Carrying"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Intangible Assets and Goodwill"
+    }
+   },
+   "prose_before": "The following table presents the changes in the carrying amounts of goodwill for the three months ended March 31, 2015.",
+   "prose_after": "5. Debt\nAs of December 31, 2014 and March 31, 2015, debt outstanding included the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 535,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HCL-EMS contingent consideration. Payable as described below.",
+     "",
+     "$",
+     "541",
+     "",
+     "$",
+     "541",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred oneTEM purchase price, net of unamortized discount of $37 and $31 at December 31, 2014 and March 31, 2015, respectively. Payable as described below.",
+     "",
+     "235",
+     "",
+     "",
+     "242",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital lease and other obligations",
+     "",
+     "790",
+     "",
+     "",
+     "4,060",
+     "",
+     ""
+    ],
+    [
+     "Total notes payable",
+     "",
+     "$",
+     "1,566",
+     "",
+     "$",
+     "4,843",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "$",
+     "(1,400)",
+     "",
+     "$",
+     "(2,288)",
+     ""
+    ],
+    [
+     "Notes payable, less current portion",
+     "",
+     "$",
+     "166",
+     "",
+     "$",
+     "2,555",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 574
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "5. Debt\nAs of December 31, 2014 and March 31, 2015, debt outstanding included the following:",
+   "prose_after": "Line of Credit\nThe Company has a line of credit of up to $8.0 million based upon 80% of the Company\u2019s eligible accounts receivable with JP Morgan Chase Bank, N.A., which line of credit the Company has not utilized following its initial public offering in August 2011. The line of credit bears interest at the London Inter-Bank Offered Rate plus a 2.0% spread. The line of credit matures in September 2015. As of December 31, 2014 and March 31, 2015, there were no balances outstanding on the line of credit. The line of credit has a financial covenant relative to minimum cash balance requirements and is secured by all of the Company\u2019s tangible and intangible property.\nContingent HCL-EMS Consideration\nThe purchase consideration for the Company\u2019s acquisition of substantially all of the assets and certain liabilities of HCL Expense Management Services, Inc. (\u201cHCL-EMS\u201d) in January 2011 included deferred cash consideration. The deferred cash consideration included contingent cash payments following each of the first and second anniversaries of the closing date of the HCL-EMS acquisition on January 25, 2011 (the \u201cHCL-EMS Closing Date\u201d), pursuant to an earn-out formula based upon specified revenues from specified customers acquired from HCL-EMS, subject to set-off rights of the Company with respect to indemnities given by HCL-EMS under the Asset Purchase Agreement entered into in December 2010 in connection with the HCL-EMS acquisition (the \u201cHCL-EMS APA\u201d). No interest accrued on the deferred cash consideration; however, the Company recorded imputed interest in the amount of $0.6 million based on the Company\u2019s weighted average cost of debt as of the date of the acquisition. The obligation to pay the deferred cash consideration is unsecured. In 2012, the Company and HCL-EMS agreed that the gross amount of the first year earn-out would be $1.9 million and the Company paid that amount to HCL-EMS. In April 2013, the Company and HCL-EMS agreed that the gross amount of the second year earn-out would be $1.9 million. In early August 2013, the Company paid $1.0 million of the second year earn-out to HCL-EMS, and retained the balance of the second year earn-out in the amount of $0.9 million pending resolution of an outstanding indemnity matter. In September 2014, the Company paid $0.4 million in satisfaction of the third-party claim that triggered the indemnity matter and the contingent consideration balance was reduced by this amount.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 535,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 583,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Stock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Warrants",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at beginning of the year",
+     "",
+     "10,000",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Cancelled",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at end of the period",
+     "",
+     "10,000",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average exercise price",
+     "",
+     "$",
+     "14.02",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common",
+    "Stock",
+    "Warrants"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 613,
+    "end_line": 630
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "In November 2014, the Company\u2019s board of directors authorized a share repurchase program under which the Company may repurchase up to $30 million of its outstanding common stock on the open market or in privately negotiated transactions. The $30 million includes $2.3 million of unused funds from a previous $20 million share repurchase program announced in 2012. During the three months ended March 31, 2015, the Company repurchased 174,276 shares of common stock at an average price per share, including broker commissions, of $11.48, for an aggregate purchase price of $2.0 million.\nPreferred Stock\u2014As of December 31, 2014 and March 31, 2015, the number of authorized shares of preferred stock, par value $0.0001 per share, was 5,000,000, of which 0 were issued and outstanding.\nCommon Stock Warrants\u2014 On March 22, 2011, the Company issued a warrant to purchase up to 1,282,789 shares of its common stock to Dell Products, L.P. (\u201cDell\u201d) in connection with the entry of the Company and Dell into a 49-month strategic relationship agreement. Under the terms of the warrant, the 1,282,789 shares of common stock were eligible to become exercisable upon the achievement of certain annual recurring revenue thresholds over the 49-month period that ended on December 31, 2014. The warrant was exercisable at $5.987 per share. As of December 31, 2014, the vesting term of the warrant expired with Dell earning no warrant shares.\nA summary of activity with respect to warrants to purchase common stock during the three months ended March 31, 2015 is presented below:",
+   "prose_after": "Stock Options\u2014As of March 31, 2015, the Company had five stock-based compensation plans, the Employee Stock Option/Stock Issuance Plan (the \u201cEmployee Plan\u201d), the Executive Stock Option/Stock Issuance Plan (the \u201cExecutive Plan\u201d), the 2005 Stock Incentive Plan (the \u201c2005 Plan\u201d), the Traq Amended and Restated 1999 Stock Plan (the \u201c1999 Plan\u201d) and the 2011 Plan. In connection with the Company\u2019s initial public offering, the Company\u2019s board of directors determined that no future stock awards would be made under the Employee Plan, the Executive Plan, the 2005 Plan and the 1999 Plan. The 2011 Plan provides for the grant of incentive stock options, nonstatutory stock options, restricted stock awards and other stock-based awards.\nUnder the provisions of the Employee Plan, the Executive Plan, the 2005 Plan, the 1999 Plan and the 2011 Plan (the \u201cPlans\u201d), the exercise price of each option is determined by the Company\u2019s board of directors or by a committee appointed by the board of directors. Under the 2011 Plan, the exercise price of all stock options must not be less than the fair market value of a share of common stock on the date of grant. The period over which options vest and become exercisable, as well as the term of the options, is determined by the board of directors or the committee appointed by the board of directors. The options generally vest over 4 years and expire 10 years after the date of the grant.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 609,
+     "token": "REPEATING_HEADER",
+     "id": 28,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 639,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Options",
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "",
+     "Weighted Average Contractual Life (years)",
+     ""
+    ],
+    [
+     "Outstanding at beginning of the year",
+     "",
+     "5,603,892",
+     "",
+     "$",
+     "9.04",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "(42,936)",
+     "",
+     "$",
+     "14.88",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(182,296)",
+     "",
+     "$",
+     "3.71",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at end of the period",
+     "",
+     "5,378,660",
+     "",
+     "$",
+     "9.17",
+     "",
+     "5.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at end of the period",
+     "",
+     "4,745,345",
+     "",
+     "$",
+     "8.40",
+     "",
+     "5.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Available for future grants at March 31, 2015",
+     "",
+     "199,460",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "Under the provisions of the Employee Plan, the Executive Plan, the 2005 Plan, the 1999 Plan and the 2011 Plan (the \u201cPlans\u201d), the exercise price of each option is determined by the Company\u2019s board of directors or by a committee appointed by the board of directors. Under the 2011 Plan, the exercise price of all stock options must not be less than the fair market value of a share of common stock on the date of grant. The period over which options vest and become exercisable, as well as the term of the options, is determined by the board of directors or the committee appointed by the board of directors. The options generally vest over 4 years and expire 10 years after the date of the grant.\nFor the three months ended March 31, 2014 and 2015, the Company recorded stock-based compensation expense of $1.8 million and $1.3 million, respectively, related to stock options.\nAs of March 31, 2015, there was $5.0 million of total unrecognized stock-based compensation cost, net of estimated forfeitures, related to stock options. This amount will be amortized on a straight-line basis over the requisite service period related to the stock option grants.\nA summary of the status of stock options issued pursuant to the Plans during the three months ended March 31, 2015 is presented below:",
+   "prose_after": "The intrinsic values of options outstanding, vested and exercised during the three months ended March 31, 2015 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 641,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Intrinsic",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options",
+     "",
+     "Value",
+     "",
+     ""
+    ],
+    [
+     "Outstanding",
+     "",
+     "5,378,660",
+     "",
+     "$",
+     "29,349,006",
+     ""
+    ],
+    [
+     "Vested",
+     "",
+     "4,745,345",
+     "",
+     "$",
+     "29,203,572",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "182,296",
+     "",
+     "$",
+     "1,548,874",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "The intrinsic values of options outstanding, vested and exercised during the three months ended March 31, 2015 were as follows:",
+   "prose_after": "During the three months ended March 31, 2015, employees and former employees of the Company exercised options to purchase a total of 182,296 shares of common stock at exercise prices ranging from $0.25 to $12.56 per share. Proceeds from the stock option exercises totaled $0.7 million.\nRestricted Stock Units\u2014During the three months ended March 31, 2015, the Company issued 795,900 restricted stock units to certain employees under the provisions of the 2011 Plan, of which 172,000 were performance-based restricted stock units and 250,752 restricted stock units vested resulting in an equal number of shares of common stock being issued. The grants of restricted stock units made during the three months ended March 31, 2015 had an aggregate value of $9.7 million. The value of a restricted stock unit award is determined based on the closing price of the Company\u2019s common stock on the date of grant. A restricted stock unit award entitles the holder to receive shares of the Company\u2019s common stock as the award vests. The restricted stock units vest over periods that range from three months to three years. The performance-based restricted stock units are granted upon achievement of a specified financial metric. Granted performance-based restricted stock units vest over time, with 20% vesting on the first anniversary of the grant date of February 19, 2015 and 20% each subsequent quarter until fully vested on the second anniversary of the grant date. Stock-based compensation expense is amortized on a straight-line basis over the vesting period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 641,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Restricted Stock Units",
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Fair Value",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at beginning of the year",
+     "",
+     "1,172,505",
+     "",
+     "$",
+     "17.36",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "795,900",
+     "",
+     "$",
+     "12.24",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "(15,361)",
+     "",
+     "$",
+     "15.35",
+     ""
+    ],
+    [
+     "Vested",
+     "",
+     "(250,752)",
+     "",
+     "$",
+     "16.94",
+     ""
+    ],
+    [
+     "Outstanding at end of the period",
+     "",
+     "1,702,292",
+     "",
+     "$",
+     "15.05",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 700
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "Restricted Stock Units\u2014During the three months ended March 31, 2015, the Company issued 795,900 restricted stock units to certain employees under the provisions of the 2011 Plan, of which 172,000 were performance-based restricted stock units and 250,752 restricted stock units vested resulting in an equal number of shares of common stock being issued. The grants of restricted stock units made during the three months ended March 31, 2015 had an aggregate value of $9.7 million. The value of a restricted stock unit award is determined based on the closing price of the Company\u2019s common stock on the date of grant. A restricted stock unit award entitles the holder to receive shares of the Company\u2019s common stock as the award vests. The restricted stock units vest over periods that range from three months to three years. The performance-based restricted stock units are granted upon achievement of a specified financial metric. Granted performance-based restricted stock units vest over time, with 20% vesting on the first anniversary of the grant date of February 19, 2015 and 20% each subsequent quarter until fully vested on the second anniversary of the grant date. Stock-based compensation expense is amortized on a straight-line basis over the vesting period.\nFor the three months ended March 31, 2014 and 2015, the Company recorded stock-based compensation expenses of $0.7 million and $2.4 million, respectively, related to restricted stock units.\nAs of March 31, 2015, there was $21.1 million of total unrecognized compensation cost, net of estimated forfeitures, related to unvested restricted stock units. This amount will be amortized on a straight-line basis over the requisite service period related to the restricted unit grants.\nA summary of the status of restricted stock units issued pursuant to the Plans during the three months ended March 31, 2015 is presented below:",
+   "prose_after": "In accordance with ASC 718, Share Based Payment (\u201cASC 718\u201d), total compensation expense for stock-based compensation awards was $4.2 million and $5.0 million for the three months ended March 31, 2014 and 2015, respectively, which is included on the accompanying condensed consolidated statements of operations as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "$",
+     "1,488",
+     "",
+     "$",
+     "910",
+     ""
+    ],
+    [
+     "Sales and marketing expenses",
+     "",
+     "1,256",
+     "",
+     "",
+     "1,367",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "1,035",
+     "",
+     "",
+     "2,066",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "418",
+     "",
+     "",
+     "681",
+     "",
+     ""
+    ],
+    [
+     "Total stock-based employee compensation",
+     "",
+     "$",
+     "4,197",
+     "",
+     "$",
+     "5,024",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "In accordance with ASC 718, Share Based Payment (\u201cASC 718\u201d), total compensation expense for stock-based compensation awards was $4.2 million and $5.0 million for the three months ended March 31, 2014 and 2015, respectively, which is included on the accompanying condensed consolidated statements of operations as follows (in thousands):",
+   "prose_after": "Stock-based compensation expense for equity awards outstanding as of March 31, 2015 will be recognized over the following periods as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ending December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "April 1, 2015 to December 31, 2015",
+     "",
+     "$",
+     "12,226",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "10,028",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "",
+     "3,604",
+     "",
+     ""
+    ],
+    [
+     "2018",
+     "",
+     "385",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "26,243",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 720,
+    "end_line": 731
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "Stock-based compensation expense for equity awards outstanding as of March 31, 2015 will be recognized over the following periods as follows (in thousands):",
+   "prose_after": "Stock-based compensation costs for stock options are generally based on the fair value calculated from the Black-Scholes valuation model on the date of grant. The Black-Scholes valuation model requires the Company to estimate key assumptions such as expected volatility, expected terms, risk-free interest rates and dividend yields. The Company determined the assumptions in the Black-Scholes valuation model as follows: expected volatility is a combination of the Company\u2019s competitors\u2019 historical volatility; expected term is calculated using the \u201csimplified\u201d method prescribed in ASC 718; and the risk free rate is based on the U.S. Treasury yield on 5 and 7-year instruments in effect at the time of grant. A dividend yield is not used, as the Company has never paid cash dividends and does not currently intend to pay cash dividends. The Company periodically reviews the assumptions and modifies the assumptions accordingly.\nAs part of the requirements of ASC 718, the Company is required to estimate potential forfeitures of stock option and restricted stock unit grants and adjust compensation cost recorded accordingly. The estimate of forfeitures will be adjusted over the requisite service period to the extent that actual forfeitures differ, or are expected to differ, from such estimates. Changes in estimated forfeitures will be recognized through a cumulative catch-up adjustment in the period of change and will also impact the amount of stock-based compensation expense to be recognized in future periods. The fair values of stock option and restricted stock unit grants are amortized as compensation expense on a straight-line basis over the vesting period of the grants. Compensation expense recognized is shown in the operating activities section of the statement of cash flows.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fair Value Measurement at December 31, 2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "Total",
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     ""
+    ],
+    [
+     "Money market",
+     "",
+     "$",
+     "18,372",
+     "",
+     "$",
+     "18,372",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Contingent HCL-EMS acquisition consideration",
+     "",
+     "541",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "541",
+     "",
+     ""
+    ],
+    [
+     "Contingent oneTEM acquisition consideration",
+     "",
+     "235",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "235",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "19,148",
+     "",
+     "$",
+     "18,372",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "776",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurement at December 31, 2014"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 758,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Fair Value Measurement"
+    }
+   },
+   "prose_before": "The Company records certain financial assets and liabilities at fair value on a recurring basis. The Company determines fair values based on that price it would receive to sell an asset or pay to transfer a liability in an orderly transaction between market participants at the measurement date and in the principal or most advantageous market for that asset or liability.\nThe prescribed fair value hierarchy and related valuation methodologies are as follows:\nLevel 1\u2014Inputs are unadjusted quoted prices in active markets for identical assets or liabilities that the reporting entity has the ability to access at the measurement date.\nLevel 2\u2014Inputs other than quoted prices included within Level 1 that are observable for the asset or liability, directly or indirectly, such as a quoted price for similar assets or liabilities in active markets.\nLevel 3\u2014Inputs are unobservable and are only used to measure fair value when observable inputs are not available. The inputs reflect the entity\u2019s own assumptions and are based on the best information available. This allows for the fair value of an asset or liability to be measured when no active market for that asset or liability exists.\nThe following tables disclose the assets and liabilities measured at fair value on a recurring basis as of December 31, 2014 and March 31, 2015 and the basis for that measurement:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 738,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fair Value Measurement at March 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "Total",
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     ""
+    ],
+    [
+     "Money market",
+     "",
+     "$",
+     "18,379",
+     "",
+     "$",
+     "18,379",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Contingent HCL-EMS acquisition consideration",
+     "",
+     "541",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "541",
+     "",
+     ""
+    ],
+    [
+     "Contingent oneTEM acquisition consideration",
+     "",
+     "242",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "242",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "19,162",
+     "",
+     "$",
+     "18,379",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "783",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurement at March 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 771,
+    "end_line": 783
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Fair Value Measurement"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The changes in the fair value of the Level 3 liability for the three months ended March 31, 2015 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 738,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Contingent acquisition consideration",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Three Months Ended March 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "HCL-EMS",
+     "",
+     "",
+     "oneTEM",
+     "",
+     ""
+    ],
+    [
+     "Balance, Beginning of Period",
+     "",
+     "$",
+     "541",
+     "",
+     "$",
+     "235",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7",
+     "",
+     ""
+    ],
+    [
+     "Balance, End of Period",
+     "",
+     "$",
+     "541",
+     "",
+     "$",
+     "242",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Contingent acquisition consideration",
+    "Three Months Ended March 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 790,
+    "end_line": 803
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Fair Value Measurement"
+    }
+   },
+   "prose_before": "The changes in the fair value of the Level 3 liability for the three months ended March 31, 2015 are as follows:",
+   "prose_after": "The Company\u2019s investment in overnight money market institutional funds, which amounted to $18.4 million at December 31, 2014 and March 31, 2015, is included in cash and cash equivalents on the accompanying condensed consolidated balance sheets and is classified as a Level 1 input.\nThe acquisition of HCL-EMS included a contingent consideration agreement that required additional consideration to be paid by the Company following each of the first and second anniversaries of the HCL-EMS Closing Date, pursuant to an earn-out formula ranging from 7.5% to 15% of specified revenues from specified customers acquired, subject to set-off rights of the Company with respect to indemnities given by HCL-EMS under the HCL-EMS APA. The fair value of the contingent consideration recognized was $3.4 million which was estimated by applying the income approach. The remaining balance of $0.5 million represents the balance retained by the Company pending resolution of an outstanding indemnity matter, after reduction for the $0.4 million payment mentioned below. The key assumptions include (a) a discount rate of 10.5% and (b) probability adjusted levels of revenue between approximately $12.6 million and $13.9 million. As of March 31, 2015, there were no changes in the recognized amounts from December 31, 2014.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 786,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "$",
+     "9",
+     "",
+     "$",
+     "15",
+     ""
+    ],
+    [
+     "Income tax payments",
+     "",
+     "$",
+     "114",
+     "",
+     "$",
+     "135",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON CASH FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Software acquired with financing agreement",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 820,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Fair Value Measurement"
+    }
+   },
+   "prose_before": "The acquisition of oneTEM includes a contingent earn-out cash consideration agreement that requires additional consideration to be paid by the Company following each of the first four anniversaries of the oneTEM Closing Date. Historically, the oneTEM business had generated one-time consulting revenue. Under the earn-out formula, the earn-out consideration is equal to 9% of annual recurring revenue that the business begins to generate from specified customers in the first year and then 9% of year-over-year increases in annual recurring revenue growth from those specified customers during the earn-out periods. The earn-out period begins with the first full month after the oneTEM Closing Date and continues for four consecutive 12- month periods. The contingent earn-out cash consideration is subject to set-off rights of the Company with respect to indemnities given by the former holders of the issued share capital of oneTEM under the oneTEM Purchase Agreement. The fair value of the contingent earn-out cash consideration recognized was $0.2 million, which was estimated by applying the income approach. The key assumptions include (a) a discount rate of 15% and (b) probability adjusted levels of initial and then increased annual recurring revenue between approximately $0.2 million and $0.3 million. As of March 31, 2015, there were no changes in the recognized amounts from December 31, 2014, except for the accretion of imputed interest.\nThe carrying amounts of the Company\u2019s other non-cash financial instruments including accounts receivable and accounts payable approximate their fair values due to the relatively short-term nature of these instruments.\n9. Supplemental Cash Flow Information:\nInformation about other cash flow activities during the three months ended March 31, 2014 and 2015 are as follows:",
+   "prose_after": "10. Commitments and Contingencies\nDuring the normal course of business, the Company becomes involved in various routine legal proceedings including issues pertaining to patent and trademark infringement, customer disputes, employee matters and acquisition-related post-closing disputes. The Company does not believe that the outcome of these matters will have a material adverse effect on its financial condition.\nThe Company has entered into non-cancellable operating leases for the rental of office space in various locations that expire between 2015 and 2023. Some of the leases provide for lower payments in the beginning of the term which gradually escalate during the term of the lease. The Company recognizes rent expense on a straight-line basis over the lease term, which gives rise to a deferred rent liability on the balance sheet. The Company also has entered into agreements with third-party hosting facilities, which expire between 2016 and 2017.\nThe Company is also obligated under several leases covering computer equipment and software, which the Company has classified as capital leases and other obligations. Additionally, the Company has entered into several operating leases for various office equipment items, which expire between 2015 and 2018.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 814,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "",
+     "2014",
+     "",
+     "",
+     "% of revenue",
+     "",
+     "2015",
+     "",
+     "",
+     "% of revenue",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring technology and services",
+     "",
+     "$",
+     "45,999",
+     "",
+     "91%",
+     "",
+     "$",
+     "48,916",
+     "",
+     "91%",
+     ""
+    ],
+    [
+     "Strategic consulting, software licenses and other",
+     "",
+     "4,395",
+     "",
+     "",
+     "9%",
+     "",
+     "4,553",
+     "",
+     "",
+     "9%",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "50,394",
+     "",
+     "",
+     "100%",
+     "",
+     "53,469",
+     "",
+     "",
+     "100%",
+     ""
+    ],
+    [
+     "Cost of revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring technology and services",
+     "",
+     "21,398",
+     "",
+     "",
+     "42%",
+     "",
+     "21,630",
+     "",
+     "",
+     "40%",
+     ""
+    ],
+    [
+     "Strategic consulting, software licenses and other",
+     "",
+     "2,334",
+     "",
+     "",
+     "5%",
+     "",
+     "2,245",
+     "",
+     "",
+     "4%",
+     ""
+    ],
+    [
+     "Total cost of revenue (1)",
+     "",
+     "23,732",
+     "",
+     "",
+     "47%",
+     "",
+     "23,875",
+     "",
+     "",
+     "45%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "26,662",
+     "",
+     "",
+     "53%",
+     "",
+     "29,594",
+     "",
+     "",
+     "55%",
+     ""
+    ],
+    [
+     "Operating expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing (1)",
+     "",
+     "9,945",
+     "",
+     "",
+     "20%",
+     "",
+     "10,374",
+     "",
+     "",
+     "19%",
+     ""
+    ],
+    [
+     "General and administrative (1)",
+     "",
+     "8,788",
+     "",
+     "",
+     "17%",
+     "",
+     "10,103",
+     "",
+     "",
+     "19%",
+     ""
+    ],
+    [
+     "Research and development (1)",
+     "",
+     "5,129",
+     "",
+     "",
+     "10%",
+     "",
+     "6,127",
+     "",
+     "",
+     "11%",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "2,607",
+     "",
+     "",
+     "5%",
+     "",
+     "2,052",
+     "",
+     "",
+     "4%",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "193",
+     "",
+     "",
+     "0%",
+     "",
+     "938",
+     "",
+     "",
+     "2%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(37)",
+     "",
+     "",
+     "0%",
+     "",
+     "(64)",
+     "",
+     "",
+     "0%",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "9",
+     "",
+     "",
+     "0%",
+     "",
+     "9",
+     "",
+     "",
+     "0%",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "13",
+     "",
+     "",
+     "0%",
+     "",
+     "(2)",
+     "",
+     "",
+     "0%",
+     ""
+    ],
+    [
+     "Income before income tax provision",
+     "",
+     "178",
+     "",
+     "",
+     "0%",
+     "",
+     "881",
+     "",
+     "",
+     "2%",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "445",
+     "",
+     "",
+     "1%",
+     "",
+     "629",
+     "",
+     "",
+     "1%",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "$",
+     "(267)",
+     "",
+     "(1)%",
+     "",
+     "$",
+     "252",
+     "",
+     "0%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) Amounts in table above include stock-based compensation expense, as follows:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "$",
+     "1,488",
+     "",
+     "",
+     "",
+     "$",
+     "910",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "1,256",
+     "",
+     "",
+     "",
+     "",
+     "1,367",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,035",
+     "",
+     "",
+     "",
+     "",
+     "2,066",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "418",
+     "",
+     "",
+     "",
+     "",
+     "681",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "4,197",
+     "",
+     "",
+     "",
+     "$",
+     "5,024",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 961,
+    "end_line": 1010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Our financial statements are prepared in accordance with GAAP. The preparation of our financial statements and related disclosures requires us to make estimates, assumptions and judgments that affect the reported amount of assets, liabilities, revenue, costs and expenses, and related disclosures. We base our estimates and assumptions on historical experience and other factors that we believe to be reasonable under the circumstances. We evaluate our estimates and assumptions on an ongoing basis. Our actual results may differ from these estimates under different assumptions and conditions. Our most critical accounting policies are disclosed in the audited consolidated financial statements for the year ended December 31, 2014 included in our Annual Report on Form 10-K for the fiscal year ended December 31, 2014 filed with the Securities and Exchange Commission, or the SEC, on March 16, 2015, which we refer to as the 2014 Form 10-K. Since the date of those financial statements, there have been no material changes to our significant accounting policies.\nResults of Operations for the Three-Month Periods Ended March 31, 2014 and 2015\nThe following table presents selected consolidated statements of operations data for the periods indicated. These consolidated results of operations are not necessarily indicative of the consolidated results of operations that will be achieved in any future period.",
+   "prose_after": "Revenue\nThe following table presents our components of revenue for the periods presented:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 955,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Recurring technology and services",
+     "",
+     "$",
+     "45,999",
+     "",
+     "$",
+     "48,916",
+     "",
+     "$",
+     "2,917",
+     "",
+     "6%",
+     ""
+    ],
+    [
+     "Strategic consulting, software licenses and other",
+     "",
+     "4,395",
+     "",
+     "",
+     "4,553",
+     "",
+     "",
+     "158",
+     "",
+     "",
+     "4%",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "$",
+     "50,394",
+     "",
+     "$",
+     "53,469",
+     "",
+     "$",
+     "3,075",
+     "",
+     "6%",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1017,
+    "end_line": 1029
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Revenue\nThe following table presents our components of revenue for the periods presented:",
+   "prose_after": "Our recurring technology and services revenue increased $2.9 million, or 6%, for the three months ended March 31, 2015 as compared to the same period in 2014. This increase was primarily attributable to $5.4 million in increased revenue from increases in the volume of fixed and mobile communications assets and service offerings being managed or provided through our on-demand communication management platform for existing and new customers, excluding customers acquired in acquisitions since January 1, 2011 except to the extent such acquisition customers purchased new products or services following the applicable acquisition. The increase was driven in part by a 15% increase in our total number of recurring revenue customers to 809 as of March 31, 2015, which amount excludes 280 acquisition customers for total recurring revenue customers of 1,089 as of March 31, 2015, from 702 as of March 31, 2014, which amount excludes 323 acquisition customers for total recurring revenue customers of 1,025 as of March 31, 2014. This increase in revenue was partially offset by a $2.5 million decrease for the three months ended March 31, 2015, as compared to the same period in 2014, in revenue from customers acquired in connection with acquisitions since January 1, 2011, to $10.8 million for the three months ended March 31, 2015 from $13.3 million for the three months ended March 31, 2014, including for purposes of this calculation revenue from acquisition customers who renewed their contracts with us after the applicable acquisition but excluding revenues from post-acquisition sales of new products and services. This decrease was principally attributable to normal and customary attrition in acquisition customers. Our recurring technology and services revenue includes contra-revenue related to the amortization of the value of a warrant to purchase common stock issued to IBM as part of a strategic marketing agreement. We recorded $107,762 and $161,389 of amortization as a contra-revenue charge during the three months ended March 31, 2014 and 2015, respectively, related to the warrant.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase Decrease)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Recurring technology and services",
+     "",
+     "$",
+     "21,398",
+     "",
+     "$",
+     "21,630",
+     "",
+     "$",
+     "232",
+     "",
+     "1%",
+     ""
+    ],
+    [
+     "Strategic consulting, software licenses and other",
+     "",
+     "2,334",
+     "",
+     "",
+     "2,245",
+     "",
+     "",
+     "(89)",
+     "",
+     "",
+     "-4%",
+     ""
+    ],
+    [
+     "Total cost of revenue",
+     "",
+     "$",
+     "23,732",
+     "",
+     "$",
+     "23,875",
+     "",
+     "$",
+     "143",
+     "",
+     "1%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "$",
+     "26,662",
+     "",
+     "$",
+     "29,594",
+     "",
+     "$",
+     "2,932",
+     "",
+     "11%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "53%",
+     "",
+     "",
+     "55%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1040,
+    "end_line": 1058
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Our recurring technology and services revenue increased $2.9 million, or 6%, for the three months ended March 31, 2015 as compared to the same period in 2014. This increase was primarily attributable to $5.4 million in increased revenue from increases in the volume of fixed and mobile communications assets and service offerings being managed or provided through our on-demand communication management platform for existing and new customers, excluding customers acquired in acquisitions since January 1, 2011 except to the extent such acquisition customers purchased new products or services following the applicable acquisition. The increase was driven in part by a 15% increase in our total number of recurring revenue customers to 809 as of March 31, 2015, which amount excludes 280 acquisition customers for total recurring revenue customers of 1,089 as of March 31, 2015, from 702 as of March 31, 2014, which amount excludes 323 acquisition customers for total recurring revenue customers of 1,025 as of March 31, 2014. This increase in revenue was partially offset by a $2.5 million decrease for the three months ended March 31, 2015, as compared to the same period in 2014, in revenue from customers acquired in connection with acquisitions since January 1, 2011, to $10.8 million for the three months ended March 31, 2015 from $13.3 million for the three months ended March 31, 2014, including for purposes of this calculation revenue from acquisition customers who renewed their contracts with us after the applicable acquisition but excluding revenues from post-acquisition sales of new products and services. This decrease was principally attributable to normal and customary attrition in acquisition customers. Our recurring technology and services revenue includes contra-revenue related to the amortization of the value of a warrant to purchase common stock issued to IBM as part of a strategic marketing agreement. We recorded $107,762 and $161,389 of amortization as a contra-revenue charge during the three months ended March 31, 2014 and 2015, respectively, related to the warrant.\nOur strategic consulting, software licenses and other revenue increased $0.2 million, or 4%, for the three months ended March 31, 2015 as compared to the same period of 2014, primarily due to a $0.2 million increase in strategic sourcing and consulting revenue and a $0.1 million increase in other revenue partly offset by a $0.1 million decrease in mobile telecommunication accessories sales revenue.\nCosts and Expenses\nCost of Revenue\nThe following table presents our cost of revenue:",
+   "prose_after": "Our recurring technology and services cost of revenue increased $0.2 million for the three months ended March 31, 2015 as compared to the same period in 2014. This increase is primarily due to an increase in personnel-related costs, including an increase in salary and other compensation-related costs, of $0.9 million, which includes a decrease in stock-based compensation of $0.6 million, as well as a $0.2 million increase in payment processing costs. The increases in personnel-related costs and payment processing costs were primarily attributable to providing support for customer growth in our recurring technology and services business. The decrease in stock-based compensation was related to the stock-based equity awards given to employees during the three months ended March 31, 2014 carrying greater per-share expense than the awards granted during the same period in 2015, as a result of shorter vesting periods. The increases in our recurring technology and services cost of revenue were partly offset by decreases in third-party contractor costs of $0.6 million, third-party licensing costs of $0.2 million and other infrastructure costs of $0.1 million as a result of cost efficiencies gained from our continued migration of acquired customers.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "",
+     "Amount",
+     "",
+     "",
+     "Revenue",
+     "",
+     "Amount",
+     "",
+     "",
+     "Revenue",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "$",
+     "9,945",
+     "",
+     "20%",
+     "",
+     "$",
+     "10,374",
+     "",
+     "19%",
+     "",
+     "$",
+     "429",
+     "",
+     "4%",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "8,788",
+     "",
+     "",
+     "17%",
+     "",
+     "10,103",
+     "",
+     "",
+     "19%",
+     "",
+     "1,315",
+     "",
+     "",
+     "15%",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "5,129",
+     "",
+     "",
+     "10%",
+     "",
+     "6,127",
+     "",
+     "",
+     "11%",
+     "",
+     "998",
+     "",
+     "",
+     "19%",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "2,607",
+     "",
+     "",
+     "5%",
+     "",
+     "2,052",
+     "",
+     "",
+     "4%",
+     "",
+     "(555)",
+     "",
+     "",
+     "-21%",
+     ""
+    ],
+    [
+     "Total operating expense",
+     "",
+     "$",
+     "26,469",
+     "",
+     "53%",
+     "",
+     "$",
+     "28,656",
+     "",
+     "54%",
+     "",
+     "$",
+     "2,187",
+     "",
+     "8%",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1071,
+    "end_line": 1088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Our strategic consulting, software licenses and other cost of revenue decreased $0.1 million for the three months ended March 31, 2015 as compared to the same period in 2014, primarily due to an $0.2 million decrease in the costs associated with our sales of mobile telecommunication accessories partly offset by a $0.1 million increase in salary and other compensation-related costs as a result of increased third-party contractor costs related to our increase in our strategic sourcing and consulting revenues.\nAs a percentage of revenue, gross profit increased to 55% for the three months ended March 31, 2015 as compared to 53% for the same period in 2014. This increase in gross margin was primarily due to an increase in higher margin revenue within our recurring technology and services revenue and the decrease in stock-based compensation expense mentioned above. The $2.9 million increase in gross profit in absolute dollars was primarily a result of increases in recurring technology and services revenue.\nOperating Expense\nThe following table presents our components of operating expense for the periods presented:",
+   "prose_after": "Sales and marketing expense. Our sales and marketing expense increased $0.4 million for the three months ended March 31, 2015 as compared to the same period of 2014, primarily as a result of increases in personnel-related costs, including salary and other compensation-related costs, of $0.3 million, including increased employee compensation and benefits of $0.2 million and stock-based compensation expense of $0.1 million, and third-party contractor costs of $0.1 million as we increased the number of global direct and indirect sales force employees to accommodate growth in sales opportunities. Our sales and marketing expense also increased as a result of a $0.1 million increase in outside marketing expense for the three months ended March 31, 2015 as compared to the same period of 2014, primarily as result of increases in lead generation activities for new and existing geographies and customers.\nGeneral and administrative expense. Our general and administrative expenses increased $1.3 million for the three months ended March 31, 2015 as compared to the same period of 2014, primarily as a result of increases in personnel-related costs, including salary and other compensation-related costs, of $1.1 million, including increased employee compensation and benefits of $0.1 million and stock-based compensation expense of $1.0 million. Our general and administrative expense also increased as a result of a $0.2 million increase in foreign currency translation costs.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "$",
+     "(37)",
+     "",
+     "$",
+     "(64)",
+     "",
+     "$",
+     "(27)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "9",
+     "",
+     "",
+     "9",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "13",
+     "",
+     "",
+     "(2)",
+     "",
+     "",
+     "(15)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1103,
+    "end_line": 1113
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Research and development expense. Our research and development expenses increased $1.0 million for the three months ended March 31, 2015 as compared to the same period of 2014, primarily as a result of increases in personnel-related costs, including salary and other compensation-related costs, of $1.0 million, including increased employee compensation and benefits of $0.6 million and stock-based compensation expense of $0.3 million, primarily arising from increased headcount as a result of our initiative to enhance the functionality of our products and improve our ability to scale for increased demand. Our research and development also increased as a result of a $0.1 million increase in third-party contractor costs.\nDepreciation and amortization expense. Our depreciation and amortization expense decreased $0.6 million for the three months ended March 31, 2015 as compared to the same period of 2014, due to a decrease in amortization expense of $0.6 million. The decrease in amortization expense was primarily due to an acquired identifiable intangible asset becoming fully amortized during the second quarter of 2014.\nOther Income (Expense), Net\nThe following table presents our components of other income (expense), net for the periods presented:",
+   "prose_after": "Interest expense. Interest expense increased to $64,000 for the three months ended March 31, 2015 from $37,000 for the three months ended March 31, 2014 primarily as a result of higher average debt balances in the three-month period ended March 31, 2015.\nInterest income. Interest income was comparable for the respective three-month periods ended March 31, 2015 and 2014.\nOther income. Other income was comparable for the respective three-month periods ended March 31, 2015 and 2014.\nIncome Tax Provision\nOur income tax provision increased $0.2 million for the three months ended March 31, 2015 as compared to the same period in 2014 primarily as a result of income tax expense related to foreign jurisdictions.\nLiquidity and Capital Resources\nSources of Liquidity\nSince our inception, we have funded our operations primarily from cash from operations, private placements of preferred stock, subordinated notes, term loans, revolving credit facilities and public offerings of equity. As of March 31, 2015, we had cash and cash equivalents of $52.5 million and accounts receivable of $58.7 million. As of March 31, 2015, we had amounts due under various debts and credit facilities of $4.8 million, which consisted of deferred consideration for the HCL-EMS and oneTEM acquisitions and capital lease and other financing obligations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "51,279",
+     "",
+     "$",
+     "52,543",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1134,
+    "end_line": 1141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Since our inception, we have funded our operations primarily from cash from operations, private placements of preferred stock, subordinated notes, term loans, revolving credit facilities and public offerings of equity. As of March 31, 2015, we had cash and cash equivalents of $52.5 million and accounts receivable of $58.7 million. As of March 31, 2015, we had amounts due under various debts and credit facilities of $4.8 million, which consisted of deferred consideration for the HCL-EMS and oneTEM acquisitions and capital lease and other financing obligations.\nWe believe that our existing cash and cash equivalents and our cash flow from operating activities will be sufficient to meet our anticipated cash needs for at least the next twelve months. To the extent our cash and cash equivalents and cash flow from operating activities are insufficient to fund our future activities, we may need to raise additional funds through bank credit arrangements or public or private equity or debt financings. We also may need to raise additional funds in the event we determine in the future to effect one or more acquisitions of, or investments in, businesses, services or technologies. If additional funding is required, we may not be able to obtain bank credit arrangements or to effect an equity or debt financing on terms acceptable to us or at all.\nThe following table sets forth our cash and cash equivalents and the major sources and uses of cash for each of the periods set forth below:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "$",
+     "3,077",
+     "",
+     "$",
+     "4,001",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,218)",
+     "",
+     "",
+     "(794)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "1,073",
+     "",
+     "",
+     "(1,561)",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate on cash",
+     "",
+     "(35)",
+     "",
+     "",
+     "(382)",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "$",
+     "2,897",
+     "",
+     "$",
+     "1,264",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1144,
+    "end_line": 1158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Cash Flows from Operating Activities\nOperating activities provided $4.0 million of net cash during the three months ended March 31, 2015, which resulted from our net income of $0.3 million for the three months ended March 31, 2015 principally supplemented by non-cash charges of stock-based compensation of $5.0 million, depreciation and amortization of $2.1 million, amortization of marketing agreement intangible assets of $0.2 million and other non-cash charges of $0.3 million. Cash provided by operating activities was adversely impacted by a $2.0 million increase in accounts receivable, a $1.5 million increase in prepaid expenses and other current assets, a $0.3 million decrease in accounts payable and accrued expenses and a $0.1 million decrease in deferred revenue during the three months ended March 31, 2015.\nOperating activities provided $3.1 million of net cash during the three months ended March 31, 2014. We incurred a net loss of $0.3 million for the three months ended March 31, 2014 that was principally offset by non-cash charges of stock-based compensation of $4.2 million and depreciation and amortization of $2.6 million. Cash provided by operating activities was adversely impacted by a $1.6 million increase in accounts receivable, a $1.0 million increase in prepaid expenses and other current assets, a $0.6 million decrease in accounts payable and accrued expenses and a $0.3 million decrease in deferred revenue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Payments due by period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Less than",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "",
+     "Total",
+     "",
+     "",
+     "1 year",
+     "",
+     "",
+     "1-3 years",
+     "",
+     "",
+     "3-5 years",
+     "",
+     ""
+    ],
+    [
+     "Operating lease obligations",
+     "",
+     "$",
+     "15,585",
+     "",
+     "$",
+     "6,952",
+     "",
+     "$",
+     "7,585",
+     "",
+     "$",
+     "1,048",
+     ""
+    ],
+    [
+     "Capital lease and other obligations",
+     "",
+     "4,060",
+     "",
+     "",
+     "1,677",
+     "",
+     "",
+     "2,383",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Interest on capital lease obligations",
+     "",
+     "250",
+     "",
+     "",
+     "143",
+     "",
+     "",
+     "107",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "HCL-EMS contingent consideration",
+     "",
+     "541",
+     "",
+     "",
+     "541",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "oneTEM deferred purchase price",
+     "",
+     "242",
+     "",
+     "",
+     "71",
+     "",
+     "",
+     "171",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "20,678",
+     "",
+     "$",
+     "9,384",
+     "",
+     "$",
+     "10,246",
+     "",
+     "$",
+     "1,048",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Payments due by period",
+    "Less than"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1181,
+    "end_line": 1196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Cash used in investing activities totaled $1.2 million during the three months ended March 31, 2014 and consisted of capital expenditures related to the purchase of computer equipment and software.\nCash Flows from Financing Activities\nCash flows used in financing activities totaled $1.6 million during the three months ended March 31, 2015, primarily consisting of $2.0 million of cash used to repurchase our common stock and net repayments of debt of $0.2 million partially offset by $0.7 million of proceeds from the exercise of stock options.\nCash flows provided by financing activities totaled $1.1 million during the three months ended March 31, 2014, primarily consisting of $1.2 million of proceeds from the exercise of stock options partially offset by net repayments of debt of $0.1 million.\nContractual Obligations\nThe following table summarizes our material contractual obligations at March 31, 2015 and the effect such obligations are expected to have on our liquidity and cash flows in future periods.",
+   "prose_after": "\u00b7 Operating lease obligations include minimum lease obligations with remaining terms in excess of one year primarily related to office space as well as certain equipment.\n\u00b7 Capital lease and other obligations include minimum lease obligations with remaining terms in excess of one year related to computer hardware and software.\n\u00b7 HCL-EMS contingent consideration consists of an amount withheld from the payment due on the second anniversary of the HCL-EMS closing date of January 25, 2011, pending resolution of certain indemnity matters.\n\u00b7 oneTEM contingent consideration consists of contingent earn-out cash consideration payable on April 18 in each of 2015, 2016 and 2017.\nOff-Balance Sheet Arrangements\nWe do not engage in any off-balance sheet financing activities, nor do we have any interest in entities referred to as variable interest entities.\nRecent Accounting Pronouncements\nFor information regarding recent accounting pronouncements, refer to Note 3 to our financial statements included in the 2014 Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Maximum Number (or",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total Number of",
+     "",
+     "Approximate Dollar",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Number",
+     "",
+     "Average",
+     "",
+     "",
+     "Shares Purchased",
+     "",
+     "Value) of Shares that May",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "of Shares",
+     "",
+     "Price Paid",
+     "",
+     "",
+     "as Part of Publicly",
+     "",
+     "Yet Be Purchased",
+     "",
+     ""
+    ],
+    [
+     "Period",
+     "",
+     "Purchased (1)",
+     "",
+     "per Share (2)",
+     "",
+     "",
+     "Announced Programs",
+     "",
+     "Under the Program (1)(2)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "28,500,007",
+     ""
+    ],
+    [
+     "January 1, 2015 - January 31, 2015",
+     "",
+     "156,127",
+     "",
+     "$",
+     "11.48",
+     "",
+     "156,127",
+     "",
+     "$",
+     "26,708,102",
+     ""
+    ],
+    [
+     "February 1, 2015 - February 28, 2015",
+     "",
+     "18,149",
+     "",
+     "$",
+     "11.47",
+     "",
+     "18,149",
+     "",
+     "$",
+     "26,500,011",
+     ""
+    ],
+    [
+     "March 1, 2015 - March 31, 2015",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "26,500,011",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "174,276",
+     "",
+     "$",
+     "11.48",
+     "",
+     "174,276",
+     "",
+     "$",
+     "26,500,011",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Maximum Number (or"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1605,
+    "end_line": 1621
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "As a Delaware corporation, we are also subject to provisions of Delaware law, including Section 203 of the Delaware General Corporation Law, which prevents some stockholders holding more than 15% of our outstanding common stock from engaging in certain business combinations without approval of the holders of substantially all of our outstanding common stock. Any provision of our certificate of incorporation or bylaws or Delaware law that has the effect of delaying or deterring a change in control could limit the opportunity for our stockholders to receive a premium for their shares of our common stock and could also affect the price that some investors are willing to pay for our common stock.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nPurchases of Equity Securities by the Issuer and Affiliated Purchasers\nThe following table provides information about our repurchases of equity securities during the periods indicated that are registered by us pursuant to Section 12 of the Securities Exchange Act of 1934, as amended:",
+   "prose_after": "(1) On November 25, 2014, we announced that our board of directors had authorized a share repurchase program under which we may repurchase up to $30 million of our outstanding common stock on the open market or in privately negotiated transactions. The $30 million includes $2.3 million of unused funds from a previous $20 million share repurchase program announced in 2012.\n(2) The Average Price Paid per Share includes broker commissions.\nItem 6. Exhibits",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1597,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1621,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit N[ ].",
+     "Description of Exhibit"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rules 13a-14(a) or 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Rules 13a-14(a) or 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1630,
+    "end_line": 1644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "(1) On November 25, 2014, we announced that our board of directors had authorized a share repurchase program under which we may repurchase up to $30 million of our outstanding common stock on the open market or in privately negotiated transactions. The $30 million includes $2.3 million of unused funds from a previous $20 million share repurchase program announced in 2012.\n(2) The Average Price Paid per Share includes broker commissions.\nItem 6. Exhibits",
+   "prose_after": "101.INS XBRL Instance Document 101.SCH XBRL Taxonomy Extension Schema Document 101.CAL XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF XBRL Taxonomy Extension Definition Linkbase Document 101.LAB XBRL Taxonomy Extension Label Linkbase Document 101.PRE XBRL Taxonomy Extension Presentation Linkbase Document\nSignatures\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1626,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: May 11, 2015",
+     "/s/ Gary R. Martino"
+    ],
+    [
+     "",
+     "Gary R. Martino"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1655,
+    "end_line": 1661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "101.INS XBRL Instance Document 101.SCH XBRL Taxonomy Extension Schema Document 101.CAL XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF XBRL Taxonomy Extension Definition Linkbase Document 101.LAB XBRL Taxonomy Extension Label Linkbase Document 101.PRE XBRL Taxonomy Extension Presentation Linkbase Document\nSignatures\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1653,
+     "token": "REPEATING_HEADER",
+     "id": 69,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1662,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

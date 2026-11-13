@@ -1,0 +1,4727 @@
+{
+ "accession": "0001493152-25-021523",
+ "cik": "0001001601",
+ "form": "10-K",
+ "filing_date": "2025-11-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "13-4148725"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2024\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934.\nFor the transition period from to\nCommission File Number 001-32698\nMGT CAPITAL INVESTMENTS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "540 Montreal Ave, Suite 133, Melbourne, FL",
+     "32935"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(914) 630\u20137430\n(Registrant\u2019s telephone number, including area code)\nSecurities registered under section 12(b) of the Act:\nNot applicable\nSecurities registered under section 12(g) of the Act:\nCommon stock, par value $.001 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "Item 1. Business",
+     "4"
+    ],
+    [
+     "",
+     "Item 1A. Risk Factors",
+     "7"
+    ],
+    [
+     "",
+     "Item 1B. Unresolved Staff Comments",
+     "26"
+    ],
+    [
+     "",
+     "Item 1C. Cybersecurity",
+     "26"
+    ],
+    [
+     "",
+     "Item 2. Properties",
+     "26"
+    ],
+    [
+     "",
+     "Item 3. Legal Proceedings",
+     "26"
+    ],
+    [
+     "",
+     "Item 4. Mine Safety Disclosures",
+     "26"
+    ],
+    [
+     "PART II",
+     "",
+     "27"
+    ],
+    [
+     "",
+     "Item 5. Market For Registrant\u2019s Common Equity, Related Stockholder Matters And Issuer\u2019s Purchases Of Equity Securities",
+     "27"
+    ],
+    [
+     "",
+     "Item 6. Reserved",
+     "28"
+    ],
+    [
+     "",
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "28"
+    ],
+    [
+     "",
+     "Item 7A. Quantitative and Qualitative Disclosure About Market Risk",
+     "35"
+    ],
+    [
+     "",
+     "Item 8. Financial Statements and Supplementary Data",
+     "35"
+    ],
+    [
+     "",
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "35"
+    ],
+    [
+     "",
+     "Item 9A. Controls and Procedures",
+     "35"
+    ],
+    [
+     "",
+     "Item 9B. Other Information.",
+     "36"
+    ],
+    [
+     "",
+     "Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.",
+     "36"
+    ],
+    [
+     "PART III",
+     "",
+     "37"
+    ],
+    [
+     "",
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "37"
+    ],
+    [
+     "",
+     "Item 11. Executive Compensation",
+     "39"
+    ],
+    [
+     "",
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "40"
+    ],
+    [
+     "",
+     "Item 13. Certain Relationships and Related Transactions and Director Independence",
+     "41"
+    ],
+    [
+     "",
+     "Item 14. Principal Accountant Fees and Services",
+     "41"
+    ],
+    [
+     "PART IV",
+     "",
+     "42"
+    ],
+    [
+     "",
+     "Item 15. Exhibits and Financial Statement Schedules.",
+     "42"
+    ],
+    [
+     "",
+     "Item 16. Form 10\u2013K Summary.",
+     "44"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 84,
+    "end_line": 114
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive o\ufb03cers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of June 28, 2024, the last trading day of the registrant\u2019s most recently completed second fiscal quarter, the aggregate market value of the registrant\u2019s common stock held by non-affiliates was approximately $521,344.\nAs of November 7, 2025, the registrant had outstanding 4,340,670,903 shares of common stock, $0.001 par value.\nMGT CAPITAL INVESTMENTS, INC. AND SUBSIDIARY\nINDEX\n($ in thousands, except share and per\u2013share amounts)",
+   "prose_after": "2\nNOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K and other written and oral statements made from time to time by us may contain forward-looking statements. Forward-looking statements can be identified by the use of words such as \u201cexpects,\u201d \u201cplans,\u201d \u201cwill,\u201d \u201cforecasts,\u201d \u201cprojects,\u201d \u201cintends,\u201d \u201cestimates,\u201d and other words of similar meaning. One can identify them by the fact that they do not relate strictly to historical or current facts. These statements are likely to address our growth strategy, financial results and product and development programs. One must carefully consider any such statement and should understand that many factors could cause actual results to differ from our forward-looking statements. These factors may include inaccurate assumptions and a broad variety of other risks and uncertainties, including some that are known and some that are not. No forward-looking statement can be guaranteed and actual future results may vary materially.\nThese statements are only predictions and involve known and unknown risks, uncertainties and other factors, including the risks in the section entitled \u201cItem 1A. Risk Factors\u201d and the risks set out below, any of which may cause our or our industry\u2019s actual results, levels of activity, performance or achievements to be materially different from any future results, levels of activity, performance or achievements expressed or implied by these forward-looking statements. These risks include, by way of example and not in limitation:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\n\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Cash provided by / (used in)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(547)",
+     "",
+     "$",
+     "(710)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "545",
+     "",
+     "",
+     "180",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "$",
+     "(2)",
+     "",
+     "$",
+     "(530)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 807,
+    "end_line": 822
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "On November 20, 2023, the lender of the September 2022 and December 2023 Notes provided the Company with a non-convertible loan in the amount of $25. The loan bears interest at an annual rate of 12% and the maturity date was November 19, 2024. On March 6, 2024, the lender of the September 2022 and December 2023 Notes provided the Company with a non-convertible loan in the amount of $125. The loan bears interest at an annual rate of 12% and the maturity date is March 5, 2025. On April 30, 2024, the lender of the September 2022 and December 2023 Notes provided the company with a non-convertible loan in the amount of $50. The loan bears interest at an annual rate of 12% and the maturity date is April 30, 2025. On November 1, 2024, the lender consolidated and exchanged such notes, including interest owed for an aggregate outstanding balance of $242 (\u201cNew Promissory Note\u201d). The New Promissory Note bears interest at an annual rate of 12% and the maturity date is December 31, 2025. During the year ended December 31, 2024, the Company recorded interest expense in the amount of $0.3 with respect to these loans.\nDuring the year ended December 31, 2024, the Company recorded accretion of debt discount of $7 in respect of the December 2023 Note.\nCash Flows",
+   "prose_after": "Operating activities\nNet cash used in operating activities was $547 for the year ended December 31, 2024 as compared to $710 for the year ended December 31, 2023. The amount in 2024 primarily consisted of net income of $5,521 offset by non-cash adjustments of $(6,507) (including: depreciation expense of $194, interest of $211, gain on settlement of debt of $15, warrant liabilities and derivative liabilities of ($7,126), accretion of debt discount of $199 and decreased by a change in working capital excluding cash of $439. The amount in 2023 primarily consisted of a net loss of $6,133 offset by non-cash charges of $4,869 (including: depreciation expense of $+260, loss on settlement of derivative of $302, amortization of note discount $1,269, loss on the change in fair value of warrant derivative liability of $2,685, loss on lease incentive of $184, and loss on the change in fair value of derivative liability of $249, partially offset by a gain on settlement of debt of $10 and gain on sale of property and equipment of $70), and increased by a change in working capital excluding cash of $554.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Jonathan M. Pfohl",
+     "59",
+     "Interim Chief Executive Officer, Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael G. Onghai",
+     "55",
+     "Chairman of the Audit Committee, Compensation Committee and Nominating/Corporate Governance Committee Member, Independent Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 890,
+    "end_line": 897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "\u25cf Due to the small size of the Company, the Company does not maintain sufficient segregation of duties to ensure the processing, review and authorization of all transactions including non-routine transactions.\n\u25cf In addition, the Company used a personal brokerage account/crypto wallet of its then CEO to effect the sales of its mined Bitcoin. These transactions occur approximately monthly and were executed and documented to provide no cost to the Company and no benefit to our then CEO.\nThis Annual Report on Form 10-K does not include an attestation report of the Company\u2019s independent registered public accounting firm regarding internal control over financial reporting since the Company is a smaller reporting company under the rules of the SEC.\nChanges in Internal Control over Financial Reporting\nDuring the year ended December 31, 2024, there were no changes in internal control over financial reporting.\nItem 9B. Other Information. None.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections. Not applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance",
+   "prose_after": "Directors are elected based on experience, qualifications and in accordance with the Company\u2019s by\u2013laws to serve until the next annual stockholders meeting and until their successors are elected in their stead. Officers are appointed by the Board and hold office until their successors are chosen and qualified, until their death or until they resign or have been removed from office. All corporate officers serve at the discretion of the Board. There are no family relationships between any director or executive officer and any other director or executive officer of the Company.\nJonathan M. Pfohl was appointed Chief Financial Officer of the Company on June 1, 2025 and assumed the additional role of Interim Chief Executive Officer in August 2025. Since 2024, Mr. Pfohl, age 59, has served as the principal of VC Partners Group LLC, a CFO advisory service to companies in early-stage growth and later-stage restructuring. From 2018-2024 he served as the CFO of Virtual Currency Partners LLC, a venture capital group. From 2019-2022 he served as CFO of Liquid Financial USA, Inc, an early-stage cryptocurrency exchange. From 2013-2018 he served as CFO of Scio Diamond Technology Corp (OTC:SCIO) He received his BS and MBA from the State University of New York at Buffalo.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock awards",
+     "",
+     "All other compensation",
+     "",
+     "Total compensation",
+     ""
+    ],
+    [
+     "Robert B. Ladd",
+     "Former President, Chief Executive Officer and Former Acting Chief Financial Officer",
+     "2024",
+     "$",
+     "170",
+     "$",
+     "-",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "170"
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "$",
+     "255",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "255"
+    ],
+    [
+     "Paul R. Taylor",
+     "Former Interim Principal Executive Officer and Interim Former Interim Principal Financial Officer",
+     "2024",
+     "$",
+     "40",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 942,
+    "end_line": 952
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "While the granting of options and other equity awards to officers, directors and other employees is not expressly addressed in the Insider Trading Policy described above, the Company follows the same principles set forth in such Policy when granting equity awards, including options, to its officers, directors and other employees with access to material nonpublic information. Generally the Board or Compensation Committee does not approve grants of such awards close in time to the disclosure of material nonpublic information, and does not take material nonpublic information into account when determining the timing and terms of such an award. Further, the Company does not have a policy or practice of timing the disclosure of material nonpublic information for the purpose of affecting the value of executive compensation.\nAudit Committee and Audit Committee Financial Expert\nOn November 25, 2004, the Board established an Audit Committee to carry out its audit functions. At December 31, 2024, the membership of the Audit Committee was Michael Onghai.\nThe Board has determined that Michael Onghai, an independent director, is the Audit Committee financial expert, as defined in Regulation S\u2013K promulgated under the Exchange Act, serving on its Audit Committee.\nItem 11. Executive Compensation\nSummary Compensation Table\nThe following table summarizes Fiscal Years 2024 and 2023 compensation for services in all capacities of the Company\u2019s named executive officers:",
+   "prose_after": "Mr. Ladd resigned from his positions as President, Chief Executive Officer and Acting Chief Financial Officer effective August 29, 2024. As a result, his compensation for 2024 reflects salary earned.\nEmployment Agreements\nRobert B. Ladd\nOn April 1, 2018, the Company entered into an Amended and Restated Executive Employment Agreement (the \u201cEmployment Agreement\u201d) with Mr. Ladd, which was executed on April 6, 2018 and amended on November 11, 2020.\nMr. Ladd\u2019s employment with the Company terminated effective August 29, 2024.\nPaul R. Taylor\nOn September 2, 2024, the Company entered into an Employment Agreement (the \u201cTaylor Employment Agreement\u201d) with Mr. Taylor, which was executed on September 2, 2024. Mr. Taylor is entitled to receive an annual salary in the amount of $10 per calendar month, in arrears, with $5 per month to be accrued.\nMr. Taylor\u2019s employment agreement terminated on June 25, 2025.\nJonathan M. Pfohl\nOn June 1, 2025, the Company entered into an Employment Agreement (the \u201cPfohl Employment Agreement\u201d) with Mr. Pfohl. The agreement provides for a salary of $5 per month, plus reimbursement of out-of-pocket business expenses. The company or Mr. Pfohl may terminate the agreement on ten",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned Or\n\n\n\nPaid in Cash",
+     "",
+     "Stock\n\n\n\nAwards",
+     "",
+     "All Other\n\n\n\nCompensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Michael G. Onghai",
+     "$",
+     "32",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "32"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 985,
+    "end_line": 992
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "On September 2, 2024, the Company entered into an Employment Agreement (the \u201cTaylor Employment Agreement\u201d) with Mr. Taylor, which was executed on September 2, 2024. Mr. Taylor is entitled to receive an annual salary in the amount of $10 per calendar month, in arrears, with $5 per month to be accrued.\nMr. Taylor\u2019s employment agreement terminated on June 25, 2025.\nJonathan M. Pfohl\nOn June 1, 2025, the Company entered into an Employment Agreement (the \u201cPfohl Employment Agreement\u201d) with Mr. Pfohl. The agreement provides for a salary of $5 per month, plus reimbursement of out-of-pocket business expenses. The company or Mr. Pfohl may terminate the agreement on ten\n(10) business days\u2019 notice. On June 25, 2025, Mr. Pfohl was appointed to the additional position of Interim Chief Executive Officer without an amendment to the terms of his employment agreement.\nOutstanding Equity Awards at December 31, 2024\nOutstanding Stock Awards for Fiscal Years 2024 and 2023\nNone\nDirector Compensation\nThe following table sets forth the compensation of persons who served as a member of our Board of Directors during all of 2024.",
+   "prose_after": "Directors are reimbursed for their out\u2013of\u2013pocket expenses incurred in connection with the performance of Board duties.\nIndependent Director Compensation\nIn February 2022, the Company changed its cash compensation policy for independent directors. Each independent director will receive annual compensation of $32, up from $30 previously.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nSecurity Ownership of Certain Beneficial Owners\nThe following table sets forth certain information regarding beneficial ownership and voting power of the common stock as of November 7, 2025, of:\n\u25cf each person serving as a director, a nominee for director, or executive officer of the Company;\n\u25cf all executive officers and directors of the Company as a group; and\n\u25cf all persons who, to our knowledge, beneficially own more than five percent of the common stock.\n\u201cBeneficial ownership\u201d here means direct or indirect voting or investment power over outstanding stock and stock which a person has the right to acquire now or within 60 days after November 7, 2025. See the accompanying footnotes to the tables below for more detailed explanations of the holdings. Except as noted, to our knowledge, the persons named in the tables beneficially own and have sole voting and investment power over all shares listed.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "Amount and Nature of\n\n\n\nBeneficial Ownership",
+     "",
+     "Percentage of Class (2)",
+     "",
+     ""
+    ],
+    [
+     "Current Directors and Officers:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael G. Onghai",
+     "",
+     "500,586,000",
+     "",
+     "11.5",
+     "%"
+    ],
+    [
+     "Jonathan M. Pfohl",
+     "",
+     "100,000,000",
+     "",
+     "2.3",
+     "%"
+    ],
+    [
+     "All directors and executive officers (2 persons)",
+     "",
+     "600,586,000",
+     "",
+     "13.8",
+     "%"
+    ],
+    [
+     "5% Owners",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael G. Onghai",
+     "",
+     "500,586,000",
+     "",
+     "11.5",
+     "%"
+    ],
+    [
+     "Project Nickel LLC/Grady Kittrell 1310 Cordova Road Fort Lauderdale, FL 33316",
+     "",
+     "3,720,440,000",
+     "",
+     "66.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1011,
+    "end_line": 1024
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nSecurity Ownership of Certain Beneficial Owners\nThe following table sets forth certain information regarding beneficial ownership and voting power of the common stock as of November 7, 2025, of:\n\u25cf each person serving as a director, a nominee for director, or executive officer of the Company;\n\u25cf all executive officers and directors of the Company as a group; and\n\u25cf all persons who, to our knowledge, beneficially own more than five percent of the common stock.\n\u201cBeneficial ownership\u201d here means direct or indirect voting or investment power over outstanding stock and stock which a person has the right to acquire now or within 60 days after November 7, 2025. See the accompanying footnotes to the tables below for more detailed explanations of the holdings. Except as noted, to our knowledge, the persons named in the tables beneficially own and have sole voting and investment power over all shares listed.",
+   "prose_after": "(1) Unless otherwise noted, the addresses for the above persons are in care of the Company at 540 Montreal Ave., Suite 133, Melbourne, FL 32935.\n(2) For the Current Directors and Officer the percentage of class is based on 4,340,670,903 shares of common stock issued and outstanding as of November 7, 2025. According to Schedule 13G/A file with the SEC on September 25, 2025, Project Nickel LLC holdings include (i) 2,500,000,000 shares of Common Stock held directly by Project Nickel, and (ii) 200,000 shares of Common Stock held by Grady Kitrell, the Manager of Project Nickel LLC and (iii) 1,220,240,000 shares issuable upon conversion of a Secured Convertible Promissory Note dated September 22, 2025 which is convertible at a price of $0.001 per share. The percentage is calculated based on 5,560,910,903 shares of Common Stock outstanding, which includes 4,340,670,903 shares of Common Stock outstanding as of November 7, 2025, and 1,220,240,000 shares of Common Stock issuable upon conversion of Project Nickel\u2019s convertible securities.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "111",
+     "$",
+     "118"
+    ],
+    [
+     "Tax fees",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Other fees",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "$",
+     "111",
+     "$",
+     "118"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1047,
+    "end_line": 1060
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "The crypto exchange used by the Company to monetize its self-mined Bitcoin experienced difficulties beginning in early 2023 and was ultimately shut down. The Company was unable to find a suitable replacement given its low transaction frequency and small trade volumes. As a consequence, the Company used a personal brokerage account/crypto wallet of its then CEO to effect the sales of its mined Bitcoin. These transactions occur approximately monthly and are executed and documented to provide no cost to the Company and no benefit to our former CEO. This has been remedied as of October 25, 2024 and the Company now has its own account/crypto wallet.\nOn August 1, 2023 a former executive loaned the Company $15. The loan bears interest at an annual rate of 4.43%. A maturity date has not yet been set. During the year ended December 31, 2024, the Company recorded $0.7 of interest expense in respect of this loan. In addition, a former executive is owed $45 for his payments made on behalf of the Company.\nDirector Independence\nMichael Onghai is considered independent under Section 803A of NYSE MKT rules.\nItem 14. Principal Accountant Fees and Services\nEffective January 5, 2017, RBSM LLP became our current independent auditor. The following is a summary of the fees billed by our independent auditors for professional services rendered for the fiscal years ended December 31, 2024 and 2023.",
+   "prose_after": "Audit fees consist of fees billed for services rendered for the audit of our financial statements and review of our financial statements included in our quarterly reports on Form 10\u2013Q.\nTax fees consist of fees billed for professional services related to the preparation of our U.S. federal and state income tax returns and tax advice.\nAudit\u2013related fees consist of fees reasonably related to the performance of the audit or review of the Company\u2019s financial statements that are not reported as \u201cAudit Fees.\u201d\nAll other fees consist of fees for other miscellaneous items, including fees related to registrations statements.\nAll services provided by the Company\u2019s independent auditor were approved by the Company\u2019s audit committee.\nPre\u2013Approval Policy of Services Performed by Independent Registered Public Accounting Firm\nThe Audit Committee\u2019s policy is to pre\u2013approve all audit and non\u2013audit related services, tax services and other services. Pre\u2013approval is generally provided for up to one year, and any pre\u2013approval is detailed as to the particular service or category of services and is generally subject to a specific budget. The Audit Committee has delegated the pre\u2013approval authority to its chairperson when expedition of services is necessary. The independent registered public accounting firm and management are required to periodically report to the full Audit Committee regarding the extent of services provided by the independent registered public accounting firm in accordance with this pre\u2013approval and the fees for the services performed to date.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Certificate of Amendment to Certificate of Incorporation of MGT Capital Investments, Inc. as filed with the Secretary of State of the State of Delaware on August 27, 2025 (incorporated by reference to Exhibit 3.1 to the Form 8-K filed with the SEC on August 28, 2025)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Amended and Restated Bylaws of MGT Capital Investments, Inc. (incorporated by reference to Exhibit 3.1 to the Current Report on Form 8-K filed with the SEC on January 30, 2014)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "",
+     "Certificate of Designation of Series D Preferred Stock of MGT Capital Investments, Inc., filed with the Delaware Secretary of State on October 31, 2024 (incorporated by reference to Exhibit 3.1 to the 8-K filed with the SEC on November 4, 2024)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Certificate of Designation of 12% Series B Preferred Stock of MGT Capital Investments, Inc., filed with the Delaware Secretary of State on January 11, 2019 (incorporated by reference to Exhibit 4.1 to the Current Report on Form 8-K filed with the SEC on January 14, 2019)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "",
+     "Description of MGT Capital Investment, Inc.\u2019s Securities (incorporated by reference to Exhibit 4.3 to the Annual Report on Form 10-K filed with the SEC on March 30, 2020)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "",
+     "Secured Exchange Note, by and between MGT Capital Investments, Inc and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 4.1 to the 8-K filed with the SEC on November 4, 2024)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "",
+     "Secured Convertible Promissory Note by and between MGT Capital Investments, Inc and Project Nickel LLC, dated September 22, 2025. (incorporated by reference to Exhibit 4.1 to the 8-K filed with the SEC on September 25, 2025)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "",
+     "MGT Capital Investments, Inc. 2016 Equity Incentive Plan (incorporated by reference to Annex B to the Definitive Proxy Statement on Schedule 14A filed with the SEC on August 15, 2016)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Employment Agreement, by and between MGT Capital Investments, Inc. and Robert Ladd, dated as of April 1, 2018 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on April 12, 2018)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "",
+     "Amendment to Employment Agreement, dated November 11, 2020, by and between MGT Capital Investments, Inc. and Robert Ladd (incorporated by reference to Exhibit 10.5 to the Annual Report on Form 10-K filed with the SEC on April 15, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "",
+     "Securities Purchase Agreement dated July 21, 2021, by and between MGT Capital Investments, Inc. and Streeterville Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on July 27, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "",
+     "Form of Warrant, issued by MGT Capital Investments, Inc. to Streeterville Capital LLC (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on July 27, 2021)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1084,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "Pre\u2013Approval Policy of Services Performed by Independent Registered Public Accounting Firm\nThe Audit Committee\u2019s policy is to pre\u2013approve all audit and non\u2013audit related services, tax services and other services. Pre\u2013approval is generally provided for up to one year, and any pre\u2013approval is detailed as to the particular service or category of services and is generally subject to a specific budget. The Audit Committee has delegated the pre\u2013approval authority to its chairperson when expedition of services is necessary. The independent registered public accounting firm and management are required to periodically report to the full Audit Committee regarding the extent of services provided by the independent registered public accounting firm in accordance with this pre\u2013approval and the fees for the services performed to date.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\nFinancial Statements\nThe financial statements of the Company for the fiscal years covered by this Annual Report are located on pages F-1 to F-6 of this Annual Report.",
+   "prose_after": "10.6 Exchange Agreement dated September 30, 2021, by and between MGT Capital Investments, Inc. and Bucktown Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on October 4, 2021). 10.7 Form of Warrant, issued by MGT Capital Investments, Inc. to Bucktown Capital LLC (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on October 4, 2021). 10.8 Securities Purchase Agreement dated August 5, 2022 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on August 11, 2022). 10.9 Form of Warrant issued by Company to Investor dated August 5, 2022 (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on August 11, 2022). 10.10 Securities Purchase Agreement dated August 5, 2022 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K/A filed with the SEC on August 12, 2022). 10.11 Securities Purchase Agreement, dated September 12, 2022 (incorporated by reference to Exhibit 10.1 to the Current Report on form 8-k filed September 14, 2022). 10.12 Common Stock Purchase Warrant dated September 12 (incorporated by reference to Exhibit 4.2 to the Current Report on Form 8-K filed September 14, 2022). 10.13 Secured Convertible Promissory Note dated September 12, 2022 (incorporated by reference to Exhibit 4.1 to the Current Report on Form 8-K filed September 14, 2022). 10.14 Form of Lease Agreement with Minerset Holdings LLC Exhibit dated March 16, 2023 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed March 22, 2023). 10.15 Form of Property Lease Agreement with Minerset Farms dated March 16, 2023 (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on March 22, 2023). 10.16 Secured Convertible Promissory Note (incorporated by reference to Exhibit 4.1 to Current Report on Form 8-K filed on December 20, 2023). 10.17 Exchange Agreement (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed on December 20, 2023). 10.18 Original Issue Discount Note dated March 6, 2024 (incorporated by reference to Exhibit 10.18 to the Annual Report on Form 10-K filed with the SEC on April 16, 2024). 10.19 Convertible Note Exchange Agreement, by and between MGT Capital Investments, Inc. and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 10.1 to the 8-K filed with the SEC on November 4, 2024). 10.20 Warrant Exchange and Extinguishment Agreement, by and between MGT Capital Investments, Inc. and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 10.2 to the 8-K filed with the SEC on November 4, 2024). 10.21 Promissory Note Exchange Agreement, by and between MGT Capital Investments, Inc. and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 10.3 to the 8-K filed with the SEC on November 4, 2024). 10.22 Purchase and Sale Agreement, by and between MGT Capital Investments, Inc. and CRSE Properties, LLC, dated May 13, 2025 (incorporated by reference to Exhibit 10.1 to the 8-K filed with the SEC on May 19, 2025).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1125,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.23",
+     "",
+     "Employment Agreement, by and between MGT Capital Investments, Inc. and Jonathan M. Pfohl, dated June 1, 2025 (incorporated by reference to Exhibit 10.1 to the 8-K filed with the SEC on June 5, 2025)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.24",
+     "",
+     "Termination of Employment Agreement, by and between MGT Capital Investments, Inc. and Paul Taylor, dated June 25, 2025 (incorporated by reference to Exhibit 10.2 to the 8-K filed with the SEC on July 1, 2025)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.25",
+     "",
+     "Secured Exchange Note Agreement dated September 22, 2025 (incorporated by reference to Exhibit 10.1 to the 8-K filed with the SEC on September 25, 2025)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.26",
+     "",
+     "Exchange Agreement with Director dated September 23, 2025 (incorporate by reference to Exhibit 10.2 of 8-K dated September 25, 2025)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "19.1",
+     "",
+     "Insider Trading Policy (incorporated by reference to Exhibit 19.1 to the Annual Report on Form 10-K filed with the SEC on April 16, 2024)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31",
+     "",
+     "Certification pursuant to Section 302 of the Sarbanes\u2013Oxley Act of 2002 of Principal Executive Officer and Principal Accounting Officer*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "",
+     "Certification pursuant to Section 906 of the Sarbanes\u2013Oxley Act of 2002 of Principal Executive Officer and Principal Financial Officer*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted in Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1129,
+    "end_line": 1160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "10.6 Exchange Agreement dated September 30, 2021, by and between MGT Capital Investments, Inc. and Bucktown Capital, LLC (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on October 4, 2021). 10.7 Form of Warrant, issued by MGT Capital Investments, Inc. to Bucktown Capital LLC (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on October 4, 2021). 10.8 Securities Purchase Agreement dated August 5, 2022 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed with the SEC on August 11, 2022). 10.9 Form of Warrant issued by Company to Investor dated August 5, 2022 (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed with the SEC on August 11, 2022). 10.10 Securities Purchase Agreement dated August 5, 2022 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K/A filed with the SEC on August 12, 2022). 10.11 Securities Purchase Agreement, dated September 12, 2022 (incorporated by reference to Exhibit 10.1 to the Current Report on form 8-k filed September 14, 2022). 10.12 Common Stock Purchase Warrant dated September 12 (incorporated by reference to Exhibit 4.2 to the Current Report on Form 8-K filed September 14, 2022). 10.13 Secured Convertible Promissory Note dated September 12, 2022 (incorporated by reference to Exhibit 4.1 to the Current Report on Form 8-K filed September 14, 2022). 10.14 Form of Lease Agreement with Minerset Holdings LLC Exhibit dated March 16, 2023 (incorporated by reference to Exhibit 10.1 to the Current Report on Form 8-K filed March 22, 2023). 10.15 Form of Property Lease Agreement with Minerset Farms dated March 16, 2023 (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed on March 22, 2023). 10.16 Secured Convertible Promissory Note (incorporated by reference to Exhibit 4.1 to Current Report on Form 8-K filed on December 20, 2023). 10.17 Exchange Agreement (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed on December 20, 2023). 10.18 Original Issue Discount Note dated March 6, 2024 (incorporated by reference to Exhibit 10.18 to the Annual Report on Form 10-K filed with the SEC on April 16, 2024). 10.19 Convertible Note Exchange Agreement, by and between MGT Capital Investments, Inc. and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 10.1 to the 8-K filed with the SEC on November 4, 2024). 10.20 Warrant Exchange and Extinguishment Agreement, by and between MGT Capital Investments, Inc. and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 10.2 to the 8-K filed with the SEC on November 4, 2024). 10.21 Promissory Note Exchange Agreement, by and between MGT Capital Investments, Inc. and Project Nickel LLC, dated November 1, 2024 (incorporated by reference to Exhibit 10.3 to the 8-K filed with the SEC on November 4, 2024). 10.22 Purchase and Sale Agreement, by and between MGT Capital Investments, Inc. and CRSE Properties, LLC, dated May 13, 2025 (incorporated by reference to Exhibit 10.1 to the 8-K filed with the SEC on May 19, 2025).",
+   "prose_after": "* Filed herewith.\nItem 16. Form 10\u2013K Summary.\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1128,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MGT CAPITAL INVESTMENTS, INC",
+     ""
+    ],
+    [
+     "November 10, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Jonathan M. Pfohl"
+    ],
+    [
+     "",
+     "",
+     "Jonathan M. Pfohl"
+    ],
+    [
+     "",
+     "",
+     "Interim Chief Executive Officer & Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "MGT CAPITAL INVESTMENTS, INC",
+    "November 10, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1172,
+    "end_line": 1181
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "* Filed herewith.\nItem 16. Form 10\u2013K Summary.\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jonathan M. Pfohl",
+     "Interim Chief Financial Officer & Chief Financial Officer",
+     "November 10, 2025"
+    ],
+    [
+     "Jonathan M. Pfohl",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Onghai",
+     "Director",
+     "November 10, 2025"
+    ],
+    [
+     "Michael Onghai",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1184,
+    "end_line": 1196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of MGT Capital Investments, Inc. (the Company) as of December 31, 2024 and 2023, the related statements of operations, stockholders\u2019 deficit and cash flows for each of the years in the two-year period ended December 31, 2024, and the related notes (collectively referred to as the financial statement). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2024 and 2023, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2024, in conformity with accounting principles generally accepted in the United States of America.\nThe Company\u2019s Ability to Continue as a Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations and will require additional capital to continue as a going concern. This raises substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans regarding these matters are also described in Note 2. The financial statements do not include any adjustments to reflect the possible future effects on the recoverability and classification of assets or the amounts and classification of liabilities that may result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1197,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ RBSM LLP",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2017.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Las Vegas, Nevada",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "November 10, 2025",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PCAOB ID: 587",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ RBSM LLP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1225,
+    "end_line": 1236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "Our audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that (i) relate to accounts or disclosures that are material to the financial statements and\n(ii) involved our especially challenging, subjective, or complex judgments. We determined that there were no critical audit matters.",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nBALANCE SHEETS\n(Dollars in thousands, except per-share amounts)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1202,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1236,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "6",
+     "",
+     "$",
+     "8",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "45",
+     "",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "51",
+     "",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "713",
+     "",
+     "",
+     "907",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "764",
+     "",
+     "$",
+     "932",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "532",
+     "",
+     "$",
+     "404",
+     ""
+    ],
+    [
+     "Accounts payable, related party",
+     "",
+     "45",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Accrued expenses and other payables",
+     "",
+     "473",
+     "",
+     "",
+     "244",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "45",
+     "",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Note payable",
+     "",
+     "1,882",
+     "",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "Note payable, related party",
+     "",
+     "15",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Convertible note payable, net of discount",
+     "",
+     "-",
+     "",
+     "",
+     "1,329",
+     ""
+    ],
+    [
+     "Operating lease liability",
+     "",
+     "20",
+     "",
+     "",
+     "96",
+     ""
+    ],
+    [
+     "Warrant derivative liability",
+     "",
+     "-",
+     "",
+     "",
+     "4,253",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "-",
+     "",
+     "",
+     "3,344",
+     ""
+    ],
+    [
+     "Common stock to be issued",
+     "",
+     "240",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "3,252",
+     "",
+     "",
+     "9,770",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability long-term",
+     "",
+     "-",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "3,252",
+     "",
+     "",
+     "9,790",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 10)",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Undesignated preferred stock, $0.001 par value, 8,489,800 shares authorized. No shares issued and outstanding at December 31, 2024 and 2023.",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series B preferred stock, $0.001 par value, 10,000 shares authorized. No shares issued or outstanding at December 31, 2024 and 2023.",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series C convertible preferred stock, $0.001 par value, 200 shares authorized. 0 shares issued and outstanding at December 31, 2024 and 2023, respectively.",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series D convertible preferred stock, $0.001 par value, 1,000,000 shares authorized. 650,000 and 0 shares issued and outstanding at December 31, 2024 and 2023, respectively.",
+     "",
+     "1",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value; 2,500,000,000 shares authorized; 2,490,670,903 and 849,170,903 shares issued and outstanding at December 31, 2024 and 2023, respectively.",
+     "",
+     "2,491",
+     "",
+     "",
+     "849",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "421,538",
+     "",
+     "",
+     "422,332",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(426,518)",
+     "",
+     "",
+     "(432,039)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(2,488)",
+     "",
+     "",
+     "(8,858)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "764",
+     "",
+     "$",
+     "932",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1247,
+    "end_line": 1305
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nBALANCE SHEETS\n(Dollars in thousands, except per-share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS\n(Dollars in thousands, except per-share amounts)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1241,
+     "token": "REPEATING_HEADER",
+     "id": 48,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1307,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bitcoin mining",
+     "$",
+     "143",
+     "",
+     "$",
+     "75",
+     ""
+    ],
+    [
+     "Hosting services",
+     "",
+     "179",
+     "",
+     "",
+     "324",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "322",
+     "",
+     "",
+     "399",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "395",
+     "",
+     "",
+     "476",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,051",
+     "",
+     "",
+     "1,356",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,446",
+     "",
+     "",
+     "1,832",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(1,124)",
+     "",
+     "",
+     "(1,433)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other non-operating income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(303)",
+     "",
+     "",
+     "(91)",
+     ""
+    ],
+    [
+     "Change in fair value of warrant derivative liability",
+     "",
+     "4,150",
+     "",
+     "",
+     "(2,685)",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "2,976",
+     "",
+     "",
+     "(249)",
+     ""
+    ],
+    [
+     "Loss on settlement of derivative",
+     "",
+     "-",
+     "",
+     "",
+     "(302)",
+     ""
+    ],
+    [
+     "Lease incentive loss",
+     "",
+     "-",
+     "",
+     "",
+     "(184)",
+     ""
+    ],
+    [
+     "Accretion of debt discount",
+     "",
+     "(199)",
+     "",
+     "",
+     "(1,269)",
+     ""
+    ],
+    [
+     "Gain on sale of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "70",
+     ""
+    ],
+    [
+     "Gain on settlement of debt",
+     "",
+     "15",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "6",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total non-operating income (expense)",
+     "",
+     "6,645",
+     "",
+     "",
+     "(4,700)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "5,521",
+     "",
+     "$",
+     "(6,133)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Per-share data",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted, net income (loss) per share",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Basic and diluted, weighted average number of common shares outstanding",
+     "",
+     "1,278,102,597",
+     "",
+     "",
+     "761,862,958",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1313,
+    "end_line": 1356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS\n(Dollars in thousands, except per-share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2024 AND 2023\n(Dollars in thousands, except per-share amounts)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1307,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2023",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "703,770,903",
+     "$",
+     "704",
+     "$",
+     "421,468",
+     "",
+     "$",
+     "(425,906)",
+     "",
+     "$",
+     "(3,734)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cashless exercise of warrants and extinguishment of related warrant derivative liability",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "91,400,000",
+     "",
+     "91",
+     "",
+     "370",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "461",
+     ""
+    ],
+    [
+     "Issuance of shares in respect of lease agreement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "34,000,000",
+     "",
+     "34",
+     "",
+     "374",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "408",
+     ""
+    ],
+    [
+     "Conversion of convertible note into Common Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "20,000,000",
+     "",
+     "20",
+     "",
+     "120",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "140",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "$",
+     "(6,133)",
+     "",
+     "$",
+     "(6,133)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "849,170,903",
+     "$",
+     "849",
+     "$",
+     "422,332",
+     "",
+     "$",
+     "(432,039)",
+     "",
+     "$",
+     "(8,858)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cashless exercise of warrants and extinguishment of related warrant derivative liability",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "103,500,000",
+     "",
+     "104",
+     "",
+     "(41)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "63",
+     ""
+    ],
+    [
+     "Issuance of shares in respect of lease agreement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "62,000,000",
+     "",
+     "62",
+     "",
+     "214",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "276",
+     ""
+    ],
+    [
+     "Conversion of convertible note into Common Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "126,000,000",
+     "",
+     "126",
+     "",
+     "287",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "413",
+     ""
+    ],
+    [
+     "Issuance of Common Stock in connection with exchange agreement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "600,000,000",
+     "",
+     "600",
+     "",
+     "(571)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Issuance of Common Stock in connection with note exchange agreement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "750,000,000",
+     "",
+     "750",
+     "",
+     "(713)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "37",
+     ""
+    ],
+    [
+     "Issuance of Preferred Stock in connection with exchange agreement",
+     "",
+     "650,000",
+     "",
+     "1",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "30",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "31",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "5,521",
+     "",
+     "",
+     "5,521",
+     ""
+    ],
+    [
+     "Balance at December 31, 2024",
+     "",
+     "650,000",
+     "$",
+     "1",
+     "",
+     "2,490,670,903",
+     "$",
+     "2,491",
+     "$",
+     "421,538",
+     "",
+     "$",
+     "(426,518)",
+     "",
+     "$",
+     "(2,488)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1366,
+    "end_line": 1393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2024 AND 2023\n(Dollars in thousands, except per-share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\n(Dollars in thousands, except per-share amounts)",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "5,521",
+     "",
+     "$",
+     "(6,133)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "194",
+     "",
+     "",
+     "260",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "211",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on sale of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "(70)",
+     ""
+    ],
+    [
+     "Change in fair value of warrant derivative liability",
+     "",
+     "(4,150)",
+     "",
+     "",
+     "2,685",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "(2,976)",
+     "",
+     "",
+     "249",
+     ""
+    ],
+    [
+     "Loss on settlement of derivative",
+     "",
+     "-",
+     "",
+     "",
+     "302",
+     ""
+    ],
+    [
+     "Loss on lease incentive",
+     "",
+     "-",
+     "",
+     "",
+     "184",
+     ""
+    ],
+    [
+     "Accretion of debt discount",
+     "",
+     "199",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of note discount",
+     "",
+     "-",
+     "",
+     "",
+     "1,269",
+     ""
+    ],
+    [
+     "Loss (gain) on settlement of debt",
+     "",
+     "15",
+     "",
+     "",
+     "(10)",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(28)",
+     "",
+     "",
+     "(17)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "-",
+     "",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Intangible digital assets",
+     "",
+     "-",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "-",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "163",
+     "",
+     "",
+     "394",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "30",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "276",
+     "",
+     "",
+     "129",
+     ""
+    ],
+    [
+     "Contract liability",
+     "",
+     "-",
+     "",
+     "",
+     "(30)",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "-",
+     "",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(547)",
+     "",
+     "",
+     "(710)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of stock under lease agreement",
+     "",
+     "420",
+     "",
+     "",
+     "340",
+     ""
+    ],
+    [
+     "Repayment of loan payable",
+     "",
+     "-",
+     "",
+     "",
+     "(200)",
+     ""
+    ],
+    [
+     "Proceeds from notes payable, related party",
+     "",
+     "-",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Proceeds from loans payable",
+     "",
+     "125",
+     "",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "545",
+     "",
+     "",
+     "180",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "(2)",
+     "",
+     "",
+     "(530)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "",
+     "8",
+     "",
+     "",
+     "538",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "6",
+     "",
+     "$",
+     "8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "92",
+     "",
+     "$",
+     "28",
+     ""
+    ],
+    [
+     "Cash paid for income tax",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cashless exercise of warrants and extinguishment of related warrant derivative liability",
+     "$",
+     "63",
+     "",
+     "$",
+     "461",
+     ""
+    ],
+    [
+     "Issuance of Common Stock in respect of lease agreement",
+     "",
+     "276",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Common Stock in connection with exchange agreement",
+     "",
+     "29",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of Common Stock in connection with note exchange agreement",
+     "$",
+     "37",
+     "",
+     "$",
+     "140",
+     ""
+    ],
+    [
+     "Issuance of Preferred Stock in connection with exchange agreement",
+     "",
+     "31",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Conversion of convertible note into common stock",
+     "$",
+     "413",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1401,
+    "end_line": 1469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS\n(Dollars in thousands, except per-share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO THE FINANCIAL STATEMENTS\n(Dollars in thousands, except share and per\u2013share amounts)\nNote 1. Organization and Basis of Presentation\nOrganization and Business\nMGT has historically operated in the Bitcoin mining and hosting industry. During the year ended December 31, 2024, the Company\u2019s operations consisted primarily of hosting services for third-party miners and self-mining activities at its facility in Georgia. Revenue was derived from hosting fees paid by customers under lease arrangements and from the mining of Bitcoin using Company-owned machines.\nAs of December 31, 2024, the Company owned 35 Antminer S19 Pro miners providing approximately 3 Ph/s in hash power for self-mining. The Company\u2019s mining activity also included the use of approximately 115 third-party-owned miners that management considered abandoned. The Company offered third-party owners of miners a hosting service whereby MGT operated and maintained miners for a fixed monthly fee. All miners, both Company-owned and hosted, were housed in a modified shipping container on property owned by the Company in Georgia.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1471,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Digital currencies at January 1, 2023",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Additions of digital currencies from mining",
+     "",
+     "75",
+     ""
+    ],
+    [
+     "Realized loss on sale of digital currencies",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Sale of digital currencies",
+     "",
+     "(89)",
+     ""
+    ],
+    [
+     "Digital currencies at December 31, 2023",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Additions of digital currencies from mining",
+     "",
+     "143",
+     ""
+    ],
+    [
+     "Realized loss on sale of digital currencies",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "Sale of digital currencies",
+     "",
+     "(151)",
+     ""
+    ],
+    [
+     "Digital currencies at December 31, 2024",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1537,
+    "end_line": 1551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "to our audited financial statements appearing elsewhere in this report includes Recent Accounting Pronouncements."
+    }
+   },
+   "prose_before": "Any purchases of cryptocurrencies by the Company are included within investing activities in the accompanying statements of cash flows, while cryptocurrencies awarded to the Company through its mining activities are included within operating activities on the accompanying statements of cash flows. The sales of cryptocurrencies are included within investing activities in the accompanying statements of cash flows and any realized gains or losses from such sales are included in other income (expense) in the statements of operations. The Company accounts for its gains or losses in accordance with the first in first out (FIFO) method of accounting.\nHalving \u2013 The Bitcoin blockchain and the cryptocurrency reward for solving a block is subject to periodic incremental halving. Halving is a process designed to control the overall supply and reduce the risk of inflation in cryptocurrencies using a Proof-of-Work consensus algorithm. At a predetermined block, the mining reward is cut in half, hence the term \u201cHalving.\u201d A Halving for bitcoin occurred in April 2024, with a revised reward payout of 3.125 Bitcoin per block. Many factors influence the price of Bitcoin and potential increases or decreases in prices in advance of or following a future halving is unknown.\nThe following table presents the activities of digital currencies for the years ended December 31, 2024 and 2023:\nSchedule of Digital Currencies",
+   "prose_after": "Property and Equipment\nProperty and equipment are stated at cost less accumulated depreciation. Depreciation is calculated using the straight\u2013line method on the various asset classes over their estimated useful lives, which range from one to ten years when placed in service. The cost of repairs and maintenance is expensed as incurred; major replacements and improvements are capitalized. When assets are retired or disposed of, the cost and accumulated depreciation are removed from the accounts, and any resulting gains or losses are included in income in the year of disposition.\nLeases\nThe Company accounts for its leases under ASC 842, Leases. Under this guidance, arrangements meeting the definition of a lease are classified as operating or financing leases and are recorded on the consolidated balance sheet as both a right of use asset and lease liability, calculated by discounting fixed lease payments over the lease term at the rate implicit in the lease or the Company\u2019s incremental borrowing rate. Lease liabilities are increased by interest and reduced by payments each period, and the right of use asset is amortized over the lease term. For operating leases, interest on the lease liability and the amortization of the right of use asset result in straight-line rent expense over the lease term. Variable lease expenses, if any, are recorded when incurred.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1526,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1559,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "55",
+     "",
+     "$",
+     "55",
+     ""
+    ],
+    [
+     "Computer hardware and software",
+     "",
+     "10",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Bitcoin mining machines",
+     "",
+     "70",
+     "",
+     "",
+     "70",
+     ""
+    ],
+    [
+     "Infrastructure",
+     "",
+     "1,185",
+     "",
+     "",
+     "1,185",
+     ""
+    ],
+    [
+     "Containers",
+     "",
+     "403",
+     "",
+     "",
+     "403",
+     ""
+    ],
+    [
+     "Property and equipment, gross",
+     "",
+     "1,723",
+     "",
+     "",
+     "1,723",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(1,010)",
+     "",
+     "",
+     "(816)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "713",
+     "",
+     "$",
+     "907",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1658,
+    "end_line": 1675
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "On December 13, 2023, the FASB issued ASU 2023-08, which addresses the accounting and disclosure requirements for certain crypto assets. The new guidance requires entities to subsequently measure certain crypto assets at fair value, with changes in fair value recorded in net income in each reporting period. In addition, entities are required to provide additional disclosures about the holdings of certain crypto assets. The ASU\u2019s amendments are effective for fiscal years beginning after December 15, 2024, including interim periods within those years. Early adoption is permitted. The Company has not elected early adoption of ASU 2023-08 and does not anticipate the adoption will have impact on its financial statements.\nNote 4. Accounts Receivable\nAccounts receivable balance of $45 and $17 at December 31, 2024 and 2023, respectively, consisted primarily of receivables in respect of electricity for hosting.\nNote 5. Property and Equipment\nProperty and equipment consisted of the following:\nSchedule of Property and Equipment",
+   "prose_after": "The Company recorded depreciation expense of $194 and $260 for the years ended December 31, 2024 and 2023, respectively. For the years ended December 31, 2024 and 2023, the Company recorded gains on sale of property and equipment of $0 and $70, respectively\nNote\n6. Notes Payable\nSeptember 2022 Note\nOn September 12, 2022, the Company entered into a securities purchase agreement, pursuant to which the Company received $1,335 in exchange for the issuance of a secured convertible promissory note (the \u201cSeptember 2022 Note\u201d) in the principal amount of $1,500 with an original issue discount of $165. Any time prior to a change of control transaction, the September 2022 Note is convertible into 30% of the outstanding shares of the Company\u2019s common stock on the conversion date on a post-conversion basis (the \u201cConversion Shares\u201d). The September 2022 Note matures December 31, 2023 and bears interest at a rate of 6% per annum. The September 2022 Note provides for customary events of default, the occurrence of which would result in 110% the principal and other accrued amounts outstanding under the September 2022 Note to become immediately due and payable, with the interest rate increasing to 12%. On December 19, 2023, the Company exchanged the September 2022 Note for a new note (see below).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1651,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1704,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Stock price",
+     "$",
+     "0.003",
+     ""
+    ],
+    [
+     "Term (years)",
+     "",
+     "1.00",
+     ""
+    ],
+    [
+     "Annual volatility",
+     "",
+     "108.59",
+     "%"
+    ],
+    [
+     "Annual expected return",
+     "",
+     "10.24",
+     "%"
+    ],
+    [
+     "Discount rate",
+     "",
+     "4.79",
+     "%"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1717,
+    "end_line": 1727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "On November 1, 2024, the lender also exchanged all outstanding warrants to purchase 2,043,808,450 shares of common stock for 600,000,000 shares of common stock and 650,000 shares of Series D Preferred Stock. As a result of the exchange, the Company recognized a $4,150 reduction in the fair value of the related warrant derivative liability immediately prior to settlement. The Company determined the fair value of the instruments exchanged as of November 1, 2024. The fair value of the common stock was based on the closing market price of $0.0001 per share on the exchange date. The fair value of the Series D Preferred Stock was estimated using an market based approach that considered its current price of the common stock and then applying the conversion ratio as stipulated in the agreement and then applying a dilution in the fair value. The warrants surrendered were valued immediately prior to the exchange using the Black-Scholes option-pricing model, with key inputs including an expected volatility of 301%, risk-free interest rates of 4.23% to 4.32%, expected terms of 0.86 to 1.72 years, and dividend yield of 0%. Following completion of the exchange, no warrants remained outstanding.\nDerivative Liability\nThe Company valued the derivative liability relating to the embedded conversion feature using the Monte Carlo Simulation Method because of the unknown stock price at the future time of conversion. The Monte Carlo Simulation was calculated using the following assumptions:\nSchedule of Monte Carlo Simulation Assumption",
+   "prose_after": "The Company\u2019s activity in its convertible debt related derivative liability was as follows for the years ended December 31, 2023 and 2024\nSchedule of Derivative Liability Activity",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1704,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1753,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance of derivative liability at January 1, 2023",
+     "$",
+     "3,223",
+     ""
+    ],
+    [
+     "Settlement of derivative liability at debt conversion",
+     "",
+     "(128)",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "249",
+     ""
+    ],
+    [
+     "Balance of derivative liability at December 31, 2023",
+     "$",
+     "3,344",
+     ""
+    ],
+    [
+     "Settlement of derivative liability at exchange",
+     "",
+     "(368)",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "(2,976)",
+     ""
+    ],
+    [
+     "Balance of derivative liability at December 31, 2024",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1732,
+    "end_line": 1745
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "The Company\u2019s activity in its convertible debt related derivative liability was as follows for the years ended December 31, 2023 and 2024\nSchedule of Derivative Liability Activity",
+   "prose_after": "Key valuation inputs used at the November 1, 2024 settlement date were consistent with those disclosed above: stock price $0.0001 per share, strike $0.007 \u2013 $0.05, risk-free rate 4.23 \u2013 4.32 %, expected volatility \u2248 301 %, expected term 0.86 \u2013 1.72 years, and dividend yield 0 %. Upon completion of the warrant exchange, the derivative liability was fully extinguished.\nAs of December 31, 2024, the fair value of the derivative liability was $0 and for the year ended December 31, 2024 the Company recorded a change in fair value of derivative liability of $2,976 from the settlement of debt related to the derivative liability as non-operating income in the statements of operations. As of December 31, 2023, the fair value of the derivative liability was $3,344 and for the year ended December 31, 2023 the Company recorded a loss of $249 from the change in fair value of derivative liability as non-operating income in the statements of operations.\nWarrant Derivative Liabilities\nAs noted above, all the outstanding warrants as of November 1, 2024 were exchanged by the lender resulting in a gain on settlement from the exchange.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1704,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1753,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance of warrant derivative liabilities at January 1, 2023",
+     "$",
+     "1,727",
+     ""
+    ],
+    [
+     "Transfer out upon conversion of convertible notes and warrants with embedded conversion provisions",
+     "",
+     "(157)",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "2,685",
+     ""
+    ],
+    [
+     "Balance of warrant derivative liabilities at December 31, 2023",
+     "$",
+     "4,253",
+     ""
+    ],
+    [
+     "Transfer out upon conversion of convertible notes and warrants with embedded conversion provisions",
+     "",
+     "(809)",
+     ""
+    ],
+    [
+     "Transfer in due to issuance of warrants with embedded conversion features",
+     "",
+     "706",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "(4,150)",
+     ""
+    ],
+    [
+     "Balance of warrant derivative liabilities at December 31, 2024",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1762,
+    "end_line": 1776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "As of December 31, 2023, the fair value of the warrant derivative liabilities was $4,253 and for the year ended December 31, 2023 the Company recorded a loss of $2,685 from the change in fair value of derivative warrant liability as non-operating income in the statements of operations. The Company valued the warrant derivative liabilities other than the warrants issued as part of the debt financing using the Black-Scholes option pricing model using the following assumptions as of December 31, 2023: 1) stock price of $0.003, 2) exercise prices of $0.03 - 0.12, 3) remaining lives of 2.05 \u2013 2.56 years, 4) dividend yields of 0%, 5) risk free rates of 4.01 \u2013 4.23%, and 6) volatility of 157.7 \u2013 312.4 %. The Company valued the warrant derivative liability relating to warrants issued in the 2022 debt financing using the binomial lattice model because of the variable exercise price with the following assumptions as of December 31, 2023: 1) stock price of $0.004, 2) remaining life of 1.70 years, 3) dividend yield of 0%, 4) risk free rate of 4.23%, and 5) volatility of 344.4%.\nThe valuation at the November 1, 2024 exchange date incorporated the following assumptions: stock price $0.0001 per share; strike prices $0.007 \u2013 $0.05 per share; risk-free interest rates 4.23 \u2013 4.32 %; expected volatility 301 %; expected terms 0.86 \u2013 1.72 years; dividend yield 0 %. The resulting aggregate fair value of the warrants exchanged was $59,642, as calculated by the Company\u2019s valuation specialist. All warrant derivative liabilities were eliminated upon completion of the exchange.\nThe Company\u2019s activity in its derivative liabilities was as follows for the year ended December 31, 2024:\nSchedule of Warrant Derivative Liabilities",
+   "prose_after": "The Company recorded change in fair value of warrant liability in the amount of $4,150 for the year ended December 31, 2024. The Company recorded loss from the change in fair value of the warrant liability in the amount of $2,685 for the year ended December 31, 2023.\nFluctuations in the Company\u2019s stock price are a primary driver for the changes in the derivative valuations during each reporting period. As the stock price increases for each of the related derivative instruments, the value to the holder of the instrument generally increases, therefore increasing the liability on the Company\u2019s balance sheet. Additionally, stock price volatility is one of the significant unobservable inputs used in the fair value measurement of each of the Company\u2019s derivative instruments. The simulated fair value of these liabilities is sensitive to changes in the Company\u2019s expected volatility. Increases in expected volatility would generally result in higher fair value measurement. A 10% change in pricing inputs and changes in volatilities and correlation factors would not result in a material change in our Level 3 fair value.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1753,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1812,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "derivatives_hedging",
+    "aligned_family": "derivatives_hedging",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Warrant derivative liability",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1783,
+    "end_line": 1795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "The Company recorded change in fair value of warrant liability in the amount of $4,150 for the year ended December 31, 2024. The Company recorded loss from the change in fair value of the warrant liability in the amount of $2,685 for the year ended December 31, 2023.\nFluctuations in the Company\u2019s stock price are a primary driver for the changes in the derivative valuations during each reporting period. As the stock price increases for each of the related derivative instruments, the value to the holder of the instrument generally increases, therefore increasing the liability on the Company\u2019s balance sheet. Additionally, stock price volatility is one of the significant unobservable inputs used in the fair value measurement of each of the Company\u2019s derivative instruments. The simulated fair value of these liabilities is sensitive to changes in the Company\u2019s expected volatility. Increases in expected volatility would generally result in higher fair value measurement. A 10% change in pricing inputs and changes in volatilities and correlation factors would not result in a material change in our Level 3 fair value.\nSchedule of Derivative Liability Fair value",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1753,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1812,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "3,344",
+     "$",
+     "3,344"
+    ],
+    [
+     "Warrant derivative liability",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "4,253",
+     "$",
+     "4,253"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1796,
+    "end_line": 1808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 7. Loans Payable\nAs part of a payment to the City of LaFayette, the bank erroneously created a note payable in the amount of $200 in respect of the payment instead of drawing funds from the Company\u2019s account at the bank. The note bore no interest and did not have a maturity date. The note was settled with funds from the Company\u2019s account on January 3, 2023.\nDuring the year ended December 31, 2023, entered into a non-convertible loan with a lender in the amount of $25. The loan bears interest at an annual rate of 12% and the maturity date was November 19, 2024. On March 6, 2024, the lender provided the Company with an additional non-convertible loan in the amount of $125. The loan bears interest at an annual rate of 12% and the maturity date is March 5, 2025. On April 30, 2024, the lender provided the Company with an additional non-convertible loan in the amount of $50. The loan bears interest at an annual rate of 12% and the maturity date is April 30, 2025. On November 1, 2024, the lender consolidated and exchanged such notes, including interest owed into a new promissory note with an aggregate outstanding balance of $242. This new Promissory note bears interest at an annual rate of 8% and the maturity date is December 31, 2025. During the year ended December 31, 2024, the Company recorded interest expense in the amount of $0.3 with respect to these loans.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1753,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1812,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Warrant shares outstanding",
+     "",
+     "",
+     "*Weighted average exercise price",
+     "",
+     "*Weighted average remaining life",
+     "",
+     "Intrinsic value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding and exercisable at January 1, 2023",
+     "",
+     "682,563,502",
+     "",
+     "$",
+     "0.06",
+     "",
+     "3.18",
+     "$",
+     "-"
+    ],
+    [
+     "Issued",
+     "",
+     "551,515,432",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "(31,668,360)",
+     "",
+     "",
+     "0.05",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding and exercisable at December 31, 2023",
+     "",
+     "1,202,410,574",
+     "",
+     "$",
+     "0.03",
+     "",
+     "2.75",
+     "$",
+     "-"
+    ],
+    [
+     "Issued",
+     "",
+     "844,744,296",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "(3,346,420)",
+     "",
+     "",
+     "0.05",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exchanged",
+     "",
+     "(2,043,808,450)",
+     "",
+     "",
+     "0.01",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding and exercisable at December 31, 2024",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1869,
+    "end_line": 1887
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Common Stock, Preferred Stock and Warrants"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2023, 8,868,360 warrants were exercised on a cashless basis for the issuance of 80,000,000 shares of common stock. Upon cashless exercise, the Company calculated the fair value of derivative liability on warrants of $44, compared it to the fair value of 80,000,000 shares of $346 and recorded a loss on extinguishment of $302. The Company valued the warrant derivative liability using the Black-Scholes option pricing model using the following assumptions on the date of exercise: 1) stock price of $0.0023-0.01, 2) exercise price of $0.05,\n3) remaining life of 2.2-3.1 years, 4) dividend yield of 0%, 5) risk free rate of 3.76-4.37%, and 6) volatility of 171.4-309.3%.\nAs noted in Note 6, on November 1, 2024, all outstanding warrants were exchanged for common stock and preferred stock. As a result, the extinguishment of the warrant liabilities was recognized as a gain from settlement of warrant liabilities. There were no outstanding warrants as of December 31, 2024.\nThe following table summarizes information about shares issuable under warrants outstanding during the year ended December 31, 2024:\nSchedule of Warrants Outstanding",
+   "prose_after": "(*) Of the 844,744,296 warrants issued during the year ended December 31, 2024 and 0 warrants outstanding and exercisable at December 31, 2024, the weighted average exercise price and weighted average remaining life was not included for 844,744,296 and 0 warrants, respectively, because their exercise price is variable. Of the 551,515,432 warrants issued during the year ended December 31, 2023 and 1,202,410,574 warrants outstanding and exercisable at December 31, 2023, the weighted average exercise price and weighted average remaining life was not included for 551,515,432 and 1,119,044,442 warrants, respectively, because their exercise price is variable. See Note 6 for the exercise prices of Series X, Y, and Z warrants. The Series X, Y, and Z warrants terminated with the Company\u2019s convertible note exchange on November 1, 2024.\nNote 10. Commitments and Contingencies\nBitcoin Production Equipment and Operations\nOn March 16, 2023, the Company entered into a partnership agreement (the \u201cPartnership Agreement\u201d) and a property lease agreement (the \u201cLease Agreement\u201d, and together with the Partnership Agreement, collectively, the \u201cAgreement\u201d) with another cryptocurrency mining company (\u201cTenant\u201d). Pursuant to the Lease Agreement, the Company agreed to lease to Tenant portions of the Company\u2019s six acre mining facility in Lafayette, GA in increments of up to 10 spaces that are 40 feet in length and eight feet in height each (\u201cSpaces\u201d), together with related utilities access including electricity of up to one megawatt (\u201cMW\u201d) per Space, for deploying mining equipment, in exchange for rental payments of $5 per Space per month (provided the Spaces are powered) and payment of the electricity costs and deposit requirements arising from the Spaces. In connection with the Lease Agreement, Tenant agreed to make an initial deposit of $229 for the initial electricity deployment for five MW.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1864,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1897,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total lease payments to be received",
+     "",
+     "",
+     "$",
+     "920,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shares",
+     "",
+     "FMV on grant date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "184,000,000",
+     "x",
+     "0.006",
+     "",
+     "1,104,000",
+     ""
+    ],
+    [
+     "Loss at Inception",
+     "",
+     "",
+     "$",
+     "(184,000)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1902,
+    "end_line": 1911
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company considered the terms of the Option under ASC 815 and concluded that the Option is a non-option embedded derivative with no initial fair value and would not require bifurcation from the host contract. ASC 606 states that consideration payable to a customer should be recorded as a direct reduction to the transaction price. Therefore, the Company determined the transaction should be accounted for on a net basis, and the fair value of the equity should be recorded as a direct deduction from rental revenue. The Company determined that the share issuances would be treated as lease incentives and ASC 842-10-30-5 requires lease incentives to be recorded as a reduction of fixed payments when determining lease payments. The Company concluded that the equity portion of the agreement should be recorded at fair value on the grant date. Upon recording the equity at fair value at the time of issuance and taking into consideration that revenue should be reduced by the fair value of equity, the Company determined that the fair value of the equity exceeds the total cash to be received based on the fair value of the contract at the date of issuance, resulting in a contract loss at inception.\nSchedule of Loss at Inception",
+   "prose_after": "The Company applied the guidance under ASU 2021-05 and determined that it would be appropriate to account for the entire loss at commencement and recognize that loss as a future equity commitment. The loss is based on the difference between the amount of cash to be received under the contract and the fair value of the stock to be issued under the contract. As the lease actually commenced on April 1, 2023, the Company began accounting for the lease on that date. At lease inception, the Company recorded a lease incentive loss of $184 and recorded an operating lease liability in the corresponding amount. The lease liability will be reduced over the lease term period in conjunction with the issuance of the shares. During the year ended December 31, 2024, the Company received $420, issued 62 million shares of common stock and reduced the lease liability by $96.\nLegal proceedings\nWe are not engaged in any material legal proceedings. However, in the normal course of business, we may from time to time be named as a party to legal claims, actions and complaints, including matters involving employment, intellectual property others. Although we anticipate that we will continue to incur legal fees in the coming periods to defend our intellectual property rights, we do not believe that there are any claims or actions pending against us currently, the ultimate disposition of which could have a material adverse effect on our results of operation, financial condition or cash flows.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1897,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "U.S. federal tax loss carry\u2013forward",
+     "$",
+     "18,952",
+     "",
+     "$",
+     "18,656",
+     ""
+    ],
+    [
+     "U.S. State tax loss carry\u2013forward",
+     "",
+     "446",
+     "",
+     "",
+     "382",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "",
+     "8,567",
+     "",
+     "",
+     "8,567",
+     ""
+    ],
+    [
+     "Fixed assets, intangible assets and goodwill",
+     "",
+     "(51)",
+     "",
+     "",
+     "(51)",
+     ""
+    ],
+    [
+     "Accruals",
+     "",
+     "-",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Long-term investments",
+     "",
+     "(7)",
+     "",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "27,907",
+     "",
+     "",
+     "27,549",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(27,907)",
+     "",
+     "",
+     "(27,549)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1940,
+    "end_line": 1958
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The crypto exchange used by the Company to monetize its self-mined Bitcoin experienced difficulties beginning in early 2023 and was ultimately shut down. The Company was unable to find a suitable replacement given its low transaction frequency and small trade volumes. As a consequence, the Company uses a personal brokerage account/crypto wallet of its CEO to effect the sales of its mined Bitcoin. These transactions occur approximately monthly and are executed and documented to provide no cost to the Company and no benefit to our CEO. This has been remedied as of October 25, 2024 and the Company now has its own account/crypto wallet.\nAccounts Payable \u2013 Related Party\nDuring the year ended December 31, 2023, a former executive paid consultants reimbursable by the Company in the amount of $20, which remained outstanding as of December 31, 2024. In the second quarter of 2024, the same former executive also paid legal fees reimbursable by the Company in the amount of $25. As of December 31, 2024, the total amount of $45 remains outstanding.\nNote 13. Income Taxes\nSignificant components of deferred tax assets were as follows:\nSchedule of Components of Deferred Tax Assets",
+   "prose_after": "As of December 31, 2024, the Company had the following tax attributes:\nSchedule of Operating Loss Carryforwards",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1994,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount",
+     "",
+     "Begins to expire",
+     ""
+    ],
+    [
+     "U.S. federal net operating loss carry\u2013forwards",
+     "$",
+     "90,246",
+     "",
+     "Fiscal 2024"
+    ],
+    [
+     "U.S. State net operating loss carry\u2013forwards - Georgia",
+     "",
+     "9,715",
+     "",
+     "Unlimited"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1963,
+    "end_line": 1969
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "As of December 31, 2024, the Company had the following tax attributes:\nSchedule of Operating Loss Carryforwards",
+   "prose_after": "The reconciliation of income tax expense computed at the U.S. federal statutory rate to the income tax provision for the years ended December 31, 2024, and 2023 is as follows:\nSchedule of Effective Income Tax Rate Reconciliation",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1994,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Expected Federal Tax",
+     "",
+     "-21.0",
+     "%",
+     "",
+     "-21.0",
+     "%"
+    ],
+    [
+     "State income taxes (net of federal benefit)",
+     "",
+     "1.2",
+     "%",
+     "",
+     "-1.2",
+     "%"
+    ],
+    [
+     "Permanent adjustments",
+     "",
+     "26.3",
+     "%",
+     "",
+     "15.5",
+     "%"
+    ],
+    [
+     "True up of prior year deferred tax assets",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Change in state tax rate",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Expiration of tax attributes",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.6",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "-6.5",
+     "%",
+     "",
+     "6.1",
+     "%"
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1974,
+    "end_line": 1990
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The reconciliation of income tax expense computed at the U.S. federal statutory rate to the income tax provision for the years ended December 31, 2024, and 2023 is as follows:\nSchedule of Effective Income Tax Rate Reconciliation",
+   "prose_after": "As it is not more likely than not that the resulting deferred tax benefits will be realized, a full valuation allowance has been recognized for such deferred tax assets. For the year ended December 31, 2024, the valuation allowance increased by $358. Federal and state laws impose substantial restrictions on the utilization of tax attributes in the event of an \u201cownership change,\u201d as defined in Section 382 of the Internal Revenue Code. As of December 31, 2024, the Company performed a high-level review of its changes in ownership and determined that a change of control event likely occurred under Section 382 of the Internal Revenue Code and the Company\u2019s net operating loss carryforwards are likely to be limited.\nThe Company has adopted the provisions of ASC 740-10-25, which provides recognition criteria and a related measurement model for uncertain tax positions taken or expected to be taken in income tax returns. ASC 740-10-25 requires that a position taken or expected to be taken in a tax return be recognized in the financial statements when it is more likely than not that the position would be sustained upon examination by tax authorities.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1994,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

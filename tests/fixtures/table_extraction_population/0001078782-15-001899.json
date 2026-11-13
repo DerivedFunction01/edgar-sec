@@ -1,0 +1,2097 @@
+{
+ "accession": "0001078782-15-001899",
+ "cik": "0001627041",
+ "form": "10-K",
+ "filing_date": "2015-11-19",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k083115_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "333-201239",
+     "61-1633330"
+    ],
+    [
+     "(State or Jurisdiction of\n\n\n\nIncorporation or Organization)",
+     "(Commission File Number)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U. S. SECURITIES AND EXCHANGE COMMISSION\nWashington, D. C. 20549\nFORM 10-K\n[X] .\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE QUARTERLY PERIOD ENDED AUGUST 31, 2015\nOR\n.\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934 FOR THE TRANSITION PERIOD FROM _____________ TO _____________\neBizware, Inc.\n(Name of Registrant in its Charter)",
+   "prose_after": "5251 West 116th Place, Suite 200\nOverland Park, KS 66211\n(Address of Principal Executive Offices)\nRegistrant\u2019s telephone number, including area code: 913.826.6888\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common Stock",
+     "",
+     "Outstanding Shares at November 16, 2015"
+    ],
+    [
+     "Common Stock, par value $.001 per share",
+     "",
+     "5,280,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "5251 West 116th Place, Suite 200\nOverland Park, KS 66211\n(Address of Principal Executive Offices)\nRegistrant\u2019s telephone number, including area code: 913.826.6888\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n.Yes [X] . No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n. Yes [X] . No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] . Yes . No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (Section 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "4"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "6"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "6"
+    ],
+    [
+     "Item 4",
+     "Submission of Matters to a Vote of Security Holders",
+     "6"
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "6"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "6"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "Item 8",
+     "Financial Statements",
+     "7"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreement with Accountants on Accounting and Financing Disclosure",
+     "8"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "8"
+    ],
+    [
+     "Item 9B",
+     "Other Information.",
+     "9"
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors and Executive Officers",
+     "9"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "10"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management",
+     "11"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions",
+     "11"
+    ],
+    [
+     "Item 14",
+     "Principal Accounting Fees and Services",
+     "11"
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits",
+     "12"
+    ],
+    [
+     "Signatures",
+     "",
+     "12"
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "State the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant's most recently completed second fiscal quarter: $39,000\nApplicable only to issuers involved in bankruptcy proceedings during the preceding five years:\nIndicate by check mark whether the registrant filed all documents and reports required to be filed by Sections 12, 13 or 15(d) of the Exchange Act of 1934 subsequent to the distribution of securities under a plan confirmed by a court. Yes . No .\nDocuments Incorporated by Reference\nList hereunder the following documents if incorporated by reference and the Part of the Form 10-K (e.g., Part I, Part II, etc.) into which the document is incorporated: (1) Any annual report to security holders; (2) Any proxy or information statement; and (3) Any prospectus filed pursuant to rule 424(b) or (c) of the Securities Act of 1933. The listed documents should be clearly described for identification purposes (e.g., annual report to security holders for fiscal year ended December 24, 1980). None",
+   "prose_after": "3\nPART I\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934. Forward-looking statements are statements that look to future events and consist of, among other things, statements about our anticipated future income including the amount and mix of revenue among type of product, category of customer, geographic region and distribution method and our anticipated future expenses and tax rates. Forward-looking statements include our business strategies and objectives and include statements about the expected benefits of our strategic alliances and acquisitions, our plans for the integration of acquired businesses, our continued investment in complementary businesses, products and technologies, our expectations regarding product acceptance, product and pricing competition, cash requirements and the amounts and uses of cash and working capital that we expect to generate and statements including such words as \u201cmay,\u201d \u201cbelieve,\u201d \u201cplan,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cpredict,\u201d \u201cgoals,\u201d \u201ccontinue,\u201d \u201cproject,\u201d and similar expressions or the negative of these terms or other comparable terminology. These forward-looking statements speak only as of the date of this Annual Report on Form 10-K and are subject to business and economic risks, uncertainties and assumptions that are difficult to predict, including those identified below in Item 1A, \u201cRisk Factors\u201d as well as in Item 1, \u201cBusiness\u201d and Item 7, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d in this Annual Report on Form 10-K. Therefore, our actual results may differ materially and adversely from those expressed in any forward-looking statements. We cannot assume responsibility for the accuracy and completeness of forward-looking statements, and we undertake no obligation to revise or update publicly any forward-looking statements for any reason.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 116,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance Sheet Data",
+     "",
+     "August 31, 2015",
+     "",
+     "August 31, 2014"
+    ],
+    [
+     "Cash",
+     "$",
+     "8,917",
+     "$",
+     "500"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "23,917",
+     "$",
+     "500"
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "25,507",
+     "$",
+     "542"
+    ],
+    [
+     "Shareholders\u2019 Deficit",
+     "$",
+     "(1,590)",
+     "$",
+     "(42)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 229,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Conditions and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Item 6. Selected Financial Data.\nThere is no selected financial data required to be filed for a smaller reporting company.\nItem 7. Management's Discussion and Analysis of Financial Conditions and Results of Operations\nResults of Operations\nRevenue. The Company generated $45,000 in revenues from a related party for the year ended August 31, 2015 compared to $0 in the period ended August 31, 2014.\nTotal Expenses. The Company incurred operating expenses for the year ended August 31, 2015, in the amount of $49,798 compared to $542 for the period ended August 31, 2014.\nNet Loss. The Company incurred losses for the year ended August 31, 2015, in the amount of $4,798 compared to a loss for the period ended August 31, 2014 in the amount of $542.\nLiquidity and Capital Resources\nProperty and Equipment. The Company currently owns no equipment.\nIn 2015, the Company issued 65,000 shares of its common stock for $3,250 in cash.",
+   "prose_after": "The cash flows from operating activities for the year ended August 31, 2014 were $4,231 compared to cash used in operating activities for the period ended August 31, 2014 of $ (542).\nThe cash flows from financing activities for the year ended August 31, 2014 were $4,186 compared to the period ended August 31, 2014 of $1,042.\nThe cash flows from investing activities for the year ended August 31, 2014 were $0 compared to the period ended August 31, 2014 of $0.\nGoing Concern\nThe independent auditors' report accompanying our August 31, 2015 and 2014 financial statements contains an explanatory paragraph expressing substantial doubt about our ability to continue as a going concern. The financial statements have been prepared \"assuming that we will continue as a going concern,\" which contemplates that we will realize our assets and satisfy our liabilities and commitments in the ordinary course of business.\nOff Balance Sheet Arrangements\nWe do not have any off balance sheet arrangements as of August 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 240,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "eBizware, Inc.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "August 31, 2015",
+     "",
+     "August 31, 2014"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "8,917",
+     "$",
+     "500"
+    ],
+    [
+     "Accounts receivable, related party",
+     "",
+     "15,000",
+     "",
+     "-"
+    ],
+    [
+     "Total current assets",
+     "",
+     "23,917",
+     "",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "23,917",
+     "$",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "6,529",
+     "$",
+     "-"
+    ],
+    [
+     "Accounts payable, related party",
+     "",
+     "18,978",
+     "",
+     "542"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "25,507",
+     "",
+     "542"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "25,507",
+     "",
+     "542"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; $0.0001 par value, authorized: 75,000,000 shares,\n\n\n\n   none issued and outstanding",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Common stock; $0.0001 par value, authorized: 500,000,000 shares\n\n\n\n   5,065,000 and 5,000,000 shares issued and outstanding",
+     "",
+     "507",
+     "",
+     "500"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "3,243",
+     "",
+     "-"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(5,340)",
+     "",
+     "(542)"
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(1,590)",
+     "",
+     "(42)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "23,917",
+     "$",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "eBizware, Inc.",
+    "Balance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 291,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of eBizware, Inc. as of August 31, 2015 and 2014 and the result of its operations and its cash flows for the year ended August 31, 2015 and the period from December 31, 2013 (inception) through August 31, 2014, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company incurred net losses and lacks of operational history, which raises substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ MaloneBailey, LLP\nwww.malonebailey.com\nHouston, Texas\nNovember 16, 2015",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 289,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 336,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "eBizware, Inc.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Year Ended August 31, 2015",
+     "",
+     "December 31, 2013 (Inception) through\n\n\n\nAugust 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Software revenue from related party",
+     "$",
+     "45,000",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expense",
+     "",
+     "49,798",
+     "",
+     "542"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "49,798",
+     "",
+     "542"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS BEFORE INCOME TAXES",
+     "",
+     "(4,798)",
+     "",
+     "(542)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME TAX EXPENSE",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(4,798)",
+     "$",
+     "(542)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER COMMON SHARE, BASIC AND DILUTED",
+     "$",
+     "(0.00)",
+     "$",
+     "(0.00)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING,\n\n\n\n  BASIC AND DILUTED",
+     "",
+     "5,000,753",
+     "",
+     "5,000,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "eBizware, Inc.",
+    "Statements of Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 338,
+    "end_line": 374
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 336,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "eBizware, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2013 (Inception) Through August 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "Stockholders'"
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "Deficit"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - December 31, 2013 (inception)",
+     "5,000,000",
+     "$",
+     "500",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(542)",
+     "",
+     "(542)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - August 31, 2014",
+     "5,000,000",
+     "$",
+     "500",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "(542)",
+     "$",
+     "(42)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "65,000",
+     "",
+     "7",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,243",
+     "",
+     "-",
+     "",
+     "3,250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,798)",
+     "",
+     "(4,798)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - August 31, 2015",
+     "5,065,000",
+     "$",
+     "507",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "3,243",
+     "$",
+     "(5,340)",
+     "$",
+     "(1,590)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "eBizware, Inc.",
+    "Statement of Stockholders' Deficit",
+    "December 31, 2013 (Inception) Through August 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 376,
+    "end_line": 407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "eBizware Inc",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Year Ended August 31, 2015",
+     "",
+     "December 31, 2013 (Inception) through\n\n\n\nAugust 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,798)",
+     "$",
+     "(542)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, related party",
+     "",
+     "(15,000)",
+     "",
+     "-"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "6,529",
+     "",
+     "-"
+    ],
+    [
+     "Accounts payable, related party",
+     "",
+     "17,500",
+     "",
+     "-"
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "4,231",
+     "",
+     "(542)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "3,250",
+     "",
+     "500"
+    ],
+    [
+     "Net advances from related party",
+     "",
+     "936",
+     "",
+     "542"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "4,186",
+     "",
+     "1,042"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "8,417",
+     "",
+     "500"
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS - BEGINNING OF PERIOD",
+     "",
+     "500",
+     "",
+     "-"
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS - END OF PERIOD",
+     "$",
+     "8,917",
+     "$",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "eBizware Inc",
+    "Statements of Cash Flows"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 409,
+    "end_line": 450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "eBizware, Inc.\nNotes to Financial Statements\nNOTE 1 - ORGANIZATION AND NATURE OF OPERATIONS\neBizware Inc. (the \u201cCompany\u201d), was incorporated in the State of Delaware on December 31, 2013 and established a fiscal year end of August 31. The Company is engaged in the electronic management and appointment of licensed producers in the insurance industry of the United States.\nNOTE 2 \u2013 BASIS OF PRESENTATION, GOING CONCERN AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation\nThe accompanying financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America and the rules and regulations of the United States Securities and Exchange Commission for interim financial information.\nGoing concern\nThese financial statements have been prepared assuming that the Company will continue as a going concern, which contemplates, among other things, the realization of assets and the satisfaction of liabilities in the normal course of business.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance \u2013 December 31, 2013 (Inception)",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Increase due to net advances from related party",
+     "(1)",
+     "",
+     "542"
+    ],
+    [
+     "Balance \u2013 August 31, 2014",
+     "",
+     "",
+     "542"
+    ],
+    [
+     "Increase in accounts payable to related party",
+     "(2)",
+     "",
+     "17,500"
+    ],
+    [
+     "Increase due to net advances from related party",
+     "(1)",
+     "",
+     "936"
+    ],
+    [
+     "Balance \u2013 August 31, 2015",
+     "",
+     "$",
+     "18,978"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 536,
+    "end_line": 547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 BASIS OF PRESENTATION, GOING CONCERN AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Basic net loss per common share is computed by dividing net loss by the weighted-average number of common shares outstanding during the period. Diluted net loss per share is computed similar to basic net loss per share except that the denominator is increased to include the number of additional common shares that would have been outstanding if the potential common shares had been issued and if the additional common shares were dilutive. In periods where losses are reported, the weighted-average number of common stock outstanding excludes common stock equivalents, because their inclusion would be anti-dilutive. At August 31, 2015 and 2014, there were no outstanding common share equivalents.\nRecent Accounting Pronouncements\nIn August 2014, the Company elected to early adopt Accounting Standards Update No. 2014-10, Development Stage Entities (Topic 915): Elimination of Certain Financial Reporting Requirements. The adoption of this ASU allows the company to remove the inception to date information and all references to development stage.\nNOTE \u2013 3 \u2013 RELATED PARTY TRANSACTIONS\nThe following table summarized the Company\u2019s accounts payable, related party for the fiscal 2015 and 2014:",
+   "prose_after": "(1)\nRepresents amounts owed to Mark DeFoor, the Company\u2019s President and CEO, for advances made to the Company. The amount due is unsecured, due on demand, and bears no interest.\n(2)\nRepresents $17,500 owed to simTraction LLC, a Company in which Mark DeFoor is a member, for web development services provided to the Company.\nOn June 30, 2014, the Company signed a two year service agreement with a related party, Cool Creek Solutions. An immediate family member of the Company\u2019s President and CEO was a member of Cool Creek Solutions. Cool Creek Solutions, LLC is paying the Company a fixed fee of $3,750 per month for a period of 2 years for software services. As of August 31, 2015, accounts receivable from Cool Creek totaled $15,000.\nNOTE 4 \u2013 STOCKHOLDERS\u2019 DEFICIT\nCommon stock sold for cash\nOn December 31, 2013, the Company issued 5,000,000 shares for $500 at a price of $0.0001 per share.\nOn August 26, 2015, the Company issued 55,000 shares for $2,750 at a price of 0.05 per share. These shares were sold to relatives of the President and CEO of the Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2014"
+    ],
+    [
+     "Deferred Tax Asset:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carry forward",
+     "$",
+     "2,029",
+     "",
+     "$",
+     "206"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(2,029)",
+     "",
+     "",
+     "(206)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 575,
+    "end_line": 586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "On June 30, 2014, the Company signed a two year service agreement with a related party, Cool Creek Solutions. An immediate family member of the Company\u2019s President and CEO was a member of Cool Creek Solutions. Cool Creek Solutions, LLC is paying the Company a fixed fee of $3,750 per month for a period of 2 years for software services. As of August 31, 2015, accounts receivable from Cool Creek totaled $15,000.\nNOTE 4 \u2013 STOCKHOLDERS\u2019 DEFICIT\nCommon stock sold for cash\nOn December 31, 2013, the Company issued 5,000,000 shares for $500 at a price of $0.0001 per share.\nOn August 26, 2015, the Company issued 55,000 shares for $2,750 at a price of 0.05 per share. These shares were sold to relatives of the President and CEO of the Company.\nOn August 31, 2015, the Company issued 10,000 shares for $500 at a price of $0.05 per share.\nNOTE 5 \u2013 INCOME TAXES\nThe Company maintains deferred tax assets that reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. These deferred tax assets consist of net operating loss carryforward. The net deferred tax asset has been fully offset by a valuation allowance because of the Company's history of losses.\nThe Company\u2019s approximate net deferred tax asset as of August 31, 2015 and 2014 is as follows:",
+   "prose_after": "The Company provided a valuation allowance equal to the deferred income tax assets for the periods ended August 31, 2015 and 2014 because it was not known whether future taxable income will be sufficient to utilize the loss carryforward. The Company\u2019s accumulated loss carryforward of $5,340 as of August 31, 2015 will expire in 2034.\nAdditionally, the future utilization of the net operating loss carryforward to offset future taxable income may be subject to an annual limitation as a result of ownership changes that could occur in the future. If necessary, the deferred tax assets will be reduced by any carryforward that expire prior to utilization as a result of such limitations, with a corresponding reduction of the valuation allowance.\nNOTE 6 \u2013 COMMITMENTS AND CONTINGENCIES\nCommitments\nOn January 21, 2014, the Company entered into a lease agreement with Regus Management. The agreement was for a term of twelve months. As of August 31, 2015, the Company completed its\u2019 lease obligation and now operates on a month to month basis. The monthly rent expense is $59.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Offices Held",
+     "Business Experience"
+    ],
+    [
+     "Mark W. DeFoor\n\n\n\n13108 Lamar Ave\n\n\n\nOverland Park, KS 66209",
+     "44",
+     "President, Chief Executive Officer, Chief Financial Officer, Secretary, Treasurer, Principle Accounting Officer, Sole Director",
+     "Mr. DeFoor has over 20 years of technical design and implementation experience. He brings the ability to architect and construct complex system solutions to most issues.\n\n\n\n\n\n\n\n2010 \u2013 Present \u2013 Member \u2013 simTraction LLC - simTraction LLC provides business and technology consulting services.\n\n\n\n\n\n\n\nDecember 31, 2013 \u2013 present - Chief Executive Officer, Secretary and Treasurer by the Company\u2019s board of directors of eBizware Inc.\n\n\n\n\n\n\n\nFrom November 13, 2007 through December 28, 2009 - Mr. DeFoor was the President and CEO and director of Title Starts Online Inc (OTCBB: TTSO). On December 28, 2009, Mr. DeFoor entered into a share exchange agreement to sell his shares to AMP Holdings, Inc., and he resigned from the board of directors on that date.\n\n\n\n\n\n\n\nFrom November 11, 2011 through November 14, 2013 - Mr. DeFoor was an officer and director for publicly-traded SECURE NetCheckIn Inc (OTCBB: SNEC).\n\n\n\n\n\n\n\nFrom June 2010 through December 2011 - Mr. DeFoor was an owner in nVestia which was established to provide financial advisor services. He resigned from that office and the board on November 14, 2013.\n\n\n\n\n\n\n\nFrom January 1, 2012 through November 13, 2013 - Mr. DeFoor was the co-owner of a privately-held business that provided a technology solution for mortgage sales, processing, and back office services to regional banks.\n\n\n\n\n\n\n\nFrom 1995 \u2013 present \u2013 Mr. DeFoor started, acquired and maintained more than two dozen successful companies in almost every industry. Each venture revolves around an inefficiency in a market which can be filled with a technical solution."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, and Corporate Governance;"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of the Company's registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by the Company's registered public accounting firm pursuant to an exemption of the Securities and Exchange Commission that permit the Company to provide only management's report in this annual report. Accordingly, our management's assessment of the effectiveness of our internal control over financial reporting as of August 31, 2015 has not been audited by our auditors or any other independent registered accounting firm.\nChanges in Internal Control over Financial Reporting\nThere has been no change in our internal control over financial reporting identified in connection with our evaluation we conducted of the effectiveness of our internal control over financial reporting as of August 31, 2015, that occurred during our fourth fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNot applicable\nPART III\nItem 10. Directors, Executive Officers, and Corporate Governance;\nThe Directors and Officers of the Company are as follows, whose terms expire at such time as their successors shall be elected and qualified, are as follows: :",
+   "prose_after": "Management of the Company\nThe Company has no full time employees. Mark W. DeFoor is the sole officer and director of the Company. Mr. DeFoor is the majority stockholder. Mr. DeFoor will allocate a limited portion of time to the activities of the Company without compensation. Potential conflicts may arise with respect to the limited time commitment by management and the potential demands of the activities of the Company.\nThere are no agreements or understandings for the officer or director to resign at the request of another person and the above-named officer and director is not acting on behalf of nor will act at the direction of any other person.\nDirectors are elected to serve until the next annual meeting of stockholders and until their successor has been elected and qualified. Officers are appointed to serve until the meeting of the board of directors following the next annual meeting of stockholders and until their successors have been elected and qualified. No executive officer or director of the corporation has been the subject of any order, judgment, or decree of any court of competent jurisdiction, or any regulatory agency permanently or temporarily enjoining, barring, suspending or otherwise limiting him or her from acting as an investment advisor, underwriter, broker or dealer in the securities industry, or as an affiliated person, director or employee of an investment company, bank, savings and loan association, or insurance company or from engaging in or continuing any conduct or practice in connection with any such activity or in connection with the purchase or sale of any securities. No executive officer or director of the corporation has been convicted in any criminal proceeding (excluding traffic violations) or is the subject of a criminal proceeding which is currently pending.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address",
+     "",
+     "Amount of Beneficial Ownership",
+     "",
+     "Percent of Outstanding Stock"
+    ],
+    [
+     "Mark W. DeFoor\n\n\n\n13108 Lamar Ave.\n\n\n\nOverland Park, KS 66209",
+     "",
+     "5,000,000",
+     "",
+     "98.72%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 749,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company's officers and directors do not receive any compensation for services rendered to the Company, nor have they received such compensation in the past. The officers and directors are not accruing any compensation pursuant to any agreement with the Company.\nNo retirement, pension, profit sharing, stock option or insurance programs or other similar programs have been adopted by the Company for the benefit of its employees.\nThe Company does not have a compensation committee for the same reasons as described above.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth, as of August 31, 2015, each person known by the Company to be the beneficial owner of five percent or more of the Company's common stock and the director and officer of the Company. The Company does not have any compensation plans and has not authorized any securities for future issuance. Except as noted, the holder thereof has sole voting and investment power with respect to the shares shown.",
+   "prose_after": "Mark W. DeFoor may be deemed to be a \u201cparent\u201d or \u201cpromoter\u201d of the Company, within the meaning of such terms under the Securities Act of 1933, as amended, by virtue of her direct holdings in the Company.\nItem 13. Certain Relationships and Related Transactions and Director Independence\nOur related parties are the following individuals and entities: Mark W. DeFoor is CEO, president and a director of the company, Cool Creek Solutions, LLC., in which the Mark W. DeFoor\u2019 father, William DeFoor Jr., was a member, and simTraction LLC, in which the Mark W. DeFoor is a member.\nAs of August 31, 2015, $1,478 was owed to Mark DeFoor for advances. The amount due is unsecured, due on demand, and bears no interest.\nAs of August 31, 2015, $17,500 was owed to simTraction LLC for web development services\nAs of August 31, 2015, the Company had $15,000 in account receivable from Cool Creek Solutions, LLC for consulting revenue. Total revenue generated from Cool Creek Solutions, LLC during the year ended August 31, 2015 was $45,000.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Audit related fees for the year ended August 31, 2014:",
+     "$",
+     "3,500"
+    ],
+    [
+     "Audit related fees for the year ended August 31, 2015:",
+     "$",
+     "7,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As of August 31, 2015, the Company had $15,000 in account receivable from Cool Creek Solutions, LLC for consulting revenue. Total revenue generated from Cool Creek Solutions, LLC during the year ended August 31, 2015 was $45,000.\nOn August 26, 2015, the Company issued 55,000 common shares to relatives of the President and CEO of the Company for cash proceeds of $2,750.\nItem 14. Principal Accounting Fees and Services.\nThe Company has limited activities, no income and minimal expenses except for independent audit and Nevada state fees. The Company's president has donated her time in preparation and filing of all state and federal required taxes and reports.\nAudit Fees\nThe aggregate fees incurred for each of the last two years for professional services rendered by the independent registered public accounting firm for the audits of the Company's annual financial statements and review of financial statements included in the Company's Form 10-K and Form 10-Q reports and services normally provided in connection with statutory and regulatory filings or engagements were as follows:",
+   "prose_after": "The Company does not currently have an audit committee serving and as a result its board of directors performs the duties of an audit committee. The board of directors will evaluate and approve in advance, the scope and cost of the engagement of an auditor before the auditor renders audit and non-audit services. The Company does not rely on pre-approval policies and procedures.\nPART IV\nItem 15. Exhibits\nSee Exhibit Index below for exhibits required by Item 601 of regulation S-K.\nExhibit Index",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "23.1",
+     "Report of Independent Accounting Firm(1)"
+    ],
+    [
+     "31.1",
+     "Chief Executive Officer Certification under Section 302 of Sarbanes-Oxley Act of 2002(1)"
+    ],
+    [
+     "31.2",
+     "Chief Financial Officer Certification under Section 302 of Sarbanes-Oxley Act of 2002(1)"
+    ],
+    [
+     "32.1",
+     "Chief Executive Officer Certification under Section 906 of Sarbanes-Oxley Act 2002(1)"
+    ],
+    [
+     "32.2",
+     "Chief Financial Officer Certification under Section 906 of Sarbanes-Oxley Act 2002(1)"
+    ],
+    [
+     "101",
+     "The following materials from the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2012, formatted in XBRL (eXtensible Business Reporting Language): (i) Balance Sheet, (ii) Statement of Operations, (iii) Statement of Changes in Stockholders\u2019 Income (Loss) (iv) Statements of Cash Flows, and (v) Notes to Financial Statements.(1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 801,
+    "end_line": 813
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company does not currently have an audit committee serving and as a result its board of directors performs the duties of an audit committee. The board of directors will evaluate and approve in advance, the scope and cost of the engagement of an auditor before the auditor renders audit and non-audit services. The Company does not rely on pre-approval policies and procedures.\nPART IV\nItem 15. Exhibits\nSee Exhibit Index below for exhibits required by Item 601 of regulation S-K.\nExhibit Index",
+   "prose_after": "(1)\nFiled herewith.\nSIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "eBizware Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: November 18, 2015",
+     "By:",
+     "/s/ Mark W. DeFoor"
+    ],
+    [
+     "",
+     "",
+     "Mark W. DeFoor"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer, Secretary and Director"
+    ]
+   ],
+   "caption_stack": [
+    "eBizware Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 822,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1)\nFiled herewith.\nSIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,6264 @@
+{
+ "accession": "0001628280-20-005961",
+ "cik": "0000751365",
+ "form": "10-K",
+ "filing_date": "2020-04-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "virc2020131-10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "95-1613718"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2027 Harpers Way, Torrance, California",
+     "90501"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  Annual Report Pursuant to Section 13 or 15 (d) of the Securities Exchange Act of 1934\nFor the fiscal year ended January 31, 2020.\n[ ]  Transition Report Pursuant to Section 13 or 15 (d) of the Securities Exchange Act of 1934\nFor the transition period from to\nCommission file number 1-8777\nVIRCO MFG. CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code (310) 533-0474\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered:"
+    ],
+    [
+     "Common Stock, $0.01 Par Value",
+     "VIRC",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code (310) 533-0474\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the issuer is a well-known seasoned issuer as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page Numbers"
+    ],
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "3"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "13"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "20"
+    ],
+    [
+     "Item 2. Properties",
+     "20"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "21"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "21"
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "22"
+    ],
+    [
+     "Item 6. Selected Financial Data",
+     "22"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "22"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures about Market Risk",
+     "33"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "34"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "61"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "61"
+    ],
+    [
+     "Item 9B. Other Information",
+     "62"
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers of the Registrant and Corporate Governance",
+     "63"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "63"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "63"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "63"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "63"
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "64"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "66"
+    ],
+    [
+     "SIGNATURES",
+     "66"
+    ]
+   ],
+   "caption_stack": [
+    "Page Numbers",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.) Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common stock held by non-affiliates of the registrant on July 31, 2019, was $59 million (based upon the closing price of the registrant\u2019s common stock on such day, as reported by NASDAQ).\nAs of April 22, 2020, there were 15,713,549 shares of the registrant\u2019s common stock ($0.01 par value) outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the Registrant\u2019s definitive proxy statement for its 2020 Annual Meeting of Stockholders to be filed with the Securities and Exchange Commission are incorporated by reference into Part III of this Annual Report on Form 10-K as set forth herein.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nCautionary Statement Regarding Forward-Looking Statements\nThis report on Form 10-K contains a number of \u201cforward-looking statements\u201d that reflect the current views of Virco Mfg. Corporation (the \"Company\" or \"Virco\") with respect to future events and financial performance, including, but not limited to, statements concerning: the impact of the COVID 19 virus on the economy, school funding, the ability to operate our manufacturing and distribution operations and the availability of labor; availability of funding for educational institutions; plans and objectives of management for future operations, including relating to the Company\u2019s future products, pricing, marketing, seasonal fluctuations in demand, expansion, manufacturing processes, and business strategies; the Company's ability to continue to control costs and inventory levels; availability and cost of raw materials, especially steel and petroleum-based products; the cost and availability of imported components; the availability and cost of labor; transportation costs; the potential impact of the Company's \u201cAssemble-To-Ship\u201d program on earnings; market demand; the Company's ability to position itself in the market; current and future investments in and utilization of infrastructure; and management's beliefs that cash flow from current operations, existing cash reserves, and available lines of credit will be sufficient to support the Company's working capital requirements to fund existing operations. Forward-looking statements also include the assumptions underlying or relating to any of the foregoing statements. Such forward-looking statements are not guarantees of future performance and are subject to known and unknown risks, uncertainties, assumptions and other factors, many of which are out of the Company's control and difficult to forecast, that may cause actual results to differ materially from those which are expressed or implied in any forward-looking statements. Such factors include, but are not limited to, changes in, or the Company's ability to predict, general economic conditions, the availability and cost of raw materials, the markets for school and office furniture generally and specifically in areas and with customers with which the Company conducts its principal business activities, the rate of approval of school bonds for the construction of new schools, the extent to which existing schools order replacement furniture, customer confidence, competition, and other factors included in the \u201cRisk Factors\u201d section of this report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Office",
+     "Age at January 31, 2020",
+     "Has Held Office Since"
+    ],
+    [
+     "Robert A. Virtue (1)",
+     "Chairman of the Board and Chief Executive Officer",
+     "87",
+     "1990"
+    ],
+    [
+     "Douglas A. Virtue (2)",
+     "President",
+     "61",
+     "2014"
+    ],
+    [
+     "Robert E. Dose (3)",
+     "Senior Vice President - Chief Financial Officer, Secretary and Treasurer",
+     "63",
+     "1995"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 308,
+    "end_line": 315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Virco is subject to numerous federal, state and local environmental laws and regulations in the various jurisdictions in which it operates that (a) govern operations that may have adverse environmental effects, such as the discharge of materials into the environment, as well as handling, storage, transportation and disposal practices for solid and hazardous wastes, and (b) impose liability for response costs and certain damages resulting from past and current spills, disposals or other releases of hazardous materials. In this context, Virco works diligently to remain in compliance with all such environmental laws and regulations as these affect the Company's operations. Moreover, Virco has enacted policies for recycling and resource recovery that have earned repeated commendations, including: recognition by the California Department of Resources Recycling and Recovery (\"CalRecycle\") in 2012 and 2011 as a Waste Reduction Awards Program (WRAP) honoree; recognition by the United States Environmental Protection Agency in 2004 as a WasteWise Hall of Fame Charter Member, in 2003 as a WasteWise Partner of the Year and in 2002 as a WasteWise Program Champion for Large Businesses; and recognition by the Sanitation Districts of Los Angeles County for compliance with industrial waste water discharge guidelines in 2008 through 2011. In addition to these awards and commendations, Virco's ZUMA\u00ae and ZUMAfrd\u2122 product lines were the first classroom furniture collections to earn indoor air quality certification through the stringent GREENGUARD\u00ae Children & Schools Program, now known as Greenguard Gold certification. As a follow-up to the certification of ZUMA and ZUMAfrd models in 2006, hundreds of other Virco furniture items - including Analogy\u2122 furniture models and Textameter\u2122 instructor workstations - have earned GREENGUARD certification. Moreover, all Virco products covered by the Consumer Product Safety Improvement Act of 2008 are in compliance with this legislation. All affected Virco models are also in compliance with the California Air Resources Board rule and Toxic Substances Control Act rule concerning formaldehyde emissions from composite wood products. Environmental laws have changed rapidly in recent years, and Virco may be subject to more stringent environmental laws in the future. The Company has expended, and may be expected to continue to expend, significant amounts in the future for compliance with environmental rules and regulations, for the investigation of environmental conditions, for the installation of environmental control equipment, or remediation of environmental contamination. Normal recurring expenses relating to operating our factories in a manner that meets or exceeds environmental laws are matched to the cost of producing inventory. It is possible that the Company's operations may result in noncompliance with, or liability for remediation pursuant to, environmental laws. Should such eventualities occur, the Company records liabilities for remediation costs when remediation costs are probable and can be reasonably estimated. See Item 1A. Risk Factors: We could be required to incur substantial costs to comply with environmental requirements. Violations of, and liabilities under, environmental laws and regulations may increase our costs or require us to change our business practices.\nFinancial Information About Industry Segment and Geographic Areas\nVirco operates in a single industry segment. For information regarding the Company's revenues, gross profit and total assets for each of the last two fiscal years, see the Company's consolidated financial statements.\nDuring fiscal 2020, Virco derived approximately 6.4% of its revenues from customers located outside of the United States (primarily Canada).\nDuring fiscal 2019, Virco derived approximately 6.7% of its revenues from customers located outside of the United States (primarily Canada).\nThe Company determines sales to these markets based upon the customers' principal place of business.\nDuring fiscal 2020 and 2019, the Company did not have any long-lived assets outside of the United States.\nExecutive Officers of the Registrant\nAs of April 1, 2020, the executive officers of the Company, who are elected by and serve at the discretion of the Company\u2019s Board of Directors, were as follows:",
+   "prose_after": "________________________\n(1) Appointed Chairman in 1990; has been employed by the Company for 63 years and served as the President from 1982 until 2014 and Chief Executive Officer since 1988. Appointed Chairman in 1990; has been employed by the Company for 63 years and served as the President from 1982 until 2014 and Chief Executive Officer since 1988.\n(2) Appointed President in 2014; has been employed by the Company for 34 years and has served in Production Control, as Contract Administrator, as Manager of Marketing Services, as General Manager of the Torrance Division, as Corporate Executive Vice President and currently as President. Appointed President in 2014; has been employed by the Company for 34 years and has served in Production Control, as Contract Administrator, as Manager of Marketing Services, as General Manager of the Torrance Division, as Corporate Executive Vice President and currently as President.\n(3) Appointed in 1995; has been employed by the Company for 29 years and has served as the Corporate Controller, and currently as Senior Vice President of Finance, Secretary and Treasurer. Appointed in 1995; has been employed by the Company for 29 years and has served as the Corporate Controller, and currently as Senior Vice President of Finance, Secretary and Treasurer.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 340,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Employee Plan",
+     "3.00%",
+     "3.75%"
+    ],
+    [
+     "VIP Plan",
+     "3.05%",
+     "4.00%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 598
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Self-Insured Retention: For fiscal 2020 and 2019 the Company was self-insured for product and general liability losses ranging up to $250,000 per occurrence, workers' compensation losses up to $250,000 per occurrence and auto liability up to $50,000 per occurrence. The Company obtains annual actuarial valuations for the self-insured retentions. Product liability, workers' compensation and auto reserves for known and unknown incurred but not reported (\u201cIBNR\u201d) losses are recorded at the net present value of the estimated losses using a risk-free discount rate of 4% for fiscal 2020 and 2019. Given the relatively short term over which the IBNR losses are discounted, the sensitivity to the discount rate is not significant. Estimated workers' compensation losses were funded during the insurance year and subject to retroactive loss adjustments. The Company's\nexposure to self-insured retentions varies depending upon the market conditions in the insurance industry and the availability of cost-effective insurance coverage. Self-insured retentions for fiscal 2021 will be comparable to the retention levels for fiscal 2020.\nDefined Benefit Obligations: The Company has two defined benefit plans, the Virco Employees Retirement Plan (\u201cEmployee Plan\u201d) and the Virco Important Performers Plan (\u201cVIP Plan\u201d), which provide retirement benefits to employees. Virco discounted the pension obligations for the various plans using the following discount rates for the fiscal years ended January 31:",
+   "prose_after": "Because new benefit accruals for both plans were frozen by the Company effective December 31, 2003, the assumed rate of increase in compensation has no effect on the accounting for the plans. For the Employee Plan, the Company estimated a 6.5% return on plan assets for 2020 and 6.5% for fiscal 2019. The VIP Plan is unfunded and has no plan assets. These rate assumptions can vary due to changes in interest rates and expected returns in the stock market. In prior years, the discount rate has decreased, causing pension expense and pension obligations to increase.\nBecause the plans have been frozen for many years, there is no service cost related to the plans. In fiscal 2019, due to a large number of lump-sum benefits paid to retired and terminated employees, the Company has incurred settlement costs for the Employee Plan. In effort to \u201cde-risk\u201d the Employee Plan, the Company intends to continue to reach out to and offer lump sum benefits to terminated and retired employees, which may result in settlement costs in the future. The Company did not incur settlement costs in fiscal 2020.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 619,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page Numbers"
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firm",
+     "35"
+    ],
+    [
+     "Consolidated Balance Sheets as of January 31, 2020 and 2019",
+     "36"
+    ],
+    [
+     "Consolidated Statements of Operation for the Years Ended January 31, 2020 and 2019",
+     "38"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss for the Years Ended January 31, 2020 and 2019",
+     "39"
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity for the Years Ended January 31, 2020 and 2019",
+     "40"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended January 31, 2020 and 2019",
+     "41"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "42"
+    ]
+   ],
+   "caption_stack": [
+    "Page Numbers"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 753,
+    "end_line": 763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has aggressively pursued a program to improve product quality, reduce product liability claims and losses and to aggressively defend product liability cases. This program has continued through fiscal 2020 and has resulted in reductions in product liability claims and litigated product liability cases. In addition, the Company has active safety programs to improve plant safety and control workers' compensation losses. Management does not anticipate that any related settlement, after consideration of the existing reserves for claims and potential insurance recovery, would have a material adverse effect on the Company's financial position, results of operations or cash flows.\nOff-Balance Sheet Arrangements & Contractual Obligations\nThe Company did not enter into any material off-balance sheet arrangements during fiscal 2020, nor did the Company have any material off-balance sheet arrangements outstanding at January 31, 2020.\nNew Accounting Pronouncements\nSee disclosure of recently adopted and recently issued but not yet adopted accounting standards in Note 2 to the Consolidated Financial Statements contained in Item 8. Financial Statements and Supplementary Data to this Annual Report on Form 10-K.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nThe Company is a smaller reporting company as defined by Rule 12b-2 of the Exchange Act as of our second quarter of fiscal 2020 and are not required to provide the information under this item.\nItem 8. Financial Statements and Supplementary Data\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of Virco Mfg. Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Virco Mfg. Corporation and subsidiaries (the \"Company\") as of January 31, 2020 and 2019, the related consolidated statements of operations, comprehensive income (loss), stockholders' equity, and cash flows, for each of the two fiscal years in the period ended January 31, 2020, and the related notes and the schedule listed in the Index at Item 15 (2) (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of January 31, 2020 and 2019, and the results of its operations and its cash flows for each of the two fiscal years in the period ended January 31, 2020, in conformity with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 764,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except share and par value data)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,150",
+     "$",
+     "738"
+    ],
+    [
+     "Trade accounts receivables (net of allowance for doubtful accounts of $200 at January 31, 2020 and 2019)",
+     "11,762",
+     "",
+     "13,253",
+     ""
+    ],
+    [
+     "Other receivables",
+     "57",
+     "",
+     "40",
+     ""
+    ],
+    [
+     "Income tax receivable",
+     "298",
+     "",
+     "175",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "43,329",
+     "",
+     "47,289",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "1,746",
+     "",
+     "1,616",
+     ""
+    ],
+    [
+     "Total current assets",
+     "58,342",
+     "",
+     "63,111",
+     ""
+    ],
+    [
+     "Property, plant and equipment",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "3,731",
+     "",
+     "3,731",
+     ""
+    ],
+    [
+     "Land improvements",
+     "717",
+     "",
+     "688",
+     ""
+    ],
+    [
+     "Buildings and building improvements",
+     "51,200",
+     "",
+     "51,176",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "110,610",
+     "",
+     "108,253",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "990",
+     "",
+     "830",
+     ""
+    ],
+    [
+     "Total property, plant and equipment",
+     "167,248",
+     "",
+     "164,678",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "127,351",
+     "",
+     "122,758",
+     ""
+    ],
+    [
+     "Net property, plant and equipment",
+     "39,897",
+     "",
+     "41,920",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "21,325",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred income tax assets, net",
+     "11,230",
+     "",
+     "9,598",
+     ""
+    ],
+    [
+     "Other assets",
+     "8,198",
+     "",
+     "8,484",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "138,992",
+     "$",
+     "123,113"
+    ]
+   ],
+   "caption_stack": [
+    "January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 797,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Deloitte & Touche LLP\nLos Angeles, California\nApril 30, 2020\nWe have served as the Company's auditor since 2018.\nConsolidated Balance Sheets",
+   "prose_after": "Consolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 831,
+     "token": "REPEATING_FOOTER",
+     "id": 37,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except share and par value data)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "10,587",
+     "",
+     "$",
+     "17,760",
+     ""
+    ],
+    [
+     "Accrued compensation and employee benefits",
+     "6,392",
+     "",
+     "",
+     "4,568",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "878",
+     "",
+     "",
+     "5,504",
+     "",
+     ""
+    ],
+    [
+     "Current portion operating lease liability",
+     "3,654",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "3,607",
+     "",
+     "",
+     "4,293",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "25,118",
+     "",
+     "",
+     "32,125",
+     "",
+     ""
+    ],
+    [
+     "Non-current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued self-insurance",
+     "1,410",
+     "",
+     "",
+     "1,190",
+     "",
+     ""
+    ],
+    [
+     "Accrued retirement benefits",
+     "21,310",
+     "",
+     "",
+     "14,487",
+     "",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "70",
+     "",
+     "",
+     "45",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, less current portion",
+     "15,818",
+     "",
+     "",
+     "15,910",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability, less current portion",
+     "19,787",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "661",
+     "",
+     "",
+     "2,329",
+     "",
+     ""
+    ],
+    [
+     "Total non-current liabilities",
+     "59,056",
+     "",
+     "",
+     "33,961",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized 3,000,000 shares, $.01 par value; none issued or outstanding",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized 25,000,000 shares, $.01 par value; issued and outstanding 15,713,549 shares in 2020 and 15,541,956 shares in 2019",
+     "157",
+     "",
+     "",
+     "155",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "118,782",
+     "",
+     "",
+     "118,106",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(49,810)",
+     "",
+     "",
+     "(52,192)",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(14,311)",
+     "",
+     "",
+     "(9,042)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "54,818",
+     "",
+     "",
+     "57,027",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "138,992",
+     "",
+     "$",
+     "123,113",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 837,
+    "end_line": 876
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Balance Sheets",
+   "prose_after": "Consolidated Statements of Operation",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 833,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 877,
+     "token": "REPEATING_FOOTER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended January 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except per share data)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "191,063",
+     "$",
+     "200,716",
+     ""
+    ],
+    [
+     "Costs of goods sold",
+     "119,388",
+     "",
+     "133,635",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "71,675",
+     "",
+     "67,081",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "65,726",
+     "",
+     "64,751",
+     "",
+     ""
+    ],
+    [
+     "Loss (gain) on sale of property, plant & equipment",
+     "34",
+     "",
+     "(1)",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "5,915",
+     "",
+     "2,331",
+     "",
+     ""
+    ],
+    [
+     "Pension expense",
+     "726",
+     "",
+     "1,257",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "2,462",
+     "",
+     "2,191",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "2,727",
+     "",
+     "(1,117)",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "345",
+     "",
+     "497",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "2,382",
+     "$",
+     "(1,614)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per common share:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.15",
+     "$",
+     "(0.10)",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.15",
+     "$",
+     "(0.10)",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "15,590",
+     "",
+     "15,421",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "15,694",
+     "",
+     "15,421",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 913
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operation",
+   "prose_after": "Consolidated Statements of Comprehensive Loss",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 914,
+     "token": "REPEATING_FOOTER",
+     "id": 41,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended January 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "2,382",
+     "",
+     "$",
+     "(1,614)",
+     ""
+    ],
+    [
+     "Other comprehensive (loss) income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pension adjustments (net of tax benefit (expense) $1,840 and ($76) in 2020 and 2019, respectively)",
+     "(5,269)",
+     "",
+     "",
+     "217",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(2,887)",
+     "",
+     "$",
+     "(1,397)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 920,
+    "end_line": 933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Comprehensive Loss",
+   "prose_after": "Consolidated Statements of Stockholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 916,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 934,
+     "token": "REPEATING_FOOTER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In thousands, except share data",
+     "Shares",
+     "Amount",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "",
+     "Total Stockholder's Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance at February 1, 2018",
+     "15,357,457",
+     "$",
+     "154",
+     "$",
+     "117,465",
+     "",
+     "$",
+     "(49,648)",
+     "",
+     "$",
+     "(9,259)",
+     "",
+     "$",
+     "58,712",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,614)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,614)",
+     "",
+     ""
+    ],
+    [
+     "Pension adjustments, net of tax expense of $76",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "217",
+     "",
+     "",
+     "217",
+     "",
+     ""
+    ],
+    [
+     "Cash dividends",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(930)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(930)",
+     "",
+     ""
+    ],
+    [
+     "Shares vested",
+     "184,499",
+     "1",
+     "",
+     "(267)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(266)",
+     "",
+     ""
+    ],
+    [
+     "Stock compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "908",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "908",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 31, 2019",
+     "15,541,956",
+     "$",
+     "155",
+     "$",
+     "118,106",
+     "",
+     "$",
+     "(52,192)",
+     "",
+     "$",
+     "(9,042)",
+     "",
+     "$",
+     "57,027",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,382",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,382",
+     "",
+     ""
+    ],
+    [
+     "Pension adjustments, net of tax benefit of $1,840",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,269)",
+     "",
+     "",
+     "(5,269)",
+     "",
+     ""
+    ],
+    [
+     "Shares vested",
+     "171,593",
+     "2",
+     "",
+     "(248)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(246)",
+     "",
+     ""
+    ],
+    [
+     "Stock compensation expense",
+     "\u2014",
+     "\u2014",
+     "",
+     "924",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "924",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 31, 2020",
+     "15,713,549",
+     "$",
+     "157",
+     "$",
+     "118,782",
+     "",
+     "$",
+     "(49,810)",
+     "",
+     "$",
+     "(14,311)",
+     "",
+     "$",
+     "54,818",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 940,
+    "end_line": 964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Stockholders\u2019 Equity",
+   "prose_after": "Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 965,
+     "token": "REPEATING_FOOTER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended January 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "2,382",
+     "",
+     "$",
+     "(1,614)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "5,769",
+     "",
+     "",
+     "5,791",
+     "",
+     ""
+    ],
+    [
+     "Non-cash lease expense",
+     "341",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Provision for doubtful accounts",
+     "83",
+     "",
+     "",
+     "(3)",
+     "",
+     ""
+    ],
+    [
+     "Loss (gain) on sale of property, plant and equipment",
+     "34",
+     "",
+     "",
+     "(1)",
+     "",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "209",
+     "",
+     "",
+     "419",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "924",
+     "",
+     "",
+     "908",
+     "",
+     ""
+    ],
+    [
+     "Defined benefit plan, recognized net loss due to settlements",
+     "\u2014",
+     "",
+     "",
+     "538",
+     "",
+     ""
+    ],
+    [
+     "Amortization of net actuarial loss for pension plans",
+     "776",
+     "",
+     "",
+     "795",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade accounts receivable",
+     "1,408",
+     "",
+     "",
+     "(1,868)",
+     "",
+     ""
+    ],
+    [
+     "Other receivables",
+     "(17)",
+     "",
+     "",
+     "(10)",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "3,960",
+     "",
+     "",
+     "(5,232)",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "(97)",
+     "",
+     "",
+     "(3)",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "215",
+     "",
+     "",
+     "(79)",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "(6,228)",
+     "",
+     "",
+     "2,722",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "9,759",
+     "",
+     "",
+     "2,363",
+     "",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(4,216)",
+     "",
+     "",
+     "(5,395)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of property, plant and equipment",
+     "17",
+     "",
+     "",
+     "3",
+     "",
+     ""
+    ],
+    [
+     "Proceeds for life insurance",
+     "5",
+     "",
+     "",
+     "5",
+     "",
+     ""
+    ],
+    [
+     "Investments in life insurance",
+     "(64)",
+     "",
+     "",
+     "(61)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(4,258)",
+     "",
+     "",
+     "(5,448)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from long-term debt",
+     "39,770",
+     "",
+     "",
+     "54,711",
+     "",
+     ""
+    ],
+    [
+     "Repayment of long-term debt",
+     "(44,488)",
+     "",
+     "",
+     "(49,978)",
+     "",
+     ""
+    ],
+    [
+     "Tax withholding payments on share-based compensation",
+     "(246)",
+     "",
+     "",
+     "(265)",
+     "",
+     ""
+    ],
+    [
+     "Payment on deferred financing costs",
+     "(125)",
+     "",
+     "",
+     "(249)",
+     "",
+     ""
+    ],
+    [
+     "Cash dividend paid",
+     "\u2014",
+     "",
+     "",
+     "(930)",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "(5,089)",
+     "",
+     "",
+     "3,289",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "412",
+     "",
+     "",
+     "204",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "738",
+     "",
+     "",
+     "534",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of year",
+     "$",
+     "1,150",
+     "",
+     "$",
+     "738",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "2,462",
+     "",
+     "$",
+     "2,191",
+     ""
+    ],
+    [
+     "Income tax, net of refunds",
+     "81",
+     "",
+     "",
+     "96",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 1023
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows",
+   "prose_after": "Notes to Consolidated Financial Statements\nJanuary 31, 2020\n1. Summary of Business and Significant Accounting Policies\nBusiness\nVirco Mfg. Corporation (the \u201cCompany\u201d), which operates in one business segment, is engaged in the design, production and distribution of quality furniture for the commercial and education markets. Over 70 years of manufacturing operations have resulted in a wide product assortment. Major products include mobile tables, mobile storage equipment, desks, computer furniture, chairs, activity tables, folding chairs and folding tables. The Company manufactures its products in Torrance, California, and Conway, Arkansas, for sale primarily in the United States.\nThe Company operates in a seasonal business and requires significant amounts of working capital under its credit facility to fund acquisitions of inventory and finance receivables during the summer delivery season. Restrictions imposed by the terms of the Company\u2019s credit facility may limit the Company\u2019s operating and financial flexibility (see Note 3).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1024,
+     "token": "REPEATING_FOOTER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "15,401",
+     "$",
+     "15,908"
+    ],
+    [
+     "Work In Process",
+     "15,957",
+     "",
+     "18,820",
+     ""
+    ],
+    [
+     "Raw materials",
+     "11,971",
+     "",
+     "12,561",
+     ""
+    ],
+    [
+     "Inventories, net",
+     "$",
+     "43,329",
+     "$",
+     "47,289"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1083,
+    "end_line": 1093
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Summary of Business and Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Inventory is valued at the lower of cost or net realizable value (determined on a first-in, first-out basis) and includes material, labor and factory overhead. The Company maintains valuation allowances to write off estimated slow moving and obsolete inventory to reflect the difference between the lower of cost of inventory and the net realizable value. Allowances for slow moving and obsolete inventory are determined through a physical inspection of the product in connection with a physical inventory, a review of slow-moving product and consideration of active marketing programs. The market for education furniture is traditionally driven by value, not style and the Company has not typically incurred significant obsolescence expenses. If market conditions are less favorable than those anticipated by management, additional allowances may be required. Due to reductions in sales volume in the past years, the Company\u2019s manufacturing facilities are operating at reduced levels of capacity. The Company records the cost of excess capacity as a period expense, not as a component of capitalized inventory valuation.\nThe following table presents an updated breakdown of the Company\u2019s net inventory (in thousands) as of January 31:",
+   "prose_after": "Property, Plant and Equipment\nProperty, plant and equipment are stated at cost, less accumulated depreciation. Depreciation and amortization are computed on the straight-line method for financial reporting purposes based upon the following estimated useful lives:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Land improvements",
+     "5 to 25 years"
+    ],
+    [
+     "Buildings and building improvements",
+     "5 to 40 years"
+    ],
+    [
+     "Machinery and equipment",
+     "3 to 10 years"
+    ],
+    [
+     "Leasehold improvements",
+     "shorter of lease or useful life"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1098,
+    "end_line": 1104
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Summary of Business and Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Property, Plant and Equipment\nProperty, plant and equipment are stated at cost, less accumulated depreciation. Depreciation and amortization are computed on the straight-line method for financial reporting purposes based upon the following estimated useful lives:",
+   "prose_after": "The Company capitalizes the cost of betterments that extend the life of an asset. Repairs and maintenance that do not extend the life of an asset are expensed as incurred. Repair and maintenance expense were $1,960,000 and $2,145,000 for fiscal years ended January 31, 2020 and 2019, respectively. Property, plant and equipment purchased during the year that remains unpaid as of January 31, 2020 and 2019 was $173,000 and $593,000, respectively.\nThe Company has established asset retirement obligations related to leased manufacturing facilities in accordance with Financial Accounting Standards Board (FASB) Accounting Standard Codification (ASC) Topic 410, Asset Retirement and Environmental Obligations. Accrued asset retirement obligations are recorded at net present value and discounted over the life of the lease. Asset retirement obligations, included in other non-current liabilities were $186,000 and $179,000 at January 31, 2020 and 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1058,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "179,000",
+     "$",
+     "170,000"
+    ],
+    [
+     "Decrease in obligation",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accretion expense",
+     "7,000",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "$",
+     "186,000",
+     "$",
+     "179,000"
+    ]
+   ],
+   "caption_stack": [
+    "January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1110,
+    "end_line": 1121
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Summary of Business and Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company capitalizes the cost of betterments that extend the life of an asset. Repairs and maintenance that do not extend the life of an asset are expensed as incurred. Repair and maintenance expense were $1,960,000 and $2,145,000 for fiscal years ended January 31, 2020 and 2019, respectively. Property, plant and equipment purchased during the year that remains unpaid as of January 31, 2020 and 2019 was $173,000 and $593,000, respectively.\nThe Company has established asset retirement obligations related to leased manufacturing facilities in accordance with Financial Accounting Standards Board (FASB) Accounting Standard Codification (ASC) Topic 410, Asset Retirement and Environmental Obligations. Accrued asset retirement obligations are recorded at net present value and discounted over the life of the lease. Asset retirement obligations, included in other non-current liabilities were $186,000 and $179,000 at January 31, 2020 and 2019, respectively.",
+   "prose_after": "Impairment of Long-Lived Assets\nAn impairment loss is recognized in the event facts and circumstances indicate the carrying amount of a long-lived asset may not be recoverable, and an estimate of future undiscounted cash flows is less than the carrying amount of the asset. Impairment is recorded based on the excess of the carrying amount of the impaired asset over the fair value. Generally, fair value represents the Company\u2019s expected future cash flows from the use of an asset or group of assets, discounted at a rate commensurate with the risks involved. There were no impairments for fiscal years ended January 31, 2020 and 2019.\nNet Income (Loss) per Share\nBasic net income (loss) per share is calculated by dividing net income (loss) by the weighted-average number of common shares outstanding. Diluted net income (loss) per share is calculated by dividing net income (loss) by the weighted-average number of common shares outstanding plus the dilutive effect of stock award grants. The following table sets forth the computation of basic and diluted loss per share:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1154,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands, except per share)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "2,382",
+     "$",
+     "(1,614)",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares \u2014 basic",
+     "15,590",
+     "",
+     "15,421",
+     "",
+     ""
+    ],
+    [
+     "Dilutive effect of common stock equivalents from equity incentive plans",
+     "104",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares \u2014 diluted (a)",
+     "$",
+     "15,694",
+     "$",
+     "15,421",
+     ""
+    ],
+    [
+     "Net income (loss) per common share",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.15",
+     "$",
+     "(0.10)",
+     ""
+    ],
+    [
+     "Diluted",
+     "0.15",
+     "",
+     "(0.10)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1130,
+    "end_line": 1147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Summary of Business and Significant Accounting Policies"
+    }
+   },
+   "prose_before": "An impairment loss is recognized in the event facts and circumstances indicate the carrying amount of a long-lived asset may not be recoverable, and an estimate of future undiscounted cash flows is less than the carrying amount of the asset. Impairment is recorded based on the excess of the carrying amount of the impaired asset over the fair value. Generally, fair value represents the Company\u2019s expected future cash flows from the use of an asset or group of assets, discounted at a rate commensurate with the risks involved. There were no impairments for fiscal years ended January 31, 2020 and 2019.\nNet Income (Loss) per Share\nBasic net income (loss) per share is calculated by dividing net income (loss) by the weighted-average number of common shares outstanding. Diluted net income (loss) per share is calculated by dividing net income (loss) by the weighted-average number of common shares outstanding plus the dilutive effect of stock award grants. The following table sets forth the computation of basic and diluted loss per share:",
+   "prose_after": "(a) For fiscal year 2019, approximately 149,000 shares of common stock equivalents were excluded in the computation of diluted net income per share, as the effect would be anti-dilutive since the Company reported a net loss.\nEnvironmental Costs\nThe Company is subject to numerous environmental laws and regulations in the various jurisdictions in which it operates that (a) govern operations that may have adverse environmental effects, such as the discharge of materials into the environment, as well as handling, storage, transportation and disposal practices for solid and hazardous wastes, and (b) impose liability for response costs and certain damages resulting from past and current spills, disposals or other releases of hazardous materials.\nNormal, recurring expenses related to operating the Company's factories in a manner that meets or exceeds environmental laws and regulations are matched to the cost of producing inventory.\nDespite our efforts to comply with existing laws and regulations, compliance with more stringent laws or regulations or stricter interpretation of existing laws, may require additional expenditures by us, some of which may be material. We reserve amounts for such matters when expenditures are probable and reasonably estimable.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1154,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Balance as of beginning of year",
+     "$",
+     "(9,042)",
+     "",
+     "$",
+     "(9,259)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive (loss) income before reclassifications",
+     "(6,045)",
+     "",
+     "",
+     "(1,116)",
+     "",
+     ""
+    ],
+    [
+     "Amounts reclassified from AOCI",
+     "776",
+     "",
+     "",
+     "1,333",
+     "",
+     ""
+    ],
+    [
+     "Net current period other comprehensive income",
+     "(5,269)",
+     "",
+     "",
+     "217",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of end of year",
+     "$",
+     "(14,311)",
+     "",
+     "$",
+     "(9,042)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1186,
+    "end_line": 1201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Summary of Business and Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Virco issued a 10% stock dividend or 3/2 stock split every year beginning in 1983 through 2003. Although the stock dividend had no cash consequences to the Company, the accounting methodology required for 10% dividends affected the equity section of the balance sheet. When the Company recorded a 10% stock dividend, 10% of the market capitalization of the Company on the date of the declaration was reclassified from retained earnings to additional paid-in capital. During the period from 1983 through 2003, the cumulative effect of the stock dividends has been to reclassify over $122 million from retained earnings to additional paid-in capital. The equity section of the balance sheet on January 31, 2020 reflects additional paid-in capital of approximately $119 million and accumulated deficit of approximately $50 million. Other than the losses incurred during 2004-2006, 2011-2014 and 2018-2019, the accumulated deficit is a result of the accounting reclassification and is not the result of accumulated losses.\nAccumulated Other Comprehensive (Loss) Income, Net of Tax\nThe following table summarizes the changes in accumulated balances of other comprehensive (loss) income for the years\nended January 31, 2020 and 2019:",
+   "prose_after": "The reclassifications out of accumulated other comprehensive (loss) income of $776,000 and $1,333,000 for the years ended January 31, 2020 and 2019, respectively, related to amortization of actuarial losses and settlements.\nRevenue Recognition\nThe Company manufactures, markets and distributes a wide variety of school and office furniture to wholesalers, distributors, educational institutions and governmental entities. Revenue is recorded for promised goods or services when control is transferred to customers in an amount that reflects the consideration to which the entity expects to be entitled to in exchange for those goods or services.\nThe Company's sales generally involve a single performance obligation to deliver goods pursuant to customer purchase orders. Prices for our products are based on published price lists and customer agreements. The Company has determined that the performance obligations are satisfied at a point in time when the Company completes delivery per the customer contract. The majority of sales are free on board (\"FOB\") destination where the destination is specified per the customer contract and may include delivering the furniture into the classroom, school site or warehouse. Sales of furniture that are sold FOB factory are typically made to resellers of our product who in turn provide logistics to the ultimate customer. Once a product has been delivered per the shipping terms, the customer is able to direct the use of, and obtain substantially all of the remaining benefits from, the asset. The Company considers control to have transferred upon shipment or delivery in accordance with shipping terms because the Company has a present right to payment at that time, the customer has legal title to the asset, the Company has transferred physical possession of the asset, and the customer has significant risks and rewards of ownership of the asset.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1185,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1222,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Revolving credit line",
+     "$",
+     "9,969",
+     "$",
+     "14,858"
+    ],
+    [
+     "Other",
+     "6,727",
+     "",
+     "6,556",
+     ""
+    ],
+    [
+     "Total debt",
+     "16,696",
+     "",
+     "21,414",
+     ""
+    ],
+    [
+     "Less current portion",
+     "878",
+     "",
+     "5,504",
+     ""
+    ],
+    [
+     "Non-current portion",
+     "$",
+     "15,818",
+     "$",
+     "15,910"
+    ]
+   ],
+   "caption_stack": [
+    "January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1260,
+    "end_line": 1273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "In August 2018, the FASB issued ASU 2018-13, Fair Value Measurement (Topic 820) which modifies the disclosure requirements of fair value measurements in Topic 820, Fair Value Measurement. For public companies the ASU removes disclosure requirements for transfers between Level 1 and Level 2 of the fair value hierarchy, the policy for timing of transfers between levels and the valuation process for Level 3 fair value measurements. The ASU modifies the disclosure requirements for investments in certain entities that calculate net asset value and clarifies that the measurement uncertainty disclosure is to communicate information about the uncertainty in measurement as of the reporting date. The ASU adds the disclosure requirement for changes in unrealized gains and losses for the period included in other comprehensive income for recurring Level 3 fair value measurements held at the end of the reporting period and the range and weighted average of significant unobservable inputs used to develop Level 3 fair value measurements. The amendments in this update are effective for all entities for fiscal years beginning after December 15, 2019 including interim periods within that fiscal year. Early adoption is permitted. The Company does not believe there will be a material impact to the financial statements as a result of adopting this ASU.\nOther recently issued accounting updates are not expected to have a material impact on the Company\u2019s consolidated financial statements.\n3. Debt\nOutstanding balances (in thousands) for the Company\u2019s long-term debt were as follows:",
+   "prose_after": "The Company has a Revolving Credit and Security Agreement (the \u201cCredit Agreement\u201d) with PNC Bank, National Association, as administrative agent and lender (\u201cPNC\u201d). The credit agreement has been amended twenty times since it\u2019s origination in 2011 through fiscal 2020 which, among other things, extended the maturity date of the Credit Agreement for three years until March 19, 2023.\nThe Credit Agreement is an asset-based line of credit that is subject to a borrowing base limitation and generally provides for advances of up to 85% of eligible accounts receivable, plus a percentage equal to the lesser of 60% of the value of eligible inventory or 85% of the liquidation value of eligible inventory, plus $15,000,000 from January 1 through July 31 of each year, minus undrawn amounts of letters of credit and reserves. The Credit Agreement is secured by substantially all of the Borrowers' personal property and certain of the Borrowers' real property. The principal amount outstanding under the Credit Agreement and any accrued and unpaid interest is due no later than March 19, 2023, and the Credit Agreement is subject to certain prepayment penalties upon earlier termination of the Credit Agreement. Prior to the maturity date, principal amounts outstanding under the Credit Agreement may be repaid and reborrowed at the option of the Borrowers without premium or penalty, subject to borrowing base limitations, seasonal adjustments and certain other conditions.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1276,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending January 31,",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "878"
+    ],
+    [
+     "2022",
+     "10,967",
+     ""
+    ],
+    [
+     "2023",
+     "229",
+     ""
+    ],
+    [
+     "2024",
+     "238",
+     ""
+    ],
+    [
+     "2025",
+     "248",
+     ""
+    ],
+    [
+     "Thereafter",
+     "4,136",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ending January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1294,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "Pursuant to the Credit Agreement, substantially all of the Borrowers' accounts receivable are automatically and promptly swept to repay amounts outstanding under the Credit Agreement upon receipt by the Borrowers. Due to this automatic liquidating nature of the Credit Agreement, if the Borrowers breach any covenant, violate any representation or warranty or suffer a deterioration in their ability to borrow pursuant to the borrowing base calculation, the Borrowers may not have access to cash liquidity unless provided by PNC at its discretion. In addition, certain of the covenants and representations and warranties set forth in the Credit Agreement contain limited or no materiality thresholds, and many of the representations and warranties must be true and correct in all material respects upon each borrowing, which the Borrowers expect to occur on an ongoing basis. There can be no assurance that the Borrowers will be able to comply with all such covenants and be able to continue to make such representations and warranties on an ongoing basis.\nThe Company's line of credit with PNC is structured to provide seasonal credit availability during the Company's peak summer season. Approximately $19,936,000 was available for borrowing as of January 31, 2020.\nAs of January 31, 2020, long-term debt repayments are approximately as follows (in thousands):",
+   "prose_after": "Management believes that the carrying value of debt approximated fair value at January 31, 2020 and 2019, as all of the long-term debt bears interest at variable rates based on prevailing market conditions.\n4. Retirement Plans\nPension Plans\nThe Company maintains two defined benefit pension plans, the Virco Employees Retirement Plan (\u201cEmployee Plan\u201d), and the Virco Important Performers Retirement Plan (\u201cVIP Plan\u201d). The annual measurement date for both plans is January 31. The Company and its subsidiaries cover all employees hired prior to December 31, 2003 under the Employee Plan, which is a qualified noncontributory defined benefit retirement plan. Benefits under the Employee Plan are based on years of service and career average earnings. Benefit accruals under the Employee Plan were frozen effective December 31, 2003. All benefits were fully vested on January 31, 2020 and 2019.\nThe Company also provides a supplementary retirement plan for certain key employees, the VIP Plan. The VIP Plan provides a benefit up to 50% of average compensation for the last five years in the VIP Plan offset by benefits earned under the Employee Plan. Benefit accruals under the VIP Plan were frozen effective December 31, 2003. Substantially all assets, consisting of life insurance contracts, securing the VIP Plan are held in a rabbi trust. The cash surrender values of the life insurance policies are included in other assets and money market funds in the accompanying consolidated balance sheets. The cash surrender values of the life insurance policies securing the VIP Plan were $3,384,000 and $3,469,000 at January 31, 2020 and 2019, respectively. Death benefits payable under life insurance policies held by the Plan were approximately $8,919,000 and $9,102,000 at January 31, 2020 and 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1318,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Combined Employee Retirement Plans",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1/31/2020",
+     "",
+     "",
+     "1/31/2019",
+     "",
+     ""
+    ],
+    [
+     "Change in Benefit Obligation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Benefit obligation at beg. of year",
+     "$",
+     "36,299",
+     "",
+     "$",
+     "40,181",
+     ""
+    ],
+    [
+     "Service cost",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Interest cost",
+     "1,382",
+     "",
+     "",
+     "1,459",
+     "",
+     ""
+    ],
+    [
+     "Participant contributions",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Amendments",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Actuarial losses (gains)",
+     "8,280",
+     "",
+     "",
+     "(2,044)",
+     "",
+     ""
+    ],
+    [
+     "Plan settlement",
+     "\u2014",
+     "",
+     "",
+     "(2,176)",
+     "",
+     ""
+    ],
+    [
+     "Benefits paid",
+     "(2,669)",
+     "",
+     "",
+     "(1,121)",
+     "",
+     ""
+    ],
+    [
+     "Benefit obligation at end of year",
+     "$",
+     "43,292",
+     "",
+     "$",
+     "36,299",
+     ""
+    ],
+    [
+     "Change in Plan Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value at beg. of year",
+     "$",
+     "23,527",
+     "",
+     "$",
+     "27,259",
+     ""
+    ],
+    [
+     "Actual return on plan assets",
+     "1,806",
+     "",
+     "",
+     "(1,557)",
+     "",
+     ""
+    ],
+    [
+     "Company contributions",
+     "990",
+     "",
+     "",
+     "1,122",
+     "",
+     ""
+    ],
+    [
+     "Settlements",
+     "\u2014",
+     "",
+     "",
+     "(2,176)",
+     "",
+     ""
+    ],
+    [
+     "Benefits paid",
+     "(2,669)",
+     "",
+     "",
+     "(1,121)",
+     "",
+     ""
+    ],
+    [
+     "Fair value at end of year",
+     "$",
+     "23,654",
+     "",
+     "$",
+     "23,527",
+     ""
+    ],
+    [
+     "Funded Status",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unfunded status of the plans",
+     "$",
+     "(19,638)",
+     "",
+     "$",
+     "(12,772)",
+     ""
+    ],
+    [
+     "Amounts Recognized in Statement of Financial Position",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "$",
+     "(314)",
+     "",
+     "$",
+     "(322)",
+     ""
+    ],
+    [
+     "Non-current liabilities",
+     "(19,324)",
+     "",
+     "",
+     "(12,450)",
+     "",
+     ""
+    ],
+    [
+     "Accrued benefit cost",
+     "$",
+     "(19,638)",
+     "",
+     "$",
+     "(12,772)",
+     ""
+    ],
+    [
+     "Amounts Recognized in Statement of Financial Position and Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued benefit liability",
+     "(19,638)",
+     "",
+     "",
+     "(12,772)",
+     "",
+     ""
+    ],
+    [
+     "Accumulated other compensation loss",
+     "15,427",
+     "",
+     "",
+     "8,319",
+     "",
+     ""
+    ],
+    [
+     "Net amount recognized",
+     "$",
+     "(4,211)",
+     "",
+     "$",
+     "(4,453)",
+     ""
+    ],
+    [
+     "Items not yet Recognized as a Component of Net Periodic Pension Expense, Included in AOCI",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrecognized net actuarial loss",
+     "$",
+     "15,427",
+     "",
+     "$",
+     "8,319",
+     ""
+    ],
+    [
+     "Unamortized prior service costs",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net initial asset recognition",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "15,427",
+     "",
+     "$",
+     "8,319",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Combined Employee Retirement Plans"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1332,
+    "end_line": 1382
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Retirement Plans"
+    }
+   },
+   "prose_before": "It is the Company's policy to contribute adequate funds to the trust accounts to cover benefit payments under the VIP Plan and to maintain the funded status of the Employee Plan at a level which is adequate to avoid significant restrictions to the Employee Plan under the Pension Protection Act of 2006. Contributions to the Qualified Plan Trust and benefit payments under the VIP Plan totaled $954,000 in fiscal 2020 and $1,080,000 in fiscal 2019. Contributions during fiscal 2021 will depend upon actual investment results and benefit payments but are anticipated to be approximately $0.6 million. At January 31, 2020, accumulated other comprehensive loss of approximately $14.3 million, net of tax, is attributable to the pension plans.\nThe Company does not anticipate making any significant changes to the pension assumptions in the near future. If the Company were to have used different assumptions in the fiscal year ended January 31, 2020, a 1% reduction in investment return would have increased expense by approximately $221,000, a 1% change in the rate of compensation increase would have no impact, and a 1% reduction in the discount rate would have increased expense by $167,000.\nThe following tables set forth (in thousands) the combined funded status of the Company\u2019s pension plans at January 31, 2020 and 2019:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1329,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1383,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Combined Employee Retirement Plans",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1/31/2020",
+     "",
+     "",
+     "1/31/2019",
+     "",
+     ""
+    ],
+    [
+     "Other Changes in Plan Assets and Benefit Obligations Recognized in Other Comprehensive Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "7,885",
+     "",
+     "$",
+     "1,039",
+     ""
+    ],
+    [
+     "Prior service cost",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Amortization of loss",
+     "(776)",
+     "",
+     "",
+     "(1,333)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of prior service cost (credit)",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Amortization of initial asset",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total recognized in other comprehensive income (loss)",
+     "$",
+     "7,109",
+     "",
+     "$",
+     "(294)",
+     ""
+    ],
+    [
+     "Items to be Recognized as a Component of Periodic Pension Cost for next fiscal year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prior service cost",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net actuarial loss",
+     "1,872",
+     "",
+     "",
+     "706",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "1,872",
+     "",
+     "$",
+     "706",
+     ""
+    ],
+    [
+     "Supplemental Data",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Projected benefit obligation",
+     "$",
+     "43,292",
+     "",
+     "$",
+     "36,299",
+     ""
+    ],
+    [
+     "Accumulated benefit obligation",
+     "43,292",
+     "",
+     "",
+     "36,299",
+     "",
+     ""
+    ],
+    [
+     "Fair value of plan assets",
+     "23,654",
+     "",
+     "",
+     "23,527",
+     "",
+     ""
+    ],
+    [
+     "Components of Net Cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service cost",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest cost",
+     "1,382",
+     "",
+     "",
+     "1,459",
+     "",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "(1,432)",
+     "",
+     "",
+     "(1,535)",
+     "",
+     ""
+    ],
+    [
+     "Amortization of transition amount",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Recognized (gain) loss due to settlement",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Amortization of prior service cost",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Recognized net actuarial loss",
+     "776",
+     "",
+     "",
+     "1,333",
+     "",
+     ""
+    ],
+    [
+     "Benefit cost",
+     "$",
+     "726",
+     "",
+     "$",
+     "1,257",
+     ""
+    ],
+    [
+     "Estimated Future Benefit Payments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FYE 01-31-2021",
+     "$",
+     "6,114",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FYE 01-31-2022",
+     "2,992",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FYE 01-31-2023",
+     "2,641",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FYE 01-31-2024",
+     "2,549",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FYE 01-31-2025",
+     "3,067",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FYE 01-31-2026 to 2030",
+     "11,960",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "29,323",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Assumptions to Determine Benefit Obligations at Year-End",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discount rate",
+     "3.00% - 3.05%",
+     "",
+     "",
+     "3.75% - 4.0%",
+     "",
+     ""
+    ],
+    [
+     "Rate of compensation increase",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Assumptions to Determine Net Periodic Pension Cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discount rate",
+     "4.10%",
+     "",
+     "",
+     "4.25%",
+     "",
+     ""
+    ],
+    [
+     "Expected return on plan assets",
+     "6.50%",
+     "",
+     "",
+     "6.50%",
+     "",
+     ""
+    ],
+    [
+     "Rate of compensation increase",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Combined Employee Retirement Plans"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1384,
+    "end_line": 1437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Retirement Plans"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Employee Plan held no Level 2 or 3 investments at January 31, 2020 and 2019. The following table sets for the fair value of the Level 1 investments for the Employee Plan as of January 31, 2020 and 2019 (in thousands):\nFair Value Measurements of Plan Assets\nEmployee Plan",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1383,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1438,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "1/31/2020",
+     "",
+     "1/31/2019",
+     ""
+    ],
+    [
+     "Level 1 Measurement",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "10,080",
+     "",
+     "9,345",
+     ""
+    ],
+    [
+     "Principal Money Market",
+     "799",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "PNC Govt Money Fund",
+     "175",
+     "",
+     "630",
+     ""
+    ],
+    [
+     "Vanguard INTM Term Investment",
+     "250",
+     "",
+     "283",
+     ""
+    ],
+    [
+     "Vanguard LT Investment",
+     "1,161",
+     "",
+     "1,304",
+     ""
+    ],
+    [
+     "Ishares Russell 2000",
+     "1,560",
+     "",
+     "1,672",
+     ""
+    ],
+    [
+     "Ishares Russell MID-CAP",
+     "1,850",
+     "",
+     "1,890",
+     ""
+    ],
+    [
+     "Ishares Emerging Markets",
+     "1,103",
+     "",
+     "1,130",
+     ""
+    ],
+    [
+     "Ishares MCSI RAFE",
+     "1,577",
+     "",
+     "1,534",
+     ""
+    ],
+    [
+     "Ishares S&P Index",
+     "2,252",
+     "",
+     "2,895",
+     ""
+    ],
+    [
+     "  Vanguard INTM Term Treasury",
+     "250",
+     "",
+     "281",
+     ""
+    ],
+    [
+     "  Vanguard LT Treasury",
+     "1,183",
+     "",
+     "1,279",
+     ""
+    ],
+    [
+     "Total Level 1 Investments",
+     "$",
+     "22,240",
+     "$",
+     "22,243"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1445,
+    "end_line": 1465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Retirement Plans"
+    }
+   },
+   "prose_before": "The Employee Plan held no Level 2 or 3 investments at January 31, 2020 and 2019. The following table sets for the fair value of the Level 1 investments for the Employee Plan as of January 31, 2020 and 2019 (in thousands):\nFair Value Measurements of Plan Assets\nEmployee Plan",
+   "prose_after": "In addition to the holdings above, the Employee Plan has a holding in a mutual fund investment, Managed Investment Fund. The mutual fund investment is valued using the net asset value (\u201cNAV\u201d) as a practical expedient and is not required to be categorized in the fair value hierarchy table. The total fair value of this investment was $1,414,000 and $1,284,000 as of January 31, 2020 and January 31, 2019, respectively, and is not included in the table above. In relation to this investment, there is no unfunded commitments and the shares can be redeemed on a daily basis with minimal restrictions. Events that may lead to a restriction to transact with the fund is not considered probable.\n401(k) Retirement Plan\nThe Company\u2019s retirement plan, which covers all U.S. employees, allows participants to defer from 1% to 75% of their eligible compensation through a 401(k)-retirement program. Through December 31, 2001, the plan included an employee stock ownership component. The plan continues to include Virco stock as one of the investment options. At January 31, 2020 and 2019, the plan held 706,654 shares and 648,565 shares of the Company\u2019s common stock, respectively. Effective January 1, 2018, the Company initiated an employer match. For the fiscal years ended January 31, 2020 and 2019, the compensation costs incurred for employer match was $765,000 and $738,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1438,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1480,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "1/31/2020",
+     "",
+     "",
+     "1/31/2019",
+     "",
+     ""
+    ],
+    [
+     "Liability beginning of year",
+     "$",
+     "2,037,000",
+     "",
+     "$",
+     "2,088,000",
+     ""
+    ],
+    [
+     "Accretion expense",
+     "49,000",
+     "",
+     "",
+     "49,000",
+     "",
+     ""
+    ],
+    [
+     "Death benefits paid",
+     "(100,000)",
+     "",
+     "",
+     "(100,000)",
+     "",
+     ""
+    ],
+    [
+     "Liability end of year",
+     "$",
+     "1,986,000",
+     "",
+     "$",
+     "2,037,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1481,
+    "end_line": 1491
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Retirement Plans"
+    }
+   },
+   "prose_before": "The Company provided post-retirement life insurance to certain retired employees under the Dual Option Life Insurance Plan (the \"Plan\"). Effective January 2004, the Company terminated this plan for active employees. The Company has purchased split-dollar life insurance on the lives of the remaining covered participants. Death benefits due to participants are approximately $2,250,000. Cash surrender values of these policies, which are included in other assets in the accompanying\nconsolidated balance sheets, were $1,906,000 and $2,098,000 at January 31, 2020 and 2019, respectively. Death benefits payable under the policies were approximately $3,902,000 and $4,256,000 at January 31, 2020 and 2019, respectively. Death benefits received under the Plan in excess of the benefit obligation will be retained in the trust and used to secure and fund benefits payable under the VIP Pension Plan. The Company maintains a rabbi trust to hold assets related to the Dual Option Life Insurance Plan. All assets securing this plan are held in the rabbi trust.\nThe following sets forth the Company's change in death benefits payable during the years ended January 31, 2020 and 2019:",
+   "prose_after": "5. Stock-Based Compensation\nStock Incentive Plans\nThe Company's has one stock plan, the 2011 Employee Stock Incentive Plan (the \u201c2011 Plan\u201d). Under the 2011 Plan, the Company may grant an aggregate of 1,000,000 shares to its employees and non-employee directors in the form of stock options or awards. Restricted stock awards granted under the 2011 Plan are expensed ratably over the vesting period of the awards. The Company determines the fair value of its restricted stock awards and related compensation expense as the difference between the market value of the awards on the date of grant less the exercise price of the awards granted. There were 547,385 awards granted and 223,555 awards were vested during fiscal 2020. As of January 31, 2020, there were approximately 804,892 awards available for future issuance under the 2011 Plan.\nAccounting for the Plans\nA summary of the Company\u2019s restricted stock unit awards activity, and related information for the following years ended January 31, is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1480,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restricted stock units",
+     "",
+     "Weighted- Average Exercise Price",
+     "",
+     "Restricted stock units",
+     "",
+     "Weighted- Average Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding at beginning of year",
+     "501,155",
+     "",
+     "$",
+     "4.44",
+     "692,404",
+     "",
+     "$",
+     "4.25"
+    ],
+    [
+     "Granted",
+     "547,385",
+     "",
+     "4.38",
+     "",
+     "55,555",
+     "",
+     "4.49",
+     ""
+    ],
+    [
+     "Exercised",
+     "(223,555)",
+     "",
+     "4.45",
+     "",
+     "(226,804)",
+     "",
+     "4.63",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(84,000)",
+     "",
+     "4.51",
+     "",
+     "(20,000)",
+     "",
+     "4.01",
+     ""
+    ],
+    [
+     "Outstanding at end of year",
+     "740,985",
+     "",
+     "4.54",
+     "",
+     "501,155",
+     "",
+     "4.44",
+     ""
+    ],
+    [
+     "Weighted-average fair value of restricted stock units granted during the year",
+     "",
+     "",
+     "4.38",
+     "",
+     "",
+     "",
+     "4.49",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1502,
+    "end_line": 1518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "5. Stock-Based Compensation\nStock Incentive Plans\nThe Company's has one stock plan, the 2011 Employee Stock Incentive Plan (the \u201c2011 Plan\u201d). Under the 2011 Plan, the Company may grant an aggregate of 1,000,000 shares to its employees and non-employee directors in the form of stock options or awards. Restricted stock awards granted under the 2011 Plan are expensed ratably over the vesting period of the awards. The Company determines the fair value of its restricted stock awards and related compensation expense as the difference between the market value of the awards on the date of grant less the exercise price of the awards granted. There were 547,385 awards granted and 223,555 awards were vested during fiscal 2020. As of January 31, 2020, there were approximately 804,892 awards available for future issuance under the 2011 Plan.\nAccounting for the Plans\nA summary of the Company\u2019s restricted stock unit awards activity, and related information for the following years ended January 31, is as follows:",
+   "prose_after": "The aggregate fair value of restricted stock awards vested during fiscal years 2020 and 2019 was $994,820 and $1,050,103, respectively. The Company recognized compensation expense, net of forfeitures, for the restricted stock awards of $924,000 and $907,000 for fiscal 2020 and 2019, respectively. The Company records forfeitures as incurred.\nThe weighted-average grant-date fair value of restricted stock awards is the quoted market price of the Company\u2019s common stock on the date of grant, as shown in the table above. The weighted-average grant-date fair value of restricted stock awards granted in fiscal 2020 and 2019 was $4.38 per share and $4.49 per share, respectively.\nAs of January 31, 2020, there was $2.7 million of total unrecognized compensation expense related to restricted stock awards. That expense is expected to be recognized over a weighted-average period of 2.92 years.\nTo satisfy employee minimum statutory tax withholding requirements for restricted stock awards that vest, the Company withholds and retires a portion of the vesting common shares, unless an employee elects to pay cash. In fiscal 2020 and 2019, the Company withheld 55,792 and 57,456 common shares, respectively, with a total value of approximately $0.3 million each year. These amounts are presented as a cash outflow from financing activities in the accompanying consolidated statement of cash flows.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1480,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Statutory",
+     "$",
+     "585",
+     "",
+     "$",
+     "(235)",
+     ""
+    ],
+    [
+     "State taxes (net of federal tax)",
+     "400",
+     "",
+     "",
+     "186",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "(573)",
+     "",
+     "",
+     "831",
+     "",
+     ""
+    ],
+    [
+     "State rate adjustment",
+     "(291)",
+     "",
+     "",
+     "(222)",
+     "",
+     ""
+    ],
+    [
+     "Change in unrecognized tax benefits",
+     "20",
+     "",
+     "",
+     "1",
+     "",
+     ""
+    ],
+    [
+     "Stock Compensation",
+     "(28)",
+     "",
+     "",
+     "(46)",
+     "",
+     ""
+    ],
+    [
+     "Tax cuts and jobs act",
+     "\u2014",
+     "",
+     "",
+     "(15)",
+     "",
+     ""
+    ],
+    [
+     "Expirations of attributes",
+     "345",
+     "",
+     "",
+     "28",
+     "",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "(17)",
+     "",
+     "",
+     "8",
+     "",
+     ""
+    ],
+    [
+     "Return to provision",
+     "(96)",
+     "",
+     "",
+     "(39)",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "345",
+     "",
+     "$",
+     "497",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1532,
+    "end_line": 1549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The weighted-average grant-date fair value of restricted stock awards is the quoted market price of the Company\u2019s common stock on the date of grant, as shown in the table above. The weighted-average grant-date fair value of restricted stock awards granted in fiscal 2020 and 2019 was $4.38 per share and $4.49 per share, respectively.\nAs of January 31, 2020, there was $2.7 million of total unrecognized compensation expense related to restricted stock awards. That expense is expected to be recognized over a weighted-average period of 2.92 years.\nTo satisfy employee minimum statutory tax withholding requirements for restricted stock awards that vest, the Company withholds and retires a portion of the vesting common shares, unless an employee elects to pay cash. In fiscal 2020 and 2019, the Company withheld 55,792 and 57,456 common shares, respectively, with a total value of approximately $0.3 million each year. These amounts are presented as a cash outflow from financing activities in the accompanying consolidated statement of cash flows.\n6. Income Taxes\nThe income tax expense for the last two years is reconciled to the statutory federal income tax rates of 21% for the tax years ended January 31, 2020 and 2019, respectively, as follows (in thousands):",
+   "prose_after": "Significant components of the expense for income taxes attributed to continuing operations are as follows for the years ended January 31 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(24)",
+     ""
+    ],
+    [
+     "State",
+     "136",
+     "",
+     "",
+     "102",
+     "",
+     ""
+    ],
+    [
+     "",
+     "136",
+     "",
+     "",
+     "78",
+     "",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "442",
+     "",
+     "",
+     "(247)",
+     "",
+     ""
+    ],
+    [
+     "State",
+     "340",
+     "",
+     "",
+     "(165)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "782",
+     "",
+     "",
+     "(412)",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "(573)",
+     "",
+     "",
+     "831",
+     "",
+     ""
+    ],
+    [
+     "",
+     "209",
+     "",
+     "",
+     "419",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "345",
+     "",
+     "$",
+     "497",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1552,
+    "end_line": 1572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Significant components of the expense for income taxes attributed to continuing operations are as follows for the years ended January 31 (in thousands):",
+   "prose_after": "Deferred tax assets and liabilities are comprised of the following as of January 31 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued vacation and sick leave",
+     "$",
+     "1,264",
+     "",
+     "$",
+     "892",
+     ""
+    ],
+    [
+     "Retirement plans",
+     "5,448",
+     "",
+     "",
+     "2,748",
+     "",
+     ""
+    ],
+    [
+     "Insurance reserves",
+     "443",
+     "",
+     "",
+     "381",
+     "",
+     ""
+    ],
+    [
+     "Warranty",
+     "207",
+     "",
+     "",
+     "182",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "3,658",
+     "",
+     "",
+     "5,303",
+     "",
+     ""
+    ],
+    [
+     "Right of use liabilities",
+     "6,067",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "  Inventory",
+     "1,175",
+     "",
+     "",
+     "1,320",
+     "",
+     ""
+    ],
+    [
+     "  Business interest expense limitation",
+     "224",
+     "",
+     "",
+     "540",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "301",
+     "",
+     "",
+     "765",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "18,787",
+     "",
+     "$",
+     "12,131",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax in excess of book depreciation",
+     "$",
+     "(802)",
+     "",
+     "$",
+     "(720)",
+     ""
+    ],
+    [
+     "Right of use assets",
+     "(5,519)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "(53)",
+     "",
+     "",
+     "(57)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(6,374)",
+     "",
+     "$",
+     "(777)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(1,183)",
+     "",
+     "",
+     "(1,756)",
+     "",
+     ""
+    ],
+    [
+     "Net long term deferred tax asset",
+     "$",
+     "11,230",
+     "",
+     "$",
+     "9,598",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1575,
+    "end_line": 1601
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Deferred tax assets and liabilities are comprised of the following as of January 31 (in thousands):",
+   "prose_after": "In assessing the realizability of deferred tax assets, the Company considers whether it is more-likely-than-not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income or reversal of deferred tax liabilities during the periods in which those temporary differences become deductible. The Company considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. The Company has a valuation allowance of $1,183,000 against certain state deferred tax assets that the Company does not believe it is more-likely-than-not to realize. At January 31, 2020, the Company has net operating loss carryforwards of approximately $9,499,000 for federal and $26,098,000 for state income tax purposes, expiring at various dates through January 31, 2039.\nThe following table summarizes the activity related to our gross unrecognized tax benefits for the years ended January 31 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1531,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Balances as of February 1,",
+     "$",
+     "38",
+     "",
+     "$",
+     "38",
+     ""
+    ],
+    [
+     "Increases related to prior year tax positions",
+     "8",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Decreases related to prior year tax positions",
+     "\u2014",
+     "",
+     "",
+     "(2)",
+     "",
+     ""
+    ],
+    [
+     "Increases related to current year tax positions",
+     "18",
+     "",
+     "",
+     "8",
+     "",
+     ""
+    ],
+    [
+     "Decreases relating to settlements with taxing authorities",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Decreases related to lapsing of statute of limitations",
+     "(4)",
+     "",
+     "",
+     "(6)",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 31,",
+     "$",
+     "60",
+     "",
+     "$",
+     "38",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1607,
+    "end_line": 1620
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "In assessing the realizability of deferred tax assets, the Company considers whether it is more-likely-than-not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income or reversal of deferred tax liabilities during the periods in which those temporary differences become deductible. The Company considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. The Company has a valuation allowance of $1,183,000 against certain state deferred tax assets that the Company does not believe it is more-likely-than-not to realize. At January 31, 2020, the Company has net operating loss carryforwards of approximately $9,499,000 for federal and $26,098,000 for state income tax purposes, expiring at various dates through January 31, 2039.\nThe following table summarizes the activity related to our gross unrecognized tax benefits for the years ended January 31 (in thousands):",
+   "prose_after": "At January 31, 2020, the Company\u2019s unrecognized tax benefits associated with uncertain tax positions were $60,000, of which $47,000 if recognized, would favorably affect the effective tax rate.\nThe Company recognizes interest and penalties related to unrecognized tax benefits as a component of income tax expense which is consistent with the recognition of the items in prior reporting. The Company had recorded a liability for interest and penalties related to unrecognized tax benefits of $10,000 at January 31, 2020, and $6,000 at January 31, 2019. The years ended January 31, 2016 and subsequent years remain open for examination by the IRS and state tax authorities. The Company is currently under IRS examination for fiscal year ended January 31, 2016. The Company is not currently under state examinations.\nThe specific timing of when the resolution of each tax position will be reached is uncertain. As of January 31, 2020, it is reasonably possible that unrecognized tax benefits will decrease by $5,000 within the next 12 months due to the expiration of the statute of limitations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1602,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1637,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve-Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "1/31/2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "5,435",
+     ""
+    ],
+    [
+     "Short-term lease cost",
+     "149",
+     "",
+     ""
+    ],
+    [
+     "Short-term sublease income",
+     "(40)",
+     "",
+     ""
+    ],
+    [
+     "Variable lease cost",
+     "892",
+     "",
+     ""
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "6,436",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other operating leases information:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "$",
+     "5,435,000",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new lease liabilities",
+     "$",
+     "1,613,000",
+     ""
+    ],
+    [
+     "Weighted-average remaining lease term (years)",
+     "4.95",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average discount rate",
+     "6.38",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Twelve-Months Ended",
+    "1/31/2020",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 1644,
+    "end_line": 1665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases and Commitments"
+    }
+   },
+   "prose_before": "The Company has an operating lease for its corporate office, manufacturing and distribution facility located in Torrance, CA, currently with a remaining lease term through April 30, 2025. The Company leases equipment under a 5-year operating lease arrangement. The Company has the option of buying the assets at the end of the lease period at a price that does not result in the Company being reasonably certain of exercising the option. In addition, the Company leases trucks, automobiles, and forklifts under operating leases that include certain fleet management and maintenance services. Certain of the leases contain renewal or purchase options and require payment for property taxes and insurance. The Company records lease expense on a straight-line basis based on the contractual lease payments. In accordance with ASC 842, the Company recognizes the present value of the future lease commitments as an operating lease liability, and a corresponding right-of-use asset (\"ROU asset\"), net of tenant allowances. Tenant improvements and related tenant allowances are recorded as a reduction to the ROU asset. The Company elected to account for leases with an original term of 12 months or less that do not contain a purchase option as short-term leases. Additionally, certain of the leases provide for variable payment for property taxes, insurance, and common area maintenance payments among others. The Company recognizes variable lease expenses for these leases in the period incurred. The Company's lease agreements do not contain any material residual value guarantees or material restrictive covenants.\nIn accordance with ASC 842, quantitative information regarding our leases is as follows:",
+   "prose_after": "Minimum future lease payments (in thousands) for operating leases in effect as of January 31, 2020, are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1637,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1668,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating Lease",
+     ""
+    ],
+    [
+     "Year ending January 31,",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "5,030"
+    ],
+    [
+     "2022",
+     "5,636",
+     ""
+    ],
+    [
+     "2023",
+     "5,193",
+     ""
+    ],
+    [
+     "2024",
+     "5,192",
+     ""
+    ],
+    [
+     "2025",
+     "5,347",
+     ""
+    ],
+    [
+     "Thereafter",
+     "1,340",
+     ""
+    ],
+    [
+     "Remaining balance of lease payments",
+     "$",
+     "27,738"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Short-term lease liabilities",
+     "$",
+     "3,654"
+    ],
+    [
+     "Long-term lease liabilities",
+     "19,787",
+     ""
+    ],
+    [
+     "Total lease liabilities",
+     "$",
+     "23,441"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Difference between undiscounted cash flows and discounted cash flows",
+     "$",
+     "4,297"
+    ]
+   ],
+   "caption_stack": [
+    "Operating Lease",
+    "Year ending January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1669,
+    "end_line": 1692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases and Commitments"
+    }
+   },
+   "prose_before": "Minimum future lease payments (in thousands) for operating leases in effect as of January 31, 2020, are as follows:",
+   "prose_after": "In accordance with ASC 840, future minimum lease payments under non-cancelable leases as of January 31, 2019 were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1668,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1721,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "5,045",
+     ""
+    ],
+    [
+     "2021",
+     "4,405",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "5,041",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "5,040",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "5,192",
+     "",
+     ""
+    ],
+    [
+     "Thereafter",
+     "6,687",
+     "",
+     ""
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "31,410",
+     ""
+    ],
+    [
+     "Lease income",
+     "$",
+     "(40)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "31,370",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ending January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1695,
+    "end_line": 1710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Leases and Commitments"
+    }
+   },
+   "prose_before": "In accordance with ASC 840, future minimum lease payments under non-cancelable leases as of January 31, 2019 were as follows (in thousands):",
+   "prose_after": "In accordance with ASC 840, rent expense relating to operating leases for the twelve months ended January 31, 2019 was $6,006,000.\n8. Contingencies\nThe Company and other furniture manufacturers are subject to federal, state and local laws and regulations relating to the discharge of materials into the environment and the generation, handling, storage, transportation and disposal of waste and hazardous materials. The Company has expended, and expects to continue to spend, significant amounts in the future to comply with environmental laws. Normal recurring expenses relating to operating the Company factories in a manner that meets or exceeds environmental laws are matched to the cost of producing inventory. Despite the Company\u2019s significant dedication to operating in compliance with applicable laws, there is a risk that the Company could fail to comply with a regulation or that applicable laws and regulations change. On these occasions, the Company records liabilities for remediation costs when remediation costs are probable and can be reasonably estimated.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1668,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1721,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "300",
+     ""
+    ],
+    [
+     "2022",
+     "375",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "375",
+     "",
+     ""
+    ],
+    [
+     "2024",
+     "375",
+     "",
+     ""
+    ],
+    [
+     "2025",
+     "375",
+     "",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,800",
+     ""
+    ],
+    [
+     "Discount to net present value",
+     "(100)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "1,700",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ending January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1726,
+    "end_line": 1741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Contingencies"
+    }
+   },
+   "prose_before": "The Company has a self-insured retention for product and general liability losses up to $250,000 per occurrence, workers\u2019 compensation liability losses up to $250,000 per occurrence and automobile liability losses up to $50,000 per occurrence. The Company has purchased insurance to cover losses in excess of the retention up to a limit of $30,000,000. The Company has obtained an actuarial estimate of its total expected future losses for liability claims and recorded a liability equal to the net\npresent value of $1,700,000 and $1,265,000 at January 31, 2020 and 2019, respectively, based upon the Company\u2019s estimated payout period of five years using a 4.0% and 4.0% discount rate, respectively.\nWorkers\u2019 compensation, automobile, general and product liability claims may be asserted in the future for events not currently known by management. Management does not anticipate that any related settlement, after consideration of the existing reserve for claims incurred and potential insurance recovery, would have a material adverse effect on the Company\u2019s financial position, results of operations or cash flows. Estimated payments under the self-insurance programs are as follows (in thousands):",
+   "prose_after": "The Company and its subsidiaries are defendants in various legal proceedings resulting from operations in the normal course of business. It is the opinion of management, in consultation with legal counsel, that the ultimate outcome of all such matters will not materially affect the Company\u2019s financial position, results of operations or cash flows.\n9. Warranty\nThe Company provides a warranty against all substantial defects in material and workmanship. The standard warranty offered on products sold through January 31, 2013 is 10 years. Effective February 1, 2014 the Company modified its warranty to a limited lifetime warranty. The warranty effective February 1, 2014 is not anticipated to have a significant effect on warranty expense. Effective January 1, 2017, the Company modified the warranty offered to provide specific warranty periods by product component, with no warranty period longer than ten years. The Company\u2019s warranty is not a guarantee of service life, which depends upon events outside the Company\u2019s control and may be different from the warranty period. The Company accrues an estimate of its exposure to warranty claims based upon both product sales data and an analysis of actual warranty claims incurred. The following is a summary of the Company\u2019s warranty-claim activity during for the years ended January 31 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1721,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "700",
+     "",
+     "$",
+     "925",
+     ""
+    ],
+    [
+     "Provision for current year",
+     "570",
+     "",
+     "",
+     "600",
+     "",
+     ""
+    ],
+    [
+     "Provision for (benefits from) prior year",
+     "(145)",
+     "",
+     "",
+     "(555)",
+     "",
+     ""
+    ],
+    [
+     "Costs incurred",
+     "(325)",
+     "",
+     "",
+     "(270)",
+     "",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "800",
+     "",
+     "$",
+     "700",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1748,
+    "end_line": 1759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Warranty"
+    }
+   },
+   "prose_before": "9. Warranty\nThe Company provides a warranty against all substantial defects in material and workmanship. The standard warranty offered on products sold through January 31, 2013 is 10 years. Effective February 1, 2014 the Company modified its warranty to a limited lifetime warranty. The warranty effective February 1, 2014 is not anticipated to have a significant effect on warranty expense. Effective January 1, 2017, the Company modified the warranty offered to provide specific warranty periods by product component, with no warranty period longer than ten years. The Company\u2019s warranty is not a guarantee of service life, which depends upon events outside the Company\u2019s control and may be different from the warranty period. The Company accrues an estimate of its exposure to warranty claims based upon both product sales data and an analysis of actual warranty claims incurred. The following is a summary of the Company\u2019s warranty-claim activity during for the years ended January 31 (in thousands):",
+   "prose_after": "10. Subsequent Events\nOn March 11, 2020, the World Health Organization declared the current coronavirus (COVID-19) outbreak to be a global pandemic. In response to this declaration and the rapid spread of COVID-19 within the United States, federal, state and local governments throughout the country have imposed varying degrees of restriction on social and commercial activity to promote social distancing in an effort to slow the spread of the illness.\nIn accordance with State of California and local orders that include guidance on the definition and responsibilities of \u201cessential businesses,\u201d the Company, after closing down for one week, has re-opened its Torrance, California facility in order to provide service to public school customers in western states that have decided it is safer and in the best interest of both students and district employees to take delivery of school furniture immediately, while classes are not in session. The Company will be operating its Torrance manufacturing and distribution facility on a voluntary basis to give employees the flexibility to remain at home with children who are out of school or for other personal reasons as they deem necessary. Office employees and others who can work from home will continue to do so. Additional measures are being taken to insure adequate social distancing",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1721,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page numbers"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "35"
+    ],
+    [
+     "Consolidated Balance Sheets - January 31, 2020 and 2019",
+     "36"
+    ],
+    [
+     "Consolidated Statements of Operation - Years Ended January 31, 2020 and 2019",
+     "38"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Loss - Years Ended January 31, 2020 and 2019",
+     "39"
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity - Years Ended January 31, 2020 and 2019",
+     "40"
+    ],
+    [
+     "Consolidated Statements of Cash Flows - Years Ended January 31, 2020 and 2019",
+     "41"
+    ],
+    [
+     "Notes to Consolidated Financial Statements - January 31, 2020",
+     "42"
+    ]
+   ],
+   "caption_stack": [
+    "Page numbers"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1836,
+    "end_line": 1847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The information required by this Item is incorporated by reference to information set forth in the Company\u2019s definitive Proxy Statement to be filed within 120 days after the end of the Company\u2019s fiscal year end of January 31, 2020.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by this Item is incorporated by reference to information set forth in the Company\u2019s definitive Proxy Statement to be filed within 120 days after the end of the Company\u2019s fiscal year end of January 31, 2020.\nItem 14. Principal Accounting Fees and Services\nThe information required by this Item is incorporated by reference to information set forth in the Company\u2019s definitive Proxy Statement to be filed within 120 days after the end of the Company\u2019s fiscal year end of January 31, 2020.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n1. The following consolidated financial statements of Virco Mfg. Corporation are set forth in Item 8 of this Annual Report on Form 10-K.",
+   "prose_after": "2. The following consolidated financial statement schedule of Virco Mfg. Corporation is included in Item 15:\nVIRCO MFG. CORPORATION AND SUBSIDIARIES\nSCHEDULE II \u2014 VALUATION AND QUALIFYING ACCOUNTS AND RESERVES\nFOR THE YEARS ENDED JANUARY 31, 2020 and 2019\n(In Thousands)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1829,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Col. A",
+     "Col. B Beginning Balance",
+     "",
+     "Col. C Charged to (Reduced from)\nExpenses",
+     "",
+     "Col. E Deductions from Reserves",
+     "",
+     "Col. F Ending Balance",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts for the period ended:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 31, 2020",
+     "$",
+     "200",
+     "$",
+     "83",
+     "$",
+     "83",
+     "$",
+     "200"
+    ],
+    [
+     "January 31, 2019",
+     "$",
+     "200",
+     "$",
+     "3",
+     "$",
+     "3",
+     "$",
+     "200"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product, general, workers\u2019 compensation and automobile liability reserves for the period ended:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 31, 2020",
+     "$",
+     "1,265",
+     "$",
+     "1,520",
+     "$",
+     "1,085",
+     "$",
+     "1,700"
+    ],
+    [
+     "January 31, 2019",
+     "$",
+     "1,347",
+     "$",
+     "1,357",
+     "$",
+     "1,439",
+     "$",
+     "1,265"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1859,
+    "end_line": 1873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "2. The following consolidated financial statement schedule of Virco Mfg. Corporation is included in Item 15:\nVIRCO MFG. CORPORATION AND SUBSIDIARIES\nSCHEDULE II \u2014 VALUATION AND QUALIFYING ACCOUNTS AND RESERVES\nFOR THE YEARS ENDED JANUARY 31, 2020 and 2019\n(In Thousands)",
+   "prose_after": "All other schedules for which provision is made in the applicable accounting regulation of the Securities and Exchange Commission are not required under the related instructions, are inapplicable, or are included in the Financial Statements or Notes thereto, and therefore are not required to be presented under this Item.\n3. Exhibits\nSee Index to Exhibits. The exhibits listed in the accompanying Index to Exhibits are filed as part of this report.\nItem 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 64
+    },
+    "after": {
+     "line": 1880,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 65
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "VIRCO MFG. CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 30, 2020",
+     "By:",
+     "/s/ Robert A. Virtue"
+    ],
+    [
+     "",
+     "",
+     "Robert A. Virtue"
+    ],
+    [
+     "",
+     "",
+     "Chairman of the Board and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "VIRCO MFG. CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1889,
+    "end_line": 1897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "All other schedules for which provision is made in the applicable accounting regulation of the Securities and Exchange Commission are not required under the related instructions, are inapplicable, or are included in the Financial Statements or Notes thereto, and therefore are not required to be presented under this Item.\n3. Exhibits\nSee Index to Exhibits. The exhibits listed in the accompanying Index to Exhibits are filed as part of this report.\nItem 16. Form 10-K Summary\nNot applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1880,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Robert E. Dose"
+    ],
+    [
+     "",
+     "Robert E. Dose"
+    ],
+    [
+     "",
+     "Sr. Vice President, Finance, Secretary and Treasurer (Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1898,
+    "end_line": 1904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1880,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Bassey Yau"
+    ],
+    [
+     "",
+     "Bassey Yau"
+    ],
+    [
+     "",
+     "Vice President, Accounting, Corporate Controller, Assistant Secretary and Assistant Treasurer (Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1905,
+    "end_line": 1911
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "POWER OF ATTORNEY\nKNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Robert A. Virtue and Robert E. Dose his/her true and lawful attorney-in-fact and agent, with full power of substitution and, for him/her and in his/her name, place and stead, in any and all capacities to sign any and all amendments to this report on Form 10-K, and to file the same, with all exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorney-in-fact and agent full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he/she might or could do in person, hereby ratifying and confirming all that said attorney-in-fact and agent, or his/her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1880,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SIGNATURE",
+     "TITLE",
+     "DATE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert A. Virtue",
+     "Chairman of the Board, Chief Executive Officer, Director (Principal Executive Officer)",
+     "April 30, 2020"
+    ],
+    [
+     "Robert A. Virtue",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Douglas A. Virtue",
+     "President, Director",
+     "April 30, 2020"
+    ],
+    [
+     "Douglas A. Virtue",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert E. Dose",
+     "Sr. Vice President, Finance, Secretary and Treasurer (Principal Financial Officer)",
+     "April 30, 2020"
+    ],
+    [
+     "Robert E. Dose",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Bassey Yau",
+     "Vice President, Accounting, Corporate Controller, Assistant Secretary and Assistant Treasurer (Principal Accounting Officer)",
+     "April 30, 2020"
+    ],
+    [
+     "Bassey Yau",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alexander L. Cappello",
+     "Director",
+     "April 30, 2020"
+    ],
+    [
+     "Alexander L. Cappello",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Craig Levra",
+     "Director",
+     "April 30, 2020"
+    ],
+    [
+     "Craig Levra",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Don Rudkin",
+     "Director",
+     "April 30, 2020"
+    ],
+    [
+     "Don Rudkin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert Lind",
+     "Director",
+     "April 30, 2020"
+    ],
+    [
+     "Robert Lind",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kathy Virtue Young",
+     "Director",
+     "April 30, 2020"
+    ],
+    [
+     "Kathy Virtue Young",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Agnieszka Winkler",
+     "Director",
+     "April 30, 2020"
+    ],
+    [
+     "Agnieszka Winkler",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1919,
+    "end_line": 1963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Robert A. Virtue and Robert E. Dose his/her true and lawful attorney-in-fact and agent, with full power of substitution and, for him/her and in his/her name, place and stead, in any and all capacities to sign any and all amendments to this report on Form 10-K, and to file the same, with all exhibits thereto and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorney-in-fact and agent full power and authority to do and perform each and every act and thing requisite and necessary to be done in connection therewith, as fully to all intents and purposes as he/she might or could do in person, hereby ratifying and confirming all that said attorney-in-fact and agent, or his/her substitute or substitutes, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "prose_after": "EXHIBITS TO FORM 10-K ANNUAL REPORT\nfor the Year Ended January 31, 2020",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation of the Company dated April 23, 1984, as amended (incorporated by reference to Exhibit 1 to the Company\u2019s Form 8-A12B (Commission File No. 001-08777), filed with the Commission on June 18, 2007)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Second Amended and Restated Bylaws of the Company dated September 10, 2001 (incorporated by reference to Exhibit 3.2 to the Company\u2019s Quarterly Report on Form 10-Q (Commission File No. 001-08777), filed with the Commission on September 12, 2014)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Lease dated February 1, 2006, between FHL Group, a California Corporation, as landlord and Virco Mfg. Corporation, a Delaware Corporation, as tenant (incorporated by reference to Exhibit 99.1 to the Company\u2019s Current Report on Form 8-K filed with the Commission on February 3, 2006)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1.1",
+     "Design Agreement dated January 21, 2008, between the Company and Peter Glass Design, LLC, and Hedgehog Design, LLC. (incorporated by reference to Exhibit 10.1 and 10.2 to the Company\u2019s Current Report on Form 8-K filed with the Commission on January 25, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1.2",
+     "Lease amendment dated August 14, 2008, between AMB Property, L.P., a Delaware Limited Partnership, as landlord and Virco Mfg. Corporation, a Delaware Corporation, as tenant (incorporated by reference to Exhibit 10.1 to the Company\u2019s Quarterly Report on Form 10Q filed with the Commission on September 9, 2008)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1.3",
+     "Third Amendment to Lease Agreement, entered into as of December 20, 2013, by and between Starboard Distribution Center, LLC, a Delaware limited liability company, successor in interest to AMB Property, L.P., a Delaware limited Partnership and Virco Mfg. Corporation (incorporated by reference to Exhibit 10.1 to the Company's Current Report on Form 8-K filed with the Commission on December 23, 2013."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1.4",
+     "Fourth Amendment to Lease Agreement, entered into as of November 4, 2017, by and between Starboard Distribution Center, LLC, a Delaware limited liability company, successor in interest to AMB Property, L.P., a Delaware limited Partnership and Virco Mfg. Corporation (incorporated by reference to Exhibit 10.1 to the Company's Current Report on Form 8-K filed with the Commission on November 15, 2017)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Virco Mfg. Corporation 2011 Stock Incentive Plan (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8K filed with the Commission on June 27, 2011)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2.1",
+     "First Amendment to the Virco Mfg. Corporation 2011 Stock Incentive Plan (incorporated by reference to the Company\u2019s Proxy Statement on Form DEF 14A filed with the Commission on May 23, 2014)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Revolving Credit and Security Agreement dated as of December 22, 2011 by and among Virco Mfg. Corporation and Virco Inc., as borrowers, and PNC Bank, National Association, as the lender and administrative agent (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8K filed with the Commission on December 22, 2011)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3.1",
+     "First Amendment to Revolving Credit and Securities Agreement, dated as of June 15, 2012, by and among Virco Mfg. Corporation and Virco, Inc., as borrowers, and PNC Bank, National Association, as the lender and administrative agent (incorporated by reference to Exhibit 10.1 to the Company's Quarterly Report on Form 10-Q filed with the Commission on September 14, 2012)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1970,
+    "end_line": 2010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "EXHIBITS TO FORM 10-K ANNUAL REPORT\nfor the Year Ended January 31, 2020",
+   "prose_after": "10.3.2 Second Amendment to Revolving Credit and Security Agreement, dated as of July 27, 2012, by and among Virco Mfg. Corporation and Virco, Inc., as borrowers, and PNC Bank, National Association, as the lender and administrative agent (incorporated by reference to Exhibit 10.1 to the Company's Current Report on Form 8-K filed with the Commission on July 31, 2012). 10.3.3 Third Amendment to Revolving Credit and Security Agreement, dated as of September 12, 2012, by and among Virco Mfg. Corporation and Virco, Inc., as borrowers, and PNC Bank, National Association, as the lender and administrative agent (incorporated by reference to Exhibit 10.1 to the Company's Quarterly Report on Form 10-Q filed with the Commission on September 14, 2012). 10.3.4 Fourth Amendment to Revolving Credit and Security Agreement, dated as of December 6, 2012, by and among Virco Mfg. Corporation and Virco, Inc., as borrowers, and PNC Bank, National Association, as the lender and administrative agent (incorporated by reference to Exhibit 10.4 to the Company's Quarterly Report on Form 10-Q filed with the Commission on December 7, 2012). 10.3.5 Fifth Amendment to Revolving Credit and Security Agreement, dated as of March 1, 2013, by and among Virco Mfg. Corporation and Virco, Inc., as borrowers, and PNC Bank, National Association, as the lender and administrative agent (incorporated by reference to Exhibit 10.1 to the Company's Current Report on Form 8-K filed with the Commission on March 1, 2013).",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 2013,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 68
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,4618 @@
+{
+ "accession": "0001213900-20-044422",
+ "cik": "0001817825",
+ "form": "10-Q",
+ "filing_date": "2020-12-23",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0920_steelecreek.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "85-1327288"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "210 S. College Street, Suite 1690, Charlotte,\n\n\n\nNorth Carolina",
+     "28244"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2020\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number: 000-56189\nSTEELE CREEK CAPITAL CORPORATION",
+   "prose_after": "(704) 343-6011\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(704) 343-6011\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [ ] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Assets and Liabilities as of September 30, 2020 (unaudited)",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Operations for the period July 1, 2020 (commencement of operations) through September 30, 2020 (unaudited)",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Changes in Shareholders\u2019 Equity for the period July 1, 2020 (commencement of operations) through September 30, 2020 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Cash Flows for the period July 1, 2020 (commencement of operations) through September 30, 2020 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Schedule of Investments as of September 30, 2020 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to the Consolidated Financial Statements (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Discussion about Market Risk",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1a.",
+     "Risk Factors",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [ ] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [ ]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nAs of December 23, 2020, the registrant had 2,633,227.76 shares of common stock, $0.001 par value per share, outstanding.\nTable of Contents",
+   "prose_after": "i\nConsolidated Statement of Assets and Liabilities",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 58,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2020",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     ""
+    ],
+    [
+     "Investments,",
+     "",
+     ""
+    ],
+    [
+     "  Non-controlled/non-affiliate company investments, at fair value (amortized cost of $26,383,346)",
+     "$",
+     "26,726,554"
+    ],
+    [
+     "Cash",
+     "",
+     "3,682,763"
+    ],
+    [
+     "Interest receivable",
+     "",
+     "31,730"
+    ],
+    [
+     "Receivable for investments sold",
+     "",
+     "23,240,920"
+    ],
+    [
+     "    Total assets",
+     "$",
+     "53,681,967"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Payable for investments purchased",
+     "",
+     "29,608,335"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "56,234"
+    ],
+    [
+     "    Total liabilities",
+     "",
+     "29,664,569"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 10)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 Equity:",
+     "",
+     ""
+    ],
+    [
+     "Common shares, $1,000 par value, 22,828 shares authorized, issued and outstanding as of September 30, 2020",
+     "",
+     "22,828,000"
+    ],
+    [
+     "Paid-in-capital in excess of par value",
+     "",
+     "530,000"
+    ],
+    [
+     "Total distributable earnings",
+     "",
+     "659,398"
+    ],
+    [
+     "    Total shareholders\u2019 equity",
+     "$",
+     "24,017,398"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities and shareholders\u2019 equity",
+     "$",
+     "53,681,967"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per share",
+     "$",
+     "1,052.10"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2020",
+    "Assets",
+    "Investments,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 111,
+    "end_line": 147
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "i\nConsolidated Statement of Assets and Liabilities",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statement of Operations",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 109,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 150,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+     ""
+    ],
+    [
+     "Investment income:",
+     "",
+     ""
+    ],
+    [
+     "  Non-controlled/non-affiliate company investments:",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "211,354"
+    ],
+    [
+     "Other income",
+     "",
+     "11,088"
+    ],
+    [
+     "    Total investment income",
+     "",
+     "222,442"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "106,250"
+    ],
+    [
+     "Custody fees",
+     "",
+     "8,014"
+    ],
+    [
+     "Administration expenses",
+     "",
+     "3,014"
+    ],
+    [
+     "Other general and administrative expenses",
+     "",
+     "3,110"
+    ],
+    [
+     "    Total expenses",
+     "",
+     "120,388"
+    ],
+    [
+     "    Net investment income",
+     "",
+     "102,054"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized and unrealized gain (loss) on investments:",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain on non-controlled/non-affiliate company investments",
+     "",
+     "214,136"
+    ],
+    [
+     "Net change in unrealized appreciation on non-controlled/non-affiliate company investments",
+     "",
+     "343,208"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total net realized and unrealized gain on investments",
+     "",
+     "557,344"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net increase in shareholders\u2019 equity resulting from operations",
+     "$",
+     "659,398"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Per share data:",
+     "",
+     ""
+    ],
+    [
+     "Net investment income per share - basic and diluted",
+     "$",
+     "6.51"
+    ],
+    [
+     "Net increase in shareholders\u2019 equity resulting from operations per share - basic and diluted",
+     "$",
+     "42.05"
+    ],
+    [
+     "Weighted average shares outstanding - basic and diluted",
+     "",
+     "15,681"
+    ]
+   ],
+   "caption_stack": [
+    "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+    "Investment income:",
+    "Non-controlled/non-affiliate company investments:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 156,
+    "end_line": 198
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statement of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statement of Changes in Shareholders\u2019 Equity",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 154,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 201,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in capital in",
+     "",
+     "Distributable",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Number of shares",
+     "",
+     "Par value",
+     "",
+     "excess of par value",
+     "",
+     "Earnings (Loss)",
+     "",
+     "shareholders\u2019 equity",
+     ""
+    ],
+    [
+     "Balances at July 1, 2020 (commencement of operations)",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "102,054",
+     "",
+     "102,054"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain on investments",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "214,136",
+     "",
+     "214,136"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation on investments",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "343,208",
+     "",
+     "343,208"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common shares",
+     "",
+     "22,828",
+     "",
+     "22,828,000",
+     "",
+     "530,000",
+     "",
+     "-",
+     "",
+     "23,358,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at September 30, 2020",
+     "",
+     "22,828",
+     "$",
+     "22,828,000",
+     "$",
+     "530,000",
+     "$",
+     "659,398",
+     "$",
+     "24,017,398"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 207,
+    "end_line": 228
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statement of Changes in Shareholders\u2019 Equity",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 205,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in shareholder\u2019s equity resulting from operations",
+     "$",
+     "659,398",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net increase in shareholder\u2019s equity resulting from operations to net cash provided by (used in) operating activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of investments",
+     "",
+     "(69,071,588)",
+     ""
+    ],
+    [
+     "  Proceeds from sales of investments and paydowns",
+     "",
+     "45,806,471",
+     ""
+    ],
+    [
+     "  Amortization of premium/accretion of discount, net",
+     "",
+     "(45,811)",
+     ""
+    ],
+    [
+     "  Net realized gain on investments",
+     "",
+     "(214,136)",
+     ""
+    ],
+    [
+     "  Net change in unrealized appreciation on investments",
+     "",
+     "(343,208)",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest receivable",
+     "",
+     "(31,730)",
+     ""
+    ],
+    [
+     "    Receivable for investments sold",
+     "",
+     "(23,240,920)",
+     ""
+    ],
+    [
+     "    Payable for investments purchased",
+     "",
+     "29,608,335",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued expenses",
+     "",
+     "56,234",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(16,816,955)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Proceeds from issuance of common shares",
+     "",
+     "20,499,718",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "20,499,718",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in Cash",
+     "",
+     "3,682,763",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "3,682,763",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contribution of loan investments",
+     "$",
+     "2,858,282",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contribution of loan investments from Members",
+     "$",
+     "2,858,282",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+    "Cash flows from operating activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 237,
+    "end_line": 279
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Statement of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Schedule of Investments",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 235,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 282,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description (1) (2)",
+     "Maturity",
+     "Interest Rate (3)",
+     "",
+     "Basis Point Spread Above Index (3)",
+     "",
+     "Interest Rate Floor / Base Rate (3)",
+     "",
+     "",
+     "Par Amount",
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "% of Net Shareholder\u2019s Equity (4)",
+     "",
+     ""
+    ],
+    [
+     "  Non-controlled/Non-Affiliate Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Term Floating Rate Loans - 111.3% of Shareholder\u2019s Equity (4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Aerospace & Defense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Alion Science and Technology Corporation",
+     "7/23/2024",
+     "4.75",
+     "%",
+     "L + 3.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "$",
+     "1,000,000",
+     "$",
+     "990,156",
+     "",
+     "$",
+     "1,004,585",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "      MAG DS Corp",
+     "4/1/2027",
+     "6.50",
+     "%",
+     "L + 5.50",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "950,000",
+     "",
+     "",
+     "955,625",
+     "",
+     "4.0",
+     "%"
+    ],
+    [
+     "      Milano Acquisition Corporation",
+     "10/1/2027",
+     "4.75",
+     "%",
+     "L + 4.00",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "990,000",
+     "",
+     "",
+     "991,875",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "      Spirit Aerosystems Inc.",
+     "1/15/2025",
+     "6.00",
+     "%",
+     "L + 5.25",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "500,000",
+     "",
+     "497,500",
+     "",
+     "",
+     "500,000",
+     "",
+     "2.1",
+     "%"
+    ],
+    [
+     "    Total Aerospace & Defense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,427,656",
+     "",
+     "",
+     "3,452,085",
+     "",
+     "14.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Automotive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      NN, Inc.",
+     "10/19/2022",
+     "6.50",
+     "%",
+     "L + 5.75",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "1,640,161",
+     "",
+     "1,551,502",
+     "",
+     "",
+     "1,626,539",
+     "",
+     "6.8",
+     "%"
+    ],
+    [
+     "    Total Automotive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,551,502",
+     "",
+     "",
+     "1,626,539",
+     "",
+     "6.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Banking, Finance, Insurance & Real Estate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Broadstreet Partners, Inc.",
+     "1/27/2027",
+     "4.75",
+     "%",
+     "L + 3.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "997,500",
+     "",
+     "978,370",
+     "",
+     "",
+     "990,019",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "      FinCo I LLC",
+     "6/27/2025",
+     "2.65",
+     "%",
+     "L + 2.50",
+     "%",
+     "",
+     "0.15",
+     "%",
+     "",
+     "500,000",
+     "",
+     "498,750",
+     "",
+     "",
+     "498,230",
+     "",
+     "2.1",
+     "%"
+    ],
+    [
+     "      Hudson River Trading LLC",
+     "2/18/2027",
+     "3.14",
+     "%",
+     "L + 3.00",
+     "%",
+     "",
+     "0.14",
+     "%",
+     "",
+     "997,487",
+     "",
+     "985,237",
+     "",
+     "",
+     "977,538",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "      Ryan Specialty Group LLC",
+     "9/1/2027",
+     "4.00",
+     "%",
+     "L + 3.25",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "985,163",
+     "",
+     "",
+     "992,505",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "    Total Banking, Finance, Insurance & Real Estate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,447,520",
+     "",
+     "",
+     "3,458,292",
+     "",
+     "14.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Beverage, Food & Tobacco",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Advantage Sales & Marketing Inc.",
+     "7/23/2021",
+     "4.25",
+     "%",
+     "L + 3.25",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,488,462",
+     "",
+     "1,374,913",
+     "",
+     "",
+     "1,465,576",
+     "",
+     "6.1",
+     "%"
+    ],
+    [
+     "    Total Beverage, Food & Tobacco",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,374,913",
+     "",
+     "",
+     "1,465,576",
+     "",
+     "6.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Chemicals, Plastics, & Rubber",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Aruba Investments, Inc.",
+     "7/7/2025",
+     "5.25",
+     "%",
+     "L + 4.25",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "988,674",
+     "",
+     "",
+     "997,080",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "    Total Chemicals, Plastics, & Rubber",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "988,674",
+     "",
+     "",
+     "997,080",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Containers, Packaging & Glass",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Canister International Group Inc.",
+     "12/21/2026",
+     "4.90",
+     "%",
+     "L + 4.75",
+     "%",
+     "",
+     "0.15",
+     "%",
+     "",
+     "500,000",
+     "",
+     "497,500",
+     "",
+     "",
+     "500,000",
+     "",
+     "2.1",
+     "%"
+    ],
+    [
+     "      Plaze, Inc.",
+     "8/3/2026",
+     "5.25",
+     "%",
+     "L + 4.25",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "985,256",
+     "",
+     "",
+     "987,500",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "      Pro Mach Group, Inc.",
+     "3/7/2025",
+     "4.50",
+     "%",
+     "L + 3.50",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "265,031",
+     "",
+     "(12,785)",
+     "",
+     "",
+     "7,951",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "      Pro Mach Group, Inc.",
+     "3/7/2025",
+     "4.50",
+     "%",
+     "L + 3.50",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "802,957",
+     "",
+     "777,081",
+     "",
+     "",
+     "786,898",
+     "",
+     "3.3",
+     "%"
+    ],
+    [
+     "    Total Containers, Packaging & Glass",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,247,052",
+     "",
+     "",
+     "2,282,349",
+     "",
+     "9.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Energy: Electricity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Hamilton Projects Acquiror LLC",
+     "6/17/2027",
+     "5.75",
+     "%",
+     "L + 4.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "997,500",
+     "",
+     "977,901",
+     "",
+     "",
+     "996,877",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "    Total Energy: Electricity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "977,901",
+     "",
+     "",
+     "996,877",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Energy: Oil & Gas",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      ChampionX Holding Inc.",
+     "6/3/2027",
+     "6.00",
+     "%",
+     "L + 5.00",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "987,500",
+     "",
+     "977,653",
+     "",
+     "",
+     "985,031",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "    Total Energy: Oil & Gas",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "977,653",
+     "",
+     "",
+     "985,031",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Forest Products & Paper",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Neenah, Inc.",
+     "6/30/2027",
+     "5.00",
+     "%",
+     "L + 4.00",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "997,500",
+     "",
+     "978,044",
+     "",
+     "",
+     "997,500",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "    Total Forest Products & Paper",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "978,044",
+     "",
+     "",
+     "997,500",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Healthcare & Pharmaceuticals",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Global Medical Response, Inc.",
+     "10/2/2025",
+     "5.75",
+     "%",
+     "L + 4.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "500,000",
+     "",
+     "490,000",
+     "",
+     "",
+     "489,688",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "      Lannett Company, Inc.",
+     "11/25/2022",
+     "6.38",
+     "%",
+     "L + 5.38",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,047,721",
+     "",
+     "1,037,813",
+     "",
+     "",
+     "1,032,006",
+     "",
+     "4.3",
+     "%"
+    ],
+    [
+     "    Total Healthcare & Pharmaceuticals",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,527,813",
+     "",
+     "",
+     "1,521,694",
+     "",
+     "6.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    High Tech Industries",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Casa Systems, Inc.",
+     "12/20/2023",
+     "5.00",
+     "%",
+     "L + 4.00",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "481,250",
+     "",
+     "455,716",
+     "",
+     "",
+     "458,691",
+     "",
+     "1.9",
+     "%"
+    ],
+    [
+     "      LogMeIn, Inc.",
+     "8/31/2027",
+     "4.91",
+     "%",
+     "L + 4.75",
+     "%",
+     "",
+     "0.16",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "975,207",
+     "",
+     "",
+     "968,440",
+     "",
+     "4.0",
+     "%"
+    ],
+    [
+     "    Total High Tech Industries",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,430,923",
+     "",
+     "",
+     "1,427,131",
+     "",
+     "5.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Media: Advertising, Printing & Publishing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Meredith Corporation",
+     "1/31/2025",
+     "5.25",
+     "%",
+     "L + 4.25",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "997,500",
+     "",
+     "959,334",
+     "",
+     "",
+     "986,692",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "    Total Media: Advertising, Printing & Publishing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "959,334",
+     "",
+     "",
+     "986,692",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Media: Broadcasting & Subscription",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Univision Communications Inc.",
+     "3/13/2026",
+     "4.75",
+     "%",
+     "L + 3.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "498,750",
+     "",
+     "471,921",
+     "",
+     "",
+     "486,862",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "    Total Media: Broadcasting & Subscription",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "471,921",
+     "",
+     "",
+     "486,862",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Retail",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Michaels Stores, Inc.",
+     "10/1/2027",
+     "4.25",
+     "%",
+     "L + 3.50",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "985,000",
+     "",
+     "",
+     "977,500",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "    Total Retail",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "985,000",
+     "",
+     "",
+     "977,500",
+     "",
+     "4.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 288,
+    "end_line": 392
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Schedule of Investments",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Schedule of Investments",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 286,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 395,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description (1) (2)",
+     "Maturity",
+     "Interest Rate (3)",
+     "",
+     "Basis Point Spread Above Index (3)",
+     "",
+     "Interest Rate Floor / Base Rate (3)",
+     "",
+     "",
+     "Par Amount",
+     "",
+     "Amortized Cost",
+     "",
+     "Fair Value",
+     "",
+     "% of Net Shareholder\u2019s Equity (4)",
+     "",
+     ""
+    ],
+    [
+     "    Services: Business",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      iQor US Inc.",
+     "12/10/2020",
+     "11.00",
+     "%",
+     "L + 10.00",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "405,725",
+     "",
+     "397,651",
+     "",
+     "381,382",
+     "",
+     "1.6",
+     "%"
+    ],
+    [
+     "    Total Services: Business",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "397,651",
+     "",
+     "381,382",
+     "",
+     "1.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Services: Consumer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Herschend Entertainment Co LLC",
+     "8/25/2025",
+     "6.75",
+     "%",
+     "L + 5.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "500,000",
+     "",
+     "480,316",
+     "",
+     "482,500",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "      Smart Start, Inc.",
+     "8/19/2027",
+     "5.75",
+     "%",
+     "L + 4.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "990,125",
+     "",
+     "1,002,710",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "    Total Services: Consumer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,470,441",
+     "",
+     "1,485,210",
+     "",
+     "6.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Telecommunications",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Avaya Inc. (5)",
+     "12/15/2024",
+     "4.40",
+     "%",
+     "L + 4.25",
+     "%",
+     "",
+     "0.15",
+     "%",
+     "",
+     "-",
+     "",
+     "609",
+     "",
+     "-",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "    Total Telecommunications",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "609",
+     "",
+     "-",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Transportation: Cargo",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      SMB Shipping Logistics, LLC",
+     "2/2/2024",
+     "5.00",
+     "%",
+     "L + 4.00",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "733,671",
+     "",
+     "694,254",
+     "",
+     "704,324",
+     "",
+     "2.9",
+     "%"
+    ],
+    [
+     "      Wabash National Corporation",
+     "9/28/2027",
+     "4.00",
+     "%",
+     "L + 3.25",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "990,000",
+     "",
+     "996,250",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "    Total Transportation: Cargo",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,684,254",
+     "",
+     "1,700,574",
+     "",
+     "7.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Transportation: Consumer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      SkyMiles IP Ltd.",
+     "10/20/2027",
+     "4.75",
+     "%",
+     "L + 3.75",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "1,000,000",
+     "",
+     "990,000",
+     "",
+     "1,008,575",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "    Total Transportation: Consumer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "990,000",
+     "",
+     "1,008,575",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Utilities: Electric",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      PG&E Corporation",
+     "6/23/2025",
+     "5.50",
+     "%",
+     "L + 4.50",
+     "%",
+     "",
+     "1.00",
+     "%",
+     "",
+     "498,750",
+     "",
+     "494,485",
+     "",
+     "489,605",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "    Total Utilities: Electric",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "494,485",
+     "",
+     "489,605",
+     "",
+     "2.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Term Floating Rate Loans",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "26,383,346",
+     "",
+     "26,726,554",
+     "",
+     "111.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Non-controlled/Non-Affiliate Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "26,383,346",
+     "$",
+     "26,726,554",
+     "",
+     "111.3",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 401,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nConsolidated Schedule of Investments",
+   "prose_after": "(1) All investments are non-controlled/non-affiliated investments as defined by the Investment Company Act of 1940 (the \u201c1940 Act\u201d). The provisions of the 1940 Act classify investments based on the level of control that the Company maintains in a particular portfolio company. As defined in the 1940 Act, a company is generally presumed to be \u201cnon-controlled\u201d when the Company owns 25% or less of the portfolio company\u2019s voting securities and \u201ccontrolled\u201d when the Company owns more than 25% of the portfolio company\u2019s voting securities. The provisions of the 1940 Act also classify investments further based on the level of ownership that the Company maintains in a particular portfolio company. As defined in the 1940 Act, a company is generally deemed as \u201cnon-affiliated\u201d when the Company owns less than 5% of a portfolio company\u2019s voting securities and \u201caffiliated\u201d when the Company owns 5% or more of a portfolio company\u2019s voting securities.\n(2) Unless otherwise indicated, issuers of debt held by the Company are domiciled in the United States.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 399,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 458,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Term Loans",
+     "$",
+     "26,726,554",
+     "$",
+     "-",
+     "$",
+     "26,726,554",
+     "$",
+     "-"
+    ],
+    [
+     "Total Investments",
+     "$",
+     "26,726,554",
+     "$",
+     "-",
+     "$",
+     "26,726,554",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 582,
+    "end_line": 592
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INVESTMENTS"
+    }
+   },
+   "prose_before": "There may be instances when independent or third-party pricing sources are not available, or cases where we believe that the third-party pricing sources do not provide sufficient evidence to support a market participant\u2019s view of the fair value of the debt investment being valued. These instances may result from an investment in a less liquid loan such as a middle market loan, a mezzanine loan or unitranche loan, or a loan to a company that has become financially distressed. In these instances, we may estimate the fair value based on a combination of a market yield valuation methodology and evaluated pricing discussed above, or solely based on a market yield valuation methodology. Under the market yield valuation methodology, we estimate the fair value based on a discounted cash flow technique. For these loans, the unobservable inputs used in the market yield valuation methodology to measure fair value reflect management\u2019s best estimate of assumptions that would be used by market participants when pricing the investment in a hypothetical transaction, including estimated remaining life, current market yield and interest rate spreads of similar loans and securities as of the measurement date. We will estimate the remaining life based on market data for the average life of similar loans. However, if we have information that the loan is expected to be repaid in the near term, we would use an estimated remaining life based on the expected repayment date. The average life to be used to estimate the fair value of our loans may be shorter than the legal maturity of the loans since many loans are prepaid prior to the maturity date. The interest rate spreads used to estimate the fair value of our loans is based on current interest rate spreads of similar loans. If there is a significant deterioration of the credit quality of a loan, we may consider other factors that a hypothetical market participant would use to estimate fair value, including the proceeds that would be received in a liquidation analysis.\nIn certain cases, the inputs used to measure fair value may fall into different levels of the fair value hierarchy. In such cases, an investment\u2019s level within the fair value hierarchy is based on the lowest level of observable input that is significant to the fair value measurement. The assessment of the significance of a particular input to the fair value measurement in its entirety requires judgement, and considers factors specific to the investment.\nThe following fair value hierarchy table sets forth our investments by level as of September 30, 2020:",
+   "prose_after": "For the period July 1, 2020 (commencement of operations)\nDue to the uncertainty relating to London Interbank Offered Rate (\u201cLIBOR\u201d), we are monitoring potential changes that may adversely affect the market for and the valuation of LIBOR-based securities, including our portfolio of LIBOR-indexed, floating-rate debt securities.\n5. EARNINGS PER SHARE\nThe following table sets forth the computation of basic and diluted earnings per share for the period July 1, 2020 (commencement of operations) through September 30, 2020:",
+   "structured_location": {
+    "item": null,
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "REPEATING_HEADER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period July 1, 2020 (commencement of operations) through September 30, 2020",
+     ""
+    ],
+    [
+     "Numerator - net earnings",
+     "$",
+     "659,398"
+    ],
+    [
+     "Denominator - weighted average shares",
+     "",
+     "15,681"
+    ],
+    [
+     "Net earnings per share",
+     "$",
+     "42.05"
+    ]
+   ],
+   "caption_stack": [
+    "For the period July 1, 2020 (commencement of operations) through September 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 613
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "For the period July 1, 2020 (commencement of operations)\nDue to the uncertainty relating to London Interbank Offered Rate (\u201cLIBOR\u201d), we are monitoring potential changes that may adversely affect the market for and the valuation of LIBOR-based securities, including our portfolio of LIBOR-indexed, floating-rate debt securities.\n5. EARNINGS PER SHARE\nThe following table sets forth the computation of basic and diluted earnings per share for the period July 1, 2020 (commencement of operations) through September 30, 2020:",
+   "prose_after": "6. INCOME TAXES\nThe Company is a pass-through entity. Accordingly, no federal income taxes are assessed at the Company level. Federal income tax law and regulations require the partners to report their allocable share of the Company\u2019s taxable income or loss in their respective tax returns. Certain state and local tax authorities levy taxes on the Company based on its income.\nThe Company accounts for income taxes in accordance with ASC 740, \u201cAccounting for Income Taxes\u201d rates in effect for the year in which the differences are expected to reverse. Such cumulative net tax effects on temporary differences are reflected on the Company\u2019s special purpose combined financial allowance when the Company believes that it is more-likely-than-not that some portion or all of the deferred tax assets will not be realized.\nASC 740 prescribes a two-step approach for the recognition and measurement of tax benefits associated with the positions taken or expected to be taken in a tax return that affect amounts reported in the consolidated financial statements. The Company has reviewed and will continue to review the conclusions reached regarding uncertain tax positions, which may be subject to review and adjustment at a later date based on ongoing analyses of tax laws, regulations and interpretations thereof. For the tax period July 1, 2020 (commencement of operations) to September 30, 2020, no unrecognized tax benefit was recorded. To the extent that the Company\u2019s assessment of the conclusions reached regarding uncertain tax positions changes as a result of the evaluation of new information, such change in estimate will be recorded in the period in which such determination is made. The Company reports income tax-related interest and penalties, if applicable, as a component of income tax expense. For the period ended September 30, 2020, no such amount was recorded.",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 597,
+     "token": "REPEATING_HEADER",
+     "id": 25,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Per share data:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value at beginning of period",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Net investment income (1)",
+     "",
+     "6.51",
+     ""
+    ],
+    [
+     "Net realized gain (1)",
+     "",
+     "13.66",
+     ""
+    ],
+    [
+     "Net change in unrealized appreciation (1)",
+     "",
+     "21.88",
+     ""
+    ],
+    [
+     "Net increase in net assets resulting from operations (1)",
+     "",
+     "42.05",
+     ""
+    ],
+    [
+     "Issuance of common shares",
+     "",
+     "1,000.00",
+     ""
+    ],
+    [
+     "Other (2)",
+     "",
+     "10.05",
+     ""
+    ],
+    [
+     "Net asset value at end of period",
+     "$",
+     "1,052.10",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets at end of period",
+     "$",
+     "24,017,398",
+     ""
+    ],
+    [
+     "Shares outstanding at end of period",
+     "",
+     "22,828",
+     ""
+    ],
+    [
+     "Total return (3)",
+     "",
+     "5.21",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio/Supplemental data:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio of net expenses to average net assets (4)",
+     "",
+     "2.91",
+     "%"
+    ],
+    [
+     "Ratio of net investment income to average net assets (4)",
+     "",
+     "2.46",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Portfolio turnover (5)",
+     "",
+     "216.46",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+    "Per share data:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 687
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCIAL HIGHLIGHTS"
+    }
+   },
+   "prose_before": "Commitments to extend credit include loan proceeds we are obligated to advance, such as delayed draws. Commitments generally have fixed expiration dates or other termination clauses. Unrealized gains or losses associated with unfunded commitments are recorded in the consolidated financial statements and reflected as an adjustment to the fair value of the related security in the Schedule of Investments. The par amount of the unfunded commitments is not recognized by the Company until the commitment becomes funded. As of September 30, 2020, the Company had unfunded commitments of $265,031.\nIn the ordinary course of business, we may be a party to certain legal proceedings, including actions brought against us and others with respect to investment transactions. The outcomes of any such legal proceedings are uncertain and, as a result of these proceedings, the values of the investments to which they relate could decrease. We were not subject to any litigation against us as of September 30, 2020. The debts, obligations and liabilities of the Company, whether arising in contract, tort or otherwise, shall be solely the debts, obligations and liabilities of the Company, and neither the Members nor any other person or entity shall be obligated personally for any such debt, obligation or liability of the Company.\nFor the period July 1, 2020 (commencement of operations)\n11. FINANCIAL HIGHLIGHTS\nThe following financial highlights for the period July 1, 2020 (commencement of operations) through September 30, 2020 are calculated for the Members as a whole.",
+   "prose_after": "(1) The per share data was derived by using the weighted average shares outstanding during the period.\n(2) Includes the impact of different share amounts used in calculating per share data as a result of calculating certain per share data based on weighted average shares outstanding during the period and certain per share data based on shares outstanding as of a period end or transaction date.\n(3) Total return is calculated as the change in net asset value (\u201cNAV\u201d) per share during the period, plus distributions per share, if any, divided by the beginning NAV per share. Dividends and distributions, if any, are assumed for purposes of this calculation to be reinvested at the quarter end NAV per share preceding the distribution. Return calculations are not annualized.\n(4) Ratios are annualized.\n(5) Portfolio turnover rate is calculated using the lesser of year-to-date sales or year-to-date purchases over the average of the invested assets at fair value for the periods reported. Ratio is not annualized.",
+   "structured_location": {
+    "item": null,
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 654,
+     "token": "REPEATING_HEADER",
+     "id": 29,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Investments",
+     "",
+     ""
+    ],
+    [
+     "Cost",
+     "",
+     "26,383,346",
+     ""
+    ],
+    [
+     "Cumulative Net Unrealized Appreciation",
+     "",
+     "343,208",
+     ""
+    ],
+    [
+     "Fair Value",
+     "",
+     "26,726,554",
+     ""
+    ],
+    [
+     "Yield at Cost",
+     "",
+     "5.30",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Investments"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The expected discontinuation of LIBOR could have a significant impact on our business. The dollar amount of our outstanding debt investments and borrowings that are linked to LIBOR with maturity dates after the anticipated discontinuation date of 2021 is material. We anticipate significant operational challenges for the transition away from LIBOR including, but not limited to, amending existing loan agreements with borrowers on investments that may have not been modified with fallback language and adding effective fallback language to new agreements in the event that LIBOR is discontinued before maturity. Beyond these challenges, we anticipate there may be additional risks to our current processes and information systems that will need to be identified and evaluated by us. Due to the uncertainty of the replacement for LIBOR, the potential effect of any such event on our cost of capital and net investment income cannot yet be determined. In addition, any further changes or reforms to the determination or supervision of LIBOR may result in a sudden or prolonged increase or decrease in reported LIBOR, which could have an adverse impact on the market value for or value of any LIBOR-linked securities, loans, and other financial obligations or extensions of credit held by or due to us and could have a material adverse effect on our business, financial condition, and results of operations.\nPortfolio and Investment Activity\nAs of September 30, 2020, our portfolio had a fair market value of $26,726,554, a cost basis of $26,383,346 and was comprised of leveraged loans, measured at fair value (the \u201cLoan Portfolio\u201d). The Loan Portfolio consisted of 32 portfolio companies in 19 industries. The following table depicts a summary of the portfolio as of September 30, 2020:",
+   "prose_after": "As of September 30, 2020, 100.0% of the investments in the portfolio bore interest at floating rates, with 89.0% of our loan portfolio (at fair value) and 88.8% of our loan portfolio (at cost) having an interest rate floor. The composition of our floating rate loan portfolio by interest rate floor as of September 30, 2020 was as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value",
+     "",
+     "% of Floating Rate Portfolio",
+     "",
+     "",
+     "Cost",
+     "",
+     "% of Floating Rate Portfolio",
+     "",
+     ""
+    ],
+    [
+     "0.00%",
+     "",
+     "2,944,208",
+     "",
+     "11.02",
+     "%",
+     "",
+     "2,957,303",
+     "",
+     "11.21",
+     "%"
+    ],
+    [
+     "0.75%",
+     "",
+     "6,084,669",
+     "",
+     "22.77",
+     "%",
+     "",
+     "5,999,164",
+     "",
+     "22.74",
+     "%"
+    ],
+    [
+     "1.00%",
+     "",
+     "17,697,677",
+     "",
+     "66.22",
+     "%",
+     "",
+     "17,426,878",
+     "",
+     "66.05",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "26,726,554",
+     "",
+     "100.00",
+     "%",
+     "",
+     "26,383,346",
+     "",
+     "100.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 866,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As of September 30, 2020, 100.0% of the investments in the portfolio bore interest at floating rates, with 89.0% of our loan portfolio (at fair value) and 88.8% of our loan portfolio (at cost) having an interest rate floor. The composition of our floating rate loan portfolio by interest rate floor as of September 30, 2020 was as follows:",
+   "prose_after": "The portfolio is actively managed, with a turnover ratio of 216.46% for the period July 1, 2020 (commencement of operations) through September 30, 2020. During the period July 1, 2020 (commencement of operations) through September 30, 2020, Loan Portfolio rotation was reflective of the active management style, which seeks to optimize the portfolio based on current market conditions by rotating into positions that have better relative values. We do not expect to maintain this level of turnover ratio as this level is inflated due to the ramping of the portfolio. However, this high level does provide an indication of the liquidity in our portfolio and the leverage loan market. The average yield during period July 1, 2020 (commencement of operations) through September 30, 2020 on the investment was 5.30%. The following tables depict the portfolio activity for the period July 1, 2020 (commencement of operations) through September 30, 2020:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Investments",
+     "",
+     ""
+    ],
+    [
+     "Fair Value, Beginning",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Investment contributions",
+     "",
+     "2,858,282",
+     ""
+    ],
+    [
+     "Purchases",
+     "",
+     "69,071,588",
+     ""
+    ],
+    [
+     "Sales and Repayments",
+     "",
+     "(45,806,471)",
+     ""
+    ],
+    [
+     "Non-cash income accrual",
+     "",
+     "45,811",
+     ""
+    ],
+    [
+     "Net realized gains (losses)",
+     "",
+     "214,136",
+     ""
+    ],
+    [
+     "Net unrealized appreciation",
+     "",
+     "343,208",
+     ""
+    ],
+    [
+     "Fair Value, Ending",
+     "$",
+     "26,726,554",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Investments"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 882,
+    "end_line": 896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The portfolio is actively managed, with a turnover ratio of 216.46% for the period July 1, 2020 (commencement of operations) through September 30, 2020. During the period July 1, 2020 (commencement of operations) through September 30, 2020, Loan Portfolio rotation was reflective of the active management style, which seeks to optimize the portfolio based on current market conditions by rotating into positions that have better relative values. We do not expect to maintain this level of turnover ratio as this level is inflated due to the ramping of the portfolio. However, this high level does provide an indication of the liquidity in our portfolio and the leverage loan market. The average yield during period July 1, 2020 (commencement of operations) through September 30, 2020 on the investment was 5.30%. The following tables depict the portfolio activity for the period July 1, 2020 (commencement of operations) through September 30, 2020:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Investments",
+     "",
+     ""
+    ],
+    [
+     "Portfolio Companies, Beginning",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Investment contributions",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "Purchases (new)",
+     "",
+     "57",
+     ""
+    ],
+    [
+     "Purchases (add-on to existing)",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Complete exit",
+     "",
+     "(29)",
+     ""
+    ],
+    [
+     "Portfolio Companies, Ending",
+     "",
+     "32",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Investments"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 898,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The portfolio was diversified across both issuers and industries with the average exposure to an individual obligor in our Loan portfolio of $0.8 million at fair value, or 3.1% of the total portfolio, as of September 30, 2020. The following table shows the Loan portfolio composition by industry grouping at fair value as a percentage of total Loans as of September 30, 2020:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Banking, Finance, Insurance & Real Estate",
+     "",
+     "12.9",
+     "%"
+    ],
+    [
+     "Aerospace & Defense",
+     "",
+     "12.9",
+     "%"
+    ],
+    [
+     "Containers, Packaging & Glass",
+     "",
+     "8.5",
+     "%"
+    ],
+    [
+     "Transportation: Cargo",
+     "",
+     "6.4",
+     "%"
+    ],
+    [
+     "Automotive",
+     "",
+     "6.1",
+     "%"
+    ],
+    [
+     "Healthcare & Pharmaceuticals",
+     "",
+     "5.7",
+     "%"
+    ],
+    [
+     "Services: Consumer",
+     "",
+     "5.6",
+     "%"
+    ],
+    [
+     "Beverage, Food & Tobacco",
+     "",
+     "5.5",
+     "%"
+    ],
+    [
+     "High Tech Industries",
+     "",
+     "5.3",
+     "%"
+    ],
+    [
+     "Transportation: Consumer",
+     "",
+     "3.8",
+     "%"
+    ],
+    [
+     "Forest Products & Paper",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Chemicals, Plastics, & Rubber",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Energy: Electricity",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Media: Advertising, Printing & Publishing",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Energy: Oil & Gas",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Retail",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "Utilities: Electric",
+     "",
+     "1.8",
+     "%"
+    ],
+    [
+     "Media: Broadcasting & Subscription",
+     "",
+     "1.8",
+     "%"
+    ],
+    [
+     "Services: Business",
+     "",
+     "1.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "As of September 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 939
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The portfolio was diversified across both issuers and industries with the average exposure to an individual obligor in our Loan portfolio of $0.8 million at fair value, or 3.1% of the total portfolio, as of September 30, 2020. The following table shows the Loan portfolio composition by industry grouping at fair value as a percentage of total Loans as of September 30, 2020:",
+   "prose_after": "Results of Operations\nOperating results for the period July 1, 2020 (commencement of operations) through September 30, 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+     ""
+    ],
+    [
+     "Investment income:",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "211,354"
+    ],
+    [
+     "Other income",
+     "",
+     "11,088"
+    ],
+    [
+     "Total investment income",
+     "",
+     "222,442"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "106,250"
+    ],
+    [
+     "Custody fees",
+     "",
+     "8,014"
+    ],
+    [
+     "Administration expenses",
+     "",
+     "3,014"
+    ],
+    [
+     "Other general and administrative expenses",
+     "",
+     "3,110"
+    ],
+    [
+     "Total expenses",
+     "",
+     "120,388"
+    ],
+    [
+     "Net investment income",
+     "",
+     "102,054"
+    ],
+    [
+     "Net realized gain on investments",
+     "",
+     "214,136"
+    ],
+    [
+     "Net unrealized appreciation on investments",
+     "",
+     "343,208"
+    ],
+    [
+     "Net realized and unrealized gain on investments",
+     "",
+     "557,344"
+    ],
+    [
+     "  Net Earnings",
+     "",
+     "659,398"
+    ]
+   ],
+   "caption_stack": [
+    "For the period from July 1, 2020 (commencement of operations) through September 30, 2020",
+    "Investment income:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 945,
+    "end_line": 974
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Results of Operations\nOperating results for the period July 1, 2020 (commencement of operations) through September 30, 2020 were as follows:",
+   "prose_after": "Investment Income\nInvestment income of $222,442 is recorded on the accrual basis to the extent that such amounts are expected to be collected. Where applicable, OID and purchased discounts and premiums are accreted into interest income using the effective interest method. Loan origination fees are deferred and accreted into interest income using the effective interest method. We record prepayment premiums on loans and other investments as interest income when such amounts are received.\nTotal Expenses\nTotal expenses of $120,388 include administrator fees, custody fees, legal fees, audit and tax service expenses, third-party valuation fees and other general and administrative expenses. Expenses are recognized on an accrual basis.\nNet Realized Gain on Investments\nSales and repayments of investments during the period July 1, 2020 (commencement of operations) through September 30, 2020 totaled $45,806,471 resulting in net realized gains of $214,136.\nNet Unrealized Appreciation on Investments\nUnrealized appreciation of $343,208 reflects the changes in fair value of investments as determined in compliance with the Manager\u2019s valuation policy.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 940,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 991,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Steele Creek Capital Corporation",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: December 23, 2020",
+     "/s/ Glenn Duffy",
+     ""
+    ],
+    [
+     "",
+     "Name:",
+     "Glenn Duffy"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer, Chief Investment Officer, and President"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: December 23, 2020",
+     "/s/ Douglas Applegate Jr.",
+     ""
+    ],
+    [
+     "",
+     "Name:",
+     "Douglas Applegate Jr."
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Steele Creek Capital Corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1137,
+    "end_line": 1152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits, Consolidated Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "3.1 Form of Articles of Incorporation (Incorporated by reference to Exhibit 3.1 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 3.2 Bylaws (Incorporated by reference to Exhibit 3.2 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.1 Form of Investment Advisory Agreement (Incorporated by reference to Exhibit 10.1 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.2 Form of Waiver Letter Agreement to the Investment Advisory Agreement (Incorporated by reference to Exhibit 10.2 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.3 Form of Administration Agreement (Incorporated by reference to Exhibit 10.3 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.4 Form of Custody Agreement (Incorporated by reference to Exhibit 10.4 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.5 Form of Indemnification Agreement for Directors and Officers (Incorporated by reference to Exhibit 10.5 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.6 Form of Trademark Licensing Agreement (Incorporated by reference to Exhibit 10.6 to Registrant\u2019s Amendment No. 1 to Registration Statement on Form 10 (File No. 000-56189) filed on November 9, 2020). 10.7 Form of Subscription Agreement (Incorporated by reference to Exhibit 10.7 to Registrant\u2019s Amendment No. 2 to Registration Statement on Form 10 (File No. 000-56189) filed on November 24, 2020). 10.8* Form of Dealer Manager Agreement 10.9* Credit Agreement with BNP Paribas 31.1* Certification of Chief Executive Officer pursuant to Securities Exchange Act Rule 13a-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 31.2* Certification of Chief Financial Officer pursuant to Securities Exchange Act Rule 13a-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 32.1* Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 32.2* Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002\n* Filed herewith\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1132,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

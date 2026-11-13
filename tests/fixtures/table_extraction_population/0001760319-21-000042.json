@@ -1,0 +1,4688 @@
+{
+ "accession": "0001760319-21-000042",
+ "cik": "0001049011",
+ "form": "10-K",
+ "filing_date": "2021-04-15",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "kdce10k2020.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "59-2549529"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "370 Amapola Ave., Suite 200A",
+     ""
+    ],
+    [
+     "Torrance, California",
+     "90501"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2020\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 000-56174\nKID CASTLE EDUCATIONAL\nCORPORATION\n(Exact name of registrant as specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number including area code: (1) 310-895-1839\n(Former name or former address, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: COMMON STOCK, $0.001 PAR VALUE\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (Section 232.405 of this chapter) during the preceding 12 months (or such shorter period that the registrant was required to submit and post such files. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 5,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "",
+     "Business",
+     "",
+     "4"
+    ],
+    [
+     "Item 1A",
+     "",
+     "Risk Factors",
+     "",
+     "6"
+    ],
+    [
+     "Item 2",
+     "",
+     "Properties",
+     "",
+     "7"
+    ],
+    [
+     "Item 3",
+     "",
+     "Legal Proceedings",
+     "",
+     "7"
+    ],
+    [
+     "Item 4",
+     "",
+     "Mine Safety Disclosures.",
+     "",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "",
+     "Market for Registrant\u2019s Common Equity and Related Stockholder Matters",
+     "",
+     "7"
+    ],
+    [
+     "Item 6",
+     "",
+     "Selected Financial Data",
+     "",
+     "8"
+    ],
+    [
+     "Item 7",
+     "",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "",
+     "8"
+    ],
+    [
+     "Item 8",
+     "",
+     "Financial Statements and Supplementary Data",
+     "",
+     "12"
+    ],
+    [
+     "Item 9",
+     "",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "",
+     "24"
+    ],
+    [
+     "Item 9A",
+     "",
+     "Controls and Procedures",
+     "",
+     "24"
+    ],
+    [
+     "Item 9B",
+     "",
+     "Other Information",
+     "",
+     "26"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "",
+     "Directors and Executive Officers and Corporate Governance",
+     "",
+     "26"
+    ],
+    [
+     "Item 11",
+     "",
+     "Executive Compensation",
+     "",
+     "29"
+    ],
+    [
+     "Item 12",
+     "",
+     "Security Ownership of Certain Beneficial Owners   a\u2022d   Management   and Related Stockholder Matters",
+     "",
+     "31"
+    ],
+    [
+     "Item 13",
+     "",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "32"
+    ],
+    [
+     "Item 14",
+     "",
+     "Principal Accountant Fees and Services",
+     "",
+     "33"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "",
+     "Exhibits and Financial Statement Schedules",
+     "",
+     "34"
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "",
+     "37"
+    ],
+    [
+     "Exhibit Index",
+     "",
+     "",
+     "",
+     "38"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "State the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was sold, or the average bid and asked price of such common equity, as of a specified date within the past 60 days:\nAs of December 31, 2020, the aggregate market value of the Registrant\u2019s voting and non-voting stock held by non-affiliates of the Registrant was approximately $5,216 using the average of the stock\u2019s closing price between October 1, to December 31, 2020, which was $0.0022 multiplied by 2,324,706 shares. For the sole purpose of making this calculation, the term \u201cnon-affiliate\u201d has been interpreted to exclude directors, executive officers and holders of 10% or more of the registrant\u2019s common stock, and the value was calculated based the number of shares held As of December 31, 2020.\nAs at December 31, 2020, the number of shares of common stock issued and outstanding was 922,324,706.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nKID CASTLE EDUCATIONAL CORPORATION\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "Cautionary Statement Regarding Forward Looking Statements\nThe discussion contained in this Annual Report on Form 10-K (\u201cAnnual Report\u201d) contains \u201cforward-looking statements\u201d within the meaning of Section 27A of the United States Securities Act of 1933, as amended, or the Securities Act, and Section 21E of the United States Securities Exchange Act of 1934, as amended, or the Exchange Act. Any statements about our expectations, beliefs, plans, objectives, assumptions or future events or performance are not historical facts and may be forward-looking. These statements are often, but not always, made through the use of words or phrases like \u201canticipate,\u201d \u201cestimate,\u201d \u201cplans,\u201d \u201cprojects,\u201d \u201ccontinuing,\u201d \u201congoing,\u201d \u201ctarget,\u201d \u201cexpects,\u201d \u201cmanagement believes,\u201d \u201cwe believe,\u201d \u201cwe intend,\u201d \u201cwe may,\u201d \u201cwe will,\u201d \u201cwe should,\u201d \u201cwe seek,\u201d \u201cwe plan,\u201d the negative of those terms, and similar words or phrases. We base these forward-looking statements on our expectations, assumptions, estimates and projections about our business and the industry in which we operate as of the date of this Annual Report. These forward-looking statements are subject to a number of risks and uncertainties that cannot be predicted, quantified or controlled and that could cause actual results to differ materially from those set forth in, contemplated by, or underlying the forward-looking statements. Statements in this Annual Report describe factors, among others, that could contribute to or cause these differences. Actual results may vary materially from those anticipated, estimated, projected or expected should one or more of these risks or uncertainties materialize, or should underlying assumptions prove incorrect. Because the factors discussed in this Annual Report could cause actual results or outcomes to differ materially from those expressed in any forward-looking statement made by us or on our behalf, you should not place undue reliance on any such forward-looking statement. New factors emerge from time to time, and it is not possible for us to predict which will arise. In addition, we cannot assess the impact of each factor on our business or the extent to which any factor, or combination of factors, may cause actual results to differ materially from those contained in any forward-looking statement. Except as required by law, we undertake no obligation to publicly revise our forward-looking statements to reflect events or circumstances that arise after the date of this Annual Report or the date of documents incorporated by reference herein that include forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\uf0a8",
+     "Each business/operation acquired is its own entity and is structured as its own business structure while Cannabinoid Biosciences, Inc. serves as the parent Company that bundles all the ownership interests into a single corporation."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "\uf0a8",
+     "Each business/operation is managed by Cannabinoid Biosciences, Inc. or its authorized agents."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 237,
+    "end_line": 243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "The CBD market in the US is very fragmented, lack established process control and protocols, and is without formulations standardization. Through acquisition, the Company intend to enter the following areas of the legal CBD business: (1) Ownership interest in certain businesses that extract, purchase and distribute Bulk Pure CBD, Isolate, Hemp Oil, THC-free CBD Distillate and Crude CBD Oil; (2) Partnerships with local farmers to grow Farm- Bill compliant hemp biomass; (3) Partnerships with extract facilities across the U.S. who manufacture hemp-based ingredients to meet specific medical.\nThere are no guarantees that we would be able to raise the capital needed to make any acquisition of CBD operations, though. Because the Company has limited or no resources, and the legal CBD industry is still in its infancy (following the 2018 Farm Bill), the Company lack of resources is likely to affect its ability to accomplish its goals as contemplated above. It would be difficult for the Company to raise the necessary capital to achieve its goals.\nSpecial Purpose Entities\nWhen the Company does acquire businesses and operating assets, it intends to hold title to the properties through separate LLCs or through special purpose entities (\u201cSPE\u2019s\u201d) holding several similar asset types. Each separate LLC or SPE will be a 100% wholly-owned subsidiary of the Company. If a joint venture is undertaken, the Company will record a first position deed instead of holding actual title.",
+   "prose_after": "Leverage\nLeverage represents an important vehicle for maximizing returns. The Company will evaluate the appropriate amount of debt based on market conditions, feasibility of the project, and determined risk. The Company does not have any credit agreements with any lender as at the date of this filing. We may incur indebtedness in the form of bank borrowings, purchase money obligations to the sellers of properties and publicly or privately placed debt instruments or financing from institutional investors or other lenders. The indebtedness may be secured or unsecured. Security may be in the form of mortgages or other interests in our properties; equity interests in entities which own our properties or investments; cash or cash equivalents; securities; letters of credit; guarantees or a security interest in one or more of our other assets.\nThe Company may use borrowing proceeds to finance acquisitions of new businesses or operations, make other investments, trade in stocks, futures, options and forex, make payments to the officers and management, pay for capital improvements, repairs, refinance existing indebtedness, pay distributions or provide working capital. The form of our indebtedness may be long-term or short-term debt or in the form of a revolving credit facility.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended on December 31, 2020",
+     "",
+     "High Bid",
+     "",
+     "",
+     "",
+     "Low Bid",
+     "",
+     ""
+    ],
+    [
+     "1 st Quarter",
+     "",
+     "",
+     "0.3000",
+     "",
+     "",
+     "",
+     "0.0001",
+     ""
+    ],
+    [
+     "2 nd Quarter",
+     "",
+     "",
+     "0.0020",
+     "",
+     "",
+     "",
+     "0.0010",
+     ""
+    ],
+    [
+     "3 rd Quarter",
+     "",
+     "",
+     "0.0020",
+     "",
+     "",
+     "",
+     "0.0020",
+     ""
+    ],
+    [
+     "4 th Quarter",
+     "",
+     "",
+     "0.0050",
+     "",
+     "",
+     "",
+     "0.0013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 825,
+    "end_line": 833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "Our common stock is currently quoted on the OTC\u2019s Expert-Market under the symbol \u201cKDCE\u201d. Trading in stocks quoted on the OTC\u2019s Expert-Market, a \u201cprivate market to serve broker-dealer pricing and best execution needs in securities that are restricted from public quoting or trading,\u201d is often difficult, thin and is characterized by wide fluctuations in trading prices due to many factors that may have little to do with a company\u2019s operations or business prospects. We cannot assure you that you could currently be able to find buyers or sellers of our stocks on the expert-market. We cannot assure you there will be a market for our common stock in the future.\nThe market prices noted below were obtained from the OTC market and reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.\nFor the periods indicated, the following table sets forth the high and low bid prices per share of common stock based on inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended on December 31, 2019",
+     "",
+     "High Bid",
+     "",
+     "",
+     "",
+     "Low Bid",
+     "",
+     ""
+    ],
+    [
+     "1 st Quarter",
+     "",
+     "",
+     "0.0055",
+     "",
+     "",
+     "",
+     "0.0050",
+     ""
+    ],
+    [
+     "2 nd Quarter",
+     "",
+     "",
+     "0.0055",
+     "",
+     "",
+     "",
+     "0.0055",
+     ""
+    ],
+    [
+     "3 rd Quarter",
+     "",
+     "",
+     "0.0100",
+     "",
+     "",
+     "",
+     "0.0055",
+     ""
+    ],
+    [
+     "4 th Quarter",
+     "",
+     "",
+     "2.5000",
+     "",
+     "",
+     "",
+     "0.0100",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "As of December 31, 2020, the Company had approximately 53 shareholders of record. The Company has never paid any dividends on its common stock and does not have any plans to pay any dividends in the foreseeable future.\nRecent Sale of Unregistered Securities; Use of Proceeds from Registered Securities\nOn October 21, 2019, the company sold one (1) million shares of its preferred shares (one preferred share is convertible 1,000 share of common stocks) of the company to Cannabinoid Biosciences, Inc., a California corporation. The issuance of the preferred shares to Cannabinoid Biosciences, Inc will give to Cannabinoid Biosciences, Inc, the controlling vote to control and dominate the affairs of the company going forward. The purchase was made pursuant to the exemption from registration including, but not limited to, Section 506 of Reg. D and Section 4.1.\nPurchases of Equity Securities by Registrant and Affiliated Purchasers\nNot applicable.\nITEM 6. SELECTED FINANCIAL DATA\nNot applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATION",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS AS OF DECEMBER 31, 2020 and 2019",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS FOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CHANGES IN SHAREHOLDERS\u2019 DEFICIT FOR THE YEARS ENDED\n\n\n\nDECEMBER 31, 2020 AND 2019",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS FOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO AUDITED FINANCIAL STATEMENTS FOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+     "F-7 \u2013 F-13"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1083,
+    "end_line": 1098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We are exposed to market risk, including changes in certain interest rates. All of these market risks arise in the normal course of business, as we do not engage in speculative trading activities. We have not entered into derivative or hedging transactions to manage risk in connection with such fluctuations.\nThis analysis does not take into consideration the effect of changes in the level of overall economic activity on interest rate fluctuations.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nThe consolidated financial statements of Kid Castle including the notes thereto, are presented beginning at page F-1 and are incorporated by reference herein.\nKID CASTLE EDUCATIONAL CORPORATION\nFINANCIAL STATEMENTS\nFOR THE YEARS ENDED DEC. 31, 2020 AND 2019\nKID CASTLE EDUCATIONAL CORPORATION\nFINANCIAL STATEMENTS\nC O N T E N T S",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Shareholders and the Board of Directors\nKid Castle Educational Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Kid Castle Educational Corporation (the \"Company\") as of December 31, 2020 and 2019, the related statements of operations, changes in stockholders' equity, for each of the two years in the period ended December 31, 2020, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2020 and 2019, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2020, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\"PCAOB\") and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "KID CASTLE EDUCATIONAL CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,630",
+     "",
+     "$",
+     "10,878",
+     ""
+    ],
+    [
+     "Inventory Asset",
+     "",
+     "91,282",
+     "",
+     "",
+     "8,620",
+     ""
+    ],
+    [
+     "Other Current Asset",
+     "",
+     "-",
+     "",
+     "",
+     "41,579",
+     ""
+    ],
+    [
+     "Real Estate Investments",
+     "",
+     "664,110",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "757,022",
+     "",
+     "",
+     "61,077",
+     ""
+    ],
+    [
+     "Fixed Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed assets, net",
+     "$",
+     "7,745",
+     "",
+     "$",
+     "17,550",
+     ""
+    ],
+    [
+     "Total Fixed Assets",
+     "",
+     "7,745",
+     "",
+     "",
+     "17,550",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "764,767",
+     "",
+     "$",
+     "78,628",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "7,354",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Current portion, notes payable",
+     "",
+     "63,748",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "$",
+     "71,102",
+     "",
+     "$",
+     "800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable",
+     "$",
+     "150,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Notes payable - related party",
+     "",
+     "540,524",
+     "",
+     "",
+     "41,559",
+     ""
+    ],
+    [
+     "Total Long-Term Liabilities",
+     "",
+     "690,524",
+     "",
+     "",
+     "41,559",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "761,626",
+     "",
+     "$",
+     "42,359",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.00001 par value, 1,000,000 shares authorized, 1,000,000 and 1,000,000 issued and outstanding as at December 31, 2020 and 2019 respectively.",
+     "$",
+     "1,023",
+     "",
+     "$",
+     "10",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $0.00001 par value, 1,000,000,000 shares authorized, 922,324,706 issued and outstanding as at December 31, 2020 and 2019 respectively",
+     "",
+     "9,282",
+     "",
+     "",
+     "11,196",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "7,872,711",
+     "",
+     "",
+     "7,826,113",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(7,879,875)",
+     "",
+     "",
+     "(7,801,050)",
+     ""
+    ],
+    [
+     "Total Kid Castle Stockholders\u2019 equity",
+     "",
+     "2,764",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Minority Interest",
+     "",
+     "377",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "$",
+     "3,141",
+     "",
+     "$",
+     "36,269",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "764,767",
+     "",
+     "$",
+     "78,628",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes to audited consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "KID CASTLE EDUCATIONAL CORPORATION",
+    "CONSOLIDATED BALANCE SHEETS",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1156,
+    "end_line": 1213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The procedures performed to address the mater included; obtaining and reviewing legal documents for each transaction, examining the support for the consideration received to ensure proper valuation and evaluating if the assets sold constitute a business as defined by generally accepted accounting principles\nPrinciples of Consolidation\nAs discussed in Note 1 to the financial statements, Kid Castle Educational Corporation (KDCE) is the primary beneficiary of GiveMePower Corporation (GMPW), a related party but filing a separate SEC 10K report. Kid Castle Educational Corporation controlled 88% of GMPW. Also, Video River Networks, Inc. (NIHK) exercises control of 55% of the voting shares and 100% of the operational and financial control of Kid Castle Educational Corporation and filing a separate SEC 10K report.\nWe identified the Company\u2019s principle of consolidation as a critical audit matter because, the same revenue and assets are reported by the three Companies in their separate SEC 10K filing.\nThe procedures performed to address the matter included; reviewing the audit of GMPW, discussed with the Company\u2019s management the full disclosures of the matter.\nAlbert Garcia, CPA\nDylanFloyd Accounting & Consulting\nWe have served as the Company's auditor since 2020.\nNewhall, California\nApril 13, 2021",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1154,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1213,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "KID CASTLE EDUCATIONAL CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Years Ended December 31, 2020 and 2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of investments under trading securities",
+     "",
+     "$",
+     "423,136",
+     "$",
+     "6,189"
+    ],
+    [
+     "Sales - Investment property",
+     "",
+     "",
+     "1,205,000",
+     "",
+     "-"
+    ],
+    [
+     "Total Revenue",
+     "",
+     "",
+     "1,628,136",
+     "",
+     "6,189"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sale - trading securities",
+     "",
+     "",
+     "374,691",
+     "",
+     ""
+    ],
+    [
+     "Cost of Investment Properties Sold",
+     "",
+     "",
+     "1,179,827",
+     "",
+     "-"
+    ],
+    [
+     "Gross Profit",
+     "",
+     "",
+     "73,618",
+     "",
+     "6,189"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "",
+     "51,338",
+     "",
+     "79,449"
+    ],
+    [
+     "Marketing and advertising",
+     "",
+     "",
+     "16,325",
+     "",
+     "44,004"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "3,006",
+     "",
+     "-"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "10,000",
+     "",
+     ""
+    ],
+    [
+     "Amortization and depreciation",
+     "",
+     "",
+     "5,735",
+     "",
+     "-"
+    ],
+    [
+     "Professional fees",
+     "",
+     "",
+     "73,059",
+     "",
+     "26,680"
+    ],
+    [
+     "Total Expenses",
+     "",
+     "",
+     "159,463",
+     "",
+     "150,133"
+    ],
+    [
+     "INCOME FROM OPERATIONS",
+     "",
+     "",
+     "(85,845)",
+     "",
+     "(143,944)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Dividends",
+     "",
+     "",
+     "174",
+     "",
+     "-"
+    ],
+    [
+     "Unrealized gain (loss)",
+     "",
+     "",
+     "2,692",
+     "",
+     "(5,738)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS) BEFORE TAXES",
+     "",
+     "",
+     "(82,979)",
+     "",
+     "(149,682)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME TAX PROVISION",
+     "",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)",
+     "",
+     "$",
+     "(82,979)",
+     "$",
+     "(149,682)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) per Share: Basic and Diluted",
+     "",
+     "$",
+     "(0.000090)",
+     "$",
+     "(0.000323)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Common Shares Outstanding: Basic and Diluted",
+     "",
+     "",
+     "922,324,706",
+     "",
+     "463,487,059"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "KID CASTLE EDUCATIONAL CORPORATION",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS",
+    "Years Ended December 31, 2020 and 2019",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1215,
+    "end_line": 1268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1213,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1268,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "KID CASTLE EDUCATIONAL CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CHANGES IN SHAREHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "Preferred",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Accumulated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2008",
+     "25,000,000",
+     "",
+     "0",
+     "$",
+     "8,592,138",
+     "",
+     "$",
+     "259,341",
+     "$",
+     "(7,638,660)",
+     "$",
+     "1,212,819"
+    ],
+    [
+     "Reverse Split in 2009",
+     "(22,675,294)",
+     "",
+     "-",
+     "",
+     "(8,590,445)",
+     "",
+     "",
+     "7,386,026",
+     "",
+     "(12,708)",
+     "",
+     "(1,217,127)"
+    ],
+    [
+     "Balance at December 31, 2018",
+     "2,324,706",
+     "",
+     "0",
+     "$",
+     "1,683",
+     "",
+     "$",
+     "7,645,367",
+     "$",
+     "(7,651,368)",
+     "$",
+     "(4,308)"
+    ],
+    [
+     "Common stock issued to settle debt and employee compensation",
+     "20,000,000",
+     "",
+     "",
+     "",
+     "200",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "200"
+    ],
+    [
+     "Issuance of common stock for preferred shares conversion",
+     "900,000,000",
+     "",
+     "",
+     "",
+     "9,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "9,000"
+    ],
+    [
+     "Preferred shares issued and outstanding in 2019",
+     "",
+     "",
+     "100,000",
+     "",
+     "10",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10"
+    ],
+    [
+     "Effect of Acquisition of CBDX",
+     "",
+     "",
+     "",
+     "",
+     "303",
+     "",
+     "",
+     "180,746",
+     "",
+     "",
+     "",
+     "181,049"
+    ],
+    [
+     "Net (income) loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(149,682)",
+     "",
+     "(149,682)"
+    ],
+    [
+     "Balance, December 31, 2019",
+     "922,324,706",
+     "",
+     "100,000",
+     "$",
+     "11,196",
+     "",
+     "$",
+     "7,826,113",
+     "$",
+     "(7,801,051)",
+     "$",
+     "36,269"
+    ],
+    [
+     "Preferred shares issued in 2020",
+     "",
+     "",
+     "900,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (income) loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "13",
+     "",
+     "",
+     "49,840",
+     "",
+     "(82,980)",
+     "",
+     "(33,127)"
+    ],
+    [
+     "Balance, December 31, 2020",
+     "922,324,706",
+     "",
+     "1,000,000",
+     "$",
+     "11,209",
+     "",
+     "$",
+     "7,875,953",
+     "$",
+     "(7,884,030)",
+     "$",
+     "3,142"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "KID CASTLE EDUCATIONAL CORPORATION",
+    "STATEMENTS OF CHANGES IN SHAREHOLDERS' DEFICIT"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1270,
+    "end_line": 1304
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1268,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "KID CASTLE EDUCATIONAL CORPORATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASHFLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Years Ended December 31, 2020 and 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "DECEMBER 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "$",
+     "(82,980)",
+     "",
+     "$",
+     "(149,682)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory Asset: Trading Securities",
+     "",
+     "",
+     "(45,886)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "2,812",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Account Receivable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(8,620)",
+     ""
+    ],
+    [
+     "Other Accrued Liabilities",
+     "",
+     "",
+     "3,742",
+     "",
+     "",
+     "(800)",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "",
+     "2,304",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "",
+     "(120,008)",
+     "",
+     "",
+     "(159,102)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment for real estate investment",
+     "",
+     "",
+     "(500,494)",
+     "",
+     "",
+     "(17,550)",
+     ""
+    ],
+    [
+     "Receipt from sales of real estate investment",
+     "",
+     "",
+     "922,159",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Receipt from sales of other investment",
+     "",
+     "",
+     "7,502",
+     "",
+     "",
+     "(41,579)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "",
+     "429,167",
+     "",
+     "",
+     "(59,129)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowing from brokerage loan - margin loan",
+     "",
+     "",
+     "(4,201)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from short-term line of credit - related party",
+     "",
+     "",
+     "122,432",
+     "",
+     "",
+     "37,458",
+     ""
+    ],
+    [
+     "Payment on long term line of credit - related party",
+     "",
+     "",
+     "(643,686)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from long term loan",
+     "",
+     "",
+     "150,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from issuance of stock",
+     "",
+     "",
+     "55,697",
+     "",
+     "",
+     "190,259",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "",
+     "(319,758)",
+     "",
+     "",
+     "227,717",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash:",
+     "",
+     "",
+     "(10,599)",
+     "",
+     "",
+     "9,485",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at the beginning of the period:",
+     "",
+     "",
+     "12,229",
+     "",
+     "",
+     "1,393",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at the end of the period:",
+     "",
+     "$",
+     "1,630",
+     "",
+     "$",
+     "10,878",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "",
+     "$",
+     "2,941",
+     "",
+     "$",
+     "405.00",
+     ""
+    ],
+    [
+     "Cash paid for tax",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "KID CASTLE EDUCATIONAL CORPORATION",
+    "STATEMENTS OF CASHFLOWS",
+    "Years Ended December 31, 2020 and 2019",
+    "DECEMBER 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1306,
+    "end_line": 1359
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 1. NATURE OF OPERATIONS\nNature of Business\nThe Company and Nature of Business\nKid Castle Educational Corporation, a Delaware corporation, (\u201cKid Castle,\u201d \u201cthe Company,\u201d \u201cWe,\u201d \u201cKDCE,\u201d \"Us\" or \u201cOur\u2019) operates and manages a portfolio of real estate properties , biopharmaceutical, agricultural and \"pure-play\" CBD assets that are (or could be) vertically integrated and \"2018 Farm Bill\" compliant in the United States of America. Kid Castle engages in rollup and consolidation of real estate, CBD and Biopharma assets and operations.\nKid Castle was the result of a share exchange transaction, commonly referred to as a reverse merger, pursuant to which shareholders of an offshore operating company take control of a U.S. company that has no operations (commonly referred to as a shell company), and the offshore operating company becomes a subsidiary of the U.S. company. In KDCE case, the offshore company was Higoal Developments Ltd., which was the parent company of Kid Castle Internet Technologies Limited and Kid Castle Education Software Development Co. Limited, KDCE\u2019s operating companies that run our English language instruction business. The U.S. or shell company, at the time of the share exchange, was King Ball International Technology Corporation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "",
+     "Level 1",
+     "",
+     "",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments \u2013 trading securities \u2013 December 31, 2020",
+     "",
+     "$",
+     "91,282",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Level 2 \u2013 Pricing inputs are other than quoted prices in active markets but are either directly or indirectly observable as of the reported date. The types of assets and liabilities in Level 2 are typically either comparable to actively traded securities or contracts or priced with models using highly observable inputs.\nLevel 3 \u2013 Significant inputs to pricing that are unobservable as of the reporting date. The types of assets and liabilities included in Level 3 are those with inputs requiring significant management judgment or estimation, such as complex and subjective models and forecasts used to determine the fair value of financial transmission rights.\nOur financial instruments consist of accounts payable and accruals and our accruals- related parties. The carrying amount of the out accounts payable and accruals, accruals- related parties and loans \u2013 related parties approximates their fair values because of the short-term maturities of these instruments.\nThe table below describes the Company\u2019s valuation of financial instruments using guidance from ASC 820-10:",
+   "prose_after": "Investment \u2013 Trading Securities\nAll investment securities are classified as trading securities and are carried at fair value in accordance with ASC 320 Investments\n\u2014 Debt and Equity Securities. Investment transactions are recorded on a trade date basis. Realized gains or losses on sales of investments are based on the first-in, first-out or the specific identification method. Realized and unrealized gains or losses on investments are recorded in the statements of operations as realized and unrealized gains or losses as net revenue. All investment securities are held and transacted by the Company\u2019s broker firm, TD Ameritrade. The Company did not hold more than 3% of equity of the shares of any public companies as investments as of December 31, 2020.\nAll investments that are listed on a securities exchange are valued at their last sales price on the primary securities exchange on which such securities are traded on such date. Securities that are not listed on any exchange but are traded over-the-counter are valued at the mean between the last \u201cbid\u201d and \u201cask\u201d price for such security on such date. The Company does not have any investment securities for which market quotes are not readily available.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1452,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1480,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "January 1, 2020 to December 31, 2020",
+     "",
+     "Total"
+    ],
+    [
+     "Revenue from sales of securities",
+     "$",
+     "423,136"
+    ],
+    [
+     "Cost of securities",
+     "",
+     "(374,691)"
+    ],
+    [
+     "Net income from trading securities",
+     "$",
+     "48,445"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1548,
+    "end_line": 1557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "NET TRADING INCOME"
+    }
+   },
+   "prose_before": "From time to time, the Company may be involved in certain legal actions and claims arising in the normal course of business. Management is of the opinion that such matters will be resolved without material effect on the Company\u2019s financial condition or results of operations.\nContractual Obligations\nWe were not subject to any contractual obligations as at December 31, 2020.\nNOTE\n5. NET TRADING INCOME\nThe Company recognizes revenue in accordance with Accounting Standards Codification (\u201cASC\u201d) 606, Revenue from Contracts with Customers. The Company\u2019s net income from trading primarily consists of revenues from sales of trading securities using its broker firm, TD Ameritrade less original purchase cost (cost of sales). Net trading income primarily consists of income from trading securities earned upon completion of trade, net of any trading fees. A trading is completed when earned and recognized at a point in time, on a trade-date basis, as the Company executes trades. The Company records sales of its trading securities as revenue and account for the original purchase cost as cost of sales.\nNet trading revenue consisted of the following:",
+   "prose_after": "NOTE\n6. SALES \u2013 INVESTMENT PROPERTY\nSales and other disposition of properties from Real Estate Investments holdings:\nDispositions\nBelow is the schedule of the details of the Real Estate Investments sales transactions during the period:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1533,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1588,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended\n\n\n\nDecember 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Amount",
+     "",
+     "Amount"
+    ],
+    [
+     "Sales - Investment property",
+     "",
+     "",
+     "$       1,205,000"
+    ],
+    [
+     "Closing costs",
+     "",
+     "",
+     "(11,522)"
+    ],
+    [
+     "Commissions Paid",
+     "",
+     "",
+     "(60,645)"
+    ],
+    [
+     "Developer\u2019s Fees",
+     "",
+     "",
+     "(95,750)"
+    ],
+    [
+     "Escrow & Title",
+     "",
+     "",
+     "(6,714)"
+    ],
+    [
+     "Cost of Investment property sold",
+     "",
+     "",
+     "(917,825)"
+    ],
+    [
+     "Old Liens Payoff",
+     "",
+     "",
+     "(51,879)"
+    ],
+    [
+     "Property Taxes",
+     "",
+     "",
+     "(20,064)"
+    ],
+    [
+     "Recording Charges",
+     "",
+     "",
+     "(7,048)"
+    ],
+    [
+     "Seller Credit",
+     "",
+     "",
+     "(8,380)"
+    ],
+    [
+     "Net Profit from Real Estate Investment Sales",
+     "",
+     "",
+     "$             25,173"
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended\n\n\n\nDecember 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1567,
+    "end_line": 1588
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "NET TRADING INCOME"
+    }
+   },
+   "prose_before": "NOTE\n6. SALES \u2013 INVESTMENT PROPERTY\nSales and other disposition of properties from Real Estate Investments holdings:\nDispositions\nBelow is the schedule of the details of the Real Estate Investments sales transactions during the period:",
+   "prose_after": "NOTE\n7. LINE OF CREDIT / LOANS\n- RELATED PARTIES\nThe Company considers its founders, managing directors, employees, significant shareholders, and the portfolio Companies to be affiliates. In addition, companies controlled by any of the above named is also classified as affiliates.\nLine of credit from related party consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1533,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1588,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2020",
+     "",
+     "December 31, 2019"
+    ],
+    [
+     "September 2019 (line of credit) - Line of credit with maturity date of February 28, 2021 with 0% interest per annum with unpaid principal balance and accrued interest payable on the maturity date.",
+     "$",
+     "63,632",
+     "$",
+     "41,200"
+    ],
+    [
+     "May 20, 2020 (line of credit) Line of credit with maturity date of May 4, 2025 with 0% interest per annum with unpaid principal balance and accrued interest payable on the maturity date.",
+     "",
+     "540,524",
+     "",
+     "-"
+    ],
+    [
+     "July 3, 2020 (30 year term loan) Term loan with maturity date of July 2, 2050 with 3.75% interest per annum with unpaid principal balance and accrued interest payable on the maturity date.",
+     "",
+     "150,000",
+     "",
+     "-"
+    ],
+    [
+     "Total Line of credit - related party",
+     "",
+     "604,157",
+     "",
+     "41,200"
+    ],
+    [
+     "Less current portion",
+     "",
+     "(63,632)",
+     "",
+     "(41,200)"
+    ],
+    [
+     "Total Long Term Line of credit - related party",
+     "$",
+     "540,524",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1598,
+    "end_line": 1615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "NET TRADING INCOME"
+    }
+   },
+   "prose_before": "NOTE\n7. LINE OF CREDIT / LOANS\n- RELATED PARTIES\nThe Company considers its founders, managing directors, employees, significant shareholders, and the portfolio Companies to be affiliates. In addition, companies controlled by any of the above named is also classified as affiliates.\nLine of credit from related party consisted of the following:",
+   "prose_after": "Goldstein Franklin, Inc. - $190,000 line of credit\nOn February 28, 2020, the Company amended its line of credit agreement to increase it to the amount of $190,000 with maturity date of September 14, 2022. The line of credit bears interest at 0% per annum and interest and unpaid principal balance is payable on the maturity date. As of December 31, 2020, the Company had drawn $63,632 which it used to fund its operations. The company still has available but unused line of credit of $126,368 as of December 31, 2020.\nLos Angeles Community Capital - $1,500,000 line of credit\nOn May 5, 2020, the Company amended its line of credit agreement to increase it to the amount of $1,500,000 with maturity date of May 4, 2025. The line of credit bears interest at 0% per annum and interest and unpaid principal balance is payable on the maturity date. The Company has unused line of credit of $804,954 as of December 31, 2020.\nNOTE\n8. EARNINGS (LOSS) PER SHARE\nNet Loss per Share Calculation:\nBasic net loss per common share (\"EPS\") is computed by dividing loss available to common stockholders by the weighted-average number of common shares outstanding for the period. Dilutive earnings per share include the effect of any potentially dilutive debt or equity under the treasury stock method, if including such instruments is dilutive, assuming all dilutive potential common shares were issued. Dilutive loss per share excludes all potential common shares if their effect is anti-dilutive. The Company\u2019s diluted earnings (loss) per share is the same as the basic earnings/loss per share for the period January 1, 2020 to December 31, 2020, as there are no potential shares outstanding that would have a dilutive effect.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1588,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1623,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "January 1, 2020 to December 31, 2020",
+     "",
+     "Amount"
+    ],
+    [
+     "Net income",
+     "$",
+     "(82,980)"
+    ],
+    [
+     "Dividends",
+     "",
+     "-"
+    ],
+    [
+     "Stock option",
+     "",
+     "-"
+    ],
+    [
+     "Adjusted net income attribution to stockholders",
+     "$",
+     "(82,980)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares of common stock outstanding",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "",
+     "922,324,706"
+    ],
+    [
+     "Net changes in fair value at end of the period",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "$",
+     "(0.0000)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1632,
+    "end_line": 1649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "NET TRADING INCOME"
+    }
+   },
+   "prose_before": "On May 5, 2020, the Company amended its line of credit agreement to increase it to the amount of $1,500,000 with maturity date of May 4, 2025. The line of credit bears interest at 0% per annum and interest and unpaid principal balance is payable on the maturity date. The Company has unused line of credit of $804,954 as of December 31, 2020.\nNOTE\n8. EARNINGS (LOSS) PER SHARE\nNet Loss per Share Calculation:\nBasic net loss per common share (\"EPS\") is computed by dividing loss available to common stockholders by the weighted-average number of common shares outstanding for the period. Dilutive earnings per share include the effect of any potentially dilutive debt or equity under the treasury stock method, if including such instruments is dilutive, assuming all dilutive potential common shares were issued. Dilutive loss per share excludes all potential common shares if their effect is anti-dilutive. The Company\u2019s diluted earnings (loss) per share is the same as the basic earnings/loss per share for the period January 1, 2020 to December 31, 2020, as there are no potential shares outstanding that would have a dilutive effect.",
+   "prose_after": "NOTE\n9. INCOME TAXES\nDeferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. A full valuation allowance is established against all net deferred tax assets as of December 31, 2020 and December 31, 2019 based on estimates of recoverability. While the Company has optimistic plans for its business strategy, it determined that such a valuation allowance was necessary given the current and expected near term losses and the uncertainty with respect to its ability to generate sufficient profits from its business model.\nWe did not provide any current or deferred US federal income tax provision or benefit for any of the periods presented in these financial statements because we have accumulated substantial operating losses over the years. When it is more likely than not, that a tax asset cannot be realized through future income, we must record an allowance against any future potential future tax benefit. We have provided a full valuation allowance against the net deferred tax asset, consisting of net operating loss carry forwards, because management has determined that it is more likely than not that we will not earn income sufficient to realize the deferred tax assets during the carry forward periods.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1623,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Percent",
+     "",
+     "",
+     "",
+     "31-Dec-20",
+     "",
+     "",
+     "",
+     "31-Dec-19",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory rates",
+     "",
+     "34.0",
+     "%",
+     "",
+     "$",
+     "(2,678,271)",
+     "",
+     "",
+     "$",
+     "(2,652,357)"
+    ],
+    [
+     "State income taxes",
+     "",
+     "5.0",
+     "%",
+     "",
+     "",
+     "(393,863)",
+     "",
+     "",
+     "",
+     "(390,052)"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "-0.5",
+     "%",
+     "",
+     "",
+     "39,005",
+     "",
+     "",
+     "",
+     "39,005"
+    ],
+    [
+     "Valuation allowance against net deferred tax assets",
+     "",
+     "-38.5",
+     "%",
+     "",
+     "",
+     "3,032,748",
+     "",
+     "",
+     "",
+     "3,003,404"
+    ],
+    [
+     "Effective rate",
+     "",
+     "0",
+     "%",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1662,
+    "end_line": 1674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "We did not provide any current or deferred US federal income tax provision or benefit for any of the periods presented in these financial statements because we have accumulated substantial operating losses over the years. When it is more likely than not, that a tax asset cannot be realized through future income, we must record an allowance against any future potential future tax benefit. We have provided a full valuation allowance against the net deferred tax asset, consisting of net operating loss carry forwards, because management has determined that it is more likely than not that we will not earn income sufficient to realize the deferred tax assets during the carry forward periods.\nThe Company has not taken a tax position that, if challenged, would have a material effect on the financial statements as of December 31, 2020 and December 31, 2019 as defined under ASC 740, \"Accounting for Income Taxes.\" We did not recognize any adjustment to the liability for uncertain tax position and therefore did not record any adjustment to the beginning balance of the accumulated deficit on the balance sheet.\nA reconciliation of the differences between the effective and statutory income tax rates for the period ended December 31, 2020 and December 31, 2019:",
+   "prose_after": "At December 31, 2020 and December 31, 2019, the significant components of the deferred tax assets are summarized below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "31-Dec-20",
+     "",
+     "",
+     "",
+     "31-Dec-19",
+     ""
+    ],
+    [
+     "Deferred income tax asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operation loss carryforwards",
+     "",
+     "(7,879,875)",
+     "",
+     "",
+     "",
+     "(7,801,050)"
+    ],
+    [
+     "Total deferred income tax asset",
+     "",
+     "3,073,151",
+     "",
+     "",
+     "",
+     "3,042,409"
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "(3,073,151)",
+     "",
+     "",
+     "",
+     "(3,042,409)"
+    ],
+    [
+     "Total deferred income tax asset",
+     "$",
+     "-",
+     "",
+     "",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1677,
+    "end_line": 1689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "At December 31, 2020 and December 31, 2019, the significant components of the deferred tax assets are summarized below:",
+   "prose_after": "The Company has recorded as of December 31, 2020 and December 31, 2019, a valuation allowance of $3,073,151 and $3,042,409 respectively, as it believes that it is more likely than not that the deferred tax assets will not be realized in future years. Management has based its assessment on the Company\u2019s lack of profitable operating history.\nThe valuation allowance $3,073,151 as at December 31, 2020 increased by $30,742 compared to December 31, 2019 of $3,042,409, as a result of the Company generating additional net operating losses of $82,980.\nThe Company conducts an analysis of its tax positions and has concluded that it has no uncertain tax positions as of December 31, 2020 and December 31, 2019.\nThe Company has net operating loss carry-forwards of approximately $7,879,875. Such amounts are subject to IRS code section 382 limitations and expire in 2033.\nNOTE\n10. RECENTLY ACCOUNTING PRONOUNCEMENTS\nRecently Issued Accounting Standards\nASU 2019-12 \u2014 In December 2019, the Financial Accounting Standards Board (\"FASB\") issued ASU 2019- 12, Simplifying the Accounting for Income Taxes. The amendments in ASU 2019-12 simplify the accounting for income taxes by removing certain exceptions to the general principles in Accounting Standards Codification (\"ASC\") Topic 740, Income Taxes. The amendments also improve consistent application of and simplify GAAP for other areas of Topic 740 by clarifying and amending existing guidance. ASU 2019-12 will be effective for the Company's fiscal year beginning October 1, 2021, with early adoption permitted. The transition requirements are dependent upon each amendment within this update and will be applied either prospectively or retrospectively. The Company does not expect this ASU to have a material impact on its condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1656,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1700,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2020",
+     "",
+     "Cost",
+     "",
+     "Changes in Fair Value",
+     "",
+     "Fair Value"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stocks",
+     "$",
+     "75,451",
+     "$",
+     "5,225",
+     "$",
+     "80,675"
+    ],
+    [
+     "Options",
+     "",
+     "13,140",
+     "",
+     "(2,533)",
+     "",
+     "10,607"
+    ],
+    [
+     "Investments - Trading Securities",
+     "$",
+     "88,591",
+     "$",
+     "2,692",
+     "$",
+     "91,282"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1735,
+    "end_line": 1748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "RECENTLY ACCOUNTING PRONOUNCEMENTS"
+    }
+   },
+   "prose_before": "In March 2013, the FASB issued ASU 2013-07, \u201cPresentation of Financial Statements (Topic 205): Liquidation Basis of Accounting.\u201d The amendments require an entity to prepare its financial statements using the liquidation basis of accounting when liquidation is imminent. Liquidation is imminent when the likelihood is remote that the entity will return from liquidation and either (a) a plan for liquidation is approved by the person or persons with the authority to make such a plan effective and the likelihood is remote that the execution of the plan will be blocked by other parties or (b) a plan for liquidation is being imposed by other forces (for example, involuntary bankruptcy). If a plan for liquidation was specified in the entity\u2019s governing documents from the entity\u2019s inception (for example, limited-life entities), the entity should apply the liquidation basis of accounting only if the approved plan for liquidation differs from the plan for liquidation that was specified at the entity\u2019s inception. The amendments require financial statements prepared using the liquidation basis of accounting to present relevant information about an entity\u2019s expected resources in liquidation by measuring and presenting assets at the amount of the expected cash proceeds from liquidation. The entity should include in its presentation of assets any items it had not previously recognized under U.S. GAAP but that it expects to either sell in liquidation or use in settling liabilities (for example, trademarks). The amendments are effective for entities that determine liquidation is imminent during annual reporting periods beginning after December 15, 2013, and interim reporting periods therein. We currently do not anticipate this standard to have a significant impact on our consolidated financial statements.\nWe have reviewed all the recently issued, but not yet effective, accounting pronouncements. Management does not believe that any recently issued, but not yet effective, accounting standards could have a material effect on the accompanying financial statements. As new accounting pronouncements are issued, we will adopt those that are applicable under the circumstances.\nNOTE\n11. INVESTMENT SECURITIES (TRADING)\nThe Company applied the fair value accounting treatment for trading securities per ASC 320, with unrealized gains and losses recorded in net income each period. Debt securities classified as trading should be measured at fair value in the currency in which the debt securities are denominated and remeasured into the investor\u2019s functional currency using the spot exchange rate at the balance sheet date.\nInvestments in equity securities as of December 31, 2020 are summarized based on the following:",
+   "prose_after": "Trading securities are treated using the fair value method, whereby the value of the securities on the company\u2019s balance sheet is equivalent to their current market value. These securities will be recorded in the current assets section under the Investment Securities account and will be offset in the shareholder\u2019s equity section under the unrealized proceeds from sale of short-term investments\u201d account. The Short Term Investments account amount represents the current market value of the securities, and the \u201cUnrealized Proceeds From Sale of Short Term Investments\u201d account represents the cash proceeds that the company would receive if it were to sell the investments at the end of the specified accounting period.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1722,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1748,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "January 1, 2020 to December 31, 2020",
+     "",
+     "Amount"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total beginning balance - fair market",
+     "$",
+     "45,396"
+    ],
+    [
+     "Total investment purchases - cost",
+     "",
+     "415,194"
+    ],
+    [
+     "Total investment sales - cost",
+     "",
+     "(371,999)"
+    ],
+    [
+     "Unrealized gains",
+     "",
+     "2,692"
+    ],
+    [
+     "Investment - Trading Securities",
+     "$",
+     "91,282"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1752,
+    "end_line": 1764
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "RECENTLY ACCOUNTING PRONOUNCEMENTS"
+    }
+   },
+   "prose_before": "Trading securities are treated using the fair value method, whereby the value of the securities on the company\u2019s balance sheet is equivalent to their current market value. These securities will be recorded in the current assets section under the Investment Securities account and will be offset in the shareholder\u2019s equity section under the unrealized proceeds from sale of short-term investments\u201d account. The Short Term Investments account amount represents the current market value of the securities, and the \u201cUnrealized Proceeds From Sale of Short Term Investments\u201d account represents the cash proceeds that the company would receive if it were to sell the investments at the end of the specified accounting period.",
+   "prose_after": "NOTE\n12. REAL ESTATE INVESTMENTS\nCurrent Holdings of Real Estate Investments (Inventory):\nAs of December 31, 2020, the Company has two available-for-sale real estate properties with a carrying amount of $664,111:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1748,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Purchase Cost",
+     "",
+     "",
+     "",
+     "Rehabilitation Improvement",
+     "",
+     "Total cost at December 31, 2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SFR \u2013 4904 S Wilton Place, 90062",
+     "",
+     "",
+     "498,984",
+     "",
+     "",
+     "165,127",
+     "",
+     "",
+     "664,111"
+    ],
+    [
+     "Investments \u2013 Trading Securities",
+     "",
+     "$",
+     "498,984",
+     "",
+     "$",
+     "165,127",
+     "",
+     "$",
+     "664,111"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1772,
+    "end_line": 1781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "REAL ESTATE INVESTMENTS"
+    }
+   },
+   "prose_before": "NOTE\n12. REAL ESTATE INVESTMENTS\nCurrent Holdings of Real Estate Investments (Inventory):\nAs of December 31, 2020, the Company has two available-for-sale real estate properties with a carrying amount of $664,111:",
+   "prose_after": "Inventory costs include direct home acquisition costs and any capitalized improvements. The following is the Real Estate Investments activities for the period under review:\nThe 4904 S Wilton Place, Los Angeles, CA 90062 property was bought in April, 2019 for $498,984. Its goal for the property was to improve and resell to eligible homebuyers as part of its mission of promoting homeownership affordable housing. As of December 31, 2020, the Company has expended $165,127 on improvement of the property.\nNOTE\n13. MARGINAL LOAN PAYABLE\nThe Company\u2019s subsidiary, Alpharidge Capital LLC. entered into a marginal loan agreement as part of its new trading account process in 2019 with TD Ameritrade, the Company\u2019s brokerage to continue the purchase of securities and to fund the underfunded balance. The balance of this account as at December 31, 2020 is $115.\nNOTE\n14. RELATED PARTY TRANSACTIONS\nThe Company had the following related party transactions:\n\u00b7 Line of Credit \u2013 On September 15, 2019, the Company entered into a line of credit agreement in the amount of $41,200 with Goldstein Franklin, Inc. which is owned and operated by Frank I. Igwealor, Chief Executive Officer of the Company. The maturity date of the line of credit is February 15, 2020. The line of credit agreement was amended to the amount of $190,000 and maturity date of September 14, 2022. The line of credit bears interest at 0% per annum and interest and unpaid principal balance is payable on the maturity date. As of December 31, 2020, the Company had drawn $63,632 from the LOC.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1748,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1790,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age*",
+     "",
+     "Position within the Company",
+     "Term"
+    ],
+    [
+     "Mr. Frank I Igwealor",
+     "",
+     "49",
+     "",
+     "Chairman, Director and Chief Executive and Financial Officer",
+     "October 2019 to present"
+    ],
+    [
+     "Mr. Patience Ogbozor",
+     "",
+     "35",
+     "",
+     "Director",
+     "October 2019 to present"
+    ],
+    [
+     "Dr. Solomon KN Mbagwu**",
+     "",
+     "71",
+     "",
+     "Director",
+     "October 2019 to December 2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1902,
+    "end_line": 1909
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS AND EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u00b7 All fund transfer applications must be approved by the applicable department supervisor before the application may be processed. No one can authorize their own application. This is applicable to all staff including staff at the managerial level;\n\u00b7 All fund transfer applications must be accompanied by supporting documentation, such as a copy of the relevant contract copy of the relevant invoice or stock pre-payment statement;\n\u00b7 Stock purchases require the approval of the supervisor or manager of the relevant department, the approval of the accounts department, and a stock receipt and suppliers\u2019 certification. Finally the application must be approved by the Chairman of the Board before funds may be released; and\n\u00b7 All pre-payments must be tracked by the fund applicant and the payments must be cleared within the month of payment or in accordance with the date stipulated in the relevant contract.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS AND EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+   "prose_after": "*Age As at December 31, 2020.\n** Dr. Mbagwu tenure as director ended on December 30, 2020. He was not reappointed/re-elected.\nTerm of Office\nEach of our directors is appointed to hold office until the next annual meeting of our shareholders or until his respective successor is elected and qualified, or until she resigns or is removed in accordance with the provisions of the Delaware Statues. Our officers are appointed by our board of directors and hold office until removed by the board of directors or until their resignation.\nBackground and Business Experience\nThe business experience during the past five years of the persons listed above as an Officer or Director of the Company either presently or during the year ended December 31, 2020 is as follows:\nFrank Igwealor, CPA, CMA, JD, MBA, MSRM is a financial manager with broad technical and management experience in accounting, finance, and business advisory as a principal partner at Goldstein Franklin, Inc. since November 2011. Mr. Igwealor is a Certified Financial Manager, Certified Management Accountant, and Certified Public Accountant. Before Goldstein Franklin, Mr. Igwealor was the Sr. Vice President and CFO of Los Angeles Neighborhood Housing between May 2007 and October 2011.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1872,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1913,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SUMMARY COMPENSATION TABLE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "",
+     "Year",
+     "",
+     "Salary\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Bonus\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Stock\n\n\n\nAwards\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Option\n\n\n\nAwards\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "Non-Equity\n\n\n\nIncentive Plan\n\n\n\nCompensation ($)",
+     "",
+     "",
+     "",
+     "Nonqualified Deferred\n\n\n\nCompensation\n\n\n\nEarnings ($)",
+     "",
+     "",
+     "",
+     "All Other\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "",
+     "",
+     "",
+     "Total\n\n\n\n($)",
+     "",
+     ""
+    ],
+    [
+     "Mr. Frank I Igwealor, Chair, CEO, CFO",
+     "",
+     "2020",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "100",
+     "",
+     "(i)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "100",
+     "(ii)",
+     "",
+     "",
+     "",
+     "100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SUMMARY COMPENSATION TABLE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2089,
+    "end_line": 2112
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Each executive\u2019s base salary is initially determined with reference to competitive pay practices of peer companies (where such information is publicly available) and is dependent upon the executive\u2019s level of responsibility and experience. The Board uses its discretion, rather than a formal weighting system, to evaluate these factors and to determine individual base salary levels. Thereafter, base salaries are reviewed periodically, and increases are made based on the Board of Director\u2019s subjective assessment of individual performance, as well as the factors discussed above.\nAnnual Discretionary Bonuses\nIn future years we shall pay variable incentive compensation to our executives, however, due to our overall performance in 2020 AND 2019, our executive officers were not awarded bonuses.\nSummary Compensation Table\nThe following table sets forth information about the compensation paid or accrued by our chief executive officer, chief financial officer, and one other most highly compensated executive officer (our \u201cnamed officers\u201d) for the last three completed fiscal years:",
+   "prose_after": "Notes:\n(i) A hire-on bonus of 10,000,000 shares issued to Mr. Igwealor.\n(ii) The fair market value of the stock awarded to Mr. Igwealor was uncertain because the stock is currently trading on the pink sheet and is illiquid. However, for accounting purposes, the Company used the par value of $0.00001 to calculate recognition of employment expenses in the amount of $100 for the award.\nStock Option Grants in the Last Fiscal Year; Exercises of Stock Options\nThere were no grants of stock options during the fiscal year ended December 31, 2020. The Company has never granted any stock options.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth the beneficial ownership of shares of our common stock by (i) each person who is known to us to be the beneficial owner of more than 5% of our common stock; (ii) each director and named executive officer (defined above) individually; and (iii) all directors and executive officers as a group. Beneficial ownership of common stock has been determined for this purpose in accordance with Rules 13d-3 and 13d-5 of the Securities and Exchange Commission, under the Securities Exchange Act of 1934, as amended. These rules provide, among other things, that a person is deemed to be the beneficial owner of common stock if such person, directly or indirectly, has or shares voting power or investment power with respect to the common stock or has the right to acquire such ownership within sixty days after the date of this registration statement. Unless otherwise stated, the address for all 5% owners, officers and directors listed below is: 370 Amapola Ave., Suite 200A, Torrance, CA 90501.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2075,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2123,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "",
+     "",
+     "Name of Beneficial Owner",
+     "",
+     "Amount and Nature",
+     "",
+     "Percent of Class (1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "of Beneficial",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Ownership",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock",
+     "(a)",
+     "",
+     "Cannabinoid Biosciences, Inc(2)(5)(6)",
+     "",
+     "100,000",
+     "",
+     "10.00%"
+    ],
+    [
+     "Preferred stock",
+     "(a)",
+     "",
+     "Video River Networks, Inc. (7)(5)(6)",
+     "",
+     "900,000",
+     "",
+     "90.00%"
+    ],
+    [
+     "Common stock",
+     "(b)",
+     "",
+     "Cannabinoid Biosciences, Inc(2)",
+     "",
+     "400,000,000",
+     "",
+     "43.37%"
+    ],
+    [
+     "Common stock",
+     "(b)",
+     "",
+     "Goldstein Franklin, Inc.",
+     "",
+     "224,869,273",
+     "",
+     "24.38%"
+    ],
+    [
+     "Common stock",
+     "(b)",
+     "",
+     "Dr. Solomon Mbagwu, MD",
+     "",
+     "125,926,793",
+     "",
+     "13.65%"
+    ],
+    [
+     "Common stock",
+     "(b)",
+     "",
+     "Frank I Igwealor",
+     "",
+     "44,973,855",
+     "",
+     "4.88%"
+    ],
+    [
+     "Common stock",
+     "(b)",
+     "",
+     "Poverty Solutions, Inc.",
+     "",
+     "26,984,313",
+     "",
+     "2.93%"
+    ],
+    [
+     "Common stock",
+     "(b)",
+     "",
+     "Patience C Ogbozor",
+     "",
+     "22,486,927",
+     "",
+     "2.44%"
+    ],
+    [
+     "Common stock",
+     "(c)",
+     "",
+     "Directors and officers as a group",
+     "",
+     "845,241,161",
+     "",
+     "91.64%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2127,
+    "end_line": 2145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table sets forth the beneficial ownership of shares of our common stock by (i) each person who is known to us to be the beneficial owner of more than 5% of our common stock; (ii) each director and named executive officer (defined above) individually; and (iii) all directors and executive officers as a group. Beneficial ownership of common stock has been determined for this purpose in accordance with Rules 13d-3 and 13d-5 of the Securities and Exchange Commission, under the Securities Exchange Act of 1934, as amended. These rules provide, among other things, that a person is deemed to be the beneficial owner of common stock if such person, directly or indirectly, has or shares voting power or investment power with respect to the common stock or has the right to acquire such ownership within sixty days after the date of this registration statement. Unless otherwise stated, the address for all 5% owners, officers and directors listed below is: 370 Amapola Ave., Suite 200A, Torrance, CA 90501.",
+   "prose_after": "NOTES:\n(1) Based on 922,324,706 shares of common stock, and 100,000 preferred stock (convertible to 100 million shares of common stock) outstanding As at December 31, 2020.\n(2) In December, 2019, the board of directors of Cannabinoid Bioscience, Inc. voted to distribute all of KDCE in its holding to its shareholders. Effectively, as at 12/31/2019, Cannabinoid Biosciences, Inc. was holding those shares in trust for its shareholders.\n(3) Goldstein Franklin, Inc. is controlled by Mr. Igwealor and Ms. Ogbozor\n(4) Mr. Igwealor is a member of Poverty Solutions\u2019 governing board and represents its interest on Kid Castle\u2019s board.\n(5) The address is 370 Amapola Ave., Suite 200A, Torrance, CA 90501.\n(6) Preferred shares control 60% of the voting rights of the company\n(7) On September 15, 2020, the company sold 900,000 shares of its preferred stocks to Video River Networks.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nOur officers and directors are Mr. Igwealor, our chief executive officer and secretary, and Ms patience C Ogbozor, a Director are also directors of Goldstein Franklin Inc.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2123,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2167,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2020",
+     "",
+     "December 31, 2019"
+    ],
+    [
+     "September 2019 (line of credit) - Line of credit with maturity date of February 28, 2021 with 0% interest per annum with unpaid principal balance and accrued interest payable on the maturity date.",
+     "$",
+     "63,632",
+     "$",
+     "41,200"
+    ],
+    [
+     "May 20, 2020 (line of credit) Line of credit with maturity date of May 4, 2025 with 0% interest per annum with unpaid principal balance and accrued interest payable on the maturity date.",
+     "",
+     "540,524",
+     "",
+     "-"
+    ],
+    [
+     "Total Line of credit - related party",
+     "",
+     "604,157",
+     "",
+     "41,200"
+    ],
+    [
+     "Less: current portion",
+     "",
+     "(63,632)",
+     "",
+     "(41,200)"
+    ],
+    [
+     "Total Long-term Line of credit - related party",
+     "$",
+     "540,524",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2189,
+    "end_line": 2203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The company\u2019s principal shareholder has advanced the Company most of the money it uses to fund working capital expenses. This advance is unsecured and does not carry an interest rate or repayment terms. As of December 31, 2020 and December 31, 2019, the Company has $604,157 and $41,200, respectively, in long-term loans obligation from related parties.\nThe Company does not own any property. It currently shares a leased office with two other organizations that are affiliated to its principal shareholder at 370 Amapola Ave., Suite 200A, Torrance, California 90501. Its principal shareholder and seasonal staff use this location. The approximate cost of the shared office space varies between $650 and $850 per month. The Company intends to start recording rent expense of $7,800 for the year that would end December 31, 2020.\nLINE OF CREDIT \u2013 RELATED PARTY\nThe Company considers its founders, managing directors, employees, significant shareholders, and the portfolio Companies to be affiliates. In addition, companies controlled by any of the above named is also classified as affiliates.\nLine of credit from related party consisted of the following:",
+   "prose_after": "Goldstein Franklin, Inc. - $190,000 line of credit\nOn February 28, 2020, the Company amended its line of credit agreement to increase it to the amount of $190,000 with maturity date of September 14, 2022. The line of credit bears interest at 0% per annum and interest and unpaid principal balance is payable on the maturity date. As of December 31, 2020, the Company had drawn $63,632 which it used to fund its operations. The company still has available but unused line of credit of $126,368 as of December 31, 2020.\nLos Angeles Community Capital - $1,500,000 line of credit\nOn May 5, 2020, the Company amended its line of credit agreement to increase it to the amount of $1,500,000 with maturity date of May 4, 2025. The line of credit bears interest at 0% per annum and interest and unpaid principal balance is payable on the maturity date. The Company has unused line of credit of $804,954 as of December 31, 2020.\nPolicy and Procedures with Respect to Related Person Transactions\nOur Board of Directors is charged with reviewing and approving all potential related party transactions. All such related party transactions must then be reported under applicable SEC rules. We have not adopted other procedures for review, or standards for approval, of such transactions, but instead review them on a case-by-case basis.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2167,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2203,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "Audit fees",
+     "",
+     "$",
+     "14,750",
+     "",
+     "",
+     "$",
+     "14,750",
+     ""
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "$",
+     "0",
+     "",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Tax fees",
+     "",
+     "$",
+     "0",
+     "",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "All other fees",
+     "",
+     "$",
+     "0",
+     "",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "14,750",
+     "",
+     "",
+     "$",
+     "14,750",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2239,
+    "end_line": 2251
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In our review of any Related Person Transactions, the Board of Directors must consider all of the relevant facts and circumstances available to it, including (if applicable) but not limited to: the benefits to the Company; the impact on a director\u2019s independence in the event the Related Person is a director, an immediately family member of a director or an entity in which a director is a partner, shareholder or executive officer; the availability of other sources for comparable products or services; the terms of the transaction; and the terms available to unrelated third parties or to employees generally. No member of the Board of Directors may participate in any review, consideration or approval of any Related Person Transaction with respect to which such member or any of his or her immediate family members is the Related Person. The Board of Directors will approve or ratify only those Related Person Transactions that are in, or are not inconsistent with, the best interests of the Company and its shareholders, as the Board of Directors determines in good faith. The Board of Directors will convey the decision to the Chief Executive Officer or the Chief Financial Officer, who will convey the decision to the appropriate persons within the Company.\nDirector Independence\nNone of our directors qualifies as independent director as defined under the NASDAQ Listing Rules.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nAudit Fees",
+   "prose_after": "Audit-Related Fees\n$14,500 in Audit-related fees were incurred in each of the years 2020 and 2019 respectively.\nTax Fees\nThe aggregate fees billed during the fiscal years ended December 31, 2020 and 2019 for professional services rendered by our principal accountant tax compliance, tax advice and tax planning were $0.\nAll Other Fees\nThe aggregate fees billed during the fiscal years ended December 31, 2020 and 2019 for products and services provided by our principal independent accountants was $0.\nPre-Approval Policies and Procedures\nOur board of directors pre-approves all audit and non-audit services performed by the Company's auditor and the fees to be paid in connection with such services.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2225,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2261,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT NO",
+     "",
+     "DESCRIPTION"
+    ],
+    [
+     "31.1*",
+     "",
+     "Certification of Principal Executive Officer pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act of 1934"
+    ],
+    [
+     "31.2*",
+     "",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act of 1934"
+    ],
+    [
+     "32.1*",
+     "",
+     "Certifications of Principal Executive Officer and Chief Financial Officer, pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS*",
+     "",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2274,
+    "end_line": 2287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Audit-Related Fees\n$14,500 in Audit-related fees were incurred in each of the years 2020 and 2019 respectively.\nTax Fees\nThe aggregate fees billed during the fiscal years ended December 31, 2020 and 2019 for professional services rendered by our principal accountant tax compliance, tax advice and tax planning were $0.\nAll Other Fees\nThe aggregate fees billed during the fiscal years ended December 31, 2020 and 2019 for products and services provided by our principal independent accountants was $0.\nPre-Approval Policies and Procedures\nOur board of directors pre-approves all audit and non-audit services performed by the Company's auditor and the fees to be paid in connection with such services.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+   "prose_after": "* Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2268,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2289,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 13, 2021",
+     "KID CASTLE EDUCATIONAL CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Frank I Igwealor",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Frank I Igwealor"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Chairman and Chief Executive Officer\n\n\n\n (Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2295,
+    "end_line": 2305
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2289,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2319,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Frank I Igwealor\n\n\n\nFrank I Igwealor",
+     "Chief Executive Officer, Chief Financial Officer, President, Director",
+     "April 13, 2021"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)\n\n\n\n(Principal Financial Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2308,
+    "end_line": 2319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Exhibit 31.1\nI, Frank I Igwealor, certify that:\n1. I have reviewed this annual report on Form 10-K for fiscal year ended December 31, 2020 of Kid Castle Educational Corporation.\n2. Based on my knowledge, this report does not contain any untrue statement of a material fact or omit to state a material fact necessary to make the statements made, in light of the circumstances under which such statements were made, not misleading with respect to the period covered by this report;\n3. Based on my knowledge, the financial statements, and other financial information included in this report, fairly present in all material respects the financial condition, results of operations and cash flows of the registrant as of, and for, the periods presented in this report;\n4. As the registrant\u2019s certifying officer, I am responsible for establishing and maintaining disclosure controls and procedures (as defined in Exchange Act Rules 13a-15(e) and 15d-15(e)) and internal control over financial reporting (as defined in Exchange Act Rules 13a-15(f) and 15d-15(f)) for the registrant and have:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2289,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2319,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: April 13, 2021",
+     "By: /s/ Frank I Igwealor"
+    ],
+    [
+     "",
+     "Frank I Igwealor"
+    ],
+    [
+     "",
+     "Chief Executive Officer, Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2405,
+    "end_line": 2410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "By: /s/ Frank I Igwealor\nFrank I Igwealor\nPrincipal Financial Officer\nCERTIFICATION PURSUANT TO\n18 U.S.C. SECTION 1350,\nAS ADOPTED PURSUANT TO\nSECTION 906 OF THE SARBANES-OXLEY ACT OF 2002\nIn connection with the Annual Report on Form 10-K of Kid Castle Educational Corporation (the \u201cCompany\u201d) for the year ending December 31, 2020, as filed with the Securities and Exchange Commission on the date hereof (the \u201cReport\u201d), Frank I Igwealor, Chief Executive Officer and Chief Financial Officer of the Company, hereby certifies, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, that to his knowledge:\n(1) The report fully complies with the requirements of Section 13(a) or 15(d) of the Securities Exchange Act of 1934; and\n(2) The information contained in the Report fairly presents, in all material respects, the financial condition and results of operations of the Company.",
+   "prose_after": "This certification accompanies each Report pursuant to \u00a7 906 of the Sarbanes-Oxley Act of 2002 and shall not, except to the extent required by the Sarbanes-Oxley Act of 2002, be deemed filed by the Company for purposes of \u00a718 of the Securities Exchange Act of 1934, as amended.\nA signed original of this written statement required by Section 906 has been provided to the Company and will be retained by the Company and furnished to the Securities and Exchange Commission or its staff upon request.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2389,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

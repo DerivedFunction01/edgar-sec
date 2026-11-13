@@ -1,0 +1,923 @@
+{
+ "accession": "0000711642-09-000310",
+ "cik": "0000758009",
+ "form": "10-Q",
+ "filing_date": "2009-05-12",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "sp7_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2009",
+     "December 31, 2008"
+    ],
+    [
+     "Assets",
+     "(Unaudited)",
+     "(Note)"
+    ],
+    [
+     "Cash and cash equivalents",
+     "$    52",
+     "$   538"
+    ],
+    [
+     "Receivables",
+     "20",
+     "--"
+    ],
+    [
+     "",
+     "72",
+     "538"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "--",
+     "46"
+    ],
+    [
+     "Estimated costs during the period of",
+     "",
+     ""
+    ],
+    [
+     "liquidation",
+     "28",
+     "60"
+    ],
+    [
+     "",
+     "28",
+     "106"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets in liquidation",
+     "$    44",
+     "$   432"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 60,
+    "end_line": 75
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [ ] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                    Accelerated filer [ ]\nNon-accelerated filer [ ]                      Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] No\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nSHELTER PROPERTIES VII LIMITED PARTNERSHIP CONSOLIDATED STATEMENTS OF NET ASSETS IN LIQUIDATION (in thousands)",
+   "prose_after": "Note: The consolidated statement of net assets in liquidation at December 31, 2008 has been derived from the audited financial statements at that date but does not include all the information and footnotes required by generally accepted accounting principles for complete financial statements.\nCONSOLIDATED STATEMENT OF CHANGES IN NET ASSETS IN LIQUIDATION\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended"
+    ],
+    [
+     "",
+     "March 31, 2009"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net assets in liquidation at January 1, 2009",
+     "$    432"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Payment of non-resident withholding",
+     "20"
+    ],
+    [
+     "Distributions paid",
+     "(399)"
+    ],
+    [
+     "Costs paid during liquidation period",
+     "(9)"
+    ],
+    [
+     "Net assets in liquidation at end of period",
+     "$    44"
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended",
+    "March 31, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 86,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Note: The consolidated statement of net assets in liquidation at December 31, 2008 has been derived from the audited financial statements at that date but does not include all the information and footnotes required by generally accepted accounting principles for complete financial statements.\nCONSOLIDATED STATEMENT OF CHANGES IN NET ASSETS IN LIQUIDATION\n(in thousands)",
+   "prose_after": "CONSOLIDATED STATEMENT OF DISCONTINUED OPERATIONS\n(in thousands, except per unit data)\nThree Months Ended March 31, 2008",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 82,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Loss from continuing operations",
+     "$    --"
+    ],
+    [
+     "Loss from discontinued operations:",
+     ""
+    ],
+    [
+     "Revenues:",
+     ""
+    ],
+    [
+     "Rental income",
+     "389"
+    ],
+    [
+     "Other income",
+     "38"
+    ],
+    [
+     "Total revenues",
+     "427"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     ""
+    ],
+    [
+     "Operating",
+     "174"
+    ],
+    [
+     "General and administrative",
+     "29"
+    ],
+    [
+     "Depreciation",
+     "91"
+    ],
+    [
+     "Interest",
+     "144"
+    ],
+    [
+     "Property taxes",
+     "21"
+    ],
+    [
+     "Total expenses",
+     "459"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$   (32)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net loss allocated to general partners (1%)",
+     "$    --"
+    ],
+    [
+     "Net loss allocated to limited partners (99%)",
+     "(32)"
+    ],
+    [
+     "",
+     "$   (32)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net loss per limited partnership unit",
+     "$ (1.85)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 108,
+    "end_line": 132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF DISCONTINUED OPERATIONS\n(in thousands, except per unit data)\nThree Months Ended March 31, 2008",
+   "prose_after": "CONSOLIDATED STATEMENT OF CASH FLOWS\n(in thousands)\nThree Months Ended March 31, 2008",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 102,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 133,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash flows from operating activities:",
+     ""
+    ],
+    [
+     "Net loss",
+     "$   (32)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by",
+     ""
+    ],
+    [
+     "operating activities:",
+     ""
+    ],
+    [
+     "Depreciation",
+     "91"
+    ],
+    [
+     "Amortization of loan costs",
+     "5"
+    ],
+    [
+     "Change in accounts:",
+     ""
+    ],
+    [
+     "Receivables and deposits",
+     "--"
+    ],
+    [
+     "Other assets",
+     "(25)"
+    ],
+    [
+     "Accounts payable",
+     "35"
+    ],
+    [
+     "Accrued property taxes",
+     "(16)"
+    ],
+    [
+     "Tenant security deposit liabilities",
+     "1"
+    ],
+    [
+     "Other liabilities",
+     "(4)"
+    ],
+    [
+     "Due to affiliates",
+     "--"
+    ],
+    [
+     "Net cash provided by operating activities",
+     "55"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     ""
+    ],
+    [
+     "Property improvements and replacements",
+     "(70)"
+    ],
+    [
+     "Net deposits to restricted escrow",
+     "(13)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(83)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Cash flows used in financing activities:",
+     ""
+    ],
+    [
+     "Payments on mortgage notes payable",
+     "(22)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "(50)"
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "155"
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$   105"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$   139"
+    ],
+    [
+     "Supplemental disclosure of non-cash activity:",
+     ""
+    ],
+    [
+     "Property improvements and replacements included in",
+     ""
+    ],
+    [
+     "accounts payable",
+     "$    11"
+    ]
+   ],
+   "caption_stack": [
+    "Cash flows from operating activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 143,
+    "end_line": 178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF CASH FLOWS\n(in thousands)\nThree Months Ended March 31, 2008",
+   "prose_after": "At December 31, 2007, accounts payable included approximately $28,000 of property improvements and replacements, which are included in property improvements and replacements for the three months ended March 31, 2008.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNote A - Basis of Presentation\nAs of October 31, 2008, Shelter Properties VII Limited Partnership (the \"Partnership\" or \"Registrant\") adopted the liquidation basis of accounting due to the sale of its remaining investment property (as discussed in \u201cNote D \u2013 Disposition of Investment Property\u201d). The general partner responsible for management of the Partnership's business is Shelter Realty VII Corporation (\"the Corporate General Partner\"). The Corporate General Partner is a subsidiary of Apartment Investment and Management Company (\"AIMCO\"), a publicly traded real estate investment trust.\nAs a result of the decision to liquidate the Partnership, the Partnership changed its basis of accounting for its consolidated financial statements at October 31, 2008 to the liquidation basis of accounting. Consequently, assets have been valued at estimated net realizable value and liabilities are presented at their estimated settlement amounts, including estimated costs associated with carrying out the liquidation of the Partnership. The valuation of assets and liabilities necessarily requires many estimates and assumptions and there are substantial uncertainties in carrying out the liquidation. The actual realization of assets and settlement of liabilities could be higher or lower than amounts indicated and is based upon the Corporate General Partner\u2019s estimates as of the date of the consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 137,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 181,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Decrease in"
+    ],
+    [
+     "",
+     "Net Assets"
+    ],
+    [
+     "",
+     "(in thousands)"
+    ],
+    [
+     "Adjustment of other assets and liabilities, net",
+     "$ (71)"
+    ]
+   ],
+   "caption_stack": [
+    "Decrease in",
+    "Net Assets",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 205,
+    "end_line": 211
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "In the opinion of the Corporate General Partner, all adjustments (consisting of normal recurring accruals) considered necessary for a fair presentation have been included. For further information, refer to the financial statements and footnotes thereto included in the Partnership's Annual Report on Form 10-K for the fiscal year ended December 31, 2008.\nIn accordance with Statement of Financial Accounting Standards (\u201cSFAS\u201d) No. 144, \u201cAccounting for the Impairment or Disposal of Long-Lived Assets\u201d, the accompanying consolidated statement of discontinued operations for the three months ended March 31, 2008 has been restated to reflect the operations of Governor\u2019s Park Apartments as loss from discontinued operations as a result of the property\u2019s sale to a third party on October 22, 2008.\nNote B \u2013 Adjustment to Liquidation Basis of Accounting\nIn accordance with the liquidation basis of accounting at October 31, 2008, assets were adjusted to their estimated net realizable value and liabilities were adjusted to their estimated settlement amount. The net adjustment required to convert to the liquidation basis of accounting was a decrease in net assets of approximately $71,000. The net adjustment is summarized as follows:",
+   "prose_after": "Note C - Transactions with Affiliated Parties\nThe Partnership has no employees and depends on the Corporate General Partner and its affiliates for the management and administration of all Partnership activities. The Partnership Agreement provides for certain payments to affiliates for services and reimbursement of certain expenses incurred by affiliates on behalf of the Partnership.\nAffiliates of the Corporate General Partner received 5% of gross receipts from the Partnership's property as compensation for providing property management services. The Partnership paid to such affiliates approximately $21,000 for the three months ended March 31, 2008, which are included in operating expenses.\nAffiliates of the Corporate General Partner charged the Partnership for reimbursement of accountable administrative expenses amounting to approximately $16,000 for the three months ended March 31, 2008 which is included in general and administrative expenses and investment property for the three months ended March 31, 2008. The portion of these reimbursements included in investment property for the three months ended March 31, 2008 were construction management services provided by an affiliate of the Corporate General Partner of approximately $5,000.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 185,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three",
+     "Per Limited",
+     "Three",
+     "Per Limited"
+    ],
+    [
+     "",
+     "Months Ended",
+     "Partnership",
+     "Months Ended",
+     "Partnership"
+    ],
+    [
+     "",
+     "March 31, 2009",
+     "Unit",
+     "March 31, 2008",
+     "Unit"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale(1)",
+     "$ 399",
+     "$23.01",
+     "$   --",
+     "$   --"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 250,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "As a result of the decision to liquidate the Partnership, the Partnership changed its basis of accounting for its financial statements at October 31, 2008 to the liquidation basis of accounting. Consequently, assets have been valued at estimated net realizable value and liabilities are presented at their estimated settlement amounts, including estimated costs associated with carrying out the liquidation of the Partnership. The valuation of assets and liabilities necessarily requires many estimates and assumptions and there are substantial uncertainties in carrying out the liquidation. The actual realization of assets and settlement of liabilities could be higher or lower than amounts indicated and is based upon the Corporate General Partner\u2019s estimates as of the date of the financial statements.\nDuring the three months ended March 31, 2009, net assets in liquidation decreased by approximately $388,000. The decrease in net assets in liquidation is due to distributions to the limited partners, and costs incurred during the liquidation period, partially offset by non-resident state tax paid on behalf of the limited partners that will be settled with the liquidating distribution.\nThe statement of net assets in liquidation as of March 31, 2009 includes approximately $28,000 of costs that the Corporate General Partner estimates will be incurred during the period of liquidation, based on the assumption that the liquidation process will be completed by September 30, 2009. Because the settlement of liabilities is based on the Corporate General Partner\u2019s best estimates, the liquidation period may be shorter or extended beyond the projected period.\nThe Partnership distributed the following amounts during the three months ended March 31, 2009 and 2008 (in thousands, except per unit data):",
+   "prose_after": "(1) Proceeds from the October 2008 sale of Governor\u2019s Park Apartments.\nThe Partnership Agreement provides for partners to receive distributions from the net proceeds of the sales of properties, the net proceeds from refinancings and net cash from operations as those terms are defined in the Partnership Agreement. The Partnership Agreement requires that the limited partners be furnished with a statement of Net Cash from Operations as such term is defined in the Partnership Agreement. Net Cash from Operations should not be considered an alternative to net loss as an indicator of the Partnership's operating performance or to cash flows as a measure of liquidity. Below is a reconciliation of net cash provided by operating activities as disclosed in the consolidated statement of cash flows included in \u201cItem 1. Financial Statements\u201d to Net Cash from Operations as defined in the Partnership Agreement.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 277,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended"
+    ],
+    [
+     "",
+     "March 31, 2008"
+    ],
+    [
+     "",
+     "(in thousands)"
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$    55"
+    ],
+    [
+     "Payments on mortgage notes payable",
+     "(22)"
+    ],
+    [
+     "Property improvements and replacements",
+     "(70)"
+    ],
+    [
+     "Changes in restricted escrow, net",
+     "(13)"
+    ],
+    [
+     "Changes in reserves for net operating",
+     ""
+    ],
+    [
+     "liabilities",
+     "9"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operations",
+     "$   (41)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "March 31, 2008",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 262,
+    "end_line": 275
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Proceeds from the October 2008 sale of Governor\u2019s Park Apartments.\nThe Partnership Agreement provides for partners to receive distributions from the net proceeds of the sales of properties, the net proceeds from refinancings and net cash from operations as those terms are defined in the Partnership Agreement. The Partnership Agreement requires that the limited partners be furnished with a statement of Net Cash from Operations as such term is defined in the Partnership Agreement. Net Cash from Operations should not be considered an alternative to net loss as an indicator of the Partnership's operating performance or to cash flows as a measure of liquidity. Below is a reconciliation of net cash provided by operating activities as disclosed in the consolidated statement of cash flows included in \u201cItem 1. Financial Statements\u201d to Net Cash from Operations as defined in the Partnership Agreement.",
+   "prose_after": "In addition to its indirect ownership of the general partner interest in the Partnership, AIMCO and its affiliates owned 11,180 limited partnership units (the \"Units\") in the Partnership representing 64.47% of the outstanding Units at March 31, 2009. A number of these Units were acquired pursuant to tender offers made by AIMCO or its affiliates. Pursuant to the Partnership Agreement, Unit holders holding a majority of the Units are entitled to take action with respect to a variety of matters that include, but are not limited to, voting on certain amendments to the Partnership Agreement and voting to remove the Corporate General Partner. As a result of its ownership of 64.47% of the outstanding Units, AIMCO and its affiliates are in a position to control all such voting decisions with respect to the Partnership. Although the Corporate General Partner owes fiduciary duties to the limited partners of the Partnership, the Corporate General Partner also owes fiduciary duties to AIMCO as its sole stockholder. As a result, the duties of the Corporate General Partner, as corporate general partner, to the Partnership and its limited partners may come into conflict with the duties of the Corporate General Partner to AIMCO as its sole stockholder.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 277,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SHELTER PROPERTIES VII LIMITED PARTNERSHIP"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:   Shelter Realty VII Corporation"
+    ],
+    [
+     "",
+     "Corporate General Partner"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 12, 2009",
+     "By:   /s/Steven D. Cordes"
+    ],
+    [
+     "",
+     "Steven D. Cordes"
+    ],
+    [
+     "",
+     "Senior Vice President"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 12, 2009",
+     "By:   /s/Stephen B. Waters"
+    ],
+    [
+     "",
+     "Stephen B. Waters"
+    ],
+    [
+     "",
+     "Vice President"
+    ]
+   ],
+   "caption_stack": [
+    "SHELTER PROPERTIES VII LIMITED PARTNERSHIP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 316,
+    "end_line": 330
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "As previously disclosed, AIMCO Properties, L.P. and NHP Management Company, both affiliates of the Corporate General Partner, were defendants in a lawsuit, filed as a collective action in August 2003 in the United States District Court for the District of Columbia, alleging that they willfully violated the Fair Labor Standards Act (\u201cFLSA\u201d) by failing to pay maintenance workers overtime for time worked in excess of 40 hours per week (\u201covertime claims\u201d). The plaintiffs also contended that AIMCO Properties, L.P. and NHP Management Company failed to compensate maintenance workers for time that they were required to be \"on-call\" (\u201con-call claims\u201d). In March 2007, the court in the District of Columbia decertified the collective action. In July 2007, plaintiffs\u2019 counsel filed individual cases in Federal court in 22 jurisdictions. In the second quarter of 2008, AIMCO Properties, L.P. settled the overtime cases involving 652 plaintiffs and established a framework for resolving the 88 remaining \u201con-call\u201d claims and the attorneys\u2019 fees claimed by plaintiffs\u2019 counsel. As a result, the lawsuits asserted in the 22 Federal courts will be dismissed. During the fourth quarter of 2008, the Partnership paid less than $1,000 for settlement amounts for alleged unpaid overtime to employees who had worked at the Partnership\u2019s investment property. At this time, the 88 remaining \u201con-call\u201d claims and the attorneys\u2019 fees claimed by plaintiffs\u2019 counsel are not resolved. The Corporate General Partner is uncertain as to the amount of any additional loss that may be allocable to the Partnership. Therefore, the Partnership cannot estimate whether any additional loss will occur or a potential range of loss.\nItem 6. Exhibits\nSee Exhibit Index.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX\nExhibit Description of Exhibit\n3 See Exhibit 4(a)\n4\n(a) Amended and Restated Certificate and Agreement of Limited Partnership. [included as Exhibit A to the Prospectus of Registrant dated March 18, 1985 contained in Amendment No. 1 to Registration Statement No. 2-94604, of Registrant filed March 18, 1985 (the \"Prospectus\") and incorporated herein by reference].\n(b) Subscription Agreements and Signature Pages [Filed with Amendment No. 1 of Registration Statement No. 2-94604, of Registrant filed March 18, 1985 and incorporated herein by reference].\n10 (i)\n(b) Purchase Agreement dated January 14, 1985, between NFC/TDM Joint Venture and U.S. Shelter Corporation to acquire Governor's Park Apartments. [Filed as Exhibit 10(F) to Post-Effective Amendment No. 2 of Registration Statement No. 2-94604 of the Registrant filed June 27, 1985 and incorporated herein by reference].\n10(i)\n(g) Agreement for Purchase and Sale and Joint Escrow Instructions between Governor\u2019s Park Apartments VII Limited Partnership, a South Carolina limited partnership, and the affiliated Selling Partnerships and JRK Property Holdings, Inc., a California corporation and JRK Birchmont Advisors, LLC, a Delaware limited liability company, dated September 29, 2008(Incorporated by reference to the Registrant\u2019s Current Report on Form 8-K dated September 29, 2008).",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 311,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 330,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2040 @@
+{
+ "accession": "0001213900-24-045269",
+ "cik": "0001918661",
+ "form": "10-Q",
+ "filing_date": "2024-05-20",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ea0206524-10q_eshacq.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "87-4000684"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(MARK ONE)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarter ended March 31, 2024\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 001-41718\nESH ACQUISITION CORP.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "228 Park Ave S, Suite 89898\nNew York, NY 10003\n(Address of principal executive offices)\n212-287-5022\n(Issuer\u2019s telephone number)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units",
+     "ESHAU",
+     "The Nasdaq Global Market"
+    ],
+    [
+     "Class A shares",
+     "ESHA",
+     "The Nasdaq Global Market"
+    ],
+    [
+     "Rights",
+     "ESHAR",
+     "The Nasdaq Global Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "228 Park Ave S, Suite 89898\nNew York, NY 10003\n(Address of principal executive offices)\n212-287-5022\n(Issuer\u2019s telephone number)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Part I. Financial Information",
+     ""
+    ],
+    [
+     "Item 1. Interim Financial Statements",
+     "1"
+    ],
+    [
+     "Condensed Balance Sheets as of March 31, 2024 (Unaudited) and December 31, 2023",
+     "1"
+    ],
+    [
+     "Condensed Statements of Operations for the three months ended March 31, 2024 and 2023 (Unaudited)",
+     "2"
+    ],
+    [
+     "Condensed Statements of Changes in Stockholders\u2019 Equity for the three months ended March 31, 2024 and 2023 (Unaudited)",
+     "3"
+    ],
+    [
+     "Condensed Statements of Cash Flows for the three months ended March 31, 2024 and 2023 (Unaudited)",
+     "4"
+    ],
+    [
+     "Notes to Condensed Financial Statements (Unaudited)",
+     "5"
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures Regarding Market Risk",
+     "20"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "20"
+    ],
+    [
+     "Part II. Other Information",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "21"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "21"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "21"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "21"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "21"
+    ],
+    [
+     "Item 5. Other Information",
+     "21"
+    ],
+    [
+     "Item 6. Exhibits",
+     "22"
+    ],
+    [
+     "Part III. Signatures",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I. Financial Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of May 20, 2024, there were 11,787,500 shares of Class A common stock, $0.0001 par value and 2,875,000 shares of Class B common stock, $0.0001 par value, issued and outstanding.\nFORM 10-Q FOR THE QUARTER ENDED MARCH 31, 2024\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I - FINANCIAL INFORMATION\nItem 1. Interim Financial Statements\nCONDENSED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,820,447",
+     "$",
+     "1,879,227"
+    ],
+    [
+     "Due from Sponsor",
+     "",
+     "10,136",
+     "",
+     "25,796"
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "8,209",
+     "",
+     "18,082"
+    ],
+    [
+     "Short-term prepaid insurance",
+     "",
+     "281,681",
+     "",
+     "281,681"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "2,120,473",
+     "",
+     "2,204,786"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term prepaid insurance",
+     "",
+     "57,119",
+     "",
+     "127,539"
+    ],
+    [
+     "Investments held in Trust Account",
+     "",
+     "121,565,683",
+     "",
+     "120,000,366"
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "123,743,275",
+     "$",
+     "122,332,691"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES, COMMON STOCK SUBJECT TO POSSIBLE REDEMPTION, AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "166,788",
+     "$",
+     "107,954"
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "162,961",
+     "",
+     "112,343"
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "981,484",
+     "",
+     "819,453"
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "1,311,233",
+     "",
+     "1,039,750"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMON STOCK SUBJECT TO POSSIBLE REDEMPTION",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock subject to possible redemption, 11,500,000 shares at redemption value of approximately $10.47 and $10.35 per share at March 31, 2024 and December 31, 2023, respectively",
+     "",
+     "120,421,238",
+     "",
+     "119,068,570"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 1,000,000 shares authorized; none issued or outstanding at March 31, 2024 and December 31, 2023",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 100,000,000 shares authorized; 287,500 issued and outstanding (excluding 11,500,000 shares subject to possible redemption) at March 31, 2024 and December 31, 2023",
+     "",
+     "28",
+     "",
+     "28"
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 10,000,000 shares authorized; 2,875,000 issued and outstanding at March 31, 2024 and December 31, 2023",
+     "",
+     "288",
+     "",
+     "288"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "\u2014",
+     "",
+     "297,488"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "2,010,488",
+     "",
+     "1,926,567"
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "2,010,804",
+     "",
+     "2,224,371"
+    ],
+    [
+     "TOTAL LIABILITIES, COMMON STOCK SUBJECT TO POSSIBLE REDEMPTION, AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "123,743,275",
+     "$",
+     "122,332,691"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 104,
+    "end_line": 152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I - FINANCIAL INFORMATION\nItem 1. Interim Financial Statements\nCONDENSED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 100,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "213,567",
+     "",
+     "$",
+     "2,867",
+     ""
+    ],
+    [
+     "Franchise tax expense",
+     "",
+     "50,618",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(264,185)",
+     "",
+     "",
+     "(2,867)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on investments held in Trust Account",
+     "",
+     "1,565,317",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total other income",
+     "",
+     "1,565,317",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before provision for income taxes",
+     "",
+     "1,301,132",
+     "",
+     "",
+     "(2,867)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "(162,031)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "1,139,101",
+     "",
+     "$",
+     "(2,867)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, Class A common stock",
+     "",
+     "11,787,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, Class B common stock(1)",
+     "",
+     "2,875,000",
+     "",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 195
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "prose_after": "(1) Excluded up to 375,000 shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters (Note 5).\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2024",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2014 January 1, 2024",
+     "",
+     "287,500",
+     "$",
+     "28",
+     "",
+     "2,875,000",
+     "$",
+     "288",
+     "$",
+     "297,488",
+     "",
+     "$",
+     "1,926,567",
+     "",
+     "$",
+     "2,224,371",
+     ""
+    ],
+    [
+     "Remeasurement of Class A common stock subject to possible redemption",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(297,488)",
+     "",
+     "",
+     "(1,055,180)",
+     "",
+     "",
+     "(1,352,668)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,139,101",
+     "",
+     "",
+     "1,139,101",
+     ""
+    ],
+    [
+     "Balance \u2013 March 31, 2024 (unaudited)",
+     "",
+     "287,500",
+     "$",
+     "28",
+     "",
+     "2,875,000",
+     "$",
+     "288",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,010,488",
+     "",
+     "$",
+     "2,010,804",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 208,
+    "end_line": 221
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Excluded up to 375,000 shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters (Note 5).\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2024",
+   "prose_after": "FOR THE THREE MONTHS ENDED MARCH 31, 2023",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 204,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 241,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2014 January 1, 2023(1)",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "2,875,000",
+     "$",
+     "288",
+     "$",
+     "24,712",
+     "$",
+     "(20,332)",
+     "",
+     "$",
+     "4,668",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,867)",
+     "",
+     "",
+     "(2,867)",
+     ""
+    ],
+    [
+     "Balance \u2013 March 31, 2023(1) (unaudited)",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "2,875,000",
+     "$",
+     "288",
+     "$",
+     "24,712",
+     "$",
+     "(23,199)",
+     "",
+     "$",
+     "1,801",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 224,
+    "end_line": 236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "FOR THE THREE MONTHS ENDED MARCH 31, 2023",
+   "prose_after": "(1) Included up to 375,000 shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters (Note 5).\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 204,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 241,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "1,139,101",
+     "",
+     "$",
+     "(2,867)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on investments held in Trust Account",
+     "",
+     "(1,565,317)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "9,873",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long-term prepaid insurance",
+     "",
+     "70,420",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Due from Sponsor",
+     "",
+     "15,660",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "137,717",
+     "",
+     "",
+     "(2,851)",
+     ""
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "50,618",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "162,031",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "20,103",
+     "",
+     "",
+     "(5,718)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment of offering costs",
+     "",
+     "(78,883)",
+     "",
+     "",
+     "(8,000)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(78,883)",
+     "",
+     "",
+     "(8,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "(58,780)",
+     "",
+     "",
+     "(13,718)",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning of period",
+     "",
+     "1,879,227",
+     "",
+     "",
+     "44,963",
+     ""
+    ],
+    [
+     "Cash \u2013 End of period",
+     "$",
+     "1,820,447",
+     "",
+     "$",
+     "31,245",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Offering costs included in accrued expenses",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "30,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 247,
+    "end_line": 284
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Included up to 375,000 shares subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriters (Note 5).\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nMARCH 31, 2024\nNOTE 1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nESH Acquisition Corp. (the \u201cCompany\u201d) was incorporated as a Delaware corporation on November 17, 2021. The Company was incorporated for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses or entities that the Company has not yet identified (the \u201cInitial Business Combination\u201d).\nAs of March 31, 2024, the Company had not commenced any operations. All activity for the period from November 17, 2021 (inception) through March 31, 2024 relates to the Company\u2019s formation and the initial public offering (the \u201cIPO\u201d), which is described below, and subsequent to the IPO, identifying a target company for the Initial Business Combination. The Company will not generate any operating revenues until after the completion of the Initial Business Combination, at the earliest. The Company generates non-operating income in the form of interest income from the proceeds held in the Trust Account (defined below). The Company has selected December 31 as its fiscal year end.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 245,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 287,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross proceeds",
+     "$",
+     "115,000,000",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Rights",
+     "",
+     "(1,398,400)",
+     ""
+    ],
+    [
+     "Class A common stock issuance costs",
+     "",
+     "(5,252,889)",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of carrying value to redemption value",
+     "",
+     "10,719,859",
+     ""
+    ],
+    [
+     "Class A Common Stock subject to possible redemption, December 31, 2023",
+     "",
+     "119,068,570",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of carrying value to redemption value",
+     "",
+     "1,352,668",
+     ""
+    ],
+    [
+     "Class A Common Stock subject to possible redemption, March 31, 2024",
+     "$",
+     "120,421,238",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 395,
+    "end_line": 410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Public Shares contain a redemption feature which allows for the redemption of such Public Shares in connection with the Company\u2019s liquidation, or if there is a stockholder vote or tender offer in connection with the Company\u2019s Initial Business Combination. In accordance with ASC 480-10-S99, the Company classifies Public Shares subject to redemption outside of permanent equity as the redemption provisions are not solely within the control of the Company. The Public Shares sold as part of the Units in the IPO were issued with other freestanding instruments (i.e., Public Rights), and as such, the initial carrying value of Public Shares classified as temporary equity is the allocated proceeds determined in accordance with ASC 470-20. The Company recognizes changes in redemption value immediately as they occurs and will adjust the carrying value of redeemable shares to equal the redemption value at the end of each reporting period. Immediately upon the closing of the IPO, the Company recognized the accretion from initial book value to redemption amount value. The change in the carrying value of redeemable shares will result in charges against additional paid-in capital and retained earnings. Accordingly, at March 31, 2024 and December 31, 2023, Class A common stock subject to possible redemption is presented at redemption value as temporary equity, outside of the stockholders\u2019 equity section of the Company\u2019s condensed balance sheets.\nThe Company\u2019s Class A common stock features certain redemption rights that are considered to be outside of the Company\u2019s control and subject to the occurrence of uncertain future events. Accordingly, as of March 31, 2024 and December 31, 2023, there are 11,500,000 shares of Class A common stock subject to possible redemption presented as temporary equity, outside of the stockholders\u2019 equity section of the accompanying condensed balance sheets.",
+   "prose_after": "Derivative Financial Instruments\nThe Company evaluates its equity-linked financial instruments to determine if such instruments are derivatives or contain features that qualify as embedded derivatives in accordance with ASC Topic 815, \u201cDerivatives and Hedging.\u201d For derivative financial instruments that are classified as liabilities, the derivative instrument is initially recognized at fair value with subsequent changes in fair value recognized in the statements of operations each reporting period. The classification of derivative instruments, including whether such instruments should be classified as liabilities or as equity, is evaluated at the end of each reporting period. The Company accounted for the rights issued in connection with the IPO and the warrants issued in connection with the Private Placement as equity-classified instruments in accordance with ASC 815 as they did not meet the liability criteria (i.e., cashless exercises).\nIncome Taxes\nThe Company follows the asset and liability method of accounting for income taxes under FASB ASC 740, \u201cIncome Taxes.\u201d Deferred tax assets and liabilities are recognized for the estimated future tax consequences attributable to differences between the financial statements carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that included the enactment date. Valuation allowances are established, when necessary, to reduce deferred tax assets to the amount expected to be realized. Deferred tax assets were deemed de minimis as of March 31, 2024 and December 31, 2023. As of March 31, 2024 and December 31, 2023, the Company\u2019s deferred tax asset had a full valuation allowance recorded against it. The effective tax rate was 12.5% and 0% for the three months ended March 31, 2024 and 2023, respectively. The effective tax rate differs from the statutory tax rate of 21% for the three months ended March 31, 2024, due to changes in the valuation allowance on the deferred tax assets and prior year true ups from the tax return.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "Class B",
+     "",
+     "Class A",
+     "",
+     "Class B",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted net income (loss) per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net income (loss)",
+     "$",
+     "915,748",
+     "$",
+     "223,353",
+     "$",
+     "\u2014",
+     "$",
+     "(2,867)",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding",
+     "",
+     "11,787,500",
+     "",
+     "2,875,000",
+     "",
+     "\u2014",
+     "",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share",
+     "$",
+     "0.08",
+     "$",
+     "0.08",
+     "$",
+     "\u2014",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 431,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company has identified the United States as its only \u201cmajor\u201d tax jurisdiction. The Company has been subject to income taxation by major taxing authorities since inception. These examinations may include questioning the timing and amount of deductions, the nexus of income among various tax jurisdictions and compliance with federal and state tax laws. The Company\u2019s management does not expect that the total amount of unrecognized tax benefits will materially change over the next twelve months.\nNet Income (Loss) Per Share of Common Stock\nThe Company has two classes of shares, which are referred to as Class A common stock and Class B common stock. Earnings and losses are shared pro rata between the two classes of shares. The Company has not considered the effect of the rights and warrants sold in the IPO and the Private Placement to purchase an aggregate of 8,620,000 shares of its Class A common stock in the calculation of diluted net income (loss) per share, since their exercise is contingent upon future events. The following table presents a reconciliation of the numerator and denominator used to compute basic and diluted net income (loss) per share for each class of common stock:",
+   "prose_after": "Recent Accounting Standards\nManagement does not believe that any recently issued, but not yet effective, accounting standards, if currently adopted, would have a material effect on the Company\u2019s unaudited condensed financial statements.\nNOTE 3. INITIAL PUBLIC OFFERING\nPursuant to the IPO, the Company sold 11,500,000 Units, which includes the full exercise by the underwriters of their over-allotment option in the amount of 1,500,000 Units, at a price of $10.00 per Unit. Each Unit consists of one share of Class A common stock and one right. Each Public Right entitles the holder thereof to receive one-tenth (1/10) of one shares of Class A common stock upon the consummation of the Initial Business Combination.\nNOTE 4. PRIVATE PLACEMENT\nSimultaneously with the closing of the IPO, the Sponsor, I-Bankers and Dawson James purchased an aggregate of 7,470,000 Private Placement Warrants, at a price of $1.00 per Private Placement Warrant, or $7,470,000 in the aggregate, in a private placement.\nEach whole Private Placement Warrant is exercisable for one whole share of Class A common stock at a price of $11.50 per share. A portion of the proceeds from the sale of the Private Placement Warrants to the Sponsor was added to the proceeds from the IPO held in the Trust Account so that the Trust Account holds $10.15 per unit sold. If the Company does not complete an Initial Business Combination within the Combination Period, the Private Placement Warrants will expire worthless. The Private Placement Warrants will be redeemable and exercisable on a cashless basis.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "Description",
+     "Level",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account \u2013 U.S. Treasury Securities Money Market Fund",
+     "1",
+     "$",
+     "121,565,683",
+     "$",
+     "120,000,366"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 568,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities).\nAt March 31, 2024 and December 31, 2023, assets held in the Trust Account were comprised of $121,565,683 and $120,000,366 in money market funds which are invested primarily in U.S. Treasury Securities, respectively. Through March 31, 2024, the Company has not withdrawn any income earned from the Trust Account to pay certain tax obligations.\nThe following table presents information about the Company\u2019s assets that are measured at fair value on a recurring basis at March 31, 2024 and December 31, 2023 and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "NOTE 9. SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the condensed balance sheet date up to the date that the unaudited condensed financial statements were issued. Based upon this review, the Company did not identify any subsequent events that would have required adjustment or disclosure in the unaudited condensed financial statements.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nReferences in this report (the \u201cQuarterly Report\u201d) to \u201cwe,\u201d \u201cus\u201d or the \u201cCompany\u201d refer to ESH Acquisition Corp. References to our \u201cmanagement\u201d or our \u201cmanagement team\u201d refer to our officers and directors, and references to the \u201cSponsor\u201d refer to ESH Sponsor LLC. The following discussion and analysis of the Company\u2019s financial condition and results of operations should be read in conjunction with the financial statements and the notes thereto contained elsewhere in this Quarterly Report. Certain information contained in the discussion and analysis set forth below includes forward-looking statements that involve risks and uncertainties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "Description of Exhibit"
+    ],
+    [
+     "1.1",
+     "Underwriting Agreement, dated June 13, 2023, by and among the Company, I-Bankers and Dawson James.(1)"
+    ],
+    [
+     "1.2",
+     "Business Combination Marketing Agreement, dated June 13, 2023, by and among the Company, I-Bankers and Dawson James Securities, Inc. (1)"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation(1)"
+    ],
+    [
+     "3.2",
+     "By-Laws of ESH Acquisition Corp.(2)"
+    ],
+    [
+     "4.1",
+     "Rights Agreement, dated June 13, 2023, by and between the Company and CST(1)"
+    ],
+    [
+     "4.2",
+     "Warrant Agreement, dated June 13, 2023, by and between CST and the Company. (1)"
+    ],
+    [
+     "10.1",
+     "Investment Management Trust Agreement, dated June 13, 2023, by and between CST and the Company. (1)"
+    ],
+    [
+     "10.2",
+     "Registration and Rights Agreement, dated June 13, 2023, by and among the Company, the Sponsor, I-Bankers and Dawson James. (1)"
+    ],
+    [
+     "10.3",
+     "Private Placement Warrants Purchase Agreement, dated June 13, 2023, by and among the Company, the Sponsor, I-Bankers and Dawson James. (1)"
+    ],
+    [
+     "10.4",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and James Franics. (1)"
+    ],
+    [
+     "10.5",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and Jonathan Morris. (1)"
+    ],
+    [
+     "10.6",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and Thomas Wolber. (1)"
+    ],
+    [
+     "10.7",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and Jonathan Gordon. (1)"
+    ],
+    [
+     "10.8",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and Christina Francis. (1)"
+    ],
+    [
+     "10.9",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and Christopher Ackerley. (1)"
+    ],
+    [
+     "10.10",
+     "Indemnity Agreement, dated June 13, 2023, by and between the Company and Allen Weiss. (1)"
+    ],
+    [
+     "10.11",
+     "Administrative Services Agreement, dated June 13, 2023, between the Company and the Sponsor. (1)"
+    ],
+    [
+     "10.12",
+     "Letter Agreement, dated June 13, 2023, by and among the Company, the Sponsor, I-Bankers, Dawson James and the Company\u2019s officers and directors. (1)"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We incurred transaction costs amounting to $5,368,092 consisting of $2,300,000 of cash underwriting discount, $2,239,466 fair value of representative shares, and $828,626 of other offering costs.\nFor a description of the use of the proceeds generated in our Initial Public Offering, see Part I, Item 2 of this Form 10-Q.\nItem 3. Defaults Upon Senior Securities\nNone\nItem 4. Mine Safety Disclosures\nNone\nItem 5. Other Information\nDuring the three months ended March 31, 2024, no director or Section 16 officer adopted or terminated any Rule 10b5-1 trading arrangements or non-Rule 10b5-1 trading arrangements (in each case, as defined in Item 408(a) of Regulation-S-K).\nItem 6. Exhibits\nThe following exhibits are filed as part of, or incorporated by reference into, this Quarterly Report on Form 10-Q.",
+   "prose_after": "* Filed herewith.\n(1) Previously filed as an exhibit to our Current Report on Form 8-K filed on June 20, 2023 and incorporated by reference herein.\n(2) Previously filed as an exhibit to our Quarterly Report on Form 10-Q filed on November 14, 2023 and incorporated by reference herein.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 750,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "ESH Acquisition Corp.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 20, 2024",
+     "By:",
+     "/s/ James Francis"
+    ],
+    [
+     "",
+     "Name:",
+     "James Francis"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 20, 2024",
+     "By:",
+     "/s/ Jonathan Morris"
+    ],
+    [
+     "",
+     "Name:",
+     "Jonathan Morris"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "ESH Acquisition Corp."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 755,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\n(1) Previously filed as an exhibit to our Current Report on Form 8-K filed on June 20, 2023 and incorporated by reference herein.\n(2) Previously filed as an exhibit to our Quarterly Report on Form 10-Q filed on November 14, 2023 and incorporated by reference herein.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 750,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

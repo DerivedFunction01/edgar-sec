@@ -1,0 +1,5288 @@
+{
+ "accession": "0001437749-20-023629",
+ "cik": "0001016504",
+ "form": "10-Q",
+ "filing_date": "2020-11-12",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "inbp20200930_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "22-2407475"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington D.C. 20549\nFORM 10-Q\n[X] Quarterly Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the quarterly period ended September 30, 2020\nOR\n[ ] Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from to\nCommission File Number 001-31668\nINTEGRATED BIOPHARMA, INC.\n(Exact name of registrant, as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "225 Long Ave., Hillside, New Jersey",
+     "07205"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(888) 319-6962\n(Registrant\u2019s telephone number, including Area Code)\nNot Applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 45,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(888) 319-6962\n(Registrant\u2019s telephone number, including Area Code)\nNot Applicable\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Exchange Act:",
+   "prose_after": "Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities and Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Part I. Financial Information",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Statements of Income for the Three Months Ended September 30, 2020 and 2019 (unaudited)",
+     "2"
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of September 30, 2020 and June 30, 2020 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statement of Stockholders\u2019 Equity for the Three Months Ended September 30, 2020 and 2019 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended September 30, 2020 and 2019 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Notes to the Condensed Consolidated Financial Statements (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part II. Other Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosure",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "23"
+    ],
+    [
+     "",
+     "Other",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "24"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I. Financial Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 112
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer \uf06f  Accelerated filer \uf06f  Non-accelerated filer  [X]  Emerging growth company \uf06f  Smaller reporting company [X]\nIf an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \uf06f\nIndicate by check whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes No [X]\nAs of November 12, 2020, there were 29,645,943 shares of common stock, $0.002 par value per share, of the registrant outstanding.\nINTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES\nFORM 10-Q QUARTERLY REPORT\nFor the Three Months Ended September 30, 2020\nINDEX",
+   "prose_after": "Cautionary Statement Regarding Forward-Looking Statements\nCertain statements in this Quarterly Report on Form 10-Q may constitute \u201cforward-looking\u201d statements as defined in Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), the Private Securities Litigation Reform Act of 1995 (the \u201cPSLRA\u201d) or in releases made by the Securities and Exchange Commission (\u201cSEC\u201d), all as may be amended from time to time. Such forward-looking statements involve known and unknown risks, uncertainties and other important factors that could cause the actual results, performance or achievements of Integrated BioPharma, Inc. and its subsidiaries (collectively, the \u201cCompany\u201d) or industry results, to differ materially from any future results, performance or achievements expressed or implied by such forward-looking statements. Such factors include, among others, changes in general economic and business conditions; the outbreak and continued spread of COVID-19; loss of market share through competition; introduction of competing products by other companies; the timing of regulatory approval and the introduction of new products by the Company; changes in industry capacity; pressure on prices from competition or from purchasers of the Company's products; regulatory changes in the pharmaceutical manufacturing industry and nutraceutical industry; regulatory obstacles to the introduction of new technologies or products that are important to the Company; availability of qualified personnel; the loss of any significant customers or suppliers; and other factors both referenced and not referenced in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended June 30, 2020 (\u201cForm 10-K\u201d), as filed with the SEC. Statements that are not historical fact are forward-looking statements. Forward-looking statements can be identified by, among other things, the use of forward-looking language, such as the words, \u201cplan\u201d, \u201cbelieve\u201d, \u201cexpect\u201d, \u201canticipate\u201d, \u201cintend\u201d, \u201cestimate\u201d, \u201cproject\u201d, \u201cmay\u201d, \u201cwill\u201d, \u201cwould\u201d, \u201ccould\u201d, \u201cshould\u201d, \u201cseeks\u201d, or \u201cscheduled to\u201d, or other similar words, or the negative of these terms or other variations of these terms or comparable language, or by discussion of strategy or intentions. These cautionary statements are being made pursuant to the Securities Act, the Exchange Act and the PSLRA with the intention of obtaining the benefits of the \u201csafe harbor\u201d provisions of such laws. The Company cautions investors that any forward-looking statements made by the Company are not guarantees or indicative of future performance. Important assumptions and other important factors that could cause actual results to differ materially from those forward-looking statements with respect to the Company, include, but are not limited to, the risks and uncertainties affecting its businesses described in Item 1A of the Company\u2019s Form 10-K and in other securities filings by the Company. Although the Company believes that its plans, intentions and expectations reflected in or suggested by such forward-looking statements are reasonable, actual results could differ materially from a projection or assumption in any of the forward-looking statements. The Company\u2019s future financial condition and results of operations, as well as any forward-looking statements, are subject to change and inherent risks and uncertainties. The forward-looking statements contained in this Quarterly Report on Form 10-Q are made only as of the date hereof and the Company does not have or undertake any obligation to update or revise any forward-looking statements whether as a result of new information, subsequent events or otherwise, unless otherwise required by law.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF INCOME",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except for share and per share amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "15,172",
+     "",
+     "$",
+     "11,406",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "12,799",
+     "",
+     "",
+     "10,007",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "2,373",
+     "",
+     "",
+     "1,399",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and administrative expenses",
+     "",
+     "864",
+     "",
+     "",
+     "923",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "",
+     "1,509",
+     "",
+     "",
+     "476",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense), net:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(76)",
+     "",
+     "",
+     "(124)",
+     ""
+    ],
+    [
+     "Realized gain on sale of investment in iBio Stock",
+     "",
+     "56",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Unrealized loss on investment in iBio Stock",
+     "",
+     "(29)",
+     "",
+     "",
+     "(20)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "8",
+     "",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Total other expense, net",
+     "",
+     "(41)",
+     "",
+     "",
+     "(127)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "1,468",
+     "",
+     "",
+     "349",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense, net",
+     "",
+     "427",
+     "",
+     "",
+     "37",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,041",
+     "",
+     "$",
+     "312",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net income per common share",
+     "$",
+     "0.04",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted net income per common share",
+     "$",
+     "0.03",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - basic",
+     "",
+     "29,645,943",
+     "",
+     "",
+     "29,565,943",
+     ""
+    ],
+    [
+     "Add: Equivalent shares outstanding - Stock Options",
+     "",
+     "2,147,133",
+     "",
+     "",
+     "1,158,690",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - diluted",
+     "",
+     "31,793,076",
+     "",
+     "",
+     "30,724,633",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED STATEMENTS OF INCOME",
+    "(in thousands, except for share and per share amounts)",
+    "(Unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 120,
+    "end_line": 174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "Certain statements in this Quarterly Report on Form 10-Q may constitute \u201cforward-looking\u201d statements as defined in Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), the Private Securities Litigation Reform Act of 1995 (the \u201cPSLRA\u201d) or in releases made by the Securities and Exchange Commission (\u201cSEC\u201d), all as may be amended from time to time. Such forward-looking statements involve known and unknown risks, uncertainties and other important factors that could cause the actual results, performance or achievements of Integrated BioPharma, Inc. and its subsidiaries (collectively, the \u201cCompany\u201d) or industry results, to differ materially from any future results, performance or achievements expressed or implied by such forward-looking statements. Such factors include, among others, changes in general economic and business conditions; the outbreak and continued spread of COVID-19; loss of market share through competition; introduction of competing products by other companies; the timing of regulatory approval and the introduction of new products by the Company; changes in industry capacity; pressure on prices from competition or from purchasers of the Company's products; regulatory changes in the pharmaceutical manufacturing industry and nutraceutical industry; regulatory obstacles to the introduction of new technologies or products that are important to the Company; availability of qualified personnel; the loss of any significant customers or suppliers; and other factors both referenced and not referenced in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended June 30, 2020 (\u201cForm 10-K\u201d), as filed with the SEC. Statements that are not historical fact are forward-looking statements. Forward-looking statements can be identified by, among other things, the use of forward-looking language, such as the words, \u201cplan\u201d, \u201cbelieve\u201d, \u201cexpect\u201d, \u201canticipate\u201d, \u201cintend\u201d, \u201cestimate\u201d, \u201cproject\u201d, \u201cmay\u201d, \u201cwill\u201d, \u201cwould\u201d, \u201ccould\u201d, \u201cshould\u201d, \u201cseeks\u201d, or \u201cscheduled to\u201d, or other similar words, or the negative of these terms or other variations of these terms or comparable language, or by discussion of strategy or intentions. These cautionary statements are being made pursuant to the Securities Act, the Exchange Act and the PSLRA with the intention of obtaining the benefits of the \u201csafe harbor\u201d provisions of such laws. The Company cautions investors that any forward-looking statements made by the Company are not guarantees or indicative of future performance. Important assumptions and other important factors that could cause actual results to differ materially from those forward-looking statements with respect to the Company, include, but are not limited to, the risks and uncertainties affecting its businesses described in Item 1A of the Company\u2019s Form 10-K and in other securities filings by the Company. Although the Company believes that its plans, intentions and expectations reflected in or suggested by such forward-looking statements are reasonable, actual results could differ materially from a projection or assumption in any of the forward-looking statements. The Company\u2019s future financial condition and results of operations, as well as any forward-looking statements, are subject to change and inherent risks and uncertainties. The forward-looking statements contained in this Quarterly Report on Form 10-Q are made only as of the date hereof and the Company does not have or undertake any obligation to update or revise any forward-looking statements whether as a result of new information, subsequent events or otherwise, unless otherwise required by law.\nITEM 1. FINANCIAL STATEMENTS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 175,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except for share and per share amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "369",
+     "",
+     "$",
+     "402",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "4,855",
+     "",
+     "",
+     "5,507",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "12,756",
+     "",
+     "",
+     "10,101",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "594",
+     "",
+     "",
+     "451",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "18,574",
+     "",
+     "",
+     "16,461",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "1,670",
+     "",
+     "",
+     "1,696",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets (includes $2,673 and $2,788 with a related party)",
+     "",
+     "2,704",
+     "",
+     "",
+     "2,824",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "",
+     "1,606",
+     "",
+     "",
+     "1,883",
+     ""
+    ],
+    [
+     "Security deposits and other assets",
+     "",
+     "76",
+     "",
+     "",
+     "80",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "24,630",
+     "",
+     "$",
+     "22,944",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances under revolving credit facility",
+     "$",
+     "2,823",
+     "",
+     "$",
+     "4,046",
+     ""
+    ],
+    [
+     "Accounts payable (includes $72 and $62 due to related party)",
+     "",
+     "7,058",
+     "",
+     "",
+     "4,358",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "1,433",
+     "",
+     "",
+     "1,384",
+     ""
+    ],
+    [
+     "Current portion of long term debt, net",
+     "",
+     "2,836",
+     "",
+     "",
+     "2,823",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities (includes $472 and $467 with a related party)",
+     "",
+     "494",
+     "",
+     "",
+     "488",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "14,644",
+     "",
+     "",
+     "13,099",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt, net",
+     "",
+     "654",
+     "",
+     "",
+     "1,436",
+     ""
+    ],
+    [
+     "Operating lease liabilities (includes $2,207 and $2,327 with a related party)",
+     "",
+     "2,216",
+     "",
+     "",
+     "2,342",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "17,514",
+     "",
+     "",
+     "16,877",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $0.002 par value; 50,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "29,680,843 shares issued and 29,645,943 shares outstanding, respectively",
+     "",
+     "59",
+     "",
+     "",
+     "59",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "50,271",
+     "",
+     "",
+     "50,263",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(43,115)",
+     "",
+     "",
+     "(44,156)",
+     ""
+    ],
+    [
+     "Less: Treasury stock, at cost, 34,900 shares",
+     "",
+     "(99)",
+     "",
+     "",
+     "(99)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity",
+     "",
+     "7,116",
+     "",
+     "",
+     "6,067",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Equity",
+     "$",
+     "24,630",
+     "",
+     "$",
+     "22,944",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED BALANCE SHEETS",
+    "(in thousands, except for share and per share amounts)",
+    "(Unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 176,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 175,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FOR THE THREE MONTHS ENDED SEPTEMBER 30, 2020 AND 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except shares)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FOR THE THREE MONTHS ENDED SEPTEMBER 30, 2020:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "Stockholders'",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Paid-in-Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Shares",
+     "",
+     "Cost",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, July 1, 2020",
+     "",
+     "29,680,843",
+     "$",
+     "59",
+     "$",
+     "50,263",
+     "$",
+     "(44,156)",
+     "",
+     "",
+     "34,900",
+     "$",
+     "(99)",
+     "",
+     "$",
+     "6,067"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock compensation expense employee stock options",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "8",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "8"
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,041",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "1,041"
+    ],
+    [
+     "Balance, September 30, 2020",
+     "",
+     "29,680,843",
+     "$",
+     "59",
+     "$",
+     "50,271",
+     "$",
+     "(43,115)",
+     "",
+     "",
+     "34,900",
+     "$",
+     "(99)",
+     "",
+     "$",
+     "7,116"
+    ]
+   ],
+   "caption_stack": [
+    "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY",
+    "FOR THE THREE MONTHS ENDED SEPTEMBER 30, 2020 AND 2019",
+    "(in thousands, except shares)",
+    "(Unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 234,
+    "end_line": 259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 279,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FOR THE THREE MONTHS ENDED SEPTEMBER 30, 2019:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "Total Stockholders'",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Par Value",
+     "",
+     "Paid-in-Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Shares",
+     "",
+     "Cost",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, July 1, 2019",
+     "",
+     "29,600,843",
+     "$",
+     "59",
+     "$",
+     "50,197",
+     "$",
+     "(48,264)",
+     "",
+     "",
+     "34,900",
+     "$",
+     "(99)",
+     "",
+     "$",
+     "1,893"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock compensation expense for employee stock options",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "15"
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "312",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "312"
+    ],
+    [
+     "Balance, September 30, 2019",
+     "",
+     "29,600,843",
+     "$",
+     "59",
+     "$",
+     "50,212",
+     "$",
+     "(47,952)",
+     "",
+     "",
+     "34,900",
+     "$",
+     "(99)",
+     "",
+     "$",
+     "2,220"
+    ]
+   ],
+   "caption_stack": [
+    "FOR THE THREE MONTHS ENDED SEPTEMBER 30, 2019:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 260,
+    "end_line": 278
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 279,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except share and per share amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Cash flows provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,041",
+     "",
+     "$",
+     "312",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "83",
+     "",
+     "",
+     "91",
+     ""
+    ],
+    [
+     "Amortization of operating lease right-of-use assets",
+     "",
+     "120",
+     "",
+     "",
+     "116",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "8",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Change in deferred tax assets",
+     "",
+     "277",
+     "",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Realized gain on sale of investment in iBio Stock",
+     "",
+     "(56)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Unrealized loss on investment in iBio Stock",
+     "",
+     "29",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Other, Net",
+     "",
+     "5",
+     "",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease (increase) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "652",
+     "",
+     "",
+     "1,084",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(2,655)",
+     "",
+     "",
+     "(1,073)",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "(185)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Security deposits and other assets",
+     "",
+     "(26)",
+     "",
+     "",
+     "18",
+     ""
+    ],
+    [
+     "(Decrease) increase in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "2,696",
+     "",
+     "",
+     "1,251",
+     ""
+    ],
+    [
+     "Accrued expenses and other liabilities",
+     "",
+     "49",
+     "",
+     "",
+     "(37)",
+     ""
+    ],
+    [
+     "Operating lease obligations",
+     "",
+     "(120)",
+     "",
+     "",
+     "(116)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "1,918",
+     "",
+     "",
+     "1,685",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(53)",
+     "",
+     "",
+     "(58)",
+     ""
+    ],
+    [
+     "Proceeds from sale of iBio Stock",
+     "",
+     "96",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "43",
+     "",
+     "",
+     "(58)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances under revolving credit facility",
+     "",
+     "13,921",
+     "",
+     "",
+     "11,040",
+     ""
+    ],
+    [
+     "Repayments of advances under revolving credit facility",
+     "",
+     "(15,144)",
+     "",
+     "",
+     "(12,075)",
+     ""
+    ],
+    [
+     "Repayments under term note payables",
+     "",
+     "(734)",
+     "",
+     "",
+     "(482)",
+     ""
+    ],
+    [
+     "Repayments under finance lease obligations",
+     "",
+     "(37)",
+     "",
+     "",
+     "(60)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(1,994)",
+     "",
+     "",
+     "(1,577)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash",
+     "",
+     "(33)",
+     "",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "402",
+     "",
+     "",
+     "475",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "369",
+     "",
+     "$",
+     "525",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "57",
+     "",
+     "$",
+     "123",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of non-cash flow transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amount owed on purchase of property and equipment",
+     "$",
+     "20",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "INTEGRATED BIOPHARMA, INC. AND SUBSIDIARIES",
+    "CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS",
+    "(in thousands, except share and per share amounts)",
+    "(Unaudited)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 280,
+    "end_line": 345
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Note 1. Principles of Consolidation and Basis of Presentation\nBasis of Presentation of Interim Financial Statements\nThe accompanying condensed consolidated financial statements for the interim periods are unaudited and include the accounts of Integrated BioPharma, Inc., a Delaware corporation (together with its subsidiaries, the \u201cCompany\u201d). The interim condensed consolidated financial statements have been prepared in conformity with Rule 8-03 of Regulation S-X of the Securities and Exchange Commission (\u201cSEC\u201d) and therefore do not include information or footnotes necessary for a complete presentation of financial position, results of operations and cash flows in conformity with accounting principles generally accepted in the United States of America. However, all adjustments (consisting only of normal recurring adjustments) which are, in the opinion of management, necessary for a fair presentation of the financial position and operating results for the periods presented have been included. These condensed consolidated financial statements should be read in conjunction with the financial statements and notes thereto, together with Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations, contained in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended June 30, 2020 (\u201cForm 10-K\u201d), as filed with the SEC. The June 30, 2020 balance sheet was derived from audited financial statements, but does not include all disclosures required by accounting principles generally accepted in the United States of America. The preparation of the unaudited condensed financial statements in conformity with these accounting principles requires management to make estimates and assumptions that affect the amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the financial statements and the reported amounts of expenses during the period. Ultimate results could differ from the estimates of management. The results of operations for the three months ended September 30, 2020 are not necessarily indicative of the results for the full fiscal year ending June 30, 2021 or for any other period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 279,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 346,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anti-dilutive stock options",
+     "",
+     "-",
+     "",
+     "50,000"
+    ],
+    [
+     "Total anti-dilutive shares",
+     "",
+     "-",
+     "",
+     "50,000"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 392,
+    "end_line": 404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Principles of Consolidation and Basis of Presentation"
+    }
+   },
+   "prose_before": "We have lease agreements with lease and non-lease components, which are generally accounted for separately. For certain equipment leases, such as vehicles, we account for the lease and non-lease components as a single lease component.\nEarnings Per Share. Basic earnings per common share amounts are based on weighted average number of common shares outstanding. Diluted earnings per share amounts are based on the weighted average number of common shares outstanding, plus the incremental shares that would have been outstanding upon the assumed exercise of all potentially dilutive stock options, warrants and convertible debt, subject to anti-dilution limitations using the treasury stock method and if converted method.\nThe following options and potentially dilutive shares for convertible notes payable were not included in the computation of weighted average diluted common shares outstanding as the effect of doing so would be anti-dilutive for the three months ended September 30, 2020 and 2019:",
+   "prose_after": "Note 2. Inventories\nInventories are stated at the lower of cost or net realizable value using the first-in, first-out method and consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 386,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "9,957",
+     "$",
+     "6,610"
+    ],
+    [
+     "Work-in-process",
+     "",
+     "1,972",
+     "",
+     "2,612"
+    ],
+    [
+     "Finished goods",
+     "",
+     "827",
+     "",
+     "879"
+    ],
+    [
+     "Total",
+     "$",
+     "12,756",
+     "$",
+     "10,101"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 409,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "Note 2. Inventories\nInventories are stated at the lower of cost or net realizable value using the first-in, first-out method and consist of the following:",
+   "prose_after": "Note 3. Property and Equipment, net\nProperty and equipment, net consists of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 386,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land and building",
+     "$",
+     "1,250",
+     "",
+     "$",
+     "1,250",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "1,327",
+     "",
+     "",
+     "1,287",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "6,470",
+     "",
+     "",
+     "6,465",
+     ""
+    ],
+    [
+     "Transportation equipment",
+     "",
+     "6",
+     "",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "9,053",
+     "",
+     "",
+     "9,008",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "",
+     "(7,383)",
+     "",
+     "",
+     "(7,312)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,670",
+     "",
+     "$",
+     "1,696",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 427,
+    "end_line": 443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Property and Equipment, net"
+    }
+   },
+   "prose_before": "Note 3. Property and Equipment, net\nProperty and equipment, net consists of the following:",
+   "prose_after": "Depreciation and amortization expense recorded on property and equipment for the three months ended September 30, 2020 and 2019 was $83 and $91, respectively. In the three months ended September 30, 2020, the Company disposed of fully depreciated property of $12.\nNote 4. Senior Credit Facility and other Long Term Debt\nAs of September 30, 2020 and June 30, 2020, the Company had the following debt outstanding:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Principal Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Interest Rate",
+     "",
+     "",
+     "Maturity Date"
+    ],
+    [
+     "",
+     "As of September 30, 2020",
+     "",
+     "",
+     "As of June 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revolving advances under Senior Credit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Facility with PNC Bank, National Association",
+     "$",
+     "2,823",
+     "",
+     "$",
+     "4,046",
+     "",
+     "",
+     "3.25",
+     "%",
+     "5/15/2024"
+    ],
+    [
+     "Installment Note with PNC Bank",
+     "",
+     "1,850",
+     "",
+     "",
+     "2,584",
+     "",
+     "",
+     "3.50",
+     "%",
+     "5/15/2024"
+    ],
+    [
+     "Payroll Protection Program Loan with PNC Bank",
+     "",
+     "1,639",
+     "",
+     "",
+     "1,639",
+     "",
+     "",
+     "1.00",
+     "%",
+     "4/30/2022"
+    ],
+    [
+     "Capitalized lease obligations",
+     "",
+     "38",
+     "",
+     "",
+     "75",
+     "",
+     "",
+     "4.01% -9.38",
+     "%",
+     "12/1/2020"
+    ],
+    [
+     "Total outstanding debt",
+     "",
+     "6,350",
+     "",
+     "",
+     "8,344",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Revolving Advances",
+     "",
+     "(2,823)",
+     "",
+     "",
+     "(4,046)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid financing costs",
+     "",
+     "(37)",
+     "",
+     "",
+     "(39)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long term debt, net",
+     "",
+     "(2,836)",
+     "",
+     "",
+     "(2,823)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt, net",
+     "$",
+     "654",
+     "",
+     "$",
+     "1,436",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 450,
+    "end_line": 471
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Senior Credit Facility and other Long Term Debt"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense recorded on property and equipment for the three months ended September 30, 2020 and 2019 was $83 and $91, respectively. In the three months ended September 30, 2020, the Company disposed of fully depreciated property of $12.\nNote 4. Senior Credit Facility and other Long Term Debt\nAs of September 30, 2020 and June 30, 2020, the Company had the following debt outstanding:",
+   "prose_after": "SENIOR CREDIT FACILITY\nOn May 15, 2019, the Company, MDC, AgroLabs, IHT, IHT Properties Corp. (\u201cIHT Properties\u201d) and Vitamin Factory (collectively, the \u201cBorrowers\u201d) amended the Revolving Credit, Term Loan and Security Agreement (the \u201cAmended Loan Agreement\u201d) with PNC Bank, National Association as agent and lender (\u201cPNC\u201d) and the other lenders party thereto entered into on June 27, 2012, as amended on February 19, 2016, and May 15, 2019.\nThe Amended Loan Agreement provides for a total of $11,585 in senior secured financing (the \u201cSenior Credit Facility\u201d) as follows: (i) discretionary advances (\u201cRevolving Advances\u201d) based on eligible accounts receivable and eligible inventory in the maximum amount of $8,000 (the \u201cRevolving Credit Facility\u201d), and (ii) a term loan in the amount of $3,585 (the \u201cTerm Loan\u201d). The Senior Credit Facility is secured by all assets of the Borrowers, including, without limitation, machinery and equipment, real estate owned by IHT Properties, and common stock of iBio, Inc. (\"iBio Stock\") owned by the Company. Revolving Advances bear interest at PNC\u2019s Base Rate (3.25% as of September 30, 2020 and June 30, 2020) or the Eurodollar Rate, at Borrowers\u2019 option, plus 2.50%. The Term Loan bears interest at PNC\u2019s Base Rate (3.50% as of September 30, 2020 and June 30, 2020) or the Eurodollar Rate at Borrowers\u2019 option, plus 3.00%.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Related Party - Vitamin Realty",
+     "",
+     "Other Leases",
+     "",
+     "Totals",
+     "",
+     "Related Party - Vitamin Realty",
+     "",
+     "Other Leases",
+     "",
+     "Totals",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease costs",
+     "$",
+     "141",
+     "$",
+     "24",
+     "$",
+     "165",
+     "$",
+     "135",
+     "$",
+     "39",
+     "$",
+     "174"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance Operating Lease Costs:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of right-of use assets",
+     "$",
+     "-",
+     "$",
+     "12",
+     "$",
+     "12",
+     "$",
+     "-",
+     "$",
+     "27",
+     "$",
+     "27"
+    ],
+    [
+     "Interest on operating lease liabilities",
+     "",
+     "-",
+     "",
+     "1",
+     "",
+     "1",
+     "",
+     "-",
+     "",
+     "5",
+     "",
+     "5"
+    ],
+    [
+     "Total finance lease cost",
+     "$",
+     "-",
+     "$",
+     "13",
+     "$",
+     "13",
+     "$",
+     "-",
+     "$",
+     "32",
+     "$",
+     "32"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 517,
+    "end_line": 533
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases and other Commitments and Contingencies"
+    }
+   },
+   "prose_before": "be obtained from more than one supplier. However, due to port closures and other restrictions resulting from the coronavirus outbreak throughout the world, these suppliers, located both inside and outside of the United States, may have limited supply of the materials, which has caused prices of some materials to increase. These and other disruptions would likely impact the Company\u2019s sales and operating results. If the Company is unable to obtain the necessary materials to produce a supplement within the Company\u2019s standard lead times, it may delay the production and shipment of those supplements, thereby shifting the timing of recognizing the resulting sale to the Company\u2019s customers. In addition, the significant outbreak of this contagious disease in the human population has resulted in a widespread health crisis that could adversely affect the economies and financial markets of many countries, resulting in an economic downturn that could affect demand for the Company\u2019s products and impact the Company\u2019s operating results.\nThe Company does not currently anticipate any negative impact to its margins resulting from the coronavirus outbreak, however; if the Company is unable to obtain the necessary materials to produce a supplement within its standard lead times or the necessary safety and cleaning supplies it may delay the production and shipment of those supplements to its customers, thereby shifting the timing of recognizing the resulting sale to its customers.\nNote 6. Leases and other Commitments and Contingencies\n(a) Leases. The Company has operating and finance leases for its corporate and sales offices, warehousing and packaging facilities and certain machinery and equipment, including office equipment. The Company\u2019s leases have remaining terms of less than 1 year to less than 8 years.\nThe components of lease expense for the three months ended September 30, 2020 and 2019, were as follows:",
+   "prose_after": "Operating Lease Liabilities\nRelated Party Operating Lease Liabilities. Warehouse and office facilities are leased from Vitamin Realty Associates, LLC (\u201cVitamin Realty\u201d), which is 100% owned by the Company\u2019s chairman, and a major stockholder and certain of his family members, who are the Co-Chief Executive Officers and directors of the Company. On January 5, 2012, MDC entered into a second amendment of lease (the \u201cSecond Lease Amendment\u201d) with Vitamin Realty for its office and warehouse space in New Jersey increasing its rentable square footage from an aggregate of 74,898 square feet to 76,161 square feet and extending the expiration date to January 31, 2026. This Second Lease Amendment provides for minimum annual rental payments of $533, plus increases in real estate taxes and building operating expenses. On May 19, 2014, AgroLabs entered into an amendment to the lease agreement entered into on January 5, 2012, with Vitamin Realty for an additional 2,700 square feet of warehouse space in New Jersey, the term of which was to expire on January 31, 2019 to extend the expiration date to June 1, 2024. This additional lease provides for minimum lease payments of $27 with annual increases plus the proportionate share of operating expenses.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 505,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Right-of-use Assets",
+     "",
+     "Current Portion of Operating Lease Obligations",
+     "",
+     "Operating Lease Obligations",
+     "",
+     "Remaining Cash Commitment",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vitamin Realty Leases",
+     "$",
+     "2,673",
+     "$",
+     "472",
+     "$",
+     "2,207",
+     "$",
+     "2,962"
+    ],
+    [
+     "Machinery and equipment leases",
+     "",
+     "13",
+     "",
+     "11",
+     "",
+     "2",
+     "",
+     "13"
+    ],
+    [
+     "Office equipment leases",
+     "",
+     "18",
+     "",
+     "11",
+     "",
+     "7",
+     "",
+     "19"
+    ],
+    [
+     "",
+     "$",
+     "2,704",
+     "$",
+     "494",
+     "$",
+     "2,216",
+     "$",
+     "2,994"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases and other Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Rent expense, lease amortization costs and interest expense for the three months ended September 30, 2020 and 2019 on these leases were $222 and $213 respectively, and are included in cost of sales, selling and administrative expenses and interest expense in the accompanying Condensed Consolidated Statements of Income. As of September 30, 2020 and June 30, 2020, the Company had outstanding current obligations to Vitamin Realty of $72 and $62, respectively, included in accounts payable in the accompanying Condensed Consolidated Balance Sheet. Additionally, the Company has operating lease obligations of $2,679 and $2,794 with Vitamin Realty as noted in the accompany Condensed Consolidated Balance Sheet as of September 30, 2020 and June 30, 2020, respectively.\nOther Operating Lease Liabilities. The Company has entered into certain non-cancelable operating lease agreements expiring up through May, 2023, related to machinery and equipment and office equipment.\nAs of September 30, 2020, the Company\u2019s right-of-use assets, lease obligations and remaining cash commitment on these leases were as follows:",
+   "prose_after": "As of June 30, 2020, the Company\u2019s ROU assets, lease obligations and remaining cash commitment on these leases were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Right-of-use Assets",
+     "",
+     "Current Portion Operating Lease Obligations",
+     "",
+     "Operating Lease Obligations",
+     "",
+     "Remaining Cash Commitment",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vitamin Realty Leases",
+     "$",
+     "2,788",
+     "$",
+     "467",
+     "$",
+     "2,327",
+     "$",
+     "3,103"
+    ],
+    [
+     "Machinery and equipment leases",
+     "",
+     "28",
+     "",
+     "20",
+     "",
+     "8",
+     "",
+     "29"
+    ],
+    [
+     "Office equipment leases",
+     "",
+     "8",
+     "",
+     "1",
+     "",
+     "7",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "$",
+     "2,824",
+     "$",
+     "488",
+     "$",
+     "2,342",
+     "$",
+     "3,141"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 560,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases and other Commitments and Contingencies"
+    }
+   },
+   "prose_before": "As of June 30, 2020, the Company\u2019s ROU assets, lease obligations and remaining cash commitment on these leases were as follows:",
+   "prose_after": "As of September 30, 2020 and June 30, 2020, the Company\u2019s weighted average discount rate and remaining term on lease liabilities were approximately 3.75% and 3.75% and 5.1 years and 5.4 years, respectively.\nSupplemental cash flows information related to leases for the three months ended September 30, 2020, is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 537,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Related Party - Vitamin Realty",
+     "",
+     "Other Leases",
+     "",
+     "Totals",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "141",
+     "$",
+     "24",
+     "$",
+     "165"
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "",
+     "-",
+     "",
+     "1",
+     "",
+     "1"
+    ],
+    [
+     "Financing cash flows from finance lease obligations",
+     "",
+     "-",
+     "",
+     "37",
+     "",
+     "37"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 578,
+    "end_line": 588
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases and other Commitments and Contingencies"
+    }
+   },
+   "prose_before": "As of September 30, 2020 and June 30, 2020, the Company\u2019s weighted average discount rate and remaining term on lease liabilities were approximately 3.75% and 3.75% and 5.1 years and 5.4 years, respectively.\nSupplemental cash flows information related to leases for the three months ended September 30, 2020, is as follows:",
+   "prose_after": "Supplemental cash flows information related to leases for the three months ended September 30, 2019, is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Related Party - Vitamin Realty",
+     "",
+     "Other Leases",
+     "",
+     "Totals",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "141",
+     "$",
+     "24",
+     "$",
+     "165"
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "",
+     "-",
+     "",
+     "5",
+     "",
+     "5"
+    ],
+    [
+     "Financing cash flows from finance lease obligations",
+     "",
+     "-",
+     "",
+     "60",
+     "",
+     "60"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 601
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases and other Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Supplemental cash flows information related to leases for the three months ended September 30, 2019, is as follows:",
+   "prose_after": "The Company did not enter into any lease commitments in the three months ended September 30, 2020.\nMaturities of operating lease liabilities as of September 30, 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Related Party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Operating Lease",
+     "",
+     "",
+     "Operating Lease",
+     "",
+     "",
+     "Financed Lease",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ending June 30,",
+     "Commitment",
+     "",
+     "",
+     "Commitment",
+     "",
+     "",
+     "Obligations",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2021, remaining",
+     "$",
+     "16",
+     "",
+     "$",
+     "424",
+     "",
+     "$",
+     "39",
+     "",
+     "$",
+     "479",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "11",
+     "",
+     "",
+     "565",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "576",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "2",
+     "",
+     "",
+     "565",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "567",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "2",
+     "",
+     "",
+     "565",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "567",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "1",
+     "",
+     "",
+     "563",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "564",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "-",
+     "",
+     "",
+     "280",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "280",
+     ""
+    ],
+    [
+     "Total minimum lease payments",
+     "",
+     "32",
+     "",
+     "",
+     "2,962",
+     "",
+     "",
+     "39",
+     "",
+     "",
+     "3,033",
+     ""
+    ],
+    [
+     "Imputed interest",
+     "",
+     "(1)",
+     "",
+     "",
+     "(283)",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "(285)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "31",
+     "",
+     "$",
+     "2,679",
+     "",
+     "$",
+     "38",
+     "",
+     "$",
+     "2,748",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Related Party"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 606,
+    "end_line": 626
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Leases and other Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company did not enter into any lease commitments in the three months ended September 30, 2020.\nMaturities of operating lease liabilities as of September 30, 2020 were as follows:",
+   "prose_after": "Total rent expense, lease amortization costs and interest expense, including real estate taxes and maintenance charges, was approximately $265 and $263 for the three months ended September 30, 2020 and 2019, respectively. Rent and lease amortization and interest expense is included in cost of sales, selling and administrative expenses and interest expense in the accompanying Condensed Consolidated Statements of Income.\n(b) Legal Proceedings.\nThe Company is subject, from time to time, to claims by third parties under various legal theories. The defense of such claims, or any adverse outcome relating to any such claims, could have a material adverse effect on the Company\u2019s liquidity, financial condition and cash flows.\nNote 7. Related Party Transactions\nSee Note 6(a). Leases for related party lease transactions.\nNote 8. Segment Information and Disaggregated Revenue\nThe basis for presenting segment results generally is consistent with overall Company reporting. The Company reports information about its operating segments in accordance with GAAP which establishes standards for reporting information about a company\u2019s operating segments.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Sales, Net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Segment",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "U.S.",
+     "",
+     "International",
+     "",
+     "",
+     "",
+     "Gross",
+     "",
+     "",
+     "",
+     "Capital",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Customers",
+     "",
+     "Customers",
+     "",
+     "Total",
+     "",
+     "Profit (Loss)",
+     "",
+     "Depreciation",
+     "",
+     "Expenditures",
+     ""
+    ],
+    [
+     "Contract Manufacturing",
+     "2020",
+     "$",
+     "13,324",
+     "$",
+     "1,462",
+     "$",
+     "14,786",
+     "$",
+     "2,255",
+     "$",
+     "82",
+     "$",
+     "50"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "9,001",
+     "",
+     "1,983",
+     "",
+     "10,984",
+     "",
+     "1,250",
+     "",
+     "90",
+     "",
+     "58"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Nutraceutical Businesses",
+     "2020",
+     "",
+     "381",
+     "",
+     "5",
+     "",
+     "386",
+     "",
+     "118",
+     "",
+     "1",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "379",
+     "",
+     "43",
+     "",
+     "422",
+     "",
+     "149",
+     "",
+     "1",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Company",
+     "2020",
+     "",
+     "13,705",
+     "",
+     "1,467",
+     "",
+     "15,172",
+     "",
+     "2,373",
+     "",
+     "83",
+     "",
+     "53"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "9,380",
+     "",
+     "2,026",
+     "",
+     "11,406",
+     "",
+     "1,399",
+     "",
+     "91",
+     "",
+     "58"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "The Company is subject, from time to time, to claims by third parties under various legal theories. The defense of such claims, or any adverse outcome relating to any such claims, could have a material adverse effect on the Company\u2019s liquidity, financial condition and cash flows.\nNote 7. Related Party Transactions\nSee Note 6(a). Leases for related party lease transactions.\nNote 8. Segment Information and Disaggregated Revenue\nThe basis for presenting segment results generally is consistent with overall Company reporting. The Company reports information about its operating segments in accordance with GAAP which establishes standards for reporting information about a company\u2019s operating segments.\nThe Company has divided its operations into two reportable segments as follows: Contract Manufacturing, and Other Nutraceutical Businesses. The international sales, concentrated primarily in Europe and Canada, for the three months ended September 30, 2020 and 2019 were $1,467 and $2,026, respectively.\nFinancial information relating to the three months ended September 30, 2020 and 2019 operations by business segment and disaggregated revenues was as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Assets as of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Contract Manufacturing",
+     "$",
+     "21,429",
+     "$",
+     "19,581"
+    ],
+    [
+     "Other Nutraceutical Businesses",
+     "",
+     "3,201",
+     "",
+     "3,363"
+    ],
+    [
+     "Total Company",
+     "$",
+     "24,630",
+     "$",
+     "22,944"
+    ]
+   ],
+   "caption_stack": [
+    "Total Assets as of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 661,
+    "end_line": 673
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Item 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANICAL CONDITION AND RESULTS OF OPERATION (dollars in thousands)\nCertain statements set forth under this caption constitute \u201cforward-looking statements.\u201d See \u201cDisclosure Regarding Forward-Looking Statements\u201d on page 1 of this Quarterly Report on Form 10-Q for additional factors relating to such statements. The following discussion should also be read in conjunction with the condensed consolidated financial statements of the Company and Notes thereto included herein and the Company\u2019s Annual Report on Form 10-K for the fiscal year ended June 30, 2020.\nThe Company is engaged primarily in the manufacturing, distributing, marketing and sales of vitamins, nutritional supplements and herbal products. The Company\u2019s customers are located primarily in the United States, Luxembourg and Canada.\nBusiness Outlook\nOur future results of operations and the other forward-looking statements contained in this Quarterly Report on Form 10-Q, including this \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operation\u201d, involve a number of risks and uncertainties\u2014in particular, the statements regarding our goals and strategies, new product introductions, plans to cultivate new businesses, future economic conditions, revenue, pricing, gross margin and costs, competition, the tax rate, and potential legal proceedings. We are focusing our efforts to improve operational efficiency and reduce spending that may have an impact on expense levels and gross margin. In addition to the various important factors discussed above, a number of other important factors could cause actual results to differ significantly from our expectations. See the risks described in \u201cRisk Factors\u201d in the Company\u2019s Annual Report on Form 10-K for the fiscal year ended June 30, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales, net",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "84.4",
+     "%",
+     "",
+     "87.7",
+     "%"
+    ],
+    [
+     "Selling and administrative",
+     "",
+     "5.7",
+     "%",
+     "",
+     "8.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "90.1",
+     "%",
+     "",
+     "95.8",
+     "%"
+    ],
+    [
+     "Operating income",
+     "",
+     "9.9",
+     "%",
+     "",
+     "4.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(0.5",
+     "%)",
+     "",
+     "(1.1",
+     "%)"
+    ],
+    [
+     "Realized gain on sale of investment in iBio Stock",
+     "",
+     "0.4",
+     "%",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Unrealized loss in investment in iBio, Stock",
+     "",
+     "(0.2",
+     "%)",
+     "",
+     "(0.2",
+     "%)"
+    ],
+    [
+     "Other income, net",
+     "",
+     "0.1",
+     "%",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "Other expense, net",
+     "",
+     "(0.2",
+     "%)",
+     "",
+     "(1.1",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "9.7",
+     "%",
+     "",
+     "3.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense, net",
+     "",
+     "2.8",
+     "%",
+     "",
+     "0.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "6.9",
+     "%",
+     "",
+     "2.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months",
+    "ended September 30,"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 706,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANICAL CONDITION AND RESULTS OF OPERATION (dollars in thousands)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "There have been no changes to our critical accounting policies in the three months ended September 30, 2020, except as disclosed in Note 1. Principles of Consolidation and Basis of Presentation of the Condensed Financial Statements of the Company contained in this Quarterly Report on Form 10-Q. Critical accounting policies and the significant estimates made in accordance with them are regularly discussed by management with our Audit Committee. Those policies are discussed under \u201cCritical Accounting Policies\u201d in our \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d included in Item 7 of our Annual Report on Form 10-K for the year ended June 30, 2020 and in Note 1. Principles of Consolidation and Basis of Presentation of the Condensed Financial Statements of the Company contained in this Quarterly Report on Form 10-Q.\nResults of Operations (in thousands, except share and per share amounts)\nOur results from operations in the following table, sets forth the income statement data of our results as a percentage of net sales for the periods indicated:",
+   "prose_after": "For the Three Months Ended September 30, 2020 compared to the Three Months Ended September 30, 2019\nSales, net. Sales, net, for the three months ended September 30, 2020 and 2019 were $15,172 and $11,406, respectively, an increase of 33.0%, and are comprised of the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "Dollar",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2020 vs 2019",
+     "",
+     "",
+     "2020 vs 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(amounts in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contract Manufacturing:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "US Customers",
+     "$",
+     "13,324",
+     "$",
+     "9,001",
+     "$",
+     "4,323",
+     "",
+     "",
+     "48.0",
+     "%"
+    ],
+    [
+     "International Customers",
+     "",
+     "1,462",
+     "",
+     "1,983",
+     "",
+     "(521)",
+     "",
+     "",
+     "(26.3",
+     "%)"
+    ],
+    [
+     "Net sales, Contract Manufacturing",
+     "",
+     "14,786",
+     "",
+     "10,984",
+     "",
+     "3,802",
+     "",
+     "",
+     "34.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Nutraceuticals:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "US Customers",
+     "",
+     "381",
+     "",
+     "379",
+     "",
+     "2",
+     "",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "International Customers",
+     "",
+     "5",
+     "",
+     "43",
+     "",
+     "(38)",
+     "",
+     "",
+     "(88.4",
+     "%)"
+    ],
+    [
+     "Net sales, Other Nutraceuticals",
+     "",
+     "386",
+     "",
+     "422",
+     "",
+     "(36)",
+     "",
+     "",
+     "(8.5",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total net sales",
+     "$",
+     "15,172",
+     "$",
+     "11,406",
+     "$",
+     "3,766",
+     "",
+     "",
+     "33.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 746,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANICAL CONDITION AND RESULTS OF OPERATION (dollars in thousands)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "For the Three Months Ended September 30, 2020 compared to the Three Months Ended September 30, 2019\nSales, net. Sales, net, for the three months ended September 30, 2020 and 2019 were $15,172 and $11,406, respectively, an increase of 33.0%, and are comprised of the following:",
+   "prose_after": "For the three months ended September 30, 2020 and 2019, a significant portion of our consolidated net sales, approximately 92% and 91%, respectively, were concentrated among two customers, Life Extension and Herbalife, in our Contract Manufacturing Segment. Life Extension and Herbalife represented approximately 69% and 25% and 66% and 29%, respectively, of our Contract Manufacturing Segment\u2019s net sales in the three months ended September 30, 2020 and 2019, respectively. Innophos, while not significant customer of our consolidated net sales, represented approximately 0% and 26%, of the Other Nutraceutical Businesses net sales in the three months ended September 30, 2020 and 2019, respectively. The loss of any of these customers could have a significant adverse impact on our financial condition and results of operations.\nThe increase in net sales of approximately $3,766 was primarily the result of increased net sales in our Contract Manufacturing Segment by $3,802 primarily due to increased sales volumes to Life Extension and Herbalife in the amounts of $2,994 and $529, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "(76)",
+     "",
+     "$",
+     "(124)",
+     ""
+    ],
+    [
+     "Realized gain on sale of investment in iBio Stock",
+     "",
+     "56",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Unrealized loss on investment in iBio Stock",
+     "",
+     "(29)",
+     "",
+     "",
+     "(20)",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "8",
+     "",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "$",
+     "(41)",
+     "",
+     "$",
+     "(127)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended",
+    "September 30,"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 781,
+    "end_line": 796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANICAL CONDITION AND RESULTS OF OPERATION (dollars in thousands)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "Cost of sales. Cost of sales increased by approximately $2,792 to $12,799 for the three months ended September 30, 2020, as compared to $10,007 for the three months ended September 30, 2019 or approximately 28%. Cost of sales decreased as a percentage of sales to 84.4% for the three months ended September 30, 2020 as compared to 87.7% for the three months ended September 30, 2019. The 28% increase in the cost of goods sold amount is consistent with the increased net sales of approximately 33%. The decrease in the cost of goods sold as a percentage of net sales, was primarily the result of the increased net sales used to offset the fixed manufacturing overhead. There were no significant changes in the cost of goods sold in our other two segments other than the variances in sales.\nSelling and Administrative Expenses. There was a decrease in selling and administrative expenses of $59, approximately 6% in the three months ended September 30, 2020 as compared to the three months ended September 30, 2019. As a percentage of sales, net, selling and administrative expenses were approximately 6% and 8% in the three months ended September 30, 2020 and 2019, respectively. The decrease was primarily from decreases in (i) professional fees of approximately $71, as the result of decreased legal fees; and (ii) travel and entertainment of approximately $15. These decreases were partially offset by offset by an increase of approximately $30 in expected losses on collections of customer receivables resulting from the financial impact of COVID-19.\nOther income (expense), net. Other income (expense), net was approximately $41 for the three months ended September 30, 2020 compared to $127 for the three months ended September 30, 2019, and is composed of:",
+   "prose_after": "Our interest expense for the three months ended September 30, 2020 decreased by $48 from the three month period ended September 30, 2019, primarily as the result of lower average daily balances outstanding under the Senior Credit Facility with PNC Bank and a decrease in the interest rates of approximately 1.5% in the three month period ended September 30, 2020 from the three month period ended September 30, 2019 (See Note 4 to the condensed consolidated financial statements included in this Quarterly Report on Form 10-Q).\nIn the three months ended September 30, 2020, we sold 16,000 shares of iBio Stock for a gain of $56 with no such sales in the three months ended September 30, 2019. Also, in the three months ended September 30, 2020, and 2019, we had an unrealized loss on the remaining iBio Stock of approximately $29 and $20, respectively.\nFederal and state income tax expense, net. For the three months ended September 30, 2020, we had a federal deferred income tax expense of $273 compared to a $6 federal income tax benefit in the three months ended September 30, 2019 and state income tax expense, net of approximately $154 and $43, in the three months ended September 30, 2020 and 2019, respectively. We continue to maintain a reserve on a portion of our deferred tax assets as it has been determined that based upon past losses, the Company\u2019s past liquidity concerns and the current economic environment, it is \u201cmore likely than not\u201d that the Company\u2019s deferred tax assets may not be fully realized.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(dollars in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "1,918",
+     "",
+     "$",
+     "1,685",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "$",
+     "43",
+     "",
+     "$",
+     "(58)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "$",
+     "(1,994)",
+     "",
+     "$",
+     "(1,577)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "369",
+     "",
+     "$",
+     "525",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended",
+    "September 30,"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 815,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANICAL CONDITION AND RESULTS OF OPERATION (dollars in thousands)"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "The nutraceutical business can be seasonal. Due to our current customer base in our contract manufacturing segment, our fiscal quarter ending December 31st each year tends to be more than our average quarterly volume for the other three fiscal quarters in the fiscal year. This increase is based on their forecast of their customer base.\nThe Company believes that there are non-seasonal factors that may influence the variability of quarterly results including, but not limited to, general economic and industry conditions that affect consumer spending, changing consumer demands and current news on nutritional supplements. Accordingly, a comparison of the Company\u2019s results of operations from consecutive periods is not necessarily meaningful, and the Company\u2019s results of operations for any period are not necessarily indicative of future periods.\nLiquidity and Capital Resources\nThe following table sets forth, for the periods indicated, the Company\u2019s net cash flows used in operating, investing and financing activities, its period end cash and cash equivalents and other operating measures",
+   "prose_after": "At September 30, 2020, our working capital was approximately $3,930, an increase of $568 from our working capital of $3,362 at June 30, 2020. Our current assets increased by $2,113 offset by an increase in our current liabilities of $1,545. The increase in the current assets is primarily from increases in inventories in the amount of $2,655 offset by a decrease in accounts receivable, net of $652.\nOperating Activities\nNet cash provided by operating activities of $1,918 in the three months ended September 30, 2020 includes net income of approximately $1,041. After excluding the effects of non-cash expenses, including depreciation and amortization, and changes in deferred tax assets, the adjusted cash provided from operations before the effect of the changes in working capital components was $1,507. Net cash provided by our operations in the three months ended September 30, 2020 from our working capital assets and liabilities in the amount of approximately $411 was primarily the result of cash provided from a decrease in our accounts receivable of $652 and an aggregate increase in accounts payable, accrued expenses and other liabilities of $2,745, offset in part, by increases in inventories of approximately $2,655 and prepaid and other assets of $211.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 840,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "Certification of pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by Co-Chief Executive Officers."
+    ],
+    [
+     "31.2",
+     "Certification of pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 by Chief Financial Officer."
+    ],
+    [
+     "32.1",
+     "Certification of periodic financial report pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 by Co-Chief Executive Officers."
+    ],
+    [
+     "32.2",
+     "Certification of periodic financial report pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 by Chief Financial Officer."
+    ],
+    [
+     "101",
+     "The following financial information from Integrated BioPharma, Inc.\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2020, formatted in XBRL (eXtensible Business Reporting Language): (i) Condensed Consolidated Statements of Income for the three months ended September 30, 2020 and 2019, (ii) Condensed Consolidated Balance Sheets as of September 30, 2020 and June 30, 2020, (iii) Condensed Consolidated Statement of Changes in Stockholders\u2019 Equity for the three months ended September 30, 2020 and 2019, (iv) Condensed Consolidated Statements of Cash Flows for the three months ended September 30, 2020 and 2019, and (iv) the Notes to Condensed Consolidated Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 937,
+    "end_line": 948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "Item 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nItem 4. MINE SAFETY DISCLOSURE\nNot Applicable.\nItem 5. OTHER INFORMATION\nNone.\nItem 6. EXHIBITS\n(a) Exhibits\nExhibit\nNumber",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nINTEGRATED BIOPHARMA, INC.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:     November 12, 2020",
+     "By: /s/ Christina Kay"
+    ],
+    [
+     "",
+     "Christina Kay,"
+    ],
+    [
+     "",
+     "Co-Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:     November 12, 2020",
+     "By: /s/ Riva Sheppard"
+    ],
+    [
+     "",
+     "  Riva Sheppard,"
+    ],
+    [
+     "",
+     "Co-Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date:     November 12, 2020",
+     "By: /s/ Dina L. Masi"
+    ],
+    [
+     "",
+     "  Dina L. Masi,"
+    ],
+    [
+     "",
+     "  Chief Financial Officer & Senior Vice President"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 955,
+    "end_line": 968
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Segment Information and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nINTEGRATED BIOPHARMA, INC.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

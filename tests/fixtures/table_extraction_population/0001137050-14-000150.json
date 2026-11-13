@@ -1,0 +1,4890 @@
+{
+ "accession": "0001137050-14-000150",
+ "cik": "0001449574",
+ "form": "10-K",
+ "filing_date": "2014-07-14",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ecrypt_10k2014final.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "000-53489",
+     "32-0201472"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "(Commission File Number)",
+     "(IRS Employer Identification Number)"
+    ],
+    [
+     "4750 Table Mesa Dr.\n\n\n\nBoulder CO, 80305",
+     "",
+     ""
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     ""
+    ],
+    [
+     "Registrant\u2019s telephone number, including area code: 1.866.204.6703",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended March 31, 2014\n[] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ______________\nEcrypt Technologies, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered under Section 12(b) of the Act:\nNone\nSecurities registered under Section 12(g) of the Act:\nCommon Stock, no par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act [] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the [ ] Yes [X] No\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(U.S. $)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "HIGH",
+     "LOW"
+    ],
+    [
+     "Quarter Ended March 31",
+     "$0.65",
+     "$0.022"
+    ],
+    [
+     "Quarter Ended June 30",
+     "$0.47",
+     "$0.2"
+    ],
+    [
+     "Quarter Ended September 30",
+     "$0.23",
+     "$0.13"
+    ],
+    [
+     "Quarter Ended December 31",
+     "$0.23",
+     "$0.12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2013",
+     "HIGH",
+     "LOW"
+    ],
+    [
+     "Quarter Ended March 31",
+     "$0.2",
+     "$0.12"
+    ],
+    [
+     "Quarter Ended June 30",
+     "$0.17",
+     "$0.1"
+    ],
+    [
+     "Quarter Ended September 30",
+     "$0.28",
+     "$0.05"
+    ],
+    [
+     "Quarter Ended December 31",
+     "$0.24",
+     "$0.12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2014",
+     "HIGH",
+     "LOW"
+    ],
+    [
+     "Quarter Ended March 31",
+     "$0.2",
+     "$0.08"
+    ]
+   ],
+   "caption_stack": [
+    "(U.S. $)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 245,
+    "end_line": 266
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": ""
+    },
+    "note": null
+   },
+   "prose_before": "The Company is not a party to any significant pending legal proceedings, and no such proceedings are known to be contemplated. No director, officer or affiliate of the Company, and no owner of record or beneficial owner of more than 5.0% of the securities of the Company, or any associate of any such director, officer or security holder is a party adverse to the Company or has a material interest adverse to the Company in reference to pending litigation.\nITEM 4.\nMINE SAFETY DISCLOSURES.\nNot Applicable.\nPART II\nITEM 5.\nMARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nMarket Information\nThe Company\u2019s shares are approved for trading on the OTCBB under the symbol \u201cECRY.\u201d The following table sets forth the high and low bid prices of our common stock (USD) for the last two fiscal years and subsequent interim period, as reported by the National Quotation Bureau and represents inter dealer quotations, without retail mark-up, mark-down or commission and may not be reflective of actual transactions:",
+   "prose_after": "Holders\nAs of July 7, 2014, there were 126,379,802 shares of common stock issued and outstanding and approximately 22 shareholders of record.\nDividends\nThe Company has not declared or paid any cash dividends on its common stock during the fiscal years ended March 31, 2014 or 2013. There are no restrictions on the common stock that limit our ability to pay dividends if declared by the Board of Directors and the loan agreements and general security agreements covering the Company\u2019s assets do not limit its ability to pay dividends. The holders of common stock are entitled to receive dividends when and if declared by the Board of Directors, out of funds legally available therefore and to share pro-rata in any distribution to the stockholders. Generally, the Company is not able to pay dividends if after payment of the dividends, it would be unable to pay its liabilities as they become due or if the value of the Company\u2019s assets, after payment of the liabilities, is less than the aggregate of the Company\u2019s liabilities and stated capital of all classes.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 221,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 271,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "15"
+    ],
+    [
+     "Balance Sheets",
+     "16 \u2013 17"
+    ],
+    [
+     "Statements of Operations",
+     "18"
+    ],
+    [
+     "Statement of Stockholders\u2019 Equity (Deficit)",
+     "19 \u2013 20"
+    ],
+    [
+     "Statements of Cash Flows",
+     "21 \u2013 22"
+    ],
+    [
+     "Notes to Financial Statements",
+     "23 \u2013 38"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 405,
+    "end_line": 422
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Off Balance Sheet Arrangements\nThe Company does not have any off-balance sheet arrangements.\nITEM 7A.\nQUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nNot Applicable.\nITEM 8.\nFINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nThe financial statements of the Company required by Article 8 of Regulation S-X are attached to this report.\nAUDITED FINANCIAL STATEMENTS\nFOR THE FISCAL YEARS ENDED MARCH 31, 2014 and 2013",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders\nEcrypt Technologies, Inc. (A Development Stage Company)\nWe have audited the accompanying balance sheets of Ecrypt Technologies, Inc. (A Development Stage Company) (the \u201cCompany\u201d) as of March 31, 2014 and 2013 and the related statements of operations, stockholders\u2019 equity and cash flows for the years then ended and from inception (April 19, 2007) to March 31, 2014. These financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 399,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ecrypt Technologies, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "March 31",
+     "",
+     "March 31,"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     "2013"
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "",
+     "",
+     "$       15,504",
+     "",
+     "$       10,863"
+    ],
+    [
+     "",
+     "TOTAL CURRENT ASSETS",
+     "",
+     "",
+     "15,504",
+     "",
+     "10,863"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "",
+     "7,826",
+     "",
+     "11,874"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "",
+     "",
+     "$       23,330",
+     "",
+     "$       22,737"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable and accrued liabilities",
+     "",
+     "",
+     "$       26,180",
+     "",
+     "$       28,063"
+    ],
+    [
+     "",
+     "Accounts payable-related party",
+     "",
+     "",
+     "13,200",
+     "",
+     "4,500"
+    ],
+    [
+     "",
+     "Accrued interest on loans",
+     "",
+     "",
+     "85,816",
+     "",
+     "11,141"
+    ],
+    [
+     "",
+     "Accrued interest on loans-related party",
+     "",
+     "",
+     "193,764",
+     "",
+     "125,167"
+    ],
+    [
+     "",
+     "Notes payable-related party",
+     "",
+     "",
+     "553,000",
+     "",
+     "553,000"
+    ],
+    [
+     "",
+     "Notes payable",
+     "",
+     "",
+     "659,854",
+     "",
+     "99,964"
+    ],
+    [
+     "      TOTAL CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "1,531,814",
+     "",
+     "821,835"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes payable",
+     "",
+     "",
+     "100,000",
+     "",
+     "299,890"
+    ],
+    [
+     "",
+     "Note payable-related party",
+     "",
+     "",
+     "5,500",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Accrued Interest on loans",
+     "",
+     "",
+     "8,913",
+     "",
+     "14,789"
+    ],
+    [
+     "",
+     "Accrued Interest on loan-related party",
+     "",
+     "",
+     "417",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "TOTAL LONG TERM LIABILITIES",
+     "",
+     "",
+     "114,830",
+     "",
+     "314,679"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "",
+     "",
+     "1,646,644",
+     "",
+     "1,136,514"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred stock (10,000,000 Shares Authorized; Par Value $.0001",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "5,000,000 and 0 shares issued and outstanding as at March 31, 2014 and March 31, 2013)",
+     "",
+     "500",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "Common stock (500,000,000 Shares Authorized; No Par Value;",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "135,979,802 and 135,811,052 shares issued and outstanding as at March 31, 2014 and March 31, 2013)",
+     "",
+     "1,029,161",
+     "",
+     "999,536"
+    ],
+    [
+     "",
+     "Additional paid in capital",
+     "",
+     "",
+     "6,429,500",
+     "",
+     "180,000"
+    ],
+    [
+     "",
+     "Stock subscription payable",
+     "",
+     "",
+     "8,812",
+     "",
+     "14,625"
+    ],
+    [
+     "",
+     "Deficit accumulated during the development stage",
+     "",
+     "",
+     "(9,091,287)",
+     "",
+     "(2,307,938)"
+    ]
+   ],
+   "caption_stack": [
+    "Ecrypt Technologies, Inc.",
+    "(A Development Stage Company)",
+    "BALANCE SHEETS",
+    "(Audited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 510
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Ecrypt Technologies, Inc. (A Development Stage Company) as of March 31, 2014 and 2013 and the results of their operations and their cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered losses from operations, which raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ De Joya Griffith, LLC\nHenderson, Nevada\nJuly 10, 2014\nCorporate Headquarters:\nDe Joya Griffith, LLC\n2580 Anthem Village Drive, Henderson, NV 89052 Phone: (702) 563-1600 Fax: (702) 920-8049",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "  TOTAL STOCKHOLDERS' DEFICIT",
+     "",
+     "(1,623,314)",
+     "",
+     "(1,113,777)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "$        23,330",
+     "",
+     "$          22,737"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 513,
+    "end_line": 523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ecrypt Technologies, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "For the year ended March 31, 2014",
+     "",
+     "For the year ended March 31, 2013",
+     "",
+     "Cumulative Amount from Inception (April 19, 2007) to March 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Sales",
+     "",
+     "$                    1,270",
+     "",
+     "$                    2,499",
+     "",
+     "$                 100,599"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortization and depreciation",
+     "",
+     "4,048",
+     "",
+     "6,605",
+     "",
+     "73,130"
+    ],
+    [
+     "",
+     "Advertisment and promotion",
+     "",
+     "19,953",
+     "",
+     "4,934",
+     "",
+     "375,974"
+    ],
+    [
+     "",
+     "General and administrative",
+     "",
+     "288,73",
+     "",
+     "458,136",
+     "",
+     "1,823,782"
+    ],
+    [
+     "",
+     "Professional fees",
+     "",
+     "84,066",
+     "",
+     "53,586",
+     "",
+     "369,802"
+    ],
+    [
+     "      TOTAL OPERATING EXPENSES",
+     "",
+     "",
+     "396,806",
+     "",
+     "523,261",
+     "",
+     "2,642,688"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "",
+     "(395,536)",
+     "",
+     "(520,762)",
+     "",
+     "(2,542,089)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSES)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Interest expense",
+     "",
+     "(68,799)",
+     "",
+     "(24,865)",
+     "",
+     "(107,337)"
+    ],
+    [
+     "",
+     "Interest expense-related party",
+     "",
+     "(69,015)",
+     "",
+     "(61,609)",
+     "",
+     "(194,182)"
+    ],
+    [
+     "",
+     "Financing Cost",
+     "",
+     "(6,250,000)",
+     "",
+     "-",
+     "",
+     "(6,250,000)"
+    ],
+    [
+     "",
+     "Gain on sale of fixed asset",
+     "",
+     "-",
+     "",
+     "(1,478)",
+     "",
+     "(878)"
+    ],
+    [
+     "",
+     "Interest income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,199"
+    ],
+    [
+     "",
+     "TOTAL OTHER INCOME (EXPENSES)",
+     "",
+     "(6,387,813)",
+     "",
+     "(87,953)",
+     "",
+     "(6,549,198)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "",
+     "$          (6,783,349)",
+     "",
+     "$             (608,715)",
+     "",
+     "$            (9,091,287)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE SHARES OUTSTANDING",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Basic",
+     "",
+     "135,920,110",
+     "",
+     "135,731,292",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Basic",
+     "",
+     "(0.05)",
+     "",
+     "(0.00)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Ecrypt Technologies, Inc.",
+    "(A Development Stage Company)",
+    "STATEMENTS OF OPERATIONS",
+    "(Audited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 590
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 591,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ecrypt Technologies, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "For the Period from Inception (April 19, 2007) to March 31, 2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Shares",
+     "",
+     "",
+     "",
+     "Common Shares",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Stock Subscriptions",
+     "",
+     "Deficit Accumulated During Development",
+     "",
+     "Total Stockholders' Equity"
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "Amount",
+     "",
+     "Number",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Payable",
+     "",
+     "Stage",
+     "",
+     "(Deficit)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 19, 2007 (Date of Inception)",
+     "-",
+     "",
+     "$          -",
+     "",
+     "-",
+     "",
+     "$            -",
+     "",
+     "$            -",
+     "",
+     "$                 -",
+     "",
+     "$               -",
+     "",
+     "$                 -"
+    ],
+    [
+     "Shares issued",
+     "-",
+     "",
+     "-",
+     "",
+     "116,015,968",
+     "",
+     "55,130",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "55,130"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(32,505)",
+     "",
+     "(32,505)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2008",
+     "-",
+     "",
+     "-",
+     "",
+     "116,015,968",
+     "",
+     "55,130",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(32,505)",
+     "",
+     "22,625"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock subscriptions",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,875",
+     "",
+     "-",
+     "",
+     "4,875"
+    ],
+    [
+     "Shares issued",
+     "-",
+     "",
+     "-",
+     "",
+     "17,502,248",
+     "",
+     "151,572",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "151,572"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(92,111)",
+     "",
+     "(92,111)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2009",
+     "-",
+     "",
+     "-",
+     "",
+     "133,518,216",
+     "",
+     "206,702",
+     "",
+     "-",
+     "",
+     "4,875",
+     "",
+     "(124,616)",
+     "",
+     "86,961"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock cancelled",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,875)",
+     "",
+     "-",
+     "",
+     "(4,875)"
+    ],
+    [
+     "Stock subscriptions",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "400,000",
+     "",
+     "-",
+     "",
+     "400,000"
+    ],
+    [
+     "Shares issued",
+     "-",
+     "",
+     "-",
+     "",
+     "40,455",
+     "",
+     "32,768",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "32,768"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(184,480)",
+     "",
+     "(184,480)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2010",
+     "-",
+     "",
+     "-",
+     "",
+     "133,558,671",
+     "",
+     "239,470",
+     "",
+     "-",
+     "",
+     "400,000",
+     "",
+     "(309,096)",
+     "",
+     "330,374"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for cash",
+     "-",
+     "",
+     "-",
+     "",
+     "952,381",
+     "",
+     "400,000",
+     "",
+     "-",
+     "",
+     "(400,000)",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Ecrypt Technologies, Inc.",
+    "(A Development Stage Company)",
+    "STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)",
+    "For the Period from Inception (April 19, 2007) to March 31, 2014",
+    "(Audited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 593,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 591,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Shares issued for compensation",
+     "-",
+     "",
+     "-",
+     "",
+     "287,500",
+     "",
+     "63,750",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "63,750"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(693,906)",
+     "",
+     "(693,906)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2011",
+     "-",
+     "",
+     "-",
+     "",
+     "134,798,552",
+     "",
+     "703,220",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,003,002)",
+     "",
+     "(299,782)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options issued",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "45,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "45,000"
+    ],
+    [
+     "Shares issued for compensation",
+     "-",
+     "",
+     "-",
+     "",
+     "612,500",
+     "",
+     "112,441",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "112,441"
+    ],
+    [
+     "Stock subscription payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "178,625",
+     "",
+     "",
+     "",
+     "178,625"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(696,221)",
+     "",
+     "(696,221)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2012",
+     "-",
+     "",
+     "-",
+     "",
+     "135,411,052",
+     "",
+     "815,661",
+     "",
+     "45,000",
+     "",
+     "178,625",
+     "",
+     "(1,699,223)",
+     "",
+     "(659,937)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options issued",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "135,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "135,000"
+    ],
+    [
+     "Shares issued for compensation",
+     "-",
+     "",
+     "-",
+     "",
+     "362,500",
+     "",
+     "178,625",
+     "",
+     "-",
+     "",
+     "(178,625)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Shares issued to director",
+     "-",
+     "",
+     "-",
+     "",
+     "37,500",
+     "",
+     "5,250",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,250"
+    ],
+    [
+     "Stock subscription payable",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "14,625",
+     "",
+     "-",
+     "",
+     "14,625"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(608,715)",
+     "",
+     "(608,715)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2013",
+     "-",
+     "",
+     "-",
+     "",
+     "135,811,052",
+     "",
+     "999,536",
+     "",
+     "180,000",
+     "",
+     "14,625",
+     "",
+     "(2,307,938)",
+     "",
+     "(1,113,777)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock issued",
+     "5,000,000",
+     "",
+     "500",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "6,249,500",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "6,250,000"
+    ],
+    [
+     "Shares issued for compensation",
+     "-",
+     "",
+     "-",
+     "",
+     "168,750",
+     "",
+     "29,625",
+     "",
+     "-",
+     "",
+     "(14,625)",
+     "",
+     "-",
+     "",
+     "15,000"
+    ],
+    [
+     "Stock payable",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "8,812",
+     "",
+     "-",
+     "",
+     "8,812"
+    ],
+    [
+     "Net loss for the period",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(6,783,349)",
+     "",
+     "(6,783,349)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2014",
+     "5,000,000",
+     "",
+     "$       500",
+     "",
+     "135,979,802",
+     "",
+     "$1,029,161",
+     "",
+     "$6,429,500",
+     "",
+     "$            8,812",
+     "",
+     "$(9,091,287)",
+     "",
+     "$ (1,623,314)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 637,
+    "end_line": 675
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ecrypt Technologies, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(A Development Stage Company)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Audited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the year ended March 31, 2014",
+     "",
+     "For the year ended March 31, 2013",
+     "",
+     "Cumulative Amount from Inception (April 19, 2007) to March 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$ (6,783,349)",
+     "",
+     "$   (608,715)",
+     "",
+     "$        (9,091,287)"
+    ],
+    [
+     "",
+     "Adjustments for non-cash items:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Amortization and depreciation",
+     "",
+     "",
+     "",
+     "",
+     "4,048",
+     "",
+     "6,605",
+     "",
+     "73,130"
+    ],
+    [
+     "",
+     "",
+     "Loss on disposal of equipment",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "1,478",
+     "",
+     "1,478"
+    ],
+    [
+     "",
+     "",
+     "Preferred stock issued for financing costs",
+     "",
+     "6,250,000",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "6,250,000"
+    ],
+    [
+     "",
+     "",
+     "Stock issued for compensation",
+     "",
+     "",
+     "",
+     "",
+     "23,812",
+     "",
+     "135,000",
+     "",
+     "398,505"
+    ],
+    [
+     "",
+     "",
+     "Stock options issued for compensation",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "19,875",
+     "",
+     "180,000"
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Accounts payable and accrued liabilities",
+     "",
+     "(1,883)",
+     "",
+     "",
+     "",
+     "",
+     "11,179",
+     "",
+     "26,180"
+    ],
+    [
+     "",
+     "",
+     "Accounts payable-related party",
+     "",
+     "",
+     "",
+     "",
+     "8,700",
+     "",
+     "(12,817)",
+     "",
+     "13,200"
+    ],
+    [
+     "",
+     "",
+     "Interest on note payable",
+     "",
+     "",
+     "",
+     "",
+     "68,798",
+     "",
+     "24,865",
+     "",
+     "94,729"
+    ],
+    [
+     "",
+     "",
+     "Interest on loan-related party",
+     "",
+     "",
+     "",
+     "",
+     "69,015",
+     "",
+     "61,610",
+     "",
+     "203,150"
+    ],
+    [
+     "",
+     "",
+     "Prepaid expenses",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(360,859)",
+     "",
+     "(360,920)",
+     "",
+     "(1,850,916)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "License",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,000)"
+    ],
+    [
+     "",
+     "Computer equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(11,526)"
+    ],
+    [
+     "",
+     "Computer software",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(14,446)"
+    ],
+    [
+     "",
+     "Equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "(1,304)",
+     "",
+     "(46,464)"
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "(1,304)",
+     "",
+     "(82,436)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common stock issuance",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "206,702"
+    ],
+    [
+     "",
+     "Stock subscriptions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "400,000"
+    ],
+    [
+     "",
+     "Proceeds from convertible loan-related party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "23,800"
+    ],
+    [
+     "",
+     "Proceeds from note payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "360,000",
+     "",
+     "299,890",
+     "",
+     "759,854"
+    ],
+    [
+     "",
+     "Proceeds from loan-related party",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,500",
+     "",
+     "-",
+     "",
+     "558,500"
+    ],
+    [
+     "",
+     "Paid in capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "365,500",
+     "",
+     "299,890",
+     "",
+     "1,948,856"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,641",
+     "",
+     "",
+     "(62,334)",
+     "",
+     "15,504"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Beginning of year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,863",
+     "",
+     "",
+     "73,197",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Ecrypt Technologies, Inc.",
+    "(A Development Stage Company)",
+    "STATEMENTS OF CASH FLOWS",
+    "(Audited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 678,
+    "end_line": 733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  End of year",
+     "",
+     "",
+     "",
+     "$           15,504",
+     "",
+     "$        10,863",
+     "",
+     "$                15,504"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares issued in settlement of convertible note",
+     "",
+     "",
+     "$                     -",
+     "",
+     "$                 -",
+     "",
+     "$                32,768"
+    ],
+    [
+     "",
+     "Common stock issued to satisfy common stock payable",
+     "",
+     "",
+     "$           14,625",
+     "",
+     "$     183,875",
+     "",
+     "$              598,925"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 736,
+    "end_line": 748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "1.\nNature of Operations\nEcrypt Technologies Inc. (A Development Stage Company), a Colorado corporation (\u201cthe Company\u201d), was incorporated on April 19, 2007. The Company\u2019s business operations are oriented around the marketing and distribution of proprietary and allied security, defense and information security software, hardware and services. Products include software, hardware and services, and span a diverse variety of industries including, but not limited to, email security, user authentication, robotics, and cyber breach protection.\n2.\nSignificant Accounting Policies\nBasis of Presentation\nThe financial statements and accompanying notes are prepared in accordance with generally accepted accounting principles of the United States of America (\u201cUS GAAP\u201d).\nIn the opinion of management, all adjustments (which include normal recurring adjustments) necessary to present fairly the financial position as of March 31, 2014, and the results of operations and cash flows presented herein have been included in the financial statements. The Company has limited operations and in accordance with FASB ASC 915-10, \u201cDevelopment Stage Entities\u201d, the Company is considered a development stage company. The financial statements should be read in conjunction with the Form 10-K for the year ended March 31, 2014 of the Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 734,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 749,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Computer equipment",
+     "2 years straight line basis"
+    ],
+    [
+     "Computer software",
+     "1 years straight line basis"
+    ],
+    [
+     "Equipment",
+     "5 years straight line basis"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 793,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s ability to continue as a going concern is dependent upon its ability to generate profitable operations in the future and/or obtain the necessary financing to meet its obligations and repay its liabilities arising from normal business operations when they come due. Management has plans to seek additional capital through a private placement and public offering of its common stock. These plans, if successful, will mitigate the factors which raise substantial doubt about the Company\u2019s ability to continue as a going concern. These financial statements do not include any adjustments relating to the recoverability and classification of recorded asset amounts, or amounts and classification of liabilities that might result from this uncertainty.\nCash, Cash Equivalents and Investments\nCash equivalents consist of highly liquid investments with original maturities at the date of purchase of three months or less. Short term investments mature in less than one year from the balance sheet date.\nThe Company places its cash and short-term investments with financial institutions with high credit quality investments in accordance with its investment policy designed to protect the principal investment. Therefore, the Company believes that its exposure due to concentration of credit risk is minimal and has not experienced credit losses on investments in these instruments to date.\nProperty and Equipment\nProperty and Equipment are stated at cost less accumulated depreciation. Depreciation is calculated using the straight line basis over their estimated useful lives:",
+   "prose_after": "Revenue Recognition\nProduct revenue and miscellaneous income are recognized as earned.\nThe Company recognizes revenue and gains when earned and related costs of sales and expenses when incurred. The Company recognizes revenue in accordance with Accounting Standards Codification Section 605-10-599, Revenue Recognition, Overall, SEC Materials (\"Section 605-10-599\"). Section 605-10-599 requires that four basic criteria must be met before revenue can be recognized: (1) persuasive evidence of an arrangement exists; (2) delivery has occurred or services rendered; (3) the fee is fixed and determinable; and (4) collectability is reasonably assured. Cost of products sold consists of the cost of the purchased goods and labor related to the corresponding sales transaction. When a right of return exists, the Company defers revenues until the right of return expires. The Company recognizes revenue from services at the time the services are completed.\nIncome Taxes\nThe Company accounts for income taxes as outlined in the Accounting Standards Codification (\"ASC\") 740 \"Income Taxes\u201d. Under ASC Topic 740, deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. Under ASC Topic 740, the effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that includes the enactment date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended\n\n\n\nMar. 31, 2014",
+     "",
+     "",
+     "Twelve Months Ended\n\n\n\nMar. 31, 2013",
+     ""
+    ],
+    [
+     "Net loss",
+     "$ (6,783,349)",
+     "",
+     "",
+     "$ (608,715)",
+     ""
+    ],
+    [
+     "Weighted-average number of shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "135,920,110",
+     "",
+     "",
+     "135,731,292",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "(0.05)",
+     "",
+     "",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 859,
+    "end_line": 872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The measurement currency of the Company is the U.S. dollar. Transactions in foreign currencies are translated at the exchange rate in effect at the transaction date. Monetary assets and liabilities denominated in other than the measurement currency are translated at the exchange rates in effect at the balance sheet date. The resulting exchange gains and losses are recognized in earnings.\nNet Earnings (Loss) per Share\nBasic and diluted net loss per share information is presented under the requirements of ASC Topic 260, Earnings per Share. Basic net loss per share is computed by dividing net loss by the weighted average number of shares of common stock outstanding for the period, less shares subject to repurchase. Diluted net loss per share reflects the potential dilution of securities by adding other common stock equivalents, including stock options, shares subject to repurchase, warrants and convertible notes in the weighted-average number of common shares outstanding for a period, if dilutive. The computation of earnings (loss) per share is as follows:",
+   "prose_after": "3.\nRecent Accounting Pronouncements\nThe Company has adopted all recently issued accounting pronouncements. The adoption of the accounting pronouncements, including those not yet effective, is not anticipated to have a material effect on the financial position or results of operations of the Company.\n4.\nProperty and Equipment\nThe components of the Company\u2019s equipment are presented below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Mar. 31, 2014 Accumulated",
+     "Mar. 31, 2014",
+     "Mar. 31, 2013"
+    ],
+    [
+     "",
+     "Cost",
+     "Depreciation",
+     "Net",
+     "Net"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "$ 9,812",
+     "$ 9,812",
+     "$ 0",
+     "$ 0"
+    ],
+    [
+     "Computer software",
+     "14,445",
+     "14,445",
+     "0",
+     "0"
+    ],
+    [
+     "Equipment",
+     "38,483",
+     "30,657",
+     "7,826",
+     "11,874"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$ 62,740",
+     "$ 54,914",
+     "$ 7,826",
+     "$ 11,874"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 885,
+    "end_line": 899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "3.\nRecent Accounting Pronouncements\nThe Company has adopted all recently issued accounting pronouncements. The adoption of the accounting pronouncements, including those not yet effective, is not anticipated to have a material effect on the financial position or results of operations of the Company.\n4.\nProperty and Equipment\nThe components of the Company\u2019s equipment are presented below:",
+   "prose_after": "Depreciation expense for the twelve months ended Mar. 31, 2014 and 2013 was $4,048 and $6,605 respectively.\n5.\nStockholders\u2019 Deficit\na)\nAuthorized:\n500,000,000 Common shares with no par value\n10,000,000 Preferred shares with $0.0001 par value; 5,000,000 Preferred shares issued and outstanding:\nDuring the year ended March 31, 2008, the Company effected the following stock transactions:\nThe Company issued a total of 116,015,968 shares of the Company\u2019s no par value common stock in exchange for cash of $55,130.\nDuring the year ended March 31, 2009 the Company effected the following stock transactions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 857,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number\n\n\n\nof Options",
+     "",
+     "Weighted-Average\n\n\n\nExercise Price per share",
+     "",
+     "Weighted- Average\n\n\n\nRemaining Life (Years)"
+    ],
+    [
+     "Outstanding at as at 03.31.2013",
+     "",
+     "300,000",
+     "",
+     "$      0.30",
+     "",
+     "9.88"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "$           -",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$       NA",
+     "",
+     "NA"
+    ],
+    [
+     "Cancelled",
+     "",
+     "-",
+     "",
+     "$       NA",
+     "",
+     "NA"
+    ],
+    [
+     "Outstanding as at 03.31.2014",
+     "",
+     "300,000",
+     "",
+     "$      0.30",
+     "",
+     "8.88"
+    ],
+    [
+     "Exercisable at 03.31.2014",
+     "",
+     "300,000",
+     "",
+     "$      0.30",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1022,
+    "end_line": 1034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "On February 16, 2012 the Company granted a non-qualified stock option to its newly appointed director, Thomas Trkla as compensation for his services. The director is entitled to purchase a total of three hundred thousand (300,000) shares of restricted common stock for a price equal to $0.30 per share (Exercise Price), exercisable over a ten-year period thereafter. The option shall be vested during the 12 month period. As to the total number of Shares with respect to which the Option is granted, the Option shall be exercisable as follows: (i) 25% of the Option in the aggregate may be exercised upon the mutual execution of this Agreement (ii) 50% of the Option in the aggregate may be exercised on or after the four month anniversary of the Grant Date; (iii) 75% of the Option in the aggregate may be exercised on or after the eight month anniversary of the Grant Date; and (iv) 100% of the Option in the aggregate may be exercised on or after the twelve month anniversary of the Grant Date (the twelve month period commencing on the Grant Date and ending on the twelve month anniversary of the Grant Date being referred to as the \u201cVesting Period\u201d). As of March 31, 2014, the director has not exercised any rights. The total fair value of these options at the date of grant was estimated to be $180,000 and was determined using the Black-Scholes option pricing model with an expected life of 10 years, a risk free interest rate of .99%, a dividend yield of 0% and expected volatility\nof 419%. Out of this $180,000 was recorded as stock based compensation expense through March 31, 2014 based on three hundred thousand (300,000) options vested.",
+   "prose_after": "7.\nLoan-Related Party\nThe Company issued on June 27, 2013 a $5,500 unsecured note payable to a shareholder. The note bears interest at 10%, compounded annually, matures in two years on June 27, 2015.\nThe Company issued on January 11, 2012 a $38,000 unsecured note payable to a shareholder. The note bears interest at 10%, compounded annually, matures in two years on January 11, 2014. On February 5, 2014 the Company secured a note payable extension through May 31, 2014. On June 26, 2014, the Company secured a note payable extension through November 30, 2014 with no change in original terms of the agreement.\nThe Company issued on December 6, 2011 a $20,000 unsecured note payable to a shareholder. The note bears interest at 10%, compounded annually, matures in two years on December 6, 2013. On February 5, 2014 the Company secured a note payable extension through May 31, 2014. On June 26, 2014, the Company secured a note payable extension through November 30, 2014 with no change in original terms of the agreement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "2013"
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operations",
+     "",
+     "$       (2,373,407)",
+     "",
+     "$        (614,549)"
+    ],
+    [
+     "Less: Change in valuation allowance",
+     "",
+     "2,373,407",
+     "",
+     "614,549"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net refundable amount",
+     "",
+     "$                       -",
+     "",
+     "$                       -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1145,
+    "end_line": 1156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "On April 15, 2011, pursuant to a written consent in lieu of a meeting, a majority of the Company\u2019s shareholders approved the Program. The purpose of the Program is to attract and retain key employees, consultants and other persons, and to provide such key individuals with an additional incentive to contribute to the success of the Company. In order to maintain flexibility in the award of stock benefits, the Program constitutes a single \u201comnibus\u201d plan, but is composed of three parts. The first part is the Incentive Stock Option Plan (\u201cIncentive Option Plan) which provides grants of incentive stock options under Section 422A of the Internal Revenue Code of 1986, as amended. The second part is the Nonqualified Stock Option Plan (\u201cNonqualified Option Plan\u201d) which provides grants of nonqualified stock options. The third part is the Restricted Shares Plan (\u201cRestricted Plan\u201d) which provides grants of restricted shares of Company common stock. The Incentive Option Plan, the Nonqualified Option Plan and the Restricted Plan respectively comprise Plan I, Plan II, and Plan III of the Program.\nAs of March 31, 2014, there are 2,042,296 unissued shares left in the program.\n11.\nIncome Taxes\nThe Company has losses carried forward for income tax purposes for March 31, 2014 and 2013. There are no current or deferred tax expenses for the period ended March 31, 2014 or 2013 due to the Company\u2019s loss position. The Company has fully reserved for any benefits of these losses. The deferred tax consequences of temporary differences in reporting items for financial statement and income tax purposes are recognized, as appropriate. Realization of the future tax benefits related to the deferred tax assets is dependent on many factors, including the Company\u2019s ability to generate taxable income within the net operating loss carryforward period. Management has considered these factors in reaching its conclusion as to the valuation allowance for financial reporting purposes.\nThe provision for refundable federal income tax consists of the following:",
+   "prose_after": "The composition of the Company\u2019s deferred tax assets as at March 31, 2014 and 2013 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "REPEATING_HEADER",
+     "id": 50,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2014",
+     "",
+     "2013"
+    ],
+    [
+     "Net operating loss carry forward",
+     "",
+     "$   (8,537,019)",
+     "",
+     "$      (1,755,855)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "35%",
+     "",
+     "35%"
+    ],
+    [
+     "Effective income tax rate",
+     "",
+     "0%",
+     "",
+     "0%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "(2,987,956)",
+     "",
+     "(614,549)"
+    ],
+    [
+     "Less: Valuation allowance",
+     "",
+     "2,987,956",
+     "",
+     "614,549"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "$                  --",
+     "",
+     "$                  --"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1159,
+    "end_line": 1174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The composition of the Company\u2019s deferred tax assets as at March 31, 2014 and 2013 is as follows:",
+   "prose_after": "The potential income tax benefit of these losses has been offset by a full valuation allowance. As at March 31, 2014 and March 31, 2013, the Company has an unused operating loss carry-forward balance of approximately $8,537,019 and $1,755,855 respectively, which begins to expire in 2027.\n12.\nSubsequent Events\nOn June 12, 2014 the Company entered into an agreement with Gabriel Rosu for the surrender and cancellation of 9,600,000 restricted shares of common stock issued to Gabriel Rosu. At the time of formation Gabriel Rosu was issued 2,400,000 shares of common stock of the Company. On November 13, 2011 the Company completed a 4-for-1 forward stock split, as a result of which the 2,400,000 shares of common stock were increased to 9,600,000.\nOn June 17, 2014, Brad Lever resigned as the Chief Executive Officer of the Company. He will continue to serve as the Chief Financial Officer and Director of the Company and will also serve as the Chief Operating Officer.\nOn June 17, 2014, the Board of Directors of the Company approved the Company\u2019s engagement of Thomas Cellucci to serve as the Chief Executive Officer. He will also continue to server as Director of the Company. In conjunction with his employment, the Company and Thomas Cellucci entered into a Restricted Shares Agreement which grants him up to a total of up to 18,965,408 shares of common stock, which shares shall be issued as follows: (i) 9,482,704 shares of common stock pursuant to the terms and conditions of this Restricted Shares Agreement; and (ii) 9,482,704 shares of common stock pursuant to a restricted shares agreement once the Company either (a) amends its existing Stock Compensation Program to increase the number of maximum authorized shares which may be issued under the Program, or (b) adopts a new stock compensation program. Additionally Thomas Celluci may be awarded an annual discretionary performance bonus for his services rendered as the Chief Executive Officer; the amount of the performance bonus is at the discretion of the Company\u2019s Board of Directors. His employment is At-Will and may be terminated at any time by the Company or Mr. Celluci.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1135,
+     "token": "REPEATING_HEADER",
+     "id": 50,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     "Director or Officer Since"
+    ],
+    [
+     "Brad Lever (1)",
+     "39",
+     "Director, Chief Executive Officer, Chief Financial Officer",
+     "April 2007"
+    ],
+    [
+     "Gabriel Rosu (2)",
+     "41",
+     "Chief Technology Officer",
+     "April 2007"
+    ],
+    [
+     "Curt Weldon",
+     "66",
+     "Chairman of the Board of Directors",
+     "February 9, 2011"
+    ],
+    [
+     "Jay M. Cohen",
+     "67",
+     "Director",
+     "February 15, 2011"
+    ],
+    [
+     "Dr Erik G. Mettala",
+     "64",
+     "Director",
+     "July 5, 2011"
+    ],
+    [
+     "Thomas N. Trkla",
+     "54",
+     "Director",
+     "February 22, 2012"
+    ],
+    [
+     "Dr. Thomas A. Cellucci (3)",
+     "56",
+     "Director",
+     "March 27, 2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1271,
+    "end_line": 1290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "There was no significant change in the Company's internal control over financial reporting during the last fiscal quarter, that has materially affected, or is reasonably likely to materially affect, the Company's internal control over financial reporting.\nITEM 9B.\nOTHER INFORMATION.\nNone.\nPART III\nITEM 10.\nDIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE.\nDirectors, Executive Officers and Significant Employees\nThe following table sets forth, as of March 31, 2014, the respective positions and ages of our directors and executive officers of the Company. Each director has been elected to hold office until the next annual meeting of shareholders and thereafter until his successor is elected. Vacancies in the existing Board of Directors are filled by majority vote of the remaining Directors. There are no agreements or understandings for any officer or director to resign at the request of another person and no officer or director is acting on behalf of or will act at the direction of any other person.",
+   "prose_after": "(1)\nAs disclosed on Form 8-K filed with the Secuities and Exchange Commision on June 17, 2014, Brad Lever resigned as the Chief Executive Officer and became the Chief Operating Officer. At this same time Dr. Thomas A. Cellucci assumed the role of Chief Executive Officer. Mr. Lever will also continue to serve as the Chief Financial Officer and Director.\n(2)\nOn June 12, 2014, Gabe Rosu ceased to serve as the Company\u2019s Chief Technology Officer.\n(3)\nAs disclosed on Form 8-K filed with the Secuities and Exchange Commision on June 17, 2014, Dr. Thomas A. Cellucci became the Chief Executive Officer on June 17, 2014.\nBiographical Information\nMr. Brad Lever \u2013 Mr. Brad Lever (\u201cMr. Lever\u201d) currently serves as Director of the Company, as well as the Company\u2019s Chief Operating Officer, Chief Financial Officer, President, Director of Sales and Marketing, and Director of Strategic Alliances and Investor Relations; he has served in these capacities since the Company\u2019s inception. Mr. Lever\u2019s core functionalities are to coordinate team efforts, manage sales and marketing, and aid in the development of services and solutions which cater to the marketplace. In addition to the work that Mr. Lever performs with the Registrant, since 2004, Mr. Lever has worked in enterprise sales for BCE, a telecommunications company, focusing on new acquisitions and providing wireless data solutions. From 2003 to 2004, Mr. Lever was a sales executive with Sophos, Inc., a company that provides anti-virus software solutions to businesses. Mr. Brad Lever is a member of the IAPP (International Association of Privacy Professionals).",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1269,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1309,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and\n\n\n\nPrincipal Position",
+     "Year",
+     "Salary\n\n\n\n($)",
+     "Bonus\n\n\n\n($)",
+     "Stock\n\n\n\nAward(s)\n\n\n\n($)",
+     "Option\n\n\n\nAward(s)\n\n\n\n($)",
+     "Non-Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nCompensation\n\n\n\n(#)",
+     "Non-qualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\nEarnings\n\n\n\n($)",
+     "All other\n\n\n\nCompensation\n\n\n\n($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Brad Lever, CEO (1)",
+     "2014",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "2013",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "2012",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "2011",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "2010",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "2009",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "Gabriel Rosu,\n\n\n\nChief Technology Officer (2)",
+     "2014",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "2013",
+     "$23,076.67",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$23,076.67"
+    ],
+    [
+     "",
+     "2012",
+     "$95,000",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$5521.82",
+     "$101,321.86"
+    ],
+    [
+     "",
+     "2011",
+     "$91,041",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$5,936.10",
+     "$96,977.10"
+    ],
+    [
+     "",
+     "2010",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$ 5,742",
+     "$5,742"
+    ],
+    [
+     "",
+     "2009",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1389,
+    "end_line": 1421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "The Company has adopted a code of ethics, as required by the rules of the SEC, a copy of the Company\u2019s code of ethics was filed as Exhibit 14.1 to Form 10-K for the fiscal year ended March 31, 2010 filed with the Securities and Exchange Commission on July 13, 2010 and is hereby incorporated by reference. The code of ethics applies to all of the Company\u2019s senior financial officers. The code of ethics, and any amendments to, or waivers from, the code of ethics, is available in print, at no charge, to any stockholder who requests such information.\nITEM 11.\nEXECUTIVE COMPENSATION.\nExecutive Compensation\nThe following table sets forth, for the years indicated, all compensation paid, distributed or accrued for services, including salary and bonus amounts, rendered in all capacities by the Company\u2019s chief executive officer , chief financial officer and all other executive officers who received or are entitled to receive remuneration in excess of $100,000 during the stated periods.\nSummary Compensation Table \u00ad",
+   "prose_after": "(1)\nAs disclosed on Form 8-K filed with the Secuities and Exchange Commision on June 17, 2014, Brad Lever resigned as the Chief Executive Officer and became the Chief Operating Officer. Mr. Lever will also continue to serve as the Chief Financial Officer and Director.\n(2)\nOn June 12, 2014, Gabe Rosu ceased to serve as the Company\u2019s Chief Technology Officer.\nOption Grants in Last Fiscal Year\nThere were no options granted to any of the named executive officers during the fiscal year ended March 31, 2014.\nEquity Compensation Plan Information\nAs disclosed on Form 8-K filed with the Securities and Exchange Commission on April 20, 2011, on April 12, 2011, subject to shareholder approval, the Board of Directors of Ecrypt Technologies, Inc. (the \u201cCompany\u201d) approved the adoption of the Ecrypt Technologies, Inc. Stock Compensation Program (the \u201cProgram\u201d) under which 13,500,000 shares have been reserved for purposes of possible future issuance of incentive stock options, non-qualified stock options, and restricted stock grants to employees, directors and certain key individuals. On April 15, 2011, pursuant to a written consent in lieu of a meeting, a majority of the Company\u2019s shareholders approved the Program. The purpose of the Program is to attract and retain key employees, consultants and other persons, and to provide such key individuals with an additional incentive to contribute to the success of the Company. In order to maintain flexibility in the award of stock benefits, the Program constitutes a single \u201comnibus\u201d plan, but is composed of three parts. The first part is the Incentive Stock Option Plan (\u201cIncentive Option Plan) which provides grants of incentive stock options under Section 422A of the Internal Revenue Code of 1986, as amended. The second part is the Nonqualified Stock Option Plan (\u201cNonqualified Option Plan\u201d) which provides grants of nonqualified stock options. The third",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1385,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1438,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change in",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fees",
+     "",
+     "",
+     "",
+     "Pension",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Earned",
+     "",
+     "",
+     "Non-Equity",
+     "Value and",
+     "",
+     ""
+    ],
+    [
+     "",
+     "And",
+     "",
+     "",
+     "Incentive",
+     "Non-qualified",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Paid in",
+     "Stock",
+     "Option",
+     "Plan",
+     "Compensation",
+     "All other",
+     ""
+    ],
+    [
+     "Name and",
+     "Cash",
+     "Award(s)",
+     "Award(s)",
+     "Compensation",
+     "Earnings",
+     "Compensation",
+     "Total"
+    ],
+    [
+     "Principal Position",
+     "($)",
+     "($)",
+     "($)",
+     "(#)",
+     "($)",
+     "($)",
+     "($)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brad Lever",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "Curt Weldon",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jay Cohen",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Erik Mettala",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thmas Trkla",
+     "$nil",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$nil"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Matthew Johnson (1)",
+     "$nil",
+     "$9,000 (1)",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$9,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas A. Cellucci",
+     "$nil",
+     "$6,375 (2)",
+     "--",
+     "--",
+     "--",
+     "--",
+     "$6,375"
+    ]
+   ],
+   "caption_stack": [
+    "Change in"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1450,
+    "end_line": 1475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Subsequent to the end of the fiscal year ended March 31, 2014, the Company entered into an into an Employment Agreement with Dr. Celluci for an unfixed term, pursuant to which the Company agreed to employ Dr. Celluci as the Chief Executive Officer. Pursuant to the terms of the Employment Agreement, as consideration for Dr. Celluci\u2019s services as the Chief Executive Officer, Dr. Celluci was granted up to a total of up to eighteen million nine hundred and sixty five thousand and four hundred and eight (18,965,408) shares of common stock in the Company, which shares shall be issued as follows: (i) nine million four hundred and eighty two thousand and seven hundred and four (9,482,704) shares of common stock pursuant to the terms and conditions of a Restricted Shares Agreement attached to the Employment Agreement which were filed as Exhibit A to Form 8-K filed on June 17, 2014; and (ii) nine million four hundred and eighty two thousand and seven hundred and four (9,482,704) of common stock pursuant to a restricted shares agreement once the Company either (a) amends its existing Stock Compensation Program (the \u201cProgram\u201d) to increase the number of maximum authorized shares which may be issued under the Program, or (b) adopts a new stock compensation program. Additionally Dr. Celluci may be awarded an annual discretionary performance bonus for his services rendered as the Chief Executive Officer; the amount of the performance bonus is at the discretion of the Registrant\u2019s Board of Directors. Dr. Celluci\u2019s Employment is At-Will and may be terminated at any time by the Company or Dr. Celluci.\nDirector Compensation\nThe following table provides summary information concerning compensation awarded to, earned by, or paid to any of our directors for all services rendered to the Company in all capacities for the fiscal year ended March 31, 2014.",
+   "prose_after": "(1)\nAs disclosed on Form 8-K filed with the Securities and Exchange Commission on September 27, 2012, on September 14, 2012 the Board of Directors of Ecrypt Technologies, Inc, appointed Matthew Johnson to serve as a director of the the Company. In conjunction with the Company\u2019s appointment of Mr. Johnson, the Company entered into a Director Agreement and a Restricted Shares Agreement which is Exhibit A to the Director Agreement, pursuant to which the Company granted Mr. Johnson 150,000 shares of restricted common stock of the Registrant. The foregoing description of the Director Agreement and Restricted Shares Agreement is qualified in its entirety by reference to the Director Agreement and Restricted Shares Agreement attached as Exhibit 10.8 to the Company\u2019s report on Form 8-K filed with the Securities and Exchange Commission on September 27, 2012. As disclosed on Form 8-K fled on March 18, 2014, Matt Johnson resigned as Director of the Company.\n(2)\nAs disclosed on Form 8-K filed with the Secuities and Exchange Commision on April 1, 2014, on March 27, 2014 the Board of Directors of Ecrypt Technologies, Inc. appointed Thomas A. Cellucci to serve as a director of the Company. In conjunction with the Company\u2019s appointment of Dr. Cellucci, the Company entered into a Director Agreement and a Restricted Shares Agreement which is Exhibit A to the Director Agreement, pursuant to which the Comnpany granted Dr. Cellucci 150,000 shares of restricted common stock of the Registrant. The foregoing description of the Director Agreement and Restricted Shares Agreement is qualified in its entirety by reference to the Director Agreement and Restricted Shares Agreement which are attached hereto as Exhibit 10.15 and 10.16 to the Company\u2019s report on Form 8-K filed with the Securities and Exchange Commission on April 1, 2014.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1438,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1476,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of securities to be issued upon exercise of outstanding options, warrants",
+     "",
+     "Weighted average exercise price of outstanding options, warrants",
+     "",
+     "Number of securities remaining available for future issuances under equity compensation plans (excluding securities reflected in column)"
+    ],
+    [
+     "Plan category",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(a)"
+    ],
+    [
+     "",
+     "",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "13,500,000",
+     "",
+     "$0.30",
+     "",
+     "2,042,296"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "13,500,000",
+     "",
+     "0",
+     "",
+     "2,042,296"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1498,
+    "end_line": 1514
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "As disclosed on Form 8-K filed with the Securities and Exchange Commission on April 20, 2011, on April 12, 2011, subject to shareholder approval, the Board of Directors of Ecrypt Technologies, Inc. (the \u201cCompany\u201d) approved the adoption of the Ecrypt Technologies, Inc. Stock Compensation Program (the \u201cProgram\u201d) under which 13,500,000 shares have been reserved for purposes of possible future issuance of incentive stock options, non-qualified stock options, and restricted stock grants to employees, directors and certain key individuals. On April 15, 2011, pursuant to a written consent in lieu of a meeting, a majority of the Company\u2019s shareholders approved the Program. The purpose of the Program is to attract and retain key employees, consultants and other persons, and to provide such key individuals with an additional incentive to contribute to the success of the Company. In order to maintain flexibility in the award of stock benefits, the Program constitutes a single \u201comnibus\u201d plan, but is composed of three parts. The first part is the Incentive Stock Option Plan (\u201cIncentive Option Plan) which provides grants of incentive stock options under Section 422A of the Internal Revenue Code of 1986, as amended. The second part is the Nonqualified Stock Option Plan (\u201cNonqualified Option Plan\u201d) which provides grants of nonqualified stock options. The third part is the Restricted Shares Plan (\u201cRestricted Plan\u201d) which provides grants of restricted shares of Company common stock. The Incentive Option Plan, the Nonqualified Option Plan and the Restricted Plan respectively comprise Plan I, Plan II, and Plan III of the Program. The foregoing description of the Program is qualified in its entirety by reference to the Ecrypt Technologies, Inc. Stock Compensation Program which was filed as Exhibit 10.9 to Form 8-K filed with the Securities and Exchange Commission on April 20, 2011. The chart below identifies information with respect to the Stock Compensation Plan:\nThe following table sets forth, as of July 7, 2014, the number of securities approved and available for future issuances under the Company\u2019s Stock Compensation Program.",
+   "prose_after": "Security Ownership of Certain Beneficial Owners\nThe following table sets forth, as of July 7, 2014, the ownership of each person known by the Company to be a beneficial owner of 5% or more of its common stock. Except as otherwise noted, each person listed below is a sole beneficial owner of the shares and has sole investment and voting power as to such shares. No person listed below has any options, warrants or other right to acquire additional securities of the Registrant except as may be otherwise noted.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1551,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address",
+     "",
+     "",
+     "Number of Shares Beneficially Owned",
+     "        Percent of Class",
+     ""
+    ],
+    [
+     "Common",
+     "Brad Lever(1)\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "32,000,000",
+     "",
+     "",
+     "",
+     "25.321%"
+    ],
+    [
+     "Common",
+     "Global Capital Partners, LLC\n\n\n\nPO Box 6560\n\n\n\nPahrump, NV 89041",
+     "",
+     "39,815,455(1)",
+     "",
+     "",
+     "26.52%"
+    ],
+    [
+     "Common",
+     "Kasia Zukowska\n\n\n\n2129 - 4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "",
+     "9,600,000",
+     "",
+     "",
+     "7.596%"
+    ],
+    [
+     "Common",
+     "Micro-Tech Industries\n\n\n\n44 Granville Park\n\n\n\nLondon, SE13 7DX",
+     "",
+     "8,395,000 (2)",
+     "",
+     "",
+     "6.22%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1519,
+    "end_line": 1550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "Security Ownership of Certain Beneficial Owners\nThe following table sets forth, as of July 7, 2014, the ownership of each person known by the Company to be a beneficial owner of 5% or more of its common stock. Except as otherwise noted, each person listed below is a sole beneficial owner of the shares and has sole investment and voting power as to such shares. No person listed below has any options, warrants or other right to acquire additional securities of the Registrant except as may be otherwise noted.",
+   "prose_after": "Common Whonon Trading S A PO Box 5180 Leamington Spa, CV31 9HE 17,830,000 (3) 12.36%\n(1)\nIncludes 23,775,000 shares of common stock which may be acquired upon conversion of 2,377,500 shares of Series A Convertible Preferred Stock owned by Global Capital Partners, LLC.\n(2)\nIncludes 8,395,000 shares of common stock which may be acquired upon conversion of 839,500 shares of Series A Convertible Preferred Stock owned by of Micro-Tech Industries.\n(3)\nIncludes 17,830,000 shares of common stock which may be acquired upon conversion of 1,783,000 shares of Series A Convertible Preferred Stock owned by of Whonon Trading S A.\nSecurity Ownership of Management\nThe following table sets forth, as of July 7, 2014, the ownership of each executive officer and director of the Company, and of all executive officers and directors of the Registrant as a group. Except as otherwise noted, each person listed below is a sole beneficial owner of the shares and has sole investment and voting power as to such shares. No person listed below has any options, warrants or other right to acquire additional securities of the Company except as may be otherwise noted.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1551,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address",
+     "Number of Shares Beneficially Owned",
+     "Percent of Class"
+    ],
+    [
+     "Common",
+     "Brad Lever(1)\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "32,000,000",
+     "25.321%"
+    ],
+    [
+     "Common",
+     "Curt Weldon(1)\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "1,000,000(2)",
+     "0.791%"
+    ],
+    [
+     "Common",
+     "Jay Cohen(1)\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "150,000(3)",
+     "0.119%"
+    ],
+    [
+     "Common",
+     "Erik Mettala(1)\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "150,000(4)",
+     "0.119%"
+    ],
+    [
+     "Common",
+     "Thomas N. Trkla(1)\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "300,000(5)",
+     "0.237%"
+    ],
+    [
+     "Common",
+     "Thomas A. Cellucci\n\n\n\n2129-4951 Netarts Hwy W\n\n\n\nTillamook, OR 97141",
+     "1,222,838(6)(7)",
+     "0.968%"
+    ],
+    [
+     "Common",
+     "All Directors and Officers as a Group (6 in total)",
+     "34,822,838",
+     "27.554%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1571,
+    "end_line": 1614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "Includes 23,775,000 shares of common stock which may be acquired upon conversion of 2,377,500 shares of Series A Convertible Preferred Stock owned by Global Capital Partners, LLC.\n(2)\nIncludes 8,395,000 shares of common stock which may be acquired upon conversion of 839,500 shares of Series A Convertible Preferred Stock owned by of Micro-Tech Industries.\n(3)\nIncludes 17,830,000 shares of common stock which may be acquired upon conversion of 1,783,000 shares of Series A Convertible Preferred Stock owned by of Whonon Trading S A.\nSecurity Ownership of Management\nThe following table sets forth, as of July 7, 2014, the ownership of each executive officer and director of the Company, and of all executive officers and directors of the Registrant as a group. Except as otherwise noted, each person listed below is a sole beneficial owner of the shares and has sole investment and voting power as to such shares. No person listed below has any options, warrants or other right to acquire additional securities of the Company except as may be otherwise noted.",
+   "prose_after": "(1)\nOfficer or Director of the Company\n(2)\nOn February 9, 2011, the Curt Weldon was granted 1,000,000 restricted stock shares for Director Compensation.\n(3)\nOn February 15, 2011, Jay Cohen was granted 150,000 restricted stock shares for Director Compensation.\n(4)\nOn July 8, 2011, Erik Mettala was granted 150,000 restricted stock shares for Director Compensation.\n(5)\nOn February 15, 2012, Thomas N. Trkla was granted the option to purchase up to 300,000 shares of restricted common stock of the Company for Director Compensation, at the exercise price of $0.30 per Share.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1551,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1631,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.5",
+     "Director Agreement and Nonqualified Stock Option Agreement dated February 16, 2012 by and between Ecrypt Technologies, Inc. and Thomas Trkla."
+    ],
+    [
+     "10.6",
+     "Director Agreement and Restricted Shares Agreement dated September 25, 2012 by and between Ecrypt Technologies, Inc. and Matthew Johnson."
+    ],
+    [
+     "10.7",
+     "Director Agreement and Restricted Shares Agreement dated March 27, 2014, by and between Ecrypt Technologies, Inc. and Thomas A. Cellucci."
+    ],
+    [
+     "10.8",
+     "Employment Agreement and Restricted Shares Agreement dated June 16, 2014, by and between Ecrypt Technologies, Inc. and Thomas A. Cellucci."
+    ],
+    [
+     "14.1",
+     "Code of Ethics filed as Exhibit 14.1 to Form 10-K filed with the Securities and Exchange Commission on July 13, 2010."
+    ],
+    [
+     "31.1",
+     "Certifications pursuant to Rule 13a-14(a) or 15d-14(a) under the Securities Exchange Act of 1934, as amended, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "31.2",
+     "Certifications pursuant to Rule 13a-14(a) or 15d-14(a) under the Securities Exchange Act of 1934, as amended, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "32.1",
+     "Certifications pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "32.2",
+     "Certifications pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "101",
+     "SCH XBRL Schema Document.*"
+    ],
+    [
+     "101",
+     "INS XBRL Instance Document.*"
+    ],
+    [
+     "101",
+     "CAL XBRL Taxonomy Extension Calculation Linkbase Document.*"
+    ],
+    [
+     "101",
+     "LAB XBRL Taxonomy Extension Label Linkbase Document.*"
+    ],
+    [
+     "101",
+     "PRE XBRL Taxonomy Extension Presentation Linkbase Document.*"
+    ],
+    [
+     "101",
+     "DEF XBRL Taxonomy Extension Definition Linkbase Document.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1765,
+    "end_line": 1784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "3.1 Articles of Incorporation of Ecrypt Technologies, Inc., filed as exhibit to Form 10 filed with the Securities and Exchange Commission on November 11, 2008. 3.2 Bylaws of Ecrypt Technologies, Inc., filed as exhibit to Form 10 filed with the Securities and Exchange Commission on November 11, 2008. 10.1 Commodity Classification Document., filed as exhibit to Form 10 filed with the Securities and Exchange Commission on November 11, 2008, filed as exhibit to Form 10 filed with the Securities and Exchange Commission on November 11, 2008. 10.2 Director Agreement and Restricted Shares Agreement dated February 15, 2011 by and between Ecrypt Technologies, Inc. and Curt Weldon, filed as Exhibit 10.7 to Form 8-K filed with the Securities and Exchange Commission on Februay 9, 2011. 10.3 Director Agreement and Restricted Shares Agreement dated February 15, 2011 by and between Ecrypt Technologies, Inc. and Jay Cohen, filed as Exhibit 10.8 to Form 8-K filed with the Securities and Exchange Commission on Februay 15, 2011. 10.4 Ecrypt Technologies, Inc. Stock Compensation Program, filed as Exhibit 10.9 to Form 8-K filed with the Securities and Exchange Commission on April 20, 2011.",
+   "prose_after": "* Filed Herewith\nECRYPT TECHNOLOGIES, INC.\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nBy: /S/ Thomas Cellucci\nThomas Cellucci, Chief Executive Officer\nDated: July 14, 2014\nBy: /S/ Brad Lever\nBrad Lever, Chief Operations Officer, Chief Financial Officer, Director\nDate: July 14, 2014\nBy: /S/ Curt Weldon",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1763,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1791,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

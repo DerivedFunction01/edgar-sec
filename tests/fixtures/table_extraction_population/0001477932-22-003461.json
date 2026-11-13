@@ -1,0 +1,3164 @@
+{
+ "accession": "0001477932-22-003461",
+ "cik": "0001324736",
+ "form": "10-Q",
+ "filing_date": "2022-05-16",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "henc_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "77-0643398"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2022\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______\nCommission file number: 333-261062\nHERO TECHNOLOGIES, INC (Exact name of registrant as specified in its charter)",
+   "prose_after": "8 The Green Suite 4000, Dover, DE 19901\n(Address of Principal Executive Offices)\nRegistrant\u2019s telephone number, including area code: (302) 538-4165\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (ss.232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited):",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "26"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "27"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "27"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "27"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "28"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "28"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "28"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "29"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 57,
+    "end_line": 79
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.:\nLarge Accelerated Filer  [ ]  Accelerated Filer          [ ]\nNon-accelerated Filer    [X]  Smaller reporting company  [X]\nEmerging Growth Company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). YES [ ] NO [X]\nThe number of shares of Registrant\u2019s Common Stock, $0.001 par value per share, outstanding as of May 5, 2022 was 445,907,000 shares\nHERO TECHNOLOGIES, INC\nINDEX TO FORM 10-Q",
+   "prose_after": ".\nUnless the context suggests otherwise, references in this Quarterly Report on Form 10-Q, or Quarterly Report, to \u201cHero Technologies,\u201d \u201cthe Company,\u201d \u201cwe,\u201d \u201cus,\u201d and \u201cour\u201d refer to Hero Technologies, Inc. and, where appropriate, its subsidiaries.\nThis Quarterly Report on Form 10-Q contains forward-looking statements. These forward-looking statements reflect our plans, estimates and beliefs. These statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performances or achievements expressed or implied by the forward-looking statements. In some cases, you can identify forward-looking statements by terms such as \u201canticipates,\u201d \u201cbelieves,\u201d \u201ccould,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cplans,\u201d \u201cpotential,\u201d \u201cpredicts,\u201d \u201cprojects,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions intended to identify forward-looking statements. Forward-looking statements reflect our current views with respect to future events and are based on assumptions and subject to risks and uncertainties. Because of these risks and uncertainties, the forward-looking events and circumstances discussed in this report may not transpire. These risks and uncertainties include, but are not limited to, the risks included in this Quarterly Report on Form 10-Q under Part II, Item IA, \u201cRisk Factors\u201d and in our Annual Report on Form 10-K for the year ended December 31, 2021 under Part I, Item IA, \u201cRisk Factors.\u201d",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "121,537",
+     "",
+     "$",
+     "174,477",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "4,122",
+     "",
+     "",
+     "5,500",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "620",
+     "",
+     "",
+     "620",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "126,279",
+     "",
+     "",
+     "180,597",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net of accumulated depreciation",
+     "",
+     "5,817",
+     "",
+     "",
+     "6,313",
+     ""
+    ],
+    [
+     "Total Non-current assets",
+     "",
+     "5,817",
+     "",
+     "",
+     "6,313",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "132,096",
+     "",
+     "$",
+     "186,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "39,847",
+     "",
+     "$",
+     "32,904",
+     ""
+    ],
+    [
+     "Loans payable, current portion - related party",
+     "",
+     "200,000",
+     "",
+     "",
+     "169,588",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "239,847",
+     "",
+     "",
+     "202,492",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "239,847",
+     "",
+     "",
+     "202,492",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Authorized:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10,000,000 preferred shares, par value $0.001 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "950,000,000 common shares, par value $0.001 per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued and outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "1,000,000 preferred shares at March 31, 2022 (1,000,000 at 2021)",
+     "",
+     "1,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "445,907,000 common shares at March 31, 2022 (442,977,000 at 2021)",
+     "",
+     "445,907",
+     "",
+     "",
+     "442,977",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "38,612,779",
+     "",
+     "",
+     "38,461,909",
+     ""
+    ],
+    [
+     "Stock Payable",
+     "",
+     "27,970",
+     "",
+     "",
+     "27,970",
+     ""
+    ],
+    [
+     "Non-controlling Interest",
+     "",
+     "(93,701)",
+     "",
+     "",
+     "(93,328)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(39,101,706)",
+     "",
+     "",
+     "(38,856,110)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity (deficit)",
+     "",
+     "(107,751)",
+     "",
+     "",
+     "(15,582)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "$",
+     "132,096",
+     "",
+     "$",
+     "186,910",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 102,
+    "end_line": 152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "This Quarterly Report on Form 10-Q contains forward-looking statements. These forward-looking statements reflect our plans, estimates and beliefs. These statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from any future results, performances or achievements expressed or implied by the forward-looking statements. In some cases, you can identify forward-looking statements by terms such as \u201canticipates,\u201d \u201cbelieves,\u201d \u201ccould,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cplans,\u201d \u201cpotential,\u201d \u201cpredicts,\u201d \u201cprojects,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions intended to identify forward-looking statements. Forward-looking statements reflect our current views with respect to future events and are based on assumptions and subject to risks and uncertainties. Because of these risks and uncertainties, the forward-looking events and circumstances discussed in this report may not transpire. These risks and uncertainties include, but are not limited to, the risks included in this Quarterly Report on Form 10-Q under Part II, Item IA, \u201cRisk Factors\u201d and in our Annual Report on Form 10-K for the year ended December 31, 2021 under Part I, Item IA, \u201cRisk Factors.\u201d\nGiven these uncertainties, you should not place undue reliance on these forward-looking statements. Also, forward-looking statements represent our estimates and assumptions only as of the date of this document. You should read this document with the understanding that our actual future results may be materially different from what we expect. Except as required by law, we do not undertake any obligation to publicly update or revise any forward-looking statements contained in this report, whether as a result of new information, future events or otherwise.\nAll trademarks, trade names and service marks appearing in this Quarterly Report on Form 10-Q are the property of their respective owners.\nPART I \u2013 Financial Information\nItem 1 \u2013 Financial Statements\nHERO TECHNOLOGIES, INC.\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGIES, INC.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,885",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "-",
+     "",
+     "",
+     "5,531",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-",
+     "",
+     "",
+     "(3,646)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting",
+     "",
+     "7,646",
+     "",
+     "",
+     "128,471",
+     ""
+    ],
+    [
+     "Compensation expense",
+     "",
+     "153,800",
+     "",
+     "",
+     "224,170",
+     ""
+    ],
+    [
+     "Office, travel, and general",
+     "",
+     "19,595",
+     "",
+     "",
+     "69,295",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "",
+     "26,601",
+     "",
+     "",
+     "84,168",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "496",
+     "",
+     "",
+     "561",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "(208,138)",
+     "",
+     "",
+     "(506,665)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on share conversion",
+     "",
+     "-",
+     "",
+     "",
+     "(2,218,382)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(37,831)",
+     "",
+     "",
+     "(9,051)",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(37,831)",
+     "",
+     "",
+     "(2,227,433",
+     ") )"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(245,596)",
+     "",
+     "$",
+     "(2,737,744)",
+     ""
+    ],
+    [
+     "Non-controlling interest in (income) loss of consolidated subsidiaries",
+     "",
+     "373",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss attributable to the company",
+     "",
+     "(245,596)",
+     "",
+     "",
+     "(2,737,744)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Basic and Diluted Common Shares Outstanding",
+     "",
+     "443,952,889",
+     "",
+     "",
+     "395,888,260",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Net Loss Per Common Share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGIES, INC.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGIES, INC.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 155,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 202,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "",
+     "Non-",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Shares",
+     "",
+     "",
+     "",
+     "Preferred Shares",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Controlling",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Payable",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Income (Loss)",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2021",
+     "",
+     "357,095,087",
+     "$",
+     "357,095",
+     "",
+     "",
+     "1,000,000",
+     "$",
+     "1,000",
+     "$",
+     "33,206,878",
+     "",
+     "",
+     "149,647",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(35,436,489)",
+     "",
+     "$",
+     "(1,721,869)",
+     ""
+    ],
+    [
+     "Investment Units issued for cash at $.024 per unit",
+     "",
+     "11,267,424",
+     "",
+     "11,268",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "258,732",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "270,000",
+     ""
+    ],
+    [
+     "Issued for services",
+     "",
+     "850,000",
+     "",
+     "850",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "53,250",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "54,100",
+     ""
+    ],
+    [
+     "Common Stock \u2013 Related party compensation",
+     "",
+     "4,928,775",
+     "",
+     "4,929",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "314,116",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "319,045",
+     ""
+    ],
+    [
+     "Common Stock \u2013 debt conversion, related party",
+     "",
+     "65,285,714",
+     "",
+     "65,285",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,449,981",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,515,266",
+     ""
+    ],
+    [
+     "Shares issued as inducement for borrowing $0.0667 per unit",
+     "",
+     "750,000",
+     "",
+     "750",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "60,075",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "60,825",
+     ""
+    ],
+    [
+     "Shares to be issued for acquisition",
+     "",
+     "2,800,000",
+     "",
+     "2,800",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "118,977",
+     "",
+     "",
+     "(121,677)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Non-Controlling Interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(93,328)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(93,328)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,419,621)",
+     "",
+     "",
+     "(3,419,621)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "442,977,000",
+     "",
+     "442,977",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "1,000",
+     "",
+     "38,461,909",
+     "",
+     "",
+     "27,970",
+     "",
+     "",
+     "(93,328)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(38,856,110)",
+     "",
+     "",
+     "(15,582)",
+     ""
+    ],
+    [
+     "Investment units issued for cash at $.024 per unit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued for services",
+     "",
+     "930,000",
+     "",
+     "930",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "48,870",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "49,800",
+     ""
+    ],
+    [
+     "Common Stock \u2013 related party compensation",
+     "",
+     "2,000,000",
+     "",
+     "2,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "102,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "104,000",
+     ""
+    ],
+    [
+     "Non-Controlling Interest",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(373)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(373)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(245,596)",
+     "",
+     "",
+     "(245,596)",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "",
+     "445,907,000",
+     "",
+     "445,907",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "1,000",
+     "",
+     "38,612,779",
+     "",
+     "",
+     "27,970",
+     "",
+     "",
+     "(93,701)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(39,101,706)",
+     "",
+     "",
+     "(107,751)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 208,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGIES, INC.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGY, INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 202,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 240,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Hero Technologies Inc.",
+     "$",
+     "(245,596)",
+     "",
+     "$",
+     "(2,737,744)",
+     ""
+    ],
+    [
+     "Non-controlling interest in income (loss) of consolidated subsidiaries",
+     "$",
+     "(373)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discount amortization",
+     "",
+     "30,412",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "153,800",
+     "",
+     "",
+     "233,545",
+     ""
+    ],
+    [
+     "Impairment of intangibles",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss from conversion of debt to common stock",
+     "",
+     "-",
+     "",
+     "",
+     "2,227,433",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "496",
+     "",
+     "",
+     "561",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "1,378",
+     "",
+     "",
+     "26,212",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "6,943",
+     "",
+     "",
+     "(62)",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "-",
+     "",
+     "",
+     "(1,885)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "-",
+     "",
+     "",
+     "5,531",
+     ""
+    ],
+    [
+     "Gain/Loss from settlement of indebtedness",
+     "",
+     "-",
+     "",
+     "",
+     "2,218,382",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "",
+     "(52,940)",
+     "",
+     "",
+     "(246,409)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "-",
+     "",
+     "",
+     "270,000",
+     ""
+    ],
+    [
+     "Borrowings on debt",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash provided by financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "270,000",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "(52,940)",
+     "",
+     "",
+     "23,591",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, BEGINNING OF YEAR",
+     "",
+     "174,477",
+     "",
+     "",
+     "437,126",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, END OF YEAR",
+     "$",
+     "121,537",
+     "",
+     "$",
+     "460,717",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inducement of debt",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Liabilities settled with common stock, related party, investments",
+     "$",
+     "-",
+     "",
+     "",
+     "2,287,833",
+     ""
+    ],
+    [
+     "Shares issued from stock payable",
+     "$",
+     "-",
+     "",
+     "",
+     "121,677",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 246,
+    "end_line": 294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGY, INC.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nHERO TECHNOLOGIES INC.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Unaudited)\n1. NATURE OF OPERATIONS\nHero Technologies Inc. (the \u201cCompany\u201d), was incorporated in the State of Nevada on May 14, 2004. Hero Technologies has emerged into a vertically-integrated cannabis company with cultivation, processing and dispensary operations. The Company\u2019s business plan includes cannabis genetics engineering, farmland for both medical and recreational cannabis cultivation, production licenses, distribution licenses, consumer packaging and retail operations, and dispensaries that make the company a Multi-State Operator (MSO). Hero Technologies is a one-stop cannabis shop for its partners and customers, from seed to sale.\nThe Company\u2019s consolidated financial statements are prepared on a going concern basis in accordance with generally accepted accounting principles in the United States (\u201cUS GAAP\u201d) which contemplates the realization of assets and discharge of liabilities and commitments in the normal course of business. The Company has not generated sufficient operating revenues and has funded its operations through the issuance of capital stock.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 240,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Asset Purchase Price",
+     "",
+     "Accumulated Depreciation",
+     "",
+     ""
+    ],
+    [
+     "Furniture and Fixtures 5-7 Years",
+     "$",
+     "6,030",
+     "$",
+     "(1,508)",
+     ""
+    ],
+    [
+     "Computer Equipment and Software 3-5 Years",
+     "",
+     "2,331",
+     "",
+     "(1,036)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 333,
+    "end_line": 340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Inventories primarily consist of cannabis merchandise and are stated at the lower of cost or market. Value at March 31 2022 was $0. Cost is determined using an average costing methodology, which approximates cost under the first-in, first-out (FIFO) method. A portion of inventory is held by certain independent distributors on consignment until it is sold to a third party. The Company regularly monitors inventory quantities on hand and records write-downs for excess and obsolete inventories based primarily on the Company\u2019s estimated forecast of product demand and production requirements. Such write-downs establish a new cost basis of accounting for the related inventory. As at December 31, 2021, the Company determined that the inventory on hand be impaired as their focus remains on cultivation and sale of their own product.\nProperty and Equipment\nProperty and equipment is stated at cost less accumulated depreciation and amortization. Depreciation is computed using the straight- line method over the estimated useful lives of the assets, ranging from three to seven years. Amortization of leasehold improvements is computed using the straight-line method over the life of the lease or the useful lives of the assets, whichever is shorter. The cost and related accumulated depreciation and amortization of property and equipment sold or otherwise disposed of are removed from the accounts and any gain or loss is reported as current period income or expense. The costs of repairs and maintenance are expensed as incurred. The company purchased $2,331 of assets and acquired $6,030 through its acquisitions in 2020. The total value of property and equipment at March 31, 2022 is $5,817. and $6,313 at December 31, 2021.",
+   "prose_after": "Intangible Assets / Goodwill\nThe Company accounts for certain intangible assets at cost. Management reviews these intangible assets for probable impairment whenever events or circumstances indicate that the carrying amount of such assets may not be recoverable. If there is an indication of impairment, management would prepare an estimate of future cash flows (undiscounted and without interest charges) expected to result from the use of the asset and its eventual disposition. If these estimated cash flows were less than the carrying amount, an impairment loss would be recognized to write down the asset to its estimated fair value. The Company performed a qualitative assessment of certain of its intangible assets and determined that $60,700 of intangible trademarks and customer base included with the Veteran Hemp Co acquisition be impaired and that $5,881 of goodwill associated to Veteran Hemp Co be impaired as of December 31, 2021.\nUse of Estimates\nThe preparation of consolidated financial statements in conformity with US GAAP requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities and disclosure of contingent assets and liabilities at the date of the consolidated financial statements and the reported amounts of revenues and expenses during the reporting period. The Company regularly evaluates estimates and assumptions. The Company bases its estimates and assumptions on current facts, historical experience and various other factors it believes to be reasonable under the circumstances, the results of which form the basis for making judgments about the carrying values of assets and liabilities and the accrual of costs and expenses that are not readily apparent from other sources. The actual results experienced by the Company may differ materially and adversely from the Company\u2019s estimates. To the extent there are material differences between the estimates and the actual results, future results of operations will be affected. The most significant estimates with regard to these consolidated financial statements relate to carrying values of oil and gas properties, the fair value of debt, the estimated valuation allowance on deferred tax assets and the determination of fair values of stock based transactions.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 327,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 355,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments - Stocks/mutual funds",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "\u00b7 Level 3 -unobservable inputs that reflect the Company\u2019s own expectations about the assumptions that market participants would use in measuring the fair value of an asset or liability.\nA financial instrument\u2019s level within the fair value hierarchy is based on the lowest level of any input that is significant to the fair value measurement.\nWhere available, fair value is based on observable market prices or parameters or derived from such prices or parameters. Where observable prices or inputs are not available, valuation models are applied. These valuation techniques involve some level of management estimation and judgment, the degree of which is dependent on the price transparency for the instruments or market and the instrument\u2019s complexity.\nIn accordance with ASC Topic 820, valuation techniques used for assets and liabilities accounted for at fair value are generally categorized into three types: market approach, income approach and cost approach. The Company had no outstanding securities at December 31, 2021 and March 31, 2022.\nThe following table presents the classification of the securities by level at March 31, 2022:",
+   "prose_after": "The following table presents the classification of the securities by level at December 31, 2020:\n<TABLE>\nLevel 1     Level 2     Level 3       Total\n----------  ----------  ----------  ----------\nInvestments - Stocks/mutual funds         $ -         $ -         $ -         $ -\n----------  ----------  ----------  ----------\nTotals                                    $ -         $ -         $ -         $ -\n==========  ==========  ==========  ==========\n</TABLE>\nThe Company uses the market approach technique to account for its financial instruments at fair value for the period ended March 31, 2022, and the application of this technique applied to similar assets and liabilities has been applied on a consistent basis.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments - Stocks/mutual funds",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Totals",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "\u00b7 Level 3 -unobservable inputs that reflect the Company\u2019s own expectations about the assumptions that market participants would use in measuring the fair value of an asset or liability.\nA financial instrument\u2019s level within the fair value hierarchy is based on the lowest level of any input that is significant to the fair value measurement.\nWhere available, fair value is based on observable market prices or parameters or derived from such prices or parameters. Where observable prices or inputs are not available, valuation models are applied. These valuation techniques involve some level of management estimation and judgment, the degree of which is dependent on the price transparency for the instruments or market and the instrument\u2019s complexity.\nIn accordance with ASC Topic 820, valuation techniques used for assets and liabilities accounted for at fair value are generally categorized into three types: market approach, income approach and cost approach. The Company had no outstanding securities at December 31, 2021 and March 31, 2022.\nThe following table presents the classification of the securities by level at March 31, 2022:",
+   "prose_after": "The following table presents the classification of the securities by level at December 31, 2020:\n<TABLE>\nLevel 1     Level 2     Level 3       Total\n----------  ----------  ----------  ----------\nInvestments - Stocks/mutual funds         $ -         $ -         $ -         $ -\n----------  ----------  ----------  ----------\nTotals                                    $ -         $ -         $ -         $ -\n==========  ==========  ==========  ==========\n</TABLE>\nThe Company uses the market approach technique to account for its financial instruments at fair value for the period ended March 31, 2022, and the application of this technique applied to similar assets and liabilities has been applied on a consistent basis.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Initial shares. $0.0435",
+     "",
+     "2,500,000",
+     "",
+     "108,750"
+    ],
+    [
+     "Earnout shares:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Belize contract",
+     "",
+     "1,400,000",
+     "",
+     "2,713"
+    ],
+    [
+     "Online payment system",
+     "",
+     "300,000",
+     "",
+     "12,927"
+    ],
+    [
+     "EBITDA",
+     "",
+     "800,000",
+     "",
+     "20,907"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total consideration",
+     "",
+     "",
+     "",
+     "145,297"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets Acquired:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "",
+     "",
+     "72,686"
+    ],
+    [
+     "Equipment",
+     "",
+     "",
+     "",
+     "6,030"
+    ],
+    [
+     "Trademarks",
+     "",
+     "",
+     "",
+     "37,700"
+    ],
+    [
+     "Customer base",
+     "",
+     "",
+     "",
+     "23,000"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "",
+     "5,881"
+    ],
+    [
+     "Total assets acquired",
+     "",
+     "",
+     "",
+     "145,297"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 449,
+    "end_line": 469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACQUISITIONS"
+    }
+   },
+   "prose_before": "The Company presents both basic and diluted earnings per share (\u201cEPS\u201d) on the face of the consolidated statements of operations. Basic EPS is computed by dividing net earnings (loss) available to common shareholders by the weighted average number of shares outstanding during the period. Diluted EPS gives effect to all dilutive potential common shares outstanding during the period including convertible debt, stock options, and warrants, using the treasury stock method. Diluted EPS excludes all dilutive potential shares if their effect is anti-dilutive. Diluted EPS figures are equal to those of Basic EPS for each period since the Company had no securities outstanding during periods in which the Company generated net income that were potentially dilutive.\nRecently Adopted Accounting Pronouncements\nNot applicable.\n3. ACQUISITIONS\nVeteran Hemp Co., bought by HENC through V Broker LLC as an asset acquisition on November 3, 2020, operates an international retail and wholesale online store selling cannabis and cannabidiol. The consideration given for the acquired assets is shown below:",
+   "prose_after": "The Company impaired $60,700 in 2020 which consisted of the trademarks and customer base. It was determined that they would not be used because these items would fall under the Hero Technology brand going forward. The Company impaired $5,881 of goodwill associated to Veteran Hemp Co. in 2021 because it was determined that the emphasis is on current and future growth under Hero Technologies Inc.\n4. RELATED PARTY TRANSACTIONS\nInterest to related parties is $15,000 at March 31, 2022 compared to $7,500 at December 31, 2021\nOn February 15, 2021, the Company issued 875,000 shares of restricted common stock to Topline Holdings Inc in consideration for advisor and managerial services. The shares were priced at $0.074. at a fair value of $64,750.\nOn February 22, 2021, the debt of $2,245,000 including interest of $42,833.33 owed to P2B Capital LLC was paid in full with 65,285,714 shares of common stock resulting in a loss on conversion of $2,218,382. The value at the end of the quarter was $4,515,266.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "With regard to a Class C marijuana license for medicinal use, the MRA imposes very similar provisions and obligations to those state above. According to rule R 420.108 of the MRA, one who possess a Class C marijuana license for medical use is subject to the following obligations:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u00b7",
+     "Under rule 420.108(1), one who holds a Class C marijuana license for medicinal use is only permitted to grow marijuana 1,500 marijuana plants, as opposed to the 2,000 plants authorized for those who obtain an adult-use license"
+    ],
+    [
+     "",
+     "\u00b7",
+     "Similar to the rule governing an adult-use license, marijuana under rule 420.108(3), a medicinal-use license authorizes a grower to transfer marijuana without using a secure transporter to a processor or provisioning center if both of the following are met:"
+    ]
+   ],
+   "caption_stack": [
+    "With regard to a Class C marijuana license for medicinal use, the MRA imposes very similar provisions and obligations to those state above. According to rule R 420.108 of the MRA, one who possess a Class C marijuana license for medical use is subject to the following obligations:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u00b7 Under rule 420.102(7), A marijuana grower must enter all transactions, current inventory, and other information into the statewide monitoring system, known as METRC, as required in these rules. Under the METRC system:\n\u00b7 a serialized tag must be attached to every plant,\n\u00b7 and labels must be attached to wholesale packages\n\u00b7 According to rule 420.102(8), A marijuana grower license does not authorize the marijuana grower to operate in an area unless the area is zoned for industrial or agricultural use. At present, the Company is in compliance with this rule, as we intend to operate in an area that has been zoned for industrial and agricultural use.\n\u00b7 Under 420.102(9), A marijuana grower may accept the transfer of marijuana seeds, tissue cultures, and clones that do not meet the definition of marijuana plant in these rules at any time from another grower licensed under the acts, these rules, or both. Marijuana.\n\u00b7 Per rule 420.102(11), A marijuana grower licensee is required to comply with the requirements of the Michigan regulation and taxation of marijuana act and these rules.",
+   "prose_after": "o (a) The processor or provisioning center occupies the same location as the grower and the marijuana is transferred using only private real property without accessing public roadways.\no (b) The grower enters each transfer into the statewide monitoring system.\n\u00b7 According to rule 420.108(4), a grower license authorizes sale of marijuana, other than seeds, seedlings, tissue cultures, and cuttings, to a processor or a provisioning center.\n\u00b7 To be eligible for a grower license, the applicant and each investor in the grower must not have an interest in a secure transporter or safety compliance facility.\n\u00b7 Under rule 420.108(7), a medicinal-use license, like an adult-use license, requires a grower to enter all transactions, current inventory, and other information into the statewide monitoring system, known as METRC\n\u00b7 Similar to the rule for an adult-use license, under rule 420.108(8), a medicinal-use license does not authorize the grower to operate in an area unless the area is zoned for industrial or agricultural use. As mentioned, the Company is in compliance with this rule, as we intend to operate in an area that has been zoned for industrial and agricultural use.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 635,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item",
+     "Increase (I) or\n\nDecrease (D)",
+     "Reason"
+    ],
+    [
+     "Consulting Expense",
+     "D",
+     "Decreased activity in cannabis licensing"
+    ],
+    [
+     "Impairment of Intangibles",
+     "-",
+     "No change"
+    ],
+    [
+     "Compensation Expense",
+     "D",
+     "Decreased due to a decline in the issuance of stock-based compensation"
+    ],
+    [
+     "Office, Travel and General",
+     "D",
+     "Decreased activity due to a decline in travel"
+    ],
+    [
+     "Professional Fees",
+     "D",
+     "Decreased activity due to a decline in cannabis licensing"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 685,
+    "end_line": 696
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Since inception of Hero Technologies, we have devoted the majority of our resources to acquiring assets and subsidiaries, organizing and staffing our company, business planning and execution, and raising capital.\n\u00b7 We have incurred recurring losses, the majority of which is attributable to minimal revenue, compensation expenses, consulting expenses, loss on the sale of a subsidiary, and losses on share conversion.\n\u00b7 We have funded our operations primarily through issuance of shares for services and proceeds from sale of stock.\n\u00b7 Our net loss was $2,737,744 for the three months ended March 31, 2021, and $245,969 for the three months ended March 31, 2022.\n\u00b7 As of March 31, 2022, we had an accumulated deficit of $39,101,706.\n\u00b7 Our primary use of cash is to fund operating expenses, which consist primarily of compensation expenses, consulting expenses, and general and administrative expenditures.\nAs of March 31, 2022, only Veteran Hemp Co. has generated any revenue.\nMaterial changes in our Statement of Operations for the periods shown below compared to the prior periods are discussed below:\nThree months ended March 31, 2022",
+   "prose_after": "Factors that will most significantly affect future operating results will be:\n\u00b7 Funding for construction of greenhouses in Michigan under Blackbox\n\u00b7 Timing related to construction and actual production of cannabis\n\u00b7 Wholesale cannabis prices in the state of Michigan\nOther than the foregoing we do not know of any trends, events or uncertainties that have had, or are reasonably expected to have, a material impact on our revenues or expenses.\nResults of Operations\nComparison of Results of Operations for the Three Months Ended March 31, 2022 and March 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "-",
+     "",
+     "",
+     "1,885",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "-",
+     "",
+     "",
+     "5,531",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "-",
+     "",
+     "",
+     "(3,646)",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting",
+     "",
+     "7,646",
+     "",
+     "",
+     "128,471",
+     ""
+    ],
+    [
+     "Compensation",
+     "",
+     "153,800",
+     "",
+     "",
+     "224,170",
+     ""
+    ],
+    [
+     "Office, travel, general",
+     "",
+     "19,595",
+     "",
+     "",
+     "69,295",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "26,601",
+     "",
+     "",
+     "84,168",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "496",
+     "",
+     "",
+     "561",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "(208,138)",
+     "",
+     "",
+     "(506,665)",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "(37,831)",
+     "",
+     "",
+     "(2,227,433)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(245,969)",
+     "",
+     "$",
+     "(2,737,744)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 709,
+    "end_line": 730
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Factors that will most significantly affect future operating results will be:\n\u00b7 Funding for construction of greenhouses in Michigan under Blackbox\n\u00b7 Timing related to construction and actual production of cannabis\n\u00b7 Wholesale cannabis prices in the state of Michigan\nOther than the foregoing we do not know of any trends, events or uncertainties that have had, or are reasonably expected to have, a material impact on our revenues or expenses.\nResults of Operations\nComparison of Results of Operations for the Three Months Ended March 31, 2022 and March 31, 2021.",
+   "prose_after": "Revenue and Cost of Goods Sold\nSales decreased by $1,885 for the three months ended March 31, 2022. This is a slight decrease from March 2021, in which the sales totaled $1,885. Cost of Goods sold similarly decreased by $5,531.\nOperating Expenses\nOperating expenses decreased from $506,665 to $208,138. This decline was driven by a decrease in consulting expenses, compensation expenses, professional fees, and office, travel, and general expenses.\nConsulting\nConsulting expenses decreased from $128,471 to $7,646. This decrease was driven by a decline in licensing and marketing activity.\nCompensation\nCompensation expenses decreased from $224,170 to $153,800. Compensation was higher in March 2021 due to the issuance of stock-based compensation.\nProfessional Fees\nProfessional fees decreased from $84,168 to $26,601. This decrease was driven by a decline in cannabis licensing projects.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Cash provided by (used in) operations",
+     "",
+     "(52,940)",
+     "",
+     "",
+     "(246,409)",
+     ""
+    ],
+    [
+     "Cash received upon sale of subsidiary",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash provided by (used in) investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash provided by (used in) financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "270,000",
+     ""
+    ],
+    [
+     "Changes in exchange rates",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 769,
+    "end_line": 780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On September 10, 2020, Hero Technologies Inc. formed the company Blackbox Technologies and Systems LLC and entered into an operating agreement. The name was subsequently changed to Blackbox Systems and Technologies LLC. The Blackbox project consists of environmental growth chambers for the cultivation of large flowering plants based on aeroponic technology. On November 3, 2020, the Company purchased Veteran Hemp Co., which operates an international retail and wholesale online store selling cannabis and cannabidiol. On November 4, 2020, the Company purchased a www.highlrelaxing.com and began selling CBD topicals and rubs under the name \u201cHighly Relaxing\u201d. Today, Hero Technologies Inc. is a cannabis company with a vertically integrated business model and plan that includes cannabis genetic engineering, farmland for medical and recreational cannabis cultivation, production licenses, distribution licenses, consumer packaging, retail operations and dispensaries. The Company focuses on two principal segments of the cannabis industry, (i) cultivation and (ii) the dispensary business model, including combinations. The Company is an expanding vertically integrated, cannabis operator, focusing on high-growth markets. Hero Technologies Inc. pairs premier seed genetics and growing techniques, with plans to utilize and expand its growing technology/techniques to all its facilities and operations. The Company\u2019s business model includes cultivation, licensing operations, processing operations, processing facilities, sale of products, brand creation, and technology development.\nCapital Resources and Liquidity\nOverview\nSince our inception, we have recognized limited revenue from our core cannabis operations and have incurred operating losses and negative cash flows from our operations. We have not yet commercialized any product from our planned aeroponic cultivation of cannabis, and we do not expect to generate revenue until completion of greenhouse buildouts. Since our inception through March 2022, we have funded our operations through proceeds from the sale of stock, borrowings on debt, and shares issued for service. We expect our existing cash and cash equivalents, together with the anticipated net proceeds from this offering, to enable us to fund our operating expenses and capital expenditure requirements for the foreseeable future.\nOur sources and (uses) of cash for the three months ended March 31, 2022 and 2021 are shown below:",
+   "prose_after": "Our material capital commitments for the three months ending March 31, 2022 are:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Amount",
+     ""
+    ],
+    [
+     "(Include all amounts pertaining to Blackbox, cannabis licensing, pre-acquisition development, land acquisition construction, etc.)",
+     "$",
+     "9,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 783,
+    "end_line": 788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our material capital commitments for the three months ending March 31, 2022 are:",
+   "prose_after": "Operating Activities\nDuring the year ended March 31, 2021, we used $246,409 of cash in operating activities. Cash used in operating activities reflected our net loss of $2,737,744, offset by operating assets and liabilities of $29,796. There were non-cash charges of approximately 2,409,510. The primary use of cash was to fund our operations related to compensation.\nDuring the three months ended March 31, 2022, we used $52,940 of cash in operating activities. Cash used in operating activities reflected our net loss of $245,969 and a net decrease of $21,475 in our operating assets and liabilities. The primary use of cash was to fund our operations related to compensation expenses, consulting expenses, and professional fees.\nInvesting Activities\nDuring the three months ended March 31, 2021 we used $2,737,744 in non-cash investing activities. During the three months ended March 31, 2022, we received $0 for investing activities.\nFinancing Activities\nDuring the three months ended March 31, 2021, financing activities provided $270,000 for proceeds from the sale of stock. During the three months ended March 31, 2022, we received $0 from financing activities.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 815,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation, as amended *"
+    ],
+    [
+     "3.2",
+     "Bylaws *"
+    ],
+    [
+     "10.2",
+     "Advisory and Consulting Agreement with Gina Serkasevich *"
+    ],
+    [
+     "21.1",
+     "Subsidiaries *"
+    ],
+    [
+     "31.1",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32",
+     "Certification pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1005,
+    "end_line": 1023
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On March 15, 2022, the Company issued 2,000,000 shares to Topline Holdings Inc at $0.051 per share.\nThe Company relied upon the exemption provided by Section 4(a)(2) of the Securities Act of 1933 in connection with sale of these securities. The persons who acquired these securities were sophisticated investors and were provided full information regarding the Company\u2019s operations. There was no general solicitation in connection with the sale of these securities. The persons who acquired these securities acquired them for their own accounts. The securities cannot be sold except pursuant to an effective registration statement or an exemption from registration. No commission was paid in connection with the sale of these securities.\nItem 3. Defaults Upon Senior Securities.\nNot applicable.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nNot applicable.\nItem 6. Exhibits.\nThe following exhibits are filed with or incorporated by referenced in this report:",
+   "prose_after": "__________________\n* Incorporated by reference to the same\nSIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "HERO TECHNOLOGIES, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATED: May 16, 2022",
+     "By:",
+     "/s/ Gina Serkasevich",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Gina Serkasevich, Principal Executive,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Financial and Accounting Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "HERO TECHNOLOGIES, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1034,
+    "end_line": 1042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "__________________\n* Incorporated by reference to the same\nSIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1043,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

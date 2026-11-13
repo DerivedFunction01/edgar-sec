@@ -1,0 +1,4068 @@
+{
+ "accession": "0001493152-26-023833",
+ "cik": "0001866816",
+ "form": "10-Q",
+ "filing_date": "2026-05-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "87-0816957"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(MARK ONE)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarter ended March 31, 2026\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 001-41034\nSYNTEC OPTICS HOLDINGS, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "515 Lee Rd.\nRochester, NY 14606\n(Address of principal executive offices and zip code)\n(585) 464-9336\n(Registrant\u2019s telephone number including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, par value $0.0001 per share",
+     "OPTX",
+     "The Nasdaq Capital Market"
+    ],
+    [
+     "Redeemable warrants, exercisable for shares of common stock at an exercise price of $11.50 per share",
+     "OPTXW",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 44,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "515 Lee Rd.\nRochester, NY 14606\n(Address of principal executive offices and zip code)\n(585) 464-9336\n(Registrant\u2019s telephone number including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Check whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Part I. FINANCIAL INFORMATION",
+     "1"
+    ],
+    [
+     "Item 1. Interim Unaudited Condensed Consolidated Financial Statements",
+     "1"
+    ],
+    [
+     "Condensed Consolidated Balance Sheets as of March 31, 2026 (Unaudited) and December 31, 2025",
+     "1"
+    ],
+    [
+     "Condensed Consolidated Statements of Operations for the Three Months ended March 31, 2026 and 2025 (Unaudited)",
+     "2"
+    ],
+    [
+     "Condensed Consolidated Statements of Changes in Stockholders\u2019 Equity for the Three Months Ended March 31, 2026 and 2025 (Unaudited)",
+     "3"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2026 and 2025 (Unaudited)",
+     "5"
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements (Unaudited)",
+     "6"
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "12"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures Regarding Market Risk",
+     "19"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "20"
+    ],
+    [
+     "Part II. OTHER INFORMATION",
+     "22"
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "22"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "22"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "22"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "Item 5. Other Information",
+     "22"
+    ],
+    [
+     "Item 6. Exhibits",
+     "23"
+    ],
+    [
+     "SIGNATURES",
+     "24"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of May 12, 2026, there were 40,279,878 shares of Class A common stock, par value $0.0001 per share, issued and outstanding.\nFORM 10-Q FOR THE QUARTER ENDED MARCH 31, 2026\nTABLE OF CONTENTS",
+   "prose_after": "PART I - FINANCIAL INFORMATION\nItem 1. Interim Unaudited Condensed Consolidated Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS\nMARCH 31, 2026 AND DECEMBER 31, 2025",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026 (unaudited)",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "617,007",
+     "$",
+     "358,867"
+    ],
+    [
+     "Accounts Receivable, Net",
+     "",
+     "5,439,501",
+     "",
+     "6,241,768"
+    ],
+    [
+     "Inventory",
+     "",
+     "7,798,397",
+     "",
+     "7,884,943"
+    ],
+    [
+     "Prepaid Expenses and Other Assets",
+     "",
+     "509,110",
+     "",
+     "655,827"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "14,364,015",
+     "",
+     "15,141,405"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, Net",
+     "",
+     "9,137,149",
+     "",
+     "9,172,703"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "23,501,164",
+     "$",
+     "24,314,108"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "2,433,745",
+     "$",
+     "2,691,748"
+    ],
+    [
+     "Accrued Expenses",
+     "",
+     "855,915",
+     "",
+     "683,397"
+    ],
+    [
+     "Federal Income Tax Payable",
+     "",
+     "169,582",
+     "",
+     "169,582"
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "74,794",
+     "",
+     "66,420"
+    ],
+    [
+     "Line of Credit",
+     "",
+     "6,763,863",
+     "",
+     "6,763,863"
+    ],
+    [
+     "Current Maturities of Debt Obligations",
+     "",
+     "94,586",
+     "",
+     "93,358"
+    ],
+    [
+     "Current Maturities of Debt Obligations - Related Party",
+     "",
+     "463,530",
+     "",
+     "406,495"
+    ],
+    [
+     "Current Maturities of Finance Lease Obligations",
+     "",
+     "361,717",
+     "",
+     "354,499"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "11,217,732",
+     "",
+     "11,229,362"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Debt Obligations",
+     "",
+     "1,246,936",
+     "",
+     "1,267,043"
+    ],
+    [
+     "Long-Term Debt Obligations - Related Party",
+     "",
+     "1,005,203",
+     "",
+     "862,237"
+    ],
+    [
+     "Long-Term Finance Lease Obligations",
+     "",
+     "1,313,295",
+     "",
+     "1,414,611"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Long-Term Liabilities",
+     "",
+     "3,565,434",
+     "",
+     "3,543,891"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "14,783,166",
+     "",
+     "14,773,253"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CL A Common Stock, Par value $.0001 per share; 121,000,000 authorized; 36,994,164 issued and outstanding as of March 31, 2026; 36,920,226 issued and outstanding as of December 31, 2025;",
+     "",
+     "3,699",
+     "",
+     "3,692"
+    ],
+    [
+     "Additional Paid-In Capital",
+     "",
+     "2,752,174",
+     "",
+     "2,677,181"
+    ],
+    [
+     "Retained Earnings",
+     "",
+     "5,962,125",
+     "",
+     "6,859,982"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "8,717,998",
+     "",
+     "9,540,855"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "23,501,164",
+     "$",
+     "24,314,108"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 106,
+    "end_line": 167
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I - FINANCIAL INFORMATION\nItem 1. Interim Unaudited Condensed Consolidated Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS\nMARCH 31, 2026 AND DECEMBER 31, 2025",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE THREE MONTHS ENDED MARCH 31, 2026 AND 2025",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 100,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "6,513,366",
+     "",
+     "$",
+     "7,069,042",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "5,552,574",
+     "",
+     "",
+     "4,760,424",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "960,792",
+     "",
+     "",
+     "2,308,618",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "",
+     "1,736,839",
+     "",
+     "",
+     "1,780,166",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income from Operations",
+     "",
+     "(776,047)",
+     "",
+     "",
+     "528,452",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (Expense) Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "69,300",
+     "",
+     "",
+     "5,697",
+     ""
+    ],
+    [
+     "Interest Expense, Including Amortization of Debt Issuance Costs",
+     "",
+     "(191,110)",
+     "",
+     "",
+     "(200,896)",
+     ""
+    ],
+    [
+     "Total Other Expense",
+     "",
+     "(121,810)",
+     "",
+     "",
+     "(195,199)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income Before Provision for (Benefit) Income Taxes",
+     "",
+     "(897,857)",
+     "",
+     "",
+     "333,253",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "9,588",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(897,857)",
+     "",
+     "$",
+     "323,665",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) Income per Common Share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "0.01",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Number of Common Shares Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "36,953,087",
+     "",
+     "",
+     "36,920,226",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 176,
+    "end_line": 215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE THREE MONTHS ENDED MARCH 31, 2026 AND 2025",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2026",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 170,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2025",
+     "",
+     "36,920,226",
+     "$",
+     "3,692",
+     "$",
+     "2,677,181",
+     "$",
+     "6,859,982",
+     "",
+     "$",
+     "9,540,855",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(897,857)",
+     "",
+     "",
+     "(897,857)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-Based Compensation",
+     "",
+     "73,938",
+     "",
+     "7",
+     "",
+     "74,993",
+     "",
+     "-",
+     "",
+     "",
+     "75,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, March 31, 2026",
+     "",
+     "36,994,164",
+     "$",
+     "3,699",
+     "$",
+     "2,752,174",
+     "$",
+     "5,962,125",
+     "",
+     "$",
+     "8,717,998",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 224,
+    "end_line": 241
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2026",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2025",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 244,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Earnings",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2024",
+     "",
+     "36,688,266",
+     "$",
+     "3,669",
+     "$",
+     "2,377,204",
+     "",
+     "$",
+     "8,653,209",
+     "$",
+     "11,034,082"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "323,665",
+     "",
+     "323,665"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-Based Compensation",
+     "",
+     "231,960",
+     "",
+     "23",
+     "",
+     "(23)",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, March 31, 2025",
+     "",
+     "36,920,226",
+     "$",
+     "3,692",
+     "$",
+     "2,377,181",
+     "",
+     "$",
+     "8,976,874",
+     "$",
+     "11,357,747"
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 250,
+    "end_line": 267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2025",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE THREE MONTHS ENDED MARCH 31, 2026 AND 2025",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 244,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(897,857)",
+     "",
+     "$",
+     "323,665",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile (Loss) Income to Net Cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provided By Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "539,682",
+     "",
+     "",
+     "710,804",
+     ""
+    ],
+    [
+     "Amortization of Debt Issuance Costs",
+     "",
+     "4,170",
+     "",
+     "",
+     "2,416",
+     ""
+    ],
+    [
+     "Stock-Based Compensation",
+     "",
+     "75,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in Allowance for Expected Credit Losses",
+     "",
+     "105,195",
+     "",
+     "",
+     "(15,244)",
+     ""
+    ],
+    [
+     "Change in Reserve for Obsolescence",
+     "",
+     "2,298",
+     "",
+     "",
+     "50,345",
+     ""
+    ],
+    [
+     "(Increase) Decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "697,072",
+     "",
+     "",
+     "(568,310)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "84,248",
+     "",
+     "",
+     "(692,092)",
+     ""
+    ],
+    [
+     "Prepaid Expenses and Other Assets",
+     "",
+     "146,717",
+     "",
+     "",
+     "33,487",
+     ""
+    ],
+    [
+     "Increase (Decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payables and Accrued Expenses",
+     "",
+     "(295,288)",
+     "",
+     "",
+     "279,142",
+     ""
+    ],
+    [
+     "Federal Income Tax Payable",
+     "",
+     "-",
+     "",
+     "",
+     "179,376",
+     ""
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "8,374",
+     "",
+     "",
+     "(4,299)",
+     ""
+    ],
+    [
+     "Net Cash Provided By Operating Activities",
+     "",
+     "469,611",
+     "",
+     "",
+     "299,290",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of Property and Equipment",
+     "",
+     "(294,325)",
+     "",
+     "",
+     "(214,731)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "(294,325)",
+     "",
+     "",
+     "(214,731)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowing on Debt Obligations - Related Parties",
+     "",
+     "200,001",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayments on Debt Obligations",
+     "",
+     "(23,049)",
+     "",
+     "",
+     "(114,277)",
+     ""
+    ],
+    [
+     "Repayments on Finance Lease Obligations",
+     "",
+     "(94,098)",
+     "",
+     "",
+     "(28,165)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided By (Used in) Financing Activities",
+     "",
+     "82,854",
+     "",
+     "",
+     "(142,442)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "258,140",
+     "",
+     "",
+     "(57,883)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Beginning",
+     "",
+     "358,867",
+     "",
+     "",
+     "598,787",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Ending",
+     "$",
+     "617,007",
+     "",
+     "$",
+     "540,904",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Disclosures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Interest",
+     "$",
+     "159,714",
+     "",
+     "$",
+     "201,956",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Non-Cash Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets Acquired and Included in Accounts Payable",
+     "$",
+     "209,803",
+     "",
+     "$",
+     "168,628",
+     ""
+    ],
+    [
+     "Issuance of common stock for stock-based compensation",
+     "$",
+     "7",
+     "",
+     "$",
+     "23",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 276,
+    "end_line": 335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE THREE MONTHS ENDED MARCH 31, 2026 AND 2025",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed consolidated financial statements.\nNote 1 \u2014 Description of Organization and Business Operations\nNature of Business\nSyntec Optics Holdings, Inc. (the \u201cCompany\u201d or \u201cSyntec Optics\u201d) is a vertically integrated manufacturer of optics and photonics components and sub-systems \u2013 from opto-mechanicals to optical elements of various geometries, diamond turned optics \u2013 both prototype and production, and optical systems including optics assembly, electro-optics assembly, design, and coating. Sales are made to customers in the United States and Europe in defense, medical, and consumer end-markets. The Company has one reporting segment as its operating segments meet the requirements for aggregation.\nNote 2 \u2014 Summary of Significant Accounting Policies\nThe Company has provided a discussion of significant accounting policies, estimates and judgements in its 2025 Annual Report. There have been no changes to the Company\u2019s significant accounting policies since December 31, 2025.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 338,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products",
+     "$",
+     "6,460,593",
+     "$",
+     "6,920,222"
+    ],
+    [
+     "Custom Tooling",
+     "",
+     "23,889",
+     "",
+     "118,820"
+    ],
+    [
+     "Non-Recurring Engineering",
+     "",
+     "28,884",
+     "",
+     "30,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,513,366",
+     "$",
+     "7,069,042"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 370,
+    "end_line": 384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 Disaggregated Revenues"
+    }
+   },
+   "prose_before": "During the preparation of the Company\u2019s interim condensed consolidated financial statements as of and for the three months ended March 31, 2026, the Company identified an immaterial classification error related to the presentation of long-term debt obligations on the consolidated balance sheet as of December 31, 2025. Specifically, Long-Term Debt Obligations - Related Party, previously reported as $1,268,732 should have been $862,237, with the remaining $406,495 should have been classified within Long-Term Debt Obligations. Accordingly, the Company revised the December 31, 2025 presentation to reclassify $406,495 from Long-Term Debt Obligations - Related Party to Long-Term Debt Obligations, as noted on the condensed consolidated balance sheet herein. The revision had no effect on total liabilities, stockholders\u2019 equity, results of operations, cash flows, or basic and diluted loss per share.\nNote 3 \u2014 Disaggregated Revenues\nThe following table disaggregates revenue by revenue recognition methodologies for the three months ended March 31:\nSchedule of Disaggregated Revenues",
+   "prose_after": "Syntec Optics\u2019 management periodically reviews its revenues by its consumer, communication, medical, and defense end-markets. The purpose of this analysis is to determine its end market mix and identify trends. The following table disaggregates revenue as outlined above for the three months ended March 31:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 362,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 403,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Communication",
+     "$",
+     "1,844,262",
+     "$",
+     "1,861,378"
+    ],
+    [
+     "Consumer",
+     "",
+     "1,593,688",
+     "",
+     "1,163,289"
+    ],
+    [
+     "Defense",
+     "",
+     "1,556,286",
+     "",
+     "1,558,502"
+    ],
+    [
+     "Medical",
+     "",
+     "1,519,130",
+     "",
+     "2,485,873"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,513,366",
+     "$",
+     "7,069,042"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 387,
+    "end_line": 402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 Disaggregated Revenues"
+    }
+   },
+   "prose_before": "Syntec Optics\u2019 management periodically reviews its revenues by its consumer, communication, medical, and defense end-markets. The purpose of this analysis is to determine its end market mix and identify trends. The following table disaggregates revenue as outlined above for the three months ended March 31:",
+   "prose_after": "Note 4 \u2014 Inventory\nInventory consists of the following at March 31, 2026 and December 31, 2025:\nSchedule of Inventory",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 362,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 403,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw Materials",
+     "$",
+     "364,404",
+     "$",
+     "360,280"
+    ],
+    [
+     "Work-in-Process",
+     "",
+     "7,823,916",
+     "",
+     "7,956,924"
+    ],
+    [
+     "Finished Goods",
+     "",
+     "195,947",
+     "",
+     "151,311"
+    ],
+    [
+     "Inventory gross",
+     "",
+     "8,384,267",
+     "",
+     "8,468,515"
+    ],
+    [
+     "Less: Reserve for Obsolescence",
+     "",
+     "585,870",
+     "",
+     "583,572"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "$",
+     "7,798,397",
+     "$",
+     "7,884,943"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 411,
+    "end_line": 426
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014 Inventory"
+    }
+   },
+   "prose_before": "Note 4 \u2014 Inventory\nInventory consists of the following at March 31, 2026 and December 31, 2025:\nSchedule of Inventory",
+   "prose_after": "Note 5 \u2014 Property and Equipment\nProperty and equipment consists of the following at March 31, 2026 and December 31, 2025:\nSchedule of Property and Equipment",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 403,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Machinery and Equipment",
+     "$",
+     "35,045,729",
+     "$",
+     "34,541,704"
+    ],
+    [
+     "Building and Leasehold Improvements",
+     "",
+     "5,483,617",
+     "",
+     "5,483,616"
+    ],
+    [
+     "Land",
+     "",
+     "130,000",
+     "",
+     "130,000"
+    ],
+    [
+     "Office Furniture and Equipment",
+     "",
+     "2,295,749",
+     "",
+     "2,295,748"
+    ],
+    [
+     "Tooling",
+     "",
+     "169,408",
+     "",
+     "169,307"
+    ],
+    [
+     "Vehicles",
+     "",
+     "24,059",
+     "",
+     "24,059"
+    ],
+    [
+     "Property and Equipment Gross",
+     "",
+     "43,148,562",
+     "",
+     "42,644,434"
+    ],
+    [
+     "Less: Accumulated Depreciation",
+     "",
+     "34,011,413",
+     "",
+     "33,471,731"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, Net",
+     "$",
+     "9,137,149",
+     "$",
+     "9,172,703"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 433,
+    "end_line": 451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 Property and Equipment"
+    }
+   },
+   "prose_before": "Note 5 \u2014 Property and Equipment\nProperty and equipment consists of the following at March 31, 2026 and December 31, 2025:\nSchedule of Property and Equipment",
+   "prose_after": "Depreciation expenses were $539,682 and $710,804 for the three months ended March 31, 2026 and 2025, respectively.\nNote 6 \u2014 Line of Credit\nThe Company has a line of credit available in the amount of $7,500,000 with M&T Bank (the \u201cCredit Agreement\u201d). Borrowings may be made against the line of credit as Secured Overnight Financing Rate (\u201cSOFR\u201d) Loans. The weighted average rate on outstanding borrowings as of March 31, 2026 was 7.31%. As of March 31, 2026 and December 31, 2025, the Company had $6,763,863 outstanding under the line of credit facility, for both periods.\nThe Credit Agreement contains customary covenants and restrictions on the Company\u2019s ability to engage in certain activities and financial covenants requiring the Company to maintain certain financial ratios. As of March 31, 2026, the Company was not in compliance with certain financial covenants under its Amended and Restated Credit Agreement with M&T Bank, including the minimum fixed charge coverage ratio of 1.10:1.00 and the maximum total leverage ratio of 4.75:1.00.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 403,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The Company entered into a $863,607 mortgage note payable, securitized by the Company\u2019s real estate and cross-collateralized with all Company assets, with M&T Bank, requiring monthly installments of $7,389, including interest at a fixed rate of 6.13%. The note matures in February 2029.",
+     "$",
+     "789,074",
+     "$",
+     "799,052"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The Company entered into a $1,064,000 term note payable with the U.S. Small Business Administration, requiring monthly installments of $6,652, including fees and interest at a fixed rate of 2.22%. The note matures in June 2036. The note is secured by certain assets of the Company and a personal guaranty of the Company\u2019s stockholder.",
+     "",
+     "603,369",
+     "",
+     "616,440"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "On November 13, 2025, the Company entered into a $1,268,732 Stockholder Loan, the proceeds of which were applied to pay down the M&T term notes above. The note is subject to an M&T Bank subordination agreement which may limit any repayments. The note amortization calls for monthly payments of $40,031.03 at 6.95% effective annual rate and matures on October 31, 2028. On February 28, 2026, the Company borrowed an additional $200,000 from the same stockholder with identical terms, other than the second loan matures on January 31, 2029.",
+     "",
+     "1,468,733",
+     "",
+     "1,268,732"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Long-Term Debt",
+     "",
+     "2,861,176",
+     "",
+     "2,684,224"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Unamortized Debt Issuance Costs",
+     "",
+     "50,921",
+     "",
+     "55,091"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Debt, Less Unamortized Debt Issuance Costs",
+     "",
+     "2,810,255",
+     "",
+     "2,629,133"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Current Maturities",
+     "",
+     "558,116",
+     "",
+     "499,853"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Debt",
+     "$",
+     "2,252,139",
+     "$",
+     "2,129,280"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 476,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 Long-Term Debt"
+    }
+   },
+   "prose_before": "On May 13, 2026, the Company received a waiver letter with M&T Bank related to the Company\u2019s noncompliance with certain financial covenants under its Amended and Restated Credit Agreement as of March 31, 2026, including the minimum Fixed Charge Coverage Ratio and maximum Total Leverage Ratio, as well as certain mandatory prepayment provisions related to the Company\u2019s April 2026 equity offering. In connection with the waiver, the Company paid down the outstanding balance on its line of credit to zero as of May 13, 2026 and paid a waiver fee of $50,000.\nPursuant to the waiver letter, the Company is required to maintain a minimum of $7.5 million of liquidity invested with M&T Bank. In addition, the previous minimum Fixed Charge Coverage Ratio and maximum Total Leverage Ratio financial covenants were removed from the Credit Agreement, and the maturity date of the Company\u2019s $7.5 million revolving credit facility was extended to June 30, 2027.\nNote 7 \u2014 Long-Term Debt\nLong-term debt consists of the following at March 31, 2026 and December 31, 2025:\nSchedule of Long Term Debt Maturities",
+   "prose_after": "At March 31, 2026, the future debt maturities are as follows:\nSchedule of Long Term Future Debt Maturities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2026",
+     "$",
+     "413,981"
+    ],
+    [
+     "2027",
+     "",
+     "590,334"
+    ],
+    [
+     "2028",
+     "",
+     "733,808"
+    ],
+    [
+     "2029",
+     "",
+     "105,525"
+    ],
+    [
+     "2030",
+     "",
+     "109,886"
+    ],
+    [
+     "Thereafter",
+     "",
+     "907,642"
+    ],
+    [
+     "Total",
+     "$",
+     "2,861,176"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 511,
+    "end_line": 522
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 Long-Term Debt"
+    }
+   },
+   "prose_before": "At March 31, 2026, the future debt maturities are as follows:\nSchedule of Long Term Future Debt Maturities",
+   "prose_after": "Note 8 \u2014 Retirement Plan\nThe Company maintains a 401(k) retirement plan covering eligible employees of the Company and its affiliates. Under the plan, participants may defer up to 6% of their annual compensation, with Syntec Optics matching 50% of employee contributions. Total contributions for the Company for the three months ended March 31, 2026 and 2025 amounted to $42,000 and $49,000, respectively.\nNote 9 \u2014 Income Taxes\nThe income tax provision for interim periods is determined using an estimate of the annual effective tax rate, adjusted for discrete items, if any, that are taken into account in the relevant period. Each quarter, the estimate of the annual effective tax rate is updated, and if the estimated effective tax rate changes, a cumulative adjustment is made.\nThe effective income tax rate was (32.5%) and 20.3% for the three months ended March 31, 2026 and 2025, respectively.\nNote 10 \u2014 Leases\nDuring 2024, the Company entered into finance lease agreements for equipment utilized in its manufacturing facility.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Finance Lease Cost:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of assets",
+     "",
+     "82,156",
+     "",
+     "82,157"
+    ],
+    [
+     "Interest on liabilities",
+     "",
+     "34,514",
+     "",
+     "41,764"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "116,670",
+     "$",
+     "123,921"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 543,
+    "end_line": 557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 Leases"
+    }
+   },
+   "prose_before": "The Company maintains a 401(k) retirement plan covering eligible employees of the Company and its affiliates. Under the plan, participants may defer up to 6% of their annual compensation, with Syntec Optics matching 50% of employee contributions. Total contributions for the Company for the three months ended March 31, 2026 and 2025 amounted to $42,000 and $49,000, respectively.\nNote 9 \u2014 Income Taxes\nThe income tax provision for interim periods is determined using an estimate of the annual effective tax rate, adjusted for discrete items, if any, that are taken into account in the relevant period. Each quarter, the estimate of the annual effective tax rate is updated, and if the estimated effective tax rate changes, a cumulative adjustment is made.\nThe effective income tax rate was (32.5%) and 20.3% for the three months ended March 31, 2026 and 2025, respectively.\nNote 10 \u2014 Leases\nDuring 2024, the Company entered into finance lease agreements for equipment utilized in its manufacturing facility.\nThe components of operating and finance lease costs are as follows for the three months ended March 31:\nSchedule of Operating Lease and Finance Lease Costs",
+   "prose_after": "Supplemental cash flow information related to leases are as follows for the three months ended March 31:\nSchedule of Cash Flow Information Related To Leases",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in measurement of lease obligations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "",
+     "34,514",
+     "",
+     "41,764"
+    ],
+    [
+     "Financing cash flows from finance leases",
+     "$",
+     "94,098",
+     "$",
+     "28,165"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 562,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 Leases"
+    }
+   },
+   "prose_before": "Supplemental cash flow information related to leases are as follows for the three months ended March 31:\nSchedule of Cash Flow Information Related To Leases",
+   "prose_after": "The following table summarizes weighted average remaining lease term and discount rates as of March 31, 2026, and December 31, 2025:\nSchedule of Weighted Average Remaining Lease Term",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2026",
+     "",
+     "",
+     "December 31, 2025",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term (years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "3.76",
+     "",
+     "",
+     "4.00",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "N/A",
+     "",
+     "",
+     "N/A",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "8.4",
+     "%",
+     "",
+     "8.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 Leases"
+    }
+   },
+   "prose_before": "The following table summarizes weighted average remaining lease term and discount rates as of March 31, 2026, and December 31, 2025:\nSchedule of Weighted Average Remaining Lease Term",
+   "prose_after": "Future maturities of our lease liabilities are as follows as of March 31, 2026:\nSchedule of Future Maturities of Lease Liabilities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2026 remainder of year",
+     "$",
+     "385,143",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "513,525",
+     ""
+    ],
+    [
+     "2028",
+     "",
+     "513,525",
+     ""
+    ],
+    [
+     "2029",
+     "",
+     "513,524",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Undiscounted Lease Obligations",
+     "",
+     "1,925,717",
+     ""
+    ],
+    [
+     "Less: Imputed Interest",
+     "",
+     "(250,705)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Present Value of Lease Obligations",
+     "$",
+     "1,675,012",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 Leases"
+    }
+   },
+   "prose_before": "Future maturities of our lease liabilities are as follows as of March 31, 2026:\nSchedule of Future Maturities of Lease Liabilities",
+   "prose_after": "Note 11 \u2014 Warrants\nThe following tables presents a roll-forward of the Company\u2019s warrants from December 31, 2025 to March 31, 2026:\nSchedule of Warrant",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock Warrants",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding, December 31, 2025",
+     "",
+     "14,107,989"
+    ],
+    [
+     "Warrants exercised",
+     "",
+     "-"
+    ],
+    [
+     "Warrants outstanding, March 31, 2026",
+     "",
+     "14,107,989"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock Warrants"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2014 Warrants"
+    }
+   },
+   "prose_before": "Note 11 \u2014 Warrants\nThe following tables presents a roll-forward of the Company\u2019s warrants from December 31, 2025 to March 31, 2026:\nSchedule of Warrant",
+   "prose_after": "Note 12 \u2014 (Loss) Income Per Share\nThe following table sets forth the information needed to compute basic and diluted (loss) income per share for the three months ended March 31, 2026 and 2025:\nSchedule of Basic And Diluted (Loss) Income Per Share",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\nMarch 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Basic and diluted net (loss) income per share:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(897,857)",
+     "",
+     "$",
+     "323,665"
+    ],
+    [
+     "Basic and diluted net (loss) income per share",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "0.01"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding",
+     "",
+     "36,953,087",
+     "",
+     "",
+     "36,920,226"
+    ],
+    [
+     "Diluted Shares",
+     "",
+     "36,953,087",
+     "",
+     "",
+     "36,920,226"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\nMarch 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 632,
+    "end_line": 652
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Interim Unaudited Condensed Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014 (Loss) Income Per Share"
+    }
+   },
+   "prose_before": "Note 12 \u2014 (Loss) Income Per Share\nThe following table sets forth the information needed to compute basic and diluted (loss) income per share for the three months ended March 31, 2026 and 2025:\nSchedule of Basic And Diluted (Loss) Income Per Share",
+   "prose_after": "Note 13 \u2014 Significant Customers\nFor the three months ended March 31, 2026, the Company generated 53% of revenues from three customers. These three customers are in different end-markets utilizing diverse manufacturing capabilities from the Company. The outstanding accounts receivable due from these customers were approximately $2.5 million as of March 31, 2026.\nFor the three months ended March 31, 2025, the Company generated 46% of revenues from three customers. The outstanding accounts receivable due from these customers were approximately $3.3 million as of March 31, 2025.\nNote 14 \u2014 Segment reporting\nThe Company operates as one operating segment. The Company\u2019s chief operating decision maker (\u201cCODM\u201d) is its Chief Executive Officer, who reviews the financial statements on a consolidated basis. The CODM uses the Company\u2019s long-range plan to allocate resources. The CODM makes decisions on resource allocation, assessments of performance, and monitors budget versus actual results using consolidated loss from operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 683,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nMarch 31,\n\n2026",
+     "",
+     "",
+     "% of Net Sales",
+     "",
+     "",
+     "Three Months Ended\n\n\n\nMarch 31,\n\n2025",
+     "",
+     "",
+     "% of Net Sales",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "6,513,366",
+     "",
+     "",
+     "100",
+     "%",
+     "$",
+     "7,069,042",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "5,552,574",
+     "",
+     "",
+     "85",
+     "%",
+     "",
+     "4,760,424",
+     "",
+     "",
+     "67",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "",
+     "960,792",
+     "",
+     "",
+     "15",
+     "%",
+     "",
+     "2,308,618",
+     "",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "General and Administrative Expenses",
+     "",
+     "1,736,839",
+     "",
+     "",
+     "27",
+     "%",
+     "",
+     "1,780,166",
+     "",
+     "",
+     "25",
+     "%"
+    ],
+    [
+     "(Loss) Income from Operations",
+     "",
+     "(776,047)",
+     "",
+     "",
+     "-12",
+     "%",
+     "",
+     "528,452",
+     "",
+     "",
+     "7",
+     "%"
+    ],
+    [
+     "Other (Expense) Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (Expense) Income",
+     "",
+     "69,300",
+     "",
+     "",
+     "1",
+     "%",
+     "",
+     "5,697",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Interest Expense, Including Amortization of Debt Issuance Costs",
+     "",
+     "(191,110)",
+     "",
+     "",
+     "-3",
+     "%",
+     "",
+     "(200,896)",
+     "",
+     "",
+     "-3",
+     "%"
+    ],
+    [
+     "Total Other Expense",
+     "",
+     "(121,810)",
+     "",
+     "",
+     "-2",
+     "%",
+     "",
+     "(195,199)",
+     "",
+     "",
+     "-3",
+     "%"
+    ],
+    [
+     "(Loss) Income Before Benefit From Provision for Income Taxes",
+     "",
+     "(897,857)",
+     "",
+     "",
+     "-14",
+     "%",
+     "",
+     "333,253",
+     "",
+     "",
+     "5",
+     "%"
+    ],
+    [
+     "Provision for (Benefit From) Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "9,588",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(897,857)",
+     "",
+     "",
+     "-14",
+     "%",
+     "$",
+     "323,665",
+     "",
+     "",
+     "5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "Gross profit, calculated as net sales less cost of goods sold, may vary between periods and is primarily affected by various factors including average selling prices, product costs, product mix, customer mix and production volumes.\nOperating Expenses\nGeneral and Administrative\nGeneral and administrative costs include personnel-related expenses attributable to our executive, finance, human resources, selling and marketing, and information technology organizations, certain facility costs, office related depreciation, and fees for professional services.\nTotal Other Income (Expense)\nOther income (expense) consists primarily of interest expense and debt issuance costs.\nResults of Operations\nComparisons for the Three Months Ended March 31, 2026 and 2025\nThe following table sets forth our results of operations for the three months ended March 31, 2026 and 2025, respectively. This data should be read together with our financial statements and related notes included elsewhere in this Quarterly Report and is qualified in its entirety by reference to such financial statements and related notes.",
+   "prose_after": "Net Sales\nNet sales decreased by $0.6 million, or 8%, to $6.5 million for the three months ended March 31, 2026, as compared to $7.1 million for the three months ended March 31, 2025. This decrease was primarily due to decreases in medical markets of $1.0 million, partially offset by an increase in the consumer market of $0.4 million.\nCost of Goods Sold\nCost of revenue increased by $0.8 million, to $5.6 million for the three months ended March 31, 2026, as compared to $4.8 million for the three months ended March 31, 2025. This increase was primarily due to an increase in material costs, particularly for aluminum.\nGross Profit\nGross profit decreased by 58%, to $1.0 million for the three months ended March 31, 2026, as compared to $2.3 million for the three months ended March 31, 2025. This decrease was primarily due to the decrease in revenue and the increase in costs of goods sold, as detailed above.\nGeneral and Administrative Expenses\nGeneral and administrative expenses remained flat, decreasing slightly by 2% for the quarter ended March 31, 2026, as compared to the same period for 2025.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Net (Loss) Income",
+     "$",
+     "(897,857)",
+     "",
+     "$",
+     "323,665"
+    ],
+    [
+     "Stock-Based Compensation Expense BOD (1)",
+     "",
+     "75,000",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Depreciation",
+     "",
+     "539,682",
+     "",
+     "",
+     "710,804"
+    ],
+    [
+     "Amortization of Debt Issuance Costs",
+     "",
+     "4,170",
+     "",
+     "",
+     "2,416"
+    ],
+    [
+     "Interest Expenses",
+     "",
+     "159,714",
+     "",
+     "",
+     "201,956"
+    ],
+    [
+     "Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "9,588"
+    ],
+    [
+     "Non-Recurring Items",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Executive Transition (2)",
+     "",
+     "-",
+     "",
+     "",
+     "113,944"
+    ],
+    [
+     "One-time Contract exit costs",
+     "",
+     "-",
+     "",
+     "",
+     "4,675"
+    ],
+    [
+     "Non-recurring property damage",
+     "",
+     "23,211",
+     "",
+     "",
+     "21,261"
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "(96,080)",
+     "",
+     "$",
+     "1,388,309"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 870,
+    "end_line": 887
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "We define adjusted EBITDA, a non-GAAP financial measure, as net earnings (loss) before interest and other expenses, net, income tax expense, depreciation and amortization, as adjusted to exclude non-recurring items. We utilize adjusted EBITDA as an internal performance measure in the management of our operations because we believe the exclusion of these non-cash and non-recurring charges allow for a more relevant comparison of our results of operations to other companies in our industry and is in accordance with the Non-GAAP Financial Measures Compliance & Disclosure Interpretations (Reference Question 102.03).\nThe Company has identified several non-recurring items included in our non-GAAP adjusted EBITDA financial measure. These items encompass management fees, professional & transaction fees, technology start-up costs, optical molding evaluation expenses, glass molding evaluation expenses, and executive transition expenses.\nThe table below presents our adjusted EBITDA, reconciled to net income for the three months ended March 31, 2026 and 2025.\nNON-GAAP RECONCILIATION OF EBITDA\nFOR THE THREE MONTHS ENDED MARCH 31, 2026 AND 2025",
+   "prose_after": "In the quarters ended March 31, 2026 and 2025:\n(1) Stock-based compensation was issued to independent Board members.\n(2) A succession plan was required for the transition of the CEO at 2024 year-end.\nLiquidity and Capital Resources\nOverview\nThe Company\u2019s primary sources of liquidity are cash generated from operations and borrowings under its revolving credit facility with M&T Bank. The Company uses cash to fund working capital requirements, capital expenditures, and debt service obligations.\nAs of March 31, 2026, the Company had $6,763,863 outstanding under its $7.5 million revolving credit facility, providing approximately $736,137 of remaining availability, subject to borrowing base and covenant compliance requirements. The revolving credit facility matures in November 2026.\nOn April 30, 2026, subsequent to the end of the quarter, the Company completed an underwritten public offering of 2,857,142 shares of its common stock at a public offering price of $7.00 per share, generating gross proceeds of approximately $20.0 million and net proceeds of approximately $18.6 million. The Company intends to use the proceeds to support working capital, capital expenditures, and to optimize its capital structure, including potential repayment of indebtedness.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 861,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided By Operating Activities",
+     "$",
+     "469,611",
+     "",
+     "$",
+     "299,290",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "(294,325)",
+     "",
+     "",
+     "(214,731)",
+     ""
+    ],
+    [
+     "Net Cash Provided By (Used in) Financing Activities",
+     "",
+     "82,854",
+     "",
+     "",
+     "(142,442)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "258,140",
+     "",
+     "",
+     "(57,883)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Beginning",
+     "",
+     "358,867",
+     "",
+     "",
+     "598,787",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - Ending",
+     "$",
+     "617,007",
+     "",
+     "$",
+     "540,904",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 922,
+    "end_line": 938
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "Subsequent to March 31, 2026, the Company completed a public equity offering resulting in aggregate net proceeds of approximately $21.5 million, including the underwriter\u2019s exercised over-allotment option. The Company utilized a portion of the proceeds to repay the outstanding balance under its revolving line of credit with M&T Bank to zero, which management expects will reduce future cash interest expense. The Company\u2019s $7.5 million revolving credit facility remains available through June 30, 2027, providing additional financial flexibility and available liquidity for working capital requirements, capital expenditures, organic growth initiatives and potential strategic opportunities. In addition, management continues to implement operational efficiency and cost reduction initiatives intended to improve gross profit and EBITDA in future periods.\nCash Flow \u2014 Three Months Ended March 31, 2026 and 2025\nSYNTEC OPTICS HOLDINGS, INC.\nUNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE THREE MONTHS ENDED MARCH 31, 2026 AND 2025",
+   "prose_after": "Operating Activities\nNet cash provided by operating activities was $0.5 million for the three months ended March 31, 2026, as compared to net cash provided by operating activities of $0.3 million for the three months ended March 31, 2025. The primary drivers of the changes for the three month period ended March 31, 2026 include net changes from operating assets of $0.6 million, changes from depreciation and amortization, stock-based compensation and allowance of $0.7 million, offset by net loss of $0.9 million.\nInvesting Activities\nNet cash used in investing activities was $0.3 million for the three months ended March 31, 2026, as compared to net cash used in investing activities of $0.2 million for the three months ended March 31, 2025. The net cash used in investing activities increased primarily due to the purchase of a single machine for approximately $0.4 million related to a new customer in 2026 that did not take place in 2025.\nFinancing Activities\nNet cash provided by financing activities was $0.1 million for the three months ended March 31, 2026, as compared to net cash used in financing activities of $0.1 million for the three months ended March 31, 2025. The primary driver of this change was the increase in debt borrowings from a related party in the first quarter of 2026 of $0.2 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "",
+     "Description of Exhibit"
+    ],
+    [
+     "31.1*",
+     "",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1**",
+     "",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1032,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone\nItem 3. Defaults Upon Senior Securities\nNone\nItem 4. Mine Safety Disclosures\nNot Applicable\nItem 5. Other Information\nNone\nItem 6. Exhibits\nThe following exhibits are filed as part of, or incorporated by reference into, this Quarterly Report on Form 10-Q.",
+   "prose_after": "* Filed herewith.\n** Furnished.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SYNTEC OPTICS HOLDINGS, INC",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 15, 2026",
+     "By:",
+     "/s/ Al Kapoor"
+    ],
+    [
+     "",
+     "Name:",
+     "Al Kapoor"
+    ],
+    [
+     "",
+     "Title:",
+     "Chairman and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 15, 2026",
+     "By:",
+     "/s/ Dean Rudy"
+    ],
+    [
+     "",
+     "Name:",
+     "Dean Rudy"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Accounting Officer and Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "SYNTEC OPTICS HOLDINGS, INC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1056,
+    "end_line": 1071
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1072,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

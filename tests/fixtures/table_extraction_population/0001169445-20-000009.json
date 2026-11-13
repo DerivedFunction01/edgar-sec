@@ -1,0 +1,5263 @@
+{
+ "accession": "0001169445-20-000009",
+ "cik": "0001169445",
+ "form": "10-Q",
+ "filing_date": "2020-05-06",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cpsi-20200331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "74-3032373"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "6600 Wall Street, Mobile, Alabama",
+     "36695"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2020\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 000-49796\nCOMPUTER PROGRAMS AND SYSTEMS, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "(251) 639-8100\n(Registrant\u2019s Telephone Number, Including Area Code)\nN/A\n(Former Name, Former Address and Former Fiscal Year, if Changed Since Last Report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $.001 per share",
+     "CPSI",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(251) 639-8100\n(Registrant\u2019s Telephone Number, Including Area Code)\nN/A\n(Former Name, Former Address and Former Fiscal Year, if Changed Since Last Report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets (Unaudited) \u2013 March 31, 2020 and December 31, 2019",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Income (Unaudited) \u2013 Three Months Ended March 31, 2020 and 2019",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statement of Stockholders\u2019 Equity (Unaudited) \u2013 Three Months Ended March 31, 2020 and 2019",
+     "5"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows (Unaudited) \u2013 Three Months Ended March 31, 2020 and 2019",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (Unaudited)",
+     "7"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "23"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "33"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "33"
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "35"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "35"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "36"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "36"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "36"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "36"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "36"
+    ]
+   ],
+   "caption_stack": [
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Emerging growth company  [ ]\nIf an emerging growth company, indicate by check mark    [ ]\nif the registrant has elected not to use the extended\ntransition period for complying with any new or revised\nfinancial accounting standards provided pursuant to Section 13(a) of the Exchange Act.\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of May 1, 2020, there were 14,512,105 shares of the issuer\u2019s common stock outstanding.\nQuarterly Report on Form 10-Q\n(For the three months ended March 31, 2020)\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nFINANCIAL INFORMATION\nItem 1. Financial Statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "4,280",
+     "$",
+     "7,357"
+    ],
+    [
+     "Accounts receivable (net of allowance for expected credit losses of $2,064 and $2,078, respectively)",
+     "38,241",
+     "",
+     "38,819",
+     ""
+    ],
+    [
+     "Financing receivables, current portion, net (net of allowance for expected credit losses of $165 and $165, respectively)",
+     "12,175",
+     "",
+     "12,032",
+     ""
+    ],
+    [
+     "Inventories",
+     "1,365",
+     "",
+     "1,426",
+     ""
+    ],
+    [
+     "Prepaid income taxes",
+     "1,208",
+     "",
+     "1,337",
+     ""
+    ],
+    [
+     "Prepaid expenses and other",
+     "6,606",
+     "",
+     "5,861",
+     ""
+    ],
+    [
+     "Total current assets",
+     "63,875",
+     "",
+     "66,832",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "13,294",
+     "",
+     "11,593",
+     ""
+    ],
+    [
+     "Software development costs, net",
+     "883",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating lease assets",
+     "7,522",
+     "",
+     "7,800",
+     ""
+    ],
+    [
+     "Financing receivables, net of current portion (net of allowance for expected credit losses of $3,140 and $2,806, respectively)",
+     "17,794",
+     "",
+     "18,267",
+     ""
+    ],
+    [
+     "Other assets, net of current portion",
+     "2,105",
+     "",
+     "1,771",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "80,244",
+     "",
+     "83,110",
+     ""
+    ],
+    [
+     "Goodwill",
+     "150,216",
+     "",
+     "150,216",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "335,933",
+     "$",
+     "339,589"
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "9,010",
+     "$",
+     "8,804"
+    ],
+    [
+     "Current portion of long-term debt",
+     "8,430",
+     "",
+     "8,430",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "7,807",
+     "",
+     "8,628",
+     ""
+    ],
+    [
+     "Accrued vacation",
+     "4,649",
+     "",
+     "4,301",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "8,714",
+     "",
+     "11,767",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "38,610",
+     "",
+     "41,930",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "93,325",
+     "",
+     "99,433",
+     ""
+    ],
+    [
+     "Operating lease liabilities, net of current portion",
+     "5,950",
+     "",
+     "6,256",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "8,688",
+     "",
+     "7,623",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "146,573",
+     "",
+     "155,242",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value; 30,000 shares authorized; 14,512 and 14,356 shares issued and outstanding, respectively",
+     "15",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "176,975",
+     "",
+     "174,618",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "12,370",
+     "",
+     "9,715",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "189,360",
+     "",
+     "184,347",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "335,933",
+     "$",
+     "339,589"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 111,
+    "end_line": 160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "PART I\nFINANCIAL INFORMATION\nItem 1. Financial Statements.\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(In thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF INCOME\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 109,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 163,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Sales revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "System sales and support",
+     "$",
+     "41,186",
+     "$",
+     "43,247"
+    ],
+    [
+     "TruBridge",
+     "28,571",
+     "",
+     "25,894",
+     ""
+    ],
+    [
+     "Total sales revenues",
+     "69,757",
+     "",
+     "69,141",
+     ""
+    ],
+    [
+     "Costs of sales:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "System sales and support",
+     "18,587",
+     "",
+     "18,337",
+     ""
+    ],
+    [
+     "TruBridge",
+     "15,057",
+     "",
+     "13,689",
+     ""
+    ],
+    [
+     "Total costs of sales",
+     "33,644",
+     "",
+     "32,026",
+     ""
+    ],
+    [
+     "Gross profit",
+     "36,113",
+     "",
+     "37,115",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product development",
+     "8,271",
+     "",
+     "9,228",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "6,997",
+     "",
+     "7,492",
+     ""
+    ],
+    [
+     "General and administrative",
+     "11,847",
+     "",
+     "11,824",
+     ""
+    ],
+    [
+     "Amortization of acquisition-related intangibles",
+     "2,866",
+     "",
+     "2,523",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "29,981",
+     "",
+     "31,067",
+     ""
+    ],
+    [
+     "Operating income",
+     "6,132",
+     "",
+     "6,048",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "362",
+     "",
+     "248",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(1,179)",
+     "",
+     "(1,804)",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "(817)",
+     "",
+     "(1,556)",
+     ""
+    ],
+    [
+     "Income before taxes",
+     "5,315",
+     "",
+     "4,492",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "1,225",
+     "",
+     "1,048",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "4,090",
+     "$",
+     "3,444"
+    ],
+    [
+     "Net income per common share\u2014basic",
+     "$",
+     "0.28",
+     "$",
+     "0.24"
+    ],
+    [
+     "Net income per common share\u2014diluted",
+     "$",
+     "0.28",
+     "$",
+     "0.24"
+    ],
+    [
+     "Weighted average shares outstanding used in per common share computations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "13,904",
+     "",
+     "13,656",
+     ""
+    ],
+    [
+     "Diluted",
+     "13,904",
+     "",
+     "13,656",
+     ""
+    ],
+    [
+     "Dividends declared per common share",
+     "$",
+     "0.10",
+     "$",
+     "0.10"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 171,
+    "end_line": 218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF INCOME\n(In thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 169,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 221,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in-Capital",
+     "",
+     "",
+     "",
+     "Retained Earnings (Accumulated Deficit)",
+     "",
+     "Total Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "14,356",
+     "$",
+     "14",
+     "",
+     "",
+     "$",
+     "174,618",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "9,715",
+     "$",
+     "184,347"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "4,090",
+     "",
+     "4,090",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of restricted stock",
+     "156",
+     "1",
+     "",
+     "(1)",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,358",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,358",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(1,435)",
+     "",
+     "(1,435)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2020",
+     "14,512",
+     "$",
+     "15",
+     "$",
+     "176,975",
+     "",
+     "",
+     "$",
+     "12,370",
+     "$",
+     "189,360",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "14,083",
+     "$",
+     "14",
+     "$",
+     "164,793",
+     "",
+     "",
+     "$",
+     "(5,024)",
+     "$",
+     "159,783",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "3,444",
+     "",
+     "3,444",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of restricted stock",
+     "273",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,436",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,436",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(1,422)",
+     "",
+     "(1,422)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2019",
+     "14,356",
+     "$",
+     "14",
+     "$",
+     "167,229",
+     "",
+     "",
+     "$",
+     "(3,002)",
+     "$",
+     "164,241",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 229,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 227,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Operating Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "4,090",
+     "$",
+     "3,444"
+    ],
+    [
+     "Adjustments to net income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for bad debt",
+     "999",
+     "",
+     "1,207",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "1,065",
+     "",
+     "854",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "2,358",
+     "",
+     "2,436",
+     ""
+    ],
+    [
+     "Depreciation",
+     "420",
+     "",
+     "361",
+     ""
+    ],
+    [
+     "Amortization of acquisition-related intangibles",
+     "2,866",
+     "",
+     "2,523",
+     ""
+    ],
+    [
+     "Amortization of software development costs",
+     "38",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Amortization of deferred finance costs",
+     "86",
+     "",
+     "86",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(88)",
+     "",
+     "(156)",
+     ""
+    ],
+    [
+     "Financing receivables",
+     "(4)",
+     "",
+     "183",
+     ""
+    ],
+    [
+     "Inventories",
+     "62",
+     "",
+     "(251)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other",
+     "(1,079)",
+     "",
+     "(772)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "206",
+     "",
+     "1,239",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "(821)",
+     "",
+     "698",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "(2,732)",
+     "",
+     "(3,808)",
+     ""
+    ],
+    [
+     "Prepaid income taxes/income taxes payable",
+     "128",
+     "",
+     "(156)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "7,594",
+     "",
+     "7,888",
+     ""
+    ],
+    [
+     "Investing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in software development",
+     "(921)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "(2,120)",
+     "",
+     "(473)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(3,041)",
+     "",
+     "(473)",
+     ""
+    ],
+    [
+     "Financing Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends paid",
+     "(1,435)",
+     "",
+     "(1,422)",
+     ""
+    ],
+    [
+     "Payments of long-term debt principal",
+     "(2,195)",
+     "",
+     "(7,110)",
+     ""
+    ],
+    [
+     "Payments of contingent consideration",
+     "\u2014",
+     "",
+     "(206)",
+     ""
+    ],
+    [
+     "Payments of revolving line of credit",
+     "(4,000)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(7,630)",
+     "",
+     "(8,738)",
+     ""
+    ],
+    [
+     "Decrease in cash and cash equivalents",
+     "(3,077)",
+     "",
+     "(1,323)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "7,357",
+     "",
+     "5,732",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "4,280",
+     "$",
+     "4,409"
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "1,093",
+     "$",
+     "1,289"
+    ],
+    [
+     "Cash paid for income taxes, net of refund",
+     "$",
+     "31",
+     "$",
+     "350"
+    ],
+    [
+     "The accompanying notes are an integral part of these condensed consolidated financial statements.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 266,
+    "end_line": 317
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In thousands)",
+   "prose_after": "NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n1. BASIS OF PRESENTATION\nBasis of Presentation\nThe accompanying unaudited condensed consolidated financial statements have been prepared pursuant to the rules and regulations of the Securities and Exchange Commission (the \"SEC\") and include all adjustments that, in the opinion of management, are necessary for a fair presentation of the results of the periods presented. All such adjustments are considered of a normal recurring nature. Quarterly results of operations are not necessarily indicative of annual results.\nCertain footnote disclosures normally included in financial statements prepared in accordance with accounting principles generally accepted in the United States of America (\"U.S. GAAP\") have been condensed or omitted. The condensed consolidated balance sheet as of December 31, 2019 was derived from the audited consolidated balance sheet at that date. These unaudited condensed consolidated financial statements should be read in conjunction with the audited financial statements of Computer Programs and Systems, Inc. (\"CPSI\" or the \"Company\") for the year ended December 31, 2019 and the notes thereto contained in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 264,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Three Months Ended March 31, 2020",
+     "",
+     "Three Months Ended March 31, 2019",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "8,628",
+     "$",
+     "10,201"
+    ],
+    [
+     "Deferred revenue recorded",
+     "6,194",
+     "",
+     "6,530",
+     ""
+    ],
+    [
+     "Less deferred revenue recognized as revenue",
+     "(7,015)",
+     "",
+     "(5,832)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "7,807",
+     "$",
+     "10,899"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "TruBridge provides an array of business processing services (\"BPS\") consisting of accounts receivable management, private pay services, insurance services, medical coding, electronic billing, statement processing, payroll processing, and contract management. Fees are recognized over the period of the client contractual relationship as the services are performed based on the SSP, net of discounts. Fees for many of these services are invoiced, and revenue recognized accordingly, based on the volume of transactions or a percentage of client accounts receivable collections. Payment is due monthly for BPS with certain amounts varying based on utilization and/or volumes.\nTruBridge also provides professional IT services. Revenue from professional IT services is recognized as the services are performed based on SSP. Payment is due monthly as services are performed.\nDeferred Revenue\nDeferred revenue represents amounts invoiced to clients for which the services under contract have not been completed and revenue has not been recognized, including annual renewals of certain software subscriptions and customer deposits for implementations to be performed at a later date. Revenue is recognized ratably over the life of the software subscriptions as services are provided and at the point-in-time when implementations have been completed.\nThe following table details deferred revenue for the three months ended March 31, 2020 and 2019, included in the condensed consolidated balance sheets:",
+   "prose_after": "The deferred revenue recorded during the three months ended March 31, 2020 is comprised primarily of the annual renewals of certain software subscriptions billed during the first quarter of each year and deposits collected for future EHR installations. The deferred revenue recognized as revenue during the three months ended March 31, 2020 and 2019 is comprised primarily of the periodic recognition of annual renewals that were deferred until earned and deposits for future EHR installations that were deferred until earned.\nCosts to Obtain and Fulfill a Contract with a Customer\nCosts to obtain a contract include the commission costs related to SaaS licensing agreements, which are capitalized and amortized ratably over the expected life of the customer. As a practical expedient, we generally recognize the incremental costs of obtaining a contract as an expense when incurred if the amortization period of the asset would have been one year or less, with the exception of commissions generated from TruBridge sales. TruBridge commissions, which are paid up to twelve months in advance of services performed, are capitalized and amortized over the prepayment period. Costs to obtain a contract are expensed within sales and marketing expenses in the accompanying condensed consolidated statements of income.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 383,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Three Months Ended March 31, 2020",
+     "",
+     "Three Months Ended March 31, 2019",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "4,440",
+     "$",
+     "3,017"
+    ],
+    [
+     "Costs to obtain and fulfill contracts capitalized",
+     "1,888",
+     "",
+     "1,922",
+     ""
+    ],
+    [
+     "Less costs to obtain and fulfill contracts recognized as expense",
+     "(1,285)",
+     "",
+     "(1,134)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "5,043",
+     "$",
+     "3,805"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 409,
+    "end_line": 419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "Costs to obtain a contract include the commission costs related to SaaS licensing agreements, which are capitalized and amortized ratably over the expected life of the customer. As a practical expedient, we generally recognize the incremental costs of obtaining a contract as an expense when incurred if the amortization period of the asset would have been one year or less, with the exception of commissions generated from TruBridge sales. TruBridge commissions, which are paid up to twelve months in advance of services performed, are capitalized and amortized over the prepayment period. Costs to obtain a contract are expensed within sales and marketing expenses in the accompanying condensed consolidated statements of income.\nContract fulfillment costs related to the implementation of SaaS arrangements are capitalized and amortized ratably over the expected life of the customer. Costs to fulfill contracts consist of the payroll costs for the implementation of SaaS arrangements, including time for training, conversion and installation that is necessary for the software to be utilized. Contract fulfillment costs are expensed within the caption \"System sales and support - Cost of sales.\"\nCosts to obtain and fulfill contracts related to SaaS arrangements are included within the \"Prepaid expenses and other\" and \"Other assets, net of current portion\" line items on our condensed consolidated balance sheets.\nThe following table details costs to obtain and fulfill contracts with customers for the three months ended March 31, 2020 and 2019, included in the condensed consolidated balance sheets:",
+   "prose_after": "Remaining Performance Obligations\nDisclosures regarding remaining performance obligations are not considered material as the overwhelming majority of the Company's remaining performance obligations either (a) are related to contracts with an expected duration of one year or less, or (b) exhibit revenue recognition in the amount to which the Company has the right to invoice.\n4. BUSINESS COMBINATION\nAcquisition of Get Real Health\nOn May 3, 2019, we acquired all of the assets and liabilities of iNetXperts, Corp., a Maryland corporation doing business as Get Real Health (\u201cGet Real Health\u201d), pursuant to a Stock Purchase Agreement dated April 23, 2019, as amended on May 2, 2019. Based in Rockville, Maryland, Get Real Health delivers technology solutions to improve patient outcomes and engagement strategies with care providers.\nConsideration for the acquisition included cash (net of cash of the acquired entity) of $10.8 million (inclusive of seller's transaction expenses), plus a contingent earnout payment of up to $14.0 million tied to Get Real Health's earnings before interest, tax, depreciation, and amortization (\"EBITDA\") (subject to certain pro-forma adjustments) for 2019. As of December 31, 2019, the $5.0 million contingent consideration estimated in the allocation of purchase price paid was fully reversed as Get Real Health's earnings did not achieve the required level for earnout payment. During 2019, we incurred approximately $0.6 million of pre-tax acquisition costs in connection with the acquisition of Get Real Health. Acquisition costs are included in general and administrative expenses in our consolidated statements of income.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 383,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Purchase Price Allocation",
+     ""
+    ],
+    [
+     "Acquired cash",
+     "$",
+     "159"
+    ],
+    [
+     "Accounts receivable",
+     "364",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "107",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "365",
+     ""
+    ],
+    [
+     "Operating lease asset",
+     "1,285",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "7,890",
+     ""
+    ],
+    [
+     "Goodwill",
+     "9,767",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "(594)",
+     ""
+    ],
+    [
+     "Deferred taxes, net",
+     "(1,736)",
+     ""
+    ],
+    [
+     "Operating lease liability",
+     "(1,285)",
+     ""
+    ],
+    [
+     "Contingent consideration",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "(430)",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "10,892"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "BUSINESS COMBINATION"
+    }
+   },
+   "prose_before": "Consideration for the acquisition included cash (net of cash of the acquired entity) of $10.8 million (inclusive of seller's transaction expenses), plus a contingent earnout payment of up to $14.0 million tied to Get Real Health's earnings before interest, tax, depreciation, and amortization (\"EBITDA\") (subject to certain pro-forma adjustments) for 2019. As of December 31, 2019, the $5.0 million contingent consideration estimated in the allocation of purchase price paid was fully reversed as Get Real Health's earnings did not achieve the required level for earnout payment. During 2019, we incurred approximately $0.6 million of pre-tax acquisition costs in connection with the acquisition of Get Real Health. Acquisition costs are included in general and administrative expenses in our consolidated statements of income.\nOur acquisition of Get Real Health was treated as a purchase in accordance with ASC 805, Business Combinations, which requires allocation of the purchase price to the estimated fair values of assets and liabilities acquired in the transaction. Our allocation of the purchase price was based on management's judgment after evaluating several factors, including a valuation assessment.\nThe allocation of the purchase price paid for Get Real Health was as follows:",
+   "prose_after": "The intangible assets in the table above are being amortized on a straight-line basis over their estimated useful lives. The amortization is included in amortization of acquisition-related intangibles in our condensed consolidated statements of income.\nThe fair value measurements of tangible and intangible assets and liabilities were based on significant inputs not observable in the market and thus represent Level 3 measurements within the fair value measurement hierarchy (see Note 16 - Fair Value). Level 3 inputs included, among others, discount rates that we estimated would be used by a market participant in valuing these assets and liabilities, projections of revenues and cash flows, client attrition rates and market comparables.\n5. PROPERTY AND EQUIPMENT\nProperty and equipment, net was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 430,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "2,848",
+     "$",
+     "2,848"
+    ],
+    [
+     "Buildings and improvements",
+     "8,039",
+     "",
+     "8,039",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "6,131",
+     "",
+     "4,011",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "1,712",
+     "",
+     "1,712",
+     ""
+    ],
+    [
+     "Office furniture and fixtures",
+     "2,018",
+     "",
+     "2,018",
+     ""
+    ],
+    [
+     "Automobiles",
+     "18",
+     "",
+     "18",
+     ""
+    ],
+    [
+     "Property and equipment, gross",
+     "20,766",
+     "",
+     "18,646",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "(7,472)",
+     "",
+     "(7,053)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "13,294",
+     "$",
+     "11,593"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 466,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "The intangible assets in the table above are being amortized on a straight-line basis over their estimated useful lives. The amortization is included in amortization of acquisition-related intangibles in our condensed consolidated statements of income.\nThe fair value measurements of tangible and intangible assets and liabilities were based on significant inputs not observable in the market and thus represent Level 3 measurements within the fair value measurement hierarchy (see Note 16 - Fair Value). Level 3 inputs included, among others, discount rates that we estimated would be used by a market participant in valuing these assets and liabilities, projections of revenues and cash flows, client attrition rates and market comparables.\n5. PROPERTY AND EQUIPMENT\nProperty and equipment, net was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "prose_after": "6. SOFTWARE DEVELOPMENT\nSoftware development costs are accounted for in accordance with ASC 350-40, Internal-Use Software. We capitalize incurred labor costs for software development from the time the preliminary project phase is completed until the software is available for general release. Research and development costs and other computer software maintenance costs related to software development are expensed as incurred. We estimate the useful life of our capitalized software and amortize its value on a straight-line basis over that estimated life, which is estimated to be five years. If the actual life is shorter than our estimated useful life, we will amortize the remaining book value over the remaining useful life or the asset may be deemed to be impaired and, accordingly, a write-down of the value of the asset may be recorded as a charge to earnings. Upon the software's availability for general release, we commence amortization of the capitalized software costs on a module-by-module basis.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Software development costs",
+     "$",
+     "921",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Less: accumulated amortization",
+     "(38)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Software development costs, net",
+     "$",
+     "883",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 490,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SOFTWARE DEVELOPMENT"
+    }
+   },
+   "prose_before": "Software development costs are accounted for in accordance with ASC 350-40, Internal-Use Software. We capitalize incurred labor costs for software development from the time the preliminary project phase is completed until the software is available for general release. Research and development costs and other computer software maintenance costs related to software development are expensed as incurred. We estimate the useful life of our capitalized software and amortize its value on a straight-line basis over that estimated life, which is estimated to be five years. If the actual life is shorter than our estimated useful life, we will amortize the remaining book value over the remaining useful life or the asset may be deemed to be impaired and, accordingly, a write-down of the value of the asset may be recorded as a charge to earnings. Upon the software's availability for general release, we commence amortization of the capitalized software costs on a module-by-module basis.\nSoftware development, net was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "prose_after": "7. OTHER ACCRUED LIABILITIES\nOther accrued liabilities was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Salaries and benefits",
+     "$",
+     "4,052",
+     "$",
+     "6,946"
+    ],
+    [
+     "Severance",
+     "128",
+     "",
+     "329",
+     ""
+    ],
+    [
+     "Commissions",
+     "1,153",
+     "",
+     "1,037",
+     ""
+    ],
+    [
+     "Self-insurance reserves",
+     "1,214",
+     "",
+     "1,382",
+     ""
+    ],
+    [
+     "Other",
+     "595",
+     "",
+     "529",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current portion",
+     "1,572",
+     "",
+     "1,544",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "$",
+     "8,714",
+     "$",
+     "11,767"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 505,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "OTHER ACCRUED LIABILITIES"
+    }
+   },
+   "prose_before": "7. OTHER ACCRUED LIABILITIES\nOther accrued liabilities was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "prose_after": "8. NET INCOME PER SHARE\nThe Company presents basic and diluted earnings per share (\"EPS\") data for its common stock. Basic EPS is calculated by dividing the net income attributable to stockholders of the Company by the weighted average number of shares of common stock outstanding during the period. Diluted EPS is determined by adjusting the net income attributable to stockholders of the Company and the weighted average number of shares of common stock outstanding during the period for the effects of all dilutive potential common shares, including awards under stock-based compensation arrangements.\nThe Company's unvested restricted stock awards (see Note 10) are considered participating securities under FASB Codification topic, Earnings Per Share, because they entitle holders to non-forfeitable rights to dividends until the awards vest or are forfeited. When a company has a security that qualifies as a \"participating security,\" the Codification requires the use of the two-class method when computing basic EPS. The two-class method is an earnings allocation formula that determines EPS for each class of common stock and participating security according to dividends declared (or accumulated) and participation rights in undistributed earnings. In determining the amount of net income to allocate to common stockholders, income is allocated to both common stock and participating securities based on their respective weighted average shares outstanding for the period, with net income attributable to common stockholders ultimately equaling net income less net income attributable to participating securities. Diluted EPS for the Company's common stock is computed using the more dilutive of the two-class method or the treasury stock method.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands, except per share data)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "4,090",
+     "$",
+     "3,444"
+    ],
+    [
+     "Less: Net income attributable to participating securities",
+     "(134)",
+     "",
+     "(130)",
+     ""
+    ],
+    [
+     "Net income attributable to common stockholders",
+     "$",
+     "3,956",
+     "$",
+     "3,314"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding used in basic per common share computations",
+     "13,904",
+     "",
+     "13,656",
+     ""
+    ],
+    [
+     "Add: Dilutive potential common shares",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding used in diluted per common share computations",
+     "13,904",
+     "",
+     "13,656",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic EPS",
+     "$",
+     "0.28",
+     "$",
+     "0.24"
+    ],
+    [
+     "Diluted EPS",
+     "$",
+     "0.28",
+     "$",
+     "0.24"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 529,
+    "end_line": 549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "NET INCOME PER SHARE"
+    }
+   },
+   "prose_before": "The Company's unvested restricted stock awards (see Note 10) are considered participating securities under FASB Codification topic, Earnings Per Share, because they entitle holders to non-forfeitable rights to dividends until the awards vest or are forfeited. When a company has a security that qualifies as a \"participating security,\" the Codification requires the use of the two-class method when computing basic EPS. The two-class method is an earnings allocation formula that determines EPS for each class of common stock and participating security according to dividends declared (or accumulated) and participation rights in undistributed earnings. In determining the amount of net income to allocate to common stockholders, income is allocated to both common stock and participating securities based on their respective weighted average shares outstanding for the period, with net income attributable to common stockholders ultimately equaling net income less net income attributable to participating securities. Diluted EPS for the Company's common stock is computed using the more dilutive of the two-class method or the treasury stock method.\nThe following is a calculation of the basic and diluted EPS for the Company's common stock, including a reconciliation between net income and net income attributable to common stockholders:",
+   "prose_after": "During 2018, 2019 and 2020, performance share awards were granted to certain executive officers and key employees of the Company that will result in the issuance of time-vesting restricted stock if the predefined performance criteria are met. The awards provide for an aggregate target of 252,852 shares, none of which have been included in the calculation of diluted EPS for the three months ended March 31, 2020 because the related threshold award performance levels have not been achieved as of March 31, 2020. See Note 10 - Stock-Based Compensation for more information.\n9. INCOME TAXES\nThe Company determines the tax provision for interim periods using an estimate of our annual effective tax rate, adjusted for discrete items, if any, that are taken into account in the relevant period. Each quarter we update our estimate of the annual effective tax rate, and if our estimated tax rate changes, we make a cumulative adjustment.\nOur effective tax rate for the three months ended March 31, 2020 and 2019, was a tax expense of 23%.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "eps_reconciliation",
+    "aligned_family": "eps_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Costs of sales",
+     "$",
+     "528",
+     "$",
+     "531"
+    ],
+    [
+     "Operating expenses",
+     "1,830",
+     "",
+     "1,905",
+     ""
+    ],
+    [
+     "Pre-tax stock-based compensation expense",
+     "2,358",
+     "",
+     "2,436",
+     ""
+    ],
+    [
+     "Less: income tax effect",
+     "(519)",
+     "",
+     "(536)",
+     ""
+    ],
+    [
+     "Net stock-based compensation expense",
+     "$",
+     "1,839",
+     "$",
+     "1,900"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 579
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "During 2018, 2019 and 2020, performance share awards were granted to certain executive officers and key employees of the Company that will result in the issuance of time-vesting restricted stock if the predefined performance criteria are met. The awards provide for an aggregate target of 252,852 shares, none of which have been included in the calculation of diluted EPS for the three months ended March 31, 2020 because the related threshold award performance levels have not been achieved as of March 31, 2020. See Note 10 - Stock-Based Compensation for more information.\n9. INCOME TAXES\nThe Company determines the tax provision for interim periods using an estimate of our annual effective tax rate, adjusted for discrete items, if any, that are taken into account in the relevant period. Each quarter we update our estimate of the annual effective tax rate, and if our estimated tax rate changes, we make a cumulative adjustment.\nOur effective tax rate for the three months ended March 31, 2020 and 2019, was a tax expense of 23%.\n10. STOCK-BASED COMPENSATION\nStock-based compensation expense is measured at the grant date based on the fair value of the award, and is recognized as an expense over the employee's or non-employee director's requisite service period.\nThe following table details total stock-based compensation expense for the three months ended March 31, 2020 and 2019, included in the condensed consolidated statements of income:",
+   "prose_after": "The Company's stock-based compensation awards are in the form of restricted stock and performance share awards granted pursuant to the Company's 2012 Restricted Stock Plan for Non-Employee Directors, Amended and Restated 2014 Incentive Plan and 2019 Incentive Plan (the \"Plans\"). As of March 31, 2020, there was $13.6 million of unrecognized compensation expense related to unvested stock-based compensation arrangements granted under the Plans, which is expected to be recognized over a weighted-average period of 2.0 years.\nRestricted Stock\nThe Company grants restricted stock to executive officers, certain key employees and non-employee directors under the Plans with the fair value of the awards representing the fair value of the common stock on the date the restricted stock is granted. Shares of restricted stock generally vest in equal annual installments over the applicable vesting period, which ranges from one to three years. The Company records expenses for these grants on a straight-line basis over the applicable vesting periods. Shares of restricted stock may also be issued pursuant to the settlement of performance share awards, for which the Company records expenses in the manner described in the \"Performance Share Awards\" section below.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2020",
+     "",
+     "",
+     "Three Months Ended March 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     "",
+     "Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     ""
+    ],
+    [
+     "Unvested restricted stock outstanding at beginning of period",
+     "525,859",
+     "$",
+     "30.51",
+     "475,132",
+     "$",
+     "32.00"
+    ],
+    [
+     "Granted",
+     "136,771",
+     "26.16",
+     "",
+     "133,936",
+     "30.89",
+     ""
+    ],
+    [
+     "Performance share awards settled through the issuance of restricted stock",
+     "19,678",
+     "30.15",
+     "",
+     "138,566",
+     "29.80",
+     ""
+    ],
+    [
+     "Vested",
+     "(202,468)",
+     "30.20",
+     "",
+     "(143,945)",
+     "33.81",
+     ""
+    ],
+    [
+     "Unvested restricted stock outstanding at end of period",
+     "479,840",
+     "$",
+     "29.39",
+     "603,689",
+     "$",
+     "30.82"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 588,
+    "end_line": 602
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The Company's stock-based compensation awards are in the form of restricted stock and performance share awards granted pursuant to the Company's 2012 Restricted Stock Plan for Non-Employee Directors, Amended and Restated 2014 Incentive Plan and 2019 Incentive Plan (the \"Plans\"). As of March 31, 2020, there was $13.6 million of unrecognized compensation expense related to unvested stock-based compensation arrangements granted under the Plans, which is expected to be recognized over a weighted-average period of 2.0 years.\nRestricted Stock\nThe Company grants restricted stock to executive officers, certain key employees and non-employee directors under the Plans with the fair value of the awards representing the fair value of the common stock on the date the restricted stock is granted. Shares of restricted stock generally vest in equal annual installments over the applicable vesting period, which ranges from one to three years. The Company records expenses for these grants on a straight-line basis over the applicable vesting periods. Shares of restricted stock may also be issued pursuant to the settlement of performance share awards, for which the Company records expenses in the manner described in the \"Performance Share Awards\" section below.\nA summary of restricted stock activity (including shares of restricted stock issued pursuant to the settlement of performance share awards) under the Plans during the three months ended March 31, 2020 and 2019 is as follows:",
+   "prose_after": "Performance Share Awards\nThe Company granted performance share awards to executive officers and certain key employees under the Amended and Restated 2014 Incentive Plan prior to 2019 and under the 2019 Incentive Plan beginning in 2019. The number of shares of common stock earned and issuable under each award is determined at the end of a one-year or three-year performance period, based on the Company's achievement of performance goals predetermined by the Compensation Committee of the Board of Directors at the time of grant. The three-year performance share awards include a modifier to the total number of shares earned based on the Company's total shareholder return (\"TSR\") compared to an industry index. If certain levels of the performance objective are met, the award results in the issuance of shares of restricted stock or common stock corresponding to such level. One-year performance share awards are then subject to time-based vesting pursuant to which the shares of restricted stock vest in equal annual installments over the applicable vesting period, which is generally three years. Three-year performance share awards that result in the issuance of shares of common stock are not subject to time-based vesting at the conclusion of the three-year performance period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2020",
+     "",
+     "",
+     "Three Months Ended March 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     "",
+     "Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     ""
+    ],
+    [
+     "Performance share awards outstanding at beginning of period",
+     "200,709",
+     "$",
+     "30.75",
+     "184,776",
+     "$",
+     "30.15"
+    ],
+    [
+     "Granted",
+     "107,298",
+     "26.96",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjusted for actual performance, net of forfeitures",
+     "(35,477)",
+     "30.15",
+     "",
+     "46,176",
+     "29.80",
+     ""
+    ],
+    [
+     "Performance share awards settled through the issuance of restricted stock",
+     "(19,678)",
+     "30.15",
+     "",
+     "(138,566)",
+     "29.80",
+     ""
+    ],
+    [
+     "Performance share awards outstanding at end of period",
+     "252,852",
+     "$",
+     "29.27",
+     "92,386",
+     "$",
+     "30.50"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 630
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The recipients of performance share awards do not receive dividends or possess voting rights during the performance period and, accordingly, the fair value of the one-year and three-year performance share awards is the quoted market value of CPSI's common stock on the grant date less the present value of the expected dividends not received during the relevant period. The TSR modifier applicable to the three-year performance share awards is considered a market condition and therefore is reflected in the grant date fair value of the award. A Monte Carlo simulation has been used to account for this market condition in the grant date fair value of the award.\nExpense of one-year performance share awards is recognized using the accelerated attribution (graded vesting) method over the period beginning on the date the Company determines that it is probable that the performance criteria will be achieved and ending on the last day of the vesting period for the restricted stock issued in satisfaction of such awards. Expense of three-year performance share awards is recognized using ratable straight-line amortization over the three-year performance period. In the event the Company determines it is no longer probable that the minimum performance level will be achieved, all previously recognized compensation expense related to the applicable awards is reversed in the period such a determination is made.\nA summary of performance share award activity under the Plans during the three months ended March 31, 2020 and 2019 is as follows, based on the target award amounts set forth in the performance share award agreements:",
+   "prose_after": "11. FINANCING RECEIVABLES\nShort-Term Payment Plans\nThe Company provides fixed monthly payment arrangements (\"short-term payment plans\") over terms ranging from three to twelve months for meaningful use stage three and other add-on software installations. As a practical expedient, we do not adjust the amount of consideration recognized as revenue for the financing component as unearned income when we expect payment within one year or less. These receivables, included in the current portion of financing receivables, were comprised of the following at March 31, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Short-term payment plans, gross",
+     "$",
+     "2,356",
+     "$",
+     "2,361"
+    ],
+    [
+     "Less: allowance for losses",
+     "(165)",
+     "",
+     "(165)",
+     ""
+    ],
+    [
+     "Short-term payment plans, net",
+     "$",
+     "2,191",
+     "$",
+     "2,196"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 637,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCING RECEIVABLES"
+    }
+   },
+   "prose_before": "11. FINANCING RECEIVABLES\nShort-Term Payment Plans\nThe Company provides fixed monthly payment arrangements (\"short-term payment plans\") over terms ranging from three to twelve months for meaningful use stage three and other add-on software installations. As a practical expedient, we do not adjust the amount of consideration recognized as revenue for the financing component as unearned income when we expect payment within one year or less. These receivables, included in the current portion of financing receivables, were comprised of the following at March 31, 2020 and December 31, 2019:",
+   "prose_after": "Long-Term Financing Arrangements\nAdditionally, the Company provides financing for purchases of its information and patient care systems to certain healthcare providers under long-term financing arrangements expiring in various years through 2026. Under long-term financing arrangements, the transaction price is adjusted by a discount rate that reflects market conditions that would be used for a separate financing transaction between the Company and licensee at contract inception, and takes into account the credit characteristics of the licensee and market interest rates as of the date of the agreement. As such, the amount of fixed fee revenue recognized at the beginning of the license term will be reduced by the calculated financing component. As payments are received from the licensee, the Company recognizes a portion of the financing component as interest income, reported as other income in the condensed consolidated statements of income. These receivables typically have terms from two to seven years.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Long-term financing arrangements, gross",
+     "$",
+     "34,328",
+     "$",
+     "34,483"
+    ],
+    [
+     "Less: allowance for expected credit losses",
+     "(3,140)",
+     "",
+     "(2,806)",
+     ""
+    ],
+    [
+     "Less: unearned income",
+     "(3,410)",
+     "",
+     "(3,574)",
+     ""
+    ],
+    [
+     "Long-term financing arrangements, net",
+     "$",
+     "27,778",
+     "$",
+     "28,103"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 655,
+    "end_line": 666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCING RECEIVABLES"
+    }
+   },
+   "prose_before": "Additionally, the Company provides financing for purchases of its information and patient care systems to certain healthcare providers under long-term financing arrangements expiring in various years through 2026. Under long-term financing arrangements, the transaction price is adjusted by a discount rate that reflects market conditions that would be used for a separate financing transaction between the Company and licensee at contract inception, and takes into account the credit characteristics of the licensee and market interest rates as of the date of the agreement. As such, the amount of fixed fee revenue recognized at the beginning of the license term will be reduced by the calculated financing component. As payments are received from the licensee, the Company recognizes a portion of the financing component as interest income, reported as other income in the condensed consolidated statements of income. These receivables typically have terms from two to seven years.\nThe components of these receivables were as follows at March 31, 2020 and December 31, 2019:",
+   "prose_after": "Future minimum payments to be received subsequent to March 31, 2020 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Years Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "9,427"
+    ],
+    [
+     "2021",
+     "10,806",
+     ""
+    ],
+    [
+     "2022",
+     "6,896",
+     ""
+    ],
+    [
+     "2023",
+     "4,038",
+     ""
+    ],
+    [
+     "2024",
+     "2,403",
+     ""
+    ],
+    [
+     "Thereafter",
+     "758",
+     ""
+    ],
+    [
+     "Total minimum payments to be received",
+     "34,328",
+     ""
+    ],
+    [
+     "Less: allowance for expected credit losses",
+     "(3,140)",
+     ""
+    ],
+    [
+     "Less: unearned income",
+     "(3,410)",
+     ""
+    ],
+    [
+     "Receivables, net",
+     "$",
+     "27,778"
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)",
+    "Years Ending December 31,"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 669,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCING RECEIVABLES"
+    }
+   },
+   "prose_before": "Future minimum payments to be received subsequent to March 31, 2020 are as follows:",
+   "prose_after": "Credit Quality of Financing Receivables and Allowance for Expected Credit Losses\nThe following table is a roll-forward of the allowance for expected credit losses for the three months ended March 31, 2020 and year ended December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Balance at Beginning of Period",
+     "",
+     "Provision",
+     "",
+     "Charge-offs",
+     "",
+     "Recoveries",
+     "",
+     "Balance at End of Period",
+     ""
+    ],
+    [
+     "March 31, 2020",
+     "$",
+     "2,971",
+     "$",
+     "334",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "3,305"
+    ],
+    [
+     "December 31, 2019",
+     "$",
+     "2,567",
+     "$",
+     "970",
+     "$",
+     "(566)",
+     "$",
+     "\u2014",
+     "$",
+     "2,971"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 691,
+    "end_line": 697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCING RECEIVABLES"
+    }
+   },
+   "prose_before": "Credit Quality of Financing Receivables and Allowance for Expected Credit Losses\nThe following table is a roll-forward of the allowance for expected credit losses for the three months ended March 31, 2020 and year ended December 31, 2019:",
+   "prose_after": "The Company\u2019s financing receivables are comprised of a single portfolio segment, as the balances are all derived from short-term payment plan arrangements and long-term financing arrangements within our target market of community hospitals. The Company evaluates the credit quality of its financing receivables based on a combination of factors, including, but not limited to, customer collection experience, current and future economic conditions, the customer\u2019s financial condition, and known risk characteristics impacting the respective customer base of community hospitals, the most notable of which relate to enacted and potential changes in Medicare and Medicaid reimbursement rates as community hospitals typically generate a significant portion of their revenues and related cash flows from beneficiaries of these programs. In addition to specific account identification, the Company utilizes historical collection experience to establish the allowance for expected credit losses. Financing receivables are written off only after the Company has exhausted all collection efforts.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "1 to 90 Days Past Due",
+     "",
+     "91 to 180 Days Past Due",
+     "",
+     "181 + Days Past Due",
+     "",
+     "Total Past Due",
+     ""
+    ],
+    [
+     "March 31, 2020",
+     "$",
+     "1,401",
+     "$",
+     "352",
+     "$",
+     "257",
+     "$",
+     "2,010"
+    ],
+    [
+     "December 31, 2019",
+     "$",
+     "1,480",
+     "$",
+     "150",
+     "$",
+     "207",
+     "$",
+     "1,837"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCING RECEIVABLES"
+    }
+   },
+   "prose_before": "The Company\u2019s financing receivables are comprised of a single portfolio segment, as the balances are all derived from short-term payment plan arrangements and long-term financing arrangements within our target market of community hospitals. The Company evaluates the credit quality of its financing receivables based on a combination of factors, including, but not limited to, customer collection experience, current and future economic conditions, the customer\u2019s financial condition, and known risk characteristics impacting the respective customer base of community hospitals, the most notable of which relate to enacted and potential changes in Medicare and Medicaid reimbursement rates as community hospitals typically generate a significant portion of their revenues and related cash flows from beneficiaries of these programs. In addition to specific account identification, the Company utilizes historical collection experience to establish the allowance for expected credit losses. Financing receivables are written off only after the Company has exhausted all collection efforts.\nCustomer payments are considered past due if a scheduled payment is not received within contractually agreed upon terms. To facilitate customer collection and credit monitoring efforts, financing receivable amounts are invoiced and reclassified to trade accounts receivable when they become due, with all invoiced amounts placed on nonaccrual status. As a result, all past due amounts related to the Company\u2019s financing receivables are included in trade accounts receivable in the accompanying condensed consolidated balance sheets. The following is an analysis of the age of financing receivables amounts (excluding short-term payment plans) that have been reclassified to trade accounts receivable and were past due as of March 31, 2020 and December 31, 2019:",
+   "prose_after": "From time to time, the Company may agree to alternative payment terms outside of the terms of the original financing receivable agreement due to customer difficulties in achieving the original terms. In general, such alternative payment arrangements do not result in a re-aging of the related receivables. Rather, payments pursuant to any alternative payment arrangements are applied to the already outstanding invoices beginning with the oldest outstanding invoices as the payments are received.\nBecause amounts are reclassified to trade accounts receivable when they become due, there are no past due amounts included within financing receivables, current portion, net or financing receivables, net of current portion in the accompanying condensed consolidated balance sheets.\nThe Company utilizes an aging of trade accounts receivable as the primary credit quality indicator for its financing receivables, which is facilitated by the reclassification of customer payment amounts to trade accounts receivable when they become due. The table below categorizes customer financing receivable balances (excluding short-term payment plans) based on the age of the oldest payment outstanding that has been reclassified to trade accounts receivable:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Stratification of uninvoiced client financing receivables based on aging of related trade accounts receivable:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Uninvoiced client financing receivables related to trade accounts receivable that are 1 to 90 Days Past Due",
+     "$",
+     "15,705",
+     "$",
+     "18,015"
+    ],
+    [
+     "Uninvoiced client financing receivables related to trade accounts receivable that are 91 to 180 Days Past Due",
+     "2,893",
+     "",
+     "2,136",
+     ""
+    ],
+    [
+     "Uninvoiced client financing receivables related to trade accounts receivable that are 181 + Days Past Due",
+     "3,455",
+     "",
+     "1,972",
+     ""
+    ],
+    [
+     "Total uninvoiced client financing receivables balances of clients with a trade accounts receivable",
+     "$",
+     "22,053",
+     "$",
+     "22,123"
+    ],
+    [
+     "Total uninvoiced client financing receivables of clients with no related trade accounts receivable",
+     "8,865",
+     "",
+     "8,786",
+     ""
+    ],
+    [
+     "Total financing receivables with contractual maturities of one year or less",
+     "2,356",
+     "",
+     "2,361",
+     ""
+    ],
+    [
+     "Less: allowance for expected credit losses",
+     "(3,305)",
+     "",
+     "(2,971)",
+     ""
+    ],
+    [
+     "Total financing receivables",
+     "$",
+     "29,969",
+     "$",
+     "30,299"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 717,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "FINANCING RECEIVABLES"
+    }
+   },
+   "prose_before": "From time to time, the Company may agree to alternative payment terms outside of the terms of the original financing receivable agreement due to customer difficulties in achieving the original terms. In general, such alternative payment arrangements do not result in a re-aging of the related receivables. Rather, payments pursuant to any alternative payment arrangements are applied to the already outstanding invoices beginning with the oldest outstanding invoices as the payments are received.\nBecause amounts are reclassified to trade accounts receivable when they become due, there are no past due amounts included within financing receivables, current portion, net or financing receivables, net of current portion in the accompanying condensed consolidated balance sheets.\nThe Company utilizes an aging of trade accounts receivable as the primary credit quality indicator for its financing receivables, which is facilitated by the reclassification of customer payment amounts to trade accounts receivable when they become due. The table below categorizes customer financing receivable balances (excluding short-term payment plans) based on the age of the oldest payment outstanding that has been reclassified to trade accounts receivable:",
+   "prose_after": "12. INTANGIBLE ASSETS AND GOODWILL\nOur purchased definite-lived intangible assets as of March 31, 2020 and December 31, 2019 are summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(In thousands)",
+     "Customer Relationships",
+     "",
+     "Trademark",
+     "",
+     "Developed Technology",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Gross carrying amount as of December 31, 2018",
+     "$",
+     "82,300",
+     "$",
+     "10,900",
+     "$",
+     "24,100",
+     "$",
+     "117,300"
+    ],
+    [
+     "Intangible assets acquired for year ended December 31, 2019",
+     "2,070",
+     "",
+     "220",
+     "",
+     "5,600",
+     "",
+     "7,890",
+     ""
+    ],
+    [
+     "Accumulated amortization as of December 31, 2019",
+     "(26,456)",
+     "",
+     "(3,449)",
+     "",
+     "(12,175)",
+     "",
+     "(42,080)",
+     ""
+    ],
+    [
+     "Net intangible assets as of December 31, 2019",
+     "$",
+     "57,914",
+     "$",
+     "7,671",
+     "$",
+     "17,525",
+     "$",
+     "83,110"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross carrying amount as of March 31, 2020",
+     "$",
+     "84,370",
+     "$",
+     "11,120",
+     "$",
+     "29,700",
+     "$",
+     "125,190"
+    ],
+    [
+     "Net intangible assets as of December 31, 2019",
+     "57,914",
+     "",
+     "7,671",
+     "",
+     "17,525",
+     "",
+     "83,110",
+     ""
+    ],
+    [
+     "Amortization expenses as of March 31, 2020",
+     "(1,800)",
+     "",
+     "(212)",
+     "",
+     "(854)",
+     "",
+     "(2,866)",
+     ""
+    ],
+    [
+     "Net intangible assets as of March 31, 2020",
+     "$",
+     "56,114",
+     "$",
+     "7,459",
+     "$",
+     "16,671",
+     "$",
+     "80,244"
+    ],
+    [
+     "Weighted average remaining years of useful life",
+     "9",
+     "",
+     "12",
+     "",
+     "5",
+     "",
+     "9",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 741,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "12. INTANGIBLE ASSETS AND GOODWILL\nOur purchased definite-lived intangible assets as of March 31, 2020 and December 31, 2019 are summarized as follows:",
+   "prose_after": "The following table represents the remaining amortization of definite-lived intangible assets as of March 31, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "For the year ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "8,555"
+    ],
+    [
+     "2021",
+     "11,003",
+     ""
+    ],
+    [
+     "2022",
+     "10,904",
+     ""
+    ],
+    [
+     "2022",
+     "10,904",
+     ""
+    ],
+    [
+     "2024",
+     "9,681",
+     ""
+    ],
+    [
+     "Thereafter",
+     "29,197",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "80,244"
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)",
+    "For the year ended December 31,"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 764,
+    "end_line": 777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "The following table represents the remaining amortization of definite-lived intangible assets as of March 31, 2020:",
+   "prose_after": "The following table sets forth the change in the carrying amount of goodwill by segment for the three months ended March 31, 2020:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Acute Care EHR",
+     "",
+     "Post-acute Care EHR",
+     "",
+     "TruBridge",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2019",
+     "$",
+     "97,095",
+     "$",
+     "29,570",
+     "$",
+     "23,551",
+     "$",
+     "150,216"
+    ],
+    [
+     "Balance as of March 31, 2020",
+     "$",
+     "97,095",
+     "$",
+     "29,570",
+     "$",
+     "23,551",
+     "$",
+     "150,216"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "INTANGIBLE ASSETS AND GOODWILL"
+    }
+   },
+   "prose_before": "The following table sets forth the change in the carrying amount of goodwill by segment for the three months ended March 31, 2020:",
+   "prose_after": "Goodwill is evaluated for impairment annually on October 1, or more frequently if indicators of impairment are present or changes in circumstances suggest that impairment may exist.\n13. LONG-TERM DEBT\nLong-term debt was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Term loan facility",
+     "$",
+     "86,630",
+     "$",
+     "88,823"
+    ],
+    [
+     "Revolving credit facility",
+     "16,000",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Debt obligations",
+     "102,630",
+     "",
+     "108,823",
+     ""
+    ],
+    [
+     "Less: unamortized debt issuance costs",
+     "(875)",
+     "",
+     "(960)",
+     ""
+    ],
+    [
+     "Debt obligation, net",
+     "101,755",
+     "",
+     "107,863",
+     ""
+    ],
+    [
+     "Less: current portion",
+     "(8,430)",
+     "",
+     "(8,430)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "$",
+     "93,325",
+     "$",
+     "99,433"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 796,
+    "end_line": 812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Goodwill is evaluated for impairment annually on October 1, or more frequently if indicators of impairment are present or changes in circumstances suggest that impairment may exist.\n13. LONG-TERM DEBT\nLong-term debt was comprised of the following at March 31, 2020 and December 31, 2019:",
+   "prose_after": "As of March 31, 2020, the carrying value of debt approximated the fair value due to the variable interest rate, which reflected the market rate.\nCredit Agreement\nIn conjunction with our acquisition of HHI in January 2016, we entered into a syndicated credit agreement with Regions Bank (\"Regions\") serving as administrative agent, which provided for a $125 million term loan facility and a $50 million revolving credit facility. On February 8, 2018, we entered into a Third Amendment to the credit agreement that increased the aggregate principal amount of our credit facilities from $162 million to $167 million, which includes a $117 million term loan facility and a $50 million revolving credit facility.\nEach of our credit facilities continues to bear interest at a rate per annum equal to an applicable margin plus, at our option, either (1) the Adjusted LIBOR rate for the relevant interest period, (2) an alternate base rate determined by reference to the greater of (a) the prime lending rate of Regions, (b) the federal funds rate for the relevant interest period plus one half of one percent per annum and (c) the one month LIBOR rate plus one percent per annum, or (3) a combination of (1) and (2). The applicable margin range for LIBOR loans and the letter of credit fee ranges from 2.0% to 3.5%. The applicable margin range for base rate loans ranges from 1.0% to 2.5%, in each case based on the Company's consolidated leverage ratio.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "6,581"
+    ],
+    [
+     "2021",
+     "9,506",
+     ""
+    ],
+    [
+     "2022",
+     "86,543",
+     ""
+    ],
+    [
+     "2023",
+     "\u2014",
+     ""
+    ],
+    [
+     "2024",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "102,630"
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 826,
+    "end_line": 838
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Each of our credit facilities continues to bear interest at a rate per annum equal to an applicable margin plus, at our option, either (1) the Adjusted LIBOR rate for the relevant interest period, (2) an alternate base rate determined by reference to the greater of (a) the prime lending rate of Regions, (b) the federal funds rate for the relevant interest period plus one half of one percent per annum and (c) the one month LIBOR rate plus one percent per annum, or (3) a combination of (1) and (2). The applicable margin range for LIBOR loans and the letter of credit fee ranges from 2.0% to 3.5%. The applicable margin range for base rate loans ranges from 1.0% to 2.5%, in each case based on the Company's consolidated leverage ratio.\nPrincipal payments with respect to the term loan facility are due on the last day of each fiscal quarter beginning December 31, 2017, with quarterly principal payments of approximately $1.5 million through September 30, 2019, approximately $2.2 million through September 30, 2021 and approximately $2.9 million through September 30, 2022, with maturity on October 13, 2022 or such earlier date as the obligations under the credit agreement become due and payable pursuant to the terms of the credit agreement. Any principal outstanding under the revolving credit facility is due and payable on the maturity date.\nAnticipated annual future maturities of the term loan facility and revolving credit facility are as follows as of March 31, 2020:",
+   "prose_after": "Our credit facilities are secured pursuant to a Pledge and Security Agreement, dated January 8, 2016, among the parties identified as obligors therein and Regions, as collateral agent, on a first priority basis by a security interest in substantially all of the tangible and intangible assets (subject to certain exceptions) of the Company and certain subsidiaries of the Company, as guarantors (collectively, the \u201cSubsidiary Guarantors\u201d), including certain registered intellectual property and the capital stock of certain of the Company\u2019s direct and indirect subsidiaries. Our obligations under the credit agreement are also guaranteed by the Subsidiary Guarantors.\nThe credit agreement, as amended by the Third Amendment, provides incremental facility capacity of $50 million, subject to certain conditions. The credit agreement includes a number of restrictive covenants that, among other things and in each case subject to certain exceptions and baskets, impose operating and financial restrictions on the Company and the Subsidiary Guarantors, including the ability to incur additional debt; incur liens and encumbrances; make certain restricted payments, including paying dividends on the Company's equity securities or payments to redeem, repurchase or retire the Company's equity securities (which are subject to our compliance, on a pro forma basis to give effect to the restricted payment, with the fixed charge coverage ratio and consolidated leverage ratio described below); enter into certain restrictive agreements; make investments, loans and acquisitions; merge or consolidate with any other person; dispose of assets; enter into sale and leaseback transactions; engage in transactions with affiliates; and materially alter the business we conduct. The credit agreement requires the Company to maintain a minimum fixed charge coverage ratio of 1.25:1.00 throughout the duration of such agreement. Under the credit agreement, the Company is required to comply with a maximum consolidated leverage ratio of 3.50:1.00. The credit agreement also contains customary representations and warranties, affirmative covenants and events of default. We believe that we were in compliance with the covenants contained in the credit agreement as of March 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2020",
+     ""
+    ],
+    [
+     "Operating lease assets:",
+     "",
+     ""
+    ],
+    [
+     "Operating lease assets",
+     "$",
+     "7,522"
+    ],
+    [
+     "Operating lease liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "$",
+     "1,572"
+    ],
+    [
+     "Operating lease liabilities, net of current portion",
+     "5,950",
+     ""
+    ],
+    [
+     "Total operating lease liabilities",
+     "$",
+     "7,522"
+    ],
+    [
+     "Weighted average remaining lease term in years",
+     "7",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "5.1%",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 852,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "OPERATING LEASES"
+    }
+   },
+   "prose_before": "The credit agreement requires the Company to mandatorily prepay the credit facilities with 50% of excess cash flow (minus certain specified other payments). The Company is permitted to voluntarily prepay the credit facilities at any time without penalty, subject to customary \u201cbreakage\u201d costs with respect to prepayments of LIBOR rate loans made on a day other than the last day of any applicable interest period. The excess cash flow mandatory prepayment requirement under the credit agreement resulted in a $7.0 million prepayment on the term loan facility during the first quarter of 2019 related to excess cash flow generated by the Company during 2018. An excess cash flow prepayment was not required during the first quarter of 2020.\n14. OPERATING LEASES\nThe Company leases office space in various locations in Alabama, Louisiana, Pennsylvania, Minnesota, Maryland, and Mississippi. These leases have terms expiring from 2020 through 2030 but do contain optional extension terms. Leases with an initial term of 12 months or less are not recorded on the balance sheet; we recognize lease expense for these leases on a straight-line basis over the lease term.\nSupplemental balance sheet information related to operating leases was as follows:",
+   "prose_after": "Because our leases do not provide an implicit rate, we use our incremental borrowing rate based on the information available at the lease commencement date in determining the present value of lease payments. We used the incremental borrowing rate on January 1, 2019, for operating leases that commenced prior to that date.\nThe future minimum lease payments payable under these operating leases subsequent to March 31, 2020 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "1,177"
+    ],
+    [
+     "2021",
+     "1,518",
+     ""
+    ],
+    [
+     "2022",
+     "1,436",
+     ""
+    ],
+    [
+     "2023",
+     "1,363",
+     ""
+    ],
+    [
+     "2024",
+     "980",
+     ""
+    ],
+    [
+     "Thereafter",
+     "2,383",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "8,857",
+     ""
+    ],
+    [
+     "Less imputed interest",
+     "(1,335)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "7,522"
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 871,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "OPERATING LEASES"
+    }
+   },
+   "prose_before": "Because our leases do not provide an implicit rate, we use our incremental borrowing rate based on the information available at the lease commencement date in determining the present value of lease payments. We used the incremental borrowing rate on January 1, 2019, for operating leases that commenced prior to that date.\nThe future minimum lease payments payable under these operating leases subsequent to March 31, 2020 are as follows:",
+   "prose_after": "Total rent expense for the three months ended March 31, 2020 and 2019 was $0.4 million and $0.6 million, respectively.\nTotal cash paid for amounts included in the measurement of lease liabilities within operating cash flows from operating leases for the three months ended March 31, 2020 was $0.4 million.\n15. COMMITMENTS AND CONTINGENCIES\nFrom time to time, the Company is involved in routine litigation that arises in the ordinary course of business. Management does not believe it is reasonably possible that such matters will have a material adverse effect on the Company\u2019s financial statements.\n16. FAIR VALUE\nFASB Codification topic, Fair Value Measurements and Disclosures, establishes a framework for measuring fair value and expands financial statement disclosures about fair value measurements. Fair value is the price that would be received to sell an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants at the measurement date. The Codification does not require any new fair value measurements, but rather applies to all other accounting pronouncements that require or permit fair value measurements. The Codification requires that assets and liabilities carried at fair value be classified and disclosed in one of the following three categories:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring revenue",
+     "$",
+     "26,438",
+     "$",
+     "27,389"
+    ],
+    [
+     "Non-recurring revenue",
+     "10,077",
+     "",
+     "10,059",
+     ""
+    ],
+    [
+     "Total Acute Care EHR revenue",
+     "36,515",
+     "",
+     "37,448",
+     ""
+    ],
+    [
+     "Post-acute Care EHR",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recurring revenue",
+     "4,134",
+     "",
+     "4,478",
+     ""
+    ],
+    [
+     "Non-recurring revenue",
+     "537",
+     "",
+     "1,321",
+     ""
+    ],
+    [
+     "Total Post-acute Care EHR revenue",
+     "4,671",
+     "",
+     "5,799",
+     ""
+    ],
+    [
+     "TruBridge",
+     "28,571",
+     "",
+     "25,894",
+     ""
+    ],
+    [
+     "Total revenues",
+     "$",
+     "69,757",
+     "$",
+     "69,141"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "$",
+     "17,259",
+     "$",
+     "17,066"
+    ],
+    [
+     "Post-acute Care EHR",
+     "1,328",
+     "",
+     "1,271",
+     ""
+    ],
+    [
+     "TruBridge",
+     "15,057",
+     "",
+     "13,689",
+     ""
+    ],
+    [
+     "Total cost of sales",
+     "$",
+     "33,644",
+     "$",
+     "32,026"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "$",
+     "19,256",
+     "$",
+     "20,382"
+    ],
+    [
+     "Post-acute Care EHR",
+     "3,343",
+     "",
+     "4,528",
+     ""
+    ],
+    [
+     "TruBridge",
+     "13,514",
+     "",
+     "12,205",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "36,113",
+     "$",
+     "37,115"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate operating expenses",
+     "$",
+     "(29,981)",
+     "$",
+     "(31,067)"
+    ],
+    [
+     "Other income",
+     "362",
+     "",
+     "248",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(1,179)",
+     "",
+     "(1,804)",
+     ""
+    ],
+    [
+     "Income before taxes",
+     "$",
+     "5,315",
+     "$",
+     "4,492"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 915,
+    "end_line": 955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "SEGMENT REPORTING"
+    }
+   },
+   "prose_before": "Our chief operating decision makers (\"CODM\") utilize three operating segments, \"Acute Care EHR,\" \"Post-acute Care EHR\" and \"TruBridge,\" based on our three distinct business units with unique market dynamics and opportunities. Revenues and cost of sales are primarily derived from the provision of services and sales of our proprietary software, and our CODM assess the performance of these three segments at the gross profit level. Operating expenses and items such as interest, income tax, capital expenditures and total assets are managed at a consolidated level and thus are not included in our operating segment disclosures. Our CODM group is comprised of the Chief Executive Officer, Chief Growth Officer, Chief Operating Officer, and Chief Financial Officer. Accounting policies for each of the reportable segments are the same as those used on a consolidated basis.\nThe following table presents a summary of the revenues and gross profits of our three operating segments for the three months ended March 31, 2020 and 2019:",
+   "prose_after": "18. SUBSEQUENT EVENTS\nDividends\nOn May 5, 2020, the Company announced a dividend for the second quarter of 2020 in the amount of $0.10 per share, payable on May 29, 2020, to stockholders of record as of the close of business on May 15, 2020.\nCOVID-19\nThe COVID-19 pandemic has caused, and is continuing to cause, severe economic, market and other disruptions to the U.S. and global economies. Although the pandemic had a muted impact on our results for the first quarter of 2020 and financial condition as of March 31, 2020, the Company began experiencing increasingly adverse business conditions beginning in the latter half of March and through the date of this report. Most notably:\n\u2022Travel restrictions and social distancing protocols have created an additional challenge to our on-site implementation and sales teams. Although we have shown success with remote implementation models and our sales representatives are engaging in remote contact with existing customers and prospects, we expect these restrictions and protocols to have an incrementally negative impact on implementation revenues and new sales generation.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 908,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 956,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "Amount",
+     "",
+     "% Sales",
+     "",
+     "Amount",
+     "",
+     "% Sales",
+     ""
+    ],
+    [
+     "INCOME DATA:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "System sales and support:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "$",
+     "36,515",
+     "52.3",
+     "%",
+     "$",
+     "37,448",
+     "54.2",
+     "%"
+    ],
+    [
+     "Post-acute Care EHR",
+     "4,671",
+     "",
+     "6.7",
+     "%",
+     "5,799",
+     "",
+     "8.4",
+     "%"
+    ],
+    [
+     "Total System sales and support",
+     "41,186",
+     "",
+     "59.0",
+     "%",
+     "43,247",
+     "",
+     "62.5",
+     "%"
+    ],
+    [
+     "TruBridge",
+     "28,571",
+     "",
+     "41.0",
+     "%",
+     "25,894",
+     "",
+     "37.5",
+     "%"
+    ],
+    [
+     "Total sales revenues",
+     "69,757",
+     "",
+     "100.0",
+     "%",
+     "69,141",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Costs of sales:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "System sales and support:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "17,259",
+     "",
+     "24.7",
+     "%",
+     "17,066",
+     "",
+     "24.7",
+     "%"
+    ],
+    [
+     "Post-acute Care EHR",
+     "1,328",
+     "",
+     "1.9",
+     "%",
+     "1,271",
+     "",
+     "1.8",
+     "%"
+    ],
+    [
+     "Total System sales and support",
+     "18,587",
+     "",
+     "26.6",
+     "%",
+     "18,337",
+     "",
+     "26.5",
+     "%"
+    ],
+    [
+     "TruBridge",
+     "15,057",
+     "",
+     "21.6",
+     "%",
+     "13,689",
+     "",
+     "19.8",
+     "%"
+    ],
+    [
+     "Total costs of sales",
+     "33,644",
+     "",
+     "48.2",
+     "%",
+     "32,026",
+     "",
+     "46.3",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "36,113",
+     "",
+     "51.8",
+     "%",
+     "37,115",
+     "",
+     "53.7",
+     "%"
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product development",
+     "8,271",
+     "",
+     "11.9",
+     "%",
+     "9,228",
+     "",
+     "13.3",
+     "%"
+    ],
+    [
+     "Sales and marketing",
+     "6,997",
+     "",
+     "10.0",
+     "%",
+     "7,492",
+     "",
+     "10.8",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "11,847",
+     "",
+     "17.0",
+     "%",
+     "11,824",
+     "",
+     "17.1",
+     "%"
+    ],
+    [
+     "Amortization of acquisition-related intangibles",
+     "2,866",
+     "",
+     "4.1",
+     "%",
+     "2,523",
+     "",
+     "3.6",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "29,981",
+     "",
+     "43.0",
+     "%",
+     "31,067",
+     "",
+     "44.9",
+     "%"
+    ],
+    [
+     "Operating income",
+     "6,132",
+     "",
+     "8.8",
+     "%",
+     "6,048",
+     "",
+     "8.7",
+     "%"
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "362",
+     "",
+     "0.5",
+     "%",
+     "248",
+     "",
+     "0.4",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "(1,179)",
+     "",
+     "(1.7)",
+     "%",
+     "(1,804)",
+     "",
+     "(2.6)",
+     "%"
+    ],
+    [
+     "Total other income (expense)",
+     "(817)",
+     "",
+     "(1.2)",
+     "%",
+     "(1,556)",
+     "",
+     "(2.3)",
+     "%"
+    ],
+    [
+     "Income before taxes",
+     "5,315",
+     "",
+     "7.6",
+     "%",
+     "4,492",
+     "",
+     "6.5",
+     "%"
+    ],
+    [
+     "Provision for income taxes",
+     "1,225",
+     "",
+     "1.8",
+     "%",
+     "1,048",
+     "",
+     "1.5",
+     "%"
+    ],
+    [
+     "Net income",
+     "$",
+     "4,090",
+     "5.9",
+     "%",
+     "$",
+     "3,444",
+     "5.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1107,
+    "end_line": 1156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "During the three months ended March 31, 2020, we generated revenues of $69.8 million from the sale of our products and services, compared to $69.1 million during the three months ended March 31, 2019, an increase of 1% that is primarily attributed to continued TruBridge client growth. We view sales of TruBridge solutions within our existing EHR client base as our leading performance indicator. Our net income for the three months ended March 31, 2020 increased by $0.6 million to $4.1 million from the three months ended March 31, 2019, primarily as of result of decreased long-term debt interest. Net cash provided by operating activities decreased slightly by $0.3 million during the three months ended March 31, 2019 to $7.6 million during the three months ended March 31, 2020, primarily due to changes in working capital.\nThe following table sets forth certain items included in our results of operations for the three months ended March 31, 2020 and 2019, expressed as a percentage of our total revenues for these periods:",
+   "prose_after": "Three Months Ended March 31, 2020 Compared with Three Months Ended March 31, 2019\nRevenues. Total revenues for the three months ended March 31, 2020 increased by $0.6 million, or 1%, compared to the three months ended March 31, 2019.\nSystem sales and support revenues decreased by $2.1 million, or 5%, compared to the first quarter of 2019. System sales and support revenues were comprised of the following during the respective periods:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1104,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Recurring system sales and support revenues (1)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "$",
+     "26,438",
+     "$",
+     "27,389"
+    ],
+    [
+     "Post-acute Care EHR",
+     "4,134",
+     "",
+     "4,478",
+     ""
+    ],
+    [
+     "Total recurring system sales and support revenues",
+     "30,572",
+     "",
+     "31,867",
+     ""
+    ],
+    [
+     "Non-recurring system sales and support revenues (2)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "10,077",
+     "",
+     "10,059",
+     ""
+    ],
+    [
+     "Post-acute Care EHR",
+     "537",
+     "",
+     "1,321",
+     ""
+    ],
+    [
+     "Total non-recurring system sales and support revenues",
+     "10,614",
+     "",
+     "11,380",
+     ""
+    ],
+    [
+     "Total system sales and support revenue",
+     "$",
+     "41,186",
+     "$",
+     "43,247"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) Mostly comprised of support and maintenance, third-party subscriptions, and SaaS revenues.",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2) Mostly comprised of installation revenues from the sale of our acute care and post-acute care EHR solutions and related applications under a perpetual (non-subscription) licensing model.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1164,
+    "end_line": 1191
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Three Months Ended March 31, 2020 Compared with Three Months Ended March 31, 2019\nRevenues. Total revenues for the three months ended March 31, 2020 increased by $0.6 million, or 1%, compared to the three months ended March 31, 2019.\nSystem sales and support revenues decreased by $2.1 million, or 5%, compared to the first quarter of 2019. System sales and support revenues were comprised of the following during the respective periods:",
+   "prose_after": "Recurring system sales and support revenues decreased by $1.3 million, or 4%, compared to the first quarter of 2019. Acute Care EHR recurring revenues decreased by $1.0 million, or 3%, as attrition from the Thrive and Centriq customer base outweighed new Thrive customer growth and additional support fees. Post-acute Care EHR recurring revenues decreased by $0.3 million, or 8%, due to attrition attributed to an aggressive competitive environment as we make technological improvements to the AHT product line.\nNon-recurring system sales and support revenues decreased by $0.8 million, or 7%. Acute Care EHR non-recurring revenues were relatively flat. We installed our Acute Care EHR solutions at nine new hospital clients during the first quarter of 2020 (eight of which were under a SaaS arrangement, resulting in revenue being recognized ratably over the contract term) compared to five new hospital clients during the first quarter of 2019 (one under a SaaS arrangement). Acute Care EHR revenues from new system implementations increased by $3.0 million, but were primarily offset by a $2.4 million decrease in MU3 installation revenue as the 2019 year-end deadline for compliance has passed. In addition, other add-on sales and non-recurring revenue decreased by $0.6 million. Non-recurring Post-acute Care EHR revenues decreased by $0.8 million, or 59%, in the first quarter of 2020, as installation bookings have weakened as we continue our ongoing product releases and efforts to make technological improvements to the AHT product line.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1204,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(In thousands)",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "System sales and support (1)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acute Care EHR",
+     "$",
+     "8,919",
+     "$",
+     "8,285"
+    ],
+    [
+     "Post-acute Care EHR",
+     "913",
+     "",
+     "1,431",
+     ""
+    ],
+    [
+     "Total system sales and support",
+     "9,832",
+     "",
+     "9,716",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TruBridge (2)",
+     "9,511",
+     "",
+     "4,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total bookings",
+     "$",
+     "19,343",
+     "$",
+     "13,944"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(1) Generally calculated as the total contract price (for system sales) and annualized contract value (for support).",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(2) Generally calculated as the total contract price (for non-recurring, project-related amounts) and annualized contract value (for recurring amounts).",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1273,
+    "end_line": 1296
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Backlog consists of revenues we reasonably expect to recognize over the next twelve months under all existing contracts, including those with remaining performance obligations that have original expected durations of one year or less and those with fees that are variable in which we estimate future revenues. The revenues to be recognized may relate to a combination of one-time fees for system sales and recurring fees for support and maintenance and TruBridge services. As of March 31, 2020, we had a twelve-month backlog of approximately $12 million in connection with non-recurring system purchases and approximately $234 million in connection with recurring payments under support and maintenance, Cloud EHR contracts, and TruBridge services. As of March 31, 2019, we had a twelve-month backlog of approximately $17 million in connection with non-recurring system purchases and approximately $227 million in connection with recurring payments under support and maintenance and TruBridge services.\nBookings\nBookings is a key operational metric used by management to assess the relative success of our sales generation efforts, and were as follows for the three months ended March 31, 2020 and 2019:",
+   "prose_after": "Acute Care EHR bookings in the first quarter of 2020 increased by $0.6 million, or 8%, over the first quarter of 2019, mostly propelled by increased demand for new EHR installations. Acute Care EHR new installation bookings increased $2.2\nmillion compared to the first three months of 2019. This increase was partially offset by a $0.5 million decrease in MU3 related add-on sales and a $1.1 million decrease in other EHR add-on sales compared to the first quarter of 2019.\nPost-acute Care EHR bookings in the first quarter of 2020 decreased by $0.5 million, or 36%, from the first quarter of 2019 as bookings have weakened as we continue our ongoing product releases and efforts to make technological improvements to the AHT product line.\nTruBridge bookings in the first quarter of 2020 increased by $5.3 million, or 125%, over the first quarter of 2019, mostly due to our recently-introduced initiative to expand our TruBridge footprint outside of our traditional EHR customer base, resulting in significant client wins.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "3.1",
+     "Certificate of Incorporation (filed as Exhibit 3.4 to CPSI\u2019s Registration Statement on Form S-1 (Registration No. 333-84726) and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws (filed as Exhibit 3 to CPSI\u2019s Current Report on Form 8-K dated October 28, 2013 and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Amendment to Amended and Restated Bylaws (filed as Exhibit 3.1 to CPSI's Current Report on Form 8-K dated January 22, 2019 and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Non-Employee Director Restricted Stock Award Agreement Under the 2019 Incentive Plan"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Chief Executive Officer pursuant to Rule 13a-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Chief Financial Officer pursuant to Rule 13a-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certifications of the Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "Interactive Data Files for CPSI\u2019s Form 10-Q for the period ended March 31, 2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1383,
+    "end_line": 1401
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Additionally, concerns over the economic impact of the COVID-19 pandemic have caused extreme volatility in financial and other capital markets which has and may continue to adversely impact our stock price and may adversely impact our ability to access capital, at all or on reasonable terms. To the extent the COVID-19 pandemic adversely affects our business and financial results, it may also have the effect of heightening many of the other risks described under \u201cRisk Factors\u201d in the Annual Report on Form 10-K for the year ended December 31, 2019.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nNot Applicable.\nItem 3. Defaults Upon Senior Securities.\nNot applicable.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nNone.\nItem 6. Exhibits.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1358,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1402,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "COMPUTER PROGRAMS AND SYSTEMS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "May 5, 2020",
+     "By:",
+     "/s/ J. Boyd Douglas"
+    ],
+    [
+     "",
+     "",
+     "J. Boyd Douglas"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "May 5, 2020",
+     "By:",
+     "/s/ Matt J. Chambless"
+    ],
+    [
+     "",
+     "",
+     "Matt J. Chambless"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "COMPUTER PROGRAMS AND SYSTEMS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1407,
+    "end_line": 1420
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1402,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1421,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

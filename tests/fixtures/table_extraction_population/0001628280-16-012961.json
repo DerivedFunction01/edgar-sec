@@ -1,0 +1,6451 @@
+{
+ "accession": "0001628280-16-012961",
+ "cik": "0001177609",
+ "form": "10-K",
+ "filing_date": "2016-03-24",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10k2015_fivebelowform1.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pennsylvania",
+     "",
+     "75-3000378"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "1818 Market Street Suite 2000 Philadelphia, PA 19103 (Address of Principal Executive Office)",
+     "",
+     "19103 (Zip Code)"
+    ],
+    [
+     "",
+     "(215) 546-7909 (Registrant's Telephone Number, Including Area Code)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(b) of the Exchange Act:",
+     "",
+     ""
+    ],
+    [
+     "Title of each class",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.01 par value per share",
+     "",
+     "The NASDAQ Stock Market LLC"
+    ],
+    [
+     "Securities registered pursuant to Section 12(g) of the Exchange Act:",
+     "",
+     ""
+    ],
+    [
+     "Title of each class",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Not applicable",
+     "",
+     "Not applicable"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nForm 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended January 30, 2016\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 001-35600\nFive Below, Inc.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the securities act. Yes [X] No [ ]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INDEX",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "Page"
+    ],
+    [
+     "ITEM 1. BUSINESS",
+     "4"
+    ],
+    [
+     "ITEM 1A. RISK FACTORS",
+     "13"
+    ],
+    [
+     "ITEM 1B. UNRESOLVED STAFF COMMENTS",
+     "24"
+    ],
+    [
+     "ITEM 2. PROPERTIES",
+     "25"
+    ],
+    [
+     "ITEM 3. LEGAL PROCEEDINGS",
+     "25"
+    ],
+    [
+     "ITEM 4. MINE SAFETY DISCLOSURES",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "ITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "26"
+    ],
+    [
+     "ITEM 6. SELECTED FINANCIAL DATA",
+     "28"
+    ],
+    [
+     "ITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "30"
+    ],
+    [
+     "ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "41"
+    ],
+    [
+     "ITEM 8. CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "42"
+    ],
+    [
+     "ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "60"
+    ],
+    [
+     "ITEM 9A. CONTROLS AND PROCEDURES",
+     "61"
+    ],
+    [
+     "ITEM 9B. OTHER INFORMATION",
+     "62"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     ""
+    ],
+    [
+     "ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "63"
+    ],
+    [
+     "ITEM 11. EXECUTIVE COMPENSATION",
+     "63"
+    ],
+    [
+     "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "63"
+    ],
+    [
+     "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "63"
+    ],
+    [
+     "ITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "63"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     ""
+    ],
+    [
+     "ITEM 15. EXHIBITS AND FINANCIAL STATEMENTS SCHEDULES",
+     "63"
+    ],
+    [
+     "SIGNATURES",
+     "68"
+    ]
+   ],
+   "caption_stack": [
+    "INDEX"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 121,
+    "end_line": 153
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u2022natural disasters, unusual weather conditions, pandemic outbreaks, global political events, war and terrorism;\n\u2022current economic conditions and other economic factors;\n\u2022the impact of governmental laws and regulations;\n\u2022the costs and consequences of legal proceedings;\n\u2022inability to protect our brand name, trademarks and other intellectual property rights;\n\u2022the impact of product and food safety claims and effects of legislation;\n\u2022inability to obtain additional financing, if needed; and\n\u2022restrictions imposed by our indebtedness on our current and future operations.\nReaders are urged to consider these factors carefully in evaluating the forward-looking statements and are cautioned not to place undue reliance on these forward-looking statements. All of the forward-looking statements we have included in this Annual Report are based on information available to us on the date of this report. We undertake no obligation to publicly update or revise any forward-looking statement, whether as a result of new information, future events or otherwise, except as otherwise required by law.",
+   "prose_after": "PART I\nITEM 1. BUSINESS\nGeneral\nFive Below, Inc. was incorporated in Pennsylvania in January 2002. Our principal executive office is located at 1818 Market Street, Suite 2000, Philadelphia, PA 19103 and our telephone number is (215) 546-7909. Our corporate website address is www.fivebelow.com. The information contained on, or accessible through, our corporate website does not constitute part of this Annual Report. As used herein, \u201cFive Below,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d or \u201cour business\u201d refers to Five Below, Inc. (collectively with its wholly owned subsidiary), except as expressly indicated or unless the context otherwise requires.\nWe purchase products in reaction to existing marketplace trends and, hence, refer to our products as \u201ctrend-right.\u201d We use the term \u201cdynamic\u201d merchandise to refer to the broad range and frequently changing nature of the products we display in our stores. We use the term \u201cpower\u201d shopping center to refer to an unenclosed shopping center with 250,000 to 750,000 square feet of gross leasable area that contains three or more \u201cbig box\u201d retailers (large retailers with floor space over 50,000 square feet) and various smaller retailers with a common parking area shared by the retailers. We use the term \u201clifestyle\u201d shopping center to refer to a shopping center or commercial development that is often located in suburban areas and combines the traditional retail functions of a shopping mall with leisure amenities oriented towards upscale consumers. We use the term \u201ccommunity\u201d shopping center to refer to a shopping area designed to serve a trade area of 40,000 to 150,000 people where the lead tenant is a variety discount, junior department store and/or supermarket. We use the term \u201ctrade area\u201d to refer to the geographic area from which the majority of a given retailer's customers come from. Trade areas vary by market based on geographic size, population density, demographics and proximity to alternative shopping opportunities.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Percentage of Net Sales",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Leisure",
+     "50.8",
+     "%",
+     "51.0",
+     "%",
+     "51.7",
+     "%"
+    ],
+    [
+     "Fashion and home",
+     "29.7",
+     "%",
+     "29.3",
+     "%",
+     "29.3",
+     "%"
+    ],
+    [
+     "Party and snack",
+     "19.5",
+     "%",
+     "19.7",
+     "%",
+     "19.0",
+     "%"
+    ],
+    [
+     "Total",
+     "100.0",
+     "%",
+     "100.0",
+     "%",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Percentage of Net Sales"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 265
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Crafts: We offer an assortment of craft activity kits, as well as arts and crafts supplies such as crayons, markers and stickers. We also offer trend-right items for school such as backpacks, fashion notebooks and journals, novelty pens and pencils, as well as everyday name brand items.\n\u2022 Party: Consists of party goods, decorations and greeting cards, as well as every day and special occasion merchandise.\n\u2022 Candy: Consists of branded items that appeal to teens and pre-teens. This category includes an assortment of classic and novelty candy bars and movie-size box candy as well as gum and snack food. We also sell chilled drinks via coolers.\n\u2022 Now: Consists of seasonally-specific items used to celebrate and decorate for events such as Christmas, Easter, Halloween and St. Patrick\u2019s Day. These products are most often placed at the front of the store.\nSet forth below is data for the following groups of products \u2013 leisure, fashion and home, and party and snack. The percentage of net sales represented by each product group for each of the last three fiscal years was as follows:",
+   "prose_after": "Leisure includes items such as sporting goods, games, toys, tech, books, electronic accessories, and arts and crafts. Fashion and home includes items such as personal accessories, \u201cattitude\u201d t-shirts, beauty offerings, home goods and storage options. Party and snack includes items such as party and seasonal goods, greeting cards, candy and other snacks, and beverages.\nOur Stores\nAs of January 30, 2016, we operated 437 stores throughout the Northeast, South and Midwest regions of the United States. Our new store model assumes a store size of approximately 7,500 square feet. Our stores are primarily located in power, community and lifestyle shopping centers; approximately 3% of our stores are located in malls. The following map shows the number of stores in each of the states in which we operated and the locations of our distributions centers as of January 30, 2016.\nStore Design and Layout\nWe present our products in a unique and engaging in-store atmosphere. We maintain a consistent floor layout designed with an easy-to-navigate racetrack flow and featuring sight-lines across the entire store enabling customers to easily identify our category worlds. All of our stores feature a sound system playing popular music throughout the shopping day. We employ novel and dynamic techniques to display our products, including distinctive merchandise fixtures and colorful and stimulating signage, which attract customers, encourage hands-on interaction with our products and convey our value pricing. In addition to traditional perimeter and gondola shelving, racks and tables, we utilize innovative approaches such as wheelbarrows, barrels and bins strategically placed throughout our stores. These techniques foster customer interaction with products, supporting the strong relationship we strive to develop with our customers and enhance our upbeat and vibrant shopping environment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 268,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Stores at Start of Period",
+     "Stores Opened",
+     "Stores Closed",
+     "Net Store Increase",
+     "Stores at End of Period"
+    ],
+    [
+     "Fiscal 2013",
+     "244",
+     "62",
+     "2",
+     "60",
+     "304"
+    ],
+    [
+     "Fiscal 2014",
+     "304",
+     "62",
+     "\u2014",
+     "62",
+     "366"
+    ],
+    [
+     "Fiscal 2015",
+     "366",
+     "74",
+     "3",
+     "71",
+     "437"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 290,
+    "end_line": 297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "We select store sites for new store openings based upon certain criteria including minimum population density requirements, availability of attractive lease terms, sufficient space and strong positioning within a center. Members of our real estate team spend considerable time evaluating prospective sites before bringing a proposal to our real estate committee. Our real estate committee, which is composed of senior management including our executive officers, approves all of our locations before a lease is signed.\nWe believe there is a significant opportunity to expand our store base in the United States. We opened 71 net new stores in fiscal 2015 and we intend to open approximately 85 new stores in fiscal 2016 through expansion in existing markets and by entering new markets. We maintain a pipeline of real estate sites that have been approved by our real estate committee and have executed 53 leases through January 30, 2016 for new stores in fiscal 2016. Our recent store growth is summarized in the following table:",
+   "prose_after": "Opening stores within existing markets enables Five Below to benefit from enhanced brand awareness and to achieve advertising, operating and distribution efficiencies. Our targeted new store openings include additional locations in existing markets as well as expansion into adjacent states and markets. In existing markets, we use a store densification strategy that promotes brand awareness and leverages marketing, operating and distribution costs. When entering new markets, we employ a store clustering strategy, opening multiple stores in a single market on the same day, enabling us to leverage marketing and pre-opening expenses and generate initial new market brand awareness.\nOur store growth is supported by our new store economics, which we believe to be compelling. Our new store model assumes a store size of approximately 7,500 square feet that achieves sales of approximately $1.6 million in the first full year of operation and an average new store cash investment of approximately $0.3 million, including our store build-out (net of tenant allowances), inventory (net of payables) and cash pre-opening expenses. Our new store model targets an average payback period of less than one year on our initial investment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 279,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal 2015",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "First Quarter (February 1, 2015 - May 2, 2015)",
+     "$",
+     "37.43",
+     "$",
+     "28.51"
+    ],
+    [
+     "Second Quarter (May 3, 2015 - August 1, 2015)",
+     "$",
+     "41.47",
+     "$",
+     "32.83"
+    ],
+    [
+     "Third Quarter (August 2, 2015 - October 31, 2015)",
+     "$",
+     "39.12",
+     "$",
+     "31.26"
+    ],
+    [
+     "Fourth Quarter (November 1, 2015 - January 30, 2016)",
+     "$",
+     "35.51",
+     "$",
+     "26.95"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 665,
+    "end_line": 673
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "We are subject to various proceedings, lawsuits, disputes, and claims arising in the ordinary course of our business. Many of these actions raise complex factual and legal issues and are subject to uncertainties. Actions filed against us from time to time include commercial, intellectual property, customer, and employment actions, including class action lawsuits. The plaintiffs in some actions seek unspecified damages or injunctive relief, or both. Actions are in various procedural stages, and some are covered in part by insurance. We cannot predict with assurance the outcome of actions brought against us. Accordingly, adverse developments, settlements, or resolutions may occur and negatively impact income in the quarter of such development, settlement or resolution. If a potential loss arising from these lawsuits, claims and pending actions is probable and reasonably estimable, we record the estimated liability based on circumstances and assumptions existing at the time. Although the outcome of these and other claims cannot be predicted with certainty, management does not believe that the ultimate resolution of these matters will have a material adverse effect on our financial condition or results of operations.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock has been listed on the NASDAQ Global Select Market under the symbol \u201cFIVE\u201d since our IPO in July 2012, which had a price of $17.00 per share. The following table sets forth, for the periods indicated, the high and low sales prices of our common stock as reported by the NASDAQ Global Select Market:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal 2014",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "First Quarter (February 2, 2014 - May 3, 2014)",
+     "$",
+     "44.35",
+     "$",
+     "33.94"
+    ],
+    [
+     "Second Quarter (May 4, 2014 - August 2, 2014)",
+     "$",
+     "40.81",
+     "$",
+     "34.23"
+    ],
+    [
+     "Third Quarter (August 3, 2014 - November 1, 2014)",
+     "$",
+     "43.73",
+     "$",
+     "35.14"
+    ],
+    [
+     "Fourth Quarter (November 2, 2014 - January 31, 2015)",
+     "$",
+     "47.89",
+     "$",
+     "32.01"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "On January 29, 2016 (the last trading day of fiscal 2015), the last reported sale price on the NASDAQ Global Select Market of our common stock was $35.23 per share. As of March 16, 2016, we had approximately 24,114 holders of record of our common stock.\nPerformance Graph\nThis performance graph and related information shall not be deemed \u201csoliciting material\u201d or to be \u201cfiled\u201d with the Securities and Exchange Commission for purposes of Section 18 of the Exchange Act, or otherwise subject to the liabilities under that Section, and shall not be deemed to be incorporated by reference into any future filing under the Securities Act, or the Exchange Act, except to the extent that we specifically incorporate it by reference into such filing.\nThe following graph compares the cumulative total shareholder return on our common stock from July 19, 2012 (the date our common stock commenced trading on the NASDAQ Global Select Market) through January 30, 2016, with the return on (i) the NASDAQ Global Market Composite Index and (ii) the NASDAQ US Benchmark Retail Index over the same period. This graph assumes an initial investment of $100 and assumes the reinvestment of dividends, if any. Such returns are based on historical results and are not intended to suggest future performance.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 658,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "7/19/2012",
+     "2/1/2013",
+     "1/31/2014",
+     "1/30/2015",
+     "1/29/2016"
+    ],
+    [
+     "FIVE BELOW, INC.",
+     "$100.00",
+     "$140.00",
+     "$138.30",
+     "$125.70",
+     "$132.90"
+    ],
+    [
+     "NASDAQ GLOBAL MARKET COMPOSITE INDEX",
+     "$100.00",
+     "$107.20",
+     "$138.40",
+     "$156.30",
+     "$155.60"
+    ],
+    [
+     "NASDAQ US BENCHMARK RETAIL INDEX",
+     "$100.00",
+     "$111.00",
+     "$132.70",
+     "$161.50",
+     "$168.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 692,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT'S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "This performance graph and related information shall not be deemed \u201csoliciting material\u201d or to be \u201cfiled\u201d with the Securities and Exchange Commission for purposes of Section 18 of the Exchange Act, or otherwise subject to the liabilities under that Section, and shall not be deemed to be incorporated by reference into any future filing under the Securities Act, or the Exchange Act, except to the extent that we specifically incorporate it by reference into such filing.\nThe following graph compares the cumulative total shareholder return on our common stock from July 19, 2012 (the date our common stock commenced trading on the NASDAQ Global Select Market) through January 30, 2016, with the return on (i) the NASDAQ Global Market Composite Index and (ii) the NASDAQ US Benchmark Retail Index over the same period. This graph assumes an initial investment of $100 and assumes the reinvestment of dividends, if any. Such returns are based on historical results and are not intended to suggest future performance.",
+   "prose_after": "Securities Authorized for Issuance under Equity Compensation Plans\nSee Item 12. \u201cSecurity Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\u201d for information regarding securities authorized for issuance under our equity compensation plans.\nDividends\nDuring the past two fiscal years, we have not declared, and currently do not plan to declare in the foreseeable future, dividends on shares of our common stock. We currently intend to retain any future earnings for use in the operation and expansion of our business. Any further determination to pay dividends on our capital stock will be at the discretion of our board of directors, subject to applicable laws, and will depend on our financial condition, results of operations, capital requirements, general business conditions and other factors that our board of directors considers relevant. In addition, the terms of our revolving credit facility contain restrictions on our ability to pay dividends.\nRecent Sales of Unregistered Securities",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 711,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in millions, except share and per share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations Data (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "832.0",
+     "$",
+     "680.2",
+     "$",
+     "535.4",
+     "",
+     "$",
+     "418.8",
+     "",
+     "$",
+     "297.1",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "540.0",
+     "",
+     "442.4",
+     "",
+     "347.4",
+     "",
+     "",
+     "269.0",
+     "",
+     "",
+     "192.3",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "291.9",
+     "",
+     "237.8",
+     "",
+     "188.0",
+     "",
+     "",
+     "149.8",
+     "",
+     "",
+     "104.9",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses (2)",
+     "199.0",
+     "",
+     "160.8",
+     "",
+     "134.3",
+     "",
+     "",
+     "112.2",
+     "",
+     "",
+     "78.6",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "92.9",
+     "",
+     "77.0",
+     "",
+     "53.7",
+     "",
+     "",
+     "37.7",
+     "",
+     "",
+     "26.2",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "1.5",
+     "",
+     "",
+     "2.4",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment",
+     "\u2014",
+     "",
+     "0.2",
+     "",
+     "0.3",
+     "",
+     "",
+     "1.6",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income)",
+     "0.3",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(0.4)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "92.7",
+     "",
+     "76.7",
+     "",
+     "52.0",
+     "",
+     "",
+     "34.1",
+     "",
+     "",
+     "26.2",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "35.0",
+     "",
+     "28.6",
+     "",
+     "19.8",
+     "",
+     "",
+     "14.1",
+     "",
+     "",
+     "10.2",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "57.7",
+     "",
+     "48.0",
+     "",
+     "32.1",
+     "",
+     "",
+     "20.0",
+     "",
+     "",
+     "16.1",
+     "",
+     ""
+    ],
+    [
+     "Dividend paid to preferred and unvested restricted shareholders",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(65.4)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Series A 8% Convertible Preferred Stock cumulative dividends",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(15.9)",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to participating securities",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.5)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(0.1)",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) attributable to common shareholders",
+     "$",
+     "57.7",
+     "$",
+     "48.0",
+     "$",
+     "31.7",
+     "",
+     "$",
+     "(45.4)",
+     "",
+     "$",
+     "0.1",
+     ""
+    ],
+    [
+     "Per Share Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income (loss) per common share (3)",
+     "$",
+     "1.06",
+     "$",
+     "0.89",
+     "$",
+     "0.59",
+     "",
+     "$",
+     "(1.28)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Diluted income (loss) per common share (3)",
+     "$",
+     "1.05",
+     "$",
+     "0.88",
+     "$",
+     "0.59",
+     "",
+     "$",
+     "(1.28)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dividends declared and paid per common share",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2.02",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic shares",
+     "54,513,622",
+     "",
+     "54,219,801",
+     "",
+     "53,294,805",
+     "",
+     "",
+     "35,444,200",
+     "",
+     "",
+     "15,903,599",
+     "",
+     ""
+    ],
+    [
+     "Diluted shares",
+     "54,793,301",
+     "",
+     "54,573,855",
+     "",
+     "53,741,860",
+     "",
+     "",
+     "35,444,200",
+     "",
+     "",
+     "15,904,108",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 718,
+    "end_line": 754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The following table presents selected financial and other data as of and for the periods indicated. The selected financial data for fiscal 2015, 2014 and 2013 and selected consolidated balance sheet data as of January 30, 2016 and January 31, 2015 have been derived from our consolidated financial statements audited by KPMG LLP, our independent registered public accounting firm, included elsewhere in this Annual Report. The selected financial data for the fiscal years ended February 2, 2013, which we refer to as fiscal 2012, and January 28, 2012, which we refer to as fiscal 2011, and the selected balance sheet data as of February 1, 2014, February 2, 2013, and January 28, 2012, have been derived from our audited consolidated financial statements that have not been included in this Annual Report. The historical results presented below are not necessarily indicative of the results to be expected for any future period. You should read this selected financial data in conjunction with the consolidated financial statements and accompanying notes and the information under Item 7, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d appearing elsewhere in this Annual Report.\nWe operate on a fiscal calendar that results in a given fiscal year consisting of a 52- or 53-week period ending on the Saturday closest to January 31st of the following year. The reporting periods contained in the following table consist of 52 weeks of operations in each of fiscal 2015, 2014, 2013, and 2011 and 53 weeks of operations in fiscal 2012.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 711,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 755,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in millions, except total stores data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows Data (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "87.9",
+     "",
+     "$",
+     "61.4",
+     "",
+     "$",
+     "31.2",
+     "",
+     "$",
+     "30.4",
+     "",
+     "$",
+     "46.7",
+     ""
+    ],
+    [
+     "Investing activities",
+     "$",
+     "(99.4)",
+     "",
+     "$",
+     "(32.3)",
+     "",
+     "$",
+     "(25.9)",
+     "",
+     "$",
+     "(22.9)",
+     "",
+     "$",
+     "(18.6)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "$",
+     "1.4",
+     "",
+     "$",
+     "(16.1)",
+     "",
+     "$",
+     "(11.2)",
+     "",
+     "$",
+     "7.3",
+     "",
+     "$",
+     "1.0",
+     ""
+    ],
+    [
+     "Other Operating and Financial Data (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stores at end of period",
+     "437",
+     "",
+     "",
+     "366",
+     "",
+     "",
+     "304",
+     "",
+     "",
+     "244",
+     "",
+     "",
+     "192",
+     "",
+     ""
+    ],
+    [
+     "Comparable store sales growth",
+     "3.4",
+     "",
+     "%",
+     "3.4",
+     "",
+     "%",
+     "4.0",
+     "",
+     "%",
+     "7.1",
+     "",
+     "%",
+     "7.9",
+     "",
+     "%"
+    ],
+    [
+     "Average net sales per store (4)",
+     "$",
+     "2.0",
+     "",
+     "$",
+     "1.9",
+     "",
+     "$",
+     "1.9",
+     "",
+     "$",
+     "1.8",
+     "",
+     "$",
+     "1.7",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$",
+     "53.1",
+     "",
+     "$",
+     "32.3",
+     "",
+     "$",
+     "25.9",
+     "",
+     "$",
+     "22.9",
+     "",
+     "$",
+     "18.6",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheet Data (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "53.1",
+     "",
+     "$",
+     "63.2",
+     "",
+     "$",
+     "50.2",
+     "",
+     "$",
+     "56.1",
+     "",
+     "$",
+     "41.3",
+     ""
+    ],
+    [
+     "Short-term investment securities",
+     "46.3",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Total current assets (5)",
+     "264.7",
+     "",
+     "",
+     "199.0",
+     "",
+     "",
+     "156.3",
+     "",
+     "",
+     "128.4",
+     "",
+     "",
+     "87.4",
+     "",
+     ""
+    ],
+    [
+     "Total assets (5)",
+     "393.3",
+     "",
+     "",
+     "294.1",
+     "",
+     "",
+     "232.1",
+     "",
+     "",
+     "188.4",
+     "",
+     "",
+     "133.2",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "102.2",
+     "",
+     "",
+     "79.4",
+     "",
+     "",
+     "79.7",
+     "",
+     "",
+     "68.8",
+     "",
+     "",
+     "49.9",
+     "",
+     ""
+    ],
+    [
+     "Total long-term debt, excluding current portion (6)",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "19.5",
+     "",
+     "",
+     "0.3",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities (5)",
+     "148.8",
+     "",
+     "",
+     "119.9",
+     "",
+     "",
+     "115.2",
+     "",
+     "",
+     "117.6",
+     "",
+     "",
+     "71.1",
+     "",
+     ""
+    ],
+    [
+     "Series A 8% Convertible Preferred Stock",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "191.9",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity (deficit)",
+     "$",
+     "244.5",
+     "",
+     "$",
+     "174.3",
+     "",
+     "$",
+     "116.9",
+     "",
+     "$",
+     "70.7",
+     "",
+     "$",
+     "(129.8)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 756,
+    "end_line": 783
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Components may not add to total due to rounding.\n(2) Fiscal 2014, 2013 and 2012 includes $0.9 million, $6.1 million and $10.5 million of share-based compensation expense that relates to the cancellation of certain stock options, in exchange for the grant of restricted shares and on-going expense recognition of the awards over the remaining vesting period. In addition, fiscal 2013 and 2012 each include $1.0 million of expenses related to legal, accounting, and other fees in connection with secondary public offerings. Fiscal 2011 includes $6.1 million of non-contractual executive bonus expense.\n(3) Please see Note 2 in our consolidated financial statements included elsewhere in this Annual Report for an explanation of per share calculations.\n(4) Only includes stores open during the full fiscal year.\n(5) In November 2015, the FASB issued ASU 2015-17, \"Income Taxes: Balance Sheet Classification of Deferred Taxes.\" ASU 2015-17 simplifies the presentation of deferred income taxes by requiring deferred tax assets and liabilities be classified as noncurrent on the balance sheet. We elected to early adopt this guidance effective the fourth quarter of Fiscal 2015, and we retrospectively applied the change for all periods presented.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 755,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 791,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25aa",
+     "the last day of the fiscal year in which the store was relocated or expanded (for stores that increased significantly in size); or"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Net sales constitute gross sales net of merchandise returns for damaged or defective goods. Net sales consist of sales from comparable stores and non-comparable stores. Revenue from the sale of gift cards is deferred and not included in net sales until the gift cards are redeemed to purchase merchandise.\nOur business is seasonal and as a result, our net sales fluctuate from quarter to quarter. Net sales are usually highest in the fourth fiscal quarter due to the year-end holiday season.\nComparable Store Sales\nComparable store sales include net sales from stores that have been open for at least 15 full months from their opening date. Comparable stores include the following:\n\u2022 Stores that have been remodeled while remaining open;\n\u2022 Stores that have been relocated within the same trade area, to a location that is not significantly different in size, in which the new store opens at about the same time as the old store closes; and\n\u2022 Stores that have expanded, but are not significantly different in size, within their current locations.\nFor stores that are relocated or expanded, the following periods are excluded when calculating comparable store sales:\n\u2022 The period beginning when the closing store receives its last merchandise delivery from one of our distribution centers through:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 837,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25aa",
+     "the last day of the fiscal month in which the store re-opens (for all other stores); and"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 844,
+    "end_line": 847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "\u2022 The period beginning on the first anniversary of the date the store received its last merchandise delivery from one of our distribution centers through the first anniversary of the date the store re-opened.\nComparable store sales exclude the 53rd week of sales for 53-week fiscal years. In the 52-week fiscal year subsequent to a 53-week fiscal year, we exclude the sales in the non-comparable week from the same-store sales calculation.\nThere may be variations in the way in which some of our competitors and other retailers calculate comparable or \u201csame store\u201d sales. As a result, data in this Annual Report regarding our comparable store sales may not be comparable to similar data made available by other retailers. Non-comparable store sales are comprised of new store sales, sales for stores not open for a full 15 months, and sales from existing store relocation and expansion projects that were temporarily closed (or not receiving deliveries) and not included in comparable store sales.\nMeasuring the change in fiscal year-over-year comparable store sales allows us to evaluate how our store base is performing. Various factors affect comparable store sales, including:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 837,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in millions, except total stores)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations Data (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "832.0",
+     "",
+     "$",
+     "680.2",
+     "",
+     "$",
+     "535.4",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "540.0",
+     "",
+     "",
+     "442.4",
+     "",
+     "",
+     "347.4",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "291.9",
+     "",
+     "",
+     "237.8",
+     "",
+     "",
+     "188.0",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses (2)",
+     "199.0",
+     "",
+     "",
+     "160.8",
+     "",
+     "",
+     "134.3",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "92.9",
+     "",
+     "",
+     "77.0",
+     "",
+     "",
+     "53.7",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "",
+     "0.1",
+     "",
+     "",
+     "1.5",
+     "",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment",
+     "\u2014",
+     "",
+     "",
+     "0.2",
+     "",
+     "",
+     "0.3",
+     "",
+     ""
+    ],
+    [
+     "Other expense",
+     "0.3",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "92.7",
+     "",
+     "",
+     "76.7",
+     "",
+     "",
+     "52.0",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "35.0",
+     "",
+     "",
+     "28.6",
+     "",
+     "",
+     "19.8",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "57.7",
+     "",
+     "$",
+     "48.0",
+     "",
+     "$",
+     "32.1",
+     ""
+    ],
+    [
+     "Percentage of Net Sales (1):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "100.0",
+     "",
+     "%",
+     "100.0",
+     "",
+     "%",
+     "100.0",
+     "",
+     "%"
+    ],
+    [
+     "Cost of goods sold",
+     "64.9",
+     "",
+     "%",
+     "65.0",
+     "",
+     "%",
+     "64.9",
+     "",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "35.1",
+     "",
+     "%",
+     "35.0",
+     "",
+     "%",
+     "35.1",
+     "",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expenses (2)",
+     "23.9",
+     "",
+     "%",
+     "23.6",
+     "",
+     "%",
+     "25.1",
+     "",
+     "%"
+    ],
+    [
+     "Operating income",
+     "11.2",
+     "",
+     "%",
+     "11.3",
+     "",
+     "%",
+     "10.0",
+     "",
+     "%"
+    ],
+    [
+     "Interest (income) expense, net",
+     "\u2014",
+     "",
+     "%",
+     "\u2014",
+     "",
+     "%",
+     "0.3",
+     "",
+     "%"
+    ],
+    [
+     "Loss on debt extinguishment",
+     "\u2014",
+     "",
+     "%",
+     "\u2014",
+     "",
+     "%",
+     "0.1",
+     "",
+     "%"
+    ],
+    [
+     "Other expense (income)",
+     "\u2014",
+     "",
+     "%",
+     "\u2014",
+     "",
+     "%",
+     "\u2014",
+     "",
+     "%"
+    ],
+    [
+     "Income before income taxes",
+     "11.1",
+     "",
+     "%",
+     "11.3",
+     "",
+     "%",
+     "9.7",
+     "",
+     "%"
+    ],
+    [
+     "Income tax expense",
+     "4.2",
+     "",
+     "%",
+     "4.2",
+     "",
+     "%",
+     "3.7",
+     "",
+     "%"
+    ],
+    [
+     "Net income",
+     "6.9",
+     "",
+     "%",
+     "7.1",
+     "",
+     "%",
+     "6.0",
+     "",
+     "%"
+    ],
+    [
+     "Operational Data:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stores at end of period",
+     "437",
+     "",
+     "",
+     "366",
+     "",
+     "",
+     "304",
+     "",
+     ""
+    ],
+    [
+     "Comparable stores sales growth",
+     "3.4",
+     "",
+     "%",
+     "3.4",
+     "",
+     "%",
+     "4.0",
+     "",
+     "%"
+    ],
+    [
+     "Average net sales per store (3)",
+     "$",
+     "2.0",
+     "",
+     "$",
+     "1.9",
+     "",
+     "$",
+     "1.9",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 896,
+    "end_line": 941
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Selling, general and administrative, or SG&A, expenses are composed of payroll and other compensation, marketing and advertising expense, depreciation and amortization expense and other selling and administrative expenses. SG&A expenses as a percentage of net sales are usually higher in lower sales volume quarters and lower in higher sales volume quarters.\nThe components of our SG&A expenses may not be comparable to those of other retailers. We expect that our SG&A expenses will increase in future periods due to our continuing store growth. In addition, any increase in future share-based grants or modifications will increase our share-based compensation expense included in SG&A.\nOperating Income\nOperating income equals gross profit less SG&A expenses. Operating income excludes interest expense or income, loss on debt extinguishment and income tax expense or benefit. We use operating income as an indicator of the productivity of our business and our ability to manage SG&A expenses. Operating income percentage measures operating income as a percentage of our net sales.\nResults of Consolidated Operations\nThe following tables summarize key components of our results of consolidated operations for the periods indicated, both in dollars and as a percentage of our net sales.",
+   "prose_after": "(1) Components may not add to total due to rounding.\n(2) Fiscal 2014 and 2013 includes $0.9 million and $6.1 million of share-based compensation expense that relates to the cancellation of certain stock options, in exchange for the grant of restricted shares and on-going expense recognition of the awards over the remaining vesting period. In addition, fiscal 2013 includes $1.0 million of expenses related to legal, accounting, and other fees in connection with secondary public offerings.\n(3) Only includes stores open during the full fiscal year.\nFiscal Year 2015 Compared to Fiscal Year 2014\nNet Sales\nNet sales increased to $832.0 million in fiscal year 2015 from $680.2 million in fiscal year 2014, an increase of $151.8 million, or 22.3%. The increase was the result of a non-comparable store sales increase of $130.7 million and a comparable store sales increase of $21.1 million. In fiscal year 2015, we opened 71 net new stores compared to 62 new stores in fiscal year 2014. The increase in non-comparable store sales was primarily driven by new stores and the number of stores that opened in fiscal 2014 but have not been open for 15 full months.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 891,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 945,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "87.9",
+     "",
+     "$",
+     "61.4",
+     "",
+     "$",
+     "31.2",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(99.4)",
+     "",
+     "",
+     "(32.3)",
+     "",
+     "",
+     "(25.9)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "1.4",
+     "",
+     "",
+     "(16.1)",
+     "",
+     "",
+     "(11.2)",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase during period in cash and cash equivalents (1)",
+     "$",
+     "(10.1)",
+     "",
+     "$",
+     "13.0",
+     "",
+     "$",
+     "(5.9)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1030,
+    "end_line": 1043
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Historically, we have funded our capital expenditures and working capital requirements during the fiscal year with cash on hand, net cash provided by operating activities and borrowings under our Revolving Credit Facility. We did not have any direct borrowings under our Revolving Credit Facility during fiscal year 2015. When we have used our Revolving Credit Facility, the amount of indebtedness outstanding under it has tended to be the highest in the beginning of the fourth quarter of each fiscal year. To the extent that we have drawn on the facility, we have paid down the borrowings before the end of the fiscal year with cash generated during our peak selling season in the fourth quarter.\nBased on our growth plans, we believe that our cash position, net cash provided by operating activities and availability under our Revolving Credit Facility will be adequate to finance our planned capital expenditures, working capital requirements and debt service over the next 12 months and for the foreseeable future thereafter. If cash flows from operations and borrowings under our Revolving Credit Facility are not sufficient or available to meet our requirements, then we will be required to obtain additional equity or debt financing in the future. There can be no assurance that equity or debt financing will be available to us when we need it or, if available, that the terms will be satisfactory to us and not dilutive to our then-current shareholders.\nCash Flows\nA summary of our cash flows from operating, investing and financing activities is presented in the following table (in millions):",
+   "prose_after": "(1) Components may not add to total due to rounding.\nCash Provided by Operating Activities\nNet cash provided by operating activities for fiscal 2015 was $87.9 million, an increase of $26.5 million compared to fiscal 2014. The increase was primarily due to an increase in operating cash flows from store performance offset by an increase in income taxes paid. During fiscal 2015, we added 71 net new stores and expect to add approximately 85 new stores in fiscal 2016.\nNet cash provided by operating activities for fiscal 2014 was $61.4 million, an increase of $30.2 million compared to fiscal 2013. The increase was primarily due to an increase in operating cash flows from store performance. During fiscal 2014, we added 62 new stores.\nCash Used in Investing Activities\nNet cash used in investing activities for fiscal 2015 was $99.4 million, an increase of $67.1 million compared to fiscal 2014 related to capital expenditures and the purchases of investment securities. The increase in capital expenditures was primarily for our new store construction, our distribution facilities and our corporate infrastructure.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In millions)",
+     "Payments Due By Period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total (1)",
+     "",
+     "Less than\n1 year",
+     "",
+     "1-3 years",
+     "",
+     "3-5 years",
+     "",
+     "More than\n5 years",
+     ""
+    ],
+    [
+     "Operating lease obligations (2)",
+     "$",
+     "616.8",
+     "$",
+     "74.4",
+     "$",
+     "153.6",
+     "$",
+     "150.2",
+     "$",
+     "238.6"
+    ],
+    [
+     "Purchase obligations (3)",
+     "3.7",
+     "",
+     "3.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "620.5",
+     "$",
+     "78.1",
+     "$",
+     "153.6",
+     "$",
+     "150.2",
+     "$",
+     "238.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1132,
+    "end_line": 1144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "In November 2015, the FASB issued ASU 2015-17, \"Income Taxes: Balance Sheet Classification of Deferred Taxes.\" ASU 2015-17 simplifies the presentation of deferred income taxes by requiring deferred tax assets and liabilities be classified as noncurrent on the balance sheet. The updated guidance is effective for interim and annual periods beginning after December 15, 2017, and early adoption is permitted. We elected to early adopt this guidance effective the fourth quarter of Fiscal 2015, and we retrospectively applied the change within our Consolidated Balance Sheets.\nIn February 2016, the FASB issued ASU 2016-02, \u201cLeases.\u201d ASU 2016-02 requires that lease arrangements longer than 12 months result in an entity recognizing an asset and liability. The updated guidance is effective for interim and annual periods beginning after December 15, 2018, and early adoption is permitted. We are currently evaluating the impact of the updated guidance on our consolidated financial statements and disclosures.\nContractual Obligations\nThe following table summarizes, as of January 30, 2016, our minimum rental commitments under operating lease agreements including assumed extensions, minimum payments for long-term debt and other obligations in future periods:",
+   "prose_after": "(1) The amounts in this table exclude obligations under employment agreements. For a discussion of the compensation of our executive officers, see Part III, Item 11 \u201cExecutive Compensation\u201d.\n(2) Our store leases generally have initial lease terms of 10 years and include renewal options on substantially the same terms and conditions as the original lease. Also included in operating leases are our leases for the corporate office and distribution centers.\n(3) Purchase obligations are primarily for materials that will be used in the construction of new stores and purchase commitments for infrastructure and systems that will be used by the corporate office and distribution centers.\nFrom January 31, 2016 to March 23, 2016, we committed to 14 new store leases with terms of 10 years that have future minimum lease payments of approximately $25.0 million.\nOff Balance Sheet Arrangements\nFor the fiscal year ended January 30, 2016, except for operating leases entered into in the normal course of business, we were not party to any material off-balance sheet arrangements that are reasonably likely to have a current or future effect on our financial condition, net sales, expenses, results of operations, liquidity, capital expenditures or capital resources.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of KPMG LLP, Independent Registered Public Accounting Firm",
+     "43"
+    ],
+    [
+     "Consolidated Balance Sheets as of January 30, 2016 and January 31, 2015",
+     "44"
+    ],
+    [
+     "Consolidated Statements of Operations for Fiscal Years 2015, 2014 and 2013",
+     "45"
+    ],
+    [
+     "Consolidated Statements of Changes in Shareholders\u2019 Equity for Fiscal Years 2015, 2014 and 2013",
+     "46"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for Fiscal Years 2015, 2014 and 2013",
+     "47"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "48"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1174,
+    "end_line": 1185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We also have a Revolving Credit Facility which includes a revolving line of credit with advances tied to a borrowing base, which bears interest at a variable rate. Because our Revolving Credit Facility bears interest at a variable rate, we will be exposed to market risks relating to changes in interest rates. As of January 30, 2016, we had no borrowings outstanding under the Revolving Credit Facility. The Revolving Credit Facility provides for interest on borrowings, at the Company's option, at (a) a prime rate plus a margin of (i) 0.75% if excess availability is greater than or equal to 75%, (ii) 1.0% if excess availability is less than 75% but greater than or equal to 33% or (iii) 1.25% if excess availability is less than 33% or (b) a LIBOR-based rate plus a margin of (i) 1.75% if excess availability is greater than or equal to 75%, (ii) 2.00% if excess availability is less than 75% but greater than or equal to 33% or (iii) 2.25% if excess availability is less than 33%. The Revolving Credit Facility further provides for a letter of credit fee equal to the LIBOR-based rate plus (i) 1.75% if excess availability is greater than or equal to 75%, (ii) 2.00% if excess availability is less than 75% but greater than or equal to 33% or (iii) 2.25% if excess availability is less than 33%. We do not use derivative financial instruments for speculative or trading purposes, but this does not preclude our adoption of specific hedging strategies in the future.\nImpact of Inflation\nOur results of operations and financial condition are presented based on historical cost. While it is difficult to accurately measure the impact of inflation due to the imprecise nature of the estimates required, we believe the effects of inflation, if any, on our historical results of operations and financial condition have been immaterial. We cannot assure you, however, that our results of operations and financial condition will not be materially impacted by inflation in the future.\nITEM 8. CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nIndex to Consolidated Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nThe Board of Directors and Shareholders\nFive Below, Inc.:\nWe have audited the accompanying consolidated balance sheets of Five Below, Inc. and subsidiary as of January 30, 2016 and January 31, 2015, and the related consolidated statements of operations, changes in shareholders\u2019 equity, and cash flows for each of the fiscal years in the three-year period ended January 30, 2016. These consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1170,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1186,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 30, 2016",
+     "",
+     "",
+     "January 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "53,081",
+     "",
+     "$",
+     "63,186",
+     ""
+    ],
+    [
+     "Short-term investment securities",
+     "46,335",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "148,370",
+     "",
+     "",
+     "115,652",
+     "",
+     ""
+    ],
+    [
+     "Prepaid income taxes",
+     "1,341",
+     "",
+     "",
+     "1,939",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "15,618",
+     "",
+     "",
+     "18,180",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "264,745",
+     "",
+     "",
+     "198,957",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "119,784",
+     "",
+     "",
+     "86,998",
+     "",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "8,507",
+     "",
+     "",
+     "7,881",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "258",
+     "",
+     "",
+     "284",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "393,294",
+     "",
+     "$",
+     "294,120",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Line of credit",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "58,225",
+     "",
+     "",
+     "39,222",
+     "",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "11,942",
+     "",
+     "",
+     "14,442",
+     "",
+     ""
+    ],
+    [
+     "Accrued salaries and wages",
+     "7,661",
+     "",
+     "",
+     "5,275",
+     "",
+     ""
+    ],
+    [
+     "Other accrued expenses",
+     "24,368",
+     "",
+     "",
+     "20,462",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "102,196",
+     "",
+     "",
+     "79,401",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent and other",
+     "46,617",
+     "",
+     "",
+     "40,450",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "148,813",
+     "",
+     "",
+     "119,851",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (note 4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value. Authorized 120,000,000 shares; issued and outstanding 54,590,641 and 54,420,228 shares, respectively.",
+     "546",
+     "",
+     "",
+     "544",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "306,522",
+     "",
+     "",
+     "293,992",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(62,587)",
+     "",
+     "",
+     "(120,267)",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "244,481",
+     "",
+     "",
+     "174,269",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "393,294",
+     "",
+     "$",
+     "294,120",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1213,
+    "end_line": 1257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of Five Below, Inc. and subsidiary as of January 30, 2016 and January 31, 2015, and the results of their operations and their cash flows for each of the fiscal years in the three-year period ended January 30, 2016, in conformity with U.S. generally accepted accounting principles.\nWe also have audited, in accordance with the standards of the Public Company Accounting Oversight Board (United States), Five Below, Inc.\u2019s internal control over financial reporting as of January 30, 2016, based on criteria established in Internal Control - Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO), and our report dated March 23, 2016 expressed an unqualified opinion on the effectiveness of the Company\u2019s internal control over financial reporting.\n/s/ KPMG LLP\nPhiladelphia, Pennsylvania\nMarch 23, 2016\nConsolidated Balance Sheets",
+   "prose_after": "Consolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1211,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1258,
+     "token": "REPEATING_FOOTER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "831,954",
+     "",
+     "$",
+     "680,218",
+     "",
+     "$",
+     "535,402",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "540,020",
+     "",
+     "",
+     "442,427",
+     "",
+     "",
+     "347,386",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "291,934",
+     "",
+     "",
+     "237,791",
+     "",
+     "",
+     "188,016",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "198,993",
+     "",
+     "",
+     "160,775",
+     "",
+     "",
+     "134,279",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "92,941",
+     "",
+     "",
+     "77,016",
+     "",
+     "",
+     "53,737",
+     "",
+     ""
+    ],
+    [
+     "Interest (income) expense, net",
+     "(40)",
+     "",
+     "",
+     "125",
+     "",
+     "",
+     "1,513",
+     "",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment",
+     "\u2014",
+     "",
+     "",
+     "244",
+     "",
+     "",
+     "266",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income)",
+     "325",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "92,656",
+     "",
+     "",
+     "76,659",
+     "",
+     "",
+     "51,958",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "34,976",
+     "",
+     "",
+     "28,635",
+     "",
+     "",
+     "19,816",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "57,680",
+     "",
+     "",
+     "48,024",
+     "",
+     "",
+     "32,142",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to participating securities",
+     "\u2014",
+     "",
+     "",
+     "(20)",
+     "",
+     "",
+     "(465)",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to common shareholders",
+     "$",
+     "57,680",
+     "",
+     "$",
+     "48,004",
+     "",
+     "$",
+     "31,677",
+     ""
+    ],
+    [
+     "Basic income per common share",
+     "$",
+     "1.06",
+     "",
+     "$",
+     "0.89",
+     "",
+     "$",
+     "0.59",
+     ""
+    ],
+    [
+     "Diluted income per common share",
+     "$",
+     "1.05",
+     "",
+     "$",
+     "0.88",
+     "",
+     "$",
+     "0.59",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic shares",
+     "54,513,622",
+     "",
+     "",
+     "54,219,801",
+     "",
+     "",
+     "53,294,805",
+     "",
+     ""
+    ],
+    [
+     "Diluted shares",
+     "54,793,301",
+     "",
+     "",
+     "54,573,855",
+     "",
+     "",
+     "53,741,860",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1266,
+    "end_line": 1300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations",
+   "prose_after": "Consolidated Statements of Changes in Shareholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1264,
+     "token": "REPEATING_HEADER",
+     "id": 48,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1301,
+     "token": "REPEATING_FOOTER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "Additional paid-in capital",
+     "",
+     "",
+     "Accumulated deficit",
+     "",
+     "",
+     "Total shareholders\u2019 equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, February 2, 2013",
+     "53,980,797",
+     "",
+     "$",
+     "540",
+     "$",
+     "270,637",
+     "",
+     "$",
+     "(200,433)",
+     "",
+     "$",
+     "70,744",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "10,069",
+     "",
+     "\u2014",
+     "",
+     "9,854",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "9,854",
+     "",
+     ""
+    ],
+    [
+     "Exercise of options and warrants to purchase common stock",
+     "196,941",
+     "",
+     "2",
+     "",
+     "1,482",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,484",
+     "",
+     ""
+    ],
+    [
+     "Vesting of restricted shares related to stock option exercises",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "239",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "239",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of unvested restricted shares related to stock option exercises",
+     "(648)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefit related to restricted shares and exercises of stock options and warrants",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,262",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,262",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock to employees under employee stock purchase plan",
+     "3,565",
+     "",
+     "",
+     "",
+     "148",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "148",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "32,142",
+     "",
+     "",
+     "32,142",
+     "",
+     ""
+    ],
+    [
+     "Balance, February 1, 2014",
+     "54,190,724",
+     "",
+     "542",
+     "",
+     "284,622",
+     "",
+     "",
+     "(168,291)",
+     "",
+     "",
+     "116,873",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5,757",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,757",
+     "",
+     ""
+    ],
+    [
+     "Issuance of unrestricted stock awards",
+     "4,324",
+     "",
+     "\u2014",
+     "",
+     "160",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "160",
+     "",
+     ""
+    ],
+    [
+     "Exercise of options to purchase common stock",
+     "207,809",
+     "",
+     "2",
+     "",
+     "1,479",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,481",
+     "",
+     ""
+    ],
+    [
+     "Vesting of restricted shares related to stock option exercises",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "61",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "61",
+     "",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "22,286",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Purchase and retirement of treasury shares",
+     "(9,173)",
+     "",
+     "\u2014",
+     "",
+     "(314)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(314)",
+     "",
+     ""
+    ],
+    [
+     "Repurchase of unvested restricted shares related to stock option exercises",
+     "(87)",
+     "",
+     "\u2014",
+     "",
+     "(1)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1)",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefit related to exercises of stock options",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,049",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,049",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock to employees under employee stock purchase plan",
+     "4,345",
+     "",
+     "\u2014",
+     "",
+     "179",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "179",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "48,024",
+     "",
+     "",
+     "48,024",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 31, 2015",
+     "54,420,228",
+     "",
+     "544",
+     "",
+     "293,992",
+     "",
+     "",
+     "(120,267)",
+     "",
+     "",
+     "174,269",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "10,876",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,876",
+     "",
+     ""
+    ],
+    [
+     "Issuance of unrestricted stock awards",
+     "7,947",
+     "",
+     "\u2014",
+     "",
+     "280",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "280",
+     "",
+     ""
+    ],
+    [
+     "Exercise of options to purchase common stock",
+     "115,364",
+     "",
+     "2",
+     "",
+     "910",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "912",
+     "",
+     ""
+    ],
+    [
+     "Vesting of restricted stock units",
+     "51,546",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Common shares withheld for taxes",
+     "(9,462)",
+     "",
+     "\u2014",
+     "",
+     "(322)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(322)",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefit related to exercises of stock options",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "608",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "608",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock to employees under employee stock purchase plan",
+     "5,018",
+     "",
+     "\u2014",
+     "",
+     "178",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "178",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "57,680",
+     "",
+     "",
+     "57,680",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 30, 2016",
+     "54,590,641",
+     "",
+     "$",
+     "546",
+     "$",
+     "306,522",
+     "",
+     "$",
+     "(62,587)",
+     "",
+     "$",
+     "244,481",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1309,
+    "end_line": 1350
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Changes in Shareholders\u2019 Equity",
+   "prose_after": "Consolidated Statements of Cash Flows\n(in thousands)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1307,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1351,
+     "token": "REPEATING_FOOTER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "57,680",
+     "",
+     "$",
+     "48,024",
+     "",
+     "$",
+     "32,142",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "22,227",
+     "",
+     "",
+     "17,202",
+     "",
+     "",
+     "13,469",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "11,172",
+     "",
+     "",
+     "5,931",
+     "",
+     "",
+     "10,092",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax benefit",
+     "(626)",
+     "",
+     "",
+     "(3,063)",
+     "",
+     "",
+     "(5,074)",
+     "",
+     ""
+    ],
+    [
+     "Other non-cash expenses",
+     "59",
+     "",
+     "",
+     "444",
+     "",
+     "",
+     "1,032",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid income taxes",
+     "598",
+     "",
+     "",
+     "(442)",
+     "",
+     "",
+     "(1,461)",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "(32,718)",
+     "",
+     "",
+     "(26,275)",
+     "",
+     "",
+     "(28,546)",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "2,561",
+     "",
+     "",
+     "(2,936)",
+     "",
+     "",
+     "(3,597)",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "17,578",
+     "",
+     "",
+     "3,060",
+     "",
+     "",
+     "4,083",
+     "",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "(2,500)",
+     "",
+     "",
+     "8,435",
+     "",
+     "",
+     "(1,076)",
+     "",
+     ""
+    ],
+    [
+     "Accrued salaries and wages",
+     "2,386",
+     "",
+     "",
+     "2,603",
+     "",
+     "",
+     "(1,532)",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "6,398",
+     "",
+     "",
+     "5,669",
+     "",
+     "",
+     "8,384",
+     "",
+     ""
+    ],
+    [
+     "Other accrued expenses",
+     "3,098",
+     "",
+     "",
+     "2,778",
+     "",
+     "",
+     "3,271",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "87,913",
+     "",
+     "",
+     "61,430",
+     "",
+     "",
+     "31,187",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of investment securities",
+     "(46,335)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(53,059)",
+     "",
+     "",
+     "(32,322)",
+     "",
+     "",
+     "(25,931)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(99,394)",
+     "",
+     "",
+     "(32,322)",
+     "",
+     "",
+     "(25,931)",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of note payable under Term Loan Facility",
+     "\u2014",
+     "",
+     "",
+     "(19,500)",
+     "",
+     "",
+     "(15,000)",
+     "",
+     ""
+    ],
+    [
+     "Borrowing on note payable under Revolving Credit Facility",
+     "\u2014",
+     "",
+     "",
+     "7,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Repayment of note payable under Revolving Credit Facility",
+     "\u2014",
+     "",
+     "",
+     "(7,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds from issuance of common stock",
+     "178",
+     "",
+     "",
+     "179",
+     "",
+     "",
+     "148",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from exercise of options to purchase common stock",
+     "912",
+     "",
+     "",
+     "1,481",
+     "",
+     "",
+     "1,484",
+     "",
+     ""
+    ],
+    [
+     "Common shares withheld for taxes",
+     "(322)",
+     "",
+     "",
+     "(314)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Excess tax benefit related to restricted shares and exercise of stock options and warrants",
+     "608",
+     "",
+     "",
+     "2,049",
+     "",
+     "",
+     "2,262",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "\u2014",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "(47)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "1,376",
+     "",
+     "",
+     "(16,106)",
+     "",
+     "",
+     "(11,153)",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "(10,105)",
+     "",
+     "",
+     "13,002",
+     "",
+     "",
+     "(5,897)",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of year",
+     "63,186",
+     "",
+     "",
+     "50,184",
+     "",
+     "",
+     "56,081",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of year",
+     "$",
+     "53,081",
+     "",
+     "$",
+     "63,186",
+     "",
+     "$",
+     "50,184",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "25",
+     "",
+     "$",
+     "129",
+     "",
+     "$",
+     "1,259",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "36,897",
+     "",
+     "$",
+     "21,587",
+     "",
+     "$",
+     "25,039",
+     ""
+    ],
+    [
+     "Non-cash investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable and accrued purchases of property and equipment",
+     "$",
+     "1,986",
+     "",
+     "$",
+     "(1,673)",
+     "",
+     "$",
+     "606",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1359,
+    "end_line": 1412
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Cash Flows\n(in thousands)",
+   "prose_after": "Notes to Consolidated Financial Statements\n(1) Summary of Significant Accounting Policies\n(a) Description of Business\nFive Below, Inc. (collectively with its wholly owned subsidiary as the \"Company\") is a specialty value retailer offering merchandise targeted at the teen and pre-teen demographic. The Company offers an edited assortment of products, priced at $5 and below. The Company\u2019s edited assortment of products includes select brands and licensed merchandise. The Company believes its merchandise is readily available, and that there are a number of potential vendors that could be utilized, if necessary, under approximately the same terms the Company is currently receiving; thus, it is not dependent on a single vendor or a group of vendors.\nThe Company is incorporated in the Commonwealth of Pennsylvania and, as of January 30, 2016, operated in 27 states that include Pennsylvania, New Jersey, Delaware, Maryland, Virginia, Massachusetts, New Hampshire, West Virginia, North Carolina, New York, Connecticut, Rhode Island, Ohio, Illinois, Indiana, Michigan, Missouri, Georgia, Texas, Tennessee, Maine, Alabama, Kentucky, Kansas, Florida, South Carolina, and Mississippi. As of January 30, 2016 and January 31, 2015, the Company operated 437 stores and 366 stores, respectively, each operating under the name \u201cFive Below.\u201d",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1353,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1413,
+     "token": "REPEATING_FOOTER",
+     "id": 54,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Fair Market Value",
+     ""
+    ],
+    [
+     "Short-term:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate bonds",
+     "$",
+     "37,127",
+     "$",
+     "\u2014",
+     "$",
+     "29",
+     "$",
+     "37,098"
+    ],
+    [
+     "Certificates of deposit",
+     "6,916",
+     "",
+     "6",
+     "",
+     "\u2014",
+     "",
+     "6,923",
+     ""
+    ],
+    [
+     "Municipal bonds",
+     "2,291",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,291",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "46,335",
+     "$",
+     "6",
+     "$",
+     "29",
+     "$",
+     "46,312"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1449,
+    "end_line": 1461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s financial instruments consist primarily of cash equivalents, short-term investment securities, accounts payable, and borrowings under a line of credit (as defined in note 3). The Company believes that: (1) the carrying value of cash equivalents and accounts payable are representative of their respective fair value due to the short-term nature of these instruments; and (2) the carrying value of the borrowings under the line of credit approximates their fair value because the line of credit\u2019s interest rates vary with market interest rates. Under the fair value hierarchy, the fair market values of the short-term investments in corporate bonds are level 1 while the short-term investments in certificates of deposits and municipal bonds are level 2. The fair market values of level 2 investments are determined by management with the assistance of a third party pricing service. Since quoted prices in active markets for identical assets are not available, these prices are determined by the third party pricing service using observable market information such as quotes from less active markets and quoted prices of similar securities.\nAs of January 30, 2016, the Company's short-term investment securities are classified as held-to-maturity since the Company has the intent and ability to hold the investments to maturity. Such securities are carried at amortized cost plus accrued interest and consist of the following (in thousands):",
+   "prose_after": "Investment securities as of January 30, 2016 all mature in one year or less.\n(e) Inventories\nInventories consist of finished goods purchased for resale, including freight, and are stated at the lower of cost or market value, at the individual product level. Cost is determined on a weighted average cost method which approximates a FIFO (first-in, first-out) basis due to the nature of the Company's inventory. Management of the Company reviews inventory levels in order to identify slow-moving merchandise and uses markdowns to clear merchandise. Inventory cost is reduced when the selling price less costs of disposal is below cost. The Company accrues an estimate for inventory shrink for the period between the last physical count and the balance sheet date. The shrink estimate can be affected by changes in merchandise mix and changes in actual shrink trends.\n(f) Property and Equipment\nProperty and equipment are stated at cost. Additions and improvements are capitalized, while repairs and maintenance are charged to expense as incurred.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1472,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 30, 2016",
+     "",
+     "",
+     "January 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "$",
+     "81,418",
+     "",
+     "$",
+     "54,933",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "80,814",
+     "",
+     "",
+     "64,109",
+     "",
+     ""
+    ],
+    [
+     "Computers and equipment",
+     "28,358",
+     "",
+     "",
+     "20,017",
+     "",
+     ""
+    ],
+    [
+     "Construction in process",
+     "3,589",
+     "",
+     "",
+     "7,324",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, gross",
+     "194,179",
+     "",
+     "",
+     "146,383",
+     "",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "(74,395)",
+     "",
+     "",
+     "(59,385)",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "119,784",
+     "",
+     "$",
+     "86,998",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1475,
+    "end_line": 1490
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Inventories consist of finished goods purchased for resale, including freight, and are stated at the lower of cost or market value, at the individual product level. Cost is determined on a weighted average cost method which approximates a FIFO (first-in, first-out) basis due to the nature of the Company's inventory. Management of the Company reviews inventory levels in order to identify slow-moving merchandise and uses markdowns to clear merchandise. Inventory cost is reduced when the selling price less costs of disposal is below cost. The Company accrues an estimate for inventory shrink for the period between the last physical count and the balance sheet date. The shrink estimate can be affected by changes in merchandise mix and changes in actual shrink trends.\n(f) Property and Equipment\nProperty and equipment are stated at cost. Additions and improvements are capitalized, while repairs and maintenance are charged to expense as incurred.\nDepreciation and amortization is recorded using the straight-line method over the shorter of the estimated useful lives of the assets or the terms of the respective leases, if applicable. The estimated useful lives are three to ten years for furniture and fixtures and computers and equipment. Store leasehold improvements are amortized over the shorter of the useful life or the lease term plus assumed extensions, which is generally 10 years. Depreciation and amortization expense for property and equipment, which is included in selling, general and administrative expenses in the accompanying consolidated statements of operations, was $22.2 million, $17.2 million and $13.5 million in fiscal 2015, fiscal 2014 and fiscal 2013, respectively.\nProperty and equipment, net, consists of the following (in thousands):",
+   "prose_after": "(g) Impairment of Long-Lived Assets\nLong-lived assets, such as property and equipment, are reviewed for impairment whenever events or changes in circumstances indicate that the carrying amount of the asset may not be recoverable. Recoverability of assets to be held and used is measured by a comparison of the carrying amount of an asset to estimated undiscounted future cash flows expected to be generated by the asset. If the carrying amount of the asset exceeds its estimated future cash flows, then an impairment charge is recognized by the amount by which the carrying amount of the asset exceeds the fair value of the asset. Based on its Company's most recent analysis, management believes that no impairment of long-lived assets exists as of January 30, 2016.\n(h) Deferred Financing Costs\nDeferred financing costs (note 3) are amortized to interest expense over the term of the related credit agreement. Amortization expense in fiscal 2015, fiscal 2014 and fiscal 2013 was $27.0 thousand, $24.7 thousand, and $0.3 million, respectively. In connection with the repayments of the $100.0 million term loan facility in the amounts of $19.5 million and $15.0 million in fiscal 2014 and fiscal 2013, respectively, we wrote-off approximately $0.2 million and $0.3 million of deferred financing costs in fiscal 2014 and fiscal 2013, respectively, which is included in loss on debt extinguishment in the accompanying consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1472,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 30, 2016",
+     "",
+     "January 31, 2015",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent (1)",
+     "$",
+     "3,847",
+     "$",
+     "3,711"
+    ],
+    [
+     "Total current liabilities",
+     "$",
+     "3,847",
+     "$",
+     "3,711"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "$",
+     "46,384",
+     "$",
+     "40,122"
+    ],
+    [
+     "Other",
+     "233",
+     "",
+     "328",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "$",
+     "46,617",
+     "$",
+     "40,450"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1512,
+    "end_line": 1528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Certain of the Company\u2019s operating leases contain either rent holidays and/or predetermined fixed escalations of minimum rentals during the original and/or extended lease terms. For these leases, the Company recognizes the related rent expense on a straight-line basis over the life of the lease and records the difference between the amounts charged to operations and amounts paid as deferred rent. The life of the lease is the initial term plus assumed extensions. The Company also receives certain lease incentives in conjunction with entering into operating leases. These lease incentives are recorded as deferred rent at the beginning of the lease term and recognized as a reduction of rent expense over the lease term. In addition, certain of the\nCompany\u2019s leases contain future contingent increases in rents. Such increases in rent expense are recorded in the period in which such contingent increases to the rents take place.\nThe following table summarizes the Company's deferred rent and other long-term liabilities balances (in thousands):",
+   "prose_after": "(1) The current portion of deferred rent is included in the other accrued expenses line item in the accompanying\nconsolidated balance sheets.\n(k) Share-based Compensation\nThe Company measures the cost of employee services received in exchange for share-based compensation based on the grant date fair value of the employee stock award. Incremental compensation costs arising from subsequent modifications of awards after the grant date must also be recognized. The Company recognizes compensation expense based on the estimated grant date fair value of restricted stock awards, and using the Black-Scholes option-pricing model for grants of stock options which are both recorded on a straight-line basis over the vesting period for the entire award. Share-based compensation cost recognized and included in expenses for fiscal 2015, fiscal 2014 and fiscal 2013, was $11.2 million, $5.9 million and $10.1 million, respectively.\n(l) Revenue Recognition\nRevenue is recognized at the point of sale. Returns are accepted under certain conditions within 14 days of purchase. Returns subsequent to the period end are immaterial; accordingly, no reserve has been recorded. Gift card sales to customers are initially recorded as liabilities and recognized as sales upon redemption for merchandise. Sales tax collected from customers and remitted to governmental authorities are accounted for on a net basis and, therefore, excluded from sales in the accompanying consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1547,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "57,680",
+     "$",
+     "48,024",
+     "",
+     "$",
+     "32,142",
+     ""
+    ],
+    [
+     "Net income attributable to participating securities",
+     "\u2014",
+     "",
+     "(20)",
+     "",
+     "",
+     "(465)",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to common shareholders",
+     "$",
+     "57,680",
+     "$",
+     "48,004",
+     "",
+     "$",
+     "31,677",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - basic",
+     "54,513,622",
+     "",
+     "54,219,801",
+     "",
+     "",
+     "53,294,805",
+     "",
+     ""
+    ],
+    [
+     "Dilutive impact of options, restricted stock units, and employee stock purchase plan",
+     "279,679",
+     "",
+     "354,054",
+     "",
+     "",
+     "447,055",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - diluted",
+     "54,793,301",
+     "",
+     "54,573,855",
+     "",
+     "",
+     "53,741,860",
+     "",
+     ""
+    ],
+    [
+     "Per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income per common share",
+     "$",
+     "1.06",
+     "$",
+     "0.89",
+     "",
+     "$",
+     "0.59",
+     ""
+    ],
+    [
+     "Diluted income per common share",
+     "$",
+     "1.05",
+     "$",
+     "0.88",
+     "",
+     "$",
+     "0.59",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1583,
+    "end_line": 1604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The two-class method is used to calculate basic and diluted income per common share for the applicable periods since certain of the Company's restricted stock were participating securities. The two-class method is an earnings allocation formula that determines income per share for each class of common stock and participating security according to dividends declared (or accumulated) and participation rights in undistributed earnings. Under the two-class method, basic income per common share is computed by dividing net income attributable to common shares after allocation of income to participating securities by the weighted-average number of common shares outstanding during the year. Diluted income per common share is computed using the more dilutive of the two-class method or the if-converted method. In periods of net loss, no effect is given to participating securities since they do not contractually participate in the losses of the Company. The two-class method is the more dilutive method for fiscal 2014 and fiscal 2013. As of January 31, 2015, the Company no longer has any outstanding participating securities.\nThe following table reconciles net income and the weighted average common shares outstanding used in the computations of basic and diluted income per common share (in thousands, except for share and per share data):",
+   "prose_after": "For fiscal 2014 and fiscal 2013, $20.0 thousand and $0.5 million respectively, of net income was attributable to participating securities, as the two-class method was more dilutive, and the remainder was attributable to common shareholders.\nThe effects of the assumed exercise of stock options outstanding as of January 30, 2016 for 710,153 shares of common stock were excluded from the fiscal 2015 calculation of diluted net income per share as their impact would have been anti-dilutive.\nThe effects of non-vested restricted stock units outstanding as of January 30, 2016 for approximately 6,500 shares of common stock were excluded from the fiscal 2015 calculation of diluted net income per share as their impact would have been anti-dilutive.\nThe effects of the assumed exercise of stock options outstanding as of January 31, 2015 for 593,773 shares of common stock were excluded from the fiscal 2014 calculation of diluted net income per share as their impact would have been anti-dilutive.\nThe effects of non-vested restricted stock units outstanding as of January 31, 2015 for 3,930 shares of common stock were excluded from the fiscal 2014 calculation of diluted net income per share as their impact would have been anti-dilutive.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1571,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year",
+     "Retail stores",
+     "",
+     "Corporate office and distribution centers",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "2016",
+     "$",
+     "67,706",
+     "$",
+     "6,744",
+     "$",
+     "74,450"
+    ],
+    [
+     "2017",
+     "70,618",
+     "",
+     "6,603",
+     "",
+     "77,221",
+     ""
+    ],
+    [
+     "2018",
+     "69,243",
+     "",
+     "7,128",
+     "",
+     "76,371",
+     ""
+    ],
+    [
+     "2019",
+     "68,055",
+     "",
+     "7,748",
+     "",
+     "75,803",
+     ""
+    ],
+    [
+     "2020",
+     "65,993",
+     "",
+     "8,379",
+     "",
+     "74,372",
+     ""
+    ],
+    [
+     "Thereafter",
+     "209,793",
+     "",
+     "28,815",
+     "",
+     "238,608",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "551,408",
+     "$",
+     "65,417",
+     "$",
+     "616,825"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1663,
+    "end_line": 1677
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "All obligations under the Revolving Credit Facility are secured by substantially all of the Company's assets and are guaranteed by the Subsidiary. As of January 30, 2016 and January 31, 2015, the Company was in compliance with the covenants applicable to it under the Revolving Credit Facility.\n(4) Commitments and Contingencies\nCommitments\nLeases\nThe Company leases property and equipment under non-cancelable operating leases. Certain retail store lease agreements provide for contingent rental payments if the store\u2019s net sales exceed stated levels (percentage rents) and/or contain escalation clauses, which provide for increases in base rental for increases in future operating costs. Many of the Company\u2019s leases provide for one or more renewal options for periods of five years. The Company\u2019s operating lease agreements, including assumed extensions, which are generally those that take the lease to a ten-year term, expire through fiscal 2025.\nThe Company\u2019s minimum rental commitments under operating lease agreements, including assumed extensions, as of January 30, 2016, are as follows (in thousands):",
+   "prose_after": "Rent expense, including base and contingent rent under operating leases, was $66.0 million, $53.6 million and $41.8 million in fiscal 2015, fiscal 2014 and fiscal 2013, respectively. Contingent rents were $0.6 million, $0.5 million and $0.5 million in fiscal 2015, fiscal 2014 and fiscal 2013, respectively.\nFrom January 31, 2016 to March 23, 2016, the Company committed to 14 new store leases with terms of 10 years that have future minimum lease payments of approximately $25.0 million.\nOther contractual commitments\nThe Company has employment agreements with certain key employees that provide for, among other things, salary, bonus, severance, and change-in-control provisions. The severance and change of control provisions under these agreements provide for additional payments upon employee separation of up to approximately $4.1 million.\nAs of January 30, 2016, the Company has other purchase commitments of approximately $3.7 million consisting of purchase agreements for materials that will be used in the construction of new stores.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options outstanding",
+     "",
+     "Weighted average exercise price",
+     "",
+     "Weighted average remaining contractual term"
+    ],
+    [
+     "Balance as of February 2, 2013",
+     "1,187,817",
+     "",
+     "$",
+     "10.43",
+     "9.3"
+    ],
+    [
+     "Granted",
+     "554,500",
+     "",
+     "38.92",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(205,456)",
+     "",
+     "20.23",
+     "",
+     ""
+    ],
+    [
+     "Cancelled",
+     "(35,300)",
+     "",
+     "30.19",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(196,941)",
+     "",
+     "7.55",
+     "",
+     ""
+    ],
+    [
+     "Balance as of February 1, 2014",
+     "1,304,620",
+     "",
+     "20.90",
+     "",
+     "8.5"
+    ],
+    [
+     "Granted",
+     "253,973",
+     "",
+     "36.18",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(169,850)",
+     "",
+     "31.75",
+     "",
+     ""
+    ],
+    [
+     "Cancelled",
+     "(20,000)",
+     "",
+     "39.41",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(207,809)",
+     "",
+     "7.11",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 31, 2015",
+     "1,160,934",
+     "",
+     "24.80",
+     "",
+     "8.0"
+    ],
+    [
+     "Granted",
+     "116,894",
+     "",
+     "28.58",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(73,790)",
+     "",
+     "34.93",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "(115,364)",
+     "",
+     "7.90",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 30, 2016",
+     "1,088,674",
+     "",
+     "26.31",
+     "",
+     "7.5"
+    ],
+    [
+     "Exercisable as of January 30, 2016",
+     "603,972",
+     "",
+     "$",
+     "19.57",
+     "6.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1722,
+    "end_line": 1748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The Five Below, Inc. 2012 Employee Stock Purchase Plan (the \u201cESPP\u201d) is intended to be qualified as an \u201cemployee stock purchase plan\u201d within the meaning of Section 423 of the Internal Revenue Code of 1986. The number of shares of common stock reserved for issuance, which is subject to other limitations, is 500,000 shares. The ESPP allows eligible employees the opportunity to purchase, subject to limitations, shares of the Company\u2019s common stock through payroll deductions at a discount of 10% of the fair market value of such shares on the purchase date. In fiscal 2015, the Company issued 5,018 shares of common stock under the ESPP resulting in proceeds of approximately $0.2 million and recorded share-based compensation expense of $16.5 thousand in connection with the ESPP related to the amount of the discount. In fiscal 2014, the Company issued 4,345 shares of common stock under the ESPP resulting in proceeds of approximately $0.2 million and recorded share-based compensation expense of $16.4 thousand in connection with the ESPP related to the amount of the discount. In fiscal 2013, the Company issued 3,565 shares of common stock under the ESPP resulting in proceeds of approximately $0.1 million and recorded share-based compensation expense of $13.5 thousand in connection with the ESPP related to the amount of the discount.\n(6) Share-Based Compensation\nEquity Incentive Plan\nPursuant to the Company's 2002 Equity Incentive Plan (the \u201cPlan\u201d), the Company\u2019s board of directors may grant stock options, restricted shares and restricted stock units to officers, directors, key employees and professional service providers. The Plan, as amended, allows for the issuance of up to a total of 7,600,000 shares under the Plan. As of January 30, 2016, 3,805,804 stock options, restricted shares, or restricted stock units were available for grant.\nCommon Stock Options\nAll stock options have a term not greater than ten years. Stock options vest and become exercisable in whole or in part, in accordance with vesting conditions set by the Company\u2019s board of directors. Options granted to date generally vest over four years from the date of grant.\nStock option activity under the Plan was as follows:",
+   "prose_after": "The fair value of each option award granted to employees including outside directors, is estimated on the date of grant using the Black-Scholes option-pricing model with the following weighted average assumptions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "47.0",
+     "%",
+     "47.9",
+     "%",
+     "50.0",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "1.8",
+     "%",
+     "1.9",
+     "%",
+     "1.4",
+     "%"
+    ],
+    [
+     "Expected life of options",
+     "6.4 years",
+     "",
+     "6.4 years",
+     "",
+     "6.3 years",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "\u2014",
+     "%",
+     "\u2014",
+     "%",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1751,
+    "end_line": 1761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The fair value of each option award granted to employees including outside directors, is estimated on the date of grant using the Black-Scholes option-pricing model with the following weighted average assumptions:",
+   "prose_after": "The Company uses the simplified method to estimate the expected term of the option. The expected volatility incorporates historical and implied volatility of similar entities whose share prices are publicly available. The risk-free rate for the expected term of the option is based on the U.S. Treasury yield curve in effect at the time of grant.\nThe per-share weighted average grant-date fair value of stock options granted to employees in fiscal 2015, fiscal 2014 and fiscal 2013 was $13.67, $17.59 and $18.90 respectively. The total intrinsic value of stock options exercised during fiscal 2015, fiscal 2014 and fiscal 2013 was $3.2 million, $7.0 million and $7.2 million, respectively. The aggregate intrinsic value of stock options exercisable and stock options outstanding as of January 30, 2016 was $10.1 million and $11.0 million, respectively. In fiscal 2015, fiscal 2014 and fiscal 2013, the Company received cash from the exercise of options of $0.9\nmillion, $1.5 million, $1.5 million, respectively, and excess tax benefits from option exercises and restricted stock of $0.6 million, $2.0 million and $2.3 million, respectively. Upon option exercise, the Company issued new shares of common stock.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Restricted Stock Units",
+     "",
+     "",
+     "",
+     "Performance-Based Restricted Stock Units",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "Weighted-Average Grant Date Fair Value",
+     "",
+     "Number",
+     "",
+     "Weighted-Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Non-vested balance as of February 1, 2014",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "175,772",
+     "",
+     "35.84",
+     "",
+     "396,055",
+     "",
+     "38.20",
+     ""
+    ],
+    [
+     "Vested",
+     "(22,286)",
+     "",
+     "34.40",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(5,716)",
+     "",
+     "38.52",
+     "",
+     "(3,874)",
+     "",
+     "38.71",
+     ""
+    ],
+    [
+     "Non-vested balance as of January 31, 2015",
+     "147,770",
+     "",
+     "35.95",
+     "",
+     "392,181",
+     "",
+     "38.20",
+     ""
+    ],
+    [
+     "Granted",
+     "115,248",
+     "",
+     "30.62",
+     "",
+     "85,282",
+     "",
+     "28.58",
+     ""
+    ],
+    [
+     "Vested",
+     "(44,574)",
+     "",
+     "34.40",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(6,762)",
+     "",
+     "33.01",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Non-vested balance as of January 30, 2016",
+     "211,682",
+     "",
+     "$",
+     "33.47",
+     "477,463",
+     "",
+     "$",
+     "36.48"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1775,
+    "end_line": 1795
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "million, $1.5 million, $1.5 million, respectively, and excess tax benefits from option exercises and restricted stock of $0.6 million, $2.0 million and $2.3 million, respectively. Upon option exercise, the Company issued new shares of common stock.\nRestricted Stock Units and Performance-Based Restricted Stock Units\nAll restricted stock units (\"RSU\") and performance-based restricted stock units (\"PSU\") vest in accordance with vesting conditions set by the compensation committee of the Company\u2019s board of directors. RSU's granted to date have vesting periods ranging from less than one year to five years from the date of grant. PSU's granted to date having vesting periods ranging from one year to five years from the date of grant, including grants that have a cumulative three year performance period, subject to satisfaction of the applicable performance goals established for the respective grant. The Company periodically assesses the probability of achievement of the performance criteria and adjusts the amount of compensation expense accordingly. Compensation is recognized over the vesting period and adjusted for the probability of achievement of the performance criteria.\nRSU and PSU activity under the Plan was as follows:",
+   "prose_after": "In connection with the vesting of RSU's during fiscal 2015, the Company withheld 9,462 shares with an aggregate value of $0.3 million in satisfaction of minimum tax withholding obligations due upon vesting. In connection with the vesting of RSU's during fiscal 2014, the Company withheld 9,173 shares with an aggregate value of 0.3 million in satisfaction of minimum tax withholding obligations due upon vesting.\nOn March 8, 2016, 77,260 performance-based restricted stock units vested. In connection with the vesting, the Company withheld 33,699 shares with an aggregate value of $1.3 million in satisfaction of minimum tax withholding obligations due upon vesting.\nAs of January 30, 2016, there was $22.5 million of total unrecognized compensation costs related to non-vested share-based compensation arrangements (including stock options, restricted stock units and performance-based restricted stock units) granted under the Plan. That cost is expected to be recognized over a weighted average vesting period of 2.6 years.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1766,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1807,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "30,976",
+     "",
+     "$",
+     "28,480",
+     "",
+     "$",
+     "21,718",
+     ""
+    ],
+    [
+     "State",
+     "4,626",
+     "",
+     "",
+     "3,218",
+     "",
+     "",
+     "3,172",
+     "",
+     ""
+    ],
+    [
+     "",
+     "35,602",
+     "",
+     "",
+     "31,698",
+     "",
+     "",
+     "24,890",
+     "",
+     ""
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "349",
+     "",
+     "",
+     "(2,544)",
+     "",
+     "",
+     "(3,977)",
+     "",
+     ""
+    ],
+    [
+     "State",
+     "(975)",
+     "",
+     "",
+     "(519)",
+     "",
+     "",
+     "(1,097)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(626)",
+     "",
+     "",
+     "(3,063)",
+     "",
+     "",
+     "(5,074)",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "34,976",
+     "",
+     "$",
+     "28,635",
+     "",
+     "$",
+     "19,816",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1810,
+    "end_line": 1830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "As of January 30, 2016, there was $22.5 million of total unrecognized compensation costs related to non-vested share-based compensation arrangements (including stock options, restricted stock units and performance-based restricted stock units) granted under the Plan. That cost is expected to be recognized over a weighted average vesting period of 2.6 years.\n(7) Income Taxes\nDeferred income taxes reflect the net tax effects of temporary differences between carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible.\nAs of January 30, 2016, no valuation allowance has been provided for net deferred tax assets as management believes that it is more likely than not that the Company will realize all deferred tax assets as of January 30, 2016.\nThe components of the income tax expense are as follows (in thousands):",
+   "prose_after": "The reconciliation of the statutory federal income tax rate to the Company\u2019s effective income tax rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1807,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1878,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Statutory federal tax rate",
+     "35.0",
+     "%",
+     "35.0",
+     "%",
+     "35.0",
+     "%"
+    ],
+    [
+     "State taxes, net of federal benefit",
+     "2.6",
+     "",
+     "2.2",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Other",
+     "0.1",
+     "",
+     "0.2",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "",
+     "37.7",
+     "%",
+     "37.4",
+     "%",
+     "38.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1833,
+    "end_line": 1845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The reconciliation of the statutory federal income tax rate to the Company\u2019s effective income tax rate is as follows:",
+   "prose_after": "The effective tax rate for fiscal 2015 compared to fiscal 2014 was primarily impacted by discrete items and changes in pre-tax income across state jurisdictions. The effective tax rate for fiscal 2014 compared to fiscal 2013 was primarily impacted by changes in the mix of pretax income across state jurisdictions and the Company's operating entities as a result of the Restructuring in fiscal 2013.\nThe tax effects of temporary differences that give rise to deferred tax assets and liabilities are (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1807,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1878,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "January 30, 2016",
+     "",
+     "",
+     "January 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventories",
+     "$",
+     "9,082",
+     "",
+     "$",
+     "6,858",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "297",
+     "",
+     "",
+     "189",
+     "",
+     ""
+    ],
+    [
+     "Accrued bonus",
+     "1,820",
+     "",
+     "",
+     "915",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "19,733",
+     "",
+     "",
+     "17,250",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "5,522",
+     "",
+     "",
+     "2,512",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "36,454",
+     "",
+     "",
+     "27,724",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "(26,780)",
+     "",
+     "",
+     "(18,912)",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "(1,167)",
+     "",
+     "",
+     "(931)",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities",
+     "(27,947)",
+     "",
+     "",
+     "(19,843)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "8,507",
+     "",
+     "$",
+     "7,881",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1850,
+    "end_line": 1873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The effective tax rate for fiscal 2015 compared to fiscal 2014 was primarily impacted by discrete items and changes in pre-tax income across state jurisdictions. The effective tax rate for fiscal 2014 compared to fiscal 2013 was primarily impacted by changes in the mix of pretax income across state jurisdictions and the Company's operating entities as a result of the Restructuring in fiscal 2013.\nThe tax effects of temporary differences that give rise to deferred tax assets and liabilities are (in thousands):",
+   "prose_after": "Total income taxes paid during fiscal 2015, fiscal 2014, and fiscal 2013 were $36.9 million, $21.6 million and $25.0 million, respectively.\nThe Company had no material accrual for uncertain tax positions or interest or penalties related to income taxes on the Company\u2019s balance sheets as of January 30, 2016 and January 31, 2015, and has not recognized any material uncertain tax positions or interest and/or penalties related to income taxes in the consolidated statements of operations for fiscal 2015, fiscal 2014, or fiscal 2013.\nThe Company files a federal income tax return as well as state tax returns. The Company\u2019s U.S. federal income tax returns for the fiscal years ended February 1, 2014 and thereafter remain subject to examination by the U.S. Internal Revenue Service (\u201cIRS\u201d). State returns are filed in various state jurisdictions, as appropriate, with varying statutes of limitation and remain subject to examination for varying periods up to 3 to 4 years depending on the state.\n(8) Employee Benefit Plan",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1807,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1878,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Percentage of Net Sales",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Leisure",
+     "50.8",
+     "%",
+     "51.0",
+     "%",
+     "51.7",
+     "%"
+    ],
+    [
+     "Fashion and home",
+     "29.7",
+     "%",
+     "29.3",
+     "%",
+     "29.3",
+     "%"
+    ],
+    [
+     "Party and snack",
+     "19.5",
+     "%",
+     "19.7",
+     "%",
+     "19.0",
+     "%"
+    ],
+    [
+     "Total",
+     "100.0",
+     "%",
+     "100.0",
+     "%",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Percentage of Net Sales",
+    "Fiscal Year"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1889,
+    "end_line": 1903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has a 401(k) Retirement Savings Plan for all employees who have at least 1 year of service, worked at least 1,000 hours, and are 21 years of age. Employees can contribute up to the maximum amount allowed under law. The Company may make discretionary matching and profit sharing contributions, which vest over a period of 5 years from each employee\u2019s commencement of employment with the Company. During fiscal 2015, fiscal 2014 and fiscal 2013, the Company made discretionary contributions of $0.4 million, $0.3 million and $0.2 million, respectively.\n(9) Segment Reporting\nThe Company evaluates performance internally and manages the business on the basis of one operating segment; therefore, it has only one reportable segment. All of the Company\u2019s identifiable assets are located in the United States.\nSet forth below is data for the following groups of products: leisure, fashion and home, and party and snack. The percentage of net sales represented by each product group for each of the last three fiscal years was as follows:",
+   "prose_after": "Leisure includes items such as sporting goods, games, toys, tech, books, electronic accessories, and arts and crafts. Fashion and home includes items such as personal accessories, \u201cattitude\u201d t-shirts, beauty offerings, home goods and storage options. Party and snack includes items such as party and seasonal goods, greeting cards, candy and other snacks, and beverages.\n(10) Quarterly Results of Operations and Seasonality (Unaudited)\nQuarterly financial results for fiscal 2015 and fiscal 2014 were as follows: (in thousands except for per share data).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1878,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1928,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year 2015 (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Fiscal Year 2014 (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fourth Quarter",
+     "",
+     "Third Quarter",
+     "",
+     "Second Quarter",
+     "",
+     "First Quarter",
+     "",
+     "Fourth Quarter",
+     "",
+     "Third Quarter",
+     "",
+     "Second Quarter",
+     "",
+     "First Quarter",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "326,351",
+     "$",
+     "169,685",
+     "$",
+     "182,191",
+     "$",
+     "153,727",
+     "$",
+     "263,756",
+     "$",
+     "137,979",
+     "$",
+     "152,479",
+     "$",
+     "126,004"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "132,182",
+     "$",
+     "52,765",
+     "$",
+     "59,826",
+     "$",
+     "47,161",
+     "$",
+     "106,328",
+     "$",
+     "41,623",
+     "$",
+     "50,905",
+     "$",
+     "38,935"
+    ],
+    [
+     "Net income",
+     "$",
+     "42,004",
+     "$",
+     "4,337",
+     "$",
+     "7,061",
+     "$",
+     "4,278",
+     "$",
+     "33,313",
+     "$",
+     "3,311",
+     "$",
+     "8,320",
+     "$",
+     "3,080"
+    ],
+    [
+     "Basic income income per common share",
+     "$",
+     "0.77",
+     "$",
+     "0.08",
+     "$",
+     "0.13",
+     "$",
+     "0.08",
+     "$",
+     "0.61",
+     "$",
+     "0.06",
+     "$",
+     "0.15",
+     "$",
+     "0.06"
+    ],
+    [
+     "Diluted income income per common share",
+     "$",
+     "0.77",
+     "$",
+     "0.08",
+     "$",
+     "0.13",
+     "$",
+     "0.08",
+     "$",
+     "0.61",
+     "$",
+     "0.06",
+     "$",
+     "0.15",
+     "$",
+     "0.06"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1910,
+    "end_line": 1921
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Leisure includes items such as sporting goods, games, toys, tech, books, electronic accessories, and arts and crafts. Fashion and home includes items such as personal accessories, \u201cattitude\u201d t-shirts, beauty offerings, home goods and storage options. Party and snack includes items such as party and seasonal goods, greeting cards, candy and other snacks, and beverages.\n(10) Quarterly Results of Operations and Seasonality (Unaudited)\nQuarterly financial results for fiscal 2015 and fiscal 2014 were as follows: (in thousands except for per share data).",
+   "prose_after": "(1) The sum of the quarterly per share amounts may not equal per share amounts reported for the fiscal year due to rounding.\nThe Company's business is seasonal in nature and demand is generally the highest in the fourth fiscal quarter due to the fourth quarter holiday season and therefore, operating results for any fiscal quarter are not necessarily indicative of results for the full fiscal year. To prepare for the holiday season, the Company must order and keep in stock more merchandise than it carries during other parts of the year. The Company expects inventory levels, along with an increase in accounts payable and accrued expenses, generally to reach their highest levels in the third and fourth fiscal quarters in anticipation of the increased net sales during the year-end holiday season. As a result of this seasonality, and generally because of variation in consumer spending habits, the Company experiences fluctuations in net sales and working capital requirements during the fiscal year.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1878,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1928,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101*",
+     "The following financial information from this Annual Report on Form 10-K, formatted in XBRL (Extensible Business Reporting Language) and furnished electronically herewith: (i) the Consolidated Balance Sheets as of January 30, 2016 and January 31, 2015; (ii) the Consolidated Statements of Operations for Fiscal Years 2015, 2014, and 2013; (iii) the Consolidated Statements of Changes in Shareholders\u2019 Equity For Fiscal Years 2015, 2014, and 2013; (iv) the Consolidated Statements of Cash Flows for Fiscal Years 2015, 2014, and 2013 and (v) the Notes to Consolidated Financial Statements, in each case, tagged in detail."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2105,
+    "end_line": 2111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND CONSOLIDATED FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "10.29\u2020 Five Below, Inc. Compensation Policy for Non-Employee Directors (incorporated by reference to Exhibit 10.2 of the Quarterly Report on Form 10-Q filed with the Commission on June 4, 2015)\n10.30\u2020 Five Below, Inc. 2012 Employee Stock Purchase Plan (incorporated by reference to Exhibit 10.1 of the Quarterly Report on Form 10-Q filed with the Commission on November 29, 2012)\n23.1 Consent of KPMG LLP (filed herewith)\n31.1 Certification of Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)\n31.2 Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)\n32.1 Certification of Chief Executive Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (filed herewith)\n32.2 Certification of Chief Financial Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (filed herewith)",
+   "prose_after": "* Pursuant to applicable securities laws and regulations, this interactive data file is deemed not filed or part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under those sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in Philadelphia, Pennsylvania, on the 23rd day of March 2016.\nFIVE BELOW, INC. By: /s/ Joel D. Anderson Name: Joel D. Anderson Title: President and Chief Executive Officer\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2076,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 2112,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Thomas G. Vellios Thomas G. Vellios",
+     "Executive Chairman",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Joel D. Anderson Joel D. Anderson",
+     "President, Chief Executive Officer and Director (Principal Executive Officer)",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Kenneth R. Bull Kenneth R. Bull",
+     "Chief Financial Officer (Principal Financial Officer and Principal Accounting Officer)",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Michael F. Devine Michael F. Devine",
+     "Director",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ David M. Mussafer David M. Mussafer",
+     "Director",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Thomas M. Ryan Thomas M. Ryan",
+     "Director",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Ronald L. Sargent Ronald L. Sargent",
+     "Director",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Kathleen S. Barclay Kathleen S. Barclay",
+     "Director",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Catherine E. Buggeln Catherine E. Buggeln",
+     "Director",
+     "March 23, 2016"
+    ],
+    [
+     "/s/ Daniel J. Kaufman Daniel J. Kaufman",
+     "Director",
+     "March 23, 2016"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2125,
+    "end_line": 2139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND CONSOLIDATED FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "* Pursuant to applicable securities laws and regulations, this interactive data file is deemed not filed or part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under those sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in Philadelphia, Pennsylvania, on the 23rd day of March 2016.\nFIVE BELOW, INC. By: /s/ Joel D. Anderson Name: Joel D. Anderson Title: President and Chief Executive Officer\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Exhibit Index\nNo. Description\n10.14 Form of Award Agreement for Restricted Stock Units\n23.1 Consent of KPMG LLP\n31.1 Certification of Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2 Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 Certification of Chief Executive Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 Certification of Chief Financial Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2116,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 2140,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 68
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101*",
+     "The following financial information from this Annual Report on Form 10-K, formatted in XBRL (Extensible Business Reporting Language) and furnished electronically herewith: (i) the Consolidated Balance Sheets as of January 30, 2016 and January 31, 2015; (ii) the Consolidated Statements of Operations for Fiscal Years 2015, 2014, and 2013; (iii) the Consolidated Statements of Changes in Shareholders\u2019 Equity For Fiscal Years 2015, 2014, and 2013; (iv) the Consolidated Statements of Cash Flows for Fiscal Years 2015, 2014, and 2013 and (v) the Notes to Consolidated Financial Statements, in each case, tagged in detail."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2157,
+    "end_line": 2163
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND CONSOLIDATED FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Exhibits"
+    }
+   },
+   "prose_before": "Exhibit Index\nNo. Description\n10.14 Form of Award Agreement for Restricted Stock Units\n23.1 Consent of KPMG LLP\n31.1 Certification of Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2 Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 Certification of Chief Executive Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 Certification of Chief Financial Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "prose_after": "* Pursuant to applicable securities laws and regulations, this interactive data file is deemed not filed or part of a registration statement or prospectus for purposes of sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under those sections.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2140,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 2164,
+     "token": "REPEATING_FOOTER",
+     "id": 77,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

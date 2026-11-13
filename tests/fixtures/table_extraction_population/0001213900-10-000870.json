@@ -1,0 +1,4613 @@
+{
+ "accession": "0001213900-10-000870",
+ "cik": "0001424640",
+ "form": "10-K",
+ "filing_date": "2010-03-11",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2009_windtamer.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York",
+     "16-1610794"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\nIncorporation or Organization)",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "156 Court Street\n\nSuite # 7\n\nGeneseo, New York",
+     "14454"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the Fiscal Year Ended December 31, 2009\nOR\n[ ]  Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the Transition Period from to\nCommission File Number: 001-53510\nWindTamer Corporation\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "(Registrant\u2019s Telephone Number, Including Area Code)\n(585) 243-4040\n(Former name, former address and former fiscal year, if changed since last report)\n6053 Ely Avenue\nLivonia, New York 14487\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, Par Value $0.0001\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Outstanding at February 28, 2010"
+    ],
+    [
+     "Common Stock, $.0001 par value per share",
+     "115,457,848 shares"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 82
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of June 30, 2009, the aggregate market value of the registrant's common stock held by non-affiliates of the registrant was $28,622,000, based on the closing sale price of $1.00 per share as of the end of the last business day of the registrant's most recently completed second fiscal quarter. No public market for the registrant's stock existed as of June 30, 2009. The aggregate market value reported herein is based upon the sale of 636,000 shares of common stock of the Company between the dates of February 2, 2009 and June 30, 2009, at a price of $1.00 per share, pursuant to a private placement conducted by registrant in reliance upon an exemption from registration under Section 3(b) of the Securities Act of 1933 and Rule 505 of Regulation D thereunder.\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.",
+   "prose_after": "DOCUMENTS INCORPORATED BY REFERENCE",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Document",
+     "Parts into Which Incorporated"
+    ],
+    [
+     "Proxy Statement for the Annual Meeting of\n\nShareholders to be held in 2010 (Proxy Statement)",
+     "Part III\n\n(Items 10, 11, 12, 13 and 14)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 92
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "DOCUMENTS INCORPORATED BY REFERENCE",
+   "prose_after": "TABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "16"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "17"
+    ],
+    [
+     "Item 4.",
+     "Submission Of Matters To A Vote Of Security Holders",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "17"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "23"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "23"
+    ],
+    [
+     "Item 9A(T).",
+     "Controls and Procedures",
+     "23"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors and Executive Officers and Corporate Governance",
+     "26"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "26"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "26"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "26"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statements Schedules",
+     "26"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 95,
+    "end_line": 123
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": ")"
+    },
+    "note": null
+   },
+   "prose_before": "TABLE OF CONTENTS",
+   "prose_after": "Item 1. Business\nCompany Overview\nWe have developed a new technology that we are using in our \u201cWindTamer\u2122\u201d wind turbine. Our patented technology is new to the wind turbine industry. We believe that our technology is a more efficient way to harness wind energy than currently used in the industry. We are in the initial stages of marketing and selling our product to generate power in the residential, commercial, governmental, industrial, recreational, and portable markets. In the future, we plan to develop our technology for sale in the low-head hydro and transportation markets. We intend to market our technology worldwide through manufacturing, distribution and licensing arrangements.\nWe were incorporated in New York on March 30, 2001, under the name Future Energy Solutions, Inc. In November 2008, we changed our name to WindTamer Corporation. Our founder, Gerald E. Brock, invented the \u201cWindTamer\u2122\u201d wind turbine in 2002. In December 2003, Mr. Brock was issued a patent for the WindTamer turbine technology, which was assigned to us. In 2007, Mr. Brock began to focus entirely on WindTamer and commercialization of the technology. In January 2010, we were issued a patent that protects the ornamental design of the Company's wind turbine diffuser. We have also filed four additional utility patent applications that we believe improve upon our technology, all of which are currently pending. We are seeking international patent protection for our technology.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 123,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of securities to be\n\nissued upon\n\nexercise of outstanding\n\noptions, warrants & rights",
+     "",
+     "Weighted average\n\nexercise price of\n\noutstanding options,\n\nwarrants & rights",
+     "",
+     "Number of securities\n\nremaining available for\n\nfuture issuance under\n\nequity compensation plans\n\n(excluding(a))",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Plan Category",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Options (1)",
+     "",
+     "4,661,667",
+     "$",
+     ".72",
+     "",
+     ""
+    ],
+    [
+     "Restricted Stock Award (2)",
+     "",
+     "25,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "4,686,667",
+     "",
+     "",
+     "",
+     "0 (3)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved by stockholders (3)",
+     "",
+     "0",
+     "$",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "4,686,667",
+     "$",
+     ".72",
+     "",
+     "0 (3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 508,
+    "end_line": 530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "Our common stock is quoted on the OTC Bulletin Board (the \"OTCBB\") under the symbol WNDT. The common stock was first approved for quotation on the OTCBB on November 16, 2009, and no bid quotations were reported prior to fourth quarter of 2009. The quarterly high and low bid prices as reported by the OTCBB between November 16, 2009 and December 31, 2009 were $2.60 and $.40, respectively. These quotations reflect inter-dealer prices, without retail mark-up, mark-down, or commission and may not necessarily represent actual transactions.\nAt February 28, 2010, we had 118 holders of record. We believe that the number of beneficial owners of our common stock on that date was substantially greater.\nDividend Policy\nWe have never paid cash dividends on our common stock and do not anticipate that we will pay dividends in the foreseeable future. We intend to use any future earnings primarily for the expansion of our business. Any future determination as to the payment of dividends will be subject to applicable limitations, will be at the discretion of our board of directors and will depend on our results of operations, financial condition, capital requirements and other factors deemed relevant by our board of directors.\nEquity Compensation Plan Information\nInformation about our equity compensation plans at December 31, 2009 is as follows:",
+   "prose_after": "(1) Consists of the 2008 Equity Incentive Plan, which permits the award of stock options, restricted stock and various other stock-based awards.\n(2) The restricted stock award does not have an exercise price and vested January 5, 2010 upon the achievement of performance targets.\n(3) On December 30, 2009, the Company's Board of Directors approved, subject to shareholder approval, an amendment to the 2008 Equity Incentive Plan to increase the number of shares of Common Stock available for awards from 8,000,000 shares to 16,000,000 shares. The Company plans to present the proposal for shareholder approval at its Annual Meeting of Shareholders in April 2010.\nRecent Sales of Unregistered Securities\nOn December 21, 2009, the Company issued 91,000 shares of common stock in a private placement to O'Connell Electric Company, Inc., in exchange for electrical contracting services for a purchase price of $91,000. The transaction was exempt from registration under Section 4(2) of the Securities Act of 1933, as amended, or the Securities Act. The shares were issued in a transaction not involving a public offering. The purchaser is an accredited investor as defined under the Securities Act, was knowledgeable about the Company\u2019s operations and financial condition and had access to such information. The transactions did not involve any form of general solicitation. The shares issued are restricted from resale and were acquired for investment purposes only.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 479,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Title of Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Item 15. Exhibits, Financial Statements Schedules\n(a) The following documents are filed as part of this report:\n(1) The following financial statements beginning at page F-1:\n1. Reports of Independent Registered Public Accounting Firm \u2014 EFP Rotenberg LLP\n2. Balance Sheets\n3. Statements of Operations\n4. Statements of Stockholders\u2019 Equity\n5. Statements of Cash Flows\n6. Notes to Financial Statements\n(3) Exhibits.",
+   "prose_after": "3.1 Restated Certificate of Incorporation of WindTamer Corporation, dated November 25, 2008 (incorporated herein by reference to Exhibit 3.1 to the Registration Statement on Form 10 of WindTamer Corporation dated November 26, 2008 (File No. 000-53510)).\n3.2 Amended and Restated By-Laws of WindTamer Corporation, dated March 10, 2010.\n3.3 Certificate of Correction of the Restated Certificate of Incorporation (Incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K of WindTamer Corporation dated April 30, 2009 (File No. 000-53510)).\n3.4 Text of the amendment to the Amended and Restated Bylaws of WindTamer Corporation effectiveMarch 10, 2010.\n4.1 Specimen Stock Certificate (incorporated herein by reference to Exhibit 4.1 to the Registration Statement on Form 10 of WindTamer Corporation dated November 26, 2008 (File No. 000-53510)).\n10.1 Patent Assignment dated June 4, 2002 by and between Gerald E. Brock et al., and Future Energy Solutions Inc. (n/k/a WindTamer Corporation) (incorporated herein by reference to Exhibit 10.7 to the Annual Report on Form 10-K/A of WindTamer Corporation dated March 30, 2009 (File No. 000-53510)).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 743,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "21",
+     "Subsidiaries of Registrant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of EFP Rotenberg, LLP"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 824,
+    "end_line": 829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "10.30 Employment Agreement between WindTamer Corporation and Mark Matthews, dated as of December 17, 2009 (incorporated by reference herein to Exhibit 10.1 to the Current Report on Form 8-K filed by WindTamer Corporation dated December 17, 2009 (File No. 000-53510)).*\n10.31 Employment Agreement between WindTamer Corporation and Adeeb Saba, dated as of December 28, 2009 (incorporated by reference herein to Exhibit 10.1 to the Current Report on Form 8-K filed by WindTamer Corporation dated December 29, 2009 (File No. 000-53510)).*\n10.32 WindTamer Corporation Non-Employee Director Compensation Plan. (incorporated by reference herein to Exhibit 10.2 to the Current Report on Form 8-K filed by WindTamer Corporation dated January 4, 2010 (File No. 000-53510)).*\n10.33 Employment Agreement between WindTamer Corporation and Molly Hedges, dated as of March 1, 2010 (incorporated by reference herein to Exhibit 10.1 to the Current Report on Form 8-K filed by WindTamer Corporation dated March 1, 2010 (File No. 000-53510)).*",
+   "prose_after": "24 Power of Attorney\n31.1 Certification of Gerald E. Brock pursuant to Rule 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n* Management contract or compensatory plan or arrangement.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 835,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "WINDTAMER CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 11, 2010",
+     "By:",
+     "/s/ GERALD E. BROCK",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Gerald E. Brock",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WINDTAMER CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 847,
+    "end_line": 855
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "24 Power of Attorney\n31.1 Certification of Gerald E. Brock pursuant to Rule 13a-14(a) and 15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n32.1 Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n* Management contract or compensatory plan or arrangement.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities and Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 893,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ GERALD E. BROCK",
+     "Chief Executive Officer, Chief Financial Officer and Chairman",
+     "March 11, 2010"
+    ],
+    [
+     "Gerald E. Brock",
+     "(Principal Executive, Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ JOHN P. BLAKE",
+     "Director",
+     "March 11, 2010"
+    ],
+    [
+     "John P. Blake",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ STEVEN DINUNZIO",
+     "Director",
+     "March 11, 2010"
+    ],
+    [
+     "Steven DiNunzio",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 858,
+    "end_line": 873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities and Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 893,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ EUGENE R. HENN",
+     "Director",
+     "March 11, 2010"
+    ],
+    [
+     "Eugene R. Henn",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ GEORGE NASELARIS",
+     "Director",
+     "March 11, 2010"
+    ],
+    [
+     "George Naselaris",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ ANTHONY C. ROMANO, JR.",
+     "Director",
+     "March 11, 2010"
+    ],
+    [
+     "Anthony C. Romano, Jr.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 874,
+    "end_line": 887
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 893,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ WILLIAM A. SCHMITZ",
+     "Director, President",
+     "March 11, 2010"
+    ],
+    [
+     "William A. Schmitz",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 888,
+    "end_line": 893
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "WINDTAMER CORPORATION\nIndex to Financial Statements\nFinancial Statements",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 893,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Balance Sheets as of December 31, 2009 and 2008",
+     "F-3"
+    ],
+    [
+     "Statements of Operations for the years ended December 31, 2009 and 2008 and for the period from inception",
+     "F-4"
+    ],
+    [
+     "Statements of Cash Flows for the years ended December 31, 2009 and 2008 and for the period from inception",
+     "F-5"
+    ],
+    [
+     "Statement of Stockholders\u2019 Equity since inception through December 31, 2009",
+     "F-6"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 902,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "WINDTAMER CORPORATION\nIndex to Financial Statements\nFinancial Statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of WindTamer Corporation\n156 Court Street\nGeneseo, NY 14454\nAs successor by merger, effective October 1, 2009, to the registered public accounting firm Rotenberg & Co., LLP, we have audited the accompanying balance sheets of WindTamer Corporation as of December 31, 2009 and 2008, and the related statements of operations, stockholders' equity, and cash flows for each of the years in the two-year period ended December 31, 2009 and for the period from date of inception (March 30, 2001) through December 31, 2009. WindTamer Corporation\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 895,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nBalance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,027,977",
+     "",
+     "$",
+     "204,771",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "37,448",
+     "",
+     "",
+     "8,739",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "94,601",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "1,160,026",
+     "",
+     "",
+     "213,510",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "37,277",
+     "",
+     "",
+     "20,987",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "175,109",
+     "",
+     "",
+     "14,689",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,372,412",
+     "",
+     "$",
+     "249,186",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "322,062",
+     "",
+     "$",
+     "42,472",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "",
+     "95,000",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "417,062",
+     "",
+     "",
+     "42,472",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, 5,000,000 shares authorized, $.0001 par value;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "none issued or outstanding",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Common stock, 500,000,000 shares authorized, $0.0001 par value;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "115,297,000 and 80,640,000 shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "respectively",
+     "",
+     "11,530",
+     "",
+     "",
+     "8,064",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "4,998,421",
+     "",
+     "",
+     "1,430,199",
+     ""
+    ],
+    [
+     "Deficit accumulated during development stage",
+     "",
+     "(4,054,601)",
+     "",
+     "",
+     "(1,231,549)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "955,350",
+     "",
+     "",
+     "206,714",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "1,372,412",
+     "",
+     "$",
+     "249,186",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nBalance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 937,
+    "end_line": 986
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of WindTamer Corporation as of December 31, 2009 and 2008, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2009 in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company's significant operating losses raise substantial doubt about its ability to continue as a going concern. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ EFP Rotenberg, LLP\nEFP Rotenberg, LLP\nRochester, New York\nMarch 11, 2010",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 988,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nStatements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended\n\nDecember 31,\n\n2009",
+     "",
+     "",
+     "Year Ended\n\nDecember 31,\n\n2008",
+     "",
+     "",
+     "Period from Date\n\n of Inception\n\n(March 30, 2001)\n\nthrough\n\nDecember 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "$",
+     "828,724",
+     "",
+     "$",
+     "249,171",
+     "",
+     "$",
+     "1,124,177",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "1,995,716",
+     "",
+     "",
+     "890,635",
+     "",
+     "",
+     "2,932,004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "2,824,440",
+     "",
+     "",
+     "1,139,806",
+     "",
+     "",
+     "4,056,181",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(2,824,440)",
+     "",
+     "",
+     "(1,139,806)",
+     "",
+     "",
+     "(4,056,181)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-operating revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "1,388",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "1,580",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "(2,823,052)",
+     "",
+     "",
+     "(1,139,806)",
+     "",
+     "",
+     "(4,054,601)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,823,052)",
+     "",
+     "$",
+     "(1,139,806)",
+     "",
+     "$",
+     "(4,054,601)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common\n\n    shares outstanding - basic and diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "93,393,000",
+     "",
+     "",
+     "73,206,667",
+     "",
+     "",
+     "65,347,008",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nStatements of Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 989,
+    "end_line": 1036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 988,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nStatements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended\n\nDecember 31,\n\n2009",
+     "",
+     "",
+     "Year Ended\n\nDecember 31,\n\n2008",
+     "",
+     "",
+     "Period from Date\n\n of Inception\n\n(March 30, 2001)\n\nthrough\n\nDecember 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(2,823,052)",
+     "",
+     "$",
+     "(1,139,806)",
+     "",
+     "$",
+     "(4,054,601)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization and depreciation expense",
+     "",
+     "15,133",
+     "",
+     "",
+     "2,473",
+     "",
+     "",
+     "18,318",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "1,011,030",
+     "",
+     "",
+     "407,752",
+     "",
+     "",
+     "1,421,785",
+     ""
+    ],
+    [
+     "Stock issued for services",
+     "",
+     "91,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "91,000",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in prepaid expenses and other current assets",
+     "",
+     "(28,709)",
+     "",
+     "",
+     "(8,739)",
+     "",
+     "",
+     "(37,448)",
+     ""
+    ],
+    [
+     "Increase in inventory",
+     "",
+     "(94,601)",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "(94,601)",
+     ""
+    ],
+    [
+     "Increase in trade accounts payable and accrued expenses",
+     "",
+     "279,590",
+     "",
+     "",
+     "38,600",
+     "",
+     "",
+     "322,062",
+     ""
+    ],
+    [
+     "Increase in customer deposits",
+     "",
+     "95,000",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "95,000",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,454,609)",
+     "",
+     "",
+     "(699,720)",
+     "",
+     "",
+     "(2,238,485)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property and equipment",
+     "",
+     "(174,849)",
+     "",
+     "",
+     "(16,220)",
+     "",
+     "",
+     "(191,317)",
+     ""
+    ],
+    [
+     "Acquisition of intangible assets",
+     "",
+     "(16,994)",
+     "",
+     "",
+     "(10,441)",
+     "",
+     "",
+     "(39,387)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(191,843)",
+     "",
+     "",
+     "(26,661)",
+     "",
+     "",
+     "(230,704)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "816,002",
+     "",
+     "",
+     "907,000",
+     "",
+     "",
+     "1,866,510",
+     ""
+    ],
+    [
+     "Stock offering expenses paid",
+     "",
+     "(16,344)",
+     "",
+     "",
+     "(26,258)",
+     "",
+     "",
+     "(59,344)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "1,670,000",
+     "",
+     "",
+     "20,000",
+     "",
+     "",
+     "1,690,000",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "2,469,658",
+     "",
+     "",
+     "900,742",
+     "",
+     "",
+     "3,497,166",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash",
+     "",
+     "823,206",
+     "",
+     "",
+     "174,361",
+     "",
+     "",
+     "1,027,977",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - beginning",
+     "",
+     "204,771",
+     "",
+     "",
+     "30,410",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash - ending",
+     "$",
+     "1,027,977",
+     "",
+     "$",
+     "204,771",
+     "",
+     "$",
+     "1,027,977",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Income Taxes Paid",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ],
+    [
+     "  Interest Paid",
+     "$",
+     "1,120",
+     "",
+     "$",
+     "975",
+     "",
+     "$",
+     "2,095",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nStatements of Cash Flows"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1039,
+    "end_line": 1099
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the financial statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1099,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nStatements of Stockholders' Equity\n\nFrom Inception through December 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Par Value",
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Par Value",
+     "",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "",
+     "During the Development Stage",
+     "",
+     "",
+     "Total Stockholders' Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuanceof common stock in exchangefor services",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "60,000,000",
+     "",
+     "$",
+     "6,000",
+     "",
+     "$",
+     "(3,000)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "3,000",
+     ""
+    ],
+    [
+     "Net loss for the period from March 30 through December 31, 2001",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,100)",
+     "",
+     "",
+     "(3,100)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2001",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "60,000,000",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "(3,100)",
+     "",
+     "",
+     "(100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses paid by shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "20,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "93,320",
+     "",
+     "",
+     "9",
+     "",
+     "",
+     "49,991",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Net loss for 2002",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(61,348)",
+     "",
+     "",
+     "(61,348)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2002",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "60,093,320",
+     "",
+     "",
+     "6,009",
+     "",
+     "",
+     "66,991",
+     "",
+     "",
+     "(64,448)",
+     "",
+     "",
+     "8,552",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses paid by shareholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,510",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,510",
+     ""
+    ],
+    [
+     "Treasury stock received at no cost",
+     "",
+     "93,320",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Retirement of treasury stock",
+     "",
+     "(93,320)",
+     "",
+     "",
+     "",
+     "",
+     "(93,320)",
+     "",
+     "",
+     "(9)",
+     "",
+     "",
+     "9",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Net loss for 2003",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(428)",
+     "",
+     "",
+     "(428)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2003",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "60,000,000",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "70,510",
+     "",
+     "",
+     "(64,876)",
+     "",
+     "",
+     "11,634",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for 2004",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(140)",
+     "",
+     "",
+     "(140)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2004",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "60,000,000",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "70,510",
+     "",
+     "",
+     "(65,016)",
+     "",
+     "",
+     "11,494",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for 2005",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(130)",
+     "",
+     "",
+     "(130)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2005",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "60,000,000",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "70,510",
+     "",
+     "",
+     "(65,146)",
+     "",
+     "",
+     "11,364",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for 2006",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(130)",
+     "",
+     "",
+     "(130)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2006",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "60,000,000",
+     "",
+     "",
+     "6,000",
+     "",
+     "",
+     "70,510",
+     "",
+     "",
+     "(65,276)",
+     "",
+     "",
+     "11,234",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,400,000",
+     "",
+     "",
+     "140",
+     "",
+     "",
+     "69,860",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "70,000",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(16,741)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(16,741)",
+     ""
+    ],
+    [
+     "Net loss for 2007",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(26,467)",
+     "",
+     "",
+     "(26,467)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2007",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "61,400,000",
+     "",
+     "",
+     "6,140",
+     "",
+     "",
+     "123,629",
+     "",
+     "",
+     "(91,743)",
+     "",
+     "",
+     "38,026",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "18,140,000",
+     "",
+     "",
+     "1,814",
+     "",
+     "",
+     "905,186",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "907,000",
+     ""
+    ],
+    [
+     "Issuance of common stock under stock award agreement",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "700,000",
+     "",
+     "",
+     "70",
+     "",
+     "",
+     "34,930",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "35,000",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(26,258)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(26,258)",
+     ""
+    ],
+    [
+     "Stock option expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "372,752",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "372,752",
+     ""
+    ],
+    [
+     "Issuance of stock under stock options",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "400,000",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "19,960",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Net loss for 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,139,806)",
+     "",
+     "",
+     "(1,139,806)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2008",
+     "",
+     "0",
+     "",
+     "",
+     "0",
+     "",
+     "80,640,000",
+     "",
+     "",
+     "8,064",
+     "",
+     "",
+     "1,430,199",
+     "",
+     "",
+     "(1,231,549)",
+     "",
+     "",
+     "206,714",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WINDTAMER CORPORATION\n\n(A Development Stage Company)\n\nStatements of Stockholders' Equity\n\nFrom Inception through December 31, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1100,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1099,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Issuance of common stock for services",
+     "",
+     "",
+     "",
+     "",
+     "91,000",
+     "",
+     "9",
+     "",
+     "90,991",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "91,000",
+     ""
+    ],
+    [
+     "Issuance of common stock for cash",
+     "",
+     "",
+     "",
+     "",
+     "866,000",
+     "",
+     "87",
+     "",
+     "815,915",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "816,002",
+     ""
+    ],
+    [
+     "Offering costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(16,344)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(16,344)",
+     ""
+    ],
+    [
+     "Stock option expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "702,280",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "702,280",
+     ""
+    ],
+    [
+     "Issuance of common stock under stock award agreement",
+     "",
+     "",
+     "",
+     "",
+     "300,000",
+     "",
+     "30",
+     "",
+     "308,720",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "308,750",
+     ""
+    ],
+    [
+     "Stock options exercised",
+     "",
+     "",
+     "",
+     "",
+     "33,400,000",
+     "",
+     "3,340",
+     "",
+     "1,666,660",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,670,000",
+     ""
+    ],
+    [
+     "Net loss for 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,823,052)",
+     "",
+     "",
+     "(2,823,052)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2009",
+     "",
+     "0",
+     "$",
+     "-",
+     "115,297,000",
+     "$",
+     "11,530",
+     "$",
+     "4,998,421",
+     "",
+     "$",
+     "(4,054,601)",
+     "",
+     "$",
+     "955,350",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1160,
+    "end_line": 1172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of the financial statements.\nNote 1 \u2013 Description of the Business and Summary of Significant Accounting Policies\nDescription of Business\nWindTamer Corporation (the Company) was incorporated on March 30, 2001 in the State of New York as Future Energy Solutions, Inc. and in November 2008 changed its name to WindTamer Corporation. The Company is an independent developer of wind turbine technology to harness wind as a source of power generation.\nMethod of Accounting\nThe accompanying financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America (\u201cGAAP\u201d). WindTamer Corporation maintains its books and prepares its financial statements on the accrual basis of accounting.\nThe Company has operated as a development stage enterprise since its inception by devoting substantially all of its efforts to planning, raising capital, research and development, and developing markets for its products. Accordingly, the financial statements of the Company have been prepared in accordance with the accounting and reporting principles prescribed by Accounting Standards Codification (ASC) 915, \u201cDevelopment Stage Entities\u201d.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1174,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "44,360",
+     "",
+     "",
+     "10,268",
+     ""
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "76,213",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "30,436",
+     "",
+     "",
+     "6,200",
+     ""
+    ],
+    [
+     "Software",
+     "",
+     "40,308",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Total property and equipment before accumulated depreciation",
+     "",
+     "191,317",
+     "",
+     "",
+     "16,468",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(16,208)",
+     "",
+     "",
+     "(1,779)",
+     ""
+    ],
+    [
+     "Total property and equipment",
+     "",
+     "175,109",
+     "",
+     "",
+     "14,689",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents",
+     "",
+     "34,862",
+     "",
+     "",
+     "17,868",
+     ""
+    ],
+    [
+     "Trademark",
+     "",
+     "4,525",
+     "",
+     "",
+     "4,525",
+     ""
+    ],
+    [
+     "Total intangible assets before accumulated amortization",
+     "",
+     "39,387",
+     "",
+     "",
+     "22,393",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(2,110)",
+     "",
+     "",
+     "(1,406)",
+     ""
+    ],
+    [
+     "Total intangible assets",
+     "",
+     "37,277",
+     "",
+     "",
+     "20,987",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1258,
+    "end_line": 1285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-lived Assets"
+    }
+   },
+   "prose_before": "The financial statements have been prepared assuming that the Company will continue as a going concern. The Company is in a development stage and has recognized no revenue as of December 31, 2009. The lack of sales and recurring losses from operations raise substantial doubt about the Company\u2019s ability to continue as a going concern. Continuation of the Company is dependent on achieving sufficiently profitable operations and additional financing. The Company completed a private placement of its common stock in July 2008, that began in 2007, in which it raised gross proceeds of $977,000 and during 2009 the Company conducted a private placement, which resulted in proceeds of $816,000 as of December 31, 2009. Exercises of stock option awards resulted in additional proceeds of $1,670,000 for the year ended December 31, 2009. The Company plans to continue the launch of the commercialization of its products utilizing its current working capital and future financing proceeds, if necessary, and by outsourcing the manufacturing function and working with regional distributors during 2010. There can be no assurance that any revenue from operations will be sufficient. In the event it is not sufficient, the Company will need to raise additional capital. There can be no assurance that the Company will be successful in raising additional capital.\nNote 3 \u2013 Long-lived Assets\nThe following table summarizes the Company\u2019s long-lived assets as of December 31:",
+   "prose_after": "Amortization of intangible assets is expected to amount to less than $1,000 per year for each of the next five years.\nNote 4 \u2013 Stockholders\u2019 Equity\nOn December 7, 2007, the Company effected a 428.57-to-1 stock split. On that date, the Company reduced the par value of common stock from $.01 to $.001 per share. As a result of the stock split and change in par value, common stock increased and additional paid-in capital decreased by $2,930. On November 25, 2008, the Company effected a 20-for-1 split of its outstanding shares of common stock, resulting in there then being approximately 79,640,000 common shares outstanding, and reduced the par value of its stock from $.001 to $.0001 per share. In addition, the Company\u2019s authorized shares were increased to 500 million common shares and 5 million preferred shares. The shares of preferred stock are undesignated \u201cblank check\u201d shares. References to share amounts in these financial statements and notes have been adjusted to reflect these stock splits.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "Year Ended"
+    ],
+    [
+     "",
+     "December 31, 2009",
+     "December 31, 2008"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "0%",
+     "0%"
+    ],
+    [
+     "Expected stock price volatility",
+     "40 - 50%",
+     "35.21%"
+    ],
+    [
+     "Risk-free interest rate",
+     "1.14 \u2013 3.85%",
+     "1.1%"
+    ],
+    [
+     "Expected life of options",
+     "3 - 10 Years",
+     "2.4 Years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1306,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Stock Based Compensation"
+    }
+   },
+   "prose_before": "Management has valued the options at their date of grant utilizing the Black Scholes Option Pricing Model. Prior to the fourth quarter of 2009, there was not a public market for the Company shares. Accordingly, the fair value of the underlying shares was determined based on recent transactions by the Company to sell shares to third parties and other factors determined by management to be relevant to the valuation of such shares. Beginning in the fourth quarter of 2009, the Company\u2019s quoted price on the OTCBB was used to value the underlying shares. The excepted volatility was calculated using the historical volatility of a similar public entity in the alternative electricity industry in accordance with Question 6 of SAB Topic 14.D.1. In making this determination and finding another similar company, the Company considered the industry, stage of life cycle, size and financial leverage of such other entities. Based on the development stage of the Company, similar companies with enough historical data are not available. The Company was able to find one entity that met the industry criterion and as a result has based its expected volatility off this Company\u2019s historical stock prices for a period similar to the expected term of the option. The risk-free interest rate is based on the implied yield available on U.S. Treasury issues with an equivalent term approximating the expected life of the options depending on the date of the grant and expected life of the options. The expected life of options used was based on the contractual life of the option granted. The Company determined the expected dividend rate based on the assumption and expectation that earnings generated from operations are not expected to be adequate to allow for the payment of dividends in the near future. The following weighted-average assumptions were utilized in the fair value calculations for options granted:",
+   "prose_after": "The following table summarizes the status of the Company\u2019s aggregate stock options granted:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1316,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares Remaining Options",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise\n\nPrice",
+     "",
+     "Weighted-Average Remaining Contractual Term",
+     "",
+     "Aggregate\n\nIntrinsic\n\nValue",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2009",
+     "",
+     "34,200,000",
+     "",
+     "$",
+     ".05",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options granted",
+     "",
+     "5,086,667",
+     "",
+     "$",
+     ".89",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options exercised during 2009",
+     "",
+     "(33,400,000)",
+     "",
+     "$",
+     ".05",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options forfeited during 2009",
+     "",
+     "(1,225,000)",
+     "",
+     "$",
+     "1.00",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2009",
+     "",
+     "4,661,667",
+     "",
+     "$",
+     ".72",
+     "",
+     "7.8 years",
+     "$",
+     "557,333"
+    ],
+    [
+     "Exercisable at December 31, 2009",
+     "",
+     "1,550,000",
+     "",
+     "$",
+     ".49",
+     "",
+     "5.6   years",
+     "$",
+     "496,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1319,
+    "end_line": 1338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The following table summarizes the status of the Company\u2019s aggregate stock options granted:",
+   "prose_after": "The weighted average fair value of options granted during the year ended December 31, 2009 was approximately $.46 ($0.01- 2008). The total fair value of shares that vested during the year ended December 31, 2009 was $554,320 ($370,860 - 2008).\nThe following table summarizes the status of the Company\u2019s aggregate non-vested shares granted:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1316,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Non-vested Shares",
+     "Number of\n\nNon-vested Shares",
+     "",
+     "",
+     "Weighted Average\n\nFair Value at Grant Date",
+     ""
+    ],
+    [
+     "Non-vested at December 31, 2008",
+     "",
+     "300,000",
+     "",
+     "$",
+     "0.05"
+    ],
+    [
+     "Non-vested granted \u2013 year ended December 31, 2009",
+     "",
+     "25,000",
+     "",
+     "$",
+     "0.45"
+    ],
+    [
+     "Vested",
+     "",
+     "(300,000)",
+     "",
+     "$",
+     "0.05"
+    ],
+    [
+     "Non-vested at December 31, 2009",
+     "",
+     "25,000",
+     "",
+     "$",
+     "0.45"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1343,
+    "end_line": 1355
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Stock Based Compensation"
+    }
+   },
+   "prose_before": "The weighted average fair value of options granted during the year ended December 31, 2009 was approximately $.46 ($0.01- 2008). The total fair value of shares that vested during the year ended December 31, 2009 was $554,320 ($370,860 - 2008).\nThe following table summarizes the status of the Company\u2019s aggregate non-vested shares granted:",
+   "prose_after": "As of December 31, 2009, the unrecognized compensation cost related to non-vested share based compensation arrangements granted under the plan was approximately $1,258,593. These costs are expected to be recognized over a weighted average period of 1.26 years.\nNote 6 \u2013 Consulting Agreement\nIn October 2008, the Company entered into an agreement with an individual to provide management consulting services through September 30, 2009. As compensation, the Company paid $1,000 for each full week during the term. The Company also entered into a Stock Award Agreement with this individual on the same date. The consultant received one million shares of common stock, vesting according to a schedule. The Company valued the stock on each vesting date using the fair market value of the common stock. The fair value of the equity instrument is recognized as an expense over the period the related service is performed. The Company issued 100,000 shares of common stock to the consultant upon signing the consulting agreement and 600,000 shares vested from the date of the agreement to December 31, 2008 upon the satisfaction of other performance criteria. During the year ended December 31, 2008, the Company recognized $35,000 of stock based compensation related to this award. The Company issued the final 300,000 shares of common stock to the consultant upon meeting performance criteria in the first quarter of 2009 and recognized $300,000 of stock based compensation during the year ended December 31, 2009. Based on information received after the purported vesting dates of the award, the Company does not believe that the individual has satisfied the vesting criteria for the issuance of said shares.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1316,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "Rental Commitment"
+    ],
+    [
+     "2010",
+     "$16,800"
+    ],
+    [
+     "2011",
+     "$14,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1378,
+    "end_line": 1384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "As of December 31, 2009, the Company has entered into employment agreements with various members of management. These employment agreements have three year terms with the option to extend employment for a fourth year, expiring at various dates from July 14, 2012 to December 28, 2012. Annual compensation required under these agreements include base salary aggregating approximately $800,000, as well as annual bonuses based on achieving certain performance milestones. All of these agreements contain severance provisions in the event of termination of the employee without cause that require continued payment of the annual salary through the term of the agreement but for a minimum period of at least two years.\nOperating lease\nOn August 20, 2009, the Company entered into a lease for its current office space in Geneseo, New York requiring monthly rental payment of $1,400, which commenced on November 1, 2009 and expire October 31, 2011 with a two year renewal option. Future commitments by year under this lease are as follows:",
+   "prose_after": "Warranty\nDuring the year ended December 31, 2009, the Company entered into a number of sales orders for wind turbine units. These sales orders required certain deposits of the agreed-upon purchase price upon acceptance of the sales order. The advance payments received as of December 31, 2009 total $95,000 and have been included in customer deposits. The sales orders included product warranties; however, based on the lack of operating history, the Company is unable to reasonably determine an estimate of this liability.\nState refundable credit\nThe Company filed its 2008 New York State corporate income tax return during July 2009, and anticipates a refund upon approval by state tax authorities in the amount of $31,217, related to tax credits for being a Qualified Emerging Technology Company (QETC). The Company expects to claim approximately $132,000 in tax credits with its 2009 New York State corporate income tax return to be filed in 2010. Such refunds will be recognized when received by the Company.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\n2009",
+     "",
+     "",
+     "Year ended\n\n2008",
+     "",
+     "",
+     "Period from\n\nInception\n\nthrough\n\n12/31/2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "(822,792)",
+     "",
+     "",
+     "(438,907)",
+     "",
+     "",
+     "(1,298,396)",
+     ""
+    ],
+    [
+     "Less increase in allowance",
+     "",
+     "822,792",
+     "",
+     "",
+     "438,907",
+     "",
+     "",
+     "1,298,396",
+     ""
+    ],
+    [
+     "Net deferred",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total income tax provisions (benefit)",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1403,
+    "end_line": 1424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "with a purchase order for one thousand (1,000) 15kWh units within one year after delivery of the prototype. As of December 31, 2009 the prototype has not been completed or delivered to AWR. AWR provided a $50,000 deposit for the orders, but never provided the purchase order. The agreement also granted AWR the exclusive right to purchase all 15kWh and larger wind turbine units for wind farm and industrial uses and development. On April 29, 2009 the Company also granted AWR an option for 60 days to enter into an exclusive license agreement with the Company for 50 years for the sale of the Company\u2019s 15kWh wind turbines and larger upon the payment of a $6.0 million license fee. The option was subject to extension if the due diligence provided to AWR by the Company was not reasonably acceptable. AWR paid a $10,000 fee for the option. The payments from AWR, aggregating $60,000 are included in accounts payable and accrued expenses in the accompanying balance sheet. On September 10, 2009, the Company received a letter from counsel to AWR terminating the March 2009 agreement and the April 2009 option described above and demanding the return of $60,000 provided to the Company.\nNote 9 - Income Taxes\nFollowing is a summary of the components giving rise to the income tax provision (benefit) for the periods ended December 31:",
+   "prose_after": "Individual components of the deferred tax asset are as follows as of December 31,:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\n2009",
+     "",
+     "",
+     "Year ended\n\n2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "734,185",
+     "",
+     "$",
+     "287,512",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "278,969",
+     "",
+     "",
+     "147,021",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "284,421",
+     "",
+     "",
+     "41,071",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "820",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,298,396",
+     "",
+     "",
+     "475,604",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(1,298,396)",
+     "",
+     "",
+     "(475,604)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1427,
+    "end_line": 1444
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Individual components of the deferred tax asset are as follows as of December 31,:",
+   "prose_after": "The Company has approximately $2,235,000 of net operating loss carryforwards (\u201cNOLs\u201d) available to reduce future taxable income. These carryforwards expire at various dates through 2029. A portion of the net operating loss carryforward amounting to approximately $335,000, relates to tax deductions for stock awards vested, which are not included in the determination of the deferred tax assets above and will be recognized in accordance with ASC 718 when realized for tax purposes. Due to the uncertainty as to the Company\u2019s ability to generate sufficient taxable income in the future and utilize the NOLs before they expire, the Company has recorded a valuation allowance to offset the deferred tax assets.\nInternal Revenue Code Section 382 (\u201cSection 382\u201d) imposes limitations on the availability of a company\u2019s net operating losses and other corporate tax attributes as ownership changes occur. As a result of the transactions discussed in Note 4, a Section 382 ownership change is expected and a study will be required to determine the date of the ownership change. The amount of the Company\u2019s net operating losses and other tax attributes incurred prior to the ownership change may be limited based on the value of ownership change. A full valuation allowance has been established for the gross deferred tax asset related to the net operating losses and other corporate tax attributes available. Accordingly, any limitation resulting from Section 382 application is not expected to have a material effect on the balance sheet or statements of operations of the Company.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Period from\n\nInception",
+     ""
+    ],
+    [
+     "",
+     "Year ended\n\n2009",
+     "",
+     "Year ended\n\n2008",
+     "",
+     "through\n\n12/31/2009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory United States federal rate",
+     "",
+     "(34)%",
+     "",
+     "(34)%",
+     "",
+     "(34)%"
+    ],
+    [
+     "State income taxes net of federal benefit",
+     "",
+     "(5)",
+     "",
+     "(6)",
+     "",
+     "(6)"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Change in valuation reserves",
+     "",
+     "39",
+     "",
+     "40",
+     "",
+     "40"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "-%",
+     "",
+     "-%",
+     "",
+     "-%"
+    ]
+   ],
+   "caption_stack": [
+    "Period from\n\nInception"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1451,
+    "end_line": 1469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Internal Revenue Code Section 382 (\u201cSection 382\u201d) imposes limitations on the availability of a company\u2019s net operating losses and other corporate tax attributes as ownership changes occur. As a result of the transactions discussed in Note 4, a Section 382 ownership change is expected and a study will be required to determine the date of the ownership change. The amount of the Company\u2019s net operating losses and other tax attributes incurred prior to the ownership change may be limited based on the value of ownership change. A full valuation allowance has been established for the gross deferred tax asset related to the net operating losses and other corporate tax attributes available. Accordingly, any limitation resulting from Section 382 application is not expected to have a material effect on the balance sheet or statements of operations of the Company.\nThe differences between the United States statutory federal income tax rate and the effective income tax rate in the accompanying consolidated statements of operations are as follows:",
+   "prose_after": "In July 2006, the FASB released Interpretation No. 48, \u201cAccounting for Uncertainty in Income Taxes \u2013 an Interpretation of FASB Statement 109\u201d (\u201cFIN48\u201d), now ASC\n740. Effective for fiscal years beginning after December 15, 2006, FIN48 provides guidance on the financial statement recognition and measurement for income tax positions that we have taken or expect to take in our income tax returns. It also provides related guidance on derecognition, classification, interest and penalties, accounting in interim periods, disclosure and transition. We adopted the provisions of FIN48 on January 1, 2007. The adoption did not have a material impact on the Company\u2019s consolidated results of operations and financial position, and therefore, the Company did not have any adjustment to the January 1, 2007 beginning balance of retained earnings. In addition, the Company did not have any material unrecognized tax benefits at December 31, 2008 or 2009.\nThe Company recognizes interest and penalties related to unrecognized tax benefits in general and administrative expense. During the year ended December 31, 2009 the Company recognized no material interest and penalties.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Title of Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1485,
+    "end_line": 1488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events \u2013"
+    }
+   },
+   "prose_before": "740. Effective for fiscal years beginning after December 15, 2006, FIN48 provides guidance on the financial statement recognition and measurement for income tax positions that we have taken or expect to take in our income tax returns. It also provides related guidance on derecognition, classification, interest and penalties, accounting in interim periods, disclosure and transition. We adopted the provisions of FIN48 on January 1, 2007. The adoption did not have a material impact on the Company\u2019s consolidated results of operations and financial position, and therefore, the Company did not have any adjustment to the January 1, 2007 beginning balance of retained earnings. In addition, the Company did not have any material unrecognized tax benefits at December 31, 2008 or 2009.\nThe Company recognizes interest and penalties related to unrecognized tax benefits in general and administrative expense. During the year ended December 31, 2009 the Company recognized no material interest and penalties.\nThe Company files income tax returns in the U.S. federal jurisdiction and applicable states. The tax years 2006 -2009 remain open to examination by major taxing jurisdictions to which the Company is subject.\nNote 10 \u2013 Subsequent Events \u2013\nIn January 2010 the Company issued 135,849 shares as satisfaction of liabilities, amounting to $98,086 of which 50,620 shares were issued to a related party as satisfaction of $40,496 of liabilities.\nIn December 2009 the Company issued 25,000 restricted shares of common stock under a Stock Award Agreement to an employee of the Company. In January 2010 the restrictions were satisfied according to the terms of the Agreement.\n3) Exhibits.",
+   "prose_after": "3.1 Restated Certificate of Incorporation of WindTamer Corporation, dated November 25, 2008 (incorporated herein by reference to Exhibit 3.1 to the Registration Statement on Form 10 of WindTamer Corporation dated November 26, 2008 (File No. 000-53510)).\n3.2 Amended and Restated By-Laws of WindTamer Corporation, dated March 10, 2010.\n3.3 Certificate of Correction of the Restated Certificate of Incorporation (Incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K of WindTamer Corporation dated April 30, 2009 (File No. 000-53510)).\n3.4 Text of the amendment to the Amended and Restated Bylaws of WindTamer Corporation effectiveMarch 10, 2010.\n4.1 Specimen Stock Certificate (incorporated herein by reference to Exhibit 4.1 to the Registration Statement on Form 10 of WindTamer Corporation dated November 26, 2008 (File No. 000-53510)).\n10.1 Patent Assignment dated June 4, 2002 by and between Gerald E. Brock et al., and Future Energy Solutions Inc. (n/k/a WindTamer Corporation) (incorporated herein by reference to Exhibit 10.7 to the Annual Report on Form 10-K/A of WindTamer Corporation dated March 30, 2009 (File No. 000-53510)).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,3435 @@
+{
+ "accession": "0001144204-09-043547",
+ "cik": "0000839443",
+ "form": "10-Q",
+ "filing_date": "2009-08-14",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v157878_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "51-0299879"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2009\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from________to________\nCommission File Number: 0-17170\nTELVUE CORPORATION\n(Exact name of registrant issuer as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "16000 Horizon Way, Suite 500",
+     ""
+    ],
+    [
+     "Mt. Laurel, New Jersey",
+     "08054"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [
+    "16000 Horizon Way, Suite 500"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant's telephone number, including area code: (856) 273-8888\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PAGE NO."
+    ],
+    [
+     "PART I.",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.  Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of June 30, 2009 (unaudited) and as of December 31, 2008",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the three months ended June 30, 2009 (unaudited) and June 30, 2008 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the six months ended June 30, 2009 (unaudited) and June 30, 2008 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the six months ended June 30, 2009 (unaudited) and June 30, 2008 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2.  Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 3.  Quantitative and Qualitative Disclosures About Market Risk",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4T.  Controls and Procedures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.  OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4.  Submission of Matters to a Vote of Security Holders",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 6.  Exhibits",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "EXHIBIT INDEX",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE NO."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 52,
+    "end_line": 85
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]           Accelerated filer [ ]\nNon-accelerated filer [ ]            Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) Yes [ ] No [X]\nNumber of shares of registrant's common stock outstanding as of August 11, 2009: 48,561,644 shares.\nTELVUE CORPORATION\nINDEX",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nITEM I. FINANCIAL STATEMENTS\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 85,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "(Unaudited)",
+     "",
+     "",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "59,804",
+     "",
+     "$",
+     "250,698",
+     ""
+    ],
+    [
+     "Accounts receivable \u2013 trade, net of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowances of $69,752 at June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2009 and $5,700 at December 31, 2008",
+     "",
+     "743,984",
+     "",
+     "",
+     "560,579",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "331,619",
+     "",
+     "",
+     "266,032",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "78,863",
+     "",
+     "",
+     "54,636",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "1,214,270",
+     "",
+     "",
+     "1,131,945",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT",
+     "",
+     "7,356,484",
+     "",
+     "",
+     "7,235,689",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "6,269,477",
+     "",
+     "",
+     "6,051,809",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,087,007",
+     "",
+     "",
+     "1,183,880",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DEFINITE-LIVED INTANGIBLE ASSETS,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net of accumulated amortization of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$1,428,245 at June 30, 2009 and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$1,132,969 at December 31, 2008",
+     "",
+     "3,120,475",
+     "",
+     "",
+     "3,415,751",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INDEFINITE-LIVED INTANGIBLE ASSETS-OTHER",
+     "",
+     "397,260",
+     "",
+     "",
+     "397,260",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "10,430",
+     "",
+     "",
+     "8,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,829,442",
+     "",
+     "$",
+     "6,137,636",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable - trade",
+     "$",
+     "465,781",
+     "",
+     "$",
+     "315,236",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "328,396",
+     "",
+     "",
+     "444,659",
+     ""
+    ],
+    [
+     "Deferred service revenue",
+     "",
+     "469,315",
+     "",
+     "",
+     "359,764",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "599",
+     "",
+     "",
+     "1,784",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "1,264,091",
+     "",
+     "",
+     "1,121,443",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LINES OF CREDIT \u2013 MAJORITY STOCKHOLDER",
+     "",
+     "16,700,000",
+     "",
+     "",
+     "15,950,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NOTE PAYABLE \u2013 MAJORITY STOCKHOLDER",
+     "",
+     "541,000",
+     "",
+     "",
+     "541,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ACCRUED INTEREST \u2013 MAJORITY STOCKHOLDER",
+     "",
+     "2,349,738",
+     "",
+     "",
+     "1,960,708",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value, 100,000,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares authorized, 48,561,644 and 48,461,644",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares issued and outstanding at June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2009 and December 31, 2008, respectively",
+     "",
+     "485,616",
+     "",
+     "",
+     "484,617",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "4,879,853",
+     "",
+     "",
+     "4,877,353",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(20,390,856)",
+     "",
+     "",
+     "(18,797,485)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(15,025,387)",
+     "",
+     "",
+     "(13,435,515)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,829,442",
+     "",
+     "$",
+     "6,137,636",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 160
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nITEM I. FINANCIAL STATEMENTS\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "* Derived from audited financial statements.\nThe accompanying unaudited notes are an integral part of these statements.\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "$",
+     "786,837",
+     "",
+     "$",
+     "505,975",
+     ""
+    ],
+    [
+     "ANI services",
+     "",
+     "308,231",
+     "",
+     "",
+     "334,763",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,095,068",
+     "",
+     "",
+     "840,738",
+     ""
+    ],
+    [
+     "COST OF REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "",
+     "359,440",
+     "",
+     "",
+     "334,262",
+     ""
+    ],
+    [
+     "ANI services",
+     "",
+     "82,424",
+     "",
+     "",
+     "125,713",
+     ""
+    ],
+    [
+     "TOTAL COST OF REVENUES",
+     "",
+     "441,864",
+     "",
+     "",
+     "459,975",
+     ""
+    ],
+    [
+     "GROSS MARGIN",
+     "",
+     "653,204",
+     "",
+     "",
+     "380,763",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "",
+     "280,950",
+     "",
+     "",
+     "479,543",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "600,198",
+     "",
+     "",
+     "791,259",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "277,673",
+     "",
+     "",
+     "304,744",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,158,821",
+     "",
+     "",
+     "1,575,546",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "(505,617)",
+     "",
+     "",
+     "(1,194,783)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "2",
+     "",
+     "",
+     "64",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(198,816)",
+     "",
+     "",
+     "(230,750)",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME (EXPENSE)",
+     "",
+     "(198,814)",
+     "",
+     "",
+     "(230,686)",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(704,431)",
+     "",
+     "$",
+     "(1,425,469)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED NET LOSS PER COMMON SHARE",
+     "$",
+     "(.01)",
+     "",
+     "$",
+     "(.03)",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHARES OUTSTANDING",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED",
+     "",
+     "48,539,666",
+     "",
+     "",
+     "48,437,783",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 173,
+    "end_line": 216
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "* Derived from audited financial statements.\nThe accompanying unaudited notes are an integral part of these statements.\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "prose_after": "The accompanying unaudited notes are an integral part of these statements.\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 166,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "$",
+     "1,413,152",
+     "",
+     "$",
+     "955,475",
+     ""
+    ],
+    [
+     "ANI services",
+     "",
+     "605,661",
+     "",
+     "",
+     "641,120",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,018,813",
+     "",
+     "",
+     "1,596,595",
+     ""
+    ],
+    [
+     "COST OF REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "",
+     "695,268",
+     "",
+     "",
+     "728,331",
+     ""
+    ],
+    [
+     "ANI services",
+     "",
+     "177,766",
+     "",
+     "",
+     "211,266",
+     ""
+    ],
+    [
+     "TOTAL COST OF REVENUES",
+     "",
+     "873,034",
+     "",
+     "",
+     "939,597",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS MARGIN",
+     "",
+     "1,145,779",
+     "",
+     "",
+     "656,998",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "",
+     "514,552",
+     "",
+     "",
+     "928,884",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,272,950",
+     "",
+     "",
+     "1,644,415",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "562,624",
+     "",
+     "",
+     "602,890",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,350,126",
+     "",
+     "",
+     "3,176,189",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "(1,204,347)",
+     "",
+     "",
+     "(2,519,191)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "4",
+     "",
+     "",
+     "367",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(389,030)",
+     "",
+     "",
+     "(486,266)",
+     ""
+    ],
+    [
+     "TOTAL OTHER INCOME (EXPENSE)",
+     "",
+     "(389,026)",
+     "",
+     "",
+     "(485,899)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(1,593,373)",
+     "",
+     "$",
+     "(3,005,090)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED NET LOSS PER COMMON SHARE",
+     "$",
+     "(.03)",
+     "",
+     "$",
+     "(.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SHARES OUTSTANDING",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED",
+     "",
+     "48,500,871",
+     "",
+     "",
+     "48,435,429",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 227,
+    "end_line": 272
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying unaudited notes are an integral part of these statements.\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "prose_after": "The accompanying unaudited notes are an integral part of these statements\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 274,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,593,373)",
+     "",
+     "$",
+     "(3,005,090)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net cash (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "562,624",
+     "",
+     "",
+     "602,890",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable - trade",
+     "",
+     "(183,405)",
+     "",
+     "",
+     "133,192",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(65,587)",
+     "",
+     "",
+     "(124,882)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(24,227)",
+     "",
+     "",
+     "(26,502)",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "(1,630)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable - trade",
+     "",
+     "150,545",
+     "",
+     "",
+     "(433,870)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(117,447)",
+     "",
+     "",
+     "80,849",
+     ""
+    ],
+    [
+     "Deferred service revenue",
+     "",
+     "109,551",
+     "",
+     "",
+     "51,807",
+     ""
+    ],
+    [
+     "Accrued interest \u2013 majority stockholder",
+     "",
+     "389,030",
+     "",
+     "",
+     "486,266",
+     ""
+    ],
+    [
+     "NET CASH (USED IN) OPERATING ACTIVITIES",
+     "",
+     "(773,919)",
+     "",
+     "",
+     "(2,235,340)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(170,475)",
+     "",
+     "",
+     "(207,777)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from lines of credit \u2013 majority",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "stockholder",
+     "",
+     "750,000",
+     "",
+     "",
+     "2,425,000",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "3,500",
+     "",
+     "",
+     "999",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "753,500",
+     "",
+     "",
+     "2,425,999",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET DECREASE IN CASH AND CASH  EQUIVALENTS",
+     "",
+     "(190,894)",
+     "",
+     "",
+     "(17,118)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BEGINNING OF PERIOD",
+     "",
+     "250,698",
+     "",
+     "",
+     "225,660",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, END OF PERIOD",
+     "$",
+     "59,804",
+     "",
+     "$",
+     "208,542",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 283,
+    "end_line": 326
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying unaudited notes are an integral part of these statements\nTELVUE CORPORATION AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF CASH FLOWS\n(UNAUDITED)",
+   "prose_after": "The accompanying unaudited notes are an integral part of these statements.\nTELVUE CORPORATION AND SUBSIDIARY\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(UNAUDITED)\n1. BASIS OF PRESENTATION\nSummary Financial Information and Results of Operations\nIn the opinion of management of TelVue Corporation (\u201cTelVue\u201d or the \u201cCompany\u201d), the accompanying unaudited financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America and with the regulations of the Securities and Exchange Commission and contain all adjustments (consisting of only normal recurring adjustments) necessary to make the financial statements not misleading and to present fairly the financial condition as of June 30, 2009 and the results of operations for the three and six months ended June 30, 2009 and 2008 and cash flows for the six months ended June 30, 2009 and 2008.\nGoing Concern and Management\u2019s Plan\nThe accompanying financial statements of TelVue have been prepared on the basis of generally accepted accounting principles applicable to a \"going concern,\" which assume that the Company will continue in operation for at least one year and will be able to realize its assets and discharge its liabilities in the normal course of operations.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 276,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 328,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "397,000",
+     "",
+     "",
+     "974,000",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "141,000",
+     "",
+     "",
+     "263,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "538,000",
+     "",
+     "",
+     "1,237,000",
+     ""
+    ],
+    [
+     "Valuation allowance increase",
+     "",
+     "(538,000)",
+     "",
+     "",
+     "(1,237,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 408,
+    "end_line": 428
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CORPORATE INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company uses the asset and liability method of accounting for income taxes in accordance with SFAS No. 109, \"Accounting for Income Taxes.\" SFAS No. 109 requires recognition of deferred tax assets and liabilities for the expected future tax consequences of events that have been recognized in the financial statements or tax returns. Under this method, deferred tax liabilities and assets are determined based on the differences between the financial statement carrying amounts and tax bases of assets and liabilities using enacted tax rates in effect in the years in which the differences are expected to reverse. Differences between financial reporting and tax bases arise most frequently from differences in timing of income and expense recognition. Deferred income tax expense is measured by the change in the net deferred income tax asset or liability during the year.\nThe provisions for income tax benefit for the six months ended June 30, 2009 and 2008 consisted of the following components:",
+   "prose_after": "TelVue recorded an increase in valuation allowance of $538,000 and $1,237,000 for the six months ending June 30, 2009 and 2008, respectively, to reduce its deferred tax asset to zero. The valuation allowances were recorded due to the uncertainty as to whether future net income would be generated that would utilize TelVue\u2019s net operating loss carryforward. TelVue's federal net operating loss carryforward was approximately $13,000,000 on a tax-reporting basis as of June 30, 2009. The carryforward will begin to expire in 2010, if not utilized.\nIn June 2006, the FASB issued FASB Interpretation No. 48 \u201cAccounting for Uncertainty in Income Taxes - An Interpretation of FASB Statement 109\u201d (\u201cFIN 48\u201d). FIN 48 establishes a single model to address accounting for uncertain tax positions. FIN 48 clarifies the accounting for income taxes by prescribing a minimum recognition threshold a tax position is required to meet before being recognized in the financial statements. FIN 48 also provides guidance on derecognition, measurement, classification, interest and penalties, accounting in interim periods, disclosure and transition. The Company adopted the provisions of FIN 48 on January 1, 2007. Upon adoption, the Company recognized no adjustment in the amount of unrecognized tax benefits. As of the date of adoption, the Company had no unrecognized tax benefits. The Company\u2019s policy is to recognize interest and penalties that would be assessed in relation to the settlement value of unrecognized tax benefits as a component of income tax expense.",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 401,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 432,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Six months ended June 30, 2009",
+     "TPS",
+     "",
+     "",
+     "ANI",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "1,413,152",
+     "",
+     "$",
+     "605,661",
+     "$",
+     "2,018,813",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "474,536",
+     "",
+     "",
+     "88,088",
+     "",
+     "562,624",
+     ""
+    ],
+    [
+     "Operating income/(loss)",
+     "",
+     "(1,424,735)",
+     "",
+     "",
+     "220,388",
+     "",
+     "(1,204,347)",
+     ""
+    ],
+    [
+     "Interest expense-net",
+     "",
+     "303,443",
+     "",
+     "",
+     "85,583",
+     "",
+     "389,026",
+     ""
+    ],
+    [
+     "Net income/(loss)",
+     "",
+     "(1,728,178)",
+     "",
+     "",
+     "134,805",
+     "",
+     "(1,593,373)",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "",
+     "170,475",
+     "",
+     "",
+     "-",
+     "",
+     "170,475",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 483,
+    "end_line": 493
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "Based on the criteria set forth in SFAS No. 131 \u201cDisclosures about Segments of an Enterprise and Related Information,\u201d the Company operates two business segments. The first segment, TPS, includes equipment such as the TelVue Princeton\u2122 Server Product Line and services such as WEBUS\u00ae and PEG.TV\u2122. The TelVue Princeton\u2122 Server Product Line includes high performance digital video systems, servers, and software that support capture, storage, manipulation and play-out of digital media in multiple popular formats. WEBUS\u00ae is a broadcast digital signage system for displaying a fully automated TV station-like display on a cable system access channel using computer-based digital technology. PEG.TV\u2122 is a live streaming and Video-on-Demand service for integrating video on the Internet. The second segment is a marketing and service division, which sells automatic number identification (\u201cANI\u201d) telecommunications services to the cable television industry.\nSummarized financial information by reporting segment as of and for each of the six months ended June 30, 2009 and 2008, is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Six months ended June 30, 2008",
+     "TPS",
+     "",
+     "",
+     "ANI",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "955,475",
+     "",
+     "$",
+     "641,120",
+     "$",
+     "1,596,595",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "525,485",
+     "",
+     "",
+     "77,405",
+     "",
+     "602,890",
+     ""
+    ],
+    [
+     "Operating income/(loss)",
+     "",
+     "(2,739,282)",
+     "",
+     "",
+     "220,091",
+     "",
+     "(2,519,191)",
+     ""
+    ],
+    [
+     "Interest expense-net",
+     "",
+     "406,077",
+     "",
+     "",
+     "79,822",
+     "",
+     "485,899",
+     ""
+    ],
+    [
+     "Net income/(loss)",
+     "",
+     "(3,145,359)",
+     "",
+     "",
+     "140,269",
+     "",
+     "(3,005,090)",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "",
+     "207,777",
+     "",
+     "",
+     "-",
+     "",
+     "207,777",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 2. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThis Quarterly Report on Form 10-Q contains certain forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended, which are intended to be covered by the safe harbors created thereby. All forward-looking statements involve risks and uncertainty, including, without limitation, the ability of TelVue to obtain sufficient cash to continue its operations, the ability of TelVue to continue its growth strategy, increases in costs of labor and employee benefits, general market conditions, competition and similar matters discussed in TelVue\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2008 and in this Quarterly Report on Form 10-Q. These forward-looking statements may include declarations regarding the Company\u2019s belief or current expectations of management, such as statements including the words \u201cbudgeted,\u201d \u201canticipate,\u201d \u201cproject,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cmay,\u201d \u201cbelieve,\u201d \u201cpotential\u201d and similar statements are intended to be among the statements that are forward-looking statements. Because such statements reflect the reality of risk and uncertainty that is inherent in the Company\u2019s business, actual results may differ materially from those expressed or implied by such forward-looking statements. Readers are cautioned not to place undue reliance on these forward-looking statements, which are made as of the date this report was filed with the Securities and Exchange Commission.",
+   "structured_location": {
+    "item": null,
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 512,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WEBUS\u00ae",
+     "Automated broadcast digital signage display on TV Channel"
+    ],
+    [
+     "WEBUS Inside\u2122",
+     "WEBUS\u00ae integrated within TelVue Princeton\u2122 Servers"
+    ],
+    [
+     "PEG.TV\u2122",
+     "Internet Streaming and Video-on-Demand Service"
+    ],
+    [
+     "WEBLINX\u2122",
+     "Automated WEBUS\u00ae message display on websites"
+    ],
+    [
+     "VideoActives\u2122",
+     "Real time, dynamic video content for channels"
+    ],
+    [
+     "WEB-EM\u00ae",
+     "Automated WEBUS\u00ae message display on cell phones and email"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 523,
+    "end_line": 531
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "TelVue operates two business segments. The first segment, TelVue Products and Services (\u201cTPS\u201d), includes equipment such as the TelVue Princeton\u2122 Server Product Line and services such as WEBUS\u00ae and PEG.TV\u2122. The TelVue Princeton\u2122 Server Product Line includes high performance digital video systems, servers, and software that support capture, storage, manipulation and play-out of digital media in multiple popular formats. WEBUS\u00ae is a broadcast digital signage system for displaying a fully automated TV station-like display on a cable system access channel using computer-based digital technology. PEG.TV\u2122 is a live streaming and Video-on-Demand service for integrating video on the Internet. The second segment is a marketing and service division, which sells automatic number identification (\u201cANI\u201d) telecommunications services to the cable television industry.\nDuring the second quarter of 2008, the Company embarked upon a new branding and sales re-organization plan. The new branding consolidated certain of the Company\u2019s products and services under one name \u2013 TPS. The services formerly referred to as TelVue Virtual Television Network (\u201cTVTN\u201d) collectively are now referred to as follows:",
+   "prose_after": "The products formerly referred to as Princeton Server Group are now known as the TelVue Princeton\u2122 Server Product Line. These products offer high performance digital video systems, servers, and software that support capture, storage, manipulation and play-out of digital media in multiple popular formats. The TelVue Princeton\u2122 Server Product Line includes, but is not limited to:\nTelVue Princeton\u2122 B100 TelVue Princeton\u2122 B1000 TelVue Princeton\u2122 B3000 TelVue Princeton\u2122 S3000F TelVue Princeton\u2122 C500W TelVue Princeton\u2122 T7400E\nThis branding and re-organization effort, backed with a new Company logo, marketing materials and exhibit materials, was released on July 9, 2008 at a major industry conference. Additionally, TelVue\u2019s website was redesigned and updated to reflect the new branding. The new website was completed on November 5, 2008. This effort provides focus on TelVue\u2019s primary business as a leading technology provider for hyperlocal broadcasters, energizes its staff, and better educates the market regarding the many products and services provided by TelVue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 539,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Fav/(Unfav)",
+     "",
+     "",
+     "Fav/(Unfav)",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "$",
+     "786,837",
+     "",
+     "$",
+     "505,975",
+     "",
+     "$",
+     "280,862",
+     "",
+     "",
+     "55.5",
+     "%"
+    ],
+    [
+     "ANI services",
+     "",
+     "308,231",
+     "",
+     "",
+     "334,763",
+     "",
+     "",
+     "(26,532)",
+     "",
+     "",
+     "-7.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "",
+     "359,440",
+     "",
+     "",
+     "334,262",
+     "",
+     "",
+     "(25,178)",
+     "",
+     "",
+     "-7.5",
+     "%"
+    ],
+    [
+     "ANI services",
+     "",
+     "82,424",
+     "",
+     "",
+     "125,713",
+     "",
+     "",
+     "43,289",
+     "",
+     "",
+     "34.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "",
+     "280,950",
+     "",
+     "",
+     "479,543",
+     "",
+     "",
+     "198,593",
+     "",
+     "",
+     "41.4",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "",
+     "600,198",
+     "",
+     "",
+     "791,259",
+     "",
+     "",
+     "191,061",
+     "",
+     "",
+     "24.1",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "277,673",
+     "",
+     "",
+     "304,744",
+     "",
+     "",
+     "27,071",
+     "",
+     "",
+     "8.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "$",
+     "(505,617)",
+     "",
+     "$",
+     "(1,194,783)",
+     "",
+     "$",
+     "689,166",
+     "",
+     "",
+     "57.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "$",
+     "(198,814)",
+     "",
+     "$",
+     "(230,686)",
+     "",
+     "$",
+     "31,872",
+     "",
+     "",
+     "13.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(704,431)",
+     "",
+     "$",
+     "(1,425,469)",
+     "",
+     "$",
+     "721,038",
+     "",
+     "",
+     "50.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "Beginning in January 2008, TelVue began a weighted allocation of all compensation, general and administrative, interest and amortization expenses between its ANI segment and TPS segment. Previously, only a minimal amount of expenses were allocated between business segments.\nDuring 2008, TelVue conducted two separate reductions in workforce. Combined, they involved the elimination of 14 full-time positions and resulted in net expense savings of approximately $550,000 for the calendar year 2008, which was recognized across all departments and business segments.\nIn March 2009, TelVue conducted an additional reduction in workforce, involving the elimination of 5 full-time positions, with a combined salary of $359,000.\nThe following discussion deals with the increase in operating income for the three and six months ended June 30, 2009, compared to the three and six months ended June 30, 2008, and the reasons for the increases. TelVue further discusses the continued loss of its subscriber base for the ANI service, when comparing the six months ended June 30, 2009 to the six months ended June 30, 2008. TelVue also discusses the marketing of its TPS segment and the changes in TPS revenues and expenses.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Fav/(Unfav)",
+     "",
+     "",
+     "Fav/(Unfav)",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "$",
+     "1,413,152",
+     "",
+     "$",
+     "955,475",
+     "",
+     "$",
+     "457,677",
+     "",
+     "",
+     "47.9",
+     "%"
+    ],
+    [
+     "ANI services",
+     "",
+     "605,661",
+     "",
+     "",
+     "641,120",
+     "",
+     "",
+     "(35,459)",
+     "",
+     "",
+     "-5.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TPS services",
+     "",
+     "695,268",
+     "",
+     "",
+     "728,331",
+     "",
+     "",
+     "33,063",
+     "",
+     "",
+     "4.5",
+     "%"
+    ],
+    [
+     "ANI services",
+     "",
+     "177,766",
+     "",
+     "",
+     "211,266",
+     "",
+     "",
+     "33,500",
+     "",
+     "",
+     "15.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling and marketing",
+     "",
+     "514,552",
+     "",
+     "",
+     "928,884",
+     "",
+     "",
+     "414,332",
+     "",
+     "",
+     "44.6",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "",
+     "1,272,950",
+     "",
+     "",
+     "1,644,415",
+     "",
+     "",
+     "371,465",
+     "",
+     "",
+     "22.6",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "562,624",
+     "",
+     "",
+     "602,890",
+     "",
+     "",
+     "40,266",
+     "",
+     "",
+     "6.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "$",
+     "(1,204,347)",
+     "",
+     "$",
+     "(2,519,191)",
+     "",
+     "$",
+     "1,314,844",
+     "",
+     "",
+     "52.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "$",
+     "(389,026)",
+     "",
+     "$",
+     "(485,899)",
+     "",
+     "$",
+     "96,873",
+     "",
+     "",
+     "19.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,593,373)",
+     "",
+     "$",
+     "(3,005,090)",
+     "",
+     "$",
+     "1,411,717",
+     "",
+     "",
+     "47.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 673
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The TPS segment had an operating loss of $626,020 and $1,424,735 for the three and six months ended June 30, 2009, respectively, compared to operating losses of $1,300,955 and $2,739,282 for the three and six months ended June 30, 2008 primarily due to 56% and 48% increases in TPS segment revenues for the three and six month periods, respectively, in addition to savings related to the aforementioned reduction in workforce. The ANI segment had operating income of $120,403 and $220,388 for the three and six months ended June 30, 2009, respectively, compared to $106,172 and $220,091 for the three and six months ended June 30, 2008. The increases in operating income for the ANI segment were primarily a result of savings related to the reduction in workforce, offset by a change in the allocation of expenses whereby a slightly higher percentage of expenses were allocated to the ANI segment than in 2008. Declines in revenue related to the continued loss of subscribers also offset some of the increases in operating income.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 675,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Votes For",
+     "",
+     "Votes Withheld",
+     "",
+     "Votes Abstained",
+     ""
+    ],
+    [
+     "1.",
+     "H.F. Lenfest",
+     "",
+     "372,870,333",
+     "",
+     "170,759",
+     "",
+     "0"
+    ],
+    [
+     "2.",
+     "Jesse Lerman",
+     "",
+     "372,886,261",
+     "",
+     "154,831",
+     "",
+     "0"
+    ],
+    [
+     "3.",
+     "Joy Tartar",
+     "",
+     "372,946,311",
+     "",
+     "94,781",
+     "",
+     "0"
+    ],
+    [
+     "4.",
+     "Robert Lawrence",
+     "",
+     "372,946,311",
+     "",
+     "94,781",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 796,
+    "end_line": 806
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "(a) Evaluation of Disclosure Controls and Procedures. TelVue's Chief Executive Officer and its Treasurer (Controller), have evaluated the effectiveness of TelVue's disclosure controls and procedures (as defined in the Securities Exchange Act of 1934 Rules 13a-15(e) and 15d-15(e) of the Securities Exchange Act of 1934, as amended) as of the end of the period covered by this report. Based upon that evaluation, TelVue's Chief Executive Officer and its Treasurer (Controller) have concluded that TelVue's disclosure controls and procedures were adequate and effective to ensure that material information relating to TelVue would be made known to them by others within TelVue, particularly during the period in which this quarterly report on Form 10-Q was being prepared.\n(b) Changes in Internal Controls. During the quarterly period covered by this report, there were no changes in TelVue's internal control over financial reporting that has materially affected, or is reasonably likely to materially affect TelVue's internal control over financial reporting.\nPART II. OTHER INFORMATION\nITEM 4. SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS\nTelVue's annual meeting of stockholders was held on June 10, 2009. The following four directors were elected:",
+   "prose_after": "Additionally, the 2009 Stock Option Plan was approved:",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 814,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Votes For",
+     "Votes Against",
+     "Votes Abstained",
+     "Not Voted"
+    ],
+    [
+     "367,454,336",
+     "1,364,371",
+     "6,275",
+     "4,216,110"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 809,
+    "end_line": 814
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "CONTROLS AND PROCEDURES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "Additionally, the 2009 Stock Option Plan was approved:",
+   "prose_after": "ITEM 6. EXHIBITS\nExhibits\n3.1 Certificate of Incorporation of TelVue (incorporated by reference to TelVue\u2019s Registration Statement on Form S-8, filed with the Securities and Exchange Commission on April 20, 1989 (the \"Registration Statement\"), File No. 333-28263). 3.2 Bylaws of TelVue (incorporated by reference to TelVue's Registration Statement, File No. 333-288263). 3.3 Certificate of Amendment of Certificate of Incorporation of TelVue, dated April 11, 1990 (incorporated by reference to TelVue's Annual Report on Form 10-K for the year ended December 31, 1991, (the \"1991 Form 10-K\"), File No. 000-17170). 3.4 Certificate of Amendment of Certificate of Incorporation of TelVue, dated March 15, 1991 (incorporated by reference to the 1991 Form 10-K, File No. 000-17170). 3.5 Form of copy of Amendment of Certificate of Incorporation of TelVue, filed September 25, 1995 (incorporated by reference to TelVue's Form 10-QSB for the period ended September 30, 1995, File No. 000-17170). 4.1 The TelVue Corporation 1999 Stock Option Plan (incorporated by reference to TelVue\u2019s Registration Statement on Form S-8, dated September 23, 1999 (the \"1999 Stock Option Plan\"), File No. 000-17170). 4.2 Form of ISO Option Agreement issued pursuant to the 1999 Stock Option Plan (incorporated by reference to TelVue's Annual Report on Form 10-KSB for the year ended December 31, 1999, (the \"1999 Form 10-KSB\") File No. 000-17170). 4.3 Form of NQSO Option Agreement issued pursuant to the 1999 Stock Option Plan (incorporated by reference to the 1999 Form 10-KSB, File No. 000-17170). 4.4 Certificate of Designation of Class A Preferred Stock (incorporated by reference to the September 30, 1990 Form 10-Q, File No. 000-17170). 4.5 Warrant Termination Agreement, dated June 16, 2005, by and between TelVue and H.F. (Gerry) Lenfest (incorporated by reference to the September 30, 2005 Form 10-QSB, File No. 000-17170). 4.6 Waiver by H.F.(Gerry) Lenfest, waiving the right to receive past, present or future dividends with respect to the TelVue\u2019s Class A Redeemable Convertible Preferred Stock (incorporated by reference to the September 30, 2005 Form 10-QSB, File No.000-17170). 10.1 Distributorship Agreement, dated November 2, 1989, between the Company and Science (incorporated by reference to the 1989 Form 10-K, File No. 000-17170). 10.2 Stock Purchase Agreement, dated November 2, 1989, between the Company and H.F. (Gerry) Lenfest (incorporated by reference to the Company's Report on Form 8-K, dated November 15, 1989 (the \"1989 Form 8-K\"), File No. 000-17170).",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 814,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "TELVUE CORPORATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATED: 08/14/09",
+     "By:",
+     "/s/ Jesse Lerman",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Jesse Lerman",
+     ""
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DATED:  08/14/09",
+     "By:",
+     "/s/ John Fell",
+     ""
+    ],
+    [
+     "",
+     "",
+     "John Fell",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Treasurer-Controller",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "TELVUE CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 839,
+    "end_line": 852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FINANCIAL DATA BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "10.18 Separation Agreement by and between TelVue and Stanley Greene, dated December 29, 2006 (incorporated by reference to the December 31, 2006 Form 10-KSB, File No. 000-17170). 10.19 Separation Agreement by and between TelVue and Irene DeZwaan, dated February 8, 2007 (incorporated by reference to the December 31, 2006 Form 10-KSB, File No. 000-17170). 10.20 Amendment of Form 8-K filed by TelVue Corporation on March 13, 2007 (the \u201cOriginal 8-K\u201d) to include the information required by Item 9.01 of the Form 8-K in connection with TelVue\u2019s acquisition of Princeton Server Group, Inc. (incorporated by reference to the May 12, 2007 Form 8-K/A, File No. 000-17170). 10.21 Line of Credit Note, dated December 21, 2007, between H.F. (Gerry) Lenfest and TelVue (incorporated by reference to the Form 8-K filed on December 21, 2007, File No. 000-17170). 10.22 Separation Agreement and Release by and between TelVue and Joseph M. Murphy, dated December 31, 2008 (incorporated by reference to the Form 8-K filed on January 6, 2009, File No. 000-17170). 10.23 Line of Credit Note, dated March 2, 2009, between H.F. (Gerry) Lenfest and TelVue (incorporated by reference to the Form 8-K filed on March 5, 2009, File No. 000-17170). 10.24 Fifth Amendment to Office Lease Agreement dated March 16, 2009 (incorporated by reference to the 2008 Form 10-K, File No. 000-17170). 10.25 Line of Credit Note, dated June 8, 2009, between H.F. (Gerry) Lenfest and TelVue (incorporated by reference to the Form 8-K filed on June 11, 2009, File No. 000-17170). 10.26 The TelVue Corporation 2009 Stock Option Plan, dated June 10, 2009 (incorporated by reference to the Form 8-K filed on August 7, 2009, File No. 000-17170).\n11. Statement re: Computation of Per Share Earnings (see TelVue\u2019s June 30, 2009 Financial Statements included herein).\n23. Consent of Pressman Ciocca Smith LLP, Independent Registered Public Accounting Firm (incorporated by reference to the 2008 Form 10-K, File No. 000-17170). 31.1 Certification of President and Chief Executive Officer pursuant to Rule 13a-14(a) or 15d-14(a). 31.2 Certification of Treasurer-Controller pursuant to Rule 13a-14(a) or 15d-14(a). 32.1 Certification of President and Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2 Certification of Treasurer-Controller pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX\n31.1 Certification of President and Chief Executive Officer pursuant to Rule 13a-14(a) or 15d-14(a).\n31.2 Certification of Treasurer-Controller pursuant to Rule 13a-14(a) or 15d-14(a).\n32.1 Certification of President and Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.\n32.2 Certification of Treasurer-Controller pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,3944 @@
+{
+ "accession": "0001558370-25-005398",
+ "cik": "0001129155",
+ "form": "10-Q",
+ "filing_date": "2025-04-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "mpx-20250331x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "58-2572419"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2025\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________to__________\nCommission File No. 1-16263\nMARINE PRODUCTS CORPORATION\n(exact name of registrant as specified in its charter)",
+   "prose_after": "2801 Buford Highway, Suite 300, Atlanta, Georgia 30329\n(Address of principal executive offices) (zip code)\n(404) 321-7910\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class:",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered:"
+    ],
+    [
+     "Common stock, par value $0.10",
+     "MPX",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "2801 Buford Highway, Suite 300, Atlanta, Georgia 30329\n(Address of principal executive offices) (zip code)\n(404) 321-7910\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "Part I. Financial Information",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (Unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets \u2013 As of March 31, 2025 and December 31, 2024",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations \u2013 for the three months ended March 31, 2025 and 2024",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019 Equity \u2013 for the three months ended March 31, 2025 and 2024",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows \u2013 for the three months ended March 31, 2025 and 2024",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "7 - 15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II. Other Information",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults upon Senior Securities",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "27"
+    ]
+   ],
+   "caption_stack": [
+    "Page No.",
+    "Part I. Financial Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 64,
+    "end_line": 104
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [X]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging Growth Company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of April 18, 2025, Marine Products Corporation had 34,955,443 shares of common stock outstanding.\nMarine Products Corporation\nTable of Contents",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONSOLIDATED BALANCE SHEETS\nAS OF MARCH 31, 2025 AND DECEMBER 31, 2024\n(In thousands, except shares and par value data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     "(Note 1)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "57,103",
+     "",
+     "$",
+     "52,379"
+    ],
+    [
+     "Accounts receivable, net of allowance for credit losses of $11 in 2025 and $11 in 2024",
+     "",
+     "",
+     "7,793",
+     "",
+     "",
+     "4,176"
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "52,864",
+     "",
+     "",
+     "49,960"
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "",
+     "61",
+     "",
+     "",
+     "439"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "",
+     "4,791",
+     "",
+     "",
+     "3,040"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "122,612",
+     "",
+     "",
+     "109,994"
+    ],
+    [
+     "Property, plant and equipment, net of accumulated depreciation of $35,198 in 2025 and $34,409 in 2024",
+     "",
+     "",
+     "23,581",
+     "",
+     "",
+     "24,247"
+    ],
+    [
+     "Goodwill",
+     "",
+     "",
+     "3,308",
+     "",
+     "",
+     "3,308"
+    ],
+    [
+     "Other intangibles, net",
+     "",
+     "",
+     "465",
+     "",
+     "",
+     "465"
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "",
+     "9,805",
+     "",
+     "",
+     "9,729"
+    ],
+    [
+     "Retirement plan assets",
+     "",
+     "",
+     "18,110",
+     "",
+     "",
+     "18,489"
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "",
+     "5,002",
+     "",
+     "",
+     "5,015"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "182,883",
+     "",
+     "$",
+     "171,247"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "18,636",
+     "",
+     "$",
+     "5,499"
+    ],
+    [
+     "Accrued expenses and other liabilities",
+     "",
+     "",
+     "14,902",
+     "",
+     "",
+     "13,425"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "33,538",
+     "",
+     "",
+     "18,924"
+    ],
+    [
+     "Retirement plan liabilities",
+     "",
+     "",
+     "21,264",
+     "",
+     "",
+     "21,667"
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "",
+     "1,680",
+     "",
+     "",
+     "1,653"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "56,482",
+     "",
+     "",
+     "42,244"
+    ],
+    [
+     "Commitments and contingencies (Note 14)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.10 par value, 1,000,000 shares authorized, none issued",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Common stock, $0.10 par value, 74,000,000 shares authorized, issued and outstanding \u2013 34,955,443 shares in 2025 and 34,707,304 shares in 2024",
+     "",
+     "",
+     "3,495",
+     "",
+     "",
+     "3,471"
+    ],
+    [
+     "Capital in excess of par value",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "",
+     "122,906",
+     "",
+     "",
+     "125,532"
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "",
+     "126,401",
+     "",
+     "",
+     "129,003"
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "$",
+     "182,883",
+     "",
+     "$",
+     "171,247"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 119,
+    "end_line": 165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONSOLIDATED BALANCE SHEETS\nAS OF MARCH 31, 2025 AND DECEMBER 31, 2024\n(In thousands, except shares and par value data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE THREE MONTHS ENDED MARCH 31, 2025 AND 2024\n(In thousands except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 111,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "59,002",
+     "",
+     "$",
+     "69,340"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "48,049",
+     "",
+     "",
+     "55,356"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "10,953",
+     "",
+     "",
+     "13,984"
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "",
+     "8,340",
+     "",
+     "",
+     "8,742"
+    ],
+    [
+     "Operating income",
+     "",
+     "",
+     "2,613",
+     "",
+     "",
+     "5,242"
+    ],
+    [
+     "Interest income, net",
+     "",
+     "",
+     "442",
+     "",
+     "",
+     "851"
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "",
+     "3,055",
+     "",
+     "",
+     "6,093"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "",
+     "849",
+     "",
+     "",
+     "1,496"
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "2,206",
+     "",
+     "$",
+     "4,597"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "$",
+     "0.06",
+     "",
+     "$",
+     "0.13"
+    ],
+    [
+     "Diluted",
+     "",
+     "$",
+     "0.06",
+     "",
+     "$",
+     "0.13"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 178,
+    "end_line": 204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE THREE MONTHS ENDED MARCH 31, 2025 AND 2024\n(In thousands except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2025 AND 2024\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 176,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Capital in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Excess of",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Par Value",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance, December 31, 2024",
+     "",
+     "34,707",
+     "",
+     "$",
+     "3,471",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "125,532",
+     "",
+     "$",
+     "129,003"
+    ],
+    [
+     "Stock issued for stock incentive plans, net",
+     "",
+     "363",
+     "",
+     "",
+     "36",
+     "",
+     "",
+     "1,105",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,141"
+    ],
+    [
+     "Stock purchased and retired",
+     "",
+     "(115)",
+     "",
+     "",
+     "(12)",
+     "",
+     "",
+     "(1,105)",
+     "",
+     "",
+     "62",
+     "",
+     "",
+     "(1,055)"
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,206",
+     "",
+     "",
+     "2,206"
+    ],
+    [
+     "Cash dividends ($0.14 per share)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,894)",
+     "",
+     "",
+     "(4,894)"
+    ],
+    [
+     "Balance, March 31, 2025",
+     "",
+     "34,955",
+     "",
+     "$",
+     "3,495",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "122,906",
+     "",
+     "$",
+     "126,401"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2025",
+    "Capital in"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 217,
+    "end_line": 233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2025 AND 2024\n(In thousands)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 215,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Capital in",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Excess of",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Par Value",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance, December 31, 2023",
+     "",
+     "34,467",
+     "",
+     "$",
+     "3,447",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "148,141",
+     "",
+     "$",
+     "151,588"
+    ],
+    [
+     "Stock issued for stock incentive plans, net",
+     "",
+     "301",
+     "",
+     "",
+     "30",
+     "",
+     "",
+     "926",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "956"
+    ],
+    [
+     "Stock purchased and retired",
+     "",
+     "(85)",
+     "",
+     "",
+     "(8)",
+     "",
+     "",
+     "(926)",
+     "",
+     "",
+     "27",
+     "",
+     "",
+     "(907)"
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,597",
+     "",
+     "",
+     "4,597"
+    ],
+    [
+     "Cash dividends ($0.14 per share)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,852)",
+     "",
+     "",
+     "(4,852)"
+    ],
+    [
+     "Balance, March 31, 2024",
+     "",
+     "34,683",
+     "",
+     "$",
+     "3,469",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "147,913",
+     "",
+     "$",
+     "151,382"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31, 2024",
+    "Capital in"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 234,
+    "end_line": 250
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE THREE MONTHS ENDED MARCH 31, 2025 AND 2024\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 215,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "2,206",
+     "",
+     "$",
+     "4,597"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "789",
+     "",
+     "",
+     "682"
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "",
+     "1,141",
+     "",
+     "",
+     "956"
+    ],
+    [
+     "Deferred income tax (benefit) provision",
+     "",
+     "",
+     "(76)",
+     "",
+     "",
+     "186"
+    ],
+    [
+     "(Increase) decrease in assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "",
+     "(3,617)",
+     "",
+     "",
+     "(5,274)"
+    ],
+    [
+     "Income taxes receivable",
+     "",
+     "",
+     "378",
+     "",
+     "",
+     "357"
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "(2,904)",
+     "",
+     "",
+     "6,401"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "",
+     "(1,751)",
+     "",
+     "",
+     "(921)"
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "",
+     "392",
+     "",
+     "",
+     "(1,511)"
+    ],
+    [
+     "Increase (decrease) in liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "13,110",
+     "",
+     "",
+     "6,993"
+    ],
+    [
+     "Accrued expenses and other liabilities",
+     "",
+     "",
+     "1,477",
+     "",
+     "",
+     "1,946"
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "",
+     "(376)",
+     "",
+     "",
+     "1,503"
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "",
+     "10,769",
+     "",
+     "",
+     "15,915"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "",
+     "",
+     "(96)",
+     "",
+     "",
+     "(883)"
+    ],
+    [
+     "Net cash used for investing activities",
+     "",
+     "",
+     "(96)",
+     "",
+     "",
+     "(883)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment of dividends",
+     "",
+     "",
+     "(4,894)",
+     "",
+     "",
+     "(4,852)"
+    ],
+    [
+     "Cash paid for common stock purchased and retired",
+     "",
+     "",
+     "(1,055)",
+     "",
+     "",
+     "(907)"
+    ],
+    [
+     "Net cash used for financing activities",
+     "",
+     "",
+     "(5,949)",
+     "",
+     "",
+     "(5,759)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "",
+     "4,724",
+     "",
+     "",
+     "9,273"
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "",
+     "52,379",
+     "",
+     "",
+     "71,952"
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "",
+     "$",
+     "57,103",
+     "",
+     "$",
+     "81,225"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 263,
+    "end_line": 307
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE THREE MONTHS ENDED MARCH 31, 2025 AND 2024\n(In thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1. GENERAL\nThe accompanying unaudited consolidated financial statements have been prepared in accordance with accounting principles generally accepted in the United States of America for interim financial information and with the instructions to Form 10-Q and Article 10 of Regulation S-X. Accordingly, they do not include all of the information and footnotes required by accounting principles generally accepted in the United States of America for complete financial statements. In the opinion of management, all adjustments (all of which consisted of normal recurring accruals) considered necessary for a fair presentation have been included. Operating results for the three months ended March 31, 2025 are not necessarily indicative of the results that may be expected for the year ending December 31, 2025.\nThe Consolidated Balance Sheet at December 31, 2024 has been derived from the audited consolidated financial statements at that date but does not include all of the information and footnotes required by accounting principles generally accepted in the United States of America for complete financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 261,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "March 31, 2025",
+     "",
+     "",
+     "March 31, 2024",
+     ""
+    ],
+    [
+     "Boats and accessories",
+     "",
+     "$",
+     "57,674",
+     "",
+     "$",
+     "68,463"
+    ],
+    [
+     "Parts",
+     "",
+     "",
+     "1,328",
+     "",
+     "",
+     "877"
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "59,002",
+     "",
+     "$",
+     "69,340"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 375,
+    "end_line": 386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "NET SALES"
+    }
+   },
+   "prose_before": "When the Company enters into contracts with its customers, it generally expects there to be no significant timing difference between the date the goods have been delivered to the customer (satisfaction of the performance obligation) and the date cash consideration is received. Accordingly, there is no financing component to the Company\u2019s arrangements with its customers.\nSignificant judgments:\nDetermining the transaction price\nThe transaction price for MPC\u2019s boats and accessories is the invoice price adjusted for dealer incentives. Key inputs and assumptions in determining variable consideration related to dealer incentives include:\n\u25cf Inputs: Current model year boat sales, total potential program incentive percentage, prior model year results of dealer incentive activity (i.e., incentive earned as a percentage of total incentive potential).\n\u25cf Assumption: Current model year incentive activity will closely reflect prior model year actual results, adjusted as necessary for dealer purchasing trends or economic factors.\nOther:\nOur contracts with dealers do not provide them with a right of return. Accordingly, we do not have any obligations recorded for returns or refunds.\nDisaggregation of revenues:\nThe following table disaggregates our sales by major source:",
+   "prose_after": "The following table disaggregates our revenues between domestic and international:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "March 31, 2025",
+     "",
+     "",
+     "March 31, 2024",
+     ""
+    ],
+    [
+     "Domestic",
+     "",
+     "$",
+     "54,267",
+     "",
+     "$",
+     "64,402"
+    ],
+    [
+     "International",
+     "",
+     "",
+     "4,735",
+     "",
+     "",
+     "4,938"
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "59,002",
+     "",
+     "$",
+     "69,340"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "NET SALES"
+    }
+   },
+   "prose_before": "The following table disaggregates our revenues between domestic and international:",
+   "prose_after": "Contract balances:\nAmounts received from international and certain domestic dealers toward the purchase of boats are classified as deferred revenue and are included in Accrued expenses and other liabilities in the accompanying Consolidated Balance Sheets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "$",
+     "221",
+     "",
+     "$",
+     "191",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 405,
+    "end_line": 411
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "NET SALES"
+    }
+   },
+   "prose_before": "Contract balances:\nAmounts received from international and certain domestic dealers toward the purchase of boats are classified as deferred revenue and are included in Accrued expenses and other liabilities in the accompanying Consolidated Balance Sheets.",
+   "prose_after": "Substantially all of the amounts of deferred revenue disclosed above were or will be recognized as sales during the immediately following quarters, respectively, when control is transferred.\n4. EARNINGS PER SHARE\nBasic and diluted earnings per share are computed by dividing net income by the weighted average number of shares outstanding during the respective periods. In addition, the Company has periodically issued share-based payment awards that contain non-forfeitable rights to dividends and are therefore considered participating securities. Restricted shares of common stock (participating securities) outstanding and a reconciliation of weighted average shares outstanding are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Net income available for stockholders:",
+     "",
+     "$",
+     "2,206",
+     "",
+     "$",
+     "4,597"
+    ],
+    [
+     "Less: Adjustments for earnings attributable to participating securities",
+     "",
+     "",
+     "(129)",
+     "",
+     "",
+     "(114)"
+    ],
+    [
+     "Net income used in calculating earnings per share",
+     "",
+     "$",
+     "2,077",
+     "",
+     "$",
+     "4,483"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding (including participating securities)",
+     "",
+     "",
+     "34,877",
+     "",
+     "",
+     "34,632"
+    ],
+    [
+     "Adjustment for participating securities",
+     "",
+     "",
+     "(633)",
+     "",
+     "",
+     "(880)"
+    ],
+    [
+     "Shares used in calculating basic and diluted earnings per share",
+     "",
+     "",
+     "34,244",
+     "",
+     "",
+     "33,752"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended",
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 418,
+    "end_line": 436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Substantially all of the amounts of deferred revenue disclosed above were or will be recognized as sales during the immediately following quarters, respectively, when control is transferred.\n4. EARNINGS PER SHARE\nBasic and diluted earnings per share are computed by dividing net income by the weighted average number of shares outstanding during the respective periods. In addition, the Company has periodically issued share-based payment awards that contain non-forfeitable rights to dividends and are therefore considered participating securities. Restricted shares of common stock (participating securities) outstanding and a reconciliation of weighted average shares outstanding are as follows:",
+   "prose_after": "5. STOCK-BASED COMPENSATION\nThe Company has issued various forms of stock incentives, including incentive and non-qualified stock options, time-lapse restricted shares and performance stock unit awards under its Stock Incentive Plans to officers, selected employees and non-employee directors.\nIn the first quarter of 2025, the Company issued 369,340 time-lapse restricted shares under the 2024 Stock incentive Plan, to certain employees that will vest ratably over a period of three years. In addition, the Company granted performance share unit awards to its executive officers that vest based on the achievement of pre-established financial performance targets together with a modifier for stock performance based on total shareholder return. The awards will be issued at different levels based on the financial and stock performance achieved with a three-year cliff vesting. The grant date fair value of the awards was determined with the assistance of a third-party specialist based on a range of potential outcomes relative to the market condition. The Company periodically evaluates the portion of awards that are probable to vest and updates the compensation expense accrual accordingly.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Balance at January 1",
+     "",
+     "$",
+     "6,228",
+     "",
+     "$",
+     "7,078"
+    ],
+    [
+     "Less: Payments made during the period",
+     "",
+     "",
+     "(1,110)",
+     "",
+     "",
+     "(965)"
+    ],
+    [
+     "Add: Warranty provision for the period",
+     "",
+     "",
+     "882",
+     "",
+     "",
+     "1,073"
+    ],
+    [
+     "  Changes to warranty provision for prior periods",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "28"
+    ],
+    [
+     "Balance at March 31",
+     "",
+     "$",
+     "6,045",
+     "",
+     "$",
+     "7,214"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "WARRANTY COSTS"
+    }
+   },
+   "prose_before": "For its Chaparral and Robalo products, Marine Products provides a lifetime limited structural hull warranty and a transferable one-year limited warranty to the original owner. Chaparral also includes a five-year limited structural deck warranty. Warranties for additional items are provided for periods of one to five years and are not transferable. Additionally, as it relates to the second subsequent owner, a five-year transferable hull warranty and the remainder of the original one-year limited warranty on certain components are available. The five-year transferable hull warranty terminates five years after the date of the original retail purchase. Claim costs related to components are generally absorbed by the original component manufacturer. The manufacturers of the engines, generators, and navigation electronics included on our boats provide and administer their own warranties for various lengths of time.\nAn analysis of the warranty accruals for the three months ended March 31, 2025 and 2024 is as follows:",
+   "prose_after": "The warranty accruals are reflected in Accrued expenses and other liabilities in the accompanying Consolidated Balance Sheets.\n7. BUSINESS SEGMENT\nMPC has one reportable segment \u2014 its Powerboat Manufacturing business. The Chief Operating Decision Maker (CODM) makes resource allocation and performance assessment decisions based on this segment as a whole. MPC's CODM is the Chief Executive Officer. In addition, the Company\u2019s results of operations and its financial condition are not significantly reliant upon any single customer or product model.\nSignificant segment expenses for the three months ended March 31, 2025 and 2024 are shown in the following table:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Materials",
+     "",
+     "$",
+     "31,129",
+     "",
+     "$",
+     "36,300",
+     ""
+    ],
+    [
+     "Overhead",
+     "",
+     "",
+     "5,697",
+     "",
+     "",
+     "6,180",
+     ""
+    ],
+    [
+     "Labor costs",
+     "",
+     "",
+     "6,387",
+     "",
+     "",
+     "6,978",
+     ""
+    ],
+    [
+     "Other cost of goods sold (1)",
+     "",
+     "",
+     "4,836",
+     "",
+     "",
+     "5,898",
+     ""
+    ],
+    [
+     "  Cost of goods sold",
+     "",
+     "$",
+     "48,049",
+     "",
+     "$",
+     "55,356",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employment costs",
+     "",
+     "$",
+     "3,806",
+     "",
+     "$",
+     "5,324",
+     ""
+    ],
+    [
+     "Warranty expense",
+     "",
+     "",
+     "927",
+     "",
+     "",
+     "1,101",
+     ""
+    ],
+    [
+     "Other selling, general and administrative expenses (2)",
+     "",
+     "",
+     "3,607",
+     "",
+     "",
+     "2,317",
+     ""
+    ],
+    [
+     "  Selling, general and administrative expenses",
+     "",
+     "$",
+     "8,340",
+     "",
+     "$",
+     "8,742",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 475,
+    "end_line": 495
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "BUSINESS SEGMENT"
+    }
+   },
+   "prose_before": "The warranty accruals are reflected in Accrued expenses and other liabilities in the accompanying Consolidated Balance Sheets.\n7. BUSINESS SEGMENT\nMPC has one reportable segment \u2014 its Powerboat Manufacturing business. The Chief Operating Decision Maker (CODM) makes resource allocation and performance assessment decisions based on this segment as a whole. MPC's CODM is the Chief Executive Officer. In addition, the Company\u2019s results of operations and its financial condition are not significantly reliant upon any single customer or product model.\nSignificant segment expenses for the three months ended March 31, 2025 and 2024 are shown in the following table:",
+   "prose_after": "(1) Comprised primarily of accessories cost.\n(2) Includes professional fees, advertising and promotions, and other costs.\n8. INCOME TAXES\nThe Company determines its periodic income tax provision based upon the current period income and the annual estimated tax rate for the Company adjusted for discrete items including tax credits and changes to prior year estimates. The estimated tax rate is revised, if necessary, at the end of each successive interim period to the Company's current annual estimated tax rate.\nIncome tax provision for three months ended March 31, 2025 reflects an effective tax rate of 27.8 percent compared to 24.6 percent for the comparable period in the prior year. The increase in effective tax rate is primarily due to a stronger impact of unfavorable permanent adjustments on a decreased pretax income.\n9. INVENTORIES\nInventories consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Raw materials and supplies",
+     "",
+     "$",
+     "32,567",
+     "",
+     "$",
+     "29,686"
+    ],
+    [
+     "Work in process",
+     "",
+     "",
+     "10,141",
+     "",
+     "",
+     "9,950"
+    ],
+    [
+     "Finished goods",
+     "",
+     "",
+     "10,156",
+     "",
+     "",
+     "10,324"
+    ],
+    [
+     "Total inventories",
+     "",
+     "$",
+     "52,864",
+     "",
+     "$",
+     "49,960"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "(1) Comprised primarily of accessories cost.\n(2) Includes professional fees, advertising and promotions, and other costs.\n8. INCOME TAXES\nThe Company determines its periodic income tax provision based upon the current period income and the annual estimated tax rate for the Company adjusted for discrete items including tax credits and changes to prior year estimates. The estimated tax rate is revised, if necessary, at the end of each successive interim period to the Company's current annual estimated tax rate.\nIncome tax provision for three months ended March 31, 2025 reflects an effective tax rate of 27.8 percent compared to 24.6 percent for the comparable period in the prior year. The increase in effective tax rate is primarily due to a stronger impact of unfavorable permanent adjustments on a decreased pretax income.\n9. INVENTORIES\nInventories consist of the following:",
+   "prose_after": "10. ACCRUED EXPENSES AND OTHER LIABILITIES\nAccrued expenses and other liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 471,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Accrued payroll and related expenses",
+     "",
+     "$",
+     "2,540",
+     "",
+     "$",
+     "1,668"
+    ],
+    [
+     "Accrued sales incentives and discounts",
+     "",
+     "",
+     "3,512",
+     "",
+     "",
+     "3,110"
+    ],
+    [
+     "Accrued warranty costs",
+     "",
+     "",
+     "6,045",
+     "",
+     "",
+     "6,228"
+    ],
+    [
+     "Accrued insurance expenses",
+     "",
+     "",
+     "1,241",
+     "",
+     "",
+     "1,791"
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "",
+     "628",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "",
+     "221",
+     "",
+     "",
+     "191"
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "715",
+     "",
+     "",
+     "437"
+    ],
+    [
+     "Total accrued expenses and other liabilities",
+     "",
+     "$",
+     "14,902",
+     "",
+     "$",
+     "13,425"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 527,
+    "end_line": 542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "ACCRUED EXPENSES AND OTHER LIABILITIES"
+    }
+   },
+   "prose_before": "10. ACCRUED EXPENSES AND OTHER LIABILITIES\nAccrued expenses and other liabilities consist of the following:",
+   "prose_after": "11. RETIREMENT PLANS\nIn the fourth quarter of 2024, the Board of Directors approved the termination of the non-qualified Supplemental Executive Retirement Plan (\u201cSERP\u201d). Pursuant to the Internal Revenue Service rules, participant balances will be distributed between 12 and 24 months after termination. The Company is currently evaluating its funding options and timing to distribute participant balances.\nThrough December 31, 2024, the Company permitted selected highly compensated employees to defer a portion of their compensation into the SERP. The Company maintains certain securities primarily in mutual funds and company-owned life insurance (\u201cCOLI\u201d) policies as a funding source to satisfy the obligation of the SERP that have been classified as trading and are stated at fair value totaling $18.1 million as of March 31, 2025 and $18.5 million as of December 31, 2024. Trading losses related to the SERP assets totaled $379 thousand during the three months ended March 31, 2025, compared to trading gains of $1.4 million during the three months ended March 31, 2024. The SERP assets are reported in Retirement plan assets in the accompanying Consolidated Balance Sheets and changes to the fair value of the assets are reported in Selling, general and administrative expenses in the accompanying Consolidated Statements of Operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 557,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "STCI expense",
+     "",
+     "$",
+     "632",
+     "",
+     "$",
+     "860"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 604,
+    "end_line": 611
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "In the fourth quarter of 2024, the Company entered into a three-year floor plan financing agreement with a single third-party floor plan lender which will be phased in to replace a majority of the existing agreements with the remaining third-party lenders. The agreement is similar to the current arrangements with the existing third-party floor plan lenders and provides for certain additional incentives to the Company and qualifying dealers over the term of the agreement.\nShort-term Cash Incentive Compensation:\nIn addition to recording Short-Term Cash Incentive (\u201cSTCI\u201d) compensation expense for executive officers, STCI expense has been recorded for certain non-executive employees based on a percentage of Pre-Tax Profit (\u201cPTP incentive\u201d), defined as pretax income before goodwill adjustments and certain allocated corporate expenses. The PTP incentive, subject to a discretionary determination, is nine percent in the aggregate per year.\nTotal STCI expense for the reported periods are as follows:",
+   "prose_after": "These amounts are included in Selling, general and administrative expenses in the accompanying Consolidated Statements of Operations.\n15. SUBSEQUENT EVENTS\nOn April 22, 2025, the Board of Directors declared a regular cash dividend of $0.14 per share payable June 10, 2025 to common stockholders of record at the close of business May 9, 2025.\nOn April 23, 2025, the Company filed a shelf registration statement on Form S-3 which has not yet been declared effective and is subject to potential SEC review. The shelf registration includes a base prospectus and allows us to offer any combination of securities described in the prospectus, which include common stock, preferred stock, warrants, rights, depositary shares, purchase contracts and units containing two or more of the foregoing, in one or more offerings in an aggregate amount of up to $150 million. The Form S-3 is intended to provide us flexibility to conduct registered sales of our securities, subject to market conditions and our future capital needs. The registration statement also registers the resale of up to 24,414,029 shares of our common stock by members of our controlling stockholder group.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share and number of boats sold)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "59,002",
+     "",
+     "$",
+     "69,340",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "48,049",
+     "",
+     "",
+     "55,356",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "",
+     "8,340",
+     "",
+     "",
+     "8,742",
+     ""
+    ],
+    [
+     "Interest income, net",
+     "",
+     "",
+     "442",
+     "",
+     "",
+     "851",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "",
+     "849",
+     "",
+     "",
+     "1,496",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "2,206",
+     "",
+     "$",
+     "4,597",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income margin",
+     "",
+     "",
+     "3.7",
+     "%",
+     "",
+     "6.6",
+     "%"
+    ],
+    [
+     "Earnings per share",
+     "",
+     "$",
+     "0.06",
+     "",
+     "$",
+     "0.13",
+     ""
+    ],
+    [
+     "Cash flow from operating activities",
+     "",
+     "$",
+     "10,769",
+     "",
+     "$",
+     "15,915",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total number of boats sold",
+     "",
+     "",
+     "625",
+     "",
+     "",
+     "770",
+     ""
+    ],
+    [
+     "Average gross selling price per boat",
+     "",
+     "$",
+     "85.1",
+     "",
+     "$",
+     "80.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-GAAP financial measures:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EBITDA",
+     "",
+     "$",
+     "3,402",
+     "",
+     "$",
+     "5,924",
+     ""
+    ],
+    [
+     "EBITDA margin",
+     "",
+     "",
+     "5.8",
+     "%",
+     "",
+     "8.5",
+     "%"
+    ],
+    [
+     "Free cash flow",
+     "",
+     "$",
+     "10,673",
+     "",
+     "$",
+     "15,032",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "EBITDA and EBITDA margin have limitations as analytical tools and should not be considered as an alternative to net income, operating income, net income margin, or any other measure of financial performance presented in accordance with accounting principles generally accepted in the United States of America (GAAP). Similarly, free cash flow should be considered in addition to, rather than as a substitute for, GAAP presentation of net cash provided by operating, investing and financing activities, as a measure of our financial condition and liquidity.\nSee section titled Non-GAAP Financial Measures for a reconciliation of EBITDA to net income and EBITDA margin to net income margin, the most directly comparable financial measures calculated and presented in accordance with GAAP and a reconciliation of Free Cash Flow to Operating Cash Flow, the most directly comparable financial measure calculated and presented in accordance with GAAP.\nRESULTS OF OPERATIONS\nKey operating and financial statistics for the three months ended March 31, 2025 and 2024 are as follows:",
+   "prose_after": "THREE MONTHS ENDED MARCH 31, 2025 COMPARED TO THREE MONTHS ENDED MARCH 31, 2024\nNet sales for the three months ended March 31, 2025 decreased $10.4 million or 14.9% compared to the same period in 2024. The change in net sales during the quarter compared to the prior year was primarily due to a 19% decrease in unit sales volume, partially offset by a price/mix increase of 4%. Dealers continue to tightly manage their inventories as consumer demand remains modest. The year-over-year decline, however, was significantly less pronounced than the 30%-plus quarterly decreases the Company experienced during 2024 as comparisons are beginning to ease and field inventories return to more acceptable levels after being elevated since late 2023. The Company\u2019s field inventory units at the end of the first quarter of 2025 were approximately 18% below the first quarter of 2024.\nIn the first quarter of 2025, net sales outside of the United States accounted for 8.0% of net sales compared to 7.1% of net sales in the same period of the prior year.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 642,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Unaudited)",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Reconciliation of Net Income to EBITDA",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "2,206",
+     "",
+     "$",
+     "4,597"
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Add: Income tax provision",
+     "",
+     "",
+     "849",
+     "",
+     "",
+     "1,496"
+    ],
+    [
+     "Add: Depreciation and amortization",
+     "",
+     "",
+     "789",
+     "",
+     "",
+     "682"
+    ],
+    [
+     "Less: Interest income, net",
+     "",
+     "",
+     "442",
+     "",
+     "",
+     "851"
+    ],
+    [
+     "EBITDA",
+     "",
+     "$",
+     "3,402",
+     "",
+     "$",
+     "5,924"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "",
+     "$",
+     "59,002",
+     "",
+     "$",
+     "69,340"
+    ],
+    [
+     "Net income margin (1)",
+     "",
+     "",
+     "3.7",
+     "%",
+     "",
+     "6.6"
+    ],
+    [
+     "EBITDA margin (1)",
+     "",
+     "",
+     "5.8",
+     "%",
+     "",
+     "8.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Reconciliation of GAAP and non-GAAP Financial Measures\nMarine Products has disclosed non-GAAP financial measures of EBITDA, EBITDA margin and free cash flow in the Results of Operations section above. These measures should not be considered in isolation or as a substitute for performance or liquidity measures prepared in accordance with GAAP.\nA non-GAAP financial measure is a numerical measure of financial performance, financial position or cash flows that either 1) excludes amounts, or is subject to adjustments that have the effect of excluding amounts, that are included in the most directly comparable measure calculated and presented in accordance with GAAP in the statement of operations, balance sheet or statement of cash flows, or 2) includes amounts, or is subject to adjustments that have the effect of including amounts, that are excluded from the most directly comparable measure so calculated and presented.\nThe following are reconciliations of these non-GAAP measures with their most directly comparable GAAP measures.",
+   "prose_after": "(1) Net income margin is calculated as net income divided by net sales. EBITDA margin is calculated as EBITDA divided by net sales.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 773,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Reconciliation of Operating Cash Flow to Free Cash Flow",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "",
+     "$",
+     "10,769",
+     "",
+     "$",
+     "15,915"
+    ],
+    [
+     "Capital expenditures",
+     "",
+     "",
+     "",
+     "(96)",
+     "",
+     "",
+     "(883)"
+    ],
+    [
+     "Free cash flow",
+     "",
+     "",
+     "$",
+     "10,673",
+     "",
+     "$",
+     "15,032"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 744,
+    "end_line": 756
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Net income margin is calculated as net income divided by net sales. EBITDA margin is calculated as EBITDA divided by net sales.",
+   "prose_after": "LIQUIDITY AND CAPITAL RESOURCES\nCash Flows\nThe Company\u2019s cash and cash equivalents at March 31, 2025 were $57.1 million compared to $52.4 million at December 31, 2024. The following table sets forth the cash flows for the applicable periods:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 773,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "$",
+     "10,769",
+     "",
+     "$",
+     "15,915"
+    ],
+    [
+     "Net cash used for investing activities",
+     "",
+     "",
+     "(96)",
+     "",
+     "",
+     "(883)"
+    ],
+    [
+     "Net cash used for financing activities",
+     "",
+     "",
+     "(5,949)",
+     "",
+     "",
+     "(5,759)"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 772
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "LIQUIDITY AND CAPITAL RESOURCES\nCash Flows\nThe Company\u2019s cash and cash equivalents at March 31, 2025 were $57.1 million compared to $52.4 million at December 31, 2024. The following table sets forth the cash flows for the applicable periods:",
+   "prose_after": "Cash provided by operating activities for the three months ended March 31, 2025, decreased by $5.1 million compared to the three months ended March 31, 2025, primarily due to the decrease in net income. In addition, working capital was a source of cash of $6.7 million in the three months ended March 31, 2025 compared to $9.5 million in the same period of the prior year. Working capital was a source of cash in the current period due primarily to a net favorable change of $13.1 million in accounts payable as a result of the timing of payments, partially offset by net unfavorable changes of $2.9 million in inventory and $3.5 million in other components of working capital. The changes in inventory and other components of working capital were consistent with the decrease in net sales and lower production levels in recent quarters, as well as the timing of payments and receipts.\nCash used for investing activities for the three months ended March 31, 2025 decreased $0.8 million in comparison to the same period in the prior year due to lower capital expenditures during the three months ended March 31, 2025.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 773,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Maximum Number"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total Number of",
+     "",
+     "(or Approximate"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Shares (or Units)",
+     "",
+     "Dollar Value) of"
+    ],
+    [
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Purchased as",
+     "",
+     "Shares (or Units)"
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "Part of Publicly",
+     "",
+     "that May Yet Be"
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Price Paid Per",
+     "",
+     "",
+     "Announced",
+     "",
+     "Purchased Under"
+    ],
+    [
+     "",
+     "",
+     "(or Units)",
+     "",
+     "",
+     "Share",
+     "",
+     "",
+     "Plans or",
+     "",
+     "the Plans or"
+    ],
+    [
+     "Period",
+     "",
+     "Purchased",
+     "",
+     "",
+     "(or Unit)",
+     "",
+     "",
+     "Programs",
+     "",
+     "Programs (1)"
+    ],
+    [
+     "January 1, 2025 to January 31, 2025",
+     "",
+     "115,184",
+     "(2)",
+     "",
+     "$",
+     "9.16",
+     "",
+     "\u2014",
+     "",
+     "1,570,428"
+    ],
+    [
+     "February 1, 2025 to February 28, 2025",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,570,428"
+    ],
+    [
+     "March 1, 2025 to March 31, 2025",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,570,428"
+    ],
+    [
+     "Totals",
+     "",
+     "115,184",
+     "",
+     "",
+     "$",
+     "9.16",
+     "",
+     "\u2014",
+     "",
+     "1,570,428"
+    ]
+   ],
+   "caption_stack": [
+    "Maximum Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 881,
+    "end_line": 898
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Changes in internal control over financial reporting \u2014 There were no changes in the Company\u2019s internal control over financial reporting during the first quarter of 2025 which were identified in connection with management\u2019s evaluation required by paragraph (d) of Rules 13a-15 and 15d-15 under the Exchange Act, that have materially affected, or are reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nPART II. OTHER INFORMATION\nITEM 1. LEGAL PROCEEDINGS\nMarine Products is involved in litigation from time to time in the ordinary course of its business. Marine Products does not believe that the outcome of such litigation will have a material effect on the financial position, results of operations or liquidity of Marine Products.\nItem 1A. RISK FACTORS\nThere have been no material changes from the risk factors previously disclosed in the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2024.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS",
+   "prose_after": "(1) The Company's Board of Directors announced a stock buyback program on April 25, 2001 authorizing the repurchase of 2,250,000 shares in the open market and another on March 14, 2005 authorizing the repurchase of an additional 3,000,000 shares. On January 22, 2008, the Board of Directors authorized an additional 3,000,000 shares that the Company may repurchase. During the first quarter of 2025, there were no shares repurchased in the open market under this program and there are 1,570,428 shares that remain available for repurchase. The program does not have a predetermined expiration date.\n(2) Includes shares repurchased by the Company in connection with taxes related to vesting of restricted shares.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nITEM 5. OTHER INFORMATION\nDuring the three months ended March 31, 2025, no director or officer, as defined in Rule 16a-1(f) under the Securities Exchange Act of 1934, as amended, of the Company adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term is defined in Item 408(a) of Regulation S-K.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(a)",
+     "Marine Products Corporation Articles of Incorporation (incorporated herein by reference to Exhibit 3.1 to the Registrant\u2019s Registration Statement on Form 10 filed on February 13, 2001)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(b)",
+     "Certificate of Amendment of Certificate of Incorporation of Marine Products Corporation executed on June 8, 2005 (incorporated herein by reference to Exhibit 99.1 to the Registrant\u2019s Current Report on Form 8-K filed June 9, 2005)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1(c)",
+     "Amended and Restated Certificate of Incorporation of Marine Products Corporation dated April 22, 2025 (incorporated herein by reference to Exhibit 3.1 to the Registration Statement on Form S-3 filed on April 23, 2025)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated By-laws of Marine Products Corporation dated January 28, 2025 (incorporated herein by reference to Exhibit 3.2 to the Form 10-K filed February 28, 2025)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4",
+     "Restated Form of Stock Certificate of Marine Products Corporation (incorporated herein by reference to Exhibit 4.1 to the Registrant\u2019s Registration Statement to the Form 10 filed on February 13, 2001)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Section 302 certification for Chief Executive Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Section 302 certification for Chief Financial Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 906 certifications for Chief Executive Officer and Chief Financial Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 919,
+    "end_line": 957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) The Company's Board of Directors announced a stock buyback program on April 25, 2001 authorizing the repurchase of 2,250,000 shares in the open market and another on March 14, 2005 authorizing the repurchase of an additional 3,000,000 shares. On January 22, 2008, the Board of Directors authorized an additional 3,000,000 shares that the Company may repurchase. During the first quarter of 2025, there were no shares repurchased in the open market under this program and there are 1,570,428 shares that remain available for repurchase. The program does not have a predetermined expiration date.\n(2) Includes shares repurchased by the Company in connection with taxes related to vesting of restricted shares.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nITEM 5. OTHER INFORMATION\nDuring the three months ended March 31, 2025, no director or officer, as defined in Rule 16a-1(f) under the Securities Exchange Act of 1934, as amended, of the Company adopted or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term is defined in Item 408(a) of Regulation S-K.\nITEM 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 915,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "MARINE PRODUCTS CORPORATION"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: April 24, 2025",
+     "/s/ Ben M. Palmer"
+    ],
+    [
+     "",
+     "Ben M. Palmer"
+    ],
+    [
+     "",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: April 24, 2025",
+     "/s/ Michael L. Schmit"
+    ],
+    [
+     "",
+     "Michael L. Schmit"
+    ],
+    [
+     "",
+     "Vice President, Chief Financial Officer and Corporate Secretary"
+    ],
+    [
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "MARINE PRODUCTS CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 964,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

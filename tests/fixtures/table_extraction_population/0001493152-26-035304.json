@@ -1,0 +1,1821 @@
+{
+ "accession": "0001493152-26-035304",
+ "cik": "0000066418",
+ "form": "10-K/A",
+ "filing_date": "2026-07-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "84-0627918"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "415 W. Wall, Suite 475",
+     ""
+    ],
+    [
+     "Midland, Texas 79701",
+     "(432) 682-1119"
+    ],
+    [
+     "(Address of principal executive offices, Zip Code)",
+     "(Registrant\u2019s telephone number, including area code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K/A\nAMENDMENT NO. 1\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2026\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File No. 1-31785\nMEXCO ENERGY CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.50 per share",
+     "MXC",
+     "NYSE American"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 36
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ]\nIndicate by check-mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding twelve (12) months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past ninety (90) days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "4"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "8"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "12"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "13"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "15"
+    ]
+   ],
+   "caption_stack": [
+    "PART III"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 82,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Pursuant to the rules of the U.S. Securities and Exchange Commission (the \u201cSEC\u201d), Part IV, Item 15 (Exhibit Index) has also been amended to contain the currently dated certifications from our principal executive officer and principal financial officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. The certifications of our principal executive officer and of our principal financial officer are attached to this Amended Report as Exhibits 31.1 and 31.2, respectively. Because no financial statements have been included in this Amended Report and this Amended Report does not contain or amend any disclosure with respect to Items 307 and 308 of Regulation S-K, we have omitted paragraphs 3, 4 and 5 of the certifications filed with this Amended Report. Additionally, we are not including the certifications under Section 906 of the Sarbanes-Oxley Act of 2002, because we are not filing any financial statements with this Amended Report.\nThe remainder of the Original Report remains the same as previously reported in the Original Report, and there are no other changes to the Company\u2019s financial statements or disclosures and there are no changes to the Company\u2019s reported results. This Amended Report does not reflect any subsequent events occurring after the filing date of the Original Report and does not modify or update in any way the disclosures made in the Original Report except as described above. Accordingly, this Amended Report should be read in conjunction with the Original Report and with our filings with the SEC after the Original Report.\nTABLE OF CONTENTS",
+   "prose_after": "3\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nMEXCO ENERGY CORPORATION BOARD OF DIRECTORS\nThe Board has responsibility for establishing broad corporate policies and for the overall performance and direction of the Company. The Board is elected by the stockholders to oversee their interests in the long-term health and the overall success of the Company\u2019s business and its financial strength. The Board serves as the ultimate decision-making body of the Company, except for those matters reserved to or shared with the stockholders. The Board selects and oversees the members of senior management, who are charged by the Board with conducting the business of the Company. Members of the Board stay informed of the Company\u2019s business by participating in Board and committee meetings, by reviewing analyses and reports sent to them regularly, and through discussions with the Chief Executive Officer (\u201cCEO\u201d) and Chief Financial Officer (\u201cCFO\u201d).\nThe Board currently consists of one person who is an employee of the Company and five persons who are not employees of the Company (four of whom are outside directors). The Board has determined that each of the four outside directors, namely Messrs. Banschbach, Clayton, Decker, and Schroeder are independent in accordance with NYSE American rules and under the Securities Exchange Act of 1934, as amended (\u201cExchange Act\u201d). Set forth below are the names, ages, and positions of Mexco\u2019s directors as of July 20, 2026.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 99,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Michael J. Banschbach",
+     "67",
+     "Director"
+    ],
+    [
+     "Kenneth L. Clayton",
+     "82",
+     "Director"
+    ],
+    [
+     "Thomas R. Craddick",
+     "82",
+     "Director"
+    ],
+    [
+     "Thomas H. Decker",
+     "85",
+     "Director"
+    ],
+    [
+     "Christopher M. Schroeder",
+     "61",
+     "Director"
+    ],
+    [
+     "Nicholas C. Taylor",
+     "88",
+     "Chairman of the Board of Directors and CEO"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "The Board has responsibility for establishing broad corporate policies and for the overall performance and direction of the Company. The Board is elected by the stockholders to oversee their interests in the long-term health and the overall success of the Company\u2019s business and its financial strength. The Board serves as the ultimate decision-making body of the Company, except for those matters reserved to or shared with the stockholders. The Board selects and oversees the members of senior management, who are charged by the Board with conducting the business of the Company. Members of the Board stay informed of the Company\u2019s business by participating in Board and committee meetings, by reviewing analyses and reports sent to them regularly, and through discussions with the Chief Executive Officer (\u201cCEO\u201d) and Chief Financial Officer (\u201cCFO\u201d).\nThe Board currently consists of one person who is an employee of the Company and five persons who are not employees of the Company (four of whom are outside directors). The Board has determined that each of the four outside directors, namely Messrs. Banschbach, Clayton, Decker, and Schroeder are independent in accordance with NYSE American rules and under the Securities Exchange Act of 1934, as amended (\u201cExchange Act\u201d). Set forth below are the names, ages, and positions of Mexco\u2019s directors as of July 20, 2026.",
+   "prose_after": "Set forth below are descriptions of the principal occupations during at least the past five years of the Company\u2019s current directors.\nMICHAEL\nJ. BANSCHBACH was appointed to the Board of Directors of the Company in July 2014. Mr. Banschbach graduated from the Colorado School of Mines in 1980 with a BS degree in Chemical Engineering. Thereafter, Mr. Banschbach served with Atlantic Richfield (ARCO) for twenty years, primarily in the gas processing midstream sector, as both an engineer and a commercial representative. From 2001 until the present time, he has represented numerous independent oil and gas producing companies in negotiations with midstream companies for the connection of newly drilled wells and for the sale of their oil and gas production. He has conducted seminars describing the movement of gas from the wellhead to the burner tip and the various financial transactions that take place along the way. He also serves with various charitable organizations.\nKENNETH\nL. CLAYTON was appointed to the Board of Directors of the Company in September 2011. Mr. Clayton graduated from Austin College with a Bachelor of Arts degree in Economics and from the University of Texas at Austin School of Law with a Doctor of Jurisprudence degree. Mr. Clayton also attended the Graduate School of Business at the University of Texas at Austin. Mr. Clayton is a member of the State Bar of Texas and the Houston Bar Association, and practices law in the areas of estate planning and probate. Mr. Clayton also serves as President of Fiduciary Resources Company, a company he founded in 1984 to provide business management services to individual executors of decedents\u2019 estates and trustees of testamentary trusts. From 1970 through 1984, Mr. Clayton served as Senior Vice-President and manager of the trust division of the Capital National Bank in Houston, Texas.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 131,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director",
+     "Audit",
+     "Compensation",
+     "Nominating"
+    ],
+    [
+     "Michael J. Banschbach",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "Kenneth L. Clayton",
+     "X",
+     "Chair",
+     "Chair"
+    ],
+    [
+     "Thomas R. Craddick",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas H. Decker",
+     "Chair",
+     "X",
+     "X"
+    ],
+    [
+     "Christopher M. Schroeder",
+     "X",
+     "X",
+     "X"
+    ],
+    [
+     "Nicholas C. Taylor",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2026 Meetings",
+     "4",
+     "1",
+     "1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 169,
+    "end_line": 180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Mr. Taylor has been Mexco\u2019s Chief Executive Officer for over 40 years and has over 50 years of experience practicing law. Mr. Taylor provides expertise in the areas of evaluating, acquiring, and managing oil and gas properties as well as exploration prospects.\nMEETINGS AND COMMITTEES OF THE BOARD OF DIRECTORS\nDuring fiscal year ended March 31, 2026, the Board of Directors consisted of one person who is an employee of the Company and five persons who are not employees of the Company (four of whom are outside directors). The Board held four meetings, and all Directors, including the Independent Directors, attended all four meetings.\nThe Board of Directors established the following standing committees: audit, compensation, and nominating. In accordance with Section 803A of the NYSE American Company Guide and the Exchange Act, the Board must affirmatively determine the independence of each director. The Board is comprised of a majority of Independent Directors, and the Audit Committee, the Compensation Committee, and the Nominating Committee are comprised entirely of Independent Directors.\nThe table below shows the membership of each committee of the Board and the number of meetings each committee held during the fiscal year ended March 31, 2026.",
+   "prose_after": "Audit Committee. The Audit Committee is a standing committee of the Board of Directors and currently consists of Messrs. Decker, Chairman, Clayton, and Schroeder, all of whom are Independent Directors. The Board of Directors has determined that Mr. Decker, Chairman of the Audit Committee, is an \u201caudit committee financial expert\u201d (as that term is defined under the applicable SEC rules and regulations) based on the Board\u2019s qualitative assessment of Mr. Decker\u2019s level of knowledge, experience (as described above), and formal education. The functions of the Audit Committee are to determine whether management has established internal controls which are sound, adequate, and working effectively; to ascertain whether Mexco\u2019s assets are verified and safeguarded; to review and approve external audits; to review audit fees and appointment of the Company\u2019s independent public accountants; and to review non-audit services provided by the independent public accountants. The Audit Committee held four meetings during fiscal year ended March 31, 2026. All members of the Audit Committee attended these meetings telephonically or electronically.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 158,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 189,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nicholas C. Taylor",
+     "Chairman of the Board, Chief Executive Officer"
+    ],
+    [
+     "Tamala L. McComic",
+     "President, Chief Financial Officer, Treasurer, Assistant Secretary"
+    ],
+    [
+     "Donna Gail Yanko",
+     "Vice President"
+    ],
+    [
+     "Stacy D. Hardin",
+     "Secretary and Assistant Treasurer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 239,
+    "end_line": 245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Exchange Act requires the Company\u2019s directors and officers and persons who own more than 10 percent of the Company\u2019s outstanding Common Stock, to file with the SEC initial reports of ownership and reports of changes in ownership of Common Stock held by such persons. These persons are also required to furnish the Company with copies of all forms they file under this regulation. Based on our records and other information, the Company believes that during the fiscal year ended March 31, 2026, all applicable Section 16(a) filing requirements were met.\nITEM 11. EXECUTIVE COMPENSATION\nCOMPENSATION DISCUSSION AND ANALYSIS\nOverview of Compensation Program\nThe Compensation Committee of the Board of Directors has responsibility for establishing, implementing and monitoring adherence to our compensation philosophy. The Compensation Committee seeks to provide total compensation paid to our executive officers that is fair, reasonable, and competitive.\nIn this compensation discussion and analysis, the \u201cNamed Executive Officers\u201d are as follows:",
+   "prose_after": "Compensation Philosophy and Objectives\nThe Compensation Committee believes that compensation for executive officers must be competitive to enable the Company to motivate and retain the talent needed to lead and grow the Company, reward successful performance and closely align the interests of our executives with the Company. The ultimate objective of our compensation program is to improve stockholder value.\nIn setting compensation levels, the Compensation Committee evaluates both performance and overall compensation. The review of executive officers\u2019 performance includes a mix of financial and non-financial measures. In addition to business results, employees are expected to uphold a commitment to integrity, maximize the development of each individual and continue to improve the environmental quality of the Company\u2019s operations.\nIn order to continue to attract and retain the best employees, the Compensation Committee believes the executive compensation packages provided to the Named Executive Officers should include both cash and stock-based compensation.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 213,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 254,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Element",
+     "Form of Compensation",
+     "Purpose"
+    ],
+    [
+     "Base Salary",
+     "Cash",
+     "Provide competitive, fixed compensation to attract and retain executive talent."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Short-Term Incentive",
+     "Cash Bonus",
+     "Create a strong financial incentive for achieving financial success and for the competitive retention of executives."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Incentive",
+     "Stock Options and Restricted Stock Grants",
+     "Provide incentives to strengthen alignment of executive team interests with Company interests, reward long-term achievement, and promote executive retention."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Insurance Benefits",
+     "Eligibility to participate in the plan is available to our full time employees, including major medical, dental, life, and short-term disability plans.",
+     "Plan is part of employee benefit."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 279,
+    "end_line": 295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Consistent with our compensation objectives, the Compensation Committee has structured our annual and long-term incentive-based executive compensation to attract and retain the best talent, reward financial success, and closely align executives\u2019 interests with the Company\u2019s interests. In setting the compensation, the Compensation Committee reviews total direct compensation for the Named Executive Officers, which includes salary, annual cash incentives, and long-term equity incentives. The appropriate level and mix of incentive compensation is not based upon a formula, but is a subjective determination made by the Compensation Committee.\nWe do not have a policy of stock ownership requirements. In addition, we do not have any employment contracts or change of control agreements, although equity issued pursuant to our Stock Plans is subject to accelerated vesting as described below in \u201cPotential Payments Upon a Change of Control or Termination\u201d.\nThe Compensation Committee reviews compensation matters and usually performs its annual review of officer salaries during the first quarter of each fiscal year.\nElements of Compensation",
+   "prose_after": "Insurance Benefits, Defined Benefit Plans and Other Arrangements\nWe offer an insurance package to all eligible employees that includes major medical, dental, and life insurance. The life insurance benefit provides for a maximum term payout of $30,000. This package also provides for a short-term disability benefit with a maximum payout of $200 per week for a term of up to 13 weeks.\nLong-term incentive compensation for executive officers consists solely of awards under the Company\u2019s Employee Incentive Stock Plan. The Company does not maintain a defined benefit pension plan.\nEffective January 1, 2026, the Company adopted a tax-qualified 401(k) retirement savings plan for eligible employees. As of March 31, 2026, the plan had not commenced operations and, accordingly, did not constitute a component of executive compensation for the fiscal year.\nPotential Payments Upon a Change in Control or Termination\nThe Company does not have any employment contracts or change of control agreements with its Named Executive Officers. However, under the terms of the 2019 Employee Incentive Stock Plan, in the event of a change of control of the Company, awards granted under the Stock Plan, may become immediately vested and fully exercisable in accordance with the terms of the applicable award agreements. Upon termination of employment, stock options generally remain exercisable only to the extent such options were exercisable as of the date of termination, unless the Compensation Committee determines otherwise pursuant to the terms of the Stock Plan and applicable award agreement.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 254,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 296,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary (3)",
+     "",
+     "Bonus",
+     "",
+     "Option Awards (1)",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Nicholas C. Taylor(2)",
+     "2026",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Chairman & CEO",
+     "2025",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2024",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tamala L. McComic",
+     "2026",
+     "$",
+     "242,550",
+     "$",
+     "60,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "302,550"
+    ],
+    [
+     "President, CFO, Treasurer",
+     "2025",
+     "$",
+     "235,442",
+     "$",
+     "57,750",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "293,192"
+    ],
+    [
+     "& Assistant Secretary",
+     "2024",
+     "$",
+     "235,997",
+     "$",
+     "57,750",
+     "$",
+     "218,250",
+     "$",
+     "-",
+     "$",
+     "511,997"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Donna Gail Yanko",
+     "2026",
+     "$",
+     "1,200",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,200"
+    ],
+    [
+     "Vice President",
+     "2025",
+     "$",
+     "1,200",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,200"
+    ],
+    [
+     "",
+     "2024",
+     "$",
+     "1,200",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,200"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stacy D. Hardin",
+     "2026",
+     "$",
+     "79,140",
+     "$",
+     "14,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "93,140"
+    ],
+    [
+     "Secretary & Assistant Treasurer",
+     "2025",
+     "$",
+     "76,800",
+     "$",
+     "12,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "88,800"
+    ],
+    [
+     "",
+     "2024",
+     "$",
+     "76,800",
+     "$",
+     "12,000",
+     "$",
+     "48,015",
+     "$",
+     "-",
+     "$",
+     "136,815"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 321,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "COMPENSATION COMMITTEE INTERLOCKS AND INSIDER PARTICIPATION\nThe Compensation Committee was formed as of June 15, 2005, and Messrs. Clayton, Decker, and Schroeder are current members thereof. No member of the Compensation Committee is an officer or employee of the Company. None of the Company\u2019s executive officers served on the Board of Directors or the Compensation Committee of any other entity, for which any officers of such other entity served either on our Board of Directors or the Compensation Committee. The Compensation Committee makes recommendations regarding compensation, subject to approval of the entire Board of Directors.\nEXECUTIVE COMPENSATION\nThe compensation paid to the Named Executive Officers generally consists of base salaries, annual incentive bonus payments, and awards under the Stock Plans. The following table summarizes the total compensation awarded to, earned by, or paid to the Named Executive Officers during fiscal years 2026, 2025, and 2024.\nSummary Compensation Table",
+   "prose_after": "(1) The amounts in this column reflect the aggregate grant date fair value attributable to stock options granted in accordance with ASC 718, \u201cCompensation\n- Stock Compensation\u201d pursuant to the 2019 Employee Incentive Stock Plan.\n(2) Mr. Taylor waived his director\u2019s fee for fiscal 2026, 2025, and 2024. The sole compensation to be received by the Chairman and CEO of the Company for such period consists of the waived director\u2019s fees.\n(3) Salary amounts for Ms. McComic and Ms. Hardin include accrued vacation not taken and sold back to the Company as follows: fiscal 2026 includes $4,620 for Ms. McComic; fiscal 2025 includes $4,442 for Ms. McComic; and fiscal 2024 includes $4,997 for Ms. McComic.\nEMPLOYEE INCENTIVE STOCK PLANS\nThe Company has two equity compensation plans: the 2009 Employee Incentive Stock Plan (the \u201c2009 Plan\u201d) and the 2019 Employee Incentive Stock Plan (the \u201c2019 Plan\u201d) (collectively, the \u201cStock Plans\u201d).\nThe 2009 Plan provided for the award of stock up to 200,000 shares and includes option awards as well as stock awards. Option awards were granted with restrictions, including payment for the shares and employment of not less than four years from the date of the award. Stock awards were granted without restrictions and without payment by the recipient. Although shares are remaining unissued under the 2009 Plan, those unawarded shares are no longer available with the adoption of the 2019 Plan.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 296,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares Authorized for Issuance under Plan",
+     "",
+     "Number of Shares to be Issued upon Exercise of Outstanding Options",
+     "",
+     "Weighted Average Exercise Price of Outstanding Options",
+     "",
+     "Number of Shares Remaining Available for Future Issuance under Plan",
+     ""
+    ],
+    [
+     "2009 Plan",
+     "",
+     "200,000",
+     "",
+     "35,000",
+     "$",
+     "4.84",
+     "",
+     "-"
+    ],
+    [
+     "2019 Plan",
+     "",
+     "200,000",
+     "",
+     "115,883",
+     "$",
+     "10.93",
+     "",
+     "68,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 360,
+    "end_line": 368
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The 2009 Plan provided for the award of stock up to 200,000 shares and includes option awards as well as stock awards. Option awards were granted with restrictions, including payment for the shares and employment of not less than four years from the date of the award. Stock awards were granted without restrictions and without payment by the recipient. Although shares are remaining unissued under the 2009 Plan, those unawarded shares are no longer available with the adoption of the 2019 Plan.\nThe 2019 Plan replaced the 2009 Plan. See information regarding material features of the 2019 Plan in Note 10, Stock-based Compensation, to the Financial Statements included in the Original Report.\nThe Company does not have any employment contracts or change of control agreements. However, the Stock Plan does permit accelerated vesting of stock awards as described above in \u201cPotential Payments Upon a Change of Control or Termination\u201d.\nThe following table summarizes certain information, as of March 31, 2026, relating to the Company\u2019s Stock Plans. The Stock Plans were approved by the Stockholders.",
+   "prose_after": "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END 2026\nThe following table sets forth certain information with respect to the vested and unvested stock options held at March 31, 2026, by each of the Named Executive Officers and the Company\u2019s current directors.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "# of Shares of Unexercised Options Vested",
+     "",
+     "# of Shares of Unexercised Options\n\n\n\nNot Vested",
+     "",
+     "Option Exercise Price\n\n\n\n($/sh)",
+     "",
+     "Option Expiration Date"
+    ],
+    [
+     "Nicholas C. Taylor (1)",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tamala L. McComic",
+     "",
+     "25,000",
+     "",
+     "-",
+     "$",
+     "4.84",
+     "09/11/2028"
+    ],
+    [
+     "",
+     "",
+     "23,528",
+     "",
+     "-",
+     "$",
+     "3.34",
+     "03/04/2030"
+    ],
+    [
+     "",
+     "",
+     "24,853",
+     "",
+     "-",
+     "$",
+     "8.51",
+     "07/25/2031"
+    ],
+    [
+     "",
+     "",
+     "18,750",
+     "",
+     "6,250",
+     "$",
+     "18.05",
+     "08/22/2032"
+    ],
+    [
+     "",
+     "",
+     "12,500",
+     "",
+     "12,500",
+     "$",
+     "12.68",
+     "04/12/2033"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Donna Gail Yanko (1)",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stacy D. Hardin",
+     "",
+     "2,149",
+     "",
+     "-",
+     "$",
+     "3.34",
+     "03/04/2030"
+    ],
+    [
+     "",
+     "",
+     "4,853",
+     "",
+     "-",
+     "$",
+     "8.51",
+     "07/25/2031"
+    ],
+    [
+     "",
+     "",
+     "3,750",
+     "",
+     "1,250",
+     "$",
+     "18.05",
+     "08/22/2032"
+    ],
+    [
+     "",
+     "",
+     "2,750",
+     "",
+     "2,750",
+     "$",
+     "12.68",
+     "04/12/2033"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael J. Banschbach (1)",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Kenneth L. Clayton (1)",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas R. Craddick (1)",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas H. Decker",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Christopher M. Schroeder",
+     "",
+     "10,000",
+     "",
+     "-",
+     "$",
+     "4.84",
+     "09/11/2028"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 373,
+    "end_line": 404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END 2026\nThe following table sets forth certain information with respect to the vested and unvested stock options held at March 31, 2026, by each of the Named Executive Officers and the Company\u2019s current directors.",
+   "prose_after": "(1) At March 31, 2026, Mr. Taylor, Ms. Yanko, Mr. Banschbach, Mr. Clayton, Mr. Craddick, and Mr. Decker did not hold any options to purchase shares of the Company\u2019s Common Stock.\nDIRECTOR COMPENSATION\nThe following table sets forth the total compensation paid to or earned by each of the Company\u2019s directors, who were not executive officers, during fiscal year 2026.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director",
+     "Fees Paid in Cash(1)",
+     "",
+     "Stock Option Awards(2)",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Michael J. Banschbach",
+     "$",
+     "6,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "6,000"
+    ],
+    [
+     "Kenneth L. Clayton",
+     "$",
+     "6,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "6,000"
+    ],
+    [
+     "Thomas R. Craddick",
+     "$",
+     "6,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "6,000"
+    ],
+    [
+     "Thomas H. Decker",
+     "$",
+     "6,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "6,000"
+    ],
+    [
+     "Christopher M. Schroeder",
+     "$",
+     "6,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "6,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 412,
+    "end_line": 422
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(1) At March 31, 2026, Mr. Taylor, Ms. Yanko, Mr. Banschbach, Mr. Clayton, Mr. Craddick, and Mr. Decker did not hold any options to purchase shares of the Company\u2019s Common Stock.\nDIRECTOR COMPENSATION\nThe following table sets forth the total compensation paid to or earned by each of the Company\u2019s directors, who were not executive officers, during fiscal year 2026.",
+   "prose_after": "(1) Director\u2019s fees are paid at the rate of $1,500 per director quarterly.\n(2) The amounts in this column reflect the aggregate grant date fair value attributable to stock options granted in accordance with ASC 718, \u201cCompensation\n- Stock Compensation\u201d pursuant to the 2019 Employee Incentive Stock Plan. For the year ended March 31, 2026, there were no stock options granted to a director.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding beneficial ownership of the Company\u2019s Common Stock, as of July 20, 2026, by each of the Company\u2019s directors and executive officers, by all executive officers and directors of the Company as a group, and by each person known to the Company to be the beneficial owner of more than 5% of any class of the Company\u2019s outstanding Common Stock.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares (1)",
+     "",
+     "Percent of Class (2)",
+     "",
+     ""
+    ],
+    [
+     "SECURITY OWNERSHIP OF 5% HOLDERS:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Howard Cox, 15 Congress Street, Mailstop B-6, Boston, MA 02109",
+     "",
+     "202,400",
+     "",
+     "9.89",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SECURITY OWNERSHIP OF MANAGEMENT:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael J. Banschbach",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Kenneth L. Clayton",
+     "",
+     "13,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Thomas R. Craddick",
+     "",
+     "10,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Thomas H. Decker (3)",
+     "",
+     "28,573",
+     "",
+     "1.40",
+     "%"
+    ],
+    [
+     "Stacy D. Hardin",
+     "",
+     "17,327",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Tamala L. McComic",
+     "",
+     "119,818",
+     "",
+     "5.54",
+     "%"
+    ],
+    [
+     "Christopher M. Schroeder",
+     "",
+     "10,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Nicholas C. Taylor",
+     "",
+     "944,000",
+     "",
+     "46.14",
+     "%"
+    ],
+    [
+     "Donna Gail Yanko",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Officers and directors as a group (9 persons)",
+     "",
+     "1,142,718",
+     "",
+     "55.53",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 431,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Director\u2019s fees are paid at the rate of $1,500 per director quarterly.\n(2) The amounts in this column reflect the aggregate grant date fair value attributable to stock options granted in accordance with ASC 718, \u201cCompensation\n- Stock Compensation\u201d pursuant to the 2019 Employee Incentive Stock Plan. For the year ended March 31, 2026, there were no stock options granted to a director.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding beneficial ownership of the Company\u2019s Common Stock, as of July 20, 2026, by each of the Company\u2019s directors and executive officers, by all executive officers and directors of the Company as a group, and by each person known to the Company to be the beneficial owner of more than 5% of any class of the Company\u2019s outstanding Common Stock.",
+   "prose_after": "* Indicates less than 1% of the outstanding shares of the Company\u2019s Common Stock.\n(1) Included in the number of shares of Common Stock Beneficially Owned are shares that such persons have the right to acquire within 60 days of the record date, July 20, 2026, pursuant to options to purchase such Common Stock (Ms. Hardin, 16,127; Ms. McComic, 117,131; and Mr. Schroeder, 10,000).\n(2) Securities not outstanding, but included in the beneficial ownership of each such person, are deemed to be outstanding for the purpose of computing the percentage of outstanding securities of the class owned by such person, but are not deemed to be outstanding for the purpose of computing the percentage of the class owned by any other person.\n(3) Includes shares beneficially owned as follows: Mr. Decker\u2019s spouse \u2013 10,173.\nOTHER MATTERS\nOur Board of Directors has approved a process for collecting, organizing and delivering all stockholder communications to each of its members. To contact all directors on the Board, all directors on a Board committee, or an individual member or members of the Board of Directors, a stockholder may mail a written communication to: Mexco Energy Corporation, Attention: Corporate Secretary, P.O. Box 10502, Midland, Texas 79702. All communications received in the mail will be opened by the Company\u2019s Corporate Secretary for the purpose of determining whether the contents represent a message to the Board of Directors. The contents of stockholder communications to the Board of Directors will be promptly relayed to the appropriate members. The Company encourages all members of the Board of Directors to attend the Annual Meeting of stockholders, although we have no formal policy requiring attendance.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 407,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "167,265",
+     "$",
+     "151,463"
+    ],
+    [
+     "Audit related fees",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Tax service fees (2)",
+     "$",
+     "43,155",
+     "$",
+     "28,655"
+    ],
+    [
+     "All other fees",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "210,420",
+     "$",
+     "180,118"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 487,
+    "end_line": 498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with Section 803A of the NYSE American Company Guide and under the Exchange Act, the Board must affirmatively determine the independence of each director. The Board has determined each of the following directors to be an \u201cindependent director\u201d as such term is defined in said rules: Michael J. Banschbach, Kenneth L. Clayton, Thomas H. Decker, and Christopher\nM. Schroeder. In this Amended Report, these four directors are referred to individually as an \u201cIndependent Director\u201d and collectively as the \u201cIndependent Directors.\u201d The Board is comprised of a majority of Independent Directors, and the Audit Committee, the Compensation Committee, and the Nominating Committee are comprised entirely of Independent Directors.\nIn addition, the Board has determined that Mr. Decker, Chairman of the Audit Committee, is an \u201caudit committee financial expert\u201d (as that term is defined under the applicable SEC rules and regulations) based on the Board\u2019s qualitative assessment of Mr. Decker\u2019s level of knowledge, experience (as described above), and formal education.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe table below sets forth the aggregate fees billed by Weaver and Tidwell L.L.P., the Company\u2019s independent registered public accounting firm, for fiscal 2026 and fiscal 2025:",
+   "prose_after": "(1) Audit fees consist of professional services rendered for the audit of the Company\u2019s annual consolidated financial statements included in its Annual Report on Form 10-K, review of the Company\u2019s quarterly financial statement included in its Quarterly Reports on Form 10-Q and review of the Company\u2019s other filings with the SEC, including consents for the years ended March 31, 2026 and 2025.\n(2) Tax fees are for professional services rendered in connection with tax return preparation and consultation on tax matters.\nThe Audit Committee\u2019s policy on pre-approval of audit and audit-related fees requires the Chairman of the Audit Committee to sign all engagement letters of the principal independent accountant prior to commencement of any audit and non-audit services. All fees paid in fiscal 2026 and 2025 were approved in accordance with these procedures. All of the work performed in auditing the Company\u2019s consolidated financial statements during the last two fiscal years was performed by the full-time, permanent employees of the respective independent registered public accounting firm. The Audit Committee considers whether the services provided for non-audit services are compatible with maintaining Weaver\u2019s independence, and has concluded that the provision of such services by Weaver was compatible with the maintenance of its independence in the conduct of its auditing functions.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "MEXCO ENERGY CORPORATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Nicholas C. Taylor",
+     "By:",
+     "/s/ Tamala L. McComic"
+    ],
+    [
+     "",
+     "Chairman of the Board and Chief Executive Officer",
+     "",
+     "President and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: July 30, 2026",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "MEXCO ENERGY CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 519,
+    "end_line": 528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The Audit Committee\u2019s policy on pre-approval of audit and audit-related fees requires the Chairman of the Audit Committee to sign all engagement letters of the principal independent accountant prior to commencement of any audit and non-audit services. All fees paid in fiscal 2026 and 2025 were approved in accordance with these procedures. All of the work performed in auditing the Company\u2019s consolidated financial statements during the last two fiscal years was performed by the full-time, permanent employees of the respective independent registered public accounting firm. The Audit Committee considers whether the services provided for non-audit services are compatible with maintaining Weaver\u2019s independence, and has concluded that the provision of such services by Weaver was compatible with the maintenance of its independence in the conduct of its auditing functions.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\nConsolidated Financial Statements. None. No financial statements or supplemental data are filed with this Amended Report.\nFinancial Statement Schedules. None. No financial statement schedules are filed with this Amended Report.\nExhibits. See the Exhibit Index immediately following the signature page of this Amended Report, which Exhibit Index is incorporated herein by reference.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "INDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 514,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of the Chief Executive Officer of the Company pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of the Chief Financial Officer of the Company pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit\n\n\n\nNumber"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 532,
+    "end_line": 542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 543,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,66 @@
+{
+ "accession": "0001019965-08-000117",
+ "cik": "0001408752",
+ "form": "10-K",
+ "filing_date": "2008-03-28",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "rpt10klxs200716n.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 6. Selected Financial Data. Delaware New York, New York",
+     "10019 (212) 526-7000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 102,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities. 74-2440850"
+    },
+    "note": null
+   },
+   "prose_before": "Exhibit 34 Attestation reports on assessment of compliance with servicing criteria for asset-backed securities.\nNot Applicable. a) Aurora Loan Services LLC, as Master Servicer b) Aurora Loan Services LLC, as Servicer c) Countrywide Home Loans Servicing LP, as Servicer d) LaSalle Bank National Association, as Custodian e) Newport Management Corporation, as Sub-Contractor for Aurora Loan Services LLC f) U.S. Bank National Association, as Trustee, Paying Agent and Custodian g) Westlake Settlement Services, LLC, as Sub-Contractor for Aurora Loan Services LLC\n745 Seventh Avenue\na) Aurora Loan Services LLC, as Master Servicer b) Aurora Loan Services LLC, as Servicer c) Countrywide Home Loans Servicing LP, as Servicer d) LaSalle Bank National Association, as Custodian e) Newport Management Corporation, as Sub-Contractor for Aurora Loan Services LLC f) U.S. Bank National Association, as Trustee, Paying Agent and Custodian g) Westlake Settlement Services, LLC, as Sub-Contractor for Aurora Loan Services LLC",
+   "prose_after": "Item 1122 of Regulation AB. Compliance with Applicable Servicing Criteria\n(State or Other Not Applicable. (Address of Principal Executive Offices) (Zip Code) (Telephone number,\nReports on assesment of compliance with the servicing criteria for asset-backed securities are attached hereto under Item 15.\nJurisdiction including area code)\nItem 7. Management's Discussion and Analysis of Financial Condition and Results of Operation.\nSecurities registered pursuant to Section 12(b) of the Act: None.\nLaSalle Bank National Association: LaSalle Bank National Association's (\"LaSalle\") Report on Assessment of Compliance with Servicing Criteria for 2007 (the \"2007 Assessment\") attached to this Report on Form 10-K describes in Appendix B the following material instance of noncompliance related to investor reporting: Not Applicable.\nSecurities registered pursuant to Section 12(g) of the Act: None.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

@@ -1,0 +1,6224 @@
+{
+ "accession": "0001446247-10-000008",
+ "cik": "0000095302",
+ "form": "10-K",
+ "filing_date": "2010-03-31",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n(State or other jurisdiction of\n\nincorporation or organization)",
+     "59-0950777\n\n(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES AND EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2009\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________.\nCommission file number 01-06914\nWorldwide Biotech & Pharmaceutical Company\n(Exact name of small business issuer as specified in its charter)",
+   "prose_after": "4 Fenghui South Road, 15th Floor, A10-11501\nJie Zuo Mansion, Xi\u2019an, Shaanxi,\nP.R. China 710075\n(Address of principal executive offices)\n(86) 29-88193339\n(Issuer's telephone number)\nSecurities registered under Section 12(b) of the Exchange Act: None\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, par value $.001 per share\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes \uf06f No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 40,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "11"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "11"
+    ],
+    [
+     "Item 4.",
+     "Removed and Reserved",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "12"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "13"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "17"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "18 - 38"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "39"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "39"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "40"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "40"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "42"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "44"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "45"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "46"
+    ],
+    [
+     "",
+     "Signatures",
+     "47"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 101
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7 229.405 of this chapter) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. Yes \uf06f No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \u201caccelerated filer and large accelerated filer\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer \uf06f Accelerated filer \uf06f Non-accelerated filer \uf06f Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act) Yes \uf06f No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant as of March 24, 2010 was $632,461, based on the closing price of the Common Stock of $0.015 on such date.\nThe number of shares outstanding of the registrant's common stock as of March 24, 2010: 53,915,653 shares, $.001 Par Value.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1. Business\nCAUTIONARY STATEMENT REGARDING FORWARD LOOKING INFORMATION\nThis annual report on Form 10-K and other statements issued or made from time to time by Worldwide Biotech & Pharmaceutical Company, a Delaware corporation (the \u201cCompany\u201d and/or \u201cWorldwide\u201d), contain statements which may constitute \u201cForward-Looking Statements\u201d within the meaning of the Securities Act of 1933, as amended (the \u201cAct\u201d) and the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d), including the Private Securities Litigation Reform Act of 1995, 15 U.S.C.A. Sections 77Z-2 and 78U-5 (SUPP. 1996). Those statements include statements regarding the intent, belief or current expectations of Worldwide and its officers/directors as well as the assumptions on which such statements are based. Prospective investors are cautioned that any such forward-looking statements are not guarantees of future performance and involve risks and uncertainties, and that actual results may differ materially from those contemplated by such forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter",
+     "2009",
+     "",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "First",
+     "$",
+     "0.04",
+     "$",
+     "0.01",
+     "$",
+     "0.05",
+     "$",
+     "0.03"
+    ],
+    [
+     "Second",
+     "$",
+     "0.02",
+     "$",
+     "0.01",
+     "$",
+     "0.05",
+     "$",
+     "0.03"
+    ],
+    [
+     "Third",
+     "$",
+     "0.09",
+     "$",
+     "0.02",
+     "$",
+     "0.04",
+     "$",
+     "0.03"
+    ],
+    [
+     "Fourth",
+     "$",
+     "0.03",
+     "$",
+     "0.01",
+     "$",
+     "0.03",
+     "$",
+     "0.01"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 459,
+    "end_line": 468
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nMarket Information\nThe Company\u2019s common stock is traded on the OTCBB under the symbol \u201cWWBP.OB\u201d. The Company\u2019s common stock consists of 90,000,000 shares authorized, par value $.001 per share, of which, as of December 31, 2009, there are 53,915,653 shares issued and outstanding. According to the Company\u2019s Restated Certificate of Incorporation, shareholders are not entitled to preemptive rights nor are they entitled to cumulative rights. The common stock started trading under the symbol SCII on August 20, 2003, the effective date of the 1-100 reverse stock split. The following is the high and low prices of our stock for the last eight quarters.\nThe following table sets forth the range of bid prices of our common stock as quoted on the OTCBB during the periods indicated. The prices reported represent prices between dealers, do not include markups, markdowns or commissions and do not necessarily represent actual transactions.",
+   "prose_after": "Our common shares are issued in registered form. American Stock Transfer & Trust Company, 59 Maiden Lane, New York, NY 10038, is the registrar and transfer agent for our common stock.\nFrom January 1 to March 24, 2010, the highest and lowest prices of our common shares on the OTC Bulletin Board were $0.05 per share and $0.007 per share. On March 24, 2010, the closing price of our common stock on the OTC Bulletin Board on the last day it traded before the filing of this Annual Report was $0.015 per share.\nAs of March 24, 2009, there were approximately 126 shareholders of record of the Company\u2019s common stock, which does not include shareholders who own our shares in so-called \u201cstreet name.\u201d\nDividends\nWe have not paid dividends on our shares of common stock, and do not intend to pay dividends in the foreseeable future. We intend to retain earnings, if any, to finance development and expansion of our business. Payment of dividends in the future will depend among other things, upon our ability to generate earnings, our need for capital, and our overall financial condition.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue",
+     "$",
+     "60,480",
+     "",
+     "$",
+     "136,043",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "(202,913)",
+     "",
+     "",
+     "(117,491)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "(142,433)",
+     "",
+     "",
+     "18,552",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "31,303",
+     "",
+     "",
+     "21,868",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "112,562",
+     "",
+     "",
+     "93,801",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Selling expense",
+     "",
+     "101,189",
+     "",
+     "",
+     "44,564",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "419,124",
+     "",
+     "",
+     "965,140",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "664,178",
+     "",
+     "",
+     "1,125,373",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(806,611)",
+     "",
+     "",
+     "(1,106,821)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(734)",
+     "",
+     "",
+     "(3,111)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "476,575",
+     "",
+     "",
+     "467,141",
+     ""
+    ],
+    [
+     "Government grants",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other (income) expense",
+     "",
+     "(19,635)",
+     "",
+     "",
+     "(5,255)",
+     ""
+    ],
+    [
+     "Other (income) expense\u2013related parties",
+     "",
+     "(45,169)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and production costs of idle capacity",
+     "",
+     "243,284",
+     "",
+     "",
+     "77,888",
+     ""
+    ],
+    [
+     "Total Other (Income) Expenses",
+     "",
+     "654,321",
+     "",
+     "",
+     "536,663",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(1,460,932)",
+     "",
+     "",
+     "(1,643,484)",
+     ""
+    ],
+    [
+     "Less: Net loss attributable to the noncontrolling interest",
+     "",
+     "243,269",
+     "",
+     "",
+     "25,080",
+     ""
+    ],
+    [
+     "Net Loss Attributable to WWBP common stockholders",
+     "",
+     "(1,217,663)",
+     "",
+     "",
+     "(1,618,404)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share \u2013 Basic and diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding \u2013 Basic and diluted",
+     "",
+     "53,915,653",
+     "",
+     "",
+     "53,915,653",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 533,
+    "end_line": 581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "As a biotech-focused company, we have made significant progress on our HCV research pipelines. We were able to successfully set up the in vitro intact HCV virus culturing system which could continuously replicate the HCV virus in vitro and we are the first entity in the world to break this bottle neck in the HCV research field. We made some progress on the improving of sensitivity and specificity on HCV diagnostic reagents in 2007. We screened four Chinese traditional medicines using high-throughput anti-HCV medicine screening system and got some primary data. The data will be verified by further test. We expect to get one or two new anti- HCV leads in next years if we could raise enough capital funding for our research. We optimized large\u2013quantity purification methods for replication-deficient HCV virus and setting up ideal animal models for efficacy and safety studies of HCV human vaccine in 2007. We will actively seek new collaboration opportunities and promising research projects. The progress on our research projects depend on our ability to raise enough funding in the following year.\nRESULTS OF OPERATIONS\nThe following table shows the financial data of the consolidated statements of operations of the Company and its subsidiaries for the years ended December 2009 and 2008. The data should be read in conjunction with the audited consolidated financial statements of the Company and related notes thereto.",
+   "prose_after": "Fiscal Year Ended December 31, 2009 compared to year ended December 31, 2008\nREVENUES\nFor the year ended December 31, 2009, our revenues were $60,480, as compared to $136,043 for the year ended December 31, 2008, a decrease of $75,563 in revenue. We attribute this decrease in net revenues to a decline in sales due to the Company\u2019s limited investment in marketing its products as a result of not having sufficient financing in place.\nOPERATING EXPENSES\nFor the year ended December 31, 2009, the selling, general and administrative expenses amounted to $520,313 as compared to the selling, general and administrative expenses of $1,009,704 for the year ended December 31, 2008. Gross profit for the year ended December 31, 2009 was $(142,433), as compared to $18,552 for the year ended December 31, 2008.\nThe changes in operating expenses include:\n\u00b7 For the year ended December 31, 2009, we incurred selling expense of $101,189 compared to $44,564 for the year ended December 31, 2008. The increase was due to the set up of a sales center in Beijing and increased cost of sales.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 581,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit) and Comprehensive Income (Loss)",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Comprehensive Income (Loss)",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "27 - 38"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We perform ongoing credit evaluations of our customers and adjust credit limits based upon customer payment history and current creditworthiness. We continuously monitor collections and payments from our customers and maintain a provision for estimated credit losses based upon our historical experience and any specific customer collection issues that have been identified. While such credit losses have historically been within our expectations and the provisions established, we cannot guarantee that we will continue to experience credit loss rates similar to those we have experienced in the past. Measurement of such losses requires consideration of historical loss experience, including the need to adjust for current conditions, and judgments about the probable effects of relevant observable data, including present economic conditions such as delinquency rates and financial health of specific customers.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nCredit Risk\nFinancial instruments that potentially subject the Company to significant concentration of credit risk consist primarily of cash and cash equivalents. As of December 31, 2009, substantially all of the Company's cash and cash equivalents were held by major financial institutions located in the PRC, none of which are insured. However, the Company has not experienced losses on these accounts and management believes that the Company is not exposed to significant risks on such accounts.\nItem 8. Financial Statements and Supplementary Data\nConsolidated Financial Statements\nFor The Year Ended December 31, 2009 and December 31, 2008\n(With Reports of Independent Registered Public Accounting Firm Thereon)\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nWorldwide Biotech & Pharmaceutical Company\nYangling, Shaanxi, China\nWe have audited the accompanying consolidated balance sheet of Worldwide Biotech & Pharmaceutical Company as of December 31, 2009 and the related consolidated statements of operations, stockholders\u2019 equity (deficit), comprehensive income (loss) and cash flows for the year ended December 31, 2009. The financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall consolidated financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 708,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2009",
+     "",
+     "",
+     "December 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "595,478",
+     "",
+     "$",
+     "190,039",
+     ""
+    ],
+    [
+     "Accounts receivable, net (Note 4)",
+     "",
+     "1,863",
+     "",
+     "",
+     "26,238",
+     ""
+    ],
+    [
+     "Inventories (Note 5)",
+     "",
+     "139,507",
+     "",
+     "",
+     "126,585",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepayments and other current assets",
+     "",
+     "87,231",
+     "",
+     "",
+     "62,061",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "824,079",
+     "",
+     "",
+     "404,923",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and Equipment, net",
+     "",
+     "4,316,918",
+     "",
+     "",
+     "4,858,303",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land use rights, net",
+     "",
+     "768,590",
+     "",
+     "",
+     "781,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "5,909,587",
+     "",
+     "$",
+     "6,045,041",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan payable (Note 7)",
+     "$",
+     "703,089",
+     "",
+     "$",
+     "703,554",
+     ""
+    ],
+    [
+     "Note payable- stockholder (Note 6)",
+     "",
+     "161,300",
+     "",
+     "",
+     "198,051",
+     ""
+    ],
+    [
+     "Current maturities of note payable - bank (Note 8)",
+     "",
+     "1,464,768",
+     "",
+     "",
+     "1,465,738",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "354,617",
+     "",
+     "",
+     "353,058",
+     ""
+    ],
+    [
+     "Due to related parties (Note 6)",
+     "",
+     "3,090,339",
+     "",
+     "",
+     "2,140,537",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "2,124,049",
+     "",
+     "",
+     "1,935,279",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "7,898,162",
+     "",
+     "",
+     "6,796,217",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "7,898,162",
+     "",
+     "",
+     "6,796,217",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EQUITY(DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WWBP stockholders' equity(deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock $.001 par value; 90,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "53,915,653 shares issued and outstanding,",
+     "",
+     "53,916",
+     "",
+     "",
+     "53,916",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "12,669,140",
+     "",
+     "",
+     "12,499,171",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(14,645,196)",
+     "",
+     "",
+     "(13,427,533)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain",
+     "",
+     "162,167",
+     "",
+     "",
+     "123,270",
+     ""
+    ],
+    [
+     "Total WWBP stockholders' equity(deficit)",
+     "",
+     "(1,759,973)",
+     "",
+     "",
+     "(751,176)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "(228,602)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Equity(Deficit)",
+     "",
+     "(1,988,575)",
+     "",
+     "",
+     "(751,176)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Equity(Deficit)",
+     "$",
+     "5,909,587",
+     "",
+     "$",
+     "6,045,041",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+    "CONSOLIDATED BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above, present fairly, in all material respects, the consolidated financial position of Worldwide Biotech & Pharmaceutical Company as of December 31, 2008, and the consolidated results of operations and cash flows for the year ended December 31, 2008 in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying consolidated financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 3 to the financial statements, the Company has generated limited revenue and has incurred accumulated losses of $13,427,533 on December 31, 2008 since inception. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also discussed in Note 3. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Kempisty & Company CPAs PC\nKempisty & Company,\nCertified Public Accountants, P.C.\nNew York, New York\nMarch 23, 2009",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 766,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 832,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2009",
+     "",
+     "",
+     "December 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Revenues",
+     "$",
+     "60,480",
+     "",
+     "$",
+     "136,043",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "202,913",
+     "",
+     "",
+     "117,491",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "(142,433)",
+     "",
+     "",
+     "18,552",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling expenses",
+     "",
+     "101,189",
+     "",
+     "",
+     "44,564",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "31,303",
+     "",
+     "",
+     "21,868",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "112,562",
+     "",
+     "",
+     "93,801",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "419,124",
+     "",
+     "",
+     "965,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "664,178",
+     "",
+     "",
+     "1,125,373",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(806,611)",
+     "",
+     "",
+     "(1,106,821)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Expenses(Income):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(734)",
+     "",
+     "",
+     "(3,111)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "476,575",
+     "",
+     "",
+     "467,141",
+     ""
+    ],
+    [
+     "Other (income) expense",
+     "",
+     "(19,635)",
+     "",
+     "",
+     "(5,255)",
+     ""
+    ],
+    [
+     "Other (income) expense-related parties",
+     "",
+     "(45,169)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and production cost of idle capacity",
+     "",
+     "243,284",
+     "",
+     "",
+     "77,888",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other (Income) Expenses",
+     "",
+     "654,321",
+     "",
+     "",
+     "536,663",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(1,460,932)",
+     "",
+     "",
+     "(1,643,484)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Net loss attributable to the noncontrolling interest",
+     "",
+     "243,269",
+     "",
+     "",
+     "25,080",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Attributable to WWBP common stockholders",
+     "$",
+     "(1,217,663)",
+     "",
+     "$",
+     "(1,618,404)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Per Common Share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share - Basic and diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- Basic and diluted",
+     "",
+     "53,915,653",
+     "",
+     "",
+     "53,915,653",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 892
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 832,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2009",
+     "",
+     "",
+     "December 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,460,932)",
+     "",
+     "$",
+     "(1,643,484)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income(loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain(loss)",
+     "",
+     "53,564",
+     "",
+     "",
+     "90,054",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "",
+     "(1,407,368)",
+     "",
+     "",
+     "(1,553,430)",
+     ""
+    ],
+    [
+     "Comprehensive loss attributable to the noncontrolling interest",
+     "",
+     "228,602",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss attributable to WWBP",
+     "$",
+     "(1,178,766)",
+     "",
+     "$",
+     "(1,553,430)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 895,
+    "end_line": 919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 894,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 919,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CHANGES IN EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FOR THE YEARS ENDED DECEMBER 31, 2009 and 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "WWBP Shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock, $.001 Par Value",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Comprehnsive",
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "Noncontrolling",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "Income(Loss)",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Income",
+     "",
+     "Interest",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2007",
+     "",
+     "$",
+     "684,524",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "53,915,653",
+     "$",
+     "53,916",
+     "$",
+     "12,381,441",
+     "$",
+     "(11,809,129)",
+     "",
+     "$",
+     "58,296",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest for due to related parties",
+     "",
+     "",
+     "117,730",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "117,730",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income(loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "(1,643,484)",
+     "",
+     "",
+     "(1,643,484)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,618,404)",
+     "",
+     "",
+     "",
+     "",
+     "(25,080)",
+     ""
+    ],
+    [
+     "Other comprehensive income, net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain",
+     "",
+     "",
+     "90,054",
+     "",
+     "",
+     "90,054",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "64,974",
+     "",
+     "25,080",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income(loss)",
+     "",
+     "",
+     "(1,553,430)",
+     "",
+     "$",
+     "(1,553,430)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2008",
+     "",
+     "$",
+     "(751,176)",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "53,915,653",
+     "$",
+     "53,916",
+     "$",
+     "12,499,171",
+     "$",
+     "(13,427,533)",
+     "",
+     "$",
+     "123,270",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest for due to related parties",
+     "",
+     "",
+     "169,969",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "169,969",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income(loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "(1,460,932)",
+     "",
+     "",
+     "(1,460,932)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,217,663)",
+     "",
+     "",
+     "",
+     "",
+     "(243,269)",
+     ""
+    ],
+    [
+     "Other comprehensive income, net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation loss",
+     "",
+     "",
+     "53,564",
+     "",
+     "",
+     "53,564",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "38,897",
+     "",
+     "14,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income(loss)",
+     "",
+     "",
+     "(1,407,368)",
+     "",
+     "$",
+     "(1,407,368)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2009",
+     "",
+     "$",
+     "(1,988,575)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "53,915,653",
+     "$",
+     "53,916",
+     "$",
+     "12,669,140",
+     "$",
+     "(14,645,196)",
+     "",
+     "$",
+     "162,167",
+     "$",
+     "(228,602)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF CHANGES IN EQUITY (DEFICIT)",
+    "FOR THE YEARS ENDED DECEMBER 31, 2009 and 2008"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 922,
+    "end_line": 969
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 969,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For The Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2009",
+     "",
+     "",
+     "December 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,460,932)",
+     "",
+     "$",
+     "(1,643,484)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "433,469",
+     "",
+     "",
+     "449,685",
+     ""
+    ],
+    [
+     "Imputed interest for due to related parties",
+     "",
+     "169,969",
+     "",
+     "",
+     "117,730",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "24,375",
+     "",
+     "",
+     "45,491",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(12,922)",
+     "",
+     "",
+     "52,268",
+     ""
+    ],
+    [
+     "Prepayments and other current assets",
+     "",
+     "(25,170)",
+     "",
+     "",
+     "59,359",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,559",
+     "",
+     "",
+     "(19,663)",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "627,938",
+     "",
+     "",
+     "616,746",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY (USED IN) OPERATING ACTIVITIES",
+     "",
+     "(241,714)",
+     "",
+     "",
+     "(321,868)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(31,319)",
+     "",
+     "",
+     "(297,919)",
+     ""
+    ],
+    [
+     "Addition of Land user right",
+     "",
+     "(5,731)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY (USED IN) INVESTING ACTIVITIES",
+     "",
+     "(37,050)",
+     "",
+     "",
+     "(297,919)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of note payable - stockholder",
+     "",
+     "(36,597)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayment for due to related parties",
+     "",
+     "-",
+     "",
+     "",
+     "(75,187)",
+     ""
+    ],
+    [
+     "Proceeds from stockholders/officers",
+     "",
+     "665,606",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY (USED IN) FINANCING ACTIVITIES",
+     "",
+     "629,009",
+     "",
+     "",
+     "(75,187)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EFFECT OF EXCHANGE RATE CHANGES ON CASH",
+     "",
+     "55,194",
+     "",
+     "",
+     "69,572",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH",
+     "",
+     "405,439",
+     "",
+     "",
+     "(625,402)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH at beginning of period",
+     "",
+     "190,039",
+     "",
+     "",
+     "815,441",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH at end of period",
+     "$",
+     "595,478",
+     "",
+     "$",
+     "190,039",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW  INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "25,456",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to consolidated financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "WORLDWIDE BIOTECH & PHARMACEUTICAL COMPANY AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF CASH FLOWS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 1031
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 1 - ORGANIZATION AND OPERATIONS\nWorldwide Biotech & Pharmaceutical Company, (\u201cWorldwide\u201d or the \u201cCompany\u201d) was incorporated in Delaware in 1961. In the fourth quarter of 2005, the Company commenced revenue producing operations.\nOn April 20, 2004, as amended on August 3, 2004 and effective December 16, 2004, under an Agreement and Plan of Reorganization, the Company issued 33,600,000 shares of its common stock for the acquisition of all of the outstanding capital stock of Yangling Daiying Biological Engineering Co., Ltd. (\u201cDaiying\u201d) with the former shareholders of the Company retaining 1,057,102 or approximately 5% of the outstanding stock. As a result of the ownership interests of the former shareholders of Daiying, for financial accounting purposes, the exchange of stock has been treated as a recapitalization of Worldwide with Daiying deemed the accounting acquirer and Worldwide deemed the accounting acquiree under the purchase method of accounting in accordance with Statement of Financial Accounting Standards No. 141 \u201cBusiness Combinations\u201d (\u201cSFAS No. 141\u201d). Additionally, as part of the Merger, the Company, whose former name was Sun City Industries, Inc., amended its Articles of Incorporation, and changed its name to Worldwide Biotech & Pharmaceutical Company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 971,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1:",
+     "Unadjusted quoted prices in active markets for identical assets or liabilities"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1158,
+    "end_line": 1161
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company follows the standard, \u201cAccounting for Income Taxes\u201d, codified with ASC 740, which requires recognition of deferred tax assets and liabilities for the expected future tax consequences of events that have been included in the financial statements or tax returns. Under this method, deferred tax assets and liabilities are based on the differences between the financial statement and tax bases of assets and liabilities using enacted tax rates in effect for the year in which the differences are expected to reverse. Deferred tax assets are reduced by a valuation allowance to the extent management concludes it is more likely than not that the assets will not be realized. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in the Consolidated Statements of Operations and Comprehensive Income in the period that includes the enactment date.\nFair value of financial instruments\nThe Company adopted the standard \u201cFair Value Measurements\u201d, codified with ASC 820 and effective January 1, 2008. The provisions of ASC 820 are to be applied prospectively.\nASC 820 clarifies that fair value is an estimate of the exit price, representing the amount that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants (i.e., the exit price at the measurement date). Under ASC 820, fair value measurements are not adjusted for transaction cost. ASC 820 provides for use of a fair value hierarchy that prioritizes inputs to valuation techniques used to measure fair value into three levels:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1132,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1179,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 2:",
+     "Input other than quoted market prices that are observable, either directly or indirectly, and reasonably available.  Observable inputs reflect the assumptions market participants would use in pricing the asset or liability and are developed based on market data obtained from sources independent of the Company."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1166
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1132,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1179,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 3:",
+     "Unobservable inputs.  Unobservable inputs reflect the assumptions that the Company develops based on available information about what market participants would use in valuing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1167,
+    "end_line": 1171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "An asset or liability\u2019s level within the fair value hierarchy is based on the lowest level of any input that is significant to the fair value measurement. Availability of observable inputs can vary and is affected by a variety of factors. The Company uses judgment in determining fair value of assets and liabilities and Level 3 assets and liabilities involve greater judgment than Level 1 and Level 2 assets or liabilities.\nForeign currency translation\nTransactions and balances originally denominated in U.S. dollars are presented at their original amounts. Transactions and balances in other currencies are converted into U.S. dollars in accordance with the standard, \u201cForeign Currency Translation,\u201d codified with ASC 830.\nThe financial records of the Company are maintained in their local currency, the Renminbi (\u201cRMB\u201d), which is the functional currency. Assets and liabilities are translated from the local currency into the reporting currency, U.S. dollars, at the exchange rate prevailing at the balance sheet date. Revenues and expenses are translated at weighted average exchange rates for the period to approximate translation at the exchange rates prevailing at the dates those elements are recognized in the combined and consolidated financial statements. Foreign currency translation gain (loss) resulting from the process of translating the local currency financial statements into U.S. dollars are included in determining accumulated other comprehensive income in the consolidated statement of stockholders' equity.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1132,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1179,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "$",
+     "533,446",
+     "",
+     "$",
+     "512,611",
+     ""
+    ],
+    [
+     "Less: Allowance for doubtful accounts",
+     "",
+     "(531,583)",
+     "",
+     "",
+     "(486,373)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "1,863",
+     "",
+     "$",
+     "26,238",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1263,
+    "end_line": 1274
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "ACCOUNTS RECEIVABLE"
+    }
+   },
+   "prose_before": "While the Company is attempting to produce sufficient revenues, the Company's cash position may not be enough to support the Company's daily operations. Management intends to raise additional funds by way of a public or private offering. Management believes that the actions presently being taken to further implement its business plan and generate sufficient revenues provide the opportunity for the Company to continue as a going concern. While the Company believes in the viability of its strategy to increase revenues and in its ability to raise additional funds, there can be no assurances to that effect. The ability of the Company to continue as a going concern is dependent upon the Company's ability to further implement its business plan and generate sufficient revenues. The financial statements do not include any adjustments that might be necessary if the Company is unable to continue as a going concern.\nNOTE 4 - ACCOUNTS RECEIVABLE\nAccounts receivable at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "For the years ended December 30, 2009 and 2008, the Company recorded bad debt expense of $45,504 and $106,753, respectively.\nNOTE 5 - INVENTORIES\nInventories at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1334,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw Material",
+     "$",
+     "114,925",
+     "",
+     "$",
+     "114,208",
+     ""
+    ],
+    [
+     "Work in process",
+     "",
+     "259,198",
+     "",
+     "",
+     "210,317",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "480,816",
+     "",
+     "",
+     "517,967",
+     ""
+    ],
+    [
+     "",
+     "",
+     "854,939",
+     "",
+     "",
+     "842,492",
+     ""
+    ],
+    [
+     "Less: Inventory obsolescence",
+     "",
+     "(715,432)",
+     "",
+     "",
+     "(715,907)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "139,507",
+     "",
+     "$",
+     "126,585",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1281,
+    "end_line": 1296
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "For the years ended December 30, 2009 and 2008, the Company recorded bad debt expense of $45,504 and $106,753, respectively.\nNOTE 5 - INVENTORIES\nInventories at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "NOTE 6 - PREPAYMENTS AND OTHER CURRENT ASSETS\nPrepayment and other current assets at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1334,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances on purchases",
+     "$",
+     "30,959",
+     "$",
+     "36,698"
+    ],
+    [
+     "Other receivables",
+     "",
+     "56,272",
+     "",
+     "25,363"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "87,231",
+     "$",
+     "62,061"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1301,
+    "end_line": 1312
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "PREPAYMENTS AND OTHER CURRENT ASSETS"
+    }
+   },
+   "prose_before": "NOTE 6 - PREPAYMENTS AND OTHER CURRENT ASSETS\nPrepayment and other current assets at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "NOTE 7 \u2013 PROPERTY, PLANT AND EQUIPMENT\nProperty, plant and equipment stated at cost, less accumulated depreciation at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1334,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Estimated Useful",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Life (Years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Buildings and improvement",
+     "",
+     "20",
+     "$",
+     "4,777,194",
+     "",
+     "$",
+     "4,780,359",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "5-8",
+     "",
+     "190,678",
+     "",
+     "",
+     "190,804",
+     ""
+    ],
+    [
+     "Vechicles",
+     "",
+     "8",
+     "",
+     "1,494,790",
+     "",
+     "",
+     "1,464,580",
+     ""
+    ],
+    [
+     "Construction in progress (b)",
+     "",
+     "",
+     "",
+     "22,880",
+     "",
+     "",
+     "177,058",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "6,485,542",
+     "",
+     "",
+     "6,612,801",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "",
+     "",
+     "(2,168,624)",
+     "",
+     "",
+     "(1,754,498)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "4,316,918",
+     "",
+     "$",
+     "4,858,303",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1317,
+    "end_line": 1334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 PROPERTY, PLANT AND EQUIPMENT"
+    }
+   },
+   "prose_before": "NOTE 7 \u2013 PROPERTY, PLANT AND EQUIPMENT\nProperty, plant and equipment stated at cost, less accumulated depreciation at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "NOTE 7 \u2013 PROPERTY, PLANT AND EQUIPMENT (CONTINUED)\n(a) Depreciation expense\nDepreciation expense for the years ended December 31, 2009 and 2008 was $415,039 and $417,323, respectively.\n(b) Construction in progress\nConstruction in progress comprised capital expenditures for construction of the Company\u2019s new production line, including machinery and equipment and facility set up charges. Upon completion of the construction, the construction in progress was reclassified as machinery and equipment. The Company did not capitalize any interest expense to construction in progress for the years ended December 31, 2009 or 2008.\nNOTE 8 \u2013 LAND USE RIGHTS\nLand use rights at cost, less accumulated amortization at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1334,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land use rights",
+     "$",
+     "891,335",
+     "",
+     "$",
+     "886,188",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(122,745)",
+     "",
+     "",
+     "(104,373)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "768,590",
+     "",
+     "$",
+     "781,815",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1352,
+    "end_line": 1363
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 LAND USE RIGHTS"
+    }
+   },
+   "prose_before": "NOTE 7 \u2013 PROPERTY, PLANT AND EQUIPMENT (CONTINUED)\n(a) Depreciation expense\nDepreciation expense for the years ended December 31, 2009 and 2008 was $415,039 and $417,323, respectively.\n(b) Construction in progress\nConstruction in progress comprised capital expenditures for construction of the Company\u2019s new production line, including machinery and equipment and facility set up charges. Upon completion of the construction, the construction in progress was reclassified as machinery and equipment. The Company did not capitalize any interest expense to construction in progress for the years ended December 31, 2009 or 2008.\nNOTE 8 \u2013 LAND USE RIGHTS\nLand use rights at cost, less accumulated amortization at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "(a) Amortization expense\nAmortization expense for the years ended December 31, 2009 and 2008 was $18,430 and $18,089, respectively.\nNOTE 9 \u2013 LICENSES\nLicenses at cost, less accumulated amortization at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Licenses",
+     "$",
+     "42,066",
+     "",
+     "$",
+     "42,094",
+     ""
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(42,066)",
+     "",
+     "",
+     "(42,094)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1372,
+    "end_line": 1383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 LICENSES"
+    }
+   },
+   "prose_before": "(a) Amortization expense\nAmortization expense for the years ended December 31, 2009 and 2008 was $18,430 and $18,089, respectively.\nNOTE 9 \u2013 LICENSES\nLicenses at cost, less accumulated amortization at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "(a) Amortization expense\nAmortization expense for the years ended December 31, 2009 and 2008 was $0 and $14,273, respectively.\nNOTE 10 - RELATED PARTY TRANSACTIONS\nDue to and notes payable - related parties at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Due to related parties (a)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Guo, Wenxia",
+     "CEO; Stockholder; Stockholder of Daiying",
+     "$",
+     "291,407",
+     "$",
+     "251,330"
+    ],
+    [
+     "Xian Jin Hao Tech",
+     "Stockholder;           Stockholder of Daiying",
+     "",
+     "1,308,568",
+     "",
+     "486,731"
+    ],
+    [
+     "Daiying Bio-Tech Research Institute",
+     "The entity controlled by Guo,Wenxia",
+     "",
+     "1,363,528",
+     "",
+     "1,275,557"
+    ],
+    [
+     "Li, Zhuobin",
+     "Stockholder;          Stockholder of Hua Yang",
+     "",
+     "2,773",
+     "",
+     "2,774"
+    ],
+    [
+     "Chen, Aibin",
+     "Stockholder;          Stockholder of Hua Yang",
+     "",
+     "124,063",
+     "",
+     "124,145"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "3,090,339",
+     "$",
+     "2,140,537"
+    ],
+    [
+     "Note payable- stockholder (b)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lu, Zhongyu",
+     "Prior Stockholder of Ze An",
+     "$",
+     "161,300",
+     "$",
+     "198,051"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1392,
+    "end_line": 1410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "(a) Amortization expense\nAmortization expense for the years ended December 31, 2009 and 2008 was $0 and $14,273, respectively.\nNOTE 10 - RELATED PARTY TRANSACTIONS\nDue to and notes payable - related parties at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "NOTE 10 - RELATED PARTY TRANSACTIONS (CONTINUED)\nThe chief executive officer and a stockholder advanced funds to the Company for its working capital. These advances are unsecured, due on demand and non-interest bearing.\nNote payable to a stockholder is unsecured, payable to a stockholder with interest at 6.3% per annum and due December 4, 2007. The note is currently past due.\nOn March 31, 2007, Xian Jin Hao Sci-Tech Investment Management Co., Ltd. (Xian Jin Hao), a stockholder of the Company converted RMB7.73 million (equivalent to $1 million at the date of conversion) to 10,000,000 shares of the Company\u2019s common stock at $0.10 per share, the closing price of the Company\u2019s common stock on the date of conversion\nOn September 30, 2007, the Company and Xian Jin Hao, a stockholder of the Company reached an agreement whereby the Company transferred certain property to Xian Jin Hao, with the original cost of RMB3,030,707 and Xian Jin Hao assumed the remaining mortgage of RMB1,087,250 and relieved debt of RMB1,943,457. Upon transfer of the property, the related cost of RMB3,030,707 (equivalent to $41,547 at December 31, 2007), accumulated depreciation of RMB447,032 ($61,283) remaining mortgage of RMB1,087,250 ($149,049) and the payable to Jin Hao of RMB1,943,457 ($266,424) were removed from the accounts with the excess value of the payable and assumed mortgage over the net book value of the transferred property being recorded as a contribution to capital.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1410,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan Payable",
+     "$",
+     "703,089",
+     "$",
+     "703,554"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1439,
+    "end_line": 1447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 LOAN PAYABLE"
+    }
+   },
+   "prose_before": "In 2009, Daiying Bio-Tech Research Institute entrusted the Company to process \u201cEmergency Haemostatic Patch\u201d of which the patent belongs to Daiying Bio-Tech Research Institute. In the agreement, the Company will receive $0.3 (RMB 2) by processing each patch. The Company will be reimbursed for cost input for the process. However, the Company has to be responsible for the abnormal spoilage. For the year ended December 31, 2009, due to abnormal spoilage, there is loss of $25,097 for processing Emergency Haemostatic Patch.\nFor raising funds of processing Emergency Haemostatic Patch, Daiying Bio-Tech Research Institute entrusts the Company to apply government grants. The Company is able to get 8% of government grants applied for Emergency Haemostatic Patch as commission. For the year ended December 31, 2009, the company recognized $35,133 other income for providing this service. This income is for government\u2019s grant of $439,168 received in 2007 and government completed inspection on this grant in 2009.\nDaiying Bio-Tech Research Institute rents Company\u2019s building for processing Emergency Haemostatic Patch. The lease agreement is valid from 2009 to 2016. The net value of leased building is $1,602,739 as of December 31, 2009. For the year ended December 31, 2009, other income-rental was 35,133.\nNOTE 11 \u2013 LOAN PAYABLE\nLoans payable at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "Loan payable is collateralized by all of Hua Yang\u2019s equipment, building and land use right, payable to a financial institution, with interest at 6.696% per annum payable monthly, with principal due May 27, 2007. The loan is currently past due. The Company paid interest through May 20, 2007 and interest accrued through September 30, 2009 was included in accrued interest. The net value of equipment, building and land use right collateralized for this loan is $2,873,915 and $3,124,339 as of December 31, 2009 and 2008, respectively.\nNOTE 12 \u2013 CURRENT MATURITIES OF NOTE PAYABLE- BANK\nLoans payable at December 31, 2009 and 2008 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note Payable-Bank-Current Portion",
+     "$",
+     "1,464,768",
+     "$",
+     "1,465,738"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 CURRENT MATURITIES OF NOTE PAYABLE- BANK"
+    }
+   },
+   "prose_before": "Loan payable is collateralized by all of Hua Yang\u2019s equipment, building and land use right, payable to a financial institution, with interest at 6.696% per annum payable monthly, with principal due May 27, 2007. The loan is currently past due. The Company paid interest through May 20, 2007 and interest accrued through September 30, 2009 was included in accrued interest. The net value of equipment, building and land use right collateralized for this loan is $2,873,915 and $3,124,339 as of December 31, 2009 and 2008, respectively.\nNOTE 12 \u2013 CURRENT MATURITIES OF NOTE PAYABLE- BANK\nLoans payable at December 31, 2009 and 2008 consisted of the following:",
+   "prose_after": "Note payable - bank is collateralized by all of Hua Yang\u2019s equipment, building and land use right, and is payable to a financial institution, with interest at 6.696% per annum payable monthly, with RMB5 million (equivalent $667,307) due April 29, 2007 and RMB5 million ($667,308) due April 27, 2008. The note is currently past due for the first principal payment due on April 29, 2007. The Company paid interest through May 20, 2007 and interest accrued through December 31, 2009 was included in accrued interest\nThe accrued interest for above Loan Payable and Current Maturities of Note Payable was $452,234 and $304,998 as of December 31, 2009 and December 31, 2008, respectively. Interest expense accrued for above Loan Payable and Current Maturities of Note Payable was $147,350 and $102,642 for the years end December 31, 2009 and 2008, respectively.\nNOTE 13 - ACCRUED EXPENSES AND OTHER CURRENT LIABILITIES\nAccrued expenses and other current liabilities at December 31, 2009 and 2008, consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "33,000",
+     "$",
+     "12,583"
+    ],
+    [
+     "Other tax payable",
+     "",
+     "23,121",
+     "",
+     "18,242"
+    ],
+    [
+     "Customer deposits",
+     "",
+     "259,605",
+     "",
+     "198,522"
+    ],
+    [
+     "Salaries and benefits payable",
+     "",
+     "72,071",
+     "",
+     "82,683"
+    ],
+    [
+     "Other payables",
+     "",
+     "852,158",
+     "",
+     "853,574"
+    ],
+    [
+     "Deferred income",
+     "",
+     "366,192",
+     "",
+     "439,722"
+    ],
+    [
+     "Accrued interest",
+     "",
+     "517,902",
+     "",
+     "329,953"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,124,049",
+     "$",
+     "1,935,279"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1471,
+    "end_line": 1488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "ACCRUED EXPENSES AND OTHER CURRENT LIABILITIES"
+    }
+   },
+   "prose_before": "Note payable - bank is collateralized by all of Hua Yang\u2019s equipment, building and land use right, and is payable to a financial institution, with interest at 6.696% per annum payable monthly, with RMB5 million (equivalent $667,307) due April 29, 2007 and RMB5 million ($667,308) due April 27, 2008. The note is currently past due for the first principal payment due on April 29, 2007. The Company paid interest through May 20, 2007 and interest accrued through December 31, 2009 was included in accrued interest\nThe accrued interest for above Loan Payable and Current Maturities of Note Payable was $452,234 and $304,998 as of December 31, 2009 and December 31, 2008, respectively. Interest expense accrued for above Loan Payable and Current Maturities of Note Payable was $147,350 and $102,642 for the years end December 31, 2009 and 2008, respectively.\nNOTE 13 - ACCRUED EXPENSES AND OTHER CURRENT LIABILITIES\nAccrued expenses and other current liabilities at December 31, 2009 and 2008, consisted of the following:",
+   "prose_after": "NOTE 14 \u2013 INCOME TAXES\nThe Company accounts for income taxes pursuant to the standard, \u201cAccounting for Income Taxes\u201d, codified with ASC 740 which requires recognition of deferred income tax liabilities and assets for the expected future tax consequences of events that have been recognized in the Company\u2019s financial statements or tax returns.\nPrior to January 1, 2008, the Company was governed by the Income Tax Law of the People\u2019s Republic of China concerning Foreign Investment Enterprises and Foreign Enterprises and local income tax laws (the previous income tax laws and rules). Pursuant to the previous income tax laws and rules, wholly-owned foreign enterprises were subject to tax at a statutory rate of 33% (30% state income tax plus 3% local income tax).\nIn March 2007, the Chinese government enacted the Corporate Income Tax Law, and promulgated related regulations, which were effective January 1, 2008. The Corporate Income Tax Law, among other things, imposes a unified income tax rate of 25% for both domestic and foreign invested enterprises. The previous income tax laws and rules, which stipulated income tax rates for domestic and foreign invested enterprises at different rates, expired upon the effectiveness of the Corporate Income Tax Law.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1433,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2009",
+     "",
+     "",
+     "December 31, 2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computed tax benefit at statutory rate",
+     "$",
+     "365,233",
+     "",
+     "$",
+     "410,871",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(365,233)",
+     "",
+     "",
+     "(410,871)",
+     ""
+    ],
+    [
+     "Income expense(benefit)",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1506,
+    "end_line": 1515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "Prior to January 1, 2008, the Company was governed by the Income Tax Law of the People\u2019s Republic of China concerning Foreign Investment Enterprises and Foreign Enterprises and local income tax laws (the previous income tax laws and rules). Pursuant to the previous income tax laws and rules, wholly-owned foreign enterprises were subject to tax at a statutory rate of 33% (30% state income tax plus 3% local income tax).\nIn March 2007, the Chinese government enacted the Corporate Income Tax Law, and promulgated related regulations, which were effective January 1, 2008. The Corporate Income Tax Law, among other things, imposes a unified income tax rate of 25% for both domestic and foreign invested enterprises. The previous income tax laws and rules, which stipulated income tax rates for domestic and foreign invested enterprises at different rates, expired upon the effectiveness of the Corporate Income Tax Law.\nNOTE 14 \u2013 INCOME TAXES (CONTINUED)\nDue to the Company\u2019s net loss, there was no provision for income taxes. The Company\u2019s effective tax rate for the years ended December 31, 2009 and 2008 was 0% and 0% due to the net loss position in both years.\nThe Company\u2019s taxes were subject to a full valuation allowance as follows:",
+   "prose_after": "The net deferred tax asset generated by the loss carry-forward has been fully reserved.\nThe tax authority of the PRC Government conducts periodic and ad hoc tax filing reviews on business enterprises operating in the PRC after those enterprises had completed their relevant tax filings, hence the Company\u2019s tax filings may not be finalized. It is therefore uncertain as to whether the PRC tax authority may take different views about the Company\u2019s tax filings which may lead to additional tax liabilities.\nThe Company has no United States corporate income tax liability as of December 31, 2009 and 2008.\nNOTE 15 \u2013 STATUTORY RESEARVES\nUnder the Corporation Law of the PRC, net income after taxation can only be distributed as dividends after appropriation has been made for the following: (i) cumulative prior years' losses, if any; (ii) allocations to the \u201cStatutory Surplus Reserve\u201d of at least 10% of net income after tax, as determined under PRC accounting rules and regulations, until the fund amounts to 50% of the Company's registered capital; (iii) allocations of 5-10% of income after tax, as determined under PRC accounting rules and regulations, to the Company's \u201cStatutory Common Welfare Fund\u201d, which is established for the purpose of providing employee facilities and other collective benefits to employees in PRC; and (iv) allocations to any discretionary surplus reserve, if approved by stockholders.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1498,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1553,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "35,133"
+    ],
+    [
+     "2011",
+     "",
+     "35,133"
+    ],
+    [
+     "2012",
+     "",
+     "52,700"
+    ],
+    [
+     "2013",
+     "",
+     "52,700"
+    ],
+    [
+     "2014",
+     "",
+     "52,700"
+    ],
+    [
+     "",
+     "$",
+     "228,366"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1534,
+    "end_line": 1545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "Under the Corporation Law of the PRC, net income after taxation can only be distributed as dividends after appropriation has been made for the following: (i) cumulative prior years' losses, if any; (ii) allocations to the \u201cStatutory Surplus Reserve\u201d of at least 10% of net income after tax, as determined under PRC accounting rules and regulations, until the fund amounts to 50% of the Company's registered capital; (iii) allocations of 5-10% of income after tax, as determined under PRC accounting rules and regulations, to the Company's \u201cStatutory Common Welfare Fund\u201d, which is established for the purpose of providing employee facilities and other collective benefits to employees in PRC; and (iv) allocations to any discretionary surplus reserve, if approved by stockholders.\nAs of December 31, 2009 and 2008, the Company had no Statutory Surplus Reserve and the Statutory Common Welfare Fund established and segregated in retained earnings.\nNOTE 16 \u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES\nOperating Lease Commitment\nFuture minimum lease rentals to be received on noncancelable leases in the aggregate and for each of the next five fiscal years are as follows",
+   "prose_after": "Credit risk\nFinancial instruments that potentially subject the Company to significant concentration of credit risk consist primarily of cash and cash equivalents. As of December 31, 2009 and 2008, substantially all of the Company's cash and cash equivalents were held by major financial institutions located in the PRC, none of which are insured. However, the Company has not experienced losses on these accounts and management believes that the Company is not exposed to significant risks on such accounts.\nCountry risk\nSubstantially all of the Company's operations are carried out and all of its assets are located in the PRC. Accordingly, the Company's business, financial condition and results of operations may be influenced by the political, economic and legal environments in the PRC. The Company's business may be influenced by changes in governmental policies with respect to laws and regulations, anti-inflationary measures, currency fluctuation and remittances and methods of taxation, among other things.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1498,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1553,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wenxia Guo",
+     "42",
+     "President, CEO and Director"
+    ],
+    [
+     "Peng Wang",
+     "51",
+     "CFO, Treasurer and Director"
+    ],
+    [
+     "Yuan Cheng",
+     "38",
+     "Vice President of Operations"
+    ],
+    [
+     "Qiang Li",
+     "34",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1607,
+    "end_line": 1615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "Loan payable is collateralized by all of the Hua Yang\u2019s equipment, buildings and land use rights, payable to a financial institution, with interest at 6.696% per annum payable monthly, with principal due May 27, 2007. The loan is currently past due. Total amount of the default was RMB5,801,322 (equivalent to $850,479 at December 31, 2009) including RMB1,001,322 ($146,670) in accrued interest as of December 31, 2009.\n(ii) Note payable \u2013 bank\nNote payable - bank is collateralized by all of the Hua Yang\u2019s equipment, buildings and land use rights, and is a long-term note payable to the same financial institution, with interest at 6.696% per annum payable monthly, with RMB5 million (equivalent to $732,384 at December 31, 2009) due April 29, 2007 and RMB5 million ($732,384) due April 27, 2008. The note is currently past due for the first principal payment due on April 29, 2007. Total amount of the default was RMB12,086,088 ($1,770,332) including RMB10 million ($1,464,768) in principal and RMB2,086,088 ($305,564) in accrued interest as of December 31, 2009.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nDirectors and Executive Officers\nThe following table sets forth the names, ages and positions of our executive officers and directors as of the date of this filing:",
+   "prose_after": "The officers and directors shall serve until replaced by a vote of the majority of the shareholders. Officers shall serve until removed by the directors.\nBackground of Directors and Officers\nMs. Wenxia Guo, President, CEO and Director. Winner of \u201cNational Labor Medal.\u201d Ms. Guo is a law major graduate from the Education Institute of Xi\u2019an Jiao-Tong University. Since 1990, she has set up five pharmaceutical companies successfully and made great achievement on medicine production, distribution, management and development. She has almost 20 years of business experience. She has connections with the Singapore Pharmaceutical Commerce Committee, Hong Kong Commerce Committee and similar committees in other south-east Asian countries. All of this background provides a solid basis for international business development. She currently holds many important organization positions, such as Director of Project Review Department of Chinese Primary Healthcare Foundation, member of the Financial and Economic Committee of Chinese Peasants and Workers Democratic Party, member of Shaaxi Provincial Committee of the Chinese People\u2019s Political Consultative Conference, Standing Member of Industrial and Commercial Union of Shaanxi Province, Vice Chairman of Committee of Yangling Demonstration Zone of the Chinese People\u2019s Political Consultative Conference, Vice Chairman of Medical & Pharmaceutical Union of Shaaxi Province, Vice Chairman, Woman\u2019s Union of Yangling Demonstration Zone. In 1999, she successfully founded Yangling Daiying Biotech & Pharmaceutical Group Co., Ltd. The successful development of new HCV products helped the Company transition from a development-stage company to a comprehensive pharmaceutical company with research, production and distributions of biomedical products. In August 2003, Ms. Guo was awarded with \u201cNational Best Professional Woman\u201d and Hu Jintao, the President of China, gave her the medal in person.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1588,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1625,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u0178",
+     "any bankruptcy petition filed by or against any business of which such person was a general partner or executive officer either at the time of the bankruptcy or within two years prior to that time;"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1664,
+    "end_line": 1668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "The laws of the State of Delaware and the Company's By-laws provide for indemnification of the Company's directors for liabilities and expenses that they may incur in such capacities. In general, directors and officers are indemnified with respect to actions taken in good faith in a manner reasonably believed to be in, or not opposed to, the best interests of the Company, and with respect to any criminal action or proceeding, actions that the indemnitee had no reasonable cause to believe were unlawful.\nThe Company has been advised that in the opinion of the Securities and Exchange Commission, indemnification for liabilities arising under the Securities Act is against public policy as expressed in the Securities Act and is, therefore, unenforceable.\nSignificant Employees\nOther than the directors and officer described above, we do not expect any other individuals to make a significant contribution to our business.\nInvolvement in Legal Proceedings\nNone of our directors, executive officers, promoters or control persons has been involved in any of the following events during the past five years:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1627,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u0178",
+     "any conviction in a criminal proceeding or being subject to a pending criminal proceeding (excluding traffic violations and other minor offenses);"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1669,
+    "end_line": 1672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1627,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u0178",
+     "being subject to any order, judgment, or decree, not subsequently reversed, suspended or vacated, of any court of competent jurisdiction, permanently or temporarily enjoining, barring, suspending or otherwise limiting his involvement in any type of business, securities or banking activities; or"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1673,
+    "end_line": 1677
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1627,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u0178",
+     "being found by a court of competent jurisdiction (in a civil action), the SEC or the Commodity Futures Trading Commission to have violated a federal or state securities or commodities law, and the judgment has not been reversed, suspended, or vacated."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1678,
+    "end_line": 1682
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Code of Ethics\nThe Company has adopted a code of ethics for all of the employees, directors and officers, a copy of which is included as Exhibit 14.1 to our Form 8-K filed on July 7, 2004.\nSection 16(a) Beneficial Ownership Reporting Compliance\nUnder Section 16(a) of the Exchange Act, all executive officers, directors, and each person who is the beneficial owner of more than 10% of the common stock of a company that files reports pursuant to Section 12 of the Exchange Act, are required to report the ownership of such common stock, options, and stock appreciation rights (other than certain cash-only rights) and any changes in that ownership with the Commission. Specific due dates for these reports have been established, and the Company is required to report, in this Form 10-K, any failure to comply therewith during the fiscal year ended December 31, 2009. The Company believes that all of these filing requirements were satisfied by its executive officers, directors and by the beneficial owners of more than 10% of the Company\u2019s common stock. In making this statement, the Company has relied solely on copies of any reporting forms received by it, and upon any written representations received from reporting persons that no Form 5 (Annual Statement of Changes in Beneficial Ownership) was required to be filed under applicable rules of the Commission.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1627,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "Bonus",
+     "Stock Awards",
+     "Option Awards",
+     "Non-Equity Incentive Plan Compensation",
+     "Nonqualified\n\nDeferred Compensation",
+     "All Other Compensation",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wenxia Guo",
+     "2009",
+     "2,365",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "2,365"
+    ],
+    [
+     "President, CEO,",
+     "2008",
+     "9,314",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "9,314"
+    ],
+    [
+     "Director",
+     "2007",
+     "6,789",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "6,789"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Peiyi Tian",
+     "2009",
+     "3,967",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "3,967"
+    ],
+    [
+     "Former CFO, Director",
+     "2008",
+     "7,762",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "7,762"
+    ],
+    [
+     "",
+     "2007",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--",
+     "--"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1723,
+    "end_line": 1737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "Recruitment and retention of leadership to manage our Company requires a competitive compensation package. Our Board of Directors emphasizes (i) fixed compensation elements of base salary that compare with our compensation peer group of companies, and (ii) variable compensation contingent on above-target performance. The compensation peer group consists of those companies in the Guangdong region that we deem to compete with our Company for executive talent. Individual compensation will vary depending on factors such as performance, job scope, abilities, tenure, and retention risk.\nFixed Compensation\nThe principal element of fixed compensation not directly linked to performance targets is based salary. We target the value of fixed compensation generally at the median of our compensation peer group to facilitate a competitive recruitment and retention strategy.\nIncentive Compensation\nOur incentive compensation programs are linked directly to earnings growth, cash flow, and total shareowner return. Annual bonuses are tied to the current year\u2019s performance of our company. Restrictive stock awards are tied to an individual\u2019s success in exceeding targeted results set by management.\nThe following table sets forth all compensation awarded to, earned by, or paid for all services rendered to the Company during the fiscal years 2009, 2008 and 2007 by those persons who served as Chief Executive Officer and Chief Financial Officer, and any Named Executive Officer who received compensation in excess of US$100,000 during such years.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "The above amounts are reflected in U.S. Dollars.\nOption Grants in Last Fiscal Year\nDuring the fiscal year ending December 31, 2009, no executive officer or director was granted options to purchase shares of common stock.\nDuring the fiscal year ending December 31, 2009, no executive officer or director exercised any options to purchase shares of common stock, and as of December 31, 2008, no executive, officer or director possessed any options to purchase shares of common stock.\nPension, Retirement or Similar Benefit Plans\nThere are no arrangements or plans in which we provide pension, retirement or similar benefits for directors or executive officers. We have no material bonus or profit sharing plans pursuant to which cash or non-cash compensation is or may be paid to our directors or executive officers, except that stock options may be granted at the discretion of the Board of Directors or a committee thereof.\nEmployment Agreements\nOur executives do not have the typical employment agreements that specify compensation or length of employment. These matters are left to the discretion of the Board of Directors and the employee. At present, there are no employment contracts with any of our executives.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1720,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1769,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Owner",
+     "Number of Shares Owned(1)",
+     "",
+     "Percent of Voting Power(2)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Other Principal Stockholders (5%)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Xi\u2019an Ji You Sci-Tech\n\nInvestment Management Co., Ltd.\n\n\n\n2455 E Sunrise Blvd #905,\n\n Ft. Lauderdale, FL 33304-3112",
+     "",
+     "5,376,000",
+     "",
+     "9.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Jianjun Liu\n\n4 Fenghui South Rd, 15th Floor A10-11501\n\nJie Zuo Mansion, Xi\u2019an, Shaanxi, China",
+     "",
+     "4,800,000",
+     "",
+     "8.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Gailing Liu\n\n Nanchang Rd. Bld. 17, Unit 1, 4th Floor, Room 7\n\nXi\u2019An, Shaanxi, China",
+     "",
+     "2,800,000",
+     "",
+     "5.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Directors and Executive Officers",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Wenxia Guo\n\nPresident, CEO and Director\n\n16 Weiyi Rd., Yangling Demonstration Zone,\n\nShaanxi, China",
+     "",
+     "8,601,600",
+     "",
+     "15.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Peng Wang\n\nCFO, Treasurer and Director\n\n4 Fenghui South Rd, 15th Floor A10-11501\n\nJie Zuo Mansion, Xi\u2019An, Shaanxi, China",
+     "",
+     "500,000",
+     "",
+     "1.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Yuan Cheng\n\nVP Operations\n\n4 Fenghui South Rd, 15th Floor A10-11501\n\nJie Zuo Mansion, Xi\u2019An, Shaanxi, China",
+     "",
+     "0",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common",
+     "Qiang Li\n\nDirector\n\n4 Fenghui South Rd, 15th Floor A10-11501\n\nJie Zuo Mansion, Xi\u2019An, Shaanxi, China",
+     "",
+     "2,650,000",
+     "",
+     "4.9",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Officers and Directors as a Group (4 person)",
+     "",
+     "11,751,600",
+     "",
+     "21.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1776,
+    "end_line": 1837
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "We have no standard arrangement pursuant to which our directors are compensated for their services in their capacity as directors. The Board of Directors may award special remuneration to any director undertaking any special services on behalf of our company other than services ordinarily required of a director.\nChange of Control\nAs of December 31, 2009, we had no pension plans or compensatory plans or other arrangements which provide compensation on the event of termination of employment or change in control of us.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth certain information concerning the number of shares of our common stock beneficially owned as of March 24, 2010 by: (i) each of our directors, (ii) each of our named executive officers and (iii) owners of 5% or more of our common shares. There was no other person or group known by us to beneficially own more than 5% of our outstanding shares of common stock. The Company believes that unless otherwise indicated, each of the shareholders has sole voting and investment power with respect to the shares beneficially owned.",
+   "prose_after": "(1) Except as otherwise indicated, the shares are owned of record and beneficially by the persons named in the table.\n(2) Based on 53,915,653 shares of common stock issued and outstanding.\nItem 13. Certain Relationships, Related Transactions and Director Independence\nNone.\nDirector Independence\nOur securities are quoted on the OTC Bulletin Board, which does not have any director independence requirements. Once we engage further directors and officers, we will develop a definition of independence and scrutinize our Board of Directors with regard to this definition.\nItem 14. Principal Accounting Fees and Services\nFees Billed For Audit and Non-Audit Services\nThe following table represents the aggregate fees billed for professional audit services rendered by the accounting firms of Kempisty & Company, Certified Public Accountants, P.C., and Yichien Yeh, CPA, our current independent auditor, and all fees billed for other services rendered by the said firms during those periods.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1771,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1841,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees (1)",
+     "$",
+     "47,000",
+     "$",
+     "50,000"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees (3)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees (4)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total Accounting Fees and Services",
+     "$",
+     "47,000",
+     "$",
+     "50,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1858,
+    "end_line": 1868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "(1) Except as otherwise indicated, the shares are owned of record and beneficially by the persons named in the table.\n(2) Based on 53,915,653 shares of common stock issued and outstanding.\nItem 13. Certain Relationships, Related Transactions and Director Independence\nNone.\nDirector Independence\nOur securities are quoted on the OTC Bulletin Board, which does not have any director independence requirements. Once we engage further directors and officers, we will develop a definition of independence and scrutinize our Board of Directors with regard to this definition.\nItem 14. Principal Accounting Fees and Services\nFees Billed For Audit and Non-Audit Services\nThe following table represents the aggregate fees billed for professional audit services rendered by the accounting firms of Kempisty & Company, Certified Public Accountants, P.C., and Yichien Yeh, CPA, our current independent auditor, and all fees billed for other services rendered by the said firms during those periods.",
+   "prose_after": "(1) Audit Fee. These are fees for professional services for the audit of the Company's annual financial statements, and for the review of the financial statements included in the Company's filings on Form 10-Q, and for services that are normally provided in connection with statutory and regulatory filings or engagements.\n(2) Audit-Related Fee. These are fees for the assurance and related services reasonably related to the performance of the audit or the review of the Company's financial statements.\n(3) Tax Fees. These are fees for professional services with respect to tax compliance, tax advice, and tax planning.\n(4) All Other Fees. These are fees for permissible work that does not fall within any of the other fee categories, i.e., Audit Fees, Audit-Related Fees, or Tax Fees.\nPre-Approval Policy for Audit and Non-Audit Services\nThe Company implemented pre-approval policies and procedures related to the provision of audit and non-audit services. Under these procedures, our Board of Directors, performing the duties of the Audit Committee, reviews all audit and non-audit related fees at least annually. The Board of Directors as the Audit Committee pre-approved all audit related services in the year ended December 31, 2009.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1843,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1877,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Exhibit\n\nDescription"
+    ],
+    [
+     "3.1",
+     "Restated Certificate of Incorporation (1)"
+    ],
+    [
+     "3.2",
+     "Certificate of Renewal, Restoration and Revival of Certificate of Incorporation (1)"
+    ],
+    [
+     "3.3",
+     "By-laws of the Company (1)"
+    ],
+    [
+     "10.1",
+     "Assets Repay Debt Agreement (2)"
+    ],
+    [
+     "14.1",
+     "Code of Ethics (3)"
+    ],
+    [
+     "16.1",
+     "Letter on change of certified accountant (4)"
+    ],
+    [
+     "21",
+     "List of Subsidiaries *"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 *"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 *"
+    ],
+    [
+     "32",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 *"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1895,
+    "end_line": 1912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "The Company implemented pre-approval policies and procedures related to the provision of audit and non-audit services. Under these procedures, our Board of Directors, performing the duties of the Audit Committee, reviews all audit and non-audit related fees at least annually. The Board of Directors as the Audit Committee pre-approved all audit related services in the year ended December 31, 2009.\nItem 15. Exhibits, Financial Statement Schedules\n(a)\n(1) Financial Statements\nSee \u201cIndex to Consolidated Financial Statements\u201d set forth on page 19.\n(a)\n(2) Financial Statement Schedules\nNone. The financial statement schedules are omitted because they are inapplicable or the requested information is shown in our financial statements or related notes thereto.\n(a)\n(3) Exhibits",
+   "prose_after": "* Filed herewith.\n(1) Included as an exhibit to our Form 8-K filed with the Commission on August 8, 2003.\n(2) Incorporated by reference to Exhibit 10.1 to our Annual Report on Form 10-KSB for the fiscal year ended December 31, 2007.\n(3) Incorporated by reference to Exhibit 14.1 of our Form 8-K filed on July 7, 2004.\n(4) Incorporated by reference to Exhibit 16.1 of our Form 8-K filed on June 27, 2008.\nSIGNATU[ ]ES\nIn accordance with the Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1879,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1922,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Worldwide Biotech & Pharmaceutical Company",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2010",
+     "By:",
+     "/s/ Wenxia Guo",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Wenxia Guo",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer, Director",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Worldwide Biotech & Pharmaceutical Company"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1929,
+    "end_line": 1936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "* Filed herewith.\n(1) Included as an exhibit to our Form 8-K filed with the Commission on August 8, 2003.\n(2) Incorporated by reference to Exhibit 10.1 to our Annual Report on Form 10-KSB for the fiscal year ended December 31, 2007.\n(3) Incorporated by reference to Exhibit 14.1 of our Form 8-K filed on July 7, 2004.\n(4) Incorporated by reference to Exhibit 16.1 of our Form 8-K filed on June 27, 2008.\nSIGNATU[ ]ES\nIn accordance with the Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Exchange Act, this report has been signed by the following persons on behalf of the Registrant and in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1924,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1954,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Wenxia Guo",
+     "Chief Executive Officer, Director\n\n(Principal Executive Officer)",
+     "March 31, 2010"
+    ],
+    [
+     "Wenxia Guo",
+     "",
+     ""
+    ],
+    [
+     "/s/ Peng Wang",
+     "Chief Financial Officer, Treasurer, Director\n\n(Principal Financial and\n\nAccounting Officer)",
+     "March 31, 2010"
+    ],
+    [
+     "Peng Wang",
+     "",
+     ""
+    ],
+    [
+     "/s/ Qiang Li",
+     "Director",
+     "March 31, 2010"
+    ],
+    [
+     "Qiang Li",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1939,
+    "end_line": 1954
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 CONTINGENCIES, RISKS AND UNCERTAINTIES"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Exchange Act, this report has been signed by the following persons on behalf of the Registrant and in the capacities and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1924,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1954,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

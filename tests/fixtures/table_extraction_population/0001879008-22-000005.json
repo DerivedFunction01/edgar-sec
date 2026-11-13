@@ -1,0 +1,3767 @@
+{
+ "accession": "0001879008-22-000005",
+ "cik": "0001879008",
+ "form": "10-Q",
+ "filing_date": "2022-05-11",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "lsmidatlanticbdcfileversion.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "87-3290474"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, DC 20549\nFORM 10-Q\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended March 31, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from______ to______\nCommission File Number 814-01427\nLAFAYETTE SQUARE MID-ATLANTIC BDC, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "175 SW 7th St, Unit 1911\nMiami, FL 33130\n(Address of principal executive offices)\n(786) 598-2089\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Securities Exchange Act of 1934:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "175 SW 7th St, Unit 1911\nMiami, FL 33130\n(Address of principal executive offices)\n(786) 598-2089\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Securities Exchange Act of 1934:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Securities Exchange Act of 1934:\nCommon Stock, par value $0.001 per share (Title of class)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Cautionary Statement Regarding Forward-Looking Statements",
+     "1"
+    ],
+    [
+     "Part I. Financial Information",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "Statements of Assets and Liabilities as of March 31, 2022 (unaudited) and December 31, 2021",
+     "3"
+    ],
+    [
+     "",
+     "Statement of Operations for the three months ended March 31, 2022 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "Statement of Changes in Net Assets for the three months ended March 31, 2022 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Statement of Cash Flows for the three months ended March 31, 2022 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "Schedule of Investments as of December 31, 2021",
+     "7"
+    ],
+    [
+     "",
+     "Notes to Financial Statements (unaudited)",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "24"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "37"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "38"
+    ],
+    [
+     "Part II. Other Information",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "39"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "39"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "39"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "39"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "39"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "39"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "39"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "41"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 92
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [ ]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of May 11, 2022, the Registrant had 700 shares of common stock, $0.001 par value per share, outstanding.",
+   "prose_after": "Lafayette Square Mid-Atlantic BDC, Inc.\nCautionary Statement Regarding Forward-Looking Statements\nThis report contains forward-looking statements that involve substantial risks and uncertainties. Such statements involve known and unknown risks, uncertainties and other factors and undue reliance should not be placed thereon. These forward-looking statements are not historical facts, but rather are based on current expectations, estimates and projections about Lafayette Square Mid-Atlantic BDC, Inc. (\"we,\" \"us,\" \"our,\" or the \u201cCompany\u201d), our prospective portfolio investments, our industry, our beliefs and opinions, and our assumptions. Words such as \u201c anticipates,\u201d \u201c expects,\u201d \u201c intends,\u201d \u201c plans,\u201d \u201cwill,\u201d \u201cmay,\u201d \u201c continue,\u201d \u201c believes,\u201d \u201c seeks,\u201d \u201c estimates,\u201d \u201cwould,\u201d \u201c could,\u201d \u201c should,\u201d \u201c targets,\u201d \u201c projects,\u201d \u201c outlook,\u201d \u201c potential,\u201d \u201c predicts\u201d and variations of these words and similar expressions are intended to identify forward-looking statements. These statements are not guarantees of future performance and are subject to risks, uncertainties and other factors, some of which are beyond our control and difficult to predict and could cause actual results to differ materially from those expressed or forecasted in the forward-looking statements, including without limitation:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 92,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments at fair value:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlled/non-affiliate investments at fair value (amortized cost of $0 and $1,532,500, respectively)",
+     "$",
+     "\u2014",
+     "$",
+     "1,532,500"
+    ],
+    [
+     "Cash",
+     "76,571",
+     "",
+     "13,667",
+     ""
+    ],
+    [
+     "Interest receivable",
+     "\u2014",
+     "",
+     "35,758",
+     ""
+    ],
+    [
+     "Fees receivable",
+     "\u2014",
+     "",
+     "14,560",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "142,522",
+     "",
+     "137,313",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "219,093",
+     "$",
+     "1,733,798"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt",
+     "$",
+     "\u2014",
+     "$",
+     "1,524,583"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "170,576",
+     "",
+     "160,104",
+     ""
+    ],
+    [
+     "Due to affiliate",
+     "225,218",
+     "",
+     "165,371",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "\u2014",
+     "",
+     "13,970",
+     ""
+    ],
+    [
+     "Interest payable",
+     "\u2014",
+     "",
+     "6,317",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "395,794",
+     "",
+     "1,870,345",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (See Note 7)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.001 per share (50,000,000 shares authorized, 0 shares issued and outstanding",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001 per share (450,000,000 shares authorized, 700 shares issued and outstanding*",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Paid-in capital in excess of par",
+     "10,500",
+     "",
+     "10,500",
+     ""
+    ],
+    [
+     "Distributable earnings (losses)",
+     "(187,201)",
+     "",
+     "(147,047)",
+     ""
+    ],
+    [
+     "Total net assets",
+     "(176,701)",
+     "",
+     "(136,547)",
+     ""
+    ],
+    [
+     "Total liabilities and net assets",
+     "$",
+     "219,093",
+     "$",
+     "1,733,798"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per common share",
+     "$",
+     "(252.43)",
+     "$",
+     "(195.07)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 149,
+    "end_line": 189
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Although we believe that the assumptions on which these forward-looking statements are based are reasonable, any of those assumptions could prove to be inaccurate, and as a result, the forward-looking statements based on those assumptions also could be inaccurate. In light of these and other uncertainties, the inclusion of any projection or forward-looking statement in this report should not be regarded as a representation by us that our plans and objectives will be achieved. Moreover, we assume no duty and do not undertake to update the forward-looking statements, except as required by applicable law. Because we are an investment company, the forward-looking statements and projections contained in this report are excluded from the safe harbor protection provided by Section 21E of the U.S. Securities Exchange Act of 1934 Act, as amended (the \u201cExchange Act\u201d).\nPart I. Financial Information\nItem1. Financial Statements\nLafayette Square Mid-Atlantic BDC, Inc. Statements of Assets and Liabilities",
+   "prose_after": "* Less than $1.\nThe accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 142,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     ""
+    ],
+    [
+     "Investment Income:",
+     "",
+     ""
+    ],
+    [
+     "Interest income from non-controlled/non-affiliated investments:",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "28,151"
+    ],
+    [
+     "Payment-in-kind",
+     "35,451",
+     ""
+    ],
+    [
+     "Total interest income",
+     "63,602",
+     ""
+    ],
+    [
+     "Total investment income",
+     "63,602",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     ""
+    ],
+    [
+     "Organizational costs (See Note 2)",
+     "2,148",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "147,795",
+     ""
+    ],
+    [
+     "Professional fees",
+     "35,856",
+     ""
+    ],
+    [
+     "Directors fees",
+     "7,890",
+     ""
+    ],
+    [
+     "Interest expense",
+     "6,775",
+     ""
+    ],
+    [
+     "Total expenses before expense support reimbursement",
+     "200,464",
+     ""
+    ],
+    [
+     "Expense support reimbursement",
+     "(128,578)",
+     ""
+    ],
+    [
+     "Total expenses net of expense support reimbursement",
+     "71,886",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "(8,284)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gains (losses) on investment transactions:",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss)",
+     "(31,870)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "(40,154)"
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "700",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income (loss) per common share (basic and diluted)",
+     "$",
+     "(11.83)"
+    ],
+    [
+     "Earnings (loss) per common share (basic and diluted)",
+     "(57.36)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022",
+    "(unaudited)",
+    "Investment Income:",
+    "Interest income from non-controlled/non-affiliated investments:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 197,
+    "end_line": 235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than $1.\nThe accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Statement of Operations",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Statement of Changes in Net Assets (unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Par Amount*",
+     "",
+     "Paid in Capital Excess of Par",
+     "",
+     "Distributable Earnings (Losses)",
+     "",
+     "Total net assets",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "700",
+     "$",
+     "\u2014",
+     "$",
+     "10,500",
+     "$",
+     "(147,047)",
+     "$",
+     "(136,547)"
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(8,284)",
+     "",
+     "(8,284)",
+     ""
+    ],
+    [
+     "Net realized gain (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(31,870)",
+     "",
+     "(31,870)",
+     ""
+    ],
+    [
+     "Total increase (decrease) for the period ended March 31, 2022",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(40,154)",
+     "",
+     "(40,154)",
+     ""
+    ],
+    [
+     "Balance, March 31, 2022",
+     "700",
+     "\u2014",
+     "",
+     "10,500",
+     "",
+     "(187,201)",
+     "",
+     "(176,701)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 241,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Statement of Changes in Net Assets (unaudited)",
+   "prose_after": "* Less than $1.\nThe accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "(40,154)"
+    ],
+    [
+     "Adjustments to reconcile net increase (decrease) in net assets resulting from operations to net cash provided by (used in) operating activities:",
+     "",
+     ""
+    ],
+    [
+     "Net realized (gain) loss from investments",
+     "31,870",
+     ""
+    ],
+    [
+     "Proceeds from sale and settlements of investments",
+     "1,500,630",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Interest receivable",
+     "35,758",
+     ""
+    ],
+    [
+     "Fees receivable",
+     "14,560",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "10,472",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "(13,970)",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "(5,209)",
+     ""
+    ],
+    [
+     "Due to affiliates",
+     "59,847",
+     ""
+    ],
+    [
+     "Interest and other debt expenses payable",
+     "(6,317)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "1,587,487",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common shares",
+     "\u2014",
+     ""
+    ],
+    [
+     "Paydowns on debt",
+     "(1,524,583)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "(1,524,583)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "62,904",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "13,667",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "76,571"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Information",
+     "",
+     ""
+    ],
+    [
+     "Interest paid during the period",
+     "6,775",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022",
+    "(unaudited)",
+    "Cash flows from operating activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 265,
+    "end_line": 301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than $1.\nThe accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Statement of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Schedule of Investments\nDecember 31, 2021",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Company (1)(2)",
+     "Footnotes",
+     "Investment Type",
+     "Reference Rate and Spread",
+     "Interest Rate",
+     "Maturity Date",
+     "Par Amount/ Shares (3)",
+     "Amortized Cost",
+     "",
+     "Fair Value",
+     "",
+     "Percentage of Net Assets (4)",
+     ""
+    ],
+    [
+     "Non-controlled/non-affiliated investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Waste Management and Remediation Services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ZWR Holdings, Inc.",
+     "(5)",
+     "Subordinated Debt",
+     "14.00% (Inc. 10.00% PIK)",
+     "14.00%",
+     "2/16/2027",
+     "1,532,500",
+     "$",
+     "1,532,500",
+     "$",
+     "1,532,500",
+     "(1,122.3)%",
+     ""
+    ],
+    [
+     "ZWR Holdings, Inc.",
+     "(5)",
+     "Warrants",
+     "",
+     "",
+     "",
+     "24,953",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,532,500",
+     "",
+     "1,532,500",
+     "",
+     "(1,122.3)%",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Portfolio Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "1,532,500",
+     "$",
+     "1,532,500",
+     "(1,122.3)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 309,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Schedule of Investments\nDecember 31, 2021",
+   "prose_after": "(1) Unless otherwise indicated, all investments are considered Level 3 investments.\n(2) All investments were qualifying assets as defined under Section 55(a) of the Investment Company Act of 1940.\n(3) The total par amount is presented for debt investments, while the number of shares or units owned is presented for equity investments.\n(4) Percentage is based on net assets of ($136,547) as of December 31, 2021.\n(5) The fair value of the investment was determined using significant unobservable inputs. See Note 4 \"Fair Value Measurement\".\nThe accompanying notes are an integral part of these financial statements.\nLafayette Square Mid-Atlantic BDC, Inc. Notes to Financial Statements (unaudited)\nNote 1. Organization\nLafayette Square Mid-Atlantic BDC, Inc. (the \u201cCompany\u201d) is a newly formed, externally managed, non-diversified, closed-end management investment company that has elected to be regulated as a business development company (\u201cBDC\u201d) under the Investment Company Act of 1940, as amended (the \u201c1940 Act\u201d). The Company was formed as a Delaware limited liability company as of March 22, 2021. For the period from inception through June 15, 2021, all equity securities of the Company were held by Lafayette Square (defined below) and the Company was considered for U.S. tax purposes as a disregarded entity; the Company's activities for this period would be consolidated with the activities of its sole owner. The Company has adopted an initial tax year end of March 31, 2022 and will be taxed as a corporation for the initial tax period from June 16, 2021 through March 31, 2022 and future years until the Company qualifies for regulated investment company (\"RIC\") treatment under Subchapter M of the Internal Revenue Code of 1986, as amended (the \"Code\"). The Company intends to elect to be treated for U.S. federal income tax purposes as a RIC the first taxable year the Company qualifies for such treatment, as well as maintain such election in future taxable years. However, there is no guarantee that the Company will qualify to make such an election for any taxable year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 304,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subordinated Debt",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ],
+    [
+     "Warrants",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 444
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "The Company has adopted a dividend reinvestment plan (the \u201cDRIP\u201d) that provides for reinvestment of any distributions the Company declares in cash on behalf of its stockholders, unless a stockholder elects to receive cash. As a result, if the Board authorizes and the Company declares a cash distribution, then stockholders who have not \u201copted out\u201d of the DRIP will have their cash distribution automatically reinvested in additional shares of the Company\u2019s Common Stock, rather than receiving the cash distribution. Shares issued under the DRIP will be issued at a price per share equal to the most recent net asset value (\u201cNAV\u201d) per share as determined by the Board (subject to adjustment to the extent required by Section 23 of the 1940 Act).\nNote 3. Investments\nThe following table shows the composition of the Company\u2019s investment portfolio, at amortized cost and fair value (with corresponding percentage of total portfolio investments) as of December 31, 2021. There were no investments as of March, 31, 2022.",
+   "prose_after": "The following table shows the composition of the Company\u2019s investment portfolio by geographic region, at amortized cost and fair value (with corresponding percentage of total portfolio investments) as of December 31, 2021. There were no investments as of March, 31, 2022. The geographic composition is determined by the location of the corporate headquarters of the portfolio company, which may not be indicative of the primary source of the portfolio company\u2019s business:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mid-Atlantic",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "The following table shows the composition of the Company\u2019s investment portfolio by geographic region, at amortized cost and fair value (with corresponding percentage of total portfolio investments) as of December 31, 2021. There were no investments as of March, 31, 2022. The geographic composition is determined by the location of the corporate headquarters of the portfolio company, which may not be indicative of the primary source of the portfolio company\u2019s business:",
+   "prose_after": "The following table shows the composition of the Company\u2019s investment portfolio by industry, at amortized cost and fair value (with corresponding percentage of total portfolio investments) as of December 31, 2021. There were no investments as of March 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Waste Management and Remediation Services",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 459,
+    "end_line": 468
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "The following table shows the composition of the Company\u2019s investment portfolio by industry, at amortized cost and fair value (with corresponding percentage of total portfolio investments) as of December 31, 2021. There were no investments as of March 31, 2022.",
+   "prose_after": "Note 4. Fair Value Measurements of Investments\nFASB ASC 820, Fair Value Measurement (\u201cASC 820\u201d), clarifies the definition of fair value as the amount that would be received in the sale of an asset or paid in the transfer of a liability in an orderly transaction between market participants at the measurement date. Where available, the Company uses quoted market prices based on the last sales price on the measurement date.\nIn accordance with Topic 820, the Company discloses the fair value of its investments in a hierarchy that prioritizes the inputs to valuation techniques used to measure fair value. The hierarchy gives the highest priority to valuations based upon\nunadjusted quoted prices in active markets for identical assets or liabilities (Level 1 measurements) and the lowest priority to valuations based upon unobservable inputs that are significant to the valuation (Level 3 measurements). To the extent that fair value is based on inputs that are less observable, the determination of fair value requires a significant amount of management judgment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value Measurements",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Subordinated Debt",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "1,532,500",
+     "$",
+     "1,532,500"
+    ],
+    [
+     "Warrants",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Investments",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "1,532,500",
+     "$",
+     "1,532,500"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value Measurements of Investments"
+    }
+   },
+   "prose_before": "proprietary, which may fall into different levels of the fair value hierarchy. In such cases, for disclosure purposes, the level in the fair value hierarchy within which the fair value measurement in its entirety falls is determined based on the lowest level input that is significant to the fair value measurement. The categorization of an investment within the hierarchy is based upon the pricing transparency of the investment and observability of prices and inputs may be reduced for many investments. This condition could cause the investment to be reclassified to a lower level within the fair value hierarchy.\nThe financial statements include portfolio investments at fair value of $0 and $1,532,500 as of March 31, 2022 and December 31, 2021, respectively. The portfolio investments\u2019 fair value has been determined in good faith by the Company\u2019s Board. Because of the inherent uncertainty of valuation, the determined values may differ significantly from the values that would have been used had a liquid market existed for the investments as of March 31, 2022 and December 31, 2021, respectively.\nThe following table presents fair value measurements of investments, by major class according to the fair value hierarchy as of December 31, 2021, respectively. There were no investments as of March, 31, 2022.",
+   "prose_after": "The following table provides a reconciliation of the beginning and ending balances for investments that use Level 3 inputs for the three months ended March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 545,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Investments",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Subordinated Debt",
+     "",
+     "Warrant",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2021",
+     "$",
+     "1,532,500",
+     "$",
+     "\u2014",
+     "$",
+     "1,532,500"
+    ],
+    [
+     "Sales of investments and other adjustments to cost",
+     "(1,500,630)",
+     "",
+     "\u2014",
+     "",
+     "(1,500,630)",
+     ""
+    ],
+    [
+     "Net realized gains (losses) from investments",
+     "(31,870)",
+     "",
+     "",
+     "",
+     "(31,870)",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2022",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Investments"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 521,
+    "end_line": 534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value Measurements of Investments"
+    }
+   },
+   "prose_before": "The following table provides a reconciliation of the beginning and ending balances for investments that use Level 3 inputs for the three months ended March 31, 2022:",
+   "prose_after": "There was no net change in unrealized gain (loss) on investments included on the Statement of Operations for the period from December 31, 2021 to March 31, 2022, attributable to Level 3 investments still held on March 31, 2022.\nPurchases of investments and other adjustments to costs include purchases of new investments at costs, accretion/amortization of income from discount/premium on debt securities, and PIK.\nReclassifications impacting Level 3 of the fair value hierarchy are reported as transfers in or out of Level 3 as of the beginning of the period which the reclassifications occur. There were no transfers between Levels 1, 2 and 3 during the period ended March 31, 2022.\nSignificant Unobservable Inputs\nASC Topic 820 requires disclosure of quantitative information about the significant unobservable inputs used in the valuation of assets and liabilities classified as Level 3 within the fair value hierarchy. The table below is not intended to be all-inclusive, but rather to provide information on significant unobservable inputs and valuation techniques used by the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 545,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Range",
+     ""
+    ],
+    [
+     "",
+     "Fair Value",
+     "",
+     "Valuation Technique",
+     "Unobservable Input",
+     "Weighted Average Mean",
+     "Minimum",
+     "Maximum"
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subordinated Debt",
+     "$",
+     "1,532,500",
+     "Income Approach (Discounted cash flows)",
+     "Discount rate",
+     "14.0%",
+     "14.0%",
+     "14.0%"
+    ],
+    [
+     "Warrants",
+     "\u2014",
+     "",
+     "Market Approach (Comparable multiples)",
+     "EV/EBITDA",
+     "9.0x",
+     "9.0x",
+     "9.0x"
+    ],
+    [
+     "Total Level 3 Assets",
+     "$",
+     "1,532,500",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Range"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 548,
+    "end_line": 560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value Measurements of Investments"
+    }
+   },
+   "prose_before": "Purchases of investments and other adjustments to costs include purchases of new investments at costs, accretion/amortization of income from discount/premium on debt securities, and PIK.\nReclassifications impacting Level 3 of the fair value hierarchy are reported as transfers in or out of Level 3 as of the beginning of the period which the reclassifications occur. There were no transfers between Levels 1, 2 and 3 during the period ended March 31, 2022.\nSignificant Unobservable Inputs\nASC Topic 820 requires disclosure of quantitative information about the significant unobservable inputs used in the valuation of assets and liabilities classified as Level 3 within the fair value hierarchy. The table below is not intended to be all-inclusive, but rather to provide information on significant unobservable inputs and valuation techniques used by the Company.\nThe table below summarizes the quantitative inputs and assumptions used for items categorized in Level 3 of the fair value hierarchy as of December 31, 2021. There were no investments as of March, 31, 2022.",
+   "prose_after": "The significant unobservable input used in the income approach of fair value measurement of the Company\u2019s investments is the discount rate used to discount the estimated future cash flows expected to be received from the underlying investment, which include both future principal and interest payments. Increases (decreases) in the discount rate would result in a decrease (increase) in the fair value estimate of the investment. Included in the consideration and selection of discount rates are the following factors: risk of default, rating of the investment and comparable investments, and call provisions.\nThe significant unobservable inputs used in the market approach of fair value measurement of the Company\u2019s investments are the market multiples of EBITDA or revenue of the comparable guideline public companies. The Company selects a population of public companies for each investment with similar operations and attributes of the portfolio company. Using these guideline public companies\u2019 data, a range of multiples of enterprise value to EBITDA or revenue is calculated. The Company selects percentages from the range of multiples for purposes of determining the portfolio company\u2019s estimated enterprise value based on said multiple and generally the latest twelve months EBITDA or revenue of the portfolio company (or other meaningful measure). Increases (decreases) in the multiple will result in an increase (decrease) in enterprise value, resulting in an increase (decrease) in the fair value estimate of the investment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 545,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Aggregate Principal Amount Available",
+     "",
+     "Principal Amount Outstanding",
+     "",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Promissory Note",
+     "$",
+     "1,524,583",
+     "$",
+     "1,524,583",
+     "$",
+     "1,524,583",
+     "$",
+     "1,524,583"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 574,
+    "end_line": 580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "As a BDC, we are permitted, under specified conditions, to issue multiple classes of indebtedness and one class of stock senior to shares of our Common Stock if our asset coverage, as defined in the 1940 Act, is at least equal to 200% or 150%, subject to receipt of certain approvals and compliance with certain disclosure requirements, immediately after each such issuance. Section 61(a) of the 1940 Act reduces the asset coverage requirements applicable to BDCs from 200% to 150% so long as the BDC meets certain disclosure requirements and obtains certain approvals. In April 2021, our Board and initial stockholder approved the reduced asset coverage ratio. The reduced asset coverage requirements permit us to double the maximum amount of leverage that we are permitted to incur by reducing the asset coverage requirements applicable to us from 200% to 150%. As defined in the 1940 Act, asset coverage of 150% means that for every $100 of net assets we hold, we may raise $200 from borrowing and issuing senior securities as compared to $100 from borrowing and issuing senior securities for every $100 of net assets under 200% asset coverage. In addition, while any senior securities remain outstanding, we must make provisions to prohibit any distribution to our stockholders or the repurchase of such securities or shares unless we meet the applicable asset coverage ratios at the time of the distribution or repurchase.\nThe Company had no outstanding debt as of March 31, 2022.\nThe Company's outstanding debt as of December 31, 2021 was as follows:",
+   "prose_after": "Additional information about our debt as of December 31, 2021 is shown in the following table:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Total Amount Outstanding Exclusive of Treasury Securities",
+     "",
+     "Asset Coverage Ratio Per Unit(1)",
+     "Involuntary Liquidation Preference Per Unit(2)",
+     "",
+     "Asset Market Value Per Unit(3)"
+    ],
+    [
+     "Promissory Note",
+     "$",
+     "1,524,583",
+     "910",
+     "$",
+     "\u2014",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 583,
+    "end_line": 589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "Additional information about our debt as of December 31, 2021 is shown in the following table:",
+   "prose_after": "(1) Asset coverage per unit is the ratio of the carrying value of the Company's total consolidated assets, less all liabilities and indebtedness not represented by senior securities, to the aggregate amount of senior securities representing indebtedness. Asset coverage per unit is expressed in terms of dollar amounts per $1,000 of indebtedness.\n(2) The amount to which such class of senior security would be entitled upon the voluntary liquidation of the issuer in preference to any security junior to it. The \"-\" in this column indicates that the SEC expressly does not require this information to be disclosed for certain types of senior securities.\n(3) Not applicable because senior securities are not registered for public trading.\nPromissory Note\nOn October 14, 2021, the Company issued to Lafayette Square an unsecured promissory note (the \"Promissory Note\") with a principal amount of $1,524,583 at par. The Company pays interest on the unpaid principal amount of the Promissory Note at a rate of LIBOR + 1.80% PIK. The Promissory Note matures on the earlier of (i) the date the Company and Lafayette Square agree that the Company has sufficient funds to repay the Promissory Note and (ii) October 14, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Promissory Note interest",
+     "$",
+     "6,775",
+     ""
+    ],
+    [
+     "Weighted average stated interest rate",
+     "1.95",
+     "",
+     "%"
+    ],
+    [
+     "Weighted average outstanding balance",
+     "$",
+     "1,411,830",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 600,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "(2) The amount to which such class of senior security would be entitled upon the voluntary liquidation of the issuer in preference to any security junior to it. The \"-\" in this column indicates that the SEC expressly does not require this information to be disclosed for certain types of senior securities.\n(3) Not applicable because senior securities are not registered for public trading.\nPromissory Note\nOn October 14, 2021, the Company issued to Lafayette Square an unsecured promissory note (the \"Promissory Note\") with a principal amount of $1,524,583 at par. The Company pays interest on the unpaid principal amount of the Promissory Note at a rate of LIBOR + 1.80% PIK. The Promissory Note matures on the earlier of (i) the date the Company and Lafayette Square agree that the Company has sufficient funds to repay the Promissory Note and (ii) October 14, 2022.\nThe following table shows the interest expense, weighted average stated interest rate and weighted average outstanding debt balance for the three months ended March 31, 2022:",
+   "prose_after": "On March 24, 2022, the Company repaid the Promissory Note in full to Lafayette Square.\nNote 6. Related Party Agreements and Transactions\nInvestment Advisory Agreement\nUnder the Investment Advisory Agreement, the Adviser manages the day-to-day operations of, and provides investment advisory services to the Company. The Board approved the Investment Advisory Agreement in April 2021. The Adviser is a registered investment adviser with the SEC. The Adviser receives fees for providing services, consisting of two components, a base management fee and an incentive fee.\nBase Management Fee:\nThe base management fee is payable quarterly in arrears beginning in the period during the Initial Drawdown at an annual rate of (i) prior to a Liquidity Event, 0.75%, and (ii) following a Liquidity Event, 1.0%, in each case of the average value of our gross assets (gross assets equal the total assets of the Company as set forth on the Company\u2019s Statements of Assets and\nLiabilities) at the end of the two most recently completed calendar quarters. For services rendered under the Investment Advisory Agreement, the base management fee is payable quarterly in arrears. No management fee will be charged on committed but undrawn capital commitments.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 573,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "For the Period Ended",
+     "Expense Payments by Adviser",
+     "",
+     "Reimbursement Payments to Adviser",
+     "",
+     "Unreimbursed Expense Payments",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "$",
+     "223,791",
+     "$",
+     "\u2014",
+     "$",
+     "223,791"
+    ],
+    [
+     "March 31, 2022",
+     "128,578",
+     "",
+     "\u2014",
+     "",
+     "128,578",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "352,369",
+     "$",
+     "\u2014",
+     "$",
+     "352,369"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 704,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Related Party Agreements and Transactions"
+    }
+   },
+   "prose_before": "Following any calendar quarter in which Available Operating Funds (as defined below) exceed the cumulative distributions accrued to the Company\u2019s shareholders based on distributions declared with respect to record dates occurring in such calendar quarter (the amount of such excess being hereinafter referred to as \u201cExcess Operating Funds\u201d), the Company shall pay such Excess Operating Funds, or a portion thereof, to the Adviser until such time as all Expense Payments made by the Adviser to the Company within three years prior to the last business day of such calendar quarter have been reimbursed. Any payments required to be made by the Company shall be referred to herein as a \u201cReimbursement Payment.\u201d \u201cAvailable Operating Funds\u201d means the sum of (i) the Company\u2019s net investment company taxable income (including net short-term capital gains reduced by net long-term capital losses), (ii) the Company\u2019s net capital gains (including the excess of net long-term capital gains over net short-term capital losses) and (iii) dividends and other distributions paid to the Company\non account of investments in portfolio companies (to the extent such amounts listed in clause (iii) are not included under clauses (i) and (ii) above).\nThe Company\u2019s obligation to make a Reimbursement Payment shall automatically become a liability of the Company on the last business day of the applicable calendar quarter, except to the extent the Adviser has waived its right to receive such payment for the applicable quarter.\nThe following table presents a summary of Expense Payments and the related Reimbursement Payments since the Company's inception:",
+   "prose_after": "Pursuant to the Expense Support Agreement, Expense Payments made by the Adviser may become subject to repayment by the Company in the future. As of March 31, 2022 and December 31, 2021, the Company did not have an obligation to repay Expense Payments to the Adviser and did not record a liability on the Statements of Assets and Liabilities.\nNote 7. Commitments and Contingencies\nAs of March 31, 2022 and December 31, 2021, the Company did not have unfunded commitments and was not subject to any legal proceedings, although the Company may, from time to time, be involved in litigation arising out of operations in the normal course of business or otherwise.\nNote 8. Directors Fees\nThe independent directors receive an annual fee of $10,000 (prorated for any partial year). In addition, the chair of the Audit Committee receives an additional annual fee of $2,000 (prorated for any partial year). We are also authorized to pay the reasonable out-of-pocket expenses for each independent director incurred in connection with the fulfillment of his or her duties as independent directors (provided that such compensation will only be paid if the committee meeting is not held on the same day as any regular meeting of the Board).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 697,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "Earnings (loss) per common share (basic and diluted):",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "(40,154)"
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "700",
+     ""
+    ],
+    [
+     "Earnings (loss) per common share (basic and diluted):",
+     "$",
+     "(57.36)"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022",
+    "Earnings (loss) per common share (basic and diluted):"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 733,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Share Data and Distributions"
+    }
+   },
+   "prose_before": "As of March 31, 2022 and December 31, 2021, the Company did not have unfunded commitments and was not subject to any legal proceedings, although the Company may, from time to time, be involved in litigation arising out of operations in the normal course of business or otherwise.\nNote 8. Directors Fees\nThe independent directors receive an annual fee of $10,000 (prorated for any partial year). In addition, the chair of the Audit Committee receives an additional annual fee of $2,000 (prorated for any partial year). We are also authorized to pay the reasonable out-of-pocket expenses for each independent director incurred in connection with the fulfillment of his or her duties as independent directors (provided that such compensation will only be paid if the committee meeting is not held on the same day as any regular meeting of the Board).\nFor the three months ended March 31, 2022 the Company incurred$7,890 of directors fees expense.\nNote 9. Share Data and Distributions\nEarnings per Share\nThe following table sets forth the computation of basic and diluted earnings per share, for the three months ended March 31, 2022:",
+   "prose_after": "Capital Activity\nThe Company is authorized to issue 50,000,000 shares of preferred stock at a par value of $0.001 per share and 450,000,000 shares of common stock at a par value of $0.001 per share. The Company expects to enter into subscription agreements in which investors will make capital commitments to purchase shares of Common Stock (the \u201cSubscription Agreements\u201d) with several investors, including with affiliates of the Adviser, providing for the private placement of the\nCompany\u2019s Common Stock. It is expected that, under the terms of the Subscription Agreements, investors will be required to fund drawdowns to purchase the Company\u2019s Common Stock at a price per share equal to the most recent NAV per share as determined by the Board (subject to the adjustment to the extent required by Section 23 of the 1940 Act) up to the amount of their respective capital subscriptions on an as-needed basis as determined by the Company with a minimum of ten business days prior notice.\nThe Company had not accepted any Subscription Agreements from third party investors through March 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 697,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "2,712"
+    ],
+    [
+     "Capital loss carryforward",
+     "8,079",
+     ""
+    ],
+    [
+     "Organizational costs",
+     "13,564",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(24,355)",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net deferred tax assets and liabilities",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022",
+    "Deferred tax assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Tax Matters"
+    }
+   },
+   "prose_before": "Distributions to common stockholders are recorded on the ex-dividend date. We intend to elect to be taxed as a RIC under the Code the first taxable year the Company qualifies for such treatment, and for future taxable years. The Company will be required to distribute dividends each tax year as a RIC to its stockholders of an amount generally at least equal to 90% of its investment company taxable income, determined without regard to any deduction for dividends paid, in order to be eligible for tax benefits allowed to a RIC under Subchapter M of the Code. The Company anticipates paying out as a distribution all or substantially all of those amounts. The amount to be paid out as a dividend is determined by the Board and is based on management\u2019s estimate of the Company\u2019s annual taxable income. Net realized capital gains, if any, may be distributed to stockholders or retained for reinvestment.\nNote 10. Tax Matters\nThe Company did not qualify to elect treatment as a RIC for its initial tax year from June 16, 2021 through March 31, 2022. The Company intends to comply with the provisions of the Code applicable to RIC's the first taxable year the Company qualifies for such treatment. It is not anticipated that the Company will incur U.S. federal, state and local taxes (other than nominal state and local taxes) as a corporation and consequently, no such taxes were accrued through March 31, 2022.\nDeferred income taxes reflect the net tax effect of temporary differences between the carrying amount of assets and liabilities for financial reporting and tax purposes. Components of the Company\u2019s deferred tax assets and liabilities as of March 31, 2022, are as follows:",
+   "prose_after": "The Company\u2019s income tax provision consists of the following as of March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 748,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Current tax (expense)/benefit:",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State and Local",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current tax (expense)/benefit",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax (expense)/benefit:",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "20,176",
+     ""
+    ],
+    [
+     "State and Local",
+     "4,179",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(24,355)",
+     ""
+    ],
+    [
+     "Total deferred tax (expense)/benefit",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total income tax (expense)/benefit",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022",
+    "Current tax (expense)/benefit:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 783,
+    "end_line": 801
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Tax Matters"
+    }
+   },
+   "prose_before": "The Company\u2019s income tax provision consists of the following as of March 31, 2022:",
+   "prose_after": "Total income tax (expense) benefit for the Company differs from the amount computed by applying the federal statutory income tax rate of 21% to net increase (decrease) in net assets from operations for the period June 16, 2021 through March 31, 2022, as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     ""
+    ],
+    [
+     "Income tax benefit at federal statutory rate from inception (21%)",
+     "$",
+     "39,313"
+    ],
+    [
+     "Less: income tax benefit at federal statutory rate related to the disregarded entity period",
+     "(19,137)",
+     ""
+    ],
+    [
+     "Net income tax benefit at federal statutory tax rate",
+     "20,176",
+     ""
+    ],
+    [
+     "State and local income tax benefit (net of federal detriment)",
+     "4,179",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(24,355)",
+     ""
+    ],
+    [
+     "Total income tax (expense)/benefits",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 804,
+    "end_line": 816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Tax Matters"
+    }
+   },
+   "prose_before": "Total income tax (expense) benefit for the Company differs from the amount computed by applying the federal statutory income tax rate of 21% to net increase (decrease) in net assets from operations for the period June 16, 2021 through March 31, 2022, as follows:",
+   "prose_after": "At March 31, 2022, the Company determined a valuation allowance was required. The Company\u2019s assessment considered, among other matters, the nature, frequency and severity of current and cumulative losses, the duration of statutory carryforward periods and the associated risk that operating loss and capital loss carryforwards are limited or are likely to expire unused and unrealized gains and losses on investments. Through the consideration of these factors, the Company has determined that it is more likely than not that the Company\u2019s net deferred tax asset would not be realized. As a result, the Company recorded a full valuation allowance with respect to its deferred tax asset as of the year ended March 31, 2022. From time to time, the Company may modify its estimates or assumptions regarding its deferred tax liability and/or asset balances and any applicable valuation allowance as new information becomes available. Modifications to the Company\u2019s estimates or assumptions regarding its deferred tax liability and/or asset balances and any applicable valuation allowance, changes in generally accepted accounting principles or related guidance or interpretations thereof, limitations imposed on or expirations of the Company\u2019s net operating losses and capital loss carryovers (if any) and changes in applicable tax law could result in increases or decreases in the Company\u2019s NAV per share, which could be material.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Per Common Share Data:(1)(2)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value, beginning of period",
+     "$",
+     "(195.07)",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "(11.83)",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss)",
+     "(45.53)",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "(57.36)",
+     "",
+     ""
+    ],
+    [
+     "Net asset value, end of period",
+     "$",
+     "(252.43)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total return based on NAV(3)",
+     "(1,782.87)",
+     "",
+     "%"
+    ],
+    [
+     "Common shares outstanding, end of period",
+     "700",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "700",
+     "",
+     ""
+    ],
+    [
+     "Net assets, end of period",
+     "$",
+     "(176,701)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio/Supplemental data(4):",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio of net investment income (loss) to average net assets(5)",
+     "259.30",
+     "",
+     "%"
+    ],
+    [
+     "Ratio of expenses to average net assets(5)",
+     "(418.58)",
+     "",
+     "%"
+    ],
+    [
+     "Average debt outstanding",
+     "$",
+     "1,411,830",
+     ""
+    ],
+    [
+     "Average debt outstanding per common share",
+     "$",
+     "2,017",
+     ""
+    ],
+    [
+     "Total debt outstanding(6)",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Per Common Share Data:(1)(2)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 849
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "At March 31, 2022, the Company determined a valuation allowance was required. The Company\u2019s assessment considered, among other matters, the nature, frequency and severity of current and cumulative losses, the duration of statutory carryforward periods and the associated risk that operating loss and capital loss carryforwards are limited or are likely to expire unused and unrealized gains and losses on investments. Through the consideration of these factors, the Company has determined that it is more likely than not that the Company\u2019s net deferred tax asset would not be realized. As a result, the Company recorded a full valuation allowance with respect to its deferred tax asset as of the year ended March 31, 2022. From time to time, the Company may modify its estimates or assumptions regarding its deferred tax liability and/or asset balances and any applicable valuation allowance as new information becomes available. Modifications to the Company\u2019s estimates or assumptions regarding its deferred tax liability and/or asset balances and any applicable valuation allowance, changes in generally accepted accounting principles or related guidance or interpretations thereof, limitations imposed on or expirations of the Company\u2019s net operating losses and capital loss carryovers (if any) and changes in applicable tax law could result in increases or decreases in the Company\u2019s NAV per share, which could be material.\nAs of March 31, 2022, the Company did not have any investments.\nNote 11. Financial Highlights\nBelow is the schedule of financial highlights of the Company for the three months ended March 31, 2022:",
+   "prose_after": "(1) Per share data is based on weighted average shares outstanding for the respective period.\n(2) Table may not foot due to rounding.\n(3) Total return is based upon the change in net asset value per share between the opening and ending net assets per share and the issuance of common stock in the period. Total return is not annualized.\n(4) Annualized, except for organizational expenses, which are non-recurring.\n(5) For the three months ended March 31, 2022, prior to the effect of the Expense Support Agreement, the ratio of net investment income (loss) to average net assets, and expenses to average net assets is 338.70% and (497.98)%, respectively.\n(6) The Company paid off all of its outstanding debt on March 24, 2022.\nNote 12. Subsequent Events\nThe Company's management evaluated subsequent events through the date of issuance of the financial statements. There have been no subsequent events that occurred during such period that would require disclosure in, or would be required to be recognized in, the financial statements except as disclosed below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 861,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "Aggregate amount in exits and repayments",
+     "$",
+     "(1,500,630)"
+    ],
+    [
+     "Net investment activity",
+     "$",
+     "(1,500,630)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Portfolio Companies, at beginning of period",
+     "1",
+     ""
+    ],
+    [
+     "Number of exited portfolio companies",
+     "$",
+     "(1)"
+    ],
+    [
+     "Portfolio companies, at end of period",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 961,
+    "end_line": 975
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "and all other expenses incurred by either the LS Administration LLC (the \u201cAdministrator\u201d) or us in connection with administering our business, including payments under the Administration Agreement based upon our allocable portion of the compensation paid to our Chief Financial Officer and Chief Compliance Officer and their respective staffs, and reimbursing third-party expenses incurred by the Administrator in carrying out its administrative services including, but not limited to, providing assistance in accounting, legal, compliance, operations, technology, internal audit, and investor relations, and being responsible for the financial records that we are required to maintain and preparing reports to our stockholders and reports filed with the SEC. In addition, our Administrator assists us in determining and publishing our net asset value, overseeing the preparation and filing of our tax returns and the printing and dissemination of reports to our stockholders, our internal control assessment under the Sarbanes-Oxley Act, and generally overseeing the payment of our expenses and the performance of administrative and professional services rendered to us by others. We expect our general and administrative expenses to be relatively stable or decline as a percentage of total assets during periods of asset growth and to increase proportionally when our asset value declines.\nLeverage\nThe amount of leverage we intend to use in any period depends on a number of factors, including cash on-hand available for investing, the cost of financing and general economic and market conditions. Prior to the Small Business Credit Availability Act being signed into law, a BDC generally was not permitted to incur indebtedness unless immediately after such borrowing it has an asset coverage for total borrowings of at least 200%. The Small Business Credit Availability Act, signed into law on March 23, 2018, contains a provision that grants a BDC the option, subject to certain conditions and disclosure obligations, to reduce the asset coverage requirement to 150%. In April 2021, our Board and initial stockholder approved the reduced asset coverage ratio.\nPortfolio and Investment Activity\nAs of March 31, 2022, the Company had no investments. The following table summarizes our portfolio and investment activity during the three months ended March 31, 2022.",
+   "prose_after": "As of March 31, 2022, the Company had no investments.\nAs of December 31, 2021, the Company's investments consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 993,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subordinated Debt",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ],
+    [
+     "Warrants",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 980,
+    "end_line": 990
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "As of March 31, 2022, the Company had no investments.\nAs of December 31, 2021, the Company's investments consisted of the following:",
+   "prose_after": "The table below describes investments by industry composition based on fair value as of December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 993,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "",
+     "Fair Value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Waste Management and Remediation Services",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "1,532,500",
+     "100",
+     "%",
+     "$",
+     "1,532,500",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 994,
+    "end_line": 1003
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The table below describes investments by industry composition based on fair value as of December 31, 2021:",
+   "prose_after": "Ongoing monitoring and risk management of each asset is conducted by the Adviser's portfolio management team under the supervision of the Chief Risk Officer. The portfolio management team is separate and distinct from the Adviser's investment team. The primary responsibilities of the portfolio management team are to:\n\u2022formally monitor portfolio companies post-investment on an ongoing basis;\n\u2022perform quarterly valuations of all assets in partnership with third-party valuation agent(s);\n\u2022maintain and update internal and external asset ratings;\n\u2022oversee BDC-level monitoring;\n\u2022lead amendment, \u201cwork out,\u201d and restructurings processes\nThe portfolio management team monitors the financial trends of each portfolio company to determine if it is meeting its respective business plan and to assess the appropriate course of action with respect to our investment in each portfolio company. The portfolio management team has several methods of evaluating and monitoring the performance and fair value of our investments, which may include, but are not limited to the following:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 993,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Internal Risk Rating",
+     "Investments at Fair Value",
+     "",
+     "Percentage of Total Investments",
+     ""
+    ],
+    [
+     "1",
+     "$",
+     "\u2014",
+     "\u2014",
+     "%"
+    ],
+    [
+     "2",
+     "1,532,500",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "3",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "4",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "5",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "6",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,532,500",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1049,
+    "end_line": 1063
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "2 - Performing - Stable The borrower is operating at/near the Adviser\u2019s Base Case and at/near par. This is the initial rating assigned to all new borrowers.\n3 - Performing - Low The borrower is operating below the Adviser\u2019s Base Case due to temporary adverse trends in business or industry outlook.\n4 - Watch List - Medium The borrower has a high risk of covenant default, but the Adviser believes that the borrower has adequate liquidity with low to moderate risk of a payment default.\n5 - Watch List - High The borrower\u2019s liquidity is strained, a covenant breach has likely occurred, and there is a high risk of a payment default. Negotiations to restructure debt may have begun. No principal loss is currently anticipated.\n6 - Watch List - Loss At the current level of operations and financial condition, the borrower cannot service and ultimately repay/refinance all outstanding debt on current terms. Loss of principal is possible or probable.\nAs of March 31, 2022, the Company had no investments.\nThe following table shows the distribution of the Company\u2019s investments on the 1 to 6 internal risk rating scale as of December 31, 2021:",
+   "prose_after": "Results of Operations\nThe following table represents the operating results for the three months ended March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "Total investment income",
+     "$",
+     "63,602"
+    ],
+    [
+     "Net expenses",
+     "71,886",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "(8,284)",
+     ""
+    ],
+    [
+     "Net realized gain (loss) from investments",
+     "(31,870)",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "(40,154)"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1068,
+    "end_line": 1080
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Results of Operations\nThe following table represents the operating results for the three months ended March 31, 2022:",
+   "prose_after": "Investment Income\nThe composition of the Company\u2019s investment income was as follows for the period ended March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "Investment income",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "63,602"
+    ],
+    [
+     "Total investment income",
+     "$",
+     "63,602"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022",
+    "Investment income"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1085,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Investment Income\nThe composition of the Company\u2019s investment income was as follows for the period ended March 31, 2022:",
+   "prose_after": "Expenses\nExpenses for the period ended March 31, 2022, consisted of $2,148 in initial organizational costs for which we are required to reimburse Lafayette Square upon the commencement of our operations in accordance with the Administration Agreement. Additionally, as of March 31, 2022, we have incurred $142,522 of offering costs which have been capitalized as a deferred charge on the Statements of Assets and Liabilities and will be amortized to expense on a straight-line basis over 12 months from the commencement of operations, which has not yet occurred.\nThe composition of the Company\u2019s operating expenses was as follows for the three months ended March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended March 31, 2022",
+     ""
+    ],
+    [
+     "Organizational costs",
+     "$",
+     "2,148"
+    ],
+    [
+     "General and administrative expenses",
+     "147,795",
+     ""
+    ],
+    [
+     "Professional fees",
+     "35,856",
+     ""
+    ],
+    [
+     "Directors fees",
+     "7,890",
+     ""
+    ],
+    [
+     "Interest and other debt expenses",
+     "6,775",
+     ""
+    ],
+    [
+     "Total expenses before expense support reimbursement",
+     "200,464",
+     ""
+    ],
+    [
+     "Expense support reimbursement",
+     "(128,578)",
+     ""
+    ],
+    [
+     "Total expenses net of expense support reimbursement",
+     "$",
+     "71,886"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Expenses\nExpenses for the period ended March 31, 2022, consisted of $2,148 in initial organizational costs for which we are required to reimburse Lafayette Square upon the commencement of our operations in accordance with the Administration Agreement. Additionally, as of March 31, 2022, we have incurred $142,522 of offering costs which have been capitalized as a deferred charge on the Statements of Assets and Liabilities and will be amortized to expense on a straight-line basis over 12 months from the commencement of operations, which has not yet occurred.\nThe composition of the Company\u2019s operating expenses was as follows for the three months ended March 31, 2022:",
+   "prose_after": "Financial Condition, Liquidity and Capital Resources\nWe intend to generate cash primarily from the net proceeds of any private offering of our Common Stock and from cash flows from interest and fees earned from our investments and principal repayments and proceeds from sales of our investments. Our primary use of cash will be investments in portfolio companies, payments of our expenses and cash distributions to our stockholders.\nContractual Obligations\nWe have entered into the Investment Advisory Agreement with our Adviser. Our Adviser agreed to serve as our investment adviser in accordance with the terms of our Investment Advisory Agreement. Payments under our Investment Advisory Agreement in each reporting period will consist of the base management fee equal to a percentage of the value of our gross assets as well as an incentive fee based on our performance.\nUnder the Investment Advisory Agreement, the Adviser manages the day-to-day operations of, and provides investment advisory services to, the Company. The Company\u2019s board of directors (the \u201cBoard\u201d) approved the Investment Advisory Agreement in April 2021. The Adviser is a registered investment adviser with the SEC. The Adviser receives fees for providing services, consisting of two components, a base management fee and an incentive fee.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "For the Period Ended",
+     "Expense Payments by Adviser",
+     "",
+     "Reimbursement Payments to Adviser",
+     "",
+     "Unreimbursed Expense Payments",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "$",
+     "223,791",
+     "$",
+     "\u2014",
+     "$",
+     "223,791"
+    ],
+    [
+     "March 31, 2022",
+     "128,578",
+     "",
+     "\u2014",
+     "",
+     "128,578",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "352,369",
+     "$",
+     "\u2014",
+     "$",
+     "352,369"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1161,
+    "end_line": 1171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Following any calendar quarter in which Available Operating Funds (as defined below) exceed the cumulative distributions accrued to the Company\u2019s shareholders based on distributions declared with respect to record dates occurring in such calendar quarter (the amount of such excess being hereinafter referred to as \u201cExcess Operating Funds\u201d), the Company shall pay such Excess Operating Funds, or a portion thereof, to the Adviser until such time as all Expense Payments made by the Adviser to the Company within three years prior to the last business day of such calendar quarter have been reimbursed. Any payments required to be made by the Company shall be referred to herein as a \u201cReimbursement Payment.\u201d \u201cAvailable Operating Funds\u201d means the sum of (i) the Company\u2019s net investment company taxable income (including net short-term capital gains reduced by net long-term capital losses), (ii) the Company\u2019s net capital gains (including the excess of net long-term capital gains over net short-term capital losses) and (iii) dividends and other distributions paid to the Company on account of investments in portfolio companies (to the extent such amounts listed in clause (iii) are not included under clauses (i) and (ii) above).\nThe Company\u2019s obligation to make a Reimbursement Payment shall automatically become a liability of the Company on the last business day of the applicable calendar quarter, except to the extent the Adviser has waived its right to receive such payment for the applicable quarter.\nThe following table presents a summary of Expense Payments and the related Reimbursement Payments since the Company's inception:",
+   "prose_after": "Pursuant to the Expense Support Agreement, Expense Payments made by the Adviser may become subject to repayment by the Company in the future. As of March 31, 2022 and December 31, 2021, the Company did not have an obligation to repay Expense Payments to the Adviser and did not record a liability on the Statements of Assets and Liabilities.\nCapital Resources and Borrowings\nWe intend to utilize leverage to finance our investments. The amount of leverage that we employ will be subject to the restrictions of the 1940 Act and the supervision of our Board. At the time of any proposed borrowing, the amount of leverage we employ will also depend on our Adviser\u2019s assessment of the market, and other factors. We are permitted, under specified conditions, to borrow money and issue multiple classes of debt and one class of stock senior to our Common Stock if our asset coverage, as defined in the 1940 Act, measures the ratio of total assets less total liabilities not represented by senior securities to total borrowings, is at least equal to 150% immediately after each such issuance. The application of the 150% asset coverage requirement permits us to double the maximum amount of leverage that we are permitted to incur as compared to BDCs who have not obtained the requisite approvals and made the required disclosures. In addition, while any senior securities remain outstanding, we must make provision to prohibit any distribution to our stockholders or the repurchase of such securities or shares unless we meet the applicable asset coverage ratios at the time of the distribution or repurchase. We may also borrow amounts up to 5% of the value of our total assets for temporary or emergency purposes without regard to asset coverage.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1174,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "No.",
+     "Description"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer Pursuant to Rule 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer Pursuant to Rule 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1347,
+    "end_line": 1356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNot applicable.\nItem 6. Exhibits\nThe following exhibits are filed as part of this report or hereby incorporated by reference to exhibits previously filed with the SEC:",
+   "prose_after": "* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Lafayette Square Mid-Atlantic BDC, Inc."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 11, 2022",
+     "By: /s/ Damien Dwin"
+    ],
+    [
+     "",
+     "Name: Damien Dwin"
+    ],
+    [
+     "",
+     "Title: President and Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 11, 2022",
+     "By: /s/ Seren Tahiroglu"
+    ],
+    [
+     "",
+     "Name: Seren Tahiroglu"
+    ],
+    [
+     "",
+     "Title: Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Lafayette Square Mid-Atlantic BDC, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1364,
+    "end_line": 1377
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1359,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1378,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

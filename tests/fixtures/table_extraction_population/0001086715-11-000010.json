@@ -1,0 +1,2675 @@
+{
+ "accession": "0001086715-11-000010",
+ "cik": "0001444403",
+ "form": "10-K/A",
+ "filing_date": "2011-01-25",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10ka093009.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  Nevada",
+     "",
+     "41-2264890"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "28036 Dorothy Drive, Suite 307",
+     "",
+     ""
+    ],
+    [
+     "Agoura Hills, California",
+     "",
+     "91301"
+    ],
+    [
+     "(Address of principal executive office)",
+     "",
+     "Zip Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K/A\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2009\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES ACT OF 1934\nFor the transition period from _____________ to _____________\nCommission file number: 000-53434\nGOLD STANDARD MINING CORP.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:\nTitle of each class\nName of each exchange on which registered\nNone\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon stock, $0.0001 par value\n(Title of class)\nIndicate by check mark is the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. \u00a3 Yes T No\nIndicated by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 52,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Large accelerated filer ____",
+     "Accelerated filer ____"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Non-accelerated filer ___ ( Do not check if a smaller                                                 reporting company)",
+     "Smaller reporting company      X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CROSS REFERENCE SHEET",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A",
+     "RISK FACTORS",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "PROPERTIES",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "LEGAL PROCEEDINGS",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "MARKET FOR THE REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERSAND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6",
+     "SELECTED FINANCIAL DATA",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS.",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7A",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A",
+     "CONTROLS AND PROCEDURES",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A(T)",
+     "CONTROLS AND PROCEDURES",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B",
+     "OTHER INFORMATION",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11",
+     "EXECUTIVE COMPENSATION",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12",
+     "SECURITIES OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR\n\n\n\nINDEPENDENCE.",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "42"
+    ]
+   ],
+   "caption_stack": [
+    "CROSS REFERENCE SHEET",
+    "PAGE"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1st Interval (2 m)",
+     "",
+     ""
+    ],
+    [
+     "No",
+     "No of test",
+     "Content of gold (g/t)"
+    ],
+    [
+     "1",
+     "S \u2013 10a-29",
+     "32.4"
+    ],
+    [
+     "2",
+     "S \u2013 10a-30",
+     "14.7"
+    ],
+    [
+     "2nd Interval (5 m)",
+     "",
+     ""
+    ],
+    [
+     "3",
+     "S \u2013 10a-38",
+     "4.5"
+    ],
+    [
+     "4",
+     "S \u2013 10a-39",
+     "11.7"
+    ],
+    [
+     "5",
+     "S \u2013 10a-40",
+     "1.0"
+    ],
+    [
+     "6",
+     "S \u2013 10a-41",
+     "102.3"
+    ],
+    [
+     "7",
+     "S \u2013 10a-42",
+     "19.4"
+    ]
+   ],
+   "caption_stack": [
+    "1st Interval (2 m)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 503
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "In physical fields the bodies of beresite breeds have dome-shaped forms with increase in capacity with depth up to 500 m. The tests showed the content of gold from 0.01 \u2013 6.0 \u2013 102.3 g/t, silver up to 50 g/t.\nVisible gold with the form of punching, lenses and strings with capacity of 1.5 mm has been revealed in search routes. Gold is associated with native silver, chalkopyrite, sphalerite, galena, pyrite. The gold content in the test with visible gold, according to the spectral analysis, is 5 g/t.\nNORTHERN ZONE (SEVERNAYA)\nThe extent of the zone is 1250 m, visible capacity \u2013 100-150 m, northeast orientation with sub vertical falling. It is presented in crushed, fractured, with the various degree elements of beresited granites of the ayachinsky complex.\nThe zone is studied with ditches in which gold content is established at 0.15; 0.3; 3.5 and 6.0 g/t.\nAccording to the report of Stark-Vasiljev 1969, Northern zone has capacity of 60 m, northeast strike, close-vertical falling. Beresites, silicificated, piritized granites are revealed here. In 5 meter intervals the content was measured at 4.5 g/t to 102.3 g/t of gold.",
+   "prose_after": "Gold content is established in 11 tests from 17 in northwest end of the ditch 10 and southeast part of the ditch 10A according to the assay.\n3 tests with the content of 0.2 g/t (S-10-17, S-10-14 and S-10A-32);\n2 tests \u2013 0.1 g/t (S-10A-33 and S10A-27) and 0.4 g/t (S-10-11 and S-10A-31);\n1 test of each \u2013 0.35 g/t (S-10A-34), 0.8 g/t (S-10-10), 3.5 g/t (S-10-19), 6.0 g/t\n(S-10-15), 1.3 g/t (S-10A-36) and 0.8 g/t (S-10A-20).\nThe assay was carried out at the assay office of Tokur mine of the Selemdginsky Mine Administration.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 449,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "No of the test",
+     "Results of the Assay(g/t)"
+    ],
+    [
+     "1",
+     "5-10a -29",
+     "32.4"
+    ],
+    [
+     "2",
+     "5-10a -30",
+     "14.7"
+    ],
+    [
+     "3",
+     "5-10a -36",
+     "1.8"
+    ],
+    [
+     "4",
+     "5-10a -38",
+     "4.5"
+    ],
+    [
+     "5",
+     "5-10a -39",
+     "11.7"
+    ],
+    [
+     "6",
+     "5-10\u00ba -40",
+     "1.0"
+    ],
+    [
+     "7",
+     "5-40-U",
+     "18.0"
+    ],
+    [
+     "8",
+     "5-40-U1",
+     "2.6"
+    ],
+    [
+     "9",
+     "5-10a -41",
+     "102.3"
+    ],
+    [
+     "10",
+     "KP-9-3",
+     "63.7"
+    ],
+    [
+     "11",
+     "KP-133-7",
+     "24.0"
+    ],
+    [
+     "12",
+     "KP-133-11",
+     "69.0"
+    ],
+    [
+     "13",
+     "KP-139-5",
+     "11.2"
+    ],
+    [
+     "14",
+     "5-13-20",
+     "3.0"
+    ],
+    [
+     "15",
+     "5-13-21",
+     "1.0"
+    ],
+    [
+     "16",
+     "5-13-26",
+     "0.5"
+    ],
+    [
+     "17",
+     "5-13-27",
+     "0.8"
+    ],
+    [
+     "18",
+     "5-13-28",
+     "29.5"
+    ],
+    [
+     "19",
+     "5-13-29",
+     "0.4"
+    ],
+    [
+     "20",
+     "5-13-32",
+     "0.4"
+    ],
+    [
+     "21",
+     "5-13-33",
+     "1.8"
+    ],
+    [
+     "22",
+     "5-13-34",
+     "3.0"
+    ],
+    [
+     "23",
+     "5-13-36",
+     "1.7"
+    ],
+    [
+     "24",
+     "C-7-34",
+     "7.5"
+    ],
+    [
+     "25",
+     "5-10-15",
+     "6.0"
+    ],
+    [
+     "26",
+     "5-13-30",
+     "33.5"
+    ],
+    [
+     "27",
+     "5-10-20",
+     "0.8"
+    ],
+    [
+     "28",
+     "5-6-36",
+     "3.2"
+    ],
+    [
+     "29",
+     "5-13-23",
+     "1.4"
+    ],
+    [
+     "30",
+     "5-10-19",
+     "3.5"
+    ],
+    [
+     "31",
+     "5-13-31",
+     "1.2"
+    ],
+    [
+     "32",
+     "5-13-3",
+     "0.8"
+    ],
+    [
+     "33",
+     "5-6-37",
+     "1.0"
+    ],
+    [
+     "34",
+     "5-6-38",
+     "2.0"
+    ],
+    [
+     "35",
+     "5-13-35",
+     "1.0"
+    ],
+    [
+     "36",
+     "2-72",
+     "17.8"
+    ],
+    [
+     "37",
+     "2-76",
+     "6.8"
+    ],
+    [
+     "38",
+     "2-77",
+     "0.2"
+    ],
+    [
+     "39",
+     "2-73",
+     "0.4"
+    ],
+    [
+     "40",
+     "2-69",
+     "0.9"
+    ],
+    [
+     "41",
+     "2-62",
+     "0.3"
+    ],
+    [
+     "42",
+     "2-58",
+     "0.2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 565
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Gold content is established in 11 tests from 17 in northwest end of the ditch 10 and southeast part of the ditch 10A according to the assay.\n3 tests with the content of 0.2 g/t (S-10-17, S-10-14 and S-10A-32);\n2 tests \u2013 0.1 g/t (S-10A-33 and S10A-27) and 0.4 g/t (S-10-11 and S-10A-31);\n1 test of each \u2013 0.35 g/t (S-10A-34), 0.8 g/t (S-10-10), 3.5 g/t (S-10-19), 6.0 g/t\n(S-10-15), 1.3 g/t (S-10A-36) and 0.8 g/t (S-10A-20).\nThe assay was carried out at the assay office of Tokur mine of the Selemdginsky Mine Administration.",
+   "prose_after": "CENTRAL ZONE (CENTRALNAYA)\nThe extent of the zone is 750 m, visible capacity \u2013 50 m, northeast strike, abrupt falling (70-80\u00b0) on the northwest up to the vertical. It is studied with ditches (interval \u2013 260 m) and a chink 3.\nIn the sections the content of gold is established as 0.5 m \u2013 1.15 g/t; 2.0 m \u2013 1.1 g/t; 9.4 m \u2013 1.15 g/t, 5.0 m \u2013 1.02 g/t; 4.3 m \u2013 2.4 g/t; 1.0 m \u2013 7.5 g/t. The maximum content is established in number of 38.5 g/t, dated to interval of the most changed breeds.\nFull beresites with quartz veins and pyrite mineralization (to 10 %) were opened in the chink 3 which has been passed in alignment of the ditch 6, in the range of 10,0 \u2013 60m. The body of beresites, opened with the chink, coordinates with similar full beresites established in the ditch 6. Capacity of the body increases with depth what is shown in physical fields. In the same interval a series of dykes settles down. The dykes are of the average and basic structures focused according to the body of beresites.\nThe gold mineralization is dated for the interval of the most changed beresites in number of 0.1 \u2013 0.5 g/t. The average content of gold on 17.8 m has made 0.183 g/t. On depth of 79.5 \u2013 80.0 m it is opened a dyke of changed spessartites in which gold content is established at 10.2 g/t, silver \u2013 45.9 g/t. This is obviously blind ore body.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 516,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No of ditch",
+     "No",
+     "Capacity",
+     "Content in the tests",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Minimal Analysis, g/t",
+     "Spectral Analysis, g/t",
+     "Assay, g/t",
+     "Average, g/t"
+    ],
+    [
+     "C-17",
+     "C-7-34",
+     "0.8",
+     "-",
+     "5.0",
+     "7.5",
+     "7.5"
+    ],
+    [
+     "S-13",
+     "S-13-28",
+     "",
+     "6-7",
+     "10.0",
+     "29.5",
+     ""
+    ],
+    [
+     "S-13",
+     "S-13-29",
+     "2.1",
+     "1",
+     "0.05",
+     "0.4",
+     ""
+    ],
+    [
+     "S-13",
+     "S-13-30",
+     "",
+     "19",
+     "1.0",
+     "38.5",
+     "22.8"
+    ],
+    [
+     "S-40",
+     "S-40-Y",
+     "2.0",
+     "-",
+     "-",
+     "18.0",
+     "10.3"
+    ],
+    [
+     "S-40",
+     "S-40-YI",
+     "",
+     "-",
+     "-",
+     "2.6",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 582,
+    "end_line": 592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "Full beresites with quartz veins and pyrite mineralization (to 10 %) were opened in the chink 3 which has been passed in alignment of the ditch 6, in the range of 10,0 \u2013 60m. The body of beresites, opened with the chink, coordinates with similar full beresites established in the ditch 6. Capacity of the body increases with depth what is shown in physical fields. In the same interval a series of dykes settles down. The dykes are of the average and basic structures focused according to the body of beresites.\nThe gold mineralization is dated for the interval of the most changed beresites in number of 0.1 \u2013 0.5 g/t. The average content of gold on 17.8 m has made 0.183 g/t. On depth of 79.5 \u2013 80.0 m it is opened a dyke of changed spessartites in which gold content is established at 10.2 g/t, silver \u2013 45.9 g/t. This is obviously blind ore body.\nSilicification and beresite creating are developed on silicificated granites. Strike of the zone is northeast, capacity reaches 40 m. Ore body (length of 250m, average capacity of 7 m, average content 6.9 g/t) is contoured on the northeast flank of the zone. Gold companion elements are lead, zinc, copper, silver, bismuth.\nOre body is drilled out by results of the assay of furrow tests from ditches C-7, KS-13 and KS-40. Its description is given in the following table:",
+   "prose_after": "SOUTHERN ZONE (YUZHNAYA)\nExtent of the Southern zone is 1100 m, visible capacity \u2013 100-150 m, northeast strike. It is studied with search routes and ditches.\nFull beresites have capacity of more than 50 m. In ditches content of gold is established from 0.01 to 3.2 g/t. The average content of gold is up 1.15 g/t to capacity of 7.58 m.\nOn the level of gold content the zone Southern is comparable to the zone Central, and even surpasses it in parameters.\nNEZHDANNAYA ZONE\nThis zone is revealed on the closed area of the site by geophysical data. Its extent within the site is 300 m, the general extent is up to 1000 m, and capacity is up to 380 m, northeast orientation. Considerable quantity of dykes of spessartites, zones of piritizing and beresite creating is established within the limits of the zone. We establish the presence of gold mineralization, comparable with mineralization in the Central zone by analogy to the studies with ditches and drilling of zones, characterized by similar geophysical fields.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 601,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "Low"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "FISCAL YEAR ENDED DECEMBER 31, 2009",
+     "",
+     ""
+    ],
+    [
+     "Fourth Quarter",
+     "$     6.75",
+     "$    0.10"
+    ],
+    [
+     "Third Quarter",
+     "$     6.75",
+     "$    0.10"
+    ],
+    [
+     "Second Quarter",
+     "$     6.75",
+     "$    0.10"
+    ],
+    [
+     "First Quarter",
+     "$     6.75",
+     "$    0.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 813,
+    "end_line": 822
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR THE REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Item 4. SUBMISSION OF MATTERS TO A VOTE OF SECURITY HOLDERS\nNo matter was submitted during the fourth quarter of the fiscal year covered by this report to a vote of security holders through the solicitation of proxies or otherwise.\nPART II\nItem 5. MARKET FOR THE REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock trades publicly on the over the counter bulletin board under the symbol \"GSTP.\" The over the counter bulletin board is a regulated quotation service that displays real-time quotes, last-sale prices and volume information in over-the-counter equity securities. The over the counter Bulletin Board securities are traded by a community of market makers that enter quotes and trade reports. This market is extremely limited and any prices quoted may not be a reliable indication of the value of our common stock.\nThe following table sets forth the high and low bid prices per share of our common stock for the periods indicated as reported on the over the counter bulletin board.",
+   "prose_after": "The quotes represent inter-dealer prices, without adjustment for retail mark-up, mark-down or commission and may not necessarily represent actual transactions. The trading volume of our securities fluctuates and may be limited during certain periods. As a result of these volume fluctuations, the liquidity of an investment in our securities may be adversely affected.\nHolders\nAs of December 31, 2009, there were 142,699,522 shares of common stock outstanding held by approximately 56 holders of record.\nDividends\nOur board of directors has not declared a dividend on our common stock during the last two fiscal years or the subsequent interim period and we do not anticipate the payments of dividends in the near future as we intend to reinvest our profits to grow our business.\nPenny Stock Status\nThe Company\u2019s common stock is a \"penny stock,\" as the term is defined by Rule 3a51-1 of the Securities Exchange Act of 1934. This makes it subject to reporting, disclosure and other rules imposed on broker-dealers by the Securities and Exchange Commission requiring brokers and dealers to do the following in connection with transactions in penny stocks:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 825,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  Name",
+     "  Age",
+     "  Positiion"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pantelis Zachos",
+     "57",
+     "CEO, CFO, Secretary, Director"
+    ],
+    [
+     "Araik Khachatrian",
+     "39",
+     "COO"
+    ],
+    [
+     "Agata Gotova",
+     "32",
+     "Director"
+    ],
+    [
+     "Zurab Chachavadze",
+     "63",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 986
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "As required by Rule 13a-15 under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), the Company carried out an evaluation under the supervision and with the participation of the Company\u2019s management, including the Chief Executive Officer/Chief Financial Officer, of the effectiveness of the Company\u2019s disclosure controls and procedures as of December 31, 2009. In designing and evaluating the Company\u2019s disclosure controls and procedures, the Company recognizes that there are inherent limitations to the effectiveness of any system of disclosure controls and procedures, including the possibility of human error and the circumvention or overriding of the controls and procedures. Accordingly, even effective disclosure controls and procedures can only provide reasonable assurance of achieving their desired control objectives. Additionally, in evaluating and implementing possible controls and procedures, the Company\u2019s management was required to apply its reasonable judgment. Furthermore, management considered certain matters deemed by the Company\u2019s independent auditors to constitute a material weakness in the Company\u2019s internal control over financial reporting described below. Based upon the required evaluation, the Chief Executive Officer and Chief Financial Officer concluded that as of December 31, 2009, the Company has determined that its system of controls and procedures are effective to ensure that information required to be disclosed by the Company in the reports it files or submits under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the Securities and Exchange Commission\u2019s rules and forms.\nThis annual report does not include an attestation report of the company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the company\u2019s registered public accounting firm pursuant to temporary rules of the Securities and Exchange Commission that permit the company to provide only management\u2019s report in this annual report.\nManagement had determined during the last fiscal year, that there were material weaknesses in its internal control over financial reporting procedures, and developed the current procedure to ameliorate the internal procedures.\nItem 9B. OTHER INFORMATION\nIn 2009, the company underwent a 3.3-1 forward split of its common share capital.\nPART III\nItem 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+   "prose_after": "Pantelis Zachos. Mr. Zachos started his career, upon his move to Europe in 1980, as export sales manager at Lortex S.A., a consumer textiles multinational company, with headquarters in Greece and trading activities in Europe and the Middle East.\nIn 1989, he joined Union Agencies S.A., a multinational import-export company as V.P. in charge of all international trading and their financing activities.\nIn 1993, he started his own company Unimex Ltd., which operated as buying representative of major European wholesale and retail companies, for their buying programs, in most countries of south-east Europe. In addition the company provided consulting services, for merchandising and import financing arrangements, to its customers.\nIn 2000, after having built an extensive network of personal acquaintances and business associates in south-east Europe, he became active advising on investments, in a stabilized emerging region with promising growth potential.\nSince 2003 those services have expanded into coordinating the financing and supervising the development and operations of projects that focus on commercializing the use of natural resources, namely renewable forms of energy such as solar and wind and drinking water.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 987,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal     position",
+     "Year",
+     "Salary",
+     "Stock Awards",
+     "Option Awards",
+     "Non-Equity Incentive Plan Compensation Earnings",
+     "Nonqualified\n\n\n\nDeferred Compensation Earnings",
+     "All Other Compensation",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pantelis Zachos CEO, CFO, Secretary",
+     "2008",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$       0",
+     "$   0"
+    ],
+    [
+     "",
+     "2009",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$       0",
+     "$   0"
+    ],
+    [
+     "Araik Khachatrian, COO",
+     "2008",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$       0",
+     "$   0"
+    ],
+    [
+     "",
+     "2009",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$      0",
+     "$       0",
+     "$   0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1015,
+    "end_line": 1026
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Zurab Chavchavadze is the current director of the company since May 6, 2009. He served as head of Votum in 2000, a consulting company which assisted small and medium businesses in development. Since 2005, he has served as a public activist, official representative to the Russian Crown, has participated in the Russian Nobel movement and serves on its High Monarchy Council. He is currently a member of the Central Federal Region of the Russian Federation, and Counsel to the Representative of the President of the Russian Federation. Prior to heading up Votum, Mr. Chavchvadze taught French and literature at the University level, conducted and published studies on education and new way of learning, and was the co-founder and General Director of the Soviet-English cooperative, Rurik. He is a graduate of Western European Language and Culture, 1969, Tblisi University.\nItem 11. EXECUTIVE COMPENSATION\nThe following table provides information as to cash compensation of all officers of the Company, for each of the Company\u2019s last two fiscal years.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "The Company has not entered into employment contracts with its executive officers. There are no outstanding equity awards or options to officers issued or outstanding.\nThe following table provides information concerning the compensation of the directors of the Company for the past fiscal year:\nDIRECTOR COMPENSATION",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and principal position",
+     "Year",
+     "Salary",
+     "Stock Awards",
+     "Option Awards",
+     "Non-Equity Incentive Plan Compensation Earnings",
+     "Nonqualified\n\n\n\nDeferred Compensation Earnings",
+     "All Other Compensation"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pantelis Zachos",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0"
+    ],
+    [
+     "Araik Khachatrian",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0"
+    ],
+    [
+     "Agata Gotova",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0"
+    ],
+    [
+     "Zurab Chachavadze",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0",
+     "$0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1033,
+    "end_line": 1051
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has not entered into employment contracts with its executive officers. There are no outstanding equity awards or options to officers issued or outstanding.\nThe following table provides information concerning the compensation of the directors of the Company for the past fiscal year:\nDIRECTOR COMPENSATION",
+   "prose_after": "There are no outstanding equity awards or options to directors issued or outstanding.\nCorporate Governance\nThe Board of Directors is committed to maintaining strong corporate governance principles and practices. The Board periodically reviews evolving legal, regulatory, and best practice developments to determine those that will best serve the interests of our shareholders.\nMeetings and Attendance\nOur Board of Directors is required by our by laws to hold regularly scheduled annual meetings. In addition to the annual meetings, it has the authority to call regularly scheduled meetings and special meetings by resolution. Our Board met 1 time during the past fiscal year.\nAll incumbent directors attended 100% or more of the Board meetings during the last fiscal year.\nNominations of Directors\nThere are no material changes to the procedures by which security holders may recommend nominees to the registrant\u2019s board of directors.\nAudit Committee\nThe Company has standing audit committee, established in accordance with section 3(a)(58)(A) of the Securities Exchange Act of 1934, consisting of independent director Patrick Peach and independent director Robert Searcy. No member of the audit committee may accept directly or indirectly any consulting, advisory, or other compensatory fee from the company or any subsidiary, not including fixed amounts of compensation under a retirement plan for prior service, and may not be an \u201cinterested person\u201d as defined in section 2(a)(19) of the Investment Company Act of 1940.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1007,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Owner",
+     "Amount of Beneficial Ownership",
+     "",
+     "Percent of Class",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Pantelis Zachos\n\n\n\nAmpelon 3, Kilkis, Greece\n\n\n\nBeverly Hills, CA 90210",
+     "",
+     "6,000,000",
+     "",
+     "4.2%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Araik Khachatrian, 26 Gorkova Street, Blagoveschensk, Russia 675000",
+     "",
+     "49,500,000",
+     "",
+     "34.7%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Agata Gotova, 1305 Summitridge Drivbe, Beverly Hills, CA 90210",
+     "",
+     "24,420,000",
+     "",
+     "17.1%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Zurab Chavchavadze, 26 Gorkova Street, Blagoveschensk, Russia 675000",
+     "",
+     "1,999,998",
+     "",
+     "1.4%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Kenata Corporation\n\n\n\nKenneth Eade, 190 N Canon Drive, suite 420, Beverly Hills, CA 90210",
+     "",
+     "24,750,000",
+     "",
+     "17.3%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "Shares of directors and executive officers as a group (6 persons)",
+     "",
+     "106,699,998",
+     "",
+     "74.7%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1101
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITIES OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has standing audit committee, established in accordance with section 3(a)(58)(A) of the Securities Exchange Act of 1934, consisting of independent director Patrick Peach and independent director Robert Searcy. No member of the audit committee may accept directly or indirectly any consulting, advisory, or other compensatory fee from the company or any subsidiary, not including fixed amounts of compensation under a retirement plan for prior service, and may not be an \u201cinterested person\u201d as defined in section 2(a)(19) of the Investment Company Act of 1940.\nItem 12. SECURITIES OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND\nRELATED STOCKHOLDER MATTERS.\nThe following table sets forth information furnished to us with respect to the beneficial ownership of our common stock by (i) each executive officer, director and nominee, and by all directors and executive officers as a group, and (ii) each beneficial owner of more than five percent of our outstanding common stock, in each case as of December 31, 2009. Unless otherwise indicated, each of the persons listed has sole voting and dispositive power with respect to the shares shown as beneficially owned.",
+   "prose_after": "The issuer is not aware of any person who owns of record, or is known to own beneficially, five percent or more of the outstanding securities of any class of the issuer, other than as set forth above.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nOn December 11, 2007, 20,000 shares of common stock were issued to officer director Pantelis Zachos, pursuant to Section 4(2) of the Securities Act of 1933, in exchange for setup costs and the company\u2019s business plan.\nOn May 8, 2009, 4,900,000 and on September 30, 2009, an additional 2,500,000 shares of common stock were issued to officer and director Agata Gotova, and 7,500,000 common shares to Kenata corporation, a corporation owned by Agata Gotova and company general counsel, Kenneth Eade, pursuant to Section 4(2) of the Securities Act of 1933, in exchange for Ross Zoloto.\nOn May 8, 2009, 15,000,000 shares of common stock were issued to officer and director Araik Khachatrian in exchange for Ross Zoloto, pursuant to Section 4(2) of the Securities Act of 1933.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1062,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1102,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNo.",
+     "Description",
+     "Filed herewith"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "X"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "X"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "X"
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1178,
+    "end_line": 1189
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Report of Independent Registered Certified Public Accountant\nFinancial Statements\nBalance Sheet\nStatement of Operations\nStatement of Stockholders\u2019 Equity\nStatement of Cash Flows\nNotes to Financial Statements\n(b)\nThe following exhibits are filed as part of this Registration Statement:\nNone",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo The Board of Directors and Stockholders of\nGold Standard Mining Corp.\nWe have audited the accompanying balance sheet of Gold Standard Mining Corp. (a Exploration stage company) as of December 31, 2009 and 2008, and the related statements of operations, stockholders\u2019 equity and cash flows for the year ending December 31, 2009, the period from December 11, 2007 (inception) to December 31, 2007 and for the period from December 11, 2007 (inception) to December 31, 2009. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform an audit of the Company\u2019s internal control over its financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1142,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GOLD STANDARD MINING CORP.\n\n\n\n(an exploration stage company)\n\n\n\nBALANCE SHEET",
+     "",
+     ""
+    ],
+    [
+     ".",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n\n\n          2008",
+     "December 31,\n\n\n\n          2009"
+    ],
+    [
+     "        ASSETS",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     ""
+    ],
+    [
+     "      Cash and cash equivalents",
+     "$             3",
+     "$  5,174.21"
+    ],
+    [
+     "        TOTAL CURRENT ASSETS",
+     "$             3",
+     "$ 5,174.21"
+    ],
+    [
+     "        TOTAL ASSETS",
+     "$             3",
+     "$ 5,174.21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "        LIABILITY AND SHAREHOLDERS\u2019 EQUITY",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     ""
+    ],
+    [
+     "  Loans from shareholders",
+     "34,500",
+     "106,705.18"
+    ],
+    [
+     "        TOTAL LIABILITIES",
+     "34,500",
+     "106,705.18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES",
+     "",
+     ""
+    ],
+    [
+     "    Common Stock, $0.001 par value, 100,000,000 shares authorized,",
+     "",
+     ""
+    ],
+    [
+     "        30,000,000 and 142,699,522 shares issued and outstanding",
+     "30,000",
+     "147,699"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Additional Paid-in-Capital",
+     "--",
+     "408,401.66"
+    ],
+    [
+     "    Deficit accumulated during development stage",
+     "(64,497)",
+     "(667,980.05)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 DEFICIT",
+     "(64,497)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "(29,997)",
+     "$ 5,174.21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying accountants' report and notes to financial statements",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GOLD STANDARD MINING CORP.\n\n\n\n(an exploration stage company)\n\n\n\nBALANCE SHEET",
+    "."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1216,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Gold Standard Mining Corp. as of December 31, 2009 and 2008, and the results of its operations and cash flows for the year ended December 31, 2008 the period from December 11, 2007 (inception) to December 31, 2007 and for the period from December 11, 2007 (inception) to December 31, 2009, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As described in Note 2 to the financial statements the Company has not generated any significant revenue during the period December 11, 2007 (inception) through December 31, 2009 and has funded its operations primarily through the issuance of equity. This matter raises substantial doubt about the Company\u2019s ability to continue as a going concern unless it is able to generate sufficient cash flows through the issuance of additional debt or equity financing to meet its obligations and sustain its operations. Management\u2019s plans regarding those matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/Gruber & Company, LLC\nGruber & Company, LLC\nLake St. Louis, Missouri\nApril 12, 2010",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1214,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gold Standard Mining Corp.\n\n\n\n(An exploration stage company)\n\n\n\nStatement of Operations",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year ended\n\n\n\nDecember 31,\n\n\n\n       2008",
+     "Year ended\n\n\n\nDecember 31,\n\n\n\n     2009",
+     "December 11, 2007\n\n\n\n(inception) to\n\n\n\nDecember 31,\n\n\n\n       2009"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE, net",
+     "$               --",
+     "$                 --",
+     "$                  --"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Selling, general and administrative",
+     "44,497",
+     "603,484,.05",
+     "667,980.05"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "44,497",
+     "603,484,.05",
+     "667,980.05"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE PROVISION FOR INCOME TAXES",
+     "(44,497)",
+     "(603,484,.05)",
+     "(667,980.05)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "  --",
+     "  --",
+     "  --"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "(44,497)",
+     "(603,484,.05)",
+     "(667,980.05)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    BASIC AND DILUTED",
+     "$       (0.00)",
+     "$        (0.004)",
+     "$        (0.004)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE SHARES OUTSTANDING:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    BASIC AND DILUTED",
+     "21,666,667",
+     "142,699,522",
+     "142,699,522"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Gold Standard Mining Corp.\n\n\n\n(An exploration stage company)\n\n\n\nStatement of Operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1255,
+    "end_line": 1291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1292,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GOLD STANDARD MINING\n\n\n\n(An exploration stage company)\n\n\n\nStatement of Cash Flows",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Cumulative from"
+    ],
+    [
+     "",
+     "",
+     "",
+     "December 11,"
+    ],
+    [
+     "",
+     "",
+     "",
+     "2007"
+    ],
+    [
+     "",
+     "Year ended",
+     "Year ended",
+     "(inception) to"
+    ],
+    [
+     "",
+     "December 31,",
+     "December 31,",
+     "December 31,"
+    ],
+    [
+     "",
+     "2008",
+     "2009",
+     "2009"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$   (44,497)",
+     "$  (603,434.05)",
+     "$  (667,931.05)"
+    ],
+    [
+     "  Adjustment to reconcile net loss to net cash",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Issuance of shares for services rendered",
+     "  --",
+     "  --",
+     "  --"
+    ],
+    [
+     "Net cash used in operating activities",
+     "(44,497)",
+     "(603,434.05)",
+     "(667,931.05)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Advances from shareholder",
+     "34,500",
+     "105,085.66",
+     "139,585.66"
+    ],
+    [
+     "  Proceeds from issuance of common stock",
+     "10,000",
+     "503,522.60",
+     "533,522.60"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "44,500",
+     "608,608.26",
+     "673,108.26"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used by financing activities",
+     "  --",
+     "  --",
+     "  --"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE IN CASH AND CASH EQUIVALENTS",
+     "3",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, Beginning of period",
+     "  --",
+     "3",
+     "  --"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, end of period",
+     "3",
+     "$     5,174.21",
+     "5,177.21"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$              --",
+     "$                 --",
+     "$                --"
+    ],
+    [
+     "Income taxes paid",
+     "$              --",
+     "$                 --",
+     "$                --"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GOLD STANDARD MINING\n\n\n\n(An exploration stage company)\n\n\n\nStatement of Cash Flows",
+    "Cumulative from",
+    "December 11,",
+    "2007"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1294,
+    "end_line": 1336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1292,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GOLD STANDARD MINING CORP.\n\n\n\n(an exploration stage company)\n\n\n\nStatement of Stockholders\u2019 Deficit\n\n\n\nFor the Period from December 11, 2007 (Inception) to December 31, 2009",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common stock     \n\n\n\nShares            Amount",
+     "",
+     "Additional\n\n\n\nPaid in\n\n\n\n   Capital",
+     "Deficit\n\n\n\naccumulated\n\n\n\nduring the\n\n\n\ndevelopment        stage",
+     "Total\n\n\n\nstockholders\u2019\n\n\n\n    deficit"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at inception (December 11, 2007",
+     "  --",
+     "$            --",
+     "$            --",
+     "  --",
+     "$              --"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares on December 31, 2007 for services rendered",
+     "20,000,000",
+     "20,000",
+     "--",
+     "--",
+     "--"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period December 11, 2007",
+     "    --",
+     "  --",
+     "",
+     "(20,000)",
+     "(20,000)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of shares for cash",
+     "10,000,000",
+     "10,000",
+     "",
+     "--",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the year ended December 31, 2008",
+     "    --",
+     "  --",
+     "",
+     "(44,497)",
+     "(44,497)"
+    ],
+    [
+     "Balance, December 31, 2008",
+     "30,000,000",
+     "30,000",
+     "",
+     "(64,497)",
+     "(64,497)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stocks issued for cash",
+     "191,219",
+     "191",
+     "408,401.66",
+     "",
+     ""
+    ],
+    [
+     "Stocks issued for services",
+     "525,000",
+     "525",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stocks cancelled",
+     "(18,000,000)",
+     "(18,000)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stocks issued for acquisition",
+     "30,506,060",
+     "35,506",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3-1 forward split",
+     "99,477,243",
+     "99,477",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for year ended December 31, 2009",
+     "",
+     "",
+     "",
+     "(603,484.05)",
+     "(603,484.05)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2009",
+     "142,699,522",
+     "142,699",
+     "458,402.",
+     "(667,980)",
+     "(667,980)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GOLD STANDARD MINING CORP.\n\n\n\n(an exploration stage company)\n\n\n\nStatement of Stockholders\u2019 Deficit\n\n\n\nFor the Period from December 11, 2007 (Inception) to December 31, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1339,
+    "end_line": 1381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "GOLD STANDARD MINING CORP.\n(a exploration stage company)\nNotes to the Financial Statements\nFor the Period Ended December 31, 2009\nNote 1: Background\n(a) Organization and Principal Activities\nGold Standard Mining Corp. was incorporated on December 17, 2007 in the State of Nevada. The Company has a plan of operations to engage in the exploration of gold from mineral deposits in gold rich regions of the world such as Russia. Its first acquisition of Gold Standard Mining (Wyoming), has an agreement to acquire 100% of Rosszoloto Co.,Ltd., a Russian company engaged in the business of exploration of gold from alluvial and hard rock mineral deposits located in the Amur region in the far east of the Russian Federation.\n(b) Business and economic environment\nThe Russian Federation has been experiencing political and economic change, which has affected and may continue to affect, the activities of enterprises operating in this environment. Consequently, operations in the Russian Federation involve risks, which do not typically exist in other markets.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1382,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,       2009",
+     "December 31,        2008"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash in bank accounts",
+     "5174",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total cash and cash equivalents",
+     "5174",
+     "3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1456,
+    "end_line": 1463
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Cash and Cash Equivalents"
+    }
+   },
+   "prose_before": "Revenue is recognized when it is probable that the economic benefits associated with a transaction will flow to the enterprise and the amount of the revenue can be measured reliably. Sales are recognized net of value-added tax and discounts when transfer of risks and rewards has been completed. In particular, revenue from the production and sale of produced gold is recognized when title has transferred to the customer.\nContingencies\nCertain conditions may exist as of balance sheet dates that may result in losses to the Company but the impact of which will only be resolved when one or more future events occur or fail to occur.\nIf a Company\u2019s assessment of a contingency indicates that it is probable that a material loss has been incurred and the amount of the liability can be reasonably estimated, then the estimated liability is accrued and charged to the statement of income. If the assessment indicates that a potentially material loss is not probable, but is reasonably possible, or is probable, but cannot be estimated, then the nature of the contingent liability, together with an estimate of the range of possible loss, is disclosed in the notes to the financial statements. Loss contingencies considered remote are generally not disclosed unless they involve guarantees, in which case the nature of the guarantee is disclosed.\nNote 5: Cash and Cash Equivalents",
+   "prose_after": "Note 6: Loans from Shareholders and Others",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1452,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1495,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,         2008",
+     "December 31,         2007"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt payable to related parties",
+     "34,500",
+     "106,708"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less Current Portion",
+     "",
+     ""
+    ],
+    [
+     "Total long-term debt, net of current portion",
+     "34,500",
+     "106,708"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1466,
+    "end_line": 1474
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Loans from Shareholders and Others"
+    }
+   },
+   "prose_before": "Note 6: Loans from Shareholders and Others",
+   "prose_after": "The company borrowed money from its shareholder, legal counsel and consultants in 2009. The loans were booked as advances toward expenses and are payable without interest.\nNote 7: Related Party Transactions\nDuring the periods ended December 31, 2009 and 2008, the Company had certain activities with its shareholder and related companies. The Company\u2019s reported results of operations, financial position and cash flows may have been different had such transactions been carried out amongst unrelated parties. Related parties may enter into transactions which unrelated parties might not, and transactions between related parties may not be effected on the same terms, conditions and amounts as transactions between unrelated parties.\nNote 8: Commitments, Contingencies and Operating Risks\n(a)\nInsurance\nThe insurance industry in the Russian Federation is in a developing state and many forms of insurance protection common in other parts of the world are not yet generally available.\n(b)\nTaxation environment",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1452,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1495,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: January 25, 2011",
+     "GOLD STANDARD MINING CORP.\n\n\n\n\n\n\n\nBy:    Pantelis Zachos\n\n\n\n\n\n\n\n/s/     Pantelis Zachos           \n\n\n\n         Pantelis Zachos\n\n\n\n         CEO and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1533,
+    "end_line": 1544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENTS SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "The enforcement of environmental regulation in the Russian Federation is evolving and the enforcement posture of government authorities is continually being reconsidered. The Company periodically evaluates its obligations under environmental regulations and, as obligations are determined, they are recognized immediately, if no current or future benefit is discernible. Potential liabilities which might arise as a result of stricter enforcement of existing regulations, civil litigation or changes in legislation, cannot be estimated. Under existing legislation, management believes that there are no probable liabilities or contingencies which will have a material adverse effect on the financial position or the operation results of the Company.\n(e)\nLegal contingencies\nThe Company is not a named party in any pending or threatened litigation.\nNote 9: Stock Split\nEffective May 18, 2009, the company effected a 3.3-1 forward split of its common share capital.\nNote 10: Subsequent events\nThe Company has evaluated subsequent events through the time of filing of this annual report on Form 10k and March 31, 2010, which is the date the financial statements were issued. No events have occurred subsequent to December 31, 2009 that require disclosure or recognition in these financial statements.\nSIGNATURES\nPursuant to the requirements of Section 12 of the Securities Exchange Act of 1934, the registrant has duly caused this registration statement to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1527,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1545,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

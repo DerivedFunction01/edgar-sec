@@ -1,0 +1,554 @@
+{
+ "accession": "0001999371-26-007180",
+ "cik": "0001340909",
+ "form": "10-K",
+ "filing_date": "2026-03-30",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "strats20054-10k_123125.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "52-2316339"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "30 Hudson Yards, 14th Floor, New York, New York",
+     "10001-2170"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the fiscal year ended December 31, 2025\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission File Numbers: 333-111858-16, 001-32648\nCentral Index Key Number: 0001340909\nSynthetic Fixed-Income Securities, Inc.\non behalf of:\nSTRATS Trust For Wal-Mart Stores, Inc. Securities, Series 2005-4\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (212) 214-6289\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 25,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on which Registered"
+    ],
+    [
+     "STRATS Certificates, Series 2005-4",
+     "GJO",
+     "New York Stock Exchange (\u201cNYSE\u201d)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (212) 214-6289\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 25,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Trust Description",
+     "Distribution Date",
+     "Filed on"
+    ],
+    [
+     "  STRATS Trust For Wal-Mart Stores, Inc. Securities, Series 2005-4",
+     "01-15-2025 02-18-2025 03-17-2025 04-15-2025 05-15-2025 06-16-2025 07-15-2025 08-15-2025 09-15-2025 10-15-2025 11-17-2025 12-15-2025",
+     "01-28-2025 03-03-2025 03-31-2025 04-30-2025 05-21-2025 06-30-2025 07-28-2025 08-20-2025 09-25-2025 10-22-2025 12-01-2025 12-19-2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 192,
+    "end_line": 202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nNot Applicable\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nNone\nItem 14. Principal Accounting Fees and Services.\nNot Applicable\nPART IV\nItem 15. Exhibit and Financial Statement Schedules.\n(a) List the following documents filed as a part of the report:\n1. Trustee\u2019s Distribution Statements documented on Form 8-K of STRATS Trust For Wal-Mart Stores, Inc. Securities, Series 2005-4 to the certificateholders for the period from January 1, 2025 through and including December 31, 2025 have been filed with the Securities and Exchange Commission and are hereby incorporated by reference. Filing dates are listed below:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 161,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2.",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 203,
+    "end_line": 206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "3. Exhibits:\n31.1 \u2013 Certification by Director of the Registrant pursuant to 15 U.S.C. Section 7241, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n99.1 \u2013 Annual Compliance Report by Trustee pursuant to 15 U.S.C. Section 7241, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.\n99.2 \u2013 Report of Aston Bell, CPA.\n99.3 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on January 28, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n99.4 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on March 3, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n99.5 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on March 31, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n99.6 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on April 30, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 161,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Synthetic Fixed-Income Securities, Inc.,",
+     ""
+    ],
+    [
+     "",
+     "as Depositor for the Trust",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Barbara Garafalo"
+    ],
+    [
+     "",
+     "Name:  Barbara Garafalo",
+     ""
+    ],
+    [
+     "",
+     "Title:    President",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Synthetic Fixed-Income Securities, Inc.,",
+    "as Depositor for the Trust"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "None"
+    }
+   },
+   "prose_before": "99.11 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 25, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n99.12 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on October 22, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n99.13 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on December 1, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n99.14 - Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on December 19, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.\n(b) See Item 15(a) above.\n(c) Not Applicable.\nItem 16. Form 10-K Summary.\nNot Applicable\nSIGNATURE\nPursuant to the requirements of Section 13 or 15 (d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Dated: March 30, 2026\nEXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Reference Number per Item 601 of Regulation SK",
+     "Description of Exhibits",
+     "Exhibit Number in this Form 10-K"
+    ],
+    [
+     "(31.1)",
+     "  Certification by Director of the Registrant pursuant to 15 U.S.C. Section 7241, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "31.1"
+    ],
+    [
+     "(99.1)",
+     "  Annual Compliance Report by Trustee pursuant to 15 U.S.C. Section 7241, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "99.1"
+    ],
+    [
+     "(99.2)",
+     "  Report of Aston Bell, CPA.",
+     "99.2"
+    ],
+    [
+     "(99.3)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on January 28, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.3"
+    ],
+    [
+     "(99.4)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on March 3, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.4"
+    ],
+    [
+     "(99.5)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on March 31, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.5"
+    ],
+    [
+     "(99.6)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on April 30, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.6"
+    ],
+    [
+     "(99.7)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on May 21, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.7"
+    ],
+    [
+     "(99.8)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on June 30, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.8"
+    ],
+    [
+     "(99.9)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on July 28, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.9"
+    ],
+    [
+     "(99.10)",
+     "  Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on August 20, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 269,
+    "end_line": 307
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "None"
+    }
+   },
+   "prose_before": "Dated: March 30, 2026\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(99.11)",
+     "Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on September 25, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.11"
+    ],
+    [
+     "(99.12)",
+     "Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on October 22, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.12"
+    ],
+    [
+     "(99.13)",
+     "Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on December 1, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.13"
+    ],
+    [
+     "(99.14)",
+     "Registrant\u2019s Current Report on Form 8-K filed with the Securities and Exchange Commission on December 19, 2025, as further described in Item 15(a)(1) above, is incorporated herein by reference.",
+     "99.14"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 309,
+    "end_line": 324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "None"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 325,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

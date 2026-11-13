@@ -1,0 +1,4872 @@
+{
+ "accession": "0001654954-21-004295",
+ "cik": "0000109657",
+ "form": "10-K",
+ "filing_date": "2021-04-16",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "gtbp_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "94-1620407"
+    ],
+    [
+     "(State of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 17,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549 FORM 10-K\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\nCommission File Number: 000-08092\nGT BIOPHARMA, INC.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "9350 Wilshire Blvd.\nSuite 203\nBeverly Hills, CA 90212\n(Address of principal executive offices) (Zip code)\n(800) 304-9888\n(Registrant\u2019s telephone number including area code) Securities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to section 12(g) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Securities",
+     "Exchanges on which Registered"
+    ],
+    [
+     "Common Stock, $.001 Par Value",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "9350 Wilshire Blvd.\nSuite 203\nBeverly Hills, CA 90212\n(Address of principal executive offices) (Zip code)\n(800) 304-9888\n(Registrant\u2019s telephone number including area code) Securities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to section 12(g) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K (\u00a7229.405) is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "1"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "34"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "34"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "34"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "34"
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "36"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "36"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "36"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "43"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "43"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "43"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "43"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "44"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "44"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "47"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "51"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "53"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "55"
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "55"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]                                                Accelerated filer          [ ]\nNon-accelerated filer    [ ] (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the registrant\u2019s common stock, $0.001 par value per share, held by non-affiliates on June 30, 2020 was approximately $8.9 million. As of April 12, 2021, there were 28,393,960 shares of the registrant\u2019s common stock, $0.001 par value, issued or issuable and outstanding.\nTable of Contents",
+   "prose_after": "PART I\nCAUTIONARY NOTICE REGARDING FORWARD-LOOKING STATEMENTS\nThis Report, including any documents which may be incorporated by reference into this Report, contains \u201cForward-Looking Statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. All statements other than statements of historical fact are \u201cForward-Looking Statements\u201d for purposes of these provisions, including our plans of operation, any projections of revenues or other financial items, any statements of the plans and objectives of management for future operations, any statements concerning proposed new products or services, any statements regarding future economic conditions or performance, and any statements of assumptions underlying any of the foregoing. All Forward-Looking Statements included in this document are made as of the date hereof and are based on information available to us as of such date. We assume no obligation to update any Forward-Looking Statement. In some cases, Forward-Looking Statements can be identified by the use of terminology such as \u201cmay,\u201d \u201cwill,\u201d \u201cexpects,\u201d \u201cplans,\u201d \u201canticipates,\u201d \u201cintends,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cpotential,\u201d or \u201ccontinue,\u201d or the negative thereof or other comparable terminology. Although we believe that the expectations reflected in the Forward-Looking Statements contained herein are reasonable, there can be no assurance that such expectations or any of the Forward-Looking Statements will prove to be correct, and actual results could differ materially from those projected or assumed in the Forward-Looking Statements. Future financial condition and results of operations, as well as any Forward-Looking Statements are subject to inherent risks and uncertainties, including any other factors referred to in our press releases and reports filed with the Securities and Exchange Commission. All subsequent Forward- Looking Statements attributable to the company or persons acting on its behalf are expressly qualified in their entirety by these cautionary statements. Additional factors that may have a direct bearing on our operating results are described under \u201cRisk Factors\u201d and elsewhere in this report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2020",
+     "December 31,\n\n2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "A. Notes payable issued for cash",
+     "$24,085,000",
+     "$12,998,000"
+    ],
+    [
+     "B. Notes payable issued for settlement agreements",
+     "2,528,000",
+     "300,000"
+    ],
+    [
+     "C. Notes payable issued for forbearance agreements",
+     "3,849,000",
+     "-"
+    ],
+    [
+     "D. Notes payable issued for consulting services",
+     "360,000",
+     "-"
+    ],
+    [
+     "",
+     "$30,822,000",
+     "$13,298,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1069,
+    "end_line": 1083
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "In September 2019, we executed clinical trial agreement with the Regents of the University of Minnesota, to commence enrollment in its first-in-human GTB-3550 TriKE\u2122 Phase I/II clinical trial for the treatment of certain types of leukemia. The clinical trial is being conducted at the University of Minnesota\u2019s Masonic Cancer Center in Minneapolis, Minnesota under the direction of Dr. Erica Warlick. The open-label, dose-escalation Phase I portion of the trial will evaluate GTB-3550 TriKE\u2122 in patients with CD33-expressing, high risk myelodysplastic syndromes, refractory/relapsed acute myeloid leukemia or advanced systemic mastocytosis, and will determine safety and tolerability as well as the pharmacologically active dose and maximum tolerated dose of GTB-3550 TriKE\u2122.\nCollaboration Agreement\nOn March 10, 2020 we entered into a collaboration agreement with Cytovance\u00ae Biologics, a USA-based contract development and manufacturing organization (CDMO) and a subsidiary of the Shenzhen Hepalink Pharmaceutical Group Co., Ltd. (\u201cHepalink\u201d), to provide development services for a TriKE\u2122 therapeutic for the treatment of coronavirus infection. Under the terms of the collaboration agreement, the companies will focus on preparing sufficient quantities of our coronavirus TriKE drug product for preclinical evaluation using Cytovance\u2019s E. coli-based Keystone Expression System\u2122 and subsequently, will scale-up production using Cytovance\u2019s GMP microbial manufacturing platform for evaluation of TriKE in humans to treat coronavirus infection.\nFinancing",
+   "prose_after": "A.\nNotes Payable Issued for Cash\nAs part of the Company\u2019s financing activities, the Company issued convertible notes payable in exchange for cash. These notes payable are unsecured, bear interest at a rate of 10% per annum, mature in six months up to one year from the date of issuance, and are convertible to common stock at an average conversion rate of $19.65 per share, subject to certain beneficial ownership limitations (with a maximum ownership limit of 4.99%) and standard anti-dilution provisions. As of December 31, 2018, outstanding balance of these notes payable amounted to $10,673,000.\nDuring the year ended December 31, 2019, the Company issued similar notes payable in the aggregate of $3,827,000 in exchange for cash. These notes payable are unsecured, bear interest at a rate of 10% per annum mature in six months up to one year from the date of issuance, and are convertible to common stock at an average conversion rate of $5.74 per share, subject to certain beneficial ownership limitations (with a maximum ownership limit of 4.99%) and standard anti-dilution provisions.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Anthony J. Cataldo",
+     "68",
+     "Chief Executive Officer and Chairman of the Board"
+    ],
+    [
+     "Michael Handelman",
+     "62",
+     "Chief Financial Officer"
+    ],
+    [
+     "Bruce Wendel",
+     "67",
+     "Vice Chairman of the Board"
+    ],
+    [
+     "Greg Berk",
+     "62",
+     "Director"
+    ],
+    [
+     "Michael Breen",
+     "58",
+     "Director"
+    ],
+    [
+     "Rajesh Shrotriya",
+     "76",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1300,
+    "end_line": 1310
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nOther than as described above, no changes in our internal control over financial reporting were made during our most recent fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nOn February 23, 2021, 5,491,638 shares of common stock were issued to certain of the Company\u2019s directors, executive officers and consultants as compensatory bonuses pursuant to the exemption contained in Section 4(a)(2) of the Securities Act after completion of the successful listing on the Nasdaq Capital Markets on February 11, 2021.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth the name, age and position held by each of our executive officers and directors as of March 31, 2021. Directors are elected for a period of one year and thereafter serve until the next annual meeting at which their successors are duly elected by the stockholders.",
+   "prose_after": "Anthony J. Cataldo was appointed Chief Executive Officer and Chairman on March 15, 2019. Previously he served as Vice Chairman of the Board since January 2019. Mr. Cataldo has extensive experience with the Company, having served on the Board of Directors from July 2014 until November 2018, also serving as Chief Executive Officer from November 2014 to September 2017 and Executive Chairman of the Board from September 2017 to February 2018 during that time. Prior to joining the Company, from February 2011 until June 2013, Mr. Cataldo served as Chairman and CEO/Founder of Genesis Biopharma, Inc. (now known as Iovance Biotherapeutics, Inc.). Mr. Cataldo is credited with developing the Stage Four Cancer treatment for melanoma known as Lion/Genesis using assets acquired from the National Cancer Institute (NIH). Mr. Cataldo also served as non-executive co-chairman of the board of directors of MultiCell Technologies, Inc., a supplier of functional, non-tumorigenic immortalized human hepatocytes from February 2005 until July 2006.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1269,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1310,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "Bonus ($)",
+     "Stock Awards ($) (1)",
+     "Option Awards ($) (2)",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "All Other Compensation ($) (3)",
+     "Total ($)"
+    ],
+    [
+     "Anthony J. Cataldo (5)",
+     "20",
+     "$362,000",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$362,000"
+    ],
+    [
+     "Chief Executive Officer",
+     "19",
+     "$225,000",
+     "$-",
+     "$1,281,000",
+     "$-",
+     "$-",
+     "$-",
+     "$75,000",
+     "$1,581,000"
+    ],
+    [
+     "Michael Handelman (7)",
+     "20",
+     "$74,833",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$74,833"
+    ],
+    [
+     "Chief Financial Officer",
+     "19",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Steven Weldon (6)",
+     "20",
+     "$219,662",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$219,662"
+    ],
+    [
+     "Former Chief Financial Officer",
+     "19",
+     "$230,000",
+     "$-",
+     "$823,500",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$1,053,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raymond Urbanski, M.D., Ph.D. (4)",
+     "20",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "Former Chief Executive Officer",
+     "19",
+     "$318,000",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "",
+     "$318,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1345,
+    "end_line": 1362
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Securities Exchange Act of 1934 requires our executive officers and directors, and persons who own more than 10% of a registered class of the company\u2019s equity securities, to file reports of ownership and changes in ownership with the Securities and Exchange Commission (\u201cSEC\u201d). Executive officers, directors and greater than 10% stockholders are required by SEC regulations to furnish the company with copies of all Section 16(a) forms they file. All of our executive officers and directors filed the required reports; however, each of Mr. Handelman, Mr. Wendel, Dr. Berk, Mr. Breen and Dr. Shrotriya filed their Form 3 and Form 4 late.\nITEM 11. EXECUTIVE COMPENSATION\nThe following table sets forth certain information concerning the annual and long-term compensation for services rendered to us in all capacities for the fiscal years ended December 31, 2020 and 2019 of all persons who served as our principal executive officers and as our principal financial officer during the fiscal year ended December 31, 2019. No other executive officers received total annual compensation during the fiscal year ended December 31, 2020 in excess of $100,000. The principal executive officer and the other named officers are collectively referred to as the \u201cNamed Executive Officers.\u201d",
+   "prose_after": "(1) The amounts in this column represent the aggregate grant date fair value of the restricted stock awards and restricted stock units, determined in accordance with Financial Accounting Standards Board (FASB) Accounting Standards Codification (ASC) Topic 718. GT Biopharma determines the grant date fair value of the awards by multiplying the number of units granted by the closing market price of one share of GT Biopharma common stock on the award grant date. These amounts do not reflect the actual economic value that will be realized by the named executive officer upon the vesting or the sale of the common stock awards.\n(2) This column represents option awards computed in accordance with FASB ASC Topic 718, excluding the effect of estimated forfeitures related to service-based vesting conditions. For additional information on the valuation assumptions with respect to the option grants, refer to Note 1 of our financial statements in this Annual Report. These amounts do not correspond to the actual value that will be recognized by the named executives from these awards.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1340,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1362,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of Securities Underlying Unexercised Options (#) Exercisable",
+     "Number of Securities Underlying Unexercised Options (#) Unexercisable",
+     "Equity Incentive Plan Awards: Number of Securities Underlying Unexercised Unearned Options (#)",
+     "Option Exercise Price ($) Option Expiration Date"
+    ],
+    [
+     "Michael Handelman",
+     "-",
+     "-",
+     "-",
+     "$-"
+    ],
+    [
+     "Anthony Cataldo",
+     "-",
+     "-",
+     "-",
+     "$-"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1391,
+    "end_line": 1401
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "On October 19, 2018, the Company entered into an Executive Employment Agreement with Dr. Urbanski, reflecting his current position as Chief Executive Officer of the Company. Under the terms of this agreement, Dr. Urbanski\u2019s annual salary is essentially unchanged from his previous positions. Dr. Urbanski is also entitled to participate in the Company\u2019s bonus plans. Under the Executive Employment Agreement, the Company has agreed that upon shareholder approval of a Stock Option Plan, it will recommend to the Board that the Company grant Dr. Urbanski a Non-Qualified stock option to purchase 2,971,102 shares of the Company\u2019s common stock having an exercise equal to the fair market value of the shares on the date of the Agreement. The stock option grant would vest according to the following schedule: (i) 1,250,000 fully vested shares upon signing of the agreement, (ii) 1,250,000 shares on January 1, 2019, and (iii) 471,102 shares on January 1, 2020. On March 15, 2019, Dr, Urbanski resigned his position as Chief Executive Officer, President and Chairman of the Board.\nStock Option Grants\nThe following table sets forth information as of December 31, 2020, concerning unexercised options, unvested stock and equity incentive plan awards for the executive officers named in the Summary Compensation Table.",
+   "prose_after": "Director Compensation\nMr. Wendel and Dr. Berk will each receive an annual stipend of $20,000.00 for director compensation, with Mr. Wendel receiving an additional $5,000.00 annually for chairing the Nominating Committee and $5,000.00 annually as a member of the Audit Committee, and Dr. Berk receiving an additional $5,000.00 annually for chairing the Compensation Committee and $5,000.00 annually as a member of the Nominating Committee. The Company will also grant stock awards of shares of common stock of the Company equal to 1.25%, in the case of Mr. Wendel, and 1.00%, in the case of Dr. Berk, of the number of fully diluted shares of common stock of the Company, calculated on the fully diluted equity of the Company upon the Company\u2019s national exchange financing date.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding beneficial ownership of our common stock as of April 12, 2021, (a) by each person known by us to own beneficially 5% or more of any class of our common stock, (b) by each of our named executive officers, (c) by each of our directors and (d) by all our current executive officers and directors as a group. As of April 12, 2021, there were 28, 572,770 shares of our common stock issued or issuable. Shares of common stock subject to warrants that are currently exercisable or exercisable within 60 days of April 12, 2021 are deemed to be outstanding for purposes of computing the percentage ownership of that person but are not treated as outstanding for computing the percentage ownership of any other person. Unless indicated below, the persons and entities named in the table have sole voting and sole investment power with respect to all shares beneficially owned, subject to community property laws where applicable. Except as otherwise indicated, the address of each stockholder is c/o GT Biopharma, Inc. at 9350 Wilshire Blvd., Suite 203, Beverly Hills, CA 90212. We have prepared the following table and the related notes based on information filed with the SEC, supplied to us by the relevant stockholder or estimated based on our internal records, which may not include shares held by a stockholder in \u201cstreet name.\u201d",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares Beneficially Owned",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owner",
+     "Number",
+     "Percentage"
+    ],
+    [
+     "Certain Beneficial Owners",
+     "",
+     ""
+    ],
+    [
+     "Bristol Capital, LLC (1)",
+     "972,418",
+     "3.5%"
+    ],
+    [
+     "Bristol Investment Fund Ltd. (1)",
+     "1,192,292",
+     "4.3%"
+    ],
+    [
+     "Michael Bigger (2,3)",
+     "2,303,281",
+     "8.0%"
+    ],
+    [
+     "Red Mango Enterprises Limited (3,4)",
+     "1,737,365",
+     "6.2%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and Executive Officers",
+     "",
+     ""
+    ],
+    [
+     "Anthony J. Cataldo",
+     "3,162,928",
+     "11.3%"
+    ],
+    [
+     "Michael Handelman",
+     "417,086",
+     "1.5%"
+    ],
+    [
+     "Bruce Wendel",
+     "350,840",
+     "1.3%"
+    ],
+    [
+     "Greg Berk",
+     "278,058",
+     "1.0%"
+    ],
+    [
+     "Michael Breen",
+     "278,058",
+     "1.0%"
+    ],
+    [
+     "Rajesh Shrotriya",
+     "278,058",
+     "1.0%"
+    ],
+    [
+     "Directors and Executive Officers as a Group \u2013 6 persons",
+     "4,765,027",
+     "21.0%"
+    ]
+   ],
+   "caption_stack": [
+    "Shares Beneficially Owned"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1410,
+    "end_line": 1430
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth certain information regarding beneficial ownership of our common stock as of April 12, 2021, (a) by each person known by us to own beneficially 5% or more of any class of our common stock, (b) by each of our named executive officers, (c) by each of our directors and (d) by all our current executive officers and directors as a group. As of April 12, 2021, there were 28, 572,770 shares of our common stock issued or issuable. Shares of common stock subject to warrants that are currently exercisable or exercisable within 60 days of April 12, 2021 are deemed to be outstanding for purposes of computing the percentage ownership of that person but are not treated as outstanding for computing the percentage ownership of any other person. Unless indicated below, the persons and entities named in the table have sole voting and sole investment power with respect to all shares beneficially owned, subject to community property laws where applicable. Except as otherwise indicated, the address of each stockholder is c/o GT Biopharma, Inc. at 9350 Wilshire Blvd., Suite 203, Beverly Hills, CA 90212. We have prepared the following table and the related notes based on information filed with the SEC, supplied to us by the relevant stockholder or estimated based on our internal records, which may not include shares held by a stockholder in \u201cstreet name.\u201d",
+   "prose_after": "(1)\nThe address of record is 662 N. Sepulveda Blvd., Ste 300, Los Angeles, CA 90049. Paul Kessler, as manager of Bristol Capital Advisors, LLC, the investment advisor to Bristol Investment Fund, Ltd. (\u201cBIF\u201d) and Bristol Capital, LLC (\u201cBC\u201d), has voting and investment control over the securities held by BIF and BC. Mr. Kessler disclaims beneficial ownership of these securities except to the extent of his pecuniary interest therein.\n(2)\nThe address of record is 11434 Glowing Sunset Lane, Las Vegas, NV 89135. Based on the beneficial owner\u2019s Schedule 13G filed February 17, 2021, shares beneficially owned consist of 729,029 shares of common stock owned by Bigger Capital Fund, LP, 425,000 shares of common stock issuable upon exercise of warrants owned by Bigger Capital Fund, LP, 724,252 shares of common stock owned by District 2 Capital Fund LP, and 425,000 shares of common stock issuable upon exercise of warrants owned by District 2 Capital Fund LP. The warrants are subject to a 4.99% beneficial ownership limit. The percentage set forth above assumes the exercise of all such warrants does not give effect to the beneficial ownership limit. Mr. Bigger disclaims beneficial ownership of these securities except to the extent of his pecuniary interest therein.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Securities to be Issued Upon Exercise of Outstanding Options, Warrants, and Rights",
+     "Weighted-Average Exercise Price of Outstanding Options, Warrants, and Rights",
+     "Number of Securities Available for Future Issuance Under Equity Compensation Plans (Excluding Securities Reflected in Column (a))"
+    ],
+    [
+     "Plan Category",
+     "(a)",
+     "(b)",
+     "(c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders (1)",
+     "40",
+     "$877.50",
+     "-"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "-",
+     "$-",
+     "-"
+    ],
+    [
+     "Total",
+     "40",
+     "$877.50",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1447,
+    "end_line": 1461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "The address of record is 11434 Glowing Sunset Lane, Las Vegas, NV 89135. Based on the beneficial owner\u2019s Schedule 13G filed February 17, 2021, shares beneficially owned consist of 729,029 shares of common stock owned by Bigger Capital Fund, LP, 425,000 shares of common stock issuable upon exercise of warrants owned by Bigger Capital Fund, LP, 724,252 shares of common stock owned by District 2 Capital Fund LP, and 425,000 shares of common stock issuable upon exercise of warrants owned by District 2 Capital Fund LP. The warrants are subject to a 4.99% beneficial ownership limit. The percentage set forth above assumes the exercise of all such warrants does not give effect to the beneficial ownership limit. Mr. Bigger disclaims beneficial ownership of these securities except to the extent of his pecuniary interest therein.\n(3)\nThe address of record is Pictet & Cie (Europe) S.A. Hong Kong Branch, 9/F Chater House 8 Connaught Road Central, Hong Kong. We have been advised that Chi Kan Tang exercises voting and investment power over the securities held by Red Mango Enterprises Limited.\nEquity Compensation Plan Information\nThe following is a summary of our equity compensation plans at December 31, 2019:",
+   "prose_after": "(1) As of December 31, 2019, we had options issued and outstanding to purchase 40 shares of common stock under our 2014 Stock Incentive Plan.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE\nDirector Independence\nMr. Wendel, Dr. Berk, Mr. Breen and Dr. Shrotriya each qualify as an \u201cindependent director\u201d as defined by Item 407 of Regulation S-K.\nWe have elected to use the definition for \u201cdirector independence\u201d under the Nasdaq Stock Market\u2019s listing standards, which defines an \u201cindependent director\u201d as \u201ca person other than an officer or employee of us or its subsidiaries or any other individual having a relationship, which in the opinion of our Board of Directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director.\u201d The definition further provides that, among others, employment of a director by us (or any parent or subsidiary of ours) at any time during the past three years is considered a bar to independence regardless of the determination of our Board of Directors.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1463,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Audit Fees (1)",
+     "$75,000",
+     "$70,500"
+    ],
+    [
+     "Audit-Related Fees (2)",
+     "$-",
+     "$-"
+    ],
+    [
+     "Tax Fees (3)",
+     "$-",
+     "$4,000"
+    ],
+    [
+     "All Other Fees",
+     "$-",
+     "$-"
+    ],
+    [
+     "Total",
+     "$75,000",
+     "$74,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1482,
+    "end_line": 1493
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "We have elected to use the definition for \u201cdirector independence\u201d under the Nasdaq Stock Market\u2019s listing standards, which defines an \u201cindependent director\u201d as \u201ca person other than an officer or employee of us or its subsidiaries or any other individual having a relationship, which in the opinion of our Board of Directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director.\u201d The definition further provides that, among others, employment of a director by us (or any parent or subsidiary of ours) at any time during the past three years is considered a bar to independence regardless of the determination of our Board of Directors.\nRelated Party Transactions\nDuring the year ended December 31, 2020, the Company recorded consulting expense of $1,160,000 for services rendered by a consultant who was also an owner of approximately 10% of the Company\u2019s issued and outstanding common stock.\nDuring the year ended December 31, 2019, the Company recorded consulting expense of $1,140,000 to a consultant who was also an owner of approximately 10 % of the Company\u2019s issued and outstanding common stock.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nSeligson & Giannattasio, LLP was our independent registered public accounting firm for the fiscal years ending December 31, 2019. The following table shows the fees that were paid or accrued by us for audit and other services provided by Seligson & Giannattasio, LLP for the 2020 and 2019 fiscal years.",
+   "prose_after": "(1) Audit fees represent fees for professional services provided in connection with the audit of our annual financial statements and the review of our financial statements included in our Form 10-Q quarterly reports and services that are normally provided in connection with statutory or regulatory filings for the 2020 and 2019 fiscal years.\n(2) Audit-related fees represent fees for assurance and related services that are reasonably related to the performance of the audit or review of our financial statements and not reported above under \u201cAudit Fees.\u201d\n(3) Tax fees represent fees for professional services related to tax compliance, tax advice and tax planning.\nAll audit related services, tax services and other services rendered by Seligson & Giannattasio, LLP were pre-approved by our Board of Directors or Audit Committee. The Audit Committee has adopted a pre-approval policy that provides for the pre-approval of all services performed for us by Seligson & Giannattasio, LLP. The policy authorizes the Audit Committee to delegate to one or more of its members pre-approval authority with respect to permitted services. Pursuant to this policy, the Board delegated such authority to the Chairman of the Audit Committee. All pre-approval decisions must be reported to the Audit Committee at its next meeting. The Audit Committee has concluded that the provision of the non-audit services listed above is compatible with maintaining the independence Seligson & Giannattasio, LLP.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1477,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibit Number",
+     "Exhibit Description",
+     "Form",
+     "Date",
+     "Number",
+     "Filed\n\n Herewith"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Restated Certificate of Incorporation as filed in Delaware September 10, 1996 and as thereafter amended through March 1, 2002",
+     "10-KSB",
+     "04/01/02",
+     "3.A",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to the Restated Certificate of Incorporation of GT Biopharma, Inc., dated February 9, 2011",
+     "10-K",
+     "03/31/2011",
+     "3.2",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to the Restated Certificate of Incorporation of GT Biopharma, Inc., effective as of July 19, 2017",
+     "8-K/A",
+     "03/15/2018",
+     "3.1",
+     ""
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment to the Restated Certificate of Incorporation of GT Biopharma, Inc., effective as of February 10, 2021",
+     "8-K",
+     "02/11/2021",
+     "3.1",
+     ""
+    ],
+    [
+     "3.5",
+     "Bylaws, as restated effective September 7, 1994 and as amended through April 29, 2003",
+     "10-QSB",
+     "08/13/03",
+     "3",
+     ""
+    ],
+    [
+     "4.1",
+     "Certificate of Designation of Preferences, Rights and Limitations of Series J-1 Preferred Stock of GT Biopharma, Inc., dated April 3, 2019",
+     "8-K",
+     "04/04/2019",
+     "3.1",
+     ""
+    ],
+    [
+     "4.2",
+     "Certificate of Designation of Preferences, Rights and Limitations of Series K Preferred Stock of GT Biopharma, Inc., dated April 3, 2019",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "10.1",
+     "Exclusive License Agreement, dated July 18, 2016, between the Regents of the University of Minnesota and Oxis Biotech, Inc.",
+     "10-Q",
+     "08/11/17",
+     "10.3",
+     ""
+    ],
+    [
+     "10.2",
+     "License Agreement, dated September 3, 2015, among Daniel A. Vallera, Jeffrey Lion and Oxis Biotech, Inc.",
+     "10-Q",
+     "08/11/17",
+     "10.4",
+     ""
+    ],
+    [
+     "10.3",
+     "Clinical Trial Agreement, dated September 2019, between the Regents of the University of Minnesota and GT Biopharma, Inc.",
+     "10-Q",
+     "5/15/20",
+     "10.7",
+     ""
+    ],
+    [
+     "10.4",
+     "Note Conversion Agreement, dated as of August 29, 2017, among GT Biopharma, Inc. and the holders of the convertible notes and debentures named therein",
+     "10-Q",
+     "11/14/17",
+     "10.5",
+     ""
+    ],
+    [
+     "10.5",
+     "Amendment Agreement related to Note Conversion Agreement, dated October 10, 2017, among GT Biopharma, Inc. and the holders of the convertible notes and debentures named therein",
+     "10-Q",
+     "11/14/17",
+     "10.8",
+     ""
+    ],
+    [
+     "10.6",
+     "Warrant Exercise Agreement, dated August 29, 2017, among GT Biopharma, Inc. and the warrant holders named therein",
+     "10-Q",
+     "11/14/17",
+     "10.6",
+     ""
+    ],
+    [
+     "10.7",
+     "Amendment Agreement related to Warrant Exercise Agreement, dated October 10, 2017, among GT Biopharma, Inc. and the warrant holders named therein",
+     "10-Q",
+     "11/14/17",
+     "10.9",
+     ""
+    ],
+    [
+     "10.8",
+     "Preferred Stock Exchange Agreement, dated as of August 29, 2017, among GT Biopharma, Inc. and the holders of preferred stock named therein",
+     "10-Q",
+     "11/14/17",
+     "10.7",
+     ""
+    ],
+    [
+     "10.9",
+     "Amendment Agreement related to Preferred Stock Exchange Agreement, dated October 10, 2017, among GT Biopharma, Inc. and the holders of preferred stock named therein",
+     "10-Q",
+     "11/14/17",
+     "10.10",
+     ""
+    ],
+    [
+     "10.10",
+     "Securities Purchase Agreement, dated January 9, 2017, among OXIS International, Inc. and the purchasers named therein",
+     "8-K",
+     "01/13/17",
+     "10.1",
+     ""
+    ],
+    [
+     "10.11",
+     "Form of 10% Senior Convertible Debenture (related to Securities Purchase Agreement, dated January 9, 2017)",
+     "8-K",
+     "01/13/17",
+     "10.2",
+     ""
+    ],
+    [
+     "10.12",
+     "Form of Common Stock Purchase Warrant (related to Securities Purchase Agreement, dated January 9, 2017)",
+     "8-K",
+     "01/13/17",
+     "10.3",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Incorporated by Reference"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.13",
+     "Securities Purchase Agreement, dated January 22, 2018, among GT Biopharma, Inc. and the buyers named therein",
+     "8-K",
+     "1/23/18",
+     "10.1",
+     ""
+    ],
+    [
+     "10.14",
+     "Registration Rights Agreement, dated January 22, 2018, among GT Biopharma, Inc. and the buyers named therein",
+     "8-K",
+     "1/23/18",
+     "10.2",
+     ""
+    ],
+    [
+     "10.15",
+     "Form of Senior Convertible Note (related to Securities Purchase Agreement, dated January 22, 2018)",
+     "8-K",
+     "1/23/18",
+     "10.3",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1552,
+    "end_line": 1557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "10.7            Amendment Agreement related to Warrant Exercise Agreement, dated October 10, 2017, among GT Biopharma, Inc. and the warrant    10-Q    11/14/17     10.9\nholders named therein\n10.8            Preferred Stock Exchange Agreement, dated as of August 29, 2017, among GT Biopharma, Inc. and the holders of preferred stock   10-Q    11/14/17     10.7\nnamed therein\n10.9            Amendment Agreement related to Preferred Stock Exchange Agreement, dated October 10, 2017, among GT Biopharma, Inc. and the    10-Q    11/14/17    10.10\nholders of preferred stock named therein\n10.10           Securities Purchase Agreement, dated January 9, 2017, among OXIS International, Inc. and the purchasers named therein          8-K     01/13/17     10.1\n10.11           Form of 10% Senior Convertible Debenture (related to Securities Purchase Agreement, dated January 9, 2017)                     8-K     01/13/17     10.2\n10.12           Form of Common Stock Purchase Warrant (related to Securities Purchase Agreement, dated January 9, 2017)                        8-K     01/13/17     10.3\n</TABLE>",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1527,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 2021
+    },
+    "after": {
+     "line": 1557,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.16",
+     "Form of Warrant to Purchase Common Stock (related to Securities Purchase Agreement, dated January 22, 2018)",
+     "8-K",
+     "1/23/18",
+     "10.4",
+     ""
+    ],
+    [
+     "10.17",
+     "Securities Purchase Agreement, dated August 2, 2018, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "08/03/18",
+     "10.1",
+     ""
+    ],
+    [
+     "10.18",
+     "Form of 10% Senior Convertible Debenture (related to Securities Purchase Agreement, dated August 2, 2018)",
+     "8-K",
+     "08/03/18",
+     "4.1",
+     ""
+    ],
+    [
+     "10.19",
+     "Stock Pledge Agreement, dated August 2, 2018, by the Pledgors named therein for the benefit of Grushko & Mittman, P.C.",
+     "10-Q",
+     "08/14/18",
+     "10.10",
+     ""
+    ],
+    [
+     "10.20",
+     "Security Purchase Agreement, dated September 7, 2018, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "09/07/18",
+     "10.1",
+     ""
+    ],
+    [
+     "10.21",
+     "Form of 10% Senior Convertible Debenture (related to Securities Purchase Agreement, dated September 7, 2018)",
+     "8-K",
+     "09/07/18",
+     "4.1",
+     ""
+    ],
+    [
+     "10.22",
+     "Security Purchase Agreement, dated September 24, 2018, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "09/28/18",
+     "10.1",
+     ""
+    ],
+    [
+     "10.23",
+     "Form of 10% Senior Convertible Debenture (related to Securities Purchase Agreement, dated September 24, 2018)",
+     "8-K",
+     "09/28/18",
+     "4.1",
+     ""
+    ],
+    [
+     "10.24",
+     "Securities Purchase Agreement, dated February 4, 2019, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "02/06/19",
+     "10.1",
+     ""
+    ],
+    [
+     "10.25",
+     "Registration Rights Agreement, dated February 4, 2019, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "02/06/19",
+     "10.3",
+     ""
+    ],
+    [
+     "10.26",
+     "Form of Secured Convertible Note (related to Securities Purchase Agreement, dated February 4, 2019)",
+     "8-K",
+     "02/06/19",
+     "4.1",
+     ""
+    ],
+    [
+     "10.27",
+     "Security Agreement, dated February 4, 2019, among GT Biopharma, Inc. and Alpha Capital Anstalt, as collateral agent",
+     "8-K",
+     "02/06/19",
+     "10.2",
+     ""
+    ],
+    [
+     "10.28",
+     "Securities Purchase Agreement, dated May 22, 2019, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "05/24/19",
+     "10.1",
+     ""
+    ],
+    [
+     "10.29",
+     "Registration Rights Agreement, dated May 22, 2019, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "05/24/19",
+     "10.2",
+     ""
+    ],
+    [
+     "10.30",
+     "Form of Convertible Note (related to Securities Purchase Agreement, dated August 20, 2019)",
+     "8-K",
+     "05/24/19",
+     "4.1",
+     ""
+    ],
+    [
+     "10.31",
+     "Securities Purchase Agreement, dated August 20, 2019, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "05/24/19",
+     "10.1",
+     ""
+    ],
+    [
+     "10.32",
+     "Registration Rights Agreement, dated August 20, 2019, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "05/24/19",
+     "10.2",
+     ""
+    ],
+    [
+     "10.33",
+     "Form of Convertible Note (related to Securities Purchase Agreement, dated May 22, 2019)",
+     "8-K",
+     "05/15/20",
+     "4.1",
+     ""
+    ],
+    [
+     "10.34",
+     "Securities Purchase Agreement, dated January 30, 2020, among GT Biopharma, Inc. and the purchaser named therein",
+     "10-Q",
+     "05/15/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.35",
+     "Registration Rights Agreement, dated January 30, 2020, among GT Biopharma, Inc. and the purchaser named therein",
+     "10-Q",
+     "05/15/20",
+     "10.2",
+     ""
+    ],
+    [
+     "10.36",
+     "Form of Convertible Note (related to Securities Purchase Agreement, dated January 30, 2020)",
+     "10-Q",
+     "05/15/20",
+     "10.3",
+     ""
+    ],
+    [
+     "10.37",
+     "Form Securities Purchase Agreement among GT Biopharma, Inc. and the purchaser named therein (executed in April/May 2020)",
+     "10-Q",
+     "05/15/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.38",
+     "Form of Registration Rights Agreement among GT Biopharma, Inc. and the purchaser named therein (executed in April/May 2020)",
+     "10-Q",
+     "05/15/20",
+     "10.2",
+     ""
+    ],
+    [
+     "10.39",
+     "Form of Convertible Note (related to Securities Purchase Agreement executed in April/May 2020)",
+     "10-Q",
+     "05/15/20",
+     "10.3",
+     ""
+    ],
+    [
+     "10.40",
+     "Securities Purchase Agreement, dated July 7, 2020, among GT Biopharma, Inc. and the purchaser named therein",
+     "8-K",
+     "07/09/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.41",
+     "Registration Rights Agreement, dated July 7, 2020, among GT Biopharma, Inc. and the purchaser named therein",
+     "8-K",
+     "07/09/20",
+     "10.3",
+     ""
+    ],
+    [
+     "10.42",
+     "Form of Convertible Note (related to Securities Purchase Agreement, dated July 7, 2020)",
+     "8-K",
+     "07/09/20",
+     "4.1",
+     ""
+    ],
+    [
+     "10.43",
+     "Form of Standstill and Forbearance Agreement, dated June 23, 2020, between the Company and certain holders of convertible notes and debentures",
+     "8-K",
+     "06/23/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.44",
+     "Settlement Agreement, dated June 19, 2020, among GT Biopharma, Inc., Empery Asset Master Ltd., Empery Tax Efficient, LP and Empery Tax Efficient II, LP, Anthony Cataldo and Paul Kessler.",
+     "8-K",
+     "06/19/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.45",
+     "Form of Convertible Note, dated June 19, 2020 (related to Settlement Agreement, dated June 19, 2020)",
+     "8-K",
+     "06/19/20",
+     "10.2",
+     ""
+    ],
+    [
+     "10.46",
+     "Form of Pre-Funded Warrant to Purchase Common Stock, dated June 19, 2020 (related to Settlement Agreement, dated June 19, 2020)",
+     "8-K",
+     "06/19/20",
+     "10.3",
+     ""
+    ],
+    [
+     "10.47",
+     "Executive Employment Agreement, dated October 19, 2018, among GT Biopharma, Inc. and Raymond W. Urbanski",
+     "10-Q",
+     "11/14/18",
+     "10.17",
+     ""
+    ],
+    [
+     "10.48",
+     "Consultant Agreement, dated February 14, 2018, among GT Biopharma, Inc., Georgetown Translational Pharmaceuticals, Inc. and Anthony J. Cataldo",
+     "8-K",
+     "2/21/18",
+     "10.3",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1558,
+    "end_line": 1594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1557,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1594,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.49",
+     "Employment agreement with Anthony Cataldo",
+     "10-Q",
+     "8/14/20",
+     "10.11",
+     ""
+    ],
+    [
+     "10.50",
+     "Employment agreement with Steven Weldon",
+     "10-Q",
+     "8/14/20",
+     "10.12",
+     ""
+    ],
+    [
+     "10.51",
+     "Form of Convertible Note (related to Securities Purchase Agreement, dated September 16, 2020)",
+     "8-K",
+     "9/22/20",
+     "4.1",
+     ""
+    ],
+    [
+     "10.52",
+     "Securities Purchase Agreement, dated September 16, 2020, among GT Biopharma, Inc. and the purchasers named therein",
+     "8-K",
+     "9/22/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.53",
+     "Master Services Agreement, dated October 5, 2020, between Gt Biopharma, Inc. and Cytovance Biologics, Inc.",
+     "8-K",
+     "10/6/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.54",
+     "Form of First Amendment and Extension of Standstill and Forbearance Agreement",
+     "8-K",
+     "11/4/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.55",
+     "Form of Secured Convertible Note",
+     "8-K",
+     "11/9/20",
+     "4.1",
+     ""
+    ],
+    [
+     "10.56",
+     "Securities Purchase Agreement",
+     "8-K",
+     "11/9/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.57",
+     "Settlement Agreement, dated as of November 9, 2020, by and among Adam Kasower, East Ventures, Inc., A British Virgin Islands company, SV Booth Investments III, LLC, a Delaware limited liability company and Theorem Group, LLC, a California LLC and GT Biopharma Inc., a Delaware corporation.",
+     "10-Q",
+     "11/13/20",
+     "10.19",
+     ""
+    ],
+    [
+     "10.58",
+     "Form of Settlement Note, dated November 9, 2020.",
+     "10-Q",
+     "11/13/20",
+     "10.20",
+     ""
+    ],
+    [
+     "10.59",
+     "Steve Weldon Letter of Resignation, dated November 11, 2020",
+     "10-Q",
+     "11/13/20",
+     "10.21",
+     ""
+    ],
+    [
+     "10.60",
+     "Board Service Agreement with Bruce Wendel, dated November 11, 2020",
+     "10-Q",
+     "11/13/20",
+     "10.22",
+     ""
+    ],
+    [
+     "10.61",
+     "Board Service Agreement with Greg Berk, dated November 11, 2020",
+     "10-Q",
+     "11/13/20",
+     "10.23",
+     ""
+    ],
+    [
+     "10.62",
+     "Consultant Agreement with Michael Handelman, dated November 13, 2020",
+     "10-Q",
+     "11/13/20",
+     "10.24",
+     ""
+    ],
+    [
+     "10.63",
+     "Form of Amendment to Convertible Note & Standstill Agreement",
+     "8-K",
+     "12/23/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.64",
+     "Settlement Agreement, dated as of December 22, 2020, by and among Alto Opportunity Master Fund, SPC - Segregated Master Portfolio B, Anthony Cataldo, Paul Kessler and GT Biopharma Inc., a Delaware corporation.",
+     "8-K",
+     "12/28/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.65",
+     "Settlement Note, dated December 22, 2020, by GT Biopharma Inc. payable to Alto Opportunity Master Fund, SPC - Segregated Master Portfolio B.",
+     "8-K",
+     "12/28/20",
+     "10.2",
+     ""
+    ],
+    [
+     "10.66",
+     "Form of Second Amendment and Extension of Standstill and Forbearance Agreement.",
+     "8-K",
+     "2/1/20",
+     "10.1",
+     ""
+    ],
+    [
+     "10.67",
+     "Form of Amendment to Convertible Note, dated January 31, 2021",
+     "8-K",
+     "2/1/20",
+     "10.2",
+     ""
+    ],
+    [
+     "10.68",
+     "Board Service Agreement with Rajesh Shrotriya, dated January 12, 2021.",
+     "S-1/A",
+     "02/08/2021",
+     "10.69",
+     ""
+    ],
+    [
+     "10.69",
+     "Board Service Agreement with Michael Breen, dated January 12, 2021.",
+     "S-1/A",
+     "02/08/2021",
+     "10.70",
+     ""
+    ],
+    [
+     "10.70",
+     "Amendment to Settlement Note with Alto Opportunity Master Fund, SPC - Segregated Master Portfolio B.",
+     "S-1/A",
+     "02/08/2021",
+     "10.71",
+     ""
+    ],
+    [
+     "10.71",
+     "Form of Securities Purchase Agreement - December 2020 / January 2021 Notes",
+     "S-1/A",
+     "02/08/2021",
+     "10.72",
+     ""
+    ],
+    [
+     "10.72",
+     "Form of December 2020 / January 2021 Note",
+     "S-1/A",
+     "02/08/2021",
+     "10.73",
+     ""
+    ],
+    [
+     "14.1",
+     "Code of Ethics",
+     "10-K",
+     "03/31/16",
+     "14.1",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries of GT Biopharma, Inc.",
+     "10-K",
+     "03/31/16",
+     "21.1",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Financial Officer pursuant to Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.1",
+     "Certification of the Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "32.2",
+     "Certification of the Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     "",
+     "",
+     "",
+     "X"
+    ],
+    [
+     "101",
+     "Interactive Data File",
+     "",
+     "",
+     "",
+     "X"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1595,
+    "end_line": 1635
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1594,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "GT Biopharma, Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: April 16, 2021",
+     "By:",
+     "/s/ Anthony Cataldo",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Anthony Cataldo",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GT Biopharma, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1640,
+    "end_line": 1647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Anthony J. Cataldo",
+     "Chief Executive Officer and Chairman of the Board",
+     "April 16, 2021"
+    ],
+    [
+     "Anthony J. Cataldo",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Handelman",
+     "Chief Financial Officer(Principal Accounting Officer)",
+     "April 16, 2021"
+    ],
+    [
+     "Michael Handelman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Bruce Wendel",
+     "Vice Chairman of the Board",
+     "April 16, 2021"
+    ],
+    [
+     "Bruce Wendel",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Greg Berk",
+     "Director",
+     "April 16, 2021"
+    ],
+    [
+     "Greg Berk",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Breen",
+     "Director",
+     "April 16, 2021"
+    ],
+    [
+     "Michael Breen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Rajesh Shrotriva",
+     "Director",
+     "April 16, 2021"
+    ],
+    [
+     "Rajesh Shrotriva",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1650,
+    "end_line": 1678
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nThe Stockholders and Board of Directors of\nGT Biopharma, Inc.\nBeverly Hills, CA\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheet of GT Biopharma, Inc. (the \u201cCompany\u201d) as of December 31, 2020 and the related consolidated statements of operations, changes in stockholders\u2019 deficit, and cash flows for the year then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2020, and the results of its operations and its cash flows for the year then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, during the year ended December 31, 2020, the Company incurred a net loss and utilized cash in operations, and at December 31, 2020, had a stockholders' deficit. Also, at December 31, 2020, the Company is in default on notes payable and convertible notes payable in the aggregate amount of $16.8 million. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regards to these matters are also described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "December 31,"
+    ],
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "ASSETS:",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$5,297",
+     "$28"
+    ],
+    [
+     "Prepaid expenses",
+     "364",
+     "246"
+    ],
+    [
+     "Total Current Assets",
+     "5,661",
+     "274"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "-",
+     "12"
+    ],
+    [
+     "Operating lease right-to-use asset",
+     "-",
+     "110"
+    ],
+    [
+     "TOTAL ASSETS",
+     "$5,661",
+     "$396"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$2,243",
+     "$1,940"
+    ],
+    [
+     "Accrued expenses",
+     "1,296",
+     "2,379"
+    ],
+    [
+     "Accrued interest",
+     "4,838",
+     "2,029"
+    ],
+    [
+     "Convertible notes payable, of which $16.8 were past due at December 31, 2020 (net of discount of $4,519 and $91)",
+     "26,303",
+     "13,207"
+    ],
+    [
+     "Operating lease liability",
+     "-",
+     "120"
+    ],
+    [
+     "Line of Credit",
+     "31",
+     "31"
+    ],
+    [
+     "Derivative liability",
+     "383",
+     "-"
+    ],
+    [
+     "Total current liabilities",
+     "35,094",
+     "19,706"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Deficit:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Preferred stock, par value $0.01, 15,000,000 shares authorized:",
+     "",
+     ""
+    ],
+    [
+     "Series C - 96,230 shares issued and outstanding at December 31, 2020 and 2019, respectively",
+     "1",
+     "1"
+    ],
+    [
+     "Series J - 2,353,548 shares issued and outstanding at December 31, 2020 and 2019, respectively",
+     "2",
+     "2"
+    ],
+    [
+     "Common stock, par value $0.0001, 2,000,000,000 shares authorized, 5,218,122 and 4,104,982 shares issued",
+     "",
+     ""
+    ],
+    [
+     "and outstanding as of December 31, 2020 and 2019, respectively",
+     "52",
+     "41"
+    ],
+    [
+     "Additional paid in capital",
+     "566,309",
+     "548,147"
+    ],
+    [
+     "Accumulated deficit",
+     "(595,628)",
+     "(567,332)"
+    ],
+    [
+     "Noncontrolling interest",
+     "(169)",
+     "(169)"
+    ],
+    [
+     "Total stockholders' deficit",
+     "(29,433)",
+     "(19,310)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$5,661",
+     "$396"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1768,
+    "end_line": 1816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\nThe accompanying consolidated financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has incurred significant recurring losses. The realization of a major portion of its assets is dependent upon its ability to meet its future financing needs and the success of its future operations. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. The consolidated financial statements do not include any adjustments that might result from this uncertainty.\n/s/ Seligson & Giannattasio, LLP\nSeligson & Giannattasio, LLP\nWe served as the Company\u2019s auditor from 2008 through December 28, 2020.\nWhite Plains, New York\nMarch 30, 2020\nConsolidated Balance Sheets\n(In Thousands, Except Par Value and Share Data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations\n(In Thousands, Except Share Data)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1762,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$-",
+     "$-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "485",
+     "1,667"
+    ],
+    [
+     "Selling, general and administrative",
+     "6,279",
+     "9,790"
+    ],
+    [
+     "Loss on impairment",
+     "",
+     "4,599"
+    ],
+    [
+     "Loss from Operations",
+     "6,764",
+     "16,056"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (Income) Expense",
+     "",
+     ""
+    ],
+    [
+     "Loss on disposal of assets",
+     "-",
+     "20,463"
+    ],
+    [
+     "Interest expense",
+     "3,003",
+     "2,128"
+    ],
+    [
+     "Loss on legal settlements",
+     "5,384",
+     "-"
+    ],
+    [
+     "Loss on forbearance agreement",
+     "12,598",
+     "-"
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "230",
+     "-"
+    ],
+    [
+     "Amortization of debt discount",
+     "317",
+     "-"
+    ],
+    [
+     "Total Other Expense, net",
+     "21,532",
+     "22,591"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$(28,296)",
+     "$(38,647)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$(6.45)",
+     "$(0.01)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "4,385,222",
+     "3,383,941"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1824,
+    "end_line": 1864
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations\n(In Thousands, Except Share Data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders' Equity (Deficit)\n(In Thousands)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1866,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Non",
+     ""
+    ],
+    [
+     "",
+     "Preferred Shares",
+     "",
+     "Common Shares",
+     "",
+     "Paid in",
+     "Accumulated",
+     "Controlling",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "Shares",
+     "Amount",
+     "Capital",
+     "Deficit",
+     "Interest",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "1,260",
+     "$2",
+     "2,979",
+     "$22",
+     "$540,200",
+     "$(528,685)",
+     "$(169)",
+     "$11,370"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of preferred shares",
+     "1,190",
+     "1",
+     "",
+     "",
+     "1,139",
+     "",
+     "",
+     "1,140"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common share issued upon conversion of notes",
+     "",
+     "",
+     "205",
+     "3",
+     "1,357",
+     "",
+     "",
+     "1,360"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beneficial conversion feature on convertible notes",
+     "",
+     "",
+     "",
+     "",
+     "158",
+     "",
+     "",
+     "158"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for compensation",
+     "",
+     "",
+     "921",
+     "16",
+     "5,293",
+     "",
+     "",
+     "5,309"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(38,647)",
+     "",
+     "(38,647)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "2,450",
+     "3",
+     "4,105",
+     "41",
+     "548,147",
+     "(567,332)",
+     "(169)",
+     "(19,310)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of amended convertible notes and warrants",
+     "",
+     "",
+     "",
+     "",
+     "8,643",
+     "",
+     "",
+     "8,643"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common shares and warrants for settlement of litigation",
+     "",
+     "",
+     "262",
+     "10",
+     "2,236",
+     "",
+     "",
+     "2,246"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beneficial conversion feature on convertible notes payable",
+     "",
+     "",
+     "",
+     "-",
+     "5,274",
+     "",
+     "",
+     "5,274"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued upon conversion of notes payable",
+     "",
+     "",
+     "512",
+     "1",
+     "1,740",
+     "",
+     "",
+     "1,741"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued upon exercise of warrants",
+     "",
+     "",
+     "240",
+     "-",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for compensation",
+     "",
+     "",
+     "99",
+     "-",
+     "269",
+     "",
+     "",
+     "269"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(28,296)",
+     "",
+     "(28,296)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "2,450",
+     "$3",
+     "5,218",
+     "$52",
+     "$566,309",
+     "$(595,628)",
+     "$(169)",
+     "$(29,433)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1872,
+    "end_line": 1914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders' Equity (Deficit)\n(In Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows\n(In Thousands)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1866,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1916,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$(28,296)",
+     "$(38,647)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     ""
+    ],
+    [
+     "used in operating activities:",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "-",
+     "4"
+    ],
+    [
+     "Amortization of debt discount",
+     "317",
+     "505"
+    ],
+    [
+     "Stock based compensation",
+     "269",
+     "5,308"
+    ],
+    [
+     "Loss on impairment of long-lived assets",
+     "-",
+     "4,599"
+    ],
+    [
+     "Loss on disposal of assets",
+     "-",
+     "20,494"
+    ],
+    [
+     "Convertible notes payable issued and fair value of amended convertible notes payable and warrants as part of forbearance agreements",
+     "12,598",
+     "-"
+    ],
+    [
+     "Convertible notes payable issued and fair value of common shares and warrants issued as part of legal settlements",
+     "5,003",
+     "-"
+    ],
+    [
+     "Loss on abandonment of lease",
+     "60",
+     "-"
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "230",
+     ""
+    ],
+    [
+     "Issuance of warrants accounted as derivative liability",
+     "153",
+     ""
+    ],
+    [
+     "Effect of changes in:",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "242",
+     "(216)"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "(838)",
+     "3,154"
+    ],
+    [
+     "Accounts payable - related parties",
+     "-",
+     "-"
+    ],
+    [
+     "Accrued interest",
+     "3,000",
+     "1,140"
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "(7,262)",
+     "(3,659)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "Disposal of fixed assets",
+     "-",
+     "200"
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "-",
+     "200"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of notes payable",
+     "12,531",
+     "3,527"
+    ],
+    [
+     "Payment of notes payable",
+     "-",
+     "(100)"
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "12,531",
+     "3,427"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "5,269",
+     "(32)"
+    ],
+    [
+     "Cash at Beginning of Period",
+     "28",
+     "60"
+    ],
+    [
+     "Cash at End of Period",
+     "$5,297",
+     "$28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for:",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$-",
+     "$-"
+    ],
+    [
+     "Income taxes paid",
+     "$-",
+     "$-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NON-CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "Beneficial conversion feature of notes payable issued for cash",
+     "$4,745",
+     "$-"
+    ],
+    [
+     "Common stock issued upon conversion of notes payable and accrued interest",
+     "$1,741",
+     "$1,381"
+    ],
+    [
+     "Convertible notes payable issued for consulting services",
+     "$360",
+     "$-"
+    ],
+    [
+     "Reclassification of lease liability to accrued expenses",
+     "$58",
+     "$-"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1922,
+    "end_line": 1989
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows\n(In Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nGT BIOPHARMA, INC. AND SUBSIDIARIES\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFor the Years Ended December 31, 2020 and 2019\nNote 1 \u2013 Organization and Operations\nIn 1965, the corporate predecessor of GT Biopharma Inc. (the Company), Diagnostic Data, Inc. was incorporated in the State of California. Diagnostic Data changed its incorporation to the State of Delaware in 1972 and changed its name to DDI Pharmaceuticals, Inc. in 1985. In 1994, DDI Pharmaceuticals merged with International BioClinical, Inc. and Bioxytech S.A. and changed its name to OXIS International, Inc. In July 2017, the Company changed its name to GT Biopharma, Inc.\nThe Company is a clinical stage biopharmaceutical company focused on the development and commercialization of novel immuno-oncology products based off our proprietary Tri-specific Killer Engager (TriKE\u2122), Tetra-specific Killer Engager (Dual Targeting TriKEDual Targeting TriKE) platforms. The Company\u2019s TriKE and Dual Targeting TriKE platforms generate proprietary therapeutics designed to harness and enhance the cancer killing abilities of a patient\u2019s own natural killer cells, or NK cells.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1916,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1991,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1",
+     "Valuations based on unadjusted quoted prices in active markets for identical assets or liabilities that the entity has the ability to access."
+    ],
+    [
+     "Level 2",
+     "Valuations based on quoted prices for similar assets or liabilities, quoted prices in markets that are not active, or other inputs that are observable or can be corroborated by observable data for substantially the full term of the assets or liabilities."
+    ],
+    [
+     "Level 3",
+     "Valuations based on inputs that are unobservable, supported by little or no market activity and that are significant to the fair value of the assets or liabilities."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2044,
+    "end_line": 2050
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company values its equity awards using the Black-Scholes option pricing model, and accounts for forfeitures when they occur. Use of the Black-Scholes option pricing model requires the input of subjective assumptions including expected volatility, expected term, and a risk-free interest rate. The Company estimates volatility using a its own historical stock price volatility. The expected term of the instrument is estimated by using the simplified method to estimate expected term. The risk-free interest rate is estimated using comparable published federal funds rates.\nFair Value of Financial Instruments\nFASB Accounting Standards Codification (\"ASC\") 820-10 requires entities to disclose the fair value of financial instruments, both assets and liabilities recognized and not recognized on the balance sheet for which it is practicable to estimate fair value. ASC 820-10 defines the fair value of a financial instrument as the amount at which the instrument could be exchanged in a current transaction between willing parties.\nThe three levels of the fair value hierarchy are as follows:",
+   "prose_after": "The carrying amount of the Company\u2019s derivative liability of $383,000 as of December 31, 2020 was based on Level 2 measurements.\nThe carrying amounts of the Company\u2019s other financial assets and liabilities, such as cash, accounts receivables, inventory, prepaid expense, accounts payable and accrued payables and notes payable, approximate their fair values because of the short maturity of these instruments.\nDerivative Financial Instruments\nThe Company evaluates its financial instruments to determine if such instruments are derivatives or contain features that qualify as embedded derivatives. For derivative financial instruments that are accounted for as liabilities, the derivative instrument is initially recorded at its fair value and is then re-valued at each reporting date, with changes in the fair value reported in the consolidated statements of operations. The classification of derivative instruments, including whether such instruments should be recorded as liabilities or as equity, is evaluated at the end of each reporting period. Derivative instrument liabilities are classified in the balance sheet as current or non-current based on whether or not net-cash settlement of the derivative instrument could be required within 12 months of the balance sheet date. The fair value of the embedded derivatives are determined using a Binomial valuation method at inception and on subsequent valuation dates.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2041,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 2070,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2020",
+     "December 31, 2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "A. Options to purchase common stock",
+     "-",
+     "3"
+    ],
+    [
+     "B. Warrants to purchase common stock",
+     "221,041",
+     "106,650"
+    ],
+    [
+     "C. Convertible notes payable",
+     "9,065,262",
+     "3,911,176"
+    ],
+    [
+     "D. Convertible Series J Preferred stock",
+     "692,220",
+     "692,220"
+    ],
+    [
+     "E. Convertible Series C Preferred stock",
+     "7",
+     "7"
+    ],
+    [
+     "",
+     "9,978,530",
+     "4,710,056"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2081,
+    "end_line": 2094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "We lease our corporate office space under a lease agreement with monthly payments over a period of 60 months. Pursuant to ASC 842, Leases, lease assets are presented as operating lease right-of-use assets and the related liabilities are presented as lease liabilities in our consolidated balance sheets (see Note 7).\nNet Loss Per Share\nBasic earnings (loss) per share is computed using the weighted-average number of common shares outstanding during the period. Diluted earnings (loss) per share is computed using the weighted-average number of common shares and the dilutive effect of contingent shares outstanding during the period. Potentially dilutive contingent shares, which primarily consist of convertible notes, stock issuable to the exercise of stock options and warrants have been excluded from the diluted loss per share calculation because their effect is anti-dilutive.\nThese following shares were excluded in the computation of the net loss per share because their effect is anti-dilutive.",
+   "prose_after": "Concentration\nCash is deposited in one financial institution. The balances held at this financial institution at times may be in excess of Federal Deposit Insurance Corporation (\u201cFDIC\u201d) insurance limits of up to $250,000.\nSegments\nThe Company determined its reporting units in accordance with ASC 280, \u201cSegment Reporting\u201d (\u201cASC 280\u201d). Management evaluates a reporting unit by first identifying its\u2019 operating segments under ASC 280. The Company then evaluates each operating segment to determine if it includes one or more components that constitute a business. If there are components within an operating segment that meet the definition of a business, the Company evaluates those components to determine if they must be aggregated into one or more reporting units. If applicable, when determining if it is appropriate to aggregate different operating segments, the Company determines if the segments are economically similar and, if so, the operating segments are aggregated.\nManagement has determined that the Company has one consolidated operating segment. The Company\u2019s reporting segment reflects the manner in which its chief operating decision maker reviews results and allocates resources. The Company\u2019s reporting segment meets the definition of an operating segment and does not include the aggregation of multiple operating segments.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2070,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2115,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2020",
+     "December 31,\n\n2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "A. Notes payable issued for cash",
+     "$24,085,000",
+     "$12,998,000"
+    ],
+    [
+     "B. Notes payable issued for settlement agreements",
+     "2,528,000",
+     "300,000"
+    ],
+    [
+     "C. Notes payable issued for forbearance agreements",
+     "3,849,000",
+     "-"
+    ],
+    [
+     "D. Notes payable issued for consulting services",
+     "360,000",
+     "-"
+    ],
+    [
+     "",
+     "30,822,000",
+     "13,298,000"
+    ],
+    [
+     "Less unamortized debt discount",
+     "(4,519,000)",
+     "(91,000)"
+    ],
+    [
+     "Convertible notes, net of discount",
+     "$26,303,000",
+     "$13,207,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2122,
+    "end_line": 2139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Convertible Notes Payable"
+    }
+   },
+   "prose_before": "(1) those with embedded conversion features that are not clearly and closely related to the host contract, that meet the definition of a derivative, and that do not qualify for a scope exception from derivative accounting and (2) convertible debt instruments issued with substantial premiums for which the premiums are recorded as paid-in capital. ASU 2020-06 also amends the guidance for the derivatives scope exception for contracts in an entity\u2019s own equity to reduce form-over-substance-based accounting conclusions. ASU 2020-06 will be effective January 1, 2024, for the Company. Early adoption is permitted, but no earlier than January 1, 2021, including interim periods within that year. Management is currently evaluating the effect of the adoption of ASU 2020-06 on the consolidated financial statements, but currently does not believe ASU 2020-06 will have a significant impact on the Company\u2019s accounting for its convertible debt instruments as they are not considered indexed to the Company\u2019s own stock. The effect will largely depend on the composition and terms of the financial instruments at the time of adoption.\nOther recent accounting pronouncements issued by the FASB, including its Emerging Issues Task Force, the American Institute of Certified Public Accountants, and the Securities and Exchange Commission (the \u201cSEC\u201d) did not or are not believed by management to have a material impact on the Company\u2019s present or future consolidated financial statements.\nNote 4 \u2013 Convertible Notes Payable\nConvertible notes payable consisted of the following:",
+   "prose_after": "A.\nNotes Payable Issued for Cash\nAs part of the Company\u2019s financing activities, the Company issued convertible notes payable in exchange for cash. These notes payable are unsecured, bears interest at a rate of 10% per annum matures in six months up to one year from the date of issuance and convertible to common stock at an average conversion rate of $19.65 per share, subject to certain beneficial ownership limitations (with a maximum ownership limit of 4.99%) and standard anti-dilution provisions. As of December 31, 2018, outstanding balance of these notes payable amounted to $10,673,000.\nDuring the year ended December 31, 2019, the Company issued similar notes payable in the aggregate of $3,827,000 in exchange for cash. These notes payable are unsecured, bears interest at a rate of 10% per annum matures in six months up to one year from the date of issuance and convertible to common stock at an average conversion rate of $5.74 per share, subject to certain beneficial ownership limitations (with a maximum ownership limit of 4.99%) and standard anti-dilution provisions. The Company also determined that certain of these notes payable contained a beneficial conversions feature (BCF) cost of $158,000 since these notes\u2019 were issued when the trading price of the Company\u2019s stock was greater than the average conversion price of $5.74 per share. The BCF was accounted as a debt discount and is being amortized over the corresponding term of the notes payable to interest expense. In addition, during 2019, notes payable of $1,502,000 were converted to 205,000 shares of common stock and the Company amortized the debt discount of $505,000.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2115,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2155,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2020",
+     "July 2020\n\n(date of inception)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Price",
+     "$7.21",
+     "$3.06"
+    ],
+    [
+     "Risk-free interest rate",
+     "0.36%",
+     "0.26%"
+    ],
+    [
+     "Expected volatility",
+     "135%",
+     "134%"
+    ],
+    [
+     "Expected life (in years)",
+     "4.6 years",
+     "5 years"
+    ],
+    [
+     "Expected dividend yield",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair Value:",
+     "",
+     ""
+    ],
+    [
+     "Warrants",
+     "$383,000",
+     "$153,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2239,
+    "end_line": 2255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Derivative Liability"
+    }
+   },
+   "prose_before": "On November 8, 2010, the Company entered into a financing arrangement with Gemini Pharmaceuticals, Inc., a product development and manufacturing partner of the Company, pursuant to which Gemini Pharmaceuticals made a $250,000 strategic equity investment in the Company and agreed to make a $750,000 purchase order line of credit facility available to the Company. The outstanding principal of all advances under the line of credit will bear interest at the rate of interest of prime plus 2% per annum.\nAs of December 31, 2020 and 2019, outstanding balance of this credit line amounted to $31,000, respectively and is past due.\nNote 6 \u2013 Derivative Liability\nDuring the year ended December 31, 2020, the Company issued certain warrants that contained a fundamental transaction provision that could give rise to an obligation to pay cash to the warrant holder upon occurrence of certain change in control type events.\nIn accordance with ASC 480, the fair value of these warrants are classified as a liability in the Consolidated Balance Sheet and will be re-measured at the end of every reporting period with the change in value reported in the statement of operations.\nThe derivative liabilities were valued using a Binomial pricing model with the following average assumptions:",
+   "prose_after": "The risk-free interest rate was based on rates established by the Federal Reserve Bank. The Company uses the historical volatility of its common stock to estimate the future volatility for its common stock. The expected life of the derivative securities was determined by the remaining contractual life of the derivative instrument. For derivative instruments that already matured, the Company used the estimated life. The expected dividend yield was based on the fact that the Company has not paid dividends to its common stockholders in the past and does not expect to pay dividends to its common stockholders in the future.\nDuring the year ended December 31, 2020, the Company recognized a loss of $230,000 to account the change in fair value of the derivative liability.\nNote 7 \u2013 Lease\nIn September 2018, the Company signed a three year lease agreement for its corporate office in Westlake Village, Ventura County. Monthly lease payment amounted to $5,000 up to $6,000 over the term of the lease.\nThe Company accounted the lease pursuant to ASC 842, Lease. Pursuant to ASC 842, Operating lease right-of-use (\u201cROU\u201d) assets and liabilities are recognized at commencement date based on the present value of lease payments over the lease term. ROU assets represent our right to use an underlying asset for the lease term and lease liabilities represent the Company\u2019s obligation to make lease payments arising from the lease. Generally, the implicit rate of interest in arrangements is not readily determinable and the Company utilizes its incremental borrowing rate in determining the present value of lease payments. The operating lease ROU asset includes any lease payments made and excludes lease incentives",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2224,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2259,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\nDecember 31,\n\n2020",
+     "Year ended\n\nDecember 31,\n\n2019"
+    ],
+    [
+     "Lease Cost",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost (included in general and administration in the Company\u2019s statement of operations)",
+     "$-",
+     "$118,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Information",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities for the years ended December 31, 2020 and 2019",
+     "$-",
+     "$120,000"
+    ],
+    [
+     "Weighted average remaining lease term \u2013 operating leases (in years)",
+     "-",
+     "4.1"
+    ],
+    [
+     "Average discount rate \u2013 operating leases",
+     "-%",
+     "10.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "Weighted Average Exercise Price"
+    ],
+    [
+     "Outstanding, December 31, 2018",
+     "66",
+     "$22,440"
+    ],
+    [
+     "Granted",
+     "-",
+     "-"
+    ],
+    [
+     "Exercised",
+     "-",
+     "-"
+    ],
+    [
+     "Expired",
+     "(63)",
+     "17,340"
+    ],
+    [
+     "Outstanding, December 31, 2019",
+     "3",
+     "$22,440"
+    ],
+    [
+     "Granted",
+     "-",
+     "-"
+    ],
+    [
+     "Exercised",
+     "-",
+     "-"
+    ],
+    [
+     "Expired",
+     "(3)",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2020",
+     "-",
+     "-"
+    ],
+    [
+     "Exercisable, December 31, 2020",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2347,
+    "end_line": 2365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Stockholders\u2019 Deficit"
+    }
+   },
+   "prose_before": "The 96,230 shares of Series C preferred stock, par value $0.01 per share (the \u201cSeries C Preferred Stock\u201d), are convertible into 7 shares of the Company\u2019s common stock at the option of the holders at any time. The conversion ratio is based on the average closing bid price of the common stock for the fifteen consecutive trading days ending on the date immediately preceding the date notice of conversion is given, but cannot be less than $3.40 or more than $4.9113 common shares for each share of Series C Preferred Stock. The conversion ratio may be adjusted under certain circumstances such as stock splits or stock dividends. The Company has the right to automatically convert the Series C Preferred Stock into common stock if the Company lists its shares of common stock on the Nasdaq National Market and the average closing bid price of the Company\u2019s common stock on the Nasdaq National Market for 15 consecutive trading days exceeds $3,000.00. Each share of Series C Preferred Stock is entitled to the number of votes equal to 0.26 divided by the average closing bid price of the Company\u2019s common stock during the fifteen consecutive trading days immediately prior to the date such shares of Series C Preferred Stock were purchased. In the event of liquidation, the holders of the Series C Preferred Stock shall participate on an equal basis with the holders of the common stock (as if the Series C Preferred Stock had converted into common stock) in any distribution of any of the assets or surplus funds of the Company. The holders of Series C Preferred Stock are entitled to noncumulative dividends if and when declared by the Company\u2019s board of directors (the \u201cBoard\u201d). No dividends to holders of the Series C Preferred Stock were issued or unpaid through December 31, 2020 and 2019.\nStock Options\nStock option transactions for the years ended December 31, 2020 and 2019:",
+   "prose_after": "Stock Warrants\nStock warrant transactions for the years ended December 31, 2020 and 2019:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2336,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2388,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "Weighted Average Exercise Price"
+    ],
+    [
+     "Outstanding at December 31, 2018:",
+     "106,650",
+     "$3.40"
+    ],
+    [
+     "Granted",
+     "-",
+     "-"
+    ],
+    [
+     "Forfeited/canceled",
+     "-",
+     "-"
+    ],
+    [
+     "Exercised",
+     "-",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2019:",
+     "106,650",
+     "$3.40"
+    ],
+    [
+     "Granted",
+     "382,353",
+     "3.40"
+    ],
+    [
+     "Forfeited/canceled",
+     "(28,256)",
+     "3.40"
+    ],
+    [
+     "Exercised",
+     "(239,706)",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2020",
+     "221,041",
+     "$3.40"
+    ],
+    [
+     "Exercisable at December 31, 2020",
+     "221,041",
+     "$3.40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2370,
+    "end_line": 2388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Stockholders\u2019 Deficit"
+    }
+   },
+   "prose_before": "Stock Warrants\nStock warrant transactions for the years ended December 31, 2020 and 2019:",
+   "prose_after": "As of December 31. 2020, the intrinsic value of these warrants amounted to $842,000.\nThe following were transactions during the year ended December 31, 2020:\nOn July 28, 2020, the Company issued a warrant to purchase up to an aggregate of 58,824 shares of common stock at an exercise price of $3.40 per share, subject to adjustment in certain circumstances with a fair value of $153,000 (see Note 6). The warrant expires on July 28, 2025. The warrant was issued as compensation for certain services provided to the Company.\nIn July 2020, pursuant to the Settlement Agreement, the Company issued pre-funded warrants to purchase up to an aggregate of 323,529 shares of common stock (the \u201cSettlement Warrants\u201d) at an exercise price of $3.40 per share, subject to adjustment in certain circumstances and will expire on June 19, 2025 (see Note 4).\nThere was no warrant transactions during the year ended December 31, 2019.\nNote 9 \u2013 Loss on Impairment and Disposal of Assets\nOn September 1, 2017, the Company entered into an Agreement and Plan of Merger whereby it acquired 100% of the issued and outstanding capital stock of Georgetown Translational Pharmaceuticals, Inc. (GTP). In exchange for the ownership of GTP, the Company issued a total of 16,927,878 shares of its common stock, having a share price of $15.00 on the date of the transaction, to the three prior owners of GTP which represented 33% of the issued and outstanding capital stock of the Company on a fully diluted basis. $253.8 million of the value of shares issued was allocated to intangible assets consisting of a portfolio of three CNS development candidates, which are classified as IPR&D.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2336,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2388,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "2019"
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     ""
+    ],
+    [
+     "Federal net operating loss carryforward",
+     "39,340,000",
+     "36,803,000"
+    ],
+    [
+     "Stock based compensation and other items",
+     "4,779,000",
+     ""
+    ],
+    [
+     "Intellectual property",
+     "58,504,000",
+     "58,504,000"
+    ],
+    [
+     "Accrued expense",
+     "-",
+     "1,262,000"
+    ],
+    [
+     "Patent amortization",
+     "4,000",
+     "4,000"
+    ],
+    [
+     "Deferred tax assets before valuation",
+     "102,627,000",
+     "96,573,000"
+    ],
+    [
+     "Valuation allowance",
+     "(102,627,000)",
+     "(96,573,000)"
+    ],
+    [
+     "Net deferred income tax assets",
+     "-",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2451,
+    "end_line": 2469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Income Tax"
+    }
+   },
+   "prose_before": "The Company did not record any income tax provision for the years ended December 31, 2020 and 2019 due to the Company\u2019s net losses. The Company files income tax returns in the United States (\u201cFederal\u201d) and California (\u201cState\u201d) jurisdictions. The Company is subject to Federal and State income tax examinations by tax authorities for all years since its inception. At December 31, 2020, the Company had Federal and State net operating loss carry forwards available to offset future taxable income of approximately $39 million. These carry forwards will begin to expire in the year ending December 31, 2030, subject to IRS limitations, including change in ownership. The Company periodically evaluates the likelihood of the realization of deferred tax assets, and adjusts the carrying amount of the deferred tax assets by a valuation allowance to the extent the future realization of the deferred tax assets is not judged to be more likely than not. The Company considers many factors when assessing the likelihood of future realization of our deferred tax assets, including recent cumulative earnings experience by taxing jurisdiction, expectations of future taxable income or loss, the carry-forward periods available to us for tax reporting purposes, and other relevant factors.\nAt December 31, 2020 and 2019, based on the weight of available evidence, including cumulative losses in recent years and expectations of future taxable income, the Company determined that it was more likely than not that its deferred tax assets would not be realized. Accordingly, the Company has recorded a valuation allowance for 100% of its cumulative deferred tax assets. The components of our deferred tax assets are as follows.",
+   "prose_after": "Generally accepted accounting principles requires that the tax benefit of net operating losses, temporary differences and credit carryforwards be recorded as an asset to the extent that management assesses that realization is \u201cmore likely than not.\u201d Realization of the future tax benefits is dependent on the Company's ability to generate sufficient taxable income within the carryforward period. Because of the Company's history of operating losses, management has provided a valuation allowance equal to its net deferred tax assets.\nA reconciliation of the federal statutory income tax rate and the effective income tax rate as a percentage of income before income tax provision is as follows for the year ended:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2444,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2489,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n2020",
+     "December 31,\n\n2019"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory income tax rate",
+     "21%",
+     "21%"
+    ],
+    [
+     "State tax, net of federal benefit",
+     "7%",
+     "7%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance on net operating loss carry-forwards",
+     "(28%)",
+     "(28%)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effective income tax rate",
+     "0%",
+     "0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2474,
+    "end_line": 2489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Income Tax"
+    }
+   },
+   "prose_before": "Generally accepted accounting principles requires that the tax benefit of net operating losses, temporary differences and credit carryforwards be recorded as an asset to the extent that management assesses that realization is \u201cmore likely than not.\u201d Realization of the future tax benefits is dependent on the Company's ability to generate sufficient taxable income within the carryforward period. Because of the Company's history of operating losses, management has provided a valuation allowance equal to its net deferred tax assets.\nA reconciliation of the federal statutory income tax rate and the effective income tax rate as a percentage of income before income tax provision is as follows for the year ended:",
+   "prose_after": "Note 12 \u2013 Related Party Transactions\nDuring the year ended December 31, 2020, the Company recorded consulting expense of $1,133,000 for services rendered, of which, $525,000 was included as part of accrued expenses as of December 31, 2020 for a consultant who is also an owner of approximately 10% of the Company\u2019s issued and outstanding common stock.\nDuring the year ended December 31, 2019, the Company recorded consulting expense of $1,140,000 to a consultant who is also an owner of approximately 10 % of the Company\u2019s issued and outstanding common stock. There was no outstanding balance due to the consultant as of December 31, 2019.\nNote 13- Restatement of Prior Quarters (unaudited)\nManagement of GT Biopharma, Inc. and its audit committee, identified an accounting error in the recognition of an additional loss on extinguishment of debt of $8,643,000 as a result of the June 2020 forbearance agreements that was not previously recorded (see Note 4). As a result, the previously filed unaudited condensed consolidated balance sheets as of June 30, 2020 and September 30, 2020, and the related condensed consolidated statements of operations and stockholders\u2019 deficiency, may no longer be relied upon. The Company has restated its unaudited condensed consolidated balance sheets as of June 30, 2020 and September 30, 2020 and the related condensed consolidated statements of operations and stockholders\u2019 deficiency. The restatement did not affect the previously reported assets and liabilities in the corresponding financial statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2444,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 2489,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Previously Reported",
+     "Adjustment",
+     "As Restated"
+    ],
+    [
+     "Other income (expense)",
+     "$ (7,221)",
+     "$(8,643)",
+     "$(15,864)"
+    ],
+    [
+     "Net loss",
+     "(8,779)",
+     "(8,643)",
+     "(17,422)"
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$(0.12)",
+     "$(0.12)",
+     "$(0.24)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2504,
+    "end_line": 2511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Restatement of Prior Quarters (unaudited)"
+    }
+   },
+   "prose_before": "Management of GT Biopharma, Inc. and its audit committee, identified an accounting error in the recognition of an additional loss on extinguishment of debt of $8,643,000 as a result of the June 2020 forbearance agreements that was not previously recorded (see Note 4). As a result, the previously filed unaudited condensed consolidated balance sheets as of June 30, 2020 and September 30, 2020, and the related condensed consolidated statements of operations and stockholders\u2019 deficiency, may no longer be relied upon. The Company has restated its unaudited condensed consolidated balance sheets as of June 30, 2020 and September 30, 2020 and the related condensed consolidated statements of operations and stockholders\u2019 deficiency. The restatement did not affect the previously reported assets and liabilities in the corresponding financial statements.\nThe effects of the discrepancy discovered related to the accounting error on the previously filed Form 10-Q's are summarized as follows:\nCondensed Consolidated Statement of Operations for the three months ended June 30, 2020 (unaudited)",
+   "prose_after": "Condensed Consolidated Statement of Operations for the six months ended June 30, 2020 (unaudited)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2489,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2536,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Previously Reported",
+     "Adjustment",
+     "As Restated"
+    ],
+    [
+     "Other income (expense)",
+     "$(7,859)",
+     "$(8,643)",
+     "$(16,502)"
+    ],
+    [
+     "Net loss",
+     "(10,487)",
+     "(8,643)",
+     "(19,130)"
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$(0.15)",
+     "$(0.12)",
+     "$(0.27)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2514,
+    "end_line": 2521
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Restatement of Prior Quarters (unaudited)"
+    }
+   },
+   "prose_before": "Condensed Consolidated Statement of Operations for the six months ended June 30, 2020 (unaudited)",
+   "prose_after": "Condensed Consolidated Statement of Stockholders\u2019 Deficit as of June 30, 2020 (unaudited)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2489,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2536,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Previously Reported",
+     "Adjustment",
+     "As Restated"
+    ],
+    [
+     "Preferred share",
+     "$25",
+     "$-",
+     "$24"
+    ],
+    [
+     "Common share",
+     "75",
+     "-",
+     "75"
+    ],
+    [
+     "Additional paid-in capital",
+     "550,411",
+     "8,643",
+     "559,054"
+    ],
+    [
+     "Noncontrolling interest",
+     "(169)",
+     "-",
+     "(169)"
+    ],
+    [
+     "Accumulated deficit",
+     "(577,819)",
+     "(8,643)",
+     "(586,462)"
+    ],
+    [
+     "Total Shareholder deficit",
+     "$(27,499)",
+     "$-",
+     "$(27,499)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2524,
+    "end_line": 2536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Restatement of Prior Quarters (unaudited)"
+    }
+   },
+   "prose_before": "Condensed Consolidated Statement of Stockholders\u2019 Deficit as of June 30, 2020 (unaudited)",
+   "prose_after": "The effects of the discrepancy discovered related to the accounting error on the previously filed Form 10-Q for the three and nine months ended September 30, 2020 are summarized as follows:\nCondensed Consolidated Statement of Operations for the three months ended September 30, 2020 (unaudited)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2489,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2536,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Previously Reported",
+     "Adjustment",
+     "As Restated"
+    ],
+    [
+     "Other income (expense)",
+     "$(931)",
+     "$(8,643)",
+     "$(9,574)"
+    ],
+    [
+     "Net loss",
+     "(2,876)",
+     "(8,643)",
+     "(11,519)"
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$(0.04)",
+     "$(1.13)",
+     "$(1.16)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2541,
+    "end_line": 2548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Restatement of Prior Quarters (unaudited)"
+    }
+   },
+   "prose_before": "The effects of the discrepancy discovered related to the accounting error on the previously filed Form 10-Q for the three and nine months ended September 30, 2020 are summarized as follows:\nCondensed Consolidated Statement of Operations for the three months ended September 30, 2020 (unaudited)",
+   "prose_after": "Condensed Consolidated Statement of Operations for the nine months ended September 30, 2020 (unaudited)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2536,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2573,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Previously Reported",
+     "Adjustment",
+     "As Restated"
+    ],
+    [
+     "Other income (expense)",
+     "$(8,790)",
+     "$(8,643)",
+     "$(17,433)"
+    ],
+    [
+     "Net loss",
+     "(13,363)",
+     "(8,643)",
+     "(22,006)"
+    ],
+    [
+     "Net loss per common share - basic and diluted",
+     "$(0.18)",
+     "$(0.12)",
+     "$(0.30)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2551,
+    "end_line": 2558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Restatement of Prior Quarters (unaudited)"
+    }
+   },
+   "prose_before": "Condensed Consolidated Statement of Operations for the nine months ended September 30, 2020 (unaudited)",
+   "prose_after": "Condensed Consolidated Statement of Stockholders\u2019 Deficit as of September 30, 2020 (unaudited)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2536,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2573,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Previously Reported",
+     "Adjustment",
+     "As Restated"
+    ],
+    [
+     "Preferred share",
+     "25",
+     "-",
+     "25"
+    ],
+    [
+     "Common share",
+     "78",
+     "-",
+     "78"
+    ],
+    [
+     "Additional paid-in capital",
+     "550,984",
+     "8,643",
+     "559,627"
+    ],
+    [
+     "Noncontrolling interest",
+     "(169)",
+     "-",
+     "(169)"
+    ],
+    [
+     "Accumulated deficit",
+     "(580,695)",
+     "(8,643)",
+     "(589,338)"
+    ],
+    [
+     "Total Shareholder deficit",
+     "(29,777)",
+     "",
+     "(29,777)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2561,
+    "end_line": 2573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Restatement of Prior Quarters (unaudited)"
+    }
+   },
+   "prose_before": "Condensed Consolidated Statement of Stockholders\u2019 Deficit as of September 30, 2020 (unaudited)",
+   "prose_after": "Note 14- Subsequent Events\nSubsequent to December 31, 2020, convertible notes and accrued in interest aggregating $38,714,000 were converted into 11,386,435 shares of common stock at conversion prices. Of this amount $35,660,000 was principal and accrued interest as of December 31, 2020. The remaining $3,054,000 was principal, and accrued interest subsequent to December 31, 2020\nSubsequent to December 31, 2020, the Company issued 4,945,000 shares of its common stock to investors for net cash proceeds of $24,882,000 pursuant to our February 2021 Offering Circular.\nSubsequent to December 31, 2020, the Company issued 660,545 shares of common stock upon exercise of warrants for cash proceeds of $3,200,000.\nThe following unaudited proforma information are based on the Company\u2019s historical financial statements as of December 31, 2020 after giving effect to the subsequent conversion notes payable to equity and sale of common shares for cash.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2536,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2573,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Account",
+     "December 31, 2020 \u2013 As reported",
+     "December 31, 2020 \u2013 Proforma\n\n(unaudited)"
+    ],
+    [
+     "Cash and cash equivalents",
+     "$5,297",
+     "$33,379"
+    ],
+    [
+     "Total Assets",
+     "5,661",
+     "33,743"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible notes",
+     "26,303",
+     "-"
+    ],
+    [
+     "Accrued interest",
+     "4,838",
+     "-"
+    ],
+    [
+     "Total Current Liabilities",
+     "35,094",
+     "3,953"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock",
+     "3",
+     "3"
+    ],
+    [
+     "Common stock",
+     "52",
+     "67"
+    ],
+    [
+     "Additional paid in capital",
+     "566,309",
+     "625,517"
+    ],
+    [
+     "Ammulated deficit",
+     "(595,628)",
+     "(595,628)"
+    ],
+    [
+     "Non controlling interest",
+     "(169)",
+     "(169)"
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "$(29,433)",
+     "$29,790"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2584,
+    "end_line": 2603
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Note 14- Subsequent Events\nSubsequent to December 31, 2020, convertible notes and accrued in interest aggregating $38,714,000 were converted into 11,386,435 shares of common stock at conversion prices. Of this amount $35,660,000 was principal and accrued interest as of December 31, 2020. The remaining $3,054,000 was principal, and accrued interest subsequent to December 31, 2020\nSubsequent to December 31, 2020, the Company issued 4,945,000 shares of its common stock to investors for net cash proceeds of $24,882,000 pursuant to our February 2021 Offering Circular.\nSubsequent to December 31, 2020, the Company issued 660,545 shares of common stock upon exercise of warrants for cash proceeds of $3,200,000.\nThe following unaudited proforma information are based on the Company\u2019s historical financial statements as of December 31, 2020 after giving effect to the subsequent conversion notes payable to equity and sale of common shares for cash.",
+   "prose_after": "Subsequent to December 31, 2020, the Company issued 5,491,638 shares of common stock with a fair value of $34,762,000 to officers and directors as incentive for the completion of our February 2021 Offering Circular.\nSubsequent to December 31, 2020, the Company issued convertible notes payable in the aggregate of $1,205,000 in exchange for cash. The Company also issued notes payable of $545,000 in exchange for consulting services. In addition, accrued expenses of $525,000 from a related party that was recorded as of December 31, 2020 (Note 12) was cancelled in exchange for a convertible note payable. The Company is currently in the process of determining the appropriate accounting for these notes payable totaling $2,275,000.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2573,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2607,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

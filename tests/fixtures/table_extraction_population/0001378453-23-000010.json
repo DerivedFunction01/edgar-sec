@@ -1,0 +1,3766 @@
+{
+ "accession": "0001378453-23-000010",
+ "cik": "0001378453",
+ "form": "10-Q",
+ "filing_date": "2023-04-27",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ta-20230331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "TravelCenters of America Inc.",
+     ""
+    ],
+    [
+     "(Exact Name of Registrant as Specified in its Charter)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Maryland",
+     "20-5701514"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [
+    "TravelCenters of America Inc.",
+    "(Exact Name of Registrant as Specified in its Charter)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 15,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2023\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number: 001-33274",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.39999999999999997,
+   "rows": [
+    [
+     "24601 Center Ridge Road, Westlake, OH 44145-5639"
+    ],
+    [
+     "(Address and Zip Code of Principal Executive Offices)"
+    ],
+    [
+     ""
+    ],
+    [
+     "(440) 808-9100"
+    ],
+    [
+     "(Registrant\u2019s Telephone Number, Including Area Code)"
+    ]
+   ],
+   "caption_stack": [
+    "24601 Center Ridge Road, Westlake, OH 44145-5639",
+    "(Address and Zip Code of Principal Executive Offices)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Title of Each Class",
+     "Trading Symbols",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Shares of Common Stock, $0.001 Par Value Per Share",
+     "TA",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "8.25% Senior Notes due 2028",
+     "TANNI",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "8.00% Senior Notes due 2029",
+     "TANNL",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "8.00% Senior Notes due 2030",
+     "TANNZ",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Act:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2014 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (Unaudited)",
+     "1"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of March 31, 2023 and December 31, 2022",
+     "1"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations and Comprehensive (Loss) Income for the Three Months Ended March 31, 2023 and 2022",
+     "2"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2023 and 2022",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019 Equity for the Three Months Ended March 31, 2023 and 2022",
+     "4"
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "24"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "25"
+    ],
+    [
+     "",
+     "Warning Concerning Forward-Looking Statements",
+     "26"
+    ],
+    [
+     "PART II \u2014 OTHER INFORMATION",
+     "",
+     "29"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "29"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "29"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "30"
+    ],
+    [
+     "SIGNATURE",
+     "",
+     "32"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2014 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 87
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]      Accelerated filer [X]\nNon-accelerated filer [ ]   Smaller reporting company [ ]\nEmerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nNumber of the registrant\u2019s shares of common stock outstanding as of April 20, 2023: 15,099,648.\nTABLE OF CONTENTS",
+   "prose_after": "As used herein, the terms \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d and \u201cTA\u201d include TravelCenters of America Inc. and its consolidated subsidiaries unless otherwise expressly stated or the context otherwise requires.\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Balance Sheets (Unaudited)\n(dollars in thousands, except par value amount)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "385,903",
+     "$",
+     "416,012"
+    ],
+    [
+     "Accounts receivable (net of allowance for doubtful accounts of $1,585 and $1,361    as of March 31, 2023 and December 31, 2022, respectively)",
+     "194,470",
+     "",
+     "206,622",
+     ""
+    ],
+    [
+     "Inventory",
+     "252,455",
+     "",
+     "272,074",
+     ""
+    ],
+    [
+     "Other current assets",
+     "49,579",
+     "",
+     "47,192",
+     ""
+    ],
+    [
+     "Total current assets",
+     "882,407",
+     "",
+     "941,900",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "1,004,560",
+     "",
+     "999,404",
+     ""
+    ],
+    [
+     "Operating lease assets",
+     "1,557,689",
+     "",
+     "1,576,538",
+     ""
+    ],
+    [
+     "Goodwill",
+     "37,110",
+     "",
+     "37,110",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "14,202",
+     "",
+     "14,485",
+     ""
+    ],
+    [
+     "Other noncurrent assets",
+     "81,218",
+     "",
+     "83,470",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "3,577,186",
+     "$",
+     "3,652,907"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "245,013",
+     "$",
+     "253,571"
+    ],
+    [
+     "Current operating lease liabilities",
+     "111,781",
+     "",
+     "113,940",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "184,303",
+     "",
+     "216,138",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "541,097",
+     "",
+     "583,649",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt, net",
+     "524,051",
+     "",
+     "524,206",
+     ""
+    ],
+    [
+     "Noncurrent operating lease liabilities",
+     "1,528,025",
+     "",
+     "1,551,027",
+     ""
+    ],
+    [
+     "Other noncurrent liabilities",
+     "115,522",
+     "",
+     "120,819",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "2,708,695",
+     "",
+     "2,779,701",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 216,000 shares of common stock authorized as of    March 31, 2023 and December 31, 2022, and 15,100 and 15,105 shares of    common stock issued and outstanding as of March 31, 2023 and    December 31, 2022, respectively",
+     "16",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "793,281",
+     "",
+     "791,711",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(8)",
+     "",
+     "(19)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "75,202",
+     "",
+     "81,500",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "868,491",
+     "",
+     "873,206",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "3,577,186",
+     "$",
+     "3,652,907"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": null
+   },
+   "prose_before": "As used herein, the terms \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d and \u201cTA\u201d include TravelCenters of America Inc. and its consolidated subsidiaries unless otherwise expressly stated or the context otherwise requires.\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Balance Sheets (Unaudited)\n(dollars in thousands, except par value amount)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations and Comprehensive (Loss) Income (Unaudited)\n(dollars in thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 94,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 151,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel",
+     "$",
+     "1,720,057",
+     "$",
+     "1,806,114"
+    ],
+    [
+     "Nonfuel",
+     "515,674",
+     "",
+     "487,082",
+     ""
+    ],
+    [
+     "Rent and royalties from franchisees",
+     "3,287",
+     "",
+     "3,877",
+     ""
+    ],
+    [
+     "Total revenues",
+     "2,239,018",
+     "",
+     "2,297,073",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel product cost",
+     "1,624,802",
+     "",
+     "1,693,195",
+     ""
+    ],
+    [
+     "Nonfuel product cost",
+     "191,596",
+     "",
+     "191,785",
+     ""
+    ],
+    [
+     "Site level operating expense",
+     "278,917",
+     "",
+     "252,044",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense",
+     "51,559",
+     "",
+     "41,309",
+     ""
+    ],
+    [
+     "Real estate rent expense",
+     "64,701",
+     "",
+     "64,646",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "27,099",
+     "",
+     "24,231",
+     ""
+    ],
+    [
+     "Other operating expense (income), net",
+     "698",
+     "",
+     "(2,182)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) income from operations",
+     "(354)",
+     "",
+     "32,045",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "9,611",
+     "",
+     "11,530",
+     ""
+    ],
+    [
+     "Other income, net",
+     "(906)",
+     "",
+     "(638)",
+     ""
+    ],
+    [
+     "(Loss) income before income taxes",
+     "(9,059)",
+     "",
+     "21,153",
+     ""
+    ],
+    [
+     "Benefit (provision) for income taxes",
+     "2,761",
+     "",
+     "(4,849)",
+     ""
+    ],
+    [
+     "Net (loss) income attributable to common stockholders",
+     "$",
+     "(6,298)",
+     "$",
+     "16,304"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of taxes:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency income (loss), net of taxes of $1 and $19, respectively",
+     "$",
+     "11",
+     "$",
+     "(26)"
+    ],
+    [
+     "Other comprehensive income (loss) attributable to common stockholders",
+     "11",
+     "",
+     "(26)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive (loss) income attributable to common stockholders",
+     "$",
+     "(6,287)",
+     "$",
+     "16,278"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income per share of common stock attributable to common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$",
+     "(0.42)",
+     "$",
+     "1.10"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 157,
+    "end_line": 204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations and Comprehensive (Loss) Income (Unaudited)\n(dollars in thousands, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows (Unaudited)\n(dollars in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 151,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(6,298)",
+     "$",
+     "16,304"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred rent payments and noncash rent adjustments",
+     "(5,991)",
+     "",
+     "(5,725)",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "27,099",
+     "",
+     "24,231",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(152)",
+     "",
+     "(2,182)",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "(5,523)",
+     "",
+     "4,804",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "11,911",
+     "",
+     "(90,503)",
+     ""
+    ],
+    [
+     "Inventory",
+     "19,620",
+     "",
+     "(29,987)",
+     ""
+    ],
+    [
+     "Other assets",
+     "(4,627)",
+     "",
+     "3,642",
+     ""
+    ],
+    [
+     "Accounts payable and other liabilities",
+     "(30,740)",
+     "",
+     "137,266",
+     ""
+    ],
+    [
+     "Other, net",
+     "3,522",
+     "",
+     "1,269",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "8,821",
+     "",
+     "59,119",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(38,803)",
+     "",
+     "(50,053)",
+     ""
+    ],
+    [
+     "Investment in equity investee",
+     "\u2014",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Other",
+     "1,942",
+     "",
+     "1,833",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(36,861)",
+     "",
+     "(49,220)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments on long term debt",
+     "(704)",
+     "",
+     "(666)",
+     ""
+    ],
+    [
+     "Other, net",
+     "(1,365)",
+     "",
+     "(1,118)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(2,069)",
+     "",
+     "(1,784)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "\u2014",
+     "",
+     "36",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "(30,109)",
+     "",
+     "8,151",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at the beginning of the period",
+     "416,012",
+     "",
+     "536,002",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at the end of the period",
+     "$",
+     "385,903",
+     "$",
+     "544,153"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid, net of capitalized interest",
+     "$",
+     "12,387",
+     "$",
+     "10,984"
+    ],
+    [
+     "Income taxes paid, net",
+     "(25)",
+     "",
+     "(155)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 213,
+    "end_line": 262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows (Unaudited)\n(dollars in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity (Unaudited)\n(dollars and shares in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 207,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 265,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares of Common Stock",
+     "Common Stock",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "Retained Earnings (Accumulated Deficit)",
+     "",
+     "Total Stockholders\u2019 Equity",
+     ""
+    ],
+    [
+     "December 31, 2022",
+     "15,105",
+     "$",
+     "14",
+     "$",
+     "791,711",
+     "$",
+     "(19)",
+     "$",
+     "81,500",
+     "$",
+     "873,206"
+    ],
+    [
+     "Grants under share award plan and stock based compensation, net",
+     "(5)",
+     "2",
+     "",
+     "1,570",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,572",
+     ""
+    ],
+    [
+     "Other comprehensive income, net of taxes",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11",
+     "",
+     "\u2014",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,298)",
+     "",
+     "(6,298)",
+     ""
+    ],
+    [
+     "March 31, 2023",
+     "15,100",
+     "$",
+     "16",
+     "$",
+     "793,281",
+     "$",
+     "(8)",
+     "$",
+     "75,202",
+     "$",
+     "868,491"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "14,839",
+     "$",
+     "14",
+     "$",
+     "785,597",
+     "$",
+     "(198)",
+     "$",
+     "(82,560)",
+     "$",
+     "702,853"
+    ],
+    [
+     "Grants under share award plan and stock based compensation, net",
+     "(2)",
+     "\u2014",
+     "",
+     "1,201",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,201",
+     ""
+    ],
+    [
+     "Other comprehensive loss, net of taxes",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(26)",
+     "",
+     "\u2014",
+     "",
+     "(26)",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "16,304",
+     "",
+     "16,304",
+     ""
+    ],
+    [
+     "March 31, 2022",
+     "14,837",
+     "$",
+     "14",
+     "$",
+     "786,798",
+     "$",
+     "(224)",
+     "$",
+     "(66,256)",
+     "$",
+     "720,332"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 271,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity (Unaudited)\n(dollars and shares in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1.Business Description and Basis of Presentation\nTravelCenters of America Inc. is a Maryland corporation. As of March 31, 2023, we operated or franchised 286 travel centers, three standalone truck service facilities and one standalone restaurant. Our customers include trucking fleets and their drivers, independent truck drivers, highway and local motorists and casual diners. We also collect rents, royalties and other fees from our tenants and franchisees.\nAs of March 31, 2023, our business included 286 travel centers in 44 states in the United States, primarily along the U.S. interstate highway system, operated primarily under the \u201cTravelCenters of America,\u201d \u201cTA,\u201d \u201cTA Express,\u201d \u201cPetro Stopping Centers\u201d and \u201cPetro\u201d brand names. Of these travel centers, we owned 56, we leased 181, we operated two for a joint venture and 47 were owned or leased from others by our franchisees. We operated 239 of our travel centers and franchisees operated 47 travel centers. Our travel centers offer a broad range of products and services, including diesel fuel and gasoline, as well as nonfuel products and services such as truck repair and maintenance services, diesel exhaust fluid, full service restaurants, quick service restaurants and various customer amenities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 265,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Standard",
+     "Description",
+     "Effective Date",
+     "Effect on the Consolidated Financial Statements"
+    ],
+    [
+     "Recently Adopted Standards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASU 2020-04 - Reference Rate Reform (Topic 848) Facilitation of the effects of Reference Rate Reform of Financial Reporting, as amended by ASU 2021-01 and ASU 2022-06",
+     "These updates provide optional expedients and exceptions for applying generally accepted accounting principles to contracts, hedging relationships, and other transactions that reference LIBOR or another reference rate expected to be discontinued because of reference rate reform; clarifies that certain optional expedients and exceptions for contract modifications and hedge accounting apply to derivatives that are affected by the discounting transition; and defers the sunset date of Topic 848 from December 31, 2022 to December 31, 2024.",
+     "January 1, 2023",
+     "These updates did not have a material impact on our consolidated financial statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 345,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": null
+   },
+   "prose_before": "In connection with entering into the Merger Agreement, we agreed with BP and SVC to amend and restate our subsidiary\u2019s leases with certain of SVC\u2019s subsidiaries, and corresponding guaranty agreements, in each case effective at the Effective Time, conditioned on the occurrence of the closing of the Merger. SVC has consented to the entry by TA into the Merger Agreement and the consummation of the transactions contemplated thereby and any resulting change in control or assignment of TA resulting from either or both of the Merger and such transactions. In addition, SVC has agreed to vote its shares in favor of the sale.\nSubject to the satisfaction of the remaining conditions to the closing of the Merger, we expect the closing of the transactions contemplated by the Merger Agreement to occur by May 15, 2023.\nFair Value Measurement\nSenior Notes\nWe collectively refer to our $110,000 of 8.25% Senior Notes due 2028, our $120,000 of 8.00% Senior Notes due 2029 and our $100,000 of 8.00% Senior Notes due 2030 as our Senior Notes, which are our senior unsecured obligations. We estimate that, based on their trading prices (a Level 2 input), the aggregate fair value of our Senior Notes on March 31, 2023, was $333,996.\nRecently Issued Accounting Pronouncement and Other Accounting Matters\nThe following table summarizes recent accounting standard updates, or ASUs, issued by the Financial Accounting Standards Board, or FASB, that could have an impact on our consolidated financial statements.",
+   "prose_after": "2. Revenues\nWe recognize revenues based on the consideration specified in the contract with the customer, less estimates for variable consideration (such as customer loyalty programs and customer rebates) and amounts collected on behalf of third parties (such as sales and excise taxes). The majority of our revenues are generated at the point of sale in our travel center locations. Revenues consist of fuel revenues, nonfuel revenues and rents and royalties from franchisees.\nDisaggregation of Revenues\nWe disaggregate our revenues based on the type of good or service provided to the customer, or by fuel revenues and nonfuel revenues, in our consolidated statements of operations and comprehensive income. Nonfuel revenues disaggregated by type of good or service for the three months ended March 31, 2023 and 2022, were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Nonfuel revenues:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Store and retail services",
+     "$",
+     "179,437",
+     "$",
+     "179,540"
+    ],
+    [
+     "Truck service",
+     "207,441",
+     "",
+     "188,384",
+     ""
+    ],
+    [
+     "Restaurant",
+     "82,880",
+     "",
+     "74,338",
+     ""
+    ],
+    [
+     "Diesel exhaust fluid",
+     "45,916",
+     "",
+     "44,820",
+     ""
+    ],
+    [
+     "Total nonfuel revenues",
+     "$",
+     "515,674",
+     "$",
+     "487,082"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Revenues"
+    }
+   },
+   "prose_before": "2. Revenues\nWe recognize revenues based on the consideration specified in the contract with the customer, less estimates for variable consideration (such as customer loyalty programs and customer rebates) and amounts collected on behalf of third parties (such as sales and excise taxes). The majority of our revenues are generated at the point of sale in our travel center locations. Revenues consist of fuel revenues, nonfuel revenues and rents and royalties from franchisees.\nDisaggregation of Revenues\nWe disaggregate our revenues based on the type of good or service provided to the customer, or by fuel revenues and nonfuel revenues, in our consolidated statements of operations and comprehensive income. Nonfuel revenues disaggregated by type of good or service for the three months ended March 31, 2023 and 2022, were as follows:",
+   "prose_after": "Contract Liabilities\nAs of December 31, 2022, our contract liability balances (for customer loyalty programs, deferred franchise fees and gift cards) totaled $32,132, of which $27,807 was recognized as revenue during three months ended March 31, 2023. As of March 31, 2023, our contract liabilities totaled $31,889 and are presented in our consolidated balance sheets in other current and other noncurrent liabilities. As of March 31, 2023, we expect that the unsatisfied performance obligations relating to our customer loyalty programs and other contract liabilities of $25,124, will generally be satisfied within 12 months. As of March 31, 2023, the deferred initial and renewal franchise fee revenue expected to be recognized in future periods is approximately $750 for each of the years 2023 through 2027.\n3. Stockholders\u2019 Equity\nThe following table presents a reconciliation of net income attributable to common stockholders to net (loss) income available to common stockholders and the related (loss) earnings per share of common stock for the three months ended March 31, 2023 and 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net (loss) income attributable to common stockholders",
+     "$",
+     "(6,298)",
+     "$",
+     "16,304"
+    ],
+    [
+     "Less: net (loss) income attributable to participating securities",
+     "(231)",
+     "",
+     "512",
+     ""
+    ],
+    [
+     "Net (loss) income available to common stockholders",
+     "$",
+     "(6,067)",
+     "$",
+     "15,792"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares of common stock(1)",
+     "14,547",
+     "",
+     "14,372",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net (loss) income per share of common stock attributable to common stockholders",
+     "$",
+     "(0.42)",
+     "$",
+     "1.10"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 396,
+    "end_line": 412
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Revenues"
+    }
+   },
+   "prose_before": "As of December 31, 2022, our contract liability balances (for customer loyalty programs, deferred franchise fees and gift cards) totaled $32,132, of which $27,807 was recognized as revenue during three months ended March 31, 2023. As of March 31, 2023, our contract liabilities totaled $31,889 and are presented in our consolidated balance sheets in other current and other noncurrent liabilities. As of March 31, 2023, we expect that the unsatisfied performance obligations relating to our customer loyalty programs and other contract liabilities of $25,124, will generally be satisfied within 12 months. As of March 31, 2023, the deferred initial and renewal franchise fee revenue expected to be recognized in future periods is approximately $750 for each of the years 2023 through 2027.\n3. Stockholders\u2019 Equity\nThe following table presents a reconciliation of net income attributable to common stockholders to net (loss) income available to common stockholders and the related (loss) earnings per share of common stock for the three months ended March 31, 2023 and 2022.",
+   "prose_after": "(1) Excludes unvested shares of common stock awarded under our share award plan, in which shares of common stock are considered participating securities because they participate equally in earnings and losses with all of our other shares of common stock. The weighted average number of unvested shares of common stock outstanding for the three months ended March 31, 2023 and 2022, was 554 and 466, respectively.\n4. Leasing Transactions\nAs a Lessee\nWe have lease agreements covering many of our properties, as well as various equipment, with the most significant leases being our five leases with SVC, which are further described below. Certain of our leases include renewal options, and certain leases include escalation clauses and purchase options. Renewal periods are included in calculating our operating lease assets and liabilities when they are reasonably certain. Leases with an initial term of 12 months or less are not recognized in our consolidated balance sheets.\nAs of March 31, 2023, our SVC Leases (as defined below), the leases covering our other properties and most of our equipment leases were classified as operating leases and certain of our other equipment leases and one ground lease pursuant to one SVC Lease were classified as finance leases. Finance lease assets were included in other noncurrent assets, with the corresponding current and noncurrent finance lease liabilities included in other current liabilities and other noncurrent liabilities, respectively, in our consolidated balance sheets.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Classification in our Consolidated Statements of Operations and Comprehensive (Loss) Income",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Operating lease costs: SVC Leases",
+     "Real estate rent expense",
+     "$",
+     "60,738",
+     "$",
+     "60,964"
+    ],
+    [
+     "Operating lease costs: other",
+     "Real estate rent expense",
+     "906",
+     "",
+     "552",
+     ""
+    ],
+    [
+     "Variable lease costs: SVC Leases",
+     "Real estate rent expense",
+     "2,863",
+     "",
+     "2,943",
+     ""
+    ],
+    [
+     "Variable lease costs: other",
+     "Real estate rent expense",
+     "194",
+     "",
+     "187",
+     ""
+    ],
+    [
+     "Total real estate rent expense",
+     "",
+     "64,701",
+     "",
+     "64,646",
+     ""
+    ],
+    [
+     "Operating lease costs: equipment and other",
+     "Site level operating expense and selling,    general and administrative expense",
+     "832",
+     "",
+     "942",
+     ""
+    ],
+    [
+     "Financing lease costs: equipment and other",
+     "Site level operating expense",
+     "60",
+     "",
+     "155",
+     ""
+    ],
+    [
+     "Short-term lease costs",
+     "Site level operating expense and selling,    general and administrative expense",
+     "216",
+     "",
+     "105",
+     ""
+    ],
+    [
+     "Amortization of finance lease assets:    SVC Leases",
+     "Depreciation and amortization expense",
+     "553",
+     "",
+     "553",
+     ""
+    ],
+    [
+     "Amortization of finance lease assets: other",
+     "Depreciation and amortization expense",
+     "983",
+     "",
+     "757",
+     ""
+    ],
+    [
+     "Interest on finance lease liabilities:    SVC Leases",
+     "Interest expense, net",
+     "282",
+     "",
+     "298",
+     ""
+    ],
+    [
+     "Interest on finance lease liabilities: other",
+     "Interest expense, net",
+     "167",
+     "",
+     "164",
+     ""
+    ],
+    [
+     "Sublease income",
+     "Nonfuel revenues",
+     "(576)",
+     "",
+     "(423)",
+     ""
+    ],
+    [
+     "Net lease costs",
+     "",
+     "$",
+     "67,218",
+     "$",
+     "67,197"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 439,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Leasing Transactions"
+    }
+   },
+   "prose_before": "We recognized total real estate rent expense under the SVC Leases of $63,601 and $63,907 for the three months ended March 31, 2023 and 2022, respectively. Included in these rent expense amounts are percentage rent payable of $2,385 and $2,499 respectively, which are based on a percentage of the increases in total nonfuel revenues at each leased property over base year levels, net adjustments to record minimum annual rent on a straight line basis over the terms of the leases, the estimated future payments by us for the cost of removing underground storage tanks on a straight line basis and the benefit of other lease incentives. As of March 31, 2023, the present value of the estimated future payments related to these underground storage tanks were $27,775 and are recorded in other noncurrent liabilities on our consolidated balance sheets. As of December 31, 2022, the remaining balance of our deferred rent obligations was $4,404 and we paid that amount in January 2023.\nAs of March 31, 2023, our aggregate annual minimum rent payable to SVC under the SVC Leases was $243,914. Pursuant to the SVC Leases, we may request that SVC purchase qualifying capital improvements we make at the leased travel centers in return for increased annual minimum rent. We did not sell to SVC any improvements we made to properties leased from SVC for the three months ended March 31, 2023 and 2022.\nAs permitted by the SVC Leases, we sublease a portion of certain travel centers to third parties to operate other retail operations. These subleases are classified as operating leases. We recognized sublease rental income of $576 and $423 for the three months ended March 31, 2023 and 2022, respectively.\nLease Costs\nOur lease costs are included in various balances in our consolidated statements of operations and comprehensive (loss) income, as shown in the following table. For the three months ended March 31, 2023 and 2022, our lease costs consisted of the following:",
+   "prose_after": "Lease Assets and Liabilities\nAs of March 31, 2023 and December 31, 2022, our operating lease assets and liabilities consisted of the following, and for SVC leases shown below, include amounts for properties we sublease from SVC:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Operating lease assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SVC Leases",
+     "$",
+     "1,531,944",
+     "$",
+     "1,560,616"
+    ],
+    [
+     "Other",
+     "25,745",
+     "",
+     "15,922",
+     ""
+    ],
+    [
+     "Total operating lease assets",
+     "$",
+     "1,557,689",
+     "$",
+     "1,576,538"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operating lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SVC Leases",
+     "$",
+     "107,984",
+     "$",
+     "110,521"
+    ],
+    [
+     "Other",
+     "3,797",
+     "",
+     "3,419",
+     ""
+    ],
+    [
+     "Total current operating lease liabilities",
+     "$",
+     "111,781",
+     "$",
+     "113,940"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent operating lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SVC Leases",
+     "$",
+     "1,505,574",
+     "$",
+     "1,538,031"
+    ],
+    [
+     "Other",
+     "22,451",
+     "",
+     "12,996",
+     ""
+    ],
+    [
+     "Total noncurrent operating lease liabilities",
+     "$",
+     "1,528,025",
+     "$",
+     "1,551,027"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 469,
+    "end_line": 494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Leasing Transactions"
+    }
+   },
+   "prose_before": "Lease Assets and Liabilities\nAs of March 31, 2023 and December 31, 2022, our operating lease assets and liabilities consisted of the following, and for SVC leases shown below, include amounts for properties we sublease from SVC:",
+   "prose_after": "As of March 31, 2023 and December 31, 2022, our finance lease assets and liabilities consisted of the following, and for SVC leases shown below, include amounts for properties we sublease from SVC:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Finance lease assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SVC Leases",
+     "$",
+     "23,777",
+     "$",
+     "24,330"
+    ],
+    [
+     "Other",
+     "15,513",
+     "",
+     "16,205",
+     ""
+    ],
+    [
+     "Total finance lease assets",
+     "$",
+     "39,290",
+     "$",
+     "40,535"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current finance lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SVC Leases",
+     "$",
+     "1,586",
+     "$",
+     "1,552"
+    ],
+    [
+     "Other",
+     "3,756",
+     "",
+     "3,690",
+     ""
+    ],
+    [
+     "Total current finance lease liabilities",
+     "$",
+     "5,342",
+     "$",
+     "5,242"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent finance lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SVC Leases",
+     "$",
+     "24,106",
+     "$",
+     "24,517"
+    ],
+    [
+     "Other",
+     "12,327",
+     "",
+     "13,934",
+     ""
+    ],
+    [
+     "Total noncurrent finance lease liabilities",
+     "$",
+     "36,433",
+     "$",
+     "38,451"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 499,
+    "end_line": 524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Leasing Transactions"
+    }
+   },
+   "prose_before": "As of March 31, 2023 and December 31, 2022, our finance lease assets and liabilities consisted of the following, and for SVC leases shown below, include amounts for properties we sublease from SVC:",
+   "prose_after": "Lease Maturities and Other Information\nMaturities of our operating lease liabilities that had remaining noncancelable lease terms in excess of one year as of March 31, 2023, were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 555,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "SVC Leases (1)",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Years ended December 31:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "$",
+     "187,645",
+     "$",
+     "3,942",
+     "$",
+     "191,587"
+    ],
+    [
+     "2024",
+     "250,388",
+     "",
+     "4,922",
+     "",
+     "255,310",
+     ""
+    ],
+    [
+     "2025",
+     "250,375",
+     "",
+     "4,848",
+     "",
+     "255,223",
+     ""
+    ],
+    [
+     "2026",
+     "250,371",
+     "",
+     "4,335",
+     "",
+     "254,706",
+     ""
+    ],
+    [
+     "2027",
+     "250,392",
+     "",
+     "3,464",
+     "",
+     "253,856",
+     ""
+    ],
+    [
+     "Thereafter",
+     "1,285,536",
+     "",
+     "11,541",
+     "",
+     "1,297,077",
+     ""
+    ],
+    [
+     "Total operating lease payments",
+     "2,474,707",
+     "",
+     "33,052",
+     "",
+     "2,507,759",
+     ""
+    ],
+    [
+     "Less: present value discount(1)",
+     "(861,149)",
+     "",
+     "(6,799)",
+     "",
+     "(867,948)",
+     ""
+    ],
+    [
+     "Present value of operating lease liabilities",
+     "$",
+     "1,613,558",
+     "$",
+     "26,253",
+     "$",
+     "1,639,811"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 529,
+    "end_line": 546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Leasing Transactions"
+    }
+   },
+   "prose_before": "Lease Maturities and Other Information\nMaturities of our operating lease liabilities that had remaining noncancelable lease terms in excess of one year as of March 31, 2023, were as follows:",
+   "prose_after": "(1) Includes rent for properties we sublease from SVC.\n(2) The discount rate used to derive the present value of unpaid lease payments is based on the rates implicit in the SVC Leases and our incremental borrowing rate for all other leases.\nThe weighted average remaining lease term for our operating leases as of March 31, 2023, was approximately 10 years. Our weighted average discount rate for our operating leases as of March 31, 2023, was approximately 9.1%.\nDuring the three months ended March 31, 2023 and 2022, we paid real estate rent payments of $70,693 and $70,371, respectively, for amounts that had been included in the measurement of our operating lease liabilities.\nMaturities of our finance lease liabilities that had remaining noncancelable lease terms in excess of one year as of March 31, 2023, were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 555,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "SVC Leases (1)",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Years ended December 31:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "$",
+     "1,996",
+     "$",
+     "3,297",
+     "$",
+     "5,293"
+    ],
+    [
+     "2024",
+     "2,722",
+     "",
+     "3,954",
+     "",
+     "6,676",
+     ""
+    ],
+    [
+     "2025",
+     "2,790",
+     "",
+     "3,349",
+     "",
+     "6,139",
+     ""
+    ],
+    [
+     "2026",
+     "2,860",
+     "",
+     "2,982",
+     "",
+     "5,842",
+     ""
+    ],
+    [
+     "2027",
+     "2,932",
+     "",
+     "2,685",
+     "",
+     "5,617",
+     ""
+    ],
+    [
+     "Thereafter",
+     "19,194",
+     "",
+     "1,416",
+     "",
+     "20,610",
+     ""
+    ],
+    [
+     "Total finance lease payments",
+     "32,494",
+     "",
+     "17,683",
+     "",
+     "50,177",
+     ""
+    ],
+    [
+     "Less: present value discount(1)",
+     "(6,802)",
+     "",
+     "(1,600)",
+     "",
+     "(8,402)",
+     ""
+    ],
+    [
+     "Present value of finance lease liabilities",
+     "$",
+     "25,692",
+     "$",
+     "16,083",
+     "$",
+     "41,775"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 559,
+    "end_line": 576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Leasing Transactions"
+    }
+   },
+   "prose_before": "(1) Includes rent for properties we sublease from SVC.\n(2) The discount rate used to derive the present value of unpaid lease payments is based on the rates implicit in the SVC Leases and our incremental borrowing rate for all other leases.\nThe weighted average remaining lease term for our operating leases as of March 31, 2023, was approximately 10 years. Our weighted average discount rate for our operating leases as of March 31, 2023, was approximately 9.1%.\nDuring the three months ended March 31, 2023 and 2022, we paid real estate rent payments of $70,693 and $70,371, respectively, for amounts that had been included in the measurement of our operating lease liabilities.\nMaturities of our finance lease liabilities that had remaining noncancelable lease terms in excess of one year as of March 31, 2023, were as follows:",
+   "prose_after": "(1) Includes rent for properties we sublease from SVC.\n(2) The discount rate used to derive the present value of unpaid lease payments is based on our incremental borrowing rate.\nThe weighted average remaining lease term for our finance leases as of March 31, 2023, was approximately 8 years. Our weighted average discount rate for our finance leases as of March 31, 2023, was approximately 4.3%.\nDuring the three months ended March 31, 2023 and 2022, we paid $1,818 and $1,035, respectively, for amounts that had been included in the measurement of our finance lease liabilities.\nIn connection with entering into the Merger Agreement, we and our wholly-owned subsidiary, TA Operating LLC, or together the TCA Parties, entered into the SVC Consent Agreement with SVC pursuant to which, among other things, SVC consented to our entering into the Merger Agreement and the consummation of the Merger and agreed to enter into amended and restated lease and guarantee agreements with the applicable TCA Parties, which would be entered into at the effective time of the Merger. For more information about the Merger and the SVC Consent Agreement, see Notes 1 and 6 of this Quarterly Report.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 555,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Nonfuel products",
+     "$",
+     "205,569",
+     "$",
+     "212,811"
+    ],
+    [
+     "Fuel products",
+     "46,886",
+     "",
+     "59,263",
+     ""
+    ],
+    [
+     "Total inventory",
+     "$",
+     "252,455",
+     "$",
+     "272,074"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 652
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)                                                                                             1"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "We cannot predict the ultimate effect changing circumstances and changing environmental laws may have on us in the future or the ultimate outcome of matters currently pending. We cannot be certain that contamination presently unknown to us does not exist at our sites, or that a material liability will not be imposed on us in the future. If we discover additional environmental issues, or if government agencies impose additional environmental requirements, increased environmental compliance or remediation expenditures may be required, which could have a material adverse effect on us.\nLegal Proceedings\nWe are routinely involved in various legal and administrative proceedings incidental to the ordinary course of business, including commercial disputes, employment related claims, wage and hour claims, premises liability claims and tax audits among others. We and our directors are also involved in litigation related to the Merger and certain of our disclosures about the Merger. We do not expect that any litigation or administrative proceedings in which we are presently involved, or of which we are aware, will have a material adverse effect on our business, financial condition, results of operations or cash flows.\n8. Inventory\nInventory as of March 31, 2023 and December 31, 2022 consisted of the following:",
+   "prose_after": "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion should be read in conjunction with the consolidated financial statements and related notes included in Part I, Item 1 of this Quarterly Report on Form 10-Q, or this Quarterly Report, and with our Annual Report on Form 10-K for the fiscal year ended December 31, 2022, or our Annual Report. Unless indicated otherwise, amounts are in thousands of dollars, shares of common stock or gallons, as applicable.\nCompany Overview\nTravelCenters of America Inc. is a Maryland corporation. As of March 31, 2023, we operated or franchised 286 travel centers, three standalone truck service facilities and one standalone restaurant. Our customers include trucking fleets and their drivers, independent truck drivers, highway and local motorists and casual diners. We also collect rents, royalties and other fees from our tenants and franchisees. We make specific disclosures concerning fuel and nonfuel products and services because they facilitate our discussion of trends and operational initiatives within our business and industry.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 653,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$ Change",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel",
+     "$",
+     "1,720,057",
+     "$",
+     "1,806,114",
+     "$",
+     "(86,057)",
+     "(4.8)",
+     "%"
+    ],
+    [
+     "Nonfuel",
+     "515,674",
+     "",
+     "487,082",
+     "",
+     "28,592",
+     "",
+     "5.9",
+     "%"
+    ],
+    [
+     "Rent and royalties from franchisees",
+     "3,287",
+     "",
+     "3,877",
+     "",
+     "(590)",
+     "",
+     "(15.2)",
+     "%"
+    ],
+    [
+     "Total revenues",
+     "2,239,018",
+     "",
+     "2,297,073",
+     "",
+     "(58,055)",
+     "",
+     "(2.5)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross >",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel",
+     "95,255",
+     "",
+     "112,919",
+     "",
+     "(17,664)",
+     "",
+     "(15.6)",
+     "%"
+    ],
+    [
+     "Nonfuel",
+     "324,078",
+     "",
+     "295,297",
+     "",
+     "28,781",
+     "",
+     "9.7",
+     "%"
+    ],
+    [
+     "Rent and royalties from franchisees",
+     "3,287",
+     "",
+     "3,877",
+     "",
+     "(590)",
+     "",
+     "(15.2)",
+     "%"
+    ],
+    [
+     "Total gross margin",
+     "422,620",
+     "",
+     "412,093",
+     "",
+     "10,527",
+     "",
+     "2.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Site level operating expense",
+     "278,917",
+     "",
+     "252,044",
+     "",
+     "26,873",
+     "",
+     "10.7",
+     "%"
+    ],
+    [
+     "Selling, general and administrative expense",
+     "51,559",
+     "",
+     "41,309",
+     "",
+     "10,250",
+     "",
+     "24.8",
+     "%"
+    ],
+    [
+     "Real estate rent expense",
+     "64,701",
+     "",
+     "64,646",
+     "",
+     "55",
+     "",
+     "0.1",
+     "%"
+    ],
+    [
+     "Depreciation and amortization expense",
+     "27,099",
+     "",
+     "24,231",
+     "",
+     "2,868",
+     "",
+     "11.8",
+     "%"
+    ],
+    [
+     "Other operating (expense) income, net",
+     "698",
+     "",
+     "(2,182)",
+     "",
+     "2,880",
+     "",
+     "132.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Loss) Income from operations",
+     "(354)",
+     "",
+     "32,045",
+     "",
+     "(32,399)",
+     "",
+     "(101.1)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "9,611",
+     "",
+     "11,530",
+     "",
+     "(1,919)",
+     "",
+     "(16.6)",
+     "%"
+    ],
+    [
+     "Other income, net",
+     "(906)",
+     "",
+     "(638)",
+     "",
+     "(268)",
+     "",
+     "(42.0)",
+     "%"
+    ],
+    [
+     "(Loss) Income before income taxes",
+     "(9,059)",
+     "",
+     "21,153",
+     "",
+     "(30,212)",
+     "",
+     "(142.8)",
+     "%"
+    ],
+    [
+     "Benefit (provision) for income taxes",
+     "2,761",
+     "",
+     "(4,849)",
+     "",
+     "7,610",
+     "",
+     "156.9",
+     "%"
+    ],
+    [
+     "Net (loss) income attributable to common stockholders",
+     "$",
+     "(6,298)",
+     "$",
+     "16,304",
+     "$",
+     "(22,602)",
+     "(138.6)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 737,
+    "end_line": 776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "Our sales volumes are generally lower in the first and fourth quarters than the second and third quarters of each year. In the first quarter, the movement of freight by professional truck drivers as well as motorist travel are usually at their lowest levels of the calendar year. In the fourth quarter, freight movement is typically lower due to the holiday season. While our revenues are modestly seasonal, quarterly variations in our operating results may reflect greater seasonal differences as our rent expense and certain other costs do not vary seasonally.\nResults of Operations\nWe present our results of operations on a consolidated basis. Currently all of our company operated locations are same site locations with the exception of recently acquired travel centers and truck service facilities and the travel center located in Canada that we stopped operating during the second quarter of 2022. Same site operating results would not provide materially different information from our consolidated results and are not presented as part of this discussion and analysis.\nConsolidated Financial Results\nThe following table presents changes in our operating results for the three months ended March 31, 2023, as compared to the three months ended March 31, 2022.",
+   "prose_after": "Three Months Ended March 31, 2023, as Compared to Three Months Ended March 31, 2022\nFuel Revenues. Fuel revenues for the three months ended March 31, 2023 decreased by $86,057, or 4.8%, as compared to the three months ended March 31, 2022. The decrease in fuel revenues was primarily due to a decrease in fuel sales volume and lower market prices for fuel. The table below presents the factors causing the changes in total fuel sales volume and revenues between periods. See \u201cEffects of Fuel Prices and Supply and Demand Factors\u201d for more information regarding the impact market prices for fuel has on our financial results.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 733,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Gallons Sold",
+     "Fuel Revenues",
+     ""
+    ],
+    [
+     "Results for the three months ended March 31, 2022",
+     "555,261",
+     "$",
+     "1,806,114"
+    ],
+    [
+     "Decrease due to petroleum products price changes",
+     "",
+     "(49,381)",
+     ""
+    ],
+    [
+     "Decrease due to volume changes",
+     "(13,096)",
+     "(41,979)",
+     ""
+    ],
+    [
+     "Increase in wholesale fuel sales volume",
+     "2,095",
+     "5,303",
+     ""
+    ],
+    [
+     "Net change from prior year period",
+     "(11,001)",
+     "(86,057)",
+     ""
+    ],
+    [
+     "Results for the three months ended March 31, 2023",
+     "544,260",
+     "$",
+     "1,720,057"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 781,
+    "end_line": 794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "Three Months Ended March 31, 2023, as Compared to Three Months Ended March 31, 2022\nFuel Revenues. Fuel revenues for the three months ended March 31, 2023 decreased by $86,057, or 4.8%, as compared to the three months ended March 31, 2022. The decrease in fuel revenues was primarily due to a decrease in fuel sales volume and lower market prices for fuel. The table below presents the factors causing the changes in total fuel sales volume and revenues between periods. See \u201cEffects of Fuel Prices and Supply and Demand Factors\u201d for more information regarding the impact market prices for fuel has on our financial results.",
+   "prose_after": "Nonfuel Revenues. Nonfuel revenues for the three months ended March 31, 2023 increased by $28,592, or 5.9%, as compared to the three months ended March 31, 2022, primarily as a result of increases in our truck services, restaurants and diesel exhaust fluid, or DEF, revenue due to inflation-driven price increases, the opening of our new and reopening of certain existing restaurants and recent acquisitions. These increases were partially offset by lower overall transaction volumes.\nRent and Royalties from Franchisees. Rent and royalties from franchisees for the three months ended March 31, 2023 decreased by $590, or 15.2%, as compared to the three months ended March 31, 2022, primarily as a result of the elimination of rent and royalties due to the acquisitions of franchised travel centers during 2022, partially offset by franchised travel centers that began operations after March 31, 2022.\nFuel Gross Margin. Fuel gross margin for the three months ended March 31, 2023 decreased by $17,664, or 15.6%, as compared to the three months ended March 31, 2022, primarily as a result of the comparison against particularly favorable market conditions in the prior year and a decrease in fuel sales volume.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 813,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(dollars in thousands)",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$ Change",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at the beginning of the period",
+     "$",
+     "416,012",
+     "$",
+     "536,002",
+     "$",
+     "(119,990)"
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "8,821",
+     "",
+     "59,119",
+     "",
+     "(50,298)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "(36,861)",
+     "",
+     "(49,220)",
+     "",
+     "12,359",
+     ""
+    ],
+    [
+     "Financing activities",
+     "(2,069)",
+     "",
+     "(1,784)",
+     "",
+     "(285)",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "\u2014",
+     "",
+     "36",
+     "",
+     "(36)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at the end of the period",
+     "$",
+     "385,903",
+     "$",
+     "544,153",
+     "$",
+     "(158,250)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 891,
+    "end_line": 906
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "We have a $200,000 Term Loan Facility, or the Term Loan Facility, which is secured by a pledge of all the equity interests of substantially all of our wholly-owned subsidiaries, a pledge, subject to the prior interest of the lenders under our Credit Facility, of substantially all of our other assets and the assets of such wholly-owned subsidiaries and mortgages on certain of our fee owned real properties. We used the net proceeds of $190,062 from our Term Loan Facility for general business purposes, including the funding of capital expenditures, updates to key information technology infrastructure and growth initiatives. Interest on amounts outstanding under the Term Loan Facility are calculated at LIBOR, with a LIBOR floor of 100 basis points, plus 600 basis points, and the Term Loan Facility matures on December 14, 2027. In the absence of LIBOR, the Term Loan Facility provides an alternative base rate option for interest, which utilizes either the federal funds rate or the prime rate as the base. Our Term Loan Facility requires periodic interest payments based on the interest period selected and quarterly principal payments of $500, or 1.0% of the original principal amount annually. In addition, for each twelve month calendar year period (each considered an \u201cExcess Cash Flow Period\u201d, as defined), we are required to calculate Excess Cash Flow, as defined, and prepay an amount equal to Excess Cash Flow less other specified adjustments. The prepayment, as calculated, is due 95 days after the end of the respective Excess Cash Flow Period. There was no required prepayment due for the Excess Cash Flow Period ended December 31, 2022. We may prepay the remaining principal amounts outstanding under the Term Loan Facility without penalty. The Term Loan Facility contains various covenants that we believe are usual and customary. These covenants include a maximum allowed leverage ratio. As of March 31, 2023, we were in compliance with all covenants of the Term Loan Facility.\nWest Greenwich Loan\nWe have a term loan for $16,600 with The Washington Trust Company, or the West Greenwich Loan. The West Greenwich Loan matures on February 7, 2030, and is secured by a mortgage encumbering our travel center located in West Greenwich, Rhode Island. The annual interest rate is fixed at 3.85% through February 7, 2025, and resets thereafter, based on the five year Federal Home Loan Bank rate plus 198 basis points. The West Greenwich Loan requires us to make principal and interest payments monthly. The proceeds from the West Greenwich Loan were used for general business purposes.\nSources and Uses of Cash\nThe following is a summary of our sources and uses of cash for the three months ended March 31, 2023 and 2022, as reflected in our consolidated statements of cash flows:",
+   "prose_after": "Cash Flows from Operating Activities. The change in net cash inflows from operating activities of $50,298 primarily resulted from a decrease in earnings and the effect of changes in working capital primarily due to a decrease in accounts payable, partially offset by decreases in accounts receivable and inventory.\nCash Flows from Investing Activities. The change in net cash outflows from investing activities of $12,359 primarily resulted from a decrease in capital expenditures.\nCash Flows from Financing Activities. The change in net cash outflows from financing activities of $285 primarily resulted from an increase in finance lease principal payments.\nRelated Party Transactions\nWe have relationships and historical and continuing transactions with SVC, The RMR Group LLC, or RMR, and others related to them. For further information about these and other such relationships and related party transactions, see Notes 4, 5 and 6 to the Consolidated Financial Statements included in Item 1. of this Quarterly Report, our Annual Report, and our other filings with the SEC. In addition, see Item 1A. \u201cRisk Factors\u201d in our Annual Report for a description of risks that may arise as a result of these and other related party transactions and relationships. We may engage in additional transactions with related parties, including businesses to which RMR or its subsidiaries provide management services.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 913,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Calendar Month",
+     "Number of Shares Purchased(1)",
+     "Average Price Paid per Share",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "Maximum Approximate Dollar Value of Shares That May Yet Be Purchased Under the Plans or Programs",
+     ""
+    ],
+    [
+     "January 2023",
+     "813",
+     "$",
+     "43.64",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "February 2023",
+     "441",
+     "41.05",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "March 2023",
+     "949",
+     "84.87",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "2,203",
+     "$",
+     "60.88",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1042,
+    "end_line": 1054
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "Results that differ from those stated or implied by our forward-looking statements may also be caused by various changes in our business or market conditions as described more fully in our Annual Report, including under \u201cWarning Concerning Forward-Looking Statements\u201d and Part I, Item 1A, \u201cRisk Factors,\u201d and elsewhere in this Quarterly Report.\nYou should not place undue reliance upon forward-looking statements. Except as required by law, we undertake no obligation to update or revise any forward-looking statement as a result of new information, future events or otherwise.\nPART II. OTHER INFORMATION\nItem 1A. Risk Factors\nThere have been no material changes during the period covered by this Quarterly Report on Form 10-Q to the risk factors previously disclosed under the \u201cRisk Factors\u201d section of our Annual Report on Form 10-K for the fiscal year ended December 31, 2022.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nIssuer Purchases of Equity Securities\nThe following table provides information about our purchases of our equity securities during the quarter ended March 31, 2023.",
+   "prose_after": "(1) During the quarter ended March 31, 2023, all common stock purchases were made to satisfy share award recipients\u2019 tax withholding and payment obligations in connection with the vesting of awards of shares of common stock, which were repurchased by us based on their fair market value on the repurchase date.\nItem 6. Exhibits",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1030,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "2.1",
+     "\u2020",
+     "Agreement and Plan of Merger, dated as of February 15, 2023, by and among BP Products North America Inc., Bluestar RTM Inc. and TravelCenters of America Inc. (Incorporated by reference to Exhibit 2.1 to our Current Report on Form 8-K filed February 16, 2023)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Plan of Conversion (Incorporated by reference to Exhibit 99.1 to our Current Report on Form 8-K filed July 30, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Articles of Conversion of TravelCenters of America LLC (Incorporated by reference to Exhibit 99.3 to our Current Report on Form 8-K filed July 30, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "",
+     "Articles of Incorporation of TravelCenters of America Inc. (Incorporated by reference to Exhibit 99.4 to our Current Report on Form 8-K filed July 30, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "",
+     "Articles of Amendment to the Articles of Incorporation of TravelCenters of America Inc. (Incorporated by reference to Exhibit 3.1 to our Current Report on Form 8-K filed June 26, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "",
+     "Amended and Restated Bylaws of TravelCenters of America Inc. (Incorporated by reference to Exhibit 99.5 to our Current Report on Form 8-K filed July 30, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Form of Stock Certificate (Incorporated by reference to Exhibit 4.3 to our Post Effective Amendment to our Registration Statement on Form S-3 filed August 1, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "",
+     "Indenture by and between TravelCenters of America LLC and U.S. Bank National Association, as trustee, dated as of January 15, 2013 (Incorporated by reference to Exhibit 4.1 to our Current Report on Form 8-K filed January 15, 2013)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "",
+     "First Supplemental Indenture by and between TravelCenters of America LLC and U.S. Bank National Association, as trustee, dated as of January 15, 2013 (Incorporated by reference to Exhibit 4.2 to our Current Report on Form 8-K filed January 15, 2013)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "",
+     "Second Supplemental Indenture by and between TravelCenters of America LLC and U.S. Bank National Association, as trustee, dated as of December 16, 2014 (Incorporated by reference to Exhibit 4.2 to our Registration Statement on Form 8-A (File No. 001-33274) filed December 16, 2014)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "",
+     "Third Supplemental Indenture by and between TravelCenters of America LLC and U.S. Bank National Association, as trustee, dated as of October 5, 2015 (Incorporated by reference to Exhibit 4.1 to our Registration Statement on Form 8-A (File No. 001-33274) filed October 5, 2015)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "",
+     "Fourth Supplemental Indenture by and between TravelCenters of America Inc. (as successor by statutory conversion to TravelCenters of America LLC) and U.S. Bank National Association, as trustee, dated as of August 1, 2019 (Incorporated by reference to Exhibit 4.1 to our Current Report on Form 8-K filed August 1, 2019)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.7",
+     "",
+     "Form of 8.25% Senior Notes due 2028 (included in Exhibit 4.3 above)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.8",
+     "",
+     "Form of 8.00% Senior Notes due 2029 (included in Exhibit 4.4 above)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.9",
+     "",
+     "Form of 8.00% Senior Notes due 2030 (included in Exhibit 4.5 above)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Executive Officer (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "",
+     "Rule 13a-14(a)/15d-14(a) Certification of Chief Financial Officer (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Section 1350 Certification of Chief Executive Officer and Chief Financial Officer (furnished herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1059,
+    "end_line": 1117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "(1) During the quarter ended March 31, 2023, all common stock purchases were made to satisfy share award recipients\u2019 tax withholding and payment obligations in connection with the vesting of awards of shares of common stock, which were repurchased by us based on their fair market value on the repurchase date.\nItem 6. Exhibits",
+   "prose_after": "\u2020 Certain of the exhibits and schedules to this exhibit have been omitted in accordance with Regulation S-K Item 601(b)(2). The Registrant agrees to furnish supplementally a copy of all omitted exhibits and schedules to the SEC upon its request.\nSIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1118,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "TravelCenters of America Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "",
+     "",
+     "/s/ Peter J. Crage",
+     ""
+    ],
+    [
+     "Date:",
+     "April 27, 2023",
+     "",
+     "Name:",
+     "Peter J. Crage"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Title:",
+     "Executive Vice President, Chief Financial Officer and Treasurer (Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "TravelCenters of America Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1125,
+    "end_line": 1133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "\u2020 Certain of the exhibits and schedules to this exhibit have been omitted in accordance with Regulation S-K Item 601(b)(2). The Registrant agrees to furnish supplementally a copy of all omitted exhibits and schedules to the SEC upon its request.\nSIGNATURE\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1134,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

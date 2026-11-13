@@ -1,0 +1,3585 @@
+{
+ "accession": "0001096906-22-000873",
+ "cik": "0001884164",
+ "form": "10-K",
+ "filing_date": "2022-04-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "kwik-20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "95-4463033"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "585 West 500 South Suite 130",
+     ""
+    ],
+    [
+     "Bountiful, Utah",
+     "84010"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number: 000-56349\nKwikClick, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code:\nTel: (801) 243-4840\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, par value $0.0001 per share\n________________________\n(Title of Class)\nKWIK\n________________________\nTrading Symbol\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "15"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "35"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "35"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "35"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "35"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "36"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "36"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "38"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative And Qualitative Disclosures About Market Risk",
+     "41"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "41"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "41"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "41"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "42"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "43"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "46"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "53"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "55"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "57"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "58"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "59"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 131
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act).\nYes [ ] No [X]\nAs of April 13, 2022, the registrant had 115,912,605 shares of its Common Stock outstanding. As of June 30, 2021, the aggregate market value of the registrant\u2019s Common Stock held by non-affiliates of the registrant (without admitting that such person whose shares are not included in such calculation is an affiliate) was approximately $34,117,607 based on the last quote price as quoted on the OTC Markets quoting system on such date. There were no sales on that date.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nCautionary Note Regarding Forward-Looking Statements\nThis Annual Report on Form 10-K for the fiscal year ended December 31, 2021 (the \u201cForm 10-K\u201d) contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, relating to our business and financial outlook, which are based on our current beliefs, assumptions, expectations, estimates, forecasts and projections about future events only as of the date of this Form 10-K, and are not statements of historical fact. We make such forward-looking statements pursuant to the \u201csafe harbor\u201d provisions of the Private Securities Litigation Reform Act of 1995. These statements are often identified by the use of words such as \u201canticipate,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cplan,\u201d \u201cproject,\u201d \u201cwill,\u201d \u201cwould\u201d or the negative or plural of these words or similar expressions or variations. Such forward-looking statements and forward-looking information are subject to a number of risks, uncertainties, assumptions and other factors that could cause actual results and the timing of certain events to differ materially from future results expressed or implied by the forward-looking statements or forward-looking information. Factors that could cause or contribute to such differences include, but are not limited to, those identified in this Form 10-K, and in our other SEC public filings. Therefore, these forward-looking statements are not guarantees or promises of our future performance and involve risks, uncertainties, estimates and assumptions that are difficult to predict. As a result, our actual outcomes and results may differ materially from those expressed in these forward-looking statements. You should not place undue reliance on any of these forward-looking statements. Further, any forward-looking statement speaks only as of the date hereof, unless it is specifically otherwise stated to be made as of a different date. We undertake no obligation to further update any such statement, or the risk factors described in Item 1A under the heading \u201cRisk Factors,\u201d to reflect new information, the occurrence of future events or circumstances or otherwise.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 131,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Application #",
+     "Jurisdiction",
+     "Title",
+     "Brief Description"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "17/313,783",
+     "US Utility",
+     "Incorporating a Product in a Multi-Level Marketing System",
+     "Method for selling products to purchasers of the product who also act as sellers/distributors of the product and who receive commissions based on purchases of the product by a chain of sponsored sellers"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/020,993",
+     "US Prov.",
+     "Method for Incorporating a Product in a Multi-Level Marketing System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PCT/US21/31149",
+     "International PCT",
+     "Incorporating a Product in a Multi-Level Marketing System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "17/332,916",
+     "US Utility",
+     "Incorporating a Product in a Multi-Level Marketing System",
+     "Systems & Methods for allowing sellers of products to add products to a multi-level marketing system using codes passed to followers such that commissions can be paid when added products are sold by the followers."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/031,358",
+     "US Prov.",
+     "Method for Incorporating a Product in a Multi-Level Marketing System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PCT/US21/34759",
+     "International PCT",
+     "Incorporating a Product in a Multi-Level Marketing System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/142,945",
+     "US Prov.",
+     "Method for Incorporating a Product in a Multi-Level SMARTLINK Embedded Media Files for Enhanced Marketing",
+     "System & Method for Enrolling Products in a multi-level marketing system using embedded links and associated follower codes. By selecting a product link, followers may be offered a product and may become sellers of that product. Commissions for products purchased are distributed based on the follower code relationships."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "17/332,891",
+     "US Utility",
+     "Method for Incorporating a Product in a Multi-Level Marketing System and Allowing User to Motivate their Downline",
+     "System and Method for allowing users to create and share marketing materials for selling a product with followers that may purchase the product, become sellers of that product, and sell that product to other users/followers that may in turn become sellers of the product and share the marketing materials. Commissions are paid to sponsors of followers when followers purchase a product marketed by the shared marketing materials"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/031,379",
+     "US Prov.",
+     "Method for Incorporating a Product in a Multi-Level Marketing System and Allowing User to Motivate their Downline",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PCT/US21/34760",
+     "International PCT",
+     "Method for Incorporating a Product in a Multi-Level Marketing System and Allowing User to Motivate their Downline",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "17/332,940",
+     "US Utility",
+     "Incorporating Reviews of a Product or Service in a Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Users may then provide reviews about products that they have purchased."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/031,403",
+     "US Prov.",
+     "Method for Incorporating a Service in a Multi-Level Marketing System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PCT/US21/34767",
+     "International PCT",
+     "Incorporating Reviews of a Product or Service in a Multi-Level Marketing System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "17/313,795",
+     "US Utility",
+     "Using a Product or Service as a start of an MLM Tree",
+     "Individuals that have purchased a product from a vendor may become users of a multi-level marking system and may become a seller of the product and may provide offerings to purchase the product at discounted prices to other individuals/followers. Chains of related sellers that provided offering to purchase the product receive commissions when others purchase the product according to the offering."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 278,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "Other areas for which we are attempting to get patent protection include automation of areas such as enrollment, taxes, tracking distributors' profits, working across the country's laws, managing uplines and downlines, and managing warranties. We seek patent protection for potential connections to other business models such as other company websites, credit cards, franchises, airline sky miles, lotteries, retail, online stores shopping carts, and referrals to banking. Although there are many tools to be built into the KwikClick platform, we are attempting to have our portfolio cover unique areas for distributor sales support, such as suggestive selling and managing incentives and rewards for downlines and allowing uplines to create unique downlines bonus plans. We are seeking protections for inventions covering all aspects of AI/ML processing, security systems, and the \"Hyperlink Data structure and messaging system,\" which we see as a foundation of using our multi-level compensation system. We have attempted to define the patents that we seek to cover our plan to allow distributors to integrate product information for their online marketing efforts. We also seek to protect methods to bring in and leverage \"big Influencers\" in a product tree-based on a multi-level compensation model.\nWe believe that the patent portfolio that we seek to be innovative. We believe that our CEO\u2019s experience in working with multi-level compensation companies and system designs has been important to our current portfolio. We anticipate that Mr. Cooper will continue to develop other inventions in our space. We believe that our portfolio will provide us with protection from competitors who attempt to copy our innovations.\nIn addition to our pending patent portfolio, we catalogued many trade secrets as well, to further enhance the portfolio, which may hinder other parties\u2019 ability to reverse engineer our system.\nThe table below summarizes the patent applications filed by or on behalf of the Company. None of the patents subject to the patent applications have been issued. There is no assurance as to whether or when any of the following patent applications will result in the award of any patents.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 277,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 336,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "63/020,997",
+     "US Prov.",
+     "System and Method for Using a Product or Service as the Start of MLM Tree and Attaching this System to an Existing MLM System",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PCT/US21/31150",
+     "International PCT",
+     "Using a Product or Service as a start of an MLM Tree",
+     "(Same as above)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/143,304",
+     "US Prov.",
+     "Method for Incorporating a Product in a Multi-Level Marketing System Using Hyperlinks to Track Referrals",
+     "Method for selling products by members of a multi-level marketing organization, where hyperlinks associated with product offerings are updated and used to track related users. using embedded links and associated follower codes. By selecting a hyperlink, followers may be offered a product and may become sellers of that product. Commissions for products purchased are distributed based on the relationships."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/143,316",
+     "US Prov.",
+     "System and Method for Allowing Product Returns in a Product Based MLM System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Users may return purchased products and refunds of a purchase price and any commissions are then processed."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/143,330",
+     "US Prov.",
+     "Method for Incorporating a Product in a Multi-Level Marketing System Where the Product is Sold by a Franchise",
+     "System and method for selling products by members of a multi-level marketing organization, Users of the multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Franchisers may set rules, identify products offered for sale, set discount prices, or set commissions paid to sellers."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,856",
+     "US Prov.",
+     "Method for Incorporating a Blockchain in a Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Activity of related sellers and buyers are tracked using secure blockchain entries."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/143,338",
+     "US Prov.",
+     "Method for Incorporating a Product in an International-Scale Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. User locations and jurisdictions are identified and language, type of currency, purchase rules, or commissions may be adjusted based on location."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/143,362",
+     "US Prov.",
+     "Micro Influencer",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Filters may be created or used to identify rules that may be associated with a time, a demographic, or other information. Shared advertising materials are ranked and messages regarding those rankings may be shared with users to increase sales."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,864",
+     "US Prov.",
+     "Creating a Community from Data",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The related sellers may be members of or create new social media groups. Members of each group may share common traits and users that share a trait with a group may be added to that group. User may then share information to other group members."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,867",
+     "US Prov.",
+     "Enhancing Existing Social Media Network from Data",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product to members of a social media network. Users may sign into their social media account and share marketing materials via their account."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 337,
+    "end_line": 387
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 336,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "63/049,877",
+     "US Prov.",
+     "MLM Product Based Trees Creates Online Store",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Products may be sold through an online store that creates webpages based on received URLs."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/193,251",
+     "US Prov.",
+     "Method for Setting Up User Created Storefronts Within a Product Tree Based Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system allows users to create a storefront used to direct new users to purchase products."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,882",
+     "US Prov.",
+     "System for Commissions for Multilevel Marketing",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system also includes the ability to allow a purchaser to select between multiple commission plans based on the user\u2019s personal preferences. The purchaser may also decide to donate all or a portion of their commission to one or more charities. In addition, with all the variance in commission plans the system has the ability to find correlations in the data between commission plan structure and maximizing metrics like profit or revenue or minimizing metrics like cost."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,949",
+     "US Prov.",
+     "Method for Suggestive Selling on a Product Tree Based Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Once the purchasers are enrolled, they are provided with a code and link to the purchased product to allow the purchasers to pass the code and the link onto the user\u2019s followers, such as family, friends, colleagues, etc. to allow them to become part of the MLM tree. Product purchases are recorded in a database which is analyzed in order to determine which products are most often bought at the same time by the same user. This data is then sent to the 3rd party so that they may better advertise the combination of products."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,954",
+     "US Prov.",
+     "Single Line Tree Creating by a Distributor for a Product Based Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Once the purchasers are enrolled, they are provided with a code and link to the purchased product to allow the purchasers to pass the code and the link onto the user\u2019s followers, such as family, friends, colleagues to allow them to become part of the MLM tree. Some commission plans may be a single line tree, where a buyer is placed in the tree underneath the last buyer even when there is no interaction between the two buyers. This creates a different incentive structure for purchasing an item that prioritizes purchase speed over distributive ability."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/193,265",
+     "US Prov.",
+     "METHOD FOR CREDIT CARD INTEGRATION WITHIN A PRODUCT TREE BASED MULTI-LEVEL MARKETING SYSTEM",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system integrates credit card information and personal information tracked using codes."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/193,268",
+     "US Prov.",
+     "Method for Banking Integration Within a Product Tree Based Multi-Level Marketing System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Sales of a product are track and commissions are paid to members of a single tree that tracks sales of related users."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/049,958",
+     "US Prov.",
+     "Enterprise Multi-Level Marketing System",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 388,
+    "end_line": 439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "63/166,677",
+     "US Prov.",
+     "On-The-Fly Comp Plan",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system generates new experimental commission plans on the fly, then tests those commission plans to see if there are any correlations between changing parameters of the commission plan and metrics such as profit, revenue, product volume, recruitment rate, etc. These correlations may be used to guide the generation of new commission plans."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/166,683",
+     "US Prov.",
+     "Persistent Information Linked to Upline and Downline",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system may connect with a social media site and allow users to curate posts such that they are able to access posts that are relevant to their uplines, downlines, and the product or products they are concerned with, and data may be stored persistently."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/166,687",
+     "US Prov.",
+     "Product-Based MLM System Platform",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system allows the user access to features of the system that may be helpful for the management of those user\u2019s accounts and the distribution of products. The system further tracks which of these features are most commonly used by those users. This data is then used to suggest features to new users based on purchased products."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/166,801",
+     "US Prov.",
+     "SMARTLINK for Outside Network Input/Output",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Once the purchasers are enrolled, they are provided with a code and link to the purchased product to allow the purchasers to pass the code and the link onto the user\u2019s followers, such as family, friends, colleagues, etc. to allow them to become part of the MLM tree. Data within the system can be quickly retrieved from an outside source using a SmartLink directs to an online or offline portal through which data may be viewed and/or manipulated."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/166,807",
+     "US Prov.",
+     "Permissions for Retailer Types Within an MLM System",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Each member of the tree may have a different level or status based on the modules and databases tailored to their specific needs. Retailers. franchises, online stores, and white label stores, may pay a premium for access to features that would be useful for each type of members or products."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/166,809",
+     "US Prov.",
+     "A Method for Incorporating Additional Blockchains into a Multi-Level Marketing System Blockchain",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Data stored in a blockchain structure is used to secure user and sale data."
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "63/166,813",
+     "US Prov.",
+     "Cross-Commission for Cross-Promotional Products and Services",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. Commissions are paid to users and Vendors of products may engage in cross-promotional campaigns wherein two or more products are tied together. Users of the system may then be awarded bonuses for causing another user, directly or indirectly, to purchase two or more of the tied products."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 491
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "63/166,817",
+     "US Prov.",
+     "Enterprise Multi-Level Marketing",
+     "Users of a multi-level marketing system that purchased a product marketed by another user can market a product and become sellers of the product. The system allows for multiple parties to be tied to the same item via separate codes, which allows each party to craft its discount and compensation system and allows users to partake in both. The system also allows for events in which the discount and/or compensation systems on products are modified temporarily."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 498
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Government Regulation\nAs with any company operating on the internet, we are subject to a growing number of local, national, and international laws and regulations. These laws are often complex, sometimes contradict other laws, and are frequently changing. Compliance is costly and can require changes to our business practices and significant amounts of management time and focus. Laws may be interpreted and enforced in different ways in various locations around the world, posing a significant challenge to our global business. For example, federal and state laws in the United States, and other national laws govern the processing of payments, consumer protection, and the privacy of consumer information; other laws define and regulate unfair and deceptive trade practices. Still other laws dictate when and how sales or other taxes must be collected. Laws of defamation apply online and vary by country. The growing focus on data privacy and regulation of e-commerce worldwide could impose additional compliance burdens and costs on us or on sellers and could subject us to significant operational costs for internal compliance and risk to our business. In addition, some of these requirements may introduce friction into the buying and selling experience on our platform and may impact the scope and effectiveness of our marketing efforts, which could negatively impact our business and future outlook. Additionally, in the event that we ever operate internationally, we will need to comply with various laws associated with doing business outside of the United States, including anti-money laundering, sanctions, anti-corruption, and export control laws. Non-compliance with any applicable laws and regulations could result in penalties or significant legal liability. See \u201cRisk Factors\u2014Regulatory, Compliance, and Legal Risks.\u201d",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 520,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Sales Prices (1)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "Low"
+    ],
+    [
+     "Year Ended December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "4th Quarter",
+     "$1.11",
+     "$1.11"
+    ],
+    [
+     "3rd Quarter",
+     "$1.11",
+     "$1.11"
+    ],
+    [
+     "2nd Quarter",
+     "$1.11",
+     "$1.11"
+    ],
+    [
+     "1st Quarter",
+     "$1.11",
+     "$1.11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "4th Quarter",
+     "$80.00",
+     "$1.11"
+    ],
+    [
+     "3rd Quarter",
+     "$80.00",
+     "$21.22"
+    ],
+    [
+     "2nd Quarter",
+     "$21.22",
+     "$21.22"
+    ],
+    [
+     "1st Quarter",
+     "$21.64",
+     "$21.22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "4th Quarter",
+     "$21.64",
+     "$21.64"
+    ],
+    [
+     "3rd Quarter",
+     "$48.00",
+     "$20.44"
+    ],
+    [
+     "2nd Quarter",
+     "$89.60",
+     "$28.40"
+    ],
+    [
+     "1st Quarter",
+     "$60.00",
+     "$28.00"
+    ]
+   ],
+   "caption_stack": [
+    "Sales Prices (1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 901,
+    "end_line": 925
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "From time to time, we may become involved in various lawsuits and legal proceedings which arise in the ordinary course of business. However, litigation is subject to inherent uncertainties, and an adverse result in these or other matters may arise from time to time that may harm our business. The company is not currently involved in any lawsuits.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock is currently quoted on the OTC Pink under the trading symbol \u201cKWIK\u201d. Trading in stocks quoted on the OTC Pink is often thin and is characterized by wide fluctuations in trading prices due to many factors that may have little to do with a company\u2019s operations or business prospects. We cannot assure you that there will be a market for our common stock in the future.\nFor the periods indicated, the following table sets forth the high and low bid prices per share of common stock-based on inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "prose_after": "(1)The above table sets forth the range of high and low closing sales prices per share of our common stock as reported by nasdaq.com for the periods indicated.\nHolders\nAs of December 31, 2021, we had 115,912,605 shares of our Common Stock, par value $.0001, issued and outstanding. There were 480 beneficial owners of our Common Stock.\nTransfer Agent and Registrar\nThe transfer agent for our capital stock is Action Stock Transfer Corp., with an address of 2469 Fort Union Boulevard #214, Cottonwood Heights, UT 84121 with a telephone of (801) 274-1088.\nPenny Stock Regulations\nThe Securities and Exchange Commission has adopted regulations which generally define \u201cpenny stock\u201d to be an equity security that has a market price of less than $5.00 per share. Our Common Stock is currently within the definition of a penny stock and will be subject to rules that impose additional sales practice requirements on broker-dealers who sell such securities to persons other than established customers and accredited investors (generally those with assets in excess of $1,000,000, or annual incomes exceeding $200,000 individually, or $300,000, together with their spouse).",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Fred W. Cooper",
+     "58",
+     "Chairman of the Board, Chief Executive Officer and Secretary"
+    ],
+    [
+     "Jeffery Jensen",
+     "49",
+     "Controller, Principal Accounting Officer and Treasurer"
+    ],
+    [
+     "Matt Williams",
+     "48",
+     "President"
+    ],
+    [
+     "Rodney Wilkinson",
+     "66",
+     "Secretary"
+    ],
+    [
+     "Dan Shaw",
+     "72",
+     "Director"
+    ],
+    [
+     "David Hunt",
+     "52",
+     "Director"
+    ],
+    [
+     "Jeff Roberts",
+     "42",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1078,
+    "end_line": 1089
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This annual report on Form 10-K does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to Securities and Exchange Commission rules that permit us to provide only management\u2019s report in this annual report.\nChanges in Internal Control Over Financial Reporting\nThere have not been any changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) under the Exchange Act) during the fiscal period to which this report relates that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nExecutive Officers and Directors\nThe following table sets forth certain information regarding our current Directors and Executive Officers as of April 13, 2022:",
+   "prose_after": "Our directors serve in such capacity until the next annual meeting of our shareholders and until their successors have been elected and qualified.\nFred W. Cooper, Ph.D., President and Chief Executive Officer. Dr. Cooper has served as a director and CEO of the Company since June 2020. Since November 16, 2020, Dr. Cooper has also serviced on the Board of Directors of NewAge, Inc. (Nasdaq: NBEV), a Colorado-based social selling and distribution company with a network of independent business owners across 75 countries worldwide. Mr. Cooper became a director in connection with the closing of NewAge\u2019s merger with Ariix, LLC (\u201cAriix\u201d). Dr. Cooper brings more than 25 years of e-commerce and direct selling experience and was a Founder and the Chief Executive Officer of ARIIX prior to merging ARIIX with NewAge. Under Dr. Cooper\u2019s leadership, ARIIX was one of the fastest-growing direct selling companies over its nine years of business, and in 2020, was recognized as number 35 on the DSN\u2019s list of Top 100 global companies. Prior to founding ARIIX in July 2011, he was the President and Chief Operating Officer of NYSE listed USANA Health Sciences. He started his career in direct sales at USANA in 1998 where he played many critical roles, serving in different executive capacities in Special Projects, Information Technology, and Global Operations. Dr. Cooper also spent over ten years teaching entrepreneurship and statistics courses as a part-time professor at the University of Utah.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1069,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year",
+     "Salary ($)(1)",
+     "Bonus ($)",
+     "Stock Awards ($)",
+     "Option Awards ($)",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "Non-Qualified Deferred Compensation Earnings ($)",
+     "All Other Compensation ($)",
+     "Total ($)"
+    ],
+    [
+     "Fred W. Cooper",
+     "2021",
+     "$\u2014",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "CEO (2)(3)",
+     "2020",
+     "$\u2014",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "Jeff Jensen",
+     "2021",
+     "$\u2014",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "PFO (4)",
+     "2020",
+     "$\u2014",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "Matt Williams",
+     "2021",
+     "$\u2014",
+     "$-",
+     "$333,333",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$333,333"
+    ],
+    [
+     "President (5)",
+     "2020",
+     "$\u2014",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "Rodney Wilkinson",
+     "2021",
+     "$\u2014",
+     "$-",
+     "$75,000",
+     "$75,690",
+     "$-",
+     "$-",
+     "$-",
+     "$150,690"
+    ],
+    [
+     "Secretary",
+     "2020",
+     "$\u2014",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1138,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Section 16(a) of the Exchange Act, as amended, will require our executive officers and directors and persons who own more than 10% of a registered class of our equity securities to file with the Securities and Exchange Commission initial statements of beneficial ownership, reports of changes in ownership and annual reports concerning their ownership of our common stock and other equity securities, on Form 3, 4 and 5 respectively. Executive officers, directors and greater than 10% shareholders are required by the Securities and Exchange Commission regulations to furnish our company with copies of all Section 16(a) reports they file.\nBoard Committee\nThe Company does not have a formal Audit Committee, Nominating Committee and Compensation Committee. As the Company\u2019s business expands, the directors will evaluate the necessity of an Audit Committee.\nCode of Ethics\nThe Company has not adopted a code of ethics to apply to its principal executive officer, principal financial officer, principal accounting officer and controller, or persons performing similar functions.\nITEM 11. EXECUTIVE COMPENSATION\nSummary Compensation Table\nSet forth below is information for the fiscal years indicated relating to the compensation of each person who served as our principal executive officer (the \u201cNamed Executive Officer\u201d) during the past two fiscal years.",
+   "prose_after": "(1)Salaries include compensation received from the Company or its wholly owned subsidiary KWIKClick, LLC.\n(2)Fred W. Cooper was appointed as president of the Company on June 10, 2020.\n(3)Barry Dixon served as principal executive officer of the Company prior to Mr. Cooper\u2019s June 10, 2020 appointment.\n(4)Jeff Jensen was appointed as principal financial officer of the Company on June 10, 2020.\n(5)Matt Williams was appointed as President of the Company on September 2, 2021. Mr. Williams has been paid 83,333 shares of the Company\u2019s common stock per month as compensation since September 1, 2021. The Company sold stock for $1/share in the month of September and determined to use the sale price of the stock as the fair market value of the stock earned by Mr. Williams\n(6)Rodney Wilkinson was appointed as Secretary of the Company on June 10, 2020. In October 2021, the Company issued 75,000 shares to Mr. Wilkinson for services. The Company sold stock for $1/share in the month of September and determined to use the sale price of the stock as the fair market value of the stock earned by Mr. Williams",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees earned or paid in cash ($)",
+     "Stock awards ($) (1)",
+     "Option awards ($)",
+     "Non-equity incentive plan compensation ($)",
+     "Change in pension value and nonqualified deferred compensation earnings ($)",
+     "All other compensation ($)",
+     "Total ($)"
+    ],
+    [
+     "Fred Cooper",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daniel Shaw",
+     "",
+     "$75,000",
+     "$75,690(2)",
+     "",
+     "",
+     "",
+     "$150,690"
+    ],
+    [
+     "Jeff Roberts",
+     "",
+     "$75,000",
+     "$75,690(2)",
+     "",
+     "",
+     "",
+     "$150,690"
+    ],
+    [
+     "David Hunt",
+     "",
+     "$75,000",
+     "$75,690(2)",
+     "",
+     "",
+     "",
+     "$150,690"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1172,
+    "end_line": 1187
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "On September 2, 2021, we entered into an employment agreement with Matt Williams to serve as president of the Company (\u201cWilliams Agreement\u201d). Pursuant to the Williams Agreement, Mr. Williams is supervised by our CEO Fred Cooper. Pursuant to the Williams Agreement, Mr. Williams\u2019 compensation shall be exclusively in the form of the Company\u2019s common stock at a rate of 83,333 shares of the Company\u2019s common stock per month. Mr. Williams monthly stock compensation commenced on September 1, 2021. Pursuant to the Williams Agreement, Mr. Williams is an at-will employee, and the Company may terminate his employment with 5 calendar days\u2019 notice. Besides the Agreement with Mr. Williams, we do not have an employment or consulting agreement with any officers or directors.\nDIRECTOR COMPENSATION\nOur Board of Directors does not currently receive any cash consideration for their services as members of the Board of Directors. The Board of Directors receives stock-based consideration for their services to the Company. The Board of Directors reserves the right and intends in the future to award the members of the Board of Directors cash or additional stock-based consideration for their services to the Company, which awards, if and when granted shall be in the sole determination of the Board of Directors.",
+   "prose_after": "On October 14, 2021, the Board unanimously adopted the following director incentives:\n(1) The Company agreed to the issuance of 75,000 shares of KWIK common stock to three of the Company\u2019s directors Daniel Shaw, Jeff Roberts and David Hunt at a nominal purchase price of par value ($0.0001) per share. These shares have not yet been issued as of the date of these financial statements.\n(2) The Company agreed to issuance of warrants to purchase 100,000 shares of KWIK common to three of the Company\u2019s directors Daniel Shaw, Jeff Roberts and David Hunt at an exercise price of $1.00 per share. The Options expire three years from issuance.\nExecutive Compensation Philosophy\nOur Board of Directors determines the compensation given to our executive officers in their sole determination. Our Board of Directors reserves the right to pay our executive or any future executives a salary, and/or issue them shares of common stock in consideration for services rendered and/or to award incentive bonuses which are linked to our performance, as well as to the individual executive officer\u2019s performance. This package may also include long-term stock-based compensation to certain executives, which is intended to align the performance of our executives with our long-term business strategies. Additionally, while our Board of Directors has not granted any performance base stock options to date, the Board of Directors reserves the right to grant such options in the future, if the Board in its sole determination believes such grants would be in the best interests of the Company.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of Common Stock Shares Owned or Controlled",
+     "Beneficial Ownership Percentage",
+     "Options/ Warrants Owned",
+     "Overall Voting Power",
+     "Overall Voting Power (%)"
+    ],
+    [
+     "Fred W. Cooper (1)",
+     "68,282,323",
+     "58.87%",
+     "-",
+     "68,282,323",
+     "58.87%"
+    ],
+    [
+     "Jeffery A. Jensen (2)",
+     "-",
+     "-",
+     "-",
+     "-",
+     "0.00%"
+    ],
+    [
+     "Matt Williams (3)",
+     "-",
+     "-",
+     "-",
+     "-",
+     "0.00%"
+    ],
+    [
+     "Rodney Wilkinson (4)",
+     "-",
+     "-",
+     "-",
+     "-",
+     "0.00%"
+    ],
+    [
+     "Dan Shaw (5)",
+     "15,254",
+     "0.01%",
+     "-",
+     "15,254",
+     "0.01%"
+    ],
+    [
+     "David Hunt (6)",
+     "197,910",
+     "0.17%",
+     "-",
+     "197,910",
+     "0.17%"
+    ],
+    [
+     "Jeff Roberts (7)",
+     "-",
+     "0.00%",
+     "-",
+     "-",
+     "0.00%"
+    ],
+    [
+     "Craig Pickering (8)",
+     "16,668,035",
+     "14.37%",
+     "-",
+     "16,668,035",
+     "14.37%"
+    ],
+    [
+     "Ian Chandler (9)",
+     "9,892,884",
+     "8.53%",
+     "-",
+     "9,892,884",
+     "8.53%"
+    ],
+    [
+     "WenHan Zhang (10)",
+     "9,892,885",
+     "8.53%",
+     "-",
+     "9,892,885",
+     "8.53%"
+    ],
+    [
+     "Total of All Officers, Directors, and Affiliates as a group (8 persons and/or entities)",
+     "85,163,522",
+     "73.4%",
+     "",
+     "85,163,522",
+     "73.4%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1366,
+    "end_line": 1383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2021, there were 0 SARs previously issued under the 2021 Plan.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding the beneficial ownership of common stock of the Company by (i) each person who, to the Company\u2019s knowledge, owns more than 5% of its common stock, (ii) each of the Company\u2019s named executive officers and directors, and (iii) all of the Company\u2019s named executive officers and directors as a group. Shares of the Company\u2019s Common Stock subject to options, warrants, or other rights currently exercisable, or exercisable within 60 days of the date hereof, are deemed to be beneficially owned and outstanding for computing the share ownership and percentage of the person holding such options, warrants or other rights, but are not deemed outstanding for computing the percentage of any other person. As of the date hereof, the Company has 116,915,768 shares of common stock issued and outstanding.",
+   "prose_after": "1.The address for Fred W. Cooper is 1284 Hidden Quail Cove Farmington, UT 84025. Mr. Cooper is our CEO and a member of the Company\u2019s Board of Directors and beneficial ownership and/or voting control over 68,282,323 shares of the Company\u2019s common stock. The common stock over which Mr. Cooper has voting control is held in Cooper Family Investments, LP and by Brady Cooper and Cameron Cooper who live in Mr. Cooper\u2019s same household.\n2.The address for Jeffery A. Jensen is 1171 S. 1620 E., Springville, UT 84663. Mr. Jensen serves as the Company\u2019s Controller, Principal Accounting Officer and Treasurer and is currently not known to own any shares of the Company\u2019s common stock.\n3.The address for Matt Williams is 585 West 500 South Suite 130, Bountiful, Utah 84010. Mr. Williams serves as the Company\u2019s President. Pursuant to his employment agreement with the Company, Mr. Williams is entitled to be paid 83,333 shares of the Company\u2019s common stock per month as compensation so long as he both remains president of the Company. He is entitled to be issued 83,333 shares of the Company\u2019s common stock commencing upon completion of his services as president to the Company in September 2021.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1365,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1399,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year ended December 31, 2021:",
+     "For the year ended December 31, 2020:"
+    ],
+    [
+     "Audit Fees: $32,000",
+     "Audit Fees: $32,000"
+    ],
+    [
+     "Audit-Related Fees: None",
+     "Audit-Related Fees: None"
+    ],
+    [
+     "Tax Fees: None",
+     "Tax Fees: None"
+    ],
+    [
+     "All Other Fees: None",
+     "All Other Fees: None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "Our board of directors is currently composed of four members, only three of whom could qualify as independent directors in accordance with the published listing requirements of the NASDAQ Global Market. The NASDAQ independence definition includes a series of objective tests, such as that the director is not, and has not been for at least three years, one of our employees and that neither the director, nor any of his family members has engaged in various types of business dealings with us. In addition, our board of directors has not made a subjective determination as to each director that no relationships exist which, in the opinion of our board of directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director, though such subjective determination is required by the NASDAQ rules. Had our board of directors made these determinations, our board of directors would have reviewed and discussed information provided by the directors and us with regard to each director\u2019s business and personal activities and relationships as they may relate to us and our management.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe Company has engaged Heaton & Company, PLLC (\u201cHeaton\u201d) as the Company\u2019s independent registered public accounting firm.\nThe Company\u2019s CEO sign engagement letters with Heaton before Heaton does any audit or tax-related work for the Company. Heaton was approved to provide audit services for the Company for the years ended December 31, 2021 and 2020. Heaton does not provide tax services for the Company.\nThe following describes the audit fees, audit-related fees, tax fees, and all other fees for professional services provided by Heaton:",
+   "prose_after": "PART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\nFinancial Statements and Schedules\nThe financial statements are set forth under Item 8 of this Annual Report on Form 10-K. Financial statement schedules have been omitted since they are either not required, not applicable, or the information is otherwise included.\nExhibit List\nThe following Exhibits have been previously filed in the below referenced filings or have been attached hereto, and in any case, as is stated on the cover of this Report, all of the below Exhibits are incorporated herein by reference.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1435,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1452,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.1*",
+     "Certificate of Incorporation and amendments"
+    ],
+    [
+     "3.2*",
+     "Bylaws, as amended"
+    ],
+    [
+     "10.1*",
+     "Software Licensing and Exclusivity Agreement dated September 2, 2021 between KwikClick, Inc. and NewAge, Inc."
+    ],
+    [
+     "10.2*",
+     "Employment Agreement dated September 21, 2021 \u2013 Matthew Williams"
+    ],
+    [
+     "This Form",
+     ""
+    ],
+    [
+     "10-K",
+     "April 13, 2022"
+    ],
+    [
+     "31.1",
+     "Certification of principal executive officer pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 executed by Fred W. Cooper"
+    ],
+    [
+     "31.2",
+     "Certification of principal financial officer pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 executed by Jeffery A. Jensen"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of principal executive officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 executed by Fred W. Cooper"
+    ],
+    [
+     "32.2",
+     "Certification of principal financial officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 executed by Jeffery A. Jensen"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document*"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase*"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase*"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase*"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase*"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1465,
+    "end_line": 1497
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "PART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\nFinancial Statements and Schedules\nThe financial statements are set forth under Item 8 of this Annual Report on Form 10-K. Financial statement schedules have been omitted since they are either not required, not applicable, or the information is otherwise included.\nExhibit List\nThe following Exhibits have been previously filed in the below referenced filings or have been attached hereto, and in any case, as is stated on the cover of this Report, all of the below Exhibits are incorporated herein by reference.",
+   "prose_after": "*Pursuant to Rule 406T of Regulation S-T, these interactive data files are deemed \u201cfurnished\u201d and not \u201cfiled\u201d or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933 or deemed \u201cfurnished\u201d and not \u201cfiled\u201d for purposes of Section 18 of the Securities and Exchange Act of 1934, and otherwise are not subject to liability under these sections.\n* Filed with the Registration Statement Form 10-12(g) on September 30, 2021\nITEM 16. FORM 10\u2013K SUMMARY\nThis Item is optional. We may provide summaries in future Form 10-K filings.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nKwikClick, Inc.\nBy: /s/ Fred W. Cooper\nFred W. Cooper, Chief Executive Officer and Director\nDate: April 13, 2022",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1452,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1501,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID: 6117)",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets, December 31, 2021 and 2020",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Operations, Year ended December 31, 2021 and from Inception on February 20, 2020 through December 31, 2020",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Stockholders\u2019 Equity, Year ended December 31, 2021 and from Inception on February 20, 2020 through December 31, 2020",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Cash Flows, Year ended December 31, 2021 and from Inception on February 20, 2020 through December 31, 2020",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements, Year ended December 31, 2021 and from Inception on February 20, 2020 through December 31, 2020",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1570,
+    "end_line": 1589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "/s/ Jeff Roberts\nJeff Roberts\nDirector\nDate: April 13, 2022\n/s/ David Hunt\nDavid Hunt\nDirector\nDate: April 13, 2022\nKWIKCLICK, INC. AND SUBSIDIARY KWIKCLICK, LLC.\nINDEX TO THE CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nKwikClick, Inc.\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of KwikClick, Inc. the Company) as of December 31, 2021, and 2020 and the related consolidated statements of operations, changes in stockholders\u2019 equity (deficit) and cash flows for the year ended December 31, 2021 and from February 20, 2020 (inception) through December 31, 2020, and the related notes (collectively referred to as the consolidated financial statements). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021, and 2020 and the results of its operations and its cash flows for the year ended December 31, 2021 and from February 20, 2020 (inception) through December 31, 2020, in conformity with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1565,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1589,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "ASSETS",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     ""
+    ],
+    [
+     "Cash and Equivalents",
+     "$609,862",
+     "$772,458"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "609,862",
+     "772,458"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed Assets",
+     "",
+     ""
+    ],
+    [
+     "Office Equipment",
+     "4,483",
+     "1,803"
+    ],
+    [
+     "Less Depreciation",
+     "(1,848)",
+     "(1,803)"
+    ],
+    [
+     "Net Fixed Assets",
+     "2,635",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible Assets",
+     "",
+     ""
+    ],
+    [
+     "Patents",
+     "634,317",
+     "195,188"
+    ],
+    [
+     "Less Amortization",
+     "(20,810)",
+     "(4,802)"
+    ],
+    [
+     "Net Intangible Assets",
+     "613,507",
+     "190,386"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$1,226,004",
+     "$962,844"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & STOCKHOLDERS' EQUITY",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$572,808",
+     "$8,037"
+    ],
+    [
+     "Shareholder Loans",
+     "34,489",
+     "34,489"
+    ],
+    [
+     "Accrued Liabilities \u2013 Related Party",
+     "333,333",
+     "-"
+    ],
+    [
+     "Accrued Liabilities",
+     "11,513",
+     "-"
+    ],
+    [
+     "Stock Issuance Liability",
+     "1,086,042",
+     "-"
+    ],
+    [
+     "Taxes Payable",
+     "213",
+     "5,419"
+    ],
+    [
+     "Total Current Liabilities",
+     "2,038,398",
+     "47,945"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "2,038,398",
+     "47,945"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock $0.0001 par value 5,000,000 Series B shares authorized, 0 and 100,000 shares issued and outstanding, respectively",
+     "-",
+     "10"
+    ],
+    [
+     "Common stock\u2014$0.0001 par value 250,000,000 shares authorized, 115,912,605 and 109,692,605 issued and outstanding, respectively",
+     "11,591",
+     "10,969"
+    ],
+    [
+     "Additional paid-in-capital",
+     "1,728,675",
+     "1,086,529"
+    ],
+    [
+     "Accumulated deficit",
+     "(2,552,660)",
+     "(182,609)"
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "(812,394)",
+     "914,899"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS' EQUITY",
+     "$1,226,004",
+     "$962,844"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1639,
+    "end_line": 1689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "As described in Note 5 to the consolidated financial statements, the Company issued common stock for services. Management establishes their estimate for the value of the stock for services using recent sales of common stock.\nThe principal considerations for our determination that performing procedures relating to stock for services is a critical audit matter are due to the material impact it has on the consolidated financial statements.\nAddressing the matter involved performing procedures and evaluating audit evidence in connection with forming our overall opinion on the consolidated financial statements. These procedures included, among others, evaluating the reasonableness of the historical sales of stock used by management to determine the expense related to stock for services.\n/s/ Pinnacle Accountancy Group of Utah\nWe have served as the Company\u2019s auditor since 2021\nPinnacle Accountancy Group of Utah\n(a dba of Heaton & Company, PLLC)\nFarmington, Utah\nApril 14, 2022\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1691,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "From Inception on February 20, 2020 to December 31,"
+    ],
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$102,311",
+     "$-"
+    ],
+    [
+     "Revenue \u2013 Related Party",
+     "150,000",
+     "-"
+    ],
+    [
+     "Total Revenue",
+     "252,311",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "76,671",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "175,640",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative",
+     "3,645",
+     "481"
+    ],
+    [
+     "Amortization and Depreciation",
+     "16,053",
+     "4,802"
+    ],
+    [
+     "Legal and Professional",
+     "163,232",
+     "35,658"
+    ],
+    [
+     "Marketing",
+     "94,122",
+     "-"
+    ],
+    [
+     "Office Supplies",
+     "15,848",
+     "5,987"
+    ],
+    [
+     "Outside Services",
+     "1,679,333",
+     "135,681"
+    ],
+    [
+     "Payroll Expense",
+     "561,732",
+     "-"
+    ],
+    [
+     "Rent",
+     "11,726",
+     "-"
+    ],
+    [
+     "Total Operating Expenses",
+     "2,545,691",
+     "182,609"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "(2,370,051)",
+     "(182,609)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$(2,370,051)",
+     "$(182,609)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Loss per Common Share",
+     "$(0.02)",
+     "$(0.00)"
+    ],
+    [
+     "Basic and Diluted Weighted Average Common Shares Outstanding",
+     "113,964,459",
+     "67,179,318"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1695,
+    "end_line": 1734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY\nFor the Year Ended December 31, 2021 and from Inception on February 20, 2020 through December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1691,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1736,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Totals"
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "Common Stock",
+     "",
+     "Paid in",
+     "Accumulated",
+     "Stockholders'"
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "Shares",
+     "Amount",
+     "Capital",
+     "Deficit",
+     "Equity (Deficit)"
+    ],
+    [
+     "Balance \u2013 February 20, 2020 (Inception)",
+     "-",
+     "$-",
+     "-",
+     "$-",
+     "$-",
+     "$-",
+     "$-"
+    ],
+    [
+     "Merger recapitalization",
+     "100,000",
+     "10",
+     "99,778,759",
+     "9,978",
+     "(41,912)",
+     "",
+     "(31,924)"
+    ],
+    [
+     "Issuance of common shares for cash",
+     "",
+     "",
+     "4,913,846",
+     "491",
+     "628,941",
+     "",
+     "629,432"
+    ],
+    [
+     "Issuance of common shares for conversion of Note Payable",
+     "",
+     "",
+     "5,000,000",
+     "500",
+     "499,500",
+     "",
+     "500,000"
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(182,609)",
+     "(182,609)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance - December 31, 2020",
+     "100,000",
+     "10",
+     "109,692,605",
+     "10,969",
+     "1,086,529",
+     "(182,609)",
+     "914,899"
+    ],
+    [
+     "Cancellation of preferred shares",
+     "(100,000)",
+     "(10)",
+     "-",
+     "-",
+     "10",
+     "-",
+     "-"
+    ],
+    [
+     "Issuance of common shares for services",
+     "",
+     "",
+     "6,000,000",
+     "600",
+     "119,400",
+     "",
+     "120,000"
+    ],
+    [
+     "Stock Options issued for Services",
+     "",
+     "",
+     "-",
+     "-",
+     "302,758",
+     "",
+     "302,758"
+    ],
+    [
+     "Issuance of common shares for cash",
+     "-",
+     "-",
+     "220,000",
+     "22",
+     "219,978",
+     "-",
+     "220,000"
+    ],
+    [
+     "Net Loss",
+     "-",
+     "-",
+     "-",
+     "-",
+     "-",
+     "(2,370,051)",
+     "(2,370,051)"
+    ],
+    [
+     "Balance - December 31, 2021",
+     "-",
+     "$-",
+     "115,912,605",
+     "$11,591",
+     "$1,728,675",
+     "$(2,552,660)",
+     "$(812,394)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1741,
+    "end_line": 1765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY\nFor the Year Ended December 31, 2021 and from Inception on February 20, 2020 through December 31, 2020",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1736,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "From Inception on"
+    ],
+    [
+     "",
+     "Year Ended",
+     "February 20, 2020"
+    ],
+    [
+     "",
+     "December 31,",
+     "to December 31,"
+    ],
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$(2,370,051)",
+     "$(182,609)"
+    ],
+    [
+     "Adjustments to reconcile Net Loss to net cash used by Operating Activities",
+     "",
+     ""
+    ],
+    [
+     "Amortization and Depreciation",
+     "16,053",
+     "4,802"
+    ],
+    [
+     "Stock issued for services",
+     "120,000",
+     "-"
+    ],
+    [
+     "Stock option expense",
+     "302,758",
+     "-"
+    ],
+    [
+     "Change in operating assets and liabilities",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "564,771",
+     "-"
+    ],
+    [
+     "Accrued Liabilities",
+     "11,513",
+     "-"
+    ],
+    [
+     "Accrued Liabilities \u2013 Related Party",
+     "333,333",
+     "-"
+    ],
+    [
+     "Taxes Payable",
+     "(5,206)",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used by Operating Activities",
+     "(1,026,829)",
+     "(177,807)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of Office Equipment",
+     "(2,680)",
+     "-"
+    ],
+    [
+     "Purchase of Patents",
+     "(439,129)",
+     "(195,188)"
+    ],
+    [
+     "Net cash used by Investing Activities",
+     "(441,809)",
+     "(195,188)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Shareholder Loans",
+     "-",
+     "116,000"
+    ],
+    [
+     "Repayment of Shareholder Loans",
+     "-",
+     "(100,000)"
+    ],
+    [
+     "Proceeds from Convertible Note Payable",
+     "-",
+     "500,000"
+    ],
+    [
+     "Proceeds from liability of stock issuance",
+     "1,086,042",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "220,000",
+     "629,432"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by Financing Activities",
+     "1,306,042",
+     "1,145,432"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash increase (decrease) for year",
+     "(162,596)",
+     "772,437"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at the beginning of period",
+     "772,458",
+     "21"
+    ],
+    [
+     "Cash at the end of period",
+     "$609,862",
+     "$772,458"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Interest",
+     "$-",
+     "$-"
+    ],
+    [
+     "Cash Paid for Income Taxes",
+     "$-",
+     "$-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Schedule of Non-Cash Investing and Financing Activities",
+     "",
+     ""
+    ],
+    [
+     "Conversion of Note Payable to shares of common stock",
+     "$-",
+     "$500,000"
+    ],
+    [
+     "Preferred Stock Cancellation",
+     "$10",
+     "$-"
+    ]
+   ],
+   "caption_stack": [
+    "From Inception on"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1771,
+    "end_line": 1823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nInception on February 20, 2020 to December 31, 2020\nNOTE 1. GENERAL ORGANIZATION AND BUSINESS\nKwikClick, Inc., (the Company) a Delaware corporation was organized pursuant to the laws of the State of Delaware on November 16, 1993 under the name of CSL Lighting Manufacturing, Inc. On February 5, 2001, the Company amended its Certificate of Incorporation with the Delaware Secretary of State to change its name to \u201cTBDOne, Inc.\u201d On November 14, 2012, the Company amended its Certificate of Incorporation with the Delaware Secretary of State to change its name to \u201cFortecx, Inc.\u201d to reflect the Company\u2019s business of working with and acquiring and developing software platforms in the foreign exchange trading industry. The results were mixed, and management did not believe that the business line was likely to be successful. As a result, in approximately October 2016, the Company formally divested itself of foreign exchange related software and shifted its interest toward data centers. The results were mixed, and management did not believe that the business line was likely to be successful. In 2020, the Company\u2019s focus turned to its current KwikClick business.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1825,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "From Inception"
+    ],
+    [
+     "",
+     "Year Ended",
+     "February 20, 2020"
+    ],
+    [
+     "Loss Per Share",
+     "December 31,",
+     "to December 31,"
+    ],
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "Net Loss",
+     "$ (2,370,051)",
+     "$ (182,609)"
+    ],
+    [
+     "Basic and Diluted Loss per Common Share",
+     "$ (0.02)",
+     "$ (0.00)"
+    ],
+    [
+     "Basic and Diluted Weighted Average Common Shares",
+     "",
+     ""
+    ],
+    [
+     "Outstanding",
+     "113,964,459",
+     "67,179,318"
+    ]
+   ],
+   "caption_stack": [
+    "From Inception"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1870,
+    "end_line": 1882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Inception on February 20, 2020 to December 31, 2020\nNOTE 1. GENERAL ORGANIZATION AND BUSINESS\u2014Continued\nKwikClick platform. Through December 31, 2021, the Company has not generated significant income from commissions under the SL Agreement. The Company has recognized $150,000 of base license fee revenue with NewAge during the year ended December 31, 2021.\nNOTE 2. SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nAccounting Basis\nThese consolidated financial statements are prepared on the accrual basis of accounting in conformity with accounting principles generally accepted in the United States of America. The Company's fiscal year end is December 31.\nPrinciples of Consolidation\nThe accompanying consolidated financial statements include the accounts of the Company and its wholly owned subsidiary KwikClick LLC. Intercompany transactions and balances have been eliminated in consolidation.\nCash and Cash Equivalents\nCash equivalents include all highly liquid investments with an original maturity of three months or less when purchased.",
+   "prose_after": "Basic earnings (loss) per share is calculated using the weighted average number of common shares outstanding for the periods presented. Diluted earnings (loss) per share is computed using the weighted-average number of common shares and, if dilutive, potential common shares outstanding during the period. The dilutive effect of potential common shares related to convertible preferred stock is not reflected in diluted earnings per share because the Company incurred a net loss and the effect of including these potential common shares in the net loss per share calculations would be anti-dilutive. There are no anti-dilutive instruments outstanding during the periods presented.\nPeriod of Inception on February 20, 2020 to December 31, 2020\nProperty and Equipment\nProperty and equipment are recorded at cost. Expenditures for major betterments and additions are charges to the asset accounts, while replacements, maintenance and repairs which do not improve or extend the lives of the respective assets are charged to expense as incurred.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1884,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "Office Equipment",
+     "$ 4,483",
+     "$ 1,803"
+    ],
+    [
+     "Less Depreciation",
+     "(1,848)",
+     "(1,803)"
+    ],
+    [
+     "",
+     "$ 2,635",
+     "$ -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1896,
+    "end_line": 1904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Basic earnings (loss) per share is calculated using the weighted average number of common shares outstanding for the periods presented. Diluted earnings (loss) per share is computed using the weighted-average number of common shares and, if dilutive, potential common shares outstanding during the period. The dilutive effect of potential common shares related to convertible preferred stock is not reflected in diluted earnings per share because the Company incurred a net loss and the effect of including these potential common shares in the net loss per share calculations would be anti-dilutive. There are no anti-dilutive instruments outstanding during the periods presented.\nPeriod of Inception on February 20, 2020 to December 31, 2020\nProperty and Equipment\nProperty and equipment are recorded at cost. Expenditures for major betterments and additions are charges to the asset accounts, while replacements, maintenance and repairs which do not improve or extend the lives of the respective assets are charged to expense as incurred.\nProperty and Equipment as of December 31, 2021 and 2020 were as follows:",
+   "prose_after": "Intangible Assets\nPatents are recorded at cost. Expenditures for securing the patents are charges to the asset account.\nIntangible Assets as of December 31, 2021 and 2020 were as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1888,
+     "token": "REPEATING_HEADER",
+     "id": 69,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1944,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "Patents",
+     "$ 634,317",
+     "$ 195,188"
+    ],
+    [
+     "Less Amortization",
+     "(20,810)",
+     "(4,802)"
+    ],
+    [
+     "",
+     "$ 613,507",
+     "$ 190,386"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1911,
+    "end_line": 1919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Intangible Assets\nPatents are recorded at cost. Expenditures for securing the patents are charges to the asset account.\nIntangible Assets as of December 31, 2021 and 2020 were as follows:",
+   "prose_after": "Depreciation and Amortization\nDepreciation of property and equipment is computed by the straight-line method using various rates based generally on the useful lives of the assets, which range from five to seven years.\nDuring the year ended December 31, 2021 and period from inception on February 20, 2020 to December 31, 2020, the Company recorded depreciation expense of $45 and $0.\nAmortization of Patents is computed by the straight-line method over the useful lives of the patents, which are twenty years.\nDuring the year ended December 31, 2021 and period from inception on February 20, 2020 to December 31, 2020, the Company recorded amortization expense of $16,008 and $4,802, respectively.\nFuture Amortization Expense",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1888,
+     "token": "REPEATING_HEADER",
+     "id": 69,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1944,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "Amount"
+    ],
+    [
+     "2022",
+     "$ 31,399"
+    ],
+    [
+     "2023",
+     "31,399"
+    ],
+    [
+     "2024",
+     "31,399"
+    ],
+    [
+     "2025",
+     "31,399"
+    ],
+    [
+     "2026",
+     "31,399"
+    ],
+    [
+     "Thereafter",
+     "456,512"
+    ],
+    [
+     "",
+     "$ 613,507"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1932,
+    "end_line": 1944
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Depreciation and Amortization\nDepreciation of property and equipment is computed by the straight-line method using various rates based generally on the useful lives of the assets, which range from five to seven years.\nDuring the year ended December 31, 2021 and period from inception on February 20, 2020 to December 31, 2020, the Company recorded depreciation expense of $45 and $0.\nAmortization of Patents is computed by the straight-line method over the useful lives of the patents, which are twenty years.\nDuring the year ended December 31, 2021 and period from inception on February 20, 2020 to December 31, 2020, the Company recorded amortization expense of $16,008 and $4,802, respectively.\nFuture Amortization Expense",
+   "prose_after": "Period of Inception on February 20, 2020 to December 31, 2020\nRevenue Recognition\nThe Company recognizes revenue under Accounting Standards Codification (\u201cASC\u201d) 606, Revenue from Contracts with Customers. The core principle of the revenue standard is that a Company should recognize revenue to depict the transfer of promised goods or services to customers in an amount that reflects the consideration to which the Company expects to be entitled in exchange for those goods or services. The following five steps are applied to achieve that core principle:\n\u00b7Step 1: Identify the contract with the customer\n\u00b7Step 2: Identify the performance obligations in the contract\n\u00b7Step 3: Determine the transaction price\n\u00b7Step 4: Allocate the transaction price to the performance obligations in the contract\n\u00b7Step 5: Recognize revenue when or as the Company satisfies a performance obligation\nIn order to identify the performance obligations in a contract with a customer, a company must assess the promised goods or services in the contract and identify each promised good or service that is distinct. A performance obligation meets ASC 606\u2019s definition of a \u201cdistinct\u201d good or service if both of the following criteria are met: The customer can benefit from the good or service either on its own or together with other resources that are readily available to the customer, and the company\u2019s promise to transfer the good or service to the customer is separately identifiable from other promises in the contract.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1888,
+     "token": "REPEATING_HEADER",
+     "id": 69,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1944,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "Deferred tax asset:",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "$ 377,280",
+     "$ 38,348"
+    ],
+    [
+     "Valuation allowance",
+     "(377,280)",
+     "(38,348)"
+    ],
+    [
+     "",
+     "$ -",
+     "$ -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2012,
+    "end_line": 2021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company follows ASC 740, Income Taxes, which requires a company to determine whether it is more likely than not that a tax position will be sustained upon examination based upon the technical merits of the position. If the more-likely-than-not threshold is met, a company must measure the tax position to determine the amount to recognize in the financial statements. The Company does not have any material unrecognized tax benefits as of December 31, 2021 or 2020.\nDeferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carryforwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax basis. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax asset will not be realized. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment.",
+   "prose_after": "A reconciliation of amounts obtained by applying Federal tax rates of 21% to pre-tax income to income tax benefit is as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2002,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2041,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "2020"
+    ],
+    [
+     "Book income",
+     "$ (497,711)",
+     "$ (38,348)"
+    ],
+    [
+     "Stock for services",
+     "25,200",
+     ""
+    ],
+    [
+     "Stock options",
+     "63,579",
+     ""
+    ],
+    [
+     "Accrued liabilities \u2013 related party (unissued stock compensation)",
+     "70,000",
+     ""
+    ],
+    [
+     "Change in Valuation Allowance",
+     "338,932",
+     "38,348"
+    ],
+    [
+     "Income tax expense",
+     "$ -",
+     "$ -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2024,
+    "end_line": 2035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "A reconciliation of amounts obtained by applying Federal tax rates of 21% to pre-tax income to income tax benefit is as follows:",
+   "prose_after": "NOTE 5. STOCKHOLDERS' EQUITY\nPreferred Stock\nThe Company is authorized to issue up to 5,000,000 shares of preferred stock, $0.0001 par value, of which 100,000 have been designated as Series B Super Voting Convertible Preferred Stock. The Company's Series B Super Voting Convertible Preferred Stock, par value $0.0001, has voting rights equal to 1,500 common stock votes for each share of Series B Super Voting Convertible Preferred Stock held. The holders of shares of Preferred Stock are entitled to vote on all matters on which the Common Stock is entitled to vote, unless otherwise required by applicable law and except in cases where the rights and privileges of the holders of Common Stock may be altered or diminished. The holders of Preferred Stock are entitled to notice of any stockholders meeting in accordance with the Bylaws of the Company. The Series B Super Voting Convertible Preferred Stock shares are not entitled to dividends or liquidation preferences.\nPeriod of Inception on February 20, 2020 to December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2002,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2041,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "3",
+     "",
+     ""
+    ],
+    [
+     "Expected stock price volatility",
+     "",
+     "250%",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "3.71%",
+     "",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2021"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 26,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "Weighted Average\n\n\n\nExercise Price"
+    ],
+    [
+     "Outstanding at January 1, 2020",
+     "-",
+     "-"
+    ],
+    [
+     "Granted",
+     "-",
+     "-"
+    ],
+    [
+     "Exercised",
+     "-",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "-",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2020",
+     "-",
+     "-"
+    ],
+    [
+     "Granted",
+     "400,000",
+     "$1.00"
+    ],
+    [
+     "Exercised",
+     "-",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "-",
+     "-"
+    ],
+    [
+     "Outstanding at December 31, 2021",
+     "400,000",
+     "$1.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2085,
+    "end_line": 2102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10\u2013K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "STOCKHOLDERS' EQUITY"
+    }
+   },
+   "prose_before": "<TABLE>\n-------\nExpected term (in years)               3\nExpected stock price volatility     250%\nRisk-free interest rate            3.71%\nExpected dividend yield                0\n</TABLE>\nPeriod of Inception on February 20, 2020 to December 31, 2020\nNOTE 5. STOCKHOLDERS' EQUITY\u2014Continued\nThe following table summarizes all stock option activity:",
+   "prose_after": "2021 Equity Incentive Plan\nOur Board of Directors adopted the 2021 Plan to (1) encourage selected employees, officers, directors, consultants and advisers to improve our operations and increase our profitability, (2) encourage selected employees, officers, directors, consultants and advisers to accept or continue employment or association with us, and (3) increase the interest of selected employees, officers, directors, consultants and advisers in our welfare through participation in the growth in value of our common stock. All of our current employees, directors and consultants are eligible to participate in the 2021 Plan.\nNOTE 6. RELATED PARTY TRANSACTIONS\nShareholder Loans Payable\nDuring the year ended December 31, 2021 and period of February 20, 2020 (inception) to December 31, 2020, Fred Cooper, our majority shareholder and CEO, loaned the Company $0 and $10,000, respectively, to fund operations. During the same periods, the Company repaid $0 and $0, respectively.\nFrom February 20, 2020 (Inception) through December 31, 2020, Craig Pickering, a shareholder, loaned the Company $6,000, to fund operations. During the year ended December 31, 2020, the Company repaid $0.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2077,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

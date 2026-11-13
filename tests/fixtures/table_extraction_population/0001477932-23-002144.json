@@ -1,0 +1,6818 @@
+{
+ "accession": "0001477932-23-002144",
+ "cik": "0001443611",
+ "form": "10-K",
+ "filing_date": "2023-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "sing_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "26-1240905"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-K\nMark One\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File No. 000-53425\nSinglePoint Inc. (Exact name of registrant as specified in its charter)",
+   "prose_after": "3104 East Camelback Road #2137\nPhoenix, AZ 85016\n(Address of principal executive offices)\n(888) 682-7464\n(Registrant\u2019s telephone number)\nSecurities registered pursuant to Section 12(g) of the Act:\nCOMMON STOCK, $0.0001\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "9"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments.",
+     "26"
+    ],
+    [
+     "Item 2.",
+     "Properties.",
+     "26"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings.",
+     "27"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures.",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "29"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "30"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "30"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "37"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data.",
+     "37"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosures.",
+     "38"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures.",
+     "38"
+    ],
+    [
+     "Item 9B.",
+     "Other Information.",
+     "38"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdiction that Prevent Inspections.",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "39"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "43"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "45"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "49"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services.",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules.",
+     "52"
+    ],
+    [
+     "Item 16.",
+     "Form 10\u2013K Summary.",
+     "52"
+    ],
+    [
+     "Signatures",
+     "",
+     "53"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarterly period",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "Fiscal year ended December 31, 2022:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.2150",
+     "$",
+     "0.0720"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "0.1770",
+     "$",
+     "0.0740"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "0.1830",
+     "$",
+     "0.0740"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.1170",
+     "$",
+     "0.0510"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal year ended December 31, 2021:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "6.6602",
+     "$",
+     "0.1950"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.4600",
+     "$",
+     "0.5000"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "0.5599",
+     "$",
+     "0.1801"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.2300",
+     "$",
+     "0.0503"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "On January 9, 2023, the Company announced that it and Direct Solar America have resolved their claims against Pablo Diaz Curiel, Kjelsey Johnson, Brian Odle, Elijah Chaffino, Christina Berume and Jessica Hernandez in the United States District Court, District of Arizona. The claims filed by Pablo Diaz, individually and derivatively on behalf of SinglePoint Direct Solar, LLC, JAGUSA Holdings, LLC, Elijah Chaffino, Kjelsey Johnson, Brian Odle, Direct Solar, LLC and AI Live Transfers against the Company, SinglePoint Direct Solar, LLC, Greg Lambrecht, Wil Ralston and Corey Lambrecht filed in the United States District Court, District of Arizona have also been resolved. The Company and SinglePoint Direct Solar, LLC maintains its claims against SIRC and USA Solar Network. The Company, SinglePoint Direct Solar, LLC and Pablo Diaz Curiel have also resolved the arbitration matter pending before the American Arbitration Association, whereby Mr. Diaz brought wage related claims.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nPART II\nItem 5. Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nMarket Information\nThe Common Stock of the Company is currently trading on the Pink Sheets under the symbol \u201cSING.\u201d The following table sets forth the high and low bid prices relating to our common stock on a quarterly basis for the periods indicated. These quotations reflect inter-dealer prices without retail mark-up, mark-down, or commissions, and may not reflect actual transactions.",
+   "prose_after": "On March 26, 2021, we affected a 1 for 75 reverse stock splits of our common stock. At the effective time of the reverse stock split, every 75 shares of issued and outstanding common stock were converted into one (1) share of issued and outstanding common stock. The number of authorized shares and the par value per share of the common stock and the number of authorized or issued and outstanding shares of the Company\u2019s preferred stock remained unchanged. The reverse stock split did not cause an adjustment to the par value or the authorized shares of the common stock.\nHolders\nAs of December 31, 2022, there were 114,127,911 shares of common stock outstanding, which were held by approximately 199 record holders. In addition, there were 75,725,981 shares of our Class A Convertible Preferred Stock outstanding, which were held by ten record holders, 19 shares of our Class C Convertible Preferred Stock outstanding, which were held by one record holder; 2,000 shares of our Class D Convertible Preferred Stock outstanding, which were held by one record holder, and 1,920 shares of our Class E Convertible Preferred Stock outstanding, which were held by one record holder.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Subsidiary",
+     "Current Ownership",
+     "",
+     "",
+     "Business",
+     "Date of Acquisition"
+    ],
+    [
+     "The Boston Solar Company LLC",
+     "",
+     "80.1",
+     "%",
+     "Solar",
+     "April 2022"
+    ],
+    [
+     "Box Pure Air, LLC",
+     "",
+     "51",
+     "%",
+     "Air Purification",
+     "Feb 2021"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 700,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "You should read the following discussion together with our consolidated financial statements and the related notes included elsewhere in this prospectus. This discussion contains forward-looking statements based upon current expectations that involve risks and uncertainties. Our actual results may differ materially from those anticipated in these forward-looking statements as a result of various factors, including those set forth under the section titled \u201cRisk Factors,\u201d \u201cCautionary Note Regarding Forward-Looking Statements\u201d or in other parts of this prospectus. Our historical results are not necessarily indicative of the results that may be expected for any period in the future.\nOverview\nWe are focused on providing renewable energy solutions and energy-efficient applications to drive better health and living. We conduct our solar operations primarily through our Boston Solar subsidiary and we conduct our air purification operations through our Box Pure Air subsidiary. We also have ownership interests in businesses we consider not to be core to our overall operations. The Company plans to expand its footprint and market share in the residential solar, small commercial solar and indoor air purification business through acquisition and organic internal growth. We strive to create long-term value for our stockholders by increasing market penetration for our subsidiaries, growing revenue and improving cash flow. The Company is actively looking for and executing on strategic initiatives to sell, partner with or spin-off other non-renewable energy related assets.\nThe subsidiaries of Singlepoint in our core businesses are as follows:",
+   "prose_after": "The subsidiaries of Singlepoint in our non-core businesses are as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Subsidiary",
+     "Current Ownership",
+     "",
+     "",
+     "Business",
+     "Date of Acquisition"
+    ],
+    [
+     "Discount Indoor Garden Supply, Inc.",
+     "",
+     "90",
+     "%",
+     "Agriculture",
+     "May 2017"
+    ],
+    [
+     "EnergyWyze LLC",
+     "",
+     "100",
+     "%",
+     "Solar",
+     "Feb 2021"
+    ],
+    [
+     "ShieldSaver, LLC",
+     "",
+     "51",
+     "%",
+     "Vehicle Repair Tracking",
+     "January 2018"
+    ],
+    [
+     "Singlepoint Direct Solar, LLC",
+     "",
+     "51",
+     "%",
+     "Solar",
+     "May 2018"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "The subsidiaries of Singlepoint in our non-core businesses are as follows:",
+   "prose_after": "Recent Developments\nApril 2022 Capital Raises\nOn April 5, 2022, we entered a Securities Purchase Agreement (the \u201cGHS Purchase Agreement\u201d) with GHS Investments, LLC (\u201cGHS\u201d), whereby GHS agreed to purchase, in three separate tranches, up to $1.5 million of the Company\u2019s Class E Preferred Stock. The first tranche (the \u201cInitial Closing Date\u201d), which closed upon execution of the GHS Purchase Agreement, was for the purchase 707 shares of Class E Preferred Stock for $707,000. The second tranche, which closed 30 days after the Initial Closing Date, was for the purchase of 500 shares of Class E Preferred Stock for $500,000, and the third tranche, which closed approximately 60 days following the Initial Closing Date, was for the purchase of 293 shares of Class E Preferred Stock for $293,000. In addition, the Company issued to GHS (i) an additional 50 shares of Class E Preferred Stock on the Initial Closing Date as an equity incentive and (ii) warrants to purchase 4,129,091 shares of the Company\u2019s common stock at an exercise price of $0.11 per share for a period of five years.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 692,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "12 Months ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "21,786,149",
+     "",
+     "$",
+     "808,902",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "6,324,867",
+     "",
+     "$",
+     "72,156",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "$",
+     "13,109,333",
+     "",
+     "$",
+     "5,006,718",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "$",
+     "(2,418,067)",
+     "",
+     "$",
+     "(829,385)",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(9,202,533)",
+     "",
+     "$",
+     "(5,763,947)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "12 Months ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 754,
+    "end_line": 766
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "On November 3, 2022, the Company entered a Securities Purchase Agreement (the \u201cPurchase Agreement\u201d) with GHS, whereby GHS agreed to purchase, 350 shares of the Company\u2019s Class E Preferred Stock in two equal tranches of $175,000. The first tranche (the \u201cInitial Closing Date\u201d), occurred promptly upon execution of the Purchase Agreement, is the purchase of 175 shares of Class E Preferred Stock for $175,000. The second tranche, scheduled for 15 trading days following the Initial Closing Date, upon satisfaction of the applicable deliveries and closing conditions set forth in the Purchase Agreement, is the purchase of 175 shares of Class E Preferred Stock for $175,000. In addition the Company issued GHS ten shares of Class E Preferred Stock upon the Initial Closing Date as an equity incentive, and agreed to issue ten shares of Class E Preferred Stock upon the closing of the second tranche as an equity incentive.\nOn November 3, 2022 the Company filed with the State of Nevada, an Amended and Restated Certificate of Designation for the Class E Preferred Stock to increase the number of authorized shares of Class E Preferred Stock to 2,500. All other terms of the Certificate of Designation for the Class E Preferred Stock remain as originally provided.\nResults from Operations\nYear ended December 31, 2022, as compared to the year ended December 31, 2021\nThe following tables set forth our consolidated results of operations for the periods presented. As noted above, we acquired Boston Solar on April 21, 2022, and accordingly, our results of operations for a portion of the twelve months ended December 31, 2022 and the entirety of the twelve-month-period ended December 31, 2021 do not include the operations of Boston Solar. The period-to-period comparison of results is not necessarily indicative of results for future periods.",
+   "prose_after": "Revenue. For the years ended December 31, 2022, and 2021, we generated revenue of $21,786,149 and $808,902, respectively. The increase was due primarily to the inclusion of Boston Solar revenues and increased sales of our air purification systems.\nCost of Revenue. For the years ended December 31, 2022, and 2021, cost of revenue was $15,461,282 and $736,746, respectively. The increase was due primarily to the inclusion of Boston Solar costs and increased sales of our air purification systems with corresponding increases in cost of revenue.\nGross Profit. As a result of the foregoing, our gross profit was $6,324,867 for the year ended December 31, 2022, compared with $72,156, for the year ended December 31, 2021. The increase was due primarily to the inclusion of Boston Solar revenues and increased sales of our air purification systems.\nOperating Expenses.For the years ended December 31, 2022, and 2021, total operating expenses were $13,109,333 and $5,006,718, respectively. The increase was primarily due to the inclusion of Boston Solar operations, and an increase in professional and legal fees.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 783,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ending\n\nDecember 31,\n\n2022",
+     "",
+     "",
+     "Year Ending\n\nDecember 31,\n\n2021",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(4,164,983)",
+     "",
+     "$",
+     "(4,831,629)",
+     ""
+    ],
+    [
+     "Net cash provided used in investing activities",
+     "$",
+     "(1,522,242)",
+     "",
+     "$",
+     "(44,700)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "6,059,982",
+     "",
+     "$",
+     "4,869,341",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "$",
+     "372,757",
+     "",
+     "$",
+     "(6,988)",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "$",
+     "191,485",
+     "",
+     "$",
+     "198,473",
+     ""
+    ],
+    [
+     "Cash at end of year",
+     "$",
+     "564,242",
+     "",
+     "$",
+     "191,485",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 819,
+    "end_line": 833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Contractual Obligations and Future Cash Requirements\nOur principal contractual obligations expected to give rise to material cash requirements consist of non-cancelable leases for our leased facilities, vehicles, tools and current short term as well as long term debt obligations as well as convertible notes. We lease properties in Boston, Massachusetts and Phoenix, Arizona from an unrelated party under non-cancelable operating leases dating through 2027 and 2022, respectively. The monthly operating lease related to Boston Solar for real estate are from $4,372 to $18,466 and end September 2027. Vehicle leases range from $644 to $973 per month, and their end dates from December 2023 to September 2026. Tools lease payments are $1,285 per month and end March 2027. We believe our liquidity resources, our cash on hand and cash generated by operations will be sufficient to cover these obligations as well as the future cash requirements of being a public company.\nConsolidated Statement of Cash Flow Data:",
+   "prose_after": "Operating Activities\nCash used in operating activities \u2013 For the year ended December 31, 2022, we had $4,164,983 net cash used in operating activities which was due primarily from our net loss attributable to Singlepoint stockholders of $8,852,677, partially offset by non-cash expenses related to goodwill impairment charge ($1,315,973), amortization of debt discounts ($1,376,934), and common stock issued for services ($1,502,513). For the year ended December 31, 2021, $4,831,629 net cash used in operating activities was due primarily from our net loss attributable to Singlepoint stockholders of $5,373,015.\nInvesting Activities\nCash flow provided by (used in) investing activities \u2013 For the year ended December 31, 2022, net cash used in investing activities was $1,522,242, primarily due to the Boston Solar acquisition, net of cash acquired. For the year ended December 31, 2021, net cash used in investing activities was $44,700 related to acquisition related expenses and purchases of property, plant, and equipment.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Index to Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of the Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2022 and 2021",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2022 and 2021",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the Years Ended December 31, 2022 and 2021",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2022 and 2021",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Index to Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The Company recognizes deferred tax assets (future tax benefits) and liabilities for the expected future tax consequences of temporary differences between the book carrying amounts and the tax basis of assets and liabilities. The deferred tax assets and liabilities represent the expected future tax return benefits or consequences of those differences, which are expected to be either deductible or taxable when the assets and liabilities are recovered or settled.\nRecent Accounting Pronouncements\nSee Note 2 of the consolidated financial statements for discussion of Recent Accounting Pronouncements.\nOff-Balance Sheet Arrangements\nWe are not currently a party to, or otherwise involved with, any off-balance sheet arrangements that have or are reasonably likely to have a current or future material effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources.\nRecently Adopted Accounting Standards\nNone.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nPursuant to Item 305(e) of Regulation S-K (\u00a7 229.305(e)), the Company is not required to provide the information required by this Item as it is a \u201csmaller reporting company,\u201d as defined by Rule 229.10(f)(1).\nItem 8. Financial Statements and Supplementary Data.",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nBoard of Directors and Shareholders of\nSinglepoint, Inc.\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Singlepoint, Inc. (the \u201cCompany\u201d) as of December 31, 2022 and 2021, and the related consolidated statements of operations, stockholders\u2019 equity (deficit), and cash flows for each of the two years in the period ended December 31, 2022, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the consolidated financial position of the Company as of December 31, 2022 and 2021, and the consolidated results of its operations and its cash flows for each of the two years in the period ended December 31, 2022, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 of the notes to consolidated financial statements, the Company expects to continue incurring operating losses and generating negative cash flows from operations for the foreseeable future. Additionally, the Company has a significant accumulated deficit and net loss for the period. These conditions raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans regarding these matters are also described in Note 1. The consolidated financial statements do not include any adjustments that might be necessary should the Company be unable to continue as a going concern.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 864,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 891,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SINGLEPOINT INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2022",
+     "",
+     "",
+     "December 31,\n\n2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "564,242",
+     "",
+     "$",
+     "191,485",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "3,034,070",
+     "",
+     "",
+     "90,763",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "261,622",
+     "",
+     "",
+     "40,847",
+     ""
+    ],
+    [
+     "Inventory, net",
+     "",
+     "2,481,384",
+     "",
+     "",
+     "70,250",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "404,849",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes receivable from related party",
+     "",
+     "220,456",
+     "",
+     "",
+     "63,456",
+     ""
+    ],
+    [
+     "Current portion of deferred compensation, net of discount",
+     "",
+     "-",
+     "",
+     "",
+     "60,373",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "6,966,623",
+     "",
+     "",
+     "517,174",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, net",
+     "",
+     "232,873",
+     "",
+     "",
+     "54,105",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "1,295,690",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Investment, at fair value",
+     "",
+     "134,376",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "3,291,242",
+     "",
+     "",
+     "34,485",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "7,199,567",
+     "",
+     "",
+     "1,702,119",
+     ""
+    ],
+    [
+     "Deferred compensation, net of current portion",
+     "",
+     "-",
+     "",
+     "",
+     "60,374",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "19,120,371",
+     "",
+     "$",
+     "2,368,257",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "4,797,456",
+     "",
+     "$",
+     "231,816",
+     ""
+    ],
+    [
+     "Accrued expenses, including accrued officer salaries",
+     "",
+     "1,479,656",
+     "",
+     "",
+     "512,214",
+     ""
+    ],
+    [
+     "Current portion of convertible notes payable, net of debt discount",
+     "",
+     "6,748,396",
+     "",
+     "",
+     "10,500",
+     ""
+    ],
+    [
+     "Unearned revenue",
+     "",
+     "4,927,240",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease liability, current portion",
+     "",
+     "272,575",
+     "",
+     "",
+     "42,164",
+     ""
+    ],
+    [
+     "Advances from related party",
+     "",
+     "657,404",
+     "",
+     "",
+     "415,068",
+     ""
+    ],
+    [
+     "Accrued preferred share dividends",
+     "",
+     "224,760",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current portion of notes payable, net of debt discount",
+     "",
+     "2,464,823",
+     "",
+     "",
+     "1,020,350",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "21,572,310",
+     "",
+     "",
+     "2,232,112",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible notes payable, net of current portion",
+     "",
+     "840,474",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Lease liability, net of current portion",
+     "",
+     "1,039,207",
+     "",
+     "",
+     "5,353",
+     ""
+    ],
+    [
+     "Advances from related party, net of current portion",
+     "",
+     "400,897",
+     "",
+     "",
+     "602,363",
+     ""
+    ],
+    [
+     "Long-term notes payable, net of debt discount",
+     "",
+     "145,357",
+     "",
+     "",
+     "767,160",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "23,998,245",
+     "",
+     "",
+     "3,606,988",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (Note 9)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Undesignated preferred stock, par value $0.0001; 19,992,500 and 39,995,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized as of December 31, 2022, and December 31, 2021, respectively;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A convertible preferred stock, par value $0.0001; 80,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized; 75,725,981 and 56,353,015 shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "as of December 31, 2022 and December 31, 2021, respectively",
+     "",
+     "7,573",
+     "",
+     "",
+     "5,635",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class B convertible preferred stock, par value $0.0001; 1,500 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized; 0 and 48 shares issued and outstanding as of December 31, 2022",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "and December 31, 2021, respectively",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class C convertible preferred stock, par value $0.0001; 1,500 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized; 19 and 760 shares issued and outstanding as of December 31, 2022",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "and December 31, 2021, respectively",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class D convertible preferred stock, par value $0.0001; 2,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized; 2,000 shares issued and outstanding as of December 31, 2022",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "and December 31, 2021, respectively",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class E convertible preferred stock, par value $0.0001; 2,500 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized; 1,920 and no shares issued and outstanding as of December 31, 2022",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "and December 31, 2021, respectively",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.0001; 5,000,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "114,127,911 and 58,785,924 shares issued and outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "as of December 31, 2022, and December 31, 2021, respectively",
+     "",
+     "11,413",
+     "",
+     "",
+     "5,879",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "90,127,315",
+     "",
+     "",
+     "85,853,388",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(95,236,339)",
+     "",
+     "",
+     "(86,158,902)",
+     ""
+    ],
+    [
+     "Total Singlepoint Inc. stockholders' equity (deficit)",
+     "",
+     "(5,090,038)",
+     "",
+     "",
+     "(294,000)",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "212,164",
+     "",
+     "",
+     "(944,731)",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity (Deficit)",
+     "",
+     "(4,877,874)",
+     "",
+     "",
+     "(1,238,731)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Equity (Deficit)",
+     "$",
+     "19,120,371",
+     "",
+     "$",
+     "2,368,257",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SINGLEPOINT INC. AND SUBSIDIARIES",
+    "CONSOLIDATED BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 943,
+    "end_line": 1045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We identified the evaluation of the impairment analysis for goodwill as a critical audit matter because of the significant estimates and assumptions management used in determining the fair value of the reporting unit which is based on market indicators. Performing audit procedures to evaluate the reasonableness of these estimates and assumptions required a high degree of auditor judgment and an increased extent of effort.\nHow the Critical Audit Matter Was Addressed in the Audit\nOur audit procedures related to the following:\n- Testing management\u2019s process for developing the fair value estimate.\n- Evaluating the market indicators used by management in developing their fair value estimate.\n- Testing the completeness and accuracy of underlying data used in the fair value estimate.\n/s/ Turner, Stone & Company, L.L.P.\nDallas, Texas\nMarch 31, 2023\nWe have served as the Company\u2019s auditor since 2017.",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 942,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SINGLEPOINT INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2022",
+     "",
+     "",
+     "December 31,\n\n2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "$",
+     "21,786,149",
+     "",
+     "$",
+     "808,902",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "15,461,282",
+     "",
+     "",
+     "736,746",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "6,324,867",
+     "",
+     "",
+     "72,156",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expense (\"SG&A\")",
+     "",
+     "13,109,333",
+     "",
+     "",
+     "5,006,718",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS) FROM OPERATIONS",
+     "",
+     "(6,784,466)",
+     "",
+     "",
+     "(4,934,562)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(234,169)",
+     "",
+     "",
+     "(152,678)",
+     ""
+    ],
+    [
+     "Amortization of debt discounts",
+     "",
+     "(1,376,934)",
+     "",
+     "",
+     "(16,772)",
+     ""
+    ],
+    [
+     "Impairment of Goodwill",
+     "",
+     "(1,315,973)",
+     "",
+     "",
+     "(680,772)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "384,008",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on settlement of debt",
+     "",
+     "125,001",
+     "",
+     "",
+     "513,909",
+     ""
+    ],
+    [
+     "Warrant expense",
+     "",
+     "-",
+     "",
+     "",
+     "(416,445)",
+     ""
+    ],
+    [
+     "Gain (loss) on change in fair value of derivative liability and equity securities",
+     "",
+     "-",
+     "",
+     "",
+     "(76,627)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "(2,418,067)",
+     "",
+     "",
+     "(829,385)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS) BEFORE INCOME TAXES",
+     "",
+     "(9,202,533)",
+     "",
+     "",
+     "(5,763,947)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)",
+     "",
+     "(9,202,533)",
+     "",
+     "",
+     "(5,763,947)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss (income) attributable to non-controlling interests",
+     "",
+     "349,856",
+     "",
+     "",
+     "390,932",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS) ATTRIBUTABLE TO SINGLEPOINT INC. STOCKHOLDERS",
+     "$",
+     "(8,852,677)",
+     "",
+     "$",
+     "(5,373,015)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per share - basic and diluted",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "(0.12)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic and diluted",
+     "",
+     "89,429,042",
+     "",
+     "",
+     "43,847,537",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SINGLEPOINT INC. AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF OPERATIONS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1048,
+    "end_line": 1103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SINGLEPOINT INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock Class A Par Value $0.0001",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock Class B Par Value $0.0001",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock Class C Par Value $0.0001",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock Class D Par Value $0.0001",
+     "",
+     "",
+     "",
+     "Preferred Stock Class E Par Value $0.0001",
+     "",
+     "",
+     "",
+     "Common Stock Par Value $0.0001",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of\n\nShares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "Number of Shares",
+     "",
+     "Amount",
+     "",
+     "Number of Shares",
+     "",
+     "Amount",
+     "",
+     "Number\n\nof\n\nShares",
+     "",
+     "Amount",
+     "",
+     "Additional\n\n paid-in Capital",
+     "",
+     "",
+     "Accumulated\n\nDeficit",
+     "",
+     "",
+     "Non-controlling Interest",
+     "",
+     "",
+     "Stockholders'\n\n Equity\n\n(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "60,000,000",
+     "",
+     "$",
+     "6,000",
+     "",
+     "",
+     "408",
+     "",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "33,075,711",
+     "$",
+     "3,308",
+     "$",
+     "78,132,202",
+     "",
+     "$",
+     "(80,785,887)",
+     "",
+     "$",
+     "(553,799)",
+     "",
+     "$",
+     "(3,198,176)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common shares for services",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "335,106",
+     "",
+     "34",
+     "",
+     "94,974",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "95,008",
+     ""
+    ],
+    [
+     "Issuance of common shares for services previously accrued",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "87,776",
+     "",
+     "9",
+     "",
+     "51,266",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "51,275",
+     ""
+    ],
+    [
+     "Issuance of common shares for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "4,210,577",
+     "",
+     "421",
+     "",
+     "540,478",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "540,899",
+     ""
+    ],
+    [
+     "Issuance of common shares for acquisition",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "168,350",
+     "",
+     "17",
+     "",
+     "414,134",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "414,151",
+     ""
+    ],
+    [
+     "Issuance of common shares for principal and accrued interest on notes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,550,485",
+     "",
+     "255",
+     "",
+     "3,444,902",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,445,157",
+     ""
+    ],
+    [
+     "Issuance of preferred shares for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "760",
+     "",
+     "",
+     "-",
+     "",
+     "2,000",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "2,760,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,760,000",
+     ""
+    ],
+    [
+     "Conversion of preferred shares",
+     "",
+     "(3,646,985)",
+     "",
+     "",
+     "(365)",
+     "",
+     "",
+     "(360)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,913,576",
+     "",
+     "1,091",
+     "",
+     "(444)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "282",
+     ""
+    ],
+    [
+     "Warrants converted to common shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,700,000",
+     "",
+     "570",
+     "",
+     "415,876",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "416,446",
+     ""
+    ],
+    [
+     "Rounding adjustment in connection with reverse split",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,744,343",
+     "",
+     "174",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "174",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,373,015)",
+     "",
+     "",
+     "(390,932)",
+     "",
+     "",
+     "(5,763,947)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "56,353,015",
+     "",
+     "$",
+     "5,635",
+     "",
+     "",
+     "48",
+     "",
+     "$",
+     "-",
+     "",
+     "760",
+     "",
+     "",
+     "-",
+     "",
+     "2,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "58,785,924",
+     "$",
+     "5,879",
+     "$",
+     "85,853,388",
+     "",
+     "$",
+     "(86,158,902)",
+     "",
+     "$",
+     "(944,731)",
+     "",
+     "$",
+     "(1,238,731)",
+     ""
+    ],
+    [
+     "Issuance of common shares for services and closing costs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "14,881,508",
+     "",
+     "1,488",
+     "",
+     "1,510,025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,502,513",
+     ""
+    ],
+    [
+     "Issuance of common shares for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,289,423",
+     "",
+     "1,029",
+     "",
+     "766,204",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "767,233",
+     ""
+    ],
+    [
+     "Issuance of common shares related to debt issuance",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "2,620,545",
+     "",
+     "262",
+     "",
+     "(262)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common shares for convertible note",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "672,830",
+     "",
+     "67",
+     "",
+     "45,210",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "45,277",
+     ""
+    ],
+    [
+     "Issuance of common shares for investment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,066,477",
+     "",
+     "107",
+     "",
+     "134,269",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "134,376",
+     ""
+    ],
+    [
+     "Issuance of preferred shares for cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,920",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "1,830,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,830,000",
+     ""
+    ],
+    [
+     "Conversion of preferred shares",
+     "",
+     "(627,034)",
+     "",
+     "",
+     "(62)",
+     "",
+     "",
+     "(48)",
+     "",
+     "",
+     "-",
+     "",
+     "(741)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "25,811,204",
+     "",
+     "2,581",
+     "",
+     "(2,519)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0",
+     ""
+    ],
+    [
+     "Issuance of preferred shares",
+     "",
+     "20,000,000",
+     "",
+     "",
+     "2,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Accrued preferred stock dividends",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(224,760)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(224,760)",
+     ""
+    ],
+    [
+     "Effect of acquisition on non-controlling interest",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,506,751",
+     "",
+     "",
+     "1,506,751",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(8,852,677)",
+     "",
+     "",
+     "(349,856)",
+     "",
+     "",
+     "(9,202,533)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "75,725,981",
+     "",
+     "$",
+     "7,573",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "19",
+     "",
+     "",
+     "-",
+     "",
+     "2,000",
+     "",
+     "-",
+     "",
+     "1,920",
+     "",
+     "-",
+     "",
+     "114,127,911",
+     "$",
+     "11,413",
+     "$",
+     "90,127,315",
+     "",
+     "$",
+     "(95,236,339)",
+     "",
+     "$",
+     "212,164",
+     "",
+     "$",
+     "(4,877,874)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SINGLEPOINT INC. AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF STOCKHOLDERS' EQUITY (DEFICIT)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1106,
+    "end_line": 1352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SINGLEPOINT INC. AND SUBSIDIARIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Year Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2022",
+     "",
+     "",
+     "December 31,\n\n2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Singlepoint Inc. stockholders",
+     "$",
+     "(8,852,677)",
+     "",
+     "$",
+     "(5,373,015)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss attributable to non-controlling interests",
+     "",
+     "(349,856)",
+     "",
+     "",
+     "(390,932)",
+     ""
+    ],
+    [
+     "Common stock issued for services",
+     "",
+     "1,502,513",
+     "",
+     "",
+     "146,283",
+     ""
+    ],
+    [
+     "Preferred stock issued for services",
+     "",
+     "2,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "178,958",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "216,623",
+     "",
+     "",
+     "44,763",
+     ""
+    ],
+    [
+     "Amortization of intangibles",
+     "",
+     "312,543",
+     "",
+     "",
+     "14,520",
+     ""
+    ],
+    [
+     "Amortization of debt discounts",
+     "",
+     "1,376,934",
+     "",
+     "",
+     "16,772",
+     ""
+    ],
+    [
+     "Amortization of deferred compensation",
+     "",
+     "120,747",
+     "",
+     "",
+     "105,652",
+     ""
+    ],
+    [
+     "(Gain) loss on change in fair value of equity securities",
+     "",
+     "-",
+     "",
+     "",
+     "76,627",
+     ""
+    ],
+    [
+     "Goodwill impairment charge",
+     "",
+     "1,315,973",
+     "",
+     "",
+     "680,772",
+     ""
+    ],
+    [
+     "(Gain) loss on debt settlement",
+     "",
+     "(125,001)",
+     "",
+     "",
+     "(513,909)",
+     ""
+    ],
+    [
+     "Common stock issued for warrants",
+     "",
+     "-",
+     "",
+     "",
+     "416,444",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities (net of acquisitions):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(1,272,320)",
+     "",
+     "",
+     "(87,395)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(9,812)",
+     "",
+     "",
+     "(36,013)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(844,213)",
+     "",
+     "",
+     "(70,250)",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "(160,549)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "1,364,352",
+     "",
+     "",
+     "(13,546)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(53,062)",
+     "",
+     "",
+     "151,597",
+     ""
+    ],
+    [
+     "Unearned revenue",
+     "",
+     "1,122,013",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(4,164,983)",
+     "",
+     "",
+     "(4,831,629)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions, net of cash acquired",
+     "",
+     "(1,272,320)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for acquisition related expenses",
+     "",
+     "-",
+     "",
+     "",
+     "(25,000)",
+     ""
+    ],
+    [
+     "Cash paid for notes receivable from related party",
+     "",
+     "(157,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for property",
+     "",
+     "(92,922)",
+     "",
+     "",
+     "(19,700)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(1,522,242)",
+     "",
+     "",
+     "(44,700)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "767,233",
+     "",
+     "",
+     "540,899",
+     ""
+    ],
+    [
+     "Proceeds from advances from related party",
+     "",
+     "275,878",
+     "",
+     "",
+     "234,824",
+     ""
+    ],
+    [
+     "Proceeds from notes payable",
+     "",
+     "552,085",
+     "",
+     "",
+     "1,811,070",
+     ""
+    ],
+    [
+     "Proceeds from issuance of convertible notes",
+     "",
+     "3,777,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payments on advances to related party",
+     "",
+     "(185,470)",
+     "",
+     "",
+     "(64,569)",
+     ""
+    ],
+    [
+     "Payments on convertible notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "(75,000)",
+     ""
+    ],
+    [
+     "Payments on capital lease obligations",
+     "",
+     "(202,982)",
+     "",
+     "",
+     "(51,365)",
+     ""
+    ],
+    [
+     "Payments on notes payable",
+     "",
+     "(754,262)",
+     "",
+     "",
+     "(286,518)",
+     ""
+    ],
+    [
+     "Proceeds from sale of preferred stock - Class C",
+     "",
+     "-",
+     "",
+     "",
+     "760,000",
+     ""
+    ],
+    [
+     "Proceeds from sale of preferred stock - Class D",
+     "",
+     "-",
+     "",
+     "",
+     "2,000,000",
+     ""
+    ],
+    [
+     "Proceeds from sale of preferred stock - Class E",
+     "",
+     "1,830,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "6,059,982",
+     "",
+     "",
+     "4,869,341",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH",
+     "",
+     "372,757",
+     "",
+     "",
+     "(6,988)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "191,485",
+     "",
+     "",
+     "198,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "564,242",
+     "",
+     "$",
+     "191,485",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOWS INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "169,055",
+     "",
+     "$",
+     "20,853",
+     ""
+    ],
+    [
+     "Income tax paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recognition of new right of use assets and lease liabilities",
+     "$",
+     "66,969",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued for purchase of investment",
+     "$",
+     "134,376",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued for conversion of debt and accrued interest",
+     "$",
+     "45,277",
+     "",
+     "$",
+     "3,172,918",
+     ""
+    ],
+    [
+     "Conversion of preferred stock to common stock",
+     "$",
+     "2,581",
+     "",
+     "$",
+     "282",
+     ""
+    ],
+    [
+     "Inventory transferred to related party for note receivable",
+     "$",
+     "-",
+     "",
+     "$",
+     "63,456",
+     ""
+    ],
+    [
+     "Investment in Jacksam transferred for reduction in related party debt",
+     "$",
+     "-",
+     "",
+     "$",
+     "547,010",
+     ""
+    ],
+    [
+     "Non-cash portion of termination agreement removing accrued compensation and related party debt in exchange for stock and new related party note",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,234,052",
+     ""
+    ],
+    [
+     "Deferred stock compensation recognized for acquisitions",
+     "$",
+     "-",
+     "",
+     "$",
+     "450,000",
+     ""
+    ],
+    [
+     "Discount recognized on deferred stock compensation for acquisitions",
+     "$",
+     "-",
+     "",
+     "$",
+     "110,402",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SINGLEPOINT INC. AND SUBSIDIARIES",
+    "CONSOLIDATED STATEMENTS OF CASH FLOWS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1355,
+    "end_line": 1457
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nSINGLEPOINT INC. AND SUBSIDIARIES\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 - ORGANIZATION AND NATURE OF BUSINESS\nCorporate History\nOn May 14, 2019, Singlepoint Inc. (\u201cSinglepoint\u201d or \u201cthe Company\u201d) established a subsidiary, Singlepoint Direct Solar LLC (\u201cDirect Solar America\u201d), completing the acquisition of certain assets of Direct Solar LLC and AI Live Transfers LLC. The Company owns Fifty One Percent (51%) of the membership interests of Direct Solar America. On January 26, 2021, the Company acquired 100% ownership of EnergyWyze, LLC, a limited liability company (\u201cEnergyWyze\u201d). On February 26, 2021, the Company purchased 51% ownership of Box Pure Air, LLC, (\u201cBox Pure Air\u201d). On April 21, 2022 the Company purchased 80.1% membership interests in The Boston Solar Company, LLC (\u201cBoston Solar\u201d).\nBusiness\nThe Company is a diversified holding company principally engaged through its subsidiaries on providing renewable energy solutions and energy-efficient applications to drive better health and living. Our primary focus is on sustainability by providing an integrated solar energy solution for our customers and clean environment solutions through our air purification business. We conduct our solar operations primarily through our subsidiary, Boston Solar, in which we hold an 80.1% equity interest.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2022",
+     "",
+     "Year Ended December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A Preferred Stock",
+     "",
+     "1,893,149,525",
+     "",
+     "1,408,825,375"
+    ],
+    [
+     "Class B Preferred Stock",
+     "",
+     "-",
+     "",
+     "314,754"
+    ],
+    [
+     "Class C Preferred Stock, including accrued dividends",
+     "",
+     "688,598",
+     "",
+     "747,540"
+    ],
+    [
+     "Class D Preferred Stock, Including accrued dividends",
+     "",
+     "47,352,673",
+     "",
+     "1,395,349"
+    ],
+    [
+     "Class E Preferred Stock, including accrued dividends",
+     "",
+     "45,053,832",
+     "",
+     "-"
+    ],
+    [
+     "Convertible Notes",
+     "",
+     "18,175,060",
+     "",
+     "20,000"
+    ],
+    [
+     "Warrants",
+     "",
+     "4,129,091",
+     "",
+     "-"
+    ],
+    [
+     "Potentially dilutive securities",
+     "",
+     "2,008,548,779",
+     "",
+     "1,411,303,018"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1616,
+    "end_line": 1631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "BASIS OF PRESENTATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Basic loss per common share has been calculated based upon the weighted average number of common shares outstanding during the period in accordance with the ASC 260-10, \u201cEarnings per Share\u201d. Common stock equivalents are not used in the computation of loss per share, as their effect would be antidilutive. Diluted EPS includes the effect from potential issuance of common stock, including stock issuable pursuant to the assumed exercise of warrants and conversion of convertible notes and Class A Preferred Stock. Dilutive EPS is computed by dividing net income (loss) by the sum of the weighted average number of common stock outstanding, and the dilutive shares.\nThe following table summarizes the number of shares of common stock issuable pursuant to our convertible securities that were excluded from the diluted per share calculation because the effect of including these potential shares was antidilutive even though the exercise price could be less than the average market price of the common shares:",
+   "prose_after": "Fair Value Measurements\nOn January 1, 2011, the Company adopted guidance which defines fair value, establishes a framework for using fair value to measure financial assets and liabilities on a recurring basis, and expands disclosures about fair value measurements. Beginning on January 1, 2011, the Company also applied the guidance to non-financial assets and liabilities measured at fair value on a non-recurring basis, which includes goodwill and intangible assets. The guidance establishes a hierarchy for inputs used in measuring fair value that maximizes the use of observable inputs and minimizes the use of unobservable inputs by requiring that the most observable inputs be used when available. Observable inputs are inputs that market participants would use in pricing the asset or liability developed based on market data obtained from independent sources. Unobservable inputs are inputs that reflect the Company\u2019s assumptions of what market participants would use in pricing the asset or liability developed based on the best information available in the circumstances. The hierarchy is broken down into three levels based on the reliability of the inputs as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1601,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1631,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Deferred costs",
+     "$",
+     "311,911",
+     "$",
+     "-"
+    ],
+    [
+     "Estimated earnings",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "311,911",
+     "",
+     "-"
+    ],
+    [
+     "Add: billings to date",
+     "",
+     "92,938",
+     "",
+     "-"
+    ],
+    [
+     "Deferred costs and costs and estimated earnings in excess of related billings on uncompleted contracts",
+     "$",
+     "404,849",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1662,
+    "end_line": 1674
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 CONTRACT ASSETS"
+    }
+   },
+   "prose_before": "In January 2017, the FASB issued ASU 2017-04, Intangibles\u2014Goodwill and Other (Topic 350): Simplifying the Test for Goodwill Impairment. ASU 2017-04 simplifies the manner in which an entity is required to test goodwill for impairment by eliminating Step 2 from the goodwill impairment test. Under the amendments in ASU 2017- 04, an entity should (1) perform its annual or interim goodwill impairment test by comparing the fair value of a reporting unit with its carrying amount, and (2) recognize an impairment charge for the amount by which the carrying amount exceeds the reporting unit\u2019s fair value, with the understanding that the loss recognized should not exceed the total amount of goodwill allocated to that reporting unit. Additionally, ASU 2017-04 requires any reporting unit with a zero or negative carrying amount to perform Step 2 of the goodwill impairment test. We adopted ASU 2017-04 effective March 1, 2020 (the first quarter of our 2021 fiscal year).\nSubsequent Events\nOther than the events described in Note 12, there were no subsequent events that required recognition or disclosure. The Company evaluated subsequent events through the date the financial statements were issued and filed with the Securities and Exchange Commission.\nNOTE 3 \u2013 CONTRACT ASSETS\nDeferred costs and estimated earnings and billings on uncompleted contracts consist of the following as of December 31, 2022 and December 31, 2021:",
+   "prose_after": "Deferred costs include permitting costs to fulfill contracts on installations in progress.\nNOTE 4 \u2013 ACQUISITIONS, GOODWILL, INTANGIBLE ASSETS, AND INVESTMENTS\nBoston Solar Acquisition\nOn April 21, 2022, the Company completed the acquisition of 80.1% of the membership interests in Boston Solar, a leading residential, small commercial solar energy, procurement, and construction (\u201cEPC\u201d) company focused on customers in the greater Boston area. This acquisition solidifies the Company\u2019s EPC acquisition strategy. The total consideration paid for the purchased interests was $6,064,858 consisting of: $2,287,168 of cash paid at closing; issuance of a note payable in 14,781,938 shares of Company common stock with a fair value of $1,252,273; issuance of a promissory note with a fair value of $897,306; issuance of a convertible promissory note with a fair value of $1,378,111 payable in cash or shares of Company common stock at the holder\u2019s option; and a $250,000 holdback of additional cash. The Company incurred acquisition related expenses of approximately $587,000 during the twelve months ended December 31, 2022, which were recognized in SG&A within the Company\u2019s consolidated statement of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1653,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Goodwill",
+     "$",
+     "6,785,416",
+     ""
+    ],
+    [
+     "Tangible assets",
+     "",
+     "4,787,928",
+     ""
+    ],
+    [
+     "Intangible asset \u2013 tradename/trademarks (10-year life)",
+     "",
+     "3,008,100",
+     ""
+    ],
+    [
+     "Intangible asset \u2013 IP/technology (7-year life)",
+     "",
+     "438,000",
+     ""
+    ],
+    [
+     "Intangible asset \u2013 non-competes (3-year life)",
+     "",
+     "123,200",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "(7,571,036)",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "(1,506,750)",
+     ""
+    ],
+    [
+     "Total consideration paid for 80.1% interest",
+     "$",
+     "6,064,858",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1685,
+    "end_line": 1697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 ACQUISITIONS, GOODWILL, INTANGIBLE ASSETS, AND INVESTMENTS"
+    }
+   },
+   "prose_before": "On April 21, 2022, the Company completed the acquisition of 80.1% of the membership interests in Boston Solar, a leading residential, small commercial solar energy, procurement, and construction (\u201cEPC\u201d) company focused on customers in the greater Boston area. This acquisition solidifies the Company\u2019s EPC acquisition strategy. The total consideration paid for the purchased interests was $6,064,858 consisting of: $2,287,168 of cash paid at closing; issuance of a note payable in 14,781,938 shares of Company common stock with a fair value of $1,252,273; issuance of a promissory note with a fair value of $897,306; issuance of a convertible promissory note with a fair value of $1,378,111 payable in cash or shares of Company common stock at the holder\u2019s option; and a $250,000 holdback of additional cash. The Company incurred acquisition related expenses of approximately $587,000 during the twelve months ended December 31, 2022, which were recognized in SG&A within the Company\u2019s consolidated statement of operations.\nThe Company accounted for the acquisition as a purchase of a business and recorded the excess of the purchase price over the estimated fair value of the assets acquired and liabilities assumed as goodwill. The total purchase price was allocated as follows:",
+   "prose_after": "Revenue of $19,124,124 and net loss of $332,995 related to Boston Solar for the period from the April 21, 2022 acquisition date through the end December 31, 2022 are included in the Company\u2019s consolidated statement of operations for the twelve-months ended December 31, 2022. These results are prior to consideration for non-controlling interest.\nThe following supplemental unaudited pro forma information presents the consolidated results of the Company\u2019s operations as if the acquisition of Boston Solar on April 21, 2022 had been consummated on January 1, 2021. This supplemental unaudited pro forma information is based solely on the historical unaudited financial results for the Boston Solar acquisition and does not include operational or other changes which might have been affected by the Company. The supplemental unaudited pro forma information presented below is for illustrative purposes only and is not necessarily indicative of the results which would have been achieved or results which may be achieved in the future:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "$",
+     "27,385,051",
+     "",
+     "$",
+     "18,500,837",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,609,240)",
+     "",
+     "$",
+     "(6,148,422)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1702,
+    "end_line": 1712
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 ACQUISITIONS, GOODWILL, INTANGIBLE ASSETS, AND INVESTMENTS"
+    }
+   },
+   "prose_before": "Revenue of $19,124,124 and net loss of $332,995 related to Boston Solar for the period from the April 21, 2022 acquisition date through the end December 31, 2022 are included in the Company\u2019s consolidated statement of operations for the twelve-months ended December 31, 2022. These results are prior to consideration for non-controlling interest.\nThe following supplemental unaudited pro forma information presents the consolidated results of the Company\u2019s operations as if the acquisition of Boston Solar on April 21, 2022 had been consummated on January 1, 2021. This supplemental unaudited pro forma information is based solely on the historical unaudited financial results for the Boston Solar acquisition and does not include operational or other changes which might have been affected by the Company. The supplemental unaudited pro forma information presented below is for illustrative purposes only and is not necessarily indicative of the results which would have been achieved or results which may be achieved in the future:",
+   "prose_after": "Goodwill\nThe following table presents details of the Company\u2019s goodwill as of December 31, 2022, and December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Boston\n\nSolar",
+     "",
+     "Direct Solar America",
+     "",
+     "",
+     "Box Pure\n\nAir",
+     "",
+     "EnergyWyze",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2021:",
+     "$",
+     "-",
+     "$",
+     "1,212,969",
+     "",
+     "$",
+     "414,151",
+     "$",
+     "75,000",
+     "",
+     "$",
+     "1,702,119",
+     ""
+    ],
+    [
+     "Aggregate goodwill acquired",
+     "",
+     "6,785,416",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "6,785,416",
+     ""
+    ],
+    [
+     "Impairment losses",
+     "",
+     "-",
+     "",
+     "(1,212,969)",
+     "",
+     "",
+     "-",
+     "",
+     "(75,000)",
+     "",
+     "",
+     "(1,287,969)",
+     ""
+    ],
+    [
+     "Balances at December 31, 2022:",
+     "$",
+     "6,785,416",
+     "$",
+     "-",
+     "",
+     "$",
+     "414,151",
+     "$",
+     "-",
+     "",
+     "$",
+     "7,199,567",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1717,
+    "end_line": 1729
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 ACQUISITIONS, GOODWILL, INTANGIBLE ASSETS, AND INVESTMENTS"
+    }
+   },
+   "prose_before": "Goodwill\nThe following table presents details of the Company\u2019s goodwill as of December 31, 2022, and December 31, 2021:",
+   "prose_after": "The Company periodically reviews the carrying value of intangible assets not subject to amortization, including goodwill, to determine whether impairment may exist. Goodwill and certain intangible assets are assessed annually, or when certain triggering events occur, for impairment using fair value measurement techniques. These events could include a significant change in the business climate, legal factors, a decline in operating performance, competition, sale or disposition of a significant portion of the business, or other factors. Specifically, a goodwill impairment test is used to identify potential impairment by comparing the fair value of a reporting unit with its carrying amount, including goodwill. The Company uses level 3 inputs and a discounted cash flow methodology to assess impairment. A discounted cash flow analysis requires various judgmental assumptions to be made including future cash flows, growth rates, and discount rates. The assumptions about future cash flows and growth rates are based on the Company\u2019s budget and long-term plans. Discount rate assumptions are based on an assessment of the risk inherent in the respective reporting units. As a result of changes in legal factors and decline in operating performances related to Direct Solar America and EnergyWyze, the Company determined there were indicators of impairment in goodwill during the year ended December 31, 2022, and impaired goodwill by $1,287,969.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1682,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "IP/ Technology",
+     "",
+     "Tradename Trademarks",
+     "",
+     "Non- Competes",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balances at December 31, 2021:",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "34,485",
+     "$",
+     "34,485"
+    ],
+    [
+     "Intangibles acquired",
+     "",
+     "438,000",
+     "",
+     "3,008,100",
+     "",
+     "123,200",
+     "",
+     "-",
+     "",
+     "3,569,300"
+    ],
+    [
+     "Less: Amortization",
+     "",
+     "43,016",
+     "",
+     "206,810",
+     "",
+     "28,232",
+     "",
+     "34,485",
+     "",
+     "312,543"
+    ],
+    [
+     "Balances at December 31, 2022",
+     "$",
+     "394,984",
+     "$",
+     "2,801,290",
+     "$",
+     "94,968",
+     "$",
+     "-",
+     "$",
+     "3,291,242"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1736,
+    "end_line": 1747
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 ACQUISITIONS, GOODWILL, INTANGIBLE ASSETS, AND INVESTMENTS"
+    }
+   },
+   "prose_before": "The Company periodically reviews the carrying value of intangible assets not subject to amortization, including goodwill, to determine whether impairment may exist. Goodwill and certain intangible assets are assessed annually, or when certain triggering events occur, for impairment using fair value measurement techniques. These events could include a significant change in the business climate, legal factors, a decline in operating performance, competition, sale or disposition of a significant portion of the business, or other factors. Specifically, a goodwill impairment test is used to identify potential impairment by comparing the fair value of a reporting unit with its carrying amount, including goodwill. The Company uses level 3 inputs and a discounted cash flow methodology to assess impairment. A discounted cash flow analysis requires various judgmental assumptions to be made including future cash flows, growth rates, and discount rates. The assumptions about future cash flows and growth rates are based on the Company\u2019s budget and long-term plans. Discount rate assumptions are based on an assessment of the risk inherent in the respective reporting units. As a result of changes in legal factors and decline in operating performances related to Direct Solar America and EnergyWyze, the Company determined there were indicators of impairment in goodwill during the year ended December 31, 2022, and impaired goodwill by $1,287,969.\nIntangible Assets\nThe following table presents details of the Company\u2019s intangible assets (excluding goodwill) as of December 31, 2022 and 2021:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Estimated amortization expense:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ending",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "2023",
+     "$",
+     "404,448"
+    ],
+    [
+     "2024",
+     "",
+     "404,448"
+    ],
+    [
+     "2025",
+     "",
+     "376,224"
+    ],
+    [
+     "2026",
+     "",
+     "363,384"
+    ],
+    [
+     "2027",
+     "",
+     "363,384"
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,379,354"
+    ],
+    [
+     "Total",
+     "$",
+     "3,291,242"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated amortization expense:",
+    "Year Ending",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1748,
+    "end_line": 1763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 ACQUISITIONS, GOODWILL, INTANGIBLE ASSETS, AND INVESTMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Investments\nOn August 9, 2022, the Company acquired a minority interest, with the right to acquire the remaining interests, of Frontline Power Solutions LLC (\u201cFrontline\u201d), a Multi-state Licensed Energy Services Company (ESCO). Frontline is a comprehensive energy service Company with the ability to operate in deregulated markets across the country and provide energy supply agreements to all sizes of commercial, industrial, and institutional properties. The Company signed a Membership Interest Purchase Agreement (\u201cMIPA\u201d) with Frontline whereby the Company agreed to: (i) make an investment in Frontline for a 13.3% membership interest in exchange for $100,000 of the Company\u2019s shares (the number of shares determined by a 30-day vwap calculation, which were subsequently fair valued on August 9, 2022); (ii) issue a Promissory Note to Frontline for $150,000 ; and (iii) purchase the remaining interest (86.7%) membership interest for a Cash Consideration of $500,000 minus any outstanding principal and interest outstanding under the Promissory Note, subject to certain closing conditions (the \u201cSecond Closing\u201d). In the event that Second Closing does not occur then the Promissory Note would convert into an additional 6.6% membership interest of Frontline for a total ownership interest of 19.9% for the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1729,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Future minimum lease payments are as follows:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ending",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31",
+     "",
+     ""
+    ],
+    [
+     "2023",
+     "$",
+     "362,284",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "332,345",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "328,359",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "303,923",
+     ""
+    ],
+    [
+     "2027",
+     "",
+     "215,819",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "1,542,730",
+     ""
+    ],
+    [
+     "Less: Interest",
+     "",
+     "(230,949)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "1,311,781",
+     ""
+    ],
+    [
+     "Less: Current portion",
+     "",
+     "(272,575)",
+     ""
+    ],
+    [
+     "Lease liability, net of current portion",
+     "$",
+     "1,039,207",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Future minimum lease payments are as follows:",
+    "Year Ending",
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1800,
+    "end_line": 1821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 LEASES"
+    }
+   },
+   "prose_before": "Other. In October 2016 the Company issued a convertible note payable in the amount of $10,500 to an accredited investor with interest at 0%, due October 2017, convertible at $0.525 per share. This note is currently in default and included in current portion of convertible notes payable.\nAs of December 31, 2022, the Company was in compliance with all covenants of its debt agreements, except for the $10,500 convertible note that is currently in default and included in Current Portion of convertible notes payable.\nNOTE 6 \u2013 LEASES\nBoston Solar was acquired on April 21, 2022 and has fixed rate non-cancelable operating lease agreements for office, warehouse, and parking real estate, vehicles, and tools. The monthly operating lease payments for real estate are from $4,372 to $18,466 and end September 2027. Vehicle leases range from $644 to $973 per month, and their end dates from December 2023 to September 2026. Tools lease payments are $1,285 per month and end March 2027. Total lease expense for the year ended December 31, 2022 was $81,420. At April 21, 2022, as part of the acquisition, the Company recognized initial ROU assets and lease liabilities related to Boston Solar of $1,400,278 and $(1,400,278), respectively.",
+   "prose_after": "NOTE 7 - STOCKHOLDERS\u2019 EQUITY\nClass A Convertible Preferred Shares\nAs of December 31, 2022, and December 31, 2021, the Company had authorized 100,000,000 shares of preferred stock, $0.0001 par value per share, of which 80,000,000 shares are designated as Class A Convertible Preferred Stock (\u201cClass A Stock\u201d) with $0.0001 par value per share, of which 75,725,981 and 56,353,015 shares were issued and outstanding as of December 31, 2022, and December 31, 2021, respectively.\nEach share of Class A Stock is convertible at any time into 25 shares of common stock, totaling 1,893,149,525 shares of common stock assuming full conversion of all outstanding shares as of December 31, 2022. No dividends are payable unless declared by the Board of Directors. Each share of Class A Stock votes with the shares of common stock and is entitled to 50 votes per share and ranks senior to all other classes of stock in liquidation in the amount of $1 per share.\nOn July 12, 2022, the Company awarded a bonus to each of its Chief Executive Officer and President, of 10 million shares of Class A Preferred Stock (the \u201cPreferred Stock\u201d). On July 15, 2022 the Company entered into an agreement with its CEO and President whereby the CEO and President agreed to certain restrictive covenants relating to these shares of Preferred Stock including but not limited to: agreeing to a three year restriction on the ability to sell the Preferred Stock, and a reduction of the conversion ratio under certain circumstances.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1785,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1821,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2022",
+     "",
+     "Year Ended December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue by product/service lines:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retail",
+     "$",
+     "2,309,535",
+     "$",
+     "405,970"
+    ],
+    [
+     "Distribution",
+     "",
+     "2,931",
+     "",
+     "15,591"
+    ],
+    [
+     "Services",
+     "",
+     "19,473,683",
+     "",
+     "387,341"
+    ],
+    [
+     "Total",
+     "$",
+     "21,786,149",
+     "$",
+     "808,902"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue by subsidiary:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SinglePoint (parent company)",
+     "$",
+     "26,888",
+     "$",
+     "35,326"
+    ],
+    [
+     "Boston Solar",
+     "",
+     "19,124,124",
+     "",
+     "-"
+    ],
+    [
+     "Box Pure Air",
+     "",
+     "2,277,732",
+     "",
+     "348,877"
+    ],
+    [
+     "Direct Solar America",
+     "",
+     "177,879",
+     "",
+     "241,042"
+    ],
+    [
+     "DIGS",
+     "",
+     "7,846",
+     "",
+     "37,358"
+    ],
+    [
+     "Energy Wyze",
+     "",
+     "171,680",
+     "",
+     "146,299"
+    ],
+    [
+     "Total",
+     "$",
+     "21,786,149",
+     "$",
+     "808,902"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1980,
+    "end_line": 2005
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "REVENUE CLASSES AND CONCENTRATIONS"
+    }
+   },
+   "prose_before": "In November 2021 the Company entered into an Amendment to Employment Agreement with Corey Lambrecht (the \u201cLambrecht Amendment\u201d). The Lambrecht Amendment includes the following: (i) that the term of the original employment agreement is extended to November 23, 2023 (automatically be extended for additional three-year periods unless either party has provided written termination at least 90 days prior to the expiration of such Term), (ii) Base Salary equal to Two Hundred Twenty Five Thousand Dollars ($225,000.00) per year, with a minimum automatic Cost of Living increase of 3.0% per year, beginning on January 1, 2022, (iii) one-time cash retention bonus equal to twenty percent (20%) of the Base Salary, and (iv) waiver by Mr. Lambrecht of any unpaid compensation owed by the Company through October 31, 2021. On January 17, 2020 the Company entered into an employment agreement with Corey Lambrecht to serve as the Chief Financial Officer. The term is for a period of one year; salary is Eighty Thousand Dollars ($80,000.00) per year; if employment is terminated as a result of his death or Disability, the Company shall pay the Base Salary and any accrued but unpaid Bonus and expense reimbursement amounts through the date of his Death or Disability and a lump sum payment equal to $40,000 (at the time his Death or Disability occurs) within 30 days of his Death or Disability; If employment is terminated by the Board for Cause, then the Company shall pay the Base Salary and Bonus earned through the date of his termination; If employment is terminated by the upon the occurrence of a Change of Control or within six (6) months thereafter, the Company (or its successor, as applicable) shall (i) continue to pay to the Base Salary for a period of six (6) months following such termination, (ii) pay any accrued and any earned but unpaid Bonus, (iii) pay the Bonus he would have earned had he remained with the Company for six (6) months from the date which such termination occurs, and (iv) pay expense reimbursement amounts through the date of termination.\nNOTE 10 - REVENUE CLASSES AND CONCENTRATIONS\nSelected financial information for the Company\u2019s operating revenue for disaggregated revenue purposes are as follows:",
+   "prose_after": "No customers comprised 10% or greater of the Company's revenue for the years ended December 31, 2022 and 2021. One customer comprised 27% of the Company\u2019s accounts receivable as of December 31, 2022. No customer comprised 10% or greater of the Company\u2019s accounts receivable as of December 31, 2021.\nNOTE 11 \u2013 INCOME TAXES\nThe components of income tax expense for the years ended December 31, 2022, and 2021 consist of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1975,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2024,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Federal tax statutory rate",
+     "",
+     "21.0",
+     "%",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "(6.8)",
+     "%",
+     "",
+     "(0.2)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Temporary differences",
+     "",
+     "(5.9)",
+     "%",
+     "",
+     "(2.9)",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(8.3)",
+     "%",
+     "",
+     "(17.9)",
+     "%"
+    ],
+    [
+     "Effective rate",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2012,
+    "end_line": 2024
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "No customers comprised 10% or greater of the Company's revenue for the years ended December 31, 2022 and 2021. One customer comprised 27% of the Company\u2019s accounts receivable as of December 31, 2022. No customer comprised 10% or greater of the Company\u2019s accounts receivable as of December 31, 2021.\nNOTE 11 \u2013 INCOME TAXES\nThe components of income tax expense for the years ended December 31, 2022, and 2021 consist of the following:",
+   "prose_after": "Significant components of the Company\u2019s estimated deferred tax assets and liabilities as of December 31, 2022 and 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1975,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 27
+    },
+    "after": {
+     "line": 2024,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "$",
+     "3,700,000",
+     "",
+     "$",
+     "2,440,000",
+     ""
+    ],
+    [
+     "Temporary differences",
+     "",
+     "(520,000)",
+     "",
+     "",
+     "(160,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total deferred tax asset",
+     "",
+     "3,180,000",
+     "",
+     "",
+     "2,280,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(3,180,000)",
+     "",
+     "",
+     "(2,280,000)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2027,
+    "end_line": 2042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "Significant components of the Company\u2019s estimated deferred tax assets and liabilities as of December 31, 2022 and 2021 are as follows:",
+   "prose_after": "The Company has net operating losses (\u201cNOLs\u201d) as of December 31, 2022, of approximately $18,000,000 for federal tax purposes, which will expire in varying amounts through 2040. The Company may be able to utilize its NOLs to reduce future federal and state income tax liabilities. However, these NOLs are subject to various limitations under Internal Revenue Code (\"IRC\") Section 382. IRC Section 382 limits the use of NOLs to the extent there has been an ownership change of more than 50 percentage points. In addition, the NOL carry-forwards are subject to examination by the taxing authority and could be adjusted or disallowed due to such exams. Although the Company has not undergone an IRC Section 382 analysis, it is possible that the utilization of the NOLs could be substantially limited. The Company has no tax provision for the years ended December 31, 2022 and 2021 due to the net losses and full valuation allowances against net deferred tax assets.\nNOTE 12 - SUBSEQUENT EVENTS\nLitigation\nOn January 9, 2023, the Company announced that it and Direct Solar America have resolved their claims against Pablo Diaz Curiel, Kjelsey Johnson, Brian Odle, Elijah Chaffino, Christina Berume and Jessica Hernandez in the United States District Court, District of Arizona. The claims filed by Pablo Diaz, individually and derivatively on behalf of SinglePoint Direct Solar, LLC, JAGUSA Holdings, LLC, Elijah Chaffino, Kjelsey Johnson, Brian Odle, Direct Solar, LLC and AI Live Transfers against the Company, SinglePoint Direct Solar, LLC, Greg Lambrecht, Wil Ralston and Corey Lambrecht filed in the United States District Court, District of Arizona have also been resolved. The Company and SinglePoint Direct Solar, LLC maintains its claims against SIRC and USA Solar Network. The Company, SinglePoint Direct Solar, LLC and Pablo Diaz Curiel have also resolved the arbitration matter pending before the American Arbitration Association, whereby Mr. Diaz brought wage related claims.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2024,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 28
+    },
+    "after": {
+     "line": 2058,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "F",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "William Ralston",
+     "33",
+     "Chairman of the Board and Chief Executive Officer (2)"
+    ],
+    [
+     "Corey Lambrecht",
+     "53",
+     "President, Chief Financial Officer and Director (2) (3)"
+    ],
+    [
+     "Eric Lofdahl",
+     "60",
+     "Independent Director (4)"
+    ],
+    [
+     "Jim Rulfs",
+     "69",
+     "Independent Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2118,
+    "end_line": 2126
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our management is responsible for establishing and maintaining adequate internal control over financial reporting, as such term is defined in Exchange Act Rule 13a-15(f). Under the supervision and with the participation of our management, including our principal executive officer and principal financial officer, we conducted an evaluation of the effectiveness of our internal control over financial reporting based on criteria established in Internal Control - Integrated Framework (2013) issued by COSO. Internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles and includes those policies and procedures that (a) pertain to the maintenance of records that, in reasonable detail, accurately and fairly reflect the transactions and dispositions of the assets of the Company; (b) provide reasonable assurance that transactions are recorded as necessary to permit the preparation of financial statements in accordance with generally accepted accounting principles and that receipts and expenditures of the Company are being made only in accordance with authorizations of the our management and directors; and (c) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use or disposition of the Company\u2019s assets that could have a material effect on the financial statements.\nChanges in Internal Control over Financial Reporting\nNone.\nItem 9B. Other Information.\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdiction that Prevent Inspections\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nThe names, ages, and positions of the Company\u2019s present executive officers and directors are set forth in the following table (1):",
+   "prose_after": "_____________\n(1) All directors hold office until the next annual meeting of stockholders and until their successors have been duly elected and qualified.\n(2) On May 19, 2021, the Board of Directors of the Company appointed William Ralston as Chief Executive Officer of the Company, and appointed Corey Lambrecht as a Director. Effective November 24, 2021, the Company named Corey Lambrecht as the President of the Company (while also maintaining his positions as Chief Financial Officer and Director of the Company.\n(3) On May 19, 2021, the Board of Directors of the Company appointed Corey Lambrecht as a Director. Effective November 24, 2021, the Company named Corey Lambrecht as the President of the Company (while also maintaining his positions as Chief Financial Officer and Director of the Company.\n(4) Eric Lofdahl served as CTO until December 22, 2020.\nThere are no agreements with respect to electing directors. Except as set forth below, none of the directors held any directorships during the past five years in any company with a class of securities registered pursuant to Section 12 of the Exchange Act or subject to the requirements of Section 15(d) of such act, or of any company registered as an investment company under the Investment Company Act of 1940. The Board of Directors has not adopted a Code of Ethics that applies to the registrant\u2019s principal executive officer, principal financial officer, principal accounting officer or controller, or persons performing similar functions.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2110,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2145,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Reporting Person",
+     "Form Type",
+     ""
+    ],
+    [
+     "William Ralston",
+     "",
+     "3"
+    ],
+    [
+     "Corey Lambrecht",
+     "",
+     "3"
+    ],
+    [
+     "Jim Ruffs",
+     "",
+     "3"
+    ],
+    [
+     "Eric Lofdahl",
+     "",
+     "3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2237,
+    "end_line": 2245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(8) has been the subject of, or a party to, any sanction or order, not subsequently reversed, suspended or vacated, of any self-regulatory organization (as defined in Section 3(a)(26) of the Exchange Act (15 U.S.C. 78c(a)(26))), any registered entity (as defined in Section 1(a)(29) of the Commodity Exchange Act (7 U.S.C. 1(a)(29))), or any equivalent exchange, association, entity or organization that has disciplinary authority over its members or persons associated with a member.\nSection 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Exchange Act requires our directors and officers, and the persons who beneficially own more than ten percent of our common stock, to file reports of ownership and changes in ownership with the Securities and Exchange Commission. Copies of all filed reports are required to be furnished to us pursuant to Rule 16a-3 promulgated under the Exchange Act. Based solely on the reports received by us and on the representations of the reporting persons, we believe that these persons have complied with all applicable filing requirements during the fiscal year ended December 31, 2022, with the exception of the following reports.",
+   "prose_after": "ITEM 11. EXECUTIVE COMPENSATION.\nThe following table sets forth the compensation paid to our Chief Executive Officer, Chief Financial Officer and those executive officers that earned in excess of $120,000 during the last two fiscal years ended December 31, 2022 and 2021 (collectively, the \u201cNamed Executive Officers\u201d):\nSummary Compensation Table",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2231,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 2271,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary\n\n($)",
+     "",
+     "Stock Awards\n\n($)",
+     "",
+     "Total\n\n($)",
+     ""
+    ],
+    [
+     "William Ralston,",
+     "2022",
+     "$",
+     "371,512",
+     "",
+     "-",
+     "$",
+     "371,512"
+    ],
+    [
+     "Chief Executive Officer, Chairman of the Board",
+     "2021",
+     "$",
+     "284,588",
+     "$",
+     "-",
+     "$",
+     "284,588"
+    ],
+    [
+     "Corey Lambrecht,",
+     "2022",
+     "$",
+     "290,483",
+     "",
+     "-",
+     "$",
+     "290,483"
+    ],
+    [
+     "President, Chief Financial Officer and Director",
+     "2021",
+     "$",
+     "205,977",
+     "$",
+     "-",
+     "$",
+     "205,977"
+    ],
+    [
+     "Eric Lofdahl, Director",
+     "2022",
+     "$",
+     "16,000",
+     "",
+     "-",
+     "$",
+     "16,000"
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "16,000",
+     "$",
+     "-",
+     "$",
+     "16,000"
+    ],
+    [
+     "Gregory Lambrecht,",
+     "2022",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Former Chief Executive Officer",
+     "2021",
+     "$",
+     "84,615",
+     "$",
+     "-",
+     "$",
+     "84,615"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2252,
+    "end_line": 2266
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 11. EXECUTIVE COMPENSATION.\nThe following table sets forth the compensation paid to our Chief Executive Officer, Chief Financial Officer and those executive officers that earned in excess of $120,000 during the last two fiscal years ended December 31, 2022 and 2021 (collectively, the \u201cNamed Executive Officers\u201d):\nSummary Compensation Table",
+   "prose_after": "Employment Agreements\nExcept for the following agreements, the Company does not have any written agreements with any of its executive officers. The following discussion is a summary of the material terms of the employment agreements and is subject to the full copy of the respective employment agreement (all capitalized terms not otherwise defined herein are defined in the respective employment agreement):\nIn November 2021 the Company entered into an Amendment to Employment Agreement with our CEO, Wil Ralston (the \u201cRalston Amendment\u201d). The Ralston Amendment includes the following: (i) that the term of the original employment agreement is extended to May 30, 2024 (automatically be extended for additional three-year periods unless either party has provided written termination at least 90 days prior to the expiration of such Term), (ii) Base Salary equal to Two Hundred Eighty Thousand Dollars ($280,000.00) per year, with a minimum automatic Cost of Living increase of 3.0% per year, beginning on January 1, 2022, (iii) one-time cash retention bonus of $50,833.33, and (iv) waiver by Mr. Ralston of any unpaid allowances (estimated $61,500.00) afforded to Mr. Ralston through October 31, 2021",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2231,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 2271,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of\n\nBeneficial Owner",
+     "Amount and nature of beneficial ownership",
+     "",
+     "Percent of\n\nClass",
+     "",
+     ""
+    ],
+    [
+     "Class A Convertible Preferred Stock",
+     "Brenda Lambrecht",
+     "",
+     "18,681,489",
+     "",
+     "24.7",
+     "%"
+    ],
+    [
+     "",
+     "Gregory P. Lambrecht (1)",
+     "",
+     "2,679,395",
+     "",
+     "3.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2307,
+    "end_line": 2316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We currently have authorized 5,000,000,000 shares of common stock and 100,000,000 shares of preferred stock, of which 80,000,000 shares are designated as Class A Convertible Preferred Stock, 1,500 shares are designated as Class B Convertible Preferred Stock, 1,500 shares are designated as Class C Convertible Preferred Stock, 2,000 shares are designated as Class D Convertible Preferred Stock, 2,500 shares are designated as Class E Convertible Preferred Stock, and 19,992,500 shares of preferred stock remain undesignated. There were 114,127,911 shares of common stock, 75,725,981 shares of Class A Convertible Preferred Stock, no shares of Class B Convertible Preferred Stock, 19 shares of Class C Convertible Preferred Stock, 2,000 shares of Class D Convertible Preferred Shares, and 1,920 shares of Class E Convertible Preferred Shares outstanding as of December 31, 2022. Each share of Class A Convertible Preferred Stock is convertible at any time into 25 shares of common stock, totaling 1,893,149,525 shares of common stock assuming full conversion of all outstanding shares. Each share of Class A Convertible Preferred Stock votes with the shares of Common Stock and is entitled to 50 votes per share. Each share of Class C Convertible Preferred Stock is convertible at any time into shares of common stock by dividing the Stated Value ($1,200) by $0.0535, totaling 688,598 shares of common stock assuming full conversion of all outstanding shares and accrued dividends. Each share of Class D Convertible Preferred Stock is convertible at any time into shares of common stock by dividing the Stated Value ($1,200) by $0.0535, totaling 47,352,673 shares of common stock assuming full conversion of all outstanding shares and accrued dividends. Each share of Class E Convertible Preferred Stock is convertible at any time into shares of common stock by dividing the Stated Value ($1,200) by $0.0535, totaling 45,053,832 shares of common stock assuming full conversion of all outstanding shares and accrued dividends.\nBeneficial ownership is determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to our common stock. Shares of our common stock subject to options that are currently exercisable or exercisable within 60 days of December 31, 2022, are considered outstanding and beneficially owned by the person holding the options for the purpose of calculating the percentage ownership of that person but not for the purpose of calculating the percentage ownership of any other person. Except as otherwise noted, we believe the persons and entities in this table have sole voting and investing power with respect to all of the shares of our common stock beneficially owned by them, subject to community property laws, where applicable.\nSecurity Ownership of Certain Beneficial Owners",
+   "prose_after": "(1) Mr. Gregory P. Lambrecht served as the Chairman of the Board of Directors until May 18, 2021. Mr. Greg Lambrecht has entered into a two year voting agreement To the extent any vote or consent of the Board of Directors of the Employer is taken during the two years following the date of this Agreement, relating to (i) the uplisting of the Employer\u2019s Common Stock to the Nasdaq or NYSE, (ii) reverse split of the Common Stock of the Employer, and or (iii) the spin off by the Employer of up to two subsidiaries, and such action is put to a vote of the shareholders of the Employer, then the Employee shall vote all shares of Common Stock and Preferred Stock of the Employer then owned by the Employee (the \u201cEmployee Shares\u201d) for such action(s). To secure the Employee\u2019s obligations to vote the Employee Shares in accordance with this Agreement, the Employee hereby appoints the Chief Executive, President or Secretary of the Employer, or any of them from time to time, or their designees, as the Employee\u2019s true and lawful proxy and attorney, with the power to act alone and with full power of substitution, to vote all of the Employee Shares as set forth in this Agreement and to execute all appropriate instruments consistent with this Agreement on behalf of such Employee if, and only if, such Employee fails to vote all of the Employee Shares or execute such other instruments in accordance with the provisions of this Agreement within five (5) days of the Employer\u2019s or any other party\u2019s written request for the Employee\u2019s written consent or signature. The proxy and power granted by the Employee pursuant to this Section are coupled with an interest and are given to secure the performance of such party\u2019s duties under this Agreement. Each such proxy and power will be irrevocable for the term hereof. The proxy and power will survive the death, incompetency and disability of such party or any other individual holder of the Employee Shares and, so long as any party hereto is an entity, will survive the merger or reorganization of such party or any other entity holding the Employee Shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2289,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 2319,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of\n\nBeneficial Owner (1)",
+     "Amount and nature of beneficial ownership",
+     "",
+     "Percent of\n\nClass",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Eric Lofdahl",
+     "",
+     "414,639",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Wil Ralston",
+     "",
+     "296,416",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corey Lambrecht",
+     "",
+     "334,001",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Jim Ruffs",
+     "",
+     "224,925",
+     "*",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Executive Officers and Directors as a Group",
+     "",
+     "1,269,981",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A Convertible Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Eric Lofdahl (2)",
+     "",
+     "10,771,000",
+     "",
+     "14.2",
+     "%"
+    ],
+    [
+     "",
+     "Corey Lambrecht",
+     "",
+     "12,175,000",
+     "",
+     "16.0",
+     "%"
+    ],
+    [
+     "",
+     "Wil Ralston",
+     "",
+     "19,363,285",
+     "",
+     "25.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Executive Officers and Directors as a Group",
+     "",
+     "42,309,285",
+     "",
+     "55.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2323,
+    "end_line": 2344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(1) Mr. Gregory P. Lambrecht served as the Chairman of the Board of Directors until May 18, 2021. Mr. Greg Lambrecht has entered into a two year voting agreement To the extent any vote or consent of the Board of Directors of the Employer is taken during the two years following the date of this Agreement, relating to (i) the uplisting of the Employer\u2019s Common Stock to the Nasdaq or NYSE, (ii) reverse split of the Common Stock of the Employer, and or (iii) the spin off by the Employer of up to two subsidiaries, and such action is put to a vote of the shareholders of the Employer, then the Employee shall vote all shares of Common Stock and Preferred Stock of the Employer then owned by the Employee (the \u201cEmployee Shares\u201d) for such action(s). To secure the Employee\u2019s obligations to vote the Employee Shares in accordance with this Agreement, the Employee hereby appoints the Chief Executive, President or Secretary of the Employer, or any of them from time to time, or their designees, as the Employee\u2019s true and lawful proxy and attorney, with the power to act alone and with full power of substitution, to vote all of the Employee Shares as set forth in this Agreement and to execute all appropriate instruments consistent with this Agreement on behalf of such Employee if, and only if, such Employee fails to vote all of the Employee Shares or execute such other instruments in accordance with the provisions of this Agreement within five (5) days of the Employer\u2019s or any other party\u2019s written request for the Employee\u2019s written consent or signature. The proxy and power granted by the Employee pursuant to this Section are coupled with an interest and are given to secure the performance of such party\u2019s duties under this Agreement. Each such proxy and power will be irrevocable for the term hereof. The proxy and power will survive the death, incompetency and disability of such party or any other individual holder of the Employee Shares and, so long as any party hereto is an entity, will survive the merger or reorganization of such party or any other entity holding the Employee Shares.\nSecurity Ownership of Management",
+   "prose_after": "________\n* Less than 1%.\n(1) The address is c/o Singlepoint Inc. 3104 East Camelback Road #2137, Phoenix, Arizona 85016\n(2) Includes 10,350,000 shares of Class A Preferred Stock held in an entity controlled by Mr. Lofdahl.\nStock Option Plan and other Employee Benefits Plans\nThe following table provides information as of December 31, 2022, regarding shares of common stock that may be issued under the Singlepoint Inc. 2019 Equity Incentive Plan (the \u201cPlan\u201d), which was created in 2019 and approved by the holders of a majority of the outstanding shares of common stock. Information is included for both equity compensation plans approved by the Company\u2019s stockholders and not approved by the Company\u2019s stockholders.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2319,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 2353,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "(a)\n\nNumber of\n\nsecurities\n\nto be issued\n\nupon\n\nexercise of\n\noutstanding\n\noptions,\n\nwarrants and\n\nrights",
+     "",
+     "(b)\n\nWeighted-\n\naverage\n\nexercise price\n\nof\n\noutstanding\n\noptions,\n\nwarrants and\n\nrights",
+     "",
+     "(c)\n\nNumber\n\nof securities\n\nremaining\n\navailable\n\nfor future\n\nissuance\n\nunder equity\n\ncompensation\n\nplans\n\n(excluding\n\nsecurities\n\nreflected in\n\ncolumn\n\n(a))",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders(1)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,333,333"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total:",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,333,333"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2359,
+    "end_line": 2394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "________\n* Less than 1%.\n(1) The address is c/o Singlepoint Inc. 3104 East Camelback Road #2137, Phoenix, Arizona 85016\n(2) Includes 10,350,000 shares of Class A Preferred Stock held in an entity controlled by Mr. Lofdahl.\nStock Option Plan and other Employee Benefits Plans\nThe following table provides information as of December 31, 2022, regarding shares of common stock that may be issued under the Singlepoint Inc. 2019 Equity Incentive Plan (the \u201cPlan\u201d), which was created in 2019 and approved by the holders of a majority of the outstanding shares of common stock. Information is included for both equity compensation plans approved by the Company\u2019s stockholders and not approved by the Company\u2019s stockholders.",
+   "prose_after": "(1) Consists of the Plan.\nSummary Description\nThe following description is intended to be a summary of the material provisions of the Plan. It does not purport to be a complete description of all the provisions of the Plan and is qualified in its entirety by reference to the complete text of the Plan. Capitalized terms used in the following summary and not otherwise defined in this Information Statement have the meanings set forth in the Plan.\nPurpose and Eligible Participants. The purpose of the Plan is to promote the success of the Company and to increase stockholder value by providing an additional means through the grant of awards to attract, motivate, retain and reward selected employees and other eligible persons. The Administrator may grant awards under the Plan only to those persons that the Administrator determines to be Eligible Persons An \u201cEligible Person\u201d is any person who is either: (a) an officer (whether or not a director) or employee of the Company or one of its Subsidiaries; (b) a director of the Company or one of its Subsidiaries; or (c) an individual consultant who renders bona fide services (other than services in connection with the offering or sale of securities of the Company or one of its Subsidiaries in a capital-raising transaction or as a market maker or promoter of securities of the Company or one of its Subsidiaries) to the Company or one of its Subsidiaries and who is selected to participate in this Plan by the Administrator; provided, however, that a person who is otherwise an Eligible Person under clause (c) above may participate in this Plan only if such participation would not adversely affect either the Company\u2019s eligibility to use Form S-8 to register under the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), the offering and sale of shares issuable under this Plan by the Company, or the Company\u2019s compliance with any other applicable laws.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2353,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 2405,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Principal Accountant Fees & Services",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "109,500",
+     "$",
+     "59,286"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "18,000",
+     "",
+     "7,000"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "127,500",
+     "$",
+     "66,286"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2473,
+    "end_line": 2484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Several of our executive officers and directors hold a significant number of shares of our outstanding Class A Convertible Preferred Stock. Each share of Class A Convertible Preferred Stock is convertible at any time into 25 shares of common stock, totaling 1,902,715,425 shares of common stock, as of September 2, 2022, assuming full conversion of all outstanding shares. Please see the section titled \u201cDescription of Securities - Preferred Stock - Class A Preferred Stock\u201d for a further description of the rights and privileges of this class of securities, the holders of which maintain substantial control over the Company. In connection with grants of shares of Class A Convertible Preferred Stock to each of William Ralston, the Company\u2019s Chief Executive Officer and a director, and Corey Lamprecht, the Company\u2019s President, Chief Financial Officer and a director, the Company entered into agreements with each of Messrs. Ralston and Lambrecht wherein each agreed that he would vote all of his shares of Class A Convertible Preferred Stock for any action approved by the Board of the Company. Each of Messrs. Ralston and Lambrecht each further agreed that he would not convert his shares into shares of the Company\u2019s common stock if, upon such conversion, he would own in excess of 4.99% of the number of shares of common stock then outstanding. Finally, each of Messrs. Ralston and Lambrecht agreed that the conversion ratio would be reduced in the event that such individual was to terminate his employment with the Company without \u201cGood Cause,\u201d as defined in such individual\u2019s employment agreement with the Company.\nStock Issuances to Officers and Directors\nNone.\nPromoters and Certain Control Persons\nNone.\nIndependent Directors\nThe Company has two independent directors, Eric Lofdahl and Jim Rulfs.\nItem 14. Principal Accountant Fees and Services.\nOur independent public accounting firm is Turner Stone & Company, L.L.P., Dallas, Texas, PCAOB Auditor ID 76.",
+   "prose_after": "Audit Fees\nThese amounts consisted of the aggregate fees billed for each of the last two fiscal years for professional services rendered by the principal accountant for the audit of the Company\u2019s annual financial statements and review of financial statements included in the Company\u2019s Form 10-Q or services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for those fiscal years.\nAudit-Related Fees\nThese amounts consisted of the aggregate fees billed for each of the last two fiscal years for assurance and related services that are reasonably related to the performance of the audit or review of the Company\u2019s consolidated financial statements and are not reported under \u201cAudit Fees.\u201d These fees were for professional services incurred in connection with the issuance of consents related to S-1 filings.\nTax Fees\nThese amounts consisted of the aggregate fees billed for each of the last two fiscal years for tax services including tax compliance and the preparation of tax returns and tax consultation services. There were no such services by our principal accountant in 2022 or 2021.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2467,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 2501,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SINGLEPOINT INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 31, 2023",
+     "By:",
+     "/s/ William Ralston"
+    ],
+    [
+     "",
+     "",
+     "William Ralston\n\nCEO/Director"
+    ]
+   ],
+   "caption_stack": [
+    "SINGLEPOINT INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2529,
+    "end_line": 2538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(a)(1) Index to Consolidated Financial Statements\nThe Financial Statements listed in the Index to Consolidated Financial Statements are filed as part of this Annual Report on Form 10-K. See Part II, Item 8, \u201cFinancial Statement and Supplementary Data.\u201d\n(a)(2) Financial Statement Schedules\nOther financial statement schedules for the years ended December 31, 2022, and 2021 have been omitted since they are either not required, not applicable, or the information is otherwise included in the consolidated financial statements or the notes to consolidated financial statements.\n(a)(3) Exhibits\nThe Exhibits listed in the accompanying Exhibit Index are attached and incorporated herein by reference and filed as part of this report.\nItem 16. Form 10\u2013K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Securities 13 or 15(d) of the Securities and Exchange Act of 1934, as amended, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2523,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 2562,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William Ralston",
+     "Chief Executive Officer, Director",
+     "March 31, 2023"
+    ],
+    [
+     "William Ralston",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Corey Lambrecht",
+     "President, Chief Financial Officer, Director",
+     "March 31, 2023"
+    ],
+    [
+     "Corey Lambrecht",
+     "(Principal Financial Officer and Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Eric Lofdahl",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "Eric Lofdahl",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ James Rulfs",
+     "Director",
+     "March 31, 2023"
+    ],
+    [
+     "James Rulfs",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2541,
+    "end_line": 2561
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2523,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 2562,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT NO.",
+     "DOCUMENT"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a) of the Securities Exchange Act."
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a) of the Securities Exchange Act."
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2566,
+    "end_line": 2582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10\u2013K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2562,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 2583,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

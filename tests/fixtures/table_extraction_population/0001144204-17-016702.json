@@ -1,0 +1,5999 @@
+{
+ "accession": "0001144204-17-016702",
+ "cik": "0001533615",
+ "form": "10-K",
+ "filing_date": "2017-03-27",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v462104_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "46-4757266"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4800 Montgomery Lane #450,\n\n\n\nBethesda, MD",
+     "20814"
+    ],
+    [
+     "(Address of principal executive\n\n\n\noffices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2016\nOr\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________\nto _____________\nCommission File Number: 333-177592\nGlobal Medical REIT Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: 202-524-6851\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by a check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "10"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "10"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "14"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "15"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "16"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "26"
+    ],
+    [
+     "Item 8.",
+     "Consolidated Financial Statements and Supplementary Data",
+     "27"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "61"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "61"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "62"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "62"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "62"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "62"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "62"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "62"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "63"
+    ],
+    [
+     "Signatures",
+     "",
+     "67"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 108
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[ ] Large accelerated filer  [ ] Accelerated flier  [ ] Non-accelerated flier   [X] Smaller reporting company\n(do not check if a smaller\nreporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAs of the last business day of the registrant\u2019s most recently completed third fiscal quarter, there was no active public trading market for the registrant\u2019s common stock.\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was sold as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: $0 on June 30, 2016.\nAs of March 27, 2017 there were 17,605,675 shares of the registrant\u2019s common stock, par value of $0.001 per share outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "2\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (this \u201cReport\u201d) contains forward-looking statements within the meaning of the federal securities laws. In particular, statements pertaining to our capital resources, healthcare facility performance and results of operations, among others, contain forward-looking statements. You can identify forward-looking statements by the use of forward-looking terminology including, but not limited to, \u201cbelieves,\u201d \u201cexpects,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201cseeks,\u201d \u201capproximately,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cestimates\u201d or \u201canticipates\u201d or the negative of these words and phrases or similar words or phrases which are predictions of or indicate future events or trends and which do not relate solely to historical matters. You can also identify forward-looking statements by discussions of strategy, plans or intentions.\nForward-looking statements involve numerous risks and uncertainties and you should not rely on them as predictions of future events. Forward-looking statements depend on assumptions, data or methods which may be incorrect or imprecise and we may not be able to realize them. We do not guarantee that the transactions and events described will happen as described (or that they will happen at all). The following factors, among others, could cause actual results and future events to differ materially from those set forth or contemplated in the forward-looking statements:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2016",
+     "High",
+     "",
+     "Low",
+     "",
+     "Dividends per Share",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "3.58",
+     "$",
+     "0.125",
+     "$",
+     "0.2556"
+    ],
+    [
+     "Second quarter",
+     "$",
+     "3.58",
+     "$",
+     "0.125",
+     "$",
+     "0.2556"
+    ],
+    [
+     "Third quarter",
+     "$",
+     "11.38",
+     "$",
+     "9.52",
+     "$",
+     "0.2000"
+    ],
+    [
+     "Fourth quarter",
+     "$",
+     "9.89",
+     "$",
+     "6.73",
+     "$",
+     "0.2000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 452,
+    "end_line": 461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "We are currently not involved in any litigation that we believe could have a material adverse effect on our financial condition or results of operations. There is no action, suit, proceeding, inquiry or investigation before or by any court, public board, government agency, self-regulatory organization or body pending or, to the knowledge of the executive officers of our company or any of our subsidiaries, threatened against or affecting our company, our common stock, any of our subsidiaries or of our companies or our subsidiaries\u2019 officers or directors in their capacities as such, in which an adverse decision could have a material adverse effect.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nIn connection with our initial public offering, which was completed on July 1, 2016, our common stock is quoted on the New York Stock Exchange under the ticker symbol \u201cGMRE.\u201d Prior to that date our stock was listed on the OTC pink tier of the OTC Markets, Inc. under the symbol \u201cGMRE\u201d and trading of our common stock at that time was limited and sporadic.\nThe following table sets forth, for the periods indicated, the high and low sale prices of our common stock for the fiscal years ended December 31, 2016 and 2015, respectively, and the dividends paid by us with respect to those periods.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 478,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2015",
+     "High",
+     "",
+     "Low",
+     "",
+     "Dividends per Share",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "3.58",
+     "$",
+     "3.58",
+     "$",
+     "0.2556"
+    ],
+    [
+     "Second quarter",
+     "$",
+     "3.58",
+     "$",
+     "3.58",
+     "$",
+     "0.2556"
+    ],
+    [
+     "Third quarter",
+     "$",
+     "3.58",
+     "$",
+     "3.58",
+     "$",
+     "0.2556"
+    ],
+    [
+     "Fourth quarter",
+     "$",
+     "3.58",
+     "$",
+     "3.58",
+     "$",
+     "0.2556"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 462,
+    "end_line": 471
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Performance Graph\nThis performance graph shall not be deemed \u201csoliciting material\u201d or to be \u201cfiled\u201d with the SEC for purposes of Section 18 of the Exchange Act, or otherwise subject to the liabilities under that Section, and shall not be deemed to be incorporated by reference into any filing of Global Medical REIT Inc. under the Securities Act or the Exchange Act.\nThe graph below compares the cumulative total return of our common shares, the S&P 500 and the MSCI US REIT Index (\u201cRMS\u201d), from July 1, 2016 (the completion date of our IPO) through December 31, 2016. The comparison assumes $100 was invested on July 1, 2016 in our common shares and in each of the foregoing indexes and assumes reinvestment of dividends, as applicable. The MSCI US REIT Index consists of equity REITs that are included in the MSCI US Investable Market 2500 Index, except for specialty equity REITS that do not generate a majority of their revenue and income from real estate rental and leasing operations. We have included the MSCI US REIT Index because we believe that it is representative of the industry in which we compete and is relevant to an assessment of our performance.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 478,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period Ending",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Index",
+     "06/30/16",
+     "",
+     "07/31/16",
+     "",
+     "08/31/16",
+     "",
+     "09/30/16",
+     "",
+     "10/31/16",
+     "",
+     "11/30/16",
+     "",
+     "12/31/16",
+     ""
+    ],
+    [
+     "Global Medical REIT Inc.",
+     "",
+     "100.00",
+     "",
+     "108.01",
+     "",
+     "106.33",
+     "",
+     "98.44",
+     "",
+     "98.34",
+     "",
+     "73.73",
+     "",
+     "91.96"
+    ],
+    [
+     "S&P 500",
+     "",
+     "100.00",
+     "",
+     "103.69",
+     "",
+     "103.83",
+     "",
+     "103.85",
+     "",
+     "101.96",
+     "",
+     "105.73",
+     "",
+     "107.82"
+    ],
+    [
+     "MSCI US REIT (\u201cRMS\u201d)",
+     "",
+     "100.00",
+     "",
+     "104.20",
+     "",
+     "100.39",
+     "",
+     "98.55",
+     "",
+     "92.94",
+     "",
+     "91.35",
+     "",
+     "95.63"
+    ]
+   ],
+   "caption_stack": [
+    "Period Ending"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 479,
+    "end_line": 488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "This performance graph shall not be deemed \u201csoliciting material\u201d or to be \u201cfiled\u201d with the SEC for purposes of Section 18 of the Exchange Act, or otherwise subject to the liabilities under that Section, and shall not be deemed to be incorporated by reference into any filing of Global Medical REIT Inc. under the Securities Act or the Exchange Act.\nThe graph below compares the cumulative total return of our common shares, the S&P 500 and the MSCI US REIT Index (\u201cRMS\u201d), from July 1, 2016 (the completion date of our IPO) through December 31, 2016. The comparison assumes $100 was invested on July 1, 2016 in our common shares and in each of the foregoing indexes and assumes reinvestment of dividends, as applicable. The MSCI US REIT Index consists of equity REITs that are included in the MSCI US Investable Market 2500 Index, except for specialty equity REITS that do not generate a majority of their revenue and income from real estate rental and leasing operations. We have included the MSCI US REIT Index because we believe that it is representative of the industry in which we compete and is relevant to an assessment of our performance.",
+   "prose_after": "As of March 27, 2017 there were approximately 34 record holders, and 17,605,675 shares of common stock issued and outstanding. As of December 31, 2016 and December 31, 2015, there were 17,605,675 and 250,000 outstanding shares of common stock, respectively.\nPursuant to a previously declared dividend approved by the Board of Directors of the Company (the \u201cBoard) and in compliance with applicable provisions of the Maryland General Corporation Law, the Company has paid a monthly dividend of $0.0852 per share each month during the four-month period from January 2016 through April 2016 in the total amount of $285,703. Additionally, on September 14, 2016, the Company announced the declaration of a cash dividend of $0.20 per share of common stock to stockholders of record as of September 27, 2016 and to the holders of the LTIP units that were granted on July 1, 2016. This dividend, in the amount of $3,592,786, was paid on October 11, 2016. On December 14, 2016, the Company announced the declaration of a cash dividend of $0.20 per share of common stock to stockholders of record as of December 27, 2016 and to the holders of the LTIP units that were granted on July 1, 2016 and December 21, 2016. This dividend, in the amount of $3,604,037, was accrued as of December 31, 2016 and subsequently paid on January 10, 2017. Total dividends paid to holders of the Company\u2019s common stock was $3,878,489 during the year ended December 31, 2016.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 478,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,353,450)",
+     "",
+     "$",
+     "(1,609,247)",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "2,376,986",
+     "",
+     "",
+     "659,671",
+     ""
+    ],
+    [
+     "Amortization of above (below) market leases",
+     "",
+     "(994)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  FFO",
+     "$",
+     "(3,977,458)",
+     "",
+     "$",
+     "(949,576)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FFO per Share",
+     "$",
+     "(0.43)",
+     "",
+     "$",
+     "(3.80)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding",
+     "",
+     "9,302,244",
+     "",
+     "",
+     "250,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 762,
+    "end_line": 781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "Management calculates AFFO, which is also a non-GAAP financial measure, by modifying the NAREIT computation of FFO by adjusting it for certain non-cash and non-recurring items. For the Company these items include acquisition and disposition costs, loss on the extinguishment of debt, straight line deferred rental revenue, stock-based compensation expense, amortization of deferred financing costs, recurring capital expenditures, recurring lease commissions, recurring tenant improvements and other non-cash and non-recurring items. Management believes that reporting AFFO in addition to FFO is a useful supplemental measure for the investment community to use when evaluating the operating performance of the Company on a comparative basis. The Company\u2019s FFO and AFFO computations may not be comparable to FFO and AFFO reported by other REITs that do not compute FFO in accordance with the NAREIT definition, that interpret the NAREIT definition differently than the Company does or that compute FFO and AFFO in a different manner.\nA reconciliation of FFO for the years ended December 31, 2016 and 2015 is as follows:",
+   "prose_after": "A reconciliation of AFFO for the years ended December 31, 2016 and 2015 is as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FFO",
+     "$",
+     "(3,977,458)",
+     "",
+     "$",
+     "(949,576)",
+     ""
+    ],
+    [
+     "Acquisition costs",
+     "",
+     "2,322,470",
+     "",
+     "",
+     "627,000",
+     ""
+    ],
+    [
+     "Straight line deferred rental revenue",
+     "",
+     "(681,242)",
+     "",
+     "",
+     "(23,295)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "1,684,812",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "",
+     "350,444",
+     "",
+     "",
+     "126,535",
+     ""
+    ],
+    [
+     "  AFFO",
+     "$",
+     "(300,974)",
+     "",
+     "$",
+     "(219,336)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AFFO per Share",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.88)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Shares Outstanding",
+     "",
+     "9,302,244",
+     "",
+     "",
+     "250,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 785,
+    "end_line": 806
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "A reconciliation of AFFO for the years ended December 31, 2016 and 2015 is as follows:",
+   "prose_after": "Off-Balance Sheet Arrangements\nThe Company has no off-balance sheet arrangements that have or are reasonably likely to have a current or future effect or change on the Company\u2019s financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that are material to investors. The term \u201coff-balance sheet arrangement\u201d generally means any transaction, agreement or other contractual arrangement to which an entity unconsolidated with the Company is a party, under which the Company has (i) any obligation arising under a guarantee contract, derivative instrument or variable interest; or (ii) a retained or contingent interest in assets transferred to such entity or similar arrangement that serves as credit, liquidity or market risk support for such assets.\nInflation\nHistorically, inflation has had a minimal impact on the operating performance of our healthcare facilities. Many of our triple-net lease agreements contain provisions designed to mitigate the adverse impact of inflation. These provisions include clauses that enable us to receive payment of increased rent pursuant to escalation clauses which generally increase rental rates during the terms of the leases. These escalation clauses often provide for fixed rent increases or indexed escalations (based upon the consumer price index or other measures). However, some of these contractual rent increases may be less than the actual rate of inflation. Most of our triple-net lease agreements require the tenant-operator to pay an allocable share of operating expenses, including common area maintenance costs, real estate taxes and insurance. This requirement reduces our exposure to increases in these costs and operating expenses resulting from inflation.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 782,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2016 and December 31, 2015",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Operations for the years ended December 31, 2016 and December 31, 2015",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the years ended December 31, 2016 and December 31, 2015",
+     "31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Cash Flows for the years ended December 31, 2016 and December 31, 2015",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "33"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 824,
+    "end_line": 837
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Historically, inflation has had a minimal impact on the operating performance of our healthcare facilities. Many of our triple-net lease agreements contain provisions designed to mitigate the adverse impact of inflation. These provisions include clauses that enable us to receive payment of increased rent pursuant to escalation clauses which generally increase rental rates during the terms of the leases. These escalation clauses often provide for fixed rent increases or indexed escalations (based upon the consumer price index or other measures). However, some of these contractual rent increases may be less than the actual rate of inflation. Most of our triple-net lease agreements require the tenant-operator to pay an allocable share of operating expenses, including common area maintenance costs, real estate taxes and insurance. This requirement reduces our exposure to increases in these costs and operating expenses resulting from inflation.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nWe are a smaller reporting company as defined by Rule 12b-2 of the Exchange Act and are not required to provide the information required under this Item 7A.\nITEM 8. CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nBoard of Directors and Stockholders\nBethesda, Maryland\nWe have audited the accompanying consolidated balance sheets of Global Medial REIT Inc. and its subsidiaries (collectively, the \u201cCompany\u201d) as of December 31, 2016 and 2015, and the related consolidated statements of operations, stockholders\u2019 equity (deficit), and cash flows for the years then ended. These consolidated financial statements are the responsibility of the entity\u2019s management. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform an audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in real estate:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "17,785,001",
+     "",
+     "$",
+     "4,563,852",
+     ""
+    ],
+    [
+     "Building",
+     "",
+     "179,253,398",
+     "",
+     "",
+     "51,574,271",
+     ""
+    ],
+    [
+     "Site improvements",
+     "",
+     "1,465,273",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Tenant improvements",
+     "",
+     "1,186,014",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "199,689,686",
+     "",
+     "",
+     "56,138,123",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(3,323,915)",
+     "",
+     "",
+     "(989,251)",
+     ""
+    ],
+    [
+     "Investment in real estate, net",
+     "",
+     "196,365,771",
+     "",
+     "",
+     "55,148,872",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "19,671,131",
+     "",
+     "",
+     "9,184,270",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "",
+     "941,344",
+     "",
+     "",
+     "447,627",
+     ""
+    ],
+    [
+     "Tenant receivables",
+     "",
+     "212,435",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Escrow deposits",
+     "",
+     "1,212,177",
+     "",
+     "",
+     "454,310",
+     ""
+    ],
+    [
+     "Acquired lease intangible assets, net",
+     "",
+     "7,144,276",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred assets",
+     "",
+     "704,537",
+     "",
+     "",
+     "93,646",
+     ""
+    ],
+    [
+     "Deferred financing costs, net",
+     "",
+     "927,085",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "140,374",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "227,319,130",
+     "",
+     "$",
+     "65,328,725",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "573,997",
+     "",
+     "$",
+     "683,857",
+     ""
+    ],
+    [
+     "Dividends payable",
+     "",
+     "3,604,037",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Security deposits",
+     "",
+     "719,592",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Due to related parties, net",
+     "",
+     "580,911",
+     "",
+     "",
+     "847,169",
+     ""
+    ],
+    [
+     "Acquired lease intangible liability, net",
+     "",
+     "277,917",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Convertible debenture, due to related party",
+     "",
+     "-",
+     "",
+     "",
+     "40,030,134",
+     ""
+    ],
+    [
+     "Notes payable to related parties",
+     "",
+     "421,000",
+     "",
+     "",
+     "421,000",
+     ""
+    ],
+    [
+     "  Notes payable, net of unamortized discount of $1,061,602 and $302,892 at December 31, 2016 and December 31, 2015, respectively",
+     "",
+     "38,413,298",
+     "",
+     "",
+     "23,485,173",
+     ""
+    ],
+    [
+     "  Revolving credit facility",
+     "",
+     "27,700,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Total liabilities",
+     "",
+     "72,290,752",
+     "",
+     "",
+     "65,467,333",
+     ""
+    ],
+    [
+     "Stockholders' equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, $0.001 par value, 10,000,000 shares authorized; no shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock $0.001 par value, 500,000,000 shares authorized at December 31, 2016 and December 31, 2015, respectively; 17,605,675 and 250,000 shares issued and outstanding at December 31, 2016 and December 31, 2015, respectively",
+     "",
+     "17,606",
+     "",
+     "",
+     "250",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "171,997,396",
+     "",
+     "",
+     "3,011,790",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(16,986,624)",
+     "",
+     "",
+     "(3,150,648)",
+     ""
+    ],
+    [
+     "  Total stockholders' equity (deficit)",
+     "",
+     "155,028,378",
+     "",
+     "",
+     "(138,608)",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity (deficit)",
+     "$",
+     "227,319,130",
+     "",
+     "$",
+     "65,328,725",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 921
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform an audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of Global Medical REIT Inc. and its subsidiaries as of December 31, 2016 and 2015, and the consolidated results of their operations and their cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\n/s/ MaloneBailey, LLP\nwww.malonebailey.com\nHouston, Texas\nMarch 27, 2017\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 861,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 924,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rental revenue",
+     "$",
+     "8,079,555",
+     "",
+     "$",
+     "2,049,196",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "130,775",
+     "",
+     "",
+     "12,471",
+     ""
+    ],
+    [
+     "  Total revenue",
+     "",
+     "8,210,330",
+     "",
+     "",
+     "2,061,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition fees",
+     "",
+     "1,568,470",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Acquisition fees \u2013 related party",
+     "",
+     "754,000",
+     "",
+     "",
+     "627,000",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "4,291,422",
+     "",
+     "",
+     "505,141",
+     ""
+    ],
+    [
+     "Management fees \u2013 related party",
+     "",
+     "1,434,294",
+     "",
+     "",
+     "360,000",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "2,334,664",
+     "",
+     "",
+     "659,671",
+     ""
+    ],
+    [
+     "Amortization expense",
+     "",
+     "42,322",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "4,138,608",
+     "",
+     "",
+     "1,519,102",
+     ""
+    ],
+    [
+     "  Total expenses",
+     "",
+     "14,563,780",
+     "",
+     "",
+     "3,670,914",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(6,353,450)",
+     "",
+     "$",
+     "(1,609,247)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share \u2013 Basic and Diluted",
+     "$",
+     "(0.68)",
+     "",
+     "$",
+     "(6.44)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Weighted average shares outstanding \u2013 Basic and Diluted",
+     "",
+     "9,302,244",
+     "",
+     "",
+     "250,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 928,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity (Deficit)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 924,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 962,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "$ Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2014",
+     "",
+     "250,000",
+     "$",
+     "250",
+     "",
+     "3,011,790",
+     "",
+     "$",
+     "(1,285,801)",
+     "",
+     "$",
+     "1,726,239",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,609,247)",
+     "",
+     "",
+     "(1,609,247)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends to stockholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(255,600)",
+     "",
+     "",
+     "(255,600)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2015",
+     "",
+     "250,000",
+     "$",
+     "250",
+     "$",
+     "3,011,790",
+     "",
+     "$",
+     "(3,150,648)",
+     "",
+     "$",
+     "(138,608)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(6,353,450)",
+     "",
+     "",
+     "(6,353,450)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of initial public offering shares of common stock",
+     "",
+     "15,000,000",
+     "",
+     "15,000",
+     "",
+     "138,954,275",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "138,969,275",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Reclassification of deferred initial public offering costs",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,681,259)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,681,259)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Conversion of convertible debenture due to related party to shares of common stock",
+     "",
+     "2,355,675",
+     "",
+     "2,356",
+     "",
+     "30,027,778",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "30,030,134",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,684,812",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,684,812",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends to stockholders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(7,482,526)",
+     "",
+     "",
+     "(7,482,526)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2016",
+     "",
+     "17,605,675",
+     "$",
+     "17,606",
+     "$",
+     "171,997,396",
+     "",
+     "$",
+     "(16,986,624)",
+     "",
+     "$",
+     "155,028,378",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 966,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholders\u2019 Equity (Deficit)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 962,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(6,353,450)",
+     "",
+     "$",
+     "(1,609,247)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Depreciation expense",
+     "",
+     "2,334,664",
+     "",
+     "",
+     "659,671",
+     ""
+    ],
+    [
+     "      Amortization of deferred financing costs",
+     "",
+     "350,444",
+     "",
+     "",
+     "126,535",
+     ""
+    ],
+    [
+     "      Amortization of acquired lease intangible assets",
+     "",
+     "42,322",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Amortization of above (below) market leases",
+     "",
+     "(994)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Stock-based compensation expense",
+     "",
+     "1,684,812",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Restricted cash",
+     "",
+     "(558,079)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Tenant receivables",
+     "",
+     "(212,435)",
+     "",
+     "",
+     "2,793",
+     ""
+    ],
+    [
+     "      Deferred assets",
+     "",
+     "(681,242)",
+     "",
+     "",
+     "(93,646)",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "(39,509)",
+     "",
+     "",
+     "345,093",
+     ""
+    ],
+    [
+     "      Security deposits",
+     "",
+     "719,592",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accrued management fees due to related party",
+     "",
+     "(9,291)",
+     "",
+     "",
+     "360,000",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(2,723,166)",
+     "",
+     "",
+     "(208,801)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Escrow deposits for purchase of properties",
+     "",
+     "104,310",
+     "",
+     "",
+     "(439,433)",
+     ""
+    ],
+    [
+     "Loan repayments from (made to) related parties",
+     "",
+     "137,727",
+     "",
+     "",
+     "(135,196)",
+     ""
+    ],
+    [
+     "Cash paid for pre-acquisition costs",
+     "",
+     "(140,374)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Acquisition of land, buildings, and other tangible and intangible assets and liabilities",
+     "",
+     "(150,459,250)",
+     "",
+     "",
+     "(31,764,361)",
+     ""
+    ],
+    [
+     "      Net cash used in investing activities",
+     "",
+     "(150,357,587)",
+     "",
+     "",
+     "(32,338,990)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds received from initial public offering",
+     "",
+     "137,288,016",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in restricted cash",
+     "",
+     "64,362",
+     "",
+     "",
+     "(249,908)",
+     ""
+    ],
+    [
+     "Escrow deposits required by third party lenders",
+     "",
+     "(862,177)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loan (repayments to) received from related parties",
+     "",
+     "(394,694)",
+     "",
+     "",
+     "291,597",
+     ""
+    ],
+    [
+     "Proceeds from convertible debenture, due to related party",
+     "",
+     "-",
+     "",
+     "",
+     "34,584,032",
+     ""
+    ],
+    [
+     "Repayments of convertible debenture, due to related party",
+     "",
+     "(10,000,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from notes payable to related parties",
+     "",
+     "1,950,000",
+     "",
+     "",
+     "382,805",
+     ""
+    ],
+    [
+     "Repayments of notes payable from related parties",
+     "",
+     "(1,950,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds received from revolving credit facility",
+     "",
+     "27,700,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from notes payable related to acquisitions",
+     "",
+     "41,320,900",
+     "",
+     "",
+     "7,377,500",
+     ""
+    ],
+    [
+     "Payments on notes payable related to acquisitions",
+     "",
+     "(25,634,065)",
+     "",
+     "",
+     "(349,435)",
+     ""
+    ],
+    [
+     "Payments of deferred financing costs",
+     "",
+     "(2,036,239)",
+     "",
+     "",
+     "(137,736)",
+     ""
+    ],
+    [
+     "Dividends paid to stockholders",
+     "",
+     "(3,878,489)",
+     "",
+     "",
+     "(255,600)",
+     ""
+    ],
+    [
+     "      Net cash provided by financing activities",
+     "",
+     "163,567,614",
+     "",
+     "",
+     "41,643,255",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "10,486,861",
+     "",
+     "",
+     "9,095,464",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2014beginning of period",
+     "",
+     "9,184,270",
+     "",
+     "",
+     "88,806",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\u2014end of period",
+     "$",
+     "19,671,131",
+     "",
+     "$",
+     "9,184,270",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash payments for interest",
+     "$",
+     "4,099,426",
+     "",
+     "$",
+     "1,165,157",
+     ""
+    ],
+    [
+     "Noncash financing and investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Conversion of convertible debenture due to related party to shares of common stock",
+     "$",
+     "30,030,134",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Reclassification of deferred initial public offering costs to additional paid-in capital",
+     "$",
+     "1,681,259",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Accrued dividends payable",
+     "$",
+     "3,604,037",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1005,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNotes to Consolidated Financial Statements\nNote 1 \u2013 Organization\nBackground\nGlobal Medical REIT Inc. (the \u201cCompany\u201d) is a Maryland corporation engaged primarily in the acquisition of licensed, state-of-the-art, purpose-built healthcare facilities and the leasing of these facilities to leading clinical operators with dominant market share. The Company is externally managed and advised by Inter-American Management, LLC (the \u201cAdvisor\u201d).\nThe Company holds its facilities and conducts its operations through a Delaware limited partnership subsidiary called Global Medical REIT L.P. (the \u201cOperating Partnership\u201d). The Company serves as the sole general partner of the Operating Partnership through a wholly-owned subsidiary of the Company called Global Medical REIT GP LLC (the \u201cGP\u201d), a Delaware limited liability company. As of December 31, 2016, the Company was the 97.7% limited partner of the Operating Partnership, with the remaining 2.3% owned by the holders of the Company\u2019s long term incentive plan (\u201cLTIP\u201d) units. Refer to Note 7 \u2013 \u201c2016 Equity Incentive Plan\u201d for additional information regarding the LTIP units. The Company has contributed all of its healthcare facilities to the Operating Partnership in exchange for common units of limited partnership interest in the Operating Partnership. The Company intends to conduct all future acquisition activity and operations through the Operating Partnership. The Operating Partnership has separate wholly-owned Delaware limited liability company subsidiaries that were formed for each healthcare facility acquisition.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1071,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Land and site improvements",
+     "$",
+     "5,614,486",
+     ""
+    ],
+    [
+     "Building and tenant improvements",
+     "",
+     "56,220,509",
+     ""
+    ],
+    [
+     "In place leases",
+     "",
+     "5,154,249",
+     ""
+    ],
+    [
+     "Above market lease intangibles",
+     "",
+     "74,096",
+     ""
+    ],
+    [
+     "Leasing costs",
+     "",
+     "1,088,813",
+     ""
+    ],
+    [
+     "Below market lease intangibles",
+     "",
+     "(59,153)",
+     ""
+    ],
+    [
+     "  Total purchase price",
+     "$",
+     "68,093,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1281,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "Upon the closing of the acquisition of the Mechanicsburg Property and acceptance of the Assignment, the Company assumed from the Lease Assignor the existing triple-net lease agreement (the \u201cMechanicsburg Lease\u201d) pursuant to which the Mechanicsburg Property is leased to HealthSouth with a remaining initial lease term of approximately 4.5 years, subject to two consecutive five-year renewal options by the tenant. The annual rent for the Mechanicsburg Property is currently $1,836,886, subject to annual rent escalations based on increases in the CPI, but not greater than 4% nor less than 2%. HealthSouth has the option under the Mechanicsburg Lease to purchase the Mechanicsburg Property at the end of the initial lease term and at the end of each renewal term thereof, if any, upon the terms and conditions set forth in the Mechanicsburg Lease.\nThe obligations under the Mesa Lease are guaranteed by HealthSouth (NYSE: HLS). Additionally, HealthSouth is the tenant of the leases for both the Altoona Property and the Mechanicsburg Property. Information about HealthSouth, including its audited historical financial statements, can be obtained from its Annual Report on Form 10-K and other reports and filings available on its website at http://www.healthsouth.com/ or on the SEC website at www.sec.gov. The HealthSouth acquisitions were funded using the Company\u2019s revolving credit facility and available cash.\nAccounting Treatment\nThe Company accounted for the acquisitions of the three HealthSouth facilities as business combinations in accordance with the provisions of ASC Topic 805.\nThe following table presents the preliminary purchase price allocation for the assets acquired as part of the HealthSouth facilities acquisitions:",
+   "prose_after": "The above allocation is preliminary and subject to revision within the measurement period, not to exceed one year from the date of the acquisition.\nEllijay Facilities\nOn December 16, 2016, pursuant to the terms of an asset purchase agreement between the Company, as Purchaser, and SunLink Healthcare Professional Property, LLC, a Georgia limited liability company, as seller (\u201cSunLink\u201d), the Company acquired three buildings, consisting of one medical office building and two ancillary healthcare related buildings (the \u201cFacilities\u201d), encompassing an aggregate of 44,162 square feet located in Ellijay, Georgia, for a purchase price of $4.9 million. The acquisitions included the SunLink Facilities, together with the real property, the improvements, and all appurtenances thereto owned by the SunLink. The SunLink Facilities are operated by Piedmont Mountainside Hospital, Inc., the existing tenant of the SunLink Facilities (\u201cPiedmont\u201d).\nUpon the closing of the transaction, the Company assumed the previous landlord\u2019s interest in the existing 10-year triple-net lease with Piedmont, effective as of July 1, 2016 and expiring in 2026. The acquisition was funded using a portion of the proceeds from the Company\u2019s initial public offering.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Land and site improvements",
+     "$",
+     "913,509",
+     ""
+    ],
+    [
+     "Building and tenant improvements",
+     "",
+     "3,336,809",
+     ""
+    ],
+    [
+     "In place leases",
+     "",
+     "672,307",
+     ""
+    ],
+    [
+     "Leasing commissions and legal fees",
+     "",
+     "197,576",
+     ""
+    ],
+    [
+     "Below market lease intangibles",
+     "",
+     "(220,201)",
+     ""
+    ],
+    [
+     "  Total purchase price",
+     "$",
+     "4,900,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1317
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "On December 16, 2016, pursuant to the terms of an asset purchase agreement between the Company, as Purchaser, and SunLink Healthcare Professional Property, LLC, a Georgia limited liability company, as seller (\u201cSunLink\u201d), the Company acquired three buildings, consisting of one medical office building and two ancillary healthcare related buildings (the \u201cFacilities\u201d), encompassing an aggregate of 44,162 square feet located in Ellijay, Georgia, for a purchase price of $4.9 million. The acquisitions included the SunLink Facilities, together with the real property, the improvements, and all appurtenances thereto owned by the SunLink. The SunLink Facilities are operated by Piedmont Mountainside Hospital, Inc., the existing tenant of the SunLink Facilities (\u201cPiedmont\u201d).\nUpon the closing of the transaction, the Company assumed the previous landlord\u2019s interest in the existing 10-year triple-net lease with Piedmont, effective as of July 1, 2016 and expiring in 2026. The acquisition was funded using a portion of the proceeds from the Company\u2019s initial public offering.\nAccounting Treatment\nThe Company accounted for the acquisition of the Ellijay facilities as a business combination in accordance with the provisions of ASC Topic 805.\nThe following table presents the preliminary purchase price allocation for the assets acquired as part of the HealthSouth facilities acquisition:",
+   "prose_after": "The above allocation is preliminary and subject to revision within the measurement period, not to exceed one year from the date of the acquisition.\nCarson City Facilities\nOn September 27, 2016, the Company assumed the original buyer\u2019s interest in an asset purchase agreement between the original buyer and Carson Medical Complex, a Nevada general partnership, as seller (\u201cCarson\u201d). On October 31, 2016, the Company, pursuant to the asset purchase agreement, acquired two medical office buildings (the \u201cCarson Facilities\u201d), encompassing an aggregate of 20,632 square feet, located in Carson City, Nevada for a purchase price of $3.8 million (approximately $4.0 million including legal and related fees). The acquisitions included the Carson Facilities, together with the real property, the improvements, and all appurtenances thereto owned by Carson. The Carson Facilities are operated by Carson Medical Group, a Nevada professional corporation, the existing tenant of the Carson Facilities (the \u201cCarson Tenant\u201d).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1270,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1320,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Land",
+     "",
+     "Building",
+     "",
+     "Improvements and Intangible Assets and Liabilities",
+     "",
+     "Gross Investment",
+     ""
+    ],
+    [
+     "Balances as of January 1, 2016",
+     "$",
+     "4,563,852",
+     "$",
+     "51,574,271",
+     "$",
+     "-",
+     "$",
+     "56,138,123"
+    ],
+    [
+     "Acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  HealthSouth Facilities",
+     "",
+     "4,285,439",
+     "",
+     "55,442,121",
+     "",
+     "8,365,440",
+     "",
+     "68,093,000"
+    ],
+    [
+     "  Ellijay Facilities",
+     "",
+     "777,283",
+     "",
+     "2,929,183",
+     "",
+     "1,193,534",
+     "",
+     "4,900,000"
+    ],
+    [
+     "  Carson City Facilities",
+     "",
+     "760,000",
+     "",
+     "3,268,350",
+     "",
+     "-",
+     "",
+     "4,028,350"
+    ],
+    [
+     "  Sandusky Facilities",
+     "",
+     "228,427",
+     "",
+     "4,518,978",
+     "",
+     "-",
+     "",
+     "4,747,405"
+    ],
+    [
+     "  Watertown Facilities",
+     "",
+     "1,100,000",
+     "",
+     "8,002,171",
+     "",
+     "-",
+     "",
+     "9,102,171"
+    ],
+    [
+     "  East Orange Facility",
+     "",
+     "2,150,000",
+     "",
+     "10,112,200",
+     "",
+     "-",
+     "",
+     "12,262,200"
+    ],
+    [
+     "  Reading Facilities",
+     "",
+     "1,440,000",
+     "",
+     "7,939,985",
+     "",
+     "-",
+     "",
+     "9,379,985"
+    ],
+    [
+     "  Melbourne Facility",
+     "",
+     "1,200,000",
+     "",
+     "14,250,000",
+     "",
+     "-",
+     "",
+     "15,450,000"
+    ],
+    [
+     "  Westland Facility",
+     "",
+     "230,000",
+     "",
+     "4,520,000",
+     "",
+     "-",
+     "",
+     "4,750,000"
+    ],
+    [
+     "  Plano Facility",
+     "",
+     "1,050,000",
+     "",
+     "16,696,139",
+     "",
+     "-",
+     "",
+     "17,746,139"
+    ],
+    [
+     "Total Additions:",
+     "",
+     "13,221,149",
+     "",
+     "127,679,127",
+     "",
+     "9,558,974",
+     "",
+     "150,459,250"
+    ],
+    [
+     "Balances as of December 31, 2016",
+     "$",
+     "17,785,001",
+     "$",
+     "179,253,398",
+     "$",
+     "9,558,974",
+     "$",
+     "206,597,373"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1377,
+    "end_line": 1400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "Additional funding for this transaction was received from ZH USA, LLC during the year ended December 31, 2015 in the amount of $9,369,310 (consisting of $9,025,000 funded directly for this transaction and $344,310 that was held in escrow from previous funding from ZH USA, LLC). The $9,369,310 was recorded by the Company as unsecured Convertible Debentures due to related party on demand, bearing interest at eight percent per annum. ZH USA, LLC may elect to convert all or a portion of the outstanding principal amount of the Convertible Debenture into shares of the Company\u2019s common stock in an amount equal to the principal amount of the Convertible Debenture, together with accrued but unpaid interest, divided by $12.748. See Note 6 \u2013 \u201cRelated Party Transactions\u201d for details regarding the conversion to common stock or pay-off of the Convertible Debenture balance as of December 31, 2016.\nA rollforward of the gross investment in land, building and improvements as of December 31, 2016, resulting from the ten acquisitions completed during the year ended December 31, 2016, is as follows:",
+   "prose_after": "A rollforward of the gross investment in land, building and improvements as of December 31, 2015, resulting from the two acquisitions completed during the year ended December 31, 2015, is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1366,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1401,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Land",
+     "",
+     "Building",
+     "",
+     "Improvements and Intangible Assets and Liabilities",
+     "",
+     "Gross Investment",
+     ""
+    ],
+    [
+     "Balances as of January 1, 2015",
+     "$",
+     "572,400",
+     "$",
+     "23,801,362",
+     "$",
+     "-",
+     "$",
+     "24,373,762"
+    ],
+    [
+     "Acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Tennessee Facilities",
+     "",
+     "2,704,452",
+     "",
+     "17,451,238",
+     "",
+     "-",
+     "",
+     "20,155,690"
+    ],
+    [
+     "  West Mifflin Facility",
+     "",
+     "1,287,000",
+     "",
+     "10,321,671",
+     "",
+     "-",
+     "",
+     "11,608,671"
+    ],
+    [
+     "Total Additions:",
+     "",
+     "3,991,452",
+     "",
+     "27,772,909",
+     "",
+     "-",
+     "",
+     "31,764,361"
+    ],
+    [
+     "Balances as of December 31, 2016",
+     "$",
+     "4,563,852",
+     "$",
+     "51,574,271",
+     "$",
+     "-",
+     "$",
+     "56,138,123"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1404,
+    "end_line": 1419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "A rollforward of the gross investment in land, building and improvements as of December 31, 2015, resulting from the two acquisitions completed during the year ended December 31, 2015, is as follows:",
+   "prose_after": "Depreciation expense was $2,334,664 and $659,671 for the years ended December 31, 2016 and December 31, 2015, respectively.\nFor information related to property transactions that occurred subsequent to December 31, 2016 refer to Note 12 \u2013 \u201cSubsequent Events.\u201d\nSummary of Properties in the Company\u2019s Portfolio as of December 31, 2015\nTennessee Facilities\nOn December 31, 2015, the Company acquired a six building, 52,266 square foot medical clinic portfolio for a purchase price of $20.0 million (approximately $20.2 including legal and related fees). Five of the facilities are located in Tennessee and one facility is located in Mississippi. The portfolio will be leased back through Gastroenterology Center of the Midsouth, P.C. via an absolute triple-net lease agreement that expires in 2027. The tenant has two successive options to renew the lease for five year periods on the same terms and conditions as the primary non-revocable lease term with the exception of rent, which will be computed at the same rate of escalation used during the fixed lease term. Base rent increases by 1.75% each lease year commencing on January 1, 2018. The property is owned in fee simple. Funding for the transaction and all related costs was received in the form of a convertible debenture (\u201cConvertible Debenture\u201d) the Company issued to its majority stockholder in the total amount of $20,900,000. Refer to Note 6 \u2013 \u201cRelated Party Transactions\u201d for additional details regarding the funding of this transaction.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1401,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "14,097,839",
+     "",
+     "$",
+     "8,456,721",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,405,827)",
+     "",
+     "$",
+     "(776,656)",
+     ""
+    ],
+    [
+     "Loss per share",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "(3.11)",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "9,302,244",
+     "",
+     "",
+     "250,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "\u2013 Omaha, Inc. pursuant to a sublease which expires in 2023, with sub lessee options to renew up to 60 years. The real property where the Omaha facility and other improvements are located are subject to a land lease with Catholic Health Initiatives, a Colorado nonprofit corporation (the \u201cland lease\u201d). The land lease initially was to expire in 2023 with sub lessee options to renew up to 60 years. However, as of December 31, 2015, the Company exercised two five-year lease renewal options and therefore the land lease currently expires in 2033, subject to future renewal options by the Company. In connection with the acquisition of the Omaha facility in June 2014, the Company borrowed $15.06 million from Capital One and funded the remainder of the purchase price with funds from its majority stockholder. Refer to Note 4 \u2013 \u201cNotes Payable Related to Acquisitions and Revolving Credit Facility\u201d for additional details regarding the funding of this transaction and the prepayment in full of this note.\nUnaudited Pro Forma Financial Information for 2016 Business Combination Transactions\nThe following table illustrates the unaudited pro forma consolidated revenue, net loss, and earnings per share as if the entities that the Company acquired during the year ended December 31 2016 that were accounted for as business combinations (the HealthSouth, Ellijay, and Westland facilities) had occurred as of January 1, 2015:",
+   "prose_after": "Intangible Assets and Liabilities\nThe following is a summary of the carrying amount of intangible assets and liabilities as of December 31, 2016. The Company had no intangible assets or liabilities as of December 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "Accumulated\n\n\n\nAmortization",
+     "",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "In-place leases",
+     "$",
+     "5,826,556",
+     "$",
+     "(34,789)",
+     "",
+     "$",
+     "5,791,767"
+    ],
+    [
+     "Above market leases",
+     "",
+     "74,096",
+     "",
+     "(443)",
+     "",
+     "",
+     "73,653"
+    ],
+    [
+     "Leasing costs",
+     "",
+     "1,286,389",
+     "",
+     "(7,533)",
+     "",
+     "",
+     "1,278,856"
+    ],
+    [
+     "",
+     "$",
+     "7,187,041",
+     "$",
+     "(42,765)",
+     "",
+     "$",
+     "7,144,276"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Below market leases",
+     "$",
+     "279,354",
+     "$",
+     "(1,437)",
+     "",
+     "$",
+     "277,917"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1465,
+    "end_line": 1483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "Intangible Assets and Liabilities\nThe following is a summary of the carrying amount of intangible assets and liabilities as of December 31, 2016. The Company had no intangible assets or liabilities as of December 31, 2015.",
+   "prose_after": "The following is a summary of the acquired lease intangible amortization for the year ended December 31, 2016.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Amortization expense related to in-place leases",
+     "$",
+     "34,789"
+    ],
+    [
+     "Amortization expense related to leasing costs",
+     "$",
+     "7,533"
+    ],
+    [
+     "Decrease of rental revenue related to above market leases",
+     "$",
+     "443"
+    ],
+    [
+     "Increase of rental revenue related to below market leases",
+     "$",
+     "1,437"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1486,
+    "end_line": 1492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "The following is a summary of the acquired lease intangible amortization for the year ended December 31, 2016.",
+   "prose_after": "Future aggregate net amortization of the acquired lease intangible as of December 31, 2016, is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Net Increase in Revenue",
+     "",
+     "Net Increase in Expenses",
+     ""
+    ],
+    [
+     "2017",
+     "$",
+     "23,090",
+     "$",
+     "1,281,463"
+    ],
+    [
+     "2018",
+     "",
+     "23,090",
+     "",
+     "1,281,463"
+    ],
+    [
+     "2019",
+     "",
+     "23,090",
+     "",
+     "1,281,463"
+    ],
+    [
+     "2020",
+     "",
+     "23,090",
+     "",
+     "1,281,463"
+    ],
+    [
+     "2021",
+     "",
+     "20,246",
+     "",
+     "666,850"
+    ],
+    [
+     "Thereafter",
+     "",
+     "91,658",
+     "",
+     "1,277,921"
+    ],
+    [
+     "Total",
+     "$",
+     "204,264",
+     "$",
+     "7,070,623"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1495,
+    "end_line": 1508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Property Portfolio"
+    }
+   },
+   "prose_before": "Future aggregate net amortization of the acquired lease intangible as of December 31, 2016, is as follows:",
+   "prose_after": "For the year ended December 31, 2016, the weighted average amortization period for asset lease intangibles and liability\nlease intangibles are 5.5 years and 7.6 years, respectively.\nNote 4 \u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility\nSummary of Total Proceeds Received from Notes Payable Related to Acquisitions\nA summary of the total proceeds received from notes payable related to acquisitions during the years ended December 31, 2016 and December 31, 2015, is as follows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2016",
+     "",
+     "December 31, 2015",
+     ""
+    ],
+    [
+     "Plano Facility Financing",
+     "$",
+     "9,223,500",
+     "$",
+     "-"
+    ],
+    [
+     "West Mifflin Facility Financing",
+     "",
+     "-",
+     "",
+     "7,377,500"
+    ],
+    [
+     "Cantor Loan",
+     "",
+     "32,097,400",
+     "",
+     "-"
+    ],
+    [
+     "Total Proceeds Received from Notes Payable Related to Acquisitions",
+     "$",
+     "41,320,900",
+     "$",
+     "7,377,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1520,
+    "end_line": 1530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "For the year ended December 31, 2016, the weighted average amortization period for asset lease intangibles and liability\nlease intangibles are 5.5 years and 7.6 years, respectively.\nNote 4 \u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility\nSummary of Total Proceeds Received from Notes Payable Related to Acquisitions\nA summary of the total proceeds received from notes payable related to acquisitions during the years ended December 31, 2016 and December 31, 2015, is as follows",
+   "prose_after": "Summary of Notes Payable Related to Acquisitions, Net of Debt Discount\nAs disclosed in Note 2 \u2013 \u201cSummary of Significant Accounting Policies,\u201d effective for the fiscal year ended December 31, 2015, the Company early adopted the provisions of ASU 2015-03, which requires retrospective application. The adoption of ASU 2015-03 represented a change in accounting principle. A detail of the impact of adopting ASU 2015-03 on the Company\u2019s Notes Payable Related to Acquisitions, net of unamortized discount balances, as of December, 2016 and December 31, 2015, is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Notes payable related to acquisitions, gross",
+     "$",
+     "39,474,900",
+     "",
+     "$",
+     "23,788,065",
+     ""
+    ],
+    [
+     "Less: Unamortized debt discount",
+     "",
+     "(1,061,602)",
+     "",
+     "",
+     "(302,892)",
+     ""
+    ],
+    [
+     "Notes payable related to acquisitions, net",
+     "$",
+     "38,413,298",
+     "",
+     "$",
+     "23,485,173",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1535,
+    "end_line": 1544
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "Summary of Notes Payable Related to Acquisitions, Net of Debt Discount\nAs disclosed in Note 2 \u2013 \u201cSummary of Significant Accounting Policies,\u201d effective for the fiscal year ended December 31, 2015, the Company early adopted the provisions of ASU 2015-03, which requires retrospective application. The adoption of ASU 2015-03 represented a change in accounting principle. A detail of the impact of adopting ASU 2015-03 on the Company\u2019s Notes Payable Related to Acquisitions, net of unamortized discount balances, as of December, 2016 and December 31, 2015, is as follows:",
+   "prose_after": "A rollforward of the unamortized debt discount balance as of December 31, 2016 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of January 1, 2016, net",
+     "$",
+     "302,892",
+     ""
+    ],
+    [
+     "Additions \u2013 Plano and Cantor financings",
+     "",
+     "1,090,078",
+     ""
+    ],
+    [
+     "Write-off of Plano financing costs (a)(b)",
+     "",
+     "(53,280)",
+     ""
+    ],
+    [
+     "Debt discount amortization expense(b)",
+     "",
+     "(278,088)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2016, net",
+     "$",
+     "1,061,602",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1547,
+    "end_line": 1556
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "A rollforward of the unamortized debt discount balance as of December 31, 2016 is as follows:",
+   "prose_after": "(a) As disclosed in Note 3 \u2013 \u201cProperty Portfolio,\u201d the Plano loan was refinanced with proceeds from the Cantor Loan and accordingly the Plano related deferred financing costs were written off during the year ended December 31, 2016 into the \u201cInterest Expense\u201d line item in the accompanying Consolidated Statements of Operations.\n(b) Sum equals amortization expense incurred on the debt discount for the year ended December 31, 2016 of $331,368.\nA rollforward of the unamortized debt discount balance as of December 31, 2015 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of January 1, 2015, net",
+     "$",
+     "291,691",
+     ""
+    ],
+    [
+     "Additions \u2013 West Mifflin financing",
+     "",
+     "137,736",
+     ""
+    ],
+    [
+     "Debt discount amortization expense",
+     "",
+     "(126,535)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2015, net",
+     "$",
+     "302,892",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1563,
+    "end_line": 1571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "(a) As disclosed in Note 3 \u2013 \u201cProperty Portfolio,\u201d the Plano loan was refinanced with proceeds from the Cantor Loan and accordingly the Plano related deferred financing costs were written off during the year ended December 31, 2016 into the \u201cInterest Expense\u201d line item in the accompanying Consolidated Statements of Operations.\n(b) Sum equals amortization expense incurred on the debt discount for the year ended December 31, 2016 of $331,368.\nA rollforward of the unamortized debt discount balance as of December 31, 2015 is as follows:",
+   "prose_after": "Amortization expense incurred related to the debt discount was $331,368 and $126,535 for the years ended December 31, 2016 and December 31, 2015, respectively, and is included in the \u201cInterest Expense\u201d line item in the accompanying Consolidated Statements of Operations.\nSummary of Deferred Financing Costs, Net\nCosts incurred related to securing the Company\u2019s revolving credit facility have been capitalized as a deferred financing asset, net of accumulated amortization in the accompanying Consolidated Balance Sheet.\nA rollforward of the deferred financing cost balance as of December 31, 2016 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1509,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of January 1, 2016, net",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Additions \u2013 revolving credit facility",
+     "",
+     "946,161",
+     ""
+    ],
+    [
+     "Debt discount amortization expense",
+     "",
+     "(19,076)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2015, net",
+     "$",
+     "927,085",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1581,
+    "end_line": 1589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "Amortization expense incurred related to the debt discount was $331,368 and $126,535 for the years ended December 31, 2016 and December 31, 2015, respectively, and is included in the \u201cInterest Expense\u201d line item in the accompanying Consolidated Statements of Operations.\nSummary of Deferred Financing Costs, Net\nCosts incurred related to securing the Company\u2019s revolving credit facility have been capitalized as a deferred financing asset, net of accumulated amortization in the accompanying Consolidated Balance Sheet.\nA rollforward of the deferred financing cost balance as of December 31, 2016 is as follows:",
+   "prose_after": "Amortization expense incurred related to the revolving credit facility was $19,076 for the year ended December 31, 2016 and is included in the \u201cInterest Expense\u201d line item in the accompanying Consolidated Statements of Operations.\nCantor Loan\nOn March 31, 2016, through certain of the Company\u2019s wholly owned subsidiaries, the Company entered into a $32,097,400 portfolio commercial mortgage-backed securities loan (the \u201cCantor Loan\u201d) with Cantor Commercial Real Estate Lending, LP (\u201cCCRE\u201d). The subsidiaries are GMR Melbourne, LLC, GMR Westland, LLC, GMR Memphis, LLC, and GMR Plano, LLC (\u201cGMR Loan Subsidiaries\u201d). The Cantor Loan has cross-default and cross-collateral terms. The Company used the proceeds of the Cantor Loan to acquire the Marina Towers (Melbourne, FL) and the Surgical Institute of Michigan (Westland, MI) properties and to refinance the Star Medical (Plano, TX) assets by paying off the existing principal amount of the loan with East West bank in the amount of $9,223,500, and the Company granted a security interest in the Gastro One (Memphis, TN) assets.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2017",
+     "$",
+     "-"
+    ],
+    [
+     "2018",
+     "",
+     "-"
+    ],
+    [
+     "2019",
+     "",
+     "-"
+    ],
+    [
+     "2020",
+     "",
+     "-"
+    ],
+    [
+     "2021",
+     "",
+     "-"
+    ],
+    [
+     "Thereafter",
+     "",
+     "32,097,400"
+    ],
+    [
+     "  Total",
+     "$",
+     "32,097,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1604,
+    "end_line": 1615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "The Cantor Loan has a maturity date of April 6, 2026 and accrues annual interest at 5.22%. The first five years of the term require interest only payments and after that payments will include interest and principal, amortized over a 30-year schedule. Prepayment can only occur within four months prior to the maturity date, except that after the earlier of (a) 2 years after the loan is placed in a securitized mortgage pool, or (b) May 6, 2020, the Cantor Loan can be fully and partially defeased upon payment of amounts due under the Cantor Loan and payment of a defeasance amount that is sufficient to purchase U.S. government securities equal to the scheduled payments of principal, interest, fees, and any other amounts due related to a full or partial defeasance under the Cantor Loan.\nThe Company is securing the payment of the Cantor Loan with the assets, including property, facilities, and rents, held by the GMR Loan Subsidiaries and has agreed to guarantee certain customary recourse obligations, including findings of fraud, gross negligence, or breach of environmental covenants by the GMR Loan Subsidiaries. The GMR Loan Subsidiaries will be required to maintain a monthly debt service coverage ratio of 1.35:1.00 for all of the collateral properties in the aggregate.\nNo principal payments were made on this note for the year ended December 31, 2016. The note balance as of December 31, 2016 and December 31, 2015 was $32,097,400 and zero, respectively. Interest expense incurred on this note was for the year ended December 31, 2016 was $1,279,884. No interest expense was incurred on this note for the year ended December 31, 2015.\nAs of December 31, 2016, scheduled principal payments due for each fiscal year ended December 31 are listed below as follows:",
+   "prose_after": "West Mifflin Note Payable\nIn order to finance a portion of the purchase price for the West Mifflin facility, on September 25, 2015 the Company (through its wholly owned subsidiary GMR Pittsburgh LLC, as borrower) entered into a Term Loan and Security Agreement with Capital One to borrow $7,377,500. The note bears interest at 3.72% per annum and all unpaid interest and principal is due on September 25, 2020. Interest is paid in arrears and interest payments begin on November 1, 2015, and on the first day of each calendar month thereafter. Principal payments begin on November 1, 2018 and on the first day of each calendar month thereafter based on an amortization schedule with the principal balance due on the maturity date. The note may not be prepaid in whole or in part prior to September 25, 2017. Thereafter, the Company, at its option, may prepay the note at any time, in whole (but not in part) on at least thirty calendar days but not more than sixty calendar days advance written notice. The note has an early termination fee of two percent if prepaid prior to September 25, 2018. The note requires a quarterly fixed charge coverage ratio of at least 1:1, a quarterly minimum debt yield of 0.09:1.00, and annualized Operator EBITDAR measured on a quarterly basis of not less than $6,000,000. The Operator is Associates in Ophthalmology, Ltd. and Associates Surgery Centers, LLC. No principal payments were made on this note for the years ended December 31, 2016 and December 31, 2015, respectively. The note balance as of December 31, 2016 and December 31, 2015 was $7,377,500. Interest expense incurred on this note was $279,017 and $51,078 for the years ended December 31, 2016 and December 31, 2015, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2017",
+     "$",
+     "-"
+    ],
+    [
+     "2018",
+     "",
+     "22,044"
+    ],
+    [
+     "2019",
+     "",
+     "136,007"
+    ],
+    [
+     "2020",
+     "",
+     "7,219,449"
+    ],
+    [
+     "  Total",
+     "$",
+     "7,377,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1623,
+    "end_line": 1632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Notes Payable Related to Acquisitions and Revolving Credit Facility"
+    }
+   },
+   "prose_before": "In order to finance a portion of the purchase price for the West Mifflin facility, on September 25, 2015 the Company (through its wholly owned subsidiary GMR Pittsburgh LLC, as borrower) entered into a Term Loan and Security Agreement with Capital One to borrow $7,377,500. The note bears interest at 3.72% per annum and all unpaid interest and principal is due on September 25, 2020. Interest is paid in arrears and interest payments begin on November 1, 2015, and on the first day of each calendar month thereafter. Principal payments begin on November 1, 2018 and on the first day of each calendar month thereafter based on an amortization schedule with the principal balance due on the maturity date. The note may not be prepaid in whole or in part prior to September 25, 2017. Thereafter, the Company, at its option, may prepay the note at any time, in whole (but not in part) on at least thirty calendar days but not more than sixty calendar days advance written notice. The note has an early termination fee of two percent if prepaid prior to September 25, 2018. The note requires a quarterly fixed charge coverage ratio of at least 1:1, a quarterly minimum debt yield of 0.09:1.00, and annualized Operator EBITDAR measured on a quarterly basis of not less than $6,000,000. The Operator is Associates in Ophthalmology, Ltd. and Associates Surgery Centers, LLC. No principal payments were made on this note for the years ended December 31, 2016 and December 31, 2015, respectively. The note balance as of December 31, 2016 and December 31, 2015 was $7,377,500. Interest expense incurred on this note was $279,017 and $51,078 for the years ended December 31, 2016 and December 31, 2015, respectively.\nAs of December 31, 2016, scheduled principal payments due for each fiscal year ended December 31 are listed below as follows:",
+   "prose_after": "Asheville Note Payable\nIn order to finance a portion of the purchase price of the Asheville facility, on September 15, 2014 the Company entered into a Promissory Note with the Bank of North Carolina to borrow $1,700,000. The note bears interest on the outstanding principal balance at the simple, fixed interest rate of 4.75% per annum and all unpaid principal and interest was due on February 15, 2017. Commencing on October 15, 2014, the Company made on the 15th of each calendar month until and including March 15, 2015, monthly payments consisting of interest only. Thereafter, commencing on April 15, 2015, the outstanding principal and accrued interest was payable in monthly amortizing payments on the 15th day of each calendar month. This note was paid in full on December 2, 2016 using proceeds from the Company\u2019s senior revolving credit facility which is disclosed in the \u201cRevolving Credit Facility\u201d section of this footnote. In accordance with the terms of the note there was no prepayment penalty for the payoff of this note. The Company made principal payments in the amount of $1,662,101 and $37,899 for the years ended December 31, 2016 and December 31, 2015, respectively. The note balance as of December 31, 2016 and December 31, 2015 was zero and $1,662,101, respectively. Interest expense incurred on this note was $76,318 and $81,160 for the years ended December 31, 2016 and December 31, 2015, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of January 1, 2016",
+     "$",
+     "40,030,134",
+     ""
+    ],
+    [
+     "Conversion of convertible debenture to common shares (March 2, 2016) (a)",
+     "",
+     "(15,000,000)",
+     ""
+    ],
+    [
+     "Conversion of convertible debenture to common shares (July 1, 2016) (a)",
+     "",
+     "(15,030,134)",
+     ""
+    ],
+    [
+     "Pay-off of remaining principal balance",
+     "",
+     "(10,000,000)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2016",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1730,
+    "end_line": 1739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Related Party Transactions"
+    }
+   },
+   "prose_before": "On June 15, 2016, in anticipation of its initial public offering, the Company entered into a Pay-Off Letter and Conversion Agreement (the \u201cPay-Off Letter and Conversion Agreement\u201d) with ZH USA, LLC with regards to the Convertible Debentures loaned to the Company. Under the terms of the Pay-Off Letter and Conversion Agreement, upon the closing date of the initial public offering on July 1, 2016, ZH USA, LLC converted $15,030,134 of the principal under the Convertible Debenture into 1,179,019 shares of the Company\u2019s registered common stock based on a conversion rate of $12.748 per share. Additionally, in accordance with the Pay-Off Letter and Conversion Agreement, on July 8, 2016 the Company paid off the remaining principal amount of $10,000,000 outstanding under the Convertible Debentures.\nOn July 8, 2016, also in accordance with the Pay-Off Letter and Conversion Agreement, the Company paid all accrued interest owed and outstanding on the Convertible Debentures in the amount of $1,716,811. Accrued interest was included in the line item \u201cAccrued Expenses\u201d in the accompanying Consolidated Balance Sheets.\nA rollforward of the funding from ZH USA, LLC classified as convertible debenture, due to related party as of December 31, 2016 is as follows:",
+   "prose_after": "(a) Total amount converted to common shares equals $30,030,134\nA rollforward of the funding from ZH USA, LLC classified as convertible debenture, due to majority stockholder as of December 31, 2015 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1727,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "related_party",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of January 1, 2015",
+     "$",
+     "5,446,102"
+    ],
+    [
+     "  Funds advanced for Tennessee Facilities acquisition",
+     "",
+     "20,900,000"
+    ],
+    [
+     "  Funds advanced for West Mifflin acquisition",
+     "",
+     "4,545,838"
+    ],
+    [
+     "  Funds advanced for Plano acquisition (closed post 12.31.15; see Note 11)",
+     "",
+     "9,000,000"
+    ],
+    [
+     "  Fund advanced to be used for future acquisitions",
+     "",
+     "138,194"
+    ],
+    [
+     "  Total funded during the year ended December 31, 2015",
+     "",
+     "34,584,032"
+    ],
+    [
+     "Balance as of December 31, 2015",
+     "$",
+     "40,030,134"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1744,
+    "end_line": 1757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Related Party Transactions"
+    }
+   },
+   "prose_before": "(a) Total amount converted to common shares equals $30,030,134\nA rollforward of the funding from ZH USA, LLC classified as convertible debenture, due to majority stockholder as of December 31, 2015 is as follows:",
+   "prose_after": "Interest expense on the Convertible Debentures was $1,242,899 and $581,342 for the years ended December 31, 2016 and December 31, 2015 respectively.\nPrior to the conversions and the pay-off of the remaining outstanding principal balance of the Convertible Debentures discussed above, the Company analyzed the conversion option in the convertible debenture for derivative accounting treatment under ASC Topic 815, Derivatives and Hedging, and determined that the instrument does not qualify for derivative accounting. The Company performed an analysis in accordance with ASC Topic 470-20, Debt with Conversion and Other Options, to determine if the conversion option was subject to a beneficial conversion feature and determined that the instrument does not have a beneficial conversion feature.\nNotes Payable to Related Parties\nDuring the year ended December 31, 2016, the Company received total funds in the amount of $450,000 in the form of an interest bearing note payable from a related party. The note incurred interest at 4% per annum and was due on demand. Interest expense incurred on this note was $10,284 for the year ended December 31, 2016. This note was paid in full with a payment of $450,000 during the year ended December 31, 2016.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1727,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Due from Advisor",
+     "",
+     "",
+     "Due to Advisor \u2013 Mgmt. Fees",
+     "",
+     "",
+     "Due to Advisor \u2013 Other Funds",
+     "",
+     "",
+     "Due (to) from Other Related Party",
+     "",
+     "",
+     "Total Due (To)\nFrom Related Parties, Net",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2016",
+     "$",
+     "178,111",
+     "",
+     "",
+     "(630,000)",
+     "",
+     "",
+     "(240,280)",
+     "",
+     "",
+     "(155,000)",
+     "",
+     "",
+     "(847,169)",
+     ""
+    ],
+    [
+     "Management fees incurred (a)",
+     "",
+     "",
+     "",
+     "",
+     "(1,434,294)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,434,294)",
+     ""
+    ],
+    [
+     "Management fees paid to Advisor (a)",
+     "",
+     "-",
+     "",
+     "",
+     "1,443,585",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,443,585",
+     ""
+    ],
+    [
+     "Funds repaid to Advisor (b)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "239,694",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "239,694",
+     ""
+    ],
+    [
+     "Funds repaid to Other Related Party (b)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "155,000",
+     "",
+     "",
+     "155,000",
+     ""
+    ],
+    [
+     "Funds loaned to Other Related Party (c)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,384",
+     "",
+     "",
+     "1,384",
+     ""
+    ],
+    [
+     "Funds repaid by Advisor (c)",
+     "",
+     "(178,111)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(178,111)",
+     ""
+    ],
+    [
+     "Funds loaned to ZH USA, LLC (c)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "39,000",
+     "",
+     "",
+     "39,000",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2016",
+     "$",
+     "-",
+     "",
+     "",
+     "(620,709)",
+     "",
+     "",
+     "(586)",
+     "",
+     "",
+     "40,384",
+     "",
+     "",
+     "(580,911)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1777,
+    "end_line": 1794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Related Party Transactions"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2016, the Company received total funds in the amount of $450,000 in the form of an interest bearing note payable from a related party. The note incurred interest at 4% per annum and was due on demand. Interest expense incurred on this note was $10,284 for the year ended December 31, 2016. This note was paid in full with a payment of $450,000 during the year ended December 31, 2016.\nDuring the year ended December 31, 2015, the Company received funds in the amount of $382,805 from ZH USA, LLC in the form of a non-interest bearing due on demand note payable. No funds were received from ZH USA, LLC during the year ended December 31, 2016. The balance from this related party loan was $421,000 as of December 31, 2016 and December 31, 2015, respectively, and are classified as \u201cNotes payable to related parties\u201d on the accompanying Consolidated Balance Sheets.\nZH USA, LLC Loan\nOn June 7, 2016, the Company received an interest free loan from ZH USA, LLC in the principal amount of $1.5 million, which was repaid in full on July 8, 2016, using a portion of the proceeds from the initial public offering.\nDue to Related Parties, Net\nAll related party balances are due on demand and non-interest bearing. A rollforward of the due (to) from related parties balance, net as of December 31, 2016 is as follows:",
+   "prose_after": "(a) Net amount repaid of $9,291 consists of $1,434,294 in management fee expense incurred, net of $1,443,585 of accrued management fees that were repaid to the Advisor. This is a cash flow operating activity.\n(b) Total amount of $394,694 consists of $239,694 repaid by the Company to the Advisor and $155,000 repaid by the Company to another related party. This is a cash flow financing activity.\n(c) Net amount of $137,727 consists of loan repaid by Advisor in the amount of $178,111, net of $39,000 that the Company loaned to a related party for its general use, and $1,384 in additional funds loaned to related party. This is a cash flow investing activity.\nA rollforward of the due (to) from related parties balance, net as of December 31, 2015 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Due from Advisor",
+     "",
+     "Due to Advisor \u2013 Mgmt. Fees",
+     "",
+     "",
+     "Due to Advisor \u2013 Other Funds",
+     "",
+     "",
+     "Due to Other Related Party",
+     "",
+     "",
+     "Total Due (To)\nFrom Related Parties, Net",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2015",
+     "$",
+     "42,915",
+     "",
+     "(270,000)",
+     "",
+     "",
+     "(103,683)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(330,768)",
+     ""
+    ],
+    [
+     "Management fees due to Advisor (c)",
+     "",
+     "-",
+     "",
+     "(360,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(360,000)",
+     ""
+    ],
+    [
+     "Funds loaned by Advisor (a)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(136,597)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(136,597)",
+     ""
+    ],
+    [
+     "Funds loaned to Advisor (b)",
+     "",
+     "135,196",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "135,196",
+     ""
+    ],
+    [
+     "Funds loaned by Other Related Party (a)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(155,000)",
+     "",
+     "",
+     "(155,000)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2015",
+     "$",
+     "178,111",
+     "",
+     "(630,000)",
+     "",
+     "",
+     "(240,280)",
+     "",
+     "",
+     "(155,000)",
+     "",
+     "",
+     "(847,169)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1801,
+    "end_line": 1816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Related Party Transactions"
+    }
+   },
+   "prose_before": "(a) Net amount repaid of $9,291 consists of $1,434,294 in management fee expense incurred, net of $1,443,585 of accrued management fees that were repaid to the Advisor. This is a cash flow operating activity.\n(b) Total amount of $394,694 consists of $239,694 repaid by the Company to the Advisor and $155,000 repaid by the Company to another related party. This is a cash flow financing activity.\n(c) Net amount of $137,727 consists of loan repaid by Advisor in the amount of $178,111, net of $39,000 that the Company loaned to a related party for its general use, and $1,384 in additional funds loaned to related party. This is a cash flow investing activity.\nA rollforward of the due (to) from related parties balance, net as of December 31, 2015 is as follows:",
+   "prose_after": "(a) Total funds loaned to the Company of $291,597 were primarily used by the Company for general corporate purposes.\n(b) Funds loaned were used by the Advisor for the Asheville facility acquisition.\n(c) This amount represents a cash flow statement operating activity.\nNote 7 - 2016 Equity Incentive Plan\nLTIP Units and Related Accounting Impact\nPrior to the completion of the initial public offering on July 1, 2016, the Board approved and adopted the 2016 Equity Incentive Plan. The purpose of the 2016 Equity Incentive Plan is to attract and retain qualified persons upon whom, in large measure, our sustained progress, growth and profitability depend, to motivate the participants to achieve long-term company goals and to more closely align the participants\u2019 interests with those of the Company\u2019s other stockholders by providing them with a proprietary interest in the Company\u2019s growth and performance. The Company\u2019s executive officers, employees, employees of our advisor and its affiliates, consultants and non-employee directors are eligible to participate in the 2016 Equity Incentive Plan.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "related_party",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "LTIP units granted on December 21, 2016",
+     "56,254"
+    ],
+    [
+     "LTIP units granted on July 1, 2016",
+     "358,250"
+    ],
+    [
+     "  Total LTIP units granted for the year ended December 31, 2016",
+     "414,504"
+    ],
+    [
+     "LTIP units remaining to be granted under 2016 Equity Incentive Plan",
+     "817,893"
+    ],
+    [
+     "  Total LTIP units to be granted under 2016 Equity Incentive Plan",
+     "1,232,397"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1829,
+    "end_line": 1839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "2016 Equity Incentive Plan"
+    }
+   },
+   "prose_before": "Note 7 - 2016 Equity Incentive Plan\nLTIP Units and Related Accounting Impact\nPrior to the completion of the initial public offering on July 1, 2016, the Board approved and adopted the 2016 Equity Incentive Plan. The purpose of the 2016 Equity Incentive Plan is to attract and retain qualified persons upon whom, in large measure, our sustained progress, growth and profitability depend, to motivate the participants to achieve long-term company goals and to more closely align the participants\u2019 interests with those of the Company\u2019s other stockholders by providing them with a proprietary interest in the Company\u2019s growth and performance. The Company\u2019s executive officers, employees, employees of our advisor and its affiliates, consultants and non-employee directors are eligible to participate in the 2016 Equity Incentive Plan.\nA detail of the LTIP units granted under the 2016 Equity Incentive Plan during the year ended December 31, 2016, and the LTIPs remaining to be granted as of December 31, 2016 is as follows:",
+   "prose_after": "An aggregate of 414,504 LTIP units were granted during the year ended December 31, 2016 pursuant to the 2016 Equity Incentive Plan via separate LTIP unit grants on December 21, 2016 and July 1, 2016. As of December 31, 2016, an aggregate of 817,893 additional LTIP units were available for future issuance under the Company\u2019s 2016 Equity Incentive Plan, for a total of 1,232,397 LTIP units that can be granted, which represents 7 percent of the fully diluted outstanding shares of the Company\u2019s common stock upon completion of the initial public offering, including the shares sold pursuant to the underwriters\u2019 over-allotment option (a total of 17,605,675 common shares outstanding).\nOf the 414,504 LTIP units that were granted, 60,400 units vested immediately on July 1, 2016 upon completion of the Company\u2019s initial public offering (the \u201cIPO Units\u201d), 68,900 LTIP units vested on December 1, 2016, and an additional 8,000 LTIP units vested during December 2016. The remaining 277,204 LTIP units (the \u201cService LTIPs\u201d) consist of 263,454 units granted to employees of the Advisor and its affiliates deemed to be non-employees in accordance with ASC Topic 505 and vest over periods of 36 months, 41 months, and 53 months, respectively, as well as 13,750 units granted to the Company\u2019s independent directors that were deemed to be employees in accordance with ASC Topic 718 and vest over a period of 12 months.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1772,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2017",
+     "$",
+     "15,177,903"
+    ],
+    [
+     "2018",
+     "",
+     "15,395,212"
+    ],
+    [
+     "2019",
+     "",
+     "15,716,511"
+    ],
+    [
+     "2020",
+     "",
+     "16,025,456"
+    ],
+    [
+     "2021",
+     "",
+     "13,881,629"
+    ],
+    [
+     "Thereafter",
+     "",
+     "78,717,957"
+    ],
+    [
+     "  Total",
+     "$",
+     "154,914,668"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1877,
+    "end_line": 1888
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Rental Revenue"
+    }
+   },
+   "prose_before": "LTIP units are convertible into OP Units on a one for one basis, subject to certain conditions as set forth in the LTIP Unit Vesting Agreement entered into by each LTIP unit holder. First, the LTIP units must have vested. The existing LTIP Unit Vesting Agreements generally provide for a vesting period of up to five years. Second, the number of vested LTIP units that may be converted into OP Units is limited to the proportion of the \"capital account equivalency\" that the LTIP units have achieved with the OP Units. The number of vested LTIP units that may be converted generally is equal to the capital account balance of such LTIP units divided by the capital account balance per unit of the OP units held by the General Partner. LTIP unit holders initially receive a capital account with a zero balance and receive priority allocations of certain gains to increase their capital account balances until they equal the capital account balances of OP Unit holders. Upon capital account equalization and vesting, LTIP units are convertible into an equal number of OP Units at the holder\u2019s election with notice to the Operating Partnership. The Operating Partnership, at any time at the election of the General Partner, may also force a conversion of vested LTIP units into OP Units, subject to the capital account equivalency requirement described in this paragraph.\nLTIP unit holders have the same voting rights as holders of OP Units, with the LTIP units voting as a single class with the OP Units and having one vote per LTIP unit. With certain exceptions, a majority vote of the LTIP unit holders is required to amend the provisions of the Partnership Agreement related to LTIP units.\nNote 8 \u2013 Rental Revenue\nThe aggregate annual minimum cash to be received by the Company on the noncancelable operating leases related to its portfolio of facilities in effect as of December 31, 2016, are as follows for the subsequent years ended December 31; as listed below:",
+   "prose_after": "For the year ended December 31, 2016, the Omaha facility constituted approximately 21% of the Company\u2019s rental revenue, the Plano facility constituted approximately 18% of rental revenue, the Tennessee facilities constituted approximately 17% of rental revenue, the West Mifflin facility constituted approximately 11% of rental revenue, the Melbourne facility constituted approximately 11% of rental revenue, the Reading facility constituted approximately 4% of rental revenue, and the Westland facilities constituted approximately 4% of rental revenue. The Asheville, East Orange, and Watertown facilities constituted approximately 3% of rental revenue each. The remaining 5% of rental revenue was derived from the other facilities in the Company\u2019s portfolio.\nThe Omaha facility constituted approximately 80% of the Company\u2019s rental revenue for the year ended December 31, 2015 and the West Mifflin and Asheville facilities constituted approximately 10% each.\nNote 9 \u2013 Omaha Land Lease Rent Expense\nThe Omaha facility land lease initially was to expire in 2023 with options to renew up to 60 years. However, the Company exercised two five-year lease renewal options and therefore the land lease currently expires in 2033, subject to future renewal options by the Company. Under the terms of the land lease, annual rents increase 12.5% every fifth anniversary of the lease. The initial land lease increase will occur in April 2017. The Company expensed $72,615 and $79,892 for the years ended December 31, 2016 and December 31, 2015, respectively. The aggregate minimum cash payments to be made by the Company on the non-cancelable Omaha facility related land lease in effect as of December 31, 2016, are as follows for the subsequent years ended December 31; as listed below.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1866,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1909,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2017",
+     "$",
+     "59,877"
+    ],
+    [
+     "2018",
+     "",
+     "63,619"
+    ],
+    [
+     "2019",
+     "",
+     "67,362"
+    ],
+    [
+     "2020",
+     "",
+     "67,362"
+    ],
+    [
+     "2021",
+     "",
+     "67,362"
+    ],
+    [
+     "Thereafter",
+     "",
+     "906,224"
+    ],
+    [
+     "  Total",
+     "$",
+     "1,231,806"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1897,
+    "end_line": 1908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Omaha Land Lease Rent Expense"
+    }
+   },
+   "prose_before": "The Omaha facility constituted approximately 80% of the Company\u2019s rental revenue for the year ended December 31, 2015 and the West Mifflin and Asheville facilities constituted approximately 10% each.\nNote 9 \u2013 Omaha Land Lease Rent Expense\nThe Omaha facility land lease initially was to expire in 2023 with options to renew up to 60 years. However, the Company exercised two five-year lease renewal options and therefore the land lease currently expires in 2033, subject to future renewal options by the Company. Under the terms of the land lease, annual rents increase 12.5% every fifth anniversary of the lease. The initial land lease increase will occur in April 2017. The Company expensed $72,615 and $79,892 for the years ended December 31, 2016 and December 31, 2015, respectively. The aggregate minimum cash payments to be made by the Company on the non-cancelable Omaha facility related land lease in effect as of December 31, 2016, are as follows for the subsequent years ended December 31; as listed below.",
+   "prose_after": "Note 10 \u2013 Commitments and Contingencies\nLitigation\nThe Company is not presently subject to any material litigation nor, to its knowledge, is any material litigation threatened against the Company, which if determined unfavorably to the Company, would have a material adverse effect on the Company\u2019s financial position, results of operations, or cash flows.\nEnvironmental Matters\nThe Company follows a policy of monitoring its properties for the presence of hazardous or toxic substances. While there can be no assurance that a material environmental liability does not exist at its properties, the Company is not currently aware of any environmental liability with respect to its properties that would have a material effect on its financial position, results of operations, or cash flows. Additionally, the Company is not aware of any material environmental liability or any unasserted claim or assessment with respect to an environmental liability that management believes would require additional disclosure or the recording of a loss contingency.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1866,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1909,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax asset:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating and passive activity loss carry forward",
+     "$",
+     "1,438,000",
+     "",
+     "$",
+     "460,000",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(1,438,000)",
+     "",
+     "",
+     "(460,000)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1928,
+    "end_line": 1938
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "For the 2016 tax year, the Company is planning to elect and qualify as a REIT under the Internal Revenue Code. To qualify as a REIT, the Company must meet a number of organizational and operational requirements, including a requirement that the Company distribute at least 90% of its adjusted taxable income to its stockholders. It is management\u2019s current intention to adhere to these requirements and be eligible to be a REIT for the year ended December 31, 2016. As a REIT, the Company generally will not be subject to corporate level federal income tax on taxable income currently distributed to stockholders. If the Company fails to qualify as a REIT for the 2016 tax year, it will be subject to federal and state income taxes at corporate tax rates. Even if the Company qualifies to be taxed as a REIT for 2016, it may be subject to federal and state taxes on any undistributed taxable income. For the 2016 tax year, the Company has recorded approximately $70,000 for federal or state income taxes in the financial statements.\nPotential benefits of income tax losses are not recognized in the accounts until realization is more likely than not. The Company had federal and state passive activity loss carry forwards of $2,175,000, which carry forward indefinitely and net operating loss carry forwards of approximately $2,053,000, which begin expiring in 2033. The Company has adopted ASC Topic 740, \u201cAccounting for Income Taxes,\u201d as of its inception. Pursuant to ASC Topic 740, the Company is required to compute tax asset benefits for non-capital losses carried forward. The potential benefit of the net operating loss has not been recognized in these financial statements because it cannot be assured it is more likely than not it will utilize the loss carried forward in future years.\nSignificant components of the deferred tax assets and liabilities as of December 31, 2016 and December 31, 2015, after applying enacted corporate income tax rates, are as follows:",
+   "prose_after": "The Company periodically assesses the likelihood that it will be able to recover its deferred tax assets. The Company considers all available evidence, both positive and negative, including expectations and risks associated with estimates of future taxable income and ongoing prudent and feasible profits. As a result of this analysis of all available evidence, both positive and negative, the Company concluded that it is not likely that its net deferred tax assets will ultimately be recovered; as such, it recorded a valuation allowance for the net operating and passive activity losses and a reserve due to the anticipated REIT election for calendar year 2016.\nThe Company follows ASC Topic 740 to recognize, measure, present and disclose in our consolidated financial statements uncertain tax positions that it has taken or expects to take on a tax return. As of December 31, 2016 and December 31, 2015, the Company did not have any liabilities for uncertain tax positions that it believes should be recognized in its financial statements. The Company is no longer subject to U.S. federal, state or local income tax examinations by tax authorities for the years 2012 and earlier. The Company is not currently under examination by any taxing jurisdiction.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1909,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1941,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Land and site improvements",
+     "$",
+     "681,223"
+    ],
+    [
+     "Building and tenant improvements",
+     "",
+     "6,113,823"
+    ],
+    [
+     "In place leases",
+     "",
+     "373,380"
+    ],
+    [
+     "Leasing commissions and legal fees",
+     "",
+     "131,574"
+    ],
+    [
+     "  Total purchase price",
+     "$",
+     "7,300,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1975,
+    "end_line": 1984
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "On January 12, 2017, pursuant to the terms of an asset purchase agreement between the Company, as purchaser, and W 148, LLC, as seller, the Company acquired a medical office building (the \u201cLewisburg Facility\u201d), encompassing 28,480 square feet, located in Lewisburg, Pennsylvania, for a purchase price of $7.3 million. The acquisition included the Lewisburg Facility, together with the real property, the improvements, and all appurtenances thereto owned by W 148 LLC. The Lewisburg Facility is operated by Geisinger Medical Center (\u201cGMC\u201d) and Geisinger System Services (\u201cGSS\u201d), the existing tenants of the Lewisburg Facility. Upon the closing of the transaction, the Company assumed the GMC lease and the GSS lease, which are both triple-net leases. The GMC lease, dated effective as of April 15, 2008, and expiring in 2023, has a fifteen-year initial term and two five-year optional extension terms. The GSS lease, dated effective as of August 1, 2011, and expiring in 2023, has an initial term of 11 years and 9 months and two five-year optional extension terms. The acquisition was funded using proceeds from the Company\u2019s revolving credit facility. This acquisition represents will be accounted for as a business combination.\nThe following table presents the preliminary purchase price allocation for the assets acquired as part of the Lewisburg facility acquisition:",
+   "prose_after": "The above allocation is preliminary and subject to revision within the measurement period, not to exceed one year from the date of the acquisition.\nSummary of Properties under Executed Asset Purchase Agreements Subsequent to December 31, 2016\nOklahoma City Facilities\nOn January 30, 2017, the Company entered into a purchase contract (the \u201cPurchase Agreement\u201d) with CRUSE-TWO, L.L.C., an Oklahoma limited liability company (\u201cCruse-Two\u201d), and CRUSE-SIX, L.L.C., an Oklahoma limited liability company (\u201cCruse-Six\u201d) to acquire a surgical hospital (the \u201cHospital\u201d), a physical therapy center (the \u201cPT Center,\u201d together with the Hospital, \u201cOCOM South\u201d), and an outpatient ambulatory surgery center (\u201cOCOM North\u201d) located in Oklahoma City, Oklahoma from Cruse-Two and Cruse-Six for an aggregate purchase price of $49.5 million.\nUpon closing of the acquisition of OCOM South, the Company will assume the existing absolute triple-net lease agreement (the \u201cOCOM South Lease\u201d), pursuant to which OCOM South is leased from Cruse-Two to Oklahoma Center for Orthopedic & Multi-Specialty Surgery, LLC (\u201cOCOM\u201d) with a remaining initial lease term expiring March 1, 2022, subject to three consecutive five-year renewal options by the tenant. A portion of the rent is guaranteed by United Surgical Partners International, Inc. (\u201cUSPI\u201d) and INTEGRIS Health, Inc. (\u201cINTEGRIS\u201d), respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1968,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of Global Medical REIT Inc. (incorporated herein by reference to Exhibit 3.1 to the Company\u2019s Report on Form 10-Q as filed with the Commission on April 22, 2014)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Second Amended and Restated Bylaws of Global Medical REIT Inc., effective June 13, 2016 (incorporated herein by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on June 17, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Articles of Amendment to Articles of Incorporation filed with the Secretary of State of Maryland (incorporated herein by reference to Annex A to the Company\u2019s Definitive Information Statement on Schedule 14C as filed with the Commission on October 3, 2014)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "Certificate of Correction of Articles of Incorporation of Global Medical REIT Inc. (incorporated by reference to Exhibit 3.3 to the Company\u2019s Registration Statement on Form S-11/A as filed with the Commission on June 15, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "Certificate of Correction of Articles of Incorporation of Global Medical REIT Inc. (incorporated by reference to Exhibit 3.4 to the Company\u2019s Registration Statement on Form S-11/A as filed with the Commission on June 15, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Agreement and Plan of Conversion dated December 23, 2013 between Scoop Media, Inc. and Global Medical REIT Inc. (incorporated herein by reference to Exhibit 4.1 to the Company\u2019s Annual Report on Form 10-K as filed with the Commission on March 21, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Debt Conversion Agreement and Convertible Debenture dated July 17, 2014 between Global Medical REIT, Inc. and Heng Fai Enterprises Limited (incorporated herein by reference to Exhibit 4.2 to the Company\u2019s Annual Report on Form 10-K as filed with the Commission on March 21, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Convertible Debenture dated March 2, 2016 between Global Medical REIT, Inc. and ZH USA, LLC (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K/A as filed with the Commission on March 8, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Pay-off Letter and Conversion Agreement dated June 15, 2016 between Global Medical REIT Inc. and ZH USA, LLC (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on June 17, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1\u2020",
+     "Amended and Restated Management Agreement dated as of July 1, 2016, by and among Global Medical REIT Inc. and Inter-American Management LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on July 7, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2\u2020",
+     "Form of Restricted Share Award Agreement (Time Vesting) (incorporated by reference to Exhibit 10.3 to the Company\u2019s Registration Statement on Form S-11/A filed with the Commission on June 15, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3\u2020",
+     "Form of LTIP Unit Award Agreement (Officer) (incorporated by reference to Exhibit 10.4 to the Company\u2019s Registration Statement on Form S-11/A filed with the Commission on June 15, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4\u2020",
+     "Form of LTIP Unit Award Agreement (Director) (incorporated by reference to Exhibit 10.5 to the Company\u2019s Registration Statement on Form S-11/A filed with the Commission on June 15, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5\u2020",
+     "Form of Indemnification Agreement between Global Medical REIT Inc. and its directors and officers (incorporated by reference to Exhibit 10.6 to the Company\u2019s Registration Statement on Form S-11/A filed with the Commission on June 15, 2016)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Asset Purchase Agreement between Global Medical REIT Inc. and Associates Properties, LP dated as of July 31, 2015 (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K/A as filed with the Commission on October 26, 2015)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Purchase Agreement between Global Medical REIT Inc. and Associates Properties II, LP dated as of July 31, 2015 (incorporated herein by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K/A as filed with the Commission on October 26, 2015)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2104,
+    "end_line": 2156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe information required by this Item is incorporated herein by reference to the Company\u2019s definitive Proxy Statement to be filed with the SEC within 120 days after the end of the fiscal year covered by this Annual Report on Form 10-K.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nThe information required by this Item is incorporated herein by reference to the Company\u2019s definitive Proxy Statement to be filed with the SEC within 120 days after the end of the fiscal year covered by this Annual Report on Form 10-K.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe information required by this Item is incorporated herein by reference to the Company\u2019s definitive Proxy Statement to be filed with the SEC within 120 days after the end of the fiscal year covered by this Annual Report on Form 10-K.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a) Exhibits",
+   "prose_after": "10.8 Term Loan and Security Agreement between GMR Pittsburgh, LLC and Capital One, National Association dated as of September 25, 2015 (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on October 1, 2015). 10.9 Asset Purchase Agreement between Global Medical REIT Inc. and R&K Healthcare Real Estate, L.L.C. dated as of October 6, 2015 and First Amendment to Asset Purchase Agreement between Global Medical REIT Inc. and R&K Healthcare Real Estate, L.L.C. dated as of November 6, 2015 (incorporated herein by reference to Exhibit 10.1 and Exhibit 10.2, respectively, to the Company\u2019s Current Report on Form 8-K as filed with the Commission on November 18, 2015). 10.10 Asset Purchase Agreement between Global Medical REIT Inc. and Star Medreal, LLC dated as of September 30, 2015 (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on November 20, 2015). 10.11 Asset Purchase Agreement between Global Medical REIT Inc. G.I.C.M. Real Estate, LLC, G.I.C.M Germantown, LLC, Bartlett Medical Complex, LLC, G.I. Diagnostic and Therapeutic Center Rental Company, LLC, Gastroenterology Center of the Midsouth Rental Company, LLC, and G.I.C.M. DESOTO, LLC dated as of December 14, 2015 (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 17, 2015). 10.12 Asset Purchase Agreement between Global Medical REIT Inc. and Marina Towers LLC dated as of January 7, 2016 (incorporated herein by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on January 14, 2016). 10.13 Agreement of Limited Partnership, dated March 14, 2016, of Global Medical REIT L.P. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 18, 2016). 10.14 Contribution and Assignment Agreement dated March 14, 2016, by and between Global Medical REIT Inc. and Global Medical REIT L.P. (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 18, 2016). 10.15 Loan Agreement dated March 31, 2016 between GMR Memphis, LLC, GMR Plano, LLC, GMR Melbourne, LLC, and GMR Westland, LLC and Cantor Commercial Real Estate Lending, L.P. (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on April 6, 2016). 10.16 Asset Purchase Agreement dated March 31, 2016, between Global Medical REIT, Inc. and Chery Hill Real Estate, LLC (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on April 6, 2016). 10.17 Lease Agreement between an affiliate of Global Medical REIT, Inc. and The Surgical Institute of Michigan, LLC (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on April 6, 2016). 10.18 Asset Purchase Agreement dated April 19, 2016, between Global Medical REIT, Inc. and Paper Mill Partners, L.P. (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on April 25, 2016). 10.19\u2020 Global Medical REIT Inc. 2016 Equity Incentive Plan (incorporated by reference to Exhibit 4.6 to the Company\u2019s Registration Statement on Form S-8 filed with the Commission on June 30, 2016). 10.20 Underwriting Agreement dated as of June 28, 2016, by and among Global Medical REIT Inc., Inter-American Management LLC and Wunderlich Securities, Inc., as representative of the several underwriters named therein (incorporated by reference to Exhibit 1.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on July 5, 2016). 10.21 Purchase Agreement dated as of November 29, 2016, between GMR MESA, LLC and HR ACQUISITION I CORPORATION (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on November 30, 2016).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2097,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 2157,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.38\u2020",
+     "LTIP Award Agreement (Long-Term Award): For Grantees with an Employment Agreement with the Manager (incorporated by reference to Exhibit 99.3 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 6, 2017)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.39\u2020",
+     "LTIP Award Agreement (Long-Term Award): For Grantees without an Employment Agreement with the Manager (incorporated by reference to Exhibit 99.4 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 6, 2017)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21*",
+     "Subsidiaries of the Company."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial and Accounting Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer and Principal Financial Officer, pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS *",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH *",
+     "XBRL Taxonomy Schema"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL *",
+     "XBRL Taxonomy Calculation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF *",
+     "XBRL Taxonomy Definition Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB *",
+     "XBRL Taxonomy Label Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE *",
+     "XBRL Taxonomy Presentation Linkbase"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2164,
+    "end_line": 2192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "10.22 Purchase Agreement dated as of November 29, 2016, between GMR ALTOONA, LLC and HR ACQUISITION OF PENNSYLVANIA, INC. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on November 30, 2016). 10.23 Purchase Agreement dated as of November 29, 2016, between GMR MECHANICSBURG, LLC, HR ACQUISITION OF PENNSYLVANIA, INC. and PENNSYLVANIA HRT, INC. (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on November 30, 2016). 10.24 Credit Facility Agreement dated December 2, 2016 by and among Global Medical REIT L.P., Global Medical REIT INC., the certain Subsidiaries from time to time party thereto as Guarantors, and BMO Harris Bank N.A., as Administrative Agent (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 5, 2016). 10.25 Lease Agreement between HR Acquisition I Corporation and GMR Mesa LLC. (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 23, 2016). 10.26 Lease Agreement between HR Acquisition of Pennsylvania, Inc. and GMR Altoona, LLC. (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 23, 2016). 10.27 Lease Agreement between HR Acquisition of Pennsylvania, Inc. and GMR Mechanicsburg, LLC. (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 23, 2016). 10.28 Purchase Agreement dated as of the 30th day of December, 2016, by and between GLOBAL MEDICAL REIT, INC. and GREAT BEND SURGICAL PROPERTIES, LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on January 4, 2017). 10.29 Purchase and Sale Agreement dated as of January 30, 2017, between CRUSE-TWO, L.L.C., CRUSE-SIX, L.L.C., and GMR OKLAHOMA CITY, LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on February 2, 2017). 10.30 Amended and Restated Building Lease between CRUSE-TWO, L.L.C. and OKLAHOMA CENER FOR ORTHOPEDIC & MULTI-SPECIALTY SURGERY, LLC (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on February 2, 2017). 10.31 Lease Agreement between TC CONCORD PLACE I, INC. and SPECIALISTS SURGERY CENTER (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on February 2, 2017). 10.32 Master Lease Agreement by and between GMR OKLAHOMA, LLC and CRUSE-TWO, L.L.C. (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on February 2, 2017). 10.33\u2020 Form of LTIP Vesting Agreement: For Grantees with an Employment Agreement with the Advisor (incorporated by reference to Exhibit 99.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 22, 2016). 10.34\u2020 Form of LTIP Vesting Agreement: For Grantees without an Employment Agreement with the Advisor (incorporated by reference to Exhibit 99.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on December 22, 2016). 10.35 First Amendment to Credit Facility Agreement, dated March 3, 2017 by and among Global Medical REIT L.P., Global Medical REIT INC., the certain Subsidiaries from time to time party thereto as Guarantors, and BMO Harris Bank N.A., as Administrative Agent (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 6, 2017). 10.36\u2020 LTIP Award Agreement (Annual Award): For Grantees with an Employment Agreement with the Manager (incorporated by reference to Exhibit 99.1 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 6, 2017). 10.37\u2020 LTIP Award Agreement (Annual Award): For Grantees without an Employment Agreement with the Manager (incorporated by reference to Exhibit 99.2 to the Company\u2019s Current Report on Form 8-K as filed with the Commission on March 6, 2017).",
+   "prose_after": "\u2020 Management contract or compensatory plan or arrangement.\n* Filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2163,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 2197,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Global Medical REIT Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: March 27, 2017",
+     "By:",
+     "/s/ David A. Young",
+     ""
+    ],
+    [
+     "",
+     "",
+     "David A. Young",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer (Principal Executive Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Global Medical REIT Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2202,
+    "end_line": 2210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "\u2020 Management contract or compensatory plan or arrangement.\n* Filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the registrant and in the capacities indicated and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2197,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2258,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David A. Young",
+     "",
+     ""
+    ],
+    [
+     "David A. Young",
+     "Chief Executive Officer (Principal Executive Officer) and Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Donald McClure",
+     "",
+     ""
+    ],
+    [
+     "Donald McClure",
+     "Chief Financial Officer (Principal Financial and Accounting Officer)",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jeffrey Busch",
+     "",
+     ""
+    ],
+    [
+     "Jeffrey Busch",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Zhang Jingguo",
+     "",
+     ""
+    ],
+    [
+     "Zhang Jing Guo",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Zhang Huiqi",
+     "",
+     ""
+    ],
+    [
+     "Zhang Huiqi",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kurt Harrington",
+     "",
+     ""
+    ],
+    [
+     "Kurt Harrington",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Matthew Cypher",
+     "",
+     ""
+    ],
+    [
+     "Matthew Cypher",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ronald Marston",
+     "",
+     ""
+    ],
+    [
+     "Ronald Marston",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dr. Roscoe Moore",
+     "",
+     ""
+    ],
+    [
+     "Dr. Roscoe Moore",
+     "Director",
+     "March 27, 2017"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Henry Cole",
+     "",
+     ""
+    ],
+    [
+     "Henry Cole",
+     "Director",
+     "March 27, 2017"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2213,
+    "end_line": 2257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the registrant and in the capacities indicated and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2197,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2258,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

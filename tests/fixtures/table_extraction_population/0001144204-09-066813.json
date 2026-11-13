@@ -1,0 +1,5632 @@
+{
+ "accession": "0001144204-09-066813",
+ "cik": "0000822370",
+ "form": "10-K",
+ "filing_date": "2009-12-30",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v170096_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "87-0419387"
+    ],
+    [
+     "(State or other jurisdiction",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(mark one)\nAnnual Report Pursuant To Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended September 30, 2009\nor\nTransition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from _______________ to _______________\nCommission file number 000-26285\nCNS RESPONSE, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "2755 Bristol St., Suite 285\nCosta Mesa, CA 92626\n(Address of Principal Executive Offices)(Zip Code)\n(714) 545-3288\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon Stock, $0.001 par value\n(Title of Class)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "3"
+    ],
+    [
+     "ITEM 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "ITEM 1A.",
+     "Risk Factors",
+     "17"
+    ],
+    [
+     "ITEM 1B.",
+     "Unresolved Staff Comments",
+     "32"
+    ],
+    [
+     "ITEM 2.",
+     "Properties",
+     "33"
+    ],
+    [
+     "ITEM 3.",
+     "Legal Proceedings",
+     "33"
+    ],
+    [
+     "ITEM 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "37"
+    ],
+    [
+     "PART II",
+     "",
+     "37"
+    ],
+    [
+     "ITEM 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "37"
+    ],
+    [
+     "ITEM 6.",
+     "Selected Financial Data",
+     "42"
+    ],
+    [
+     "ITEM 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "42"
+    ],
+    [
+     "ITEM 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "55"
+    ],
+    [
+     "ITEM 8.",
+     "Financial Statements and Supplementary Data",
+     "56"
+    ],
+    [
+     "ITEM 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "80"
+    ],
+    [
+     "ITEM 9A(T).",
+     "Controls and Procedures",
+     "80"
+    ],
+    [
+     "ITEM 9B.",
+     "Other Information",
+     "81"
+    ],
+    [
+     "PART III",
+     "",
+     "82"
+    ],
+    [
+     "ITEM 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "82"
+    ],
+    [
+     "ITEM 11.",
+     "Executive Compensation",
+     "82"
+    ],
+    [
+     "ITEM 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "82"
+    ],
+    [
+     "ITEM 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "82"
+    ],
+    [
+     "ITEM 14.",
+     "Principal Accounting Fees and Services",
+     "82"
+    ],
+    [
+     "PART IV",
+     "",
+     "83"
+    ],
+    [
+     "ITEM 15.",
+     "Exhibits, Financial Statement Schedules",
+     "83"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 119
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer      [ ]                                                    Accelerated filer [ ]\nNon-accelerated filer     [ ]  (Do not check if smaller reporting company)  Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act.)\nYes [ ] No [X]\nThe aggregate market value of the registrant's common stock held by non-affiliates of the registrant on March 31, 2009, the last business day of the registrant's most recently completed second fiscal quarter was $13,555,818 (based on the closing sales price of the registrant's common stock on that date).\nAt December 28, 2009, the registrant had 51,747,729 shares of Common Stock, $0.001 par value, issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the issuer\u2019s Proxy Statement for its 2010 Annual Meeting of Stockholders are incorporated by reference into Part III of this Annual Report.\n2009 FORM 10-K ANNUAL REPORT\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThis 2009 Annual Report on Form 10-K, including the sections entitled \u201cRisk Factors,\u201d \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and \u201cBusiness,\u201d contains \u201cforward-looking statements\u201d that include information relating to future events, future financial performance, strategies, expectations, competitive environment, regulation and availability of resources. These forward-looking statements include, without limitation, statements regarding: proposed new products or services; our statements concerning litigation or other matters; statements concerning projections, predictions, expectations, estimates or forecasts for our business, financial and operating results and future economic performance; statements of management\u2019s goals and objectives; trends affecting our financial condition, results of operations or future prospects; our financing plans or growth strategies; and other similar expressions concerning matters that are not historical facts. Words such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201ccontinue,\u201d \u201cexpects,\u201d \u201canticipates,\u201d \u201cfuture,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cbelieves\u201d and \u201cestimates,\u201d and similar expressions, as well as statements in future tense, identify forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 119,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "F[ ][ ]",
+     "Withheld"
+    ],
+    [
+     "George Carpenter",
+     "26,492,372",
+     "11,015"
+    ],
+    [
+     "Henry Harbin, M.D.",
+     "26,325,705",
+     "177,682"
+    ],
+    [
+     "David Jones",
+     "26,492,372",
+     "11,015"
+    ],
+    [
+     "John Pappajohn",
+     "26,492,370",
+     "11,017"
+    ],
+    [
+     "Tommy Thompson",
+     "26,492,372",
+     "11,015"
+    ],
+    [
+     "Jerome Vaccaro, M.D.",
+     "26,325,705",
+     "177,682"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 4",
+     "title": "Submission of Matters to a Vote of Security Holders"
+    },
+    "note": null
+   },
+   "prose_before": "Given our victory in the Delaware Court of Chancery, we have not determined whether or how we will pursue this action. Mr. Brandt may choose to proceed with his counterclaim.\nWe have expended substantial resources to pursue the defense of legal proceedings initiated by Mr. Brandt. Although the ruling by the Delaware Chancery Court appears to us to be definitive and dispositive, we do not know whether Mr. Brandt will appeal the decisions or institute new claims against us. The defense of any such claims could involve the expenditure of additional resources by the Company.\nITEM 4. Submission of Matters to a Vote of Security Holders\nAt our Annual Meeting of Stockholders held on September 29, 2009, we submitted certain matters to a vote of security holders through the solicitation of proxies. At the meeting, our stockholders elected George Carpenter, Henry Harbin, M.D., David B. Jones, John Pappajohn, Tommy Thompson and Jerome Vaccaro, M.D. to serve as Directors on our Board of Directors for one year or until their respective successors have been elected.\nThe following table provides the number of votes cast for or withheld for each director:",
+   "prose_after": "As discussed under Item 3, Mr. Brandt previously had purported to hold a special meeting of stockholders on September 4, 2009. Mr. Brandt claimed that a quorum was present at his September 4 meeting and proceeded to call a vote on his proposal to elect himself and his nominees as directors. He then claimed that his own shares and the shares for which he purportedly held proxies were sufficient to elect Brandt and the other nominees. On December 2, 2009, following a two day trial, the Delaware Chancery Court ruled that the purported special meeting of stockholders convened by Brandt on September 4, 2009 was not valid and therefore the directors purportedly elected at that meeting will not be seated. Therefore it is now uncontested that the directors elected at the CNS September 29, 2009 meeting are the validly elected directors of the Company.\nPART II\nITEM 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nCommon Stock\nOur common stock is currently listed for trading on the OTC Bulletin Board under the symbol CNSO.OB. The following table sets forth, for the periods indicated, the high and low bid information for Common Stock as determined from sporadic quotations on the OTC Bulletin Board. The following quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "structured_location": {
+    "item": "ITEM 4",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 809,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High*",
+     "",
+     "Low*",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended September 30, 2008",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.90",
+     "$",
+     "0.75"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.25",
+     "$",
+     "0.75"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "3.00",
+     "$",
+     "0.55"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.75",
+     "$",
+     "0.51"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended September 30, 2009",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.01",
+     "$",
+     "0.10"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "0.90",
+     "$",
+     "0.05"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "0.69",
+     "$",
+     "0.15"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.72",
+     "$",
+     "0.20"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 857
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "As discussed under Item 3, Mr. Brandt previously had purported to hold a special meeting of stockholders on September 4, 2009. Mr. Brandt claimed that a quorum was present at his September 4 meeting and proceeded to call a vote on his proposal to elect himself and his nominees as directors. He then claimed that his own shares and the shares for which he purportedly held proxies were sufficient to elect Brandt and the other nominees. On December 2, 2009, following a two day trial, the Delaware Chancery Court ruled that the purported special meeting of stockholders convened by Brandt on September 4, 2009 was not valid and therefore the directors purportedly elected at that meeting will not be seated. Therefore it is now uncontested that the directors elected at the CNS September 29, 2009 meeting are the validly elected directors of the Company.\nPART II\nITEM 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nCommon Stock\nOur common stock is currently listed for trading on the OTC Bulletin Board under the symbol CNSO.OB. The following table sets forth, for the periods indicated, the high and low bid information for Common Stock as determined from sporadic quotations on the OTC Bulletin Board. The following quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "prose_after": "On December 28, 2009, the closing sales price of our common stock as reported on the OTC Bulletin Board was $1.20 per share. As of December 28, 2009, there were 374 record holders of our common stock. The number of holders of record is based on the actual number of holders registered on the books of our transfer agent and does not reflect holders of shares in \u201cstreet name\u201d or persons, partnerships, associations, corporations or other entities identified in security position listings maintained by depository trust companies.\nDividend Rights\nWe have not paid or declared cash distributions or dividends on our common stock and we do not intend to pay cash dividends on our common stock in the foreseeable future. We currently intend to retain all earnings, if and when generated, to finance our operations. The declaration of cash dividends in the future will be determined by the board of directors based upon our earnings, financial condition, capital requirements and other relevant factors.\nRecent Sales of Unregistered Securities\u2014Private Placement Transactions",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of note payable issued",
+     "$",
+     "265,900",
+     ""
+    ],
+    [
+     "Direct transaction costs",
+     "",
+     "43,700",
+     ""
+    ],
+    [
+     "Purchase price",
+     "",
+     "309,600",
+     ""
+    ],
+    [
+     "Allocated to net tangible liabilities, including cash of $32,100",
+     "",
+     "(10,600)",
+     ""
+    ],
+    [
+     "Allocated to goodwill",
+     "$",
+     "320,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 963,
+    "end_line": 971
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Since our inception, we have generated significant net losses. As of September 30, 2009, we had an accumulated deficit of $25.2 million. We incurred operating losses of $8.5 million and $5.4 million for the fiscal years ended September 30, 2009 and 2008, respectively. We expect our net losses to continue for at least the next couple of years. We anticipate that a substantial portion of our capital resources and efforts will be focused on research and development, scale up of our commercial organization, and other general corporate purposes, including the payment of legal fees associated with our litigation. Research and development projects include the completion of more clinical trials which are necessary to further validate the efficacy of our products and services relating to our rEEG technology across different type of behavioral disorders, the enhancement of the CNS Database and, to a lesser extent, the identification of new medication that are often combinations of approved drugs.\nAcquisition of Neuro-Therapy Clinic\nOn January 15, 2008, we acquired all of the outstanding common stock of NTC in exchange for a non-interest bearing $300,000 note payable in equal monthly installments over 36 months. The acquisition was accounted under the purchase method of accounting, and accordingly, the purchase price was allocated to NTC\u2019s net tangible assets based on their estimated fair values as of January 15, 2008. The excess purchase price over the value of the net tangible assets was recorded as goodwill. The purchase price and the allocation thereof are as follows:",
+   "prose_after": "The acquisition was not material, and accordingly, no pro forma results are presented. As of September 30, 2009 the goodwill was determined to be fully impaired and was consequently written off.\nThe 2009 Private Placement Transaction\nAs more fully described under Item 5 under the heading \u201cRecent Sales of Unregistered Securities \u2013Private Placement Transaction\u201d, on August 26, 2009, we received gross proceeds of approximately $2,043,000 in the first closing of our private placement transaction with six investors. Pursuant to Subscription Agreements entered into with the investors, we sold approximately 38 Investment Units at $54,000 per Investment Unit. Each \u201cInvestment Unit\u201d consists of 180,000 shares of our common stock and a five year non-callable warrant to purchase 90,000 shares of our common stock at an exercise price of $0.30 per share. After commissions and expenses, we received net proceeds of approximately $1,792,300 upon the first closing of our private placement. In connection with the first closing, and as more fully described under Item 5 under the heading \u201cEvents Related to Private Placement Transaction\u201d, certain promissory notes then outstanding were converted into shares of common stock and we issued warrants to the investors in connection with the note conversions.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "100",
+     "%",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "19",
+     "",
+     "",
+     "21",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "81",
+     "",
+     "",
+     "79",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "305",
+     "",
+     "",
+     "271",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "131",
+     "",
+     "",
+     "114",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "555",
+     "",
+     "",
+     "402",
+     ""
+    ],
+    [
+     "Goodwill impairment",
+     "",
+     "46",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(956)",
+     "",
+     "",
+     "(708)",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "(261)",
+     "",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "(1217)",
+     "%",
+     "",
+     "(695)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1061,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Stock-based compensation expense, which is a non-cash charge, results from stock option grants. Compensation cost is measured at the grant date based on the calculated fair value of the award. We recognize stock-based compensation expense on a straight-line basis over the vesting period of the underlying option. The amount of stock-based compensation expense expected to be amortized in future periods may decrease if unvested options are subsequently cancelled or may increase if future option grants are made.\nResults of Operations for the Years Ended September 30, 2009 and 2008\nAs earlier described, we operate in two business segments: Laboratory Information Services and Clinical Services. Our Laboratory Information Services business focuses on the delivery of reports (\"rEEG Reports\") that assist physicians with treatment strategies for patients with behavioral (psychiatric and/or addictive) disorders based on the patient's own physiology. Our Clinical Services business operated through NTC provides full service psychiatric services. For comparative purposes below, our Clinical Services business which represents the operations of Neuro-Therapy Clinic are only included since its acquisition on January 15, 2008.\nThe following table presents consolidated statement of operations data for each of the periods indicated as a percentage of revenues.",
+   "prose_after": "Revenues",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1084,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n 2009",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Service Revenues",
+     "$",
+     "120,400",
+     "$",
+     "178,500",
+     "",
+     "(33)",
+     "%"
+    ],
+    [
+     "Clinical Service Revenues",
+     "",
+     "579,700",
+     "",
+     "595,000",
+     "",
+     "( 3)",
+     "%"
+    ],
+    [
+     "Total Revenues",
+     "$",
+     "700,100",
+     "$",
+     "773,500",
+     "",
+     "( 9)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1089,
+    "end_line": 1102
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Revenues",
+   "prose_after": "With respect to our Laboratory Information Services business, the number of paid rEEG Reports delivered during the year ended September 30, 2009 decreased to 321 from 476 in 2008 while the price per report was approximately $375 in both 2009 and 2008. The reduction in revenues from the sale of our rEEG Reports is partly due to the acquisition of NTC, which was our largest customer prior to its acquisition in January 2008. Furthermore, the Company diverted its limited resources to focus on conducting and completing its clinical trial. The clinical trial was completed in September 2009 with top-line results announced in November 2009. The Company is starting to scale up its sales and marketing efforts and has entered into agreements with two payer groups to pilot the use of rEEG Reports. We expect to drive broader adoption of our rEEG technology now that the clinical trial is complete and accordingly, we anticipate that our Laboratory Service Revenues will increase in fiscal 2010.\nOur Clinical Services Revenues are a result of patient billings for psychiatric services rendered. Revenues fell in 2009 compared to 2008 due to staff turnover and the focus by key staff members on the clinical trial. Currently, we anticipate that the Clinical Services business will become self-sustaining and profitable, however, we do not anticipate a significant increase in revenues generated by this business segment.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Laboratory Information Services revenues",
+     "$",
+     "131,600",
+     "$",
+     "163,200",
+     "",
+     "(19)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1109,
+    "end_line": 1119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "With respect to our Laboratory Information Services business, the number of paid rEEG Reports delivered during the year ended September 30, 2009 decreased to 321 from 476 in 2008 while the price per report was approximately $375 in both 2009 and 2008. The reduction in revenues from the sale of our rEEG Reports is partly due to the acquisition of NTC, which was our largest customer prior to its acquisition in January 2008. Furthermore, the Company diverted its limited resources to focus on conducting and completing its clinical trial. The clinical trial was completed in September 2009 with top-line results announced in November 2009. The Company is starting to scale up its sales and marketing efforts and has entered into agreements with two payer groups to pilot the use of rEEG Reports. We expect to drive broader adoption of our rEEG technology now that the clinical trial is complete and accordingly, we anticipate that our Laboratory Service Revenues will increase in fiscal 2010.\nOur Clinical Services Revenues are a result of patient billings for psychiatric services rendered. Revenues fell in 2009 compared to 2008 due to staff turnover and the focus by key staff members on the clinical trial. Currently, we anticipate that the Clinical Services business will become self-sustaining and profitable, however, we do not anticipate a significant increase in revenues generated by this business segment.\nCost of Revenues",
+   "prose_after": "Cost of Laboratory Information Services revenues consists of payroll, consulting, and other miscellaneous costs. Consulting costs primarily represent external costs associated with the processing and analysis of rEEG Reports and range between $75 and $100 per rEEG Report. For the year ended September 30, 2009, cost of revenues of $131,600 consist primarily of direct labor and benefit costs of $99,600, which includes stock-based compensation and consulting fees of $29,200. For the year ended September 30, 2008, cost of revenues of $163,200 consisted primarily of direct labor and benefit costs of $108,400, including stock-based compensation and consulting fees of $48,600. We expect costs of revenues will increase as an absolute number as more rEEG Reports are processed. However, we expect cost of revenues to decrease as a percentage of revenues as we improve our operating efficiency.\nResearch and Development",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1086,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Information Services research and development",
+     "$",
+     "2,137,200",
+     "$",
+     "2,097,300",
+     "",
+     "2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1126,
+    "end_line": 1136
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Cost of Laboratory Information Services revenues consists of payroll, consulting, and other miscellaneous costs. Consulting costs primarily represent external costs associated with the processing and analysis of rEEG Reports and range between $75 and $100 per rEEG Report. For the year ended September 30, 2009, cost of revenues of $131,600 consist primarily of direct labor and benefit costs of $99,600, which includes stock-based compensation and consulting fees of $29,200. For the year ended September 30, 2008, cost of revenues of $163,200 consisted primarily of direct labor and benefit costs of $108,400, including stock-based compensation and consulting fees of $48,600. We expect costs of revenues will increase as an absolute number as more rEEG Reports are processed. However, we expect cost of revenues to decrease as a percentage of revenues as we improve our operating efficiency.\nResearch and Development",
+   "prose_after": "Research and development expenses consist of clinical study patient expenses, payroll and benefit costs (including stock-based compensation), patents costs, consulting fees, marketing and recruitment costs, database enhancements and maintenance, travel and conference and other miscellaneous costs. Research and development costs for the year ended September 30, 2009 totaled $2,137,200 and were largely comprised of the following: clinical study patient costs of $789,300, payroll and benefit costs of $792,100, patent costs of $213,100, consulting costs of $105,700, marketing and recruiting costs $161,100, database costs of $16,800 and travel and conference costs of $15,600. For the year ended September 30, 2008 research and development costs totaled $2,097,300 and were largely comprised of the following: clinical study patient costs of $579,100, payroll and benefit costs of $855,600, patent costs of $108,800, consulting costs of $285,000, marketing and recruiting costs $136,200, database costs of $36,400 and travel and conference costs of $50,200.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "Sales and Marketing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Information Services",
+     "$",
+     "908,500",
+     "$",
+     "847,600",
+     "",
+     "7",
+     "%"
+    ],
+    [
+     "Clinical Services",
+     "",
+     "7,300",
+     "",
+     "33,800",
+     "",
+     "(78)",
+     "%"
+    ],
+    [
+     "Total Sales and Marketing",
+     "$",
+     "915,800",
+     "$",
+     "881,400",
+     "",
+     "4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1145,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Clinical study patient costs increased by $210,200 in fiscal 2009 as our clinical trial was running for twelve months in fiscal 2009 compared to approximately nine months in fiscal 2008. Patent costs also increased in fiscal 2009 by $104,300 as a result of filing patent applications in Western Europe and marketing and recruitment expenses increased by $25,000 in fiscal 2009 as we accelerated patient enrollment in our clinical study. Conversely, payroll and benefit costs declined in fiscal 2009 by $63,500 due to changes in the staff-mix and reduced stock compensation and bonus expenses and consulting expenses declined by $179,300 as expertise was brought in-house and the clinical trial moved beyond the design stage which involved the use of consultants. In fiscal 2009, database costs fell by $19,600 compared to fiscal 2008 as the company reduced development efforts relating to the CNS Database.\nThe level of research and development costs are anticipated to remain at a high level as the Company will continue to conduct clinical studies and plans to expand the pharmacological range and improve the functionality of its CNS Database. The Company is also applying for grants which, if obtained, will help the Company accelerate its research and development efforts.\nSales and marketing",
+   "prose_after": "Sales and marketing expenses associated with our Laboratory Information Services business consist primarily of payroll and benefit costs, consulting fees, marketing costs, computer services, travel and conference costs and miscellaneous costs. Sales and marketing expenses for fiscal 2009 were comprised of the following: payroll and benefit costs of $596,200, consulting fees of $82,400, marketing costs of $147,600, computer services costs of $31,700, and travel and conference costs of $40,600. For fiscal 2008 the company incurred: payroll and benefit costs of $403,000, consulting fees of $221,100, marketing costs of $18,500, computer services costs of $25,000, and travel and conference costs of $110,900.\nIn fiscal 2009, payroll and benefits increased by $193,200 principally as a result of the hiring of a Vice President for commercial operations and additional sales and support staff. This increase was partially offset by a reduction in consulting fees of $138,900 as marketing expertise was brought in house. Marketing expenses increased in fiscal 2009 by $129,100 in an effort to advertise our rEEG technology to service providers and consumers. This was partly offset by a reduction in travel and conference costs of $70,300.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1123,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1161,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Information Services",
+     "",
+     "3,217,800",
+     "$",
+     "2,349,000",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "Clinical Services",
+     "",
+     "669,600",
+     "",
+     "756,700",
+     "",
+     "(12)",
+     "%"
+    ],
+    [
+     "Total General and administrative",
+     "$",
+     "3,887,400",
+     "$",
+     "3,105,700",
+     "",
+     "25",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1172,
+    "end_line": 1186
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "In fiscal 2009, payroll and benefits increased by $193,200 principally as a result of the hiring of a Vice President for commercial operations and additional sales and support staff. This increase was partially offset by a reduction in consulting fees of $138,900 as marketing expertise was brought in house. Marketing expenses increased in fiscal 2009 by $129,100 in an effort to advertise our rEEG technology to service providers and consumers. This was partly offset by a reduction in travel and conference costs of $70,300.\nIn fiscal 2010, we anticipate that sales and marketing expenses for Laboratory Information Services will increase as we plan to increase our Direct-to-Consumer marketing. Additionally, with the successful completion of our clinical trial, we plan to introduce our rEEG technology to additional psychiatric providers and medical insurance payers in fiscal 2010, which will also increase our sales and marketing costs.\nClinical Services sales and marketing expenses consist of advertising in various media so as to attract patients to our clinic in Denver. We do not anticipate materially increasing sales and marketing expenses relating to our Clinical Services business in fiscal 2010.\nGeneral and administrative",
+   "prose_after": "General and administrative expenses for our Laboratory Information Services business are primarily related to salaries and benefits (including stock-based compensation), legal and other professional fees, consulting services, general administration and occupancy costs, dues and fees, marketing and investor relations, and travel and conferences. For the year ended September 30, 2009 these expenses were as follows: Salaries and benefits $792,700, legal fees $1,362,000, other professional fees $151,300, consulting costs $369,700, general administration and occupancy costs $183,000, dues and fees $80,000, marketing and investor relations $86,500, and travel and conference costs $69,800. For the year ended September 30, 2008 these expenses were: Salaries and benefits $1,420,900, legal fees $193,900, other professional fees $157,800, consulting costs $94,600, general administration and occupancy costs $189,300, dues and fees $46,300, marketing and investor relations $112,800, and travel and conference costs of $78,100.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1163,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Information Services (Expense), net",
+     "$",
+     "(1,822,700)",
+     "",
+     "$",
+     "104,600",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Clinical Services (Expense)",
+     "",
+     "(200)",
+     "",
+     "",
+     "(600)",
+     "",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "Total interest income (expense)",
+     "$",
+     "(1,822,900)",
+     "",
+     "$",
+     "104,000",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "* not meaningful",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1203,
+    "end_line": 1218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "The company incurred certain miscellaneous charges in 2009 which included Delaware Franchise Tax assessments for fiscal 2007 and 2008 totaling $74,400; additionally, the company accrued for a $34,800 payroll tax assessment which was related to 2006, and a write-off of $22,600 of doubtful debts. In 2008 the company wrote off $56,900 in costs associated with a financing effort that did not materialize.\nGeneral and administrative expenses for our Clinical Services business for the year ended September 30, 2009 were $669,600 which includes all costs associated with running the clinic, including all payroll costs, medical supply costs, occupancy costs and other general and administrative costs. These costs declined $87,100 from $756,700 in 2008 primarily due to lower patient volume.\nGoodwill impairment charges\nDuring the fiscal year 2009, we conducted a goodwill impairment test and determined that all of the goodwill related to the NTC acquisition was impaired. Accordingly, we recorded a goodwill impairment charge of $320,200 for the year ended September 30, 2009.\nOther income (expense)",
+   "prose_after": "With respect to our Laboratory Information Services business, we incurred a $90,000 financing fee in connection with the bridge note issued to Mr. Pappajohn on June 12, 2009, $20,900 in interest expenses on the bridge notes issued to Mr. Brandt and Sail Venture Partners. Additionally, $1,058,000 of expenses associated with the valuation of bridge warrants and $642,000 associated with the value of the beneficial conversion feature of the bridge notes were written off to interest expense upon conversion of the bridge notes. Furthermore, $13,300 of interest expense was incurred on long-term debt issued in connection with our acquisition of NTC. These expenses were offset by interest income of $9,500 for the fiscal year ended September 30, 2009 from interest bearing accounts. For the fiscal year ended September 30, 2008, interest income of $127,000 was earned on cash in interest bearing accounts. This was offset by $22,000 of interest expense on long term debt.\nNet Loss",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1190,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1220,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2009",
+     "",
+     "",
+     "Year Ended\n\nSeptember 30,\n\n2008",
+     "",
+     "",
+     "Percent\n\nChange",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Information Services net loss",
+     "$",
+     "(8,451,300)",
+     "",
+     "$",
+     "(5,166,200)",
+     "",
+     "",
+     "64",
+     "%"
+    ],
+    [
+     "Clinical Services net loss",
+     "",
+     "(70,900)",
+     "",
+     "",
+     "(205,300)",
+     "",
+     "",
+     "(35)",
+     "%"
+    ],
+    [
+     "Total Net Loss",
+     "$",
+     "(8,522,200)",
+     "",
+     "$",
+     "(5,371,500)",
+     "",
+     "",
+     "59",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1225,
+    "end_line": 1239
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "With respect to our Laboratory Information Services business, we incurred a $90,000 financing fee in connection with the bridge note issued to Mr. Pappajohn on June 12, 2009, $20,900 in interest expenses on the bridge notes issued to Mr. Brandt and Sail Venture Partners. Additionally, $1,058,000 of expenses associated with the valuation of bridge warrants and $642,000 associated with the value of the beneficial conversion feature of the bridge notes were written off to interest expense upon conversion of the bridge notes. Furthermore, $13,300 of interest expense was incurred on long-term debt issued in connection with our acquisition of NTC. These expenses were offset by interest income of $9,500 for the fiscal year ended September 30, 2009 from interest bearing accounts. For the fiscal year ended September 30, 2008, interest income of $127,000 was earned on cash in interest bearing accounts. This was offset by $22,000 of interest expense on long term debt.\nNet Loss",
+   "prose_after": "The increase in net loss for Laboratory Information Services of $3.28 million for the year ended September 30, 2009 is due primarily to charges associated with our bridge note financings of $1.83 million, including the discount on bridge notes and the value of the beneficial conversion features of the notes; and a $1.17 million increase in legal fees primarily relating to costs incurred in defending against lawsuits brought by our former CEO and Chairman of the Board, Leonard Brandt. The impairment write down of goodwill associated with our acquisition of NTC added a further $320,200 to the loss.\nThe decrease in the net loss for Clinical Services of $134,400 for the year ended September 30, 2009 is primarily due to reduced marketing expenses and reduced general and administrative expenses.\nWe expect to incur a net loss in fiscal 2010 as we continue improving our rEEG technology and focus on the commercialization of our products.\nLiquidity and Capital Resources\nSince our inception, we have incurred significant losses and, as of September 30, 2009, we had an accumulated deficit of approximately $25.2 million. We have not yet achieved profitability and anticipate that we will continue to incur net losses for the next year. We expect that our research and development, selling and marketing and general and administrative expenses will continue to grow and, as a result, we will need to generate significant product revenues to achieve profitability. We may never achieve profitability.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1222,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1257,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "57"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of September 30, 2009 and 2008",
+     "58"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended September 30, 2009 and 2008",
+     "59"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity (Deficit) for the Years Ended September 30, 2009 and 2008",
+     "60"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended September 30, 2009 and 2008",
+     "61"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements for the Years Ended  September 30, 2009 and 2008",
+     "62"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1308,
+    "end_line": 1324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Since inception, we have incurred operating losses and, accordingly, have not recorded a provision for federal income taxes for any periods presented. As of September 30, 2009, we had net operating loss carryforwards for federal income tax purposes of $20.8 million. If not utilized, the federal net operating loss carryforwards will expire beginning in 2028. Utilization of net operating loss and credit carryforwards may be subject to a substantial annual limitation due to restrictions contained in the Internal Revenue Code that are applicable if we experience an \u201cownership change\u201d. The annual limitation may result in the expiration of our net operating loss and tax credit carryforwards before they can be used.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements or financing activities with special purpose entities.\nITEM 7A. Quantitative and Qualitative Disclosures about Market Risk.\nNot applicable.\nITEM 8. Financial Statements and Supplementary Data\nIndex to financial statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors\n2755 Bristol St., Suite 285\nCosta Mesa, CA 92626\nWe have audited the accompanying consolidated balance sheets of CNS Response, Inc. (the \u201cCompany\u201d) and its subsidiaries as of September 30, 2009 and 2008, and the related consolidated statements of operations, changes in stockholders\u2019 equity (deficit), and cash flows for each of the years in the two-year period ended September 30, 2009. CNS Response, Inc.\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1303,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As at September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "988,100",
+     "",
+     "$",
+     "1,997,000",
+     ""
+    ],
+    [
+     "Accounts receivable (net of allowance for doubtful accounts of $11,700 and $17,200 in 2009 and 2008 respectively)",
+     "",
+     "61,700",
+     "",
+     "",
+     "98,200",
+     ""
+    ],
+    [
+     "Prepaids and other",
+     "",
+     "89,500",
+     "",
+     "",
+     "189,400",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "1,139,300",
+     "",
+     "",
+     "2,284,600",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "21,600",
+     "",
+     "",
+     "28,700",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "-",
+     "",
+     "",
+     "320,200",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "1,160,900",
+     "",
+     "$",
+     "2,633,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable (including $7,000 and $6,800 to related parties in 2009 and 2008 respectively)",
+     "$",
+     "1,285,600",
+     "",
+     "$",
+     "335,700",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "261,400",
+     "",
+     "",
+     "207,500",
+     ""
+    ],
+    [
+     "Deferred compensation (including $81,200 and $107,000 to related parties in 2009 and  2008 respectively)",
+     "",
+     "220,100",
+     "",
+     "",
+     "264,900",
+     ""
+    ],
+    [
+     "Accrued patient costs",
+     "",
+     "305,500",
+     "",
+     "",
+     "397,500",
+     ""
+    ],
+    [
+     "Accrued consulting fees (including $18,000 and $0 to related parties in 2009 and 2008, respectively)",
+     "",
+     "72,100",
+     "",
+     "",
+     "67,600",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "-",
+     "",
+     "",
+     "42,600",
+     ""
+    ],
+    [
+     "Convertible promissory notes",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "95,900",
+     "",
+     "",
+     "88,500",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,240,600",
+     "",
+     "",
+     "1,454,300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable to officer",
+     "",
+     "24,800",
+     "",
+     "",
+     "118,600",
+     ""
+    ],
+    [
+     "Capital lease",
+     "",
+     "5,600",
+     "",
+     "",
+     "7,700",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "",
+     "30,400",
+     "",
+     "",
+     "126,300",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "2,271,000",
+     "",
+     "",
+     "1,580,600",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value; authorized 750,000,000 shares; 41,781,129 and 25,299,547 shares outstanding as of September 30, 2009 and 2008",
+     "",
+     "41,800",
+     "",
+     "",
+     "25,300",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "24,044,000",
+     "",
+     "",
+     "17,701,300",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(25,195,900)",
+     "",
+     "",
+     "(16,673,700)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "(1,110,100)",
+     "",
+     "",
+     "1,052,900",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "$",
+     "1,160,900",
+     "",
+     "$",
+     "2,633,500",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As at September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1356,
+    "end_line": 1407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of the Company as of September 30, 2009 and 2008, and the results of its operations and its cash flows for each of the years in the two-year period ended September 30, 2009 in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the consolidated financial statements, the Company\u2019s continued operating losses and limited capital raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to this matter are also described in Note 1. The accompanying consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Cacciamatta Accountancy Corporation\nSanta Ana, California\nDecember 29, 2009\nCONSOLIDATED BALANCE SHEETS AT SEPTEMBER 30, 2009 and 2008",
+   "prose_after": "See accompanying Notes to Consolidated Financial Statements\nCONSOLIDATED STATEMENTS OF OPERATIONS FOR THE YEARS ENDED",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1409,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEARS ENDED\n\nSEPTEMBER 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Laboratory Information Services",
+     "",
+     "120,400",
+     "",
+     "",
+     "178,500",
+     ""
+    ],
+    [
+     "Clinical Services",
+     "",
+     "579,700",
+     "",
+     "",
+     "595,000",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "700,100",
+     "",
+     "$",
+     "773,500",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Laboratory Service revenues",
+     "",
+     "131,600",
+     "",
+     "",
+     "163,200",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "2,137,200",
+     "",
+     "",
+     "2,097,300",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "915,800",
+     "",
+     "",
+     "881,400",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "3,887,400",
+     "",
+     "",
+     "3,105,700",
+     ""
+    ],
+    [
+     "Goodwill impairment charges",
+     "",
+     "320,200",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "7,392,200",
+     "",
+     "",
+     "6,247,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "(6,692,100)",
+     "",
+     "",
+     "(5,474,100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income (expense), net",
+     "",
+     "(1,732,900)",
+     "",
+     "",
+     "104,000",
+     ""
+    ],
+    [
+     "Financing premium",
+     "",
+     "(90,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(1,822,900)",
+     "",
+     "",
+     "104,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE PROVISION FOR INCOME TAXES",
+     "",
+     "(8,515,000)",
+     "",
+     "",
+     "(5,370,100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "7,200",
+     "",
+     "",
+     "1,400",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(8,522,200)",
+     "",
+     "$",
+     "(5,371,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC NET LOSS PER SHARE",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "(0.21)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DILUTED NET LOSS PER SHARE",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "(0.21)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE SHARES OUTSTANDING:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "27,778,171",
+     "",
+     "",
+     "25,299,547",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "27,778,171",
+     "",
+     "",
+     "25,299,547",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "YEARS ENDED\n\nSEPTEMBER 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1417,
+    "end_line": 1469
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Consolidated Financial Statements\nCONSOLIDATED STATEMENTS OF OPERATIONS FOR THE YEARS ENDED",
+   "prose_after": "See accompanying Notes to Consolidated Financial Statements\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY (DEFICIT) FOR THE YEARS ENDED SEPTEMBER 30, 2009 AND 2008",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1415,
+     "token": "REPEATING_HEADER",
+     "id": 118,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1471,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 1, 2007",
+     "",
+     "25,299,547",
+     "$",
+     "25,300",
+     "$",
+     "16,630,000",
+     "",
+     "$",
+     "(11,302,200)",
+     "",
+     "$",
+     "5,353,100",
+     ""
+    ],
+    [
+     "Stock- based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,071,300",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,071,300",
+     ""
+    ],
+    [
+     "Net loss for the year ended September 30, 2008",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(5,371,500)",
+     "",
+     "",
+     "(5,371,500)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2008",
+     "",
+     "25,299,547",
+     "$",
+     "25,300",
+     "$",
+     "17,701,300",
+     "",
+     "$",
+     "(16,673,700)",
+     "",
+     "$",
+     "1,052,900",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock- based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "850,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "850,500",
+     ""
+    ],
+    [
+     "Issuance of 3,433,333 bridge warrants",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,058,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,058,000",
+     ""
+    ],
+    [
+     "Exercise of 1,498,986 $0.01 warrants",
+     "",
+     "1,498,986",
+     "",
+     "1,500",
+     "",
+     "13,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Exercise of 2,124,740 $0.132 options",
+     "",
+     "2,124,740",
+     "",
+     "2,100",
+     "",
+     "278,400",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "280,500",
+     ""
+    ],
+    [
+     "Issuance of stock in connection with the Maxim PIPE net of offering costs of $250,700",
+     "",
+     "6,810,002",
+     "",
+     "6,800",
+     "",
+     "1,785,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,792,300",
+     ""
+    ],
+    [
+     "Value of beneficial conversion feature of bridge notes",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "642,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "642,000",
+     ""
+    ],
+    [
+     "Issuance of stock on conversion $1,720,900 of bridge notes and accrued interest",
+     "",
+     "6,047,854",
+     "",
+     "6,100",
+     "",
+     "1,714,800",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,720,900",
+     ""
+    ],
+    [
+     "Warrants issued in association with the Maxim PIPE",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,607,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,607,000",
+     ""
+    ],
+    [
+     "Offering cost pertaining to the Maxim PIPE",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,607,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,607,000)",
+     ""
+    ],
+    [
+     "Net loss for the year ended September 30, 2009",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "(8,522,200)",
+     "",
+     "",
+     "(8,522,200)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at September 30, 2009",
+     "",
+     "41,781,129",
+     "$",
+     "41,800",
+     "$",
+     "24,044,000",
+     "",
+     "$",
+     "(25,195,900)",
+     "",
+     "$",
+     "(1,110,100)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1477,
+    "end_line": 1505
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Consolidated Financial Statements\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY (DEFICIT) FOR THE YEARS ENDED SEPTEMBER 30, 2009 AND 2008",
+   "prose_after": "See accompanying Notes to Consolidated Financial Statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS FOR YEARS ENDED",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1473,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1507,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEAR ENDED SEPTEMBER 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(8,522,200)",
+     "",
+     "$",
+     "(5,371,500)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation & amortization",
+     "",
+     "9,100",
+     "",
+     "",
+     "6,300",
+     ""
+    ],
+    [
+     "Discount on bridge notes issued",
+     "",
+     "1,058,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Value of beneficial conversion feature of bridge notes",
+     "",
+     "642,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "850,500",
+     "",
+     "",
+     "1,071,300",
+     ""
+    ],
+    [
+     "Non-cash interest expense",
+     "",
+     "20,900",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Goodwill impairment",
+     "",
+     "320,200",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Write-off of doubtful accounts",
+     "",
+     "22,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "13,800",
+     "",
+     "",
+     "(39,000)",
+     ""
+    ],
+    [
+     "Prepaids and other",
+     "",
+     "99,900",
+     "",
+     "",
+     "(30,400)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "1,003,800",
+     "",
+     "",
+     "116,300",
+     ""
+    ],
+    [
+     "Deferred compensation and others",
+     "",
+     "(40,300)",
+     "",
+     "",
+     "192,600",
+     ""
+    ],
+    [
+     "Accrued patient costs",
+     "",
+     "(92,000)",
+     "",
+     "",
+     "397,500",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,613,600)",
+     "",
+     "",
+     "(3,656,900)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering relating to acquisition",
+     "",
+     "-",
+     "",
+     "",
+     "(43,700)",
+     ""
+    ],
+    [
+     "Furniture & Fixtures",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "(30,900)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "(74,600)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayment of  convertible debt with accrued interest",
+     "",
+     "(92,600)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayment of  debt",
+     "",
+     "(86,700)",
+     "",
+     "",
+     "(60,600)",
+     ""
+    ],
+    [
+     "Repayment of lease payable",
+     "",
+     "(1,800)",
+     "",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Proceeds from the sale of common stock, net of offering costs",
+     "",
+     "1,792,300",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from bridge notes",
+     "",
+     "1,700,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from exercise of warrants and options",
+     "",
+     "295,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided (used) by financing activities",
+     "",
+     "3,606,700",
+     "",
+     "",
+     "(61,600)",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "(1,008,900)",
+     "",
+     "",
+     "(3,793,100)",
+     ""
+    ],
+    [
+     "CASH- BEGINNING OF YEAR",
+     "",
+     "1,997,000",
+     "",
+     "",
+     "5,790,100",
+     ""
+    ],
+    [
+     "CASH- END OF YEAR",
+     "$",
+     "988,100",
+     "",
+     "$",
+     "1,997,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash  paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "64,100",
+     "",
+     "$",
+     "22,440",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "7,200",
+     "",
+     "$",
+     "5,972",
+     ""
+    ],
+    [
+     "Fair value of note payable to officer issued for acquisition",
+     "$",
+     "118,600",
+     "",
+     "$",
+     "265,900",
+     ""
+    ],
+    [
+     "Fair value of equipment acquired through lease",
+     "$",
+     "7,600",
+     "",
+     "$",
+     "10,500",
+     ""
+    ],
+    [
+     "Conversion of bridge notes and related accrued interest into common stock",
+     "$",
+     "1,720,900",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "YEAR ENDED SEPTEMBER 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1515,
+    "end_line": 1575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Consolidated Financial Statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS FOR YEARS ENDED",
+   "prose_after": "See accompanying Notes to Consolidated Financial Statements\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\n1. NATURE OF OPERATIONS\nOrganization and Nature of Operations\nCNS Response, Inc. (the \u201cCompany\u201d) was incorporated in Delaware on July 10, 1984. The Company utilizes a patented system that guides psychiatrists and other physicians to determine a proper treatment for patients with mental, behavioral and/or addictive disorders. The Company also intends to identify, develop and commercialize new indications of approved drugs and drug candidates for this patient population.\nIn addition, as a result of its acquisition of Neuro-Therapy Clinic, Inc. (\u201cNTC\u201d) on January 15, 2008, the Company provides behavioral health care services. NTC is a center for highly-advanced testing and treatment of neuropsychiatric problems, including learning, attentional and behavioral challenges, mild head injuries, as well as depression, anxiety, bipolar and all other common psychiatric disorders. Through this acquisition, the Company expects to advance neurophysiology data collection, beta-test planned technological advances in rEEG, advance physician training in rEEG and investigate practice development strategies associated with rEEG.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1513,
+     "token": "REPEATING_HEADER",
+     "id": 123,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1577,
+     "token": "PAGE_BREAK",
+     "id": 124,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Options granted i\u2022:",
+     "Dividend\n\nYield",
+     "",
+     "",
+     "Risk-free\n\ninterest rate",
+     "",
+     "",
+     "Expected volatility",
+     "",
+     "",
+     "Expected life"
+    ],
+    [
+     "Fiscal 2006",
+     "",
+     "0",
+     "%",
+     "",
+     "5.46",
+     "%",
+     "",
+     "100",
+     "%",
+     "5 years"
+    ],
+    [
+     "November 2006",
+     "",
+     "0",
+     "%",
+     "",
+     "5.00",
+     "%",
+     "",
+     "100",
+     "%",
+     "10 years"
+    ],
+    [
+     "August 2007",
+     "",
+     "0",
+     "%",
+     "",
+     "4.72",
+     "%",
+     "",
+     "91",
+     "%",
+     "5 years"
+    ],
+    [
+     "October 2007",
+     "",
+     "0",
+     "%",
+     "",
+     "4.60",
+     "%",
+     "",
+     "105",
+     "%",
+     "5 years"
+    ],
+    [
+     "December 2007",
+     "",
+     "0",
+     "%",
+     "",
+     "4.00",
+     "%",
+     "",
+     "113",
+     "%",
+     "5 years"
+    ],
+    [
+     "April 2008",
+     "",
+     "0",
+     "%",
+     "",
+     "3.78",
+     "%",
+     "",
+     "172",
+     "%",
+     "5 years"
+    ],
+    [
+     "September 2008",
+     "",
+     "0",
+     "%",
+     "",
+     "3.41",
+     "%",
+     "",
+     "211",
+     "%",
+     "5 years"
+    ],
+    [
+     "October 2008",
+     "",
+     "0",
+     "%",
+     "",
+     "3.77",
+     "%",
+     "",
+     "211",
+     "%",
+     "5 years"
+    ],
+    [
+     "March 2009",
+     "",
+     "0",
+     "%",
+     "",
+     "3.00",
+     "%",
+     "",
+     "385",
+     "%",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1834,
+    "end_line": 1849
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The 2006 Plan provides that in any calendar year, no eligible employee or director shall be granted an award to purchase more than 3 million shares of stock. The option price for each share of stock subject to an option shall be (i) no less than the fair market value of a share of stock on the date the option is granted, if the option is an ISO, or (ii) no less than 85% of the fair market value of the stock on the date the option is granted, if the option is a NSO; provided, however, if the option is an ISO granted to an eligible employee who is a 10% shareholder, the option price for each share of stock subject to such ISO shall be no less than 110% of the fair market value of a share of stock on the date such ISO is granted. Stock options have a maximum term of ten years from the date of grant, except for ISOs granted to an eligible employee who is a 10% shareholder, in which case the maximum term is five years from the date of grant. ISOs may be granted only to eligible employees. The Company has adopted ASC 718-20 (formerly, SFAS No. 123R -revised 2004, \u201cShare-Based Payment\u201d), and related interpretations. Under ASC 718-10, share-based compensation cost is measured at the grant date based on the calculated fair value of the award. The Company estimates the fair value of each option on the grant date using the Black-Scholes model. The following assumptions were made in estimating the fair value:\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED",
+   "prose_after": "The expense is recognized over the employees\u2019 requisite service period, generally the vesting period of the award. Stock-based compensation expense included in the accompanying statements of operations for the years ended September 30, 2009 and 2008 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1832,
+     "token": "REPEATING_HEADER",
+     "id": 153,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1867,
+     "token": "PAGE_BREAK",
+     "id": 154,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the fiscal year ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Operations",
+     "$",
+     "16,100",
+     "$",
+     "16,100"
+    ],
+    [
+     "Research and development",
+     "",
+     "260,800",
+     "",
+     "321,100"
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "137,500",
+     "",
+     "83,100"
+    ],
+    [
+     "General and administrative",
+     "",
+     "436,100",
+     "",
+     "651,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "850,500",
+     "$",
+     "1,071,300"
+    ]
+   ],
+   "caption_stack": [
+    "For the fiscal year ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1852,
+    "end_line": 1865
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The expense is recognized over the employees\u2019 requisite service period, generally the vesting period of the award. Stock-based compensation expense included in the accompanying statements of operations for the years ended September 30, 2009 and 2008 is as follows:",
+   "prose_after": "Total unrecognized compensation as of September 30, 2009 amounted to $1,094,100.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nA summary of stock option activity is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1832,
+     "token": "REPEATING_HEADER",
+     "id": 153,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1867,
+     "token": "PAGE_BREAK",
+     "id": 154,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\nShares",
+     "",
+     "",
+     "Weighted\n\nAverage\n\nExercise Price",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2007",
+     "",
+     "7,436,703",
+     "",
+     "$",
+     "0.57"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,880,621",
+     "",
+     "$",
+     "0.85"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(352,757)",
+     "",
+     "$",
+     "1.09"
+    ],
+    [
+     "Outstanding at September 30, 2008",
+     "",
+     "8,964,567",
+     "",
+     "$",
+     "0.60"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "80,000",
+     "",
+     "$",
+     "0.43"
+    ],
+    [
+     "Exercised",
+     "",
+     "(2,124,740)",
+     "",
+     "$",
+     "0.132"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(257,813)",
+     "",
+     "$",
+     "0.51"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2009",
+     "",
+     "6,662,014",
+     "",
+     "$",
+     "0.76"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average fair value of options granted during:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended September 30, 2008",
+     "",
+     "",
+     "",
+     "$",
+     "0.73"
+    ],
+    [
+     "Year ended September 30, 2009",
+     "",
+     "",
+     "",
+     "$",
+     "0.43"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1877,
+    "end_line": 1904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Total unrecognized compensation as of September 30, 2009 amounted to $1,094,100.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nA summary of stock option activity is as follows:",
+   "prose_after": "Following is a summary of the status of options outstanding at September 30, 2009:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1873,
+     "token": "REPEATING_HEADER",
+     "id": 156,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1933,
+     "token": "PAGE_BREAK",
+     "id": 157,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exercise Price",
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average\n\nContractual Life",
+     "Weighted\n\nAverage\n\nExercise Price",
+     ""
+    ],
+    [
+     "$",
+     "0.12",
+     "",
+     "859,270",
+     "10 years",
+     "$",
+     "0.12"
+    ],
+    [
+     "$",
+     "0.132",
+     "",
+     "987,805",
+     "7 years",
+     "$",
+     "0.132"
+    ],
+    [
+     "$",
+     "0.30",
+     "",
+     "135,700",
+     "10 years",
+     "$",
+     "0.30"
+    ],
+    [
+     "$",
+     "0.59",
+     "",
+     "28,588",
+     "10 years",
+     "$",
+     "0.59"
+    ],
+    [
+     "$",
+     "0.80",
+     "",
+     "140,000",
+     "10 years",
+     "$",
+     "0.80"
+    ],
+    [
+     "$",
+     "0.89",
+     "",
+     "968,875",
+     "10 years",
+     "$",
+     "0.89"
+    ],
+    [
+     "$",
+     "0.96",
+     "",
+     "496,746",
+     "10 years",
+     "$",
+     "0.96"
+    ],
+    [
+     "$",
+     "1.09",
+     "",
+     "2,614,232",
+     "10 years",
+     "$",
+     "1.09"
+    ],
+    [
+     "$",
+     "1.20",
+     "",
+     "333,611",
+     "5 years",
+     "$",
+     "1.20"
+    ],
+    [
+     "$",
+     "0.51",
+     "",
+     "275,000",
+     "10 years",
+     "$",
+     "0.51"
+    ],
+    [
+     "$",
+     "0.40",
+     "",
+     "56,000",
+     "10 years",
+     "$",
+     "0.40"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "6,662,014",
+     "",
+     "$",
+     "0.76"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1907,
+    "end_line": 1929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Following is a summary of the status of options outstanding at September 30, 2009:",
+   "prose_after": "Warrants to Purchase Common Stock\nAt September 30, 2007, there were warrants outstanding to purchase 6,899,353 shares of the Company\u2019s common stock at exercise prices ranging from $0.01 to $1.812 with a weighted average exercise price of $1.04. The warrants expire at various times through 2017. No warrants were issued or exercised during the 12 months ended September 30, 2008.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nDuring the year ended September 30, 2009, 1,498,986 warrants with an exercise price of $0.01 were exercised.\nDuring the year ended September 30, 2009, the following additional 10,137,118 warrants were granted and are outstanding as of September 30, 2009:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1873,
+     "token": "REPEATING_HEADER",
+     "id": 156,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1933,
+     "token": "PAGE_BREAK",
+     "id": 157,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Warrants to Purchase",
+     "Exercise Price",
+     "",
+     "Issued in Connection With:"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "100,000 shares",
+     "$",
+     "0.25",
+     "A $200,000 bridge note with SAIL on May 14, 2009 as described in Note 2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3,333,333 shares",
+     "$",
+     "0.30",
+     "A $1,000,000 bridge note with Pappajohn on June 12, 2009 as described in Note 2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3,404,991 shares",
+     "$",
+     "0.30",
+     "Associated with the private placement transaction of 6,810,002 shares at $0.30 with 50% warrant coverage as described in Note 2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "956,164 shares",
+     "$",
+     "0.27",
+     "Associated with the automatic conversion of"
+    ],
+    [
+     "401,096 shares",
+     "$",
+     "0.255",
+     "$1,700,000 of convertible promissory notes and"
+    ],
+    [
+     "1,666,667 shares",
+     "$",
+     "0.30",
+     "$20,900 accrued interest upon completion an equity"
+    ],
+    [
+     "",
+     "",
+     "",
+     "financing in excess of $1,500,000 as described  in Note 2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "274,867 shares",
+     "$",
+     "0.33",
+     "The placement agent for private placement as described in Note 2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1945,
+    "end_line": 1962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Warrants to Purchase Common Stock\nAt September 30, 2007, there were warrants outstanding to purchase 6,899,353 shares of the Company\u2019s common stock at exercise prices ranging from $0.01 to $1.812 with a weighted average exercise price of $1.04. The warrants expire at various times through 2017. No warrants were issued or exercised during the 12 months ended September 30, 2008.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nDuring the year ended September 30, 2009, 1,498,986 warrants with an exercise price of $0.01 were exercised.\nDuring the year ended September 30, 2009, the following additional 10,137,118 warrants were granted and are outstanding as of September 30, 2009:",
+   "prose_after": "At September 30, 2009, there were warrants outstanding to purchase 15,537,485 shares of the Company\u2019s common stock at exercise prices ranging from $0.01 to $1.812 with a weighted average exercise price of $0.65. The warrants expire at various times through 2017\n5. INCOME TAXES\nThe Company accounts for income taxes under the liability method. Deferred tax assets and liabilities are determined based on differences between financial reporting and tax bases of assets and liabilities, and are measured using the enacted tax rates and laws that will be in effect when the differences are expected to reverse. We provide a valuation allowance to reduce our deferred tax assets to their estimated realizable value.\nReconciliations of the provision (benefit) for income taxes to the amount compiled by applying the statutory federal income tax rate to profit (loss) before income taxes is as follows for each of the years ended September 30:\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1939,
+     "token": "REPEATING_HEADER",
+     "id": 159,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1970,
+     "token": "PAGE_BREAK",
+     "id": 160,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Federal income tax (benefit) at statutory rates",
+     "",
+     "(34)",
+     "%",
+     "",
+     "(34)",
+     "%"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "0",
+     "%",
+     "",
+     "20",
+     "%"
+    ],
+    [
+     "Non deductible interest expense",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "37",
+     "%",
+     "",
+     "14",
+     "%"
+    ],
+    [
+     "Goodwill write off",
+     "",
+     "(3)",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1978,
+    "end_line": 1987
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "At September 30, 2009, there were warrants outstanding to purchase 15,537,485 shares of the Company\u2019s common stock at exercise prices ranging from $0.01 to $1.812 with a weighted average exercise price of $0.65. The warrants expire at various times through 2017\n5. INCOME TAXES\nThe Company accounts for income taxes under the liability method. Deferred tax assets and liabilities are determined based on differences between financial reporting and tax bases of assets and liabilities, and are measured using the enacted tax rates and laws that will be in effect when the differences are expected to reverse. We provide a valuation allowance to reduce our deferred tax assets to their estimated realizable value.\nReconciliations of the provision (benefit) for income taxes to the amount compiled by applying the statutory federal income tax rate to profit (loss) before income taxes is as follows for each of the years ended September 30:\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED",
+   "prose_after": "Temporary differences between the financial statement carrying amounts and tax bases of assets and liabilities that give rise to significant portions of deferred taxes relate to the following at September 30, 2009 and 2008:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1976,
+     "token": "REPEATING_HEADER",
+     "id": 162,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2014,
+     "token": "PAGE_BREAK",
+     "id": 163,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "8,765,900",
+     "",
+     "$",
+     "4,953,000",
+     ""
+    ],
+    [
+     "Deferred interest, consulting and compensation liabilities",
+     "",
+     "987,500",
+     "",
+     "",
+     "17,000",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "(24,300)",
+     "",
+     "",
+     "223,300",
+     ""
+    ],
+    [
+     "Deferred income tax assets - other",
+     "",
+     "7,800",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "9,736,900",
+     "",
+     "",
+     "5,193,300",
+     ""
+    ],
+    [
+     "Deferred income tax liabilities\u2014other",
+     "",
+     "-",
+     "",
+     "",
+     "(12,300)",
+     ""
+    ],
+    [
+     "Deferred income tax asset\u2014net before valuation allowance",
+     "",
+     "9,736,900",
+     "",
+     "",
+     "5,181,000",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(9,736,900)",
+     "",
+     "",
+     "(5,181,000)",
+     ""
+    ],
+    [
+     "Deferred income tax asset\u2014net",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1990,
+    "end_line": 2008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Temporary differences between the financial statement carrying amounts and tax bases of assets and liabilities that give rise to significant portions of deferred taxes relate to the following at September 30, 2009 and 2008:",
+   "prose_after": "Current and non-current deferred taxes have been recorded on a net basis in the accompanying balance sheet. As of September 30, 2009, the Company has net operating loss carryforwards of approximately $20.8 million. The net operating loss carryforwards expire by 2028. Utilization of net operating losses and capital loss carryforwards may be subject to the limitations imposed by Section 382 of the Internal Revenue Code. The Company has placed a valuation allowance against the deferred tax assets in excess of deferred tax liabilities due to the uncertainty surrounding the realization of such excess tax assets. Management periodically evaluates the recoverability of the deferred tax assets and the level of the valuation allowance. At such time as it is determined that it is more likely than not that the deferred tax assets are realizable, the valuation allowance will be reduced accordingly.\n6. ACQUISITION OF NEURO THERAPY CLINIC, PC\nOn January 15, 2008, the Company, through its wholly owned subsidiary, Colorado CNS Response, Inc., acquired all of the outstanding common stock of Neuro-Therapy Clinic, PC (\u201cNTC\u201d) in exchange for a non-interest bearing note payable of $300,000 payable in equal monthly installments over 36 months. Upon the completion of the acquisition, the sole shareholder of NTC was appointed Chief Medical Officer of the Company. Prior to the acquisition, NTC was the Company\u2019s largest customer.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1976,
+     "token": "REPEATING_HEADER",
+     "id": 162,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2014,
+     "token": "PAGE_BREAK",
+     "id": 163,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value of note payable issued",
+     "$",
+     "265,900",
+     ""
+    ],
+    [
+     "Direct transaction costs",
+     "",
+     "43,700",
+     ""
+    ],
+    [
+     "Purchase price",
+     "",
+     "309,600",
+     ""
+    ],
+    [
+     "Allocated to net tangible liabilities, including cash of $32,100",
+     "",
+     "(10,600)",
+     ""
+    ],
+    [
+     "Allocated to goodwill",
+     "$",
+     "320,200",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2024,
+    "end_line": 2033
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "ACQUISITION OF NEURO THERAPY CLINIC, PC"
+    }
+   },
+   "prose_before": "Current and non-current deferred taxes have been recorded on a net basis in the accompanying balance sheet. As of September 30, 2009, the Company has net operating loss carryforwards of approximately $20.8 million. The net operating loss carryforwards expire by 2028. Utilization of net operating losses and capital loss carryforwards may be subject to the limitations imposed by Section 382 of the Internal Revenue Code. The Company has placed a valuation allowance against the deferred tax assets in excess of deferred tax liabilities due to the uncertainty surrounding the realization of such excess tax assets. Management periodically evaluates the recoverability of the deferred tax assets and the level of the valuation allowance. At such time as it is determined that it is more likely than not that the deferred tax assets are realizable, the valuation allowance will be reduced accordingly.\n6. ACQUISITION OF NEURO THERAPY CLINIC, PC\nOn January 15, 2008, the Company, through its wholly owned subsidiary, Colorado CNS Response, Inc., acquired all of the outstanding common stock of Neuro-Therapy Clinic, PC (\u201cNTC\u201d) in exchange for a non-interest bearing note payable of $300,000 payable in equal monthly installments over 36 months. Upon the completion of the acquisition, the sole shareholder of NTC was appointed Chief Medical Officer of the Company. Prior to the acquisition, NTC was the Company\u2019s largest customer.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nThe acquisition was accounted under the purchase method of accounting, and accordingly, the purchase price was allocated to NTC\u2019s net tangible assets based on their estimated fair values as of January 15, 2008. The excess purchase price over the value of the net tangible assets was recorded as goodwill. The purchase price and the allocation thereof are as follows:",
+   "prose_after": "The acquisition was not material, and accordingly, no pro forma results are presented. As of September 30, 2009, goodwill was measured and determined to be fully impaired and consequently written off.\n7. LONG-TERM DEBT\nAs described in Note 6 above, during the year ended September 30, 2008 the Company issued a note payable to an officer in connection with the acquisition of NTC. The note is non-interest bearing and the Company determined its fair value by imputing interest at an annual rate of 8%. As of September 30, 2009 the note has an outstanding principal balance in the amount of $118,600, of which $93,800 is current.\n8. REPORTABLE SEGMENTS\nThe Company operates in two business segments: reference laboratory and clinic. Reference laboratory provide reports (\u201crEEG Reports\u201d) that assist physicians with treatment strategies for patients with behavioral (psychiatric and/or addictive) disorders based on the patient\u2019s own physiology. Clinic operates NTC, a full service psychiatric practice.\nThe following tables show operating results for our reportable segments, along with reconciliation from segment gross profit to (loss) from operations, the most directly comparable measure in accordance with generally accepted accounting principles in the United States, or GAAP:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2020,
+     "token": "REPEATING_HEADER",
+     "id": 165,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2067,
+     "token": "PAGE_BREAK",
+     "id": 166,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended September 30,2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Reference\n\nLaboratory",
+     "",
+     "",
+     "Clinic",
+     "",
+     "",
+     "Eliminations",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "138,900",
+     "",
+     "",
+     "628,200",
+     "",
+     "",
+     "(67,000)",
+     "",
+     "",
+     "700,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "131,600",
+     "",
+     "",
+     "18,500",
+     "",
+     "",
+     "(18,500)",
+     "",
+     "",
+     "131,600",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "2,137,200",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,137,200",
+     ""
+    ],
+    [
+     "Sales and marketing",
+     "",
+     "908,500",
+     "",
+     "",
+     "7,300",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "915,800",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "3,266,300",
+     "",
+     "",
+     "669,600",
+     "",
+     "",
+     "(48,500)",
+     "",
+     "",
+     "3,887,400",
+     ""
+    ],
+    [
+     "Goodwill impairment charges",
+     "",
+     "320,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "320,000",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "6,763,800",
+     "",
+     "",
+     "695,400",
+     "",
+     "",
+     "(67,000)",
+     "",
+     "",
+     "7,392,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "(6,624,900)",
+     "",
+     "$",
+     "(67,200)",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "(6,692,100)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended September 30,2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2046,
+    "end_line": 2067
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "REPORTABLE SEGMENTS"
+    }
+   },
+   "prose_before": "As described in Note 6 above, during the year ended September 30, 2008 the Company issued a note payable to an officer in connection with the acquisition of NTC. The note is non-interest bearing and the Company determined its fair value by imputing interest at an annual rate of 8%. As of September 30, 2009 the note has an outstanding principal balance in the amount of $118,600, of which $93,800 is current.\n8. REPORTABLE SEGMENTS\nThe Company operates in two business segments: reference laboratory and clinic. Reference laboratory provide reports (\u201crEEG Reports\u201d) that assist physicians with treatment strategies for patients with behavioral (psychiatric and/or addictive) disorders based on the patient\u2019s own physiology. Clinic operates NTC, a full service psychiatric practice.\nThe following tables show operating results for our reportable segments, along with reconciliation from segment gross profit to (loss) from operations, the most directly comparable measure in accordance with generally accepted accounting principles in the United States, or GAAP:",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nThe following table includes selected segment financial information as of September 30, 2009, related to goodwill and total assets:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2020,
+     "token": "REPEATING_HEADER",
+     "id": 165,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2067,
+     "token": "PAGE_BREAK",
+     "id": 166,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Reference \n\nLaboratory",
+     "",
+     "Clinic",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Goodwill",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,118,000",
+     "$",
+     "42,900",
+     "$",
+     "1,160,900"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2077,
+    "end_line": 2088
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "REPORTABLE SEGMENTS"
+    }
+   },
+   "prose_before": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\nThe following table includes selected segment financial information as of September 30, 2009, related to goodwill and total assets:",
+   "prose_after": "9. EARNINGS PER SHARE\nIn accordance with ASC 260-10 (formerly SFAS 128, \u201cComputation of Earnings Per Share\u201d), basic net income (loss) per share is computed by dividing the net income (loss) to common stockholders for the period by the weighted average number of common shares outstanding during the period. Diluted net income (loss) per share is computed by dividing the net income (loss) for the period by the weighted average number of common and dilutive common equivalent shares outstanding during the period. For the years ended September 30, 2009 and 2008, the Company has excluded all common equivalent shares from the calculation of diluted net loss per share as such securities are anti-dilutive.\nA summary of the net income (loss) and shares used to compute net income (loss) per share for the years ended September 30, 2009 and 2008 is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2073,
+     "token": "REPEATING_HEADER",
+     "id": 168,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 169,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Net loss for computation of basic net income (loss) per share",
+     "$",
+     "(8,522,200)",
+     "",
+     "$",
+     "(5,371,500)",
+     ""
+    ],
+    [
+     "Net income (loss) for computation of dilutive net income (loss) per share",
+     "$",
+     "(8,522,200)",
+     "",
+     "$",
+     "(5,371,500)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net income (loss) per share",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "(0.21)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted net income (loss) per share",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "(0.21)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic weighted average shares outstanding",
+     "",
+     "27,778,171",
+     "",
+     "",
+     "25,299,547",
+     ""
+    ],
+    [
+     "Dilutive common equivalent shares",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Diluted weighted average common shares",
+     "",
+     "27,778,171",
+     "",
+     "",
+     "25,299,547",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Anti-dilutive common equivalent shares not included in the\n\ncomputation of dilutive net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible debt",
+     "",
+     "-",
+     "",
+     "",
+     "4,995,000",
+     ""
+    ],
+    [
+     "Warrants",
+     "",
+     "8,318,310",
+     "",
+     "",
+     "6,899,353",
+     ""
+    ],
+    [
+     "Options",
+     "",
+     "8,548,206",
+     "",
+     "",
+     "8,767,212",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2095,
+    "end_line": 2122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "9. EARNINGS PER SHARE\nIn accordance with ASC 260-10 (formerly SFAS 128, \u201cComputation of Earnings Per Share\u201d), basic net income (loss) per share is computed by dividing the net income (loss) to common stockholders for the period by the weighted average number of common shares outstanding during the period. Diluted net income (loss) per share is computed by dividing the net income (loss) for the period by the weighted average number of common and dilutive common equivalent shares outstanding during the period. For the years ended September 30, 2009 and 2008, the Company has excluded all common equivalent shares from the calculation of diluted net loss per share as such securities are anti-dilutive.\nA summary of the net income (loss) and shares used to compute net income (loss) per share for the years ended September 30, 2009 and 2008 is as follows:",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\n10. COMMITMENTS AND CONTINGENT LIABILITIES\nLitigation\nFrom time to time, we may be involved in litigation relating to claims arising out of our operations in the ordinary course of business. Other than as set forth above, we are not currently party to any legal proceedings, the adverse outcome of which, in our management\u2019s opinion, individually or in the aggregate, would have a material adverse effect on our results of operations or financial position.\nSince June of 2009, the Company has been involved in litigation against Leonard J. Brandt, a stockholder, former director and the Company\u2019s former Chief Executive Officer (\u201cBrandt\u201d) in both the Delaware Chancery Court and the United States District Court for the Central District of California. For a full description of the events associated with the Brandt Litigation please refer to Item 3, Legal Proceeding of Part I of this document which is incorporated herein by reference.\nLease Commitments",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2073,
+     "token": "REPEATING_HEADER",
+     "id": 168,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2122,
+     "token": "PAGE_BREAK",
+     "id": 169,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending September 30,",
+     "Operating\n\nLeases",
+     "",
+     "",
+     "Capital\n\n Lease",
+     "",
+     "",
+     "Debt\n\nMaturities",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "",
+     "36,000",
+     "",
+     "",
+     "2,600",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "138,600",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "-",
+     "",
+     "",
+     "2,600",
+     "",
+     "",
+     "25,000",
+     "",
+     "",
+     "27,600",
+     ""
+    ],
+    [
+     "2012",
+     "",
+     "-",
+     "",
+     "",
+     "2,600",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,600",
+     ""
+    ],
+    [
+     "2013",
+     "",
+     "-",
+     "",
+     "",
+     "1,100",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,100",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "36,000",
+     "",
+     "$",
+     "8,900",
+     "",
+     "$",
+     "125,000",
+     "",
+     "$",
+     "169,900",
+     ""
+    ],
+    [
+     "Less interest",
+     "",
+     "(700)",
+     "",
+     "",
+     "(1,200)",
+     "",
+     "",
+     "(6,400)",
+     "",
+     "",
+     "(8,300)",
+     ""
+    ],
+    [
+     "Net present value",
+     "",
+     "35,300",
+     "",
+     "",
+     "7,700",
+     "",
+     "",
+     "118,600",
+     "",
+     "",
+     "161,600",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "(35,300)",
+     "",
+     "",
+     "(2,100)",
+     "",
+     "",
+     "(93,800)",
+     "",
+     "",
+     "(131,200)",
+     ""
+    ],
+    [
+     "Long-term debt and lease obligation",
+     "$",
+     "-",
+     "",
+     "$",
+     "5,600",
+     "",
+     "$",
+     "24,800",
+     "",
+     "$",
+     "30,400",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2152,
+    "end_line": 2171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "COMMITMENTS AND CONTINGENT LIABILITIES"
+    }
+   },
+   "prose_before": "The Company\u2019s lease for its headquarters and Laboratory Information Services business, located at 2755 Bristol St., Suite 285, Costa Mesa, California, expired in November 2009. The Company continues to lease this space on a month to month basis at a cost of $4,410 per month.\nThe Company leases space for its Clinical Services operations under an operating lease. The base rental as of September 2009 is $6,021 per month. This lease terminates on February 28, 2010.\nThe Company also sub-leases space for its Clinical Services operations on a month-to-month basis for $1,075 per month.\nThe Company leases a copier for $216 per month which it accounts for as a capital lease with an interest rate of 9% per year. The lease terminates in February 2013 at which time the copier can be purchased at fair value.\nFuture Minimum Lease Payment and Debt Maturities\nAt September 30, 2009, the estimated future minimum lease payment under non-cancelable operating and capital leases and debt maturities were as follows:",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS FOR THE YEARS ENDED\n11. SIGNIFICANT CUSTOMERS\nFor the year ended September 30, 2009, three customers accounted for 39% of Laboratory Information Services revenue and 45% of accounts receivable at September 30, 2009.\nFor the year ended September 30, 2008, two customers accounted for 29% of Laboratory Information Services revenue and 24% of accounts receivable at September 30, 2008.\n12. SUBSEQUENT EVENTS\nThe following key events occurred after the end of the fiscal year dated September 30, 2009:\nResults of Clinical Trial Announced\nOn November 2, 2009, the Company reported the results of its landmark study presented by Charles DeBattista, D.M.H, M.D., at the U.S. Psychiatric and Mental Health Congress. The poster presentation, titled Referenced-EEG\u00ae (rEEG) Efficacy Compared to STAR*D For Patients With Depression Treatment Failure: First Look At Final Results, highlighted a dramatic improvement in personalized medicine technology for use in treatment of patients with depression. In this study, rEEG proved effective at predicting medication response for treatment-resistant patients approximately 65 percent of the time.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2128,
+     "token": "REPEATING_HEADER",
+     "id": 171,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 2171,
+     "token": "PAGE_BREAK",
+     "id": 172,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CNS RESPONSE, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ George Carpenter"
+    ],
+    [
+     "",
+     "",
+     "George Carpenter\n\nChief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Date: December 29, 2009",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CNS RESPONSE, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2324,
+    "end_line": 2335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Information regarding principal accounting fees and services will appear in the definitive proxy statement for the 2010 annual meeting of CNS Response stockholders, and is incorporated herein by reference.\nPART IV\nITEM 15. Exhibits, Financial Statement Schedules\n(a) 1. The information required by this item is included in Item 8 of Part II of this annual report.\n2. The information required by this item is included in Item 8 of Part II of this annual report.\n3. Exhibits: See Index to Exhibits, which is incorporated by reference in this Item. The Exhibits listed in the accompanying Index to Exhibits are filed or incorporated by reference as part of this annual report.\n(b) Exhibits. See Index to Exhibits, which is incorporated by reference in this Item. The Exhibits listed in the accompanying Index to Exhibits are filed or incorporated by reference as part of this annual report.\n(c) Not applicable.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "POWER OF ATTORNEY\nThe undersigned directors and officers of CNS Response, Inc. do hereby constitute and appoint George Carpenter with full power of substitution and resubstitution, as their true and lawful attorney and agent, to do any and all acts and things in their name and behalf in their capacities as directors and officers and to execute any and all instruments for them and in their names in the capacities indicated below, which said attorney and agent, may deem necessary or advisable to enable said corporation to comply with the Securities Exchange Act of 1934, as amended and any rules, regulations and requirements of the Securities and Exchange Commission, in connection with this Annual Report on Form 10-K, including specifically but without limitation, power and authority to sign for them or any of them in their names in the capacities indicated below, any and all amendments hereto, and they do hereby ratify and confirm all that said attorneys and agents, or either of them, shall do or cause to be done by virtue hereof.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2319,
+     "token": "PAGE_BREAK",
+     "id": 187,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 2370,
+     "token": "PAGE_BREAK",
+     "id": 188,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ George Carpenter",
+     "Chief Executive Officer, Director",
+     "December 29, 2009"
+    ],
+    [
+     "George Carpenter",
+     "(Principal Executive, Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David B. Jones",
+     "Director",
+     "December 29, 2009"
+    ],
+    [
+     "David B. Jones",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jerome Vaccaro",
+     "Director",
+     "December 29, 2009"
+    ],
+    [
+     "Jerome Vaccaro, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Henry Harbin",
+     "Director",
+     "December 29, 2009"
+    ],
+    [
+     "Henry T. Harbin, M. D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John Pappajohn",
+     "Director",
+     "December 29, 2009"
+    ],
+    [
+     "John Pappajohn",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tommy Thompson",
+     "Director",
+     "December 29, 2009"
+    ],
+    [
+     "Tommy Thompson",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2342,
+    "end_line": 2370
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The undersigned directors and officers of CNS Response, Inc. do hereby constitute and appoint George Carpenter with full power of substitution and resubstitution, as their true and lawful attorney and agent, to do any and all acts and things in their name and behalf in their capacities as directors and officers and to execute any and all instruments for them and in their names in the capacities indicated below, which said attorney and agent, may deem necessary or advisable to enable said corporation to comply with the Securities Exchange Act of 1934, as amended and any rules, regulations and requirements of the Securities and Exchange Commission, in connection with this Annual Report on Form 10-K, including specifically but without limitation, power and authority to sign for them or any of them in their names in the capacities indicated below, any and all amendments hereto, and they do hereby ratify and confirm all that said attorneys and agents, or either of them, shall do or cause to be done by virtue hereof.\nIn accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO EXHIBITS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2319,
+     "token": "PAGE_BREAK",
+     "id": 187,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 2370,
+     "token": "PAGE_BREAK",
+     "id": 188,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Exhibit Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger between Strativation, Inc., CNS Merger Corporation and CNS Response, Inc. dated as of January 16, 2007.  Incorporated by reference to Exhibit No. 10.1 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on January 22, 2007."
+    ],
+    [
+     "2.2",
+     "Amendment No. 1 to Agreement and Plan of Merger by and among Strativation, Inc., CNS Merger Corporation, and CNS Response, Inc. dated as of February 28, 2007.  Incorporated by reference to Exhibit No. 10.1 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 1, 2007."
+    ],
+    [
+     "3.1.1",
+     "Certificate of Incorporation, dated March 17, 1987.  Incorporated by reference to Exhibit No. 3(i) to the Registrant\u2019s Form 10-SB (File No. 000-26285) filed with the Commission on June 7, 1999."
+    ],
+    [
+     "3.1.2",
+     "Certificate of Amendment of Certificate of Incorporation, dated June 1, 2004. Incorporated by reference to Exhibit 16 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on June 8, 2004."
+    ],
+    [
+     "3.1.3",
+     "Certificate of Amendment of Certificate of Incorporation, dated August 2, 2004. Incorporated by reference to Exhibit 16 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on August 5, 2004."
+    ],
+    [
+     "3.1.4",
+     "Certificate of Amendment of Certificate of Incorporation, dated September 7, 2005.  Incorporated by reference to Exhibit 4.4 to the Registrant\u2019s Registration Statement on Form S-8 (File No. 333-150398) filed with the Commission on April 23, 2008."
+    ],
+    [
+     "3.1.5",
+     "Certificate of Ownership and Merger Merging CNS Response, Inc., a Delaware corporation, with and into Strativation, Inc., a Delaware corporation, dated March 7, 2007.  Incorporated by reference to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 13, 2007."
+    ],
+    [
+     "3.2.1",
+     "Bylaws.  Incorporated by reference to Exhibit No. 3(ii) to the Registrant\u2019s Form 10-SB (File No. 000-26285) filed with the Commission on June 7, 1999."
+    ],
+    [
+     "3.2.2",
+     "Amendment No. 1 to Bylaws of CNS Response, Inc.  Incorporated by reference to Exhibit 3.2 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on July 2, 2009."
+    ],
+    [
+     "3.2.3",
+     "Amendment No. 2 to Bylaws of CNS Response, Inc.  Incorporated by reference to Exhibit 3.3 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on July 23, 2009."
+    ],
+    [
+     "4.1",
+     "2006 CNS Response, Inc. Option Plan.  Incorporated by reference to Exhibit 4.1 to the Registrant\u2019s Current Report on Form 10-QSB (File No. 000-26285) filed with the Commission on May 15, 2007.*"
+    ],
+    [
+     "10.1",
+     "Amended and Restated Registration Rights Agreement, dated January 16, 2007 by and among the Registrant and the stockholders signatory thereto. Incorporated by reference to Exhibit No. 10.2 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on January 16, 2007."
+    ],
+    [
+     "10.2",
+     "Form of Subscription Agreement between the Registrant and certain investors, dated March 7, 2007. Incorporated by reference to Exhibit 10.4 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 13, 2007."
+    ],
+    [
+     "10.3",
+     "Form of Indemnification Agreement by and among the Registrant, CNS Response, Inc., a California corporation, and certain individuals, dated March 7, 2007. Incorporated by reference to Exhibit 10.5 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 13, 2007."
+    ],
+    [
+     "10.4",
+     "Form of Registration Rights Agreement by and among the Registrant and certain Investors signatory thereto dated March 7, 2007. Incorporated by reference to Exhibit 10.6 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 13, 2007."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2373,
+    "end_line": 2409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "INDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2370,
+     "token": "PAGE_BREAK",
+     "id": 188,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2409,
+     "token": "PAGE_BREAK",
+     "id": 189,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Exhibit Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Form of Registration Rights Agreement by and among the Registrant and certain stockholders of the Company signatory thereto dated March 7, 2007.  Incorporated by reference to Exhibit 10.7 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 13, 2007."
+    ],
+    [
+     "10.6",
+     "Employment Agreement by and between the Registrant and George Carpenter dated October 1, 2007.  Incorporated by reference to Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on October 3, 2007.*"
+    ],
+    [
+     "10.7",
+     "Employment Agreement by and between the Registrant and Daniel Hoffman dated January 11, 2008. Incorporated by reference to Exhibit 10.1 to the Registrant's Current Report on Form 8-K (File No. 000-26285) filed with the Commission on January 17, 2008.*"
+    ],
+    [
+     "10.8",
+     "Stock Purchase Agreement by and among Colorado CNS Response, Inc., Neuro-Therapy, P.C. and Daniel A. Hoffman, M.D. dated January 11, 2008.  Incorporated by reference to the Registrant\u2019s Annual report on Form 10-K (File No. 000-26285) filed with the Commission on January 13, 2009."
+    ],
+    [
+     "10.9",
+     "Form of Warrant issued to Investors in Private Placement.  Incorporated by reference to Exhibit 4.1 to the Registrant\u2019s Current Report on Form 8-K (File No. 000-26285) filed with the Commission on March 13, 2007."
+    ],
+    [
+     "10.10",
+     "Senior Secured Convertible Promissory Note, dated March 30, 2009, by and between the Company and Brandt Ventures, GP.  Incorporated by reference to Exhibit 10.1 to the Registrant's Current Report on Form 8-K (File No. 000-26285) filed with the Commission on April 3, 2009."
+    ],
+    [
+     "10.11",
+     "Senior Secured Convertible Promissory Note, dated March 30, 2009, by and between the Company and SAIL Venture Partners, LP.  Incorporated by reference to Exhibit 10.2 to the Registrant's Current Report on Form 8-K (File No. 000-26285) filed with the Commission on April 3 2009."
+    ],
+    [
+     "10.12",
+     "Bridge Note and Warrant Purchase Agreement, dated May 14, 2009 by and between the Company and SAIL Venture Partners, LP.  Incorporated by reference to Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K (File Number 000-26285) filed with the Securities and Exchange Commission on May 20, 2009."
+    ],
+    [
+     "10.13",
+     "Form of Secured Convertible Promissory Note.  Incorporated by reference to Exhibit 10.2 to the Registrant\u2019s Current Report on Form 8-K (File Number 000-26285) filed with the Securities and Exchange Commission on May 20, 2009."
+    ],
+    [
+     "10.14",
+     "Form of Warrant to Purchase Shares.  Incorporated by reference to Exhibit 10.3 to the Registrant\u2019s Current Report on Form 8-K (File Number 000-26285) filed with the Securities and Exchange Commission on May 20, 2009."
+    ],
+    [
+     "10.15",
+     "Bridge Note and Warrant Purchase Agreement, dated June 12, 2009, by and between the Company and John Pappajohn.  Incorporated by reference to Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K (File Number 000-26285) filed with the Securities and Exchange Commission on June 18, 2009."
+    ],
+    [
+     "10.16",
+     "Form of Secured Convertible Promissory Note.  Incorporated by reference to Exhibit 10.2 to the Registrant\u2019s Current Report on Form 8-K (File Number 000-26285) filed with the Securities and Exchange Commission on June 18, 2009."
+    ],
+    [
+     "10.17",
+     "Form of Warrant to Purchase Shares.  Incorporated by reference to Exhibit 10.3 to the Registrant\u2019s Current Report on Form 8-K (File Number 000-26285) filed with the Securities and Exchange Commission on June 18, 2009."
+    ],
+    [
+     "10.18",
+     "Form of Subscription Agreement."
+    ],
+    [
+     "10.19",
+     "Form of Warrant."
+    ],
+    [
+     "10.20",
+     "Registration Rights Agreement."
+    ],
+    [
+     "10.21",
+     "Amendment No. 1 to Registration Rights Agreement."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2410,
+    "end_line": 2447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2409,
+     "token": "PAGE_BREAK",
+     "id": 189,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2447,
+     "token": "PAGE_BREAK",
+     "id": 190,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Exhibit Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.22",
+     "Form of Indemnification Agreement."
+    ],
+    [
+     "14.1",
+     "Code of Ethics.  Incorporated by reference to Exhibit 14.1 to the Registrant\u2019s Annual Report on Form 10-KSB/A (File No. 000-26285) filed with the Commission on January 24, 2008."
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Registrant.  Incorporated by reference to the Registrant\u2019s Annual report on Form 10-K (File No. 000-26285) filed with the Commission on January 13, 2009."
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm."
+    ],
+    [
+     "24.1",
+     "Power of Attorney (included as part of the Signature Page)."
+    ],
+    [
+     "31.1",
+     "Certification by Chief Executive Officer pursuant to Rule 13a-14(a) or 15d-14(a) under the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "31.2",
+     "Certification by Principal Financial Officer pursuant to Rule 13a-14(a) or 15d-14(a) under the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer (Principal Accounting and Financial Officer) pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2448,
+    "end_line": 2467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Management contract or compensatory plan or arrangement.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2447,
+     "token": "PAGE_BREAK",
+     "id": 190,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 2469,
+     "token": "PAGE_BREAK",
+     "id": 191,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

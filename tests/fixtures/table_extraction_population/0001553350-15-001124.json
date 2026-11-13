@@ -1,0 +1,2548 @@
+{
+ "accession": "0001553350-15-001124",
+ "cik": "0001594114",
+ "form": "10-K",
+ "filing_date": "2015-10-29",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ketd_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Nevada",
+     "4700",
+     "99-0369270"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(Primary Standard Industrial\n\n\n\nClassification Number)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2015\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to ___________\nCommission File Number 333-192874\nKETDARINA CORP.\n(Exact Name of Registrant as specified in its Charter)",
+   "prose_after": "7260 W. Azure Dr., Suite 140-951\nLas Vegas, NV\n(Address of Principal Executive Offices)(Zip Code)\n(212) 960-8595\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for shorter period that the registrant as required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "BUSINESS",
+     "1"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     ""
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "1"
+    ],
+    [
+     "ITEM 2.",
+     "PROPERTIES",
+     "1"
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "1"
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "2"
+    ],
+    [
+     "ITEM 6.",
+     "SELECTED FINANCIAL DATA",
+     "2"
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "3"
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "4"
+    ],
+    [
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "4"
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "13"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "13"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "14"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "15"
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "16"
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "16"
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS, FINANCIAL STATEMENT SCHEDULES",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "18"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 65,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \"accelerated filer and large accelerated filer\" in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer  [ ]  Accelerated filed          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [X] No [ ]\nAs of October 10, 2015, the registrant had 3,740,000 shares of common stock issued and outstanding. No market value has been computed based upon the fact that no active trading market has been established as of October 10, 2015.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nITEM 1. BUSINESS.\nFORWARD-LOOKING STATEMENTS\nThis annual report contains forward-looking statements. These statements relate to future events or our future financial performance. These statements often can be identified by the use of terms such as \"may,\" \"will,\" \"expect,\" \"believe,\" \"anticipate,\" \"estimate,\" \"approximate\" or \"continue,\" or the negative thereof. We intend that such forward-looking statements be subject to the safe harbors for such statements. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent management's best judgment as to what may occur in the future. However, forward-looking statements are subject to risks, uncertainties and important factors beyond our control that could cause actual results and events to differ materially from historical results of operations and events and those presently anticipated or projected. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "",
+     "5"
+    ],
+    [
+     "Balance Sheets as of June 30, 2015 and June 30, 2014",
+     "",
+     "6"
+    ],
+    [
+     "Statements of Operations for the Year Ended June 30, 2015 and 2014",
+     "",
+     "7"
+    ],
+    [
+     "Statements of Stockholders \u2019 Equity",
+     "",
+     "8"
+    ],
+    [
+     "Statements of Cash Flows for the Year ended June 30, 2015 and 2014",
+     "",
+     "9"
+    ],
+    [
+     "Notes to the Financial Statements",
+     "",
+     "10"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 238,
+    "end_line": 246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "As of the date of this Annual Report, we do not have any off balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources that are material to investors.\nGoing Concern\nThe independent registered public accounting firm\u2019s audit opinion accompanying our June 30, 2014 financial statements contained an explanatory paragraph expressing substantial doubt about our ability to continue as a going concern. The financial statements have been prepared \"assuming that we will continue as a going concern,\" which contemplates that we will realize our assets and satisfy our liabilities and commitments in the ordinary course of business.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.\nWe are a smaller reporting company as defined in Rule 12b-2 of the Exchange Act and are not required to provide the information required under this item.\nITEM 8. FINANCIAL AND SUPPLEMENTARY DATA.\nKETDERINA CORP.\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders Ketdarina Corp.\nWe have audited the accompanying balance sheet of Ketdarina Corp. as of June 30, 2015 and 2014 and the related statements of operations, stockholders\u2019 equity, and cash flows for the years ended June 30, 2015 and 2014. Ketdarina Corp\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 210,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ KLJ & Associates, LLP\n\n\n\n\n\n\n\nKLJ & Associates, LLP",
+     ""
+    ],
+    [
+     "Edina, MN",
+     ""
+    ],
+    [
+     "October 27, 2015",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ KLJ & Associates, LLP\n\n\n\n\n\n\n\nKLJ & Associates, LLP",
+    "Edina, MN",
+    "October 27, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 261,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Ketdarina Corp. as of June 30, 2015 and 2014, and the results of its operations and its cash flows for years then ended in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company had net losses for the year ended June 30, 2015 and 2014, which raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans concerning these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "prose_after": "5201 Eden Ave\nSuite 300\nEdina, MN 55436\n630.277.2330\nBALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 277,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "29,216",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "29,216",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "29,216",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS \u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "2,510",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loan from director",
+     "",
+     "",
+     "7,927",
+     "",
+     "",
+     "",
+     "27,620",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "",
+     "10,437",
+     "",
+     "",
+     "",
+     "27,620",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "10,437",
+     "",
+     "",
+     "",
+     "27,620",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders \u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001; 75,000,000 shares authorized, 3,740,000 and 3,740,000 shares issued and outstanding at June 30, 2015 and 2014 respectively;",
+     "",
+     "",
+     "3,740",
+     "",
+     "",
+     "",
+     "3,740",
+     ""
+    ],
+    [
+     "Additional paid-in-capital",
+     "",
+     "",
+     "31,989",
+     "",
+     "",
+     "",
+     "15,632",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(46,166)",
+     "",
+     "",
+     "",
+     "(17,776)",
+     ""
+    ],
+    [
+     "Total Stockholders \u2019 Equity",
+     "",
+     "",
+     "(10,437)",
+     "",
+     "",
+     "",
+     "1,596",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders \u2019 Equity (Deficit)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "29,216",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 283,
+    "end_line": 319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "5201 Eden Ave\nSuite 300\nEdina, MN 55436\n630.277.2330\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 279,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "500",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bank service charges",
+     "",
+     "\u2014",
+     "",
+     "",
+     "217",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "26,301",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "2,089",
+     "",
+     "",
+     "16,570",
+     ""
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "28,390",
+     "",
+     "",
+     "16,787",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(28,390)",
+     "",
+     "",
+     "(16,287)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(28,390)",
+     "",
+     "$",
+     "(16,287)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$",
+     "(0.00)",
+     "*",
+     "$",
+     "(0.00)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING: BASIC AND DILUTED",
+     "",
+     "3,740,000",
+     "",
+     "",
+     "3,700,548",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended\n\n\n\nJune 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 328,
+    "end_line": 356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF OPERATIONS",
+   "prose_after": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n*\ndenotes a loss of less than $(0.01) per share.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDER\u2019S EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 324,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 365,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2013",
+     "",
+     "$",
+     "3,680,000",
+     "",
+     "",
+     "$",
+     "3,680",
+     "",
+     "",
+     "$",
+     "15,092",
+     "",
+     "",
+     "$",
+     "(1,489)",
+     "",
+     "",
+     "$",
+     "17,283",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for cash",
+     "",
+     "",
+     "60,000",
+     "",
+     "",
+     "",
+     "60",
+     "",
+     "",
+     "",
+     "540",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "600",
+     ""
+    ],
+    [
+     "Net loss for the year ended June 30, 2013",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(16,287)",
+     "",
+     "",
+     "",
+     "(16,287)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2014",
+     "",
+     "",
+     "3,740,000",
+     "",
+     "",
+     "",
+     "3,740",
+     "",
+     "",
+     "",
+     "15,632",
+     "",
+     "",
+     "",
+     "(17,776)",
+     "",
+     "",
+     "",
+     "1,596",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of Debt",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "16,357",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "16,357",
+     ""
+    ],
+    [
+     "Net loss for the year ended June 30, 2015",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(28,390)",
+     "",
+     "",
+     "",
+     "(28,390)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2015",
+     "",
+     "",
+     "3,740,000",
+     "",
+     "",
+     "$",
+     "3,740",
+     "",
+     "",
+     "$",
+     "31,989",
+     "",
+     "",
+     "$",
+     "(46,166)",
+     "",
+     "",
+     "$",
+     "(10,437)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 371,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n*\ndenotes a loss of less than $(0.01) per share.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDER\u2019S EQUITY (DEFICIT)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASHFLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 367,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "$",
+     "(28,390)",
+     "",
+     "",
+     "$",
+     "(16,287)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "2,510",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "CASH FLOWS USED IN OPERATING ACTIVITIES",
+     "",
+     "",
+     "(25,880)",
+     "",
+     "",
+     "",
+     "(16,287)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "600",
+     ""
+    ],
+    [
+     "Loans from director",
+     "",
+     "",
+     "7,927",
+     "",
+     "",
+     "",
+     "27,340",
+     ""
+    ],
+    [
+     "Repayment of director loan",
+     "",
+     "",
+     "(11,263)",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "CASH FLOWS PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "",
+     "(3,336)",
+     "",
+     "",
+     "",
+     "27,940",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "",
+     "(29,216)",
+     "",
+     "",
+     "",
+     "11,653",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "",
+     "29,216",
+     "",
+     "",
+     "",
+     "17,563",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "29,216",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non cash activity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forgiveness of Debt",
+     "",
+     "",
+     "16,357",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended\n\n\n\nJune 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASHFLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nJUNE 30, 2015\nNOTE 1 \u2014 ORGANIZATION AND NATURE OF BUSINESS\nKetdarina Corp. was incorporated under the laws of the State of Nevada on July 13, 2011. Until November 19, 2014, we were in the business of wholesale of bedding products to industrial, commercial and institutional retailers, and other professional business users, or to other wholesalers and related subordinated services.\nOn November 19, 2014, as reported in our Form 8-K which was filed with the Securities and Exchange Commission on November 28, 2014, the previous principal shareholders: (a) sold their shares to Western Highlands Minerals, Ltd., a Vietnamese corporation \u201cWHM\u201d); (b) resigned as our management and appointed WHM\u2019s designees as new management, (c) took over the inactive bedding business from us, and (d) cancelled all previous debt which we owed to them.\nSince the change of control, although engaging in ongoing discussions, WHM and its designees have not entered into any agreements or understandings by which we would acquire any assets or a business.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 446,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "June 30,\n\n\n\n2015",
+     "",
+     "",
+     "",
+     "June 30,\n\n\n\n2014",
+     "",
+     ""
+    ],
+    [
+     "Federal income tax benefit attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operations",
+     "",
+     "$",
+     "9,653",
+     "",
+     "",
+     "$",
+     "5,537",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "",
+     "(9,653)",
+     "",
+     "",
+     "",
+     "(5,537)",
+     ""
+    ],
+    [
+     "Net provision for Federal income taxes",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 560,
+    "end_line": 572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company neither owns nor leases any real or personal property. An officer has provided office services without charge. There is no obligation for the officer to continue this arrangement. Such costs are immaterial to the financial statements and accordingly are not reflected herein. The officers and directors are involved in other business activities and most likely will become involved in other business activities in the future.\nNOTE 7 \u2013 INCOME TAXES\nAs of June 30, 2015, the Company had net operating loss carry forwards of approximately $25,880 that may be available to reduce future years\u2019 taxable income in varying amounts through 2031. Future tax benefits which may arise as a result of these losses have not been recognized in these financial statements, as their realization is determined not likely to occur and accordingly, the Company has recorded a valuation allowance for the deferred tax asset relating to these tax loss carry-forwards.\nThe provision for Federal income tax consists of the following:",
+   "prose_after": "The cumulative tax effect at the expected rate of 34% of significant items comprising our net deferred tax amount is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 536,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "June 30,\n\n\n\n2015",
+     "",
+     "",
+     "",
+     "June 30,\n\n\n\n2014",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "",
+     "$",
+     "15,696",
+     "",
+     "",
+     "$",
+     "6,043",
+     ""
+    ],
+    [
+     "Less: valuation allowance",
+     "",
+     "",
+     "(15,696)",
+     "",
+     "",
+     "",
+     "(6,043)",
+     ""
+    ],
+    [
+     "Net deferred tax asset",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 575,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The cumulative tax effect at the expected rate of 34% of significant items comprising our net deferred tax amount is as follows:",
+   "prose_after": "Due to the change in ownership provisions of the Tax Reform Act of 1986, net operating loss carry forwards of approximately $25,880 for Federal income tax reporting purposes are subject to annual limitations. Should a change in ownership occur net operating loss carry forwards may be limited as to use in future years.\nNOTE 8 \u2014 SUBSEQUENT EVENTS\nIn accordance with SFAS 165 (ASC 855-10) the Company has analyzed its operations up to the date these financial statements were issued, and has determined that it does not have any material subsequent events to disclose in these financial statements.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE.\nNone.\nITEM 9A. CONTROLS AND PROCEDURES\nManagement\u2019s Report on Disclosure Controls and Procedures\nManagement is responsible for establishing and maintaining adequate internal control over financial reporting (as defined in Exchange Act Rule 13a-15(f)). The Company \u2019 s internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with accounting principles generally accepted in the United States of America. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate. Under the supervision and with the participation of management, including the Chief Executive Officer and Chief Financial Officer, the Company conducted an evaluation of the effectiveness of the Company\u2019s internal control over financial reporting as of July 13, 2011 using the criteria established in \u201c Internal Control - Integrated Framework \u201d issued by the Committee of Sponsoring Organizations of the Treadway Commission (\"COSO\").",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 536,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 594,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Executive Officer and/or Director",
+     "",
+     "Age",
+     "",
+     "Office"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bui Phap",
+     "",
+     "52",
+     "",
+     "Director; Chairman"
+    ],
+    [
+     "Martin Doan",
+     "",
+     "38",
+     "",
+     "Director, Chief Executive Officer"
+    ],
+    [
+     "Nguyen Ho Nam",
+     "",
+     "36",
+     "",
+     "Director, Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "There has been no change in our internal control over financial reporting identified in connection with our evaluation we conducted of the effectiveness of our internal control over financial reporting as of June 30, 2014, that occurred during our fourth fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nThis annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management \u2019 s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to temporary rules of the SEC that permit the Company to provide only management\u2019s report in this annual report.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDIRECTORS AND EXECUTIVE OFFICERS\nThe name, address and position of our present officers and directors are set forth below:",
+   "prose_after": "BIOGRAPHICAL INFORMATION and Background of officer and director\nSet forth below as a brief background and business experience description of our President for last five years.\nMr. Bui, since 1994, has been Chairman of Duc Long Gia Lai Group, a conglomerate which is publicly owned and is listed on the Ho Chi Minh City Stock Exchange. He is credited for building the Purchaser from its inception in 2011 to becoming an operating mining company.\nMr. Doan, since 2009, he has been the CEO of Asia Global Capital Group, a privately owned consulting company with a focused on Asia-Pacific market. Previously, he served as Chief Strategic Officer of TQC Resource, a titanium and zircon producer of scale in Vietnam. Mr. Doan has restructured and recapitalized the Purchaser.\nMr. Nguyen co-founded Sacombank Securities, an investment banking company located in Ho Chi Minh City, Vietnam, in 2009; he served as a General Director until January 2010, and then as Chairman until May, 2012. Since January, 2012, he has been Chairman of Bamboo Capital, a leading investment banking firm located in Ho Chi Minh City, Vietnam. Bamboo Capital has helped to raise $1 billion for Vietnamese companies.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "",
+     "Year",
+     "Salary (US$)",
+     "",
+     "Bonus (US$)",
+     "",
+     "Stock Awards (US$)",
+     "",
+     "Option Awards (US$)",
+     "",
+     "Non-Equity Incentive Plan Compensation (US$)",
+     "",
+     "Nonqualified Deferred Compensation Earnings (US$)",
+     "",
+     "All Other Compensation (US$)",
+     "",
+     "Total (US$)",
+     ""
+    ],
+    [
+     "Phap Bui",
+     "",
+     "2014",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Chairman",
+     "",
+     "2015",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Martin Doan",
+     "",
+     "2014",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "CEO",
+     "",
+     "2015",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nguyen Ho Nam",
+     "",
+     "2014",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Treasurer",
+     "",
+     "2014",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 673,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Mr. Nguyen co-founded Sacombank Securities, an investment banking company located in Ho Chi Minh City, Vietnam, in 2009; he served as a General Director until January 2010, and then as Chairman until May, 2012. Since January, 2012, he has been Chairman of Bamboo Capital, a leading investment banking firm located in Ho Chi Minh City, Vietnam. Bamboo Capital has helped to raise $1 billion for Vietnamese companies.\nAUDIT COMMITTEE\nWe do not have an audit committee financial expert. We do not have an audit committee financial expert because we believe the cost related to retaining a financial expert at this time is prohibitive. Further, because we have no operations, at the present time, we believe the services of a financial expert are not warranted.\nSIGNIFICANT EMPLOYEES\nWe have no employees other than our Chairman, Phap Bui, and two directors, Martin Doan, Chief Executive Officer and Nguyen Ho Nam, Chief Financial Officer; each of them currently devotes approximately twenty hours per week to company matters. We intend to hire employees on an as needed basis.\nITEM 11. EXECUTIVE COMPENSATION.\nThe following tables set forth certain information about compensation paid, earned or accrued for services by our President, and Secretary and all other executive officers (collectively, the \u201c Named Executive Officers \u201d ) from inception on July 13, 2011 until June 30, 2014:\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "There are no current employment agreements between the company and its sole officer. The compensation discussed herein addresses all compensation awarded to, earned by, or paid to our named executive officer. There are no other stock option plans, retirement, pension, or profit sharing plans for the benefit of our officers and directors other than as described herein.\nCHANGE OF CONTROL\nAs of June 30, 2015, we had no pension plans or compensatory plans or other arrangements that provide compensation in the event of a termination of employment or a change in our control.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table provides certain information regarding the ownership of our common stock, as of June 30, 2015 and as of the date of the filing of this annual report by:\n\u00b7 each of our executive officers;\n\u00b7 each director;\n\u00b7 each person known to us to own more than 5% of our outstanding common stock; and\n\u00b7 all of our executive officers and directors and as a group",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "",
+     "Name and Address of\n\n\n\nBeneficial Owner",
+     "",
+     "Amount and Nature of\n\n\n\nBeneficial Ownership",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock",
+     "",
+     "Phap Bui, Chairman and Director.\n\n\n\n7260 W. Azure Dr., Suite 140-951\n\n\n\nLas Vegas, Nevada, 89130",
+     "",
+     "2,200,000 shares of common stock (director)",
+     "",
+     "58.8%",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 704,
+    "end_line": 716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "There are no current employment agreements between the company and its sole officer. The compensation discussed herein addresses all compensation awarded to, earned by, or paid to our named executive officer. There are no other stock option plans, retirement, pension, or profit sharing plans for the benefit of our officers and directors other than as described herein.\nCHANGE OF CONTROL\nAs of June 30, 2015, we had no pension plans or compensatory plans or other arrangements that provide compensation in the event of a termination of employment or a change in our control.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nThe following table provides certain information regarding the ownership of our common stock, as of June 30, 2015 and as of the date of the filing of this annual report by:\n\u00b7 each of our executive officers;\n\u00b7 each director;\n\u00b7 each person known to us to own more than 5% of our outstanding common stock; and\n\u00b7 all of our executive officers and directors and as a group",
+   "prose_after": "The percent of class is based on 3,740,000 shares of common stock issued and outstanding as of the date of this annual report.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.\nDuring the year ended June 30, 2015, we had not entered into any transactions with our sole officer or director, or persons nominated for these positions, beneficial owners of 5% or more of our common stock, or family members of these persons wherein the amount involved in the transaction or a series of similar transactions exceeded the lesser of $120,000 or 1% of the average of our total assets for the last three fiscal years.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.\nDuring fiscal year ended June 30, 2015, we incurred approximately $7,500 in fees to our principal independent accountants for professional services rendered in connection with the audit of our financial statements and for the reviews of our financial statements for the quarters ended December 31, 2014, and March 31, 2015 and June 30, 2015.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Ketdarina Corp.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: October 27, 2015",
+     "By:",
+     "/s/ Martin Doan"
+    ],
+    [
+     "",
+     "",
+     "Martin Doan"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Ketdarina Corp."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 757,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "31.1\nCertification of Chief Executive Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act\n31.2\nCertification of Chief Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act\n32.1\nCertification of Chief Executive Officer and Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act\n101\nInteractive data files pursuant to Rule 405 of Regulation S-T.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Martin Doan",
+     "",
+     "Chief Executive Officer (Principal Executive Officer) and Director",
+     "",
+     "October 27, 2015"
+    ],
+    [
+     "Martin Doan",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Nguyen Ho Nam",
+     "",
+     "Chief Financial Officer (Principal Financial Officer) and Director",
+     "",
+     "October 27, 2015"
+    ],
+    [
+     "Nguyen Ho Nam",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Bui Phap",
+     "",
+     "Director",
+     "",
+     "October 27, 2015"
+    ],
+    [
+     "Bui Phap",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 785,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,5420 @@
+{
+ "accession": "0001477932-12-001393",
+ "cik": "0000919605",
+ "form": "10-K",
+ "filing_date": "2012-05-07",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bcra_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "33-0601504"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "United States Securities and Exchange Commission\nWashington, D.C. 20549\nFORM 10-K\nAnnual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the Year Ended December 31, 2011\nCommission File No. 0-23512\nBiocoral, Inc.\n(Exact name of issuer as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "12-14 rue Raymond Ridel, 92250\n\nLa Garenne Colombes France",
+     "011-331-4757-9843",
+     "N/A"
+    ],
+    [
+     "(Address of Issuer's principal executive offices)",
+     "(Issuer's telephone number, including area code)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Exchange Act:\nCommon Stock, $.001 par value\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers, in response to Item 405 of Regulation S-K, is not contained herein, and will not be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "Page",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Description of Business",
+     "",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "",
+     "11"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "",
+     "14"
+    ],
+    [
+     "Item 2.",
+     "Description of Property",
+     "",
+     "14"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "",
+     "14"
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     "",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity and Related Stockholder Matters",
+     "",
+     "15"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "",
+     "16"
+    ],
+    [
+     "Item 7.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "16"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "",
+     "19"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "",
+     "F-1 - F-21"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "",
+     "20"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "",
+     "20"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "",
+     "20"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors, Executive Officers, Promoters and Control Persons",
+     "",
+     "21"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "",
+     "24"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management",
+     "",
+     "25"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions",
+     "",
+     "26"
+    ],
+    [
+     "Item 14",
+     "Principal Accountant Fees and Services",
+     "",
+     "26"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Reports on Form 8-K",
+     "",
+     "27"
+    ],
+    [
+     "",
+     "Signatures",
+     "",
+     "28"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter Ended",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "December 31, 2011",
+     "$",
+     "12.00",
+     "$",
+     "8.00"
+    ],
+    [
+     "September 30, 2011",
+     "$",
+     "12.00",
+     "$",
+     "10.00"
+    ],
+    [
+     "June 30, 2011",
+     "$",
+     "12.00",
+     "$",
+     "12.00"
+    ],
+    [
+     "March 31, 2011",
+     "$",
+     "12.00",
+     "$",
+     "12.00"
+    ],
+    [
+     "December 31, 2010",
+     "$",
+     "12.00",
+     "$",
+     "12.00"
+    ],
+    [
+     "September 30, 2010",
+     "$",
+     "12.00",
+     "$",
+     "12.00"
+    ],
+    [
+     "June 30, 2010",
+     "$",
+     "28.00",
+     "$",
+     "10.00"
+    ],
+    [
+     "March 31, 2010",
+     "$",
+     "32.00",
+     "$",
+     "32.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "Recently the Court of Appeal of Versailles has rendered a decision only on its jurisdiction over the parties in the case having determined that it has no jurisdiction over T\u00dcV Rheinland LGA Products GmbH NURNBERG because of European community rules. However the Court of Appeal maintains jurisdiction over T\u00dcV Rheinland of North America Inc and T\u00dcV Rheinland FRANCE SA and fix the new date of hearing for June 2012.\nBiocoral France believes likely that the previous decision of the commercial Court of Nanterre (92) will be upheld by the Court of Appeal of Versailles and possible that the damages totaling 188,000 Euros (approximately $243,000) will be increased.\nItem 4. Submission of Matters to a Vote of Security Holders.\nNone.\nPART II\nItem 5. Market for Common Equity and Related Stockholder Matters.\nAt December 31, 2011, there were 11,443,787 shares of our common stock issued and outstanding. Our common stock trades on the OTCQB Markets under the symbol BCRA. The following table sets forth information regarding the high and low closing price per share for our common stock as reported by www.nasdaq.com. Such prices do not necessarily reflect actual transactions and do not include retail mark-ups, mark-downs or commissions.",
+   "prose_after": "Holders\nAs of December 31, 2011, there were approximately 400 holders of record of the shares of our common stock including several European financial and portfolio institutions including their clients.\nDividends\nWe have paid no cash dividends on our equity securities to date and do not anticipate the payment of cash dividends on our equity securities in the near future. We paid a dividend of one share of our common stock for each three shares owned on December 18, 1995 and paid, in December 1996, another stock dividend of one share for each three shares owned as of November 6, 1996.\nRecent Sales of Unregistered Securities\nDuring 2011, the Company received additional short-term loans totaling $415,800 from \u201caccredited investors\u201d, increasing the outstanding amount of short-term loans from $617,000 to 1,032,800.\nThe Company also received short-term loans totaling $415,800 in 2010 from \u201caccredited investors\u201d.\nThese short-term loans were converted into new 7% Non-Convertible Promissory Notes due December 31, 2014 on December 31, 2011. (See Note 7 and Note 8 to the Financial Statements)",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 435,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Management\u2019s Report on Internal Control over Financial Reporting",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm on Internal Control Over Financial Reporting",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2011, and 2010",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operation and Comprehensive loss for the years ended December 31, 2011 and 2010",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficiency for the years ended December 31, 2011 and 2010",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2011 and 2010",
+     "F-8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s foreign currency risk exposure results from fluctuating currency exchange rates, primarily the U.S. dollar against the European currencies. The Company faces transactional currency exposures that arise when its foreign subsidiaries (or the Company itself) enter into transactions, generally on an intercompany basis, denominated in currencies other than their local currency. The Company also faces currency exposure that arises from translating the results of its global operations to the U.S. dollar at exchange rates that have fluctuated from the beginning of the period. The Company has not used financial derivatives to hedge against fluctuations in currency exchange rates. Based on the Company\u2019s overall exposure for foreign currency at December 31, 2011, a hypothetical approximately 10 percent change in foreign currency rates would not have a material impact on the Company\u2019s balance sheet, net sales, net income or cash flows over a one-year period.\nWe conduct much of our business operations (and incur substantially all of our operating costs other than professional and consulting fees) through our European subsidiaries in Euros and, as such, are exposed to risk resulting from the fluctuation of exchange rates between the Euro and the US Dollar. We do not engage in any hedging or other transactions for the purpose of minimizing this risk.\nItem 8. Financial Statements and Supplementary Data\nBiocoral, Inc. and Subsidiaries Index to Consolidated Financial Statements and Schedule.\nFinancial Statements:",
+   "prose_after": "Management\u2019s Report on Internal Control over Financial Reporting\nOur management is responsible for establishing and maintaining adequate internal control over financial reporting for the Company. Internal control over financial reporting is defined in Rule 13a-15(f) or Rule 15d-15(f) promulgated under the Securities Exchange Act of 1934, as a process designed by, or under the supervision of, our principal executive and principal financial officers and effected by our Board of Directors, management and other personnel, to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles in the United States of America and includes those policies and procedures that:\n\u00b7 Pertain to the maintenance of records that in reasonable detail accurately and fairly reflect the transactions and dispositions of our assets;\n\u00b7 Provide reasonable assurance that transactions are recorded as necessary to permit preparation of financial statements in accordance with generally accepted accounting principles, and that receipts and expenditures of the Company are being made only in accordance with authorizations of our management and directors; and",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 555,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "May 4, 2012",
+     "By:",
+     "/s/ Michael T. Studer CPA P.C.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "On March 30, 2012, Management of the Company provided us with more appropriate documentation that it had performed an evaluation of its internal control over financial reporting by preparing a questionnaire that highlights design and operating effectiveness of such controls over financial reporting. Management has indicated that the Company will continue to perform but better document its testing on a quarterly basis, by using tailored programs that will now be initialed and dated by the party performing such tests, of those internal controls important to the financial reporting process of the Company. Management of the Company has also informed us that its tailored programs will be upgraded to clearly demonstrate that the testing includes critical aspects of the inventory/purchasing, accounts receivable/sales revenue, cash disbursements/receipts and payroll cycles.\nI have also audited in accordance with the standards of the Public Company Accounting Oversight Board (United States) the Company\u2019s consolidated financial statements as of December 31, 2011 and 2010 and for the years then ended and my report dated May 4, 2012 expressed an unqualified opinion thereon.\nFreeport, New York",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Stockholders of\nI have audited the accompanying consolidated balance sheets of Biocoral, Inc. and subsidiaries (the \u201cCompany\u201d) as of December 31, 2011 and 2010 and the related consolidated statements of operations and comprehensive loss, changes in stockholders\u2019 deficit, and cash flows for the years then ended. These financial statements are the responsibility of the Company\u2019s management. My responsibility is to express an opinion on these financial statements based on my audits.\nI conducted my audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that I plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. I believe that my audits provide a reasonable basis for my opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "May 4, 2012",
+     "By:",
+     "/s/ Michael T. Studer CPA P.C.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 596,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "On March 30, 2012, Management of the Company provided us with more appropriate documentation that it had performed an evaluation of its internal control over financial reporting by preparing a questionnaire that highlights design and operating effectiveness of such controls over financial reporting. Management has indicated that the Company will continue to perform but better document its testing on a quarterly basis, by using tailored programs that will now be initialed and dated by the party performing such tests, of those internal controls important to the financial reporting process of the Company. Management of the Company has also informed us that its tailored programs will be upgraded to clearly demonstrate that the testing includes critical aspects of the inventory/purchasing, accounts receivable/sales revenue, cash disbursements/receipts and payroll cycles.\nI have also audited in accordance with the standards of the Public Company Accounting Oversight Board (United States) the Company\u2019s consolidated financial statements as of December 31, 2011 and 2010 and for the years then ended and my report dated May 4, 2012 expressed an unqualified opinion thereon.\nFreeport, New York",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Stockholders of\nI have audited the accompanying consolidated balance sheets of Biocoral, Inc. and subsidiaries (the \u201cCompany\u201d) as of December 31, 2011 and 2010 and the related consolidated statements of operations and comprehensive loss, changes in stockholders\u2019 deficit, and cash flows for the years then ended. These financial statements are the responsibility of the Company\u2019s management. My responsibility is to express an opinion on these financial statements based on my audits.\nI conducted my audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that I plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. I believe that my audits provide a reasonable basis for my opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "35,363",
+     "",
+     "$",
+     "48,511",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for doubtful accounts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "of $16,063 and $16,588, respectively",
+     "",
+     "39,628",
+     "",
+     "",
+     "52,527",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "435,971",
+     "",
+     "",
+     "510,354",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "34,962",
+     "",
+     "",
+     "39,991",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "545,924",
+     "",
+     "",
+     "651,383",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "13,147",
+     "",
+     "",
+     "12,212",
+     ""
+    ],
+    [
+     "Patent costs, net of accumulated amortization",
+     "",
+     "825,918",
+     "",
+     "",
+     "825,709",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "8,845",
+     "",
+     "",
+     "8,612",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1,393,834",
+     "",
+     "$",
+     "1,497,916",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current  Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "649,527",
+     "",
+     "$",
+     "728,636",
+     ""
+    ],
+    [
+     "Short term bank borrowings",
+     "",
+     "4,172",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Short term borrowings",
+     "",
+     "132,500",
+     "",
+     "",
+     "617,000",
+     ""
+    ],
+    [
+     "Due to officer-current portion",
+     "",
+     "61,295",
+     "",
+     "",
+     "330,975",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "1,269,908",
+     "",
+     "",
+     "1,100,435",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "2,117,402",
+     "",
+     "",
+     "2,777,046",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable-7% Non-convertible, net of discount of $1,872,520 at December 31, 2011",
+     "",
+     "2,127,480",
+     "",
+     "",
+     "3,000,000",
+     ""
+    ],
+    [
+     "Due to officer, net of current portion",
+     "",
+     "283,882",
+     "",
+     "",
+     "450,000",
+     ""
+    ],
+    [
+     "Deferred employee benefits",
+     "",
+     "5,439",
+     "",
+     "",
+     "5,566",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long term debt",
+     "",
+     "2,416,801",
+     "",
+     "",
+     "3,455,566",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "4,534,203",
+     "",
+     "",
+     "6,232,612",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; par value $.001 per share; 1,000,000  shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized; none issued",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common Stock; par value $.001 per share; 100,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "11,493,787 (including 50,000 shares committed to be issued) and 11,443,787",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares issued and outstanding at December 31, 2011 and 2010, respectively",
+     "",
+     "11,494",
+     "",
+     "",
+     "11,444",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "21,272,470",
+     "",
+     "",
+     "18,800,000",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(80,321)",
+     "",
+     "",
+     "(122,231)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(24,344,012)",
+     "",
+     "",
+     "(23,423,909)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(3,140,369)",
+     "",
+     "",
+     "(4,734,696)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Deficit",
+     "$",
+     "1,393,834",
+     "",
+     "$",
+     "1,497,916",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 630,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying financial statements referred to above have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company\u2019s present financial condition raises substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to this matter are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nI have also audited in accordance with the standards of the Public Company Accounting Oversight Board (United States) the Company\u2019s internal control over financial reporting as of December 31, 2011, based on the criteria established in \u201cInternal Control \u2013 Integrated Framework\u201d issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO), and my report dated May 4, 2012 expressed an unqualified opinion thereon.\nFreeport, New York\n<TABLE>\nMay 4, 2012  By:  /s/ Michael T. Studer CPA P.C.\n-----------  ---  ------------------------------\n</TABLE>\nBIOCORAL, INC. AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS AS OF\nDECEMBER 31, 2011, AND 2010",
+   "prose_after": "BIOCORAL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF OPERATION\nAND COMPREHENSIVE LOSS FOR THE YEARS ENDED",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 698,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "286,548",
+     "",
+     "$",
+     "307,655",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "210,219",
+     "",
+     "",
+     "154,515",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "76,329",
+     "",
+     "",
+     "153,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for slower moving inventories",
+     "",
+     "46,339",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjusted gross profit",
+     "",
+     "29,990",
+     "",
+     "",
+     "153,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting and professional fees",
+     "",
+     "213,152",
+     "",
+     "",
+     "213,099",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "93,665",
+     "",
+     "",
+     "92,762",
+     ""
+    ],
+    [
+     "Administrative expenses",
+     "",
+     "374,120",
+     "",
+     "",
+     "297,342",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "680,937",
+     "",
+     "",
+     "603,203",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss From Operations",
+     "",
+     "(650,947)",
+     "",
+     "",
+     "(450,063)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest, net",
+     "",
+     "(269,156)",
+     "",
+     "",
+     "(242,940)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "-",
+     "",
+     "",
+     "(10,269)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "(269,156)",
+     "",
+     "",
+     "(253,209)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before Provision for Income Taxes",
+     "",
+     "(920,103)",
+     "",
+     "",
+     "(703,272)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(920,103)",
+     "",
+     "",
+     "(703,272)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Comprehensive Income (Loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "41,910",
+     "",
+     "",
+     "9,421",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "$",
+     "(878,193)",
+     "",
+     "$",
+     "(693,851)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "$",
+     "(0.08)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average number",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "of common shares outstanding",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "BIOCORAL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF OPERATION\nAND COMPREHENSIVE LOSS FOR THE YEARS ENDED",
+   "prose_after": "BIOCORAL, INC. AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2011 AND 2010",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 704,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "  Additional",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Loss",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2010",
+     "",
+     "11,443,787",
+     "$",
+     "11,444",
+     "$",
+     "18,800,000",
+     "$",
+     "(131,652)",
+     "",
+     "$",
+     "(22,720,637)",
+     "",
+     "$",
+     "(4,040,845)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss) - foreign currency translation adjustment",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "9,421",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,421",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(703,272)",
+     "",
+     "",
+     "(703,272)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2010",
+     "",
+     "11,443,787",
+     "",
+     "11,444",
+     "",
+     "18,800,000",
+     "",
+     "(122,231)",
+     "",
+     "",
+     "(23,423,909)",
+     "",
+     "",
+     "(4,734,696)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss) - foreign currency translation adjustment",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "41,910",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "41,910",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fair value of warrants included in units of notes payable and warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "exchanged for debt ($3,900,317) and accrued interest payable ($99,683)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "on December 31, 2011",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,872,520",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,872,520",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitment, effective December 31, 2011, to issue 50,000 shares of common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "stock to chief executive officer in satisfaction of amount due to officer",
+     "",
+     "50,000",
+     "",
+     "50",
+     "",
+     "599,950",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "600,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(920,103)",
+     "",
+     "",
+     "(920,103)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2011",
+     "",
+     "11,493,787",
+     "$",
+     "11,494",
+     "$",
+     "21,272,470",
+     "$",
+     "(80,321)",
+     "",
+     "$",
+     "(24,344,012)",
+     "",
+     "$",
+     "(3,140,369)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 770,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "BIOCORAL, INC. AND SUBSIDIARY\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2011 AND 2010",
+   "prose_after": "BIOCORAL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS FOR\nTHE YEARS ENDED DECEMBER 31, 2011 AND 2010",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 765,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(920,103)",
+     "",
+     "$",
+     "(703,272)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for slower moving inventories",
+     "",
+     "46,339",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "93,665",
+     "",
+     "",
+     "92,762",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "12,899",
+     "",
+     "",
+     "38,843",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "28,044",
+     "",
+     "",
+     "(18,394)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "5,029",
+     "",
+     "",
+     "(22,209)",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "(233)",
+     "",
+     "",
+     "591",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(24,919)",
+     "",
+     "",
+     "(66,977)",
+     ""
+    ],
+    [
+     "Due to officer",
+     "",
+     "144,500",
+     "",
+     "",
+     "186,000",
+     ""
+    ],
+    [
+     "Accrued interest payable",
+     "",
+     "269,156",
+     "",
+     "",
+     "242,940",
+     ""
+    ],
+    [
+     "Deferred employee benefits",
+     "",
+     "(127)",
+     "",
+     "",
+     "(485)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(345,750)",
+     "",
+     "",
+     "(250,201)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(3,875)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Patent costs incurred",
+     "",
+     "(90,934)",
+     "",
+     "",
+     "(89,394)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(94,809)",
+     "",
+     "",
+     "(89,394)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from short-term notes payable",
+     "",
+     "415,817",
+     "",
+     "",
+     "308,900",
+     ""
+    ],
+    [
+     "Repayment of advance from officer",
+     "",
+     "(34,488)",
+     "",
+     "",
+     "(11,859)",
+     ""
+    ],
+    [
+     "Advance from officer",
+     "",
+     "-",
+     "",
+     "",
+     "47,642",
+     ""
+    ],
+    [
+     "Short term bank borrowing",
+     "",
+     "4,172",
+     "",
+     "",
+     "(11,016)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by  financing activities",
+     "",
+     "385,501",
+     "",
+     "",
+     "333,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effects of changes in exchange rates on cash",
+     "",
+     "41,910",
+     "",
+     "",
+     "9,421",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash",
+     "",
+     "(13,148)",
+     "",
+     "",
+     "3,493",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "48,511",
+     "",
+     "",
+     "45,018",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "35,363",
+     "",
+     "$",
+     "48,511",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitment to issue common stock to chief executive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "officer in satisfaction of amount due officer",
+     "$",
+     "600,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of notes payable due December 31, 2014 and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "warrants in satisfaction of debt ($3,900,317) and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "accrued interest payable ($99,683)",
+     "$",
+     "4,000,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 809,
+    "end_line": 879
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "BIOCORAL, INC. AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS FOR\nTHE YEARS ENDED DECEMBER 31, 2011 AND 2010",
+   "prose_after": "Note 1 \u2013 Description of Business\nBiocoral, Inc. (the \u201cCompany\u201d) was incorporated under the laws of the State of Delaware on May 4, 1992. Biocoral is a holding company that conducts its operations primarily through its wholly-owned European subsidiaries. Biocoral, Inc., together with its subsidiaries, are referred to collectively herein as the \u201cCompany\u201d.\nThe Company\u2019s operations consist primarily of development, manufacturing and marketing of patented high technology biomaterials, bone substitute materials made from coral, and other orthopedic, oral and maxillo-facial products, including products marketed under the trade name of Biocoral. Most of the Company\u2019s operations are conducted from Europe. The Company has obtained regulatory approvals to market its products throughout Europe, Canada and certain other countries. The Company owns various patents for its products which have been registered and issued in the United States, Canada, Japan, Australia and various countries throughout Europe. However, the Company has not applied for the regulatory approvals needed to market its products in the United States.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Beginning accumulated translation adjustments",
+     "$",
+     "(122,231)",
+     "",
+     "$",
+     "(131,652)",
+     ""
+    ],
+    [
+     "Translation adjustments for the year  then ended",
+     "",
+     "41,910",
+     "",
+     "",
+     "9,421",
+     ""
+    ],
+    [
+     "Ending accumulated translation adjustments",
+     "$",
+     "(80,321)",
+     "",
+     "$",
+     "(122,231)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 991,
+    "end_line": 1000
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company presents basic and diluted net loss per share pursuant to the provisions of ASC Topic 260, \u201cEarnings per Share\". Basic net loss per share is computed by dividing the net loss for the year by the weighted average number of shares outstanding during the year. Diluted net loss per share is (computed by dividing the net earnings for the year by the weighted average number of common shares and common share equivalents outstanding during the year. Common share equivalents include stock options and other convertible securities. For the years ended December 31, 2011 and 2010, except for the 400,000 warrants issued effective December 31, 2011 (See Note 8), there were no common stock equivalents outstanding.\n(R) Foreign Currency Translation and Transactions\nThe functional currency of Biocoral France SAS, the Company's principal operating subsidiary, is the Euro. The reporting currency of the Company is the United States dollar.\nNote 3 \u2013 Summary of Significant Accounting Policies, continued\n(R) Foreign Currency Translation and Transactions, continued\nBiocoral France assets and liabilities are translated into United States dollars at period end exchange rates ($1.2949 and $1.3253 at December 31, 2011 and 2010, respectively). Biocoral France revenues and expenses are translated into United States dollars at weighted average exchange rates ($1.3987 and 1.3203 for the years ended December 31, 2011 and 2010, respectively). Resulting translation adjustments are recorded as accumulated other comprehensive income (loss), which is a separate component of stockholders' deficiency.\nThe change in cumulative translation adjustments during the years ended December 31, 2011 and 2010 was as follows:",
+   "prose_after": "(S) Comprehensive Loss\nThe foreign currency translation adjustments resulting from the translation of the financial statements of Biocoral France expressed in Euros to United States dollars are reported as other comprehensive income (loss) in the consolidated statements of operations and comprehensive loss.\n(T) Fair Value of Financial Instruments\nASC Topic 820, \u201cFair Value Measurements and Disclosures\u201d, requires disclosure of fair value information about financial instruments when it is practicable to estimate that value. The carrying amounts of financial instruments, including cash, accounts receivable, accounts payable and accrued interest payable, approximate fair value at December 31, 2011 and 2010, due to the relatively short maturity of the instruments. Short-term notes and long-term notes payable approximates fair value based upon debt terms available for similar entities under similar terms.\n(U) Use of Estimates\nThe preparation of consolidated financial statements in conformity with accounting principles generally accepted in the United States of America requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities, and the disclosure of contingent assets and liabilities at the date of the financial statements, and revenues and expenses during the reporting period. Actual results could differ from those estimates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Inventories consist of the following at December 31:",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "69,581",
+     "",
+     "$",
+     "77,457",
+     ""
+    ],
+    [
+     "Work in process",
+     "",
+     "173,908",
+     "",
+     "",
+     "67,434",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "314,541",
+     "",
+     "",
+     "445,061",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "558,030",
+     "",
+     "",
+     "589,952",
+     ""
+    ],
+    [
+     "Less reserve for slower moving inventories",
+     "",
+     "(122,059)",
+     "",
+     "",
+     "(79,598)",
+     ""
+    ],
+    [
+     "Net",
+     "$",
+     "435,971",
+     "",
+     "$",
+     "510,354",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1051
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Inventories"
+    }
+   },
+   "prose_before": "The objective of this Update is to simplify how entities, both public and non-public, test goodwill for impairment. The amendments in the Update permit an entity to first assess qualitative factors to determine whether it is more likely than not that the fair value of a reporting unit is less than its carrying amount as a basis for determining whether it is necessary to perform the two-step goodwill impairment test described in Topic 350. The more-likely-than-not threshold is defined as having a likelihood of more than 50 per cent. Previous guidance under Topic 350 required an entity to test goodwill for impairment, on at least an annual basis, by comparing the fair value of a reporting unit with its carrying amount, including goodwill (step one). If the fair value of a reporting unit is less than its carrying amount, then the second step of the test must be performed to measure the amount of the impairment loss, if any. Under the amendments in this Update, an entity is not required to calculate the fair value of a reporting unit unless the entity determines that it is more likely than not that its fair value is less than its carrying amount. Management does not believe that the adoption of this update will have a substantial impact on the financial statements.\nCertain other recent accounting pronouncements issued by the FASB (including its Emerging Issues Task Force), the AICPA, and the SEC did not, or are not believed by management will have, a material impact on the Company's present or future consolidated financial statements.\n(W) Reclassifications\nCertain reclassifications have been made to the 2010 financial statements to conform to the 2011 presentation.\nNote 4 \u2013 Inventories\nInventories consist of the following at December 31:",
+   "prose_after": "Note 5 \u2013 Property and Equipment\nProperty and equipment consists of the following at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "12,160",
+     "",
+     "$",
+     "12,160",
+     ""
+    ],
+    [
+     "Buildings and improvements",
+     "",
+     "108,982",
+     "",
+     "",
+     "108,982",
+     ""
+    ],
+    [
+     "Equipment and furnishings",
+     "",
+     "233,241",
+     "",
+     "",
+     "229,366",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "354,383",
+     "",
+     "",
+     "350,508",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "",
+     "(341,236)",
+     "",
+     "",
+     "(338,296)",
+     ""
+    ],
+    [
+     "Net",
+     "$",
+     "13,147",
+     "",
+     "$",
+     "12,212",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1057,
+    "end_line": 1070
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Property and Equipment"
+    }
+   },
+   "prose_before": "Note 5 \u2013 Property and Equipment\nProperty and equipment consists of the following at December 31:",
+   "prose_after": "Depreciation and amortization expense was $3,875 and $3,924 for the years ended December 31, 2011 and 2010, respectively.\nNote 6 \u2013 Patent Costs, Net\nPatent costs, net, consist of the following at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Patent Costs",
+     "$",
+     "1,295,626",
+     "",
+     "$",
+     "1,204,692",
+     ""
+    ],
+    [
+     "Less:  Accumulated Amortization",
+     "",
+     "(469,708)",
+     "",
+     "",
+     "(378,983)",
+     ""
+    ],
+    [
+     "Net Intangible Assets",
+     "$",
+     "825,918",
+     "",
+     "$",
+     "825,709",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1077,
+    "end_line": 1086
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Patent Costs, Net"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense was $3,875 and $3,924 for the years ended December 31, 2011 and 2010, respectively.\nNote 6 \u2013 Patent Costs, Net\nPatent costs, net, consist of the following at December 31:",
+   "prose_after": "Patent and intangible costs consist of professional and applicant fees to various intellectual property firms related to successful world-wide patent applications. The patent costs are amortized using the straight-line method over the shorter of the life of the patent or the estimated useful life of the technology, which ranges from 10 to 20 years.\nAmortization of patent costs expense was $90,725 and $88,838 for the years ended December 31, 2011 and 2010, respectively.\nAmortization of the patent costs for the next five years and thereafter is expected as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "74,100"
+    ],
+    [
+     "2013",
+     "",
+     "74,100"
+    ],
+    [
+     "2014",
+     "",
+     "74,100"
+    ],
+    [
+     "2015",
+     "",
+     "74,100"
+    ],
+    [
+     "2016",
+     "",
+     "74,100"
+    ],
+    [
+     "Thereafter",
+     "",
+     "455,418"
+    ],
+    [
+     "Total",
+     "$",
+     "825,918"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1105
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Patent Costs, Net"
+    }
+   },
+   "prose_before": "Patent and intangible costs consist of professional and applicant fees to various intellectual property firms related to successful world-wide patent applications. The patent costs are amortized using the straight-line method over the shorter of the life of the patent or the estimated useful life of the technology, which ranges from 10 to 20 years.\nAmortization of patent costs expense was $90,725 and $88,838 for the years ended December 31, 2011 and 2010, respectively.\nAmortization of the patent costs for the next five years and thereafter is expected as follows:",
+   "prose_after": "Note 7 \u2013 Short-Term Notes Payable\nThe Company received short-term loans totaling $308,900 in 2010, from \u201caccredited investors\u201d.\nDuring 2011, the Company received additional short-term loans totaling $415,817 from an \u201caccredited investor\u201d, increasing the outstanding amount of short-term loans from $617,000 to 1,032,817.\nOn December 31, 2011, the loan balance of $900,317 due one of the lenders along with accrued interest of $99,683 was converted to the Company\u2019s new 7% non-convertible note payable due December 31, 2014 (See Note 8).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Due to stockholder",
+     "$",
+     "132,500",
+     "$",
+     "132,500"
+    ],
+    [
+     "Due to stockholder",
+     "",
+     "-",
+     "",
+     "484,500"
+    ],
+    [
+     "Total",
+     "$",
+     "132,500",
+     "$",
+     "617,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1115,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Short-Term Notes Payable"
+    }
+   },
+   "prose_before": "Note 7 \u2013 Short-Term Notes Payable\nThe Company received short-term loans totaling $308,900 in 2010, from \u201caccredited investors\u201d.\nDuring 2011, the Company received additional short-term loans totaling $415,817 from an \u201caccredited investor\u201d, increasing the outstanding amount of short-term loans from $617,000 to 1,032,817.\nOn December 31, 2011, the loan balance of $900,317 due one of the lenders along with accrued interest of $99,683 was converted to the Company\u2019s new 7% non-convertible note payable due December 31, 2014 (See Note 8).",
+   "prose_after": "The short-term notes payable bear interest at 7%, are unsecured and due on demand.\nNote 8 \u2013 Long-Term Notes Payable\nThe long-term notes payable at December 31, 2011 are due to \u201caccredited investors\u201d, bear interest at 7% per annum, are unsecured, and are due on December 31, 2014.\nAs of December 31, 2010, the aggregate of long-term debt was $3,000,000.\nOn December 15, 2011, the board of directors authorized the Company to offer a maximum of 60 units of a new series of 7% non-convertible Promissory Notes in the amount of $6,000,000 due December 31, 2014 and to exchange the 7% non-convertible notes payable due December 31, 2012 with the new 7% non-convertible notes payable due December 31, 2014.\nEach Unit of the new series of 7% non-convertible notes payable consists of one 7% non-convertible three-year promissory note of the Company, due December 31, 2014 in the amount of $100,000, and 10,000 detachable warrants. Each warrant gives the holder the right to purchase 1 (one) share of Biocoral, Inc. common stock at a price of $12 per share exercisable at any time during the term of the Units.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "2013",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "2014",
+     "",
+     "4,000,000",
+     ""
+    ],
+    [
+     "2015",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "4,000,000",
+     ""
+    ],
+    [
+     "Unamortized discount",
+     "",
+     "(1,872,520)",
+     ""
+    ],
+    [
+     "Net",
+     "$",
+     "2,127,480",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1144,
+    "end_line": 1158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Long-Term Notes Payable"
+    }
+   },
+   "prose_before": "On December 31, 2011, the Company reached an agreement with holders of the $3,000,000 of convertible notes due December 31, 2012 to exchange such debt for the new 7% non-convertible notes due December 31, 2014. The new 7% non-convertible promissory notes payable issued on December 31, 2011 totaled $4,000,000.\nEach of the notes was issued with detachable warrants to purchase one share of the Company\u2019s common stock. A total of 400,000 warrants were issued under these exchanges. The warrants were valued using the Black-Scholes model with the following assumptions: Risk free interest rate of 0.36%, contractual life of 1095 days, exercise price of $12.00 per share, market price of $12.00 per share and volatility factor of 58.37%. The resulting fair value of $1,872,520 for the warrants was added to additional paid in capital and reflected as a debt discount of the notes payable. The $1,872,520 debt discount will be amortized as interest expense over the three year term of the notes payable.\nThe aggregate maturities of long-term debt at December 31, 2011 are as follows:",
+   "prose_after": "At December 31, 2011, the noncurrent portion of notes payable was $2,127,480, net of a discount of $1,872,520. At December 31, 2010, the noncurrent portion of notes payable was $3,000,000.\nNote 9 \u2013 Due to Officer\nDue to officer represents amounts due the Company\u2019s chief executive officer and consists of the following at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Unpaid consulting fees pursuant to the",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting Agreement",
+     "$",
+     "600,000",
+     "",
+     "$",
+     "450,000",
+     ""
+    ],
+    [
+     "Unreimbursed travel and other expenses",
+     "",
+     "343,882",
+     "",
+     "",
+     "295,192",
+     ""
+    ],
+    [
+     "Advance to subsidiary (Note 12)",
+     "",
+     "1,295",
+     "",
+     "",
+     "35,783",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "945,177",
+     "",
+     "",
+     "780,975",
+     ""
+    ],
+    [
+     "Debt converted to common stock",
+     "",
+     "(600,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance",
+     "",
+     "345,177",
+     "",
+     "",
+     "780,975",
+     ""
+    ],
+    [
+     "Current portion",
+     "",
+     "(61,295)",
+     "",
+     "",
+     "(330,975)",
+     ""
+    ],
+    [
+     "Non-current portion",
+     "$",
+     "283,882",
+     "",
+     "$",
+     "450,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1165,
+    "end_line": 1182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Due to Officer"
+    }
+   },
+   "prose_before": "At December 31, 2011, the noncurrent portion of notes payable was $2,127,480, net of a discount of $1,872,520. At December 31, 2010, the noncurrent portion of notes payable was $3,000,000.\nNote 9 \u2013 Due to Officer\nDue to officer represents amounts due the Company\u2019s chief executive officer and consists of the following at December 31:",
+   "prose_after": "The Company has a consulting agreement with its Chief Executive Officer (CEO) which provides for annual compensation of $150,000 per annum and reimbursement of certain expenses. In addition, the agreement provides the CEO two years' compensation if control of the Company changes. The agreement has been renewed for two or three year additions since 1997, and has been extended to August 31, 2014.\nOn March 31, 2008, the chief executive officer exercised 90,000 stock options (of the 100,000 granted to him on December 21, 2004) at a price of $10.00 per share, or $900,000 in total, in exchange for a $900,000 reduction of unpaid consulting fees due to officer. The chief executive officer has advised the Company that he will not seek cash payment of the unpaid consulting fees and most of the unreimbursed travel and other expenses until after December 31, 2012.\nEffective December 31, 2011, the Company committed to issue 50,000 shares of Company common stock to the chief executive officer in satisfaction of $600,000 of the amount due to officer. The closing trading price of the common stock on December 31, 2011 was $12.00 per share.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Income tax benefit at 35%",
+     "$",
+     "(322,000)",
+     "",
+     "$",
+     "(246,000)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "322,000",
+     "",
+     "",
+     "246,000",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1196,
+    "end_line": 1205
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "Effective December 31, 2011, the Company committed to issue 50,000 shares of Company common stock to the chief executive officer in satisfaction of $600,000 of the amount due to officer. The closing trading price of the common stock on December 31, 2011 was $12.00 per share.\nNote 10 \u2013 Income Taxes\nAt December 31, 2011, the Company had net operating loss carry forwards of approximately $13,678,000 available to reduce future federal taxable income, which, if not used, will expire at various dates through December 31, 2031. These net operating loss carry forwards create a deferred tax asset of approximately $4,787,000. There are no other material differences between amounts used for financial reporting purposes and tax reporting purposes. Since it is more likely than not that the Company will not realize a benefit from these net operating loss carry forwards, a 100% valuation allowance has been recorded to reduce the deferred tax asset to its net realizable value.\nIncome taxes differ from the statutory rate due to the following for the years ended December 31,",
+   "prose_after": "Note 11 \u2013 Segment and Geographic Information\nInformation about the Company's assets and its operations in different geographic locations at December 31, 2011 and 2010 and for the years then ended is shown below pursuant to the Provisions of ASC Topic 280 \u201cSegment Reporting\u201d.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1229,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2011",
+     "",
+     "2010"
+    ],
+    [
+     "  Net Sales:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "France",
+     "$",
+     "158,700",
+     "$",
+     "156,500"
+    ],
+    [
+     "Other European countries",
+     "",
+     "109,800",
+     "",
+     "129,100"
+    ],
+    [
+     "Other",
+     "",
+     "18,048",
+     "",
+     "22,055"
+    ],
+    [
+     "Total net sales",
+     "$",
+     "286,548",
+     "$",
+     "307,655"
+    ],
+    [
+     "Total Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "North America",
+     "$",
+     "863,510",
+     "$",
+     "861,384"
+    ],
+    [
+     "France",
+     "",
+     "530,324",
+     "",
+     "636,532"
+    ],
+    [
+     "Total",
+     "$",
+     "1,393,834",
+     "$",
+     "1,497,916"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Segment and Geographic Information"
+    }
+   },
+   "prose_before": "Note 11 \u2013 Segment and Geographic Information\nInformation about the Company's assets and its operations in different geographic locations at December 31, 2011 and 2010 and for the years then ended is shown below pursuant to the Provisions of ASC Topic 280 \u201cSegment Reporting\u201d.",
+   "prose_after": "For the years ended December 31, 2011 and 2010, one customer accounted for approximately 30% and 37% of net sales, respectively.\nNote 12 \u2013 Related Party Transactions\nDuring March 2010, the Company\u2019s chief executive officer advanced a total of \u20ac35,000 or approximately $47,642 to a Company subsidiary. The outstanding balances at December 31, 2011 and 2010 are $1,295 and $35,783, respectively, and are included in current portion due to officer in the accompanying consolidated balance sheets.\nEffective December 31, 2011, the Company committed to issue 50,000 shares of Company common stock to the chief executive officer in satisfaction of $600,000 of the amount due to officer. The closing trading price of the common stock on December 31, 2011 was $12.00 per share.\nNote 13 \u2013 Commitments and Contingencies\nLeases\nIn July 2009, the Company entered into a rental agreement for its new office, which is located in La Garenne-Colombes (near Paris, France). The operating lease expiring on June 30, 2012 was extended with the same terms and conditions for one additional period of three years. The operating lease was extended to June 30, 2015 with an automatic extension with the same terms and conditions for an additional period of three years. Under the initial lease, the annual rent was $26,545 (\u20ac20,500 Euros) excluding VAT. On April 1, 2010 this lease was amended for an annual rent of $23,609 (\u20ac18,232 Euros) excluding VAT. Rent expense associated with this lease for the years ended December 31, 2011 and 2010 was approximately $25,500 and $31,700, respectively. This agreement is transferable and can be cancelled with six months notice before each of the renewal dates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1188,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1229,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "24,100"
+    ],
+    [
+     "2013",
+     "",
+     "24,100"
+    ],
+    [
+     "2014",
+     "",
+     "24,100"
+    ],
+    [
+     "2015",
+     "",
+     "12,050"
+    ],
+    [
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "84,350"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1245,
+    "end_line": 1256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "In July 2009, the Company entered into a rental agreement for its new office, which is located in La Garenne-Colombes (near Paris, France). The operating lease expiring on June 30, 2012 was extended with the same terms and conditions for one additional period of three years. The operating lease was extended to June 30, 2015 with an automatic extension with the same terms and conditions for an additional period of three years. Under the initial lease, the annual rent was $26,545 (\u20ac20,500 Euros) excluding VAT. On April 1, 2010 this lease was amended for an annual rent of $23,609 (\u20ac18,232 Euros) excluding VAT. Rent expense associated with this lease for the years ended December 31, 2011 and 2010 was approximately $25,500 and $31,700, respectively. This agreement is transferable and can be cancelled with six months notice before each of the renewal dates.\nAt December 31, 2011, total minimum rentals under this operating lease with an initial or remaining term of one year or more is as follows:",
+   "prose_after": "Legal Proceedings\nFrom time to time, the Company is party to legal proceedings that arise in the normal course of business. We accrue for these items as losses become probable and can be reasonably estimated. While the results of these legal proceedings cannot be predicted with certainty, management believes that the final outcome of these proceedings will not have a material adverse effect on the Company\u2019s consolidated results of operations or financial position.\nNote 14 \u2013 Selected Quarterly Financial Data \u2013 (Unaudited)\nThe results of operations by quarter for the years ended December 31, 2011 and 2010 are presented below (unaudited):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1229,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months\n\nEnded",
+     "",
+     "",
+     "",
+     "Three Months\n\nEnded",
+     "",
+     "",
+     "Three Months\n\nEnded",
+     "",
+     "",
+     "Three Months\n\nEnded",
+     "",
+     "",
+     "Year\n\nEnded",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2011",
+     "",
+     "",
+     "",
+     "June 30, 2011",
+     "",
+     "",
+     "September 30, 2011",
+     "",
+     "",
+     "December 31,2011",
+     "",
+     "",
+     "December 31, 2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "",
+     "$",
+     "62,496",
+     "",
+     "$",
+     "97,439",
+     "",
+     "$",
+     "48,887",
+     "",
+     "$",
+     "77,726",
+     "",
+     "$",
+     "286,548",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "",
+     "22,816",
+     "",
+     "",
+     "108,656",
+     "",
+     "",
+     "20,128",
+     "",
+     "",
+     "58,619",
+     "",
+     "",
+     "210,219",
+     ""
+    ],
+    [
+     "Gross Profit (Loss)",
+     "",
+     "",
+     "39,680",
+     "",
+     "",
+     "(11,217)",
+     "",
+     "",
+     "28,759",
+     "",
+     "",
+     "19,107",
+     "",
+     "",
+     "76,329",
+     ""
+    ],
+    [
+     "Provision for slower moving inventories",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "46,339",
+     "",
+     "",
+     "46,339",
+     ""
+    ],
+    [
+     "Adjusted Gross Profit (Loss)",
+     "",
+     "",
+     "39,680",
+     "",
+     "",
+     "(11,217)",
+     "",
+     "",
+     "28,759",
+     "",
+     "",
+     "(27,232)",
+     "",
+     "",
+     "29,990",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "",
+     "176,326",
+     "",
+     "",
+     "183,395",
+     "",
+     "",
+     "89,545",
+     "",
+     "",
+     "231,671",
+     "",
+     "",
+     "680,937",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "",
+     "(136,646)",
+     "",
+     "",
+     "(194,612)",
+     "",
+     "",
+     "(60,786)",
+     "",
+     "",
+     "(258,903)",
+     "",
+     "",
+     "(650,947)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "",
+     "(63,961)",
+     "",
+     "",
+     "(66,906)",
+     "",
+     "",
+     "(68,576)",
+     "",
+     "",
+     "(69,713)",
+     "",
+     "",
+     "(269,156)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "(200,607)",
+     "",
+     "",
+     "(261,518)",
+     "",
+     "",
+     "(129,362)",
+     "",
+     "",
+     "(328,616)",
+     "",
+     "",
+     "(920,103)",
+     ""
+    ],
+    [
+     "Other Comprehensive Income (Loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign Currency Translation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ForeignAdjustmentCurrency Translation Adjustment",
+     "",
+     "",
+     "(7,640)",
+     "",
+     "",
+     "14,898",
+     "",
+     "",
+     "(14,186)",
+     "",
+     "",
+     "48,838",
+     "",
+     "",
+     "41,910",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "",
+     "$",
+     "(208,247)",
+     "",
+     "$",
+     "(246,620)",
+     "",
+     "$",
+     "(143,548)",
+     "",
+     "$",
+     "(279,778)",
+     "",
+     "$",
+     "(878,193)",
+     ""
+    ],
+    [
+     "Basic and Diluted Net Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Per Common Share:",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.08)",
+     ""
+    ],
+    [
+     "Basic and Diluted Weighted Average",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Number of Common Shares Outstanding",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1266,
+    "end_line": 1299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 Selected Quarterly Financial Data \u2013 (Unaudited)"
+    }
+   },
+   "prose_before": "Legal Proceedings\nFrom time to time, the Company is party to legal proceedings that arise in the normal course of business. We accrue for these items as losses become probable and can be reasonably estimated. While the results of these legal proceedings cannot be predicted with certainty, management believes that the final outcome of these proceedings will not have a material adverse effect on the Company\u2019s consolidated results of operations or financial position.\nNote 14 \u2013 Selected Quarterly Financial Data \u2013 (Unaudited)\nThe results of operations by quarter for the years ended December 31, 2011 and 2010 are presented below (unaudited):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months\n\nEnded March 31, 2010",
+     "",
+     "",
+     "Three Months\n\nEnded June 30, 2010",
+     "",
+     "",
+     "Three Months\n\nEnded\n\nSeptember 30, 2010",
+     "",
+     "",
+     "Three Months\n\nEnded\n\nDecember 31, 2010",
+     "",
+     "",
+     "Year Ended\n\nDecember 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "82,454",
+     "",
+     "$",
+     "65,391",
+     "",
+     "$",
+     "64,234",
+     "",
+     "$",
+     "95,576",
+     "",
+     "$",
+     "307,655",
+     ""
+    ],
+    [
+     "Cost of Sales",
+     "",
+     "33,332",
+     "",
+     "",
+     "16,613",
+     "",
+     "",
+     "28,655",
+     "",
+     "",
+     "75,915",
+     "",
+     "",
+     "154,515",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "",
+     "49,122",
+     "",
+     "",
+     "48,778",
+     "",
+     "",
+     "35,579",
+     "",
+     "",
+     "19,661",
+     "",
+     "",
+     "153,140",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "166,980",
+     "",
+     "",
+     "129,784",
+     "",
+     "",
+     "132,450",
+     "",
+     "",
+     "173,989",
+     "",
+     "",
+     "603,203",
+     ""
+    ],
+    [
+     "Loss From Operations",
+     "",
+     "(117,858)",
+     "",
+     "",
+     "(81,006)",
+     "",
+     "",
+     "(96,871)",
+     "",
+     "",
+     "(154,328)",
+     "",
+     "",
+     "(450,063)",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "(65,796)",
+     "",
+     "",
+     "(62,703)",
+     "",
+     "",
+     "(61,343)",
+     "",
+     "",
+     "(63,367)",
+     "",
+     "",
+     "(253,209)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(183,654)",
+     "",
+     "",
+     "(143,709)",
+     "",
+     "",
+     "(158,214)",
+     "",
+     "",
+     "(217,695)",
+     "",
+     "",
+     "(703,272)",
+     ""
+    ],
+    [
+     "Other Comprehensive Income (Loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "adjustment",
+     "",
+     "(12,865)",
+     "",
+     "",
+     "9,434",
+     "",
+     "",
+     "6,010",
+     "",
+     "",
+     "6,842",
+     "",
+     "",
+     "9,421",
+     ""
+    ],
+    [
+     "Comprehensive Loss",
+     "$",
+     "(196,519)",
+     "",
+     "$",
+     "(134,275)",
+     "",
+     "$",
+     "(152,204)",
+     "",
+     "$",
+     "(210,853)",
+     "",
+     "$",
+     "(693,851)",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "per common share:",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ],
+    [
+     "Basis and diluted weighted average",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "number of common shares outstanding",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     "",
+     "",
+     "11,443,787",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1301,
+    "end_line": 1332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 Selected Quarterly Financial Data \u2013 (Unaudited)"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 15 \u2013 Subsequent Events\nDuring the first quarter 2012, the Company received proceeds from the issuance of an additional note for $100,000, from an \u201caccredited investor\u201d.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A. Controls and Procedures\na) Evaluation of Disclosure Controls and Procedures. We conducted an evaluation under the supervision and with the participation of our management, including our Chief Executive Officer and Chief Financial Officer of the effectiveness of the design and operation of our disclosure controls and procedures. The term \"disclosure controls and procedures,\" as defined in Rule 13a-15(e) and Rule 15d-15(e) under the Securities and Exchange Act of 1934, as amended (\"Exchange Act\"), means controls and other procedures of a company that are designed to ensure that information required to be disclosed by the company in the reports it files or submits under the Exchange Act is recorded, processed, summarized and reported, within the time periods specified in the Securities and Exchange Commission's rules and forms. Disclosure controls and procedures also include, without limitation, controls and procedures designed to ensure that information required to be disclosed by a company in the reports that it files or submits under the Exchange Act is accumulated and communicated to the company's management, including its principal executive and principal financial officers, or persons performing similar functions, as appropriate, to allow timely decisions regarding required disclosure. Based on this evaluation, our Chief Executive Officer and Chief Financial Officer concluded that our disclosure controls and procedures were effective as of December 31, 2011 at the reasonable assurance level.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1299,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions with our Company"
+    ],
+    [
+     "Nasser Nassiri",
+     "48",
+     "President, Chief Executive Officer and Chairman of the Board"
+    ],
+    [
+     "Yuhko Grossman",
+     "47",
+     "Secretary, Treasurer and Director"
+    ],
+    [
+     "Jean Darondel",
+     "69",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1363,
+    "end_line": 1370
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters and Control Persons"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(b) Management\u2019s Report on Internal Control over Financial Reporting. Pursuant to Section 404 of the Sarbanes-Oxley Act of 2002 and the rules and regulations adopted pursuant thereto, the Company included a report of management\u2019s assessment of the effectiveness of its internal control over financial reporting as of December 31, 2011 as part of this report. The Company\u2019s independent registered public accounting firm also attested to, and reported on, management\u2019s assessment of the effectiveness of internal control over financial reporting as of December 31, 2011. Management\u2019s report and the independent registered public accounting firm\u2019s attestation report are included in Item 8 hereof, of this report and are incorporated herein by reference.\n(c) Changes in Internal Control over financial reporting. There were no changes in our internal control over financial reporting during the quarter ended December 31, 2011 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting, as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers, Promoters and Control Persons\nDirectors and Executive Officers\nThe following persons are our executive officers and directors:",
+   "prose_after": "Mr. Nasser Nassiri has been the President, Chief Executive Officer and Chairman of the Board of our company since 1997. Mr. Nassiri is a Europe-based financier. Since 1990, he has been a private investor and financial advisor to several European financial and portfolio institutions, as well as group investment companies and pharmaceutical businesses in the Middle East.\nMs. Yuhko Grossman has been our Secretary, Treasurer and a director since 1999. Ms. Grossman has spent over ten years working with the largest retail pharmaceutical chain in Canada, where her responsibilities included the restructuring and implementation of new management and information systems following corporate buy-outs. Prior to 2004, Ms. Grossmann was serving as independent consultant to various portfolios in Europe. Ms. Grossmann then earned her MBA in finance in Monaco. Since 2008, Ms. Grossmann has been Vice President, Investment Banking of Haywood Securities (UK) Limited.\nDr. Jean Dardonel is a member of our board of directors. Dr. Jean Darondel was co-founder of Inoteb and was its President General until March 18, 2003. He is an active member of different scientific committees. Dr. Darondel is known for his research in the field of veterinary medicine and business development in the medical/pharmaceutical fields.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1376,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Unpaid consulting fees pursuant to the Consulting Agreement",
+     "$",
+     "600,000",
+     "",
+     "$",
+     "450,000",
+     ""
+    ],
+    [
+     "Unreimbursed travel and other expenses",
+     "",
+     "343,882",
+     "",
+     "",
+     "295,192",
+     ""
+    ],
+    [
+     "Advance to subsidiary (Note 12)",
+     "",
+     "1,295",
+     "",
+     "",
+     "35,783",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "945,177",
+     "",
+     "",
+     "780,975",
+     ""
+    ],
+    [
+     "Debt converted to common stock",
+     "",
+     "(600,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance",
+     "",
+     "345,177",
+     "",
+     "",
+     "780,975",
+     ""
+    ],
+    [
+     "Current portion",
+     "",
+     "(61,295)",
+     "",
+     "",
+     "(330,975)",
+     ""
+    ],
+    [
+     "Non-current portion",
+     "$",
+     "283,882",
+     "",
+     "$",
+     "450,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1437,
+    "end_line": 1449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Presently, none of our executive officers receive any salary. However, on September 1, 1997, we entered into a Consulting Agreement with Nasser Nassiri, our President, CEO and Chairman, pursuant to which Mr. Nassiri serves as such. The agreement, which was originally for a three year term, provided for base compensation of $150,000 per annum, reimbursement of certain expenses and for a payment of two years' compensation thereunder in the event of a change in control of the Company. The agreement was renewed, on the same terms, in 2000 for an additional two years until August 30, 2002. In 2002, it was again renewed for an additional three years to August 2005 and, in August 2005, for an additional three year to August 2008 and in September 2008 for an additional three years to August 2011 and in December 2011 for an additional three years as of September 2011, to August 2014 on the same terms. In the year ended December 31, 2011, to help the Company's cash position, the president has deferred receipt of any cash compensation for 2011 pursuant to his consulting agreement. Regarding the unpaid consulting fees, Mr. Nassiri has agreed that he will not seek cash payment until 2013. In March 2008, Mr. Nassiri applied amounts from prior years\u2019 deferred cash compensation to the exercise of his then-outstanding options to purchase 90,000 share of our common stock.\nUnder our compensation structure, Mr. Nassiri is entitled to significantly more compensation than our Secretary/Treasurer and our other non-executive director. This compensation difference reflects the fact that Mr. Nassiri devotes significantly more time to the affairs of the company than do the other directors. Also, prior to the exercise of his options for share of our common stock Mr. Nassiri had not received the majority of this amount for the past seven years. Mr. Nassiri is also the President and CEO of Biocoral France, our wholly-owned subsidiary through which we conduct most of our operations including all product sales. He is also the President of Bio Holdings our wholly-owned subsidiary which holds all of our patents. Mr. Nassiri conducts these activities on behalf of the company and does not receive any additional compensation for this work.\nThe following table lists amounts due to Mr. Nassiri at December 31:",
+   "prose_after": "The Consulting Agreement between the Company and Mr. Nassiri provides for annual compensation of $150,000 and reimbursement of out-of-pocket expenses. The term of the agreement, which originally was three years from September 1, 1997 to August 31, 2000, has been extended to August 31, 2014.\nStock Option Plan\nNone.\nAggregate Option Exercises and Fiscal Year-End Option Values\nNone.\nDirector Compensation\nOur directors do not receive cash compensation for their services as directors, but are reimbursed for travel and all reasonable out-of-pocket expenses incurred in connection with each board meeting attended or other company services.\nThe following table lists the amount and type of compensation received by each of our directors for the fiscal year ended December 31, 2011:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Fees Earned or Paid in Cash",
+     "",
+     "Stock\n\nAwards",
+     "",
+     "Option\n\nAwards",
+     "",
+     "Non-Equity\n\nIncentive\n\nPlan\n\nCompensation",
+     "",
+     "Change in\n\nPension\n\nValue and\n\nNonqualified\n\nDeferred\n\nCompensation\n\nEarnings",
+     "",
+     "All\n\nOther\n\nCompensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Nasser Nassiri",
+     "$",
+     "150,000",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "$",
+     "150,000"
+    ],
+    [
+     "Jean Darondel",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--"
+    ],
+    [
+     "Yuhko Grossman",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--",
+     "",
+     "--"
+    ]
+   ],
+   "caption_stack": [
+    "Director Compensation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1468,
+    "end_line": 1489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The Consulting Agreement between the Company and Mr. Nassiri provides for annual compensation of $150,000 and reimbursement of out-of-pocket expenses. The term of the agreement, which originally was three years from September 1, 1997 to August 31, 2000, has been extended to August 31, 2014.\nStock Option Plan\nNone.\nAggregate Option Exercises and Fiscal Year-End Option Values\nNone.\nDirector Compensation\nOur directors do not receive cash compensation for their services as directors, but are reimbursed for travel and all reasonable out-of-pocket expenses incurred in connection with each board meeting attended or other company services.\nThe following table lists the amount and type of compensation received by each of our directors for the fiscal year ended December 31, 2011:",
+   "prose_after": "Item 12. Security Ownership of Certain Beneficial Owners and Management\nThe following table sets forth certain information known to us with respect to the beneficial ownership of our common stock as of April 30, 2012 by\no all persons who are beneficial owners of five percent (5%) or more of our common stock;\no each of our directors;\no each of our named executive officers; and\no all current directors and executive officers as a group.\nExcept as otherwise indicated, and subject to applicable community property laws, the persons named in the table below have sole voting and investment power with respect to all shares of common stock held by them. Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission. In computing the number of shares beneficially owned by a person and the percentage ownership of that person, shares of common stock subject to options held by that person that are currently exercisable or exercisable within 60 days of April 30, 2012 are deemed outstanding. Such shares, however, are not deemed outstanding for the purpose of computing the percentage ownership of any other person.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1461,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME AND ADDRESS OF BENEFICIAL\n\nOUTSTANDING OWNER",
+     "TITLE OF CLASS",
+     "AMOUNT AND NATURE\n\nOF BENEFICIAL\n\nOWNERSHIP AS OF\n\nApril 30, 2012",
+     "PERCENT OF\n\nSHARES IN\n\n    CLASS(1)"
+    ],
+    [
+     "Jean Darondel                                                      \n\n12-14, rue Raymond Ridel,\n\n92250 La Garenne Colombes, France",
+     "Common Stock",
+     "-",
+     "-"
+    ],
+    [
+     "Yuhko Grossman                                                      \n\n12-14, rue Raymond Ridel,\n\n92250 La Garenne Colombes, France",
+     "Common Stock",
+     "-",
+     "-"
+    ],
+    [
+     "Nasser Nassiri                                                      \n\n     12-14, rue Raymond Ridel,\n\n92250 La Garenne Colombes, France",
+     "Common Stock",
+     "140,000**",
+     "*"
+    ],
+    [
+     "All officers and directors as a group",
+     "Common Stock",
+     "140,000**",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1504,
+    "end_line": 1535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "The following table sets forth certain information known to us with respect to the beneficial ownership of our common stock as of April 30, 2012 by\no all persons who are beneficial owners of five percent (5%) or more of our common stock;\no each of our directors;\no each of our named executive officers; and\no all current directors and executive officers as a group.\nExcept as otherwise indicated, and subject to applicable community property laws, the persons named in the table below have sole voting and investment power with respect to all shares of common stock held by them. Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission. In computing the number of shares beneficially owned by a person and the percentage ownership of that person, shares of common stock subject to options held by that person that are currently exercisable or exercisable within 60 days of April 30, 2012 are deemed outstanding. Such shares, however, are not deemed outstanding for the purpose of computing the percentage ownership of any other person.",
+   "prose_after": "*- Indicates less than 1%\n**- Includes the 50,000 shares of the company common stock committed by the company to be issue effective December 31, 2011, certificates for which have not yet been issued. (See Note 12 to the Financial Statements)\n(1) Based upon 11,493,787 shares of common stock outstanding.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nOther than those listed on the table above, we do not have any equity securities outstanding or authorized for issuance pursuant to any equity compensation plans.\nItem 13. Certain Relationships and Related Transactions\nNone.\nItem 14. Principal Accountant Fees and Services.\nAudit Fees for 2011\nOur principal accountant for year ended December 31, 2011 is Michael T. Studer CPA P.C. We have not yet been billed for their services rendered in connection with the audit of our 2011 consolidated financial statements. However, as of the date of this report, we have paid them $4,000 as a retainer fee.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1461,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description of Document"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation, as amended(1)(2)"
+    ],
+    [
+     "3.2",
+     "By-laws (1)"
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to Certificate of Incorporation(4)"
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment to Certificate of Incorporation(4)"
+    ],
+    [
+     "4.1",
+     "Form of Company's 3 year 7% Convertible Redeemable Debenture due December 31, 2006(4)"
+    ],
+    [
+     "4.2",
+     "Form of Option Agreement(3)(4)"
+    ],
+    [
+     "4.3",
+     "Form of Company's 3 Year 7 % Non-Convertible Promissory Note Due December 31, 2009(5)"
+    ],
+    [
+     "4.4",
+     "Form of Company's 3 Year 7 % Non-Convertible Promissory Note Due December 31, 2012 (7)"
+    ],
+    [
+     "4.5",
+     "Form of Company's 3 Year 7 % Non-Convertible Promissory Note Due December 31, 2014"
+    ],
+    [
+     "4.6",
+     "Form of Company\u2019s warrants attached to Company's 3 Year 7 % Non-Convertible Promissory Note Due December 31, 2014"
+    ],
+    [
+     "10.1",
+     "Consulting Agreement between the Company and Mr. Nasser Nassiri(6)"
+    ],
+    [
+     "31",
+     "Certification of Nasser Nassiri pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32",
+     "Certification of Nasser Nassiri pursuant to Rule 13a-14(a)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1574,
+    "end_line": 1591
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Reports on Form 8-K."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Our principal accountant for year ended December 31, 2011 is Michael T. Studer CPA P.C. We have not yet been billed for their services rendered in connection with the audit of our 2011 consolidated financial statements. However, as of the date of this report, we have paid them $4,000 as a retainer fee.\nFor services rendered in connection with the review of our unaudited consolidated financial statements for filing with our Quarterly Reports on Form 10-Q for the three-month periods ended March 31, 2011, June 30, 2011 and September 30, 2011, we were billed the total amount of $6,000.\nAudit Fees for 2010\nOur principal accountant for year ended December 31, 2010 was Michael T. Studer CPA P.C. For their services rendered in connection with the audit of our December 31, 2010 consolidated financial statements, we have paid them $15,000.\nFor services rendered in connection with the review of our unaudited consolidated financial statements for filing with our Quarterly Reports on Form 10-Q for the three-month periods ended March 31, 2010, June 30, 2010 and September 30, 2010, we have paid them $7,500.\nPART IV\nItem 15. Exhibits and Reports on Form 8-K.\n(a) Unless otherwise indicated, the following is a list of exhibits filed as a part of this annual report:",
+   "prose_after": "101.INS ** XBRL Instance Document 101.SCH ** XBRL Taxonomy Extension Schema Document 101.CAL ** XBRL Taxonomy Extension Calculation Linkbase Document 101.DEF ** XBRL Taxonomy Extension Definition Linkbase Document 101.LAB ** XBRL Taxonomy Extension Label Linkbase Document 101.PRE ** XBRL Taxonomy Extension Presentation Linkbase Document\n(1) Incorporated by reference to Exhibit 3.1 to the Company's Form 10-SB Registration Statement filed with the Commission on February 25, 1994, as amended.\n(2) Incorporated by reference from Amendment No.1 to the Company's Form 10-SB filed with the Commission on April 18, 1994.\n(3) Incorporated by reference to the Company's Annual Report on Form 10-KSB filed April 17, 1998.\n(4) Incorporated by reference to Exhibit 4.2 to the Company's Annual Report on Form 10-KSB/A filed May 19, 2005.\n(5) Incorporated by reference to Exhibit 4.3 to the Company's Annual Report on Form 10-K filed March 30, 2007.\n(6) Incorporated by reference to Exhibit No. 10.30 to Form 10-KSB for the year ended December 31, 1997, filed on April 17, 1998.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1611,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BIOCORAL, INC",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Nasser Nassiri",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Nasser Nassiri",
+     ""
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "and Principal Accounting Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "BIOCORAL, INC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1618,
+    "end_line": 1627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Reports on Form 8-K."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(5) Incorporated by reference to Exhibit 4.3 to the Company's Annual Report on Form 10-K filed March 30, 2007.\n(6) Incorporated by reference to Exhibit No. 10.30 to Form 10-KSB for the year ended December 31, 1997, filed on April 17, 1998.\n(7) Incorporated by reference to Exhibit 4.4 to the Company's Annual Report on Form 10-K filed March 31, 2011.\n(b) During the fourth quarter of 2011, we filed no current reports on Form 8-K.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on our behalf by the undersigned, thereunto duly authorized, on May 7, 2012.",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1613,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Nasser Nassiri",
+     "President, Chief Executive Officer",
+     "May 7, 2012"
+    ],
+    [
+     "Nasser Nassiri",
+     "and Chairman of the Board of Directors",
+     ""
+    ],
+    [
+     "",
+     "(Principal Executive Officer andPrincipal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yuhko Grossman",
+     "Secretary, Treasurer and Director",
+     "May 7, 2012"
+    ],
+    [
+     "Yuhko Grossman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jean Darondel",
+     "Director",
+     "May 7, 2012"
+    ],
+    [
+     "Jean Darondel",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1630,
+    "end_line": 1647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Reports on Form 8-K."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1613,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1648,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

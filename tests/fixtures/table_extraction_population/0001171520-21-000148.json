@@ -1,0 +1,901 @@
+{
+ "accession": "0001171520-21-000148",
+ "cik": "0001431766",
+ "form": "10-K",
+ "filing_date": "2021-03-30",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "eps9554.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "30-6629351"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "401 Edgewater Place, Wakefield, Massachusetts",
+     "01880"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File No. 000-53165*\nFSP 303 East Wacker Drive Corp. Liquidating Trust\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (781) 557-1300\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act:\nPreferred Stock, $.01 par value per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X].\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X].\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ].\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ].",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  PART I",
+     "",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "Item 1.",
+     "Business.",
+     "1"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors.",
+     "5"
+    ],
+    [
+     "",
+     "Item 1B.",
+     "Unresolved Staff Comments.",
+     "6"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties.",
+     "6"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings.",
+     "6"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  PART II",
+     "",
+     "",
+     "7"
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "7"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Selected Financial Data.",
+     "7"
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "8"
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "12"
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data.",
+     "12"
+    ],
+    [
+     "",
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure.",
+     "12"
+    ],
+    [
+     "",
+     "Item 9A.",
+     "Controls and Procedures.",
+     "12"
+    ],
+    [
+     "",
+     "Item 9B.",
+     "Other information.",
+     "12"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  PART III",
+     "",
+     "",
+     "13"
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "13"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation.",
+     "13"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "13"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "14"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accounting Fees and Services.",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  PART IV",
+     "",
+     "",
+     "15"
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules.",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  SIGNATURES",
+     "",
+     "",
+     "21"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X].\nAs of June 30, 2020 the aggregate fair market value of Common Stock held by non-affiliates of FSP 303 East Wacker Drive Corp. was $0.\nThe number of shares of common stock outstanding and preferred stock outstanding of FSP 303 East Wacker Drive Corp. at December 31, 2020 was not applicable. As of December 31, 2020 there were 2,210 units of beneficial interest in FSP 303 East Wacker Drive Corp. Liquidating Trust outstanding.\nDocuments incorporated by reference:\nNone.\n*FSP 303 East Wacker Drive Corp. Liquidating Trust is the transferee of the assets and liabilities of FSP 303 East Wacker Drive Corp., and files reports under the Commission file number for FSP 303 East Wacker Drive Corp. FSP 303 East Wacker Drive Corp. filed a Form 15 on October 15, 2018, indicating its notice of termination of registration and filing requirements.\nTABLE OF CONTENTS",
+   "prose_after": "As used in this Annual Report on Form 10-K, unless the context otherwise requires, the terms \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d and \u201cthe Trust\u201d refer to the FSP 303 East Wacker Drive Corp. Liquidating Trust. The use of \u201cEast Wacker\u201d refers to FSP 303 East Wacker Drive Corp., except where the context otherwise requires.\nForward-Looking Statements\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. Forward-looking statements represent our current expectations, assumptions, estimates and projections about the Trust and include, but are not limited to, the following:\n\u2022 any statements regarding the execution, timing and expenses associated with the completion of the Trust;\n\u2022 any statements regarding the disposition of our remaining assets;\n\u2022 any statements regarding the resolution of any outstanding creditor claims and liabilities; and\n\u2022 any statements regarding the amount and timing of any future distributions to our beneficial unit holders.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Net assets in liquidation",
+     "$",
+     "508",
+     "$",
+     "508"
+    ],
+    [
+     "Number of beneficial units outstanding at each respective date",
+     "",
+     "2,210",
+     "",
+     "2,210"
+    ],
+    [
+     "Net asset value per unit",
+     "$",
+     "0.23",
+     "$",
+     "0.23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 344,
+    "end_line": 352
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2020, and 2019, the Trust retained approximately $992,000 and $989,000 in assets, respectively. As of December 31, 2020, the approximately $992,000 in assets is in cash and cash equivalents. As of December 31, 2019, the approximately $989,000 in assets consisted of $987,000 of cash and cash equivalents and $2,000 in receivables. The Purchase and Sale Agreement required East Wacker to deposit $2,000,000 in an escrow account held by a title company for a period of six months from the closing of the sale of the Property on September 24, 2018 as security for any claim made by the buyer for breach of any of East Wacker\u2019s representations in the Purchase and Sale Agreement. All of these funds were returned to the Trust on March 25, 2019.\nLiabilities\nAs of December 31, 2020, and 2019, the Trust retained approximately $209,000 and $205,000, respectively, in liabilities, comprised of accounts payable, accrued expenses, taxes and professional fees and the Trust has estimated that it will incur approximately $275,000 and $276,000, respectively, in costs related to the liquidation, including legal expenses, accounting expenses, tax reporting expenses, contractor services, and miscellaneous other expected future costs.\nStatement of Operations\nThe financial statements of the Trust are prepared on a liquidation basis and therefore do not include a statement of operations; all references to the results of operations have been deleted and replaced by references to changes in net assets.\nChanges in Net Assets (In thousands, except units outstanding):",
+   "prose_after": "Comparison of the year ended December 31, 2020 to the year ended December 31, 2019\nNet assets in liquidation remained unchanged at $508,000 during the year ended December 31, 2020.\nNet assets in liquidation decreased $2,590,000, or $1,172 per unit, during the year ended December 31, 2019. The decrease in our net assets in liquidation is the result of the Trustee having authorized, pursuant to the Trust Agreement, a second liquidating distribution of a total of $2,763,000 to the beneficial unit holders of the Trust that was paid on April 3, 2019. The decrease from distribution was offset by the adjustments from the estimate of trust expenses of $173,000 in 2019.\nLiquidity and Capital Resources\nWe believe that our cash and cash equivalents balance of approximately $992,000 should provide sufficient liquidity to meet our cash needs during the next twelve months from December 31, 2020. While we anticipate that our existing cash and cash equivalents balance will be sufficient to fund our cash needs for expenses related to completion of the Plan of Dissolution for the next twelve months, we can provide no assurances that this will be the case.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Page",
+     "",
+     ""
+    ],
+    [
+     "  Unaudited Statement of Net Assets in Liquidation as of December 31, 2020 and 2019",
+     "",
+     "16"
+    ],
+    [
+     "  Unaudited Statement of Changes in Net Assets in Liquidation for the years ended December 31, 2020 and 2019",
+     "",
+     "17"
+    ],
+    [
+     "  Notes to Unaudited Financial Statements",
+     "",
+     "18"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 469,
+    "end_line": 475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "On August 14, 2012, East Wacker entered into an Investor Services Agreement (the \u201cFSPI Agreement\u201d) with FSP Investments LLC for the provision of investor services. FSP Investments LLC is a wholly-owned subsidiary of Franklin Street. FSP Investments LLC acted as a real estate investment firm and broker/dealer with respect to (a) East Wacker\u2019s organization, (b) East Wacker\u2019s acquisition of the Property and (c) the sale of equity interests in East Wacker. The FSPI Agreement requires us to pay a monthly service fee of $500 for services performed under the FSPI Agreement, and to reimburse FSP Investments LLC for its reasonable out-of-pocket expenses incurred in connection with the FSPI Agreement. The FSPI Agreement may be terminated by either party with thirty days written notice or immediately upon certain events of default set forth in the FSPI Agreement.\nItem 14. Principal Accounting Fees and Services\nNot applicable.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a)(1) Financial Statements and Financial Statement Schedules.",
+   "prose_after": "(a)(2) Financial Statement Schedules:\nAll schedules have been omitted as the required information is inapplicable or the information is presented in the unaudited financial statements or related notes.\n(a)(3) Exhibits:\nThe exhibits listed on the Exhibit Index (following the signatures section of this report) are included, or incorporated by reference, in this annual report.\n(b) Exhibits:\nSee item 15(a)(3) above.\n(c) Financial Statement Schedules:\nAll schedules have been omitted as the required information is inapplicable or the information is presented in the unaudited financial statements or related notes.\nFSP East Wacker Drive Corp. Liquidating Trust\nStatements of Net Assets in Liquidation",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 492,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "992",
+     "$",
+     "987"
+    ],
+    [
+     "Receivables and other assets",
+     "",
+     "\u2014",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "992",
+     "",
+     "989"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "209",
+     "$",
+     "205"
+    ],
+    [
+     "Costs to be incurred during liquidation",
+     "",
+     "275",
+     "",
+     "276"
+    ],
+    [
+     "",
+     "",
+     "484",
+     "",
+     "481"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets in Liquidation",
+     "$",
+     "508",
+     "$",
+     "508"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 499,
+    "end_line": 521
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "All schedules have been omitted as the required information is inapplicable or the information is presented in the unaudited financial statements or related notes.\n(a)(3) Exhibits:\nThe exhibits listed on the Exhibit Index (following the signatures section of this report) are included, or incorporated by reference, in this annual report.\n(b) Exhibits:\nSee item 15(a)(3) above.\n(c) Financial Statement Schedules:\nAll schedules have been omitted as the required information is inapplicable or the information is presented in the unaudited financial statements or related notes.\nFSP East Wacker Drive Corp. Liquidating Trust\nStatements of Net Assets in Liquidation\n(in thousands, unaudited)",
+   "prose_after": "The accompanying notes are an integral part of this unaudited financial statement.\nFSP East Wacker Drive Corp. Liquidating Trust\nStatements of Changes in Net Assets in Liquidation\nFor the Years ended December 31, 2020 and 2019\n(in thousands, unaudited)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 492,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Net Assets in liquidation, January 1, 2019",
+     "$",
+     "3,098",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amount of authorized distribution in 2019",
+     "",
+     "(2,763)",
+     ""
+    ],
+    [
+     "Adjustments to estimates of trust expenses",
+     "",
+     "173",
+     ""
+    ],
+    [
+     "Net Assets in liquidation, December 31, 2019",
+     "",
+     "508",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amount of authorized distribution in 2020",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets in liquidation, December 31, 2020",
+     "$",
+     "508",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 533,
+    "end_line": 547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of this unaudited financial statement.\nFSP East Wacker Drive Corp. Liquidating Trust\nStatements of Changes in Net Assets in Liquidation\nFor the Years ended December 31, 2020 and 2019\n(in thousands, unaudited)",
+   "prose_after": "The accompanying notes are an integral part of this unaudited financial statement.\nFSP East Wacker Drive Corp. Liquidating Trust Notes to Unaudited Financial Statements\nNote 1. Description of Business\nAs used in this Annual Report on Form 10-K, unless the context otherwise requires, the terms \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d and \u201cthe Trust\u201d refer to the FSP 303 East Wacker Drive Corp. Liquidating Trust. The use of \u201cEast Wacker\u201d refers to FSP 303 East Wacker Drive Corp., except where the context otherwise requires.\nOn September 5, 2018, East Wacker and FSP Property Management LLC, as Trustee (the \u201cTrustee\u201d), formed the Trust by entering into the Liquidating Trust Agreement (as amended, the \u201cTrust Agreement\u201d), for the creation and operation of the FSP East Wacker Tenth Street Corp. Liquidating Trust. FSP Property Management LLC previously served as East Wacker\u2019s asset manager and is a wholly-owned subsidiary of Franklin Street. The Trust\u2019s activities are restricted to the conservation and protection of the assets transferred by East Wacker to the Trust and the administration thereof, including the payment of any liabilities, costs and expenses of East Wacker or the Trust. The Trust will terminate upon the earlier of the distribution of all of the Trust\u2019s assets in accordance with the terms of the Trust Agreement, or the expiration of a period of three years from the effective date of the Trust. The existence of the Trust may, however, be extended for up to two additional one-year periods in the Trustee\u2019s reasonable discretion. The beneficial interests in the Trust are not transferable except by will, intestate succession or by operation of law. Any beneficial interests in the Trust transferred by will, intestate succession or by operation of law will thereafter be subject to such transfer restrictions.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 524,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Plan of Complete Dissolution and Liquidation of FSP East Wacker Drive Corp., as approved by stockholders on August 17, 2018 and as currently in effect (included as Annex A to East Wacker\u2019s Definitive Proxy Statement filed on July 27, 2018 and incorporated herein by reference)"
+    ],
+    [
+     "10.1",
+     "Liquidating Trust Agreement, dated as of September 5, 2018, by and between FSP East Wacker Drive Corp. and FSP Property Management LLC (included as Exhibit 99.2 to East Wacker\u2019s Current Report on Form 8-K filed on September 25, 2018 and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Purchase and Sale Agreement by and between FSP East Wacker Drive Corp. and BCSP 8 Acquisition LLC, dated June 28, 2018(included as Annex A to East Wacker\u2019s Definitive Proxy Statement filed on July 27, 2018 and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  31.1*",
+     "Certification of Trustee pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  32.1*",
+     "Certification of Trustee pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Filed herewith."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Pursuant to the Trust Agreement, the Trust shall, to the maximum extent permitted by law, indemnify the Trustee against, and hold the Trustee harmless as to, any and all claims, causes of action and liabilities, including all expenses and defense costs (including reasonable attorneys\u2019 fees), arising out of or in connection with its service as trustee under the Trust Agreement or any acts or omissions taken or omitted to be taken as trustee under the Trust Agreement, except to the extent that it is finally determined that the Trustee did not act in good faith or such actions or omissions constitute gross negligence or willful misconduct on the part of the Trustee. In the event that any legal proceeding is instituted against the Trustee, as trustee or personally, on account of any actions or omissions taken by the Trustee, then prior to the final disposition of such action, the Trustee shall be entitled to cause the Trust to advance to the Trustee such fees and costs as are reasonably incurred by the Trustee in defending against such action.\nEXHIBIT INDEX\nPursuant to Item 601(a)(2) of Regulation S-K, this exhibit index immediately precedes the exhibits.\nThe following exhibits are included, or incorporated by reference, in the Annual Report on Form 10-K for the fiscal year 2020 (and are numbered in accordance with Item 601 of Regulation S-K).",
+   "prose_after": "SIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nFSP 303 EAST WACKER DRIVE CORP. LIQUIDATING TRUST\n(Registrant)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 30, 2021",
+     "",
+     "By: /s/ John G. Demeritt"
+    ],
+    [
+     "",
+     "",
+     "  John G. Demeritt"
+    ],
+    [
+     "",
+     "",
+     "  Executive Vice President and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "SIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nFSP 303 EAST WACKER DRIVE CORP. LIQUIDATING TRUST\n(Registrant)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

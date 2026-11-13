@@ -1,0 +1,4841 @@
+{
+ "accession": "0001136261-21-000232",
+ "cik": "0000065770",
+ "form": "10-Q",
+ "filing_date": "2021-11-08",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "91-1600822"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2021\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________to _________\nCommission file number 001-34170\nMicroVision, Inc. (Exact name of registrant as specified in its charter)",
+   "prose_after": "6244 185th Avenue NE, Suite 100 Redmond, Washington 98052 (Address of Principal Executive Offices, including Zip Code)\n(425) 936-6847 (Registrant's Telephone Number, including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.001 par value per share",
+     "MVIS",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "6244 185th Avenue NE, Suite 100 Redmond, Washington 98052 (Address of Principal Executive Offices, including Zip Code)\n(425) 936-6847 (Registrant's Telephone Number, including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file reports), and (2) has been subject to such filing requirements for the past 90 days.\nYES [X] NO [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYES [X] NO [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company\" and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements (unaudited)",
+     "Page"
+    ],
+    [
+     "  Condensed Balance Sheets as of September 30, 2021 and December 31, 2020",
+     "2"
+    ],
+    [
+     "  Condensed Statements of Operations for the three and nine months ended September 30, 2021 and 2020",
+     "3"
+    ],
+    [
+     "  Condensed Statements of Shareholders\u2019 Equity (Deficit) for the three and nine months ended September 30, 2021 and 2020",
+     "4"
+    ],
+    [
+     "  Condensed Statements of Cash Flows for the nine months ended September 30, 2021 and 2020",
+     "5"
+    ],
+    [
+     "  Notes to Condensed Financial Statements",
+     "6"
+    ],
+    [
+     "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "19"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "20"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "20"
+    ],
+    [
+     "Item 6. Exhibits",
+     "29"
+    ],
+    [
+     "Signatures",
+     "30"
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 76
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYES [X] NO [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company\" and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [ ] Non-accelerated filer [X] Smaller reporting company [X] Emerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYES [ ] NO [X]\nThe number of shares of the registrant\u2019s common stock outstanding as of November 3, 2021 was 164,103,810.",
+   "prose_after": "1\nPART I.\nITEM 1. FINANCIAL STATEMENTS\nMicroVision, Inc. Condensed Balance Sheets (In thousands, except per share data)\n(Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,"
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "125,135",
+     "$",
+     "16,862"
+    ],
+    [
+     "Inventory",
+     "",
+     "1,182",
+     "",
+     "-"
+    ],
+    [
+     "Other current assets",
+     "",
+     "2,780",
+     "",
+     "698"
+    ],
+    [
+     "Total current assets",
+     "",
+     "129,097",
+     "",
+     "17,560"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "2,780",
+     "",
+     "1,883"
+    ],
+    [
+     "Operating lease right-of-use asset",
+     "",
+     "652",
+     "",
+     "946"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "435",
+     "",
+     "435"
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "127",
+     "",
+     "164"
+    ],
+    [
+     "Other assets",
+     "",
+     "974",
+     "",
+     "18"
+    ],
+    [
+     "Total assets",
+     "$",
+     "134,065",
+     "$",
+     "21,006"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and shareholders' equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,394",
+     "$",
+     "630"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "885",
+     "",
+     "495"
+    ],
+    [
+     "Contract liabilities",
+     "",
+     "5,822",
+     "",
+     "7,765"
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "1,884",
+     "",
+     "-"
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "685",
+     "",
+     "431"
+    ],
+    [
+     "Current portion of operating lease liability",
+     "",
+     "691",
+     "",
+     "676"
+    ],
+    [
+     "Current portion of finance lease obligations",
+     "",
+     "23",
+     "",
+     "31"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "11,384",
+     "",
+     "10,028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "",
+     "-",
+     "",
+     "1,151"
+    ],
+    [
+     "Operating lease liability, net of current portion",
+     "",
+     "307",
+     "",
+     "774"
+    ],
+    [
+     "Finance lease obligations, net of current portion",
+     "",
+     "27",
+     "",
+     "44"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "11,718",
+     "",
+     "11,997"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 9)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, par value $0.001; 25,000 shares authorized; no and     no shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Common stock, par value $0.001; 210,000 shares authorized;     164,104 and 152,926 shares issued and outstanding at September 30,     2021 and December 31, 2020, respectively",
+     "",
+     "164",
+     "",
+     "153"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "738,991",
+     "",
+     "601,224"
+    ],
+    [
+     "Subscriptions receivable",
+     "",
+     "-",
+     "",
+     "(6,135)"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(616,808)",
+     "",
+     "(586,233)"
+    ],
+    [
+     "Total shareholders' equity",
+     "",
+     "122,347",
+     "",
+     "9,009"
+    ],
+    [
+     "Total liabilities and shareholders' equity",
+     "$",
+     "134,065",
+     "$",
+     "21,006"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "1\nPART I.\nITEM 1. FINANCIAL STATEMENTS\nMicroVision, Inc. Condensed Balance Sheets (In thousands, except per share data)\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Condensed Statements of Operations (In thousands, except per share data) (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 145,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product revenue",
+     "$",
+     "-",
+     "$",
+     "100",
+     "$",
+     "-",
+     "$",
+     "1,347"
+    ],
+    [
+     "License and royalty revenue",
+     "",
+     "718",
+     "",
+     "539",
+     "",
+     "1,943",
+     "",
+     "1,323"
+    ],
+    [
+     "Contract revenue",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "25"
+    ],
+    [
+     "Total revenue",
+     "",
+     "718",
+     "",
+     "639",
+     "",
+     "1,943",
+     "",
+     "2,695"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of product revenue",
+     "",
+     "(10)",
+     "",
+     "-",
+     "",
+     "(46)",
+     "",
+     "1,394"
+    ],
+    [
+     "Cost of contract revenue",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4"
+    ],
+    [
+     "Total cost of revenue",
+     "",
+     "(10)",
+     "",
+     "-",
+     "",
+     "(46)",
+     "",
+     "1,398"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "728",
+     "",
+     "639",
+     "",
+     "1,989",
+     "",
+     "1,297"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "5,791",
+     "",
+     "1,972",
+     "",
+     "17,629",
+     "",
+     "7,262"
+    ],
+    [
+     "Sales, marketing, general and administrative expense",
+     "",
+     "5,006",
+     "",
+     "1,485",
+     "",
+     "15,608",
+     "",
+     "4,536"
+    ],
+    [
+     "Gain on disposal of fixed assets",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(450)"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "10,797",
+     "",
+     "3,457",
+     "",
+     "33,237",
+     "",
+     "11,348"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(10,069)",
+     "",
+     "(2,818)",
+     "",
+     "(31,248)",
+     "",
+     "(10,051)"
+    ],
+    [
+     "Gain on debt extinguishment",
+     "",
+     "692",
+     "",
+     "-",
+     "",
+     "692",
+     "",
+     "-"
+    ],
+    [
+     "Other expenses, net",
+     "",
+     "(5)",
+     "",
+     "(8)",
+     "",
+     "(19)",
+     "",
+     "(13)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(9,382)",
+     "$",
+     "(2,826)",
+     "$",
+     "(30,575)",
+     "$",
+     "(10,064)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "$",
+     "(0.06)",
+     "$",
+     "(0.02)",
+     "$",
+     "(0.19)",
+     "$",
+     "(0.07)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding - basic and diluted",
+     "",
+     "163,985",
+     "",
+     "143,685",
+     "",
+     "159,452",
+     "",
+     "137,027"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 148,
+    "end_line": 192
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Condensed Statements of Operations (In thousands, except per share data) (Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Condensed Statements of Shareholders\u2019 Equity (Deficit) (In thousands) (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 145,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Par",
+     "",
+     "paid-in",
+     "",
+     "Subscriptions",
+     "",
+     "Accumulated",
+     "",
+     "shareholders'"
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "value",
+     "",
+     "capital",
+     "",
+     "receivable",
+     "",
+     "deficit",
+     "",
+     "equity (deficit)"
+    ],
+    [
+     "Balance at June 30, 2021",
+     "163,960",
+     "$",
+     "164",
+     "$",
+     "736,159",
+     "$",
+     "-",
+     "$",
+     "(607,426)",
+     "$",
+     "128,897"
+    ],
+    [
+     "Share-based compensation expense",
+     "95",
+     "",
+     "-",
+     "",
+     "2,810",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,810"
+    ],
+    [
+     "Exercise of options",
+     "49",
+     "",
+     "-",
+     "",
+     "30",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "30"
+    ],
+    [
+     "Sales of common stock",
+     "-",
+     "",
+     "-",
+     "",
+     "(8)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(8)"
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(9,382)",
+     "",
+     "(9,382)"
+    ],
+    [
+     "Balance at September 30, 2021",
+     "164,104",
+     "$",
+     "164",
+     "$",
+     "738,991",
+     "$",
+     "-",
+     "$",
+     "(616,808)",
+     "$",
+     "122,347"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2021",
+     "152,926",
+     "$",
+     "153",
+     "$",
+     "601,224",
+     "$",
+     "(6,135)",
+     "$",
+     "(586,233)",
+     "$",
+     "9,009"
+    ],
+    [
+     "Share-based compensation expense",
+     "2,235",
+     "",
+     "2",
+     "",
+     "12,343",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "12,345"
+    ],
+    [
+     "Exercise of options",
+     "1,389",
+     "",
+     "1",
+     "",
+     "2,539",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,540"
+    ],
+    [
+     "Sales of common stock",
+     "7,554",
+     "",
+     "8",
+     "",
+     "122,885",
+     "",
+     "6,135",
+     "",
+     "-",
+     "",
+     "129,028"
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(30,575)",
+     "",
+     "(30,575)"
+    ],
+    [
+     "Balance at September 30, 2021",
+     "164,104",
+     "$",
+     "164",
+     "$",
+     "738,991",
+     "$",
+     "-",
+     "$",
+     "(616,808)",
+     "$",
+     "122,347"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2020",
+     "143,433",
+     "$",
+     "143",
+     "$",
+     "577,172",
+     "$",
+     "-",
+     "$",
+     "(579,837)",
+     "$",
+     "(2,522)"
+    ],
+    [
+     "Share-based compensation expense",
+     "-",
+     "",
+     "-",
+     "",
+     "449",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "449"
+    ],
+    [
+     "Exercise of options",
+     "98",
+     "",
+     "-",
+     "",
+     "104",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "104"
+    ],
+    [
+     "Sales of common stock",
+     "375",
+     "",
+     "1",
+     "",
+     "601",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "602"
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,826)",
+     "",
+     "(2,826)"
+    ],
+    [
+     "Balance at September 30, 2020",
+     "143,906",
+     "$",
+     "144",
+     "$",
+     "578,326",
+     "$",
+     "-",
+     "$",
+     "(582,663)",
+     "$",
+     "(4,193)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2020",
+     "125,803",
+     "$",
+     "126",
+     "$",
+     "568,496",
+     "$",
+     "-",
+     "$",
+     "(572,599)",
+     "$",
+     "(3,977)"
+    ],
+    [
+     "Share-based compensation expense",
+     "201",
+     "",
+     "-",
+     "",
+     "793",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "793"
+    ],
+    [
+     "Exercise of options",
+     "102",
+     "",
+     "-",
+     "",
+     "107",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "107"
+    ],
+    [
+     "Sales of common stock",
+     "17,800",
+     "",
+     "18",
+     "",
+     "8,930",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "8,948"
+    ],
+    [
+     "Net loss",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(10,064)",
+     "",
+     "(10,064)"
+    ],
+    [
+     "Balance at September 30, 2020",
+     "143,906",
+     "$",
+     "144",
+     "$",
+     "578,326",
+     "$",
+     "-",
+     "$",
+     "(582,663)",
+     "$",
+     "(4,193)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 198,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Condensed Statements of Shareholders\u2019 Equity (Deficit) (In thousands) (Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Condensed Statements of Cash Flows (In thousands) (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(30,575)",
+     "$",
+     "(10,064)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operations:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "1,040",
+     "",
+     "726"
+    ],
+    [
+     "Impairment of property and equipment",
+     "",
+     "664",
+     "",
+     "-"
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "",
+     "-",
+     "",
+     "(450)"
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "12,345",
+     "",
+     "839"
+    ],
+    [
+     "Non-cash interest expense",
+     "",
+     "(10)",
+     "",
+     "7"
+    ],
+    [
+     "Inventory write-downs",
+     "",
+     "-",
+     "",
+     "168"
+    ],
+    [
+     "Gain on extinguishment of debt",
+     "",
+     "(692)",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "-",
+     "",
+     "1,079"
+    ],
+    [
+     "Inventory",
+     "",
+     "(1,182)",
+     "",
+     "24"
+    ],
+    [
+     "Other current and non-current assets",
+     "",
+     "(3,038)",
+     "",
+     "104"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "573",
+     "",
+     "(340)"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "390",
+     "",
+     "(1,750)"
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "-",
+     "",
+     "(21)"
+    ],
+    [
+     "Contract liabilities and other current liabilities",
+     "",
+     "(59)",
+     "",
+     "(1,678)"
+    ],
+    [
+     "Operating lease liabilities",
+     "",
+     "(506)",
+     "",
+     "(491)"
+    ],
+    [
+     "Other long-term liabilities",
+     "",
+     "(195)",
+     "",
+     "-"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(21,245)",
+     "",
+     "(11,847)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds on sale of property and equipment",
+     "",
+     "-",
+     "",
+     "525"
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(2,034)",
+     "",
+     "(94)"
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "(2,034)",
+     "",
+     "431"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payments under finance leases",
+     "",
+     "(25)",
+     "",
+     "(19)"
+    ],
+    [
+     "Increase in long-term debt",
+     "",
+     "-",
+     "",
+     "1,571"
+    ],
+    [
+     "Payments received on subscriptions receivable",
+     "",
+     "6,135",
+     "",
+     "-"
+    ],
+    [
+     "Net proceeds from issuance of common stock",
+     "",
+     "125,442",
+     "",
+     "9,054"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "131,552",
+     "",
+     "10,606"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in cash, cash equivalents, and restricted cash",
+     "",
+     "108,273",
+     "",
+     "(810)"
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash at beginning of period",
+     "",
+     "17,297",
+     "",
+     "6,272"
+    ],
+    [
+     "Cash, cash equivalents, and restricted cash at end of period",
+     "$",
+     "125,570",
+     "$",
+     "5,462"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental schedule of non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash additions to property and equipment",
+     "$",
+     "298",
+     "$",
+     "19"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 246,
+    "end_line": 304
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Condensed Statements of Cash Flows (In thousands) (Unaudited)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 319,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "The following table provides a reconciliation of the cash, cash equivalents, and restricted cash balances as of September 30, 2021 and December 31, 2020:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,"
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "125,135",
+     "$",
+     "16,862"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "435",
+     "",
+     "435"
+    ],
+    [
+     "Cash, cash equivalents and restricted cash",
+     "$",
+     "125,570",
+     "$",
+     "17,297"
+    ]
+   ],
+   "caption_stack": [
+    "The following table provides a reconciliation of the cash, cash equivalents, and restricted cash balances as of September 30, 2021 and December 31, 2020:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 304,
+    "end_line": 316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nMicroVision, Inc. Notes to Condensed Financial Statements (Unaudited)\n1. MANAGEMENT'S STATEMENT\nAccounting Policy\nThe Condensed Balance Sheets as of September 30, 2021, the Condensed Statements of Operations and the Condensed Statements of Shareholders\u2019 Equity (Deficit) for the three and nine months ended September 30, 2021 and 2020, and the Condensed Statements of Cash Flows for the nine months ended September 30, 2021 and 2020, have been prepared by MicroVision, Inc. (\"we\" or \"our\") and have not been audited. In the opinion of management, all adjustments necessary to state fairly the financial position at September 30, 2021 and the results of operations and cash flows for all periods presented have been made and consist of normal recurring adjustments. Certain information and footnote disclosures normally included in financial statements prepared in accordance with generally accepted accounting principles have been condensed or omitted pursuant to the rules of the Securities and Exchange Commission (SEC). The year-end condensed balance sheet data was derived from audited financial statements but does not include all disclosures required by accounting principles generally accepted in the United States of America. You should read these condensed financial statements in conjunction with the financial statements and notes thereto included in our Annual Report on Form 10-K for the fiscal year ended December 31, 2020. The results of operations for the three and nine months ended September 30, 2021 are not necessarily indicative of the operating results that may be attained for the entire fiscal year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 319,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss available for common shareholders - basic and diluted",
+     "$",
+     "(9,382)",
+     "$",
+     "(2,826)",
+     "$",
+     "(30,575)",
+     "$",
+     "(10,064)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average common shares outstanding - basic and diluted",
+     "",
+     "163,985",
+     "",
+     "143,685",
+     "",
+     "159,452",
+     "",
+     "137,027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "$",
+     "(0.06)",
+     "$",
+     "(0.02)",
+     "$",
+     "(0.19)",
+     "$",
+     "(0.07)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 347,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "NET LOSS PER SHARE"
+    }
+   },
+   "prose_before": "At September 30, 2021, we had $125.1 million in cash and cash equivalents. Based on our current operating plan, we anticipate that we have sufficient cash and cash equivalents to fund our operations for at least the next 12 months.\n2. NET LOSS PER SHARE\nNet loss per share\nBasic net loss per share is calculated using the weighted-average number of common shares outstanding during the period. Net loss per share, assuming dilution, is calculated using the weighted-average number of common shares outstanding and the dilutive effect of all potentially dilutive securities, including common stock equivalents and convertible securities. Net loss per share, assuming dilution, is equal to basic net loss per share because the effect of dilutive securities outstanding during the period, including options and warrants computed using the treasury stock method, is anti-dilutive.\nThe components of basic and diluted net loss per share were as follows (in thousands, except loss per share data):\nComponents of Basic and Diluted Net Loss Per Share",
+   "prose_after": "For the three and nine months ended September 30, 2021 and 2020, we excluded the following securities from net loss per share as the effect of including them would have been anti-dilutive: outstanding options exercisable into a total of 1,712,000 and 3,906,000 shares of common stock, respectively, and 2,553,000 and 2,001,000 nonvested restricted and performance stock units, respectively.\n3. LONG-TERM CONTRACTS\nIn May 2018, we signed a five-year license agreement with Sharp Corporation granting them exclusive license to our laser beam scanning (LBS) technology for display-only applications. The agreement includes an initial exclusivity period with requirements that must be met in order to maintain exclusivity. Because of the impact of COVID-19 on global commerce and new product introductions of consumer electronic devices, in February 2021 the agreement was amended to increase the term to six years and add twelve months to the initial exclusivity period. If this licensee acquires a customer, the agreement requires the licensee to buy specific components from us. The exclusivity period is scheduled to end in the fourth quarter of 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 342,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "License and",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Product",
+     "",
+     "royalty",
+     "",
+     "Contract",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "Total"
+    ],
+    [
+     "Timing of revenue recognition:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products transferred at a point in time",
+     "$",
+     "-",
+     "$",
+     "718",
+     "$",
+     "-",
+     "$",
+     "718"
+    ],
+    [
+     "Product and services transferred over time",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "718",
+     "$",
+     "-",
+     "$",
+     "718"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30, 2021",
+    "License and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 392,
+    "end_line": 406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "The transaction price is allocated to the separate performance obligations in the contract based on relative standalone selling prices. Determining the relative standalone selling price can be challenging when goods or services are not sold on a standalone basis. The revenue standard sets out several methods that can be used to estimate a standalone selling price when one is not directly observable. Allocating discounts and variable consideration must also be considered. Allocating the transaction price can require significant judgement on our part.\nRevenue is recognized when (or as) the customer obtains control of the good or service/performance obligations are satisfied. Topic 606 provides guidance to help determine if a performance obligation is satisfied at a point in time or over time. Where a performance obligation is satisfied over time, the related revenue is also recognized over time.\nDisaggregation of revenue\nThe following table provides information about disaggregated revenue by timing of revenue recognition (in thousands):\nDisaggregation of Revenue",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Nine Months ended September 30, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "License and",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Product",
+     "",
+     "royalty",
+     "",
+     "Contract",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "Total"
+    ],
+    [
+     "Timing of revenue recognition:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products transferred at a point in time",
+     "$",
+     "-",
+     "$",
+     "1,943",
+     "$",
+     "-",
+     "$",
+     "1,943"
+    ],
+    [
+     "Product and services transferred over time",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "1,943",
+     "$",
+     "-",
+     "$",
+     "1,943"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months ended September 30, 2021",
+    "License and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 407,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended September 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "License and",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Product",
+     "",
+     "royalty",
+     "",
+     "Contract",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "Total"
+    ],
+    [
+     "Timing of revenue recognition:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products transferred at a point in time",
+     "$",
+     "100",
+     "$",
+     "539",
+     "$",
+     "-",
+     "$",
+     "639"
+    ],
+    [
+     "Product and services transferred over time",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "100",
+     "$",
+     "539",
+     "$",
+     "-",
+     "$",
+     "639"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30, 2020",
+    "License and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 422,
+    "end_line": 436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Nine Months ended September 30, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "License and",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Product",
+     "",
+     "royalty",
+     "",
+     "Contract",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "revenue",
+     "",
+     "Total"
+    ],
+    [
+     "Timing of revenue recognition:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Products transferred at a point in time",
+     "$",
+     "1,347",
+     "$",
+     "1,323",
+     "$",
+     "4",
+     "$",
+     "2,674"
+    ],
+    [
+     "Product and services transferred over time",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "21",
+     "",
+     "21"
+    ],
+    [
+     "Total",
+     "$",
+     "1,347",
+     "$",
+     "1,323",
+     "$",
+     "25",
+     "$",
+     "2,695"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months ended September 30, 2020",
+    "License and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Contract balances\nUnder Topic 606, our rights to consideration are presented separately depending on whether those rights are conditional or unconditional. We present our unconditional rights to consideration as \u201caccounts receivable\u201d in our Balance Sheet.\nSignificant changes in the contract assets and the contract liabilities balances during the period are as follows (in thousands, except percentages):\nSignificant Changes in Contract Assets and Contract Liabilities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ Change",
+     "% Change"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contract assets",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "Contract liabilities",
+     "",
+     "(5,822)",
+     "",
+     "(7,765)",
+     "",
+     "1,943",
+     "(25.0)"
+    ],
+    [
+     "Net contract assets (liabilities)",
+     "$",
+     "(5,822)",
+     "$",
+     "(7,765)",
+     "$",
+     "1,943",
+     "(25.0)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 461,
+    "end_line": 471
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "Contract balances\nUnder Topic 606, our rights to consideration are presented separately depending on whether those rights are conditional or unconditional. We present our unconditional rights to consideration as \u201caccounts receivable\u201d in our Balance Sheet.\nSignificant changes in the contract assets and the contract liabilities balances during the period are as follows (in thousands, except percentages):\nSignificant Changes in Contract Assets and Contract Liabilities",
+   "prose_after": "In April 2017, we signed a contract with Microsoft Corporation to develop an LBS display system. Under the agreement, we received an upfront payment of $10.0 million. As of December 31, 2020, we had applied $2.2 million against the contract liability. During the three and nine months ended September 30, 2021, we applied $718,000 and $1.9 million, respectively, against the contract liability with this customer.\nContract acquisition costs\nWe are required to capitalize certain contract acquisition costs consisting primarily of commissions paid when contracts are signed. We currently do not pay any commissions upon the signing of a contract; therefore, no commission cost has been incurred as of September 30, 2021.\nTransaction price allocated to the remaining performance obligations\nThe following table includes estimated revenue expected to be recognized in the future related to performance obligations that are unsatisfied or partially unsatisfied at the end of the reporting period. The $10.0 million upfront payment received from our customer as noted above was being recognized as revenue as component sales were transferred to the customer. Under the arrangement reached in March 2020, the royalties we expect to earn will be applied against the remaining prepayment. We expect to apply an additional $582,000 during the remainder of 2021 and $2.5 million during 2022, and this amount is included in revenue below. Because there is uncertainty about the timing of the application of the remainder of the contract liability, it has been excluded from future estimated revenue in the table below. The $5.8 million contract liability is classified as a current liability on our balance sheet. It is likely that recognition of revenue may extend beyond the next twelve months.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 503,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Remainder of 2021",
+     "",
+     "2022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "License and royalty revenue",
+     "$",
+     "582",
+     "$",
+     "2,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 486,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "REVENUE RECOGNITION"
+    }
+   },
+   "prose_before": "The following table includes estimated revenue expected to be recognized in the future related to performance obligations that are unsatisfied or partially unsatisfied at the end of the reporting period. The $10.0 million upfront payment received from our customer as noted above was being recognized as revenue as component sales were transferred to the customer. Under the arrangement reached in March 2020, the royalties we expect to earn will be applied against the remaining prepayment. We expect to apply an additional $582,000 during the remainder of 2021 and $2.5 million during 2022, and this amount is included in revenue below. Because there is uncertainty about the timing of the application of the remainder of the contract liability, it has been excluded from future estimated revenue in the table below. The $5.8 million contract liability is classified as a current liability on our balance sheet. It is likely that recognition of revenue may extend beyond the next twelve months.\nThe following table provides information about the estimated timing of revenue recognition (in thousands):\nEstimated Timing of Revenue Recognition",
+   "prose_after": "5. CONCENTRATION OF CREDIT RISK AND MAJOR CUSTOMERS AND SUPPLIERS\nConcentration of credit risk\nFinancial instruments that potentially subject us to a concentration of credit risk are primarily cash equivalents and accounts receivable. We typically do not require collateral from our customers. As of September 30, 2021, our cash and cash equivalents are comprised of operating checking accounts and short-term highly rated money market savings accounts.\nConcentration of major customers and suppliers\nFor the three and nine months ended September 30, 2021, one customer, Microsoft Corporation, accounted for $718,000 and $1.9 million in revenue, respectively, representing 100% of our total revenue, for each period. For the three and nine months ended September 30, 2020, the same customer accounted for $539,000 and $2.6 million in revenue, respectively, representing 84% and 96% of our total revenue, respectively.\nTypically, a significant concentration of our components and the products we have sold are manufactured and obtained from single or limited-source suppliers. The loss of any single or limited-source supplier, the failure of any of these suppliers to perform as expected, or the disruption in the supply chain of components from these suppliers could subject us to risks and uncertainties including, but not limited to, increased cost of sales, possible loss of revenues, or significant delays in product development or product deliveries, any of which could adversely affect our financial condition and operating results.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 503,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,"
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Raw materials",
+     "$",
+     "1,182",
+     "$",
+     "-"
+    ],
+    [
+     "Finished goods",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "1,182",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 512,
+    "end_line": 522
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INVENTORY"
+    }
+   },
+   "prose_before": "For the three and nine months ended September 30, 2021, one customer, Microsoft Corporation, accounted for $718,000 and $1.9 million in revenue, respectively, representing 100% of our total revenue, for each period. For the three and nine months ended September 30, 2020, the same customer accounted for $539,000 and $2.6 million in revenue, respectively, representing 84% and 96% of our total revenue, respectively.\nTypically, a significant concentration of our components and the products we have sold are manufactured and obtained from single or limited-source suppliers. The loss of any single or limited-source supplier, the failure of any of these suppliers to perform as expected, or the disruption in the supply chain of components from these suppliers could subject us to risks and uncertainties including, but not limited to, increased cost of sales, possible loss of revenues, or significant delays in product development or product deliveries, any of which could adversely affect our financial condition and operating results.\n6. INVENTORY\nInventory consists of the following:\nComponents of Inventory",
+   "prose_after": "Inventory\nInventory consists of raw materials and finished goods assemblies. Inventory is computed using the first-in, first-out (FIFO) method and is stated at the lower of cost and net realizable value. Management periodically assesses the need to account for obsolescence of inventory and adjusts the carrying value of inventory to its net realizable value when required.\n7. SHARE-BASED COMPENSATION\nShare-Based Compensation\nWe issue share-based compensation to employees in the form of stock options, restricted stock units (RSUs), and performance stock units (PSUs). We account for the share-based awards by recognizing the fair value of share-based compensation expense on a straight-line basis over the service period of the award, net of estimated forfeitures. The fair value of stock options is estimated on the grant date using the Black-Scholes option pricing model. The fair value of RSUs and non-executive PSUs is based on the closing price of our common stock on the grant date. Executive PSUs are valued using a binomial option pricing model using the following inputs: stock price, volatility, and risk-free interest rates. Changes in estimated inputs or using other option valuation methods may result in materially different option values and share-based compensation expense.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 503,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Share-based compensation expense",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Research and development expense",
+     "$",
+     "1,371",
+     "$",
+     "291",
+     "$",
+     "4,758",
+     "$",
+     "433"
+    ],
+    [
+     "Sales, marketing, general and administrative expense",
+     "",
+     "1,439",
+     "",
+     "159",
+     "",
+     "7,587",
+     "",
+     "406"
+    ],
+    [
+     "",
+     "$",
+     "2,810",
+     "$",
+     "450",
+     "$",
+     "12,345",
+     "$",
+     "839"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 537,
+    "end_line": 549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHARE-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "We issue share-based compensation to employees in the form of stock options, restricted stock units (RSUs), and performance stock units (PSUs). We account for the share-based awards by recognizing the fair value of share-based compensation expense on a straight-line basis over the service period of the award, net of estimated forfeitures. The fair value of stock options is estimated on the grant date using the Black-Scholes option pricing model. The fair value of RSUs and non-executive PSUs is based on the closing price of our common stock on the grant date. Executive PSUs are valued using a binomial option pricing model using the following inputs: stock price, volatility, and risk-free interest rates. Changes in estimated inputs or using other option valuation methods may result in materially different option values and share-based compensation expense.\nThe following table summarizes the amount of share-based compensation expense by line item on the statements of operations:\nShare-based Compensation Expense by Line Item",
+   "prose_after": "Options activity and positions\nThe following table summarizes shares, weighted-average exercise price, weighted-average remaining contractual term and aggregate intrinsic value of options outstanding and options exercisable as of September 30, 2021:\nOption Positions",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 503,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted-",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Weighted-",
+     "Average",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Average",
+     "Remaining",
+     "",
+     "Aggregate"
+    ],
+    [
+     "Options",
+     "",
+     "",
+     "Exercise",
+     "Contractual",
+     "",
+     "Intrinsic"
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Price",
+     "Term (years)",
+     "",
+     "Value"
+    ],
+    [
+     "Outstanding as of September 30, 2021",
+     "1,712,000",
+     "$",
+     "1.31",
+     "6.5",
+     "$",
+     "16,689,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable as of September 30, 2021",
+     "1,351,000",
+     "$",
+     "1.49",
+     "6.1",
+     "$",
+     "12,942,000"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted-"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 556,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHARE-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Options activity and positions\nThe following table summarizes shares, weighted-average exercise price, weighted-average remaining contractual term and aggregate intrinsic value of options outstanding and options exercisable as of September 30, 2021:\nOption Positions",
+   "prose_after": "As of September 30, 2021, our unrecognized share-based employee compensation related to stock options was $103,000 which we plan to expense over the next 0.8 years.\nRestricted stock activity and positions\nThe following table summarizes activity and positions with respect to RSUs and PSUs for the nine months ended September 30, 2021:\nRestricted Stock Unit Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 503,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Weighted-average"
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "price"
+    ],
+    [
+     "Unvested as of December 31, 2020",
+     "1,983,000",
+     "$",
+     "0.76"
+    ],
+    [
+     "Granted",
+     "3,937,000",
+     "",
+     "13.21"
+    ],
+    [
+     "Vested",
+     "(2,250,000)",
+     "",
+     "2.99"
+    ],
+    [
+     "Forfeited",
+     "(1,117,000)",
+     "",
+     "12.16"
+    ],
+    [
+     "Unvested as of September 30, 2021",
+     "2,553,000",
+     "$",
+     "13.01"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted-average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 589
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "SHARE-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "As of September 30, 2021, our unrecognized share-based employee compensation related to stock options was $103,000 which we plan to expense over the next 0.8 years.\nRestricted stock activity and positions\nThe following table summarizes activity and positions with respect to RSUs and PSUs for the nine months ended September 30, 2021:\nRestricted Stock Unit Activity",
+   "prose_after": "As of September 30, 2021, our unrecognized share-based compensation related to RSUs was $26.0 million which we plan to expense over the next 2.5 years and our unrecognized share-based compensation related to the non-executive PSUs was $1.2 million, which we plan to expense over the next 1.0 years.\n8. LEASES\nLessee Lease Policy\nWe lease our office space and certain equipment under finance and operating leases. Our leases have remaining lease terms of one to two years. Our office lease agreement includes both lease and non-lease components, which are accounted for separately. Our finance leases contain options to purchase the leased property. The depreciable life of assets and leasehold improvements are limited by the expected lease term, unless we are reasonably certain to exercise the purchase option.\nIn September 2021, we entered into an office lease with Redmond East Office Park LLC, a Washington limited liability company, pursuant to which we will lease approximately 16,681 square feet of space located in Redmond, Washington that we will use primarily for general office space and product testing. The lease provides for an initial term of 128 months commencing November 1, 2021. Pursuant to the lease, annual base rent will be approximately $500,000 for the first year and is subject to annual increases of 3.0%. In addition to base rent, we will pay additional rent comprised of our proportionate share of any operating expenses, real estate taxes, and management fees. We have the option to extend the term for one ten-year renewal period, provided that the rent would be subject to market adjustment at the beginning of the renewal term. The total minimum lease payments related to this forward-starting lease are $6.4 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 570,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Operating lease expense",
+     "$",
+     "116",
+     "$",
+     "116",
+     "$",
+     "348",
+     "$",
+     "348"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance lease expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization of leased assets",
+     "",
+     "7",
+     "",
+     "6",
+     "",
+     "24",
+     "",
+     "18"
+    ],
+    [
+     "  Interest on lease liabilities",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "Total finance lease expense",
+     "",
+     "7",
+     "",
+     "6",
+     "",
+     "26",
+     "",
+     "20"
+    ],
+    [
+     "Total lease expense",
+     "$",
+     "123",
+     "$",
+     "122",
+     "$",
+     "374",
+     "$",
+     "368"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "In September 2021, we entered into a second office lease with Redmond East Office Park LLC, pursuant to which we will lease approximately 36,062 square feet of space located in Redmond, Washington that we will use primarily for general office and lab space. The lease provides for an initial term of 120 months with a target commencement date of July 1, 2022. Pursuant to the lease, annual base rent will be approximately $1.1 million for the first year and is subject to annual increases of 3.0%. In addition to base rent, we will pay additional rent comprised of our proportionate share of any operating expenses, real estate taxes, and management fees. We have the option to extend the term for one ten-year renewal period, provided that the rent would be subject to market adjustment at the beginning of the renewal term. The total minimum lease payments related to this forward-starting lease are $13.0 million.\nIn connection with the effectiveness of the second lease with Redmond East Office Park, we amended our current office lease to provide for early termination intended to coincide with our move into the new 36,062 square feet of space but, in any event, no later than October 31, 2022.\nThe components of lease expense were as follows:\nComponents of Lease Expense",
+   "prose_after": "Supplemental cash flow information related to leases was as follows:\nCash Flow Information Related to Leases",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Cash paid for amounts included in measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "506",
+     "$",
+     "491"
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "Financing cash flows from finance leases",
+     "",
+     "25",
+     "",
+     "19"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 632,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Supplemental cash flow information related to leases was as follows:\nCash Flow Information Related to Leases",
+   "prose_after": "Supplemental balance sheet information related to leases was as follows:\nSupplemental Balance Sheet Information Related to Leases",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "September 30,",
+     "",
+     "December 31,"
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020"
+    ],
+    [
+     "Operating leases",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "$",
+     "652",
+     "$",
+     "946"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of operating lease liability",
+     "",
+     "691",
+     "",
+     "676"
+    ],
+    [
+     "Operating lease liability, net of current portion",
+     "",
+     "307",
+     "",
+     "774"
+    ],
+    [
+     "Total operating lease liabilities",
+     "$",
+     "998",
+     "$",
+     "1,450"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, at cost",
+     "$",
+     "112",
+     "$",
+     "112"
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(49)",
+     "",
+     "(28)"
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "63",
+     "$",
+     "84"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of finance lease obligations",
+     "$",
+     "23",
+     "$",
+     "31"
+    ],
+    [
+     "Finance lease obligations, net of current portion",
+     "",
+     "27",
+     "",
+     "44"
+    ],
+    [
+     "Total finance lease liabilities",
+     "$",
+     "50",
+     "$",
+     "75"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Remaining Lease Term",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "",
+     "1.5 years",
+     "",
+     "2.3 years"
+    ],
+    [
+     "  Finance leases",
+     "",
+     "1.3 years",
+     "",
+     "2.0 years"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Discount Rate",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating leases",
+     "",
+     "6.0%",
+     "",
+     "6.0%"
+    ],
+    [
+     "  Finance leases",
+     "",
+     "6.3%",
+     "",
+     "6.3%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 648,
+    "end_line": 683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Supplemental balance sheet information related to leases was as follows:\nSupplemental Balance Sheet Information Related to Leases",
+   "prose_after": "As of September 30, 2021, maturities of lease liabilities were as follows:\nMaturities of Lease Liabilities",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "Operating",
+     "",
+     "Finance"
+    ],
+    [
+     "Years Ended December 31,",
+     "",
+     "leases",
+     "",
+     "leases"
+    ],
+    [
+     "2021",
+     "$",
+     "170",
+     "$",
+     "6"
+    ],
+    [
+     "2022",
+     "",
+     "696",
+     "",
+     "26"
+    ],
+    [
+     "2023",
+     "",
+     "175",
+     "",
+     "21"
+    ],
+    [
+     "2024",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Thereafter",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total minimum lease payments",
+     "",
+     "1,041",
+     "",
+     "53"
+    ],
+    [
+     "Less: amount representing interest",
+     "",
+     "(43)",
+     "",
+     "(3)"
+    ],
+    [
+     "Present value of capital lease liabilities",
+     "$",
+     "998",
+     "$",
+     "50"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 705
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "As of September 30, 2021, maturities of lease liabilities were as follows:\nMaturities of Lease Liabilities",
+   "prose_after": "9. COMMITMENTS AND CONTINGENCIES\nLitigation\nWe are subject to various claims and pending or threatened lawsuits in the normal course of business. We are not currently party to any legal proceedings that management believes are reasonably possible to have a material adverse effect on our financial position, results of operations or cash flows.\n10. COMMON STOCK\nIn June 2021, we entered into a $140.0 million ATM equity offering agreement with Craig-Hallum. Under the agreement we are able, at our discretion, to offer and sell shares of our common stock having an aggregate value of up to $140.0 million through Craig-Hallum. As of September 30, 2021, we had issued 4.0 million shares of our common stock for net proceeds of $67.8 million under this ATM agreement. There were no transactions under this agreement in the third quarter of 2021.\nIn February 2021, we entered into a $50.0 million ATM equity offering agreement with Craig-Hallum. Under the agreement we were able, at our discretion, to offer and sell shares of our common stock having an aggregate value of up to $50.0 million through Craig-Hallum. We issued 2.5 million shares of our common stock for net proceeds of $48.8 million under this ATM agreement. No further shares are available for sales under this agreement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "-",
+     "$",
+     "100",
+     "$",
+     "(100)",
+     "(100.0)"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "-",
+     "",
+     "1,347",
+     "",
+     "(1,347)",
+     "(100.0)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 770,
+    "end_line": 776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Our discussion and analysis of our financial condition and results of operations are based upon our financial statements, which have been prepared in accordance with accounting principles generally accepted in the United States. The preparation of these financial statements requires us to make estimates and judgments that materially affect the reported amounts of assets, liabilities, revenues and expenses, and related disclosure of contingent liabilities. We evaluate our estimates on a continuous basis. We base our estimates on historical data, terms of existing contracts, our evaluation of trends in the consumer display and 3D sensing industries, information provided by our current and prospective customers and strategic partners, information available from other outside sources and on various other assumptions we believe to be reasonable under the circumstances. The results form the basis for making judgments regarding the carrying values of assets and liabilities that are not readily apparent from other sources. Actual results may differ from these estimates under different assumptions or conditions. There have been no significant changes to our critical accounting judgments, policies, and estimates as described in our Annual Report on Form 10-K for the year ended December 31, 2020.\nResults of operations\nProduct revenue",
+   "prose_after": "Product revenue is revenue from sales of our products which are LBS modules and their components. Revenue is recognized when control of the goods passes to the customer. Our quarterly product revenue may vary substantially due to the timing of product orders from customers, product shipments, production constraints and availability of components and raw materials.\nThe decrease in product revenue for the three and nine months ended September 30, 2021 compared to the same periods in 2020 was due to ceasing product shipments in March 2020 in connection with our transfer of production to our customer. From the third quarter of 2019 through the end of February 2020, we produced and sold to the customer components to a high definition display system that we developed for the customer pursuant to a development agreement. The volume and resulting revenue and gross profit from this arrangement was fairly low. Therefore, in March 2020 we transferred production of the components to the customer. Starting in March 2020, instead of recognizing product revenue and the related cost, we earn a royalty from the customer for each unit shipped. Product revenue backlog at September 30, 2021 and 2020 was zero.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "718",
+     "$",
+     "539",
+     "$",
+     "179",
+     "33.2"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "1,943",
+     "",
+     "1,323",
+     "",
+     "620",
+     "46.9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 784,
+    "end_line": 790
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Product revenue is revenue from sales of our products which are LBS modules and their components. Revenue is recognized when control of the goods passes to the customer. Our quarterly product revenue may vary substantially due to the timing of product orders from customers, product shipments, production constraints and availability of components and raw materials.\nThe decrease in product revenue for the three and nine months ended September 30, 2021 compared to the same periods in 2020 was due to ceasing product shipments in March 2020 in connection with our transfer of production to our customer. From the third quarter of 2019 through the end of February 2020, we produced and sold to the customer components to a high definition display system that we developed for the customer pursuant to a development agreement. The volume and resulting revenue and gross profit from this arrangement was fairly low. Therefore, in March 2020 we transferred production of the components to the customer. Starting in March 2020, instead of recognizing product revenue and the related cost, we earn a royalty from the customer for each unit shipped. Product revenue backlog at September 30, 2021 and 2020 was zero.\nLicense and royalty revenue",
+   "prose_after": "License and royalty revenue is revenue under license agreements to our PicoP\u00ae scanning technology. We recognize revenue on upfront license fees at a point in time if the nature of the license granted is a right-to-use license, representing functional intellectual property with significant standalone functionality. If the nature of the license granted is a right-to-access license, representing symbolic intellectual property, which excludes significant standalone functionality, we recognize revenue over the period of time we have ongoing obligations under the agreement. We will recognize revenue from sales-based royalties on the basis of the quarterly reports provided by our customer as to the number of royalty-bearing products sold or otherwise distributed. In the event that reports are not received, we will estimate the number of royalty-bearing products sold by our customers.\nAs described above, in March 2020, our customer took over production of components that we had been producing for them. As a result, beginning in March 2020, we earn a royalty on each component shipped that is approximately equal to the gross profit we would have earned if we had continued to produce and ship the components. The increase in license and royalty revenue for the three and nine months ended September 30, 2021 compared to the same periods in 2020 was primarily due to this change, resulting in revenue from this arrangement being recognized as royalty revenue rather than as product revenue with a related cost of product revenue. As we recognize this revenue, we record a corresponding reduction in the $10.0 million prepayment that we received from this customer in 2017; accordingly, no cash will be received for this royalty revenue unless and until the prepayment is exhausted.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "(25)",
+     "(100.0)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 797,
+    "end_line": 803
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "License and royalty revenue is revenue under license agreements to our PicoP\u00ae scanning technology. We recognize revenue on upfront license fees at a point in time if the nature of the license granted is a right-to-use license, representing functional intellectual property with significant standalone functionality. If the nature of the license granted is a right-to-access license, representing symbolic intellectual property, which excludes significant standalone functionality, we recognize revenue over the period of time we have ongoing obligations under the agreement. We will recognize revenue from sales-based royalties on the basis of the quarterly reports provided by our customer as to the number of royalty-bearing products sold or otherwise distributed. In the event that reports are not received, we will estimate the number of royalty-bearing products sold by our customers.\nAs described above, in March 2020, our customer took over production of components that we had been producing for them. As a result, beginning in March 2020, we earn a royalty on each component shipped that is approximately equal to the gross profit we would have earned if we had continued to produce and ship the components. The increase in license and royalty revenue for the three and nine months ended September 30, 2021 compared to the same periods in 2020 was primarily due to this change, resulting in revenue from this arrangement being recognized as royalty revenue rather than as product revenue with a related cost of product revenue. As we recognize this revenue, we record a corresponding reduction in the $10.0 million prepayment that we received from this customer in 2017; accordingly, no cash will be received for this royalty revenue unless and until the prepayment is exhausted.\nContract revenue",
+   "prose_after": "Contract revenue includes revenue from performance on development contracts and the sale of prototype units and evaluation kits based on our PicoP\u00ae scanning module. Our contract revenue in a particular period is dependent upon when we enter into a contract, the value of the contracts we have entered into, and the availability of technical resources to perform work on the contracts. We recognize contract revenue either at a point in time, or over time, depending upon the characteristics of the individual contract. If control of the deliverable(s) occur over time, the revenue is recognized in proportion to the transfer of control. If control passes to the customer only upon completion and transfer of the asset, revenue is recognized at the completion of the contract. In contracts that include significant customer acceptance provisions, we recognize revenue only upon acceptance of the deliverable(s).\nThe decrease in contract revenue during the nine months ended September 30, 2021 compared to the same period in 2020 was attributed to decreased support contract activity with our customer and no prototype shipments. Our contract backlog, including orders for prototype units and evaluation kits, at September 30, 2021 and 2020 was zero.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "product",
+     "",
+     "",
+     "product",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "revenue",
+     "",
+     "2020",
+     "revenue",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "(10)",
+     "-",
+     "$",
+     "-",
+     "-",
+     "$",
+     "(10)",
+     "-"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "(46)",
+     "-",
+     "",
+     "1,394",
+     "103.5",
+     "",
+     "(1,440)",
+     "(103.3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 811,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Contract revenue includes revenue from performance on development contracts and the sale of prototype units and evaluation kits based on our PicoP\u00ae scanning module. Our contract revenue in a particular period is dependent upon when we enter into a contract, the value of the contracts we have entered into, and the availability of technical resources to perform work on the contracts. We recognize contract revenue either at a point in time, or over time, depending upon the characteristics of the individual contract. If control of the deliverable(s) occur over time, the revenue is recognized in proportion to the transfer of control. If control passes to the customer only upon completion and transfer of the asset, revenue is recognized at the completion of the contract. In contracts that include significant customer acceptance provisions, we recognize revenue only upon acceptance of the deliverable(s).\nThe decrease in contract revenue during the nine months ended September 30, 2021 compared to the same period in 2020 was attributed to decreased support contract activity with our customer and no prototype shipments. Our contract backlog, including orders for prototype units and evaluation kits, at September 30, 2021 and 2020 was zero.\nCost of product revenue",
+   "prose_after": "Cost of product revenue includes the direct and allocated indirect costs of products sold to customers. Direct costs include labor, materials, reserves for estimated warranty expenses, and other costs incurred directly, or charged to us by our contract manufacturers, in the manufacture of these products. Indirect costs include labor, manufacturing overhead, and other costs associated with operating our manufacturing capabilities and capacity. Manufacturing overhead includes the costs of procuring, inspecting and storing material, facility and other costs, and is allocated to cost of product revenue based on the proportion of indirect labor which supported production activities.\nCost of product revenue can fluctuate significantly from period to period, depending on the product mix and volume, the level of manufacturing overhead expense and the volume of direct material purchased. As described above, cost of product revenue was lower during the three and nine months ended September 30, 2021 compared to the same periods in 2020 due to ceasing product shipments to our customer after we transferred production to the customer in March 2020. The credits of $10,000 and $46,000 for the three and nine months ending September 30, 2021, respectively, are related to the reversal of accrued warranty liabilities since warranty claims were less than expected. Inventory write-downs of $168,000 were recorded in the nine months ended September 30, 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "contract",
+     "",
+     "",
+     "contract",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "revenue",
+     "",
+     "2020",
+     "revenue",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "-",
+     "-",
+     "$",
+     "-",
+     "-",
+     "$",
+     "-",
+     "-"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "-",
+     "-",
+     "",
+     "4",
+     "16.0",
+     "",
+     "(4)",
+     "(100.0)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 834
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Cost of product revenue includes the direct and allocated indirect costs of products sold to customers. Direct costs include labor, materials, reserves for estimated warranty expenses, and other costs incurred directly, or charged to us by our contract manufacturers, in the manufacture of these products. Indirect costs include labor, manufacturing overhead, and other costs associated with operating our manufacturing capabilities and capacity. Manufacturing overhead includes the costs of procuring, inspecting and storing material, facility and other costs, and is allocated to cost of product revenue based on the proportion of indirect labor which supported production activities.\nCost of product revenue can fluctuate significantly from period to period, depending on the product mix and volume, the level of manufacturing overhead expense and the volume of direct material purchased. As described above, cost of product revenue was lower during the three and nine months ended September 30, 2021 compared to the same periods in 2020 due to ceasing product shipments to our customer after we transferred production to the customer in March 2020. The credits of $10,000 and $46,000 for the three and nine months ending September 30, 2021, respectively, are related to the reversal of accrued warranty liabilities since warranty claims were less than expected. Inventory write-downs of $168,000 were recorded in the nine months ended September 30, 2020.\nCost of contract revenue",
+   "prose_after": "Cost of contract revenue includes both the direct and allocated indirect costs of performing on contracts and producing prototype units and evaluation kits. Direct costs include labor, materials and other costs incurred directly in producing prototype units and evaluation kits or performing on a contract. Indirect costs include labor and other costs associated with operating our research and development department and building our technical capabilities and capacity. Cost of contract revenue is determined by the level of direct and indirect costs incurred, which can fluctuate substantially from period to period.\nThe decrease in the cost of contract revenue during the nine months ended September 30, 2021 was primarily attributed to reduced contract activity.\nResearch and development expense",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "5,791",
+     "$",
+     "1,972",
+     "$",
+     "3,819",
+     "193.7"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "17,629",
+     "",
+     "7,262",
+     "",
+     "10,367",
+     "142.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Cost of contract revenue includes both the direct and allocated indirect costs of performing on contracts and producing prototype units and evaluation kits. Direct costs include labor, materials and other costs incurred directly in producing prototype units and evaluation kits or performing on a contract. Indirect costs include labor and other costs associated with operating our research and development department and building our technical capabilities and capacity. Cost of contract revenue is determined by the level of direct and indirect costs incurred, which can fluctuate substantially from period to period.\nThe decrease in the cost of contract revenue during the nine months ended September 30, 2021 was primarily attributed to reduced contract activity.\nResearch and development expense",
+   "prose_after": "Research and development expense consists of compensation related costs of employees and contractors engaged in internal research and product development activities, direct material to support development programs, laboratory operations, outsourced development and processing work, and other operating expenses. We assign our research and development resources based on the business opportunity of the available projects, the skill mix of the resources available and the contractual commitments we have made to our customers. We believe that a substantial level of continuing research and development expense will be required to further develop our scanning technology.\nThe increase in research and development expense during the three and nine months ended September 30, 2021 compared to the same periods in 2020 was primarily due to higher non-cash compensation expense and increased headcount and direct material and equipment expenses related to the development of our lidar sensor. Due to changes in our incentive compensation and retention programs, we expect higher non-cash compensation expenses in future periods.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "$ change",
+     "% change"
+    ],
+    [
+     "Three Months Ended September 30,",
+     "$",
+     "5,006",
+     "$",
+     "1,485",
+     "$",
+     "3,521",
+     "237.1"
+    ],
+    [
+     "Nine Months ended September 30,",
+     "",
+     "15,608",
+     "",
+     "4,536",
+     "",
+     "11,072",
+     "244.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 855,
+    "end_line": 861
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Research and development expense consists of compensation related costs of employees and contractors engaged in internal research and product development activities, direct material to support development programs, laboratory operations, outsourced development and processing work, and other operating expenses. We assign our research and development resources based on the business opportunity of the available projects, the skill mix of the resources available and the contractual commitments we have made to our customers. We believe that a substantial level of continuing research and development expense will be required to further develop our scanning technology.\nThe increase in research and development expense during the three and nine months ended September 30, 2021 compared to the same periods in 2020 was primarily due to higher non-cash compensation expense and increased headcount and direct material and equipment expenses related to the development of our lidar sensor. Due to changes in our incentive compensation and retention programs, we expect higher non-cash compensation expenses in future periods.\nSales, marketing, general and administrative expense",
+   "prose_after": "Sales, marketing, general and administrative expense includes compensation and support costs for marketing, sales, management and administrative staff, and for other general and administrative costs, including legal and accounting services, consultants and other operating expenses.\nThe increase in sales, marketing, general and administrative expense during the three and nine months ended September 30, 2021 compared to the same period in 2020 was primarily attributed to higher non-cash compensation expense and professional services.\nLiquidity and capital resources\nWe have incurred significant losses since inception. We have funded operations to date primarily through the sale of common stock, convertible preferred stock, warrants, the issuance of convertible debt and, to a lesser extent, from development contract revenues, product sales, and licensing activities. At September 30, 2021, we had $125.1 million in cash and cash equivalents.\nBased on our current operating plan, we anticipate that we have sufficient cash and cash equivalents to fund our operations for at least the next 12 months.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "10.1",
+     "Lease Agreement between Redmond East Office Park LLC and MicroVision, Inc. dated September 24, 2021 (covering approximately 16,681 square feet)."
+    ],
+    [
+     "10.2",
+     "Lease Agreement between Redmond East Office Park LLC and MicroVision, Inc. dated September 24, 2021 (covering approximately 36,062 square feet)."
+    ],
+    [
+     "31.1",
+     "Principal Executive Officer Certification pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Principal Financial Officer Certification pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Principal Executive Officer Certification pursuant to Rule 13a-14(b) or Rule 15d-14(b) and Section 1350, Chapter 63 of Title 18, United States Code (18 U.S.C. 1350), as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.2",
+     "Principal Financial Officer Certification pursuant to Rule 13a-14(b) or Rule 15d-14(b) and Section 1350, Chapter 63 of Title 18, United States Code (18 U.S.C. 1350), as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document (the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1143,
+    "end_line": 1164
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "We rely on information technology systems to process, transmit, store, and protect electronic data between our employees, our customers and our suppliers. Our systems are vulnerable to damage or interruptions due to events beyond our control, including, but are not limited to, natural disasters, power loss, telecommunications failures, computer viruses, hacking, or other cyber security issues. Our system redundancy may be inadequate and our disaster recovery planning may be ineffective or insufficient to account for all eventualities. Additionally, we maintain insurance coverage to address certain aspects of cyber risks. Such insurance coverage may be insufficient to cover all losses or all claims that may arise, should such an event occur.\nLoss of any of our key personnel could have a negative effect on the operation of our business.\nOur success depends on our executive officers and other key personnel and on the ability to attract and retain qualified new personnel. Achievement of our business objectives will require substantial additional expertise in the areas of sales and marketing, research and product development and manufacturing. Competition for qualified personnel in these fields is intense, and the inability to attract and retain additional highly skilled personnel, or the loss of key personnel, could hinder our ability to compete effectively in the LBS markets and adversely affect our business strategy execution and results of operations.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nMicroVision, Inc.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1140,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 5, 2021",
+     "By:",
+     "/s/ Sumit Sharma"
+    ],
+    [
+     "",
+     "",
+     "Sumit Sharma"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director (Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1172,
+    "end_line": 1178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nMicroVision, Inc.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1186,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 5, 2021",
+     "By:",
+     "/s/ Stephen P. Holt"
+    ],
+    [
+     "",
+     "",
+     "Stephen P. Holt"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer (Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1179,
+    "end_line": 1185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1186,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

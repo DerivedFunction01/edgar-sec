@@ -1,0 +1,4915 @@
+{
+ "accession": "0001213900-25-026224",
+ "cik": "0001817232",
+ "form": "10-K",
+ "filing_date": "2025-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ea0234415-10k_global.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-1617911"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2024\n[ ] Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from ___________ to ____________\nCommission File Number 001-39819\nGLOBAL GAS CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "99 Wall Street, Suite 436\nNew York, New York 10005\n(Address of Principal Executive Offices) (Zip Code)\n(917) 327-0437\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A common stock, par value $0.0001 per share",
+     "HGAS",
+     "None"
+    ],
+    [
+     "Warrants, each whole warrant exercisable for one share of Class A common stock, each at an exercise price of $11.50 per share",
+     "HGASW",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "99 Wall Street, Suite 436\nNew York, New York 10005\n(Address of Principal Executive Offices) (Zip Code)\n(917) 327-0437\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNONE\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "28"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "28"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "29"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "29"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "30"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "30"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "30"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "37"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "37"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "37"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "38"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "38"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "38"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "39"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "42"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "43"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "44"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "47"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "48"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "50"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 87,
+    "end_line": 119
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of June 28, 2024, the last business day of the registrant\u2019s most recently completed second fiscal quarter, the aggregate market value of the registrant\u2019s voting and non-voting common equity held by non-affiliates was approximately $0.1 million, based on the closing sale price per share of the registrant\u2019s Class A common stock on such date ($0.235).\nAs of March 31, 2025, the registrant had 6,478,256 shares of Class A common stock and 2,700,000 shares of Class B common stock outstanding.\nDocuments Incorporated by Reference: None.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nAND SUMMARY OF RISK FACTORS\nCertain statements in this Annual Report on Form 10-K (\u201cAnnual Report\u201d) of Global Gas Corporation (the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d and \u201cGlobal Gas\u201d) may constitute \u201cforward-looking statements\u201d for purposes of the federal securities laws. All statements, other than statements of present or historical fact included in or incorporated by reference in this Annual Report, regarding the Company\u2019s future financial performance, as well as the Company\u2019s strategy, future operations, financial position, estimated revenues and losses, projected costs, prospects, plans and objectives of management are forward-looking statements. When used in this Annual Report, the words \u201canticipate,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201cwould,\u201d \u201cwill,\u201d \u201cshall,\u201d \u201cseek,\u201d \u201cresult,\u201d \u201cbecome,\u201d \u201ctarget,\u201d the negative of such terms and other similar expressions are intended to identify forward-looking statements, although not all forward-looking statements contain such identifying words. These forward-looking statements are based on management\u2019s current expectations and assumptions about future events and are based on currently available information as to the outcome and timing of future events. The Company cautions you that these forward-looking statements are subject to all of the risks and uncertainties incident to its business, most of which are difficult to predict and many of which are beyond the control of the Company. These forward-looking statements are based on information available as of the date of this Annual Report, and current expectations, forecasts and assumptions, and involve a number of risks and uncertainties. Accordingly, forward-looking statements should not be relied upon as representing the Company\u2019s views as of any subsequent date, and the Company does not undertake any obligation to update forward-looking statements to reflect events or circumstances after the date they were made, whether as a result of new information, future events or otherwise, except as may be required under applicable securities laws. As a result of a number of known and unknown risks and uncertainties, the Company\u2019s actual results or performance may be materially different from those expressed or implied by these forward-looking statements. Some factors that could cause actual results to differ include, but are not limited to:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 120,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "For the Period from February 16, 2023 (inception) to December 31,",
+     "",
+     "",
+     "For the Period from February 16, 2023 (inception) to December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "551,983",
+     "",
+     "$",
+     "408,453",
+     "",
+     "$",
+     "143,350",
+     "",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "Start up costs",
+     "",
+     "-",
+     "",
+     "",
+     "574",
+     "",
+     "",
+     "(574)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "551,983",
+     "",
+     "",
+     "409,027",
+     "",
+     "",
+     "142,956",
+     "",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "Operating loss",
+     "",
+     "(551,983)",
+     "",
+     "",
+     "(409,027)",
+     "",
+     "",
+     "(142,956)",
+     "",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "17,033",
+     "",
+     "",
+     "1,051",
+     "",
+     "",
+     "15,982",
+     "",
+     "",
+     "1,521",
+     "%"
+    ],
+    [
+     "Change in fair value of warrants liabilities",
+     "",
+     "404,250",
+     "",
+     "",
+     "107,800",
+     "",
+     "",
+     "296,450",
+     "",
+     "",
+     "275",
+     "%"
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(130,700)",
+     "",
+     "",
+     "(300,176)",
+     "",
+     "",
+     "169,476",
+     "",
+     "",
+     "(56)",
+     "%"
+    ],
+    [
+     "Income tax expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(130,700)",
+     "",
+     "$",
+     "(300,176)",
+     "",
+     "$",
+     "169,476",
+     "",
+     "",
+     "(56)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 859,
+    "end_line": 882
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "On December 22, 2023, the Company received a notice (the \u201cNotice\u201d) from the staff of the Listing Qualifications Department of Nasdaq indicating that, unless the Company timely requested a hearing before the Nasdaq Hearings Panel (the \u201cPanel\u201d), the Company\u2019s securities (common stock and warrants) would be subject to suspension and delisting from Nasdaq on January 3, 2024, due to the Company\u2019s failure to satisfy the initial listing standards of The Nasdaq Capital Market upon closing of the Company\u2019s previously announced business combination in accordance with Nasdaq Rule 5101-2. Specifically, the Company was unable to demonstrate compliance with the Stockholders Equity, Publicly Held Shares, Market Value of Listed Securities and Market Value of Publicly Held Shares requirements set forth in Nasdaq Rule 5505. The Company timely requested a hearing before the Panel, which resulted in a stay of any suspension or delisting action pending the hearing. The Company was granted until June 20, 2024 to demonstrate compliance with the above-referenced listing rules but was unable to do so by such date. As a result, on June 21, 2024, the Company received notice that the Panel had determined to delist the Company\u2019s securities from Nasdaq and would suspend trading in its securities on the exchange effective at the open of business on June 25, 2024. Since the delisting, the Company\u2019s common stock and warrants have been trading on the OTCQB with trading symbols \u201cHGAS\u201d and \u201cHGASW\u201d, respectively.\nResults of Operations\nAs of December 31, 2024, the Company has not generated any revenue. As of December 31, 2024, the Company\u2019s expenses have been related to initial operations and efforts to source materials for future projects and to undertake conversations with potential customers.\nThe following tables set forth our consolidated statement of operations for the year ended December 31, 2024 and the period from February 16, 2023 (inception) to December 31, 2023, and the dollar and percentage change between the two periods:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 909,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NM*-Percentage",
+     "change non meaningful"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 883,
+    "end_line": 886
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "General and administrative expenses\nGeneral and administrative expenses increased by $143,350 for the year ended December 31, 2024 compared to the period from February 16, 2023 (inception) to December 31, 2023, primarily related to stock based compensation expense, franchise tax expense, legal fees and professional fees.\nStart-up costs\nStart-up cost of $574 was incurred at inception of the Company for the period from February 16, 2023 (inception) to December 31, 2023, respectively.\nInterest income\nFor the year ended December 31, 2024 and the period from February 16, 2023 (inception) to December 31, 2023, the Company earned $17,033 and $1,051, respectively, of interest income on cash equivalents.\nChange in fair value of warrants liabilities\nThe change in fair value of warrant liabilities of $404,250 and $107,800, respectively, is recognized into other expense and other income for the year ended December 31, 2024 and the period from February 16, 2023 (inception) to December 31, 2023.\nLiquidity and Capital Resources",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 852,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 909,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2024",
+     "",
+     "",
+     "For the period from February 16, 2023 (inception) to December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Net cash and cash equivalents used in operating activities",
+     "$",
+     "(1,344,037)",
+     "",
+     "$",
+     "(159,196)",
+     ""
+    ],
+    [
+     "Net cash and cash equivalents provided by financing activities",
+     "$",
+     "274,855",
+     "",
+     "$",
+     "1,342,524",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 918,
+    "end_line": 925
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "As a result of the above, in connection with the Company\u2019s assessment of going concern considerations in accordance with Financial Accounting Standard Board\u2019s (\u201cFASB\u201d) ASC Subtopic 205-40, \u201cGoing Concern,\u201d management has determined that the Company\u2019s liquidity condition raises substantial doubt about the Company\u2019s ability to continue as a going concern through twelve months from the date these consolidated financial statements are available to be issued. These consolidated financial statements do not include any adjustments relating to the recovery of the recorded assets or the classification of the liabilities that might be necessary should the Company be unable to continue as a going concern.\nCash flows for the year ended December 31, 2024 and the period from February 16, 2023 (inception) to December 31, 2023.\nThe following table summarizes cash flows from operating and financing activities for the year ended December 31, 2024 and the period from February 16, 2023 (inception) to December 31, 2023:",
+   "prose_after": "Cash flows from operating activities\nNet cash and cash equivalents used in operating activities for the year ended December 31, 2024 was $1,344,037, primarily related the decrease in accounts payable and accrued expenses, increase in deposit, increase in stock-based compensation expense and increase in prepaid expenses and other receivables and change in fair value of warrant liabilities partially offset by an increase in deferred revenue and net loss for the period.\nNet cash and cash equivalents used in operating activities for the period from February 16, 2023 (inception) to December 31, 2023 was $159,196, primarily related to the net loss for the period partially offset by the increase in accounts payable and accrued expense.\nCash flows from financing activities\nNet cash and cash equivalents provided by financing activities during the year ended December 31, 2024 was $274,855, consisting primarily of the proceeds received from forward purchase agreement contract.\nNet cash and cash equivalents provided by financing activities during the period from February 16, 2023 (inception) to December 31, 2023 was $1,342,524, consisting primarily of capital contribution from members, proceeds from reverser recapitalization and proceeds from promissory notes \u2013 related party.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 909,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Carter Glatt",
+     "31",
+     "Chairman and Director \u2014 Class III"
+    ],
+    [
+     "Jeron Smith",
+     "39",
+     "Director \u2014 Class III"
+    ],
+    [
+     "Michael Castaldy",
+     "46",
+     "Director \u2014 Class II"
+    ],
+    [
+     "Ben Coates",
+     "53",
+     "Director \u2014 Class II"
+    ],
+    [
+     "Shachi Shah",
+     "56",
+     "Chief Operating Officer and Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1056,
+    "end_line": 1065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "The Company lacks a sufficient number of professionals with an appropriate level of accounting knowledge, training, and experience to appropriately analyze, record, disclose, and review certain complex accounting matters timely and accurately. The lack of adequate staffing levels and expertise of unusual or infrequent transactions with complex or infrequently applied accounting topics resulted in the insufficient level of supervision, review and approval of certain information used to prepare the consolidated financial statements and the maintenance of effective controls to adequately monitor and review significant transactions for financial statement completeness and accuracy. This material weakness could result in misstatements to the account balances or disclosures that would result in a material misstatement to the annual or interim consolidated financial statements that would not be prevented or detected.\nITEM 9B. OTHER INFORMATION\nDuring the quarter ended December 31, 2024, (i) no director or officer adopted or terminated any \u201cRule 10b5-1 trading arrangement,\u201d as defined in Item 408(a) of Regulation S-K intending to satisfy the affirmative defense conditions of Rule 10b5\u20131(c) nor any \u201cnon-Rule 10b5-1 trading arrangement,\u201d as defined in Item 408(a) of Regulation S-K; and (ii) there was no information that was required to be disclosed on Form 8-K during such quarter but was not.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nDirectors and Executive Officers\nOur current directors and executive officers are as follows:",
+   "prose_after": "Board of Directors\nCarter Glatt. Carter Glatt serves as Chairman and as a Class III Director. Mr. Glatt served as Dune\u2019s Chief Executive Officer and Director from June 2020 until the Closing Date. He most recently from 2018 to 2020 served as the Head of Corporate Development and Senior Vice President of GTY Technology Holdings Inc., or GTY (Nasdaq: GTYH), a SaaS company that offers a cloud-based suite of solutions for the public sector which was formerly a SPAC founded by the former chairmen of EMC Corporation, VMware, Inc. and Accenture PLC. In such role, Mr. Glatt oversaw or was directly involved in all M&A, joint venture, capital raising, investor relations and strategic alternatives efforts for GTY. Mr. Glatt also previously served as Chief Investment Officer and Managing Partner of delta2 Capital, a SPAC-focused investment fund. Mr. Glatt\u2019s SPAC expertise and operational leadership is complemented by his background in investment banking. He began his career at Barclays (NYSE: BCS) covering the financial technology, consumer retail and healthcare industries before becoming a private equity investor. Mr. Glatt holds a BA with Honors from Dartmouth College. Mr. Glatt\u2019s qualifications to serve on the board include his expertise in SPACs, deal sourcing, M&A structuring, and capital raising.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "William Nance",
+     "2024",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Former Chief Executive Officer",
+     "2023",
+     "",
+     "43,750",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "43,750"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shachi Shah",
+     "2024",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "37,525",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Chief Financial Officer",
+     "2023",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1163,
+    "end_line": 1172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s directors, officers, employees and consultants are subject to the Company\u2019s insider trading policy, which generally prohibits the purchase, sale or trade of the Company\u2019s securities with the knowledge of material nonpublic information.\nITEM 11. EXECUTIVE COMPENSATION\nGlobal Gas is considered an emerging growth company for purposes of the SEC\u2019s executive compensation disclosure rules. In accordance with such rules, Global Gas is required to provide tabular disclosure of summary compensation and outstanding equity awards at fiscal year end, as well as limited narrative disclosures. In general, this disclosure is required for each individual who served as principal executive officer during the year and the company\u2019s two most highly compensated executive officers other than the principal executive officer whose total compensation for the applicable year exceeded $100,000 and who were serving as executive officers as of the applicable year end.\nSummary Compensation Table\nThe following table presents summary information regarding the total compensation paid by Global Gas for the years ended December 31, 2024 and 2023, for the named executive officers of the Company.",
+   "prose_after": "Outstanding Equity Awards at Fiscal Year End\nThe following table presents information regarding the outstanding stock awards held by the Company\u2019s named executive officers at December 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1146,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares of Stock That have not",
+     "",
+     "Market Value of Shares That have not",
+     ""
+    ],
+    [
+     "Name",
+     "Vested",
+     "",
+     "Vested",
+     ""
+    ],
+    [
+     "William Nance",
+     "",
+     "--",
+     "$",
+     ""
+    ],
+    [
+     "Shachi Shah",
+     "",
+     "100,000",
+     "$",
+     "30,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1177,
+    "end_line": 1185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Outstanding Equity Awards at Fiscal Year End\nThe following table presents information regarding the outstanding stock awards held by the Company\u2019s named executive officers at December 31, 2024.",
+   "prose_after": "The following table sets forth compensation earned during the year ended December 31, 2024 by each director who is not a \u201cnamed executive officer\u201d (as defined in Item 402(m) of Regulation S-K under the Exchange Act) and served during the year ended December 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1146,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fees",
+     "",
+     "Restricted Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Earned",
+     "",
+     "Awards(1)",
+     "",
+     "Totals",
+     ""
+    ],
+    [
+     "Jeron Smith",
+     "$",
+     "--",
+     "$",
+     "60,000",
+     "$",
+     ""
+    ],
+    [
+     "Michael Castaldy",
+     "$",
+     "--",
+     "$",
+     "60,000",
+     "$",
+     ""
+    ],
+    [
+     "Ben Coates",
+     "$",
+     "--",
+     "$",
+     "60,000",
+     "$",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1188,
+    "end_line": 1198
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth compensation earned during the year ended December 31, 2024 by each director who is not a \u201cnamed executive officer\u201d (as defined in Item 402(m) of Regulation S-K under the Exchange Act) and served during the year ended December 31, 2024.",
+   "prose_after": "(1) The amounts reported under \u201cOption Awards\u201d are the estimated grant date fair value of restricted stock granted under the 2023 Equity Incentive Plan, with such amount as determined under Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standard Codification Topic 718, Stock-Based Compensation (\u201cASC 718\u201d), with respect to accounting for stock-based compensation. Such estimated fair value amounts do not necessarily correspond to the potential actual value realized of such restricted stock. The assumptions made in computing the estimated fair value of such restricted stock are disclosed in the notes to the Company\u2019s consolidated financial statements for the fiscal year ended December 31, 2024.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS\nThe following table sets forth information regarding the beneficial ownership of our common stock as of the date of this Annual Report by:\n\u25cf each person who is known by the Company to be the beneficial owner of more than five percent (5%) of the outstanding shares of any class of the Company\u2019s common stock;",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1146,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owners(1)",
+     "Number of Shares of Class A Common Stock Beneficially Owned",
+     "",
+     "Percentage of Outstanding Class A Common Stock",
+     "",
+     "",
+     "Number of Shares of Class B Common Stock Beneficially Owned",
+     "",
+     "Percentage of Outstanding Class B Common Stock",
+     "",
+     "",
+     "Percentage of Total Voting Power",
+     "",
+     ""
+    ],
+    [
+     "5% Stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dune Acquisition Holdings LLC(2)",
+     "",
+     "10,295,833",
+     "",
+     "51.6",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "45.4",
+     "%"
+    ],
+    [
+     "William Bennett Nance, Jr.",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "2,000,000",
+     "",
+     "74.1",
+     "%",
+     "",
+     "8.8",
+     "%"
+    ],
+    [
+     "Meteora Capital, LLC(3)",
+     "",
+     "699,746",
+     "",
+     "3.5",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "3.1",
+     "%"
+    ],
+    [
+     "Sergio Martinez",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "350,000",
+     "",
+     "13.0",
+     "%",
+     "",
+     "1.5",
+     "%"
+    ],
+    [
+     "Barbara Guay Martinez",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "350,000",
+     "",
+     "13.0",
+     "%",
+     "",
+     "1.5",
+     "%"
+    ],
+    [
+     "Executive Officers and Directors:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Carter Glatt(2)",
+     "",
+     "9,162,500",
+     "",
+     "45.9",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "40.4",
+     "%"
+    ],
+    [
+     "Michael Castaldy",
+     "",
+     "200,000",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "William Bennett Nance, Jr.",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "2,000,000",
+     "",
+     "74.1",
+     "%",
+     "",
+     "8.8",
+     "%"
+    ],
+    [
+     "Jeron Smith",
+     "",
+     "200,000",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "Ben Coates",
+     "",
+     "200,000",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "Shachi Shah(4)",
+     "",
+     "150,000",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "",
+     "-",
+     "%",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "All Directors and Executive Officers as a group (6 individuals)",
+     "",
+     "9,162,500",
+     "",
+     "49.7",
+     "%",
+     "",
+     "2,000,000",
+     "",
+     "74.1",
+     "%",
+     "",
+     "52.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1218,
+    "end_line": 1238
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf all current executive officers and directors of the Company, as a group.\nBeneficial ownership for the purposes of the following table is determined in accordance with the rules and regulations of the SEC. A person is a \u201cbeneficial owner\u201d of a security if that person has or shares \u201cvoting power,\u201d which includes the power to vote or to direct the voting of the security, or \u201cinvestment power,\u201d which includes the power to dispose of or to direct the disposition of the security or has the right to acquire such powers within 60 days.\nThe beneficial ownership percentages set forth in the table below are based on 6,478,256 and 2,700,000 shares of the Company\u2019s Class A Common Stock and Class B Common Stock, respectively, issued and outstanding as of March 31, 2025.\nUnless otherwise noted in the footnotes to the following table, and subject to applicable community property laws, the persons and entities named in the table have sole voting and investment power with respect to their beneficially owned common stock.",
+   "prose_after": "(1) Unless otherwise noted, the business address of each of these stockholders is c/o Global Gas Corporation, 99 Wall Street, Suite 436, New York, New York 10005.\n(2) Includes 1,133,333 shares of Class A Common Stock which can be acquired by Dune Acquisition Holdings LLC upon conversion of a promissory note held by Dune Acquisition Holdings LLC and 4,850,000 shares of Class A Common Stock which can be acquired by Dune Acquisition Holdings LLC upon the exercise of private warrants. Also includes an aggregate of 1,826,333 shares of Class A Common Stock which can be acquired by Mr. Glatt and Dune Acquisition Holdings LLC upon conversion of outstanding convertible promissory notes. Dune Acquisition Holdings LLC is the record holder of the shares reported herein. Carter Glatt, Michael Castaldy, Jeron Smith, Cecil White III and Shachi Shah are among the members of Dune Acquisition Holdings LLC and Mr. Glatt is the manager of Dune Acquisition Holdings LLC. Mr. Glatt has voting and investment discretion with respect to the common stock held of record by Dune Acquisition Holdings LLC. Each of Michael Castaldy, Jeron Smith, Cecil White III and Shachi Shah disclaims any beneficial ownership of any shares held by Dune Acquisition Holdings LLC.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1246,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "",
+     "Weighted- average exercise price of outstanding options, warrants and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in the first column)",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "350,000",
+     "(1)"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1249,
+    "end_line": 1259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Includes 1,133,333 shares of Class A Common Stock which can be acquired by Dune Acquisition Holdings LLC upon conversion of a promissory note held by Dune Acquisition Holdings LLC and 4,850,000 shares of Class A Common Stock which can be acquired by Dune Acquisition Holdings LLC upon the exercise of private warrants. Also includes an aggregate of 1,826,333 shares of Class A Common Stock which can be acquired by Mr. Glatt and Dune Acquisition Holdings LLC upon conversion of outstanding convertible promissory notes. Dune Acquisition Holdings LLC is the record holder of the shares reported herein. Carter Glatt, Michael Castaldy, Jeron Smith, Cecil White III and Shachi Shah are among the members of Dune Acquisition Holdings LLC and Mr. Glatt is the manager of Dune Acquisition Holdings LLC. Mr. Glatt has voting and investment discretion with respect to the common stock held of record by Dune Acquisition Holdings LLC. Each of Michael Castaldy, Jeron Smith, Cecil White III and Shachi Shah disclaims any beneficial ownership of any shares held by Dune Acquisition Holdings LLC.\n(3) Includes shares held by certain funds and managed accounts to which Meteora Capital, LLC serves as investment manager. Mr. Vikas Mittal serves as the managing member of Meteora Capital, LLC. Each may be deemed to be the beneficial owner of the securities held by such entities. Each disclaims any beneficial ownership over such securities except to the extent of his or its pecuniary interest therein. The business address of Meteora Capital, LLC and Mr. Mittalis 1200 N Federal Hwy, Ste 200, Boca Raton, FL 33432. Information derived from a Schedule 13G/A filed on February 14, 2025.\n(4) Does not include an aggregate of 100,000 shares of Class A Common Stock that are vest on June 30, 2025 provided Ms. Shah is still employed by the Company on such date.\nEquity Compensation Plan Information",
+   "prose_after": "(1) On December 4, 2023, our shareholders approved the Global Gas Corporation 2023 Equity Incentive Plan. Under this plan, 1,400,000 shares of Class A Common Stock are reserved for issuance in accordance with the plan\u2019s terms to eligible employees, officers, directors and consultants. As of December 31, 2024, awards for an aggregate of 1,050,000 shares of Class A Common Stock had been made under the 2023 Equity Incentive Plan.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nIn addition to the executive officer and director compensation arrangements discussed in the section titled \u201cExecutive Compensation,\u201d we describe below the transactions since January 1, 2020 to which we have been a participant, in which the amount involved in the transaction exceeds or will exceed $120,000 and in which any of our directors, executive officers or holders of more than 5% of our capital stock, or any immediate family member of, or person sharing the household with, any of these individuals, had or will have a direct or indirect material interest.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1246,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "51,686",
+     "$",
+     "131,560"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "4,277",
+     "",
+     "9,360"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1348,
+    "end_line": 1356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "During the fiscal year ended December 31, 2024, Global Gas, as the public company, engaged two independent registered public accounting firms \u2013 Marcum LLP (\u201cMarcum\u201d) from January 1, 2024 to February 6, 2024 and Grassi & Co., CPAs, P.C. (\u201cGrassi\u201d) from February 6, 2024 to December 31, 2024. During the fiscal year ended December 31, 2023, Global Gas, as the public company, engaged two independent registered public accounting firms \u2013 WithumSmith+Brown, PC (\u201cWithum\u201d) from January 1, 2023 to December 20, 2023 and Marcum from December 21, 2023 to December 31, 2023. The following table sets forth the aggregate audit fees billed to us by such independent registered public accounting firms and aggregate fees paid to such firms for services in the fee categories indicated below for fiscal years 2024 and 2023. The Audit Committee has considered the scope and fee arrangements for all services provided by such firms, taking into account whether the provision of non-audit services was compatible with maintaining the independence of Global Gas\u2019 independent registered public accounting firms, and has pre-approved the services described below (in thousands):",
+   "prose_after": "(1) Audit fees consist of the aggregate fees for professional services rendered for the audit of our consolidated financial statements, review of interim condensed consolidated financial statements and certain statutory audits.\nPre-Approval Policy\nIn accordance with Section 10A(i) of the Securities Exchange Act of 1934, as amended, before we engage our independent registered public accounting firm to render audit or non-audit services, the engagement is approved by our audit committee. Our audit committee approved all of the fees referred to in the rows titled \u201cAudit Fees,\u201d \u201cAudit-Related Fees,\u201d and \u201cAll Other Fees\u201d in the table above.\nPART IV\nItem 15. Exhibits, Financial Statements, AND Schedules\n(a) The following documents are filed as part of this Form 10-K:\n(1) Consolidated Financial Statements:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1339,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID #606)",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1372,
+    "end_line": 1382
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements, AND Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Audit fees consist of the aggregate fees for professional services rendered for the audit of our consolidated financial statements, review of interim condensed consolidated financial statements and certain statutory audits.\nPre-Approval Policy\nIn accordance with Section 10A(i) of the Securities Exchange Act of 1934, as amended, before we engage our independent registered public accounting firm to render audit or non-audit services, the engagement is approved by our audit committee. Our audit committee approved all of the fees referred to in the rows titled \u201cAudit Fees,\u201d \u201cAudit-Related Fees,\u201d and \u201cAll Other Fees\u201d in the table above.\nPART IV\nItem 15. Exhibits, Financial Statements, AND Schedules\n(a) The following documents are filed as part of this Form 10-K:\n(1) Consolidated Financial Statements:",
+   "prose_after": "(2) Financial Statement Schedules:\nNone.\n(3) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index. Exhibits which are incorporated herein by reference can be inspected and copied at the public reference facilities maintained by the SEC, 100 F Street, N.E., Room 1580, Washington, D.C. 20549. Copies of such material can also be obtained from the Public Reference Section of the SEC, 100 F Street, N.E., Washington, D.C. 20549, at prescribed rates or on the SEC website at www.sec.gov.\n(b) The following Exhibits are filed as part of this report:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "2.1**",
+     "Unit Purchase Agreement, dated as of May 14, 2023, by and among Dune Acquisition Corporation, Global Gas Holdings LLC, Global Hydrogen Energy LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed on May 15, 2023)."
+    ],
+    [
+     "2.2**",
+     "First Amendment to Unit Purchase Agreement, dated August 22, 2023, by and among Dune Acquisition Corporation, Global Gas Holdings LLC, Global Hydrogen Energy LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed on August 23, 2023)."
+    ],
+    [
+     "2.3**",
+     "Second Amendment to Unit Purchase Agreement, dated November 24, 2023, by and among Dune Acquisition Corporation, Global Gas Holdings LLC, Global Hydrogen Energy LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed on November 27, 2023)."
+    ],
+    [
+     "3.1**",
+     "Second Amended and Restated Certificate of Incorporation of the Company, dated December 21, 2023 (incorporated by reference to Exhibit 3.1 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "3.2**",
+     "Amended and Restated Bylaws of the Company, dated December 21, 2023 (incorporated by reference to Exhibit 3.2 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "4.1**",
+     "Warrant Agreement, dated as of December 17, 2020, by and between Dune Acquisition Corporation and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed on December 22, 2020)."
+    ],
+    [
+     "4.2**",
+     "Description of Securities (incorporated by reference to Exhibit 4.2 of the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 1, 2024)."
+    ],
+    [
+     "10.1**",
+     "Support Agreement, dated as of May 14, 2023, by and among Dune Acquisition Corporation, Global Gas Holdings LLC, Global Hydrogen Energy LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on May 15, 2023)."
+    ],
+    [
+     "10.2**",
+     "Sponsor Agreement, dated as of May 14, 2023, by and among Dune Acquisition Holdings, LLC, Global Gas Holdings LLC, Dune Acquisition Corporation and Global Hydrogen Energy LLC (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on May 15, 2023)."
+    ],
+    [
+     "10.3**",
+     "Lock-up Agreement, dated as of May 14, 2023, by and among Dune Acquisition Corporation, Dune Acquisition Holdings LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed on May 15, 2023)."
+    ],
+    [
+     "10.4**",
+     "Forward Purchase Agreement, dated December 1, 2023, by and among Dune Acquisition Corporation, Global Hydrogen Energy LLC, Meteora Capital Partners, LP, Meteora Select Trading Opportunities Master, LP and Meteora Strategic Capital, LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on December 4, 2023)."
+    ],
+    [
+     "10.5**",
+     "Subscription Agreement, dated December 1, 2023, by and among Dune Acquisition Corporation, Meteora Select Trading Opportunities Master, LP, Meteora Capital Partners, LP and Meteora Strategic Capital, LLC (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on December 4, 2023)."
+    ],
+    [
+     "10.6**",
+     "Nomination Agreement, dated as of December 21, 2023, by and among the Company, Dune Acquisition Holdings LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 10.6 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.7**",
+     "Registration Rights Agreement, dated as of December 21, 2023, by and among the Company, Dune Acquisition Holdings LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 10.7 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.8**",
+     "Exchange Agreement, dated as of December 21, 2023, by and among the Company, Global Gas Holdings LLC and the unitholders of Global Hydrogen Energy LLC (incorporated by reference to Exhibit 10.8 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.9**",
+     "Amended and Restated Limited Liability Company Agreement of Global Gas Holdings LLC, dated as of December 21, 2023 (incorporated by reference to Exhibit 10.9 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.10**",
+     "Promissory Note, dated June 21, 2023, by and between Dune Acquisition Corporation and Dune Acquisition Holdings LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on June 23, 2023)."
+    ],
+    [
+     "10.11**",
+     "Amendment No. 1 to Promissory Note, dated December 21, 2023, by and between the Company and Dune Acquisition Holdings LLC (incorporated by reference to Exhibit 10.11 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.12**",
+     "Promissory Note, dated June 21, 2023, between Global Hydrogen Energy LLC and Carter Glatt (incorporated by reference to Exhibit 99.1 to the Company\u2019s Current Report on Form 8-K filed on June 23, 2023)."
+    ],
+    [
+     "10.13**",
+     "Amendment No. 1 to Promissory Note, dated December 21, 2023, by and between Global Hydrogen Energy LLC and Carter Glatt (incorporated by reference to Exhibit 10.13 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.14#**",
+     "Form of Indemnification Agreement by and between the Company and its directors and officers (incorporated by reference to Exhibit 10.14 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.15#**",
+     "Global Gas Corporation 2023 Equity Incentive Plan (incorporated by reference to Exhibit 10.15 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1394,
+    "end_line": 1441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements, AND Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules:\nNone.\n(3) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index. Exhibits which are incorporated herein by reference can be inspected and copied at the public reference facilities maintained by the SEC, 100 F Street, N.E., Room 1580, Washington, D.C. 20549. Copies of such material can also be obtained from the Public Reference Section of the SEC, 100 F Street, N.E., Washington, D.C. 20549, at prescribed rates or on the SEC website at www.sec.gov.\n(b) The following Exhibits are filed as part of this report:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.16#**",
+     "Employment Agreement, dated as of May 14, 2023, by and between Global Hydrogen Energy LLC and William Bennett Nance, Jr. (incorporated by reference to Exhibit 10.16 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "10.17**",
+     "Amended and Restated Sponsor Note (incorporated by reference to Exhibit 10.1 of the Company\u2019s Current Report on Form 8-K filed with the SEC on December 9, 2024)"
+    ],
+    [
+     "10.18**",
+     "Amended and Restated Glatt Note (incorporated by reference to Exhibit 10.2 of the Company\u2019s Current Report on Form 8-K filed with the SEC on December 9, 2024)"
+    ],
+    [
+     "14.1**",
+     "Code of Business Conduct and Ethics (incorporated by reference to Exhibit 14.1 of the Company\u2019s Current Report on Form 8-K filed with the SEC on December 28, 2023)"
+    ],
+    [
+     "16.1**",
+     "Letter from WithumSmith+Brown, PC, dated December 28, 2023 (incorporated by reference to Exhibit 16.1 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "16.2**",
+     "Letter from Marcum LLP, dated February 12, 2024 (incorporated by reference to Exhibit 16.1 of the Company\u2019s Form 8-K filed with the SEC on February 12, 2024)."
+    ],
+    [
+     "19.1",
+     "Insider Trading Policy"
+    ],
+    [
+     "21.1**",
+     "Subsidiaries of the Company (incorporated by reference to Exhibit 21.1 of the Company\u2019s Form 8-K filed with the SEC on December 28, 2023)."
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial and Accounting Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32",
+     "Certification Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "97**",
+     "Clawback Policy (incorporated by reference to Exhibit 97 of the Company\u2019s Annual Report on Form 10-K filed with the SEC on April 1, 2024)"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1443,
+    "end_line": 1465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements, AND Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "** Previously Filed\n+ The schedules and exhibits to this agreement have been omitted pursuant to Item 601(a)(5) of Regulation S-K. A copy of any omitted schedule and/or exhibit will be furnished to the SEC upon request.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1478,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "Indicates management contract or compensatory plan or arrangement."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1470,
+    "end_line": 1473
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statements, AND Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "** Previously Filed\n+ The schedules and exhibits to this agreement have been omitted pursuant to Item 601(a)(5) of Regulation S-K. A copy of any omitted schedule and/or exhibit will be furnished to the SEC upon request.",
+   "prose_after": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on the 31st day of March, 2025.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1478,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GLOBAL GAS CORPORATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Carter Glatt"
+    ],
+    [
+     "",
+     "Carter Glatt"
+    ],
+    [
+     "",
+     "Chairman"
+    ]
+   ],
+   "caption_stack": [
+    "GLOBAL GAS CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1483,
+    "end_line": 1491
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on the 31st day of March, 2025.",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1478,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Carter Glatt",
+     "Chairman and Director",
+     "March 31, 2025"
+    ],
+    [
+     "Carter Glatt",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Shachi Shah",
+     "Chief Operating Officer and",
+     "March 31, 2025"
+    ],
+    [
+     "Shachi Shah",
+     "Chief Financial Officer (Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jeron Smith",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "Jeron Smith",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Castaldy",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "Michael Castaldy",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ben Coates",
+     "Director",
+     "March 31, 2025"
+    ],
+    [
+     "Ben Coates",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1494,
+    "end_line": 1518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1478,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consolidated Financial Statements:",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets as at December 31, 2024 and 2023",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the Year Ended December 31, 2024 and for the Period from February 16, 2023 (inception) to December 31, 2023",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficit for the Year Ended December 31, 2024 and for the Period from February 16, 2023 (inception) to December 31, 2023",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Year Ended December 31, 2024 and for the Period from February 16, 2023 (inception) to December 31, 2023",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Consolidated Financial Statements:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1523,
+    "end_line": 1532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Audit Committee\nNew York, New York\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Global Gas Corporation (the \u201cCompany\u201d) as of December 31, 2024 and 2023, and the related consolidated statements of operations, changes in stockholders\u2019 deficit, and cash flows for the year ended December 31, 2024, and for the period from February 16, 2023 (inception) to December 31, 2023, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2024 and 2023, and the results of its operations and its cash flows for the year ended December 31, 2024, and for the period from February 16, 2023 (inception) to December 31, 2023, in conformity with accounting principles generally accepted in the United States of America.\nSubstantial Doubt About the Company\u2019s Ability to Continue as a Going Concern",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1519,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1532,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "  /s/ GRASSI & CO., CPAs, P.C."
+    ],
+    [
+     ""
+    ],
+    [
+     "PCAOB ID # 606\n\n\n\nWe have served as the Company\u2019s auditors since 2023."
+    ]
+   ],
+   "caption_stack": [
+    "/s/ GRASSI & CO., CPAs, P.C."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1557,
+    "end_line": 1565
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.",
+   "prose_after": "Jericho, New York\nMarch 31, 2025\nCONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1537,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "114,146",
+     "",
+     "$",
+     "1,183,328",
+     ""
+    ],
+    [
+     "Deposit",
+     "",
+     "144,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and other receivables",
+     "",
+     "6,583",
+     "",
+     "",
+     "583",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "264,729",
+     "",
+     "",
+     "1,183,911",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "264,729",
+     "",
+     "$",
+     "1,183,911",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable \u2013 related party",
+     "$",
+     "124,867",
+     "",
+     "$",
+     "124,867",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "75,209",
+     "",
+     "",
+     "1,086,212",
+     ""
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "207,436",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Advances \u2013 related party",
+     "",
+     "2,207",
+     "",
+     "",
+     "2,352",
+     ""
+    ],
+    [
+     "Promissory notes \u2013 related parties",
+     "",
+     "-",
+     "",
+     "",
+     "273,950",
+     ""
+    ],
+    [
+     "Convertible promissory notes \u2013 related parties",
+     "",
+     "273,950",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "683,669",
+     "",
+     "",
+     "1,487,381",
+     ""
+    ],
+    [
+     "Derivative warrant liabilities",
+     "",
+     "26,950",
+     "",
+     "",
+     "431,200",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "710,619",
+     "",
+     "",
+     "1,918,581",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (note 10)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 1,000,000 shares authorized; zero shares issued or outstanding as of December 31, 2024 and 2023",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 380,000,000 shares authorized; 6,478,256 and 5,428,256 shares issued or outstanding as of December 31, 2024 and 2023, respectively",
+     "",
+     "648",
+     "",
+     "",
+     "543",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 20,000,000 shares authorized; 2,700,000 and 4,300,000 shares issued or outstanding as December 31, 2024 and 2023, respectively",
+     "",
+     "270",
+     "",
+     "",
+     "430",
+     ""
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "-",
+     "",
+     "",
+     "(2,608,141)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "-",
+     "",
+     "",
+     "2,172,674",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(446,808)",
+     "",
+     "",
+     "(300,176)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(445,890)",
+     "",
+     "",
+     "(734,670)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "264,729",
+     "",
+     "$",
+     "1,183,911",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1573,
+    "end_line": 1619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "Jericho, New York\nMarch 31, 2025\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1621,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "For the Period from February 16, 2023 (inception) to December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "551,983",
+     "",
+     "$",
+     "408,453",
+     ""
+    ],
+    [
+     "Start up costs",
+     "",
+     "-",
+     "",
+     "",
+     "574",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(551,983)",
+     "",
+     "",
+     "(409,027)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "17,033",
+     "",
+     "",
+     "1,051",
+     ""
+    ],
+    [
+     "Change in fair value of derivative warrant liabilities",
+     "",
+     "404,250",
+     "",
+     "",
+     "107,800",
+     ""
+    ],
+    [
+     "Total other income",
+     "",
+     "421,283",
+     "",
+     "",
+     "108,851",
+     ""
+    ],
+    [
+     "Net loss before taxes",
+     "",
+     "(130,700)",
+     "",
+     "",
+     "(300,176)",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(130,700)",
+     "",
+     "$",
+     "(300,176)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of Class A common stock outstanding, basic and diluted",
+     "",
+     "5,502,846",
+     "",
+     "",
+     "170,700",
+     ""
+    ],
+    [
+     "Net loss per Class A common stock, basic and diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.07)",
+     ""
+    ],
+    [
+     "Weighted average number of Class B common stock outstanding, basic and diluted",
+     "",
+     "2,979,781",
+     "",
+     "",
+     "4,300,000",
+     ""
+    ],
+    [
+     "Net loss per Class B common stock, basic and diluted",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.07)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1625,
+    "end_line": 1657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEAR ENDED DECEMBER 31, 2024 AND\nFOR THE PERIOD FROM FEBRUARY 16, 2023 (INCEPTION) TO DECEMBER 31, 2023",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1621,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1659,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Members\u2019",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Contribution",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Subscription",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Receivable",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 February 16, 2023 (inception)",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Members\u2019 Contribution of Capital",
+     "",
+     "12,500",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12,500",
+     ""
+    ],
+    [
+     "Merger Recapitalization (Note 4)",
+     "",
+     "(12,500)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,300,000",
+     "",
+     "",
+     "430",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12,070",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Issuance of common stock upon Business Combination",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,488,642",
+     "",
+     "449",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(447,443)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(446,994)",
+     ""
+    ],
+    [
+     "Meteora Forward Purchase Agreement Shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "939,614",
+     "",
+     "94",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,608,141)",
+     "",
+     "",
+     "2,608,047",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(300,176)",
+     "",
+     "",
+     "(300,176)",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2023",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,428,256",
+     "$",
+     "543",
+     "",
+     "4,300,000",
+     "",
+     "$",
+     "430",
+     "",
+     "",
+     "(2,608,141)",
+     "",
+     "$",
+     "2,172,674",
+     "",
+     "$",
+     "(300,176)",
+     "",
+     "$",
+     "(734,670)",
+     ""
+    ],
+    [
+     "Forfeiture of Class B common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,600,000)",
+     "",
+     "",
+     "(160)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "160",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from forward purchase agreement shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "275,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "275,000",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "",
+     "",
+     "",
+     "1,050,000",
+     "",
+     "105",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "144,375",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "144,480",
+     ""
+    ],
+    [
+     "Change in Fair value of forward purchase agreement shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,333,141",
+     "",
+     "",
+     "(2,317,209)",
+     "",
+     "",
+     "(15,932)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(130,700)",
+     "",
+     "",
+     "(130,700)",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2024",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,478,256",
+     "$",
+     "648",
+     "",
+     "2,700,000",
+     "",
+     "$",
+     "270",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(446,808)",
+     "",
+     "$",
+     "(445,890)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1667,
+    "end_line": 1692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEAR ENDED DECEMBER 31, 2024 AND\nFOR THE PERIOD FROM FEBRUARY 16, 2023 (INCEPTION) TO DECEMBER 31, 2023",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1659,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1694,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31,",
+     "",
+     "",
+     "For the Period from February 16, 2023 (inception) to December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(130,700)",
+     "",
+     "$",
+     "(300,176)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash and cash equivalents used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of derivative warrant liabilities",
+     "",
+     "(404,250)",
+     "",
+     "",
+     "(107,800)",
+     ""
+    ],
+    [
+     "Stock - based compensation",
+     "",
+     "144,480",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other receivables",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "21,275",
+     ""
+    ],
+    [
+     "Deposit",
+     "",
+     "(144,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable \u2013 related party",
+     "",
+     "-",
+     "",
+     "",
+     "124,867",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(1,011,003)",
+     "",
+     "",
+     "102,638",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "207,436",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash and cash equivalents used in operating activities",
+     "",
+     "(1,344,037)",
+     "",
+     "",
+     "(159,196)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from reverse capitalization",
+     "",
+     "-",
+     "",
+     "",
+     "1,225,222",
+     ""
+    ],
+    [
+     "Capital contribution from Members",
+     "",
+     "-",
+     "",
+     "",
+     "12,500",
+     ""
+    ],
+    [
+     "Advances \u2013 related party",
+     "",
+     "-",
+     "",
+     "",
+     "852",
+     ""
+    ],
+    [
+     "Repayment of advances \u2013 related party",
+     "",
+     "(852)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from advances \u2013 related party",
+     "",
+     "707",
+     "",
+     "",
+     "103,950",
+     ""
+    ],
+    [
+     "Proceeds from forward purchase agreement",
+     "",
+     "275,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash and cash equivalents provided by financing activities",
+     "",
+     "274,855",
+     "",
+     "",
+     "1,342,524",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "(1,069,182)",
+     "",
+     "",
+     "1,183,328",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "1,183,328",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "114,146",
+     "",
+     "$",
+     "1,183,328",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash Financing and Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities assumed in Business Combination, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,672,216",
+     ""
+    ],
+    [
+     "Initial recognition of forward purchase agreement",
+     "$",
+     "-",
+     "",
+     "$",
+     "(2,608,141)",
+     ""
+    ],
+    [
+     "Conversion of units to Class B Common Stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "430",
+     ""
+    ],
+    [
+     "Issuance of Class A Common Stock",
+     "$",
+     "105",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1698,
+    "end_line": 1741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1. ORGANIZATION AND BUSINESS OPERATIONS\nGlobal Gas Corporation, a Delaware corporation (the \u201cCompany,\u201d \u201cGlobal Gas\u201d), is a nascent pure-play hydrogen and carbon recovery project developer and industrial gas supplier. Global Gas intends to offer customers reliable, low-carbon and clean hydrogen, pure carbon dioxide, and other gases generated from a variety of feedstocks. Global Gas\u2019 planned activities involve (i) the sourcing, identification, evaluation and vetting of offtake customers seeking to purchase industrial gases, (ii) the securing of local feedstocks, equipment, and utilities, (iii) the planning and management of projects and (iv) the structuring and financing of projects. Global Gas targets both privately- and publicly funded hydrogen development and selected carbon recovery projects, including projects supported by local-, county-, state-, and national-level governments in North America, Western Europe, and Great Britain.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1694,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1743,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash-trust and cash, net of redemptions",
+     "$",
+     "4,447,404",
+     ""
+    ],
+    [
+     "Less: transaction costs, loans and advisory fees, paid",
+     "",
+     "(614,040)",
+     ""
+    ],
+    [
+     "Less: fees paid in connection with the forward purchase agreement",
+     "",
+     "(2,608,141)",
+     ""
+    ],
+    [
+     "Net proceeds from the Business Combination",
+     "",
+     "1,225,223",
+     ""
+    ],
+    [
+     "Less: Derivative warrant liabilities",
+     "",
+     "(539,000)",
+     ""
+    ],
+    [
+     "Less: liabilities assumed",
+     "",
+     "(1,155,075)",
+     ""
+    ],
+    [
+     "Less: others, net",
+     "",
+     "21,858",
+     ""
+    ],
+    [
+     "Reverse recapitalization, net",
+     "$",
+     "(446,994)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1895,
+    "end_line": 1908
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "RECAPITALIZATION"
+    }
+   },
+   "prose_before": "In December 2023, the FASB issued ASU 2023-09, \u201cIncome Taxes (Topic 740): Improvements to Income Tax Disclosures,\u201d which requires disaggregated information about a reporting entity\u2019s effective tax rate reconciliation as well as information on income taxes paid. The standard is intended to benefit investors by providing more detailed income tax disclosures that would be useful in making capital allocation decisions. The standard will be effective for public companies for fiscal years beginning after December 15, 2024. Early adoption is permitted. We are currently evaluating the impact of this accounting standard update on our consolidated financial statements.\n4. RECAPITALIZATION\nAs discussed in Note 1, \u201cOrganization and Business Operations\u201d, the Business Combination was consummated on December 21, 2023, which, for accounting purposes, was treated as the equivalent of Global Hydrogen issuing stock for the net assets of Dune, accompanied by recapitalization. Under this method of accounting, Dune was treated as the acquired company for financial accounting and reporting purposes under GAAP.\nTransaction Proceeds\nUpon closing of the Business Combination, the Company received gross proceeds of $4.4 million from the Business Combination, offset by total transaction costs and other fees totaling of $3.2 million. The following table reconciles the elements of the Business Combination to the consolidated statements of cash flows and the consolidated statement of changes in stockholders\u2019 equity for the period ended December 31, 2023:",
+   "prose_after": "The number of shares of Common Stock issued immediately following the consummation of the Business Combination were:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1939,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dune Class A common stock, outstanding prior to the Business Combination",
+     "5,494,554",
+     ""
+    ],
+    [
+     "Less: Redemption of Dune Class A common stock",
+     "(747,518)",
+     ""
+    ],
+    [
+     "Business Combination shares",
+     "4,747,036",
+     ""
+    ],
+    [
+     "Global Hydrogen shares, Class B",
+     "681,220",
+     ""
+    ],
+    [
+     "PIPE investor shares, Class A",
+     "4,300,000",
+     ""
+    ],
+    [
+     "Common Stock immediately after the Business Combination",
+     "9,728,256",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1911,
+    "end_line": 1922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "RECAPITALIZATION"
+    }
+   },
+   "prose_before": "The number of shares of Common Stock issued immediately following the consummation of the Business Combination were:",
+   "prose_after": "The number of Global Hydrogen shares was determined as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1939,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Global Hydrogen units",
+     "",
+     "Global Hydrogen Shares after conversion ratio",
+     ""
+    ],
+    [
+     "Class B Common Stock",
+     "",
+     "12,500",
+     "",
+     "4,300,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1925,
+    "end_line": 1931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "RECAPITALIZATION"
+    }
+   },
+   "prose_before": "The number of Global Hydrogen shares was determined as follows:",
+   "prose_after": "Redemption\nPrior to the closing of the Business Combination, certain Dune public shareholders exercised their right to redeem certain of their outstanding shares for cash, resulting in the redemption of 747,518 shares of Dune Class A common stock for an aggregate payment of $7,507,825.\nPublic and private placement warrants\nThe 8,625,000 Public Warrants issued in the IPO the (\u201cPublic Placement Warrants) and 4,850,000 warrants issued in connection with private placement at the time of the IPO (the \u201cPrivate Placement Warrants\u201d) remained outstanding and became warrants of the Company (see Note 7).\n5. ACCOUNTS PAYABLE AND ACCRUED EXPENSES\nThe following table summarizes other accrued expenses:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1939,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Accounting and Consulting",
+     "$",
+     "4,277",
+     "$",
+     "34,505"
+    ],
+    [
+     "Legal Fees",
+     "",
+     "39,560",
+     "",
+     "35,000"
+    ],
+    [
+     "Transaction costs(1)",
+     "",
+     "12,561",
+     "",
+     "1,016,707"
+    ],
+    [
+     "Others",
+     "",
+     "18,811",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "75,209",
+     "$",
+     "1,086,212"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1944,
+    "end_line": 1956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "ACCOUNTS PAYABLE AND ACCRUED EXPENSES"
+    }
+   },
+   "prose_before": "Redemption\nPrior to the closing of the Business Combination, certain Dune public shareholders exercised their right to redeem certain of their outstanding shares for cash, resulting in the redemption of 747,518 shares of Dune Class A common stock for an aggregate payment of $7,507,825.\nPublic and private placement warrants\nThe 8,625,000 Public Warrants issued in the IPO the (\u201cPublic Placement Warrants) and 4,850,000 warrants issued in connection with private placement at the time of the IPO (the \u201cPrivate Placement Warrants\u201d) remained outstanding and became warrants of the Company (see Note 7).\n5. ACCOUNTS PAYABLE AND ACCRUED EXPENSES\nThe following table summarizes other accrued expenses:",
+   "prose_after": "(1) Accounts payable and accrued expenses assumed in business combination\n6. RELATED PARTY TRANSACTIONS\nAdvances \u2013 Related party\nFrom February 16, 2023 (inception) to December 31, 2023, a member of Global Hydrogen Energy, LLC advanced the Company a total of $852 to cover start-up and other operating costs. These amounts were due on demand. At December 31, 2024 and 2023, the balance of $0 and $852 to this affiliate is reported in advances \u2013 related party on the accompanying balance sheet.\nFrom January 1, 2024 to December 31, 2024, an affiliate of the Company advanced a total of $707 to cover operating costs. These amounts were due on demand. At December 31, 2024 and 2023, the balance of $707 and $0 to this affiliate is reported in advances \u2013 related party on the accompanying balance sheet.\nAccounts payable - related party\nCommencing on the date that the Dune\u2019s securities were first listed on Nasdaq and ending on the consummation of Dune\u2019s Business Combination, Dune was obligated to pay the Sponsor a total of $10,000 per month for office space, secretarial and administrative services provided to members of the Company\u2019s management team. As of December 31, 2024 and 2023, the Company had $110,000 outstanding for these services in connection with such agreement due to related parties within Accounts payable \u2013 related party on the accompanying consolidated balance sheets.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1939,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1978,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative warrant liabilities \u2013 public",
+     "",
+     "17,250",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "17,250"
+    ],
+    [
+     "Derivative warrant liabilities \u2013 private placement",
+     "",
+     "9,700",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "9,700"
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "26,950",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "26,950"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2067,
+    "end_line": 2079
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "On March 4, 2024, the Company entered into the Forfeiture Agreements with certain holders of the Company\u2019s Class B common stock. Pursuant to the Forfeiture Agreements, such holders forfeited an aggregate of 1,600,000 shares (the \u201cForfeited Shares\u201d) in exchange for consideration previously received. After the Forfeitures pursuant to the Forfeiture Agreements, the Sellers continue to hold an aggregate of 2,700,000 shares of the Company\u2019s Class B common stock.\nRestricted Stock\nOn December 5, 2024, the Company issued 1,050,000 shares of Class A Common Stock pursuant to the December 2023 Incentive Equity Plan to key team members of the Company. A total of $950,000 shares were immediately vested with a grant date fair value of $142,595 and 100,000 shares vests on June 30, 2025 with a grant date fair value of $15,010.\n8. FAIR VALUE MEASUREMENTS\nWe account for certain liabilities at fair value and classify these liabilities within the fair value hierarchy (Level 1, Level 2, or Level 3). There were no assets measured at fair value as of December 31, 2024 and 2023.\nLiabilities subject to fair value measurements are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2060,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative warrant liabilities \u2013 public",
+     "",
+     "276,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "276,000"
+    ],
+    [
+     "Derivative warrant liabilities \u2013 private placement",
+     "",
+     "155,200",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "155,200"
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "431,200",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "431,200"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2080,
+    "end_line": 2092
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Warrant liabilities\nThe public warrants are separately listed and traded in an active market, the public warrants have been measured at fair value utilizing their listed trading price. The estimated fair value of private placement warrants as of December 31, 2024 and 2023 was based on the fair value of the public warrants.\nFor the year ended December 31, 2024, the Company recognized an income from a decrease in the fair value of liabilities of $404,250, presented as a change in fair value of derivative warrant liabilities in the accompanying consolidated statements of operations.\n9. STOCK BASED COMPENSATION\nRestricted Stock Grants\nFor the year ended December 31, 2024, $144,480 of stock-based compensation was expensed and included in general and administrative expenses on the accompanying statements of income. At December 31, 2024, the remaining unrecognized stock-based compensation expense is $13,125 and anticipated to be expensed by June 30, 2025.\nThe following table summarizes our restricted stock activity for the year ended December 31, 2024:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2060,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "1,050,000"
+    ],
+    [
+     "Expired / Cancelled",
+     "",
+     "-"
+    ],
+    [
+     "Released",
+     "",
+     "-"
+    ],
+    [
+     "Balance at end of period",
+     "",
+     "1,050,000"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2107,
+    "end_line": 2118
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "STOCK BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The public warrants are separately listed and traded in an active market, the public warrants have been measured at fair value utilizing their listed trading price. The estimated fair value of private placement warrants as of December 31, 2024 and 2023 was based on the fair value of the public warrants.\nFor the year ended December 31, 2024, the Company recognized an income from a decrease in the fair value of liabilities of $404,250, presented as a change in fair value of derivative warrant liabilities in the accompanying consolidated statements of operations.\n9. STOCK BASED COMPENSATION\nRestricted Stock Grants\nFor the year ended December 31, 2024, $144,480 of stock-based compensation was expensed and included in general and administrative expenses on the accompanying statements of income. At December 31, 2024, the remaining unrecognized stock-based compensation expense is $13,125 and anticipated to be expensed by June 30, 2025.\nThe following table summarizes our restricted stock activity for the year ended December 31, 2024:",
+   "prose_after": "10. INCOME TAXES\nThe Company\u2019s net deferred tax assets at December 31, 2024 and 2023 are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2060,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "47,661",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "",
+     "227,385",
+     "",
+     "",
+     "113,635",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "275,047",
+     "",
+     "",
+     "113,635",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(275,047)",
+     "",
+     "",
+     "(113,635)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net valuation allowance",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2123,
+    "end_line": 2137
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "10. INCOME TAXES\nThe Company\u2019s net deferred tax assets at December 31, 2024 and 2023 are as follows:",
+   "prose_after": "The income tax provision consists for the year ended December 31, 2024 and 2023 of the following:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2060,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "175,092",
+     "",
+     "",
+     "85,675",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "99,955",
+     "",
+     "",
+     "27,960",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(275,047)",
+     "",
+     "",
+     "(113,635)",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2140,
+    "end_line": 2156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The income tax provision consists for the year ended December 31, 2024 and 2023 of the following:",
+   "prose_after": "At December 31, 2024 and 2023, the Company had approximately $689,292 and $407,976 of net operating loss (\u201cNOL\u201d) carryforwards that may be available to offset future Federal taxable income indefinitely. The utilization of NOL carryforwards to offset future taxable income may be subject to limitations under Section 382 of the Internal Revenue Code and similar state statutes as a result of ownership changes that could occur in the future. If necessary, the deferred tax assets will be reduced by any carryforward that expires prior to utilization as a result of such limitations, with a corresponding reduction of the valuation allowance.\nIn assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the year ended December 31, 2024, the change in the valuation allowance was $208,979. For the year ended December 31, 2023, the change in the valuation allowance was $407,976.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2192,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.0",
+     "%",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "State tax expense, net of federal benefit",
+     "",
+     "12.0",
+     "%",
+     "",
+     "6.9",
+     "%"
+    ],
+    [
+     "Permanent items",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liabilities",
+     "",
+     "102.0",
+     "%",
+     "",
+     "10.0",
+     "%"
+    ],
+    [
+     "Impact or rate change",
+     "",
+     "16.0",
+     "%",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Prior year adjustment",
+     "",
+     "(27.7)",
+     "%",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(123.5)",
+     "%",
+     "",
+     "(37.9)",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "\u2014",
+     "%",
+     "",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2163,
+    "end_line": 2180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the year ended December 31, 2024, the change in the valuation allowance was $208,979. For the year ended December 31, 2023, the change in the valuation allowance was $407,976.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate is as follows:",
+   "prose_after": "The Company files income tax returns in the U.S. federal jurisdiction and is subject to examination by such taxing authority. The Company\u2019s tax returns since inception remain open to examination by such taxing authority.\n11. COMMITMENTS AND CONTINGENCIES\nLitigation\nIn the normal course of business, the Company may become involved in various lawsuits and legal proceedings. While the ultimate results of these matters cannot be predicted with certainty, management does not expect them to have a material adverse effect on the financial position or results of operations of the Company.\n12. SUBSEQUENT EVENTS\nSubsequent events have been evaluated through March 31, 2024, which represents the date the consolidated financial statements were available to be issued, and no events have occurred through that date that would impact the consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2137,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2192,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

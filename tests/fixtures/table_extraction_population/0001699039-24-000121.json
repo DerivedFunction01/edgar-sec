@@ -1,0 +1,6680 @@
+{
+ "accession": "0001699039-24-000121",
+ "cik": "0001699039",
+ "form": "10-Q",
+ "filing_date": "2024-10-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "rngr-20240930.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "81-5449572"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2024\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number 001-38183\nRANGER ENERGY SERVICES, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "10350 Richmond, Suite 550\nHouston, Texas 77042\n(Address of principal executive offices) (Zip Code)\n(713) 935-8900\n(Registrant\u2019s telephone number, including area code)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     ""
+    ],
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock, $0.01 par value",
+     "RNGR",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Act:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "10350 Richmond, Suite 550\nHouston, Texas 77042\n(Address of principal executive offices) (Zip Code)\n(713) 935-8900\n(Registrant\u2019s telephone number, including area code)",
+   "prose_after": "Indicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements (Unaudited)",
+     ""
+    ],
+    [
+     "Condensed Consolidated Balance Sheets",
+     "5"
+    ],
+    [
+     "Condensed Consolidated Statements of Operations",
+     "6"
+    ],
+    [
+     "Condensed Consolidated Statements of Stockholders\u2019 Equity",
+     "7"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows",
+     "8"
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "Note 1 \u2014 Organization and Business Operations",
+     "9"
+    ],
+    [
+     "Note 2 \u2014 Summary of Significant Accounting Policies",
+     "9"
+    ],
+    [
+     "Note 3 \u2014 Assets Held for Sale",
+     "10"
+    ],
+    [
+     "Note 4 \u2014 Property and Equipment, Net",
+     "11"
+    ],
+    [
+     "Note 5 \u2014 Intangible Assets",
+     "11"
+    ],
+    [
+     "Note 6 \u2014 Accrued Expenses",
+     "11"
+    ],
+    [
+     "Note 7 \u2014 Leases",
+     "12"
+    ],
+    [
+     "Note 8 \u2014 Other Financing Liabilities",
+     "13"
+    ],
+    [
+     "Note 9 \u2014 Debt",
+     "13"
+    ],
+    [
+     "Note 10 \u2014 Equity",
+     "14"
+    ],
+    [
+     "Note 11 \u2014 Risk Concentrations",
+     "16"
+    ],
+    [
+     "Note 12 \u2014 Income Taxes",
+     "16"
+    ],
+    [
+     "Note 13 \u2014 Earnings per Share",
+     "17"
+    ],
+    [
+     "Note 14 \u2014 Commitments and Contingencies",
+     "17"
+    ],
+    [
+     "Note 15 \u2014 Segment Reporting",
+     "17"
+    ],
+    [
+     "Note 16 \u2014 Subsequent Events",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "20"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risks",
+     "33"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II \u2013 OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "35"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "35"
+    ],
+    [
+     "Item 2. Unregistered Sales of Securities and Use of Proceeds",
+     "35"
+    ],
+    [
+     "Item 5. Other Information",
+     "36"
+    ],
+    [
+     "Item 6. Exhibits",
+     "37"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "38"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2013 FINANCIAL INFORMATION",
+    "Item 1. Financial Statements (Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 63,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]      Accelerated Filer [X]     Non-accelerated Filer [ ]\nSmaller reporting company [X]  Emerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of October 23, 2024, the registrant had 22,245,212 shares of Class A Common Stock and zero shares of Class B Common Stock outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThe information in this Quarterly Report includes \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). All statements, other than statements of historical fact included in this Quarterly Report, regarding our strategy, future operations, financial position, estimated revenue and losses, projected costs, prospects, plans and objectives of management are forward-looking statements. When used in this Quarterly Report, the words \u201cmay,\u201d \u201cshould,\u201d \u201cintend,\u201d \u201ccould,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201coutlook,\u201d \u201cproject\u201d and similar expressions are intended to identify forward-looking statements, although not all forward-looking statements contain such identifying words. These forward-looking statements represent Ranger\u2019s expectations or beliefs concerning future events, and it is possible that the results described in this Quarterly Report will not be achieved.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "14.8",
+     "$",
+     "15.7"
+    ],
+    [
+     "Accounts receivable, net",
+     "81.9",
+     "",
+     "85.4",
+     ""
+    ],
+    [
+     "Contract assets",
+     "23.7",
+     "",
+     "17.7",
+     ""
+    ],
+    [
+     "Inventory",
+     "5.7",
+     "",
+     "6.4",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "6.0",
+     "",
+     "9.6",
+     ""
+    ],
+    [
+     "Assets held for sale",
+     "0.6",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Total current assets",
+     "132.7",
+     "",
+     "135.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "226.9",
+     "",
+     "226.3",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "5.8",
+     "",
+     "6.3",
+     ""
+    ],
+    [
+     "Operating leases, right-of-use assets",
+     "7.7",
+     "",
+     "9.0",
+     ""
+    ],
+    [
+     "Other assets",
+     "0.8",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "373.9",
+     "$",
+     "378.0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders' Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "29.3",
+     "$",
+     "31.3"
+    ],
+    [
+     "Accrued expenses",
+     "27.6",
+     "",
+     "29.6",
+     ""
+    ],
+    [
+     "Other financing liability, current portion",
+     "0.7",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Long-term debt, current portion",
+     "\u2014",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Short-term lease liability",
+     "8.2",
+     "",
+     "7.3",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "0.7",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "66.5",
+     "",
+     "69.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term lease liability",
+     "13.3",
+     "",
+     "14.9",
+     ""
+    ],
+    [
+     "Other financing liability",
+     "10.5",
+     "",
+     "11.0",
+     ""
+    ],
+    [
+     "Deferred tax liability",
+     "16.0",
+     "",
+     "11.3",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "106.3",
+     "",
+     "106.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 14)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 per share; 50,000,000 shares authorized; no shares issued or outstanding as of September 30, 2024 and December 31, 2023",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A Common Stock, $0.01 par value, 100,000,000 shares authorized; 26,122,840 shares issued and 22,245,212 shares outstanding as of September 30, 2024; 25,756,017 shares issued and 23,398,689 shares outstanding as of December 31, 2023",
+     "0.3",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Class B Common Stock, $0.01 par value, 100,000,000 shares authorized; no shares issued or outstanding as of September 30, 2024 and December 31, 2023",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Less: Class A Common Stock held in treasury at cost; 3,877,628 treasury shares as of September 30, 2024 and 2,357,328 treasury shares as of December 31, 2023",
+     "(38.6)",
+     "",
+     "(23.1)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "37.5",
+     "",
+     "28.4",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "268.4",
+     "",
+     "266.2",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "267.6",
+     "",
+     "271.8",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "373.9",
+     "$",
+     "378.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "$",
+     "86.7",
+     "$",
+     "79.2",
+     "$",
+     "249.1",
+     "$",
+     "234.3"
+    ],
+    [
+     "Wireline services",
+     "30.3",
+     "",
+     "53.2",
+     "",
+     "87.6",
+     "",
+     "157.6",
+     ""
+    ],
+    [
+     "Processing solutions and ancillary services",
+     "36.0",
+     "",
+     "32.0",
+     "",
+     "91.3",
+     "",
+     "93.2",
+     ""
+    ],
+    [
+     "Total revenue",
+     "153.0",
+     "",
+     "164.4",
+     "",
+     "428.0",
+     "",
+     "485.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of services (exclusive of depreciation and amortization):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "67.2",
+     "",
+     "63.5",
+     "",
+     "198.8",
+     "",
+     "185.6",
+     ""
+    ],
+    [
+     "Wireline services",
+     "27.6",
+     "",
+     "45.8",
+     "",
+     "84.4",
+     "",
+     "140.3",
+     ""
+    ],
+    [
+     "Processing solutions and ancillary services",
+     "27.2",
+     "",
+     "25.5",
+     "",
+     "72.8",
+     "",
+     "76.1",
+     ""
+    ],
+    [
+     "Total cost of services",
+     "122.0",
+     "",
+     "134.8",
+     "",
+     "356.0",
+     "",
+     "402.0",
+     ""
+    ],
+    [
+     "General and administrative",
+     "7.1",
+     "",
+     "7.0",
+     "",
+     "20.7",
+     "",
+     "22.7",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "11.1",
+     "",
+     "10.6",
+     "",
+     "33.3",
+     "",
+     "29.3",
+     ""
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(0.1)",
+     "",
+     "(0.1)",
+     "",
+     "(1.7)",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "140.1",
+     "",
+     "152.7",
+     "",
+     "408.3",
+     "",
+     "452.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "12.9",
+     "",
+     "11.7",
+     "",
+     "19.7",
+     "",
+     "32.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "0.7",
+     "",
+     "0.7",
+     "",
+     "2.1",
+     "",
+     "2.8",
+     ""
+    ],
+    [
+     "Loss on debt retirement",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.4",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "0.7",
+     "",
+     "0.7",
+     "",
+     "2.1",
+     "",
+     "5.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income tax expense",
+     "12.2",
+     "",
+     "11.0",
+     "",
+     "17.6",
+     "",
+     "27.1",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "3.5",
+     "",
+     "1.6",
+     "",
+     "5.0",
+     "",
+     "5.4",
+     ""
+    ],
+    [
+     "Net income",
+     "8.7",
+     "",
+     "9.4",
+     "",
+     "12.6",
+     "",
+     "21.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income per common share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.39",
+     "$",
+     "0.38",
+     "$",
+     "0.56",
+     "$",
+     "0.88"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.39",
+     "$",
+     "0.38",
+     "$",
+     "0.55",
+     "$",
+     "0.86"
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "22,241,847",
+     "",
+     "24,500,607",
+     "",
+     "22,608,796",
+     "",
+     "24,758,890",
+     ""
+    ],
+    [
+     "Diluted",
+     "22,494,453",
+     "",
+     "24,887,275",
+     "",
+     "22,731,259",
+     "",
+     "25,149,415",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 290
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "------------------  -----------------\nTotal stockholders' equity                                                                                                                                  267.6              271.8\n------------------  -----------------\nTotal liabilities and stockholders' equity                                                                                                                $ 373.9            $ 378.0\n------------------  -----------------\n</TABLE>\nThe accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)\n(in millions, except share and per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (UNAUDITED)\n(in millions, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 236,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 293,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "2023",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "2023",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "Quantity",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "Quantity",
+     "",
+     "Amount",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares, Class A Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "26,087,524",
+     "25,689,807",
+     "$",
+     "0.3",
+     "$",
+     "0.3",
+     "25,756,017",
+     "25,446,292",
+     "$",
+     "0.3",
+     "$",
+     "0.3"
+    ],
+    [
+     "Issuance of shares under share-based compensation plans",
+     "44,387",
+     "59,996",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "527,717",
+     "390,612",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shares withheld for taxes on equity transactions",
+     "(9,071)",
+     "(5,734)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(160,894)",
+     "(92,835)",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "26,122,840",
+     "25,744,069",
+     "$",
+     "0.3",
+     "$",
+     "0.3",
+     "26,122,840",
+     "25,744,069",
+     "$",
+     "0.3",
+     "$",
+     "0.3"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "(3,722,428)",
+     "(1,099,928)",
+     "$",
+     "(36.9)",
+     "$",
+     "(9.7)",
+     "(2,357,328)",
+     "(551,828)",
+     "$",
+     "(23.1)",
+     "$",
+     "(3.8)"
+    ],
+    [
+     "Repurchase of Class A Common Stock",
+     "(155,200)",
+     "(232,900)",
+     "(1.7)",
+     "",
+     "(2.7)",
+     "",
+     "(1,520,300)",
+     "(781,000)",
+     "(15.5)",
+     "",
+     "(8.6)",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "(3,877,628)",
+     "(1,332,828)",
+     "$",
+     "(38.6)",
+     "$",
+     "(12.4)",
+     "(3,877,628)",
+     "(1,332,828)",
+     "$",
+     "(38.6)",
+     "$",
+     "(12.4)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retained Earnings",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "",
+     "",
+     "$",
+     "30.0",
+     "$",
+     "19.5",
+     "",
+     "",
+     "$",
+     "28.4",
+     "$",
+     "7.2"
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "8.7",
+     "",
+     "9.4",
+     "",
+     "",
+     "",
+     "12.6",
+     "",
+     "21.7",
+     ""
+    ],
+    [
+     "Dividends declared",
+     "",
+     "",
+     "(1.2)",
+     "",
+     "(1.3)",
+     "",
+     "",
+     "",
+     "(3.5)",
+     "",
+     "(1.3)",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "",
+     "",
+     "$",
+     "37.5",
+     "$",
+     "27.6",
+     "",
+     "",
+     "$",
+     "37.5",
+     "$",
+     "27.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "",
+     "",
+     "$",
+     "267.1",
+     "$",
+     "263.9",
+     "",
+     "",
+     "$",
+     "266.2",
+     "$",
+     "262.6"
+    ],
+    [
+     "Equity based compensation",
+     "",
+     "",
+     "1.4",
+     "",
+     "1.1",
+     "",
+     "",
+     "",
+     "4.0",
+     "",
+     "3.4",
+     ""
+    ],
+    [
+     "Shares withheld for taxes for equity compensation",
+     "",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(1.8)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "",
+     "",
+     "$",
+     "268.4",
+     "$",
+     "265.0",
+     "",
+     "",
+     "$",
+     "268.4",
+     "$",
+     "265.0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of period",
+     "",
+     "",
+     "$",
+     "260.5",
+     "$",
+     "274.0",
+     "",
+     "",
+     "$",
+     "271.8",
+     "$",
+     "266.3"
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "8.7",
+     "",
+     "9.4",
+     "",
+     "",
+     "",
+     "12.6",
+     "",
+     "21.7",
+     ""
+    ],
+    [
+     "Dividends declared",
+     "",
+     "",
+     "(1.2)",
+     "",
+     "(1.3)",
+     "",
+     "",
+     "",
+     "(3.5)",
+     "",
+     "(1.3)",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "",
+     "",
+     "1.4",
+     "",
+     "1.1",
+     "",
+     "",
+     "",
+     "4.0",
+     "",
+     "3.4",
+     ""
+    ],
+    [
+     "Shares withheld for taxes for equity compensation",
+     "",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "(1.8)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Repurchase of Class A Common Stock",
+     "",
+     "",
+     "(1.7)",
+     "",
+     "(2.7)",
+     "",
+     "",
+     "",
+     "(15.5)",
+     "",
+     "(8.6)",
+     ""
+    ],
+    [
+     "Balance, end of period",
+     "",
+     "",
+     "$",
+     "267.6",
+     "$",
+     "280.5",
+     "",
+     "",
+     "$",
+     "267.6",
+     "$",
+     "280.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 299,
+    "end_line": 347
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nCONDENSED CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (UNAUDITED)\n(in millions, except share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (UNAUDITED)\n(in millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 293,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 350,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "12.6",
+     "$",
+     "21.7"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "33.3",
+     "",
+     "29.3",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "4.2",
+     "",
+     "3.6",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "(1.7)",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Deferred income tax expense",
+     "4.7",
+     "",
+     "4.8",
+     ""
+    ],
+    [
+     "Loss on debt retirement",
+     "\u2014",
+     "",
+     "2.4",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "0.6",
+     "",
+     "2.3",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "3.3",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Contract assets",
+     "(6.0)",
+     "",
+     "(8.7)",
+     ""
+    ],
+    [
+     "Inventory",
+     "0.6",
+     "",
+     "(2.0)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "3.6",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Other assets",
+     "1.4",
+     "",
+     "1.2",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(1.5)",
+     "",
+     "8.3",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "(2.5)",
+     "",
+     "(7.7)",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "(1.9)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "1.1",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "51.8",
+     "",
+     "53.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "(28.7)",
+     "",
+     "(27.9)",
+     ""
+    ],
+    [
+     "Proceeds from disposal of property and equipment",
+     "1.5",
+     "",
+     "4.9",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(27.2)",
+     "",
+     "(23.0)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Borrowings under Revolving Credit Facility",
+     "25.3",
+     "",
+     "315.6",
+     ""
+    ],
+    [
+     "Principal payments on Revolving Credit Facility",
+     "(25.3)",
+     "",
+     "(308.1)",
+     ""
+    ],
+    [
+     "Principal payments on financing lease obligations",
+     "(4.2)",
+     "",
+     "(4.0)",
+     ""
+    ],
+    [
+     "Principal payments on Secured Promissory Note",
+     "\u2014",
+     "",
+     "(6.2)",
+     ""
+    ],
+    [
+     "Principal payments on other financing liabilities",
+     "(0.5)",
+     "",
+     "(0.7)",
+     ""
+    ],
+    [
+     "Principal payments on Eclipse M&E Term Loan Facility",
+     "\u2014",
+     "",
+     "(10.4)",
+     ""
+    ],
+    [
+     "Dividends paid to Class A Common Stock shareholders",
+     "(3.4)",
+     "",
+     "(1.2)",
+     ""
+    ],
+    [
+     "Shares withheld for equity compensation",
+     "(1.8)",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Payments on Other Installment Purchases",
+     "(0.1)",
+     "",
+     "(0.3)",
+     ""
+    ],
+    [
+     "Repurchase of Class A Common Stock",
+     "(15.5)",
+     "",
+     "(8.6)",
+     ""
+    ],
+    [
+     "Deferred financing costs on Wells Fargo",
+     "\u2014",
+     "",
+     "(0.7)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(25.5)",
+     "",
+     "(25.6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in cash and cash equivalents",
+     "(0.9)",
+     "",
+     "4.5",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, Beginning of Period",
+     "15.7",
+     "",
+     "3.7",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, End of Period",
+     "$",
+     "14.8",
+     "$",
+     "8.2"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "1.4",
+     "$",
+     "1.0"
+    ],
+    [
+     "Supplemental Disclosure of Non-cash Investing and Financing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures included in accounts payable and accrued liabilities",
+     "$",
+     "0.6",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Additions to fixed assets through installment purchases and financing leases",
+     "$",
+     "(5.0)",
+     "$",
+     "(5.6)"
+    ],
+    [
+     "Additions to fixed assets through asset trades",
+     "$",
+     "(4.4)",
+     "$",
+     "(1.1)"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 356,
+    "end_line": 421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (UNAUDITED)\n(in millions)",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS (UNAUDITED)\nNote 1 \u2014 Organization and Business Operations\nBusiness\nRanger Energy Services, Inc. (\u201cRanger, Inc.,\u201d \u201cRanger,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d or the \u201cCompany\u201d) is a provider of onshore high specification well service rigs, wireline services, and additional processing solutions and ancillary services in the United States (\u201cU.S.\u201d). The Company provides an extensive range of well site services to leading U.S. E&P companies that are fundamental to establishing and maintaining the flow of oil and natural gas throughout the productive life of a well.\nOur service offerings consist of well completion support, workover, well maintenance, wireline, and other complementary services, as well as installation, commissioning and operating of modular equipment, which are conducted in three reportable segments, as follows:\n\u2022High Specification Rigs. Provides high specification well service rigs and complementary equipment and services to facilitate operations throughout the lifecycle of a well.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 350,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 424,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Estimated Useful Life (years)",
+     "September 30, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "15",
+     "$",
+     "149.2",
+     "$",
+     "138.4"
+    ],
+    [
+     "Machinery and equipment",
+     "3 - 30",
+     "207.7",
+     "",
+     "189.2",
+     ""
+    ],
+    [
+     "Vehicles",
+     "3 - 15",
+     "53.0",
+     "",
+     "53.8",
+     ""
+    ],
+    [
+     "Other property and equipment",
+     "5 - 25",
+     "21.2",
+     "",
+     "19.9",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "431.1",
+     "",
+     "401.3",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(221.2)",
+     "",
+     "(196.6)",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "17.0",
+     "",
+     "21.6",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "$",
+     "226.9",
+     "$",
+     "226.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 496,
+    "end_line": 511
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "In December 2023, the FASB issued Accounting Standards Update No. 2023-09, \u201cIncome Taxes (Topic 740): Improvements to Income Tax Disclosures\u201d (\u201cASU 2023-09\u201d), which modifies the rules on income tax disclosures to require entities to disclose (1) specific categories in the rate reconciliation, (2) the income or loss from continuing operations before income tax expense or benefit (separated between domestic and foreign) and (3) income tax expense or benefit from continuing operations (separated by federal, state and foreign). ASU 2023-09 also requires entities to disclose their income tax payments to international, federal, state and local jurisdictions, among other changes. The guidance is effective for annual periods beginning after December 15, 2024. Early adoption is permitted for annual financial statements that have not yet been issued or made available for issuance. ASU 2023-09 should be applied on a prospective basis, but retrospective application is permitted. We are currently evaluating the potential impact of adopting this new guidance on our consolidated financial statements and related disclosures.\nNote 3 \u2014 Assets Held for Sale\nAssets held for sale include the net book value of assets the Company plans to sell within the next 12 months and are primarily related to excess non-working assets. Long-lived assets that meet the held for sale criteria are held for sale and reported at the lower of their carrying value or fair value less estimated costs to sell.\nAs of September 30, 2023, the Company classified $0.6 million of land and buildings within our High Specification Rigs segment as held for sale as they are being actively marketed.\nFor the nine months ended September 30, 2024 and 2023, the Company recognized a net gain on assets previously held in Property and equipment of $1.7 million and $1.6 million, respectively, which is shown on the Condensed Consolidated Statements of Operations.\nNote 4 \u2014 Property and Equipment, Net\nProperty and equipment, net include the following (in millions):",
+   "prose_after": "On August 9, 2023, pursuant to an asset purchase agreement dated August 4, 2023, the Company acquired certain fixed assets from Pegaso Energy Services, LLC (\u201cPegaso acquisition\u201d) for consideration of $7.3 million paid in cash. The fixed assets acquired from Pegaso were primarily engaged in pump down services for its customers. Under ASC 805 Business Combination, the Company accounted for the Pegaso acquisition as an asset acquisition. The consideration paid is similar to the fair value of the assets acquired and the Company allocated the consideration paid to each of the assets following the cost accumulation model.\nDepreciation expense was $10.9 million and $10.4 million for the three months ended September 30, 2024 and 2023, respectively and $32.7 million and $28.7 million for the nine months ended September 30, 2024 and 2023.\nNote 5 \u2014 Intangible Assets, Net\nDefinite lived intangible assets are comprised of the following (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Estimated Useful Life (years)",
+     "September 30, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "10-18",
+     "$",
+     "11.4",
+     "$",
+     "11.4"
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "(5.6)",
+     "",
+     "(5.1)",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "$",
+     "5.8",
+     "$",
+     "6.3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 529
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "On August 9, 2023, pursuant to an asset purchase agreement dated August 4, 2023, the Company acquired certain fixed assets from Pegaso Energy Services, LLC (\u201cPegaso acquisition\u201d) for consideration of $7.3 million paid in cash. The fixed assets acquired from Pegaso were primarily engaged in pump down services for its customers. Under ASC 805 Business Combination, the Company accounted for the Pegaso acquisition as an asset acquisition. The consideration paid is similar to the fair value of the assets acquired and the Company allocated the consideration paid to each of the assets following the cost accumulation model.\nDepreciation expense was $10.9 million and $10.4 million for the three months ended September 30, 2024 and 2023, respectively and $32.7 million and $28.7 million for the nine months ended September 30, 2024 and 2023.\nNote 5 \u2014 Intangible Assets, Net\nDefinite lived intangible assets are comprised of the following (in millions):",
+   "prose_after": "Amortization expense was $0.2 million and $0.2 million for the three months ended September 30, 2024 and 2023, respectively and $0.6 million and $0.6 million for the nine months ended September 30, 2024 and 2023. Amortization expense for the future periods is expected to be as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "For the twelve months ending September 30,",
+     "Amount",
+     ""
+    ],
+    [
+     "2025",
+     "$",
+     "0.7"
+    ],
+    [
+     "2026",
+     "0.7",
+     ""
+    ],
+    [
+     "2027",
+     "0.7",
+     ""
+    ],
+    [
+     "2028",
+     "0.5",
+     ""
+    ],
+    [
+     "2029",
+     "0.5",
+     ""
+    ],
+    [
+     "Thereafter",
+     "2.7",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "5.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 532,
+    "end_line": 545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Amortization expense was $0.2 million and $0.2 million for the three months ended September 30, 2024 and 2023, respectively and $0.6 million and $0.6 million for the nine months ended September 30, 2024 and 2023. Amortization expense for the future periods is expected to be as follows (in millions):",
+   "prose_after": "Note 6 \u2014 Accrued Expenses\nAccrued expenses include the following (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Accrued payables",
+     "$",
+     "8.9",
+     "$",
+     "13.0"
+    ],
+    [
+     "Accrued compensation",
+     "14.0",
+     "",
+     "13.7",
+     ""
+    ],
+    [
+     "Accrued taxes",
+     "1.7",
+     "",
+     "1.7",
+     ""
+    ],
+    [
+     "Accrued insurance",
+     "3.0",
+     "",
+     "1.2",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "27.6",
+     "$",
+     "29.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 550,
+    "end_line": 561
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Note 6 \u2014 Accrued Expenses\nAccrued expenses include the following (in millions):",
+   "prose_after": "Note 7 \u2014 Leases\nOperating Leases\nThe Company has operating leases, primarily for real estate and equipment, with terms that vary from one to nine years, included in operating lease costs in the table below. The operating leases are included in Short-term lease liability and Long-term lease liability in the Condensed Consolidated Balance Sheets.\nLease costs associated with yard and field offices are included in cost of services and executive offices are included in general and administrative costs in the Condensed Consolidated Statements of Operations. Lease costs and other information related to operating leases for the three and nine months ended September 30, 2024 and 2023, are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Short-term lease costs",
+     "$",
+     "3.5",
+     "$",
+     "3.4",
+     "$",
+     "9.6",
+     "",
+     "$",
+     "13.0",
+     ""
+    ],
+    [
+     "Operating lease costs",
+     "$",
+     "0.8",
+     "$",
+     "0.8",
+     "$",
+     "2.4",
+     "",
+     "$",
+     "2.4",
+     ""
+    ],
+    [
+     "Operating cash outflows from operating leases",
+     "$",
+     "0.8",
+     "$",
+     "0.7",
+     "$",
+     "2.4",
+     "",
+     "$",
+     "2.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term",
+     "",
+     "",
+     "",
+     "",
+     "2.9 years",
+     "",
+     "",
+     "4.7 years",
+     "",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "",
+     "",
+     "",
+     "8.1",
+     "",
+     "%",
+     "7.9",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 571,
+    "end_line": 583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Note 7 \u2014 Leases\nOperating Leases\nThe Company has operating leases, primarily for real estate and equipment, with terms that vary from one to nine years, included in operating lease costs in the table below. The operating leases are included in Short-term lease liability and Long-term lease liability in the Condensed Consolidated Balance Sheets.\nLease costs associated with yard and field offices are included in cost of services and executive offices are included in general and administrative costs in the Condensed Consolidated Statements of Operations. Lease costs and other information related to operating leases for the three and nine months ended September 30, 2024 and 2023, are as follows (in millions):",
+   "prose_after": "As of September 30, 2024, aggregate future minimum lease payments under operating leases are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "For the twelve months ending September 30,",
+     "Total",
+     ""
+    ],
+    [
+     "2025",
+     "$",
+     "3.4"
+    ],
+    [
+     "2026",
+     "3.1",
+     ""
+    ],
+    [
+     "2027",
+     "2.4",
+     ""
+    ],
+    [
+     "2028",
+     "0.4",
+     ""
+    ],
+    [
+     "2029",
+     "0.1",
+     ""
+    ],
+    [
+     "Total future minimum lease payments",
+     "9.4",
+     ""
+    ],
+    [
+     "Less: amount representing interest",
+     "(1.1)",
+     ""
+    ],
+    [
+     "Present value of future minimum lease payments",
+     "8.3",
+     ""
+    ],
+    [
+     "Less: current portion of operating lease obligations",
+     "(2.8)",
+     ""
+    ],
+    [
+     "Long-term portion of operating lease obligations",
+     "$",
+     "5.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 586,
+    "end_line": 604
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "As of September 30, 2024, aggregate future minimum lease payments under operating leases are as follows (in millions):",
+   "prose_after": "Finance Leases\nThe Company leases certain assets, primarily automobiles, under finance leases with terms that are generally three to five years. The assets and liabilities under finance leases are recorded at the lower of the present value of the minimum lease payments or the fair value of the assets. The assets are amortized over the shorter of the estimated useful lives or over the lease term. The finance leases are included in Property and equipment, net, Short-term lease liability and Long-term lease liability in the Condensed Consolidated Balance Sheets.\nLease costs and other information related to finance leases for the three and nine months ended September 30, 2024 and 2023, are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Amortization of finance leases",
+     "$",
+     "1.5",
+     "$",
+     "1.0",
+     "$",
+     "4.2",
+     "",
+     "$",
+     "2.7",
+     ""
+    ],
+    [
+     "Interest on lease liabilities",
+     "$",
+     "0.6",
+     "$",
+     "0.5",
+     "$",
+     "1.7",
+     "",
+     "$",
+     "1.1",
+     ""
+    ],
+    [
+     "Financing cash outflows from finance leases",
+     "$",
+     "1.6",
+     "$",
+     "1.3",
+     "$",
+     "4.2",
+     "",
+     "$",
+     "4.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term",
+     "",
+     "",
+     "",
+     "",
+     "2.2 years",
+     "",
+     "",
+     "2.1 years",
+     "",
+     ""
+    ],
+    [
+     "Weighted average discount rate",
+     "",
+     "",
+     "",
+     "",
+     "6.5",
+     "",
+     "%",
+     "5.2",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Finance Leases\nThe Company leases certain assets, primarily automobiles, under finance leases with terms that are generally three to five years. The assets and liabilities under finance leases are recorded at the lower of the present value of the minimum lease payments or the fair value of the assets. The assets are amortized over the shorter of the estimated useful lives or over the lease term. The finance leases are included in Property and equipment, net, Short-term lease liability and Long-term lease liability in the Condensed Consolidated Balance Sheets.\nLease costs and other information related to finance leases for the three and nine months ended September 30, 2024 and 2023, are as follows (in millions):",
+   "prose_after": "As of September 30, 2024, aggregate future minimum lease payments under finance leases are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "For the twelve months ending September 30,",
+     "Total",
+     ""
+    ],
+    [
+     "2025",
+     "$",
+     "6.6"
+    ],
+    [
+     "2026",
+     "4.4",
+     ""
+    ],
+    [
+     "2027",
+     "3.4",
+     ""
+    ],
+    [
+     "2028",
+     "0.8",
+     ""
+    ],
+    [
+     "Total future minimum lease payments",
+     "15.2",
+     ""
+    ],
+    [
+     "Less: amount representing interest and fees",
+     "(2.0)",
+     ""
+    ],
+    [
+     "Present value of future minimum lease payments",
+     "13.2",
+     ""
+    ],
+    [
+     "Less: current portion of finance lease obligations",
+     "(5.4)",
+     ""
+    ],
+    [
+     "Long-term portion of finance lease obligations",
+     "$",
+     "7.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "As of September 30, 2024, aggregate future minimum lease payments under finance leases are as follows (in millions):",
+   "prose_after": "Note 8 \u2014 Other Financing Liabilities\nThe Company has sale, lease-back agreements for land and certain other fixed assets with terms that vary from 18 months to 13 years. The sales did not qualify for sale accounting, therefore these leases were classified as finance leases and no gain or loss was recorded. The net book value of the assets remained in Property and equipment, net and are depreciating over their original useful lives.\nAs of September 30, 2024, aggregate future lease payments of the financing liabilities are as follows (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "For the twelve months ending September 30,",
+     "Total",
+     ""
+    ],
+    [
+     "2025",
+     "$",
+     "0.7"
+    ],
+    [
+     "2026",
+     "0.7",
+     ""
+    ],
+    [
+     "2027",
+     "0.8",
+     ""
+    ],
+    [
+     "2028",
+     "0.8",
+     ""
+    ],
+    [
+     "2029",
+     "0.9",
+     ""
+    ],
+    [
+     "Thereafter",
+     "7.3",
+     ""
+    ],
+    [
+     "Total future minimum lease payments",
+     "$",
+     "11.2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Note 8 \u2014 Other Financing Liabilities\nThe Company has sale, lease-back agreements for land and certain other fixed assets with terms that vary from 18 months to 13 years. The sales did not qualify for sale accounting, therefore these leases were classified as finance leases and no gain or loss was recorded. The net book value of the assets remained in Property and equipment, net and are depreciating over their original useful lives.\nAs of September 30, 2024, aggregate future lease payments of the financing liabilities are as follows (in millions):",
+   "prose_after": "Note 9 \u2014 Debt\nThe aggregate carrying amounts, net of issuance costs, of the Company\u2019s debt consists of the following (in millions):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Wells Fargo Revolving Credit Facility",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Installment Purchases",
+     "\u2014",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Total Debt",
+     "\u2014",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "\u2014",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Long term-debt, net",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 669,
+    "end_line": 681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Note 9 \u2014 Debt\nThe aggregate carrying amounts, net of issuance costs, of the Company\u2019s debt consists of the following (in millions):",
+   "prose_after": "Wells Fargo Bank, N.A. Credit Agreement\nOn May 31, 2023, the Company entered into a Credit Agreement with Wells Fargo Bank, N.A., providing the Company with a secured credit facility (\u201cWells Fargo Revolving Credit Facility\u201d) in an aggregate principal amount of $75 million. Debt under the Credit Agreement is secured by a lien on substantially all of the Company\u2019s assets. The Company was in compliance with the Credit Agreement covenant of maintaining a Fixed Charge Coverage Ratio (\u201cFCCR\u201d) of greater than 1.0 as of September 30, 2024, which is applicable only under certain borrowing levels.\nThe Company has up to $5 million available under the Wells Fargo Revolving Credit Facility for letters of credit, subject to assignment. At loan origination, the Company had a Letter of Credit in the amount of $1.6 million, to be utilized for working capital and general corporate purposes, as needed. On September 25, 2023, the Company entered into an agreement with Wells Fargo Bank, N.A. which designated an additional Letter of Credit in the amount of $1.6 million as part of incremental collateral requirements for the Company\u2019s 2024 insurance renewal. The initial maturity date was September 25, 2024, with provisions for automatic annual renewal related to the same insurance policy. On September 25, 2024, the amount of the Letter of Credit was increased to $2.1 million as part of incremental collateral requirements for the Company\u2019s 2025 insurance renewal, with a new maturity date of September 25, 2025. The interest rate for this Letter of Credit was approximately 1.8% for the month ended September 30, 2024.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 624,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 688,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Income (numerator):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income attributable to Ranger Energy Services, Inc.",
+     "$",
+     "8.7",
+     "$",
+     "9.4",
+     "$",
+     "12.6",
+     "$",
+     "21.7"
+    ],
+    [
+     "Net income attributable to Class A Common Stock",
+     "$",
+     "8.7",
+     "$",
+     "9.4",
+     "$",
+     "12.6",
+     "$",
+     "21.7"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income attributable to Ranger Energy Services, Inc.",
+     "$",
+     "8.7",
+     "$",
+     "9.4",
+     "$",
+     "12.6",
+     "$",
+     "21.7"
+    ],
+    [
+     "Net income attributable to Class A Common Stock",
+     "$",
+     "8.7",
+     "$",
+     "9.4",
+     "$",
+     "12.6",
+     "$",
+     "21.7"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares (denominator):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares - basic",
+     "22,241,847",
+     "",
+     "24,500,607",
+     "",
+     "22,608,796",
+     "",
+     "24,758,890",
+     ""
+    ],
+    [
+     "Effect of share-based awards",
+     "252,606",
+     "",
+     "386,668",
+     "",
+     "122,463",
+     "",
+     "390,525",
+     ""
+    ],
+    [
+     "Weighted average number of shares - diluted",
+     "22,494,453",
+     "",
+     "24,887,275",
+     "",
+     "22,731,259",
+     "",
+     "25,149,415",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income per share",
+     "$",
+     "0.39",
+     "$",
+     "0.38",
+     "$",
+     "0.56",
+     "$",
+     "0.88"
+    ],
+    [
+     "Diluted income per share",
+     "$",
+     "0.39",
+     "$",
+     "0.38",
+     "$",
+     "0.55",
+     "$",
+     "0.86"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 805
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "The Company is subject to the following material taxing jurisdictions: the United States and Texas. As of September 30, 2024, the Company has no current tax years under audit. The Company remains subject to examination for federal income taxes and state income taxes for tax years 2020 through 2023.\nThe Company has evaluated all tax positions for which the statute of limitations remains open and believes that the material positions taken would more likely than not be sustained upon examination. Therefore, as of September 30, 2024, the Company had not established any reserves for, nor recorded any unrecognized benefits related to, uncertain tax positions.\nNote 13 \u2014 Earnings per Share\nEarnings per share is based on the amount of earnings allocated to the shareholders and the weighted average number of shares outstanding during the period for each class of Common Stock. The numerator and denominator used to compute earnings per share were as follows (in millions, except share and per share data):",
+   "prose_after": "Note 14 \u2014 Commitments and Contingencies\nLegal Matters\nFrom time to time, the Company is involved in various legal matters arising in the normal course of business. The Company does not believe that the ultimate resolution of these currently pending matters will have a material adverse effect on its condensed consolidated financial position or results of operations. We maintain insurance policies with insurers in amounts and with coverage and deductibles that we, with the advice of our insurance advisers and brokers, believe are reasonable and prudent. We cannot, however, assure you that this insurance will be adequate to protect us from all material expenses related to potential future claims for personal injury and property damage or that these levels of insurance will be available in the future at economical prices.\nNote 15 \u2014 Segment Reporting\nThe Company\u2019s operations are located in the United States and organized into three reportable segments: High Specification Rigs, Wireline Services and Processing Solutions and Ancillary Services. The reportable segments comprise the structure used by the Chief Operating Decision Maker (\u201cCODM\u201d) to make key operating decisions and assess performance during the years presented in the accompanying Condensed Consolidated Financial Statements. The CODM evaluates the segments\u2019 operating performance based on multiple measures including operating income, rig hours and stage counts. The tables below present the operating income measurement, as the Company believes this is most consistent with the principals used in measuring the Condensed Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 816,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "86.7",
+     "$",
+     "30.3",
+     "$",
+     "36.0",
+     "$",
+     "\u2014",
+     "$",
+     "153.0"
+    ],
+    [
+     "Cost of services",
+     "67.2",
+     "",
+     "27.6",
+     "",
+     "27.2",
+     "",
+     "\u2014",
+     "",
+     "122.0",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "5.7",
+     "",
+     "2.7",
+     "",
+     "2.2",
+     "",
+     "0.5",
+     "",
+     "11.1",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "13.8",
+     "",
+     "\u2014",
+     "",
+     "6.6",
+     "",
+     "(7.5)",
+     "",
+     "12.9",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "13.8",
+     "$",
+     "\u2014",
+     "$",
+     "6.6",
+     "$",
+     "(11.7)",
+     "$",
+     "8.7"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$",
+     "4.0",
+     "$",
+     "1.6",
+     "$",
+     "2.2",
+     "$",
+     "\u2014",
+     "$",
+     "7.8"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "249.1",
+     "$",
+     "87.6",
+     "$",
+     "91.3",
+     "$",
+     "\u2014",
+     "$",
+     "428.0"
+    ],
+    [
+     "Cost of services",
+     "198.8",
+     "",
+     "84.4",
+     "",
+     "72.8",
+     "",
+     "\u2014",
+     "",
+     "356.0",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "16.9",
+     "",
+     "8.7",
+     "",
+     "6.2",
+     "",
+     "1.5",
+     "",
+     "33.3",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "33.4",
+     "",
+     "(5.5)",
+     "",
+     "12.3",
+     "",
+     "(20.5)",
+     "",
+     "19.7",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "33.4",
+     "$",
+     "(5.5)",
+     "$",
+     "12.3",
+     "$",
+     "(27.6)",
+     "$",
+     "12.6"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$",
+     "20.0",
+     "$",
+     "3.9",
+     "$",
+     "13.6",
+     "$",
+     "\u2014",
+     "$",
+     "37.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 830,
+    "end_line": 860
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "The following is a description of each operating segment:\nHigh Specification Rigs. Provides high specification well service rigs and complementary equipment and services to facilitate operations throughout the lifecycle of a well.\nWireline Services. Provides services necessary to bring and maintain a well on production and consists of our completion, production and pump down service lines.\nProcessing Solutions and Ancillary Services. Provides complimentary services often utilized in conjunction with our High Specification Rigs and Wireline Services segments. These services primarily include equipment rentals, plug and abandonment snubbing, and processing solutions.\nOther. Other represents costs not allocable to the reporting segments and includes corporate general and administrative expense and depreciation of corporate furniture and fixtures, amortization, impairments, debt retirements and other items similar in nature.\nCertain segment information for the three and nine months ended September 30, 2024 and 2023 is as follows (in millions):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "79.2",
+     "$",
+     "53.2",
+     "$",
+     "32.0",
+     "$",
+     "\u2014",
+     "$",
+     "164.4"
+    ],
+    [
+     "Cost of services",
+     "63.5",
+     "",
+     "45.8",
+     "",
+     "25.5",
+     "",
+     "\u2014",
+     "",
+     "134.8",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "5.1",
+     "",
+     "3.1",
+     "",
+     "2.0",
+     "",
+     "0.4",
+     "",
+     "10.6",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "10.6",
+     "",
+     "4.3",
+     "",
+     "4.5",
+     "",
+     "(7.7)",
+     "",
+     "11.7",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "10.6",
+     "$",
+     "4.3",
+     "$",
+     "4.5",
+     "$",
+     "(10.0)",
+     "$",
+     "9.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$",
+     "5.6",
+     "$",
+     "9.2",
+     "$",
+     "2.4",
+     "$",
+     "\u2014",
+     "$",
+     "17.2"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "234.3",
+     "$",
+     "157.6",
+     "$",
+     "93.2",
+     "$",
+     "\u2014",
+     "$",
+     "485.1"
+    ],
+    [
+     "Cost of services",
+     "185.6",
+     "",
+     "140.3",
+     "",
+     "76.1",
+     "",
+     "\u2014",
+     "",
+     "402.0",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "14.7",
+     "",
+     "8.4",
+     "",
+     "5.0",
+     "",
+     "1.2",
+     "",
+     "29.3",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "34.0",
+     "",
+     "8.9",
+     "",
+     "12.1",
+     "",
+     "(22.7)",
+     "",
+     "32.3",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "34.0",
+     "$",
+     "8.9",
+     "$",
+     "12.1",
+     "$",
+     "(33.3)",
+     "$",
+     "21.7"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "$",
+     "11.4",
+     "$",
+     "13.7",
+     "$",
+     "9.5",
+     "$",
+     "\u2014",
+     "$",
+     "34.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements (Unaudited)"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 16 \u2014 Subsequent Events\nOn October 28, 2024, the Board of Directors declared a quarterly cash dividend of $0.05 per share payable November 22, 2024 to common stockholders of record at the close of business on November 8, 2024. The declaration of any future dividends is subject to the Board of Directors\u2019 discretion and approval.\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date through the date the financial statements are issued. Based upon this review, the Company did not identify any other subsequent events that would have required adjustment or disclosure in the financial statements.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussion and analysis should be read in conjunction with the historical financial statements and related notes included in Part I, Item 1. Financial Statements of this Quarterly Report on Form 10-Q (the \u201cQuarterly Report\u201d). This discussion contains \u201cforward-looking statements\u201d reflecting our current expectations, estimates and assumptions concerning events and financial trends that may affect our future operating results or financial position. Actual results and the timing of events may differ materially from those contained in these forward-looking statements due to a number of factors. Factors that could cause or contribute to such differences include, but are not limited to, market prices and demand for oil and natural gas, capital expenditures, economic and competitive conditions, regulatory changes and other uncertainties, as well as those factors discussed below and elsewhere in this report. Please read the Cautionary Statement Regarding Forward-Looking Statements. Also, please read the risk factors and other cautionary statements described under \u201cRisk Factors\u201d in this Quarterly Report and in our Annual Report. We assume no obligation to update any of these forward-looking statements except as required by law. Except as otherwise indicated or required by the context, all references in this Quarterly Report to the \u201cCompany,\u201d \u201cRanger,\u201d \u201cwe,\u201d \u201cus,\u201d or \u201cour\u201d relate to Ranger Energy Services, Inc. (\u201cRanger, Inc.\u201d) and its consolidated subsidiaries.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 897,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "Variance",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "$",
+     "86.7",
+     "$",
+     "79.2",
+     "$",
+     "7.5",
+     "9",
+     "%"
+    ],
+    [
+     "Wireline services",
+     "30.3",
+     "",
+     "53.2",
+     "",
+     "(22.9)",
+     "",
+     "(43)",
+     "%"
+    ],
+    [
+     "Processing solutions and ancillary services",
+     "36.0",
+     "",
+     "32.0",
+     "",
+     "4.0",
+     "",
+     "13",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "153.0",
+     "",
+     "164.4",
+     "",
+     "(11.4)",
+     "",
+     "(7)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of services (exclusive of depreciation and amortization):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "67.2",
+     "",
+     "63.5",
+     "",
+     "3.7",
+     "",
+     "6",
+     "%"
+    ],
+    [
+     "Wireline services",
+     "27.6",
+     "",
+     "45.8",
+     "",
+     "(18.2)",
+     "",
+     "(40)",
+     "%"
+    ],
+    [
+     "Processing solutions and ancillary services",
+     "27.2",
+     "",
+     "25.5",
+     "",
+     "1.7",
+     "",
+     "7",
+     "%"
+    ],
+    [
+     "Total cost of services",
+     "122.0",
+     "",
+     "134.8",
+     "",
+     "(12.8)",
+     "",
+     "(9)",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "7.1",
+     "",
+     "7.0",
+     "",
+     "0.1",
+     "",
+     "1",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "11.1",
+     "",
+     "10.6",
+     "",
+     "0.5",
+     "",
+     "5",
+     "%"
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "(0.4)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Gain on sale of assets",
+     "(0.1)",
+     "",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "140.1",
+     "",
+     "152.7",
+     "",
+     "(12.6)",
+     "",
+     "(8)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "12.9",
+     "",
+     "11.7",
+     "",
+     "1.2",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "0.7",
+     "",
+     "0.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Total other expenses",
+     "0.7",
+     "",
+     "0.7",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income tax expense",
+     "12.2",
+     "",
+     "11.0",
+     "",
+     "1.2",
+     "",
+     "11",
+     "%"
+    ],
+    [
+     "Income tax expense",
+     "3.5",
+     "",
+     "1.6",
+     "",
+     "1.9",
+     "",
+     "119",
+     "%"
+    ],
+    [
+     "Net income",
+     "$",
+     "8.7",
+     "$",
+     "9.4",
+     "$",
+     "(0.7)",
+     "(7)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 954,
+    "end_line": 994
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "We view Adjusted EBITDA, which is a non\u2011GAAP financial measure, as an important indicator of performance. We define Adjusted EBITDA as net income or loss before net interest expense, income tax expense, depreciation and amortization, equity\u2011based compensation, acquisition\u2011related costs, severance and reorganization costs, gain or loss on disposal of property and equipment, and certain other non\u2011cash and certain other items that we do not view as indicative of our ongoing performance. See \u201c\u2014Results of Operations\u201d and \u201c\u2014Note Regarding Non\u2011GAAP Financial Measure\u201d for more information and reconciliations of net income (loss) to Adjusted EBITDA, the most directly comparable financial measure calculated and presented in accordance with U.S. GAAP.\nResults of Operations\nThree Months Ended September 30, 2024 compared to Three Months Ended September 30, 2023\nThe following is an analysis of our operating results. See \u201c\u2014How We Evaluate Our Operations\u201d for definitions of rig hours, stage counts and other analogous information, as well as key operating metrics (in millions).",
+   "prose_after": "Revenue. Revenue for the three months ended September 30, 2024 decreased $11.4 million, or 7%, to $153.0 million from $164.4 million for the three months ended September 30, 2023. The change in revenue by segment was as follows:\nHigh Specification Rigs. High Specification Rigs revenue for the three months ended September 30, 2024 increased $7.5 million, or 9%, to $86.7 million from $79.2 million for the three months ended September 30, 2023. The revenue increase is attributable to improved pricing and the average revenue per rig hour increasing 6% to $741 for the three months ended September 30, 2024 from $700 for the three months ended September 30, 2023, coupled by a corresponding increase in total rig hours to 116,900 hours for the three months ended September 30, 2024 from 112,400 hours reported for three months ended September 30, 2023.\nWireline Services. Wireline Services revenue for the three months ended September 30, 2024 decreased $22.9 million, or 43%, to $30.3 million from $53.2 million for the three months ended September 30, 2023. The decreased revenue was primarily attributable to a decrease in completion services revenue of $26.0 million where there was a 63% decrease in completed stage counts to 2,500 for the three months ended September 30, 2024 from 6,800 for the three months ended September 30, 2023. This decrease in completion services revenue and stage count is indicative of lower operational activity reflecting the Company\u2019s decision to pursue only work with appropriate margins. Wireline production services and pump down revenue increased year over year by a net of $3.2 million reflecting increased operational activity offset by market pricing pressure.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 947,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1003,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "",
+     "Variance",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "$",
+     "249.1",
+     "$",
+     "234.3",
+     "$",
+     "14.8",
+     "6",
+     "%"
+    ],
+    [
+     "Wireline services",
+     "87.6",
+     "",
+     "157.6",
+     "",
+     "(70.0)",
+     "",
+     "(44)",
+     "%"
+    ],
+    [
+     "Processing solutions and ancillary services",
+     "91.3",
+     "",
+     "93.2",
+     "",
+     "(1.9)",
+     "",
+     "(2)",
+     "%"
+    ],
+    [
+     "Total revenue",
+     "428.0",
+     "",
+     "485.1",
+     "",
+     "(57.1)",
+     "",
+     "(12)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of services (exclusive of depreciation and amortization):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "High specification rigs",
+     "198.8",
+     "",
+     "185.6",
+     "",
+     "13.2",
+     "",
+     "7",
+     "%"
+    ],
+    [
+     "Wireline services",
+     "84.4",
+     "",
+     "140.3",
+     "",
+     "(55.9)",
+     "",
+     "(40)",
+     "%"
+    ],
+    [
+     "Processing solutions and ancillary services",
+     "72.8",
+     "",
+     "76.1",
+     "",
+     "(3.3)",
+     "",
+     "(4)",
+     "%"
+    ],
+    [
+     "Total cost of services",
+     "356.0",
+     "",
+     "402.0",
+     "",
+     "(46.0)",
+     "",
+     "(11)",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "20.7",
+     "",
+     "22.7",
+     "",
+     "(2.0)",
+     "",
+     "(9)",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "33.3",
+     "",
+     "29.3",
+     "",
+     "4.0",
+     "",
+     "14",
+     "%"
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "(0.4)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Gain on sale of assets",
+     "(1.7)",
+     "",
+     "(1.6)",
+     "",
+     "(0.1)",
+     "",
+     "6",
+     "%"
+    ],
+    [
+     "Total operating expenses",
+     "408.3",
+     "",
+     "452.8",
+     "",
+     "(44.5)",
+     "",
+     "(10)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating income",
+     "19.7",
+     "",
+     "32.3",
+     "",
+     "(12.6)",
+     "",
+     "(39)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "2.1",
+     "",
+     "2.8",
+     "",
+     "(0.7)",
+     "",
+     "(25)",
+     "%"
+    ],
+    [
+     "Loss on debt retirement",
+     "\u2014",
+     "",
+     "2.4",
+     "",
+     "(2.4)",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Total other expenses",
+     "2.1",
+     "",
+     "5.2",
+     "",
+     "(3.1)",
+     "",
+     "(60)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income tax expense",
+     "17.6",
+     "",
+     "27.1",
+     "",
+     "(9.5)",
+     "",
+     "(35)",
+     "%"
+    ],
+    [
+     "Income tax expense",
+     "5.0",
+     "",
+     "5.4",
+     "",
+     "(0.4)",
+     "",
+     "(7)",
+     "%"
+    ],
+    [
+     "Net income",
+     "$",
+     "12.6",
+     "$",
+     "21.7",
+     "$",
+     "(9.1)",
+     "(42)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1027,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Income Tax Expense. Income tax expense for the three months ended September 30, 2024 increased $1.9 million, or 119%, to $3.5 million from $1.6 million for three months ended September 30, 2023. The lower tax rate for the period ended September 30, 2023 resulted from discreet tax benefits recognized during the three months ended September 30, 2023.\nNet Income. Net income for the three months ended September 30, 2024 decreased $0.7 million, or 7%, to $8.7 million from $9.4 million for the three months ended September 30, 2023. The decrease in net income was driven by reduced operating income from activity declines in the Wireline segment, offset by continued increases in other business lines and reduced tax deductions.\nNine Months Ended September 30, 2024 compared to Nine Months Ended September 30, 2023\nThe following is an analysis of our operating results. See \u201c\u2014How We Evaluate Our Operations\u201d for definitions of rig hours, stage counts and other analogous information, as well as key operating metrics (in millions).",
+   "prose_after": "Revenue. Revenue for the nine months ended September 30, 2024 decreased $57.1 million, or 12%, to $428.0 million from $485.1 million for the nine months ended September 30, 2023. The change in revenue by segment was as follows:\nHigh Specification Rigs. High Specification Rig revenue for the nine months ended September 30, 2024 increased $14.8 million, or 6%, to $249.1 million from $234.3 million for the nine months ended September 30, 2023. The increase in revenue included an increase in the average revenue per rig hour by 5% to $730 from $693 for the nine months ended September 30, 2023, coupled by a corresponding 1% increase in total rig hours to 341,000 for the nine months ended September 30, 2024 from 338,100 for the nine months ended September 30, 2023.\nWireline Services. Wireline Services revenue for the nine months ended September 30, 2024 decreased $70.0 million, or 44%, to $87.6 million from $157.6 million for the nine months ended September 30, 2023. The decrease in wireline services revenue was attributable to reductions in the completions service line totaling $72.6 million illustrated by a 63% decrease in completed stage counts to 7,600 for the nine months ended September 30, 2024 from 20,600 for the nine months ended September 30, 2023. This decrease in completion services and stage count is indicative of lower operational activity reflecting the Company\u2019s decision to pursue only work with appropriate margins. Wireline pump down experienced decreases in revenue for the nine months ended September 30, 2024 compared to the nine months ended September 30, 2023 that were driven by pricing reductions as a consequence of increased competition from frac providers. These declines were offset by wireline production service revenue, which increased year over year by $3.4 million reflecting increased operational activity and an intentional management decision to pivot to production related work.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "13.8",
+     "$",
+     "\u2014",
+     "$",
+     "6.6",
+     "$",
+     "(11.7)",
+     "$",
+     "8.7"
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.7",
+     "",
+     "0.7",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3.5",
+     "",
+     "3.5",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "5.7",
+     "",
+     "2.7",
+     "",
+     "2.2",
+     "",
+     "0.5",
+     "",
+     "11.1",
+     ""
+    ],
+    [
+     "EBITDA",
+     "19.5",
+     "",
+     "2.7",
+     "",
+     "8.8",
+     "",
+     "(7.0)",
+     "",
+     "24.0",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.4",
+     "",
+     "1.4",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Legal fees and settlements",
+     "(0.3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "19.2",
+     "$",
+     "2.7",
+     "$",
+     "8.8",
+     "$",
+     "(5.6)",
+     "$",
+     "25.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1108,
+    "end_line": 1127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "We believe Adjusted EBITDA is a useful performance measure because it allows for an effective evaluation of our operating performance when compared to our peers, without regard to our financing methods or capital structure. We exclude the items listed above from net income (loss) in arriving at Adjusted EBITDA because these amounts can vary substantially within our industry depending upon accounting methods and book values of assets, capital structures and the method by which the assets were acquired. Adjusted EBITDA should not be considered as an alternative to, or more meaningful than, net income (loss) determined in accordance with U.S. GAAP. Certain items excluded from Adjusted EBITDA are significant components in understanding and assessing a company\u2019s financial performance, such as a company\u2019s cost of capital and tax structure, as well as the historic costs of depreciable assets, none of which are reflected in Adjusted EBITDA. Our presentation of Adjusted EBITDA should not be construed as an indication that our results will be unaffected by the items excluded from Adjusted EBITDA. Our computations of Adjusted EBITDA may not be identical to other similarly titled measures of other companies. The following table presents reconciliations of net income (loss) to Adjusted EBITDA, our most directly comparable financial measure calculated and presented in accordance with U.S. GAAP.\nThree Months Ended September 30, 2024 compared to Three Months Ended September 30, 2023\nThe following is an analysis of our Adjusted EBITDA. See \u201cItem 1. Financial Information\u2014Note 15\u2014Segment Reporting\u201d and \u201c\u2014Results of Operations\u201d for further details (in millions).",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1103,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1171,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "10.6",
+     "$",
+     "4.3",
+     "$",
+     "4.5",
+     "$",
+     "(10.0)",
+     "$",
+     "9.4"
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.7",
+     "",
+     "0.7",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.6",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "5.1",
+     "",
+     "3.1",
+     "",
+     "2.0",
+     "",
+     "0.4",
+     "",
+     "10.6",
+     ""
+    ],
+    [
+     "EBITDA",
+     "15.7",
+     "",
+     "7.4",
+     "",
+     "6.5",
+     "",
+     "(7.3)",
+     "",
+     "22.3",
+     ""
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.3",
+     "",
+     "1.3",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Acquisition related costs",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "15.7",
+     "$",
+     "7.4",
+     "$",
+     "6.5",
+     "$",
+     "(5.6)",
+     "$",
+     "24.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1128,
+    "end_line": 1148
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1103,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1171,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Variance ($)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "3.2",
+     "$",
+     "(4.3)",
+     "$",
+     "2.1",
+     "$",
+     "(1.7)",
+     "$",
+     "(0.7)"
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.9",
+     "",
+     "1.9",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "0.6",
+     "",
+     "(0.4)",
+     "",
+     "0.2",
+     "",
+     "0.1",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "EBITDA",
+     "3.8",
+     "",
+     "(4.7)",
+     "",
+     "2.3",
+     "",
+     "0.3",
+     "",
+     "1.7",
+     ""
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.4)",
+     "",
+     "(0.4)",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Acquisition related costs",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Legal fees and settlements",
+     "(0.3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "3.5",
+     "$",
+     "(4.7)",
+     "$",
+     "2.3",
+     "$",
+     "\u2014",
+     "$",
+     "1.1"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1149,
+    "end_line": 1170
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Adjusted EBITDA for the three months ended September 30, 2024 increased $1.1 million to $25.1 million from $24.0 million for the three months ended September 30, 2023. The change by segment was as follows:\nHigh Specification Rigs. High Specification Rigs Adjusted EBITDA for the three months ended September 30, 2024 increased $3.5 million to $19.2 million from $15.7 million for the three months ended September 30, 2023, due to increased revenue of $7.5 million, partially offset by a corresponding increase in cost of services of $3.7 million.\nWireline Services. Wireline Services Adjusted EBITDA for the three months ended September 30, 2024 decreased $4.7 million to $2.7 million from $7.4 million for the three months ended September 30, 2023, due to decreased operating activity resulting in revenue declines of $22.9 million, partially offset by a corresponding decrease in cost of services of $18.2 million.\nProcessing Solutions and Ancillary Services. Processing Solutions and Ancillary Services Adjusted EBITDA for the three months ended September 30, 2024 increased $2.3 million to $8.8 million from $6.5 million for the three months ended September 30, 2023, due to increased revenue of $4.0 million, partially offset by a corresponding increase in cost of services of $1.7 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1103,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1171,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "TA",
+     "Nine Months Ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "33.4",
+     "$",
+     "(5.5)",
+     "$",
+     "12.3",
+     "$",
+     "(27.6)",
+     "$",
+     "12.6"
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.1",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5.0",
+     "",
+     "5.0",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "16.9",
+     "",
+     "8.7",
+     "",
+     "6.2",
+     "",
+     "1.5",
+     "",
+     "33.3",
+     ""
+    ],
+    [
+     "EBITDA",
+     "",
+     "50.3",
+     "",
+     "3.2",
+     "",
+     "18.5",
+     "",
+     "(19.0)",
+     "",
+     "53.0",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4.0",
+     "",
+     "4.0",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1.7)",
+     "",
+     "(1.7)",
+     ""
+    ],
+    [
+     "Severance and reorganization costs",
+     "",
+     "0.7",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Acquisition related costs",
+     "",
+     "0.3",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Legal fees and settlements",
+     "",
+     "0.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "",
+     "$",
+     "51.5",
+     "$",
+     "3.3",
+     "$",
+     "18.6",
+     "$",
+     "(16.4)",
+     "$",
+     "57.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1187,
+    "end_line": 1208
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "Wireline Services. Wireline Services Adjusted EBITDA for the three months ended September 30, 2024 decreased $4.7 million to $2.7 million from $7.4 million for the three months ended September 30, 2023, due to decreased operating activity resulting in revenue declines of $22.9 million, partially offset by a corresponding decrease in cost of services of $18.2 million.\nProcessing Solutions and Ancillary Services. Processing Solutions and Ancillary Services Adjusted EBITDA for the three months ended September 30, 2024 increased $2.3 million to $8.8 million from $6.5 million for the three months ended September 30, 2023, due to increased revenue of $4.0 million, partially offset by a corresponding increase in cost of services of $1.7 million.\nOther. Other Adjusted EBITDA for the three months ended September 30, 2024 and 2023 held consistent at a loss of $5.6 million. The balances included in Other reflect other general and administrative costs, which are not directly attributable to High Specification Rigs, Wireline Services or Processing Solutions and Ancillary Services.\nNine Months Ended September 30, 2024 compared to Nine Months Ended September 30, 2023\nThe following is an analysis of our Adjusted EBITDA. See \u201cItem 1. Financial Information\u2014Note 15\u2014Segment Reporting\u201d and \u201c\u2014Results of Operations\u201d for further details (in millions).",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1232,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended September 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "34.0",
+     "$",
+     "8.9",
+     "$",
+     "12.1",
+     "$",
+     "(33.3)",
+     "$",
+     "21.7"
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.8",
+     "",
+     "2.8",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5.4",
+     "",
+     "5.4",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "14.7",
+     "",
+     "8.4",
+     "",
+     "5.0",
+     "",
+     "1.2",
+     "",
+     "29.3",
+     ""
+    ],
+    [
+     "EBITDA",
+     "48.7",
+     "",
+     "17.3",
+     "",
+     "17.1",
+     "",
+     "(23.9)",
+     "",
+     "59.2",
+     ""
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3.6",
+     "",
+     "3.6",
+     ""
+    ],
+    [
+     "Loss on retirement of debt",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2.4",
+     "",
+     "2.4",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1.6)",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Severance and reorganization costs",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Acquisition related costs",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.6",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "48.7",
+     "$",
+     "17.3",
+     "$",
+     "17.1",
+     "$",
+     "(17.1)",
+     "$",
+     "66.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1209,
+    "end_line": 1231
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1232,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "High Specification Rigs",
+     "",
+     "Wireline Services",
+     "",
+     "Processing Solutions and Ancillary Services",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Variance ($)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "(0.6)",
+     "$",
+     "(14.4)",
+     "$",
+     "0.2",
+     "$",
+     "5.7",
+     "$",
+     "(9.1)"
+    ],
+    [
+     "Interest expense, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.7)",
+     "",
+     "(0.7)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.4)",
+     "",
+     "(0.4)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "2.2",
+     "",
+     "0.3",
+     "",
+     "1.2",
+     "",
+     "0.3",
+     "",
+     "4.0",
+     ""
+    ],
+    [
+     "EBITDA",
+     "1.6",
+     "",
+     "(14.1)",
+     "",
+     "1.4",
+     "",
+     "4.9",
+     "",
+     "(6.2)",
+     ""
+    ],
+    [
+     "Impairment of fixed assets",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.4)",
+     "",
+     "(0.4)",
+     ""
+    ],
+    [
+     "Equity based compensation",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Loss on retirement of debt",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2.4)",
+     "",
+     "(2.4)",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Severance and reorganization costs",
+     "0.7",
+     "",
+     "0.1",
+     "",
+     "0.1",
+     "",
+     "(0.3)",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Acquisition related costs",
+     "0.3",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1.5)",
+     "",
+     "(1.2)",
+     ""
+    ],
+    [
+     "Legal fees and settlements",
+     "0.2",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "2.8",
+     "$",
+     "(14.0)",
+     "$",
+     "1.5",
+     "$",
+     "0.7",
+     "$",
+     "(9.0)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1233,
+    "end_line": 1256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Adjusted EBITDA for the nine months ended September 30, 2024 decreased $9.0 million to $57.0 million from $66.0 million for the nine months ended September 30, 2023. The change by segment was as follows:\nHigh Specification Rigs. High Specification Rigs Adjusted EBITDA for the nine months ended September 30, 2024 increased $2.8 million to $51.5 million from $48.7 million for the nine months ended September 30, 2023, primarily due to increased operating levels during the third quarter of 2024.\nWireline Services. Wireline Services Adjusted EBITDA for the nine months ended September 30, 2024 decreased $14.0 million to $3.3 million from $17.3 million for the nine months ended September 30, 2023, primarily due to significant decreases in operating activity within the completions service line.\nProcessing Solutions and Ancillary Services. Processing Solutions and Ancillary Services Adjusted EBITDA for the nine months ended September 30, 2024 increased $1.5 million to $18.6 million from $17.1 million for the nine months ended September 30, 2023, primarily due to a decrease in cost of services across service lines, partially offset by to decreased coil tubing revenue.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1232,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "",
+     "(in millions)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "51.8",
+     "$",
+     "53.1",
+     "$",
+     "(1.3)",
+     "(2)",
+     "%"
+    ],
+    [
+     "Net cash used in investing activities",
+     "(27.2)",
+     "",
+     "(23.0)",
+     "",
+     "(4.2)",
+     "",
+     "(18)",
+     "%"
+    ],
+    [
+     "Net cash used in financing activities",
+     "(25.5)",
+     "",
+     "(25.6)",
+     "",
+     "0.1",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Net change in cash",
+     "$",
+     "(0.9)",
+     "$",
+     "4.5",
+     "$",
+     "(5.4)",
+     "(120)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1278,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "We require capital to fund ongoing operations, including maintenance expenditures on our existing fleet and equipment, organic growth initiatives, investments and acquisitions. Our primary sources of liquidity have historically been cash generated from operations and borrowings under our credit facilities. As of September 30, 2024, we had total liquidity of $86.1 million, consisting of $14.8 million of cash on hand and availability under our Wells Fargo Revolving Credit Facility of $71.3 million. Under the Wells Fargo Revolving Credit Facility, the total loan capacity was $75.0 million, net of $3.7 million of Letters of Credit open under the facility. This compares to the Company\u2019s available borrowings under the Wells Fargo Revolving Credit Facility of $61.7 million as of September 30, 2023 and $69.4 million as of December 31, 2023. We strive to maintain financial flexibility and proactively monitor potential capital sources to meet our investment and target liquidity requirements that permit us to manage the cyclicality associated with our business. We currently expect to have sufficient funds to meet the Company\u2019s short and long term liquidity requirements and comply with our covenants of our debt agreements. For further details, see \u201c\u2014 Debt Agreements.\u201d\nCash Flows\nThe following table presents our cash flows for the periods indicated:",
+   "prose_after": "Operating Activities\nNet cash from operating activities decreased $1.3 million to $51.8 million for nine months ended September 30, 2024 compared to $53.1 million for the nine months ended September 30, 2023. The change in cash flows from operating activities is primarily attributable to a decrease in operating income for the nine months ended September 30, 2024 compared to the nine months ended September 30, 2023. Cash created from working capital decreased $5.0 million to $4.4 million utilized for the nine months ended September 30, 2024, compared to $9.4 million utilized for the nine months ended September 30, 2023 due to improvements in collections activities in the most recent quarters.\nInvesting Activities\nNet cash used in investing activities increased $4.2 million to $27.2 million for nine months ended September 30, 2024 compared to $23.0 million for the nine months ended September 30, 2023. The change in cash flows from investing activities is largely attributable to slight increases in fixed asset additions that took place during the nine months ended September 30, 2024 and less proceeds from asset disposals relative to those that occurred during the nine months ended September 30, 2023.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1321,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares Repurchased (1)",
+     "Average Price Paid Per Share",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs (2)",
+     "Maximum Number of Shares that May Yet be Purchased Under the Plans or Programs (3)"
+    ],
+    [
+     "July 1, 2024 - July 31, 2024",
+     "154,700",
+     "$",
+     "10.40",
+     "154,700",
+     "3,890,695"
+    ],
+    [
+     "August 1, 2024 - August 31, 2024",
+     "500",
+     "11.00",
+     "",
+     "500",
+     "4,052,755"
+    ],
+    [
+     "September 1, 2024 - September 30, 2024",
+     "9,071",
+     "12.19",
+     "",
+     "\u2014",
+     "4,236,508"
+    ],
+    [
+     "Total",
+     "164,271",
+     "$",
+     "10.50",
+     "155,200",
+     "4,236,508"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1411,
+    "end_line": 1423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "On March 7, 2023, the Company announced that its Board of Directors authorized a share repurchase program, allowing the Company to purchase currently outstanding Class A Common Stock held by non-affiliates, not to exceed $35.0 million in aggregate value. On March 4, 2024, the Company announced that its Board of Directors approved an additional share repurchase program authorization of $50.0 million, bringing the total share repurchase program authorization to $85.0 million in aggregate value, allowing the Company to utilize the expanded $50.0 million of approved capacity through March 4, 2027. Share repurchases may take place from time to time on the open market or through privately negotiated transactions. The duration of the share repurchase program is 36 months and may be accelerated, suspended or discontinued at any time without notice.\nThe following table provides information with respect to Class A Common Stock purchases made by the Company during the three months ended September 30, 2024.",
+   "prose_after": "_________________________\n(1) Total number of shares repurchased during the third quarter of 2024 consists of 9,071 shares of Class A Common Stock, at an average price paid per share of $12.19, withheld by the Company in satisfaction of withholding taxes due upon the vesting of restricted shares granted to our employees under the Ranger Energy Services, Inc. 2017 Long-Term Incentive Plan and 155,200 shares of Class A Common Stock, at an average price paid per share of $10.42, repurchased pursuant to the repurchase program authorized by the Board of Directors allowing the Company to purchase currently outstanding Class A Common Stock held by non-affiliates, not to exceed $35.0 million in aggregate value, that was announced on March 7, 2023 and increased on March 4, 2024, by the Board of Directors approving an additional share repurchase program authorization of $50.0 million, bringing the total share repurchase program authorization to $85.0 million in aggregate value.\n(2) For the three months ended September 30, 2024, 155,200 shares of Class A Common Stock were repurchased for a total of $1.7 million, net of tax. As of September 30, 2024, an aggregate of 3,325,800 shares of Class A Common Stock were purchased for a total of $34.5 million, net of tax since the inception of the repurchase plan announced on March 7, 2023. The Company has accrued stock repurchase excise tax of $0.2 million for the nine months ended September 30, 2024.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1392,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1432,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "INDEX TO EXHIBITS",
+     ""
+    ],
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "10.1*",
+     "Form of Restricted Stock Unit Agreement for Directors under the Ranger Energy Services, Inc. 2017 Long-Term Incentive Plan dated 2024."
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer Pursuant to Rule 13a\u201114(a)/15d\u201114(a) of the Securities Exchange Act of 1934"
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer Pursuant to Rule 13a\u201114(a)/15d\u201114(a) of the Securities Exchange Act of 1934"
+    ],
+    [
+     "32.1**",
+     "Certifications of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "Certifications of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.CAL*",
+     "iXBRL Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "iXBRL Definition Linkbase Document"
+    ],
+    [
+     "101.INS*",
+     "iXBRL Instance Document"
+    ],
+    [
+     "101.LAB*",
+     "iXBRL Labels Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "iXBRL Presentation Linkbase Document"
+    ],
+    [
+     "101.SCH*",
+     "iXBRL Schema Document"
+    ],
+    [
+     "104*",
+     "Cover page interactive data file (formatted in iXBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [
+    "INDEX TO EXHIBITS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1465
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "On May 6, 2024, the Company entered into a Lock-Up Agreement with Charles S. Leykum and CSL Capital Management, L.P., for and on behalf of subsidiary and affiliated entities, including CSL Energy Opportunity GP I, LLC, CSL Fund II Preferred Holdings, LLC, CSL Energy Holdings II, LLC, CSL Energy Opportunity GP II, LLC, CSL Energy Opportunities Fund II, L.P., and CSL CM GP, LLC (the \u201cCSL-related entities,\u201d and collectively with CSL Capital Management, L.P. and Charles S. Leykum, \u201cCSL\u201d), whereby CSL agreed not to enter into certain types of \u201cProhibited Transactions\u201d involving the Company\u2019s securities until December 31, 2024. The Prohibited Transactions are defined to include: (1) offering, pledging, encumbering, hypothecating, selling, granting of an option, or contracting to sell, lend or otherwise attempt to or transfer or dispose of, directly or indirectly, any shares of common stock of the Company (the \u201cCommon Stock\u201d) or any securities convertible into or exercisable or exchangeable for shares of Common Stock, whether now owned or hereafter acquired; (2) entering into any put, call, hedge, short sale or swap or other arrangement that could or does transfer to another or give another rights with respect to, in whole or in part, any of the economic consequences of ownership of the Common Stock, whether any such transaction is to be settled by delivery of Common Stock or such other securities, in cash or otherwise (including for purposes of (1) or (2) above, any other act or transaction that would transfer the beneficial ownership of the Company\u2019s securities to any other person; or (3) publicly disclosing the intention to do any of the foregoing. The parties agreed to exclude from the Lock-Up Agreement certain limited types of transactions, or terminate the Lock-Up Agreement on the occurrence of certain events, which are expressly enumerated in the Lock-Up Agreement. In partial consideration for CSL\u2019s entry into the Lock-up Agreement, Ranger agreed to reimburse CSL for fees and expenses incurred by it in connection with its negotiation of the Lock-Up Agreement.\nItem 6. Exhibits\nThe following exhibits are filed as part of this Quarterly Report.",
+   "prose_after": "* Filed as an exhibit to this Quarterly Report on Form 10-Q.\n** Furnished as an exhibit to this Quarterly Report on Form 10-Q.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1470,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 4,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Ranger Energy Services, Inc.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Melissa Cougle",
+     "October 28, 2024"
+    ],
+    [
+     "Melissa Cougle",
+     "Date"
+    ],
+    [
+     "Chief Financial Officer",
+     ""
+    ],
+    [
+     "(Principal Financial Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Ranger Energy Services, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1475,
+    "end_line": 1484
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2014 Subsequent Events                                                                       19"
+    }
+   },
+   "prose_before": "* Filed as an exhibit to this Quarterly Report on Form 10-Q.\n** Furnished as an exhibit to this Quarterly Report on Form 10-Q.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1470,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1485,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

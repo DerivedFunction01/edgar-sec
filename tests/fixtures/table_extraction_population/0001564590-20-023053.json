@@ -1,0 +1,1807 @@
+{
+ "accession": "0001564590-20-023053",
+ "cik": "0001353611",
+ "form": "10-Q",
+ "filing_date": "2020-05-08",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "fxb-10q_20200331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York",
+     "03-6118853"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3500 Lacey Road, Suite 700\n\n\n\nDowners Grove, Illinois",
+     "60515"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ],
+    [
+     "(800) 983-0903\n\n\n\n(Registrant\u2019s telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 39
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) of the Securities Exchange Act of 1934\nFor the quarterly period ended March 31, 2020\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from ____ to ____\nCommission File Number 001-32906\nInvesco CurrencyShares\u00ae British Pound Sterling Trust\nSponsored by Invesco Specialized Products, LLC\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Units of Beneficial Interest",
+     "FXB",
+     "NYSE Arca"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (d232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I.",
+     "",
+     "FINANCIAL INFORMATION",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ITEM 1.",
+     "Financial Statements",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "Notes to Unaudited Financial Statements",
+     "6"
+    ],
+    [
+     "",
+     "ITEM 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "",
+     "ITEM 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "13"
+    ],
+    [
+     "",
+     "ITEM 4.",
+     "Controls and Procedures",
+     "13"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.",
+     "",
+     "OTHER INFORMATION",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1.",
+     "Legal Proceedings",
+     "14"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "14"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "14"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "14"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "14"
+    ],
+    [
+     "",
+     "Item 5.",
+     "Other Information",
+     "14"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Exhibits",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 95
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [X]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nIndicate the number of outstanding Redeemable Capital Shares as of March 31, 2020: 1,300,000\nQUARTER ENDED MARCH 31, 2020\nTABLE OF CONTENTS",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nStatements of Financial Condition\nMarch 31, 2020 and December 31, 2019",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2020",
+     "",
+     "December 31, 2019",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "British Pound Sterling deposits, interest bearing",
+     "$",
+     "156,269,080",
+     "$",
+     "141,290,062"
+    ],
+    [
+     "British Pound Sterling deposits, non-interest bearing",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Subscriptions receivable",
+     "",
+     "\u2014",
+     "",
+     "25,687,935"
+    ],
+    [
+     "Receivable from accrued interest",
+     "",
+     "16,253",
+     "",
+     "46,311"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "156,285,333",
+     "$",
+     "167,024,308"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued Sponsor\u2019s fee",
+     "$",
+     "49,656",
+     "$",
+     "52,926"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "49,656",
+     "",
+     "52,926"
+    ],
+    [
+     "Commitments and Contingent Liabilities (note 8)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable Capital Shares and Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable Capital Shares, at redemption value, no par value,\n\n\n\n   18,000,000 authorized \u2014 1,300,000 issued and outstanding",
+     "",
+     "156,235,677",
+     "",
+     "166,971,382"
+    ],
+    [
+     "Shareholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retained Earnings",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Liabilities, Redeemable Capital Shares and Shareholders\u2019 Equity",
+     "$",
+     "156,285,333",
+     "$",
+     "167,024,308"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 108,
+    "end_line": 135
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nStatements of Financial Condition\nMarch 31, 2020 and December 31, 2019",
+   "prose_after": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Comprehensive Income\nFor the Three Months Ended March 31, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 106,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 138,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "$",
+     "105,533",
+     "",
+     "$",
+     "114,701",
+     ""
+    ],
+    [
+     "Total Income",
+     "",
+     "105,533",
+     "",
+     "",
+     "114,701",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sponsor\u2019s fee",
+     "",
+     "(152,497)",
+     "",
+     "",
+     "(130,048)",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "(152,497)",
+     "",
+     "",
+     "(130,048)",
+     ""
+    ],
+    [
+     "Net Comprehensive Income (Loss)",
+     "$",
+     "(46,964)",
+     "",
+     "$",
+     "(15,347)",
+     ""
+    ],
+    [
+     "Basic and Diluted Earnings (Loss) per Share",
+     "$",
+     "(0.04)",
+     "",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Weighted-average Shares Outstanding",
+     "",
+     "1,237,912",
+     "",
+     "",
+     "1,043,889",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 146,
+    "end_line": 165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Comprehensive Income\nFor the Three Months Ended March 31, 2020 and 2019",
+   "prose_after": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Changes in Shareholders\u2019 Equity and Redeemable Capital Shares\nFor the Three Months Ended March 31, 2020",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 144,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "Total\n\n\n\nShareholders'\n\n\n\nEquity",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Redeemable\n\n\n\nCapital Shares",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "1,300,000",
+     "",
+     "$",
+     "166,971,382",
+     ""
+    ],
+    [
+     "Purchases of Shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "200,000",
+     "",
+     "",
+     "23,988,103",
+     ""
+    ],
+    [
+     "Redemption of Shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(200,000)",
+     "",
+     "",
+     "(25,254,708)",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) due to Share Transactions",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "(1,266,605)",
+     ""
+    ],
+    [
+     "Net Comprehensive Income (Loss)",
+     "",
+     "(46,964)",
+     "",
+     "",
+     "(46,964)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjustment of Redeemable Capital Shares to\n\n\n\n   Redemption Value related to Retained Earnings",
+     "",
+     "46,964",
+     "",
+     "",
+     "46,964",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(46,964)",
+     ""
+    ],
+    [
+     "Adjustment of Redeemable Capital Shares to\n\n\n\n   Redemption Value",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(9,422,136)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2020",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "1,300,000",
+     "",
+     "$",
+     "156,235,677",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 176,
+    "end_line": 200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Changes in Shareholders\u2019 Equity and Redeemable Capital Shares\nFor the Three Months Ended March 31, 2020",
+   "prose_after": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Changes in Shareholders\u2019 Equity and Redeemable Capital Shares\nFor the Three Months Ended March 31, 2019",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 174,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 203,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "Total\n\n\n\nShareholders'\n\n\n\nEquity",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Redeemable\n\n\n\nCapital Shares",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "1,100,000",
+     "",
+     "$",
+     "135,895,374",
+     ""
+    ],
+    [
+     "Purchases of Shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "150,000",
+     "",
+     "",
+     "18,986,604",
+     ""
+    ],
+    [
+     "Redemption of Shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(250,000)",
+     "",
+     "",
+     "(31,438,493)",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) due to Share Transactions",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "(100,000)",
+     "",
+     "$",
+     "(12,451,889)",
+     ""
+    ],
+    [
+     "Net Comprehensive Income (Loss)",
+     "",
+     "(15,347)",
+     "",
+     "",
+     "(15,347)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjustment of Redeemable Capital Shares to\n\n\n\n   Redemption Value related to Retained Earnings",
+     "",
+     "15,347",
+     "",
+     "",
+     "15,347",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(15,347)",
+     ""
+    ],
+    [
+     "Adjustment of Redeemable Capital Shares to\n\n\n\n   Redemption Value",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,955,213",
+     ""
+    ],
+    [
+     "Balance at March 31, 2019",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "1,000,000",
+     "",
+     "$",
+     "126,383,351",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 211,
+    "end_line": 235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Changes in Shareholders\u2019 Equity and Redeemable Capital Shares\nFor the Three Months Ended March 31, 2019",
+   "prose_after": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Cash Flows\nFor the Three Months Ended March 31, 2020 and 2019",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 238,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Comprehensive Income (Loss)",
+     "$",
+     "(46,964)",
+     "",
+     "$",
+     "(15,347)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net comprehensive income\n\n\n\n    (loss) to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivable from accrued interest",
+     "",
+     "30,058",
+     "",
+     "",
+     "1,662",
+     ""
+    ],
+    [
+     "Accrued Sponsor\u2019s fee",
+     "",
+     "(3,270)",
+     "",
+     "",
+     "(1,906)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(20,176)",
+     "",
+     "",
+     "(15,591)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from purchases of redeemable capital Shares",
+     "",
+     "49,676,038",
+     "",
+     "",
+     "18,986,604",
+     ""
+    ],
+    [
+     "Redemptions of redeemable capital Shares",
+     "",
+     "(25,254,708)",
+     "",
+     "",
+     "(31,438,493)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "24,421,330",
+     "",
+     "",
+     "(12,451,889)",
+     ""
+    ],
+    [
+     "Effect of exchange rate on cash",
+     "",
+     "(9,422,136)",
+     "",
+     "",
+     "2,955,213",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "14,979,018",
+     "",
+     "",
+     "(9,512,267)",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "141,290,062",
+     "",
+     "",
+     "135,900,899",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "156,269,080",
+     "",
+     "$",
+     "126,388,632",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 246,
+    "end_line": 280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nStatements of Cash Flows\nFor the Three Months Ended March 31, 2020 and 2019",
+   "prose_after": "See accompanying Notes to Unaudited Financial Statements which are an integral part of the financial statements.\nNotes to Unaudited Financial Statements\nMarch 31, 2020\nNote 1 \u2013 Background\nOn September 28, 2017, Guggenheim Capital, LLC (\u201cGuggenheim\u201d) and Invesco Ltd. entered into a Transaction Agreement (the \u201cTransaction Agreement\u201d), pursuant to which Guggenheim agreed to transfer all of the membership interests of Guggenheim Specialized Products, LLC (the \u201cSponsor\u201d) to Invesco Capital Management LLC (\u201cInvesco Capital Management\u201d).\nThe Transaction Agreement was consummated on April 6, 2018 (the \u201cClosing\u201d) and immediately following the Closing, Invesco Capital Management changed the name of the Sponsor to Invesco Specialized Products, LLC.\nNote 2 \u2013 Organization\nThe Invesco CurrencyShares\u00ae British Pound Sterling Trust (the \u201cTrust\u201d) was formed under the laws of the State of New York on June 8, 2006 when the Sponsor deposited 100 British Pounds Sterling in the Trust\u2019s primary deposit account held by JPMorgan Chase Bank, N.A., London Branch (the \u201cDepository\u201d). The Sponsor is a Delaware limited liability company whose sole member is Invesco Capital Management.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 244,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period of Redemption",
+     "Total Number\n\n\n\nof Shares\n\n\n\nRedeemed",
+     "",
+     "Average Price\n\n\n\nPaid Per Share",
+     ""
+    ],
+    [
+     "January 1, 2020 to January 31, 2020",
+     "",
+     "100,000",
+     "$",
+     "127.44"
+    ],
+    [
+     "February 1, 2020 to February 29, 2020",
+     "",
+     "100,000",
+     "$",
+     "125.11"
+    ],
+    [
+     "March 1, 2020 to March 31, 2020",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "200,000",
+     "$",
+     "126.27"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 479,
+    "end_line": 493
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "COVID-19 spread globally during the first quarter of 2020. This pandemic has had material adverse effects on the global economy, triggering widespread unemployment and negative revaluation of risk assets. The economic turmoil and market break has led to unprecedented amounts of stimulus in regional and national economies by central banks and other governmental authorities. Despite massive intervention, the humanitarian and economic crisis continues, and financial markets have experienced heightened volatility. No assurance can be given that the disruption will end soon or that the value of the Shares will not be affected materially and adversely by the pandemic and its consequences. Escalation or prolonged continuation of the pandemic could exacerbate other risk factors identified in the Trust\u2019s Form 10-K and materially and adversely affect the value of the Shares.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\n(a) There have been no unregistered sales of Shares. No Shares are authorized for issuance by the Trust under equity compensation plans.\n(b) Not applicable.\n(c) Although the Trust did not redeem Shares directly from its shareholders, the Trust redeemed Baskets from Authorized Participants during the three months ended March 31, 2020 as follows:",
+   "prose_after": "Item 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNo.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Formation of the Sponsor dated September 14, 2005, incorporated herein by reference to Exhibit 3.1 to the Registration Statement on Form S-1 (File number 333\u2011132361) filed by the Trust on March 13, 2006."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Certificate of Formation of the Sponsor dated March 27, 2012, incorporated herein by reference to Exhibit 3.2 to the Annual Report on Form 10-K filed by the Trust on January 14, 2013."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to the Certificate of Formation of the Sponsor dated April 6, 2018, incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K filed by the Trust on April 9, 2018."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "Third Amended and Restated Limited Liability Company Agreement of the Sponsor, incorporated herein by reference to Exhibit 3.2 to the Current Report on Form 8-K filed by the Trust on April 9, 2018."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Depositary Trust Agreement dated as of June 8, 2006 among the Sponsor, The Bank of New York Mellon, all registered owners and beneficial owners of British Pound Sterling Shares issued thereunder and all depositors, incorporated herein by reference to Exhibit 4.1 to the Annual Report on Form 10-K/A filed by the Trust on March 10, 2011."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Amendment to Depositary Trust Agreement dated as of November 13, 2008 between the Sponsor and The Bank of New York Mellon, incorporated herein by reference to Exhibit 4.1 to the Quarterly Report on Form 10-Q filed by the Trust on September 9, 2010."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Global Amendment to Depositary Trust Agreements dated as of March 6, 2012 between the Sponsor and The Bank of New York Mellon, incorporated herein by reference to Exhibit 4.1 to the Quarterly Report on Form 10-Q filed by the Trust on March 12, 2012."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Global Amendment to Depositary Trust Agreements dated as of September 5, 2017 between the Sponsor and The Bank of New York Mellon, incorporated herein by reference to Exhibit 4.8 to the Quarterly Report on Form 10-Q filed by the Trust on September 11, 2017."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Global Amendment to Depositary Trust Agreements dated as of June 4, 2018 between the Sponsor and The Bank of New York Mellon, incorporated herein by reference to Exhibit 4.1 to the Current Report on Form 8-K filed by the Trust on June 4, 2018."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Global Amendment to Depositary Trust Agreements dated as of January 9, 2019 between the Sponsor and The Bank of New York Mellon, incorporated herein by reference to Exhibit 4.1 to the Current Report on Form 8-K filed by the Trust on January 11, 2019."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.7",
+     "Form of Participant Agreement among The Bank of New York Mellon, the Sponsor, and the Authorized Participants listed in the Schedule attached thereto pursuant to Instruction 2 to Item 601 of Regulation S-K, incorporated herein by reference to Exhibit 4.6 to the Annual Report on Form 10-K filed by the Trust on January 11, 2019."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Deposit Account Agreement dated as of June 8, 2006 between The Bank of New York Mellon and the London Branch of JPMorgan Chase Bank, N.A., incorporated herein by reference to Exhibit 10.1 to the Annual Report on Form 10-K/A filed by the Trust on March 10, 2011."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Amendment to Deposit Account Agreement dated as of November 13, 2008 between The Bank of New York Mellon and the London Branch of JPMorgan Chase Bank, N.A., incorporated herein by reference to Exhibit 10.1 to the Quarterly Report on Form 10-Q filed by the Trust on September 9, 2010."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "License Agreement dated as of April 6, 2018 between The Bank of New York Mellon and the Sponsor, incorporated herein by reference to Exhibit 10.1 to the Current Report on Form 8-K filed by the Trust on April 9, 2018."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification by Principal Executive Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification by Principal Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification by Principal Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification by Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Item 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 506,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 565,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.INS",
+     "Inline XBRL Instance Document \u2013 the instance document does not appear in the Interactive Data File because XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "The cover page of the Trust's Quarterly Report on Form 10-Q for the quarter ended March 31, 2020, formatted in Inline XBRL."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 566,
+    "end_line": 581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 565,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Invesco CurrencyShares\u00ae British Pound Sterling Trust",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "Invesco Specialized Products, LLC"
+    ],
+    [
+     "",
+     "its Sponsor"
+    ]
+   ],
+   "caption_stack": [
+    "Invesco CurrencyShares\u00ae British Pound Sterling Trust"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 587,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: May 7, 2020",
+     "By:",
+     "/s/ Daniel Draper"
+    ],
+    [
+     "",
+     "Name:",
+     "Daniel Draper"
+    ],
+    [
+     "",
+     "Title:",
+     "Principal Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: May 7, 2020",
+     "By:",
+     "/s/ Kelli Gallegos"
+    ],
+    [
+     "",
+     "Name:",
+     "Kelli Gallegos"
+    ],
+    [
+     "",
+     "Title:",
+     "Principal Financial and Accounting Officer,  Investment Pools"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 595,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 607,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

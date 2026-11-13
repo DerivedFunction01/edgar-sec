@@ -1,0 +1,2568 @@
+{
+ "accession": "0001493152-20-022779",
+ "cik": "0001656501",
+ "form": "10-K",
+ "filing_date": "2020-12-01",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "65-0981503"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(IRS Employer\n\n\n\nIdentification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "512 Bayshore Drive\n\n\n\nFt. Lauderdale, Florida",
+     "33304"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended August 31, 2020\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 333-208854\nBORROWMONEY.COM, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: 1-212-265-2525\nSecurities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [X] No [ ]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "7"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "7"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "8"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "8"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "8"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "9"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "10"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "13"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "14"
+    ],
+    [
+     "Item 9.",
+     "Changes in Accountants on Accounting and Financial Disclosure",
+     "23"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "23"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "25"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "26"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "30"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "31"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "32"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "33"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "33"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "33"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 64,
+    "end_line": 91
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [X]\nEmerging growth [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe total number of shares of common stock, par value $0.0001 per share, outstanding as of November 30, 2020 was 109,175,000. The Registrant has no other class of common stock outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING INFORMATION\nThis Annual Report on Form 10-K for the fiscal year ended August 31, 2020 (the \u201cAnnual Report\u201d) contains \u201cforward-looking statements\u201d within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. These forward-looking statements include statements related to our anticipated financial performance, business prospects and strategy; anticipated trends and prospects in the various industries in which our businesses operate; new products, services and related strategies; and other similar matters. These forward-looking statements are based on management\u2019s current expectations and assumptions about future events, which are inherently subject to uncertainties, risks and changes in circumstances that are difficult to predict. The use of words such as \u201canticipates,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cprojects,\u201d \u201cintends,\u201d \u201cplans\u201d and \u201cbelieves,\u201d among others, generally identify forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 61,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year",
+     "Period",
+     "High Sales\n\n\n\nPrice",
+     "",
+     "Low Sales\n\n\n\nPrice",
+     ""
+    ],
+    [
+     "2020",
+     "Fourth Quarter (October 01, 2020 to November 3, 2020)",
+     "$",
+     "3.00",
+     "$",
+     "1.94"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 285,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "On October 29, 2019, our common stock began trading on the OTC Pink Market maintained by OTC Markets under the symbol \u201cBWMY\u201d; however, there is no actively traded public market for our common stock. Therefore, the current and potential market for our common stock is limited and the liquidity of our shares may be severely limited. We cannot provide any assurance that a meaningful trading market will ever develop.\nThe trading price of our common stock could be subject to wide fluctuations in response to various events or factors, many of which are beyond our control.\nOur common stock trades on a limited and sporadic basis and should not be deemed to constitute an established public trading market. There may not be liquidity in the common stock.\nThe following table sets forth the high and low sale prices for the period from October 01, 2020 to November 30, 2020. The information reflects prices between dealers, and does not include retail markup, markdown, or commission, and may not represent actual transactions.",
+   "prose_after": "Dividends\nWe have never paid any cash dividends on our common stock. We currently anticipate that we will retain all future earnings for use in our business. Consequently, we do not anticipate paying any cash dividends in the foreseeable future. The payment of dividends in the future will depend upon our results of operations, as well as our short-term and long-term cash availability, working capital, working capital needs, and other factors as determined by our Board of Directors. Currently, except as may be provided by applicable laws, there are no contractual or other restrictions on our ability to pay dividends if we were to decide to declare and pay them.\nHolders of Our Common Stock\nAs of the date of this Annual Report, we had 39 stockholders of our common stock, not including any persons who hold their stock in \u201cstreet name\u201d.\nPenny Stock\nThe SEC has adopted rules that regulate broker-dealer practices in connection with transactions in penny stocks. Penny stocks are generally equity securities with a market price of less than $5.00, other than securities registered on certain national securities exchanges or quoted on the NASDAQ system, provided that current price and volume information with respect to transactions in such securities is provided by the exchange or system. The penny stock rules require a broker-dealer, prior to a transaction in a penny stock, to deliver a standardized risk disclosure document prepared by the SEC, that: (a) contains a description of the nature and level of risk in the market for penny stocks in both public offerings and secondary trading; (b) contains a description of the broker\u2019s or dealer\u2019s duties to the customer and of the rights and remedies available to the customer with respect to a violation of such duties or other requirements of the securities laws; (c) contains a brief, clear, narrative description of a dealer market, including bid and ask prices for penny stocks and the significance of the spread between the bid and ask price;",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "(000\u2019s)"
+    ],
+    [
+     "Legal and Professional Fees",
+     "$",
+     "50.0"
+    ],
+    [
+     "Web Hosting Service, and Maintenance",
+     "",
+     "8.0"
+    ],
+    [
+     "Subcontracting Services",
+     "",
+     "280.0"
+    ],
+    [
+     "Office Expenses",
+     "",
+     "5.0"
+    ],
+    [
+     "IT Maintenance and Service",
+     "",
+     "10.0"
+    ],
+    [
+     "Domain Names Hosting. Service. and Maintenance",
+     "",
+     "2.5"
+    ],
+    [
+     "Website Development and Related Service",
+     "",
+     "15.0"
+    ],
+    [
+     "Licenses and Permits",
+     "",
+     "3.5"
+    ],
+    [
+     "Marketing and Advertising",
+     "",
+     "50.0"
+    ],
+    [
+     "Bank Charges and Cred Card Processing Fees",
+     "",
+     "3.0"
+    ],
+    [
+     "Rent",
+     "",
+     "25.0"
+    ],
+    [
+     "Dues and Subscriptions",
+     "",
+     "7.5"
+    ],
+    [
+     "Computer Expenses",
+     "",
+     "5.0"
+    ],
+    [
+     "Transfer and Recording Costs",
+     "",
+     "10.0"
+    ],
+    [
+     "Office Space Rent",
+     "",
+     "22.0"
+    ],
+    [
+     "Telephone Service",
+     "",
+     "3.5"
+    ],
+    [
+     "Total",
+     "$",
+     "500.0"
+    ]
+   ],
+   "caption_stack": [
+    "(000\u2019s)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We have not previously demonstrated that we will be able to expand our business through an increased investment in our product lines and/or marketing efforts. We cannot guarantee that the expansion efforts described in this report will be successful. Our business is subject to risks inherent in growing an enterprise, including limited capital resources and possible rejection of our products and/or sales methods.\nPlan of Operations\nOur plans for the next 12 months are:\nWe have completed out technology platform and in the process of relaunching the website. We are now entering our operational phase which includes contracting with mortgage and personal loan lenders for geographic areas using ZIP Codes. In addition to expanding our network of lenders over the next 12 months, we intend to continue optimizing and enhancing our Internet-based platform to focus on lead generation and generating additional revenues for our marketplace services. Our mission is to be the premier loan lead generation company. The budget for the next 12 months is estimated to be $500.0k which is expected to come from friends, family, and officers. A breakdown of the estimated cost for our next 12 months of operation are as follows:",
+   "prose_after": "Revenues are expected to be minimal as the volume of lender agreements during this stage of operation is expected to increase at a gradual pace throughout the year. We expect to operate at a loss during our initial growth/operating period. President, Directors, or other executive officers will be compensated with sweat equity options until such time that the company has positive cash flows.\nContingent upon the successful completion of our next 12 months of operation, we plan to aggressively expand our operation and business from existing revenues. Our expansion would be accompanied by an increase in the number of personnel to obtain lender agreements for ever-expanding geographic areas.\nChannels of Distribution; Marketing Costs\nBorrowMoney.com markets and offers services directly to customers through its branded website allowing customers to be pre-qualified in a one stop platform and have access to all the major lenders and loan programs. The Company has made, and expects to continue to make, substantial investments in its online technology platform and marketing strategy to build its brand awareness in the marketplace that will drive traffic and generate leads. The need for online mortgages and personal money loan platform is driven not only by the millennium generation that are moving away from traditional brick and mortar banks but also from the new lifestyle changes caused by the Covid-19 pandemic. BorrowMoney.com expects to take advantage of this opportunity to capture a large portion of this \u201cnew\u201d marketplace demand and increase its revenue exponentially.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 365,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance Sheet Date (000\u2019s)",
+     "August 31,\n\n\n\n2020",
+     "",
+     "",
+     "August 31,\n\n\n\n2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "7.8",
+     "",
+     "$",
+     "7.6",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "7.8",
+     "",
+     "$",
+     "7.6",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "595.4",
+     "",
+     "$",
+     "460.4",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "$",
+     "(487.7)",
+     "",
+     "$",
+     "(452.7)",
+     ""
+    ],
+    [
+     "Working Capital Deficit",
+     "$",
+     "(487.7)",
+     "",
+     "$",
+     "(452.7)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 406,
+    "end_line": 418
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Channels of Distribution; Marketing Costs\nBorrowMoney.com markets and offers services directly to customers through its branded website allowing customers to be pre-qualified in a one stop platform and have access to all the major lenders and loan programs. The Company has made, and expects to continue to make, substantial investments in its online technology platform and marketing strategy to build its brand awareness in the marketplace that will drive traffic and generate leads. The need for online mortgages and personal money loan platform is driven not only by the millennium generation that are moving away from traditional brick and mortar banks but also from the new lifestyle changes caused by the Covid-19 pandemic. BorrowMoney.com expects to take advantage of this opportunity to capture a large portion of this \u201cnew\u201d marketplace demand and increase its revenue exponentially.\nResults of Operations\nThe following table provides selected financial data about our Company as of August 31, 2020 and 2019.",
+   "prose_after": "As of August 31, 2020, the Company\u2019s cash balance was $7.8k compared to $7.6k as of August 31, 2019 and our total assets as of August 31, 2020 was $7.8k.\nAs of August 31, 2020, the Company had total liabilities of 595.4k compared with total liabilities of $460.4k as of August 31, 2019. The increase in total liabilities for the year ended August 31, 2020, was primarily the result of an increase in accrued interest and notes, due to related party.\nWe had $90.0k of cash used in operating activities for the year ended August 31, 2020, compared to $74.8k of cash used in operating activities for the year ended August 31, 2019.\nWe had $90.1k of cash provided by financing activities for the year ended August 31, 2020, compared to $77.3k of cash provided by financing activities for the year ended August 31, 2019. Cash provided by financing activities was primarily proceeds from related party loans.\nFinancial Position, Liquidity and Capital Resource\nAs of August 31, 2020, all cash loaned by the Company to pay its operating and development expenses has been furnished by loans from its founder and President, Aldo Piscitello. The Company has incurred no other debt, other than the debt owed to Mr. Piscitello. Additionally, the Company anticipates selling shares of the Company through a private offering of its securities to supplement its capital requirements in the future, as funding is needed.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 365,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "August 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "7,792",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "7,792",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "7,792",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholder\u2019s Deficit",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "21,948",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "81,797",
+     ""
+    ],
+    [
+     "Notes payable-related party, current portion",
+     "",
+     "491,747",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "595,492",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long term debt",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable-related party",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "595,492",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock 100,000,000 shares authorized $0.0001 par value none issued and outstanding at August 31, 2020 and 2019",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock-500,000,000 shares authorized $0.0001 par value issued and outstanding common shares at August 31, 2020 is 109,175,000 and 2019 were 21,833,000",
+     "",
+     "2,182",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "293,768",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(887,651)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(587,701)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Deficit",
+     "$",
+     "7,792",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "August 31, 2020",
+    "Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 495,
+    "end_line": 535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Our audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nThe Company\u2019s Ability to Continue as a Going Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the consolidated financial statements, the Company has an accumulated deficit, recurring losses, and expects continuing future losses, and has stated that substantial doubt exists about the Company\u2019s ability to continue as a going concern. Management\u2019s evaluation of the events and conditions and management\u2019s plans regarding these matters are also described in Note 2. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.\nThe firm has served this client since October 2020.\n/s/ Richard H. Moran CPA, P.A.\nCertified Public Accountants\n13890 SW 100 Lane, Miami, Florida 33186\nNovember 30, 2020\nConsolidated Balance Sheets\nAugust 31, 2020",
+   "prose_after": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 538,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "2,097",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "105,855",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "105,855",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(103,758)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(37,232)",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "",
+     "(37,232)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "(140,990)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(140,990)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted per common share amounts:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss",
+     "$",
+     "(0.01)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding (basic and diluted)",
+     "",
+     "109,175,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "August 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 542,
+    "end_line": 579
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nConsolidated Statements of Changes in Stockholders\u2019 Deficit\nFor the Years Ended August 31, 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 538,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Common Stock",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at August 31, 2018",
+     "",
+     "21,823,000",
+     "$",
+     "2,182",
+     "$",
+     "237,818",
+     "",
+     "$",
+     "(590,792)",
+     "",
+     "$",
+     "(350,792)",
+     ""
+    ],
+    [
+     "Share based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "49,950",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "49,950",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(151,870)",
+     "",
+     "",
+     "(151,870)",
+     ""
+    ],
+    [
+     "Balance at August 31, 2019",
+     "",
+     "21,823,000",
+     "",
+     "2,182",
+     "",
+     "287,768",
+     "",
+     "",
+     "(742,662)",
+     "",
+     "",
+     "(452,712)",
+     ""
+    ],
+    [
+     "Stock Split 5-1",
+     "",
+     "87,352,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of common stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "10,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Subscribed",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(4,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(4000)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(140,990)",
+     "",
+     "",
+     "(140,990)",
+     ""
+    ],
+    [
+     "Balance at August 31, 2020",
+     "",
+     "109,175,000",
+     "$",
+     "2,182",
+     "$",
+     "293,768",
+     "",
+     "$",
+     "(883,652)",
+     "",
+     "$",
+     "(587,702)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 588,
+    "end_line": 608
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nConsolidated Statements of Changes in Stockholders\u2019 Deficit\nFor the Years Ended August 31, 2020",
+   "prose_after": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 582,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 611,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(140,990)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in net assets and liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "50,946",
+     ""
+    ],
+    [
+     "Cash used in operating activities:",
+     "",
+     "(90,043)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Related party loans",
+     "",
+     "84,188",
+     ""
+    ],
+    [
+     "Sale of common stocks",
+     "",
+     "10,000",
+     ""
+    ],
+    [
+     "Common stocks subscribed",
+     "",
+     "(4,000)",
+     ""
+    ],
+    [
+     "Cash provided by financing activities",
+     "",
+     "90,188",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "145",
+     ""
+    ],
+    [
+     "Cash- beginning of period",
+     "",
+     "7,647",
+     ""
+    ],
+    [
+     "Cash-end of period",
+     "$",
+     "7,792",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for taxes",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended",
+    "August 31, 2020",
+    "Cash flows from operating activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes to the consolidated financial statements are an integral part of these financial statements\nNotes to the Consolidated Financial Statements\nFor the Years Ended August 31, 2020\nNOTE 1 \u2013 ORGANIZATION AND NATURE OF BUSINESS\nOn April 28, 2015, Horizon Group Holding, Inc., a Florida corporation, entered into a Share Exchange Agreement (the \u201cAgreement\u201d) with BorrowMoney.com Inc., a New York Corporation (\u201cBMNY\u201d) pursuant to which BorrowMoney.com Inc., would become a wholly-owned subsidiary of Horizon Group Holding, Inc. The share exchange was accounted for as a reverse acquisition with BorrowMoney.com Inc., being treated as the acquiring company for accounting purposes. Pursuant to the agreement, Horizon Group Holding changed its name to BorrowMoney.com, Inc. (BMFL).\nIn connection with the Agreement, the Company acquired 100% of the issued shares of BMNY, in a share exchange where 10,000 shares of the Company were issued to the stockholders of BMNY in exchange for each share of BMNY for a total issuance of 20,000,000 common shares.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 611,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 650,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Note payable to related party bearing interest at 8%",
+     "$",
+     "491,747",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "(491,747)",
+     ""
+    ],
+    [
+     "Due after one year",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended",
+    "August 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 748,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Basic and Diluted Net loss per share - The basic earnings (loss) per common share is computed by dividing net income (loss) available to common stockholders by the weighted average number of common shares outstanding. Diluted loss per share is computed similarly to basic loss per share except that the denominator is increased to include the number of additional common shares that would have been outstanding if the potential common shares had been issued and if the additional common shares were dilutive. As of August 31, 2020.\nRelated party transactions-The Company follows ASC 850, Related Party Disclosures, for the identification of related parties and disclosure of related party transactions.\nRecently issued accounting pronouncements \u2013 The Company does not believe that any recently issued effective pronouncements, or pronouncements issued but not yet effective, if adopted, would have a material effect on the accompanying consolidated financial statements.\nNOTE 3 - RELATED PARTY TRANSACTIONS\nRelated party debt consists of the following as of August 31, 2020.",
+   "prose_after": "NOTE 4 \u2013 SUBSEQUENT EVENTS\nSubsequent to August 31, 2020 the Company sold 5,000 shares of common stock for $1 per share. Proceeds of $5,000 have been received.\nIn August 2020, the company issued a five to one stock split.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nOn November 18, 2020, the Company, with the recommendation and approval of the Board of Directors of the Company, engaged RICHARD\nH. MORAN. CPA, P.A, as its independent registered public accounting firm.\nItem 9A. Controls and Procedures\nEvaluation of Disclosure Controls and Procedure.\nDisclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) under the Exchange Act) are designed to ensure that information required to be disclosed in reports filed or submitted under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in Securities and Exchange Commission rules and forms and that such information is accumulated and communicated to management, including the Company\u2019s Principal Executive Officer/Principal Financial Officer (our principal executive officer and principal financial officer), to allow timely decisions regarding required disclosures. As of the end of the period covered by this report, the Company carried out an evaluation, under the supervision and with the participation of Aldo Piscitello, who is the Company\u2019s Principal Executive Officer/Principal Financial Officer, of the effectiveness of the design and operation of the Company\u2019s disclosure controls and procedures. The Company\u2019s Principal Executive Officer/Principal Financial Officer has concluded that the Company\u2019s disclosure controls and procedures are, in fact, not effective, as the Company still lacks segregation of duties as of the period covered.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 733,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "related_party",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title",
+     "Held Position Since"
+    ],
+    [
+     "Aldo Piscitello",
+     "65",
+     "Director",
+     "August, 2010"
+    ],
+    [
+     "Andrew Trumbach",
+     "59",
+     "Director",
+     "August, 2020"
+    ],
+    [
+     "Svetlana Coliban",
+     "30",
+     "Director",
+     "November 2018"
+    ],
+    [
+     "William Coburn",
+     "22",
+     "Director",
+     "June 1998"
+    ],
+    [
+     "Robert Carrington",
+     "49",
+     "Director",
+     "July 2019"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 817,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "This Annual Report on Form 10-K does not include an attestation report of our company\u2019s registered public accounting firm regarding internal control over financial reporting due to permanent exemptions for smaller reporting companies.\nChanges in Internal Controls over Financial Reporting\nThere were no changes to the Company\u2019s internal controls over financial reporting during the quarter ended August 31, 2020, that have been materially affected, or are reasonably likely to materially effect, the Company\u2019s internal controls over financial reporting.\nItem 9B. Other Information\nNone.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance\nAll directors of our company hold office until the next annual meeting of the security holders or until their successors have been elected and qualified. The officers of our company are appointed by our Board of Directors and hold office until their death, resignation or removal from office. Our directors and executive officers, their ages, positions held, and duration as such, are as follows:",
+   "prose_after": "The name, age and position of our officer(s) are set forth below:",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title",
+     "Held Position Since"
+    ],
+    [
+     "Aldo Piscitello",
+     "65",
+     "President/CEO/Secretary/Treasurer",
+     "August, 2010"
+    ],
+    [
+     "Andrew Trumbach",
+     "59",
+     "CFO",
+     "August 2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 829,
+    "end_line": 835
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The name, age and position of our officer(s) are set forth below:",
+   "prose_after": "The following information sets forth the backgrounds and business experience of our Directors and executive officers.\nBios of Officers and Directors\nAldo Piscitello \u2013 President, CEO, Secretary, Treasurer and Chairman\nMr. Piscitello has served as a Director, Chief Executive Officer and President since he founded the Company in 2010. In his capacity as Chief Executive Officer, he has spearheaded the development of the Company\u2019s products and information delivery systems, including procuring the Company\u2019s most valuable asset, the name BorrowMoney.com. Prior to his involvement in the Company, Mr. Piscitello operated an interior design business, which enabled him to have sufficient funds to open and operate One Stop Auto Center in New York in 1979, which he ran until he sold the business in 1987. He then started and built Navistar Beer Distribution, Inc. which was sold in 2000. Mr. Piscitello also founded A to Z Auto and Tire Center in 1987, which was sold in 2009. In 2010, Mr. Piscitello began the development of BorrowMoney.com, Inc. which he now devotes all of his time and energies to. Among his responsibilities were the securing of the name, developing the program and platform the Company is using, marketing the products and services to the industry and seeing to the everyday operation of the business.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 862,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position (a)",
+     "Year",
+     "",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Aldo Piscitello \u2013 Director, Chief Executive Officer, Secretary, Treasurer, and President",
+     "",
+     "2020",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "2019",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 966,
+    "end_line": 973
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As of August 31, 2020, we did not affect any material changes to the procedures by which our stockholders may recommend nominees to our Board of Directors. Our Board of Directors does not have a policy with regards to the consideration of any director candidates recommended by our stockholders. Our Board of Directors has determined that it is in the best position to evaluate our company\u2019s requirements as well as the qualifications of each candidate when the board considers a nominee for a position on our Board of Directors. If stockholders wish to recommend candidates directly to our board, they may do so by sending communications to the president of our company at the address on the cover of this annual report.\nItem 11. Executive Compensation\nSummary Compensation Table\nThe following table sets forth information concerning the compensation of (i) all individuals serving as our principal executive officer or acting in a similar capacity during the last completed fiscal year (\u201cPEO\u201d), regardless of compensation level; (ii) our two most highly compensated executive officers other than the PEO who were serving as executive officers at the end of the last completed fiscal year, if any; and (iii) up to two additional individuals for whom disclosure would have been provided pursuant to paragraph (ii) but for the fact that the individual was not serving as an executive officer at the end of the last completed fiscal year (collectively, the \u201cNamed Executive Officers\u201d).\nSummary Compensation Table*",
+   "prose_after": "* Does not include perquisites and other personal benefits, or property, unless the aggregate amount of such compensation is more than $10,000. No executive officer earned any non-equity incentive plan compensation or nonqualified deferred compensation during the periods reported above. There have been no changes in the Company\u2019s compensation policies since August 31, 2020.\nCompensation Discussion and Analysis/Employment and Other Agreements\nOur directors and executive officers received no compensation for services rendered to the Company during the fiscal year ended August 31, 2020 and 2019.\nStock Option Grants\nTo date, we have not granted any stock options to any officer or director or any other employee. We have not adopted any stock option or any other similar compensation plan.\nDirector Compensation\nDuring 2019, Directors were entitled to reimbursement for expenses in attending meetings but received no other compensation for services as Directors. Directors who were employees were entitled to receive compensation for services other than as director. No compensation has been paid to Directors for services. There were no formal or informal arrangements or agreements to compensate Directors for services provided as a director during 2019.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 939,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of Common\n\n\n\nStock Shares\n\n\n\nBeneficially Owned",
+     "",
+     "Percent of\n\n\n\nCommon Stock",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Aldo Piscitello",
+     "",
+     "20,000,000",
+     "",
+     "91.65",
+     "%"
+    ],
+    [
+     "Andrew Trumbach",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Svetlana Coliban",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Robert Carrington",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "William Coburn",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "All of the officers and directors as a group (6 persons)",
+     "",
+     "20,000,000",
+     "",
+     "91.65",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1002,
+    "end_line": 1017
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission and includes voting and/or investing power with respect to securities. We believe that, except as otherwise noted and subject to applicable community property laws, each person named in the following table has sole investment and voting power with respect to the shares of common stock shown as beneficially owned by such person. Additionally, shares of common stock subject to options, warrants or other convertible securities that are currently exercisable or convertible, or exercisable or convertible within 60 days of November 30, 2020, are deemed to be outstanding and to be beneficially owned by the person or group holding such options, warrants or other convertible securities for the purpose of computing the percentage ownership of such person or group, but are not treated as outstanding for the purpose of computing the percentage ownership of any other person or group.\nWe believe that, except as otherwise noted and subject to applicable community property laws, each person named in the following table has sole investment and voting power with respect to the shares of common stock shown as beneficially owned by such person. Unless otherwise indicated, the address for each of the officers or directors listed in the table below is 512 Bayshore Drive, Fort Lauderdale, Florida, 33304.",
+   "prose_after": "Change in Control Arrangements\nWe are not aware of any arrangements that could result in a change of control\nStock Incentive Plans\nTo date, the Company has not adopted any stock incentive or equity incentive plans.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nExcept as disclosed below, there have been no transactions since September 1, 2017, and there is not currently any proposed transaction, in which the Company was or is to be a participant, where the amount involved exceeds the lesser of $120,000 or one percent of the average of the Company\u2019s total assets at year end, for the last two completed fiscal years, and in which any officer, director, or any stockholder owning greater than five percent (5%) of our outstanding voting shares, nor any member of the above referenced individual\u2019s immediate family, had or will have a direct or indirect material interest.\nThe principal stockholder and President have funded the company via loans from time to time. As of August 31, 2020, the total amount of such lending was $491,747. Such amount was memorialized as a note payable by the Company with interest at the rate of four (4%) per annum, which is payable on demand. The terms have been increased effective September 1, 2019 to 8%. In connection with the note the Company has an accrued interest obligation as of August 31, 2020 of $81,797.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Richard H Moran CPA, P.A.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "August 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "8,000"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "1,200"
+    ],
+    [
+     "Total",
+     "$",
+     "9,200"
+    ]
+   ],
+   "caption_stack": [
+    "Richard H Moran CPA, P.A."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1043,
+    "end_line": 1054
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Given our small size and limited financial resources, we have not adopted formal policies and procedures for the review, approval or ratification of transactions, such as those described above, with our executive officers, directors and significant stockholders. However, all of the transactions described above were approved and ratified by our Board of Directors. In connection with the approval of the transactions described above, our Board of Directors took into account various factors, including their fiduciary duty to the Company; the relationships of the related parties described above to the Company; the material facts underlying each transaction; the anticipated benefits to the Company and related costs associated with such benefits; whether comparable products or services were available; and the terms the Company could receive from an unrelated third party.\nWe intend to establish formal policies and procedures in the future, once we have sufficient resources and have appointed additional directors. On a moving forward basis, our Board of Directors will continue to approve any related party transaction based on the criteria set forth above.\nItem 14. Principal Accounting Fees and Services\nThe aggregate fees billed for the most recently completed fiscal year ended August 31, 2020 and for fiscal year ended August 31, 2019 for the audit of our annual financial statements and review of the financial statements included in our Quarterly Reports on Form 10-Q and services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for these fiscal periods are as follows:",
+   "prose_after": "Our Board of Directors pre-approves all services provided by our independent auditors. All of the above services and fees were reviewed and approved by the Board of Directors either before or after the respective services were rendered.\nOur Board of Directors has considered the nature and amount of fees billed by our independent auditors and believes that the provision of services for activities unrelated to the audit is compatible with maintaining our independent auditors\u2019 independence.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\nSee the Exhibit Index following the signature page to this Annual Report on Form 10-K for a list of exhibits filed or furnished with this report, which Exhibit Index is incorporated herein by reference.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1069,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BorrowMoney.com, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: December 1, 2020",
+     "By:",
+     "/s/ Aldo Piscitello"
+    ],
+    [
+     "",
+     "",
+     "Aldo Piscitello"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer, Chief Financial Officer, Principal Accounting Officer, Secretary, Treasurer, and Chairman of Board of Directors\n\n\n\n(Principal Executive, Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "BorrowMoney.com, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1074,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our Board of Directors pre-approves all services provided by our independent auditors. All of the above services and fees were reviewed and approved by the Board of Directors either before or after the respective services were rendered.\nOur Board of Directors has considered the nature and amount of fees billed by our independent auditors and believes that the provision of services for activities unrelated to the audit is compatible with maintaining our independent auditors\u2019 independence.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\nSee the Exhibit Index following the signature page to this Annual Report on Form 10-K for a list of exhibits filed or furnished with this report, which Exhibit Index is incorporated herein by reference.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Act of 1933, this registrant statement has been signed by the following persons in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1069,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1110,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Aldo Piscitello",
+     "President, Chief Executive Officer, Chief",
+     "December 1, 2020"
+    ],
+    [
+     "Aldo Piscitello",
+     "Financial Officer, Principal Accounting Officer, Secretary, Treasurer, and Chairman of Board of Directors (Principal Executive, Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Andrew. Trumbach",
+     "Director",
+     "December 1, 2020"
+    ],
+    [
+     "Andrew Trumbach",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Svetlana Coliban",
+     "Director",
+     "December 1, 2020"
+    ],
+    [
+     "Svetlana Coliban",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William Coburn",
+     "Director",
+     "December 1, 2020"
+    ],
+    [
+     "William Coburn",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert Carrington",
+     "Director",
+     "December 1, 2020"
+    ],
+    [
+     "Robert Carrington",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1087,
+    "end_line": 1109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Act of 1933, this registrant statement has been signed by the following persons in the capacities and on the dates indicated.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1069,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1110,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "",
+     "",
+     "Filed or\n\n\n\nFurnished\n\n\n\nHerewith",
+     "",
+     "Form",
+     "",
+     "Exhibit Number",
+     "",
+     "File No."
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation of Sports.Com, Inc.",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "3.1",
+     "",
+     "333-208854"
+    ],
+    [
+     "3.2",
+     "",
+     "Articles of Amendment to Articles of Incorporation changing the name of the Company to Lumigene Corporation",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "3.2",
+     "",
+     "333-208854"
+    ],
+    [
+     "3.3",
+     "",
+     "Articles of Amendment to Articles of Incorporation changing the name of the Company to IBMS, Inc.",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "3.4",
+     "",
+     "333-208854"
+    ],
+    [
+     "3.4",
+     "",
+     "Articles of Amendment to Articles of Incorporation changing the name of the Company to Horizon Group Holdings, Inc.",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "3.3",
+     "",
+     "333-208854"
+    ],
+    [
+     "2.5",
+     "",
+     "Articles of Amendment to Articles of Incorporation changing the name of the Company to BorrowMoney.com, Inc.",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "3.5",
+     "",
+     "333-208854"
+    ],
+    [
+     "2.6",
+     "",
+     "Amended Bylaws",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "3.6",
+     "",
+     "333-208854"
+    ],
+    [
+     "10.1",
+     "",
+     "Line of Credit Promissory Note in the amount of $500,000 payable to Aldo Piscitello dated March 21, 2013",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "10.1",
+     "",
+     "333-208854"
+    ],
+    [
+     "10.2",
+     "",
+     "Written Description by E-Wiz Solutions, Inc.",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "10.2",
+     "",
+     "333-208854"
+    ],
+    [
+     "10.3",
+     "",
+     "Demand Note payable to Aldo Piscitello dated March 1, 2017",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "10.3",
+     "",
+     "333-208854"
+    ],
+    [
+     "10.4*",
+     "",
+     "Form of Service Warrants (July 2019)",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5*",
+     "",
+     "Form of Subscription Agreement (September 2019)",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "14.1*",
+     "",
+     "Code of Ethics",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "",
+     "Subsidiaries",
+     "",
+     "",
+     "",
+     "S-1/A",
+     "",
+     "21.1",
+     "",
+     "333-208854"
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act*",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer Pursuant to Section 906 of the Sarbanes-Oxley Act**",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "",
+     "XBRL Instance Document",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "",
+     "XBRL Taxonomy Extension Schema Document",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "",
+     "XBRL Taxonomy Extension Presentation Linkbase Document",
+     "",
+     "X",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1113,
+    "end_line": 1142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\n*** Indicates management contract or compensatory plan or arrangement.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1110,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1149,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

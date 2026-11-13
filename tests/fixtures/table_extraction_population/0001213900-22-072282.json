@@ -1,0 +1,4094 @@
+{
+ "accession": "0001213900-22-072282",
+ "cik": "0001314196",
+ "form": "10-Q",
+ "filing_date": "2022-11-14",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0922_theolbgroup.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "13-4188568"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2022\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______ to _______\nCommission File Number: 000-52994\nTHE OLB GROUP, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1120 Avenue of the Americas, Fourth Floor, New York, NY",
+     "10036"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 27,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(212) 278-0900"
+    ],
+    [
+     "(Registrant\u2019s telephone number, including area code)"
+    ]
+   ],
+   "caption_stack": [
+    "(212) 278-0900",
+    "(Registrant\u2019s telephone number, including area code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 33,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.0001 par value",
+     "OLB",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "Financial Information",
+     "1"
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited)",
+     "1"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "23"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "Other Information",
+     "24"
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "24"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "24"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "24"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "24"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "24"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "24"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "24"
+    ],
+    [
+     "Signatures",
+     "",
+     "25"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 72,
+    "end_line": 89
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of November 11, 2022, there were 14,702,804 shares of the issuer\u2019s common stock issued and outstanding.\nTHE OLB GROUP, INC.\nFORM 10-Q\nFor the Quarterly Period Ended September 30, 2022\nINDEX",
+   "prose_after": "i\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nINDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Condensed Consolidated Balance Sheets as of September 30, 2022 (unaudited) and December 31, 2021",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Operations for the Three and Nine Months Ended September 30, 2022 and 2021 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Stockholders\u2019 Equity for the Three and Nine Months Ended September 30, 2022, and 2021 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows for the Nine Months Ended September 30, 2022 and 2021 (unaudited)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Condensed Consolidated Financial Statements (unaudited)",
+     "6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 98,
+    "end_line": 109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I - FINANCIAL INFORMATION\nItem 1. Financial Statements\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Condensed Consolidated Balance Sheets",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "2,296,631",
+     "",
+     "$",
+     "3,470,339",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "644,853",
+     "",
+     "",
+     "670,822",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "565,384",
+     "",
+     "",
+     "15,064",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "1,528,547",
+     "",
+     "",
+     "729,351",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "5,035,415",
+     "",
+     "",
+     "4,885,576",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "7,334,525",
+     "",
+     "",
+     "8,967,096",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "21,169,448",
+     "",
+     "",
+     "23,964,180",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "6,858,216",
+     "",
+     "",
+     "6,858,216",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "303,367",
+     "",
+     "",
+     "402,538",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "476,917",
+     "",
+     "",
+     "451,885",
+     ""
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "36,142,473",
+     "",
+     "",
+     "40,643,915",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "41,177,888",
+     "",
+     "$",
+     "45,529,491",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "358,568",
+     "",
+     "$",
+     "501,762",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "67,894",
+     "",
+     "",
+     "416,182",
+     ""
+    ],
+    [
+     "Merchant portfolio purchase installment obligation",
+     "",
+     "2,000,000",
+     "",
+     "",
+     "2,000,000",
+     ""
+    ],
+    [
+     "Operating lease liability \u2013 current portion",
+     "",
+     "138,057",
+     "",
+     "",
+     "133,180",
+     ""
+    ],
+    [
+     "Note payable \u2013 current portion",
+     "",
+     "298,053",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "2,862,572",
+     "",
+     "",
+     "3,051,124",
+     ""
+    ],
+    [
+     "Long Term Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, net of current portion",
+     "",
+     "333,889",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating lease liability \u2013 net of current portion",
+     "",
+     "169,119",
+     "",
+     "",
+     "273,166",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "3,365,580",
+     "",
+     "",
+     "3,324,290",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 11)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 par value, 50,000,000 shares authorized, no shares issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Series A Preferred stock, $0.01 par value, 10,000 shares authorized, 4,633 shares issued and outstanding at September 30, 2022 and December 31, 2021",
+     "",
+     "46",
+     "",
+     "",
+     "46",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, 200,000,000 shares authorized, 14,702,804 and 11,984,396 shares issued and outstanding at September 30, 2022 and December 31, 2021, respectively",
+     "",
+     "1,469",
+     "",
+     "",
+     "1,197",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "68,023,869",
+     "",
+     "",
+     "67,810,922",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(30,213,076)",
+     "",
+     "",
+     "(25,606,964)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "37,812,308",
+     "",
+     "",
+     "42,205,201",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "41,177,888",
+     "",
+     "$",
+     "45,529,491",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Consolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 175,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transaction and processing fees",
+     "$",
+     "5,982,177",
+     "",
+     "$",
+     "2,680,004",
+     "",
+     "$",
+     "22,209,575",
+     "",
+     "$",
+     "7,436,317",
+     ""
+    ],
+    [
+     "Merchant equipment rental and sales",
+     "",
+     "8,417",
+     "",
+     "",
+     "32,787",
+     "",
+     "",
+     "43,759",
+     "",
+     "",
+     "98,190",
+     ""
+    ],
+    [
+     "Revenue, net - cryptocurrency mining",
+     "",
+     "161,249",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "633,555",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other revenue from monthly recurring subscriptions",
+     "",
+     "94,708",
+     "",
+     "",
+     "111,130",
+     "",
+     "",
+     "518,556",
+     "",
+     "",
+     "349,390",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "6,246,551",
+     "",
+     "",
+     "2,823,921",
+     "",
+     "",
+     "23,405,445",
+     "",
+     "",
+     "7,883,897",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Processing and servicing costs, excluding merchant portfolio amortization",
+     "",
+     "4,679,192",
+     "",
+     "",
+     "2,223,720",
+     "",
+     "",
+     "17,609,470",
+     "",
+     "",
+     "5,869,739",
+     ""
+    ],
+    [
+     "Amortization and depreciation expense",
+     "",
+     "892,788",
+     "",
+     "",
+     "269,475",
+     "",
+     "",
+     "2,794,731",
+     "",
+     "",
+     "701,282",
+     ""
+    ],
+    [
+     "Depreciation expense - cryptocurrency mining",
+     "",
+     "799,716",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,393,966",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "649,012",
+     "",
+     "",
+     "326,776",
+     "",
+     "",
+     "1,805,785",
+     "",
+     "",
+     "1,483,570",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "174,472",
+     "",
+     "",
+     "358,668",
+     "",
+     "",
+     "793,626",
+     "",
+     "",
+     "968,995",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "753,944",
+     "",
+     "",
+     "545,646",
+     "",
+     "",
+     "2,997,169",
+     "",
+     "",
+     "1,409,956",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "7,949,124",
+     "",
+     "",
+     "3,724,285",
+     "",
+     "",
+     "28,394,747",
+     "",
+     "",
+     "10,433,542",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,702,573)",
+     "",
+     "",
+     "(900,364)",
+     "",
+     "",
+     "(4,989,302)",
+     "",
+     "",
+     "(2,549,645)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(116,736)",
+     ""
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "(9,989)",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "383,190",
+     "",
+     "",
+     "34",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "",
+     "(9,989)",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "383,190",
+     "",
+     "",
+     "(116,702)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss before income taxes",
+     "$",
+     "(1,712,562)",
+     "",
+     "$",
+     "(900,354)",
+     "",
+     "$",
+     "(4,606,112)",
+     "",
+     "$",
+     "(2,666,347)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income Taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(1,712,562)",
+     "",
+     "$",
+     "(900,354)",
+     "",
+     "$",
+     "(4,606,112)",
+     "",
+     "$",
+     "(2,666,347)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.12)",
+     "",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.31)",
+     "",
+     "$",
+     "(0.37)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding, basic and diluted",
+     "",
+     "14,702,804",
+     "",
+     "",
+     "7,862,174",
+     "",
+     "",
+     "14,639,523",
+     "",
+     "",
+     "7,228,109",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 181,
+    "end_line": 230
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Stockholders\u2019 Equity\nFor the Three and Nine Months ended September 30, 2022 and 2021\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 175,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "",
+     "4,633",
+     "$",
+     "46",
+     "",
+     "11,984,396",
+     "$",
+     "1,197",
+     "$",
+     "67,810,922",
+     "",
+     "$",
+     "(25,606,964)",
+     "",
+     "$",
+     "42,205,201",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "70,833",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "70,833",
+     ""
+    ],
+    [
+     "Common stock issued for common control acquisitions",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,318,408",
+     "",
+     "132",
+     "",
+     "(132)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock issued for exercise of warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,400,000",
+     "",
+     "140",
+     "",
+     "(140)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,455,596)",
+     "",
+     "",
+     "(1,455,596)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2022",
+     "",
+     "4,633",
+     "",
+     "46",
+     "",
+     "14,702,804",
+     "",
+     "1,469",
+     "",
+     "67,881,483",
+     "",
+     "",
+     "(27,062,560)",
+     "",
+     "",
+     "40,820,438",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "71,693",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "71,693",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,437,954)",
+     "",
+     "",
+     "(1,437,954)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "",
+     "4,633",
+     "$",
+     "46",
+     "",
+     "14,702,804",
+     "$",
+     "1,469",
+     "$",
+     "67,953,176",
+     "",
+     "$",
+     "(28,500,514)",
+     "",
+     "$",
+     "39,454,177",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "70,693",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "70,693",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,712,562)",
+     "",
+     "",
+     "(1,712,562)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2022",
+     "",
+     "4,633",
+     "$",
+     "46",
+     "",
+     "14,702,804",
+     "$",
+     "1,469",
+     "$",
+     "68,023,869",
+     "",
+     "$",
+     "(30,213,076)",
+     "",
+     "$",
+     "37,812,308",
+     ""
+    ],
+    [
+     "Balance at January 1, 2021",
+     "",
+     "4,633",
+     "$",
+     "46",
+     "",
+     "6,170,054",
+     "$",
+     "617",
+     "$",
+     "26,380,124",
+     "",
+     "$",
+     "(20,628,606)",
+     "",
+     "$",
+     "5,752,181",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "74,011",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "74,011",
+     ""
+    ],
+    [
+     "Common stock issued for the exercise of Warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "944,720",
+     "",
+     "94",
+     "",
+     "7,160,846",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,160,940",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,099,857)",
+     "",
+     "",
+     "(1,099,857)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2021",
+     "",
+     "4,633",
+     "",
+     "46",
+     "",
+     "7,114,774",
+     "",
+     "711",
+     "",
+     "33,614,981",
+     "",
+     "",
+     "(21,728,463)",
+     "",
+     "",
+     "11,887,275",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "79,477",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "79,477",
+     ""
+    ],
+    [
+     "Common stock issued for the exercise of warrants \u2013 related party",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "159,103",
+     "",
+     "16",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(666,136)",
+     "",
+     "",
+     "(666,136)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2021",
+     "",
+     "4,633",
+     "",
+     "46",
+     "",
+     "7,273,877",
+     "",
+     "727",
+     "",
+     "33,694,458",
+     "",
+     "",
+     "(22,394,599)",
+     "",
+     "",
+     "11,300,632",
+     ""
+    ],
+    [
+     "Common stock and warrants sold for cash",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,418,605",
+     "",
+     "141",
+     "",
+     "5,461,411",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,461,552",
+     ""
+    ],
+    [
+     "Warrants converted to common stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "9,050",
+     "",
+     "\u2014",
+     "",
+     "41,623",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "41,623",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "79,477",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "79,477",
+     ""
+    ],
+    [
+     "Options issued for intangible assets",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,499,952",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,499,952",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(900,354)",
+     "",
+     "",
+     "(900,354)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2021",
+     "",
+     "4,633",
+     "$",
+     "46",
+     "",
+     "8,701,532",
+     "$",
+     "868",
+     "$",
+     "43,776,921",
+     "",
+     "$",
+     "(23,294,953)",
+     "",
+     "$",
+     "20,482,882",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 241,
+    "end_line": 283
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Stockholders\u2019 Equity\nFor the Three and Nine Months ended September 30, 2022 and 2021\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,606,112)",
+     "",
+     "$",
+     "(2,666,347)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "5,204,443",
+     "",
+     "",
+     "744,389",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "213,219",
+     "",
+     "",
+     "232,965",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "34,859",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "25,969",
+     "",
+     "",
+     "(16,879)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "(1,349,516)",
+     "",
+     "",
+     "(1,765)",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "(25,032)",
+     "",
+     "",
+     "(67,727)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(143,193)",
+     "",
+     "",
+     "148,626",
+     ""
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "(348,288)",
+     "",
+     "",
+     "(10,527)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,028,510)",
+     "",
+     "",
+     "(1,602,406)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of intangible assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(65,000)",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(777,140)",
+     "",
+     "",
+     "(6,003,300)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(777,140)",
+     "",
+     "",
+     "(6,068,300)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from note payable",
+     "",
+     "875,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payments on note payable",
+     "",
+     "(243,058)",
+     "",
+     "",
+     "(7,654,845)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,202,563",
+     ""
+    ],
+    [
+     "Net proceeds from sale of common stock and warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,461,552",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "631,942",
+     "",
+     "",
+     "5,009,270",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "(1,173,708)",
+     "",
+     "",
+     "(2,661,436)",
+     ""
+    ],
+    [
+     "Cash \u2013 beginning of period",
+     "",
+     "3,470,339",
+     "",
+     "",
+     "3,824,491",
+     ""
+    ],
+    [
+     "Cash \u2013 end of period",
+     "$",
+     "2,296,631",
+     "",
+     "$",
+     "1,163,055",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "116,736",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Non-Cash Disclosure:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock options issued for intangible asset",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,499,952",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 292,
+    "end_line": 346
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nNotes to the Unaudited Consolidated Financial Statements\nSeptember 30, 2022\nNOTE 1 \u2013 BACKGROUND\nBackground\nThe OLB Group, Inc. (\u201cOLB\u201d the \u201cCompany\u201d) was incorporated in the State of Delaware on November 18, 2004 and provides services through its wholly-owned subsidiaries and business segments. The Company generates its revenue through two business segments its Fintech Services and Cryptocurrency Business segments.\nFintech Services:\nThe Company provides integrated financial and transaction processing services (\u201cFintech Services\u201d) to businesses throughout the United States. Through its eVance Capital, Inc. subsidiary (\u201ceVance\u201d), the Company provides an integrated suite of third-party merchant payment processing services and related proprietary software enabling products that deliver credit and debit card-based internet payment processing solutions primarily to small and mid-sized merchants operating in physical \u201cbrick and mortar\u201d business environments, on the internet and in retail settings requiring both wired and wireless mobile payment solutions. eVance operates as an independent sales organization (\u201cISO\u201d) generating individual merchant processing contracts in exchange for future residual payments. As a wholesale ISO, eVance has a direct contractual relationship with the merchants and takes greater responsibility in the approval and monitoring of merchants than do retail ISOs and as a result, receives additional consideration for this service and risk. The Company\u2019s Securus365, Inc. (\u201cSecurus365\u201d) subsidiary operates as a retail ISO and receives residual income as commission for merchants it places with third party processors.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Cryptocurrency at cost",
+     "$",
+     "937,559",
+     "$",
+     "304,004"
+    ],
+    [
+     "Investment in cryptocurrency-based fund",
+     "",
+     "250,000",
+     "",
+     "250,000"
+    ],
+    [
+     "Other current assets",
+     "",
+     "340,989",
+     "",
+     "175,347"
+    ],
+    [
+     "Total",
+     "$",
+     "1,528,548",
+     "$",
+     "729,351"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 427,
+    "end_line": 435
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Accounts receivable represent contractual residual payments due from the Company\u2019s processing partners or other customers. Residual payments are determined based on transaction fees and revenues from the credit and debit card processing activity of merchants for which the Company\u2019s processing partners pay the Company. Based on collection experience and periodic reviews of outstanding receivables, management considers all accounts receivable for our residual payments to be fully collectible and accordingly, no allowance for doubtful accounts is required; however, CrowdPay has a recorded an allowance of approximately $0 and $38,000 as of September 30, 2022 and December 31, 2021, respectively.\nReserve for Chargeback Losses\nDisputes between a cardholder and a merchant periodically arise as a result of, among other things, cardholder dissatisfaction with merchandise quality or merchant services. Such disputes may not be resolved in the merchant\u2019s favor. In these cases, the transaction is \u201ccharged back\u201d to the merchant, which means the purchase price is refunded to the customer through the merchant\u2019s bank and charged to the merchant. If the merchant has inadequate funds, the Company must bear the credit risk for the full amount of the transaction. The Company evaluates the risk for such transactions and estimates the potential loss for chargebacks based primarily on historical experience and records a loss reserve accordingly.\nOther Current Assets\nOther current assets comprised of the following:",
+   "prose_after": "Revenue Recognition and Cost of Revenues\nThe Company receives a percentage of recurring monthly transaction related fees comprised of credit and debit card fees charged to merchants, net of association fees, otherwise known as Interchange, as well as certain service charges and convenience fees, for payment processing services, including authorization, capture, clearing, settlement and information reporting of electronic transactions. Fees are calculated on either a percentage of the dollar volume of the transaction or a fixed fee or a hybrid of the two and are recognized at the time of the transaction. In the case of \u201cwholesale\u201d residual revenue in which the Company has a direct contractual relationship with the merchant, bears risk of chargebacks and performs underwriting on the merchants, the Company records the full discount charged to the merchant as revenue and the related interchange and other processing fees as expenses. In cases of residual revenue where the Company is not responsible for merchant underwriting and has no chargeback liability and has no or limited contractual relationship with the merchant, the Company records the amount it receives from the processor net of interchange and other processing fees as revenue.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 459,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "For the Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Revenue from contracts with customers:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wholesale contracts",
+     "$",
+     "5,316,986",
+     "$",
+     "2,053,772",
+     "$",
+     "20,313,337",
+     "$",
+     "5,504,044"
+    ],
+    [
+     "Retail contracts",
+     "$",
+     "407,556",
+     "$",
+     "417,158",
+     "$",
+     "1,160,928",
+     "$",
+     "1,288,111"
+    ],
+    [
+     "Other transaction and processing fees",
+     "$",
+     "360,760",
+     "$",
+     "352,991",
+     "$",
+     "1,297,625",
+     "$",
+     "1,091,742"
+    ],
+    [
+     "Cryptocurrency mining fees",
+     "$",
+     "161,249",
+     "$",
+     "\u2014",
+     "$",
+     "633,555",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total fees",
+     "$",
+     "6,246,551",
+     "$",
+     "2,823,921",
+     "$",
+     "23,405,445",
+     "$",
+     "7,883,897"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company receives a percentage of recurring monthly transaction related fees comprised of credit and debit card fees charged to merchants, net of association fees, otherwise known as Interchange, as well as certain service charges and convenience fees, for payment processing services, including authorization, capture, clearing, settlement and information reporting of electronic transactions. Fees are calculated on either a percentage of the dollar volume of the transaction or a fixed fee or a hybrid of the two and are recognized at the time of the transaction. In the case of \u201cwholesale\u201d residual revenue in which the Company has a direct contractual relationship with the merchant, bears risk of chargebacks and performs underwriting on the merchants, the Company records the full discount charged to the merchant as revenue and the related interchange and other processing fees as expenses. In cases of residual revenue where the Company is not responsible for merchant underwriting and has no chargeback liability and has no or limited contractual relationship with the merchant, the Company records the amount it receives from the processor net of interchange and other processing fees as revenue.\nDisaggregation of Revenue\nThe following table presents the Company\u2019s revenue disaggregated by revenue source:",
+   "prose_after": "The Company recognizes revenue under ASC 606, \u201cRevenue from Contracts with Customers\u201d (\u201cASC 606\u201d). The Company determines revenue recognition through the following steps:\n\u25cf Identification of a contract with a customer;\n\u25cf Identification of the performance obligations in the contract;\n\u25cf Determination of the transaction price;\n\u25cf Allocation of the transaction price to the performance obligations in the contract; and\n\u25cf Recognition of revenue when or as the performance obligations are satisfied.\nRevenue is recognized when control of the promised goods or services is transferred to customers, in an amount that reflects the consideration the Company expects to be entitled to in exchange for those goods or services. Shipping and handling activities associated with outbound freight after control over a product has transferred to a customer are accounted for as a fulfillment activity and recognized as revenue at the point in time at which control of the goods transfers to the customer. As a practical expedient, the Company does not adjust the transaction price for the effects of a significant financing component if, at contract inception, the period between customer payment and the transfer of goods or services is expected to be one year or less.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 459,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Merchant Portfolios",
+     "$",
+     "2,405,000",
+     "",
+     "$",
+     "2,405,000",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(1,835,510)",
+     "",
+     "",
+     "(1,562,798)",
+     ""
+    ],
+    [
+     "Net residual portfolios",
+     "$",
+     "569,490",
+     "",
+     "$",
+     "842,202",
+     ""
+    ],
+    [
+     "Trade name",
+     "$",
+     "2,500,000",
+     "",
+     "$",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(1,875,000)",
+     "",
+     "",
+     "(1,500,000)",
+     ""
+    ],
+    [
+     "Net trade name",
+     "$",
+     "625,000",
+     "",
+     "$",
+     "1,000,000",
+     ""
+    ],
+    [
+     "Acquired Merchant Portfolio",
+     "$",
+     "18,000,000",
+     "",
+     "$",
+     "18,000,000",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(2,000,000)",
+     "",
+     "",
+     "(190,476)",
+     ""
+    ],
+    [
+     "Net Acquired Merchant Portfolio",
+     "$",
+     "16,000,000",
+     "",
+     "$",
+     "17,809,524",
+     ""
+    ],
+    [
+     "Exclusive agreement to purchase natural gas",
+     "$",
+     "4,499,952",
+     "",
+     "$",
+     "4,499,952",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(524,994)",
+     "",
+     "",
+     "(187,498)",
+     ""
+    ],
+    [
+     "Net mineral rights",
+     "$",
+     "3,974,958",
+     "",
+     "$",
+     "4,312,454",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total intangible assets, net",
+     "$",
+     "21,169,448",
+     "",
+     "$",
+     "23,964,180",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 502,
+    "end_line": 529
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Impairment of cryptocurrency assets is tested annual or more frequently if events or circumstances change. At September 30, 2022, the fair value of the Company\u2019s digital assets was $503,585.12 based on the price of Bitcoin being $19,563.77.\nAt its October 12, 2022 Board of Directors meeting, the Financial Accounting Standards Board (FASB) tentatively concluded that companies should follow the guidance in Topic 820, Fair Value Measurement, to measure cryptocurrency assets at fair value, and to recognize increases and decreases in fair value in comprehensive income each reporting period. The FASB plans to issue an Exposure Draft on the new rules, with a new Accounting Standards Update (ASU) finalized and issued only after public comment and deliberations.\nNOTE 3 \u2013 LIQUIDITY AND CAPITAL RESOURCES\nAt September 30, 2022, the Company had cash of approximately $2.3 million and working capital of approximately $2.2 million. As such, the Company believes it has sufficient liquidity to fund its future operations and capital requirements for a period of at least twelve months from the date these condensed consolidated financial statements are issued.\nNOTE 4 \u2013 INTANGIBLE ASSETS\nIntangible assets, net, consist of the following as of:",
+   "prose_after": "Amortization expense for the three months ended September 30, 2022 and 2021 was $892,788 and $269,475, respectively.\nAmortization expense for the nine months ended September 30, 2022 and 2021 was $2,794,731 and $701,280, respectively.\nThe Company\u2019s merchant portfolios and tradename are being amortized over respective useful lives of 7 and 5 years.\nThe Company\u2019s agreement to purchase natural gas is being amortized over the useful life of 10 years.\nThe following sets forth the estimated amortization expense related to amortizing intangible assets for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 497,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "intangibles",
+    "aligned_family": "intangibles",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022 (three months)",
+     "$",
+     "1,063,358"
+    ],
+    [
+     "2023",
+     "",
+     "3,834,281"
+    ],
+    [
+     "2024",
+     "",
+     "3,320,234"
+    ],
+    [
+     "2025",
+     "",
+     "3,021,424"
+    ],
+    [
+     "2026",
+     "",
+     "3,021,424"
+    ],
+    [
+     "Thereafter",
+     "",
+     "6,908,727"
+    ],
+    [
+     "Total",
+     "$",
+     "21,169,448"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 540,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Amortization expense for the three months ended September 30, 2022 and 2021 was $892,788 and $269,475, respectively.\nAmortization expense for the nine months ended September 30, 2022 and 2021 was $2,794,731 and $701,280, respectively.\nThe Company\u2019s merchant portfolios and tradename are being amortized over respective useful lives of 7 and 5 years.\nThe Company\u2019s agreement to purchase natural gas is being amortized over the useful life of 10 years.\nThe following sets forth the estimated amortization expense related to amortizing intangible assets for the years ended December 31:",
+   "prose_after": "The weighted average remaining useful life of amortizing intangible assets was 5.45 years at September 30, 2022.\nNOTE 5 \u2013 PROPERTY AND EQUIPMENT\nLong lived assets, including property and equipment assets to be held and used by the Company are reviewed for impairment whenever events or changes in circumstances indicate that the carrying value of the assets may not be recoverable. Impairment losses are recognized if expected future cash flows of the related assets are less than their carrying values. Measurement of an impairment loss is based on the fair value of the asset. Long-lived assets to be disposed of are reported at the lower of carrying amount or fair value less cost to sell.\nProperty and equipment are first recorded at cost. Depreciation and is computed using the straight-line method over the estimated useful lives of the various classes of assets.\nMaintenance and repair expenses, as incurred, are charged to expense. Betterments and renewals are capitalized in plant and equipment accounts. Cost and accumulated depreciation applicable to items replaced or retired are eliminated from the related accounts with any gain or loss on the disposition included as income.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 497,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30 2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Furniture and Fixtures",
+     "$",
+     "36,471",
+     "",
+     "$",
+     "36,471",
+     ""
+    ],
+    [
+     "Office Equipment",
+     "",
+     "842,717",
+     "",
+     "",
+     "474,873",
+     ""
+    ],
+    [
+     "Computer Software",
+     "",
+     "182,345",
+     "",
+     "",
+     "182,345",
+     ""
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "17,877",
+     "",
+     "",
+     "17,877",
+     ""
+    ],
+    [
+     "Cryptocurrency Mining Equipment",
+     "",
+     "9,410,000",
+     "",
+     "",
+     "9,410,000",
+     ""
+    ],
+    [
+     "Plant and Machinery",
+     "",
+     "409,296",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "10,898,706",
+     "",
+     "",
+     "10,121,566",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(3,564,181)",
+     "",
+     "",
+     "(1,154,470)",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "$",
+     "7,334,525",
+     "",
+     "$",
+     "8,967,096",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "Long lived assets, including property and equipment assets to be held and used by the Company are reviewed for impairment whenever events or changes in circumstances indicate that the carrying value of the assets may not be recoverable. Impairment losses are recognized if expected future cash flows of the related assets are less than their carrying values. Measurement of an impairment loss is based on the fair value of the asset. Long-lived assets to be disposed of are reported at the lower of carrying amount or fair value less cost to sell.\nProperty and equipment are first recorded at cost. Depreciation and is computed using the straight-line method over the estimated useful lives of the various classes of assets.\nMaintenance and repair expenses, as incurred, are charged to expense. Betterments and renewals are capitalized in plant and equipment accounts. Cost and accumulated depreciation applicable to items replaced or retired are eliminated from the related accounts with any gain or loss on the disposition included as income.\nAssets stated at cost, less accumulated depreciation consisted of the following:",
+   "prose_after": "Depreciation expense\nDepreciation expense for the nine months ended September 30, 2022 and 2021 was $2,409,100 and $43,108, respectively.\nNOTE 6 \u2013 NOTE PAYABLE\nOn November 24, 2021, we entered into an Asset Purchase Agreement (the \u201cAgreement\u201d) dated as of November 15, 2021 with FFS Data Corporation (\u201cSeller\u201d) whereby we acquired a portfolio of merchants in the Cannabidiol (or \u201cCBD\u201d) industry, along with other merchants utilizing financial transaction processing services (the \u201cAcquired Merchant Portfolio\u201d). The purchase price was $20 million, with $16 million paid at closing, $2 million payable within six months after closing, and a $2 million payment to be transferred to an escrow account, contingent upon an Attrition Adjustment, as described in the Agreement. Company management has recognized a liability for the contingent payment amount. However, on July 18, 2022, the Company notified the Seller of certain breaches of contract relating to, among other things, representations made by Seller in the Agreement, for which it will seek a reduction or cancellation of the final payment and a potential reduction in the overall purchase price. The Company has filed a claim for breach of contract against Seller and Seller has filed a breach of contract counterclaim against the Company. The matter is currently in the early stages and no date for an arbitration or court hearing has been scheduled.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 554,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock Options",
+     "Options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Options outstanding December 31, 2020",
+     "",
+     "285,173",
+     "",
+     "$",
+     "0.0001",
+     "$",
+     "1,408,755"
+    ],
+    [
+     "Granted",
+     "",
+     "774,585",
+     "",
+     "$",
+     "0.0001",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "(159,103)",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "-",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options outstanding December 31, 2021",
+     "",
+     "900,655",
+     "",
+     "$",
+     "0.0001",
+     "$",
+     "2,386,736"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Expired",
+     "",
+     "-",
+     "-",
+     "$",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options outstanding September 30, 2022",
+     "",
+     "900,655",
+     "",
+     "$",
+     "0.0001",
+     "",
+     ""
+    ],
+    [
+     "Shares exercisable at September 30, 2022",
+     "",
+     "900,655",
+     "",
+     "$",
+     "0.0001",
+     "$",
+     "954,694"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 598,
+    "end_line": 616
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "On November 24, 2021, we entered into an Asset Purchase Agreement (the \u201cAgreement\u201d) dated as of November 15, 2021 with FFS Data Corporation (\u201cSeller\u201d) whereby we acquired a portfolio of merchants in the Cannabidiol (or \u201cCBD\u201d) industry, along with other merchants utilizing financial transaction processing services (the \u201cAcquired Merchant Portfolio\u201d). The purchase price was $20 million, with $16 million paid at closing, $2 million payable within six months after closing, and a $2 million payment to be transferred to an escrow account, contingent upon an Attrition Adjustment, as described in the Agreement. Company management has recognized a liability for the contingent payment amount. However, on July 18, 2022, the Company notified the Seller of certain breaches of contract relating to, among other things, representations made by Seller in the Agreement, for which it will seek a reduction or cancellation of the final payment and a potential reduction in the overall purchase price. The Company has filed a claim for breach of contract against Seller and Seller has filed a breach of contract counterclaim against the Company. The matter is currently in the early stages and no date for an arbitration or court hearing has been scheduled.\nOn November 29, 2021, the Company entered into a Master Equipment Finance Agreement (the \u201cMFA\u201d) with VFS LLC (\u201cVFS\u201d) which would allow the Company to finance the purchase of certain equipment. The collateral and interest rate are determined at the time the Company borrows the funds. During the nine months ended September 30, 2022, the Company received, as an initial draw on the MFA, $875,000 from VFS (the \u201cEquipment Loan\u201d). The Equipment Loan is secured by cryptocurrency mining computers being utilized by DMINT. The Equipment Loan requires monthly payments of $24,837.75 until the loan is repaid in full or it matures on November 29, 2024, requiring a full payment of all principal and accrued and unpaid interest.\nNOTE 7 \u2013 STOCK OPTIONS\nA summary of the status of the Company\u2019s outstanding stock options and changes during the nine months ended September 30, 2022 is presented below:",
+   "prose_after": "NOTE 8 \u2013 WARRANTS\nA summary of the status of the Company\u2019s outstanding stock warrants and changes during the nine months ended September 30, 2022 is presented below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contract Term",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2020",
+     "",
+     "3,353,698",
+     "",
+     "",
+     "4.61",
+     "",
+     "4.81"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(40,000)",
+     "",
+     "$",
+     "7.50",
+     "",
+     "-"
+    ],
+    [
+     "Underwriter Warrants",
+     "",
+     "8,881,333",
+     "",
+     "$",
+     "3.62",
+     "",
+     "-"
+    ],
+    [
+     "Warrant A Exercised",
+     "",
+     "(742,220)",
+     "",
+     "$",
+     "9.00",
+     "",
+     "-"
+    ],
+    [
+     "Warrant B Exercised",
+     "",
+     "(313,320)",
+     "",
+     "$",
+     "4.50",
+     "",
+     "-"
+    ],
+    [
+     "Underwriter Warrant Exercised",
+     "",
+     "(1,176,364)",
+     "",
+     "$",
+     "0.0001",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, December 31, 2021",
+     "",
+     "9,963,127",
+     "",
+     "$",
+     "5.02",
+     "",
+     "4.55"
+    ],
+    [
+     "Underwriter Warrant Exercised",
+     "",
+     "(1,400,000)",
+     "",
+     "$",
+     "0.0001",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding, September 30, 2022",
+     "",
+     "8,563,127",
+     "",
+     "$",
+     "5.10",
+     "",
+     "4.20"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 638
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 WARRANTS"
+    }
+   },
+   "prose_before": "NOTE 8 \u2013 WARRANTS\nA summary of the status of the Company\u2019s outstanding stock warrants and changes during the nine months ended September 30, 2022 is presented below:",
+   "prose_after": "NOTE 9 \u2013 OPERATING LEASES\nOn June 24, 2020, eVance, Inc. (\u201ceVance\u201d) entered into a Lease Agreement (the \u201cLease\u201d) with Pergament Lodi, LLC (the \u201cLessor\u201d) relating to approximately 4,277 square feet of property located at 960 Northpoint Parkway, Alpharetta, Georgia, Suite 400. The term of the Lease is for thirty-nine\n(39) months commencing September 1, 2020. The monthly base rent is $8,019 for the first twelve (12) months increasing thereafter to $8,768. The total rent for the entire lease term is $315,044 and $8,768 is payable as a security deposit. The first three months of rent will be abated so long as eVance is not in default of any portion of the Lease.\nOn January 11, 2022, DMINT entered into two leases (the \u201cLeases\u201d) in Bradford, Pennsylvania relating to a combined 10,000 square feet of property located at the Bradford Regional Airport Authority multi-tenant building in Lafayette Township. The facility is in the process of being converted into a cryptocurrency mining data center powered on the local power grid in tandem with natural gas power. The location will be used for DMINT\u2019s mining operation with capacity for up to 2,000 Antminer S19j PRO machines. The Leases are each for a term of five years, ending on the later of the date of occupancy and November 10, 2026. The monthly base rent for \u201cCell 3\u201d, comprising 4,000 square feet, is $1,667 per month. The monthly base rent for \u201cCell 4\u201d, comprising 6,000 square feet, is $2,500 per month. The total rent for the entire lease term of the Leases is $250,00 and $8,768 is payable as a security deposit.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance Sheet Classification",
+     "September 30, 2022",
+     ""
+    ],
+    [
+     "Asset",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease asset",
+     "Right of use asset",
+     "$",
+     "303,367"
+    ],
+    [
+     "Total lease asset",
+     "",
+     "$",
+     "303,367"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liability",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability \u2013 current portion",
+     "Current operating lease liability",
+     "$",
+     "138,057"
+    ],
+    [
+     "Operating lease liability \u2013 noncurrent portion",
+     "Long-term operating lease liability",
+     "",
+     "169,119"
+    ],
+    [
+     "Total lease liability",
+     "",
+     "$",
+     "307,176"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 OPERATING LEASES"
+    }
+   },
+   "prose_before": "(39) months commencing September 1, 2020. The monthly base rent is $8,019 for the first twelve (12) months increasing thereafter to $8,768. The total rent for the entire lease term is $315,044 and $8,768 is payable as a security deposit. The first three months of rent will be abated so long as eVance is not in default of any portion of the Lease.\nOn January 11, 2022, DMINT entered into two leases (the \u201cLeases\u201d) in Bradford, Pennsylvania relating to a combined 10,000 square feet of property located at the Bradford Regional Airport Authority multi-tenant building in Lafayette Township. The facility is in the process of being converted into a cryptocurrency mining data center powered on the local power grid in tandem with natural gas power. The location will be used for DMINT\u2019s mining operation with capacity for up to 2,000 Antminer S19j PRO machines. The Leases are each for a term of five years, ending on the later of the date of occupancy and November 10, 2026. The monthly base rent for \u201cCell 3\u201d, comprising 4,000 square feet, is $1,667 per month. The monthly base rent for \u201cCell 4\u201d, comprising 6,000 square feet, is $2,500 per month. The total rent for the entire lease term of the Leases is $250,00 and $8,768 is payable as a security deposit.",
+   "prose_after": "Lease obligations at September 30, 2022 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the year ended December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022 (three months)",
+     "$",
+     "38,034",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "144,393",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "2025",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "2026",
+     "",
+     "41,667",
+     ""
+    ],
+    [
+     "Total payments",
+     "$",
+     "324,094",
+     ""
+    ],
+    [
+     "Amount representing interest",
+     "$",
+     "(16,918)",
+     ""
+    ],
+    [
+     "Lease obligation, net",
+     "",
+     "307,176",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "(138,057)",
+     ""
+    ],
+    [
+     "Lease obligation \u2013 long term",
+     "$",
+     "169,119",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 OPERATING LEASES"
+    }
+   },
+   "prose_before": "Lease obligations at September 30, 2022 consisted of the following:",
+   "prose_after": "Rent expense for the three months ended September 30, 2022 and 2021, was $41,969 and $24,909, respectively.\nRent expense for the nine months ended September 30, 2022 and 2021, was $136,953 and $74,726, respectively.\nNOTE 10 \u2013 COMMON STOCK\nIn January 2022, Armistice Capital, received 1,400,000 shares of common stock upon the exercise of 1,400,000 warrants at $0.0001.\nOn July 12, 2022, the Board of the Company authorized a share repurchase program, pursuant to which the Company may repurchase up to 1 million shares of its outstanding shares of common stock. The Board authorized the Company to purchase its common stock from time to time on a discretionary basis through open market purchases, privately negotiated transactions or other means, including trading plans intended to qualify under Rule 10b5-1 of the Exchange Act, in accordance with applicable federal securities laws and other applicable legal requirements. The Company expects to fund these repurchases through existing cash balances. Decisions regarding the amount and the timing of purchases under the program will be influenced by the Company\u2019s cash on hand, cash flows from operations, general market conditions and other factors. The Company is not obligated to acquire any particular amount of its common stock. This program has no set termination date and may be suspended or discontinued by the Board at any time.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months ended September 30,",
+     "",
+     "",
+     "",
+     "For the Nine Months ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Reportable segment revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue, net - cryptocurrency mining",
+     "$",
+     "161,249",
+     "$",
+     "\u2014",
+     "$",
+     "633,555",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Fintech services revenue",
+     "",
+     "6,085,302",
+     "",
+     "2,823,921",
+     "",
+     "22,771,890",
+     "",
+     "7,883,897"
+    ],
+    [
+     "Total segment and consolidated revenue",
+     "$",
+     "6,246,551",
+     "$",
+     "2,823,921",
+     "$",
+     "23,405,445",
+     "$",
+     "7,883,897"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "In the normal course of business, the Company may be involved in legal proceedings, claims and assessments arising in the ordinary course of business. The Company records legal costs associated with loss contingencies as incurred and accrues for all probable and estimable settlements.\nNOTE 14 \u2013 SEGMENTS\nThe Company applies ASC 280, Segment Reporting, in determining its reportable segments. The Company has two reportable segments during 2021: Cryptocurrency Mining and Fintech Services. The guidance requires that segment disclosures present the measure(s) used by the Chief Operating Decision Maker (\u201cCODM\u201d) to decide how to allocate resources and for purposes of assessing such segments\u2019 performance. The Company\u2019s CODM is comprised of several members of its executive management team who use revenue and expenses of our two reporting segments to assess the performance of the business of our reportable operating segments.\nThe following tables details revenue, operating expenses, and assets for the Company\u2019s reportable segments for the three and nine months ended September 30, 2022.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Total Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "10,415,375",
+     "$",
+     "9,749,652"
+    ],
+    [
+     "Fintech services",
+     "",
+     "30,762,513",
+     "",
+     "33,779,839"
+    ],
+    [
+     "",
+     "$",
+     "41,177,888",
+     "$",
+     "43,529,491"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 751,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Item 2: Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nForward-Looking Statements\nThe information in this report contains forward-looking statements. All statements other than statements of historical fact made in this report are forward looking. In particular, the statements herein regarding industry prospects and future results of operations or financial position are forward-looking statements. These forward-looking statements can be identified by the use of words such as \u201cbelieves,\u201d \u201cestimates,\u201d \u201ccould,\u201d \u201cpossibly,\u201d \u201cprobably,\u201d anticipates,\u201d \u201cprojects,\u201d \u201cexpects,\u201d \u201cmay,\u201d \u201cwill,\u201d or \u201cshould\u201d or other variations or similar words. No assurances can be given that the future results anticipated by the forward-looking statements will be achieved. Forward-looking statements reflect management\u2019s current expectations and are inherently uncertain. If underlying assumptions prove inaccurate or unknown risks or uncertainties materialize, our actual results may differ significantly from management\u2019s expectations. These risks and uncertainties include those factors described in greater detail in the risk factors disclosed in our Form 10-K for the fiscal year ended December 31, 2021 filed with the Securities and Exchange Commission. Should one or more of these risks or uncertainties materialize, or should any of our assumptions prove incorrect, actual results may vary in material respects from those anticipated in these forward-looking statements. The Company undertakes no obligation to update or revise any forward-looking statements, whether as a result of new information, future events or otherwise, except as may be required under applicable securities laws.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer, pursuant to Rule 13a-14(a) of the Exchange Act, as enacted by Section 302 of the Sarbanes-Oxley Act of 2002. (filed herewith)"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer, pursuant to Rule 13a-14(a) of the Exchange Act, as enacted by Section 302 of the Sarbanes-Oxley Act of 2002. (filed herewith)"
+    ],
+    [
+     "32",
+     "Certification of Chief Executive Officer and Chief Financial Officer, pursuant to 18 United States Code Section 1350, as enacted by Section 906 of the Sarbanes-Oxley Act of 2002. (filed herewith)"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 915,
+    "end_line": 932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "We are a smaller reporting company as defined by Rule 12b-2 of the Securities Exchange Act of 1934 and, as such, are not required to provide the information under this Item.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS\nNone.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 886,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: November 14, 2022",
+     "By:",
+     "/s/ Ronny Yakov"
+    ],
+    [
+     "",
+     "Name:",
+     "Ronny Yakov"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 14, 2022",
+     "By:",
+     "/s/ Rachel Boulds"
+    ],
+    [
+     "",
+     "Name:",
+     "Rachel Boulds"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 938,
+    "end_line": 951
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

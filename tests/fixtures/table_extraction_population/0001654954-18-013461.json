@@ -1,0 +1,1589 @@
+{
+ "accession": "0001654954-18-013461",
+ "cik": "0001017110",
+ "form": "10-Q/A",
+ "filing_date": "2018-12-03",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "genethera_10qa-17545.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "65-0622463"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(Internal Revenue Service"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Employer Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "6860 N. Broadway Denver, CO",
+     "80221"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q/A\nAmendment No. 1\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended June 30, 2018\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM ______ TO _________\nCommission File Number:\n000-27237\nGeneThera, Inc.\n(Exact name of registrant as Specified in its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code:\n(303) 955-0190\nSecurities registered pursuant to Section 12(b) of the Exchange Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Exchange Act:\nCommon Stock, $0.001 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 55,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I \u2013 FINANCIAL INFORMATION",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Balance Sheets as of June 30, 2018 (Unaudited) and December 31, 2017 (audited)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Operations (Unaudited) for the three and six months ended June 30, 2018 and 2017",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Cash Flows (Unaudited) for the six months ended June 30, 2018 and 2017",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to (Unaudited) Condensed Consolidated Financial Statements",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures about Market Risk",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures.",
+     "16"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II - OTHER INFORMATION",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "18"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A.  Risk Factors",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults upon Senior Securities",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits",
+     "19"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "20"
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "State the number of shares of the issuer\u2019s common stock outstanding, as of the latest practicable date: 40,064,983 shares of common stock issued and outstanding as of November 30, 2018.\nEXPLANATORY NOTE\nThe purpose of this amendment on Form 10-Q/A to GeneThera Inc.'s Quarterly Report on Form 10-Q for the period ended June 30, 2018, filed with the Securities and Exchange Commission on November 30, 2018 is to correct the total number of shares authorized for Series A preferred stock and Series B preferred stock in Note 7 of the Notes to (Unaudited) Condensed Consolidated Financial Statements and to furnish Exhibit 101 to the Form 10-Q in accordance with Rule 405 of Regulation S-T.\nNo other changes have been made to the Form 10-Q. This Amendment No. 1 to the Form 10-Q speaks as of the original filing date of the Form 10-Q, does not reflect events that may have occurred subsequent to the original filing date, and does not modify or update in any way disclosures made in the original Form 10-Q.",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nFORWARD-LOOKING AND CAUTIONARY STATEMENTS\nSections of this Form 10-Q, including Business and Management's Discussion and Analysis or Plan of Operation, contain \"forward-looking statements\". These forward-looking statements are subject to risks and uncertainties and other factors that may cause our actual results, performance or achievements to be materially different from the results, performance or achievements expressed or implied by the forward-looking statements. You should not unduly rely on these statements. Forward-looking statements involve assumptions and describe our plans, strategies, and expectations. You can generally identify a forward-looking statement by words such as may, will, should, would, could, plan, goal, potential, expect, anticipate, estimate, believe, intend, project, and similar words and variations thereof. This report contains forward-looking statements that address, among other things:\n* Our financing plans,\n* Regulatory environments in which we operate or plan to operate, and",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GeneThera, Inc. - Condensed Balance Sheets",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2018",
+     "December 31, 2017"
+    ],
+    [
+     "ASSETS",
+     "(unaudited)",
+     "(audited)"
+    ],
+    [
+     "Current assets",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$274,585",
+     "$167,653"
+    ],
+    [
+     "Prepaid expenses",
+     "-",
+     "-"
+    ],
+    [
+     "Total current assets",
+     "274,585",
+     "167,653"
+    ],
+    [
+     "Property and equipment",
+     "",
+     ""
+    ],
+    [
+     "Office and laboratory equipment and leasehold improvements",
+     "729,859",
+     "729,859"
+    ],
+    [
+     "Automobile & Trucks",
+     "27,800",
+     "26,400"
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "(732,639)",
+     "(729,859)"
+    ],
+    [
+     "Total property and equipment, net",
+     "25,020",
+     "26,400"
+    ],
+    [
+     "Other assets - Deposit",
+     "12,000",
+     "12,000"
+    ],
+    [
+     "TOTAL ASSETS",
+     "$311,605",
+     "$206,053"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & STOCKHOLDERS' DEFICIT",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     ""
+    ],
+    [
+     "Bank Overdraft",
+     "$0",
+     "$-"
+    ],
+    [
+     "Accounts payable",
+     "727,092",
+     "683,678"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "4,463,101",
+     "4,135,810"
+    ],
+    [
+     "Settlement payable",
+     "384,545",
+     "384,545"
+    ],
+    [
+     "Notes payable",
+     "25,800",
+     "25,800"
+    ],
+    [
+     "Convertible notes payable, net of discount",
+     "488,960",
+     "488,960"
+    ],
+    [
+     "Loan from shareholder",
+     "808,036",
+     "794,327"
+    ],
+    [
+     "Contingency",
+     "880,162",
+     "880,162"
+    ],
+    [
+     "Total liabilities",
+     "7,777,696",
+     "7,393,281"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit:",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred stock, par value $0.001 per share, 20,000,000",
+     "",
+     ""
+    ],
+    [
+     "shares authorized, 10,350 shares and 4,600 shares to be issued",
+     "",
+     ""
+    ],
+    [
+     "as of June 30, 2018 and December 31, 2017, respectively",
+     "12",
+     "9"
+    ],
+    [
+     "Series B preferred stock, par value $0.001 per share, 30,000,000",
+     "",
+     ""
+    ],
+    [
+     "shares authorized, 16,374,286 and 15,410,000 shares to be issued",
+     "",
+     ""
+    ],
+    [
+     "as of June 30, 2018 and December 31, 2017, respectively",
+     "16,374",
+     "16,374"
+    ],
+    [
+     "Common stock, par value $0.001 per share, 300,000,000",
+     "",
+     ""
+    ],
+    [
+     "shares authorized, 40,064,983 and 40,064,983 shares issued and",
+     "40,065",
+     "40,065"
+    ],
+    [
+     "outstanding as of June 30, 2018 and December 31, 2017, respectively",
+     "",
+     ""
+    ],
+    [
+     "Common stock to be issued",
+     "53,572",
+     "53,572"
+    ],
+    [
+     "Additional paid-in capital",
+     "19,574,211",
+     "19,274,214"
+    ],
+    [
+     "Accumulated deficit",
+     "(27,150,325)",
+     "(26,571,461)"
+    ],
+    [
+     "Total stockholders' deficit of Genethera, Inc.",
+     "(7,466,091)",
+     "(7,187,228)"
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS' DEFICIT",
+     "$311,605",
+     "$206,053"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to unaudited condensed consolidated financial statements.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GeneThera, Inc. - Condensed Balance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 146,
+    "end_line": 206
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Factors, risks, and uncertainties that could cause actual results to differ materially from those in the forward-looking statements (\"Cautionary Statements\") include, among others:\n* Our ability to raise capital,\n* Our ability to execute our business strategy in a very competitive environment,\n* Our degree of financial leverage, risks associated with our acquiring and integrating companies into our own,\n* Risks relating to rapidly developing technology, and regulatory considerations;\n* Risks related to international economies,\n* Risks related to market acceptance and demand for our products and services,\n* The impact of competitive services and pricing, and\n* Other risks referenced from time to time in our SEC filings.\nAll subsequent written and oral forward-looking statements attributable to us, or anyone acting on our behalf, are expressly qualified in their entirety by the cautionary statements. We do not undertake any obligations to publicly release any revisions to any forward-looking statements to reflect events or circumstances after the date of this report or to reflect unanticipated events that may occur.",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 145,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 206,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GeneThera, Inc. - Condensed Statements of Operations (unaudtied)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "2017",
+     "2018",
+     "2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "83,629",
+     "6,606",
+     "$140,094",
+     "$7,921"
+    ],
+    [
+     "Payroll expenses",
+     "164,472",
+     "108,249",
+     "280,972",
+     "351,498"
+    ],
+    [
+     "Research and Development",
+     "61,675",
+     "",
+     "82,913",
+     ""
+    ],
+    [
+     "Depreciation",
+     "1,390",
+     "-",
+     "2,780",
+     "-"
+    ],
+    [
+     "Total operating expenses",
+     "311,166",
+     "114,855",
+     "506,759",
+     "359,419"
+    ],
+    [
+     "Loss from operations",
+     "(311,166)",
+     "(114,855)",
+     "(506,759)",
+     "(359,419)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(36,054)",
+     "(37,766)",
+     "(72,106)",
+     "(73,609)"
+    ],
+    [
+     "Loss on write off of vendor receivables",
+     "",
+     "",
+     "-",
+     "(39,310)"
+    ],
+    [
+     "Total other expense",
+     "(36,054)",
+     "(37,766)",
+     "(72,106)",
+     "(112,919)"
+    ],
+    [
+     "Other Income",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Total other Income",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "",
+     "(578,865)",
+     "(472,338)"
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "(347,220)",
+     "(152,621)",
+     "$(578,865)",
+     "$(472,338)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per common share - Basic and diluted",
+     "(0.01)",
+     "(0.00)",
+     "$(0.01)",
+     "$(0.01)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding -",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "40,064,983",
+     "40,064,983",
+     "40,064,983",
+     "40,064,983"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to unaudited condensed consolidated financial statements.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GeneThera, Inc. - Condensed Statements of Operations (unaudtied)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 207,
+    "end_line": 253
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 206,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GeneThera, Inc. - Condensed Statements of Cash Flows (unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "2017"
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$(578,865)",
+     "$(472,338)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "-",
+     "135,000"
+    ],
+    [
+     "Amortization of discount on debt",
+     "-",
+     "-"
+    ],
+    [
+     "Depreciation and amortization",
+     "2,780",
+     "-"
+    ],
+    [
+     "Shares issued for services",
+     "-",
+     "-"
+    ],
+    [
+     "Loss on write off of vendor receivables",
+     "-",
+     "39,310"
+    ],
+    [
+     "Loss on abandonment",
+     "-",
+     "-"
+    ],
+    [
+     "Loss on Investment",
+     "-",
+     "-"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Deposit",
+     "-",
+     "-"
+    ],
+    [
+     "Fixed Assets",
+     "-",
+     "-"
+    ],
+    [
+     "Accounts receivable - related parties",
+     "-",
+     "-"
+    ],
+    [
+     "Accounts payable and accrued expenses - related parties",
+     "-",
+     "11,955"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "382,621",
+     "273,119"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(193,464)",
+     "(12,954)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     ""
+    ],
+    [
+     "Purchase of Fixed Asset",
+     "(1,400)",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(1,400)",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of stock",
+     "300,000",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from notes payable",
+     "-",
+     "15,000"
+    ],
+    [
+     "Net advance from related parties",
+     "1,796",
+     "8,004"
+    ],
+    [
+     "Proceeds from convertible notes",
+     "",
+     "-"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "301,796",
+     "23,004"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "106,932",
+     "10,050"
+    ],
+    [
+     "Cash at the beginning of the year",
+     "167,653",
+     "-"
+    ],
+    [
+     "Cash at the end of the year",
+     "274,585",
+     "10,050"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "See accompanying notes to unaudited condensed consolidated financial statements.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "GeneThera, Inc. - Condensed Statements of Cash Flows (unaudited)",
+    "For the Six Months Ended",
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 310
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "GENETHERA, INC.\nCONDENSED NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFor the six months ended June 30, 2018 and 2017\nNote 1 \u2013 Organization and nature of operations and summary of significant accounting policies\nOrganization and nature of operations\nThe consolidated financial statements include GeneThera, Inc. and its wholly owned subsidiary GeneThera, Inc. (Colorado) (collectively, the \u201cCompany\u201d). The Company has a long standing research collaboration with GTI Research, Inc. GTI Research is assisting the Company in managing the robotic technology project. The Company\u2019s CEO is also collaborating with this project in order for the Company\u2019s research and development to finally become commercial in order to generate revenues.\nThe Company is a biotechnology company that develops molecular assays for the detection of food contaminating pathogens, veterinary diseases and genetically modified organisms.\nThe accompanying condensed consolidated financial statements have been prepared in conformity with U.S. GAAP pursuant to the rules and regulations of the Securities and Exchange Commission (SEC) for interim financial information. Accordingly they do not include all of the information and notes required by U.S. GAAP for complete financial statements. The accompanying condensed consolidated financial statements include all adjustments, which consist of normal recurring adjustments and transactions or events discrettly impacting the interim periods, considered necessary by management to fairly state our results of operations, financial position and cash flows. The operating results for interim periods are not necessarily indicative of results that may be expected for any other interim period or for the full year. These condensed consolidated financial statements should be read in conjunction with the audited consolidated financial statements and notes thereto included in our 2017 Form 10-K.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 253,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 310,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n2018",
+     "December 31,\n\n2017"
+    ],
+    [
+     "Accrued officer salaries (see below)",
+     "$4,248,387",
+     "$4,007,415"
+    ],
+    [
+     "Accrued interest",
+     "172,738",
+     "112,546"
+    ],
+    [
+     "Other",
+     "41,976",
+     "15,849"
+    ],
+    [
+     "",
+     "$4,463,101",
+     "$4,135,810"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 399,
+    "end_line": 411
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Accrued expenses"
+    }
+   },
+   "prose_before": "The Company relies on GTI Research, Inc. (\u201cGTIR\u201d), the Company\u2019s scientific robotic technology collaborator, for conducting critical research and development activities on the Company\u2019s robotic technology development project. For the three and six-month period ended June 30, 2018, the Company incurred costs of $61,675 and $82,913, respectively for development services from GTIR. In addition, the Company subleases from GTIR all of its office and lab space under a 75 month lease. GTIR holds a $12,000 security deposit paid by the Company in December of 2017 and the Company incurred base rental and triple net expenses of $29,183 and $58,367 associated with the lease during the three and six month period ended June 30, 2018. See a description of the lease terms in Note 8 to the condensed consolidated financial statements.\nThe Company utilizes Elia Holding, LLC for construction and other maintenance services to maintain the Company\u2019s office and lab space. Elia Holding, LLC is controller by Tannya Irizarry\u2019s brother. Costs incurred related to such services were $50 and $4850 during the three and six month periods ended June 30, 2018, respectively.\nNote 5 \u2013 Accrued expenses\nThe Company\u2019s accrued expenses consisted of the following:",
+   "prose_after": "Note 6 \u2013 Convertible notes payable\nThe Company\u2019s borrowed issued convertible notes are due on demand, bearing interest at an annual rate of 8%. The notes are convertible into shares of Company common stock at a conversion price of $0.01 to $0.05 per share. As of June 30, 2018 and December 31, 2017, the total outstanding principal and interest is $616,241 and $596,683, respectively.\nOn April 18, 2018, the Company has received conversion notices on convertible notes totaling $16,000, plus accrued interest which will be converted into shares of the Company's common stock at conversion prices $0.015.\nOn April 24, 2018, the Company has received conversion notices on convertible notes totaling $1,500, plus accrued interest which will be converted into shares of the Company's common stock at conversion prices $0.02.\nNote 7 - Shareholders\u2019 equity\nPreferred Stock\nThe Company has authorized 20,000,000 shares of Series A Preferred Stock, $.001 par value, and 30,000,000 shares of Series B Preferred Stock, $.001 par value.",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 435,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Monthly Base Rent"
+    ],
+    [
+     "01/01/18 \u2013 03/31/18",
+     "$0"
+    ],
+    [
+     "04/01/18 \u2013 03/31/19",
+     "$5,993"
+    ],
+    [
+     "04/01/19 \u2013 03/31/20",
+     "$6,658"
+    ],
+    [
+     "04/01/20 \u2013 03/31/21",
+     "$7,324"
+    ],
+    [
+     "04/01/21 \u2013 03/31/22",
+     "$7,990"
+    ],
+    [
+     "04/01/22 \u2013 03/31/23",
+     "$8,656"
+    ],
+    [
+     "04/01/23 \u2013 03/31/24",
+     "$9,322"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 448,
+    "end_line": 459
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Commitments"
+    }
+   },
+   "prose_before": "Note 8 \u2013 Commitments\nEmployment Agreements\nIn 2017, the Company entered into five-year employment agreements with its chief executive and scientific officer and its chief administrative and financial officer. The agreements provide for compensation of $21,500 and $17,333 per month, respectively, and expire on January 31, 2022.\nThe agreements also provide for an aggregate bonus of $135,000 to be paid in Series Preferred stock in March of each year of the agreement. Both officers waived their rights for the preferred B stock to be issued to them in 2018. In November of 2018, the agreements were amended to discontinue the preferred B stock award and include the amounts in base pay effective January 1, 2019.\nOffice Space Lease\nOn January 1, 2018, the Company entered into a triple net sublease for a 7,990 square foot office and lab space on 6860 Broadway in Denver, Colorado 80221, with GTI Research, Inc. a related party, for 75 months. Future minimum lease payments under this lease are as follows:",
+   "prose_after": "In addition to the foregoing, we are required to pay our proportionate share of all real estate taxes, building insurance and maintenance costs which is current an estimated monthly charge of $2377.\nWe and GTI Research, Inc. sub-lease 750 square feet of office space for GTI Corporate Transfer Agents, LLC, on a month-to-month basis, partly in exchange for transfer agent services rendered to us.\nNote 9 \u2013 Subsequent events\nOn October 25, 2018, Daniel M. Price converted $10,000 convertible note investment in the Company at $0.02 per share.\nOn October 25, 2018, Daniel M. Price converted $10,000 convertible note investment in the Company at $0.02 per share.\nOn October 25, 2018, Elia Holdings\u2019 Managing Director, Rene I. Rivera, converted $14,980 convertible note investment in the Company at $0.03 per share.\nOn November 13, 2018, Anthos Holdings\u2019 Managing Director, Patrick J. Rundle, converted $15,980 convertible note investment in the Company at $0.03 per share.\nITEM 2:\nMANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+   "structured_location": {
+    "item": null,
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 435,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 473,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description of Exhibit"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Number",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certificate of the Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certificate of the Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certificate of the Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certificate of the Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Subsequent events"
+    }
+   },
+   "prose_before": "There have been no material changes from the risk factors previously disclosed in the Company\u2019s Annual Report on Form 10-K, filed with the Commission on November 30, 2018 and investors are encouraged to review such risk factors prior to making an investment in the Company.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nAs of November 30, 2018, the Company issued no securities.\nItem 3. Defaults upon Senior Securities\nNone.\nItem 4: Mine Safety Disclosures\nNot applicable.\nItem 5: Other Information\nNone.\nItem 6: Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(101)",
+     "XBRL"
+    ],
+    [
+     "101.INS**",
+     "XBRL INSTANCE DOCUMENT"
+    ],
+    [
+     "101.SCH**",
+     "XBRL TAXONOMY EXTENSION SCHEMA"
+    ],
+    [
+     "101.CAL**",
+     "XBRL TAXONOMY EXTENSION CALCULATION LINKBASE"
+    ],
+    [
+     "101.DEF**",
+     "XBRL TAXONOMY EXTENSION DEFINITION LINKBASE"
+    ],
+    [
+     "101.LAB**",
+     "XBRL TAXONOMY EXTENSION LABEL LINKBASE"
+    ],
+    [
+     "101.PRE**",
+     "XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Subsequent events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.\n** Furnished herewith.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on December 3, 2018.\nGeneThera, Inc.\nBy: /s/ Antonio Milici\nAntonio Milici, M.D., Ph.D.\nPresident\n(Principal Executive Officer)\nBy: /s/ Tannya L. Irizarry",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Antonio Milici",
+     "President, Director",
+     "12/03/18"
+    ],
+    [
+     "Antonio Milici, M.D., PhD.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tannya L. Irizarry",
+     "Chief Financial Officer (Interim)",
+     "12/03/18"
+    ],
+    [
+     "Tannya L Irizarry",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 721,
+    "end_line": 732
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Subsequent events"
+    }
+   },
+   "prose_before": "By: /s/ Antonio Milici\nAntonio Milici, M.D., Ph.D.\nPresident\n(Principal Executive Officer)\nBy: /s/ Tannya L. Irizarry\nTannya\nL. Irizarry\nChief Financial Officer (Interim)\n(Principal Financial/Accounting Officer)\nIn accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 732,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

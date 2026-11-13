@@ -1,0 +1,1965 @@
+{
+ "accession": "0001354488-14-004237",
+ "cik": "0001164888",
+ "form": "10-Q",
+ "filing_date": "2014-08-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "kbph_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "FLORIDA",
+     "000-50390",
+     "65-1086538"
+    ],
+    [
+     "(State or Other Jurisdiction",
+     "(Commission",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of Incorporation)",
+     "File Number)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\nFORM 10-Q\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2014\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from: _____________ to _____________\nKYTO BIOPHARMA, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "500 Australian Avenue South, Suite 600 West Palm Beach, FL 33401\n(Address of Principal Executive Office) (Zip Code)\n(416) 960-8790\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (ss. 232.405 of this chapter) during the preceding 12 (or for such shorter period that the registrant was required to submit and post such files). [ ] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Balance Sheets as of  June 30, 2014 (Unaudited) and March 31, 2014",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Condensed Statements of Operations for the Three  Months Ended  June 30, 2014 and 2013",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Condensed Statement of Stockholders\u2019 Deficit for the Three Months Ended  June 30, 2014",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited Condensed  Statements of Cash Flows for the Three Months Ended June 30, 2014 and 2013",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Unaudited  Condensed Financial Statements",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Conditions and Results of Operations.",
+     "",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk.",
+     "",
+     "7"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures.",
+     "",
+     "8"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings.",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors.",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds.",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities.",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "",
+     "9"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "",
+     "10"
+    ],
+    [
+     "",
+     "Signatures",
+     "",
+     "12-14"
+    ]
+   ],
+   "caption_stack": [
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 106
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (ss. 232.405 of this chapter) during the preceding 12 (or for such shorter period that the registrant was required to submit and post such files). [ ] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\n12,998,482 Common Shares - $0.0001 Par Value - as of August 12, 2014\nKYTO BIOPHARMA, INC.\nFor the quarterly period ended June 30, 2014\nINDEX",
+   "prose_after": "PART I - FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Kyto Biopharma, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Balance Sheets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "J\u25cb\u2022e 30,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "174",
+     "",
+     "$",
+     "3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "174",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "174",
+     "",
+     "$",
+     "3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND  STOCKHOLDERS'  DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,361",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "10,000",
+     "",
+     "",
+     "19,329",
+     ""
+    ],
+    [
+     "Accrued liabilities - related party",
+     "",
+     "106,000",
+     "",
+     "",
+     "96,000",
+     ""
+    ],
+    [
+     "Accrued interest payable - related party",
+     "",
+     "90,436",
+     "",
+     "",
+     "88,434",
+     ""
+    ],
+    [
+     "Dividends Payable - preferred convertible stock",
+     "",
+     "55,945",
+     "",
+     "",
+     "49,407",
+     ""
+    ],
+    [
+     "Loan payable-related party",
+     "",
+     "31,500",
+     "",
+     "",
+     "19,400",
+     ""
+    ],
+    [
+     "Note payable-related party",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "395,242",
+     "",
+     "",
+     "372,570",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders'  Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred convertible stock, $1.00 par value, 1,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized, 473,624 issued and outstanding as of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2014 and March 31, 2014  respectively",
+     "",
+     "473,624",
+     "",
+     "",
+     "473,624",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, 25,000,000 shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "authorized, 12,998,482  issued and outstanding as of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2014 and March 31, 2014  respectively",
+     "",
+     "1,300",
+     "",
+     "",
+     "1,300",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "17,343,834",
+     "",
+     "",
+     "17,343,834",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(18,213,826)",
+     "",
+     "",
+     "(18,191,325)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total  Stockholders'  Deficit",
+     "",
+     "(395,068)",
+     "",
+     "",
+     "(372,567)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and  Stockholders'  Deficit",
+     "$",
+     "174",
+     "",
+     "$",
+     "3",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Kyto Biopharma, Inc.",
+    "Condensed Balance Sheets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 111,
+    "end_line": 162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "PART I - FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nUNAUDITED CONDENSED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "13,961",
+     "",
+     "$",
+     "29,246",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "13,961",
+     "",
+     "",
+     "29,246",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operation",
+     "",
+     "13,961",
+     "",
+     "",
+     "29,246",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expenses)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(2,002)",
+     "",
+     "",
+     "(1,919)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Income (Expense), net",
+     "",
+     "(2,002)",
+     "",
+     "",
+     "(1,919)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss before taxes",
+     "",
+     "(15,963)",
+     "",
+     "",
+     "(31,165)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Tax) Benefit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(15,963)",
+     "",
+     "",
+     "(31,165)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock Dividends",
+     "",
+     "(6,538)",
+     "",
+     "",
+     "(6,221)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Attributed to  common shareholders",
+     "",
+     "(22,501)",
+     "",
+     "",
+     "(37,386)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "basic and diluted",
+     "",
+     "12,998,482",
+     "",
+     "",
+     "12,998,482",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share  attributable to Common Shares holders- basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended",
+    "June 30"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 171,
+    "end_line": 216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nUNAUDITED CONDENSED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nCONDENSED STATEMENT OF STOCK HOLDER\u2019S DEFICIT\nFOR THE THREE MONTHS ENDED JUNE 30. 2014\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 166,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 218,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Preferred Stock\n\n$1.00 par value",
+     "",
+     "",
+     "Common Stock $0.0001 par value",
+     "",
+     "",
+     "",
+     "Paid - in\n\nCapital",
+     "",
+     "Accumulated Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2014",
+     "",
+     "473,624",
+     "$",
+     "473,624",
+     "12,998,482",
+     "$",
+     "1,300",
+     "$",
+     "17,343,834",
+     "$",
+     "(18,191,325)",
+     "$",
+     "(372,567)"
+    ],
+    [
+     "Preferred stock Dividends",
+     "",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(6,538)",
+     "",
+     "(6,538)"
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(15,963)",
+     "",
+     "(15,963)"
+    ],
+    [
+     "Balance, June 30, 2014",
+     "",
+     "473,624",
+     "$",
+     "473,624",
+     "12,998,482",
+     "$",
+     "1,300",
+     "$",
+     "17,343,834",
+     "$",
+     "(18,213,826)",
+     "$",
+     "(395,068)"
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 229,
+    "end_line": 245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nCONDENSED STATEMENT OF STOCK HOLDER\u2019S DEFICIT\nFOR THE THREE MONTHS ENDED JUNE 30. 2014\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nUNAUDITED CONDENSED STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 220,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended June",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(22,501)",
+     "",
+     "$",
+     "(37,386)",
+     ""
+    ],
+    [
+     "Adjustment to reconcile net loss to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued Liabilities Related Party",
+     "",
+     "10,000",
+     "",
+     "",
+     "26,000",
+     ""
+    ],
+    [
+     "Accrued Liabilities",
+     "",
+     "(9,329)",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "Accrued Interest Related Party",
+     "",
+     "2,002",
+     "",
+     "",
+     "1,919",
+     ""
+    ],
+    [
+     "Preferred Dividends Payable",
+     "",
+     "6,538",
+     "",
+     "",
+     "6,221",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "1,361",
+     "",
+     "",
+     "596",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(11,929)",
+     "",
+     "",
+     "(2,150)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan proceeds from related parties, net",
+     "",
+     "12,100",
+     "",
+     "",
+     "2,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "",
+     "12,100",
+     "",
+     "",
+     "2,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in Cash and Cash Equivalents",
+     "",
+     "171",
+     "",
+     "",
+     "(50)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents at Beginning of Period",
+     "",
+     "3",
+     "",
+     "",
+     "117",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents at End of Period",
+     "$",
+     "174",
+     "",
+     "$",
+     "67",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Taxes",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Three Months Ended June"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 254,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nUNAUDITED CONDENSED STATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nKYTO BIOPHARMA, INC.\nNOTES TO UNAUDITED CONDENSED FINANCIAL STATEMENTS\nJune 30, 2014\nNOTE 1 \u2013 DESCRIPTION OF BUSINESS AND BASIS OF PRESENTATION\nKyto Biopharma, Inc. was formed as a Florida corporation on March 5, 1999. On August 14, 2002, the Company changed its name from B Twelve, Inc. to Kyto Biopharma, Inc.\nThe Company is a biopharmaceutical company, formed to acquire and develop innovative minimally toxic and non-immunosuppressive proprietary drugs for the treatment of cancer, arthritis, and other proliferate and autoimmune diseases. The Company is currently not in the development stage and was in \u201cdevelopment stage\u201d till June 30, 2011\nActivities during the development stage include acquisition of financing and intellectual properties and research and development activities conducted by others under contracts.\nNOTE 2 \u2013 INTERIM REVIEW REPORTING\nThe accompanying unaudited condensed financial statements of Kyto Biopharma, Inc. (the \"Company\") have been prepared pursuant to the rules and regulations of the Securities and Exchange Commission (the \"SEC). Certain information and footnote disclosures, normally included in financial statements prepared in accordance with accounting principles generally accepted in the United States of America have been condensed or omitted pursuant to such SEC rules and regulations. Nevertheless, the Company believes that the disclosures are adequate to make the information presented not misleading. These interim unaudited condensed financial statements should be read in conjunction with the audited financial statements and notes thereto included in the Company's March 31, 2014 Annual Report as filed on Form 10K. In the opinion of management, all adjustments, including normal recurring adjustments necessary to present fairly the financial position of the Company with respect to the interim unaudited condensed financial statements and the results of its operations for the interim period ended June 30, 2014, have been included. The results of operations for interim periods are not necessarily indicative of the results for a full year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT NUMBER",
+     "DESCRIPTION"
+    ],
+    [
+     "3(i)(a)",
+     "Articles of Incorporation of Kyto Biopharma, Inc.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3(i)(b)",
+     "Articles of Amendment changing name to Kyto Biopharma, Inc.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3(ii)",
+     "Bylaws of Kyto Biopharma, Inc.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Research collaboration agreement between The Research Foundation of State University of New York and B. Twelve Ltd. (Kyto Biopharma, Inc.) [dated August 19, 1999]**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Collaborative Research Agreement to synthesize new vitamin B12 analogs signed between the Company and New York University [dated November 11, 1999]**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Extension/Modification Research Collaboration Agreement between the Research Foundation of State University of New York and B Twelve, Inc., (Kyto Biopharma, Inc.) Modification No. 1 [dated November 01, 2000]**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Debt Settlement Agreement and Put Option (dated November 2002) between Kyto Biopharma, Inc. and New York University.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Extension/Modification Research Collaboration Agreement between the Research Foundation of State University of New York and Kyto Biopharma, Inc., Modification No. 2 [dated December 2004]. **"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Services Agreement between Kyto Biopharma, Inc. and Gerard Serfati [dated November 1, 2004]***"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Section 302 Certification of principal executive officer.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Section 302 Certification of principal financial and accounting officer.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 **"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 451,
+    "end_line": 480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "None\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone\nITEM 4. MINE SAFETY DISCLOSURES\nNone\nITEM 5. OTHER INFORMATION\nNone\nITEM 6. EXHIBITS\nIndex to Exhibits on page 10.\nINDEX TO EXHIBITS",
+   "prose_after": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n* Filed as Exhibit to Company's Form 10-SB on September 12th, 2003, with the Securities and Exchange Commission ** Filed as Exhibit with this Form 10-Q.\n*** Previously filed with Form S-8 on November 18, 2004.\nSIGNATURES\nIn accordance with the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Kyto Biopharma, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Georges Benarroch"
+    ],
+    [
+     "",
+     "",
+     "Georges Benarroch\n\nChief Executive Officer, principal executive officer,\n\nprincipal financial and accounting officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Kyto Biopharma, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 493,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n* Filed as Exhibit to Company's Form 10-SB on September 12th, 2003, with the Securities and Exchange Commission ** Filed as Exhibit with this Form 10-Q.\n*** Previously filed with Form S-8 on November 18, 2004.\nSIGNATURES\nIn accordance with the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Date: August 14, 2014",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 488,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 507,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

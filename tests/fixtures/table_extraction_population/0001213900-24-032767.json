@@ -1,0 +1,6754 @@
+{
+ "accession": "0001213900-24-032767",
+ "cik": "0001314196",
+ "form": "10-K",
+ "filing_date": "2024-04-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ea0203587-10k_olbgroup.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "13-4188568"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________\nto ____________\nCommission file number 000-52994\nTHE OLB GROUP, INC.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "1120 Avenue of the Americas, 4th Floor, New York, NY 10036\n(Address of Principal Executive Offices with Zip Code)\nRegistrant\u2019s telephone number, including area code (212) 278-0900\nSecurities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, $0.0001 par value",
+     "OLB",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1120 Avenue of the Americas, 4th Floor, New York, NY 10036\n(Address of Principal Executive Offices with Zip Code)\nRegistrant\u2019s telephone number, including area code (212) 278-0900\nSecurities registered pursuant to Section 12(b) of the Act: None.\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "43"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Property",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "45"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure About Market Risk",
+     "48"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "F-1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.",
+     "50"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "55"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "59"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "60"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "61"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, and Financial Statement Schedules",
+     "62"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 16",
+     "Form 10-K Summary",
+     "63"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "64"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 137
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates: $18,787,789 based on 9,656,911 non affiliate shares outstanding at $0.91 per share, which is the price at which the common shares were last sold on the last business day of the registrant\u2019s most recently completed second fiscal quarter.\nAs of April 8, 2024, there were 18,092,883 shares of the issuer\u2019s common stock outstanding.\nTHE OLB GROUP, INC.\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I\nItem 1. Business.\nForward-Looking Statements\nUnless the context indicates otherwise, as used in this Annual Report, the terms \u201cOLB,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d \u201cour company\u201d and \u201cour business\u201d refer, to The OLB Group, Inc., including its subsidiaries named herein. Certain statements, other than purely historical information, including estimates, projections, statements relating to our business plans, objectives, and expected operating results, and the assumptions upon which those statements are based, are \u201cforward-looking statements.\u201d These forward-looking statements generally are identified by the words \u201cbelieves,\u201d \u201cproject,\u201d \u201cexpects,\u201d \u201canticipates,\u201d \u201cestimates,\u201d \u201cintends,\u201d \u201cstrategy,\u201d \u201cplan,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cwould,\u201d \u201cwill be,\u201d \u201cwill continue,\u201d \u201cwill likely result,\u201d and similar expressions. Forward-looking statements are based on current expectations and assumptions that are subject to risks and uncertainties which may cause actual results to differ materially from the forward-looking statements. Our ability to predict results or the actual effect of future plans or strategies is inherently uncertain. Factors which could have a material adverse effect on our operations and future prospects include, but are not limited to: changes in economic conditions, legislative/regulatory changes, availability of capital, interest rates, competition, and generally accepted accounting principles. These risks and uncertainties should also be considered in evaluating forward-looking statements and undue reliance should not be placed on such statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 139,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID # 6258)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID # 229)",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at December 31, 2022 and 2021",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended December 31, 2022 and 2021",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity for the Years Ended December 31, 2022 and 2021",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2022 and 2021",
+     "F-8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1080,
+    "end_line": 1095
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The Company has reviewed its cash flow activity during 2023 and projected cash flow forecast for 2024 and performed an overall analysis of market trends to determine whether or not it has sufficient liquidity to continue as a going concern for a period of at least twelve months from the date of this Annual Report. As a result of (a) the improved transaction volume trends the Company experienced during 2022 and 2023, (b) the increase in the number of merchants after the acquisitions of several portfolios during 2021 and 2023, and (c) the funds received from the capital raises and PPP Loan, as discussed above, the Company believes it has sufficient liquidity in order to sustain operations for at least the twelve months following the filing of this Annual Report.\nSignificant Accounting Policies\nRefer to Note 2 of our financial statements contained elsewhere in this Form 10-K for a summary of our significant accounting policies and recently adopting and issued accounting standards.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nWe are a smaller reporting company as defined by Rule 12b-2 of the Securities Exchange Act of 1934 and are not required to provide the information under this item.\nItem 8. Financial Statements and Supplementary Data\nINDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nBoard of Directors and Shareholders\nThe OLB Group, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheet of The OLB Group, Inc. as of December 31, 2023, and the related consolidated statements of operations, changes in stockholders\u2019 equity, and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of The OLB Group, Inc. as of December 31, 2023, and the results of its operations and its cash flows for the year then ended in conformity accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the entity\u2019s management. Our responsibility is to express an opinion on the entity\u2019s financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to The OLB Group, Inc. in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1095,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "179,006",
+     "",
+     "$",
+     "434,026",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "466,890",
+     "",
+     "",
+     "1,083,169",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "184,913",
+     "",
+     "",
+     "590,893",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "403,999",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Investment in equity securities",
+     "",
+     "273,662",
+     "",
+     "",
+     "250,000",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "312,103",
+     "",
+     "",
+     "1,030,183",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "1,820,573",
+     "",
+     "",
+     "3,388,271",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "5,871,751",
+     "",
+     "",
+     "7,325,212",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "3,500,246",
+     "",
+     "",
+     "20,310,255",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "8,139,889",
+     "",
+     "",
+     "6,858,216",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "268,948",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "395,952",
+     "",
+     "",
+     "502,917",
+     ""
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "17,907,838",
+     "",
+     "",
+     "35,265,548",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "19,728,411",
+     "",
+     "$",
+     "38,653,819",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "3,526,689",
+     "",
+     "$",
+     "513,266",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "1,017,708",
+     "",
+     "",
+     "378,206",
+     ""
+    ],
+    [
+     "Preferred dividend payable (related parties)",
+     "",
+     "418,606",
+     "",
+     "",
+     "294,384",
+     ""
+    ],
+    [
+     "Merchant portfolio purchase installment obligation",
+     "",
+     "2,000,000",
+     "",
+     "",
+     "2,000,000",
+     ""
+    ],
+    [
+     "Related party payable",
+     "",
+     "12,678",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liability \u2013 current portion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "134,318",
+     ""
+    ],
+    [
+     "Note payable \u2013 current portion",
+     "",
+     "258,819",
+     "",
+     "",
+     "298,053",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "7,234,500",
+     "",
+     "",
+     "3,618,227",
+     ""
+    ],
+    [
+     "Long Term Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, net of current portion",
+     "",
+     "149,039",
+     "",
+     "",
+     "259,376",
+     ""
+    ],
+    [
+     "Operating lease liability \u2013 net of current portion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "138,439",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "7,383,539",
+     "",
+     "",
+     "4,016,042",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 10)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 par value, 1,000,000 shares authorized, no shares issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Series A Preferred stock, $0.01 par value, 10,000 shares authorized, 1,021 shares issued and outstanding at December 31, 2023 and 2022",
+     "",
+     "10",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, 50,000,000 shares authorized, 15,344,077 and 15,207,714 shares issued, 15,217,905 and 15,081,542 shares outstanding at December 31, 2023 and 2022, respectively",
+     "",
+     "1,521",
+     "",
+     "",
+     "1,508",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 126,172 shares at December 31, 2023 and 2022",
+     "",
+     "(109,988)",
+     "",
+     "",
+     "(109,988)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "68,909,001",
+     "",
+     "",
+     "68,140,480",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(56,574,896)",
+     "",
+     "",
+     "(33,394,233)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity of The OLB Group and Subsidiaries",
+     "",
+     "12,225,648",
+     "",
+     "",
+     "34,637,777",
+     ""
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "119,224",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "12,344,872",
+     "",
+     "",
+     "34,637,777",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "19,728,411",
+     "",
+     "$",
+     "38,653,819",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1211,
+    "end_line": 1277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Addressing the matter involved performing procedures and evaluating audit evidence in connection with forming our overall opinion on the consolidated financial statements. These procedures included testing management\u2019s process for developing the fair value estimate; evaluating the appropriateness of the net present value techniques; testing the completeness and accuracy of underlying data used in the model; and evaluating the significant assumptions used by management, including the amount and timing of projected future cash flows and the discount rate. Evaluating management\u2019s assumptions related to the amount and timing of projected future cash flows and the discount rate involved evaluating whether the assumptions used by management were reasonable considering the current and past performance of the intangible assets, the consistency with external market and industry data, and whether these assumptions were consistent with evidence obtained in other areas of the audit.\n/s/ Daszkal Bolton LLP\nDaszkal Bolton LLP\nBoca Raton, Florida\nMarch 29, 2023\nWe served as the Company\u2019s auditor from 2020 to March 2023\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1207,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1279,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transaction and processing fees",
+     "$",
+     "27,096,245",
+     "",
+     "$",
+     "28,950,785",
+     ""
+    ],
+    [
+     "Merchant equipment rental and sales",
+     "",
+     "89,532",
+     "",
+     "",
+     "64,900",
+     ""
+    ],
+    [
+     "Revenue, net - bitcoin mining",
+     "",
+     "538,718",
+     "",
+     "",
+     "726,179",
+     ""
+    ],
+    [
+     "Other revenue from monthly recurring subscriptions",
+     "",
+     "312,565",
+     "",
+     "",
+     "627,115",
+     ""
+    ],
+    [
+     "Digital product revenue",
+     "",
+     "2,534,577",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "30,571,637",
+     "",
+     "",
+     "30,368,979",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Processing and servicing costs, excluding merchant portfolio amortization",
+     "",
+     "21,181,499",
+     "",
+     "",
+     "23,152,397",
+     ""
+    ],
+    [
+     "Amortization expense",
+     "",
+     "4,172,117",
+     "",
+     "",
+     "3,664,488",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "2,560,015",
+     "",
+     "",
+     "3,193,683",
+     ""
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "3,817,508",
+     "",
+     "",
+     "3,073,598",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "2,336,785",
+     "",
+     "",
+     "964,541",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "7,078,947",
+     "",
+     "",
+     "4,490,731",
+     ""
+    ],
+    [
+     "Impairment expense",
+     "",
+     "12,902,788",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "54,049,659",
+     "",
+     "",
+     "38,539,438",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(23,478,022)",
+     "",
+     "",
+     "(8,170,459)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized gain on sale of bitcoin",
+     "",
+     "288,584",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrealized gain on investment",
+     "",
+     "23,662",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(148,483)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "40,320",
+     "",
+     "",
+     "383,190",
+     ""
+    ],
+    [
+     "Total other income",
+     "",
+     "204,083",
+     "",
+     "",
+     "383,190",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "(23,273,939)",
+     "",
+     "",
+     "(7,787,269)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(23,273,939)",
+     "",
+     "",
+     "(7,787,269)",
+     ""
+    ],
+    [
+     "Net loss attributed to noncontrolling interest",
+     "",
+     "93,276",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net loss attributed to The OLB Group and Subsidiaries",
+     "",
+     "(23,180,663)",
+     "",
+     "",
+     "(7,787,269)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred dividends (related parties)",
+     "",
+     "(124,222)",
+     "",
+     "",
+     "(401,903)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Applicable to Common Shareholders",
+     "$",
+     "(23,304,885)",
+     "",
+     "$",
+     "(8,189,172)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per common share, basic and diluted",
+     "$",
+     "(0.65)",
+     "",
+     "$",
+     "(0.56)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding, basic and diluted",
+     "",
+     "15,203,708",
+     "",
+     "",
+     "14,678,990",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1283,
+    "end_line": 1346
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Changes in Stockholders\u2019 Equity\nFor the Years Ended December 31, 2023 and 2022",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1279,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1348,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Non-Controlling",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "In Capital",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "",
+     "4,633",
+     "",
+     "$",
+     "46",
+     "",
+     "",
+     "11,984,396",
+     "",
+     "$",
+     "1,198",
+     "",
+     "$",
+     "66,986,248",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(25,606,964)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "41,380,528",
+     ""
+    ],
+    [
+     "Common stock issued for common control acquisitions",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,318,408",
+     "",
+     "",
+     "132",
+     "",
+     "",
+     "(132)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock issued for exercise of warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,400,000",
+     "",
+     "",
+     "140",
+     "",
+     "",
+     "(140)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repurchase of shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(126,172)",
+     "",
+     "",
+     "(13)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(109,988)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(110,001)",
+     ""
+    ],
+    [
+     "Conversion of preferred shares \u2013 related party",
+     "",
+     "(3,612)",
+     "",
+     "",
+     "(36)",
+     "",
+     "",
+     "504,910",
+     "",
+     "",
+     "51",
+     "",
+     "",
+     "931,724",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "931,739",
+     ""
+    ],
+    [
+     "Preferred stock dividends (related party)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(401,903)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(401,903)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "624,683",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "624,683",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,787,269)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,787,269)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "",
+     "1,021",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "15,081,542",
+     "",
+     "",
+     "1,508",
+     "",
+     "",
+     "68,140,480",
+     "",
+     "",
+     "(109,988)",
+     "",
+     "",
+     "(33,394,233)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "34,637,777",
+     ""
+    ],
+    [
+     "Common stock issued for accrued liabilities-related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "136,363",
+     "",
+     "",
+     "13",
+     "",
+     "",
+     "164,985",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "164,998",
+     ""
+    ],
+    [
+     "Preferred stock dividends-related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(124,222)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(124,222)",
+     ""
+    ],
+    [
+     "Recognition of noncontrolling interest in acquisition",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "212,500",
+     "",
+     "",
+     "212,500",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "727,758",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "727,758",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(23,180,663)",
+     "",
+     "",
+     "(93,276)",
+     "",
+     "",
+     "(23,273,939)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2023",
+     "",
+     "1,021",
+     "",
+     "$",
+     "10",
+     "",
+     "",
+     "15,217,905",
+     "",
+     "$",
+     "1,521",
+     "",
+     "$",
+     "68,909,001",
+     "",
+     "$",
+     "(109,988)",
+     "",
+     "$",
+     "(56,574,896)",
+     "",
+     "$",
+     "119,224",
+     "",
+     "$",
+     "12,344,872",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1354,
+    "end_line": 1379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Changes in Stockholders\u2019 Equity\nFor the Years Ended December 31, 2023 and 2022",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1348,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1381,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(23,273,939)",
+     "",
+     "$",
+     "(7,787,269)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by and used in operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash mining revenue",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(726,179)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "6,732,132",
+     "",
+     "",
+     "6,858,171",
+     ""
+    ],
+    [
+     "Impairment expense",
+     "",
+     "12,902,788",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "727,758",
+     "",
+     "",
+     "624,683",
+     ""
+    ],
+    [
+     "Common stock to be issued for services to Directors",
+     "",
+     "\u2014",
+     "",
+     "",
+     "164,999",
+     ""
+    ],
+    [
+     "Operating lease expense, net of repayment",
+     "",
+     "(3,809)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrealized gain on investment",
+     "",
+     "(23,662)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Realized gain on sale of bitcoin",
+     "",
+     "(288,584)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "570,473",
+     "",
+     "",
+     "35,796",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "1,008,645",
+     "",
+     "",
+     "(848,625)",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "106,965",
+     "",
+     "",
+     "(51,032)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "2,729,797",
+     "",
+     "",
+     "11,504",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "858,358",
+     "",
+     "",
+     "(203,429)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "2,046,922",
+     "",
+     "",
+     "(1,921,381)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property and equipment",
+     "",
+     "(1,225,148)",
+     "",
+     "",
+     "(1,562,361)",
+     ""
+    ],
+    [
+     "Purchase of intangible assets",
+     "",
+     "(4,965)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of 80.01% interest in Cuentas SDI, LLC",
+     "",
+     "(850,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(2,080,113)",
+     "",
+     "",
+     "(1,562,361)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash overdraft acquired in acquisition",
+     "",
+     "(8,050)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Advances from related party",
+     "",
+     "12,678",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from note payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "875,000",
+     ""
+    ],
+    [
+     "Repayments on note payable",
+     "",
+     "(226,457)",
+     "",
+     "",
+     "(317,571)",
+     ""
+    ],
+    [
+     "Cash used for acquisition of treasury stock",
+     "",
+     "",
+     "",
+     "",
+     "(110,000)",
+     ""
+    ],
+    [
+     "Net cash (used) provided by financing activities",
+     "",
+     "(221,829)",
+     "",
+     "",
+     "447,429",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "(255,020)",
+     "",
+     "",
+     "(3,036,313)",
+     ""
+    ],
+    [
+     "Cash \u2013 beginning of year",
+     "",
+     "434,026",
+     "",
+     "",
+     "3,470,339",
+     ""
+    ],
+    [
+     "Cash \u2013 end of year",
+     "$",
+     "179,006",
+     "",
+     "$",
+     "434,026",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for accrued liabilities",
+     "$",
+     "164,998",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "$",
+     "124,222",
+     "",
+     "$",
+     "420,059",
+     ""
+    ],
+    [
+     "Cancellation of operating leases",
+     "$",
+     "174,090",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1385,
+    "end_line": 1450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNotes to the Consolidated Financial Statements\nDecember 31, 2023\nNOTE 1 \u2013 BACKGROUND\nBackground\nThe OLB Group, Inc. (\u201cOLB\u201d the \u201cCompany\u201d) was incorporated in the State of Delaware on November 18, 2004 and provides services through its wholly-owned subsidiaries and business segments. The Company generates its revenue through two business segments its Fintech Services and Bitcoin Mining Business segments.\nFintech Services:\nThe Company provides integrated financial and transaction processing services (\u201cFintech Services\u201d) to businesses throughout the United States. Through its eVance, Inc. subsidiary (\u201ceVance\u201d), the Company provides an integrated suite of third-party merchant payment processing services and related proprietary software enabling products that deliver credit and debit card-based internet payment processing solutions primarily to small and mid-sized merchants operating in physical \u201cbrick and mortar\u201d business environments, on the internet and in retail settings requiring both wired and wireless mobile payment solutions. eVance operates as an independent sales organization (\u201cISO\u201d) generating individual merchant processing contracts in exchange for future residual payments. As a wholesale ISO, eVance has a direct contractual relationship with the merchants and takes greater responsibility in the approval and monitoring of merchants than do retail ISOs and as a result, receives additional consideration for this service and risk. The Company\u2019s Securus365, Inc. (\u201cSecurus365\u201d) subsidiary operates as a retail ISO and receives residual income as commission for merchants it places with third party processors. The Company\u2019s eVance Capital, Inc subsidiary provides lending services to merchants processing with eVance, Inc.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1381,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1452,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item",
+     "Useful Life"
+    ],
+    [
+     "Computer equipment",
+     "3 years"
+    ],
+    [
+     "Software",
+     "10 years"
+    ],
+    [
+     "Office furniture",
+     "5 Years"
+    ],
+    [
+     "Buildings and improvements",
+     "30 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1564,
+    "end_line": 1572
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Property and equipment is stated at cost and depreciated using the straight-line method over the estimated useful lives of the assets. Depreciation is calculated once the asset has been received and is ready for its intended use, using half of the monthly depreciation in the first month and half of the monthly depreciation in the last month. Cost and accumulated depreciation applicable to items replaced or retired are eliminated from the related accounts with any gain or loss on the disposition included in the statement of operations. Expenditures for repairs and maintenance are expensed as incurred.\nThe Company capitalizes all capital assets utilizing the following criteria:\n\u25cf All land acquisitions;.\n\u25cf All buildings/facilities acquisitions and new construction;\n\u25cf Facility renovation and improvement projects costing more than $100,000;\n\u25cf Land improvement and infrastructure projects costing more than $100,000,\n\u25cf Equipment costing more than $3,000 with a useful life beyond a single reporting period (generally one year);\n\u25cf Computer equipment costing more than $5,000; and\n\u25cf Construction in Progress (CIP) for capital projects with a budget in excess of $100,000\nThe estimated useful lives for all the Company\u2019s property and equipment are as follows:",
+   "prose_after": "Intangible Assets\nThe Company accounts for its intangible assets in accordance with Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) Subtopic 350-30, General Intangibles Other Than Goodwill. ASC Subtopic 350-30, which requires assets to be measured based on the fair value of the consideration given or the fair value of the assets (or net assets) acquired, whichever is more clearly evident and, thus, more reliably measurable. Under ASC Subtopic 350-30 any intangible asset with a useful life is required to be amortized over that life and the useful life is to be evaluated every reporting period to determine whether events or circumstances warrant a revision to the remaining period of amortization. If the estimate of useful life is changed the remaining carrying amount of the intangible asset is amortized prospectively over the revised remaining useful life. Costs to renew or extend the term of an intangible assets are recognized as an expense when incurred.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Acquisition of assets from Excel Corporation and its subsidiaries on April 9, 2018",
+     "$",
+     "6,858,216"
+    ],
+    [
+     "Acquisition of 80.01% interest of Cuentas SDI, LLC on June 15, 2023 (see Note 7)",
+     "",
+     "1,281,673"
+    ],
+    [
+     "Goodwill balance as of December 31, 2023",
+     "$",
+     "8,139,889"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1593,
+    "end_line": 1600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company accounts for business combinations under the acquisition method of accounting in accordance with Accounting Standards Codification (\u201cASC\u201d) 805, Business Combinations, where the total purchase price is allocated to the tangible and identified intangible assets acquired and liabilities assumed based on their estimated fair values. The purchase price is allocated using the information currently available, and may be adjusted, up to one year from acquisition date, after obtaining more information regarding, among other things, asset valuations, liabilities assumed and revisions to preliminary estimates. The purchase price in excess of the fair value of the tangible and identified intangible assets acquired less liabilities assumed is recognized as goodwill.\nThe Company tests for indefinite-lived intangibles and goodwill impairment in the fourth quarter of each year and whenever events or circumstances indicate that the carrying amount of the asset exceeds its fair value and may not be recoverable. In accordance with ASU 2017-04, Intangibles - Goodwill and Other (Topic 350): Simplifying the Test for Goodwill Impairment, the Company performed a quantitative assessment of indefinite-lived intangibles and goodwill and determined there was no impairment at December 31, 2023 and 2022.\nA summary of goodwill as of December 31, 2023, is as follows:",
+   "prose_after": "Accounts Receivable\nAccounts receivable represent contractual residual payments due from the Company\u2019s processing partners or other customers. Residual payments are determined based on transaction fees and revenues from the credit and debit card processing activity of merchants for which the Company\u2019s processing partners pay the Company. Based on collection experience and periodic reviews of outstanding receivables, we have recorded an allowance for doubtful accounts of $207,850 and $38,000 as of December 31, 2023 and 2022, respectively.\nReserve for Chargeback Losses\nDisputes between a cardholder and a merchant periodically arise as a result of, among other things, cardholder dissatisfaction with merchandise quality or merchant services. Such disputes may not be resolved in the merchant\u2019s favor. In these cases, the transaction is \u201ccharged back\u201d to the merchant, which means the purchase price is refunded to the customer through the merchant\u2019s bank and charged to the merchant. If the merchant has inadequate funds, the Company must bear the credit risk for the full amount of the transaction. The Company evaluates the risk for such transactions and estimates the potential loss for chargebacks based primarily on historical experience and records a loss reserve accordingly. During the years ended December 31, 2023 and 2022 chargebacks have reduced recorded revenue amounts and no reserve for loss has been recorded as of December 31, 2023 and 2022.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1600,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Transaction and processing fees from wholesale contracts",
+     "$",
+     "26,073,349",
+     "$",
+     "26,424,478"
+    ],
+    [
+     "Transaction and processing fees from retail contracts",
+     "",
+     "1,022,896",
+     "",
+     "1,646,663"
+    ],
+    [
+     "Other transaction and processing fees, revenue from monthly recurring subscriptions, and merchant equipment rental and sales",
+     "",
+     "402,097",
+     "",
+     "1,571,659"
+    ],
+    [
+     "Bitcoin mining revenue",
+     "",
+     "538,718",
+     "",
+     "726,179"
+    ],
+    [
+     "Digital product revenue",
+     "",
+     "2,534,577",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total revenue from contracts with customers",
+     "$",
+     "30,571,637",
+     "$",
+     "30,368,979"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1613,
+    "end_line": 1627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Reserve for Chargeback Losses\nDisputes between a cardholder and a merchant periodically arise as a result of, among other things, cardholder dissatisfaction with merchandise quality or merchant services. Such disputes may not be resolved in the merchant\u2019s favor. In these cases, the transaction is \u201ccharged back\u201d to the merchant, which means the purchase price is refunded to the customer through the merchant\u2019s bank and charged to the merchant. If the merchant has inadequate funds, the Company must bear the credit risk for the full amount of the transaction. The Company evaluates the risk for such transactions and estimates the potential loss for chargebacks based primarily on historical experience and records a loss reserve accordingly. During the years ended December 31, 2023 and 2022 chargebacks have reduced recorded revenue amounts and no reserve for loss has been recorded as of December 31, 2023 and 2022.\nRevenue Recognition\nThe following table presents the Company\u2019s revenue disaggregated by revenue source:",
+   "prose_after": "The Company recognizes revenue under ASC 606, \u201cRevenue from Contracts with Customers\u201d (\u201cASC 606\u201d). The Company determines revenue recognition through the following steps:\n\u25cf Identification of a contract with a customer;\n\u25cf Identification of the performance obligations in the contract;\n\u25cf Determination of the transaction price;\n\u25cf Allocation of the transaction price to the performance obligations in the contract; and\n\u25cf Recognition of revenue when or as the performance obligations are satisfied.\nRevenue is recognized when control of the promised goods or services is transferred to customers, in an amount that reflects the consideration the Company expects to be entitled to in exchange for those goods or services. Shipping and handling activities associated with outbound freight after control over a product has transferred to a customer are accounted for as a fulfillment activity and recognized as revenue at the point in time at which control of the goods transfers to the customer. As a practical expedient, the Company does not adjust the transaction price for the effects of a significant financing component if, at contract inception, the period between customer payment and the transfer of goods or services is expected to be one year or less.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1600,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1636,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Merchant portfolios",
+     "$",
+     "2,409,965",
+     "",
+     "$",
+     "2,405,000",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(2,322,182)",
+     "",
+     "",
+     "(1,793,333)",
+     ""
+    ],
+    [
+     "Net residual portfolios",
+     "$",
+     "87,783",
+     "",
+     "$",
+     "611,667",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1697,
+    "end_line": 1706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Further, during 2023, the Company paused any non-essential spending on legal and consulting advisors in connection with OLBit\u2019s State Money Transmission License and New York BitLicense applications to focus on the Company\u2019s payment processing business and Bitcoin mining business. The Company does plan to restart the process to apply for the licenses in late 2024 or 2025. Therefore, expenses incurred during 2023 for the work are not expected to continue to have an impact on the working capital of the Company.\nManagement believes that its current available resources will be sufficient to fund the Company\u2019s planned expenditures over the next 12 months. However, management recognizes that it may be required to obtain additional resources to successfully execute its business plans. No assurances can be given that management will be successful in raising additional capital, if needed, or on acceptable terms. These financial statements do not include any adjustments relating to the recoverability and classification of recorded asset amounts and classification of liabilities that might be necessary should the Company determine it shall be unable to continue as a going concern.\nNOTE 4 \u2013 INTANGIBLE ASSETS\nIntangible assets consist of the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Trade name",
+     "$",
+     "2,500,000",
+     "",
+     "$",
+     "2,500,000",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(2,500,000)",
+     "",
+     "",
+     "(2,000,000)",
+     ""
+    ],
+    [
+     "Net trade name",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "500,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1707,
+    "end_line": 1714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Merchant Portfolio",
+     "$",
+     "\u2014",
+     "$",
+     "18,000,000",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "\u2014",
+     "",
+     "(2,476,191)",
+     ""
+    ],
+    [
+     "Net trade name",
+     "$",
+     "\u2014",
+     "$",
+     "15,523,809",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1715,
+    "end_line": 1722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exclusive agreement to purchase natural gas",
+     "$",
+     "4,499,952",
+     "",
+     "$",
+     "4,499,952",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(1,087,489)",
+     "",
+     "",
+     "(825,173)",
+     ""
+    ],
+    [
+     "Net mineral rights",
+     "$",
+     "3,412,463",
+     "",
+     "$",
+     "3,674,779",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total intangible assets, net",
+     "$",
+     "3,500,246",
+     "",
+     "$",
+     "20,310,255",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1723,
+    "end_line": 1733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Due to the ongoing litigation with FFS relating to a breach of contract in connection with the Acquired Merchant Portfolio (see Note 15), the Company has written off the asset and recognized a $12,642,857 loss on impairment for the year ended December 31, 2023.\nAmortization expense for the years ended December 31, 2023 and 2022 was $4,172,117 and $3,664,488, respectively.\nThe Company\u2019s merchant portfolio and tradename are being amortized over respective useful lives of 7 and 5 years and the Company\u2019s agreement to purchase natural gas is being amortized over the useful life of 10 years.\nThe following sets forth the estimated amortization expense related to amortizing intangible assets for the years ended December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1680,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2024",
+     "$",
+     "534,798"
+    ],
+    [
+     "2025",
+     "",
+     "450,988"
+    ],
+    [
+     "2026",
+     "",
+     "450,988"
+    ],
+    [
+     "2027",
+     "",
+     "450,988"
+    ],
+    [
+     "2028",
+     "",
+     "449,995"
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,162,489"
+    ],
+    [
+     "Total",
+     "$",
+     "3,500,246"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1742,
+    "end_line": 1753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Due to the ongoing litigation with FFS relating to a breach of contract in connection with the Acquired Merchant Portfolio (see Note 15), the Company has written off the asset and recognized a $12,642,857 loss on impairment for the year ended December 31, 2023.\nAmortization expense for the years ended December 31, 2023 and 2022 was $4,172,117 and $3,664,488, respectively.\nThe Company\u2019s merchant portfolio and tradename are being amortized over respective useful lives of 7 and 5 years and the Company\u2019s agreement to purchase natural gas is being amortized over the useful life of 10 years.\nThe following sets forth the estimated amortization expense related to amortizing intangible assets for the years ended December 31:",
+   "prose_after": "The weighted average remaining useful life of amortizing intangible assets was 5.12 years at December 31, 2023.\nNOTE 5 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1780,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "36,471",
+     ""
+    ],
+    [
+     "Office equipment",
+     "",
+     "186,600",
+     "",
+     "",
+     "1,537,321",
+     ""
+    ],
+    [
+     "Computer software",
+     "",
+     "141,337",
+     "",
+     "",
+     "182,345",
+     ""
+    ],
+    [
+     "Leasehold Improvements",
+     "",
+     "\u2014",
+     "",
+     "",
+     "113,676",
+     ""
+    ],
+    [
+     "Bitcoin mining equipment",
+     "",
+     "8,425,000",
+     "",
+     "",
+     "9,410,000",
+     ""
+    ],
+    [
+     "Building",
+     "",
+     "409,296",
+     "",
+     "",
+     "409,296",
+     ""
+    ],
+    [
+     "Construction in process",
+     "",
+     "2,383,396",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "11,545,629",
+     "",
+     "",
+     "11,689,109",
+     ""
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "(5,673,878)",
+     "",
+     "",
+     "(4,363,897)",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "$",
+     "5,871,751",
+     "",
+     "$",
+     "7,325,212",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1760,
+    "end_line": 1778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "The weighted average remaining useful life of amortizing intangible assets was 5.12 years at December 31, 2023.\nNOTE 5 \u2013 PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "prose_after": "During the year ended December 31, 2023 the Company wrote off $524,965 worth of assets with a net book value of zero due to the assets no longer being in use and wrote off bitcoin mining equipment no longer in use, recognizing a loss on impairment of $259,931. Depreciation expense for the years ended December 31, 2023 and 2022 was $2,560,015 and $3,204,246, respectively.\nNOTE 6 \u2013 INVESTMENT IN EQUITY SECURITIES\nThe Company owns 165.27 units (1.11%) of Node Capital Token Opportunity Fund LP (the \u201cFund\u201d) for which it paid an aggregate of $250,000 in August 2021. The investment was locked up for two years and a redemption can be made after the expiration of the lock up period with 90 days written notice. The Fund may, at the discretion of the General Partner, compulsorily redeem all interests if the Net Asset Value of the Fund falls below $1,000,000. During the years ended December 31, 2023 and 2022, the Company recognized an unrealized gain of $23,662 and $0, respectively, and as of December 31, 2023 and 2022, the investment in equity securities was $273,662 and $250,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1735,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1780,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consideration issued",
+     "$",
+     "850,000",
+     ""
+    ],
+    [
+     "Identified assets, liabilities, and noncontrolling interest",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "141,337",
+     ""
+    ],
+    [
+     "Cash overdraft",
+     "",
+     "(8,050)",
+     ""
+    ],
+    [
+     "Customer deposits",
+     "",
+     "(45,806)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(283,626)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(23,028)",
+     ""
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "(212,500)",
+     ""
+    ],
+    [
+     "Total identified assets, liabilities, and noncontrolling interest",
+     "",
+     "(431,673)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Excess purchase price allocated to goodwill",
+     "$",
+     "1,281,673",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Consideration"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1795,
+    "end_line": 1812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 BUSINESS COMBINATIONS"
+    }
+   },
+   "prose_before": "The Company accounted for the transaction as a business combination under ASC 805 and as a result, allocated the fair value of the book value of identifiable assets acquired and liabilities assumed as of the acquisition date as outlined in the table below. The consolidated income statement for the year ended December 31, 2023, includes $2,534,577 of revenue and $3,001,190 of expenses of Cuentas SDI, LLC from the date of acquisition (June 15, 2023) through December 31, 2023 for a net loss of $466,613.\nThe excess of the purchase price over the estimated fair values of the underlying identifiable assets acquired, liabilities assumed, and non-controlling interest was allocated to goodwill. The provisional estimated fair value of the noncontrolling interest was based on the price the Company paid for their 80.01% of their controlling interest. The goodwill represents expected synergies from the combined operations and the acquired base of current and prior merchants to which we hope to sell our merchant services.\nThe allocation of the purchase price and the estimated fair market values of the assets acquired, liabilities assumed, and noncontrolling interest are shown below:",
+   "prose_after": "Had the business combination taken place as of January 1, 2022 the Company would have recorded $8,061,429 in revenues and $195,192 in losses for the year ended December 31, 2022 and would have recorded $4,541,090 in revenues and $138,459 in losses for the year ended December 31, 2023.\nNOTE 8 \u2013 NOTE PAYABLE\nOn November 29, 2021, the Company entered into a Master Equipment Finance Agreement (the \u201cMFA\u201d) with VFS LLC (\u201cVFS\u201d) which would allow the Company to finance the purchase of certain equipment. The collateral and interest rate are determined at the time the Company borrows the funds. During the year ended December 31, 2022, the Company received, as an initial draw on the MFA, $875,000 from VFS (the \u201cEquipment Loan\u201d). The Equipment Loan is secured by bitcoin mining computers being utilized by DMINT. The Equipment Loan requires monthly payments of $24,838 until the loan is repaid in full or it matures on March 1, 2025. During the years ended December 31, 2023 and 2022 the Company made repayments of $226,549 and $317,571, respectively. As of December 31, 2023 the note payable balance was $407,858, of which $258,819 will be repaid in the year ending December 31, 2024 and $149,039 will be repaid in the year ending December 31, 2025.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1780,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Stock Options",
+     "Options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Options outstanding January 1, 2023",
+     "",
+     "1,375,655",
+     "",
+     "$",
+     "0.004",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "200,000",
+     "",
+     "$",
+     "0.010",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "(6,667)",
+     "",
+     "$",
+     "0.001",
+     "",
+     ""
+    ],
+    [
+     "Options outstanding December 31, 2023",
+     "",
+     "1,568,988",
+     "",
+     "$",
+     "0.004",
+     "$",
+     "1,656,270"
+    ],
+    [
+     "Shares exercisable at December 31, 2023",
+     "",
+     "1,248,016",
+     "",
+     "$",
+     "0.003",
+     "$",
+     "1,319,229"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1839,
+    "end_line": 1853
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 STOCK OPTIONS"
+    }
+   },
+   "prose_before": "On January 3, 2023, the Company granted stock options to purchase 200,000 shares of common stock pursuant to the terms of the Company\u2019s employment agreement with Mr. Yakov. The options have a one year vesting term and 50,000 vesting on January 1, 2025. The options have an exercise price of $0.01 per share. The aggregate fair value of the options totaled $541,999 based on the Black Scholes Merton pricing model using the following estimates: exercise price of $0.01, 1.63% risk free rate, 295% volatility and expected life of the options of 10 years. The fair value of the options was recognized over the vesting period with a credit to additional paid in capital.\nDuring the year ended December 31, 2023, the option granted to Mr. Yakov on January 1, 2018 to purchase 6,667 shares of common stock expired; therefore, the Company has shown those options as expired as of December 31, 2023.\nA summary of the status of the Company\u2019s outstanding stock options and changes during the years ended December 31, 2023 and 2022 is presented below:",
+   "prose_after": "During the years ended December 31, 2023 and 2022 the Company recognized $727,758 and $624,683, respectively, in stock-based compensation related to the above-mentioned options. As of December 31, 2023 there was no unrecognized expense for the above-mentioned options and the weighted average contractual term of the options outstanding and of the option exercisable were 6.2 and 5.7 years, respectively.\nNOTE 10 \u2013 WARRANTS\nA summary of the status of the Company\u2019s outstanding warrants and changes during the years ended December 31, 2022 and 2023 is presented below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1855,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Warrants",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contract Term",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2021",
+     "",
+     "9,963,127",
+     "",
+     "$",
+     "5.02",
+     "",
+     "4.55"
+    ],
+    [
+     "Underwriter Warrant Exercised",
+     "",
+     "(1,400,000)",
+     "",
+     "$",
+     "0.0001",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2022",
+     "",
+     "8,563,127",
+     "",
+     "$",
+     "5.02",
+     "",
+     "3.00"
+    ],
+    [
+     "Warrants Exercised",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2023",
+     "",
+     "8,563,127",
+     "",
+     "$",
+     "6.83",
+     "",
+     "2.60"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1860,
+    "end_line": 1873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 WARRANTS"
+    }
+   },
+   "prose_before": "During the years ended December 31, 2023 and 2022 the Company recognized $727,758 and $624,683, respectively, in stock-based compensation related to the above-mentioned options. As of December 31, 2023 there was no unrecognized expense for the above-mentioned options and the weighted average contractual term of the options outstanding and of the option exercisable were 6.2 and 5.7 years, respectively.\nNOTE 10 \u2013 WARRANTS\nA summary of the status of the Company\u2019s outstanding warrants and changes during the years ended December 31, 2022 and 2023 is presented below:",
+   "prose_after": "NOTE 11 \u2013 OPERATING LEASES\nOn June 24, 2020, eVance, Inc. (\u201ceVance\u201d) entered into a Lease Agreement (the \u201cLease\u201d) with Pergament Lodi, LLC (the \u201cLessor\u201d) relating to approximately 4,277 square feet of property located at 960 Northpoint Parkway, Alpharetta, Georgia, Suite 400. The term of the Lease was for thirty-nine\n(39) months commencing September 1, 2020. The monthly base rent was $8,019 for the first twelve (12) months increasing thereafter to $8,768. The total rent for the entire lease term was $315,044 and $8,768 is payable as a security deposit. The first three months of rent were abated as eVance was not in default of any portion of the Lease. The lease has been extended on a month-to-month basis with a base rent of $8,554 per month.\nOn January 11, 2022, DMINT entered into two leases (the \u201cLeases\u201d) in Bradford, Pennsylvania relating to a combined 10,000 square feet of property located at the Bradford Regional Airport Authority multi-tenant building in Lafayette Township. The Leases were each for a term of five years, ending on the later of the date of occupancy and November 10, 2026. The monthly base rent for \u201cCell 3\u201d, comprising 4,000 square feet, was $1,667 per month. The monthly base rent for \u201cCell 4\u201d, comprising 6,000 square feet, was $2,500 per month. The total rent for the entire lease term of the Leases was $250,000 and $8,768 was payable as a security deposit.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1855,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1880,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NOL Carryover",
+     "$",
+     "7,624,402",
+     "",
+     "$",
+     "5,913,700",
+     ""
+    ],
+    [
+     "Allowance for Doubtful Accounts",
+     "",
+     "56,120",
+     "",
+     "",
+     "10,300",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "3,193,891",
+     "",
+     "",
+     "(926,730)",
+     ""
+    ],
+    [
+     "Less valuation allowance",
+     "",
+     "(10,874,413)",
+     "",
+     "",
+     "(4,997,270)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1951,
+    "end_line": 1963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 INCOME TAX"
+    }
+   },
+   "prose_before": "DMINT is currently in a contract dispute with a contractor. The Company has paid $100,000 to the contractor for work completed and materials provided and returned materials to offset the potential liability of approximately $444,000. The Company has recorded just over $315,000 in accounts payable related to the matter. The matter continues to be in discovery; however, the parties continue to discuss settlement. The parties are working on a payment schedule but have been unable to agree on terms to date.\nNOTE 16 \u2013 INCOME TAX\nDeferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carry forwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax bases. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized.\nNet deferred tax assets consist of the following components as of December 31:",
+   "prose_after": "The income tax provision differs from the amount of income tax determined by applying the U.S. federal income tax rate to pre-tax income from continuing operations for the period ended December 31, due to the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1983,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Book loss",
+     "$",
+     "(4,868,000)",
+     "",
+     "$",
+     "(1,635,000)",
+     ""
+    ],
+    [
+     "State taxes",
+     "",
+     "(1,391,000)",
+     "",
+     "",
+     "(467,000)",
+     ""
+    ],
+    [
+     "Meals and entertainment",
+     "",
+     "1,300",
+     "",
+     "",
+     "2,200",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "196,495",
+     "",
+     "",
+     "168,400",
+     ""
+    ],
+    [
+     "Non deductible expenses -legal fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "84,476",
+     ""
+    ],
+    [
+     "NOLs expired",
+     "",
+     "253,646",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other adjustments",
+     "",
+     "(70,584)",
+     "",
+     "",
+     "(9,741)",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "5,878,143",
+     "",
+     "",
+     "1,856,665",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1966,
+    "end_line": 1981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 INCOME TAX"
+    }
+   },
+   "prose_before": "The income tax provision differs from the amount of income tax determined by applying the U.S. federal income tax rate to pre-tax income from continuing operations for the period ended December 31, due to the following:",
+   "prose_after": "At December 31, 2023, the Company had operating loss carry forwards of approximately $24,700,000, $2,600,000 of which expire from 2024 \u2013 2040, and no expiration on the remaining amount. In accordance with Section 382 of the Internal Revenue code, the usage of the Company\u2019s net operating loss carryforwards may be limited in the event of a change in ownership. A full Section 382 analysis has not been prepared and NOLs could be subject to limitation under Section 382.\nNOTE 17 \u2013 SEGMENTS\nThe Company applies ASC 280, Segment Reporting, in determining its reportable segments. The Company has two reportable segments: Bitcoin Mining and Fintech Services. The guidance requires that segment disclosures present the measure(s) used by the Chief Operating Decision Maker (\u201cCODM\u201d) to decide how to allocate resources and for purposes of assessing such segments\u2019 performance. The Company\u2019s CODM is comprised of several members of its executive management team who use revenue and expenses of our two reporting segments to assess the performance of the business of our reportable operating segments.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1983,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended December 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Reportable segment revenue:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue, net - cryptocurrency mining",
+     "$",
+     "726,179",
+     ""
+    ],
+    [
+     "Fintech services revenue",
+     "",
+     "29,642,800",
+     ""
+    ],
+    [
+     "Total segment and consolidated revenue",
+     "$",
+     "30,368,979",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "",
+     "(3,193,683)",
+     ""
+    ],
+    [
+     "Fintech services",
+     "",
+     "(26,857,523)",
+     ""
+    ],
+    [
+     "Segment profit",
+     "",
+     "317,773",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "(8,715,769)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "(8,397,996)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year ended December 31, 2022",
+    "Reportable segment revenue:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1990,
+    "end_line": 2009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "At December 31, 2023, the Company had operating loss carry forwards of approximately $24,700,000, $2,600,000 of which expire from 2024 \u2013 2040, and no expiration on the remaining amount. In accordance with Section 382 of the Internal Revenue code, the usage of the Company\u2019s net operating loss carryforwards may be limited in the event of a change in ownership. A full Section 382 analysis has not been prepared and NOLs could be subject to limitation under Section 382.\nNOTE 17 \u2013 SEGMENTS\nThe Company applies ASC 280, Segment Reporting, in determining its reportable segments. The Company has two reportable segments: Bitcoin Mining and Fintech Services. The guidance requires that segment disclosures present the measure(s) used by the Chief Operating Decision Maker (\u201cCODM\u201d) to decide how to allocate resources and for purposes of assessing such segments\u2019 performance. The Company\u2019s CODM is comprised of several members of its executive management team who use revenue and expenses of our two reporting segments to assess the performance of the business of our reportable operating segments.\nThe following table details revenue, operating expenses, and assets for the Company\u2019s reportable segments for the year ended December 31, 2022.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1983,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2020,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Total Assets:",
+     "",
+     ""
+    ],
+    [
+     "Cryptocurrency mining",
+     "$",
+     "9,376,078"
+    ],
+    [
+     "Fintech services",
+     "",
+     "29,237,103"
+    ],
+    [
+     "",
+     "$",
+     "38,613,181"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022",
+    "Total Assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2010,
+    "end_line": 2020
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following tables detail revenue, operating expenses, and assets, liabilities and equity for the Company\u2019s reportable segments for the year ended December 31, 2023.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1983,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2020,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fintech Segment",
+     "",
+     "",
+     "Bitcoin Mining Segment",
+     "",
+     "",
+     "Consolidated Total",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "178,361",
+     "",
+     "$",
+     "645",
+     "",
+     "$",
+     "179,006",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "466,890",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "466,890",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "86,075",
+     "",
+     "",
+     "98,838",
+     "",
+     "",
+     "184,913",
+     ""
+    ],
+    [
+     "Other receivables",
+     "",
+     "5,016",
+     "",
+     "",
+     "398,983",
+     "",
+     "",
+     "403,999",
+     ""
+    ],
+    [
+     "Investment in equity securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "273,662",
+     "",
+     "",
+     "273,662",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "312,103",
+     "",
+     "",
+     "312,103",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "736,342",
+     "",
+     "",
+     "1,084,231",
+     "",
+     "",
+     "1,820,573",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "74,894",
+     "",
+     "",
+     "5,796,857",
+     "",
+     "",
+     "5,871,751",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "87,782",
+     "",
+     "",
+     "3,412,464",
+     "",
+     "",
+     "3,500,246",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "8,139,889",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,139,889",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "",
+     "395,952",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "395,952",
+     ""
+    ],
+    [
+     "Total Other Assets",
+     "",
+     "8,698,517",
+     "",
+     "",
+     "9,209,321",
+     "",
+     "",
+     "17,907,838",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "9,434,859",
+     "",
+     "$",
+     "10,293,552",
+     "",
+     "$",
+     "19,728,411",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "3,021,422",
+     "",
+     "$",
+     "505,267",
+     "",
+     "$",
+     "3,526,689",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "1,017,708",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,017,708",
+     ""
+    ],
+    [
+     "Preferred dividend payable (related parties)",
+     "",
+     "418,606",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "418,606",
+     ""
+    ],
+    [
+     "Merchant portfolio purchase installment obligation",
+     "",
+     "2,000,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,000,000",
+     ""
+    ],
+    [
+     "Related party payable",
+     "",
+     "12,678",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12,678",
+     ""
+    ],
+    [
+     "Note payable \u2013 current portion",
+     "",
+     "258,819",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "258,819",
+     ""
+    ],
+    [
+     "Due to/from intercompany",
+     "",
+     "(22,278,243)",
+     "",
+     "",
+     "22,278,243",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "(15,549,010)",
+     "",
+     "",
+     "22,783,510",
+     "",
+     "",
+     "7,234,500",
+     ""
+    ],
+    [
+     "Long Term Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable, net of current portion",
+     "",
+     "149,039",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "149,039",
+     ""
+    ],
+    [
+     "Operating lease liability \u2013 net of current portion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "(15,399,971)",
+     "",
+     "",
+     "22,783,510",
+     "",
+     "",
+     "7,383,539",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A Preferred stock",
+     "",
+     "10",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "1,521",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,521",
+     ""
+    ],
+    [
+     "Treasury stock",
+     "",
+     "(109,988)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(109,988)",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "68,909,001",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "68,909,001",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(44,084,940)",
+     "",
+     "",
+     "(12,489,956)",
+     "",
+     "",
+     "(56,574,896)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "24,715,604",
+     "",
+     "",
+     "(12,489,956)",
+     "",
+     "",
+     "12,225,648",
+     ""
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "119,224",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "119,224",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "24,834,828",
+     "",
+     "",
+     "(12,489,956)",
+     "",
+     "",
+     "12,344,872",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "9,434,857",
+     "",
+     "$",
+     "10,293,554",
+     "",
+     "$",
+     "19,728,411",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2023,
+    "end_line": 2085
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "The following tables detail revenue, operating expenses, and assets, liabilities and equity for the Company\u2019s reportable segments for the year ended December 31, 2023.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2020,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fintech Segment",
+     "",
+     "",
+     "Bitcoin Mining Segment",
+     "",
+     "",
+     "Consolidated Total",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Transaction and processing fees",
+     "$",
+     "27,096,245",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "27,096,245",
+     ""
+    ],
+    [
+     "Merchant equipment rental and sales",
+     "",
+     "89,532",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "89,532",
+     ""
+    ],
+    [
+     "Revenue, net - bitcoin mining",
+     "",
+     "\u2014",
+     "",
+     "",
+     "538,718",
+     "",
+     "",
+     "538,718",
+     ""
+    ],
+    [
+     "Other revenue from monthly recurring subscriptions",
+     "",
+     "312,565",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "312,565",
+     ""
+    ],
+    [
+     "Digital product revenue",
+     "",
+     "2,534,577",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,534,577",
+     ""
+    ],
+    [
+     "Total revenue",
+     "",
+     "30,032,919",
+     "",
+     "",
+     "538,718",
+     "",
+     "",
+     "30,571,637",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Processing and servicing costs, excluding merchant portfolio amortization",
+     "",
+     "21,181,499",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "21,181,499",
+     ""
+    ],
+    [
+     "Amortization expense",
+     "",
+     "3,722,122",
+     "",
+     "",
+     "449,995",
+     "",
+     "",
+     "4,172,117",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "61,602",
+     "",
+     "",
+     "2,498,413",
+     "",
+     "",
+     "2,560,015",
+     ""
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "2,759,181",
+     "",
+     "",
+     "1,058,327",
+     "",
+     "",
+     "3,817,508",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "2,167,852",
+     "",
+     "",
+     "168,933",
+     "",
+     "",
+     "2,336,785",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "4,965,686",
+     "",
+     "",
+     "2,113,261",
+     "",
+     "",
+     "7,078,947",
+     ""
+    ],
+    [
+     "Impairment expense",
+     "",
+     "12,642,857",
+     "",
+     "",
+     "259,931",
+     "",
+     "",
+     "12,902,788",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "47,500,799",
+     "",
+     "",
+     "6,548,860",
+     "",
+     "",
+     "54,049,659",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(17,467,880)",
+     "",
+     "",
+     "(6,010,142)",
+     "",
+     "",
+     "(23,478,022)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Realized gain on sale of bitcoin",
+     "",
+     "\u2014",
+     "",
+     "",
+     "288,584",
+     "",
+     "",
+     "288,584",
+     ""
+    ],
+    [
+     "Unrealized gain on investment",
+     "",
+     "23,662",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "23,662",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(148,483)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(148,483)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "40,320",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "40,320",
+     ""
+    ],
+    [
+     "Total other income",
+     "",
+     "(84,501)",
+     "",
+     "",
+     "288,584",
+     "",
+     "",
+     "204,083",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(17,552,381)",
+     "",
+     "",
+     "(5,721,558)",
+     "",
+     "",
+     "(23,273,939)",
+     ""
+    ],
+    [
+     "Net loss attributed to noncontrolling interest",
+     "",
+     "93,276",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "93,276",
+     ""
+    ],
+    [
+     "Net loss attributed to The OLB Group and Subsidiaries",
+     "",
+     "(17,459,105)",
+     "",
+     "",
+     "(5,721,558)",
+     "",
+     "",
+     "(23,180,663)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred dividends (related parties)",
+     "",
+     "(124,222)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(124,222)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss Applicable to Common Shareholders",
+     "$",
+     "(17,583,327)",
+     "",
+     "$",
+     "(5,721,558)",
+     "",
+     "$",
+     "(23,304,885)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2086,
+    "end_line": 2136
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2013 SEGMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 18 \u2013 MERCHANT PORTFOLIO PURCHASE INSTALLMENT OBLIGATION\nOn November 24, 2021, we entered into an Asset Purchase Agreement (the \u201cAgreement\u201d) dated as of November 15, 2021 with FFS Data Corporation (\u201cSeller\u201d) whereby we acquired a portfolio of merchants utilizing financial transaction processing services (the \u201cAcquired Merchant Portfolio\u201d). The purchase price was $20 million, with $16 million paid at closing, $2 million payable within six months after closing, and a $2 million payment to be transferred to an escrow account, contingent upon an Attrition Adjustment, as described in the Agreement. Company management has recognized a liability for the $2,000,000 contingent payment amount as of December 31, 2023 and 2022. Legal proceedings regarding this matter began in 2022 and have continued through 2023, see Note 15.\nNOTE 19 \u2013 SUBSEQUENT EVENTS\nIn accordance with SFAS 165 (ASC 855-10) management has performed an evaluation of subsequent events through the date that the financial statements were issued and has determined that is has the following material subsequent events to disclose in these financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 2136,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s)"
+    ],
+    [
+     "Ronny Yakov",
+     "65",
+     "Chief Executive Officer and Chairman of the Board of Directors"
+    ],
+    [
+     "Rachel Boulds",
+     "54",
+     "Chief Financial Officer"
+    ],
+    [
+     "Patrick Smith",
+     "51",
+     "Vice President, Finance"
+    ],
+    [
+     "Ehud Ernst",
+     "64",
+     "Director and Chairman of the Audit Committee"
+    ],
+    [
+     "Amir Sternhell",
+     "62",
+     "Director"
+    ],
+    [
+     "Alina Dulimof",
+     "57",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2213,
+    "end_line": 2223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Internal control over financial reporting has inherent limitations, which include but is not limited to the use of independent professionals for advice and guidance, interpretation of existing and/or changing rules and principles, segregation of management duties, scale of organization, and personnel factors. Internal control over financial reporting is a process, which involves human diligence and compliance and is subject to lapses in judgment and breakdowns resulting from human failures. Internal control over financial reporting also can be circumvented by collusion or improper management override. Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements on a timely basis, however these inherent limitations are known features of the financial reporting process and it is possible to design into the process safeguards to reduce, though not eliminate, this risk. Therefore, even those systems determined to be effective can provide only reasonable assurance with respect to financial statement preparation and presentation. Projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.\nChanges in Internal Control over Financial Reporting\nAlthough management believes that the financial statements included in this report fairly present in all material respects our financial condition, results of operations and cash flows for the periods presented, management continues to make improvements to internal controls as deemed necessary for changes within our operations.\nItem 9B. Other Information\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNone.\nPart III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table sets forth the names, ages, and titles of our executive officers and directors.",
+   "prose_after": "Ronny Yakov is Chief Executive Officer, Chairman of the Board of Directors, founder and majority shareholder of the Company. Mr. Yakov has over 25 years of experience of concept-to-print, software and e-commerce marketing experience with Fortune 500 and 1,000 companies and a proven track record of helping clients adapt their businesses to technological developments. In 1996, Mr. Yakov entered into the electronic mail-order catalog business with Playboy Enterprises, creating and hosting two e-commerce sites: Critics\u2019 Choice Video and Collectors\u2019 Choice Music. As founder of the Company, Mr. Yakov has since developed a number of other branded e-commerce sites for clients, selling a variety of products including sporting goods, chocolates and cosmetics, with which the company now partners to provide ongoing hosting and maintenance. Other significant accomplishments of Mr. Yakov have included establishing an AT&T wholesale e-commerce platform for 180,000 employees and working with high-profile clients such as Disney, Cisco Systems, Pfizer, Motorola, and Microsoft, among many others. Mr. Yakov also developed and maintains a complex extranet/intranet infrastructure that allows Doremus, an Omnicom Communication subsidiary, to provide its advertising services to 50 of the top financial institutions on a real-time basis.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2206,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 2230,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($) (2)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($) (1)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Ronny Yakov,",
+     "2023",
+     "$",
+     "750,000",
+     "$",
+     "300,000",
+     "$",
+     "0",
+     "$",
+     "541,999",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "30,000",
+     "$",
+     "1,621,999"
+    ],
+    [
+     "CEO, Chairman",
+     "2022",
+     "$",
+     "750,000",
+     "$",
+     "300,000",
+     "$",
+     "0",
+     "$",
+     "1,217,264",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "30,000",
+     "$",
+     "2,297,264"
+    ],
+    [
+     "Patrick Smith,",
+     "2023",
+     "$",
+     "350,000",
+     "$",
+     "150,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "450,000"
+    ],
+    [
+     "Vice President",
+     "2022",
+     "$",
+     "350,000",
+     "$",
+     "150,000",
+     "$",
+     "0",
+     "$",
+     "279,412",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "779,412"
+    ],
+    [
+     "Rachel Boulds,",
+     "2023",
+     "$",
+     "36,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "36,000"
+    ],
+    [
+     "CFO",
+     "2022",
+     "$",
+     "36,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "36,000"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2321,
+    "end_line": 2334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf establishing and administering a periodic assessment procedure relating to the performance of the Board of Directors as a whole and its individual members; and\n\u25cf periodically reviewing the corporate governance guidelines and supervising the management representative charged with implementing the Company\u2019s corporate governance procedures.\nCompensation Committee Interlocks and Insider Participation\nNone of the members of the Compensation Committee is (or was at any time previously) an officer or employee. None of our executive officers serve or in the past fiscal year has served as a member of the Board of Directors or Compensation Committee of any other entity that has one or more executive officers serving as a member of our Board of Directors or expected to serve on the Compensation Committee.\nItem 11. Executive Compensation\nThe table below summarizes all compensation awarded to, earned by, or paid to each named executive officer for our last two completed fiscal years for all services rendered to us.",
+   "prose_after": "(1) Car allowance\n(2) Stock based compensation reflects fair value of options granted during the years ended December 31, 2023 and 2022, each with an exercise price of $0.01 per share. 50% of options vested as of the date of grant, 25% vested on January 1, 2023 and 50% vested on January 1, 2024. Options expire after ten years from grant date if not exercised.\nEmployment Agreements\nOn January 11, 2022, the Company entered into a new employment agreement with Mr. Yakov (the \u201cYakov Agreement\u201d) and a new employment agreement with Mr. Smith (the \u201cSmith Agreement\u201d). The Yakov Agreement maintains Mr. Yakov\u2019s role as the Company\u2019s Chief Executive Officer through December 31, 2027 and extended for one-year terms thereafter. The Smith Agreement maintains Mr. Smith\u2019s role as the Company\u2019s Vice President, Finance unless terminated or upon his resignation.\nThe Yakov Agreement sets Mr. Yakov\u2019s base salary at $750,000 and he is eligible for insurance coverages and benefits available to the Company\u2019s employees pursuant to the terms of the Company\u2019s insurance and benefit plans. Mr. Yakov received a $490,000 bonus for acquisitions closed by the Company in 2020 and 2021 and he will be eligible to receive an acquisition bonus equal to two percent (2%) of the gross purchase price paid in connection with a future acquisition. Mr. Yakov shall be eligible to receive an annual bonus of Three Hundred Thousand Dollars ($300,000) based on performance criteria established by the Board. In addition, on an annual basis, Mr. Yakov shall receive options to purchase up to 200,000 shares of common stock of the Company at an exercise price of $0.01 per share.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2306,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 2344,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Fees Earned or Paid in Cash ($)",
+     "",
+     "Stock Awards ($) (1)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity Incentive Plan Compensation ($)",
+     "",
+     "Nonqualified Deferred Compensation Earnings ($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Alina Dulimof",
+     "$",
+     "0",
+     "$",
+     "50,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "50,000"
+    ],
+    [
+     "Ehud Ernst",
+     "$",
+     "0",
+     "$",
+     "65,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "65,000"
+    ],
+    [
+     "Amir Sternhell",
+     "$",
+     "0",
+     "$",
+     "50,000",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "50,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2407,
+    "end_line": 2417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The 2020 Equity Incentive Plan provides that in the event of a change of control, the Compensation Committee or our Board of Directors shall have the discretion to determine whether and to what extent to accelerate the vesting, exercise or payment of an award.\nIn addition, our Board of Directors may amend our 2020 Equity Incentive Plan at any time. However, without stockholder approval, our 2020 Equity Incentive Plan may not be amended in a manner that would:\n\u25cf increase the number of shares that may be issued under our 2020 Equity Incentive Plan;\n\u25cf materially modify the requirements for eligibility for participation in our 2020 Equity Incentive Plan;\n\u25cf materially increase the benefits to participants provided by our 2020 Equity Incentive Plan; or\n\u25cf otherwise disqualify our 2020 Equity Incentive Plan for coverage under Rule 16b-3 promulgated under the Exchange Act.\nAwards previously granted under our 2020 Equity Incentive Plan may not be impaired or affected by any amendment of our 2020 Equity Incentive Plan, without the consent of the affected grantees.\nDirector Compensation\nOur directors are entitled to the following fixed compensation for their services as directors during the fiscal year ended December 31, 2023.",
+   "prose_after": "(1) Directors were reimbursed for their reasonable out-of-pocket expenses incurred in connection with their duties. Through December 31, 2023, on an annual basis, each independent director earned compensation in the form of shares of our Common Stock with a fair market value equal to $50,000 as of the date of issuance and they will be reimbursed for their reasonable out-of-pocket expenses incurred in connection with their duties. The Chairman of the Audit Committee received additional shares of Common Stock with a fair market value equal to $15,000 as of the date of issuance.\n(2) Beginning in 2024, all Directors will receive a fee equal to $10,000 per year, payable in four installments of $2500 on January 1, April 1, July 1 and October 1 of each year.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth, as of April 8, 2024, information regarding the beneficial ownership of each class of our voting securities by: (i) our officers and directors; (ii) all of our officers and directors as a group; and (iii) each person known by us to beneficially own 5% or more of any class of our outstanding voting securities. Generally, a person is deemed to be a \u201cbeneficial owner\u201d of a security if that person has or shares the power to dispose or to direct the disposition of such security. A person is also deemed to be a beneficial owner of any securities of which the person has the right to acquire beneficial ownership within 60 days.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2400,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "Shares of Common Stock Beneficially Owned**",
+     "",
+     "",
+     "Percent of Common Stock Beneficially Owned(1)**",
+     "",
+     "",
+     "Shares of Series A Preferred Stock Beneficially Owned(2)**",
+     "",
+     "Percent of Series A Preferred Stock Beneficially Owned(2)**",
+     "",
+     "",
+     "Number of Voting Shares Beneficially Owned**",
+     "",
+     "",
+     "Percent of Voting Shares Beneficially Owned(4)**",
+     "",
+     ""
+    ],
+    [
+     "5% Beneficial Owners",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John Herzog(4)",
+     "",
+     "1,044,740",
+     "",
+     "",
+     "5.74",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,044,740",
+     "",
+     "",
+     "6.5",
+     "%"
+    ],
+    [
+     "Directors and Officers",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ronny Yakov",
+     "",
+     "5,829,702",
+     "(5)",
+     "",
+     "32.0",
+     "%",
+     "",
+     "113,444",
+     "",
+     "100",
+     "%",
+     "",
+     "5,943,146",
+     "(5)",
+     "",
+     "32.7",
+     "%"
+    ],
+    [
+     "Rachel Boulds",
+     "",
+     "834",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "834",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Patrick Smith(6)",
+     "",
+     "1,023,998",
+     "",
+     "",
+     "5.63",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,023,998",
+     "",
+     "",
+     "5.63",
+     "%"
+    ],
+    [
+     "Alina Dulimof",
+     "",
+     "52,131",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "52,122",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Ehud Ernst",
+     "",
+     "76,186",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "76,186",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Amir Sternhell",
+     "",
+     "60,455",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "60,455",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All directors and executive officers as a group (6 persons)",
+     "",
+     "7,043,297",
+     "",
+     "",
+     "38.69",
+     "%",
+     "",
+     "113,444",
+     "",
+     "100",
+     "%",
+     "",
+     "7,156,741",
+     "",
+     "",
+     "39.31",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2429,
+    "end_line": 2445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(2) Beginning in 2024, all Directors will receive a fee equal to $10,000 per year, payable in four installments of $2500 on January 1, April 1, July 1 and October 1 of each year.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth, as of April 8, 2024, information regarding the beneficial ownership of each class of our voting securities by: (i) our officers and directors; (ii) all of our officers and directors as a group; and (iii) each person known by us to beneficially own 5% or more of any class of our outstanding voting securities. Generally, a person is deemed to be a \u201cbeneficial owner\u201d of a security if that person has or shares the power to dispose or to direct the disposition of such security. A person is also deemed to be a beneficial owner of any securities of which the person has the right to acquire beneficial ownership within 60 days.\nThe address of each holder listed below, except as otherwise indicated, is c/o The OLB Group, Inc., 1120 Avenue of the Americas, 4th Floor, New York, NY.",
+   "prose_after": "* Less than 1%.\n** Under SEC rules, beneficial ownership includes shares over which the individual or entity has voting or investment power and any shares which the individual or entity has the right to acquire within sixty days.\n(1) Percentage ownership of common stock is based on 18,092,883 shares of Common Stock plus 113,443 shares of common stock underlying Series A Preferred Stock outstanding on the Record Date for which holders will exercise voting power on an as-converted basis.\n(2) The number of shares and percentage ownership of Series A Preferred Stock is presented on an as-converted basis and is based on 1,021 shares of Series A Preferred Stock outstanding (which such shares of Series A Preferred Stock are convertible into 113,443 shares of common stock accordance with the Certificate of Designations (as hereinafter defined)). The holders of the Series A Preferred Stock have the right to vote their shares of Series A Preferred Stock with the holders of common stock on an as-converted basis.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2422,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 2457,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Type of Fee \u2013 Billed by Mac Accounting Group & CPAs, LLP,",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "58,219",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Audit Related Fees(2)",
+     "$",
+     "67,269",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "125,488",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2493,
+    "end_line": 2502
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "To the best of our knowledge, during the past three fiscal years, other than as set forth above, there were no material transactions, or series of similar transactions, or any currently proposed transactions, or series of similar transactions, to which we were or are to be a party, in which the amount involved exceeds $120,000, and in which any director or executive officer, or any security holder who is known by us to own of record or beneficially more than 5% of any class of our common stock, or any member of the immediate family of any of the foregoing persons, has an interest (other than compensation to our officers and directors in the ordinary course of business).\nItem 14. Principal Accountant Fees and Services\nThe following table describes fees for professional audit services rendered and billed by Mac Accounting Group & CPAs, LLP, our present independent registered public accounting firm and principal accountant, for the review of our quarterly consolidated financial statements and for other services during fiscal year 2023 and for professional audit services rendered and billed by Daszkal Bolton LLP for the audit of our consolidated financial statements and for other services during fiscal year 2022.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2488,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2540,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Type of Fee - Billed by Daszkal Bolton LLP",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "109,500",
+     "$",
+     "100,000"
+    ],
+    [
+     "Audit Related Fees(2)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "109,500",
+     "$",
+     "100,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2503,
+    "end_line": 2512
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) Audit fees for fiscal years 2022 and 2023 represent fees billed for services rendered by Mac Accounting Group & CPAs, LLP, and Daszkal Bolton LLP in 2022 and 2023 for the audit of our consolidated financial statements and review of our quarterly reports on Form 10-Q.\n(2) Audit related fees for fiscal years 2023 represent fees billed for services rendered by Mac Accounting Group & CPAs, LLP in connection with our DMint Registration Statements filed during fiscal year 2023.\nOur Audit Committee has determined that the services provided by the Auditor are compatible with maintaining the independence of the Auditor as our independent registered public accounting firm.\nThe Board has established pre-approval policies and procedures pursuant to which the Board approved the foregoing audit, tax and non-audit services provided by the Auditor in 2022. Consistent with the Audit Committee\u2019s responsibility for engaging our independent auditors, all audit and permitted non-audit services require pre-approval by the Audit Committee. Fee estimates for these services are approved by the Chairman of the Board based on information provided by our management.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2488,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2540,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "2.1",
+     "Memorandum of Sale, dated as of April 9, 2018, by and among eVance, Inc., eVance Capital, Inc., Securus365, Inc. and GACP(1)"
+    ],
+    [
+     "3.1",
+     "Certificate of Incorporation, as amended (18)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of the Company(13)"
+    ],
+    [
+     "3.3",
+     "Certificate of Designations, Preferences and Rights of Series A Preferred Stock(13)"
+    ],
+    [
+     "4.1",
+     "Warrant, dated April 9, 2018, issued by the Company to GACP(1)"
+    ],
+    [
+     "4.2",
+     "Representative\u2019s Warrant(13)"
+    ],
+    [
+     "4.3",
+     "Series A Warrant Agency Agreement (including the terms of the Series A Warrant)(13)"
+    ],
+    [
+     "4.4",
+     "Series B Warrant Agency Agreement (including the terms of the Series B Warrant)(13)"
+    ],
+    [
+     "4.5",
+     "Description of Registered Securities (*)"
+    ],
+    [
+     "10.1",
+     "Loan and Security Agreement, dated as of April 9, 2018, by and among GACP, the lenders from time to time party thereto, the Company, as parent guarantor, and the Borrowers(1)"
+    ],
+    [
+     "10.2",
+     "Amendment No. 1 to Loan and Security Agreement, dated as of July 30, 2018, by and among GACP Finance Co., LLC, as administrative agent and collateral agent, the lenders party thereto, Securus365, Inc., eVance, Inc., eVance Capital, Inc., OMNISOFT, Inc., and CrowdPay.us, Inc., as borrowers, and the Company, as parent guarantor(3)"
+    ],
+    [
+     "10.3",
+     "Amendment No. 3 to Loan and Security Agreement, dated as of February 5, 2019, by and among GACP Finance Co., LLC, as administrative agent and collateral agent, the lenders party thereto, Securus365, Inc., eVance, Inc., eVance Capital, Inc., OMNISOFT, Inc., and CrowdPay.us, Inc., as borrowers, and the Company, as parent guarantor(4)"
+    ],
+    [
+     "10.4",
+     "Agreement Regarding Additional Warrants, dated April 9, 2018, by and between the Company and GACP(1)"
+    ],
+    [
+     "10.5",
+     "Share Exchange Agreement, dated May 9, 2018, by and between The OLB Group, Inc. and the stockholders of CrowdPay.US, Inc.(2)"
+    ],
+    [
+     "10.6",
+     "Share Exchange Agreement, dated May 9, 2018, by and between The OLB Group, Inc. and the stockholders of OmniSoft, Inc.(2)"
+    ],
+    [
+     "10.7",
+     "Subordinated Promissory Note, dated July 30, 2018, by and between the Company and John Herzog(3)"
+    ],
+    [
+     "10.8",
+     "Amendment No. 1 to Subordinated Promissory Note, dated as of November 14, 2019, by and between the Company and John Herzog(4)"
+    ],
+    [
+     "10.9",
+     "Amendment No. 2 to Subordinated Promissory Note, dated June 25, 2019, by and between the Company and John Herzog(5)"
+    ],
+    [
+     "10.10",
+     "Employment Agreement with Ronny Yakov(5)"
+    ],
+    [
+     "10.11",
+     "Employment Agreement with Patrick Smith(5)"
+    ],
+    [
+     "10.12",
+     "Commitment Letter from John Herzog dated December 10, 2019(6)"
+    ],
+    [
+     "10.13",
+     "Amendment No. 4 to Loan and Security Agreement, dated as of April 24, 2020, by and among GACP Finance Co., LLC, as administrative agent and collateral agent, the lenders party thereto, Securus365, Inc., eVance, Inc., eVance Capital, Inc., OMNISOFT, Inc., and CrowdPay.us, Inc., as borrowers, and the Company, as parent guarantor(7)"
+    ],
+    [
+     "10.14",
+     "Debt Conversion Agreement, dated as of May 13, 2020 by and between the Company and. John Herzog(8)"
+    ],
+    [
+     "10.15",
+     "Debt Conversion Agreement, dated as of May 13, 2020 by and between the Company and. Ronny Yakov(8)"
+    ],
+    [
+     "10.16",
+     "First Amended and Restated Debt Conversion Agreement, dated as of July 24, 2020, by and between the Company and Ronny Yakov(11)"
+    ],
+    [
+     "10.17",
+     "First Amended and Restated Debt Conversion Agreement, dated as of July 24, 2020, by and between the Company and John Herzog(11)"
+    ],
+    [
+     "10.18",
+     "Form of 2020 Equity Incentive Plan(9)"
+    ],
+    [
+     "10.19",
+     "Lease Agreement dated June 24, 2020 between Pergament Lodi, LLC and Evance, Inc.(10)"
+    ],
+    [
+     "10.20",
+     "Underwriting Agreement with Aegis Capital Corp. dated August 6, 2020.(13)"
+    ],
+    [
+     "10.24",
+     "Asset Purchase Agreement dated November 24, 2021 by and between the Company and FFS Data Corporation(14)."
+    ],
+    [
+     "10.25",
+     "Share Exchange Agreement dated January 3, 2022 between the Company and all of the shareholders of Crowd Ignition, Inc. (15)"
+    ],
+    [
+     "10.26",
+     "Lease Agreement dated November 10, 2021 between The Bradford Regional Airport Authority and DMINT, Inc. related to \u201cCell 3\u201d (4,000 square feet) (16)."
+    ],
+    [
+     "10.27",
+     "Lease Agreement dated November 10, 2021 between The Bradford Regional Airport Authority and DMINT, Inc. related to \u201cCell 4\u201d (6,000 square feet) (16)."
+    ],
+    [
+     "10.28",
+     "Services Agreement between Executive Workspace LLC d/b/a Elevated NY and The OLB Group, Inc.(17)"
+    ],
+    [
+     "10.29",
+     "Contract for Sale of Realty between Madison Haywood Developmental Services, Inc. and DMINT Real Estate Holdings, Inc. (17)"
+    ],
+    [
+     "10.30",
+     "SURRENDER AND RELEASE AGREEMENT (this \u201cAgreement\u201d) dated as of March 29, 2023 (the \u201cEffective Date\u201d) is made by and between THE BRADFORD REGIONAL AIRPORT AUTHORITY and DMINT, Inc. (18)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2545,
+    "end_line": 2593
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consist of fees billed for assurance and related services that are reasonably related to the performance of the audit or review of our consolidated financial statements and are not reported under \u201cAudit Fees\u201d.\nTax Fees\nConsist of fees billed for professional services for tax compliance, tax advice and tax planning. These services include preparation of federal and state income tax returns.\nAll Other Fees\nConsist of fees for product and services other than the services reported above.\nPolicy for Approval of Audit and Permitted Non-Audit Services\nThe Audit Committee charter provides that the Audit Committee will pre-approve audit services and non-audit services to be provided by our independent auditors before the accountant is engaged to render these services. The Audit Committee may consult with management in the decision-making process, but may not delegate this authority to management. The Audit Committee may delegate its authority to pre-approve services to one or more committee members, provided that the designees present the pre-approvals to the full committee at the next committee meeting.\nPART IV\nItem 15. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2540,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 2594,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.31",
+     "Letter of Resignation dated March 13, 2023 from Daszkal Bolton LLP (18)."
+    ],
+    [
+     "10.32",
+     "Membership Interest Purchase Agreement dated June 15, 2023 by and between the Company and SDI Black 001, LLC.(19)"
+    ],
+    [
+     "10.33",
+     "Amendment No. 1 to Employment Agreement dated April 4, 2024 by and between the Company and Ronny Yakov *"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (*)"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (*)"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (*)"
+    ],
+    [
+     "97.1*",
+     "Clawback Policy"
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2595,
+    "end_line": 2612
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith\n(1) Incorporated by reference to Current Report on Form 8-K filed April 13, 2018.\n(2) Incorporated by reference to Form 8-K filed May 15, 2018.\n(3) Incorporated by reference to Form 8-K filed August 3, 2018.\n(4) Incorporated by reference to Form 8-K filed March 12, 2019.\n(5) Previously filed with Form S-1 on June 26, 2019.\n(6) Previously filed with Form S-1 on January 17, 2020.\n(7) Previously filed with Form 10-K on April 29, 2020.\n(8) Previously filed with Form S-1 on May 20, 2020.\n(9) Previously filed with Form S-1 on June 8, 2020.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2594,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 2639,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "The OLB Group, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 15, 2024",
+     "BY:",
+     "/s/ Ronny Yakov"
+    ],
+    [
+     "",
+     "",
+     "Ronny Yakov"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "BY:",
+     "/s/ Rachel Boulds"
+    ],
+    [
+     "",
+     "",
+     "Rachel Boulds"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "The OLB Group, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2644,
+    "end_line": 2657
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(14) Incorporated by reference to Form 8-K filed November 30, 2021.\n(15) Incorporated by reference to Form 8-K filed January 5, 2022.\n(16) Incorporated by reference to Form 8-K filed January 11, 2022.\n(17) Incorporated by reference to Form 8-K filed August 16, 2022.\n(18) Previously filed with Form 10-K on March 30, 2023.\n(19) Incorporated by reference to Form 8-K filed June 21, 2023.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2639,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 2681,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ronny Yakov",
+     "Chief Executive Officer and Chairman",
+     "April 15, 2024"
+    ],
+    [
+     "Ronny Yakov",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ehud Ernst",
+     "Director and Chairman of the Audit Committee",
+     "April 15, 2024"
+    ],
+    [
+     "Ehud Ernst",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Amir Sternhell",
+     "Director",
+     "April 15, 2024"
+    ],
+    [
+     "Amir Sternhell",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alina Dulimof",
+     "Director",
+     "April 15, 2024"
+    ],
+    [
+     "Alina Dulimof",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2660,
+    "end_line": 2680
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Exchange Act, this report has been signed below by the following persons on behalf of the registrant in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2639,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 2681,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

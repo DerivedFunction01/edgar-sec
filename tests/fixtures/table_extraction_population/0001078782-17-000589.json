@@ -1,0 +1,208 @@
+{
+ "accession": "0001078782-17-000589",
+ "cik": "0001421865",
+ "form": "10-K/A",
+ "filing_date": "2017-05-03",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10ka083116_10kz.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "98-0585268"
+    ],
+    [
+     "(State of incorporation)",
+     "",
+     "(I.R.S. Employer ID No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K/A\nAmendment No. 1\n[X] .ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended August 31, 2016\n.TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission file number 333-150061\nCHERUBIM INTERESTS INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1304 Norwood Dr.\n\n\n\nBedford TX. 76022"
+    ],
+    [
+     "(Address of principal executive officers, including Zip Code)"
+    ],
+    [
+     ""
+    ],
+    [
+     "(888) 842-8872"
+    ],
+    [
+     "(Issuer's Telephone Number)"
+    ]
+   ],
+   "caption_stack": [
+    "1304 Norwood Dr.\n\n\n\nBedford TX. 76022",
+    "(Address of principal executive officers, including Zip Code)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act: None Securities registered pursuant to Section 12(g) of the Act: Common Stock, $0.00001 par value\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes . No [X] .. .\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes . No [X] .\nIndicate by checkmark whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] . No .\nIndicate by checkmark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [X] .",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "",
+     "Title of Document"
+    ],
+    [
+     "31",
+     "",
+     "Section 302 Certification of CEO/CFO *"
+    ],
+    [
+     "32",
+     "",
+     "Section 906 Certification of CEO/CFO *"
+    ],
+    [
+     "101",
+     "",
+     "XBRL (eXtensible Business Reporting Language)**"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": null
+   },
+   "prose_before": "The purpose of this Amendment No. 1 to the Annual Report of Innocent, Inc. (the \u201cCompany\u201d) on Form 10-K for the period ended August 31, 2016, filed with the Securities and Exchange Commission on April 28, 2017 (the \u201cForm 10-K\u201d), is to furnish Exhibit 101 to the Form 10-K in accordance with Rule 405 of Regulation S-T. Exhibit 101 to this report provides the consolidated financial statements and related notes from the Form 10-K formatted in XBRL (eXtensible Business Reporting Language).\nOther than the aforementioned, no other changes have been to the Form 10-K. This Amendment No. 1 to the Form 10-K speaks as of the original filing date of the Form 10-K, does not reflect events that may have occurred subsequent to the original filing date, and does not modify or update in any way disclosures made in the original Form 10-K.\nPursuant to Rule 406T of Regulation S-T, the interactive data files on Exhibit 101 hereto are deemed not filed or part of a registration statement or prospectus for purposes of Section 11 or 12 of the Securities Act of 1933, as amended, are deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, and amended, and otherwise are not subject to liability under those sections.\nPART IV\nITEM 15. EXHIBITS\n(a)\nThe following exhibits are included as part of this report:",
+   "prose_after": "* Incorporated by reference to the Company\u2019s Form 10-K filed with the SEC on April 28, 2017.\n** Filed herewith.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15 (d) of the Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nCherubim Interests Inc.\n/s/ Patrick Johnson\nPatrick Johnson\nCEO/CFO and Director\nDated: May 2, 2017\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 108,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

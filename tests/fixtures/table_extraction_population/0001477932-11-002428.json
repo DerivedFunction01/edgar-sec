@@ -1,0 +1,1612 @@
+{
+ "accession": "0001477932-11-002428",
+ "cik": "0001326917",
+ "form": "10-Q",
+ "filing_date": "2011-11-14",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "spni_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "",
+     "52-2348956"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2011\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE EXCHANGE ACT\nFor the transition period from _____________________ to ______________\nCommission file number 333-126158\nSPUTNIK ENTERPRISES, INC.\n(Exact name of small business issuer as specified in its charter)",
+   "prose_after": "3020 Bridgeway Suite 400\nSausalito, CA 94965\n(Address of principal executive offices)\n(415) 355-9500\n(Issuer\u2019s telephone number)\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\nCheck whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page",
+     ""
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Unaudited Financial Statements",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance Sheets as of September 30, 2011 and December 31, 2010 (unaudited)",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Operations for the Three and Nine Months Ended  September 30, 2011 and 2010, and from re-entering the development stage, February 29, 2008 to September 30, 2011 (unaudited)",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Cash Flows for the Nine Months Ended  September 30, 2011 and 2010, and from re-entering the development stage, February 29, 2008 to September 30, 2011 (unaudited)",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Unaudited Financial Statements",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis or Plan of Operation",
+     "",
+     "8"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosure about Market Risk",
+     "",
+     "10"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "",
+     "10"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.OTHER INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "(Removed and Reserved).",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "",
+     "12"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "13"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 62,
+    "end_line": 101
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \"large accelerated filer,\" \"accelerated filer\" and \"smaller reporting company\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller Reporting Company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [X] No [ ]\nAs of October 28, 2011 there were 295,286 shares issued and outstanding of the registrant\u2019s common stock.\nINDEX",
+   "prose_after": "PART I \u2014 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nBALANCE SHEETS\n(unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2011",
+     "",
+     "",
+     "December 31, 2010",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Note payable",
+     "",
+     "25,000",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "25,000",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.001 par value, 50,000,000 shares authorized, 295,286 shares issued and outstanding in both periods",
+     "",
+     "295",
+     "",
+     "",
+     "295",
+     ""
+    ],
+    [
+     "Paid-in capital",
+     "",
+     "1,966,703",
+     "",
+     "",
+     "1,956,558",
+     ""
+    ],
+    [
+     "Accumulated deficit from development stage",
+     "",
+     "(79,135)",
+     "",
+     "",
+     "(68,990)",
+     ""
+    ],
+    [
+     "Accumulated deficit from prior operations",
+     "",
+     "(1,912,863)",
+     "",
+     "",
+     "(1,912,863)",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "(25,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 116,
+    "end_line": 150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2014 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nBALANCE SHEETS\n(unaudited)",
+   "prose_after": "See notes to financial statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF OPERATIONS\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Re-entering",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Development Stage to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "September 30, 2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative costs",
+     "",
+     "2,470",
+     "",
+     "",
+     "1,982",
+     "",
+     "",
+     "8,645",
+     "",
+     "",
+     "8,190",
+     "",
+     "",
+     "73,635",
+     ""
+    ],
+    [
+     "Total operating expense",
+     "",
+     "2,470",
+     "",
+     "",
+     "1,982",
+     "",
+     "",
+     "8,645",
+     "",
+     "",
+     "8,190",
+     "",
+     "",
+     "73,635",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "",
+     "(2,470)",
+     "",
+     "",
+     "(1,982)",
+     "",
+     "",
+     "(8,645)",
+     "",
+     "",
+     "(8,190)",
+     "",
+     "",
+     "(73,635)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "500",
+     "",
+     "",
+     "500",
+     "",
+     "",
+     "1,500",
+     "",
+     "",
+     "1,500",
+     "",
+     "",
+     "5,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(2,970)",
+     "",
+     "$",
+     "(2,482)",
+     "",
+     "$",
+     "(10,145)",
+     "",
+     "$",
+     "(9,690)",
+     "",
+     "$",
+     "(79,135)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share",
+     "$",
+     "( 0.01)",
+     "",
+     "$",
+     "( 0.01)",
+     "",
+     "$",
+     "( 0.03)",
+     "",
+     "$",
+     "( 0.03)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "295,286",
+     "",
+     "",
+     "295,286",
+     "",
+     "",
+     "295,286",
+     "",
+     "",
+     "295,286",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Re-entering"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 163,
+    "end_line": 193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See notes to financial statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF OPERATIONS\n(unaudited)",
+   "prose_after": "See notes to financial statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF CASH FLOWS\n(unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 154,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 195,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended\n\nSeptember 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Re-entering Development Stage\n\nto September 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "2011",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from operations",
+     "$",
+     "(10,145)",
+     "",
+     "$",
+     "(9,690)",
+     "",
+     "$",
+     "(79,135)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Imputed interest on note payable",
+     "",
+     "1,500",
+     "",
+     "",
+     "1,500",
+     "",
+     "",
+     "6,500",
+     ""
+    ],
+    [
+     "Donated capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable issued for legal expenses",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(8,645)",
+     "",
+     "",
+     "(8,190)",
+     "",
+     "",
+     "(47,635)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from advance from shareholder",
+     "",
+     "8,645",
+     "",
+     "",
+     "8,190",
+     "",
+     "",
+     "47,635",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "8,645",
+     "",
+     "",
+     "8,190",
+     "",
+     "",
+     "47,635",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 206,
+    "end_line": 245
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "See notes to financial statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nSTATEMENTS OF CASH FLOWS\n(unaudited)",
+   "prose_after": "See notes to financial statements.\nSPUTNIK ENTERPRISES, INC.\n(A DEVELOPMENT STAGE COMPANY)\nNotes to Financial Statements\n(unaudited)\nNOTE 1 - BASIS OF PRESENTATION\nThe accompanying unaudited interim financial statements of Sputnik Enterprises, Inc. have been prepared in accordance with accounting principles generally accepted in the United States of America and the rules of the Securities and Exchange Commission, and should be read in conjunction with Sputnik\u2019s audited 2010 annual financial statements and notes thereto filed with the SEC on form 10-K. In the opinion of management, all adjustments, consisting of normal recurring adjustments, necessary for a fair presentation of financial position and the result of operations for the interim periods presented have been reflected herein. The results of operations for interim periods are not necessarily indicative of the results to be expected for the full year. Notes to the financial statements, which would substantially duplicate the disclosure required in Sputnik\u2019s 2010 annual financial statements have been omitted.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 247,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Item"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive and Principal Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive and Principal Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "Interactive data files formatted in XBRL (eXtensible Business Reporting Language): (i) the Consolidated Balance Sheets, (ii) the Consolidated Statements of Operations, (iii) the Consolidated Statements of Cash Flows, and (iv) the Notes to the Consolidated Financial Statements.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 413
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "The Registrant did not sell any unregistered securities during the three months ended September 30, 2011.\n(b) Use of Proceeds.\nThe Registrant did not sell any unregistered securities during the three months ended September 30, 2011.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. (Removed and Reserved).\nItem 5. Other Information.\nNot applicable.\nItem 6. Exhibits.\n(a) Exhibits.",
+   "prose_after": "______________\n* This exhibit shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934 or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933 of the Securities Exchange Act of 1934, whether made before or after the date hereof and irrespective of any general incorporation language in any filings.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 397,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SPUTNIK ENTERPRISES,INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: November 12, 2011",
+     "By:",
+     "/s/ David LaDuke",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Authorized Officer and Principal Executive Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "SPUTNIK ENTERPRISES,INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 424,
+    "end_line": 431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "______________\n* This exhibit shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934 or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933 of the Securities Exchange Act of 1934, whether made before or after the date hereof and irrespective of any general incorporation language in any filings.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 419,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Item"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive and Principal Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive and Principal Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "Interactive data files formatted in XBRL (eXtensible Business Reporting Language): (i) the Consolidated Balance Sheets, (ii) the Consolidated Statements of Operations, (iii) the Consolidated Statements of Cash Flows, and (iv) the Notes to the Consolidated Financial Statements.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 436,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SUBSEQUENT EVENT"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "______________\n* This exhibit shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934 or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933 of the Securities Exchange Act of 1934, whether made before or after the date hereof and irrespective of any general incorporation language in any filings.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 433,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 451,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

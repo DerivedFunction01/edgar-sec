@@ -1,0 +1,5333 @@
+{
+ "accession": "0001213900-22-029275",
+ "cik": "0001023994",
+ "form": "10-Q",
+ "filing_date": "2022-05-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "sgbx-20220331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "95-4463937"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "5011 Gate Parkway, Building 100, Suite 100, Jacksonville, FL",
+     "32256"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2022\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________ to ____________\nCommission file number: 001-38037\nSG BLOCKS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(646) 240-4235\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of Each Exchange on which Registered"
+    ],
+    [
+     "Common Stock, par value $0.01 per share",
+     "SGBX",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(646) 240-4235\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     "2"
+    ],
+    [
+     "ITEM 1.",
+     "Financial Statements",
+     "2"
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of March 31, 2022 (Unaudited) and December 31, 2021",
+     "2"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations for the Three Months Ended March 31, 2022 and 2021 (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Changes in Stockholders\u2019 Equity for the Three Months Ended March 31, 2022 and 2021 (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended March 31, 2022 and 2021 (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "6"
+    ],
+    [
+     "ITEM 2.",
+     "Management's Discussion and Analysis of Financial Condition and Result of Operations",
+     "32"
+    ],
+    [
+     "ITEM 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "43"
+    ],
+    [
+     "ITEM 4.",
+     "Controls and Procedures",
+     "43"
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     "44"
+    ],
+    [
+     "ITEM 1.",
+     "Legal Proceedings",
+     "44"
+    ],
+    [
+     "ITEM 1A.",
+     "Risk Factors",
+     "44"
+    ],
+    [
+     "ITEM 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "46"
+    ],
+    [
+     "ITEM 3.",
+     "Defaults Upon Senior Securities",
+     "46"
+    ],
+    [
+     "ITEM 4.",
+     "Mine Safety Disclosures",
+     "46"
+    ],
+    [
+     "ITEM 5.",
+     "Other Information",
+     "46"
+    ],
+    [
+     "ITEM 6.",
+     "Exhibits",
+     "47"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 90
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer  [ ]\nNon-accelerated filer [X]     Smaller reporting company  [X]\nEmerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAs of May 20, 2022 the issuer had a total of 12,006,873 shares of the registrant\u2019s common stock, $0.01 par value, outstanding.\nSG BLOCKS, INC.\nFORM 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nITEM 1. Financial Statements\nCondensed Consolidated Balance Sheets",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,\n\n\n\n2022",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "13,146,418",
+     "",
+     "$",
+     "13,024,381",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "2,424,501",
+     "",
+     "",
+     "2,917,646",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "133,395",
+     "",
+     "",
+     "41,916",
+     ""
+    ],
+    [
+     "Held for sale assets",
+     "",
+     "4,392,541",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "1,054,342",
+     "",
+     "",
+     "1,273,825",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "784,871",
+     "",
+     "",
+     "656,279",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "21,936,068",
+     "",
+     "",
+     "17,914,047",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "4,080,852",
+     "",
+     "",
+     "6,839,943",
+     ""
+    ],
+    [
+     "Project development costs and other non-current assets",
+     "",
+     "449,961",
+     "",
+     "",
+     "923,172",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,309,330",
+     "",
+     "",
+     "1,309,330",
+     ""
+    ],
+    [
+     "Right-of-use asset",
+     "",
+     "2,902,284",
+     "",
+     "",
+     "1,210,053",
+     ""
+    ],
+    [
+     "Long-term note receivable",
+     "",
+     "829,384",
+     "",
+     "",
+     "720,137",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "2,053,410",
+     "",
+     "",
+     "2,095,232",
+     ""
+    ],
+    [
+     "Deferred contract costs, net",
+     "",
+     "101,963",
+     "",
+     "",
+     "112,159",
+     ""
+    ],
+    [
+     "Investment in non-marketable securities",
+     "",
+     "700,000",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Investment in and advances to equity affiliates",
+     "",
+     "3,599,945",
+     "",
+     "",
+     "3,599,945",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "37,963,197",
+     "",
+     "$",
+     "34,924,018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "5,475,882",
+     "",
+     "$",
+     "7,568,851",
+     ""
+    ],
+    [
+     "Contract liabilities",
+     "",
+     "5,205,712",
+     "",
+     "",
+     "1,437,579",
+     ""
+    ],
+    [
+     "  Lease liability, current maturities",
+     "",
+     "481,223",
+     "",
+     "",
+     "337,469",
+     ""
+    ],
+    [
+     "  Due to affiliates",
+     "",
+     "\u2014",
+     "",
+     "",
+     "264,451",
+     ""
+    ],
+    [
+     "  Assumed liability",
+     "",
+     "5,795",
+     "",
+     "",
+     "5,795",
+     ""
+    ],
+    [
+     "  Short term note payable, net",
+     "",
+     "1,984,902",
+     "",
+     "",
+     "1,971,960",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "13,153,514",
+     "",
+     "",
+     "11,586,105",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term note payable",
+     "",
+     "750,000",
+     "",
+     "",
+     "750,000",
+     ""
+    ],
+    [
+     "Lease liability, net of current maturities",
+     "",
+     "2,427,080",
+     "",
+     "",
+     "872,124",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "16,330,594",
+     "",
+     "",
+     "13,208,229",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $1.00 par value, 5,405,010 shares authorized; none issued or outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value, 25,000,000 shares authorized; 12,006,873 issued and outstanding as of March 31, 2022 and 11,986,873 issued and outstanding as of December 31, 2021",
+     "",
+     "120,069",
+     "",
+     "",
+     "119,869",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "54,030,291",
+     "",
+     "",
+     "53,341,405",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(33,826,397)",
+     "",
+     "",
+     "(33,109,220)",
+     ""
+    ],
+    [
+     "Total SG Blocks, Inc. stockholders\u2019 equity",
+     "",
+     "20,323,963",
+     "",
+     "",
+     "20,352,054",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "1,308,640",
+     "",
+     "",
+     "1,363,735",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "21,632,603",
+     "",
+     "",
+     "21,715,789",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "37,963,197",
+     "",
+     "$",
+     "34,924,018",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 102,
+    "end_line": 165
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nITEM 1. Financial Statements\nCondensed Consolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 168,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the\n\n\n\nThree Months Ended\n\n\n\nMarch 31,",
+     "",
+     "",
+     "For the\n\n\n\nThree Months Ended\n\n\n\nMarch 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Construction services",
+     "$",
+     "1,668,384",
+     "",
+     "$",
+     "3,137,715",
+     ""
+    ],
+    [
+     "Engineering services",
+     "",
+     "50,386",
+     "",
+     "",
+     "93,949",
+     ""
+    ],
+    [
+     "Medical revenue",
+     "",
+     "6,885,828",
+     "",
+     "",
+     "5,955,963",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "8,604,598",
+     "",
+     "",
+     "9,187,627",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Construction services",
+     "",
+     "1,677,560",
+     "",
+     "",
+     "4,093,540",
+     ""
+    ],
+    [
+     "Engineering services",
+     "",
+     "43,153",
+     "",
+     "",
+     "9,770",
+     ""
+    ],
+    [
+     "Medical revenue",
+     "",
+     "4,397,450",
+     "",
+     "",
+     "4,527,692",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "6,118,163",
+     "",
+     "",
+     "8,631,002",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "2,486,435",
+     "",
+     "",
+     "556,625",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payroll and related expenses",
+     "",
+     "1,144,187",
+     "",
+     "",
+     "827,522",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "780,021",
+     "",
+     "",
+     "809,800",
+     ""
+    ],
+    [
+     "Marketing and business development expense",
+     "",
+     "143,335",
+     "",
+     "",
+     "70,627",
+     ""
+    ],
+    [
+     "Pre-project expenses",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,133",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "2,067,543",
+     "",
+     "",
+     "1,718,082",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating profit/(loss)",
+     "",
+     "418,892",
+     "",
+     "",
+     "(1,161,457)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(48,849)",
+     "",
+     "",
+     "(363)",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "12,783",
+     "",
+     "",
+     "17,470",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "118,902",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "82,836",
+     "",
+     "",
+     "17,107",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "501,728",
+     "",
+     "",
+     "(1,144,350)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "501,728",
+     "",
+     "",
+     "(1,144,350)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Add: net income attributable to noncontrolling interests",
+     "",
+     "1,218,905",
+     "",
+     "",
+     "889,527",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders of SG Blocks, Inc.",
+     "$",
+     "(717,177)",
+     "",
+     "$",
+     "(2,033,877)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share attributable to SG Blocks, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.23)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "11,998,334",
+     "",
+     "",
+     "8,744,469",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 174,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Changes in Stockholders\u2019 Equity (Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 173,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$0.01 Par Value Common Stock",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "SG Blocks Stockholders'",
+     "",
+     "Noncontrolling",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "",
+     "8,596,189",
+     "$",
+     "85,962",
+     "$",
+     "40,443,840",
+     "$",
+     "(22,276,546)",
+     "",
+     "$",
+     "18,253,256",
+     "",
+     "$",
+     "184,567",
+     "",
+     "$",
+     "18,437,823",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "286,186",
+     "",
+     "\u2014",
+     "",
+     "",
+     "286,186",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "286,186",
+     ""
+    ],
+    [
+     "Conversion of warrants to common stock",
+     "",
+     "225,100",
+     "",
+     "2,251",
+     "",
+     "701,187",
+     "",
+     "\u2014",
+     "",
+     "",
+     "703,438",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "703,438",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,033,877)",
+     "",
+     "",
+     "(2,033,877)",
+     "",
+     "",
+     "889,527",
+     "",
+     "",
+     "(1,144,350)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2021",
+     "",
+     "8,821,289",
+     "$",
+     "88,213",
+     "$",
+     "41,431,213",
+     "$",
+     "(24,310,423)",
+     "",
+     "$",
+     "17,209,003",
+     "",
+     "$",
+     "1,074,094",
+     "",
+     "$",
+     "18,283,097",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "",
+     "11,986,873",
+     "$",
+     "119,869",
+     "$",
+     "53,341,405",
+     "$",
+     "(33,109,220)",
+     "",
+     "$",
+     "20,352,054",
+     "",
+     "$",
+     "1,363,735",
+     "",
+     "$",
+     "21,715,789",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "20,000",
+     "",
+     "200",
+     "",
+     "688,886",
+     "",
+     "\u2014",
+     "",
+     "",
+     "689,086",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "689,086",
+     ""
+    ],
+    [
+     "Noncontrolling interest distribution",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,274,000)",
+     "",
+     "",
+     "(1,274,000)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(717,177)",
+     "",
+     "",
+     "(717,177)",
+     "",
+     "",
+     "1,218,905",
+     "",
+     "",
+     "501,728",
+     ""
+    ],
+    [
+     "Balance at March 31, 2022",
+     "",
+     "12,006,873",
+     "$",
+     "120,069",
+     "$",
+     "54,030,291",
+     "$",
+     "(33,826,397)",
+     "",
+     "$",
+     "20,323,963",
+     "",
+     "$",
+     "1,308,640",
+     "",
+     "$",
+     "21,632,603",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 249,
+    "end_line": 271
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Changes in Stockholders\u2019 Equity (Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 274,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the\n\n\n\nThree Months Ended March 31, 2022",
+     "",
+     "",
+     "For the\n\n\n\nThree Months Ended March 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "501,728",
+     "",
+     "$",
+     "(1,144,350)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "104,825",
+     "",
+     "",
+     "91,190",
+     ""
+    ],
+    [
+     "Amortization of intangible assets",
+     "",
+     "41,823",
+     "",
+     "",
+     "40,407",
+     ""
+    ],
+    [
+     "Amortization of deferred license costs",
+     "",
+     "10,196",
+     "",
+     "",
+     "10,196",
+     ""
+    ],
+    [
+     "Amortization of Debt Issuance Costs",
+     "",
+     "8,628",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Bad Debt Expense",
+     "",
+     "7,024",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest income on long-term note receivable",
+     "",
+     "(9,247)",
+     "",
+     "",
+     "(9,247)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "649,090",
+     "",
+     "",
+     "286,186",
+     ""
+    ],
+    [
+     "Loss on asset disposal",
+     "",
+     "241",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "486,117",
+     "",
+     "",
+     "(581,299)",
+     ""
+    ],
+    [
+     "Contract assets",
+     "",
+     "(91,479)",
+     "",
+     "",
+     "(599,441)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "219,483",
+     "",
+     "",
+     "(155,935)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "(128,592)",
+     "",
+     "",
+     "(679,540)",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "",
+     "109,308",
+     "",
+     "",
+     "97,846",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(2,052,971)",
+     "",
+     "",
+     "2,062,776",
+     ""
+    ],
+    [
+     "Contract liabilities",
+     "",
+     "3,768,133",
+     "",
+     "",
+     "(641,412)",
+     ""
+    ],
+    [
+     "  Due to affiliates",
+     "",
+     "(264,451)",
+     "",
+     "",
+     "(863,151)",
+     ""
+    ],
+    [
+     "  Lease liability",
+     "",
+     "(102,829)",
+     "",
+     "",
+     "(97,342)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "3,257,027",
+     "",
+     "",
+     "(2,183,116)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of property, plant and equipment",
+     "",
+     "(922,865)",
+     "",
+     "",
+     "(862,090)",
+     ""
+    ],
+    [
+     "  Purchase of intangible asset",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(42,500)",
+     ""
+    ],
+    [
+     "  Proceeds from sale of equipment",
+     "",
+     "760",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Repayment of promissory note",
+     "",
+     "(100,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Payment on assumed liability of acquired assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(85,798)",
+     ""
+    ],
+    [
+     "  Project Development Costs",
+     "",
+     "(338,885)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Investment in non-marketable securities",
+     "",
+     "(500,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash (used in) investing activities",
+     "",
+     "(1,860,990)",
+     "",
+     "",
+     "(990,388)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from conversion of warrants to common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "703,438",
+     ""
+    ],
+    [
+     "  Distribution paid to NCI",
+     "",
+     "(1,274,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "",
+     "(1,274,000)",
+     "",
+     "",
+     "703,438",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "",
+     "122,037",
+     "",
+     "",
+     "(2,470,066)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents - beginning of period",
+     "",
+     "13,024,381",
+     "",
+     "",
+     "13,010,356",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents - end of period",
+     "$",
+     "13,146,418",
+     "",
+     "$",
+     "10,540,290",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 280,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n1. Description of Business\nSG Blocks, Inc. (collectively with its subsidiaries, the \u201cCompany,\u201d \u201cwe\u201d, \u201cus\u201d or \u201cour\u201d) was previously known as CDSI Holdings, Inc., a Delaware corporation incorporated on December 29, 1993. On November 4, 2011, CDSI Merger Sub, Inc., the Company\u2019s wholly-owned subsidiary, was merged with and into SG Building Blocks, Inc. (\u201cSG Building,\u201d formerly SG Blocks Inc.) (the \u201cMerger\u201d), with SG Building surviving the Merger and becoming a wholly-owned subsidiary of the Company. The Merger was a reverse merger that was accounted for as a recapitalization of SG Building, as SG Building was the accounting acquirer. Accordingly, the historical financial statements presented are the financial statements of SG Building.\nThe building products developed with the Company's proprietary technology and design and engineering expertise are generally stronger, more durable, environmentally sensitive, and erected in less time than traditional construction methods. The use of the SGBlocks building structure typically provides between four to six points towards the Leadership in Energy and Environmental Design (\u201cLEED\u201d) certification levels, including reduced site disturbance, resource reuse, recycled content, innovation in design and use of local and regional materials. Due to the ability of SGBlocks to satisfy such requirements, the Company believes the products produced utilizing its technology and expertise is a leader in environmentally sustainable construction.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 279,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 344,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "Within 1 year",
+     "$",
+     "7,591,863"
+    ],
+    [
+     "",
+     "Total Backlog",
+     "$",
+     "7,591,863"
+    ]
+   ],
+   "caption_stack": [
+    "2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 382,
+    "end_line": 390
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Liquidity"
+    }
+   },
+   "prose_before": "On February 5, 2020, the Company effected a 1-for-20 reverse stock split of its then-outstanding common stock, which has since been converted. All share and per share amounts set forth in the condensed consolidated financial statements of the Company have been retroactively restated to reflect the 1-for-20 reverse stock split as if it had occurred as of the earliest period presented and unless otherwise stated, all other share and per share amounts for all periods presented in these condensed consolidated financial statements have been adjusted to reflect the reverse stock split effected in February 2020.\nAs of March 31, 2022, the Company had 12,006,873 shares of common stock issued and outstanding.\n2. Liquidity\nAs of March 31, 2022, the Company had cash and cash equivalents of $13,146,418 and a backlog of approximately $7,591,863. See Note 11 for a discussion of construction backlog. Based on our conversations with key customers, the Company anticipates its backlog to convert to revenue over the following period:",
+   "prose_after": "The Company has incurred losses since its inception and has negative operating cash flows. Management has taken several actions to ensure that the Company will continue as a going concern. As described below, the Company has recently been able to raise substantial cash through equity offerings. In addition, as further described in these consolidated financial statements, the Company has begun to recognize revenue from new revenue streams. Management believes that these actions will enable the Company to continue as a going concern.\nThe Company completed a public and concurrent private offering in October 2021, which resulted in net proceeds of approximately $10,488,000. See Note 12 for a discussion on the public and concurrent private offering. The Company believes that it has adequate cash balances to meet obligations coming due in the next twelve months and further intends to meet its capital needs from revenue generated from operations and by containing costs, entering into strategic alliances, as well as exploring other options, including the possibility of raising additional debt or equity capital as necessary. There is, however, no assurance the Company will be successful in meeting its capital requirements prior to becoming cash flow positive. The Company does not have any additional sources secured for future funding, and if it is unable to raise the necessary capital at the times it requires such funding, it may need to materially change its business plan, including delaying implementation of aspects of such business plan or curtailing or abandoning such business plan altogether.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 368,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 397,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Revenue by Customer Type",
+     "2022",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Construction and Engineering Services:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  Government",
+     "$",
+     "39",
+     "\u2014",
+     "%",
+     "$",
+     "1,085,480",
+     "12",
+     "%"
+    ],
+    [
+     "",
+     "  Hotel",
+     "",
+     "897,244",
+     "10",
+     "%",
+     "",
+     "170,426",
+     "2",
+     "%"
+    ],
+    [
+     "",
+     "  Medical - Construction",
+     "",
+     "\u2014",
+     "\u2014",
+     "%",
+     "",
+     "251,560",
+     "3",
+     "%"
+    ],
+    [
+     "",
+     "  Multi-Family (includes Single Family)",
+     "",
+     "77,626",
+     "1",
+     "%",
+     "",
+     "44,746",
+     "\u2014",
+     "%"
+    ],
+    [
+     "",
+     "  Office",
+     "",
+     "728,875",
+     "8",
+     "%",
+     "",
+     "177,392",
+     "1",
+     "%"
+    ],
+    [
+     "",
+     "Retail",
+     "",
+     "5,344",
+     "1",
+     "%",
+     "",
+     "42,015",
+     "1",
+     "%"
+    ],
+    [
+     "",
+     "  Special Use",
+     "",
+     "9,642",
+     "\u2014",
+     "%",
+     "",
+     "1,460,045",
+     "16",
+     "%"
+    ],
+    [
+     "",
+     "Subtotal",
+     "",
+     "1,718,770",
+     "20",
+     "%",
+     "",
+     "3,231,664",
+     "35",
+     "%"
+    ],
+    [
+     "",
+     "Medical Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Medical (lab testing, kit sales and equipment)",
+     "",
+     "6,885,828",
+     "80",
+     "%",
+     "",
+     "5,955,963",
+     "65",
+     "%"
+    ],
+    [
+     "",
+     "Total revenue by customer type",
+     "$",
+     "8,604,598",
+     "100",
+     "%",
+     "$",
+     "9,187,627",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 461,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company entered into a joint venture agreement with Clarity Lab Solutions, LLC (\u201cClarity Labs\u201d) (the \u201cJV\u201d) in the fourth quarter of 2020. Revenue from the activities of the JV is related to clinical testing services and is recognized when services have been rendered, which is at a point in time. Included in the consideration the Company expected to be entitled to receive, the Company estimates its contractual allowances, payer denials and price concessions. In addition, the Company formed Chicago Airport Testing, LLC which collected rental revenue from subleasing to a consortium of government entities assisting in COVID-19 testing. For the three months ended March 31, 2022 and 2021, the Company recognized approximately $6,885,828 and $5,863,358 related to activities through these two joint ventures, which is included in medical revenue on the accompanying consolidated statements of operations.\nDisaggregation of Revenues\nThe Company\u2019s revenues are principally derived from construction and engineering contracts related to Modules, and medical revenue derived from lab testing and test kit sales. The Company's contracts are with customers in various industries. Revenue recognized at a point in time and recognized over time were $6,885,828 and $1,718,770, respectively, for the three months ending March 31, 2022. Revenue recognized at a point in time and recognized over time were $5,965,413 and $3,222,214, respectively, for the three months ending March 31, 2021.\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n3. Summary of Significant Accounting Policies (continued)\nThe following tables provide further disaggregation of the Company\u2019s revenues by categories:",
+   "prose_after": "Contract Assets and Contract Liabilities\nAccounts receivable are recognized in the period when the Company\u2019s right to consideration is unconditional. Accounts receivable are recognized net of an allowance for credit losses. A considerable amount of judgment is required in assessing the likelihood of realization of receivables.\nThe timing of revenue recognition may differ from the timing of invoicing to customers.\nContract assets include unbilled amounts from long-term construction services when revenue recognized under the cost-to-cost measure of progress exceeds the amounts invoiced to customers, as the amounts cannot be billed under the terms of our contracts. Such amounts are recoverable from customers based upon various measures of performance, including achievement of certain milestones, completion of specified units or completion of a contract. Contract assets are generally classified as current within the condensed consolidated balance sheets.\nContract liabilities from construction and engineering contracts occur when amounts invoiced to customers exceed revenues recognized under the cost-to-cost measure of progress. Contract liabilities additionally include advanced payments from customers on certain contracts. Contract liabilities decrease as the Company recognizes revenue from the satisfaction of the related performance obligation. Contract liabilities are generally classified as current within the condensed consolidated balance sheet.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 453,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 496,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ending December 31,:",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "121,147"
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "161,176"
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "160,469"
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "157,052"
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "139,716"
+    ],
+    [
+     "",
+     "Thereafter",
+     "",
+     "1,313,850"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "2,053,410"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ending December 31,:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 566,
+    "end_line": 580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Goodwill \u2013 The Company performs its impairment test of goodwill at the reporting unit level each fiscal year, or more frequently if events or circumstances change that would more likely than not reduce the fair value of its reporting unit below its carrying values. The Company performs a goodwill impairment test by comparing the fair value of the reporting unit with its carrying value and recognizes an impairment charge for the amount by which the carrying value exceeds the fair value, not to exceed the total amount of goodwill. The amount by which the carrying value of the goodwill exceeds its implied fair value, if any, is recognized as an impairment loss. There were no impairments during the three months ended March 31, 2022 or 2021. The Company has taken the recent COVID-19 pandemic into consideration when determining impairment.\nIntangible assets \u2013 Intangible assets consist of $2,766,000 of proprietary knowledge and technology, which is being amortized over 20 years. In addition, $97,164 of trademarks, and $47,800 of website costs are being amortized over 5 years. The Company evaluated intangible assets for impairment during the year ended December 31, 2021, and determined that there were no impairment losses. There was no impairment during the three months ended March 31, 2022. The accumulated amortization as of March 31, 2022 and 2021 was $857,554 and $690,262, respectively. The amortization expense for the three months ended March 31, 2022 and 2021 was $41,823 and $40,407, respectively. The estimated amortization expense for the successive five years is as follows:\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n3. Summary of Significant Accounting Policies (continued)",
+   "prose_after": "Property, plant and equipment \u2013 Property, plant and equipment is stated at cost. Depreciation is computed using the straight-line method over the estimated lives of each asset. Estimated useful lives for significant classes of assets are as follows: computer and software 3 to 5 years, furniture and other equipment 5 to 7 years, automobiles 2 to 5 years, buildings held for lease 5 to 7 years, and equipment 5 to 29 years. Repairs and maintenance are charged to expense when incurred.\nHeld For Sale Assets \u2013 On May 10, 2021 the Company's subsidiary, SG DevCo acquired the Lago Vista, Texas property for $3,576,130. Management has implemented a plan to sell this property, which meets all of the criteria required to classify it as Held for Sale. Including the project development costs associated with Lago Vista of $816,410, the book value is now $4,392,541.\nConvertible instruments \u2013 The Company bifurcates conversion options from their host instruments and accounts for them as free standing derivative financial instruments according to certain criteria. The criteria include circumstances in which (a) the economic characteristics and risks of the embedded derivative instrument are not clearly and closely related to the economic characteristics and risks of the host contract, (b) the hybrid instrument that embodies both the embedded derivative instrument and the host contract is not re-measured at fair value under otherwise applicable generally accepted accounting principles with changes in fair value reported in earnings as they occur and (c) a separate instrument with the same terms as the embedded derivative instrument would be considered a derivative instrument.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 560,
+     "token": "REPEATING_HEADER",
+     "id": 32,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "Quoted prices in active markets for identical assets or liabilities."
+    ],
+    [
+     "",
+     "Level 2",
+     "Quoted prices for similar assets and liabilities in active markets or inputs that are observable."
+    ],
+    [
+     "",
+     "Level 3",
+     "Inputs that are unobservable (for example, cash flow modeling inputs based on assumptions)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 603,
+    "end_line": 608
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Common stock purchase warrants and other derivative financial instruments \u2013 The Company classifies as equity any contracts that (i) require physical settlement or net-share settlement or (ii) provides a choice of net-cash settlement or settlement in the Company\u2019s own shares (physical settlement or net-share settlement) providing that such contracts are indexed to the Company\u2019s own stock. The Company classifies as assets or liabilities any contracts that (i) require net-cash settlement (including a requirement to net cash settle the contract if any event occurs and if that event is outside the Company\u2019s control) or (ii) gives the counterparty a choice of net-cash settlement or settlement shares (physical settlement or net-cash settlement). The Company assesses classification of common stock purchase warrants and other free standing derivatives at each reporting date to determine whether a change in classification between assets and liabilities or equity is required.\nFair value measurements \u2013 Financial instruments, including cash and cash equivalents, accounts receivable, accounts payable and accrued liabilities are carried at cost, which the Company believes approximates fair value due to the short-term nature of these instruments.\nThe Company measures the fair value of financial assets and liabilities based on the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. The Company maximizes the use of observable inputs and minimizes the use of unobservable inputs when measuring fair value.\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n3. Summary of Significant Accounting Policies (continued)\nThe Company uses three levels of inputs that may be used to measure fair value:",
+   "prose_after": "Transfer into and transfers out of the hierarchy levels are recognized as if they had taken place at the end of the reporting period.\nShare-based payments \u2013 The Company measures the cost of services received in exchange for an award of equity instruments based on the fair value of the award. For employees and directors, including non-employee directors, the fair value of a stock option award is measured on the grant date. The fair value amount is then recognized over the period services are required to be provided in exchange for the award, usually the vesting period. The Company recognizes stock-based compensation expense on a graded-vesting basis over the requisite service period for each separately vesting tranche of each award. Stock-based compensation expense to employees and all directors are reported within payroll and related expenses in the consolidated statements of operations. Stock-based compensation expense to non-employees is reported within marketing and business development expense in the condensed consolidated statements of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 595,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 625,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Billed:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  Construction services",
+     "$",
+     "2,370,435",
+     "",
+     "$",
+     "2,293,187",
+     ""
+    ],
+    [
+     "",
+     "Engineering services",
+     "",
+     "11,795",
+     "",
+     "",
+     "86,388",
+     ""
+    ],
+    [
+     "",
+     "  Medical revenue",
+     "",
+     "122,939",
+     "",
+     "",
+     "679,446",
+     ""
+    ],
+    [
+     "",
+     "Retainage receivable",
+     "",
+     "686,560",
+     "",
+     "",
+     "635,049",
+     ""
+    ],
+    [
+     "",
+     "  Other receivable",
+     "",
+     "195,888",
+     "",
+     "",
+     "186,692",
+     ""
+    ],
+    [
+     "",
+     "Total gross receivables",
+     "",
+     "3,387,617",
+     "",
+     "",
+     "3,880,762",
+     ""
+    ],
+    [
+     "",
+     "Less: allowance for credit losses",
+     "",
+     "(963,116)",
+     "",
+     "",
+     "(963,116)",
+     ""
+    ],
+    [
+     "",
+     "Total net receivables",
+     "$",
+     "2,424,501",
+     "",
+     "$",
+     "2,917,646",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Accounts Receivable"
+    }
+   },
+   "prose_before": "With respect to receivables, concentrations of credit risk are limited to a few customers in the construction industry. The Company performs ongoing credit evaluations of its customers\u2019 financial condition and, generally, requires no collateral from its customers other than normal lien rights. At March 31, 2022 and December 31, 2021, 75% and 78%, respectively, of the Company\u2019s gross accounts receivable were due from two and four customers.\nRevenue relating to two and two customers represented approximately 90% and 80% of the Company's total revenue for the three months ended March 31, 2022 and 2021, respectively.\nCost of revenue relating to two and two vendors represented approximately 28% and 28% of the Company\u2019s total cost of revenue for the three months ended March 31, 2022 and 2021, respectively. The Company believes it has access to alternative suppliers, with limited disruption to the business, should circumstances change with its existing suppliers.\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n4. Accounts Receivable\nAt March 31, 2022 and December 31, 2021, the Company\u2019s accounts receivable consisted of the following:",
+   "prose_after": "Receivables are evaluated for collectability and allowances for potential losses are established or maintained on applicable receivables. The allowance of doubtful accounts was $963,116 as of March 31, 2022 and December 31, 2021. There was $7,024 in bad debt expense during the three months ended March 31, 2022. There were no write offs for the year ended December 31, 2021.\n5. Contract Assets and Contract Liabilities\nCosts and estimated earnings on uncompleted contracts, which represent contract assets and contract liabilities, consisted of the following at March 31, 2022 and December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Costs incurred on uncompleted contracts",
+     "$",
+     "7,004,438",
+     "",
+     "$",
+     "4,272,425",
+     ""
+    ],
+    [
+     "",
+     "Provision for loss on uncompleted contracts",
+     "",
+     "391,703",
+     "",
+     "",
+     "2,238,578",
+     ""
+    ],
+    [
+     "",
+     "Estimated earnings to date on uncompleted contracts",
+     "",
+     "(3,731,057)",
+     "",
+     "",
+     "(3,156,377)",
+     ""
+    ],
+    [
+     "",
+     "Gross contract assets",
+     "",
+     "3,665,084",
+     "",
+     "",
+     "3,354,626",
+     ""
+    ],
+    [
+     "",
+     "Less: billings to date",
+     "",
+     "(8,737,401)",
+     "",
+     "",
+     "(4,750,289)",
+     ""
+    ],
+    [
+     "",
+     "Net contract assets (liabilities) on uncompleted contracts",
+     "$",
+     "(5,072,317)",
+     "",
+     "$",
+     "(1,395,663)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Contract Assets and Contract Liabilities"
+    }
+   },
+   "prose_before": "Receivables are evaluated for collectability and allowances for potential losses are established or maintained on applicable receivables. The allowance of doubtful accounts was $963,116 as of March 31, 2022 and December 31, 2021. There was $7,024 in bad debt expense during the three months ended March 31, 2022. There were no write offs for the year ended December 31, 2021.\n5. Contract Assets and Contract Liabilities\nCosts and estimated earnings on uncompleted contracts, which represent contract assets and contract liabilities, consisted of the following at March 31, 2022 and December 31, 2021:",
+   "prose_after": "The above amounts are included in the accompanying condensed consolidated balance sheets under the following captions at March 31, 2022 and December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Contract assets",
+     "$",
+     "133,395",
+     "",
+     "$",
+     "41,916",
+     ""
+    ],
+    [
+     "",
+     "Contract liabilities",
+     "",
+     "(5,205,712)",
+     "",
+     "",
+     "(1,437,579)",
+     ""
+    ],
+    [
+     "",
+     "Net contract assets (liabilities)",
+     "$",
+     "(5,072,317)",
+     "",
+     "$",
+     "(1,395,663)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 675,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Contract Assets and Contract Liabilities"
+    }
+   },
+   "prose_before": "The above amounts are included in the accompanying condensed consolidated balance sheets under the following captions at March 31, 2022 and December 31, 2021.",
+   "prose_after": "Although management believes it has established adequate procedures for estimating costs to complete on open contracts, it is at least reasonably possible that additional significant costs could occur on contracts prior to completion. The Company periodically evaluates and revises its estimates and makes adjustments when they are considered necessary.\nFor the Three Months Ended March 31, 2022 and 2021(Unaudited)\n6. Property, plant and equipment\nProperty, plant and equipment are stated at cost less accumulated depreciation and amortization and depreciated using the straight-line method over their useful lives. At March 31, 2022 and December 31, 2021, the Company\u2019s property, plant and equipment, net consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 627,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Computer equipment and software",
+     "$",
+     "159,987",
+     "",
+     "$",
+     "156,701",
+     ""
+    ],
+    [
+     "",
+     "Furniture and other equipment",
+     "",
+     "276,703",
+     "",
+     "",
+     "275,606",
+     ""
+    ],
+    [
+     "",
+     "Leasehold improvements",
+     "",
+     "15,400",
+     "",
+     "",
+     "15,400",
+     ""
+    ],
+    [
+     "",
+     "Equipment and machinery",
+     "",
+     "1,232,378",
+     "",
+     "",
+     "1,219,056",
+     ""
+    ],
+    [
+     "",
+     "Automobiles",
+     "",
+     "4,638",
+     "",
+     "",
+     "4,638",
+     ""
+    ],
+    [
+     "",
+     "Building held for leases",
+     "",
+     "196,416",
+     "",
+     "",
+     "196,416",
+     ""
+    ],
+    [
+     "",
+     "Laboratory and temporary units",
+     "",
+     "1,364,748",
+     "",
+     "",
+     "1,362,760",
+     ""
+    ],
+    [
+     "",
+     "Land",
+     "",
+     "893,786",
+     "",
+     "",
+     "3,576,130",
+     ""
+    ],
+    [
+     "",
+     "Construction in progress",
+     "",
+     "450,381",
+     "",
+     "",
+     "442,515",
+     ""
+    ],
+    [
+     "",
+     "  Property, plant and equipment",
+     "",
+     "4,594,437",
+     "",
+     "",
+     "7,249,222",
+     ""
+    ],
+    [
+     "",
+     "Less: accumulated depreciation",
+     "",
+     "(513,585)",
+     "",
+     "",
+     "(409,279)",
+     ""
+    ],
+    [
+     "",
+     "Property, plant and equipment, net",
+     "$",
+     "4,080,852",
+     "",
+     "$",
+     "6,839,943",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Property, plant and equipment"
+    }
+   },
+   "prose_before": "Although management believes it has established adequate procedures for estimating costs to complete on open contracts, it is at least reasonably possible that additional significant costs could occur on contracts prior to completion. The Company periodically evaluates and revises its estimates and makes adjustments when they are considered necessary.\nFor the Three Months Ended March 31, 2022 and 2021(Unaudited)\n6. Property, plant and equipment\nProperty, plant and equipment are stated at cost less accumulated depreciation and amortization and depreciated using the straight-line method over their useful lives. At March 31, 2022 and December 31, 2021, the Company\u2019s property, plant and equipment, net consisted of the following:",
+   "prose_after": "Depreciation expense for the three months ended March 31, 2022 and 2021 amounted to $104,825 and $91,190 respectively.\n7. Notes Receivable\nOn January 21, 2020, CPF GP 2019-1 LLC (\u201cCPF GP\u201d) issued to the Company a promissory note in the principal amount of $400,000 (the \u201cCompany Note\u201d) and issued to Paul Galvin, the Company\u2019s Chairman and CEO, a promissory note in the principal amount of $100,000 (the \u201cGalvin Note\u201d). The transaction closed on January 22, 2021, on which date the Company loaned CPF GP 2019-1 LLC $400,000 and Mr. Galvin personally loaned CPF GP $100,000 on behalf of the Company. The Company Note and Galvin Note were issued pursuant to that certain Loan Agreement and Promissory Note, dated October 3, 2019 (the \u201cLoan Agreement\u201d), as amended on October 15, 2019 and November 7, 2019 by and between the CPF GP and the Company, and bear interest at five percent (5%) per annum, payable, together with the unpaid principal amount of the promissory notes, on the earlier of the July 31, 2023 maturity date or upon the liquidation, redemption sale or issuance of a dividend upon the LLC interests in CPF MF 2019-1 LLC, a Texas limited liability company of which CPF GP is the general partner; provided, that the terms of the Galvin Note provide that all interest payments due to Mr. Galvin under the Galvin Note shall be paid directly to, and for the benefit of, the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Balance Sheet Location",
+     "",
+     "March 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Operating Leases",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Right-of-use assets, net",
+     "",
+     "$",
+     "2,874,936",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Current liabilities",
+     "Lease liability, current maturities",
+     "",
+     "(461,584)",
+     ""
+    ],
+    [
+     "",
+     "Non-current liabilities",
+     "Lease liability, net of current maturities",
+     "",
+     "(2,420,401)",
+     ""
+    ],
+    [
+     "",
+     "Total operating lease liabilities",
+     "",
+     "$",
+     "(2,881,985)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Finance Leases",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Right-of-use assets",
+     "",
+     "$",
+     "27,348",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Current liabilities",
+     "Lease liability, current maturities",
+     "",
+     "(19,639)",
+     ""
+    ],
+    [
+     "",
+     "Non-current liabilities",
+     "Lease liability, net of current maturities",
+     "",
+     "(6,679)",
+     ""
+    ],
+    [
+     "",
+     "Total finance lease liabilities",
+     "",
+     "$",
+     "(26,318)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Weighted Average Remaining Lease Term",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Operating leases",
+     "",
+     "",
+     "7.4 years",
+     ""
+    ],
+    [
+     "",
+     "Finance leases",
+     "",
+     "",
+     "1.36 years",
+     ""
+    ],
+    [
+     "",
+     "Weighted Average Discount Rate",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Operating leases",
+     "",
+     "",
+     "3%",
+     ""
+    ],
+    [
+     "",
+     "Finance leases",
+     "",
+     "",
+     "3%",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 745,
+    "end_line": 792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "On October 29, 2021, SG Echo, a subsidiary of the Company, entered into a Loan Agreement (\u201cLoan Agreement\u201d) with the Durant Industrial Authority (the \u201cAuthority\u201d) pursuant to which it received $750,000 to be used for renovation improvements related to the Company's second manufacturing facility and issued to the Authority a non-interest bearing Forgivable Promissory Note in the principal amount of $750,000 (the \u201cForgivable Note\u201d). The Forgivable Note is due on April 29, 2029 and guaranteed by the Company, provided, if no event of default has occurred under the Forgivable Note or Loan Agreement, one-third (1/3) of the balance of the Forgivable Note will be forgiven on April 29, 2027, one-half (1/2) of the balance of the Forgivable Note will be forgiven on April 29, 2028, and the remainder of the balance of the Forgivable Note will be forgiven on April 29, 2029. The Loan Agreement includes a covenant by SG Echo to employ a minimum of 75 full-time employees in Durant Oklahoma and pay them no less than 1.5 times the federal minimum wage, and provides SG Echo 24 months to comply with the provision.\n9. Leases\nThe Company leases an office, a manufacturing plant and certain equipment under non-cancelable operating lease agreements. The leases have remaining lease terms ranging from one year to ten years.\nSupplemental balance sheet information related to leases is as follows:",
+   "prose_after": "For the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n9. Leases (continued)\nAs the leases do not provide an implicit rate, the Company used an incremental borrowing rate based on the information available at the lease commencement date in determining the present value of the lease payments, which is reflective of the specific term of the leases and economic environment of each geographic region.\nAnticipated future lease costs, which are based in part on certain assumptions to approximate minimum annual rental commitments under non-cancelable leases, are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 729,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ending December 31:",
+     "",
+     "Operating",
+     "",
+     "Financing",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "2022",
+     "$",
+     "405,825",
+     "$",
+     "15,120",
+     "$",
+     "420,945"
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "525,718",
+     "",
+     "11,760",
+     "",
+     "537,478"
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "523,722",
+     "",
+     "\u2014",
+     "",
+     "523,722"
+    ],
+    [
+     "",
+     "2025",
+     "",
+     "446,349",
+     "",
+     "\u2014",
+     "",
+     "446,349"
+    ],
+    [
+     "",
+     "2026",
+     "",
+     "207,379",
+     "",
+     "\u2014",
+     "",
+     "207,379"
+    ],
+    [
+     "",
+     "Thereafter",
+     "",
+     "1,119,904",
+     "",
+     "\u2014",
+     "",
+     "1,119,904"
+    ],
+    [
+     "",
+     "Total lease payments",
+     "",
+     "3,228,897",
+     "",
+     "26,880",
+     "",
+     "3,255,777"
+    ],
+    [
+     "",
+     "Less: Imputed interest",
+     "",
+     "346,912",
+     "",
+     "562",
+     "",
+     "347,474"
+    ],
+    [
+     "",
+     "Present value of lease liabilities",
+     "$",
+     "2,881,985",
+     "$",
+     "26,318",
+     "$",
+     "2,908,303"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 821
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "For the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n9. Leases (continued)\nAs the leases do not provide an implicit rate, the Company used an incremental borrowing rate based on the information available at the lease commencement date in determining the present value of the lease payments, which is reflective of the specific term of the leases and economic environment of each geographic region.\nAnticipated future lease costs, which are based in part on certain assumptions to approximate minimum annual rental commitments under non-cancelable leases, are as follows:",
+   "prose_after": "Chicago Airport Testing has subleased its leased vacant area for a period of one year, the sublessee has the option to terminate at any time after the first six months. The sublessee elected to terminate the Agreement, effective as of July 31, 2021 and the Company has no remaining lease revenue from the sublessee.\n10. Net Income (Loss) Per Share\nBasic net income (loss) per share is computed by dividing the net income (loss) for the period by the weighted average number of common shares outstanding during the period. Diluted net income (loss) per share is computed by dividing the net income (loss) for the period by the weighted average number of common and potentially dilutive common shares outstanding during the period. Potentially dilutive common shares consist of the common shares issuable upon the exercise of stock options and warrants. Potentially dilutive common shares are excluded from the calculation if their effect is antidilutive.\nAt March 31, 2022, there were restricted stock units, options and warrants of 2,245,186, 36,436 and 2,025,520 respectively, outstanding that could potentially dilute future net income per share. Because the Company had a net loss as of March 31, 2022, it is prohibited from including potential common shares in the computation of diluted per share amounts. Accordingly, the Company has used the same number of shares outstanding to calculate both the basic and diluted loss per share. At March 31, 2021, there were options, including options to non-employees and non-directors, restricted stock units and warrants to purchase 36,436, 884,343 and 128,090 shares of common stock, respectively, outstanding that could potentially dilute future net income per share.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 795,
+     "token": "REPEATING_HEADER",
+     "id": 42,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 830,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance - beginning of period",
+     "$",
+     "3,217,909",
+     "$",
+     "25,117,461",
+     ""
+    ],
+    [
+     "",
+     "New contracts and change orders during the period",
+     "",
+     "6,092,724",
+     "",
+     "3,191,335",
+     ""
+    ],
+    [
+     "",
+     "Adjustments and cancellations, net",
+     "",
+     "\u2014",
+     "",
+     "(18,297,197)",
+     ""
+    ],
+    [
+     "",
+     "Subtotal",
+     "",
+     "9,310,633",
+     "",
+     "10,011,599",
+     ""
+    ],
+    [
+     "",
+     "Less: contract revenue earned during the period",
+     "",
+     "1,718,770",
+     "",
+     "(6,793,690)",
+     ""
+    ],
+    [
+     "",
+     "Balance - end of period",
+     "$",
+     "7,591,863",
+     "$",
+     "3,217,909",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 840,
+    "end_line": 853
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Construction Backlog"
+    }
+   },
+   "prose_before": "At March 31, 2022, there were restricted stock units, options and warrants of 2,245,186, 36,436 and 2,025,520 respectively, outstanding that could potentially dilute future net income per share. Because the Company had a net loss as of March 31, 2022, it is prohibited from including potential common shares in the computation of diluted per share amounts. Accordingly, the Company has used the same number of shares outstanding to calculate both the basic and diluted loss per share. At March 31, 2021, there were options, including options to non-employees and non-directors, restricted stock units and warrants to purchase 36,436, 884,343 and 128,090 shares of common stock, respectively, outstanding that could potentially dilute future net income per share.\nFor the Three Months Ended March 31, 2022 and 2021(Unaudited)\n11. Construction Backlog\nThe following represents the backlog of signed construction and engineering contracts in existence at March 31, 2022 and December 31, 2021, which represents the amount of revenue the Company expects to realize from work to be performed on uncompleted contracts in progress and from contractual agreements in effect at March 31, 2022 and December 31, 2021, respectively, on which work has not yet begun:",
+   "prose_after": "Backlog at December 31, 2021 included two contracts entered into during the third quarter of 2020 in the amount of approximately $4 million and approximately $2.95 million along with three contracts during the fourth quarter of 2020 in the amount of approximately $2.7 million, $0.80 million, and $0.70 million. The Company executed one large contract in the first quarter of 2021 in the amount of approximately $1.3 million, one large contract in the third quarter of 2021 of approximately of $0.87 million and had one large partial contract cancellation to an existing contract of approximately ($1.3) million. The Company executed one large contract in the fourth quarter of 2021 in the amount of approximately $0.78 million and had one contract cancellation in the amount of approximately $16.9 million. On March 29, 2022, the Company entered into a contract with ATCO Structures & Logistics (USA) Inc. for $5,954,950 that is reflected in the March 31, 2022 backlog. The Company expects that all of this revenue will be realized by December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 832,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "Within 1 year",
+     "$",
+     "7,591,863"
+    ],
+    [
+     "",
+     "1 to 2 years",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "Total Backlog",
+     "$",
+     "7,591,863"
+    ]
+   ],
+   "caption_stack": [
+    "2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 869
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Construction Backlog"
+    }
+   },
+   "prose_before": "Backlog at December 31, 2021 included two contracts entered into during the third quarter of 2020 in the amount of approximately $4 million and approximately $2.95 million along with three contracts during the fourth quarter of 2020 in the amount of approximately $2.7 million, $0.80 million, and $0.70 million. The Company executed one large contract in the first quarter of 2021 in the amount of approximately $1.3 million, one large contract in the third quarter of 2021 of approximately of $0.87 million and had one large partial contract cancellation to an existing contract of approximately ($1.3) million. The Company executed one large contract in the fourth quarter of 2021 in the amount of approximately $0.78 million and had one contract cancellation in the amount of approximately $16.9 million. On March 29, 2022, the Company entered into a contract with ATCO Structures & Logistics (USA) Inc. for $5,954,950 that is reflected in the March 31, 2022 backlog. The Company expects that all of this revenue will be realized by December 31, 2022.\nThe Company\u2019s remaining backlog as of March 31, 2022 represents the remaining transaction price of firm contracts for which work has not been performed and excludes unexercised contract options.\nThe Company expects to satisfy its backlog which represents the remaining unsatisfied performance obligation on contracts as of March 31, 2022 over the following period:",
+   "prose_after": "Although backlog reflects business that is considered to be firm, cancellations, deferrals or scope adjustments may occur. Backlog is adjusted to reflect any known project cancellations, revisions to project scope and cost and project deferrals, as appropriate.\nFor the Three Months Ended March 31, 2022 and 2021(Unaudited)\n12. Stockholders\u2019 Equity\nPublic Offerings \u2013\nIn October 2021, the Company closed a registered direct offering and concurrent private placement of its common stock (the \"October Offering\") that the Company effected pursuant to the Securities Purchase Agreement that it entered into on October 25, 2021 with an institutional investor and received gross proceeds of $11.55 million. Pursuant to the terms of the Purchase Agreement, the Company issued to the investor (A) in a registered direct offering (i) 975,000 shares (the \u201cPublic Shares\u201d) of its Common Stock, par value $0.01 per share (the \u201cCommon Stock\u201d), and (ii) pre-funded warrants (the \u201cPre-Funded Warrants\u201d) to purchase up to 2,189,384 shares (the \u201cPre-Funded Warrant Shares\u201d) of Common Stock and (B) in a concurrent private placement, Series A warrants to purchase up to 1,898,630 shares (the \u201cCommon Stock Warrant Shares\u201d) of Common Stock (the \u201cCommon Stock Warrants,\u201d and together with the Public Shares and the Pre-Funded Warrants, the \u201cSecurities\u201d) (the \u201cOffering The Pre-Funded Warrants were immediately exercisable at a nominal exercise price of $0.001 and all Pre-Funded Warrants sold have been exercised. The Common Stock Warrants have an exercise price of $4.80 per share, are exercisable upon issuance and will expire five years from the date of issuance. A.G.P./Alliance Global Partners (the \u201cPlacement Agent\u201d) acted as the exclusive placement agent for the transaction pursuant to that certain Placement Agency Agreement, dated as of October 25, 2021, by and between the Company and the Placement Agent (the \u201cPlacement Agency Agreement\u201d), the Placement Agent received (i) a cash fee equal to seven percent (7.0%) of the gross proceeds from the placement of the Securities sold by the Placement Agent in the Offering and (ii) a non-accountable expense allowance of one half of one percent (0.5%) of the gross proceeds from the placement of the Gross Proceeds Securities sold by the Placement Agent in the Offering. The Company also reimbursed the Placement Agent\u2019s expenses up to $50,000 upon closing the Offering. The net proceeds to the Company after deducting the Placement Agent\u2019s fees and the Company\u2019s estimated offering expenses was approximately $10.5 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 832,
+     "token": "REPEATING_HEADER",
+     "id": 44,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Construction",
+     "",
+     "",
+     "Medical",
+     "",
+     "Development",
+     "",
+     "",
+     "Corporate and\n\n\n\nsupport",
+     "",
+     "",
+     "Consolidated",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fiscal Quarter Ended March 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Revenue",
+     "$",
+     "1,718,770",
+     "",
+     "$",
+     "6,885,829",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "8,604,599",
+     ""
+    ],
+    [
+     "",
+     "Cost of revenue",
+     "",
+     "1,720,714",
+     "",
+     "",
+     "4,397,449",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,118,163",
+     ""
+    ],
+    [
+     "",
+     "Operating expenses",
+     "",
+     "109,163",
+     "",
+     "",
+     "18,973",
+     "",
+     "281,988",
+     "",
+     "",
+     "1,657,419",
+     "",
+     "",
+     "2,067,543",
+     ""
+    ],
+    [
+     "",
+     "Operating gain/loss",
+     "",
+     "(111,107)",
+     "",
+     "",
+     "2,469,407",
+     "",
+     "(281,988)",
+     "",
+     "",
+     "(1,657,419)",
+     "",
+     "",
+     "418,892",
+     ""
+    ],
+    [
+     "",
+     "Other income (expense)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(40,000)",
+     "",
+     "",
+     "122,836",
+     "",
+     "",
+     "82,836",
+     ""
+    ],
+    [
+     "",
+     "Income before income taxes",
+     "",
+     "(111,107)",
+     "",
+     "",
+     "2,469,407",
+     "",
+     "(321,988)",
+     "",
+     "",
+     "(1,534,583)",
+     "",
+     "",
+     "501,728",
+     ""
+    ],
+    [
+     "",
+     "Net income attributable to non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,218,905",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,218,905",
+     ""
+    ],
+    [
+     "",
+     "Net loss attributable to common stockholders of SG Blocks, Inc.",
+     "$",
+     "(111,107)",
+     "",
+     "$",
+     "1,250,502",
+     "$",
+     "(321,988)",
+     "",
+     "$",
+     "(1,534,583)",
+     "",
+     "$",
+     "(717,177)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total assets",
+     "$",
+     "10,464,450",
+     "",
+     "$",
+     "4,857,366",
+     "$",
+     "8,889,271",
+     "",
+     "$",
+     "13,752,110",
+     "",
+     "$",
+     "37,963,197",
+     ""
+    ],
+    [
+     "",
+     "Depreciation and amortization",
+     "$",
+     "143,435",
+     "",
+     "$",
+     "263,169",
+     "$",
+     "8,628",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "165,473",
+     ""
+    ],
+    [
+     "",
+     "Capital expenditures",
+     "$",
+     "24,100",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "893,785",
+     "",
+     "$",
+     "4,980",
+     "",
+     "$",
+     "922,865",
+     ""
+    ],
+    [
+     "",
+     "Inter-segment revenue elimination",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "160,500",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(160,500)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Construction",
+     "",
+     "",
+     "Medical",
+     "",
+     "Development",
+     "",
+     "",
+     "Corporate and\n\n\n\nsupport",
+     "",
+     "",
+     "Consolidated",
+     ""
+    ],
+    [
+     "",
+     "Fiscal Quarter Ended March 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Revenue",
+     "$",
+     "3,231,664",
+     "",
+     "$",
+     "5,955,963",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "9,187,627",
+     ""
+    ],
+    [
+     "",
+     "Cost of revenue",
+     "",
+     "4,103,310",
+     "",
+     "",
+     "4,527,692",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,631,002",
+     ""
+    ],
+    [
+     "",
+     "Operating expenses",
+     "",
+     "6,150",
+     "",
+     "",
+     "159,254",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,552,678",
+     "",
+     "",
+     "1,718,082",
+     ""
+    ],
+    [
+     "",
+     "Operating gain/loss",
+     "",
+     "(877,796)",
+     "",
+     "",
+     "1,269,017",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,552,678)",
+     "",
+     "",
+     "(1,161,457)",
+     ""
+    ],
+    [
+     "",
+     "Other income (expense)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "17,107",
+     "",
+     "",
+     "17,107",
+     ""
+    ],
+    [
+     "",
+     "Income before income taxes",
+     "",
+     "(877,796)",
+     "",
+     "",
+     "1,269,017",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,535,571)",
+     "",
+     "",
+     "(1,144,350)",
+     ""
+    ],
+    [
+     "",
+     "Net income attributable to non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "889,527",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "889,527",
+     ""
+    ],
+    [
+     "",
+     "Net loss attributable to common stockholders of SG Blocks, Inc.",
+     "$",
+     "(877,796)",
+     "",
+     "$",
+     "379,491",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(1,535,571)",
+     "",
+     "$",
+     "(2,033,877)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total assets",
+     "$",
+     "14,050,007",
+     "",
+     "$",
+     "5,047,318",
+     "$",
+     "127,395",
+     "",
+     "$",
+     "8,023,564",
+     "",
+     "$",
+     "27,248,283",
+     ""
+    ],
+    [
+     "",
+     "Depreciation and amortization",
+     "$",
+     "56,909",
+     "",
+     "$",
+     "84,619",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "265",
+     "",
+     "$",
+     "141,793",
+     ""
+    ],
+    [
+     "",
+     "Capital expenditures",
+     "$",
+     "477,882",
+     "",
+     "$",
+     "36,890",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "347,318",
+     "",
+     "$",
+     "862,090",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 898,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Segments and Disaggregated Revenue"
+    }
+   },
+   "prose_before": "Decrease in Authorized Shares \u2013 On June 5, 2019, at the Company\u2019s annual meeting of stockholders, the stockholders approved an amendment to the Company\u2019s amended and restated certificate of incorporation to decrease the number of authorized shares of common stock from 300,000,000 to 25,000,000 shares. Following the meeting, on June 5, 2019, the Company filed a certificate of amendment to the amended and restated certificate of incorporation to decrease its authorized shares of common stock accordingly. There was no change to the number of authorized shares of preferred stock.\nUnderwriting Agreement \u2013 In August 2019, the Company issued 45,000 shares of its common stock at $17.00 per share pursuant to the terms of an Underwriting Agreement (the \u201cUnderwriting Agreement\u201d) to the public. The Company incurred $181,695 in issuance costs from the offering and issued warrants to purchase 2,250 shares of common stock to the underwriter. The warrants are further discussed in Note 14.\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n13. Segments and Disaggregated Revenue",
+   "prose_after": "For the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n14. Warrants\nIn conjunction with the June 2017 Public Offering, the Company issued to certain affiliates of the underwriters, as compensation, warrants to purchase an aggregate of 4,313 shares of common stock at an exercise price of $125.00 per share. The warrants are exercisable at the option of the holder on or after June 21, 2018 and expire June 21, 2023.The fair value of warrants was calculated utilizing a Black-Scholes model and amounted to $63,796. The fair market value of the warrants as of the date of issuance has been included in issuance costs in additional paid-in capital.\nIn conjunction with the Purchase Agreement in April 2019, the Company also sold warrants to purchase up to an aggregate of 42,388 shares of common stock at an initial exercise price of $27.50 per share. The warrants are exercisable at the option of the holder on or after October 29, 2019 and expire October 29, 2024. The Company issued to certain affiliates of the underwriters, as compensation, warrants to purchase an aggregate of 4,239 shares of common stock at an initial exercise price of $27.50 per share. The warrants are exercisable at the option of the holder on or after October 29, 2019 and expire April 24, 2024.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "REPEATING_HEADER",
+     "id": 48,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 941,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "Payroll and related expenses",
+     "$",
+     "649,090",
+     "$",
+     "286,186"
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "649,090",
+     "$",
+     "286,186"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 967,
+    "end_line": 976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Share-based Compensation"
+    }
+   },
+   "prose_before": "On October 26, 2016, the Company\u2019s Board of Directors approved the issuance of up to 25,000 shares of the Company\u2019s common stock in the form of restricted stock or options (\u201c2016 Stock Plan\u201d). Effective January 20, 2017, the 2016 Stock Plan was amended and restated as the SG Blocks, Inc. Stock Incentive Plan, as further amended effective June 1, 2018 and as further amended on July 30, 2020 and as further amended on August 18, 2021, (the \u201cIncentive Plan\u201d). The Incentive Plan authorizes the issuance of up to 3,625,000 shares of common stock. It authorizes the issuance of equity-based awards in the form of stock options, stock appreciation rights, restricted shares, restricted share units, other share-based awards and cash-based awards to non-employee directors and to officers, employees and consultants of the Company and its subsidiary, except that incentive stock options may only be granted to the Company\u2019s employees and its subsidiary\u2019s employees. The Incentive Plan expires on October 26, 2026, and is administered by the Company\u2019s Compensation Committee of the Board of Directors. Each of the Company\u2019s employees, directors, and consultants are eligible to participate in the Incentive Plan. As of March 31, 2022, there were 1,343,377 shares of common stock available for issuance under the Incentive Plan.\nStock-Based Compensation Expense\nStock-based compensation expense is included in the condensed consolidated statements of operations as follows:",
+   "prose_after": "For the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n15. Share-based Compensation (continued)\nThe following table presents total stock-based compensation expense by security type included in the condensed consolidated statements of operations:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 943,
+     "token": "REPEATING_HEADER",
+     "id": 50,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "Stock options",
+     "$",
+     "\u2014",
+     "$",
+     "2,666"
+    ],
+    [
+     "",
+     "Restricted Stock Units",
+     "",
+     "649,090",
+     "",
+     "283,520"
+    ],
+    [
+     "",
+     "Total",
+     "$",
+     "649,090",
+     "$",
+     "286,186"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 987,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Share-based Compensation"
+    }
+   },
+   "prose_before": "For the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n15. Share-based Compensation (continued)\nThe following table presents total stock-based compensation expense by security type included in the condensed consolidated statements of operations:",
+   "prose_after": "Stock-Based Option Awards\nThe Company has issued no stock-based options during the three months ended March 31, 2022 and 2021.\nBecause the Company does not have significant historical data on employee exercise behavior, the Company uses the \u201cSimplified Method\u201d to calculate the expected life of the stock-based option awards granted to employees. The simplified method is calculated by averaging the vesting period and contractual term of the options.\nThe following table summarizes stock-based option activities and changes during the three months ended March 31, 2022 as described below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 979,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Shares",
+     "Weighted Average Fair Value Per Share",
+     "Weighted Average Exercise Price Per Share",
+     "Weighted Average Remaining Terms (in years)",
+     "Aggregate Intrinsic Value"
+    ],
+    [
+     "",
+     "Outstanding \u2013 December 31, 2021",
+     "36,436",
+     "24.80",
+     "78.71",
+     "5.34",
+     "\u2014"
+    ],
+    [
+     "",
+     "Granted",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "Exercised",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "Cancelled",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "",
+     "Outstanding \u2013 March 31, 2022",
+     "36,436",
+     "24.80",
+     "78.71",
+     "5.09",
+     "\u2014"
+    ],
+    [
+     "",
+     "Exercisable \u2013 December 31, 2021",
+     "36,436",
+     "24.80",
+     "78.71",
+     "5.34",
+     "\u2014"
+    ],
+    [
+     "",
+     "Exercisable \u2013 March 31, 2022",
+     "36,436",
+     "24.80",
+     "78.71",
+     "5.09",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1007,
+    "end_line": 1022
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Share-based Compensation"
+    }
+   },
+   "prose_before": "Stock-Based Option Awards\nThe Company has issued no stock-based options during the three months ended March 31, 2022 and 2021.\nBecause the Company does not have significant historical data on employee exercise behavior, the Company uses the \u201cSimplified Method\u201d to calculate the expected life of the stock-based option awards granted to employees. The simplified method is calculated by averaging the vesting period and contractual term of the options.\nThe following table summarizes stock-based option activities and changes during the three months ended March 31, 2022 as described below:",
+   "prose_after": "For the three months ended March 31, 2022 and 2021, the Company recognized stock-based compensation expense of $0 and $2,666, respectively, related to stock options. This expense is included in payroll and related expenses in the accompanying condensed consolidated statements of operations..\nAs of March 31, 2022, there was no unrecognized compensation costs related to non-vested stock options and all options have been expensed. The intrinsic value is calculated as the difference between the fair value of the stock price at year end and the exercise price of each of the outstanding stock options. The fair value of the stock price at March 31, 2022 was $1.95 per share.\nFor the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n15. Share-based Compensation (continued)\nRestricted Stock Units\nOn March 22, 2019, a total of 15,703 of restricted stock units were granted to Mr. Galvin, Mr. Armstrong, Mr. Shetty, six employees and one consultant of the Company, under the Company's stock-based compensation plan, at the fair value of $54.00 per share, which represents the closing price of the Company's common stock on February 26, 2019 as adjusted for stock splits. Restricted stock units granted to Mr. Galvin, Mr. Armstrong, Mr. Shetty, and an aggregate of six employees and one consultant of 6,139, 772, 5,729 and an aggregate of 3,063, respectively, vest in installments over either a one-year, two-year, three-year and four-year period and will fully vest by the end of December 31, 2022. The fair value of these units upon issuance amounted to $847,957.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 979,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of Shares",
+     ""
+    ],
+    [
+     "",
+     "Non-vested balance at January 1, 2022",
+     "",
+     "1,274,137"
+    ],
+    [
+     "",
+     "Granted",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "Vested",
+     "",
+     "212,999"
+    ],
+    [
+     "",
+     "Forfeited/Expired",
+     "",
+     "17,500"
+    ],
+    [
+     "",
+     "Non-vested balance at March 31, 2022",
+     "",
+     "1,043,638"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1071,
+    "end_line": 1083
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                                    2"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Share-based Compensation"
+    }
+   },
+   "prose_before": "On October 1, 2021, a total of 59,170 of restricted stock units were granted to five of the Company's non-employee directors, under the Company's stock-based compensation plan, at the fair value of $3.38 per share, which represents the closing price of the Company's common stock on October 1, 2021. The restricted stock units granted October 1, 2021 vesting monthly over one year and, if earlier, in full on the date of the Company\u2019s 2022 Annual Meeting of Stockholders.\nOn December 7, 2021, a total of 62,500 of restricted stock units were granted to five of the Company's non-employee advisory directors, under the Company's stock-based compensation plan, at the fair value of $2.36 per share, which represents the closing price of the Company's common stock on December 7, 2021. The restricted stock units granted vest in equal monthly installments over one year period.\nFor the three months ended March 31, 2022 and 2021, the Company recognized stock-based compensation of $649,090 and $283,520 related to restricted stock units. This expense is included in the payroll and related expenses, general and administrative expenses, and marketing and business development expense in the accompanying condensed consolidated statement of operations.\nThe following table summarized restricted stock unit activities during the three months ended March 31, 2022:",
+   "prose_after": "For the Three Months Ended March 31, 2022 and 2021 (Unaudited)\n16. Commitments and Contingencies\nLegal Proceedings\nThe Company is subject to certain claims and lawsuits arising in the normal course of business. The Company assesses liabilities and contingencies in connection with outstanding legal proceedings utilizing the latest information available. Where it is probable that the Company will incur a loss and the amount of the loss can be reasonably estimated, the Company records a liability in our consolidated financial statements. These legal accruals may be increased or decreased to reflect any relevant developments on a quarterly basis. Where a loss is not probable or the amount of the loss is not estimable, the Company does not record an accrual, consistent with applicable accounting guidance. Based on information currently available, advice of counsel, and available insurance coverage, the Company believes that the established accruals are adequate and the liabilities arising from the legal proceedings will not have a material adverse effect on the consolidated financial condition. However, that in light of the inherent uncertainty in legal proceedings there can be no assurance that the ultimate resolution of a matter will not exceed established accruals. As a result, the outcome of a particular matter or a combination of matters may be material to the results of operations for a particular period, depending upon the size of the loss or the income for that particular period.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1051,
+     "token": "REPEATING_HEADER",
+     "id": 56,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1084,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Three Months Ended March 31, 2022",
+     "",
+     "",
+     "",
+     "For the Three Months Ended March 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "",
+     "$",
+     "8,604,598",
+     "",
+     "",
+     "$",
+     "9,187,627",
+     ""
+    ],
+    [
+     "Total Cost of revenue",
+     "",
+     "",
+     "(6,118,163)",
+     "",
+     "",
+     "",
+     "(8,631,002)",
+     ""
+    ],
+    [
+     "Total Operating expenses",
+     "",
+     "",
+     "(2,067,543)",
+     "",
+     "",
+     "",
+     "(1,718,082)",
+     ""
+    ],
+    [
+     "Total Operating profit (loss)",
+     "",
+     "",
+     "418,892",
+     "",
+     "",
+     "",
+     "(1,161,457)",
+     ""
+    ],
+    [
+     "Total Other income (expense)",
+     "",
+     "",
+     "82,836",
+     "",
+     "",
+     "",
+     "17,107",
+     ""
+    ],
+    [
+     "Add: Net profit attributable non-controlling interests",
+     "",
+     "",
+     "1,218,905",
+     "",
+     "",
+     "",
+     "889,527",
+     ""
+    ],
+    [
+     "Net loss attributable to common stockholders of SG Blocks, Inc.",
+     "",
+     "$",
+     "(717,177)",
+     "",
+     "",
+     "$",
+     "(2,033,877)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1239,
+    "end_line": 1253
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "In March 2020, we began increasing our focus on providing our Modules as health care facilities for deployable medical response solutions. In May, we entered into a joint development agreement with Grimshaw Design to assist with the deployment of our D-Tec suite of prefabricated health facilities for on-site immediate COVID-19 testing. In September 2020, we entered the U.S. test lab market by forming a joint venture with Clarity Labs , a manufacturer and market leader of rapid diagnostic tests, to launch CLIA-certified laboratories. Our joint venture with Clarity Labs has allowed us to not only supply our D-Tec suite of prefabricated health facilities but also allows us to provide testing services at such facilities. We have supplied our building modular coronavirus testing centers and provide testing services for Los Angeles International Airport (LAX), Memorial in Wayne County, Michigan and have been selected as a Trusted Testing Partner (TTP) for Hawaii\u2019s COVID-19 travel testing program.\nIn September 2020, we acquired substantially all the assets of Echo, a Texas limited liability company, except for Echo's real estate holdings for which we obtained a right of first refusal. Echo is a container/modular manufacturer based in Durant, Oklahoma specializing in the design and construction of permanent modular and temporary modular buildings and was one of our key supply chain partners. Echo catered to the military, education, administration facilities, healthcare, government, commercial and residential customers. This acquisition has allowed us to expand our reach for our Modules and has offered us an opportunity to vertically integrate a large portion of our cost of goods sold, as well as increase margins, productivity and efficiency in the areas of design, estimating, manufacturing and delivery.\nResults of Operations\nOur operations for the three months ended March 31, 2022 and 2021 may not be indicative of our future operations.\nThree Months Ended March 31, 2022 and 2021:",
+   "prose_after": "Revenue\nDuring the quarter ended March 31, 2022, we derived revenue from the following three categories of sources: construction services, engineering services and medical revenue. The medical revenue source was a new source that commenced operations in the fourth quarter of 2020 and continued with strong revenue related to COVID-19 samples collected from our Clarity Mobile joint venture in the first quarter 2022. Total revenue for the three months ended March 31, 2022 was $8,604,598 compared to $9,187,627 for the three months ended March 31, 2021. This decrease of $583,029 or approximately 6% was mainly driven by a decrease in revenue of approximately $1,512,894 in construction revenue partially offset by an increase in medical revenue of $929,865.\nCost of Revenue and Gross Profit\nCost of revenue was $6,118,163 for the three months ended March 31, 2022, compared to $8,631,002 for the three months ended March 31, 2021. The decrease of $2,512,839 or a decrease of approximately 29%, was due to lower procurement and manufacturing costs of modifying containers and wood modular units, due to a decrease in the number of construction jobs in progress during the period. Partially offset by higher medical related testing volumes which required an increase in procurement of COVID-19 tests and testing supplies.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1231,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1266,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nMarch 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "$",
+     "3,257,027",
+     "",
+     "$",
+     "(2,183,116)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "(1,860,990)",
+     "",
+     "",
+     "(990,388)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "(1,274,000)",
+     "",
+     "",
+     "703,438",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "",
+     "$",
+     "122,037",
+     "",
+     "$",
+     "(2,470,066)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended\n\n\n\nMarch 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1322,
+    "end_line": 1336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We continue to generate losses from operations. At March 31, 2022 and December 31, 2021 we had a cash balance and short-term investment of $13,146,418 and $13,024,381, respectively. As of March 31, 2022, our stockholders\u2019 equity was $21,632,603, compared to $21,715,789 as of December 31, 2021. Our net loss for the three months ended March 31, 2022 was $717,177 and net cash provided by operating activities was $3,257,027. We anticipate our cash balance is sufficient to last at least twelve months from the date of this Quarterly Report on Form 10-Q.\nWe may need to generate additional revenues or secure additional financing sources, such as debt or equity capital, to fund future growth, which financing may not be available on favorable terms or at all. We do not have any additional sources secured for future funding, and if we are unable to raise the necessary capital at the times we require such funding, we may need to materially change our business plan, including delaying implementation of aspects of such business plan or curtailing or abandoning such business plan altogether.\nCash Flow Summary",
+   "prose_after": "Operating activities provided net cash of $3,257,027 during the three months ended March 31, 2022, and used net cash of $2,183,116 during the three months ended March 31, 2021. Generally, our net operating cash flows fluctuate primarily based on changes in our profitability and working capital. Cash used in operating activities increased by approximately $5,440,143.\nInvesting activities used net cash of $1,860,990 during the three months ended March 31, 2022, and $990,388 net cash in the three months ended March 31, 2021 an increase in cash used of $870,602.\nFinancing activities used net cash of $1,274,000 during the three months ended March 31, 2022. Financing activities provided $703,438 net cash during the three months ended March 31, 2021.\nWe provide services to our construction and engineering customers in three separate phases: the design phase, the architectural and engineering phase and the construction phase. Each phase is independent of the other, but builds through a progression of concept through delivery of a completed structure. These phases may be embodied in a single contract or in separate contracts, which is typical of a design build process model. As of March 31, 2022, we had ten projects totaling $7,591,863 under contract. Of these contracts, all ten projects combine all three phases or parts thereof and including construction. We expect that all of this revenue will be realized by December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2022",
+     "",
+     "",
+     "Three Months Ended March 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(717,177)",
+     "",
+     "$",
+     "(2,033,877)",
+     ""
+    ],
+    [
+     "  Addback interest expense",
+     "",
+     "48,849",
+     "",
+     "",
+     "363",
+     ""
+    ],
+    [
+     "  Addback interest income",
+     "",
+     "(12,783)",
+     "",
+     "",
+     "(17,470)",
+     ""
+    ],
+    [
+     "  Addback depreciation and amortization",
+     "",
+     "156,845",
+     "",
+     "",
+     "141,793",
+     ""
+    ],
+    [
+     "EBITDA (non-GAAP)",
+     "",
+     "(524,266)",
+     "",
+     "",
+     "(1,909,191)",
+     ""
+    ],
+    [
+     "  Addback litigation expense",
+     "",
+     "114,383",
+     "",
+     "",
+     "81,219",
+     ""
+    ],
+    [
+     "  Addback stock compensation expense",
+     "",
+     "649,089",
+     "",
+     "",
+     "286,186",
+     ""
+    ],
+    [
+     "Adjusted EBITDA (non-GAAP)",
+     "$",
+     "239,206",
+     "",
+     "$",
+     "(1,541,786)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1431,
+    "end_line": 1446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Other companies, including other companies in our industry, may not use such measures or may calculate one or more of the measures differently than as presented in this Quarterly Report on Form 10-Q, limiting their usefulness as a comparative measure.\nIn evaluating EBITDA and Adjusted EBITDA, you should be aware that in the future we will incur expenses that are the same or similar to some of the adjustments made in our calculations, and our presentation of EBITDA and Adjusted EBITDA should not be construed to mean that our future results will be unaffected by such adjustment. Management compensates for these limitations by using EBITDA and Adjusted EBITDA as supplemental financial metrics and in conjunction with our results prepared in accordance with GAAP. The non-GAAP information should be read in conjunction with our consolidated financial statements and related notes.\nNon-GAAP Financial Information (continued)\nThe following is a reconciliation of EBITDA and Adjusted EBITDA to the nearest GAAP measure, net gain (loss):",
+   "prose_after": "ITEM 3. Quantitative and Qualitative Disclosures About Market Risk\nNot applicable.\nITEM 4. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures\nManagement of SG Blocks, Inc., with the participation of our Principal Executive Officer who is also our Principal Financial Officer carried out an evaluation of the effectiveness of our \u201cdisclosure controls and procedures\u201d (as defined in the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), Rules 13a-15(e) or 15d-15(e)) as of the end of the period covered by this Quarterly Report on Form 10-Q (the \u201cEvaluation Date\u201d). Based upon that evaluation, our Principal Executive Officer who is also our Principal Financial Officer concluded that, as of the Evaluation Date, our disclosure controls and procedures were effective to ensure that information required to be disclosed by us in the reports that we file or submit under the Exchange Act (i) is recorded, processed, summarized and reported within the time periods specified in the Securities and Exchange Commission rules and forms and (ii) is accumulated and communicated to our management, including our Principal Executive Officer and Principal Financial Officer, as appropriate to allow timely decisions regarding required disclosure.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1407,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EXHIBIT INDEX",
+     ""
+    ],
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of SG Blocks, Inc. (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on July 7, 2016 (File No. 000-22563))."
+    ],
+    [
+     "3.2",
+     "Certificate of Designation of Preferences, Rights and Limitations of Series A Convertible Preferred Stock (incorporated herein by reference to Exhibit 3.2 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on July 7, 2016 (File No. 000-22563))."
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to the Amended and Restated Certificate of Incorporation of SG Blocks, Inc. (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on February 28, 2017 (File No. 000-22563))."
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment to Certificate of Designation, dated May 11, 2017 (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on May 12, 2017 (File No. 001-38037))."
+    ],
+    [
+     "3.5",
+     "Certificate of Elimination of Series A Convertible Preferred Stock, dated December 13, 2018 (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on December 17, 2018 (File No. 001-38037))."
+    ],
+    [
+     "3.6",
+     "Certificate of Amendment to the Amended and Restated Certificate of Incorporation dated June 5, 2019  (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on June 5, 2019 (File No. 001-38037))."
+    ],
+    [
+     "3.7",
+     "Form of Certificate of Designation of the Series B Convertible Preferred Stock (incorporated herein by reference to Exhibit 3.7 to the Registration Statement on Form S-1/A (File No. 333-235295) as filed by SG Blocks, Inc. with the Securities and Exchange Commission on December 9, 2019)."
+    ],
+    [
+     "3.8",
+     "Certificate of Amendment to the Amended and Restated Certificate of Incorporation, as amended, of SG Blocks, Inc. (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on February 5, 2020 (File No. 001-38037))."
+    ],
+    [
+     "3.9",
+     "Amended and Restated Bylaws of SG Blocks, Inc. dated June 4, 2021 (incorporated herein by reference to Exhibit 3.1 to the Current Report on Form 8-K as filed by SG Blocks, Inc. with the Securities and Exchange Commission on June 7, 2021 (File No. 001-38037))."
+    ]
+   ],
+   "caption_stack": [
+    "EXHIBIT INDEX"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1529,
+    "end_line": 1552
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "At March 31, 2022, there were restricted stock units, options and warrants to purchase of 2,245,186, 36,436 and 2,025,520, respectively, outstanding that could potentially dilute future net income per share. Because we had a net loss as of March 31, 2022, we are prohibited from including potential shares of common stock in the computation of diluted per share amounts. Accordingly, we used the same number of shares outstanding to calculate both the basic and diluted loss per share. At March 31, 2021, there were options, including options to non-employees and non-directors, restricted stock units and warrants to purchase 36,436, 884,343 and 128,090 shares of common stock, respectively, outstanding that could potentially dilute future net income per share.\nITEM 2. Unregistered Sales of Equity Securities and Use of Proceeds\nNone that have not been previously disclosed in our filings with the SEC.\nITEM 3. Defaults Upon Senior Securities\nNone.\nITEM 4. Mine Safety Disclosures\nNot applicable.\nITEM 5. Other Information\nNone.\nITEM 6. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1568,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1+",
+     "Certification by Chief Executive Officer and Interim Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1+",
+     "Certification by Chief Executive Officer and Interim Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "101.INS+",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File as the XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "101.SCH+",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL+",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF+",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB+",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE+",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1552,
+    "end_line": 1563
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "+ Filed herewith.\n* This certification is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (Exchange Act), or otherwise subject to the liability of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1568,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SG BLOCKS, INC.",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: May 24, 2022",
+     "By:",
+     "/s/ Paul M. Galvin"
+    ],
+    [
+     "",
+     "",
+     "Paul M. Galvin\n\n\n\nChairman of the Board, Chief Executive Officer and Interim Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "SG BLOCKS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1575,
+    "end_line": 1586
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "+ Filed herewith.\n* This certification is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended (Exchange Act), or otherwise subject to the liability of that section, nor shall it be deemed incorporated by reference into any filing under the Securities Act of 1933, as amended, or the Exchange Act.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1569,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

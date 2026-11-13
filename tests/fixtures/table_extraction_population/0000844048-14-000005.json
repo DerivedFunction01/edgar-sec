@@ -1,0 +1,856 @@
+{
+ "accession": "0000844048-14-000005",
+ "cik": "0000844048",
+ "form": "10-Q",
+ "filing_date": "2014-05-15",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "dsifund1110q-q12014.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "California",
+     "33-0324161"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-Q\n[X] Quarterly Report Pursuant to Section 13 or 15 (d) of the Securities and Exchange Act of 1934\nFor the quarterly period ended March 31, 2014\n[ ] Transition report pursuant to section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from ________________ to _______________\nCommission File No. 33-26038.\nDSI REALTY INCOME FUND XI\na California Limited Partnership",
+   "prose_after": "6700\nE. Pacific Coast Hwy., Long Beach, California 90803\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code (562) 493-8881\nIndicate by check mark whether the issuer (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Date File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (Section 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CONDSENSED BALANCE SHEETS",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As of\n\n\n\nMarch 31,",
+     "As of\n\n\n\nDecember 31,"
+    ],
+    [
+     "",
+     "2014",
+     "2013"
+    ],
+    [
+     "",
+     "(Unaudited)",
+     ""
+    ],
+    [
+     "ASSETS:",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$ 323,195",
+     "$ 269,711"
+    ],
+    [
+     "  Property, net",
+     "1,969,606",
+     "1,972,205"
+    ],
+    [
+     "  Uncollected rental revenue",
+     "74,748",
+     "89,730"
+    ],
+    [
+     "  Prepaid advertising",
+     "-",
+     "-"
+    ],
+    [
+     "  Other assets",
+     "33,380",
+     "33,380"
+    ],
+    [
+     "  TOTAL ASSETS",
+     "$2,400,929",
+     "$2,365,026"
+    ],
+    [
+     "LIABILITIES AND PARTNERS' EQUITY",
+     "",
+     ""
+    ],
+    [
+     "  LIABILITIES:",
+     "",
+     ""
+    ],
+    [
+     "    Distribution due to partners",
+     "$151,515",
+     "$151,515"
+    ],
+    [
+     "    Incentive management fee liability",
+     "13,636",
+     "27,273"
+    ],
+    [
+     "    Property management fee liability \u2013 related party",
+     "11,111",
+     "9,466"
+    ],
+    [
+     "    Deferred income",
+     "34,124",
+     "32,127"
+    ],
+    [
+     "    Accrued expenses",
+     "27,872",
+     "25,186"
+    ],
+    [
+     "    Other liabilities",
+     "101,839",
+     "83,164"
+    ],
+    [
+     "    TOTAL LIABILITIES",
+     "340,097",
+     "328,731"
+    ],
+    [
+     "  PARTNERS' EQUITY:",
+     "",
+     ""
+    ],
+    [
+     "    General partners",
+     "(69,058)",
+     "(69,304)"
+    ],
+    [
+     "    Limited partners",
+     "2,129,890",
+     "2,105,599"
+    ],
+    [
+     "    Total partners' equity",
+     "2,060,832",
+     "2,036,295"
+    ],
+    [
+     "    Non-controlling interest in real estate joint venture",
+     "-",
+     "-"
+    ],
+    [
+     "    Total equity",
+     "2,060,832",
+     "2,036,295"
+    ],
+    [
+     "  TOTAL LIABILITIES AND PARTNERS\u2019 EQUITY",
+     "$2,400,929",
+     "$2,365,026"
+    ]
+   ],
+   "caption_stack": [
+    "CONDSENSED BALANCE SHEETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 56,
+    "end_line": 87
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Certain statements contained in this discussion or elsewhere in this report may be deemed \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995 and Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934. Words and phrases such as \u201cexpects\u201d, \u201canticipates\u201d, \u201cintends\u201d, \u201cplans\u201d, \u201cbelieves\u201d, \u201cseeks\u201d, \u201cestimates\u201d, \u201cdesigned to achieve\u201d, variations of such words and similar expressions are intended to identify such forward-looking statements, which generally are not historical in nature. All statements that address operating performance, events or developments that we expect or anticipate will occur in the future \u2013 including statements relating to rent and occupancy growth, general conditions in the geographic areas where we operate \u2013 are forward-looking statements. These statements are not guarantees of future performance and involve certain risks, uncertainties and assumptions that are difficult to predict.\nAlthough we believe the expectations reflected in any forward-looking statements are based on reasonable assumptions, we can give no assurance that our expectations will be attained and therefore, actual outcomes and results may differ materially from what is expressed or forecasted in such forward-looking statements. Many of the factors that may affect outcomes and results are beyond our ability to control.\nPART I \u2013 FINANCIAL INFORMATION\nITEM 1. Financial Statements",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF INCOME",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended\n\n\n\nMarch 31,",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES:",
+     "",
+     ""
+    ],
+    [
+     "  Self-storage rental income",
+     "$ 492,699",
+     "$ 476,968"
+    ],
+    [
+     "  Ancillary operating revenue",
+     "37,322",
+     "31,713"
+    ],
+    [
+     "  Interest and other income",
+     "-",
+     "-"
+    ],
+    [
+     "  TOTAL",
+     "530,021",
+     "508,681"
+    ],
+    [
+     "EXPENSES:",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation",
+     "2,599",
+     "3,465"
+    ],
+    [
+     "  Operating",
+     "233,762",
+     "216,378"
+    ],
+    [
+     "  General and administrative",
+     "71,332",
+     "64,448"
+    ],
+    [
+     "  General partners' incentive management fee",
+     "13,636",
+     "13,636"
+    ],
+    [
+     "  Property management fee \u2013 related party",
+     "32,640",
+     "31,200"
+    ],
+    [
+     "  TOTAL",
+     "353,969",
+     "329,127"
+    ],
+    [
+     "NET INCOME",
+     "$ 176,052",
+     "$ 179,554"
+    ],
+    [
+     "LESS: Net income attributable to non-controlling interest",
+     "-",
+     "-"
+    ],
+    [
+     "NET INCOME ATTRIBUTABLE TO THE PARTNERSHIP",
+     "$ 176,052",
+     "$ 179,554"
+    ],
+    [
+     "NET INCOME ATTRIBUTABLE TO THE PARTNERSHIP ALLOCATED TO:",
+     "",
+     ""
+    ],
+    [
+     "  General partners",
+     "$ 1,761",
+     "$ 1,796"
+    ],
+    [
+     "  Limited partners",
+     "174,291",
+     "177,758"
+    ],
+    [
+     "  TOTAL",
+     "$ 176,052",
+     "$ 179,554"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average limited partnership units outstanding",
+     "20,000",
+     "20,000"
+    ],
+    [
+     "NET INCOME ATTRIBUTABLE TO THE PARTNERSHIP PER LIMITED PARTNERSHIP UNIT",
+     "$ 8.71",
+     "$ 8.89"
+    ]
+   ],
+   "caption_stack": [
+    "UNAUDITED CONDENSED CONSOLIDATED STATEMENTS OF INCOME",
+    "Three Months Ended\n\n\n\nMarch 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 130
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 89,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "UNAUDITED CONDENSED STATEMENTS OF PARTNERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "General Partners",
+     "Limited Partners",
+     "Non-controlling Interest",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, December 31, 2013 (Audited)",
+     "$(69,304)",
+     "$2,105,599",
+     "$  -",
+     "$2,036,295"
+    ],
+    [
+     "Net Income Allocation",
+     "1,761",
+     "174,291",
+     "-",
+     "176,052"
+    ],
+    [
+     "Distributions",
+     "(1,515)",
+     "(150,000)",
+     "-",
+     "(151,515)"
+    ],
+    [
+     "BALANCE, March 31, 2014",
+     "$(69,058)",
+     "$2,129,890",
+     "$  -",
+     "$2,060,832"
+    ]
+   ],
+   "caption_stack": [
+    "UNAUDITED CONDENSED STATEMENTS OF PARTNERS\u2019 EQUITY (DEFICIT)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 134,
+    "end_line": 144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "UNAUDITED CONDENSED STATEMENTS OF CASH FLOWS",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended\n\n\n\nMarch 31,",
+     ""
+    ],
+    [
+     "",
+     "2014",
+     "2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "  Net income attributable to the partnership",
+     "$ 176,052",
+     "$ 179,554"
+    ],
+    [
+     "  Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation",
+     "2,599",
+     "3,465"
+    ],
+    [
+     "    Net income attributable to non-controlling interests",
+     "-",
+     "-"
+    ],
+    [
+     "    Changes in assets and liabilities:",
+     "",
+     ""
+    ],
+    [
+     "    Other assets",
+     "14,982",
+     "3,970"
+    ],
+    [
+     "    Incentive management fee payable to general partners",
+     "(13,637)",
+     "13,636"
+    ],
+    [
+     "    Property management fees payable",
+     "1,645",
+     "916"
+    ],
+    [
+     "    Customer deposits and other liabilities",
+     "23,358",
+     "16,430"
+    ],
+    [
+     "  Net cash provided by operating activities",
+     "204,999",
+     "217,971"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "  Additions to property",
+     "-",
+     "-"
+    ],
+    [
+     "  Net cash used in investing activities",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "  Distributions to partners",
+     "(151,515)",
+     "(151,515)"
+    ],
+    [
+     "  Distributions paid to non-controlling interest",
+     "-",
+     "-"
+    ],
+    [
+     "  Net cash used in financing activities",
+     "(151,515)",
+     "(151,515)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  NET INCREASE IN CASH",
+     "53,484",
+     "66,456"
+    ],
+    [
+     "  CASH AT BEGINNING OF PERIOD",
+     "269,711",
+     "307,881"
+    ],
+    [
+     "  CASH AT END OF PERIOD",
+     "$ 323,195",
+     "$ 374,337"
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for interest",
+     "$  -",
+     "$  -"
+    ],
+    [
+     "NON CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     ""
+    ],
+    [
+     "  Distributions due partners included in partners' equity",
+     "$151,515",
+     "$151,515"
+    ]
+   ],
+   "caption_stack": [
+    "UNAUDITED CONDENSED STATEMENTS OF CASH FLOWS",
+    "Three Months Ended\n\n\n\nMarch 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 148,
+    "end_line": 184
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements\nNOTES TO UNAUDITED CONDENSED FINANCIAL STATEMENTS March 31, 2014\n1. GENERAL\nDSI Realty Income Fund XI (the \"Partnership\") is a publicly-held limited partnership organized under the California Uniform Limited Partnership Act pursuant to a Certificate and Agreement of Limited Partnership (hereinafter referred to as \"Agreement\") dated December 7, 1988. The General Partners are DSI Properties, Inc., a California corporation and RJC Capital Management, LLC and JWC Capital Management, LLC. DSI Properties, Inc. is an affiliate of Diversified Securities, Inc., a wholly-owned subsidiary of DSI Financial, Inc. The General Partners provide similar services to other partnerships. Through its public offering of Limited Partnership Units, Registrant sold twenty thousand (20,000) units of limited partnership interests aggregating Ten Million Dollars ($10,000,000). The General Partners have retained a one percent (1%) interest in all profits, losses and distributions (subject to certain conditions) without making any capital contribution to the Partnership. The General Partners are not required to make any capital contributions to the Partnership in the future.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 186,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2014",
+     "  December 31, 2013"
+    ],
+    [
+     "Land",
+     "$     1,894,250",
+     "$     1,894,250"
+    ],
+    [
+     "Buildings and improvements",
+     "6,725,753",
+     "6,725,753"
+    ],
+    [
+     "Rental trucks under capital leases",
+     "163,382",
+     "163,382"
+    ],
+    [
+     "Total",
+     "8,783,385",
+     "8,783,385"
+    ],
+    [
+     "Less accumulated depreciation",
+     "(6,813,775)",
+     "(6,811,180)"
+    ],
+    [
+     "Property, net",
+     "$ 1,969,606",
+     "$ 1,972,205"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 216,
+    "end_line": 226
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "PROPERTY"
+    }
+   },
+   "prose_before": "In February 2013, the FASB issued ASU 2013-04 Liabilities (Topic 405): Obligations Resulting from Joint and Several Liability Arrangements for Which the Total Amount of the Obligation Is Fixed at the Reporting Date, in order to provide guidance for the recognition, measurement, and disclosure of obligations resulting from joint and several liability arrangements for which the total amount of the obligation within the scope of this guidance is fixed at the reporting date, except for obligations addressed within existing guidance in U.S. generally accepted accounting principles (GAAP). The amendments in this Update are effective for fiscal years, and interim periods within those years, beginning after December 15, 2013. The Partnership does not expect the adoption of the standard update to have a material impact on its financial position or results of operations.\n2. PROPERTY\nThe Partnership holds a 90% interest in a joint venture that owns a mini-storage facility in Whittier, California; an 85% interest in an operating mini-storage in Edgewater Park, New Jersey; a 90% interest in an operating mini-storage facility in Bloomingdale, Illinois; and a 75% interest in an operating mini-storage in Sterling Heights, Michigan. Depreciation is calculated using the straight-line method over the estimated useful life of 20 years. Property under capital leases is amortized over the lives of the respective leases. The total cost of property and accumulated depreciation at March 31, 2014 and December 31, 2013, were as follows:",
+   "prose_after": "3. NET INCOME PER LIMITED PARTNERSHIP UNIT\nNet income per limited partnership unit is calculated by dividing the net income allocated to the limited partners by the number of limited partnership units outstanding during the period.\n4. ALLOCATION OF PROFITS AND LOSSES AND GENERAL PARTNERS' INCENTIVE MANAGEMENT FEE\nUnder the Agreement of Limited Partnership, the general partners are to be allocated 1% of the net profits or losses from operations, and the limited partners are to be allocated the balance of the net profits or losses from operations in proportion to their limited partnership interests. The general partners are also entitled to receive a percentage, based on a predetermined formula, of any cash distribution from the sale, other disposition, or refinancing of the project.\nIn addition, the general partners are entitled to receive an incentive management fee for supervising the operations of the Partnership. The fee is to be paid in an amount equal to 9% per annum of the cash distributions to limited partners in the fund.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 186,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

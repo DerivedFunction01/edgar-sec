@@ -1,0 +1,93 @@
+{
+ "accession": "0000065984-24-000026",
+ "cik": "0001880480",
+ "form": "10-K",
+ "filing_date": "2024-03-22",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a0062410-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "27-0727900"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization of issuing entity)",
+     "(I.R.S. Employer Identification No. of issuing entity)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Capital Center 919 Congress Avenue, Suite 840-C Austin, Texas 78701",
+     ""
+    ],
+    [
+     "(Address of principal executive offices of issuing entity)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Registrant's telephone number, including area code:  (512) 487-3982",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "For the fiscal year ended  December 31, 2023\nOr\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________________________  to  __________________________\nCommission File Number of issuing entity: 333-259293-01 Central Index Key Number of issuing\nentity: 0001880480 ENTERGY TEXAS RESTORATION FUNDING II, LLC (Exact name of issuing entity as specified in its charter)\nENTERGY TEXAS, INC.\n(Exact name of depositor and sponsor as specified in its charter)\nCommission File Number of depositor: 333-259293\nCentral Index Key Number of depositor: 0001427437",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [ ] No [ ] Not applicable.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 32,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

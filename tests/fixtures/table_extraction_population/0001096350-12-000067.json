@@ -1,0 +1,2130 @@
+{
+ "accession": "0001096350-12-000067",
+ "cik": "0001527624",
+ "form": "10-K/A",
+ "filing_date": "2012-07-18",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "centor_10k3312012v22.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "333-176362",
+     "00000000"
+    ],
+    [
+     "(State or other jurisdiction",
+     "(Commission File Number)",
+     "(IRS Employer"
+    ],
+    [
+     "of Incorporation)",
+     "",
+     "Identification Number)"
+    ],
+    [
+     "",
+     "4667A Dundas Street West, Etobicoke Ontario, Canada, M9A 1A4 \n\n\n\n(Address of principal executive offices)",
+     ""
+    ],
+    [
+     "",
+     "416-418-1582",
+     ""
+    ],
+    [
+     "",
+     "(Registrant\u2019s Telephone Number)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K/A\n[X]\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Fiscal Year Ended March 31, 2012\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE EXCHANGE ACT\nFor the transition period from ________ to ______\nCENTOR, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days.\nYes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     ""
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     ""
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     ""
+    ],
+    [
+     "Item 2",
+     "Properties",
+     ""
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     ""
+    ],
+    [
+     "Item 4",
+     "[REMOVED AND RESERVED]",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Market for Registrant's Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     ""
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     ""
+    ],
+    [
+     "Item 7",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     ""
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     ""
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     ""
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     ""
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     ""
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10",
+     "Directors and Executive Officers and Corporate Governance",
+     ""
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     ""
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     ""
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions",
+     ""
+    ],
+    [
+     "Item 14",
+     "Principal Accountant Fees and Services",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15",
+     "Exhibits",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 107
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-Accelerated Filer\n[ ]\nSmaller Reporting Company\n[X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [X] No\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant as of July , 2012 was $99,000 based upon the price ($0.02),our common stock is not presently traded, but is quoted on the OTC Bulletin Board. The selling shareholders may sell their shares at $0.02 per share or at prevailing market prices or privately negotiated prices.This number of shares of common stock are held by persons other than executive officers, directors and five percent stockholders of the registrant without conceding that any such person is an \u201caffiliate\u201d of the registrant for purposes of the federal securities laws.\nAs of July , 2012, there were 11,450,00 shares of the registrant\u2019s $0.001par value common stock issued and outstanding.\nDocuments incorporated by reference: None\nTable of Contents",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d) and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These forward-looking statements are not historical facts but rather are based on current expectations, estimates and projections. We may use words such as \u201canticipate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cbelieve,\u201d \u201cforesee,\u201d \u201cestimate\u201d and variations of these words and similar expressions to identify forward-looking statements. These statements are not guarantees of future performance and are subject to certain risks, uncertainties and other factors, some of which are beyond our control, are difficult to predict and could cause actual results to differ materially from those expressed or forecasted. These risks and uncertainties include the following:\n\u00b7\nThe availability and adequacy of our cash flow to meet our requirements;",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Category",
+     "Planned\n\n\n\nExpenditures\n\n\n\nOver\n\n\n\nThe Next 12\n\n\n\nMonths (US$)",
+     ""
+    ],
+    [
+     "Legal and Accounting Fees",
+     "$",
+     "20,850"
+    ],
+    [
+     "Office Expenses",
+     "",
+     "-"
+    ],
+    [
+     "Mineral Property Exploration Expenses",
+     "",
+     "35,000"
+    ],
+    [
+     "TOTAL",
+     "$",
+     "50,850"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 176,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "The claims are not accessible all year round, there are periods where our claims may be un-accessible each year due to snow in the area. This means that our exploration activities may be limited to a period of about eight to nine months per year. We plan commence exploration on our claims between March and June of 2012. Our goal is to complete the first phase of exploration before June 30, 2011, and is contingent upon availability of an exploration crew.\nDuring our future exploration activities on the Weepah Hills Property, our President will devote less than full-time hours per week to our business. We do not foresee this limited involvement as negatively impacting our company over the next twelve months as all exploratory work has been and will continue to be performed by outside consultants. Additionally, we will not have a need to hire any employees over the next twelve months. We do not plan to make any purchases of equipment over the next twelve months due to reliance upon outside consultants to provide all equipment needed for the exploratory work being conducted.\nWe anticipate that we will incur over the next twelve months the following expenses:",
+   "prose_after": "Our total expenditures over the next twelve months are anticipated to be approximately $50,850. Our cash on hand as of March 31, 2012is $4,383. We do not have sufficient cash on hand to fund our operations for the next twelve months. We also require additional financing in order to commence the exploration of the Weepah Hills Property.\nInsurance\nWe do not maintain any insurance and do not intend to maintain insurance in the future. Because we do not have any insurance, if we are made a party to a liability action, we may not have sufficient funds to defend the litigation. If that occurs a judgment could be rendered against us that could cause us to cease operations.\nCompetition\nWe compete with other mineral resource exploration and development companies for financing and for the acquisition of new mineral properties. Many of the mineral resource exploration and development companies with whom we compete have greater financial and technical resources than us. Accordingly, these competitors may be able to spend greater amounts on acquisitions of mineral properties of merit, on exploration of their mineral properties and on development of their mineral properties. In addition, they may be able to afford greater geological expertise in the targeting and exploration of mineral properties. This competition could result in competitors having mineral properties of greater quality and interest to prospective investors who may finance additional exploration and development. This competition could adversely impact our ability to finance further exploration and to achieve the financing necessary for us to develop our mineral properties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Quarter",
+     "High",
+     "Low"
+    ],
+    [
+     "First Quarter (April 1, 2011 \u2013 June 30, 2011)",
+     "$0",
+     "$0"
+    ],
+    [
+     "Second Quarter (July 1, 2011 \u2013 Sept 30, 2011)",
+     "$0",
+     "$0"
+    ],
+    [
+     "Third Quarter (Oct 1, 2011 \u2013 Dec 31, 2011)",
+     "$0",
+     "$0"
+    ],
+    [
+     "Fourth Quarter (Jan 1, 2011 \u2013 March 31, 2011)",
+     "$0",
+     "$0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 295,
+    "end_line": 303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": ""
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 3. LEGAL PROCEEDINGS\nWe know of no material, existing or pending legal proceedings against our company, nor are we involved as a plaintiff in any material proceeding or pending litigation. There are no proceedings in which our director, officer or any affiliates, or any registered or beneficial shareholder, is an adverse party or has a material interest adverse to our interest.\nITEM 4. [REMOVED AND RESERVED]\nPART II\nITEM 5.\nMARKET FOR THE COMPANY\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nCommon Stock\nOur common stock had been quoted on the OTC Bulletin Board since May 1, 2012 under the symbol \u201cCNTO.OB\u201d.\nThe following table sets forth the high and low bid prices for our Common Stock per quarter as reported by the OTCBB for the quarterly periods indicated below based on our fiscal year end of March 31, 2012. These prices represent quotations between dealers without adjustment for retail mark-up, markdown or commission and may not represent actual transactions.",
+   "prose_after": "Record Holders\nAs of March 31, 2012, an aggregate of 11,450,000 shares of our Common Stock were issued and outstanding and were owned by approximately 37 holders of record, based on information provided by our transfer agent.\nRecent Sales of Unregistered Securities\nOther than as previously disclosed, none.\nRe-Purchase of Equity Securities\nNone.\nDividends\nWe have never declared or paid any cash dividends on our common stock. We currently intend to retain future earnings, if any, to finance the expansion of our business. As a result, we do not anticipate paying any cash dividends in the foreseeable future.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nNone.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March\n\n\n\n31, 2012",
+     "",
+     "March 31, 2011"
+    ],
+    [
+     "Current Assets",
+     "$",
+     "4,383",
+     "$",
+     "55,850"
+    ],
+    [
+     "Current Liabilities",
+     "$",
+     "11,350",
+     "$",
+     "0"
+    ],
+    [
+     "Working Capital Deficit",
+     "$",
+     "(6,967)",
+     "$",
+     "55,850"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 336,
+    "end_line": 347
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION"
+    },
+    "note": null
+   },
+   "prose_before": "This Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d) and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These forward-looking statements are not historical facts but rather are based on current expectations, estimates and projections. We may use words such as \u201canticipate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cbelieve,\u201d \u201cforesee,\u201d \u201cestimate\u201d and variations of these words and similar expressions to identify forward-looking statements. These statements are not guarantees of future performance and are subject to certain risks, uncertainties and other factors, some of which are beyond our control, are difficult to predict and could cause actual results to differ materially from those expressed or forecasted. You should read this report completely and with the understanding that actual future results may be materially different from what we expect. The forward-looking statements included in this report are made as of the date of this report and should be evaluated with consideration of any changes occurring after the date of this Report. We will not update forward-looking statements even though our situation may change in the future and we assume no obligation to update any forward-looking statements, whether as a result of new information, future events or otherwise.\nRESULTS OF OPERATIONS\nWorking Capital",
+   "prose_after": "Cash Flows",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended",
+     "",
+     "Year Ended"
+    ],
+    [
+     "",
+     "",
+     "March 31, 2012",
+     "",
+     "March 31, 2011"
+    ],
+    [
+     "Cash Flows from (used in) Operating Activities",
+     "$",
+     "(38,107)",
+     "$",
+     "(150)"
+    ],
+    [
+     "Cash Flows from (used in) Investing Activities",
+     "$",
+     "(13,360)",
+     "$",
+     "-"
+    ],
+    [
+     "Cash Flows from (used in) Financing Activities",
+     "$",
+     "8,800",
+     "$",
+     "56,000"
+    ],
+    [
+     "Net Increase (decrease) in Cash During Period",
+     "$",
+     "(51,467)",
+     "$",
+     "(150)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 350,
+    "end_line": 360
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OR PLAN OF OPERATION"
+    },
+    "note": null
+   },
+   "prose_before": "Cash Flows",
+   "prose_after": "Operating Revenues\nWe have not generated any revenues since inception.\nOperating Expenses and Net Loss\nOperating expenses for the year ended March 31, 2012was $62,817 compared with $150 for the year ended March 31, 2011. The increase in operating expenditures was attributed to the costs associated with the preparation and filing of the Company's prospectus on Form S-1 and their ongoing reporting requirements.\nNet loss for the year ended March 31, 2012 was $62,817 compared with $150 for the year ended March 31, 2011. The overall increase in net loss of $60,117 was attributed to the costs associated with the preparation and filing of the Company's prospectus on Form S-1 and their ongoing reporting requirements.\nLiquidity and Capital Resources\nAs at March 31, 2012, the Company\u2019s cash balance was $4,383 compared to $55,850 as at March 31, 2011 and its total assets were $4,383 compared with $55,850 as at March 31, 2011. The decrease in total assets is attributed to the costs associated with the preparation and filing of the Company's prospectus on Form S-1 and their ongoing reporting requirements..",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 153,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "MADSEN & ASSOCIATES CPA\u2019s INC.",
+     "684 East Vine Street, #3"
+    ],
+    [
+     "Certified Public Accountants",
+     "Murray, Utah, 84107"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Balance Sheets\n2\nStatements of Operations\n3\nStatements of Stockholders\u2019 Equity (Deficit)\n4\nStatement of Cash Flows\n5\nNotes to the Financial Statements\n6",
+   "prose_after": "To the Board of Directors and\nStockholders of Centor Inc.\n(An Exploration Stage Company)\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nWe have audited the accompanying balance sheets of Centor Inc. (An Exploration Stage Company) (The Company) as of March 31, 2012 and 2011, and the related statements of operations, stockholders\u2019 equity (deficit), and cash flows for the period from February 16, 2011 (date of inception) to March 31, 2012. The Company\u2019s management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purposes of expressing an opinion on the effectiveness of the company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March",
+     "March 31,"
+    ],
+    [
+     "",
+     "",
+     "31, 2012",
+     "2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "ASSETS",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "$        4,383",
+     "$   55,850"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total assets",
+     "$        4,383",
+     "$   55,850"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts Payable\n\n\n\nAdvances",
+     "2,550\n\n\n\n8,800",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total liabilities",
+     "11,350",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "-",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common stock; authorized 75,000,000; $0.001 par value; 11,450,000 shares",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  issued and outstanding at March 31, 2012 and March 31, 2011",
+     "11,450",
+     "11,450"
+    ],
+    [
+     "",
+     "Paid in capital",
+     "44,550",
+     "44,550"
+    ],
+    [
+     "",
+     "Deficit accumulated during the exploration stage",
+     "(62,967)",
+     "(150)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total stockholders' equity",
+     "(6,967)",
+     "55,850"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total liabilities and stockholders' equity",
+     "$        4,383",
+     "$   55,850"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 545
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Centor Inc. (an Exploration Stage Company) as of March 31, 2012, and the results of its operations and its cash flows for the period from February 16, 2011 (date of inception) to March 31, 2012, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. The Company will need additional working capital to service its debt and for its planned activity, which raises substantial doubt about its ability to continue as a going concern. Management's plans in regard to these matters are described in the notes to the financial statements. These financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/\u201cMadsen & Associates CPA\u2019s, Inc.\u201d\nMurray, Utah\nJuly 16, 2012\nCENTOR, INC. (An Exploration Stage Company) BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nCENTOR, INC. (AN EXPLORATION STAGE COMPANY) (An Exploration Stage Company) STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Year Ended March 31, 2012",
+     "For the Year Ended March 31, 2011",
+     "From Inception (February 16, 2011) to December 31, 2011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "General and administrative",
+     "$         47,346",
+     "$            150",
+     "$       47,496"
+    ],
+    [
+     "",
+     "Exploration costs",
+     "2,111",
+     "-",
+     "2,111"
+    ],
+    [
+     "",
+     "Impairment loss on mineral claims",
+     "13,360",
+     "-",
+     "13,360"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss for the period",
+     "$         62,817",
+     "$            150",
+     "$       62,967"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Basic and diluted",
+     "$                -",
+     "$               -",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares outstanding:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Basic and diluted",
+     "11,450,000",
+     "4,423,864",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 550,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nCENTOR, INC. (AN EXPLORATION STAGE COMPANY) (An Exploration Stage Company) STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nCENTOR, INC. (An Exploration Stage Company) STATEMENTS OF STOCKHOLDERS EQUITY (DEFICIT)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "Paid-in",
+     "Deficit accumulated during theExploration",
+     "Stockholders'"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     "Par Value",
+     "Capital",
+     "Stage",
+     "Equity"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE FEBRUARY 16 (INCEPTION)",
+     "",
+     "",
+     "",
+     "-",
+     "$          -",
+     "$             -",
+     "$           -",
+     "$                   -"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares subscribed at $0.001",
+     "",
+     "",
+     "6,500,000",
+     "6,500",
+     "-",
+     "",
+     "6,500"
+    ],
+    [
+     "",
+     "Share subscribed at $0.01",
+     "",
+     "",
+     "4,950,000",
+     "4,950",
+     "44,550",
+     "",
+     "49,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss",
+     "",
+     "",
+     "-",
+     "-",
+     "-",
+     "(150)",
+     "(150)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE MARCH 31, 2011",
+     "",
+     "",
+     "",
+     "11,450,000",
+     "$ 11,450",
+     "$     44,550",
+     "$       (150)",
+     "$         55,850"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(62,817)",
+     "(62,817)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, MARCH 31, 2012",
+     "",
+     "",
+     "",
+     "11,450,000",
+     "$ 11,450",
+     "$     44,550",
+     "$ (62,967)",
+     "$        (6,967)"
+    ]
+   ],
+   "caption_stack": [
+    "Common Stock"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 580,
+    "end_line": 606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nCENTOR, INC. (An Exploration Stage Company) STATEMENTS OF STOCKHOLDERS EQUITY (DEFICIT)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nCENTOR, INC. (AN EXPLORATION STAGE COMPANY) (An Exploration Stage Company) STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "For the Year Ended March 31, 2012",
+     "For the Year Ended March 31, 2011",
+     "From Inception February 16, 2011 to March 31, 2012"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flow from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss",
+     "",
+     "$(62,817)",
+     "$         (150)",
+     "$(62,967)"
+    ],
+    [
+     "",
+     "Adjustments to reconcile net loss to net cash used in\n\n\n\n operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Impairment of Mineral Property",
+     "13,360",
+     "-",
+     "13,360"
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "$           -",
+     "$              -",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Increase in accounts payable",
+     "2,550",
+     "-",
+     "2,550"
+    ],
+    [
+     "",
+     "Net cash used in operating activities",
+     "",
+     "(46,907)",
+     "(150)",
+     "(47,057)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Acquisition of mineral claims",
+     "",
+     "(13,360)",
+     "-",
+     "(13,360)"
+    ],
+    [
+     "",
+     "",
+     "Net cash used in investing activities",
+     "(13,360)",
+     "-",
+     "(13,360)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Proceeds from issuance of common stock",
+     "",
+     "-",
+     "56,000",
+     "56,000"
+    ],
+    [
+     "",
+     "Proceeds from Advances",
+     "",
+     "8,800",
+     "-",
+     "8,800"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net cash provided by financing activities",
+     "",
+     "8,800",
+     "-",
+     "64,800"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in cash during the period",
+     "",
+     "",
+     "(51,467)",
+     "(150)",
+     "4,383"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "",
+     "55,850",
+     "56,000",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "",
+     "",
+     "$    4,383",
+     "$      55,850",
+     "$    4,383"
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash paid during the period",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Taxes",
+     "$       -",
+     "$          -",
+     "$      -"
+    ],
+    [
+     "",
+     "",
+     "Interest",
+     "$       -",
+     "$          -",
+     "$      -"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these financial statements",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nCENTOR, INC. (AN EXPLORATION STAGE COMPANY) (An Exploration Stage Company) STATEMENTS OF CASH FLOWS",
+   "prose_after": "CENTOR, INC.\n(An Exploration Stage Company)\nNOTES TO THE FINANCIAL STATEMENTS\nMarch 31, 2012\nNOTE 1 \u2013 ORGANIZATION AND BASIS OF PRESENTATION\nCentor Inc. (the \"Company\") was incorporated in the State of Nevada on February 16, 2011. The Company was organized to develop and explore mineral properties in the State of Nevada..\nThese financial statements and related notes are presented in accordance with accounting principles generally accepted in the United States and are expressed in United States (US) dollars. The Company has not produced any revenue from its principal business and is an exploration stage company.\nNOTE 2 - SIGNIFICANT ACCOUNTING POLICIES\nUse of Estimates\nThe preparation of financial statements in conformity with generally accepted accounting principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities, and disclosure of contingent assets and liabilities, at the date of these financial statements, and the reported amounts of revenues and expenses during the reporting period. Actual results could differ from those estimates.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position with the Company",
+     "Director Since"
+    ],
+    [
+     "Michael Gismondi",
+     "38",
+     "CEO, CFO, President, & Director",
+     "February 16, 2011"
+    ],
+    [
+     "Andrea Grande",
+     "32",
+     "Treasurer, Secretary, & Director",
+     "February 16, 2011"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 810,
+    "end_line": 816
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS AND EXECUTIVE OFFICERS."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 GOING CONCERN"
+    }
+   },
+   "prose_before": "1. Our Board of Directors will nominate an audit committee or a financial expert on our Board of Directors in the next fiscal year, 2012- 2013.\n2. We will appoint additional personnel to assist with the preparation of the Company\u2019s monthly financial reporting, including preparation of the monthly bank reconciliations.\nITEM 9B.\nOTHER INFORMATION.\nNone.\nPART III\nITEM 10.\nDIRECTORS AND EXECUTIVE OFFICERS.\nIdentificationof Directors and Executive Officers\nThe following table sets forth the names and ages of our current director(s) and executive officer(s):",
+   "prose_after": "The board of directors has no nominating, audit or compensation committee at this time.\nTerm of Office\nEach of our directors is appointed to hold office until the next annual meeting of our stockholders or until his respective successor is elected and qualified, or until he resigns or is removed in accordance with the provisions of the Nevada General Corporate Law. Our officers are appointed by our Board of Directors and hold office until removed by the Board or until their resignation\n\u00ad\u00ad\nBackground and Business Experience\nThe business experience during the past five years of the person presently listed above as an Officer or Director of the Company is as follows:\nMr. Michael Gismondi: Mr. Gismondi has acted as our President, Chief Executive Officer, Chief Financial officer and Director since our inception on February 16, 2011. Mr. Gismondi is currently employed and has been for the last 8 years for Raymond Homes Inc. an independent contractor and builder of new homes in the Toronto Area owned by Mr.Gismondi.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name\n\n\n\nand\n\n\n\nPrincipal\n\n\n\nPosition",
+     "Fiscal\n\n\n\nYear\n\n\n\nEnded\n\n\n\n1/31",
+     "Salary\n\n\n\n($)",
+     "Bonus\n\n\n\n($)",
+     "Stock\n\n\n\nAwards\n\n\n\n($)",
+     "Option\n\n\n\nAwards\n\n\n\n($)",
+     "Non-Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nCompensation\n\n\n\n($)",
+     "Change in Pension Value and\n\n\n\nNonqualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\nEarnings\n\n\n\n($)",
+     "All Other Compensation\n\n\n\n($)",
+     "Total\n\n\n\n($)"
+    ],
+    [
+     "Michael Gismondi(1)\n\n\n\nPresident, CEO, CFO, , and Director",
+     "2012",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "2011",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "Andrea Grande(2), Treasurer, Secretary, and Director",
+     "2012",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ],
+    [
+     "",
+     "2011",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-",
+     "-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 923,
+    "end_line": 947
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 GOING CONCERN"
+    }
+   },
+   "prose_before": "Section 16(a) of the Securities Exchange Act of 1934 requires our directors, executive officers, and persons who beneficially own more than ten percent of a registered class of our equity securities to file with the SEC initial reports of ownership and reports of change in ownership of common stock and other equity securities of the Company. Officers, directors and greater than ten percent stockholders are required by SEC regulations to furnish us with copies of all Section 16(a) forms they file. Based solely upon a review of Forms 3 and 4 and amendments thereto furnished to us under Rule 16a-3(e) during the year ended March 31, 2012, Forms 5 and any amendments thereto furnished to us with respect to the year ended March 31, 2012, and the representations made by the reporting persons to us, we believe that during the year ended March 31, 2012, our executive officers and directors and all persons who own more than ten percent of a registered class of our equity securities complied with all Section 16(a) filing requirements.\nITEM 11. EXECUTIVE COMPENSATION\nThe following table sets forth the compensation paid to our executive officers during the twelve month periods endedMarch 31, 2012and 2011:\nSummary Compensation Table",
+   "prose_after": "1. Mr. Michael Gismondihas been a director of our company since February 16, 2011. He was appointed as chief executive officer, chief financial officer, of our company on February 16, 2011.\n2. On February 16, 2011, Mr. Andrea Grande has been a director of our company since February 16, 2011. He was appointed as Secretary, Treasurer, of our company on February 16, 2011.\nNarrative Disclosure to Summary Compensation Table\nThere are no compensatory plans or arrangements, including payments to be received from the Company with respect to any executive officer, that would result in payments to such person because of his or her resignation, retirement or other termination of employment with the Company, or its subsidiaries, any change in control, or a change in the person\u2019s responsibilities following a change in control of the Company.\nOutstanding Equity Awards at Fiscal Year-End\nNo executive officer received any equity awards, or holds exercisable or unexercisable options, as of the year ended March 31, 2012.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Title of Class",
+     "Amount and Nature of  Beneficial\n\n\n\nOwnership(1)\n\n\n\n(#)",
+     "Percent of Class(2)\n\n\n\n(%)"
+    ],
+    [
+     "Michael Gismondi\n\n\n\n4667A Dundas Street West, EtobicokeOntario, Canada",
+     "Common",
+     "5,000,000",
+     "43.66%"
+    ],
+    [
+     "Andrea Grande\n\n\n\n155 Coons Road , Oakridge Ontario, Canada",
+     "Common",
+     "1,500,000",
+     "13.10%"
+    ],
+    [
+     "All Officers and Directors as a Group (2 Persons)",
+     "Common",
+     "6,500,000",
+     "56.76%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 980,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 GOING CONCERN"
+    }
+   },
+   "prose_before": "Long-Term Incentive Plans\nThere are no arrangements or plans in which we provide pension, retirement or similar benefits for directors or executive officers.\nCompensation Committee\nWe currently do not have a compensation committee of the Board of Directors. The Board of Directors as a whole determines executive compensation.\nCompensation of Directors\nOur directors receive no compensation for their service on our Board of Directors.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nAND RELATED STOCKHOLDER MATTERS.\nSecurity Ownership of Management\nThe following table sets forth certain information concerning the number of shares of our Common Stock owned beneficially as of March 31, 2012, by: (i) our directors; (ii) our named executive officer; and (iii) each person or group known by us to beneficially own more than 5% of our outstanding shares of common stock. Unless otherwise indicated, the shareholders listed below possess sole voting and investment power with respect to the shares they own.",
+   "prose_after": "1. The number and percentage of shares beneficially owned is determined under rules of the SEC and the information is not necessarily indicative of beneficial ownership for any other purpose. Under such rules, beneficial ownership includes any shares as to which the individual has sole or shared voting power or investment power and also any shares which the individual has the right to acquire within 60 days through the exercise of any stock option or other right. The persons named in the table have sole voting and investment power with respect to all shares of common stock shown as beneficially owned by them, subject to community property laws where applicable and the information contained in the footnotes to this table.\n2. Based on 11,450,000 issued and outstanding shares of Common Stock as of March 31, 2012.\nChanges in Control\nThere are no present arrangements or pledges of the Company\u2019s securities which may result in a change in control of the Company.\nITEM 13.\nCERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended\n\n\n\nMarch 31, 2012",
+     "",
+     "Year Ended\n\n\n\nMarch 31, 2011"
+    ],
+    [
+     "Audit fees",
+     "$",
+     "9,000",
+     "$",
+     "5,000"
+    ],
+    [
+     "Audit-related fees",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "Tax fees",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "All other fees",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "Total",
+     "$",
+     "9,000",
+     "$",
+     "5,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1048,
+    "end_line": 1060
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 GOING CONCERN"
+    }
+   },
+   "prose_before": "For purposes of determining director independence, we have applied the definitions set out in NASDAQ Rule 5605(a)(2). The OTCBB on which shares of common stock are quoted does not have any director independence requirements. The NASDAQ definition of \u201cIndependent Officer\u201d means a person other than an Executive Officer or employee of the Company or any other individual having a relationship which, in the opinion of the Company's Board of Directors, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director.\nAccording to the NASDAQ definition, Michael Gismondi is not an independent director because he is also an executive officer of the Company.\nAccording to the NASDAQ definition, Andrea Grande is an independent director because he is not an officer of the Company and is not a beneficial owner of the Common Stock of the Company.\nReview, Approval or Ratification of Transactions with Related Persons\nWe are a smaller reporting company as defined by Rule 12b-2 of the Securities Exchange Act of 1934 and are not required to provide the information under this item.\nITEM 14.\nPRINCIPAL ACCOUNTANT FEES AND SERVICES.",
+   "prose_after": "Audit Fees\nDuring the fiscal years ended March 31, 2011, we incurred approximately $5,000 in fees to our principal independent accountants for professional services rendered in connection with the audit and reviews of our financial statements for fiscal year ended March 31, 2011.\nDuring the fiscal year ended March 31, 2012, we incurred approximately $9,000 in fees to our principal independent accountants for professional services rendered in connection with the audit and reviews of our financial statements for fiscal year ended March 31, 2012.\nAudit-Related Fees\nThe aggregate fees billed during the fiscal years ended March 31, 2012and 2011 for assurance and related services by our principal independent accountants that are reasonably related to the performance of the audit or review of our financial statements (and are not reported under Item 9(e)(1) of Schedule 14A was $2,000 and $9,000, respectively.\nTax Fees\nThe aggregate fees billed during the fiscal years ended March 31, 2012and 2011 for professional services rendered by our principal accountant tax compliance, tax advice and tax planning were $0 and $0, respectively.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "Description of Exhibit",
+     "Filing"
+    ],
+    [
+     "3.01",
+     "Articles of Incorporation",
+     "Filed with the SEC on August 17, 2011 as part of our Registration Statement on Form S-1."
+    ],
+    [
+     "3.02",
+     "Bylaws",
+     "Filed with the SEC on August 17, 2011 as part of our Registration Statement on Form S-1."
+    ],
+    [
+     "10.04",
+     "Minerals Lease and Agreement between Centor, Inc. and MinQuest, Inc.",
+     "Filed with the SEC on August 17, 2011 as part of our Registration Statement on Form S-1."
+    ],
+    [
+     "14.01",
+     "Code of Ethics",
+     "Filed with the SEC on August 17, 2011 as part of our Registration Statement on Form S-1."
+    ],
+    [
+     "31.01",
+     "Certification of Principal Executive Officer Pursuant to Rule 13a-14",
+     "Filed herewith."
+    ],
+    [
+     "31.02",
+     "Certification of Principal Financial Officer Pursuant to Rule 13a-14",
+     "Filed herewith."
+    ],
+    [
+     "32.01",
+     "CEO and CFO Certification Pursuant to Section 906 of the Sarbanes-Oxley Act",
+     "Filed herewith."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1089,
+    "end_line": 1103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 GOING CONCERN"
+    }
+   },
+   "prose_before": "The aggregate fees billed during the fiscal years ended March 31, 2012and 2011 for assurance and related services by our principal independent accountants that are reasonably related to the performance of the audit or review of our financial statements (and are not reported under Item 9(e)(1) of Schedule 14A was $2,000 and $9,000, respectively.\nTax Fees\nThe aggregate fees billed during the fiscal years ended March 31, 2012and 2011 for professional services rendered by our principal accountant tax compliance, tax advice and tax planning were $0 and $0, respectively.\nAll Other Fees\nThe aggregate fees billed during the fiscal year ended March 31, 2012 and 2011 for products and services provided by our principal independent accountants (other than the services reported in Items 9(e)(1) through 9(e)(3) of Schedule 14A was $0.\nPART IV\nITEM 15.\nEXHIBITS.\n(a)\nExhibits",
+   "prose_after": "[Signature Page to Follow]\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Company caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nCENTOR, INC.\nDated: July16, 2012\n/s/ Michael Gismondi\nBy: Michael Gismondi\nIts: President, Principal Executive Officer& Principal Financial Officer\nPursuant to the requirement of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Company and in the capacities and on the dates indicated:\nDated: July 16, 2012",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1105,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

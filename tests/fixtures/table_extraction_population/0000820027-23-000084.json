@@ -1,0 +1,8658 @@
+{
+ "accession": "0000820027-23-000084",
+ "cik": "0000052428",
+ "form": "10-Q",
+ "filing_date": "2023-08-08",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "acc10q-x63023.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "UNITED STATES",
+     ""
+    ],
+    [
+     "SECURITIES AND EXCHANGE COMMISSION",
+     ""
+    ],
+    [
+     "WASHINGTON, D.C. 20549",
+     ""
+    ],
+    [
+     "FORM",
+     "10-Q"
+    ]
+   ],
+   "caption_stack": [
+    "UNITED STATES",
+    "SECURITIES AND EXCHANGE COMMISSION",
+    "WASHINGTON, D.C. 20549"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 0,
+    "end_line": 8
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended June 30, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from_______________________to_______________________",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Commission File No.",
+     "811-00002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 15,
+    "end_line": 18
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended June 30, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from_______________________to_______________________",
+   "prose_after": "AMERIPRISE CERTIFICATE COMPANY (Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "41-6009975"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "AMERIPRISE CERTIFICATE COMPANY (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "1099 Ameriprise Financial Center",
+     "Minneapolis",
+     "Minnesota",
+     "55474"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (612) 671-3131",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Former name, former address and former fiscal year, if changed since last report:",
+     "Not Applicable"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 39
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (612) 671-3131",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "",
+     "Common Stock (par value $10 per share)",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Act:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "<TABLE>\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the  Yes  [X]  No  [ ]\npreceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the\npast 90 days.\n</TABLE>\n<TABLE>\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation     Yes  [X]  No  [ ]\nS-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\n</TABLE>\n<TABLE>",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+     "Yes",
+     "\u2612",
+     "No",
+     "\u2610"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+     "Yes",
+     "\u2612",
+     "No",
+     "\u2610"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Large Accelerated Filer",
+     "\u2610",
+     "Accelerated Filer",
+     "\u2610",
+     "Non-accelerated Filer",
+     "\u2612",
+     "Smaller reporting company",
+     "\u2610",
+     "Emerging growth company",
+     "\u2610"
+    ]
+   ],
+   "caption_stack": [
+    "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act."
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.",
+     "\u2610"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).",
+     "Yes",
+     "\u2610",
+     "No",
+     "\u2612"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Indicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class",
+     "Outstanding at August 8, 2023"
+    ],
+    [
+     "",
+     "Common Stock (par value $10 per share)",
+     "150,000 shares"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "THE REGISTRANT MEETS THE CONDITIONS SET FORTH IN GENERAL INSTRUCTIONS H(1)(a) AND (b) OF FORM 10-Q AND IS THEREFORE FILING THIS FORM WITH THE REDUCED DISCLOSURE FORMAT.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Indicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 76,
+    "end_line": 87
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Filer                            Filer                           reporting                      growth company\ncompany\n</TABLE>\n<TABLE>\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial      [ ]\naccounting standards provided pursuant to Section 13(a) of the Exchange Act.\n</TABLE>\n<TABLE>\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).  Yes  [ ]  No  [X]\n</TABLE>",
+   "prose_after": "FORM 10-Q\nINDEX",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Part I. Financial Information",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "Item 1. Financial Statements (Unaudited)",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations \u2014 Three and six months ended June 30, 2023 and 2022",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Statements of Comprehensive Income \u2014 Three and six months ended June 30, 2023 and 2022",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets \u2014 June 30, 2023 and December 31, 2022",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "Consolidated Statements of Shareholder's Equity \u2014 Three and six months ended June 30, 2023 and 2022",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows \u2014 Six months ended June 30, 2023 and 2022",
+     "",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "",
+     "7"
+    ],
+    [
+     "",
+     "1.",
+     "Basis of Presentation",
+     "7"
+    ],
+    [
+     "",
+     "2.",
+     "Recent Accounting Pronouncements",
+     "7"
+    ],
+    [
+     "",
+     "3.",
+     "Investments",
+     "7"
+    ],
+    [
+     "",
+     "4.",
+     "Financing Receivables",
+     "11"
+    ],
+    [
+     "",
+     "5.",
+     "Fair Values of Assets and Liabilities",
+     "13"
+    ],
+    [
+     "",
+     "6.",
+     "Offsetting Assets and Liabilities",
+     "18"
+    ],
+    [
+     "",
+     "7.",
+     "Derivatives and Hedging Activities",
+     "19"
+    ],
+    [
+     "",
+     "8.",
+     "Contingencies",
+     "20"
+    ],
+    [
+     "",
+     "9.",
+     "Shareholder\u2019s Equity",
+     "20"
+    ],
+    [
+     "",
+     "10.",
+     "Income Taxes",
+     "21"
+    ],
+    [
+     "Item 2.  Management\u2019s Narrative Analysis",
+     "",
+     "",
+     "22"
+    ],
+    [
+     "Item 4.  Controls and Procedures",
+     "",
+     "",
+     "23"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II.  Other Information",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Item 1.  Legal Proceedings",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Item 1A.  Risk Factors",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Item 6.  Exhibits",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Signatures",
+     "",
+     "",
+     "25"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 124
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\nINDEX",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS (UNAUDITED)\nCONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 126,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment income",
+     "$",
+     "159,703",
+     "$",
+     "20,997",
+     "$",
+     "289,612",
+     "$",
+     "35,425"
+    ],
+    [
+     "Investment expenses",
+     "13,177",
+     "",
+     "6,239",
+     "",
+     "25,286",
+     "",
+     "12,384",
+     ""
+    ],
+    [
+     "Net investment income before provision for certificate reserves and income taxes",
+     "146,526",
+     "",
+     "14,758",
+     "",
+     "264,326",
+     "",
+     "23,041",
+     ""
+    ],
+    [
+     "Net provision for certificate reserves",
+     "109,380",
+     "",
+     "2,053",
+     "",
+     "192,313",
+     "",
+     "3,384",
+     ""
+    ],
+    [
+     "Net investment income before income taxes",
+     "37,146",
+     "",
+     "12,705",
+     "",
+     "72,013",
+     "",
+     "19,657",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "9,385",
+     "",
+     "3,168",
+     "",
+     "18,236",
+     "",
+     "4,895",
+     ""
+    ],
+    [
+     "Net investment income, after-tax",
+     "27,761",
+     "",
+     "9,537",
+     "",
+     "53,777",
+     "",
+     "14,762",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on investments before income taxes",
+     "(274)",
+     "",
+     "(61)",
+     "",
+     "(909)",
+     "",
+     "(43)",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "(58)",
+     "",
+     "(13)",
+     "",
+     "(191)",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on investments, after-tax",
+     "(216)",
+     "",
+     "(48)",
+     "",
+     "(718)",
+     "",
+     "(34)",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "27,545",
+     "$",
+     "9,489",
+     "$",
+     "53,059",
+     "$",
+     "14,728"
+    ],
+    [
+     "See Notes to Consolidated Financial Statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 134,
+    "end_line": 160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS (UNAUDITED)\nCONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 126,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "27,545",
+     "$",
+     "9,489",
+     "$",
+     "53,059",
+     "$",
+     "14,728"
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized gains (losses) on securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net unrealized gains (losses) on securities arising during the period",
+     "(28,648)",
+     "",
+     "(40,611)",
+     "",
+     "(7,287)",
+     "",
+     "(80,524)",
+     ""
+    ],
+    [
+     "Reclassification of net (gains) losses on securities included in net income",
+     "(9)",
+     "",
+     "(5)",
+     "",
+     "257",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "Total other comprehensive income (loss), net of tax",
+     "(28,657)",
+     "",
+     "(40,616)",
+     "",
+     "(7,030)",
+     "",
+     "(80,530)",
+     ""
+    ],
+    [
+     "Total comprehensive income (loss)",
+     "$",
+     "(1,112)",
+     "$",
+     "(31,127)",
+     "$",
+     "46,029",
+     "$",
+     "(65,802)"
+    ],
+    [
+     "See Notes to Consolidated Financial Statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 163,
+    "end_line": 182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (UNAUDITED)",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 126,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except share data)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Qualified Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,188,556",
+     "$",
+     "1,180,868"
+    ],
+    [
+     "  Investments in unaffiliated issuers (allowance for credit losses: 2023, $1,471; 2022, $1,472)",
+     "11,543,855",
+     "",
+     "8,573,481",
+     ""
+    ],
+    [
+     "Receivables",
+     "42,249",
+     "",
+     "24,937",
+     ""
+    ],
+    [
+     "Derivative assets",
+     "19,566",
+     "",
+     "8,786",
+     ""
+    ],
+    [
+     "Total qualified assets",
+     "12,794,226",
+     "",
+     "9,788,072",
+     ""
+    ],
+    [
+     "Deferred taxes, net",
+     "40,594",
+     "",
+     "37,892",
+     ""
+    ],
+    [
+     "Taxes receivable from parent",
+     "279",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Due from related party",
+     "16,901",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "12,852,000",
+     "$",
+     "9,825,964"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholder\u2019s Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Certificate reserves",
+     "$",
+     "12,068,871",
+     "$",
+     "9,313,405"
+    ],
+    [
+     "Due to related party",
+     "4,236",
+     "",
+     "3,047",
+     ""
+    ],
+    [
+     "Taxes payable to parent",
+     "2,182",
+     "",
+     "5,708",
+     ""
+    ],
+    [
+     "Payables to brokers, dealers and clearing organizations",
+     "146,480",
+     "",
+     "68,533",
+     ""
+    ],
+    [
+     "Derivative liabilities",
+     "13,609",
+     "",
+     "6,649",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "53,110",
+     "",
+     "14,139",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "12,288,488",
+     "",
+     "9,411,481",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholder\u2019s Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares ($10 par value, 150,000 shares authorized and issued)",
+     "1,500",
+     "",
+     "1,500",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "584,667",
+     "",
+     "481,667",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "99,720",
+     "",
+     "46,661",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss), net of tax",
+     "(122,375)",
+     "",
+     "(115,345)",
+     ""
+    ],
+    [
+     "Total shareholder\u2019s equity",
+     "563,512",
+     "",
+     "414,483",
+     ""
+    ],
+    [
+     "Total liabilities and shareholder\u2019s equity",
+     "$",
+     "12,852,000",
+     "$",
+     "9,825,964"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See Notes to Consolidated Financial Statements.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 187,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS (UNAUDITED)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF SHAREHOLDER\u2019S EQUITY (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Outstanding Shares",
+     "Common Shares",
+     "",
+     "Additional Paid-In Capital",
+     "",
+     "Retained Earnings",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated Other Comprehensive Income (Loss), Net of Tax",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Appropriated for Pre-Declared Additional Credits and Interest",
+     "",
+     "Appropriated for Additional Interest on Advance Payments",
+     "",
+     "Un-appropriated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except share data)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 1, 2023",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "558,667",
+     "$",
+     "19,951",
+     "$",
+     "15",
+     "$",
+     "52,209",
+     "$",
+     "(93,718)",
+     "$",
+     "538,624"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "27,545",
+     "",
+     "\u2014",
+     "",
+     "27,545",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(28,657)",
+     "",
+     "(28,657)",
+     ""
+    ],
+    [
+     "Transfer to unappropriated from appropriated, net",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,793)",
+     "",
+     "\u2014",
+     "",
+     "3,793",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Receipt of capital from parent",
+     "\u2014",
+     "\u2014",
+     "",
+     "26,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "26,000",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "584,667",
+     "$",
+     "16,158",
+     "$",
+     "15",
+     "$",
+     "83,547",
+     "$",
+     "(122,375)",
+     "$",
+     "563,512"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 1, 2022",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "295,667",
+     "$",
+     "\u2014",
+     "$",
+     "15",
+     "$",
+     "1,051",
+     "$",
+     "(24,178)",
+     "$",
+     "274,055"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "9,489",
+     "",
+     "\u2014",
+     "",
+     "9,489",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(40,616)",
+     "",
+     "(40,616)",
+     ""
+    ],
+    [
+     "Transfer to appropriated from unappropriated, net",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "370",
+     "",
+     "\u2014",
+     "",
+     "(370)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dividend to parent",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,000)",
+     "",
+     "\u2014",
+     "",
+     "(7,000)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "295,667",
+     "$",
+     "370",
+     "$",
+     "15",
+     "$",
+     "3,170",
+     "$",
+     "(64,794)",
+     "$",
+     "235,928"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2023",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "481,667",
+     "$",
+     "15,960",
+     "$",
+     "15",
+     "$",
+     "30,686",
+     "$",
+     "(115,345)",
+     "$",
+     "414,483"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "53,059",
+     "",
+     "\u2014",
+     "",
+     "53,059",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,030)",
+     "",
+     "(7,030)",
+     ""
+    ],
+    [
+     "Transfer to appropriated from unappropriated, net",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "198",
+     "",
+     "\u2014",
+     "",
+     "(198)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Receipt of capital from parent",
+     "\u2014",
+     "\u2014",
+     "",
+     "103,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "103,000",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "584,667",
+     "$",
+     "16,158",
+     "$",
+     "15",
+     "$",
+     "83,547",
+     "$",
+     "(122,375)",
+     "$",
+     "563,512"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "302,709",
+     "$",
+     "\u2014",
+     "$",
+     "15",
+     "$",
+     "70",
+     "$",
+     "15,736",
+     "$",
+     "320,030"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14,728",
+     "",
+     "\u2014",
+     "",
+     "14,728",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(80,530)",
+     "",
+     "(80,530)",
+     ""
+    ],
+    [
+     "Transfer to appropriated from unappropriated, net",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "370",
+     "",
+     "\u2014",
+     "",
+     "(370)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dividend to parent",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11,258)",
+     "",
+     "\u2014",
+     "",
+     "(11,258)",
+     ""
+    ],
+    [
+     "Return of capital to parent",
+     "\u2014",
+     "\u2014",
+     "",
+     "(7,042)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,042)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "150,000",
+     "$",
+     "1,500",
+     "$",
+     "295,667",
+     "$",
+     "370",
+     "$",
+     "15",
+     "$",
+     "3,170",
+     "$",
+     "(64,794)",
+     "$",
+     "235,928"
+    ],
+    [
+     "See Notes to Consolidated Financial Statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 236,
+    "end_line": 282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF SHAREHOLDER\u2019S EQUITY (UNAUDITED)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "53,059",
+     "$",
+     "14,728"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of premiums, accretion of discounts, net",
+     "(60,839)",
+     "",
+     "(521)",
+     ""
+    ],
+    [
+     "Deferred income tax expense (benefit)",
+     "(474)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net realized (gain) loss on Available-for-Sale securities",
+     "326",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Other net realized (gain) loss",
+     "583",
+     "",
+     "39",
+     ""
+    ],
+    [
+     "Provision for credit losses",
+     "(1)",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends and interest receivable",
+     "33,589",
+     "",
+     "(3,197)",
+     ""
+    ],
+    [
+     "Certificate reserves, net",
+     "13,175",
+     "",
+     "(1,908)",
+     ""
+    ],
+    [
+     "Deferred taxes, net",
+     "\u2014",
+     "",
+     "502",
+     ""
+    ],
+    [
+     "Taxes payable to/receivable from parent, net",
+     "(3,805)",
+     "",
+     "3,560",
+     ""
+    ],
+    [
+     "Derivatives, net of collateral",
+     "(400)",
+     "",
+     "67",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "10,960",
+     "",
+     "2,109",
+     ""
+    ],
+    [
+     "Other receivables",
+     "(426)",
+     "",
+     "114",
+     ""
+    ],
+    [
+     "Other, net",
+     "(2,331)",
+     "",
+     "(25)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "43,416",
+     "",
+     "15,472",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Available-for-Sale securities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "111,727",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Maturities, redemptions, calls and other",
+     "2,724,660",
+     "",
+     "1,899,822",
+     ""
+    ],
+    [
+     "Purchases",
+     "(5,748,558)",
+     "",
+     "(2,159,280)",
+     ""
+    ],
+    [
+     "Syndicated loans and commercial mortgage loans:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales, maturities and repayments",
+     "21,956",
+     "",
+     "35,648",
+     ""
+    ],
+    [
+     "Purchases and fundings",
+     "(1,976)",
+     "",
+     "(18,218)",
+     ""
+    ],
+    [
+     "Certificate loans, net",
+     "25",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "(2,892,166)",
+     "",
+     "(242,035)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments from certificate holders and other additions",
+     "6,395,156",
+     "",
+     "1,835,193",
+     ""
+    ],
+    [
+     "Certificate maturities and cash surrenders",
+     "(3,641,718)",
+     "",
+     "(1,849,700)",
+     ""
+    ],
+    [
+     "Capital contribution from parent",
+     "103,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Dividend to parent",
+     "\u2014",
+     "",
+     "(11,258)",
+     ""
+    ],
+    [
+     "Return of capital to parent",
+     "\u2014",
+     "",
+     "(7,042)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "2,856,438",
+     "",
+     "(32,807)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "7,688",
+     "",
+     "(259,370)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "1,180,868",
+     "",
+     "689,792",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "1,188,556",
+     "$",
+     "430,422"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures including non-cash transactions:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid (received) for income taxes",
+     "$",
+     "21,780",
+     "$",
+     "512"
+    ],
+    [
+     "Cash paid for interest",
+     "182,832",
+     "",
+     "5,118",
+     ""
+    ],
+    [
+     "See Notes to Consolidated Financial Statements.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 287,
+    "end_line": 348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS (UNAUDITED)",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (UNAUDITED)\n1. Basis of Presentation and Summary of Significant Accounting Policies\nNature of Business\nAmeriprise Certificate Company (\u201cACC\u201d) is a wholly owned subsidiary of Ameriprise Financial, Inc. (\u201cAmeriprise Financial\u201d or the \u201cParent\u201d). ACC is registered as an investment company under the Investment Company Act of 1940. The accompanying Consolidated Financial Statements have been prepared in accordance with U.S. generally accepted accounting principles (\u201cGAAP\u201d). ACC uses the consolidation method of accounting for its wholly owned subsidiary, Investors Syndicate Development Corp. The interim financial information in this report has not been audited. In the opinion of management, all adjustments necessary for a fair presentation of the consolidated results of operations and financial position for the interim periods have been made. All adjustments made were of a normal recurring nature. Results of operations reported for interim periods are not necessarily indicative of results for the entire year. These Consolidated Financial Statements and Notes should be read in conjunction with the Consolidated Financial Statements and Notes in the Annual Report on Form 10-K of ACC for the year ended December 31, 2022, filed with the Securities and Exchange Commission (\u201cSEC\u201d) on February 23, 2023 (\u201c2022 10-K\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Available-for-Sale securities: Fixed maturities, at fair value (allowance for credit losses: 2023 and 2022, nil; amortized cost: 2023, $11,523,694; 2022, $8,523,011)",
+     "$",
+     "11,360,340",
+     "$",
+     "8,368,916"
+    ],
+    [
+     "Commercial mortgage loans and syndicated loans, at cost (allowance for credit losses: 2023, $1,471; 2022, $1,472; fair value: 2023, $176,080; 2022, $195,252)",
+     "183,468",
+     "",
+     "204,493",
+     ""
+    ],
+    [
+     "Certificate loans \u2014 secured by certificate reserves, at cost, which approximates fair value",
+     "47",
+     "",
+     "72",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "11,543,855",
+     "$",
+     "8,573,481"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 383,
+    "end_line": 397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "In March 2022, the Financial Accounting Standards Board (\u201cFASB\u201d) proposed amendments to Accounting Standards Update (\u201cASU\u201d) 2016-13, Financial Instruments\u2014Credit Losses: Measurement of Credit Losses on Financial Instruments (\u201cTopic 326\u201d). The update removes the recognition and measurement guidance for Troubled Debt Restructurings (\u201cTDRs\u201d) by creditors in Subtopic 310-40, Receivables\u2014Troubled Debt Restructurings by Creditors, and modifies the disclosure requirements for certain loan refinancing and restructuring by creditors when a borrower is experiencing financial difficulty. Rather than applying the recognition and measurement for TDRs, an entity must apply the loan refinancing and restructuring guidance to determine whether a modification results in a new loan or a continuation of an existing loan. The update also requires entities to disclose current-period gross write-offs by year of origination for financing receivables and net investments in leases within the scope of Subtopic 326-20, Financial Instruments\u2014Credit Losses\u2014Measured at Amortized Cost. The amendments are to be applied prospectively, but entities may apply a modified retrospective transition for changes to the recognition and measurement of TDRs. For entities that have adopted Topic 326, the amendments are effective for interim and annual periods beginning after December 15, 2022. ACC adopted the standard on January 1, 2023. The adoption of this update did not have an impact on ACC\u2019s consolidated results of operations and financial condition and modifications to disclosures are immaterial in the current period.\n3. Investments\nInvestments in unaffiliated issuers were as follows:",
+   "prose_after": "Available-for-Sale securities distributed by type were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 349,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Description of Securities",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "$",
+     "1,504,939",
+     "$",
+     "36",
+     "$",
+     "(14,473)",
+     "$",
+     "1,490,502"
+    ],
+    [
+     "Residential mortgage backed securities",
+     "3,168,231",
+     "",
+     "4,592",
+     "",
+     "(118,831)",
+     "",
+     "3,053,992",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "2,096,907",
+     "",
+     "5,514",
+     "",
+     "(28,355)",
+     "",
+     "2,074,066",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "2,406,859",
+     "",
+     "2,449",
+     "",
+     "(10,480)",
+     "",
+     "2,398,828",
+     ""
+    ],
+    [
+     "State and municipal obligations",
+     "8,450",
+     "",
+     "\u2014",
+     "",
+     "(170)",
+     "",
+     "8,280",
+     ""
+    ],
+    [
+     "U.S. government and agency obligations",
+     "2,338,308",
+     "",
+     "127",
+     "",
+     "(3,763)",
+     "",
+     "2,334,672",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "11,523,694",
+     "$",
+     "12,718",
+     "$",
+     "(176,072)",
+     "$",
+     "11,360,340"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Available-for-Sale securities distributed by type were as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Description of Securities",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "$",
+     "800,596",
+     "$",
+     "497",
+     "$",
+     "(8,151)",
+     "$",
+     "792,942"
+    ],
+    [
+     "Residential mortgage backed securities",
+     "2,210,633",
+     "",
+     "4,202",
+     "",
+     "(114,971)",
+     "",
+     "2,099,864",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "1,976,401",
+     "",
+     "872",
+     "",
+     "(28,521)",
+     "",
+     "1,948,752",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "1,463,147",
+     "",
+     "2,599",
+     "",
+     "(10,474)",
+     "",
+     "1,455,272",
+     ""
+    ],
+    [
+     "State and municipal obligations",
+     "9,451",
+     "",
+     "\u2014",
+     "",
+     "(296)",
+     "",
+     "9,155",
+     ""
+    ],
+    [
+     "U.S. government and agency obligations",
+     "2,062,783",
+     "",
+     "819",
+     "",
+     "(671)",
+     "",
+     "2,062,931",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "8,523,011",
+     "$",
+     "8,989",
+     "$",
+     "(163,084)",
+     "$",
+     "8,368,916"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 437
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "As of June 30, 2023 and December 31, 2022, accrued interest of $37.7 million and $20.8 million, respectively, is excluded from the amortized cost basis of Available-for-Sale securities in the tables above and is recorded in Receivables.\nAs of June 30, 2023 and December 31, 2022, fixed maturity securities comprised approximately 89% and 86%, respectively, of ACC\u2019s total investments. Rating agency designations are based on the availability of ratings from Nationally Recognized Statistical Rating Organizations (\u201cNRSROs\u201d), including Moody\u2019s Investors Service (\u201cMoody\u2019s\u201d), Standard & Poor\u2019s Ratings Services (\u201cS&P\u201d), and Fitch Ratings Ltd. (\u201cFitch\u201d). ACC uses the median of available ratings from Moody\u2019s, S&P and Fitch, or if fewer than three ratings are available, the lower rating is used. When ratings from Moody\u2019s, S&P and Fitch are unavailable, as is the case for many private placement securities, ACC may utilize ratings from other NRSROs or rate the securities internally. As of June 30, 2023 and December 31, 2022, $12.5 million and $8.7 million, respectively, worth of securities were internally rated by Columbia Management Investment Advisers, LLC (\u201cCMIA\u201d), an affiliate of ACC.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Ratings",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Fair Value",
+     "",
+     "Percent of Total Fair Value",
+     "",
+     "Amortized Cost",
+     "",
+     "Fair Value",
+     "",
+     "Percent of Total Fair Value",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except percentages)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "AAA",
+     "$",
+     "9,800,061",
+     "$",
+     "9,651,311",
+     "85",
+     "%",
+     "$",
+     "7,504,912",
+     "$",
+     "7,361,766",
+     "88",
+     "%"
+    ],
+    [
+     "AA",
+     "62,351",
+     "",
+     "60,863",
+     "",
+     "1",
+     "",
+     "104,049",
+     "",
+     "100,303",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "A",
+     "298,905",
+     "",
+     "297,367",
+     "",
+     "2",
+     "",
+     "165,663",
+     "",
+     "164,265",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "BBB",
+     "1,356,432",
+     "",
+     "1,345,139",
+     "",
+     "12",
+     "",
+     "732,811",
+     "",
+     "727,450",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "Below investment grade",
+     "5,945",
+     "",
+     "5,660",
+     "",
+     "\u2014",
+     "",
+     "15,576",
+     "",
+     "15,132",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total fixed maturities",
+     "$",
+     "11,523,694",
+     "$",
+     "11,360,340",
+     "100",
+     "%",
+     "$",
+     "8,523,011",
+     "$",
+     "8,368,916",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "As of June 30, 2023 and December 31, 2022, fixed maturity securities comprised approximately 89% and 86%, respectively, of ACC\u2019s total investments. Rating agency designations are based on the availability of ratings from Nationally Recognized Statistical Rating Organizations (\u201cNRSROs\u201d), including Moody\u2019s Investors Service (\u201cMoody\u2019s\u201d), Standard & Poor\u2019s Ratings Services (\u201cS&P\u201d), and Fitch Ratings Ltd. (\u201cFitch\u201d). ACC uses the median of available ratings from Moody\u2019s, S&P and Fitch, or if fewer than three ratings are available, the lower rating is used. When ratings from Moody\u2019s, S&P and Fitch are unavailable, as is the case for many private placement securities, ACC may utilize ratings from other NRSROs or rate the securities internally. As of June 30, 2023 and December 31, 2022, $12.5 million and $8.7 million, respectively, worth of securities were internally rated by Columbia Management Investment Advisers, LLC (\u201cCMIA\u201d), an affiliate of ACC.\nA summary of fixed maturity securities by rating was as follows:",
+   "prose_after": "As of June 30, 2023 and December 31, 2022, approximately 33% and 34%, respectively, of securities rated AAA were GNMA, FNMA and FHLMC mortgage backed securities. As of June 30, 2023, ACC had 10 issuers with holdings totaling $835.9 million that individually were between 10% and 19% of total shareholder\u2019s equity. As of December 31, 2022, ACC had 18 issuers with holdings totaling $868.0 million that individually were between 10% and 15% of total shareholder\u2019s equity. There were no other holdings of any other issuer greater than 10% of total shareholder\u2019s equity as of June 30, 2023 and December 31, 2022.\nThe following tables summarize the fair value and gross unrealized losses on Available-for-Sale securities, aggregated by major investment type and the length of time that individual securities have been in a continuous unrealized loss position:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Description of Securities",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Less than 12 Months",
+     "",
+     "",
+     "",
+     "",
+     "12 Months or More",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Securities",
+     "Fair Value",
+     "",
+     "Unrealized Losses",
+     "",
+     "Number of Securities",
+     "Fair Value",
+     "",
+     "Unrealized Losses",
+     "",
+     "Number of Securities",
+     "Fair Value",
+     "",
+     "Unrealized Losses",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except number of securities)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "79",
+     "$",
+     "1,398,040",
+     "$",
+     "(12,777)",
+     "11",
+     "$",
+     "79,044",
+     "$",
+     "(1,696)",
+     "90",
+     "$",
+     "1,477,084",
+     "$",
+     "(14,473)"
+    ],
+    [
+     "Residential mortgage backed securities",
+     "60",
+     "1,444,052",
+     "",
+     "(20,128)",
+     "",
+     "238",
+     "1,135,408",
+     "",
+     "(98,703)",
+     "",
+     "298",
+     "2,579,460",
+     "",
+     "(118,831)",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "18",
+     "524,341",
+     "",
+     "(4,216)",
+     "",
+     "59",
+     "850,258",
+     "",
+     "(24,139)",
+     "",
+     "77",
+     "1,374,599",
+     "",
+     "(28,355)",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "58",
+     "1,546,430",
+     "",
+     "(5,898)",
+     "",
+     "26",
+     "393,601",
+     "",
+     "(4,582)",
+     "",
+     "84",
+     "1,940,031",
+     "",
+     "(10,480)",
+     ""
+    ],
+    [
+     "State and municipal obligations",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5",
+     "2,530",
+     "",
+     "(170)",
+     "",
+     "5",
+     "2,530",
+     "",
+     "(170)",
+     ""
+    ],
+    [
+     "U.S. government and agency obligations",
+     "17",
+     "1,517,190",
+     "",
+     "(3,763)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17",
+     "1,517,190",
+     "",
+     "(3,763)",
+     ""
+    ],
+    [
+     "Total",
+     "232",
+     "$",
+     "6,430,053",
+     "$",
+     "(46,782)",
+     "339",
+     "$",
+     "2,460,841",
+     "$",
+     "(129,290)",
+     "571",
+     "$",
+     "8,890,894",
+     "$",
+     "(176,072)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 467,
+    "end_line": 486
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "As of June 30, 2023 and December 31, 2022, approximately 33% and 34%, respectively, of securities rated AAA were GNMA, FNMA and FHLMC mortgage backed securities. As of June 30, 2023, ACC had 10 issuers with holdings totaling $835.9 million that individually were between 10% and 19% of total shareholder\u2019s equity. As of December 31, 2022, ACC had 18 issuers with holdings totaling $868.0 million that individually were between 10% and 15% of total shareholder\u2019s equity. There were no other holdings of any other issuer greater than 10% of total shareholder\u2019s equity as of June 30, 2023 and December 31, 2022.\nThe following tables summarize the fair value and gross unrealized losses on Available-for-Sale securities, aggregated by major investment type and the length of time that individual securities have been in a continuous unrealized loss position:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Description of Securities",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Less than 12 Months",
+     "",
+     "",
+     "",
+     "",
+     "12 Months or More",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Securities",
+     "Fair Value",
+     "",
+     "Unrealized Losses",
+     "",
+     "Number of Securities",
+     "Fair Value",
+     "",
+     "Unrealized Losses",
+     "",
+     "Number of Securities",
+     "Fair Value",
+     "",
+     "Unrealized Losses",
+     ""
+    ],
+    [
+     "",
+     "(in thousands, except number of securities)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "48",
+     "$",
+     "598,028",
+     "$",
+     "(8,151)",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "48",
+     "$",
+     "598,028",
+     "$",
+     "(8,151)"
+    ],
+    [
+     "Residential mortgage backed securities",
+     "208",
+     "1,609,795",
+     "",
+     "(83,810)",
+     "",
+     "78",
+     "253,759",
+     "",
+     "(31,161)",
+     "",
+     "286",
+     "1,863,554",
+     "",
+     "(114,971)",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "64",
+     "1,396,001",
+     "",
+     "(16,637)",
+     "",
+     "21",
+     "379,588",
+     "",
+     "(11,884)",
+     "",
+     "85",
+     "1,775,589",
+     "",
+     "(28,521)",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "42",
+     "816,065",
+     "",
+     "(8,671)",
+     "",
+     "5",
+     "87,706",
+     "",
+     "(1,803)",
+     "",
+     "47",
+     "903,771",
+     "",
+     "(10,474)",
+     ""
+    ],
+    [
+     "State and municipal obligations",
+     "7",
+     "8,251",
+     "",
+     "(200)",
+     "",
+     "1",
+     "904",
+     "",
+     "(96)",
+     "",
+     "8",
+     "9,155",
+     "",
+     "(296)",
+     ""
+    ],
+    [
+     "U.S. government and agency obligations",
+     "11",
+     "559,320",
+     "",
+     "(671)",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "11",
+     "559,320",
+     "",
+     "(671)",
+     ""
+    ],
+    [
+     "Total",
+     "380",
+     "$",
+     "4,987,460",
+     "$",
+     "(118,140)",
+     "105",
+     "$",
+     "721,957",
+     "$",
+     "(44,944)",
+     "485",
+     "$",
+     "5,709,417",
+     "$",
+     "(163,084)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 487,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "As part of ACC\u2019s ongoing monitoring process, management determined that the change in gross unrealized losses on its Available-for-Sale securities for which an allowance for credit losses has not been recognized during the six months ended June 30, 2023 is primarily attributable to the impact of higher short-term interest rates, partially offset by tighter credit spreads. As of June 30, 2023, ACC did not recognize these unrealized losses in earnings because it was determined that such losses were due to non-credit factors. ACC does not intend to sell these securities and does not believe that it is more likely than not that ACC will be required to sell these securities before the anticipated recovery of the remaining amortized cost basis. As of June 30, 2023 and December 31, 2022, approximately 98% and 96%, respectively, of the total of Available-for-Sale securities with gross unrealized losses were considered investment grade.\nThere were no amounts recognized in the allowance for credit losses on Available-for-Sale securities during the three and six months ended June 30, 2023 and 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Net Unrealized Gains (Losses) on Securities",
+     "",
+     "Deferred Income Tax",
+     "",
+     "Accumulated Other Comprehensive Income (Loss) Related to Net Unrealized Gains (Losses) on Securities",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 1, 2023",
+     "$",
+     "(125,616)",
+     "$",
+     "31,898",
+     "$",
+     "(93,718)"
+    ],
+    [
+     "Net unrealized gains (losses) on securities arising during the period (1)",
+     "(37,727)",
+     "",
+     "9,079",
+     "",
+     "(28,648)",
+     ""
+    ],
+    [
+     "Reclassification of net (gains) losses on securities included in net income (2)",
+     "(11)",
+     "",
+     "2",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "$",
+     "(163,354)",
+     "$",
+     "40,979",
+     "$",
+     "(122,375)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 1, 2022",
+     "$",
+     "(34,007)",
+     "$",
+     "9,829",
+     "$",
+     "(24,178)"
+    ],
+    [
+     "Net unrealized gains (losses) on securities arising during the period (1)",
+     "(53,435)",
+     "",
+     "12,824",
+     "",
+     "(40,611)",
+     ""
+    ],
+    [
+     "Reclassification of net (gains) losses on securities included in net income (2)",
+     "(6)",
+     "",
+     "1",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "$",
+     "(87,448)",
+     "$",
+     "22,654",
+     "$",
+     "(64,794)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2023",
+     "$",
+     "(154,094)",
+     "$",
+     "38,749",
+     "$",
+     "(115,345)"
+    ],
+    [
+     "Net unrealized gains (losses) on securities arising during the period (1)",
+     "(9,586)",
+     "",
+     "2,299",
+     "",
+     "(7,287)",
+     ""
+    ],
+    [
+     "Reclassification of net (gains) losses on securities included in net income (2)",
+     "326",
+     "",
+     "(69)",
+     "",
+     "257",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "$",
+     "(163,354)",
+     "$",
+     "40,979",
+     "$",
+     "(122,375)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "$",
+     "18,509",
+     "$",
+     "(2,773)",
+     "$",
+     "15,736"
+    ],
+    [
+     "Net unrealized gains (losses) on securities arising during the period (1)",
+     "(105,950)",
+     "",
+     "25,426",
+     "",
+     "(80,524)",
+     ""
+    ],
+    [
+     "Reclassification of net (gains) losses on securities included in net income (2)",
+     "(7)",
+     "",
+     "1",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "$",
+     "(87,448)",
+     "$",
+     "22,654",
+     "$",
+     "(64,794)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 517,
+    "end_line": 556
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "As part of ACC\u2019s ongoing monitoring process, management determined that the change in gross unrealized losses on its Available-for-Sale securities for which an allowance for credit losses has not been recognized during the six months ended June 30, 2023 is primarily attributable to the impact of higher short-term interest rates, partially offset by tighter credit spreads. As of June 30, 2023, ACC did not recognize these unrealized losses in earnings because it was determined that such losses were due to non-credit factors. ACC does not intend to sell these securities and does not believe that it is more likely than not that ACC will be required to sell these securities before the anticipated recovery of the remaining amortized cost basis. As of June 30, 2023 and December 31, 2022, approximately 98% and 96%, respectively, of the total of Available-for-Sale securities with gross unrealized losses were considered investment grade.\nThere were no amounts recognized in the allowance for credit losses on Available-for-Sale securities during the three and six months ended June 30, 2023 and 2022.\nThe change in net unrealized gains (losses) on securities in other comprehensive income (loss) (\u201cOCI\u201d), includes two components, net of tax: (i) unrealized gains (losses) that arose from changes in the fair value of securities that were held during the period and (ii) (gains) losses that were previously unrealized, but have been recognized in current period net income due to sales of Available-for-Sale securities and due to the reclassification of noncredit losses to credit losses.\nThe following table presents rollforwards of the net unrealized gains (losses) on Available-for-Sale securities included in accumulated other comprehensive income (loss) (\u201cAOCI\u201d):",
+   "prose_after": "(1) Net unrealized gains (losses) on securities arising during the period include impairments on Available-for-Sale securities related to factors other than credit that were recognized in OCI during the period.\n(2) Reclassification amounts are reported in Net realized gain (loss) on investments before income taxes.\nNet realized gains and losses on Available-for-Sale securities, determined using the specific identification method, recognized in Net realized gain (loss) on investments before income taxes were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross realized investment gains",
+     "$",
+     "64",
+     "$",
+     "6",
+     "$",
+     "199",
+     "$",
+     "7"
+    ],
+    [
+     "Gross realized investment losses",
+     "(53)",
+     "",
+     "\u2014",
+     "",
+     "(525)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "11",
+     "$",
+     "6",
+     "$",
+     "(326)",
+     "$",
+     "7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 563,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "(1) Net unrealized gains (losses) on securities arising during the period include impairments on Available-for-Sale securities related to factors other than credit that were recognized in OCI during the period.\n(2) Reclassification amounts are reported in Net realized gain (loss) on investments before income taxes.\nNet realized gains and losses on Available-for-Sale securities, determined using the specific identification method, recognized in Net realized gain (loss) on investments before income taxes were as follows:",
+   "prose_after": "Available-for-Sale securities by contractual maturity as of June 30, 2023 were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Due within one year",
+     "$",
+     "2,933,698",
+     "$",
+     "2,924,591"
+    ],
+    [
+     "Due after one year through five years",
+     "917,793",
+     "",
+     "908,653",
+     ""
+    ],
+    [
+     "Due after five years through 10 years",
+     "206",
+     "",
+     "210",
+     ""
+    ],
+    [
+     "",
+     "3,851,697",
+     "",
+     "3,833,454",
+     ""
+    ],
+    [
+     "Residential mortgage backed securities",
+     "3,168,231",
+     "",
+     "3,053,992",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "2,096,907",
+     "",
+     "2,074,066",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "2,406,859",
+     "",
+     "2,398,828",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "11,523,694",
+     "$",
+     "11,360,340"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 578,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Available-for-Sale securities by contractual maturity as of June 30, 2023 were as follows:",
+   "prose_after": "Actual maturities may differ from contractual maturities because issuers may have the right to call or prepay obligations. Residential mortgage backed securities, commercial mortgage backed securities and asset backed securities are not due at a single maturity date. As such, these securities were not included in the maturities distribution.\n4. Financing Receivables\nFinancing receivables are comprised of commercial loans and certificate loans.\nAllowance for Credit Losses\nThe following tables present a rollforward of the allowance for credit losses:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Commercial Loans",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "Balance at January 1, 2023",
+     "$",
+     "1,472"
+    ],
+    [
+     "Provisions",
+     "(1)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "$",
+     "1,471"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "$",
+     "1,518"
+    ],
+    [
+     "Provisions",
+     "11",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "$",
+     "1,529"
+    ]
+   ],
+   "caption_stack": [
+    "Commercial Loans",
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 607,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Actual maturities may differ from contractual maturities because issuers may have the right to call or prepay obligations. Residential mortgage backed securities, commercial mortgage backed securities and asset backed securities are not due at a single maturity date. As such, these securities were not included in the maturities distribution.\n4. Financing Receivables\nFinancing receivables are comprised of commercial loans and certificate loans.\nAllowance for Credit Losses\nThe following tables present a rollforward of the allowance for credit losses:",
+   "prose_after": "As of June 30, 2023 and December 31, 2022, accrued interest on commercial loans was $1.1 million and $1.2 million, respectively, and is recorded in Receivables and excluded from the amortized cost basis of commercial loans.\nPurchases and Sales\nDuring the three months ended June 30, 2023 and 2022, ACC purchased nil and $15.0 million, respectively, of syndicated loans, and sold $2.4 million and $0.7 million, respectively, of syndicated loans. During the six months ended June 30, 2023 and 2022, ACC purchased $0.4 million and $15.0 million, respectively, of syndicated loans, and sold $3.2 million and $0.7 million, respectively, of syndicated loans.\nACC has not acquired any loans with deteriorated credit quality as of the acquisition date.\nCredit Quality Information\nNonperforming loans were $1.5 million as of both June 30, 2023 and December 31, 2022. All other loans were considered to be performing.\nCommercial Loans\nCommercial Mortgage Loans\nACC reviews the credit worthiness of the borrower and the performance of the underlying properties in order to determine the risk of loss on commercial mortgage loans. Loan-to-value ratio is the primary credit quality indicator included in this review.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan-to-Value Ratio",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "Prior",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "> 100%",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "3,175",
+     "$",
+     "3,175"
+    ],
+    [
+     "80% - 100%",
+     "\u2014",
+     "",
+     "5,461",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5,461",
+     ""
+    ],
+    [
+     "60% - 80%",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,702",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,702",
+     ""
+    ],
+    [
+     "40% - 60%",
+     "1,090",
+     "",
+     "\u2014",
+     "",
+     "2,402",
+     "",
+     "4,016",
+     "",
+     "5,000",
+     "",
+     "8,544",
+     "",
+     "21,052",
+     ""
+    ],
+    [
+     "< 40%",
+     "\u2014",
+     "",
+     "1,554",
+     "",
+     "6,628",
+     "",
+     "3,000",
+     "",
+     "9,000",
+     "",
+     "45,865",
+     "",
+     "66,047",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,090",
+     "$",
+     "7,015",
+     "$",
+     "10,732",
+     "$",
+     "7,016",
+     "$",
+     "14,000",
+     "$",
+     "57,584",
+     "$",
+     "97,437"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Nonperforming loans were $1.5 million as of both June 30, 2023 and December 31, 2022. All other loans were considered to be performing.\nCommercial Loans\nCommercial Mortgage Loans\nACC reviews the credit worthiness of the borrower and the performance of the underlying properties in order to determine the risk of loss on commercial mortgage loans. Loan-to-value ratio is the primary credit quality indicator included in this review.\nBased on this review, the commercial mortgage loans are assigned an internal risk rating, which management updates when credit risk changes. There were no commercial mortgage loans which management has assigned its highest risk rating as of both June 30, 2023 and December 31, 2022. Loans with the highest risk rating represent distressed loans which ACC has identified as impaired or expects to become delinquent or enter into foreclosure within the next six months. There were no commercial mortgage loans past due as of both June 30, 2023 and December 31, 2022.\nThe tables below present the amortized cost basis of commercial mortgage loans by year of origination and loan-to-value ratio:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan-to-Value Ratio",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "Prior",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "> 100%",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "3,211",
+     "$",
+     "\u2014",
+     "$",
+     "3,211"
+    ],
+    [
+     "80% - 100%",
+     "5,500",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5,500",
+     ""
+    ],
+    [
+     "60% - 80%",
+     "\u2014",
+     "",
+     "1,727",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,411",
+     "",
+     "5,138",
+     ""
+    ],
+    [
+     "40% - 60%",
+     "\u2014",
+     "",
+     "4,963",
+     "",
+     "4,062",
+     "",
+     "10,630",
+     "",
+     "2,570",
+     "",
+     "8,299",
+     "",
+     "30,524",
+     ""
+    ],
+    [
+     "< 40%",
+     "1,628",
+     "",
+     "4,544",
+     "",
+     "3,000",
+     "",
+     "3,646",
+     "",
+     "6,589",
+     "",
+     "38,834",
+     "",
+     "58,241",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "7,128",
+     "$",
+     "11,234",
+     "$",
+     "7,062",
+     "$",
+     "14,276",
+     "$",
+     "12,370",
+     "$",
+     "50,544",
+     "$",
+     "102,614"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 665,
+    "end_line": 681
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Loan-to-value ratio is based on income and expense data provided by borrowers at least annually and long-term capitalization rate assumptions based on property type. For the six months ended June 30, 2023, ACC did not have any write-offs of commercial mortgage loans.\nIn addition, ACC reviews the concentrations of credit risk by region and property type. Concentrations of credit risk of commercial mortgage loans by U.S. region were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Loans",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "East North Central",
+     "$",
+     "8,675",
+     "$",
+     "9,116",
+     "9",
+     "%",
+     "9",
+     "%"
+    ],
+    [
+     "East South Central",
+     "1,880",
+     "",
+     "2,239",
+     "",
+     "2",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "Middle Atlantic",
+     "15,247",
+     "",
+     "14,640",
+     "",
+     "16",
+     "",
+     "14",
+     ""
+    ],
+    [
+     "Mountain",
+     "8,947",
+     "",
+     "9,135",
+     "",
+     "9",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "New England",
+     "6,426",
+     "",
+     "6,542",
+     "",
+     "6",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Pacific",
+     "35,263",
+     "",
+     "36,432",
+     "",
+     "36",
+     "",
+     "36",
+     ""
+    ],
+    [
+     "South Atlantic",
+     "10,670",
+     "",
+     "12,003",
+     "",
+     "11",
+     "",
+     "12",
+     ""
+    ],
+    [
+     "West North Central",
+     "3,815",
+     "",
+     "4,215",
+     "",
+     "4",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "West South Central",
+     "6,514",
+     "",
+     "8,292",
+     "",
+     "7",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "",
+     "97,437",
+     "",
+     "102,614",
+     "",
+     "100",
+     "%",
+     "100",
+     "%"
+    ],
+    [
+     "Less: allowance for credit losses",
+     "368",
+     "",
+     "451",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "97,069",
+     "$",
+     "102,163",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 686,
+    "end_line": 710
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Loan-to-value ratio is based on income and expense data provided by borrowers at least annually and long-term capitalization rate assumptions based on property type. For the six months ended June 30, 2023, ACC did not have any write-offs of commercial mortgage loans.\nIn addition, ACC reviews the concentrations of credit risk by region and property type. Concentrations of credit risk of commercial mortgage loans by U.S. region were as follows:",
+   "prose_after": "Concentrations of credit risk of commercial mortgage loans by property type were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Loans",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Apartments",
+     "$",
+     "28,897",
+     "$",
+     "29,969",
+     "30",
+     "%",
+     "29",
+     "%"
+    ],
+    [
+     "Industrial",
+     "24,550",
+     "",
+     "25,668",
+     "",
+     "25",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "Mixed use",
+     "10,391",
+     "",
+     "10,658",
+     "",
+     "11",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Office",
+     "15,844",
+     "",
+     "16,293",
+     "",
+     "16",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "Retail",
+     "15,441",
+     "",
+     "17,592",
+     "",
+     "16",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Other",
+     "2,314",
+     "",
+     "2,434",
+     "",
+     "2",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "",
+     "97,437",
+     "",
+     "102,614",
+     "",
+     "100",
+     "%",
+     "100",
+     "%"
+    ],
+    [
+     "Less: allowance for credit losses",
+     "368",
+     "",
+     "451",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "97,069",
+     "$",
+     "102,163",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 713,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Concentrations of credit risk of commercial mortgage loans by property type were as follows:",
+   "prose_after": "Syndicated Loans\nThe investment in syndicated loans as of June 30, 2023 and December 31, 2022 was $87.5 million and $103.4 million, respectively. ACC\u2019s syndicated loan portfolio is diversified across industries and issuers. Syndicated loans past due as of June 30, 2023 and December 31, 2022 were $1.1 million and nil, respectively. ACC assigns an internal risk rating to each syndicated loan in its portfolio ranging from 1 through 5, with 5 reflecting the lowest quality. For the six months ended June 30, 2023, ACC did not have any write-\noffs of syndicated loans.\nThe tables below present the amortized cost basis of syndicated loans by origination year and internal risk rating:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Internal Risk Rating",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "Prior",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk 5",
+     "$",
+     "\u2014",
+     "$",
+     "1,135",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "412",
+     "$",
+     "1,547"
+    ],
+    [
+     "Risk 4",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,207",
+     "",
+     "1,931",
+     "",
+     "1,280",
+     "",
+     "4,418",
+     ""
+    ],
+    [
+     "Risk 3",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,773",
+     "",
+     "713",
+     "",
+     "1,925",
+     "",
+     "10,295",
+     "",
+     "15,706",
+     ""
+    ],
+    [
+     "Risk 2",
+     "\u2014",
+     "",
+     "3,754",
+     "",
+     "7,772",
+     "",
+     "3,983",
+     "",
+     "5,038",
+     "",
+     "13,875",
+     "",
+     "34,422",
+     ""
+    ],
+    [
+     "Risk 1",
+     "1,824",
+     "",
+     "2,332",
+     "",
+     "4,249",
+     "",
+     "2,545",
+     "",
+     "4,649",
+     "",
+     "15,811",
+     "",
+     "31,410",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,824",
+     "$",
+     "7,221",
+     "$",
+     "14,794",
+     "$",
+     "8,448",
+     "$",
+     "13,543",
+     "$",
+     "41,673",
+     "$",
+     "87,503"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 745,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Syndicated Loans\nThe investment in syndicated loans as of June 30, 2023 and December 31, 2022 was $87.5 million and $103.4 million, respectively. ACC\u2019s syndicated loan portfolio is diversified across industries and issuers. Syndicated loans past due as of June 30, 2023 and December 31, 2022 were $1.1 million and nil, respectively. ACC assigns an internal risk rating to each syndicated loan in its portfolio ranging from 1 through 5, with 5 reflecting the lowest quality. For the six months ended June 30, 2023, ACC did not have any write-\noffs of syndicated loans.\nThe tables below present the amortized cost basis of syndicated loans by origination year and internal risk rating:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Internal Risk Rating",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2020",
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "Prior",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk 5",
+     "$",
+     "1,132",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "337",
+     "$",
+     "\u2014",
+     "$",
+     "1,469"
+    ],
+    [
+     "Risk 4",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,937",
+     "",
+     "\u2014",
+     "",
+     "1,786",
+     "",
+     "3,723",
+     ""
+    ],
+    [
+     "Risk 3",
+     "\u2014",
+     "",
+     "3,561",
+     "",
+     "717",
+     "",
+     "3,058",
+     "",
+     "4,740",
+     "",
+     "6,859",
+     "",
+     "18,935",
+     ""
+    ],
+    [
+     "Risk 2",
+     "2,948",
+     "",
+     "7,993",
+     "",
+     "5,387",
+     "",
+     "6,813",
+     "",
+     "5,284",
+     "",
+     "16,242",
+     "",
+     "44,667",
+     ""
+    ],
+    [
+     "Risk 1",
+     "3,342",
+     "",
+     "4,423",
+     "",
+     "2,556",
+     "",
+     "3,467",
+     "",
+     "7,880",
+     "",
+     "12,889",
+     "",
+     "34,557",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "7,422",
+     "$",
+     "15,977",
+     "$",
+     "8,660",
+     "$",
+     "15,275",
+     "$",
+     "18,241",
+     "$",
+     "37,776",
+     "$",
+     "103,351"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 762,
+    "end_line": 778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Certificate Loans\nCertificate loans do not exceed the cash surrender value at origination. As there is minimal risk of loss related to certificate loans, ACC does not record an allowance for credit losses.\nModifications with Borrowers Experiencing Financial Difficulty\nThere were no modifications of financing receivables with borrowers experiencing financial difficulty by ACC during the three and six months ended June 30, 2023.\n5. Fair Values of Assets and Liabilities\nGAAP defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date; that is, an exit price. The exit price assumes the asset or liability is not exchanged subject to a forced liquidation or distressed sale.\nValuation Hierarchy\nACC categorizes its fair value measurements according to a three-level hierarchy. The hierarchy prioritizes the inputs used by ACC\u2019s valuation techniques. A level is assigned to each fair value measurement based on the lowest level input that is significant to the fair value measurement in its entirety.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 739,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "198,361",
+     "$",
+     "971,744",
+     "$",
+     "\u2014",
+     "$",
+     "1,170,105"
+    ],
+    [
+     "Available-for-Sale securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "1,477,099",
+     "",
+     "13,403",
+     "",
+     "1,490,502",
+     ""
+    ],
+    [
+     "Residential mortgage backed securities",
+     "\u2014",
+     "",
+     "3,053,992",
+     "",
+     "\u2014",
+     "",
+     "3,053,992",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "\u2014",
+     "",
+     "2,074,066",
+     "",
+     "\u2014",
+     "",
+     "2,074,066",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "\u2014",
+     "",
+     "2,396,529",
+     "",
+     "2,299",
+     "",
+     "2,398,828",
+     ""
+    ],
+    [
+     "State and municipal obligations",
+     "\u2014",
+     "",
+     "8,280",
+     "",
+     "\u2014",
+     "",
+     "8,280",
+     ""
+    ],
+    [
+     "U.S. government and agency obligations",
+     "1,944,907",
+     "",
+     "389,765",
+     "",
+     "\u2014",
+     "",
+     "2,334,672",
+     ""
+    ],
+    [
+     "Total Available-for-Sale securities",
+     "1,944,907",
+     "",
+     "9,399,731",
+     "",
+     "15,702",
+     "",
+     "11,360,340",
+     ""
+    ],
+    [
+     "Equity derivative contracts",
+     "76",
+     "",
+     "19,490",
+     "",
+     "\u2014",
+     "",
+     "19,566",
+     ""
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "2,143,344",
+     "$",
+     "10,390,965",
+     "$",
+     "15,702",
+     "$",
+     "12,550,011"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock market certificate embedded derivatives",
+     "$",
+     "\u2014",
+     "$",
+     "9,080",
+     "$",
+     "\u2014",
+     "$",
+     "9,080"
+    ],
+    [
+     "Equity derivative contracts",
+     "\u2014",
+     "",
+     "13,609",
+     "",
+     "\u2014",
+     "",
+     "13,609",
+     ""
+    ],
+    [
+     "Total liabilities at fair value",
+     "$",
+     "\u2014",
+     "$",
+     "22,689",
+     "$",
+     "\u2014",
+     "$",
+     "22,689"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 807,
+    "end_line": 836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "GAAP defines fair value as the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants at the measurement date; that is, an exit price. The exit price assumes the asset or liability is not exchanged subject to a forced liquidation or distressed sale.\nValuation Hierarchy\nACC categorizes its fair value measurements according to a three-level hierarchy. The hierarchy prioritizes the inputs used by ACC\u2019s valuation techniques. A level is assigned to each fair value measurement based on the lowest level input that is significant to the fair value measurement in its entirety.\nThe three levels of the fair value hierarchy are defined as follows:\nLevel 1 Unadjusted quoted prices for identical assets or liabilities in active markets that are accessible at the measurement date.\nLevel 2 Prices or valuations based on observable inputs other than quoted prices in active markets for identical assets and liabilities.\nLevel 3 Prices or valuations that require inputs that are both significant to the fair value measurement and unobservable.\nThe following tables present the balances of assets and liabilities measured at fair value on a recurring basis:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "fair_value",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "\u2014",
+     "$",
+     "1,159,470",
+     "$",
+     "\u2014",
+     "$",
+     "1,159,470"
+    ],
+    [
+     "Available-for-Sale securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "\u2014",
+     "",
+     "783,289",
+     "",
+     "9,653",
+     "",
+     "792,942",
+     ""
+    ],
+    [
+     "Residential mortgage backed securities",
+     "\u2014",
+     "",
+     "2,099,864",
+     "",
+     "\u2014",
+     "",
+     "2,099,864",
+     ""
+    ],
+    [
+     "Commercial mortgage backed securities",
+     "\u2014",
+     "",
+     "1,948,752",
+     "",
+     "\u2014",
+     "",
+     "1,948,752",
+     ""
+    ],
+    [
+     "Asset backed securities",
+     "\u2014",
+     "",
+     "1,450,381",
+     "",
+     "4,891",
+     "",
+     "1,455,272",
+     ""
+    ],
+    [
+     "State and municipal obligations",
+     "\u2014",
+     "",
+     "9,155",
+     "",
+     "\u2014",
+     "",
+     "9,155",
+     ""
+    ],
+    [
+     "U.S. government and agency obligations",
+     "2,062,931",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,062,931",
+     ""
+    ],
+    [
+     "Total Available-for-Sale securities",
+     "2,062,931",
+     "",
+     "6,291,441",
+     "",
+     "14,544",
+     "",
+     "8,368,916",
+     ""
+    ],
+    [
+     "Equity derivative contracts",
+     "\u2014",
+     "",
+     "8,786",
+     "",
+     "\u2014",
+     "",
+     "8,786",
+     ""
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "2,062,931",
+     "$",
+     "7,459,697",
+     "$",
+     "14,544",
+     "$",
+     "9,537,172"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock market certificate embedded derivatives",
+     "$",
+     "\u2014",
+     "$",
+     "3,572",
+     "$",
+     "\u2014",
+     "$",
+     "3,572"
+    ],
+    [
+     "Equity derivative contracts",
+     "8",
+     "",
+     "6,641",
+     "",
+     "\u2014",
+     "",
+     "6,649",
+     ""
+    ],
+    [
+     "Total liabilities at fair value",
+     "$",
+     "8",
+     "$",
+     "10,213",
+     "$",
+     "\u2014",
+     "$",
+     "10,221"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 837,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following tables provide a summary of changes in Level 3 assets measured at fair value on a recurring basis:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "fair_value",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Available-for-Sale Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate Debt Securities",
+     "",
+     "Asset Backed Securities",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 1, 2023",
+     "$",
+     "14,751",
+     "$",
+     "3,815",
+     "$",
+     "18,566",
+     ""
+    ],
+    [
+     "Total gains (losses) included in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "51",
+     "",
+     "67",
+     "",
+     "118",
+     "",
+     "(1)"
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "(31)",
+     "",
+     "(33)",
+     "",
+     "(64)",
+     "",
+     ""
+    ],
+    [
+     "Settlements",
+     "(1,368)",
+     "",
+     "(1,550)",
+     "",
+     "(2,918)",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "$",
+     "13,403",
+     "$",
+     "2,299",
+     "$",
+     "15,702",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in unrealized gains (losses) in net income relating to assets held at June 30, 2023",
+     "$",
+     "51",
+     "$",
+     "67",
+     "$",
+     "118",
+     "(1)"
+    ],
+    [
+     "Changes in unrealized gains (losses) in other comprehensive income (loss) relating to assets held at June 30, 2023",
+     "$",
+     "(31)",
+     "$",
+     "(33)",
+     "$",
+     "(64)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Available-for-Sale Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "The following tables provide a summary of changes in Level 3 assets measured at fair value on a recurring basis:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Available-for-Sale Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate Debt Securities",
+     "",
+     "Asset Backed Securities",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at April 1, 2022",
+     "$",
+     "3",
+     "$",
+     "4,891",
+     "$",
+     "4,894",
+     ""
+    ],
+    [
+     "Total gains (losses) included in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "",
+     "5",
+     "",
+     "5",
+     "",
+     "(1)"
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "\u2014",
+     "",
+     "(5)",
+     "",
+     "(5)",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "$",
+     "3",
+     "$",
+     "4,891",
+     "$",
+     "4,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in unrealized gains (losses) in net income relating to assets held at June 30, 2022",
+     "$",
+     "\u2014",
+     "$",
+     "5",
+     "$",
+     "5",
+     "(1)"
+    ],
+    [
+     "Changes in unrealized gains (losses) in other comprehensive income (loss) relating to assets held at June 30, 2022",
+     "$",
+     "\u2014",
+     "$",
+     "(5)",
+     "$",
+     "(5)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Available-for-Sale Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 891,
+    "end_line": 910
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Available-for-Sale Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate Debt Securities",
+     "",
+     "Asset Backed Securities",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2023",
+     "$",
+     "9,653",
+     "$",
+     "4,891",
+     "$",
+     "14,544",
+     ""
+    ],
+    [
+     "Total gains (losses) included in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "77",
+     "",
+     "88",
+     "",
+     "165",
+     "",
+     "(1)"
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "8",
+     "",
+     "(30)",
+     "",
+     "(22)",
+     "",
+     ""
+    ],
+    [
+     "Purchases",
+     "5,033",
+     "",
+     "\u2014",
+     "",
+     "5,033",
+     "",
+     ""
+    ],
+    [
+     "Settlements",
+     "(1,368)",
+     "",
+     "(2,650)",
+     "",
+     "(4,018)",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2023",
+     "$",
+     "13,403",
+     "$",
+     "2,299",
+     "$",
+     "15,702",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in unrealized gains (losses) in net income relating to assets held at June 30, 2023",
+     "$",
+     "77",
+     "$",
+     "88",
+     "$",
+     "165",
+     "(1)"
+    ],
+    [
+     "Changes in unrealized gains (losses) in other comprehensive income (loss) relating to assets held at June 30, 2023",
+     "$",
+     "8",
+     "$",
+     "(30)",
+     "$",
+     "(22)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Available-for-Sale Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 911,
+    "end_line": 932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Available-for-Sale Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate Debt Securities",
+     "",
+     "Asset Backed Securities",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2022",
+     "$",
+     "6,004",
+     "$",
+     "4,891",
+     "$",
+     "10,895",
+     ""
+    ],
+    [
+     "Total gains (losses) included in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "",
+     "22",
+     "",
+     "22",
+     "",
+     "(1)"
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "(1)",
+     "",
+     "(22)",
+     "",
+     "(23)",
+     "",
+     ""
+    ],
+    [
+     "Settlements",
+     "(6,000)",
+     "",
+     "\u2014",
+     "",
+     "(6,000)",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "$",
+     "3",
+     "$",
+     "4,891",
+     "$",
+     "4,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in unrealized gains (losses) in net income relating to assets held at June 30, 2022",
+     "$",
+     "\u2014",
+     "$",
+     "22",
+     "$",
+     "22",
+     "(1)"
+    ],
+    [
+     "Changes in unrealized gains (losses) in other comprehensive income (loss) relating to assets held at June 30, 2022",
+     "$",
+     "\u2014",
+     "$",
+     "(22)",
+     "$",
+     "(22)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Available-for-Sale Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 935,
+    "end_line": 955
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) Included in Investment income.\nSecurities transferred from Level 3 primarily represent securities with fair values that are now obtained from a third-party pricing service with observable inputs. Securities transferred to Level 3 represent securities with fair values that are now based on a single non-binding broker quote.\nThe following tables provide a summary of the significant unobservable inputs used in the fair value measurements developed by ACC or reasonably available to ACC of Level 3 assets:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value",
+     "",
+     "Valuation Technique",
+     "Unobservable Input",
+     "Range",
+     "Weighted Average"
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities    (private placements)",
+     "$",
+     "13,400",
+     "Discounted cash flow",
+     "Yield/spread to U.S. Treasuries",
+     "1.0%",
+     "1.0%"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 962,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "(1) Included in Investment income.\nSecurities transferred from Level 3 primarily represent securities with fair values that are now obtained from a third-party pricing service with observable inputs. Securities transferred to Level 3 represent securities with fair values that are now based on a single non-binding broker quote.\nThe following tables provide a summary of the significant unobservable inputs used in the fair value measurements developed by ACC or reasonably available to ACC of Level 3 assets:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fair Value",
+     "",
+     "Valuation Technique",
+     "Unobservable Input",
+     "Range",
+     "Weighted Average"
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate debt securities    (private placements)",
+     "$",
+     "9,650",
+     "Discounted cash flow",
+     "Yield/spread to U.S. Treasuries",
+     "1.1%",
+     "1.1%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The weighted average for the yield/spread to U.S. Treasuries for corporate debt securities (private placements) is weighted based on the security\u2019s market value as a percentage of the aggregate market value of the securities.\nLevel 3 measurements not included in the tables above are obtained from non-binding broker quotes where unobservable inputs utilized in the fair value calculation are not reasonably available to ACC.\nUncertainty of Fair Value Measurements\nSignificant increases (decreases) in the yield/spread to U.S. Treasuries used in the fair value measurement of Level 3 corporate debt securities in isolation would have resulted in a significantly lower (higher) fair value measurement.\nDetermination of Fair Value\nACC uses valuation techniques consistent with the market and income approaches to measure the fair value of its assets and liabilities. ACC\u2019s market approach uses prices and other relevant information generated by market transactions involving identical or comparable assets or liabilities. ACC\u2019s income approach uses valuation techniques to convert future projected cash flows to a single discounted present value amount. When applying either approach, ACC maximizes the use of observable inputs and minimizes the use of unobservable inputs.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Syndicated loans",
+     "$",
+     "86,399",
+     "$",
+     "\u2014",
+     "$",
+     "83,685",
+     "$",
+     "1,252",
+     "$",
+     "84,937"
+    ],
+    [
+     "Commercial mortgage loans",
+     "97,069",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "91,143",
+     "",
+     "91,143",
+     ""
+    ],
+    [
+     "Certificate loans",
+     "47",
+     "",
+     "\u2014",
+     "",
+     "47",
+     "",
+     "\u2014",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "Financial Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Certificate reserves",
+     "$",
+     "12,059,791",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "11,986,365",
+     "$",
+     "11,986,365"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1053
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "Derivatives that are measured using quoted prices in active markets, such as derivatives that are exchange-traded, are classified as Level 1 measurements. The variation margin on futures contracts is classified as Level 1. The fair value of derivatives that are traded in less active OTC markets is generally measured using pricing models with market observable inputs such as interest rates and equity index levels. These measurements are classified as Level 2 within the fair value hierarchy and include options. The Company\u2019s nonperformance risk associated with uncollateralized derivative liabilities was immaterial as of both June 30, 2023 and December 31, 2022. See Note 6 and Note 7 for further information on the credit risk of derivative instruments and related collateral.\nFair Value on a Nonrecurring Basis\nDuring the reporting periods, there were no material assets or liabilities measured at fair value on a nonrecurring basis.\nAssets and Liabilities Not Reported at Fair Value\nThe following tables provide the carrying value and the estimated fair value of financial instruments that are not reported at fair value:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Value",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Syndicated loans",
+     "$",
+     "102,330",
+     "$",
+     "\u2014",
+     "$",
+     "96,552",
+     "$",
+     "3,024",
+     "$",
+     "99,576"
+    ],
+    [
+     "Commercial mortgage loans",
+     "102,163",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "95,676",
+     "",
+     "95,676",
+     ""
+    ],
+    [
+     "Certificate loans",
+     "72",
+     "",
+     "\u2014",
+     "",
+     "72",
+     "",
+     "\u2014",
+     "",
+     "72",
+     ""
+    ],
+    [
+     "Financial Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Certificate reserves",
+     "$",
+     "9,309,833",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "9,253,304",
+     "$",
+     "9,253,304"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1054,
+    "end_line": 1069
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "See Note 4 for additional information on syndicated, commercial mortgage and certificate loans. Certificate reserves represent customer deposits for fixed rate certificates and SMC.\n6. Offsetting Assets and Liabilities\nCertain derivative instruments are eligible for offset in the Consolidated Balance Sheets. ACC\u2019s derivative instruments are subject to master netting and collateral arrangements and qualify for offset. A master netting arrangement with a counterparty creates a right of offset for amounts due to and from that same counterparty that is enforceable in the event of a default or bankruptcy. ACC\u2019s policy is to recognize amounts subject to master netting arrangements on a gross basis in the Consolidated Balance Sheets.\nThe following tables present the gross and net information about ACC\u2019s assets subject to master netting arrangements:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Amounts of Recognized Assets",
+     "",
+     "Gross Amounts Offset in the Consolidated Balance Sheets",
+     "",
+     "Amounts of Assets Presented in the Consolidated Balance Sheets",
+     "",
+     "Gross Amounts Not Offset in the Consolidated Balance Sheets",
+     "",
+     "",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Financial Instruments (1)",
+     "",
+     "Cash Collateral",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTC",
+     "$",
+     "19,490",
+     "$",
+     "\u2014",
+     "$",
+     "19,490",
+     "$",
+     "(13,609)",
+     "$",
+     "(5,313)",
+     "$",
+     "568"
+    ],
+    [
+     "Exchange-traded",
+     "76",
+     "",
+     "\u2014",
+     "",
+     "76",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "76",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "19,566",
+     "$",
+     "\u2014",
+     "$",
+     "19,566",
+     "$",
+     "(13,609)",
+     "$",
+     "(5,313)",
+     "$",
+     "644"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1078,
+    "end_line": 1095
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "See Note 4 for additional information on syndicated, commercial mortgage and certificate loans. Certificate reserves represent customer deposits for fixed rate certificates and SMC.\n6. Offsetting Assets and Liabilities\nCertain derivative instruments are eligible for offset in the Consolidated Balance Sheets. ACC\u2019s derivative instruments are subject to master netting and collateral arrangements and qualify for offset. A master netting arrangement with a counterparty creates a right of offset for amounts due to and from that same counterparty that is enforceable in the event of a default or bankruptcy. ACC\u2019s policy is to recognize amounts subject to master netting arrangements on a gross basis in the Consolidated Balance Sheets.\nThe following tables present the gross and net information about ACC\u2019s assets subject to master netting arrangements:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Amounts of Recognized Assets",
+     "",
+     "Gross Amounts Offset in the Consolidated Balance Sheets",
+     "",
+     "Amounts of Assets Presented in the Consolidated Balance Sheets",
+     "",
+     "Gross Amounts Not Offset in the Consolidated Balance Sheets",
+     "",
+     "",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Financial Instruments (1)",
+     "",
+     "Cash Collateral",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTC",
+     "$",
+     "8,786",
+     "$",
+     "\u2014",
+     "$",
+     "8,786",
+     "$",
+     "(6,641)",
+     "$",
+     "(1,893)",
+     "$",
+     "252"
+    ],
+    [
+     "Total",
+     "$",
+     "8,786",
+     "$",
+     "\u2014",
+     "$",
+     "8,786",
+     "$",
+     "(6,641)",
+     "$",
+     "(1,893)",
+     "$",
+     "252"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1096,
+    "end_line": 1112
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) Represents the amount of assets that could be offset by liabilities with the same counterparty under master netting or similar arrangements that management elects not to offset on the Consolidated Balance Sheets.\nThe following tables present the gross and net information about ACC\u2019s liabilities subject to master netting agreements:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Amounts of Recognized Liabilities",
+     "",
+     "Gross Amounts Offset in the Consolidated Balance Sheets",
+     "",
+     "Amounts of Liabilities Presented in the Consolidated Balance Sheets",
+     "",
+     "Gross Amounts Not Offset in the Consolidated Balance Sheets",
+     "",
+     "",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Financial Instruments (1)",
+     "",
+     "Cash Collateral",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTC",
+     "$",
+     "13,609",
+     "$",
+     "\u2014",
+     "$",
+     "13,609",
+     "$",
+     "(13,609)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "13,609",
+     "$",
+     "\u2014",
+     "$",
+     "13,609",
+     "$",
+     "(13,609)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "June 30, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1119,
+    "end_line": 1135
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "(1) Represents the amount of assets that could be offset by liabilities with the same counterparty under master netting or similar arrangements that management elects not to offset on the Consolidated Balance Sheets.\nThe following tables present the gross and net information about ACC\u2019s liabilities subject to master netting agreements:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Amounts of Recognized Liabilities",
+     "",
+     "Gross Amounts Offset in the Consolidated Balance Sheets",
+     "",
+     "Amounts of Liabilities Presented in the Consolidated Balance Sheets",
+     "",
+     "Gross Amounts Not Offset in the Consolidated Balance Sheets",
+     "",
+     "",
+     "",
+     "Net Amount",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Financial Instruments (1)",
+     "",
+     "Cash Collateral",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTC",
+     "$",
+     "6,641",
+     "$",
+     "\u2014",
+     "$",
+     "6,641",
+     "$",
+     "(6,641)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exchange-traded",
+     "8",
+     "",
+     "\u2014",
+     "",
+     "8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "6,649",
+     "$",
+     "\u2014",
+     "$",
+     "6,649",
+     "$",
+     "(6,641)",
+     "$",
+     "\u2014",
+     "$",
+     "8"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1136,
+    "end_line": 1153
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) Represents the amount of liabilities that could be offset by assets with the same counterparty under master netting or similar arrangements that management elects not to offset on the Consolidated Balance Sheets.\nIn the tables above, the amount of assets or liabilities presented are offset first by financial instruments that have the right of offset under master netting or similar arrangements, then any remaining amount is reduced by the amount of cash and securities collateral. The actual collateral may be greater than amounts presented in the tables.\nWhen the fair value of collateral accepted by ACC is less than the amount due to ACC, there is a risk of loss if the counterparty fails to perform or provide additional collateral. To mitigate this risk, ACC monitors collateral values regularly and requires additional collateral when necessary. When the value of collateral pledged by ACC declines, it may be required to post additional collateral.\nFreestanding derivative instruments are reflected in Derivative assets and Derivative liabilities. Cash collateral accepted by ACC is reflected in Other liabilities. See Note 7 for additional disclosures related to ACC\u2019s derivative instruments.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 51,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notional",
+     "",
+     "Gross Fair Value",
+     "",
+     "",
+     "",
+     "Notional",
+     "",
+     "Gross Fair Value",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     "",
+     "",
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivatives not designated as hedging instruments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity contracts (1)",
+     "$",
+     "262,314",
+     "$",
+     "19,566",
+     "$",
+     "13,609",
+     "$",
+     "283,681",
+     "$",
+     "8,786",
+     "$",
+     "6,649"
+    ],
+    [
+     "Embedded derivatives",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock market certificates (2)",
+     "N/A",
+     "",
+     "\u2014",
+     "",
+     "9,080",
+     "",
+     "N/A",
+     "",
+     "\u2014",
+     "",
+     "3,572",
+     ""
+    ],
+    [
+     "Total derivatives",
+     "$",
+     "262,314",
+     "$",
+     "19,566",
+     "$",
+     "22,689",
+     "$",
+     "283,681",
+     "$",
+     "8,786",
+     "$",
+     "10,221"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1168,
+    "end_line": 1184
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "When the fair value of collateral accepted by ACC is less than the amount due to ACC, there is a risk of loss if the counterparty fails to perform or provide additional collateral. To mitigate this risk, ACC monitors collateral values regularly and requires additional collateral when necessary. When the value of collateral pledged by ACC declines, it may be required to post additional collateral.\nFreestanding derivative instruments are reflected in Derivative assets and Derivative liabilities. Cash collateral accepted by ACC is reflected in Other liabilities. See Note 7 for additional disclosures related to ACC\u2019s derivative instruments.\n7. Derivatives and Hedging Activities\nDerivative instruments enable ACC to manage its exposure to various market risks. The value of such instruments is derived from an underlying variable or multiple variables, including equity and interest rate indices or prices. ACC primarily enters into derivative agreements for risk management purposes related to ACC\u2019s products.\nACC uses derivatives as economic hedges of equity risk related to SMC. ACC does not designate any derivatives for hedge accounting. The following table presents the notional value and the gross fair value of derivative instruments, including embedded derivatives:",
+   "prose_after": "N/A Not applicable\n(1) The gross fair value of equity contracts is included in Derivative assets and Derivative liabilities.\n(2) The gross fair value of SMC embedded derivatives is included in Certificate reserves.\nSee Note 5 for additional information regarding ACC\u2019s fair value measurement of derivative instruments.\nAs of June 30, 2023 and December 31, 2022, investment securities with a fair value of $391 thousand and $182 thousand, respectively, were pledged to meet contractual obligations under derivative contracts.\nThe following table presents a summary of the impact of derivatives not designated as hedging instruments, including embedded derivatives, on the Consolidated Statements of Operations:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1115,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 51,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Derivatives not designated as hedging instruments",
+     "Location of Gain (Loss) on Derivatives Recognized in Income",
+     "Amount of Gain (Loss) on Derivatives Recognized in Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "",
+     "Six Months Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock market certificates",
+     "Net provision for certificate reserves",
+     "$",
+     "1,805",
+     "$",
+     "(413)",
+     "$",
+     "2,765",
+     "$",
+     "(455)"
+    ],
+    [
+     "Stock market certificates embedded derivatives",
+     "Net provision for certificate reserves",
+     "(1,853)",
+     "",
+     "416",
+     "",
+     "(3,783)",
+     "",
+     "423",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "(48)",
+     "$",
+     "3",
+     "$",
+     "(1,018)",
+     "$",
+     "(32)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1199,
+    "end_line": 1215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS (UNAUDITED)"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "N/A Not applicable\n(1) The gross fair value of equity contracts is included in Derivative assets and Derivative liabilities.\n(2) The gross fair value of SMC embedded derivatives is included in Certificate reserves.\nSee Note 5 for additional information regarding ACC\u2019s fair value measurement of derivative instruments.\nAs of June 30, 2023 and December 31, 2022, investment securities with a fair value of $391 thousand and $182 thousand, respectively, were pledged to meet contractual obligations under derivative contracts.\nThe following table presents a summary of the impact of derivatives not designated as hedging instruments, including embedded derivatives, on the Consolidated Statements of Operations:",
+   "prose_after": "Ameriprise SMC offer a return based upon the relative change in a major stock market index between the beginning and end of the certificate\u2019s term. The SMC product contains an embedded derivative. The equity based return of the certificate must be separated from the host contract and accounted for as a derivative instrument. As a result of fluctuations in equity markets and the corresponding changes in value of the embedded derivative, the amount of expenses incurred by ACC related to the SMC product will positively or negatively impact reported earnings. As a means of hedging its obligations under the provisions for these certificates, ACC purchases and writes call options on the S&P 500\u00ae Index. ACC views this strategy as a prudent management of equity market sensitivity, such that earnings are not exposed to undue risk presented by changes in equity market levels. ACC also purchases futures on the S&P 500\u00ae Index to economically hedge its obligations. The futures are marked-to-market daily and exchange traded, exposing ACC to minimal counterparty risk.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1193,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 53,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3(a)",
+     "Amended and Restated Certificate of Incorporation of American Express Certificate Company, dated August 1, 2005, filed electronically on or about March 10, 2006 as Exhibit 3(a) to Registrant\u2019s Form 10-K is incorporated by reference."
+    ],
+    [
+     "3(b)",
+     "By-Laws of Ameriprise Certificate Company, filed electronically on or about November 5, 2010 as Exhibit 3(b) to Registrant\u2019s Form 10-Q, are incorporated herein by reference."
+    ],
+    [
+     "31.1*",
+     "Certification of Abu M. Arif pursuant to Rule 13a-14(a) promulgated under the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "31.2*",
+     "Certification of James R. Hill pursuant to Rule 13a-14(a) promulgated under the Securities Exchange Act of 1934, as amended."
+    ],
+    [
+     "32*",
+     "Certification of Abu M. Arif and James R. Hill pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "* Filed electronically herewithin.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1330,
+    "end_line": 1343
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "ACC\u2019s management, under the supervision and with the participation of its Chief Executive Officer and Chief Financial Officer, evaluated the effectiveness of ACC\u2019s disclosure controls and procedures as of the end of the period covered by this report. Based upon that evaluation, ACC\u2019s Chief Executive Officer and Chief Financial Officer have concluded that ACC\u2019s disclosure controls and procedures were effective at a reasonable level of assurance as of June 30, 2023.\nChanges in Internal Control over Financial Reporting\nThere have not been any changes in ACC\u2019s internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) during the fiscal quarter to which this report relates that have materially affected, or are reasonably likely to materially affect, ACC\u2019s internal control over financial reporting.\nPART II. OTHER INFORMATION\nITEM 1. LEGAL PROCEEDINGS\nThe information set forth in Note 8 to the Consolidated Financial Statements in Part I, Item 1 is incorporated herein by reference.\nITEM 1A. RISK FACTORS\nThere have been no material changes in the risk factors provided in Part I, Item 1A of ACC\u2019s 2022 10-K.\nITEM 6. EXHIBITS\nThe following exhibits are filed as part of this Quarterly Report:",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nAMERIPRISE CERTIFICATE COMPANY (Registrant)",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1314,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 53,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 55,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date:",
+     "August 8, 2023",
+     "By:",
+     "/s/ Abu M. Arif"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Abu M. Arif"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1352,
+    "end_line": 1358
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nAMERIPRISE CERTIFICATE COMPANY (Registrant)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1366,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 55,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 56,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date:",
+     "August 8, 2023",
+     "By:",
+     "/s/ James R. Hill"
+    ],
+    [
+     "",
+     "",
+     "",
+     "James R. Hill"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1359,
+    "end_line": 1365
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes                                                21"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1366,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 56,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

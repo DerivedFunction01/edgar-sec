@@ -1,0 +1,5202 @@
+{
+ "accession": "0001193125-26-339017",
+ "cik": "0000096271",
+ "form": "10-Q",
+ "filing_date": "2026-08-07",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ck0000096271-20260630.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Commission\n\nFile No",
+     "Exact name of each registrant as specified in its charter, state of\n\nincorporation, address of principal executive offices, telephone number",
+     "I.R.S. Employer\n\nIdentification Number"
+    ],
+    [
+     "1-5007",
+     "TAMPA ELECTRIC COMPANY",
+     "59-0475140"
+    ],
+    [
+     "",
+     "(a Florida corporation)\n\nMidtown East Tower\n\n3600 Midtown Drive\n\nTampa, Florida 33607\n\n(813) 228-1111",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "-\nUNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2026\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to",
+   "prose_after": "Securities registered or to be registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered or to be registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] NO [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] NO [ ]\nIndicate by check mark whether Tampa Electric Company is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Term",
+     "Meaning"
+    ],
+    [
+     "AFUDC",
+     "allowance for funds used during construction"
+    ],
+    [
+     "AFUDC-debt",
+     "debt component of allowance for funds used during construction"
+    ],
+    [
+     "AFUDC-equity",
+     "equity component of allowance for funds used during construction"
+    ],
+    [
+     "APBO",
+     "accumulated postretirement benefit obligation"
+    ],
+    [
+     "ARO",
+     "asset retirement obligation"
+    ],
+    [
+     "ASC",
+     "Accounting Standards Codification"
+    ],
+    [
+     "ASU",
+     "Accounting Standards Update"
+    ],
+    [
+     "CCRs",
+     "coal combustion residuals"
+    ],
+    [
+     "CO2",
+     "carbon dioxide"
+    ],
+    [
+     "Emera",
+     "Emera Inc., a geographically diverse energy and services company headquartered in Nova Scotia, Canada and the indirect parent company of Tampa Electric Company"
+    ],
+    [
+     "EPA",
+     "U.S. Environmental Protection Agency"
+    ],
+    [
+     "ERISA",
+     "Employee Retirement Income Security Act"
+    ],
+    [
+     "EUSHI",
+     "Emera US Holdings Inc., a wholly owned subsidiary of Emera, which is the sole shareholder of TECO Holdings\u2019 common stock as of April 1, 2024, and the sole shareholder of TECO Energy's common stock prior to April 1, 2024"
+    ],
+    [
+     "FASB",
+     "Financial Accounting Standards Board"
+    ],
+    [
+     "FDEP",
+     "Florida Department of Environmental Protection"
+    ],
+    [
+     "FERC",
+     "Federal Energy Regulatory Commission"
+    ],
+    [
+     "FPSC",
+     "Florida Public Service Commission"
+    ],
+    [
+     "GHG",
+     "greenhouse gas"
+    ],
+    [
+     "IRS",
+     "Internal Revenue Service"
+    ],
+    [
+     "IT",
+     "information technology"
+    ],
+    [
+     "ITCs",
+     "investment tax credits"
+    ],
+    [
+     "MD&A",
+     "the section of this report entitled Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    ],
+    [
+     "MGP",
+     "manufactured gas plant"
+    ],
+    [
+     "MMBTU",
+     "one million British Thermal Units"
+    ],
+    [
+     "MW",
+     "megawatt(s)"
+    ],
+    [
+     "MWH",
+     "megawatt-hour(s)"
+    ],
+    [
+     "NAV",
+     "net asset value"
+    ],
+    [
+     "Note",
+     "Note to financial statements"
+    ],
+    [
+     "NPNS",
+     "normal purchase normal sale"
+    ],
+    [
+     "O&M expenses",
+     "operations and maintenance expenses"
+    ],
+    [
+     "OCI",
+     "other comprehensive income"
+    ],
+    [
+     "OBBBA",
+     "One Big Beautiful Bill Act"
+    ],
+    [
+     "OPEB",
+     "other postemployment benefits"
+    ],
+    [
+     "Parent",
+     "the direct parent company of Tampa Electric Company, which is TECO Holdings, Inc. as of April 1, 2024, and TECO Energy, Inc., prior to April 1, 2024"
+    ],
+    [
+     "PBO",
+     "projected benefit obligation"
+    ],
+    [
+     "PGS",
+     "Peoples Gas System, the former gas division of Tampa Electric Company"
+    ],
+    [
+     "PGSI",
+     "Peoples Gas System, Inc."
+    ],
+    [
+     "PPA",
+     "power purchase agreement"
+    ],
+    [
+     "PP&E",
+     "property, plant and equipment"
+    ],
+    [
+     "PTCs",
+     "production tax credits"
+    ],
+    [
+     "ROE",
+     "return on common equity"
+    ],
+    [
+     "Regulatory ROE",
+     "return on common equity as determined for regulatory purposes"
+    ],
+    [
+     "ROU",
+     "right-of-use"
+    ],
+    [
+     "S&P",
+     "Standard and Poor\u2019s"
+    ],
+    [
+     "SEC",
+     "U.S. Securities and Exchange Commission"
+    ],
+    [
+     "SERP",
+     "Supplemental Executive Retirement Plan"
+    ],
+    [
+     "TEC",
+     "Tampa Electric Company"
+    ],
+    [
+     "TECO Energy",
+     "TECO Energy, Inc., the direct parent company of Tampa Electric Company prior to April 1, 2024"
+    ],
+    [
+     "TECO Holdings",
+     "TECO Holdings, Inc., the direct parent company of Tampa Electric Company as of April 1, 2024"
+    ],
+    [
+     "U.S. GAAP",
+     "generally accepted accounting principles in the United States"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 122
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Emerging growth company    [ ]\nIf an emerging growth company, indicate by check mark whether Tampa Electric Company has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether Tampa Electric Company is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nAs of August 6, 2026, there were 10 shares of Tampa Electric Company\u2019s common stock issued and outstanding, all of which were held, beneficially and of record, by TECO Holdings, Inc.\nTampa Electric Company meets the conditions set forth in General Instruction (H)(1)(a) and (b) of Form 10-Q and is therefore filing this form with the reduced disclosure format specified in General Instruction H(2) of Form 10-Q.\nACRONYMS\nAcronyms used in this and other filings with the U.S. Securities and Exchange Commission in 2026 and 2025 include the following:",
+   "prose_after": "CAUTIONARY STATEMENTS REGARDING FORWARD-LOOKING INFORMATION\nThis Form 10-Q contains certain forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995 that are subject to risks and uncertainties. Forward-looking statements generally can be identified by words such as \"anticipates,\" \"believes,\" \"estimates,\" \"expects,\" \"intends,\" \"plans,\" \"predicts,\" \"projects,\" \"will be,\" \"will continue,\" \"may,\" \"could,\" \"will likely result,\" and similar expressions. The factors that could cause actual results to differ materially from the forward-looking statements made by TEC include those factors discussed herein, including those factors discussed with respect to TEC in (1) TEC\u2019s 2025 Annual Report on Form 10-K in (a) Part I, Item 1A. Risk Factors, (b) Part II, Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and (c) Part II, Item 8. Financial Statements: Note 8, Commitments and Contingencies; (2) this Quarterly Report on Form 10-Q in (a) Part I, Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and (b) Part I, Item 1. Financial Statements: Note 8, Commitments and Contingencies, and (3) other factors discussed in filings with the SEC by TEC. Readers are cautioned not to place undue reliance on these forward-looking statements, which apply only as of the date of this Report. TEC does not undertake any obligation to publicly release any revision to its forward-looking statements to reflect events or circumstances after the date of this Form 10-Q.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 123,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Property, plant and equipment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Utility plant, at original costs\n\n",
+     "$",
+     "16,509\n\n",
+     "",
+     "$",
+     "15,787\n\n",
+     ""
+    ],
+    [
+     "Accumulated depreciation\n\n",
+     "",
+     "(3,789)",
+     "",
+     "",
+     "(3,626)",
+     ""
+    ],
+    [
+     "Utility plant, net\n\n",
+     "",
+     "12,720\n\n",
+     "",
+     "",
+     "12,161\n\n",
+     ""
+    ],
+    [
+     "Other property\n\n",
+     "",
+     "28\n\n",
+     "",
+     "",
+     "20\n\n",
+     ""
+    ],
+    [
+     "Total property, plant and equipment, net\n\n",
+     "",
+     "12,748\n\n",
+     "",
+     "",
+     "12,181\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents\n\n",
+     "",
+     "18\n\n",
+     "",
+     "",
+     "3\n\n",
+     ""
+    ],
+    [
+     "Receivables, less allowance for credit losses of $1 and $1 at June 30, 2026 and December 31, 2025, respectively\n\n",
+     "",
+     "372\n\n",
+     "",
+     "",
+     "258\n\n",
+     ""
+    ],
+    [
+     "Due from affiliates\n\n",
+     "",
+     "16\n\n",
+     "",
+     "",
+     "17\n\n",
+     ""
+    ],
+    [
+     "Inventories, at average cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel\n\n",
+     "",
+     "26\n\n",
+     "",
+     "",
+     "38\n\n",
+     ""
+    ],
+    [
+     "Materials and supplies\n\n",
+     "",
+     "210\n\n",
+     "",
+     "",
+     "216\n\n",
+     ""
+    ],
+    [
+     "Regulatory assets\n\n",
+     "",
+     "109\n\n",
+     "",
+     "",
+     "226\n\n",
+     ""
+    ],
+    [
+     "Prepayments and other current assets\n\n",
+     "",
+     "38\n\n",
+     "",
+     "",
+     "38\n\n",
+     ""
+    ],
+    [
+     "Total current assets\n\n",
+     "",
+     "789\n\n",
+     "",
+     "",
+     "796\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Regulatory assets\n\n",
+     "",
+     "966\n\n",
+     "",
+     "",
+     "956\n\n",
+     ""
+    ],
+    [
+     "Other\n\n",
+     "",
+     "150\n\n",
+     "",
+     "",
+     "138\n\n",
+     ""
+    ],
+    [
+     "Total other assets\n\n",
+     "",
+     "1,116\n\n",
+     "",
+     "",
+     "1,094\n\n",
+     ""
+    ],
+    [
+     "Total assets\n\n",
+     "$",
+     "14,653\n\n",
+     "",
+     "$",
+     "14,071\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 140,
+    "end_line": 193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "This Form 10-Q contains certain forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995 that are subject to risks and uncertainties. Forward-looking statements generally can be identified by words such as \"anticipates,\" \"believes,\" \"estimates,\" \"expects,\" \"intends,\" \"plans,\" \"predicts,\" \"projects,\" \"will be,\" \"will continue,\" \"may,\" \"could,\" \"will likely result,\" and similar expressions. The factors that could cause actual results to differ materially from the forward-looking statements made by TEC include those factors discussed herein, including those factors discussed with respect to TEC in (1) TEC\u2019s 2025 Annual Report on Form 10-K in (a) Part I, Item 1A. Risk Factors, (b) Part II, Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and (c) Part II, Item 8. Financial Statements: Note 8, Commitments and Contingencies; (2) this Quarterly Report on Form 10-Q in (a) Part I, Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and (b) Part I, Item 1. Financial Statements: Note 8, Commitments and Contingencies, and (3) other factors discussed in filings with the SEC by TEC. Readers are cautioned not to place undue reliance on these forward-looking statements, which apply only as of the date of this Report. TEC does not undertake any obligation to publicly release any revision to its forward-looking statements to reflect events or circumstances after the date of this Form 10-Q.\nAll references to \u201cdollars\u201d and \u201c$\u201d in this and other filings with the U.S. Securities and Exchange Commission are references to U.S. dollars, unless specifically indicated otherwise.\nPART I. FINANCIAL INFORMATION\nItem 1. FINANCIAL STATEMENTS\nCondensed Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Balance Sheets - continued",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 138,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 196,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Capitalization",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Capitalization",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock\n\n",
+     "$",
+     "6,015\n\n",
+     "",
+     "$",
+     "5,635\n\n",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss\n\n",
+     "",
+     "(1)",
+     "",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Retained earnings\n\n",
+     "",
+     "322\n\n",
+     "",
+     "",
+     "219\n\n",
+     ""
+    ],
+    [
+     "Total capital\n\n",
+     "",
+     "6,336\n\n",
+     "",
+     "",
+     "5,853\n\n",
+     ""
+    ],
+    [
+     "Long-term debt\n\n",
+     "",
+     "4,533\n\n",
+     "",
+     "",
+     "4,531\n\n",
+     ""
+    ],
+    [
+     "Total capitalization\n\n",
+     "",
+     "10,869\n\n",
+     "",
+     "",
+     "10,384\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable\n\n",
+     "",
+     "801\n\n",
+     "",
+     "",
+     "773\n\n",
+     ""
+    ],
+    [
+     "Accounts payable\n\n",
+     "",
+     "371\n\n",
+     "",
+     "",
+     "366\n\n",
+     ""
+    ],
+    [
+     "Due to affiliates\n\n",
+     "",
+     "31\n\n",
+     "",
+     "",
+     "15\n\n",
+     ""
+    ],
+    [
+     "Customer deposits\n\n",
+     "",
+     "134\n\n",
+     "",
+     "",
+     "129\n\n",
+     ""
+    ],
+    [
+     "Regulatory liabilities\n\n",
+     "",
+     "92\n\n",
+     "",
+     "",
+     "114\n\n",
+     ""
+    ],
+    [
+     "Accrued interest\n\n",
+     "",
+     "43\n\n",
+     "",
+     "",
+     "42\n\n",
+     ""
+    ],
+    [
+     "Accrued taxes\n\n",
+     "",
+     "71\n\n",
+     "",
+     "",
+     "14\n\n",
+     ""
+    ],
+    [
+     "Other\n\n",
+     "",
+     "46\n\n",
+     "",
+     "",
+     "60\n\n",
+     ""
+    ],
+    [
+     "Total current liabilities\n\n",
+     "",
+     "1,589\n\n",
+     "",
+     "",
+     "1,513\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred income taxes\n\n",
+     "",
+     "969\n\n",
+     "",
+     "",
+     "969\n\n",
+     ""
+    ],
+    [
+     "Regulatory liabilities\n\n",
+     "",
+     "738\n\n",
+     "",
+     "",
+     "727\n\n",
+     ""
+    ],
+    [
+     "Investment tax credits\n\n",
+     "",
+     "238\n\n",
+     "",
+     "",
+     "234\n\n",
+     ""
+    ],
+    [
+     "Finance lease liabilities - long-term\n\n",
+     "",
+     "48\n\n",
+     "",
+     "",
+     "48\n\n",
+     ""
+    ],
+    [
+     "Deferred credits and other liabilities\n\n",
+     "",
+     "202\n\n",
+     "",
+     "",
+     "196\n\n",
+     ""
+    ],
+    [
+     "Total long-term liabilities\n\n",
+     "",
+     "2,195\n\n",
+     "",
+     "",
+     "2,174\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (see Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and capitalization\n\n",
+     "$",
+     "14,653\n\n",
+     "",
+     "$",
+     "14,071\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 202,
+    "end_line": 267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Balance Sheets - continued",
+   "prose_after": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Income and Comprehensive Income",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 200,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(millions)",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Electric\n\n",
+     "$",
+     "862\n\n",
+     "",
+     "$",
+     "839\n\n",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel\n\n",
+     "",
+     "134\n\n",
+     "",
+     "",
+     "120\n\n",
+     ""
+    ],
+    [
+     "Purchased power\n\n",
+     "",
+     "47\n\n",
+     "",
+     "",
+     "68\n\n",
+     ""
+    ],
+    [
+     "Operations and maintenance\n\n",
+     "",
+     "207\n\n",
+     "",
+     "",
+     "206\n\n",
+     ""
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "",
+     "137\n\n",
+     "",
+     "",
+     "124\n\n",
+     ""
+    ],
+    [
+     "Taxes, other than income\n\n",
+     "",
+     "71\n\n",
+     "",
+     "",
+     "65\n\n",
+     ""
+    ],
+    [
+     "Total expenses\n\n",
+     "",
+     "596\n\n",
+     "",
+     "",
+     "583\n\n",
+     ""
+    ],
+    [
+     "Income from operations\n\n",
+     "",
+     "266\n\n",
+     "",
+     "",
+     "256\n\n",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for equity funds used during construction\n\n",
+     "",
+     "8\n\n",
+     "",
+     "",
+     "11\n\n",
+     ""
+    ],
+    [
+     "Other income, net\n\n",
+     "",
+     "4\n\n",
+     "",
+     "",
+     "6\n\n",
+     ""
+    ],
+    [
+     "Total other income\n\n",
+     "",
+     "12\n\n",
+     "",
+     "",
+     "17\n\n",
+     ""
+    ],
+    [
+     "Interest charges",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense\n\n",
+     "",
+     "62\n\n",
+     "",
+     "",
+     "57\n\n",
+     ""
+    ],
+    [
+     "Allowance for borrowed funds used during construction\n\n",
+     "",
+     "(3)",
+     "",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Total interest charges\n\n",
+     "",
+     "59\n\n",
+     "",
+     "",
+     "52\n\n",
+     ""
+    ],
+    [
+     "Income before provision for income taxes\n\n",
+     "",
+     "219\n\n",
+     "",
+     "",
+     "221\n\n",
+     ""
+    ],
+    [
+     "Provision for income taxes\n\n",
+     "",
+     "30\n\n",
+     "",
+     "",
+     "33\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     "$",
+     "189\n\n",
+     "",
+     "$",
+     "188\n\n",
+     ""
+    ],
+    [
+     "Comprehensive income\n\n",
+     "$",
+     "189\n\n",
+     "",
+     "$",
+     "188\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 276,
+    "end_line": 332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Income and Comprehensive Income",
+   "prose_after": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Income and Comprehensive Income",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 274,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 335,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(millions)",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Electric\n\n",
+     "$",
+     "1,664\n\n",
+     "",
+     "$",
+     "1,488\n\n",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel\n\n",
+     "",
+     "310\n\n",
+     "",
+     "",
+     "243\n\n",
+     ""
+    ],
+    [
+     "Purchased power\n\n",
+     "",
+     "85\n\n",
+     "",
+     "",
+     "106\n\n",
+     ""
+    ],
+    [
+     "Operations and maintenance\n\n",
+     "",
+     "400\n\n",
+     "",
+     "",
+     "348\n\n",
+     ""
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "",
+     "271\n\n",
+     "",
+     "",
+     "246\n\n",
+     ""
+    ],
+    [
+     "Taxes, other than income\n\n",
+     "",
+     "135\n\n",
+     "",
+     "",
+     "121\n\n",
+     ""
+    ],
+    [
+     "Total expenses\n\n",
+     "",
+     "1,201\n\n",
+     "",
+     "",
+     "1,064\n\n",
+     ""
+    ],
+    [
+     "Income from operations\n\n",
+     "",
+     "463\n\n",
+     "",
+     "",
+     "424\n\n",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for equity funds used during construction\n\n",
+     "",
+     "15\n\n",
+     "",
+     "",
+     "21\n\n",
+     ""
+    ],
+    [
+     "Other income, net\n\n",
+     "",
+     "10\n\n",
+     "",
+     "",
+     "12\n\n",
+     ""
+    ],
+    [
+     "Total other income\n\n",
+     "",
+     "25\n\n",
+     "",
+     "",
+     "33\n\n",
+     ""
+    ],
+    [
+     "Interest charges",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense\n\n",
+     "",
+     "124\n\n",
+     "",
+     "",
+     "112\n\n",
+     ""
+    ],
+    [
+     "Allowance for borrowed funds used during construction\n\n",
+     "",
+     "(6)",
+     "",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Total interest charges\n\n",
+     "",
+     "118\n\n",
+     "",
+     "",
+     "104\n\n",
+     ""
+    ],
+    [
+     "Income before provision for income taxes\n\n",
+     "",
+     "370\n\n",
+     "",
+     "",
+     "353\n\n",
+     ""
+    ],
+    [
+     "Provision for income taxes\n\n",
+     "",
+     "50\n\n",
+     "",
+     "",
+     "51\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     "$",
+     "320\n\n",
+     "",
+     "$",
+     "302\n\n",
+     ""
+    ],
+    [
+     "Comprehensive income\n\n",
+     "$",
+     "320\n\n",
+     "",
+     "$",
+     "302\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 341,
+    "end_line": 397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Income and Comprehensive Income",
+   "prose_after": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 339,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 400,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(millions)",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     "$",
+     "320\n\n",
+     "",
+     "$",
+     "302\n\n",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "",
+     "271\n\n",
+     "",
+     "",
+     "246\n\n",
+     ""
+    ],
+    [
+     "Deferred income taxes and investment tax credits\n\n",
+     "",
+     "(13)",
+     "",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "Allowance for equity funds used during construction\n\n",
+     "",
+     "(15)",
+     "",
+     "",
+     "(21)",
+     ""
+    ],
+    [
+     "Deferred recovery clauses\n\n",
+     "",
+     "(16)",
+     "",
+     "",
+     "(72)",
+     ""
+    ],
+    [
+     "Regulatory assets and liabilities\n\n",
+     "",
+     "130\n\n",
+     "",
+     "",
+     "95\n\n",
+     ""
+    ],
+    [
+     "Pension and postretirement asset and liabilities\n\n",
+     "",
+     "(4)",
+     "",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Other\n\n",
+     "",
+     "7\n\n",
+     "",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Changes in working capital:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Receivables, less allowance for credit losses\n\n",
+     "",
+     "(113)",
+     "",
+     "",
+     "(115)",
+     ""
+    ],
+    [
+     "Inventories\n\n",
+     "",
+     "16\n\n",
+     "",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "Taxes accrued\n\n",
+     "",
+     "57\n\n",
+     "",
+     "",
+     "50\n\n",
+     ""
+    ],
+    [
+     "Interest accrued\n\n",
+     "",
+     "1\n\n",
+     "",
+     "",
+     "11\n\n",
+     ""
+    ],
+    [
+     "Accounts payable\n\n",
+     "",
+     "(12)",
+     "",
+     "",
+     "(224)",
+     ""
+    ],
+    [
+     "Other\n\n",
+     "",
+     "1\n\n",
+     "",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "Cash flows from operating activities\n\n",
+     "",
+     "630\n\n",
+     "",
+     "",
+     "259\n\n",
+     ""
+    ],
+    [
+     "Cash flows used in investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures\n\n",
+     "",
+     "(814)",
+     "",
+     "",
+     "(768)",
+     ""
+    ],
+    [
+     "Net proceeds from sale of assets\n\n",
+     "",
+     "7\n\n",
+     "",
+     "",
+     "19\n\n",
+     ""
+    ],
+    [
+     "Cash flows used in investing activities\n\n",
+     "",
+     "(807)",
+     "",
+     "",
+     "(749)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity contributions from Parent\n\n",
+     "",
+     "380\n\n",
+     "",
+     "",
+     "275\n\n",
+     ""
+    ],
+    [
+     "Proceeds from long-term debt issuance\n\n",
+     "",
+     "0\n\n",
+     "",
+     "",
+     "593\n\n",
+     ""
+    ],
+    [
+     "Net increase (decrease) in short-term debt (maturities of 90 days or less)\n\n",
+     "",
+     "28\n\n",
+     "",
+     "",
+     "(172)",
+     ""
+    ],
+    [
+     "Dividends to Parent\n\n",
+     "",
+     "(216)",
+     "",
+     "",
+     "(198)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities\n\n",
+     "",
+     "192\n\n",
+     "",
+     "",
+     "498\n\n",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents\n\n",
+     "",
+     "15\n\n",
+     "",
+     "",
+     "8\n\n",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period\n\n",
+     "",
+     "3\n\n",
+     "",
+     "",
+     "4\n\n",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period\n\n",
+     "$",
+     "18\n\n",
+     "",
+     "$",
+     "12\n\n",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in accrued capital expenditures\n\n",
+     "$",
+     "23\n\n",
+     "",
+     "$",
+     "19\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 406,
+    "end_line": 480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Capital",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 404,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 483,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Common",
+     "",
+     "Retained",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "(millions, except share amounts)",
+     "Shares",
+     "",
+     "Stock",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "Capital",
+     "",
+     ""
+    ],
+    [
+     "Three months June 30, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2026\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "5,835\n\n",
+     "$",
+     "265\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "6,099\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "189\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "189\n\n",
+     ""
+    ],
+    [
+     "Equity contributions from Parent\n\n",
+     " ",
+     "",
+     "",
+     "180\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "180\n\n",
+     ""
+    ],
+    [
+     "Dividends to Parent\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(131)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(131)",
+     ""
+    ],
+    [
+     "Other\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(1)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2026\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "6,015\n\n",
+     "$",
+     "322\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "6,336\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three months ended June 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at March 31, 2025\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "5,255\n\n",
+     "$",
+     "248\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "5,502\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "188\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "188\n\n",
+     ""
+    ],
+    [
+     "Equity contributions from Parent\n\n",
+     " ",
+     "",
+     "",
+     "125\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "125\n\n",
+     ""
+    ],
+    [
+     "Dividends to Parent\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(114)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(114)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2025\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "5,380\n\n",
+     "$",
+     "322\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "5,701\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Six months ended June 30, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2025\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "5,635\n\n",
+     "$",
+     "219\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "5,853\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "320\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "320\n\n",
+     ""
+    ],
+    [
+     "Equity contributions from Parent\n\n",
+     " ",
+     "",
+     "",
+     "380\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "380\n\n",
+     ""
+    ],
+    [
+     "Dividends to Parent\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(216)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(216)",
+     ""
+    ],
+    [
+     "Other\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(1)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2026\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "6,015\n\n",
+     "$",
+     "322\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "6,336\n\n",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Six months ended June 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2024\n\n",
+     "",
+     "10\n\n",
+     "",
+     "5,105\n\n",
+     "",
+     "218\n\n",
+     "",
+     "",
+     "(1)",
+     "",
+     "",
+     "5,322\n\n",
+     ""
+    ],
+    [
+     "Net income\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "302\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "302\n\n",
+     ""
+    ],
+    [
+     "Equity contributions from Parent\n\n",
+     " ",
+     "",
+     "",
+     "275\n\n",
+     " ",
+     "",
+     " ",
+     " ",
+     "",
+     " ",
+     "",
+     "275\n\n",
+     ""
+    ],
+    [
+     "Dividends to Parent\n\n",
+     " ",
+     "",
+     " ",
+     "",
+     "",
+     "(198)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     "(198)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2025\n\n",
+     "",
+     "10\n\n",
+     "$",
+     "5,380\n\n",
+     "$",
+     "322\n\n",
+     "",
+     "$",
+     "(1)",
+     "",
+     "$",
+     "5,701\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated",
+    "Other"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 489,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the condensed financial statements.\nCondensed Statements of Capital",
+   "prose_after": "The accompanying notes are an integral part of the condensed financial statements.\nNOTES TO CONDENSED FINANCIAL STATEMENTS\n1. Summary of Significant Accounting Policies\nSee TEC\u2019s Annual Report on Form 10-K for the year ended December 31, 2025 for a complete discussion of accounting policies. The significant accounting policies for TEC include the following:\nPrinciples of Consolidation and Basis of Presentation\nTampa Electric Company (TEC or Tampa Electric) is engaged in the generation, purchase, transmission, distribution and sale of electric energy in West Central Florida. TEC maintains its accounts in accordance with recognized policies prescribed or permitted by the FPSC and the FERC. These policies conform with U.S. GAAP in all material respects. The use of estimates is inherent in the preparation of financial statements in accordance with U.S. GAAP. Actual results could differ from these estimates.\nPrior to April 1, 2024, TEC was a wholly owned subsidiary of TECO Energy, which is an indirect, wholly owned subsidiary of Emera. On April 1, 2024, TECO Energy distributed its investment in TEC to TECO Holdings, Inc. in a transaction intended to qualify as a tax-free reorganization. This new corporation is also an indirect, wholly owned subsidiary of Emera. Therefore, TEC is an indirect, wholly owned subsidiary of Emera.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 487,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 558,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "June 30, 2026",
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Regulatory assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Regulatory tax asset (1)\n\n",
+     "$",
+     "131\n\n",
+     "$",
+     "126\n\n"
+    ],
+    [
+     "Cost-recovery clauses (2)\n\n",
+     "",
+     "30\n\n",
+     "",
+     "37\n\n"
+    ],
+    [
+     "Capital cost recovery for early retired assets (3)\n\n",
+     "",
+     "534\n\n",
+     "",
+     "530\n\n"
+    ],
+    [
+     "Capital cost recovery for retired Polk Unit 1 components (4)\n\n",
+     "",
+     "123\n\n",
+     "",
+     "129\n\n"
+    ],
+    [
+     "Postretirement benefits (5)\n\n",
+     "",
+     "202\n\n",
+     "",
+     "206\n\n"
+    ],
+    [
+     "Storm reserve (6)\n\n",
+     "",
+     "0\n\n",
+     "",
+     "116\n\n"
+    ],
+    [
+     "Other\n\n",
+     "",
+     "55\n\n",
+     "",
+     "38\n\n"
+    ],
+    [
+     "Total regulatory assets\n\n",
+     "",
+     "1,075\n\n",
+     "",
+     "1,182\n\n"
+    ],
+    [
+     "Less: Current portion\n\n",
+     "",
+     "109\n\n",
+     "",
+     "226\n\n"
+    ],
+    [
+     "Long-term regulatory assets\n\n",
+     "$",
+     "966\n\n",
+     "$",
+     "956\n\n"
+    ],
+    [
+     "Regulatory liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Regulatory tax liability (7)\n\n",
+     "$",
+     "412\n\n",
+     "$",
+     "426\n\n"
+    ],
+    [
+     "Cost-recovery clauses - deferred balances (2)\n\n",
+     "",
+     "15\n\n",
+     "",
+     "38\n\n"
+    ],
+    [
+     "Accumulated reserve - cost of removal (8)\n\n",
+     "",
+     "323\n\n",
+     "",
+     "315\n\n"
+    ],
+    [
+     "Storm reserve (6)\n\n",
+     "",
+     "26\n\n",
+     "",
+     "0\n\n"
+    ],
+    [
+     "Deferred production tax credits (9)\n\n",
+     "",
+     "29\n\n",
+     "",
+     "38\n\n"
+    ],
+    [
+     "Other\n\n",
+     "",
+     "25\n\n",
+     "",
+     "24\n\n"
+    ],
+    [
+     "Total regulatory liabilities\n\n",
+     "",
+     "830\n\n",
+     "",
+     "841\n\n"
+    ],
+    [
+     "Less: Current portion\n\n",
+     "",
+     "92\n\n",
+     "",
+     "114\n\n"
+    ],
+    [
+     "Long-term regulatory liabilities\n\n",
+     "$",
+     "738\n\n",
+     "$",
+     "727\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Regulatory"
+    }
+   },
+   "prose_before": "Hurricane Milton, the worst weather event to impact the area in over 100 years, made landfall on October 9, 2024. Tampa Electric was impacted by Hurricane Milton, resulting in a peak number of customers out of approximately 600,000. As of June 30, 2026, TEC deferred $334 million related to Hurricane Milton to the storm reserve for future recovery, with a minimal impact to earnings.\nRestoration costs for the storms described above were deferred and are being collected from customers. On February 4, 2025, the FPSC approved Tampa Electric\u2019s petition filed on December 27, 2024 for the recovery, over an 18-month period beginning in March 2025, of $466 million to replenish the storm reserve for costs associated with Hurricane Idalia, Hurricane Debby, Hurricane Helene and Hurricane Milton and the associated interest, of which $407 million has been collected as of June 30, 2026. Based on the expected collection of the storm cost recovery amounts, on June 16, 2026, TEC notified the FPSC that the storm charge could be ended one month early, or after 17 months. The amount of cost-recovery is subject to a true-up mechanism with the FPSC.\nRegulatory Assets and Liabilities\nDetails of the regulatory assets and liabilities are presented in the following table:",
+   "prose_after": "(1)The regulatory tax asset is primarily associated with the depreciation and recovery of AFUDC-equity. This asset does not earn a return but rather is included in the capital structure, which is used in the calculation of the weighted cost of capital used to determine revenue requirements. It will be recovered over the expected regulatory life of the related assets.\n(2)These assets and liabilities are related to FPSC clauses and riders. They are recovered or refunded through cost-recovery mechanisms approved by the FPSC on a dollar-for-dollar basis in a subsequent period.\n(3)This regulatory asset is related to the remaining net book value and the associated dismantlement cost of Big Bend Units 1 through 3 and smart meter assets that were retired. The balance earns a rate of return as permitted by the FPSC and will be recovered as a separate line item on customer bills for a period of 15 years, beginning in 2022 through 2036.\n(4)This regulatory asset is related to the remaining net book value of certain components of Polk Unit 1 that were early retired on December 31, 2024. The balance earns a rate of return as permitted by the FPSC and will be recovered through base rates over an 11-year recovery period beginning on January 1, 2025.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 634,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "Pension Benefits",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other Postretirement Benefits",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three months ended June 30,",
+     "2026",
+     "",
+     "",
+     "2025",
+     "",
+     "",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Components of net periodic benefit cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service cost\n\n",
+     "$",
+     "5\n\n",
+     "",
+     "$",
+     "5\n\n",
+     "",
+     "$",
+     "0\n\n",
+     "$",
+     "0\n\n"
+    ],
+    [
+     "Interest cost\n\n",
+     "",
+     "9\n\n",
+     "",
+     "",
+     "9\n\n",
+     "",
+     "",
+     "2\n\n",
+     "",
+     "1\n\n"
+    ],
+    [
+     "Expected return on assets\n\n",
+     "",
+     "(13)",
+     "",
+     "",
+     "(14)",
+     "",
+     "",
+     "0\n\n",
+     "",
+     "0\n\n"
+    ],
+    [
+     "Amortization of actuarial loss\n\n",
+     "",
+     "3\n\n",
+     "",
+     "",
+     "2\n\n",
+     "",
+     "",
+     "0\n\n",
+     "",
+     "0\n\n"
+    ],
+    [
+     "Net periodic benefit cost\n\n",
+     "$",
+     "4\n\n",
+     "",
+     "$",
+     "2\n\n",
+     "",
+     "$",
+     "2\n\n",
+     "$",
+     "1\n\n"
+    ],
+    [
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Components of net periodic benefit cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service cost\n\n",
+     "$",
+     "10\n\n",
+     "",
+     "$",
+     "9\n\n",
+     "",
+     "$",
+     "0\n\n",
+     "$",
+     "0\n\n"
+    ],
+    [
+     "Interest cost\n\n",
+     "",
+     "18\n\n",
+     "",
+     "",
+     "18\n\n",
+     "",
+     "",
+     "4\n\n",
+     "",
+     "3\n\n"
+    ],
+    [
+     "Expected return on assets\n\n",
+     "",
+     "(26)",
+     "",
+     "",
+     "(27)",
+     "",
+     "",
+     "0\n\n",
+     "",
+     "0\n\n"
+    ],
+    [
+     "Amortization of actuarial loss\n\n",
+     "",
+     "6\n\n",
+     "",
+     "",
+     "4\n\n",
+     "",
+     "",
+     "0\n\n",
+     "",
+     "0\n\n"
+    ],
+    [
+     "Net periodic benefit cost\n\n",
+     "$",
+     "8\n\n",
+     "",
+     "$",
+     "4\n\n",
+     "",
+     "$",
+     "4\n\n",
+     "$",
+     "3\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 724,
+    "end_line": 757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Employee Postretirement Benefits"
+    }
+   },
+   "prose_before": "In 2024, TEC was a participant in the comprehensive retirement plans of TECO Energy, LLC (formerly known as TECO Energy, Inc. prior to April 1, 2024), including a qualified, non-contributory defined benefit retirement plan that covers substantially all employees. Subsequent to April 1, 2024, TECO Energy, LLC became a wholly owned subsidiary of the newly created TECO Holdings (see Note 1 for further detail). Effective January 1, 2025, the comprehensive retirement plans were transferred to TECO Holdings. Effective January 1, 2026, the active employees of New Mexico Gas Company and the benefits attributable to those active employees under the TECO Holdings Group Retirement Plan were transferred from this TECO Holdings plan to the New Mexico Gas Company Spin-off plan. The following table presents detail related to TECO Holdings' periodic benefit cost for pension and other postretirement benefits. Amounts disclosed for TECO Holdings' pension benefits include the amounts related to its qualified pension plan and non-qualified, non-contributory SERP and Restoration Plan.\nDetails of TECO Holdings' benefit cost are presented in the following table:",
+   "prose_after": "TEC\u2019s portion of the net periodic benefit cost for the three months ended June 30, 2026 and 2025, respectively, was $2 million and $1 million for pension benefits, and $2 million and $2 million for other postretirement benefits. TEC\u2019s portion of the net periodic\nbenefit cost for the six months ended June 30, 2026 and 2025, respectively, was $4 million and $2 million for pension benefits, and $3 million and $3 million for other postretirement benefits. TEC\u2019s portion of net periodic benefit costs for pension and other benefits is included as an expense on the Condensed Statements of Income in \u201cOperations & maintenance\u201d.\nTECO Holdings assumed a long-term expected return on assets of 7.30% and a discount rate of 5.41% for pension benefits under its qualified pension plan for 2026. For TECO Holdings' other postretirement benefits, TECO Holdings used a discount rate of 5.52% for 2026.\nTECO Holdings made contributions of $8 million and $9 million to its qualified pension plan in the six months ended June 30, 2026 and 2025, respectively. TEC\u2019s portion of these contributions was $6 million and $6 million during the six months ended June 30, 2026 and 2025, respectively. TECO Holdings expects to make contributions to the pension plan of $8 million for the remainder of 2026. TEC estimates its portion of the remaining 2026 contributions to be $6 million. See Note 1 for further information regarding TECO Holdings.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2026",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Borrowings",
+     "",
+     "Borrowings",
+     "",
+     "Letters",
+     "",
+     "",
+     "",
+     "Borrowings",
+     "",
+     "Borrowings",
+     "",
+     "Letters",
+     ""
+    ],
+    [
+     "",
+     "Credit",
+     "",
+     "Outstanding -",
+     "",
+     "Outstanding -",
+     "",
+     "of Credit",
+     "",
+     "Credit",
+     "",
+     "Outstanding -",
+     "",
+     "Outstanding -",
+     "",
+     "of Credit",
+     ""
+    ],
+    [
+     "(millions)",
+     "Facility",
+     "",
+     "Credit Facility (1)",
+     "",
+     "Commercial Paper (1)",
+     "",
+     "Outstanding",
+     "",
+     "Facility",
+     "",
+     "Credit Facility (1)",
+     "",
+     "Commercial Paper (1)",
+     "",
+     "Outstanding",
+     ""
+    ],
+    [
+     "5-year facility (2)\n\n",
+     "$",
+     "1,200\n\n",
+     "$",
+     "0\n\n",
+     "$",
+     "801\n\n",
+     "$",
+     "1\n\n",
+     "$",
+     "1,200\n\n",
+     "$",
+     "0\n\n",
+     "$",
+     "773\n\n",
+     "$",
+     "1\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 773,
+    "end_line": 784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Short-Term Debt"
+    }
+   },
+   "prose_before": "TECO Holdings made contributions of $8 million and $9 million to its qualified pension plan in the six months ended June 30, 2026 and 2025, respectively. TEC\u2019s portion of these contributions was $6 million and $6 million during the six months ended June 30, 2026 and 2025, respectively. TECO Holdings expects to make contributions to the pension plan of $8 million for the remainder of 2026. TEC estimates its portion of the remaining 2026 contributions to be $6 million. See Note 1 for further information regarding TECO Holdings.\nIncluded in the benefit cost discussed above, for the three and six months ended June 30, 2026, $2 million and $4 million, respectively, of unamortized prior service benefits and costs and actuarial gains and losses were reclassified by TEC from regulatory assets to the Condensed Statement of Income, compared with $2 million and $3 million for the three and six months ended June 30, 2025, respectively.\n6. Short-Term Debt\nDetails of TEC\u2019s short-term borrowings are presented in the following table:",
+   "prose_after": "(1)Borrowings outstanding are reported as notes payable.\n(2)On November 20, 2025, TEC amended the credit facility agreement to increase the capacity amount from $800 million to $1.2 billion and extend the maturity date to November 20, 2030. At December 31, 2025, TEC also had an active commercial paper program for up to $800 million, of which the full amount outstanding is backed by TEC\u2019s credit facility. The amount of commercial paper issued results in an equal amount of its credit facility being considered drawn and unavailable. On January 22, 2026, TEC amended the commercial paper program to increase the amount to $1.2 billion from $800 million.\nAs of June 30, 2026, the credit facility required a commitment fee of 12.5 basis points. The weighted-average interest rate on borrowings outstanding under the credit facility and commercial paper at June 30, 2026 and December 31, 2025 was 4.1% and 4.0%, respectively.\nAs of June 30, 2026 and December 31, 2025, the carrying value of TEC\u2019s short-term debt was not materially different from the fair value due to the short-term nature of the instruments and because the stated rates approximate market rates. The fair value of TEC\u2019s short-term debt is determined using Level 2 measurements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Fuel",
+     "",
+     "Long-term",
+     "",
+     "",
+     "",
+     "Purchased",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Capital",
+     "",
+     "and",
+     "",
+     "Service",
+     "",
+     "",
+     "",
+     "Power",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(millions)",
+     "Transportation",
+     "",
+     "Projects (1)",
+     "",
+     "Gas Supply",
+     "",
+     "Agreements",
+     "",
+     "Leases",
+     "",
+     "Agreements",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "2026\n\n",
+     "$",
+     "77\n\n",
+     "$",
+     "90\n\n",
+     "$",
+     "142\n\n",
+     "$",
+     "9\n\n",
+     "$",
+     "2\n\n",
+     "$",
+     "7\n\n",
+     "$",
+     "327\n\n"
+    ],
+    [
+     "2027\n\n",
+     "",
+     "180\n\n",
+     "",
+     "48\n\n",
+     "",
+     "91\n\n",
+     "",
+     "26\n\n",
+     "",
+     "4\n\n",
+     "",
+     "13\n\n",
+     "",
+     "362\n\n"
+    ],
+    [
+     "2028\n\n",
+     "",
+     "140\n\n",
+     "",
+     "28\n\n",
+     "",
+     "53\n\n",
+     "",
+     "21\n\n",
+     "",
+     "4\n\n",
+     "",
+     "13\n\n",
+     "",
+     "259\n\n"
+    ],
+    [
+     "2029\n\n",
+     "",
+     "121\n\n",
+     "",
+     "0\n\n",
+     "",
+     "79\n\n",
+     "",
+     "21\n\n",
+     "",
+     "4\n\n",
+     "",
+     "13\n\n",
+     "",
+     "238\n\n"
+    ],
+    [
+     "2030\n\n",
+     "",
+     "115\n\n",
+     "",
+     "6\n\n",
+     "",
+     "0\n\n",
+     "",
+     "21\n\n",
+     "",
+     "4\n\n",
+     "",
+     "13\n\n",
+     "",
+     "159\n\n"
+    ],
+    [
+     "Thereafter\n\n",
+     "",
+     "1,096\n\n",
+     "",
+     "0\n\n",
+     "",
+     "0\n\n",
+     "",
+     "23\n\n",
+     "",
+     "162\n\n",
+     "",
+     "54\n\n",
+     "",
+     "1,335\n\n"
+    ],
+    [
+     "Total future minimum payments\n\n",
+     "$",
+     "1,729\n\n",
+     "$",
+     "172\n\n",
+     "$",
+     "365\n\n",
+     "$",
+     "121\n\n",
+     "$",
+     "180\n\n",
+     "$",
+     "113\n\n",
+     "$",
+     "2,680\n\n"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "As of June 30, 2026, TEC\u2019s long-term debt, including the current portion, had a carrying amount of $4,533 million and an estimated fair market value of $4,101 million. As of December 31, 2025, long-term debt had a carrying amount of $4,531 million and an estimated fair market value of $4,139 million. The fair value of the debt securities is determined using Level 2 measurements.\n8. Commitments and Contingencies\nLegal Contingencies\nFrom time to time, TEC and its subsidiaries are involved in various legal, tax and regulatory proceedings before various courts, regulatory commissions and governmental agencies in the ordinary course of business. Where appropriate, accruals are made in accordance with accounting standards for contingencies to provide for matters that are probable of resulting in an estimable loss.\nLong-Term Commitments\nTEC has commitments for various purchases as disclosed below, including payment obligations under contractual agreements for fuel, fuel transportation and power purchases that are recovered from customers under regulatory clauses. The following is a schedule of future payments under net purchase obligations/commitments as of June 30, 2026:",
+   "prose_after": "(1) These estimates are subject to continuing review and adjustment and actual capital expenditures may vary significantly from these estimates.\nDebt Covenants\nTEC must meet certain financial tests, including a debt to capital ratio, as defined in the applicable debt agreements and has certain restrictive covenants in specific agreements and debt instruments. As of June 30, 2026, TEC was in compliance with all required covenants.\n9. Revenue\nThe following disaggregates TEC\u2019s revenue by major source:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 847,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three months ended June 30,",
+     "2026",
+     "",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Electric revenue",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Residential\n\n",
+     "$",
+     "486\n\n",
+     "",
+     "$",
+     "462\n\n"
+    ],
+    [
+     "Commercial\n\n",
+     "",
+     "221\n\n",
+     "",
+     "",
+     "209\n\n"
+    ],
+    [
+     "Industrial\n\n",
+     "",
+     "52\n\n",
+     "",
+     "",
+     "49\n\n"
+    ],
+    [
+     "Regulatory deferrals\n\n",
+     "",
+     "(13)",
+     "",
+     "",
+     "6\n\n"
+    ],
+    [
+     "Unbilled revenue\n\n",
+     "",
+     "32\n\n",
+     "",
+     "",
+     "26\n\n"
+    ],
+    [
+     "Other (1)\n\n",
+     "",
+     "84\n\n",
+     "",
+     "",
+     "87\n\n"
+    ],
+    [
+     "Total revenue\n\n",
+     "$",
+     "862\n\n",
+     "",
+     "$",
+     "839\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Six months ended June 30,",
+     "2026",
+     "",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Electric revenue",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Residential\n\n",
+     "$",
+     "890\n\n",
+     "",
+     "$",
+     "798\n\n"
+    ],
+    [
+     "Commercial\n\n",
+     "",
+     "420\n\n",
+     "",
+     "",
+     "381\n\n"
+    ],
+    [
+     "Industrial\n\n",
+     "",
+     "98\n\n",
+     "",
+     "",
+     "95\n\n"
+    ],
+    [
+     "Regulatory deferrals\n\n",
+     "",
+     "(14)",
+     "",
+     "",
+     "16\n\n"
+    ],
+    [
+     "Unbilled revenue\n\n",
+     "",
+     "37\n\n",
+     "",
+     "",
+     "30\n\n"
+    ],
+    [
+     "Other (1)\n\n",
+     "",
+     "233\n\n",
+     "",
+     "",
+     "168\n\n"
+    ],
+    [
+     "Total revenue\n\n",
+     "$",
+     "1,664\n\n",
+     "",
+     "$",
+     "1,488\n\n"
+    ]
+   ],
+   "caption_stack": [
+    "(millions)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 848,
+    "end_line": 890
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Revenue"
+    }
+   },
+   "prose_before": "(1) These estimates are subject to continuing review and adjustment and actual capital expenditures may vary significantly from these estimates.\nDebt Covenants\nTEC must meet certain financial tests, including a debt to capital ratio, as defined in the applicable debt agreements and has certain restrictive covenants in specific agreements and debt instruments. As of June 30, 2026, TEC was in compliance with all required covenants.\n9. Revenue\nThe following disaggregates TEC\u2019s revenue by major source:",
+   "prose_after": "(1)Other electric revenue includes sales to public authorities, off-system sales to other utilities and various other items.\nRemaining Performance Obligations\nAs allowed under ASC 606, TEC excludes contracts with an original expected length of one year or less and variable amounts for which the company recognizes revenue at the amount to which it has the right to invoice for services performed.\n10. Segment Information\nSegments are determined based on how TEC's chief operating decision maker (CODM) evaluates, measures and makes decisions with respect to the operations of the entity, resulting in segments based on products and services. TEC operates under a single operating and reportable segment because the operations of TEC only include the operations of the electric division. TEC is a public utility operating within the State of Florida and is engaged in the generation, purchase, transmission, distribution and sale of electric energy in West Central Florida.\nTEC's CODM is the Chief Executive Officer. The CODM uses several measures to allocate capital and resources for TEC, predominantly in the annual budget and forecasting processes. The CODM evaluates performance by considering budget-to-actual variances for these measures monthly. The measure used by the CODM that is the most consistent with U.S. GAAP measurement principles is net income.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 847,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three months ended June 30,",
+     "2026",
+     "",
+     "2025",
+     ""
+    ],
+    [
+     "Revenues\n\n",
+     "$",
+     "862\n\n",
+     "$",
+     "839\n\n"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel\n\n",
+     "",
+     "134\n\n",
+     "",
+     "120\n\n"
+    ],
+    [
+     "Purchased power\n\n",
+     "",
+     "47\n\n",
+     "",
+     "68\n\n"
+    ],
+    [
+     "Operations and maintenance, excluding FPSC-approved regulatory deferrals\n\n",
+     "",
+     "104\n\n",
+     "",
+     "100\n\n"
+    ],
+    [
+     "Operations and maintenance related to FPSC-approved regulatory deferrals\n\n",
+     "",
+     "103\n\n",
+     "",
+     "106\n\n"
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "",
+     "137\n\n",
+     "",
+     "124\n\n"
+    ],
+    [
+     "Interest charges\n\n",
+     "",
+     "59\n\n",
+     "",
+     "52\n\n"
+    ],
+    [
+     "Other segment items (1)\n\n",
+     "",
+     "59\n\n",
+     "",
+     "48\n\n"
+    ],
+    [
+     "Provision for income taxes\n\n",
+     "",
+     "30\n\n",
+     "",
+     "33\n\n"
+    ],
+    [
+     "Net income\n\n",
+     "$",
+     "189\n\n",
+     "$",
+     "188\n\n"
+    ],
+    [
+     "Capital expenditures\n\n",
+     "$",
+     "408\n\n",
+     "$",
+     "459\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues\n\n",
+     "$",
+     "1,664\n\n",
+     "$",
+     "1,488\n\n"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fuel\n\n",
+     "",
+     "310\n\n",
+     "",
+     "243\n\n"
+    ],
+    [
+     "Purchased power\n\n",
+     "",
+     "85\n\n",
+     "",
+     "106\n\n"
+    ],
+    [
+     "Operations & maintenance, excluding FPSC-approved regulatory deferrals\n\n",
+     "",
+     "208\n\n",
+     "",
+     "197\n\n"
+    ],
+    [
+     "Operations & maintenance related to FPSC-approved regulatory deferrals\n\n",
+     "",
+     "192\n\n",
+     "",
+     "151\n\n"
+    ],
+    [
+     "Depreciation and amortization\n\n",
+     "",
+     "271\n\n",
+     "",
+     "246\n\n"
+    ],
+    [
+     "Interest charges\n\n",
+     "",
+     "118\n\n",
+     "",
+     "104\n\n"
+    ],
+    [
+     "Other segment items (1)\n\n",
+     "",
+     "110\n\n",
+     "",
+     "88\n\n"
+    ],
+    [
+     "Provision for income taxes\n\n",
+     "",
+     "50\n\n",
+     "",
+     "51\n\n"
+    ],
+    [
+     "Net income\n\n",
+     "$",
+     "320\n\n",
+     "$",
+     "302\n\n"
+    ],
+    [
+     "Capital expenditures\n\n",
+     "$",
+     "814\n\n",
+     "$",
+     "768\n\n"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets at June 30, 2026\n\n",
+     "$",
+     "14,653\n\n",
+     " ",
+     ""
+    ],
+    [
+     "Total assets at December 31, 2025\n\n",
+     "$",
+     "14,071\n\n",
+     " ",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(millions)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 904,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "As allowed under ASC 606, TEC excludes contracts with an original expected length of one year or less and variable amounts for which the company recognizes revenue at the amount to which it has the right to invoice for services performed.\n10. Segment Information\nSegments are determined based on how TEC's chief operating decision maker (CODM) evaluates, measures and makes decisions with respect to the operations of the entity, resulting in segments based on products and services. TEC operates under a single operating and reportable segment because the operations of TEC only include the operations of the electric division. TEC is a public utility operating within the State of Florida and is engaged in the generation, purchase, transmission, distribution and sale of electric energy in West Central Florida.\nTEC's CODM is the Chief Executive Officer. The CODM uses several measures to allocate capital and resources for TEC, predominantly in the annual budget and forecasting processes. The CODM evaluates performance by considering budget-to-actual variances for these measures monthly. The measure used by the CODM that is the most consistent with U.S. GAAP measurement principles is net income.",
+   "prose_after": "(1) Other segment items include taxes other than income, partially offset by AFUDC and other income, net.\nItem 2. MANAGEMENT\u2019S DISCUSSION & ANALYSIS OF FINANCIAL CONDITION & RESULTS OF OPERATIONS\nOperating Company Results\nAmounts included below are pre-tax, except net income and income taxes.\nTampa Electric\u2019s net income for the second quarter of 2026 was $189 million, compared with $188 million for the same period in 2025. Results primarily reflected higher base revenues resulting from the subsequent year adjustment in the 2024 rate case, offset by higher depreciation and interest expenses. Base revenues are energy sales excluding revenues from clauses, gross receipts taxes and franchise fees. Clauses, gross receipts taxes and franchise fees do not have a material effect on net income as these revenues substantially represent a dollar-for-dollar recovery of clause and other pass-through costs.\nRevenues for the second quarter of 2026 were $23 million higher than in the same period in 2025, driven by higher base revenue due to new base rates as a result of the subsequent year adjustment in the 2024 rate case and customer growth. Total degree days (a measure of heating and cooling demand) in Tampa Electric's service area in the second quarter of 2026 were 13% above normal (a 20-year statistical degree day average) and 2% below the 2025 period, reflecting mild weather in the second quarter of 2026 compared to 2025.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions, except total degree days)",
+     "Operating Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Kilowatt-Hours Billed",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Three months ended June 30,",
+     "2026",
+     "",
+     "2025",
+     "",
+     "% Change",
+     "",
+     "",
+     "2026",
+     "",
+     "2025",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "By Customer Type",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Residential (1)\n\n",
+     "$",
+     "486\n\n",
+     "$",
+     "462\n\n",
+     "",
+     "5\n\n",
+     "",
+     "",
+     "2,615\n\n",
+     "",
+     "2,631\n\n",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Commercial (1)\n\n",
+     "",
+     "221\n\n",
+     "",
+     "209\n\n",
+     "",
+     "6\n\n",
+     "",
+     "",
+     "1,659\n\n",
+     "",
+     "1,647\n\n",
+     "",
+     "1\n\n",
+     ""
+    ],
+    [
+     "Industrial (1)\n\n",
+     "",
+     "52\n\n",
+     "",
+     "49\n\n",
+     "",
+     "6\n\n",
+     "",
+     "",
+     "519\n\n",
+     "",
+     "532\n\n",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "Other (1)\n\n",
+     "",
+     "66\n\n",
+     "",
+     "63\n\n",
+     "",
+     "5\n\n",
+     "",
+     "",
+     "487\n\n",
+     "",
+     "488\n\n",
+     "",
+     "(0)",
+     ""
+    ],
+    [
+     "Regulatory deferrals and unbilled revenue (2)\n\n",
+     "",
+     "19\n\n",
+     "",
+     "32\n\n",
+     "",
+     "(41)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total retail sales of electricity\n\n",
+     "",
+     "844\n\n",
+     "",
+     "815\n\n",
+     "",
+     "4\n\n",
+     "",
+     "",
+     "5,280\n\n",
+     "",
+     "5,298\n\n",
+     "",
+     "(0)",
+     ""
+    ],
+    [
+     "Off system sales of electricity\n\n",
+     "",
+     "3\n\n",
+     "",
+     "4\n\n",
+     "",
+     "(25)",
+     "",
+     "",
+     "61\n\n",
+     "",
+     "102\n\n",
+     "",
+     "(40)",
+     ""
+    ],
+    [
+     "Other operating revenue\n\n",
+     "",
+     "15\n\n",
+     "",
+     "20\n\n",
+     "",
+     "(25)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total revenues\n\n",
+     "$",
+     "862\n\n",
+     "$",
+     "839\n\n",
+     "",
+     "3\n\n",
+     "",
+     "",
+     "5,341\n\n",
+     "",
+     "5,400\n\n",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "By Sales Type",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Base\n\n",
+     "$",
+     "479\n\n",
+     "$",
+     "453\n\n",
+     "",
+     "6\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Clause\n\n",
+     "",
+     "231\n\n",
+     "",
+     "229\n\n",
+     "",
+     "1\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Capital cost recovery for early retired assets\n\n",
+     "",
+     "17\n\n",
+     "",
+     "17\n\n",
+     "",
+     "0\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Storm surcharge\n\n",
+     "",
+     "78\n\n",
+     "",
+     "78\n\n",
+     "",
+     "0\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Gross receipts taxes and franchise fees\n\n",
+     "",
+     "38\n\n",
+     "",
+     "37\n\n",
+     "",
+     "3\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Other\n\n",
+     "",
+     "19\n\n",
+     "",
+     "25\n\n",
+     "",
+     "(24)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total revenues\n\n",
+     "$",
+     "862\n\n",
+     "$",
+     "839\n\n",
+     "",
+     "3\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Retail net energy for load (kilowatt hours)\n\n",
+     "",
+     "5,892\n\n",
+     "",
+     "5,895\n\n",
+     "",
+     "(0)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total degree days\n\n",
+     "",
+     "1,437\n\n",
+     "",
+     "1,470\n\n",
+     "",
+     "(2)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(millions, except customers and total degree days)",
+     "Operating Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Kilowatt-Hours Billed",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Six months ended June 30,",
+     "2026",
+     "",
+     "2025",
+     "",
+     "% Change",
+     "",
+     "",
+     "2026",
+     "",
+     "2025",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "By Customer Type",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Residential (1)\n\n",
+     "$",
+     "890\n\n",
+     "$",
+     "798\n\n",
+     "",
+     "12\n\n",
+     "",
+     "",
+     "4,773\n\n",
+     "",
+     "4,718\n\n",
+     "",
+     "1\n\n",
+     ""
+    ],
+    [
+     "Commercial (1)\n\n",
+     "",
+     "420\n\n",
+     "",
+     "381\n\n",
+     "",
+     "10\n\n",
+     "",
+     "",
+     "3,087\n\n",
+     "",
+     "3,059\n\n",
+     "",
+     "1\n\n",
+     ""
+    ],
+    [
+     "Industrial (1)\n\n",
+     "",
+     "98\n\n",
+     "",
+     "95\n\n",
+     "",
+     "3\n\n",
+     "",
+     "",
+     "1,000\n\n",
+     "",
+     "1,053\n\n",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "Other (1)\n\n",
+     "",
+     "129\n\n",
+     "",
+     "119\n\n",
+     "",
+     "8\n\n",
+     "",
+     "",
+     "940\n\n",
+     "",
+     "937\n\n",
+     "",
+     "0\n\n",
+     ""
+    ],
+    [
+     "Regulatory deferrals and unbilled revenue (2)\n\n",
+     "",
+     "23\n\n",
+     "",
+     "46\n\n",
+     "",
+     "(50)",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total retail sales of electricity\n\n",
+     "",
+     "1,560\n\n",
+     "",
+     "1,439\n\n",
+     "",
+     "8\n\n",
+     "",
+     "",
+     "9,800\n\n",
+     "",
+     "9,767\n\n",
+     "",
+     "0\n\n",
+     ""
+    ],
+    [
+     "Off system sales of electricity\n\n",
+     "",
+     "56\n\n",
+     "",
+     "14\n\n",
+     "",
+     "300\n\n",
+     "",
+     "",
+     "252\n\n",
+     "",
+     "269\n\n",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "Other operating revenue\n\n",
+     "",
+     "48\n\n",
+     "",
+     "35\n\n",
+     "",
+     "37\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total revenues\n\n",
+     "$",
+     "1,664\n\n",
+     "$",
+     "1,488\n\n",
+     "",
+     "12\n\n",
+     "",
+     "",
+     "10,052\n\n",
+     "",
+     "10,036\n\n",
+     "",
+     "0\n\n",
+     ""
+    ],
+    [
+     "By Sales Type",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Base\n\n",
+     "$",
+     "876\n\n",
+     "$",
+     "823\n\n",
+     "",
+     "6\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Clause\n\n",
+     "",
+     "436\n\n",
+     "",
+     "420\n\n",
+     "",
+     "4\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Capital cost recovery for early retired assets\n\n",
+     "",
+     "32\n\n",
+     "",
+     "32\n\n",
+     "",
+     "0\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Storm surcharge\n\n",
+     "",
+     "144\n\n",
+     "",
+     "98\n\n",
+     "",
+     "47\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Gross receipts taxes and franchise fees\n\n",
+     "",
+     "72\n\n",
+     "",
+     "66\n\n",
+     "",
+     "9\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Other\n\n",
+     "",
+     "104\n\n",
+     "",
+     "49\n\n",
+     "",
+     "112\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total revenues\n\n",
+     "$",
+     "1,664\n\n",
+     "$",
+     "1,488\n\n",
+     "",
+     "12\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customers at June 30, (thousands)\n\n",
+     "",
+     "871\n\n",
+     "",
+     "862\n\n",
+     "",
+     "1\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Retail net energy for load (kilowatt-hours)\n\n",
+     "",
+     "10,581\n\n",
+     "",
+     "10,504\n\n",
+     "",
+     "1\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ],
+    [
+     "Total degree days\n\n",
+     "",
+     "2,184\n\n",
+     "",
+     "2,063\n\n",
+     "",
+     "6\n\n",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " ",
+     "",
+     " "
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 987,
+    "end_line": 1084
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION & ANALYSIS OF FINANCIAL CONDITION & RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Revenues were $176 million higher than year-to-date 2025 primarily driven by higher base revenue due to new base rates as a result of the subsequent year adjustment in the 2024 rate case, storm surcharge revenue, increased off-system sales, favorable weather compared to the same period in 2025, increased regulatory deferral revenue and customer growth. Total degree days (a measure of heating and cooling demand) in Tampa Electric's service area year-to-date 2026 were 16% above normal (a 20-year statistical degree day average) and 6% above the 2025 period, reflecting favorable weather year-to-date in 2026 compared to 2025. Results also reflect a 1% increase in the number of customers year-to-date in 2026 compared to the same period in 2025.\nO&M expense was $52 million higher than year-to-date 2025 due to storm cost recognition of $47 million related to storm surcharge revenue (offset in revenue) and increased operational expenses of $9 million, partially offset by decreased regulatory deferrals of $4 million. The increase in operating expenses was primarily due to timing of generation outages. Depreciation and amortization expense increased $25 million year-to-date 2026 compared to the same period in 2025 primarily due to additions to facilities and the in-service of capital projects.\nTEC\u2019s regulated operating statistics for the three and six months ended June 30, 2026 and 2025 were as follows:",
+   "prose_after": "(1)Reflects a billing cycle measurement.\n(2)Primarily reflects unbilled revenue, which incorporates a calendar measurement, and postings for clause recovery deferrals.\nOther Income\nFor the second quarter of 2026 and 2025, respectively, TEC\u2019s other income was $12 million and $17 million, which included AFUDC-equity of $8 million and $11 million and other income of $4 million and $6 million. For the year-to-date periods in 2026 and 2025, respectively, TEC\u2019s other income was $25 million and $33 million, which included AFUDC-equity of $15 million and $21 million and other income of $10 million and $12 million. The decrease in AFUDC-equity in the second quarter of 2026 compared to the second quarter of 2025 is due to the timing of the in-service of resiliency projects.\nInterest Expense\nFor the second quarter of 2026 and 2025, TEC\u2019s interest expense, excluding AFUDC-debt, was $62 million and $57 million, respectively. For the year-to-date periods in 2026 and 2025, TEC\u2019s interest expense, excluding AFUDC-debt, was $124 million and $112 million, respectively. The increase is due to higher borrowings, primarily in support of TEC's capital program.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 986,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(millions)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Credit facilities/ commercial paper\n\n",
+     "$",
+     "1,200\n\n",
+     ""
+    ],
+    [
+     "Drawn amounts/letters of credit\n\n",
+     "",
+     "(802)",
+     ""
+    ],
+    [
+     "Available credit facilities\n\n",
+     "",
+     "398\n\n",
+     ""
+    ],
+    [
+     "Cash\n\n",
+     "",
+     "18\n\n",
+     ""
+    ],
+    [
+     "Total liquidity\n\n",
+     "$",
+     "416\n\n",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "(millions)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1106,
+    "end_line": 1123
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION & ANALYSIS OF FINANCIAL CONDITION & RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "For the second quarter of 2026 and 2025, respectively, TEC\u2019s other income was $12 million and $17 million, which included AFUDC-equity of $8 million and $11 million and other income of $4 million and $6 million. For the year-to-date periods in 2026 and 2025, respectively, TEC\u2019s other income was $25 million and $33 million, which included AFUDC-equity of $15 million and $21 million and other income of $10 million and $12 million. The decrease in AFUDC-equity in the second quarter of 2026 compared to the second quarter of 2025 is due to the timing of the in-service of resiliency projects.\nInterest Expense\nFor the second quarter of 2026 and 2025, TEC\u2019s interest expense, excluding AFUDC-debt, was $62 million and $57 million, respectively. For the year-to-date periods in 2026 and 2025, TEC\u2019s interest expense, excluding AFUDC-debt, was $124 million and $112 million, respectively. The increase is due to higher borrowings, primarily in support of TEC's capital program.\nIncome Taxes\nThe provisions for income taxes were $30 million and $33 million for the three months ended June 30, 2026 and 2025, respectively, and $50 million and $51 million for the six months ended June 30, 2026 and 2025, respectively. Compared to the 2025 periods, the decrease in the provision for income taxes for the three and six months ended June 30, 2026 was primarily due to higher benefit from production tax credits related to solar facilities.\nLiquidity and Capital Resources\nThe table below sets forth the June 30, 2026 liquidity, cash balances and amounts available under the TEC credit facilities.",
+   "prose_after": "Cash Impacts Related to Operating Activities\nCash flows from operating activities in the six months ended June 30, 2026 were $630 million, an increase of $371 million compared to the same period in 2025. Increases to cash from operations were primarily due to higher 2025 payments related to the 2024 storm season, lower fuel costs and higher storm surcharge collections in 2026.\nCash Impacts Related to Financing Activities\nCash flows from financing activities for the six months ended June 30, 2026 resulted in net cash inflows of $192 million. TEC received $380 million of equity contributions from Parent and $28 million of net receipts of short-term debt with maturities of 90 days or less, partially offset by $216 million of dividends to Parent.\nCovenants in Financing Agreements\nIn order to utilize its bank credit facilities, TEC must meet certain financial tests as defined in the applicable agreements. In addition, TEC has certain restrictive covenants in specific agreements and debt instruments. As of June 30, 2026, TEC was in compliance with all applicable financial covenants. The following table contains the significant financial covenant and the performance relative to it as of June 30, 2026.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1145,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Calculation at"
+    ],
+    [
+     "Instrument (1)",
+     "Financial Covenant (2)",
+     "Requirement/Restriction",
+     "June 30, 2026"
+    ],
+    [
+     "Credit facility - $1,200 million",
+     "Debt/capital",
+     "Cannot exceed 65%",
+     "45.7%"
+    ]
+   ],
+   "caption_stack": [
+    "Calculation at"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1138,
+    "end_line": 1144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION & ANALYSIS OF FINANCIAL CONDITION & RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "Cash flows from operating activities in the six months ended June 30, 2026 were $630 million, an increase of $371 million compared to the same period in 2025. Increases to cash from operations were primarily due to higher 2025 payments related to the 2024 storm season, lower fuel costs and higher storm surcharge collections in 2026.\nCash Impacts Related to Financing Activities\nCash flows from financing activities for the six months ended June 30, 2026 resulted in net cash inflows of $192 million. TEC received $380 million of equity contributions from Parent and $28 million of net receipts of short-term debt with maturities of 90 days or less, partially offset by $216 million of dividends to Parent.\nCovenants in Financing Agreements\nIn order to utilize its bank credit facilities, TEC must meet certain financial tests as defined in the applicable agreements. In addition, TEC has certain restrictive covenants in specific agreements and debt instruments. As of June 30, 2026, TEC was in compliance with all applicable financial covenants. The following table contains the significant financial covenant and the performance relative to it as of June 30, 2026.\nSignificant Financial Covenants",
+   "prose_after": "(1)See Note 6 to the TEC Condensed Financial Statements for details of the credit facility.\n(2)As defined in the instrument.\nCredit Ratings of Senior Unsecured Debt as of June 30, 2026",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1089,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1145,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "S&P",
+     "Moody\u2019s",
+     "Fitch"
+    ],
+    [
+     "Credit ratings of senior unsecured debt",
+     "BBB+",
+     "A3",
+     "A"
+    ],
+    [
+     "Credit ratings outlook",
+     "Stable",
+     "Stable",
+     "Stable"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1152,
+    "end_line": 1158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION & ANALYSIS OF FINANCIAL CONDITION & RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "(1)See Note 6 to the TEC Condensed Financial Statements for details of the credit facility.\n(2)As defined in the instrument.\nCredit Ratings of Senior Unsecured Debt as of June 30, 2026",
+   "prose_after": "Certain of TEC\u2019s derivative instruments contain provisions that require TEC\u2019s debt to maintain investment-grade credit ratings.\nCommitments and Contingencies\nSee Note 8 to the TEC Condensed Financial Statements for information regarding TEC\u2019s commitments and contingencies as of June 30, 2026.\nRegulatory Matters\nSee Note 3 to the TEC Condensed Financial Statements for information regarding TEC\u2019s regulatory matters, including TEC's request for a base rate increase and TEC's storm restoration cost recovery.\nFair Value Measurements\nTEC considered the impact of nonperformance risk in determining the fair value of derivatives. TEC considered the net position with each counterparty, past performance and the intent of the parties, indications of credit deterioration and whether the markets in which TEC transacts have experienced dislocation. As of June 30, 2026, the fair value of derivatives was not materially affected by nonperformance risk.\nCritical Accounting Policies and Estimates\nCritical accounting policies and estimates have not materially changed in 2026. For further discussion of critical accounting policies and estimates, see TEC\u2019s Annual Report on Form 10-K for the year ended December 31, 2025.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1145,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1187,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "",
+     ""
+    ],
+    [
+     "No.",
+     "Description",
+     ""
+    ],
+    [
+     "3.1",
+     "Restated Articles of Incorporation of Tampa Electric Company, as amended on November 30, 1982 (Exhibit 3 to Registration Statement No. 2-70653 of Tampa Electric Company). (P)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Bylaws of Tampa Electric Company, as amended effective February 2, 2011 (Exhibit 3.4, Form 10-K for 2010 of Tampa Electric Company).",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Chief Executive Officer of Tampa Electric Company pursuant to Securities Exchange Act Rules 13a-14(a) and 15d-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Chief Financial Officer of Tampa Electric Company pursuant to Securities Exchange Act Rules 13a-14(a) and 15d-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certification of the Chief Executive Officer and Chief Financial Officer of Tampa Electric Company pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. (1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS**",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the inline XBRL document.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH**",
+     "Inline XBRL Taxonomy Extension Schema Document with Embedded Linkbase Documents.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL**",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF**",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB**",
+     "Inline XBRL Taxonomy Label Linkbase Document.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE**",
+     "Inline XBRL Taxonomy Presentation Linkbase Document.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted in Inline XBRL and contained in Exhibit 101).",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1196,
+    "end_line": 1229
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "(a)Evaluation of Disclosure Controls and Procedures. TEC\u2019s management, with the participation of its principal executive officer and principal financial officer, has evaluated the effectiveness of TEC\u2019s disclosure controls and procedures (as such term is defined in Rules 13a-15(e) and 15d-15(e) under the Exchange Act) as of June 30, 2026. Based on such evaluation, TEC\u2019s principal financial officer and principal executive officer have concluded that, as of June 30, 2026, TEC\u2019s disclosure controls and procedures are effective.\n(b)Changes in Internal Controls. There was no change in TEC\u2019s internal controls over financial reporting (as defined in Rules 13a\u201315(f) and 15d-15(f) under the Exchange Act) identified in connection with the evaluation of TEC\u2019s internal control over financial reporting that occurred during TEC\u2019s last fiscal quarter that has materially affected, or is reasonably likely to materially affect, such controls.\nPART II. OTHER INFORMATION\nItem 1. LEGAL PROCEEDINGS\nFrom time to time, TEC is involved in various legal, tax and regulatory proceedings before various courts, regulatory commissions and governmental agencies in the ordinary course of business. Where appropriate, accruals are made in accordance with accounting standards for contingencies to provide for matters that are probable of resulting in an estimable loss. For a discussion of legal proceedings and environmental matters, see Note 8 of the TEC Condensed Financial Statements.\nItem 6. EXHIBITS",
+   "prose_after": "(1)This certification accompanies the Quarterly Report on Form 10-Q and is not filed as part of it.\n* Indicates exhibit previously filed with the Securities and Exchange Commission and incorporated herein by reference. Exhibits filed with periodic reports of TECO Energy, Inc. and TEC were filed under Commission File Nos. 1-8180 and 1-5007, respectively.\n** The XBRL related information in Exhibit 101 to this quarterly report on Form 10-Q shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to liability of that section and shall not be incorporated by reference into any filing or other document pursuant to the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing or document.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1187,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1236,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "TAMPA ELECTRIC COMPANY",
+     ""
+    ],
+    [
+     "",
+     "(Registrant)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 7, 2026",
+     "By:",
+     "/s/ JARED GREEN"
+    ],
+    [
+     "",
+     "",
+     "  Jared Green"
+    ],
+    [
+     "",
+     "",
+     "  Treasurer and Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "  (Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "TAMPA ELECTRIC COMPANY",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1241,
+    "end_line": 1251
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Segment Information"
+    }
+   },
+   "prose_before": "(1)This certification accompanies the Quarterly Report on Form 10-Q and is not filed as part of it.\n* Indicates exhibit previously filed with the Securities and Exchange Commission and incorporated herein by reference. Exhibits filed with periodic reports of TECO Energy, Inc. and TEC were filed under Commission File Nos. 1-8180 and 1-5007, respectively.\n** The XBRL related information in Exhibit 101 to this quarterly report on Form 10-Q shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to liability of that section and shall not be incorporated by reference into any filing or other document pursuant to the Securities Act of 1933, as amended, except as shall be expressly set forth by specific reference in such filing or document.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1236,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1252,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

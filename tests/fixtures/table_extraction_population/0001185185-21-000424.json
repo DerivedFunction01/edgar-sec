@@ -1,0 +1,7372 @@
+{
+ "accession": "0001185185-21-000424",
+ "cik": "0001694617",
+ "form": "10-K",
+ "filing_date": "2021-03-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "royaleinc20201231_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Fiscal Year Ended December 31, 2020",
+     "Commission File No. 055912"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 12,
+    "end_line": 15
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\nANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "ROYALE ENERGY, INC.\n(Name of registrant in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "81-4596368"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "ROYALE ENERGY, INC.\n(Name of registrant in its charter)",
+   "prose_after": "1870 Cordell Court\nEl Cajon, CA 92020\n(Address of principal executive offices)\nIssuer\u2019s telephone number: 619-383-6600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, par value .001 per share",
+     "ROYL",
+     "OTC: QB"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1870 Cordell Court\nEl Cajon, CA 92020\n(Address of principal executive offices)\nIssuer\u2019s telephone number: 619-383-6600\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities to be registered pursuant to Section 12(g) of the Act:\nCommon Stock, 0.001 par value per share\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "4"
+    ],
+    [
+     "Item 1 Description of Business",
+     "4"
+    ],
+    [
+     "Royale Business",
+     "4"
+    ],
+    [
+     "Plan of Business",
+     "5"
+    ],
+    [
+     "Competition, Markets and Regulation",
+     "6"
+    ],
+    [
+     "Item 2 Description of Property",
+     "7"
+    ],
+    [
+     "California",
+     "7"
+    ],
+    [
+     "Texas",
+     "7"
+    ],
+    [
+     "Developed and Undeveloped Leasehold Acreage",
+     "8"
+    ],
+    [
+     "Gross and Net Productive Wells",
+     "8"
+    ],
+    [
+     "Drilling Activities",
+     "8"
+    ],
+    [
+     "Production",
+     "9"
+    ],
+    [
+     "Reserve Estimates",
+     "9"
+    ],
+    [
+     "Net Proved Oil and Natural Gas Reserves",
+     "9"
+    ],
+    [
+     "Item 3 Legal Proceedings",
+     "10"
+    ],
+    [
+     "Item 4 Mine Safety Disclosures",
+     "10"
+    ],
+    [
+     "PART II",
+     "11"
+    ],
+    [
+     "Item 3 Defaults Upon Senior Securities",
+     ""
+    ],
+    [
+     "Item 1",
+     "11"
+    ],
+    [
+     "Item 5 Market for Common Equity and Related Stockholder Matters",
+     "11"
+    ],
+    [
+     "Transfer Agent",
+     "11"
+    ],
+    [
+     "Dividends",
+     "11"
+    ],
+    [
+     "Recent Sales of Unregistered Securities",
+     "11"
+    ],
+    [
+     "Item 2",
+     "11"
+    ],
+    [
+     "Item 7 Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "11"
+    ],
+    [
+     "Global Pandemic",
+     "11"
+    ],
+    [
+     "General",
+     "11"
+    ],
+    [
+     "Critical Accounting Policies",
+     "12"
+    ],
+    [
+     "Results of Operations for the Year Ended December 31, 2020, as Compared to the Year Ended December 31, 2019",
+     "15"
+    ],
+    [
+     "Capital Resources and Liquidity",
+     "16"
+    ],
+    [
+     "Changes in Reserve Estimates",
+     "17"
+    ],
+    [
+     "Item 7A     Qualitative and Quantitative Disclosures About Market Risk",
+     "17"
+    ],
+    [
+     "Item 8     Financial Statements and Supplementary Data",
+     "17"
+    ],
+    [
+     "Item 9     Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "18"
+    ],
+    [
+     "Item 9A     Controls and Procedures",
+     "18"
+    ],
+    [
+     "Material Weakness and Remediation",
+     "18"
+    ],
+    [
+     "Attestation Report of the Independent Registered Public Accounting Firm.",
+     "18"
+    ],
+    [
+     "Changes in Internal Control over Financial Reporting",
+     "18"
+    ],
+    [
+     "PART III",
+     "19"
+    ],
+    [
+     "Item 10 Directors and Executive Officers of the Registrant",
+     "19"
+    ],
+    [
+     "Audit Committee",
+     "20"
+    ],
+    [
+     "Code of Business Conduct and Ethics",
+     "21"
+    ],
+    [
+     "Compliance with Section 16(a) of the Exchange Act",
+     "21"
+    ],
+    [
+     "Item 11     Executive Compensation",
+     "21"
+    ],
+    [
+     "Stock Options and Equity Compensation; Outstanding Equity Awards at Fiscal Year End",
+     "22"
+    ],
+    [
+     "Compensation Committee Report",
+     "22"
+    ],
+    [
+     "Compensation Discussion and Analysis",
+     "22"
+    ],
+    [
+     "Compensation of Directors",
+     "23"
+    ],
+    [
+     "Item 12 Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "23"
+    ],
+    [
+     "Common Stock",
+     "23"
+    ],
+    [
+     "Item 13     Certain Relationships and Related Transactions",
+     "24"
+    ],
+    [
+     "Item 14     Principal Accountant Fees and Services",
+     "24"
+    ],
+    [
+     "PART IV",
+     "25"
+    ],
+    [
+     "Item 15 Exhibits and Financial Statement Schedules",
+     "25"
+    ],
+    [
+     "SIGNATURES",
+     "27"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 80,
+    "end_line": 137
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer [ ]   Accelerated filer [ ]\nNon-accelerated filer [ ]     Smaller Reporting Company [X]\nEmerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAt June 30, 2020, the end of the registrant\u2019s most recently completed second fiscal quarter; the aggregate market value of common equity held by non-affiliates was $3,376,913.\nAt February 17, 2021, 55,192,846 shares of registrant\u2019s Common Stock were outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1 Description of Business\nRoyale Energy, Inc. (\u201cRoyale\u201d or the \u201cCompany\u201d) is an independent oil and natural gas producer incorporated under the laws of Delaware. Royale\u2019s principal lines of business are the production and sale of oil and natural gas, acquisition of oil and gas lease interests and proved reserves, drilling of both exploratory and development wells, and sales of fractional working interests in wells to be drilled by Royale. Royale was incorporated in Delaware in 2017 and is the successor by merger (as described below) to Royale Energy Funds, Inc., a California corporation formed in 1983. On December 31, 2020, Royale and its consolidated subsidiaries had 11 full time employees.\nRMX Joint Venture\nOn April 4, 2018, RMX Resources, LLC (\u201cRMX\u201d), CIC RMX LP (\u201cCIC\u201d), and Royale Energy Funds, Inc., (\u201cREF\u201d), and Matrix Oil Management Corporation (\u201cMatrix\u201d), entered into a Subscription and Contribution Agreement (the \u201cContribution Agreement\u201d) and certain other agreements contemplated therein (the \u201cTransaction\u201d). The Contribution Agreement provided that Royale, REF and Matrix would contribute certain assets to RMX Resources, LLC (\u201cRMX\u201d), a newly formed Texas limited liability company. In exchange for its contributed assets, Royale received a 20% equity interest in RMX, an equity performance incentive interest and $20.0 million to satisfy Matrix\u2019s current senior lender, Arena Limited SPV, LLC, in full, and to pay REF, Matrix and Royale\u2019s trade payables and other outstanding obligations. CIC contributed an aggregate of $25.0 million in cash to RMX in exchange for (i) an 80% equity interest in RMX, with preferred distributions until certain thresholds are met, (ii) a warrant (\u201cWarrant\u201d) to acquire up to 4,000,000 shares of Royale\u2019s common stock at an exercise price of $0.01 per share and registration rights pursuant to a Registration Rights Agreement (\u201cRegistration Rights Agreement\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 137,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Developed",
+     "",
+     "",
+     "",
+     "Undeveloped",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Acres",
+     "",
+     "Net Acres",
+     "",
+     "Gross Acres",
+     "",
+     "Net Acres",
+     ""
+    ],
+    [
+     "California",
+     "",
+     "5,092.76",
+     "",
+     "3,890.17",
+     "",
+     "11,431.00",
+     "",
+     "3,308.42"
+    ],
+    [
+     "Texas",
+     "",
+     "7,865.00",
+     "",
+     "7,575.22",
+     "",
+     "640.00",
+     "",
+     "128.00"
+    ],
+    [
+     "All Other States",
+     "",
+     "2,347.89",
+     "",
+     "1,439.91",
+     "",
+     "6,481.00",
+     "",
+     "6,481.00"
+    ],
+    [
+     "Total",
+     "",
+     "15,305.65",
+     "",
+     "12,905.30",
+     "",
+     "18,552.00",
+     "",
+     "9,917.42"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 235,
+    "end_line": 246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "Following is a discussion of Royale\u2019s significant oil and natural gas properties. Reserves at December 31, 2020, for each property discussed below, have been determined by Netherland, Sewell & Associates, Inc., registered professional petroleum engineers, in accordance with reports submitted to Royale on February 3, 2021.\nCalifornia\nRoyale owns interests in nine gas fields with locations ranging throughout the Sacramento Basin in California. At December 31, 2020, Royale operated 12 wells and owns interests in 21 non-operated wells in Northern California and 6 non-operated wells in Southern and Central California. Our California estimated total proven, developed, and undeveloped net reserves are approximately 9.303 BCFE, according to Royale\u2019s independently prepared reserve report as of December 31, 2020.\nTexas\nAt December 31, 2020, Royale owned and operated interests in 46 wells in its Jameson field. Our Texas estimated total proven, developed, and undeveloped net reserves are approximately 216.6 MBOE, according to Royale\u2019s independently prepared reserve report as of December 31, 2020.",
+   "prose_after": "Developed and Undeveloped Leasehold Acreage\nAs of December 31, 2020, and 2019, Royale owned leasehold interests in the following developed and undeveloped properties in both gross and net acreage.\nGross and Net Productive Wells\nAs of December 31, 2020 and 2019, Royale owned interests in the following oil and gas wells in both gross and net acreage:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 212,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Gross Wells",
+     "",
+     "Net Wells",
+     "",
+     "Gross Wells",
+     "",
+     "Net Wells",
+     ""
+    ],
+    [
+     "Natural Gas",
+     "",
+     "38",
+     "",
+     "12.3241",
+     "",
+     "37",
+     "",
+     "13.0576"
+    ],
+    [
+     "Oil",
+     "",
+     "29",
+     "",
+     "19.0597",
+     "",
+     "34",
+     "",
+     "24.0716"
+    ],
+    [
+     "Total",
+     "",
+     "67",
+     "",
+     "31.3838",
+     "",
+     "71",
+     "",
+     "37.1292"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 255,
+    "end_line": 265
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "Developed and Undeveloped Leasehold Acreage\nAs of December 31, 2020, and 2019, Royale owned leasehold interests in the following developed and undeveloped properties in both gross and net acreage.\nGross and Net Productive Wells\nAs of December 31, 2020 and 2019, Royale owned interests in the following oil and gas wells in both gross and net acreage:",
+   "prose_after": "Drilling Activities\nThe following table sets forth Royale\u2019s drilling activities during the years ended December 31, 2020 and 2019. All wells are located in the Continental U.S., in California, Texas, Louisiana, Colorado and Utah.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "Type of Well(a)",
+     "",
+     "",
+     "Gross Wells(b)",
+     "",
+     "",
+     "",
+     "Net Wells(e)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total",
+     "",
+     "Producing(c)",
+     "",
+     "Dry(d)",
+     "",
+     "Producing(c)",
+     "",
+     "Dry(d)",
+     ""
+    ],
+    [
+     "2019",
+     "Exploratory",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "Developmental",
+     "",
+     "10",
+     "",
+     "8",
+     "",
+     "2",
+     "",
+     "1.7859",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "Exploratory",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "Developmental",
+     "",
+     "5",
+     "",
+     "5",
+     "",
+     "0",
+     "",
+     "1.2718",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 270,
+    "end_line": 282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "Drilling Activities\nThe following table sets forth Royale\u2019s drilling activities during the years ended December 31, 2020 and 2019. All wells are located in the Continental U.S., in California, Texas, Louisiana, Colorado and Utah.",
+   "prose_after": "a) An exploratory well is one that is drilled in search of new oil and natural gas reservoirs, or to test the boundary limits of a previously discovered reservoir. A developmental well is one drilled on a previously known productive area of an oil and natural gas reservoir with the objective of completing that reservoir.\nb) Gross wells represent the number of actual wells in which Royale owns an interest. Royale\u2019s interest in these wells may range from 1% to 100%.\nc) A producing well is one that produces oil and/or natural gas that is being purchased on the market.\nd) A dry well is a well that is not deemed capable of producing hydrocarbons in paying, marketable, quantities.\ne) One \u201cnet well\u201d is deemed to exist when the sum of fractional ownership working interests in gross wells or acres equals one. The number of net wells is the sum of the fractional working interests owned in gross wells expressed as a whole number or a fraction.\nProduction\nThe following table summarizes, for the periods indicated, Royale\u2019s net share of oil and natural gas production, average sales price per barrel (BBL), per thousand cubic feet (MCF) of natural gas, and the MCF equivalent (MCFE) for the barrels of oil based on a 6 to 1 ratio of the price per barrel of oil to the price per MCF of natural gas. \u201cNet\u201d production is production that Royale owns either directly or indirectly through partnership or joint venture interests produced to its interest after deducting royalty, limited partner or other similar interests. Royale generally sells its oil and natural gas at prices then prevailing on the \u201cspot market\u201d and does not have any material long term contracts for the sale of natural gas at a fixed price.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Net volume",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil (BBL)",
+     "",
+     "31,210",
+     "",
+     "27,663"
+    ],
+    [
+     "Gas (MCF)",
+     "",
+     "160,406",
+     "",
+     "292,472"
+    ],
+    [
+     "MCFE",
+     "",
+     "347,666",
+     "",
+     "458,450"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average sales price",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil (BBL)",
+     "$",
+     "37.96",
+     "$",
+     "54.40"
+    ],
+    [
+     "Gas (MCF)",
+     "$",
+     "2.23",
+     "$",
+     "2.82"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net production costs and taxes",
+     "$",
+     "1,397,673",
+     "$",
+     "1,764,538"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lifting costs (per MCFE)",
+     "$",
+     "4.02",
+     "$",
+     "3.85"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 297,
+    "end_line": 313
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "e) One \u201cnet well\u201d is deemed to exist when the sum of fractional ownership working interests in gross wells or acres equals one. The number of net wells is the sum of the fractional working interests owned in gross wells expressed as a whole number or a fraction.\nProduction\nThe following table summarizes, for the periods indicated, Royale\u2019s net share of oil and natural gas production, average sales price per barrel (BBL), per thousand cubic feet (MCF) of natural gas, and the MCF equivalent (MCFE) for the barrels of oil based on a 6 to 1 ratio of the price per barrel of oil to the price per MCF of natural gas. \u201cNet\u201d production is production that Royale owns either directly or indirectly through partnership or joint venture interests produced to its interest after deducting royalty, limited partner or other similar interests. Royale generally sells its oil and natural gas at prices then prevailing on the \u201cspot market\u201d and does not have any material long term contracts for the sale of natural gas at a fixed price.",
+   "prose_after": "Reserve Estimates\nManagement has established, and is responsible for, internal controls designed to provide reasonable assurance that the estimates of Proved Reserves are computed and reported in accordance with rules and regulations promulgated by the SEC as well as established industry practices used by independent engineering firms and our peers. These internal controls include documented process workflows and qualified professional engineering and geological personnel with specific reservoir experience. Our internal processes and controls surrounding this process are routinely tested. We also retain outside independent engineering firms to prepare estimates of our Proved Reserves. Management reviews and approves our reserve estimates, whether prepared internally or by third parties. Our Chief Executive Officer oversaw our outside independent engineering firm, Netherland, Sewell & Associates, Inc. (\"NSAI\"), in connection with the preparation of their estimates of our Proved Reserves as of December 31, 2020. We also regularly communicate with NSAI throughout the year regarding technical and operational matters critical to our reserve estimations. Our Chief Executive Officer, with input from other members of management, is responsible for the selection of our third-party engineering firms and review of the reports generated. Our Chief Executive Officer has over 36 years of experience in the oil and natural gas industry and is a graduate of the University of Oklahoma with a degree in Chemical Engineering. During his career, he has had various relevant responsibilities in technical and leadership roles including asset management, drilling and completions, production engineering, reservoir engineering and reserves management, economic evaluations and field development in U.S. onshore projects. The third-party engineering reports are also provided to the Audit Committee.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 325,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "1st Qtr",
+     "",
+     "",
+     "",
+     "2nd Qtr",
+     "",
+     "",
+     "",
+     "3rd Qtr",
+     "",
+     "",
+     "",
+     "4th Qtr",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "2019",
+     "$",
+     "0.35",
+     "$",
+     "0.15",
+     "$",
+     "0.33",
+     "$",
+     "0.23",
+     "$",
+     "0.26",
+     "$",
+     "0.17",
+     "$",
+     "0.19",
+     "$",
+     "0.10"
+    ],
+    [
+     "2020",
+     "$",
+     "0.24",
+     "$",
+     "0.07",
+     "$",
+     "0.18",
+     "$",
+     "0.08",
+     "$",
+     "0.18",
+     "$",
+     "0.10",
+     "$",
+     "0.13",
+     "$",
+     "0.08"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 340,
+    "end_line": 348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2019, Royale had proved developed reserves of 2,790,300 MCF and total proved reserves of 4,306,900 MCF of natural gas. For the same period, Royale also had proved developed oil and natural gas liquid combined reserves of 232,200 BBL and total proved oil and natural gas liquid combined reserves of 2,171,000 BBL.\nOil and gas reserve estimates and the discounted present value estimates associated with the reserve estimates are based on numerous engineering, geological and operational assumptions that generally are derived from limited data.\nItem 3 Legal Proceedings\nNone.\nItem 4 Mine Safety Disclosures\nNot Applicable\nPART II\nItem 5 Market for Common Equity and Related Stockholder Matters\nRoyale\u2019s Common Stock is traded on the OTC QB Market under the symbol \u201cROYL.\u201d As of December 31, 2020, 54,605,488 shares of Common Stock were held by approximately 5,018 stockholders. As of December 31, 2019, 51,854,136 shares of Royale\u2019s Common Stock were held by approximately 4,160 stockholders. The following table reflects the high and low quarterly closing sales prices on the Nasdaq Stock Market and OTC QB Market from January 2019 through December 2020:",
+   "prose_after": "Transfer Agent\nThe Company utilizes the independent transfer agent services of American Stock Transfer & Trust Company as its transfer agent.\nDividends\nThe Board of Directors did not issue cash dividends in either 2020 or 2019. The Board of Directors did declare dividends during 2020 and 2019 on the preferred stock to be Paid In Kind (\u201cPIK\u201d) of 76,290 and 73,473 shares with a respective par value of $762,900 and $734,725, as more fully set forth in Note 7 to our Financial Statements.\nRecent Sales of Unregistered Securities\nNone.\nItem 7 Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n2020 Challenges\nIn December 2019, a novel strain of coronavirus (which triggers a respiratory disease called COVID-19) was reported in Wuhan, China. The World Health Organization has declared the outbreak to constitute a \u201cPublic Health Emergency of International Concern.\u201d The COVID-19 outbreak has caused a major reduction in the consumption of hydrocarbon-based transportation fuels as airlines have grounded flights worldwide and countries around the world have asked residents to suspend automobile travel. In addition to a substantial loss of demand for crude oil, in March 2020, Saudi Arabia entered into a price war with Russia and added additional supplies of crude oil to an already over supplied market. The result has been a precipitous decline in the price of crude oil received by the Company. As a result, the Company has seen a reduction in its oil and natural gas revenues and resulting cash flows for the year 2020.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 333,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "$",
+     "(2,674,329)",
+     "",
+     "$",
+     "(845,071)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(12,949)",
+     "",
+     "",
+     "(20,559)",
+     ""
+    ],
+    [
+     "Gain (Loss) on Investment in Joint Venture",
+     "",
+     "(6,185,995)",
+     "",
+     "",
+     "(397,936)",
+     ""
+    ],
+    [
+     "Gain on Settlement of Payables",
+     "",
+     "166,300",
+     "",
+     "",
+     "897,708",
+     ""
+    ],
+    [
+     "Other Gain",
+     "",
+     "551,906",
+     "",
+     "",
+     "172,523",
+     ""
+    ],
+    [
+     "Gain (Loss) on Sale of Assets, net",
+     "",
+     "6,920",
+     "",
+     "",
+     "(155,048)",
+     ""
+    ],
+    [
+     "Loss Before Income Tax Expense",
+     "$",
+     "(8,148,147)",
+     "",
+     "$",
+     "(348,383)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 455,
+    "end_line": 470
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "At December 31, 2020, the Company has an accumulated deficit of $82,298,785, a working capital deficiency of $4,044,437 and a stockholders\u2019 deficit of $28,360,701. As a result, our financial statements include a \u201cgoing concern qualification\u201d reflecting substantial doubt as to our ability to continue as a going concern. See Note 1 to our audited financial statements. We do not possess funds necessary to implement our 2021 budget. Royale is in the process of selling two property groups and has recorded a current asset of $1.5 million as Long-Term Assets Held for Sale. In addition, we are exploring commitments to provide additional financing, but there is no guarantee that we will be able to secure additional financing on acceptable terms, or at all, if needed to fully fund our 2021 drilling budget and to support future operations.\nResults of Operations for the Year Ended December 31, 2020, as Compared to the Year Ended December 31, 2019\nFor the year ended December 31, 2020, we had a net loss of $8,148,147 compared to the net loss of $348,383 during the year in 2019. The table below reflects the major components of other income and expense.",
+   "prose_after": "In 2020, the majority of the net loss resulted from a $6,185,995 write down of our investment in RMX Resources, LLC, due to year end 2020 reserve valuations and other considerations, see Note 2 \u2013 RMX Joint Venture. In 2019, the majority of the loss resulted from a loss from Operations of $845,071.\nDuring the year ended 2020, revenues from oil and gas production decreased $786,472 or 33.8% to $1,542,803 from the 2019 revenue of $2,329,275. This decrease was due to lower prices realized for the sale of oil and gas in 2020. The net sales volume of oil for the year ended December 31, 2020 was 31,210 barrels of oil with an average price of $37.96 versus approximately 27,663 barrels with an average price of $54.40 per barrel, for the year in 2019. This represents an increase in net sales volume of 3,547 barrels or 12.8%. The net sales volume of natural gas for the year ended December 31, 2020, was approximately 160,406 Mcf with an average price of $2.23 per Mcf, versus 292,472 Mcf with an average price of $2.82 per Mcf for the year in 2019. This represents a decrease in net sales volume of 132,066 Mcf or 45.2%. The decrease in natural gas production volume was due to certain wells that were offline and waiting on workovers and to lower volumes on existing wells due to natural declines.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 446,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "First Became Director\n\n\n\nor Executive Officer",
+     "Positions\n\n\n\nHeld"
+    ],
+    [
+     "Robert Vogel (4)",
+     "61",
+     "2018",
+     "Chairman of the Board"
+    ],
+    [
+     "Mel G. Riggs (1)(2)(3)(4)",
+     "66",
+     "2018",
+     "Director"
+    ],
+    [
+     "Jonathan Gregory",
+     "56",
+     "2014",
+     "Vice-Chair of the Board of Directors"
+    ],
+    [
+     "Johnny Jordan",
+     "60",
+     "2018",
+     "Chief Executive and Operating officer and Director"
+    ],
+    [
+     "Thomas M. Gladney (1) (2)(3)(4)",
+     "68",
+     "2018",
+     "Director"
+    ],
+    [
+     "Karen Kerns (1) (2)(3)(4)",
+     "62",
+     "2019",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 555,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the registered public accounting firm pursuant to rules of the Securities and Exchange Commission that permit the Company to provide only management\u2019s report in this annual report.\nChanges in Internal Control over Financial Reporting\nOther than the remedial activities described above, no changes in our internal control over financial reporting occurred during the year ended December 31, 2020 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nPART III\nItem 10 Directors and Executive Officers of the Registrant\nAll of our directors serve one-year terms from the time of their election to the time their successor is elected and qualified. The following information is furnished with respect to each director and executive officer who served as such during the fiscal year ended December 31, 2020:",
+   "prose_after": "(1) Members of the Audit Committee\n(2) Members of the compensation committee\n(3) Members of the nominations committee\n(4) Members identified as independent\nThe board has determined that directors Mel G. Riggs, Thomas M. Gladney, Karen Kerns and Robert Vogel qualify as independent directors.\nThe following summarizes the business experience of each director and executive officer for the past six years.\nRobert Vogel \u2013 Chairman of the Board\nRobert Vogel has been Senior managing Director at Peapack-Gladstone Bank since December 2020. In 2020, Peapack-Gladstone Bank merged the business of Lucas Capital Management, a NJ wealth management firm at which Mr. Vogel was a Principal since 2016. He has started working at Lucas Capital Management in March 2008. He is a seasoned executive with an extensive background in the energy industry. Mr. Vogel previously was Vice President and Treasurer of Hess Corporation. He serves as the Chairman of BlinkNow Foundation, an organization that supports women and children in Nepal. Mr. Vogel holds a BS in Chemical Engineering from the University of Colorado and an MBA from New York University.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 590,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "Year",
+     "Salary (3)",
+     "",
+     "Bonus",
+     "",
+     "Option Awards\n(1)",
+     "",
+     "All Other Compensation (2)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Johnny Jordan (5)",
+     "2020",
+     "$",
+     "255,769",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "7,500",
+     "$",
+     "263,269"
+    ],
+    [
+     "(CEO)",
+     "2019",
+     "$",
+     "255,769",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "255,769"
+    ],
+    [
+     "",
+     "2018",
+     "$",
+     "213,141",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "213,141"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jonathan Gregory (4)",
+     "2020",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "(Vice-Chair)",
+     "2019",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "2018",
+     "$",
+     "72,909",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "9,583",
+     "$",
+     "82,492"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Donald Hosmer",
+     "2020",
+     "$",
+     "185,177",
+     "$",
+     "49,554",
+     "",
+     "",
+     "$",
+     "18,930",
+     "$",
+     "253,661"
+    ],
+    [
+     "(Business Development)",
+     "2019",
+     "$",
+     "189,344",
+     "$",
+     "95,193",
+     "",
+     "",
+     "$",
+     "18,930",
+     "$",
+     "303,467"
+    ],
+    [
+     "",
+     "2018",
+     "$",
+     "236,331",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "18,930",
+     "$",
+     "255,261"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen Hosmer",
+     "2020",
+     "$",
+     "230,192",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "18,906",
+     "$",
+     "249,098"
+    ],
+    [
+     "(CFO)",
+     "2019",
+     "$",
+     "230,192",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "18,906",
+     "$",
+     "249,098"
+    ],
+    [
+     "",
+     "2018",
+     "$",
+     "230,192",
+     "",
+     "",
+     "$",
+     "64,954",
+     "$",
+     "18,750",
+     "$",
+     "313,896"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 627,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "We have adopted a code of business conduct and ethics for our directors and executive officers. The code is posted on our website, www.royl.com.\nCompliance with Section 16(a) of the Exchange Act\nSection 16(a) of the Securities Exchange Act of 1934 and Securities and Exchange Commission regulations require that Royale\u2019s directors, certain officers, and greater than 10 percent shareholders file reports of ownership and changes in ownership with the SEC and the NASD and furnish Royale with copies of all such reports they file. Based solely upon a review of the copies of the forms furnished to Royale, or representations from certain reporting persons that no reports were required, Royale believes that no persons failed to file required reports on a timely basis for 2020.\nItem 11 Executive Compensation\nThe following table summarizes the compensation of the chief executive officer, chief financial officer and the one other most highly compensated non-executive employee of Royale and its subsidiaries during the past three years.\nSUMMARY COMPENSATION TABLE",
+   "prose_after": "(1) On October 10, 2018, the Company entered into an agreement to issue Mr. Hosmer 250,000 options to purchase common stock previously approved by the Board of Directors with an exercise price of $0.31. These options were granted for a period of ten years with a maturity date of October 9, 2028.\n(2) All other compensation consists of matching contributions to the Company\u2019s simple IRA plan, except for Donald H. Hosmer and Stephen M. Hosmer, who also received a $12,000 car allowance. This category also includes Board fees for Mr. Gregory.\n(3) Salary represents either direct payroll or common stock paid in lieu of taking a cash salary.\n(4) Mr. Gregory served as CEO of the Company during 2016, 2017 and part of 2018. Mr. Gregory resigned from the CEO position with the execution of the RMX joint venture.\n(5) Mr. Jordan became CEO of the Company in January 2019. Mr. Jordan joined the Company upon the merger with the Matrix entities on March 7, 2018.\nStock Options and Equity Compensation; Outstanding Equity Awards at Fiscal Year End",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 657,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees paid in Cash or Common Stock",
+     "",
+     "Stock awards",
+     "",
+     "Option awards",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Mel G. Riggs",
+     "$",
+     "44,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "44,000"
+    ],
+    [
+     "Thomas M. Gladney",
+     "$",
+     "44,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "44,000"
+    ],
+    [
+     "Karen Kerns",
+     "$",
+     "44,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "44,000"
+    ],
+    [
+     "Robert Vogel",
+     "$",
+     "44,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "44,000"
+    ],
+    [
+     "Jonathan Gregory",
+     "$",
+     "33,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "33,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 700,
+    "end_line": 709
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "Bonus. The compensation committee meets annually to determine the quantity, if any, of the cash bonuses of executive officers. The amount granted is based, subjectively, upon the Company\u2019s stock price performance, earnings, revenue, reserves and production. The committee does not use quantifiable metrics for these criteria; but rather uses each in balance to assess the strength of the Company\u2019s performance. The committee believes that formulaic approaches to cash incentives can foster an unhealthy balance between short-term and long-term goals. No cash bonuses were paid to executive officers in 2020 or 2019, other than those listed for Donald Hosmer in the table above.\nCompensation of Directors\nIn 2020, board members or committee member accrued or received fees for attendance at board meetings or committee meetings during the year. In addition to cash payments, Common Stock was issued in lieu of compensation or reimbursements. Royale also reimbursed directors for the expenses incurred for their services.\nThe following table describes the compensation paid to our directors who are not also named executives for their services in 2020.",
+   "prose_after": "Item 12 Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nCommon Stock\nAt February 17, 2021, 55,192,846 shares of registrant\u2019s Common Stock were outstanding.\nThe following table contains information regarding the ownership of Royale\u2019s Common Stock as March 6, 2021, by each director and executive officer of Royale, and all directors and officers of Royale as a group.\nExcept pursuant to applicable community property laws and except as otherwise indicated, each shareholder identified in the table below possesses sole voting and investment power with respect to her or his shares. The holdings reported are based on reports filed with the Securities and Exchange Commission and the Company by the officers and directors.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Insider Holdings",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder (1)",
+     "Number",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "Stephen M. Hosmer (2)",
+     "",
+     "1,140,229",
+     "",
+     "2.07",
+     "%"
+    ],
+    [
+     "Johnny Jordan (3)",
+     "",
+     "21,195,747",
+     "",
+     "38.40",
+     "%"
+    ],
+    [
+     "Jonathan Gregory (4)",
+     "",
+     "758,409",
+     "",
+     "1.37",
+     "%"
+    ],
+    [
+     "Mel G. Riggs",
+     "",
+     "459,396",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Karen Kerns",
+     "",
+     "-",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Thomas M. Gladney",
+     "",
+     "532,203",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Robert Vogel",
+     "",
+     "471,831",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All officers and directors as a group",
+     "",
+     "24,557,815",
+     "",
+     "44.49",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Insider Holdings"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 720,
+    "end_line": 733
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "Item 12 Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nCommon Stock\nAt February 17, 2021, 55,192,846 shares of registrant\u2019s Common Stock were outstanding.\nThe following table contains information regarding the ownership of Royale\u2019s Common Stock as March 6, 2021, by each director and executive officer of Royale, and all directors and officers of Royale as a group.\nExcept pursuant to applicable community property laws and except as otherwise indicated, each shareholder identified in the table below possesses sole voting and investment power with respect to her or his shares. The holdings reported are based on reports filed with the Securities and Exchange Commission and the Company by the officers and directors.",
+   "prose_after": "* Less than 1%.\n(1) The mailing address of each listed stockholder is 1870 Cordell Court, Suite 210, El Cajon, California 92020.\n(2) Includes 6,000 shares owned by Stephen M. Hosmer's minor children.\n(3) Includes 9,858,160 shares issuable upon conversion of Series B Convertible Preferred Stock.\n(4) Includes 35,000 shares owned by Mr. Gregory's son.\nThe following table contains information regarding the ownership of Royale\u2019s Common Stock as March 6, 2020, by each person who is known by Royale to own beneficially more than 5% of the outstanding shares of each class of equity securities. Except pursuant to applicable community property laws and except as otherwise indicated, each shareholder identified in the table possesses sole voting and investment power with respect to its or his shares. The holdings reported are based on reports filed with the Securities and Exchange Commission and the Company by the 5% shareholders.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ownership",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholder (1)",
+     "Number",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "Johnny Jordan (2)",
+     "",
+     "21,195,747",
+     "",
+     "38.40",
+     "%"
+    ],
+    [
+     "Jeff Kerns (3)",
+     "",
+     "18,139,303",
+     "",
+     "32.87",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Ownership"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "* Less than 1%.\n(1) The mailing address of each listed stockholder is 1870 Cordell Court, Suite 210, El Cajon, California 92020.\n(2) Includes 6,000 shares owned by Stephen M. Hosmer's minor children.\n(3) Includes 9,858,160 shares issuable upon conversion of Series B Convertible Preferred Stock.\n(4) Includes 35,000 shares owned by Mr. Gregory's son.\nThe following table contains information regarding the ownership of Royale\u2019s Common Stock as March 6, 2020, by each person who is known by Royale to own beneficially more than 5% of the outstanding shares of each class of equity securities. Except pursuant to applicable community property laws and except as otherwise indicated, each shareholder identified in the table possesses sole voting and investment power with respect to its or his shares. The holdings reported are based on reports filed with the Securities and Exchange Commission and the Company by the 5% shareholders.",
+   "prose_after": "(1) The mailing address of each listed stockholder is 1870 Cordell Court, Suite 210, El Cajon, California 92020.\n(2) Includes 9,858,160 shares issuable upon conversion of Series B Convertible Preferred Stock.\n(3) Includes 8,917,540 shares issuable upon conversion of Series B Convertible Preferred Stock.\nItem 13 Certain Relationships and Related Transactions\nOur Chief Executive, Johnny Jordan, has accrued certain unpaid salaries, which were assumed by the Company. At December 31, 2019 Mr. Jordan was owed $14,648 in accrued unpaid guaranteed payments.\nIn 2018 the board of directors terminated the policy allowing employees and directors to participate, at cost, in wells drilled by the Company. Under the prior policy our Chief Financial Officer, Stephen Hosmer, had participated individually in 179 wells under the 1989 policy. At December 31, 2020, the Company had a receivable balance of $17,101 due from Stephen Hosmer and $5,385 from Donald Hosmer for normal drilling and lease operating expenses.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 787,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "",
+     "270,375",
+     "",
+     "381,075"
+    ],
+    [
+     "Tax fees (2)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All other fees (3)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "",
+     "270,375",
+     "",
+     "381,075"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 771,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "At December 31, 2020, we had a total payable of $23,087 due to RMX Resources, LLC and its subsidiary, Matrix Oil Corporation, related to certain lease operating expenses for wells operated by RMX Resources, LLC. For the same period, the Company also had prepaid expenses and other current assets of $239,036 primarily for the drilling of two wells, expected to commence in 2021.\nRoyale had outstanding accrued unpaid guaranteed payments for unpaid salaries for periods predating their joining the Company due to certain former Matrix employees. At December 31, 2020, the balance due was $1,306,605.\nMichael McCaskey and Jeffery Kerns, each former directors of Royale, have consulting agreements to provide services as directed and at the discretion of the Company. Mr. Kerns wife is a director of Royale.\nItem 14 Principal Accountant Fees and Services\nMoss Adams LLP served as the independent registered accounting firm to audit the Company\u2019s financial statements for the fiscal year ended December 31, 2020 and 2019. The aggregate fees billed for the years ended December 31, 2020 and 2019 are as follows:",
+   "prose_after": "(1) Audit fees are fees for professional services rendered for the audit of Royale Energy's annual financial statements, reviews of financial statements included in the Company's Forms 10-Q, and reviews of documents filed with the U.S. Securities and Exchange Commission.\n(2) Tax fees consist of tax planning, consulting and tax return reviews.\n(3) Other fees consist of work on registration statements under the Securities Act of 1933.\nThe Company\u2019s audit committee has adopted policies for the pre-approval of all audit and non-audit services provided by the Company\u2019s independent auditor. The policy requires pre-approval by the audit committee of specifically defined audit and non-audit services. Unless the specific service has been previously pre-approved with respect to that year, the audit committee must approve the permitted service before the independent auditor is engaged to perform it.\nNo representatives of Moss Adams LLP are expected to be present at the annual meeting. Although the audit committee has the sole responsibility to appoint the auditors as required under the Securities Exchange Act of 1934, the committee welcomes any comments from the Company\u2019s shareholders on auditor selection or performance. Comments may be sent to the audit committee chair, Mel Riggs, care of the Company\u2019s executive office, 1870 Cordell Court, Suite 210, El Cajon, California 92020.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 742,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 787,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Royale Energy, Inc."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2021",
+     "/s/ Johnny Jordan"
+    ],
+    [
+     "",
+     "Johnny Jordan"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Royale Energy, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 815,
+    "end_line": 823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "21.1 Subsidiaries, filed herewith. 23.2 Consent of Netherland, Sewel & Associates, Inc., filed herewith 31.1 Rule 13a-14(a), 115d-14(a) Certification, filed herewith. 31.2 Rule 13a-14(a), 115d-14(a) Certification, filed herewith. 32.1 Section 1350 Certification, filed herewith. 32.2 Section 1350 Certification, filed herewith. 99.1 Report of Netherland, Sewell & Associates, Inc., filed herewith. 99.2 Consolidated Financial Statements of RMX Resources, LLC, filed herewith 101.INS* XBRL Instance Document 101.SCH* XBRL Taxonomy Extension Schema 101.CAL* XBRL Taxonomy Extension Calculation Linkbase 101.DEF* XBRL Taxonomy Extension Definition Linkbase 101.LAB* XBRL Taxonomy Extension Label Linkbase 101.PRE* XBRL Taxonomy Extension Presentation Linkbase\n* Pursuant to Rule 406T of Regulation S-T, these interactive data files are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933 or Section 18 of the Securities Exchange Act of 1934 and otherwise are not subject to liability.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 30, 2021",
+     "/s/ Stephen M. Hosmer"
+    ],
+    [
+     "",
+     "Stephen M. Hosmer"
+    ],
+    [
+     "",
+     "Chief Financial Officer, Secretary and Principle Accounting Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 824,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 30, 2021",
+     "/s/ Robert Vogel"
+    ],
+    [
+     "",
+     "Robert Vogel"
+    ],
+    [
+     "",
+     "Chairman of the Board of Directors"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2021",
+     "/s/ Jonathan Gregory"
+    ],
+    [
+     "",
+     "Jonathan Gregory"
+    ],
+    [
+     "",
+     "Vice-Chair of the Board of Directors"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2021",
+     "/s/ Thomas M. Gladney"
+    ],
+    [
+     "",
+     "Thomas M. Gladney"
+    ],
+    [
+     "",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2021",
+     "/s/ Karen Kerns"
+    ],
+    [
+     "",
+     "Karen Kerns"
+    ],
+    [
+     "",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 30, 2021",
+     "/s/ Mel Riggs"
+    ],
+    [
+     "",
+     "Mel Riggs"
+    ],
+    [
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 833,
+    "end_line": 859
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS\nAND SUPPLEMENTARY DATA",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED BALANCE SHEETS",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF OPERATIONS",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+     "F-8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS",
+     "F-9"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 878
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS\nAND SUPPLEMENTARY DATA",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and the Board of Directors of\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Royale Energy, Inc. (the \u201cCompany\u201d) as of December 31, 2020 and 2019, the related consolidated statements of operations, stockholders\u2019 equity and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the consolidated financial position of the Company as of December 31, 2020 and 2019, and the consolidated results of its operations and its cash flows for the years then ended, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern Uncertainty\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the consolidated financial statements, the Company has suffered recurring losses from operations and has a net capital deficiency that raise substantial doubt about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 1. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 859,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 878,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash equivalents",
+     "$",
+     "255,112",
+     "$",
+     "1,031,014"
+    ],
+    [
+     "Restricted Cash",
+     "",
+     "2,146,571",
+     "",
+     "2,845,515"
+    ],
+    [
+     "Other Receivables, net",
+     "",
+     "462,777",
+     "",
+     "1,189,892"
+    ],
+    [
+     "Revenue Receivables",
+     "",
+     "204,149",
+     "",
+     "589,151"
+    ],
+    [
+     "Assets Held For Sale",
+     "",
+     "1,529,141",
+     "",
+     "-"
+    ],
+    [
+     "Prepaid Expenses and Other Current Assets",
+     "",
+     "233,769",
+     "",
+     "376,587"
+    ],
+    [
+     "Prepaid Drilling to RMX Resources, LLC",
+     "",
+     "239,036",
+     "",
+     "2,680,155"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "5,070,555",
+     "",
+     "8,712,314"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in Joint Venture",
+     "",
+     "-",
+     "",
+     "6,185,995"
+    ],
+    [
+     "Other Assets",
+     "",
+     "583,554",
+     "",
+     "708,554"
+    ],
+    [
+     "Right of Use Asset - Operating Leases",
+     "",
+     "229,516",
+     "",
+     "392,774"
+    ],
+    [
+     "Oil and Gas Properties (Successful Efforts Basis), Real Property and Equipment and Fixtures, net",
+     "",
+     "2,541,001",
+     "",
+     "4,590,990"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "8,424,626",
+     "$",
+     "20,590,627"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 934,
+    "end_line": 959
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Obtaining the master spreadsheet for each selected well, recalculating the worksheet for clerical accuracy, and sampling the direct working interest (DWI) investors;\n\u25cf Obtaining signed field subscription agreement for each selected investor in each well, verifying the investment ownership amount per the signed field subscription agreement agreed to the amount invested and the number of units within the master spreadsheet, vouching the cash received from the DWI investors, and agreeing the significant terms to the related Private Placement Memorandum;\n\u25cf Obtaining a schedule of costs incurred to drill the selected well, recalculating the schedule for clerical accuracy, and obtaining support from management to substantiate the costs incurred; and\n\u25cf Obtaining evidence substantiating the timing and amount of the recognition of turnkey gain pertaining to a sample of wells drilled and assessing that the recognition of the turnkey gain was appropriate as defined under the terms of the Private Placement Memorandums.\nSan Diego, California\nMarch 30, 2021\nWe have served as the Company\u2019s auditor since 2019.\nCONSOLIDATED BALANCE SHEETS\nDECEMBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED BALANCE SHEETS (Continued)\nDECEMBER 31,",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 928,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable and Accrued Expenses",
+     "$",
+     "4,161,109",
+     "",
+     "$",
+     "6,031,034",
+     ""
+    ],
+    [
+     "Royalties Payable",
+     "",
+     "623,405",
+     "",
+     "",
+     "623,405",
+     ""
+    ],
+    [
+     "Notes Payable",
+     "",
+     "132,624",
+     "",
+     "",
+     "55,573",
+     ""
+    ],
+    [
+     "Due RMX Resources, LLC",
+     "",
+     "23,087",
+     "",
+     "",
+     "32,367",
+     ""
+    ],
+    [
+     "Operating Leases - Current",
+     "",
+     "178,120",
+     "",
+     "",
+     "162,272",
+     ""
+    ],
+    [
+     "Asset Retirement Obligation - Current",
+     "",
+     "869,147",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred Drilling Obligations",
+     "",
+     "3,127,500",
+     "",
+     "",
+     "5,232,675",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "9,114,992",
+     "",
+     "",
+     "12,137,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset Retirement Obligation",
+     "",
+     "2,478,350",
+     "",
+     "",
+     "3,632,423",
+     ""
+    ],
+    [
+     "Operating Leases - Non-current",
+     "",
+     "52,937",
+     "",
+     "",
+     "231,071",
+     ""
+    ],
+    [
+     "Accrued Unpaid Guaranteed Payments",
+     "",
+     "1,616,205",
+     "",
+     "",
+     "1,616,205",
+     ""
+    ],
+    [
+     "Accrued Liabilities - Non-current",
+     "",
+     "1,306,605",
+     "",
+     "",
+     "1,306,605",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "14,569,089",
+     "",
+     "",
+     "18,923,630",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mezzanine Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Preferred Stock, Series B, $10 par value, 3.5% annual\n\n\n\ndividend, 2,221,622 shares issued as of December 31, 2020",
+     "",
+     "22,216,238",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible Preferred Stock, Series B, $10 par value, 3,000,000 Shares Authorized, 2,145,332 shares issued / outstanding at December 31, 2019",
+     "",
+     "-",
+     "",
+     "",
+     "21,453,338",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, .001 Par Value, 280,000,000 Shares Authorized 54,605,488 and 51,854,136 shares issued / outstanding at December 31, 2020 and 2019 respectively",
+     "",
+     "54,605",
+     "",
+     "",
+     "51,854",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "53,883,479",
+     "",
+     "",
+     "53,549,543",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(82,298,785)",
+     "",
+     "",
+     "(73,387,738)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Stockholder\u2019s Equity (Deficit)",
+     "",
+     "(28,360,701)",
+     "",
+     "",
+     "1,666,997",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "8,424,626",
+     "",
+     "$",
+     "20,590,627",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 967,
+    "end_line": 1016
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED BALANCE SHEETS (Continued)\nDECEMBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of Oil and Gas",
+     "$",
+     "1,542,803",
+     "",
+     "$",
+     "2,329,275",
+     ""
+    ],
+    [
+     "Supervisory Fees and Other",
+     "",
+     "45,052",
+     "",
+     "",
+     "637,908",
+     ""
+    ],
+    [
+     "Total Revenues",
+     "",
+     "1,587,855",
+     "",
+     "",
+     "2,967,183",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease Operating",
+     "",
+     "1,397,673",
+     "",
+     "",
+     "1,764,538",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "-",
+     "",
+     "",
+     "977,682",
+     ""
+    ],
+    [
+     "Geological and Geophysical Expense",
+     "",
+     "14,392",
+     "",
+     "",
+     "264,219",
+     ""
+    ],
+    [
+     "Well Equipment Write Down",
+     "",
+     "-",
+     "",
+     "",
+     "28,343",
+     ""
+    ],
+    [
+     "Depreciation, Depletion and Amortization",
+     "",
+     "473,647",
+     "",
+     "",
+     "468,143",
+     ""
+    ],
+    [
+     "Bad Debt Expense",
+     "",
+     "1,008,003",
+     "",
+     "",
+     "60,512",
+     ""
+    ],
+    [
+     "General and Administrative",
+     "",
+     "2,109,232",
+     "",
+     "",
+     "1,991,819",
+     ""
+    ],
+    [
+     "Legal and Accounting",
+     "",
+     "279,227",
+     "",
+     "",
+     "751,935",
+     ""
+    ],
+    [
+     "Marketing",
+     "",
+     "113,614",
+     "",
+     "",
+     "414,971",
+     ""
+    ],
+    [
+     "Loss on Assets Held For Sale",
+     "",
+     "566,858",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Costs and Expenses",
+     "",
+     "5,962,646",
+     "",
+     "",
+     "6,722,162",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on Turnkey Drilling",
+     "",
+     "1,700,462",
+     "",
+     "",
+     "2,909,908",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from Operations",
+     "",
+     "(2,674,329)",
+     "",
+     "",
+     "(845,071)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(12,949)",
+     "",
+     "",
+     "(20,559)",
+     ""
+    ],
+    [
+     "Loss on Investment in Joint Venture",
+     "",
+     "(6,185,995)",
+     "",
+     "",
+     "(397,936)",
+     ""
+    ],
+    [
+     "Gain on Settlement of Payables",
+     "",
+     "166,300",
+     "",
+     "",
+     "897,708",
+     ""
+    ],
+    [
+     "Other Gain",
+     "",
+     "551,906",
+     "",
+     "",
+     "172,523",
+     ""
+    ],
+    [
+     "Gain (Loss) on Sale of Assets",
+     "",
+     "6,920",
+     "",
+     "",
+     "(155,048)",
+     ""
+    ],
+    [
+     "Loss Before Income Tax Expense",
+     "",
+     "(8,148,147)",
+     "",
+     "",
+     "(348,383)",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(8,148,147)",
+     "",
+     "",
+     "(348,383)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic Loss Per Share",
+     "",
+     "(0.17)",
+     "",
+     "",
+     "(0.02)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted Loss Per Share",
+     "",
+     "(0.17)",
+     "",
+     "",
+     "(0.02)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1024,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1018,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1070,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common\n\n\n\nShares",
+     "",
+     "Common\n\n\n\nAmount",
+     "",
+     "Preferred\n\n\n\nShares",
+     "",
+     "",
+     "Preferred\n\n\n\nAmount",
+     "",
+     "",
+     "APIC",
+     "",
+     "ACD",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2018 Balance",
+     "",
+     "49,421,387",
+     "$",
+     "49,421",
+     "",
+     "2,071,861",
+     "",
+     "$",
+     "20,718,613",
+     "",
+     "$",
+     "53,023,350",
+     "$",
+     "(72,304,630)",
+     "",
+     "$",
+     "1,486,754",
+     ""
+    ],
+    [
+     "Stock Issued in lieu of Compensation",
+     "",
+     "2,432,749",
+     "",
+     "2,433",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "526,193",
+     "",
+     "-",
+     "",
+     "",
+     "528,626",
+     ""
+    ],
+    [
+     "Preferred Series B 3.5% Dividend",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "73,473",
+     "",
+     "",
+     "734,725",
+     "",
+     "",
+     "-",
+     "",
+     "(734,725)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(348,383)",
+     "",
+     "",
+     "(348,383)",
+     ""
+    ],
+    [
+     "December 31, 2019 Balance",
+     "",
+     "51,854,136",
+     "",
+     "51,854",
+     "",
+     "2,145,334",
+     "",
+     "$",
+     "21,453,338",
+     "",
+     "$",
+     "53,549,543",
+     "$",
+     "(73,387,738)",
+     "",
+     "$",
+     "1,666,997",
+     ""
+    ],
+    [
+     "December 31, 2019 Balance",
+     "",
+     "51,854,136",
+     "$",
+     "51,854",
+     "",
+     "2,145,334",
+     "",
+     "$",
+     "21,453,338",
+     "",
+     "$",
+     "53,549,543",
+     "$",
+     "(73,387,738)",
+     "",
+     "$",
+     "1,666,997",
+     ""
+    ],
+    [
+     "Stock Issued in lieu of Compensation",
+     "",
+     "2,751,352",
+     "",
+     "2,751",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "333,936",
+     "",
+     "",
+     "",
+     "",
+     "336,687",
+     ""
+    ],
+    [
+     "Reclassify Preferred B to Mezzanine",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,164,054)",
+     "",
+     "",
+     "(21,640,538)",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(21,640,538)",
+     ""
+    ],
+    [
+     "Preferred Series B 3.5% Dividend",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "18,720",
+     "",
+     "",
+     "187,200",
+     "",
+     "",
+     "-",
+     "",
+     "(762,900)",
+     "",
+     "",
+     "(575,700)",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "(8,148,147)",
+     "",
+     "",
+     "(8,148,147)",
+     ""
+    ],
+    [
+     "December 31, 2020 Balance",
+     "",
+     "54,605,488",
+     "$",
+     "54,605",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "53,883,479",
+     "$",
+     "(82,298,785)",
+     "",
+     "$",
+     "(28,360,701)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1076,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1070,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 1099,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (Loss)",
+     "$",
+     "(8,148,147)",
+     "",
+     "$",
+     "(348,383)",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Loss to Net Cash Used by Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, Depletion, and Amortization",
+     "",
+     "473,647",
+     "",
+     "",
+     "468,143",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "-",
+     "",
+     "",
+     "977,682",
+     ""
+    ],
+    [
+     "(Gain) Loss on Sale of Assets",
+     "",
+     "(6,920)",
+     "",
+     "",
+     "155,048",
+     ""
+    ],
+    [
+     "Gain on Turnkey Drilling",
+     "",
+     "(1,700,462)",
+     "",
+     "",
+     "(2,909,908)",
+     ""
+    ],
+    [
+     "(Gain) Loss on Settlement of Accounts Payable",
+     "",
+     "(166,300)",
+     "",
+     "",
+     "(897,708)",
+     ""
+    ],
+    [
+     "Loss on Investment in Joint Venture",
+     "",
+     "6,185,995",
+     "",
+     "",
+     "397,936",
+     ""
+    ],
+    [
+     "Bad Debt Expense",
+     "",
+     "1,008,003",
+     "",
+     "",
+     "60,512",
+     ""
+    ],
+    [
+     "Loss on Assets Held For Sale",
+     "",
+     "566,858",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Geological & Geophysical Costs",
+     "",
+     "14,392",
+     "",
+     "",
+     "264,219",
+     ""
+    ],
+    [
+     "Gain on Other",
+     "",
+     "(271,310)",
+     "",
+     "",
+     "(172,523)",
+     ""
+    ],
+    [
+     "Stock-Based Compensation",
+     "",
+     "336,687",
+     "",
+     "",
+     "528,626",
+     ""
+    ],
+    [
+     "Well Equipment and Other Assets Write Down",
+     "",
+     "",
+     "",
+     "",
+     "28,343",
+     ""
+    ],
+    [
+     "Right of Use Asset Depreciation",
+     "",
+     "10,945",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "(Increase) Decrease in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other & Revenue Receivables",
+     "",
+     "46,210",
+     "",
+     "",
+     "84,372",
+     ""
+    ],
+    [
+     "Prepaid Expenses and Other Assets",
+     "",
+     "2,583,937",
+     "",
+     "",
+     "(2,679,919)",
+     ""
+    ],
+    [
+     "Increase (Decrease) in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable and Accrued Expenses",
+     "",
+     "(1,305,371)",
+     "",
+     "",
+     "866,092",
+     ""
+    ],
+    [
+     "Royalties Payable",
+     "",
+     "",
+     "",
+     "",
+     "(9,386)",
+     ""
+    ],
+    [
+     "Due to Affiliate",
+     "",
+     "(9,280)",
+     "",
+     "",
+     "(302,628)",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "(381,116)",
+     "",
+     "",
+     "(3,489,482)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenditures for Oil and Gas Properties",
+     "",
+     "(5,562,985)",
+     "",
+     "",
+     "(9,393,338)",
+     ""
+    ],
+    [
+     "Proceeds from Turnkey Drilling",
+     "",
+     "4,327,500",
+     "",
+     "",
+     "10,981,159",
+     ""
+    ],
+    [
+     "Proceeds from Sale of Assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Cash (Used In) Provided by Investing Activities",
+     "",
+     "(1,235,485)",
+     "",
+     "",
+     "1,587,821",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal Payments on Long-Term Debt",
+     "",
+     "(66,045)",
+     "",
+     "",
+     "(390,840)",
+     ""
+    ],
+    [
+     "Proceeds from Long-Term Debt",
+     "",
+     "207,800",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Seismic Financing Agreement Payments",
+     "",
+     "",
+     "",
+     "",
+     "(186,012)",
+     ""
+    ],
+    [
+     "Net Cash Provided by (Used In) Financing Activities",
+     "",
+     "141,755",
+     "",
+     "",
+     "(576,852)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash",
+     "",
+     "(1,474,846)",
+     "",
+     "",
+     "(2,478,513)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, Cash Equivalents, and Restricted Cash at Beginning of Year",
+     "",
+     "3,876,529",
+     "",
+     "",
+     "6,355,042",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, Cash Equivalents, and Restricted Cash at End of Year",
+     "$",
+     "2,401,683",
+     "",
+     "$",
+     "3,876,529",
+     ""
+    ],
+    [
+     "Cash Paid for Interest",
+     "$",
+     "12,949",
+     "",
+     "$",
+     "20,559",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Paid for Taxes",
+     "$",
+     "5,559",
+     "",
+     "$",
+     "19,374",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Schedule of Non-Cash Investing and Financing Transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (Decrease) in Capital Accrued Balance",
+     "$",
+     "(487,323)",
+     "",
+     "$",
+     "(94,546)",
+     ""
+    ],
+    [
+     "Series B Paid-In-Kind Dividends",
+     "$",
+     "762,900",
+     "",
+     "$",
+     "734,725",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for Accrued Compensation Expense",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1105,
+    "end_line": 1169
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED DECEMBER 31, 2020 AND 2019",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNOTE 1 \u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nThis summary of significant accounting policies of Royale Energy, Inc. (in these notes sometimes called \u201cRoyale Energy,\u201d \u201cRoyale,\u201d or the \u201cCompany\u201d) is presented to assist in understanding Royale Energy\u2019s financial statements.\nThese consolidated financial statements include the accounts of our controlled subsidiaries. Investments in unincorporated joint ventures and undivided interests in certain operating assets are consolidated on a pro rata basis. The financial statements and notes are representations of Royale Energy\u2019s management, which is responsible for their integrity and objectivity. These accounting policies conform to accounting principles generally accepted in the United States of America and have been consistently applied in the preparation of the financial statements.\nDescription of Business\nRoyale Energy is an independent oil and gas producer which also has operations in the area of turnkey drilling. Royale Energy owns wells and leases in major geological basins located primarily in California, Texas, Oklahoma, Colorado, and Utah. Royale Energy offers fractional working interests and seeks to minimize the risks of oil and gas drilling by selling multiple well drilling projects which do not include the use of debt financing.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1099,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1171,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "255,112",
+     "$",
+     "1,031,014"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "2,146,571",
+     "",
+     "2,845,515"
+    ],
+    [
+     "Total cash, cash equivalents, and restricted cash shown in the statement of cash flows",
+     "",
+     "2,401,683",
+     "",
+     "3,876,529"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1211,
+    "end_line": 1220
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Royale sponsors turnkey drilling arrangements in proved and unproved properties. The contracts require that participants pay Royale the full contract price upon execution of the drilling agreement. Each participant earns an undivided interest in the well bore at the completion of the well. A portion of the funds received in advance of the drilling of a well from a working interest participant are held for the expressed purpose of drilling a well. If something changes, the Company may designate these funds for a substitute well. Under certain conditions, a portion of these funds may be required to be returned to a participant. Once the well is drilled, the funds are used to satisfy the drilling cost. Royale classifies these funds prior to commencement of drilling as restricted cash based on guidance codified as under the Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) 230-10-50-8. In the event that progress payments are made from these funds; they are recorded as Prepaid Expenses and Other Current Assets.\nThe following table provides a reconciliation of cash, cash equivalents, and restricted cash reported within the statement of financial position that sum to the total of the same amounts shown in the statement of cash flows.",
+   "prose_after": "Other Receivables\nOur other receivables consist of receivables from direct working interest investors and industry partners. We provide for uncollectible accounts receivable using the allowance method of accounting for bad debts. Under this method of accounting, a provision for uncollectible accounts is charged directly to bad debt expense when it becomes probable the receivable will not be collected. The allowance account is increased or decreased based on past collection history and management\u2019s evaluation of accounts receivable. All amounts considered uncollectible are charged against the allowance account and recoveries of previously charged off accounts are added to the allowance. At December 31, 2020 and 2019, the Company established an allowance for uncollectable accounts of $2,582,093 and $1,791,162, respectively, for receivables from direct working interest investors whose expenses on non-producing wells were unlikely to be collected from revenue. During 2020 and 2019, the Company closed a number of accounts as uncollectable, offsetting the allowance in the amount of $2,553 and $519,333 respectively.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1198,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1228,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Oil & Condensate Sales",
+     "$",
+     "1,184,680",
+     "$",
+     "1,504,936"
+    ],
+    [
+     "Natural Gas Sales",
+     "",
+     "357,587",
+     "",
+     "824,339"
+    ],
+    [
+     "NGL Sales",
+     "",
+     "536",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "1,542,803",
+     "$",
+     "2,329,275"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1241,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Equity method investments are assessed for impairment whenever changes in the facts and circumstances indicate a loss in value may have occurred as called for under ASC 323, Investments\u2014Equity Method and Joint Ventures. When a loss is deemed to have occurred and is other than temporary, the carrying value of the equity method investment is written down to fair value, and the amount of the write-down is included in income.\nThe earnings from RMX reflected in these financial statements as Investment in JV, reflect our share of net earnings or losses directly attributable to this equity method investment. We evaluated our investment in RMX as of December 31, 2019, and determined that any losses were not other than temporary. At December 31, 2020, we evaluated our investment in RMX and determined that our investment was impaired as further described in Note 2 \u2013 RMX Joint Venture.\nRevenue Recognition\nA significant portion of our revenues are derived from the sale of crude oil, condensate, natural gas liquids (\u201cNGLs\u201d) and natural gas under spot and term agreements with our customers.",
+   "prose_after": "The pricing in our hydrocarbon sales agreements are variable, determined using various published benchmarks which are adjusted for negotiated quality and location differentials. As a result, revenue collected under our agreements with customers is highly dependent on the market conditions and may fluctuate considerably as the hydrocarbon market prices rise or fall. Typically, our customers pay us monthly, within a short period of time after we deliver the hydrocarbon products. As such, we do not have any financing element associated with our contracts. We do not have any issues related to returns or refunds, as product specifications are standardized for the industry and are typically measured when transferred to a common carrier or midstream entity, and other contractual mechanisms (e.g., price adjustments) are used when products do not meet those specifications.\nIn limited cases, we may also collect advance payments from customers as stipulated in our agreements; payments in excess of recognized revenue are recorded as contract liabilities on our consolidated balance sheet.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1228,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1262,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Basic",
+     "",
+     "",
+     "Diluted",
+     "",
+     "",
+     "Basic",
+     "",
+     "",
+     "Diluted",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(8,148,147)",
+     "",
+     "$",
+     "(8,148,147)",
+     "",
+     "$",
+     "(348,383)",
+     "",
+     "$",
+     "(348,383)",
+     ""
+    ],
+    [
+     "Less: Preferred Stock Dividend",
+     "",
+     "762,900",
+     "",
+     "",
+     "762,900",
+     "",
+     "",
+     "734,725",
+     "",
+     "",
+     "734,725",
+     ""
+    ],
+    [
+     "Less: Preferred Stock Dividend in Arrears",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss Attributable to Common Shareholders",
+     "",
+     "(8,911,047)",
+     "",
+     "",
+     "(8,911,047)",
+     "",
+     "",
+     "(1,083,108)",
+     "",
+     "",
+     "(1,083,108)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "53,292,647",
+     "",
+     "",
+     "53,292,647",
+     "",
+     "",
+     "50,871,447",
+     "",
+     "",
+     "50,871,447",
+     ""
+    ],
+    [
+     "Effect of dilutive securities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Weighted average common shares, including Dilutive effect",
+     "",
+     "53,292,647",
+     "",
+     "",
+     "53,292,647",
+     "",
+     "",
+     "50,871,447",
+     "",
+     "",
+     "50,871,447",
+     ""
+    ],
+    [
+     "Per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(0.17)",
+     "",
+     "$",
+     "(0.17)",
+     "",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.02)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1342,
+    "end_line": 1358
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "If Royale Energy is unable to drill the wells, and a suitable replacement well is not found, Royale would retain the non-refundable portion of the contact and return the remaining funds to the participant. Included in cash and cash equivalents are amounts for use in completion of turnkey drilling programs in progress.\nEquipment and Fixtures\nEquipment and fixtures are stated at cost and depreciated over the estimated useful lives of the assets, which range from three to seven years, using the straight-line method. Repairs and maintenance are charged to expense as incurred. When assets are sold or retired, the cost and related accumulated depreciation are removed from the accounts and any resulting gain or loss is included in income. Maintenance and repairs, which neither materially add to the value of the property nor appreciably prolong its life, are charged to expense as incurred. Gains or losses on dispositions of property and equipment, other than oil and gas, are reflected in operations.\nIncome (Loss) Per Share\nBasic and diluted losses per share are calculated as follows:",
+   "prose_after": "For the years ended December 31, 2020 and 2019, Royale Energy had dilutive securities of 25,137,267 and 23,947,519 respectively. These securities were not included in the dilutive loss per share due to their antidilutive nature.\nStock Based Compensation\nRoyale has a stock-based employee compensation plan, which is more fully described in Note 11 \u2013 Stock Compensation Plan. The Company has adopted ASC 718, Compensation \u2013 Stock Compensation, for share-based payments. This topic requires that the cost resulting from all share-based payment transactions be recognized in the financial statements. It further establishes fair value as the measurement objective in accounting for share-based payment arrangements and requires all entities to apply a fair-value based measurement method in accounting for share-based payment transactions with employees except for equity instruments held by employee stock ownership plans.\nIncome Taxes\nRoyale utilizes the asset and liability approach to measure deferred tax assets and liabilities based on temporary differences existing at each balance sheet date using currently enacted tax rates in accordance with the Income Taxes Topic of the ASC 740. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment. Under the Topic, deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more-likely-than-not that some portion or all of the deferred tax assets will not be realized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1337,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1376,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Trade Payables including accruals",
+     "",
+     "2,264,562",
+     "",
+     "3,107,012"
+    ],
+    [
+     "Direct working interest investors related accruals",
+     "",
+     "1,277,428",
+     "",
+     "1,811,649"
+    ],
+    [
+     "Current drilling efforts accrued expenses",
+     "",
+     "20,924",
+     "",
+     "508,246"
+    ],
+    [
+     "Accrued Liabilities",
+     "",
+     "391,434",
+     "",
+     "393,245"
+    ],
+    [
+     "Employee related accruals",
+     "",
+     "196,014",
+     "",
+     "195,998"
+    ],
+    [
+     "Deferred rent",
+     "",
+     "10,747",
+     "",
+     "14,884"
+    ],
+    [
+     "Federal and State income taxes payable",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "4,161,109",
+     "",
+     "6,031,034"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1391,
+    "end_line": 1404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Level 3: Unobservable inputs that are supported by little or no market activity and reflect the use of significant management judgment. These values are generally determined using pricing models for which the assumptions utilize management\u2019s estimates of market participant assumptions\nAt December 31, 2020 and 2019, Royale Energy does not have any financial assets measured and recognized at fair value on a recurring basis. The Company estimates asset retirement obligations pursuant to the provisions of ASC 410, Asset Retirement and Environmental Obligations. The initial measurement of asset retirement obligations at fair value is calculated using discounted cash flow techniques and based on internal estimates of future retirement costs associated with oil and gas properties. Given the unobservable nature of the inputs, including plugging costs and reserve lives, the initial measurement of the asset retirement obligation liability is deemed to use Level 3 inputs. See Note 3 \u2013 Oil and Gas Properties, Equipment and Fixtures for further discussion of the Company\u2019s asset retirement obligations.\nAccounts Payable and Accrued Expenses\nAt December 31, 2020 and 2019, the components of accounts payable and accrued expenses consisted of:",
+   "prose_after": "Accrued \u2013 Non-current\nAt December 31, 2020, the Company had non-current accrued liabilities of $1,306,605 and accrued unpaid guaranteed payment of $1,616,205, due to certain Matrix principals, from periods prior to the merger with the Matrix entities during March of 2018.\nBusiness Combinations\nFrom time-to-time, the Company acquires businesses in the oil and gas industry. Royale primarily targets businesses in geological basins that the Company considers to be in a focus area. Businesses are included in the consolidated financial statements from the date of acquisition.\nWe recognize, separately from goodwill, the identifiable assets acquired and liabilities assumed at their estimated acquisition-date fair values. We measure and recognize goodwill as of the acquisition date as the excess of: (1) the aggregate of the fair value of consideration transferred, the fair value of any noncontrolling interest in the acquiree (if any) and the acquisition date fair value of our previously held equity interest in the acquiree (if any), over (2) the fair value of assets acquired and liabilities assumed. If information about facts and circumstances existing as of the acquisition date is incomplete by the end of the reporting period in which a business combination occurs, we report provisional amounts for the items for which the accounting is incomplete. The measurement or allocation period ends once we receive the information we are seeking; however, this period will generally not exceed one year from the acquisition date. Any material adjustments recognized during the measurement period will be reflected retrospectively in the consolidated financial statements of the subsequent period. We recognize third-party transaction-related costs as expense currently in the period in which they are incurred.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1376,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1412,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended\n\n\n\nDecember 31, 2020",
+     "",
+     "",
+     "Twelve Months Ended\n\n\n\nDecember 31, 2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "RMX Resources, LLC",
+     "",
+     "",
+     "RMX Resources, LLC",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "77,168,147",
+     "",
+     "$",
+     "72,401,841",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "46,213,651",
+     "",
+     "$",
+     "41,573,426",
+     ""
+    ],
+    [
+     "Members Equity",
+     "$",
+     "30,954,496",
+     "",
+     "$",
+     "30,828,415",
+     ""
+    ],
+    [
+     "Results of Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating revenue",
+     "$",
+     "9,376,395",
+     "",
+     "$",
+     "16,392,305",
+     ""
+    ],
+    [
+     "Income (Loss) from operations",
+     "$",
+     "(3,352,584)",
+     "",
+     "$",
+     "1,456,290",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "126,081",
+     "",
+     "$",
+     "(2,091,239)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1475,
+    "end_line": 1490
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 RMX JOINT VENTURE"
+    }
+   },
+   "prose_before": "The RMX Joint Venture, like any Joint Venture investment following the equity method, is subject to ASC 323-10-35-31 and 32, impairment testing. During the 4th quarter of 2020, Royale received the RMX engineering reserve report prepared by an independent outside engineering firm. The report reflected reserve values for RMX that were below the Company\u2019s expectations. As a result, of this and on-going market conditions along with the contractual terms of Royale\u2019s investment in RMX, management performed an impairment test. Royale considered the waterfall formula as called for under its agreements with RMX as well as the preferred return owed to other partners. As part of this computation, Royale applied a discounted cash flow test as called for under ASC 820-10-55-5(c) and 5(d) incorporating the time value of money and risk premium. In our test, we considered factors including, most significantly, the estimated market value of the reserves of RMX and the amount of preferred return owed to other partners. As a result of this analysis and the fact that Management does not believe the values reflected in this most recent reserve report are temporary, Royale does not expect to realize the entire carrying amount of the RMX investment. Therefore, the entire amount of $6,185,995 is impaired and was taken to the Statement of Operations.\nAdditional reasons that Royale considers this impairment to be permanent is that these assets are located in California close to urban dwellings and subject to increasing regulatory scrutiny. Further, the current state administration has indicated a strong desire to impose increasing regulations on oil and gas producing properties thereby reducing their economic value.\nBecause the Company does not expect the value of the RMX Joint Venture to improve to a level where the water-fall profit sharing formula will provide value to Royale, the Company is no longer providing summarized financial information on the RMX investment in its financial statements or its reserve disclosures.\nListed below is summarized information the Company\u2019s investment in RMX:",
+   "prose_after": "NOTE 3 \u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES\nOil and gas properties, equipment and fixtures consist of:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1458,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1490,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Oil and Gas",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Producing properties, including intangible drilling costs",
+     "$",
+     "5,672,457",
+     "",
+     "$",
+     "7,792,156",
+     ""
+    ],
+    [
+     "Undeveloped properties",
+     "",
+     "13,993",
+     "",
+     "",
+     "46,990",
+     ""
+    ],
+    [
+     "Lease and well equipment",
+     "",
+     "3,317,718",
+     "",
+     "",
+     "3,304,565",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "9,004,168",
+     "",
+     "$",
+     "11,143,711",
+     ""
+    ],
+    [
+     "Accumulated depletion, depreciation and amortization",
+     "",
+     "(6,467,626)",
+     "",
+     "",
+     "(6,559,182)",
+     ""
+    ],
+    [
+     "Net capitalized costs Total",
+     "",
+     "2,536,542",
+     "",
+     "",
+     "4,584,529",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1495,
+    "end_line": 1509
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES"
+    }
+   },
+   "prose_before": "NOTE 3 \u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES\nOil and gas properties, equipment and fixtures consist of:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1490,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1550,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Commercial and Other",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Real estate, including furniture and fixtures",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Vehicles",
+     "",
+     "40,061",
+     "",
+     "",
+     "40,061",
+     ""
+    ],
+    [
+     "Furniture and equipment",
+     "",
+     "1,097,428",
+     "",
+     "",
+     "1,097,428",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,137,489",
+     "",
+     "",
+     "1,137,489",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "",
+     "(1,133,030)",
+     "",
+     "",
+     "(1,131,028)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "4,459",
+     "",
+     "",
+     "6,461",
+     ""
+    ],
+    [
+     "Net capitalized costs Total",
+     "$",
+     "2,541,001",
+     "",
+     "$",
+     "4,590,990",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1510,
+    "end_line": 1523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following sets forth costs incurred for oil and gas property acquisition and development activities, whether capitalized or expensed at December 31:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1490,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1550,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Acquisition - Proved",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Acquisition - Unproved",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Development",
+     "",
+     "5,306,639",
+     "",
+     "9,680,298"
+    ],
+    [
+     "Exploration",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1526,
+    "end_line": 1535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES"
+    }
+   },
+   "prose_before": "The following sets forth costs incurred for oil and gas property acquisition and development activities, whether capitalized or expensed at December 31:",
+   "prose_after": "The guidance set forth in the Continued Capitalization of Exploratory Well Costs paragraph of the Extractive Activities Topic of the FASB ASC requires that we evaluate all existing capitalized exploratory well costs and disclose the extent to which any such capitalized costs have become impaired and are expensed or reclassified during a fiscal period. We did not make any additions to capitalized exploratory well costs pending a determination of proved reserves during 2020 and 2019. We did not charge any previously capitalized exploratory well costs to expense upon adoption of Topic. Undeveloped properties are not subject to depletion, depreciation or amortization.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1490,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1550,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Beginning balance at January 1",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additions to capitalized exploratory well costs pending the determination of proved reserves",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reclassifications to wells, facilities, and equipment based on the determination of proved reserves",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ending balance at December 31",
+     "",
+     "-",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1538,
+    "end_line": 1550
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES"
+    }
+   },
+   "prose_before": "The guidance set forth in the Continued Capitalization of Exploratory Well Costs paragraph of the Extractive Activities Topic of the FASB ASC requires that we evaluate all existing capitalized exploratory well costs and disclose the extent to which any such capitalized costs have become impaired and are expensed or reclassified during a fiscal period. We did not make any additions to capitalized exploratory well costs pending a determination of proved reserves during 2020 and 2019. We did not charge any previously capitalized exploratory well costs to expense upon adoption of Topic. Undeveloped properties are not subject to depletion, depreciation or amortization.",
+   "prose_after": "Results of Operations from Oil and Gas Producing and Exploration Activities\nThe results of operations from oil and gas producing and exploration activities (excluding corporate overhead and interest costs) are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1490,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1550,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Oil and gas sales",
+     "$",
+     "1,542,803",
+     "",
+     "$",
+     "2,329,275",
+     ""
+    ],
+    [
+     "Production-related costs (Lease Operating)",
+     "",
+     "(1,397,673)",
+     "",
+     "",
+     "(1,764,538)",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "-",
+     "",
+     "",
+     "(977,682)",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "",
+     "(473,647)",
+     "",
+     "",
+     "(468,143)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Results of operations from producing and exploration activities",
+     "$",
+     "(328,517)",
+     "",
+     "$",
+     "(881,088)",
+     ""
+    ],
+    [
+     "Income Taxes (Benefit)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Results",
+     "$",
+     "(328,517)",
+     "",
+     "$",
+     "(881,088)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1555,
+    "end_line": 1569
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 OIL AND GAS PROPERTIES, EQUIPMENT AND FIXTURES"
+    }
+   },
+   "prose_before": "Results of Operations from Oil and Gas Producing and Exploration Activities\nThe results of operations from oil and gas producing and exploration activities (excluding corporate overhead and interest costs) are as follows:",
+   "prose_after": "NOTE 4 \u2013 ASSET RETIREMENT OBLIGATION\nThe Asset Retirement and Environmental Obligations Topic of the ASC 410-20 requires that an asset retirement obligation (\u201cARO\u201d) associated with the retirement of a tangible long-lived asset be recognized as a liability in the period in which it is incurred or becomes determinable (as defined by the standard), with an associated increase in the carrying amount of the related long-lived asset. The cost of the tangible asset, including the initially recognized asset retirement cost, is depreciated over the useful life of the asset. The ARO is recorded at the estimated fair value, and accretion expense will be recognized over time as the discounted liability is accreted to its expected settlement value. Accretion expense is included as part of Depreciation, Depletion and Amortization in the Consolidated Statement of Operations. The fair value (as provided in ASC 820 guidance) of the ARO is measured using expected future cash outflows discounted at the Company\u2019s credit-adjusted risk-free interest rate. The provisions of this Topic apply to legal obligations associated with the retirement of long-lived assets that result from the acquisition, development, and operation of a long-lived asset. There were no changes in estimates for the year ended December 31, 2020. During the year ended December 31, 2019, the Company recorded $922,698 in increased costs related to estimates for abandonment of its\u2019 share of certain California oil properties. These estimates relate to properties likely to be abandoned in the current period. As a result, the Company recorded them as impairment expense at year end 2019.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1550,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1596,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of the year",
+     "$",
+     "3,632,422",
+     "",
+     "$",
+     "2,366,456",
+     ""
+    ],
+    [
+     "Liabilities incurred during the period",
+     "",
+     "29,323",
+     "",
+     "",
+     "210,643",
+     ""
+    ],
+    [
+     "Settlements",
+     "",
+     "(508,538)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Merger Additions",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Sales",
+     "",
+     "-",
+     "",
+     "",
+     "(33,026)",
+     ""
+    ],
+    [
+     "Changes in estimates",
+     "",
+     "-",
+     "",
+     "",
+     "922,698",
+     ""
+    ],
+    [
+     "Accretion expense",
+     "",
+     "194,290",
+     "",
+     "",
+     "165,651",
+     ""
+    ],
+    [
+     "Reclassification to ARO - current",
+     "",
+     "(869,147)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "End of year",
+     "$",
+     "2,478,350",
+     "",
+     "$",
+     "3,632,422",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1574,
+    "end_line": 1590
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 ASSET RETIREMENT OBLIGATION"
+    }
+   },
+   "prose_before": "The Asset Retirement and Environmental Obligations Topic of the ASC 410-20 requires that an asset retirement obligation (\u201cARO\u201d) associated with the retirement of a tangible long-lived asset be recognized as a liability in the period in which it is incurred or becomes determinable (as defined by the standard), with an associated increase in the carrying amount of the related long-lived asset. The cost of the tangible asset, including the initially recognized asset retirement cost, is depreciated over the useful life of the asset. The ARO is recorded at the estimated fair value, and accretion expense will be recognized over time as the discounted liability is accreted to its expected settlement value. Accretion expense is included as part of Depreciation, Depletion and Amortization in the Consolidated Statement of Operations. The fair value (as provided in ASC 820 guidance) of the ARO is measured using expected future cash outflows discounted at the Company\u2019s credit-adjusted risk-free interest rate. The provisions of this Topic apply to legal obligations associated with the retirement of long-lived assets that result from the acquisition, development, and operation of a long-lived asset. There were no changes in estimates for the year ended December 31, 2020. During the year ended December 31, 2019, the Company recorded $922,698 in increased costs related to estimates for abandonment of its\u2019 share of certain California oil properties. These estimates relate to properties likely to be abandoned in the current period. As a result, the Company recorded them as impairment expense at year end 2019.",
+   "prose_after": "The Company records accretion expense as part of Depreciation, Depletion and Amortization\nNOTE 5 \u2013 NOTES PAYABLE\nOn October 3, 2018, the Company issued a promissory note for a principal amount of $517,585 to Forza Operating, LLC. At an interest rate of 5.5%. Beginning October 3, 2018, principal and interest is due and payable in 12 monthly installments of $44,428. The note was the result of an agreement regarding the plugging and abandonment of the CL&F #1 and the CL&F #1 SWD wells. The Company agreed to include the current joint interest billing balance due to Forza Operating of $233,367 and Royale\u2019s share of future plugging and abandonment costs of $284,218. At December 31, 2020 and 2019, Royale Energy had Notes Payable of $132,624 and $55,573, respectively, as a current liability.\nOn November 2, 2020, in conjunction with the PPP loan forgiveness described in Note 16 \u2013 Coronavirus Aid, Relief, And Economic Security Act (\u201cCARES Act\u201d), Royale\u2019s entered into a loan for $10,054 to be repaid through monthly interest and principal payments of $560 beginning December 1, 2020, with the final payment of $613 scheduled for April 23, 2022. The loan is being amortized over 18 months at an annual interest rate of 1.00 percent with the last payment being a balloon payment to complete the loan repayment.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1550,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1596,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets (Liabilities):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory Depletion Carry Forward",
+     "$",
+     "361,444",
+     "",
+     "$",
+     "367,149",
+     ""
+    ],
+    [
+     "Net Operating Loss",
+     "",
+     "7,361,230",
+     "",
+     "",
+     "6,489,891",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "583,281",
+     "",
+     "",
+     "595,990",
+     ""
+    ],
+    [
+     "Share-Based Compensation",
+     "",
+     "86,510",
+     "",
+     "",
+     "86,510",
+     ""
+    ],
+    [
+     "Capital Loss / AMT Credit Carry Forward",
+     "",
+     "9,458",
+     "",
+     "",
+     "9,458",
+     ""
+    ],
+    [
+     "Charitable Contributions Carry Forward",
+     "",
+     "3,396",
+     "",
+     "",
+     "3,890",
+     ""
+    ],
+    [
+     "Allowance for Doubtful Accounts",
+     "",
+     "671,861",
+     "",
+     "",
+     "466,060",
+     ""
+    ],
+    [
+     "Oil and Gas Properties and Fixed Assets",
+     "",
+     "4,860,069",
+     "",
+     "",
+     "5,404,787",
+     ""
+    ],
+    [
+     "Investment in RMX Joint Venture",
+     "",
+     "342,569",
+     "",
+     "",
+     "(1,238,551)",
+     ""
+    ],
+    [
+     "Section 481(a) Adjustments",
+     "",
+     "(107,432)",
+     "",
+     "",
+     "(214,859)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "14,172,386",
+     "",
+     "$",
+     "11,970,325",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(14,172,386)",
+     "",
+     "",
+     "(11,970,325)",
+     ""
+    ],
+    [
+     "Net Deferred Tax Asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1607,
+    "end_line": 1627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "On December 22, 2017, the U.S. enacted significant changes to U.S. tax law following the passage and signing of H.R.1, An Act to Provide for Reconciliation Pursuant to Titles II and V of the Concurrent Resolution on the Budget for Fiscal Year 2018 (the \u201cTax Act\u201d). The Tax Act permanently reduces the U.S. federal corporate tax rate from a maximum 35% to 21%, eliminated corporate Alternative Minimum Tax, modified rules for expensing capital investment, and limits the deduction of interest expense for certain companies. ASC 740 requires filers to record the effect of tax law changes in the period enacted. However, the SEC issued Staff Accounting Bulletin (\u201cSAB\u201d) 118 that permits filers to record provisional amounts during a measurement period ending no later than one year from the date of enactment. For the period ending December 31, 2018, the Company re-measured the applicable deferred tax assets based on the rates at which they are expected to reverse. The gross deferred tax assets and liabilities have been adjusted and a corresponding offset has been recorded to the full valuation allowance against the Company\u2019s net deferred tax assets, which resulted in no net effect to its provision for income taxes and effective tax rate. No other provisional adjustments have been made as a result of the Act.\nSignificant components of the Company\u2019s deferred assets and liabilities at December 31, 2020 and 2019, respectively, are as follows:",
+   "prose_after": "The Company recorded a full valuation allowance against the net deferred tax assets in 2016. At the end of 2017, management reviewed the reliability of the Company\u2019s net deferred tax assets, and due to the Company\u2019s continued cumulative losses in recent years, Royale and its management concluded it is not \u201cmore-likely-than-not\u201d its deferred tax assets will be realized. As a result, the Company will continue to record a full valuation allowance against the deferred tax assets in 2019. The Company will assess the realizability of the deferred tax assets at least yearly and make appropriate updates as needed. Royale Energy, Inc. and its subsidiaries have available net operating loss carryforwards of $27.5 million generated in tax years ended before January 1, 2018, which if not utilized, begin to expire in the year 2027. Royale Energy, Inc. has no net operating loss carryforwards generated after December 31, 2017, which can be carried forward indefinitely.\nA reconciliation of Royale Energy\u2019s provision for income taxes and the amount computed by applying the statutory income tax rates at December 31, 2020 and 2019, respectively, to pretax income is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1596,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1629,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Tax (benefit) computed at statutory rate of 21% at December 31, 2020 and 2019, respectively",
+     "$",
+     "(1,708,463)",
+     "",
+     "$",
+     "(71,680)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (decrease) in taxes resulting from:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Meals & Entertainment",
+     "",
+     "740",
+     "",
+     "",
+     "1,583",
+     ""
+    ],
+    [
+     "PPP Loan Forgiveness",
+     "",
+     "(41,538)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prior-year true-up for Books",
+     "",
+     "(126,541)",
+     "",
+     "",
+     "1,461,914",
+     ""
+    ],
+    [
+     "Deferred State Taxes, net of federal benefit",
+     "",
+     "(330,367)",
+     "",
+     "",
+     "214,161",
+     ""
+    ],
+    [
+     "Other non-deductible expenses",
+     "",
+     "4,108",
+     "",
+     "",
+     "59,674",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "2,202,061",
+     "",
+     "",
+     "(1,665,652)",
+     ""
+    ],
+    [
+     "Provision (benefit)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1632,
+    "end_line": 1647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company recorded a full valuation allowance against the net deferred tax assets in 2016. At the end of 2017, management reviewed the reliability of the Company\u2019s net deferred tax assets, and due to the Company\u2019s continued cumulative losses in recent years, Royale and its management concluded it is not \u201cmore-likely-than-not\u201d its deferred tax assets will be realized. As a result, the Company will continue to record a full valuation allowance against the deferred tax assets in 2019. The Company will assess the realizability of the deferred tax assets at least yearly and make appropriate updates as needed. Royale Energy, Inc. and its subsidiaries have available net operating loss carryforwards of $27.5 million generated in tax years ended before January 1, 2018, which if not utilized, begin to expire in the year 2027. Royale Energy, Inc. has no net operating loss carryforwards generated after December 31, 2017, which can be carried forward indefinitely.\nA reconciliation of Royale Energy\u2019s provision for income taxes and the amount computed by applying the statutory income tax rates at December 31, 2020 and 2019, respectively, to pretax income is as follows:",
+   "prose_after": "The components of the Company\u2019s tax provision are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1629,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1670,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Current tax provision (benefit) - federal",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Current tax provision (benefit) - state",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Deferred tax provision (benefit) - federal",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Deferred tax provision (benefit) - state",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total provision (benefit)",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1650,
+    "end_line": 1660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The components of the Company\u2019s tax provision are as follows:",
+   "prose_after": "In January 2007, Royale adopted additional provisions from the Income Taxes Topic of the ASC, which clarified the accounting for uncertainty in income taxes recognized in an entity\u2019s financial statements and prescribes a recognition threshold and measurement attribute for financial statement disclosure of tax positions taken or expected to be taken on a tax return. As a result of our implementation of the Topic at the time of adoption and at December 31, 2018, the Company did not recognize a liability for uncertain tax positions. Currently, the only differences between our financial statements and our income tax returns relate to normal timing differences such as depreciation, depletion and amortization, which are recorded as deferred taxes on our balance sheets. We do not expect our unrecognized tax benefits to change significantly over the next 12 months. The tax years 2013 through 2018 remain open to examination by the taxing jurisdictions in which we file income tax returns.\nNOTE 7 \u2013 SERIES B PREFERRED STOCK",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1629,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1670,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Operating lease expense",
+     "",
+     "200,836",
+     "",
+     "184,374"
+    ],
+    [
+     "Financing lease expense",
+     "",
+     "19,137",
+     "",
+     "10,757"
+    ],
+    [
+     "Operating - short-term",
+     "",
+     "-",
+     "",
+     "7,886"
+    ],
+    [
+     "Short Term - field",
+     "",
+     "6,000",
+     "",
+     "6,000"
+    ],
+    [
+     "Total lease expense",
+     "",
+     "225,973",
+     "",
+     "209,017"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1683,
+    "end_line": 1693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 OPERATING LEASES"
+    }
+   },
+   "prose_before": "The Company has two office leases. One at 1870 Cordell Court, El Cajon, California, the location of its corporate offices and one at 104 W. Anapamu, Santa Barbara, California, the location of the Company\u2019s CEO and engineering team. The corporate office lease was entered into on August 31, 2016 and expires on October 31, 2021, with initial monthly payments of $6,148 with escalations. The lease in Santa Barbara was initiated in December of 2006 and, through several extensions and renewals, will expire in March of 2022.\nThe Company has elected the short-term lease recognition exemption for all leases that qualify. This means, for those leases that qualify, we will not recognize ROU assets or lease liabilities, and this includes not recognizing ROU assets or lease liabilities for existing short-term leases of those assets in transition. We also currently expect to elect the practical expedient to not separate lease and non-lease components for all of our finance leases. For our real estate operating leases, we have only considered the fixed portion of our lease payment commitment and have excluded the variable components from the capitalized ROU and lease liability.\nLease expense for operating as well as finance leases are included in General and Administrative expense and interest expense on the Consolidated Statement of Operations, while the lease expense for those leases that are short-term are included in Oil and Gas Lease Operating Expenses. The amounts are as follows:",
+   "prose_after": "The following tables summarized the operating and financing lease obligations.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1670,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1719,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Lease Obligations",
+     "Operating Lease\n\n\n\nObligations",
+     "",
+     "Financing Lease\n\n\n\nObligations",
+     "",
+     "Total Lease\n\n\n\nObligations",
+     ""
+    ],
+    [
+     "2021",
+     "$",
+     "179,630",
+     "",
+     "12,588",
+     "",
+     "192,218"
+    ],
+    [
+     "2022",
+     "",
+     "24,408",
+     "",
+     "12,588",
+     "",
+     "36,996"
+    ],
+    [
+     "2023",
+     "",
+     "-",
+     "",
+     "12,588",
+     "",
+     "12,588"
+    ],
+    [
+     "Thereafter",
+     "",
+     "-",
+     "",
+     "7,343",
+     "",
+     "7,343"
+    ],
+    [
+     "Total undiscounted lease payments",
+     "$",
+     "204,038",
+     "",
+     "45,107",
+     "",
+     "249,145"
+    ],
+    [
+     "Less:  Amount representing interest",
+     "",
+     "13,679",
+     "",
+     "4,409",
+     "",
+     "18,088"
+    ],
+    [
+     "Total Operating & Financing lease liabilities",
+     "$",
+     "190,359",
+     "",
+     "40,698",
+     "",
+     "231,057"
+    ],
+    [
+     "Current lease liabilities as of December 31, 2020",
+     "$",
+     "167,578",
+     "",
+     "10,542",
+     "",
+     "178,120"
+    ],
+    [
+     "Long-term lease liabilities as of December 31, 2020",
+     "$",
+     "22,781",
+     "",
+     "30,156",
+     "",
+     "52,937"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1696,
+    "end_line": 1711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 OPERATING LEASES"
+    }
+   },
+   "prose_before": "The following tables summarized the operating and financing lease obligations.",
+   "prose_after": "NOTE 10 \u2013 RELATED-PARTY TRANSACTIONS\nSignificant Ownership Interests\nOur Chief Executive, Johnny Jordan, has accrued certain unpaid salaries, which were assumed by the Company. At December 31, 2020, Mr. Jordan was owed $14,648, in accrued unpaid guaranteed payments.\nOur Chief Financial Officer, Stephen Hosmer, has participated individually in 179 wells under the 1989 policy. During 2020 and 2019, Stephen did not participate in fractional interests. At December 31, 2020, the Company had a receivable balance of $17,101 due from Stephen Hosmer for normal drilling and lease operating expenses.\nDonald Hosmer has participated individually in 179 wells under the 1989 policy. During 2020 and 2019, Donald did not participate in fractional interests. At December 31, 2020, Royale had a receivable balance of $5,385 due from Donald Hosmer for normal drilling and lease operating expenses.\nAt December 31, 2020 and 2019, we had a total payable of $23,087 and $32,367, respectively, due to RMX Resources, LLC and its subsidiary, Matrix Oil Corporation, related to certain lease operating expenses for wells operated by RMX Resources, LLC. For the same periods, the Company also had prepaid expenses and other current assets of $239,036 and $2,680,155, respectively. The prepaid amount where primarily for the drilling of wells.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1670,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1719,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total Proved Reserves",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Oil (BBL)",
+     "",
+     "",
+     "Gas (MCF)",
+     "",
+     "",
+     "Oil (BBL)",
+     "",
+     "",
+     "Gas (MCF)",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "",
+     "2,171,000",
+     "",
+     "",
+     "4,306,900",
+     "",
+     "",
+     "1,146,400",
+     "",
+     "",
+     "2,986,200",
+     ""
+    ],
+    [
+     "Revisions of previous estimates",
+     "",
+     "(646,080)",
+     "",
+     "",
+     "(1,515,637)",
+     "",
+     "",
+     "1,052,086",
+     "",
+     "",
+     "(890,032)",
+     ""
+    ],
+    [
+     "Production",
+     "",
+     "(31,210)",
+     "",
+     "",
+     "(160,406)",
+     "",
+     "",
+     "(27,663)",
+     "",
+     "",
+     "(292,472)",
+     ""
+    ],
+    [
+     "Extensions, discoveries and improved recovery",
+     "",
+     "47,290",
+     "",
+     "",
+     "29,643",
+     "",
+     "",
+     "22,042",
+     "",
+     "",
+     "2,516,046",
+     ""
+    ],
+    [
+     "Merger Acquisition",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of minerals in place",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Sales of minerals in place",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(21,865)",
+     "",
+     "",
+     "(12,842)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved reserves end of period",
+     "",
+     "1,541,000",
+     "",
+     "",
+     "2,660,500",
+     "",
+     "",
+     "2,171,000",
+     "",
+     "",
+     "4,306,900",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total Proved Reserves"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1800,
+    "end_line": 1818
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUPPLEMENTAL INFORMATION ABOUT OIL AND GAS PRODUCING ACTIVITIES (UNAUDITED)"
+    }
+   },
+   "prose_before": "These estimates are furnished and calculated in accordance with requirements of the FASB and the SEC. Because of unpredictable variances in expenses and capital forecasts, crude oil and natural gas price changes, largely influenced and controlled by U.S. and foreign government actions, and the fact that the bases for such estimates vary significantly, management believes the usefulness of these projections is limited. Estimates of future net cash flows presented do not represent Management\u2019s assessment of future profitability or future cash flows to Royale Energy. Management\u2019s investment and operating decisions are based upon reserve estimates that include proved reserves prescribed by the SEC as well as probable reserves, and upon different price and cost assumptions from those used here.\nIt should be recognized that applying current costs and prices and a 10 percent standard discount rate does not convey absolute value. The discounted amounts arrived at are only one measure of the value of proved reserves.\nChanges in Estimated Reserve Quantities\nThe net interest in estimated quantities of proved developed reserves of crude oil and natural gas at December 31, 2020 and 2019, and changes in such quantities during each of the years then ended, were as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1795,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Proved Developed",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Oil (BBL)",
+     "",
+     "Gas (MCF)",
+     "",
+     "Oil (BBL)",
+     "",
+     "Gas (MCF)",
+     ""
+    ],
+    [
+     "Proved developed reserves:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "",
+     "232,200",
+     "",
+     "2,790,300",
+     "",
+     "148,600",
+     "",
+     "1,914,900"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "End of period",
+     "",
+     "224,900",
+     "",
+     "691,900",
+     "",
+     "232,200",
+     "",
+     "2,790,300"
+    ]
+   ],
+   "caption_stack": [
+    "Proved Developed"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1819,
+    "end_line": 1832
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUPPLEMENTAL INFORMATION ABOUT OIL AND GAS PRODUCING ACTIVITIES (UNAUDITED)"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1795,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Proved Undeveloped",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Oil (BBL)",
+     "",
+     "Gas (MCF)",
+     "",
+     "Oil (BBL)",
+     "",
+     "Gas (MCF)",
+     ""
+    ],
+    [
+     "Proved undeveloped reserves:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "",
+     "1,938,800",
+     "",
+     "1,516,600",
+     "",
+     "997,800",
+     "",
+     "1,071,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "End of period",
+     "",
+     "1,316,100",
+     "",
+     "1,968,600",
+     "",
+     "1,938,800",
+     "",
+     "1,516,600"
+    ]
+   ],
+   "caption_stack": [
+    "Proved Undeveloped"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1833,
+    "end_line": 1846
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUPPLEMENTAL INFORMATION ABOUT OIL AND GAS PRODUCING ACTIVITIES (UNAUDITED)"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "At December 31, 2020, our previously estimated proved developed and undeveloped natural gas reserve quantities were revised downward by approximately 1,515,637 MCF of natural gas. This downward revision was mainly the result of a decrease in proved developed natural gas reserves from drilling locations which the Company had contracted. At December 31, 2020, our previously estimated proved developed and undeveloped oil reserve quantities were revised downward by approximately 646,080 BBL of oil. This downward revision was mainly the result a decrease in the price of oil, which resulted in a decrease in the economic life.\nStandardized Measure of Discounted Future Net Cash Flows Relating to Proved Oil and Gas Reserves\nThe future net cash inflows are developed as follows:\n\u2022 Estimates are made of quantities of proved reserves and the future periods during which they are expected to be produced based on year-end economic conditions.\n\u2022 The estimated future production of proved reserves is priced on the basis of year-end prices.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1795,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2021",
+     "8,954,000"
+    ],
+    [
+     "2022",
+     "6,750,000"
+    ],
+    [
+     "2023",
+     "1,404,500"
+    ],
+    [
+     "Thereafter",
+     "-"
+    ],
+    [
+     "",
+     "17,108,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1859,
+    "end_line": 1866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUPPLEMENTAL INFORMATION ABOUT OIL AND GAS PRODUCING ACTIVITIES (UNAUDITED)"
+    }
+   },
+   "prose_before": "At December 31, 2020, our previously estimated proved developed and undeveloped natural gas reserve quantities were revised downward by approximately 1,515,637 MCF of natural gas. This downward revision was mainly the result of a decrease in proved developed natural gas reserves from drilling locations which the Company had contracted. At December 31, 2020, our previously estimated proved developed and undeveloped oil reserve quantities were revised downward by approximately 646,080 BBL of oil. This downward revision was mainly the result a decrease in the price of oil, which resulted in a decrease in the economic life.\nStandardized Measure of Discounted Future Net Cash Flows Relating to Proved Oil and Gas Reserves\nThe future net cash inflows are developed as follows:\n\u2022 Estimates are made of quantities of proved reserves and the future periods during which they are expected to be produced based on year-end economic conditions.\n\u2022 The estimated future production of proved reserves is priced on the basis of year-end prices.\n\u2022 The resulting future gross revenue streams are reduced by estimated future costs to develop and to produce proved reserves, based on year-end estimates. Estimated future development costs by year are as follows:",
+   "prose_after": "The resulting future net revenue streams are reduced to present value amounts by applying a 10 percent discount.\nDisclosure of principal components of the standardized measure of discounted future net cash flows provides information concerning the factors involved in making the calculation. In addition, the disclosure of both undiscounted and discounted net cash flows provides a measure of comparing proved oil and gas reserves both with and without an estimate of production timing. The standardized measure of discounted future net cash flow relating to proved reserves reflects estimated income taxes.\nChanges in standardized measure of discounted future net cash flow from proved reserve quantities\nThe standardized measure of discounted future net cash flows is presented below for the years ended December 31, 2020 and 2019.\nThis statement discloses the sources of changes in the standardized measure from year to year. The amount reported as \u201cNet changes in prices and production costs\u201d represents the present value of changes in prices and production costs multiplied by estimates of proved reserves as of the beginning of the year. The \u201caccretion of discount\u201d was computed by multiplying the 10 percent discount factor by the standardized measure on a pretax basis as of the beginning of the year. The \u201cSales of oil and gas produced, net of production costs\u201d are expressed in actual dollar amounts. \u201cRevisions of previous quantity estimates\u201d is expressed at year-end prices. The \u201cNet change in income taxes\u201d is computed as the change in present value of future income taxes.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Future cash inflows",
+     "",
+     "65,939,300",
+     "",
+     "",
+     "143,045,000",
+     ""
+    ],
+    [
+     "Future production costs",
+     "",
+     "(28,008,100)",
+     "",
+     "",
+     "(28,967,400)",
+     ""
+    ],
+    [
+     "Future development costs",
+     "",
+     "(17,108,400)",
+     "",
+     "",
+     "(20,587,800)",
+     ""
+    ],
+    [
+     "Future income tax expense",
+     "",
+     "(6,246,840)",
+     "",
+     "",
+     "(28,046,940)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Future net cash flows",
+     "",
+     "14,575,960",
+     "",
+     "",
+     "65,442,860",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10% annual discount for estimated timing of cash flows",
+     "",
+     "(7,134,925)",
+     "",
+     "",
+     "(35,801,989)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Standardized measure of discounted future net cash flows",
+     "",
+     "7,441,035",
+     "",
+     "",
+     "29,640,871",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales of oil and gas produced, net of production costs",
+     "",
+     "(351,478)",
+     "",
+     "",
+     "(624,744)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revisions of previous quantity estimates",
+     "",
+     "(31,231,533)",
+     "",
+     "",
+     "14,035,099",
+     ""
+    ],
+    [
+     "Net changes in prices and production costs",
+     "",
+     "(617,847)",
+     "",
+     "",
+     "(14,331,770)",
+     ""
+    ],
+    [
+     "Sales of minerals in place",
+     "",
+     "-",
+     "",
+     "",
+     "(272,507)",
+     ""
+    ],
+    [
+     "Purchases of minerals in place",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Merger Acquisition",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Extensions, discoveries and improved recovery",
+     "",
+     "587,311",
+     "",
+     "",
+     "2,157,052",
+     ""
+    ],
+    [
+     "Accretion of discount",
+     "",
+     "(100,504)",
+     "",
+     "",
+     "2,900,123",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in income tax",
+     "",
+     "9,514,215",
+     "",
+     "",
+     "(4,868,296)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease)",
+     "",
+     "(22,199,836)",
+     "",
+     "",
+     "(1,005,043)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1877,
+    "end_line": 1912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUPPLEMENTAL INFORMATION ABOUT OIL AND GAS PRODUCING ACTIVITIES (UNAUDITED)"
+    }
+   },
+   "prose_before": "Disclosure of principal components of the standardized measure of discounted future net cash flows provides information concerning the factors involved in making the calculation. In addition, the disclosure of both undiscounted and discounted net cash flows provides a measure of comparing proved oil and gas reserves both with and without an estimate of production timing. The standardized measure of discounted future net cash flow relating to proved reserves reflects estimated income taxes.\nChanges in standardized measure of discounted future net cash flow from proved reserve quantities\nThe standardized measure of discounted future net cash flows is presented below for the years ended December 31, 2020 and 2019.\nThis statement discloses the sources of changes in the standardized measure from year to year. The amount reported as \u201cNet changes in prices and production costs\u201d represents the present value of changes in prices and production costs multiplied by estimates of proved reserves as of the beginning of the year. The \u201caccretion of discount\u201d was computed by multiplying the 10 percent discount factor by the standardized measure on a pretax basis as of the beginning of the year. The \u201cSales of oil and gas produced, net of production costs\u201d are expressed in actual dollar amounts. \u201cRevisions of previous quantity estimates\u201d is expressed at year-end prices. The \u201cNet change in income taxes\u201d is computed as the change in present value of future income taxes.",
+   "prose_after": "Future Development Costs\nIn order to realize future revenues from our proved reserves estimated in our reserve report, it will be necessary to incur future costs to develop and produce the proved reserves. The following table estimates the costs to develop and produce our proved reserves in the years 2021 through 2023.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1858,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Future development cost of:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved developed reserves (PDP)",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Proved non-producing reserves (PDNP)",
+     "",
+     "54,000",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Proved undeveloped reserves (PUD)",
+     "",
+     "8,900,000",
+     "",
+     "6,750,000",
+     "",
+     "1,404,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "8,954,000",
+     "",
+     "6,750,000",
+     "",
+     "1,404,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1917,
+    "end_line": 1929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules                                                                25"
+    },
+    "note": {
+     "number": 19,
+     "label": "NOTE 19",
+     "title": "\u2013 SUPPLEMENTAL INFORMATION ABOUT OIL AND GAS PRODUCING ACTIVITIES (UNAUDITED)"
+    }
+   },
+   "prose_before": "Future Development Costs\nIn order to realize future revenues from our proved reserves estimated in our reserve report, it will be necessary to incur future costs to develop and produce the proved reserves. The following table estimates the costs to develop and produce our proved reserves in the years 2021 through 2023.",
+   "prose_after": "Common assumptions include such matters as the real extent and average thickness of a particular reservoir, the average porosity and permeability of the reservoir, the anticipated future production from existing and future wells, future development and production costs and the ultimate hydrocarbon recovery percentage. As a result, oil and gas reserve estimates and discounted present value estimates are frequently revised in subsequent periods to reflect production data obtained after the date of the original estimate. If the reserve estimates are inaccurate, production rates may decline more rapidly than anticipated, and future production revenues may be less than estimated.\nAdditional data relating to Royale Energy\u2019s oil and natural gas properties is disclosed in Supplemental Information About Oil and Gas Producing Activities (Unaudited), attached to Royale Energy\u2019s Financial Statements, beginning on page F-1.\nHistoric Development Costs for Proved Reserves\nIn each year we expend funds to drill and develop some of our proved undeveloped reserves. We have incurred no cost in any of the past three fiscal years to drill and develop reserves that were classified as proved undeveloped reserves as of December 31 of the immediately preceding year.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 19
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1912,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1937,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

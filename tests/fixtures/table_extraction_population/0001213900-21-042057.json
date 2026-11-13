@@ -1,0 +1,2369 @@
+{
+ "accession": "0001213900-21-042057",
+ "cik": "0001838697",
+ "form": "10-Q",
+ "filing_date": "2021-08-12",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q0621_broadscaleacq.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-3814555"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(MARK ONE)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarter ended June 30, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 001-40057\nBROADSCALE ACQUISITION CORP.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "1845 Walnut Street, Suite 1111\nPhiladelphia, PA\n(Address of principal executive offices)\n(646) 849-9975\n(Issuer\u2019s telephone number)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units, each consisting of one share of Class A common stock, $0.0001 par value per share, and one-fourth of one redeemable warrant",
+     "SCLEU",
+     "NASDAQ Capital Market"
+    ],
+    [
+     "Class A common stock, par value $0.0001 per share",
+     "SCLE",
+     "NASDAQ Capital Market"
+    ],
+    [
+     "Warrants, each whole warrant exercisable for one share of Class A common stock",
+     "SCLEW",
+     "NASDAQ Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 50
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1845 Walnut Street, Suite 1111\nPhiladelphia, PA\n(Address of principal executive offices)\n(646) 849-9975\n(Issuer\u2019s telephone number)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Check whether the issuer (1) filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Part I. Financial Information",
+     ""
+    ],
+    [
+     "Item 1. Condensed Financial Statements",
+     "1"
+    ],
+    [
+     "Condensed Balance Sheets as of June 30, 2021 (Unaudited) and December 31, 2020",
+     "1"
+    ],
+    [
+     "Unaudited Condensed Statements of Operations for the Three and Six Months Ended June 30, 2021",
+     "2"
+    ],
+    [
+     "Unaudited Condensed Statements of Changes in Stockholders\u2019 Equity for the Three and Six Months Ended June 30, 2021",
+     "3"
+    ],
+    [
+     "Unaudited Condensed Statement of Cash Flows for the Six Months Ended June 30, 2021",
+     "4"
+    ],
+    [
+     "Notes to Condensed Financial Statements (Unaudited)",
+     "5"
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures Regarding Market Risk",
+     "18"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "18"
+    ],
+    [
+     "Part II. Other Information",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "19"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "19"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "20"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "21"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "21"
+    ],
+    [
+     "Item 5. Other Information",
+     "21"
+    ],
+    [
+     "Item 6. Exhibits",
+     "21"
+    ],
+    [
+     "Part III. Signatures",
+     "20"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I. Financial Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 94
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d, and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of August 11, 2021, there were 34,500,000 shares of Class A common stock, $0.0001 par value and 8,625,000 shares of Class B common stock, $0.0001 par value, issued and outstanding.\nFORM 10-Q FOR THE QUARTER ENDED JUNE 30, 2021\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I - FINANCIAL INFORMATION\nItem 1. Condensed Financial Statements.\nCONDENSED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,\n\n\n\n2021",
+     "",
+     "December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,109,228",
+     "$",
+     "25,000",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "492,701",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "1,601,929",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "\u2014",
+     "",
+     "64,331",
+     ""
+    ],
+    [
+     "Cash and marketable securities held in Trust Account",
+     "",
+     "345,013,857",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "346,615,786",
+     "$",
+     "89,331",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "159,331",
+     "$",
+     "1,000",
+     ""
+    ],
+    [
+     "Accrued offering costs",
+     "",
+     "\u2014",
+     "",
+     "64,331",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "159,331",
+     "",
+     "65,331",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liability \u2013 private",
+     "",
+     "7,269,334",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Warrant liability \u2013 public",
+     "",
+     "9,918,750",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "",
+     "12,075,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "29,422,415",
+     "",
+     "65,331",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock subject to possible redemption 31,219,337 and no shares at $10.00 per share redemption value as of June 30, 2021 and December 31, 2020, respectively",
+     "",
+     "312,193,370",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 1,000,000 shares authorized; none issued or outstanding",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 100,000,000 shares authorized; 3,280,663 and no shares issued and outstanding (excluding 31,219,337 and no shares subject to possible redemption) as of June 30, 2021 and December 31, 2020, respectively",
+     "",
+     "328",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 10,000,000 shares authorized; 8,625,000 shares issued and outstanding as of June 30, 2021 and December 31, 2020 (1)",
+     "",
+     "863",
+     "",
+     "863",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "\u2014",
+     "",
+     "24,137",
+     ""
+    ],
+    [
+     "Retained earnings (accumulated deficit)",
+     "",
+     "4,998,810",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "5,000,001",
+     "",
+     "24,000",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "346,615,786",
+     "$",
+     "89,331",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 105,
+    "end_line": 156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I - FINANCIAL INFORMATION\nItem 1. Condensed Financial Statements.\nCONDENSED BALANCE SHEETS",
+   "prose_after": "(1) At December 31, 2020, included an aggregate of up to 1,125,000 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter (see Note 5). On December 11, 2020, the Company effected a 47.91667-for-1 stock split and on February 11, 2021, the Company effected a stock dividend of 1.2 shares of Class B common stock for each share of Class B common stock outstanding prior to the dividend, resulting in 8,625,000 shares of Class B common stock being issued and outstanding. All share and per-share amounts have been retroactively restated to reflect the stock split.\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 101,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 161,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30,",
+     "",
+     "",
+     "Six Months Ended\n\n\n\n June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "425,882",
+     "",
+     "$",
+     "1,522,274",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(425,882)",
+     "",
+     "",
+     "(1,522,274)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "(658,334)",
+     "",
+     "",
+     "7,650,667",
+     ""
+    ],
+    [
+     "Interest earned on marketable securities held in Trust Account",
+     "",
+     "8,602",
+     "",
+     "",
+     "13,857",
+     ""
+    ],
+    [
+     "Total other income (expense), net",
+     "",
+     "(649,732)",
+     "",
+     "",
+     "7,664,524",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "$",
+     "(1,075,614)",
+     "",
+     "$",
+     "6,142,250",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding of Class A redeemable common stock",
+     "",
+     "34,500,000",
+     "",
+     "",
+     "34,500,000",
+     ""
+    ],
+    [
+     "Basic and diluted income per share, Class A redeemable common stock",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding of Class A and Class B non-redeemable common stock(1)",
+     "",
+     "8,625,000",
+     "",
+     "",
+     "8,326,657",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share, Class A and Class B non-redeemable common stock",
+     "$",
+     "(0.12)",
+     "",
+     "$",
+     "0.74",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 167,
+    "end_line": 197
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": null
+   },
+   "prose_before": "(1) At December 31, 2020, included an aggregate of up to 1,125,000 shares of Class B common stock subject to forfeiture if the over-allotment option was not exercised in full or in part by the underwriter (see Note 5). On December 11, 2020, the Company effected a 47.91667-for-1 stock split and on February 11, 2021, the Company effected a stock dividend of 1.2 shares of Class B common stock for each share of Class B common stock outstanding prior to the dividend, resulting in 8,625,000 shares of Class B common stock being issued and outstanding. All share and per-share amounts have been retroactively restated to reflect the stock split.\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF OPERATIONS",
+   "prose_after": "(1) An aggregate of up to 1,125,000 shares of Class B common stock that was subject to forfeiture until the over-allotment option was exercised by the underwriter has been excluded from the calculation of weighted average shares outstanding until such time they were no longer subject to forfeiture.\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nTHREE AND SIX MONTHS ENDED JUNE 30, 2021",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 165,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 202,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A\n\n\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Class B\n\n\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "Additional\n\n\n\nPaid-in",
+     "",
+     "",
+     "Retained earnings (Accumulated",
+     "",
+     "",
+     "Total\n\n\n\nStockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit)",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2014 January 1, 2021",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "8,625,000",
+     "$",
+     "863",
+     "$",
+     "24,137",
+     "",
+     "$",
+     "(1,000)",
+     "",
+     "$",
+     "24,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of 34,500,000 Units, net of underwriting discounts",
+     "",
+     "34,500,000",
+     "",
+     "",
+     "3,450",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "311,023,671",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "311,027,121",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock subject to possible redemption",
+     "",
+     "(31,326,898)",
+     "",
+     "",
+     "(3,133)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(311,047,808)",
+     "",
+     "",
+     "(2,218,039)",
+     "",
+     "",
+     "(313,268,980)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,217,864",
+     "",
+     "",
+     "7,217,864",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 March 31, 2021",
+     "",
+     "3,173,102",
+     "",
+     "$",
+     "317",
+     "",
+     "",
+     "8,625,000",
+     "$",
+     "863",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,998,825",
+     "",
+     "$",
+     "5,000,005",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in value of Class A common stock subject to possible redemption",
+     "",
+     "107,561",
+     "",
+     "",
+     "11",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,075,599",
+     "",
+     "",
+     "1,075,610",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,075,614)",
+     "",
+     "",
+     "(1,075,614)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 June 30, 2021",
+     "",
+     "3,280,663",
+     "",
+     "$",
+     "328",
+     "",
+     "",
+     "8,625,000",
+     "$",
+     "863",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,998,810",
+     "",
+     "$",
+     "5,000,001",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 210,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": null
+   },
+   "prose_before": "(1) An aggregate of up to 1,125,000 shares of Class B common stock that was subject to forfeiture until the over-allotment option was exercised by the underwriter has been excluded from the calculation of weighted average shares outstanding until such time they were no longer subject to forfeiture.\nThe accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nTHREE AND SIX MONTHS ENDED JUNE 30, 2021",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF CASH FLOWS\nSIX MONTHS ENDED JUNE 30, 2021",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 208,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 240,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "6,142,250",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "(7,650,667)",
+     ""
+    ],
+    [
+     "Interest earned on marketable securities held in Trust Account",
+     "",
+     "(13,857)",
+     ""
+    ],
+    [
+     "Transaction costs allocable to warrant liability",
+     "",
+     "882,336",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "(492,701)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "158,331",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(974,308)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment of cash into Trust Account",
+     "",
+     "(345,000,000)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(345,000,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of Units, net of underwriting discounts paid",
+     "",
+     "338,100,000",
+     ""
+    ],
+    [
+     "Proceeds from sale of Private Placement Warrants",
+     "",
+     "9,400,000",
+     ""
+    ],
+    [
+     "Proceeds from promissory note \u2013 related party",
+     "",
+     "252,000",
+     ""
+    ],
+    [
+     "Repayment of promissory note \u2013 related party",
+     "",
+     "(252,000)",
+     ""
+    ],
+    [
+     "Payment of offering costs",
+     "",
+     "(441,464)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "347,058,536",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "1,084,228",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning of period",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Cash \u2013 End of period",
+     "$",
+     "1,109,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash investing and financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Initial classification of Class A common stock subject to possible redemption",
+     "$",
+     "303,350,376",
+     ""
+    ],
+    [
+     "Change in value of Class A common stock subject to possible redemption",
+     "$",
+     "8,842,994",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "$",
+     "12,075,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash Flows from Operating Activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 248,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nCONDENSED STATEMENT OF CASH FLOWS\nSIX MONTHS ENDED JUNE 30, 2021",
+   "prose_after": "The accompanying notes are an integral part of the unaudited condensed financial statements.\nNOTE 1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nBroadscale Acquisition Corp. (the \u201cCompany\u201d) is a blank check company incorporated in Delaware on November 5, 2020. The Company was formed for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses (the \u201cBusiness Combination\u201d).\nThe Company is not limited to a particular industry or sector for purposes of consummating a Business Combination. The Company is an early stage and emerging growth company and, as such, the Company is subject to all of the risks associated with early stage and emerging growth companies.\nAs of June 30, 2021, the Company had not commenced any operations. All activity for the period from November 5, 2020 (inception) through June 30, 2021 relates to the Company\u2019s formation, the initial public offering (\u201cInitial Public Offering\u201d), which is described below, and subsequent to the Initial Public Offering, identifying a target for a Business Combination. The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company will generate non-operating income in the form of interest income from the proceeds derived from the Initial Public Offering. The Company has selected December 31 as its fiscal year end.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 246,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "Six Months Ended\n\n\n\nJune 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Redeemable Class A Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator: Earnings allocable to Redeemable Class A Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "$",
+     "8,602",
+     "",
+     "$",
+     "13,857",
+     ""
+    ],
+    [
+     "Less: Income and Franchise Tax available to be withdrawn from the Trust Account",
+     "",
+     "(8,602)",
+     "",
+     "",
+     "(13,857)",
+     ""
+    ],
+    [
+     "Redeemable Net Earnings",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Denominator: Weighted Average Redeemable Class A Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable Class A Common Stock, Basic and Diluted",
+     "",
+     "34,500,000",
+     "",
+     "",
+     "34,500,000",
+     ""
+    ],
+    [
+     "Earnings/Basic and Diluted Redeemable Class A Common Stock",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Redeemable Class A and Class B Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator: Net Income (Loss) minus Redeemable Net Earnings",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "(1,075,614)",
+     "",
+     "$",
+     "6,142,250",
+     ""
+    ],
+    [
+     "Less: Redeemable Net Earnings",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Non-Redeemable Net Earnings (Loss)",
+     "$",
+     "(1,075,614)",
+     "",
+     "$",
+     "6,142,250",
+     ""
+    ],
+    [
+     "Denominator: Weighted Average Non-Redeemable Class A and B Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Redeemable Class A and B Common Stock, Basic and Diluted",
+     "",
+     "8,625,000",
+     "",
+     "",
+     "8,326,657",
+     ""
+    ],
+    [
+     "Earnings (Loss)/Basic and Diluted Non-Redeemable Class A and B Common Stock",
+     "$",
+     "(0.12)",
+     "",
+     "$",
+     "0.74",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 428
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company\u2019s statements of operations include a presentation of income (loss) per share for common shares subject to possible redemption in a manner similar to the two-class method of income (loss) per share. Net income per common share, basic and diluted, for Class A redeemable common stock is calculated by dividing the interest income earned on the Trust Account, by the weighted average number of Class A redeemable common stock outstanding since original issuance. Net income (loss) per share, basic and diluted, for Class A and Class B non-redeemable common stock is calculated by dividing the net income (loss), adjusted for income attributable to Class A redeemable common stock, net of applicable franchise and income taxes, by the weighted average number of Class A and Class B non-redeemable common stock outstanding for the period. Class B non-redeemable common stock includes the Founder Shares as these shares do not have any redemption features and do not participate in the income earned on the Trust Account.\nThe following table reflects the calculation of basic and diluted net income (loss) per common share (in dollars, except per share amounts):",
+   "prose_after": "Concentration of Credit Risk\nFinancial instruments that potentially subject the Company to concentrations of credit risk consist of cash accounts in a financial institution, which, at times may exceed the Federal Depository Insurance Corporation coverage limit of $250,000. The Company has not experienced losses on these accounts and management believes the Company is not exposed to significant risks on such account.\nFair Value of Financial Instruments\nThe fair value of the Company\u2019s assets and liabilities which qualify as financial instruments under ASC Topic 820, \u201cFair Value Measurement,\u201d approximate the carrying amounts represented in the accompanying condensed balance sheets, primarily due to their short-term nature.\nRecent Accounting Standards\nIn August 2020, the FASB issued ASU No. 2020-06, \u201cDebt\u2014Debt with Conversion and Other Options (Subtopic 470-20) and Derivatives and Hedging\u2014Contracts in Entity\u2019s Own Equity (Subtopic 815-40): Accounting for Convertible Instruments and Contracts in an Entity\u2019s Own Equity\u201d (\u201cASU 2020-06\u201d), which simplifies accounting for convertible instruments by removing major separation models required under current GAAP. ASU 2020-06 removes certain settlement conditions that are required for equity contracts to qualify for the derivative scope exception and it also simplifies the diluted earnings per share calculation in certain areas. ASU 2020-06 is effective for fiscal years beginning after December 15, 2023, including interim periods within those fiscal years, with early adoption permitted. The Company is currently assessing the impact, if any, that ASU 2020-06 would have on its financial position, results of operations or cash flows.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1:",
+     "Quoted prices in active markets for identical assets or liabilities. An active market for an asset or liability is a market in which transactions for the asset or liability occur with sufficient frequency and volume to provide pricing information on an ongoing basis."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 547,
+    "end_line": 551
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "As of June 30, 2021, there were 6,266,667 Private Warrants outstanding. At December 31, 2020, there were no Private Placement Warrants outstanding. The Private Placement Warrants are identical to the Public Warrants underlying the Units sold in the Initial Public Offering, except that the Private Placement Warrants and the Class A common stock issuable upon the exercise of the Private Placement Warrants will not be transferable, assignable or salable until 30 days after the completion of a Business Combination, subject to certain limited exceptions. Additionally, except as provided herein under \u201c\u2014 Redemption of warrants when the price per share of Class A common stock equals or exceeds $10.00\u201d, the Private Placement Warrants will be exercisable on a cashless basis and be non-redeemable so long as they are held by the initial purchasers or their permitted transferees. If the Private Placement Warrants are held by someone other than the initial purchasers or their permitted transferees, the Private Placement Warrants will be redeemable by the Company and exercisable by such holders on the same basis as the Public Warrants.\nNOTE 9. FAIR VALUE MEASUREMENTS\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 539,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 2:",
+     "Observable inputs other than Level 1 inputs. Examples of Level 2 inputs include quoted prices in active markets for similar assets or liabilities and quoted prices for identical assets or liabilities in markets that are not active."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 552,
+    "end_line": 556
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 539,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 3:",
+     "Unobservable inputs based on our assessment of the assumptions that market participants would use in pricing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 557,
+    "end_line": 560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "At June 30, 2021, assets held in the Trust Account were comprised of $345,013,857 in cash. Through June 30, 2021, the Company did not withdraw any interest earned on the Trust Account.\nThe following table presents information about the Company\u2019s liabilities that are measured at fair value on a recurring basis at June 30, 2021 and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 539,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Level",
+     "June 30, 2021",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account \u2013 U.S. Treasury Securities Money Market Fund",
+     "1",
+     "$",
+     "345,013,857"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant Liability \u2013 Public Warrants",
+     "1",
+     "$",
+     "9,918,750"
+    ],
+    [
+     "Warrant Liability \u2013 Private Placement Warrants",
+     "2",
+     "$",
+     "7,269,334"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 565,
+    "end_line": 575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "At June 30, 2021, assets held in the Trust Account were comprised of $345,013,857 in cash. Through June 30, 2021, the Company did not withdraw any interest earned on the Trust Account.\nThe following table presents information about the Company\u2019s liabilities that are measured at fair value on a recurring basis at June 30, 2021 and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "The Warrants are accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities in the accompanying condensed balance sheets. The warrant liabilities are measured at fair value at inception and on a recurring basis, with changes in fair value presented within the change in fair value of warrant liabilities in the condensed statement of operations.\nAs of February 17, 2021, the Warrants were valued using a binomial lattice model, which is considered to be a Level 3 fair value measurement. The binomial lattice model\u2019s primary unobservable input utilized in determining the fair value of the Warrants is the expected volatility of the common stock. The expected volatility as of February 17, 2021 was derived from observable public warrant pricing on comparable \u2018blank-check\u2019 companies without an identified target. The subsequent measurements of the Public Warrants after the detachment of the Public Warrants from the Units is classified as Level 1 due to the use of an observable market quote in an active market under the ticker SCLEW. For periods subsequent to the detachment of the Public Warrants from the Units, the close price of the Public Warrant price was used as the fair value of the Warrants as of each relevant date. The subsequent measurements of the Private Placement Warrants after the detachment of the Public Warrants from the Units are classified as Level 2 due to the use of an observable market quote for a similar asset in an active market.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 539,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Private Placement",
+     "",
+     "",
+     "Public Warrant",
+     "",
+     "",
+     "Total Warrant Liability",
+     "",
+     ""
+    ],
+    [
+     "Fair value as of January 1, 2021",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Initial measurement on February 17, 2021",
+     "",
+     "11,217,334",
+     "",
+     "",
+     "15,438,750",
+     "",
+     "",
+     "26,656,084",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(4,261,334)",
+     "",
+     "",
+     "(5,865,000)",
+     "",
+     "",
+     "(10,126,334)",
+     ""
+    ],
+    [
+     "Fair value as of March 31, 2021",
+     "",
+     "6,956,000",
+     "",
+     "",
+     "9,573,750",
+     "",
+     "",
+     "16,529,750",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "313,334",
+     "",
+     "",
+     "345,000",
+     "",
+     "",
+     "658,334",
+     ""
+    ],
+    [
+     "Transfer to Level 1",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(9,918,750)",
+     "",
+     "$",
+     "(9,918,750)",
+     ""
+    ],
+    [
+     "Transfer o Level 2",
+     "$",
+     "(7,269,334)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(7,269,334)",
+     ""
+    ],
+    [
+     "Fair value as of June 30, 2021",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Financial Statements                                                                                 1"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "As of February 17, 2021, the Warrants were valued using a binomial lattice model, which is considered to be a Level 3 fair value measurement. The binomial lattice model\u2019s primary unobservable input utilized in determining the fair value of the Warrants is the expected volatility of the common stock. The expected volatility as of February 17, 2021 was derived from observable public warrant pricing on comparable \u2018blank-check\u2019 companies without an identified target. The subsequent measurements of the Public Warrants after the detachment of the Public Warrants from the Units is classified as Level 1 due to the use of an observable market quote in an active market under the ticker SCLEW. For periods subsequent to the detachment of the Public Warrants from the Units, the close price of the Public Warrant price was used as the fair value of the Warrants as of each relevant date. The subsequent measurements of the Private Placement Warrants after the detachment of the Public Warrants from the Units are classified as Level 2 due to the use of an observable market quote for a similar asset in an active market.\nThe following table presents the changes in the fair value of level 3 warrant liability:",
+   "prose_after": "NOTE 10. SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date up to the date that the condensed financial statements were issued. Based upon this review, the Company did not identify any subsequent events that would have required adjustment or disclosure in the condensed financial statements.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nReferences in this report (the \u201cQuarterly Report\u201d) to \u201cwe,\u201d \u201cus\u201d or the \u201cCompany\u201d refer to Broadscale Acquisition Corp. References to our \u201cmanagement\u201d or our \u201cmanagement team\u201d refer to our officers and directors, and references to the \u201cSponsor\u201d refer to Nokomis ESG Sponsor, LLC. The following discussion and analysis of the Company\u2019s financial condition and results of operations should be read in conjunction with the financial statements and the notes thereto contained elsewhere in this Quarterly Report. Certain information contained in the discussion and analysis set forth below includes forward-looking statements that involve risks and uncertainties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 605,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "Description of Exhibit"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document."
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 772,
+    "end_line": 787
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Transaction costs related to the Initial Public Offering amounted to $19,416,464, consisting of $6,900,000 in cash underwriting fees, $12,075,000 in deferred underwriting fees, and $441,464 of other offering costs.\nFor a description of the use of the proceeds generated in our Initial Public Offering, see Part I, Item 2 of this Quarterly Report.\nItem 3. Defaults Upon Senior Securities\nNone\nItem 4. Mine Safety Disclosures\nNone\nItem 5. Other Information\nNone\nItem 6. Exhibits\nThe following exhibits are filed as part of, or incorporated by reference into, this Quarterly Report on Form 10-Q.",
+   "prose_after": "* Filed herewith.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 755,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BROADSCALE ACQUISITION CORP.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 12, 2021",
+     "By:",
+     "/s/ Andrew L. Shapiro"
+    ],
+    [
+     "",
+     "Name:",
+     "Andrew L. Shapiro"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 12, 2021",
+     "By:",
+     "/s/ John P. Hanna"
+    ],
+    [
+     "",
+     "Name:",
+     "John P. Hanna"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "BROADSCALE ACQUISITION CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 795,
+    "end_line": 810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Filed herewith.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 811,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

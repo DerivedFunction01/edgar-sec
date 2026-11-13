@@ -1,0 +1,3461 @@
+{
+ "accession": "0001213900-23-024843",
+ "cik": "0001834518",
+ "form": "10-K",
+ "filing_date": "2023-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2022_northern2.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-3909728"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2022\nCommission File Number 001-39929\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "c/o Graubard Miller\nThe Chrysler Building\n405 Lexington Avenue, 44th Floor\nNew York, NY 10174\n(Address of Principal Executive Offices) (Zip Code)\n(212) 818-8800\n(Registrant\u2019s Telephone Number, Including Area Code)\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nJoanna Coles, Chief Executive Officer\nNorthern Star Investment Corp. II",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of each exchange\n\n\n\non which registered"
+    ],
+    [
+     "Units, each consisting of one share of Class A Common Stock and one-fifth of one redeemable warrant",
+     "NSTB.U",
+     "NYSE American LLC"
+    ],
+    [
+     "Class A Common Stock, par value $0.0001 per share",
+     "NSTB",
+     "NYSE American LLC"
+    ],
+    [
+     "Redeemable warrants, exercisable for shares of Class A Common Stock at an exercise price of $11.50 per share",
+     "NTSB WS",
+     "NYSE American LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 67
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nJoanna Coles, Chief Executive Officer\nNorthern Star Investment Corp. II\nc/o Graubard Miller\nThe Chrysler Building\n405 Lexington Avenue, 44th Floor\nNew York, New York 10174\n(212) 818-8800\n(Name, address, including zip code, and telephone number, including area code, of agent for service)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 12,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "9"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "33"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "33"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "33"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "33"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "34"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "35"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "35"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "38"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "38"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "38"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "38"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "39"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions That Prevents Inspections",
+     "39"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "40"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "45"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "46"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "47"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "48"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "50"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "51"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 107,
+    "end_line": 138
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nThe aggregate market value of voting stock held by non-affiliates of the registrant, as of June 30, 2022, the last day of the registrant\u2019s most recently completed second fiscal quarter, was $392,800,000 (based on the closing price for shares of the registrant\u2019s Common Stock as reported by the New York Stock Exchange on June 30, 2022).\nAs of March 30, 2023, 11,782,051 shares of Class A common stock, par value $0.0001 per share, and 291,666 shares of Class B common stock, par value $0.0001 per share, were issued and outstanding.\nDocuments Incorporated by Reference: None.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS; SUMMARY OF RISK FACTORS\nCertain statements in this Annual Report on Form 10-K (\u201cAnnual Report\u201d) of Northern Star Investment Corp. II (the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d \u201cour\u201d and \u201cNorthern Star\u201d) may constitute \u201cforward-looking statements\u201d for purposes of the federal securities laws. Our forward-looking statements include, but are not limited to, statements regarding our or our management team\u2019s expectations, hopes, beliefs, intentions or strategies regarding the future. In addition, any statements that refer to projections, forecasts or other characterizations of future events or circumstances, including any underlying assumptions, are forward-looking statements. The words \u201canticipate,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions may identify forward-looking statements, but the absence of these words does not mean that a statement is not forward-looking. Forward-looking statements in this Annual Report may include, for example, statements about:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 101,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 139,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Joanna Coles",
+     "58",
+     "Chairperson of the Board and Chief Executive Officer"
+    ],
+    [
+     "Jonathan J. Ledecky",
+     "65",
+     "President and Chief Operating Officer"
+    ],
+    [
+     "James H.R. Brady",
+     "58",
+     "Chief Financial Officer"
+    ],
+    [
+     "Brett Cyrgalis",
+     "38",
+     "Director"
+    ],
+    [
+     "David Shapiro",
+     "52",
+     "Director"
+    ],
+    [
+     "Howard Yeaton",
+     "68",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1077,
+    "end_line": 1087
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT"
+    },
+    "note": null
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting during the most recent fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNot applicable.\nItem 9C. Disclosure Regarding Foreign Jurisdictions That Prevents Inspections\nNot applicable.\nPART III\nITEM 10. DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT\nDirectors and Executive Officers\nOur current directors and executive officers are as follows:",
+   "prose_after": "Joanna Coles has served as our Chairperson of the Board of Directors and as our Chief Executive Officer since our inception. She also served as Chairperson of the Board of Directors of Northern Star Acquisition Corp. from July 2020, and as its Chief Executive Officer from September 2020, until its business combination with Barkbox, Inc. in June 2021, and continues to be a director of the combined company. She has also served as the Chairperson of the Board of Directors and Chief Executive Officer of Northern Star Investment Corp. III since November 2020 and of Northern Star Investment Corp. IV since November 2020. Ms. Coles is a creative media and technology entrepreneur who in her previous roles as editor of two leading magazines and Chief Content Officer of Hearst Magazines developed an extensive network of relationships at the intersection of technology, fashion and beauty. Ms. Coles is on the board of Snap Inc. (NYSE: SNAP), a leading digital media company that utilizes technology to combine mobile phone photos with Snapchat, a leading communications platform. Its chat services include creating and watching stories, chatting with groups, and making voice and video calls while also communicating through stickers and Bitmojis. She is also on the board of directors of Sonos, Inc. (NASDAQ: SONO), a designer, developer, manufacturer and seller of audio products and services. Ms. Coles has been the Executive Producer for ABC Freeform\u2019s highly acclaimed The Bold Type since 2016 and in 2019 entered into a production development deal at ABC Studios creating TV shows across Disney\u2019s streaming platforms. Since January 2019, she has also been a special advisor to Cornell Capital, a $3.5 billion private investment firm founded in 2013 by Henry Cornell, the former Vice Chairman of Goldman Sachs\u2019 Merchant Banking Division. She was appointed Chief Content Officer of Hearst Magazines in September 2016, overseeing editorial for Hearst\u2019s 300 titles globally, and served until August 2018. Prior to that, she was Editor-in-Chief of Cosmopolitan, a role she started in September 2012. She edited Marie Claire magazine from April 2006 to September 2012. Ms. Coles was New York columnist for The Times of London from September 1998 to September 2001 and served as New York Bureau Chief for The Guardian from 1997 to 1998. She is on the board of Women Entrepreneurs New York City, an initiative to encourage female entrepreneurship, with a focus on underserved communities. She is also a member of the board of directors of Density Software, a company that utilizes hardware systems and software solutions to manage safety and security in physical spaces including retail stores, hotels, restaurants, office buildings, public facilities such as airports and universities and home environments, Blue Mistral, a clean beauty company, and an advisor to several private companies. She holds a B.A. in English and American literature from the University of East Anglia.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1068,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and address of beneficial owner(1)",
+     "Amount and nature of beneficial ownership",
+     "",
+     "Approximate percentage of outstanding common stock",
+     "",
+     ""
+    ],
+    [
+     "Joanna Coles(2)",
+     "",
+     "9,708,334",
+     "",
+     "82.4",
+     "%"
+    ],
+    [
+     "Jonathan J. Ledecky(2)",
+     "",
+     "9,708,334",
+     "",
+     "82.4",
+     "%"
+    ],
+    [
+     "James H.R. Brady",
+     "",
+     "116,667",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Brett Cyrgalis",
+     "",
+     "--",
+     "",
+     "--",
+     ""
+    ],
+    [
+     "David Shapiro",
+     "",
+     "58,333",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Howard Yeaton",
+     "",
+     "--",
+     "",
+     "--",
+     ""
+    ],
+    [
+     "Northern Star II Sponsor LLC",
+     "",
+     "9,708,334",
+     "",
+     "82.4",
+     "%"
+    ],
+    [
+     "All officers and directors as a group (six individuals)",
+     "",
+     "9,883,334",
+     "",
+     "83.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1237,
+    "end_line": 1250
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "Since our formation, we have not granted any stock options or stock appreciation rights or any other awards under long-term incentive plans to any of our executive officers or directors.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS\nThe following table sets forth information regarding the beneficial ownership of our common stock as of the date of this Annual Report by:\n\u25cf each person known by us to be the beneficial owner of more than 5% of our outstanding shares of common stock;\n\u25cf each of our officers and directors; and\n\u25cf all of our officers and directors as a group.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all shares beneficially owned by them. The following table does not reflect record of beneficial ownership of the warrants included in the units offered in the IPO or the Private Placement Warrants as these warrants are not exercisable within 60 days of the date hereof.",
+   "prose_after": "* Less than one percent.\n(1) Unless otherwise noted, the business address of each of our stockholders is c/o Northern Star Investment Corp. II, c/o Graubard Miller, The Chrysler Building, 425 Lexington Avenue, 44th Floor, New York, New York 10174.\n(2) Represents shares held by our sponsor, of which each of Ms. Coles and Mr. Ledecky is a managing member.\nThe founder shares, private placement warrants and any shares of Class A common stock issued upon conversion or exercise thereof are each subject to transfer restrictions pursuant to lock-up provisions in the agreements entered into by our initial stockholders and management team. Those lock-up provisions provide that such securities are not transferable or salable (i) in the case of the founder shares, until the earlier of (A) one year after the completion of our initial business combination or earlier if, subsequent to our initial business combination, the closing price of the Class A common stock equals or exceeds $12.00 per share (as adjusted for stock splits, stock dividends, reorganizations, recapitalizations and the like) for any 20 trading days within any 30-trading day period commencing at least 150 days after our initial business combination and (B) the date following the completion of our initial business combination on which we complete a liquidation, merger, share exchange or other similar transaction that results in all of our stockholders having the right to exchange their Class A common stock for cash, securities or other property and (ii) in the case of the private placement warrants and the respective shares of Class A common stock underlying such warrants, until 30 days after the completion of our initial business combination except in each case (a) to our officers or directors, any affiliate or family member of any of our officers or directors, any affiliate of our initial stockholders or to any member of the initial stockholders or any of their affiliates, (b) in the case of an individual, as a gift to such person\u2019s immediate family or to a trust, the beneficiary of which is a member of such person\u2019s immediate family, an affiliate of such person or to a charitable organization; (c) in the case of an individual, by virtue of laws of descent and distribution upon death of such person; (d) in the case of an individual, pursuant to a qualified domestic relations order;",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1224,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1265,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID Number 688)",
+     "F-2"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficit",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7 to F-18"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1328,
+    "end_line": 1338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Tax Fees. We did not pay Marcum for tax planning and tax advice for the year ended December 31, 2022 and 2021.\nAll Other Fees. We did not pay Marcum for other services for the year ended December 31, 2022 and for 2021.\nPre-Approval Policy\nOur audit committee was formed upon the consummation of our Initial Public Offering. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) The following documents are filed as part of this Form 10-K:\n(1) Consolidated Financial Statements:",
+   "prose_after": "(2) Consolidated Financial Statement Schedules:\nNone.\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1319,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID Number 688)",
+     "F-2"
+    ],
+    [
+     "Consolidated Financial Statements:",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficit",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7 to F-18"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1347,
+    "end_line": 1356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Consolidated Financial Statement Schedules:\nNone.\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and Board of Directors of\nNorthern Star Investment Corp II\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Northern Star Investment Corp II (the \u201cCompany\u201d) as of December 31, 2022 and 2021, the related consolidated statements of operations, changes in stockholders\u2019 deficit and cash flows for each of the year ended December 31, 2022 and 2021, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2022 and 2021, and the results of its operations and its cash flows for each of the year ended December 31, 2022 and 2021, in conformity with accounting principles generally accepted in the United States of America.\nExplanatory Paragraph \u2013 Going Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As more fully described in Note 1, the Company\u2019s business plan is dependent on the completion of a business combination and the Company\u2019s cash and working capital as of December 31, 2022 are not sufficient to complete its planned activities. These conditions raise substantial doubt about the Company's ability to continue as a going concern. Management's plans in regard to these matters are also described in Note 1. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1356,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "85,894",
+     "",
+     "$",
+     "440,291",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "11,667",
+     "",
+     "",
+     "3,333",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "97,561",
+     "",
+     "",
+     "443,624",
+     ""
+    ],
+    [
+     "Marketable investments held in Trust Account",
+     "",
+     "404,205,637",
+     "",
+     "",
+     "400,032,399",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "404,303,198",
+     "",
+     "$",
+     "400,476,023",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable and Accrued expenses",
+     "$",
+     "2,296,647",
+     "",
+     "$",
+     "2,178,095",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "77,413",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Redemption payable",
+     "",
+     "383,250,434",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "385,624,494",
+     "",
+     "",
+     "2,178,095",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liabilities",
+     "",
+     "1,065,000",
+     "",
+     "",
+     "11,182,500",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "",
+     "14,000,000",
+     "",
+     "",
+     "14,000,000",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "400,689,494",
+     "",
+     "",
+     "27,360,595",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock subject to possible redemption 2,073,717 and 40,000,000 shares, at $10.10 and $10.00 per share, as of December 31, 2022 and 2021, respectively",
+     "",
+     "20,877,731",
+     "",
+     "",
+     "400,000,000",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 1,000,000 shares authorized; none issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 125,000,000 shares authorized; 9,708,334 and 0 shares issued and outstanding as of December 31, 2022 and 2021, respectively",
+     "",
+     "971",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 25,000,000 shares authorized; 291,666 and 10,000,000 shares issued and outstanding as of December 31, 2022 and 2021, respectively",
+     "",
+     "29",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(17,265,027)",
+     "",
+     "",
+     "(26,885,572)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "(17,264,027)",
+     "",
+     "",
+     "(26,884,572)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "404,303,198",
+     "",
+     "$",
+     "400,476,023",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1390,
+    "end_line": 1436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Marcum llp\nMarcum llp\nWe have served as the Company\u2019s auditor since 2020.\nNew York, NY March 30, 2023\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1386,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1438,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended\n\n\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Formation and operating costs",
+     "$",
+     "876,115",
+     "",
+     "$",
+     "2,984,616",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(876,115)",
+     "",
+     "",
+     "(2,984,616)",
+     ""
+    ],
+    [
+     "Other income (expenses):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on marketable investments held in Trust Account",
+     "",
+     "5,488,738",
+     "",
+     "",
+     "32,399",
+     ""
+    ],
+    [
+     "Transaction expenses attributable to warrant liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(462,969)",
+     ""
+    ],
+    [
+     "Loss on initial issuance of private warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(195,000)",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "10,117,500",
+     "",
+     "",
+     "6,762,500",
+     ""
+    ],
+    [
+     "Total other income, net",
+     "",
+     "15,606,238",
+     "",
+     "",
+     "6,136,930",
+     ""
+    ],
+    [
+     "Income before provision for income taxes",
+     "",
+     "14,730,123",
+     "",
+     "",
+     "3,152,314",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "(981,413)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "13,748,710",
+     "",
+     "$",
+     "3,152,314",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, Class A common stock",
+     "",
+     "39,922,691",
+     "",
+     "",
+     "36,931,507",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share, Class A common stock",
+     "$",
+     "0.28",
+     "",
+     "$",
+     "0.07",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding of Class B common stock",
+     "",
+     "9,973,402",
+     "",
+     "",
+     "9,880,137",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share, Class B common stock",
+     "$",
+     "0.28",
+     "",
+     "$",
+     "0.07",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1442,
+    "end_line": 1473
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1438,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A\n\n\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "Class B\n\n\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2020",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "10,062,500",
+     "",
+     "$",
+     "1,006",
+     "",
+     "$",
+     "23,994",
+     "",
+     "$",
+     "(392)",
+     "",
+     "$",
+     "24,608",
+     ""
+    ],
+    [
+     "Remeasurement adjustment on redeemable common stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(24,000)",
+     "",
+     "",
+     "(30,037,494)",
+     "",
+     "",
+     "(30,061,494)",
+     ""
+    ],
+    [
+     "Forfeiture of Founder Shares",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(62,500)",
+     "",
+     "",
+     "(6)",
+     "",
+     "",
+     "6",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,152,314",
+     "",
+     "",
+     "3,152,314",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "10,000,000",
+     "",
+     "",
+     "1,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(26,885,572)",
+     "",
+     "",
+     "(26,884,572)",
+     ""
+    ],
+    [
+     "Remeasurement adjustment on redeemable common stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,128,165)",
+     "",
+     "",
+     "(4,128,165)",
+     ""
+    ],
+    [
+     "Contribution \u2013 Shareholder non-redemption agreement",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "160,093",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "160,093",
+     ""
+    ],
+    [
+     "Shareholder non-redemption agreement",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(160,093)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(160,093)",
+     ""
+    ],
+    [
+     "Conversion of Class B common stock to Class A common stock",
+     "",
+     "9,708,334",
+     "",
+     "971",
+     "",
+     "(9,708,334)",
+     "",
+     "",
+     "(971)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "13,748,710",
+     "",
+     "",
+     "13,748,710",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2022",
+     "",
+     "9,708,334",
+     "$",
+     "971",
+     "",
+     "291,666",
+     "",
+     "$",
+     "29",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(17,265,027)",
+     "",
+     "$",
+     "(17,264,027)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1481,
+    "end_line": 1504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2022 AND 2021",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1475,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended\n\n\n\nDecember 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "13,748,710",
+     "",
+     "$",
+     "3,152,314",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on marketable securities held in Trust Account",
+     "",
+     "(5,488,738)",
+     "",
+     "",
+     "(32,399)",
+     ""
+    ],
+    [
+     "Loss on initial issuance of private warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "195,000",
+     ""
+    ],
+    [
+     "Transaction expenses attributable to warrant liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "462,969",
+     ""
+    ],
+    [
+     "Changes in fair value of warrant liabilities",
+     "",
+     "(10,117,500)",
+     "",
+     "",
+     "(6,762,500)",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(8,334)",
+     "",
+     "",
+     "(3,333)",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "77,413",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "118,552",
+     "",
+     "",
+     "2,177,720",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,669,897)",
+     "",
+     "",
+     "(810,229)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment of cash into trust Account",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(400,000,000)",
+     ""
+    ],
+    [
+     "Cash withdrawn from Trust Account to pay franchise and income taxes",
+     "",
+     "1,315,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "1,315,500",
+     "",
+     "",
+     "(400,000,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of Units, net of underwriting discounts paid",
+     "",
+     "\u2014",
+     "",
+     "",
+     "392,000,000",
+     ""
+    ],
+    [
+     "Proceeds from sale of Private Placement Warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "9,750,000",
+     ""
+    ],
+    [
+     "Repayment of promissory note \u2013 related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(150,000)",
+     ""
+    ],
+    [
+     "Payment of offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(474,463)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "401,125,537",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "(354,397)",
+     "",
+     "",
+     "315,308",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning of period",
+     "",
+     "440,291",
+     "",
+     "",
+     "124,983",
+     ""
+    ],
+    [
+     "Cash \u2013 End of period",
+     "$",
+     "85,894",
+     "",
+     "$",
+     "440,291",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplementary cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "904,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in value of Class A common stock subject to redemption",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "369,938,506",
+     ""
+    ],
+    [
+     "Remeasurement adjustment of Class A common stock subject to possible redemption",
+     "$",
+     "4,128,165",
+     "",
+     "$",
+     "30,061,494",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "14,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended\n\n\n\nDecember 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1510,
+    "end_line": 1565
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nNOTE 1 \u2014 DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nNorthern Star Investment Corp. II (the \u201cCompany\u201d) is a blank check company incorporated in Delaware on November 12, 2020. The Company was formed for the purpose of effecting a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses or entities (the \u201cBusiness Combination\u201d).\nThe Company has two wholly-owned subsidiaries, NSICII-A Merger LLC and NSICII-BLLC, both of which were incorporated in the state of Delaware on February 15, 2021.\nThe Company is an early stage and emerging growth company and, as such, the Company is subject to all of the risks associated with early stage and emerging growth companies.\nAs of December 31, 2022, the Company had not commenced any operations. All activity through December 31, 2022 relates to the Company\u2019s formation, the initial public offering (\u201cInitial Public Offering\u201d), which is described below, and subsequent to the Initial Public Offering, and seeking to identify a target company for a Business Combination. The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company will generate non-operating income on cash and cash equivalents in the form of interest income from the proceeds derived from the Initial Public Offering and simultaneous private placement described below.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1506,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "Class B",
+     "",
+     "Class A",
+     "",
+     "Class B",
+     ""
+    ],
+    [
+     "Basic and diluted net income per common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net income",
+     "$",
+     "11,000,571",
+     "$",
+     "2,748,139",
+     "$",
+     "2,486,982",
+     "$",
+     "665,332"
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding",
+     "",
+     "39,922,691",
+     "",
+     "9,973,402",
+     "",
+     "36,931,507",
+     "",
+     "9,880,137"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income per common stock",
+     "$",
+     "0.28",
+     "$",
+     "0.28",
+     "$",
+     "0.07",
+     "$",
+     "0.07"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1695,
+    "end_line": 1711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company complies with accounting and disclosure requirements of FASB ASC Topic 260, \u201cEarnings Per Share\u201d. Net income per common share is computed by dividing net income by the weighted average number of common shares outstanding for the period. Remeasurement adjustment associated with the redeemable shares of Class A common shares is excluded from earnings per share as the redemption value approximates fair value.\nThe calculation of diluted income per share does not consider the effect of the warrants issued in connection with the (i) Initial Public Offering, and (ii) the private placement. The warrants are exercisable to purchase 17,750,000 Class A common shares in the aggregate. As of December 31, 2022 and 2021, the Company did not have any dilutive securities or other contracts that could, potentially, be exercised or converted into common shares and then share in the earnings of the Company. As a result, diluted net income per common share is the same as basic net income per common share for the periods presented.\nThe following table reflects the calculation of basic and diluted net income per common share (in dollars, except per share amounts):",
+   "prose_after": "Concentration of Credit Risk\nFinancial instruments that potentially subject the Company to concentrations of credit risk consist of a cash account in a financial institution, which, at times, may exceed the Federal Deposit Insurance Corporation coverage limit of $250,000. The Company had not experienced losses on this account.\nFair Value of Financial Instruments\nThe fair value of the Company\u2019s assets and liabilities, which qualify as financial instruments under ASC Topic 820, \u201cFair Value Measurement,\u201d approximates the carrying amounts represented in the Company\u2019s consolidated balance sheet, primarily due to their short-term nature, except for warrant liabilities (see Note 9).\nRecent Accounting Standards\nManagement does not believe that any recently issued, but not yet effective, accounting standards, if currently adopted, would have a material effect on the Company\u2019s consolidated financial statements.\nNOTE 3 \u2014 INITIAL PUBLIC OFFERING\nPursuant to the Initial Public Offering, the Company sold 40,000,000 Units, which includes a partial exercise by the underwriters of their over-allotment option in the amount of 5,000,000 Units, at a price of $10.00 per Unit. Each Unit consists of one share of Class A common stock and one-fifth of one redeemable warrant (\u201cPublic Warrant\u201d). Each whole Public Warrant entitles the holder to purchase one share of Class A common stock at a price of $11.50 per share, subject to adjustment.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1676,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1711,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "4.49",
+     "%"
+    ],
+    [
+     "Remaining life of SPAC",
+     "",
+     "1.75",
+     ""
+    ],
+    [
+     "Underlying stock price",
+     "$",
+     "10.02",
+     ""
+    ],
+    [
+     "Probability of transaction",
+     "",
+     "5.50",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1754,
+    "end_line": 1762
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014 RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "The Company entered into Non-Redemption Agreements with various stockholders pursuant to which these stockholders have committed not to redeem its Northern Star II shares until the closing of the Business Combination. In consideration of this agreement, the Sponsor has agreed to transfer a portion of its Founder shares to the Non-Redeeming Stockholders at the closing of the Business Combination. The Company estimated the aggregate fair value of the 363,848 founders shares attributable to the Non-Redeeming Stockholders to be $160,093 or $0.44 per share. Each Non-Redeeming Stockholder acquired from the Sponsor an indirect economic interest in the founder shares. The excess of the fair value of the founder shares was determined to be an offering cost in accordance with Staff Accounting Bulletin Topic 5A. The Company accounted for the transfer of a portion of the Sponsor\u2019s founders shares to non-redeeming stockholders as a capital contribution by the Sponsor with a corresponding charge to additional paid-in capital to recognize the fair value of the shares transferred.\nThe fair value of the founders shares was based on the following significant inputs:",
+   "prose_after": "NOTE 6 \u2014 COMMITMENTS\nRegistration Rights\nPursuant to a registration rights agreement entered into on January 25, 2021, the holders of the Founder Shares (and any shares of Class A common stock issuable upon conversion of the Founder Shares), Private Placement Warrants (and any shares of Class A common stock issuable upon the exercise of the Private Placement Warrants), and warrants (and any shares of Class A common stock issuable upon exercise of such warrants) that may be issued upon conversion of working capital loans will be entitled to registration rights requiring the Company to register such securities for resale (in the case of the Founder Shares, only after conversion to Class A common stock). The holders of the majority of these securities are entitled to make up to two demands, excluding short form demands, that the Company register such securities. In addition, the holders have certain \u201cpiggy-back\u201d registration rights with respect to registration statements filed subsequent to the completion of a Business Combination. The Company will bear the expenses incurred in connection with the filing of any such registration statements.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1741,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1768,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets (liability)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "38,319",
+     ""
+    ],
+    [
+     "Startup/Organization Expenses",
+     "",
+     "630,352",
+     "",
+     "",
+     "584,675",
+     ""
+    ],
+    [
+     "Unrealized loss \u2013 Trust",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,022)",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "630,352",
+     "",
+     "",
+     "619,972",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(630,352)",
+     "",
+     "",
+     "(619,972)",
+     ""
+    ],
+    [
+     "Deferred tax assets (liability)",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1797,
+    "end_line": 1812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 INCOME TAX"
+    }
+   },
+   "prose_before": "The shares of Class B common stock will automatically convert into shares of Class A common stock at the time of a Business Combination on a one-for-one basis, subject to adjustment. In the case that additional shares of Class A common stock, or equity-linked securities, are issued or deemed issued in excess of the amounts offered in the Initial Public Offering and related to the closing of a Business Combination, the ratio at which shares of Class B common stock shall convert into shares of Class A common stock will be adjusted (unless the holders of a majority of the outstanding shares of Class B common stock agree to waive such adjustment with respect to any such issuance or deemed issuance) so that the number of shares of Class A common stock issuable upon conversion of all shares of Class B common stock will equal, in the aggregate, on an as-converted basis, 20% of the sum of the total number of all shares of common stock outstanding upon the completion of the Initial Public Offering, net of conversions, plus all shares of Class A common stock and equity-linked securities issued or deemed issued in connection with a Business Combination (excluding any shares or equity-linked securities issued, or to be issued, to any seller in a Business Combination, any private placement-equivalent securities issued, or to be issued, to any seller in a Business Combination, any private placement equivalent securities issued to the initial stockholders or their affiliates upon conversion of loans made to the Company). Holders of Founder Shares may also elect to convert their shares of Class B common stock into an equal number of shares of Class A common stock, subject to adjustment as provided above, at any time.\nNOTE 8 \u2014 INCOME TAX\nThe Company\u2019s net deferred tax assets (liability) at December 31, 2022 and 2021 are as follows:",
+   "prose_after": "The Company\u2019s net deferred tax assets (liability) at December 31, 2022 and 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1852,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "981,413",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "(10,369)",
+     "",
+     "",
+     "(619,890)",
+     ""
+    ],
+    [
+     "State and Local",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "10,369",
+     "",
+     "",
+     "619,890",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "981,413",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1815,
+    "end_line": 1831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 INCOME TAX"
+    }
+   },
+   "prose_before": "The Company\u2019s net deferred tax assets (liability) at December 31, 2022 and 2021 are as follows:",
+   "prose_after": "As of December 31, 2022 and 2021, the Company had $0 and $182,470, respectively, of U.S. federal net operating loss carryovers available to offset future taxable income.\nIn assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the years ended December 31, 2022 and 2021, the change in the valuation allowance were $10,369 and $619,890, respectively.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1852,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.00",
+     "%",
+     "",
+     "21.00",
+     "%"
+    ],
+    [
+     "Change in fair value of warrants",
+     "",
+     "(14.42)",
+     "%",
+     "",
+     "(45.10)",
+     "%"
+    ],
+    [
+     "Transaction costs allocated to warrants",
+     "",
+     "0.00",
+     "%",
+     "",
+     "3.10",
+     "%"
+    ],
+    [
+     "Fair value of private warrant liability in excess of proceeds",
+     "",
+     "0.00",
+     "%",
+     "",
+     "1.30",
+     "%"
+    ],
+    [
+     "Tax interest and penalties",
+     "",
+     "0.02",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "0.07",
+     "%",
+     "",
+     "19.70",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "6.66",
+     "%",
+     "",
+     "0.00",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1838,
+    "end_line": 1852
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 INCOME TAX"
+    }
+   },
+   "prose_before": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the years ended December 31, 2022 and 2021, the change in the valuation allowance were $10,369 and $619,890, respectively.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate at December 31, 2022 and 2021 is as follows:",
+   "prose_after": "The Company\u2019s effective tax rate was 6.66% and 0.00% for the years ended December 31, 2022 and 2021, respectively. The effective tax rate differs from the statutory tax rate of 21% for the years ended December 31, 2022 and 2021, due to changes in fair value in warrant liability and the valuation allowance on the deferred tax assets.\nThe Company\u2019s current taxable income primarily consists of interest earned on the Trust Account. The Company\u2019s general and administrative costs are generally considered start-up costs and are not currently deductible. The change in fair value of warrant liability is not deductible. During the year ended December 31, 2022 and 2021, the Company recorded $981,413 and $0 income tax expense, respectively. The Company\u2019s effective tax rate for the years ended December 31, 2022 and 2021 was approximately 6.66% and 0.00%, which differs from the expected income tax rate primarily due to the start-up costs and warrant liability (discussed above) which are not currently deductible.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1852,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1:",
+     "Quoted prices in active markets for identical assets or liabilities. An active market for an asset or liability is a market in which transactions for the asset or liability occur with sufficient frequency and volume to provide pricing information on an ongoing basis."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 2:",
+     "Observable inputs other than Level 1 inputs. Examples of Level 2 inputs include quoted prices in active markets for similar assets or liabilities and quoted prices for identical assets or liabilities in markets that are not active."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 3:",
+     "Unobservable inputs based on our assessment of the assumptions that market participants would use in pricing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1865,
+    "end_line": 1874
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company follows the guidance in ASC 820 for its financial assets and liabilities that are re-measured and reported at fair value at each reporting period, and non-financial assets and liabilities that are re-measured and reported at fair value at least annually.\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "prose_after": "At December 31, 2022 and 2021, assets held in the Trust Account $404,205,637 and $400,032,399, held in money market funds which are invested primarily in U.S. Treasury securities. During the period ended December 31, 2022 and 2021, the Company withdrew $1,315,500 and $0 of interest income from the Trust Account, respectively.\nThe following table presents information about the Company\u2019s assets and liabilities that are measured at fair value on a recurring basis at December 31, 2022 and 2021 and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1852,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1895,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Level",
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash held in Trust Account",
+     "",
+     "1",
+     "$",
+     "404,205,637",
+     "$",
+     "400,032,399"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liability \u2013 Public Warrants (1)",
+     "",
+     "1",
+     "$",
+     "480,000",
+     "$",
+     "5,040,000"
+    ],
+    [
+     "Warrant liability \u2013 Private Placement Warrants (1)",
+     "",
+     "2",
+     "$",
+     "585,000",
+     "$",
+     "6,142,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1879,
+    "end_line": 1889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "At December 31, 2022 and 2021, assets held in the Trust Account $404,205,637 and $400,032,399, held in money market funds which are invested primarily in U.S. Treasury securities. During the period ended December 31, 2022 and 2021, the Company withdrew $1,315,500 and $0 of interest income from the Trust Account, respectively.\nThe following table presents information about the Company\u2019s assets and liabilities that are measured at fair value on a recurring basis at December 31, 2022 and 2021 and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value.",
+   "prose_after": "(1) Measured at fair value on a recurring basis.\nWarrants\nThe Warrants were accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities on our consolidated balance sheets. The warrant liabilities are measured at fair value at inception and on a recurring basis, with changes in fair value presented within change in fair value of warrant liabilities in the consolidated statements of operations.\nThe Public and Private Warrants were initially valued using a Modified Black Scholes Option Pricing Model, which is considered to be a Level 3 fair value measurement. The Modified Black Scholes model\u2019s primary unobservable inputs utilized in determining the fair value of the Private Warrants are the expected volatility of the common stock and the probability and expected timing to consummate a business combination. The expected volatility as of the IPO date was derived from observable public warrant pricing on comparable \u2018blank-check\u2019 companies without an identified target. The expected volatility as of subsequent valuation dates was implied from the Company\u2019s own public stock pricing. A Monte Carlo simulation methodology was used in estimating the fair value of the Public Warrants for the initial measurement, using the same expected volatility as was used in measuring the fair value of the Private Warrants. For periods subsequent to the detachment of the warrants from the Units, the closing price of the Public Warrants was used as the fair value of the Public Warrants as of each relevant date. At December 31, 2021, the Private Warrants were transferred to Level 2 due to the use of an observable market quote for a similar asset in an active market.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1852,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1895,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Private Placement",
+     "",
+     "",
+     "Public",
+     "",
+     "",
+     "Warrant Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Fair value as of January 1, 2022",
+     "$",
+     "6,142,500",
+     "",
+     "$",
+     "5,040,000",
+     "",
+     "$",
+     "11,182,500",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(5,557,500)",
+     "",
+     "",
+     "(4,560,000)",
+     "",
+     "",
+     "(10,117,500)",
+     ""
+    ],
+    [
+     "Fair value as of December 31, 2022",
+     "$",
+     "585,000",
+     "",
+     "$",
+     "480,000",
+     "",
+     "$",
+     "1,065,000",
+     ""
+    ],
+    [
+     "Initial measurement on January 28, 2021",
+     "$",
+     "9,945,500",
+     "",
+     "$",
+     "8,000,000",
+     "",
+     "$",
+     "17,945,500",
+     ""
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "(3,802,500)",
+     "",
+     "",
+     "(2,960,000)",
+     "",
+     "",
+     "(6,762,500)",
+     ""
+    ],
+    [
+     "Fair value as of December 31, 2021",
+     "$",
+     "6,142,500",
+     "",
+     "$",
+     "5,040,000",
+     "",
+     "$",
+     "11,182,500",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1904,
+    "end_line": 1919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Public and Private Warrants were initially valued using a Modified Black Scholes Option Pricing Model, which is considered to be a Level 3 fair value measurement. The Modified Black Scholes model\u2019s primary unobservable inputs utilized in determining the fair value of the Private Warrants are the expected volatility of the common stock and the probability and expected timing to consummate a business combination. The expected volatility as of the IPO date was derived from observable public warrant pricing on comparable \u2018blank-check\u2019 companies without an identified target. The expected volatility as of subsequent valuation dates was implied from the Company\u2019s own public stock pricing. A Monte Carlo simulation methodology was used in estimating the fair value of the Public Warrants for the initial measurement, using the same expected volatility as was used in measuring the fair value of the Private Warrants. For periods subsequent to the detachment of the warrants from the Units, the closing price of the Public Warrants was used as the fair value of the Public Warrants as of each relevant date. At December 31, 2021, the Private Warrants were transferred to Level 2 due to the use of an observable market quote for a similar asset in an active market.\nAs of December 31, 2022, the aggregate values of the Public Warrants and Private Placement Warrants were $480,000 and $585,000, respectively, based on a fair value of $0.06 per warrant.\nTransfers to/from Levels 1, 2 and 3 are recognized at the end of the reporting period in which a change in valuation technique or methodology occurs. The estimated fair value of the Public Warrants transferred from a Level 3 measurement to a Level 1 fair value measurement during the year ended December 31, 2021 was $8,000,000. The estimated value of the Private Placement Warrants transferred from a Level 3 measurement to a Level 2 measurements during the year ended December 31, 2021 was $13,747,500. There were no transfers during the year ended December 31, 2022.\nThe following table presents the changes in the fair value of warrant liabilities for the years ended December 31, 2022 and 2021:",
+   "prose_after": "NOTE 10 \u2014 SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date up to the date that the consolidated financial statements were issued. Other than as described in these financial statements, the Company did not identify any subsequent events that would have required adjustment or disclosure in the consolidated financial statements.\nEffective January 31, 2023, the Company terminated its consulting agreement for advisory services.\nOn March 16, 2023, the Company signed a promissory note with a related party for $321,250. The note is non-interest bearing and payable on a Business Combination.\nOn February 24, 2023, the Company issued a press release announcing that it will transfer its listing to the NYSE American LLC (the \u201cNYSE American\u201d). The Company received written confirmation that it received the final approval for listing from the staff of the NYSE American on February 24, 2023. In connection with listing on the NYSE American, the Company will voluntarily delist from the New York Stock Exchange. Following the transfer of its listing, the Company intends to continue to file the same periodic reports and other information it currently files with the Securities and Exchange Commission. The Company\u2019s securities commenced trading on the NYSE American on March 1, 2023.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1895,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Bylaws.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Specimen Common Stock Certificate.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Warrant Agreement between Continental Stock Transfer & Trust Company and the Registrant.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Description of the Registrant\u2019s Securities."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Letter Agreement from each of the Registrant\u2019s initial shareholders, officers and directors.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Investment Management Trust Agreement between Continental Stock Transfer & Trust Company and the Registrant.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Registration Rights Agreement*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Indemnification Agreement.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14",
+     "Code of Ethics.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1936,
+    "end_line": 1988
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On February 24, 2023, the Company issued a press release announcing that it will transfer its listing to the NYSE American LLC (the \u201cNYSE American\u201d). The Company received written confirmation that it received the final approval for listing from the staff of the NYSE American on February 24, 2023. In connection with listing on the NYSE American, the Company will voluntarily delist from the New York Stock Exchange. Following the transfer of its listing, the Company intends to continue to file the same periodic reports and other information it currently files with the Securities and Exchange Commission. The Company\u2019s securities commenced trading on the NYSE American on March 1, 2023.\n(3) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index. Exhibits which are incorporated herein by reference can be inspected and copied at the public reference facilities maintained by the SEC, 100 F Street, N.E., Room 1580, Washington, D.C. 20549. Copies of such material can also be obtained from the Public Reference Section of the SEC, 100 F Street, N.E., Washington, D.C. 20549, at prescribed rates or on the SEC website at www.sec.gov.\n(b) The following Exhibits are filed as part of this report:",
+   "prose_after": "* Incorporated by reference to the Registrant\u2019s Current Report on Form 8-K filed on January 28, 2021\n** Incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1 (SEC File Nos. 333-251921 and 333-252421).\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of the Section 13 or 15 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on the 30th day of March, 2023.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1997,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NORTHERN STAR INVESTMENT CORP. II",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Joanna Coles"
+    ],
+    [
+     "",
+     "Joanna Coles"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "NORTHERN STAR INVESTMENT CORP. II"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2002,
+    "end_line": 2010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* Incorporated by reference to the Registrant\u2019s Current Report on Form 8-K filed on January 28, 2021\n** Incorporated by reference to the Registrant\u2019s Registration Statement on Form S-1 (SEC File Nos. 333-251921 and 333-252421).\nITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of the Section 13 or 15 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on the 30th day of March, 2023.",
+   "prose_after": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.\nPursuant to the requirements of the Securities Act of 1933, this Registration Statement has been signed by the following persons in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1997,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 2043,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Date"
+    ],
+    [
+     "/s/ Joanna Coles",
+     "Chairperson of our board of directors and Chief Executive Officer",
+     "March 30, 2023"
+    ],
+    [
+     "Joanna Coles",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jonathan Ledecky",
+     "President and Chief Operating Officer",
+     "March 30, 2023"
+    ],
+    [
+     "Jonathan Ledecky",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ James H.R. Brady",
+     "Chief Financial Officer",
+     "March 30, 2023"
+    ],
+    [
+     "James H.R. Brady",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Brett Cyrgalis",
+     "Director",
+     "March 30, 2023"
+    ],
+    [
+     "Brett Cyrgalis",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Shapiro",
+     "Director",
+     "March 30, 2023"
+    ],
+    [
+     "David Shapiro",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Howard Yeaton",
+     "Director",
+     "March 30, 2023"
+    ],
+    [
+     "Howard Yeaton",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2015,
+    "end_line": 2042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.\nPursuant to the requirements of the Securities Act of 1933, this Registration Statement has been signed by the following persons in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1997,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 2043,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

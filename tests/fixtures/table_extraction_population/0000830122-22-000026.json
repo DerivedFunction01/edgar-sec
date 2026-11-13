@@ -1,0 +1,4916 @@
+{
+ "accession": "0000830122-22-000026",
+ "cik": "0000830122",
+ "form": "10-K/A",
+ "filing_date": "2022-05-02",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "vwtr-20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "94-2723335"
+    ],
+    [
+     "(State or other Jurisdiction of Incorporation or Organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED DECEMBER 31, 2021\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____ to _____\nCommission file number 033-36383\nVIDLER WATER RESOURCES, INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "3480 GS Richards Blvd., Suite 101, Carson City, Nevada 89703\n(Address of Principal Executive Offices, including Zip Code)\nRegistrant\u2019s Telephone Number, Including Area Code\n(775) 885-5000\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par Value $0.001",
+     "VWTR",
+     "Nasdaq Stock Market, LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "3480 GS Richards Blvd., Suite 101, Carson City, Nevada 89703\n(Address of Principal Executive Offices, including Zip Code)\nRegistrant\u2019s Telephone Number, Including Area Code\n(775) 885-5000\nSecurities Registered Pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities Registered Pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined by Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 73,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page No."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE",
+     "26"
+    ],
+    [
+     "Item 11.",
+     "EXECUTIVE COMPENSATION",
+     "33"
+    ],
+    [
+     "Item 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "45"
+    ],
+    [
+     "Item 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "47"
+    ],
+    [
+     "Item 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "48"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "51"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 110
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "This Amendment No. 1 includes Items 8, 10, 11, 12, 13 and 14 of Part III of the Form 10-K. In addition, as required by Section 302 of the Sarbanes-Oxley Act of 2002 and Rule 12b-15 of the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d), as amended, updated certifications of the Company\u2019s principal executive officer and principal financial officer are included as Exhibits 31.3 and 31.4 hereto. We are also including the certifications under Section 906 of the Sarbanes-Oxley Act of 2002 as the financial statements are being filed with this Amendment No. 1.\nNo other changes have been made to the Form 10-K other than those described above. This Amendment No. 1 does not reflect subsequent events occurring after the original filing date of the Form 10-K or modify or update in any way the financial statements, consents or any other items disclosures made in the Form 10-K in any way other than as required to reflect the amendments discussed above. Accordingly, this Amendment No. 1 should be read in conjunction with the Form 10-K and the Company\u2019s other filings with the SEC subsequent to the filing of the Form 10-K.\nANNUAL REPORT ON FORM 10-K/A\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART II\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nCONSOLIDATED FINANCIAL STATEMENTS\nAS OF DECEMBER 31, 2021 AND 2020\nAND FOR EACH OF THE\nTWO YEARS IN THE PERIOD\nENDED DECEMBER 31, 2021\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page No."
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID: 34)",
+     "5"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2021 and 2020",
+     "8"
+    ],
+    [
+     "Consolidated Statements of Operations and Comprehensive Income for the Years Ended December 31, 2021 and 2020",
+     "9"
+    ],
+    [
+     "Consolidated Statements of Shareholders\u2019 Equity for the Years Ended December 31, 2021 and 2020",
+     "11"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended December 31, 2021 and 2020",
+     "13"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "15"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 131,
+    "end_line": 141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART II\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nCONSOLIDATED FINANCIAL STATEMENTS\nAS OF DECEMBER 31, 2021 AND 2020\nAND FOR EACH OF THE\nTWO YEARS IN THE PERIOD\nENDED DECEMBER 31, 2021\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nVidler Water Resources, Inc.\nCarson City, Nevada\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Vidler Water Resources, Inc. and subsidiaries (the \"Company\") as of December 31, 2021 and 2020, the related consolidated statements of operations and comprehensive income, shareholders' equity, and cash flows, for each of the two years in the period ended December 31, 2021, and the related notes (collectively referred to as the \"financial statements\"). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021 and 2020, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2021, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on the Company's financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 142,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "28,181",
+     "$",
+     "9,388"
+    ],
+    [
+     "Tangible water assets and real estate, net",
+     "34,495",
+     "",
+     "39,374",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "119,963",
+     "",
+     "120,445",
+     ""
+    ],
+    [
+     "Right of use assets, net",
+     "240",
+     "",
+     "396",
+     ""
+    ],
+    [
+     "Deferred income tax asset",
+     "27,505",
+     "",
+     "9,340",
+     ""
+    ],
+    [
+     "Other assets",
+     "2,274",
+     "",
+     "1,503",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "212,658",
+     "$",
+     "180,446"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and shareholders\u2019 equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "$",
+     "240",
+     "$",
+     "396"
+    ],
+    [
+     "Other liabilities",
+     "3,392",
+     "",
+     "1,516",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "430",
+     "",
+     "264",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "4,062",
+     "",
+     "2,176",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value; authorized 10,000 shares, none issued",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value; authorized 100,000 shares, 18,312 issued and 18,311 outstanding at December 31, 2021, and 18,586 issued and 18,583 outstanding at December 31, 2020",
+     "18",
+     "",
+     "19",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "329,691",
+     "",
+     "332,290",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(121,099)",
+     "",
+     "(154,009)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost (common shares: 1 and 3 at December 31, 2021 and December 31, 2020, respectively)",
+     "(14)",
+     "",
+     "(30)",
+     ""
+    ],
+    [
+     "Total Vidler Water Resources, Inc. shareholders\u2019 equity",
+     "208,596",
+     "",
+     "178,270",
+     ""
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "212,658",
+     "$",
+     "180,446"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 243,
+    "end_line": 279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "\u2013Internal communications to management and the Board of Directors.\n\u2013Forecasted information included in Company press releases.\n\u2013Management\u2019s history of carrying out its stated plans and its ability to carry out its plans considering contractual commitments or available financing.\na.We evaluated whether the estimates of future taxable income were consistent with evidence obtained in other areas of the audit.\n/s/ DELOITTE & TOUCHE LLP\nLas Vegas, Nevada\nMarch 21, 2022\nWe have served as the Company's auditor since 1997.\nCONSOLIDATED BALANCE SHEETS\nDecember 31, 2021 and 2020",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME\nFor the years ended December 31, 2021 and 2020\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 241,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 282,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Revenues and other income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of real estate and water assets",
+     "$",
+     "28,226",
+     "$",
+     "9,029"
+    ],
+    [
+     "Other income, net",
+     "994",
+     "",
+     "583",
+     ""
+    ],
+    [
+     "Total revenues and other income",
+     "29,220",
+     "",
+     "9,612",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of sales and expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of water assets and real estate sold",
+     "6,051",
+     "",
+     "1,923",
+     ""
+    ],
+    [
+     "General, administrative, and other",
+     "8,174",
+     "",
+     "6,730",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "195",
+     "",
+     "291",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "14,420",
+     "",
+     "8,944",
+     ""
+    ],
+    [
+     "Income from continuing operations before income taxes",
+     "14,800",
+     "",
+     "668",
+     ""
+    ],
+    [
+     "Benefit for federal and state income taxes",
+     "18,110",
+     "",
+     "9,333",
+     ""
+    ],
+    [
+     "Net income attributable to Vidler Water Resources, Inc.",
+     "$",
+     "32,910",
+     "$",
+     "10,001"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 290,
+    "end_line": 314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME\nFor the years ended December 31, 2021 and 2020\n(In thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME, CONTINUED\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 282,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 317,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Other comprehensive income:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "32,910",
+     "$",
+     "10,001"
+    ],
+    [
+     "Other comprehensive income, net of tax:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized income on securities, net of deferred income tax and reclassification adjustments",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total other comprehensive income, net of tax",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Comprehensive income attributable to Vidler Water Resources, Inc.",
+     "$",
+     "32,910",
+     "$",
+     "10,001"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per common share \u2013 basic and diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "1.80",
+     "$",
+     "0.52"
+    ],
+    [
+     "Weighted average shares outstanding",
+     "18,282",
+     "",
+     "19,132",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 323,
+    "end_line": 341
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS AND COMPREHENSIVE INCOME, CONTINUED\n(In thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENT OF SHAREHOLDERS\u2019 EQUITY\nFor the year ended December 31, 2021",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 317,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 344,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares of Common Stock Issued",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Shares of Treasury Stock",
+     "Treasury Stock, at Cost",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning balance, December 31, 2020",
+     "18,586",
+     "$",
+     "19",
+     "$",
+     "332,290",
+     "$",
+     "(154,009)",
+     "3",
+     "$",
+     "(30)",
+     "$",
+     "178,270"
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "",
+     "",
+     "108",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "108",
+     ""
+    ],
+    [
+     "Exercise of restricted stock units",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Withholding taxes paid on issued restricted stock units",
+     "",
+     "",
+     "",
+     "(6)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "Purchases of treasury stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "273",
+     "(2,594)",
+     "",
+     "(2,594)",
+     ""
+    ],
+    [
+     "Retirement of treasury stock",
+     "(275)",
+     "(1)",
+     "",
+     "(2,609)",
+     "",
+     "",
+     "",
+     "(275)",
+     "2,610",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Distribution to noncontrolling interest",
+     "",
+     "",
+     "",
+     "(92)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(92)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "32,910",
+     "",
+     "",
+     "",
+     "",
+     "32,910",
+     ""
+    ],
+    [
+     "Ending balance, December 31, 2021",
+     "18,312",
+     "$",
+     "18",
+     "$",
+     "329,691",
+     "$",
+     "(121,099)",
+     "1",
+     "$",
+     "(14)",
+     "$",
+     "208,596"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 352,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENT OF SHAREHOLDERS\u2019 EQUITY\nFor the year ended December 31, 2021",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements\nCONSOLIDATED STATEMENT OF SHAREHOLDERS\u2019 EQUITY\nFor the year ended December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 350,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 372,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "equity_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares of Common Stock Issued",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Shares of Treasury Stock",
+     "Treasury Stock, at Cost",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Beginning balance, December 31, 2019",
+     "20,067",
+     "$",
+     "20",
+     "$",
+     "345,234",
+     "$",
+     "(164,010)",
+     "284",
+     "$",
+     "(2,989)",
+     "$",
+     "178,255"
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "",
+     "",
+     "540",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "540",
+     ""
+    ],
+    [
+     "Purchases of treasury stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,200",
+     "(10,380)",
+     "",
+     "(10,380)",
+     ""
+    ],
+    [
+     "Retirement of treasury stock",
+     "(1,481)",
+     "(1)",
+     "",
+     "(13,338)",
+     "",
+     "",
+     "",
+     "(1,481)",
+     "13,339",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Distribution to noncontrolling interest",
+     "",
+     "",
+     "",
+     "(146)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(146)",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "10,001",
+     "",
+     "",
+     "",
+     "",
+     "10,001",
+     ""
+    ],
+    [
+     "Ending balance, December 31, 2020",
+     "18,586",
+     "$",
+     "19",
+     "$",
+     "332,290",
+     "$",
+     "(154,009)",
+     "3",
+     "$",
+     "(30)",
+     "$",
+     "178,270"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 380,
+    "end_line": 394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements\nCONSOLIDATED STATEMENT OF SHAREHOLDERS\u2019 EQUITY\nFor the year ended December 31, 2020",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFor the years ended December 31, 2021 and 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "REPEATING_HEADER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 397,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "equity_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "32,910",
+     "$",
+     "10,001"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for deferred income taxes",
+     "(18,165)",
+     "",
+     "(9,340)",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "38",
+     "",
+     "48",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "108",
+     "",
+     "540",
+     ""
+    ],
+    [
+     "Gain on sale of property, plant and equipment",
+     "(30)",
+     "",
+     "(14)",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities, net of effects of acquisitions and dispositions:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes and other receivables",
+     "(343)",
+     "",
+     "39",
+     ""
+    ],
+    [
+     "Real estate, water, and intangible assets",
+     "5,361",
+     "",
+     "1,923",
+     ""
+    ],
+    [
+     "Income taxes",
+     "27",
+     "",
+     "7",
+     ""
+    ],
+    [
+     "Other assets",
+     "(362)",
+     "",
+     "(753)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "1,918",
+     "",
+     "(666)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "21,462",
+     "",
+     "1,785",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from the sale of property, plant and equipment",
+     "31",
+     "",
+     "26",
+     ""
+    ],
+    [
+     "Purchases of property, plant and equipment",
+     "(8)",
+     "",
+     "(66)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "23",
+     "",
+     "(40)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment of withholding taxes on exercise of restricted stock units",
+     "(6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchases of treasury stock",
+     "(2,594)",
+     "",
+     "(10,380)",
+     ""
+    ],
+    [
+     "Other financing activities, net",
+     "(92)",
+     "",
+     "(146)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(2,692)",
+     "",
+     "(10,526)",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "18,793",
+     "",
+     "(8,781)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of year",
+     "9,388",
+     "",
+     "18,169",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of year",
+     "$",
+     "28,181",
+     "$",
+     "9,388"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 405,
+    "end_line": 443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFor the years ended December 31, 2021 and 2020",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS, CONTINUED\nFor the years ended December 31, 2021 and 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 403,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the year for:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payment of federal and state income taxes",
+     "$",
+     "28",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 452,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS, CONTINUED\nFor the years ended December 31, 2021 and 2020",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFOOTNOTE INDEX",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 450,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page No."
+    ],
+    [
+     "1. Nature of Operations and Significant Accounting Policies",
+     "15"
+    ],
+    [
+     "2. Tangible Water Assets and Real Estate, Net",
+     "18"
+    ],
+    [
+     "3. Intangible Assets, Net",
+     "19"
+    ],
+    [
+     "4. Leases",
+     "19"
+    ],
+    [
+     "5. Commitments and Contingencies",
+     "20"
+    ],
+    [
+     "6. Stock-Based Compensation",
+     "20"
+    ],
+    [
+     "7. Federal and State Current and Deferred Income Tax",
+     "23"
+    ],
+    [
+     "8. Related-Party Transactions",
+     "25"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 469,
+    "end_line": 481
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nFOOTNOTE INDEX",
+   "prose_after": "1.NATURE OF OPERATIONS AND SIGNIFICANT ACCOUNTING POLICIES\nOrganization and Operations:\nVidler Water Resources, Inc., together with its subsidiaries (collectively, \u201cVidler\u201d or the \u201cCompany\u201d), is a holding company. As of December 31, 2021, the Company has presented its consolidated financial statements and the accompanying notes to the consolidated financial statements using the guidelines prescribed for real estate companies, as the majority of the Company\u2019s assets and operations are primarily engaged in real estate and related activities.\nThe Company\u2019s most significant operating subsidiary as of December 31, 2021 was Vidler Water Company, Inc. (\u201cVidler Water\u201d), a Nevada corporation. Vidler owns water resources and water storage in the southwestern United States, with assets and operations in Nevada, Arizona, Colorado, and New Mexico. Currently, Vidler is primarily focused on selling its existing water rights and storage credits.\nSmaller Reporting Company:\nThe Company qualifies as a Smaller Reporting Company (\u201cSRC\u201d) under the Securities and Exchange Commission (\u201cSEC\u201d) definition and therefore certain disclosures that are no longer required have been removed in accordance with the SEC\u2019s disclosure requirements for SRCs.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Tangible water assets",
+     "$",
+     "21,667",
+     "$",
+     "26,546"
+    ],
+    [
+     "Real estate and improvements held and used, net of accumulated amortization of $12,003 at December 31, 2021 and December 31, 2020",
+     "9,469",
+     "",
+     "9,469",
+     ""
+    ],
+    [
+     "Other real estate inventories",
+     "3,359",
+     "",
+     "3,359",
+     ""
+    ],
+    [
+     "Total tangible water and real estate assets, net",
+     "$",
+     "34,495",
+     "$",
+     "39,374"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 603
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Basic earnings or loss per share was computed by dividing net earnings by the weighted average number of shares outstanding during the period. Diluted earnings or loss per share was computed similarly to basic earnings or loss per share except the weighted average shares outstanding are increased to include additional shares from the assumed exercise of any common stock equivalents using the treasury method, if dilutive. The Company\u2019s performance-based price-contingent stock options (\u201cPBO\u201d), and RSU are considered common stock equivalents for this purpose. The number of additional shares related to these common stock equivalents is calculated using the treasury stock method.\nFor the years ended December 31, 2021 and December 31, 2020 there was no anti-dilution.\nRecently Issued Accounting Pronouncements:\nIn March 2020, the Financial Accounting Standards Board (\u201cFASB\u201d) issued guidance in response to concerns about the structural risks of interbank offered rates, and particularly the risk of cessation of the London Interbank Offered Rate (LIBOR). The cessation of the publication of LIBOR occurred on December 31, 2021. The Company has an operating agreement with Fish Springs Ranch, LLC which entitles Vidler Water to receive interest on certain development costs, construction costs, and accrued interest at a rate of LIBOR plus 450 basis points. The Company is in the process of evaluating the alternatives to the LIBOR rate.\n2. TANGIBLE WATER ASSETS AND REAL ESTATE, NET\nThe cost assigned to the various components of tangible water and real estate assets were as follows (in thousands):",
+   "prose_after": "The Company\u2019s real estate improvements were fully depreciated at December 31, 2016.\n3. INTANGIBLE ASSETS\nThe Company\u2019s carrying amounts of its intangible assets were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Pipeline rights, water rights, and water credits at Fish Springs Ranch",
+     "$",
+     "80,860",
+     "$",
+     "81,574"
+    ],
+    [
+     "Pipeline rights and water rights at Carson-Lyon",
+     "26,323",
+     "",
+     "25,643",
+     ""
+    ],
+    [
+     "Other",
+     "12,780",
+     "",
+     "13,228",
+     ""
+    ],
+    [
+     "Total intangible assets",
+     "$",
+     "119,963",
+     "$",
+     "120,445"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "The Company\u2019s real estate improvements were fully depreciated at December 31, 2016.\n3. INTANGIBLE ASSETS\nThe Company\u2019s carrying amounts of its intangible assets were as follows (in thousands):",
+   "prose_after": "Fish Springs Ranch Pipeline Rights, Water Rights, and Water Credits:\nThere are 13,000 acre-feet per-year of permitted water rights at Fish Springs Ranch. The existing permit allows up to 8,000 acre-feet of water per year to be exported to support the development in the Reno, Nevada area. As of December 31, 2021, the Company has sold 372 acre-feet of water credits. Under a settlement agreement signed in 2007, the Pyramid Lake Paiute Tribe (the \u201cTribe\u201d) agreed to not oppose any permitting activities for the pumping and export of groundwater in excess of 8,000 acre-feet of water per year, and in exchange, Fish Springs Ranch will pay the Tribe 12% of the gross sales price for each acre-foot of additional water that Fish Springs Ranch sells in excess of 8,000 acre-feet per year, up to 13,000 acre-feet per year. The obligation to expense and pay the 12% fee is due only if and when the Company sells water in excess of 8,000 acre-feet, and accordingly, Fish Springs Ranch will record the liability for such amounts as they become due upon the sale of any such excess water. Currently, Fish Springs Ranch does not have regulatory approval to export any water in excess of 8,000 acre-feet per year from Fish Springs Ranch to support further development in northern Reno, and it is uncertain whether such regulatory approval will be granted in the future.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Leases",
+     "December 31, 2021",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease ROU assets, net(1)",
+     "$",
+     "240",
+     "$",
+     "396"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "$",
+     "240",
+     "$",
+     "396"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted Average Remaining Lease Term",
+     "1.5 years",
+     "",
+     "2.5 years",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 652
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "There are 13,000 acre-feet per-year of permitted water rights at Fish Springs Ranch. The existing permit allows up to 8,000 acre-feet of water per year to be exported to support the development in the Reno, Nevada area. As of December 31, 2021, the Company has sold 372 acre-feet of water credits. Under a settlement agreement signed in 2007, the Pyramid Lake Paiute Tribe (the \u201cTribe\u201d) agreed to not oppose any permitting activities for the pumping and export of groundwater in excess of 8,000 acre-feet of water per year, and in exchange, Fish Springs Ranch will pay the Tribe 12% of the gross sales price for each acre-foot of additional water that Fish Springs Ranch sells in excess of 8,000 acre-feet per year, up to 13,000 acre-feet per year. The obligation to expense and pay the 12% fee is due only if and when the Company sells water in excess of 8,000 acre-feet, and accordingly, Fish Springs Ranch will record the liability for such amounts as they become due upon the sale of any such excess water. Currently, Fish Springs Ranch does not have regulatory approval to export any water in excess of 8,000 acre-feet per year from Fish Springs Ranch to support further development in northern Reno, and it is uncertain whether such regulatory approval will be granted in the future.\nCarson-Lyon Pipeline Rights and Water Rights:\nDuring the year ended December 31, 2021 an additional 45 acre-feet of municipal and industrial designated groundwater rights were purchased for $690,000. No additional rights were purchased in 2020.\nImpairment Losses:\nThere were no impairment losses recognized on intangible assets during the years ended December 31, 2021 and 2020.\n4. LEASES\nThe Company has an operating lease for the office located in Carson City, Nevada which include monthly rental payments. The operating lease for the office located in La Jolla, California concluded at the end of May 2020.\nLeases consisted of the following (in thousands):",
+   "prose_after": "(1) Operating lease ROU assets are recorded net of accumulated amortization of $156,000 and $77,000 as of December 31, 2021 and December 31, 2020 respectively.\nSupplemental cash flow information related to leases is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 606,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2021",
+     "",
+     "Year Ended December 31, 2020",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows for operating leases",
+     "$",
+     "156",
+     "$",
+     "244"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 658,
+    "end_line": 664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "(1) Operating lease ROU assets are recorded net of accumulated amortization of $156,000 and $77,000 as of December 31, 2021 and December 31, 2020 respectively.\nSupplemental cash flow information related to leases is as follows (in thousands):",
+   "prose_after": "5. COMMITMENTS AND CONTINGENCIES\nThe Company leases its office under a non-cancelable operating lease that expires in 2023. Rent expense for the years ended December 31, 2021 and 2020 for office space was $156,000 and $244,000, respectively.\nFuture minimum payments under all operating leases were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "159"
+    ],
+    [
+     "2023",
+     "81",
+     ""
+    ],
+    [
+     "Thereafter",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "240"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 671,
+    "end_line": 680
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "5. COMMITMENTS AND CONTINGENCIES\nThe Company leases its office under a non-cancelable operating lease that expires in 2023. Rent expense for the years ended December 31, 2021 and 2020 for office space was $156,000 and $244,000, respectively.\nFuture minimum payments under all operating leases were as follows (in thousands):",
+   "prose_after": "Except as described in ITEM 1. BUSINESS, (Kane Springs), and in ITEM 7, MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS, LIQUIDITY AND CAPITAL RESOURCES (LEGAL DEVELOPMENTS), neither Vidler, nor our subsidiaries are parties to any potentially material pending legal proceedings.\nThe Company is subject to various litigation matters that arise in the ordinary course of its business. Because litigation is inherently unpredictable and unfavorable resolutions could occur, assessing contingencies is highly subjective and requires judgments about future events. When evaluating contingencies, the Company may be unable to provide a meaningful estimate due to a number of factors, including the procedural status of the matter in question, the presence of complex or novel legal theories, and/or the ongoing discovery and development of information important to the matters. In addition, damage amounts claimed in litigation against the Company may be unsupported, exaggerated or unrelated to possible outcomes, and as such are not meaningful indicators of the Company\u2019s potential liability. The Company regularly reviews contingencies to determine the adequacy of accruals and related disclosures. The amount of ultimate loss may differ from these estimates, and it is possible that the Company\u2019s consolidated financial statements could be materially affected in any particular period by the unfavorable resolution of one or more of these contingencies.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 655,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014 10-Year Option",
+     "",
+     ""
+    ],
+    [
+     "Grant date",
+     "11/14/2014",
+     "",
+     ""
+    ],
+    [
+     "Expiration date",
+     "11/14/2024",
+     "",
+     ""
+    ],
+    [
+     "Grant date stock price",
+     "$",
+     "19.51",
+     ""
+    ],
+    [
+     "Historical volatility",
+     "35.00",
+     "",
+     "%"
+    ],
+    [
+     "Risk-free rate (annualized)",
+     "2.38",
+     "",
+     "%"
+    ],
+    [
+     "Dividend yield (annualized)",
+     "\u2014",
+     "",
+     "%"
+    ],
+    [
+     "PBO granted",
+     "167,619",
+     "",
+     ""
+    ],
+    [
+     "Weighted average grant date fair value",
+     "$",
+     "6.51",
+     ""
+    ],
+    [
+     "Fair value of award on grant date",
+     "$",
+     "1,475,705",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "2014 10-Year Option"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 702,
+    "end_line": 715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "At various times, the Company has awarded PBO to various members of management. All of the PBO issued contain a market condition based on the achievement of a stock price target during the contractual term and vest monthly over a three-year period. The vested portion of the options may be exercised only if the 30-trading-day average closing sales price of the Company\u2019s common stock equals or exceeds 125% of the grant date stock price. The stock price contingency may be met any time before the options expire and it only needs to be met once for the PBO to remain exercisable for the remainder of the term. Compensation expense is amortized on a straight-line basis over the requisite service period for the entire award, which is the vesting period of the award. However, any unrecognized compensation expense for unvested awards can be accelerated if the vesting period is modified.\nThe estimated fair value of the Company\u2019s PBO was determined using a Monte Carlo model, which incorporated the following assumptions:",
+   "prose_after": "The determination of the fair value of PBO using an option valuation model is affected by the Company\u2019s stock price, as well as assumptions regarding a number of complex and subjective variables. The volatility is calculated through an analysis based on historical daily returns of Vidler\u2019s stock over a look-back period equal to the PBO contractual term. The risk-free interest rate assumption is based upon a risk-neutral framework using the 10-year zero-coupon risk-free interest rates derived from the treasury constant maturities yield curve on the grant date, for the 10-year PBO award. The dividend yield assumption was based on the expectation of no future dividend payouts by the Company.\nA summary of PBO activity was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 691,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Performance-Based Options",
+     "Weighted-Average Exercise Price Per Share",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2019",
+     "167,619",
+     "$",
+     "14.51"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31,2020",
+     "167,619",
+     "$",
+     "14.51"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2021",
+     "167,619",
+     "$",
+     "14.51"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 721,
+    "end_line": 735
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "The determination of the fair value of PBO using an option valuation model is affected by the Company\u2019s stock price, as well as assumptions regarding a number of complex and subjective variables. The volatility is calculated through an analysis based on historical daily returns of Vidler\u2019s stock over a look-back period equal to the PBO contractual term. The risk-free interest rate assumption is based upon a risk-neutral framework using the 10-year zero-coupon risk-free interest rates derived from the treasury constant maturities yield curve on the grant date, for the 10-year PBO award. The dividend yield assumption was based on the expectation of no future dividend payouts by the Company.\nA summary of PBO activity was as follows:",
+   "prose_after": "At December 31, 2021, 167,619 PBO outstanding are exercisable for up to 10 years from the grant date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Performance-Based Options",
+     "Weighted-Average Exercise Price Per Share",
+     "",
+     "Weighted-Average Contractual Term Remaining (Years)",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Vested at December 31, 2019",
+     "167,619",
+     "$",
+     "14.51",
+     "4.9",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested at December 31, 2020",
+     "167,619",
+     "$",
+     "14.51",
+     "3.9",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested at December 31, 2021",
+     "167,619",
+     "$",
+     "14.51",
+     "2.9",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 738,
+    "end_line": 753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "At December 31, 2021, 167,619 PBO outstanding are exercisable for up to 10 years from the grant date.",
+   "prose_after": "For the years ended December 31, 2021 and 2020, there were no PBO exercisable as the market condition had not been met. There was no unrecognized compensation cost related to unvested PBO at December 31, 2021 and 2020.\nRestricted Stock Units (RSU):\nRSU awards the recipient, who must be continuously employed by the Company until the vesting date, unless the employment contracts stipulate otherwise, the right to receive one share of the Company\u2019s common stock. RSU issued to management do not vote and are not entitled to receive dividends, however the RSU issued to the Company\u2019s directors are entitled to dividends.\nA summary of RSU activity was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "RSU Shares",
+     "Weighted-Average Grant Date Fair Value Per Share",
+     ""
+    ],
+    [
+     "Outstanding and unvested at December 31, 2019",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "58,938",
+     "$",
+     "9.17"
+    ],
+    [
+     "Vested",
+     "(58,938)",
+     "$",
+     "9.17"
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Outstanding and unvested at December 31, 2020",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "11,975",
+     "$",
+     "9.02"
+    ],
+    [
+     "Vested",
+     "(11,975)",
+     "$",
+     "9.02"
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Outstanding and unvested at December 31, 2021",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "For the years ended December 31, 2021 and 2020, there were no PBO exercisable as the market condition had not been met. There was no unrecognized compensation cost related to unvested PBO at December 31, 2021 and 2020.\nRestricted Stock Units (RSU):\nRSU awards the recipient, who must be continuously employed by the Company until the vesting date, unless the employment contracts stipulate otherwise, the right to receive one share of the Company\u2019s common stock. RSU issued to management do not vote and are not entitled to receive dividends, however the RSU issued to the Company\u2019s directors are entitled to dividends.\nA summary of RSU activity was as follows:",
+   "prose_after": "There was no unrecognized compensation cost related to unvested RSU for the years ended December 31, 2021, and 2020.\n7. FEDERAL AND STATE CURRENT AND DEFERRED INCOME TAX\nThe Company and its subsidiaries file a consolidated federal income tax return. Companies that are less than 80% owned corporations, or entities that are treated as partnerships for federal income tax purposes, file separate federal income tax returns. All of the Company\u2019s pre-tax book income from continuing operations in each of the two years ended December 31, 2021 and 2020 was generated in the U.S. Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes.\nThe Company\u2019s income tax (provision) benefit for federal and state income taxes consisted of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Current tax (provision) benefit",
+     "$",
+     "(55)",
+     "$",
+     "(7)"
+    ],
+    [
+     "Deferred tax benefit",
+     "18,165",
+     "",
+     "9,340",
+     ""
+    ],
+    [
+     "Total income tax benefit",
+     "$",
+     "18,110",
+     "$",
+     "9,333"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 788,
+    "end_line": 799
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "There was no unrecognized compensation cost related to unvested RSU for the years ended December 31, 2021, and 2020.\n7. FEDERAL AND STATE CURRENT AND DEFERRED INCOME TAX\nThe Company and its subsidiaries file a consolidated federal income tax return. Companies that are less than 80% owned corporations, or entities that are treated as partnerships for federal income tax purposes, file separate federal income tax returns. All of the Company\u2019s pre-tax book income from continuing operations in each of the two years ended December 31, 2021 and 2020 was generated in the U.S. Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes.\nThe Company\u2019s income tax (provision) benefit for federal and state income taxes consisted of the following (in thousands):",
+   "prose_after": "The difference between income taxes provided at the Company\u2019s federal statutory rate and effective tax rate was as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Federal income tax (provision) benefit at statutory rate",
+     "$",
+     "(3,108)",
+     "$",
+     "(147)"
+    ],
+    [
+     "Change in valuation allowance",
+     "21,718",
+     "",
+     "10,275",
+     ""
+    ],
+    [
+     "State taxes, net of federal benefit",
+     "(338)",
+     "",
+     "373",
+     ""
+    ],
+    [
+     "Expired credits",
+     "",
+     "",
+     "(1,505)",
+     ""
+    ],
+    [
+     "Deferred Tax true ups",
+     "66",
+     "",
+     "362",
+     ""
+    ],
+    [
+     "Other",
+     "(228)",
+     "",
+     "(25)",
+     ""
+    ],
+    [
+     "Total income tax benefit",
+     "$",
+     "18,110",
+     "$",
+     "9,333"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 802,
+    "end_line": 817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "The difference between income taxes provided at the Company\u2019s federal statutory rate and effective tax rate was as follows (in thousands):",
+   "prose_after": "The significant components of deferred income tax assets and liabilities were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 760,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "deferred_tax",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating losses, capital losses, and tax credit carryforwards",
+     "$",
+     "54,449",
+     "$",
+     "57,901"
+    ],
+    [
+     "Impairment loss on water assets",
+     "9,155",
+     "",
+     "9,864",
+     ""
+    ],
+    [
+     "Employee benefits, including stock-based compensation",
+     "1,098",
+     "",
+     "556",
+     ""
+    ],
+    [
+     "Excess tax basis in affiliate",
+     "459",
+     "",
+     "475",
+     ""
+    ],
+    [
+     "Fixed assets",
+     "674",
+     "",
+     "700",
+     ""
+    ],
+    [
+     "Other, net",
+     "441",
+     "",
+     "450",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "66,276",
+     "",
+     "69,946",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revaluation of real estate and water assets",
+     "2,005",
+     "",
+     "2,072",
+     ""
+    ],
+    [
+     "Other, net",
+     "399",
+     "",
+     "449",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "2,404",
+     "",
+     "2,521",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "(36,367)",
+     "",
+     "(58,085)",
+     ""
+    ],
+    [
+     "Net deferred income tax asset",
+     "$",
+     "27,505",
+     "$",
+     "9,340"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 821,
+    "end_line": 845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "The significant components of deferred income tax assets and liabilities were as follows (in thousands):",
+   "prose_after": "Deferred tax assets and liabilities and federal income tax expense in future years can be significantly affected by changes in circumstances that would influence management\u2019s conclusions as to the ultimate realization of deferred tax assets. Valuation allowances are established and maintained for deferred tax assets on a \u201cmore likely than not\u201d threshold. At December 31, 2011, the Company considered it more likely than not that the deferred tax assets would not be realized and a full valuation allowance was provided. At December 31, 2020, after evaluating the evidence, including positive objective evidence in the form of three years of cumulative historical pre-tax book income, management concluded that there was sufficient positive evidence to enable the Company to conclude that it was \u201cmore likely than not\u201d that certain of these deferred tax assets would be realized, and the Company released a portion of the valuation allowance which resulted in the recognition of certain deferred tax assets with a corresponding decrease to income tax expense of $9.3 million for the year ended December 31, 2020. At December 31, 2021 an additional $21.7 million of valuation allowance was released.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Federal Net Operating Losses",
+     "",
+     "Federal Tax Credits",
+     "",
+     "State Net Operating Losses",
+     "",
+     "State and Federal Capital Losses",
+     ""
+    ],
+    [
+     "Expire 2022",
+     "$",
+     "\u2014",
+     "$",
+     "177",
+     "$",
+     "\u2014",
+     "$",
+     "82,807"
+    ],
+    [
+     "Expire 2023 through 2027",
+     "\u2014",
+     "",
+     "445",
+     "",
+     "\u2014",
+     "",
+     "1,435",
+     ""
+    ],
+    [
+     "Expire 2028 through 2032",
+     "34,745",
+     "",
+     "3,459",
+     "",
+     "34,097",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Expire 2033 through 2038",
+     "98,705",
+     "",
+     "1,104",
+     "",
+     "91,842",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Indefinite Expiry",
+     "6,256",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "139,706",
+     "$",
+     "5,185",
+     "$",
+     "125,939",
+     "$",
+     "84,242"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 850,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Deferred tax assets and liabilities and federal income tax expense in future years can be significantly affected by changes in circumstances that would influence management\u2019s conclusions as to the ultimate realization of deferred tax assets. Valuation allowances are established and maintained for deferred tax assets on a \u201cmore likely than not\u201d threshold. At December 31, 2011, the Company considered it more likely than not that the deferred tax assets would not be realized and a full valuation allowance was provided. At December 31, 2020, after evaluating the evidence, including positive objective evidence in the form of three years of cumulative historical pre-tax book income, management concluded that there was sufficient positive evidence to enable the Company to conclude that it was \u201cmore likely than not\u201d that certain of these deferred tax assets would be realized, and the Company released a portion of the valuation allowance which resulted in the recognition of certain deferred tax assets with a corresponding decrease to income tax expense of $9.3 million for the year ended December 31, 2020. At December 31, 2021 an additional $21.7 million of valuation allowance was released.\nThe Company had net operating loss carryforwards, federal tax credit carryforwards, and state capital loss carryforwards as of December 31, 2021, that will expire if not utilized. The following table summarizes such carryforwards and their expiration as follows (in thousands):",
+   "prose_after": "Utilization of the Company's U.S. federal and certain state net operating loss and tax credit carryovers may be subject to substantial annual limitation due to the ownership change limitations provided by the Internal Revenue Code and similar state provisions. Such an annual limitation could result in the expiration of the net operating loss carryforwards before utilization. As of December 31, 2021, the Company believes that utilization of its federal net operating losses and federal tax credits are not limited under any ownership change limitations provided under the Internal Revenue Code. The tax benefit preservation plan readopted by the Company in 2020 provides protections to preserve the Company\u2019s ability to utilize its net operating loss carryforwards as a result of certain stock ownership changes in the future.\nThe Company does not have any uncertain tax benefits recorded for the years ended December 31, 2021 and 2020. The Company\u2019s policy is to recognize interest and penalties related to uncertain tax benefits in its provision for income taxes. For the years ended December 31, 2021 and 2020 the Company has not recorded any interest or penalties related to uncertain tax benefits.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 818,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 865,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name of Director",
+     "Audit",
+     "Compensation",
+     "Corporate Governance and Nominating"
+    ],
+    [
+     "Mr. Maxim C.W. Webb (1)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ms. Dorothy A. Timian-Palmer (1)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mr. Eric H. Speron, Lead Independent Director (2)(3)",
+     "Member",
+     "Chair",
+     "Member"
+    ],
+    [
+     "Mr. Gregory E. Bylinsky",
+     "Chair",
+     "Member",
+     "Member"
+    ],
+    [
+     "Ms. Nicole L. Weymouth",
+     "Member",
+     "Member",
+     "Chair"
+    ],
+    [
+     "Number of meetings held in 2021",
+     "5",
+     "5",
+     "3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 921,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "The Company\u2019s leadership structure complements our Board of Directors\u2019 risk oversight function. The role of Lead Independent Director promotes effective consideration of matters presenting significant risks to the Company. Our Board of Directors regularly reviews its leadership structure and evaluates whether it is functioning effectively. Our Board of Directors\u2019 role of risk oversight has not specifically affected its leadership structure.\nCommittees of the Board of Directors\nOur Board of Directors has three standing committees: the Audit Committee, the Compensation Committee, and the Governance Committee, all of which are, and during 2021 were, composed solely of independent directors. The committees operate pursuant to written charters, that are available on our website under \u201cCorporate Governance\u201d at http://www.vidlerwater.com (the information on our website is not incorporated by reference into this proxy statement).\nThe following table sets forth the current members of each committee and the number of meetings held by each committee in 2021:",
+   "prose_after": "(1) Not an Independent Director.\n(2) Financial Expert.\n(3) Effective as of the date of our 2018 Annual Meeting of Shareholders, Mr. Speron was appointed to serve as Lead Independent Director.\nAudit Committee. The Audit Committee consists of Mr. Bylinsky, Chair, Mr. Speron, and Ms. Weymouth, none of whom has been or is an officer or employee of our Company. Each member of the Audit Committee, in the judgment of our Board of Directors, is independent under applicable rules of the NASDAQ stock market and Rule 10A-3(b)(1)(ii) of the Securities Exchange Act of 1934, as amended, (the \u201cExchange Act\u201d).\nThe functions of the Audit Committee include: (a) overseeing our accounting and financial reporting processes; (b) meeting with the independent registered public accounting firm to review their reports on their audits of our financial statements, their comments on our internal control over financial reporting and the action taken by management with regard to such comments; (c) reviewing and approving all related persons transactions; (d) reviewing auditor independence; (e) issuing an Audit Committee report to the shareholders; and (f) the appointment of our independent registered public accounting firm and pre-approving all auditing and non-auditing services to be performed by such firm.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 918,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Director Since",
+     "Positions Held with the Company (other than Director)"
+    ],
+    [
+     "Mr. Gregory E. Bylinsky",
+     "55",
+     "2017",
+     ""
+    ],
+    [
+     "Ms. Dorothy A. Timian-Palmer",
+     "64",
+     "2018",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "Mr. Eric H. Speron",
+     "42",
+     "2016",
+     ""
+    ],
+    [
+     "Mr. Maxim C.W. Webb",
+     "61",
+     "2016",
+     "Executive Chairman, Chief Financial Officer and Secretary"
+    ],
+    [
+     "Ms. Nicole L. Weymouth",
+     "47",
+     "2018",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1017,
+    "end_line": 1026
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Each communication must set forth the name and address of the shareholder on whose behalf the communication is sent. Our Corporate Secretary may review the letter or communication to determine whether it is appropriate for presentation to our Board of Directors or to the directors or director specified. Advertisements, solicitations or hostile communications will not be presented. Communications determined by the corporate secretary to be appropriate for presentation will be submitted to our Board of Directors or to the directors or director specified immediately thereafter. If no director is specified, our Corporate Secretary will immediately forward appropriate letters or communications to our Chairman of the Board of Directors.\nA shareholder wishing to communicate directly with the non-management members of our Board of Directors may address the communication to \u201cNon-Management Directors, c/o Board of Directors\u201d at the same address above. These communications will be handled by our Chairman of the Audit Committee. Finally, communications can be sent directly to individual directors by addressing letters to the director\u2019s individual name, c/o the Board of Directors, at the address above.\nBiographical Information of Directors\nThe following table and biographical descriptions set forth certain information with respect to the each member whom is currently serving as a director and, unless otherwise specified, has served continuously since elected. This information is based on information furnished to us by each such nominee. The ages listed below are as of April 6, 2022.",
+   "prose_after": "Each of our members of the board has an established record of professional accomplishment in his or her chosen field, the ability to contribute positively to the collaborative culture among board members, as well as professional and personal experiences and expertise relevant to our objective of monetizing assets and returning capital back to shareholders. All of our directors develop and continue to oversee the long-term strategy, management structure, and corporate governance programs that are in place today. The following provides further biographical and other information about our five directors.\nMr. Gregory E. Bylinsky was appointed to our Board of Directors in May 2017. Mr. Bylinsky is a co-founder, partner and portfolio manager of Bandera Partners LLC, an investment firm, since July 2006. Prior to founding Bandera Partners, Mr. Bylinsky was a co-founder, partner and portfolio manager of Lime Capital Management LLC, an investment firm, from December 1999 to July 2006. Mr. Bylinsky was a managing director of Tower Research Capital LLC, an affiliate of Lime Capital Management LLC, from April 1998 to December 1999. From September 1994 to April 1998 Mr. Bylinsky practiced law at Kaye Scholer LLP, specializing in complex securities and intellectual property litigation. Mr. Bylinsky graduated cum laude from Yale University, earning a B.A. in History, and graduated cum laude from Harvard Law School, earning a J.D. Mr. Bylinsky also serves on the board of directors of Fastcase, Inc., a legal data provider.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1037,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "l",
+     "Dorothy A. Timian-Palmer",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "l",
+     "Maxim C.W. Webb",
+     "Executive Chairman, Chief Financial Officer and Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1065,
+    "end_line": 1069
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "We believe Ms. Weymouth's extensive background in environmental planning, engineering and regulation qualifies her to serve on our Board of Directors. Her experience provides valuable insight into the water resources field and the related development and regulatory environment, leading to our conclusion that she should serve on our Board of Directors.\nExecutive Officers\nMs. Timian-Palmer and Mr. Webb are our only executive officers and also serve as directors. Each of our executive officers serves at the discretion of our board of directors and holds office until their successor is duly elected and qualified or until their earlier resignation or removal. There are no family relationships among any of our directors or executive officers.\nFor brief biographies of Ms. Timian-Palmer and Mr. Webb, see the section of this Annual Report on Form 10-K/A above titled \u201cBiographical Information of Directors.\u201d\nITEM 11. EXECUTIVE COMPENSATION\nCompensation Philosophy\nOverview\nThis section describes our executive compensation policies and how and why our Compensation Committee arrived at specific compensation decisions. The following named executive officers (\u201cNEOs\u201d), whose compensation is set forth in the Summary Compensation Table and other compensation tables below are:",
+   "prose_after": "Executive Compensation Overview\nOur Business Model\nOur objective is to maximize long-term shareholder value. Currently, we believe the highest potential return to our shareholders is from a return of capital. As we monetize assets, rather than reinvest the proceeds, we intend to return capital to shareholders through a stock repurchase program or by other means such as special dividends. Nonetheless, we may, from time to time, reinvest a portion of proceeds from asset monetizations in further development of existing assets, if we believe the returns on such reinvestment outweigh the benefits of a return of capital.\nAs a holding company for our primary holding, Vidler Water Company, Inc., our strategic mission has been to maximize long-term shareholder value by identifying and developing undervalued water resource assets. To do this we have:\n(i)sought to evaluate, acquire and develop water resource assets in the southwestern United States at valuations that we believed provided significant downside risk protection;",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1056,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "What we do",
+     "",
+     "What we don't do"
+    ],
+    [
+     "[X]",
+     "Design executive compensation programs to align pay with performance so that a significant portion of compensation is \u201cat-risk\u201d based on corporate performance",
+     "[X]",
+     "No guaranteed bonuses"
+    ],
+    [
+     "[X]",
+     "Use multi-year performance periods",
+     "[X]",
+     "No hedging or pledging by executive officers or directors"
+    ],
+    [
+     "[X]",
+     "Provide \"double-trigger\" change in control benefits",
+     "[X]",
+     "No tax gross-ups"
+    ],
+    [
+     "[X]",
+     "Maintain stock ownership guidelines",
+     "[X]",
+     "No excessive perquisites"
+    ],
+    [
+     "[X]",
+     "Maintain clawback policy",
+     "[X]",
+     "No repricing of underwater stock options"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1097,
+    "end_line": 1107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "As described below under \u201cBonus Plan in Effect for 2021 and 2020\u201d, the Bonus Plan includes a bonus pool factor that is based on total net gain, which is determined by calculating the total revenues and other income of the Company during the year (other than certain specified revenues and other income) and deducting from that amount (i) gross invested capital of each Company asset (other than certain excluded assets) that was sold or otherwise disposed of during such year, (ii) an amount equal to the aggregate of the gross invested capital for each relevant asset as determined pursuant to the immediately preceding clause (i), multiplied by the number of years (including any partial year) elapsed between January 1, 2018, and the date of the sale or other disposal of such asset, multiplied by 5%, and (iii) the annual administrative expenses incurred. The plan was effective on January 1, 2018, for the 2018 calendar year with a five year term ending December 31, 2022. The Bonus Plan replaced and superseded all prior bonus plans and programs for our NEOs.\nCorporate Governance Highlights",
+   "prose_after": "Executive Compensation Program\nOur Compensation Philosophy\nWe seek to align all compensation with our shareholders\u2019 interests and the Company's performance. We aim to hire qualified individuals, pay them for performance that is measured by increases in shareholder value, and retain the team that is instrumental to executing our business plan. We define a qualified individual as someone who is intelligent, resourceful, experienced, able to consistently produce high quality work product, displays a professional and positive attitude, and is productive and ethical. A relatively small number of people have been part of the core team of executives responsible for driving our performance over the long-term. Our CEO and Executive Chairman and CFO have been employed with us for approximately 24 and 28 years, respectively. We consider retention of our key executives important because they have acquired a valuable and specific skill set over the years with us that would be difficult to replace. Our small management team provides for more efficient decision making and greater accountability.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1092,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Component",
+     "Purpose",
+     "Form",
+     "Pay-for-Performance",
+     "Comment"
+    ],
+    [
+     "Base Salary",
+     "Provide sufficient competitive pay to attract and retain experienced and successful executives.",
+     "Cash",
+     "Adjustments to base salary generally consider individual performance, contributions to the business, competitive practices and internal comparisons.",
+     "Annual fixed cash compensation. Base salary reflects the employee\u2019s level of responsibility, expertise, skills, knowledge and experience. Base salaries are generally reviewed on an annual basis."
+    ],
+    [
+     "Bonus Plan",
+     "Encourage and reward contributions to our financial results. Engage executives in execution of our business strategy. Emphasize accountability for results.",
+     "Cash and RSU Awards",
+     "Our annual incentive awards under the Bonus Plan are based on the total revenue and other income of the Company during the year (other than certain specified revenues and other income) after deducting, among other amounts, the gross invested capital of each asset (other than certain excluded assets) that was sold or otherwise disposed of during such year, and is tied to the return of capital to shareholders.",
+     "Annual variable compensation. The Compensation Committee determines and approves the actual amount earned after the close of the fiscal year."
+    ],
+    [
+     "Equity Incentive",
+     "Encourage and reward building long-term shareholder value, employment retention and company stock ownership. Aligns executive performance with shareholder interests and retain executive officers through long-term vesting.",
+     "RSU Awards and Performance Based Options (\u201cPBOs\u201d)",
+     "RSU retain executives and align them with shareholders\u2019 interests by awarding a fixed number of shares upon vesting. PBOs reward building long-term shareholder value (see equity compensation section for a more detailed description of PBO).",
+     "The Compensation Committee, at its sole discretion, determines whether to grant stock-based awards in any year (in addition to any RSUs granted as part of annual incentive awards under our Bonus Plan). We require stock ownership through stock ownership guidelines applicable to our CEO, CFO and other designated executive officers. In March 2021 and 2021 , the Compensation Committee granted RSUs to our NEOs earned for 2020 and 2021 performance under the Bonus Plan. In the future, we anticipate granting stock-based compensation awards to our NEOs only as earned under the Bonus Plan."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1152,
+    "end_line": 1191
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Variable from year-to-year based on our performance (\u201cpay-for-performance\u201d). Our annual cash incentive awards are based on the value created from asset monetizations and are tied to invested capital and the return of capital to shareholders.\nReflective of the lean management structure we employ. We have very few executives and staff running our operations. This keeps our overall corporate overhead at reasonable levels, but also demands more from our team. The Compensation Committee takes into account the overall cost savings of our model when considering compensation.\nFocused on retaining the core team of executives. Retention of our core team of executives is critical to our business strategy, because the loss of any executive could require significant resources to replace. The Compensation Committee considers the retention of the executives when designing the executive compensation program.\nKey Components of Our NEO Compensation Program\nThe following table includes the various components of our executive compensation program:",
+   "prose_after": "We also provide the following compensation and benefit programs to our executives, many of which are broadly available to all of our employees:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Component",
+     "Objectives and Basis",
+     "Form"
+    ],
+    [
+     "Retirement benefits",
+     "Retain and recruit our executive officers.",
+     "401(k) plan. Provides a tax-deferred and an after-tax means to save for retirement. The NEOs have the opportunity to participate in this 401(k) plan on the same basis as all of our other employees."
+    ],
+    [
+     "Insurance and other benefits",
+     "Provide for the safety and wellness of all of our employees, including our executive officers.",
+     "These benefits include health insurance, life insurance, dental insurance, vision insurance, and disability insurance, which are available to all employees, including our NEOs, on a nondiscriminatory basis."
+    ],
+    [
+     "Termination and severance benefits",
+     "Retain and recruit our executive officers.",
+     "Various, including cash and accelerated vesting of equity incentives in certain circumstances."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1195,
+    "end_line": 1207
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "We also provide the following compensation and benefit programs to our executives, many of which are broadly available to all of our employees:",
+   "prose_after": "Executive Compensation Decisions\nAssessment of 2021 and 2020 Executive Officer Compensation\nAs explained in greater detail in the following section, we took the following actions regarding executive compensation in August 2018:\n\u2022Ms. Timian-Palmer entered into an employment agreement with the Company in connection with her appointment as our President and Chief Executive Officer.\n\u2022Mr. Webb entered into an amended employment agreement with the Company in connection with his appointment to a newly created position of Executive Chairman. On May 3, 2019 the former CFO left the Company and Mr. Webb was appointed Chief Financial Officer and Secretary, in addition to his duties as Executive Chairman.\n\u2022We adopted the Bonus Plan, which is effective from January 1, 2018 through December 31, 2022, which replaced and superseded the previous bonus plan maintained by the Company. Both Ms. Timian-Palmer and Mr. Webb earned a bonus under the Bonus Plan, based on our financial results for the years ended December 31, 2021 and 2020.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1222,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Officer",
+     "2020 Salary",
+     "",
+     "2021 Salary",
+     "",
+     "2022 Salary",
+     ""
+    ],
+    [
+     "Ms. Dorothy A. Timian-Palmer, President and CEO",
+     "$",
+     "388,993",
+     "$",
+     "388,993",
+     "$",
+     "388,993"
+    ],
+    [
+     "Mr. Maxim C.W. Webb, Executive Chairman, CFO and Secretary",
+     "$",
+     "210,800",
+     "$",
+     "210,800",
+     "$",
+     "210,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1229,
+    "end_line": 1235
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "\u2022We adopted the Bonus Plan, which is effective from January 1, 2018 through December 31, 2022, which replaced and superseded the previous bonus plan maintained by the Company. Both Ms. Timian-Palmer and Mr. Webb earned a bonus under the Bonus Plan, based on our financial results for the years ended December 31, 2021 and 2020.\n\u2022None of our executive officers were granted stock-based compensation in 2021 and 2020, other than RSUs granted in early 2021 and 2020 as a portion of their annual incentive awards earned (50%) with respect to 2020 and 2019 performance. Our executive officers elected to take 100% of the bonus earned with respect to 2020 performance in the form of RSUs which were granted to the executive officers in March, 2021. In March 2022, our executive officers were granted RSUs as a portion of their annual incentive awards earned (50%) with respect to 2021 performance.\n2021 and 2020 Compensation\nBase Salary:\nIn August, 2018, Ms. Timian - Palmer was appointed President and Chief Executive Officer of the Company and Mr. Webb was appointed Executive Chairman. Their respective annual salaries based on these appointments are set forth in the table below:",
+   "prose_after": "Bonus Plan in Effect for 2021 and 2020:\nThe Bonus Plan provides for the following key terms:\n\u2022The group of eligible employees consists of Ms. Timian-Palmer and Mr. Webb.\n\u2022The bonus pool is calculated as described below.\n\u2022The amount of the bonus pool is the adjusted total net gain described below, multiplied by 8.75%.\n\u2022The allocation of the bonus pool is 55% for Ms. Timian-Palmer and 45% for Mr. Webb.\n\u2022Under the Bonus Plan, each bonus will be paid 50% in cash and 50% as RSUs granted during the 90-day period following the end of the performance year, subject to certain exceptions as further described below.\nUnder the Bonus Plan, a pool of funds will be created for distribution on a yearly basis (the \u201cBonus Pool\u201d).\nThe first step in calculating the Bonus Pool is to calculate the total revenues and other income of the Company during the year (other than any revenues or other income attributed to the Company\u2019s investments in Synthonics, Inc. and Mindjet Inc. and the Company\u2019s deferred compensation plans (the \u201cExcluded Assets\u201d)) minus (i) the gross invested capital of each asset of the Company (other than an Excluded Asset) that was sold or otherwise disposed of during such year, defined as the book value of such asset as of the date of the sale (or other disposition) of such asset, as determined in accordance with U.S. generally accepted accounting principles (\u201cGAAP\u201d) and reflected in the Company\u2019s financial records as of such date, plus any impairment or depreciation charges taken by the Company with respect to such asset on or prior to such date; (ii) an amount equal to the aggregate of the gross invested capital for each relevant asset as determined pursuant to the immediately preceding clause (i), multiplied by the amount of years (including any partial year) elapsed between January 1, 2018 and the date of the sale or other disposal of such asset, multiplied by 5%; and (iii) the administrative expenses specified in the Bonus Plan (such resulting amount, the \u201cTotal Net Gain\u201d).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1222,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1258,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Role",
+     "Ownership Guideline"
+    ],
+    [
+     "CEO",
+     "lesser of 275,000 shares or 3x base salary"
+    ],
+    [
+     "CFO",
+     "lesser of 18,000 shares or 1x base salary"
+    ],
+    [
+     "Other designated executive officers",
+     "lesser of 10,000 shares or 1x base salary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1292,
+    "end_line": 1299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "The Compensation Committee is responsible for the interpretation and enforcement of this repayment policy. We intend to amend our repayment policy to comply with any future changes to the Dodd-Frank Wall Street Reform and Consumer Protection Act of 2010 after the SEC adopts regulations implementing those requirements.\nStock Ownership Guidelines\nOur stock ownership guidelines for our CEO and CFO help ensure that those officers maintain an equity stake in our Company, and by doing so, appropriately link their interests with those of other shareholders. We also have adopted stock ownership guidelines for our non-employee directors, which are addressed below in our discussion of director compensation. These ownership guidelines count shares actually owned, vested deferred stock units, and 50% of the vested stock options toward the equity ownership requirement. Until the applicable stock ownership guideline is achieved, the officer is required to retain 25% of the net shares received as a result of the exercise of stock options and settlement of RSUs. Each of our executive officers is in compliance with the guidelines.\nThe guidelines are as follows:",
+   "prose_after": "Termination and Change in Control\nWe provide certain termination of employment payments and benefits to our NEOs. We provide these payments and benefits to help retain and recruit our NEOs, which is a primary objective of our executive compensation program. We believe that providing certain benefits allows and encourages our NEOs to focus on the strategic review process and our on-going business and what is in the best interests of our shareholders regardless of the potential impact on them personally. Our Compensation Committee determined the level of benefits based on a review of the market, the recommendations of management, and considering the nature of our business and executive compensation program.\nAll stock-based awards for our executives provide that the unvested equity awards assumed by a buyer in the event of a change of control would not automatically accelerate at the close of the transaction (that is, we have no \u201csingle trigger\u201d benefits) and instead vesting would only accelerate if there is a qualifying termination following the change in control (i.e., \u201cdouble trigger\u201d treatment of unvested awards).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1273,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "Stock Awards (1)",
+     "",
+     "Non-Equity Plan Compensation(2)",
+     "",
+     "All Other Compensation(3)",
+     "",
+     "Total Compensation",
+     ""
+    ],
+    [
+     "Dorothy A. Timian-Palmer, President and CEO (4)",
+     "2021",
+     "$",
+     "388,993",
+     "",
+     "$",
+     "299,069",
+     "$",
+     "299,069",
+     "$",
+     "18,100",
+     "$",
+     "1,005,231"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "388,993",
+     "",
+     "$",
+     "11,291",
+     "",
+     "",
+     "$",
+     "17,800",
+     "$",
+     "418,084"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maxim C. W. Webb, Executive Chairman, CFO and Secretary",
+     "2021",
+     "$",
+     "210,800",
+     "",
+     "$",
+     "244,693",
+     "$",
+     "244,693",
+     "$",
+     "17,740",
+     "$",
+     "717,926"
+    ],
+    [
+     "",
+     "2020",
+     "$",
+     "210,800",
+     "",
+     "$",
+     "9,238",
+     "",
+     "",
+     "$",
+     "17,640",
+     "$",
+     "237,678"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1330,
+    "end_line": 1340
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "l Our focus is on monetizing assets and returning capital to shareholders which could include entering into joint ventures or other arrangements with reasonable leverage; and this focus is conducive to minimizing compensation related risks; l Our incentive plans are well designed, effectively administered, focused on relevant performance measures; l Our plans are reasonable with respect to potential compensation levels; l The elements of our compensation plan are appropriately weighted in our overall mix to achieve a balance between operating results and strategic results; l Base salaries for executive officers are sufficiently competitive to eliminate the need for them to take unnecessary risk in order to earn large incentives necessary to provide adequate cash compensation; l Our insider trading policies, independent oversight by the Compensation Committee, and our stock ownership guidelines and \u201cclaw back policy\u201d mitigate any potential risks in our compensation programs.\nBased on this review, the Compensation Committee concluded that our compensation policies, plans, and practices do not encourage unnecessary or unreasonable risk-taking and do not encourage executives or employees to take risks that are reasonably likely to have a material adverse effect on us.\nCompensation Tables and Narrative Disclosures\nThe following tables, narrative disclosures and footnotes describe the total compensation and benefits for our NEOs for the periods presented.\nSummary Compensation Table",
+   "prose_after": "(1) The SEC\u2019s current executive compensation disclosure rules require us to value stock awards and option awards reported in the following table using the grant date fair value of the awards, rather than using the amount recognized for financial statement reporting purposes to value these awards. Nonetheless, the reported values reflect the aggregate grant date fair value, computed in accordance with Financial Accounting Standards Board, Accounting Standards Codification Topic 718. As these values reflect the aggregate grant date fair value, they do not necessarily correspond to the actual value that may be recognized. The assumptions that we made to determine the value of our awards for accounting purposes are described in detail in Note 6 titled Stock-Based Compensation in the notes to consolidated financial statements included in our 2021 Annual Report on Form 10-K filed with the SEC on March 22, 2022 The amounts reported in 2021 represent 50% of the total bonus earned for the year under the Bonus Plan. Such stock awards were granted in the form of RSU in March, 2022. The amounts reported in 2020 represent 100% of the total bonus earned for the year under the Bonus Plan. Such stock awards were granted in the form of RSUs during 2021. The RSUs vest on the date of grant but are not settled in stock for three years from the date of grant.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1323,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1365,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of Securities Underlying Unexercised Options Exercisable",
+     "Number of Securities Underlying Unexercised Options Unexercisable",
+     "Option Exercise Price",
+     "",
+     "Option Expiration Date"
+    ],
+    [
+     "Mr. Webb",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PBO(1)",
+     "",
+     "95,238",
+     "$",
+     "14.51",
+     "11/14/2024"
+    ],
+    [
+     "RSU",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ms. Dorothy A. Timian-Palmer",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "RSU",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1349,
+    "end_line": 1362
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "(1) The SEC\u2019s current executive compensation disclosure rules require us to value stock awards and option awards reported in the following table using the grant date fair value of the awards, rather than using the amount recognized for financial statement reporting purposes to value these awards. Nonetheless, the reported values reflect the aggregate grant date fair value, computed in accordance with Financial Accounting Standards Board, Accounting Standards Codification Topic 718. As these values reflect the aggregate grant date fair value, they do not necessarily correspond to the actual value that may be recognized. The assumptions that we made to determine the value of our awards for accounting purposes are described in detail in Note 6 titled Stock-Based Compensation in the notes to consolidated financial statements included in our 2021 Annual Report on Form 10-K filed with the SEC on March 22, 2022 The amounts reported in 2021 represent 50% of the total bonus earned for the year under the Bonus Plan. Such stock awards were granted in the form of RSU in March, 2022. The amounts reported in 2020 represent 100% of the total bonus earned for the year under the Bonus Plan. Such stock awards were granted in the form of RSUs during 2021. The RSUs vest on the date of grant but are not settled in stock for three years from the date of grant.\n(2) Amounts in this column represent the cash portion of the award earned under the Company\u2019s Bonus Plan\n(3) Amounts in this column include contributions made by us on behalf of the NEOs to the 401(k) plan, health savings account and any expense reimbursements.\nOutstanding Equity Awards at Fiscal Year-End\nThe following tables provide information on the outstanding equity awards held by the NEOs as of December 31, 2021.",
+   "prose_after": "(1) Represents PBOs granted on November 14, 2014, pursuant to our 2014 Equity Incentive Plan. The PBOs include a market condition based on the achievement of a stock price target during the contractual term and vest monthly over a three year period. Any vested portion of the options may be exercised only if the 30-trading-day average closing sales price of our common stock equals or exceeds 125% of the grant date stock price. The stock price contingency may be met any time before the options expire and it only needs to be met once for the PBO to remain exercisable for the remainder of the term. All of the PBOs were vested but unexercisable as the stock price contingency had not been met as of December 31, 2021.\nMr. Webb and Ms. Timian-Palmer had 20,810 and 25,436 RSU\u2019s outstanding as of December 31, 2021 that have been fully vested, but will be issued on the earlier of (i) the third anniversary of the date of grant, (ii) a participant\u2019s separation from service, or (iii) a change of control.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1323,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1365,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Type of Annual Retainer",
+     "",
+     "Dollar Value Per Calendar Year If Paid Fully in Cash (\u201cCash Dollar Value\u201d)",
+     "Dollar Value Per Calendar Year If Paid Fully in RSUs (\u201cRSU Dollar Value\u201d)"
+    ],
+    [
+     "Board",
+     "Lead Independent Director",
+     "$20,000",
+     "$25,000"
+    ],
+    [
+     "",
+     "Member",
+     "$35,000",
+     "$43,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1405,
+    "end_line": 1416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "\u2022with respect to Ms. Timian-Palmer and Mr. Webb, payment of the cost of COBRA coverage for such individual and his or her dependents through the earlier of a period of one year or the date such individual becomes eligible for health coverage from another employer; and\n\u2022with respect to Ms. Timian-Palmer and Mr. Webb, full vesting of all outstanding equity awards held by such individual.\nDIRECTOR COMPENSATION\nIn November 2017, the Board of Directors amended our then existing director compensation plan to reduce directors compensation effective on January 1, 2018 (the \u201c2018 Plan\u201d), and in March 2018 the Board of Directors amended the 2018 Plan to further reduce directors compensation, effective on May 3, 2018 (the \u201cAmended 2018 Plan\u201d).\nThe 2018 Plan:\nPursuant to the terms of the 2018 Plan, each non-employee member of the Board was entitled to receive an annual retainer, in the amounts described below, which was payable through either cash or RSU awards at each such director\u2019s election. Additionally, the Lead Independent Director was entitled to an additional retainer payable through either cash or RSU awards at the Lead Director\u2019s election.",
+   "prose_after": "In addition, pursuant to the terms of the 2018 Plan, each non-employee member of the Board is entitled to receive an RSU award for each calendar year of service as a member of the Board. The number of RSUs subject to each annual award was equal to (i) $75,000, divided by (ii) the average of the daily volume weighted average prices of the Company\u2019s common stock for all of the trading days during the 30 calendar day period ending on (and including) the last trading day immediately prior to the grant date of such annual award, rounded down to the nearest whole share. Each annual award is made under the Company\u2019s 2014 equity incentive plan, is granted on the first trading day in January of the applicable calendar year of service and, except for acceleration upon a change of control, vests in substantially equal quarterly installments on the grant date of such annual award and on April 1, July 1 and October 1 of the calendar year in which such annual award is granted, subject to the director\u2019s continued service. The issuance of any vested shares pursuant to such RSU awards will occur on the date of such director\u2019s separation from service.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Dollar Value Per Calendar Year If Paid Fully in Cash (\u201cCash Dollar Value\u201d)",
+     "Dollar Value Per Calendar Year If Paid Fully in RSUs (\u201cRSU Dollar Value\u201d)"
+    ],
+    [
+     "$35,000",
+     "$43,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1429,
+    "end_line": 1438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Mr. Speron notified us of his election to receive the entire annual retainer during 2018 in cash and to forego his receipt of the annual restricted stock unit award otherwise provided for under the 2018 Plan. Mr. Speron continued to not be directly compensated for his service on the Board, and directed his entire annual retainer for service on our Board be paid in cash to the First Foundation Total Return Fund, which Mr. Speron currently manages.\nMr. Bylinsky notified us of his election to forego his annual restricted stock unit award for 2018 and elected to only receive his annual retainer of $35,000 for service on the Board during 2018. Mr. Bylinsky elected to take his annual retainer in the form of RSUs, the value of which were approximately $43,750.\nThe Amended 2018 Plan:\nIn March 2018, upon the recommendation of the Compensation Committee, our Board of Directors approved the Amended 2018 Plan, effective on May 3, 2018, and replaced and superseded the 2018 Plan. The Amended 2018 Plan is identical to the 2018 Plan, except that the Amended 2018 Plan eliminates the annual cash retainer payable to the Lead Independent Director and the annual restricted stock unit award provided for under the 2018 Plan. As a result of the amendment to the 2018 Plan, annual Director compensation from May 3, 2018, was $35,000, if compensation is elected to be in cash or $43,750 if compensation is elected to be in the form of RSUs.",
+   "prose_after": "If a director received any portion of an annual retainer in the form of an RSU award, such RSU award was granted under the Company\u2019s 2014 equity incentive plan on the first trading day in January of the applicable calendar year of service and, except for acceleration upon a change of control, vests in substantially equal quarterly installments on the grant date of such award and on April 1, July 1, and October 1 of the calendar year in which such award is granted, subject to the director\u2019s continued service. The number of RSUs subject to such award is equal to (x) the dollar value of such portion divided by (y) the average of the daily volume weighted average prices of the Company\u2019s common stock for all of the trading days during the 30 calendar day period ending on (and including) the last trading day immediately prior to the grant date of such award, rounded down to the nearest whole share. The issuance of any vested shares pursuant to such RSU awards will occur on the date of such director\u2019s separation from service.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1396,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned Or Paid In Cash",
+     "",
+     "Stock Awards(1)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mr. Gregory E. Bylinsky",
+     "",
+     "",
+     "$",
+     "43,750",
+     "$",
+     "43,750"
+    ],
+    [
+     "Mr. Eric H. Speron",
+     "$",
+     "35,000",
+     "",
+     "",
+     "$",
+     "35,000"
+    ],
+    [
+     "Ms. Nicole L. Weymouth",
+     "",
+     "",
+     "$",
+     "43,750",
+     "$",
+     "43,750"
+    ],
+    [
+     "",
+     "$",
+     "35,000",
+     "$",
+     "87,500",
+     "$",
+     "122,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1444,
+    "end_line": 1456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "If a director received any portion of an annual retainer in the form of an RSU award, such RSU award was granted under the Company\u2019s 2014 equity incentive plan on the first trading day in January of the applicable calendar year of service and, except for acceleration upon a change of control, vests in substantially equal quarterly installments on the grant date of such award and on April 1, July 1, and October 1 of the calendar year in which such award is granted, subject to the director\u2019s continued service. The number of RSUs subject to such award is equal to (x) the dollar value of such portion divided by (y) the average of the daily volume weighted average prices of the Company\u2019s common stock for all of the trading days during the 30 calendar day period ending on (and including) the last trading day immediately prior to the grant date of such award, rounded down to the nearest whole share. The issuance of any vested shares pursuant to such RSU awards will occur on the date of such director\u2019s separation from service.\nThe following table sets forth compensation during 2021 for each non-employee director who served during 2021.",
+   "prose_after": "(1) Represents grant date fair value.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT, AND RELATED STOCKHOLDER MATTERS\nSECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth information, as of April 15, 2022, with respect to the beneficial ownership of our common stock by (i) each person whom we know to be the beneficial owner of more than 5% of our common stock based upon Schedule 13G and Schedule 13D reports filed with the SEC, (ii) each of our directors and director nominees, (iii) each NEO listed in our Summary Compensation Table, and (iv) all of our current executive officers and directors as a group.\nUnless otherwise indicated, the business address for each person is 3480 GS Richards Blvd., Suite 101 Carson City, Nevada 89703. The amounts and percentages of common stock beneficially owned are reported on the basis of SEC regulations governing the determination of beneficial ownership of securities. Under SEC rules, a person is deemed to be a \u201cbeneficial owner\u201d of a security if that person has or shares \u201cvoting power,\u201d which includes the power to vote or to direct the voting of such security, or \u201cinvestment power,\u201d which includes the power to dispose of or to direct the disposition of such security. A person is also deemed to be a beneficial owner of any securities that a person has a right to acquire beneficial ownership within 60 days. Under these rules, more than one person may be deemed a beneficial owner of the same securities, and a person may be deemed a beneficial owner of securities in which he has no economic interest.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1469,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Number of Shares and Nature of Beneficial Ownership",
+     "Percentage Ownership"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Named Executive Officers, Directors, and Director Nominees",
+     "",
+     ""
+    ],
+    [
+     "Mr. Maxim C. W. Webb (1) (6)",
+     "126,007",
+     "*"
+    ],
+    [
+     "Ms. Dorothy A. Timian-Palmer (8)",
+     "63,427",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mr. Gregory E. Bylinsky (4)",
+     "1,075,118",
+     "5.9%"
+    ],
+    [
+     "Mr. Eric H. Speron (2)",
+     "871,264",
+     "4.8%"
+    ],
+    [
+     "Ms. Nicole L. Weymouth (7)",
+     "18,306",
+     "*"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Executive Officers and Directors as a Group (5 persons)",
+     "2,157,706",
+     "11.8%"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% Shareholders",
+     "",
+     ""
+    ],
+    [
+     "Amundi Asset Management (3)\n91-93 Boulevard Pasteur, 75015 Paris, France",
+     "2,393,440",
+     "13.1%"
+    ],
+    [
+     "The Vanguard Group (5)\n100 Vanguard Blvd., Malvern, PA 19355",
+     "1,127,783",
+     "6.2%"
+    ],
+    [
+     "Bandera Partners LLC (4)\n50 Broad Street, Suite 1820, New York, NY 10004",
+     "1,049,432",
+     "5.9%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1470,
+    "end_line": 1493
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT, AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Unless otherwise indicated, the business address for each person is 3480 GS Richards Blvd., Suite 101 Carson City, Nevada 89703. The amounts and percentages of common stock beneficially owned are reported on the basis of SEC regulations governing the determination of beneficial ownership of securities. Under SEC rules, a person is deemed to be a \u201cbeneficial owner\u201d of a security if that person has or shares \u201cvoting power,\u201d which includes the power to vote or to direct the voting of such security, or \u201cinvestment power,\u201d which includes the power to dispose of or to direct the disposition of such security. A person is also deemed to be a beneficial owner of any securities that a person has a right to acquire beneficial ownership within 60 days. Under these rules, more than one person may be deemed a beneficial owner of the same securities, and a person may be deemed a beneficial owner of securities in which he has no economic interest.\nExcept as otherwise noted, we believe, based on the information furnished to us, that the persons named in the table below have sole voting and investment power with respect to all shares of common stock reflected as beneficially owned, subject to applicable community property laws. As of April 15, 2022, there were 18,299,879 shares of our common stock outstanding.",
+   "prose_after": "* Represents less than 1% of the issued and outstanding shares of common stock as of the date of this table.\n(1) Represents 85,132 shares held directly and 40,875 shares underlying vested RSUs that will not be settled in shares of common stock until three years after RSUs granted.\n(2) Represents 20,900 shares held in a personal IRA account, 52,205 shares held directly and 190 shares held by Mr. Speron's spouse in a personal IRA and also includes beneficial ownership of 797,969 shares, held on behalf of clients of First Foundation Advisors for which Mr. Speron has voting and dispositive power over such shares held by First Foundation Advisors. Mr. Speron disclaims beneficial ownership of the shares held by First Foundation Advisors, except to the extent of his pecuniary interest therein.\n(3) Beneficial ownership of shares as reported on Schedule 13G/A filed with the SEC on February 14, 2022. Amundi Asset Management beneficially owned 2,393,440 shares, with shared dispositive power and shared voting power over 2,393,440 shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1469,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "(b)",
+     "",
+     "(c)"
+    ],
+    [
+     "Plan Category",
+     "Number of Securities To Be Issued Upon Exercise of Outstanding Options, Warrants and Rights",
+     "Weighted-Average Exercise Price of Outstanding Options, Warrants and Rights",
+     "",
+     "Number of Securities Remaining Available for Future Issuance Under Equity Compensation Plans (Excluding Securities Reflected in Column (a))"
+    ],
+    [
+     "Equity compensation plans approved by security holders (1)",
+     "188,793",
+     "$",
+     "14.51",
+     "2,721,063"
+    ],
+    [
+     "Equity compensation plans not approved by security holders (2)",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1510,
+    "end_line": 1525
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT, AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "(6) Shares shown as beneficially owned by the NEO do not include shares issuable upon exercise of PBOs (Performance Based Options), which may be exercisable within 60 days, because none of the vested PBO had met the stock price contingency as of April 15, 2022. As of April 15, 2022, the total number of PBOs held by NEOs was 95,238, all of which are vested and held by Mr. Webb.\n(7) This includes 18,306 vested RSUs that will not be settled in shares of our common stock until the date of Ms. Weymouth\u2019s termination of service as a member of the Board, no RSUs will vest within 60 days. This number does not include 1,792 RSUs that will vest more than 60 days from the date of this table.\n(8) Represents 13,467 shares held directly and 49,960 shares of vested RSUs that will not be settled in shares of common stock until three years after RSUs granted.\nEQUITY COMPENSATION PLAN INFORMATION\nWe currently maintain one equity compensation plan, the 2014 Equity Incentive Plan, which was approved by our shareholders in 2014. The following table sets forth information with respect to the number of shares of common stock subject to outstanding awards and remaining available for issuance under the 2014 Equity Incentive Plan as of December 31, 2021.",
+   "prose_after": "(1) Column (a) represents the total number of underlying shares that could be issued upon the stock settlement of RSUs granted, the exercise of vested PBOs, and column (c) represents awards available for future issuances under our 2014 Equity Incentive Plan. In accordance with SEC disclosure rules, the weighted-average exercise price reported in column (b) does not take into account RSUs, because they have no exercise price. The actual number of shares to be issued to an employee upon vesting and stock settlement of an RSU will be based on the total number of shares of stock issued after vesting, minus applicable taxes withheld in the form of shares. The actual number of shares to be issued to an employee who exercises a vested PBO, after the price contingency has been met, will be based on the exercise value times the number of PBOs exercised, minus applicable taxes withheld in the form of shares. As of December 31, 2021, there were no PBOs exercisable as the market condition had not been met and therefore no additional shares would be issued upon assumed exercise of the PBOs. Of the shares of stock to be issued upon exercise of outstanding awards in column (a) 95,238 shares are underlying PBO that are fully vested.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1545,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "310,000",
+     "$",
+     "310,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "17,565",
+     "",
+     "8,749",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "327,565",
+     "$",
+     "318,749"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1550,
+    "end_line": 1558
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Procedures for Approval of Related Persons Transactions\nTo ensure the broadest possible compliance with the Nasdaq Stock Market listing standards and Regulation S-K, Item 404, our Audit Committee charter provides that the Audit Committee will review and approve, in accordance with written procedures adopted by the Board of Directors, all transactions between us and persons or entities affiliated with our officers, directors or principal common stockholders.\nAfter reviewing a particular transaction or proposed transaction, management and the Audit Committee will determine if disclosure in our public filings is necessary and appropriate under Item 404.\nDirector Independence\nInformation regarding director independence is incorporated herein by reference from the material under the heading \u201cDirector Independence\u201d under Item 10 of this Form 10-K/A\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following table sets forth the aggregate fees billed by Deloitte & Touche LLP, for the fiscal years ended December 31, 2021 and 2020:",
+   "prose_after": "Audit Fees consist of fees we paid for (i) the audit of our annual financial statements included in our Annual Reports on Forms 10-K and reviews of our quarterly financial statements included in our Quarterly Reports on Forms 10-Q; and (ii) services that are normally provided by Deloitte & Touche LLP in connection with statutory and regulatory audits or consents.\nAudit-Related Fees consist of fees we paid for services related to proposed or consummated transactions and attestation services not required by statute or regulation and the related accounting or disclosure treatment for such transactions or events.\nOur Audit Committee has determined that the provision of non-audit services listed above is compatible with the independence of Deloitte & Touche LLP. All services above were pre-approved by our Audit Committee.\nAudit Committee Pre-Approval Policy\nConsistent with SEC policies regarding independence, the Audit Committee has responsibility for appointing, setting compensation and overseeing the work of the independent registered public accounting firm. In recognition of this responsibility, the Audit Committee has recommended, and the Board of Directors has approved, pre-approval guidelines for all audit and non-audit services to be provided by the independent registered public accounting firm.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1545,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1573,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "3.1A",
+     "Certificate of Incorporation of PICO Holdings, Inc. (now known as Vidler Water Resources, Inc.) (2)"
+    ],
+    [
+     "3.1 B",
+     "Certificate of Amendment of Certificate of Incorporation of PICO Holdings Inc. (now known as Vidler Water Resources, Inc.) (13)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Vidler Water Resources, Inc. (13)"
+    ],
+    [
+     "3.3",
+     "2020 Amended Certificate of Designation of Series A Junior Participating Preferred Stock of PICO Holdings, Inc. (now known as Vidler Water Resources, Inc.) (3)"
+    ],
+    [
+     "4.1",
+     "2020 Section 382 Rights Agreement, dated as of July 24, 2020 between PICO Holdings, Inc. (now known as Vidler Water Resources, Inc.) and Computershare Trust Company, N.A. (3)"
+    ],
+    [
+     "4.2",
+     "Vidler Water Resources, Inc. Stock Certificate. (4)"
+    ],
+    [
+     "4.3",
+     "Description of Securities (12)"
+    ],
+    [
+     "10.1\u2020",
+     "PICO Holdings, Inc (now known as Vidler Water Resources, Inc.). 2014 Equity Incentive Plan, Stock Option Grant Notice, Stock Option Award Agreement, Stock Option Notice of Exercise, Restricted Stock Unit Grant Notice, Restricted Stock Unit Award Agreement, and Restricted Stock Deferral Election Form. (7)"
+    ],
+    [
+     "10.2",
+     "Infrastructure Dedication Agreement between Fish Springs Ranch, LLC, and Washoe County, Nevada dated October 16, 2007. (10)"
+    ],
+    [
+     "10.3\u2020",
+     "Employment Agreement, dated August 8, 2018, by and between PICO Holdings, Inc (now known as Vidler Water Resources Inc.). and Maxim C.W. Webb. (1)"
+    ],
+    [
+     "10.4\u2020",
+     "Employment Agreement, dated August 8, 2018, by and between PICO Holdings, Inc. (now known as Vidler Water Resouces Inc.) and Dorothy Timian-Palmer. (1)"
+    ],
+    [
+     "10.5\u2020",
+     "PICO Holdings, Inc (now known as Vidler Water Resources, Inc.). Amended and Restated Executive Bonus Plan. (1)"
+    ],
+    [
+     "10.6\u2020",
+     "PICO Holdings, Inc (now known as Vidler Water Resources, Inc.). Amended and Restated Nonemployee Director Compensation Policy (8)"
+    ],
+    [
+     "10.7",
+     "Form of Indemnity Agreement with directors and executive officers of PICO Holdings, Inc (now known as Vidler Water Resources, Inc.). and each of its subsidiaries. (4)"
+    ],
+    [
+     "10.8\u2020",
+     "Directorship Letter Agreement with Eric Speron dated December 18, 2015. (11)"
+    ],
+    [
+     "21.1",
+     "Subsidiaries of PICO Holdings, Inc. (now known as Vidler Water Resources, Inc.)"
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm - Deloitte & Touche LLP."
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a)/15d-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a)/15d-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. Section 1350 (Section 906 of the Sarbanes-Oxley Act of 2002)."
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. Section 1350 (Section 906 of the Sarbanes-Oxley Act of 2002)."
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File: the cover page XBRL tags are embedded within the Inline XBRL document and are contained within Exhibit 101"
+    ],
+    [
+     "\u2020",
+     "Indicates compensatory plan, contract or arrangement in which directors or executive officers may participate."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "Consistent with SEC policies regarding independence, the Audit Committee has responsibility for appointing, setting compensation and overseeing the work of the independent registered public accounting firm. In recognition of this responsibility, the Audit Committee has recommended, and the Board of Directors has approved, pre-approval guidelines for all audit and non-audit services to be provided by the independent registered public accounting firm.\nThese pre-approval guidelines are:\n1 At the earliest possible date, management shall inform the Audit Committee of each audit or non-audit service which management desires our independent registered public accounting firm to perform; 2 Management shall promptly provide to the Audit Committee detailed information about the particular services to be provided by our independent registered public accounting firm; 3 The supporting documentation provided to the Audit Committee by management shall be sufficiently detailed so that the Audit Committee knows precisely what services it is being asked to pre-approve; and 4 The Audit Committee has delegated pre-approval authority to the Chairman of the Audit Committee. All such pre-approvals shall be presented to the full Audit Committee at the Audit Committee\u2019s next scheduled meeting.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a)FINANCIAL SCHEDULES AND EXHIBITS\n1.Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1573,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "(1)",
+     "Incorporated by reference to Form 8-K filed with the SEC on August 8, 2018."
+    ],
+    [
+     "(2)",
+     "Incorporated by reference to Form 8-K filed with the SEC on June 1, 2017."
+    ],
+    [
+     "(3)",
+     "Incorporated by reference to Form 8-A filed with the SEC on July 24, 2020."
+    ],
+    [
+     "(4)",
+     "Incorporated by reference to Form 8-K filed with the SEC on March 8, 2021.."
+    ],
+    [
+     "(5)",
+     "Incorporated by reference to the Annual Report on Form 10-K filed with the SEC on March 14, 2019"
+    ],
+    [
+     "(6)",
+     "Incorporated by reference to Form 8-K filed with the SEC on August 6, 2015."
+    ],
+    [
+     "(7)",
+     "Incorporated by reference to the Quarterly Report on Form 10-Q filed with the SEC on November 10, 2014."
+    ],
+    [
+     "(8)",
+     "Incorporated by reference to the Quarterly Report on Form 10-Q filed with the SEC on May 3, 2019."
+    ],
+    [
+     "(9)",
+     "Incorporated by reference to Form 8-K filed with the SEC on December 15, 2016."
+    ],
+    [
+     "(10)",
+     "Incorporated by reference to the Quarterly Report on Form 10-Q filed with the SEC on November 7, 2007."
+    ],
+    [
+     "(11)",
+     "Incorporated by reference to Form 8-K filed with the SEC on December 22, 2015."
+    ],
+    [
+     "(12)",
+     "Incorporated by reference to Form S-3 filed with the SEC on November 14, 2014."
+    ],
+    [
+     "(13)",
+     "Incorporated by reference to Form 8-K filed with the SEC on March 8, 2021."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1621,
+    "end_line": 1638
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1620,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date:",
+     "April 29, 2022",
+     "Vidler Water Resources, Inc.\n\n By:  /s/ Dorothy A. Timian-Pamer Dorothy A. Timian-Palmer Chief Executive Officer and President"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1644,
+    "end_line": 1649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Related-Party Transactions                                   25"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1650,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

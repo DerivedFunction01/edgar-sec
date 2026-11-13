@@ -1,0 +1,6731 @@
+{
+ "accession": "0001213900-19-006388",
+ "cik": "0001522704",
+ "form": "10-K",
+ "filing_date": "2019-04-15",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2018_medifirstsolutions.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NEVADA",
+     "27-3888260"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2018\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from [ ] to [ ]\nCommission file number 000-55465\nMedifirst Solutions, Inc.\n(Name of small business issuer in its charter)",
+   "prose_after": "4400 Route 9 South. Suite 1000, Freehold NJ 07728\n(Address of Principal Executive Offices)\nIssuer\u2019s telephone number: (732) 786-8044\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, Par Value $0.0001\nIndicate by check mark if registrant is a well-known seasoned issuer, as defined under Rule 405 of the Securities Act Yes [ ] No [X]\nIndicate by check mark if registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act during the preceding 12 months (or for such shorter period that the issuer was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I",
+     "",
+     "1"
+    ],
+    [
+     "Item 1",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "16"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "16"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "16"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     "17"
+    ],
+    [
+     "Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "17"
+    ],
+    [
+     "Item 6",
+     "Selected Financial Data",
+     "21"
+    ],
+    [
+     "Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "21"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "23"
+    ],
+    [
+     "Item 8",
+     "Financial Statements and Supplementary Data",
+     "23"
+    ],
+    [
+     "Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "24"
+    ],
+    [
+     "Item 9A",
+     "Controls and Procedures",
+     "24"
+    ],
+    [
+     "Item 9B",
+     "Other Information",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "",
+     "26"
+    ],
+    [
+     "Item 10",
+     "Directors and Executive Officers and Corporate Governance",
+     "26"
+    ],
+    [
+     "Item 11",
+     "Executive Compensation",
+     "27"
+    ],
+    [
+     "Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "29"
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "29"
+    ],
+    [
+     "Item 14",
+     "Principal Accountant Fees and Services",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     "32"
+    ],
+    [
+     "Item 15",
+     "Exhibits, Financial Statement Schedules",
+     "32"
+    ],
+    [
+     "",
+     "Signatures",
+     "34"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and ask price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter, June 30, 2018: $491,063\nAs of April 12, 2019, there were 5,808,883 shares of the issuer\u2019s common stock, par value $0.0001 per share, issued and outstanding.\nDocuments incorporated by reference: None\nTABLE OF CONTENTS",
+   "prose_after": "i\nIn this report, unless the context indicates otherwise, the terms \u201cMedifirst,\u201d \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d and \u201cour\u201d refer to Medifirst Solutions, Inc., a Nevada corporation, its wholly-owned subsidiary, Medical Lasers Manufacturer, Inc., a Nevada corporation, its wholly-owned subsidiary, Concierge Concepts Rx Inc., a New Jersey corporation, and its 51% majority-owned subsidiary, USA Pharma Corporation, a New Jersey Corporation.\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis report contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, or the \u201cSecurities Act,\u201d and Section 21E of the Securities Exchange Act of 1934 or the \u201cExchange Act.\u201d These forward-looking statements are subject to certain risks and uncertainties that could cause actual results to differ materially from historical results or anticipated results.\nIn some cases, you can identify forward-looking statements by terms such as \u201cmay,\u201d \u201cintend,\u201d \u201cmight,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cexpect,\u201d \u201cbelieve,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201cpredict,\u201d \u201cpotential,\u201d or the negative of these terms. These terms and similar expressions are intended to identify forward-looking statements. The forward-looking statements in this report are based upon management\u2019s current expectations and beliefs, which management believes are reasonable. In addition, we cannot assess the impact of each factor on our business or the extent to which any factor or combination of factors, or factors we are aware of, may cause actual results to differ materially from those contained in any forward-looking statements. You are cautioned not to place undue reliance on any forward-looking statements. These statements represent our estimates and assumptions only as of the date of this report. Except to the extent required by federal securities laws, we undertake no obligation to update any forward-looking statement to reflect events or circumstances after the date hereof or to reflect the occurrence of unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 68,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u2610",
+     "warning letters, fines, injunctions, consent decrees and civil penalties;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "repair, replacement, refunds, recall or seizure of our products;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "operating restrictions or partial suspension or total shutdown of production;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "refusing our requests for 510(k) clearance or premarket approval of new products, new intended uses or modifications to our existing products;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "withdrawing 510(k) clearance or premarket approvals that have already been granted; and"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "criminal prosecution."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 359,
+    "end_line": 372
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "Medical devices may be marketed only for the indications for which they are approved or cleared. We have obtained the 510(k) clearance to market its infrared Time Machine TTML-8102000 Laser Thermal Therapeutic Device. In addition, we have not yet applied for the 510(k) clearance Green TM Lasers. We are unable to predict if or when we would obtain such clearance and, even if we do obtain clearance, it can be subject to a recall if unexpected safety or operational problems arise. After the 510(k) clearance, we are also subject to Medical Device Reporting regulations, which require us to report to the FDA if our product causes or contributes to a death or serious injury, or malfunctions in a way that would likely cause or contribute to a death or serious injury if the malfunction were to recur. Our products are also subject to state regulations which are, in many instances, in flux. Changes in state regulations may impede sales. For example, federal regulations allow our systems to be sold to, or on the order of, \u201clicensed practitioners,\u201d as determined on a state-by-state basis. As a result, in some states, non-physicians may legally purchase and operate our systems. However, a state could change its regulations at any time, disallowing sales to particular types of end users. We cannot predict the impact or effect of future legislation or regulations at the federal or state levels.\nThe FDA and state authorities have broad enforcement powers. Our failure to comply with applicable regulatory requirements could result in enforcement action by the FDA or state agencies, which may include any of the following sanctions:",
+   "prose_after": "If any of these events were to occur, our business could be harmed.\nIf we modify our FDA-cleared devices, we may need to seek and obtain new clearances, which, if not granted, would prevent us from selling our modified product or require us to redesign our product.\nIf we decide to make any modification to an FDA-cleared device that would significantly affect its safety or effectiveness or that would constitute a change in its intended use, we would be required to submit a new 510(k) clearance or possibly a premarket approval. We may not be able to obtain any 510(k) clearances or premarket approvals for modifications to, or additional indications for, our existing products, if any, in a timely fashion, or at all. Delays in obtaining clearances on modifications to our current products for which we have a 510(k) clearance or submission would adversely affect our planned business and ability to introduce future products in a timely manner, which in turn would harm our revenue and potential future profitability.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 348,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 375,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u2610",
+     "our ability to raise funds for general corporate purposes and operations, including our clinical trials;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "the commercial feasibility and success of our technology;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "our ability to recruit qualified management and technical personnel;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "the success of our clinical trials;"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "our ability to obtain and maintain required regulatory approvals for our products; and"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "\u2610",
+     "the other factors discussed in the \u201cRisk Factors\u201d section and elsewhere in this Annual Report on Form 10-K."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 445,
+    "end_line": 458
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": null
+   },
+   "prose_before": "Statements contained in this Annual Report on Form 10-K may be \u201cforward-looking statements.\u201d Forward-looking statements include, but are not limited to, statements that express our intentions, beliefs, expectations, strategies, predictions or any other statements relating to our future activities or other future events or conditions. These statements are based on current expectations, estimates and projections about our business based, in part, on assumptions made by management. These statements are not guarantees of future performance and involve risks, uncertainties and assumptions that are difficult to predict. Therefore, actual outcomes and results may, and are likely to, differ materially from what is expressed or forecasted in the forward-looking statements due to numerous factors, including those described above and those risks discussed from time to time in this Annual Report on Form 10-K, including the risks described under \u201cRisk Factors\u201d and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operation\u201d in this Annual Report on Form 10-K and in other documents which we file with the Securities and Exchange Commission. In addition, such statements could be affected by risks and uncertainties related to:",
+   "prose_after": "Any forward-looking statements speak only as of the date on which they are made, and except as may be required under applicable securities laws, we do not undertake any obligation to update any forward-looking statement to reflect events or circumstances after the date of this current report.\nITEM 1B. UNRESOLVED STAFF COMMENTS\nThere are no unresolved staff comments.\nITEM 2. PROPERTIES\nOur corporate address is located at 4400 Route 9 South, Suite 1000, Freehold NJ 07728 and our telephone number is (732) 786-8044. Our administrative office, which as a lease ending 2021, is located at 9 South Main Street, Suite 9, Marlboro NJ 07746. The office space is leased at a monthly cost of approximately $2,075. There are currently no proposed programs for the renovation, improvement or development of the facilities currently used. We believe these existing facilities are adequate for the foreseeable future.\nITEM 3. LEGAL PROCEEDINGS\nWe are not currently a party to any legal or administrative proceedings. Our current sole officer and director has not been convicted in a criminal proceeding nor has he been permanently or temporarily enjoined, barred, suspended or otherwise limited from involvement in any type of business, securities or banking activities.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 440,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ending December 31, 2019",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended",
+     "High $",
+     "",
+     "Low $",
+     ""
+    ],
+    [
+     "March 31, 2019",
+     "",
+     "0.15",
+     "",
+     "0.0265"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ending December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 484,
+    "end_line": 490
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Our corporate address is located at 4400 Route 9 South, Suite 1000, Freehold NJ 07728 and our telephone number is (732) 786-8044. Our administrative office, which as a lease ending 2021, is located at 9 South Main Street, Suite 9, Marlboro NJ 07746. The office space is leased at a monthly cost of approximately $2,075. There are currently no proposed programs for the renovation, improvement or development of the facilities currently used. We believe these existing facilities are adequate for the foreseeable future.\nITEM 3. LEGAL PROCEEDINGS\nWe are not currently a party to any legal or administrative proceedings. Our current sole officer and director has not been convicted in a criminal proceeding nor has he been permanently or temporarily enjoined, barred, suspended or otherwise limited from involvement in any type of business, securities or banking activities.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nPART II\nITEM 5. MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock is currently quoted under the symbol \u201cMFST\u201d on the OTC Markets. Our common stock began trading on the OTC Bulletin Board on September 14, 2012. The following table sets forth the quarterly high and low sales prices of our common stock since we began trading. Such prices are inter-dealer quotations without retail mark-ups, mark-downs or commissions, and may not represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 519,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ending December 31, 2018",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended",
+     "High $",
+     "",
+     "Low $",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "",
+     "0.144",
+     "",
+     "0.031"
+    ],
+    [
+     "September 30, 2018",
+     "",
+     "0.40",
+     "",
+     "0.0336"
+    ],
+    [
+     "June 30, 2018",
+     "",
+     "0.60",
+     "",
+     "0.30"
+    ],
+    [
+     "March 31, 2018",
+     "",
+     "0.70",
+     "",
+     "0.30"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ending December 31, 2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 491,
+    "end_line": 500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 519,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ending December 31, 2017",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter Ended",
+     "High $",
+     "",
+     "Low $",
+     ""
+    ],
+    [
+     "December 31, 2017",
+     "",
+     "1.60",
+     "",
+     "0.40"
+    ],
+    [
+     "September 30, 2017",
+     "",
+     "2.70",
+     "",
+     "1.30"
+    ],
+    [
+     "June 30, 2017",
+     "",
+     "9.65",
+     "",
+     "1.80"
+    ],
+    [
+     "March 31, 2017",
+     "",
+     "12.00",
+     "",
+     "2.70"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ending December 31, 2017"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 501,
+    "end_line": 510
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Our common stock is subject to Rule 15g-9 of the Exchange Act, known as the Penny Stock Rule which imposes requirements on broker/dealers who sell securities subject to the rule to persons other than established customers and accredited investors. For transactions covered by the rule, brokers/dealers must make a special suitability determination for purchasers of the securities and receive the purchaser\u2019s written agreement to the transaction prior to sale. The SEC also has rules that regulate broker/dealer practices in connection with transactions in \u201cpenny stocks.\u201d Penny stocks generally are equity securities with a price of less than $5.00, other than securities registered on certain national securities exchanges or quoted on the NASDAQ system, provided that current price and volume information with respect to transactions in that security is provided by the exchange or system. The Penny Stock Rules requires a broker/dealer, prior to a transaction in a penny stock not otherwise exempt from the rules, to deliver a standardized risk disclosure document prepared by the SEC that provides information about penny stocks and the nature and level of risks in the penny stock market. The broker/dealer also must provide the customer with current bid and offer quotations for the penny stock, the compensation of the broker/dealer and its salesperson in the transaction, and monthly account statements showing the market value of each penny stock held in the customer\u2019s account. The bid and offer quotations, and the broker/dealer and salesperson compensation information, must be given to the customer orally or in writing prior to effecting the transaction and must be given to the customer in writing before or with the customer\u2019s confirmation. These disclosure requirements have the effect of reducing the level of trading activity in the secondary market for our common stock. As a result of these rules, investors may find it difficult to sell their shares.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 519,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Balance Sheets as of December 31, 2017 and December 31, 2018",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Operations for the years ended December 31, 2017 and 2018",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Stockholders\u2019 Equity for the years ended December 31, 2017 and 2018",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Cash Flows for the years ended December 31, 2017 and 2018",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Notes to Consolidated Financial Statements",
+     "F-7 - F-25"
+    ]
+   ],
+   "caption_stack": [
+    "Financial Statements"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Please see Note 1 of our consolidated financial statements that describe the impact, if any, from the adoption of Recent Accounting Pronouncements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nWe are a smaller reporting company, as defined by Rule 229.10(f)(1) and are not required to provide the information required by this Item.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nThe Company\u2019s consolidated financial statements are stated in United States dollars and are prepared in accordance with United States generally accepted accounting principles.\nIt is the opinion of management that the audited consolidated financial statements for the calendar year ended December 31, 2018 include all adjustments necessary in order to ensure that the audited consolidated financial statements are not misleading.\nMEDIFIRST SOLUTIONS, INC.\nCONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2018 and 2017\nTABLE OF CONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Shareholders of Medifirst Solutions, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Medifirst Solutions, Inc. (\u201cthe Company\u201d) as of December 31, 2018 and 2017, and the related consolidated statements of operations, stockholders\u2019 equity, and cash flows for each of the years in the two-year period ended December 31, 2018, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2018 and 2017, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2018, in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern. As discussed in Note 11 to the financial statements, the Company has incurred significant, recurring losses since inception. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 11 of the financial statements. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 673,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 697,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "83,387",
+     "",
+     "$",
+     "287,569",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "32,677",
+     "",
+     "",
+     "33,435",
+     ""
+    ],
+    [
+     "  Prepaid items",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Total current assets",
+     "",
+     "116,064",
+     "",
+     "",
+     "321,004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, Plant and Equipment, net",
+     "",
+     "592",
+     "",
+     "",
+     "1,232",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Security Deposit",
+     "",
+     "650",
+     "",
+     "",
+     "650",
+     ""
+    ],
+    [
+     "  Intangible Asset -License Agreement, net",
+     "",
+     "101,252",
+     "",
+     "",
+     "116,252",
+     ""
+    ],
+    [
+     "  Total other assets",
+     "",
+     "101,902",
+     "",
+     "",
+     "116,902",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Assets",
+     "$",
+     "218,558",
+     "",
+     "$",
+     "439,138",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued expenses",
+     "$",
+     "221,770",
+     "",
+     "$",
+     "97,621",
+     ""
+    ],
+    [
+     "  Accrued expenses - officer\u2019s compensation",
+     "",
+     "388,981",
+     "",
+     "",
+     "401,079",
+     ""
+    ],
+    [
+     "  Due to related party",
+     "",
+     "8,921",
+     "",
+     "",
+     "8,921",
+     ""
+    ],
+    [
+     "  Loans payable - stockholders",
+     "",
+     "8,375",
+     "",
+     "",
+     "14,499",
+     ""
+    ],
+    [
+     "  Note Payable for license agreement",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Convertible notes payable",
+     "",
+     "522,446",
+     "",
+     "",
+     "280,351",
+     ""
+    ],
+    [
+     "  Convertible notes payable - related party",
+     "",
+     "51,005",
+     "",
+     "",
+     "133,750",
+     ""
+    ],
+    [
+     "  Derivative Liabilities",
+     "",
+     "263,468",
+     "",
+     "",
+     "251,886",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "1,464,966",
+     "",
+     "",
+     "1,188,107",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments & Contingencies (Note 8)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Series A preferred stock, $0.0001 par value; 1,000,000 shares authorized, 500,000 and 500,000 shares issued and outstanding, respectively",
+     "",
+     "50",
+     "",
+     "",
+     "50",
+     ""
+    ],
+    [
+     "    Series B convertible preferred stock, $0.0001 par value; 50,000 shares authorized, 8,000 and 8,000 shares issued and outstanding, respectively",
+     "",
+     "1",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "    Series C convertible preferred stock, $0.0001 par value; 5,000 shares authorized, 177 and -0- shares issued and outstanding, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Common stock, $0.0001 par value; 4,000,000,000 shares authorized, 3,482,840 and 849,437 shares issued and outstanding, respectively",
+     "",
+     "348",
+     "",
+     "",
+     "85",
+     ""
+    ],
+    [
+     "  Additional paid in capital",
+     "",
+     "3,486,856",
+     "",
+     "",
+     "2,916,024",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(4,733,663)",
+     "",
+     "",
+     "(3,665,129)",
+     ""
+    ],
+    [
+     "    Total Stockholders\u2019 Equity",
+     "",
+     "(1,246,408)",
+     "",
+     "",
+     "(748,969)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities & Stockholders\u2019 Equity",
+     "$",
+     "218,558",
+     "",
+     "$",
+     "439,138",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 729,
+    "end_line": 788
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\nWe have served as the Company\u2019s auditor since 2015.\nSpokane, Washington\nApril 12, 2019\nConsolidated Balance Sheets\nDecember 31, 2018 and December 31, 2017",
+   "prose_after": "Consolidated Statements of Operations\nFor the Years Ended December 31, 2018 and 2017",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "",
+     "6,550",
+     "",
+     "",
+     "29,995",
+     ""
+    ],
+    [
+     "Consulting Income",
+     "",
+     "22,625",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "29,175",
+     "",
+     "",
+     "29,995",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "757",
+     "",
+     "",
+     "1,058",
+     ""
+    ],
+    [
+     "  Gross income",
+     "",
+     "28,418",
+     "",
+     "",
+     "28,937",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Officer\u2019s compensation",
+     "",
+     "150,000",
+     "",
+     "",
+     "112,500",
+     ""
+    ],
+    [
+     "  Advertising and promotion",
+     "",
+     "5,001",
+     "",
+     "",
+     "63,548",
+     ""
+    ],
+    [
+     "  Computer and internet",
+     "",
+     "3,357",
+     "",
+     "",
+     "4,130",
+     ""
+    ],
+    [
+     "  Consulting fees",
+     "",
+     "363,208",
+     "",
+     "",
+     "435,589",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "130,821",
+     "",
+     "",
+     "224,286",
+     ""
+    ],
+    [
+     "  Rent",
+     "",
+     "30,930",
+     "",
+     "",
+     "20,713",
+     ""
+    ],
+    [
+     "  Travel",
+     "",
+     "7,494",
+     "",
+     "",
+     "12,903",
+     ""
+    ],
+    [
+     "  Lab testing",
+     "",
+     "-",
+     "",
+     "",
+     "7,107",
+     ""
+    ],
+    [
+     "  Dues and subscriptions",
+     "",
+     "2,269",
+     "",
+     "",
+     "3,720",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "99,464",
+     "",
+     "",
+     "96,012",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "792,544",
+     "",
+     "",
+     "980,508",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss from Operations before other income, expenses",
+     "",
+     "(764,126)",
+     "",
+     "",
+     "(951,571)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income and (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(680,909)",
+     "",
+     "",
+     "(405,144)",
+     ""
+    ],
+    [
+     "  Interest income",
+     "",
+     "2",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Gain on extinguishment of debt",
+     "",
+     "34,235",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Change in fair value -derivatives",
+     "",
+     "342,264",
+     "",
+     "",
+     "(201,121)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss before provision for income tax",
+     "$",
+     "(1,068,534)",
+     "",
+     "$",
+     "(1,557,836)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net Loss",
+     "$",
+     "(1,068,534)",
+     "",
+     "$",
+     "(1,557,836)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss per common share - Basic and fully diluted",
+     "$",
+     "(0.61)",
+     "",
+     "$",
+     "(2.82)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average number of shares outstanding - Basic and fully diluted",
+     "",
+     "1,763,061",
+     "",
+     "",
+     "551,556",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 794,
+    "end_line": 845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations\nFor the Years Ended December 31, 2018 and 2017",
+   "prose_after": "Consolidated Statement of Stockholders\u2019 Equity\nFor the Years Ended December 31, 2018 and 2017",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Preferred Class A",
+     "",
+     "",
+     "",
+     "Preferred Class B",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Class C",
+     "",
+     "",
+     "",
+     "Additional Paid in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance - January 1, 2017",
+     "",
+     "225,848",
+     "",
+     "23",
+     "",
+     "50,000",
+     "",
+     "5",
+     "",
+     "26,100",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,232,996",
+     "",
+     "(2,107,293)",
+     "",
+     "",
+     "(874,266)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common shares upon conversions of notes payable",
+     "",
+     "426,539",
+     "",
+     "43",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "505,996",
+     "",
+     "",
+     "",
+     "",
+     "506,039",
+     ""
+    ],
+    [
+     "Issuance of common shares for services rendered",
+     "",
+     "188,000",
+     "",
+     "19",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "474,180",
+     "",
+     "",
+     "",
+     "",
+     "474,199",
+     ""
+    ],
+    [
+     "Issuance of 450,000 shares of Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "450,000",
+     "",
+     "45",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Issuance of common shares upon conversion of 18,100 shares of Series B Preferred Stock",
+     "",
+     "9,050",
+     "",
+     "1",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(18,100)",
+     "",
+     "",
+     "(2)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1)",
+     ""
+    ],
+    [
+     "Additional paid in capital from derivative liability on debt conversion",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "617,991",
+     "",
+     "",
+     "",
+     "",
+     "617,991",
+     ""
+    ],
+    [
+     "Adjustment for reverse stock split",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "84,861",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,557,836)",
+     "",
+     "",
+     "(1,557,836)",
+     ""
+    ],
+    [
+     "Balance - December 31, 2017",
+     "",
+     "849,437",
+     "",
+     "85",
+     "",
+     "500,000",
+     "",
+     "50",
+     "",
+     "8,000",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,916,024",
+     "",
+     "(3,665,129)",
+     "",
+     "",
+     "(748,969)",
+     ""
+    ],
+    [
+     "Issuance of common shares upon conversions of notes payable",
+     "",
+     "1,913,850",
+     "",
+     "191",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "131,769",
+     "",
+     "",
+     "",
+     "",
+     "131,960",
+     ""
+    ],
+    [
+     "Issuance of common shares for services rendered",
+     "",
+     "719,553",
+     "",
+     "72",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "82,062",
+     "",
+     "",
+     "",
+     "",
+     "82,134",
+     ""
+    ],
+    [
+     "Issuance of preferred shares for services rendered",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "177",
+     "",
+     "-",
+     "",
+     "204,182",
+     "",
+     "",
+     "",
+     "",
+     "204,182",
+     ""
+    ],
+    [
+     "Additional paid in capital from derivative liability on debt conversion",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "152,819",
+     "",
+     "",
+     "",
+     "",
+     "152,819",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,068,534)",
+     "",
+     "",
+     "(1,068,534)",
+     ""
+    ],
+    [
+     "Balance - December 31, 2018",
+     "",
+     "3,482,840",
+     "",
+     "348",
+     "",
+     "500,000",
+     "",
+     "50",
+     "",
+     "8,000",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "177",
+     "",
+     "-",
+     "",
+     "3,486,856",
+     "",
+     "(4,733,663)",
+     "",
+     "",
+     "(1,246,408)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 885
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statement of Stockholders\u2019 Equity\nFor the Years Ended December 31, 2018 and 2017",
+   "prose_after": "Consolidated Statement of Cash Flows\nFor the Years Ended December 31, 2018 and 2017",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 845,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(1,068,534)",
+     "",
+     "$",
+     "(1,557,836)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Depreciation & amortization expense",
+     "",
+     "15,640",
+     "",
+     "",
+     "21,890",
+     ""
+    ],
+    [
+     "      Gain on debt settlement",
+     "",
+     "(34,235)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Stock Based Compensation",
+     "",
+     "286,315",
+     "",
+     "",
+     "493,025",
+     ""
+    ],
+    [
+     "  Change in assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "112,051",
+     "",
+     "",
+     "84,811",
+     ""
+    ],
+    [
+     "      Change in fair value - derivatives",
+     "",
+     "(342,264)",
+     "",
+     "",
+     "201,121",
+     ""
+    ],
+    [
+     "      Amortization of debt discount & other financing costs",
+     "",
+     "610,511",
+     "",
+     "",
+     "321,983",
+     ""
+    ],
+    [
+     "      Related party and stockholder\u2019s loan",
+     "",
+     "(6,124)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Prepaid expenses",
+     "",
+     "-",
+     "",
+     "",
+     "15,720",
+     ""
+    ],
+    [
+     "      Inventory",
+     "",
+     "758",
+     "",
+     "",
+     "(19,412)",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "",
+     "(425,882)",
+     "",
+     "",
+     "(438,698)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "None",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used by investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Proceeds from stockholder loan",
+     "",
+     "-",
+     "",
+     "",
+     "5,000",
+     ""
+    ],
+    [
+     "  Principal payments on debt",
+     "",
+     "(32,550)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from sale of Convertible notes payable",
+     "",
+     "254,250",
+     "",
+     "",
+     "556,250",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "221,700",
+     "",
+     "",
+     "561,250",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "(204,182)",
+     "",
+     "",
+     "122,552",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "287,569",
+     "",
+     "",
+     "165,017",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "83,387",
+     "",
+     "$",
+     "287,569",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Income taxes",
+     "$",
+     "1,169",
+     "",
+     "$",
+     "1,826",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock issued for convertible debt-related party",
+     "$",
+     "30,195",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock issued for note interest and note conversions",
+     "$",
+     "-",
+     "",
+     "$",
+     "5,230",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Derivative liability extinguished upon conversion",
+     "$",
+     "152,820",
+     "",
+     "$",
+     "617,990",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock issued for convertible debt with derivatives",
+     "$",
+     "109,224",
+     "",
+     "$",
+     "544,323",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock exchanged for common stock",
+     "$",
+     "-",
+     "",
+     "$",
+     "905",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts Payable exchanged for promissory note",
+     "$",
+     "-",
+     "",
+     "$",
+     "15,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  New discounts associated with derivatives on convertible debt",
+     "$",
+     "328,666",
+     "",
+     "$",
+     "505,607",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Related party note reclassified to promissory note",
+     "$",
+     "20,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 891,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statement of Cash Flows\nFor the Years Ended December 31, 2018 and 2017",
+   "prose_after": "Medifirst Solutions, Inc. Notes to Consolidated Financial Statements December 31, 2018\nNote 1. NATURE OF OPERATIONS AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nOrganization\nMedifirst Solutions, Inc. (\u201cMSI\u201d or the \u201cCompany\u201d) was incorporated in Nevada in November 2010. The Company has not generated significant sales to date. The Company intends to have a diverse product line of consumer products. Since inception, the Company has been engaged in business planning activities, including researching the industry, identifying target markets for the Company\u2019s products, developing the Company\u2019s models and financial forecasts, performing due diligence regarding potential geographic locations most suitable for establishing the Company\u2019s offices and identifying future sources of capital. At the present time, the Company is building products and affiliations in and related to the cosmetic healthcare industry. The company has started to hire a salesforce and sign distribution agreements in anticipation of future sales.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 962,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "$",
+     "8,956",
+     "",
+     "$",
+     "8,956",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(8,365)",
+     "",
+     "",
+     "(7,725)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "592",
+     "",
+     "$",
+     "1,232",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1115,
+    "end_line": 1125
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "PROPERTY, PLANT AND EQUIPMENT (NET)"
+    }
+   },
+   "prose_before": "In February 2016, the FASB issued ASU 2016-02, \u201cLeases\u201d (Topic 842), in order to increase transparency and comparability among organizations by recognizing lease assets and lease liabilities on the balance sheet for those leases classified as operating leases under previous GAAP. ASU 2016-02 requires that a lessee should recognize a liability to make lease payments (the lease liability) and a right-of-use asset representing its right to use the underlying asset for the lease term on the balance sheet. ASU 2016-02 is effective for fiscal years beginning after December 15, 2018 (including interim periods within those periods) using a modified retrospective approach and early adoption is permitted. The Company will adopt ASU 2016-02 in the first quarter of 2019. A modified retrospective transition approach is required, applying the new standard to all leases existing at the date of initial application. An entity may choose to use either (1) its effective date or (2) the beginning of the earliest comparative period presented in the financial statements as its date of initial application. If an entity chooses the second option, the transition requirements for existing leases also apply to leases entered into between the date of initial application and the effective date. The entity must also recast its comparative period financial statements and provide the disclosures required by the new standard for the comparative periods. The Company will adopt the new standard on January 1, 2019 and use the effective date of initial application. Consequently, financial information will not be updated and the disclosures required under the new standard will not be provided for dates and periods before January 1, 2019. The new standard provides a number of optional practical expedients in transition. The Company expects to elect the \u201cpackage of expedients\u201d, which permits the Company not to reassess under the new standard the Company\u2019s prior conclusions about lease identification and initial direct costs. The Company does not expect to elect the use-of hindsight or the practical expedient pertaining to land easements, the latter not being applicable to the Company. The new standard also provides practical expedients for the Company\u2019s ongoing accounting. The Company currently expects to elect the short-term lease recognition exemption for all leases that qualify. This means, for those leases that qualify, the Company will not recognize ROU assets or lease liabilities, and this includes not recognizing ROU assets or lease liabilities for existing short-term leases of those assets in transition. The Company also expects to elect the practical expedient to not separate lease and non-lease components for all of its leases other than leases of real estate. The Company expects the most significant change will be related to the recognition of right-of-use assets and lease liabilities on the Company\u2019s balance sheet for real estate operating leases. The Company is currently in the process of evaluating the impact of ASU 2016-02 on the Company\u2019s outstanding leases. The Company has not yet determined, as a result of the adoption of this guidance, how much right-of-use assets and lease liabilities will be recorded. The Company also expects that the adoption of this guidance will result in additional lease-related disclosures in the footnotes to its consolidated financial statements.\nDuring the fiscal year ended December 31, 2018, Company was an \u201cemerging growth company\u201d as defined in Section 2(a)(19) of the Securities Act and the extended transition period applies to all aforementioned ASUs, until such time as the Company is no longer an \u201cemerging growth company\u201d. However, as of January 1, 2019, the Company no longer meets the definition of an \u201cemerging growth company\u201d and for periods subsequent to December 31, 2018, the Company will cease to take advantage of the extended transition period applied to such ASUs.\nNote 2. PROPERTY, PLANT AND EQUIPMENT (NET)\nEquipment is recorded at cost and consisted of the following at December 31, 2018 and December 31, 2017:",
+   "prose_after": "Depreciation expense was $640 and $640, for the years ended December 31, 2018 and 2017 respectively.\nNote 3. DUE TO RELATED PARTY\nThe Company was indebted to a related party through common management in the amount of $8,921 at December 31, 2018 and December 31, 2017, respectively. The loan bears no interest and is payable on demand. See Note 10 for additional related party transactions.\nNote 4. LOANS PAYABLE - STOCKHOLDERS\nDuring the periods ended December 31, 2018 and 2017 a stockholder of the Company advanced the Company $557 and $-0- respectively. The loan has a balance of $8,955 at December 31, 2018 and $8,398 at December 31, 2017, respectively. The loan bears no interest and is payable on demand.\nIn December 2012, the Company issued a promissory note to a stockholder in the amount of $5,000 with interest at 10% per annum. Principal and interest were due and payable on June 2, 2013. In April 2014, the note was amended to provide the note holder with the option to convert the note to the Company\u2019s common stock at $0.0001 per share. Subsequently, in 2014, in a private transaction, the note holder transferred $2,500 of note principal to third parties and the new holders converted their holdings into 2,500 shares of the Company\u2019s common stock. During 2015, the original note holder transferred an additional $2,400 of note principal to third parties who converted their holdings into 2,400 shares of the Company\u2019s common stock. At December 31, 2018 and December 31, 2017, the loan balance was $100 and $100, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1109,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1139,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date of Conversion",
+     "Principal Amount Converted",
+     "",
+     "Conversion Rate",
+     "",
+     "Shares Received",
+     ""
+    ],
+    [
+     "June 2013",
+     "$",
+     "70",
+     "$",
+     "0.0001",
+     "",
+     "700"
+    ],
+    [
+     "August 2013",
+     "$",
+     "40",
+     "$",
+     "0.0001",
+     "",
+     "400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1149,
+    "end_line": 1156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "In December 2012, the Company issued a promissory note to a stockholder in the amount of $5,000 with interest at 10% per annum. Principal and interest were due and payable on June 2, 2013. In April 2014, the note was amended to provide the note holder with the option to convert the note to the Company\u2019s common stock at $0.0001 per share. Subsequently, in 2014, in a private transaction, the note holder transferred $2,500 of note principal to third parties and the new holders converted their holdings into 2,500 shares of the Company\u2019s common stock. During 2015, the original note holder transferred an additional $2,400 of note principal to third parties who converted their holdings into 2,400 shares of the Company\u2019s common stock. At December 31, 2018 and December 31, 2017, the loan balance was $100 and $100, respectively.\nAt December 31, 2018 and December 31, 2017, the Company was indebted to a stockholder in the amount of $1,000 and $1,500, respectively. The loan has an interest rate of 26.7%. In February 2017 the note was sold to another investor and that noteholder converted $500 in principal into 5,000 shares of common stock. Principal and accrued interest were due and payable on January 1, 2014.\nNote 5. CONVERTIBLE NOTES PAYABLE\nNote Payable-BS\nIn March 2011, the Company issued $800 aggregate principal amount of 6% convertible notes due in January 2012. Interest on the notes accrue at the rate of 6% per annum and are payable when the notes mature. The notes matured prior to conversion but have not been repaid. Interest continues to accrue at the rate of 6% per annum.\nThe holder of one of the notes converted $110 of note principal into 1,100 shares of common stock as follows:",
+   "prose_after": "In August 2013, in a private transaction, the same note holder transferred $330 of the remaining note principal plus $55 in accrued interest to a third party.\nIn August 2013, in a private transaction, the new note holder transferred $5 of the remaining note principal to a third party who then converted the note into 50 shares of common stock.\nIn September 2013, the new note holder converted $100 of note principal into 1,000 shares of common stock.\nIn September 2013, in a private transaction, the new note holder transferred $35 of the remaining note principal to a third party who then converted the note into 350 shares of common stock.\nIn November and December 2013, the new note holder converted an additional $90 of note principal into 900,000 shares of common stock as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1139,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date of Conversion",
+     "Principal Amount Converted",
+     "",
+     "Conversion Rate",
+     "",
+     "Shares Received",
+     ""
+    ],
+    [
+     "November 2013",
+     "$",
+     "40",
+     "$",
+     "0.0001",
+     "",
+     "400"
+    ],
+    [
+     "December 2013",
+     "$",
+     "50",
+     "$",
+     "0.0001",
+     "",
+     "500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1167,
+    "end_line": 1174
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "In August 2013, in a private transaction, the same note holder transferred $330 of the remaining note principal plus $55 in accrued interest to a third party.\nIn August 2013, in a private transaction, the new note holder transferred $5 of the remaining note principal to a third party who then converted the note into 50 shares of common stock.\nIn September 2013, the new note holder converted $100 of note principal into 1,000 shares of common stock.\nIn September 2013, in a private transaction, the new note holder transferred $35 of the remaining note principal to a third party who then converted the note into 350 shares of common stock.\nIn November and December 2013, the new note holder converted an additional $90 of note principal into 900,000 shares of common stock as follows:",
+   "prose_after": "In March and April 2014, the new note holder converted an additional $90 of note principal into 900,000 shares of common stock as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1139,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date of Conversion",
+     "Principal Amount Converted",
+     "",
+     "Conversion Rate",
+     "",
+     "Shares Received",
+     ""
+    ],
+    [
+     "March 2014",
+     "$",
+     "50",
+     "$",
+     "0.0001",
+     "",
+     "500"
+    ],
+    [
+     "April 2014",
+     "$",
+     "40",
+     "$",
+     "0.0001",
+     "",
+     "400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1177,
+    "end_line": 1184
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "In March and April 2014, the new note holder converted an additional $90 of note principal into 900,000 shares of common stock as follows:",
+   "prose_after": "Subsequent to these conversions there remains $125 in note principal outstanding at December 31, 2018.\nNote Payable-SF\nIn July 2013, the holder of the second note converted $240 of note principal into 400 shares of the Company\u2019s common stock at $0.0006 per share. At December 31, 2018 and December 31 2017, the note had a remaining principal balance of $60 and $60, respectively.\nAt any time on or after the maturity date, the holders of the notes, have the option of converting any of the unpaid principal and interest into the Company\u2019s common stock. The notes plus any accrued but unpaid interest are convertible at the rate of $0.0001 per share at the time of conversion up to a maximum of 9.99% of the then issued and outstanding common stock, or 347,936 shares at December 31, 2018 and 84,859 shares at December 31, 2017.\nNote Payable-RK\nIn May 2012, the Company issued a $25,000 6% per annum note that matured in November 2012. In December 2012 the note was amended to be a convertible note. Interest on the note accrues interest at 6% per annum and is payable when the note matures.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1139,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date of Conversion",
+     "Principal Amount Converted",
+     "",
+     "Conversion Rate",
+     "",
+     "Shares Received",
+     ""
+    ],
+    [
+     "December 2012",
+     "$",
+     "150",
+     "$",
+     "0.001",
+     "",
+     "150"
+    ],
+    [
+     "January 2013",
+     "$",
+     "660",
+     "$",
+     "0.001",
+     "",
+     "660"
+    ],
+    [
+     "March  2013",
+     "$",
+     "200",
+     "$",
+     "0.001",
+     "",
+     "200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1202,
+    "end_line": 1210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "At any time on or after the maturity date, the holders of the notes, have the option of converting any of the unpaid principal and interest into the Company\u2019s common stock. The notes plus any accrued but unpaid interest are convertible at the rate of $0.0001 per share at the time of conversion up to a maximum of 9.99% of the then issued and outstanding common stock, or 347,936 shares at December 31, 2018 and 84,859 shares at December 31, 2017.\nNote Payable-RK\nIn May 2012, the Company issued a $25,000 6% per annum note that matured in November 2012. In December 2012 the note was amended to be a convertible note. Interest on the note accrues interest at 6% per annum and is payable when the note matures.\nThe holder of the $25,000 note had the option of converting it at any time prior to maturity. The note plus any accrued but unpaid interest were convertible at the rate of $0.001 per share at the time of conversion up to a maximum of 9.99% of the then issued and outstanding common stock.\nThe holder of the note converted $1,010 of note principal into 1,010 shares of common stock as follows:",
+   "prose_after": "In July 2013, the Company retired $14,000 of note principal in payment for consulting services provided to the note holder.\nIn July 2013, the note holder converted $300 of note principal into 300 shares of the Company\u2019s common stock.\nIn July 2013, in a private transaction, the note holder transferred the remaining note principal balance of $9,690 to a third party (See Note Payable-NW below).\nNote Payable-NW\nAfter receiving the transfer of the principal balance of $9,690 in July 2013 in the private transaction noted in Note Payable-RK above, in August 2013, in a private transaction, the new note holder of the aforementioned note transferred $4,475 of principal to a stockholder of the company.\nIn October 2013, the note holder converted $400 of note principal into 400 shares of the Company\u2019s common stock at $0.001 per share.\nIn October 2014, the note holder converted $1,100 of note principal into 1,100 of the Company\u2019s common stock.The note holder has the option of converting the balance at any time with the approval of the Board of Directors. The note plus any accrued but unpaid interest are convertible at the rate of $0.001 per share at the time of conversion up to a maximum of 9.99% of the then issued and outstanding common stock, or 347,936 shares at December 31, 2018 and 84,858,757 shares at December 31, 2017.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1192,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1230,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "12/31/2018",
+     "Remaining",
+     "",
+     "Original",
+     "",
+     "",
+     "",
+     "",
+     "Deferred",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Principal",
+     "",
+     "Issue",
+     "",
+     "Derivative",
+     "",
+     "",
+     "Financing",
+     "",
+     "",
+     "Convertible",
+     "",
+     "",
+     "Derivative",
+     ""
+    ],
+    [
+     "Debt",
+     "Amount",
+     "",
+     "Discount",
+     "",
+     "Discount",
+     "",
+     "",
+     "Costs",
+     "",
+     "",
+     "Notes Payable",
+     "",
+     "",
+     "Liability",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable - BS",
+     "$",
+     "125",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "125",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable - SF",
+     "",
+     "60",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "60",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable - SD",
+     "",
+     "15,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable - NW",
+     "",
+     "715",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "715",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Note Payable - MC #2",
+     "",
+     "890",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "890",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Convertible Note Payable - JR (5%)",
+     "",
+     "45,500",
+     "",
+     "",
+     "",
+     "(45,486)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "14",
+     "",
+     "",
+     "51,639"
+    ],
+    [
+     "  Convertible Note Payable - HG  (10%)",
+     "",
+     "16,650",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "16,650",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Convertible Note Payable - CB (5%)",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,431"
+    ],
+    [
+     "  Convertible Notes Payable- SO (8%)",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "  Convertible Note Payable - LGC (8%) 1",
+     "",
+     "32,660",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "32,660",
+     "",
+     "",
+     "15,356"
+    ],
+    [
+     "  Convertible Note Payable - LGC (8%) 2",
+     "",
+     "125,000",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "125,000",
+     "",
+     "",
+     "22,713"
+    ],
+    [
+     "  Convertible Note Payable - LGC (8%) 3",
+     "",
+     "125,000",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "125,000",
+     "",
+     "",
+     "22,743"
+    ],
+    [
+     "  Convertible Note Payable - LGC (8%) 4",
+     "",
+     "125,000",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "125,000",
+     "",
+     "",
+     "22,768"
+    ],
+    [
+     "  Convertible Note Payable - MLM (10%) (Related party)",
+     "",
+     "51,005",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "51,005",
+     "",
+     "",
+     "28,741"
+    ],
+    [
+     "  Convertible Note Payable - LGC (8%) 5",
+     "",
+     "78,750",
+     "",
+     "",
+     "",
+     "(28,646)",
+     "",
+     "",
+     "(462)",
+     "",
+     "",
+     "49,642",
+     "",
+     "",
+     "8,354"
+    ],
+    [
+     "  Convertible Note Payable - LGC (8%) 6",
+     "",
+     "52,500",
+     "",
+     "",
+     "",
+     "(26,803)",
+     "",
+     "",
+     "(808)",
+     "",
+     "",
+     "24,889",
+     "",
+     "",
+     "16,972"
+    ],
+    [
+     "  Convertible Notes Payable- PULG (8%) 1",
+     "",
+     "65,000",
+     "",
+     "",
+     "",
+     "(63,610)",
+     "",
+     "",
+     "(2,244)",
+     "",
+     "",
+     "(854)",
+     "",
+     "",
+     "35,933"
+    ],
+    [
+     "  Convertible Notes Payable- PULG (8%) 2",
+     "",
+     "58,000",
+     "",
+     "",
+     "",
+     "(47,690)",
+     "",
+     "",
+     "(2,655)",
+     "",
+     "",
+     "7,655",
+     "",
+     "",
+     "36,818"
+    ],
+    [
+     "",
+     "$",
+     "791,855",
+     "$",
+     "-",
+     "$",
+     "(212,235)",
+     "",
+     "$",
+     "(6,169)",
+     "",
+     "$",
+     "573,451",
+     "",
+     "$",
+     "263,468"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CONVERTIBLE NOTES PAYABLE"
+    }
+   },
+   "prose_before": "On October 1, 2018 the Company issued a convertible note payable (convertible promissory note PULG (8%) Note 1) to an investor in the principal amount of $58,000. The note matures on April 1, 2020 and bears interest at 8%. The note holder has has the right at any time on or after the day that is six months from October 1, 2018 to convert any part or all of the outstanding unpaid principal balance into shares of the Company\u2019s common stock. The entire principal balance of $58,000 is outstanding as of December 31, 2018.\nOn November 19, 2018 the Company issued a convertible note payable (convertible promissory note PULG (8%) Note 2) to an investor in the principal amount of $65,000. The note matures on May 19, 2020 and bears interest at 8%. The note holder has has the right at any time on or after the day that is six months from November 19, 2018 to convert any part or all of the outstanding unpaid principal balance into shares of the Company\u2019s common stock. The entire principal balance of $65,000 is outstanding as of December 31, 2018.\nThe Company\u2019s convertible notes payable and the related derivative liabilities, derivative discount, deferred financing costs and original-issue discount are presented in the financial statements at December 31, 2018 as follows:",
+   "prose_after": "As of December 31, 2018, the convertible notes payable can be converted into approximately 727,373 shares of common stock.\nNote 6. DERIVATIVES AND FAIR VALUE INSTRUMENTS\nThe Company applied paragraph 815-10-05-4 of the FASB Accounting Standards Codification to the 5% Convertible Notes Payable issued June 12th 2015 and the 8% Convertible Note payable issued June 25th 2015 and for the 8% Convertible Notes Payable issued January 7, 2016 and March 7, 2016, the 9% Convertible Note payable issued October 1, 2016 the 8% Convertible Notes Payable issued January 25, 2018 and June 4, 2018 and the 8% convertible notes payable issued October 1, 2018 and November 19, 2018. Based on the guidance in paragraph 815-10-05-4 of the FASB Accounting Standards Codification the Company concluded these instruments were required to be accounted for as derivatives on issuance date. The Company records the fair value of the Convertible Notes Payable and certain warrants that are classified as derivatives on issuance date and the fair value changes on each reporting date reflected in the consolidated statements of operations as \u201cChange in Fair Value - derivatives.\u201d These derivative instruments are not designated as hedging instruments under paragraph 815-10-05-4 of the FASB Accounting Standards Codification and are disclosed on the balance sheet under Derivative Liabilities.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1271,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "12/31/2018",
+     "",
+     "",
+     "Original",
+     "",
+     "",
+     "",
+     "Derivative",
+     "",
+     "Quarter Ended",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "Ended March 31,",
+     "",
+     "",
+     "Derivative",
+     "",
+     "Quarter Ended",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "Ended June 30,",
+     "",
+     "",
+     "Derivative",
+     "",
+     "Quarter Ended",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "Ended September 30,",
+     "",
+     "",
+     "Derivative",
+     "",
+     "Quarter Ended",
+     "",
+     "Quarter Ended",
+     "",
+     "",
+     "Ended December 31,",
+     "",
+     "",
+     "Derivative",
+     ""
+    ],
+    [
+     "Convertible",
+     "Derivative Treatment",
+     "Maturity",
+     "Principal Note",
+     "",
+     "Original Derivative",
+     "",
+     "Valuation December 31,",
+     "",
+     "March 31, 2018",
+     "",
+     "March 31, 2018",
+     "",
+     "",
+     "2018 Mark-to-",
+     "",
+     "",
+     "Valuation March 31,",
+     "",
+     "June 30, 2018",
+     "",
+     "June 30, 2018",
+     "",
+     "",
+     "2018 Mark-to-",
+     "",
+     "",
+     "Valuation June 30,",
+     "",
+     "September 30, 2018",
+     "",
+     "September 30, 2018",
+     "",
+     "",
+     "2018 Mark-to-",
+     "",
+     "",
+     "Valuation September 30,",
+     "",
+     "December 31, 2018",
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "2018 Mark-to-",
+     "",
+     "",
+     "Valuation December 31,",
+     ""
+    ],
+    [
+     "Note",
+     "Date",
+     "Date",
+     "Amount",
+     "",
+     "Valuation",
+     "",
+     "2017",
+     "",
+     "Issuances",
+     "",
+     "Conversions",
+     "",
+     "",
+     "Market",
+     "",
+     "",
+     "2018",
+     "",
+     "Issuances",
+     "",
+     "Conversions",
+     "",
+     "",
+     "Market",
+     "",
+     "",
+     "2018",
+     "",
+     "Issuances",
+     "",
+     "Conversions",
+     "",
+     "",
+     "Market",
+     "",
+     "",
+     "2018",
+     "",
+     "Issuances",
+     "",
+     "Conversions",
+     "",
+     "",
+     "Market",
+     "",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Note Payable-issued 5/2/2016",
+     "10/1/2016",
+     "5/2/2017",
+     "$",
+     "57,750",
+     "$",
+     "58,355",
+     "$",
+     "24,925",
+     "",
+     "",
+     "$",
+     "(26,745)",
+     "",
+     "$",
+     "5,123",
+     "",
+     "$",
+     "3,303",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(665)",
+     "",
+     "$",
+     "2,638",
+     "",
+     "",
+     "$",
+     "(2,740)",
+     "",
+     "$",
+     "102",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5 % Convertible Note- Payable -issued 6/12/2015",
+     "4/12/2016",
+     "1/7/2017",
+     "",
+     "35,863",
+     "",
+     "37,827",
+     "$",
+     "832",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "305",
+     "",
+     "$",
+     "1,137",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(233)",
+     "",
+     "$",
+     "904",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "211",
+     "",
+     "$",
+     "1,115",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "316",
+     "",
+     "$",
+     "1,431"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued May 1, 2016",
+     "10/28/2017",
+     "5/1/2018",
+     "",
+     "131,250",
+     "",
+     "103,294",
+     "$",
+     "52,989",
+     "",
+     "",
+     "$",
+     "(31,013)",
+     "",
+     "",
+     "8,541",
+     "",
+     "$",
+     "30,517",
+     "",
+     "",
+     "$",
+     "(9,148)",
+     "",
+     "",
+     "17,439",
+     "",
+     "$",
+     "38,808",
+     "",
+     "",
+     "$",
+     "(1,605)",
+     "",
+     "",
+     "(11,075)",
+     "",
+     "$",
+     "26,128",
+     "",
+     "",
+     "$",
+     "(10,591)",
+     "",
+     "",
+     "(181)",
+     "",
+     "$",
+     "15,356"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued June 7, 2016",
+     "12/4/2017",
+     "6/7/2018",
+     "",
+     "125,000",
+     "",
+     "90,596",
+     "$",
+     "64,458",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(14,452)",
+     "",
+     "$",
+     "50,006",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "55,818",
+     "",
+     "$",
+     "105,824",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(75,201)",
+     "",
+     "$",
+     "30,623",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(7,815)",
+     "",
+     "$",
+     "22,808"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10% Convertible Notes Payable-issued March 8, 2016",
+     "9/15/2017",
+     "9/8/2018",
+     "",
+     "150,000",
+     "",
+     "167,164",
+     "$",
+     "108,682",
+     "",
+     "",
+     "$",
+     "(19,359)",
+     "",
+     "",
+     "23,426",
+     "",
+     "$",
+     "112,749",
+     "",
+     "",
+     "$",
+     "(26,895)",
+     "",
+     "",
+     "44,802",
+     "",
+     "$",
+     "130,656",
+     "",
+     "",
+     "$",
+     "(17,872)",
+     "",
+     "",
+     "(70,817)",
+     "",
+     "$",
+     "41,967",
+     "",
+     "",
+     "$",
+     "(34,169)",
+     "",
+     "",
+     "20,943",
+     "",
+     "$",
+     "28,741"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued August 15, 2017",
+     "4/1/2018",
+     "8/15/2018",
+     "",
+     "125,000",
+     "",
+     "108,878",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "108,878",
+     "",
+     "",
+     "",
+     "",
+     "(3,760)",
+     "",
+     "$",
+     "105,118",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(74,541)",
+     "",
+     "$",
+     "30,577",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(7,834)",
+     "",
+     "$",
+     "22,743"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued July 10, 2017",
+     "4/1/2018",
+     "7/10/2018",
+     "",
+     "125,000",
+     "",
+     "108,061",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "108,061",
+     "",
+     "",
+     "",
+     "",
+     "3,092",
+     "",
+     "$",
+     "111,153",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(80,625)",
+     "",
+     "$",
+     "30,528",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(7,855)",
+     "",
+     "$",
+     "22,673"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued January 25, 2018",
+     "4/1/2018",
+     "1/25/2019",
+     "",
+     "78,750",
+     "",
+     "65,896",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "65,896",
+     "",
+     "",
+     "",
+     "",
+     "135",
+     "",
+     "$",
+     "66,031",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(44,217)",
+     "",
+     "$",
+     "21,814",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(13,460)",
+     "",
+     "$",
+     "8,354"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued June 4, 2017",
+     "6/4/2018",
+     "6/4/2018",
+     "",
+     "52,500",
+     "",
+     "42,755",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "42,755",
+     "",
+     "",
+     "",
+     "",
+     "532",
+     "",
+     "$",
+     "43,287",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(14,084)",
+     "",
+     "$",
+     "29,203",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(12,231)",
+     "",
+     "$",
+     "16,972"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued August 2, 2017",
+     "10/1/2018",
+     "8/2/2020",
+     "",
+     "50,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "99,234",
+     "$",
+     "(6,927)",
+     "",
+     "",
+     "(40,668)",
+     "",
+     "$",
+     "51,639"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued October 1, 2018",
+     "10/1/2018",
+     "4/1/2020",
+     "",
+     "58,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "49,952",
+     "",
+     "",
+     "",
+     "",
+     "(13,134)",
+     "",
+     "$",
+     "36,818"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "8% Convertible Notes Payable-issued November 19, 2018",
+     "11/19/2018",
+     "5/19/2020",
+     "",
+     "65,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "66,134",
+     "",
+     "",
+     "",
+     "",
+     "(30,201)",
+     "",
+     "$",
+     "35,933"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "1,054,113",
+     "$",
+     "782,826",
+     "$",
+     "251,886",
+     "$",
+     "-",
+     "$",
+     "(77,117)",
+     "",
+     "$",
+     "22,943",
+     "",
+     "$",
+     "197,712",
+     "$",
+     "325,590",
+     "$",
+     "(36,043)",
+     "",
+     "$",
+     "117,160",
+     "",
+     "$",
+     "604,419",
+     "$",
+     "-",
+     "$",
+     "(22,217)",
+     "",
+     "$",
+     "(370,247)",
+     "",
+     "$",
+     "211,955",
+     "$",
+     "215,320",
+     "$",
+     "(51,687)",
+     "",
+     "$",
+     "(112,120)",
+     "",
+     "$",
+     "263,468"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1368,
+    "end_line": 1546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "DERIVATIVES AND FAIR VALUE INSTRUMENTS"
+    }
+   },
+   "prose_before": "-The monthly trading volume would average $458,000 (rounded) as of 12/31/18 and would increase at 5% per month; ownership limits conversion across LG\u2019s notes based on 4.99% with shares outstanding increasing monthly by 1%.\n- The variable conversion price of 45% to 58% over 3 to 20 trading days would have effective rates of 34.36% to 53.40%;\n- The Note Holders would automatically convert the notes early (and not hold to maturity) with variable conversion prices and full ratchet resets if the registration was effective and not in default;\n- The projected annual volatility for each valuation period was based on the historical volatility of the Company in the range 230.9% to 415.0%.\nThe foregoing assumptions are reviewed quarterly and are subject to change based primarily on management\u2019s assessment of the probability of the events described occurring. Accordingly, changes to these assessments could materially affect the valuation.\nThe Company\u2019s derivative liabilities on convertible notes payable are presented at market value in the financial statements at December 31, 2018 as follows:",
+   "prose_after": "The Company\u2019s mark-to-market fair value adjustment ((income)/expense) for the year ended December 31, 2018 totaled ($342,264) as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1364,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Mark-to market fair value adjustment for the quarter ended March 31, 2018",
+     "$",
+     "22,943",
+     ""
+    ],
+    [
+     "Mark-to market fair value adjustment for the quarter ended June 30, 2018",
+     "",
+     "117,160",
+     ""
+    ],
+    [
+     "Mark-to market fair value adjustment for the quarter ended September 30, 2018",
+     "",
+     "(370,247)",
+     ""
+    ],
+    [
+     "Mark-to market fair value adjustment for the quarter ended December 31, 2018",
+     "",
+     "(112,120)",
+     ""
+    ],
+    [
+     "Total mark-to market fair value adjustment for the year ended December 31, 2018",
+     "$",
+     "(342,264)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1550,
+    "end_line": 1559
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "DERIVATIVES AND FAIR VALUE INSTRUMENTS"
+    }
+   },
+   "prose_before": "The Company\u2019s mark-to-market fair value adjustment ((income)/expense) for the year ended December 31, 2018 totaled ($342,264) as follows:",
+   "prose_after": "Note 7. STOCKHOLDERS\u2019 EQUITY\nEffective July 23, 2018, the Company effected a 1-for-1,000 reverse stock split of its issued and outstanding common stock. The number of shares of common stock issued and outstanding post- reverse stock split is 1,404,073. All fractional shares have been rounded up to the next whole share. There is no reduction in the number of the Company\u2019s shareholders of record. Unless otherwise noted, impacted amounts and share information included in the financial statements and notes thereto have been retroactively adjusted for the reverse stock split as if such reverse stock split occurred on the first day of the first period presented. As a result of the aforementioned reverse stock split, additional paid-in-capital was increased by $140,169 and $84,861 as of December 31, 2018 and December 31, 2017 respectively on the balance sheet with a corresponding decrease in the par value of common stock issued as of the same dates.\nThe Company has authorized 4,000,000,000 shares of common stock with a par value of $0.0001 per share. Effective September 19, 2017, the Company amended its Articles of Incorporation to increase its authorized Common Stock to 4,000,000,000 shares. There were 3,482,840 and 849,437 shares of common stock issued and outstanding at December 31, 2018 and December 31, 2017, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1598,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expected volatility",
+     "403% to 435%"
+    ],
+    [
+     "Expected life",
+     "0.7"
+    ],
+    [
+     "Risk free interest rate",
+     "2.75%"
+    ],
+    [
+     "Dividend yield",
+     "0.00%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1574,
+    "end_line": 1580
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "STOCKHOLDERS\u2019 EQUITY"
+    }
+   },
+   "prose_before": "On October 12, 2018, the Company filed with the State of Nevada a certificate of designation pursuant to which the Company designated a new class of preferred stock as the Company\u2019s Series C Convertible Preferred Stock (\u201cSeries C Preferred\u201d) having a $100.00 stated value per share (\u201cStated Value\u201d) and a par value equal to $0.0001 per share. The Company designated 5,000 shares of Series C Preferred. Subject to a beneficial ownership limitation equal to 4.99% and a prohibition on conversions within the first sixty days of its issuance, each share of Series C Preferred is convertible into 25,000 shares of the Company\u2019s common stock. Holders of Series C Preferred are not entitled to receive dividends. In the event of any liquidation, dissolution or winding up of the Company, holders of Series C Preferred are entitled to distributions from the assets in an amount equal to, or if less, on a prorated basis, the Stated Value per share of Series C Preferred held by such holders. Holders of Series C Preferred are entitled to vote, on an as-converted basis, together with holders of Common Stock on all actions to be taken by the shareholder of the Company. During the quarter-ended December 31, 2018 the company issued 177 shares of Series C Convertible Preferred Stock for services provided to the company by various professionals. As of December 31, 2018 there are 177 shares issued and outstanding with a stated value of $17,700 and par value of $-0-. The preferred shares issued to professionals for their services were valued, in total, at $204,212 based upon a valuation using the underlying convertible feature of the company\u2019s common stock and a Black-Scholes calculation methodology.\nThe fair value of each issuance of Series C Preferred Stock on the date of issuance is estimated using the Black-Scholes option-pricing model reflecting the following assumptions:",
+   "prose_after": "During the quarter ended March 31, 2017, the Company issued an aggregate 43,000 shares of common stock at prices ranging from $0.0028 to $0.0094 per share for services provided to the Company.\nDuring the quarter ended March 31, 2017, the Company issued an aggregate 112,498 shares of common stock at prices ranging from $0.0001 to $0.0028 per share as partial conversion of notes.\nDuring the quarter ended March 31, 2017, the Company issued an aggregate 9,050 shares of common stock for conversion of 18,100 shares of Preferred Series B stock.\nDuring the quarter ended June 30, 2017, the Company issued an aggregate 33,000 shares of common stock at prices ranging from $0.0022 to $0.0028 per share for services provided to the Company.\nDuring the quarter ended June 30, 2017, the Company issued an aggregate 177,072 shares of common stock at prices ranging from $0.0001 to $0.0028 per share as partial conversion of notes and accrued interest.\nDuring the quarter ended June 30, 2017, the Company issued an aggregate 450,000 shares of Preferred Series A stock at par of $.0001.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1546,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1598,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2019",
+     "24,600"
+    ],
+    [
+     "2020",
+     "24,600"
+    ],
+    [
+     "2021",
+     "4,100"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1620,
+    "end_line": 1625
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "The Company currently has three office locations. It rents offices on a month-to-month basis from the Company\u2019s President and stockholder for $525 per month which amounted to $6,300 for the year ended December 31, 2018. The Company also has ready-to-go office space available to be used for meetings etc. at a nominal cost of approximately $100 per month with no commitment. The cost of this space for the year ended December 31, 2018 was $1,188. On September 12th 2016 the Company entered into a commercial lease agreement for office premises at an original cost of $650 per month for a one-year term with the option to renew for one extended term of three years. In July 2017 the Company leased additional space at this location thereby increasing the monthly rent to $1,550. The cost of this space for the year ended December 31, 2018 was $23,442. A new lease was signed in March 2018 for the same space. The following are the minimum required lease payments under the lease for the next three years:",
+   "prose_after": "Total rent expense for the year ended December 31, 2018 and 2017 was $30,929 and $20,713 respectively.\nThe Company has a distribution agreement with Dr. Ronald L. Rubin where upon any sales generated by him he will receive the following commissions:\n\u25cf 20% for direct sales\n\u25cf 5% for any sale that he oversees that involves another sales person\n\u25cf 5% for any sales related to a distribution agreement.\n\u25cf He is to be issued 1 Series C Preferred share or 25,000 common shares per month\nThe Company has a distribution agreement with Dr. Gupta Pharma LLC with the following provisions:\n\u25cf The Company, via its subsidiary USA Pharma, has exclusive New Jersey distribution rights for all CBD products and non-exclusive rights to all other territories.\n\u25cf The agreement is for a term of 3 years, but parties have the right to terminate.\n\u25cf Upon agreement signing, 120 shares of Series C Convertible Preferred stock was issued by the Company to Dr. Gupta.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1598,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended December 31,",
+     "Net Operating Loss",
+     "",
+     "Estimated Deferred Tax Asset",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2010",
+     "$",
+     "4,457",
+     "$",
+     "1,337",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "34,325",
+     "$",
+     "10,298",
+     ""
+    ],
+    [
+     "2012",
+     "",
+     "174,024",
+     "$",
+     "52,207",
+     ""
+    ],
+    [
+     "2013",
+     "",
+     "114,267",
+     "$",
+     "34,280",
+     ""
+    ],
+    [
+     "2014",
+     "",
+     "294,880",
+     "$",
+     "88,464",
+     ""
+    ],
+    [
+     "2015",
+     "",
+     "121,619",
+     "$",
+     "36,486",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "382,095",
+     "$",
+     "114,629",
+     ""
+    ],
+    [
+     "2017",
+     "",
+     "1,148,020",
+     "$",
+     "344,406",
+     ""
+    ],
+    [
+     "2018",
+     "",
+     "629,038",
+     "$",
+     "188,711",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,902,725",
+     "$",
+     "870,818",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Less: Valuation Allowance",
+     "",
+     "",
+     "$",
+     "(870,818)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net Deferred Tax Asset",
+     "",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1653,
+    "end_line": 1677
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "As of December 31, 2016, the Company had net deferred tax assets consisting primarily of net operating losses totaling $484,037 that were fully reserved. Under U.S. generally accepted accounting principles, the Company uses the asset and liability method of accounting for income taxes. Under this method, deferred tax assets and liabilities are recognized for the future tax consequences attributable to differences between the financial statement carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The Company\u2019s net deferred tax asset as of December 31, 2016 was determined based on the current enacted federal tax rate of 34% prior to the passage of the Act. As a result of the reduction in the corporate income tax rate to 21% from 34% under the Act, the Company revalued its December 31, 2016 net deferred tax asset as of December 31, 2017. The Company reduced the value of its net deferred tax asset by approximately $146,337, which, since it is fully reserved, was not recorded as an additional income tax expense in the Company\u2019s statement of operations in the fourth quarter of 2017.\nNotes to Consolidated Financial Statements December 31, 2018\nThe Company\u2019s deferred tax asset consists primarily of carryforward net operating losses (NOLs). The Company believes that, at this time, it is more likely than not that the benefit of the NOLs will not be realized and has therefore recorded a full valuation allowance. The following represents the tax NOLs incurred by the Company on a per year basis and the resulting estimated deferred tax asset and valuation allowance:",
+   "prose_after": "The income tax benefit differs from the amount computed by applying the statutory federal and state income tax rates to the loss before income taxes. The sources and tax effects of the differences are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "State income taxes, net of federal taxes",
+     "",
+     "9",
+     "%",
+     "",
+     "9",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(30)",
+     "%",
+     "",
+     "(30)",
+     "%"
+    ],
+    [
+     "Effective income tax rate",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1680,
+    "end_line": 1691
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The income tax benefit differs from the amount computed by applying the statutory federal and state income tax rates to the loss before income taxes. The sources and tax effects of the differences are as follows:",
+   "prose_after": "As of December 31, 2018, the Company has a net operating loss carryforward of approximately $2,902,725 to reduce future federal taxable income which begins to expire in the year 2030. The Company is also subject to corporate taxes in the State of New Jersey which has similar net operating loss carryover provisions which start to expire in the year 2030. Under the current Tax Cuts and Jobs Act (H.R. 1) (the \u201cAct\u201d), federal net operating losses generated after December 31, 2017 can be carried forward indefinitely but only 80% of taxable income can be offset with a net-operating loss deduction. Net operating losses generated in years 2017 and prior may be fully utilized up to 100% of taxable income and they still maintain their 20-year carry-forward life.\nThe Company currently has no federal or state tax examinations in progress, nor has it had any federal or state examinations since its inception. All of the Company\u2019s open tax years beginning in tax year 2014 are subject to federal and state tax examinations.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Due to Related Party",
+     "$",
+     "8,921",
+     "$",
+     "8,921"
+    ],
+    [
+     "Due to officer/stockholder",
+     "",
+     "8,955",
+     "",
+     "8,398"
+    ],
+    [
+     "Due to other stockholders",
+     "",
+     "3,100",
+     "",
+     "6,790"
+    ],
+    [
+     "  Total Related Party Obligations",
+     "$",
+     "20,976",
+     "$",
+     "24,109"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1700,
+    "end_line": 1711
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "As of December 31, 2018, the Company has a net operating loss carryforward of approximately $2,902,725 to reduce future federal taxable income which begins to expire in the year 2030. The Company is also subject to corporate taxes in the State of New Jersey which has similar net operating loss carryover provisions which start to expire in the year 2030. Under the current Tax Cuts and Jobs Act (H.R. 1) (the \u201cAct\u201d), federal net operating losses generated after December 31, 2017 can be carried forward indefinitely but only 80% of taxable income can be offset with a net-operating loss deduction. Net operating losses generated in years 2017 and prior may be fully utilized up to 100% of taxable income and they still maintain their 20-year carry-forward life.\nThe Company currently has no federal or state tax examinations in progress, nor has it had any federal or state examinations since its inception. All of the Company\u2019s open tax years beginning in tax year 2014 are subject to federal and state tax examinations.\nNote 10. RELATED PARTY TRANSACTIONS\nAs more fully described in Notes 3 and 4 to the Consolidated Financial Statements, the Company owed the following amounts to related parties as of the following:",
+   "prose_after": "The company has entered into an employment agreement with its Chief Executive Officer (CEO) for the five year period beginning January 1, 2012. The agreement provides for base compensation, annual bonus, benefits, vacation and reimbursements. Under this agreement, the base compensation of the Company\u2019s CEO is $100,000 per annum which has been accrued for the years ended December 31, 2015 and 2014. In mid-year 2016 the Company commenced payroll and is paying the CEO for current wages in this manner. During the year ended December 31, 2016, $18,974 in accrued compensation was paid. Accrued compensation in the amount of $30,000 was converted to shares of common stock during 2015. In the quarter ended June 30, 2017, $45 in accrued CEO compensation was converted to Series A Preferred shares. During the quarter ended September 30, 2017, $25,500 in accrued compensation was paid to the CEO. Effective October 1, 2017, the employment agreement between the Company and its CEO was amended to increase the annual salary to $150,000. During the quarter ended December 31, 2017 $44,673 in accrued compensation was paid to the CEO. As of December 31, 2018, the company owes accrued compensation to it\u2019s CEO in the amount of $388,981.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1647,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Office",
+     "Since",
+     ""
+    ],
+    [
+     "Bruce Schoengood",
+     "60",
+     "Chief Executive Officer and Director",
+     "",
+     "March 16, 2011"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1823,
+    "end_line": 1828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS AND EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Management does not expect that the Company\u2019s internal controls will prevent or detect all errors and all fraud. A control system, no matter how well designed and operated, can provide only reasonable, not absolute, assurance that the objectives of the control system are met. Further, the design of a control system must reflect the fact that there are resource constraints, and the benefits of controls must be considered relative to their costs. Because of the inherent limitations in all control systems, no evaluation of internal controls can provide absolute assurance that all control issues and instances of fraud, if any, have been detected. Also, any evaluation of the effectiveness of controls in future periods are subject to the risk that those internal controls may become inadequate because of changes in business conditions, or that the degree of compliance with the policies or procedures may deteriorate.\nChanges in Internal Control Over Financial Reporting.\nThere have not been any changes in the Company\u2019s internal control over financial reporting during the fiscal year ended December 31, 2018 that have materially affected, or are reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS AND EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nOur executive officer and director and his age are as follows:\nExecutive Officers and Directors",
+   "prose_after": "The term of office for each director is one year, or until the next annual meeting of the stockholders.\nBruce Schoengood. Mr. Schoengood joined the Company as an officer and director in March 2011. Mr. Schoengood began his diverse publishing career as a New York City art director and editor in 1981 and went on to launch dozens of national magazines as publisher and contract publisher. Titles include: Country Accents, Victorian Accents, New Body, New Jersey Home & Style, Successful Child, Party Poker.com, GameDay USA, STUN!, Spectrum, Dale Earnhardt, Bill Mazeroski\u2019s Baseball, Gemma\u2019s Old Style Italian Cooking, Kid Planet, Beach Style, Trump Magazine and Blackout Comics. He was honored by Mental Health America in 2008 and given their Golden Bell Media Award. Mr. Schoengood has worked as a creative design and marketing consultant in the medical education industry to companies such as Haymarket Medical, Physican\u2019s Weekly, Genecom, and Science & Medicine. From 2004 to 2008, Mr. Schoengood was a magazine packager with King Media. From 2008 until he began with the Company, he was self-employed as a freelance creative design and editorial content consultant.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1814,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Fiscal year\n\n\n\nEnded\n\n\n\nDecember 31",
+     "",
+     "Salary\n\n\n\n($)",
+     "",
+     "Bonus\n\n\n\n($)",
+     "",
+     "Other Annual Compensation ($)",
+     "",
+     "TOTAL",
+     ""
+    ],
+    [
+     "Bruce Schoengood, CEO",
+     "",
+     "2018",
+     "$",
+     "150,000",
+     "",
+     "0",
+     "$",
+     "0",
+     "$",
+     "150,000"
+    ],
+    [
+     "",
+     "",
+     "2017",
+     "$",
+     "112,500",
+     "",
+     "0",
+     "$",
+     "0",
+     "$",
+     "112,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1875,
+    "end_line": 1885
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As of December 31, 2018, we did not affect any material changes to the procedures by which stockholders may recommend nominees to the board of directors. We do not have any defined policy or procedure requirements for stockholders to submit recommendations or nominations for directors. The board of directors believes that, given the current stage of our development, a specific nominating policy would be premature and of little assistance until our operations develop to a more advanced level. We do not currently have any specific or minimum criteria for the election of nominees to the board of directors and there is no specific process or procedure for evaluating such nominees. The board of directors assesses all candidates, whether submitted by management or stockholders, and makes recommendations for election or appointment.\nA stockholder who wishes to communicate with the board of directors may do so by directing a written request addressed to our Chief Executive Officer at the address appearing on the face page of this annual report.\nCommittees of the Board\nWe currently do not have nominating, compensation or audit committee, or committees performing similar functions, nor do we have a written nominating, compensation or audit committee charter. The board of directors does not believe that it is necessary to have such committees at this time because it believes that the functions of such committees can be adequately performed by the board of directors.\nITEM 11. EXECUTIVE COMPENSATION\nExecutive Compensation\nThe table below sets forth all cash compensation paid or proposed to be paid by us to our chief executive officer, or only executive officer, for services rendered in all capacities to the Company during fiscal year and 2017 and 2018.\nSummary Compensation Table",
+   "prose_after": "Compensation Policy\nOur sole director and officer currently earns $150,000 annual salary.\nStock Grants or Awards\nIn July 2016, the Company issued Bruce Schoengood 350 shares of Common Stock in consideration of his continued services provided to the Company.\nOn June 16, 2017, the Company issued 450,000 shares of Series A Preferred Stock to the Company\u2019s Chief Executive Officer, Bruce Schoengood, in consideration for and in recognition of performance and value received by the Company in connection with the services he has provided.\nSubsequent to the fiscal year end, the Company issued sixty (60) shares of its Series C Convertible Preferred Stock (\u201cSeries C Preferred\u201d) to Bruce Schoengood. Each share of Series C Preferred has a $100.00 stated value but are not entitled to dividend rights. Subject to a beneficial ownership limitation equal to 4.99%, each share of Series C Preferred is convertible into 25,000 shares of Common Stock. Holders of Series C Preferred are entitled to vote, on an as-converted basis, together with holders of Common Stock on all actions to be taken by the shareholders of the Company. These shares were granted to Mr. Schoengood as a reward for Mr. Schoengood\u2019s efforts and an incentive for Mr. Schoengood\u2019s continued efforts in expanding the Company\u2019s offerings and businesses in the medical pain management markets.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1848,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1890,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of beneficial owner",
+     "Amount of\n\n\n\nBeneficial ownership",
+     "",
+     "Percent\n\n\n\nof class(2)",
+     "",
+     ""
+    ],
+    [
+     "Bruce Schoengood(1)",
+     "",
+     "1,506,195",
+     "",
+     "20.61",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1920,
+    "end_line": 1927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Because we are still in the development stage, our sole director is not receiving any compensation other than reimbursement for expenses incurred during the performance of his duties.\nEmployment Contracts; Termination of Employment and Change-in-Control Arrangements\nOn March 18, 2016, the Company and Bruce Schoengood entered into an Employment Agreement which was made retroactive to January 1, 2012. Mr. Schoengood\u2019s initial term, of employment is sixty (60) months commencing January 1, 2012 with an annual base salary of $100,000 and amended October 19, 2017 in increase annual salary to $150,000.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table provides the names and addresses of each person known to us who own more than 5% of the outstanding common stock as of the date of this annual report, and by our sole officer and director. Except as otherwise indicated, all shares are owned directly. Unless otherwise indicated, the address of each of the persons shown is c/o Medifirst Solutions, Inc., 4400 Route 9 South, Suite 1000, Freehold NJ 07728.",
+   "prose_after": "(1) Includes 6,195 shares of Common Stock and 1,500,000 shares of Common Stock into which the 60 shares of Series C Preferred Stock held by Mr. Schoengood may be converted. Does not include 500,000 shares of Series A Preferred stock held by Mr. Schoengood. Although the Series A Preferred shares are not convertible they provide for a voting right of 2,000 per share, which voting privilege, along with common stock owned by Mr. Schoengood, constitutes approximately 99.42% of the voting rights of the Company.\n(2) The percent of class is based on 5,808,883 shares of common stock issued and outstanding as of April 12, 2019.\nChange in Control\nWe are not aware of any arrangement that might result in a change in control of the Company.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED PARTY TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nTransactions with related persons, promoters and certain control persons\nBruce Schoengood, currently our sole officer and director, is currently not involved in other business activities, but may, in the future, become involved in other business opportunities. If a specific business opportunity becomes available, Mr. Schoengood may face a conflict of interest in selecting between our business interest and his other business interests. It is our policy that any personal business or corporate opportunity available an officer or director must be examined by our board of directors and rejected by the directors before an officer or director can engage or take advantage of the business opportunity. However, this policy may be ineffective given that we currently have only one officer and director.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1915,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1947,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Audit fee",
+     "$",
+     "20,500",
+     "$",
+     "20,500"
+    ],
+    [
+     "Audit related fees",
+     "",
+     "2,750",
+     "",
+     "1,750"
+    ],
+    [
+     "Tax fees",
+     "",
+     "0",
+     "",
+     "-"
+    ],
+    [
+     "All other fees",
+     "",
+     "0",
+     "",
+     "-"
+    ],
+    [
+     "TOTAL",
+     "$",
+     "23,250",
+     "$",
+     "22,250"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1962,
+    "end_line": 1974
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "No director, executive officer, principal stockholder holding at least 5% of our common shares, or any family member living with such persons, had any material interest, direct or indirect, in any transaction, or proposed transaction, during the years ended December 31, 2018 or December 31, 2017 or December 31, 2016, in which the amount involved in the transaction exceeded or exceeds the lesser of $120,000 or one percent of the average of our total assets at the year-end for the last three completed fiscal years.\nDirector Independence\nCurrently our sole director is also our sole officer, and as such, we have no directors that would qualify as independent as defined under NASDAQ Marketplace Rules. Our director believes that retaining one or more additional directors who would qualify as independent as defined in the NASDAQ Marketplace Rules would be overly costly and burdensome and not warranted in the circumstances given the current stage of the Company\u2019s development.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nFruci & Associates II, PLLC served as our independent registered public accounting firm and audit our financial statements for the years ended December 31, 2018 and 2017. The following table represents a summary of fees billed to the Company from its principal independent accountants for professional services rendered for the years ended December 31, 2018 and 2017.",
+   "prose_after": "Audit Fees\n\u201cAudit Fees\u201d consist of fees billed for professional services rendered by the principal accountant for the audit of the registrant\u2019s annual financial statements and review of financial statements included in the registrant\u2019s quarterly reports, or services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for those fiscal years. Audit fees expenses for professional services rendered in respect to the audit of our annual financial statements included in our Annual Report on Form 10-K for the fiscal year ended December 31, 2018 and 2017, were $23,250 and $22,250.\nAudit Related Fees\n\u201cAudit Related Fees\u201d consist of fees billed for assurance and related services by the principal accountant that are reasonably related to the performance of the audit or review of the registrant\u2019s financial statements and are not reported as \u201cAudit Fees.\u201d For the years ended December 31, 2018 and December 31, 2017 the aggregate \u201cAudit Related Fees\u201d were $2,750 and $1,750 respectively.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1947,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1983,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation filed on November 8, 2010(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Articles of Incorporation filed on March 28, 2011(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "By-laws adopted on November 15, 2010(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "Certificate of Amendment to Articles of Incorporation filed on December 19, 2011(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "Certificate of Amendment to Articles of Incorporation filed on November 19, 2015(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.6",
+     "Certificate of Designation of Series B Convertible Preferred Stock filed on September 24, 2015(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.7",
+     "Amended Certificate of Designation of Series A Preferred Stock filed on October 15, 2015(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen Common Stock Certificate(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Convertible Debenture, dated June 12, 2015(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "8% Convertible Redeemable Note due October 8, 2016(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "5% Convertible Promissory Note due October 12, 2016(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Promissory Note, dated March 8, 2016(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "8% Convertible Redeemable Note due January 7, 2017(5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.7",
+     "8% Convertible Redeemable Back End Note due January 7, 2017(5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.8",
+     "8% Convertible Redeemable Replacement Note due January 7, 2017(5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.9",
+     "8% Convertible Redeemable Note due March 7, 2017(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.10",
+     "8% Convertible Redeemable Back End Note due March 7, 2017(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.11",
+     "8% Convertible Redeemable Replacement Note due February 28, 2017(6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.12",
+     "8% Convertible Redeemable Note due May 2, 2017(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.13",
+     "8% Convertible Redeemable Replacement Note due May 2, 2017(7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.14",
+     "Medifirst Solutions, Inc. 2016 Equity Incentive Plan(8)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.15",
+     "Convertible Redeemable Note due March 27, 2018(9)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.16",
+     "Convertible Redeemable Replacement Note due March 27, 2018(9)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2003,
+    "end_line": 2052
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our board of directors, who acts as our audit committee, has adopted a policy governing the pre-approval by the board of directors of all services, audit and non-audit, to be provided to our Company by our independent auditors. Under the policy, the board or directors has pre-approved the provision by our independent auditors of specific audit, audit related, tax and other non-audit services as being consistent with auditor independence. Requests or applications to provide services that require the specific pre-approval of the board of directors must be submitted to the board of directors by the independent auditors, and the independent auditors must advise the board of directors as to whether, in the independent auditor\u2019s view, the request or application is consistent with the SEC\u2019s rules on auditor independence.\nThe board of directors has considered the nature and amount of the fees billed by Fruci & Associates II, PLLC and believes that the provision of the services for activities unrelated to the audit is compatible with maintaining the independence of Fruci & Associates II, PLLC.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES",
+   "prose_after": "4.17 Medifirst Solutions, Inc. MFST Equity Incentive Plan (10) 4.18 Medifirst Solutions, Inc. 2017 Equity Incentive Plan (11) 4.19 Medifirst Solutions, Inc. 2018 Equity Incentive Plan (12)\n4.20 Certificate of Designation of Series C Convertible Preferred Stock (16) 4.21 Medifirst Solutions, Inc. 2019 Equity Incentive Plan (18) 10.1 Asset Purchase Agreement, dated October 31, 2014, between Dr. Park Avenue Inc. and Dr. Park Ave.(2) 10.2 Agreement and Plan of Reorganization, dated August 19, 2015 (4) 10.3 Sale and Purchase Agreement for Goods, dated August 25, 2015 (6) 10.4 Trademark Purchase Agreement, dated August 21, 2015 (6) 10.5 Securities Purchase Agreement, dated January 7, 2016 (5) 10.6 Product and Know-How License Agreement (3) 10.7 Employment Agreement between the Company and Bruce Schoengood (6) 10.8 Securities Purchase Agreement, dated May 2, 2016 (7) 10.9 Securities Purchase Agreement, dated May 1, 2017 (13) 10.10 AOTEX Distribution Agreement dated August 4, 2017 (14) 10.11 Morocco Distribution Agreement dated August 31, 2017 (15) 10.12 8% Convertible Redeemable Replacement Note due May 1, 2018 (13) 10.13 8% Convertible Redeemable Replacement Back End Note due May 1, 2018 (13) 10.14 Securities Purchase Agreement, dated October 5, 2018 (16) 10.15 8% Convertible Promissory Note due April 1, 2020 (16) 10.16 8% Convertible Promissory Note due May 19, 2020 (17) 10.17 Securities Purchase Agreement, dated January 24, 2019 (19) 10.18 8% Convertible Promissory Note due May 24, 2020 (19) 10.19 Securities Purchase Agreement, dated February 4, 2019 (20) 10.20 8% Convertible Promissory Note due November 30, 2019 (20) 10.21 Securities Purchase Agreement, dated February 20, 2019 (21) 10.22 8% Convertible Promissory Note due August 20, 2020 (21) 10.23 Securities Purchase Agreement, dated February 25, 2019 (21) 10.24 12% Convertible Promissory Note due February 25, 2020 (21) 10.25 Securities Purchase Agreement, dated February 27, 2019 (21) 10.26 8% Tranche Convertible Promissory Note due August 27, 2020 (21) 10.27 Securities Purchase Agreement, dated March 22, 2019 (22) 10.28 8% Convertible Promissory Note due September 21, 2020 (22)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1998,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 2055,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "21.1",
+     "Subsidiaries*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Fruci & Associates II, PLLC.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Labels*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2059,
+    "end_line": 2082
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "4.20 Certificate of Designation of Series C Convertible Preferred Stock (16) 4.21 Medifirst Solutions, Inc. 2019 Equity Incentive Plan (18) 10.1 Asset Purchase Agreement, dated October 31, 2014, between Dr. Park Avenue Inc. and Dr. Park Ave.(2) 10.2 Agreement and Plan of Reorganization, dated August 19, 2015 (4) 10.3 Sale and Purchase Agreement for Goods, dated August 25, 2015 (6) 10.4 Trademark Purchase Agreement, dated August 21, 2015 (6) 10.5 Securities Purchase Agreement, dated January 7, 2016 (5) 10.6 Product and Know-How License Agreement (3) 10.7 Employment Agreement between the Company and Bruce Schoengood (6) 10.8 Securities Purchase Agreement, dated May 2, 2016 (7) 10.9 Securities Purchase Agreement, dated May 1, 2017 (13) 10.10 AOTEX Distribution Agreement dated August 4, 2017 (14) 10.11 Morocco Distribution Agreement dated August 31, 2017 (15) 10.12 8% Convertible Redeemable Replacement Note due May 1, 2018 (13) 10.13 8% Convertible Redeemable Replacement Back End Note due May 1, 2018 (13) 10.14 Securities Purchase Agreement, dated October 5, 2018 (16) 10.15 8% Convertible Promissory Note due April 1, 2020 (16) 10.16 8% Convertible Promissory Note due May 19, 2020 (17) 10.17 Securities Purchase Agreement, dated January 24, 2019 (19) 10.18 8% Convertible Promissory Note due May 24, 2020 (19) 10.19 Securities Purchase Agreement, dated February 4, 2019 (20) 10.20 8% Convertible Promissory Note due November 30, 2019 (20) 10.21 Securities Purchase Agreement, dated February 20, 2019 (21) 10.22 8% Convertible Promissory Note due August 20, 2020 (21) 10.23 Securities Purchase Agreement, dated February 25, 2019 (21) 10.24 12% Convertible Promissory Note due February 25, 2020 (21) 10.25 Securities Purchase Agreement, dated February 27, 2019 (21) 10.26 8% Tranche Convertible Promissory Note due August 27, 2020 (21) 10.27 Securities Purchase Agreement, dated March 22, 2019 (22) 10.28 8% Convertible Promissory Note due September 21, 2020 (22)",
+   "prose_after": "* Filed herewith.\n(1) Incorporated by reference to the Company\u2019s Registration Statement on Form S-1 filed on December 30, 2011.\n(2) Incorporated by reference to the Company\u2019s report on Form 8-K filed November 6, 2014.\n(3) Incorporated by reference to the Company\u2019s report on Form 8-K filed March 14, 2016.\n(4) Incorporated by reference to the Company\u2019s report on Form 8-K filed August 21, 2015.\n(5) Incorporated by reference to the Company\u2019s report on Form 8-K Filed January 14, 2016.\n(6) Incorporated by reference to the Company\u2019s report on Form 10-K filed April 14, 2016.\n(7) Incorporated by reference to the Company\u2019s Form 8-K filed May 6, 2016.\n(8) Incorporated by reference to the Company\u2019s Registration Statement on Form S-8 filed August 2, 2016.\n(9) Incorporated by reference to the Company\u2019s Form 8-K filed October 17, 2016.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2058,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "April 15, 2019",
+     "MEDIFIRST SOLUTIONS, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Bruce Schoengood"
+    ],
+    [
+     "",
+     "",
+     "Bruce Schoengood"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2113,
+    "end_line": 2121
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(15) Incorporated by reference to the Company\u2019s Form 8-K filed September 6, 2017.\n(16) Incorporated by reference to the Company\u2019s Form 8-K filed October 12, 2018\n(17) Incorporated by reference to the Company\u2019s Form 8-K filed November 28, 2018\n(18) Incorporated by reference to the Company\u2019s Registration Statement on Form S-8 filed January 11, 2019\n(19) Incorporated by reference to the Company\u2019s Form 8-K filed February 5, 2019\n(20) Incorporated by reference to the Company\u2019s Form 8-K filed February 12, 2019\n(21) Incorporated by reference to the Company\u2019s Form 8-K filed February 27, 2019\n(22) Incorporated by reference to the Company\u2019s Form 8-K filed March 29, 2019\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 2133,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Bruce Schoengood",
+     "President, Chief Executive Officer,",
+     "April 15, 2019"
+    ],
+    [
+     "",
+     "Bruce Schoengood",
+     "Principal Financial Officer, Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2124,
+    "end_line": 2132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2108,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 2133,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,1815 @@
+{
+ "accession": "0001437749-24-012199",
+ "cik": "0001303942",
+ "form": "10-K/A",
+ "filing_date": "2024-04-16",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bfin20231231_10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "75-3199276"
+    ],
+    [
+     "(State or Other Jurisdiction\n\nof Incorporation)",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "60 North Frontage Road, Burr Ridge, Illinois 60527",
+     ""
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\nAmendment No. 1\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from             to\nCommission File Number 0-51331\nBANKFINANCIAL CORPORATION\n(Exact Name of Registrant as Specified Its Charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (800) 894-6900\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading\n\nSymbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.01 per share",
+     "BFIN",
+     "The NASDAQ Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (800) 894-6900\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the issuer is a well-known seasoned issuer as defined in Rule 405 of the Securities Act. Yes [ ] No [X].\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X].\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Director",
+     "Term of Class"
+    ],
+    [
+     "Name",
+     "Position(s) Held in the Company",
+     "Since (1)",
+     "to Expire"
+    ],
+    [
+     "Cassandra J. Francis",
+     "Director",
+     "2006",
+     "2027"
+    ],
+    [
+     "Terry R. Wells",
+     "Director",
+     "1994",
+     "2027"
+    ],
+    [
+     "John M. Hausmann, C.P.A.",
+     "Director",
+     "1990",
+     "2025"
+    ],
+    [
+     "Aaron J. O'Connor",
+     "Director",
+     "2024",
+     "2025"
+    ],
+    [
+     "Glen R. Wherfel, C.P.A.",
+     "Director",
+     "2001",
+     "2025"
+    ],
+    [
+     "F. Morgan Gasior",
+     "Chairman of the Board, Chief Executive Officer and President",
+     "1983",
+     "2026"
+    ],
+    [
+     "Benjamin Mackovak",
+     "Director",
+     "2024",
+     "2026"
+    ],
+    [
+     "Debra R. Zukonik",
+     "Director",
+     "2020",
+     "2026"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 97,
+    "end_line": 110
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "On February 7, 2024, the Board of Directors of BankFinancial Corporation (the \u201cCompany\u201d) expanded its size to eight members from six members, and elected Aaron J. O\u2019Connor and Benjamin Mackovak to the Company\u2019s Board of Directors to fill the vacancies created by the increase in the size of the Board of Directors, effective immediately. The Board of Directors is divided into three classes. The bylaws of the Company establish the initial terms of office for each class of directors and provide that directors are elected for a term of office that will expire at the third succeeding Annual Meeting of Stockholders following their election, with each director to hold office until their successor is duly elected and qualifies.\nAs described in a Current Report on Form 8-K filed with the Securities and Exchange Commission on February 7, 2024, the Company entered into a Standstill Agreement with Strategic Value Bank Partners, LLC, Strategic Value Investors LP and Benjamin Mackovak. Under the Standstill Agreement and subject to the terms and conditions set forth therein, the Company agreed, among other things, that its board of directors will appoint Mr. Mackovak to serve as a director of the Company in the class of directors with a term expiring at the Company\u2019s 2026 Annual Meeting.\nThe following table sets forth certain information regarding the members of the Board of Directors, including their years of service and terms of office. Except as indicated in this Amendment No. 1 on Form 10-K/A to the Annual Report on Form 10-K of the Company, there are no arrangements or understandings between any of the directors or nominees and any other person pursuant to which such directors or nominees were selected.",
+   "prose_after": "(1) Denotes the earlier of the year the individual became a director of the Bank or the year the individual became a director of the Company or its predecessors, BankFinancial MHC and BankFinancial Corporation, the federal corporation. Messrs. Gasior, Hausmann and Wells have each served as a director of the Company since its formation in 2004. Mr. Wherfel and Ms. Francis were appointed to the Board of Directors of the Company in 2006. Ms. Zukonik joined as a director of the Company in 2020. Messrs. Mackovak and O'Connor joined as directors of the Company in 2024.\nThe business experience for at least the past five years of each member of the Board of Directors is set forth, with age information as of December 31, 2023. The biographies also contain information regarding the person\u2019s experience and the experiences, qualifications, attributes or skills that caused the Corporate Governance and Nominating Committee and the Board of Directors to determine that the person should serve as a director.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 85,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25e6",
+     "clearly motivates personnel to perform and succeed according to the current goals of the Company and the Bank;"
+    ],
+    [
+     "",
+     "\u25e6",
+     "provides management with the appropriate empowerment to make decisions that benefit the primary constituents;"
+    ],
+    [
+     "",
+     "\u25e6",
+     "aligns incentive compensation practices to risk-taking activities;"
+    ],
+    [
+     "",
+     "\u25e6",
+     "attracts and retains key personnel critical to the long-term success of the Company and the Bank;"
+    ],
+    [
+     "",
+     "\u25e6",
+     "provides for management succession planning and related considerations;"
+    ],
+    [
+     "",
+     "\u25e6",
+     "encourages increased productivity;"
+    ],
+    [
+     "",
+     "\u25e6",
+     "provides for subjective consideration in determining incentive and compensation components; and"
+    ],
+    [
+     "",
+     "\u25e6",
+     "ensures that management:"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 196,
+    "end_line": 206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to its Charter, the Human Resources Committee of the Company is responsible for the execution of the Board of Directors\u2019 responsibilities with respect to equity-based compensation, performance evaluation and succession planning for the Company\u2019s Chief Executive Officer and other named executive officers of the Company. The Human Resources Committee of the Bank is responsible for the execution of the responsibilities of the Board of Directors of the Bank with respect to cash-based compensation, employee benefits and perquisites, performance evaluation and succession planning for the Bank\u2019s Chief Executive Officer, and other senior officers of the Bank. The Human Resources Committee of the Bank communicates its actions and decisions to the Human Resources Committee of the Company. The Human Resources Committee of the Company is comprised of Messrs. Wherfel (Chairman), Hausmann and Wells and Ms. Francis, each of whom is expected to serve on the committee through the conclusion of the Company\u2019s Annual Meeting of Stockholders on Friday, June 21, 2024. Each member of the Human Resources Committee of the Company is considered \u201cindependent\u201d according to the listing standards of the NASDAQ Stock Market and a \u201cnon-employee\u201d director under Section 16 of the Securities Exchange Act of 1934.\nCompensation Philosophy and Objectives\nThe overall objective of the Company\u2019s and the Bank\u2019s compensation programs is to align executive officer compensation with the success of meeting strategic, financial and management objectives and goals. The programs are designed to create meaningful and appropriate incentives to manage the business of the Company and the Bank successfully and to align management interests with those of the stockholders of the Company. The program is structured to accomplish the following:\n\u2022 encourage a consistent and competitive return to stockholders over the long-term;\n\u2022 maintain a corporate environment that encourages stability and a long-term focus for the primary constituencies of the Company and the Bank, including employees, stockholders, communities, clients and government regulatory agencies;\n\u2022 maintain a program that:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 176,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 213,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25aa",
+     "fulfills its oversight responsibility to its primary constituents;"
+    ],
+    [
+     "",
+     "\u25aa",
+     "conforms its business conduct to the Company\u2019s and the Bank\u2019s established ethical standards;"
+    ],
+    [
+     "",
+     "\u25aa",
+     "remains free from any influences that could impair or appear to impair the objectivity and impartiality of its judgments or treatment of the constituents of the Company and the Bank; and"
+    ],
+    [
+     "",
+     "\u25aa",
+     "avoids any conflict between its responsibilities to the Company and the Bank and each executive officer\u2019s personal interests."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 206,
+    "end_line": 213
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Compensation Principles and Factors\nBusiness Plan Objectives. The Boards of Directors of the Company and the Bank periodically conduct a review of current and anticipated business conditions in the context of the Company\u2019s and the Bank\u2019s financial and competitive position. The review period typically includes the previous two fiscal years and up to two years prospectively. In connection with this review, management submits a Business Plan to the Boards of Directors of the Company and the Bank that proposes strategic, financial and management objectives for the period covered, using multiple scenarios in response to a variety of stated assumptions. The Boards of Directors then evaluate the proposed Business Plan and modify its provisions to the extent they deem appropriate. The Business Plan is updated by management and the Boards of Directors periodically throughout the year to respond to changing circumstances and conditions. The Business Plan provides a basis for evaluating the future progress of the organization, including all appropriate strategic alternatives, and management\u2019s performance.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 176,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 213,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "2024 Base Salary",
+     ""
+    ],
+    [
+     "F. Morgan Gasior",
+     "Chairman of the Board, Chief Executive Officer and President",
+     "$",
+     "507,756"
+    ],
+    [
+     "Paul A. Cloutier",
+     "Executive Vice President and Chief Financial Officer",
+     "$",
+     "333,125"
+    ],
+    [
+     "Gregg T. Adams",
+     "Marketing & Sales President - Bank",
+     "$",
+     "279,269"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 249
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Alignment of Risk and Performance-Based Compensation. The Code of Business Conduct for the Company and the Bank incorporates a NASDAQ Clawback Policy for the Executive Officers of the Company and the Bank that provides for the recovery of Erroneously Awarded Compensation in the event the Company is required to prepare an Accounting Restatement. For those not covered by the NASDAQ Clawback Policy, the Code of Business Conduct for the Company and the Bank includes provisions for the recovery (also known as \u201cclawback\u201d) of performance-based incentive compensation paid in or after 2023 in certain situations involving a restatement of financial reporting for a period up to three years from the date the restated financial statements are first filed with the SEC. In addition, incentive compensation plans adopted by the Bank that are directly related to the volumes and pricing of extensions of credit provide for the exclusion or deferral of incentive-based compensation based on either the inherent risk of the extension of credit or the risk rating assigned to the credit by a committee independent of the loan origination process.\nComponents of Executive Compensation\nGeneral. All Named Executive Officers of the Company, including the Chief Executive Officer, are currently executive officers of the Bank. The compensation that the Bank pays to its Named Executive Officers, however, is taken into account in establishing the intercompany expense allocations that the Company pays to the Bank.\nBase Salary. Generally, base salary levels are established based on job descriptions and responsibilities, either temporary or permanent in nature (including any revisions or proposed revisions thereto), competitive conditions and general economic trends in the context of the Bank\u2019s financial and franchise condition, and performance. A discussion of changes in base salaries for each Named Executive Officer is included under \u201cConclusions for the Year Ended December 31, 2023.\u201d\nThe base salaries of the Named Executive Officers for 2024 are as follows:",
+   "prose_after": "Cash Incentive Plan Compensation. The Bank maintains numerous cash incentive compensation plans at the Divisional or Departmental level. Each plan aligns incentive compensation with the applicable Business Plan objectives for a particular Division or Department. The Bank\u2019s Human Resources Committee approves each Divisional or Departmental cash incentive compensation plan for a calendar year. At the conclusion of the calendar year, the Bank\u2019s Human Resources Committee reviews the proposed awards for all department managers at the level of Senior Vice President or higher pursuant to each Divisional or Departmental plan. Cash incentive plan compensation for the Chief Executive Officer, the Chief Financial Officer and the Marketing and Sales President reflects the relative achievement of the strategic, financial and management objectives established by the Business Plan, management\u2019s responses to unforeseen circumstances or conditions that materially differ from those originally assumed, and the performance factors applicable for each individual. Historically, the Bank prepared a performance- and risk-based incentive compensation matrix for the Chief Executive Officer and the Chief Financial Officer. Taken together, this matrix incorporated direct relationships of certain key risk exposures and performance elements for the Company. Information with respect to this plan or matrix for the Chief Executive Officer and the Chief Financial Officer is included in \u201cConclusions for the Year Ended December 31, 2023.\u201d",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Component",
+     "Weight",
+     "",
+     "2023 Performance Results",
+     "2023 Percentage Results",
+     "",
+     "",
+     "2023 Percentage Awarded",
+     "",
+     "",
+     "2023 Maximum Percentage",
+     "",
+     ""
+    ],
+    [
+     "Earnings Per Share",
+     "40",
+     "%",
+     "74% of Target",
+     "7.50",
+     "%",
+     "",
+     "7.50",
+     "%",
+     "",
+     "50",
+     "%",
+     ""
+    ],
+    [
+     "Net Commercial Loan Growth",
+     "5",
+     "",
+     "Met",
+     "10.00",
+     "",
+     "",
+     "10.00",
+     "",
+     "",
+     "50",
+     "",
+     ""
+    ],
+    [
+     "Commercial Loan Originations",
+     "5",
+     "",
+     "Met",
+     "10.00",
+     "",
+     "",
+     "10.00",
+     "",
+     "",
+     "50",
+     "",
+     ""
+    ],
+    [
+     "Securities Portfolio",
+     "5",
+     "",
+     "Met",
+     "20.00",
+     "",
+     "",
+     "20.00",
+     "",
+     "",
+     "50",
+     "",
+     ""
+    ],
+    [
+     "Asset Quality",
+     "20",
+     "",
+     "Below",
+     "10.00",
+     "",
+     "",
+     "10.00",
+     "",
+     "",
+     "50",
+     "",
+     ""
+    ],
+    [
+     "Internal Controls",
+     "10",
+     "",
+     "Met",
+     "15.00",
+     "",
+     "",
+     "15.00",
+     "",
+     "",
+     "50",
+     "",
+     ""
+    ],
+    [
+     "Leadership & Planning",
+     "15",
+     "",
+     "Met",
+     "30.00",
+     "",
+     "",
+     "30.00",
+     "",
+     "",
+     "50",
+     "",
+     ""
+    ],
+    [
+     "Composite",
+     "100",
+     "%",
+     "Met",
+     "13.00",
+     "%",
+     "(1)",
+     "13.00",
+     "%",
+     "(2)",
+     "50",
+     "%",
+     "(3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 294,
+    "end_line": 308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The Chief Executive Officer completed the credit policy, pricing and loan documentation development for the Bank\u2019s hybrid and universal commercial finance products, the Bank\u2019s Business LifeLine small business micro-credit products, the initial deployment of the Business Banking Department focused on small business customers, the Treasury Services supply-chain and wire transfer drawdown products and the Bank\u2019s new Digital Privacy Policy. The Chief Executive Officer maintained oversight over all legal matters for the Bank, including certain other litigation matters arising from the loan portfolio, the Trust Department, contract / vendor management reviews and various regulatory and state law compliance matters.\nBased on the foregoing, the Human Resources Committee determined that the Chief Executive Officer\u2019s performance in the Leadership and Planning category met expectations for 2023.\nConclusions. Based on the factors noted above, the Human Resources Committee of the Bank, with Mr. Gasior not participating, approved a 13.00% cash incentive compensation plan payment for 2023 with respect to the Chief Executive Officer, a reduction of $27,222 (29.8%) compared to 2022. The Human Resources Committee of the Bank also approved a standard base compensation increase of 2.5% for the Chief Executive Officer. The Board of Directors of the Bank, without the participation of the Chief Executive Officer, ratified the actions of the Human Resources Committee of the Bank with respect to the Chief Executive Officer.\nThe matrix used by the Human Resources Committee of the Bank with respect to the Chief Executive Officer is as follows:",
+   "prose_after": "(1) Represents the percentage of base salary earned as cash incentive compensation.\n(2) Represents the percentage of base salary paid as cash incentive compensation.\n(3) Represents the maximum percentage of base salary available as cash incentive compensation.\nThe Earnings Per Share target performance and the actual results for the year ended December 31, 2023, are set forth in the table below.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Category",
+     "2023 Results",
+     "Target Performance"
+    ],
+    [
+     "Earnings Per Share",
+     "$0.74",
+     "$1.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 315,
+    "end_line": 320
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Represents the percentage of base salary earned as cash incentive compensation.\n(2) Represents the percentage of base salary paid as cash incentive compensation.\n(3) Represents the maximum percentage of base salary available as cash incentive compensation.\nThe Earnings Per Share target performance and the actual results for the year ended December 31, 2023, are set forth in the table below.",
+   "prose_after": "Review of Chief Financial Officer. The Human Resources Committee of the Bank reviewed the performance of the Chief Financial Officer in the context of the evaluation categories established by the Board of Directors.\nEarnings Per Share. The Human Resources Committee determined that the Earnings Per Share category weighting for the Chief Financial Officer should remain constant at 25% of the total plan weighting for 2023. The goal of the Company has been to achieve a consistent earnings result of $1.00 per year Earnings Per Share. The Business Plan and the BankFinancial Corporation share repurchase plan are coordinated as feasible to achieve the targeted results. Based on the full-year 2023 results, the Human Resources Committee determined that Earnings Per Share were 74% of the target Earnings Per Share objective.\nInternal Controls. The Human Resources Committee determined that the Internal Controls category weighting for the Chief Financial Officer should remain constant at 25% of the total plan weighting. The Human Resources Committee determined that the results of the Bank's operations and audits with respect to the system of internal controls for financial and regulatory reporting met expectations.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 283,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Component",
+     "Weight",
+     "",
+     "2023 Performance Results",
+     "2023 Percentage Results",
+     "",
+     "",
+     "2023 Percentage Awarded",
+     "",
+     "",
+     "2023 Maximum Percentage",
+     "",
+     ""
+    ],
+    [
+     "Earnings Per Share",
+     "25",
+     "%",
+     "74% of Target",
+     "7.50",
+     "%",
+     "",
+     "7.50",
+     "%",
+     "",
+     "20",
+     "%",
+     ""
+    ],
+    [
+     "Internal Controls",
+     "25",
+     "",
+     "Met",
+     "14.00",
+     "",
+     "",
+     "14.00",
+     "",
+     "",
+     "20",
+     "",
+     ""
+    ],
+    [
+     "Asset Quality (Securities)",
+     "30",
+     "",
+     "Exceeded",
+     "18.00",
+     "",
+     "",
+     "18.00",
+     "",
+     "",
+     "20",
+     "",
+     ""
+    ],
+    [
+     "Liquidity & Interest Rate Risk",
+     "15",
+     "",
+     "Significantly Exceeded",
+     "20.00",
+     "",
+     "",
+     "20.00",
+     "",
+     "",
+     "20",
+     "",
+     ""
+    ],
+    [
+     "Leadership & Planning",
+     "5",
+     "",
+     "Met",
+     "14.00",
+     "",
+     "",
+     "14.00",
+     "",
+     "",
+     "20",
+     "",
+     ""
+    ],
+    [
+     "Composite",
+     "100",
+     "%",
+     "Met",
+     "14.48",
+     "%",
+     "(1)",
+     "14.48",
+     "%",
+     "(2)",
+     "20",
+     "%",
+     "(3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 337,
+    "end_line": 349
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Leadership & Planning. The Human Resources Committee determined that the Leadership & Planning category weighting should remain constant at 5% of the total plan weighting for 2023. This category reflects the advance planning elements of the Chief Financial Officer role on emerging financial accounting and taxation issues. The Chief Financial Officer also managed the Bank\u2019s corporate insurance program and coordinates fixed asset investment / management functions for the Bank. The Human Resources Committee determined that the results with respect to leadership and planning met expectations for 2023.\nConclusions. Based on the factors noted above, the Human Resources Committee of the Bank approved a 14.48% cash incentive compensation plan payment for 2023 with respect to the Chief Financial Officer. The Human Resources Committee of the Bank also approved a standard base compensation increase of 2.5% for the Chief Financial Officer. The Board of Directors of the Bank ratified the actions of the Human Resources Committee of the Bank with respect to the Chief Financial Officer.\nThe matrix utilized by the Human Resources Committee of the Bank with respect to the Chief Financial Officer is as follows:",
+   "prose_after": "(1) Represents the percentage of base salary earned as cash incentive compensation.\n(2) Represents the percentage of base salary paid as cash incentive compensation.\n(3) Represents the maximum percentage of base salary available as cash incentive compensation.\nThe Earnings target and the actual results for the year ended December 31, 2023, are set forth in the table in the Review of the Chief Executive Officer.\nReview of Marketing and Sales President. The Human Resources Committee of the Bank reviewed the performance of the Marketing and Sales President. The Human Resources Committee of the Bank noted that the Chief Executive Officer had submitted a written performance assessment of the performance of the Marketing and Sales President and the applicable bonus or cash incentive compensation payments based on the results of the Bank\u2019s deposit portfolio composition and cost of funds, Trust Department operations and results, Treasury Services Department operations and results, deposit product development, and leadership and planning.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Non-Equity Incentive Plan Compensation",
+     "",
+     "",
+     "All Other Compensation (2)",
+     "",
+     "Total Compensation",
+     ""
+    ],
+    [
+     "F. Morgan Gasior",
+     "2023",
+     "$",
+     "491,488",
+     "$",
+     "\u2014",
+     "$",
+     "64,398",
+     "(3)",
+     "$",
+     "57,560",
+     "$",
+     "613,446"
+    ],
+    [
+     "Chairman of the Board, Chief Executive Officer",
+     "2022",
+     "",
+     "480,944",
+     "",
+     "\u2014",
+     "",
+     "91,620",
+     "",
+     "",
+     "61,352",
+     "",
+     "633,916"
+    ],
+    [
+     "Paul A. Cloutier",
+     "2023",
+     "$",
+     "321,275",
+     "$",
+     "\u2014",
+     "$",
+     "47,044",
+     "(4)",
+     "$",
+     "32,521",
+     "$",
+     "400,840"
+    ],
+    [
+     "Executive Vice President and Chief Financial Officer",
+     "2022",
+     "",
+     "309,522",
+     "",
+     "\u2014",
+     "",
+     "46,675",
+     "",
+     "",
+     "31,391",
+     "",
+     "387,588"
+    ],
+    [
+     "Gregg T. Adams (1)",
+     "2023",
+     "$",
+     "270,321",
+     "$",
+     "33,771",
+     "$",
+     "2,229",
+     "(5)",
+     "$",
+     "20,695",
+     "$",
+     "327,016"
+    ],
+    [
+     "Marketing & Sales President",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 384,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "The cash incentive compensation programs for the Chief Executive Officer and the Chief Financial Officer include asset quality measurements and the Chief Executive Officer and the Chief Financial Officer and Marketing and Sales President include internal control risk measurements. Similar controls exist within the incentive compensation plans for non-executive officers and employees, as applicable. In addition, the measurement and review of the asset quality and internal controls performance are separated from the applicable business operations, including audits by the Internal Audit Division, the Company\u2019s independent external audit firm and other third-party independent reviews. Finally, the overall system of internal controls is robust and provides multiple levels of controls to reasonably detect and prevent instances of excessive risk taking within the organization.\nTax and Accounting Treatment\nThe Human Resources Committees of the Company and the Bank believe that, as compensation structures become more complex, the effects of taxation issues could affect the net intended effect of the Company\u2019s and the Bank\u2019s compensation plans. Although no specific action is warranted at this time, the Human Resources Committees of the Company and the Bank intend to monitor the effects of taxation issues on the Company and its directors, officers and associates when evaluating various compensation principles, practices and plans.\nEXECUTIVE COMPENSATION\nThe following table sets forth information concerning the compensation of the Company\u2019s Chief Executive Officer and the other two most highly compensated executive officers who served in such capacities during 2023:\nSummary Compensation Table",
+   "prose_after": "(1) Mr. Adams was not a reported named executive officer in 2022.\n(2) All other compensation for the Named Executive Officers during fiscal 2023 is summarized below:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 377,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Perquisites(i)",
+     "",
+     "Insurance(ii)",
+     "",
+     "Tax Reimbursement(iii)",
+     "",
+     "401(k) Match",
+     "",
+     "Other (iv)",
+     "",
+     "Total \u201cAll Other Compensation\u201d",
+     ""
+    ],
+    [
+     "F. Morgan Gasior",
+     "$",
+     "17,737",
+     "$",
+     "3,666",
+     "$",
+     "1,601",
+     "$",
+     "9,668",
+     "$",
+     "24,888",
+     "$",
+     "57,560"
+    ],
+    [
+     "Paul A. Cloutier",
+     "$",
+     "18,600",
+     "$",
+     "2,992",
+     "$",
+     "1,307",
+     "$",
+     "9,622",
+     "$",
+     "\u2014",
+     "$",
+     "32,521"
+    ],
+    [
+     "Gregg T. Adams",
+     "$",
+     "6,600",
+     "$",
+     "2,516",
+     "$",
+     "1,099",
+     "$",
+     "7,598",
+     "$",
+     "2,882",
+     "$",
+     "20,695"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 398,
+    "end_line": 407
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Mr. Adams was not a reported named executive officer in 2022.\n(2) All other compensation for the Named Executive Officers during fiscal 2023 is summarized below:",
+   "prose_after": "(i) Includes use of automobile or an automobile allowance, and in the case of Messrs. Gasior and Cloutier, club dues.\n(ii) Consists of premiums paid by the Company during the fiscal year with respect to additional short- and long-term disability insurance for each of the Named Executive Officers. Certain amounts were paid by the executive and reimbursed by the Company under employment agreement provisions that reduce, on a dollar-for-dollar basis, the Bank\u2019s obligations under such executive\u2019s employment agreement in the event of the executive\u2019s death or disability by the amount of insurance proceeds received by the executive\u2019s named beneficiary.\n(iii) Reflects reimbursement for income and employment taxes incurred by the executive as a result of the insurance premiums paid by the executive and reimbursed by the Company. See note (ii) above and discussion below for additional information.\n(iv) Reflects payout of accrued Paid Time Off (\u201cPTO\u201d) hours in excess of the allowable annual carry over limit.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 377,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Potential Payments",
+     "Termination by the Bank (1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other Types of Termination",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Executive",
+     "Upon Termination or Change of Control",
+     "For Cause",
+     "",
+     "For Disability (2)",
+     "",
+     "Without Cause (3)",
+     "",
+     "By Resignation",
+     "",
+     "For Good Reason (3)",
+     "",
+     "Upon Death (2)",
+     "",
+     "Change of Control (4)",
+     ""
+    ],
+    [
+     "F. Morgan Gasior",
+     "Cash payments",
+     "$",
+     "\u2014",
+     "$",
+     "1,243,545",
+     "$",
+     "1,775,465",
+     "$",
+     "\u2014",
+     "$",
+     "1,775,465",
+     "$",
+     "1,243,545",
+     "$",
+     "1,775,465"
+    ],
+    [
+     "",
+     "Continued Benefits",
+     "",
+     "\u2014",
+     "",
+     "24,680",
+     "",
+     "31,732",
+     "",
+     "\u2014",
+     "",
+     "31,732",
+     "",
+     "24,680",
+     "",
+     "31,732"
+    ],
+    [
+     "Paul A. Cloutier",
+     "Cash payments",
+     "$",
+     "\u2014",
+     "$",
+     "814,815",
+     "$",
+     "1,111,382",
+     "$",
+     "\u2014",
+     "$",
+     "1,111,382",
+     "$",
+     "814,815",
+     "$",
+     "1,111,382"
+    ],
+    [
+     "",
+     "Continued Benefits",
+     "",
+     "\u2014",
+     "",
+     "40,028",
+     "",
+     "51,464",
+     "",
+     "\u2014",
+     "",
+     "51,464",
+     "",
+     "40,028",
+     "",
+     "51,464"
+    ],
+    [
+     "Gregg T. Adams",
+     "Cash payments",
+     "$",
+     "\u2014",
+     "$",
+     "316,056",
+     "$",
+     "316,056",
+     "$",
+     "\u2014",
+     "$",
+     "316,056",
+     "$",
+     "316,056",
+     "$",
+     "452,285"
+    ],
+    [
+     "",
+     "Continued Benefits",
+     "",
+     "\u2014",
+     "",
+     "10,357",
+     "",
+     "10,357",
+     "",
+     "\u2014",
+     "",
+     "10,357",
+     "",
+     "10,357",
+     "",
+     "10,357"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Mr. Adams is eligible to receive an incentive under the Treasury Services Department Incentive Compensation Plan of 10% of the overall Plan bonus pool.\nPotential Payments upon Termination or Change of Control\nThe following table sets forth information concerning potential payments and benefits under the Company\u2019s compensation programs and benefit plans to which the Named Executive Officers would be entitled upon a termination of employment as of December 31, 2023. As is more fully described on the following page, the Named Executive Officers entered into employment agreements with the Company and/or the Bank, as applicable (each, an \u201cEmployment Agreement\u201d), which provide for payments and benefits to a terminating executive officer following a termination other than for \u201ccause\u201d or by resignation. Except for the payments and benefits provided by the Employment Agreements, all other payments and benefits provided to any Named Executive Officer upon termination of his employment are the same as the payments and benefits provided to other eligible executives of the Bank.",
+   "prose_after": "(1) For Messrs. Gasior and Cloutier, the payments reflected in these columns assume that the Bank continues to pay 100% of all compensation and benefits under their employment agreements with the Bank and the Company, and the Company continues to reimburse the Bank for a percentage of those expenses pursuant to an agreed-upon allocation under an Expense Sharing Agreement between the Bank and the Company. The allocation is based on the amount of time that Messrs. Gasior and Cloutier devote exclusively to the Company\u2019s affairs. Since its inception and continuing through April 16, 2024, the Company has not separately or directly paid any base salary, cash incentive compensation, bonus or other cash compensation to Messrs. Gasior and Cloutier, and the Company currently has no equity-based compensation plans in effect. In the event of a qualifying Change in Control of the Bank, Messrs. Gasior and Cloutier would be entitled to certain payments under their employment agreements with the Bank, subject to any reduction pursuant to Internal Revenue Code Section 280G as set forth therein. Pursuant to Messrs. Gasior and Cloutier\u2019s employment agreements with the Company, if the Bank were to fail to pay any amount due to Messrs. Gasior and Cloutier under their employment agreements with the Bank, the Company would be responsible for paying Messrs. Gasior and Cloutier such amount. The Company is not otherwise obligated to pay any separate or direct compensation to Messrs. Gasior and Cloutier. The Company is not prohibited from separately or directly compensating Messrs. Gasior and Cloutier, including upon the occurrence of a qualifying Change in Control, but this has not been the Company\u2019s practice. If this practice were to change, the amount of the separate payments made by the Company to Messrs. Gasior and Cloutier would be governed by the terms of their employment agreements with the Company and would not be limited or reduced by the terms of their employment agreements with the Bank or by Internal Revenue Code 280G. For Mr. Adams, the payments reflected in these columns assume that the Bank continues to pay 100% of all compensation and benefits under his agreement with the Bank.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($) (1)",
+     "",
+     "All Other Compensation",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Cassandra J. Francis",
+     "$",
+     "54,000",
+     "$",
+     "\u2014",
+     "$",
+     "54,000"
+    ],
+    [
+     "John M. Hausmann, C.P.A.",
+     "$",
+     "60,000",
+     "$",
+     "\u2014",
+     "$",
+     "60,000"
+    ],
+    [
+     "Aaron J. O'Connor (2)",
+     "$",
+     "36,000",
+     "$",
+     "\u2014",
+     "$",
+     "36,000"
+    ],
+    [
+     "Terry R. Wells",
+     "$",
+     "58,800",
+     "$",
+     "\u2014",
+     "$",
+     "58,800"
+    ],
+    [
+     "Glen R. Wherfel, C.P.A.",
+     "$",
+     "58,800",
+     "$",
+     "\u2014",
+     "$",
+     "58,800"
+    ],
+    [
+     "Debra R. Zukonik",
+     "$",
+     "18,000",
+     "$",
+     "\u2014",
+     "$",
+     "18,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Directors\u2019 Fees. All directors of the Company who served in 2023, other than Ms. Zukonik, are also directors of the Bank. Except for Mr. Gasior, who receives no fees for serving as a director, committee chairperson or committee member, the directors of the Bank received a Board fee of $3,000 per month for preparing for and attending meetings of the Board of Directors of the Bank. The directors of the Company received a Board fee of $1,500 per month. Except for the Audit Committee, the Bank did not pay its directors a separate fee during 2023 for serving on board committees. The members of the Audit Committee were paid an Audit Committee fee during 2023 because the Audit Committee is a required entity with separate responsibilities established by applicable laws and regulations. During 2023, the Company paid an Audit Committee fee of $500 per month to Mr. Hausmann (the Chairman of the Audit Committee), and $400 per month to Messrs. Wells and Wherfel (members of the Audit Committee). Mr. Hausmann was reimbursed for his travel expenses for attending meetings of the Board of Directors of the Company and the Bank.\nMs. Zukonik was compensated for service as a director of the Company because she is not a director of the Bank. Ms. Zukonik received a Board fee of $1,500 per month. Ms. Zukonik was reimbursed for her travel expenses for attending meetings of the Board of Directors of the Company.\nThe table below provides information on 2023 compensation for directors who served in 2023. Directors receive no perquisites in addition to the scheduled fees paid to each member, except as noted below:",
+   "prose_after": "(1) Fees for Ms. Francis and Messrs. Hausmann, Wells, and Wherfel include fees for service on the Board of Directors of the Bank in the amount of $36,000.\n(2) Fees for Mr. O'Connor represent fees for service on the Board of Directors of the Bank.\nCompensation Committee Interlocks and Insider Participation\nMr. Gasior is the only director of the Company and the Bank who is also an executive officer of the Company and/or the Bank. Mr. Gasior does not participate in the decisions of the Boards of Directors of the Company or the Bank or their respective Human Resources Committees concerning his compensation. No executive officer of the Company or the Bank has served on the Board of Directors or on the compensation committee of any other entity that had an executive officer serving on the Company\u2019s Board of Directors or Human Resources Committee.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGMENT AND RELATED STOCKHOLDER MATTERS\nBENEFICIAL OWNERSHIP OF COMMON STOCK BY CERTAIN BENEFICIAL OWNERS AND MANAGEMENT",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owners",
+     "Amount of Shares Owned and Nature of Beneficial Ownership (1)",
+     "",
+     "Percent of Shares of Common Stock Outstanding"
+    ],
+    [
+     "M3 Funds, LLC\n\n2070 E 2100 S, Suite 250\n\nSalt Lake City, Utah 84109",
+     "1,155,303",
+     "(2)",
+     "9.27%"
+    ],
+    [
+     "Dimensional Fund Advisors LP\n\n6300 Bee Cave Road, Building One\n\nAustin, Texas 78746",
+     "868,839",
+     "(2)",
+     "6.97%"
+    ],
+    [
+     "Voya Institutional Trust Company\n\nAs Trustee fbo BankFinancial and Subsidiaries 401(k) Plan",
+     "858,372",
+     "",
+     "6.89%"
+    ],
+    [
+     "Alliance Bernstein L.P.\n\n501 Commerce Street\n\nNashville, Tennessee 37203",
+     "718,811",
+     "(2)",
+     "5.77%"
+    ],
+    [
+     "Renaissance Technologies LLC\n\n800 Third Avenue\n\nNew York, New York 10022",
+     "699,115",
+     "(2)",
+     "5.61 %"
+    ],
+    [
+     "Black Rock, Inc.\n\n50 Hudson Yards\n\nNew York, New York 10001",
+     "678,311",
+     "(2)",
+     "5.44 %"
+    ],
+    [
+     "Strategic Value Investors, LP\n\n127 Public Square, Suite 1510\n\nCleveland, Ohio 44114",
+     "645,000",
+     "(3)",
+     "5.18 %"
+    ],
+    [
+     "Directors and Nominees",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cassandra J. Francis",
+     "40,444",
+     "",
+     "*"
+    ],
+    [
+     "F. Morgan Gasior",
+     "327,696",
+     "(4)",
+     "2.63 %"
+    ],
+    [
+     "John M. Hausmann",
+     "69,049",
+     "",
+     "*"
+    ],
+    [
+     "Aaron J. O'Connor",
+     "4,184",
+     "",
+     "*"
+    ],
+    [
+     "Benjamin Mackovak",
+     "645,000",
+     "(3)",
+     "5.18 %"
+    ],
+    [
+     "Terry R. Wells",
+     "56,384",
+     "",
+     "*"
+    ],
+    [
+     "Glen R. Wherfel",
+     "106,085",
+     "(5)",
+     "*"
+    ],
+    [
+     "Debra R. Zukonik",
+     "3,650",
+     "",
+     "*"
+    ],
+    [
+     "Named Executive Officers (other than Mr. Gasior):",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paul A. Cloutier",
+     "89,373",
+     "(6)",
+     "*"
+    ],
+    [
+     "Gregg T. Adams",
+     "96,275",
+     "(7)",
+     "*"
+    ],
+    [
+     "All Directors and Executive Officers (including Named Executive Officers) as a Group (12 persons)",
+     "1,618,636",
+     "",
+     "12.99 %"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 496,
+    "end_line": 547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "Mr. Gasior is the only director of the Company and the Bank who is also an executive officer of the Company and/or the Bank. Mr. Gasior does not participate in the decisions of the Boards of Directors of the Company or the Bank or their respective Human Resources Committees concerning his compensation. No executive officer of the Company or the Bank has served on the Board of Directors or on the compensation committee of any other entity that had an executive officer serving on the Company\u2019s Board of Directors or Human Resources Committee.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGMENT AND RELATED STOCKHOLDER MATTERS\nBENEFICIAL OWNERSHIP OF COMMON STOCK BY CERTAIN BENEFICIAL OWNERS AND MANAGEMENT\nThe following table sets forth, as of March 28, 2024, or such other date as is indicated, certain information as to the beneficial ownership of shares of the Company\u2019s common stock by: (i) those persons or entities known by the Company to beneficially own more than 5% of the Company\u2019s outstanding shares of common stock; (ii) each director and nominee for election as director; (iii) each named executive officer of the Company; and (iv) all directors and executive officers of the Company and the Bank as a group. The address for each individual listed below is: C/O BankFinancial Corporation, 60 North Frontage Road, Burr Ridge, Illinois 60527. An asterisk denotes beneficial ownership of less than one percent.",
+   "prose_after": "(1) The information reflected in this column is based upon information furnished to us by the persons named above and the information contained in the records of our stock transfer agent. The nature of beneficial ownership for shares shown in this column, unless otherwise noted, represents sole voting and investment power.\n(2) Amount of shares owned and reported on the most recent Schedule 13G filing with the SEC, reporting ownership as of December 31, 2023.\n(3) Amount of shares owned and reported on the most recent Schedule 13D, reporting ownership as of December 31, 2023 by Strategic Value Bank Partners, LLC. Certain of these parties report sole and/or shared voting and dispositive power with respect to these securities. Mr. Mackovak has no sole voting nor dispositive power.\n(4) Includes 118,159 shares held by the BankFinancial and Subsidiaries Associate Investment Plan. Also includes 125,000 shares held by Mr. Gasior\u2019s spouse. Mr. Gasior disclaims beneficial ownership of these 125,000 shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 489,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Exhibit",
+     "Location"
+    ],
+    [
+     "10.1",
+     "Amended and Restated Employment Agreement by and among BankFinancial, NA and Gregg T. Adams",
+     "Filed herewith"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)",
+     "Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 588,
+    "end_line": 596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Audit-Related Fees. RSM did not bill the Company for any fees for assurance and related services rendered that are reasonably related to the performance of the audit of and review of the financial statements and that are not already reported in \u201cAudit Fees\u201d above, for the years ended December 31, 2023 and 2022.\nTax Fees. The aggregate fees billed to the Company by RSM for professional service for tax consultations and tax compliance was $57,000 and $55,000 during the year ended December 31, 2023 and 2022, respectively.\nAll Other Fees. There were no other fees billed for professional services rendered by RSM other than those described above.\nAudit Committee Pre-Approval Policy\nThe Audit Committee pre-approves all auditing services and permitted non-audit services (including the fees and terms thereof) to be performed for the Company by RSM, subject to the de minimis exceptions for non-audit services described in Section 10A(i)(1)(B) of the Securities Exchange Act of 1934, as amended, which are approved by the Audit Committee prior to the completion of the audit. The Audit Committee pre-approved 100% of the audit and tax fees described above during the years ended December 31, 2023 and 2022.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+   "prose_after": "RSM US LLP\nWe have served as the Company's auditor since 2019.\nChicago, Illinois\n(PCAOB ID: 49)\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 585,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "BANKFINANCIAL CORPORATION",
+     ""
+    ],
+    [
+     "Date:",
+     "April 16, 2024",
+     "By:",
+     "/s/ F. Morgan Gasior"
+    ],
+    [
+     "",
+     "",
+     "",
+     "F. Morgan Gasior"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chairman of the Board, Chief Executive Officer and President"
+    ],
+    [
+     "",
+     "",
+     "",
+     "(Duly Authorized Representative)"
+    ]
+   ],
+   "caption_stack": [
+    "BANKFINANCIAL CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 617
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "RSM US LLP\nWe have served as the Company's auditor since 2019.\nChicago, Illinois\n(PCAOB ID: 49)\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 604,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 618,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

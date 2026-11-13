@@ -1,0 +1,2670 @@
+{
+ "accession": "0001829126-22-016074",
+ "cik": "0001907730",
+ "form": "10-Q",
+ "filing_date": "2022-08-22",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "yottaacq_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "86-3374167"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2022\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________ to _________\nCommission file number: 001-41357\nYotta Acquisition Corporation\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1185 Avenue of the Americas, Suite 301 New York, NY 10036\n(Address of principal executive offices)\n(212) 612-1400\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units",
+     "YOTAU",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Common Stock",
+     "YOTA",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Warrants",
+     "YOTAW",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Rights",
+     "YOTAR",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 45,
+    "end_line": 53
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1185 Avenue of the Americas, Suite 301 New York, NY 10036\n(Address of principal executive offices)\n(212) 612-1400\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Part I. Financial Information",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements",
+     "1"
+    ],
+    [
+     "Condensed Balance Sheets as of June 30, 2022 (unaudited) and December 31, 2021",
+     "1"
+    ],
+    [
+     "Unaudited Condensed Statements of Operations for the three and six months ended June 30, 2022, for the three months ended June 30, 2021 and for the period from March 8, 2021 (inception) through June 30, 2021",
+     "2"
+    ],
+    [
+     "Unaudited Condensed Statements of Changes in Stockholders\u2019 Deficit for the six months ended June 30, 2022 and for the period from March 8, 2021 (inception) through June 30, 2021",
+     "3"
+    ],
+    [
+     "Unaudited Condensed Statements of Cash Flows for the six months ended June 30, 2022 and for the period from March 8, 2021 (inception) through June 30, 2021",
+     "4"
+    ],
+    [
+     "Notes to Condensed Financial Statements (Unaudited)",
+     "5"
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "18"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "22"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part II. Other Information",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "23"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "23"
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "23"
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "23"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "23"
+    ],
+    [
+     "Item 5. Other Information",
+     "23"
+    ],
+    [
+     "Item 6. Exhibits",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "25"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I. Financial Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 76,
+    "end_line": 103
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of August 19, 2022, there were 14,718,499 shares of the registrant\u2019s common stock, $0.0001 par value, issued and outstanding.\nYOTTA ACQUISITION CORPORATION\nFORM 10-Q FOR THE QUARTERLY PERIOD ENDED JUNE 30, 2022\nTABLE OF CONTENTS",
+   "prose_after": "i\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nYOTTA ACQUISITION CORPORATION CONDENSED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2022",
+     "",
+     "",
+     "December 31, 2021 (Audited)",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "386,487",
+     "",
+     "$",
+     "196,000",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "249,483",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "\u2014",
+     "",
+     "",
+     "99,600",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "635,970",
+     "",
+     "",
+     "295,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investments held in Trust Account",
+     "",
+     "115,139,177",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "115,775,147",
+     "",
+     "$",
+     "295,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities, Redeemable Common Stock, and Stockholder\u2019s Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "26,500",
+     "",
+     "$",
+     "21,789",
+     ""
+    ],
+    [
+     "Franchise tax accrual",
+     "",
+     "36,188",
+     "",
+     "",
+     "10,580",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "23,849",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Promissory note - related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "250,000",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "86,537",
+     "",
+     "",
+     "282,369",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "",
+     "4,025,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "4,111,537",
+     "",
+     "",
+     "282,369",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption, 11,500,000 shares at conversion value of $10.01 per share",
+     "",
+     "115,139,177",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity (Deficit)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 50,000,000 shares authorized; 3,218,499 and 2,874,999 shares issued and outstanding at June 30, 2022 and December 31, 2021, respectively (excluding 11,500,000 and 0 shares subject to possible redemption, respectively)",
+     "",
+     "321",
+     "",
+     "",
+     "287",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "\u2014",
+     "",
+     "",
+     "24,713",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(3,475,888)",
+     "",
+     "",
+     "(11,769)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity (Deficit)",
+     "",
+     "(3,475,567)",
+     "",
+     "",
+     "13,231",
+     ""
+    ],
+    [
+     "Total Liabilities, Redeemable Common Stock, and Stockholders\u2019 Equity (Deficit)",
+     "$",
+     "115,775,147",
+     "",
+     "$",
+     "295,600",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 112,
+    "end_line": 158
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "i\nPART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements.\nYOTTA ACQUISITION CORPORATION CONDENSED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION UNAUDITED CONDENSED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 161,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "For the period from March 8, 2021 (inception) through June 30,",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "135,547",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "135,547",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(135,547)",
+     "",
+     "",
+     "",
+     "",
+     "(135,547)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on investment held in Trust Account",
+     "",
+     "139,177",
+     "",
+     "",
+     "\u2014",
+     "",
+     "139,177",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net income before income taxes",
+     "",
+     "3,630",
+     "",
+     "",
+     "",
+     "",
+     "3,630",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes provision",
+     "",
+     "(23,849)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(23,849)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net loss",
+     "$",
+     "(20,219)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(20,219)",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, common stock subject to possible redemption",
+     "",
+     "8,733,333",
+     "",
+     "",
+     "\u2014",
+     "",
+     "4,366,667",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted Net loss per share, common stock subject to possible redemption",
+     "$",
+     "(0.00)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(0.00)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, common stock attributable to Yotta Acquisition Corporation",
+     "",
+     "3,028,349",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,764,174",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share, common stock attributable to Yotta Acquisition Corporation",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 164,
+    "end_line": 200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION UNAUDITED CONDENSED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION UNAUDITED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nThree and Six Months Ended June 30, 2022",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 161,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 203,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common stock",
+     "",
+     "",
+     "",
+     "Additional paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "",
+     "deficit",
+     "",
+     "",
+     "deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2022",
+     "",
+     "2,874,999",
+     "$",
+     "287",
+     "$",
+     "24,713",
+     "",
+     "$",
+     "(11,769)",
+     "",
+     "$",
+     "13,231",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2022",
+     "",
+     "2,874,999",
+     "$",
+     "287",
+     "$",
+     "24,713",
+     "",
+     "$",
+     "(11,769)",
+     "",
+     "$",
+     "13,231",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of private placement units",
+     "",
+     "343,500",
+     "",
+     "34",
+     "",
+     "3,434,966",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,435,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Warrants classified as equity",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "690,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "690,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Rights classified as equity",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8,280,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,280,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Offering costs allocated to Public Warrants and Public Rights classified as equity",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(527,624)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(527,624)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement of common stock to redemption value",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(11,902,055)",
+     "",
+     "",
+     "(3,443,900)",
+     "",
+     "",
+     "(15,345,955)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(20,219)",
+     "",
+     "",
+     "(20,219)",
+     ""
+    ],
+    [
+     "Balance as of June 30, 2022",
+     "",
+     "3,218,499",
+     "$",
+     "321",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(3,475,888)",
+     "",
+     "$",
+     "(3,475,567)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 208,
+    "end_line": 234
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION UNAUDITED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nThree and Six Months Ended June 30, 2022",
+   "prose_after": "Three and Six Months Ended June 30, 2021",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 203,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-In",
+     "",
+     "Accumulated",
+     "",
+     "Total Stockholder\u2019s",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "Deficit",
+     ""
+    ],
+    [
+     "Balance as of March 8, 2021 (inception)",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance as of March 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance as of June 30, 2021",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 237,
+    "end_line": 254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Three and Six Months Ended June 30, 2021",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION UNAUDITED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 203,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended\n\n\n\nJune 30, 2022",
+     "",
+     "",
+     "For the period from March 8, 2021 (inception) through June 30, 2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(20,219)",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Adjustments to reconcile net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on investment held in Trust Account",
+     "",
+     "(139,177)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(249,483)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "4,711",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Income tax payable",
+     "",
+     "23,849",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Franchise tax payable",
+     "",
+     "25,608",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(354,711)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of investment held in Trust Account",
+     "",
+     "(115,000,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(115,000,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from promissory note- related party",
+     "",
+     "\u2014",
+     "",
+     "",
+     "250,000"
+    ],
+    [
+     "Proceeds from sale of public units through public offering",
+     "",
+     "115,000,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Proceeds from sale of private placement units",
+     "",
+     "3,435,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Repayment of promissory note to related party",
+     "",
+     "(250,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Payment of underwriters\u2019 commissions",
+     "",
+     "(2,300,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Payment of deferred offering costs",
+     "",
+     "(339,802)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "115,545,198",
+     "",
+     "",
+     "250,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "190,487",
+     "",
+     "",
+     "250,000"
+    ],
+    [
+     "Cash, beginning of the period",
+     "",
+     "196,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Cash, end of the period",
+     "$",
+     "386,487",
+     "",
+     "$",
+     "250,000"
+    ],
+    [
+     "Supplemental Disclosure of Non-cash Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Initial classification of common stock subject to redemption",
+     "$",
+     "106,030,000",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Deferred underwriting fee",
+     "$",
+     "4,025,000",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Remeasurement of common stock to redemption value",
+     "$",
+     "15,345,955",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 260,
+    "end_line": 310
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION UNAUDITED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nYOTTA ACQUISITION CORPORATION\nNOTES TO UNAUDITED CONDENSED FINANCIAL STATEMENTS\nNote 1 \u2014 Description of Organization and Business Operations\nYotta Acquisition Corporation (the \u201cCompany\u201d) is a newly organized blank check company incorporated as a Delaware corporation on March 8, 2021. The Company was formed for the purpose of effecting a merger, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses or entities (\u201cBusiness Combination\u201d). The Company intend to focus on target businesses in and around the high technology, blockchain and other general business industries globally.\nAs of June 30, 2022, the Company had not commenced any operations. All activities through June 30, 2022 are related to the Company\u2019s formation and the initial public offering (\u201cIPO\u201d as described below in Note 3) and, subsequent to the IPO, identifying a target company for a Business Combination. The Company will not generate any operating revenues until after the completion of a Business Combination, at the earliest. The Company will generate non-operating income in the form of interest income from the proceeds derived from the IPO. The Company has selected December 31 as its fiscal year end.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 313,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended June 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Redeemable shares",
+     "",
+     "",
+     "Non-redeemable shares",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net loss",
+     "$",
+     "(15,013)",
+     "",
+     "$",
+     "(5,206)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding",
+     "",
+     "8,733,333",
+     "",
+     "",
+     "3,028,349",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Basic and diluted net loss per share",
+    "Three months ended June 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 431,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company complies with accounting and disclosure requirements of FASB ASC 260, Earnings Per Share. The Company\u2019s unaudited condensed statements of operations for subsequent periods will include a presentation of income (loss) per redeemable share and income (loss) per non-redeemable share following the two-class method of income per share. Net income (loss) per share is computed by dividing net income (loss) by the weighted average number of shares of common stock outstanding during the period, excluding shares of common stock subject to forfeiture by the Initial Stockholders. At June 30, 2022, the Company did not have any dilutive securities and other contracts that could, potentially, be exercised or converted into shares of common stock and then share in the earnings of the Company. As a result, diluted loss per share is the same as basic loss per share for the period presented.\nNet loss per common share is computed by dividing net income (loss) by the weighted-average number of shares of common stock outstanding during the period. As the Public Shares are considered to be redeemable at fair value, and a redemption at fair value does not amount to a distribution different than other stockholders, redeemable and non-redeemable common stock are presented as one class of stock in calculating net income (loss) per share. The Company has not considered the effect of the warrants sold in the IPO and private placement to purchase an aggregate of 11,843,500 shares in the calculation of diluted income (loss) per share, since the exercise of the warrants are contingent upon the occurrence of future events.\nThe Net loss per share presented in the unaudited condensed statement of operations is based on the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Redeemable shares",
+     "",
+     "",
+     "Non-redeemable shares",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net loss",
+     "$",
+     "(12,381)",
+     "",
+     "$",
+     "(7,838)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding",
+     "",
+     "4,366,667",
+     "",
+     "",
+     "2,764,174",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended June 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 449,
+    "end_line": 464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant Accounting Policies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Warrants\nThe Company accounts for warrants as either equity-classified or liability-classified instruments based on an assessment of the warrant\u2019s specific terms and applicable authoritative guidance in Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) 480, Distinguishing Liabilities from Equity (\u201cASC 480\u201d) and ASC 815, Derivatives and Hedging (\u201cASC 815\u201d). The assessment considers whether the warrants are freestanding financial instruments pursuant to ASC 480, meet the definition of a liability pursuant to ASC 480, and whether the warrants meet all of the requirements for equity classification under ASC 815, including whether the warrants are indexed to the Company\u2019s own common shares and whether the warrant holders could potentially require \u201cnet cash settlement\u201d in a circumstance outside of the Company\u2019s control, among other conditions for equity classification. This assessment, which requires the use of professional judgment, is conducted at the time of warrant issuance and as of each subsequent quarterly period end date while the warrants are outstanding.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 475,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of reconciliation of common stock reflected on balance sheet",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "As of June 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "Gross proceeds",
+     "$",
+     "115,000,000",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Warrants",
+     "",
+     "(690,000)",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Rights",
+     "",
+     "(8,280,000)",
+     ""
+    ],
+    [
+     "Offering costs of Public Shares",
+     "",
+     "(6,236,778)",
+     ""
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "15,345,955",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption",
+     "$",
+     "115,139,177",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of reconciliation of common stock reflected on balance sheet",
+    "As of June 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 500,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 Initial Public Offering"
+    }
+   },
+   "prose_before": "The Company\u2019s redeemable common stock is subject to SEC and its staff\u2019s guidance on redeemable equity instruments, which has been codified in ASC 480-10-S99. If it is probable that the equity instrument will become redeemable, the Company has the option to either accrete changes in the redemption value over the period from the date of issuance (or from the date that it becomes probable that the instrument will become redeemable, if later) to the earliest redemption date of the instrument or to recognize changes in the redemption value immediately as they occur and adjust the carrying amount of the instrument to equal the redemption value at the end of each reporting period. The Company has elected to recognize the changes immediately. The accretion or remeasurement is treated as a deemed dividend (i.e., a reduction to retained earnings, or in absence of retained earnings, additional paid-in capital).\nAs of June 30, 2022, the shares of common stock reflected on the balance sheet are reconciled in the following table.",
+   "prose_after": "Note 4 \u2014 Private Placement\nSimultaneously with the closing of the IPO, the Sponsor purchased an aggregate of 313,500 Private Units at a price of $10.00 per Private Unit for an aggregate purchase price of $3,135,000 in a private placement. Simultaneously with the closing of the over-allotment option, the Company consummated the sale of an additional aggregate of 30,000 Private Units with the Sponsor at a price of $10.00 per Private Unit, generating total proceeds of $300,000. Each Private Unit will consist of one share of common stock (\u201cPrivate Share\u201d), one right (\u201cPrivate Right\u201d) and one redeemable warrant (\u201cPrivate Warrant\u201d). Each whole Private Warrant entitles the holder to purchase one share of common stock at a price of $11.50 per share, subject to adjustment. The Private Warrants will be identical to the Public Warrants except that the Private Warrants and the common shares issuable upon the exercise of the Private Warrants will not be transferable, assignable or saleable until after the completion of a Business Combination. The proceeds from the Private Units were added to the proceeds from the IPO to be held in the Trust Account. If the Company does not complete a Business Combination within the Combination Period, the proceeds from the sale of the Private Units will be used to fund the redemption of the Public Shares (subject to the requirements of applicable law), and the Private Units and all underlying securities will expire worthless.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 495,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1:",
+     "Quoted prices in active markets for identical assets or liabilities. An active market for an asset or liability is a market in which transactions for the asset or liability occur with sufficient frequency and volume to provide pricing information on an ongoing basis."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Fair Value Measurements"
+    }
+   },
+   "prose_before": "Private Warrants \u2014 The private warrants have terms and provisions that are identical to those of the warrants being sold as part of the units in this offering except that the private warrants will be entitled to registration rights. The private warrants (including the common stock issuable upon exercise of the private warrants) will not be transferable, assignable or saleable until after the completion of our initial business combination except to permitted transferees.\nNote 8 \u2014 Fair Value Measurements\nThe fair value of the Company\u2019s consolidated financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 2:",
+     "Observable inputs other than Level 1 inputs. Examples of Level 2 inputs include quoted prices in active markets for similar assets or liabilities and quoted prices for identical assets or liabilities in markets that are not active."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 610,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 3:",
+     "Unobservable inputs based on the assessment of the assumptions that market participants would use in pricing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 615,
+    "end_line": 618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following table presents information about the Company\u2019s assets and liabilities that are measured at fair value on June 30, 2022, and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value measurements, recurring and nonrecurring",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash held in Trust Account",
+     "$",
+     "115,139,177",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "115,139,177"
+    ],
+    [
+     "Total assets",
+     "$",
+     "115,139,177",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "115,139,177"
+    ]
+   ],
+   "caption_stack": [
+    "Fair value measurements, recurring and nonrecurring"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014 Fair Value Measurements"
+    }
+   },
+   "prose_before": "The following table presents information about the Company\u2019s assets and liabilities that are measured at fair value on June 30, 2022, and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "Note 9 \u2014 Subsequent Events\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date up to the date that the financial statement was issued. Based on the review as further disclosed in the footnotes, management did not any subsequent event requiring disclosure in the financial statements.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nReferences in this report (this \u201cQuarterly Report\u201d) to \u201cwe,\u201d \u201cus\u201d or the \u201cCompany\u201d refer to Yotta Acquisition Corporation References to our \u201cmanagement\u201d or our \u201cmanagement team\u201d refer to our officers and directors. The following discussion and analysis of the Company\u2019s financial condition and results of operations should be read in conjunction with the unaudited condensed financial statements and the notes thereto contained elsewhere in this Quarterly Report. Certain information contained in the discussion and analysis set forth below includes forward-looking statements that involve risks and uncertainties.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File (Embedded within the Inline XBRL document and included in Exhibit)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 779,
+    "end_line": 796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "A total of $115,000,000 of the net proceeds from the sale of the Units in the IPO and the private placement of the Private Units on April 22, 2022 and April 27, 2022 were deposited in a trust account established for the benefit of the Company\u2019s public stockholders at JPMorgan Chase Bank, N.A. maintained by Continental Stock Transfer & Trust Company, acting as trustee.\nFor a description of the use of the proceeds generated in our IPO, see Part I, Item 2 \u2013 Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations of this Quarterly Report.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNot applicable.\nItem 5. Other Information\nNone.\nItem 6. Exhibits\nThe following exhibits are filed as part of, or incorporated by reference into, this Quarterly Report.",
+   "prose_after": "* Filed herewith.\n** Furnished herewith. This certification is being furnished solely to accompany this report pursuant to 18 U.S.C. Section 1350, and is not being filed for purposes of Section 18 of the Exchange Act of 1934, as amended, and is not to be incorporated by reference into any filings of the Company, whether made before or after the date hereof, regardless of any general incorporation language in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YOTTA ACQUISITION CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 22, 2022",
+     "By:",
+     "/s/ Hui Chen"
+    ],
+    [
+     "",
+     "Name:",
+     "Hui Chen"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 22, 2022",
+     "By:",
+     "/s/ Robert L. Labbe"
+    ],
+    [
+     "",
+     "Name:",
+     "Robert L. Labbe"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Accounting and Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "YOTTA ACQUISITION CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 805,
+    "end_line": 820
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 Subsequent Events"
+    }
+   },
+   "prose_before": "* Filed herewith.\n** Furnished herewith. This certification is being furnished solely to accompany this report pursuant to 18 U.S.C. Section 1350, and is not being filed for purposes of Section 18 of the Exchange Act of 1934, as amended, and is not to be incorporated by reference into any filings of the Company, whether made before or after the date hereof, regardless of any general incorporation language in such filing.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

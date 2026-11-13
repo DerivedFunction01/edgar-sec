@@ -1,0 +1,5408 @@
+{
+ "accession": "0001144204-09-043936",
+ "cik": "0001076784",
+ "form": "10-Q",
+ "filing_date": "2009-08-17",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v158125_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "88-0403070"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2009\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____ to _____\nCommission File Number: 000-28767\nChina 3C Group\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "368 HuShu Nan Road\nHangZhou City, Zhejiang Province, China 310014\n(Address of principal executive offices) (Zip Code)\n086-0571-88381700\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nIndicate by check whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days: Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 37,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of June 30, 2009 (Unaudited) and December 31, 2008",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Income for the Six Months Ended June 30, 2009 and 2008 (Unaudited)",
+     "2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Income for the Three Months Ended June 30, 2009 and 2008 (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Six Months Ended June 30, 2009 and 2008 (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "20"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosure About Market Risk",
+     "27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Submission of Matters to a Vote of Security Holders",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "30"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 53,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ] Accelerated filer [X] Non-accelerated filer (Do not check if a smaller reporting company) [ ] Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAs of August 12, 2009 the registrant had 53,931,327 shares of common stock outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 51,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "25,448,256",
+     "",
+     "$",
+     "32,157,831",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "24,481,068",
+     "",
+     "",
+     "23,724,587",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "9,377,825",
+     "",
+     "",
+     "8,971,352",
+     ""
+    ],
+    [
+     "Advances to suppliers",
+     "",
+     "2,337,541",
+     "",
+     "",
+     "2,491,518",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "27,161",
+     "",
+     "",
+     "87,773",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "61,671,851",
+     "",
+     "",
+     "67,433,061",
+     ""
+    ],
+    [
+     "Property, plant and equipment, net",
+     "",
+     "55,513",
+     "",
+     "",
+     "64,100",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "20,348,278",
+     "",
+     "",
+     "20,348,278",
+     ""
+    ],
+    [
+     "Deposit for acquisition of subsidiary",
+     "",
+     "14,609,631",
+     "",
+     "",
+     "7,318,501",
+     ""
+    ],
+    [
+     "Refundable deposits",
+     "",
+     "26,796",
+     "",
+     "",
+     "32,076",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "96,712,069",
+     "",
+     "$",
+     "95,196,016",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "4,457,112",
+     "",
+     "$",
+     "5,417,327",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "391,887",
+     "",
+     "",
+     "2,140,624",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "4,848,999",
+     "",
+     "",
+     "7,557,951",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 100,000,000 million shares authorized, 53,931,327 and 52,673,938 issued and outstanding as of June 30, 2009 and December 31, 2008, respectively",
+     "",
+     "53,931",
+     "",
+     "",
+     "52,674",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "19,464,519",
+     "",
+     "",
+     "19,465,776",
+     ""
+    ],
+    [
+     "Subscription receivable",
+     "",
+     "(50,000)",
+     "",
+     "",
+     "(50,000)",
+     ""
+    ],
+    [
+     "Statutory reserve",
+     "",
+     "11,109,379",
+     "",
+     "",
+     "11,109,379",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "5,143,453",
+     "",
+     "",
+     "5,272,104",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "56,141,788",
+     "",
+     "",
+     "51,788,132",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "",
+     "91,863,070",
+     "",
+     "",
+     "87,638,065",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' equity",
+     "$",
+     "96,712,069",
+     "",
+     "$",
+     "95,196,016",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 102,
+    "end_line": 147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF INCOME AND COMPREHENSIVE INCOME\nFOR THE SIX MONTHS ENDED JUNE 30, 2009 and 2008 (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "128,537,496",
+     "",
+     "$",
+     "146,668,847",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "112,458,293",
+     "",
+     "",
+     "123,246,750",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "16,079,203",
+     "",
+     "",
+     "23,422,097",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "10,235,495",
+     "",
+     "",
+     "6,312,088",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "5,843,708",
+     "",
+     "",
+     "17,110,009",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(54,072)",
+     "",
+     "",
+     "(65,567)",
+     ""
+    ],
+    [
+     "Gain on disposal",
+     "",
+     "-",
+     "",
+     "",
+     "(2,161)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "(162,786)",
+     "",
+     "",
+     "(311,929)",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "115,852",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other (income) expense",
+     "",
+     "(101,006)",
+     "",
+     "",
+     "(379,657)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "5,944,714",
+     "",
+     "",
+     "17,489,666",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "1,591,058",
+     "",
+     "",
+     "4,164,627",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "4,353,656",
+     "",
+     "",
+     "13,325,039",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "",
+     "(128,651)",
+     "",
+     "",
+     "2,822,640",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "4,225,005",
+     "",
+     "$",
+     "16,147,679",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income available to common shareholders per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "0.25",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "0.25",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "53,682,309",
+     "",
+     "",
+     "52,673,938",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "53,682,309",
+     "",
+     "",
+     "53,073,938",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 158,
+    "end_line": 200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF INCOME AND COMPREHENSIVE INCOME\nFOR THE SIX MONTHS ENDED JUNE 30, 2009 and 2008 (UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF INCOME AND COMPREHENSIVE INCOME\nFOR THE THREE MONTHS ENDED JUNE 30, 2009 and 2008 (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 151,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 202,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "51,125,936",
+     "",
+     "$",
+     "78,515,392",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "45,105,462",
+     "",
+     "",
+     "65,639,675",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "6,020,474",
+     "",
+     "",
+     "12,875,717",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "4,749,219",
+     "",
+     "",
+     "3,326,044",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "1,271,255",
+     "",
+     "",
+     "9,549,673",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(24,964)",
+     "",
+     "",
+     "(29,472)",
+     ""
+    ],
+    [
+     "Gain on disposal",
+     "",
+     "-",
+     "",
+     "",
+     "(2,161)",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "(14,659)",
+     "",
+     "",
+     "(324,743)",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "4,630",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total other (income) expense",
+     "",
+     "(34,993)",
+     "",
+     "",
+     "(356,376)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "1,306,248",
+     "",
+     "",
+     "9,906,049",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "392,167",
+     "",
+     "",
+     "2,354,054",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "914,081",
+     "",
+     "",
+     "7,551,995",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "",
+     "7,923",
+     "",
+     "",
+     "1,222,591",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "922,004",
+     "",
+     "$",
+     "8,774,586",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income available to common shareholders per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.14",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.14",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "53,931,327",
+     "",
+     "",
+     "52,673,938",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "53,931,327",
+     "",
+     "",
+     "53,073,938",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 211,
+    "end_line": 253
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF INCOME AND COMPREHENSIVE INCOME\nFOR THE THREE MONTHS ENDED JUNE 30, 2009 and 2008 (UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE SIX MONTHS ENDED JUNE, 2009 and 2008 (UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 204,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 255,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOW FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "4,353,656",
+     "",
+     "$",
+     "13,325,040",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by (used in ) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "13,300",
+     "",
+     "",
+     "20,069",
+     ""
+    ],
+    [
+     "Gain on asset disposition",
+     "",
+     "-",
+     "",
+     "",
+     "(2,161)",
+     ""
+    ],
+    [
+     "Provision for bad debts",
+     "",
+     "3,305",
+     "",
+     "",
+     "17,445",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "226,293",
+     ""
+    ],
+    [
+     "(Increase) / decrease in assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(801,418)",
+     "",
+     "",
+     "(11,039,822)",
+     ""
+    ],
+    [
+     "Other receivable",
+     "",
+     "25,731",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(423,551)",
+     "",
+     "",
+     "(6,265,805)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "34,775",
+     "",
+     "",
+     "9,291",
+     ""
+    ],
+    [
+     "Refundable deposits",
+     "",
+     "5,208",
+     "",
+     "",
+     "(4,078)",
+     ""
+    ],
+    [
+     "Advance to suppliers",
+     "",
+     "149,424",
+     "",
+     "",
+     "94,151",
+     ""
+    ],
+    [
+     "(Increase) / decrease in current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "(893,234)",
+     "",
+     "",
+     "2,101,789",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "(1,745,979)",
+     "",
+     "",
+     "(255,625)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "721,217",
+     "",
+     "",
+     "(1,773,413)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOW FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "(4,196)",
+     "",
+     "",
+     "(10,650)",
+     ""
+    ],
+    [
+     "Proceeds from asset sales",
+     "",
+     "-",
+     "",
+     "",
+     "2,447",
+     ""
+    ],
+    [
+     "Deposit for acquisition of subsidiary",
+     "",
+     "(7,291,130)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(7,295,326)",
+     "",
+     "",
+     "(8,203)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "",
+     "(135,466)",
+     "",
+     "",
+     "2,822,640",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "(6,709,575)",
+     "",
+     "",
+     "1,041,024",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "32,157,831",
+     "",
+     "",
+     "24,952,614",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "25,448,256",
+     "",
+     "$",
+     "25,993,638",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "3,339,755",
+     "",
+     "$",
+     "4,420,252",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 264,
+    "end_line": 309
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR THE SIX MONTHS ENDED JUNE, 2009 and 2008 (UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCHINA 3C GROUP AND SUBSIDIARIES\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nJUNE 30, 2009\nNote 1 - ORGANIZATION\nChina 3C Group (the \u201cCompany\u201d) was incorporated on August 20, 1998 under the laws of the State of Nevada. Capital Future Developments Limited - BVI (\u201cCapital\u201d) was incorporated on July 22, 2004 under the laws of the British Virgin Islands. Zhejiang Yong Xin Digital Technology Company Limited (\u201cZhejiang\u201d), Yiwu Yong Xin Communication Limited (\u201cYiwu\u201d), Hangzhou Wang Da Electronics Company Limited (\u201cWang Da\u201d), Hangzhou Sanhe Electronic Technology Limited (\u201cSanhe\u201d), and Shanghai Joy & Harmony Electronics Company Limited (\u201cJoy & Harmony\u201d) were incorporated under the laws of Peoples Republic of China (\u201cPRC\u201d) on July 11, 2005, July 18, 1997, March, 30, 1998, April 12, 2004, and August 20, 2003, respectively. On March 10, 2009 Zhejiang set up a new operating entity, Hangzhou Letong Digital Technology Co., Ltd. (\u201cLetong\u201d) to establish an electronic retail franchise operation for China 3C Group.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 257,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 311,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Automotive",
+     "5 years"
+    ],
+    [
+     "Office Equipment",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 390,
+    "end_line": 394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company maintains reserves for potential credit losses on accounts receivable. Management reviews the composition of accounts receivable and analyzes historical bad debts, customer concentrations, customer credit worthiness, current economic trends and changes in customer payment patterns to evaluate the adequacy of these reserves. Terms of the sales vary. Reserves are recorded primarily on a specific identification basis. Allowance for doubtful debts was $365,363 (unaudited) and $365,318 as of June 30, 2009 and December 31, 2008, respectively.\nInventories\nInventories are valued at the lower of cost (determined on a weighted average basis) or market. Management compares the cost of inventories with the market value and allowance is made for writing down their inventories to market value, if lower. As of June 30, 2009 and December 31, 2008, inventory consisted entirely of finished goods valued at $9,377,825 (unaudited) and $8,971,352, respectively.\nProperty, Plant & Equipment, net\nProperty, plant and equipment are stated at cost. Expenditures for maintenance and repairs are charged to earnings as incurred; additions, renewals and betterments are capitalized. When property and equipment are retired or otherwise disposed of, the related cost and accumulated depreciation are removed from the respective accounts, and any gain or loss is included in operations. Depreciation of property and equipment is provided using the straight-line method for substantially all assets with estimated lives of:",
+   "prose_after": "As of June 30, 2009 and December 31, 2008, property and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Automotive",
+     "$",
+     "134,060",
+     "",
+     "$",
+     "132,627",
+     ""
+    ],
+    [
+     "Office equipment",
+     "",
+     "119,980",
+     "",
+     "",
+     "116,700",
+     ""
+    ],
+    [
+     "Sub Total",
+     "",
+     "254,040",
+     "",
+     "",
+     "249,327",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "(198,527)",
+     "",
+     "",
+     "(185,227)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "55,513",
+     "",
+     "$",
+     "64,100",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 397,
+    "end_line": 410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "As of June 30, 2009 and December 31, 2008, property and equipment consisted of the following:",
+   "prose_after": "Long-Lived Assets\nThe Company periodically evaluates the carrying value of long-lived assets to be held and used in accordance with SFAS No. 144, \u201cAccounting for the Impairment or Disposal of Long-Lived Assets\u201d (\u201cSFAS 144\u201d). SFAS 144 requires impairment losses to be recorded on long-lived assets used in operations when indicators of impairment are present and the undiscounted cash flows estimated to be generated by those assets are less than the assets\u2019 carrying amounts. In that event, a loss is recognized based on the amount by which the carrying amount exceeds the fair market value of the long-lived assets. Losses on long-lived assets to be disposed of are determined in a similar manner, except that fair market values are reduced for the cost of disposal. Based on its review, the Company believes that, as of June 30, 2009 and December 31, 2008, there were no significant impairments of its long-lived assets.\nFair Value of Financial Instruments\nSFAS No. 107, \u201cDisclosures about Fair Value of Financial Instruments,\u201d requires the Company to disclose estimated fair values of financial instruments. The carrying amounts reported in the statements of financial position for current assets and current liabilities qualifying as financial instruments are a reasonable estimate of fair value.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 373,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 414,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Advertising service income",
+     "$",
+     "103,220",
+     "$",
+     "235,261"
+    ],
+    [
+     "Repair service income",
+     "",
+     "29,415",
+     "",
+     "-"
+    ],
+    [
+     "Commission income from China Unicom",
+     "",
+     "30,151",
+     "",
+     "76,668"
+    ],
+    [
+     "Total other income",
+     "$",
+     "162,786",
+     "$",
+     "311,929"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 493,
+    "end_line": 504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "In December 2002, the FASB issued SFAS No. 148, \u201cAccounting for Stock-Based Compensation-Transition and Disclosure-an amendment of SFAS 123.\u201d This statement amended SFAS 123, \u201cAccounting for Stock-Based Compensation,\u201d to provide alternative methods of transition for a voluntary charge to the fair value based method of accounting for stock-based employee compensation. In addition, this statement amended the disclosure requirements of SFAS No. 123 to require prominent disclosures in both annual and interim financial statements about the method of accounting for stock-based employee compensation and the effect of the method used on reported results.\nAdvertising\nAdvertising expenses consist primarily of costs of promotion for corporate image and product marketing and costs of direct advertising. The Company expenses all advertising costs as incurred. Advertising expense was $71,462, $89,192, $128,298 and $196,545 for the three and six months ended June 30, 2009 and 2008.\nOther Income\nOther income was $162,786 and $311,929, $14,659 and $326,904 for the six and three months ended June 30, 2009 and 2008. Other income consists of the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Advertising service income",
+     "$",
+     "-",
+     "$",
+     "246,555"
+    ],
+    [
+     "Repair service income",
+     "",
+     "14,659",
+     "",
+     ""
+    ],
+    [
+     "Commission income from China Unicom",
+     "",
+     "-",
+     "",
+     "80,349"
+    ],
+    [
+     "Total other income",
+     "$",
+     "14,659",
+     "$",
+     "326,904"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 505,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Advertising service income is the fee we receive from electronic product manufacturers when we advertise their products in our retail locations. Commission income from China Unicom is derived from the sales of China Unicom\u2019s wireless service and products, i.e. rechargeable mobile phone cards.\nIncome Taxes\nThe Company utilizes SFAS No. 109, \u201cAccounting for Income Taxes,\u201d which requires recognition of deferred tax assets and liabilities for the expected future tax consequences of events that have been included in the financial statements or tax returns. Under this method, deferred income taxes are recognized for the tax consequences in future years of differences between the tax bases of assets and liabilities and their financial reporting amounts at each period end based on enacted tax laws and statutory tax rates applicable to the periods in which the differences are expected to affect taxable income. Valuation allowances are established, when necessary, to reduce deferred tax assets to the amount expected to be realized.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 476,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2009",
+     "",
+     "2008",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "2,726,939",
+     "$",
+     "2,753,728"
+    ],
+    [
+     "Accrued expenses and other payable",
+     "",
+     "1,597,566",
+     "",
+     "1,839,807"
+    ],
+    [
+     "VAT tax payable",
+     "",
+     "132,607",
+     "",
+     "823,793"
+    ],
+    [
+     "Total",
+     "$",
+     "4,457,112",
+     "$",
+     "5,417,327"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 589,
+    "end_line": 599
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 ACCOUNTS PAYABLE AND ACCRUED EXPENSES"
+    }
+   },
+   "prose_before": "On December 19, 2008, China 3C Group\u2019s subsidiaries, Zhejiang and Yiwu entered into an acquisition agreement (the \u201cJinhua Agreement\u201d) with Jinhua Baofa Logistic Ltd. (\u201cJinhua\u201d), a company organized under the laws of the People\u2019s Republic of China and the shareholders of Jinhua, who own 100% of Jinhua. Pursuant to the Jinhua Agreement Zhejiang will acquire 90% and Yiwu will acquire 10% of the equity interests in Jinhua from the shareholders of the equity interest in Jinhua for a total purchase price of RMB 120,000,000 (approximately $17.6 million) payable as follows: (i) RMB 50,000,000, within 10 business days after the execution of the Jinhua Agreement; (ii) RMB 50,000,000 within 10 business days following the completion of the audit of Jinhua\u2019s financial statements for the fiscal year ending December 31, 2008, in accordance with US GAAP (the \u201cAudit\u201d), which Audit shall be completed no later than March 31, 2009 (subsequently extended to June 30, 2009); and (iii) the remaining RMB 20,000,000 no later than three months after the completion of Jinhua\u2019s Audit.\nAs of June 30, 2009, China 3C Group paid $14,609,631 (RMB 100,000,000) to Jinhua as a deposit for the acquisition.\nJinhua was founded in 2001 and is a well-known transportation logistics company in Eastern China and has been a long time transportation provider for China 3C Group. Jinhua has approximately 280 customers and operates a fleet of more than 70 trucks and transports freight including electronics, machinery and equipment, metal products, chemical materials, garments and handicraft goods, in more than 20 cities in Eastern China. Its transportation service covers many of the most developed cities in the Eastern China region such as Shanghai, Hangzhou and Nanjing.\nNote 5\u2013 ACCOUNTS PAYABLE AND ACCRUED EXPENSES\nAccounts payable and accrued expenses as of June 30, 2009 (unaudited) and December 31, 2008 consist of the following:",
+   "prose_after": "Note 6 - COMMON STOCK\nThe Company appointed Joseph Levinson to serve as a member of the Company\u2019s Board of Directors on May 7, 2007. Joseph Levinson resigned as a member of the Company\u2019s Board of Directors on January 27, 2009. There were no disagreements between Mr. Levinson and the Company on any matter related to the Company\u2019s operations, policies or practices which resulted in his resignation. Pursuant to the Agreement dated May 3, 2007 the Company agreed to issue to Mr. Levinson, as compensation for his services, a monthly grant of 1,000 shares of the Company\u2019s common stock. The Company has issued 20,000 shares in total to M. Levinson representing the 1,000 share per month payments. In addition, the Company agreed to grant Mr. Levinson the following awards under the 2005 Plan: (i) an initial annual grant of a stock option to purchase 300,000 shares of the Company\u2019s common Stock, with an exercise price of $6.15 per share (the \u201c2007 Stock Option\u201d); and (ii) a subsequent annual grant of a stock option to purchase an additional 300,000 shares of the Company\u2019s common stock, with an exercise price of $1.82 (the \u201c2008 Stock Option\u201d). It was later determined that due to the expiration of the China 3C 2005 Equity Incentive Plan on December 31, 2006, the 2007 Stock Option and the 2008 Stock Option could not be validly granted. Pursuant to the terms of the Compensation Agreement dated as of November 27, 2008 between Mr. Levinson and the Company, Mr. Levinson acknowledged that the 2007 Stock Option and the 2008 Stock Option were not and could not be granted and, in consideration for his services as a Director accepted the issuance of 125,000 shares of the Company\u2019s common stock.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 566,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 599,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2009",
+     "U.S.",
+     "",
+     "State",
+     "",
+     "International",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,591,058",
+     "$",
+     "1,591,058"
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,591,058",
+     "$",
+     "1,591,058"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 644
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company did not grant any options during the six months ended June 30, 2009 and 2008.\nNote 8 - COMPENSATED ABSENCES\nRegulation 45 of the labor laws in the People\u2019s Republic of China (PRC) entitles employees to annual vacation leave after 1 year of service. In general all leave must be utilized annually, with proper notification, any unutilized leave is cancelled.\nNote 9 - INCOME TAXES\nThe Company, through its subsidiaries, Zhejiang, Wang Da, Sanhe, Joy & Harmony and Yiwu, is governed by the Income Tax Laws of the PRC. Operations in the United States of America have incurred net accumulated operating losses of approximately $2,457,892 as of June 30, 2009 for income tax purposes. However, a 100% allowance has been recorded on the deferred tax asset of approximately $836,000 due to uncertainty of its realization.\nPursuant to the PRC Income Tax Laws, from January 1, 2008, the Enterprise Income Tax is at a statutory rate of 25%.\nThe following is a reconciliation of income tax expense for the six months ended June 30, 2009 and 2008:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2008",
+     "U.S.",
+     "",
+     "State",
+     "",
+     "International",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "4,164,627",
+     "$",
+     "4,164,627"
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "4,164,627",
+     "$",
+     "4,164,627"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 654
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following is a reconciliation of income tax expense for the three months ended June 30, 2009 and 2008:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2009",
+     "U.S.",
+     "",
+     "State",
+     "",
+     "International",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "228,520",
+     "$",
+     "228,520"
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "228,520",
+     "$",
+     "228,520"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 657,
+    "end_line": 666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The following is a reconciliation of income tax expense for the three months ended June 30, 2009 and 2008:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2008",
+     "U.S.",
+     "",
+     "State",
+     "",
+     "International",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Current",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,887,999",
+     "$",
+     "1,887,999"
+    ],
+    [
+     "Deferred",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "1,887,999",
+     "$",
+     "1,887,999"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 667,
+    "end_line": 676
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Reconciliation of the differences between the statutory U.S. Federal income tax rate and the effective rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 676,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "US statutory tax rate",
+     "",
+     "34.0",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "Tax rate difference",
+     "",
+     "(9.0",
+     "%)",
+     "",
+     "(9.0",
+     "%)"
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "1.8",
+     "%",
+     "",
+     "(1.2",
+     "%)"
+    ],
+    [
+     "Effective rate",
+     "",
+     "26.8",
+     "%",
+     "",
+     "23.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the six months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Reconciliation of the differences between the statutory U.S. Federal income tax rate and the effective rate is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "US statutory tax rate",
+     "",
+     "34.0",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "Tax rate difference",
+     "",
+     "(9.0",
+     "%)",
+     "",
+     "(9.0",
+     "%)"
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "5.0",
+     "%",
+     "",
+     "(1.2",
+     "%)"
+    ],
+    [
+     "Effective rate",
+     "",
+     "30.0",
+     "%",
+     "",
+     "23.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 694,
+    "end_line": 706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 10 - COMMITMENTS\nThe Company leases office facilities under operating leases that terminate through 2011. Rent expense for the three and six months ended June 30, 2009 and 2008 was $68,018, $62,203, $119,192 and $125,002, respectively. The future minimum obligations under these agreements are as follows by years as of June 30, 2009:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2010",
+     "$",
+     "310,000"
+    ],
+    [
+     "2011",
+     "",
+     "103,000"
+    ],
+    [
+     "2012",
+     "",
+     "75,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 711,
+    "end_line": 716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "COMMITMENTS"
+    }
+   },
+   "prose_before": "Note 10 - COMMITMENTS\nThe Company leases office facilities under operating leases that terminate through 2011. Rent expense for the three and six months ended June 30, 2009 and 2008 was $68,018, $62,203, $119,192 and $125,002, respectively. The future minimum obligations under these agreements are as follows by years as of June 30, 2009:",
+   "prose_after": "Note 11 - STATUTORY RESERVE\nIn accordance with the laws and regulations of the PRC, a wholly-owned Foreign Invested Enterprise\u2019s income, after the payment of the PRC income taxes, shall be allocated to the statutory surplus reserves and statutory public welfare fund. Prior to January 1, 2006, the proportion of allocation for reserve was 10 percent of the profit after tax to the surplus reserve fund and additional 5-10 percent to the public affair fund. The public welfare fund reserve was limited to 50 percent of the registered capital. Effective January 1, 2006, there is now only one fund requirement. The reserve is 10 percent of income after tax, not to exceed 50 percent of registered capital.\nStatutory reserve funds are restricted for set off against losses, expansion of production and operation or increase in register capital of the respective company. Statutory public welfare fund is restricted to the capital expenditures for the collective welfare of employees. These reserves are not transferable to the Company in the form of cash dividends, loans or advances. These reserves are therefore not available for distribution except in liquidation. As of June 30, 2009 and December 31, 2008, the Company had allocated $11,109,379 to these non-distributable reserve funds.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Foreign",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Currency",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Translation",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Adjustment",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2007",
+     "$",
+     "1,872,334",
+     ""
+    ],
+    [
+     "Change for 2008",
+     "",
+     "3,399,770",
+     ""
+    ],
+    [
+     "Balance at December 31, 2008",
+     "",
+     "5,272,104",
+     ""
+    ],
+    [
+     "Change for six months ended June 30, 2009",
+     "",
+     "(128,651)",
+     ""
+    ],
+    [
+     "Balance at June 30, 2009",
+     "$",
+     "5,143,453",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Foreign",
+    "Currency",
+    "Translation",
+    "Adjustment"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 729,
+    "end_line": 744
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "OTHER COMPREHENSIVE INCOME"
+    }
+   },
+   "prose_before": "In accordance with the laws and regulations of the PRC, a wholly-owned Foreign Invested Enterprise\u2019s income, after the payment of the PRC income taxes, shall be allocated to the statutory surplus reserves and statutory public welfare fund. Prior to January 1, 2006, the proportion of allocation for reserve was 10 percent of the profit after tax to the surplus reserve fund and additional 5-10 percent to the public affair fund. The public welfare fund reserve was limited to 50 percent of the registered capital. Effective January 1, 2006, there is now only one fund requirement. The reserve is 10 percent of income after tax, not to exceed 50 percent of registered capital.\nStatutory reserve funds are restricted for set off against losses, expansion of production and operation or increase in register capital of the respective company. Statutory public welfare fund is restricted to the capital expenditures for the collective welfare of employees. These reserves are not transferable to the Company in the form of cash dividends, loans or advances. These reserves are therefore not available for distribution except in liquidation. As of June 30, 2009 and December 31, 2008, the Company had allocated $11,109,379 to these non-distributable reserve funds.\nNote 12 - OTHER COMPREHENSIVE INCOME\nThe detail of other comprehensive income as included in stockholders\u2019 equity at June 30, 2009 (unaudited) and December 31, 2008 are as follows:",
+   "prose_after": "Note 13 - CURRENT VULNERABILITY DUE TO CERTAIN RISK FACTORS\nThe Company\u2019s operations are carried out in the PRC. Accordingly, the Company\u2019s business, financial condition and results of operations may be influenced by the political, economic and legal environments in the PRC, by the general state of the PRC\u2019s economy. The Company\u2019s business may be influenced by changes in governmental policies with respect to laws and regulations, anti-inflationary measures, currency conversion and remittance abroad, and rates and methods of taxation, among other things.\nNote 14 - MAJOR CUSTOMERS AND CREDIT RISK\nDuring the six and three months ended June 30, 2009 and 2008, no customer accounted for more than 10% of the Company\u2019s sales or accounts receivable. At June 30, 2009 one (1) vendor comprised approximately 21.67% of the Company\u2019s accounts payable. At June 30, 2008 four (4) vendors comprised more than 57% of the Company\u2019s accounts payable.\nNote 15 - SEGMENT INFORMATION\nWe separately operate and prepare accounting and other financial reports to management for four major business organizations (Wang Da, Sanhe, Yiwu and Joy & Harmony). Each of the operating companies has different product groups. Wang Da sells mainly mobile phones, Sanhe sells mainly home appliances, Yiwu sells mainly office communication products, and Joy & Harmony sells mainly consumer electronics. All segments are accounted for using the same principles as described in Note 2.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mobile",
+     "",
+     "Home",
+     "",
+     "Communication",
+     "",
+     "Consumer",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Phones",
+     "",
+     "Electronics",
+     "",
+     "Products",
+     "",
+     "Electronics",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "39,912",
+     "$",
+     "30,996",
+     "$",
+     "26,389",
+     "$",
+     "31,241",
+     "$",
+     "-",
+     "$",
+     "128,538"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "35,449",
+     "",
+     "25,159",
+     "",
+     "23,928",
+     "",
+     "27,922",
+     "",
+     "-",
+     "",
+     "112,458"
+    ],
+    [
+     "Gross profit",
+     "",
+     "4,463",
+     "",
+     "5,838",
+     "",
+     "2,459",
+     "",
+     "3,319",
+     "",
+     "-",
+     "",
+     "16,079"
+    ],
+    [
+     "Income from operations",
+     "",
+     "1,204",
+     "",
+     "1,902",
+     "",
+     "422",
+     "",
+     "1,748",
+     "",
+     "567",
+     "",
+     "5,843"
+    ],
+    [
+     "Total assets",
+     "$",
+     "14,695",
+     "$",
+     "16,712",
+     "$",
+     "15,123",
+     "$",
+     "16,344",
+     "$",
+     "33,838",
+     "$",
+     "96,712"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 761,
+    "end_line": 772
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "During the six and three months ended June 30, 2009 and 2008, no customer accounted for more than 10% of the Company\u2019s sales or accounts receivable. At June 30, 2009 one (1) vendor comprised approximately 21.67% of the Company\u2019s accounts payable. At June 30, 2008 four (4) vendors comprised more than 57% of the Company\u2019s accounts payable.\nNote 15 - SEGMENT INFORMATION\nWe separately operate and prepare accounting and other financial reports to management for four major business organizations (Wang Da, Sanhe, Yiwu and Joy & Harmony). Each of the operating companies has different product groups. Wang Da sells mainly mobile phones, Sanhe sells mainly home appliances, Yiwu sells mainly office communication products, and Joy & Harmony sells mainly consumer electronics. All segments are accounted for using the same principles as described in Note 2.\nWe identified four reportable segments required by SFAS 131: (1) mobile phones, (2) home electronics, (3) office communication products, and (4) consumer electronics.\nThe following tables present summarized information by segment (in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 724,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended June 30, 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mobile",
+     "",
+     "Home",
+     "",
+     "Communication",
+     "",
+     "Consumer",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Phones",
+     "",
+     "Electronics",
+     "",
+     "Products",
+     "",
+     "Electronics",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "47,310",
+     "$",
+     "35,538",
+     "$",
+     "30,148",
+     "$",
+     "33,673",
+     "$",
+     "-",
+     "",
+     "146,669"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "39,998",
+     "",
+     "29,049",
+     "",
+     "25,397",
+     "",
+     "28,803",
+     "",
+     "-",
+     "",
+     "123,247"
+    ],
+    [
+     "Gross profit",
+     "",
+     "7,313",
+     "",
+     "6,489",
+     "",
+     "4,750",
+     "",
+     "4,870",
+     "",
+     "-",
+     "",
+     "23,422"
+    ],
+    [
+     "Income from operations",
+     "",
+     "4,918",
+     "",
+     "4,263",
+     "",
+     "3,412",
+     "",
+     "3,757",
+     "",
+     "760",
+     "",
+     "17,110"
+    ],
+    [
+     "Total assets",
+     "$",
+     "22,326",
+     "$",
+     "21,739",
+     "$",
+     "16,418",
+     "$",
+     "19,251",
+     "$",
+     "1,456",
+     "$",
+     "81,190"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended June 30, 2008"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mobile",
+     "",
+     "Home",
+     "",
+     "Communication",
+     "",
+     "",
+     "Consumer",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Phones",
+     "",
+     "Electronics",
+     "",
+     "Products",
+     "",
+     "",
+     "Electronics",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "14,168",
+     "$",
+     "14,403",
+     "$",
+     "10,587",
+     "",
+     "$",
+     "11,968",
+     "$",
+     "-",
+     "$",
+     "51,126"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "12,665",
+     "",
+     "11,815",
+     "",
+     "9,824",
+     "",
+     "",
+     "10,801",
+     "",
+     "-",
+     "",
+     "45,105"
+    ],
+    [
+     "Gross profit",
+     "",
+     "1,504",
+     "",
+     "2,589",
+     "",
+     "762",
+     "",
+     "",
+     "1,165",
+     "",
+     "-",
+     "",
+     "6,020"
+    ],
+    [
+     "Income from operations",
+     "",
+     "88",
+     "",
+     "764",
+     "",
+     "(80)",
+     "",
+     "",
+     "469",
+     "",
+     "30",
+     "",
+     "1,271"
+    ],
+    [
+     "Total assets",
+     "$",
+     "14,695",
+     "$",
+     "16,712",
+     "$",
+     "15,123",
+     "",
+     "$",
+     "16,344",
+     "$",
+     "33,838",
+     "$",
+     "96,712"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended June 30, 2009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 787,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended June 30, 2008",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Mobile",
+     "",
+     "Home",
+     "",
+     "Communication",
+     "",
+     "Consumer",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Phones",
+     "",
+     "Electronics",
+     "",
+     "Products",
+     "",
+     "Electronics",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "25,528",
+     "$",
+     "18,648",
+     "$",
+     "17,030",
+     "$",
+     "17,309",
+     "$",
+     "-",
+     "$",
+     "78,515"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "21,770",
+     "",
+     "15,137",
+     "",
+     "14,112",
+     "",
+     "14,621",
+     "",
+     "-",
+     "",
+     "65,640"
+    ],
+    [
+     "Gross profit",
+     "",
+     "3,759",
+     "",
+     "3,511",
+     "",
+     "2,918",
+     "",
+     "2,688",
+     "",
+     "-",
+     "",
+     "12,876"
+    ],
+    [
+     "Income from operations",
+     "",
+     "2,371",
+     "",
+     "2,399",
+     "",
+     "2,222",
+     "",
+     "2,097",
+     "",
+     "461",
+     "",
+     "9,550"
+    ],
+    [
+     "Total assets",
+     "$",
+     "22,326",
+     "$",
+     "21,739",
+     "$",
+     "16,418",
+     "$",
+     "19,251",
+     "$",
+     "1,456",
+     "$",
+     "81,190"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended June 30, 2008"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 799,
+    "end_line": 810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "RISK FACTORS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Forward Looking Statements\nWe have included, and from time\u2013to-time may make in our public filings, press releases or other public statements, certain statements, including, without limitation, those under \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d in Item 2. In some cases, these statements are identifiable through the use of words such as \u201canticipate\u201d, \u201cbelieve\u201d, \u201cestimate\u201d, \u201cexpect\u201d, \u201cintend\u201d, \u201cplan\u201d, \u201cproject\u201d, \u201ctarget\u201d, \u201ccan\u201d, \u201ccould\u201d, \u201cmay\u201d, \u201cshould\u201d, \u201cwill\u201d, \u201cwould\u201d, and similar expressions. You are cautioned not to place undue reliance on these forward-looking statements. In addition, our management may make forward-looking statements to analysts, investors, representatives of the media and others. These forward-looking statements are not historical facts and represent only our beliefs regarding future events, many of which, by their nature, are inherently uncertain and beyond our control.\nThe following discussion should be read in conjunction with the Consolidated Financial Statements and Notes thereto appearing elsewhere in this Form 10-Q. The following discussion contains forward-looking statements. Our actual results may differ significantly from those projected in the forward-looking statements. Factors that may cause future results to differ materially from those projected in the forward-looking statements include, but are not limited to, those discussed in \u201cRisk Factors\u201d and elsewhere in this Form 10-Q.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 774,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 810,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Yiwu",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "26,389",
+     "",
+     "$",
+     "30,469",
+     "",
+     "",
+     "(13.39)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "2,459",
+     "",
+     "$",
+     "4,798",
+     "",
+     "",
+     "(48.84)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "9.32",
+     "%",
+     "",
+     "15.75",
+     "%",
+     "",
+     "(6.43)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "422",
+     "",
+     "$",
+     "3,412",
+     "",
+     "",
+     "(87.63)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 873,
+    "end_line": 885
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "For the Six and Three Months Ended June 30, 2009 and 2008\nReportable Operating Segments\nThe Company reports financial and operating information in the following four segments:\na) Yiwu Yong Xin Telecommunication Company, Limited or \u201cYiwu\u201d\nb) Hangzhou Wang Da Electronics Company, Limited or \u201cWang Da\u201d\nc) Hangzhou Sanhe Electronic Technology Limited or \u201cSanhe\u201d\nd) Shanghai Joy & Harmony Electronics Company Limited or \u201cSJHE\u201d\na) Yiwu Yong Xin Telecommunication Company Limited or \u201cYiwu\u201d\nYiwu focuses on the selling, circulation and modern logistics of fax machines and cord phone products.\nAll amounts, except percentages of revenues, are in thousands of U.S. dollars.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 923,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Yiwu",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "10,587",
+     "",
+     "$",
+     "17,030",
+     "",
+     "",
+     "(37.83)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "762",
+     "",
+     "$",
+     "2,918",
+     "",
+     "",
+     "(73.89)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "7.20",
+     "%",
+     "",
+     "17.13",
+     "%",
+     "",
+     "(9.93)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "(80)",
+     "",
+     "$",
+     "2,222",
+     "",
+     "",
+     "(103.60)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 886,
+    "end_line": 898
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the six months ended June 30, 2009, Yiwu generated revenue of $26,389, a decrease of $4,080 or 13.39% compared to $30,469 for the six months ended June 30, 2008. Gross profit decreased $2,339 or 48.84% from $4,798 for the six months ended June 30, 2008 to $2,459 for the six months ended June 30, 2009. Operating income was $422 for the six months ended June 30, 2009, a decrease of $2,990 or 87.63% compared to $3,412 for the six months ended June 30, 2008.\nFor the three months ended June 30, 2009, Yiwu generated revenue of $10,587, a decrease of $6,443 or 37.83% compared to $17,030 for the three months ended June 30, 2008. Gross profit decreased $2,156 or 73.89% from $2,918 for the three months ended June 30, 2008 to $762 for the three months ended June 30, 2009. Operating loss was $(80) for the three months ended June 30, 2009, a decrease of $2,302 or 103.6% compared to operating income of $2,222 for the three months ended June 30, 2008.\nSuch decrease in revenue was primarily due to weaker demand for office equipment as well as lower unit sales price. Many small and medium-sized companies in China were less likely to purchase or upgrade new office equipment in the current economic environment.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 923,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Wang Da",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "39,912",
+     "",
+     "$",
+     "47,777",
+     "",
+     "",
+     "(16.46)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "4,463",
+     "",
+     "$",
+     "7,275",
+     "",
+     "",
+     "(38.65)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "11.18",
+     "%",
+     "",
+     "15.23",
+     "%",
+     "",
+     "(4.05)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "1,204",
+     "",
+     "$",
+     "4,918",
+     "",
+     "",
+     "(75.52)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 923
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "For the three months ended June 30, 2009, Yiwu generated revenue of $10,587, a decrease of $6,443 or 37.83% compared to $17,030 for the three months ended June 30, 2008. Gross profit decreased $2,156 or 73.89% from $2,918 for the three months ended June 30, 2008 to $762 for the three months ended June 30, 2009. Operating loss was $(80) for the three months ended June 30, 2009, a decrease of $2,302 or 103.6% compared to operating income of $2,222 for the three months ended June 30, 2008.\nSuch decrease in revenue was primarily due to weaker demand for office equipment as well as lower unit sales price. Many small and medium-sized companies in China were less likely to purchase or upgrade new office equipment in the current economic environment.\nGross margin decreased 6.43% and 9.93%, respectively during the six and three months ended June 30, 2009. The decrease was a result of lower unit sales price of fax machines and telephones due to a more competitive sales market.\nb) Hangzhou Wang Da Electronics Company Limited or \u201cWang Da\u201d\nWang Da focuses on the selling, circulation and modern logistics of cell phones, cell phones products, and digital products, including digital cameras, digital camcorders, PDAs, flash disks, and removable hard disks.\nAll amounts, except percentages of revenues, are in thousands of U.S. dollars.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 866,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 923,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Wang Da",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "14,168",
+     "",
+     "$",
+     "25,528",
+     "",
+     "",
+     "(44.50)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "1,503",
+     "",
+     "$",
+     "3,759",
+     "",
+     "",
+     "(60.03)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "10.61",
+     "%",
+     "",
+     "14.73",
+     "%",
+     "",
+     "(4.12)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "88",
+     "",
+     "$",
+     "2,371",
+     "",
+     "",
+     "(96.29)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 926,
+    "end_line": 936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the six months ended June 30, 2009, Wan Da generated revenue of $39,912, a decrease of $7,865 or 16.46% compared to $47,777 for the six months ended June 30, 2008. Gross profit decreased $2,812 or 38.65% from $7,275 for the six months ended June 30, 2008 to $4,463 for the six months ended June 30, 2009. Operating income was $1,204 for the six months ended June 30, 2009, a decrease of $3,714 or 75.52% compared to $4,918 for the six months ended June 30, 2008.\nFor the three months ended June 30, 2009, Wan Da generated revenue of $14,168, a decrease of $11,360 or 44.5% compared to $25,528 for the three months ended June 30, 2008. Gross profit decreased $2,256 or 60.03% from $3,759 for the three months ended June 30, 2008 to $1,503 for the three months ended June 30, 2009. Operating income was $88 for the three months ended June 30, 2009, a decrease of $2,283 or 96.29% compared to $2,371 for the three months ended June 30, 2008.\nDuring the second quarter 2009, China started testing its 3G network. Because the 3G network is still in the trial period, the network coverage is yet to be complete and the cost of wireless service is relatively higher than before. In addition, the costs of 3G phones are also higher than the old models. The introduction of 3G phones caused lower demand for the old model mobile phones. Meanwhile, customers are waiting to upgrade to 3G phones until the 3G network is complete. These factors led to decreased sales revenue during the six months ended June 30, 2009. The revenue decrease was also attributed to the closing of 8 store in stores during the second quarter of 2009.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Sanhe",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "30,996",
+     "",
+     "$",
+     "35,138",
+     "",
+     "",
+     "(11.79)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "5,838",
+     "",
+     "$",
+     "6,484",
+     "",
+     "",
+     "(9.96)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "18.83",
+     "%",
+     "",
+     "18.45",
+     "%",
+     "",
+     "0.38",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "1,902",
+     "",
+     "$",
+     "4,263",
+     "",
+     "",
+     "(55.38)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 961
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "During the second quarter 2009, China started testing its 3G network. Because the 3G network is still in the trial period, the network coverage is yet to be complete and the cost of wireless service is relatively higher than before. In addition, the costs of 3G phones are also higher than the old models. The introduction of 3G phones caused lower demand for the old model mobile phones. Meanwhile, customers are waiting to upgrade to 3G phones until the 3G network is complete. These factors led to decreased sales revenue during the six months ended June 30, 2009. The revenue decrease was also attributed to the closing of 8 store in stores during the second quarter of 2009.\nGross margin decreased 4.05% and 4.12%, respectively during the six and three months ended June 30, 2009. The decrease was due to the fact that old model mobile phones are selling at a lower unit price as a result of the introduction of 3G phones.\nc) Hangzhou Sanhe Electronic Technology Limited or \u201cSanhe\u201d\nSanhe focuses on the selling, circulation and modern logistics of home electronics, including DVD players, audio systems, speakers, televisions and air conditioners.\nAll amounts, except percentages of revenues, are in thousands of U.S. dollars.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Sanhe",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "14,403",
+     "",
+     "$",
+     "18,648",
+     "",
+     "",
+     "(22.76)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "2,589",
+     "",
+     "$",
+     "3,511",
+     "",
+     "",
+     "(26.26)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "17.98",
+     "%",
+     "",
+     "18.83",
+     "%",
+     "",
+     "(0.85)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "764",
+     "",
+     "$",
+     "2,399",
+     "",
+     "",
+     "(68.15)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 962,
+    "end_line": 972
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the six months ended June 30, 2009, Sanhe generated revenue of $30,996, a decrease of $4,142 or 11.79% compared to $35,138 for the six months ended June 30, 2008. Gross profit decreased $646 or 9.96% from $6,484 for the six months ended June 30, 2008 to $5,838 for the six months ended June 30, 2009. Operating income was $1,902 for the six months ended June 30, 2009, a decrease of $2,361 or 55.38% compared to $4,263 for the six months ended June 30, 2008.\nFor the three months ended June 30, 2009, Sanhe generated revenue of $14,403, a decrease of $4,245 or 22.76% compared to $18,648 for the three months ended June 30, 2008. Gross profit decreased $922 or 26.26% from $3,511 for the three months ended June 30, 2008 to $2,589 for the three months ended June 30, 2009. Operating income was $764 for the three months ended June 30, 2009, a decrease of $1,635 or 68.15% compared to operating income of $2,399 for the three months ended June 30, 2008.\nSecond quarter has been a slow season for home electronics. The decrease in revenue was primarily due to weaker demand for home electronics during the second quarter 2009. Part of the decline in revenue was also attributed to the cancellation of the Chinese May 1st public holiday in 2009.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "SJHE",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "31,241",
+     "",
+     "$",
+     "33,285",
+     "",
+     "",
+     "(6.14)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "3,319",
+     "",
+     "$",
+     "4,866",
+     "",
+     "",
+     "(31.79)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "10.62%",
+     "%",
+     "",
+     "14.62",
+     "%",
+     "",
+     "(3.00)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "1,748",
+     "",
+     "$",
+     "3,757",
+     "",
+     "",
+     "(46.53)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 989,
+    "end_line": 999
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "For the three months ended June 30, 2009, Sanhe generated revenue of $14,403, a decrease of $4,245 or 22.76% compared to $18,648 for the three months ended June 30, 2008. Gross profit decreased $922 or 26.26% from $3,511 for the three months ended June 30, 2008 to $2,589 for the three months ended June 30, 2009. Operating income was $764 for the three months ended June 30, 2009, a decrease of $1,635 or 68.15% compared to operating income of $2,399 for the three months ended June 30, 2008.\nSecond quarter has been a slow season for home electronics. The decrease in revenue was primarily due to weaker demand for home electronics during the second quarter 2009. Part of the decline in revenue was also attributed to the cancellation of the Chinese May 1st public holiday in 2009.\nGross margin increased 0.38% during the six months ended June 30, 2009 and decreased 0.85% during the three months ended June 30, 2009. The decrease in gross margin was a result of lower unit sales price of home electronics due to a more competitive sales market.\nd) Shanghai Joy & Harmony Electronics Company Limited or \u201cSJHE\u201d\nSJHE focuses on the selling, circulation and modern logistics of consumer electronics, including MP3 players, MP4 players, iPod, electronic dictionary, radios, and Walkman.\nAll amounts, except percentages of revenues, are in thousands of U.S. dollars.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1024,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "SJHE",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "11,968",
+     "",
+     "$",
+     "17,309",
+     "",
+     "",
+     "(30.86)",
+     "%"
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "1,166",
+     "",
+     "$",
+     "2,688",
+     "",
+     "",
+     "(56.62)",
+     "%"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "9.74",
+     "%",
+     "",
+     "15.53",
+     "%",
+     "",
+     "(5.79)",
+     "%"
+    ],
+    [
+     "Operating Income",
+     "$",
+     "469",
+     "",
+     "$",
+     "2,097",
+     "",
+     "",
+     "(77.63)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1000,
+    "end_line": 1010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the six months ended June 30, 2009, SJHE generated revenue of $31,241, a decrease of $2,044 or 6.14% compared to $33,285 for the six months ended June 30, 2008. Gross profit decreased $1,547 or 31.79% from $4,866 for the six months ended June 30, 2008 to $3,319 for the six months ended June 30, 2009. Operating income was $1,748 for the six months ended June 30, 2009, a decrease of $2,009 or 46.53% compared to $3,757 for the six months ended June 30, 2008.\nFor the three months ended June 30, 2009, SJHE generated revenue of $11,968, a decrease of $5,341 or 30.86% compared to $17,309 for the three months ended June 30, 2008. Gross profit decreased $1,522 or 56.62% from $2,688 for the three months ended June 30, 2008 to $1,166 for the three months ended June 30, 2009. Operating income was $469 for the three months ended June 30, 2009, a decrease of $1,628 or 77.63% compared to $2,097 for the three months ended June 30, 2008.\nGross margin decreased 3.00% and 5.79% during the six and three months ended June 30, 2009, respectively. The decrease in gross margin was a result of lower unit sales price of consumer electronics due to a more competitive sales market.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1024,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2009",
+     "",
+     "",
+     "June 30, 2008",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by  operating activities",
+     "$",
+     "721",
+     "",
+     "$",
+     "(1,774)",
+     ""
+    ],
+    [
+     "Net cash (used in) investing activities",
+     "$",
+     "(7,295)",
+     "",
+     "$",
+     "(8)",
+     ""
+    ],
+    [
+     "Effect of exchange rate change on cash and cash equivalents",
+     "$",
+     "(135)",
+     "",
+     "$",
+     "2,823",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "$",
+     "(6,710)",
+     "",
+     "$",
+     "1,041",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "$",
+     "32,158",
+     "",
+     "$",
+     "24,953",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end period",
+     "$",
+     "25,448",
+     "",
+     "$",
+     "25,994",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1053,
+    "end_line": 1065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "The provision for income taxes for the six months ended June 30, 2009 was $1,591 compared to $4,164 for the six months ended June 30, 2008. The provision for income taxes for the three months ended June 30, 2009 was $392 compared to $2,354 for the three months ended June 30, 2008. The decrease was attributed to the decrease in taxable income.\nNet Income\nNet income was $4,354 or 3.39% of net sales for the six months ended June 30, 2009 compared to $13,325 or 9.09% of net sales for the six months ended June 30, 2008, a decrease of 67.33%. Net income was $915 or 1.79% of net sales for the three months ended June 30, 2009 compared to $7,552 or 9.62% of net sales for the three months ended June 30, 2008, a decrease of 87.90%. Decreased sales revenue, lower gross margin and high operating expenses were the critical factors which contributed to the decrease in net income.\nLiquidity and Capital Resources\nOperations and liquidity needs are funded primarily through cash flows from operations. Cash and cash equivalents were $25,448 at June 30, 2009, compared to $25,994 at June 30, 2008, and compared to $32,158 at December 31, 2008.\nWe believe that the funds available to us are adequate to meet our operating needs for the remainder of 2009.",
+   "prose_after": "Operating Activities\nNet cash generated from operating activities was $721 for the six months ended June 30, 2009 compared to net cash used in operating activities of $(1,774) for the six months ended June 30, 2008, approximately a 141% increase. The increase was mainly attributable to several factors, including (i) net income of $4,353; (ii) decrease in advance to suppliers of $149; (iii) decrease in prepaid expenses and other current assets of $34, offset by the increase in inventory of $424 and accounts receivable of $801 and decrease in income taxes payable of $1,746 and accounts payable and accrued expenses of $893 in the six months ended June 30, 2009.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1026,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1065,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "June 30, 2009",
+     "",
+     "June 30, 2008"
+    ],
+    [
+     "a) Increase in inventory",
+     "$",
+     "424",
+     "$",
+     "6,266"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "b) Increase in Accounts Receivable",
+     "$",
+     "801",
+     "$",
+     "11,040"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "c) Increase in inventory and accounts receivables as a whole a) + b)",
+     "$",
+     "1,224",
+     "$",
+     "17,306"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1072,
+    "end_line": 1086
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "Operating Activities\nNet cash generated from operating activities was $721 for the six months ended June 30, 2009 compared to net cash used in operating activities of $(1,774) for the six months ended June 30, 2008, approximately a 141% increase. The increase was mainly attributable to several factors, including (i) net income of $4,353; (ii) decrease in advance to suppliers of $149; (iii) decrease in prepaid expenses and other current assets of $34, offset by the increase in inventory of $424 and accounts receivable of $801 and decrease in income taxes payable of $1,746 and accounts payable and accrued expenses of $893 in the six months ended June 30, 2009.",
+   "prose_after": "During the six months ended June 30, 2008, inventory increased significantly as a result of the unprecedented snow storm during the first quarter 2008. There was a shortage of inventory available to our stores. This shortage had a negative impact on our first quarter sales for 2008. As a precautionary measure, the Company decided to increase its level of inventory in order to maintain an adequate level for all stores in the event of other unexpected incidents.\nDuring the six months ended June 30, 2008, our accounts receivable balance increased due to a slow down in accounts receivable turnover, which was partly due to the impact of a slowdown in the global economy, In response to the poor market condition, the Company changed the contract terms for our retail department store customers, where we maintain a store in-store model, to extend the period for repayment from 15 days to 30 days. The extension of repayment terms led to the increase in the balance of accounts receivable at June 30, 2008.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2009",
+     "",
+     "",
+     "June 30, 2008",
+     "",
+     ""
+    ],
+    [
+     "Net cash used investment activities",
+     "$",
+     "(7,295)",
+     "",
+     "$",
+     "(8)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1095,
+    "end_line": 1103
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "During the six months ended June 30, 2008, inventory increased significantly as a result of the unprecedented snow storm during the first quarter 2008. There was a shortage of inventory available to our stores. This shortage had a negative impact on our first quarter sales for 2008. As a precautionary measure, the Company decided to increase its level of inventory in order to maintain an adequate level for all stores in the event of other unexpected incidents.\nDuring the six months ended June 30, 2008, our accounts receivable balance increased due to a slow down in accounts receivable turnover, which was partly due to the impact of a slowdown in the global economy, In response to the poor market condition, the Company changed the contract terms for our retail department store customers, where we maintain a store in-store model, to extend the period for repayment from 15 days to 30 days. The extension of repayment terms led to the increase in the balance of accounts receivable at June 30, 2008.\nDuring the six months ended June 30, 2009, the Company has changed its contract terms for retail department from 30 days to 45 days and wholesale department from 10 days to 15 days. This led to the increase of balance of accounts receivable at June 30, 2009. Inventory turnover slowed down slightly during the six months ended June 30, 2009, which caused the slight increase of inventory of $424 compared to December 31, 2008.\nInvesting Activities",
+   "prose_after": "Net cash used in investing activities increased from $8 during the six months ended June 30, 2008 to $7,295 during the six months ended June 30, 2009, due to the deposit payment for the acquisition of Jinhua. Pursuant to the acquisition agreement, the Company paid for the second installment payment of $7,291 during the six months ended Jun 30, 2009.\nThe Company\u2019s activities focused on the distribution of products. As a result, investments in fixed assets were moderate and hence there is little effect to the utilization of cash over the six months ended June 30, 2008.\nFinancing Activities\nThe Company did not carry out any financing activities during the six months ended June 30, 2009 and 2008.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2009",
+     "",
+     "",
+     "June 30, 2008",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "$",
+     "(6,710)",
+     "",
+     "$",
+     "1,041"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1114,
+    "end_line": 1122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "Net cash used in investing activities increased from $8 during the six months ended June 30, 2008 to $7,295 during the six months ended June 30, 2009, due to the deposit payment for the acquisition of Jinhua. Pursuant to the acquisition agreement, the Company paid for the second installment payment of $7,291 during the six months ended Jun 30, 2009.\nThe Company\u2019s activities focused on the distribution of products. As a result, investments in fixed assets were moderate and hence there is little effect to the utilization of cash over the six months ended June 30, 2008.\nFinancing Activities\nThe Company did not carry out any financing activities during the six months ended June 30, 2009 and 2008.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2009",
+     "",
+     "June 30, 2008",
+     ""
+    ],
+    [
+     "Cash and cash equivalent at June 30, 2009 and 2008",
+     "$",
+     "25,448",
+     "$",
+     "25,994"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1123,
+    "end_line": 1131
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "With effective internal control systems in place the Company maintained healthy net cash flows over period and achieved a healthy cash position of $25,448 at June 30, 2009 and $25,994 at June 30, 2008.\nCapital Expenditures\nTotal capital expenditures for the first six months of 2009 were $4 for purchase of fixed assets compared to $11 for the first six months of 2008.\nWorking Capital Requirements\nHistorically operations and short term financing have been sufficient to meet our cash needs. We believe that we will be able to generate revenues from sales to provide the necessary cash flow to meet anticipated working capital requirements. However, our actual working capital needs for the long and short term will depend upon numerous factors, including operating results, competition, and the availability of credit facilities, none of which can be predicted with certainty. Future expansion will be limited by the availability of financing products and raising capital.\nOff-Balance Sheet Arrangements",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1153,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Document Description"
+    ],
+    [
+     "2.1",
+     "Amendment to Acquisition Agreement dated April 4, 2009 by and among Zhejiang Yong Xing Digital Technology Co. Ltd., Yiwu Yong Xin Communication Ltd. and the shareholders of Jinhua Baofa Logistic Ltd., incorporated by reference from the Registrant\u2019s Current Report filed with the SEC on Form 8-K on April 9, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Letter Agreement dated June 16, 2009 between China 3C Group and Jian Zhang, incorporated by reference from the Registrant\u2019s Current Report filed with the SEC on Form 8-K on June 22, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Rule 13A-14(A)/15D-14(A) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Accounting and Financial Officer pursuant to Rule 13A-14(A)/15D-14(A) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the Principal Executive Officer pursuant to 18 U.S.C. 1350 (Section 906 of the Sarbanes-Oxley Act of 2002)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of the Principal Accounting and Financial Officer pursuant to 18 U.S.C. 1350 (Section 906 of the Sarbanes-Oxley Act of 2002)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1224,
+    "end_line": 1243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "None.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nNone.\nItem 3. Defaults Upon Senior Securities.\nNot Applicable.\nItem 4. Submission of Matters to a Vote of Security Holders.\nNone.\nItem 5. Other Information.\nNone.\nItem 6. Exhibits.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on\nits behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1189,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CHINA 3C GROUP",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: August 14, 2009",
+     "By:",
+     "/s/ Zhenggang Wang"
+    ],
+    [
+     "",
+     "",
+     "Name:   Zhenggang Wang"
+    ],
+    [
+     "",
+     "",
+     "Title: Chief Executive Officer and Chairman"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "CHINA 3C GROUP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1252,
+    "end_line": 1261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on\nits behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Exhibit Index",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1245,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1261,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Document Description"
+    ],
+    [
+     "2.1",
+     "Amendment to Acquisition Agreement dated April 4, 2009 by and among Zhejiang Yong Xing Digital Technology Co. Ltd., Yiwu Yong Xin Communication Ltd. and the shareholders of Jinhua Baofa Logistic Ltd., incorporated by reference from the Registrant\u2019s Current Report filed with the SEC on Form 8-K on April 9, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Letter Agreement dated June 16, 2009 between China 3C Group and Jian Zhang, incorporated by reference from the Registrant\u2019s Current Report filed with the SEC on Form 8-K on June 22, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Rule 13A-14(A)/15D-14(A) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Accounting and Financial Officer pursuant to Rule 13A-14(A)/15D-14(A) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the Principal Executive Officer pursuant to 18 U.S.C. 1350 (Section 906 of the Sarbanes-Oxley Act of 2002)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of the Principal Accounting and Financial Officer pursuant to 18 U.S.C. 1350 (Section 906 of the Sarbanes-Oxley Act of 2002)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1266,
+    "end_line": 1285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "SEGMENT INFORMATION"
+    }
+   },
+   "prose_before": "Exhibit Index",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1263,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1285,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

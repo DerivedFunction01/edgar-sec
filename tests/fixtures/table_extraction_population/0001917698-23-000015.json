@@ -1,0 +1,246 @@
+{
+ "accession": "0001917698-23-000015",
+ "cik": "0001917698",
+ "form": "10-K",
+ "filing_date": "2023-03-23",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a10-kxpubliclease2022xa2022.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 0.39999999999999997,
+   "rows": [
+    [
+     "Ford Credit Auto Lease Trust 2022-A (Exact name of issuing entity as specified in its charter)\nCommission File Number: 333-231819-08 Central Index Key Number: 0001917698"
+    ],
+    [
+     "Ford Credit Auto Lease Two LLC (Exact name of depositor as specified in its charter)\nCommission File Number: 333-231819 Central Index Key Number: 0001519881"
+    ],
+    [
+     "Ford Motor Credit Company LLC (Exact name of sponsor as specified in its charter)\nCentral Index Key Number: 0000038009"
+    ]
+   ],
+   "caption_stack": [
+    "Ford Credit Auto Lease Trust 2022-A (Exact name of issuing entity as specified in its charter)\nCommission File Number: 333-231819-08 Central Index Key Number: 0001917698",
+    "Ford Credit Auto Lease Two LLC (Exact name of depositor as specified in its charter)\nCommission File Number: 333-231819 Central Index Key Number: 0001519881",
+    "Ford Motor Credit Company LLC (Exact name of sponsor as specified in its charter)\nCentral Index Key Number: 0000038009"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended: December 31, 2022\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______ to ______",
+   "prose_after": "<TABLE>\nDelaware (State or Other Jurisdiction of Incorporation of issuing entity)                                         85-6227805 (I.R.S. Employer\nIdentification No. of issuing\nentity)\nc/o BNY Mellon Trust of Delaware 301 Bellevue Parkway, 3rd Floor Wilmington, Delaware (Address of Principal Executive Offices of issuing               19809 (Zip Code)\nentity)\n</TABLE>\n(302) 791-3610\n(Telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 42,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Large Accelerated Filer [ ] Non-Accelerated Filer [X]",
+     "Accelerated Filer [ ] Smaller reporting company [ ] Emerging growth company [ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Formation of Ford Credit Auto Lease Two LLC (\u201cFCAL Two\u201d) (included in Exhibit 3.1 to the Registration Statement No. 333-208514, as filed with the Securities and Exchange Commission (the \u201cCommission\u201d) on February 17, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "3.2",
+     "Second Amended and Restated Limited Liability Company Agreement of FCAL Two (included in Exhibit 3.2 to the Registration Statement No. 333-208514, as filed with the Commission on February 17, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "3.3",
+     "Amended and Restated Certificate of Formation of CAB East LLC (included in Exhibit 3.3 to the Registration Statement No. 333-208514, as filed with the Commission on February 17, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "3.4",
+     "Second Amended and Restated Limited Liability Company Agreement of CAB East LLC (included in Exhibit 3.4 to the Registration Statement No. 333-208514, as filed with the Commission on February 17, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "3.5",
+     "Amended and Restated Certificate of Formation of CAB West LLC (included in Exhibit 3.5 to the Registration Statement No. 333-208514, as filed with the Commission on February 17, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "3.6",
+     "Second Amended and Restated Limited Liability Company Agreement of CAB West LLC (included in Exhibit 3.6 to the Registration Statement No. 333-208514, as filed with the Commission on February 17, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "4.1",
+     "Indenture, dated as of April 1, 2022, between the Trust and US Bank, as indenture trustee (included in Exhibit 4.1 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "4.2",
+     "Fourth Amended and Restated Credit and Security Agreement, dated as of July 22, 2005, as amended and restated on June 4, 2021, among CAB East LLC, CAB West LLC, US Bank, Ford Credit and HTD Leasing LLC (included in Exhibit 4.2 to the Registration Statement No. 333-265473, as filed with the Commission on June 8, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "4.3",
+     "2022-A Exchange Note Supplement, dated as of April 1, 2022, to the Fourth Amended and Restated Credit and Security Agreement, dated as of July 22, 2005, as amended and restated June 4, 2021, among CAB East LLC, CAB West LLC, US Bank, HTD Leasing LLC and Ford Credit (included in Exhibit 4.3 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.1",
+     "Amended and Restated Trust Agreement, dated as of April 1, 2022, between FCAL Two and The Bank of New York Mellon, as owner trustee, and BNY Mellon Trust of Delaware, as Delaware trustee (included in Exhibit 4.2 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.2",
+     "Exchange Note Purchase Agreement, dated as of April 1, 2022, between Ford Credit and FCAL Two (included in Exhibit 10.2 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.3",
+     "Exchange Note Sale Agreement, dated as of April 1, 2022, between FCAL Two and the Trust (included in Exhibit 10.3 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.4",
+     "Third Amended and Restated Servicing Agreement, dated as of July 22, 2005, as amended and restated on September 1, 2019, among CAB East LLC, CAB West LLC, Ford Credit and HTD Leasing LLC (included in Exhibit 10.4 to the Registration Statement No. 333-265473, as filed with the Commission on June 8, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.5",
+     "2022-A Servicing Supplement, dated as of April 1, 2022, to Third Amended and Restated Servicing Agreement, dated as of July 22, 2005, as amended and restated on September 1, 2019, among Ford Credit, CAB East LLC, CAB West LLC, and HTD Leasing LLC (included in Exhibit 10.5 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.6",
+     "Second Amended and Restated Administration Agreement, dated as of July 22, 2005, as amended and restated on December 1, 2015, among HTD Leasing LLC, US Bank and Ford Credit (included in Exhibit 10.6 to the Registration Statement No. 333-231819, as filed with the Commission on May 30, 2019, which is incorporated herein by reference)."
+    ],
+    [
+     "10.7",
+     "Administration Agreement, dated as of April 1, 2022, between the Trust and Ford Credit (included in Exhibit 10.7 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.8",
+     "Account Control Agreement, dated as of April 1, 2022, between the Trust and US Bank (included in Exhibit 10.8 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "10.9",
+     "Titling Company Account Control Agreement, dated as of April 1, 2022, between CAB East LLC, CAB West LLC and US Bank (included in Exhibit 10.9 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 148,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement and Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Each of Ford Motor Credit Company LLC (\u201cFord Credit\u201d) and U.S. Bank National Association (\u201cUS Bank\u201d) (each, a \u201cServicing Participant\u201d) has been identified by the registrant as a party participating in the servicing function during the reporting period with respect to the pool assets held by Ford Credit Auto Lease Trust 2022-A (the \u201cTrust\u201d). Each of the Servicing Participants has completed a report on an assessment of compliance with the servicing criteria applicable to such Servicing Participant (each, a \u201cReport on Assessment\u201d) as of December 31, 2022 and for the period from April 1, 2022 through December 31, 2022, which Reports on Assessment are attached as exhibits to this Form 10-K. In addition, each of the Servicing Participants has provided an attestation report (each, an \u201cAttestation Report\u201d) by an independent registered public accounting firm regarding its related Report on Assessment, which Attestation Reports are attached as exhibits to this Form 10-K. None of the Reports on Assessment or the related Attestation Reports has identified any material instances of noncompliance with the servicing criteria described in the related Report on Assessment as being applicable to such Servicing Participant.\nItem 1123 of Regulation AB. Servicing Compliance Statement.\nFord Credit has been identified by the registrant as a servicer during the reporting period with respect to the pool assets held by the Trust. Ford Credit has provided a statement of compliance for the reporting period, signed by an authorized officer, and such compliance statement is attached as an exhibit to this Form 10-K.\nPART IV\nItem 15. Exhibits and Financial Statement and Schedules.\n(a) List of Documents Filed as Part of this Report\n(1) Not applicable.\n(2) Not applicable.\n(3) See Item 15(b) below.\n(b) Exhibits Required by Item 601 of Regulation S-K",
+   "prose_after": "10.10 Asset Representations Review Agreement, dated as of April 1, 2022, among Ford Credit, the Trust and Clayton Fixed Income Services LLC, as Asset Representations Reviewer (included in Exhibit 10.10 to the Trust\u2019s Form 8-K filed under Commission File No. 333-231819-08, as filed with the Commission on April 28, 2022, which is incorporated herein by reference). 31.1 Certification of Ford Credit pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 33.1 Report on Assessment of Compliance with Servicing Criteria for Ford Credit. 33.2 Report on Assessment of Compliance with Servicing Criteria for US Bank. 34.1 Attestation Report of PricewaterhouseCoopers LLP on Assessment of Compliance with Servicing Criteria relating to Ford Credit. 34.2 Attestation Report of Ernst & Young LLP on Assessment of Compliance with Servicing Criteria relating to US Bank. 35.1 Servicer Compliance Statement of Ford Credit.\n(c) Not applicable.\nSUPPLEMENTAL INFORMATION TO BE FURNISHED WITH REPORTS FILED PURSUANT TO SECTION 15(d) OF THE ACT BY REGISTRANTS WHICH HAVE NOT REGISTERED SECURITIES PURSUANT TO SECTION 12 OF THE ACT.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 147,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

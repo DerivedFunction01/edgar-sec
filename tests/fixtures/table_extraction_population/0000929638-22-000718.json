@@ -1,0 +1,262 @@
+{
+ "accession": "0000929638-22-000718",
+ "cik": "0001876620",
+ "form": "10-K",
+ "filing_date": "2022-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n(State or other jurisdiction of\n\nincorporation or organization of issuing entity)",
+     "86-6462414\n\n(I.R.S. Employer\n\nIdentification No. of issuing entity)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "c/o Exeter Finance LLC\n\n2101 W. John Carpenter Freeway\n\nIrving, Texas\n\n(Address of principal executive offices of issuing entity)",
+     "75063\n\n(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 56
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Commission file number of depositor: 333-233850\nEXETER AUTOMOBILE RECEIVABLES TRUST 2021-3\n(Exact name of issuing entity as specified in its charter)\nCentral Index Key Number of issuing entity: 0001876620\nEFCAR, LLC\n(Exact name of depositor and registrant as specified in its charter)\nCentral Index Key Number of depositor and registrant: 0001654238\nEXETER FINANCE LLC\n(Exact name of sponsor as specified in its charter)\nCentral Index Key Number of sponsor: 0001541713",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (214) 572-8256\nSecurities registered pursuant to Section 12(b) of the Act: None",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Not applicable",
+     "Not applicable",
+     "Not applicable"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 61,
+    "end_line": 68
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (214) 572-8256\nSecurities registered pursuant to Section 12(b) of the Act: None",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 112,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Formation of EFCAR, LLC (\u201cEFCAR\u201d) (included in Exhibit 3.1 to Registration Statement on Form SF-3 (333-213381), as filed by the registrant with the Commission on August 30, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "3.2",
+     "Limited Liability Company Agreement of EFCAR (included in Exhibit 3.2 to Registration Statement on Form SF-3 (333-213381), as filed by the registrant with the Commission on August 30, 2016, which is incorporated herein by reference)."
+    ],
+    [
+     "4.1",
+     "Indenture, dated as of July 31, 2021, among the Trust, Exeter Holdings Trust 2021-3 and Citibank, as indenture trustee (the \u201cIndenture Trustee\u201d) (included in Exhibit 4.2 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "4.2",
+     "Amended & Restated Trust Agreement for the Trust, dated as of July 31, 2021, between EFCAR and Wilmington Trust Company, as owner trustee (included in Exhibit 4.3 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "4.3",
+     "Amendment No. 1 to Amended & Restated Trust Agreement for the Trust, dated as of January 19, 2022, between EFCAR and Wilmington Trust Company, as owner trustee (included in Exhibit 99.1 to the Trust\u2019s Form 8-K, as filed with the Commission on January 25, 2022, which is incorporated herein by reference)."
+    ],
+    [
+     "4.4",
+     "Amended & Restated Trust Agreement for Exeter Holdings Trust 2021-3, dated as of July 31, 2021, between the Trust and Wilmington Trust Company, as owner trustee (included in Exhibit 4.4 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "4.5",
+     "Sale and Servicing Agreement, dated as of July 31, 2021, among Exeter Holdings Trust 2021-3, EFCAR, Exeter, as servicer, the Trust, and Citibank, as Indenture Trustee and backup servicer (included in Exhibit 4.5 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "10.1",
+     "Purchase Agreement, dated as of July 31, 2021, between EFCAR, as purchaser, and Exeter, as seller (included in Exhibit 10.1 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "10.2",
+     "Sale Agreement, dated as of July 31, 2021, among EFCAR, as purchaser, Exeter, as representation provider, and Exeter Flow Intermediary Trust, as seller (included in Exhibit 10.2 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "10.3",
+     "Contribution Agreement, dated as of July 31, 2021, between Exeter Holdings Trust 2021-3, as transferee, and the Trust, as transferor (included in Exhibit 10.3 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "10.4",
+     "Deposit Account Control Agreement, dated as of August 25, 2021, among the Trust, Exeter, as servicer, the Indenture Trustee, as secured party, and Wells Fargo Bank, National Association, as lockbox bank (included in Exhibit 10.4 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "10.5",
+     "Asset Representations Review Agreement, dated as of July 31, 2021, among the Trust, as issuer, Exeter, as servicer, and Clayton Fixed Income Services LLC, as asset representations reviewer (included in Exhibit 10.5 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "10.6",
+     "Custodian Agreement, dated as of July 31, 2021, among Exeter, as custodian, Exeter, as servicer, and the Indenture Trustee (included in Exhibit 10.6 to the Trust\u2019s Form 8-K, as filed with the Commission on August 25, 2021, which is incorporated herein by reference)."
+    ],
+    [
+     "31.1*",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, dated March 29, 2022."
+    ],
+    [
+     "33.1*",
+     "Report on Assessment of Compliance with Applicable Regulation AB Servicing Criteria for Exeter Finance LLC, dated March 29, 2022."
+    ],
+    [
+     "33.2*",
+     "Management\u2019s Assertion of Compliance for Citibank, dated February 23, 2022."
+    ],
+    [
+     "34.1*",
+     "Report of Independent Registered Public Accounting Firm of KPMG LLP on Assessment of Compliance with Servicing Criteria relating to Exeter Finance LLC, dated March 29, 2022."
+    ],
+    [
+     "34.2*",
+     "Report of Independent Registered Public Accounting Firm of KPMG LLP on Management\u2019s Assertion of Compliance relating to Citibank, dated February 23, 2022."
+    ],
+    [
+     "35.1*",
+     "Servicer Compliance Statement, dated March 29, 2022, of Exeter Finance LLC."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 219,
+    "end_line": 259
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibit and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Neither the Report on Assessment nor the Attestation Report for Citibank has identified any material instance of noncompliance with the servicing criteria described in such Report on Assessment as being applicable to Citibank.\nItem 1123 of Regulation AB. Servicer Compliance Statement.\nExeter has been identified by the registrant as a servicer during the 2021 Reporting Period with respect to the pool assets owned by the Trust. Exeter has provided a statement of compliance for the 2021 Reporting Period, signed by an authorized officer, and such compliance statement is attached as an exhibit to this Form 10-K.\nPART IV\nItem 15. Exhibit and Financial Statement Schedules.\n(a) The following documents are filed as part of this report:\n(1) Not applicable.\n(2) Not applicable.\n(3) See Item 15(b) below.\n(b) Exhibits Required by Item 601 of Regulation S-K.",
+   "prose_after": "_____________\n* Filed herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nEFCAR, LLC\n(Depositor)\nDate: March 29, 2022 By: /s/ Ben Miller\nBen Miller\nChief Executive Officer\n(Senior officer in charge of securitization of the depositor)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 205,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 262,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

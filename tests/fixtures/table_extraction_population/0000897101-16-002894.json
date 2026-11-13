@@ -1,0 +1,4544 @@
+{
+ "accession": "0000897101-16-002894",
+ "cik": "0001488917",
+ "form": "10-K",
+ "filing_date": "2016-09-06",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "elmd162969_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Minnesota\n\n\n\n(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "41-1732920 (IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] Annual Report Pursuant to Section 13 [X] 15(d) of the Securities Exchange Act of 1934\nFor the Fiscal Year Ended June 30, 2016\n[ ]  Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the Transition Period From to .\nCommission File number 001-34839\nElectromed, Inc.\n(Exact Name of Registrant as Specified in its Charter)",
+   "prose_after": "500 Sixth Avenue NW, New Prague, MN 56071\n(Address of principal executive offices)\n(952) 758-9299\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common Stock $0.01 par value",
+     "",
+     "NYSE MKT"
+    ],
+    [
+     "(Title of each class)",
+     "",
+     "(Name of each exchange on which registered)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "500 Sixth Avenue NW, New Prague, MN 56071\n(Address of principal executive offices)\n(952) 758-9299\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Exchange Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Website, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "",
+     "Item 1A.",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "",
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "10"
+    ],
+    [
+     "",
+     "Item 2.",
+     "Properties",
+     "11"
+    ],
+    [
+     "",
+     "Item 3.",
+     "Legal Proceedings",
+     "11"
+    ],
+    [
+     "",
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "11"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "11"
+    ],
+    [
+     "",
+     "Item 6.",
+     "Selected Financial Data",
+     "12"
+    ],
+    [
+     "",
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "12"
+    ],
+    [
+     "",
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "20"
+    ],
+    [
+     "",
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "F-1"
+    ],
+    [
+     "",
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "21"
+    ],
+    [
+     "",
+     "Item 9A.",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "Item 9B.",
+     "Other Information",
+     "22"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "22"
+    ],
+    [
+     "",
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "22"
+    ],
+    [
+     "",
+     "Item 11.",
+     "Executive Compensation",
+     "22"
+    ],
+    [
+     "",
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "22"
+    ],
+    [
+     "",
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "22"
+    ],
+    [
+     "",
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "22"
+    ],
+    [
+     "",
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "22"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge Accelerated Filer  [ ]  Accelerated Filer  [ ]  Non-accelerated Filer  [ ]  Smaller Reporting Company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the common stock held by non-affiliates of the Registrant as of December 31, 2015 was approximately $11,301,000 based upon the closing price of the Registrant\u2019s common stock on such date.\nThere were 8,217,112 shares of the registrant\u2019s common stock outstanding as of September 1, 2016.\nDOCUMENTS INCORPORATED BY REFERENCE\nPortions of the Definitive Proxy Statement for the registrant\u2019s Fiscal 2017 Annual Meeting of Shareholders, to be filed within 120 days of June 30, 2016, are incorporated by reference into Part III of this Form 10-K.\nElectromed, Inc.\nIndex to Annual Report on Form 10-K",
+   "prose_after": "i\nINFORMATION REGARDING FORWARD-LOOKING STATEMENTS\nStatements contained in this Annual Report on Form 10-K that are not statements of historical fact should be considered forward-looking statements within the meaning of the safe harbor provisions of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). Forward-looking statements include, but are not limited to, statements regarding the following: our business strategy, including our intended level of investment in research and development and marketing activities; our expectations with respect to earnings, gross margins and sales growth, industry relationships, marketing strategies and international sales; our business strengths and competitive advantages; our plans and expectations with respect to international sales growth; our intent to retain any earnings for use in operations rather than paying dividends; our expectation that our products will continue to qualify for reimbursement and payment under government and private insurance programs; our intellectual property plans and practices; the expected impact of applicable regulations on our business; our beliefs about our manufacturing processes; our expectations and beliefs with respect to our employees and our relationships with them; our belief that our current facilities are adequate to support our growth plans; our expectations with respect to ongoing compliance with the terms of our credit facility; our expectations regarding the ongoing availability of credit and our ability to renew our line of credit; and our anticipated revenues, expenses, capital requirements and liquidity. Words such as \u201canticipate,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cgoal,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201congoing,\u201d \u201cplan,\u201d \u201cpotential,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201ctarget,\u201d \u201cwill,\u201d \u201cwould,\u201d and similar expressions, including the negative of these terms, are intended to identify forward-looking statements but are not the exclusive means of identifying such statements. Although we believe these forward-looking statements are reasonable, they involve risks and uncertainties that may cause actual results to differ materially from those projected by such statements. Such statements involve known and unknown risks, uncertainties and other factors that may cause our actual results or our industry\u2019s actual results, levels of activity, performance or achievements to be materially different from the information expressed or implied by the forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "Low"
+    ],
+    [
+     "Fiscal Year Ended June 30, 2016:",
+     "",
+     ""
+    ],
+    [
+     "First Quarter (ended September 30, 2015)",
+     "$2.09",
+     "$1.55"
+    ],
+    [
+     "Second Quarter (ended December 31, 2015)",
+     "$2.21",
+     "$1.72"
+    ],
+    [
+     "Third Quarter (ended March 31, 2016)",
+     "$5.20",
+     "$1.55"
+    ],
+    [
+     "Fourth Quarter (ended June 30, 2016)",
+     "$4.99",
+     "$3.66"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal Year Ended June 30, 2015:",
+     "",
+     ""
+    ],
+    [
+     "First Quarter (ended September 30, 2014)",
+     "$2.01",
+     "$1.29"
+    ],
+    [
+     "Second Quarter (ended December 31, 2014)",
+     "$2.74",
+     "$1.23"
+    ],
+    [
+     "Third Quarter (ended March 31, 2015)",
+     "$2.84",
+     "$2.13"
+    ],
+    [
+     "Fourth Quarter (ended June 30, 2015)",
+     "$2.60",
+     "$1.68"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 351,
+    "end_line": 366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "We own our principal headquarters and manufacturing facilities, consisting of approximately 24,000 square feet, which are located on an approximately 2.3 acre parcel in New Prague, Minnesota. This owned property is subject to a mortgage (see Note 5 to the Financial Statements, included in Part II, Item 8, of this Report for further information).We also lease approximately 20,000 square feet of warehouse and office space in a building adjacent to our manufacturing facilities. We believe that our current facilities are satisfactory for our long-term growth plans.\nItem 3. Legal Proceedings.\nWe may be party to legal actions, proceedings, or claims in the ordinary course of business. We are not aware of any actual or threatened litigation that would have a material adverse effect on our financial condition or results of operations.\nItem 4. Mine Safety Disclosures.\nNone.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nMarket Information\nOur common stock is listed on the NYSE MKT under the symbol \u201cELMD\u201d. The following table sets forth the high and low sale prices of our common stock by quarter during our 2016 and 2015 fiscal years.",
+   "prose_after": "As of September 1, 2016, there were 100 registered holders of our common stock.\nDividends\nWe have never paid cash dividends on any of our common stock. We currently intend to retain any earnings for use in operations and do not anticipate paying cash dividends in the foreseeable future. Currently, the agreement governing our credit facility restricts our ability to pay dividends.\nRecent Sales of Unregistered Equity Securities\nNone.\nPurchase of Equity Securities by the Company and Affiliated Purchasers\nNone.\nItem 6. Selected Financial Data.\nAs a smaller reporting company, we are not required to provide disclosure pursuant to this item.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 330,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 377,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Twelve Months Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "Increase",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue",
+     "$",
+     "22,991",
+     "$",
+     "19,408",
+     "$",
+     "3,583",
+     "",
+     "18.5",
+     "%"
+    ],
+    [
+     "Home Care Revenue",
+     "$",
+     "20,500",
+     "$",
+     "17,007",
+     "$",
+     "3,493",
+     "",
+     "20.5",
+     "%"
+    ],
+    [
+     "Institutional Revenue",
+     "$",
+     "1,778",
+     "$",
+     "1,547",
+     "$",
+     "231",
+     "",
+     "14.9",
+     "%"
+    ],
+    [
+     "International Revenue",
+     "$",
+     "713",
+     "$",
+     "854",
+     "$",
+     "(141)",
+     "",
+     "(16.5)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Twelve Months Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 465,
+    "end_line": 475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Share-Based Compensation\nShare-based payment awards consist of options and restricted stock issued to employees and directors for services. Expense for options is estimated using the Black-Scholes pricing model at the date of grant and expense for restricted stock is determined by the closing price on the day the grant is made. The portion of the award that is ultimately expected to vest is recognized on a straight-line basis over the requisite service or vesting period of the award. In determining the fair value of our share-based payment awards, we make various assumptions using the Black-Scholes pricing model, including expected risk-free interest rate, stock price volatility, life and forfeitures. See Note 7 to the Financial Statements included in Part II, Item 8, of this Report for these assumptions.\nResults of Operations\nFiscal Year Ended June 30, 2016 Compared to Fiscal Year Ended June 30, 2015\nRevenues\nRevenue for the twelve-month periods are summarized in the table below (dollar amounts in thousands).",
+   "prose_after": "Home Care Revenue. Our home care revenue increased by 20.5%, or approximately $3,493,000, for fiscal year ended June 30, 2016 compared to the fiscal year ended June 30, 2015. The increase in revenue was primarily due to higher approval rates on referrals from third-party payers as of result of continued improvements in our reimbursement operations, including new third-party payer contracts and process improvements leading to greater referral to approval percentage, faster approval cycle times, a higher average reimbursed price and an increase in the total number of referrals.\nInstitutional Revenue. Institutional revenue increased by 14.9%, or approximately $231,000, in fiscal 2016 compared to fiscal 2015. Institutional revenue includes sales to distributors, group purchasing organization (\u201cGPO\u201d) members, and other institutions.\nInternational Revenue. International revenue decreased by 16.5%, or $141,000, in fiscal 2016 compared to fiscal 2015. In fiscal 2016, sales decreased in Central and South America, and the Middle East, offset partially by an increase in sales to Asia and Europe.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Operations",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Shareholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "In February 2016, the FASB issued ASU 2016-02, \u201cLeases.\u201d This standard requires the recognition of all lease transactions with terms in excess of 12 months on the balance sheet as a lease liability and a right-of-use asset (as defined in the standard). ASU 2016-02 will be effective for fiscal years beginning after December 15, 2018, including interim periods within those fiscal years, with earlier application permitted. Upon adoption, the lessee will apply the new standard retrospectively to all periods presented or retrospectively using a cumulative effect adjustment in the year of adoption. The Company is currently assessing the effect that ASU 2016-02 will have on its financial statements.\nIn March 2016, the FASB issued ASU 2016-09, \u201cCompensation\u2014Stock Compensation (Topic 718): Improvements to Employee Share-Based Payment Accounting\u201d, which reduces complexity in accounting standards related to share-based payment transactions, including, among others, (1) accounting for income taxes, (2) classification of excess tax benefits on the statement of cash flow, (3) forfeitures, and (4) statutory tax withholding requirements. ASU 2016-09 will be effective for annual reporting periods beginning on or after December 15, 2016, and interim periods within those annual periods, with earlier application permitted. The Company is evaluating the impact of the standard on its financial statements.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nAs a smaller reporting company, we are not required to provide disclosure pursuant to this item.\nItem 8. Financial Statements and Supplementary Data.\nIndex to Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Shareholders Electromed, Inc.\nWe have audited the accompanying balance sheets of Electromed, Inc. as of June 30, 2016 and 2015, and the related statements of operations, shareholders\u2019 equity, and cash flows for the years then ended. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "5,123,355",
+     "$",
+     "3,598,240"
+    ],
+    [
+     "Accounts receivable (net of allowances for doubtful accounts of $45,000)",
+     "",
+     "7,611,437",
+     "",
+     "6,518,816"
+    ],
+    [
+     "Inventories",
+     "",
+     "2,480,443",
+     "",
+     "2,072,108"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "412,856",
+     "",
+     "397,833"
+    ],
+    [
+     "Income tax receivable",
+     "",
+     "192,685",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total current assets",
+     "",
+     "15,820,776",
+     "",
+     "12,586,997"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "3,375,189",
+     "",
+     "3,635,516"
+    ],
+    [
+     "Finite-life intangible assets, net",
+     "",
+     "904,033",
+     "",
+     "999,842"
+    ],
+    [
+     "Other assets",
+     "",
+     "144,263",
+     "",
+     "182,699"
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "343,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total assets",
+     "$",
+     "20,587,261",
+     "$",
+     "17,405,054"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Shareholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current maturities of long-term debt",
+     "$",
+     "46,309",
+     "$",
+     "48,749"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "589,225",
+     "",
+     "538,518"
+    ],
+    [
+     "Accrued compensation",
+     "",
+     "1,489,798",
+     "",
+     "700,370"
+    ],
+    [
+     "Income tax payable",
+     "",
+     "\u2014",
+     "",
+     "122,657"
+    ],
+    [
+     "Warranty reserve",
+     "",
+     "660,000",
+     "",
+     "660,000"
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "287,194",
+     "",
+     "208,983"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "3,072,526",
+     "",
+     "2,279,277"
+    ],
+    [
+     "Long-term debt, less current maturities",
+     "",
+     "1,156,139",
+     "",
+     "1,202,446"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "4,228,665",
+     "",
+     "3,481,723"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value; authorized: 13,000,000 shares; 8,187,112 and 8,133,857 issued and outstanding at June 30, 2016 and June 30, 2015, respectively",
+     "",
+     "81,871",
+     "",
+     "81,339"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "13,549,551",
+     "",
+     "13,327,320"
+    ],
+    [
+     "Retained earnings",
+     "",
+     "2,727,174",
+     "",
+     "514,672"
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "16,358,596",
+     "",
+     "13,923,331"
+    ],
+    [
+     "Total liabilities and shareholders\u2019 equity",
+     "$",
+     "20,587,261",
+     "$",
+     "17,405,054"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 618,
+    "end_line": 668
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of Electromed, Inc. as of June 30, 2016 and 2015, and the results of its operations and its cash flows for the years then ended, in conformity with U.S. generally accepted accounting principles.\n/s/ RSM US LLP\nMinneapolis, Minnesota\nSeptember 6, 2016\nElectromed, Inc.\nBalance Sheets June 30, 2016 and 2015",
+   "prose_after": "Electromed, Inc.\nStatements of Operations Years Ended June 30, 2016 and 2015",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 613,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Net revenues",
+     "$",
+     "22,991,999",
+     "",
+     "$",
+     "19,408,385",
+     ""
+    ],
+    [
+     "Cost of revenues",
+     "",
+     "5,115,736",
+     "",
+     "",
+     "5,808,158",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "17,876,263",
+     "",
+     "",
+     "13,600,227",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "14,386,563",
+     "",
+     "",
+     "11,974,384",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "380,392",
+     "",
+     "",
+     "315,647",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "14,766,955",
+     "",
+     "",
+     "12,290,031",
+     ""
+    ],
+    [
+     "Operating income",
+     "",
+     "3,109,308",
+     "",
+     "",
+     "1,310,196",
+     ""
+    ],
+    [
+     "Interest expense, net of interest income of $12,658 and $2,328, respectively",
+     "",
+     "66,806",
+     "",
+     "",
+     "85,710",
+     ""
+    ],
+    [
+     "Net income before income taxes",
+     "",
+     "3,042,502",
+     "",
+     "",
+     "1,224,486",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "(830,000)",
+     "",
+     "",
+     "(132,000)",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,212,502",
+     "",
+     "$",
+     "1,092,486",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.27",
+     "",
+     "$",
+     "0.13",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.27",
+     "",
+     "$",
+     "0.13",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "8,135,514",
+     "",
+     "",
+     "8,115,595",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "8,248,391",
+     "",
+     "",
+     "8,153,703",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 673,
+    "end_line": 712
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Electromed, Inc.\nStatements of Operations Years Ended June 30, 2016 and 2015",
+   "prose_after": "Electromed, Inc. Statements of Shareholders\u2019 Equity Years Ended June 30, 2016 and 2015",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 668,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(Accumulated",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "Deficit)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "Shareholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Earnings",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "Balance at June 30, 2014",
+     "",
+     "8,114,252",
+     "$",
+     "81,143",
+     "$",
+     "13,217,166",
+     "",
+     "$",
+     "(577,814)",
+     "",
+     "$",
+     "12,720,495"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,092,486",
+     "",
+     "",
+     "1,092,486"
+    ],
+    [
+     "Issuance of restricted stock",
+     "",
+     "19,605",
+     "",
+     "196",
+     "",
+     "(196)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "110,350",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "110,350"
+    ],
+    [
+     "Balance at June 30, 2015",
+     "",
+     "8,133,857",
+     "",
+     "81,339",
+     "",
+     "13,327,320",
+     "",
+     "",
+     "514,672",
+     "",
+     "",
+     "13,923,331"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,212,502",
+     "",
+     "",
+     "2,212,502"
+    ],
+    [
+     "Issuance of restricted stock",
+     "",
+     "53,255",
+     "",
+     "532",
+     "",
+     "(532)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "222,763",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "222,763"
+    ],
+    [
+     "Balance at June 30, 2016",
+     "",
+     "8,187,112",
+     "$",
+     "81,871",
+     "$",
+     "13,549,551",
+     "",
+     "$",
+     "2,727,174",
+     "",
+     "$",
+     "16,358,596"
+    ]
+   ],
+   "caption_stack": [
+    "(Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 715,
+    "end_line": 737
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Electromed, Inc. Statements of Shareholders\u2019 Equity Years Ended June 30, 2016 and 2015",
+   "prose_after": "Electromed, Inc. Statements of Cash Flows Years Ended June 30, 2016 and 2015",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "2,212,502",
+     "",
+     "$",
+     "1,092,486",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "616,021",
+     "",
+     "",
+     "613,304",
+     ""
+    ],
+    [
+     "Amortization of finite-life intangible assets",
+     "",
+     "122,681",
+     "",
+     "",
+     "122,911",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "",
+     "18,016",
+     "",
+     "",
+     "19,210",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "222,763",
+     "",
+     "",
+     "110,350",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "(343,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Loss on disposal of property and equipment and intangible assets",
+     "",
+     "58,162",
+     "",
+     "",
+     "300,530",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(1,092,621)",
+     "",
+     "",
+     "(31,549)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "(347,623)",
+     "",
+     "",
+     "163,388",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "(173,768)",
+     "",
+     "",
+     "6,541",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "873,770",
+     "",
+     "",
+     "384,043",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "2,166,903",
+     "",
+     "",
+     "2,781,214",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenditures for property and equipment",
+     "",
+     "(534,944)",
+     "",
+     "",
+     "(523,185)",
+     ""
+    ],
+    [
+     "Expenditures for finite-life intangible assets",
+     "",
+     "(44,577)",
+     "",
+     "",
+     "(101,322)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(579,521)",
+     "",
+     "",
+     "(624,507)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payments on long-term debt including capital lease obligations",
+     "",
+     "(48,747)",
+     "",
+     "",
+     "(46,372)",
+     ""
+    ],
+    [
+     "Payments of deferred financing fees",
+     "",
+     "(13,520)",
+     "",
+     "",
+     "(14,797)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(62,267)",
+     "",
+     "",
+     "(61,169)",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "1,525,115",
+     "",
+     "",
+     "2,095,538",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "",
+     "3,598,240",
+     "",
+     "",
+     "1,502,702",
+     ""
+    ],
+    [
+     "End of period",
+     "$",
+     "5,123,355",
+     "",
+     "$",
+     "3,598,240",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "61,560",
+     "",
+     "$",
+     "68,932",
+     ""
+    ],
+    [
+     "  Cash paid for income taxes",
+     "",
+     "1,494,512",
+     "",
+     "",
+     "2,598",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Noncash Investing and Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment and finite-life intangible assets acquisitions included in accounts payable",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "78,081",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 740,
+    "end_line": 790
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Electromed, Inc. Statements of Cash Flows Years Ended June 30, 2016 and 2015",
+   "prose_after": "Electromed, Inc. Notes to Financial Statements\nNote 1. Nature of Business and Summary of Significant Accounting Policies\nNature of business: Electromed, Inc. (the \u201cCompany\u201d) develops, manufactures and markets innovative airway clearance products that apply High Frequency Chest Wall Oscillation (\u201cHFCWO\u201d) therapy in pulmonary care for patients of all ages. The Company markets its products in the United States to the home health care and institutional markets for use by patients in personal residences, hospitals and clinics. The Company also sells internationally both directly and through distributors. The Company had international sales of approximately $713,000 and $854,000 for the fiscal years ended June 30, 2016 and 2015, respectively. Since its inception, the Company has operated in a single industry segment: developing, manufacturing and marketing medical equipment.\nA summary of the Company\u2019s significant accounting policies follows:\nUse of estimates: Management uses estimates and assumptions in preparing the financial statements in accordance with accounting principles generally accepted in the U.S. Those estimates and assumptions affect the reported amounts of assets and liabilities, the disclosure of contingent assets and liabilities, and the reported revenues and expenses. Actual results could vary from the estimates that were used. The Company believes the critical accounting policies that require the most significant assumptions and judgments in the preparation of its financial statements include revenue recognition and the related estimation of selling price adjustments, allowance for doubtful accounts, inventory obsolescence, share-based compensation, income taxes and the warranty reserve.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Revenue recognized under installment sales",
+     "$",
+     "1,555,000",
+     "$",
+     "1,487,000"
+    ],
+    [
+     "Amortized cost of revenues recognized",
+     "",
+     "188,000",
+     "",
+     "168,000"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 809,
+    "end_line": 817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Nature of Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Direct patient sales are recorded at amounts to be received from patients under reimbursement arrangements with third-party payers, including private insurers, prepaid health plans, Medicare and Medicaid. In addition, the Company records an estimate for selling price adjustments that often arise from changes in a patient\u2019s insurance coverage, changes in a patient\u2019s domicile, insurance company coverage limitations or patient death. Other than the installment sales as discussed below, the Company expects to receive payment on the vast majority of accounts receivable within one year and therefore has classified all accounts receivable as current. However, in some instances, payment for direct patient sales can be delayed or interrupted, resulting in a portion of collections occurring later than one year.\nCertain third-party reimbursement agencies pay the Company on a monthly installment basis, which can span over several years. Due to the length of time over which cash is collected and the inherent uncertainty of collectability with these installment sales, the Company cannot make a reasonable estimate of revenue at the time of sale and does not record accounts receivable or revenue at the time of product shipment. Under the installment method, the Company defers the revenue associated with the sale and, as each installment is received, that amount is recognized as revenue. Deferred costs associated with the sale are amortized to cost of revenue ratably over the estimated period in which collections are scheduled to occur.\nSales made under the installment method were approximately as follows:",
+   "prose_after": "Unrecognized installment method sales were approximately as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 790,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Estimated unrecognized sales, net of discounts",
+     "$",
+     "1,977,000",
+     "$",
+     "2,053,000"
+    ],
+    [
+     "Unamortized costs of revenues included in prepaid and other current assets and other assets",
+     "",
+     "263,000",
+     "",
+     "315,000"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 820,
+    "end_line": 828
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Nature of Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Unrecognized installment method sales were approximately as follows:",
+   "prose_after": "Shipping and handling expense: Shipping and handling charges incurred by the Company are included in cost of goods sold and were $333,000 and $295,000 for the fiscal years ended June 30, 2016 and 2015, respectively.\nCash: The Company maintains its cash in bank deposit accounts that, at times, may exceed federally insured limits. The Company has not experienced any losses in these accounts.\nAccounts receivable: The Company\u2019s accounts receivable balance is comprised of amounts due from individuals, institutions and distributors. Balances due from individuals are typically remitted to the Company by third-party reimbursement agencies such as Medicare, Medicaid and private insurance companies. Accounts receivable are carried at amounts estimated to be received from patients under reimbursement arrangements with third-party payers. Accounts receivable are also net of an allowance for doubtful accounts. Management determines the allowance for doubtful accounts by regularly evaluating individual customer receivables and considering a customer\u2019s financial condition and credit history. Receivables are written off when deemed uncollectible. Recoveries of receivables previously written off are recorded when received. The allowance for doubtful accounts was approximately $45,000 as of June 30, 2016 and 2015.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 817,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Beginning warranty reserve",
+     "$",
+     "660,000",
+     "",
+     "$",
+     "700,000",
+     ""
+    ],
+    [
+     "Accrual for products sold",
+     "",
+     "152,000",
+     "",
+     "",
+     "139,000",
+     ""
+    ],
+    [
+     "Expenditures and costs incurred for warranty claims",
+     "",
+     "(152,000)",
+     "",
+     "",
+     "(179,000)",
+     ""
+    ],
+    [
+     "Ending warranty reserve",
+     "$",
+     "660,000",
+     "",
+     "$",
+     "660,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 849,
+    "end_line": 861
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "Nature of Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "If the Company believes the carrying value is unrecoverable, it would recognize an impairment charge necessary to reduce the unamortized balance to the estimated fair value of the asset or asset group. The amount of such impairment would be charged to operations in the current period.\nWarranty liability: The Company provides a lifetime warranty on products sold to patients in the United States and Canada and a three-year warranty for institutional sales within the United States, as well as for all international sales. The Company estimates the costs that may be incurred under its warranty and records a liability in the amount of such costs at the time the product is sold. Factors that affect the Company\u2019s warranty liability include the number of units sold, historical and anticipated rates of warranty claims, the product\u2019s useful life, and cost per claim. The Company periodically assesses the adequacy of its recorded warranty liability and adjusts the amounts as necessary.\nChanges in the Company\u2019s warranty liability were approximately as follows:",
+   "prose_after": "Income taxes: Deferred taxes are provided on a liability method whereby deferred tax assets are recognized for deductible temporary differences and operating loss and tax credit carryforwards and deferred tax liabilities are recognized for taxable temporary differences. Temporary differences are the differences between the reported amounts of assets and liabilities and their tax bases. Deferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that some portion or all of the deferred tax assets will not be realized. We would reverse a valuation allowance if we determine, based on the weight of all available evidence, including when cumulative losses become positive income, that it is more likely than not that some or all of the deferred tax assets will be realized. Deferred tax assets and liabilities are adjusted for the effects of changes in tax laws and rates on the date of enactment.\nThe Company recognizes tax liabilities when the Company believes that certain positions may not be fully sustained upon review by tax authorities. Benefits from tax positions are measured at the largest amount of benefit that is greater than 50 percent likely of being realized upon settlement. To the extent that the final tax outcome of these matters is different than the amounts recorded, such differences impact income tax expense in the period in which such determination is made. Interest and penalties, if any, related to accrued liabilities for potential tax assessments are included in income tax expense.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 873,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Parts inventory",
+     "$",
+     "1,615,000",
+     "",
+     "$",
+     "1,527,000",
+     ""
+    ],
+    [
+     "Work in process",
+     "",
+     "165,000",
+     "",
+     "",
+     "245,000",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "850,000",
+     "",
+     "",
+     "440,000",
+     ""
+    ],
+    [
+     "Less: Reserve for obsolescence",
+     "",
+     "(150,000)",
+     "",
+     "",
+     "(140,000)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "2,480,000",
+     "",
+     "$",
+     "2,072,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 894,
+    "end_line": 907
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "In March 2016, the FASB issued ASU 2016-09, \u201cCompensation\u2014Stock Compensation (Topic 718): Improvements to Employee Share-Based Payment Accounting\u201d, which reduces complexity in accounting standards related to share-based payment transactions, including, among others, (1) accounting for income taxes, (2) classification of excess tax benefits on the statement of cash flow, (3) forfeitures, and (4) statutory tax withholding requirements. ASU 2019-09 will be effective for annual reporting periods beginning on or after December 15, 2016, and interim periods within those annual periods, with earlier application permitted. The Company is evaluating the impact of the standard on its financial statements.\nReclassifications: Certain items in the fiscal year ended June 30, 2015 financial statements have been reclassified to be consistent with the classifications adopted for the Company\u2019s fiscal year ending June 30, 2016. The fiscal 2015 reclassifications had no impact on previously reported net income or equity.\nNote 2. Inventories\nThe components of inventories at June 30, 2016 and 2015 were approximately as follows:",
+   "prose_after": "Note 3. Property and Equipment\nProperty and equipment, including assets under capital leases, were approximately as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Estimated Useful",
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Lives (Years)",
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Building and building improvements",
+     "",
+     "15-39",
+     "$",
+     "2,236,000",
+     "",
+     "$",
+     "2,236,000",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "N/A",
+     "",
+     "200,000",
+     "",
+     "",
+     "200,000",
+     ""
+    ],
+    [
+     "Land improvements",
+     "",
+     "15",
+     "",
+     "166,000",
+     "",
+     "",
+     "162,000",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "3-7",
+     "",
+     "2,755,000",
+     "",
+     "",
+     "2,596,000",
+     ""
+    ],
+    [
+     "Demonstration and rental equipment",
+     "",
+     "3",
+     "",
+     "1,040,000",
+     "",
+     "",
+     "1,070,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "6,397,000",
+     "",
+     "",
+     "6,264,000",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "",
+     "",
+     "(3,022,000)",
+     "",
+     "",
+     "(2,628,000)",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "",
+     "$",
+     "3,375,000",
+     "",
+     "$",
+     "3,636,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 912,
+    "end_line": 930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Note 3. Property and Equipment\nProperty and equipment, including assets under capital leases, were approximately as follows:",
+   "prose_after": "During the fiscal years ended June 30, 2016 and 2015, the Company impaired or disposed of certain property and equipment, no longer in use, with a net value of approximately $40,000 and $268,000 respectively, which was included as an expense in cost of goods sold or selling, general and administrative expense on the statements of operations. During the years ended June 30, 2016 and 2015, there were approximately $17,000 and $118,000 respectively, of impairment charges associated with tooling that will no longer be used to produce SmartVest SQL parts as new, more cost-effective manufacturing processes were implemented.\nNote 4. Finite-life Intangible Assets\nThe carrying value of patents and trademarks includes the original cost of obtaining the patents, periodic renewal fees, and other costs associated with maintaining and defending patent and trademark rights. Patents and trademarks are amortized over their estimated useful lives, generally 15 and 12 years, respectively. During the years ended June 30, 2016 and 2015, the Company abandoned certain domestic and foreign patents with a net value of approximately $18,000 and $32,000, respectively, which was included as an expense in selling, general and administrative expense on the statements of operations. The patents covered technology that management considered outdated and was no longer in use. Accumulated amortization was approximately $820,000 and $698,000 at June 30, 2016 and 2015, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 885,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning",
+     "$",
+     "1,000,000",
+     "",
+     "$",
+     "1,039,000",
+     ""
+    ],
+    [
+     "Additions",
+     "",
+     "45,000",
+     "",
+     "",
+     "116,000",
+     ""
+    ],
+    [
+     "Abandonments",
+     "",
+     "(18,000)",
+     "",
+     "",
+     "(32,000)",
+     ""
+    ],
+    [
+     "Amortization expense",
+     "",
+     "(123,000)",
+     "",
+     "",
+     "(123,000)",
+     ""
+    ],
+    [
+     "Balance, ending",
+     "$",
+     "904,000",
+     "",
+     "$",
+     "1,000,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 939,
+    "end_line": 952
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Finite-life Intangible Assets"
+    }
+   },
+   "prose_before": "During the fiscal years ended June 30, 2016 and 2015, the Company impaired or disposed of certain property and equipment, no longer in use, with a net value of approximately $40,000 and $268,000 respectively, which was included as an expense in cost of goods sold or selling, general and administrative expense on the statements of operations. During the years ended June 30, 2016 and 2015, there were approximately $17,000 and $118,000 respectively, of impairment charges associated with tooling that will no longer be used to produce SmartVest SQL parts as new, more cost-effective manufacturing processes were implemented.\nNote 4. Finite-life Intangible Assets\nThe carrying value of patents and trademarks includes the original cost of obtaining the patents, periodic renewal fees, and other costs associated with maintaining and defending patent and trademark rights. Patents and trademarks are amortized over their estimated useful lives, generally 15 and 12 years, respectively. During the years ended June 30, 2016 and 2015, the Company abandoned certain domestic and foreign patents with a net value of approximately $18,000 and $32,000, respectively, which was included as an expense in selling, general and administrative expense on the statements of operations. The patents covered technology that management considered outdated and was no longer in use. Accumulated amortization was approximately $820,000 and $698,000 at June 30, 2016 and 2015, respectively.\nThe activity and balances of finite-life intangible assets were approximately as follows:",
+   "prose_after": "Based on the carrying value at June 30, 2016, future amortization expense is expected to be approximately $124,000 annually.\nNote 5. Financing Arrangements\nThe Company has a credit facility that provides for a revolving line of credit and a term loan. Effective December 18, 2015, the Company renewed its $2,500,000 revolving line of credit. There was no outstanding principal balance on the line of credit as of June 30, 2016 or June 30, 2015. Interest on borrowings under the line of credit, if any, would accrue at the prime rate (3.50% at June 30, 2016) and is payable monthly. The amount eligible for borrowing on the line of credit is limited to the lesser of $2,500,000 or 57.00% of eligible accounts receivable and the line of credit expires on December 18, 2016, if not renewed. At June 30, 2016, the maximum $2,500,000 was available for borrowing. The line of credit is secured by a security interest in substantially all of the tangible and intangible assets of the Company.\nIn connection with the credit facility, the Company also has a term loan, which had an outstanding principal balance of approximately $1,200,000 at June 30, 2016. The term loan bears interest at 5.00%, with monthly payments of principal and interest of approximately $8,600 and a final payment of principal and interest of approximately $1,090,000 due on the maturity date of December 18, 2018. Payment obligations under the term loan are secured by a mortgage on the Company\u2019s real property.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Mortgage note payable with bank, due in monthly installments of $8,632, including interest at 5.0%, remaining due December 2018, secured by land and building",
+     "$",
+     "1,200,000",
+     "$",
+     "1,241,000"
+    ],
+    [
+     "Capital lease obligation, due in monthly installments of $648, including interest at 6.99%, to November 2016, secured by equipment",
+     "",
+     "2,000",
+     "",
+     "10,000"
+    ],
+    [
+     "Total",
+     "",
+     "1,202,000",
+     "",
+     "1,251,000"
+    ],
+    [
+     "Less: Current portion",
+     "",
+     "46,000",
+     "",
+     "49,000"
+    ],
+    [
+     "Long-term debt",
+     "$",
+     "1,156,000",
+     "$",
+     "1,202,000"
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 965,
+    "end_line": 980
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Financing Arrangements"
+    }
+   },
+   "prose_before": "The Company has a credit facility that provides for a revolving line of credit and a term loan. Effective December 18, 2015, the Company renewed its $2,500,000 revolving line of credit. There was no outstanding principal balance on the line of credit as of June 30, 2016 or June 30, 2015. Interest on borrowings under the line of credit, if any, would accrue at the prime rate (3.50% at June 30, 2016) and is payable monthly. The amount eligible for borrowing on the line of credit is limited to the lesser of $2,500,000 or 57.00% of eligible accounts receivable and the line of credit expires on December 18, 2016, if not renewed. At June 30, 2016, the maximum $2,500,000 was available for borrowing. The line of credit is secured by a security interest in substantially all of the tangible and intangible assets of the Company.\nIn connection with the credit facility, the Company also has a term loan, which had an outstanding principal balance of approximately $1,200,000 at June 30, 2016. The term loan bears interest at 5.00%, with monthly payments of principal and interest of approximately $8,600 and a final payment of principal and interest of approximately $1,090,000 due on the maturity date of December 18, 2018. Payment obligations under the term loan are secured by a mortgage on the Company\u2019s real property.\nThe documents governing the line of credit and term loan contain certain financial and nonfinancial covenants that include a minimum tangible net worth covenant of not less than $10,125,000 and restrictions on the Company\u2019s ability to incur certain additional indebtedness or pay dividends.\nLong-term debt consisted of approximately the following as of June 30, 2016 and 2015:",
+   "prose_after": "Approximate future maturities of long-term debt, including capital lease obligations, as of June 30, 2016 were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending June 30:",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "$",
+     "46,000"
+    ],
+    [
+     "2018",
+     "",
+     "46,000"
+    ],
+    [
+     "2019",
+     "",
+     "1,110,000"
+    ],
+    [
+     "Total",
+     "$",
+     "1,202,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending June 30:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 983,
+    "end_line": 992
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Financing Arrangements"
+    }
+   },
+   "prose_before": "Approximate future maturities of long-term debt, including capital lease obligations, as of June 30, 2016 were as follows:",
+   "prose_after": "Capital leases: The Company has financed certain office equipment through capital leases.\nAt June 30, 2016 and 2015, the carrying value of assets under these capital leases was approximately as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Fixtures and office equipment",
+     "$",
+     "33,000",
+     "",
+     "$",
+     "33,000",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(16,000)",
+     "",
+     "",
+     "(12,000)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "17,000",
+     "",
+     "$",
+     "21,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 997,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Financing Arrangements"
+    }
+   },
+   "prose_before": "Capital leases: The Company has financed certain office equipment through capital leases.\nAt June 30, 2016 and 2015, the carrying value of assets under these capital leases was approximately as follows:",
+   "prose_after": "Depreciation expense for these assets was approximately $3,000 for the years ended June 30, 2016 and 2015.\nApproximate future minimum payments under capital leases as of June 30, 2016 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending June 30:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2016",
+     "$",
+     "3,000",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "3,000",
+     ""
+    ],
+    [
+     "Less: Amount representing interest",
+     "",
+     "(1,000)",
+     ""
+    ],
+    [
+     "Present value of future minimum lease payments (included in long term debt above)",
+     "$",
+     "2,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ending June 30:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1013,
+    "end_line": 1023
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Financing Arrangements"
+    }
+   },
+   "prose_before": "Depreciation expense for these assets was approximately $3,000 for the years ended June 30, 2016 and 2015.\nApproximate future minimum payments under capital leases as of June 30, 2016 are as follows:",
+   "prose_after": "Note 6. Common Stock\nAuthorized shares: The Company\u2019s Articles of Incorporation have established 15,000,000 authorized shares of capital stock consisting of 13,000,000 shares of common stock, par value $0.01 per share, and 2,000,000 shares of undesignated stock.\nNote 7. Share-Based Payments\nEmployee options: The Company has historically granted stock options to employees as long-term incentive compensation. Options generally expire four to ten years from the grant date and vest over a period of up to five years. In November 2014, the Company\u2019s shareholders approved the 2014 Equity Incentive Plan (the \u201c2014 Plan\u201d) which supersedes the Company\u2019s 2012 Stock Incentive Plan. The Plan allows the Board of Directors (the \u201cBoard\u201d) to grant non-qualified stock options or restricted stock to employees, directors, or consultants. The vesting schedule for options or restricted stock units and the term of the options are determined by the Board upon each grant. The maximum number of shares of common stock available for issuance under the Plan is 650,000. There were 450,800 options granted under the 2012 and prior plans outstanding as of June 30, 2016 and 2015, respectively. There were 163,500 options issued under the 2014 Plan and 149,000 outstanding as of June 30, 2016. There were 458,140 available for grant under the 2014 Plan as of June 30, 2016.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.40-1.92",
+     "%",
+     "",
+     "2.5",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "6",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "",
+     "89.3-93.1",
+     "%",
+     "",
+     "57.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Share-Based Payments"
+    }
+   },
+   "prose_before": "The Company recognizes compensation expense related to share-based payment transactions in the financial statements based on the estimated fair value of the award issued. The fair value of each option is estimated using the Black-Scholes pricing model at the time of award grant. The Company estimates the expected life of options based on the expected holding period by the option holder. The risk-free interest rate is based upon observed U.S. Treasury interest rates for the expected term of the options. The Company makes assumptions with respect to expected stock price volatility based upon the volatility of its stock price. Forfeitures are estimated at the time of grant and revised in subsequent periods if actual forfeitures differ from initial estimates. Forfeitures are estimated based on the percentage of awards expected to vest, taking into consideration the seniority level of the award recipient.\nShare-based compensation expense for the years ended June 30, 2016 and 2015 was approximately $223,000 and $110,000, respectively.\nThe following assumptions were used to estimate the fair value of options granted:",
+   "prose_after": "The following table presents employee option activity for the years ended June 30, 2016 and 2015:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted-Average Grant Date Fair Value",
+     "",
+     "Weighted-Average Exercise Price",
+     "",
+     "Weighted-Average\n\n\n\n\n\nRemaining Contractual Life (in Years)",
+     ""
+    ],
+    [
+     "Options outstanding at June 30, 2014",
+     "",
+     "370,800",
+     "",
+     "$",
+     "1.91",
+     "$",
+     "3.11",
+     "",
+     "5.32"
+    ],
+    [
+     "Granted",
+     "",
+     "80,000",
+     "",
+     "",
+     "0.95",
+     "",
+     "1.40",
+     "",
+     "\u2014"
+    ],
+    [
+     "Options outstanding at June 30, 2015",
+     "",
+     "450,800",
+     "",
+     "",
+     "1.74",
+     "",
+     "2.80",
+     "",
+     "5.15"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "163,500",
+     "",
+     "",
+     "1.55",
+     "",
+     "2.05",
+     "",
+     "\u2014"
+    ],
+    [
+     "Canceled or Forfeited",
+     "",
+     "(14,500)",
+     "",
+     "",
+     "1.37",
+     "",
+     "1.80",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options outstanding at June 30, 2016",
+     "",
+     "599,800",
+     "",
+     "",
+     "1.70",
+     "",
+     "2.62",
+     "",
+     "5.38"
+    ],
+    [
+     "Options exercisable at June 30, 2016",
+     "",
+     "467,135",
+     "",
+     "",
+     "1.75",
+     "",
+     "2.79",
+     "",
+     "4.38"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1050,
+    "end_line": 1069
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Share-Based Payments"
+    }
+   },
+   "prose_before": "The following table presents employee option activity for the years ended June 30, 2016 and 2015:",
+   "prose_after": "There were no options exercised during the years ended June 30, 2016 and 2015.\nAt June 30, 2016, the Company had approximately $113,000 of unrecognized compensation expense, which is expected to be recognized over a weighted-average period of 1.4 years. The aggregate intrinsic value of options outstanding was $741,838 and options exercisable was $498,682 at June 30, 2016.\nOptions issued in conjunction with the initial public offering: In connection with the Company\u2019s 2010 initial public offering and the exercise of the underwriter\u2019s over-allotment option, the Company issued to the underwriter options to purchase up to 190,000 additional shares of the Company\u2019s common stock at a price of $4.80 per share. These options became exercisable in August 2011 and expired in August 2015.\nWarrants issued with convertible debt: In years prior to fiscal 2010, the Company issued convertible notes payable to certain individual creditors. In conjunction with the issuance of these convertible notes, creditors also received warrants to purchase common stock at an exercise price of $3.00 per share. The Company had approximately 44,000 warrants that were outstanding and exercisable at an exercise price of $3.00 per share which expired in September 2015. At June 30, 2016, there were no warrants outstanding and there were none exercised during the years ended June 30, 2016 and 2015.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1031,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Restricted Stock Units",
+     "",
+     "",
+     "Weighted-Average Grant Date Fair Value per Share",
+     ""
+    ],
+    [
+     "Outstanding at June 30, 2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "19,605",
+     "",
+     "$",
+     "2.55"
+    ],
+    [
+     "Vested",
+     "",
+     "19,605",
+     "",
+     "$",
+     "2.55"
+    ],
+    [
+     "Outstanding at June 30, 2015",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "",
+     "53,255",
+     "",
+     "$",
+     "1.95"
+    ],
+    [
+     "Vested",
+     "",
+     "(33,256)",
+     "",
+     "$",
+     "2.04"
+    ],
+    [
+     "Outstanding at June 30, 2016",
+     "",
+     "19,999",
+     "",
+     "$",
+     "1.80"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1082,
+    "end_line": 1097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Share-Based Payments"
+    }
+   },
+   "prose_before": "Warrants issued with convertible debt: In years prior to fiscal 2010, the Company issued convertible notes payable to certain individual creditors. In conjunction with the issuance of these convertible notes, creditors also received warrants to purchase common stock at an exercise price of $3.00 per share. The Company had approximately 44,000 warrants that were outstanding and exercisable at an exercise price of $3.00 per share which expired in September 2015. At June 30, 2016, there were no warrants outstanding and there were none exercised during the years ended June 30, 2016 and 2015.\nRestricted stock: The 2014 plan permits the Compensation Committee of the Board to grant other stock-based awards. The Company makes restricted stock grants to key employees and non-employee directors that vest over six months to three years.\nDuring the year ended June 30, 2016, the Company issued restricted stock awards to employees totaling 30,000 shares of common stock, with a vesting term of one to three years and a fair value of $1.80 per share. During the years ended June 30, 2016 and 2015, the Company issued restricted stock awards to directors totaling 23,255 and 19,605 shares of common stock, respectively, with a vesting term of six months and a fair value of $2.15 and $2.55 per share, respectively. Restricted stock transactions during the years ended June 30, 2016 and 2015 are summarized as follows:",
+   "prose_after": "Note 8. Income Taxes\nComponents of the provision for income taxes for the years ended June 30, 2016 and 2015 were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "2015"
+    ],
+    [
+     "Current",
+     "$",
+     "1,173,000",
+     "",
+     "$",
+     "132,000"
+    ],
+    [
+     "Deferred",
+     "",
+     "(343,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "830,000",
+     "",
+     "$",
+     "132,000"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1102,
+    "end_line": 1113
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Note 8. Income Taxes\nComponents of the provision for income taxes for the years ended June 30, 2016 and 2015 were as follows:",
+   "prose_after": "The total income tax (benefit) expense differed from the expected tax (benefit) expense, computed by applying the federal statutory rate to the Company\u2019s income (loss) before income taxes, as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Tax expense (benefit) at statutory federal rate",
+     "$",
+     "1,034,000",
+     "",
+     "$",
+     "416,000",
+     ""
+    ],
+    [
+     "State income tax expense (benefit), net of federal tax effect",
+     "",
+     "105,000",
+     "",
+     "",
+     "46,000",
+     ""
+    ],
+    [
+     "Change in valuation allowance on deferred tax assets",
+     "",
+     "(308,000)",
+     "",
+     "",
+     "(419,000)",
+     ""
+    ],
+    [
+     "Other permanent items",
+     "",
+     "(1,000)",
+     "",
+     "",
+     "89,000",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "830,000",
+     "",
+     "$",
+     "132,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1116,
+    "end_line": 1129
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The total income tax (benefit) expense differed from the expected tax (benefit) expense, computed by applying the federal statutory rate to the Company\u2019s income (loss) before income taxes, as follows:",
+   "prose_after": "The effective tax rates for the years ended June 30, 2016 and 2015 were 27.3% and 10.8%, respectively. For the year ended June 30, 2016, the Company recorded an income tax expense of $830,000. This amount included a current tax expense of $1,179,000, a deferred benefit of $55,000 and a discrete tax benefit of $294,000, due primarily to the Company\u2019s release of the full valuation allowance against all of its net U.S. net federal and state deferred tax assets during the year. For the year ended June 30, 2015, the Company recorded a current income tax expense of $132,000. The Company\u2019s tax expense was affected by the full valuation allowance against all of its net U.S. federal and state deferred tax assets. A valuation allowance of $0 and $308,000 was recorded against the net deferred tax asset balances as of June 30, 2016 and 2015, respectively.\nThe significant components of deferred income taxes were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1077,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets (liabilities):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue recognition and accounts receivable",
+     "$",
+     "154,000",
+     "",
+     "$",
+     "179,000",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "282,000",
+     "",
+     "",
+     "281,000",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "(518,000)",
+     "",
+     "",
+     "(549,000)",
+     ""
+    ],
+    [
+     "Finite-life intangible assets",
+     "",
+     "(17,000)",
+     "",
+     "",
+     "(18,000)",
+     ""
+    ],
+    [
+     "  Stock options",
+     "",
+     "326,000",
+     "",
+     "",
+     "306,000",
+     ""
+    ],
+    [
+     "Tax credits and net operating loss carryforwards",
+     "",
+     "43,000",
+     "",
+     "",
+     "53,000",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "73,000",
+     "",
+     "",
+     "56,000",
+     ""
+    ],
+    [
+     "Valuation allowance on deferred taxes",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(308,000)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "343,000",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1134,
+    "end_line": 1152
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The effective tax rates for the years ended June 30, 2016 and 2015 were 27.3% and 10.8%, respectively. For the year ended June 30, 2016, the Company recorded an income tax expense of $830,000. This amount included a current tax expense of $1,179,000, a deferred benefit of $55,000 and a discrete tax benefit of $294,000, due primarily to the Company\u2019s release of the full valuation allowance against all of its net U.S. net federal and state deferred tax assets during the year. For the year ended June 30, 2015, the Company recorded a current income tax expense of $132,000. The Company\u2019s tax expense was affected by the full valuation allowance against all of its net U.S. federal and state deferred tax assets. A valuation allowance of $0 and $308,000 was recorded against the net deferred tax asset balances as of June 30, 2016 and 2015, respectively.\nThe significant components of deferred income taxes were as follows:",
+   "prose_after": "As of June 30, 2016, the Company has state net operating loss carryforwards of $6,000 which, if unused, will expire in years 2033 and 2034. The Company has state tax credit carryforwards of $37,000 and which if unused, will expire in years 2028 and 2029.\nThe Company assesses whether a valuation allowance should be established against its deferred tax assets based on consideration of all available evidence, using a \u201cmore likely than not\u201d standard. In assessing the need for a valuation allowance, the Company considered both positive and negative evidence related to the likelihood of realization of deferred tax assets. In making such assessments, more weight was given to evidence that could be objectively verified. Future sources of taxable income considered in determining the amount of recorded valuation allowance included:\n\u00b7 Taxable income in prior carryback years, if carryback is permitted under the tax law;\n\u00b7 Future reversals of existing taxable temporary differences, excluding those related to indefinite-lived intangible assets;",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance of unrecognized tax benefits",
+     "$",
+     "38,000",
+     "",
+     "$",
+     "40,000",
+     ""
+    ],
+    [
+     "Lapse of statute of limitations",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "Ending balance of unrecognized tax benefits",
+     "$",
+     "32,000",
+     "",
+     "$",
+     "38,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1168,
+    "end_line": 1179
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Company applies the accounting standard for uncertain tax positions pursuant to which a more-likely-than-not threshold is utilized to determine the recognition and derecognition of uncertain tax positions. Once the more-likely-than-not threshold is met, the amount of benefit to be recognized is the largest amount of tax benefit that is greater than 50 percent likely of being ultimately realized upon settlement. It further requires that a change in judgment related to the expected ultimate resolution of uncertain tax positions be recognized in earnings in the period of such a change. The Company does not believe there will be significant changes to the estimates in the next 12 month period. Due to the complexity of some of these uncertainties, the ultimate settlement may result in payments that are different from The Company\u2019s current estimate of tax liabilities, resulting in the recognition of additional charges or benefits to income tax expense.\nChanges in the Company\u2019s unrecognized tax benefits were approximately as follows:",
+   "prose_after": "The Company recognizes interest and penalties accrued related to unrecognized tax benefits in income tax expense. During the fiscal years ended June 30, 2016 and 2015, the amount of recognized interest expense, net of tax benefit, and accrued interest on a gross basis was insignificant. The Company is subject to U.S. federal income tax as well as income tax of multiple state jurisdictions. With limited exceptions, tax years prior to fiscal 2013 are no longer open to federal, state and local examination by taxing authorities.\nNote 9. Commitments and Contingencies and Subsequent Events\nOperating leases: The Company has four leases for office and warehouse space which require monthly payments that include base rent and the Company\u2019s share of common expenses, including property taxes. These leases have escalating payments ranging from approximately $3,700 to $9,900 per month and expire through June 2019. The Company has a lease for office equipment that requires payments of approximately $1,500 per month through December 2021. The Company also had certain financing arrangements to lease vehicles under 24 to 48 month operating leases through December 31, 2015. Rent expense for the years ended June 30, 2016 and 2015, was approximately $164,000 and $225,000, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending June 30:",
+     "",
+     ""
+    ],
+    [
+     "2017",
+     "$",
+     "171,000"
+    ],
+    [
+     "2018",
+     "",
+     "126,000"
+    ],
+    [
+     "2019",
+     "",
+     "137,000"
+    ],
+    [
+     "2020",
+     "",
+     "17,000"
+    ],
+    [
+     "2021",
+     "",
+     "9,000"
+    ],
+    [
+     "  Total",
+     "$",
+     "460,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending June 30:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1188,
+    "end_line": 1199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies and Subsequent Events"
+    }
+   },
+   "prose_before": "The Company recognizes interest and penalties accrued related to unrecognized tax benefits in income tax expense. During the fiscal years ended June 30, 2016 and 2015, the amount of recognized interest expense, net of tax benefit, and accrued interest on a gross basis was insignificant. The Company is subject to U.S. federal income tax as well as income tax of multiple state jurisdictions. With limited exceptions, tax years prior to fiscal 2013 are no longer open to federal, state and local examination by taxing authorities.\nNote 9. Commitments and Contingencies and Subsequent Events\nOperating leases: The Company has four leases for office and warehouse space which require monthly payments that include base rent and the Company\u2019s share of common expenses, including property taxes. These leases have escalating payments ranging from approximately $3,700 to $9,900 per month and expire through June 2019. The Company has a lease for office equipment that requires payments of approximately $1,500 per month through December 2021. The Company also had certain financing arrangements to lease vehicles under 24 to 48 month operating leases through December 31, 2015. Rent expense for the years ended June 30, 2016 and 2015, was approximately $164,000 and $225,000, respectively.\nApproximate future minimum operating lease payments as of June 30, 2016, were as follows:",
+   "prose_after": "Litigation: The Company may occasionally be party to actions, proceedings, claims or disputes arising in the ordinary course of business. The Company insures its business risks where possible to mitigate the financial impact of individual claims, and establishes reserves for an estimate of any probable cost of settlement or other disposition.\n401(k) Profit Sharing Plan: The Company has an employee benefit plan under Section 401(k) of the Internal Revenue Code covering all employees who are 21 years of age or older and have at least 1,000 hours of service with the Company. The Company matches each employee\u2019s salary reduction contribution, not to exceed four percent of annual compensation. Total employer contributions to this plan for the years ended June 30, 2016 and 2015, were approximately $195,000 and $165,000, respectively.\nEmployment Agreements: The Company has entered into Employment Agreements with its President and Chief Executive Officer and its Chief Financial Officer. These agreements provide the officers with, among other things, one year of base salary upon a termination without cause or in the event the employee resigns for good reason or within six months of a change in control.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1165,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "ELECTROMED, INC."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: September 6, 2016",
+     "By",
+     "/s/ Kathleen S. Skarvan"
+    ],
+    [
+     "",
+     "",
+     "Kathleen S. Skarvan"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ELECTROMED, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1290,
+    "end_line": 1298
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies and Subsequent Events"
+    }
+   },
+   "prose_before": "\u00b7 Report of Independent Registered Public Accounting Firm\n\u00b7 Balance Sheets as of June 30, 2016 and 2015\n\u00b7 Statements of Operations for the years ended June 30, 2016 and 2015\n\u00b7 Statements of Shareholders\u2019 Equity for the years ended June 30, 2016 and 2015\n\u00b7 Statements of Cash Flows for the years ended June 30, 2016 and 2015\n\u00b7 Notes to Financial Statements\n(2) Financial Statement Schedules. No financial statement schedule is required to be included in this Annual Report on Form 10-K.\n(3) Exhibits. See the Exhibit Index following the signature page of this Annual Report on Form 10-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1285,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kathleen S. Skarvan",
+     "President, Chief Executive Officer and Director",
+     "September 6, 2016"
+    ],
+    [
+     "Kathleen S. Skarvan",
+     "(principal executive officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jeremy T. Brock",
+     "Chief Financial Officer",
+     "September 6, 2016"
+    ],
+    [
+     "Jeremy T. Brock",
+     "(principal financial and accounting officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Chairman and Director",
+     "September 6, 2016"
+    ],
+    [
+     "Stephen H. Craney",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Director",
+     "September 6, 2016"
+    ],
+    [
+     "William V. Eckles",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Director",
+     "September 6, 2016"
+    ],
+    [
+     "Stan K. Erickson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Director",
+     "September 6, 2016"
+    ],
+    [
+     "Lee A. Jones",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "*",
+     "Vice Chairman and Director",
+     "September 6, 2016"
+    ],
+    [
+     "George H. Winn",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1301,
+    "end_line": 1333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies and Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "* The undersigned, by signing her name hereto, does hereby sign this document on behalf of each of the above-named directors of the Registrant pursuant to powers of attorney duly executed by such persons.\nBy /s/ Kathleen S. Skarvan Kathleen S. Skarvan Attorney-in-Fact\nEXHIBIT INDEX ELECTROMED, INC. FORM 10-K\nUnless otherwise indicated, all documents incorporated into this Annual Report on Form 10-K by reference to a document filed with the SEC pursuant to the Exchange Act are located under SEC file number 001-34839.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1285,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description",
+     "Method of Filing"
+    ],
+    [
+     "3.1",
+     "Composite Articles of Incorporation, as amended through November 8, 2010 (incorporated by reference to Exhibit 3.1 to Annual Report on Form 10-K for the fiscal year ended June 30, 2015)",
+     "Incorporated by Reference"
+    ],
+    [
+     "3.2",
+     "Composite Bylaws, as amended through June 30, 2012 (incorporated by reference to Exhibit 3.2 to Annual Report on Form 10-K for the fiscal year ended June 30, 2015)",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.1",
+     "Form of warrant issued to investors (incorporated by reference to Exhibit 4.2 to Registration Statement on Form S-1, filed May 3, 2010 (Reg. No. 333-166470))",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.2",
+     "Form of warrant issued to employees and service providers (incorporated by reference to Exhibit 4.2 to Registration Statement on Form S-1 filed May 3, 2010 (Reg. No. 333-166470))",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.3",
+     "Form of warrant issued in connection with issuance of 7% Senior Secured Convertible Notes (incorporated by reference to Exhibit 4.4 to the Registration Statement on Form S-1 filed May 3, 2010 (Reg. No. 333-166470))",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.4",
+     "Electromed, Inc. 2012 Stock Incentive Plan (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed November 15, 2011)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.5",
+     "Form of Stock Option Award Agreement under the Electromed, Inc. 2012 Stock Incentive Plan (incorporated by reference to Exhibit 10.4 to Quarterly Report on Form 10-Q for the quarter ended December 31, 2011)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.6",
+     "Electromed, Inc. 2014 Equity Incentive Plan (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed November 24, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.7",
+     "Form of Incentive Stock Option Agreement under the Electromed, Inc. 2014 Equity Incentive Plan (incorporated by reference to Exhibit 10.2 to Current Report on Form 8-K filed November 24, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.8",
+     "Form of Nonqualified Stock Option Agreement under the Electromed, Inc. 2014 Equity Incentive Plan (incorporated by reference to Exhibit 10.3 to Current Report on Form 8-K filed November 24, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.9",
+     "Form of Restricted Stock Agreement under the Electromed, Inc. 2014 Equity Incentive Plan (incorporated by reference to Exhibit 10.4 to Current Report on Form 8-K filed November 24, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.10",
+     "Form of Restricted Stock Unit Agreement under the Electromed, Inc. 2014 Equity Incentive Plan (incorporated by reference to Exhibit 10.5 to Current Report on Form 8-K filed November 24, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.11",
+     "Non-Competition, Non-Solicitation and Confidentiality Agreement with Kathleen Skarvan dated effective December 1, 2012 (incorporated by reference to Exhibit 10.2 to the Current Report on Form 8-K filed December 3, 2012)*",
+     "Incorporated by Reference"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1341,
+    "end_line": 1371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies and Subsequent Events"
+    }
+   },
+   "prose_before": "* The undersigned, by signing her name hereto, does hereby sign this document on behalf of each of the above-named directors of the Registrant pursuant to powers of attorney duly executed by such persons.\nBy /s/ Kathleen S. Skarvan Kathleen S. Skarvan Attorney-in-Fact\nEXHIBIT INDEX ELECTROMED, INC. FORM 10-K\nUnless otherwise indicated, all documents incorporated into this Annual Report on Form 10-K by reference to a document filed with the SEC pursuant to the Exchange Act are located under SEC file number 001-34839.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description",
+     "Method of Filing"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1372,
+    "end_line": 1376
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies and Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.12",
+     "Non-Competition, Non-Solicitation, and Confidentiality Agreement with Jeremy Brock dated as of October 18, 2011 (incorporated by reference to Exhibit 10.2 to Current Report on Form 8-K filed October 19, 2011)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.13",
+     "Amended and Restated Employment Agreement with Kathleen Skarvan dated as of July 1, 2014 (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed July 15, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.14",
+     "Amended and Restated Employment Agreement with Jeremy Brock dated as of July 1, 2014 (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed July 15, 2014)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.15",
+     "Mediated Settlement Agreement with Robert D. Hansen dated September 6, 2013 (incorporated by reference to Exhibit 10.46 to Annual Report on Form 10-K for the year ended June 30, 2013)",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.16",
+     "Settlement Agreement and Release with Eileen M. Manning dated September 23, 2013 (incorporated by reference to Exhibit 10.47 to Annual Report on Form 10-K for the year ended June 30, 2013)",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.17",
+     "Business Loan Agreement (Asset Based) with Venture Bank, dated December 18, 2015 (incorporated by reference to Exhibit 10.1 to Current Report on Form 8-K filed November 10, 2015)",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.18",
+     "Rider to Business Loan Agreement (Asset Based) with Venture Bank, dated December 18, 2015 (incorporated by reference to Exhibit 10.2 to Current Report on Form 8-K filed November 10, 2015)",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.19",
+     "Change in Terms Agreement with Venture Bank, dated December 18, 2015 (incorporated by reference to Exhibit 10.3 to Current Report on Form 8-K filed November 10, 2015)",
+     "Incorporated by Reference"
+    ],
+    [
+     "10.20",
+     "Description of Fiscal Year 2016 Officer Bonus Plan (incorporated by reference to Exhibit 10.1 to Quarterly Report on Form 10-Q for the quarter ended September 30, 2015)*",
+     "Incorporated by Reference"
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm",
+     "Filed Electronically"
+    ],
+    [
+     "24.1",
+     "Powers of Attorney",
+     "Filed Electronically"
+    ],
+    [
+     "31.1",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed Electronically"
+    ],
+    [
+     "31.2",
+     "Certification Pursuant to Section 302of the Sarbanes-Oxley Act of 2002",
+     "Filed Electronically"
+    ],
+    [
+     "32.1",
+     "Certification Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Filed Electronically"
+    ],
+    [
+     "32.2",
+     "Certification Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Filed Electronically"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase",
+     "Filed Electronically"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase",
+     "Filed Electronically"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document",
+     "Filed Electronically"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase",
+     "Filed Electronically"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase",
+     "Filed Electronically"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema",
+     "Filed Electronically"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1376,
+    "end_line": 1408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Commitments and Contingencies and Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Management compensatory contract or arrangement.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1371,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

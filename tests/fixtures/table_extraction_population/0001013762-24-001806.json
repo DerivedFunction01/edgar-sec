@@ -1,0 +1,624 @@
+{
+ "accession": "0001013762-24-001806",
+ "cik": "0001903464",
+ "form": "10-K/A",
+ "filing_date": "2024-07-29",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "ea0210158-10ka1_aimfin1.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cayman Islands",
+     "98-1641561"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Amendment No. 1)\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________.\nCommission File Number: 001-41361\nAIMFINITY INVESTMENT CORP. I\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "221 W 9th St, PMB 235 Wilmington, Delaware",
+     "19801"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 33,
+    "end_line": 38
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(425) 365-2933\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units, consisting of one Class A ordinary share, $0.0001 par value, one Class 1 redeemable warrant and one-half of one Class 2 redeemable warrant",
+     "AIMAU",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Class A ordinary shares, $0.0001 par value",
+     "AIMA",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Class 1 redeemable warrants, each exercisable for one Class A ordinary share at an exercise price of $11.50",
+     "AIMAW",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Class 2 redeemable warrants, each exercisable for one Class A ordinary share at an exercise price of $11.50",
+     "AIMAW",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "New Units, consisting of one Class A ordinary share, $0.0001 par value, and one-half of one Class 2 redeemable warrant",
+     "AIMBU",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 45,
+    "end_line": 55
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(425) 365-2933\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Large accelerated filer",
+     "\u2610",
+     "Accelerated filer",
+     "\u2610"
+    ],
+    [
+     "Non-accelerated filer",
+     "\u2612",
+     "Smaller reporting company",
+     "\u2612"
+    ],
+    [
+     "",
+     "",
+     "Emerging growth company",
+     "\u2612"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 73
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the Registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "prose_after": "If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by check mark whether the Registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. \u2610\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. \u2610\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). \u2610",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Auditor Name:",
+     "Auditor Location:",
+     "Auditor Firm ID:"
+    ],
+    [
+     "MaloneBailey, LLP",
+     "Houston, Texas",
+     "206"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 92,
+    "end_line": 97
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). \u2610\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes \u2612 No \u2610\nThe aggregate market value of the ordinary shares held by non-affiliates of the registrant, computed as of June 30, 2023 (the last business day of the registrant\u2019s most recently completed second fiscal quarter) was $82,915,000, based on the trading price of the Units (AIMAU) of the registrant on that date. The registrant\u2019s units commenced public trading on the Nasdaq Stock Market LLC on April 26, 2022, and its new units and class 1 redeemable warrants commenced separate public trading on the Nasdaq Stock Market LLC on June 16, 2022.\nAs of April 10, 2024, there were 4,465,882 of the registrant\u2019s Class A ordinary shares, par value $0.0001 per share, and 2,012,500 of the registrant\u2019s Class B ordinary shares, par value $0.0001 per share, issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.",
+   "prose_after": "EXPLANATORY NOTE\nAimfinity Acquisition Corp. I (the \u201cCompany\u201d) is filing this Amendment No. 1 to the Annual Report on Form 10-K (this \u201cForm 10-K/A\u201d) for the fiscal year ended December 31, 2023, originally filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on April 12, 2024 (the \u201c2023 Form 10-K\u201d or the \u201cOriginal Filing\u201d), solely for the purpose of correcting a scrivener\u2019s error in the certifications filed as Exhibits 31.1 and 31.2 (the \u201cCertifications\u201d) to the 2023 Form 10-K. At the time the Company filed its 2023 Form 10-K, the Company\u2019s certifying officers had completed the matters covered by paragraph 4(b) and the introductory language in paragraph 4 of the Certifications, referring to its internal control over financial reporting. The Certifications filed with the 2023 Form 10-K contained a scrivener\u2019s error in that they inadvertently omitted such language, and the corrected Certifications are being filed as Exhibits 31.1 and 31.2 with this Form 10-K/A.\nThis Form 10-K/A contains only the cover page, this explanatory note, the exhibit list, a signature page and the revised certifications.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 97,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1+",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2+",
+     "Certification of Principal Financial and Accounting Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1**",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes- Oxley Act of 2002"
+    ],
+    [
+     "32.2**",
+     "Certification of Principal Financial and Accounting Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document.*"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document.*"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Calculation Linkbase Document.*"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document.*"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document.*"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document.*"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (Embedded as Inline XBRL document and contained in Exhibit 101).*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 109,
+    "end_line": 127
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Aimfinity Acquisition Corp. I (the \u201cCompany\u201d) is filing this Amendment No. 1 to the Annual Report on Form 10-K (this \u201cForm 10-K/A\u201d) for the fiscal year ended December 31, 2023, originally filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on April 12, 2024 (the \u201c2023 Form 10-K\u201d or the \u201cOriginal Filing\u201d), solely for the purpose of correcting a scrivener\u2019s error in the certifications filed as Exhibits 31.1 and 31.2 (the \u201cCertifications\u201d) to the 2023 Form 10-K. At the time the Company filed its 2023 Form 10-K, the Company\u2019s certifying officers had completed the matters covered by paragraph 4(b) and the introductory language in paragraph 4 of the Certifications, referring to its internal control over financial reporting. The Certifications filed with the 2023 Form 10-K contained a scrivener\u2019s error in that they inadvertently omitted such language, and the corrected Certifications are being filed as Exhibits 31.1 and 31.2 with this Form 10-K/A.\nThis Form 10-K/A contains only the cover page, this explanatory note, the exhibit list, a signature page and the revised certifications.\nPlease note that the only changes to the Original Filing are those related to the matters described herein. Except as described above, no changes have been made to the Original Filing, and this Form 10-K/A does not modify, amend or update any of the other financial information or other information contained in the Original Filing, and except as specifically provided herein, this Form 10-K/A does not reflect any information or events occurring after the date of the Original Filing.\nEXHIBIT INDEX",
+   "prose_after": "+ Filed herewith ** Previously Furnished\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 106,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "July 29, 2024",
+     "Aimfinity Investment Corp. I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ I-Fa Chang",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "I-Fa Chang"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 135,
+    "end_line": 143
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "+ Filed herewith ** Previously Furnished\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ I-Fa Chang",
+     "Chairman of the Board of Directors",
+     "July 29, 2024"
+    ],
+    [
+     "I-Fa Chang",
+     "and Chief Executive Officer (Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Xuedong (Tony) Tian",
+     "Chief Financial Officer",
+     "July 29, 2024"
+    ],
+    [
+     "Xuedong (Tony) Tian",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Hanzhong (Han) Li",
+     "Director",
+     "July 29, 2024"
+    ],
+    [
+     "Hanzhong (Han) Li",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kevin D. Vassily",
+     "Director",
+     "July 29, 2024"
+    ],
+    [
+     "Kevin D. Vassily",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Teng-Wei Chen",
+     "Director",
+     "July 29, 2024"
+    ],
+    [
+     "Teng-Wei Chen",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 146,
+    "end_line": 170
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

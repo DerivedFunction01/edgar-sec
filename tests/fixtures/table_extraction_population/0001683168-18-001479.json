@@ -1,0 +1,2234 @@
+{
+ "accession": "0001683168-18-001479",
+ "cik": "0001660156",
+ "form": "10-Q",
+ "filing_date": "2018-05-21",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "world_10q-093017.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "47-5048026"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE QUARTERLY PERIOD ENDED: September 30, 2017\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from__________\nto __________\nCOMMISSION FILE NUMBER: 000-55554\nWorldwide Specialty Chemicals Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Downtown Republic Center, Suite 3100\n325 N. Saint Paul Street\nDallas, TX 75201\nTel: (469) 513-4198\n(Address and telephone number of principal executive offices)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I.  FINANCIAL INFORMATION",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4",
+     "Controls and Procedures",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.  OTHER INFORMATION",
+     "",
+     "",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1",
+     "Legal Proceedings",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1A",
+     "Risk Factors",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 4",
+     "Mine Safety Disclosures",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5",
+     "Other Information",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 6",
+     "Exhibits",
+     "16"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated Filer [ ]\nNon-accelerated filer [ ]    Smaller reporting company [X]\nEmerging Growth Company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nThe number of Registrant\u2019s shares of common stock, $0.0001 par value, outstanding as of May 21, 2018, was 24,637,559.\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART 1 - FINANCIAL INFORMATION\nITEM 1. CONSOLIDATED FINANCIAL STATEMENTS\nINTERIM CONDENSED CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 56,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2017",
+     "",
+     "",
+     "December 31, 2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Audited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "267,468",
+     "",
+     "$",
+     "50,202",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "155,663",
+     "",
+     "",
+     "13,600",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "41,411",
+     "",
+     "",
+     "7,684",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "\u2013",
+     "",
+     "",
+     "5,742",
+     ""
+    ],
+    [
+     "  Employee advance",
+     "",
+     "11,995",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "476,537",
+     "",
+     "",
+     "77,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "2,294,952",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Total other assets",
+     "",
+     "2,294,952",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FIXED ASSETS, net",
+     "",
+     "576,614",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "3,348,103",
+     "",
+     "$",
+     "77,228",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "150,833",
+     "",
+     "$",
+     "81,939",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "16,398",
+     "",
+     "",
+     "39,022",
+     ""
+    ],
+    [
+     "  Due to CBI Polymers",
+     "",
+     "4,463",
+     "",
+     "",
+     "1,667",
+     ""
+    ],
+    [
+     "  Notes payable",
+     "",
+     "4,536,843",
+     "",
+     "",
+     "900,187",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "4,708,537",
+     "",
+     "",
+     "1,022,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Notes payable",
+     "",
+     "118,149",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "4,826,686",
+     "",
+     "",
+     "1,022,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, $0.0001 par value, 20,000,000 shares authorized; no shares issued or outstanding",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "  Common stock, $0.0001 par value, 100,000,000 shares authorized; 10,420,727 shares issued and outstanding shares as of September 30, 2017, and 6,817,393 issued and outstanding as of December 31, 2016",
+     "",
+     "1,042",
+     "",
+     "",
+     "682",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "2,149,348",
+     "",
+     "",
+     "1,049,773",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(3,628,973)",
+     "",
+     "",
+     "(1,996,042)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY (DEFICIT)",
+     "",
+     "(1,478,583)",
+     "",
+     "",
+     "(945,587)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' EQUITY (DEFICIT)",
+     "$",
+     "3,348,103",
+     "",
+     "$",
+     "77,228",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 157
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART 1 - FINANCIAL INFORMATION\nITEM 1. CONSOLIDATED FINANCIAL STATEMENTS\nINTERIM CONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nINTERIM CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 95,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 160,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended September 30, 2017",
+     "",
+     "",
+     "For the Three Months Ended September 30, 2016",
+     "",
+     "",
+     "For the Nine Months Ended September 30, 2017",
+     "",
+     "",
+     "For the Nine Months Ended September 30, 2016",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "355,159",
+     "",
+     "$",
+     "20,936",
+     "",
+     "$",
+     "855,663",
+     "",
+     "$",
+     "26,414",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "195,975",
+     "",
+     "",
+     "1,892",
+     "",
+     "",
+     "427,595",
+     "",
+     "",
+     "4,850",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Gross profit",
+     "",
+     "159,184",
+     "",
+     "",
+     "19,044",
+     "",
+     "",
+     "428,068",
+     "",
+     "",
+     "21,564",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "642,293",
+     "",
+     "",
+     "289,854",
+     "",
+     "",
+     "1,732,251",
+     "",
+     "",
+     "678,176",
+     ""
+    ],
+    [
+     "  Selling",
+     "",
+     "43,857",
+     "",
+     "",
+     "45,039",
+     "",
+     "",
+     "103,277",
+     "",
+     "",
+     "58,444",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "19,734",
+     "",
+     "",
+     "70,417",
+     "",
+     "",
+     "56,133",
+     "",
+     "",
+     "122,919",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "705,884",
+     "",
+     "",
+     "405,310",
+     "",
+     "",
+     "1,891,661",
+     "",
+     "",
+     "859,539",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income and (loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest income",
+     "",
+     "\u2013",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "30",
+     "",
+     "",
+     "3",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(66,140)",
+     "",
+     "",
+     "(23,265)",
+     "",
+     "",
+     "(169,368)",
+     "",
+     "",
+     "(40,164)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other loss",
+     "",
+     "(66,140)",
+     "",
+     "",
+     "(23,264)",
+     "",
+     "",
+     "(169,338)",
+     "",
+     "",
+     "(40,161)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(612,840)",
+     "",
+     "$",
+     "(409,530)",
+     "",
+     "$",
+     "(1,632,931)",
+     "",
+     "$",
+     "(878,136)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted - loss per share",
+     "$",
+     "(0.07)",
+     "",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "(0.21)",
+     "",
+     "$",
+     "(0.23)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted - weighted average shares",
+     "",
+     "9,270,726",
+     "",
+     "",
+     "4,109,754",
+     "",
+     "",
+     "7,903,205",
+     "",
+     "",
+     "3,887,436",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 166,
+    "end_line": 201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nINTERIM CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(Unaudited)",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nINTERIM CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 160,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 204,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine Months Ended September 30, 2017",
+     "",
+     "",
+     "For the Nine Months Ended September 30, 2016",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(1,632,931)",
+     "",
+     "$",
+     "(878,136)",
+     ""
+    ],
+    [
+     "    Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "56,133",
+     "",
+     "",
+     "122,919",
+     ""
+    ],
+    [
+     "    Interest expense accrued",
+     "",
+     "166,658",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Allowance for doubtful accounts",
+     "",
+     "238,306",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Common stock options compensation",
+     "",
+     "53,969",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Common stock issued for services",
+     "",
+     "150,666",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "      Change in current assets and current liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts receivable",
+     "",
+     "(339,935)",
+     "",
+     "",
+     "1,355",
+     ""
+    ],
+    [
+     "      Inventory",
+     "",
+     "4,773",
+     "",
+     "",
+     "(7,684)",
+     ""
+    ],
+    [
+     "      Employee advance",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(5,803)",
+     ""
+    ],
+    [
+     "      Prepaid expenses",
+     "",
+     "5,742",
+     "",
+     "",
+     "(10,000)",
+     ""
+    ],
+    [
+     "      Other assets",
+     "",
+     "(11,995)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "5,645",
+     "",
+     "",
+     "130,883",
+     ""
+    ],
+    [
+     "      Due to CBI Polymers",
+     "",
+     "2,796",
+     "",
+     "",
+     "(80,305)",
+     ""
+    ],
+    [
+     "      Net cash used in operating activities",
+     "",
+     "(1,300,173)",
+     "",
+     "",
+     "(726,771)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Purchase of property and equipment",
+     "",
+     "(144,752)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Acquisition, net of cash acquired",
+     "",
+     "(1,128,954)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "      Total cash used in investing activities",
+     "",
+     "(1,273,706)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Payments on long-term financing agreements",
+     "",
+     "\u2013",
+     "",
+     "",
+     "(262,500)",
+     ""
+    ],
+    [
+     "    Proceeds from sale of common stock",
+     "",
+     "887,500",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Proceeds from notes payable",
+     "",
+     "2,500,000",
+     "",
+     "",
+     "1,010,000",
+     ""
+    ],
+    [
+     "    Payments on notes payable",
+     "",
+     "(596,355)",
+     "",
+     "",
+     "\u2013",
+     ""
+    ],
+    [
+     "      Net cash provided by financing activities",
+     "",
+     "2,791,145",
+     "",
+     "",
+     "747,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "217,266",
+     "",
+     "",
+     "20,729",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "50,202",
+     "",
+     "",
+     "127",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "267,468",
+     "",
+     "$",
+     "20,855",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest",
+     "$",
+     "938",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON CASH INVESTING & FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Property and equipment purchased under financing agreements",
+     "$",
+     "29,916",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ],
+    [
+     "    Conversion of notes and accrued interest to common stock",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "1,050,047",
+     ""
+    ],
+    [
+     "    Acquisition of licenses under long term financing agreements",
+     "$",
+     "\u2013",
+     "",
+     "$",
+     "3,600,000",
+     ""
+    ],
+    [
+     "    Acquisition of KT Chemicals, Inc. under short term promissory note",
+     "$",
+     "2,700,000",
+     "",
+     "$",
+     "\u2013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 210,
+    "end_line": 268
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying footnotes are an integral part of these consolidated financial statements.\nINTERIM CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "prose_after": "The accompanying footnotes are an integral part of these consolidated financial statements.\nNotes to Interim Condensed Consolidated Financial Statements\nSeptember 30, 2017\n(Unaudited)\n1. NATURE OF BUSINESS\nWorldwide Specialty Chemicals Inc. (\u201cWSC\u201d), a Delaware corporation formed in March of 2014 and based in downtown Dallas, Texas, is an international specialty chemical company with many products that are friendly to the environment. On February 15, 2017, WSC acquired 100% ownership of KT Chemicals, Inc. (\u201cKT\u201d), a Texas corporation founded in February 2014 (WSC and KT are collectively referred to as the \u201cCompany\u201d). KT is also a specialty chemicals company, serving as both manufacturer and distributor of environmentally safe, specialty chemicals. KT is located at 1002 North Central Expressway, Suite 499, Richardson, Texas 75080.\nThe Company\u2019s products are used in a diverse array of applications, including:\n\u2022 Military weapons and Department of Energy Decommissioning and Decontamination (D&D) sites",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 204,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 271,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2017",
+     "",
+     "2016",
+     ""
+    ],
+    [
+     "Trade receivables",
+     "$",
+     "155,663",
+     "$",
+     "-"
+    ],
+    [
+     "Commissions receivable from KT (prior to acquisition)",
+     "",
+     "-",
+     "",
+     "13,600"
+    ],
+    [
+     "",
+     "$",
+     "155,663",
+     "$",
+     "13,600"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 384,
+    "end_line": 393
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "ACCOUNTS RECEIVABLE"
+    }
+   },
+   "prose_before": "In March 2016, the FASB issued ASU Update No. 2016-08, Revenue from Contracts with Customers (Topic 606). The amendments in this Update are intended to improve the operability and understandability of the implementation guidance on principal versus agent considerations by clarifying the criteria in determining a principal versus agent relationship. The core principle of the guidance is that an entity should recognize revenue to depict the transfer of promised goods or services to customers in an amount that reflects the consideration to which the entity expects to be entitled in exchange for those goods or services. To achieve this core principle, an entity should apply the following five steps: (1) identify contracts with customers, (2) identify the performance obligations in the contracts, (3) determine the transaction price, (4) allocate the transaction price to the performance obligation in the contract, and (5) recognize revenue as the entity satisfies performance obligations. The new guidance is effective for annual reporting periods beginning after December 15, 2017, including interim periods within that reporting period. Early application is permitted for annual reporting periods beginning after December 15, 2016, including interim periods within that reporting period. The Company is currently evaluating what impact adoption of this guidance will have on its financial position, results of operations, cash flows and disclosures.\nIn March 2016, the FASB issued ASU Update No. 2016-09, Compensation \u2013 Stock Compensation (Topic 718). The amendments in this Update are to simplify several aspects of the accounting for share-based payment transactions, including the income tax consequences, classification of awards as either equity or liabilities, and classification on the statement of cash flows. ASU 2016-09 is effective for annual periods beginning after December 15, 2016, and interim periods within those annual periods. The financial impact of this ASU is not expected to have a significant on the Company\u2019s consolidated financial statements.\n3. ACCOUNTS RECEIVABLE\nAccounts receivable relate to trade receivables from product sales and commissions receivable earned on sales made by the Company. Accounts receivable consist of the following at September 30, 2017 and December 31, 2016:",
+   "prose_after": "4. DUE TO / FROM\nCBI\nAt September 30, 2017 and December 31, 2016, the Company owed CBI $4,463 and $1,667, respectively for license fees payable related to the Company\u2019s Exclusive Patent License Agreement with CBI.\n5. NOTES PAYABLE\nOn October 5, 2016, the Company assumed $494,919 of convertible promissory notes from CBI. The notes are convertible into shares of the Company\u2019s common stock at the election of the Holder at any time after issuance, or at the election of the Company at maturity date. The number of shares issuable upon conversion is determined by dividing the principal and accrued interest by $0.40. The interest rate for these issued notes is 12% and each note has a maturity date of December 31, 2016. The maturity date of these notes was extended to June 30, 2017. On July 1, 2017, the notes went into default and as a result, accrued interest at the default interest rate of 15%. The principal and accrued interest balance of these notes at September 30, 2017 and December 31, 2016 was $556,629 and $509,076, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 400,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2017",
+     "",
+     "2016",
+     ""
+    ],
+    [
+     "Professional fees",
+     "$",
+     "\u2013",
+     "$",
+     "38,000"
+    ],
+    [
+     "Other accrued expenses",
+     "",
+     "16,398",
+     "",
+     "1,022"
+    ],
+    [
+     "",
+     "$",
+     "16,398",
+     "$",
+     "39,022"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 415,
+    "end_line": 424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "ACCRUED EXPENSES"
+    }
+   },
+   "prose_before": "During the 4th quarter of 2016, the Company issued $385,000 in principal amount of convertible promissory notes, for cash consideration. The notes provide for conversion into Company common stock, and the number of shares issuable upon conversion is determined by dividing the principal amount plus accrued interest by the conversion price of $1.25. For each $1.00 invested in convertible promissory notes, the investor also received a warrant to purchase one share of the Company\u2019s common stock at an exercise price of $0.50 per share. Each such warrant is exercisable for the period of time ending December 31, 2017. The interest rate for these notes ranges from 6% to 12% for a weighted average of 11.2%, and the notes have maturity dates of December 31, 2016 or June 30, 2017. The notes with original maturities of December 31, 2016 were extended to June 30, 2017. On July 1, 2017, those notes went into default and as a result, accrued interest at the default interest rate of 15%. During the 1st quarter of 2017, the Company issued $1,900,000 in principal amount of convertible promissory notes, for cash consideration. The notes provide for conversion into Company common stock, and the number of shares issuable upon conversion is determined by dividing the principal amount plus accrued interest by the conversion price of $1.25. For each $1.00 invested in convertible promissory notes, the investor also received a warrant to purchase one share of the Company\u2019s common stock at an exercise price of $0.50 per share. Each such warrant is exercisable for the period of time ending December 31, 2017. There were no warrants exercised as of September 30, 2017. The interest rate for these issued notes is 6% and each note has an original maturity date of June 30, 2017 with the option to extend the maturity date to December 31, 2017. During the 2nd quarter of 2017, the Company issued $600,000 in principal amount of convertible promissory notes, for cash consideration. The notes provide for conversion into Company common stock, and the number of shares issuable upon conversion is determined by dividing the principal amount plus accrued interest by the conversion price of $1.25. For each $1.00 invested in convertible promissory notes, the investor also received a warrant to purchase one share of the Company\u2019s common stock at an exercise price of $0.50 per share. Each such warrant is exercisable for the period of time ending December 31, 2017. There were no warrants exercised as of September 30, 2017. The interest rate for these issued notes is 6% and each note has an original maturity date of June 30, 2017 with the option to extend the maturity date to December 31, 2017. The principal and interest balance of these notes at September 30, 2017 and December 31, 2016 was $3,010,214 and $391,111, respectively.\nSee Note 12 for warrants exercised and conversion of these notes.\nOn February 15, 2017, the Company issued a short term promissory note to KT Chemicals stockholders in the amount of $2,700,000. The note is due on December 31, 2017. On February 15, 2017, the Company paid $1,150,000. During the nine months ended September 30, 2017, the Company paid an additional $580,000 leaving an outstanding balance of $970,000 as of September 30, 2017 (see Note 11).\n6. ACCRUED EXPENSES\nAccrued expenses consist of the following at September 30, 2017 and December 31, 2016:",
+   "prose_after": "7. COMMITMENTS, CONTINGENCIES AND CONCENTRATIONS\nLeases\nThe Company leases various office space on a month to month basis. Rental expense for the nine months ended September 30, 2017 and 2016, was $28,761 and $23,512, respectively.\nConcentrations\nAs of December 31, 2016, the entire balance in accounts receivable represents commissions due from KT Chemicals and license fees due from CBI. At December 31, 2016, the Company\u2019s revenues consisted 100% of commissions due from KT Chemicals and license fees due from CBI.\n8. STOCKHOLDERS\u2019 EQUITY\nAs of September 30, 2017 and December 31, 2016, the authorized share capital of the Company consisted of 100,000,000 shares of common stock with $0.0001 par value, and 20,000,000 shares of preferred stock also with $0.0001 par value. No other classes of stock are authorized.\nCommon Stock\nThe Company's first issuance of common stock, totaling 580,000 shares, took place on March 6, 2014 pursuant to the Chapter 11 Plan of Reorganization confirmed by the U.S. Bankruptcy Court (the \u201cCourt\u201d) in the matter of Pacific Shores Development, Inc. (\u201cPSD\u201d). The Court ordered the distribution of shares in the Company to all general unsecured creditors of PSD, with these creditors to receive their Pro Rata share (according to amount of debt held) of a pool of 80,000 shares in the Company. The Court also ordered the distribution of shares in the Company to all administrative creditors of PSD, with these creditors to receive one share of common stock in the Company for each $0.10 of PSD's administrative debt which they held. A total of 500,000 shares were issued to PSD\u2019s administrative creditors.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 400,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total consideration",
+     "$",
+     "2,707,800"
+    ],
+    [
+     "The assets acquired and liabilities assumed were as follows:",
+     "",
+     ""
+    ],
+    [
+     "  Assets acquired:",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "21,046"
+    ],
+    [
+     "  Inventory",
+     "",
+     "38,500"
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "40,434"
+    ],
+    [
+     "  Property and equipment, net",
+     "",
+     "458,079"
+    ],
+    [
+     "  Total tangible assets",
+     "",
+     "558,059"
+    ],
+    [
+     "  Liabilities assumed:",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "28,932"
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "11,693"
+    ],
+    [
+     "  Notes payable",
+     "",
+     "104,586"
+    ],
+    [
+     "  Total liabilities",
+     "",
+     "145,211"
+    ],
+    [
+     "Net acquired assets",
+     "",
+     "412,848"
+    ],
+    [
+     "Goodwill",
+     "",
+     "2,294,952"
+    ],
+    [
+     "Total",
+     "$",
+     "2,707,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 493,
+    "end_line": 517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "BUSINESS ACQUISITION"
+    }
+   },
+   "prose_before": "Effective February 15, 2017, the Company completed the acquisition of KT Chemicals, Inc., a specialty chemicals company located in Richardson, Texas. Under the terms of the acquisition, the Company acquired 100% of KT Chemicals\u2019 stock for cash and stock. The Company agreed to pay to KT Chemicals stockholders $2,700,000 in cash by December 31, 2017 and issue 520,000 shares of the Company\u2019s common stock valued at $0.015 per share for a total stock value of $7,800 in exchange for all outstanding shares of KT Chemicals\u2019 common stock.\nThe primary asset acquired from KT Chemicals is the expertise of KT, which the Company believes it will be able to leverage in maximizing the sales of specialty chemicals on a go forward basis. As of February 15, 2017, these factors contributed to a purchase price in excess of the fair value of KT Chemicals\u2019 tangible assets acquired, and, as a result, the Company has recorded goodwill in the amount of $2,294,952 in connection with this transaction. Goodwill, as a result of this acquisition, is not deductible for tax purposes. The Company is in the process of finalizing the purchase price allocation and accordingly, the preliminary allocation of the purchase price is subject to adjustment.\nThe transaction resulted in recording assets, liabilities and goodwill at preliminary estimated fair value as follows (unaudited):",
+   "prose_after": "The following table presents selected unaudited pro forma information assuming the acquisition of KT Chemicals had occurred on January 1, 2016.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 470,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pro Forma Information (unaudited)",
+     "Nine Months Ended September 30, 2017",
+     "",
+     "",
+     "Nine Months Ended September 30, 2016",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "893,910",
+     "",
+     "$",
+     "557,587",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,701,659)",
+     "",
+     "$",
+     "(1,017,693)",
+     ""
+    ],
+    [
+     "Loss per share",
+     "$",
+     "(.22)",
+     "",
+     "$",
+     "(.26)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 521,
+    "end_line": 528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "CONSOLIDATED FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "BUSINESS ACQUISITION"
+    }
+   },
+   "prose_before": "The following table presents selected unaudited pro forma information assuming the acquisition of KT Chemicals had occurred on January 1, 2016.",
+   "prose_after": "The unaudited pro forma information is not necessarily indicative of the consolidated results of operations for the future periods or the results of operations that would have been realized had the Company consolidated KT Chemicals during the period noted.\n12. SUBSEQUENT EVENTS\nOn November 20, 2017, the Plan was amended to increase the maximum number of shares of stock that may be issued to 3,500,000. On February 9, 2018, the Plan was amended to increase the maximum number of shares of stock that may be issued to 4,500,000. As of the date of this report, options to acquire 4,543,083 shares of stock have been granted, with exercise prices ranging from $0.00 to $1.50 per share.\nIn December 2017, the Company granted a total of 7,500,000 common shares to Company executives and other consultants for services provided at $0.00 per share. The Company has recorded the expense at a value of approximately $465,000.\nEffective December 31, 2017, the Company issued a total of 3,877,931 common shares as settlement of all outstanding convertible debt instruments, having principal and accrued interest totaling $3,631,460. The conversion of the outstanding debt and accrued interest cured the events of default under such debt instruments.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 518,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer pursuant to 18 U.S.C. 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "The following materials from the Company\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2017, formatted in XBRL (extensible Business Reporting Language); (i) Consolidated Balance Sheets at September 30, 2017 and December 31, 2016, (ii) Consolidated Statement of Operations for the three months and nine months ended September 30, 2017 and 2016, (iii) Consolidated Statement of Cash Flows for the nine months ended September 30, 2017 and 2016, and (iv) Notes to Consolidated Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 681,
+    "end_line": 698
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On March 19, 2018, the Company sold 100,000 common shares at $1.50 per share for a total cash amount of $150,000.\nOn April 2, 2018, the Company sold 34,000 common shares at $1.50 per share for a total cash amount of $51,000.\nOn April 13, 2018, the Company sold 13,400 common shares at $1.50 per share for a total cash amount of $20,100.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nOn July 1, 2017, certain of the Company\u2019s convertible notes with maturity dates of June 30, 2017 went into default. On December 31, 2017, the Company issued a total of 3,877,931 common shares as settlement of all outstanding convertible debt instruments\u2019 principal and accrued interest. Upon conversion of the convertible debt into common stock, the Company cured the event of default.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. - EXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: May 21, 2018",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Worldwide Specialty Chemicals Inc.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ E. Thomas Layton"
+    ],
+    [
+     "",
+     "E. Thomas Layton"
+    ],
+    [
+     "",
+     "CEO, CFO and Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Paul Williams"
+    ],
+    [
+     "",
+     "Paul Williams"
+    ],
+    [
+     "",
+     "CFO and Director"
+    ]
+   ],
+   "caption_stack": [
+    "Worldwide Specialty Chemicals Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 706,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: May 21, 2018",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

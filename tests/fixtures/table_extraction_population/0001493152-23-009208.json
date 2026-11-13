@@ -1,0 +1,3641 @@
+{
+ "accession": "0001493152-23-009208",
+ "cik": "0001321828",
+ "form": "10-K",
+ "filing_date": "2023-03-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "30-0062823"
+    ],
+    [
+     "(State of Incorporation)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "700 South Friendswood Drive, Suite E, Friendswood, TX",
+     "77546"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(ZIP Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 14,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIESEXCHANGE ACT OF 1934\nFor the year ended December 31, 2022\nCommission file number 000-54696\n(Exact Name Of Registrant As Specified In Its Charter)",
+   "prose_after": "Registrant\u2019s Telephone Number, Including Area Code: (832) 230-2376\nSecurities Registered Pursuant to Section 12(g) of The Act: Common Stock, $0.001\nIndicate if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Act. Yes [ ] No [X]\nIndicate if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the Registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (Section 232.405 of this chapter) during the preceding 12 months. Yes [X] No [ ]\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act of 1934 during the preceding 12 months, and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of the registrant\u2019s knowledge, in the definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 10,
+     "token": "REPEATING_HEADER",
+     "id": 1,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item",
+     "",
+     "Description",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "",
+     "DESCRIPTION OF BUSINESS",
+     "",
+     "3"
+    ],
+    [
+     "ITEM 1A.",
+     "",
+     "RISK FACTORS",
+     "",
+     "7"
+    ],
+    [
+     "ITEM 1B.",
+     "",
+     "UNRESOLVED STAFF COMMENTS",
+     "",
+     "13"
+    ],
+    [
+     "ITEM 2.",
+     "",
+     "DESCRIPTION OF PROPERTY",
+     "",
+     "13"
+    ],
+    [
+     "ITEM 3.",
+     "",
+     "LEGAL PROCEEDINGS",
+     "",
+     "13"
+    ],
+    [
+     "ITEM 4.",
+     "",
+     "MINE SAFETY DISCLOSURE",
+     "",
+     "13"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS",
+     "",
+     "14"
+    ],
+    [
+     "ITEM 6.",
+     "",
+     "SELECTED FINANCIAL DATA",
+     "",
+     "14"
+    ],
+    [
+     "ITEM 7.",
+     "",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITIONS AND RESULTS OF OPERATIONS",
+     "",
+     "14"
+    ],
+    [
+     "ITEM 7A.",
+     "",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURE ABOUT MARKET RISK",
+     "",
+     "15"
+    ],
+    [
+     "ITEM 8.",
+     "",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "",
+     "16"
+    ],
+    [
+     "ITEM 9.",
+     "",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "",
+     "28"
+    ],
+    [
+     "ITEM 9A.",
+     "",
+     "CONTROLS AND PROCEDURES",
+     "",
+     "28"
+    ],
+    [
+     "ITEM 9B.",
+     "",
+     "OTHER INFORMATION",
+     "",
+     "30"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "",
+     "DIRECTORS AND EXECUTIVE OFFICERS OF THE REGISTRANT AND CORPORATE GOVERNANCE",
+     "",
+     "30"
+    ],
+    [
+     "ITEM 11.",
+     "",
+     "EXECUTIVE COMPENSATION",
+     "",
+     "31"
+    ],
+    [
+     "ITEM 12.",
+     "",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS",
+     "",
+     "32"
+    ],
+    [
+     "ITEM 13.",
+     "",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE",
+     "",
+     "32"
+    ],
+    [
+     "ITEM 14.",
+     "",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "",
+     "32"
+    ],
+    [
+     "ITEM 15.",
+     "",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "",
+     "33"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 48,
+    "end_line": 80
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of the registrant\u2019s knowledge, in the definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. [ ]\nOn June 30, 2022, the aggregate market value of the 109,136,655 shares of common stock held by non-affiliates was approximately $218,273 based on the closing price on June 30, 2022. On March 27, 2023, the Registrant had 157,498,515 shares of common stock outstanding.\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer (as defined in Rule 12b-2 of the Exchange Act) or a smaller reporting company.\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-Accelerated filer [ ]  Smaller reporting company [X]\nEmerging growth company [ ]\nIndicate whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nCautionary Statement regarding Forward-Looking Statements\nThis Annual Report on Form 10-K of Data Call Technologies, Inc. (hereinafter the \u201cCompany\u201d, the \u201cRegistrant\u201d, \u201cwe\u201d, \u201cus\u201d, or \u201cData Call\u201d) includes forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. The Registrant has based these forward-looking statements on its current expectations and projections about future events. These forward-looking statements are subject to known and unknown risks, uncertainties and assumptions about the Registrant that may cause its actual results, levels of activity, performance or achievements to be materially different from any future results, levels of activity, performance or achievements expressed or implied by such forward-looking statements. In some cases, you can identify forward-looking statements by terminology such as \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cwould,\u201d \u201cexpect,\u201d \u201cplan,\u201d \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201ccontinue,\u201d or the negative of such terms or other similar expressions. Factors that might cause or contribute to such a discrepancy include, but are not limited to, those described in this Annual Report on Form 10-K/A and in the Registrant\u2019s other Securities and Exchange Commission filings. Should one or more of these risks or uncertainties materialize, or should any of our assumptions prove incorrect, actual results may vary in material respects from those projected in the forward-looking statements. For a more detailed discussion of the foregoing risks and uncertainties, see \u201cRisk Factors\u201d.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 82,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25cf",
+     "Headline News - top world and national news headlines;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Business News - top business headlines;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Financial Highlights - world-based financial indicators;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Entertainment News - top entertainment headlines;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Health/Science News - top science/health headlines;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Strange News- latest off-beat news headlines;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Sports Headlines - top sports headlines;",
+     ""
+    ],
+    [
+     "",
+     "",
+     "\u25cf",
+     "AP News Minute Video"
+    ],
+    [
+     "",
+     "",
+     "\u25cf",
+     "AP This Day In History Videos"
+    ],
+    [
+     "",
+     "",
+     "\u25cf",
+     "AP Entertainment Minute Videos"
+    ],
+    [
+     "",
+     "\u25cf",
+     "Latest Sports Lines - latest sports odds for NFL, NBA, NHL, NCAA Football and NCAA Basketball;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "National Football League - latest game schedule, and in-game updates;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "National Basketball Association - latest game schedule, and in-game updates;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Major league soccer - latest game schedule, and in-game updates;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "National Hockey League - latest game schedule, and in-game updates;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "NCAA Football - latest game schedule, and in-game updates;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "NCAA Men\u2019s Basketball - latest game schedule, and in-game updates;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Professional Golf Association top 10 leaders continuously updated throughout the four-day tournament;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "NASCAR top 10 race positions updated every 20 laps throughout the race;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Traffic Mapping;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Animated Doppler Radar and Forecast Maps;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Listings of the day\u2019s horoscopes;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Listings of the birthdays of famous persons born on each day;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Health and Wellness;",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Listings of historical events which occurred on each day in history; and",
+     ""
+    ],
+    [
+     "",
+     "\u25cf",
+     "Localized Traffic and Weather Forecasts.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 143,
+    "end_line": 173
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "DESCRIPTION OF BUSINESS."
+    },
+    "note": null
+   },
+   "prose_before": "Market demand, opportunity and technology converge at a single point in time, and Data Call continues hold its position. Our integrity persistently builds our business. Digital signage platforms steadily evolve to meet mass market requirements, costs for hardware and software are falling to the point of becoming commodities and the markets for digital signage are clarifying through historical trial and error.\nBusiness Operations\nMarch of 2017, we released our Direct Lynk Manager (DLManager) customer portal at the Digital Signage Expo in Las Vegas. The DLManager incorporates In the Direct Lynk Media platform with major enhancements and options that enable the client to self-serve in a webstore environment. This is a moderated space that allows proper \u201cwhite glove\u201d treatment by our staff that our clients have come to expect and appreciate. Once the client is comfortable with navigation of the portal, they may then set up multiple groups and displays within their account for testing results in a demo fashion free of charge. Upon completion of their content selections and distribution points, the client may purchase the proper number of licenses needed to support their sections through various plans offered within the portal.\nSome of the current types of data and information, for which a client may subscribe to through the Direct Lynk System, in multiple formats include:",
+   "prose_after": "We continually add different types of content per client requests. We provide our DLM services to our clients and other potential customers through the Internet. All DLM Services are real-time information services providing a wide range of up-to-date information for display. These services are designed to work concurrently with customers\u2019 existing digital signage systems. The Direct Lynk Messenger product has been retired, with DLMedia being sunset this year. The DLManager portal is taking the fore front and has been well received by existing and new clients.\nSince our inception in 2002, we have come to deeply understand that this industry provides an exciting platform for advertisers, including our clients, to promote, inform, educate, and entertain their customers and employees regarding their business products, services, and corporate communications. Through Digital Signage, and Digital Out of Home (DOOH) businesses can use a single display or a complex, networked series of displays and video walls to market their products and services directly at their facilities and elsewhere to their customers and employees in real time. Additionally, because the core of Digital Signage advertising takes place in real time, businesses can change their marketing and messaging efforts literally from moment to moment and over the course of a day or such other period as they may determine.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 140,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 182,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal 2022",
+     "",
+     "",
+     "",
+     "Fiscal 2021",
+     "",
+     "",
+     "",
+     "Fiscal 2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     "",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First Quarter ended March 31",
+     "$",
+     "0.0049",
+     "$",
+     "0.0049",
+     "$",
+     "0.0112",
+     "$",
+     "0.0104",
+     "$",
+     "0.0112",
+     "$",
+     "0.0104"
+    ],
+    [
+     "Second Quarter ended June 30",
+     "$",
+     "0.0066",
+     "$",
+     "0.0063",
+     "$",
+     "0.0120",
+     "$",
+     "0.0104",
+     "$",
+     "0.0120",
+     "$",
+     "0.0104"
+    ],
+    [
+     "Third Quarter ended September 30",
+     "$",
+     "0.0048",
+     "$",
+     "0.0048",
+     "$",
+     "0.0110",
+     "$",
+     "0.0100",
+     "$",
+     "0.0110",
+     "$",
+     "0.0100"
+    ],
+    [
+     "Fourth Quarter ended December 31",
+     "$",
+     "0.0042",
+     "$",
+     "0.0042",
+     "$",
+     "0.0070",
+     "$",
+     "0.0050",
+     "$",
+     "0.0070",
+     "$",
+     "0.0050"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 337,
+    "end_line": 347
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "Berkenmeir Properties, LLC., The property changed ownership on February 1, 2014 and the Company and the new owner, Berkenmeier Properties, LLC mutually agreed to extend the lease for additional years at the same monthly rent of $1,400. The Company still occupies the 700 square feet located at 700 S. Friendswood Drive, Suite E, Friendswood, TX 77546. We believe that these facilities are sufficient for our present level of operations including the growth we anticipate during the next twelve months. In the event that we need additional space, we believe that it will be available in the same property at comparable rates.\nITEM 3. LEGAL PROCEEDINGS.\nNone.\nITEM 4. MINE SAFETY DISCLOSURE.\nNone.\nPART II\nITEM 5. MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS.\nMarket Information\nOur common stock is currently quoted on the OTCQB under the symbol DCLT. Quotation of the Company\u2019s securities on the OTCQB limits the liquidity and price of the Company\u2019s common stock more than if the Company\u2019s shares of common stock were listed on The Nasdaq Stock Market or a national exchange. For the periods indicated, the following table sets forth the high and low bid prices per share of common stock. The below prices represent inter-dealer quotations without retail markup, markdown, or commission and may not necessarily represent actual transactions.",
+   "prose_after": "As of December 31, 2022, our shares of common stock were held by approximately 191 stockholders of record.\nDividends\nThe holders of our Preferred Stock, Series A, are entitled to a dividend of 12 percent annually, subject to conversion into common stock. The undeclared dividends of this stock are calculated, but have not been recorded.\nHolders of common stock are entitled to dividends when, as, and if declared by the Board of Directors, out of funds legally available therefore. We have never declared cash dividends on its common stock and our Board of Directors does not anticipate paying cash dividends in the foreseeable future as it intends to retain future earnings to finance the growth of our businesses. There are no restrictions in our articles of incorporation or bylaws that restrict us from declaring dividends.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nOn December 26, 2014, the board of directors approved the Company\u2019s 2015 Employee Incentive Plan (the \u201cPlan\u201d) pursuant to which the Company\u2019s board of director or a committee is authorized to issue 25,000,000 shares.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 328,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm PCAOB ID No.: 2738",
+     "17"
+    ],
+    [
+     "Balance Sheets - December 31, 2022 and 2021",
+     "18"
+    ],
+    [
+     "Statements of Operations -Years ended December 31, 2022 and 2021",
+     "19"
+    ],
+    [
+     "Statement of Stockholders\u2019 Equity - Years ended December 31, 2022 and 2021",
+     "20"
+    ],
+    [
+     "Statements of Cash Flows - Years ended December 31, 2022 and 2021",
+     "21"
+    ],
+    [
+     "Notes to Financial Statements",
+     "22"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 418,
+    "end_line": 426
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We had financing activities of $131 primarily for the pay down of borrowings from related party during 2022 as compared to 2021.\nOff-Balance Sheet Arrangements\nAs of December 31, 2022 and 2021, we did not have any off-balance sheet arrangements as defined in Item 303(a) (4) (ii) of Regulation S-K promulgated under the Securities Act of 1934.\nContractual Obligations and Commitments\nAs of December 31, 2022 and 2021, we did not have any contractual obligations.\nCritical Accounting Policies\nOur significant accounting policies are described in the notes to our financial statements for the years ended December 31, 2022 and 2021, and are included elsewhere in this annual report.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURE ABOUT MARKET RISK.\nWe have not entered, and do not expect to enter, financial instruments for trading or hedging purposes.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and\nShareholders of Data Call Technologies, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheets of Data Call Technologies, Inc. (the Company) as of December 31, 2022 and 2021, and the related statements of operations, stockholders\u2019 equity, and cash flows for each of the years in the two-year period ended December 31, 2022, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2022 and 2021 and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2022, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 415,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 427,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "20,727",
+     "",
+     "$",
+     "13,817",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "65,203",
+     "",
+     "",
+     "67,276",
+     ""
+    ],
+    [
+     "Prepaid Rent",
+     "",
+     "1,400",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "87,330",
+     "",
+     "",
+     "81,093",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "151,723",
+     "",
+     "",
+     "151,723",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "147,733",
+     "",
+     "",
+     "146,752",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "3,990",
+     "",
+     "",
+     "4,971",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "800",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "92,120",
+     "",
+     "$",
+     "86,864",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "16,710",
+     "",
+     "$",
+     "24,113",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "1,774",
+     "",
+     "",
+     "1,905",
+     ""
+    ],
+    [
+     "Accrued salaries - related party",
+     "",
+     "361",
+     "",
+     "",
+     "349",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "18,845",
+     "",
+     "",
+     "26,367",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "18,845",
+     "",
+     "",
+     "26,367",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value. Authorized 10,000,000 shares: Series A 12% Convertible - 800,000 shares issued and outstanding at December 31, 2022 and 2021",
+     "",
+     "800",
+     "",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value. Authorized 1,000,000 shares: Series B - 10,000 shares issued and outstanding at December 31, 2022 and 2021",
+     "",
+     "10",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value. Authorized 490,000,000 shares: 157,498,515 and 157,498,515 shares issued and outstanding at December 31, 2022 and 2021, respectively.",
+     "",
+     "157,498",
+     "",
+     "",
+     "157,498",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "9,881,902",
+     "",
+     "",
+     "9,873,906",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(9,966,935)",
+     "",
+     "",
+     "(9,971,717)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "73,275",
+     "",
+     "",
+     "60,497",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "92,120",
+     "",
+     "$",
+     "86,864",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The critical audit matters communicated below are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that: (1) relate to accounts or disclosures that are material to the financial statements and (2) involved our especially challenging, subjective, or complex judgments. The communication of critical audit matters does not alter in any way our opinion on the financial statements, taken as a whole, and we are not, by communicating the critical audit matters below, providing separate opinions on the critical audit matters or on the accounts or disclosures to which they relate.\nThe risk of Going Concern was determined to be a critical audit matter due to the Company\u2019s past negative cash flows from operations. As such, the Company evaluated the need for a going concern.\nTo evaluate the appropriateness of the lack of going concern, we examined and evaluated the financial information that was the initial cause along with management\u2019s plans to mitigate the going concern and managements lack of disclosure on going concern.\n/s/ M&K CPAS, PLLC\nWe have served as the Company\u2019s auditor since 2013.\nHouston, TX\nMarch 28, 2023\nBalance Sheets\nDecember 31, 2022 and 2021",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "553,846",
+     "",
+     "$",
+     "580,226",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "188,651",
+     "",
+     "",
+     "216,279",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "365,195",
+     "",
+     "",
+     "363,947",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "359,435",
+     "",
+     "",
+     "366,101",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "981",
+     "",
+     "",
+     "1,065",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "360,416",
+     "",
+     "",
+     "367,166",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(3)",
+     "",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "Gain from the settlement of accrued interest",
+     "",
+     "-",
+     "",
+     "",
+     "(19,003)",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "360,413",
+     "",
+     "",
+     "348,161",
+     ""
+    ],
+    [
+     "Net Income (loss) before income taxes",
+     "",
+     "4,782",
+     "",
+     "",
+     "15,786",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Income (loss)",
+     "$",
+     "4,782",
+     "",
+     "$",
+     "15,786",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income(loss) per common share \u2013 basic and diluted:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income(loss) applicable to common shareholders",
+     "$",
+     "0.00",
+     "",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "157,498,515",
+     "",
+     "",
+     "157,164,268",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "453,247,129",
+     "",
+     "",
+     "398,856,111",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 528,
+    "end_line": 568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatement of Stockholders\u2019 Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 526,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 571,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock A",
+     "",
+     "",
+     "",
+     "Preferred Stock B",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019 equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "amount",
+     "",
+     "shares",
+     "",
+     "amount",
+     "",
+     "shares",
+     "",
+     "amount",
+     "",
+     "capital",
+     "",
+     "deficit",
+     "",
+     "",
+     "(deficit)",
+     ""
+    ],
+    [
+     "Balance year ended December 31, 2020",
+     "",
+     "800,000",
+     "$",
+     "800",
+     "",
+     "10,000",
+     "$",
+     "10",
+     "$",
+     "156,998,515",
+     "$",
+     "156,998",
+     "$",
+     "9,869,048",
+     "$",
+     "(9,987,503)",
+     "",
+     "$",
+     "39,353"
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "500,000",
+     "",
+     "500",
+     "",
+     "4,858",
+     "",
+     "-",
+     "",
+     "",
+     "5,358"
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "15,786",
+     "",
+     "",
+     "15,786"
+    ],
+    [
+     "Balance year ended December 31, 2021",
+     "",
+     "800,000",
+     "$",
+     "800",
+     "",
+     "10,000",
+     "$",
+     "10",
+     "$",
+     "157,498,515",
+     "$",
+     "157,498",
+     "$",
+     "9,873,906",
+     "$",
+     "(9,971,717)",
+     "",
+     "$",
+     "60,497"
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "7,996",
+     "",
+     "-",
+     "",
+     "",
+     "7,996"
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "4,782",
+     "",
+     "",
+     "4,782"
+    ],
+    [
+     "Balance year ended December 31, 2022",
+     "",
+     "800,000",
+     "$",
+     "800",
+     "",
+     "10,000",
+     "$",
+     "10",
+     "$",
+     "157,458,515",
+     "$",
+     "157,498",
+     "$",
+     "9,881,902",
+     "$",
+     "(9,966,935)",
+     "",
+     "$",
+     "73,275"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 577,
+    "end_line": 595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatement of Stockholders\u2019 Equity",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 575,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 598,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "4,782",
+     "",
+     "$",
+     "15,786",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income(loss) to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for services",
+     "",
+     "7,996",
+     "",
+     "",
+     "5,358",
+     ""
+    ],
+    [
+     "Depreciation and amortization of property and equipment",
+     "",
+     "981",
+     "",
+     "",
+     "1,065",
+     ""
+    ],
+    [
+     "(Increase) decrease in operating assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "2,073",
+     "",
+     "",
+     "(1,972)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(1,400)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase (decrease) in operating liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(7,403)",
+     "",
+     "",
+     "2,895",
+     ""
+    ],
+    [
+     "Accounts payable - related party",
+     "",
+     "-",
+     "",
+     "",
+     "(6,443)",
+     ""
+    ],
+    [
+     "Accrued expenses - related party",
+     "",
+     "12",
+     "",
+     "",
+     "12",
+     ""
+    ],
+    [
+     "Accrued interest-related party",
+     "",
+     "-",
+     "",
+     "",
+     "(4,788)",
+     ""
+    ],
+    [
+     "Gain from settlement of accrued interest",
+     "",
+     "-",
+     "",
+     "",
+     "(19,003)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "7,041",
+     "",
+     "",
+     "(7,090)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditure for equipment",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ")"
+    ],
+    [
+     "Net cash (used in) investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ")"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Principal payment on debt - related party",
+     "",
+     "(131)",
+     "",
+     "",
+     "(7,200)",
+     ""
+    ],
+    [
+     "Net cash (used in) financing activities",
+     "",
+     "(131)",
+     "",
+     "",
+     "(7,200)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "6,910",
+     "",
+     "",
+     "(14,290)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of year",
+     "",
+     "13,817",
+     "",
+     "",
+     "28,107",
+     ""
+    ],
+    [
+     "Cash at end of year",
+     "$",
+     "20,727",
+     "",
+     "$",
+     "13,817",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "4,800",
+     ""
+    ],
+    [
+     "Cash paid for taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 604,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nData Call Technologies, Inc. Notes to Financial Statements December 31, 2022\nNote\n1. Summary of Significant Accounting Policies.\nOrganization, Ownership and Business\nData Call Technologies, Inc. (the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada in 2002. The Company\u2019s mission is to integrate cutting-edge information delivery solutions that are currently deployed by the media and put them within the control of retail and commercial enterprises. The Company\u2019s software and services put its clients in control of real-time advertising, news, and other content, including emergency alerts, within one building or 10,000, local or thousands of miles away.\nThe Company\u2019s financial statements are presented in accordance with accounting principles generally accepted (GAAP) in the United States. In the opinion of management, all adjustments, consisting of normal recurring adjustments, necessary for a fair presentation of financial position and result of operations for the periods presented have been reflected herein.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 602,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 652,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net Income (loss)",
+     "$",
+     "4,782",
+     "$",
+     "15,786"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) per common share:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.00",
+     "$",
+     "0.00"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.00",
+     "$",
+     "0.00"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "157,498,515",
+     "",
+     "157,164,268"
+    ],
+    [
+     "Diluted",
+     "",
+     "453,247,129",
+     "",
+     "398,856,111"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The preparation of financial statements in conformity with generally accepted accounting principles requires management to make estimates and assumptions that affect the reported amounts of assets and liabilities, disclosure of contingent assets and liabilities at the date of the financial statements, and the reported amounts of revenues and expenses. Actual results could differ from these estimates.\nEarnings (Loss) Per Share\nThe basic net income per common share is computed by dividing the net loss by the weighted average number of shares outstanding during a period. Diluted net loss per common share is computed by dividing the net loss, adjusted on an as if converted basis, by the weighted average number of common shares outstanding plus potential dilutive securities using the treasury stock method. For the years ended December 31, 2022, and 2021, potential securities include \u201cConvertible preferred A shares\u201d. Under the treasury stock method, an increase in the fair market value of the Company\u2019s common stock results in a greater dilutive effect from outstanding options, restricted stock awards and common stock warrants. In years with a net loss, potentially dilutive securities are not included because their effect is anti-dilutive.\nSchedule of Earnings Per Share, Basic and Diluted",
+   "prose_after": "Stock-based Compensation\nWe account for stock-based compensation in accordance with \u201cFASB ASC 718-10.\u201d Stock-based compensation expense recognized during the period is based on the value of the portion of share-based awards that are ultimately expected to vest during the period. The fair value of each stock option grant is estimated on the date of grant using the Black-Scholes option pricing model. The fair value of restricted stock is determined based on the number of shares granted and the closing price of the Company\u2019s common stock on the date of grant. Compensation expense for all share-based payment awards is recognized using the straight-line amortization method over the vesting period.\nFair Value of Financial Instruments\nThe Company estimates the fair value of its financial instruments using available market information and appropriate valuation methodologies. However, considerable judgment is required in interpreting market data to develop the estimates of fair value. Accordingly, the Company estimates of fair value are not necessarily indicative of the amounts that the Company could realize in a current market exchange. The use of different market assumption and/or estimation methodologies may have a material effect on the estimated fair value amounts. The interest rates payable by the Company on its notes payable approximate market rates. The Company believes that the fair value of its financial instruments comprising accounts receivable, notes receivable, accounts payable, and notes payable approximate their carrying amounts.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 721,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 763,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(Level 1)",
+     "",
+     "(Level 1)",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "2022",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0"
+    ],
+    [
+     "2021",
+     "$",
+     "0",
+     "$",
+     "0",
+     "$",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 774,
+    "end_line": 782
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Each share of Series A Preferred Stock shall bear a preferential dividend of twelve percent (12%) per year and is convertible into a number shares of the Company\u2019s common stock, par value $0.001 per share (\u201cCommon Stock\u201d) based upon Fifty (50%) percent of the average closing bid price of the Common Stock During the ten (10) day period prior to the conversion. The Company has not declared or accrued any dividends as of December 31, 2022, or 2021. Unaccrued and undeclared dividends were $4,800 as of December 31, 2022, and 2021, respectively.\nLevel 1: Quoted prices in active markets for identical assets or liabilities.\nLevel 2: Quoted prices for similar assets or liabilities in active markets; quoted prices for identical or similar instruments in markets that are not active; and model-derived valuations in which all significant inputs are observable in active markets.\nLevel 3: Valuations derived from valuation techniques in which one or more significant inputs are unobservable.\nThe following table presents the Company\u2019s assets and liabilities within the fair value hierarchy utilized to measure fair value on a recurring basis as of December 31, 2022, and 2021:\nSchedule of Fair Value, Assets and Liabilities Measured on Recurring Basis",
+   "prose_after": "Recent Accounting Pronouncements\nThe Company has reviewed all other recently issued, but not yet effective, accounting pronouncements, and does not believe the future adoption of any such pronouncements will have a material impact on its financial condition or the results of its operations.\nThe Company has considered all new accounting pronouncements and has concluded that there are no new pronouncements that may have a material impact on results of operations, financial condition, or cash flows, based on current information.\nNote\n2. Related Party Transactions.\nDuring the second quarter of 2018, the Company issued unregistered shares as follows: (i) 3,500,000 restricted shares to Tim Vance, the Company\u2019s CEO, in connection with the execution of a new 5-year employment agreement; and 2,000,000 restricted shares to Gary Woerz, the Company\u2019s CFO, in connection with the execution of a new 5-year employment agreement. The restricted shares were valued at $0.0034 per share using the closing price of the stock on the date of grant. Total expense associated with the issuances is calculated at $18,700 to be recognized over the 5-year term of the agreements. The expense recognized in the year ended December 31, 2022, was $7,996 (2021: $3,548). The April 30, 2018, employment agreements call for a 5-year term ending April 30, 2023, annual compensation of $98,000 per year for services as CEO, annual compensation of $57,200 per year for services as CFO.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 763,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Years",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Equipment",
+     "3-5",
+     "$",
+     "119,386",
+     "",
+     "$",
+     "119,386",
+     ""
+    ],
+    [
+     "Office furniture",
+     "7",
+     "",
+     "21,681",
+     "",
+     "",
+     "21,681",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "3",
+     "",
+     "10,656",
+     "",
+     "",
+     "10,656",
+     ""
+    ],
+    [
+     "Property and equipment, gross",
+     "",
+     "",
+     "151,723",
+     "",
+     "",
+     "151,723",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "",
+     "(147,733)",
+     "",
+     "",
+     "(146,752)",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "$",
+     "3,990",
+     "",
+     "$",
+     "4,971",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 811,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "During the second quarter of 2018, the Company issued unregistered shares as follows: (i) 3,500,000 restricted shares to Tim Vance, the Company\u2019s CEO, in connection with the execution of a new 5-year employment agreement; and 2,000,000 restricted shares to Gary Woerz, the Company\u2019s CFO, in connection with the execution of a new 5-year employment agreement. The restricted shares were valued at $0.0034 per share using the closing price of the stock on the date of grant. Total expense associated with the issuances is calculated at $18,700 to be recognized over the 5-year term of the agreements. The expense recognized in the year ended December 31, 2022, was $7,996 (2021: $3,548). The April 30, 2018, employment agreements call for a 5-year term ending April 30, 2023, annual compensation of $98,000 per year for services as CEO, annual compensation of $57,200 per year for services as CFO.\nAs of December 31, 2022, and December 31, 2021, the total due to management for past accrued salaries is $361 and $349, respectively.\nAs of December 31, 2022, and December 31, 2021, the total due to management included in accounts payable is $1,774 and $1,905 respectively.\nNote\n3. Prepaid Expenses.\nAs of December 31, 2022, the Company had prepaid expenses of $1,400. As of December 31, 2021, the Company had prepaid expenses of $0.\nNote\n4. Property and Equipment.\nMajor classes of property and equipment together with their estimated useful lives, consisted of the following:\nSchedule of Property, Plant and Equipment",
+   "prose_after": "Note\n5. Income Taxes.\nSchedule of Income Tax Expenses (Benefit)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Tax expense/(benefit) computed at statutory rate for continuing operations",
+     "$",
+     "2,683",
+     "",
+     "$",
+     "3,550",
+     ""
+    ],
+    [
+     "Tax effect (benefit) of operating loss carryforwards",
+     "",
+     "(2,683)",
+     "",
+     "",
+     "(3,550)",
+     ""
+    ],
+    [
+     "Tax expense/(benefit) for continuing operations",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 832,
+    "end_line": 843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "Note\n5. Income Taxes.\nSchedule of Income Tax Expenses (Benefit)",
+   "prose_after": "The Company has current net operating loss carryforwards more than $3,069,087 as of December 31, 2022, to offset future taxable income, which expire beginning 2029.\nDeferred taxes are determined based on the temporary differences between the financial statement and income tax bases of assets and liabilities as measured by the enacted tax rates, which will be in effect when these differences reverse. The components of deferred income tax assets are as follows:\nSchedule of Deferred Tax Assets and Liabilities",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "tax_reconciliation",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "",
+     "642,829",
+     "",
+     "",
+     "649,953",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(642,829)",
+     "",
+     "",
+     "(649,953)",
+     ""
+    ],
+    [
+     "Net deferred asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 850,
+    "end_line": 862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The Company has current net operating loss carryforwards more than $3,069,087 as of December 31, 2022, to offset future taxable income, which expire beginning 2029.\nDeferred taxes are determined based on the temporary differences between the financial statement and income tax bases of assets and liabilities as measured by the enacted tax rates, which will be in effect when these differences reverse. The components of deferred income tax assets are as follows:\nSchedule of Deferred Tax Assets and Liabilities",
+   "prose_after": "At December 31, 2022, the Company provided a 100% valuation allowance for the deferred tax asset because it could not be determined whether it was more likely than not that the deferred tax asset/(liability) would be realized.\nNote\n6. Capital Stock, Options and Warrants.\nDuring the second quarter of 2018, the Company issued unregistered shares as follows: (i) 3,500,000 restricted shares to Tim Vance, the Company\u2019s CEO, in connection with the execution of a new 5-year employment agreement; and 2,000,000 restricted shares to Gary Woerz, the Company\u2019s CFO, in connection with the execution of a new 5-year employment agreement. The restricted shares were valued at $0.0034 per share using the closing price of the stock on the date of grant. Total expense associated with the issuances is calculated at $18,700 to be recognized over the 5-year term of the agreements. The expense recognized in the year ended December 31, 2022, was $7,996 (2021: $3,548). The April 30, 2018, employment agreements call for a 5-year term ending April 30, 2023, annual compensation of $98,000 per year for services as CEO, annual compensation of $57,200 per year for services as CFO.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Timothy Vance",
+     "56",
+     "Chief Executive Officer, Chief Operating Officer and Director"
+    ],
+    [
+     "Gary D. Woerz",
+     "76",
+     "Chief Financial Officer and Director"
+    ],
+    [
+     "John Schafer",
+     "48",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 959,
+    "end_line": 966
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "This annual report does not include an attestation report of our registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by our registered public accounting firm pursuant to an exemption for smaller reporting companies under Section 989G of the Dodd-Frank Wall Street Reform and Consumer Protection Act.\nChanges in Internal Control over Financial Reporting\nThere have been no significant changes in our internal control over financial reporting (as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) or in other factors that occurred during the period of our evaluation that have significantly affected, or are reasonably likely to significantly affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION.\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, PROMOTERS AND CONTROL PERSONS AND CORPORATE GOVERNANCE.\nThe following table sets forth the name, age and position of each of our Directors and executive officers. Our officers and Directors are as follows:",
+   "prose_after": "Timothy Vance - Chief Executive Officer, Chief Operating Officer and Director\nTimothy Vance, a founder and an intricate element in the fabric of the Company, has served as one of our Directors since June 2003, as our Chief Operating Officer since January 2007 and as our Chief Executive Officer since July 2008. Mr. Vance has been part of the Data Call management team since the Company\u2019s inception. Prior to founding Data Call, Mr. Vance was employed at QVS Wireless Corporation. Prior to QVS Wireless, Mr. Vance was employed for 17 years by World Ship Supply, a global maritime supply company. He was the General Manager of the Houston branch for several years before following his entrepreneurial vision.\nGary\nD. Woerz - Chief Financial Officer and Director\nFrom March 2009 to January 2012, Gary Woerz provided financial consulting services to private and public companies. From September 2007 to January 2008, Mr. Woerz was CFO and COO of Larrea Biosciences, a public company. From July 2006 to July 2007, Mr. Woerz was the CFO of Virexx Medical Corp., a public company organized under the laws of the Province of Alberta, Canada. From April 2004 to May 2007, Mr. Woerz served as CFO of American International Industries, Inc., a public reporting company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 934,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Long Term",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Annual Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Compensation Awards",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "Restricted",
+     "",
+     "Securities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Annual",
+     "",
+     "Stock",
+     "",
+     "Underlying",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Name and Principal",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Compensation",
+     "",
+     "Award(s)",
+     "",
+     "Options",
+     "",
+     "Compensation",
+     ""
+    ],
+    [
+     "Position",
+     "Year",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Timothy Vance, CEO, COO, Director (1)",
+     "2022",
+     "",
+     "98,000",
+     "",
+     "\u2014",
+     "",
+     "2,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "100,000"
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "98,000",
+     "",
+     "\u2014",
+     "",
+     "5,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "103,000"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "98,000",
+     "",
+     "\u2014",
+     "",
+     "1,500",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "99,500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Garry D. Woerz, CFO, Director (2)",
+     "2022",
+     "",
+     "57,000",
+     "",
+     "\u2014",
+     "",
+     "1,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "58,200"
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "57,200",
+     "",
+     "\u2014",
+     "",
+     "2,500",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "59,700"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "57,200",
+     "",
+     "\u2014",
+     "",
+     "0",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "57,200"
+    ]
+   ],
+   "caption_stack": [
+    "Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 989,
+    "end_line": 1010
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION."
+    },
+    "note": null
+   },
+   "prose_before": "Mr. Schafer has been a member of Data Call\u2019s Board of Directors since his appointment in May 2013. From March 2005 through the present, Mr. Schafer has served as Vice President of Operations of Waterfront Ventures LLC, a private company engaged in real estate development and operations, specializing in the hospitality and public service industry. Mr. Schafer\u2019s duties at Waterfront Ventures include strategic and financial planning and chief of operations. In addition, from 2004 through the present, Mr. Schafer has been President and principal of JLS Holdings LLC, a private company engaged in the business of marketing, business development, financial planning and promotion, primarily for the real estate and hospitality industry, among others.\nEmployment Agreements\nEffective February, 2018, the Company entered into a five-year employment agreement with Tim Vance, to as Chief Executive Officer and Chief Operating Officer at a base compensation of $98,000 per year. The agreement also provided for the issuance of 500,000 restricted shares of the Company\u2019s common stock which vest at the rate of 500,000 shares per year. Also effective on February 2018, the Company entered into a five-year employment agreement with Gary D. Woerz to serve as Chief Financial Officer at a base compensation of $57,200 per year. The agreement also provided for the issuance of 400,000 restricted shares of the Company\u2019s common stock.\nITEM 11. EXECUTIVE COMPENSATION.\nThe following table sets forth information concerning the total compensation during the fiscal years ending December 31, 2022, 2021 and 2019.",
+   "prose_after": "(1) In June 2008, Timothy E. Vance was appointed CEO of the Registrant.\n(2) In January 2013, Gary D. Woerz was appointed CFO of the Registrant.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTRS.\nThe following table sets forth information regarding the beneficial ownership of our common stock as of March 27, 2023. The information in this table provides the ownership information for: each person known by us to be the beneficial owner of more than 5% of our common stock; each of our directors; each of our executive officers; and our executive officers and directors as a group. Beneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to the shares. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares indicated as beneficially owned by them.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "Common Stock\n\n\n\nBeneficially Owned",
+     "",
+     "Percentage of\n\n\n\nCommon Stock\n\n\n\nOwned (1)",
+     "",
+     ""
+    ],
+    [
+     "Timothy E. Vance, CEO, COO and Director",
+     "",
+     "20,190,000",
+     "",
+     "12.80",
+     "%"
+    ],
+    [
+     "700 South Friendswood Drive, Suite E",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Friendswood, TX 77546",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gary D. Woerz, CFO and Director",
+     "",
+     "17,700,000",
+     "",
+     "11.23",
+     "%"
+    ],
+    [
+     "700 South Friendswood Drive, Suite E",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Friendswood, TX 77546",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "John Schafer, Director",
+     "",
+     "1,000,000",
+     "",
+     "0.63",
+     "%"
+    ],
+    [
+     "700 South Friendswood Drive, Suite E",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Friendswood, TX 77546",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Director and Officer (3 people)",
+     "",
+     "38,890.010",
+     "",
+     "24.80",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1020,
+    "end_line": 1041
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTRS."
+    },
+    "note": null
+   },
+   "prose_before": "(1) In June 2008, Timothy E. Vance was appointed CEO of the Registrant.\n(2) In January 2013, Gary D. Woerz was appointed CFO of the Registrant.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTRS.\nThe following table sets forth information regarding the beneficial ownership of our common stock as of March 27, 2023. The information in this table provides the ownership information for: each person known by us to be the beneficial owner of more than 5% of our common stock; each of our directors; each of our executive officers; and our executive officers and directors as a group. Beneficial ownership has been determined in accordance with the rules and regulations of the SEC and includes voting or investment power with respect to the shares. Unless otherwise indicated, the persons named in the table below have sole voting and investment power with respect to the number of shares indicated as beneficially owned by them.",
+   "prose_after": "(1) Applicable percentage ownership is based on 156,998,515 shares of common stock outstanding as of March 27, 2023. Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission and generally includes voting or investment power with respect to securities. Shares of common stock that are currently exercisable or exercisable within 60 days of March 27, 2023 are deemed to be beneficially owned by the person holding such securities for the purpose of computing the percentage of ownership of such person, but are not treated as outstanding for the purpose of computing the percentage ownership of any other person.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE.\nNone.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nIndependent Public Accountants\nOur auditor, M&K CPAS, PLLC. has served as the Company\u2019s independent registered public accountants for the fiscal years 2022 and 2021.\nPrincipal Accounting Fees\nThe following table presents the fees for professional audit services rendered by M&K CPAS, PLLC for the audits of the Registrant\u2019s annual financial statements for the years ended December 31, 2022 and 2021, and fees billed for other services rendered by M&K CPAS, PLLC during those periods.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$",
+     "25,000",
+     "$",
+     "25,000"
+    ],
+    [
+     "Audit-related fees (2)",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tax fees (3)",
+     "",
+     "1,100",
+     "",
+     "1,100"
+    ],
+    [
+     "All other fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1067
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Applicable percentage ownership is based on 156,998,515 shares of common stock outstanding as of March 27, 2023. Beneficial ownership is determined in accordance with the rules of the Securities and Exchange Commission and generally includes voting or investment power with respect to securities. Shares of common stock that are currently exercisable or exercisable within 60 days of March 27, 2023 are deemed to be beneficially owned by the person holding such securities for the purpose of computing the percentage of ownership of such person, but are not treated as outstanding for the purpose of computing the percentage ownership of any other person.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE.\nNone.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES.\nIndependent Public Accountants\nOur auditor, M&K CPAS, PLLC. has served as the Company\u2019s independent registered public accountants for the fiscal years 2022 and 2021.\nPrincipal Accounting Fees\nThe following table presents the fees for professional audit services rendered by M&K CPAS, PLLC for the audits of the Registrant\u2019s annual financial statements for the years ended December 31, 2022 and 2021, and fees billed for other services rendered by M&K CPAS, PLLC during those periods.",
+   "prose_after": "(1) Audit fees consist of audit and review services, consents and review of documents filed with the SEC.\n(2) Audit-related fees consist of assistance and discussion concerning financial accounting and reporting standards and other accounting issues.\n(3) Tax fees consist of preparation of federal and state tax returns, review of quarterly estimated tax payments, and consultation concerning tax compliance issues.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.\n(a) The exhibits listed below are filed as part of this annual report.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1015,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.1",
+     "Articles of Incorporation, attached to the Company\u2019s Form S-1 as filed with the SEC on February 21, 2006."
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Articles of Incorporation, attached to the Company\u2019s Form S-1 as filed with the SEC on February 21, 2006."
+    ],
+    [
+     "3.3.1",
+     "Amended and Restated Articles of Incorporation, attached to the Company\u2019s Form S-1/A as filed with the SEC on June 29, 2006."
+    ],
+    [
+     "3.4",
+     "Amended Bylaws, attached to the Company\u2019s Form S-1 as filed with the SEC on February 21, 2006."
+    ],
+    [
+     "4.1",
+     "Certificate of Designation of Series B Preferred Stock dated August 30, 2013, attached to the Company\u2019s Form 10-K as filed with the SEC on March 30, 2015."
+    ],
+    [
+     "10.16",
+     "Employment Agreement between the Company and Timothy E. Vance, as amended, attached to the Company\u2019s Form 10-K as filed with the SEC on March 30, 2015."
+    ],
+    [
+     "10.17",
+     "Employment Agreement between the Company and Gary Woerz, as amended, attached to the Company\u2019s Form 10-K as filed with the SEC on March 30, 2015."
+    ],
+    [
+     "31.1",
+     "Certificate of the Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, filed herewith"
+    ],
+    [
+     "31.2",
+     "Certificate of the Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, filed herewith"
+    ],
+    [
+     "32.1",
+     "Certificate of the Chief Executive Officer to Section 906 of the Sarbanes-Oxley Act of 2002, filed herewith"
+    ],
+    [
+     "32.2",
+     "Certificate of the Chief Financial Officer to Section 906 of the Sarbanes-Oxley Act of 2002, filed herewith"
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1079,
+    "end_line": 1099
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Audit fees consist of audit and review services, consents and review of documents filed with the SEC.\n(2) Audit-related fees consist of assistance and discussion concerning financial accounting and reporting standards and other accounting issues.\n(3) Tax fees consist of preparation of federal and state tax returns, review of quarterly estimated tax payments, and consultation concerning tax compliance issues.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES.\n(a) The exhibits listed below are filed as part of this annual report.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned.\nDATA CALL TECHNOLOGIES INC.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Timothy E. Vance",
+     ""
+    ],
+    [
+     "",
+     "Timothy E. Vance",
+     ""
+    ],
+    [
+     "",
+     "Chief Executive Officer and Chairman",
+     ""
+    ],
+    [
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "Date:",
+     "March 28, 2023",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1107,
+    "end_line": 1115
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned.\nDATA CALL TECHNOLOGIES INC.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Gary D. Woerz",
+     ""
+    ],
+    [
+     "",
+     "Gary D. Woerz",
+     ""
+    ],
+    [
+     "",
+     "Chief Financial Officer",
+     ""
+    ],
+    [
+     "",
+     "(Principal Financial and Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "Date:",
+     "March 28, 2023",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1116,
+    "end_line": 1124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Pursuant to the requirements of the Securities Act of 1934, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Timothy E. Vance",
+     ""
+    ],
+    [
+     "",
+     "Timothy E. Vance",
+     ""
+    ],
+    [
+     "",
+     "Chairman",
+     ""
+    ],
+    [
+     "Date:",
+     "March 28, 2023",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1134
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Act of 1934, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Gary D. Woerz",
+     ""
+    ],
+    [
+     "",
+     "Gary D. Woerz",
+     ""
+    ],
+    [
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "Date:",
+     "March 28, 2023",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1135,
+    "end_line": 1142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1100,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1143,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

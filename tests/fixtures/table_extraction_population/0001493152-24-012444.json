@@ -1,0 +1,4057 @@
+{
+ "accession": "0001493152-24-012444",
+ "cik": "0001066764",
+ "form": "10-K",
+ "filing_date": "2024-04-01",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "93-3419812"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2023\nor\n[ ] Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from ______________ to ______________\nCommission file number: 000-27407\nBITECH TECHNOLOGIES CORPORATION\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "895 Dove Street, Suite 300\nNewport Beach, CA 92660\n(Address of principal executive offices, Zip Code)\nTelephone: (855) 777-0888\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "895 Dove Street, Suite 300\nNewport Beach, CA 92660\n(Address of principal executive offices, Zip Code)\nTelephone: (855) 777-0888\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Exchange Act:",
+   "prose_after": "Securities registered under Section 12(g) of the Exchange Act:\nCommon Stock ($0.001 Par Value)\n(Title of Each Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 84,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "12"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "12"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "12"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "13"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "13"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "15"
+    ],
+    [
+     "Item 6.",
+     "Reserved",
+     "16"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "16"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "20"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "20"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "33"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "33"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "35"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "35"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officer and Corporate Governance",
+     "35"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "39"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "42"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "43"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "44"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "45"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "47"
+    ],
+    [
+     "",
+     "Signatures",
+     "48"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 90,
+    "end_line": 128
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The information in this Annual Report contains forward-looking statements and information within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), which are subject to the \u201csafe harbor\u201d created by those sections. The words \u201canticipates,\u201d \u201cbelieves,\u201d \u201cestimates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cplans,\u201d \u201cprojects,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cpredicts,\u201d \u201cpotential,\u201d \u201ccontinue,\u201d \u201cwould\u201d and similar expressions are intended to identify forward-looking statements, although not all forward-looking statements contain these identifying words. We may not actually achieve the plans, intentions or expectations disclosed in the Company\u2019s forward-looking statements and you should not place undue reliance on the Company\u2019s forward-looking statements. Actual results or events could differ materially from the plans, intentions and expectations disclosed in the forward-looking statements that we make. The forward-looking statements are applicable only as of the date on which they are made, and we do not assume any obligation to update any forward-looking statements. All forward-looking statements in this Annual Report on Form 10-K are made based on the Company\u2019s current expectations, forecasts, estimates and assumptions, and involve risks, uncertainties and other factors that could cause results or events to differ materially from those expressed in the forward-looking statements. In evaluating these statements, you should specifically consider various factors, uncertainties and risks that could affect the Company\u2019s future results or operations. These factors, uncertainties and risks may cause the Company\u2019s actual results to differ materially from any forward-looking statement set forth in this Annual Report on Form 10-K. You should carefully consider these risk and uncertainties described and other information contained in the reports we file with or furnish to the Securities and Exchange Commission (the \u201cSEC\u201d) before making any investment decision with respect to the Company\u2019s securities. All forward-looking statements attributable to us or persons acting on the Company\u2019s behalf are expressly qualified in their entirety by this cautionary statement.\nTABLE OF CONTENTS",
+   "prose_after": "3\nPART I\nITEM 1. BUSINESS\nBitech Technologies Corporation (the \u201cCompany\u201d, \u201cwe\u201d or \u201cus\u201d) was incorporated under the laws of Delaware on March 4, 1998. In connection with the Company\u2019s planned expansion of its business following the completion of the acquisition of Bitech Mining Corporation, a Wyoming corporation (\u201cBitech Mining\u201d), it filed a Certificate of Amendment to its Certificate of Incorporation, as amended (the \u201cCertificate of Amendment\u201d) with the Secretary of State of the State of Delaware on April 29, 2022 to change its corporate name to Bitech Technologies Corporation.\nWe have refocused our business development plans as we seek to position ourselves as a global technology solution enabler dedicated to providing a suite of green energy solutions with plans to develop Battery Energy Storage System (BESS) projects, commercial and residential renewable energy solutions, enterprise utility services, public service engagements, and other renewable energy initiatives. We plan to pursue these innovative energy technologies through research and development, technology integration, planned acquisitions of other early stage green energy development projects and plans to become a grid-balancing operator using BESS solutions and applying new green technologies as a technology enabler in the green energy sector. Our team has identified two highly competitive battery energy storage suppliers who have expressed interest in establishing partnerships with us, as we seek to integrate their products into projects that we identify, including grid-balancing BESS projects we plan to pursue following the Business Combination with Bridgelink discussed below. In addition, we are seeking business partnerships with defensible technology innovators and renewable energy providers to facilitate investments, provide new market entries toward emerging-growth regions and implement innovative, scalable energy system solutions with technological focuses on smart grid, Home Energy Management System (HEMS), Building Energy Management System (BEMS ), City Energy Management System (CEMS), energy storage, and EV infrastructure.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 87,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 130,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Low Trading Price",
+     "",
+     "High Trading Price",
+     ""
+    ],
+    [
+     "Period",
+     "($)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2023",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fourth Quarter (December 31, 2023)",
+     "",
+     "0.02",
+     "",
+     "0.07"
+    ],
+    [
+     "Third Quarter (September 30, 2023)",
+     "",
+     "0.03",
+     "",
+     "0.05"
+    ],
+    [
+     "Second Quarter (June 30, 2023)",
+     "",
+     "0.02",
+     "",
+     "0.05"
+    ],
+    [
+     "First Quarter (March 31, 2023)",
+     "",
+     "0.02",
+     "",
+     "0.07"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year Ended December 31, 2022",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fourth Quarter (December 31, 2022)",
+     "",
+     "0.02",
+     "",
+     "0.14"
+    ],
+    [
+     "Third Quarter (September 30, 2022)",
+     "",
+     "0.10",
+     "",
+     "0.19"
+    ],
+    [
+     "Second Quarter (June 30, 2022)",
+     "",
+     "0.09",
+     "",
+     "0.45"
+    ],
+    [
+     "First Quarter (March 31, 2022)",
+     "",
+     "0.07",
+     "",
+     "0.18"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 340,
+    "end_line": 356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "We have evaluated the foregoing Cao Lawsuit to assess the likelihood of any unfavorable outcome and to estimate, if possible, the amount of potential loss as it relates to the litigation. Based on this assessment and estimate, which includes an understanding of our intention to vigorously prosecute the Cao Lawsuit, we believe that the potential defenses of any of the remaining defendants lack merit, however, and we cannot predict the likelihood of any recoveries by any of our claims against the remaining defendants. This assessment and estimate is based on the information available to management as of the date of this Annual Report and involves a significant amount of management judgment, including the inherent difficulty associated with assessing litigation matters in their early stages. As a result, the actual outcome or loss may differ materially from those envisioned by the current assessment and estimate. Our failure to successfully prosecute, defend or settle the Cao Litigation with the remaining defendants could have a material adverse effect on our financial condition, revenue and profitability and could cause the market value of our common stock to decline.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY AND RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock is quoted on the OTCQB tier of the OTC Markets Group, Inc. under the symbol, \u201cBTTC.\u201d The OTC Market is a network of security dealers who buy and sell stock. The dealers are connected by a computer network that provides information on current \u201cbids\u201d and \u201casks\u201d, as well as volume information.\nThe following table sets forth trading information for our common stock for the periods indicated, as quoted on the OTCQB. These quotations reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not necessarily represent actual transactions.",
+   "prose_after": "Record Holders\nAs of December 31, 2023 there were approximately 115 record holders of our common stock. The number of record holders does not include beneficial owners of common stock whose shares are held in the names of banks, brokers, nominees or other fiduciaries.\nDividend Policy\nWe have not declared or paid any dividends on our common stock since our inception. We currently intend to reinvest all cash resources to finance the development and growth of our business. As a result, we do not intend to pay dividends on our common stock in the foreseeable future. Any future determination to pay dividends will be at the discretion of our board of directors and will depend on the financial condition, earnings, legal requirements, restrictions in its debt agreements and any other factors that our board of directors deems relevant. In addition, as a holding company, our ability to pay dividends depends on our receipt of cash dividends from our operating subsidiaries, which may further restrict our ability to pay dividends as a result of the laws of their respective jurisdictions of organization, agreements of our subsidiaries or covenants under future indebtedness that we or our subsidiaries may incur.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 331,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 6901)",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at December 31, 2023 and 2022",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2023 and 2022",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Equity for the years ended December 31, 2023 and 2022",
+     "24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2023 and 2022",
+     "25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "26"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 492,
+    "end_line": 507
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "There were no material changes in or adoption of new accounting practices during the year ended December 31, 2023.\nCritical Accounting Policies\nSee Note 2 of the accompanying notes to unaudited condensed consolidated financial statements, which note is incorporated herein by reference.\nIncome Tax Expense (Benefit)\nWe have not made a provision for income taxes in 2023 or 2022, which reflects our valuation allowance established against our benefits from net operating loss carryforwards.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nNot Applicable.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.\nOur financial statements for the fiscal years ended December 31, 2023 and 2022 are attached hereto.\nTABLE OF CONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of Bitech Technologies Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Bitech Technologies Corporation (\u201cthe Company\u201d) as of December 31, 2023 and 2022, and the related consolidated statements of operations, changes in shareholders\u2019 deficit, and cash flows for years then ended, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2023 and 2022, and the results of its operations and its cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\nThe Company\u2019s Ability to Continue as a Going Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the financial statements, the Company has suffered recurring losses from operations and negative cash flows from operating activities, therefore, the Company has stated that substantial doubt exists about its ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 463,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Fortune CPA, Inc"
+    ],
+    [
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2022."
+    ],
+    [
+     ""
+    ],
+    [
+     "Huntington Beach, CA"
+    ],
+    [
+     ""
+    ],
+    [
+     "March 31, 2024"
+    ],
+    [
+     "PCAOB # 6901"
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Fortune CPA, Inc"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "We determined the Company\u2019s ability to continue as a going concern is a critical audit matter due to the estimation and uncertainty regarding the Company\u2019s future cash flows and the risk of bias in management\u2019s judgments and assumptions in estimating these cash flows.\nOur audit procedures related to the Company\u2019s assertion on its ability to continue as a going concern included the following, among others:\nWe reviewed the Company\u2019s working capital and liquidity ratios, operating expenses, and uses and sources of cash used in management\u2019s assessment of whether the Company has sufficient liquidity to fund operations for at least one year from the financial statement issuance date. This testing included inquiries with management, comparison of prior period forecasts to actual results, consideration of positive and negative evidence impacting management\u2019s forecasts, the Company\u2019s financing arrangements in place as of the report date, market and industry factors and consideration of the Company\u2019s relationships with its financing partners.",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 556,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "152,417",
+     "",
+     "$",
+     "197,723",
+     ""
+    ],
+    [
+     "Prepaid expense",
+     "",
+     "11,000",
+     "",
+     "",
+     "13,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "163,417",
+     "",
+     "",
+     "210,723",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "163,417",
+     "",
+     "$",
+     "210,723",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "35,229",
+     "",
+     "",
+     "11,397",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "35,229",
+     "",
+     "",
+     "11,397",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value, 10,000,000 shares authorized, 0 shares issued and outstanding at December 31, 2023 and December 31, 2022, respectively",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series A Convertible Preferred stock; $0.001 par value, 9,000,000 shares authorized, no shares issued and outstanding at December 31, 2023 and December 31, 2022",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock: $0.001 par value, 1,000,000,000 shares authorized, 484,464,194 and 515,505,770 shares issued and outstanding at December 31, 2023 and December 31, 2022, respectively",
+     "",
+     "484,464",
+     "",
+     "",
+     "515,506",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "1,552,011",
+     "",
+     "",
+     "780,414",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(1,908,287)",
+     "",
+     "",
+     "(1,096,594)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "128,188",
+     "",
+     "",
+     "199,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "163,417",
+     "",
+     "$",
+     "210,723",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 562,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the audited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 560,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 610,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year ended\n\n\n\nDecember 31,\n\n\n\n2023",
+     "",
+     "",
+     "For the Year ended\n\n\n\nDecember 31,\n\n\n\n2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUE",
+     "$",
+     "308",
+     "",
+     "",
+     "26,197",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COST OF REVENUE",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "GROSS PROFIT",
+     "",
+     "308",
+     "",
+     "",
+     "26,197",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General & Administrative",
+     "",
+     "819,001",
+     "",
+     "",
+     "888,106",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "819,001",
+     "",
+     "",
+     "888,106",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(818,693)",
+     "",
+     "",
+     "(861,910)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest and Other Income",
+     "",
+     "7,000",
+     "",
+     "",
+     "50,475",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "-",
+     "",
+     "",
+     "(200)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Other Income (Expense)",
+     "",
+     "7,000",
+     "",
+     "",
+     "50,275",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS BEFORE INCOME TAXES",
+     "",
+     "(811,693)",
+     "",
+     "",
+     "(811,635)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BENEFIT (PROVISION) FOR INCOME TAXES",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(811,693)",
+     "",
+     "$",
+     "(811,635)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE SHARES",
+     "",
+     "479,080,612",
+     "",
+     "",
+     "284,808,907",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 658
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the audited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the audited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nAs of December 31, 2023",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 614,
+     "token": "REPEATING_HEADER",
+     "id": 24,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 661,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional\n\n\n\nPaid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total\n\n\n\nStockholders\u2019\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, January 21, 2021 (inception)",
+     "",
+     "20,240,882",
+     "",
+     "",
+     "20,241",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,265,559",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,285,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(284,959)",
+     "",
+     "",
+     "(284,959)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2021",
+     "",
+     "20,240,882",
+     "",
+     "$",
+     "20,241",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "1,265,559",
+     "",
+     "$",
+     "(284,959)",
+     "",
+     "$",
+     "1,000,841",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Recapitalization",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(139,880)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(139,880)",
+     ""
+    ],
+    [
+     "Restricted Stock Awards",
+     "",
+     "7,983,720",
+     "",
+     "",
+     "7,984",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(7,984)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Series A Preferred Shares issued in Share Exchange",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,000,000",
+     "",
+     "",
+     "9,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,000",
+     ""
+    ],
+    [
+     "Shares issued upon conversion of Series A Preferred Stock",
+     "",
+     "485,781,168",
+     "",
+     "",
+     "485,781",
+     "",
+     "",
+     "(9,000,000)",
+     "",
+     "",
+     "(9,000)",
+     "",
+     "",
+     "(485,781)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(9,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of Common Stock",
+     "",
+     "1,500,000",
+     "",
+     "",
+     "1,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "148,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(811,635)",
+     "",
+     "",
+     "(811,635)",
+     ""
+    ],
+    [
+     "Balances, December 31, 2022",
+     "",
+     "515,505,770",
+     "",
+     "$",
+     "515,506",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "780,414",
+     "",
+     "$",
+     "(1,096,594)",
+     "",
+     "$",
+     "199,326",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock for Services",
+     "",
+     "1,674,506",
+     "",
+     "",
+     "1,674",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "115,781",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "117,455",
+     ""
+    ],
+    [
+     "Stock Option Compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "180,600",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "180,600",
+     ""
+    ],
+    [
+     "Restricted Stock Awards",
+     "",
+     "1,500,000",
+     "",
+     "",
+     "1,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "28,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Cancelled Stock from SuperGreen",
+     "",
+     "(51,507,749)",
+     "",
+     "",
+     "(51,508)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "51,508",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Sale of Common Stock",
+     "",
+     "17,291,667",
+     "",
+     "",
+     "17,292",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "395,208",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "412,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(811,693)",
+     "",
+     "",
+     "(811,693)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances, December 31, 2023",
+     "",
+     "484,464,194",
+     "",
+     "$",
+     "484,464",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,552,011",
+     "",
+     "$",
+     "(1,908,287)",
+     "",
+     "$",
+     "128,188",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 667,
+    "end_line": 708
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the audited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nAs of December 31, 2023",
+   "prose_after": "The accompanying notes are an integral part of the audited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 661,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 711,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "YEAR ENDED DECEMBER 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(811,693)",
+     "",
+     "$",
+     "(811,635)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impairment Write-off \u2013 Exclusive License",
+     "",
+     "-",
+     "",
+     "",
+     "35,000",
+     ""
+    ],
+    [
+     "Common Stock issued for services",
+     "",
+     "147,455",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock Option Compensation",
+     "",
+     "180,600",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "2,000",
+     "",
+     "",
+     "(13,000)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "23,832",
+     "",
+     "",
+     "291",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "(457,806)",
+     "",
+     "",
+     "(789,344)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash from Sale of Common Stock, net",
+     "",
+     "412,500",
+     "",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "Recapitalization",
+     "",
+     "-",
+     "",
+     "",
+     "(139,880)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "412,500",
+     "",
+     "",
+     "10,120",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "",
+     "(45,306)",
+     "",
+     "",
+     "(779,224)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "197,723",
+     "",
+     "",
+     "976,947",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "152,417",
+     "",
+     "$",
+     "197,723",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash Investing and Financing",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplementary disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "200",
+     ""
+    ],
+    [
+     "Taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "YEAR ENDED DECEMBER 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 717,
+    "end_line": 760
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the audited consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the audited consolidated financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\nNOTE\n1. DESCRIPTION OF BUSINESS\nBitech Technologies Corporation (the \u201cCompany\u201d, \u201cwe\u201d or \u201cus\u201d) was incorporated under the laws of Delaware on March 4, 1998. In connection with the Company\u2019s planned expansion of its business following the completion of the acquisition of Bitech Mining Corporation, a Wyoming corporation (\u201cBitech Mining\u201d), it filed a Certificate of Amendment to its Certificate of Incorporation, as amended (the \u201cCertificate of Amendment\u201d) with the Secretary of State of the State of Delaware on April 29, 2022 to change its corporate name to Bitech Technologies Corporation.\nWe have refocused our business development plans as we seek to position ourselves as a global technology solution enabler dedicated to providing a suite of green energy solutions with plans to develop Battery Energy Storage System (BESS) projects, commercial and residential renewable energy solutions, enterprise utility services, public service engagements, and other renewable energy initiatives. We plan to pursue these innovative energy technologies through research and development, technology integration, planned acquisitions of other early stage green energy development projects and plans to become a grid-balancing operator using BESS solutions and applying new green technologies as a technology enabler in the green energy sector. Our team has identified two highly competitive battery energy storage suppliers who have expressed interest in establishing partnerships with us, as we seek to integrate their products into projects that we identify, including grid-balancing BESS projects we plan to pursue following the Business Combination with Bridgelink discussed below. In addition, we are seeking business partnerships with defensible technology innovators and renewable energy providers to facilitate investments, provide new market entries toward emerging-growth regions and implement innovative, scalable energy system solutions with technological focuses on smart grid, Home Energy Management System (HEMS), Building Energy Management System (BEMS), City Energy Management System (CEMS), energy storage, and EV infrastructure.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 715,
+     "token": "REPEATING_HEADER",
+     "id": 27,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 763,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Weighted- Average Exercise Price",
+     "",
+     "Shares",
+     "",
+     "Weighted- Average Exercise Price",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at Beginning of Year",
+     "",
+     "5,000,000",
+     "",
+     "$",
+     "0.07",
+     "",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Granted",
+     "",
+     "42,000,000",
+     "",
+     "",
+     "0.03",
+     "",
+     "5,000,000",
+     "",
+     "0.07"
+    ],
+    [
+     "Exercised",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or Cancelled",
+     "",
+     "(5,000,000)",
+     "",
+     "",
+     "0.03",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Outstanding at End of Year",
+     "",
+     "42,000,000",
+     "",
+     "",
+     "0.04",
+     "",
+     "5,000,000",
+     "",
+     "0.07"
+    ],
+    [
+     "Options Exercisable at Year-End",
+     "",
+     "17,250,000",
+     "",
+     "",
+     "0.03",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Weighted-Average Fair Value of Options Granted During the Year",
+     "$",
+     "0.01",
+     "",
+     "",
+     "",
+     "$",
+     "0.02",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 912,
+    "end_line": 931
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCENTIVE AND NON-STATUTORY STOCK OPTION PLAN"
+    }
+   },
+   "prose_before": "We have granted non-qualified stock options to employees and contractors. All non-qualified options are generally issued with an exercise price no less than the fair value of the common stock on the date of the grant as determined by our Board of Directors. Options may be exercised up to ten years following the date of the grant, with vesting schedules determined by us upon grant. Vesting schedules vary by grant, with some fully vesting immediately upon grant to others that ratably vest over a period of time up to five years. Standard vested options may be exercised up to three months following date of termination of the relationship unless alternate terms are specified at grant. The fair values of options are determined using the Black-Scholes option-pricing model. The estimated fair value of options is recognized as expense on the straight-line basis over the options\u2019 vesting periods. At December 31, 2023, we had approximately $340,707 unrecognized stock-based compensation.\nStock option transactions during 2023 and 2022 were as follows:\nSCHEDULE OF STOCK OPTION TRANSACTIONS",
+   "prose_after": "Information with respect to stock options outstanding and exercisable at December 31, 2023 is as follows:\nSCHEDULE OF STOCK OPTIONS OUTSTANDING AND EXERCISABLE",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Range of Exercise Prices",
+     "",
+     "Number Outstanding at December 31, 2023",
+     "",
+     "Weighted- Average Remaining Contractual Life",
+     "",
+     "Weighted- Average Exercise Price",
+     "",
+     "Number Exercisable at December 31, 2023",
+     "",
+     "Weighted- Average Exercise Price",
+     ""
+    ],
+    [
+     "$",
+     "0.025 - $0.07",
+     "",
+     "42,000,000",
+     "",
+     "9.2",
+     "$",
+     "0.04",
+     "",
+     "17,250,000",
+     "$",
+     "0.03"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 944
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "INCENTIVE AND NON-STATUTORY STOCK OPTION PLAN"
+    }
+   },
+   "prose_before": "Information with respect to stock options outstanding and exercisable at December 31, 2023 is as follows:\nSCHEDULE OF STOCK OPTIONS OUTSTANDING AND EXERCISABLE",
+   "prose_after": "NOTE\n5. ACQUISITION OF BITECH MINING\nOn March 31, 2022, the Company acquired 94,312,250 shares of Bitech Mining\u2019s Common Stock in exchange for 9,000,000 shares of its Series A Preferred Stock representing 100% of the issued and outstanding shares of Bitech Mining.\nThe Share Exchange was treated as a recapitalization and reverse acquisition for financial reporting purposes, and Bitech Mining is considered the acquirer for accounting purposes. As a result of the Share Exchange and the change in our business and operations, a discussion of the past financial results of our predecessor, Spine Injury Solutions Inc., is not pertinent, and under applicable accounting principles, the historical financial results of Bitech Mining, the accounting acquirer, prior to the Share Exchange are considered our historical financial results.\nThe Combination of the Company and Bitech Mining is considered a business acquisition and the method used to present the transaction is the acquisition method. The acquisition method is a method of accounting for a merger of two businesses. The tangible assets and liabilities and operations of the acquired business were combined at their market value of the acquisition date, which is the date when the acquirer gains control over the acquired company.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Purchase price",
+     "$",
+     "1,113,679",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "1,150,163",
+     ""
+    ],
+    [
+     "Total assets:",
+     "$",
+     "1,185,163",
+     ""
+    ],
+    [
+     "Less: liabilities assumed",
+     "$",
+     "(71,484)",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "1,113,679",
+     ""
+    ],
+    [
+     "Purchase price in excess of net assets acquired",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 958,
+    "end_line": 967
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "ACQUISITION OF BITECH MINING"
+    }
+   },
+   "prose_before": "The Share Exchange was treated as a recapitalization and reverse acquisition for financial reporting purposes, and Bitech Mining is considered the acquirer for accounting purposes. As a result of the Share Exchange and the change in our business and operations, a discussion of the past financial results of our predecessor, Spine Injury Solutions Inc., is not pertinent, and under applicable accounting principles, the historical financial results of Bitech Mining, the accounting acquirer, prior to the Share Exchange are considered our historical financial results.\nThe Combination of the Company and Bitech Mining is considered a business acquisition and the method used to present the transaction is the acquisition method. The acquisition method is a method of accounting for a merger of two businesses. The tangible assets and liabilities and operations of the acquired business were combined at their market value of the acquisition date, which is the date when the acquirer gains control over the acquired company.\nThe following table summarizes the consideration paid for Bitech Mining and the fair value amounts of assets acquired and liabilities assumed recognized at the acquisition date:\nSCHEDULE OF FAIR VALUE OF ASSETS AND LIABILITIES",
+   "prose_after": "NOTE\n6. RELATED PARTY TRANSACTIONS\nUp until March 31, 2022, the Company maintained its executive offices at 5151 Mitchelldale A2, Houston, Texas 77092. This office space encompassed approximately 200 square feet and was provided to us at the rental rate of $1,000 per month under a month-to-month agreement with Northshore Orthopedics, Assoc. (\u201cNSO\u201d), a company owned by William Donovan, M.D., our former director and Chief Executive Officer. The rent included the use of the telephone system, computer server, and copy machines. We discontinued paying rent in December 2021 due to a lack of funds, and until March 31, 2022 when this lease was cancelled NSO provided the Company this office space rent free.\nNOTE 7 INCOME TAX\nU.S. Federal Corporate Income Tax\nTemporary differences between financial statement carrying amounts and the tax basis of assets and liabilities and tax credit and operating loss carryforward that create deferred tax assets and liabilities are as follows:\nSCHEDULE OF DEFERRED TAX ASSETS AND LIABILITIES",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 907,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Tax Operating Loss Carryforward - USA",
+     "$",
+     "1,569,000",
+     "",
+     "$",
+     "1,090,000",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Valuation Allowance - USA",
+     "",
+     "(1,569,000)",
+     "",
+     "",
+     "(1,090,000)",
+     ""
+    ],
+    [
+     "Deferred Tax Assets, Net",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 982,
+    "end_line": 992
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "6. RELATED PARTY TRANSACTIONS\nUp until March 31, 2022, the Company maintained its executive offices at 5151 Mitchelldale A2, Houston, Texas 77092. This office space encompassed approximately 200 square feet and was provided to us at the rental rate of $1,000 per month under a month-to-month agreement with Northshore Orthopedics, Assoc. (\u201cNSO\u201d), a company owned by William Donovan, M.D., our former director and Chief Executive Officer. The rent included the use of the telephone system, computer server, and copy machines. We discontinued paying rent in December 2021 due to a lack of funds, and until March 31, 2022 when this lease was cancelled NSO provided the Company this office space rent free.\nNOTE 7 INCOME TAX\nU.S. Federal Corporate Income Tax\nTemporary differences between financial statement carrying amounts and the tax basis of assets and liabilities and tax credit and operating loss carryforward that create deferred tax assets and liabilities are as follows:\nSCHEDULE OF DEFERRED TAX ASSETS AND LIABILITIES",
+   "prose_after": "The valuation allowance increased approximately $0.5 million, primarily as a result of the increased net operating losses of our U.S.- based segment.\nAs of December 31, 2023, we had federal net operating loss carryforwards for income tax purposes of approximately $1.5 million. We also have California net operating loss carryforwards for income tax purposes of approximately $ 1.5 million which expire after twenty years from when it occurred.\nNOTE\n8. SUBSEQUENT EVENTS\nAs previously disclosed in the Company\u2019s Current Report on Form 8-K filed with the SEC on January 12, 2024, on January 8, 2024, the Company, Bridgelink Development, LLC, a Delaware limited liability company (\u201cBridgelink\u201d), a solar and energy storage development company based in Fort Worth, Texas and C & C Johnson Holdings LLC, the sole member of Bridgelink (the \u201cMember\u201d) entered into a Letter Agreement (the \u201cLetter Agreement\u201d) for a business combination (the \u201cBusiness Combination\u201d). Pursuant to the Letter Agreement, the Company plans to acquire from the Member all of the issued and outstanding membership interests of an entity to be formed by Bridgelink (the \u201cTarget\u201d) in exchange for 222,222,000 restricted shares of the Company\u2019s Common Stock (the \u201cExchange Shares\u201d). Prior to closing of the transaction (the \u201cClosing\u201d or \u201cClosing Date\u201d), Bridgelink will transfer to Target Bridgelink\u2019s assets and development service agreements (collectively, \u201cDevelopment Projects\u201d) consisting of: (1) certain rights to fully develop a portfolio of renewable energy development assets, which includes certain battery energy storage system (\u201cBESS\u201d) projects with a cumulative storage capacity of at least 1.965 gigawatts (GW) located in the United States and along with certain term sheets and agreements with capital providers, whether or not finalized (collectively, the \u201cBESS Development Projects\u201d) and (2) certain rights to fully develop a portfolio of renewable energy development assets, which includes certain solar development projects with a cumulative output of at least 3.840 gigawatts (GW) located in the United States, along with certain term sheets and agreements with capital providers that Bridgelink has negotiated, whether or not finalized (collectively, the \u201cSolar Development Projects\u201d). In addition, on the Closing Date, Bridgelink will enter into an agreement with BTTC whereby Bridgelink will agree to refer to the Company any future projects involving BESS that Bridgelink is presented with an opportunity to work on.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 968,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position(s) and Office(s)"
+    ],
+    [
+     "Benjamin B. Tran",
+     "57",
+     "Chief Executive Officer, President and Chairman"
+    ],
+    [
+     "Robert J. Brilon",
+     "63",
+     "Chief Financial Officer and Director"
+    ],
+    [
+     "Gregory D. Trimarche",
+     "60",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1070,
+    "end_line": 1077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Additionally, controls can be circumvented by the individual acts of some persons, by collusion of two or more people or by management\u2019s override of the control. The design of any systems of controls is based in part upon certain assumptions about the likelihood of future events, and there can be no assurance that any design will succeed in achieving its stated goals under all potential future conditions. Over time, controls may become inadequate because of changes in conditions, or the degree of compliance with the policies or procedures may deteriorate. Because of these inherent limitations in a cost-effective control system, misstatements due to error or fraud may occur and not be detected. Individual persons perform multiple tasks which normally would be allocated to separate persons and therefore extra diligence must be exercised during the period these tasks are combined.\nITEM 9B. OTHER INFORMATION\nNone.\nItem 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nOur directors and executive officers are as follows:",
+   "prose_after": "Benjamin\nB. Tran, PhD \u2013 Dr. Tran currently serves as Chairman and Chief Executive Officer of the company. He has been the corporate strategist, investor, and financial partner in the formation and growth of several emerging growth technology companies. Benjamin specializes in cross-border M&A, private equity, merchant banking advisory and technology marketing. He also serves as Managing Partner of Cleantek Venture Capital, a cleantech-focused private equity advisory firm since January 2021 to present. Benjamin, at times, serves as senior advisor to several publicly traded companies. From February 2021 to April 2022, Benjamin has served as Senior Capital Market Advisor for Iveda Solutions, Inc. (NASDAQ: IVDA), an AI and IoT technology company to assist with financing and uplisting to Nasdaq. From August 2017 to January 2019, he served as Advisory Chairman of Vemanti Group, Inc. (OTCQB: VMNT), an innovative fintech company to assist in M&A and international business development. From November 2018 to April 2021, Benjamin also co-founded and served as chairman of CBMD, Inc., a privately held physician-based CBD science company specializing in pain management. Benjamin served as CFO of privately held Stock Navigators, a leading software and educational training institution for technical traders from June 2018 to June 2019. Since 2014 to present, Benjamin has served as managing partner of United System Capital, a private equity advisory firm in Newport Beach, California. Prior to United System Capital, Benjamin was managing partner of an Asia-based joint venture with Brean Murray Carret & Co., a New York-based investment bank that has transacted over 100 IPOs/APOs/SPACs and raised over $4B for the U.S. and Asian companies. Benjamin spearheaded the organization to formulate a multi-functional investment banking service for emerging growth companies via globalization strategies. Benjamin has been seasoned international consultant providing corporate development and interim senior management to small and medium sized enterprises in Silicon Valley and the Asia Pacific region. He also served as a board director, CFO, corporate strategist, and executive advisor for several distressed companies, managing turn-around situations. As a Silicon Valley high-tech veteran, Benjamin brings over 20 years of diversified experience including mergers and acquisitions, venture management, strategic marketing, and international business development. Prior to his investment and corporate advisory career, Benjamin worked for technology leaders including Micron Technology, Fujitsu Microelectronics, Mitsubishi Electric America, Philips Semiconductors, holding various senior technical and marketing management positions. Benjamin received a Ph.D. in Business Administration, a Masters in Business Administration from the University of Phoenix, Masters of Science and Bachelor of Science degrees in Electrical Engineering from San Jose State University, California.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1055,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1084,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "",
+     "Salary ($)",
+     "",
+     "",
+     "Bonus ($)",
+     "",
+     "Stock Awards ($)",
+     "",
+     "Option Awards ($)",
+     "",
+     "Non-Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "Change in\n\n\n\nPension\n\n\n\nValue\n\n\n\nand\n\n\n\nNonqualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "All Other Compensation ($)",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Benjamin Tran.",
+     "2023",
+     "",
+     "132,000",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "132,000-"
+    ],
+    [
+     "CEO, President and Director",
+     "2022",
+     "",
+     "86,000",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "86,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert J. Brilon",
+     "2023",
+     "",
+     "19,000",
+     "",
+     "",
+     "-",
+     "",
+     "33,179",
+     "",
+     "51,643",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "103,822"
+    ],
+    [
+     "CFO and Director",
+     "2022",
+     "",
+     "16,500",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "16,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1178,
+    "end_line": 1201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Mr. Brilon is the Chairman of the Audit Committee, and the board of directors has determined that he is an audit committee financial expert as defined in Item 5(d)(5) of Regulation S-K. The primary purpose of the Audit Committee is to oversee our accounting and financial reporting processes and audits of our financial statements on behalf of the board of directors. The Audit Committee meets privately with our management and with our independent registered public accounting firm and evaluates the responses by our management both to the facts presented and to the judgments made by our outside independent registered public accounting firm.\nITEM 11. EXECUTIVE COMPENSATION\nThe following table summarizes all compensation recorded by us in the past two fiscal years for:\n\u25cf our principal executive officer or other individual acting in a similar capacity during the fiscal year ended December 31, 2023,\n\u25cf our two most highly compensated executive officers, other than our principal executive officers, who were serving as executive officers at December 31, 2021, and\n\u25cf up to two additional individuals for whom disclosure would have been provided but for the fact that the individual was not serving as an executive officer at December 31, 2021.\nFor definitional purposes, these individuals are sometimes referred to as the \u201cnamed executive officers.\u201d\n2023 Summary Executive Compensation Table",
+   "prose_after": "Employment Agreements\nDuring fiscal 2024, Mr. Tran will be paid a salary by the Company in the amount of $12,500 per month and Mr. Brilon will be paid a consulting fee at the approximate rate of $4,500 per quarter depending on the amount of time he devotes to providing services on behalf of the Company. There is no written agreement to pay Mr. Tran this compensation.\nOn April 19, 2022, the Company and Mr. Brilon entered into an Independent Contractor Agreement whereby Mr. Brilon (the \u201cIndependent Contractor Agreement\u201d) agreed to serve as the Chief Financial Officer of the Company and shall have such duties and authorities consistent with such position as are customary for the position of chief financial officer of a company of the size and nature of the Company, and such other duties and authorities as shall be reasonably determined from time to time by the Board of Directors of the Company consistent with such position and to serve as an officer of any subsidiary of the Company as may be reasonably requested from time to time by the Board of Directors. In addition, Mr. Brilon agreed to serve as a member of the Company\u2019s Board of Directors. The Independent Contractor Agreement may be terminated by either party on 15 days prior written notice without cause or five days after written notice in the event of a breach of the agreement by either party.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1163,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1212,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Number of\n\n\n\nsecurities\n\n\n\nunderlying\n\n\n\nunexercised\n\n\n\noptions\n\n\n\n(#) exercisable",
+     "",
+     "Number of\n\n\n\nsecurities\n\n\n\nunderlying\n\n\n\nunexercised\n\n\n\noptions (#) unexercisable",
+     "",
+     "Option\n\n\n\nexercise\n\n\n\nprice ($)",
+     "",
+     "Option\n\n\n\nexpiration\n\n\n\ndate(1)",
+     "",
+     "",
+     "Number of\n\n\n\nshares\n\n\n\nthat have not vested (#)",
+     "",
+     "Market\n\n\n\nvalue\n\n\n\nof shares that have not vested ($)(2)",
+     ""
+    ],
+    [
+     "Benjamin Tran.",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "$",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "",
+     "\u2013",
+     "$",
+     "\u2013"
+    ],
+    [
+     "CEO, President and Director",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ],
+    [
+     "Robert J. Brilon",
+     "",
+     "4,500,000",
+     "",
+     "500,000",
+     "$",
+     "0.025",
+     "",
+     "2/13/2033",
+     "(3)",
+     "",
+     "3,476,790",
+     "$",
+     "208,607"
+    ],
+    [
+     "CFO and Director",
+     "",
+     "2,500,000",
+     "",
+     "2,500,000",
+     "$",
+     "0.030",
+     "",
+     "4/3/2033",
+     "(4)",
+     "",
+     "\u2013",
+     "",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1228,
+    "end_line": 1254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "\u25cf On April 3, 2023 a grant of a nonstatutory stock option (the \u201cStock Option\u201d) to purchase 5,000,000 shares of the Company\u2019s Common Stock at an exercise price of $0.03 per share. The Stock Option vest 50% on the date of the grant and 50% on April 3, 2024 so long as the recipient of the award is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if the recipient is terminated from his role without cause (as defined in the Stock Option) the number of shares subject to the Stock Option in the year of termination shall vest plus the number of shares that would have vested in the following year. In the event the recipient\u2019s service is terminated with cause, the number of shares subject to the Stock Option awarded to such recipient in the year of termination shall vest. The Stock Option may be exercised for the earlier of\n(1) ten years from grant date or (2) five (5) years after termination as a member of the Company\u2019s board of directors.\n\u25cf On November 27, 2023 an award of 500,000 shares of restricted common stock, of which 100% vests on December 31, 2023 so long as Mr. Brilon is providing services to the Company or one of its subsidiaries.\nOutstanding Equity Awards at Fiscal Year End\n2023 OUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END TABLE\nThe following table sets forth information with respect to the options outstanding by the Named Executive Officers held at fiscal year-end.",
+   "prose_after": "(1) The expiration date of each option occurs on the earlier of (i) ten years after the date of grant of each option or (ii) five years after the termination as a member of the board of directors.\n(2) The market value was computed by multiplying the closing market price of common stock on December 31, 2023 ($0.06) by the number of restricted stock awards that have not vested.\n(3) The unvested options vest on January 1, 2025 so long as Mr. Brilon is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if Mr. Brilon is terminated from his role without cause (as defined in the Stock Option) the number of shares subject to the Stock Option in the year of termination shall vest. In the event Mr. Brilon\u2019s service is terminated with cause, the number of shares subject to the Stock Option in the year of termination shall vest.\n(4) The unvested options vest on April 3, 2024 so long as the recipient of the award is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if the recipient is terminated from his role without cause (as defined in the Stock Option).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1212,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1257,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees\n\n\n\nEarned\n\n\n\nor Paid in Cash (1)\n\n\n\n($)",
+     "",
+     "Stock\n\n\n\nAwards\n\n\n\n($)",
+     "",
+     "Option\n\n\n\nAwards (2)\n\n\n\n($)",
+     "",
+     "Non-Equity\n\n\n\nIncentive\n\n\n\nPlan\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "Non-qualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\nEarnings\n\n\n\n($)",
+     "",
+     "All Other\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "Total\n\n\n\n($)",
+     ""
+    ],
+    [
+     "Greg Trimarche\n\n\n\nDirector(3)",
+     "",
+     "\u2014",
+     "",
+     "20,000",
+     "",
+     "43,955",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1265,
+    "end_line": 1287
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(3) The unvested options vest on January 1, 2025 so long as Mr. Brilon is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if Mr. Brilon is terminated from his role without cause (as defined in the Stock Option) the number of shares subject to the Stock Option in the year of termination shall vest. In the event Mr. Brilon\u2019s service is terminated with cause, the number of shares subject to the Stock Option in the year of termination shall vest.\n(4) The unvested options vest on April 3, 2024 so long as the recipient of the award is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if the recipient is terminated from his role without cause (as defined in the Stock Option).\nCompensation of Directors\nThe following table sets forth all compensation paid to or earned by each of our directors during fiscal year 2023, except for compensation with respect to Messrs. Tran and Brilon. Information with respect to the compensation of these directors is included above in the \u201cSummary Compensation Table.\u201d As our executive officers, none of these directors (other than as described above) received any compensation for service as a director during fiscal year 2023.",
+   "prose_after": "Notes:\n(1) Director cash compensation during the fiscal year ended December 31, 2023.\n(2) The amounts reported in the Stock Awards and the Option Awards columns reflect aggregate grant date fair value computed in accordance with ASC Topic 718, Compensation\u2014Stock Compensation. These amounts reflect our calculation of the value of these awards at the grant date and do not necessarily correspond to the actual value that may ultimately be realized by the named executive officer. Assumptions used in the calculation of these amounts are included in the Notes to our audited consolidated financial statements for the fiscal year ended December 31, 2023, which are included elsewhere in this Annual Report.\n(3) Greg Trimarche. On December 21, 2022, the Company and Mr. Trimarche entered into an Independent Contractor Agreement (the \u201cIndependent Contractor Agreement\u201d) whereby Mr. Trimarche agreed to serve as a member of the Company\u2019s board of directors. The Independent Contractor Agreement may be terminated by either party on 15 days prior written notice without cause or five days after written notice in the event of a breach of the agreement by either party. On December 21, 2022, as Compensation for Mr. Trimarche\u2019s service to the Company as a director as provided for in the Independent Contractor Agreement, the Company awarded him an option to purchase 5,000,000 shares of the Company\u2019s Common Stock (the \u201cOption Shares\u201d) at an exercise price of $0.07 per share (the \u201cStock Option\u201d). The Stock Option vests as to 20 % of the Option Shares on each December 21, beginning December 21, 2023, so long as Mr. Trimarche is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if Mr. Trimarche is terminated from his role without cause (as defined in the Stock Option) the number of shares subject to the Stock Option in the year of termination shall vest plus the number of shares that would have vested in the following year. In the event Mr. Trimarche\u2019s service as a member of the Board is terminated with cause, the number of shares subject to the Stock Option in the year of termination shall vest. The value of the option awards will be recorded in the year that they vest. On April 3, 2023, as Compensation for Mr. Trimarche\u2019s service to the Company as a director, the Company awarded him an option to purchase 5,000,000 shares of the Company\u2019s Common Stock (the \u201cOption Shares\u201d) at an exercise price of $0.03 per share (the \u201cStock Option\u201d). The Stock Option vests 50% of the Option Shares on date of grant April 3, 2023 and 50% April 3, 2024, so long as Mr. Trimarche is providing services to the Company or one of its subsidiaries; provided, however, the vesting is subject to acceleration such that if Mr. Trimarche is terminated from his role without cause (as defined in the Stock Option) the number of shares subject to the Stock Option in the year of termination shall vest plus the number of shares that would have vested in the following year. In the event Mr. Trimarche\u2019s service as a member of the Board is terminated with cause, the number of shares subject to the Stock Option in the year of termination shall vest. The value of the option awards will be recorded in the year that they vest. On November 27, 2023, as Compensation for Mr. Trimarche\u2019s service to the Company, the Company awarded him 1,000,000 shares of Restricted Common Stock in November 2023 which vested on December 31, 2023. The value of this award was $20,000 and is recorded in 2023.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1257,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Number of\n\n\n\nCommon Shares\n\n\n\nBeneficially Owned",
+     "",
+     "",
+     "Percent of Class",
+     "",
+     ""
+    ],
+    [
+     "Benjamin B. Tran (1)",
+     "",
+     "146,445,031",
+     "(2)",
+     "",
+     "30.2",
+     "%"
+    ],
+    [
+     "Robert J. Brilon (1)",
+     "",
+     "13,423,414",
+     "(3)",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "Gregory D. Trimarche (1)",
+     "",
+     "2,000,000",
+     "(4)",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "All directors and named executive officers as a group (3 persons)",
+     "",
+     "161,858,445",
+     "",
+     "",
+     "32.9",
+     "%"
+    ],
+    [
+     "5% Shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Michael H. Cao (6)",
+     "",
+     "180,277,121",
+     "(5)",
+     "",
+     "37.2",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total 5% Shareholders",
+     "",
+     "180,277,121",
+     "",
+     "",
+     "37.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1303,
+    "end_line": 1319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The following table sets forth information, as of December 31, 2023, concerning, except as indicated by the footnotes below, (i) each person whom we know beneficially owns more than 5% of our common stock, (ii) each of our directors, (iii) each of our named executive officers and (iv) all of our directors and executive officers as a group. We have determined beneficial ownership in accordance with the rules of the SEC. Except as indicated by the footnotes below, we believe, based on the information furnished to us, that the persons and entities named in the table below have sole voting and investment power with respect to all shares of common stock that they beneficially own, subject to applicable community property laws. Applicable percentage ownership is based on 484,464,194 shares of common stock outstanding at December 31, 2023. In computing the number of shares of common stock beneficially owned by a person and the percentage ownership of that person, we deemed outstanding shares of common stock subject to stock options or warrants held by that person that are currently exercisable or exercisable within 60 days of December 31, 2023. We did not deem these shares outstanding, however, for the purpose of computing the percentage ownership of any other person. Unless otherwise noted, stock options and warrants referenced in the footnotes below are currently fully vested and exercisable.",
+   "prose_after": "* Less than 1%,\n(1) The named individual is one of our executive officers or directors. His address is c/o Bitech Technologies Corporation, 895 Dove Street, Suite 300, Newport Beach, California 92660.\n(2) Includes the following: (i) 51,517,749 shares of common stock held directly, (ii) 51,507,749 shares held by Mr. Tran\u2019s spouse and (iii) 43,419,533 shares owned by United System Capital LLC (\u201cUSC\u201d), over which Mr. Tran has voting control and therefore may be deemed to have indirect beneficial ownership of all or a portion of the securities owned directly by USC. Mr. Tran disclaims beneficial ownership of the reported securities except to the extent of his pecuniary interest therein.\n(3) Includes the following: (i) 1,287,694 shares of common stock (ii) 4,635,720 shares of restricted common stock which vested 25% on April 13, 2023, and then the remaining vest 25% on April 13, 2024, 25% on April 13, 2025 and 25% on April 13, 2026 only if Mr. Brilon is still providing services to the Company at the time of vesting, (iii) 500,000 shares of restricted common stock issued in November 2023 which vested on December 31, 2023, (iv) 4,500,000 shares of common stock issuable upon exercise of stock options exercisable within 60 days of the date of this table at $0.025 per share and (v) 2,500,000 shares of common stock issuable upon exercise of stock options exercisable within 60 days of the date of this table at $0.03 per share.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1294,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1324,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "37,500",
+     "$",
+     "34,500"
+    ],
+    [
+     "Audit Related Fees(2)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees(3)",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "37,500",
+     "$",
+     "34,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1359,
+    "end_line": 1369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We currently have one independent director on our board, Gregory D. Trimarche. The definition of \u201cindependent\u201d used herein is arbitrarily based on the independence standards of The NASDAQ Stock Market LLC. The board performed a review to determine the independence of Gregory D. Trimarche and made a subjective determination as to each of these directors that no transactions, relationships or arrangements exist that, in the opinion of the board, would interfere with the exercise of independent judgment in carrying out the responsibilities of a director of the Company. In making these determinations, the board reviewed information provided by these directors with regard to each individual\u2019s business and personal activities as they may relate to us and our management.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following table sets forth the fees paid or accrued by us for the audit and other services provided or to be provided by our principal independent accountants during the years ended December 31, 2023 and 2022.",
+   "prose_after": "(1) Audit Fees: This category represents the aggregate fees billed for professional services rendered by the principal independent accountant for the audit of our annual financial statements and review of financial statements included in our Form 10-Q and Form 10-K and services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for the fiscal years.\n(2) Audit Related Fees: This category consists of the aggregate fees billed for assurance and related services by the principal independent accountant that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \u201cAudit Fees.\u201d\n(3) Tax Fees: This category consists of the aggregate fees billed for professional services rendered by the principal independent accountant for tax compliance, tax advice, and tax planning.\nPre-Approval of Audit and Non-Audit Services\nAll above audit services, audit-related services and tax services, for the fiscal years ended December 31, 2023 and 2022, were pre-approved by our Audit Committee, which concluded that the provision of such services was compatible with the maintenance of that firm\u2019s independence in the conduct of its auditing functions. The Audit Committee\u2019s outside auditor independence policy provides for pre-approval of all services performed by the outside auditors.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1354,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1378,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "",
+     "Description"
+    ],
+    [
+     "3.1",
+     "",
+     "Articles of Incorporation dated March 4, 1998. (Incorporated by reference from Form 10-SB filed with the SEC on January 5, 2000.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "",
+     "Amended Articles of Incorporation dated April 23, 1998. (Incorporated by reference from Form 10-SB filed with the SEC on January 5, 2000.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "",
+     "Amended Articles of Incorporation dated January 4, 2002. (Incorporated by reference from Form 10KSB filed with the SEC on May 21, 2003.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "",
+     "Amended Articles of Incorporation dated December 19, 2003. (Incorporated by reference from Form 10-KSB filed with the SEC on May 20, 2004.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "",
+     "Amended Articles of Incorporation dated November 4, 2004. (Incorporated by reference from Form 10-KSB filed with the SEC on April 15, 2005)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.6",
+     "",
+     "Amended Articles of Incorporation dated September 7, 2005. (Incorporated by reference from Form 10-QSB filed with the SEC on November 16, 2005)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.7",
+     "",
+     "Certificate of Amendment to Certificate of Incorporation dated September 30, 2015. (Incorporated by reference from Form 8-K filed with the SEC on October 7, 2015.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.8",
+     "",
+     "Certificate of Amendment to Certificate of Incorporation dated January 20, 2021 (Incorporated by reference to Exhibit 3.8 to the Company\u2019s Form 10-K filed with the SEC on March 26, 2021.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.9",
+     "",
+     "Certificate of Designations of Preferences and Rights of Series A Convertible Preferred Stock dated March 31, 2022 (Incorporated by reference to Exhibit 3.9 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 4, 2022)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.10",
+     "",
+     "Certificate of Amendment to Certificate of Incorporation, as amended, dated April 28, 2022 (Incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on May 2, 2022)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.11",
+     "",
+     "By-Laws dated April 23, 1998. (Incorporated by reference from Form 10-SB filed with the SEC on January 5, 2000.)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "",
+     "Secured Promissory Note with Peter Dalrymple, dated August 31, 2020 (Incorporated by reference from Form 8-K filed with the SEC on September 2, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Security Agreement with Peter Dalrymple, dated August 31, 2020 (Incorporated by reference from Form 8-K filed with the SEC on September 2, 2020)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "",
+     "Letter agreement with Peter Dalrymple, dated October 28, 2021 (Incorporated by reference from Form 8-K filed with the SEC on November 2, 2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "",
+     "Amendment to Secured Promissory Note with Peter Dalrymple, dated October 29, 2021 (Incorporated by reference from Form 8-K filed with the SEC on November 2, 2021)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1383,
+    "end_line": 1419
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "(2) Audit Related Fees: This category consists of the aggregate fees billed for assurance and related services by the principal independent accountant that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \u201cAudit Fees.\u201d\n(3) Tax Fees: This category consists of the aggregate fees billed for professional services rendered by the principal independent accountant for tax compliance, tax advice, and tax planning.\nPre-Approval of Audit and Non-Audit Services\nAll above audit services, audit-related services and tax services, for the fiscal years ended December 31, 2023 and 2022, were pre-approved by our Audit Committee, which concluded that the provision of such services was compatible with the maintenance of that firm\u2019s independence in the conduct of its auditing functions. The Audit Committee\u2019s outside auditor independence policy provides for pre-approval of all services performed by the outside auditors.\nPART IV\nITEM 15. EXHIBITS",
+   "prose_after": "10.5 Share Exchange Agreement among Spine Injury Solutions, Inc., Bitech Mining Corporation, its shareholders and Benjamin Tran as Stockholders\u2019 Representative dated as of March 31, 2022 (Incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 4, 2022). 10.6 Management Services Agreement between Spine Injury Solutions, Inc., Quad Video Halo, Inc. and Peter L. Dalrymple dated as of March 31, 2022 (Incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 4, 2022). 10.7 Amendment to Secured Promissory Note Agreement between Spine Injury Solutions, Inc., Quad Video Halo, Inc. and Peter L. Dalrymple dated as of March 31, 2022 (Incorporated by reference to Exhibit 10.7 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 4, 2022). 10.8 Amendment to Security Agreement between Spine Injury Solutions, Inc., Quad Video Halo, Inc. and Peter L. Dalrymple dated as of March 31, 2022 (Incorporated by reference to Exhibit 10.8 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 4, 2022). 10.9 \u2020 Form of Independent Contractor Agreement (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 20, 2022). 10.10 \u2020 Form of Proprietary Information and Inventions Agreement (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 20, 2022). 10.11\u2020 Form of Restricted Stock Agreement (Incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on April 20, 2022). 10.12 Asset Purchase Agreement entered into among Quad Video Halo, Inc., Quad Video Holdings Corporation and Peter Dalrymple dated June 30, 2022 (Incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on July 1, 2022). 10.13^ Asset Purchase Agreement entered into among Bitech Technologies Corporation, SPIN Collections LLC and Peter Dalrymple dated June 30, 2022 (Incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on July 1, 2022). 10.14 Secured Promissory Note and Security Agreement Cancellation Agreement entered into among Bitech Technologies Corporation, Quad Video Halo, Inc., Quad Video Holdings Corporation and Peter Dalrymple dated June 30, 2022 (Incorporated by reference to Exhibit10.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on July 1, 2022). 10.15 Patent & Technology Exclusive and Non Exclusive License Agreement entered into between SuperGreen Energy Corp. and Bitech Mining Corporation dated January 15, 2021 (incorporated by reference to Exhibit 10.15 of the Company\u2019s Form S-1 filed on August 15, 2022). 10.16 Amendment of Patent & Technology Exclusive License Agreement entered into between SuperGreen Energy Corp. and Bitech Mining Corporation dated October 25, 2021 (incorporated by reference to Exhibit 10.16 of the Company\u2019s Form S-1 filed on August 15, 2022). 10.17 Consent to Sublicense Agreement and Amendment to Patent & Technology Exclusive and Non Exclusive License Agreement entered into between SuperGreen Energy Corp., Bitech Mining Corporation and Calvin Cao dated as of March 27, 2022 (incorporated by reference to Exhibit 10.17 of the Company\u2019s Form S-1 filed on August 15, 2022). 10.18 Confidential Settlement, Mutual Release, and Share Transfer Agreement between the Company, Bitech Mining Corporation, Calvin Cao and SuperGreen Energy Corporation dated as of February 20, 2023 (incorporated by reference to Exhibit 10.1 of the Company\u2019s Form 8-K filed on February 24, 2023). 10.19\u2020 Form of Stock Option Agreement (Incorporated by reference to Exhibit 10.2 of the Company\u2019s Form 8-K filed on December 21, 2022). 10.20 Form of Subscription Agreement for U.S. Residents (Incorporated by reference to Exhibit 10.19 of the Company\u2019s Form 10-Q filed on August 15, 2023). 10.21*^ Letter Agreement entered into between the Company and Bridgelink Development, LLC dated January 8, 2024.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1378,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1420,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "*",
+     "Filed or furnished herewith."
+    ],
+    [
+     "^",
+     "Certain confidential information has been excluded from this exhibit because it is both (i) not material and (ii) would be competitively harmful if publicly disclosed."
+    ],
+    [
+     "\u2020",
+     "Includes management contracts and compensation plans and arrangements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1426,
+    "end_line": 1431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "21.1 Subsidiaries (Incorporated by reference to Exhibit 21.1 of the Company\u2019s Form 10-K filed on March 31, 2023). 31.1* Certification of principal executive officer required by Rule 13a \u2013 14(1) or Rule 15d \u2013 14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2* Certification of principal financial officer required by Rule 13a \u2013 14(1) or Rule 15d \u2013 14(a) of the Securities Exchange Act of 1934, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1* Certification of principal executive officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 and Section 1350 of 18 U.S.C. 63. 32.2* Certification of principal financial officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 and Section 1350 of 18 U.S.C. 63. 101.INS XBRL Instance Document 101.SCH XBRL Taxonomy Extension Schema 101.CAL XBRL Taxonomy Extension Calculation Linkbase 101.DEF XBRL Taxonomy Extension Definitions Linkbase 101.LAB XBRL Taxonomy Extension Label Linkbase 101.PRE XBRL Taxonomy Extension Presentation Linkbase",
+   "prose_after": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nIn accordance with the requirements of Section 13 of 15(d) of the Exchange Act, the Registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on March 31, 2024.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1436,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Bitech Technologies Corporation",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Benjamin B. Tran",
+     ""
+    ],
+    [
+     "By:",
+     "Benjamin B. Tran"
+    ],
+    [
+     "Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Bitech Technologies Corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1441,
+    "end_line": 1449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nIn accordance with the requirements of Section 13 of 15(d) of the Exchange Act, the Registrant has caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on March 31, 2024.",
+   "prose_after": "Pursuant to the requirements of the Exchange Act, this report has been signed below by the following persons in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1436,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1469,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Benjamin B. Tran",
+     "",
+     "March 31, 2024"
+    ],
+    [
+     "Benjamin B. Tran",
+     "Chief Executive Officer (Principal Executive Officer), President and Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert J. Brilon",
+     "",
+     "March 31, 2024"
+    ],
+    [
+     "Robert J. Brilon",
+     "Chief Financial Officer (Principal Financial and Accounting Officer) and Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Gregory D. Trimarche",
+     "",
+     "March 31, 2024"
+    ],
+    [
+     "Gregory D. Trimarche",
+     "Director",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1452,
+    "end_line": 1468
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Exchange Act, this report has been signed below by the following persons in the capacities and on the dates indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1436,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1469,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

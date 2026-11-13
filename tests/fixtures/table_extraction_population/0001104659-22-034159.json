@@ -1,0 +1,7061 @@
+{
+ "accession": "0001104659-22-034159",
+ "cik": "0001891101",
+ "form": "10-K",
+ "filing_date": "2022-03-16",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "brrc-20220202x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "08-3277812"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ________ to ________\nCommission file number 001-41275\nBRC Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1144 S. 500 W\nSalt Lake City, UT 84101\n(Address of principal executive office, zip code)\n(801) 874-1189\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A common stock, $0.0001 par value",
+     "BRCC",
+     "New York Stock Exchange"
+    ],
+    [
+     "Redeemable warrants, each whole warrant exercisable for one share of Class A common stock at an exercise price of $11.50",
+     "BRCC WS",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 53
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1144 S. 500 W\nSalt Lake City, UT 84101\n(Address of principal executive office, zip code)\n(801) 874-1189\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports); and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Explanatory Note",
+     "2"
+    ],
+    [
+     "",
+     "Glossary of Terms",
+     "3"
+    ],
+    [
+     "",
+     "Cautionary Note Regarding Forward-Looking Statements",
+     "7"
+    ],
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 1. Business",
+     "9"
+    ],
+    [
+     "",
+     "Item 1A. Risk Factors",
+     "13"
+    ],
+    [
+     "",
+     "Item 1B. Unresolved Staff Comments",
+     "49"
+    ],
+    [
+     "",
+     "Item 2. Properties",
+     "49"
+    ],
+    [
+     "",
+     "Item 3. Legal Proceedings",
+     "49"
+    ],
+    [
+     "",
+     "Item 4. Mine Safety Disclosures",
+     "49"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "50"
+    ],
+    [
+     "",
+     "Item 6. Selected Financial Data",
+     "51"
+    ],
+    [
+     "",
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "51"
+    ],
+    [
+     "",
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "62"
+    ],
+    [
+     "",
+     "Item 8. Financial Statements and Supplementary Data",
+     "63"
+    ],
+    [
+     "",
+     "Item 9. Changes in and Disagreements With Accountants on Accounting and Financial Disclosures",
+     "64"
+    ],
+    [
+     "",
+     "Item 9A. Controls and Procedures",
+     "64"
+    ],
+    [
+     "",
+     "Item 9B. Other Information",
+     "64"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "65"
+    ],
+    [
+     "",
+     "Item 11. Executive Compensation",
+     "71"
+    ],
+    [
+     "",
+     "Item 12. Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters",
+     "76"
+    ],
+    [
+     "",
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "78"
+    ],
+    [
+     "",
+     "Item 14. Principal Accounting Fees and Services",
+     "80"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "81"
+    ],
+    [
+     "",
+     "Item 16. Form 10-K Summary",
+     "83"
+    ],
+    [
+     "",
+     "Signatures",
+     "84"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 84,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [ ]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe registrant\u2019s common stock was not publicly traded as of the last business day of the registrant\u2019s most recently completed second fiscal quarter.\nAs of March 15, 2022, the registrant had (i) 44,703,936 shares of Class A Common Stock, (ii) 149,032,886 shares of Class B Common Stock and (iii) 694,063 shares of Class C Common Stock outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nTable of Contents",
+   "prose_after": "1\nEXPLANATORY NOTE\nThe Business Combination\nBRC Inc., a Delaware public benefit corporation (the \u201cCompany\u201d), previously entered into a Business Combination Agreement, dated as of November 2, 2021, as amended by the First Amendment to Business Combination Agreement, dated as of January 4, 2022 (as so amended, the \u201cBusiness Combination Agreement\u201d), each by and among the Company, SilverBox Engaged Merger Corp I, a Delaware corporation (\u201cSilverBox\u201d), SBEA Merger Sub LLC, a Delaware limited liability company and wholly-owned subsidiary of the Company (\u201cMerger Sub 1\u201d), BRCC Blocker Merger Sub LLC, a Delaware limited liability company and wholly-owned subsidiary of SilverBox (\u201cMerger Sub 2\u201d), Authentic Brands LLC, a Delaware limited liability company (\u201cAuthentic Brands\u201d) and the parent company of Black Rifle Coffee Company LLC, a Delaware limited liability company (\u201cBRCC\u201d), and Grand Opal Investment Holdings, Inc., a Delaware corporation and holder of equity interests in Authentic Brands (\u201cBlocker\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 81,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 122,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "",
+     "Property Location",
+     "",
+     "Approximate Size",
+     "",
+     "Function",
+     "",
+     "Owned/Leased"
+    ],
+    [
+     "1",
+     "",
+     "Salt Lake City, UT",
+     "",
+     "30,295",
+     "",
+     "HQ, Corporate and Manufacturing",
+     "",
+     "Owned"
+    ],
+    [
+     "2",
+     "",
+     "San Antonio, TX",
+     "",
+     "33,980",
+     "",
+     "Corporate",
+     "",
+     "Owned"
+    ],
+    [
+     "3",
+     "",
+     "Manchester, TN",
+     "",
+     "65,000",
+     "",
+     "Corporate and Manufacturing",
+     "",
+     "Owned"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1144,
+    "end_line": 1151
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "Accordingly, we may amend the terms of the Public Warrants in a manner adverse to a holder if holders of at least 50% of the then outstanding Public Warrants approve of such amendment. Although our ability to amend the terms of the Public Warrants with the consent of at least 50% of the then outstanding Public Warrants is unlimited, examples of such amendments could be amendments to, among other things, increase the exercise price of the warrants, convert the warrants into cash, shorten the exercise period or decrease the number of shares of Class A Common Stock purchasable upon exercise of a warrant.\nOur warrants may have an adverse effect on the market price of our Class A Common Stock.\nIn connection with the Business Combination, we assumed from SilverBox warrants to purchase 17,766,641 shares of our Class A Common Stock, each exercisable to purchase one Class A ordinary share at $11.50 per share. Such Warrants, when and if exercised, will increase the number of issued and outstanding shares of Class A Common Stock and may reduce the value of the Class A Common Stock.\nItem 1B. Unresolved Staff Comments\nNone.\nItem 2. Properties\nThe material properties used by the Company in connection with its roasting, manufacturing, warehousing, distribution and corporate administrative operations as follows:",
+   "prose_after": "As of December 31, 2021, the Company had eight company-operated stores, all of which are leased. In addition to the locations listed above, we hold inventory at various locations managed by third-party warehouses. We believe our existing facilities, both owned and leased, are in good condition and suitable for the conduct of our business.\nItem 3. Legal Proceedings\nFrom time to time, we may become involved in legal proceedings relating to claims arising from the ordinary course of business. Our management believes that there are currently no claims or actions pending against us, the ultimate disposition of which could have a material adverse effect on our results of operations, financial condition or cash flows.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPart II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nMarket Information\nOur Class A Common Stock and Public Warrants to purchase Class A Common Stock began trading on the NYSE under the symbols \u201cBRCC\u201d and \u201cBRCC WS,\u201d respectively, on February 10, 2022, in connection with the closing of the Business Combination.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1129,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1162,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "($in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "",
+     "$",
+     "233,101",
+     "",
+     "$",
+     "163,909",
+     "",
+     "$",
+     "82,128"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "143,414",
+     "",
+     "",
+     "94,500",
+     "",
+     "",
+     "46,423"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "89,687",
+     "",
+     "",
+     "69,409",
+     "",
+     "",
+     "35,705"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketing and advertising",
+     "",
+     "",
+     "36,358",
+     "",
+     "",
+     "25,513",
+     "",
+     "",
+     "13,349"
+    ],
+    [
+     "Salaries, wages and benefits",
+     "",
+     "",
+     "38,746",
+     "",
+     "",
+     "24,194",
+     "",
+     "",
+     "13,129"
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "26,162",
+     "",
+     "",
+     "13,922",
+     "",
+     "",
+     "9,343"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "101,266",
+     "",
+     "",
+     "63,629",
+     "",
+     "",
+     "35,821"
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "",
+     "(11,579)",
+     "",
+     "",
+     "5,780",
+     "",
+     "",
+     "(116)"
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(2,033)",
+     "",
+     "",
+     "(1,047)",
+     "",
+     "",
+     "(733)"
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "(55)",
+     "",
+     "",
+     "(227)",
+     "",
+     "",
+     "91"
+    ],
+    [
+     "Total other expense, net",
+     "",
+     "",
+     "(2,088)",
+     "",
+     "",
+     "(1,274)",
+     "",
+     "",
+     "(642)"
+    ],
+    [
+     "Earnings (loss) before income taxes",
+     "",
+     "",
+     "(13,667)",
+     "",
+     "",
+     "4,506",
+     "",
+     "",
+     "(758)"
+    ],
+    [
+     "State income tax expense",
+     "",
+     "",
+     "178",
+     "",
+     "",
+     "185",
+     "",
+     "",
+     "14"
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "(13,845)",
+     "",
+     "$",
+     "4,321",
+     "",
+     "$",
+     "(772)"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year December 31,",
+    "($in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 1306,
+    "end_line": 1335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Operating expenses consist of marketing and advertising expenses related to brand marketing campaigns through various online platforms, including email, digital, website, social media, search engine optimization, as well as performance marketing efforts, including retargeting, paid search and product advertisements, as well as social media advertisements and sponsorships. Operating expenses also consist of salaries, wages, and benefits of payroll and payroll related expenses for labor not directly related to producing our products. Payroll expenses include both fixed and variable compensation. Variable compensation includes bonuses and stock-based compensation for our finance, legal, human resources, and general corporate personnel. Also included are other professional fees and services, and general corporate infrastructure expenses, including utilities and depreciation and amortization.\nInterest Expense\nInterest expense consists of interest on our borrowing arrangements, the amortization of debt discounts and deferred financing costs, and extinguishment of debt costs for the year ended December 31, 2021.\nResults of Operations\nThe following table represents the selected results of operations for BRCC for the periods indicated.",
+   "prose_after": "Comparison of the year ended December 31, 2021 to the year ended December 31, 2020",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1301,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1364,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "($in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "",
+     "$",
+     "233,101",
+     "",
+     "$",
+     "163,909",
+     "",
+     "$",
+     "69,192",
+     "",
+     "42",
+     "%"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "143,414",
+     "",
+     "",
+     "94,500",
+     "",
+     "",
+     "48,914",
+     "",
+     "52",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "89,687",
+     "",
+     "",
+     "69,409",
+     "",
+     "",
+     "20,278",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "Gross margin (gross profit as % of revenue, net)",
+     "",
+     "",
+     "38.5",
+     "%",
+     "",
+     "42.3",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "101,266",
+     "",
+     "",
+     "63,629",
+     "",
+     "",
+     "37,637",
+     "",
+     "59",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(2,033)",
+     "",
+     "",
+     "(1,047)",
+     "",
+     "",
+     "986",
+     "",
+     "94",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year December 31,",
+    "($in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 1338,
+    "end_line": 1353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Comparison of the year ended December 31, 2021 to the year ended December 31, 2020",
+   "prose_after": "Revenue, net\nNet revenue for the year ended December 31, 2021 increased $69.2 million, or 42%, to $233.1 million as compared to $163.9 million for the corresponding period in 2020.\nThe increase was driven by continued growth in our DTC channel, new products sold and increased points of distribution in our Wholesale channel, and the opening of new company-owned Outposts. DTC channel net revenue increased in aggregate by $27.6 million, or 20%, to $165.3 million for the year ended December 31, 2021 as compared to $137.7 million for the corresponding period in 2020 due to an increase in number of customers and sales of new products on subscription.\nFor the year ended December 31, 2021, net revenue for our Outpost channel increased $9.2 million, or 329%, to $12.0 million as compared to $2.8 million for the corresponding period in 2020. We opened a total of seven new company-operated Outposts in Texas, Tennessee, and Utah in 2021.\nFor the year ended December 31, 2021, net revenue from our Wholesale channel increased $32.4 million, or 139%, to $55.8 million as compared to $23.4 million for the corresponding period in 2020. The largest increase came from RTD drink product sales through national distributors and retail accounts, and product sales with a large retail chain.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1301,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1364,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "($in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "",
+     "$",
+     "163,909",
+     "",
+     "$",
+     "82,128",
+     "",
+     "$",
+     "81,781",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "94,500",
+     "",
+     "",
+     "46,423",
+     "",
+     "",
+     "48,077",
+     "",
+     "104",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "69,409",
+     "",
+     "",
+     "35,705",
+     "",
+     "",
+     "33,704",
+     "",
+     "94",
+     "%"
+    ],
+    [
+     "Gross margin (gross profit as % of revenue, net)",
+     "",
+     "",
+     "42.3",
+     "%",
+     "",
+     "43.5",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "63,629",
+     "",
+     "",
+     "35,821",
+     "",
+     "",
+     "27,808",
+     "",
+     "78",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(1,047)",
+     "",
+     "",
+     "(733)",
+     "",
+     "",
+     "314",
+     "",
+     "43",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year December 31,",
+    "($in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 1383,
+    "end_line": 1398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Salaries, wages and benefits increased $14.5 million, or 60%, to $38.7 million for the year ended, December 31, 2021, compared to $24.2 million for the corresponding period in 2020. We increased employee headcount to respond to our significant sales growth and invested in existing channels as we built out additional revenue streams and expanded products lines, which resulted in higher salaries, wages and benefits. In addition, in 2021, we continued to strengthen our marketing and advertising capabilities with national radio, television, and billboard advertising placements and in-house production of content. This resulted in increased marketing and advertising expenses of $10.8 million, or 43%, to $36.4 million for the year ended December 31, 2021, compared to $25.5 million for the corresponding period in 2020. In addition, General and Administrative expenses increased $12.2 million, or 88%, to $26.2 million for the year ended December 31, 2021 as compared to $13.9 million for the same period 2020. The increase is due to the addition of corporate infrastructure to support the growth of our business across multiple channels. We also experienced increased costs related to travel related expenses as the Company re-opened corporate offices and the government loosened travel restrictions.\nInterest Expense\nInterest expense for the year ended December 31, 2021 increased $1.0 million, or 94%, to $2.0 million as compared to $1.0 million for the corresponding period in 2020.\nThe increase in interest expense was primarily attributed to a loss on the extinguishment of debt incurred in August 2021 of $0.7 million. The additional increase was related to the Company entering into several debt agreements to finance its purchases of property and equipment for corporate office locations, Outposts, and manufacturing facilities.\nComparison of the year ended December 31, 2020 to the year ended December 31, 2019",
+   "prose_after": "Revenue, net\nNet revenue for the year ended December 31, 2020 increased $81.8 million, or 100%, to $163.9 million as compared to $82.1 million for the year ended December 31, 2019.\nThe increase was primarily due to the rapid growth in our DTC channel, a sales and marketing agreement with a large retailer in our Wholesale channel, and a newly opened company-operated store in our Outpost channel. DTC net revenue increased $64.1 million, or 87%, to $137.7 million in fiscal 2020 as compared to net revenues of $73.6 million in fiscal 2019, due to continued growth in DTC sales fueled by a surge for in-home coffee products as consumers changed their coffee consumption experience\nattributed to the COVID-19 pandemic. Concurrently, we expanded our subscription offerings that included new products on subscription.\nOutpost net revenue increased $2.0 million, or 245%, to $2.8 million for fiscal 2020 as compared to $0.8 million in fiscal 2019, primarily due to a newly opened company-operated retail store in San Antonio, TX.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1364,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Cash flows provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "$",
+     "(7,691)",
+     "",
+     "$",
+     "11,546",
+     "",
+     "$",
+     "4,144"
+    ],
+    [
+     "Investing activities",
+     "",
+     "$",
+     "(19,287)",
+     "",
+     "$",
+     "(9,760)",
+     "",
+     "$",
+     "(1,106)"
+    ],
+    [
+     "Financing activities",
+     "",
+     "$",
+     "9,680",
+     "",
+     "$",
+     "28,811",
+     "",
+     "$",
+     "(2,166)"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1464,
+    "end_line": 1475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "In November 2021, the Company entered into an amendment to increase the available line under the Credit Facility to $25 million. Interest only payments are due and payable in installments commencing November 30, 2021 and continue regularly until the entire amount outstanding is due on June 30, 2023. Borrowings under the Credit Facility are subject to a borrowing base on qualified collateral values. As of December 31, 2021, the balance of the Credit Facility was $8.0 million. The interest rate for the Credit Facility was the Prime rate plus 1% and the amount of borrowings available was $1.8 million.\nIn November 2021, the Company entered into a revolving loan agreement to borrow an aggregate principal amount not to exceed $15 million (the Promissory Note). The Promissory Note matures on June 30, 2022 (Initial Maturity) with an option to extend the term by one year to June 30, 2023 (Extended Maturity). The Promissory Note accrues interest of 7% per annum until Initial Maturity and then 12% per annum until the Extended Maturity date. As of December 31, 2021, the amount of borrowings available was $5 million.\nAs of December 31, 2021, the Company has $2.8 million of outstanding note payable agreements with a weighted average interest rate of 1.01%. The notes are payable in annual installments scheduled to be paid in full in 2025.\nCash Flows from Operating, Investing and Financing Activities\nThe following table summarizes our cash flows from operating, investing and financing activities for the periods indicated (in thousands):",
+   "prose_after": "Comparison of the year ended December 31, 2021 to the year ended December 31, 2020\nOperating Activities\nCash flow from operating activities is primarily generated from revenue from our DTC and Wholesale channels.\nNet cash used in operating activities was $7.7 million for the year ended December 31, 2021, compared to net cash provided by operating activities of $11.5 million for the year ended December 31, 2020. The $19.2 million decrease was primarily due to a net loss from operations of $13.8 million for the year ended December 31, 2021, compared to net income of $4.3 million for the same period in 2020. In addition, the change in prepaid expenses and other assets increased $4.2 million compared to the same period in 2020 mainly due to an increase in prepaid marketing expenses of $2.0 million and an additional increase in transaction costs. The increases were slightly offset by higher non-cash depreciation, amortization and equity-based compensation expenses in 2021.\nInvesting Activities\nNet cash used in investing activities was $19.3 million for the year ended December 31, 2021, compared to net cash used in investing activities of $9.8 million for the year ended December 31, 2020. The $9.5 million increase in net cash used was primarily due to continued spend on capital expenditure projects for our Outpost locations, roasting facilities, and corporate offices.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1498,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Reports of Independent Registered Public Accounting Firms (PCAOB ID: 42 and PCAOB ID: 243)",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Members\u2019 Deficit",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1582,
+    "end_line": 1590
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In order to maintain liquidity and fund certain business operations, our Credit Facility bears a variable interest rate based on the prime rate plus 1%. The Equipment Line bears a variable interest rate based on LIBOR plus 3.50%. We seek to manage exposure to adverse interest rate changes through our normal operating and financing activities. As of December 31, 2021, we had $8.0 million outstanding on the Credit Facility with available borrowings of $1.8 million. As of December 31, 2021, we had $5.1 million outstanding on the Equipment Line with available borrowings of $8.2 million. The carrying value of the variable interest rate debt approximates its fair value as the borrowings are based on market interest rates.\nInflation\nInflationary factors such as increases in the cost of our products, overhead costs and transportation costs may adversely affect our operating results. Although we do not believe that inflation has had a material impact on our financial position or results of operations to date, a high rate of inflation in the future may have an adverse effect on our ability to maintain current levels of gross profit and operating expenses as a percentage of net revenue, if the selling prices of our products do not increase with these increased costs.\nItem 8. Financial Statements and Supplementary Data\nAudited Consolidated Financial Statements of Authentic Brands LLC as of December 31, 2021 and 2020 and for the three years ended December 31, 2021",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Shareholders and Board of Directors of BRC Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Authentic Brands LLC (the \u201cCompany\u201d) as of December 31, 2021 and 2020, the related consolidated statements of operations, members' deficit, and cash flows for each of the years ended December 31, 2021 and 2020, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company at December 31, 2021 and 2020, and the results of its operations and its cash flows for each of the years ended December 31, 2021 and 2020, in conformity with U.S. generally accepted accounting principles.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1578,
+     "token": "REPEATING_HEADER",
+     "id": 64,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1591,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "18,334",
+     "",
+     "$",
+     "35,232"
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "",
+     "7,442",
+     "",
+     "",
+     "3,629"
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "20,872",
+     "",
+     "",
+     "16,041"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "",
+     "6,377",
+     "",
+     "",
+     "2,186"
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "53,025",
+     "",
+     "",
+     "57,088"
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "",
+     "31,114",
+     "",
+     "",
+     "14,714"
+    ],
+    [
+     "Identifiable intangibles, net",
+     "",
+     "",
+     "167",
+     "",
+     "",
+     "191"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400"
+    ],
+    [
+     "Other",
+     "",
+     "",
+     "2,776",
+     "",
+     "",
+     "149"
+    ],
+    [
+     "Total assets",
+     "",
+     "$",
+     "87,082",
+     "",
+     "$",
+     "72,542"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and members\u2019 deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "17,387",
+     "",
+     "$",
+     "11,527"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "22,233",
+     "",
+     "",
+     "16,063"
+    ],
+    [
+     "Deferred revenue and gift card liability",
+     "",
+     "",
+     "7,334",
+     "",
+     "",
+     "4,615"
+    ],
+    [
+     "Current maturities of long-term debt, net",
+     "",
+     "",
+     "11,979",
+     "",
+     "",
+     "866"
+    ],
+    [
+     "Current maturities of capital lease obligations",
+     "",
+     "",
+     "85",
+     "",
+     "",
+     "469"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "59,018",
+     "",
+     "",
+     "33,540"
+    ],
+    [
+     "Non-current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net",
+     "",
+     "",
+     "22,712",
+     "",
+     "",
+     "12,170"
+    ],
+    [
+     "Capital lease obligations, net of current maturities",
+     "",
+     "",
+     "228",
+     "",
+     "",
+     "727"
+    ],
+    [
+     "Other non-current liabilities",
+     "",
+     "",
+     "334",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total non-current liabilities",
+     "",
+     "",
+     "23,274",
+     "",
+     "",
+     "12,897"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "82,292",
+     "",
+     "",
+     "46,437"
+    ],
+    [
+     "Commitments and Contingencies (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series A preferred equity, less issuance costs (151,406 and 150,000 units authorized, issued and outstanding as of December 31, 2021 and 2020, respectively)",
+     "",
+     "",
+     "154,281",
+     "",
+     "",
+     "128,983"
+    ],
+    [
+     "Members\u2019 deficit (18,769 Class A units and 73,890 Class B units authorized, issued and outstanding as of December 31, 2021 and 2020)",
+     "",
+     "",
+     "(149,491)",
+     "",
+     "",
+     "(102,878)"
+    ],
+    [
+     "Total liabilities, Series A preferred units and members\u2019 deficit",
+     "",
+     "$",
+     "87,082",
+     "",
+     "$",
+     "72,542"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1645,
+    "end_line": 1693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ BDO USA, LLP\nWe began serving as the Company\u2019s auditor in 2018 and became the predecessor auditor in 2020.\nHouston, Texas\nApril 10, 2020, except for the segment information described in Note 2, as to which the date is November 10, 2021\nCONSOLIDATED BALANCE SHEETS\n(Amounts in Thousands, except unit amounts)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1694,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Revenue, net",
+     "",
+     "$",
+     "233,101",
+     "",
+     "$",
+     "163,909",
+     "",
+     "$",
+     "82,128"
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "",
+     "143,414",
+     "",
+     "",
+     "94,500",
+     "",
+     "",
+     "46,423"
+    ],
+    [
+     "Gross profit",
+     "",
+     "",
+     "89,687",
+     "",
+     "",
+     "69,409",
+     "",
+     "",
+     "35,705"
+    ],
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketing and advertising",
+     "",
+     "",
+     "36,358",
+     "",
+     "",
+     "25,513",
+     "",
+     "",
+     "13,349"
+    ],
+    [
+     "Salaries, wages and benefits",
+     "",
+     "",
+     "38,746",
+     "",
+     "",
+     "24,194",
+     "",
+     "",
+     "13,129"
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "26,162",
+     "",
+     "",
+     "13,922",
+     "",
+     "",
+     "9,343"
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "",
+     "101,266",
+     "",
+     "",
+     "63,629",
+     "",
+     "",
+     "35,821"
+    ],
+    [
+     "Income (loss) from operations",
+     "",
+     "",
+     "(11,579)",
+     "",
+     "",
+     "5,780",
+     "",
+     "",
+     "(116)"
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "",
+     "(2,033)",
+     "",
+     "",
+     "(1,047)",
+     "",
+     "",
+     "(733)"
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "(55)",
+     "",
+     "",
+     "(227)",
+     "",
+     "",
+     "91"
+    ],
+    [
+     "Total other expense, net",
+     "",
+     "",
+     "(2,088)",
+     "",
+     "",
+     "(1,274)",
+     "",
+     "",
+     "(642)"
+    ],
+    [
+     "Earnings (loss) before income taxes",
+     "",
+     "",
+     "(13,667)",
+     "",
+     "",
+     "4,506",
+     "",
+     "",
+     "(758)"
+    ],
+    [
+     "State income tax expense",
+     "",
+     "",
+     "178",
+     "",
+     "",
+     "185",
+     "",
+     "",
+     "14"
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "(13,845)",
+     "",
+     "$",
+     "4,321",
+     "",
+     "$",
+     "(772)"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1700,
+    "end_line": 1727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF MEMBERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1698,
+     "token": "REPEATING_HEADER",
+     "id": 69,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1728,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Members\u2019",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Balance at January 1, 2019",
+     "",
+     "$",
+     "10,881",
+     "",
+     "$",
+     "(9,700)",
+     "",
+     "$",
+     "1,181"
+    ],
+    [
+     "Equity-based compensation",
+     "",
+     "",
+     "143",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "143"
+    ],
+    [
+     "Repayment of notes receivable from members",
+     "",
+     "",
+     "199",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "199"
+    ],
+    [
+     "Repurchase member units",
+     "",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,000)"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(772)",
+     "",
+     "",
+     "(772)"
+    ],
+    [
+     "Balance at December 31, 2019",
+     "",
+     "$",
+     "9,223",
+     "",
+     "$",
+     "(10,472)",
+     "",
+     "$",
+     "(1,249)"
+    ],
+    [
+     "Equity-based compensation",
+     "",
+     "",
+     "1,929",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,929"
+    ],
+    [
+     "Non-employee equity-based compensation",
+     "",
+     "",
+     "1,384",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,384"
+    ],
+    [
+     "Issuance of members units, net of issuance costs of $559",
+     "",
+     "",
+     "16,551",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "16,551"
+    ],
+    [
+     "Series A preferred discount amortization",
+     "",
+     "",
+     "(870)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(870)"
+    ],
+    [
+     "Repayment of notes receivable from members",
+     "",
+     "",
+     "56",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "56"
+    ],
+    [
+     "Repurchase member units",
+     "",
+     "",
+     "(125,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(125,000)"
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,321",
+     "",
+     "",
+     "4,321"
+    ],
+    [
+     "Balance at December 31, 2020",
+     "",
+     "$",
+     "(96,727)",
+     "",
+     "$",
+     "(6,151)",
+     "",
+     "$",
+     "(102,878)"
+    ],
+    [
+     "Equity-based compensation",
+     "",
+     "",
+     "3,204",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,204"
+    ],
+    [
+     "Non-employee equity-based compensation",
+     "",
+     "",
+     "1,492",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,492"
+    ],
+    [
+     "Series A preferred discount amortization and equity distribution",
+     "",
+     "",
+     "(34,511)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(34,511)"
+    ],
+    [
+     "Repurchase of member units",
+     "",
+     "",
+     "(2,953)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,953)"
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(13,845)",
+     "",
+     "",
+     "(13,845)"
+    ],
+    [
+     "Balance at December 31, 2021",
+     "",
+     "$",
+     "(129,495)",
+     "",
+     "$",
+     "(19,996)",
+     "",
+     "$",
+     "(149,491)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1734,
+    "end_line": 1763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF MEMBERS\u2019 DEFICIT",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1732,
+     "token": "REPEATING_HEADER",
+     "id": 71,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1764,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019"
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "$",
+     "(13,845)",
+     "",
+     "$",
+     "4,321",
+     "",
+     "$",
+     "(772)"
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "",
+     "2,895",
+     "",
+     "",
+     "1,375",
+     "",
+     "",
+     "933"
+    ],
+    [
+     "Equity-based compensation",
+     "",
+     "",
+     "3,204",
+     "",
+     "",
+     "1,929",
+     "",
+     "",
+     "143"
+    ],
+    [
+     "Non-employee equity-based compensation",
+     "",
+     "",
+     "1,492",
+     "",
+     "",
+     "1,384",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "",
+     "",
+     "358",
+     "",
+     "",
+     "133",
+     "",
+     "",
+     "314"
+    ],
+    [
+     "Loss on extinguishment of debt",
+     "",
+     "",
+     "726",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Bad debt expense (recovery)",
+     "",
+     "",
+     "(51)",
+     "",
+     "",
+     "195",
+     "",
+     "",
+     "(37)"
+    ],
+    [
+     "Loss from equity method investment",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "52",
+     "",
+     "",
+     "80"
+    ],
+    [
+     "Loss on disposal/sale of property and equipment",
+     "",
+     "",
+     "70",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "",
+     "(3,761)",
+     "",
+     "",
+     "(2,956)",
+     "",
+     "",
+     "(243)"
+    ],
+    [
+     "Inventories",
+     "",
+     "",
+     "(4,831)",
+     "",
+     "",
+     "(10,897)",
+     "",
+     "",
+     "289"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "",
+     "(5,283)",
+     "",
+     "",
+     "(1,054)",
+     "",
+     "",
+     "(692)"
+    ],
+    [
+     "Accounts payable",
+     "",
+     "",
+     "4,646",
+     "",
+     "",
+     "7,032",
+     "",
+     "",
+     "986"
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "3,659",
+     "",
+     "",
+     "6,425",
+     "",
+     "",
+     "3,082"
+    ],
+    [
+     "Accrued sales tax",
+     "",
+     "",
+     "(23)",
+     "",
+     "",
+     "292",
+     "",
+     "",
+     "120"
+    ],
+    [
+     "Deferred revenue and gift card liability",
+     "",
+     "",
+     "2,719",
+     "",
+     "",
+     "3,315",
+     "",
+     "",
+     "593"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "",
+     "334",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(656)"
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "",
+     "(7,691)",
+     "",
+     "",
+     "11,546",
+     "",
+     "",
+     "4,144"
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "$",
+     "(19,287)",
+     "",
+     "$",
+     "(9,760)",
+     "",
+     "$",
+     "(1,043)"
+    ],
+    [
+     "Cash paid for asset purchases",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(63)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(19,287)",
+     "",
+     "",
+     "(9,760)",
+     "",
+     "",
+     "(1,106)"
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of long-term debt, net of cash paid for debt issuance costs of $338, $591 and $59 in 2021, 2020 and 2019, respectively",
+     "",
+     "$",
+     "38,402",
+     "",
+     "$",
+     "16,436",
+     "",
+     "$",
+     "2,699"
+    ],
+    [
+     "Repayment of long-term debt",
+     "",
+     "",
+     "(20,058)",
+     "",
+     "",
+     "(7,333)",
+     "",
+     "",
+     "(4,670)"
+    ],
+    [
+     "Repayment of and restricted cash for capital lease obligations",
+     "",
+     "",
+     "(1,663)",
+     "",
+     "",
+     "(451)",
+     "",
+     "",
+     "(396)"
+    ],
+    [
+     "Issuance of Series A preferred equity, net of cash paid for issuance costs of $4,897",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "145,103",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Payment of Series A preferred dividends",
+     "",
+     "",
+     "(7,001)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Repurchase of member units",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(125,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Repayment of notes receivable from members",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "56",
+     "",
+     "",
+     "201"
+    ],
+    [
+     "Net cash provided by (used in) provided by financing activities",
+     "",
+     "",
+     "9,680",
+     "",
+     "",
+     "28,811",
+     "",
+     "",
+     "(2,166)"
+    ],
+    [
+     "Net increase (decrease) in cash, cash equivalents, and restricted cash",
+     "",
+     "",
+     "(17,298)",
+     "",
+     "",
+     "30,597",
+     "",
+     "",
+     "872"
+    ],
+    [
+     "Beginning cash, cash equivalents, and restricted cash",
+     "",
+     "",
+     "35,632",
+     "",
+     "",
+     "5,035",
+     "",
+     "",
+     "4,163"
+    ],
+    [
+     "Ending cash, cash equivalents, and restricted cash",
+     "",
+     "$",
+     "18,334",
+     "",
+     "$",
+     "35,632",
+     "",
+     "$",
+     "5,035"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued other assets",
+     "",
+     "$",
+     "750",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Deferred transaction costs",
+     "",
+     "",
+     "1,214",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Series A preferred unit dividend",
+     "",
+     "$",
+     "1,406",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Equity investment of property and equipment",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "107"
+    ],
+    [
+     "Accrued Series A preferred equity distribution and related discount amortization",
+     "",
+     "",
+     "27,510",
+     "",
+     "",
+     "870",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Issuance of note and other payables for repurchase of member units",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,000"
+    ],
+    [
+     "Capital expenditures financed through credit facilities and capital leases",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,430",
+     "",
+     "",
+     "77"
+    ],
+    [
+     "Accrued capital expenditures",
+     "",
+     "",
+     "803",
+     "",
+     "",
+     "140",
+     "",
+     "",
+     "183"
+    ],
+    [
+     "Supplemental cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for state income taxes",
+     "",
+     "$",
+     "147",
+     "",
+     "$",
+     "114",
+     "",
+     "$",
+     "14"
+    ],
+    [
+     "Cash paid for interest",
+     "",
+     "$",
+     "719",
+     "",
+     "$",
+     "1,007",
+     "",
+     "$",
+     "332"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1770,
+    "end_line": 1836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Amounts in Thousands, Except Unit/Share and per Unit/Share Amounts)\nDecember 31, 2021\n1. Organization and Nature of Business\nAuthentic Brands LLC (individually, \u201cAuthentic Brands\u201d, collectively with its subsidiaries, the \u201cCompany\u201d), through its wholly owned subsidiaries, purchases, roasts, and sells high quality coffee, coffee accessories, and branded apparel through its online channels and business networks. In addition, the Company develops and promotes online content for the purpose of growing its brands.\n2. Summary of Significant Accounting Policies\nBasis of Presentation and Consolidation\nThe Company has prepared the consolidated financial statements and accompanying notes in accordance with generally accepted accounting principles in the United States of America (\u201cUS GAAP\u201d). The consolidated financial statements reflect the financial position and operating results of the Company including wholly-owned subsidiaries. Intercompany transactions and balances have been eliminated in consolidation.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1768,
+     "token": "REPEATING_HEADER",
+     "id": 73,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1837,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": null,
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "January 1, 2020",
+     "",
+     "$",
+     "1,300"
+    ],
+    [
+     "Sales of gift cards",
+     "",
+     "",
+     "512"
+    ],
+    [
+     "Redemption of gift cards",
+     "",
+     "",
+     "(319)"
+    ],
+    [
+     "Increase from deferral of revenue",
+     "",
+     "",
+     "3,383"
+    ],
+    [
+     "Decrease from revenue recognition",
+     "",
+     "",
+     "(1,107)"
+    ],
+    [
+     "Loyalty Program points earned",
+     "",
+     "",
+     "891"
+    ],
+    [
+     "Loyalty Program points redeemed",
+     "",
+     "",
+     "(45)"
+    ],
+    [
+     "December 31, 2020",
+     "",
+     "$",
+     "4,615"
+    ],
+    [
+     "Sales of gift cards",
+     "",
+     "",
+     "838"
+    ],
+    [
+     "Redemption of gift cards",
+     "",
+     "",
+     "(458)"
+    ],
+    [
+     "Increase from deferral of revenue",
+     "",
+     "",
+     "3,750"
+    ],
+    [
+     "Decrease from revenue recognition",
+     "",
+     "",
+     "(3,507)"
+    ],
+    [
+     "Loyalty Program points earned",
+     "",
+     "",
+     "3,194"
+    ],
+    [
+     "Loyalty Program points redeemed/expired and breakage",
+     "",
+     "",
+     "(1,098)"
+    ],
+    [
+     "December 31, 2021",
+     "",
+     "$",
+     "7,334"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1895,
+    "end_line": 1915
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "In August 2020, BRCC established its BRCC Loyalty Points rewards program (the \u201cLoyalty Program\u201d), which is primarily a spend-based program. BRCC\u2019s customers who establish an online account are enrolled in the Loyalty Program. Under the program, there are two levels in which customers can participate. Subscription customers (in the BRCC Coffee Club or subscribed to another subscription product type) are considered to be in the highest tier and earn 3% on purchases. Non-subscription customers earn 1% on purchases. In addition, to earning points on purchases, customers can earn points through other activities. BRCC reserves the right in its sole discretion to modify, change, add, or remove activities which can be accomplished to earn points at any time. Under the Loyalty Program, customers may redeem rewards as they reach minimum thresholds per reward. BRCC reserves the right to modify, change, add, or remove rewards and their points thresholds at any time. BRCC loyalty points will expire if there is no account activity (i.e., if there is no new purchase made or order placed) in a period of twelve months. Conversion of rewards are non-changeable after redemption, have no cash value, and are non-transferrable. A portion of rewards are expected to expire and not be redeemed and will be recognized as breakage income over time. Based on historical expiration rates, the Company estimates a certain percentage of rewards to expire and reassesses this estimate on a quarterly basis. The Company recognized $368 in breakage income for the year ended December 31, 2021, which was included in \u201cRevenue, net\u201d on the consolidated statement of operations. The Company recorded no breakage income for the years ended December 31, 2020 and 2019.\nThe Company defers revenue associated with the points earned through purchases that are expected to be redeemed, net of estimated unredeemed loyalty points. When a customer redeems an earned reward, the Company recognizes revenue for the redeemed\nproduct and reduces the related deferred revenue liability. The deferred revenue liability is included in \u201cDeferred revenue and gift card liability\u201d on the consolidated balance sheets.\nFor those points that are earned through other activities, the Company recognizes the redemption of these points as a discount to the transaction price at time of sale.\nThe following table provides information about deferred revenue, gift cards, and Loyalty Program, including significant changes in deferred revenue balances during the years ended December 31, 2021 and 2020:",
+   "prose_after": "Franchise Store Revenues\nFranchise rights may be granted through franchise agreements that set out the terms of the arrangement with the franchisee. The franchise agreements require that the franchisee remit continuing fees to the Company as a percentage of the applicable store\u2019s revenues in exchange for the license of the intellectual property associated with BRCC\u2019s brands. In addition, a portion of these fees are used for national marketing campaigns. Continuing fees represent a portion of the consideration the Company receives under the franchise agreement. Continuing fees are typically billed and paid monthly. Continuing fees are recognized as the related store sales occur.\nUnder the franchise agreement, BRCC sells product to its franchisees. The revenue associated with these product sales are recognized when control of the product passes to the franchisee, typically at the date of delivery of the merchandise to the franchisee and in an amount that reflects the expected consideration to be received in exchange for such goods.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1888,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 1927,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Direct to Consumer",
+     "",
+     "$",
+     "165,299",
+     "",
+     "$",
+     "137,724",
+     "",
+     "$",
+     "73,590"
+    ],
+    [
+     "Wholesale",
+     "",
+     "",
+     "55,761",
+     "",
+     "",
+     "23,351",
+     "",
+     "",
+     "7,717"
+    ],
+    [
+     "Outpost",
+     "",
+     "",
+     "12,041",
+     "",
+     "",
+     "2,834",
+     "",
+     "",
+     "821"
+    ],
+    [
+     "Total net sales",
+     "",
+     "$",
+     "233,101",
+     "",
+     "$",
+     "163,909",
+     "",
+     "$",
+     "82,128"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1936,
+    "end_line": 1948
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company\u2019s license agreements also typically require upfront license fees such as initial fees paid for the execution of a license agreement. The fees associated with these agreements are typically billed and paid when a new license agreement becomes effective. The Company has determined the services it provides in exchange for upfront license fees, which primarily relate to initial license set up and are not individually distinct from the ongoing services it provides to its licensees. As a result, upfront license fees are recognized as revenue over the term of each respective license agreement, generally 10 years. Revenues for these upfront license fees are recognized on a straight-line basis, which is consistent with the licensee\u2019s right to use and benefit from the intellectual property. Revenues from continuing fees and upfront license fees are presented within \u201cRevenue, net\u201d in the consolidated statements of operations.\nDisaggregation of Revenue\nThe Company disaggregates revenue by sales channel. The Direct to Consumer channel is principally comprised of revenue from our e-commerce websites and subscription services directly to the consumer. The Wholesale channel includes product revenue sold to an intermediary and not directly to the consumer. The Outpost channel includes revenue from company-operated stores, gift cards, franchise store and licensing.\nThe following table disaggregates revenue by sales channel:",
+   "prose_after": "Substantially all revenue is attributed from customers located in the United States and no single customer represents more than 10% of revenue for the years ended December 31, 2021, 2020 and 2019.\nSales Returns and Discounts\nThe Company\u2019s product sales contracts include terms that could cause variability in the transaction price for items such as discounts, credits, charge backs, or sales returns. Accordingly, the transaction price for product sales includes estimates of variable consideration to the extent it is probable that a significant reversal of revenue recognized will not occur.\nThe Company inspects returned items when they arrive at its processing facilities. The Company refunds the full cost of the merchandise returned if the returned item is defective or the Company or its partners have made an error, such as shipping the wrong product. If the return is not a result of a product defect or a fulfillment error and the customer initiates a return of an unopened item within 30 days of delivery, for most products the Company refunds the full cost of the merchandise minus the original shipping charge and actual return shipping fees. If the customer returns an item that has been opened or shows signs of wear, the Company issues a partial refund minus the original shipping charge and actual return shipping fees. Coffee products are not eligible for returns. Revenue is recorded net of estimated returns. The Company records an allowance for returns based on current period revenues and historical returns experience. The Company analyzes actual historical returns, current economic trends and changes in order volume and acceptance of its products when evaluating the adequacy of the sales returns allowance in any accounting period. The allowance for sales returns and charge backs was $199 and $205 as of December 31, 2021 and 2020, respectively, and included in accounts receivable.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1927,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "17,329",
+     "",
+     "$",
+     "34,207"
+    ],
+    [
+     "Proceeds from credit card transactions in transit-holding cash accounts",
+     "",
+     "",
+     "1,005",
+     "",
+     "",
+     "1,025"
+    ],
+    [
+     "Restricted cash",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400"
+    ],
+    [
+     "Total cash and cash equivalents and restricted cash",
+     "",
+     "$",
+     "18,334",
+     "",
+     "$",
+     "35,632"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1979,
+    "end_line": 1989
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company considers all highly liquid investments with an original maturity of three months or less to be cash equivalents. Cash and cash equivalents also include proceeds due from credit card transactions with settlement terms of less than five days. The Company maintains cash and cash equivalent balances with financial institutions that exceed federally insured limits. The Company has not experienced any losses related to these balances, and it believes credit risk to be minimal.\nThe Company\u2019s restricted cash balance reflected a certificate of deposit related to a letter of credit established in conjunction with the execution of a building lease agreement. The requirement under the lease was waived in 2021 and the cash is no longer restricted. In May 2021, the letter of credit was terminated.\nThe following table provides a reconciliation of cash, cash equivalents, and restricted cash reported in the consolidated balance sheets to the total amounts reported in the statements of cash flows.",
+   "prose_after": "Accounts Receivable\nAccounts receivable consist primarily of trade amounts due from business customers at period end. Accounts receivable are recorded at invoiced amounts and do not bear interest. From time to time, the Company grants credit to some of its business customers on normal credit terms. The Company maintains an allowance for doubtful accounts receivable based upon its business customers\u2019 financial condition and payment history, and its historical collection experience and expected collectability of accounts receivable. The allowance for doubtful accounts receivable was $112 and $176 as of December 31, 2021 and 2020, respectively.\nInventories\nInventories are stated at the lower of standard cost, which approximates First In , First Out (FIFO), or net realizable value. The Company records inventory reserves for obsolete and slow-moving inventory. Inventory reserves are based on inventory obsolescence trends, historical experience and application of the specific identification method. Finished goods includes allocations of labor and occupancy expenses.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1964,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Estimated"
+    ],
+    [
+     "",
+     "",
+     "Useful Lives"
+    ],
+    [
+     "Land",
+     "",
+     "\u2014"
+    ],
+    [
+     "Building and Leasehold improvements",
+     "",
+     "5 \u2013 39 years"
+    ],
+    [
+     "Computer equipment and software",
+     "",
+     "3 years"
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "5 \u2013 15 years"
+    ],
+    [
+     "Vehicles",
+     "",
+     "5 years"
+    ]
+   ],
+   "caption_stack": [
+    "Estimated",
+    "Useful Lives"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2004,
+    "end_line": 2014
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Inventories are stated at the lower of standard cost, which approximates First In , First Out (FIFO), or net realizable value. The Company records inventory reserves for obsolete and slow-moving inventory. Inventory reserves are based on inventory obsolescence trends, historical experience and application of the specific identification method. Finished goods includes allocations of labor and occupancy expenses.\nProperty and Equipment\nProperty and equipment are stated at cost with depreciation calculated using the straight-line method over the estimated useful lives of the related assets or the term of the related capital lease, whichever is shorter. Leasehold improvements are amortized over the shorter of the term of the related leases or estimated useful lives. When assets are retired or otherwise disposed of, the cost and related accumulated depreciation are removed from the accounts, and any resulting gain or loss is reflected in earnings for the period. The cost of maintenance and repairs are charged to earnings as incurred; significant renewals and improvements are capitalized.\nEstimated useful lives are as follows:",
+   "prose_after": "Internal Use Software\nIn accordance with ASC 350-40, Intangibles \u2014 Goodwill and Other, Internal-Use Software (ASC 350-40), the Company capitalizes qualifying internal use software costs that are incurred during the application development stage if management with the relevant authority authorizes the project, it is probable the project will be completed, and the software will be used to perform the function intended. Capitalized internal use software costs are reported in property and equipment on the consolidated balance sheets and are amortized over the expected economic life of three years using the straight-line method once the software is ready for intended use. Costs incurred for enhancements that are expected to result in additional significant functionality are capitalized and amortized over the estimated useful life of the enhancement. Costs related to preliminary project activities and post-implementation activities, including training and maintenance, are expensed as incurred. Capitalized software costs net of accumulated amortization are included as a component of property and equipment in the consolidated balance sheets.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2001,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2036,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022",
+     "",
+     "$",
+     "1,000"
+    ],
+    [
+     "2023",
+     "",
+     "$",
+     "1,000"
+    ],
+    [
+     "2024",
+     "",
+     "$",
+     "1,000"
+    ],
+    [
+     "2025",
+     "",
+     "$",
+     "500"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "3,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2109,
+    "end_line": 2118
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Product Sales and Marketing Services Agreement"
+    }
+   },
+   "prose_before": "The revenues associated to product sales to the retailer are recognized when control of the product passes to the retailer, typically at the date of delivery of the merchandise to the retailer and in an amount that reflects the expected consideration to be received in exchange for such goods. In addition to product sales, the Agreement provides a licensing agreement with the retailer and its suppliers. The licensing agreement provides the retailer and its suppliers license rights to the intellectual property of select BRCC brands. These license rights provide the retailer the ability to manufacture its own BRCC branded soft goods and hard goods. License fees are recognized as the related purchases occur by the retailer. For the year ended December 31, 2021, the Company\u2019s revenues related to the Agreement for product sales and license fees were $8,121 and $1,111, respectively. For the year ended December 31, 2020, the Company\u2019s revenues related to the Agreement for product sales and licenses fees were $7,133 and $428, respectively.\nAs part of the Agreement, the Company entered into a marketing services agreement , which is effective through April 2, 2025. As part of the marketing services agreement, the Company granted 5,430 Class B common units in the Company which vest over a 30-month period from date of grant. The equity grant date is January 28, 2020, and total expense related to the equity award is expected to be $3,725.\nIn December 2021, the Agreement was amended to reduce the marketing service fees paid to the retailer over the term of the Agreement. The Company has accrued marketing expenses relating to the Agreement of $950 and $2,835 at December 31, 2021 and 2020, respectively. For the years ended December 31, 2021 and 2020, the Company recognized marketing expenses of $1,606 and $2,138, respectively.\nThe following is the amended future minimum cash payments due to the retailer:",
+   "prose_after": "The marketing services agreement is a separate distinct service from the product supply agreement. The Company will expense the costs associated with the agreement in accordance with applicable guidance related to similar transactions.\n4. Inventories\nInventories consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2106,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2181,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Coffee:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unroasted",
+     "",
+     "$",
+     "2,578",
+     "",
+     "$",
+     "2,054"
+    ],
+    [
+     "Finished Goods",
+     "",
+     "",
+     "6,681",
+     "",
+     "",
+     "6,091"
+    ],
+    [
+     "Ready-to-Drink",
+     "",
+     "",
+     "3,727",
+     "",
+     "",
+     "2,672"
+    ],
+    [
+     "Apparel and other merchandise",
+     "",
+     "",
+     "7,886",
+     "",
+     "",
+     "5,224"
+    ],
+    [
+     "Inventories",
+     "",
+     "$",
+     "20,872",
+     "",
+     "$",
+     "16,041"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2125,
+    "end_line": 2139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "The marketing services agreement is a separate distinct service from the product supply agreement. The Company will expense the costs associated with the agreement in accordance with applicable guidance related to similar transactions.\n4. Inventories\nInventories consist of the following:",
+   "prose_after": "5. Property and Equipment, Net and Other Assets\nProperty and equipment, net consists of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2106,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2181,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Land",
+     "",
+     "$",
+     "2,196",
+     "",
+     "$",
+     "2,086"
+    ],
+    [
+     "Building and leasehold improvements",
+     "",
+     "",
+     "11,273",
+     "",
+     "",
+     "5,291"
+    ],
+    [
+     "Computer equipment and software",
+     "",
+     "",
+     "3,474",
+     "",
+     "",
+     "1,944"
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "",
+     "8,323",
+     "",
+     "",
+     "4,808"
+    ],
+    [
+     "Vehicles",
+     "",
+     "",
+     "1,057",
+     "",
+     "",
+     "721"
+    ],
+    [
+     "Furniture and Fixtures",
+     "",
+     "",
+     "961",
+     "",
+     "",
+     "714"
+    ],
+    [
+     "Construction in progress",
+     "",
+     "",
+     "9,236",
+     "",
+     "",
+     "1,953"
+    ],
+    [
+     "",
+     "",
+     "",
+     "36,520",
+     "",
+     "",
+     "17,517"
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "",
+     "",
+     "(5,406)",
+     "",
+     "",
+     "(2,803)"
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "$",
+     "31,114",
+     "",
+     "$",
+     "14,714"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2144,
+    "end_line": 2163
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment, Net and Other Assets"
+    }
+   },
+   "prose_before": "5. Property and Equipment, Net and Other Assets\nProperty and equipment, net consists of the following:",
+   "prose_after": "The portion of depreciation expense related to production and distribution facilities is included in cost of goods sold including occupancy costs on the consolidated statements of operations. Depreciation expense recorded in cost of goods sold and general and administrative expenses was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2106,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2181,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "$",
+     "773",
+     "",
+     "$",
+     "586",
+     "",
+     "$",
+     "417"
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "2,073",
+     "",
+     "",
+     "764",
+     "",
+     "",
+     "494"
+    ],
+    [
+     "Total depreciation expense",
+     "",
+     "$",
+     "2,846",
+     "",
+     "$",
+     "1,350",
+     "",
+     "$",
+     "911"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2166,
+    "end_line": 2177
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment, Net and Other Assets"
+    }
+   },
+   "prose_before": "The portion of depreciation expense related to production and distribution facilities is included in cost of goods sold including occupancy costs on the consolidated statements of operations. Depreciation expense recorded in cost of goods sold and general and administrative expenses was as follows:",
+   "prose_after": "The total depreciation expense for internal use software included in the above table was $798, $138 and $0 for the years ended December 31, 2021, 2020 and 2019, respectively.\nSubstantially all long-lived assets are located in the United States.\nOther Assets\nIn August 2021, the Company entered into an agreement with a related party, whereby the Company agreed to reimburse the related party for initial direct costs incurred totaling $1,000 for establishing retail coffee shop locations in the Phoenix, Arizona metropolitan area. After additional site evaluation in the fourth quarter 2021, the direct costs were subsequently written down to $571 as some locations will not be utilized and are included in Other assets for the respective retail coffee shops and will be amortized over the life of the completed lease agreements.\n6. Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2106,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2181,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Accrued compensation and benefits",
+     "",
+     "$",
+     "2,799",
+     "",
+     "$",
+     "5,159"
+    ],
+    [
+     "Accrued marketing",
+     "",
+     "",
+     "3,323",
+     "",
+     "",
+     "4,304"
+    ],
+    [
+     "Accrued Series A preferred equity distribution",
+     "",
+     "",
+     "2,650",
+     "",
+     "",
+     "438"
+    ],
+    [
+     "Accrued freight",
+     "",
+     "",
+     "1,912",
+     "",
+     "",
+     "1,394"
+    ],
+    [
+     "Accrued sales taxes",
+     "",
+     "",
+     "1,364",
+     "",
+     "",
+     "1,387"
+    ],
+    [
+     "Credit card liabilities",
+     "",
+     "",
+     "4,759",
+     "",
+     "",
+     "1,340"
+    ],
+    [
+     "Other accrued expenses",
+     "",
+     "",
+     "5,426",
+     "",
+     "",
+     "2,041"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "22,233",
+     "",
+     "$",
+     "16,063"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2190,
+    "end_line": 2206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accrued Liabilities"
+    }
+   },
+   "prose_before": "The total depreciation expense for internal use software included in the above table was $798, $138 and $0 for the years ended December 31, 2021, 2020 and 2019, respectively.\nSubstantially all long-lived assets are located in the United States.\nOther Assets\nIn August 2021, the Company entered into an agreement with a related party, whereby the Company agreed to reimburse the related party for initial direct costs incurred totaling $1,000 for establishing retail coffee shop locations in the Phoenix, Arizona metropolitan area. After additional site evaluation in the fourth quarter 2021, the direct costs were subsequently written down to $571 as some locations will not be utilized and are included in Other assets for the respective retail coffee shops and will be amortized over the life of the completed lease agreements.\n6. Accrued Liabilities\nAccrued liabilities consist of the following:",
+   "prose_after": "7. Long-Term Debt\nThe Company\u2019s credit facilities and related balances were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2181,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2240,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Mortgages",
+     "",
+     "$",
+     "7,380",
+     "",
+     "$",
+     "5,423"
+    ],
+    [
+     "Equipment financing loan",
+     "",
+     "",
+     "5,067",
+     "",
+     "",
+     "1,007"
+    ],
+    [
+     "Retail facility",
+     "",
+     "",
+     "1,904",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Loan and security agreement",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6,500"
+    ],
+    [
+     "Credit facility",
+     "",
+     "",
+     "8,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Promissory note",
+     "",
+     "",
+     "10,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Notes payable",
+     "",
+     "",
+     "2,779",
+     "",
+     "",
+     "565"
+    ],
+    [
+     "Total principal",
+     "",
+     "",
+     "35,130",
+     "",
+     "",
+     "13,495"
+    ],
+    [
+     "Less debt issuance costs",
+     "",
+     "",
+     "(439)",
+     "",
+     "",
+     "(459)"
+    ],
+    [
+     "Long-term debt, net",
+     "",
+     "$",
+     "34,691",
+     "",
+     "$",
+     "13,036"
+    ],
+    [
+     "Current maturities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current maturities of principal",
+     "",
+     "",
+     "12,273",
+     "",
+     "",
+     "1,030"
+    ],
+    [
+     "Less current portion of debt issuance costs",
+     "",
+     "",
+     "(294)",
+     "",
+     "",
+     "(164)"
+    ],
+    [
+     "Current maturities of long-term debt, net",
+     "",
+     "",
+     "11,979",
+     "",
+     "",
+     "866"
+    ],
+    [
+     "Long-term debt:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current principal",
+     "",
+     "",
+     "22,857",
+     "",
+     "",
+     "12,465"
+    ],
+    [
+     "Non-current portion of debt issuance costs",
+     "",
+     "",
+     "(145)",
+     "",
+     "",
+     "(295)"
+    ],
+    [
+     "Long-term debt, net",
+     "",
+     "$",
+     "22,712",
+     "",
+     "$",
+     "12,170"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2211,
+    "end_line": 2240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "7. Long-Term Debt\nThe Company\u2019s credit facilities and related balances were as follows:",
+   "prose_after": "Future contractual maturities of credit facilities as of December 31, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2181,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2240,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "$",
+     "12,273"
+    ],
+    [
+     "2023",
+     "",
+     "",
+     "10,309"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "2,065"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "6,320"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "2,577"
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "1,586"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "35,130"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2243,
+    "end_line": 2255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Long-Term Debt"
+    }
+   },
+   "prose_before": "Future contractual maturities of credit facilities as of December 31, 2021 are as follows:",
+   "prose_after": "Debt Issuance Costs\nThe Company capitalizes fees associated with the origination of its credit facilities which are presented in the consolidated balance sheets as a direct deduction from the carrying amount of the related loans. The debt issuance costs are amortized using the effective interest method. The Company incurred debt issuance costs of $338 and $592 for the years ended December 31, 2021 and 2020, respectively. Amortization of the debt issuance costs for the years ended December 31, 2021, 2020 and 2019 was $358, $133 and $314, respectively, and are included in interest expense in the consolidated statements of operations.\nMortgages\nIn July 2020, the Company entered into mortgage loan agreements to refinance the purchase of buildings for a total of $5,500 at an interest rate of 3.67% per annum. The loans are secured by the real property financed. The loans mature on July 29, 2025. The loans are payable in monthly installments of principal and interest of $32 commencing on August 29, 2020.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2240,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2279,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Operating",
+     ""
+    ],
+    [
+     "Year ending December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "$",
+     "2,966"
+    ],
+    [
+     "2023",
+     "",
+     "",
+     "3,233"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "3,381"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "3,323"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "3,358"
+    ],
+    [
+     "Total minimum lease payments",
+     "",
+     "$",
+     "16,261"
+    ]
+   ],
+   "caption_stack": [
+    "Operating",
+    "Year ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2308,
+    "end_line": 2321
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "In June 2018, the Company entered into a lease agreement to lease equipment for $1,863 at an implicit interest rate of 6.6% (the \u201cMachinery and Equipment Lease\u201d). The lease maturity was October 31, 2022 and was secured by the assets purchased. The lease was accounted for as a capital lease due to the present value of minimum lease payments being greater than 90% value of the assets. In August 2021, the Company borrowed $1,226 under the Equipment financing loan to buyout the equipment pledged under the Machinery and Equipment Lease. The Company incurred $726 of debt extinguishment cost representing the difference between the lease liability and the fair value of the machinery and equipment. The debt extinguishment cost is reported in interest expense in the consolidated statement of operations.\nThe Company has vehicle leases that are accounted for as capital leases based on the lease term representing greater than 75% of the economic life of the assets. The period of these leases is between 60 and 72 months and have interest rates between 3.9% and 12.6%.\nTotal rent expense for the years ended December 31, 2021, 2020 and 2019 was $1,224, $820 and $675, respectively.\nFuture minimum lease payments under non-cancelable operating leases are as follows:",
+   "prose_after": "Future minimum lease payments under non-cancelable capital leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2305,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2371,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Capital",
+     ""
+    ],
+    [
+     "Year ending December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "$",
+     "106"
+    ],
+    [
+     "2023",
+     "",
+     "",
+     "95"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "102"
+    ],
+    [
+     "2025",
+     "",
+     "",
+     "50"
+    ],
+    [
+     "2026",
+     "",
+     "",
+     "4"
+    ],
+    [
+     "Total minimum lease payments",
+     "",
+     "$",
+     "357"
+    ],
+    [
+     "Less: amount representing interest",
+     "",
+     "",
+     "44"
+    ],
+    [
+     "Present value of net minimum lease payments",
+     "",
+     "",
+     "313"
+    ],
+    [
+     "Less: current portion",
+     "",
+     "",
+     "85"
+    ],
+    [
+     "Capital lease obligations, net of current maturities",
+     "",
+     "$",
+     "228"
+    ]
+   ],
+   "caption_stack": [
+    "Capital",
+    "Year ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2324,
+    "end_line": 2342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Future minimum lease payments under non-cancelable capital leases are as follows:",
+   "prose_after": "The following describes property and equipment which have been classified as capital leases:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2305,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2371,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "lease_maturity",
+    "aligned_family": "lease_maturity",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Vehicles",
+     "",
+     "$",
+     "433",
+     "",
+     "$",
+     "481"
+    ],
+    [
+     "Machinery and equipment",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,732"
+    ],
+    [
+     "",
+     "",
+     "",
+     "433",
+     "",
+     "",
+     "2,213"
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "",
+     "186",
+     "",
+     "",
+     "801"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "247",
+     "",
+     "$",
+     "1,412"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2345,
+    "end_line": 2359
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The following describes property and equipment which have been classified as capital leases:",
+   "prose_after": "Depreciation expense of assets recorded under capital leases totaled $256, $321 and $302 for the years ended December 31, 2021, 2020 and 2019, respectively.\nPurchase Agreements\nIn September 2021, the Company entered into a manufacturing and purchase agreement to purchase canned beverage product from a third-party supplier. The initial term ends on December 31, 2023, and automatically renews for two consecutive year periods, unless either party provides notice of cancellation at least 120 days prior to the end of the current term. The minimum purchase amount carries a minimum surcharge of approximately $2,250 through December 31, 2022.\nIn November 2021, the Company entered into a manufacturing and purchase agreement to purchase coffee product from a third-party supplier. The term remains in effect until December 31, 2023. The minimum purchase amount is based on quantity and will range from approximately $8,800 to $10,400 on an annual basis.\nContingencies\nThe Company is the subject of various legal actions in the ordinary course of business. These actions typically seek, among other things, compensation for alleged personal injury, breach of contract, property damage, punitive damages, civil penalties or other losses, or injunctive or declaratory relief. With respect to such lawsuits, the Company accrues reserves when it is probable a liability",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2305,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2371,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "ppe",
+    "aligned_family": "ppe",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Class A",
+     "",
+     "Class B",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "Common",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Units",
+     "",
+     "Units",
+     "",
+     "Total"
+    ],
+    [
+     "Outstanding, January 1, 2019",
+     "",
+     "20,000",
+     "",
+     "94,286",
+     "",
+     "114,286"
+    ],
+    [
+     "Repurchased",
+     "",
+     "\u2014",
+     "",
+     "(5,714)",
+     "",
+     "(5,714)"
+    ],
+    [
+     "Outstanding, December 31, 2019",
+     "",
+     "20,000",
+     "",
+     "88,572",
+     "",
+     "108,572"
+    ],
+    [
+     "Issued",
+     "",
+     "\u2014",
+     "",
+     "8,855",
+     "",
+     "8,855"
+    ],
+    [
+     "Repurchased",
+     "",
+     "(1,231)",
+     "",
+     "(23,537)",
+     "",
+     "(24,768)"
+    ],
+    [
+     "Outstanding, December 31, 2020 and 2021",
+     "",
+     "18,769",
+     "",
+     "73,890",
+     "",
+     "92,659"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2384,
+    "end_line": 2399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company is also subject to U.S. (federal and state) laws, regulations, and administrative practices that require us to collect information from its customers, vendors, merchants, and other third parties for tax reporting purposes and report such information to various government agencies. The scope of such requirements continues to expand, requiring us to develop and implement new compliance systems. Failure to comply with such laws and regulations could result in significant penalties and interest which might have an adverse effect on the Company\u2019s business and operating results.\nThe Company has accrued $326 and $628 related to potential sales and other tax exposure as of December 31, 2021 and 2020, respectively, which is included in accrued liabilities on the accompanying consolidated balance sheets.\n9. Members\u2019 Equity\nMembers\u2019 equity consists of Class A common units, Class B common units, and incentive units discussed in Note 11. The details of the Class A common units and the Class B common units outstanding were as follows:",
+   "prose_after": "There were no Class A common unit or Class B common unit transactions in 2021. Each Class A common unit entitles the holder to ten votes on any matter submitted to a vote of the members. Each Class B common unit entitles the holder to one vote on any matter submitted to a vote of the members. Profits and losses are allocated pro rata to each common unit holder and incentive unit holder whose participation threshold has been achieved. Upon a liquidation event, remaining available cash after distribution to Series A Preferred Equity holders is distributed pro rata to each common unit holder and incentive unit holder whose participation threshold has been met.\nOn December 28, 2020, the Company entered into several equity repurchase agreements with several members. The purchase was funded through the proceeds of the Series A preferred units sale. The cash transferred to repurchase the units was equal to the units\u2019 fair value at the time of the transaction, and no compensation expense was recorded.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2371,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2405,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expected dividend",
+     "",
+     "\u2014"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "60% to 85%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.13% to 2.53%"
+    ],
+    [
+     "Expected life of incentive awards (in years)",
+     "",
+     "1 to 5 years"
+    ],
+    [
+     "Grant date performance and market threshold",
+     "",
+     "$35,000 to $1,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2489,
+    "end_line": 2496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Equity-Based Compensation"
+    }
+   },
+   "prose_before": "In September 2021, the Company amended and restated the Plan to expand the definition of \u201cChange in Control.\u201d The Company concluded that the vesting conditions of awards had changed and that a modification had occurred for all awards under the Plan. As the awards were expected to vest under their original terms as well as under their modified terms, no additional incremental compensation expense was recognized.\nThe grant date estimated fair value of the Incentive Units was based upon an option pricing model valuation of the awards at the grant date. The Company did not change pricing models during the year, however, began to incorporate and consider the probability-weighted expected return method (PWERM). The Incentive Units have no strike price; however, participation thresholds, as defined in\nthe Plan were established at grant date that must be exceeded for the holder of the unit to participate in any distributions of the Company. The following assumptions were utilized in determining the fair value of the units at the grant date:",
+   "prose_after": "The computation of expected volatility is based on a weighted average of comparable public companies within the Company\u2019s industry. Expected life is based on the estimated liquidity event timing. The risk-free interest rate is based on the yield of zero-coupon U.S. Treasury securities of comparable terms. The Company does not anticipate paying dividends in the foreseeable future. The Company recognizes pre-vesting forfeitures as they occur rather than estimate the forfeiture rate at the grant date.\nThe following table summarizes the changes in the number of Incentive Units for the years ended December 31, 2021, 2020 and 2019:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2486,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2538,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Incentive",
+     "",
+     "Grant Date",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Units",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "Granted and Outstanding at January 1, 2019",
+     "",
+     "108,500",
+     "",
+     "$",
+     "49.89",
+     "",
+     "$",
+     "5,413"
+    ],
+    [
+     "Granted",
+     "",
+     "50,000",
+     "",
+     "",
+     "5.13",
+     "",
+     "",
+     "257"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(16,000)",
+     "",
+     "",
+     "15.04",
+     "",
+     "",
+     "(241)"
+    ],
+    [
+     "Granted and Outstanding at December 31, 2019",
+     "",
+     "142,500",
+     "",
+     "$",
+     "38.10",
+     "",
+     "$",
+     "5,429"
+    ],
+    [
+     "Granted",
+     "",
+     "49,119",
+     "",
+     "",
+     "95.27",
+     "",
+     "",
+     "4,680"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "15.40",
+     "",
+     "",
+     "(154)"
+    ],
+    [
+     "Repurchased",
+     "",
+     "(7,116)",
+     "",
+     "",
+     "447.15",
+     "",
+     "",
+     "(3,182)"
+    ],
+    [
+     "Granted and Outstanding at December 31, 2020",
+     "",
+     "174,503",
+     "",
+     "$",
+     "38.82",
+     "",
+     "$",
+     "6,773"
+    ],
+    [
+     "Granted",
+     "",
+     "18,400",
+     "",
+     "$",
+     "215.31",
+     "",
+     "$",
+     "3,962"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(10,709)",
+     "",
+     "$",
+     "100.66",
+     "",
+     "$",
+     "(1,078)"
+    ],
+    [
+     "Repurchased",
+     "",
+     "(6,202)",
+     "",
+     "$",
+     "476.06",
+     "",
+     "$",
+     "(2,953)"
+    ],
+    [
+     "Granted and Outstanding at December 31, 2021",
+     "",
+     "175,992",
+     "",
+     "$",
+     "38.09",
+     "",
+     "$",
+     "6,704"
+    ],
+    [
+     "Vested at December 31, 2021",
+     "",
+     "129,972",
+     "",
+     "$",
+     "56.41",
+     "",
+     "$",
+     "7,332"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2501,
+    "end_line": 2526
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Equity-Based Compensation"
+    }
+   },
+   "prose_before": "The computation of expected volatility is based on a weighted average of comparable public companies within the Company\u2019s industry. Expected life is based on the estimated liquidity event timing. The risk-free interest rate is based on the yield of zero-coupon U.S. Treasury securities of comparable terms. The Company does not anticipate paying dividends in the foreseeable future. The Company recognizes pre-vesting forfeitures as they occur rather than estimate the forfeiture rate at the grant date.\nThe following table summarizes the changes in the number of Incentive Units for the years ended December 31, 2021, 2020 and 2019:",
+   "prose_after": "As of December 31, 2021 and 2020, the Company maintained 24,008 and 25,497 Incentive Units available for granting, respectively. As of December 31, 2021, the weighted average remaining contractual term of outstanding Incentive Units was 1 year. As of December 31, 2021, total unrecognized equity compensation expense related to nonvested Incentive Units to be recognized over a weighted average period of approximately 3 years was $5,772.\nIn connection with the Business Combination, BRC Inc. adopted the 2022 Omnibus Incentive Plan, which replaced the Plan, and the 2022 Employee Stock Purchase Plan.\n12. Defined Contribution Plan\nThe Company maintains a voluntary qualified defined contribution plan covering eligible employees as defined by the plan documents. Participating employees may elect to defer and contribute a portion of their eligible compensation to the plan up to limits stated in the plan documents, not to exceed the dollar amounts set by applicable laws. The Company\u2019s matching contributions to the plan were $587, $300 and $317 for the years ended December 31, 2021, 2020 and 2019, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2486,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2538,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position(s) Held"
+    ],
+    [
+     "Evan Hafer",
+     "",
+     "44",
+     "",
+     "Chief Executive Officer, Chairman"
+    ],
+    [
+     "Mat Best",
+     "",
+     "35",
+     "",
+     "Chief Branding Officer"
+    ],
+    [
+     "Tom Davin",
+     "",
+     "64",
+     "",
+     "Co-Chief Executive Officer, Director"
+    ],
+    [
+     "Greg Iverson",
+     "",
+     "46",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "Toby Johnson",
+     "",
+     "45",
+     "",
+     "Chief Operations Officer"
+    ],
+    [
+     "Andrew McCormick",
+     "",
+     "36",
+     "",
+     "General Counsel and Corporate Secretary"
+    ],
+    [
+     "Katy Dickson",
+     "",
+     "56",
+     "",
+     "Director"
+    ],
+    [
+     "George Mu\u00f1oz",
+     "",
+     "70",
+     "",
+     "Director"
+    ],
+    [
+     "Roland Smith",
+     "",
+     "67",
+     "",
+     "Director"
+    ],
+    [
+     "Steven Taslitz",
+     "",
+     "62",
+     "",
+     "Director"
+    ],
+    [
+     "Glenn Welling",
+     "",
+     "51",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2600,
+    "end_line": 2615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "This Annual Report on Form 10-K does not include a report of management\u2019s assessment regarding internal control over financial reporting or an attestation report of our registered public accounting firm due to a transition period established by rules of the SEC for newly public companies.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting during the quarter ended December 31, 2021 that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNot applicable.\nPart III\nItem 10. Directors, Executive Officers and Corporate Governance\nThe following table sets forth certain information concerning the individuals who serve as our executive officers and directors.",
+   "prose_after": "Evan Hafer founded the Company in 2014 and has been Chief Executive Officer and served as a Chairman of the Board since its inception. He is a director and the Chairman of the Board. Prior to founding the Company, Mr. Hafer had fifteen years of service in the U.S. military and worked as a contractor for the CIA. As a member of the military, he served as a Green Beret with the 19th Special Forces Group and was deployed overseas multiple times. Mr. Hafer attended the University of Idaho and has been roasting coffee since 2006. Mr. Hafer is qualified to serve on our board of directors based on his role as Founder and Chief Executive Officer of the Company.\nMat Best co-founded the Company with Mr. Hafer and has served as the Company\u2019s Chief Branding Officer since the Company\u2019s inception. Prior to co-founding the Company, he founded Article 15 Clothing, and created multiple brands, such as Leadslingers Spirits and the Drinkin\u2019 Bros Podcast. When serving in the U.S. military, Mr. Best deployed five times to Iraq and Afghanistan, serving under the 2nd Ranger Battalion, 75th Ranger Regiment. After his military service, he did contract work for the CIA for five years. Mr. Best holds a B.L.A. from Ashford University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2593,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 64
+    },
+    "after": {
+     "line": 2624,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 65
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Principal Position"
+    ],
+    [
+     "Evan Hafer",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "Tom Davin",
+     "",
+     "Co-Chief Executive Officer"
+    ],
+    [
+     "Toby Johnson",
+     "",
+     "Chief Operating Officer"
+    ],
+    [
+     "Andrew McCormick",
+     "",
+     "General Counsel and Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2754,
+    "end_line": 2762
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Company\u2019s Audit Committee has determined that certain transactions will not require the approval of the Audit Committee including certain employment arrangements of officers, director compensation, transactions with another company at which a related party\u2019s only relationship is as a director, non- executive employee or beneficial owner of less than 10% of that company\u2019s outstanding capital stock, transactions where a related party\u2019s interest arises solely from the ownership of the Company\u2019s common stock and all holders of the Company\u2019s common stock received the same benefit on a pro rata basis and transactions available to all employees generally.\nItem 11. Executive Compensation\nWe are currently considered an \u201cemerging growth company\u201d within the meaning of the Securities Act for purposes of the SEC\u2019s executive compensation disclosure rules. Accordingly, we are required to provide a 2021 Summary Compensation Table and an Outstanding Equity Awards at the end of fiscal year 2021, as well as limited narrative disclosures regarding executive compensation for our last completed fiscal year. Further, our reporting obligations extend only to the following \u201cNamed Executive Officers\u201d or \u201cNEOs,\u201d which are the individuals who served as principal executive officer and the next two most highly compensated executive officers at the end of the fiscal year 2021.",
+   "prose_after": "2021 Summary Compensation Table\nThe following table summarizes the compensation awarded to, earned by or paid to our Named Executive Officers for the fiscal year ended December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2737,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 70
+    },
+    "after": {
+     "line": 2763,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 71
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Option",
+     "",
+     "",
+     "All Other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Salary",
+     "",
+     "",
+     "Bonus(1)",
+     "",
+     "",
+     "Awards(2)",
+     "",
+     "",
+     "Compensation(3)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Name and Principal Position",
+     "",
+     "Year",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "Evan Hafer, Chief Executive Officer",
+     "",
+     "2021",
+     "",
+     "$",
+     "340,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "28,382",
+     "",
+     "$",
+     "368,382"
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "$",
+     "340,000",
+     "",
+     "$",
+     "566,352",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "28,382",
+     "",
+     "$",
+     "934,734"
+    ],
+    [
+     "Tom Davin, Co-Chief Executive Officer",
+     "",
+     "2021",
+     "",
+     "$",
+     "315,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "31,342",
+     "",
+     "$",
+     "346,342"
+    ],
+    [
+     "",
+     "",
+     "2020",
+     "",
+     "$",
+     "315,000",
+     "",
+     "$",
+     "472,500",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "31,342",
+     "",
+     "$",
+     "818,842"
+    ],
+    [
+     "Toby Johnson, Chief Operating Officer(4)",
+     "",
+     "2021",
+     "",
+     "$",
+     "140,000",
+     "",
+     "$",
+     "212,000",
+     "",
+     "$",
+     "2,153,100",
+     "",
+     "$",
+     "107,579",
+     "",
+     "$",
+     "2,612,679"
+    ],
+    [
+     "Andrew McCormick, General Counsel and Secretary(5)",
+     "",
+     "2021",
+     "",
+     "$",
+     "75,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "430,620",
+     "",
+     "$",
+     "3,197",
+     "",
+     "$",
+     "508,817"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2768,
+    "end_line": 2780
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "2021 Summary Compensation Table\nThe following table summarizes the compensation awarded to, earned by or paid to our Named Executive Officers for the fiscal year ended December 31, 2021.",
+   "prose_after": "(1) Represents discretionary bonuses earned by each individual, based on performance for the applicable year. In 2022, the Company\u2019s compensation committee determined that no annual bonus amounts would be paid with respect to 2021 performance to any of the Company\u2019s named executive officers. As noted in (4), the amount shown with respect to Ms. Johnson reflects a signing bonus received in connection with her commencement of employment.\n(2) Amounts reported in the \u201cOption Awards\u201d column reflect the aggregate grant date fair value of the Incentive Units in Authentic Brands granted to Ms. Johnson and Mr. McCormick during 2021, calculated in accordance with FASB ASC 718. The Incentive Units represent membership interests in Authentic Brands that are intended to constitute \u201cprofits interests\u201d for federal income tax purposes. Aside from the fact that the Incentive Units do not require the payment of an exercise price, they are similar economically to stock options. Accordingly, they are classified as \u201coptions\u201d under the definition provided in Item 402(a)(6)(i) of Regulation S-K as an instrument with an \u201coption-like feature.\u201d The assumptions used in calculating the grant date fair value of the Incentive Unit awards reported in this column are set forth in Note 11 of our consolidated financial statements for the year-ended December 31, 2021 included in Item 8. Financial Statements and Supplementary Data. For more information on the Incentive Units, see the \u201cOutstanding Equity Awards at 2021 Fiscal Year-End\u201d table and \u201c\u2014 Equity Incentives\u201d below.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2763,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 2801,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Relocation",
+     ""
+    ],
+    [
+     "",
+     "",
+     "401(k) Match",
+     "",
+     "",
+     "Benefits (a)",
+     "",
+     "",
+     "Benefit (b)",
+     ""
+    ],
+    [
+     "Evan Hafer",
+     "",
+     "$",
+     "11,600",
+     "",
+     "$",
+     "16,782",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tom Davin",
+     "",
+     "$",
+     "11,600",
+     "",
+     "$",
+     "19,742",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Toby Johnson",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "21,470",
+     "",
+     "$",
+     "86,019"
+    ],
+    [
+     "Andrew McCormick",
+     "",
+     "$",
+     "1,868",
+     "",
+     "$",
+     "1,329",
+     "",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Relocation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2785,
+    "end_line": 2794
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(2) Amounts reported in the \u201cOption Awards\u201d column reflect the aggregate grant date fair value of the Incentive Units in Authentic Brands granted to Ms. Johnson and Mr. McCormick during 2021, calculated in accordance with FASB ASC 718. The Incentive Units represent membership interests in Authentic Brands that are intended to constitute \u201cprofits interests\u201d for federal income tax purposes. Aside from the fact that the Incentive Units do not require the payment of an exercise price, they are similar economically to stock options. Accordingly, they are classified as \u201coptions\u201d under the definition provided in Item 402(a)(6)(i) of Regulation S-K as an instrument with an \u201coption-like feature.\u201d The assumptions used in calculating the grant date fair value of the Incentive Unit awards reported in this column are set forth in Note 11 of our consolidated financial statements for the year-ended December 31, 2021 included in Item 8. Financial Statements and Supplementary Data. For more information on the Incentive Units, see the \u201cOutstanding Equity Awards at 2021 Fiscal Year-End\u201d table and \u201c\u2014 Equity Incentives\u201d below.\n(3) For 2021, includes the following amounts:",
+   "prose_after": "(a) Includes employee benefits for medical insurance and HSA/FSA employer match.\n(b) Includes reimbursement of a relocation obligation to her former employer in the amount of $86,109.\n(4) Ms. Johnson commenced employment with BRCC in August 2021 and received a signing bonus in the amount of $212,000. Her salary for 2021 was pro-rated accordingly. As described above, the Compensation Committee determined that no annual bonus amounts will be paid with respect to 2021 performance to any of the Company\u2019s named executive officers.\n(5) Mr. McCormick commenced employment with BRCC in September 2021, and his 2021 annual base salary was pro-rated accordingly. As described above, the Compensation Committee determined that no annual bonus amounts will be paid with respect to 2021 performance to any of the Company\u2019s named executive officers.\nNarrative Disclosure to Summary Compensation Table\nEmployment Agreements, Offer Letter or other Compensatory Arrangement\nWe have entered into an employment agreement or an offer letter with each of our Named Executive Officers other than Mr. Hafer. Evan Hafer, as Black Rifle Coffee\u2019s founder and CEO, has controlled all significant decisions of the Company since its inception.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2763,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 2801,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards(1)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Securities",
+     "",
+     "Securities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Underlying",
+     "",
+     "Underlying",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Unexercised",
+     "",
+     "Unexercised",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options",
+     "",
+     "Options",
+     "",
+     "Option Exercise",
+     "",
+     "Option"
+    ],
+    [
+     "",
+     "",
+     "(#)",
+     "",
+     "(#)",
+     "",
+     "Price(7)",
+     "",
+     "Expiration"
+    ],
+    [
+     "Name",
+     "",
+     "Exercisable(1)",
+     "",
+     "Unexercisable",
+     "",
+     "($)",
+     "",
+     "Date(7)"
+    ],
+    [
+     "Evan Hafer",
+     "",
+     "40,000",
+     "",
+     "\u2014",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "Tom Davin",
+     "",
+     "1,972",
+     "",
+     "157",
+     "(2)",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "32,772",
+     "",
+     "12,500",
+     "(3)",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "Toby Johnson",
+     "",
+     "75",
+     "(4)",
+     "\u2014",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "\u2014",
+     "",
+     "10,000",
+     "(5)",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "Andrew McCormick",
+     "",
+     "\u2014",
+     "",
+     "2,000",
+     "(6)",
+     "N/A",
+     "",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards(1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2831,
+    "end_line": 2850
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We maintain a tax-qualified retirement plan that provides all full-time employees with an opportunity to save for retirement on a tax-advantaged basis. Under our 401(k) plan, participants may elect to defer a portion of their compensation on a pre-tax basis and have it contributed to the plan subject to applicable annual limits under the Code.\nWe match 100% of participant deferrals up to 3% of a participant\u2019s compensation plus 50% of participant deferrals in excess of 3% and up to 5% of employee\u2019s compensation for a maximum matching contribution equal to 4% of a participant\u2019s compensation under a safe harbor provision. Participants are immediately vested in their contributions and company safe harbor contributions plus actual earnings thereon. Vesting in the Company\u2019s discretionary contribution portion of their accounts plus actual earnings thereon is based on years of credited service. Participants vest 50% each year until they are 100% vested after two years of service.\nOutstanding Equity Awards at 2021 Fiscal Year-End\nThe following table reflects information regarding outstanding equity-based awards held by our Named Executive Officers as of December 31, 2021.",
+   "prose_after": "(1) The equity awards disclosed in this table are Incentive Units of Authentic Brands (\u201cIncentive Units\u201d), which are intended to be profits interests for federal income tax purposes. For more information on the Incentive Units, see \u201c\u2014 Equity Incentives,\u201d below. Aside from the fact that the Incentive Units do not require the payment of an exercise price or have an option expiration date, we believe they are economically similar to stock options and, as such, they are reported in this table as \u201cOption\u201d awards. Awards reflected as \u201cUnexercisable\u201d are Incentive Units that have not yet vested. Awards reflected as \u201cExercisable\u201d are Incentive Units that have vested, but remain outstanding.\n(2) 156 Incentive Units were scheduled to vest at the end of each quarter through February 13, 2022, subject to Mr. Davin\u2019s continued employment. The vesting of these Incentive Units accelerated in connection with the Business Combination and such units were converted to fully-vested Common Units of Authentic Brands. For additional discussion, see \u201c\u2014 Potential Payments upon Termination or Change in Control.\u201d",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2826,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 2863,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Fees Earned or",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Paid in Cash",
+     "",
+     "",
+     "Options(1)",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Katy Dickson",
+     "",
+     "$",
+     "52,000",
+     "",
+     "$",
+     "64,593",
+     "",
+     "$",
+     "116,593"
+    ],
+    [
+     "George Mu\u00f1oz",
+     "",
+     "$",
+     "49,000",
+     "",
+     "$",
+     "64,593",
+     "",
+     "$",
+     "113,593"
+    ],
+    [
+     "Steven Taslitz",
+     "",
+     "$",
+     "16,500",
+     "",
+     "$",
+     "64,593",
+     "",
+     "$",
+     "81,093"
+    ],
+    [
+     "Toby Johnson(2)",
+     "",
+     "$",
+     "30,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "30,000"
+    ]
+   ],
+   "caption_stack": [
+    "Fees Earned or"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2895,
+    "end_line": 2904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Ms. Johnson\u2019s employment agreement provides that in the event that Ms. Johnson is terminated without \u201ccause\u201d, subject to her execution of a general release of claims, she will be entitled to receive continued payment of her base salary for a six month period following termination of employment.\nMr. McCormick does not have a contractual entitlement to severance.\nVesting of Incentive Units upon Change in Control\nThe terms of the Incentive Units held by our Named Executive Officers provided for partial accelerated vesting upon a \u201cchange in control\u201d (as defined in the Plan), depending on the amount of time that has elapsed between the date of grant and the date of such \u201cchange in control.\u201d The Business Combination resulted in Mr. Davin receiving full vesting of all Incentive Units he held. In addition, Ms. Johnson and Mr. McCormick have received accelerated vesting in 2,000 and 400 Incentive Units, respectively.\nDirector Compensation\nThe following table summarizes the compensation awarded or paid to the members of the Board for the fiscal year ended December 31, 2021.",
+   "prose_after": "(1) Amounts reported in the \u201cOptions\u201d column reflect the aggregate grant date fair value of the Incentive Units in the Authentic Brands granted to Mr. Mu\u00f1oz and Mses. Dickson and Johnson during 2021, calculated in accordance with FASB ASC 718. The Incentive Units represent membership interests in the Company that are intended to constitute \u201cprofits interests\u201d for federal income tax purposes. Aside from the fact that the Incentive Units do not require the payment of an exercise price or have an option expiration date, we believe they are economically similar to stock options. Accordingly, they are classified as \u201coptions\u201d under the definition provided in Item 402(a)(6)(i) of Regulation S-K as an instrument with an \u201coption-like feature.\u201d The aggregate number of Incentive Units held by each director as of December 31, 2021 was: 1,705 for Mr. Mu\u00f1oz, 1,107 for Ms. Dickson, 300 for Mr. Taslitz and 75 for Ms. Johnson (excluding the grant she received in connection with her commencement of service as the Chief Operating Officer, as described above).",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2890,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 2922,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Beneficial Ownership Table",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Class A",
+     "",
+     "Class B",
+     "",
+     "% of Total",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owners",
+     "",
+     "Common Stock",
+     "",
+     "Common Stock",
+     "",
+     "Voting Power",
+     ""
+    ],
+    [
+     "Evan Hafer(1)",
+     "",
+     "16,432,868",
+     "",
+     "109,855,412",
+     "",
+     "65.19",
+     "%"
+    ],
+    [
+     "Tom Davin(2)",
+     "",
+     "\u2014",
+     "",
+     "8,107,010",
+     "",
+     "4.18",
+     "%"
+    ],
+    [
+     "Toby Johnson(3)",
+     "",
+     "\u2014",
+     "",
+     "113,366",
+     "",
+     "0.06",
+     "%"
+    ],
+    [
+     "Andrew McCormick(4)",
+     "",
+     "\u2014",
+     "",
+     "20,724",
+     "",
+     "0.01",
+     "%"
+    ],
+    [
+     "Katy Dickson(5)",
+     "",
+     "\u2014",
+     "",
+     "107,979",
+     "",
+     "0.06",
+     "%"
+    ],
+    [
+     "George Munoz(6)",
+     "",
+     "\u2014",
+     "",
+     "185,689",
+     "",
+     "0.10",
+     "%"
+    ],
+    [
+     "Roland Smith",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Steven Taslitz(7)",
+     "",
+     "\u2014",
+     "",
+     "1,576,346",
+     "",
+     "0.81",
+     "%"
+    ],
+    [
+     "Glenn Welling(8)",
+     "",
+     "16,025,000",
+     "",
+     "\u2014",
+     "",
+     "8.27",
+     "%"
+    ],
+    [
+     "EKNRH Holdings LLC(9)",
+     "",
+     "\u2014",
+     "",
+     "32,131,666",
+     "",
+     "16.59",
+     "%"
+    ],
+    [
+     "Mathew Best(10)",
+     "",
+     "\u2014",
+     "",
+     "27,237,096",
+     "",
+     "14.06",
+     "%"
+    ],
+    [
+     "John Miller(11)",
+     "",
+     "\u2014",
+     "",
+     "13,289,347",
+     "",
+     "6.86",
+     "%"
+    ],
+    [
+     "Marianne Hellauer(12)",
+     "",
+     "\u2014",
+     "",
+     "24,863,521",
+     "",
+     "12.83",
+     "%"
+    ],
+    [
+     "Funds and accounts managed by Engaged Capital(8)",
+     "",
+     "16,025,000",
+     "",
+     "\u2014",
+     "",
+     "8.27",
+     "%"
+    ],
+    [
+     "All directors and officers after the Business Combination as a group (11 persons)",
+     "",
+     "21,457,868",
+     "",
+     "118,529,335",
+     "",
+     "72.26",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Beneficial Ownership Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2925,
+    "end_line": 2947
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The beneficial ownership of shares of the Company\u2019s voting shares as presented below is based on the following: (i) an aggregate of 44,703,936 shares of Class A Common Stock issued and outstanding and (ii) an aggregate of 149,032,886 shares of Class B Common Stock issued and outstanding; provided, that, the information below excludes (a) the shares of Class A Common Stock reserved for future awards under the EIP and the ESPP, (b) 17,766,641 shares of Class A Common Stock subject to outstanding Warrants of the Company, (c) 694,063 shares of Class C Common Stock issued and outstanding, (d) 9,926,562 shares of Class B Common Stock issuable upon vesting of 9,926,562 Restricted Common Units and (e) certain other unvested restricted units.\nUnless otherwise indicated, the Company believes that all persons named in the table have sole voting and investment power with respect to all shares of common stock of the Company beneficially owned by them. Unless otherwise noted, the business address of each of the following entities or individuals is 1144 S 500 W, Salt Lake City, UT 84101.",
+   "prose_after": "(1) Reflects (i) 32,131,666 shares of Class B Common Stock held through EKNRH Holdings LLC, an entity managed by Mr. Hafer, and (ii)(a) 5,432,868 shares of Class A Common Stock held by the Sponsor, (b) 11,000,000 shares of Class A Common Stock held by the Engaged Capital Investors, (c) 27,237,096 shares of Class B Common Stock held by Mr. Best, (d) 13,289,347 shares of Class B Common Stock that may be deemed to be beneficially owned by Mr. Miller, (e) 24,863,521 shares of Class B Common Stock that may be deemed to be beneficially owned by Ms. Hellauer and (f) 12,333,782 shares of Class B Common Stock held in aggregate by certain other stockholders party to the Investor Rights Agreement, which shares listed under (ii) may be deemed to be beneficially owned by Mr. Hafer, given that, pursuant to the Investor Rights Agreement, Mr. Hafer has a proxy to vote such shares with respect to director elections. Mr. Hafer disclaims any beneficial ownership of the reported shares other than with respect to shares held by EKNRH Holdings LLC and other than to the extent of any pecuniary interest Mr. Hafer may have therein, directly or indirectly.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2922,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 76
+    },
+    "after": {
+     "line": 2955,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 77
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Audit fees(1)",
+     "",
+     "$",
+     "1,250",
+     "",
+     "$",
+     "198"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "1,250",
+     "",
+     "$",
+     "198"
+    ]
+   ],
+   "caption_stack": [
+    "December 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3007,
+    "end_line": 3017
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "In connection with the consummation of the Business Combination, the Company adopted a formal written policy providing that the Company\u2019s officers, directors, nominees for election as directors, beneficial owners of more than 5% of any class of the Company\u2019s capital stock, any member of the immediate family of any of the foregoing persons and any firm, corporation or other entity in which any of the foregoing persons is employed or is a general partner or principal or in a similar position or in which such person has a 5% or greater beneficial ownership interest, are not permitted to enter into a related party transaction with the Company without the approval of the Company\u2019s audit committee, subject to certain exceptions.\nIndemnification of Directors and Officers\nThe Bylaws provide that we will indemnify our directors and officers to the fullest extent permitted by the DGCL. In addition, the Charter provides that our directors will not be liable for monetary damages for breach of fiduciary duty to the fullest extent permitted by the DGCL.\nThere is no pending litigation or proceeding naming any of the Company\u2019s directors or officers to which indemnification is being sought, and we are not aware of any pending or threatened litigation that may result in claims for indemnification by any director or officer.\nItem 14. Principal Accounting Fees and Services\nThe following sets forth fees billed by Ernst & Young LLP for the audit of the annual financial statements and other services rendered (dollars in thousands):",
+   "prose_after": "(1) Includes fees for audits of annual financial statements, reviews of quarterly financial statements, and services that are normally provided by the independent accountants in connection with statutory and regulatory filings or engagements, including reviews of documents filed with the SEC.\nThe Audit Committee is responsible for the oversight of our accounting, reporting and financial practices. The Audit Committee is responsible for, among other things:\nselecting and hiring our independent auditors, and approving the audit and non-audit services to be performed by our independent auditors;\n\u25cf assisting the board of directors in evaluating the qualifications, performance and independence of our independent auditors;\n\u25cf assisting the board of directors in monitoring the quality and integrity of our financial statements and our accounting and financial reporting;\n\u25cf assisting the board of directors in monitoring our compliance with legal and regulatory requirements;\n\u25cf reviewing the adequacy and effectiveness of our internal control over financial reporting processes;",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2990,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 3033,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "2.1\u2020",
+     "Business Combination Agreement, dated as of November 2, 2021, by and among SilverBox, the Company, Merger Sub 1, Merger Sub 2, Authentic Brands and Blocker (incorporated by reference to Exhibit 2.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "First Amendment to Business Combination Agreement, dated as of January 4, 2022, by and among SilverBox, the Company, Merger Sub 1, Merger Sub 2, Authentic Brands and Blocker (incorporated by reference to Exhibit 2.2 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of the Company (incorporated by reference to Exhibit 3.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated By-Laws of the Company (incorporated by reference to Exhibit 3.2 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen Common Stock Certificate (incorporated by reference to Exhibit 4.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Specimen Warrant Certificate (incorporated by reference to Exhibit 4.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Warrant Agreement, dated as of February 25, 2021, between Continental Stock Transfer & Trust Company and SilverBox (incorporated by reference to Exhibit 4.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on February 10, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Warrant Assumption Agreement, dated as of February 9, 2022, by and among SilverBox, the Company and Continental Stock Transfer & Trust Company (incorporated by reference to Exhibit 4.4 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5*",
+     "Description of the Registrant\u2019s Securities Registered under Section 12 of the Exchange Act."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1\u2020",
+     "Third Amended and Restated Limited Liability Company Agreement of Authentic Brands, dated as of February 9, 2022, by and among Authentic Brands and each other person who is or at any time becomes a member of Authentic Brands (incorporated by reference to Exhibit 10.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Tax Receivable Agreement, dated as of February 9, 2022, by and among the Company, Authentic Brands and Sterling New Investment Holdings LLC, as agent (incorporated by reference to Exhibit 10.2 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3\u2020",
+     "Investor Rights Agreement, dated as of February 9, 2022, by and among the Company and the stockholders party thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Form of Indemnification Agreement (incorporated by reference to Exhibit 10.4 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Waiver under the Business Combination Agreement, dated as of February 9, 2022, by and among Authentic Brands and SilverBox (incorporated by reference to Exhibit 10.5 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3042,
+    "end_line": 3082
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "\u25cf reviewing the adequacy and effectiveness of our internal control over financial reporting processes;\n\u25cf assisting the board of directors in monitoring the performance of our internal audit function;\n\u25cf monitoring the performance of our internal audit function;\n\u25cf reviewing with management and our independent auditors our annual and quarterly financial statements; and\n\u25cf preparing the audit committee report that the rules and regulations of the SEC require to be included in our annual proxy statement.\nPart IV\nItem 15. Exhibits, Financial Statement Schedules\n(1) Financial Statements - See Part II, Item 8, Financial Statements and Supplementary Data\n(2) Financial Statement Schedules - None\n(3) Exhibits",
+   "prose_after": "10.6 Amended and Restated Forward Purchase Agreement, dated as of November 2, 2021, by and among SilverBox Engaged Capital and Authentic Brands (incorporated by reference to Exhibit 10.6 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.7 Form of PIPE Subscription Agreement (incorporated by reference to Exhibit 10.7 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.8# The Company\u2019s 2022 Omnibus Incentive Plan (incorporated by reference to Exhibit 10.8 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.9# The Company\u2019s 2022 Employee Stock Purchase Plan (incorporated by reference to Exhibit 10.9 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.10# Form of Stock Option Award Agreement under the Company\u2019s 2022 Omnibus Incentive Plan (incorporated by reference to Exhibit 10.10 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.11#* Incentive Units Agreement, dated as of September 28, 2018, by and between Authentic Brands LLC and Evan Hafer 10.12#* Employment Agreement, dated as of January 7, 2019, by and between Black Rifle Coffee Company LLC and Tom Davin. 10.13#* Restricted Units Agreement, dated as of September 28, 2018, by and between Authentic Brands LLC and Tom Davin. 10.14#* Employment Agreement, dated as of August 3, 2021, by and between Black Rifle Coffee Company LLC and Toby Johnson. 10.15#* Restricted Units Agreement, dated as of August 11, 2021, by and between Authentic Brands LLC and Toby Johnson. 10.16#* Restricted Units Agreement, dated as of September 13, 2021, by and between Authentic Brands LLC and Andrew McCormick. 21.1 List of Subsidiaries of the Company (incorporated by reference to Exhibit 21.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 31.1* Certification of Co-Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2* Certification of Co-Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.3* Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1* Certification of Co-Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2* Certification of Co-Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.3* Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 101.INS Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File as its XBRL tags are embedded within the Inline XBRL document. 101.SCH Inline XBRL Taxonomy Extension Schema Document. 101.CAL Inline XBRL Taxonomy Extension Calculation Linkbase Document. 101.LAB Inline XBRL Taxonomy Extension Label Linkbase Document. 101.PRE Inline XBRL Taxonomy Extension Presentation Linkbase Document.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3033,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 3083,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted in Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3087,
+    "end_line": 3092
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "10.6 Amended and Restated Forward Purchase Agreement, dated as of November 2, 2021, by and among SilverBox Engaged Capital and Authentic Brands (incorporated by reference to Exhibit 10.6 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.7 Form of PIPE Subscription Agreement (incorporated by reference to Exhibit 10.7 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.8# The Company\u2019s 2022 Omnibus Incentive Plan (incorporated by reference to Exhibit 10.8 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.9# The Company\u2019s 2022 Employee Stock Purchase Plan (incorporated by reference to Exhibit 10.9 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.10# Form of Stock Option Award Agreement under the Company\u2019s 2022 Omnibus Incentive Plan (incorporated by reference to Exhibit 10.10 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 10.11#* Incentive Units Agreement, dated as of September 28, 2018, by and between Authentic Brands LLC and Evan Hafer 10.12#* Employment Agreement, dated as of January 7, 2019, by and between Black Rifle Coffee Company LLC and Tom Davin. 10.13#* Restricted Units Agreement, dated as of September 28, 2018, by and between Authentic Brands LLC and Tom Davin. 10.14#* Employment Agreement, dated as of August 3, 2021, by and between Black Rifle Coffee Company LLC and Toby Johnson. 10.15#* Restricted Units Agreement, dated as of August 11, 2021, by and between Authentic Brands LLC and Toby Johnson. 10.16#* Restricted Units Agreement, dated as of September 13, 2021, by and between Authentic Brands LLC and Andrew McCormick. 21.1 List of Subsidiaries of the Company (incorporated by reference to Exhibit 21.1 to the Company\u2019s Form 8-K filed on February 10, 2022 with the SEC). 31.1* Certification of Co-Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.2* Certification of Co-Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 31.3* Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. 32.1* Certification of Co-Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.2* Certification of Co-Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 32.3* Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002. 101.INS Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File as its XBRL tags are embedded within the Inline XBRL document. 101.SCH Inline XBRL Taxonomy Extension Schema Document. 101.CAL Inline XBRL Taxonomy Extension Calculation Linkbase Document. 101.LAB Inline XBRL Taxonomy Extension Label Linkbase Document. 101.PRE Inline XBRL Taxonomy Extension Presentation Linkbase Document.",
+   "prose_after": "*Filed herewith.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3086,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 3104,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "Indicates a management contract or compensatory plan, contract or arrangement."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3095,
+    "end_line": 3098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "*Filed herewith.",
+   "prose_after": "\u2020 Schedules and similar attachments to this Exhibit have been omitted pursuant to Item 601(a)(5) of Registration S-K. The Company hereby agrees to furnish a copy of any omitted schedules to the SEC upon request.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3086,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 3104,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BRC Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Evan Hafer"
+    ],
+    [
+     "",
+     "",
+     "Evan Hafer"
+    ],
+    [
+     "March 16, 2022",
+     "",
+     "Chief Executive Officer, Chairman"
+    ]
+   ],
+   "caption_stack": [
+    "BRC Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3109,
+    "end_line": 3117
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "\u2020 Schedules and similar attachments to this Exhibit have been omitted pursuant to Item 601(a)(5) of Registration S-K. The Company hereby agrees to furnish a copy of any omitted schedules to the SEC upon request.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated as of March 16, 2022.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3104,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 3157,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 84
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Evan Hafer",
+     "Chief Executive Officer"
+    ],
+    [
+     "Evan Hafer",
+     "(Co-Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Tom Davin",
+     "Co-Cheif Executive Officer"
+    ],
+    [
+     "Tom Davin",
+     "(Co-Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Gregory J. Iverson",
+     "Chief Financial Officer"
+    ],
+    [
+     "Gregory J. Iverson",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Katy Dickson",
+     "Director"
+    ],
+    [
+     "Katy Dickson",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ George Munoz",
+     "Director"
+    ],
+    [
+     "George Munoz",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Roland Smith",
+     "Director"
+    ],
+    [
+     "Roland Smith",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Steven Taslitz",
+     "Director"
+    ],
+    [
+     "Steven Taslitz",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Glenn Welling",
+     "Director"
+    ],
+    [
+     "Glenn Welling",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3120,
+    "end_line": 3156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities indicated as of March 16, 2022.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3104,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 3157,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 84
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

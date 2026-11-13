@@ -1,0 +1,7317 @@
+{
+ "accession": "0001410578-24-000410",
+ "cik": "0001571934",
+ "form": "10-K",
+ "filing_date": "2024-04-01",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "snpx-20231231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "46-1585656"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1185 Avenue of the Americas, 3rd Floor New York, New York (Address of Principal Executive Offices)",
+     "10036 (Zip Code)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "973-242-0005",
+     ""
+    ],
+    [
+     "(Registrant\u2019s Telephone Number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE FISCAL YEAR ENDED DECEMBER 31, 2023\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM ______ TO ______\nCOMMISSION FILE NUMBER: 333-249434\nSYNAPTOGENIX, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which\n\nregistered"
+    ],
+    [
+     "Common Stock, $0.0001 par value per share",
+     "SNPX",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Auditor Name:",
+     "Morison Cogen LLP",
+     "Auditor Location:",
+     "Blue Bell, PA",
+     "Auditor Firm ID:",
+     "00536"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 91
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act).\nYes [ ] No [X]\nThe aggregate market value of the common stock held by non-affiliates of the registrant was $6,623,571 as of June 30, 2023 (the last business day of the registrant\u2019s most recently completed second fiscal quarter), based on the closing share price on the Nasdaq Capital Market reported for such date. This calculation does not reflect a determination that certain persons are affiliates of the registrant for any other purpose.\nAs of March 25, 2024, the registrant had 27,133,349 shares of common stock outstanding.",
+   "prose_after": "DOCUMENTS INCORPORATED BY REFERENCE\nNone.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item Number and Caption",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "CAUTIONARY NOTE REGARDING FORWARD-LOOKING INFORMATION",
+     "",
+     "",
+     "2"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     "3"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "",
+     "40"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "",
+     "64"
+    ],
+    [
+     "Item 1C.",
+     "Cybersecurity",
+     "",
+     "64"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "",
+     "66"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "",
+     "66"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "",
+     "66"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "66"
+    ],
+    [
+     "Item 5.",
+     "Market For Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "",
+     "66"
+    ],
+    [
+     "Item 6.",
+     "[Reserved]",
+     "",
+     "66"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "67"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "",
+     "74"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "",
+     "75"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "",
+     "75"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "",
+     "77"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "",
+     "77"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "77"
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "",
+     "77"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "",
+     "83"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters",
+     "",
+     "89"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "90"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "",
+     "91"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "92"
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statements Schedules",
+     "",
+     "92"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "",
+     "96"
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 129
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "DOCUMENTS INCORPORATED BY REFERENCE\nNone.",
+   "prose_after": "i\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING INFORMATION\nThis report contains forward-looking statements, including, without limitation, in the sections captioned \u201cBusiness,\u201d \u201cRisk Factors,\u201d and \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations,\u201d and elsewhere. Any and all statements contained in this report that are not statements of historical fact may be deemed forward-looking statements. Terms such as \u201cmay,\u201d \u201cmight,\u201d \u201cwould,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cproject,\u201d \u201cestimate,\u201d \u201cpro-forma,\u201d \u201cpredict,\u201d \u201cpotential,\u201d \u201cstrategy,\u201d \u201canticipate,\u201d \u201cattempt,\u201d \u201cdevelop,\u201d \u201cplan,\u201d \u201chelp,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201cintend,\u201d \u201cexpect,\u201d \u201cfuture,\u201d and terms of similar import (including the negative of any of the foregoing) may be intended to identify forward-looking statements. However, not all forward-looking statements may contain one or more of these identifying terms. Forward-looking statements in this report may include, without limitation, statements regarding (i) the plans and objectives of management for future operations, including plans or objectives relating to the development of commercially viable pharmaceuticals, (ii) a projection of income (including income/loss), earnings (including earnings/loss) per share, capital expenditures, dividends, capital structure or other financial items, (iii) our future financial performance, including any such statement contained in a discussion and analysis of financial condition by management or in the results of operations included pursuant to the rules and regulations of the U.S. Securities and Exchange Commission (\u201cSEC\u201d), and (iv) the assumptions underlying or relating to any statement described in points (i), (ii) or (iii) above.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 131,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "The RR granted a conditional or exceptional circumstances marketing authorization"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 643,
+    "end_line": 646
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "The Medicines and Healthcare products Regulatory Agency, or MHRA, is responsible for regulating the United Kingdom medicinal products market (Great Britain and Northern Ireland). In order to market medicines in the United Kingdom, manufacturers must hold a United Kingdom authorization. On January 1, 2021, all European Union MAs were converted to United Kingdom MAs subject to a manufacturer opt-out. The United Kingdom has introduced a separate UK-specific processes for regulatory submissions and medicinal product MA, and MHRA guidance states that the United Kingdom will have the power to take into account MAs made under the European Union decentralized and mutual recognition procedures. On January 1, 2024, the MHRA launched the International Recognition Procedure, or IRP, which provides for an expedited authorization procedure for products that have received positive marketing authorization decisions from trusted partner agencies, such as the EMA or the FDA. There are two available routes for assessment and recognition under the IRP:\n\u25cf Recognition Route A \u2013 60 days from validation of submission\no Application must be based on a Reference Regulatory, or RR, MA within the previous two years\no Any significant differences from the quality dossier approved by the RR requires assessment under Recognition Route B\no Evidence of GMP compliance for manufacturing sites should be provided with submission\no None of the Recognition Route B criteria are met\n\u25cf Recognition Route B \u2013 110 days from validation of submission with one planned clock stop (up to 60 days) at day 70 to allow applicant to respond to issues identified during review\no Application must be based on a RR marketing authorization within the previous ten years.\no Criteria requiring Recognition Route B include, among other things:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "Additional manufacturing sites included in the application were not assessed by the RR or a manufacturing site is not GMP certified"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "There are substantial changes to the manufacturing process compared to the process approved by the RR"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 652
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "Certain product types (e.g., advanced therapy medicinal products, orphan medicines, over-the-counter medicines)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 652,
+    "end_line": 655
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 620,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "A Risk Management Plan was not assessed by the RR"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 657,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "The RR required one or more post-authorization safety studies for the product"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 660,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "\u25fe",
+     "A companion diagnostic is necessary for correct use of the product"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 663,
+    "end_line": 666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Business Insights: Reference Code B100040-005, Publication Date May 2011, \u201cAdvances in AD Drug Discovery\u201d"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "United Kingdom medicines legislation is subject to future regulatory change under the Medicines and Medical Devices Act 2021. This act sets out a new framework for the adoption of medicines regulation.\nDifferent rules apply in Northern Ireland following implementation of the Northern Ireland Protocol, under which European Union central marketing applications continue to apply there. However, in March 2023, the United Kingdom government and the European Commission reached agreement on a regulatory framework to replace the Northern Ireland Protocol, referred to as the Windsor Framework. The Windsor Framework is expected to apply as of January 1, 2025 and will change the existing system under the Northern Ireland Protocol, including the regulation of pharmaceutical products in the UK. Specifically, the MHRA will be responsible for approving all medicines intended to be marketed in the UK (i.e., Great Britain and Northern Ireland), while the EMA will no longer be involved in approving medicines intended for sale in Northern Ireland.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 656,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 685,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Years ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Dollar",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "",
+     "$",
+     "1,974,924",
+     "",
+     "$",
+     "6,324,928",
+     "",
+     "$",
+     "(4,350,004)",
+     "",
+     "(68.8)",
+     "%"
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "$",
+     "6,338,930",
+     "",
+     "$",
+     "9,810,068",
+     "",
+     "$",
+     "(3,471,138)",
+     "",
+     "(35.4)",
+     "%"
+    ],
+    [
+     "Other income, net",
+     "",
+     "$",
+     "2,275,350",
+     "",
+     "$",
+     "10,561,039",
+     "",
+     "$",
+     "(8,285,689)",
+     "",
+     "(78.5)",
+     "%"
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "6,038,504",
+     "",
+     "$",
+     "5,573,957",
+     "",
+     "$",
+     "464,547",
+     "",
+     "8.3",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1355,
+    "end_line": 1367
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "The World Health Organization recognized COVID-19 as a global pandemic on March 11, 2020, and it is now widely expected to become endemic. COVID-19 has had significant and ongoing negative impacts on global societies, workplaces, economies and health systems. At various times, authorities throughout the world have implemented measures to contain or mitigate the spread of the virus, including physical distancing, travel bans and restrictions, closure of non-essential businesses, quarantines, work-from-home directives, mask requirements, shelter-in-place orders and vaccination programs, each of which have significantly impacted the ability of many companies to conduct business.\nAs of the filing of this Annual Report on Form 10-K, our operations are not impacted by any COVID-19 related facility closures, lockdown measures, travel restrictions or similar limitations. However, new waves of COVID-19 or its variants could cause the reinstatement of such limitations, and such limitations may adversely impact our supply chains, the manufacturing of our own products, our ability to obtain necessary materials and the willingness of patients to participate in clinical trials, all of which could adversely affect our business, results of operations and financial condition.\nResults of Operations\nComparison of the years ended December 31, 2023 and 2022\nThe following table summarizes our results of operations for the years ended December 31, 2023 and 2022:",
+   "prose_after": "Revenues\nWe did not generate any operating revenues for the years ended December 31, 2023 and 2022.\nOperating Expenses\nOverview\nTotal operating expenses for the year ended December 31, 2023 were $8,313,854 as compared to $16,134,996 for the year ended December 31, 2022, a decrease of approximately 48.5%. The decrease in total operating expenses is due to the decrease in both research and development and general and administrative expenses.\nResearch and Development Expenses\nFor the year ended December 31, 2023, we incurred $1,974,924 in research and development expenses as compared to $6,324,928 for the year ended December 31, 2022, a decrease of approximately 68.8%. These expenses were incurred pursuant to developing Byrostatin-1, specifically expenses relating to our ongoing Phase 2 clinical trial for AD. Of these expenses, for the year ended December 31, 2023, $1,440,207 was incurred principally relating to our current confirmatory clinical trial and related storage of drug product, $312,743 for clinical consulting services, $20,330 of amortization of prepaid licensing fees relating to the Stanford and Mount Sinai license agreements, $52,055 for development of alternative drug supply with Stanford University and $149,589 of non-cash stock options compensation expense, as compared to $5,422,142 for the year ended December 31, 2022 incurred principally relating to our confirmatory clinical trial and related storage of drug product, $327,908 for clinical consulting services, $29,999 of amortization of prepaid licensing fees relating to the Stanford and Mount Sinai license agreements, $69,608 for development of alternative drug supply with Stanford University and $475,271 of non-cash stock options compensation expense.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 1384,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "",
+     "$",
+     "5,173,209",
+     "",
+     "$",
+     "11,211,245"
+    ],
+    [
+     "Cash used in investing activities",
+     "",
+     "",
+     "2,002,707",
+     "",
+     "",
+     "7,414"
+    ],
+    [
+     "Cash (used in) provided by financing activities",
+     "",
+     "",
+     "1,641,066",
+     "",
+     "",
+     "14,483,150"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1412,
+    "end_line": 1421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "We expect to require additional capital in order to initiate, pursue and complete all potential AD clinical trials and obtain regulatory approval of one or more therapeutic candidates. However, additional future funding may not be available to us on acceptable terms, or at all. If we are unable to access additional funds when needed, we may not be able to initiate, pursue and complete all planned clinical trials or continue the development of our product candidates or we could be required to delay, scale back or eliminate some or all of our development programs and operations. Any additional equity financing, if available, may not be available on favorable terms, would most likely be significantly dilutive to our current stockholders and debt financing, if available, and may involve restrictive covenants. If we are able to access funds through collaborative or licensing arrangements, we may be required to relinquish rights to some of our technologies or product candidates that we would otherwise seek to develop or commercialize on our own, on terms that are not favorable to us. Our ability to access capital when needed is not assured and, if not achieved on a timely basis, would likely materially harm our business and financial condition.\nSources and Uses of Liquidity\nWe expect to continue to incur expenses, resulting in losses and negative cash flows from operations, over at least the next several years as we may continue to develop Bryostatin-1 and other therapeutic products. We anticipate that this development may include clinical trials in addition to our current ongoing clinical trial and additional research and development expenditures.",
+   "prose_after": "Net Cash Used in Operating Activities\nCash used in operating activities was $5,173,209 for the year ended December 31, 2022, compared to $11,211,245 for the year ended December 31, 2022. The $6,038,036 decrease primarily resulted from the decrease in warrant liability and derivative liability of $9.6 million, the decrease in prepaid expenses of approximately $490,000, and the decreases in accounts payable and accrued expenses of approximately $480,000, partially offset by an increase in net loss of approximately $465,000, a decrease in non-cash stock-based compensation expenses of approximately $3.1 million, and a decrease in non-cash warrant issuance cost of approximately $0.9 million.\nNet Cash Used in Investing Activities\nNet cash used in investing activities was $2,002,707 for the year ended December 31, 2023 compared to $7,414 for the year ended December 31, 2022. The cash used in investing activities for 2023 is primarily attributable to the Cannasoul Investment discussed above. For 2022, the entire use was for capital expenditures.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1405,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alan Tuchman, M.D.",
+     "",
+     "77",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Weinstein",
+     "",
+     "64",
+     "",
+     "Chief Financial Officer, Secretary and Executive Vice President"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daniel L. Alkon, M.D.",
+     "",
+     "81",
+     "",
+     "President, Chief Scientific Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1507,
+    "end_line": 1517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "Except as discussed above under \u201cManagement\u2019s Remediation Initiatives,\u201d there were no changes in our internal control over financial reporting identified in connection with the evaluation referred to above that occurred during our last completed fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nMatters affecting our internal controls may cause us to be unable to report our financial information on a timely basis or may cause us to restate previously issued financial information, and thereby subject us to adverse regulatory consequences, including sanctions or investigations by the SEC, or violations of applicable stock exchange listing rules.\nItem 9B.Other Information.\nDuring the three months ended December 31, 2023, no director or officer of the Company adopted, modified or terminated a \u201cRule 10b5-1 trading arrangement\u201d or \u201cnon-Rule 10b5-1 trading arrangement,\u201d as each term is defined in Item 408(a) of Regulation S-K.\nItem 9C.Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNot applicable.\nPART III\nItem 10.Directors, Executive Officers and Corporate Governance.\nExecutive Officers and Directors\nThe following table lists the names, ages and positions of our executive officers as of March 15, 2023:",
+   "prose_after": "Alan J. Tuchman, M.D. \u2014 Chief Executive Officer. Dr. Tuchman joined Synaptogenix as our Chief Executive Officer in December 2020. He is also currently Clinical Professor of Neurology at New York Medical College and in the private practice of Neurology in Manhattan. He consults for a number of biotechnology and investment firms. Dr. Tuchman founded and was Managing Director of MedPro Investors LLC from 2011 to 2020. He has served as a partner of Xmark Opportunity Partners and as CEO and then Executive Chairman of Neurophysics, Inc. from 2002 to 2010. Dr. Tuchman served as Senior Vice President and Chief Medical Officer of Oncolytics Biotech Inc. from 2012 to 2017. He was previously the President of the Epilepsy Society of Southern New York as well as Vice Dean for Clinical Affairs at New York Medical College. Dr. Tuchman received his MD degree from the University of Cincinnati, College of Medicine, and completed his Neurology Residency at the Mt. Sinai School of Medicine. Dr. Tuchman received his MBA from Columbia University in 1996. He has authored over 30 scientific papers and book chapters.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1488,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 76
+    },
+    "after": {
+     "line": 1520,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 77
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Director",
+     "",
+     "Age",
+     "",
+     "Position",
+     "",
+     "Date Named to Board of Directors"
+    ],
+    [
+     "Joshua N. Silverman",
+     "",
+     "53",
+     "",
+     "Chairman of the Board of Directors",
+     "",
+     "August 4, 2016"
+    ],
+    [
+     "William S. Singer",
+     "",
+     "83",
+     "",
+     "Director; Vice-Chairman of the Board",
+     "",
+     "August 23, 2013"
+    ],
+    [
+     "Daniel L. Alkon, M.D.",
+     "",
+     "81",
+     "",
+     "Director",
+     "",
+     "December 7, 2020"
+    ],
+    [
+     "Bruce T. Bernstein",
+     "",
+     "60",
+     "",
+     "Director",
+     "",
+     "November 14, 2016"
+    ],
+    [
+     "Jonathan L. Schechter",
+     "",
+     "50",
+     "",
+     "Director",
+     "",
+     "December 13, 2018"
+    ],
+    [
+     "Alan J. Tuchman, M.D.",
+     "",
+     "78",
+     "",
+     "Director",
+     "",
+     "December 7, 2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1529,
+    "end_line": 1539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "Daniel L. Alkon, M.D. \u2014 President and Chief Scientific Officer. Dr. Alkon was appointed as Neurotrope\u2019s President and Chief Scientific Officer (CSO) on September 16, 2016 and he has continued to serve in that role for Synaptogenix following the Spin-Off. He received his undergraduate degree in chemistry in 1965 at the University of Pennsylvania. After earning his M.D. at Cornell University and finishing an internship in medicine at the Mount Sinai Hospital in New York, he joined the staff of the National Institutes of Health where during his 30-year career he became a Medical Director in the U.S. Public Health Service at the National Institute for Neurological Disorders and Stroke and Chief of the Laboratory of Adaptive Systems. Dr. Alkon then served as the founding Scientific Director of the original Blanchette Rockefeller Neurosciences Institute (BRNI - now known as CRE) from 1999 until September 23, 2016. From October 2000 to September 28, 2016, Dr. Alkon was a Professor at BRNI and a Professor of Neurology at West Virginia University. From June 2006 to September 23, 2016, Dr. Alkon was also the Toyota Chair for Neurodegenerative Disease Research at BRNI (now CRE). From October 2000 to July 2005, Dr. Alkon was appointed as Research Professor in Biophysics at the Johns Hopkins University. In all of these positions, Dr. Alkon and his teams conducted multidisciplinary research on the molecular, biophysical, and synaptic-structural mechanisms of learning, memory storage, and memory dysfunction in psychiatric and neurological disorders, particularly Alzheimer\u2019s disease. Numerous patents were issued based on this research on memory that then was extended to drug development for the treatment of neurodegenerative disorders such as AD, Stroke, PTSD, Multiple Sclerosis, and Amyotrophic Lateral Sclerosis (ALS). As an internationally recognized authority on neural and artificial networks, he has co-authored hundreds of peer-reviewed articles as well as several books, including \u201cMemory Traces in the Brain\u201d (Cambridge University Press), and \u201cMemory\u2019s Voice\u201d (Harper Collins).\nBoard Structure and Directors\nThe below table sets forth information regarding our directors as of March 15, 2023:",
+   "prose_after": "Our Board is currently comprised of six members: Mr. Silverman, Mr. Singer, Mr. Bernstein, Mr. Schechter, Dr. Alkon and Dr. Tuchman.\nThe principal occupation and business experience during the past five years for our directors is as follows (other than our directors who are executive officers, whose principal occupation and business experience during the past five years is discussed above):\nJoshua N. Silverman \u2014 Director, Chairman of the Board. Mr. Silverman joined Neurotrope as a Director and Chairman of the Board in August 2016. Mr. Silverman currently serves as the managing member of Parkfield Funding LLC. Mr. Silverman has also served as Interim Chairman, Interim Chief Executive Officer and Interim President of PharmaCyte Biotech, Inc. (Nasdaq: PMCB) since October 2022 and as a director since August 2022. Mr. Silverman was the co-founder, and a principal and managing partner of Iroquois Capital Management, LLC (\u201cIroquois\u201d), an investment advisory firm. Since its inception in 2003 until July 2016, Mr. Silverman served as co-chief investment officer of Iroquois. While at Iroquois, he designed and executed complex transactions, structuring and negotiating investments in both public and private companies and has often been called upon by the companies solve inefficiencies as they relate to corporate structure, cash flow, and management. From 2000 to 2003, Mr. Silverman served as co-chief investment officer of Vertical Ventures, LLC, a merchant bank. Prior to forming Iroquois, Mr. Silverman was a director of Joele Frank, a boutique consulting firm specializing in mergers and acquisitions. Previously, Mr. Silverman served as assistant press secretary to the president of the United States. In addition to Synaptogenix, Mr. Silverman has served as a director and acting Chief Executive Officer of AYRO, Inc. (Nasdaq: AYRO) since 2020; as Interim Chief Executive Officer, Interim President and Interim Chairman of PharmaCyte Biotech, Inc. (Nasdaq: PMCB); as director of MYMD Pharmaceuticals, Inc. (Nasdaq: MYMD) since September 2018; and as Vice Chairman of Petros Pharmaceutical, Inc. (Nasdaq: PTPI). He previously served as a director of Marker Therapeutics, Inc. from 2016 until 2018 and Protagenic Therapeutics, Inc. from 2016 to 2022. Mr. Silverman received his B.A. from Lehigh University in 1992. Mr. Silverman was chosen as Chairman of Synaptogenix because of his lengthy public company, finance and business experience.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1520,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 77
+    },
+    "after": {
+     "line": 1542,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 78
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Non-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Qualified",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Fiscal Year",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Non-Equity",
+     "",
+     "Deferred",
+     "",
+     "All Other",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Stock",
+     "",
+     "Options",
+     "",
+     "Incentive Plan",
+     "",
+     "Compensation",
+     "",
+     "Compensation",
+     "",
+     ""
+    ],
+    [
+     "Name & Principal Position",
+     "",
+     "December 31",
+     "",
+     "Salary ($)",
+     "",
+     "Bonus ($)(1)",
+     "",
+     "Awards ($)",
+     "",
+     "Awards ($)(3)",
+     "",
+     "Compensation",
+     "",
+     "Earnings",
+     "",
+     "(3)(4)",
+     "",
+     "Total ($)"
+    ],
+    [
+     "Dr. Alan J. Tuchman Chief Executive Officer",
+     "",
+     "2023",
+     "",
+     "222,000",
+     "",
+     "75,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "6,347",
+     "",
+     "303,347"
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "222,000",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "374,847",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,795",
+     "",
+     "749,642"
+    ],
+    [
+     "Robert Weinstein CFO, Secretary and Executive Vice President",
+     "",
+     "2023",
+     "",
+     "339,548",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "79,370",
+     "",
+     "568,918"
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "318,830",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "362,461",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "52,053",
+     "",
+     "883,344"
+    ],
+    [
+     "Daniel L. Alkon MD President and CSO",
+     "",
+     "2022",
+     "",
+     "300,000",
+     "",
+     "75,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "375,000"
+    ],
+    [
+     "",
+     "",
+     "2022",
+     "",
+     "300,000",
+     "",
+     "150,000",
+     "",
+     "\u2014",
+     "",
+     "362,461",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "812,461"
+    ]
+   ],
+   "caption_stack": [
+    "Non-",
+    "Qualified"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1628,
+    "end_line": 1643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Item 11. Executive Compensation.\nThis section describes both the current compensation practices of Synaptogenix as well as the historical compensation practices of Neurotrope.\nThe following table sets forth information concerning the total compensation paid or accrued by Synaptogenix during the last two fiscal years ended December 31, 2023 to (i) all individuals that served as our principal executive officer or acted in a similar capacity for us at any time during the fiscal year ended December 31, 2023; (ii) the two most highly compensated executive officers other than the principal executive officer who were serving as executive officers at December 31, 2023; and (iii) up to two additional individuals for whom disclosure would have been required pursuant to clause (ii) above but for the fact that the individual was not serving as an executive officer at December 31, 2023 (collectively, the \u201cnamed executive officers\u201d).\nThe Compensation Committee of the Board is responsible for determining executive compensation (1).",
+   "prose_after": "(1) $150,000 paid in 2024 for 2023 for Mr. Weinstein and $75,000 paid in 2024 for 2023 for each of Drs. Tuchman and Alkon. $150,000 paid in March 2023 for 2022 for each of Mr. Weinstein and Drs. Tuchman and Alkon.\n(2) Mr. Weinstein and Dr. Tuchman\u2019s 2022 and 2023 amounts reflect healthcare payments and insurance premiums paid on their behalf.\n(3) These amounts represent the aggregate grant date fair value of options granted to each named executive officer in 2023 computed in accordance with FASB ASC Topic 718.\nExecutive Employment Arrangements\nWe have no plans in place and have never maintained any plans that provide for the payment of retirement benefits or benefits that will be paid primarily following retirement including, but not limited to, tax qualified deferred benefit plans, supplemental executive retirement plans, tax-qualified deferred contribution plans and nonqualified deferred contribution plans.\nExcept as indicated below, we have no contracts, agreements, plans or arrangements, whether written or unwritten, that provide for payments to the named executive officers listed above.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1619,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 1654,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Incentive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Plan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Awards:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number Of",
+     "",
+     "Number of",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Securities",
+     "",
+     "Securities",
+     "",
+     "Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Underlying",
+     "",
+     "Underlying",
+     "",
+     "Underlying",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Unexercised",
+     "",
+     "Unexercised",
+     "",
+     "Unexercised",
+     "",
+     "Option",
+     "",
+     "",
+     "Option",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Options (#)",
+     "",
+     "Options (#)",
+     "",
+     "Unearned",
+     "",
+     "Exercise",
+     "",
+     "",
+     "Expiration",
+     ""
+    ],
+    [
+     "Name",
+     "",
+     "Exercisable",
+     "",
+     "Unexercisable",
+     "",
+     "Options (#)",
+     "",
+     "Price ($)",
+     "",
+     "",
+     "Date",
+     ""
+    ],
+    [
+     "T (a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     "",
+     "(d)",
+     "",
+     "(e)",
+     "",
+     "",
+     "(f)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dr. Alan J.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tuchman",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Chief",
+     "",
+     "12,575",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "9.84",
+     "",
+     "01/13/2031",
+     ""
+    ],
+    [
+     "Executive",
+     "",
+     "6,150",
+     "",
+     "\u2014",
+     "(1)",
+     "\u2014",
+     "",
+     "$",
+     "7.29",
+     "",
+     "02/16/2032",
+     ""
+    ],
+    [
+     "Officer",
+     "",
+     "68,850",
+     "",
+     "\u2014",
+     "(2)",
+     "\u2014",
+     "",
+     "$",
+     "6.07",
+     "",
+     "11/15/2032",
+     ""
+    ],
+    [
+     "Robert",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weinstein",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CFO,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Secretary",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Executive",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vice",
+     "",
+     "11,125",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "9.84",
+     "",
+     "1/13/2031",
+     ""
+    ],
+    [
+     "President",
+     "",
+     "75,000",
+     "",
+     "\u2014",
+     "(2)",
+     "\u2014",
+     "",
+     "$",
+     "6.07",
+     "",
+     "11/15/2032",
+     ""
+    ],
+    [
+     "Daniel L.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Alkon MD",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "President",
+     "",
+     "31,250",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "9.84",
+     "",
+     "01/13/2031",
+     ""
+    ],
+    [
+     "and CSO",
+     "",
+     "75,000",
+     "",
+     "\u2014",
+     "(2)",
+     "\u2014",
+     "",
+     "$",
+     "6.07",
+     "",
+     "11/15/2032",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1718,
+    "end_line": 1753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "In the event that our outstanding Common Stock is changed into or exchanged for a different number or kind of shares or other securities of the Company by reason of merger, consolidation, other reorganization, recapitalization, combination of shares, stock split-up or stock dividend, equitable adjustment will be made to the aggregate number and kind of shares subject to stock options which may be granted under the 2020 Plan.\nThe Committee may at any time, and from time to time, suspend or terminate the 2020 Plan in whole or in part or amend it from time to time in such respects as it may deem appropriate and in our best interest.\nOutstanding Equity Awards at 2023 Fiscal Year-End\nThe following table shows grants of stock options and grants of unvested stock awards outstanding on the last day of the fiscal year ended December 31, 2023, including both awards subject to performance conditions and non-performance-based awards, to each of the executive officers named in the Summary Compensation Table.",
+   "prose_after": "(1) The options vested in full on January 13, 2023.\n(2) The options vested in full on May 15, 2023.\nDirector Compensation\nSynaptogenix reimburses its directors for all reasonable out-of-pocket expenses incurred in connection with their attendance at meetings of the Board. On March 29, 2023, Synaptogenix adopted a new nonemployee director compensation policy (the \u201cDirector Compensation Policy\u201d). The Director Compensation Policy provides for the annual automatic grant of nonqualified stock options to purchase up to 20,000 shares of Synaptogenix\u2019s Common Stock to each of Synaptogenix\u2019s non-employee directors. Such grants shall occur annually on the fifth business day after the filing of Synaptogenix\u2019s Annual Report on Form 10-K and shall vest on the one-year anniversary from the date of grant subject to the director\u2019s continued service on the Board on the vesting date. The Director Compensation Policy also provides for the automatic grant of nonqualified stock options to purchase up to 20,000 shares of Synaptogenix\u2019s Common Stock to each newly appointed director following the date of his or her appointment. Such options shall vest as follows: fifty percent (50%) on the date of the grant, twenty-five percent (25%) on the one year anniversary from the date of the grant, and twenty-five percent (25%) on the second year anniversary from the date of the grant, subject to the director\u2019s continued service on the Board on the applicable vesting dates. Each nonemployee director will also receive an annual retainer, in the amount of $120,000 for Synaptogenix\u2019s Chairman of the Board, $100,000 for the Vice Chairman of the Board and $60,000 for each other nonemployee board member.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1713,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 86
+    },
+    "after": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 87
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Non-equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Fees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "incentive",
+     "",
+     "Non-qualified",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "earned",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "plan",
+     "",
+     "deferred",
+     "",
+     "All other",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "or paid",
+     "",
+     "Stock",
+     "",
+     "Option",
+     "",
+     "compensation",
+     "",
+     "compensation",
+     "",
+     "Compensation",
+     "",
+     ""
+    ],
+    [
+     "Name (a)",
+     "",
+     "in cash ($)(b)",
+     "",
+     "awards ($)(c)(6)",
+     "",
+     "awards ($)(d)(1)",
+     "",
+     "($)(e)",
+     "",
+     "earnings ($)(f)",
+     "",
+     "($)(g)",
+     "",
+     "Total ($)(h)"
+    ],
+    [
+     "Joshua Silverman (2)",
+     "",
+     "240,000",
+     "",
+     "\u2014",
+     "",
+     "14,941",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "254,941"
+    ],
+    [
+     "William S. Singer",
+     "",
+     "100,000",
+     "",
+     "\u2014",
+     "",
+     "14,941",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "114,941"
+    ],
+    [
+     "Alan J. Tuchman (3)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Daniel Alkon (4)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Bruce T. Bernstein",
+     "",
+     "60,000",
+     "",
+     "\u2014",
+     "",
+     "14,941",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "74,941"
+    ],
+    [
+     "Jonathan L. Schechter",
+     "",
+     "60,000",
+     "",
+     "\u2014",
+     "",
+     "14,941",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "74,941"
+    ]
+   ],
+   "caption_stack": [
+    "Non-equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1764,
+    "end_line": 1779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Synaptogenix reimburses its directors for all reasonable out-of-pocket expenses incurred in connection with their attendance at meetings of the Board. On March 29, 2023, Synaptogenix adopted a new nonemployee director compensation policy (the \u201cDirector Compensation Policy\u201d). The Director Compensation Policy provides for the annual automatic grant of nonqualified stock options to purchase up to 20,000 shares of Synaptogenix\u2019s Common Stock to each of Synaptogenix\u2019s non-employee directors. Such grants shall occur annually on the fifth business day after the filing of Synaptogenix\u2019s Annual Report on Form 10-K and shall vest on the one-year anniversary from the date of grant subject to the director\u2019s continued service on the Board on the vesting date. The Director Compensation Policy also provides for the automatic grant of nonqualified stock options to purchase up to 20,000 shares of Synaptogenix\u2019s Common Stock to each newly appointed director following the date of his or her appointment. Such options shall vest as follows: fifty percent (50%) on the date of the grant, twenty-five percent (25%) on the one year anniversary from the date of the grant, and twenty-five percent (25%) on the second year anniversary from the date of the grant, subject to the director\u2019s continued service on the Board on the applicable vesting dates. Each nonemployee director will also receive an annual retainer, in the amount of $120,000 for Synaptogenix\u2019s Chairman of the Board, $100,000 for the Vice Chairman of the Board and $60,000 for each other nonemployee board member.\nThe following table provides information concerning the compensation of Synaptogenix\u2019s directors for the year ended December 31, 2023.",
+   "prose_after": "(1) These amounts represent the aggregate grant date fair value of options granted to each director in 2023 computed in accordance with FASB ASC Topic 718.\n(2) Fees represent payments for consulting services provided by Mr. Silverman and Chairman of the Board fees.\n(3) Dr. Tuchman\u2019s compensation for 2023 is included in Officer\u2019s Compensation table.\n(4) Dr. Alkon\u2019s compensation for 2023 is included in Officer\u2019s Compensation table.\nItem 12.Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters.\nSecurity Ownership of Certain Beneficial Owners\nThe following table sets forth information with respect to the beneficial ownership of our Common Stock as of March 25, 2024, by (i) each stockholder known by us to be the beneficial owner of more than 5% of our Common Stock (our only class of voting securities), (ii) each of our directors and executive officers, and (iii) all of our directors and executive officers as a group. To the best of our knowledge, except as otherwise indicated, each of the persons named in the table has sole voting and investment power with respect to the shares of our Common Stock beneficially owned by such person, except to the extent such power may be shared with a spouse. To our knowledge, none of the shares listed below are held under a voting trust or similar agreement, except as noted.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 87
+    },
+    "after": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 88
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Common",
+     "",
+     "Percent of",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Stock",
+     "",
+     "Common Stock",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Beneficially",
+     "",
+     "Beneficially",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "",
+     "Owned",
+     "",
+     "Owned(2)",
+     ""
+    ],
+    [
+     "More than 5% stockholders:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "N/A",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Directors and Named Executive Officers:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Daniel L. Alkon(3)",
+     "",
+     "141,797",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Bruce T. Bernstein(4)",
+     "",
+     "132,578",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Jonathan Schechter(5)",
+     "",
+     "127,075",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Joshua N. Silverman(6)",
+     "",
+     "165,988",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "William S. Singer(7)",
+     "",
+     "138,250",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Alan J. Tuchman(8)",
+     "",
+     "120,575",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "Robert Weinstein(9)",
+     "",
+     "119,323",
+     "",
+     "*",
+     "%"
+    ],
+    [
+     "All current directors and executive officers as a group (7 persons)",
+     "",
+     "945,586",
+     "",
+     "3.40",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1795,
+    "end_line": 1814
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "(4) Dr. Alkon\u2019s compensation for 2023 is included in Officer\u2019s Compensation table.\nItem 12.Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters.\nSecurity Ownership of Certain Beneficial Owners\nThe following table sets forth information with respect to the beneficial ownership of our Common Stock as of March 25, 2024, by (i) each stockholder known by us to be the beneficial owner of more than 5% of our Common Stock (our only class of voting securities), (ii) each of our directors and executive officers, and (iii) all of our directors and executive officers as a group. To the best of our knowledge, except as otherwise indicated, each of the persons named in the table has sole voting and investment power with respect to the shares of our Common Stock beneficially owned by such person, except to the extent such power may be shared with a spouse. To our knowledge, none of the shares listed below are held under a voting trust or similar agreement, except as noted.",
+   "prose_after": "*Represents beneficial ownership of less than 1% of the outstanding shares.\n(1) Unless otherwise indicated, the business address for each stockholder listed is c/o Synaptogenix, Inc., 1185 Avenue of the Americas, 3rd Floor, New York, NY 10036.\n(2) Applicable percentage ownership is based on 27,133,349 shares of our Common Stock outstanding, together with securities exercisable or convertible into shares of our Common Stock within 60 days of March 11, 2024 for each stockholder. Beneficial ownership is determined in accordance with the rules of the SEC and generally includes voting or investment power with respect to securities. The shares issuable pursuant to the exercise or conversion of such securities are deemed outstanding for the purpose of computing the percentage of ownership of the security holder, but are not treated as outstanding for the purpose of computing the percentage of ownership of any other person.\n(3) Consists of 35,547 shares of Common Stock and options to purchase 106,250 shares of Common Stock that are exercisable within 60 days of March 11, 2024.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1788,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 88
+    },
+    "after": {
+     "line": 1825,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 89
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Audit fees:",
+     "",
+     "$",
+     "188,829",
+     "",
+     "$",
+     "140,568"
+    ],
+    [
+     "Audit related fees:",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tax fees:",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "All other fees:",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "188,829",
+     "",
+     "$",
+     "140,568"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1852,
+    "end_line": 1863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "Our Audit Committee of the Board utilizes procedures in evaluating the terms and provisions of proposed related party transactions or agreements in accordance with the fiduciary duties of directors under Delaware law. Our related party transaction procedures contemplate Audit Committee review and approval of all new agreements, transactions or courses of dealing with related parties, including any modifications, waivers or amendments to existing related party transactions. We will test to ensure that the terms of related party transactions are at least as favorable to us as could have been obtained from unrelated parties at the time of the transaction. The Audit Committee will consider, at a minimum, the nature of the relationship between us and the related party, the history of the transaction (in the case of modifications, waivers or amendments), the terms of the proposed transaction, our rationale for entering into the transaction and the terms of comparable transactions with unrelated third parties. In addition, management and internal audit will annually analyze all existing related party agreements and transactions and review them with the Audit Committee.\nDirector Independence\nSee \u201cDirectors, Executive Officers and Corporate Governance \u2013 Director Independence\u201d and \u201cDirectors, Executive Officers and Corporate Governance \u2013 Board Committees\u201d above.\nItem 14.Principal Accountant Fees and Services.\nThe Company engaged Friedman LLP (\u201cFriedman\u201d) as its independent auditors from August 23, 2013 to August 15, 2022. The Company engaged Morison Cogen LLP (\u201cMorison\u201d) from August 16, 2022 to present. The following table presents fees for professional audit services rendered by Friedman for the review of the Company\u2019s interim financial statements for the interim quarterly periods March and June 2022 quarterly interim periods and consent-related fees and for fees for professional services rendered by Morison for the review of the Company\u2019s interim financial statement for September 30, 2022. Fees for year ended December 31, 2022 consisted of payments to Friedman and Morison of $40,568 and $100,000, respectively.",
+   "prose_after": "Policy on Audit Committee Pre-Approval of Audit and Permissible Non-Audit Services of Independent Public Accountant\nConsistent with SEC policies regarding auditor independence, the Audit Committee has responsibility for appointing, setting compensation and overseeing the work of our independent registered public accounting firm. In recognition of this responsibility, the Audit Committee has established a policy to pre-approve all audit and permissible non-audit services provided by our independent registered public accounting firm.\nPrior to engagement of an independent registered public accounting firm for the next year\u2019s audit, management will submit an aggregate of services expected to be rendered during that year for each of four categories of services to the Audit Committee for approval.\n1. Audit services include audit work performed in the preparation of financial statements, as well as work that generally only an independent registered public accounting firm can reasonably be expected to provide, including comfort letters, statutory audits, and attest services and consultation regarding financial accounting and/or reporting standards.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1847,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 90
+    },
+    "after": {
+     "line": 1879,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 91
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of Synaptogenix, Inc., dated as of December 7, 2020 (incorporated by reference from Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Bylaws of Synaptogenix, Inc. (incorporated by reference from Exhibit 3.2 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Amendment to the Bylaws of Synaptogenix, Inc. (incorporated by reference from Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 28, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.4",
+     "Certificate Of Designations of Series B Convertible Preferred Stock of Synaptogenix, Inc. (incorporated by reference from Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on November 22, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "First Amendment to Certificate Of Designations of Series B Convertible Preferred Stock of Synaptogenix, Inc. (incorporated by reference from Exhibit 3.5 to the Registrant\u2019s Annual Report on Form 10-K filed on March 21, 2023."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.6",
+     "Second Amendment to Certificate Of Designations of Series B Convertible Preferred Stock of Synaptogenix, Inc. (incorporated by reference from Exhibit 3.2 to the Registrant\u2019s Quarterly Report on Form 10-Q filed on May 15, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Form of Series A Common Stock Warrant (incorporated by reference from Exhibit 4.1 to the Registrant\u2019s Registration Statement on Form S-1, filed with the SEC)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Form of Series B Common Stock Warrant (incorporated by reference from Exhibit 4.2 to the Registrant\u2019s Registration Statement on Form S-1, filed with the SEC on October 9, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of Series C Common Stock Warrant (incorporated by reference from Exhibit 4.3 to the Registrant\u2019s Registration Statement on Form S-1, filed with the SEC on October 9, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Form of Series D Common Stock Warrant (incorporated by reference from Exhibit 4.4 to the Registrant\u2019s Registration Statement on Form S-1, filed with the SEC on October 9, 2020)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Form of Series F Warrant (incorporated by reference from Exhibit 4.2 to the Registrant\u2019s Current Report on Form 8-K, filed with the SEC on January 22, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.7",
+     "Form of Series G Warrant (incorporated by reference from Exhibit 4.1 to the Registrant\u2019s Current Report on Form 8-K, filed with the SEC on June 16, 2021)."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1892,
+    "end_line": 1928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Prior to engagement, the Audit Committee pre-approves these services by category of service. The fees are budgeted and the Audit Committee requires our independent registered public accounting firm and management to report actual fees versus the budget periodically throughout the year by category of service. During the year, circumstances may arise when it may become necessary to engage our independent registered public accounting firm for additional services not contemplated in the original pre-approval. In those instances, the Audit Committee requires specific pre-approval before engaging our independent registered public accounting firm.\nThe Audit Committee may delegate pre-approval authority to one or more of its members. The member to whom such authority is delegated must report, for informational purposes only, any pre-approval decisions to the Audit Committee at its next scheduled meeting.\nPART IV\nItem 15.Exhibits and Financial Statements Schedules.\n(a). The following documents are filed as part of this Annual Report on Form 10-K:\n(a)(1) and (2). See \u201cIndex to Financial Statements and Financial Statement Schedules\u201d at Item 8 to this Annual Report on Form 10-K. Other financial statement schedules have not been included because they are not applicable or the information is included in the financial statements or notes thereto.\n(a)(3) Exhibits\nThe following is a list of exhibits filed as part of this Annual Report on Form 10-K.",
+   "prose_after": "4.8 Form of Pre-Funded Warrant (incorporated by reference from Exhibit 4.3 to the Registrant\u2019s Current Report on Form 8-K, filed with the SEC on January 22, 2021). 4.9 Form of Pre-Funded Warrant (incorporated by reference from Exhibit 4.2 to the Registrant\u2019s Current Report on Form 8-K, filed with the SEC on June 16, 2021). 4.10 Form of Broker Warrant (incorporated by reference from Exhibit 4.4 to the Registrant\u2019s Current Report on Form 8-K, filed with the SEC on January 22, 2021). 4.11 Form of Broker Warrant (incorporated by reference from Exhibit 4.3 to the Registrant\u2019s Current Report on Form 8-K, filed with the SEC on June 16, 2021). 4.12 Form of Warrant (incorporated by reference from Exhibit 4.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on November 18, 2022). 10.1** Separation and Distribution Agreement, dated as of December 6, 2020, by and between Neurotrope, Inc. and Synaptogenix, Inc. (incorporated by reference from Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020). 10.2 Tax Matter Agreement, dated as of December 6, 2020, by and between Neurotrope, Inc. and Synaptogenix, Inc. (incorporated by reference from Exhibit 10.2 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020). 10.4\u2020 Offer Letter, dated as of December 7, 2020, by and between Alan J. Tuchman, Ph.D. and Synaptogenix, Inc. (incorporated by reference from Exhibit 10.4 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020). 10.5\u2020 First Amendment to Offer Letter, dated as of August 4, 2022, by and between Alan J. Tuchman, Ph.D. and Synaptogenix, Inc. (incorporated by reference from Exhibit 10.2 to the Registrant\u2019s Quarterly Report on Form 10-Q filed with the SEC on August 5, 2022). 10.6\u2020 Second Amendment to Offer Letter, dated as of June 16, 2023, by and between Alan J. Tuchman, Ph.D. and Synaptogenix, Inc. (incorporated by reference from Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on June 22, 2023). 10.7\u2020 2020 Equity Incentive Plan of Synaptogenix, Inc. (incorporated by reference from Exhibit 10.5 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020). 10.8\u2020 First Amendment to the Synaptogenix, Inc. 2020 Equity Incentive Plan (incorporated by reference from Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on April 8, 2021). 10.9\u2020 Second Amendment to the Synaptogenix, Inc. 2020 Equity Incentive Plan (incorporated by reference from Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on October 13, 2022). 10.10\u2020 Form of Stock Option Agreement under 2020 Equity Incentive Plan of Synaptogenix, Inc. (incorporated by reference from Exhibit 10.6 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on December 10, 2020). 10.11\u2020 Employment Agreement, dated as of October 1, 2013, between Neurotrope, Inc. and Robert Weinstein (assumed by Synaptogenix, Inc. on December 7, 2020) (incorporated by reference to Exhibit 10.7 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.12\u2020 Nonemployee Director Compensation Policy (incorporated by reference from Exhibit 10.1 to the Registrant\u2019s Quarterly Report on Form 10-Q filed on May 15, 2023).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1879,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 91
+    },
+    "after": {
+     "line": 1929,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 92
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.30",
+     "Engagement Letter, dated November 17, 2022, by and between Synaptogenix, Inc. and Katalyst Securities LLC (incorporated by reference to Exhibit 10.3 to our Current Report on Form 8-K, filed on November 18, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.31",
+     "Placement Agency Agreement, dated January 21, 2021, by and between Synaptogenix, Inc., and GP Nurmenkari Inc. (incorporated by reference to Exhibit 10.4 to our Current Report on Form 8-K, filed on January 22, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "19.1",
+     "Synaptogenix, Inc. Insider Trading Policy."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Company (incorporated by reference from Exhibit 21.1 to the Registrant\u2019s Registration Statement on Form S-1 filed with the SEC on February 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1*",
+     "Consent of Morison Cogen LLP."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Rule 13(a)-14(a)/15(d)-14(a) Certification of Principal Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Rule 13(a)-14(a)/15(d)-14(a) Certification of Principal Financial and Accounting Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Section 1350 Certification of Principal Executive Officer and Principal Financial Officer (This certification is being furnished and shall not be deemed \u201cfiled\u201d with the SEC for purposes of Section 18 of the Exchange Act, or otherwise subject to the liability of that section, and shall not be deemed to be incorporated by reference into any filing under the Securities Act or the Exchange Act, except to the extent that the registrant specifically incorporates it by reference.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "97.1*",
+     "Synaptogenix, Inc. Clawback Policy."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (Embedded within the Inline XBRL document and included in Exhibit)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1936,
+    "end_line": 1973
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "10.13\u2020 Form of Director Indemnification Agreement (incorporated by reference to Exhibit 10.9 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.14 Amended and Restated Technology License and Services Agreement among Neurotrope BioScience, Inc., Blanchette Rockefeller Neurosciences Institute and NRV II, LLC, made as of February 4, 2015 (incorporated by reference to Exhibit 10.10 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.15 Amendment to Amended and Restated Technology License and Services Agreement among Neurotrope BioScience, Inc., Blanchette Rockefeller Neurosciences Institute and NRV II, LLC, dated November 12, 2015 (incorporated by reference to Exhibit 10.13 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.16 Second Amendment to the Amended and Restated Technology License by and between Neurotrope BioScience, Inc. and Cognitive Research Enterprises, Inc., dated November 29, 2018 (incorporated by reference to Exhibit 10.17 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.18\u2020 Services Agreement between Neurotrope BioScience, Inc. and Worldwide Clinical Trials, Inc., dated October 9, 2015 (incorporated by reference to Exhibit 10.12 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.21\u2020 Services Agreement by and between Neurotrope, Inc. and Worldwide Clinical Trials, Inc., dated as of May 4, 2018 (assumed by Synaptogenix, Inc. on December 7, 2020) (incorporated by reference to Exhibit 10.16 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2020, filed with the SEC on March 30, 2021). 10.22 Securities Purchase Agreement, dated January 21, 2021, by and among Synaptogenix, Inc. and the Buyers signatory thereto (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed on January 22, 2021). 10.23 Securities Purchase Agreement, dated June 14, 2021, by and among Synaptogenix, Inc. and the Buyers signatory thereto (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed on June 16, 2021). 10.24 Securities Purchase Agreement, dated November 17, 2022, by and among Synaptogenix, Inc. and the investors named therein (incorporated by reference from Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on November 18, 2022). 10.25 Registration Rights Agreement, dated January 21, 2021, by and among Synaptogenix, Inc. and the Buyers signatory thereto (incorporated by reference to Exhibit 10.2 to our Current Report on Form 8-K, filed on January 22, 2021). 10.26 Registration Rights Agreement, dated June 14, 2021, by and among Synaptogenix, Inc. and the Buyers signatory thereto (incorporated by reference to Exhibit 10.2 to our Current Report on Form 8-K, filed on June 16, 2021). 10.27 Registration Rights Agreement, dated November 17, 2022, by and among Synaptogenix, Inc. and the buyers named therein (incorporated by reference from Exhibit 10.2 to the Registrant\u2019s Current Report on Form 8-K filed with the SEC on November 18, 2022). 10.28 Engagement Letter, dated January 20, 2021, by and between Synaptogenix, Inc. and Katalyst Securities LLC (incorporated by reference to Exhibit 10.3 to our Current Report on Form 8-K, filed on January 22, 2021). 10.29 Engagement Letter, dated June 14, 2021, by and between Synaptogenix, Inc. and Katalyst Securities LLC (incorporated by reference to Exhibit 10.3 to our Current Report on Form 8-K, filed on June 16, 2021).",
+   "prose_after": "* Filed herewith.\n** Schedules and exhibits omitted pursuant to Item 601(a)(5) of Regulation S-K. The registrant will furnish a copy of any omitted schedule or exhibit as a supplement to the SEC or its staff upon request.\n\u2020Management contract or compensatory plan or arrangement.\n+Certain confidential portions of this Exhibit were omitted because the identified confidential portions (i) are not material and (ii) would be competitively harmful if publicly disclosed.\nSIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized, thereunto duly authorized in the City of New York, New York, on April 1, 2024.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1935,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 94
+    },
+    "after": {
+     "line": 1981,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 95
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SYNAPTOGENIX, INC.",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Alan J. Tuchman, M.D."
+    ],
+    [
+     "",
+     "Name:",
+     "Alan J. Tuchman, M.D."
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(principal executive officer)"
+    ]
+   ],
+   "caption_stack": [
+    "SYNAPTOGENIX, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1986,
+    "end_line": 1994
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.\n** Schedules and exhibits omitted pursuant to Item 601(a)(5) of Regulation S-K. The registrant will furnish a copy of any omitted schedule or exhibit as a supplement to the SEC or its staff upon request.\n\u2020Management contract or compensatory plan or arrangement.\n+Certain confidential portions of this Exhibit were omitted because the identified confidential portions (i) are not material and (ii) would be competitively harmful if publicly disclosed.\nSIGNATURE\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized, thereunto duly authorized in the City of New York, New York, on April 1, 2024.",
+   "prose_after": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Alan J. Tuchman, M.D. and Robert Weinstein (with full power to act alone), as his true and lawful attorneys-in-fact and agents, with full powers of substitution and resubstitution, for him and in his name, place and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K and to file the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents full power and authority to do and perform each and every act and thing requisite or necessary to be done in and about the premises, as fully to all intents and purposes as he might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or their substitute or substitutes, lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1981,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 95
+    },
+    "after": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 96
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alan J. Tuchman, M.D.",
+     "Chief Executive Officer and Director",
+     "April 1, 2024"
+    ],
+    [
+     "Alan J. Tuchman, M.D.",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert Weinstein",
+     "Chief Financial Officer",
+     "April 1, 2024"
+    ],
+    [
+     "Robert Weinstein",
+     "(Principal Financial and Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joshua N. Silverman",
+     "Director and Chairman of the Board",
+     "April 1, 2024"
+    ],
+    [
+     "Joshua N. Silverman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William S. Singer",
+     "Director and Vice-Chairman of the Board",
+     "April 1, 2024"
+    ],
+    [
+     "William S. Singer",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Bruce T. Bernstein",
+     "Director",
+     "April 1, 2024"
+    ],
+    [
+     "Bruce T. Bernstein",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jonathan L. Schechter",
+     "Director",
+     "April 1, 2024"
+    ],
+    [
+     "Jonathan L. Schechter",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Daniel Alkon, M.D.",
+     "Director",
+     "April 1, 2024"
+    ],
+    [
+     "Daniel Alkon, M.D.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1999,
+    "end_line": 2031
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "KNOW ALL PERSONS BY THESE PRESENTS, that each person whose signature appears below constitutes and appoints Alan J. Tuchman, M.D. and Robert Weinstein (with full power to act alone), as his true and lawful attorneys-in-fact and agents, with full powers of substitution and resubstitution, for him and in his name, place and stead, in any and all capacities, to sign any and all amendments to this Annual Report on Form 10-K and to file the same, with all exhibits thereto, and other documents in connection therewith, with the Securities and Exchange Commission, granting unto said attorneys-in-fact and agents full power and authority to do and perform each and every act and thing requisite or necessary to be done in and about the premises, as fully to all intents and purposes as he might or could do in person, hereby ratifying and confirming all that said attorneys-in-fact and agents, or their substitute or substitutes, lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and\nStockholders of Synaptogenix, Inc.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Synaptogenix, Inc. (the Company) as of December 31, 2023 and 2022 and the related statements of comprehensive loss, stockholders\u2019 equity, and cash flows for each of the two years in the period ended December 31, 2023, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2023 and 2022, and the results of its operations and its cash flows for each of the two years in the period ended December 31, 2023, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (PCAOB) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1981,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 95
+    },
+    "after": {
+     "line": 2032,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 96
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "28,661,498",
+     "",
+     "$",
+     "37,478,480"
+    ],
+    [
+     "Prepaid Clinical trial expenses",
+     "",
+     "",
+     "375,085",
+     "",
+     "",
+     "367,714"
+    ],
+    [
+     "Available for sale debt security",
+     "",
+     "",
+     "1,438,500",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "",
+     "57,677",
+     "",
+     "",
+     "739,467"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "",
+     "30,532,760",
+     "",
+     "",
+     "38,585,661"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity method investment",
+     "",
+     "",
+     "562,402",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed assets, net of accumulated depreciation",
+     "",
+     "",
+     "18,505",
+     "",
+     "",
+     "22,145"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "31,113,667",
+     "",
+     "$",
+     "38,607,806"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "$",
+     "444,633",
+     "",
+     "$",
+     "660,206"
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "",
+     "435,891",
+     "",
+     "",
+     "536,714"
+    ],
+    [
+     "Dividends payable",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "115,890"
+    ],
+    [
+     "Accrued Series B Convertible Preferred payments payable",
+     "",
+     "",
+     "3,395,945",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "",
+     "4,276,469",
+     "",
+     "",
+     "1,312,810"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liability",
+     "",
+     "",
+     "140,000",
+     "",
+     "",
+     "1,510,000"
+    ],
+    [
+     "Derivative liability",
+     "",
+     "",
+     "1,113,000",
+     "",
+     "",
+     "370,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "",
+     "5,529,469",
+     "",
+     "",
+     "3,193,110"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series B Convertible redeemable preferred stock, $.0001 par value and $1,000 face value, 1,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "6,000 and 15,000 shares issued and outstanding at December 31, 2023 and December 31, 2022, respectively.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liquidation preference of $6,000,000 plus dividends accrued at 7% per annum of $140,000 as of December 31, 2023.",
+     "",
+     "",
+     "1,236,940",
+     "",
+     "",
+     "2,721,723"
+    ],
+    [
+     "STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock - 150,000,000 shares authorized, $0.0001 par value; 24,089,646 shares issued and outstanding as of December 31, 2023 and 7,267,032 shares issued and outstanding as of December 31, 2022.",
+     "",
+     "",
+     "2,411",
+     "",
+     "",
+     "728"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "57,954,693",
+     "",
+     "",
+     "52,523,762"
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "",
+     "902",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(33,610,748)",
+     "",
+     "",
+     "(19,831,517)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "24,347,258",
+     "",
+     "",
+     "32,692,973"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "$",
+     "31,113,667",
+     "",
+     "$",
+     "38,607,806"
+    ]
+   ],
+   "caption_stack": [
+    "ASSETS"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2062,
+    "end_line": 2122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Morison Cogen LLP (00536)\nWe have served as the Company\u2019s auditor since 2022.\nBlue Bell, Pennsylvania\nApril 1, 2024\nBALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2058,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 2124,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "$",
+     "1,974,924",
+     "",
+     "$",
+     "6,324,928"
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "6,338,930",
+     "",
+     "",
+     "9,810,068"
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "",
+     "",
+     "8,313,854",
+     "",
+     "",
+     "16,134,996"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "",
+     "1,648,950",
+     "",
+     "",
+     "335,039"
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "",
+     "1,370,000",
+     "",
+     "",
+     "8,405,000"
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "",
+     "(743,600)",
+     "",
+     "",
+     "1,821,000"
+    ],
+    [
+     "TOTAL OTHER INCOME",
+     "",
+     "",
+     "2,275,350",
+     "",
+     "",
+     "10,561,039"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss before income taxes",
+     "",
+     "",
+     "(6,038,504)",
+     "",
+     "",
+     "(5,573,957)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "(6,038,504)",
+     "",
+     "",
+     "(5,573,957)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock dividends",
+     "",
+     "",
+     "2,047,774",
+     "",
+     "",
+     "115,890"
+    ],
+    [
+     "Deemed dividend-preferred stock extinguishment",
+     "",
+     "",
+     "5,693,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss attributable to common stockholders",
+     "",
+     "$",
+     "(13,779,278)",
+     "",
+     "$",
+     "(5,689,847)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of available for sale debt security",
+     "",
+     "",
+     "902",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net comprehensive loss",
+     "",
+     "$",
+     "(13,778,376)",
+     "",
+     "$",
+     "(5,689,847)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PER SHARE DATA:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per common share",
+     "",
+     "$",
+     "(1.18)",
+     "",
+     "$",
+     "(0.81)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common shares outstanding",
+     "",
+     "",
+     "11,651,900",
+     "",
+     "",
+     "6,989,200"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2128,
+    "end_line": 2176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2124,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 2178,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Comprehensive Income",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance January 1, 2022",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "",
+     "6,730,180",
+     "",
+     "$",
+     "674",
+     "",
+     "$",
+     "47,670,744",
+     "",
+     "$",
+     "(14,141,670)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "33,529,748"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,743,963",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,743,963"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of warrants for consulting fees",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "196,603",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "196,603"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise of restricted stock units",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "411,000",
+     "",
+     "",
+     "41",
+     "",
+     "",
+     "(41)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for consulting fees",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "60,852",
+     "",
+     "",
+     "6",
+     "",
+     "",
+     "359,350",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "359,356"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Series B Preferred Stick, net of discount and issuance costs of $12,278,277",
+     "",
+     "",
+     "15,000",
+     "",
+     "",
+     "2,721,723",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred dividends",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(115,890)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(115,890)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise of common stock warrants",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "65,000",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "553,143",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "553,150"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,573,957)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,573,957)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2022",
+     "",
+     "$",
+     "15,000",
+     "",
+     "$",
+     "2,721,723",
+     "",
+     "",
+     "",
+     "7,267,032",
+     "",
+     "$",
+     "728",
+     "",
+     "$",
+     "52,523,762",
+     "",
+     "$",
+     "(19,831,517)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "32,692,973"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2022",
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2182,
+    "end_line": 2214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2178,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2255,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended December 31, 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Accumulated Other",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Comprehensive Income",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance January 1, 2023",
+     "",
+     "15,000",
+     "",
+     "$",
+     "2,721,723",
+     "",
+     "",
+     "7,267,032",
+     "",
+     "$",
+     "728",
+     "",
+     "$",
+     "52,523,762",
+     "",
+     "$",
+     "(19,831,517)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "32,692,973"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,009,325",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,009,325"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock for consulting fees",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "127,400",
+     "",
+     "",
+     "13",
+     "",
+     "",
+     "117,987",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "118,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,022,149",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,022,149)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,022,149)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reclassification of accrued dividends upon probable redemption of preferred stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "165,375",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deemed dividends on preferred stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "140,374",
+     "",
+     "",
+     "2,047,526",
+     "",
+     "",
+     "205",
+     "",
+     "",
+     "815,166",
+     "",
+     "",
+     "(1,025,578)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(210,207)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deemed dividend - preferred stock extinguishment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,693,000",
+     "",
+     "",
+     "(5,693,000)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock redemptions and conversions",
+     "",
+     "(6,000)",
+     "",
+     "",
+     "(6,783,704)",
+     "",
+     "",
+     "14,647,688",
+     "",
+     "",
+     "1,465",
+     "",
+     "",
+     "5,162,421",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,163,886"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrual of preferred stock and dividend redemption",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "(3,395,945)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock accretion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,366,968",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,366,968)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,366,968)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of convertible note receivable - investment in debt security",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "902",
+     "",
+     "",
+     "902"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,038,504)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,038,504)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance December 31, 2023",
+     "",
+     "6,000",
+     "",
+     "$",
+     "1,236,940",
+     "",
+     "",
+     "24,089,646",
+     "",
+     "$",
+     "2,411",
+     "",
+     "$",
+     "57,954,693",
+     "",
+     "$",
+     "(33,610,748)",
+     "",
+     "$",
+     "902",
+     "",
+     "$",
+     "24,347,258"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2023",
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2215,
+    "end_line": 2253
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2178,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2255,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "CASH FLOW USED IN OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(6,038,504)",
+     "",
+     "$",
+     "(5,573,957)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used by operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "",
+     "1,009,325",
+     "",
+     "",
+     "3,743,963"
+    ],
+    [
+     "Warrant issuance costs",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "898,023"
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "",
+     "(1,370,000)",
+     "",
+     "",
+     "(8,405,000)"
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "",
+     "",
+     "743,600",
+     "",
+     "",
+     "(1,821,000)"
+    ],
+    [
+     "Consulting services paid by issuance of common stock",
+     "",
+     "",
+     "118,000",
+     "",
+     "",
+     "359,356"
+    ],
+    [
+     "Consulting services paid by issuance of common stock warrants",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "196,603"
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "",
+     "6,347",
+     "",
+     "",
+     "5,714"
+    ],
+    [
+     "Change in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease in prepaid expenses",
+     "",
+     "",
+     "674,419",
+     "",
+     "",
+     "183,045"
+    ],
+    [
+     "Decrease in accounts payable",
+     "",
+     "",
+     "(215,573)",
+     "",
+     "",
+     "(636,300)"
+    ],
+    [
+     "Decrease in accrued expenses",
+     "",
+     "",
+     "(100,823)",
+     "",
+     "",
+     "(161,692)"
+    ],
+    [
+     "Total adjustments",
+     "",
+     "",
+     "865,295",
+     "",
+     "",
+     "(5,637,288)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "",
+     "",
+     "(5,173,209)",
+     "",
+     "",
+     "(11,211,245)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS USED IN INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equity method investment",
+     "",
+     "",
+     "(562,402)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Purchase of available for sale debt security",
+     "",
+     "",
+     "(1,437,598)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Purchase of fixed assets",
+     "",
+     "",
+     "(2,707)",
+     "",
+     "",
+     "(7,414)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Used in Investing Activities",
+     "",
+     "",
+     "(2,002,707)",
+     "",
+     "",
+     "(7,414)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Private placement of preferred stock, net of transaction costs",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "13,930,000"
+    ],
+    [
+     "Proceeds from exercise of investor warrants",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "553,150"
+    ],
+    [
+     "Redemption of Series B Convertible Preferred Stock",
+     "",
+     "",
+     "(1,000,000)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Dividends on Series B Convertible Preferred Stock",
+     "",
+     "",
+     "(641,066)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided by (Used in) Financing Activities",
+     "",
+     "",
+     "(1,641,066)",
+     "",
+     "",
+     "14,483,150"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH AND EQUIVALENTS",
+     "",
+     "",
+     "(8,816,982)",
+     "",
+     "",
+     "3,264,491"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND EQUIVALENTS AT BEGINNING OF YEAR",
+     "",
+     "",
+     "37,478,480",
+     "",
+     "",
+     "34,213,989"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND EQUIVALENTS AT END OF YEAR",
+     "",
+     "$",
+     "28,661,498",
+     "",
+     "$",
+     "37,478,480"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DISCLOSURES OF NON-CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Common Stock for Series B Convertible Preferred Stock installment conversions",
+     "",
+     "$",
+     "5,979,257",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Accretion of Series B Convertible Preferred Stock to redemption value",
+     "",
+     "$",
+     "7,366,968",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Deemed dividend for Series B Convertible Preferred Stock modification",
+     "",
+     "$",
+     "5,693,000",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Accrual of Series B Convertible Preferred Stock and Dividend Redemption",
+     "",
+     "$",
+     "3,395,945",
+     "",
+     "$",
+     "115,890"
+    ],
+    [
+     "Change in fair value of available for sale debt security",
+     "",
+     "$",
+     "902",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Initial fair value of warrant liability pursuant to private placement of Preferred Stock and Warrants",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "9,915,000"
+    ],
+    [
+     "Initial fair value of derivative liability pursuant to private placement of Preferred Stock and Warrants",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,191,300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2259,
+    "end_line": 2322
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNote 1 \u2013 Organization, Business, Risks and Uncertainties:\nOrganization and Business\nOn May 17, 2020, Neurotrope, Inc. (\u201cNeurotrope\u201d or \u201cthe Parent\u201d) announced plans for the complete legal and structural separation of its wholly owned subsidiary, Neurotrope Bioscience, Inc., from Neurotrope (the \u201cSpin-Off\u201d). Under the Separation and Distribution Agreement, Neurotrope planned to distribute all of its equity interest in this wholly owned subsidiary to Neurotrope\u2019s stockholders. Following the Spin-Off, Neurotrope does not own any equity interest in the Company, and the Company operates independently from Neurotrope. On December 7, 2020, the Company became an independent company, Synaptogenix, Inc., a Delaware corporation (formerly known as Neurotrope Bioscience, Inc.) (the \u201cCompany\u201d or \u201cSynaptogenix\u201d) when the Company filed an amended and restated certificate of incorporation which, among other things, changed its name to Synaptogenix, Inc. The Company\u2019s shares of common stock, par value $0.0001 per share (the \u201cCommon Stock\u201d), are listed on The Nasdaq Capital Market under the symbol \u201cSNPX.\u201d",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2255,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2324,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "December 31, 2022"
+    ],
+    [
+     "Common stock warrants",
+     "",
+     "7,179,919",
+     "",
+     "7,179,919"
+    ],
+    [
+     "Common stock options",
+     "",
+     "722,562",
+     "",
+     "661,850"
+    ],
+    [
+     "Convertible Preferred Stock",
+     "",
+     "1,212,380",
+     "",
+     "1,946,796"
+    ],
+    [
+     "Total",
+     "",
+     "9,114,861",
+     "",
+     "8,372,426"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2378,
+    "end_line": 2388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies:"
+    }
+   },
+   "prose_before": "Net earnings or loss per share is computed by dividing net income or loss by the weighted-average number of common shares outstanding during the period, excluding shares subject to redemption or forfeiture. The Company presents basic and diluted net earnings or loss per share. Diluted net earnings or loss per share reflect the actual weighted average of common shares issued and outstanding during the period, adjusted for potentially dilutive securities outstanding. Potentially dilutive securities are excluded from the computation of the diluted net earnings or loss per share if their inclusion would be anti-dilutive.\nAs all potentially dilutive securities are anti-dilutive as of December 31, 2023 and 2022, diluted net loss per share is the same as basic net loss per share for the years ended December 31, 2023 and 2022.\nThe dilutive securities that have been excluded from the calculation of diluted net loss per share for the years ended December 31, 2023 and 2022 respectively, because to do so would be anti-dilutive (in common equivalent shares), are as follows:",
+   "prose_after": "Cash and Cash Equivalents and Concentration of Credit Risk:\nThe Company considers all highly liquid cash investments with an original maturity of three months or less when purchased to be cash equivalents. At December 31, 2023, the Company\u2019s cash balances that exceed the current insured amounts under the Federal Deposit Insurance Corporation (\u201cFDIC\u201d) were approximately $2.1 million. In addition, approximately $26.6 million included in cash and cash equivalents were invested in a money market fund, which is not insured under the FDIC.\nInvestment in Debt Securities\nThe Company\u2019s convertible note receivable was determined to be an available-for-sale debt security under Accounting Standards Codification (\u201cASC\u201d) 320, Investments, which was initially recorded at fair value with unrealized holding gains and losses reported in other comprehensive income at each reporting period. The Company estimates the fair value of the convertible note receivable using the income approach, which uses as inputs the fair value of debtor\u2019s common stock and estimates for the equity volatility and volume volatility of debtor\u2019s common stock, the time to expiration of the convertible note, the discount rate, the stated interest rate compared to the current market rate, the risk-free interest rate for a period that approximates the time to expiration, and probability of default. Therefore, the estimate of expected future volatility is based on the actual volatility of debtor\u2019s common stock and historical volatility of debtor\u2019s common stock utilizing a lookback period consistent with the time to expiration. The time to expiration is based on the contractual maturity date. The risk-free interest rate is determined by reference to the U.S. Treasury yield curve in effect at the time of measurement for time periods approximately equal to the time to expiration. Probability of default is estimated using the S&P Global default rate for companies with a similar credit rating to debtor\u2019s.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2353,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 2388,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations before taxes on income",
+     "",
+     "$",
+     "(6,038,504)",
+     "",
+     "$",
+     "(5,573,957)",
+     ""
+    ],
+    [
+     "Tax rate",
+     "",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Computed \u201cexpected\u201d tax benefit",
+     "",
+     "",
+     "(1,268,086)",
+     "",
+     "",
+     "(1,170,531)",
+     ""
+    ],
+    [
+     "State taxes, net of federal income tax benefit",
+     "",
+     "",
+     "(341,003)",
+     "",
+     "",
+     "(717,819)",
+     ""
+    ],
+    [
+     "Change in fair value of warrant and derivative liabilities",
+     "",
+     "",
+     "(126,475)",
+     "",
+     "",
+     "(1,765,050)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "",
+     "3,892,572",
+     "",
+     "",
+     "4,447,310",
+     ""
+    ],
+    [
+     "Other adjustments",
+     "",
+     "",
+     "6,115",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Return to provision",
+     "",
+     "",
+     "(2,163,122)",
+     "",
+     "",
+     "(793,910)",
+     ""
+    ],
+    [
+     "Income tax expense (benefit) attributable to continuing operations",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2437,
+    "end_line": 2455
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies:"
+    }
+   },
+   "prose_before": "Under Section 382 of the Code, as amended, changes in the Company\u2019s ownership may limit the amount of its net operating loss carryforwards that could be utilized annually to offset future taxable income, if any. This limitation would generally apply in the event of a cumulative change in ownership of the Company of more than 50% within a three-year period. In addition, the significant historical operating losses incurred by the Company may limit the amount of its net operating loss carryforwards that could be utilized annually to offset future taxable income, if any. The Company believes that operating loss carryforwards may be limited under Section 382 limitations although Section 382 studies have not been conducted to determine the actual limitations.\nThe Company has concluded that there are no significant uncertain tax positions requiring recognition in the accompanying financial statements. The tax period that is subject to examination by major tax jurisdictions is generally three years from the date of filing.\nA reconciliation of the Company\u2019s statutory income tax rate to the Company\u2019s effective income tax rate is as follows:",
+   "prose_after": "Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets and liabilities as of December 31, 2022 and 2023 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2434,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 2488,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the year ended December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022"
+    ],
+    [
+     "Net operating loss carryforward",
+     "",
+     "26,635,550",
+     "",
+     "23,492,415"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "1,978,436",
+     "",
+     "1,838,861"
+    ],
+    [
+     "Derivative liability",
+     "",
+     "\u2014",
+     "",
+     "(475,918)"
+    ],
+    [
+     "Depreciation",
+     "",
+     "16",
+     "",
+     "\u2014"
+    ],
+    [
+     "Capitalized research costs",
+     "",
+     "1,621,646",
+     "",
+     "1,487,718"
+    ],
+    [
+     "Net deferred income tax assets",
+     "",
+     "30,235,648",
+     "",
+     "26,343,076"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(30,235,648)",
+     "",
+     "(26,343,076)"
+    ],
+    [
+     "Net deferred income tax assets",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2458,
+    "end_line": 2476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies:"
+    }
+   },
+   "prose_before": "Deferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. Significant components of the Company\u2019s deferred tax assets and liabilities as of December 31, 2022 and 2023 are as follows:",
+   "prose_after": "A provision enacted in the Tax Cuts and Jobs Act of 2017 (\u201cTCJA\u201d) related to the capitalization for tax purposes of research and experimental expenditures became effective January 1, 2022. This provision requires the Company to capitalize research and experimental expenditures and amortize them on the U.S. tax return over five or fifteen years, depending upon where the research is conducted. This provision is not expected to have a material impact on the Company\u2019s calendar year 2023 effective tax rate on a net basis or the Company\u2019s cash paid for taxes due to the Company\u2019s net operating loss position.\nExpense Reimbursement for Grant Award:\nThe Company reduces its research and development expenses by funding received or receivable from an NIH grant during the period that the expenses are incurred. The Company recognized grant related expense reductions during the years ended December 31, 2023 and 2022 of $0 for both periods. See Note 5, \u201cClinical Trial Services Agreements.\u201d\nOf the total $2.7 million available from the NIH grant, approximately $2.6 million was received for trial-related expenses incurred since grant inception to December 31, 2021, with the remaining $0.1 million received during February 2022. The Company has received the maximum reimbursements under the grant.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2434,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 2488,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance of Initial Convertible Note as of January 1, 2023",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Issued",
+     "",
+     "",
+     "1,437,598"
+    ],
+    [
+     "Change in fair value",
+     "",
+     "",
+     "902"
+    ],
+    [
+     "Balance of Initial Convertible Note as of December 31, 2023",
+     "",
+     "$",
+     "1,438,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2539,
+    "end_line": 2547
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Collaborative Agreements and Commitments:"
+    }
+   },
+   "prose_before": "The Company\u2019s investment in the Preferred Shares represents an investment in an equity security in accordance with ASC 320. The Preferred Shares are convertible at any time after the date of issuance, automatically upon a payment default, an IPO, or the written consent of the holders of a majority of the Preferred Shares. The conversion price is subject to traditional anti-dilution adjustments. The Company will account for its investment in Cannasoul\u2019s Preferred Shares under the equity method of accounting as it was determined the Company has significant influence over Cannasoul based on its board representation and other veto rights per ASC 323-10-15-6 to 8. The Company has elected to record the equity in earnings of the equity method investment on a three-month lag which is recognized in other comprehensive income. As a result, the Company has not recorded a gain or loss on its equity method investment during the year ended December 31, 2023.\nThe Initial Convertible Note receivable is not traded in active markets and the fair value was determined using a probability weighted scenario-based model. The Initial Convertible Note receivable is accounted for as an available-for-sale debt security based on \u201cLevel 3\u201d inputs, which consist of unobservable inputs and reflect management\u2019s estimates of assumptions that market participants would use in pricing the asset (i.e., implied market rate, risk free rate, share price, and probability of scenarios). Holding gains and losses are recorded in other comprehensive income.\nBelow is a summary of activity for the Initial Convertible Note as of December 31, 2023:",
+   "prose_after": "During the first quarter of 2024, the Company purchased an additional $500,000 in Milestone Convertible Notes based upon Cannasoul meeting certain operating and financial milestones as noted above.\nCognitive Research Enterprises, Inc. (\u201cCRE\u201d)\nEffective October 31, 2012, the Company executed a Technology License and Services Agreement (the \u201cTLSA\u201d) with CRE, a related party, and NRV II, LLC (\u201cNRV II\u201d), another affiliate of CRE, which was amended by Amendment No. 1 to the TLSA as of August 21, 2013, as amended and restated on February 4, 2015 (the \u201cCRE License Agreement\u201d). Pursuant to the CRE License Agreement, CRE and NRV II provide research services and have granted the Company the exclusive and nontransferable world-wide, royalty-bearing right, with a right to sublicense (in accordance with the terms and conditions described below), under CRE\u2019s and NRV II\u2019s respective right, title and interest in and to certain patents and technology owned by CRE or licensed to NRV II by CRE as of or subsequent to October 31, 2012, to develop, use, manufacture, market, offer for sale, sell, distribute, import and export certain products or services for therapeutic applications for AD and other cognitive dysfunctions in humans or animals (the \u201cField of Use\u201d). Additionally, the CRE License Agreement specifies that all patents that issue from a certain patent application shall constitute licensed patents and all trade secrets, know-how and other confidential information claimed by such patents constitute licensed technology under the CRE License. The CRE License Agreement terminates on the later of the date (a) the last of the licensed patent expires, is abandoned, or is declared unenforceable or invalid or (b) the last of the intellectual property enters the public domain.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2534,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2563,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted-",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted-",
+     "",
+     "",
+     "Remaining",
+     "",
+     "Intrinsic",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number",
+     "",
+     "Average",
+     "",
+     "",
+     "Contractual",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "of",
+     "",
+     "Exercise",
+     "",
+     "",
+     "Term",
+     "",
+     "(in",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Price",
+     "",
+     "",
+     "(Years)",
+     "",
+     "millions)",
+     ""
+    ],
+    [
+     "Options outstanding at January 1, 2023",
+     "",
+     "661,850",
+     "",
+     "$",
+     "7.27",
+     "",
+     "9.5",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Options granted",
+     "",
+     "80,000",
+     "",
+     "$",
+     "0.87",
+     "",
+     "9.2",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Less options forfeited",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Less options expired/cancelled",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Less options exercised",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Options outstanding at December 31, 2023",
+     "",
+     "741,850",
+     "",
+     "$",
+     "6.15",
+     "",
+     "8.6",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Options exercisable at December 31, 2023",
+     "",
+     "661,850",
+     "",
+     "$",
+     "6.79",
+     "",
+     "8.5",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted-"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2668,
+    "end_line": 2686
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Stock Based Compensation:"
+    }
+   },
+   "prose_before": "Upon completion of the Spin-Off, the Company\u2019s 2020 Equity Incentive Plan (the \u201c2020 Plan\u201d) became effective on December 7, 2020. The total number of securities available for grant under the 2020 Plan was 250,000 shares of Common Stock, subject to adjustment. On April 7, 2021, the Company held a special meeting of stockholders (\u201cSpecial Meeting\u201d). At the Special Meeting, the Company\u2019s stockholders approved an amendment to the Company\u2019s 2020 Plan to increase the total number of shares of Common Stock from 250,000 to an aggregate of 625,000 shares of Common Stock. On October 11, 2022, the Company held its annual meeting of stockholders at which the Company\u2019s stockholders approved an amendment to the Company\u2019s 2020 Plan to increase the total number of shares of Common Stock authorized for issuance from 625,000 to an aggregate of 1,375,000 shares. On December 20, 2023, the Company held its annual meeting of stockholders at which time the Company\u2019s stockholders approved an amendment to the Company\u2019s 2020 Plan was amended to increase the total number of shares of Common Stock authorized for issuance from 1,375,000 to an aggregate of 4,375,000 shares.\nThe Compensation Committee of the Company\u2019s board of directors (the \u201cCommittee\u201d) will administer the 2020 Plan and have full power to grant stock options and Common Stock, construe and interpret the 2020 Plan, establish rules and regulations, and perform all other acts, including the delegation of administrative responsibilities, as it believes reasonable and proper. The Committee, in its absolute discretion, may award Common Stock to employees, consultants, and directors of the Company, and such other persons as the Committee may select, and permit holders of options to exercise such options prior to full vesting.\nStock and Option Grants\nThe following is a summary of stock option activity under the stock option plans for the year ended December 31, 2023:",
+   "prose_after": "The aggregate intrinsic value is calculated as the difference between the exercise price of the underlying awards and the closing stock price of $0.272 for the Company\u2019s common shares on December 31, 2023 and the closing stock price of $1.16 for the Company\u2019s common shares on December 31, 2022.\nAs of December 31, 2023, the Company had unrecognized stock option expense of approximately $14,000 and have a remaining weighted average period for recognition of 0.24 years.\nOn February 16, 2022, pursuant to its 2020 Plan, the Company granted stock options to purchase an aggregate of 6,150 shares of Common Stock to its Chief Executive Officer. The stock options have an exercise price of $7.29 per share and an expiration date that is ten years from the date of issuance. As of February 16, 2023, these stock options are fully vested. The Company used the Black Scholes valuation method to determine the fair value of the options assuming the following: implied volatility of 112.75%, a risk free interest rate of 2.05% and a fair value of $42,108. The options were expensed over the one-year vesting period from date of issuance.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2663,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "F",
+     "page_number": 22
+    },
+    "after": {
+     "line": 2700,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "F",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "stock_comp_rollforward",
+    "aligned_family": "stock_comp_rollforward",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number"
+    ],
+    [
+     "",
+     "",
+     "of shares"
+    ],
+    [
+     "Warrants outstanding January 1,2022",
+     "",
+     "6,265,525"
+    ],
+    [
+     "Warrants issued",
+     "",
+     "2,028,762"
+    ],
+    [
+     "Warrants expired",
+     "",
+     "(1,049,368)"
+    ],
+    [
+     "Warrants exercised",
+     "",
+     "(65,000)"
+    ],
+    [
+     "Warrants outstanding December 31, 2022",
+     "",
+     "7,179,919"
+    ],
+    [
+     "Warrants issued",
+     "",
+     "\u2014"
+    ],
+    [
+     "Warrants expired",
+     "",
+     "\u2014"
+    ],
+    [
+     "Warrants exercised",
+     "",
+     "\u2014"
+    ],
+    [
+     "Warrants outstanding December 31, 2022",
+     "",
+     "7,179,919"
+    ]
+   ],
+   "caption_stack": [
+    "Number",
+    "of shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2729,
+    "end_line": 2746
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Common Stock Warrants:"
+    }
+   },
+   "prose_before": "Total stock-based compensation for the year ended December 31, 2023 was $1,009,325, of which $149,589 was classified as research and development expense and $859,736 was classified as general and administrative expense. Total stock-based compensation for the year ended December 31, 2022 was $3,743,963, of which $475,271 was classified as research and development expense and $3,268,692 was classified as general and administrative expense.\nThe Company currently estimates, beginning at the closing date of the November 2022 private placement on November 21, 2022, implied volatility factor for all options and warrants based upon a blend of the Parent Company\u2019s and Company historical volatility. Up until November 21, 2022, the Company computed implied volatility based upon a blend of the Parent Company\u2019s and Company historical volatility along with the volatility of selected comparable publicly traded companies as, at that time, the Company lacks sufficient historical stock trading activity. It incorporated the historical volatility of the Parent company as the Parent company\u2019s historical volatility provides a good estimation of the Company\u2019s volatility since its operations were identical to the Company\u2019s prior to the spin-out.\nNote 8 \u2013 Common Stock Warrants:\nOutstanding Warrants\nAs of December 31, 2023, the Company had warrants outstanding consisted of the following:",
+   "prose_after": "On January 3, 2022, pursuant to its advisory agreements, the Company issued warrants to purchase 10,300 shares of Common Stock, with an exercise price of $8.96 per share, for a period of five years from the issuance date. The Company used the Black-Scholes valuation model to calculate the value of these warrants issued to advisors during the year ended December 31, 2022. The fair value of the warrants was estimated at the date of issuance using the following weighted average assumptions: Dividend yield 0%; Expected term five years; weighted average implied volatility of 111.8%; and a weighted average risk-free interest rate of 2.38%. The total expense recorded during the year period was approximately $147,000.\nOn November 22, 2022, pursuant to the November 2022 Private Placement (See Note 6 above), the Company issued warrants to purchase 1,993,485 shares of Common Stock, immediately with at an exercise price of $7.75 per share and expire five years from the date of issuance. The Exercise Price is subject to customary adjustments for stock dividends, stock splits, reclassifications and the like, and subject to price-based adjustment, on a \u201cfull ratchet\u201d basis, in the event of any issuances of Common Stock, or securities convertible, exercisable or exchangeable for Common Stock, at a price below the then-applicable Exercise Price (subject to certain exceptions). The fair value of the warrants was estimated at the date of issuance using the Black-Scholes valuation model with the following weighted average assumptions: Dividend yield 0%, Expected term five years; weighted average implied volatility of 105% and a weighted average Risk-free interest rate of 3.97%. The total value recorded during the year period, classified as a liability on the Company\u2019s balance sheet in November 2022, is approximately $9.6 million. As of December 31, 2023 and 2022, the liability is approximately $9.9 million and $1.4 million, respectively.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2714,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2748,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31",
+     "",
+     "",
+     "December 31",
+     ""
+    ],
+    [
+     "Description:",
+     "",
+     "Level",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Convertible note receivable (Note 3)",
+     "",
+     "3",
+     "",
+     "$",
+     "1,438,500",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liability (Note 6)",
+     "",
+     "3",
+     "",
+     "$",
+     "140,000",
+     "",
+     "$",
+     "1,510,000"
+    ],
+    [
+     "Bifurcated embedded derivative liability (Note 6)",
+     "",
+     "3",
+     "",
+     "$",
+     "1,113,000",
+     "",
+     "$",
+     "369,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2763,
+    "end_line": 2773
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "Fair value measurements discussed herein are based upon certain market assumptions and pertinent information available to management as of and during the years ended December 31, 2023 and 2022. The carrying amounts of cash equivalents, accounts receivable, other current assets, other assets, accounts payable, and accrued expenses approximated their fair values as of December 31, 2023 and 2022 due to their short-term nature. The fair value of the bifurcated embedded derivative related to the convertible preferred stock was estimated using a Monte Carlo simulation model, which uses as inputs the fair value of our common stock and estimates for the equity volatility and traded volume volatility of our common stock, the time to maturity of the convertible preferred stock, the risk-free interest rate for a period that approximates the time to maturity, dividend rate, a penalty dividend rate, and our probability of default. The fair value of the warrant liability was estimated using the Black Scholes Model which uses as inputs the following weighted average assumptions: dividend yield of 0% and 0%; expected term in years of 3.89 and 4.89; equity volatility of 115% and 125%; and risk-free interest rate of 3.93% and 4.00% for the years ended December 31, 2023 and 2022, respectively.\nFair Value on a Recurring Basis\nThe Company follows the guidance in ASC 820 for its financial assets and liabilities that are re-measured and reported at fair value at each reporting period, and non-financial assets and liabilities that are re-measured and reported at fair value at least annually. The estimated fair value of the warrant liability and bifurcated embedded derivatives represent Level 3 measurements. The following table presents information about the Company\u2019s liabilities that are measured at fair value on a recurring basis at December 31, 2023 and 2022, and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "The following table sets forth a summary of the change in the fair value of the warrant liability that is measured at fair value on a recurring basis:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2748,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "F",
+     "page_number": 25
+    },
+    "after": {
+     "line": 2773,
+     "token": "PAGE_BREAK",
+     "id": 123,
+     "namespace": "F",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "fair_value",
+    "aligned_family": "balance_sheet",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Balance on December 31, 2021",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Issuance of warrants",
+     "",
+     "",
+     "9,915,000"
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "",
+     "(8,405,000)"
+    ],
+    [
+     "Balance on December 31, 2022",
+     "",
+     "",
+     "1,510,000"
+    ],
+    [
+     "Issuance of warrants",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "",
+     "(1,370,000)"
+    ],
+    [
+     "Balance on December 31, 2023",
+     "",
+     "$",
+     "140,000"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2776,
+    "end_line": 2790
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "The following table sets forth a summary of the change in the fair value of the warrant liability that is measured at fair value on a recurring basis:",
+   "prose_after": "The following table sets forth a summary of the change in the fair value of the bifurcated embedded derivative liability that is measured at fair value on a recurring basis:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2773,
+     "token": "PAGE_BREAK",
+     "id": 123,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 2810,
+     "token": "PAGE_BREAK",
+     "id": 124,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Balance on December 31, 2021",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Issuance of warrants",
+     "",
+     "",
+     "2,191,300"
+    ],
+    [
+     "Change in fair value of warrant liability",
+     "",
+     "",
+     "(1,821,900)"
+    ],
+    [
+     "Balance on December 31, 2022",
+     "",
+     "$",
+     "369,400"
+    ],
+    [
+     "Change in fair value of bifurcated embedded derivative",
+     "",
+     "",
+     "743,600"
+    ],
+    [
+     "Balance on December 31, 2023",
+     "",
+     "$",
+     "1,113,000"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2793,
+    "end_line": 2806
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "The following table sets forth a summary of the change in the fair value of the bifurcated embedded derivative liability that is measured at fair value on a recurring basis:",
+   "prose_after": "Note 10 \u2013 Subsequent Events\nRefer to Notes 6 and 7 for disclosure of applicable subsequent events.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2773,
+     "token": "PAGE_BREAK",
+     "id": 123,
+     "namespace": "F",
+     "page_number": 26
+    },
+    "after": {
+     "line": 2810,
+     "token": "PAGE_BREAK",
+     "id": 124,
+     "namespace": "F",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

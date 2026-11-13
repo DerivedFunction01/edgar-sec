@@ -1,0 +1,796 @@
+{
+ "accession": "0001193125-26-132452",
+ "cik": "0002012263",
+ "form": "10-K",
+ "filing_date": "2026-03-31",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "bmo_2024-c8_10-k_2025.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "35-7410994"
+    ],
+    [
+     "New York",
+     "35-7410995"
+    ],
+    [
+     "(State or other jurisdiction of\n\nincorporation or organization of the issuing entity)",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [
+    "35-7410994"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 92,
+    "end_line": 99
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Central Index Key Number: 0001541557)\nZions Bancorporation, N.A.\n(Central Index Key Number: 0000109380)\nLMF Commercial, LLC\n(Central Index Key Number: 0001592182)\nUBS AG\n(Central Index Key Number: 0001685185)\nBSPRT CMBS Finance, LLC\n(Central Index Key Number: 0001722518)\n(Exact name of sponsors as specified in their respective charters)",
+   "prose_after": "c/o Citibank, N.A.\n388 Greenwich Street, 26th Floor\nNew York, New York 10013\n(Address of principal executive offices of issuing entity)\n(212) 816-4936\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "c/o Citibank, N.A.\n388 Greenwich Street, 26th Floor\nNew York, New York 10013\n(Address of principal executive offices of issuing entity)\n(212) 816-4936\nRegistrant\u2019s telephone number, including area code\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 164,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description"
+    ],
+    [
+     "4.1",
+     "Pooling and Servicing Agreement, dated as of March 1, 2024 (the \u201cBMO 2024-C8 PSA\u201d), by and among BMO Commercial Mortgage Securities LLC, as depositor, Trimont LLC (as successor to Wells Fargo Bank, National Association), as a master servicer, National Cooperative Bank, N.A., solely with respect to the NCB Mortgage Loans, as a master servicer and a special servicer, Rialto Capital Advisors, LLC, as a special servicer, BellOak, LLC, as operating advisor and as asset representations reviewer, Citibank, N.A., as certificate administrator, and Wilmington Savings Fund Society, FSB, as trustee (filed as Exhibit 4.1 to the registrant\u2019s Current Report on Form 8-K/A dated March 28, 2024, and filed by the registrant on March 28, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). (see Explanatory Note #1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Pooling and Servicing Agreement, dated as of December 1, 2023 (the \u201cMSWF 2023-2 PSA\u201d), by and among Wells Fargo Commercial Mortgage Securities, Inc., as depositor, Trimont LLC (as successor to Wells Fargo Bank, National Association), as master servicer, Argentic Services Company LP, as special servicer, Computershare Trust Company, National Association, as certificate administrator and as trustee, and BellOak, LLC, as operating advisor and as asset representations reviewer (filed as Exhibit 4.2 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). (see Explanatory Note #2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Pooling and Servicing Agreement, dated as of December 1, 2023 (the \u201cBenchmark 2023-B40 PSA\u201d), by and among J.P. Morgan Chase Commercial Mortgage Securities Corp., as depositor, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer, LNR Partners, LLC, as special servicer, Computershare Trust Company, National Association, as certificate administrator, Computershare Trust Company, National Association, as trustee, and Pentalpha Surveillance LLC, as operating advisor and as asset representations reviewer (filed as Exhibit 4.3 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). (see Explanatory Note #3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Pooling and Servicing Agreement, dated as of December 1, 2023 (the \u201cBMO 2023-C7 PSA\u201d), by and among BMO Commercial Mortgage Securities LLC, as depositor, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer, KeyBank National Association, as special servicer, Pentalpha Surveillance LLC, as operating advisor and as asset representations reviewer, Computershare Trust Company, National Association, as certificate administrator, and Computershare Trust Company, National Association, as trustee (filed as Exhibit 4.4 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). (see Explanatory Note #4)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 318,
+    "end_line": 346
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Item 1122 of Regulation AB\nThe reports on assessment of compliance with servicing criteria for asset-backed securities and related attestation reports are attached hereto under Item 15.\nItem 1123 of Regulation AB\nThe servicer compliance statements are attached hereto under Item 15.\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(a) List the following documents filed as a part of the report:\n(1)Not Applicable\n(2)Not Applicable\n(3)Exhibits listed below are either included or incorporated by reference as indicated below:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 346,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "4.5",
+     "Pooling and Servicing Agreement, dated as of February 1, 2024 (the \u201cBMO 2024-5C3 PSA\u201d), by and among BMO Commercial Mortgage Securities LLC, as depositor, Trimont LLC (as successor to Wells Fargo Bank, National Association), as master servicer, Midland Loan Services, a Division of PNC Bank, National Association (as successor to Greystone Servicing Company LLC), as special servicer, Park Bridge Lender Services LLC, as operating advisor and as asset representations reviewer, Computershare Trust Company, National Association, as certificate administrator, and Computershare Trust Company, National Association, as trustee (filed as Exhibit 4.5 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). (see Explanatory Note #5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31",
+     "Rule 15d-14(d) Certification"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33",
+     "Reports on assessment of compliance with servicing criteria for asset-backed securities. (see Explanatory Note #6)"
+    ],
+    [
+     "33.1a",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as a master servicer prior to March 1, 2025"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.1b",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as a master servicer on and after March 1, 2025"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.1c",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Northmarq Capital, LLC, as servicing function participant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.2",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, National Cooperative Bank, N.A., as a master servicer solely with respect to the NCB mortgage loans"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.3",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Rialto Capital Advisors, LLC, as a special servicer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.4",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, National Cooperative Bank, N.A., as a special servicer solely with respect to the NCB mortgage loans (see Exhibit 33.2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.5",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, BellOak, LLC, as operating advisor"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.6",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Citibank, N.A., as certificate administrator"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.7",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Citibank, N.A., as custodian"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.8",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.9a",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 33.1a)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.9b",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as master servicer on and after March 1, 2025 under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 33.1b)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.10",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Argentic Services Company LP, as special servicer under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.11",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, BellOak LLC, as operating advisor under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 33.5)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 347,
+    "end_line": 392
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "33.12 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 33.13 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 33.14 Report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 33.8) 33.15 Report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 33.16 Report on assessment of compliance with servicing criteria for asset-backed securities, LNR Partners, LLC, as special servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 33.17 Report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 33.18 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 33.12) 33.19 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 33.13) 33.20 Report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.15) 33.21 Report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.17) 33.22 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.12) 33.23 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.13) 33.24a Report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.1a) 33.24b Report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as master servicer on and after March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.1b) 33.25 Report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as special servicer on and after March 10, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.15)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 346,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "33.26",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.12)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.27",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.13)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "33.28",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.8)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34",
+     "Attestation reports on assessment of compliance with servicing criteria for asset-backed securities. (see Explanatory Note #6)"
+    ],
+    [
+     "34.1a",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as a master servicer prior to March 1, 2025"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.1b",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as a master servicer on and after March 1, 2025"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.1c",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Northmarq Capital, LLC, as servicing function participant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.2",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, National Cooperative Bank, N.A., as a master servicer solely with respect to the NCB mortgage loans"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.3",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Rialto Capital Advisors, LLC, as a special servicer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.4",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, National Cooperative Bank, N.A., as a special servicer solely with respect to the NCB mortgage loans (see Exhibit 34.2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.5",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, BellOak, LLC, as operating advisor"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.6",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Citibank, N.A., as certificate administrator"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.7",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Citibank, N.A., as custodian"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.8",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.9a",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 34.1a)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.9b",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as master servicer on and after March 1, 2025 under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 34.1b)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.10",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Argentic Services Company LP, as special servicer under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.11",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, BellOak LLC, as operating advisor under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 34.5)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 395,
+    "end_line": 441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "33.12 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 33.13 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 33.14 Report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 33.8) 33.15 Report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 33.16 Report on assessment of compliance with servicing criteria for asset-backed securities, LNR Partners, LLC, as special servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 33.17 Report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 33.18 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 33.12) 33.19 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 33.13) 33.20 Report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.15) 33.21 Report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.17) 33.22 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.12) 33.23 Report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 33.13) 33.24a Report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.1a) 33.24b Report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as master servicer on and after March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.1b) 33.25 Report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as special servicer on and after March 10, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 33.15)",
+   "prose_after": "34.12 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 34.13 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 34.14 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 34.8) 34.15 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 34.16 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, LNR Partners, LLC, as special servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 34.17 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 34.18 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 34.12) 34.19 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 34.13) 34.20 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.15) 34.21 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.17) 34.22 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.12) 34.23 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.13) 34.24a Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.1a) 34.24b Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as master servicer on and after March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.1b) 34.25 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as special servicer on and after March 10, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.15)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 394,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "34.26",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.12)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.27",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.13)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "34.28",
+     "Attestation report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.8)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35",
+     "Servicer compliance statements. (see Explanatory Note #7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.1a",
+     "Servicer compliance statement, Wells Fargo Bank, National Association, as a master servicer prior to March 1, 2025"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.1b",
+     "Servicer compliance statement, Trimont LLC, as a master servicer on and after March 1, 2025"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.2",
+     "Servicer compliance statement, National Cooperative Bank, N.A., as a master servicer solely with respect to the NCB mortgage loans"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.3",
+     "Servicer compliance statement, Rialto Capital Advisors, LLC, as a special servicer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.4",
+     "Servicer compliance statement, National Cooperative Bank, N.A., as a special servicer solely with respect to the NCB mortgage loans (see Exhibit 35.2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.5",
+     "Servicer compliance statement, Citibank, N.A., as certificate administrator"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.6a",
+     "Servicer Compliance Statement, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 35.1a)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.6b",
+     "Servicer Compliance Statement, Trimont LLC, as master servicer on and after March 1, 2025 under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 35.1b)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.7",
+     "Servicer Compliance Statement, Argentic Services Company LP, as special servicer under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.8",
+     "Servicer Compliance Statement, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.9",
+     "Servicer Compliance Statement. LNR Partners, LLC, as special servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.10",
+     "Servicer Compliance Statement, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 35.8)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.11a",
+     "Servicer Compliance Statement, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 35.1a)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.11b",
+     "Servicer Compliance Statement, Trimont LLC, as master servicer on and after March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 35.1b)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "35.12",
+     "Servicer Compliance Statement, Midland Loan Services, a Division of PNC Bank, National Association, as special servicer on and after March 10, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 35.8)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 444,
+    "end_line": 494
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "34.12 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 34.13 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced 34.14 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, CoreLogic Solutions, LLC, as servicing function participant under the MSWF 2023-2 PSA pursuant to which the 60 Hudson mortgage loan and the Arundel Mills and Marketplace mortgage loan are serviced (see Exhibit 34.8) 34.15 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 34.16 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, LNR Partners, LLC, as special servicer under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 34.17 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced 34.18 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 34.12) 34.19 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the Benchmark 2023-B40 PSA pursuant to which the Axis Apartments mortgage loan is serviced (see Exhibit 34.13) 34.20 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as master servicer under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.15) 34.21 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Pentalpha Surveillance LLC, as operating advisor under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.17) 34.22 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as custodian under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.12) 34.23 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Computershare Trust Company, National Association, as trustee under the BMO 2023-C7 PSA pursuant to which the Woodfield Mall mortgage loan is serviced (see Exhibit 34.13) 34.24a Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Wells Fargo Bank, National Association, as master servicer prior to March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.1a) 34.24b Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Trimont LLC, as master servicer on and after March 1, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.1b) 34.25 Attestation report on assessment of compliance with servicing criteria for asset-backed securities, Midland Loan Services, a Division of PNC Bank, National Association, as special servicer on and after March 10, 2025 under the BMO 2024-5C3 PSA pursuant to which the OPI Portfolio mortgage loan is serviced (see Exhibit 34.15)",
+   "prose_after": "99.1 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between Bank of Montreal and BMO Commercial Mortgage Securities LLC, pursuant to which Bank of Montreal sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.1 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.2 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between BSPRT CMBS Finance, LLC and BMO Commercial Mortgage Securities LLC, pursuant to which BSPRT CMBS Finance, LLC sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.2 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.3 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between Citi Real Estate Funding Inc. and BMO Commercial Mortgage Securities LLC, pursuant to which Citi Real Estate Funding Inc. sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.3 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.4 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between German American Capital Corporation and BMO Commercial Mortgage Securities LLC, pursuant to which German American Capital Corporation sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.4 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.5 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between Goldman Sachs Mortgage Company and BMO Commercial Mortgage Securities LLC, pursuant to which Goldman Sachs Mortgage Company sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.5 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.6 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between Ladder Capital Finance LLC, Ladder Capital Finance Holdings LLLP, Series REIT of Ladder Capital Finance Holdings LLLP, Series TRS of Ladder Capital Finance Holdings LLLP and BMO Commercial Mortgage Securities LLC, pursuant to which Ladder Capital Finance LLC sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.6 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.7 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between LMF Commercial, LLC and BMO Commercial Mortgage Securities LLC, pursuant to which LMF Commercial, LLC sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.7 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.8 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between Morgan Stanley Mortgage Capital Holdings LLC and BMO Commercial Mortgage Securities LLC, pursuant to which Morgan Stanley Mortgage Capital Holdings LLC sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.8 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein). 99.9 Mortgage Loan Purchase Agreement, dated as of March 1, 2024, between National Cooperative Bank, N.A. and BMO Commercial Mortgage Securities LLC, pursuant to which National Cooperative Bank, N.A. sold certain mortgage loans to BMO Commercial Mortgage Securities LLC (filed as Exhibit 99.9 to the registrant\u2019s Current Report on Form 8-K dated March 18, 2024, and filed by the registrant on March 18, 2024 under Commission File No. 333-255934-11, and is incorporated by reference herein).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 494,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

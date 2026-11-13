@@ -1,0 +1,4792 @@
+{
+ "accession": "0001823144-22-000008",
+ "cik": "0001823144",
+ "form": "10-Q",
+ "filing_date": "2022-05-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "cmpo-20220331.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "85-2749902"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended March 31, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from to\nCommission File Number 001-39687\nCompoSecure, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "309 Pierce St.\nSomerset, NJ 08873\n(908) 518-0500\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common Stock, $0.0001 par value per share",
+     "CMPO",
+     "The Nasdaq Global Market"
+    ],
+    [
+     "Redeemable Warrants, each whole warrant exercisable for one share of Class A Common Stock",
+     "CMPOW",
+     "The Nasdaq Global Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 46
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "309 Pierce St.\nSomerset, NJ 08873\n(908) 518-0500\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I.",
+     "Financial Information",
+     "2"
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "2"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets (Unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "Consolidated Statements of Comprehensive Income (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019Deficit (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements (Unaudited)",
+     "8"
+    ],
+    [
+     "Item 2.",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operation",
+     "26"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "32"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "33"
+    ],
+    [
+     "Part II.",
+     "Other Information",
+     "34"
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "34"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "34"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "57"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "57"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "57"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "57"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "57"
+    ],
+    [
+     "Signatures",
+     "",
+     "58"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 67,
+    "end_line": 91
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [X]\nNon-accelerated filer    [ ]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 7(a)(2)(B) of the Securities Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act): Yes [ ] No [X]\nAs of May 2, 2022, there were approximately 14,997,107 shares of the shares of the registrant's Class A common stock outstanding and 61,086,800 shares of the registrant's Class B common stock outstanding.\nCOMPOSECURE HOLDINGS, INC.\nTable of Contents",
+   "prose_after": "GLOSSARY\nIn addition to the terms defined elsewhere in this report, the following terms shall have the meanings set forth below when used in this report:\n\u201cArculus Ecosystem\u201d refers hardware, software, payments, and services for Digital Assets having a foundation in the secure Arculus Platform technology for providing secure storage of Digital Assets.\n\u201cArculus Key\u2122 card\u201d refers to the Company\u2019s initial Cold Storage hardware device configured to interface with CompoSecure\u2019s initial Arculus Wallet\u2122 App.\n\u201cArculus Platform\u201d refers to the Company\u2019s three-factor authentication security platform with broad industry applicability for use in the Digital Asset marketplace, including the initial Arculus Cold Storage Wallet products.\n\u201cArculus Wallet\u2122\u201d refers to the Company\u2019s initial Wallet App configured to interface with the Arculus Key card Cold Storage.\n\u201cApp\u201d refers to a software application available on a mobile or cellular telephone.\n\u201cArculus Cold Storage Wallet\u201d refers generally to databases that maintain information across a network of computers in a decentralized or distributed manner, which networks often use cryptographic protocols to ensure data integrity. Blockchains often are used to issue and transfer ownership of Digital Assets.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 62,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 91,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "15,478",
+     "$",
+     "21,944"
+    ],
+    [
+     "Accounts receivable, net",
+     "38,584",
+     "",
+     "27,925",
+     ""
+    ],
+    [
+     "Inventories",
+     "27,198",
+     "",
+     "25,806",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "7,019",
+     "",
+     "2,596",
+     ""
+    ],
+    [
+     "Total current assets",
+     "88,279",
+     "",
+     "78,271",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "21,246",
+     "",
+     "22,177",
+     ""
+    ],
+    [
+     "Right of use asset, net",
+     "4,979",
+     "",
+     "5,246",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "24,941",
+     "",
+     "25,650",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "4,036",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deposits and other assets",
+     "10",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "143,491",
+     "$",
+     "131,354"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "$",
+     "14,063",
+     "$",
+     "12,500"
+    ],
+    [
+     "Current portion of lease liabilities",
+     "1,134",
+     "",
+     "1,119",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "4,810",
+     "",
+     "7,058",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "16,642",
+     "",
+     "13,220",
+     ""
+    ],
+    [
+     "Issuance costs payable",
+     "\u2014",
+     "",
+     "23,107",
+     ""
+    ],
+    [
+     "Bonus payable",
+     "1,737",
+     "",
+     "3,512",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "38,386",
+     "",
+     "60,516",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, net of deferred finance costs",
+     "228,954",
+     "",
+     "233,132",
+     ""
+    ],
+    [
+     "Convertible notes",
+     "127,008",
+     "",
+     "126,897",
+     ""
+    ],
+    [
+     "Derivative liability - convertible notes redemption make-whole provision",
+     "800",
+     "",
+     "552",
+     ""
+    ],
+    [
+     "Warrant liability",
+     "36,695",
+     "",
+     "35,271",
+     ""
+    ],
+    [
+     "Line of credit",
+     "25,000",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Lease liabilities",
+     "4,421",
+     "",
+     "4,709",
+     ""
+    ],
+    [
+     "Tax receivable agreement liability",
+     "24,500",
+     "",
+     "24,500",
+     ""
+    ],
+    [
+     "Earnout consideration liability",
+     "34,320",
+     "",
+     "38,427",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "520,084",
+     "",
+     "539,004",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 14)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable non-controlling interest",
+     "608,311",
+     "",
+     "608,311",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 10,000,000 shares authorized, no shares issued and outstanding",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock, $0.0001 par value; 250,000,000 shares authorized, 14,954,982 and 14,929,982 shares issued and outstanding as of March 31, 2022 and December 31, 2021, respectively",
+     "1",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Class B common stock, $0.0001 par value; 75,000,000 shares authorized, 61,136,800 shares issued and outstanding as of March 31, 2022 and December 31, 2021",
+     "6",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "12,541",
+     "",
+     "12,261",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "3,869",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(1,001,321)",
+     "",
+     "(1,028,229)",
+     ""
+    ],
+    [
+     "Total Stockholders' deficit",
+     "(984,904)",
+     "",
+     "(1,015,961)",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "143,491",
+     "$",
+     "131,354"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 213,
+    "end_line": 277
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": null
+   },
+   "prose_before": "These and other factors that could cause actual results to differ from those implied by the forward- looking statements in this report are more fully described in the \u201cRisk Factors\u201d section. The risks described in \u201cRisk Factors\u201d are not exhaustive. New risk factors emerge from time to time and it is not possible for us to predict all such risk factors, nor can the Company assess the impact of all such risk factors on its business or the extent to which any factor or combination of factors may cause actual results to differ materially from those contained in any forward-looking statements. All forward-looking statements attributable to the Company or persons acting on its behalf are expressly qualified in their entirety by the foregoing cautionary statements. The Company undertakes no obligations to update or revise publicly any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by law.\nPart I - Financial Statements\nItem 1. Financial Statements\nCOMPOSECURE, INC. Consolidated Balance Sheets ($ in thousands, except par value and share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Operations (Unaudited) ($ in thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 210,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 280,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "84,183",
+     "$",
+     "63,722"
+    ],
+    [
+     "Cost of sales",
+     "35,424",
+     "",
+     "29,406",
+     ""
+    ],
+    [
+     "Gross profit",
+     "48,759",
+     "",
+     "34,316",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "17,715",
+     "",
+     "8,057",
+     ""
+    ],
+    [
+     "Selling expenses",
+     "1,062",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income from operations",
+     "29,982",
+     "",
+     "26,259",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revaluation of warrant liability",
+     "(1,424)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Revaluation of earnout consideration liability",
+     "4,107",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability - convertible notes redemption make-whole provision",
+     "(248)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "(4,334)",
+     "",
+     "(2,643)",
+     ""
+    ],
+    [
+     "Amortization of deferred financing costs",
+     "(632)",
+     "",
+     "(394)",
+     ""
+    ],
+    [
+     "Total other expenses, net",
+     "(2,531)",
+     "",
+     "(3,037)",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "27,451",
+     "",
+     "23,222",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "(543)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "26,908",
+     "$",
+     "23,222"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income attributable to redeemable non-controlling interests",
+     "$",
+     "22,167",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Net income attributable to CompoSecure, Inc.",
+     "$",
+     "4,741",
+     "$",
+     "23,222"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per share attributable to Class A common stockholders - basic",
+     "$",
+     "0.32",
+     "n/a",
+     ""
+    ],
+    [
+     "Net income per share attributable to Class A common stockholders - diluted",
+     "$",
+     "0.16",
+     "n/a",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares used to compute net income per share attributable to Class A common stockholders - basic (in thousands)",
+     "14,934",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Weighted average shares used to compute net income per share attributable to Class A common stockholders - diluted (in thousands)",
+     "32,265",
+     "",
+     "n/a",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 283,
+    "end_line": 323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Operations (Unaudited) ($ in thousands, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Comprehensive Income (Unaudited) ($ in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 280,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "26,908",
+     "$",
+     "23,222"
+    ],
+    [
+     "Other comprehensive income, net:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized gain on derivative - interest rate swap (net of tax of $167)",
+     "3,869",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total other comprehensive income, net",
+     "3,869",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "30,777",
+     "$",
+     "23,222"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 329,
+    "end_line": 344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Comprehensive Income (Unaudited) ($ in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Stockholders' Deficit (Unaudited) (in thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 326,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "Accumulated",
+     "",
+     "Total Stockholders'",
+     "",
+     "Redeemable Non-Controlling",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Income",
+     "",
+     "Deficit",
+     "",
+     "Deficit",
+     "",
+     "Interest",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2021",
+     "14,929,982",
+     "$",
+     "1",
+     "61,136,800",
+     "$",
+     "6",
+     "$",
+     "12,261",
+     "$",
+     "\u2014",
+     "$",
+     "(1,028,229)",
+     "$",
+     "(1,015,961)",
+     "$",
+     "608,311"
+    ],
+    [
+     "Issuance costs related to Business combination",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "(726)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(726)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,006",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,006",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "4,741",
+     "",
+     "4,741",
+     "",
+     "22,167",
+     ""
+    ],
+    [
+     "Restricted stock units issued pursuant to equity-based plans",
+     "25,000",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrealized gain on derivative - interest rate swap",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "3,869",
+     "",
+     "\u2014",
+     "",
+     "3,869",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjustment of redeemable non-controlling interests to redemption value",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "22,167",
+     "",
+     "22,167",
+     "",
+     "(22,167)",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2022",
+     "14,954,982",
+     "$",
+     "1",
+     "61,136,800",
+     "$",
+     "6",
+     "$",
+     "12,541",
+     "$",
+     "3,869",
+     "$",
+     "(1,001,321)",
+     "$",
+     "(984,904)",
+     "$",
+     "608,311"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "Class B Common Stock",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "Accumulated Other Comprehensive",
+     "",
+     "Accumulated",
+     "",
+     "Total Stockholders'",
+     "",
+     "Redeemable Non-Controlling",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Income",
+     "",
+     "Deficit",
+     "",
+     "Deficit",
+     "",
+     "Interest",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2020",
+     "\u2014",
+     "$",
+     "\u2014",
+     "61,136,800",
+     "$",
+     "6",
+     "$",
+     "6,148",
+     "$",
+     "\u2014",
+     "$",
+     "(198,708)",
+     "$",
+     "(192,554)",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Distributions",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3,276)",
+     "",
+     "(3,276)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "441",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "441",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "23,222",
+     "",
+     "23,222",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance as of March 31, 2021",
+     "\u2014",
+     "$",
+     "\u2014",
+     "61,136,800",
+     "$",
+     "6",
+     "$",
+     "6,589",
+     "$",
+     "\u2014",
+     "$",
+     "(178,762)",
+     "$",
+     "(172,167)",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 350,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Stockholders' Deficit (Unaudited) (in thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Cash Flows (Unaudited) ($ in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "26,908",
+     "$",
+     "23,222"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "by operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "2,349",
+     "",
+     "2,585",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "1,006",
+     "",
+     "441",
+     ""
+    ],
+    [
+     "Amortization of deferred finance costs",
+     "620",
+     "",
+     "386",
+     ""
+    ],
+    [
+     "Change in fair value of earnout consideration liability",
+     "(4,107)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Revaluation of warrant liability",
+     "1,424",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of derivative liability",
+     "248",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred tax expense",
+     "543",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(10,659)",
+     "",
+     "(16,677)",
+     ""
+    ],
+    [
+     "Inventories",
+     "(1,392)",
+     "",
+     "(859)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "(4,423)",
+     "",
+     "(377)",
+     ""
+    ],
+    [
+     "Deposits and other assets",
+     "\u2014",
+     "",
+     "(896)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "(2,248)",
+     "",
+     "2,483",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "3,422",
+     "",
+     "(4,381)",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "(1,782)",
+     "",
+     "178",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "11,909",
+     "",
+     "6,105",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of property and equipment",
+     "(1,417)",
+     "",
+     "(275)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(1,417)",
+     "",
+     "(275)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from line of credit",
+     "10,000",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment of line of credit",
+     "\u2014",
+     "",
+     "(5,000)",
+     ""
+    ],
+    [
+     "Payment of term loan",
+     "(3,125)",
+     "",
+     "(6,000)",
+     ""
+    ],
+    [
+     "Distributions",
+     "\u2014",
+     "",
+     "(3,276)",
+     ""
+    ],
+    [
+     "Payment of issuance costs related to business combination",
+     "(23,833)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "(16,958)",
+     "",
+     "(14,276)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "(6,466)",
+     "",
+     "(8,446)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "21,944",
+     "",
+     "13,422",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "15,478",
+     "$",
+     "4,976"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplementary disclosure of cash flow information:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest expense",
+     "$",
+     "4,734",
+     "$",
+     "2,643"
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "$",
+     "4,036",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 387,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\nCOMPOSECURE, INC. Consolidated Statements of Cash Flows (Unaudited) ($ in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated financial statements.\n1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nCompoSecure, Inc. (\u201cCompoSecure\u201d or the \u201cCompany\u201d) is a manufacturer and designer of complex metal, plastic, composite ID and proprietary financial transaction cards. The Company started operations in 2000 and provides products and services primarily to global financial institutions, plastic card manufacturers, government agencies, system integrators, and security specialists. The Company is located in Somerset, New Jersey.\nThe Company is a world-class platform for next generation payment technology, security, and an emergent provider of Cryptocurrency and Digital Asset storage and security solutions. For two decades, through its combination of large-scale, advanced manufacturing capabilities and deep technological expertise, the Company has driven key Payments Industry innovations in materials science, Metal Form Factor design, dual interface functionality, and security. The distinct value proposition of the Company\u2019s products has resulted in widespread adoption by major banks, financial institutions and leading FinTech innovators to support their acquisition and retention of consumer and business card customers. The Company maintains trusted, highly-embedded and long-term customer relationships with an expanding set of global issuers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 384,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "28,550",
+     "$",
+     "27,474"
+    ],
+    [
+     "Work in process",
+     "1,359",
+     "",
+     "582",
+     ""
+    ],
+    [
+     "Finished goods",
+     "703",
+     "",
+     "363",
+     ""
+    ],
+    [
+     "Inventory reserve",
+     "(3,414)",
+     "",
+     "(2,613)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "27,198",
+     "$",
+     "25,806"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 532
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "INVENTORIES"
+    }
+   },
+   "prose_before": "In March 2020, the FASB issued ASU 2020-04, Reference Rate Reform (\"ASU 2020-04\"). ASU 2020-04 provides optional guidance for a limited period of time to ease potential accounting impact associated with transitioning away from reference rates that are expected to be discontinued, such as the London Interbank Offered Rate (\"LIBOR\"). The amendments in this ASU apply only to contracts, hedging relationships, and other transactions that reference London Interbank Offered Rate (\"LIBOR\") or another reference rate expected to be discontinued. The amendments in ASU 2020-04 can be adopted as of March 12, 2020 and are effective through December 31, 2022. However, it cannot be applied to contract modifications that occur after December 31, 2022. LIBOR was expected to be phased out at the end 2021. We do not currently have any contracts that have been changed to a new reference rate, but we will continue to evaluate our contracts and the effects of this standard on our consolidated financial statements prior to adoption.\n3. INVENTORIES\nThe major classes of inventories were as follows:",
+   "prose_after": "The Company reviews inventory for slow-moving or obsolete amounts based on expected product sales volume and provides reserves against the carrying amount of inventory as appropriate.\n4. PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 510,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "inventory",
+    "aligned_family": "inventory",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Useful Life",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "5 - 10 years",
+     "$",
+     "59,528",
+     "$",
+     "59,437"
+    ],
+    [
+     "Furniture and fixtures",
+     "3 - 5 years",
+     "987",
+     "",
+     "955",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "3 - 5 years",
+     "936",
+     "",
+     "925",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "Shorter of lease term or estimated useful life",
+     "11,578",
+     "",
+     "11,358",
+     ""
+    ],
+    [
+     "Vehicles",
+     "5 years",
+     "264",
+     "",
+     "264",
+     ""
+    ],
+    [
+     "Software",
+     "1 - 3 years",
+     "2,889",
+     "",
+     "2,889",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "2,048",
+     "",
+     "985",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "78,230",
+     "",
+     "76,813",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation and amortization",
+     "",
+     "(56,984)",
+     "",
+     "(54,636)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "$",
+     "21,246",
+     "$",
+     "22,177"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "PROPERTY AND EQUIPMENT"
+    }
+   },
+   "prose_before": "The Company reviews inventory for slow-moving or obsolete amounts based on expected product sales volume and provides reserves against the carrying amount of inventory as appropriate.\n4. PROPERTY AND EQUIPMENT\nProperty and equipment consisted of the following:",
+   "prose_after": "Depreciation and amortization expense on property and equipment was $2,349 and $2,585 for the three months ended March 31, 2022 and 2021, respectively.\n5. DEBT\nExchangeable Senior Notes\nOn April 19, 2021, concurrent with the execution of the Merger Agreement, the Company and its wholly owned subsidiary, Holdings, entered into subscription agreements (the \u201cNote Subscription Agreements\u201d) with certain investors (\"Notes Investors\") pursuant to which such Notes Investors, severally and not jointly, purchased on the Closing Date of the Business Combination, senior notes (the \u201cExchangeable Notes\u201d) issued by the Company and guaranteed by the Company's wholly owned subsidiary, Holdings in an aggregate principal amount of up to $130,000 that are exchangeable into shares of Class A common stock at a conversion price of $11.50 per share, subject to the terms and conditions of an Indenture entered by the Company and its wholly owned subsidiary, Holdings, and the trustee under the Indenture. The Exchangeable Notes bear interest at a rate of 7% per year, payable semiannually in arrears on each June 15 and December 15, commencing on June 15, 2022, to holders of record at the close of business on the preceding June 1 and December 1 (whether or not such day is a Business Day), respectively. The Exchangeable Notes mature in five years on December 27, 2026. The Company will settle any exchange of the Exchangeable Notes in shares of Class A common stock, with cash payable in lieu of any fractional shares. In connection with the issuance of the Exchangeable Notes, the Company entered into a Registration Rights Agreement, pursuant to which the Notes Investors received certain registration rights with respect to the Class A common stock.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 510,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Total debt",
+     "$",
+     "376,875",
+     "$",
+     "380,000"
+    ],
+    [
+     "Less: current portion of term loan (scheduled payments)",
+     "(14,063)",
+     "",
+     "(12,500)",
+     ""
+    ],
+    [
+     "Less: deferred financing costs, net",
+     "(6,850)",
+     "",
+     "(7,471)",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "355,962",
+     "$",
+     "360,029"
+    ],
+    [
+     "Derivative liability - redemption with make-whole provision",
+     "$",
+     "800",
+     "$",
+     "552"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 635,
+    "end_line": 647
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "Interest on the Revolver and Term Loan are based on the outstanding principal amount during the interest period multiplied by the fluctuating bank prime rate plus the applicable margin of 2.00% or for portions of the debt converted to Euro Loans the quoted LIBOR rate plus the applicable margin of 3.00%. At March 31, 2022 and 2021, the effective interest rate on the Revolver and Term Loan was 3.65% and 4.36% per year, respectively. Interest is payable monthly in arrears or upon maturity of the Euro loans that can run 30, 90, 120, 180 day time periods. The Company must pay quarterly an annual commitment fee of 0.40% on the unused portion of the $60 million Revolver.\nThe credit facility is secured by substantially all of the assets of the Company. The Company recognized $3,011 and $3,037 of interest expense related to the Revolver and the Term Loan for the three months ended March 31, 2022 and 2021, respectively.\nThe terms of the credit facilities contain certain financial covenants including a minimum interest coverage ratio, a maximum total debt to EBITDA ratio and a minimum fixed charge coverage ratio. At March 31, 2022 and December 31, 2021, the Company was in compliance with all financial covenants.\nAs of March 31, 2022 and December 31, 2021, there were $25,000 and $15,000 balances outstanding on the Revolver. At March 31, 2022, there was $35,000 of availability for borrowing under the Revolver.\nThe balances payable under all borrowing facilities are as follows:",
+   "prose_after": "The maturity of all the borrowings facilities is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Remainder of 2022",
+     "$",
+     "9,375"
+    ],
+    [
+     "2023",
+     "18,750",
+     ""
+    ],
+    [
+     "2024",
+     "18,750",
+     ""
+    ],
+    [
+     "2025",
+     "200,000",
+     ""
+    ],
+    [
+     "2026",
+     "130,000",
+     ""
+    ],
+    [
+     "Total debt",
+     "$",
+     "376,875"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "DEBT"
+    }
+   },
+   "prose_before": "The maturity of all the borrowings facilities is as follows:",
+   "prose_after": "The Company is exposed to interest rate risk on variable interest rate debt obligations. To manage interest rate risk, the Company had entered into an interest rate swap agreement on November 5, 2020 to hedge forecasted interest rate payments on its variable rate debt. In January 2022, the Company cancelled the November 2020 swap agreement and entered into a new interest rate swap agreement. The Company recognized $400 gain upon the settlement of the November 2020 interest rate swap agreement. At March 31, 2022, the Company\u2019s interest rate swap contract outstanding had a notional amount of $125,000 maturing in December 2025. The Company has designated the interest rate swap agreement as a cash flow hedge for accounting purposes, that was determined to be effective. The Company determined the fair value of the interest rate swap to be zero at the inception of the agreement and $4,036 at March 31, 2022. The Company reflects the realized gains and losses of the actual monthly settlement activity of the interest rate swap in its consolidated statements of operations. The Company reflects the unrealized changes in fair value of the interest rate swap at each reporting period in other comprehensive income and a derivative asset or liability will be recognized at each reporting period in the Company\u2019s financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 629,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Balance Sheet Classification",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Right-of-use assets",
+     "Right of use assets",
+     "$",
+     "4,979",
+     "$",
+     "5,246"
+    ],
+    [
+     "Current lease liabilities",
+     "Current portion of lease liabilities",
+     "1,134",
+     "",
+     "1,119",
+     ""
+    ],
+    [
+     "Non-current lease liabilities",
+     "Non-current portion of lease liabilities",
+     "4,421",
+     "",
+     "4,709",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 705
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Effective June 16, 2016, the Company entered into a 10-year lease for a new facility. The lease contains escalating rental payments and terminates on September 30, 2026. The agreement also provides for a renewal option at a fixed rate. The base rent is currently approximately $825 per year, which reflects an annual 3% escalation factor.\nThe Company\u2019s leases have remaining lease terms of 1 to 5 years. The Company does not include any renewal options in lease terms when calculating lease liabilities as the Company is not reasonably certain that it will exercise these options. Two of the leases include the early termination option in the lease term, however, it was not included in the lease terms when calculating the lease liability since the Company determined that it is reasonably certain it will not terminate the leases prior to the termination date.\nThe weighted-average remaining lease term for the operating leases was 4.6 years at March 31, 2022. The weighted-average discount rate was 3.74% at March 31, 2022.\nROU assets and lease liabilities related to the operating leases are as follows:",
+   "prose_after": "The Company has lease agreements that contain both lease and non-lease components. The Company accounts for lease components together with non-lease components (e.g., common-area maintenance). The components of lease costs were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-month period ended March 31, 2022",
+     "",
+     "Three-month period ended March 31, 2021",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "319",
+     "$",
+     "319"
+    ],
+    [
+     "Variable lease cost",
+     "139",
+     "",
+     "125",
+     ""
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "458",
+     "$",
+     "444"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 708,
+    "end_line": 717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The Company has lease agreements that contain both lease and non-lease components. The Company accounts for lease components together with non-lease components (e.g., common-area maintenance). The components of lease costs were as follows:",
+   "prose_after": "Future minimum commitments under all non-cancelable operating leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2022 (excluding the three months ended March 31, 2022)",
+     "$",
+     "975"
+    ],
+    [
+     "2023",
+     "1,298",
+     ""
+    ],
+    [
+     "2024",
+     "1,263",
+     ""
+    ],
+    [
+     "2025",
+     "1,302",
+     ""
+    ],
+    [
+     "2026",
+     "1,096",
+     ""
+    ],
+    [
+     "Later years",
+     "97",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "6,031",
+     ""
+    ],
+    [
+     "Less: Imputed interest",
+     "(476)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "5,555"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 720,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Future minimum commitments under all non-cancelable operating leases are as follows:",
+   "prose_after": "Supplemental cash flow information and non-cash activity related to our operating leases are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-month period ended March 31, 2022",
+     ""
+    ],
+    [
+     "Operating cash flow information:",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "$",
+     "325"
+    ],
+    [
+     "Non-cash activity:",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for lease obligations",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Three-month period ended March 31, 2022",
+    "Operating cash flow information:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 737,
+    "end_line": 745
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "Supplemental cash flow information and non-cash activity related to our operating leases are as follows:",
+   "prose_after": "7. EQUITY STRUCTURE\nShares Authorized\nAs of March 31, 2022, the Company had authorized a total of 250,000,000 shares for issuance designated as Class A common stock, 75,000,000 designated as Class B common stock and 10,000,000 shares designated as preferred stock. As of March 31, 2022, there were 14,954,982 shares of Class A Common Stock issued and outstanding, 61,136,800 shares of Class B Common Stock issued and outstanding and no shares of Preferred Stock issued and outstanding.\nWarrants\nAs of March 31, 2022, the Company had 10,837,400 private warrants outstanding. Each private warrant entitles the registered holder to purchase one share of Class A common stock at a price of $11.50 per share, subject to adjustment, at any time commencing 30 days after the completion of the Business Combination. The exercise price and number of common shares issuable upon exercise of the private warrants may be adjusted in certain circumstances including in the event of a share dividend, or recapitalization, reorganization, merger or consolidation. However, the private warrants will not be adjusted for issuance of common stock at a price below its exercise price.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 689,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three-month period ended March 31, 2022",
+     "",
+     "Three-month period ended March 31, 2021",
+     ""
+    ],
+    [
+     "Stock option expense",
+     "$",
+     "346",
+     "$",
+     "335"
+    ],
+    [
+     "Restricted stock unit expense",
+     "631",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Incentive units",
+     "29",
+     "",
+     "106",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "1,006",
+     "$",
+     "441"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 778
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Non-controlling interests represent direct interests held in Holdings other than by the Company immediately after the Business Combination. The non-controlling interests in the Company are represented by Class B Units, or such other equity securities in the Company as the Board may establish in accordance with the terms hereof. Since the non-controlling interests are redeemable for cash at the option of the Company subject to the terms and conditions, they have been classified as temporary equity on the consolidated balance sheet in accordance with ASC 480. Income tax benefit or expense is applied to the income attributable to the controlling interest as the income attributable to the non-controlling interest is pass-through income. The non-controlling interest has been adjusted to redemption value as of March 31, 2022 in accordance with ASC 480-10. This measurement adjustment results in a corresponding adjustment to shareholders\u2019 deficit through adjustments to additional paid-in capital and retained earnings. The redemption value of the Class B Units was $608,311 on March 31, 2022. The redemption value was calculated by multiplying the 61,136,800 Class B Units by the $9.95 trading price of our Class A common stock on December 27, 2021.\n8. STOCK-BASED COMPENSATION\nThe following table summarizes share-based compensation expense included in general and administrative expenses within the consolidated statements of operations:",
+   "prose_after": "The following table sets forth the stock compensation activity under the Holdings' equity plan, which was assumed by the Company, for three months period ended March 31, 2022:\nStock Option Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Weighted Average Exercise Price Per Shares",
+     "",
+     "Weighted Average Remaining Contractual Term (years)",
+     "Aggregate Intrinsic Value (in thousands)",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2022",
+     "5,409,771",
+     "$",
+     "1.27",
+     "4.1",
+     "$",
+     "37,542"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2022",
+     "5,409,771",
+     "$",
+     "1.27",
+     "4.1",
+     "$",
+     "34,187"
+    ],
+    [
+     "Vested and expected to vest at March 31, 2022",
+     "5,409,771",
+     "$",
+     "1.27",
+     "5.1",
+     "$",
+     "34,187"
+    ],
+    [
+     "Exercisable at March 31, 2022",
+     "5,040,526",
+     "$",
+     "0.98",
+     "3.7",
+     "$",
+     "33,327"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 785,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The following table sets forth the stock compensation activity under the Holdings' equity plan, which was assumed by the Company, for three months period ended March 31, 2022:\nStock Option Activity",
+   "prose_after": "Restricted Stock and Performance Stock Unit Activity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 839,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares"
+    ],
+    [
+     "Outstanding at January 1, 2022",
+     "\u2014"
+    ],
+    [
+     "Granted",
+     "4,036,403"
+    ],
+    [
+     "Vested",
+     "(25,000)"
+    ],
+    [
+     "Forfeited",
+     "\u2014"
+    ],
+    [
+     "Nonvested at March 31, 2022",
+     "4,011,403"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 801,
+    "end_line": 812
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Restricted Stock and Performance Stock Unit Activity",
+   "prose_after": "Earnouts",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 839,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of Shares"
+    ],
+    [
+     "Outstanding at January 1, 2022",
+     "657,160"
+    ],
+    [
+     "Granted",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "\u2014"
+    ],
+    [
+     "Nonvested at March 31, 2022",
+     "657,160"
+    ]
+   ],
+   "caption_stack": [
+    "Number of Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 815,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Earnouts",
+   "prose_after": "Incentive Units\nUpon consummation of the Business Combination on December 27, 2021, all of the incentive units, whether vested or unvested, outstanding immediately prior to the merger that were not settled as part of the transaction, were assumed by the Company and converted into class B common stock. The incentive units converted into class B common stock outstanding were 1,236,027 as of March 31, 2022.\nUnrecognized compensation cost for unvested stock options, restricted stock awards, incentive units and performance stock units as of March 31, 2022 totaled $31,137, and is expected to be recognized over a weighted average period of approximately 3.16 years.\n9. RETIREMENT PLANS\nDefined Contribution Plan\nThe Company has a 401(k) profit sharing plan for all full-time employees who have attained the age of 21 and completed 90 days of service. The Company matches 100% of the first 1% and then 50% of the next 5% of employee\ncontributions. Retirement plan expense for the three months ended March 31, 2022 and 2021 was approximately $428 and $303, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 839,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "March 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative asset - interest rate swap",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "4,036",
+     "$",
+     "4,036"
+    ],
+    [
+     "Liabilities Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public warrants",
+     "17,946",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,946",
+     ""
+    ],
+    [
+     "Private warrants",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "18,749",
+     "",
+     "18,749",
+     ""
+    ],
+    [
+     "Earnout consideration",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "34,320",
+     "",
+     "34,320",
+     ""
+    ],
+    [
+     "Derivative liability - redemption with make-whole provision",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "800",
+     "",
+     "800",
+     ""
+    ],
+    [
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities Carried at Fair Value:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public warrants",
+     "$",
+     "17,714",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "17,714",
+     ""
+    ],
+    [
+     "Private warrants",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,557",
+     "",
+     "17,557",
+     ""
+    ],
+    [
+     "Earnout consideration",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "38,427",
+     "",
+     "38,427",
+     ""
+    ],
+    [
+     "Derivative liability - redemption with make-whole provision",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "552",
+     "",
+     "552",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 871,
+    "end_line": 891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The standard describes three levels of inputs that may be used to measure fair value::\n\u2022Level 1: Unadjusted quoted prices in active markets for identical assets or liabilities at the measurement date.\n\u2022Level 2: Observable inputs other than unadjusted quoted prices in active markets for identical assets or liabilities such as:\n\u25e6Quoted prices for similar assets or liabilities in active markets\n\u25e6Quoted prices for identical or similar assets or liabilities in inactive markets\n\u25e6Inputs other than quoted prices that are observable for the asset or liability\n\u25e6Inputs that are derived principally from or corroborated by observable market data by correlation or other mean\n\u2022Level 3: Unobservable inputs in which there is little or no market data available, which are significant to the fair value measurement and require the Company to develop its own assumptions.\nThe Company\u2019s financial assets and liabilities measured at fair value on a recurring basis, consisted of the following types of instruments as of the following dates:",
+   "prose_after": "The following tables present additional information about assets and liabilities remeasured at fair value on a recurring basis and for which the Company utilizes Level 3 inputs to determine fair value.\nDerivative asset - interest rate swap",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Derivative asset - interest rate swap",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Fair value recognized upon interest rate swap agreement",
+     "4,036",
+     ""
+    ],
+    [
+     "Estimated fair value at March 31, 2022",
+     "$",
+     "4,036"
+    ]
+   ],
+   "caption_stack": [
+    "Derivative asset - interest rate swap"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 896,
+    "end_line": 905
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following tables present additional information about assets and liabilities remeasured at fair value on a recurring basis and for which the Company utilizes Level 3 inputs to determine fair value.\nDerivative asset - interest rate swap",
+   "prose_after": "The Company is exposed to interest rate risk on variable interest rate debt obligations. To manage interest rate risk, the Company entered into an interest rate swap agreement on January 5, 2022. At March 31, 2022, the Company\u2019s interest rate swap contract outstanding had a notional amount of $125,000 maturing in December 2025. The Company has designated the interest rate swap as a cash flow hedge for accounting purposes. The Company determined the fair value of the interest rate swap to be zero at the inception of the agreement and $4,036 at March 31, 2022. The Company reflects the unrealized changes in fair value of the interest rate swap at each reporting period in other comprehensive income and a derivative asset or liability will be recognized at each reporting period in the Company\u2019s consolidated financial statements. The fair value of interest rate swap has been classified as a Level 3 asset as its valuation requires estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Warrant Liabilities",
+     ""
+    ],
+    [
+     "Estimated fair value at December 31, 2021",
+     "$",
+     "35,271"
+    ],
+    [
+     "Change in estimated fair value",
+     "1,424",
+     ""
+    ],
+    [
+     "Estimated fair value at March 31, 2022",
+     "$",
+     "36,695"
+    ]
+   ],
+   "caption_stack": [
+    "Warrant Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 918,
+    "end_line": 927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company is exposed to interest rate risk on variable interest rate debt obligations. To manage interest rate risk, the Company entered into an interest rate swap agreement on January 5, 2022. At March 31, 2022, the Company\u2019s interest rate swap contract outstanding had a notional amount of $125,000 maturing in December 2025. The Company has designated the interest rate swap as a cash flow hedge for accounting purposes. The Company determined the fair value of the interest rate swap to be zero at the inception of the agreement and $4,036 at March 31, 2022. The Company reflects the unrealized changes in fair value of the interest rate swap at each reporting period in other comprehensive income and a derivative asset or liability will be recognized at each reporting period in the Company\u2019s consolidated financial statements. The fair value of interest rate swap has been classified as a Level 3 asset as its valuation requires estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.\nWarrant liabilities\nAs a result of the Business Combination, the Company assumed warrant liability related to previously issued warrants in connection with Roman DBDR's initial public offering. The warrants were accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities on our consolidated balance sheet. The warrant\nliabilities were remeasured at March 31, 2022, with changes in fair value presented within revaluation of warrant liabilities in the consolidated statement of operations.\nThe following table provides a reconciliation of the ending balances for the warrant liabilities remeasured at fair value:",
+   "prose_after": "The Public Warrants were valued using the quoted market price as the fair value at the end of each balance sheet date. The Private Placement Warrants were valued using the Black Scholes Option Pricing Model.\nThe following assumptions were used to determine the fair value of the private warrants as of March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Exercise Price",
+     "$",
+     "11.50",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "2.42",
+     "",
+     "%"
+    ],
+    [
+     "Expected volatility",
+     "38",
+     "",
+     "%"
+    ],
+    [
+     "Expected dividends",
+     "0",
+     "",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "4.7 years",
+     "",
+     ""
+    ],
+    [
+     "Common Stock market value",
+     "$",
+     "7.59",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 932,
+    "end_line": 942
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Public Warrants were valued using the quoted market price as the fair value at the end of each balance sheet date. The Private Placement Warrants were valued using the Black Scholes Option Pricing Model.\nThe following assumptions were used to determine the fair value of the private warrants as of March 31, 2022:",
+   "prose_after": "The fair value of private warrants has been classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.\nEarnout Consideration\nHoldings' equity holders have the right to receive an aggregate of up to 7,500,000 additional (i) shares of the Company's class A common stock or (ii) Holdings Units (and a corresponding number of shares of the Company's class B common stock), as applicable, in Earnout consideration based on the achievement of certain stock price thresholds. Earnout Considerations held by Holdings' holders (not including the holders under ASC 718) were determined to be derivative instruments in accordance with ASC 815 and were accounted as derivative liabilities, initially valued at fair value in accordance with ASC 815-40-30-1. The liability for Earnouts are remeasured at each reporting period at fair value, with changes in fair value recorded in earnings in accordance with ASC 815. The Company established the initial fair value for the earnouts at the closing date on December 27, 2021 using a Monte Carlo simulation model. The following table provides a reconciliation of the ending balances for the earnout consideration liabilities remeasured at fair value:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Earnout Consideration Liability",
+     ""
+    ],
+    [
+     "Estimated fair value at December 31, 2021",
+     "$",
+     "38,427"
+    ],
+    [
+     "Change in estimated fair value",
+     "(4,107)",
+     ""
+    ],
+    [
+     "Estimated fair value at March 31, 2022",
+     "$",
+     "34,320"
+    ]
+   ],
+   "caption_stack": [
+    "Earnout Consideration Liability"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 949,
+    "end_line": 958
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Holdings' equity holders have the right to receive an aggregate of up to 7,500,000 additional (i) shares of the Company's class A common stock or (ii) Holdings Units (and a corresponding number of shares of the Company's class B common stock), as applicable, in Earnout consideration based on the achievement of certain stock price thresholds. Earnout Considerations held by Holdings' holders (not including the holders under ASC 718) were determined to be derivative instruments in accordance with ASC 815 and were accounted as derivative liabilities, initially valued at fair value in accordance with ASC 815-40-30-1. The liability for Earnouts are remeasured at each reporting period at fair value, with changes in fair value recorded in earnings in accordance with ASC 815. The Company established the initial fair value for the earnouts at the closing date on December 27, 2021 using a Monte Carlo simulation model. The following table provides a reconciliation of the ending balances for the earnout consideration liabilities remeasured at fair value:",
+   "prose_after": "The following assumptions were used to determine the fair value of the Earnout considerations as of March 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "March 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "Valuation date share price",
+     "$",
+     "7.59",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "2.41% - 2.44%%",
+     "",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "70.0",
+     "",
+     "%"
+    ],
+    [
+     "Expected dividends",
+     "0",
+     "",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "2.7 - 3.7 years",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 963,
+    "end_line": 972
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following assumptions were used to determine the fair value of the Earnout considerations as of March 31, 2022:",
+   "prose_after": "The fair value of Earnouts has been classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.\n11. GEOGRAPHIC INFORMATION AND CONCENTRATIONS\nThe Company headquarters and substantially all of its operations, including its long-lived assets, are located in the United States. Geographical sales information based on the location of the customer was as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 50,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net sales by region:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "62,381",
+     "$",
+     "55,868"
+    ],
+    [
+     "International",
+     "21,802",
+     "",
+     "7,854",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "84,183",
+     "$",
+     "63,722"
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 979,
+    "end_line": 991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "GEOGRAPHIC INFORMATION AND CONCENTRATIONS"
+    }
+   },
+   "prose_before": "The fair value of Earnouts has been classified as a Level 3 liability as its valuation requires substantial judgment and estimation of factors that are not currently readily observable in the market. If different assumptions were used for the various inputs to the valuation approach, the estimated fair value could be significantly higher or lower than the fair value determined.\n11. GEOGRAPHIC INFORMATION AND CONCENTRATIONS\nThe Company headquarters and substantially all of its operations, including its long-lived assets, are located in the United States. Geographical sales information based on the location of the customer was as follows:",
+   "prose_after": "The Company\u2019s principal direct customers as of March 31, 2022 consist primarily of leading international, foreign and domestic banks and other credit card issuers primarily within the U.S., Europe, Asia, Latin America, Canada, and the Middle East. The Company periodically assesses the financial strength of these customers and establishes allowances for anticipated losses, if necessary.\nTwo customers individually accounted for more than 10% of the Company\u2019s revenue or 64.9%, combined, of total revenue for the three months ended March 31, 2022. Two customers individually accounted for more than 10% of the Company\u2019s revenue or 77.1%, combined, of total revenue for the three months ended March 31, 2021. Four customers individually accounted for more than 10% of the Company\u2019s accounts receivable or approximately 95% and two customers individually accounted for more than 10% or 66% of total accounts receivable as of March 31, 2022 and December 31, 2021, respectively.\nThe Company primarily relied on one vendor that individually accounted for more than 10% of purchases of supplies for the three months ended March 31, 2022. Purchases of supplies from this vendor totaled approximately 11% of total purchases for the three months ended March 31, 2022. The Company primarily relied on four vendors that individually accounted for more than 10% of purchases of supplies for the three months ended March 31, 2021 or approximately 68% of total purchases for the three months ended March 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 50,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 52,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three-month period ended March 31, 2022",
+     ""
+    ],
+    [
+     "Basic and diluted:",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "26,908"
+    ],
+    [
+     "Less: Net income attributable to non-controlling interest",
+     "(22,167)",
+     ""
+    ],
+    [
+     "Net income attributable to Class A Common Stockholders",
+     "$",
+     "4,741"
+    ],
+    [
+     "Plus: adjustment due to net effect of stock options and exchangeable notes to net income",
+     "352",
+     ""
+    ],
+    [
+     "Net income attributable to Class A Common Stockholders after adjustment",
+     "$",
+     "5,093"
+    ],
+    [
+     "Weighted average common shares outstanding used in computing net income per share\u2014basic (in thousands)",
+     "14,934",
+     ""
+    ],
+    [
+     "Plus: net effect of dilutive stock options and exchangeable notes (in thousands)",
+     "17,331",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding used in computing net income per share\u2014diluted (in thousands)",
+     "32,265",
+     ""
+    ],
+    [
+     "Net income per share\u2014basic",
+     "$",
+     "0.32"
+    ],
+    [
+     "Net income per share\u2014diluted",
+     "$",
+     "0.16"
+    ]
+   ],
+   "caption_stack": [
+    "Three-month period ended March 31, 2022",
+    "Basic and diluted:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1012,
+    "end_line": 1034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "In calculating the provision for income taxes on an interim basis, the Company uses an estimate of the annual effective tax rate based upon currently known facts and circumstances and applies that rate to its year-to-date earnings or losses. The Company\u2019s effective tax rate is based on expected income and statutory tax rates and takes into consideration permanent differences between financial statement and tax return income applicable to the Company in the various jurisdictions in which the Company operates. The effect of discrete items, such as changes in estimates, changes in enacted tax laws or rates or tax status, and unusual or infrequently occurring events, is recognized in the interim period in which the discrete item occurs. The accounting estimates used to compute the provision for income taxes may change as new events occur, additional information is obtained or as the result of new judicial interpretations or regulatory or tax law changes. The Company's interim effective tax rate, inclusive of any discrete items, was 1.98% for the quarter ended March 31, 2022. The Company\u2019s effective income tax rate differs from the U.S. statutory rate primarily due to the non-controlling interest adjustment as the income attributable to the non-controlling interest is pass-through income.\nThe Company continues to evaluate the realizability of its deferred tax assets on a quarterly basis and will adjust such amounts in light of changing facts and circumstances including, but not limited to, future projections of taxable income, tax legislation, rulings by relevant tax authorities, the progress of ongoing tax audits. Any changes to the valuation allowance or deferred tax assets and liabilities in the future would impact the Company's income taxes.\n13. EARNINGS PER SHARE\nThe following table sets forth the computation of net income used to compute basic and diluted net earnings per share of Class A common stock for the quarter ended March 31, 2022. No earnings per share are presented for the quarter ended March 31, 2021 as only the Class B common stock would have been outstanding in historical periods pursuant to the reverse recapitalization and the Class B common stock do not participate in the Company's income or loss and are therefore not participating securities.",
+   "prose_after": "Securities that could potentially be dilutive are excluded from the computation of diluted earnings per share when a loss from continuing operations exists or when the exercise price exceeds the average closing price of the Company\u2019s common stock during the period, because their inclusion would result in an antidilutive effect on per share amounts. The Company applied the if-converted method for the convertible debt to calculate diluted earnings per share in accordance of ASU 2020-06.\nThe following amounts were not included in the calculation of net earnings per diluted share because their effects were anti-dilutive:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1002,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1037,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 52,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 54,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three-month period ended March 31, 2022"
+    ],
+    [
+     "Potentially dilutive securities:",
+     ""
+    ],
+    [
+     "Warrants",
+     "22,415,400"
+    ],
+    [
+     "Class B shares",
+     "61,136,800"
+    ],
+    [
+     "Earnout consideration shares",
+     "7,500,000"
+    ]
+   ],
+   "caption_stack": [
+    "Three-month period ended March 31, 2022",
+    "Potentially dilutive securities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1041,
+    "end_line": 1050
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                     2"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Securities that could potentially be dilutive are excluded from the computation of diluted earnings per share when a loss from continuing operations exists or when the exercise price exceeds the average closing price of the Company\u2019s common stock during the period, because their inclusion would result in an antidilutive effect on per share amounts. The Company applied the if-converted method for the convertible debt to calculate diluted earnings per share in accordance of ASU 2020-06.\nThe following amounts were not included in the calculation of net earnings per diluted share because their effects were anti-dilutive:",
+   "prose_after": "14. COMMITMENTS AND CONTINGENCIES\nOperating Leases\nThe Company leases certain office space and manufacturing space under arrangements currently classified as leases under ASC 842. See Note 6 for future minimum commitments under all non-cancelable operating leases.\nLitigation\nThe Company may be, from time to time, party to various disputes and claims arising from normal business activities. The Company accrues for amounts related to legal matters if it is probable that a liability has been incurred and the amount is reasonably estimable. While the outcome of existing disputes and claims is uncertain, the Company does not expect that the resolution of existing disputes and claims would have a material adverse effect on its consolidated financial position or liquidity or the Company\u2019s consolidated results of operations and cash flows. Litigation costs are expensed as incurred.\nIn February 2021, the Company received from a third party a notice of dispute with respect to whether commissions are due and owing on product sales to certain of the Company\u2019s customers which, if successful, could require payments ranging from $4,000 to $11,000, plus costs and expenses, together with additional commission payments on future sales, if any, to such customers. The Company does not believe these commissions are owed, and intends to vigorously oppose this claim, which may include legal proceedings. The Company has not accrued any amount as a component of accrued expense related to the notice of dispute as of March 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1037,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1067,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 54,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 55,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$ Change",
+     "",
+     "% Change"
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "84,183",
+     "$",
+     "63,722",
+     "$",
+     "20,461",
+     "32%"
+    ],
+    [
+     "Cost of sales",
+     "35,424",
+     "",
+     "29,406",
+     "",
+     "6,018",
+     "",
+     "20%"
+    ],
+    [
+     "Gross profit",
+     "48,759",
+     "",
+     "34,316",
+     "",
+     "14,443",
+     "",
+     "42%"
+    ],
+    [
+     "Operating expenses",
+     "18,777",
+     "",
+     "8,057",
+     "",
+     "10,720",
+     "",
+     "133%"
+    ],
+    [
+     "Income from operations",
+     "29,982",
+     "",
+     "26,259",
+     "",
+     "3,723",
+     "",
+     "14%"
+    ],
+    [
+     "Other expenses, net",
+     "(2,531)",
+     "",
+     "(3,037)",
+     "",
+     "506",
+     "",
+     "(17)%"
+    ],
+    [
+     "Income before income taxes",
+     "27,451",
+     "",
+     "23,222",
+     "",
+     "4,229",
+     "",
+     "18%"
+    ],
+    [
+     "Provision for income taxes",
+     "(543)",
+     "",
+     "\u2014",
+     "",
+     "(543)",
+     "",
+     "100%"
+    ],
+    [
+     "Net income",
+     "26,908",
+     "",
+     "23,222",
+     "",
+     "3,686",
+     "",
+     "16%"
+    ],
+    [
+     "Net income attributable to redeemable non-controlling interests",
+     "22,167",
+     "",
+     "\u2014",
+     "",
+     "22,167",
+     "",
+     "100%"
+    ],
+    [
+     "Net income attributable to CompoSecure, Inc",
+     "$",
+     "4,741",
+     "$",
+     "23,222",
+     "$",
+     "(18,481)",
+     "(80)%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1126,
+    "end_line": 1150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Income from Operations and Operating Margin\nIncome from operations consists of the Company\u2019s gross profit less its operating expenses. Operating margin is income from the Company\u2019s operations as a percentage of its net sales.\nOther Expense, net\nOther expense consists primarily of the Company\u2019s interest expense net of interest income.\nNet Income\nNet income consists of the Company\u2019s income from operations, less other expenses and income tax provision or benefit.\nFactors Affecting the Company\u2019s Operating Results\nWe believe that our performance and future success depend on a number of factors that present significant opportunities for us but also pose risks and challenges. Please see the factors discussed in this Quarterly Report on Form 10-Q, including those discussed in the sections entitled \u201cRisk Factors\u201d and \u201cCautionary Note Regarding Forward-Looking Statements\u201d for additional information.\nResults of Operations\nThe following table presents the Company\u2019s results of operations for the periods indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 55,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 56,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "58",
+     "%",
+     "54",
+     "%"
+    ],
+    [
+     "Operating margin",
+     "36",
+     "%",
+     "41",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Net Sales",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 56,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 57,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$ Change",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales by region",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Domestic",
+     "$",
+     "62,381",
+     "$",
+     "55,868",
+     "$",
+     "6,513",
+     "12",
+     "%"
+    ],
+    [
+     "International",
+     "21,802",
+     "",
+     "7,854",
+     "",
+     "13,948",
+     "",
+     "178",
+     "%"
+    ],
+    [
+     "Total",
+     "$",
+     "84,183",
+     "$",
+     "63,722",
+     "$",
+     "20,461",
+     "32",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1162,
+    "end_line": 1175
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Net Sales",
+   "prose_after": "The Company\u2019s net sales for the quarter ended March 31, 2022 increased $20.5 million, or 32%, to $84.2 million compared to $63.7 million for the quarter ended March 31, 2021. The increase in net sales was due to a 12% increase in domestic sales and a 178% increase in international sales. This was due to higher growing demand for its products throughout the quarter ended March 31, 2022 as we continue to emerge from the adverse impact from the COVID-19 pandemic compared to the quarter ended March 31, 2021. The increase in international sales was due to increased demand in the FinTech market segment.\nDomestic: The Company\u2019s domestic net sales for the quarter ended March 31, 2022 increased $6.5 million, or 12%, to $62.4 million compared to $55.9 million for the quarter ended March 31, 2021. This was primarily due to continued higher demand for the Company's products that began primarily in the second half of the year ended December 31, 2021. This was primarily due to higher customer acquisition by the Company\u2019s clients as they continue to emerge from the adverse impact from the COVID-19 pandemic compared to the quarter ended March 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 57,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 58,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "March 31, 2022",
+     "",
+     "December 31, 2021",
+     "",
+     "$ Change",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "84,183",
+     "$",
+     "75,300",
+     "$",
+     "8,883",
+     "12",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1185,
+    "end_line": 1194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "Domestic: The Company\u2019s domestic net sales for the quarter ended March 31, 2022 increased $6.5 million, or 12%, to $62.4 million compared to $55.9 million for the quarter ended March 31, 2021. This was primarily due to continued higher demand for the Company's products that began primarily in the second half of the year ended December 31, 2021. This was primarily due to higher customer acquisition by the Company\u2019s clients as they continue to emerge from the adverse impact from the COVID-19 pandemic compared to the quarter ended March 31, 2021.\nInternational: The Company\u2019s international net sales for the quarter ended March 31, 2022 increased $13.9 million, or 178%, to $21.8 million compared to $7.9 million for the quarter ended March 31, 2021. This was primarily driven by our efforts to grow our international distributor channels and the increase in demand in the FinTech market segment.\nIn addition, the following table presents the Company\u2019s net sales for the three months ended March 31, 2022 compared to December 31, 2021:",
+   "prose_after": "Gross Profit and Gross Margin\nThe Company\u2019s gross profit for the quarter ended March 31, 2022 increased $14.4 million, or 42%, to $48.8 million compared to $34.3 million for the quarter ended March 31, 2021. The gross profit margin percentage increased from 54% to 58% reflecting an improvement of approximately 4 points. The gross margin improvement in the quarter ended March 31, 2022 resulted primarily from favorable product mix and improvement in production yields which was primarily driven by improvements in manufacturing processes compared to the quarter ended March 31, 2021.\nOperating Expenses\nThe Company\u2019s operating expenses for the quarter ended March 31, 2022 increased $10.7 million compared to the quarter ended March 31, 2021. This was due to increases in bonuses and commissions of $1.7 million, marketing and professional fee expenses of $4.7 million, increased insurance expense of $1.3 million, various sales related taxes of $0.6 million and an overall increase in utilities, supplies and various other costs of $2.4 million due to the growth in business.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1182,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1215,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 58,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 59,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "26,908",
+     "$",
+     "23,222"
+    ],
+    [
+     "Add:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "2,349",
+     "",
+     "2,585",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "4,966",
+     "",
+     "3,037",
+     ""
+    ],
+    [
+     "Taxes",
+     "543",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "EBITDA",
+     "$",
+     "34,766",
+     "$",
+     "28,844"
+    ],
+    [
+     "Stock-based compensation expense",
+     "1,006",
+     "",
+     "441",
+     ""
+    ],
+    [
+     "Mark to market adjustments, net (1)",
+     "(2,435)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "33,337",
+     "$",
+     "29,285"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1220,
+    "end_line": 1240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "This Form 10-Q includes certain non-GAAP financial measures that are not prepared in accordance with accounting principles generally accepted in the United States (\u201cGAAP\u201d) and that may be different from non-GAAP financial measures used by other companies. The Company believes EBITDA and Adjusted EBITDA are useful to investors in evaluating the Company\u2019s financial performance. The Company uses these measures internally to establish forecasts, budgets and operational goals to manage and monitor its business, as well as evaluate its underlying historical performance and to measure incentive compensation, as we believe that these non-GAAP financial measures depict the true performance of the business by encompassing only relevant and controllable events, enabling the Company to evaluate and plan more effectively for the future. In addition, the Company\u2019s debt agreements contain covenants that use a variation of these measures for purposes of determining debt covenant compliance. The Company believes that investors should have access to the same set of tools that its management uses in analyzing operating results. EBITDA and Adjusted EBITDA should not be considered as measures of financial performance under U.S. GAAP, and the items excluded from EBITDA and Adjusted EBITDA are significant components in understanding and assessing the Company\u2019s financial performance. Accordingly, these key business metrics have limitations as an analytical tool. They should not be considered as an alternative to net income or any other performance measures derived in accordance with U.S. GAAP or as an alternative to cash flows from operating activities as a measure of the Company\u2019s liquidity, and may be different from similarly titled non-GAAP measures used by other companies. The following unaudited table presents the reconciliation of net income to EBITDA and Adjusted EBITDA for the periods indicated:",
+   "prose_after": "(1)Includes the changes in fair value of warrant liability, derivative liability and earnout consideration liability for the quarter ended March 31, 2022.\nCritical Accounting Policies and Estimates\nOur critical accounting policies are detailed in our Annual Report on Form 10-K for the year ended December 31, 2021 as filed with the SEC.\nNew Accounting Pronouncements\nReference is made to Note 2 of Notes to Financial Statements - unaudited in Item 1, \u201cFinancial Statements,\u201d for information concerning recent accounting pronouncements since the filing of the Company\u2019s Annual Report on Form 10-K for the year ended December 31, 2021.\nLiquidity and Capital Resources\nThe Company\u2019s primary sources of liquidity are its existing cash and cash equivalents balances, cash flows from operations and borrowings on its term loan, revolving credit facility and exchangeable notes. The Company\u2019s primary cash requirements include operating expenses, debt service payments (principal and interest), and capital expenditures (including property and equipment).",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1215,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1255,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 59,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 60,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Effective Dates",
+     "Notional Amount",
+     "",
+     "Fixed Rate",
+     ""
+    ],
+    [
+     "",
+     "($ in thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "January 5, 2022 through December 5, 2023",
+     "$",
+     "125,000",
+     "1.06",
+     "%"
+    ],
+    [
+     "December 5, 2023 through December 22, 2025",
+     "$",
+     "125,000",
+     "1.90",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1300,
+    "end_line": 1308
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 3",
+     "title": "Quantitative Disclosures About Market Risk"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "In addition to existing cash balances and cash provided by operating activities, the Company uses variable rate debt to finance its operations. The Company is exposed to interest rate risk on these debt obligations and a related interest rate swap agreement. As of March 31, 2022, CompoSecure had $272.0 million in debt outstanding under the 2021 Credit Facility, all of which was variable rate debt and $130.0 million in long-term debt principal outstanding from the issuance of Exchangeable Notes.\nThe Company performed a sensitivity analysis based on the principal amount of debt outstanding as of March 31, 2021, as well as the effect of its interest rate swap agreement. In this sensitivity analysis, the change in interest rates is assumed to be applicable for an entire year. An increase or decrease of 100 basis points in the applicable interest rate would cause an increase or decrease in interest expense of $4.0 million on an annual basis.\nOn January 11, 2022, CompoSecure entered into an interest rate swap agreement to hedge forecasted interest rate payments on its variable rate debt. As of March 31, 2022, the Company had the following interest rate swap agreements (in thousands):",
+   "prose_after": "Under the terms of the interest rate swap agreement, CompoSecure receives payments based on the greater of 1-month LIBOR rate or a minimum of 1.00%.\nThe Company has designated the interest rate swap as a cash flow hedge for accounting purposes that was determined to be effective. The Company determined the fair value of the interest rate swap to be zero at the inception of the agreement and $4,036 at March 31, 2022. The Company reflects the realized gains and losses of the actual monthly settlement activity of the interest rate swap in its consolidated statements of operations. The Company reflects the unrealized changes in fair value of the interest rate swap at each reporting period in other comprehensive income and a derivative asset or liability is recognized at each reporting period in the Company\u2019s financial statements.\nItem 4. Controls and Procedures\nEvaluation of Disclosure Controls and Procedures\nWe designed our disclosure controls and procedures, as such term is defined in Rules 13a-15(e) and 15d-15(e) under the Exchange Act to provide reasonable assurance that information required to be disclosed by us in reports we file or submit under the Exchange Act is (i) recorded, processed, summarized and reported within the time periods specified in the SEC rules and forms, and (ii) accumulated and communicated to our management, including our principal executive officer and principal financial officer, as appropriate to allow timely decisions regarding required disclosures.",
+   "structured_location": {
+    "item": "ITEM 3",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1297,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1327,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 60,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 61,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1**",
+     "Certification of Chief Executive Officer Pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2**",
+     "Certification of Chief Financial Officer Pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "The following materials from CompoSecure, Inc.'s Form 10-Q for the quarter ended March 31, 2022, formatted in Extensible Business Reporting Language (XBRL): (i) Consolidated Balance Sheets as of March 31, 2022 (Unaudited) and December 31, 2021, (ii) Consolidated Statements of Operations (Unaudited) for the three months ended March 31, 2022 and March 31, 2021, (iii) Consolidated Statements of Comprehensive Income (Unaudited) for the three months ended March 31, 2022 and March 31, 2021 (iv) Consolidated Statements of Stockholders\u2019 Equity (Unaudited) for the three months ended March 31, 2022 and March 31, 2021, as well as the year ended December 31, 2021, (v) Consolidated Statements of Cash Flows (Unaudited) for the three months ended March 31, 2022 and March 31, 2021, and (vi) Notes to Consolidated Financial Statements - Unaudited."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the inline XBRL document)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "* Filed herewith",
+     ""
+    ],
+    [
+     "** In accordance with SEC Release 33-8238, Exhibits 32.1 and 32.2 are being furnished and not filed.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1875,
+    "end_line": 1899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "RELATED PARTY TRANSACTIONS"
+    }
+   },
+   "prose_before": "In accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDate: May 9, 2022 By: /s/ Jonathan C. Wilk\nName: Jonathan C. Wilk\nTitle: President and Chief Executive Officer\n(Principal Executive Officer)\nDate: May 9, 2022 By: /s/ Timothy Fitzsimmons\nName: Timothy Fitzsimmons\nTitle: Chief Financial Officer\n(Principal Financial and Accounting Officer)\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1872,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1900,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 61,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

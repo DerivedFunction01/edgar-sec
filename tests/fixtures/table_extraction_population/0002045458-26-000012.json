@@ -1,0 +1,6310 @@
+{
+ "accession": "0002045458-26-000012",
+ "cik": "0002045458",
+ "form": "10-K",
+ "filing_date": "2026-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "sp-20251231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "33-1582934"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(IRS Employer Identification No.)"
+    ],
+    [
+     "55 Hudson Yards 550 W 34th Street New York, NY",
+     "10001"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 33
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2025\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 000-56711\nStonepeak-Plus Infrastructure Fund LP\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "(212) 907-5100\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former Name, Former Address and Former Fiscal Year if Changed Since Last Report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None.",
+     "None.",
+     "None."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 44,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(212) 907-5100\n(Registrant\u2019s telephone number, including area code)\nN/A\n(Former Name, Former Address and Former Fiscal Year if Changed Since Last Report)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nClass A-1a Limited Partnership Units\nClass A-1b Limited Partnership Units\nClass A-1c Limited Partnership Units\nClass D-1 Limited Partnership Units\nClass D-2 Limited Partnership Units\nClass F-1 Limited Partnership Units\nClass F-2 Limited Partnership Units\nClass F-3 Limited Partnership Units\nClass F-4 Limited Partnership Units",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Part I",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "Item 1. Business",
+     "5"
+    ],
+    [
+     "",
+     "Item 1A. Risk Factors",
+     "17"
+    ],
+    [
+     "",
+     "Item 1B. Unresolved Staff Comments",
+     "156"
+    ],
+    [
+     "",
+     "Item 1C. Cybersecurity",
+     "156"
+    ],
+    [
+     "",
+     "Item 2. Properties",
+     "157"
+    ],
+    [
+     "",
+     "Item 3. Legal Proceedings",
+     "157"
+    ],
+    [
+     "",
+     "Item 4. Mine Safety Disclosures",
+     "157"
+    ],
+    [
+     "Part II",
+     "",
+     "158"
+    ],
+    [
+     "",
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "158"
+    ],
+    [
+     "",
+     "Item 6. [Reserved]",
+     "159"
+    ],
+    [
+     "",
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "160"
+    ],
+    [
+     "",
+     "Item 7A. Quantitative and Qualitative Disclosures about Market Risk",
+     "165"
+    ],
+    [
+     "",
+     "Item 8. Financial Statements and Supplementary Data",
+     "167"
+    ],
+    [
+     "",
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "208"
+    ],
+    [
+     "",
+     "Item 9A. Controls and Procedures",
+     "208"
+    ],
+    [
+     "",
+     "Item 9B. Other Information",
+     "208"
+    ],
+    [
+     "",
+     "Item 9C. Disclosure Regarding Foreign Jurisdiction that Prevent Inspections",
+     "208"
+    ],
+    [
+     "Part III",
+     "",
+     "208"
+    ],
+    [
+     "",
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "208"
+    ],
+    [
+     "",
+     "Item 11. Executive Compensation",
+     "213"
+    ],
+    [
+     "",
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "214"
+    ],
+    [
+     "",
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "214"
+    ],
+    [
+     "",
+     "Item 14. Principal Accountant Fees and Services",
+     "216"
+    ],
+    [
+     "Part IV",
+     "",
+     "216"
+    ],
+    [
+     "",
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "216"
+    ],
+    [
+     "",
+     "Item 16. Form 10-K Summary",
+     "217"
+    ],
+    [
+     "Signatures",
+     "",
+     "218"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 136,
+    "end_line": 168
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThere is currently no established public market for the registrant\u2019s Units.\nAs of February 26, 2026, the registrant had the following limited partnership units outstanding: 15,304,468 units of Class A-1a, 1,729,058 units of\nClass A-1b, 1,182,103 units of Class A-1c, 179,856 units of Class F-1, 623,241 units of Class I-1, 6,326,657 units of Class [X] and there were no units of Classes\nD-1, D-2, F-2, F-3, F-4, I-2, S-1 and S-2 outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\n1\nTABLE OF CONTENTS",
+   "prose_after": "2\nEXPLANATORY NOTE\nUnless the context otherwise requires, references in this Annual Report on Form 10-K to:\n\u2022the term \u201cAggregators\u201d refers to Stonepeak-Plus Infrastructure Fund Aggregator I LP, a Delaware series limited partnership, the\nMaster Aggregator (as defined below), and any other vehicle(s) used to aggregate the holdings of the Fund and any Parallel\nFunds;\n\u2022the term \u201cFeeder Fund\u201d refers to Stonepeak-Plus Infrastructure Fund (TE) LP, a Delaware limited partnership;\n\u2022the terms \u201cFund,\u201d \u201cPartnership,\u201d \u201cwe,\u201d \u201cus,\u201d and \u201cour\u201d refer to Stonepeak-Plus Infrastructure Fund LP, a Delaware limited\npartnership;\n\u2022the term \u201cGeneral Partner\u201d refers to Stonepeak-Plus Infrastructure Fund Associates LP, a Delaware limited partnership, our",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 275,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Applicable Management Fee Percentage"
+    ],
+    [
+     "Class A-1a",
+     "0.875% per annum"
+    ],
+    [
+     "Class A-1b",
+     "0.875% per annum"
+    ],
+    [
+     "Class A-1c",
+     "0.875% per annum"
+    ],
+    [
+     "Class D-1",
+     "1.0% per annum until the end of the 48-month period following the Initial Closing Date (as defined below), and 1.25% per annum thereafter"
+    ],
+    [
+     "Class D-2",
+     "1.25% per annum"
+    ],
+    [
+     "Class F-1",
+     "0.875% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class F-2",
+     "0.75% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class F-3",
+     "0.625% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class F-4",
+     "0.875% per annum"
+    ],
+    [
+     "Class I-1",
+     "1.0% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class I-2",
+     "1.25% per annum"
+    ],
+    [
+     "Class S-1",
+     "1.0% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class S-2",
+     "1.25% per annum"
+    ],
+    [
+     "Class X",
+     "\u2014% per annum"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 823,
+    "end_line": 841
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Entity) equal to the product of (x) the Applicable Management Fee Percentage (as specified in the table below) with respect to\nsuch Class of Units and (y) SP+ INFRA\u2019s month-end NAV attributable to such Class of Units, payable monthly in arrears,\nbefore giving effect to any accruals for the Management Fee, the Servicing Fee (as defined below), the Performance\nParticipation Allocation (as defined below), Unit redemptions (and pending redemptions), any distributions and without taking\ninto account accrued and unpaid taxes of any Intermediate Entity (including corporations) through which SP+ INFRA indirectly\ninvests in an Investment (or any comparable entities of Other Stonepeak Accounts in which SP+ INFRA directly or indirectly\nparticipates) or taxes paid by any such entity during the applicable month. The Fund and any Parallel Fund each is obligated to\npay (without duplication) its proportional share of the Management Fee with respect to each Class of Units based on its\nproportional interest in the Master Aggregator or other relevant Intermediate Entity(ies) with respect to such Class of Units.",
+   "prose_after": "The Investment Advisor may elect to receive the Management Fee in cash, Units and / or shares, interests or units of\nIntermediate Entities. If the Management Fee is paid in Units, such Units may be redeemed by the Fund at NAV at the\nInvestment Advisor\u2019s request and will not be subject to the volume limitations of the Redemption Program (as defined below)\nor the Early Redemption Deduction (as defined below) of the Redemption Program.\nEach Management Fee payment will, as determined in the General Partner\u2019s sole discretion, either (i) result in a\nreduction of NAV of the applicable Class of Units to which such payment relates or (ii) result in a reduction in Units held by\nUnitholders of the applicable Class and the Fund will make a payment in the form of cash or Units of an equivalent amount to\nthe Investment Advisor, which, in the case of a cash payment, may be invested or reinvested, as applicable, by the Investment\nAdvisor in whole or in part in Units and/or shares, interests or units of Intermediate Entities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 821,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Number of Holders of Record"
+    ],
+    [
+     "Class A-1a Units",
+     "2"
+    ],
+    [
+     "Class A-1b Units",
+     "2"
+    ],
+    [
+     "Class A-1c Units",
+     "2"
+    ],
+    [
+     "Class I-1 Units",
+     "74"
+    ],
+    [
+     "Class F-1 Units",
+     "19"
+    ],
+    [
+     "Class X Units",
+     "14"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 17817,
+    "end_line": 17827
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity"
+    },
+    "note": null
+   },
+   "prose_before": "PART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity\nSecurities\nPrice Range of Units\nThe Fund\u2019s Units are not listed or traded on any recognized securities exchange. See \u201cPart II. Item 7. Management\u2019s\nDiscussion and Analysis of Financial Condition and Results of Operations\u2014Net Asset Value\u201d for a discussion of the Fund\u2019s\ncalculation of NAV per Unit in accordance with valuation policies and procedures that have been approved by our Board. The\nFund\u2019s transactional NAV is the price at which we sell and redeem our Units.\nHolders of Record\nAs of February 26, 2026, the Fund has the below number of holders of record of each outstanding class of Units:",
+   "prose_after": "Distributions\nThe Fund may declare distributions from time to time as authorized by the General Partner. However, the Fund cannot\nguarantee that it will make distributions, and any distributions made will be at the discretion of the General Partner, considering\nfactors such as earnings, cash flow, capital needs, taxes and general financial condition and the requirements of applicable law.\nAs a result, the Fund\u2019s distribution rates and payment frequency may vary from time to time. There is no assurance the Fund\nwill pay distributions in any particular amount, if at all.\nUnitholders of record as of the record date will be eligible for distributions declared. The per Unit amount of\ndistributions on Class A-1-a Units, Class A-1b Units, Class A-1c Units, Class D-1 Units, Class D-2 Units, Class F-1 Units,\nClass F-2 Units, Class F-3 Units, Class F-4 Units, Class I-1 Units, Class I-2 Units, Class S-1 Units, Class S-2 Units, and Class\nX Units may differ because of different Class-specific fees and expenses that are deducted from the gross distributions for each",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 17795,
+     "token": "PAGE_BREAK",
+     "id": 158,
+     "namespace": "arabic",
+     "page_number": 158
+    },
+    "after": {
+     "line": 17878,
+     "token": "PAGE_BREAK",
+     "id": 159,
+     "namespace": "arabic",
+     "page_number": 159
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Declaration Date",
+     "Record Date",
+     "Payment Date",
+     "Class of Units",
+     "Net Distribution per Unit",
+     "Distribution Amount"
+    ],
+    [
+     "December 01, 2025",
+     "October 31, 2025",
+     "December 09, 2025",
+     "Class A-1a",
+     "$0.2628",
+     "$3,246,000"
+    ],
+    [
+     "December 01, 2025",
+     "October 31, 2025",
+     "December 09, 2025",
+     "Class A-1b",
+     "$0.2785",
+     "$476,452"
+    ],
+    [
+     "December 01, 2025",
+     "October 31, 2025",
+     "December 09, 2025",
+     "Class A-1c",
+     "$0.3000",
+     "$349,189"
+    ],
+    [
+     "December 01, 2025",
+     "October 31, 2025",
+     "December 09, 2025",
+     "Class F-1",
+     "$0.3000",
+     "$53,368"
+    ],
+    [
+     "December 01, 2025",
+     "October 31, 2025",
+     "December 09, 2025",
+     "Class I-1",
+     "$0.3000",
+     "$87,506"
+    ],
+    [
+     "December 01, 2025",
+     "October 31, 2025",
+     "December 09, 2025",
+     "Class X",
+     "$0.3000",
+     "$72,975"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 17860,
+    "end_line": 17871
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity"
+    },
+    "note": null
+   },
+   "prose_before": "Unitholders of record as of the record date will be eligible for distributions declared. The per Unit amount of\ndistributions on Class A-1-a Units, Class A-1b Units, Class A-1c Units, Class D-1 Units, Class D-2 Units, Class F-1 Units,\nClass F-2 Units, Class F-3 Units, Class F-4 Units, Class I-1 Units, Class I-2 Units, Class S-1 Units, Class S-2 Units, and Class\nX Units may differ because of different Class-specific fees and expenses that are deducted from the gross distributions for each\nClass. In the event that the Fund makes a distribution, we intend to adopt an \u201copt out\u201d distribution reinvestment plan for\ninvestors. As a result, in the event of a declared cash distribution, each Unitholder that has not \u201copted out\u201d of the distribution\nreinvestment plan will have their distributions automatically reinvested in additional Units rather than receive cash\ndistributions. See \u201cPart I. Item 1. Business\u2014Distribution Reinvestment Plan.\u201d\nThe following table presents our distributions that were declared and paid for each Class of its Units for the year ended\nDecember 31, 2025:",
+   "prose_after": "Unregistered Sales of Equity Securities\nAll sales of unregistered securities during the year ended December 31, 2025 were previously disclosed.\nUnit Redemptions\nThere have been no redemptions of Units that are registered under Section 12 of the Exchange Act for the three months\nended December 31, 2025.\nItem 6. [Reserved]\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe information contained in this section should be read in conjunction with our consolidated financial statements and related\nnotes appearing elsewhere in this Annual Report. This discussion contains forward-looking statements, which relate to future\nevents or the future performance or financial condition and involves numerous risks and uncertainties, including, but not",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 17795,
+     "token": "PAGE_BREAK",
+     "id": 158,
+     "namespace": "arabic",
+     "page_number": 158
+    },
+    "after": {
+     "line": 17878,
+     "token": "PAGE_BREAK",
+     "id": 159,
+     "namespace": "arabic",
+     "page_number": 159
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025"
+    ],
+    [
+     "Unit Class",
+     "Commencement of Operations to Date Total Return(a),(b)"
+    ],
+    [
+     "Class A-1a",
+     "21.0%"
+    ],
+    [
+     "Class A-1b",
+     "21.2%"
+    ],
+    [
+     "Class A-1c",
+     "21.4%"
+    ],
+    [
+     "Class F-1",
+     "21.4%"
+    ],
+    [
+     "Class I-1",
+     "10.8%"
+    ],
+    [
+     "Class X",
+     "28.5%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18008,
+    "end_line": 18021
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Investment Advisor, which amended and restated the investment advisory agreement entered into on May 2, 2025. The\nInvestment Advisory Agreement (i) extends the period of the Investment Advisor\u2019s advancement of organizational and offering\nexpenses and Initial Partnership Expense Support (as defined in the Investment Advisory Agreement) from the first anniversary\nto the second anniversary of the Initial Closing Date, (ii) permits reimbursement by the Partnership to the Investment Advisor\nwhen and if requested by the Investment Advisor during the applicable 60-month period, and (iii) provides that aviation related\nfees and any fees or payments as agreed or approved by the Independent Directors are excluded from the Management Fee\noffset.\nPerformance Summary\nSince the Initial Closing Date, we have delivered positive performance across all classes in Stonepeak-Plus Infrastructure\nFund LP:",
+   "prose_after": "(a) Commencement of operations to date total return is unannualized return from the Initial Closing Date.\n(b) Returns shown reflect the percent change in the Transactional NAV per Unit from the beginning of the applicable period, plus the amount of any distribution per Unit declared\nin the period. Returns shown are reflective of each Unit class and not of an individual investor. The Partnership believes total return is a useful measure of overall investment\nperformance of our Units.\nResults of Operations\nWe are dependent upon the proceeds from our continuous private offering (the \u201cPrivate Offering\u201d) in order to conduct\nour business. We intend to acquire infrastructure assets with the capital received from our continuous Private Offering and any\nindebtedness that we may incur in connection with such activities.\nA discussion of the results of operations for the year ended December 31, 2025 is as follows.\nInvestment Income",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 17988,
+     "token": "PAGE_BREAK",
+     "id": 161,
+     "namespace": "arabic",
+     "page_number": 161
+    },
+    "after": {
+     "line": 18076,
+     "token": "PAGE_BREAK",
+     "id": 162,
+     "namespace": "arabic",
+     "page_number": 162
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025"
+    ],
+    [
+     "Components of the Partnership\u2019s Transactional Net Asset Value",
+     ""
+    ],
+    [
+     "Investment in Affiliated Investments",
+     "$774,862,476"
+    ],
+    [
+     "Unit Repurchase",
+     "(25,000,000)"
+    ],
+    [
+     "Net change in unrealized gain/(loss)",
+     "(2,704,756)"
+    ],
+    [
+     "Accrued Unitholder Servicing Fees",
+     "(534,950)"
+    ],
+    [
+     "Other Liabilities",
+     "(8,746,521)"
+    ],
+    [
+     "Transactional Net Asset Value",
+     "$737,876,249"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025",
+    "Components of the Partnership\u2019s Transactional Net Asset Value"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18230,
+    "end_line": 18243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Transactional Net Asset Value\nThe Partnership calculates its Transactional NAV per Unit in accordance with valuation policies and procedures that\nhave been approved by the Board of Directors. The Partnership\u2019s Transactional NAV is the price at which it sells and redeems\nits Units and serves as a basis for certain fees incurred by the Partnership. The Partnership\u2019s Transactional NAV is based on the\nmonth-end values of its investments and other assets and the deduction of any liabilities, including certain fees and expenses, in\nall cases as determined in accordance with its valuation policy that has been approved by the Board of Directors. Organizational\nand offering expenses advanced on the Partnership\u2019s behalf by the Investment Advisor will be recognized as a reduction to the\nPartnership\u2019s Transactional NAV ratably over 60 months beginning on May 2, 2027, and Unitholder servicing fees, as\napplicable, are recognized as a reduction to Partnership\u2019s Transactional NAV on a monthly basis as such fees are accrued.",
+   "prose_after": "The Transactional NAV per Unit for each class of the Partnership as of December 31, 2025 was as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18170,
+     "token": "PAGE_BREAK",
+     "id": 163,
+     "namespace": "arabic",
+     "page_number": 163
+    },
+    "after": {
+     "line": 18244,
+     "token": "PAGE_BREAK",
+     "id": 164,
+     "namespace": "arabic",
+     "page_number": 164
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "Unit Class",
+     "Transactional NAV Per Unit",
+     "Number of Units"
+    ],
+    [
+     "Class A-1a",
+     "$30.79",
+     "14,216,531"
+    ],
+    [
+     "Class A-1b",
+     "$30.82",
+     "1,722,867"
+    ],
+    [
+     "Class A-1c",
+     "$30.84",
+     "1,163,964"
+    ],
+    [
+     "Class F-1",
+     "$30.84",
+     "179,183"
+    ],
+    [
+     "Class I-1",
+     "$31.13",
+     "517,477"
+    ],
+    [
+     "Class X",
+     "$31.67",
+     "6,772,578"
+    ],
+    [
+     "",
+     "",
+     "24,572,600"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18248,
+    "end_line": 18263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The Transactional NAV per Unit for each class of the Partnership as of December 31, 2025 was as follows:",
+   "prose_after": "The following table reconciles GAAP Net Asset Value to Partnership\u2019s Transactional Net Asset Value:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18244,
+     "token": "PAGE_BREAK",
+     "id": 164,
+     "namespace": "arabic",
+     "page_number": 164
+    },
+    "after": {
+     "line": 18337,
+     "token": "PAGE_BREAK",
+     "id": 165,
+     "namespace": "arabic",
+     "page_number": 165
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025"
+    ],
+    [
+     "GAAP Net Asset Value",
+     "$735,487,400"
+    ],
+    [
+     "Adjustments",
+     ""
+    ],
+    [
+     "Net change in unrealized gain/(loss)",
+     "(2,704,756)"
+    ],
+    [
+     "Unit Repurchase",
+     "(25,000,000)"
+    ],
+    [
+     "Organizational and offering expenses and Initial Fund expenses",
+     "14,179,920"
+    ],
+    [
+     "Servicing Fee payable",
+     "16,070,310"
+    ],
+    [
+     "Non-Controlling Interests in Consolidated Entities",
+     "(156,625)"
+    ],
+    [
+     "Transactional Net Asset Value",
+     "$737,876,249"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18266,
+    "end_line": 18280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The following table reconciles GAAP Net Asset Value to Partnership\u2019s Transactional Net Asset Value:",
+   "prose_after": "Critical Accounting Estimates\nThe preparation of the consolidated financial statements in accordance with U.S. GAAP involves significant judgments\nand assumptions and requires estimates about matters that are inherently uncertain. These judgments will affect our reported\namounts of assets and liabilities and our disclosure of contingent assets and liabilities at the dates of the consolidated financial\nstatements and the reported amounts of income and expenses during the reporting periods. With different estimates or\nassumptions, materially different amounts could be reported in our consolidated financial statements. The following is a\nsummary of our significant accounting policies that we believe are the most affected by our judgments, estimates and\nassumptions.\nFair Value\nThe Partnership has indirect exposure to gains and losses on underlying investments because it invests in the",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18244,
+     "token": "PAGE_BREAK",
+     "id": 164,
+     "namespace": "arabic",
+     "page_number": 164
+    },
+    "after": {
+     "line": 18337,
+     "token": "PAGE_BREAK",
+     "id": 165,
+     "namespace": "arabic",
+     "page_number": 165
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Consolidated Financial Statements of Stonepeak-Plus Infrastructure Fund LP:",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 238)",
+     "168"
+    ],
+    [
+     "Consolidated Statements of Assets and Liabilities as of December 31, 2025 and 2024",
+     "169"
+    ],
+    [
+     "Consolidated Statements of Operations for the Year Ended December 31, 2025 and for the period from April 29, 2024 (Inception) to December 31, 2024",
+     "170"
+    ],
+    [
+     "Consolidated Statement of Changes in Net Assets for the Year Ended December 31, 2025",
+     "171"
+    ],
+    [
+     "Consolidated Statement of Cash Flows for the Year Ended December 31, 2025",
+     "172"
+    ],
+    [
+     "Condensed Consolidated Schedule of Investments as of December 31, 2025",
+     "173"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "174"
+    ],
+    [
+     "Consolidated Financial Statements of Stonepeak-Plus Infrastructure Fund Master Aggregator LP:",
+     ""
+    ],
+    [
+     "Report of Independent Auditors",
+     "189"
+    ],
+    [
+     "Consolidated Statement of Assets and Liabilities as of December 31, 2025",
+     "191"
+    ],
+    [
+     "Consolidated Statement of Operations for the period from May 2, 2025 (Commencement of Operations) to December 31, 2025",
+     "192"
+    ],
+    [
+     "Consolidated Statement of Changes in Net Assets for the period from May 2, 2025 (Commencement of Operations) to December 31, 2025",
+     "193"
+    ],
+    [
+     "Consolidated Statement of Cash Flows for the period from May 2, 2025 (Commencement of Operations) to December 31, 2025",
+     "194"
+    ],
+    [
+     "Condensed Consolidated Schedule of Investments as of December 31, 2025",
+     "195"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "197"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Consolidated Financial Statements of Stonepeak-Plus Infrastructure Fund LP:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18467,
+    "end_line": 18486
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "employing a consistently applied valuation process for the types of investments we make. If we were required to liquidate a\nportfolio investment in a forced or liquidation sale, we may realize amounts that are different from the amounts presented and\nsuch differences could be material.\nInterest Rates Risk\nWith respect to our proposed business operations, general increases in interest rates over time may cause the interest\nexpense associated with our borrowings to increase, and the value of our debt acquisitions to decline. Conversely, general\ndecreases in interest rates over time may cause the interest expense associated with our borrowings to decrease, and the value of\nour debt acquisitions to increase.\nItem 8 - Financial Statements and Supplementary Data\nIndex to Consolidated Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Unitholders of Stonepeak-Plus Infrastructure Fund LP\nOpinion on the Financial Statements\nWe have audited the accompanying 2025 consolidated financial statements of Stonepeak-Plus Infrastructure Fund\nLP and its subsidiaries and the 2024 financial statements of Stonepeak-Plus Infrastructure Fund LP (collectively\nreferred to as the \u201cPartnership\u201d), which comprise the consolidated statement of assets and liabilities, including the\ncondensed consolidated schedule of investments as of December 31, 2025, the related consolidated statements of\noperations, of changes in net assets and of cash flows for the year ended December 31, 2025, the statement of assets\nand liabilities as of December 31, 2024, and the related statement of operations for the period from April 29, 2024\n(Inception) to December 31, 2024, including the related notes (collectively referred to as the \"financial statements\").",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18461,
+     "token": "PAGE_BREAK",
+     "id": 167,
+     "namespace": "arabic",
+     "page_number": 167
+    },
+    "after": {
+     "line": 18487,
+     "token": "PAGE_BREAK",
+     "id": 168,
+     "namespace": "arabic",
+     "page_number": 168
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2025",
+     "December 31, 20241"
+    ],
+    [
+     "Assets",
+     "",
+     ""
+    ],
+    [
+     "Affiliated investments at fair value (cost $688,037,634 as of December 31, 2025)",
+     "$774,862,476",
+     "$\u2014"
+    ],
+    [
+     "Cash",
+     "\u2014",
+     "1,000"
+    ],
+    [
+     "Distribution receivable from affiliated investments",
+     "3,902,795",
+     "\u2014"
+    ],
+    [
+     "Deferred offering costs",
+     "483,481",
+     "\u2014"
+    ],
+    [
+     "Prepaid expenses",
+     "89,822",
+     "\u2014"
+    ],
+    [
+     "Total assets",
+     "$779,338,574",
+     "$1,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Servicing fee payable",
+     "$16,605,261",
+     "$\u2014"
+    ],
+    [
+     "Accrued performance participation allocation",
+     "10,824,588",
+     "\u2014"
+    ],
+    [
+     "Due to affiliate",
+     "10,576,861",
+     "\u2014"
+    ],
+    [
+     "Distribution payable",
+     "3,561,727",
+     "\u2014"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "1,911,421",
+     "\u2014"
+    ],
+    [
+     "Management fee payable",
+     "371,316",
+     "\u2014"
+    ],
+    [
+     "Total liabilities",
+     "43,851,174",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 7)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets",
+     "735,487,400",
+     "1,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net assets are comprised of",
+     "",
+     ""
+    ],
+    [
+     "Limited Partnership Unit - Class A-1a Units, unlimited Units authorized, 14,216,531 Units issued and outstanding ($29.26 NAV per Unit)",
+     "415,998,052",
+     "\u2014"
+    ],
+    [
+     "Limited Partnership Unit - Class A-1b Units, unlimited Units authorized, 1,722,867 Units issued and outstanding ($29.82 NAV per Unit)",
+     "51,377,386",
+     "\u2014"
+    ],
+    [
+     "Limited Partnership Unit - Class A-1c Units, unlimited Units authorized, 1,163,964 Units issued and outstanding ($30.37 NAV per Unit)",
+     "35,345,256",
+     "\u2014"
+    ],
+    [
+     "Limited Partnership Unit - Class F-1 Units, unlimited Units authorized, 179,183 Units issued and outstanding ($30.37 NAV per Unit)",
+     "5,441,099",
+     "\u2014"
+    ],
+    [
+     "Limited Partnership Unit - Class I-1 Units, unlimited Units authorized, 517,477 Units issued and outstanding ($30.67 NAV per Unit)",
+     "15,868,446",
+     "\u2014"
+    ],
+    [
+     "Limited Partnership Unit - Class X Units, unlimited Units authorized, 6,772,578 Units issued and outstanding ($31.20 NAV per Unit)",
+     "211,300,536",
+     "\u2014"
+    ],
+    [
+     "General partner interest",
+     "\u2014",
+     "1,000"
+    ],
+    [
+     "Non-controlling interests in consolidated entities",
+     "156,625",
+     "\u2014"
+    ],
+    [
+     "Total net assets",
+     "$735,487,400",
+     "$1,000"
+    ]
+   ],
+   "caption_stack": [
+    "As of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18565,
+    "end_line": 18610
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits\nalso included evaluating the accounting principles used and significant estimates made by management, as well as\nevaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis\nfor our opinion.\n/s/PricewaterhouseCoopers LLP\nNew York, New York\nMarch 31, 2026\nWe have served as the Partnership\u2019s auditor since 2024.\n1 The financial statements were not consolidated as of December 31, 2024.\nConsolidated Statements of Assets and Liabilities",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n* For the period from April 29, 2024 (Inception) to December 31, 2024. The financial statements were not consolidated.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18561,
+     "token": "REPEATING_HEADER",
+     "id": 170,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 18615,
+     "token": "PAGE_BREAK",
+     "id": 171,
+     "namespace": "arabic",
+     "page_number": 170
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     ""
+    ],
+    [
+     "",
+     "2025",
+     "2024*"
+    ],
+    [
+     "Income",
+     "",
+     ""
+    ],
+    [
+     "Distribution income from affiliates",
+     "$8,712,974",
+     "$\u2014"
+    ],
+    [
+     "Total income",
+     "8,712,974",
+     "\u2014"
+    ],
+    [
+     "Operating expenses",
+     "",
+     ""
+    ],
+    [
+     "Performance participation allocation",
+     "$10,824,588",
+     "$\u2014"
+    ],
+    [
+     "Organization costs",
+     "3,973,349",
+     "2,627,988"
+    ],
+    [
+     "Professional fees",
+     "3,471,626",
+     "116,000"
+    ],
+    [
+     "Management fee, gross",
+     "2,205,531",
+     "\u2014"
+    ],
+    [
+     "Amortization of offering costs",
+     "966,961",
+     "\u2014"
+    ],
+    [
+     "Net accretion of interest on servicing fee payable",
+     "788,134",
+     "\u2014"
+    ],
+    [
+     "Other fees",
+     "759,057",
+     "\u2014"
+    ],
+    [
+     "Total operating expenses",
+     "22,989,246",
+     "2,743,988"
+    ],
+    [
+     "Management fee offset",
+     "(1,834,215)",
+     "\u2014"
+    ],
+    [
+     "Net operating expenses",
+     "21,155,031",
+     "2,743,988"
+    ],
+    [
+     "Operating expenses payable by an affiliate of the Investment Advisor (Note 5)",
+     "\u2014",
+     "(2,743,988)"
+    ],
+    [
+     "Reimbursable expenses previously borne by an affiliate of the Investment Advisor (Note 5)",
+     "2,743,988",
+     "\u2014"
+    ],
+    [
+     "Net investment income/(loss)",
+     "(15,186,045)",
+     "\u2014"
+    ],
+    [
+     "Net realized and change in unrealized gain/(loss) on investments",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain/(loss) on investments",
+     "19,760",
+     "\u2014"
+    ],
+    [
+     "Net change in unrealized gain/(loss) on investments",
+     "86,824,842",
+     "\u2014"
+    ],
+    [
+     "Net realized and change in unrealized gain/(loss) on investments",
+     "86,844,602",
+     "\u2014"
+    ],
+    [
+     "Net increase/(decrease) in net assets resulting from operations",
+     "71,658,557",
+     "\u2014"
+    ],
+    [
+     "Less: net increase/(decrease) in net assets resulting from operations attributable to non- controlling interests in consolidated entities",
+     "56,625",
+     "\u2014"
+    ],
+    [
+     "Net increase/(decrease) in net assets resulting from operations attributable to Stonepeak-Plus Infrastructure Fund LP",
+     "$71,601,932",
+     "$\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18621,
+    "end_line": 18664
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n* For the period from April 29, 2024 (Inception) to December 31, 2024. The financial statements were not consolidated.\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Changes in Net Assets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18617,
+     "token": "REPEATING_HEADER",
+     "id": 172,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 18667,
+     "token": "PAGE_BREAK",
+     "id": 173,
+     "namespace": "arabic",
+     "page_number": 171
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A-1a",
+     "Class A-1b",
+     "Class A-1c",
+     "Class F-1",
+     "Class I-1",
+     "Class X",
+     "General Partner Interest",
+     "Non- Controlling Interests in Consolidated Entities",
+     "Total Net Assets/ (Deficit)"
+    ],
+    [
+     "Balance at December 31, 2024",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$1,000",
+     "$\u2014",
+     "$1,000"
+    ],
+    [
+     "Net investment income/(loss)",
+     "(9,966,298)",
+     "(1,322,973)",
+     "(958,582)",
+     "(147,198)",
+     "(229,790)",
+     "(2,559,518)",
+     "\u2014",
+     "(1,686)",
+     "(15,186,045)"
+    ],
+    [
+     "Proceeds from Units issued",
+     "384,336,437",
+     "45,000,000",
+     "30,000,000",
+     "4,585,000",
+     "15,271,000",
+     "206,219,609",
+     "(1,000)",
+     "100,000",
+     "685,511,046"
+    ],
+    [
+     "Distributions reinvested",
+     "2,251,582",
+     "356,588",
+     "\u2014",
+     "38,513",
+     "72,074",
+     "6,734",
+     "\u2014",
+     "\u2014",
+     "2,725,491"
+    ],
+    [
+     "Redemption of Units",
+     "(219,760)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "(219,760)"
+    ],
+    [
+     "Distributions to Unitholders",
+     "(5,200,976)",
+     "(730,712)",
+     "(535,423)",
+     "(82,037)",
+     "(170,302)",
+     "(1,156,587)",
+     "\u2014",
+     "\u2014",
+     "(7,876,037)"
+    ],
+    [
+     "Servicing fees",
+     "(15,381,451)",
+     "(931,446)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "(16,312,897)"
+    ],
+    [
+     "Net realized gain/(loss) on investments",
+     "14,980",
+     "2,337",
+     "1,594",
+     "244",
+     "290",
+     "315",
+     "\u2014",
+     "\u2014",
+     "19,760"
+    ],
+    [
+     "Net change in unrealized gain/ (loss) on investments",
+     "60,163,538",
+     "9,003,592",
+     "6,837,667",
+     "1,046,577",
+     "925,174",
+     "8,789,983",
+     "\u2014",
+     "58,311",
+     "86,824,842"
+    ],
+    [
+     "Balance at December 31, 2025",
+     "$415,998,052",
+     "$51,377,386",
+     "$35,345,256",
+     "$5,441,099",
+     "$15,868,446",
+     "$211,300,536",
+     "$\u2014",
+     "$156,625",
+     "$735,487,400"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18673,
+    "end_line": 18695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Changes in Net Assets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18669,
+     "token": "REPEATING_HEADER",
+     "id": 174,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 18698,
+     "token": "PAGE_BREAK",
+     "id": 175,
+     "namespace": "arabic",
+     "page_number": 172
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2025"
+    ],
+    [
+     "Operating activities",
+     ""
+    ],
+    [
+     "Net increase/(decrease) in net assets resulting from operations",
+     "$71,658,557"
+    ],
+    [
+     "Adjustments to reconcile net increase in net assets resulting from operations to net cash used in operating activities",
+     ""
+    ],
+    [
+     "Purchases of investments",
+     "(488,262,695)"
+    ],
+    [
+     "Net change in unrealized (gain)/loss on investments",
+     "(86,824,842)"
+    ],
+    [
+     "Net realized (gain)/loss on investments",
+     "(19,760)"
+    ],
+    [
+     "Proceeds from investments",
+     "230,749"
+    ],
+    [
+     "Amortization of offering costs",
+     "966,961"
+    ],
+    [
+     "Net accretion of interest on servicing fee payable",
+     "788,134"
+    ],
+    [
+     "Changes in assets and liabilities",
+     ""
+    ],
+    [
+     "Distribution receivable",
+     "(3,902,795)"
+    ],
+    [
+     "Deferred offering costs",
+     "(1,450,442)"
+    ],
+    [
+     "Prepaid expenses",
+     "(89,822)"
+    ],
+    [
+     "Accrued performance participation allocation",
+     "10,824,588"
+    ],
+    [
+     "Due to affiliate",
+     "10,576,861"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "1,911,421"
+    ],
+    [
+     "Management fee payable",
+     "371,316"
+    ],
+    [
+     "Net cash used in operating activities",
+     "$(483,221,769)"
+    ],
+    [
+     "Financing activities",
+     ""
+    ],
+    [
+     "Proceeds from Units issued",
+     "485,525,118"
+    ],
+    [
+     "Redemption of Units",
+     "(219,760)"
+    ],
+    [
+     "Distributions to Unitholders",
+     "(1,588,819)"
+    ],
+    [
+     "Servicing fee paid",
+     "(495,770)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$483,220,769"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     ""
+    ],
+    [
+     "Net increase/(decrease) in cash",
+     "$(1,000)"
+    ],
+    [
+     "Cash, beginning of year",
+     "$1,000"
+    ],
+    [
+     "Cash, end of year",
+     "$\u2014"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activities",
+     ""
+    ],
+    [
+     "Servicing fee payable",
+     "$16,605,261"
+    ],
+    [
+     "Distributions reinvested",
+     "$2,725,491"
+    ],
+    [
+     "Issuance of 6,529,108 Class X Units for the purchase of assets",
+     "$199,985,928"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2025",
+    "Operating activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18704,
+    "end_line": 18748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1 EMEA is defined as Europe, Middle East and Africa.\n2 The Master Aggregator controls and consolidates this entity. Included in this interest is an indirect investment in Stonepeak\nPartners Holdings LP, Stonepeak GP Investors Holdings LP, and Stonepeak GP Investors Holdings (CYM) LP.\nCondensed Consolidated Schedule of Investments",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18700,
+     "token": "REPEATING_HEADER",
+     "id": 176,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 18757,
+     "token": "PAGE_BREAK",
+     "id": 177,
+     "namespace": "arabic",
+     "page_number": 173
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name of Investment",
+     "Type of Investment",
+     "Industry",
+     "Geography",
+     "Cost",
+     "Fair Value",
+     "Fair Value as\na Percentage of Net Assets"
+    ],
+    [
+     "Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Affiliated Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other investments",
+     "LP Interest",
+     "Digital Infrastructure",
+     "EMEA1",
+     "$2,500,000",
+     "$3,957,829",
+     "0.5%"
+    ],
+    [
+     "Affiliated Investee Funds",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stonepeak-Plus Infrastructure Fund Master Aggregator LP",
+     "LP Interest",
+     "Various",
+     "Various",
+     "684,689,313",
+     "769,970,555",
+     "104.7%"
+    ],
+    [
+     "Stonepeak-Plus Infrastructure Fund Aggregator I LP2",
+     "LP Interest",
+     "Various",
+     "Americas",
+     "848,321",
+     "934,092",
+     "0.1%"
+    ],
+    [
+     "Total Affiliated Investments",
+     "",
+     "",
+     "",
+     "$685,537,634",
+     "$770,904,647",
+     "104.8%"
+    ],
+    [
+     "Total Investments",
+     "",
+     "",
+     "",
+     "$688,037,634",
+     "$774,862,476",
+     "105.3%"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18763,
+    "end_line": 18781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n1 EMEA is defined as Europe, Middle East and Africa.\n2 The Master Aggregator controls and consolidates this entity. Included in this interest is an indirect investment in Stonepeak\nPartners Holdings LP, Stonepeak GP Investors Holdings LP, and Stonepeak GP Investors Holdings (CYM) LP.\nCondensed Consolidated Schedule of Investments",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNote 1. Organization\nStonepeak-Plus Infrastructure Fund LP (the \u201cPartnership\u201d) is a Delaware limited partnership which was formed on\nApril 29, 2024. The Partnership is governed by its Second Amended and Restated Limited Partnership Agreement dated as of\nOctober 31, 2025, subsequently amended by Amendment No. 1 of the Second Amended and Restated Limited Partnership\nAgreement in March 2026 (as amended, restated and/or supplemented from time to time, the \u201cPartnership Agreement\u201d). The\nPartnership was initially formed under the name \u201cStonepeak Access Fund LP\u201d and has changed its name pursuant to an\namendment to the certificate of limited partnership of the Partnership, as filed in Delaware on October 15, 2024, to \u201cStonepeak-\nPlus Infrastructure Fund LP\u201d. The Partnership is a private fund exempt from registration under Section 3(c)(7) of the\nInvestment Company Act of 1940, as amended (the \u201c1940 Act\u201d). Stonepeak-Plus Infrastructure Fund Advisors LLC (the",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 18759,
+     "token": "REPEATING_HEADER",
+     "id": 178,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 18784,
+     "token": "PAGE_BREAK",
+     "id": 179,
+     "namespace": "arabic",
+     "page_number": 174
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level I",
+     "Level II",
+     "Level III",
+     "NAV",
+     "Total"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014"
+    ],
+    [
+     "Total cash",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Investments",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Affiliated investee funds",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "770,904,647",
+     "770,904,647"
+    ],
+    [
+     "Total investments",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "770,904,647",
+     "770,904,647"
+    ],
+    [
+     "Other affiliated investments",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other investments",
+     "\u2014",
+     "\u2014",
+     "3,957,829",
+     "\u2014",
+     "3,957,829"
+    ],
+    [
+     "Total other affiliated investments",
+     "\u2014",
+     "\u2014",
+     "3,957,829",
+     "\u2014",
+     "3,957,829"
+    ],
+    [
+     "Total cash and investments",
+     "$\u2014",
+     "$\u2014",
+     "$3,957,829",
+     "$770,904,647",
+     "$774,862,476"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 19238,
+    "end_line": 19261
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Investments and Fair Value Measurement"
+    }
+   },
+   "prose_before": "December 31, 2025 and this change is not significant for the Partnership\u2019s consolidated financial statements.\nNote 3. Investment in the Master Aggregator\nThe Partnership recognizes distribution income when earned at the time of receipt of proceeds from the Master\nAggregator. The Partnership had a limited partner interest of 70.1% and no interest in the Master Aggregator as of\nDecember 31, 2025 and December 31, 2024, respectively. The remaining interest in the Master Aggregator is held by\nStonepeak-Plus Infrastructure Master Fund SCSp-RAIF and the General Partner. The Partnership\u2019s interest in the Master\nAggregator may result in the Partnership indirectly holding investments of the Master Aggregator that, on a proportional basis,\nat times may exceed 5% of the net assets of the Partnership.\nNote 4. Investments and Fair Value Measurement\nThe following table summarizes the valuation of investments by the fair value hierarchy levels as of December 31, 2025:",
+   "prose_after": "The following table summarizes the quantitative inputs and assumptions used for valuation of investments categorized in\nLevel III of the fair value hierarchy as of December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19172,
+     "token": "PAGE_BREAK",
+     "id": 184,
+     "namespace": "arabic",
+     "page_number": 178
+    },
+    "after": {
+     "line": 19262,
+     "token": "PAGE_BREAK",
+     "id": 185,
+     "namespace": "arabic",
+     "page_number": 179
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value",
+     "Valuation Techniques",
+     "Unobservable Input",
+     "Ranges",
+     "Weighted- Average",
+     "Impact to Valuation from an Increase in Input"
+    ],
+    [
+     "Financial assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other affiliated investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other investments",
+     "$3,957,829",
+     "Discounted Cash Flows",
+     "Discount rate",
+     "15%",
+     "15%",
+     "Lower"
+    ],
+    [
+     "",
+     "",
+     "",
+     "LQA EBITDA Exit Multiple",
+     "18.0x",
+     "18.0x",
+     "Higher"
+    ],
+    [
+     "Total other affiliated investments",
+     "$3,957,829",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19268,
+    "end_line": 19279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Investments and Fair Value Measurement"
+    }
+   },
+   "prose_before": "The following table summarizes the quantitative inputs and assumptions used for valuation of investments categorized in\nLevel III of the fair value hierarchy as of December 31, 2025:",
+   "prose_after": "\u2022LQA EBITDA Exit Multiple represents EBITDA for the last quarter annualized from exit date.\nFor the year ended December 31, 2025, the following table presents changes in the fair value of investments for which\nLevel III inputs were used to determine the fair value:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19262,
+     "token": "PAGE_BREAK",
+     "id": 185,
+     "namespace": "arabic",
+     "page_number": 179
+    },
+    "after": {
+     "line": 19335,
+     "token": "PAGE_BREAK",
+     "id": 186,
+     "namespace": "arabic",
+     "page_number": 180
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2025"
+    ],
+    [
+     "",
+     "Other Affiliated Investments"
+    ],
+    [
+     "Balance, beginning of period",
+     "$\u2014"
+    ],
+    [
+     "Purchases",
+     "2,500,000"
+    ],
+    [
+     "Change in unrealized gain/(loss) included in net assets",
+     "1,457,829"
+    ],
+    [
+     "Balance, end of period",
+     "$3,957,829"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Changes in unrealized gain (loss) included in earnings related to financial assets still held at reporting date",
+     "$1,457,829"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2025",
+    "Other Affiliated Investments"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 19286,
+    "end_line": 19302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Investments and Fair Value Measurement"
+    }
+   },
+   "prose_before": "\u2022LQA EBITDA Exit Multiple represents EBITDA for the last quarter annualized from exit date.\nFor the year ended December 31, 2025, the following table presents changes in the fair value of investments for which\nLevel III inputs were used to determine the fair value:",
+   "prose_after": "NAV as a Practical Expedient\nThe Master Aggregator and Stonepeak-Plus Infrastructure Fund Aggregator I LP (together, \u201cAffiliated Investee Funds\u201d)\nwere formed with the objectives of acquiring, holding, and disposing of investments.\nThe following table summarizes investments that estimate the fair value of an investment using NAV as a practical\nexpedient as of December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19262,
+     "token": "PAGE_BREAK",
+     "id": 185,
+     "namespace": "arabic",
+     "page_number": 179
+    },
+    "after": {
+     "line": 19335,
+     "token": "PAGE_BREAK",
+     "id": 186,
+     "namespace": "arabic",
+     "page_number": 180
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "fair_value",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Affiliated Investee Funds",
+     "Unfunded Commitment",
+     "Fair Value"
+    ],
+    [
+     "Stonepeak-Plus Infrastructure Fund Master Aggregator LP",
+     "$\u2014",
+     "$769,970,555"
+    ],
+    [
+     "Stonepeak-Plus Infrastructure Fund Aggregator I LP",
+     "$\u2014",
+     "$934,092"
+    ],
+    [
+     "Total Affiliated Investee Funds",
+     "$\u2014",
+     "$770,904,647"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19313,
+    "end_line": 19322
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Investments and Fair Value Measurement"
+    }
+   },
+   "prose_before": "NAV as a Practical Expedient\nThe Master Aggregator and Stonepeak-Plus Infrastructure Fund Aggregator I LP (together, \u201cAffiliated Investee Funds\u201d)\nwere formed with the objectives of acquiring, holding, and disposing of investments.\nThe following table summarizes investments that estimate the fair value of an investment using NAV as a practical\nexpedient as of December 31, 2025:",
+   "prose_after": "Note 5. Related Party Transactions\nDue to Affiliate\nThe Partnership's operating expenses are paid either by the Partnership or by the Investment Advisor or its related\naffiliates. As of December 31, 2025, an affiliate of the Investment Advisor has advanced total costs of $10,576,861 all of which\nare subject to recoupment by the affiliate of the Investment Advisor and have been recorded in the Consolidated Statements of\nAssets and Liabilities within Due to affiliate.\nAcquisition of Certain Affiliated Investments\nFor the year ended December 31, 2025, the Partnership purchased investments from an affiliate of the Investment\nAdvisor, at a discount to fair market value in exchange for a total cash consideration of $2,500,000, as governed by the\nexecuted purchase and contribution agreements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19262,
+     "token": "PAGE_BREAK",
+     "id": 185,
+     "namespace": "arabic",
+     "page_number": 179
+    },
+    "after": {
+     "line": 19335,
+     "token": "PAGE_BREAK",
+     "id": 186,
+     "namespace": "arabic",
+     "page_number": 180
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Applicable Management Fee Percentage"
+    ],
+    [
+     "Class A-1a",
+     "0.875% per annum"
+    ],
+    [
+     "Class A-1b",
+     "0.875% per annum"
+    ],
+    [
+     "Class A-1c",
+     "0.875% per annum"
+    ],
+    [
+     "Class D-1",
+     "1.0% per annum until the end of the 48-month period following the Initial Closing Date (as defined below), and 1.25% per annum thereafter"
+    ],
+    [
+     "Class D-2",
+     "1.25% per annum"
+    ],
+    [
+     "Class F-1",
+     "0.875% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class F-2",
+     "0.75% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class F-3",
+     "0.625% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class F-4",
+     "0.875% per annum"
+    ],
+    [
+     "Class I-1",
+     "1.0% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class I-2",
+     "1.25% per annum"
+    ],
+    [
+     "Class S-1",
+     "1.0% per annum until the end of the 48-month period following the Initial Closing Date, and 1.25% per annum thereafter"
+    ],
+    [
+     "Class S-2",
+     "1.25% per annum"
+    ],
+    [
+     "Class X",
+     "\u2014% per annum"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19403,
+    "end_line": 19421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Related Party Transactions"
+    }
+   },
+   "prose_before": "(the \u201cManagement Fee\u201d) with respect to each Class of Units payable by the Partnership directly or indirectly through an\nIntermediate Entity equal to the product of (x) the Applicable Management Fee Percentage (as specified in the table below)\nwith respect to such Class of Units and (y) the month-end Net Asset Value attributable to such Class of Units, payable monthly\nin arrears, before giving effect to any accruals for the Management Fee, the Servicing Fee, the Performance Participation\nAllocation, Unit redemptions (and pending redemptions), any distributions and without taking into account accrued and unpaid\ntaxes of any Intermediate Entity through which the Partnership indirectly invests in an Investment (or any comparable entities\nof other investment vehicles managed by the Investment Advisor or its Affiliates in which the Partnership directly or indirectly\nparticipates) or taxes paid by any such entity during the applicable month. The Partnership and any Parallel Fund will each be\nobligated to pay its proportional share of the Management Fee with respect to each Class of Units.",
+   "prose_after": "The Investment Advisor may elect to receive the Management Fee in cash, Units in the respective Class and/or shares,\ninterests or Units of Intermediate Entities. If the Management Fee is paid in Units, such Units may be redeemed by the\nPartnership at NAV at the Investment Advisor\u2019s request and will not be subject to the volume limitations of the Unit\nRedemption Program (as defined below) or the early redemption deduction of the Unit Redemption Program.\nEach Management Fee payment will, as determined in the General Partner\u2019s sole discretion, either (i) result in a\nreduction of NAV of the applicable Class of Units to which such payment relates or (ii) result in a reduction in Units held by\nUnitholders of the applicable Class and the Partnership will make a payment in the form of cash or Units of an equivalent\namount to the Investment Advisor, which, in the case of a cash payment, may be invested or reinvested, as applicable, by the\nInvestment Advisor in whole or in part in Units and/or shares, interests or Units of Intermediate Entities.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19401,
+     "token": "PAGE_BREAK",
+     "id": 187,
+     "namespace": "arabic",
+     "page_number": 181
+    },
+    "after": {
+     "line": 19480,
+     "token": "PAGE_BREAK",
+     "id": 188,
+     "namespace": "arabic",
+     "page_number": 182
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class-A-1a",
+     "Class-A-1b",
+     "Class-A-1c",
+     "Class-F-1",
+     "Class-I-1",
+     "Class-X",
+     "Total"
+    ],
+    [
+     "Units Outstanding as of December 31, 2024",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Units issued during the period",
+     "14,224,291",
+     "1,722,867",
+     "1,163,964",
+     "179,183",
+     "517,477",
+     "6,772,578",
+     "24,580,360"
+    ],
+    [
+     "Redemption of Units",
+     "(7,760)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "(7,760)"
+    ],
+    [
+     "Units Outstanding as of December 31, 2025",
+     "14,216,531",
+     "1,722,867",
+     "1,163,964",
+     "179,183",
+     "517,477",
+     "6,772,578",
+     "24,572,600"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19834,
+    "end_line": 19844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Net Assets"
+    }
+   },
+   "prose_before": "Class\u201d or a \u201cClass\u201d). The purchase price per Unit of each Class is equal to the transactional NAV per Unit (i.e., the price at\nwhich transactions in the Partnership\u2019s Units are made) for such Class as of the last calendar day of the immediately preceding\nmonth. Before the Partnership had determined its first transactional NAV, the subscription price for Units was $25.00 per Unit\nplus applicable Subscription Fees. The Partnership will only accept subscriptions as of the first business day of each month (a\n\u201cSubscription Date\u201d), unless the General Partner determines otherwise. There are variations between these Unit Classes\nincluding Subscription Fees, Servicing Fees, Management Fees and minimum investment limits.\nOn December 31, 2024, the General Partner invested $1,000 for no Units as its initial capital. As of December 31, 2025\nand December 31, 2024, there were 24,572,600 Units and no Units outstanding, respectively.\nThe following tables present transactions in the Units during the year ended December 31, 2025:",
+   "prose_after": "Unless specific to a class, income and expenses are allocated proportionate to the class\u2019s share of the Net Asset Value.\nFor the year ended December 31, 2025, the net investment income also includes a reallocation of Partnership expenses from the\nGeneral Partner.\nDistributions to Unitholders\nDistributions to Unitholders are recognized on the ex-distribution date of the distribution determined by the General\nPartner. All distributions will be declared at the discretion of the General Partner. Unless otherwise determined by the General\nPartner, all distributions of cash shall be made to the Unitholders in amounts proportionate to the aggregate net asset value of\nthe Units held by the respective Unitholders on the ex-distribution date set by the General Partner, except that the amount\ndistributed per Unit of any class may differ from the amount per Unit of another class on account of differences in class-specific\nexpense allocations or for other reasons as determined by the General Partner in good faith.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19778,
+     "token": "PAGE_BREAK",
+     "id": 191,
+     "namespace": "arabic",
+     "page_number": 185
+    },
+    "after": {
+     "line": 19869,
+     "token": "PAGE_BREAK",
+     "id": 192,
+     "namespace": "arabic",
+     "page_number": 186
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class of Units",
+     "Net Distribution per Unit"
+    ],
+    [
+     "Class A-1a",
+     "$0.4003"
+    ],
+    [
+     "Class A-1b",
+     "$0.4261"
+    ],
+    [
+     "Class A-1c",
+     "$0.4600"
+    ],
+    [
+     "Class F-1",
+     "$0.4600"
+    ],
+    [
+     "Class I-1",
+     "$0.4600"
+    ],
+    [
+     "Class X",
+     "$0.4600"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 19871,
+    "end_line": 19881
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Net Assets"
+    }
+   },
+   "prose_before": "General Partner.\nDistributions to Unitholders\nDistributions to Unitholders are recognized on the ex-distribution date of the distribution determined by the General\nPartner. All distributions will be declared at the discretion of the General Partner. Unless otherwise determined by the General\nPartner, all distributions of cash shall be made to the Unitholders in amounts proportionate to the aggregate net asset value of\nthe Units held by the respective Unitholders on the ex-distribution date set by the General Partner, except that the amount\ndistributed per Unit of any class may differ from the amount per Unit of another class on account of differences in class-specific\nexpense allocations or for other reasons as determined by the General Partner in good faith.\nThe following table presents our distributions that were paid and/or payable for each Class of its Units for the year ended\nDecember 31, 2025:",
+   "prose_after": "The Partnership has adopted a distribution reinvestment plan (\u201cDRIP\u201d) pursuant to which Unitholders will have their\ncash distributions automatically reinvested in additional Units of the Partnership\u2019s same class of Units to which the distribution\nrelates unless they elect to receive their distributions in cash. Distributions that are reinvested are recognized in net assets on the\nfirst business day following the record date of a distribution.\nNote 7. Commitments and Contingencies\nThe Investment Advisor may, in its discretion, advance all or a portion of the Partnership Expenses (excluding\norganizational and offering expenses) to be borne by the Partnership and the appropriately apportioned expenses relating to the\nPartnership\u2019s portfolio companies, the Feeder Fund, Parallel Partnerships and/or Intermediate Entities to the extent not paid by\nsuch portfolio companies, the Feeder Fund, Parallel Partnerships and/or Intermediate Entities, in each case as determined\npursuant to the terms of the Partnership Agreement (collectively, \u201cInitial Partnership Expenses Support\u201d) through the first",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19869,
+     "token": "PAGE_BREAK",
+     "id": 192,
+     "namespace": "arabic",
+     "page_number": 186
+    },
+    "after": {
+     "line": 19944,
+     "token": "PAGE_BREAK",
+     "id": 193,
+     "namespace": "arabic",
+     "page_number": 187
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2025(a)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class-A-1a",
+     "Class-A-1b",
+     "Class-A-1c",
+     "Class-F-1",
+     "Class-I-1",
+     "Class-X"
+    ],
+    [
+     "Per Unit Data",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value, beginning of period",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014"
+    ],
+    [
+     "Proceeds from Units issued",
+     "25.77",
+     "25.77",
+     "25.77",
+     "25.77",
+     "28.51",
+     "25.00"
+    ],
+    [
+     "Distributions to Unitholders",
+     "(0.40)",
+     "(0.43)",
+     "(0.46)",
+     "(0.46)",
+     "(0.46)",
+     "(0.46)"
+    ],
+    [
+     "Consideration from the issuance of Units",
+     "0.72",
+     "0.28",
+     "\u2014",
+     "0.01",
+     "0.58",
+     "0.47"
+    ],
+    [
+     "Servicing fees",
+     "(1.38)",
+     "(0.56)",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Net investment income/(loss)",
+     "(0.89)",
+     "(0.79)",
+     "(0.82)",
+     "(0.83)",
+     "(0.90)",
+     "(2.43)"
+    ],
+    [
+     "Net change in realized and unrealized gain/(loss) on investments",
+     "5.43",
+     "5.55",
+     "5.88",
+     "5.87",
+     "2.94",
+     "8.62"
+    ],
+    [
+     "Net increase/(decrease) in net assets resulting from operations",
+     "4.54",
+     "4.75",
+     "5.05",
+     "5.05",
+     "2.03",
+     "6.19"
+    ],
+    [
+     "Net increase/(decrease) in net assets",
+     "29.26",
+     "29.82",
+     "30.37",
+     "30.37",
+     "30.67",
+     "31.20"
+    ],
+    [
+     "Net asset value, end of period",
+     "$29.26",
+     "$29.82",
+     "$30.37",
+     "$30.37",
+     "$30.67",
+     "$31.20"
+    ],
+    [
+     "Units outstanding, end of period",
+     "14,216,531",
+     "1,722,867",
+     "1,163,964",
+     "179,183",
+     "517,477",
+     "6,772,578"
+    ],
+    [
+     "Total return based on change in net asset value(b)",
+     "15.08%",
+     "17.35%",
+     "19.60%",
+     "19.60%",
+     "9.19%",
+     "26.64%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratios to weighted-average net assets (non-annualized)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses without waivers/offsets(c)",
+     "(5.71)%",
+     "(5.06)%",
+     "(4.96)%",
+     "(4.96)%",
+     "(5.76)%",
+     "(11.75)%"
+    ],
+    [
+     "Expenses and management fees waivers/ offsets(c)",
+     "0.47%",
+     "0.45%",
+     "0.43%",
+     "0.43%",
+     "0.41%",
+     "\u2014%"
+    ],
+    [
+     "Total net expenses",
+     "(5.24)%",
+     "(4.62)%",
+     "(4.53)%",
+     "(4.54)%",
+     "(5.35)%",
+     "(11.75)%"
+    ],
+    [
+     "Accrued performance participation allocation",
+     "(2.75)%",
+     "(2.71)%",
+     "(2.82)%",
+     "(2.82)%",
+     "(1.84)%",
+     "\u2014%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income/(loss)",
+     "(3.27)%",
+     "(2.89)%",
+     "(2.90)%",
+     "(2.91)%",
+     "(3.07)%",
+     "(8.09)%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2025(a)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 19946,
+    "end_line": 19976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "Investment Advisor.\nIn the normal course of business, the Partnership enters into contracts that provide a variety of general indemnifications.\nAny exposure to the Partnership under these arrangements could involve future claims that may be made against the\nPartnership. Currently, no such claims exist or are expected to arise and, accordingly, the Partnership has not accrued any\nliability in connection with such indemnifications.\nNote 8. Financial Highlights\nThe following financial highlights for the year ended December 31, 2025 are calculated for the Unitholders as a whole\nand exclude data for the General Partner, except as otherwise noted herein. Calculation of these highlights on an individual\nUnitholder basis may yield results that vary from those stated herein due to the timing of capital transactions and differing fee\narrangements.",
+   "prose_after": "(a) Amounts may not add due to rounding.\n(b) Total return is calculated as the change in Net Asset Value per Unit during the period, plus distributions per Unit (assuming dividends and distributions are\nreinvested in accordance with the Partnership\u2019s distribution reinvestment plan) divided by the initial Net Asset Value per Unit. Total return does not include\nupfront transaction fees, if any, and it is non-annualized.\n(c) Expense ratio includes Management Fees, Performance Participation Allocation, Organizational Expenses, Professional Fees, Deferred Offering Costs\nAmortization, Administration Fees and Other.\nNote 9. Subsequent Events\nThe General Partner has performed an evaluation of subsequent events through the date the consolidated financial\nstatements were issued and has determined that there were no subsequent events requiring adjustment or additional disclosure\nin the consolidated financial statements, except as noted below.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 19944,
+     "token": "PAGE_BREAK",
+     "id": 193,
+     "namespace": "arabic",
+     "page_number": 187
+    },
+    "after": {
+     "line": 20013,
+     "token": "PAGE_BREAK",
+     "id": 194,
+     "namespace": "arabic",
+     "page_number": 188
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of"
+    ],
+    [
+     "",
+     "December 31, 2025"
+    ],
+    [
+     "Assets",
+     ""
+    ],
+    [
+     "Affiliated investments at fair value (cost $992,769,317 as of December 31, 2025)",
+     "$1,140,441,518"
+    ],
+    [
+     "Debt investments at fair value (cost $11,738,262 as of December 31, 2025)",
+     "12,166,834"
+    ],
+    [
+     "Cash and cash equivalent",
+     "36,361,729"
+    ],
+    [
+     "Derivative assets at fair value",
+     "2,362,085"
+    ],
+    [
+     "Deferred financing costs",
+     "1,767,008"
+    ],
+    [
+     "Interest receivable",
+     "429,690"
+    ],
+    [
+     "Deferred tax asset",
+     "4,364"
+    ],
+    [
+     "Total assets",
+     "$1,193,533,228"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     ""
+    ],
+    [
+     "Credit facility payable",
+     "$80,000,000"
+    ],
+    [
+     "Distribution payable",
+     "4,132,814"
+    ],
+    [
+     "Due to affiliate",
+     "2,915,456"
+    ],
+    [
+     "Deferred tax liability",
+     "2,750,796"
+    ],
+    [
+     "Accounts payable & accrued expenses",
+     "2,125,719"
+    ],
+    [
+     "Derivative liabilities at fair value",
+     "1,270,032"
+    ],
+    [
+     "Total liabilities",
+     "93,194,817"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 8)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net assets",
+     "1,100,338,411"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Net assets",
+     ""
+    ],
+    [
+     "Limited partners interest",
+     "1,099,127,798"
+    ],
+    [
+     "General partner's interest",
+     "642,516"
+    ],
+    [
+     "Non-controlling interests in consolidated entities",
+     "568,097"
+    ],
+    [
+     "Total net assets",
+     "$1,100,338,411"
+    ]
+   ],
+   "caption_stack": [
+    "As of",
+    "December 31, 2025",
+    "Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20163,
+    "end_line": 20204
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "\u2022Conclude whether, in our judgment, there are conditions or events, considered in the aggregate, that raise\nsubstantial doubt about the Master Aggregator's ability to continue as a going concern for a reasonable\nperiod of time.\nWe are required to communicate with those charged with governance regarding, among other matters, the planned\nscope and timing of the audit, significant audit findings, and certain internal control-related matters that we\nidentified during the audit.\n/s/ PricewaterhouseCoopers LLP\nNew York, New York\nMarch 31, 2026\nConsolidated Statement of Assets and Liabilities",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20159,
+     "token": "REPEATING_HEADER",
+     "id": 198,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 20207,
+     "token": "PAGE_BREAK",
+     "id": 199,
+     "namespace": "arabic",
+     "page_number": 192
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025"
+    ],
+    [
+     "Income",
+     ""
+    ],
+    [
+     "Interest income",
+     "$20,134,057"
+    ],
+    [
+     "Dividend income",
+     "1,380,140"
+    ],
+    [
+     "Total income",
+     "21,514,197"
+    ],
+    [
+     "Operating expenses",
+     ""
+    ],
+    [
+     "Professional fees",
+     "3,596,733"
+    ],
+    [
+     "Interest expense",
+     "1,042,263"
+    ],
+    [
+     "Other expense",
+     "648,847"
+    ],
+    [
+     "Credit facility fees",
+     "525,327"
+    ],
+    [
+     "Organizational costs",
+     "203,252"
+    ],
+    [
+     "Total operating expenses",
+     "6,016,422"
+    ],
+    [
+     "Net investment income/(loss) before income taxes",
+     "15,497,775"
+    ],
+    [
+     "Provision for income taxes on net investment income",
+     "23,156"
+    ],
+    [
+     "Net investment income/(loss)",
+     "15,474,619"
+    ],
+    [
+     "Net realized and unrealized gain on investments and derivative instruments",
+     ""
+    ],
+    [
+     "Net realized gain on investments",
+     "258,600"
+    ],
+    [
+     "Net change in unrealized gain on investments",
+     "130,861,107"
+    ],
+    [
+     "Provision for income taxes",
+     "(2,746,432)"
+    ],
+    [
+     "Net change in unrealized gain on derivative instruments",
+     "1,092,053"
+    ],
+    [
+     "Net realized and unrealized gain/(loss) on investments and derivative instruments after income taxes",
+     "129,465,328"
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations after income taxes",
+     "144,939,947"
+    ],
+    [
+     "Less: net increase/(decrease) in net assets resulting from operations attributable to Non-Controlling Interests in Consolidated Entities",
+     "68,097"
+    ],
+    [
+     "Net increase/(decrease) in net assets resulting from operations attributable to Stonepeak-Plus Infrastructure Fund Master Aggregator LP",
+     "$144,871,850"
+    ]
+   ],
+   "caption_stack": [
+    "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025",
+    "Income"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20213,
+    "end_line": 20254
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Changes in Net Assets",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20209,
+     "token": "REPEATING_HEADER",
+     "id": 200,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 20257,
+     "token": "PAGE_BREAK",
+     "id": 201,
+     "namespace": "arabic",
+     "page_number": 193
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Limited Partners Interest",
+     "General Partner\u2019s Interest",
+     "Non- Controlling Interests in Consolidated Entities",
+     "Total Net Assets"
+    ],
+    [
+     "Balance at December 31, 2024",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014"
+    ],
+    [
+     "Proceeds from contributions",
+     "961,370,070",
+     "500,000",
+     "500,000",
+     "962,370,070"
+    ],
+    [
+     "Distributions reinvested",
+     "5,237,221",
+     "",
+     "",
+     "5,237,221"
+    ],
+    [
+     "Distributions to Partners",
+     "(12,208,827)",
+     "\u2014",
+     "\u2014",
+     "(12,208,827)"
+    ],
+    [
+     "Net investment income/(loss)",
+     "15,457,642",
+     "10,100",
+     "6,877",
+     "15,474,619"
+    ],
+    [
+     "Net realized gain/(loss) on investments",
+     "258,401",
+     "165",
+     "34",
+     "258,600"
+    ],
+    [
+     "Net change in unrealized gain/(loss) on investments",
+     "131,757,048",
+     "134,926",
+     "61,186",
+     "131,953,160"
+    ],
+    [
+     "Provision for income taxes on net unrealized gain on investments",
+     "(2,743,757)",
+     "(2,675)",
+     "\u2014",
+     "(2,746,432)"
+    ],
+    [
+     "Balance at December 31, 2025",
+     "$1,099,127,798",
+     "$642,516",
+     "$568,097",
+     "$1,100,338,411"
+    ]
+   ],
+   "caption_stack": [
+    "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20263,
+    "end_line": 20281
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Changes in Net Assets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20259,
+     "token": "REPEATING_HEADER",
+     "id": 202,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 20284,
+     "token": "PAGE_BREAK",
+     "id": 203,
+     "namespace": "arabic",
+     "page_number": 194
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025"
+    ],
+    [
+     "Operating activities",
+     ""
+    ],
+    [
+     "Net increase in net assets resulting from operations",
+     "$144,939,947"
+    ],
+    [
+     "Adjustments to reconcile net increase in net assets resulting from operations to net cash used in operating activities:",
+     ""
+    ],
+    [
+     "Purchase of Investments",
+     "(806,839,219)"
+    ],
+    [
+     "Net change in unrealized (gain)/loss investments",
+     "(130,861,107)"
+    ],
+    [
+     "Amortization of effective interest on affiliated investments",
+     "(17,239,666)"
+    ],
+    [
+     "Net change in unrealized (gain)/loss on derivative instruments",
+     "(1,092,053)"
+    ],
+    [
+     "Net realized (gain)/loss on investments",
+     "(258,600)"
+    ],
+    [
+     "Proceeds from Investments",
+     "2,576,168"
+    ],
+    [
+     "Changes in assets and liabilities",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "2,125,719"
+    ],
+    [
+     "Due to affiliate",
+     "2,915,456"
+    ],
+    [
+     "Deferred tax liabilities",
+     "2,750,796"
+    ],
+    [
+     "Deferred tax asset",
+     "(4,364)"
+    ],
+    [
+     "Interest receivable",
+     "(429,690)"
+    ],
+    [
+     "Net cash used in operating activities",
+     "$(801,416,613)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financing activities",
+     ""
+    ],
+    [
+     "Proceeds from contributions, net of issuance of units for purchase of assets",
+     "762,384,142"
+    ],
+    [
+     "Proceeds from borrowings on Credit Facility",
+     "135,863,734"
+    ],
+    [
+     "Deferred financing costs",
+     "(1,767,008)"
+    ],
+    [
+     "Distributions to Partners",
+     "(2,838,792)"
+    ],
+    [
+     "Repayments of credit facility",
+     "(55,863,734)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$837,778,342"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalent",
+     ""
+    ],
+    [
+     "Net increase/(decrease) in cash and cash equivalent",
+     "$36,361,729"
+    ],
+    [
+     "Cash and cash equivalent, beginning of period",
+     "\u2014"
+    ],
+    [
+     "Cash and cash equivalent, end of period",
+     "$36,361,729"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flows information",
+     ""
+    ],
+    [
+     "Credit Facility interest paid",
+     "$383,991"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash financing activities",
+     ""
+    ],
+    [
+     "Distributions reinvested",
+     "$5,237,221"
+    ],
+    [
+     "Issuance of Units for purchase of assets",
+     "$199,985,928"
+    ]
+   ],
+   "caption_stack": [
+    "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025",
+    "Operating activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20290,
+    "end_line": 20339
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1 APAC is defined as Asia Pacific.\n2 EMEA is defined as Europe, Middle East, and Africa.\nCondensed Consolidated Schedule of Investments",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20286,
+     "token": "REPEATING_HEADER",
+     "id": 204,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 20346,
+     "token": "PAGE_BREAK",
+     "id": 205,
+     "namespace": "arabic",
+     "page_number": 195
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name of Investment",
+     "Type of Investment",
+     "Industry",
+     "Geography",
+     "Cost",
+     "Fair Value",
+     "Fair Value as\na Percentage of Net Assets"
+    ],
+    [
+     "Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Affiliated Investee Funds",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SCF Cranberry Upper Holdings SPV I LP(a)",
+     "LP Interest",
+     "Digital Infrastructure",
+     "North America",
+     "$35,787,305",
+     "$45,903,839",
+     "4.2%"
+    ],
+    [
+     "SCF Cranberry (Co-Invest)\nHoldings IV LP(a)",
+     "LP Interest",
+     "Digital Infrastructure",
+     "North America",
+     "12,514,754",
+     "16,094,889",
+     "1.5%"
+    ],
+    [
+     "SCF Cranberry (Co-Invest)\nHoldings VIII LP(a)",
+     "LP Interest",
+     "Digital Infrastructure",
+     "North America",
+     "22,170,642",
+     "24,232,313",
+     "2.2%"
+    ],
+    [
+     "Stonepeak Cologix Holdings V LP(b)",
+     "LP Interest",
+     "Digital Infrastructure",
+     "North America",
+     "27,168,898",
+     "39,780,693",
+     "3.6%"
+    ],
+    [
+     "Other Affiliated Investee Funds Investments",
+     "Various",
+     "Energy",
+     "Various",
+     "45,565,433",
+     "47,782,658",
+     "4.3%"
+    ],
+    [
+     "Stonepeak Digital Edge (Co- Invest) Holdings III LP(c)",
+     "LP Interest",
+     "Digital Infrastructure",
+     "APAC1",
+     "31,549,921",
+     "62,188,298",
+     "5.7%"
+    ],
+    [
+     "Stonepeak Efesto Infrastructure Fund SCSp(d)",
+     "LP Interest",
+     "Transport & Logistics",
+     "EMEA2",
+     "150,000,000",
+     "155,984,996",
+     "14.2%"
+    ],
+    [
+     "Stonepeak Midband (Co-Invest)\nHoldings LP(e)",
+     "LP Interest",
+     "Digital Infrastructure",
+     "North America",
+     "93,000,000",
+     "104,544,184",
+     "9.5%"
+    ],
+    [
+     "Total Affiliated Investee Funds",
+     "",
+     "",
+     "",
+     "$417,756,953",
+     "$496,511,870",
+     "45.2%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Affiliated Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stonepeak Cubist Holdings Pte.\nLimited(f)",
+     "Convertible Loan",
+     "Digital Infrastructure",
+     "APAC",
+     "149,948,468",
+     "179,837,578",
+     "16.3%"
+    ],
+    [
+     "Stonepeak Imagine Holdco Limited(g)",
+     "LP Interest",
+     "Social Infrastructure",
+     "EMEA",
+     "194,000,000",
+     "219,861,618",
+     "20.0%"
+    ],
+    [
+     "Stonepeak Node Infrastructure Fund Holdings LP(h)",
+     "LP Interest",
+     "Transport & Logistics",
+     "EMEA",
+     "101,469,506",
+     "102,401,272",
+     "9.3%"
+    ],
+    [
+     "Stonepeak GP Cologix Fund Investors LLC(b)",
+     "LLC Interest",
+     "Digital Infrastructure",
+     "North America",
+     "15,342,916",
+     "21,409,332",
+     "1.9%"
+    ],
+    [
+     "Other Affiliated Investments - North America(i)",
+     "LP Interest",
+     "Various",
+     "North America",
+     "21,760,977",
+     "26,145,143",
+     "2.4%"
+    ],
+    [
+     "Other Affiliated Investments - North America",
+     "LP Interest",
+     "Energy",
+     "North America",
+     "9,008,964",
+     "9,008,964",
+     "0.8%"
+    ],
+    [
+     "Other Affiliated Investments - North America",
+     "LP Interest",
+     "Digital Infrastructure",
+     "North America",
+     "3,333,645",
+     "3,333,645",
+     "0.3%"
+    ],
+    [
+     "Other Affiliated Investment - APAC",
+     "LP Interest",
+     "Transport & Logistics",
+     "APAC",
+     "1,566,563",
+     "1,566,563",
+     "0.1%"
+    ],
+    [
+     "Other Affiliated Investment - APAC",
+     "LP Interest",
+     "Transport & Logistics",
+     "APAC",
+     "28,973,799",
+     "30,722,366",
+     "2.8%"
+    ],
+    [
+     "Other Affiliated Investments - EMEA",
+     "LP Interest",
+     "Energy",
+     "EMEA",
+     "41,716,869",
+     "41,121,867",
+     "3.7%"
+    ],
+    [
+     "Other Affiliated Investments - EMEA",
+     "LP Interest",
+     "Energy",
+     "EMEA",
+     "7,890,657",
+     "8,521,300",
+     "0.8%"
+    ],
+    [
+     "Total Other Affiliated Investments",
+     "",
+     "",
+     "",
+     "$575,012,364",
+     "$643,929,648",
+     "58.4%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Affiliated Investments",
+     "",
+     "",
+     "",
+     "$992,769,317",
+     "$1,140,441,518",
+     "103.6%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20352,
+    "end_line": 20396
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\n1 APAC is defined as Asia Pacific.\n2 EMEA is defined as Europe, Middle East, and Africa.\nCondensed Consolidated Schedule of Investments",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20348,
+     "token": "REPEATING_HEADER",
+     "id": 206,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 20397,
+     "token": "PAGE_BREAK",
+     "id": 207,
+     "namespace": "arabic",
+     "page_number": 196
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Derivative Instruments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign Currency Contracts - Assets",
+     "",
+     "",
+     "n/a",
+     "\u2014",
+     "2,362,085",
+     "0.2%"
+    ],
+    [
+     "Foreign Currency Contracts - Liabilities",
+     "",
+     "",
+     "n/a",
+     "\u2014",
+     "(1,270,032)",
+     "(0.1)%"
+    ],
+    [
+     "Total Derivative Instruments",
+     "",
+     "",
+     "",
+     "$\u2014",
+     "$1,092,053",
+     "0.1%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Debt Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Debt Investments",
+     "Delayed Draw Term Loan",
+     "Diversified",
+     "North America",
+     "11,738,262",
+     "12,166,834",
+     "1.1%"
+    ],
+    [
+     "Total Other Investments",
+     "",
+     "",
+     "",
+     "$11,738,262",
+     "$12,166,834",
+     "1.1%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalent",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money Market Fund",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "JPMorgan 100% U.S. Treasury Securities Money Market Fund- Agency",
+     "",
+     "",
+     "North America",
+     "36,361,729",
+     "36,361,729",
+     "3.3%"
+    ],
+    [
+     "Cash held at Banks",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "\u2014%"
+    ],
+    [
+     "Total Cash and Cash Equivalent",
+     "",
+     "",
+     "",
+     "$36,361,729",
+     "$36,361,729",
+     "3.3%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Investments and Cash and Cash Equivalent",
+     "",
+     "",
+     "",
+     "$1,040,869,308",
+     "$1,190,062,134",
+     "108.2%"
+    ]
+   ],
+   "caption_stack": [
+    "Derivative Instruments"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 20399,
+    "end_line": 20427
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(a) The Master Aggregator holds an indirect interest of 51,626 common units and 14,308 preferred units of AppleCore LP. The\nfair value allocable to the Master Aggregator of this interest is $74,000,707 and $20,509,087, respectively. The investment has\nbeen financed, in part, using leverage, and the fair values presented in the preceding sentence are not reflective of the impact of\nsuch leverage. The fair value disclosed above in the Consolidated Schedule of Investments takes account of such leverage.\n(b) The Master Aggregator holds an indirect interest of 32,810 units of Cologix Inc. The fair value of this interest allocable to\nthe Master Aggregator is $61,190,025.\n(c) The Master Aggregator holds indirect interests of 23,261 D-1 units in DEA TopCo LP and 5,425 D-1 units in DEA TopCo\nII LP. The fair value allocable to the Master Aggregator of these interests is $64,505,366 and $12,301,504, respectively. The\ninvestment has been financed, in part, using leverage, and the fair values presented in the preceding sentence are not reflective",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20397,
+     "token": "PAGE_BREAK",
+     "id": 207,
+     "namespace": "arabic",
+     "page_number": 196
+    },
+    "after": {
+     "line": 20476,
+     "token": "PAGE_BREAK",
+     "id": 208,
+     "namespace": "arabic",
+     "page_number": 197
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2025",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level I",
+     "Level II",
+     "Level III",
+     "NAV",
+     "Total"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalent",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash held at banks",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014",
+     "$\u2014"
+    ],
+    [
+     "Money market fund",
+     "36,361,729",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "36,361,729"
+    ],
+    [
+     "Total cash and cash equivalent",
+     "36,361,729",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "36,361,729"
+    ],
+    [
+     "Investments",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Affiliated investee funds",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "496,511,870",
+     "496,511,870"
+    ],
+    [
+     "Other affiliated investments",
+     "\u2014",
+     "\u2014",
+     "617,784,505",
+     "26,145,143",
+     "643,929,648"
+    ],
+    [
+     "Debt investments",
+     "\u2014",
+     "\u2014",
+     "12,166,834",
+     "\u2014",
+     "12,166,834"
+    ],
+    [
+     "Total investments",
+     "\u2014",
+     "\u2014",
+     "629,951,339",
+     "522,657,013",
+     "1,152,608,352"
+    ],
+    [
+     "Derivative assets",
+     "\u2014",
+     "2,362,085",
+     "\u2014",
+     "\u2014",
+     "2,362,085"
+    ],
+    [
+     "Total cash and cash equivalent and investments",
+     "$36,361,729",
+     "$2,362,085",
+     "$629,951,339",
+     "$522,657,013",
+     "$1,191,332,166"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative liabilities",
+     "$\u2014",
+     "$(1,270,032)",
+     "$\u2014",
+     "$\u2014",
+     "$(1,270,032)"
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 21012,
+    "end_line": 21038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "In December 2023, the FASB issued Accounting Standards Update No. 2023-09, Income Taxes (Topic 740):\nImprovements to Income Tax Disclosures (\u201cASU 2023-09\u201d). The amendments enhance income tax disclosures, including\nexpanded effective tax rate reconciliation disclosures, disaggregation of income taxes paid by jurisdiction, and additional\ndisclosures of pretax income and income tax expense. The new guidance is effective for annual reporting periods beginning\nafter December 15, 2025, and interim reporting periods beginning after December 15, 2026 with early adoption permitted. The\nMaster Aggregator has adopted this new accounting standard as of December 31, 2025 and this change is not significant for the\nMaster Aggregator\u2019s consolidated financial statements.\nNote 3. Investments and Fair Value Measurement\nThe following tables summarize the valuation of the Master Aggregator\u2019s investments by the fair value hierarchy levels\nas of December 31, 2025:",
+   "prose_after": "The Master Aggregator may hold equity securities that are subject to sale restrictions. The nature of such restrictions are\ncontractual or legal in nature and are deemed an attribute of the holder rather than the investment. Contractual restrictions may\ninclude but are not limited to: consent-rights or event-based transfer restrictions imposed by third parties, underwriter lock-ups\nand sale or transfer restrictions applicable to investments pledged as collateral. Restrictions will generally lapse over time or\nafter a predetermined date. As of December 31, 2025, there were no equity securities subject to sales restrictions within the\nMaster Aggregator\u2019s Level I and II assets. The Master Aggregator\u2019s Level III equity securities are generally illiquid and\nprivately negotiated in nature and may also be subject to contractual sale or transfer restrictions including those pursuant to their\nrespective governing or similar agreements.\nThe following table summarizes the quantitative inputs and assumptions used for valuation of investments categorized in",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 20964,
+     "token": "REPEATING_HEADER",
+     "id": 219,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21051,
+     "token": "PAGE_BREAK",
+     "id": 220,
+     "namespace": "arabic",
+     "page_number": 203
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fair Value(1)",
+     "Valuation Techniques",
+     "Unobservable Input",
+     "Ranges",
+     "Weighted- Average(5)",
+     "Impact to valuation from an increase in input"
+    ],
+    [
+     "Financial assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other affiliated investments & debt investment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other affiliated investments",
+     "$460,352,195",
+     "Discounted Cash Flow",
+     "Discount Rate",
+     "12.5%-22.5%",
+     "16.6%",
+     "Lower"
+    ],
+    [
+     "",
+     "",
+     "",
+     "NTM EBITDA Exit Multiple(2)",
+     "17.0x-18.0x",
+     "17.4x",
+     "Higher"
+    ],
+    [
+     "",
+     "",
+     "",
+     "LTM EBITDA Exit Multiple(3)",
+     "7.7x",
+     "7.7x",
+     "Higher"
+    ],
+    [
+     "",
+     "",
+     "",
+     "LQA EBITDA Exit Multiple(4)",
+     "22.5x",
+     "22.5x",
+     "Higher"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Exit Cap",
+     "6.5%",
+     "6.5%",
+     "Lower"
+    ],
+    [
+     "Debt investment",
+     "12,166,834",
+     "Discounted Cash Flow",
+     "Discount Rate",
+     "7.6%",
+     "7.6%",
+     "Lower"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other affiliated investments and debt investment",
+     "$472,519,029",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21063,
+    "end_line": 21081
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The Master Aggregator may hold equity securities that are subject to sale restrictions. The nature of such restrictions are\ncontractual or legal in nature and are deemed an attribute of the holder rather than the investment. Contractual restrictions may\ninclude but are not limited to: consent-rights or event-based transfer restrictions imposed by third parties, underwriter lock-ups\nand sale or transfer restrictions applicable to investments pledged as collateral. Restrictions will generally lapse over time or\nafter a predetermined date. As of December 31, 2025, there were no equity securities subject to sales restrictions within the\nMaster Aggregator\u2019s Level I and II assets. The Master Aggregator\u2019s Level III equity securities are generally illiquid and\nprivately negotiated in nature and may also be subject to contractual sale or transfer restrictions including those pursuant to their\nrespective governing or similar agreements.\nThe following table summarizes the quantitative inputs and assumptions used for valuation of investments categorized in\nLevel III of the fair value hierarchy as of December 31, 2025:",
+   "prose_after": "(1) Not reflected in the table above are Level 3 investments that have been valued based upon recent transactions in the amount of $157,432,310.\n(2) NTM EBITDA Exit Multiple represents EBITDA annualized for the next twelve months from exit date.\n(3) LTM EBITDA Exit Multiple represents EBITDA for the last twelve months annualized from exit date.\n(4) LQA EBITDA Exit Multiple represents EBITDA for the last quarter annualized from exit date.\n(5) Inputs are weighted based on fair value of the investments included in the range.\nFor the period ended December 31, 2025, the following table presents changes in the fair value of investments for which\nLevel III inputs were used to determine the fair value:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21053,
+     "token": "REPEATING_HEADER",
+     "id": 221,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21117,
+     "token": "PAGE_BREAK",
+     "id": 222,
+     "namespace": "arabic",
+     "page_number": 204
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level III Financial Assets at Fair Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Period Ended December 31, 2025",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Other Affiliated Investments",
+     "Debt Investments",
+     "Total"
+    ],
+    [
+     "Balance, beginning of period",
+     "$\u2014",
+     "$\u2014",
+     "\u2014"
+    ],
+    [
+     "Purchases",
+     "575,012,364",
+     "11,738,262",
+     "586,750,626"
+    ],
+    [
+     "Change in unrealized gain/(loss) included in net assets",
+     "42,772,141",
+     "428,572",
+     "43,200,713"
+    ],
+    [
+     "Balance, end of period",
+     "$617,784,505",
+     "$12,166,834",
+     "$629,951,339"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in unrealized gain (loss) included in earnings related to financial assets still held at reporting date",
+     "$42,772,141",
+     "$428,572",
+     "$43,200,713"
+    ]
+   ],
+   "caption_stack": [
+    "Level III Financial Assets at Fair Value",
+    "Period Ended December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 21096,
+    "end_line": 21114
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Not reflected in the table above are Level 3 investments that have been valued based upon recent transactions in the amount of $157,432,310.\n(2) NTM EBITDA Exit Multiple represents EBITDA annualized for the next twelve months from exit date.\n(3) LTM EBITDA Exit Multiple represents EBITDA for the last twelve months annualized from exit date.\n(4) LQA EBITDA Exit Multiple represents EBITDA for the last quarter annualized from exit date.\n(5) Inputs are weighted based on fair value of the investments included in the range.\nFor the period ended December 31, 2025, the following table presents changes in the fair value of investments for which\nLevel III inputs were used to determine the fair value:",
+   "prose_after": "NAV as a Practical Expedient\nThe affiliated investee funds were formed with the objectives of acquiring, holding, and disposing of investments. The\nexit timing of these investments is unknown as of December 31, 2025. Refer to the Condensed Consolidated Schedule of\nInvestments for the underlying investment held through these affiliated investee funds.\nThe following table summarizes investments that estimate the fair value of an investment using NAV as a practical\nexpedient as of December 31, 2025:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21053,
+     "token": "REPEATING_HEADER",
+     "id": 221,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21117,
+     "token": "PAGE_BREAK",
+     "id": 222,
+     "namespace": "arabic",
+     "page_number": 204
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Affiliated Investee Funds and Other Affiliated Investments",
+     "Unfunded Commitment",
+     "Fair Value"
+    ],
+    [
+     "SCF Cranberry Upper Holdings SPV I LP",
+     "\u2014",
+     "45,903,839"
+    ],
+    [
+     "SCF Cranberry (Co-Invest) Holdings IV LP",
+     "\u2014",
+     "16,094,889"
+    ],
+    [
+     "SCF Cranberry (Co-Invest) Holdings VIII LP",
+     "\u2014",
+     "24,232,313"
+    ],
+    [
+     "Stonepeak Cologix Holdings LP",
+     "23,137,264",
+     "39,780,693"
+    ],
+    [
+     "Stonepeak Global Renewables Fund LP",
+     "26,141,594",
+     "33,733,817"
+    ],
+    [
+     "Stonepeak Global Renewables Fund (Lux) SCSp",
+     "10,874,525",
+     "14,048,841"
+    ],
+    [
+     "Stonepeak Midband (Co-Invest) Holdings LP",
+     "\u2014",
+     "104,544,184"
+    ],
+    [
+     "Stonepeak Efesto Infrastructure Fund SCSp",
+     "\u2014",
+     "155,984,996"
+    ],
+    [
+     "Stonepeak Digital Edge (Co-Invest) Holdings III LP",
+     "28,450,079",
+     "62,188,298"
+    ],
+    [
+     "Other Affiliated Investments",
+     "3,239,023",
+     "26,145,143"
+    ],
+    [
+     "Total affiliated investee funds and other affiliated investments",
+     "$91,842,485",
+     "$522,657,013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21131,
+    "end_line": 21147
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "NAV as a Practical Expedient\nThe affiliated investee funds were formed with the objectives of acquiring, holding, and disposing of investments. The\nexit timing of these investments is unknown as of December 31, 2025. Refer to the Condensed Consolidated Schedule of\nInvestments for the underlying investment held through these affiliated investee funds.\nThe following table summarizes investments that estimate the fair value of an investment using NAV as a practical\nexpedient as of December 31, 2025:",
+   "prose_after": "Note 4. Related Party Transactions\nDue to Affiliate\nThe Master Aggregator's operating expenses are paid either by the Master Aggregator or by the Investment Advisor or its\nrelated affiliates. As of December 31, 2025, an affiliate of the Investment Advisor has advanced total costs of $2,915,456 all of\nwhich are subject to recoupment by the affiliate of the Investment Advisor and have been recorded in the Consolidated\nStatement of Assets and Liabilities within Due to affiliate.\nAcquisition of Certain Affiliated Investments\nFor the period ended December 31, 2025, the Master Aggregator purchased investments from affiliates of the Investment\nAdvisor, at a discount to fair market value in exchange for a total consideration of $655,977,595. The aggregate fair value of\nthese investments as of December 31, 2025 was $813,107,037. Included in the consideration is an in-kind contribution of",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21119,
+     "token": "REPEATING_HEADER",
+     "id": 223,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21202,
+     "token": "PAGE_BREAK",
+     "id": 224,
+     "namespace": "arabic",
+     "page_number": 205
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "Assets",
+     ""
+    ],
+    [
+     "",
+     "Notional",
+     "Fair Value"
+    ],
+    [
+     "Derivative instruments",
+     "",
+     ""
+    ],
+    [
+     "Foreign Currency Contracts (EUR)",
+     "\u20ac151,053,074",
+     "$2,319,051"
+    ],
+    [
+     "Foreign Currency Contracts (GBP)",
+     "\u00a33,240,375",
+     "$43,034"
+    ],
+    [
+     "Total",
+     "",
+     "$2,362,085"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025",
+    "Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 21214,
+    "end_line": 21227
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "investments. These derivative contracts are not designated as hedging instruments for accounting purposes. The use of foreign\nexchange contracts does not eliminate fluctuations in the price of the underlying investments recognized by the Master\nAggregator. Additionally, the SPV may enter into derivative instruments to hedge against other risks in its investments,\nincluding commodity price risk and equity price risk.\nAs a result of the use of derivative contracts, the Master Aggregator is exposed to the risk that counterparties will fail to\nfulfill their contractual obligations. To mitigate such counterparty risk, the SPV enters into contracts with certain major\nfinancial institutions, primarily those with investment grade ratings. Counterparty credit risk is evaluated in determining the fair\nvalue of derivative instruments.\nThe table below summarizes the aggregate notional amount and fair value of the derivative instruments. The notional\namount represents the absolute value amount of the foreign exchange contracts:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21204,
+     "token": "REPEATING_HEADER",
+     "id": 225,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21291,
+     "token": "PAGE_BREAK",
+     "id": 226,
+     "namespace": "arabic",
+     "page_number": 206
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2025",
+     ""
+    ],
+    [
+     "",
+     "Liabilities",
+     ""
+    ],
+    [
+     "",
+     "Notional",
+     "Fair Value"
+    ],
+    [
+     "Derivative instruments",
+     "",
+     ""
+    ],
+    [
+     "Foreign Currency Contracts (EUR)",
+     "\u20ac71,459,090",
+     "$1,124,402"
+    ],
+    [
+     "Foreign Currency Contracts (GBP)",
+     "\u00a3689,398",
+     "$14,860"
+    ],
+    [
+     "Foreign Currency Contracts (AUD)",
+     "A$42,940,772",
+     "$130,770"
+    ],
+    [
+     "Total",
+     "",
+     "$1,270,032"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2025",
+    "Liabilities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 21228,
+    "end_line": 21242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 6. Borrowings\nCredit Agreement\nOn July 16, 2025, the Master Aggregator entered into a revolving credit agreement (the \u201cCredit Agreement\u201d) pursuant to\nwhich the lenders and letter of credit issuers thereunder agreed to provide loans and letters of credit for up to an aggregate\ninitial principal amount of $100 million subject to customary conditions. The available capacity under the Credit Agreement\nmay be increased up to an amount agreed by the increasing lenders, and in certain cases, subject to the consent of the\nAdministrative Agent (as defined below), provided that the Master Aggregator maintains a loan to value ratio of not more than\nan amount set forth in the Credit Agreement. On November 17, 2025, the Master Aggregator entered into the first amendment\nof the Credit Agreement which increased the principal amount to $200 million subject to the same customary conditions as the\noriginal agreement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21204,
+     "token": "REPEATING_HEADER",
+     "id": 225,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21291,
+     "token": "PAGE_BREAK",
+     "id": 226,
+     "namespace": "arabic",
+     "page_number": 206
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025"
+    ],
+    [
+     "Total return (Limited Partners)(1)(2)",
+     "24.19%"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Ratio to average Limited Partners' Interests",
+     ""
+    ],
+    [
+     "Total operating expenses(2)",
+     "1.00%"
+    ],
+    [
+     "Total net investment income/(loss)(3)",
+     "2.55%"
+    ]
+   ],
+   "caption_stack": [
+    "Period from May 2, 2025 (Commencement of Operations) to December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 21413,
+    "end_line": 21424
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Indemnifications\nIn the normal course of business, the Master Aggregator enters into contracts that contain a variety of indemnification\narrangements. However, the Master Aggregator has not had any claims or losses pursuant to these indemnification\narrangements and expects the potential for a material loss to be remote as of December 31, 2025.\nNote 9. Financial Highlights\nThe following operating expenses and net investment income/(loss) ratios for the period from May 2, 2025\n(commencement of operations) to December 31, 2025 are calculated as a percentage of average Limited Partners\u2019 capital and\nare calculated for the Limited Partner class taken as a whole. The computation of such ratios based on the amount of operating\nexpenses and net investment income/(loss) assessed to an individual Limited Partners\u2019 capital account may vary from these\nratios based on the timing of its entry into the Master Aggregator.",
+   "prose_after": "(1) Total return is calculated based on a time-weighted rate of return methodology and includes unrealized gains recognized from the purchase of investments\nfrom an affiliate of the Investment Advisor at a discount to fair value.\n(2) These metrics are not calculated on an annualized basis.\n(3) These metrics include the provision of tax and are not calculated on an annualized basis.\nNote 10. Subsequent Events\nThe General Partner has performed an evaluation of subsequent events through the date the consolidated financial\nstatements were issued and has determined that there were no subsequent events requiring adjustment or additional disclosure\nin the consolidated financial statements, except as noted below.\nSecond Amendment to the Credit Agreement\nOn March 20, 2026, the Master Aggregator entered into the second amendment of the Credit Agreement which increased",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21391,
+     "token": "REPEATING_HEADER",
+     "id": 229,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 21447,
+     "token": "PAGE_BREAK",
+     "id": 230,
+     "namespace": "arabic",
+     "page_number": 208
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age(*)",
+     "Position",
+     "Position Held Since"
+    ],
+    [
+     "Non-Independent Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Luke Taylor",
+     "48",
+     "Director, Chair of the Board",
+     "2024"
+    ],
+    [
+     "Anthony Borreca",
+     "41",
+     "Director, Chief Investment Officer",
+     "2025"
+    ],
+    [
+     "Cyrus Gentry",
+     "37",
+     "Director, Chief Executive Officer and Principal Executive Officer",
+     "2025"
+    ],
+    [
+     "Independent Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nisha Kumar",
+     "55",
+     "Director",
+     "2024"
+    ],
+    [
+     "Michael Morgan",
+     "57",
+     "Director",
+     "2025"
+    ],
+    [
+     "Robert Soderbery",
+     "59",
+     "Director",
+     "2025"
+    ],
+    [
+     "Executive Officers who are not Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Steven Mlynar",
+     "41",
+     "Chief Financial Officer, Principal Financial Officer and Principal Accounting Officer",
+     "2025"
+    ],
+    [
+     "Zachary Feingold",
+     "50",
+     "Chief Operating Officer",
+     "2025"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21551,
+    "end_line": 21566
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "conflicts of interest related to Stonepeak in accordance with the provisions of the Fund LPA and any policies of the General\nPartner. Approval of the Independent Directors is required for (a) the suspension of (x) the calculation of the NAV of the Units,\nor (y) the Redemption Program, (b) any material modification to (x) the Fund\u2019s valuation policy and (y) the Redemption\nProgram and (c) the fair valuation of any Direct Investment that the General Partner has determined to value outside of the\napplicable range provided by the Fund\u2019s independent valuation advisor.\nOur Board currently consists of six members, three of whom are Independent Directors. The General Partner expects to\nappoint additional directors to the Board from time to time. Our General Partner elects the Fund\u2019s executive officers, who serve\nat the discretion of the General Partner.\nBoard of Directors and Executive Officers\nInformation regarding the Board of Directors and executive officers are set forth below:",
+   "prose_after": "(*) As of January 1, 2026\nEach director will hold office until his or her death, resignation, removal or disqualification. The address for each of our\ndirectors is c/o Stonepeak-Plus Infrastructure Fund Advisors LLC, 550 W 34th Street, New York, NY, 10001.\nEach officer holds office at the pleasure of the General Partner until his or her successor is duly appointed and qualified.\nBiographical Information\nDirectors\nOur directors have been divided into two groups \u2014 Independent Directors and Non-Independent Directors. The status of\nan Independent Director under the Fund LPA is determined consistent with the independence tests set out in Rule 303A.02 of\nthe New York Stock Exchange Listed Company Manual or other standards determined by the General Partner.\nNon-Independent Directors",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21539,
+     "token": "PAGE_BREAK",
+     "id": 231,
+     "namespace": "arabic",
+     "page_number": 209
+    },
+    "after": {
+     "line": 21619,
+     "token": "PAGE_BREAK",
+     "id": 232,
+     "namespace": "arabic",
+     "page_number": 210
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fees Earned or",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Paid in Cash",
+     "",
+     "Unit Awards (a)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Luke Taylor",
+     "$",
+     "\u2015",
+     "$",
+     "\u2015",
+     "$",
+     "\u2015"
+    ],
+    [
+     "Anthony Borreca",
+     "$",
+     "\u2015",
+     "$",
+     "\u2015",
+     "$",
+     "\u2015"
+    ],
+    [
+     "Cyrus Gentry",
+     "$",
+     "\u2015",
+     "$",
+     "\u2015",
+     "$",
+     "\u2015"
+    ],
+    [
+     "Nisha Kumar",
+     "$",
+     "110,000",
+     "$",
+     "50,000",
+     "$",
+     "160,000"
+    ],
+    [
+     "Michael Morgan",
+     "$",
+     "100,000",
+     "$",
+     "50,000",
+     "$",
+     "150,000"
+    ],
+    [
+     "Robert Soderbery",
+     "$",
+     "50,000",
+     "$",
+     "50,000",
+     "$",
+     "100,000"
+    ]
+   ],
+   "caption_stack": [
+    "Fees Earned or"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 21989,
+    "end_line": 22001
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Director Independence.\u201d\nCompensation of Directors\nNo compensation is paid to our directors who are not Independent Directors. Each Independent Director is entitled to\ncompensation for his or her services as a director of the Fund in the amount of $100,000 per year, payable in cash, and $50,000\nper year, payable in Class X Units, plus $10,000 per year for the Chair of the Audit Committee, payable in cash (or, in each\ncase, such pro-rated amount for any service of less than the full fiscal year). We are also authorized to pay the reasonable out-\nof-pocket expenses of each Independent Director incurred by such director in connection with the fulfillment of his or her\nduties as an Independent Director.\nThe following table sets forth the compensation earned or paid by us to our directors for the fiscal year ended December\n31, 2025:",
+   "prose_after": "____________________\n(a) Represents the aggregate grant date fair value of awards of restricted Class X Units calculated under the FASB\u2019s ASC Topic 718, Compensation \u2014 Stock\nCompensation. The number of restricted Class X Units awarded to each of our independent directors was determined by dividing the total unit award dollar\namount by the then-current NAV at the date of grant. On June 30, 2025, grants of restricted Class X Units were made to each of Mr. Morgan and Ms. Kumar,\nusing the NAV transaction price as of May 31, 2025, which was determined on June 30, 2025, and resulted in grant amounts of 1,939.929 restricted Class X\nUnits for each of them. Such restricted Class X Units shall vest one year following the date of grant on June 30, 2025. Additionally, on August 28, 2025, Mr.\nSoderbery received grants of restricted Class X Units, in the amounts of 1,739.227 restricted Class X Units, based on a transaction price on such date. Such\nrestricted Class X Units shall vest one year following the date of grant on August 28, 2025.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 21911,
+     "token": "PAGE_BREAK",
+     "id": 235,
+     "namespace": "arabic",
+     "page_number": 213
+    },
+    "after": {
+     "line": 22004,
+     "token": "PAGE_BREAK",
+     "id": 236,
+     "namespace": "arabic",
+     "page_number": 214
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class X",
+     ""
+    ],
+    [
+     "",
+     "Partnership Units",
+     ""
+    ],
+    [
+     "",
+     "Beneficially Owned",
+     ""
+    ],
+    [
+     "",
+     "",
+     "% of"
+    ],
+    [
+     "Name of Beneficial Owner",
+     "Number",
+     "Class"
+    ],
+    [
+     "Non-Independent Directors and Executive Officers",
+     "",
+     ""
+    ],
+    [
+     "Luke Taylor",
+     "77,598",
+     "1.23%"
+    ],
+    [
+     "Anthony Borreca",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Cyrus Gentry",
+     "5,264",
+     "*"
+    ],
+    [
+     "Independent Directors",
+     "",
+     ""
+    ],
+    [
+     "Nisha Kumar",
+     "1,969",
+     "*"
+    ],
+    [
+     "Michael Morgan",
+     "1,969",
+     "*"
+    ],
+    [
+     "Robert Soderbery",
+     "1,765",
+     "*"
+    ],
+    [
+     "Executive Officers Who Are Not Directors",
+     "",
+     ""
+    ],
+    [
+     "Steven Mlynar",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Zachary Feingold",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "All current executive officers and directors as a group (8 persons)",
+     "88,565",
+     "1.40%"
+    ]
+   ],
+   "caption_stack": [
+    "Class X",
+    "Partnership Units",
+    "Beneficially Owned",
+    "% of"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 22040,
+    "end_line": 22061
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Compensation Committee Interlocks and Insider Participation\nThere is currently no compensation committee of the Board of Directors and the Board of Directors does not make\ndeterminations regarding compensation of executive officers because we do not directly pay any compensation to the executive\nofficers.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nAs of February 26, 2026, the following table sets out certain ownership information with respect to the Units,\nincluding vested and unvested Units, for each of the directors and executive officers and all directors and executive officers as a\ngroup. None of the Unit Classes have voting power. The directors and executive officers only hold Class X Units. The address\nfor our directors and executive officers is c/o Stonepeak-Plus Infrastructure Fund Advisors LLC, 550 W 34th Street, New York,\nNY, 10001.",
+   "prose_after": "______________\n(*) Less than one percent\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nTransactions with Related Persons, Promoters and Certain Control Persons\nInvestment Advisory Agreement; Fund LPA\nWe entered into the Investment Advisory Agreement with the Investment Advisor pursuant to which we will pay the\nManagement Fee and reimburse certain Fund Expenses. We also entered into the Fund LPA, pursuant to which the General\nPartner will be entitled to receive the Performance Participation Allocation. In addition, pursuant to the Investment Advisory\nAgreement and the Fund LPA, we will reimburse the Investment Advisor and General Partner for certain expenses as they\noccur. See \u201cPart I. Item 1. Business \u2014 Investment Advisory Agreement\u201d and \u201c\u2014Fund LPA.\u201d",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22004,
+     "token": "PAGE_BREAK",
+     "id": 236,
+     "namespace": "arabic",
+     "page_number": 214
+    },
+    "after": {
+     "line": 22096,
+     "token": "PAGE_BREAK",
+     "id": 237,
+     "namespace": "arabic",
+     "page_number": 215
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2025",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stonepeak-Plus Infrastructure Fund LP",
+     "",
+     "Stonepeak-Plus Infrastructure Fund Master Aggregator LP",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees(a)",
+     "$",
+     "510,000",
+     "$",
+     "765,000",
+     "$",
+     "1,275,000"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "412,920",
+     "",
+     "348,976",
+     "",
+     "761,896"
+    ],
+    [
+     "",
+     "$",
+     "922,920",
+     "$",
+     "1,113,976",
+     "$",
+     "2,036,896"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 22212,
+    "end_line": 22226
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "addition to the reimbursement of certain Fund Expenses. The General Partner will also be entitled to receive the Performance\nParticipation Allocation, as described herein. In addition, under the Investment Advisory Agreement and Fund LPA, to the\nextent permitted by applicable law, we will indemnify the Investment Advisor and the General Partner and certain of their\naffiliates. See \u201cPart I. Item 1. Business.\u201d\nDirector Independence\nSee \u201c\u2014Item 10. Directors, Executive Officers and Corporate Governance\u201d for information on SP+ INFRA\u2019s Independent\nDirectors and the definition of \u201cindependent.\u201d\nItem 14. Principal Accountant Fees and Services\nThe following table summarizes the aggregate fees for professional services provided by PricewaterhouseCoopers LLP\nand their respective affiliates:",
+   "prose_after": "______________\n(a) Audit Fees consisted of fees for (1) the audits of our consolidated financial statements in our registration statement on our Annual Report on Form 10-K\nand services attendant to, or required by, statute or regulation, and (2) reviews of the interim consolidated financial statements included in our quarterly reports\non Form 10-Q.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22200,
+     "token": "PAGE_BREAK",
+     "id": 238,
+     "namespace": "arabic",
+     "page_number": 216
+    },
+    "after": {
+     "line": 22281,
+     "token": "PAGE_BREAK",
+     "id": 239,
+     "namespace": "arabic",
+     "page_number": 217
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stonepeak-Plus Infrastructure Fund LP",
+     "",
+     "Stonepeak-Plus Infrastructure Fund Master Aggregator LP",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees(b)",
+     "$",
+     "210,000",
+     "$",
+     "\u2014",
+     "$",
+     "210,000"
+    ],
+    [
+     "",
+     "$",
+     "210,000",
+     "$",
+     "\u2014",
+     "$",
+     "210,000"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 22235,
+    "end_line": 22248
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "______________\n(a) Audit Fees consisted of fees for (1) the audits of our consolidated financial statements in our registration statement on our Annual Report on Form 10-K\nand services attendant to, or required by, statute or regulation, and (2) reviews of the interim consolidated financial statements included in our quarterly reports\non Form 10-Q.",
+   "prose_after": "______________\n(b) Audit Fees consisted of fees for the audits of our consolidated financial statements in our registration statement on Form 10.\nOur Audit Committee Charter, which is available on our website at www.stonepeakplusinfra.com under \u201cGovernance\nDocuments,\u201d requires the Audit Committee to pre-approve all audit and non-audit services to be provided by our independent\nregistered public accounting firm in accordance with the charter of the Audit Committee. For the year ended December 31,\n2025, all services reported in the Audit, Audit-Related, Tax and All Other Fees categories above were approved or ratified by\nthe Audit Committee.\nPart IV.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a)The following documents are filed as part of this Annual Report.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22200,
+     "token": "PAGE_BREAK",
+     "id": 238,
+     "namespace": "arabic",
+     "page_number": 216
+    },
+    "after": {
+     "line": 22281,
+     "token": "PAGE_BREAK",
+     "id": 239,
+     "namespace": "arabic",
+     "page_number": 217
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Incorporated by Reference",
+     "",
+     "",
+     "",
+     "Filed/"
+    ],
+    [
+     "Exhibit Number",
+     "Exhibit Description",
+     "Form",
+     "File No.",
+     "Exhibit",
+     "Filing Date",
+     "Furnished Herewith"
+    ],
+    [
+     "3.1",
+     "Certificate of Limited Partnership",
+     "10-12G",
+     "000-56711",
+     "3",
+     "12/03/24",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment to Certificate of Limited Partnership",
+     "10-12G",
+     "000-56711",
+     "3",
+     "12/03/24",
+     ""
+    ],
+    [
+     "3.3",
+     "Second Amended and Restated Limited Partnership Agreement",
+     "8-K",
+     "000-56711",
+     "3.1",
+     "11/05/25",
+     ""
+    ],
+    [
+     "3.4",
+     "Amendment No. 1 to Second Amended and Restated Limited Partnership Agreement",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "4.1",
+     "Description of Securities",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "10.1",
+     "Revolving Credit Agreement",
+     "8-K",
+     "000-56711",
+     "10.1",
+     "07/22/25",
+     ""
+    ],
+    [
+     "10.2",
+     "Lender Joinder and First Amendment to Revolving Credit Agreement",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "10.3",
+     "Second Amendment to Revolving Credit Agreement",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "10.4",
+     "Amended and Restated Investment Advisory Agreement",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "19.1",
+     "Insider Trading Policy",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "21.1",
+     "List of Subsidiaries",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer, pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer, pursuant to Rule 13a-14(a) of the Securities Exchange Act of 1934, as amended, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer, pursuant to\n18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "**"
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer, pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "",
+     "",
+     "",
+     "",
+     "**"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document",
+     "",
+     "",
+     "",
+     "",
+     "*"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22283,
+    "end_line": 22315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "the Audit Committee.\nPart IV.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a)The following documents are filed as part of this Annual Report.\n1. Financial Statements:\nSee Item 8 above.\n2. Financial Statement Schedules:\nSchedules for which provision is made in the applicable accounting regulations of the SEC are not required under the\nrelated instructions or are not applicable, and therefore have been omitted.\n3. Exhibits:",
+   "prose_after": "__________\n* Filed herewith.\n** Furnished herewith.\nThe agreements and other documents filed as exhibits to this Annual Report are not intended to provide factual\ninformation or other disclosure other than with respect to the terms of the agreements or other documents themselves, and you\nshould not rely on them for that purpose. In particular, any representations and warranties made by us in these agreements or\nother documents were made solely within the specific context of the relevant agreement or document and may not describe the\nactual state of affairs as of the date they were made or at any other time.\nItem 16. Form 10-K Summary\nNone.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22281,
+     "token": "PAGE_BREAK",
+     "id": 239,
+     "namespace": "arabic",
+     "page_number": 217
+    },
+    "after": {
+     "line": 22336,
+     "token": "PAGE_BREAK",
+     "id": 240,
+     "namespace": "arabic",
+     "page_number": 218
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stonepeak-Plus Infrastructure Fund LP",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2026",
+     "By:",
+     "/s/ Cyrus Gentry"
+    ],
+    [
+     "",
+     "",
+     "Cyrus Gentry"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     "(principal executive officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Stonepeak-Plus Infrastructure Fund LP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 22344,
+    "end_line": 22353
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The agreements and other documents filed as exhibits to this Annual Report are not intended to provide factual\ninformation or other disclosure other than with respect to the terms of the agreements or other documents themselves, and you\nshould not rely on them for that purpose. In particular, any representations and warranties made by us in these agreements or\nother documents were made solely within the specific context of the relevant agreement or document and may not describe the\nactual state of affairs as of the date they were made or at any other time.\nItem 16. Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly\ncaused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the\nfollowing persons on behalf of the registrant and in the capacities indicated on this 31st day of March, 2026.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22336,
+     "token": "PAGE_BREAK",
+     "id": 240,
+     "namespace": "arabic",
+     "page_number": 218
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 31, 2026",
+     "/s/ Luke Taylor"
+    ],
+    [
+     "",
+     "Luke Taylor"
+    ],
+    [
+     "",
+     "Chair of the Board of Directors"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22358,
+    "end_line": 22364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the\nfollowing persons on behalf of the registrant and in the capacities indicated on this 31st day of March, 2026.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22336,
+     "token": "PAGE_BREAK",
+     "id": 240,
+     "namespace": "arabic",
+     "page_number": 218
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 31, 2026",
+     "/s/ Cyrus Gentry"
+    ],
+    [
+     "",
+     "Cyrus Gentry"
+    ],
+    [
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2026",
+     "/s/ Anthony Borreca"
+    ],
+    [
+     "",
+     "Anthony Borreca"
+    ],
+    [
+     "",
+     "Chief Investment Officer and Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2026",
+     "/s/ Nisha Kumar"
+    ],
+    [
+     "",
+     "Nisha Kumar"
+    ],
+    [
+     "",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2026",
+     "/s/ Michael Morgan"
+    ],
+    [
+     "",
+     "Michael Morgan"
+    ],
+    [
+     "",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2026",
+     "/s/ Robert Soderbery"
+    ],
+    [
+     "",
+     "Robert Soderbery"
+    ],
+    [
+     "",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: March 31, 2026",
+     "/s/ Steven Mlynar"
+    ],
+    [
+     "",
+     "Steven Mlynar"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22365,
+    "end_line": 22398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 22336,
+     "token": "PAGE_BREAK",
+     "id": 240,
+     "namespace": "arabic",
+     "page_number": 218
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,2293 @@
+{
+ "accession": "0001096906-22-000331",
+ "cik": "0001875746",
+ "form": "10-Q",
+ "filing_date": "2022-02-15",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "xrxh-20211231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OKLAHOMA",
+     "000-56317",
+     "65-0844480"
+    ],
+    [
+     "(State or Other Jurisdiction",
+     "(Commission",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of Incorporation)",
+     "File Number)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended: December 31, 2021\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from: _____________ to _____________\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\nENTERTAINMENT HOLDINGS, INC.\n(Exact name of registrant as specified in its charter)\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014",
+   "prose_after": "3625 Cove Point Dr., Salt Lake City, UT 84109\n(Address of Principal Executive Office) (Zip Code)\n(801) 209-0740\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address, and former fiscal year, if changed since last report)\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\nSecurities registered pursuant to Section 12(b) of the Act: None\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n<TABLE>\n-",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 60,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Yes",
+     "X",
+     "No"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "X",
+     "Yes",
+     "",
+     "No"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Large accelerated filer",
+     "[    ]",
+     "",
+     "Accelerated filer",
+     "[    ]"
+    ],
+    [
+     "Non-accelerated filer",
+     "[ X ]",
+     "",
+     "Smaller reporting company",
+     "\u2612"
+    ],
+    [
+     "Emerging Growth filer",
+     "\u2610",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).",
+     "\u2612 Yes [ ] No"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I FINANCIAL INFORMATION",
+     "PAGE"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Financial Statements (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 2",
+     "Management\u2019s Discussion and Analysis of Financial Conditions\n\n\n\nand Results of Operations",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 3",
+     "Quantitative and Qualitative Disclosure About Market Risk",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 4",
+     "Controls and Procedures",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Legal Proceedings",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A",
+     "Risk Factors",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 3",
+     "Defaults Upon Senior Securities",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 4",
+     "Mine Safety Information",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "Other Information",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 6",
+     "Exhibits",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "18"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 80,
+    "end_line": 113
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]   Smaller reporting company    [X]\nEmerging Growth filer      [ ]\n</TABLE>\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\n<TABLE>\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).  [X] Yes [ ] No\n</TABLE>\nThe number of shares of the issuer\u2019s Common Stock outstanding as of February 14, 2022 is 88,992,975.\nTABLE OF CONTENTS",
+   "prose_after": "Part 1 - Financial Information\nItem 1. Financial Statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "XRX International Entertainment Holding Group, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Balance Sheets\n\n\n\n(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "June 30,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cash",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts payable and accrued expenses",
+     "",
+     "",
+     "$",
+     "13,077",
+     "",
+     "$",
+     "10,458"
+    ],
+    [
+     "",
+     "Accounts payable - related party",
+     "",
+     "",
+     "",
+     "6,978",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Current Liabilities",
+     "",
+     "",
+     "20,055",
+     "",
+     "",
+     "10,458"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Liabilities",
+     "",
+     "",
+     "20,055",
+     "",
+     "",
+     "10,458"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Convertible preferred stock: 100,000,000 shares authorized,\n\n\n\nat $0.0001 par value, 0 issued and outstanding.",
+     "",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "Common stock: 500,000,000 shares authorized, at $0.0001 par value, 88,992,975 issued and outstanding.",
+     "",
+     "",
+     "",
+     "8,899",
+     "",
+     "",
+     "8,899"
+    ],
+    [
+     "",
+     "Additional paid-in capital",
+     "",
+     "",
+     "",
+     "(19,357)",
+     "",
+     "",
+     "(19,357)"
+    ],
+    [
+     "",
+     "Accumulated deficit",
+     "",
+     "",
+     "",
+     "(9,597)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Total Stockholders' Deficit",
+     "",
+     "",
+     "(20,055)",
+     "",
+     "",
+     "(10,458)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these unaudited condensed financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "XRX International Entertainment Holding Group, Inc.",
+    "Condensed Balance Sheets\n\n\n\n(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 119,
+    "end_line": 171
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Part 1 - Financial Information\nItem 1. Financial Statements.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "XRX International Entertainment Holding Group, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "For the Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Professional fees",
+     "",
+     "3,098",
+     "",
+     "",
+     "8,278"
+    ],
+    [
+     "",
+     "General and administrative",
+     "",
+     "744",
+     "",
+     "",
+     "1,319"
+    ],
+    [
+     "Total Operating Expenses",
+     "",
+     "",
+     "3,842",
+     "",
+     "",
+     "9,597"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "",
+     "(3,842)",
+     "",
+     "",
+     "(9,597)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "$",
+     "(3,842)",
+     "",
+     "$",
+     "(9,597)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "BASIC AND DILUTED LOSS PER SHARE",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)"
+    ],
+    [
+     "",
+     "BASIC AND DILUTED WEIGHTED AVERAGE",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "NUMBER OF SHARES OUTSTANDING",
+     "",
+     "88,992,975",
+     "",
+     "",
+     "88,992,975"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these unaudited condensed financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "XRX International Entertainment Holding Group, Inc.",
+    "Condensed Statements of Operations",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 173,
+    "end_line": 215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 171,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 215,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "XRX International Entertainment Holding Group, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Stockholders' Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "From Inception on June 30, 2021 Through December 31, 2021\n\n\n\n(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2021",
+     "",
+     "88,992,975",
+     "",
+     "$",
+     "8,899",
+     "",
+     "$",
+     "(19,357)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(10,458)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income (loss) for September 30, 2021",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,755)",
+     "",
+     "",
+     "(5,755)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, September 30, 2021",
+     "",
+     "88,992,975",
+     "",
+     "$",
+     "8,899",
+     "",
+     "$",
+     "(19,357)",
+     "",
+     "$",
+     "(5,755)",
+     "",
+     "$",
+     "(16,213)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income (loss) for December 30, 2021",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,842)",
+     "",
+     "",
+     "(3,842)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2021",
+     "",
+     "88,992,975",
+     "",
+     "$",
+     "8,899",
+     "",
+     "$",
+     "(19,357)",
+     "",
+     "$",
+     "(9,597)",
+     "",
+     "$",
+     "(20,055)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these unaudited condensed financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "XRX International Entertainment Holding Group, Inc.",
+    "Statement of Stockholders' Deficit",
+    "From Inception on June 30, 2021 Through December 31, 2021\n\n\n\n(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 217,
+    "end_line": 248
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 215,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "XRX International Entertainment Holding Group, Inc.",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Condensed Statements of Cash Flows",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Net loss",
+     "",
+     "",
+     "$",
+     "(9,597)"
+    ],
+    [
+     "",
+     "Adjustments to reconcile net loss to net cash",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "  used by operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Accounts payable and accrued expenses",
+     "",
+     "",
+     "2,619"
+    ],
+    [
+     "",
+     "",
+     "Related parties accounts payable",
+     "",
+     "",
+     "6,978"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Net Cash Used in Operating Activities",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "NET CHANGES IN CASH",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH AT END OF PERIOD",
+     "",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "CASH PAID FOR:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Interest",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "Income Taxes",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying notes are an integral part of these unaudited condensed financial statements.",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "XRX International Entertainment Holding Group, Inc.",
+    "Condensed Statements of Cash Flows",
+    "(Unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 250,
+    "end_line": 297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "ENTERTAINMENT HOLDINGS, INC.\n(FKA XRX INTERNATIONAL ENTERTAINMENT HOLDINGS, INC.)\nNOTES TO THE UNAUDITED CONDENSED FINANCIAL STATEMENTS\nFOR THE PERIOD ENDED DECEMBER 31, 2021\nNOTE 1 \u2013 NATURE OF OPERATIONS\nOur predecessor issuer was incorporated on June 15, 1998, as XRX International Entertainment Holding Group, Inc. and continued under that name until June 31, 2021. From that date forward, the Company has been operating under the name of Entertainment Holdings, Inc.\nReorganization Activities:\nDomiciliary Merger: On June 14, 2021, the predecessor issuer, XRX International Entertainment Holding Group, Inc. of Florida, completed a domiciliary merger into Traveler Holdings, Inc. of Oklahoma, with the Oklahoma company being the survivor under the name Traveler Holdings, Inc.\nHolding Company Parent/Subsidiary Formation: On June 30, 2021, Entertainment Holdings, Inc. an Oklahoma Corporation became the parent/successor issuer pursuant to Section 1081(g) of the Oklahoma General Corporation Act under an executed agreement titled \u201cAgreement and Plan of Reorganization\u201d (\u201cParent Subsidiary Formation\u201d) which was executed by Traveler Holdings, Inc. (OK), Entertainment Holdings, Inc. (OK), and Expedition Holdings, Inc. (OK). Under the terms of the Agreement, Traveler Holdings, Inc. (OK) merged into Expedition Holdings, Inc. (OK) and Traveler Holdings, Inc. (OK). ceased to exist, wherein Expedition Holdings, Inc. (OK) became the survivor and successor under Section 1088 of the Oklahoma Act, having acquired all of Traveler Holdings, Inc.\u2019s (OK) assets, rights financial statements, obligations, and liabilities as the constituent or resulting corporation. Entertainment Holdings, Inc. (OK) became the parent and the holding company of Expedition Holdings, Inc. (OK) under the Parent Subsidiary Formation which was in compliance with Section 1081(g) of the Oklahoma General Corporation Act.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 297,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Q3 3 months ended March 31, 2022",
+     "",
+     "Q4 3 months ended June 30, 2022",
+     "",
+     "Q 1 3 months ended September 30, 2022",
+     "",
+     "Q 2 3 months ended December 31, 2022",
+     "",
+     "Twelve Month Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounting",
+     "$",
+     "3,000",
+     "$",
+     "3,000",
+     "$",
+     "3,000",
+     "$",
+     "3,000",
+     "$",
+     "12,000"
+    ],
+    [
+     "General and administrative",
+     "$",
+     "3,000",
+     "$",
+     "3,000",
+     "$",
+     "3,000",
+     "$",
+     "3,000",
+     "$",
+     "12,000"
+    ],
+    [
+     "Miscellaneous",
+     "$",
+     "500",
+     "$",
+     "500",
+     "$",
+     "500",
+     "$",
+     "500",
+     "$",
+     "2,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "$",
+     "6,500",
+     "$",
+     "6,500",
+     "$",
+     "6,500",
+     "$",
+     "6,500",
+     "$",
+     "26,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 441,
+    "end_line": 453
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The Company is considered a startup company with no assets and/or capital and no material operations or income. Ongoing expenses, including the costs associated with the preparation and filing of this registration statement, have been paid for by advances from a stockholder, which are evidenced on the Company\u2019s financial statements as accounts payable-related parties. It is anticipated that the Company will require only nominal capital to maintain its corporate viability. Additional necessary funds will most likely be provided by the Company's officers and directors, although there is no agreement related to future funds and there is no assurance such funds will be available. However, unless the Company is able to facilitate an acquisition of or merger with an operating business or is able to obtain significant outside financing, there is substantial doubt about its ability to continue as a going concern.\nPLAN OF OPERATION\nOur plan of operations is to raise debt and/or equity to meet our ongoing operating expenses and attempt to merge with another entity with experienced management and opportunities for growth in return for shares of our common stock to create value for our shareholders. There can be no assurance that we will successfully complete this series of transactions. In particular, there is no assurance that any such business will be located or that any stockholder will realize any return on their shares after such a transaction. Any merger or acquisition completed by us can be expected to have a significant dilutive effect on the percentage of shares held by our current stockholders.\nOur intended budget for the next twelve months is as follows:",
+   "prose_after": "At this time, we have no cash on hand, and we are dependent on advances from our principal shareholder or our directors and officers. There can be no guarantee that we will be able to obtain sufficient funding these sources.\nAs of the date of this Report we intend to engage in what we believe to be synergistic acquisitions or joint ventures with a company or companies that we believe will enhance our business plan. The Company will not restrict its search to any specific business, industry, or geographical location and it may participate in a business venture of virtually any kind or nature. One of the benefits to our being a reporting and publicly traded company is to allow us to utilize our securities as consideration for some or all of the purchase price of these potential acquisitions. There are no assurances we will be able to consummate any acquisitions using our securities as consideration, or at all.\nThere are numerous things that will need to occur in order to allow us to implement this aspect of our business plan and there are no assurances that any of these developments will occur, or if they do occur, that we will be successful in fully implementing our plan.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 455,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Six Months Ended December 31,\n\n\n\n2021"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash from Operating Activities",
+     "",
+     "$                     -"
+    ],
+    [
+     "Net Cash from Investing Activities",
+     "",
+     "$                     -"
+    ],
+    [
+     "Net Cash from Financing Activities",
+     "",
+     "$                     -"
+    ],
+    [
+     "Net Change in Cash and Cash Equivalents",
+     "",
+     "$                     -"
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended December 31,\n\n\n\n2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 583,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consequently, we are now dependent on raising additional equity and/or debt to meet our ongoing operating expenses. There is no assurance that we will be able to raise the necessary equity and/or debt that we will need to fund our ongoing operating expenses.\nIt is our current intention to seek to raise debt and/or equity financing to meet ongoing operating expenses and attempt to merge with another entity with experienced management and opportunities for growth in return for shares of our common stock to create value for our shareholders. There is no assurance that this series of events will be satisfactorily completed.\nFuture losses are likely to occur as, until we are able to merge with another entity with experienced management and opportunities for growth in return for shares of our common stock to create value for our shareholders as we have no sources of income to meet our operating expenses. As a result of these, among other factors, we received from our registered independent public accountants in their report for the financial statements for the year ended June 30, 2021, an explanatory paragraph stating that there is substantial doubt about our ability to continue as a going concern.",
+   "prose_after": "Operating Activities\nDuring the six months ended December 31, 2021, we neither generated nor used funds in our operating activities\nInvesting Activities\nWe neither generated nor used funds in investing activities during the six months ended December 31, 2021.\nFinancing Activities\nDuring the six months ended December 31, 2021 we generated $0 cash from our financing activities.\nWe are dependent upon the receipt of capital investment or other financing to fund our ongoing operations and to execute our business plan of seeking a combination with a private operating company. In addition, we are dependent upon our controlling shareholder to provide continued funding and capital resources. If continued funding and capital resources are unavailable at reasonable terms, we may not be able to implement our plan of operations.\nLiquidity and Capital Resources\nAs of December 31, 2021, we had cash of $0, no assets, no operating business or other source of income.\nWe are now focused raising debt and/or equity financing to meet ongoing operating expenses and attempting to merge with another entity with experienced management and opportunities for growth in return for shares of our common stock to create value for our shareholders. There is no assurance that this series of events will be satisfactorily completed.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 601,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description",
+     ""
+    ],
+    [
+     "3(i).1",
+     "Articles of Incorporation (Oklahoma) \u2013 Victoria Lake, Inc. \u2013 6.30.2021",
+     "Incorporated by refence (see 10-12G filed 7/30/2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3(i).2",
+     "Bylaws \u2013 6.30.2021",
+     "Incorporated by refence (see 10-12G filed 7/30/2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3(i).3",
+     "Certificate of Designation \u2013 6.30. 2021 \u2013 Series A",
+     "Incorporated by refence (see 10-12G filed 7/30/2021)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Attached"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Attached"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "None.\nITEM 2. UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS.\nNone.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES.\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nITEM 5. OTHER INFORMATION.\nNone.\nEXHIBITS",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned hereunto duly authorized.\nENTERTAINMENT HOLDINGS, INC.\nDate: February 14, 2022 /s/ Reed Petersen\n--------------------------------\nReed Petersen\nPresident, Secretary, Treasurer and\nDirector",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 706,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,3965 @@
+{
+ "accession": "0001829126-22-006763",
+ "cik": "0001800392",
+ "form": "10-K",
+ "filing_date": "2022-03-25",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "venusacquisition_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cayman Islands",
+     "n/a 00-0000000"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission File Number: 001-40024\nVENUS ACQUISITION CORPORATION\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "477 Madison Avenue, 6th Floor, New York, NY 10022\n(Address of principal executive offices) (Zip Code)\n(917) 267-4568 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Exchange Act",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Ordinary shares, Par Value $.001 Per Share",
+     "VENA",
+     "The Nasdaq Stock Market, LLC"
+    ],
+    [
+     "Redeemable Warrants entitling the holders to Purchase one half (1/2) of one Ordinary Share",
+     "VENAW",
+     "The Nasdaq Stock Market, LLC"
+    ],
+    [
+     "Rights to Receive one tenth (1/10) of an Ordinary Share",
+     "VENAR",
+     "The Nasdaq Stock Market, LLC"
+    ],
+    [
+     "Units, each consisting of one Ordinary Share, one Warrant, and one Right",
+     "VENAU",
+     "The Nasdaq Stock Market, LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "477 Madison Avenue, 6th Floor, New York, NY 10022\n(Address of principal executive offices) (Zip Code)\n(917) 267-4568 (Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Exchange Act",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Securities Exchange Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15 (d) of the Securities Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 OF THIS chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 75,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PAGE"
+    ],
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "57"
+    ],
+    [
+     "Item 2. Properties",
+     "57"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "57"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "57"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "58"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for the Registrant\u2019s Common Equity, and Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "58"
+    ],
+    [
+     "Item 6. Reserved",
+     "60"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "61"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "66"
+    ],
+    [
+     "Item 8. Financial Statements and Supplemental Data",
+     "66"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "66"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "67"
+    ],
+    [
+     "Item 9B. Other Information",
+     "68"
+    ],
+    [
+     "Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "68"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "69"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors and Executive Officers of the Registrant",
+     "69"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "75"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management",
+     "76"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions",
+     "77"
+    ],
+    [
+     "Item 14. Principal Accountant Fees and Services",
+     "79"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "80"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "80"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "82"
+    ]
+   ],
+   "caption_stack": [
+    "PAGE"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 130
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The Company has reflected these corrections in its Quarterly Report on Form 10-Q for the quarterly period ended September 30, 2021, filed with SEC on November 12, 2021 and in the amended Quarterly Report on Form 10-Q/A for the period ended June 30, 2021, filed on January 18, 2022, the amended Quarterly Report on Form 10-Q/A for the period ended March 31, 2021, filed on January 18, 2022, and the amended Current Report on Form 8-K/A filed on January 18, 2022. The Company does not expect the changes described above to have any impact on its cash position or the balance held in the trust account. The financial information that has been previously filed or otherwise reported for these periods is superseded by the information in the amended Quarterly Report on Form 10-Q/A for the period ended June 30, 2021, the amended Quarterly Report on Form 10-Q/A for the period ended March 31, 2021, and the amended Current Report on Form 8-K/A, all as filed on January 18, 2022, and the financial statements and related financial information contained in such previously filed reports should no longer be relied upon.\nTABLE OF CONTENTS",
+   "prose_after": "i\nFORWARD LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, or the \u201cSecurities Act,\u201d and Section 21E of the Securities Exchange Act of 1934, or the Exchange Act. The statements contained in this report that are not purely historical are forward-looking statements. Our forward-looking statements include, but are not limited to, statements regarding our or our management\u2019s expectations, hopes, beliefs, intentions or strategies regarding the future. In addition, any statements that refer to projections, forecasts or other characterizations of future events or circumstances, including any underlying assumptions, are forward-looking statements. The words \u201canticipates,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredicts,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions may identify forward-looking statements, but the absence of these words does not mean that a statement is not forward-looking. Forward-looking statements in this Form 10-K may include, for example, statements about our:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 132,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(812,412)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "(3,641,991)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "(4,454,403)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1428,
+    "end_line": 1439
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "We calculate net loss per share in accordance with ASC Topic 260, \u201cEarnings per Share\u201d. In order to determine the net income (loss) attributable to both the redeemable shares and non-redeemable shares, we first considered the undistributed income (loss) allocable to both the redeemable ordinary shares and non-redeemable ordinary shares and the undistributed income (loss) is calculated using the total net loss less any dividends paid. We then allocated the undistributed income (loss) ratably based on the weighted average number of shares outstanding between the redeemable and non-redeemable ordinary shares. Any remeasurement of the accretion to redemption value of the ordinary shares subject to possible redemption was considered to be dividends paid to the public stockholders. As of December 31, 2021, we have not considered the effect of the warrants sold in the initial public offering to purchase an aggregate of 2,412,500 shares in the calculation of diluted net loss per share, since the exercise of the warrants is contingent upon the occurrence of future events and the inclusion of such warrants would be anti-dilutive and we did not have any other dilutive securities and other contracts that could, potentially, be exercised or converted into ordinary share and then share in our earnings. As a result, diluted loss per share is the same as basic loss per share for the years presented.\nThe net loss per share presented in the statement of operations is based on the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1478,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Years Ended December 31, 2020",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Redeemable Ordinary shares",
+     "",
+     "",
+     "Non-Redeemable Ordinary shares",
+     "",
+     "",
+     "Redeemable Ordinary shares",
+     "",
+     "Non-Redeemable Ordinary shares",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net loss including carrying value to redemption value",
+     "$",
+     "(3,305,127)",
+     "",
+     "$",
+     "(1,149,276)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "3,641,991",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Allocation of net income (loss)",
+     "$",
+     "336,864",
+     "",
+     "$",
+     "(1,149,276)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding",
+     "",
+     "4,070,685",
+     "",
+     "",
+     "1,415,479",
+     "",
+     "",
+     "-",
+     "",
+     "1,000,000",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "(0.81)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(0.12)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1440,
+    "end_line": 1461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Recent accounting pronouncements\nManagement does not believe that any other recently issued, but not yet effective, accounting standards, if currently adopted, would have a material effect on our financial statements.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nAs of December 31, 2021, we were not subject to any market or interest rate risk. The net proceeds of our initial public offering completed February 11, 2021, including amounts in the Trust Account, have been invested in U.S. government treasury bills, notes or bonds with a maturity of 180 days or less or in certain money market funds that invest solely in U.S. treasuries. Due to the short-term nature of these investments, we believe there will be no associated material exposure to interest rate risk.\nItem 8. Financial Statements and Supplemental Data\nThis information appears following Item 15 of this Report and is included herein by reference.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1425,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1478,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Yanming Liu",
+     "59",
+     "Chairman and Chief Executive Officer"
+    ],
+    [
+     "River Chi",
+     "41",
+     "Chief Financial Officer"
+    ],
+    [
+     "Yu Chen",
+     "55",
+     "Director"
+    ],
+    [
+     "Guojian Chen",
+     "29",
+     "Director"
+    ],
+    [
+     "Shan Cui",
+     "49",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1529,
+    "end_line": 1538
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "This Annual Report on Form 10-K does not include an attestation report of internal controls from our independent registered public accounting firm due to our status as an emerging growth company under the JOBS Act.\nChanges in Internal Control over Financial Reporting\nOther than the remedial activities disclosed above in connection with to the restatement of our financial statements, there was no change in our internal control over financial reporting that occurred during the fiscal year covered by this report that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information\nNone\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections\nNot applicable.\nPART III\nItem 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nOur current directors and executive officers are as follows:",
+   "prose_after": "Yanming Liu has served as our Chairman and Chief Executive Officer since January 2020. Mr. Liu served as the Chairman and Chief Executive Officer of Greenland until its acquisition of Zhongchai in October 2019. Mr. Liu currently serves as a director of Greenland\u2019s successor entity, Greenland Technologies Holding Corp. Mr. has served as President of CoAdna (Suzhou), a fiber optics solutions company in China, since March 2013. From November 2010 to February 2013, Mr. Liu served as President of two optical access business units of HiSense Broadband and Multimedia Technologies, an optical communications company. From March to October 2010, Mr. Liu served as a senior advisor to EJ McKay & Co., Inc. with respect to various technology matters. From August 2005 to February 2010, Mr. Liu served as President and Chief Executive Officer of Salira Systems Inc., a producer of optical access products in China and the U.S. Previously, Mr. Liu served as an executive of Optovia Corporation and Walsin Management Company. In addition, from 1993 to 2001, Mr. Liu worked in various roles for Corning Incorporated, most recently as Director of Communications Electronics and Integration, where his roles included invention of Corning\u2019s award-winning patented LEAF fiber product and marketing such product in China and other markets. Mr. Liu received a bachelor degree from Tianjin University in China, a MBA degree from the MIT Sloan School of Management and a Ph.D. and a MA degree from Princeton University. We believe Mr. Liu is well qualified to serve on our board of directors because of his extensive knowledge and experience operating companies in the U.S. and China.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 1547,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 69
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Individual(1)",
+     "Entity",
+     "Entity\u2019s Business",
+     "Affiliation"
+    ],
+    [
+     "Yanming Liu",
+     "Greenland Technologies Holding Corp.",
+     "Transmission products",
+     "Director"
+    ],
+    [
+     "",
+     "CoAdna (Suzhou)",
+     "Fiber optic solutions",
+     "President"
+    ],
+    [
+     "River Chi",
+     "Alum Developing (Shanghai), Inc.",
+     "Distributor of alloys",
+     "CEO"
+    ],
+    [
+     "Shan Cui",
+     "First Capital International Limited",
+     "Consulting",
+     "Director"
+    ],
+    [
+     "Guojian Chen",
+     "Beijing ChinaReel Art Exchange Inc.",
+     "Media",
+     "Secretary of Board"
+    ],
+    [
+     "Yu Chen",
+     "Nanjing Covision Optoelectronics Co., Ltd.",
+     "Lighting applications",
+     "CEO"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1651,
+    "end_line": 1661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Our sponsor, officers and directors have agreed to waive their redemption rights with respect to our founder shares, private placement shares and public shares in connection with the consummation of our business combination. Additionally, our sponsor, officers and directors have agreed to waive their redemption rights with respect to their founder shares and private placement shares if we fail to consummate our business combination within 12 months from the closing of this offering (or up to 21 months from the closing of this offering if we extend the period of time to consummate a business combination). If we do not complete our business combination within such applicable time period, the proceeds of the sale of the Private Units held in the trust account will be used to fund the redemption of our public shares, and the Private Units and underlying securities will be worthless. With certain limited exceptions, 50% of the founder shares will not be transferable, assignable or salable by our sponsor until the earlier of (i) six months after the date of the consummation of our business combination or (ii) the date on which the closing price of our ordinary shares equals or exceeds $12.50 per share (as adjusted for share splits, share dividends, reorganizations and recapitalizations) for any 20 trading days within any 30-trading day period commencing after our business combination and the remaining 50% of the founder shares may not be transferred, assigned or sold until six months after the date of the consummation of our business combination, or earlier, in either case, if, subsequent to our business combination, we consummate a subsequent liquidation, merger, stock exchange or other similar transaction which results in all of our shareholders having the right to exchange their ordinary shares for cash, securities or other property. With certain limited exceptions, the Private Units and underlying securities will not be transferable, assignable or salable by our sponsor until 30 days after the completion of our business combination. Since our sponsor and officers and directors may directly or indirectly own ordinary shares, rights and warrants following this offering, our officers and directors may have a conflict of interest in determining whether a particular target business is an appropriate business with which to effectuate our business combination.\n\u25cf Our officers and directors may have a conflict of interest with respect to evaluating a particular business combination if the retention or resignation of any such officers and directors was included by a target business as a condition to any agreement with respect to our business combination.\nThe conflicts described above may not be resolved in our favor. Accordingly, as a result of multiple business affiliations, our officers and directors may have similar legal obligations relating to presenting business opportunities meeting the above-listed criteria to multiple entities. Below is a table summarizing the entities to which our officers and directors currently have fiduciary duties or contractual obligations:",
+   "prose_after": "(1) Each of the entities listed in this table has priority and preference relative to our company with respect to the performance by each individual listed in this table of his obligations and the presentation by each such individual of business opportunities.\nAccordingly, if any of the above officers or directors become aware of a business combination opportunity which is suitable for any of the above entities to which he or she has then-current fiduciary or contractual obligations, he or she will honor his or her fiduciary or contractual obligations to present such business combination opportunity to such entity, and only present it to us if such entity rejects the opportunity, subject to his or her fiduciary duties under Cayman Islands law. We do not believe, however, that any of the foregoing fiduciary duties or contractual obligations will materially affect our ability to complete our business combination, because the specific focuses of a majority of these entities differ from our focus and the type or size of the transaction that such companies would most likely consider are of a size and nature substantially different than what we are targeting.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1638,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 1666,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "Amount and Nature of Beneficial Ownership(2)",
+     "",
+     "Approximate Percentage of Outstanding Shares(2)",
+     "",
+     ""
+    ],
+    [
+     "Yolanda Management Corporation(3)",
+     "",
+     "1,375,000",
+     "",
+     "22.7",
+     "%"
+    ],
+    [
+     "Yanming Liu(4)",
+     "",
+     "1,375,000",
+     "",
+     "22.7",
+     "%"
+    ],
+    [
+     "River Chi",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Shan Cui",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Guojian Chen",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Yu Chen",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All directors and officers as a group (5 individuals)",
+     "",
+     "1,375,000",
+     "",
+     "22,7",
+     "%"
+    ],
+    [
+     "Karpus Investment Management(5)",
+     "",
+     "566,915",
+     "",
+     "9.37",
+     "%"
+    ],
+    [
+     "Mizuho Financial Group, Inc.(6)",
+     "",
+     "482,497",
+     "",
+     "7.98",
+     "%"
+    ],
+    [
+     "WEISS ASSET MANAGEMENT LP(7)",
+     "",
+     "342,006",
+     "",
+     "5.65",
+     "%"
+    ],
+    [
+     "Feis Equities LLC(8)",
+     "",
+     "582,931",
+     "",
+     "9.64",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1711,
+    "end_line": 1726
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "The following table sets forth information regarding the beneficial ownership of our shares of common stock as of March 21, 2022 by:\n\u25cf each person known by us to be the beneficial owner of more than 5% of our outstanding shares of common stock;\n\u25cf each of our officers and directors; and\n\u25cf all of our officers and directors as a group.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all shares of common stock beneficially owned by them. The following table does not reflect beneficial ownership of the warrants or rights offered in our IPO or the private warrants included the private placement as the warrants are not exercisable and the rights are not convertible within 60 days of the date of this Form 10-K. As of March 21, 2022, there were 6,050,000 ordinary shares (assuming all the units were separated into their component parts on such date) issued and outstanding and upon which we base the information in the table below.",
+   "prose_after": "(1) Unless otherwise indicated, the business address of each of the individuals is 477 Madison Avenue, 6th Floor, New York, NY 10022.\n(2) Based on an aggregate of 6,050,000 ordinary shares (assuming all the units were separated into their component parts on such date).\n(3) Includes the 225,000 Private Units purchased by our sponsor simultaneously with the consummation of our IPO. The Private Units are the same as the IPO units and therefore include 225,000 ordinary shares. The rights and warrants included in the units convertible or exercisable at this time or within the next 60 days.\n(4) Represents ordinary shares held by our sponsor. The ordinary shares held by our sponsor are beneficially owned by Yanming Liu, who, as the sole director and sole shareholder of our sponsor, has sole voting and dispositive power over the ordinary shares held by our sponsor.\n(5) Based on a Schedule 13G/A filed with the SEC on February 14, 2022. The entity\u2019s address is 183 Sully\u2019s Trail, Pittsford, New York 14534.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1698,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 1738,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm \u2013 Friedman LLP",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "F-2"
+    ],
+    [
+     "Consolidated Statement of Operations",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Changes in Shareholders\u2019 Equity (Deficit)",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "F-5"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-6 - F-20"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1788,
+    "end_line": 1798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "All Other Fees. We did not pay Friedman LLP for other services for either of the years ended December 31, 2021 and December 31, 2020.\nPre-Approval Policy\nOur audit committee was formed upon the consummation of our IPO on February 8, 2021. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K\n(a) The following documents are filed as part of this Form 10-K:\n(1) Financial Statements:",
+   "prose_after": "(2) Financial Statement Schedules:\nNone.\n(3) Exhibits",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1779,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "1.1",
+     "Underwriting Agreement dated as of February 8, 2021 between Registrant and Ladenburg Thalmann & Co., Inc.***"
+    ],
+    [
+     "3.1",
+     "Memorandum and Articles of Association.**"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Memorandum and Articles of Association.**"
+    ],
+    [
+     "4.5",
+     "Warrant Agreement dated as of February 8, 2021 between Vstock Transfer LLC and the Registrant.***"
+    ],
+    [
+     "4.6",
+     "Rights Agreement dated as of February 8, 2021 between Vstock Transfer LLC and the Registrant.***"
+    ],
+    [
+     "4.7*",
+     "Description of Securities"
+    ],
+    [
+     "10.1",
+     "Amended and Restated Promissory Note, dated as of January 16, 2020, issued to Yolanda Management Corporation.**"
+    ],
+    [
+     "10.2",
+     "Insider Letter Agreement among the Registrant, Ladenburg Thalmann & Co., Inc. and its officers, directors and Yolanda Management Corporation.***"
+    ],
+    [
+     "10.3",
+     "Investment Management Trust Agreement between Wilmington Trust Company, Vstock Transfer LLC and the Registrant.***"
+    ],
+    [
+     "10.4",
+     "Registration Rights Agreement dated as of February 8, 2021 between the Registrant and certain security holders.***"
+    ],
+    [
+     "10.5",
+     "Securities Subscription Agreement, dated August 21, 2019, between the Registrant and Yolanda Management Corporation.**"
+    ],
+    [
+     "10.6",
+     "Private Placement Units Purchase Agreement between the Registrant and Yolanda Management Corporation.**"
+    ],
+    [
+     "10.7",
+     "Form of Indemnity Agreement.**"
+    ],
+    [
+     "10.8",
+     "Form of Administrative Services Agreement, by and between the Registrant and Yolanda Management Corporation.**"
+    ],
+    [
+     "10.9",
+     "Amended and Restated Promissory Note, dated as of December 10, 2020, in the principal amount of up to $450,000, issued to Yolanda Management Corporation.**"
+    ],
+    [
+     "10.10",
+     "Merger Agreement dated as of June 10, 2021 by and among the Registrant, Viyi Algorithm Inc., Venus Merger Sub Corp. and WiMi Hologram Cloud Inc. ****"
+    ],
+    [
+     "10.11",
+     "Amendment No. 1 dated as of January 24, 2022 to Merger Agreement by and among the Registrant, VIYI Algorithm Inc., Venus Merger Sub Corp., and WiMi Hologram Cloud Inc. *****"
+    ],
+    [
+     "10.12",
+     "Backstop Agreement dated as of January 24, 2022 by and between the Registrant and WiMi Hologram Cloud Inc. *****"
+    ],
+    [
+     "31.1*",
+     "Certification of Principal Executive Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "31.2*",
+     "Certification of Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1*",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.2*",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1806,
+    "end_line": 1835
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules:\nNone.\n(3) Exhibits",
+   "prose_after": "* Filed with this Form 10-K ** Previously filed with the Securities and Exchange Commission as an exhibit to our Form S-1 as filed on February 3, 2021 and declared effective on February 8, 2020 *** Previously filed as an exhibit to our Form 8-K as filed with the Securities and Exchange Commission on February 11, 2021",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "****",
+     "Previously filed as an exhibit to our Form 8-K as filed with the Securities and Exchange Commission on June 14, 2021"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1837,
+    "end_line": 1840
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "* Filed with this Form 10-K ** Previously filed with the Securities and Exchange Commission as an exhibit to our Form S-1 as filed on February 3, 2021 and declared effective on February 8, 2020 *** Previously filed as an exhibit to our Form 8-K as filed with the Securities and Exchange Commission on February 11, 2021",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "*****",
+     "Previously filed as an exhibit to our Form 8-K as filed with the Securities and Exchange Commission on January 24, 2022"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1840,
+    "end_line": 1843
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Shareholders of\nOpinion on the Financial Statements\nWe have audited the accompanying consolidated balance sheets of Venus Acquisition Corporation (the \u201cCompany\u201d) as of December 31, 2021 and 2020 and the related consolidated statements of operations, changes in shareholders\u2019 equity (deficit) and cash flows for each of the years in the two-year period ended December 31, 2021 and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021 and 2020, and the results of its operations and its cash flows for each of the years in the two-year period ended December 31, 2021, in conformity with accounting principles generally accepted in the United States of America.\nExplanatory Paragraph \u2014 Going Concern\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 1 to the financial statements, the Company\u2019s business plan is dependent on the completion of a business combination and the Company\u2019s cash and working capital as of December 31, 2021 are not sufficient to complete its planned activities for a reasonable period of time, which is considered to be one year from the issuance date of the financial statements. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 1. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1805,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "32,090",
+     "",
+     "$",
+     "239",
+     ""
+    ],
+    [
+     "Prepayments",
+     "",
+     "16,717",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "48,807",
+     "",
+     "",
+     "76,317",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "222",
+     "",
+     "",
+     "3,303",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "-",
+     "",
+     "",
+     "188,001",
+     ""
+    ],
+    [
+     "Cash and investments held in trust account",
+     "",
+     "46,469,183",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "46,518,212",
+     "",
+     "$",
+     "191,543",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES, TEMPORARY EQUITY AND SHAREHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities and other payable",
+     "$",
+     "93,558",
+     "",
+     "$",
+     "39,972",
+     ""
+    ],
+    [
+     "Advances from a related party",
+     "",
+     "373,421",
+     "",
+     "",
+     "26,750",
+     ""
+    ],
+    [
+     "Promissory note- related party",
+     "",
+     "-",
+     "",
+     "",
+     "228,483",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "466,979",
+     "",
+     "",
+     "295,205",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liabilities",
+     "",
+     "410,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred underwriting compensation",
+     "",
+     "1,150,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "2,026,979",
+     "",
+     "",
+     "295,205",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ordinary shares, subject to possible redemption: 4,600,000 shares at $10.10 per share",
+     "",
+     "46,469,183",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders\u2019 deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred shares, $0.001 par value; 1,000,000 shares authorized; no share issued",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Ordinary shares, $0.001 par value; 50,000,000 shares authorized; 1,450,000 and 1,150,000 shares issued and outstanding (excluding 4,600,000 and no shares subject to possible redemption)",
+     "",
+     "1,450",
+     "",
+     "",
+     "1,150",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "-",
+     "",
+     "",
+     "23,850",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(1,979,400)",
+     "",
+     "",
+     "(128,662)",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 deficit",
+     "",
+     "(1,977,950)",
+     "",
+     "",
+     "(103,662)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES, TEMPORARY EQUITY AND SHAREHOLDERS\u2019 DEFICIT",
+     "$",
+     "46,518,212",
+     "",
+     "$",
+     "191,543",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "As of December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1884,
+    "end_line": 1936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Friedman LLP\nFriedman LLP\nWe have served as the Company\u2019s auditor since 2020.\nNew York, New York\nMarch 25, 2022\n711\nCONSOLIDATED BALANCE SHEETS\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1878,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1937,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": null,
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Formation, general and administrative expenses",
+     "$",
+     "(785,096)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "(785,096)",
+     "",
+     "",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "(30,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "2,683",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other income, net",
+     "",
+     "(27,317)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(812,413)",
+     "",
+     "",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(812,413)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, ordinary share subject to possible redemption",
+     "",
+     "4,070,685",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share, ordinary share subject to possible redemption",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, ordinary share attributable to Venus Acquisition Corporation",
+     "",
+     "1,415,479",
+     "",
+     "",
+     "1,000,000",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share, ordinary share attributable to Venus Acquisition Corporation",
+     "$",
+     "(0.81)",
+     "",
+     "$",
+     "(0.12)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1943,
+    "end_line": 1979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "CONSOLIDATED STATEMENT OF CHANGES IN SHAREHOLDERS\u2019 EQUITY (DEFICIT)\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1937,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": null,
+     "page_number": 2
+    },
+    "after": {
+     "line": 1980,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": null,
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Ordinary shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total shareholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "No. of shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "capital",
+     "",
+     "",
+     "deficit",
+     "",
+     "",
+     "equity (deficit)",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2020",
+     "",
+     "1,150,000",
+     "",
+     "$",
+     "1,150",
+     "",
+     "$",
+     "23,850",
+     "",
+     "$",
+     "(10,875)",
+     "",
+     "$",
+     "14,125",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(117,787)",
+     "",
+     "",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2020",
+     "",
+     "1,150,000",
+     "",
+     "",
+     "1,150",
+     "",
+     "",
+     "23,850",
+     "",
+     "",
+     "(128,662)",
+     "",
+     "",
+     "(103,662)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of units in initial public offering",
+     "",
+     "4,600,000",
+     "",
+     "",
+     "4,600",
+     "",
+     "",
+     "43,532,633",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "43,537,233",
+     ""
+    ],
+    [
+     "Fair value of underwriter\u2019s unit purchase option",
+     "",
+     "75,000",
+     "",
+     "",
+     "75",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "75",
+     ""
+    ],
+    [
+     "Sale of units to the founder in private placement",
+     "",
+     "225,000",
+     "",
+     "",
+     "225",
+     "",
+     "",
+     "1,869,775",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,870,000",
+     ""
+    ],
+    [
+     "Initial classification of ordinary shares subject to possible redemption",
+     "",
+     "(4,600,000)",
+     "",
+     "",
+     "(4,600)",
+     "",
+     "",
+     "(45,245,194)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(45,249,794)",
+     ""
+    ],
+    [
+     "Allocation of offering costs to ordinary share subject to redemption",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,422,602",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "2,422,602",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,603,666)",
+     "",
+     "",
+     "(1,038,325)",
+     "",
+     "",
+     "(3,641,991)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(812,413)",
+     "",
+     "",
+     "(812,413)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2021",
+     "",
+     "1,450,000",
+     "",
+     "$",
+     "1,450",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(1,979,400)",
+     "",
+     "$",
+     "(1,977,950)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1986,
+    "end_line": 2011
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF CHANGES IN SHAREHOLDERS\u2019 EQUITY (DEFICIT)\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1980,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": null,
+     "page_number": 3
+    },
+    "after": {
+     "line": 2012,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": null,
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(812,413)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrant liabilities",
+     "",
+     "30,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Interest income earned in cash and investments held in trust account",
+     "",
+     "(2,683)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in prepayments",
+     "",
+     "(16,717)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in accrued liabilities",
+     "",
+     "53,586",
+     "",
+     "",
+     "39,972",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used in operating activities",
+     "",
+     "(748,227)",
+     "",
+     "",
+     "(77,815)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds deposited in Trust Account",
+     "",
+     "(46,466,500)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Security deposit",
+     "",
+     "3,081",
+     "",
+     "",
+     "(55)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(46,463,419)",
+     "",
+     "",
+     "(55)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from unit purchase option",
+     "",
+     "75",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from public offering, net of expenses",
+     "",
+     "44,875,234",
+     "",
+     "",
+     "(128,681)",
+     ""
+    ],
+    [
+     "Proceeds from sale of private placement",
+     "",
+     "2,250,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Proceeds from promissory note \u2013 related party",
+     "",
+     "",
+     "",
+     "",
+     "78,483",
+     ""
+    ],
+    [
+     "Repayment of promissory note \u2013 related party",
+     "",
+     "(228,483)",
+     "",
+     "",
+     "(300,000)",
+     ""
+    ],
+    [
+     "Advances from a related party",
+     "",
+     "346,671",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "47,243,497",
+     "",
+     "",
+     "(350,198)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH",
+     "",
+     "31,851",
+     "",
+     "",
+     "(428,068)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of year",
+     "",
+     "239",
+     "",
+     "",
+     "428,307",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of year",
+     "$",
+     "32,090",
+     "",
+     "$",
+     "239",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NON-CASH FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Initial classification of shares subject to redemption",
+     "$",
+     "45,249,794",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Allocation of offering costs to ordinary share subject to redemption",
+     "$",
+     "2,422,602",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "$",
+     "(3,641,991)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Deferred underwriting compensation",
+     "$",
+     "1,150,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Recognition of warrant liabilities",
+     "$",
+     "380,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2018,
+    "end_line": 2077
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n(Currency expressed in United States Dollars (\u201cUS$\u201d), except for number of shares)\nNOTE 1 \u2013 ORGANIZATION AND BUSINESS BACKGROUND\nVenus Acquisition Corporation (\u201cVenus\u201d or the \u201cCompany\u201d) is a blank check company incorporated in the Cayman Islands on May 14, 2018. The Company was formed for the purpose of effecting a merger, share exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses (\u201cBusiness Combination\u201d).\nOn June 10, 2021, the Company, VIYI Algorithm Inc., a Cayman Islands exempted company (\u201cViyi\u201d), Venus Merger Sub Corp., a Cayman Islands exempted company and wholly-owned subsidiary of the Company (the \u201cMerger Sub\u201d) and WiMi Hologram Cloud Inc., a Cayman Islands company and the legal and beneficial owner of a majority of the issued and outstanding voting securities of Viyi (\u201cMajority Shareholder\u201d), entered into a Merger Agreement (the \u201cMerger Agreement\u201d). Venus Merger Sub Corp. is a company incorporated in the Cayman Islands for the purpose of effecting the Business Combination and to serve as the vehicle for, and be subsumed by, VIYI Algorithm Inc., pursuant to the terms of the Merger Agreement Merger Sub is wholly owned by Venus. See the further description below regarding the proposed business combination with Viyi.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2012,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": null,
+     "page_number": 4
+    },
+    "after": {
+     "line": 2078,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": null,
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of Subsidiary",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Background",
+     "Ownership"
+    ],
+    [
+     "Venus Merger Sub Corp.",
+     "A Cayman Islands company Incorporated on May 25, 2021",
+     "100% Owned by Venus"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of Subsidiary"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2154,
+    "end_line": 2160
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "These accompanying consolidated financial statements have been prepared in U.S. Dollars in conformity with generally accepted accounting principles in the United States of America (\u201cU.S. GAAP\u201d) and pursuant to the rules and regulations of the SEC. In the opinion of management, all adjustments (consisting of normal recurring adjustments) have been made that are necessary to present fairly the consolidated financial position, and the results of its consolidated operations and its consolidated cash flows.\n\u25cf Principles of Consolidation\nThe consolidated financial statements include the financial statements of the Company and its subsidiaries. All significant intercompany transactions and balances between the Company and its subsidiaries are eliminated upon consolidation.\nSubsidiaries are those entities in which the Company, directly or indirectly, controls more than one half of the voting power; or has the power to govern the financial and operating policies, to appoint or remove the majority of the members of the board of directors, or to cast a majority of votes at the meeting of directors.\nThe accompanying consolidated financial statements reflect the activities of the Company and each of the following entities:",
+   "prose_after": "\u25cf Emerging growth company\nThe Company is an \u201cemerging growth company,\u201d as defined in Section 2(a) of the Securities Act, as modified by the Jumpstart Our Business Startups Act of 2012 (the \u201cJOBS Act\u201d), and it may take advantage of certain exemptions from various reporting requirements that are applicable to other public companies that are not emerging growth companies including, but not limited to, not being required to comply with the auditor attestation requirements of Section 404 of the Sarbanes-Oxley Act, reduced disclosure obligations regarding executive compensation in its periodic reports and proxy statements, and exemptions from the requirements of holding a nonbinding advisory vote on executive compensation and shareholder approval of any golden parachute payments not previously approved.\nFurther, Section 102(b)(1) of the JOBS Act exempts emerging growth companies from being required to comply with new or revised financial accounting standards until private companies (that is, those that have not had a Securities Act registration statement declared effective or do not have a class of securities registered under the Exchange Act) are required to comply with the new or revised financial accounting standards. The JOBS Act provides that a company can elect to opt out of the extended transition period and comply with the requirements that apply to non-emerging growth companies but any such election to opt out is irrevocable. The Company has elected not to opt out of such extended transition period which means that when a standard is issued or revised and it has different application dates for public or private companies, the Company, as an emerging growth company, can adopt the new or revised standard at the time private companies adopt the new or revised standard. This may make comparison of the Company\u2019s consolidated financial statements with another public company which is neither an emerging growth company nor an emerging growth company which has opted out of using the extended transition period difficult or impossible because of the potential differences in accounting standards used.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2133,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 2166,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1 \u2014",
+     "Valuations based on unadjusted quoted prices in active markets for identical assets or liabilities that the Company has the ability to access. Valuation adjustments and block discounts are not being applied. Since valuations are based on quoted prices that are readily and regularly available in an active market, valuation of these securities does not entail a significant degree of judgment."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 2 \u2014",
+     "Valuations based on (i) quoted prices in active markets for similar assets and liabilities, (ii) quoted prices in markets that are not active for identical or similar assets, (iii) inputs other than quoted prices for the assets or liabilities, or (iv) inputs that are derived principally from or corroborated by market through correlation or other means."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 3 \u2014",
+     "Valuations based on inputs that are unobservable and significant to the overall fair value measurement."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2205,
+    "end_line": 2216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "ASC Topic 820 \u201cFair Value Measurements and Disclosures\u201d (\u201cASC 820\u201d) defines fair value, the methods used to measure fair value and the expanded disclosures about fair value measurements. Fair value is the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between the buyer and the seller at the measurement date. In determining fair value, the valuation techniques consistent with the market approach, income approach and cost approach shall be used to measure fair value. ASC 820 establishes a fair value hierarchy for inputs, which represent the assumptions used by the buyer and seller in pricing the asset or liability. These inputs are further defined as observable and unobservable inputs. Observable inputs are those that buyer and seller would use in pricing the asset or liability based on market data obtained from sources independent of the Company. Unobservable inputs reflect the Company\u2019s assumptions about the inputs that the buyer and seller would use in pricing the asset or liability developed based on the best information available in the circumstances.\nThe fair value hierarchy is categorized into three levels based on the inputs as follows:",
+   "prose_after": "The fair value of the Company\u2019s certain assets and liabilities, which qualify as financial instruments under ASC Topic 820, \u201cFair Value Measurements and Disclosures,\u201d approximates the carrying amounts represented in the consolidated balance sheet. The fair values of cash and cash equivalents, and other current assets, accrued expenses, due to sponsor are estimated to approximate the carrying values as of December 31, 2021 due to the short maturities of such instruments. See Note 9 for the disclosure of the Company\u2019s assets and liabilities that were measured at fair value on a recurring basis.\n\u25cf Concentration of credit risk\nFinancial instruments that potentially subject the Company to concentration of credit risk consist of cash and trust accounts in a financial institution which, at times may exceed the Federal depository insurance coverage of $250,000. The Company has not experienced losses on these accounts and management believes the Company is not exposed to significant risks on such accounts.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2188,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 2222,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Net loss per share presented in the statement of operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(812,413)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "(3,641,991)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "(4,454,403)",
+     "",
+     "$",
+     "(117,787)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Net loss per share presented in the statement of operations",
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2239,
+    "end_line": 2251
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company calculates net loss per share in accordance with ASC Topic 260, \u201cEarnings per Share\u201d. In order to determine the net income (loss) attributable to both the redeemable shares and non-redeemable shares, the Company first considered the undistributed income (loss) allocable to both the redeemable ordinary shares and non-redeemable ordinary shares and the undistributed income (loss) is calculated using the total net loss less any dividends paid. The Company then allocated the undistributed income (loss) ratably based on the weighted average number of shares outstanding between the redeemable and non-redeemable ordinary shares. Any remeasurement of the accretion to redemption value of the ordinary shares subject to possible redemption was considered to be dividends paid to the public stockholders. As of December 31, 2021, the Company has not considered the effect of the warrants sold in the Initial Public Offering to purchase an aggregate of 2,412,500 shares in the calculation of diluted net loss per share, since the exercise of the warrants is contingent upon the occurrence of future events and the inclusion of such warrants would be anti-dilutive and the Company did not have any other dilutive securities and other contracts that could, potentially, be exercised or converted into ordinary share and then share in the earnings of the Company. As a result, diluted loss per share is the same as basic loss per share for the period presented.\nThe net loss per share presented in the statement of operations is based on the following:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2222,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 2251,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Years Ended December 31, 2020",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Redeemable Ordinary shares",
+     "",
+     "",
+     "Non-Redeemable Ordinary shares",
+     "",
+     "",
+     "Redeemable Ordinary shares",
+     "",
+     "Non-Redeemable Ordinary shares",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net loss including carrying value to redemption value",
+     "$",
+     "(3,305,127)",
+     "",
+     "$",
+     "(1,149,276)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "3,641,991",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Allocation of net income (loss)",
+     "$",
+     "336,864",
+     "",
+     "$",
+     "(1,149,276)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(117,787)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominators:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding",
+     "",
+     "4,070,685",
+     "",
+     "",
+     "1,415,479",
+     "",
+     "",
+     "-",
+     "",
+     "1,000,000",
+     ""
+    ],
+    [
+     "Basic and diluted net income (loss) per share",
+     "$",
+     "0.08",
+     "",
+     "$",
+     "(0.81)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(0.12)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2252,
+    "end_line": 2273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "\u25cf Related parties\nParties, which can be a corporation or individual, are considered to be related if the Company has the ability, directly or indirectly, to control the other party or exercise significant influence over the other party in making financial and operational decisions. Companies are also considered to be related if they are subject to common control or common significant influence.\n\u25cf Recent accounting pronouncements\nThe Company has considered all new accounting pronouncements and has concluded that there are no new pronouncements that may have a material impact on the consolidated results of operations, financial condition, or cash flows, based on the current information.\nNOTE 3 \u2013 CASH AND INVESTMENT HELD IN TRUST ACCOUNT\nAs of December 31, 2021, investment securities in the Company\u2019s Trust Account consisted of $46,469,183 in United States Treasury Bills. The Company classifies its United States Treasury securities as available-for-sale. Available-for-sale marketable securities are recorded at their estimated fair value on the accompanying December 31, 2021 consolidated balance sheet. The carrying value and fair value of marketable securities on December 31, 2021 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2251,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2297,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of carrying value, including gross unrealized holding gain as other comprehensive income and fair value of held to marketable securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Carrying Value as of December 31, 2021",
+     "",
+     "Gross Unrealized Holding loss",
+     "",
+     "Fair Value as of December 31, 2021",
+     ""
+    ],
+    [
+     "Available-for-sale marketable securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury Securities",
+     "$",
+     "46,469,183",
+     "$",
+     "-",
+     "$",
+     "46,469,183"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of carrying value, including gross unrealized holding gain as other comprehensive income and fair value of held to marketable securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2286,
+    "end_line": 2297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 CASH AND INVESTMENT HELD IN TRUST ACCOUNT"
+    }
+   },
+   "prose_before": "Parties, which can be a corporation or individual, are considered to be related if the Company has the ability, directly or indirectly, to control the other party or exercise significant influence over the other party in making financial and operational decisions. Companies are also considered to be related if they are subject to common control or common significant influence.\n\u25cf Recent accounting pronouncements\nThe Company has considered all new accounting pronouncements and has concluded that there are no new pronouncements that may have a material impact on the consolidated results of operations, financial condition, or cash flows, based on the current information.\nNOTE 3 \u2013 CASH AND INVESTMENT HELD IN TRUST ACCOUNT\nAs of December 31, 2021, investment securities in the Company\u2019s Trust Account consisted of $46,469,183 in United States Treasury Bills. The Company classifies its United States Treasury securities as available-for-sale. Available-for-sale marketable securities are recorded at their estimated fair value on the accompanying December 31, 2021 consolidated balance sheet. The carrying value and fair value of marketable securities on December 31, 2021 are as follows:",
+   "prose_after": "NOTE 4 \u2013 INITIAL PUBLIC OFFERING\nOn February 11, 2021, the Company sold 4,600,000 Units which includes a full exercise by the underwriters of their over-allotment option in the amount of 600,000 Public Units, at a purchase price of $10.00 per Unit. Each Unit will consist of one ordinary share, one right (\u201cPublic Right\u201d) and one redeemable Public Warrant. Each Public Right will convert into one-tenth (1/10) of one ordinary share. Each Public Warrant will entitle the holder to purchase one-half of one ordinary share at an exercise price of $11.50 per whole share (see Note 7).\nIf the Company does not complete its Business Combination within the necessary time period described in Note 1, the Public Rights will expire and be worthless. Since the Company is not required to net cash settle the Rights and the Rights are convertible upon the consummation of an initial Business Combination, the management determined that the Rights are classified within shareholders\u2019 equity upon their issuance in accordance with ASC 815-40. The proceeds from the sale are allocated to Public Shares and Rights based on the relative fair value of the securities in accordance with ASC 470-20-30. The value of the Public Shares and Rights will be based on the closing price paid by investors.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2251,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 2297,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1:",
+     "Quoted prices in active markets for identical assets or liabilities. An active market for an asset or liability is a market in which transactions for the asset or liability occur with sufficient frequency and volume to provide pricing information on an ongoing basis."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2379,
+    "end_line": 2383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "If the Company calls the warrants for redemption as described above, our management will have the option to require all holders that wish to exercise warrants to do so on a \u201ccashless basis.\u201d In such event, each holder would pay the exercise price by surrendering the whole warrants for that number of ordinary shares equal to the quotient obtained by dividing (x) the product of the number of ordinary shares underlying the warrants, multiplied by the difference between the exercise price of the warrants and the \u201cFair Market Value\u201d (defined below) by (y) the Fair Market Value. The \u201cFair Market Value\u201d shall mean the average reported last sale price of the ordinary shares for the 10 trading days ending on the third trading day prior to the date on which the notice of redemption is sent to the holders of warrants. Whether the Company will exercise our option to require all holders to exercise their warrants on a \u201ccashless basis\u201d will depend on a variety of factors including the price of our ordinary shares at the time the warrants are called for redemption, the Company\u2019s cash needs at such time and concerns regarding dilutive share issuances.\nNOTE 8 \u2013 FAIR VALUE MEASUREMENTS\nThe fair value of the Company\u2019s consolidated financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2358,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2392,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 2:",
+     "Observable inputs other than Level 1 inputs. Examples of Level 2 inputs include quoted prices in active markets for similar assets or liabilities and quoted prices for identical assets or liabilities in markets that are not active."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2384,
+    "end_line": 2388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2358,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2392,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 3:",
+     "Unobservable inputs based on the assessment of the assumptions that market participants would use in pricing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2389,
+    "end_line": 2392
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following table presents information about the Company\u2019s assets and liabilities that were measured at fair value on a recurring basis as of December 31, 2021, and indicates the fair value hierarchy of the valuation techniques the Company utilized to determine such fair value.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2358,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 2392,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of Company's assets that are measured at fair value on a recurring basis",
+     "December 31,",
+     "",
+     "Quoted Prices In Active Markets",
+     "",
+     "Significant Other Observable Inputs",
+     "",
+     "Significant Other Unobservable Inputs",
+     ""
+    ],
+    [
+     "Description",
+     "2021",
+     "",
+     "(Level 1)",
+     "",
+     "(Level 2)",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury Securities held in Trust Account*",
+     "$",
+     "46,469,183",
+     "$",
+     "46,469,183",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrant liabilities",
+     "$",
+     "410,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "410,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2395,
+    "end_line": 2408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following table presents information about the Company\u2019s assets and liabilities that were measured at fair value on a recurring basis as of December 31, 2021, and indicates the fair value hierarchy of the valuation techniques the Company utilized to determine such fair value.",
+   "prose_after": "* included in cash and investments held in trust account on the Company\u2019s consolidated balance sheet.\nThe private warrants are accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities on the consolidated balance sheets.\nThe Company determined the initial fair value for the private warrants at $380,000 on February 11, 2021, the date of the Company\u2019s Initial Public Offering, using a Black-Scholes model. The Company allocated the proceeds received from the sale of Private Units, first to the private warrants based on their fair values as determined at initial measurement, with the remaining proceeds recorded as ordinary shares subject to possible redemption, and ordinary shares based on their relative fair values recorded at the initial measurement date. The warrants were classified as Level 3 at the initial measurement date due to the use of unobservable inputs.\nThe key inputs into the binomial model and Black-Scholes model were as follows at their measurement dates:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2392,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2433,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of binomial model and Black-Scholes model",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "February 11, 2021 (Initial measurement)",
+     "",
+     ""
+    ],
+    [
+     "Input",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share price",
+     "$",
+     "10.08",
+     "",
+     "$",
+     "10.00",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.26",
+     "%",
+     "",
+     "0.46",
+     "%"
+    ],
+    [
+     "Volatility",
+     "",
+     "44.26",
+     "%",
+     "",
+     "44",
+     "%"
+    ],
+    [
+     "Exercise price",
+     "$",
+     "11.50",
+     "",
+     "$",
+     "11.50",
+     ""
+    ],
+    [
+     "Warrant life",
+     "",
+     "5 years",
+     "",
+     "",
+     "5 years",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of binomial model and Black-Scholes model"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2417,
+    "end_line": 2429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES, AND REPORTS ON FORM 8-K"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "* included in cash and investments held in trust account on the Company\u2019s consolidated balance sheet.\nThe private warrants are accounted for as liabilities in accordance with ASC 815-40 and are presented within warrant liabilities on the consolidated balance sheets.\nThe Company determined the initial fair value for the private warrants at $380,000 on February 11, 2021, the date of the Company\u2019s Initial Public Offering, using a Black-Scholes model. The Company allocated the proceeds received from the sale of Private Units, first to the private warrants based on their fair values as determined at initial measurement, with the remaining proceeds recorded as ordinary shares subject to possible redemption, and ordinary shares based on their relative fair values recorded at the initial measurement date. The warrants were classified as Level 3 at the initial measurement date due to the use of unobservable inputs.\nThe key inputs into the binomial model and Black-Scholes model were as follows at their measurement dates:",
+   "prose_after": "As of December 31, 2021, the aggregate value of the Private Warrants was $0.41 million. The change in fair value from February 11, 2021 to December 31, 2021 was approximately $30,000.\nTo the extent that valuation is based on models or inputs that are less observable or unobservable in the market, the determination of fair value requires more judgment. Because of the inherent uncertainty of valuation, those estimated values may be materially higher or lower than the values that would have been used had a ready market for the investments existed. Accordingly, the degree of judgment exercised by the Company in determining fair value is greatest for investments categorized in Level 3. Level 3 financial liabilities consist of the Private Warrant liability for which there is no current market for these securities such that the determination of fair value requires significant judgment or estimation. Changes in fair value measurements categorized within Level 3 of the fair value hierarchy are analyzed each period based on changes in estimates or assumptions and recorded as appropriate.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2392,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2433,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "VENUS ACQUISITION CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Yanming Liu"
+    ],
+    [
+     "",
+     "",
+     "Yanming Liu"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "VENUS ACQUISITION CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2501,
+    "end_line": 2510
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "On January 24, 2022, Venus, VIYI and WiMi entered into an amendment to the Merger Agreement. The purposes of the amendment were to:\ni) extend the outside termination date of the proposed merger to June 30, 2022;\nii) provide for the termination of the existing backstop agreement and the new backstop agreement with the majority shareholder of VIYI as described below in this Form 8-K; and\niii) acknowledge the existence of new potential governmental approvals under recent changes in China law.\nOn February 11, 2022, the Company elected to extend the date by which it is required to complete a business combination to March 11, 2022 and deposited $153,333 into its Trust Account. On March 11, 2022, the Company elected to further extend the date by which it is required to complete a business combination to April 11, 2022 and deposited $153,333 into its Trust Account.\nITEM 16. FORM 10-K SUMMARY\nNone.\nSignatures\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Dated: March 25, 2022\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2496,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 2540,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title and Capacity",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yanming Liu",
+     "Chief Executive Officer and Chairman",
+     "March 25, 2022"
+    ],
+    [
+     "Yanming Liu",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ River Chi",
+     "Chief Financial Officer",
+     "March 25, 2022"
+    ],
+    [
+     "River Chi",
+     "(Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Yu Chen",
+     "Director",
+     "March 25, 2022"
+    ],
+    [
+     "Yu Chen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Guojian Chen",
+     "Director",
+     "March 25, 2022"
+    ],
+    [
+     "Guojian Chen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Shan Cui",
+     "Director",
+     "March 25, 2022"
+    ],
+    [
+     "Shan Cui",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2515,
+    "end_line": 2539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Dated: March 25, 2022\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2496,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 2540,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

@@ -1,0 +1,6424 @@
+{
+ "accession": "0001835256-22-000028",
+ "cik": "0001835256",
+ "form": "10-Q",
+ "filing_date": "2022-03-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "napa-20220131.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "81-3866305"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended January 31, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 001-40240\nThe Duckhorn Portfolio, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1201 Dowdell Lane\nSaint Helena, CA 94574\n(Address, including zip code, of Principal Executive Offices)\n(707) 302-2658\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.01 per share",
+     "NAPA",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1201 Dowdell Lane\nSaint Helena, CA 94574\n(Address, including zip code, of Principal Executive Offices)\n(707) 302-2658\n(Registrant's telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements",
+     "7"
+    ],
+    [
+     "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "24"
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures about Market Risk",
+     "38"
+    ],
+    [
+     "Item 4. Controls and Procedures",
+     "39"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings",
+     "41"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "41"
+    ],
+    [
+     "Item 6. Exhibits",
+     "41"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "42"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 66,
+    "end_line": 83
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [ ]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe registrant had outstanding 115,065,210 shares of common stock, $0.01 par value per share, as of February 28, 2022.\nTable of Contents",
+   "prose_after": "Glossary\nThe following terms are used in this quarterly report unless otherwise noted or indicated by the context:\n\u2022\"Company,\" \"we,\" \"us,\" \"our,\" \"Duckhorn\" and \"The Duckhorn Portfolio\" refer to The Duckhorn Portfolio, Inc. and its consolidated subsidiaries.\n\u2022\"2016 Equity Plan\" refers to the Company's board approved 2016 Equity Incentive Plan.\n\u2022\"2021 Plan\" refers to the Company's board approved 2021 Equity Incentive Plan.\n\u2022\"ASC\" refers to Accounting Standards Codification developed by the FASB.\n\u2022\"ASU\" refers to Accounting Standards Updates issued by the FASB to communicate changes to the ASC.\n\u2022\"Controlled Company\" refers to a company of which more than 50% of the voting power for the election of its directors is held by a single person, entity or group.\n\u2022\"COVID-19\" refers to the ongoing pandemic surrounding COVID-19, the disease caused by a novel strain of coronavirus that was declared a global pandemic by the World Health Organization in March 2020.\n\u2022\"Credit Facility\" refers to the existing first lien credit facility pursuant to that certain First Lien Loan and Security Agreement, dated as of October 14, 2016 (as amended by Amendment No. 1, dated July 28, 2017, as amended by Amendment No. 2, dated as of April 19, 2018, as amended by Amendment No. 3 dated as of August 1, 2018, as amended by Amendment No. 4 dated as of October 30, 2018, as amended by Amendment No. 5 dated as of June 7, 2019, as amended by Amendment No. 6 dated as of August 17, 2020 and as amended by Amendment No. 7 dated as of February 22, 2021), by and among the Company, the borrowers named therein, the lenders named therein and the Bank of the West, as administrative agent.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Index to Condensed Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Condensed Consolidated Financial Statements (unaudited)",
+     ""
+    ],
+    [
+     "Condensed Consolidated Statements of Financial Position (unaudited)",
+     "8"
+    ],
+    [
+     "Condensed Consolidated Statements of Operations (unaudited)",
+     "9"
+    ],
+    [
+     "Condensed Consolidated Statements of Changes in Equity (unaudited)",
+     "10"
+    ],
+    [
+     "Condensed Consolidated Statements of Cash Flows (unaudited)",
+     "11"
+    ],
+    [
+     "Notes to Condensed Consolidated Financial Statements (unaudited)",
+     "12"
+    ],
+    [
+     "Note 1 Description of Business",
+     "12"
+    ],
+    [
+     "Note 2 Basis of Presentation and Recent Accounting Pronouncements",
+     "12"
+    ],
+    [
+     "Note 3 Revenue",
+     "14"
+    ],
+    [
+     "Note 4 Inventories",
+     "15"
+    ],
+    [
+     "Note 5 Property and Equipment",
+     "16"
+    ],
+    [
+     "Note 6 Other Intangible Assets",
+     "16"
+    ],
+    [
+     "Note 7 Accrued Expenses",
+     "15"
+    ],
+    [
+     "Note 8 Debt",
+     "17"
+    ],
+    [
+     "Note 9 Derivative Instruments",
+     "17"
+    ],
+    [
+     "Note 10 Fair Value Measurements",
+     "18"
+    ],
+    [
+     "Note 11 Commitments and Contingencies",
+     "19"
+    ],
+    [
+     "Note 12 Equity-Based Compensation",
+     "21"
+    ],
+    [
+     "Note 13 Casualty Loss",
+     "23"
+    ],
+    [
+     "Note 14 Earnings Per Share",
+     "23"
+    ],
+    [
+     "Note 15 Subsequent Events",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "Index to Condensed Consolidated Financial Statements",
+    "Page",
+    "Condensed Consolidated Financial Statements (unaudited)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 230,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The forward-looking statements in this Quarterly Report on Form 10-Q represent our views as of the date on which the statements are made. We undertake no obligation to update any forward-looking statements whether as a result of new information, future developments or otherwise. We may not actually achieve the plans, intentions or expectations disclosed in our forward-looking statements, and you should not rely on our forward-looking statements in making your investment decision. Actual results or events could differ materially from the plans, intentions and expectations disclosed in the forward-looking statements we make. Our forward-looking statements do not reflect the potential impact of any future acquisitions, mergers, dispositions, joint ventures or investments.\nInvestors and others should note that we may announce material information to our investors using our investor relations website (https://ir.duckhorn.com), SEC filings, press releases, public conference calls and webcasts. We use these channels, as well as social media, to communicate with our investors and the public about our Company, our business and other issues. It is possible that the information we post on social media could be deemed to be material information. We therefore encourage investors to visit these websites from time to time. The information contained on such websites and social media posts is not incorporated into this filing. Further, our references to website URLs in this filing are intended to be inactive textual references only.\nPART I\nItem 1. Financial Statements.",
+   "prose_after": "The Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Financial Position",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 225,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(in thousands, except share and per share amounts)",
+     "January 31, 2022",
+     "",
+     "July 31, 2021",
+     ""
+    ],
+    [
+     "ASSETS",
+     "(unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "4,770",
+     "$",
+     "4,244"
+    ],
+    [
+     "Accounts receivable trade (net of allowance of $400 and $800, respectively)",
+     "43,008",
+     "",
+     "33,253",
+     ""
+    ],
+    [
+     "Inventories",
+     "297,531",
+     "",
+     "267,737",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "9,524",
+     "",
+     "9,167",
+     ""
+    ],
+    [
+     "Total current assets",
+     "354,833",
+     "",
+     "314,401",
+     ""
+    ],
+    [
+     "Long-term assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "255,845",
+     "",
+     "240,939",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "196,705",
+     "",
+     "200,547",
+     ""
+    ],
+    [
+     "Goodwill",
+     "425,209",
+     "",
+     "425,209",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "2,719",
+     "",
+     "2,021",
+     ""
+    ],
+    [
+     "Total long-term assets",
+     "880,478",
+     "",
+     "868,716",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "1,235,311",
+     "$",
+     "1,183,117"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "9,858",
+     "$",
+     "3,556"
+    ],
+    [
+     "Accrued expenses",
+     "27,076",
+     "",
+     "21,557",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "12,716",
+     "",
+     "16,845",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "143",
+     "",
+     "3,102",
+     ""
+    ],
+    [
+     "Current maturities of long-term debt",
+     "11,244",
+     "",
+     "11,324",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "377",
+     "",
+     "397",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "61,414",
+     "",
+     "56,781",
+     ""
+    ],
+    [
+     "Long-term liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revolving line of credit, net",
+     "133,011",
+     "",
+     "121,348",
+     ""
+    ],
+    [
+     "Long-term debt, net of current maturities and debt issuance costs",
+     "109,149",
+     "",
+     "114,625",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "86,667",
+     "",
+     "86,667",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "986",
+     "",
+     "1,458",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "329,813",
+     "",
+     "324,098",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "391,227",
+     "",
+     "380,879",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 11)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.01 par value; 500,000,000 shares authorized, 115,065,210 issued and outstanding at January 31, 2022 and 115,046,793 issued and outstanding at July 31, 2021",
+     "1,151",
+     "",
+     "1,150",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "729,508",
+     "",
+     "726,903",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "112,839",
+     "",
+     "73,634",
+     ""
+    ],
+    [
+     "Total The Duckhorn Portfolio, Inc. equity",
+     "843,498",
+     "",
+     "801,687",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "586",
+     "",
+     "551",
+     ""
+    ],
+    [
+     "Total equity",
+     "844,084",
+     "",
+     "802,238",
+     ""
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "1,235,311",
+     "$",
+     "1,183,117"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 261,
+    "end_line": 319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Financial Position",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Operations (unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 258,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except share and per share amounts)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net sales (net of excise taxes of $1,507, $1,150, $2,983 and $2,415, respectively)",
+     "$",
+     "98,736",
+     "$",
+     "83,657",
+     "$",
+     "202,917",
+     "$",
+     "175,295"
+    ],
+    [
+     "Cost of sales",
+     "49,259",
+     "",
+     "41,900",
+     "",
+     "101,030",
+     "",
+     "89,263",
+     ""
+    ],
+    [
+     "Gross profit",
+     "49,477",
+     "",
+     "41,757",
+     "",
+     "101,887",
+     "",
+     "86,032",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "23,814",
+     "",
+     "17,471",
+     "",
+     "46,972",
+     "",
+     "34,276",
+     ""
+    ],
+    [
+     "Casualty loss (gain), net (Note 13)",
+     "31",
+     "",
+     "(7,770)",
+     "",
+     "80",
+     "",
+     "(6,215)",
+     ""
+    ],
+    [
+     "Income from operations",
+     "25,632",
+     "",
+     "32,056",
+     "",
+     "54,835",
+     "",
+     "57,971",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "1,636",
+     "",
+     "3,612",
+     "",
+     "3,242",
+     "",
+     "7,192",
+     ""
+    ],
+    [
+     "Other income, net",
+     "(338)",
+     "",
+     "(1,491)",
+     "",
+     "(1,431)",
+     "",
+     "(2,814)",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "1,298",
+     "",
+     "2,121",
+     "",
+     "1,811",
+     "",
+     "4,378",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "24,334",
+     "",
+     "29,935",
+     "",
+     "53,024",
+     "",
+     "53,593",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "6,407",
+     "",
+     "7,935",
+     "",
+     "13,784",
+     "",
+     "14,071",
+     ""
+    ],
+    [
+     "Net income",
+     "17,927",
+     "",
+     "22,000",
+     "",
+     "39,240",
+     "",
+     "39,522",
+     ""
+    ],
+    [
+     "Less: Net loss (income) attributable to non-controlling interest",
+     "5",
+     "",
+     "3",
+     "",
+     "(35)",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Net income attributable to The Duckhorn Portfolio, Inc.",
+     "$",
+     "17,932",
+     "$",
+     "22,003",
+     "$",
+     "39,205",
+     "$",
+     "39,526"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per share of common stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.16",
+     "$",
+     "0.22",
+     "$",
+     "0.34",
+     "$",
+     "0.39"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.16",
+     "$",
+     "0.22",
+     "$",
+     "0.34",
+     "$",
+     "0.39"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares of common stock outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "115,049,395",
+     "",
+     "101,713,460",
+     "",
+     "115,048,094",
+     "",
+     "101,713,460",
+     ""
+    ],
+    [
+     "Diluted",
+     "115,389,502",
+     "",
+     "101,713,460",
+     "",
+     "115,391,011",
+     "",
+     "101,713,460",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 325,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Operations (unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Changes in Equity (unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 367,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(in thousands, except share amounts)",
+     "Common stock",
+     "",
+     "",
+     "Additional paid-in capital",
+     "",
+     "Retained earnings",
+     "",
+     "Total The Duckhorn Portfolio, Inc. equity",
+     "",
+     "Non-controlling interest",
+     "",
+     "Total equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at July 31, 2020",
+     "101,713,460",
+     "$",
+     "1,017",
+     "$",
+     "535,372",
+     "$",
+     "117,658",
+     "$",
+     "654,047",
+     "$",
+     "557",
+     "$",
+     "654,604"
+    ],
+    [
+     "Net income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,523",
+     "",
+     "17,523",
+     "",
+     "(1)",
+     "",
+     "17,522",
+     ""
+    ],
+    [
+     "Equity-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "288",
+     "",
+     "\u2014",
+     "",
+     "288",
+     "",
+     "\u2014",
+     "",
+     "288",
+     ""
+    ],
+    [
+     "Balances at October 31, 2020",
+     "101,713,460",
+     "$",
+     "1,017",
+     "$",
+     "535,660",
+     "$",
+     "135,181",
+     "$",
+     "671,858",
+     "$",
+     "556",
+     "$",
+     "672,414"
+    ],
+    [
+     "Net income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "22,003",
+     "",
+     "22,003",
+     "",
+     "(3)",
+     "",
+     "22,000",
+     ""
+    ],
+    [
+     "Equity-based compensation (Note 12)",
+     "\u2014",
+     "\u2014",
+     "",
+     "288",
+     "",
+     "\u2014",
+     "",
+     "288",
+     "",
+     "\u2014",
+     "",
+     "288",
+     ""
+    ],
+    [
+     "Balances at January 31, 2021",
+     "101,713,460",
+     "$",
+     "1,017",
+     "$",
+     "535,948",
+     "$",
+     "157,184",
+     "$",
+     "694,149",
+     "$",
+     "553",
+     "$",
+     "694,702"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at July 31, 2021",
+     "115,046,793",
+     "$",
+     "1,150",
+     "$",
+     "726,903",
+     "$",
+     "73,634",
+     "$",
+     "801,687",
+     "$",
+     "551",
+     "$",
+     "802,238"
+    ],
+    [
+     "Net income",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "21,273",
+     "",
+     "21,273",
+     "",
+     "40",
+     "",
+     "21,313",
+     ""
+    ],
+    [
+     "Equity-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,459",
+     "",
+     "\u2014",
+     "",
+     "1,459",
+     "",
+     "\u2014",
+     "",
+     "1,459",
+     ""
+    ],
+    [
+     "Balances at October 31, 2021",
+     "115,046,793",
+     "$",
+     "1,150",
+     "$",
+     "728,362",
+     "$",
+     "94,907",
+     "$",
+     "824,419",
+     "$",
+     "591",
+     "$",
+     "825,010"
+    ],
+    [
+     "Net income (loss)",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "17,932",
+     "",
+     "17,932",
+     "",
+     "(5)",
+     "",
+     "17,927",
+     ""
+    ],
+    [
+     "Initial public offering, net of issuance costs",
+     "\u2014",
+     "\u2014",
+     "",
+     "(270)",
+     "",
+     "\u2014",
+     "",
+     "(270)",
+     "",
+     "\u2014",
+     "",
+     "(270)",
+     ""
+    ],
+    [
+     "Issuance of common stock under equity incentive plans",
+     "18,417",
+     "1",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1",
+     "",
+     "\u2014",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Equity-based compensation (Note 12)",
+     "\u2014",
+     "\u2014",
+     "",
+     "1,416",
+     "",
+     "\u2014",
+     "",
+     "1,416",
+     "",
+     "\u2014",
+     "",
+     "1,416",
+     ""
+    ],
+    [
+     "Balances at January 31, 2022",
+     "115,065,210",
+     "$",
+     "1,151",
+     "$",
+     "729,508",
+     "$",
+     "112,839",
+     "$",
+     "843,498",
+     "$",
+     "586",
+     "$",
+     "844,084"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 370,
+    "end_line": 402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Changes in Equity (unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Cash Flows (unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 367,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 405,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "39,240",
+     "$",
+     "39,522"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "11,109",
+     "",
+     "10,881",
+     ""
+    ],
+    [
+     "(Gain) loss on disposal of assets",
+     "(13)",
+     "",
+     "66",
+     ""
+    ],
+    [
+     "Change in fair value of derivatives",
+     "(957)",
+     "",
+     "(2,827)",
+     ""
+    ],
+    [
+     "Amortization of debt issuance costs",
+     "804",
+     "",
+     "823",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment",
+     "\u2014",
+     "",
+     "272",
+     ""
+    ],
+    [
+     "Equity-based compensation",
+     "2,875",
+     "",
+     "576",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable trade, net",
+     "(9,755)",
+     "",
+     "(3,272)",
+     ""
+    ],
+    [
+     "Inventories",
+     "(29,794)",
+     "",
+     "(26,363)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "(361)",
+     "",
+     "(7,765)",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "(217)",
+     "",
+     "(166)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "6,377",
+     "",
+     "2,250",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "6,621",
+     "",
+     "9,138",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "(4,129)",
+     "",
+     "(45)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "(2,960)",
+     "",
+     "3,086",
+     ""
+    ],
+    [
+     "Other current and long-term liabilities",
+     "(12)",
+     "",
+     "(35)",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "18,828",
+     "",
+     "26,141",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "(23,408)",
+     "",
+     "(9,793)",
+     ""
+    ],
+    [
+     "Proceeds from sales of property and equipment",
+     "72",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(23,336)",
+     "",
+     "(9,748)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Payments of deferred offering costs",
+     "(270)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payments under line of credit",
+     "(52,000)",
+     "",
+     "(43,500)",
+     ""
+    ],
+    [
+     "Borrowings under line of credit",
+     "63,000",
+     "",
+     "37,500",
+     ""
+    ],
+    [
+     "Extinguishment of long-term debt",
+     "\u2014",
+     "",
+     "(38,131)",
+     ""
+    ],
+    [
+     "Issuance of long-term debt",
+     "\u2014",
+     "",
+     "38,131",
+     ""
+    ],
+    [
+     "Payments of long-term debt",
+     "(5,696)",
+     "",
+     "(7,238)",
+     ""
+    ],
+    [
+     "Repayment of capital leases",
+     "\u2014",
+     "",
+     "(8)",
+     ""
+    ],
+    [
+     "Debt issuance costs",
+     "\u2014",
+     "",
+     "(125)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "5,034",
+     "",
+     "(13,371)",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "526",
+     "",
+     "3,022",
+     ""
+    ],
+    [
+     "Cash - Beginning of year",
+     "4,244",
+     "",
+     "6,252",
+     ""
+    ],
+    [
+     "Cash - End of year",
+     "$",
+     "4,770",
+     "$",
+     "9,274"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment additions in accounts payable and accrued expenses",
+     "$",
+     "193",
+     "$",
+     "279"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 408,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc. Condensed Consolidated Statements of Cash Flows (unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these Condensed Consolidated Financial Statements (unaudited).\nThe Duckhorn Portfolio, Inc.\nNotes to Condensed Consolidated Financial Statements (unaudited)\n1. Description of business\nThe Duckhorn Portfolio, Inc. and its subsidiaries (the \"Company\" or \"Management\") headquartered in St. Helena, CA, produces luxury and ultra-luxury wine across a portfolio of winery brands, including Duckhorn Vineyards, Paraduxx, Goldeneye, Migration, Decoy, Canvasback, Calera, Kosta Browne, Greenwing and Postmark.\nThe Company's revenue is comprised of wholesale and DTC sales. Wholesale revenue is generated through sales directly to California retailers and restaurants, sales to distributors and agents located in other states throughout the U.S. and sales to export distributors that sell internationally. DTC revenue results from individual consumers purchasing wine directly from the Company through club membership, the Company's website or tasting rooms located in Napa Valley, California; Anderson Valley, California; Sebastopol, California; Hollister, California; and Walla Walla, Washington.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 405,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 465,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Wholesale - distributors",
+     "67.2",
+     "%",
+     "60.2",
+     "%",
+     "67.9",
+     "%",
+     "66.9",
+     "%"
+    ],
+    [
+     "Wholesale - California direct to retail(a)",
+     "19.8",
+     "",
+     "19.6",
+     "",
+     "18.1",
+     "",
+     "16.9",
+     ""
+    ],
+    [
+     "DTC(b)",
+     "13.0",
+     "",
+     "20.2",
+     "",
+     "14.0",
+     "",
+     "16.2",
+     ""
+    ],
+    [
+     "Net sales",
+     "100.0",
+     "%",
+     "100.0",
+     "%",
+     "100.0",
+     "%",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 536,
+    "end_line": 548
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "In May 2021, the FASB issued ASU No. 2021-04, Earnings per Share (Topic 260), Debt - Modifications and Extinguishments (Subtopic 470-50), Compensation-Stock Compensation (Topic 718), and Derivatives and Hedging - Contracts in Entity's Own Entity (Subtopic 815-40), to clarify the accounting for modifications or exchanges of equity-classified warrants. This amendment applies to freestanding stock options, which the Company granted in Fiscal 2021. In accordance with the ASU, if there is a modification and the option is still determined to be classified as equity, the modification should be accounted for as an exchange of the original option for a new option. This guidance will be effective for the Company beginning with the year ended July 31, 2023, with early adoption permitted. The Company is currently evaluating the impact of this update and will monitor for modifications or exchanges of the issued freestanding stock options, but at this time does not anticipate the adoption of ASU 2021-04 to have a material impact on the Condensed Consolidated Financial Statements.\n3. Revenue\nDisaggregated revenue information\nThe following table presents the percentages of consolidated net sales disaggregated by sales channels:",
+   "prose_after": "________________________________________________\n(a) Includes $0.5 million and $2.2 million of sales related to bulk, grape and merchandise sales for the three months and six months ended January 31, 2022, respectively. Sales of a similar nature were immaterial for the three months and six months ended January 31, 2021.\n(b) Includes shipping and handling revenue of $0.4 million and $0.6 million for the three months ended January 31, 2022 and 2021, respectively and $0.9 million and $1.1 million for the six months ended January 31, 2022 and 2021, respectively.\nContract liabilities\nWhen the Company receives payment from a customer prior to transferring the product under the terms of a contract, the Company records deferred revenue, which represents a contract liability. The Company\u2019s deferred revenue is primarily comprised of cash collected from DTC members for purchases ahead of the wine shipment date. The Company does not recognize revenue until control of the wine is transferred and the performance obligation is met.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 523,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(in thousands)",
+     "January 31, 2022",
+     "",
+     "July 31 2021",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bottled wine",
+     "$",
+     "94,520",
+     "$",
+     "120,876"
+    ],
+    [
+     "Merchandise",
+     "458",
+     "",
+     "547",
+     ""
+    ],
+    [
+     "Work in progress",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bulk wine",
+     "194,186",
+     "",
+     "130,693",
+     ""
+    ],
+    [
+     "Packaging",
+     "3,747",
+     "",
+     "3,541",
+     ""
+    ],
+    [
+     "Overhead",
+     "1,671",
+     "",
+     "613",
+     ""
+    ],
+    [
+     "Raw materials",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred crop costs",
+     "2,949",
+     "",
+     "11,467",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "297,531",
+     "$",
+     "267,737"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 566,
+    "end_line": 583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "(b) Includes shipping and handling revenue of $0.4 million and $0.6 million for the three months ended January 31, 2022 and 2021, respectively and $0.9 million and $1.1 million for the six months ended January 31, 2022 and 2021, respectively.\nContract liabilities\nWhen the Company receives payment from a customer prior to transferring the product under the terms of a contract, the Company records deferred revenue, which represents a contract liability. The Company\u2019s deferred revenue is primarily comprised of cash collected from DTC members for purchases ahead of the wine shipment date. The Company does not recognize revenue until control of the wine is transferred and the performance obligation is met.\nAs shown on the Condensed Consolidated Statements of Financial Position, the balance of deferred revenue was $3.1 million at July 31, 2021, the beginning of the period, and was $0.1 million at January 31, 2022, the end of the period. Revenue recognized during the six months ended January 31, 2022, which was included in the opening contract liability balance for the corresponding period totaled $3.0 million.\n4. Inventories\nInventories were comprised of the following:",
+   "prose_after": "The Company capitalizes into inventory depreciation related to property and equipment used in the production of inventory. For the six months ended January 31, 2022 and the year ended July 31, 2021, the amount of depreciation capitalized was $6.6 million and $12.5 million, respectively.\n5. Property and equipment\nProperty and equipment was comprised of the following major components as of:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(in thousands)",
+     "January 31, 2022",
+     "",
+     "July 31, 2021",
+     ""
+    ],
+    [
+     "Land",
+     "$",
+     "131,297",
+     "$",
+     "120,063"
+    ],
+    [
+     "Buildings and improvements",
+     "68,646",
+     "",
+     "68,616",
+     ""
+    ],
+    [
+     "Vineyards and improvements",
+     "32,511",
+     "",
+     "29,164",
+     ""
+    ],
+    [
+     "Machinery and equipment",
+     "51,618",
+     "",
+     "49,607",
+     ""
+    ],
+    [
+     "Barrels",
+     "30,844",
+     "",
+     "26,349",
+     ""
+    ],
+    [
+     "Total depreciable property and equipment",
+     "314,916",
+     "",
+     "293,799",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "(63,177)",
+     "",
+     "(58,542)",
+     ""
+    ],
+    [
+     "Total depreciable property and equipment, net",
+     "251,739",
+     "",
+     "235,257",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "4,106",
+     "",
+     "5,682",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "255,845",
+     "$",
+     "240,939"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 590,
+    "end_line": 609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The Company capitalizes into inventory depreciation related to property and equipment used in the production of inventory. For the six months ended January 31, 2022 and the year ended July 31, 2021, the amount of depreciation capitalized was $6.6 million and $12.5 million, respectively.\n5. Property and equipment\nProperty and equipment was comprised of the following major components as of:",
+   "prose_after": "Depreciation expense was $0.3 million and $0.7 million for three months and six months ended January 31, 2022 and $0.3 million and $0.6 million for three months and six months ended January 31, 2021, respectively. See Note 4 (Inventories) for depreciation expense capitalized into inventory.\nVineyard acquisitions\nIn the second quarter of Fiscal 2022, the Company completed the purchase of three Napa County, California vineyards and related assets for a total of $14.5 million.\n6. Other intangible assets\nIntangible assets were comprised of the following components:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 559,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "January 31, 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Gross carrying amount",
+     "",
+     "Accumulated amortization",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "Definite-lived intangible assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "92,720",
+     "$",
+     "38,054",
+     "$",
+     "54,666"
+    ],
+    [
+     "Leasehold interests",
+     "1,572",
+     "",
+     "433",
+     "",
+     "1,139",
+     ""
+    ],
+    [
+     "Total definite-lived intangible assets",
+     "94,292",
+     "",
+     "38,487",
+     "",
+     "55,805",
+     ""
+    ],
+    [
+     "Indefinite-lived intangible assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade names",
+     "139,600",
+     "",
+     "\u2014",
+     "",
+     "139,600",
+     ""
+    ],
+    [
+     "Lane rights",
+     "1,300",
+     "",
+     "\u2014",
+     "",
+     "1,300",
+     ""
+    ],
+    [
+     "Total indefinite-lived intangible assets",
+     "140,900",
+     "",
+     "\u2014",
+     "",
+     "140,900",
+     ""
+    ],
+    [
+     "Total other intangible assets",
+     "$",
+     "235,192",
+     "$",
+     "38,487",
+     "$",
+     "196,705"
+    ]
+   ],
+   "caption_stack": [
+    "January 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Depreciation expense was $0.3 million and $0.7 million for three months and six months ended January 31, 2022 and $0.3 million and $0.6 million for three months and six months ended January 31, 2021, respectively. See Note 4 (Inventories) for depreciation expense capitalized into inventory.\nVineyard acquisitions\nIn the second quarter of Fiscal 2022, the Company completed the purchase of three Napa County, California vineyards and related assets for a total of $14.5 million.\n6. Other intangible assets\nIntangible assets were comprised of the following components:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "July 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Gross carrying amount",
+     "",
+     "Accumulated amortization",
+     "",
+     "Net",
+     ""
+    ],
+    [
+     "Definite-lived intangible assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer relationships",
+     "$",
+     "92,720",
+     "$",
+     "34,274",
+     "$",
+     "58,446"
+    ],
+    [
+     "Leasehold interests",
+     "1,572",
+     "",
+     "371",
+     "",
+     "1,201",
+     ""
+    ],
+    [
+     "Total definite-lived intangible assets",
+     "94,292",
+     "",
+     "34,645",
+     "",
+     "59,647",
+     ""
+    ],
+    [
+     "Indefinite-lived intangible assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade names",
+     "139,600",
+     "",
+     "\u2014",
+     "",
+     "139,600",
+     ""
+    ],
+    [
+     "Lane rights",
+     "1,300",
+     "",
+     "\u2014",
+     "",
+     "1,300",
+     ""
+    ],
+    [
+     "Total indefinite-lived intangible assets",
+     "140,900",
+     "",
+     "\u2014",
+     "",
+     "140,900",
+     ""
+    ],
+    [
+     "Total other intangible assets",
+     "$",
+     "235,192",
+     "$",
+     "34,645",
+     "$",
+     "200,547"
+    ]
+   ],
+   "caption_stack": [
+    "July 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 642,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The Company\u2019s amortization expense for both the three months and six months ended January 31, 2022 and 2021 was $1.9 million and $3.8 million, respectively. For the next five years, the Company anticipates the annual amortization of the definite-lived intangible assets that have been recorded as of January 31, 2022 to be $7.7 million per year.\n7. Accrued expenses\nThe Company\u2019s accrued expenses balance consisted of the following amounts:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "January 31, 2022",
+     "",
+     "July 31, 2021",
+     ""
+    ],
+    [
+     "Trade spend(a)",
+     "$",
+     "16,207",
+     "$",
+     "10,734"
+    ],
+    [
+     "Bulk wine and other received not invoiced",
+     "607",
+     "",
+     "1,526",
+     ""
+    ],
+    [
+     "Barrel purchases",
+     "\u2014",
+     "",
+     "936",
+     ""
+    ],
+    [
+     "Deferred compensation liability(b)",
+     "2,144",
+     "",
+     "2,096",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "2,313",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accrued invoices and other accrued expenses",
+     "5,805",
+     "",
+     "6,265",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "27,076",
+     "$",
+     "21,557"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 669,
+    "end_line": 683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The Company\u2019s amortization expense for both the three months and six months ended January 31, 2022 and 2021 was $1.9 million and $3.8 million, respectively. For the next five years, the Company anticipates the annual amortization of the definite-lived intangible assets that have been recorded as of January 31, 2022 to be $7.7 million per year.\n7. Accrued expenses\nThe Company\u2019s accrued expenses balance consisted of the following amounts:",
+   "prose_after": "________________________________________________\n(a) Trade spend refers to estimated amounts the Company owes to distributors for depletion-based incentives granted for meeting specific depletion targets.\n(b) The Company intends to use the cash surrender value life insurance policies in settling its deferred compensation plan liability. The cash surrender value of the life insurance policies was $1.9 million and $1.7 million at January 31, 2022 and July 31, 2021, respectively.\n8. Debt\nThe Company is subject to the requirements of various financial covenants pursuant to the term loans and revolving line of credit, including a debt to net worth maximum and a fixed charge coverage ratio as defined in the Credit Facility. As of January 31, 2022, the Company was not in violation of any financial covenant.\nIncluded in interest expense in the Condensed Consolidated Statements of Operations, and in depreciation and amortization on the Condensed Consolidated Statements of Cash Flows, is amortization related to debt issuance costs of $0.4 million for both the three months ended January 31, 2022 and 2021 and $0.8 million for both the six months ended January 31, 2022 and 2021.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Notional amount (in thousands)",
+     "Interest rate",
+     "Effective date",
+     "Expiration date"
+    ],
+    [
+     "$100,000",
+     "0.487%",
+     "March 21, 2020",
+     "March 23, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 709,
+    "end_line": 714
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The changes in estimated fair values of derivative instruments result from changes in interest rates and foreign currency exchange rates. Such changes serve to offset exposure in related business assets or liabilities. The Company is exposed to credit loss in the event of nonperformance by a counterparty. Certain of the Company's derivative instruments are subject to master netting agreements. In certain circumstances, this agreement allows the Company to net-settle amounts payable or receivable related to multiple derivative transactions with the same counterparty. The fair values of derivative instruments are presented on a gross basis, even when the derivative instruments are subject to master netting arrangements. Collateral is generally not required of the Company or of the counterparties to the master netting agreements, and no cash collateral was received or pledged under such agreements as of January 31, 2022 or July 31, 2021. The Company does not enter into derivative instruments for trading or speculative purposes. The Company's accounting policies do not apply hedge accounting treatment to derivative instruments.\nAs of January 31, 2022, the Company held the following interest rate swap agreements, which fixed the interest rate on the applicable notional amount of outstanding variable rate debt:",
+   "prose_after": "As discussed in Note 11 (Commitments and contingencies), the Company manages annual barrel purchases by engaging domestic and foreign cooperages to provide specified barrel quantities on agreed delivery dates. Some of these invoices are paid in Euros. In order to reduce the foreign exchange risk associated with the Euro to U.S. Dollar conversion rate, the Company enters into foreign currency forward contracts aligning settlement dates with expected barrel delivery and the anticipated payments to various coopers.\nThe total notional amounts of the Company\u2019s derivative instruments outstanding are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "January 31, 2022",
+     "",
+     "July 31, 2021",
+     ""
+    ],
+    [
+     "Derivative instruments not designated as hedging instruments",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate swap contracts",
+     "$",
+     "100,000",
+     "$",
+     "100,000"
+    ],
+    [
+     "Foreign currency forward contracts",
+     "\u2014",
+     "",
+     "2,369",
+     ""
+    ],
+    [
+     "Total derivative instruments not designated as hedging instruments",
+     "$",
+     "100,000",
+     "$",
+     "102,369"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 719,
+    "end_line": 730
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "As discussed in Note 11 (Commitments and contingencies), the Company manages annual barrel purchases by engaging domestic and foreign cooperages to provide specified barrel quantities on agreed delivery dates. Some of these invoices are paid in Euros. In order to reduce the foreign exchange risk associated with the Euro to U.S. Dollar conversion rate, the Company enters into foreign currency forward contracts aligning settlement dates with expected barrel delivery and the anticipated payments to various coopers.\nThe total notional amounts of the Company\u2019s derivative instruments outstanding are as follows:",
+   "prose_after": "Results of period derivative activity\nThe estimated fair value and classification of derivative instruments on the accompanying Condensed Consolidated Statements of Financial Position are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "January 31, 2022",
+     "",
+     "July 31, 2021",
+     ""
+    ],
+    [
+     "Derivative instruments not designated as hedging instruments",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Classification",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate swap contracts",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Swap contract",
+     "Other long-term assets",
+     "$",
+     "482",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Derivative instrument",
+     "Other long-term liabilities",
+     "\u2014",
+     "",
+     "(480)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency forward contracts",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative instrument",
+     "Other current assets",
+     "$",
+     "\u2014",
+     "$",
+     "5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 736,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Results of period derivative activity\nThe estimated fair value and classification of derivative instruments on the accompanying Condensed Consolidated Statements of Financial Position are as follows:",
+   "prose_after": "The amounts and classification of the gains and losses in the Condensed Consolidated Statements of Operations related to derivative instruments not designated as hedging instruments are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "Classification",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Interest rate swap contracts",
+     "Other income, net",
+     "$",
+     "(515)",
+     "$",
+     "(1,279)",
+     "$",
+     "(962)",
+     "$",
+     "(2,945)"
+    ],
+    [
+     "Foreign currency forward contracts",
+     "Other income, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5",
+     "",
+     "118",
+     ""
+    ],
+    [
+     "Total gains",
+     "",
+     "$",
+     "(515)",
+     "$",
+     "(1,279)",
+     "$",
+     "(957)",
+     "$",
+     "(2,827)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 753,
+    "end_line": 765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The amounts and classification of the gains and losses in the Condensed Consolidated Statements of Operations related to derivative instruments not designated as hedging instruments are as follows:",
+   "prose_after": "10. Fair value measurements\nThe Company applies a fair value hierarchy pursuant to ASC 820, Fair Value Measurement, which consists of three levels of inputs that may be used to measure fair value:\nLevel 1 Inputs to fair value are quoted prices in active markets for identical assets or liabilities;\nLevel 2 Inputs to fair value are based on observable data other than Level 1 prices, such as quoted prices for similar assets or liabilities; quoted prices in markets that are not active; or other inputs that are observable or can be corroborated by observable market data such as interest rates or yield curves for substantially the full term of the instrument;\nLevel 3 Inputs to fair value are based on unobservable data for the instrument and are supported by little or no market activity.\nFollowing is a description of the valuation methodologies used for instruments measured at fair value in the Condensed Consolidated Financial Statements, as well as the general classification of such instruments under the valuation hierarchy.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 731,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Fair value measurements using:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Quoted prices in active markets (Level 1)",
+     "",
+     "Significant other observable inputs (Level 2)",
+     "",
+     "Significant unobservable inputs (Level 3)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate swap contracts",
+     "$",
+     "\u2014",
+     "$",
+     "482",
+     "$",
+     "\u2014",
+     "$",
+     "482"
+    ],
+    [
+     "Deferred compensation plan asset",
+     "\u2014",
+     "",
+     "1,920",
+     "",
+     "$",
+     "\u2014",
+     "1,920",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred compensation liability",
+     "$",
+     "\u2014",
+     "$",
+     "2,144",
+     "\u2014",
+     "",
+     "$",
+     "2,144"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 789,
+    "end_line": 801
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Foreign currency forward contracts: The fair value of the Company\u2019s outstanding foreign currency forward contracts is estimated with the assistance of a third party, using inputs that can be corroborated by observable market data (Level 2 of the fair value hierarchy).\nDeferred compensation plan: Contributions to the Company\u2019s deferred compensation plan are managed by a third-party administrative agent. The fair value of the total contributed plan assets and liabilities are based on inputs that can be corroborated by observable market data (Level 2 of the fair value hierarchy).\nThe Company\u2019s other financial instruments consist mainly of cash, accounts receivable, accounts payable, accrued expenses, and debt. The carrying value of all other financial instruments, except debt, approximates fair value due to the short-term nature of these assets and liabilities. The carrying value of the Company's debt approximates fair value as the interest rates are variable and reflective of market rates. Debt is categorized as a Level 2 liability within the fair value hierarchy.\nThe Company\u2019s assets and liabilities measured and recorded at fair value on a recurring basis at January 31, 2022, were as follows:",
+   "prose_after": "The Company\u2019s assets and liabilities measured and recorded at fair value on a recurring basis at July 31, 2021, were as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Fair value measurements using:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Quoted prices in active markets (Level 1)",
+     "",
+     "Significant other observable inputs (Level 2)",
+     "",
+     "Significant unobservable inputs (Level 3)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency forward contracts",
+     "$",
+     "\u2014",
+     "$",
+     "5",
+     "$",
+     "\u2014",
+     "$",
+     "5"
+    ],
+    [
+     "Deferred compensation plan asset",
+     "\u2014",
+     "",
+     "1,719",
+     "",
+     "\u2014",
+     "",
+     "1,719",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate swap contracts",
+     "$",
+     "\u2014",
+     "$",
+     "480",
+     "$",
+     "\u2014",
+     "$",
+     "480"
+    ],
+    [
+     "Deferred compensation liability",
+     "\u2014",
+     "",
+     "2,096",
+     "",
+     "\u2014",
+     "",
+     "2,096",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 804,
+    "end_line": 817
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The Company\u2019s assets and liabilities measured and recorded at fair value on a recurring basis at July 31, 2021, were as follows:",
+   "prose_after": "11. Commitments and contingencies\nOperating leases\nThe Company leases approximately 150 acres of vineyard property in California under various third-party operating lease agreements, with terms ranging from one to 30 years, expiring in future years through December 2046. The Company also leases office space, office equipment and visitor centers under third-party operating leases. Some lease agreements contain purchase options and many include renewal options at specified dates throughout the lease terms. Rental expense was $1.0 million and $2.0 million for three months and six months ended January 31, 2022, respectively, and $0.9 million and $2.0 million for the three months and six months ended January 31, 2021, respectively, the majority of which is capitalized into inventory.\nAt January 31, 2022, the future minimum payments under the non-cancelable operating lease agreements by fiscal year are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 784,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     ""
+    ],
+    [
+     "Remaining portion of 2022",
+     "$",
+     "2,068"
+    ],
+    [
+     "2023",
+     "4,122",
+     ""
+    ],
+    [
+     "2024",
+     "4,106",
+     ""
+    ],
+    [
+     "2025",
+     "4,070",
+     ""
+    ],
+    [
+     "2026",
+     "2,686",
+     ""
+    ],
+    [
+     "Thereafter (collectively)",
+     "10,836",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "27,888"
+    ]
+   ],
+   "caption_stack": [
+    "(in thousands)"
+   ],
+   "scale": {
+    "phrase": "in thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 827,
+    "end_line": 839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "11. Commitments and contingencies\nOperating leases\nThe Company leases approximately 150 acres of vineyard property in California under various third-party operating lease agreements, with terms ranging from one to 30 years, expiring in future years through December 2046. The Company also leases office space, office equipment and visitor centers under third-party operating leases. Some lease agreements contain purchase options and many include renewal options at specified dates throughout the lease terms. Rental expense was $1.0 million and $2.0 million for three months and six months ended January 31, 2022, respectively, and $0.9 million and $2.0 million for the three months and six months ended January 31, 2021, respectively, the majority of which is capitalized into inventory.\nAt January 31, 2022, the future minimum payments under the non-cancelable operating lease agreements by fiscal year are as follows:",
+   "prose_after": "The Company is also party to non-cancelable sublease agreements. Sublease income was immaterial for the three and six months ended January 31, 2022 and is accounted for as other income in the Consolidated Statements of Operations. The terms of the agreements range between three and five years and the total future minimum payments for these subleases is immaterial.\nLong-term purchase contracts\nThe Company has entered into long-term grape purchase contracts with various growers to supply a significant portion of its future grape requirements. The lengths of the contracts typically vary from one to eight years, and prices per ton are either determined at the outset for the contract duration or are negotiated annually. The Company's grape purchase contracts generally include acceptance provisions based on qualitative and quantitative grape quality characteristics. For the 2021 harvest, the Company contracted for approximately 34,000 tons of grapes at a cost of $68.1 million in Fiscal 2022. For the 2020 harvest, the Company purchased approximately 12,000 tons of grapes at a total cost of $26.5 million in Fiscal 2021. The increase was largely attributable to lower quantities available for the 2020 harvest at the Company's contractually defined quality levels due to wildfires compounded with higher demand and production levels in current and future periods.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 824,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Performance-based shares",
+     "Weighted-average grant-date fair value",
+     ""
+    ],
+    [
+     "Unvested as of July 31, 2021",
+     "399,234",
+     "$",
+     "14.23"
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Vested",
+     "(133,076)",
+     "14.23",
+     ""
+    ],
+    [
+     "Forfeited",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unvested as of January 31, 2022",
+     "266,158",
+     "$",
+     "14.23"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 865,
+    "end_line": 876
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "In the ordinary course of business, the Company enters into agreements containing standard indemnification provisions. The aggregate maximum potential future liability of the Company under such indemnification provisions is uncertain, as these involve potential future claims against the Company that have not occurred. The Company believes the probability of incurring future obligations under these indemnification provisions is sufficiently remote. As of January 31, 2022 and July 31, 2021, no amounts have been accrued related to such indemnification provisions.\n12. Equity-based compensation\n2016 Equity Plan\nThe Company recognized equity compensation expense related to the 2016 Plan in selling, general and administrative expenses due to units vesting over their requisite service periods in the aggregate amounts of $0.1 million and $0.2 million for the three months and six months ended January 31, 2022, respectively, and $0.3 million and $0.6 million for the three months and six months ended January 31, 2021, respectively. The total unrecognized compensation expense related to the 2016 Plan was $0.2 million as of January 31, 2022, which is expected to be recognized over a weighted-average period of 0.5 years.\nRestricted shares",
+   "prose_after": "The total fair value of restricted shares that vested during the six months ended January 31, 2022 was $1.9 million.\n2021 Equity incentive plan\nThe Company recognized in selling, general and administrative expenses equity compensation expense related to the 2021 Plan totaling $1.1 million and $2.2 million for the three months and six months ended January 31, 2022, respectively, due to units vesting over their requisite service period. In addition, the Company capitalized into inventory $0.2 million and $0.4 million for the three months and six months ended January 31, 2022, respectively.\nStock options\nStock option activity and activity regarding shares available for grant under the 2021 Plan is shown below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of options",
+     "Weighted-average exercise price",
+     "",
+     "Weighted-average remaining contractual life (in years)",
+     "Aggregate intrinsic value (in thousands)",
+     ""
+    ],
+    [
+     "Outstanding at July 31, 2021",
+     "1,552,648",
+     "$",
+     "17.11",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(2,799)",
+     "17.00",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at January 31, 2022",
+     "1,549,849",
+     "$",
+     "17.11",
+     "9.1",
+     "$",
+     "5,888"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The total fair value of restricted shares that vested during the six months ended January 31, 2022 was $1.9 million.\n2021 Equity incentive plan\nThe Company recognized in selling, general and administrative expenses equity compensation expense related to the 2021 Plan totaling $1.1 million and $2.2 million for the three months and six months ended January 31, 2022, respectively, due to units vesting over their requisite service period. In addition, the Company capitalized into inventory $0.2 million and $0.4 million for the three months and six months ended January 31, 2022, respectively.\nStock options\nStock option activity and activity regarding shares available for grant under the 2021 Plan is shown below:",
+   "prose_after": "The total unrecognized compensation expense related to the 2021 Plan stock options was $5.6 million as of January 31, 2022, which is expected to be recognized over a weighted-average period of 3.1 years. No options were vested and exercisable as of January 31, 2022.\nRestricted stock units\nRSU grant activity under the 2021 Plan is shown below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 856,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Number of units",
+     "Weighted-average grant-date fair value per share",
+     ""
+    ],
+    [
+     "Unvested as of July 31, 2021",
+     "555,950",
+     "$",
+     "16.95"
+    ],
+    [
+     "Granted",
+     "22,333",
+     "20.24",
+     ""
+    ],
+    [
+     "Vested",
+     "(18,417)",
+     "15.34",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(932)",
+     "17.00",
+     ""
+    ],
+    [
+     "Unvested as of January 31, 2022",
+     "558,934",
+     "$",
+     "17.13"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 907,
+    "end_line": 918
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The total unrecognized compensation expense related to the 2021 Plan stock options was $5.6 million as of January 31, 2022, which is expected to be recognized over a weighted-average period of 3.1 years. No options were vested and exercisable as of January 31, 2022.\nRestricted stock units\nRSU grant activity under the 2021 Plan is shown below:",
+   "prose_after": "The total fair value of restricted stock that vested during the six months ended January 31, 2022 was $0.3 million. The total unrecognized compensation expense related to the 2021 Plan RSUs was $7.4 million as of January 31, 2022, which is expected to be recognized over a weighted-average period of 2.9 years.\nEmployee Stock Purchase Plan\nIn connection with the IPO, the Company adopted the 2021 Employee Stock Purchase Plan, which allows for the issuance of up to a total of 1,250,509 shares of the Company's common stock. The ESPP, pursuant to Internal Revenue Code Section 423, allows eligible participants to purchase shares using payroll deductions of up to 15% of their total compensation, subject to a $25,000 calendar year limitation on contributions. The purchase price of each share will be 85% of the lesser of the fair market value of the stock as determined on the applicable grant date or the applicable purchase date for each offering period.\nEach offering period is six months in duration. The first offering period for the Employee Stock Purchase Plan began on January 3, 2022. Thereafter, offering periods will begin on the first business day of January and July. No purchases have been made under the ESPP as of January 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expected term (in years)(a)",
+     "0.5",
+     "",
+     ""
+    ],
+    [
+     "Expected dividend yield(b)",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate(c)",
+     "0.22",
+     "",
+     "%"
+    ],
+    [
+     "Expected volatility(d)",
+     "47",
+     "",
+     "%"
+    ],
+    [
+     "Stock price",
+     "$",
+     "23.33",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 929,
+    "end_line": 936
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "In connection with the IPO, the Company adopted the 2021 Employee Stock Purchase Plan, which allows for the issuance of up to a total of 1,250,509 shares of the Company's common stock. The ESPP, pursuant to Internal Revenue Code Section 423, allows eligible participants to purchase shares using payroll deductions of up to 15% of their total compensation, subject to a $25,000 calendar year limitation on contributions. The purchase price of each share will be 85% of the lesser of the fair market value of the stock as determined on the applicable grant date or the applicable purchase date for each offering period.\nEach offering period is six months in duration. The first offering period for the Employee Stock Purchase Plan began on January 3, 2022. Thereafter, offering periods will begin on the first business day of January and July. No purchases have been made under the ESPP as of January 31, 2022.\nThe fair value of ESPP shares is estimated at the date of grant using the Black-Scholes option-pricing valuation model. The following assumptions were applied in the model to estimate the grant-date fair value of the ESPP for the initial offering period that began on January 3, 2022.",
+   "prose_after": "________________________________________________\n(a) Based on the contractual terms of the 2021 ESPP Agreement and equal to each option period.\n(b) The Company has not historically paid and does not expect to pay dividends in the foreseeable future.\n(c) The risk-free rate was estimated from the U.S. Constant Maturity Treasury Yield Curve for a period consistent with the expected term in effect at the grant date.\n(d) The expected volatility was estimated based on analysis of the Company's historical and implied volatility, and considering a group of guideline public companies deemed to be comparable public peers within the Company\u2019s industry.\nThe equity-based compensation expense related to the ESPP is generally recognized evenly over the service period unless otherwise stipulated by the award agreement. The service period is the period over which the employee performs the related services, which is normally the same as the six month ESPP offering period.\nAs of January 31, 2022, total estimated unrecognized compensation expense related to the ESPP was $0.1 million. That cost is expected to be recognized over the remaining term of the offering period of 0.4 years.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except share and per share amounts)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Numerator - Net income attributable to The Duckhorn Portfolio, Inc.",
+     "$",
+     "17,932",
+     "$",
+     "22,003",
+     "$",
+     "39,205",
+     "$",
+     "39,526"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of shares of common stock outstanding - basic",
+     "115,049,395",
+     "",
+     "101,713,460",
+     "",
+     "115,048,094",
+     "",
+     "101,713,460",
+     ""
+    ],
+    [
+     "Dilutive stock options and restricted stock(a)",
+     "340,107",
+     "",
+     "\u2014",
+     "",
+     "342,917",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Weighted average number of shares of common stock outstanding - assuming dilution",
+     "115,389,502",
+     "",
+     "101,713,460",
+     "",
+     "115,391,011",
+     "",
+     "101,713,460",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share attributable to The Duckhorn Portfolio, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.16",
+     "$",
+     "0.22",
+     "$",
+     "0.34",
+     "$",
+     "0.39"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.16",
+     "$",
+     "0.22",
+     "$",
+     "0.34",
+     "$",
+     "0.39"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 968,
+    "end_line": 987
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Several wildfires occurred in northern California in the first quarter of Fiscal 2021. Other than smoke exposure to unharvested grapes, the Company's owned and leased vineyards did not sustain damage during the fires. Fire and smoke exposure related expenses are reported on the casualty loss line in the Condensed Consolidated Statement of Operations and were immaterial in the current fiscal year. Smoke and fire damage to vineyards in the primary markets where the Company sources fruit rendered some of the available grapes unacceptable for the Company\u2019s production needs. Based on an internal analysis of the impacts of these wildfires, Management believes the potential impact to the Company's operational results to be immaterial and intend to continue to monitor the ongoing effects to the business for any material changes to that conclusion.\nFlood\nIn Fiscal 2021, as discussed in the 2021 Form 10-K, the Company received proceeds from an insurance claim related to losses incurred in February 2019 due to a flood at a winery. Any incremental charges in the fiscal year ended July 31, 2021, offset by insurance proceeds received, which were reported on the casualty gain, net line item in the Consolidated Statements of Operations and did not recur in Fiscal 2022.\n14. Earnings per share\nBasic earnings per share is calculated by dividing the net income by the weighted average number of shares of common stock outstanding during the period. Diluted earnings per share reflects the dilution that would occur if any potentially dilutive instruments were exercised or converted into shares of common stock.\nThe following is a reconciliation of the Company's basic and diluted income per share calculation:",
+   "prose_after": "________________________________________________\n(a) Calculated using the treasury stock method.\nThere were no outstanding common stock awards deemed anti-dilutive for the three months and six months ended January 31, 2022 and 2021.\n15. Subsequent events\nIn February 2022, the Company entered into a preliminary purchase and sale agreement to buy a San Luis Obispo County, California vineyard and related assets for a total of $18.2 million. This acquisition is expected to close during the third quarter of Fiscal 2022, subject to customary closing conditions. Accordingly, until closing of the purchase, there can be no assurance that the Company will acquire the vineyard property. The Company has not yet completed its evaluation and determination of final consideration to be paid, certain assets and liabilities acquired or treatment of these transactions as either a business combination or asset acquisition in accordance with Topic 805.\nItem 2. Management\u2019s discussion and analysis of financial condition and results of operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 951,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 998,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "98,736",
+     "$",
+     "83,657",
+     "$",
+     "202,917",
+     "$",
+     "175,295"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "49,477",
+     "$",
+     "41,757",
+     "$",
+     "101,887",
+     "$",
+     "86,032"
+    ],
+    [
+     "Net income attributable to The Duckhorn Portfolio, Inc.",
+     "$",
+     "17,932",
+     "$",
+     "22,003",
+     "$",
+     "39,205",
+     "$",
+     "39,526"
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "34,310",
+     "$",
+     "32,178",
+     "$",
+     "72,400",
+     "$",
+     "65,900"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1015,
+    "end_line": 1026
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "We sell our wines to distributors outside California and directly to retail accounts in California, which together comprise our wholesale channel. We also sell directly to consumers through our DTC channel, which made up approximately 14% of our net sales for the first six months of Fiscal 2022. Our powerful omni-channel sales model drives strong margins by leveraging long-standing relationships developed over the past forty years. We believe our iconic winery brands together with our scaled, quality-focused production, omni-channel distribution and dedicated employees, set the standard for North American luxury wine.\nKey financial metrics\nWe use net sales, gross profit and adjusted EBITDA to evaluate the performance of our business, identify trends in our business, prepare financial forecasts and make capital allocation decisions. We believe the following metrics are useful in evaluating our performance, but adjusted EBITDA should not be considered in isolation or as a substitute for any other financial information depicting our results prepared in accordance with U.S. GAAP. Certain judgments and estimates are inherent in our processes to calculate these metrics.",
+   "prose_after": "The following table represents the reconciliation of adjusted EBITDA to net income attributable to The Duckhorn Portfolio, Inc.:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 998,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net income attributable to The Duckhorn Portfolio, Inc.",
+     "$",
+     "17,932",
+     "$",
+     "22,003",
+     "$",
+     "39,205",
+     "$",
+     "39,526"
+    ],
+    [
+     "Interest expense",
+     "1,636",
+     "",
+     "3,612",
+     "",
+     "3,242",
+     "",
+     "7,192",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "6,407",
+     "",
+     "7,935",
+     "",
+     "13,784",
+     "",
+     "14,071",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "6,280",
+     "",
+     "5,765",
+     "",
+     "11,109",
+     "",
+     "10,881",
+     ""
+    ],
+    [
+     "EBITDA",
+     "32,255",
+     "",
+     "39,315",
+     "",
+     "67,340",
+     "",
+     "71,670",
+     ""
+    ],
+    [
+     "Purchase accounting adjustments(a)",
+     "99",
+     "",
+     "762",
+     "",
+     "292",
+     "",
+     "1,323",
+     ""
+    ],
+    [
+     "Transaction expenses(b)",
+     "1,024",
+     "",
+     "\u2014",
+     "",
+     "2,770",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of derivatives(c)",
+     "(515)",
+     "",
+     "(1,279)",
+     "",
+     "(957)",
+     "",
+     "(2,827)",
+     ""
+    ],
+    [
+     "Equity-based compensation(d)",
+     "1,416",
+     "",
+     "288",
+     "",
+     "2,875",
+     "",
+     "576",
+     ""
+    ],
+    [
+     "Casualty gain, net(e)",
+     "\u2014",
+     "",
+     "(7,832)",
+     "",
+     "\u2014",
+     "",
+     "(7,832)",
+     ""
+    ],
+    [
+     "Loss on debt extinguishment(f)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "272",
+     ""
+    ],
+    [
+     "IPO preparation costs(g)",
+     "\u2014",
+     "",
+     "210",
+     "",
+     "\u2014",
+     "",
+     "405",
+     ""
+    ],
+    [
+     "Wildfire costs(h)",
+     "31",
+     "",
+     "62",
+     "",
+     "80",
+     "",
+     "1,617",
+     ""
+    ],
+    [
+     "COVID-19 costs(i)",
+     "\u2014",
+     "",
+     "652",
+     "",
+     "\u2014",
+     "",
+     "696",
+     ""
+    ],
+    [
+     "Adjusted EBITDA",
+     "$",
+     "34,310",
+     "$",
+     "32,178",
+     "$",
+     "72,400",
+     "$",
+     "65,900"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1030,
+    "end_line": 1055
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "The following table represents the reconciliation of adjusted EBITDA to net income attributable to The Duckhorn Portfolio, Inc.:",
+   "prose_after": "________________________________________________\n(a) Purchase accounting adjustments relate to the impacts of prior business combination accounting for our acquisition by TSG in Fiscal 2017, our subsequent acquisitions of Calera and Kosta Browne in Fiscal 2018 and Fiscal 2019, respectively, and certain other transactions consummated prior to our acquisition by TSG, which resulted in fair value adjustments to inventory and long-lived assets.\n(b) Transaction expenses include legal and professional fees and change of control payments incurred in connection with our IPO in March 2021. Also included are expenses incurred for abandoned transactions and the secondary offering completed in October 2021. These expenses were directly related to such transactions and were incremental to our normal operating expenses.\n(c) See Note 9 (Derivative instruments) to our Condensed Consolidated Financial Statements for additional information.\n(d) See Note 12 (Equity-based compensation) to our Condensed Consolidated Financial Statements for additional information.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1088,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Wholesale - distributors",
+     "67.2",
+     "%",
+     "60.2",
+     "%",
+     "67.9",
+     "%",
+     "66.9",
+     "%"
+    ],
+    [
+     "Wholesale - California direct to retail",
+     "19.8",
+     "%",
+     "19.6",
+     "%",
+     "18.1",
+     "%",
+     "16.9",
+     "%"
+    ],
+    [
+     "DTC",
+     "13.0",
+     "%",
+     "20.2",
+     "%",
+     "14.0",
+     "%",
+     "16.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1101,
+    "end_line": 1110
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "We monitor the following key metrics to help us evaluate our business, identify trends affecting our business, measure our performance, formulate business plans and make strategic decisions. We believe the following metrics are useful in evaluating our business but should not be considered in isolation or, solely with respect to price / mix contribution, as a substitute for financial information prepared and presented in accordance with U.S. GAAP. Certain judgments and estimates are inherent in our processes to calculate these metrics.\nNet sales percentage by channel\nWe calculate net sales percentage by channel as net sales made through our wholesale channel to distributors, through our wholesale channel directly to retail accounts in California and through our DTC channel, respectively, as a percentage of our total net sales. We monitor net sales percentage across these three routes to market to understand the effectiveness of our omni-channel distribution model and to ensure we are deploying resources effectively to optimize engagement with our customers across our complementary distribution channels.",
+   "prose_after": "The composition of our net sales, expressed in percentages by channel for the three months and six months ended January 31, 2022 and 2021, continued to move toward historical trends along with the signs of ongoing recovery from COVID-19 disruption across major markets. While notable gains in on-premise activity continued the shift back toward pre-pandemic levels, off-premise activity remained a key strength in our results as we held onto share gains across our broader wholesale channel.\nNet sales for the DTC channel were bolstered by higher visitor center sales overall as compared to the prior year period for the three months and six months ended, although comparability to prior year was impacted by earlier member shipment timing pulling a portion of net sales from the second quarter into the first quarter of Fiscal 2022.\nWe expect sales channel mix to continue to normalize toward historical levels in correlation with the reversion of consumer purchasing patterns and the re-opening of on-premise sales locations in future periods.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1088,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net sales growth",
+     "18.0",
+     "%",
+     "8.7",
+     "%",
+     "15.8",
+     "%",
+     "17.1",
+     "%"
+    ],
+    [
+     "Volume contribution",
+     "24.8",
+     "%",
+     "11.4",
+     "%",
+     "15.3",
+     "%",
+     "25.4",
+     "%"
+    ],
+    [
+     "Price / mix contribution",
+     "(6.8)",
+     "%",
+     "(2.8)",
+     "%",
+     "0.5",
+     "%",
+     "(8.3)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1124,
+    "end_line": 1133
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Net sales for the DTC channel were bolstered by higher visitor center sales overall as compared to the prior year period for the three months and six months ended, although comparability to prior year was impacted by earlier member shipment timing pulling a portion of net sales from the second quarter into the first quarter of Fiscal 2022.\nWe expect sales channel mix to continue to normalize toward historical levels in correlation with the reversion of consumer purchasing patterns and the re-opening of on-premise sales locations in future periods.\nNet sales growth contribution\nNet sales growth is defined as the percentage increase of net sales in the period compared to the prior period. Contribution to net sales growth is calculated based on the portion of changes in net sales for a given period that is driven by two factors: changes in sales volume and changes in sales price and mix. Volume contribution presents the percentage increase in cases sold in the current period compared to the prior period.\nPrice / mix contribution presents net sales growth less volume contribution and reflects that, in addition to changes in sales volume, changes in net sales are primarily attributable to changes in sales price and mix.",
+   "prose_after": "For the six months ended January 31, 2022, growth in net sales was mainly attributable to continued strong sales volume growth and a neutral price / mix contribution demonstrating the shift back toward pre-COVID-19 trends with the growth in our on-premise sales. Generally, on-premise growth also drives increased sales in our ultra-luxury brands that sell at higher average sales prices and positively impact price / mix contribution. In the prior year period, we saw immense growth primarily driven by off-premise sales of our luxury winery brands that drove a negative price / mix contribution. Our consistent use of distributor and retail sales discounts and promotions in our wholesale channel to gain market share has historically and may continue to put downward pressure on price / mix contribution given an increase in net sales.\nFor the three months ended January 31, 2022, negative price mix contribution was impacted by the outsized volume growth of the wholesale channel, aided by continued on-premise resurgence and further pressured by DTC shipment timing moving out of the second quarter of Fiscal 2022 into the first quarter of the same fiscal year.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1156,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Purchase accounting adjustments to cost of sales",
+     "$",
+     "99",
+     "$",
+     "762",
+     "$",
+     "292",
+     "$",
+     "1,323"
+    ],
+    [
+     "Impact of purchase accounting on gross profit",
+     "(99)",
+     "",
+     "(762)",
+     "",
+     "(292)",
+     "",
+     "(1,323)",
+     ""
+    ],
+    [
+     "Amortization of customer relationships and other intangible assets",
+     "1,921",
+     "",
+     "1,921",
+     "",
+     "3,842",
+     "",
+     "3,842",
+     ""
+    ],
+    [
+     "Impact of purchase accounting on selling, general and administrative expenses",
+     "1,921",
+     "",
+     "1,921",
+     "",
+     "3,842",
+     "",
+     "3,842",
+     ""
+    ],
+    [
+     "Impacts of purchase accounting on income before income taxes",
+     "$",
+     "(2,020)",
+     "$",
+     "(2,683)",
+     "$",
+     "(4,134)",
+     "$",
+     "(5,165)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1263,
+    "end_line": 1279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "We were acquired by TSG in Fiscal 2017, and subsequently completed acquisitions of Calera and Kosta Browne in Fiscal 2018 and Fiscal 2019, respectively. In applying business combination accounting pursuant to U.S. GAAP authoritative literature in connection with each of these transactions, we recorded acquired assets and liabilities at their fair values. The impacts of these purchase accounting adjustments primarily resulted in reductions to deferred revenue, increases to inventory, increases to long-lived assets and recognition of indefinite-lived intangible assets and definite-lived intangible assets, which amortize over their assigned useful lives ranging from 9 to 14 years. See Note 6 (Other intangible assets) to our Condensed Consolidated Financial Statements for additional information.\nThe effects of purchase accounting adjustments on our operational performance caused our pre-tax income from operations to be lower in certain periods than we would otherwise have recognized due to reduced revenue for the fair value adjustment to deferred revenue, increased cost of sales due to step-up on inventory and increased operating expenses due to step-up depreciation on property and equipment and amortization of definite-lived intangible assets. The table below reflects the line items of our Condensed Consolidated Statements of Operations impacted by these purchase accounting adjustments:",
+   "prose_after": "Results of operations\nThe following table sets forth our results of operations for the periods presented and expresses the relationship of each line item shown as a percentage of net sales for the periods indicated. The table below should be read in conjunction with the corresponding discussion and our audited annual consolidated financial\nstatements, our unaudited Condensed Consolidated Financial Statements and related footnotes included elsewhere in this Quarterly Report on Form 10-Q:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1248,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1284,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "98,736",
+     "100.0",
+     "%",
+     "$",
+     "83,657",
+     "100.0",
+     "%",
+     "$",
+     "202,917",
+     "100.0",
+     "%",
+     "$",
+     "175,295",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "49,259",
+     "",
+     "49.9",
+     "",
+     "41,900",
+     "",
+     "50.1",
+     "",
+     "101,030",
+     "",
+     "49.8",
+     "",
+     "89,263",
+     "",
+     "50.9",
+     ""
+    ],
+    [
+     "Gross profit",
+     "49,477",
+     "",
+     "50.1",
+     "",
+     "41,757",
+     "",
+     "49.9",
+     "",
+     "101,887",
+     "",
+     "50.2",
+     "",
+     "86,032",
+     "",
+     "49.1",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "23,814",
+     "",
+     "24.1",
+     "",
+     "17,471",
+     "",
+     "20.9",
+     "",
+     "46,972",
+     "",
+     "23.1",
+     "",
+     "34,276",
+     "",
+     "19.6",
+     ""
+    ],
+    [
+     "Casualty loss (gain), net",
+     "31",
+     "",
+     "\u2014",
+     "",
+     "(7,770)",
+     "",
+     "(9.3)",
+     "",
+     "80",
+     "",
+     "\u2014",
+     "",
+     "(6,215)",
+     "",
+     "(3.5)",
+     ""
+    ],
+    [
+     "Income from operations",
+     "25,632",
+     "",
+     "26.0",
+     "",
+     "32,056",
+     "",
+     "38.3",
+     "",
+     "54,835",
+     "",
+     "27.0",
+     "",
+     "57,971",
+     "",
+     "33.1",
+     ""
+    ],
+    [
+     "Interest expense",
+     "1,636",
+     "",
+     "1.7",
+     "",
+     "3,612",
+     "",
+     "4.3",
+     "",
+     "3,242",
+     "",
+     "1.6",
+     "",
+     "7,192",
+     "",
+     "4.1",
+     ""
+    ],
+    [
+     "Other income, net",
+     "(338)",
+     "",
+     "(0.3)",
+     "",
+     "(1,491)",
+     "",
+     "(1.8)",
+     "",
+     "(1,431)",
+     "",
+     "(0.7)",
+     "",
+     "(2,814)",
+     "",
+     "(1.6)",
+     ""
+    ],
+    [
+     "Total other expenses",
+     "1,298",
+     "",
+     "1.3",
+     "",
+     "2,121",
+     "",
+     "2.5",
+     "",
+     "1,811",
+     "",
+     "0.9",
+     "",
+     "4,378",
+     "",
+     "2.5",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "24,334",
+     "",
+     "24.6",
+     "",
+     "29,935",
+     "",
+     "35.8",
+     "",
+     "53,024",
+     "",
+     "26.1",
+     "",
+     "53,593",
+     "",
+     "30.6",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "6,407",
+     "",
+     "6.5",
+     "",
+     "7,935",
+     "",
+     "9.5",
+     "",
+     "13,784",
+     "",
+     "6.8",
+     "",
+     "14,071",
+     "",
+     "8.0",
+     ""
+    ],
+    [
+     "Net income",
+     "17,927",
+     "",
+     "18.2",
+     "",
+     "22,000",
+     "",
+     "26.3",
+     "",
+     "39,240",
+     "",
+     "19.3",
+     "",
+     "39,522",
+     "",
+     "22.5",
+     ""
+    ],
+    [
+     "Less: Net loss (income) attributable to non-controlling interest",
+     "5",
+     "",
+     "\u2014",
+     "",
+     "3",
+     "",
+     "\u2014",
+     "",
+     "(35)",
+     "",
+     "\u2014",
+     "",
+     "4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income attributable to The Duckhorn Portfolio, Inc.",
+     "$",
+     "17,932",
+     "18.2",
+     "%",
+     "$",
+     "22,003",
+     "26.3",
+     "%",
+     "$",
+     "39,205",
+     "19.3",
+     "%",
+     "$",
+     "39,526",
+     "22.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Results of operations\nThe following table sets forth our results of operations for the periods presented and expresses the relationship of each line item shown as a percentage of net sales for the periods indicated. The table below should be read in conjunction with the corresponding discussion and our audited annual consolidated financial\nstatements, our unaudited Condensed Consolidated Financial Statements and related footnotes included elsewhere in this Quarterly Report on Form 10-Q:",
+   "prose_after": "Comparison of the three and six months ended January 31, 2022 and 2021",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1284,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1347,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Net sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Net sales",
+     "$",
+     "98,736",
+     "$",
+     "83,657",
+     "$",
+     "15,079",
+     "18.0",
+     "%",
+     "$",
+     "202,917",
+     "$",
+     "175,295",
+     "$",
+     "27,622",
+     "15.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Net sales"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1319,
+    "end_line": 1329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Comparison of the three and six months ended January 31, 2022 and 2021",
+   "prose_after": "Net sales for the three months ended January 31, 2022 increased $15.1 million, or 18.0%, to $98.7 million compared to $83.7 million for the three months ended January 31, 2021. The increase in net sales for the three months ended January 31, 2022 is driven by increased volume growth and partially offset by a negative price/mix contribution due to channel mix. Additionally, we saw a significant increase in our Wholesale to Distributor channel.\nNet sales for the six months ended January 31, 2022 increased $27.6 million, or 15.8%, to $202.9 million compared to $175.3 million for the six months ended January 31, 2021. The increase in net sales for the six months ended January 31, 2022 is primarily driven by volume growth and a neutral price/mix contribution, driven by both volume and mix improvements in the wholesale channel as well as growth in the DTC channel from higher tasting room sales. There were no material pricing changes for the periods presented.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1284,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1347,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cost of sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "$",
+     "49,259",
+     "$",
+     "41,900",
+     "$",
+     "7,359",
+     "17.6",
+     "%",
+     "$",
+     "101,030",
+     "$",
+     "89,263",
+     "$",
+     "11,767",
+     "13.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Cost of sales"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1334,
+    "end_line": 1344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Net sales for the three months ended January 31, 2022 increased $15.1 million, or 18.0%, to $98.7 million compared to $83.7 million for the three months ended January 31, 2021. The increase in net sales for the three months ended January 31, 2022 is driven by increased volume growth and partially offset by a negative price/mix contribution due to channel mix. Additionally, we saw a significant increase in our Wholesale to Distributor channel.\nNet sales for the six months ended January 31, 2022 increased $27.6 million, or 15.8%, to $202.9 million compared to $175.3 million for the six months ended January 31, 2021. The increase in net sales for the six months ended January 31, 2022 is primarily driven by volume growth and a neutral price/mix contribution, driven by both volume and mix improvements in the wholesale channel as well as growth in the DTC channel from higher tasting room sales. There were no material pricing changes for the periods presented.",
+   "prose_after": "Cost of sales increased by $7.4 million, or 17.6%, to $49.3 million for the three months ended January 31, 2022 compared to $41.9 million for the three months ended January 31, 2021. Cost of sales increased by $11.8 million, or 13.2%, to $101.0 million for the six months ended January 31, 2022 compared to $89.3 million for the six months ended January 31, 2021.The increases in both periods were mainly driven by higher sales, partially offset by diminishing impacts of step-up cost of wine due to purchase accounting adjustments from prior acquisitions. For additional information see \u201c\u2014Other factors impacting the comparability of our results of operations\u201d.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1284,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1347,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross profit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "49,477",
+     "$",
+     "41,757",
+     "$",
+     "7,720",
+     "18.5",
+     "%",
+     "$",
+     "101,887",
+     "$",
+     "86,032",
+     "$",
+     "15,855",
+     "18.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Gross profit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1348,
+    "end_line": 1358
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Cost of sales increased by $7.4 million, or 17.6%, to $49.3 million for the three months ended January 31, 2022 compared to $41.9 million for the three months ended January 31, 2021. Cost of sales increased by $11.8 million, or 13.2%, to $101.0 million for the six months ended January 31, 2022 compared to $89.3 million for the six months ended January 31, 2021.The increases in both periods were mainly driven by higher sales, partially offset by diminishing impacts of step-up cost of wine due to purchase accounting adjustments from prior acquisitions. For additional information see \u201c\u2014Other factors impacting the comparability of our results of operations\u201d.",
+   "prose_after": "Gross profit increased $7.7 million, or 18.5%, to $49.5 million for the three months ended January 31, 2022 compared to $41.8 million for the three months ended January 31, 2021. Gross profit increased $15.9 million, or 18.4%, to $101.9 million for the six months ended January 31, 2022 compared to $86.0 million for the six months ended January 31, 2021. The changes in gross profit were primarily the result of:\n\u2022higher sales volume;\n\u2022brand and channel mix shifts that were net favorable to gross profit margin; and\n\u2022a reduction in step-up cost of wine sold for the six months ended January 31, 2022 versus the same period prior year, due to lower balances of remaining inventory with associated step-up from purchase accounting in previous periods.\nGross profit margin was 50.1% for the three months ended January 31, 2022 compared to 49.9% for the three months ended January 31, 2021. Gross profit margin was 50.2% for the six months ended January 31, 2022 compared to 49.1% for the six months ended January 31, 2021. The increases in both periods depict the shift in sales mix in favor of luxury wines sold in the Wholesale to Distributor channel in the current periods, with additional margin lift due to lower step-up from purchase accounting impacting cost of sales than in previous periods. The gross profit margin increases, primarily due to movement towards historical trends in consumer spending patterns with the continued recovery of on-premise sales locations, also depict a shift in sales mix slightly in favor of ultra-luxury wines sold through all sales channels. These shifts are especially prevalent in our Wholesale California and DTC channels in the current period. As our luxury winery brands contribute to outsized volume growth in the future, we may expect downward pressure on gross profit margins in future periods, with brand mix potentially introducing favorable gross profit margin impacts based on brand velocity at different price points.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1347,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Selling expenses",
+     "$",
+     "10,971",
+     "$",
+     "8,403",
+     "$",
+     "2,568",
+     "30.6",
+     "%",
+     "$",
+     "21,369",
+     "$",
+     "16,727",
+     "$",
+     "4,642",
+     "27.8",
+     "%"
+    ],
+    [
+     "Marketing expenses",
+     "2,887",
+     "",
+     "2,178",
+     "",
+     "709",
+     "",
+     "32.6",
+     "",
+     "5,059",
+     "",
+     "3,925",
+     "",
+     "1,134",
+     "",
+     "28.9",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "9,956",
+     "",
+     "6,890",
+     "",
+     "3,066",
+     "",
+     "44.5",
+     "",
+     "20,544",
+     "",
+     "13,624",
+     "",
+     "6,920",
+     "",
+     "50.8",
+     ""
+    ],
+    [
+     "Total selling, general and administrative expenses",
+     "$",
+     "23,814",
+     "$",
+     "17,471",
+     "$",
+     "6,343",
+     "36.3",
+     "%",
+     "$",
+     "46,972",
+     "$",
+     "34,276",
+     "$",
+     "12,696",
+     "37.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Operating expenses",
+    "Selling, general and administrative expenses"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1369,
+    "end_line": 1386
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Gross profit margin was 50.1% for the three months ended January 31, 2022 compared to 49.9% for the three months ended January 31, 2021. Gross profit margin was 50.2% for the six months ended January 31, 2022 compared to 49.1% for the six months ended January 31, 2021. The increases in both periods depict the shift in sales mix in favor of luxury wines sold in the Wholesale to Distributor channel in the current periods, with additional margin lift due to lower step-up from purchase accounting impacting cost of sales than in previous periods. The gross profit margin increases, primarily due to movement towards historical trends in consumer spending patterns with the continued recovery of on-premise sales locations, also depict a shift in sales mix slightly in favor of ultra-luxury wines sold through all sales channels. These shifts are especially prevalent in our Wholesale California and DTC channels in the current period. As our luxury winery brands contribute to outsized volume growth in the future, we may expect downward pressure on gross profit margins in future periods, with brand mix potentially introducing favorable gross profit margin impacts based on brand velocity at different price points.",
+   "prose_after": "Selling, general and administrative expenses increased $6.3 million, or 36.3%, to $23.8 million for the three months ended January 31, 2022, compared to $17.5 million for the three months ended January 31, 2021. Selling, general and administrative expenses increased $12.7 million, or 37.0%, to $47.0 million for the six months ended January 31, 2022 compared to $34.3 million for the six months ended January 31, 2021. The increase for both the three months and six months ended January 31, 2022 was largely attributable to compensation costs due to our expanded workforce, higher equity-based compensation as a public company as compared to the prior year period, transaction expenses incurred for the secondary offering (see Note 1 (Description of business) for additional information related to the offering), higher general and administrative costs related to being a public company and higher selling expenses in support of revenue-generating activities as travel restrictions lessened versus the comparative prior year period.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1347,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Casualty loss (gain), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Casualty loss (gain), net",
+     "$",
+     "31",
+     "$",
+     "(7,770)",
+     "$",
+     "7,801",
+     "(100.4)",
+     "%",
+     "$",
+     "80",
+     "$",
+     "(6,215)",
+     "$",
+     "6,295",
+     "(101.3)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Casualty loss (gain), net"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1394,
+    "end_line": 1404
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "General and administrative expenses were higher for the three months and six months ended January 31, 2022 compared to the respective prior year periods, primarily due to equity-based compensation costs and public company costs that we had not incurred in the prior year period shown. Selling expenses were higher for the three months and six months ended January 31, 2022 due to equity-based and other compensation costs along with the impacts of increased sales activities to support sales growth, including higher levels of business travel than in\nprior periods constrained due to COVID-19 restrictions in key markets where we operate. Marketing expenses increased by $0.7 million and $1.1 million for the three months and six months ended January 31, 2022, respectively, versus the comparative period due primarily to increases in equity-based compensation and other compensation costs, further increased due to the prior year period showing reductions in marketing and promotional events as a result of the ongoing pandemic.",
+   "prose_after": "Casualty loss (gain), net increased by $7.8 million, or 100.4%, for the three months ended January 31, 2022 compared to the three months ended January 31, 2021. Casualty loss (gain), net increased by $6.3 million, or 101.3%, for the six months ended January 31, 2022 compared to the six months ended January 31, 2021. The change between the current and prior year is primarily due to insurance proceeds received in Fiscal 2021 related to a flood at one of our wineries in a previous fiscal year that did not reoccur in the current fiscal year. See Note 13 (Casualty loss) to our Condensed Consolidated Financial Statements for further information.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 45,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Other expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Interest expense",
+     "1,636",
+     "",
+     "3,612",
+     "",
+     "$",
+     "(1,976)",
+     "(54.7)",
+     "%",
+     "$",
+     "3,242",
+     "$",
+     "7,192",
+     "$",
+     "(3,950)",
+     "(54.9)",
+     "%"
+    ],
+    [
+     "Other income, net",
+     "(338)",
+     "",
+     "(1,491)",
+     "",
+     "1,153",
+     "",
+     "(77.3)",
+     "%",
+     "(1,431)",
+     "",
+     "(2,814)",
+     "",
+     "1,383",
+     "",
+     "(49.1)",
+     "%"
+    ],
+    [
+     "Total other expenses",
+     "$",
+     "1,298",
+     "$",
+     "2,121",
+     "$",
+     "(823)",
+     "(38.8)",
+     "%",
+     "$",
+     "1,811",
+     "$",
+     "4,378",
+     "$",
+     "(2,567)",
+     "(58.6)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Other expenses"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1407,
+    "end_line": 1421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Casualty loss (gain), net increased by $7.8 million, or 100.4%, for the three months ended January 31, 2022 compared to the three months ended January 31, 2021. Casualty loss (gain), net increased by $6.3 million, or 101.3%, for the six months ended January 31, 2022 compared to the six months ended January 31, 2021. The change between the current and prior year is primarily due to insurance proceeds received in Fiscal 2021 related to a flood at one of our wineries in a previous fiscal year that did not reoccur in the current fiscal year. See Note 13 (Casualty loss) to our Condensed Consolidated Financial Statements for further information.",
+   "prose_after": "Other expenses decreased by $0.8 million, or 38.8%, to $1.3 million for the three months ended January 31, 2022 compared to $2.1 million for the three months ended January 31, 2021. Other expenses decreased by $2.6 million, or 58.6%, to $1.8 million for the six months ended January 31, 2022 compared to $4.4 million for the six months ended January 31, 2021. Our interest expense was reduced year over year due to lower debt balances outstanding for the period, in conjunction with lower average interest rates on our variable-rate debt. The change in our other income, net was primarily driven by downward pressure on LIBOR and a lower overall swap notional balance. Both of these factors contributed to a net gain for the three months and six months ended January 31, 2022 and a change in overall position to an asset on our Condensed Consolidated Statements of Financial Position. In addition, see \u201c\u2014Liquidity and capital resources\u201d for discussion of our Credit Facility.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 45,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 46,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Income tax expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except percentages)",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "6,407",
+     "$",
+     "7,935",
+     "$",
+     "(1,528)",
+     "(19.3)",
+     "%",
+     "$",
+     "13,784",
+     "$",
+     "14,071",
+     "$",
+     "(287)",
+     "(2.0)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Income tax expense"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1424,
+    "end_line": 1434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Other expenses decreased by $0.8 million, or 38.8%, to $1.3 million for the three months ended January 31, 2022 compared to $2.1 million for the three months ended January 31, 2021. Other expenses decreased by $2.6 million, or 58.6%, to $1.8 million for the six months ended January 31, 2022 compared to $4.4 million for the six months ended January 31, 2021. Our interest expense was reduced year over year due to lower debt balances outstanding for the period, in conjunction with lower average interest rates on our variable-rate debt. The change in our other income, net was primarily driven by downward pressure on LIBOR and a lower overall swap notional balance. Both of these factors contributed to a net gain for the three months and six months ended January 31, 2022 and a change in overall position to an asset on our Condensed Consolidated Statements of Financial Position. In addition, see \u201c\u2014Liquidity and capital resources\u201d for discussion of our Credit Facility.",
+   "prose_after": "Income tax expense decreased $1.5 million, or 19.3%, to $6.4 million for the three months ended January 31, 2022 compared to $7.9 million for the three months ended January 31, 2021. Income tax expense decreased $0.3 million, or 2.0%, to $13.8 million for the six months ended January 31, 2022 compared to $14.1 million for the six months ended January 31, 2021. The change in our income tax expense was primarily due to decreased pre-tax income in the current period, as the effective tax rate remained largely consistent year over year.\nLiquidity and capital resources\nSources of liquidity\nOur primary cash needs are for working capital purposes, such as producing or purchasing inventory and funding operating and capital expenditures. We fund our operational cash requirements with cash flows from operating activities and borrowings under our Credit Facility. As of January 31, 2022, we had $4.8 million in cash and $290.0 million available in undrawn capacity on our revolving line of credit, subject to the terms of our Credit Facility.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 46,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 47,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six months ended January 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows provided by (used in):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "18,828",
+     "$",
+     "26,141"
+    ],
+    [
+     "Investing activities",
+     "(23,336)",
+     "",
+     "(9,748)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "5,034",
+     "",
+     "(13,371)",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "$",
+     "526",
+     "$",
+     "3,022"
+    ]
+   ],
+   "caption_stack": [
+    "Six months ended January 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1467
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s discussion and analysis of financial condition and results of operations"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Due to the seasonal nature of our operations, our cash needs are generally greatest during harvest, a period which can span from August to November based on agricultural conditions and other factors outside our control. We believe that our expected operating cash flows, cash on hand and borrowing capacity on our revolving line of credit, will be adequate to meet our cash needs for the next 12 months. However, changes in our business growth plan, planned capital expenditures or responses to the impacts of the global pandemic or to an ever-changing and highly competitive industry landscape may result in changes to our cash requirements.\nIf our cash needs change in the future, we may seek alternative or incremental funding sources to respond to changes in our business. To the extent required, we may seek to fund additional liquidity through debt or equity financing, although we can provide no assurance that such forms of capital will be available when needed, if at all, or available on terms that are acceptable.\nCash flows\nThe following table presents the major components of net cash flows.",
+   "prose_after": "Operating activities\nOur cash flows from operating activities consist primarily of net income adjusted for certain non-cash transactions, including depreciation and amortization, amortization of debt issuance costs, changes in the fair values of derivatives, equity-based compensation and deferred income taxes. Operating cash flows also reflect the periodic changes in working capital, primarily inventory, accounts receivable, prepaid expenses, accounts payable and accrued expenses.\nFor the six months ended January 31, 2022, net cash provided by operating activities was $18.8 million compared to $26.1 million for the six months ended January 31, 2021, a decrease of $7.3 million. The decrease in cash provided by operating activities was driven by the following factors:\n\u2022The net income after adjusting for non-cash items increased operating cash flows by $3.7 million;\n\u2022Increases in prepaid expenses for the six months ended January 31, 2022 that were less than the higher prepaid expenses in the prior year period due to increased professional fees and insurance, partially offset by timing impacts in bulk and bottled wine supply management to support increases in demand, in aggregate resulted in an increase to operating cash flow of $4.0 million;",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1443,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 47,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 48,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit no.",
+     "Exhibit description",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "*"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "*"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes\u2011Oxley Act of 2002",
+     "*"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document.",
+     "*"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document.",
+     "*"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document.",
+     "*"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document.",
+     "*"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document.",
+     "*"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document.",
+     "*"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)",
+     "*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1597,
+    "end_line": 1613
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "Our disclosure controls and procedures and internal control over financial reporting are designed to provide reasonable assurance of achieving their objectives as specified above. Management does not expect, however, that our disclosure controls and procedures will prevent or detect all error and fraud. Any control system, no matter how well designed and operated, is based on certain assumptions and can provide only reasonable, not absolute, assurance that its objectives will be met. Further, no evaluation of controls can provide absolute assurance that misstatements due to error or fraud will not occur or that all control issues and instances of fraud, if any, within the Company have been detected.\nPART II\nItem 1. Legal proceedings.\nFrom time to time, we are involved in various legal proceedings arising from the normal course of business activities. Legal expenses associated with loss contingencies are accrued if reasonably estimable and the related matter is probable of causing the Company to incur expenses or other losses based on future contingent events in accordance with the Company's policies, otherwise legal expenses are expensed as incurred. We are not presently a party to any litigation the outcome of which, we believe, if determined adversely to us, would individually or taken together have a material adverse effect on our business, operating results, cash flows or financial condition.\nItem 1A. Risk factors.\nFor a discussion of our potential risks and uncertainties, please see the information under the heading \"Risk Factors\" in our Annual Report on Form 10-K for Fiscal 2021. There have been no material changes since our previous 10-K filing.\nItem 6. Exhibits.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934 the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1584,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1614,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 48,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 49,
+   "header_row_count": 3,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "The Duckhorn Portfolio, Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 10, 2022",
+     "By:",
+     "/s/ Alex Ryan"
+    ],
+    [
+     "",
+     "",
+     "Alex Ryan"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer and Chairman"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: March 10, 2022",
+     "By:",
+     "/s/ Lori Beaudoin"
+    ],
+    [
+     "",
+     "",
+     "Lori Beaudoin"
+    ],
+    [
+     "",
+     "",
+     "Executive Vice President, Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "The Duckhorn Portfolio, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1619,
+    "end_line": 1634
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Subsequent Events                                                 23"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934 the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1614,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1635,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 49,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

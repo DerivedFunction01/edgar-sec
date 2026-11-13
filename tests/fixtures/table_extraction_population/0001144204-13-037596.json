@@ -1,0 +1,8218 @@
+{
+ "accession": "0001144204-13-037596",
+ "cik": "0001311538",
+ "form": "10-K",
+ "filing_date": "2013-07-01",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v348215_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "41-2103550"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "122 East 42nd Street, Suite 4700",
+     ""
+    ],
+    [
+     "New York, New York",
+     "10168"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended March 31, 2013\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 001-32849\nCastle Brands Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code (646) 356-0200\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Name of Each Exchange on Which Registered"
+    ],
+    [
+     "Common stock, $0.01 par value",
+     "NYSE MKT"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code (646) 356-0200\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone.\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ]; No [X]\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 229.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "12"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "17"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "17"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "17"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities",
+     "18"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "18"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "19"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "30"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "31"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "31"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "32"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "32"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters",
+     "32"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "32"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "32"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "32"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 111
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, accelerated filer, a non-accelerated filer or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\n[ ] Large accelerated filer  [ ] Accelerated filer\n[ ] Non-accelerated filer    [X] Smaller reporting company\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nThe aggregate market value of the registrant\u2019s common stock held by non-affiliates of the registrant based on the September 30, 2012 closing price was approximately $11,600,000 based on the closing price per share as reported on the NYSE MKT on such date. The registrant had 109,822,526 shares of common stock outstanding at June 25, 2013.\nDOCUMENTS INCORPORATED BY REFERENCE\nPart III (Items 10, 11, 12, 13 and 14) of this annual report on Form 10-K is incorporated by reference from the definitive Proxy Statement for the 2013 Annual Meeting of Shareholders to be filed with the Securities and Exchange Commission no later than 120 days after the end of the registrant\u2019s fiscal year covered by this report.\nCASTLE BRANDS INC.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I\nItem 1. Business\nOverview\nWe develop and market premium and super premium brands in the following beverage alcohol categories: rum, whiskey, liqueurs, vodka and tequila. We distribute our products in all 50 U.S. states and the District of Columbia, in thirteen primary international markets, including Ireland, Great Britain, Northern Ireland, Germany, Canada, South Africa, Bulgaria, France, Russia, Finland, Norway, Sweden, China and the Duty Free markets, and in a number of other countries in continental Europe and Latin America. We market the following brands, among others, Gosling\u2019s Rum\u00ae, Gosling\u2019s Stormy Ginger Beer, Gosling\u2019s Dark \u2018n Stormy\u00ae ready-to-drink cocktail, Jefferson\u2019s\u00ae, Jefferson\u2019s Reserve\u00ae and Jefferson's Presidential SelectTM bourbons, Jefferson\u2019s Rye whiskey, Pallini\u00ae liqueurs, Clontarf\u00ae Irish whiskey, Knappogue Castle Whiskey\u00ae, Brady's\u00ae Irish Cream, Boru\u00ae vodka, Tierras TM tequila, Celtic Honey\u00ae liqueur, Castello MioTM sambucas, Travis Hasse\u2019s Original\u00ae Pie liqueurs and Gozio\u00ae amaretto.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal 2013",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "  First Quarter (April 1 \u2014 June 30, 2012)",
+     "$",
+     "0.34",
+     "$",
+     "0.26"
+    ],
+    [
+     "  Second Quarter (July 1 \u2014 September 30, 2012)",
+     "$",
+     "0.33",
+     "$",
+     "0.25"
+    ],
+    [
+     "  Third Quarter (October 1 \u2014 December 31, 2012)",
+     "$",
+     "0.33",
+     "$",
+     "0.26"
+    ],
+    [
+     "  Fourth Quarter (January 1 \u2014 March 31, 2013)",
+     "$",
+     "0.31",
+     "$",
+     "0.26"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Fiscal 2012",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  First Quarter (April 1 \u2014 June 30, 2011)",
+     "$",
+     "0.33",
+     "$",
+     "0.27"
+    ],
+    [
+     "  Second Quarter (July 1 \u2014 September 30, 2011)",
+     "$",
+     "0.33",
+     "$",
+     "0.21"
+    ],
+    [
+     "  Third Quarter (October 1 \u2014 December 31, 2011)",
+     "$",
+     "0.30",
+     "$",
+     "0.21"
+    ],
+    [
+     "  Fourth Quarter (January 1 \u2014 March 31, 2012)",
+     "$",
+     "0.30",
+     "$",
+     "0.25"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 520,
+    "end_line": 534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Our executive offices are located in New York, NY, where we lease approximately 4,800 square feet of office space under a lease that expires in April 2014. We also lease approximately 750 square feet of office space in Dublin, Ireland under a lease that expires in December 2013 and approximately 1,000 square feet of office space in Houston, TX under a lease that expires in January 2015.\nItem 3. Legal Proceedings\nWe believe that neither we nor any of our wholly-owned subsidiaries is currently subject to litigation which, in the opinion of our management, is likely to have a material adverse effect on us.\nWe may, however, become involved in litigation from time to time relating to claims arising in the ordinary course of our business. These claims, even if not meritorious, could result in the expenditure of significant financial and managerial resources.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities\nPrice range of common stock\nOur common stock trades on the NYSE MKT under the symbol \u201cROX.\u201d The following table sets forth the high and low sales prices for our common stock for the periods specified.",
+   "prose_after": "Holders\nAt June 24, 2013, there were approximately 193 record holders of our common stock.\nDividend policy\nWe did not declare or pay any cash dividends in fiscal 2013 or 2012 and we do not intend to pay any cash dividends with respect to our common stock in the foreseeable future. We currently intend to retain any earnings for use in the operation of our business and to fund future growth. Any future determination to pay cash dividends will be at our board\u2019s discretion and will depend upon our financial condition, operating results, capital requirements and such other factors as our board deems relevant. Further, our ability to declare and pay cash dividends is restricted by certain covenants in our loan agreements.\nEquity Compensation Plan Information\nThe following table sets forth information at March 31, 2013 regarding compensation plans under which our equity securities are authorized for issuance.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants, restricted stock and rights",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants, restricted stock and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans",
+     ""
+    ],
+    [
+     "  Equity compensation plans approved by security holders",
+     "",
+     "20,573,424",
+     "$",
+     "0.52",
+     "",
+     "13,300,663"
+    ],
+    [
+     "  Equity compensation plans not approved by security holders",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "    Total",
+     "",
+     "20,573,424",
+     "$",
+     "0.52",
+     "",
+     "13,300,663"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 547,
+    "end_line": 557
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "Holders\nAt June 24, 2013, there were approximately 193 record holders of our common stock.\nDividend policy\nWe did not declare or pay any cash dividends in fiscal 2013 or 2012 and we do not intend to pay any cash dividends with respect to our common stock in the foreseeable future. We currently intend to retain any earnings for use in the operation of our business and to fund future growth. Any future determination to pay cash dividends will be at our board\u2019s discretion and will depend upon our financial condition, operating results, capital requirements and such other factors as our board deems relevant. Further, our ability to declare and pay cash dividends is restricted by certain covenants in our loan agreements.\nEquity Compensation Plan Information\nThe following table sets forth information at March 31, 2013 regarding compensation plans under which our equity securities are authorized for issuance.",
+   "prose_after": "Item 6. Selected Financial Data\nAs a smaller reporting company, we are not required to provide the information required by this Item.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nOverview\nOur objective is to continue building a distinctive portfolio of global premium and super premium spirits brands as we move towards profitability. To achieve this, we continue to seek to:\n\u00a7 increase revenues from our more profitable brands. We continue to focus our distribution relationships, sales expertise and targeted marketing activities on our more profitable brands; \u00a7 improve value chain and manage cost structure. We continue to review and analyze our supply chains and cost structures both on a company-wide and brand-by-brand basis, to improve operations and operating results; and \u00a7 selectively add new premium brands to our portfolio. We intend to continue developing new brands and pursuing strategic relationships, joint ventures and acquisitions to selectively expand our premium spirits portfolio, particularly by capitalizing on and expanding our partnering capabilities. Our criteria for new brands focuses on underserved areas of the beverage alcohol marketplace, while examining the potential for direct financial contribution to our company and the potential for future growth based on development and maturation of agency brands. We evaluate future acquisitions and agency relationships on the basis of their potential to be immediately accretive and their potential contributions to our objectives of becoming profitable and further expanding our product offerings. We expect that future acquisitions, if consummated, would involve some combination of cash, debt and the issuance of our stock.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 511,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 562,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Cases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "",
+     "302,602",
+     "",
+     "",
+     "272,610",
+     ""
+    ],
+    [
+     "International",
+     "",
+     "69,457",
+     "",
+     "",
+     "60,919",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "372,059",
+     "",
+     "",
+     "333,529",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rum",
+     "",
+     "152,696",
+     "",
+     "",
+     "127,978",
+     ""
+    ],
+    [
+     "Vodka",
+     "",
+     "69,600",
+     "",
+     "",
+     "72,059",
+     ""
+    ],
+    [
+     "Liqueurs",
+     "",
+     "86,431",
+     "",
+     "",
+     "83,827",
+     ""
+    ],
+    [
+     "Whiskey",
+     "",
+     "53,798",
+     "",
+     "",
+     "40,194",
+     ""
+    ],
+    [
+     "Tequila",
+     "",
+     "1,337",
+     "",
+     "",
+     "1,494",
+     ""
+    ],
+    [
+     "Wine",
+     "",
+     "7,469",
+     "",
+     "",
+     "6,382",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "728",
+     "",
+     "",
+     "1,595",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "372,059",
+     "",
+     "",
+     "333,529",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Percentage of Cases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "",
+     "81.3",
+     "%",
+     "",
+     "81.7",
+     "%"
+    ],
+    [
+     "International",
+     "",
+     "18.7",
+     "%",
+     "",
+     "18.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Rum",
+     "",
+     "41.0",
+     "%",
+     "",
+     "38.4",
+     "%"
+    ],
+    [
+     "Vodka",
+     "",
+     "18.7",
+     "%",
+     "",
+     "21.6",
+     "%"
+    ],
+    [
+     "Liqueurs",
+     "",
+     "23.2",
+     "%",
+     "",
+     "25.1",
+     "%"
+    ],
+    [
+     "Whiskey",
+     "",
+     "14.5",
+     "%",
+     "",
+     "12.1",
+     "%"
+    ],
+    [
+     "Tequila",
+     "",
+     "0.4",
+     "%",
+     "",
+     "0.4",
+     "%"
+    ],
+    [
+     "Wine",
+     "",
+     "2.0",
+     "%",
+     "",
+     "1.9",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "0.2",
+     "%",
+     "",
+     "0.5",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 617,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Our growth strategy is based upon partnering with other brands, acquiring smaller and emerging brands and growing existing brands. To identify potential partner and acquisition candidates we plan to rely on our management\u2019s industry experience and our extensive network of industry contacts. We also plan to maintain and grow our U.S. and international distribution channels so that we are more attractive to spirits companies who are looking for a route to market for their products. We expect to compete for foreign and small private and family-owned spirits brands by offering flexible and creative structures, which present an alternative to the larger spirits companies.\nWe intend to finance our brand acquisitions through a combination of our available cash resources, third party financing and, in appropriate circumstances, the further issuance of equity and/or debt securities. Acquiring additional brands could have a significant effect on our financial position, and could cause substantial fluctuations in our quarterly and yearly operating results. Also, the pursuit of acquisitions and other new business relationships may require significant management attention. We may not be able to successfully identify attractive acquisition candidates, obtain financing on favorable terms or complete these types of transactions in a timely manner and on terms acceptable to us, if at all.\nFinancial performance overview\nThe following table provides information regarding our beverage alcohol case sales for the periods presented based on nine-liter equivalent cases, which is a standard industry metric:",
+   "prose_after": "The following table provides information regarding our case sales of non-beverage alcohol products for the periods presented:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 610,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Cases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "",
+     "248,309",
+     "",
+     "",
+     "156,359",
+     ""
+    ],
+    [
+     "International",
+     "",
+     "16,272",
+     "",
+     "",
+     "9,585",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "264,581",
+     "",
+     "",
+     "165,944",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "",
+     "93.8",
+     "%",
+     "",
+     "94.2",
+     "%"
+    ],
+    [
+     "International",
+     "",
+     "6.2",
+     "%",
+     "",
+     "5.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 665,
+    "end_line": 685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The following table provides information regarding our case sales of non-beverage alcohol products for the periods presented:",
+   "prose_after": "Critical accounting policies and estimates\nA number of estimates and assumptions affect our reported amounts of assets and liabilities, amounts of sales and expenses and disclosure of contingent assets and liabilities in our financial statements. On an ongoing basis, we evaluate these estimates and assumptions based on historical experience and other factors and circumstances. We believe our estimates and assumptions are reasonable under the circumstances; however, actual results may differ from these estimates.\nWe believe that the estimates and assumptions discussed below are most important to the portrayal of our financial condition and results of operations in that they require our most difficult, subjective or complex judgments and form the basis for the accounting policies deemed to be most critical to our operations.\nRevenue recognition\nWe recognize revenue from product sales when the product is shipped to a customer (generally a distributor), title and risk of loss has passed to the customer under the terms of sale (FOB shipping point or FOB destination) and collection is reasonably assured. We do not offer a right of return but will accept returns if we shipped the wrong product or wrong quantity. Revenue is not recognized on shipments to control states in the U.S. until such time as the product is sold through to the retail channel.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 610,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 686,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Sales, net",
+     "$",
+     "100.0",
+     "%",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "63.8",
+     "%",
+     "",
+     "63.9",
+     "%"
+    ],
+    [
+     "Provision for obsolete inventory",
+     "",
+     "1.7",
+     "%",
+     "",
+     "0.8",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "34.5",
+     "%",
+     "",
+     "35.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling expense",
+     "",
+     "27.2",
+     "%",
+     "",
+     "29.6",
+     "%"
+    ],
+    [
+     "General and administrative expense",
+     "",
+     "11.7",
+     "%",
+     "",
+     "14.0",
+     "%"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "2.2",
+     "%",
+     "",
+     "2.6",
+     "%"
+    ],
+    [
+     "Loss on wine assets",
+     "",
+     "4.1",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(10.7)",
+     "%",
+     "",
+     "(10.9)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss from equity investment in non-consolidated affiliate",
+     "",
+     "(0.1)",
+     "%",
+     "",
+     "(0.1)",
+     "%"
+    ],
+    [
+     "Foreign exchange loss",
+     "",
+     "(0.6)",
+     "%",
+     "",
+     "(2.0)",
+     "%"
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(1.4)",
+     "%",
+     "",
+     "(1.6)",
+     "%"
+    ],
+    [
+     "Net change in fair value of warrant liability",
+     "",
+     "0.7",
+     "%",
+     "",
+     "0.3",
+     "%"
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "0.4",
+     "%",
+     "",
+     "0.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(11.7)",
+     "%",
+     "",
+     "(14.0)",
+     "%"
+    ],
+    [
+     "Net income attributable to noncontrolling interests",
+     "",
+     "(1.5)",
+     "%",
+     "",
+     "(0.8)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to controlling interests",
+     "",
+     "(13.2)",
+     "%",
+     "",
+     "(14.8)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend to preferred shareholders",
+     "",
+     "(1.8)",
+     "%",
+     "",
+     "(2.0)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to common shareholders",
+     "",
+     "(15.0)",
+     "%",
+     "",
+     "(16.8)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 728,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We follow current authoritative guidance regarding stock-based compensation, which requires all share-based payments, including grants of stock options, to be recognized in the income statement as an operating expense, based on their fair values on the grant date. Stock-based compensation was $0.3 million and $0.2 million for fiscal 2013 and 2012, respectively. We used the Black-Scholes option-pricing model to estimate the fair value of options granted. The assumptions used in valuing the options granted during fiscal 2013 and 2012 are included in note 13 to our consolidated financial statements.\nFair value of financial instruments\nASC 825, \u201cFinancial Instruments\u201d (\u201cASC 825\u201d), defines the fair value of a financial instrument as the amount at which the instrument could be exchanged in a current transaction between willing parties and requires disclosure of the fair value of certain financial instruments. We believe that there is no material difference between the fair value and the reported amounts of financial instruments in the balance sheets due to the short-term maturity of these instruments, or with respect to the debt, as compared to the current borrowing rates available to us.\nResults of operations\nThe following table sets forth, for the periods indicated, the percentage of net sales of certain items in our consolidated financial statements.",
+   "prose_after": "The following is a reconciliation of net loss attributable to common shareholders to EBITDA, as adjusted:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 713,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to common shareholders",
+     "$",
+     "(6,193,225)",
+     "",
+     "$",
+     "(5,947,155)",
+     ""
+    ],
+    [
+     "Adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense, net",
+     "",
+     "587,308",
+     "",
+     "",
+     "589,781",
+     ""
+    ],
+    [
+     "  Income tax benefit",
+     "",
+     "(148,152)",
+     "",
+     "",
+     "(148,152)",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "920,305",
+     "",
+     "",
+     "914,361",
+     ""
+    ],
+    [
+     "EBITDA (loss)",
+     "",
+     "(4,833,764)",
+     "",
+     "",
+     "(4,591,165)",
+     ""
+    ],
+    [
+     "  Allowance for doubtful accounts",
+     "",
+     "86,869",
+     "",
+     "",
+     "68,599",
+     ""
+    ],
+    [
+     "  Allowance for obsolete inventory",
+     "",
+     "684,830",
+     "",
+     "",
+     "275,000",
+     ""
+    ],
+    [
+     "  Stock-based compensation expense",
+     "",
+     "282,314",
+     "",
+     "",
+     "190,462",
+     ""
+    ],
+    [
+     "  Loss on wine assets",
+     "",
+     "1,715,728",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Loss from equity investment in non-consolidated affiliate",
+     "",
+     "22,549",
+     "",
+     "",
+     "28,923",
+     ""
+    ],
+    [
+     "  Foreign exchange loss",
+     "",
+     "247,431",
+     "",
+     "",
+     "722,253",
+     ""
+    ],
+    [
+     "  Net change in fair value of warrant liability",
+     "",
+     "(302,734)",
+     "",
+     "",
+     "(109,767)",
+     ""
+    ],
+    [
+     "  Net income attributable to noncontrolling interests",
+     "",
+     "610,492",
+     "",
+     "",
+     "272,200",
+     ""
+    ],
+    [
+     "  Dividend to preferred shareholders",
+     "",
+     "744,468",
+     "",
+     "",
+     "714,830",
+     ""
+    ],
+    [
+     "EBITDA (loss), as adjusted",
+     "",
+     "(741,817)",
+     "",
+     "",
+     "(2,428,665)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 774,
+    "end_line": 800
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "The following is a reconciliation of net loss attributable to common shareholders to EBITDA, as adjusted:",
+   "prose_after": "Earnings before interest, taxes, depreciation and amortization, or EBITDA, adjusted for allowances for doubtful accounts and obsolete inventory, loss on wine assets, non-cash compensation expense, loss from equity investment in non-consolidated affiliate, foreign exchange, net change in fair value of warrant liability, net income attributable to noncontrolling interests and dividend to preferred shareholders is a key metric we use in evaluating our financial performance. EBITDA is considered a non-GAAP financial measure as defined by Regulation G promulgated by the SEC under the Securities Act of 1933, as amended. We consider EBITDA, as adjusted, important in evaluating our performance on a consistent basis across various periods. Due to the significance of non-cash and non-recurring items, EBITDA, as adjusted, enables our Board of Directors and management to monitor and evaluate the business on a consistent basis. We use EBITDA, as adjusted, as a primary measure, among others, to analyze and evaluate financial and strategic planning decisions regarding future operating investments and allocation of capital resources. We believe that EBITDA, as adjusted, eliminates items that are not indicative of our core operating performance or are based on management\u2019s estimates, such as allowance accounts, are due to changes in valuation, such as the effects of changes in foreign exchange or fair value of warrant liability, or do not involve a cash outlay, such as stock-based compensation expense. Our presentation of EBITDA, as adjusted, should not be construed as an inference that our future results will be unaffected by unusual or non-recurring items or by non-cash items, such as non-cash compensation, which is expected to remain a key element in our long-term incentive compensation program. EBITDA, as adjusted, should be considered in addition to, rather than as a substitute for, income from operations, net income and cash flows from operating activities.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Increase/(decrease)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "in case sales",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "increase/(decrease)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Overall",
+     "",
+     "",
+     "U.S.",
+     "",
+     "",
+     "Overall",
+     "",
+     "",
+     "U.S.",
+     "",
+     ""
+    ],
+    [
+     "Rum",
+     "",
+     "24,718",
+     "",
+     "",
+     "16,896",
+     "",
+     "",
+     "19.3",
+     "%",
+     "",
+     "16.8",
+     "%"
+    ],
+    [
+     "Liqueur",
+     "",
+     "2,604",
+     "",
+     "",
+     "2,783",
+     "",
+     "",
+     "3.1",
+     "%",
+     "",
+     "3.4",
+     "%"
+    ],
+    [
+     "Whiskey",
+     "",
+     "13,604",
+     "",
+     "",
+     "9,318",
+     "",
+     "",
+     "33.8",
+     "%",
+     "",
+     "41.7",
+     "%"
+    ],
+    [
+     "Vodka",
+     "",
+     "(2,459)",
+     "",
+     "",
+     "932",
+     "",
+     "",
+     "(3.4)",
+     "%",
+     "",
+     "1.6",
+     "%"
+    ],
+    [
+     "Tequila",
+     "",
+     "(157)",
+     "",
+     "",
+     "(157)",
+     "",
+     "",
+     "(10.5)",
+     "%",
+     "",
+     "(10.5)",
+     "%"
+    ],
+    [
+     "Wine",
+     "",
+     "1,087",
+     "",
+     "",
+     "1,087",
+     "",
+     "",
+     "17.0",
+     "%",
+     "",
+     "17.0",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "(867)",
+     "",
+     "",
+     "(867)",
+     "",
+     "",
+     "(54.4)",
+     "%",
+     "",
+     "(54.4)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "38,530",
+     "",
+     "",
+     "29,992",
+     "",
+     "",
+     "11.6",
+     "%",
+     "",
+     "11.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 811,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Net sales. Net sales increased 16.8% to $41.4 million for the year ended March 31, 2013, as compared to $35.5 million for the comparable prior-year period. Our U.S. case sales as a percentage of total case sales remained relatively constant at 81.3% for the year ended March 31, 2013, as compared to 81.7% for the comparable prior-year period, due to the continued organic growth of Gosling\u2019s rums and Jefferson\u2019s bourbons in the U.S. and the introduction of new brands into the U.S. market. Our international case sales grew due to strong growth in our Gosling\u2019s rum and Irish whiskey sales, offset by a decrease in our vodka sales due to continued price competition. We continue to focus on our faster growing brands and markets, both in the U.S. and internationally. Net sales for the year ended March 31, 2013 include $0.6 million in revenue from Gozio amaretto, which we launched in January 2012, and $0.6 million in revenue from our Gosling\u2019s Dark \u2018n Stormy pre-mixed cocktail, which we launched in February 2012.\nThe table below presents the increase or decrease, as applicable, in case sales by product category for the year ended March 31, 2013 as compared to the year ended March 31, 2012:",
+   "prose_after": "Gross profit. Gross profit increased 14.3% to $14.3 million for the year ended March 31, 2013 from $12.5 million for the comparable prior-year period, while our gross margin decreased to 34.6% for the year ended March 31, 2013 compared to 35.3% for the comparable prior-year period. The increase in gross profit was primarily due to increased sales in the current period, while the decrease in gross margin was due to the increased allowance for obsolete and slow moving inventory recorded in 2013. During the year ended March 31, 2013, we recorded a net allowance for obsolete and slow moving inventory of $0.7 million, as compared to $0.3 million for the prior year period. We recorded these allowances on both raw materials and finished goods, primarily in connection with label and packaging changes made to certain brands, as well as certain cost variances. The allowance recorded in the year ended March 31, 2013 included $0.3 incurred in connection with our reduced support of our wine brands. The net charges have been recorded as an increase to cost of sales in both periods. Net of the allowance for obsolete inventories, our gross margin for the year ended March 31, 2013 was 36.2% as compared to 36.1% for the comparable prior-year period.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 771,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating activities",
+     "$",
+     "(4,986)",
+     "",
+     "$",
+     "(4,406)",
+     ""
+    ],
+    [
+     "  Investing activities",
+     "",
+     "(294)",
+     "",
+     "",
+     "(487)",
+     ""
+    ],
+    [
+     "  Financing activities",
+     "",
+     "5,237",
+     "",
+     "",
+     "4,336",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Effect of foreign currency translation",
+     "",
+     "(2)",
+     "",
+     "",
+     "(6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net decrease in cash and cash equivalents",
+     "$",
+     "(45)",
+     "",
+     "$",
+     "(563)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 901,
+    "end_line": 919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "We continue to implement a plan to support the growth of existing brands through sales and marketing initiatives that we expect will generate cash flows from operations in the next few years. As part of this plan, we seek to grow our business through expansion to new markets, growth in existing markets and strengthened distributor relationships. Further, we are actively seeking to reduce certain inventory levels in an effort to reduce our working capital requirements and provide improved cash flow from operations. We are also seeking additional brands and agency relationships to leverage our existing distribution platform. We intend to finance our brand acquisitions through a combination of our available cash resources, borrowings and, in appropriate circumstances, additional issuances of equity and/or debt securities. Acquiring additional brands could have a significant effect on our financial position, could materially reduce our liquidity and could cause substantial fluctuations in our quarterly and yearly operating results. We continue to look to control expense, seek improvements in routes to market and contain production costs to improve cash flows.\nAs of March 31, 2013, we had borrowed $6.5 million of the $8.0 million available under the Keltic Facility, leaving $1.5 million in then potential availability for working capital needs. We believe our current cash and working capital, and the availability under the Keltic Facility, will enable us to fund our losses until we achieve profitability, ensure continuity of supply of our brands, and support new brand initiatives and marketing programs through at least March 2014.\nCash flows\nThe following table summarizes our primary sources and uses of cash during the periods presented:",
+   "prose_after": "Operating activities. A substantial portion of available cash has been used to fund our operating activities. In general, these cash funding requirements are based on operating losses, driven chiefly by the costs in maintaining our distribution system and our sales and marketing activities. We have also utilized cash to fund our inventories. In general, these cash outlays for inventories are only partially offset by increases in our accounts payable to our suppliers.\nOn average, the production cycle for our owned brands is up to three months from the time we obtain the distilled spirits and other materials needed to bottle and package our products to the time we receive products available for sale, in part due to the international nature of our business. We do not produce Gosling\u2019s rums, Pallini liqueurs, Tierras tequila, or Gozio amaretto. Instead, we receive the finished product directly from the owners of such brands. From the time we have products available for sale, an additional two to three months may be required before we sell our inventory and collect payment from customers. Further, our inventory at March 31, 2013 included additional stores of bulk wine and bulk bourbon purchased in advance of forecasted production requirements. We expect to reduce the bulk bourbon in the normal course of future sales and are actively looking to sell our bulk wine to prospective vintners.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 934,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "Consolidated Balance Sheets as of March 31, 2013 and 2012",
+     "F-2"
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended March 31, 2013 and 2012",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Comprehensive Income for the years ended March 31, 2013 and 2012",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Equity for the years ended March 31, 2013 and 2012",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended March 31, 2013 and 2012",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 981,
+    "end_line": 992
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "\u00a7 our history of losses and expectation of further losses; \u00a7 the effect of poor operating results on our company; \u00a7 the adequacy of our cash resources and our ability to raise additional capital; \u00a7 our ability to expand our operations in both new and existing markets and our ability to develop or acquire new brands; \u00a7 our relationships with and our dependency on our distributors; \u00a7 the impact of supply shortages and alcohol and packaging costs in general, as well as our dependency on a limited number of suppliers and inventory requirements; \u00a7 the success of our sales and marketing activities; \u00a7 economic and political conditions generally, including the current recessionary economic environment and concurrent market instability; \u00a7 the effect of competition in our industry; \u00a7 negative publicity surrounding our products or the consumption of beverage alcohol products in general; \u00a7 our ability to acquire and/or maintain brand recognition and acceptance; \u00a7 trends in consumer tastes; \u00a7 our and our strategic partners\u2019 abilities to protect trademarks and other proprietary information; \u00a7 the impact of litigation; \u00a7 the impact of currency exchange rate fluctuations and devaluations on our revenues, sales and overall financial results; \u00a7 our executive officers, directors and principal shareholders own a substantial portion of our voting stock; and \u00a7 the impact of federal, state, local or foreign government regulations.\nWe assume no obligation to publicly update or revise these forward-looking statements for any reason, or to update the reasons actual results could differ materially from those anticipated in, or implied by, these forward-looking statements, even if new information becomes available in the future.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nAs a smaller reporting company, we are not required to provide the information required by this Item.\nItem 8. Financial Statements and Supplementary Data\nIndex to Financial Statements",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nBoard of Directors and Shareholders\nCastle Brands Inc.\nWe have audited the accompanying consolidated balance sheets of Castle Brands Inc. and subsidiaries (the \"Company\") as of March 31, 2013 and 2012, and the related consolidated statements of operations, changes in shareholders' equity and comprehensive loss, and cash flows for each of the years then ended. These financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 976,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 992,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2013",
+     "",
+     "",
+     "March 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "439,323",
+     "",
+     "$",
+     "484,362",
+     ""
+    ],
+    [
+     "  Accounts receivable \u2014 net of allowance for doubtful accounts of $70,692 and $411,272, respectively",
+     "",
+     "7,025,358",
+     "",
+     "",
+     "6,268,432",
+     ""
+    ],
+    [
+     "  Due from shareholders and affiliates",
+     "",
+     "303,226",
+     "",
+     "",
+     "122,640",
+     ""
+    ],
+    [
+     "  Inventories\u2014 net of allowance for obsolete and slow moving inventory of $461,660 and $290,316, respectively",
+     "",
+     "13,731,962",
+     "",
+     "",
+     "10,732,698",
+     ""
+    ],
+    [
+     "  Prepaid expenses and other current assets",
+     "",
+     "983,834",
+     "",
+     "",
+     "784,331",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Current Assets",
+     "",
+     "22,483,703",
+     "",
+     "",
+     "18,392,463",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment \u2014 net",
+     "",
+     "516,641",
+     "",
+     "",
+     "620,840",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Investment in non-consolidated affiliate, at equity",
+     "",
+     "116,700",
+     "",
+     "",
+     "130,850",
+     ""
+    ],
+    [
+     "  Intangible assets \u2014 net of accumulated amortization of $5,404,000 and $4,906,061, respectively",
+     "",
+     "8,805,913",
+     "",
+     "",
+     "10,302,288",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "490,286",
+     "",
+     "",
+     "1,243,058",
+     ""
+    ],
+    [
+     "  Restricted cash",
+     "",
+     "451,346",
+     "",
+     "",
+     "468,275",
+     ""
+    ],
+    [
+     "  Other assets",
+     "",
+     "252,506",
+     "",
+     "",
+     "197,003",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Assets",
+     "$",
+     "33,117,095",
+     "",
+     "$",
+     "31,354,777",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND EQUITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Foreign revolving credit facility",
+     "$",
+     "89,407",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "5,301,524",
+     "",
+     "",
+     "4,771,140",
+     ""
+    ],
+    [
+     "  Accrued expenses",
+     "",
+     "793,243",
+     "",
+     "",
+     "442,618",
+     ""
+    ],
+    [
+     "  Due to shareholders and affiliates",
+     "",
+     "2,351,957",
+     "",
+     "",
+     "1,584,270",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Current Liabilities",
+     "",
+     "8,536,131",
+     "",
+     "",
+     "6,798,028",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Keltic facility",
+     "",
+     "6,501,321",
+     "",
+     "",
+     "3,849,831",
+     ""
+    ],
+    [
+     "  Inventory term loan (including $600,000 of related party participation at March 31, 2013)",
+     "",
+     "2,496,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Notes payable \u2013 GCP Note",
+     "",
+     "211,580",
+     "",
+     "",
+     "211,580",
+     ""
+    ],
+    [
+     "  Warrant liability",
+     "",
+     "795,374",
+     "",
+     "",
+     "1,098,108",
+     ""
+    ],
+    [
+     "  Deferred tax liability",
+     "",
+     "1,666,456",
+     "",
+     "",
+     "1,814,608",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Liabilities",
+     "",
+     "20,206,862",
+     "",
+     "",
+     "13,772,155",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 13)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred stock, $.01 par value, 25,000,000 shares authorized, 6,701 and 6,897 shares of series A convertible preferred stock issued and outstanding at March 31, 2013 and 2012, respectively (liquidation value of $7,876,530 and $7,327,262 at March 31, 2013 and 2012, respectively)",
+     "",
+     "67,013",
+     "",
+     "",
+     "68,965",
+     ""
+    ],
+    [
+     "    Common stock, $.01 par value, 225,000,000 shares authorized, 108,773,034 and 108,052,067 shares issued and outstanding at March 31, 2013 and 2012, respectively",
+     "",
+     "1,087,730",
+     "",
+     "",
+     "1,080,520",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "142,661,542",
+     "",
+     "",
+     "141,639,228",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(130,270,623)",
+     "",
+     "",
+     "(124,076,608)",
+     ""
+    ],
+    [
+     "  Accumulated other comprehensive loss",
+     "",
+     "(1,918,094)",
+     "",
+     "",
+     "(1,801,656)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total controlling shareholders\u2019 equity",
+     "",
+     "11,627,568",
+     "",
+     "",
+     "16,910,449",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Noncontrolling interests",
+     "",
+     "1,282,665",
+     "",
+     "",
+     "672,173",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total equity",
+     "",
+     "12,910,233",
+     "",
+     "",
+     "17,582,622",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Equity",
+     "$",
+     "33,117,095",
+     "",
+     "$",
+     "31,354,777",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1014,
+    "end_line": 1089
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the consolidated financial position of the Company as of March 31, 2013 and 2012, and the consolidated results of its operations, changes in shareholders' equity and comprehensive loss, and its cash flows for each of the years then ended, in conformity with accounting principles generally accepted in the United States of America.\n/s/ EisnerAmper LLP\nNew York, New York\nJuly 1, 2013\nConsolidated Balance Sheets",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "    Sales, net*",
+     "$",
+     "41,442,994",
+     "",
+     "$",
+     "35,494,615",
+     ""
+    ],
+    [
+     "    Cost of sales*",
+     "",
+     "26,438,238",
+     "",
+     "",
+     "22,694,297",
+     ""
+    ],
+    [
+     "    Provision for obsolete inventory",
+     "",
+     "684,830",
+     "",
+     "",
+     "275,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Gross profit",
+     "",
+     "14,319,926",
+     "",
+     "",
+     "12,525,318",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Selling expense",
+     "",
+     "11,265,108",
+     "",
+     "",
+     "10,502,478",
+     ""
+    ],
+    [
+     "    General and administrative expense",
+     "",
+     "4,850,648",
+     "",
+     "",
+     "4,985,566",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "920,305",
+     "",
+     "",
+     "914,361",
+     ""
+    ],
+    [
+     "    Loss on wine assets",
+     "",
+     "1,715,728",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Loss from operations",
+     "",
+     "(4,431,863)",
+     "",
+     "",
+     "(3,877,087)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Loss from equity investment in non-consolidated affiliate",
+     "",
+     "(22,549)",
+     "",
+     "",
+     "(28,923)",
+     ""
+    ],
+    [
+     "    Foreign exchange loss",
+     "",
+     "(247,431)",
+     "",
+     "",
+     "(722,253)",
+     ""
+    ],
+    [
+     "    Interest expense, net",
+     "",
+     "(587,308)",
+     "",
+     "",
+     "(589,781)",
+     ""
+    ],
+    [
+     "    Net change in fair value of warrant liability",
+     "",
+     "302,734",
+     "",
+     "",
+     "109,767",
+     ""
+    ],
+    [
+     "    Income tax benefit",
+     "",
+     "148,152",
+     "",
+     "",
+     "148,152",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net loss",
+     "",
+     "(4,838,265)",
+     "",
+     "",
+     "(4,960,125)",
+     ""
+    ],
+    [
+     "  Net income attributable to noncontrolling interests",
+     "",
+     "(610,492)",
+     "",
+     "",
+     "(272,200)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to controlling interests",
+     "",
+     "(5,448,757)",
+     "",
+     "",
+     "(5,232,325)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend to preferred shareholders",
+     "",
+     "(744,468)",
+     "",
+     "",
+     "(714,830)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss attributable to common shareholders",
+     "$",
+     "(6,193,225)",
+     "",
+     "$",
+     "(5,947,155)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss per common share, basic and diluted, attributable to common shareholders",
+     "$",
+     "(0.06)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares used in computation, basic and diluted, attributable to common shareholders",
+     "",
+     "108,508,652",
+     "",
+     "",
+     "107,635,565",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1095,
+    "end_line": 1143
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "*Sales, net and Cost of sales include excise taxes of $5,964,374 and $5,460,754 for the years ended March 31, 2013 and 2012, respectively.\nSee accompanying notes to the consolidated financial statements.\nConsolidated Statements of Comprehensive Loss",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1091,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,838,265)",
+     "",
+     "$",
+     "(4,960,125)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Foreign currency translation adjustment",
+     "",
+     "(116,438)",
+     "",
+     "",
+     "(168,154)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other comprehensive loss:",
+     "",
+     "(116,438)",
+     "",
+     "",
+     "(168,154)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(4,954,703)",
+     "",
+     "$",
+     "(5,128,279)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1168
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "*Sales, net and Cost of sales include excise taxes of $5,964,374 and $5,460,754 for the years ended March 31, 2013 and 2012, respectively.\nSee accompanying notes to the consolidated financial statements.\nConsolidated Statements of Comprehensive Loss",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Changes in Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1170,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Noncontrolling",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "Interests",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "  BALANCE, MARCH 31, 2011",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "",
+     "107,202,145",
+     "$",
+     "1,072,021",
+     "$",
+     "135,468,120",
+     "",
+     "$",
+     "(118,413,246)",
+     "",
+     "$",
+     "(1,633,502)",
+     "",
+     "$",
+     "399,973",
+     "$",
+     "16,893,366",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,232,325)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "272,200",
+     "",
+     "(4,960,125)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(168,154)",
+     "",
+     "",
+     "",
+     "",
+     "(168,154)",
+     ""
+    ],
+    [
+     "  Issuance of  series A convertible preferred stock, net of issuance costs",
+     "",
+     "2,155",
+     "",
+     "",
+     "21,550",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,315,578",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,337,128",
+     ""
+    ],
+    [
+     "  Issuance of  series A convertible preferred stock, upon conversion of debt",
+     "",
+     "4,992",
+     "",
+     "",
+     "49,915",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,240,029",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,289,944",
+     ""
+    ],
+    [
+     "  Conversion of series A convertible preferred stock and accrued dividends",
+     "",
+     "(250)",
+     "",
+     "",
+     "(2,500)",
+     "",
+     "",
+     "849,922",
+     "",
+     "8,499",
+     "",
+     "(5,723)",
+     "",
+     "",
+     "(276)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accrued dividends - series A convertible preferred stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "430,761",
+     "",
+     "",
+     "(430,761)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "190,463",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "190,463",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE, MARCH 31, 2012",
+     "",
+     "6,897",
+     "",
+     "$",
+     "68,965",
+     "",
+     "",
+     "108,052,067",
+     "$",
+     "1,080,520",
+     "$",
+     "141,639,228",
+     "",
+     "$",
+     "(124,076,608)",
+     "",
+     "$",
+     "(1,801,656)",
+     "",
+     "$",
+     "672,173",
+     "$",
+     "17,582,622",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (loss) income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(5,448,757)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "610,492",
+     "",
+     "(4,838,265)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(116,438)",
+     "",
+     "",
+     "",
+     "",
+     "(116,438)",
+     ""
+    ],
+    [
+     "  Conversion of series A preferred stock and accrued dividends",
+     "",
+     "(196)",
+     "",
+     "",
+     "(1,952)",
+     "",
+     "",
+     "720,967",
+     "",
+     "7,210",
+     "",
+     "(4,468)",
+     "",
+     "",
+     "(790)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Accrued dividends - series A convertible preferred stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "744,468",
+     "",
+     "",
+     "(744,468)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "282,314",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "282,314",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  BALANCE, MARCH 31, 2013",
+     "",
+     "6,701",
+     "",
+     "$",
+     "67,013",
+     "",
+     "",
+     "108,773,034",
+     "$",
+     "1,087,730",
+     "$",
+     "142,661,542",
+     "",
+     "$",
+     "(130,270,623)",
+     "",
+     "$",
+     "(1,918,094)",
+     "",
+     "$",
+     "1,282,665",
+     "$",
+     "12,910,233",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1174,
+    "end_line": 1206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Changes in Equity",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1170,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1208,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,838,265)",
+     "",
+     "$",
+     "(4,960,125)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "920,305",
+     "",
+     "",
+     "914,361",
+     ""
+    ],
+    [
+     "    Loss on disposition",
+     "",
+     "1,715,728",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Provision for doubtful accounts",
+     "",
+     "86,869",
+     "",
+     "",
+     "68,599",
+     ""
+    ],
+    [
+     "    Amortization of deferred financing costs",
+     "",
+     "96,556",
+     "",
+     "",
+     "61,960",
+     ""
+    ],
+    [
+     "    Change in fair value of warrant liability",
+     "",
+     "(302,734)",
+     "",
+     "",
+     "(109,767)",
+     ""
+    ],
+    [
+     "    Deferred tax benefit",
+     "",
+     "(148,152)",
+     "",
+     "",
+     "(148,152)",
+     ""
+    ],
+    [
+     "    Loss from equity investment in non-consolidated affiliate",
+     "",
+     "22,549",
+     "",
+     "",
+     "28,923",
+     ""
+    ],
+    [
+     "    Effect of changes in foreign exchange",
+     "",
+     "247,431",
+     "",
+     "",
+     "722,253",
+     ""
+    ],
+    [
+     "    Stock-based compensation expense",
+     "",
+     "282,314",
+     "",
+     "",
+     "190,463",
+     ""
+    ],
+    [
+     "    Provision for obsolete inventories",
+     "",
+     "684,830",
+     "",
+     "",
+     "275,000",
+     ""
+    ],
+    [
+     "    Changes in operations, assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts receivable",
+     "",
+     "(861,330)",
+     "",
+     "",
+     "(730,571)",
+     ""
+    ],
+    [
+     "      Due from affiliates",
+     "",
+     "(180,586)",
+     "",
+     "",
+     "93,721",
+     ""
+    ],
+    [
+     "      Inventory",
+     "",
+     "(4,028,581)",
+     "",
+     "",
+     "(2,006,825)",
+     ""
+    ],
+    [
+     "      Prepaid expenses and supplies",
+     "",
+     "(200,405)",
+     "",
+     "",
+     "222,549",
+     ""
+    ],
+    [
+     "      Other assets",
+     "",
+     "(152,061)",
+     "",
+     "",
+     "(189,986)",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "909,815",
+     "",
+     "",
+     "1,082,206",
+     ""
+    ],
+    [
+     "      Accrued interest",
+     "",
+     "(8,400)",
+     "",
+     "",
+     "230,042",
+     ""
+    ],
+    [
+     "      Due to related parties",
+     "",
+     "767,687",
+     "",
+     "",
+     "(150,227)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total adjustments",
+     "",
+     "(148,165)",
+     "",
+     "",
+     "554,549",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN OPERATING ACTIVITIES",
+     "",
+     "(4,986,430)",
+     "",
+     "",
+     "(4,405,576)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "(93,869)",
+     "",
+     "",
+     "(306,799)",
+     ""
+    ],
+    [
+     "Acquisition of intangible assets",
+     "",
+     "(53,564)",
+     "",
+     "",
+     "(37,133)",
+     ""
+    ],
+    [
+     "Change in restricted cash",
+     "",
+     "(730)",
+     "",
+     "",
+     "(26,365)",
+     ""
+    ],
+    [
+     "Payments under contingent consideration agreements",
+     "",
+     "(145,800)",
+     "",
+     "",
+     "(117,048)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(293,963)",
+     "",
+     "",
+     "(487,345)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Keltic facility",
+     "",
+     "2,651,490",
+     "",
+     "",
+     "3,849,831",
+     ""
+    ],
+    [
+     "Issuance of term loan in connection with inventory purchase",
+     "",
+     "2,496,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Foreign revolving credit facility",
+     "",
+     "89,866",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "$2.5 million revolving credit facility",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,000,000)",
+     ""
+    ],
+    [
+     "Note payable \u2014 Betts & Scholl",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(327,648)",
+     ""
+    ],
+    [
+     "Interim notes \u2013 affiliate investors",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,005,000",
+     ""
+    ],
+    [
+     "Issuance of series A convertible preferred stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,155,000",
+     ""
+    ],
+    [
+     "Costs of issuance of series A convertible preferred stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(346,147)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY FINANCING ACTIVITIES",
+     "",
+     "5,237,356",
+     "",
+     "",
+     "4,336,036",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EFFECTS OF FOREIGN CURRENCY TRANSLATION",
+     "",
+     "(2,002)",
+     "",
+     "",
+     "(6,125)",
+     ""
+    ],
+    [
+     "NET DECREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "(45,039)",
+     "",
+     "",
+     "(563,010)",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS \u2014 BEGINNING",
+     "",
+     "484,362",
+     "",
+     "",
+     "1,047,372",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS \u2014 ENDING",
+     "$",
+     "439,323",
+     "",
+     "$",
+     "484,362",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Schedule of non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of warrant liability in connection with series A convertible preferred stock",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "794,457",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$",
+     "442,204",
+     "",
+     "$",
+     "248,022",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1212,
+    "end_line": 1285
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nNotes to Consolidated Financial Statements\nNOTE 1 \u2014 ORGANIZATION AND SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES\nA. Description of business \u2014 The consolidated financial statements include the accounts of Castle Brands Inc. (\u201cthe Company\u201d), its wholly-owned domestic subsidiaries, Castle Brands (USA) Corp. (\u201cCB-USA\u201d) and McLain & Kyne, Ltd. (\u201cMcLain & Kyne\u201d), the Company\u2019s wholly-owned foreign subsidiaries, Castle Brands Spirits Group Limited (\u201cCB-IRL\u201d) and Castle Brands Spirits Marketing and Sales Company Limited, and the Company\u2019s 60% ownership interest in Gosling-Castle Partners, Inc. (\u201cGCP\u201d), with adjustments for income or loss allocated based upon percentage of ownership. The accounts of the subsidiaries have been included as of the date of acquisition. All significant intercompany transactions and balances have been eliminated.\nB. Organization and operations \u2014 The Company is principally engaged in the importation, marketing and sale of premium and super premium brands of rums, whiskey, liqueurs, vodka and tequila in the United States, Canada, Europe, and Asia. Prior to March 31, 2012, the vodka, Irish whiskeys and certain liqueurs were procured by CB-IRL and billed in Euros to CB-USA, with the risk of foreign exchange gain or loss resting with CB-USA. Beginning April 1, 2012, CB-USA began purchasing these goods directly from the suppliers.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1208,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1287,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Stock options",
+     "",
+     "8,120,765",
+     "",
+     "6,330,599"
+    ],
+    [
+     "Warrants to purchase common stock",
+     "",
+     "11,874,087",
+     "",
+     "13,417,301"
+    ],
+    [
+     "Convertible preferred stock and accrued dividends",
+     "",
+     "25,879,807",
+     "",
+     "24,086,314"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "45,874,659",
+     "",
+     "43,834,214"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1378,
+    "end_line": 1391
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 BASIC AND DILUTED NET LOSS PER COMMON SHARE"
+    }
+   },
+   "prose_before": "X. Reclassification \u2014 Certain prior year balances have been reclassified to conform to the current year presentation.\nNOTE 2 \u2014 BASIC AND DILUTED NET LOSS PER COMMON SHARE\nBasic net loss per common share is computed by dividing net loss by the weighted average number of common shares outstanding during the period. Diluted net loss per common share is computed giving effect to all potentially dilutive common shares that were outstanding during the period that are not anti-dilutive. Potentially dilutive common shares consist of incremental shares issuable upon exercise of stock options and warrants or conversion of convertible preferred stock outstanding and related accrued dividends. In computing diluted net loss per share for the years ended March 31, 2013 and 2012, no adjustment has been made to the weighted average outstanding common shares as the assumed exercise of outstanding options and warrants and the assumed conversion of convertible preferred stock and related accrued dividends is anti-dilutive.\nPotential common shares not included in calculating diluted net loss per share are as follows:",
+   "prose_after": "NOTE 3 \u2014 INVENTORIES",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1375,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Raw materials \u2013 net",
+     "$",
+     "5,191,147",
+     "$",
+     "3,107,615"
+    ],
+    [
+     "Finished goods \u2013 net",
+     "",
+     "8,540,815",
+     "",
+     "7,625,083"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "13,731,962",
+     "$",
+     "10,732,698"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1394,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2014 INVENTORIES"
+    }
+   },
+   "prose_before": "NOTE 3 \u2014 INVENTORIES",
+   "prose_after": "As of March 31, 2013 and 2012, 19% and 22%, respectively, of raw materials and 4% and 3%, respectively, of finished goods were located outside of the United States.\nIn March 2013, the Company acquired $2,496,000 of bulk bourbon whiskey in support of its anticipated near-term needs.\nThe Company estimates the allowance for obsolete and slow moving inventory based on analyses and assumptions including, but not limited to, historical usage, expected future demand and market requirements.\nInventories are stated at the lower of weighted average cost or market.\nNOTE 4 \u2014 EQUITY INVESTMENT\nInvestment in DP Castle Partners, LLC\nIn August 2010, CB-USA formed DP Castle Partners, LLC (\u201cDPCP\u201d) with Drink Pie, LLC to manage the manufacturing and marketing of Travis Hasse\u2019s Original Apple Pie Liqueur, Cherry Pie Liqueur and any future line extensions of the brand. DPCP has the exclusive global rights to produce and market Travis Hasse\u2019s Original Pie Liqueurs and CB-USA has the global distribution rights for this brand. DPCP pays a per case royalty fee to Drink Pie, LLC under a licensing agreement. CB-USA purchases the finished product from DPCP at a pre-determined margin and then uses its existing infrastructure, sales force and distributor network to sell the product and promote the brands. Finished goods are sold to CB-USA FOB \u2013 Production and CB-USA bears the risk of loss on both inventory and third-party receivables. Revenues and cost of sales are recorded at their respective gross amounts on the books and records of CB-USA. For the years ended March 31, 2013 and 2012, CB-USA purchased $867,280 and $741,830, respectively, in finished goods from DPCP under the distribution agreement. As of March 31, 2013, DPCP was indebted to CB-USA in the amount of $268,598, which is included in due from shareholders and affiliates on the accompanying consolidated balance sheet. As of March 31, 2012, CB-USA was indebted to DPCP in the amount of $28,469, which is included in due to shareholders and affiliates on the accompanying consolidated balance sheet. At March 31, 2013, CB-USA owned 20% of the DPCP and, under the terms of the agreement, will increase its stake in DPCP based on achieving case sale targets. The Company has accounted for this investment under the equity method of accounting. This investment balance was $116,700 and $130,850 at March 31, 2013 and 2012, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1375,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Equipment and software",
+     "$",
+     "2,026,028",
+     "$",
+     "1,964,123"
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "10,325",
+     "",
+     "10,325"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,036,353",
+     "",
+     "1,974,448"
+    ],
+    [
+     "Less: accumulated depreciation",
+     "",
+     "1,519,712",
+     "",
+     "1,353,608"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance",
+     "$",
+     "516,641",
+     "$",
+     "620,840"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1431,
+    "end_line": 1447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014 EQUIPMENT, NET"
+    }
+   },
+   "prose_before": "In August 2010, CB-USA formed DP Castle Partners, LLC (\u201cDPCP\u201d) with Drink Pie, LLC to manage the manufacturing and marketing of Travis Hasse\u2019s Original Apple Pie Liqueur, Cherry Pie Liqueur and any future line extensions of the brand. DPCP has the exclusive global rights to produce and market Travis Hasse\u2019s Original Pie Liqueurs and CB-USA has the global distribution rights for this brand. DPCP pays a per case royalty fee to Drink Pie, LLC under a licensing agreement. CB-USA purchases the finished product from DPCP at a pre-determined margin and then uses its existing infrastructure, sales force and distributor network to sell the product and promote the brands. Finished goods are sold to CB-USA FOB \u2013 Production and CB-USA bears the risk of loss on both inventory and third-party receivables. Revenues and cost of sales are recorded at their respective gross amounts on the books and records of CB-USA. For the years ended March 31, 2013 and 2012, CB-USA purchased $867,280 and $741,830, respectively, in finished goods from DPCP under the distribution agreement. As of March 31, 2013, DPCP was indebted to CB-USA in the amount of $268,598, which is included in due from shareholders and affiliates on the accompanying consolidated balance sheet. As of March 31, 2012, CB-USA was indebted to DPCP in the amount of $28,469, which is included in due to shareholders and affiliates on the accompanying consolidated balance sheet. At March 31, 2013, CB-USA owned 20% of the DPCP and, under the terms of the agreement, will increase its stake in DPCP based on achieving case sale targets. The Company has accounted for this investment under the equity method of accounting. This investment balance was $116,700 and $130,850 at March 31, 2013 and 2012, respectively.\nNOTE 5 \u2014 ACQUISITIONS\nAcquisition of McLain & Kyne\nOn October 12, 2006, the Company acquired all of the outstanding capital stock of McLain & Kyne. Under the McLain & Kyne purchase agreement, as amended, the Company paid contingent consideration to the sellers based on the financial performance of certain assets of the acquired business through March 31, 2011. The Company is also required to pay contingent consideration, based on the case sales of Jefferson\u2019s Presidential Select bourbon for a specified amount of cases, rather than a fixed period of time. For the years ended March 31, 2013 and 2012, the sellers earned $145,800 and $117,048, respectively, under this agreement. The earn-out payments have been recorded as an increase to goodwill.\nNOTE 6 \u2014 EQUIPMENT, NET\nEquipment consists of the following:",
+   "prose_after": "Depreciation expense for the years ended March 31, 2013 and 2012 totaled $187,539 and $180,183, respectively.\nNOTE 7 \u2014 GOODWILL AND INTANGIBLE ASSETS\nIn March 2013, the Company determined to reduce its sales and marketing efforts on its wine brands, which do not provide a material contribution to the Company\u2019s results of operations. The Company made this decision to optimize its resources and focus on its faster growing and more profitable spirits brands, and to reduce the levels of working capital required to maintain necessary inventory levels of bulk wine and finished goods. The Company intends to continue selling existing finished goods wine inventory through its current sales channels, but is actively seeking buyers for large lots and for its bulk wine. In connection with this decision, the Company recognized a loss of $1,715,728, consisting of $817,156 on the write-down of net intangible assets and $898,572 in goodwill, as well as $326,869 charged to the provision for obsolete inventory to adjust both bulk wine and finished goods to estimated net realizable value, for the year ended March 31, 2013.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "  Balance as of March 31, 2011",
+     "$",
+     "1,126,010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Payments under McLain and Kyne agreement",
+     "",
+     "117,048",
+     ""
+    ],
+    [
+     "  Balance as of March 31, 2012",
+     "$",
+     "1,243,058",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Write-down of goodwill related to wine brands",
+     "",
+     "(898,572)",
+     ""
+    ],
+    [
+     "  Payments under McLain and Kyne agreement",
+     "",
+     "145,800",
+     ""
+    ],
+    [
+     "  Balance as of March 31, 2013",
+     "$",
+     "490,286",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Amount"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1456,
+    "end_line": 1472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 GOODWILL AND INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "In March 2013, the Company determined to reduce its sales and marketing efforts on its wine brands, which do not provide a material contribution to the Company\u2019s results of operations. The Company made this decision to optimize its resources and focus on its faster growing and more profitable spirits brands, and to reduce the levels of working capital required to maintain necessary inventory levels of bulk wine and finished goods. The Company intends to continue selling existing finished goods wine inventory through its current sales channels, but is actively seeking buyers for large lots and for its bulk wine. In connection with this decision, the Company recognized a loss of $1,715,728, consisting of $817,156 on the write-down of net intangible assets and $898,572 in goodwill, as well as $326,869 charged to the provision for obsolete inventory to adjust both bulk wine and finished goods to estimated net realizable value, for the year ended March 31, 2013.\nThe changes in the carrying amount of goodwill for the years ended March 31, 2013 and 2012 were as follows:",
+   "prose_after": "Intangible assets consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Definite life brands",
+     "$",
+     "170,000",
+     "$",
+     "170,000"
+    ],
+    [
+     "Trademarks",
+     "",
+     "535,947",
+     "",
+     "557,947"
+    ],
+    [
+     "Rights",
+     "",
+     "8,271,555",
+     "",
+     "8,271,555"
+    ],
+    [
+     "Distributor relationships",
+     "",
+     "\u2014",
+     "",
+     "664,000"
+    ],
+    [
+     "Product development",
+     "",
+     "96,959",
+     "",
+     "43,395"
+    ],
+    [
+     "Patents",
+     "",
+     "994,000",
+     "",
+     "994,000"
+    ],
+    [
+     "Other",
+     "",
+     "28,480",
+     "",
+     "28,480"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "10,096,941",
+     "",
+     "10,729,377"
+    ],
+    [
+     "Less: accumulated amortization",
+     "",
+     "5,404,000",
+     "",
+     "4,906,061"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net",
+     "",
+     "4,692,941",
+     "",
+     "5,823,316"
+    ],
+    [
+     "Other identifiable intangible assets \u2014 indefinite lived*",
+     "",
+     "4,112,972",
+     "",
+     "4,478,972"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "8,805,913",
+     "$",
+     "10,302,288"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1475,
+    "end_line": 1500
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 GOODWILL AND INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Intangible assets consist of the following:",
+   "prose_after": "Accumulated amortization consists of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1426,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Definite life brands",
+     "$",
+     "169,999",
+     "$",
+     "160,552"
+    ],
+    [
+     "Trademarks",
+     "",
+     "230,379",
+     "",
+     "197,197"
+    ],
+    [
+     "Rights",
+     "",
+     "4,409,221",
+     "",
+     "3,857,271"
+    ],
+    [
+     "Distributor relationships",
+     "",
+     "\u2014",
+     "",
+     "166,978"
+    ],
+    [
+     "Product development",
+     "",
+     "16,280",
+     "",
+     "12,210"
+    ],
+    [
+     "Patents",
+     "",
+     "578,121",
+     "",
+     "511,853"
+    ],
+    [
+     "Other",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "$",
+     "5,404,000",
+     "$",
+     "4,906,061"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1503,
+    "end_line": 1520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 GOODWILL AND INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "Accumulated amortization consists of the following:",
+   "prose_after": "* Other identifiable intangible assets \u2014 indefinite lived consists of product formulations.\nAmortization expense for the years ended March 31, 2013 and 2012 totaled $732,783 and $734,179, respectively.\nEstimated aggregate amortization expense for each of the next five fiscal years is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending March 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2014",
+     "$",
+     "642,697"
+    ],
+    [
+     "2015",
+     "",
+     "636,236"
+    ],
+    [
+     "2016",
+     "",
+     "635,433"
+    ],
+    [
+     "2017",
+     "",
+     "635,433"
+    ],
+    [
+     "2018",
+     "",
+     "635,433"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "3,185,232"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1527,
+    "end_line": 1540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014 GOODWILL AND INTANGIBLE ASSETS"
+    }
+   },
+   "prose_before": "* Other identifiable intangible assets \u2014 indefinite lived consists of product formulations.\nAmortization expense for the years ended March 31, 2013 and 2012 totaled $732,783 and $734,179, respectively.\nEstimated aggregate amortization expense for each of the next five fiscal years is as follows:",
+   "prose_after": "NOTE 8 \u2014 RESTRICTED CASH\nAt March 31, 2013 and 2012, the Company had \u20ac352,255 or $451,346 (translated at the March 31, 2013 exchange rate) and \u20ac351,089 or $468,275 (translated at the March 31, 2012 exchange rate), respectively, of cash restricted from withdrawal and held by a bank in Ireland as collateral for overdraft coverage, creditors\u2019 insurance, customs and excise guaranty and a revolving credit facility.\nNOTE 9 \u2014 NOTES PAYABLE AND CAPITAL LEASE",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "Notes payable consist of the following:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Foreign revolving credit facilities (A)",
+     "$",
+     "89,407",
+     "$",
+     "-"
+    ],
+    [
+     "    Note payable (B)",
+     "",
+     "211,580",
+     "",
+     "211,580"
+    ],
+    [
+     "    Keltic Facility (C)",
+     "",
+     "6,501,321",
+     "",
+     "3,849,831"
+    ],
+    [
+     "    Inventory Term Loan (D)",
+     "",
+     "2,496,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total",
+     "$",
+     "9,298,308",
+     "$",
+     "4,061,411"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1547,
+    "end_line": 1562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 NOTES PAYABLE AND CAPITAL LEASE"
+    }
+   },
+   "prose_before": "NOTE 8 \u2014 RESTRICTED CASH\nAt March 31, 2013 and 2012, the Company had \u20ac352,255 or $451,346 (translated at the March 31, 2013 exchange rate) and \u20ac351,089 or $468,275 (translated at the March 31, 2012 exchange rate), respectively, of cash restricted from withdrawal and held by a bank in Ireland as collateral for overdraft coverage, creditors\u2019 insurance, customs and excise guaranty and a revolving credit facility.\nNOTE 9 \u2014 NOTES PAYABLE AND CAPITAL LEASE",
+   "prose_after": "A. The Company has arranged various facilities aggregating \u20ac350,000 or $448,571 (translated at the March 31, 2013 exchange rate) with an Irish bank, including overdraft coverage, creditors\u2019 insurance, customs and excise guaranty, and a revolving credit facility. These facilities are payable on demand, continue until terminated by either party, are subject to annual review, and call for interest at the lender\u2019s AA1 Rate minus 1.70%. The balance on the credit facilities included in notes payable totaled \u20ac69,761 or $89,407, (translated at the March 31, 2013 exchange rate) and $0 at March 31, 2013 and 2012, respectively.\nB. In December 2009, GCP issued a promissory note (the \u201cGCP Note\u201d) in the aggregate principal amount of $211,580 to Gosling's Export (Bermuda) Limited in exchange for credits issued on certain inventory purchases. The GCP Note matures on April 1, 2020, is payable at maturity, subject to certain acceleration events, and calls for annual interest of 5%, to be accrued and paid at maturity. At March 31, 2013 and 2012, $10,579 of accrued interest was converted to amounts due to shareholders and affiliates. At March 31, 2013 and 2012, $211,580 of principal due on the GCP Note is included in long-term liabilities.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1500,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1567,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "F",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending March 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2014",
+     "$",
+     "89,407"
+    ],
+    [
+     "2015",
+     "",
+     "\u2014"
+    ],
+    [
+     "2016",
+     "",
+     "\u2014"
+    ],
+    [
+     "2017",
+     "",
+     "8,997,321"
+    ],
+    [
+     "Thereafter",
+     "",
+     "211,580"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "9,298,308"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1593,
+    "end_line": 1606
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014 NOTES PAYABLE AND CAPITAL LEASE"
+    }
+   },
+   "prose_before": "Keltic required as a condition to funding the Term Loan that Keltic had entered into a participation agreement (the \"Participation Agreement\") providing for an aggregate of $750,000 of the Term Loan to be purchased by junior participants. Certain related parties of the Company purchased a portion of these junior participations in the Term Loan, including Frost Gamma Investments Trust ($500,000), an entity affiliated with Phillip Frost, M.D., a director and principal shareholder of the Company, Mark E. Andrews, III ($50,000), a director of the Company and the Company\u2019s Chairman, and an affiliate of Richard J. Lampen ($50,000), a director of the Company and the Company\u2019s President and Chief Executive Officer. Under the terms of the Participation Agreement, the junior participants will receive interest at the rate of 11% per annum. Neither the Company nor CB-USA is a party to the Participation Agreement. However, the Borrower is party to a fee letter (the \"Fee Letter\") with the junior participants (including the related party junior participants) pursuant to which the Borrower is obligated to pay the junior participants an aggregate commitment fee of $45,000 in three equal annual installments of $15,000. The balance on the credit facilities included in notes payable totaled $2,496,000 and $0 at March 31, 2013 and 2012, respectively.\nPayments due on notes payable are as follows:",
+   "prose_after": "NOTE 10 \u2014 EQUITY\nPreferred stock issuance \u2013 In June 2011 the Company entered into agreements relating to a private placement (the \u201cJune 2011 Private Placement\u201d) of an aggregate of approximately $7,100,000 of newly-designated 10% Series A Convertible Preferred Stock, par value $0.01 per share (\u201cSeries A Preferred Stock\u201d). As part of the June 2011 Private Placement, the Company completed a private offering to third-party investors of $2,155,000 of Series A Preferred Stock for its stated value of $1,000 per share and warrants (\u201c2011 Warrants\u201d) to purchase 50% of the number of shares of the Company\u2019s common stock, issuable upon conversion of such Series A Preferred Stock. Subject to adjustment (including dilutive issuances), the Series A Preferred Stock is convertible into common stock at a conversion price of $0.304 per share and the 2011 Warrants have an exercise price of $0.38 per share.\nHolders of Series A Preferred Stock are entitled to receive cumulative dividends at the rate per share (as a percentage of the stated value per share) of 10% per annum, whether or not declared by the Company\u2019s Board of Directors, which are only payable in shares of the Company\u2019s common stock upon conversion of the Series A Preferred Stock or upon a liquidation. For the years ended March 31, 2013 and 2012, the Company recorded accrued dividends of $744,467 and $430,761, respectively, included as an increase in the accumulated deficit and in additional paid-in capital on the accompanying consolidated balance sheets.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1622,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "",
+     "%",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Computed expected tax benefit, at 34%",
+     "",
+     "34.00",
+     "",
+     "",
+     "34.00",
+     ""
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "(34.39)",
+     "",
+     "",
+     "(43.34)",
+     ""
+    ],
+    [
+     "Effect of foreign rate differential",
+     "",
+     "(2.96)",
+     "",
+     "",
+     "(2.17)",
+     ""
+    ],
+    [
+     "Taxes included in minority interest",
+     "",
+     "(3.81)",
+     "",
+     "",
+     "(1.87)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "(1.56)",
+     "",
+     "",
+     "4.39",
+     ""
+    ],
+    [
+     "State and local taxes, net of federal benefit",
+     "",
+     "6.00",
+     "",
+     "",
+     "6.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "(2.72)",
+     "",
+     "",
+     "(2.99)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1649,
+    "end_line": 1666
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014 PROVISION FOR INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company\u2019s income tax benefit for the years ended March 31, 2013 and 2012 consists of federal, state and local taxes attributable to GCP, which does not file a consolidated income tax return with the Company, and foreign taxes. As of March 31, 2013, the Company had federal net operating loss carryforwards of approximately $79,100,000 for U.S. tax purposes, which expire through 2033, and foreign net operating loss carryforwards of approximately $19,700,000, which carry forward without limit of time. Utilization of the U.S. tax losses may be limited by the \u201cchange of ownership\u201d rules as set forth in section 382 of the Internal Revenue Code.\nThe pre-tax income, on a financial statement basis, from foreign sources totaled $412,182 for the year ended March 31, 2013 and the pre-tax loss, on a financial statement basis, from foreign sources totaled $154,328 for the year ended March 31, 2012.\nThe Company did not have any undistributed earnings from foreign subsidiaries at March 31, 2013 and 2012.\nThe following table reconciles the income tax benefit and the federal statutory rate of 34%.",
+   "prose_after": "In connection with the investment in GCP, the Company recorded a deferred tax liability on the ascribed value of the acquired intangible assets of $2,222,222, increasing the value of the asset. The deferred tax liability is being reversed and a deferred tax benefit is being recognized over the amortization period of the intangible asset (15 years). For each of the years ended March 31, 2013 and 2012, the Company recognized $148,152 of income tax benefit.\nThe tax effects of temporary differences that give rise to deferred tax assets and deferred tax liabilities are presented below.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Foreign currency transactions",
+     "$",
+     "103,000",
+     "",
+     "$",
+     "105,000",
+     ""
+    ],
+    [
+     "    Accounts receivable",
+     "",
+     "5,000",
+     "",
+     "",
+     "38,000",
+     ""
+    ],
+    [
+     "    Inventory",
+     "",
+     "280,000",
+     "",
+     "",
+     "164,000",
+     ""
+    ],
+    [
+     "    Stock based compensation",
+     "",
+     "1,967,000",
+     "",
+     "",
+     "1,854,000",
+     ""
+    ],
+    [
+     "    Amortization of intangibles",
+     "",
+     "1,463,000",
+     "",
+     "",
+     "1,306,000",
+     ""
+    ],
+    [
+     "    Net operating loss carryforwards \u2014 U.S.",
+     "",
+     "31,623,000",
+     "",
+     "",
+     "30,012,000",
+     ""
+    ],
+    [
+     "    Net operating loss carryforwards \u2014 foreign",
+     "",
+     "1,957,000",
+     "",
+     "",
+     "1,916,000",
+     ""
+    ],
+    [
+     "    Other",
+     "",
+     "2,000",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total gross assets",
+     "",
+     "37,400,000",
+     "",
+     "",
+     "35,397,000",
+     ""
+    ],
+    [
+     "    Less: Valuation allowance",
+     "",
+     "(37,400,000)",
+     "",
+     "",
+     "(35,397,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net deferred asset",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Deferred income tax liability:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Intangible assets acquired in acquisition of subsidiary",
+     "$",
+     "(629,444)",
+     "",
+     "$",
+     "(629,444)",
+     ""
+    ],
+    [
+     "    Intangible assets acquired in investment in GCP",
+     "",
+     "(1,037,012)",
+     "",
+     "",
+     "(1,185,164)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net deferred income tax liability",
+     "$",
+     "(1,666,456)",
+     "",
+     "$",
+     "(1,814,608)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1671,
+    "end_line": 1702
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2014 PROVISION FOR INCOME TAXES"
+    }
+   },
+   "prose_before": "In connection with the investment in GCP, the Company recorded a deferred tax liability on the ascribed value of the acquired intangible assets of $2,222,222, increasing the value of the asset. The deferred tax liability is being reversed and a deferred tax benefit is being recognized over the amortization period of the intangible asset (15 years). For each of the years ended March 31, 2013 and 2012, the Company recognized $148,152 of income tax benefit.\nThe tax effects of temporary differences that give rise to deferred tax assets and deferred tax liabilities are presented below.",
+   "prose_after": "The Company has recorded a full valuation allowance against its deferred tax assets as it believes it is more likely than not that such deferred tax assets will not be realized. The valuation allowance for deferred tax assets as of March 31, 2013 and 2012 was approximately $37,400,000 and $35,397,000, respectively. The net change in the total valuation allowance for the years ended March 31, 2013 and 2012 was $2,003,000 and $2,250,000, respectively. The Company does not offset its deferred tax assets and liabilities because its deferred tax assets and liabilities are in different taxable entities which do not file consolidated returns.\nNOTE 13 \u2014 STOCK-BASED COMPENSATION\nA. Stock Incentive Plan \u2014 In July 2003, the Company implemented the 2003 Stock Incentive Plan (the \u201c2003 Plan\u201d), which provides for awards of incentive and non-qualified stock options, restricted stock and stock appreciation rights for its officers, employees, consultants and directors to attract and retain such individuals. Stock option grants under the Plan are granted with an exercise price at or above the fair market value of the underlying common stock at the date of grant, generally vest over a three to five year period and expire ten years after the grant date.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1646,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "Exercise",
+     "",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Price",
+     "",
+     "Shares",
+     "",
+     "",
+     "Price",
+     ""
+    ],
+    [
+     "Outstanding at beginning of year",
+     "",
+     "6,330,599",
+     "",
+     "$",
+     "0.74",
+     "",
+     "4,570,850",
+     "",
+     "$",
+     "0.92"
+    ],
+    [
+     "Granted",
+     "",
+     "1,800,166",
+     "",
+     "",
+     "0.30",
+     "",
+     "1,837,349",
+     "",
+     "",
+     "0.32"
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.00",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.00"
+    ],
+    [
+     "Forfeited",
+     "",
+     "(10,000)",
+     "",
+     "",
+     "0.34",
+     "",
+     "(77,600)",
+     "",
+     "",
+     "1.46"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at end of period",
+     "",
+     "8,120,765",
+     "",
+     "$",
+     "0.64",
+     "",
+     "6,330,599",
+     "",
+     "$",
+     "0.74"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at period end",
+     "",
+     "4,248,958",
+     "",
+     "$",
+     "0.94",
+     "",
+     "2,736,600",
+     "",
+     "$",
+     "1.28"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average fair value of grants during the period",
+     "",
+     "",
+     "",
+     "$",
+     "0.16",
+     "",
+     "",
+     "",
+     "$",
+     "0.19"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1717,
+    "end_line": 1741
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "In October 2012, the Company\u2019s shareholders approved the 2013 Incentive Compensation Plan (\u201c2013 Plan\u201d) which provides for awards of incentive and non-qualified stock options, restricted stock and stock appreciation rights for its officers, employees, consultants and directors to attract and retain such individuals. As of March 31, 2013, no shares had been issued under the 2013 Plan.\nStock based compensation expense for the years ended March 31, 2013 and 2012 amounted to $282,314 and $190,463, respectively, of which $51,075 and $32,107, respectively, is included in selling expense and $231,239 and $158,356, respectively, is included in general and administrative expense for the years ended March 31, 2013 and 2012, respectively. At March 31, 2013, total unrecognized compensation cost amounted to approximately $481,119, representing 3,886,182 unvested options. This cost is expected to be recognized over a weighted-average period of 2.22 years. There were no shares exercised during the years ended March 31, 2013 and 2012.\nStock Options \u2014 A summary of the options outstanding under the 2003 Plan is as follows:",
+   "prose_after": "The following table summarizes activity pertaining to options outstanding and exercisable at March 31, 2013:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Remaining",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "Range of",
+     "",
+     "",
+     "Life in",
+     "",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Intrinsic",
+     ""
+    ],
+    [
+     "Exercise Prices",
+     "Shares",
+     "",
+     "Years",
+     "",
+     "Shares",
+     "",
+     "Price",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "$0.01 \u2014 $0.25",
+     "",
+     "631,400",
+     "",
+     "5.57",
+     "",
+     "631,400",
+     "$",
+     "0.22",
+     "$",
+     "55,351"
+    ],
+    [
+     "$0.26 \u2014 $0.35",
+     "",
+     "7,031,865",
+     "",
+     "7.64",
+     "",
+     "3,160,058",
+     "",
+     "0.34",
+     "",
+     "27,082"
+    ],
+    [
+     "$1.01 \u2014 $2.00",
+     "",
+     "68,000",
+     "",
+     "4.84",
+     "",
+     "68,000",
+     "",
+     "1.82",
+     "",
+     "\u2014"
+    ],
+    [
+     "$5.01 \u2014 $6.00",
+     "",
+     "181,000",
+     "",
+     "0.84",
+     "",
+     "181,000",
+     "",
+     "6.00",
+     "",
+     "\u2014"
+    ],
+    [
+     "$6.01 \u2014 $7.00",
+     "",
+     "17,000",
+     "",
+     "3.99",
+     "",
+     "17,000",
+     "",
+     "6.36",
+     "",
+     "\u2014"
+    ],
+    [
+     "$7.01 \u2014 $8.00",
+     "",
+     "184,000",
+     "",
+     "2.68",
+     "",
+     "184,000",
+     "",
+     "7.57",
+     "",
+     "\u2014"
+    ],
+    [
+     "$8.01 \u2014 $9.00",
+     "",
+     "7,500",
+     "",
+     "3.86",
+     "",
+     "7,500",
+     "",
+     "9.00",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "8,120,765",
+     "",
+     "7.18",
+     "",
+     "4,248,958",
+     "$",
+     "0.94",
+     "$",
+     "82,433"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1744,
+    "end_line": 1765
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The following table summarizes activity pertaining to options outstanding and exercisable at March 31, 2013:",
+   "prose_after": "Total stock options exercisable as of March 31, 2013 were 4,248,958. The weighted average exercise price of these options was $0.94. The weighted average remaining life of the options outstanding was 7.18 years and of the options exercisable was 6.02 years.\nThe following summarizes activity pertaining to the Company\u2019s unvested options for the years ended March 31, 2013 and 2012:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Exercise",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Price",
+     ""
+    ],
+    [
+     "Unvested at March 31, 2011",
+     "",
+     "2,688,100",
+     "",
+     "$",
+     "0.34"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,837,349",
+     "",
+     "",
+     "0.32"
+    ],
+    [
+     "Canceled or expired",
+     "",
+     "(16,250)",
+     "",
+     "",
+     "0.35"
+    ],
+    [
+     "Vested",
+     "",
+     "(915,200)",
+     "",
+     "",
+     "0.34"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unvested at March 31, 2012",
+     "",
+     "3,593,999",
+     "",
+     "$",
+     "0.34"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,800,166",
+     "",
+     "",
+     "0.30"
+    ],
+    [
+     "Canceled or expired",
+     "",
+     "(8,750)",
+     "",
+     "",
+     "0.34"
+    ],
+    [
+     "Vested",
+     "",
+     "(1,513,608)",
+     "",
+     "",
+     "0.33"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unvested at March 31, 2013",
+     "",
+     "3,871,807",
+     "",
+     "$",
+     "0.32"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average",
+    "Exercise"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1770,
+    "end_line": 1796
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Total stock options exercisable as of March 31, 2013 were 4,248,958. The weighted average exercise price of these options was $0.94. The weighted average remaining life of the options outstanding was 7.18 years and of the options exercisable was 6.02 years.\nThe following summarizes activity pertaining to the Company\u2019s unvested options for the years ended March 31, 2013 and 2012:",
+   "prose_after": "The fair value of each award under the Plan is estimated on the grant date using the Black-Scholes option pricing model and is affected by assumptions regarding a number of complex and subjective variables. The use of an option pricing model also requires the use of a number of complex assumptions including expected volatility, risk-free interest rate, expected dividends, and expected term. Expected volatility is based on the Company\u2019s historical volatility and the volatility of a peer group of companies over the expected life of the option. The expected term and vesting of the options represents the estimated period of time until exercise. The expected term was determined using the simplified method available under current guidance. The risk-free interest rate is based on the U.S. Treasury yield curve in effect at the time of grant for the expected term of the option. The Company has not paid dividends on its common stock in the past and does not plan to pay any dividends on its common stock in the near future. Current authoritative guidance also requires the Company to estimate forfeitures at the time of grant and revise these estimates, if necessary, in subsequent periods if actual forfeitures differ from those estimates. The Company estimates forfeitures based on its expectation of future experience while considering its historical experience.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.67% - 0.89",
+     "%",
+     "",
+     "0.89",
+     "%"
+    ],
+    [
+     "Expected option life in years",
+     "",
+     "5.5 - 6.25",
+     "",
+     "",
+     "6.04",
+     ""
+    ],
+    [
+     "Expected stock price volatility",
+     "",
+     "65",
+     "%",
+     "",
+     "65",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1801,
+    "end_line": 1810
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The fair value of each award under the Plan is estimated on the grant date using the Black-Scholes option pricing model and is affected by assumptions regarding a number of complex and subjective variables. The use of an option pricing model also requires the use of a number of complex assumptions including expected volatility, risk-free interest rate, expected dividends, and expected term. Expected volatility is based on the Company\u2019s historical volatility and the volatility of a peer group of companies over the expected life of the option. The expected term and vesting of the options represents the estimated period of time until exercise. The expected term was determined using the simplified method available under current guidance. The risk-free interest rate is based on the U.S. Treasury yield curve in effect at the time of grant for the expected term of the option. The Company has not paid dividends on its common stock in the past and does not plan to pay any dividends on its common stock in the near future. Current authoritative guidance also requires the Company to estimate forfeitures at the time of grant and revise these estimates, if necessary, in subsequent periods if actual forfeitures differ from those estimates. The Company estimates forfeitures based on its expectation of future experience while considering its historical experience.\nThe fair value of options at grant date was estimated using the Black-Scholes option pricing model utilizing the following weighted average assumptions:",
+   "prose_after": "B. Warrants \u2014 The Company has entered into various warrant agreements.\n2011 Warrants issued in connection with the Series A Preferred Stock\nThe 2011 Warrants issued in connection with the Series A Preferred Stock have an exercise price of $0.38 per share, subject to adjustment, and are exercisable for a period of five years. The exercise price of the 2011 Warrants is equal to 125% of the conversion price of the Series A Preferred Stock.\nThe Company accounted for the 2011 Warrants issued in June 2011 in the consolidated financial statements as a liability at their initial fair value of $487,022 and accounted for the 2011 Warrants issued in October 2011 as a liability at their initial fair value of $780,972. Changes in the fair value of the 2011 Warrants will be recognized in earnings for each subsequent reporting period. At March 31, 2013 and 2012, the fair value of the 2011 Warrants was included in the balance sheet under the caption Warrant liability of $795,374 and $1,098,108, respectively. For the years ended March 31, 2013 and 2012, the Company recorded a gain for the change in the value of the 2011 Warrants of $302,734 and $109,767, respectively.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1767,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2013",
+     "",
+     "",
+     "March 31, 2012",
+     "",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.36",
+     "%",
+     "",
+     "1.07",
+     "%"
+    ],
+    [
+     "Expected option life in years",
+     "",
+     "3.25",
+     "",
+     "",
+     "4.25",
+     ""
+    ],
+    [
+     "Expected stock price volatility",
+     "",
+     ".40",
+     "%",
+     "",
+     ".55",
+     "%"
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1821,
+    "end_line": 1829
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "The 2011 Warrants issued in connection with the Series A Preferred Stock have an exercise price of $0.38 per share, subject to adjustment, and are exercisable for a period of five years. The exercise price of the 2011 Warrants is equal to 125% of the conversion price of the Series A Preferred Stock.\nThe Company accounted for the 2011 Warrants issued in June 2011 in the consolidated financial statements as a liability at their initial fair value of $487,022 and accounted for the 2011 Warrants issued in October 2011 as a liability at their initial fair value of $780,972. Changes in the fair value of the 2011 Warrants will be recognized in earnings for each subsequent reporting period. At March 31, 2013 and 2012, the fair value of the 2011 Warrants was included in the balance sheet under the caption Warrant liability of $795,374 and $1,098,108, respectively. For the years ended March 31, 2013 and 2012, the Company recorded a gain for the change in the value of the 2011 Warrants of $302,734 and $109,767, respectively.\nThe fair value of the warrants is a Level 3 fair value under the valuation hierarchy and was estimated using the Black-Scholes option pricing model utilizing the following assumptions:",
+   "prose_after": "Warrants to Purchase Common Stock Issued to Senior Note Holders\nIn connection with the issuance of senior notes in November 2006, the Company entered into warrant agreements granting the right to purchase 213,600 shares of the Company\u2019s common stock at an exercise price of $8.00 per share at any time through March 31, 2012. These warrants were recorded at fair value and accounted for as a discount to the face value of the senior notes and a credit to additional paid-in capital in the amount of $706,944. This discount was fully recognized over the adjusted term of the senior notes with a charge to interest expense and a credit to senior notes payable. The warrants were not exercised prior to their expiration on March 31, 2012.\nThe following is a summary of the Company\u2019s outstanding warrants for the periods presented:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1868,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Exercise",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Price",
+     ""
+    ],
+    [
+     "",
+     "Warrants",
+     "",
+     "",
+     "Per Warrant",
+     ""
+    ],
+    [
+     "Warrants outstanding and exercisable, March 31, 2011",
+     "",
+     "1,926,814",
+     "",
+     "$",
+     "6.72"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Granted",
+     "",
+     "11,754,087",
+     "",
+     "",
+     "0.38"
+    ],
+    [
+     "  Exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Forfeited",
+     "",
+     "(263,600)",
+     "",
+     "",
+     "7.24"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding and exercisable, March 31, 2012",
+     "",
+     "13,417,301",
+     "",
+     "$",
+     "1.16"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Granted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "  Forfeited",
+     "",
+     "(1,543,214)",
+     "",
+     "",
+     "6.53"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants outstanding and exercisable, March 31, 2013",
+     "",
+     "11,874,087",
+     "",
+     "$",
+     "0.46"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted",
+    "Average",
+    "Exercise",
+    "Price"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1836,
+    "end_line": 1862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Warrants to Purchase Common Stock Issued to Senior Note Holders\nIn connection with the issuance of senior notes in November 2006, the Company entered into warrant agreements granting the right to purchase 213,600 shares of the Company\u2019s common stock at an exercise price of $8.00 per share at any time through March 31, 2012. These warrants were recorded at fair value and accounted for as a discount to the face value of the senior notes and a credit to additional paid-in capital in the amount of $706,944. This discount was fully recognized over the adjusted term of the senior notes with a charge to interest expense and a credit to senior notes payable. The warrants were not exercised prior to their expiration on March 31, 2012.\nThe following is a summary of the Company\u2019s outstanding warrants for the periods presented:",
+   "prose_after": "NOTE 14 \u2014 RELATED PARTY TRANSACTIONS\nA. The Company has entered into various transactions with Knappogue Corp., a shareholder in the Company that is controlled by the Company\u2019s Chairman and his family. The transactions primarily involved rental fees for use of Knappogue Corp.\u2019s interest in the Knappogue Castle for various corporate purposes, including Company meetings and to entertain the Company\u2019s customers. For the years ended March 31, 2013 and 2012, fees incurred by the Company to Knappogue Corp. amounted to $9,093 and $9,565, respectively. These charges have been included in selling expense.\nB. I.L.A.R. S.p.A is a shareholder in the Company and one of the officers of I.L.A.R. S.p.A is a director of the Company. In January 2011, CB-USA entered into an agreement (\"New Agreement\") with Pallini Internazionale S.r.L. (\"Pallini\"), as successor in interest to I.L.A.R. S.p.A, regarding the importation and distribution of certain Pallini brand products. The New Agreement supersedes that certain Agreement dated as of August 27, 2004 between I.L.A.R. S.p.A and CB-USA. The terms of the New Agreement are effective as of April 1, 2010.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1818,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1868,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending March 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2014",
+     "$",
+     "257,168"
+    ],
+    [
+     "2015",
+     "",
+     "37,446"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "294,614"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1890,
+    "end_line": 1900
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2014 COMMITMENTS AND CONTINGENCIES"
+    }
+   },
+   "prose_before": "B. The Company has also entered into a supply agreement with IDL, which provides for the production of single malt Irish whiskeys for the Company until the contract is terminated by either party in accordance with the terms of the agreement. IDL may terminate the contract if it provides at least thirteen years prior notice to the Company, except for breach. Under this agreement, the Company provides IDL with a forecast of the estimated amount of liters of pure alcohol it requires for the next twelve fiscal contract years and agrees to purchase 80% of that amount, subject to certain annual adjustments. For the contract year ending June 30, 2013, the Company has contracted to purchase approximately \u20ac211,860 or $271,526 (translated at the March 31, 2013 exchange rate) in bulk Irish whiskey, of which \u20ac174,264, or $223,343, had been purchased as of March 31, 2013. The Company is not obligated to pay IDL for any product not yet received. During the term of this supply agreement, IDL has the right to limit additional purchases above the commitment amount.\nC. The Company has a distribution agreement with Gaelic Heritage Corporation, Ltd., an international supplier, to be the sole-producer of Celtic Honey, one of the Company\u2019s products, for an indefinite period.\nD. The Company leases office space in New York, NY, Dublin, Ireland and Houston, TX. The New York, NY lease began on May 1, 2010 and expires on April 30, 2014 and provides for monthly payments of $18,693. The Dublin lease commenced on March 1, 2009 and extends through November 30, 2013 and provides for monthly payments of \u20ac1,250 or $1,602 (translated at the March 31, 2013 exchange rate). The Houston, TX lease commenced on February 24, 2000 and extends through January 31, 2015 and provides for monthly payments of $1,820. The Company has also entered into non-cancelable operating leases for certain office equipment.\nFuture minimum lease payments for leases with initial or remaining terms in excess of one year are as follows:",
+   "prose_after": "In addition to the above annual rental payments, the Company is obligated to pay its pro-rata share of utility and maintenance expenses on the leased premises. Rent expense under operating leases amounted to approximately $325,082 and $323,201 for the years ended March 31, 2013 and 2012, respectively, and is included in general and administrative expense.\nD. Under the amended terms of the agreement under which the Company purchased McLain & Kyne, the Company was obligated to pay an earn-out to the sellers based on the financial performance of the acquired business. The aggregate amount of such earn-out payments, which was not to exceed $4,000,000, was determined by calculations as defined in the agreement, as amended, through March 31, 2011. The Company is also required to pay an earn-out based on the case sales of the Jefferson\u2019s Presidential Select for a specified amount of cases. For the years ended March 31, 2013 and 2012, the sellers earned $145,800 and $117,048, respectively, under this agreement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1887,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1980,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Consolidated Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      International",
+     "$",
+     "5,444,798",
+     "",
+     "13.1",
+     "%",
+     "$",
+     "4,370,460",
+     "",
+     "12.3",
+     "%"
+    ],
+    [
+     "      United States",
+     "",
+     "35,998,196",
+     "",
+     "86.9",
+     "%",
+     "",
+     "31,124,155",
+     "",
+     "87.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Consolidated Revenue",
+     "$",
+     "41,442,994",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "35,494,615",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Consolidated Results from Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      International",
+     "$",
+     "(26,329)",
+     "",
+     "0.6",
+     "%",
+     "$",
+     "(170,936)",
+     "",
+     "4.4",
+     "%"
+    ],
+    [
+     "      United States",
+     "",
+     "(4,405,519)",
+     "",
+     "99.4",
+     "%",
+     "",
+     "(3,706,151)",
+     "",
+     "95.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Consolidated Results from Operations",
+     "$",
+     "(4,431,848)",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "(3,877,087)",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Net Loss Attributable to Controlling Interests:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  International",
+     "$",
+     "(145,784)",
+     "",
+     "2.7",
+     "%",
+     "$",
+     "(964,883)",
+     "",
+     "18.4",
+     "%"
+    ],
+    [
+     "  United States",
+     "",
+     "(5,302,973)",
+     "",
+     "97.3",
+     "%",
+     "",
+     "(4,267,442)",
+     "",
+     "81.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total Consolidated Net Loss Attributable to Controlling Interests",
+     "$",
+     "(5,448,757)",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "(5,232,325)",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Income tax benefit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      United States",
+     "",
+     "148,152",
+     "",
+     "100.0",
+     "%",
+     "",
+     "148,152",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Consolidated Revenue by category:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Rum",
+     "$",
+     "15,324,904",
+     "",
+     "36.9",
+     "%",
+     "$",
+     "12,811,614",
+     "",
+     "36.2",
+     "%"
+    ],
+    [
+     "      Liqueurs",
+     "",
+     "8,803,111",
+     "",
+     "21.2",
+     "%",
+     "",
+     "8,772,099",
+     "",
+     "24.7",
+     "%"
+    ],
+    [
+     "      Whiskey",
+     "",
+     "9,421,168",
+     "",
+     "22.8",
+     "%",
+     "",
+     "6,510,762",
+     "",
+     "18.3",
+     "%"
+    ],
+    [
+     "      Vodka",
+     "",
+     "3,565,070",
+     "",
+     "8.6",
+     "%",
+     "",
+     "3,729,267",
+     "",
+     "10.5",
+     "%"
+    ],
+    [
+     "      Tequila",
+     "",
+     "242,537",
+     "",
+     "0.6",
+     "%",
+     "",
+     "286,552",
+     "",
+     "0.8",
+     "%"
+    ],
+    [
+     "      Wine",
+     "",
+     "689,637",
+     "",
+     "1.7",
+     "%",
+     "",
+     "901,651",
+     "",
+     "2.5",
+     "%"
+    ],
+    [
+     "      Gosling\u2019s Stormy Ginger Beer and other*",
+     "",
+     "3,396,567",
+     "",
+     "8.2",
+     "%",
+     "",
+     "2,482,670",
+     "",
+     "7.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Consolidated Revenue",
+     "$",
+     "41,442,994",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "35,494,615",
+     "",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1918,
+    "end_line": 1964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2014 GEOGRAPHIC INFORMATION"
+    }
+   },
+   "prose_before": "B. Customers \u2014 Sales to four customers accounted for approximately 45.1% of the Company\u2019s revenues for the year ended March 31, 2013 (of which one customer accounted for 30.2%) and approximately 41.7% of accounts receivable at March 31, 2013. Sales to four customers accounted for approximately 46.2% of the Company\u2019s revenues for the year ended March 31, 2012 (of which one customer accounted for 30.2%) and approximately 40.9% of accounts receivable at March 31, 2012.\nNOTE 17 \u2014 GEOGRAPHIC INFORMATION\nThe Company operates in one reportable segment \u2014 the sale of premium beverage alcohol. The Company\u2019s product categories are rum, liqueur, whiskey, vodka, tequila and wine. The Company reports its operations in two geographic areas: International and United States.\nThe consolidated financial statements include revenues and assets generated in or held in the U.S. and foreign countries. The following table sets forth the amounts and percentage of consolidated revenue, consolidated results from operations, consolidated net loss attributable to common shareholders, consolidated income tax benefit and consolidated assets from the U.S. and foreign countries and consolidated revenue by category.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1887,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1980,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  International",
+     "$",
+     "1,941,537",
+     "5.9",
+     "%",
+     "$",
+     "2,430,226",
+     "7.6",
+     "%"
+    ],
+    [
+     "  United States",
+     "",
+     "31,175,558",
+     "94.1",
+     "%",
+     "",
+     "28,924,551",
+     "92.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Consolidated Assets",
+     "$",
+     "33,117,095",
+     "100.0",
+     "%",
+     "$",
+     "31,354,777",
+     "100.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "As of March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1965,
+    "end_line": 1978
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2014 GEOGRAPHIC INFORMATION"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* Includes related non-beverage alcohol products.\nItem 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure\nNone.\nItem 9A. Controls and Procedures\n(a) Evaluation of Disclosure Controls and Procedures.\nWe maintain disclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) promulgated under the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d)) that are designed to ensure that information that would be required to be disclosed in Exchange Act reports is recorded, processed, summarized and reported within the time periods specified in the SEC\u2019s rules and forms, and that such information is accumulated and communicated to our management, including the Chief Executive Officer and Chief Financial Officer (our Principal Executive Officer and Principal Financial Officer, respectively), as appropriate, to allow timely decisions regarding required disclosure.\nAs of March 31, 2013, we carried out an evaluation, under the supervision and with the participation of our management, including the Principal Executive Officer and Principal Financial Officer, of the effectiveness of the design and operation of our disclosure controls and procedures. Based on the foregoing, our Principal Executive Officer and Principal Financial Officer concluded that our disclosure controls and procedures were effective as of the end of the period covered by this Annual Report.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1887,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1980,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(b)",
+     ""
+    ],
+    [
+     "Exhibit",
+     ""
+    ],
+    [
+     "Number",
+     "Exhibit"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Asset Purchase Agreement, dated as of September 21, 2009, by and between Castle Brands Inc. and Betts & Scholl, LLC (incorporated by reference to Exhibit 2.1 to our current report on Form 8-K filed with the SEC on September 22, 2009)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "Agreement and Plan of Merger dated February 9, 2010 between Castle Brands Inc., a Delaware corporation, and Castle Brands (Florida) Inc., a Florida corporation (incorporated by reference to Exhibit 2.1 to our current report on Form 8-K filed with the SEC on February 12, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Composite Articles of Incorporation of the Company (incorporated by reference to Exhibit 4.1 to our Post-Effective Amendment No. 1 to Form S-8 (File No. 333-160380) filed with the SEC on March 10, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Articles of Amendment to Articles of Incorporation Designating the Preferences, Rights and Limitations of 10% Series A Convertible Preferred Stock of the Company (incorporated by reference to Exhibit 3.1 to our current report on Form 8-K filed with the SEC on June 9, 2011)"
+    ]
+   ],
+   "caption_stack": [
+    "(b)",
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2054,
+    "end_line": 2072
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2014 GEOGRAPHIC INFORMATION"
+    }
+   },
+   "prose_before": "Item 13. Certain Relationships and Related Transactions, and Director Independence\nThe information required by this Item 13 is incorporated by reference from our definitive proxy statement for our 2013 annual meeting of shareholders, which will be filed no later than 120 days after March 31, 2013.\nItem 14. Principal Accounting Fees and Services\nThe information required by this Item 14 is incorporated by reference from our definitive proxy statement for our 2013 annual meeting of shareholders, which will be filed no later than 120 days after March 31, 2013.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) The following documents are filed as part of this Report:\n1. Financial Statements \u2014 See Index to Financial Statements at Item 8 on page 31 of this annual report on Form 10-K.\n2. Financial Statement Schedules \u2014 Omitted because they are not applicable or not required.\n3. Exhibits \u2014 The following exhibits are filed as part of, or incorporated by reference into, this annual report on Form 10-K:",
+   "prose_after": "3.3 Bylaws of the Company (incorporated by reference to Appendix E to our definitive proxy statement on Schedule 14A filed with the SEC on December 30, 2009) 4.1 Form of Common Stock Certificate (incorporated by reference to Exhibit 4.3 to our Post-Effective Amendment No. 1 to Form S-8 (File No. 333-160380) filed with the SEC on March 10, 2010) 4.2 Form of Common Stock Purchase Warrant to be issued by the Company (incorporated by reference to Exhibit 4.1 to our current report on Form 8-K filed with the SEC on June 9, 2011) 4.3 Loan and Security Agreement, dated as of August 19, 2011, among Keltic Financial Partners II, LP, the Company and Castle Brands (USA) Corp. (incorporated by reference to Exhibit 4.1 to our current report on Form 8-K filed with the SEC on July 26, 2012) 4.4 First Amendment to Loan and Security Agreement, dated as of July 23, 2012, among Keltic Financial Partners II, LP, the Company and Castle Brands (USA) Corp. (incorporated by reference to Exhibit 4.1 to our current report on Form 8-K filed with the SEC on August 25, 2011) 4.5 Second Amendment to Loan and Security Agreement, dated as of March 11, 2013, among Keltic Financial Partners II, LP, the Company and Castle Brands (USA) Corp. (incorporated by reference to exhibit 4.1 to our current report on Form 8-K filed with the SEC on March 14, 2013) 4.6 Term Note, dated as of March 11, 2013, in favor of Keltic Financial Partners II, LP (incorporated by reference to exhibit 4.3 to our current report on Form 8-K filed with the SEC on March 14, 2013) 4.7 Amended and Restated Revolving Credit Note, dated as of March 11, 2013, in favor of Keltic Financial Partners II, LP (incorporated by reference to exhibit 4.2 to our current report on Form 8-K filed with the SEC on March 14, 2013) 10.1 Export Agreement, dated as of February 14, 2005 between Gosling Partners Inc. and Gosling\u2019s Export (Bermuda) Limited(Exhibit 10.1)(1)(2) 10.2 Amendment No. 1 to Export Agreement, dated as of February 18, 2005, by and among Gosling-Castle Partners Inc. and Gosling\u2019s Export (Bermuda) Limited(Exhibit 10.2)(1)(2) 10.3 National Distribution Agreement, dated as of September 3, 2004, by and between Castle Brands (USA) Corp. and Gosling\u2019s Export (Bermuda) Limited(Exhibit 10.3)(1)(2) 10.4 Subscription Agreement, dated as of February 18, 2005, by and between Castle Brands Inc. and Gosling-Castle Partners Inc.(Exhibit 10.4)(1) 10.5 Stockholders' Agreement, dated February 18, 2005, by and among Gosling-Castle Partners Inc. and the persons listed on Schedule I thereto (Exhibit 10.5)(1) 10.6 Agreement, dated as of January 12, 2011, between Pallini Internazionale S.r.L. and Castle Brands (USA) Corp. (incorporated herein by reference to Exhibit 10.1 to our current report on Form 8-K filed with the SEC on January 18, 2011) (2) 10.7 Supply Agreement, dated as of January 1, 2005, between Irish Distillers Limited and Castle Brands Spirits Group Limited and Castle Brands (USA) Corp.(Exhibit 10.8)(1)(2) 10.8 Amendment No. 1 to Supply Agreement, dated as of September 20, 2005, to the Supply Agreement, dated as of January 1, 2005, among Irish Distillers Limited and Castle Brands Spirits Group Limited and Castle Brands (USA) Corp.(Exhibit 10.9)(1) 10.9 Amended and Restated Worldwide Distribution Agreement, dated as of April 16, 2001, by and between Great Spirits Company LLC and Gaelic Heritage Corporation Limited(Exhibit 10.10)(1)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2017,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 2073,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "Management Compensation Contract"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2094,
+    "end_line": 2097
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2014 GEOGRAPHIC INFORMATION"
+    }
+   },
+   "prose_before": "10.37 Amendment to Employment Agreement, made as of July 26, 2011, by and between Castle Brands Inc. and John S. Glover (incorporated by reference to Exhibit 10.1 to our current report on Form 8-K filed with the SEC on July 27, 2011).# 10.38 Employment Letter, dated July 29, 2011, by and between Castle Brands USA Corp. and Maria Alejandra Pena (incorporated by reference to Exhibit 10.3 to our quarterly report on Form 10-Q filed with the SEC on November 14, 2011) # 10.39 Amendment to Amended and Restated Employment Agreement, dated as of May 11, 2012, by and between Castle Brands Inc. and T. Kelley Spillane (incorporated herein by reference to Exhibit 10.1 to our current report on Form 8-K filed on May 17, 2012)# 10.40 Amendment to Amended and Restated Employment Agreement, dated as of May 11, 2012, between Castle Brands Inc. and Alfred J. Small (incorporated herein by reference to Exhibit 10.2 to our current report on Form 8-K filed on May 17, 2012)# 10.41 Amendment to the Third Amended and Restated Employment Agreement, effective as of May 11, 2012, by and between Castle Brands Inc. and Mark Andrews (incorporated by reference to Exhibit 10.3 to our current report on Form 8-K filed on May 17, 2012)# 10.42 Castle Brands Inc. 2013 Stock Incentive Plan (incorporated by reference to Exhibit A to our definitive proxy statement on Schedule 14A for the 2012 annual meeting of shareholders, filed with the SEC on September 11, 2012)# 10.43 Form of Indemnification Agreement to be entered into with directors* 21.1 List of Subsidiaries* 23.1 Consent of EisnerAmper LLP* 31.1 Certification of CEO Pursuant to Rule 13a-14(a), as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002* 31.2 Certification of CFO Pursuant to Rule 13a-14(a), as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002* 32.1 Certification of CEO and CFO Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*\n101.INS** XBRL Instance Document. 101.SCH** XBRL Taxonomy Extension Schema Document. 101.CAL** XBRL Taxonomy Extension Calculation Linkbase Document. 101.DEF** XBRL Taxonomy Extension Definition Linkbase Document. 101.LAB** XBRL Taxonomy Extension Label Linkbase Document. 101.PRE** XBRL Taxonomy Extension Presentation Linkbase Document.\n* Filed herewith\n** Pursuant to Rule 406T of Regulation S-T, these interactive data files are deemed not filed or part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, are deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise are not subject to liability under those sections.",
+   "prose_after": "(1) Previously filed as an exhibit to our Registration Statement on Form S-1 (File No. 333-128676), which was declared effective on April 5, 2006, and incorporated by reference herein.\n(2) Confidential portions of this document are omitted pursuant to a request for confidential treatment that has been granted by the Commission, and have been filed separately with the Commission.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on July 1, 2013.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2085,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 2102,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CASTLE BRANDS INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ ALFRED J. SMALL"
+    ],
+    [
+     "",
+     "",
+     "Alfred J. Small"
+    ],
+    [
+     "",
+     "",
+     "Senior Vice President, Chief Financial\n\n\n\nOfficer, Secretary and Treasurer (Principal\n\n\n\nFinancial Officer and Principal Accounting\n\n\n\nOfficer)"
+    ]
+   ],
+   "caption_stack": [
+    "CASTLE BRANDS INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2107,
+    "end_line": 2121
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2014 GEOGRAPHIC INFORMATION"
+    }
+   },
+   "prose_before": "(1) Previously filed as an exhibit to our Registration Statement on Form S-1 (File No. 333-128676), which was declared effective on April 5, 2006, and incorporated by reference herein.\n(2) Confidential portions of this document are omitted pursuant to a request for confidential treatment that has been granted by the Commission, and have been filed separately with the Commission.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on July 1, 2013.",
+   "prose_after": "POWER OF ATTORNEY\nEach individual whose signature appears below constitutes and appoints each of Richard J. Lampen and Alfred J. Small, such person\u2019s true and lawful attorney-in-fact and agent with full power of substitution and resubstitution, for such person and in such person\u2019s name, place and stead, in any and all capacities, to sign any and all amendments to this report on Form 10-K, and to file the same, with all exhibits thereto, and all documents in connection therewith, with the Securities and Exchange Commission, granting unto each said attorney-in-fact and agent full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as such person might or could do in person, hereby ratifying and confirming all that any said attorney-in-fact and agent, or any substitute or substitutes of any of them, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2102,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 2183,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard J. Lampen",
+     "President and Chief Executive Officer and Director",
+     "July 1, 2013"
+    ],
+    [
+     "Richard J. Lampen",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Alfred J. Small",
+     "Senior Vice President, Chief Financial",
+     "July 1, 2013"
+    ],
+    [
+     "Alfred J. Small",
+     "Officer, Secretary and Treasurer (Principal",
+     ""
+    ],
+    [
+     "",
+     "Financial Officer and Principal Accounting",
+     ""
+    ],
+    [
+     "",
+     "Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Mark Andrews",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Mark Andrews",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John F. Beaudette",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "John F. Beaudette",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Henry C. Beinstein",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Henry C. Beinstein",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Harvey P. Eisen",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Harvey P. Eisen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Phillip Frost, M.D.",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Phillip Frost, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Glenn L. Halpryn",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Glenn L. Halpryn",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Micaela Pallini",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Micaela Pallini",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Steven D. Rubin",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Steven D. Rubin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dennis Scholl",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Dennis Scholl",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Sergio Zyman",
+     "Director",
+     "July 1, 2013"
+    ],
+    [
+     "Sergio Zyman",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2128,
+    "end_line": 2182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "\u2014 GEOGRAPHIC INFORMATION"
+    }
+   },
+   "prose_before": "Each individual whose signature appears below constitutes and appoints each of Richard J. Lampen and Alfred J. Small, such person\u2019s true and lawful attorney-in-fact and agent with full power of substitution and resubstitution, for such person and in such person\u2019s name, place and stead, in any and all capacities, to sign any and all amendments to this report on Form 10-K, and to file the same, with all exhibits thereto, and all documents in connection therewith, with the Securities and Exchange Commission, granting unto each said attorney-in-fact and agent full power and authority to do and perform each and every act and thing requisite and necessary to be done in and about the premises, as fully to all intents and purposes as such person might or could do in person, hereby ratifying and confirming all that any said attorney-in-fact and agent, or any substitute or substitutes of any of them, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2102,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 2183,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

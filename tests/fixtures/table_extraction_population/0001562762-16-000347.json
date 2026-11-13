@@ -1,0 +1,3875 @@
+{
+ "accession": "0001562762-16-000347",
+ "cik": "0000078128",
+ "form": "10-K",
+ "filing_date": "2016-02-26",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "wtr-20151231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, par value $.50 per share",
+     "",
+     "New York Stock Exchange, Inc."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 32,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Or\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File number 1-6659\nAQUA AMERICA, INC.\n(a Pennsylvania corporation)\n762 W. Lancaster Avenue\nBryn Mawr, Pennsylvania 19010-3489\n(610) 527-8000\nI.R.S. Employer Identification Number 23-1702594\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[X] Yes [ ] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "TABLE OF CONTENTS",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part I",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Page",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "4",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "13",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "23",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "23",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "23",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "24",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for the Registrant\u2019s Common Stock, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "",
+     "",
+     "",
+     "24"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "",
+     "",
+     "",
+     "25"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "",
+     "",
+     "25"
+    ],
+    [
+     "Item 7A",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "",
+     "",
+     "",
+     "26"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "",
+     "",
+     "",
+     "26"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "",
+     "",
+     "",
+     "26"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "",
+     "",
+     "",
+     "26"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "",
+     "",
+     "",
+     "27"
+    ],
+    [
+     "Part III",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "",
+     "",
+     "27",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits and Financial Statement Schedules",
+     "",
+     "30",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "",
+     "31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Schedule 1 \u2013 Condensed Parent Company Financial Statements",
+     "",
+     "33",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit Index",
+     "",
+     "37",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "TABLE OF CONTENTS",
+    "Part I",
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 74,
+    "end_line": 109
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Large accelerated filer [X]                                            Accelerated filer [ ]\nNon-accelerated filer [ ] (do not check if smaller reporting company)  Small reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). [ ] Yes [X] No\nThe aggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant as of June 30, 2015: $4,320,725,320\nThe number of shares outstanding of the registrant's common stock as of February 10, 2016: 177,042,334\nDOCUMENTS INCORPORATED BY REFERENCE\n(1) Portions of registrant's 2015 Annual Report to Shareholders for fiscal year ended December 31, 2015 have been incorporated by reference into Parts I and II of this Form 10-K.\n(2) Portions of the definitive Proxy Statement, relative to the May 6, 2016 annual meeting of shareholders of registrant, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, have been incorporated by reference into Part III of this Form 10-K.",
+   "prose_after": "SPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nCertain statements in this Annual Report on Form 10-K, or incorporated by reference into this Form 10-K, are forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934 that are made based upon, among other things, our current assumptions, expectations, plans, and beliefs concerning future events and their potential effect on us. These forward-looking statements involve risks, uncertainties and other factors, many of which are outside our control that may cause our actual results, performance or achievements to be materially different from any future results, performance or achievements expressed or implied by these forward-looking statements. In some cases you can identify forward-looking statements where statements are preceded by, followed by or include the words \u201cbelieves,\u201d \u201cexpects,\u201d \u201canticipates,\u201d \u201cplans,\u201d \u201cfuture,\u201d \u201cpotential,\u201d \u201cprobably,\u201d \u201cpredictions,\u201d \u201cintends,\u201d \u201cwill,\u201d \u201ccontinue\u201d or the negative of such terms or similar expressions. Forward-looking statements in this Form 10-K, or incorporated by reference into this Form 10-K, include, but are not limited to, statements regarding:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 109,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating Revenues (000's)",
+     "",
+     "",
+     "Operating Revenues (%)"
+    ],
+    [
+     "Pennsylvania",
+     "$",
+     "420,315",
+     "",
+     "51.7%"
+    ],
+    [
+     "Ohio",
+     "",
+     "98,191",
+     "",
+     "12.1%"
+    ],
+    [
+     "Texas",
+     "",
+     "69,362",
+     "",
+     "8.5%"
+    ],
+    [
+     "Illinois",
+     "",
+     "58,043",
+     "",
+     "7.1%"
+    ],
+    [
+     "North Carolina",
+     "",
+     "51,968",
+     "",
+     "6.4%"
+    ],
+    [
+     "Other states (1)",
+     "",
+     "81,734",
+     "",
+     "10.0%"
+    ],
+    [
+     "Regulated segment total",
+     "",
+     "779,613",
+     "",
+     "95.8%"
+    ],
+    [
+     "Other and eliminations",
+     "",
+     "34,591",
+     "",
+     "4.2%"
+    ],
+    [
+     "Consolidated",
+     "$",
+     "814,204",
+     "",
+     "100.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 239,
+    "end_line": 255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Aqua America, which prior to its name change in 2004 was known as Philadelphia Suburban Corporation, was formed in 1968 as a holding company for its primary subsidiary, Aqua Pennsylvania, formerly known as Philadelphia Suburban Water Company. In the early 1990s, we embarked on a growth through acquisition strategy focused on water and wastewater operations. Our most significant transactions to date have been the merger with Consumers Water Company in 1999, the acquisition of the regulated water and wastewater operations of AquaSource, Inc. in 2003, the acquisition of Heater Utilities, Inc. in 2004, and the acquisition of American Water Works Company, Inc.\u2019s regulated water and wastewater operations in Ohio in 2012. Since the early 1990s, our business strategy has been primarily directed toward the regulated water and wastewater utility industry, where we have more than quadrupled the number of regulated customers we serve, and have extended our regulated operations from southeastern Pennsylvania to include our current regulated utility operations throughout Pennsylvania and in seven other states. During 2010 through 2013, we sold our utility operations in six states, pursuant to a portfolio rationalization strategy to focus our operations in areas where we have critical mass and economic growth potential.\nIn December 2014, we completed the sale of our water utility system in southwest Allen County, Indiana to the City of Fort Wayne, Indiana. The completion of this sale settled the dispute concerning the February 2008 acquisition, by eminent domain, by the City of Fort Wayne, of the northern portion of our water and wastewater utility systems.\nThe following table reports our operating revenues, by principal state, for the Regulated segment and Other and eliminations for the year ended December 31, 2015:",
+   "prose_after": "(1) Includes our operating subsidiaries in the following states: New Jersey, Indiana, and Virginia.\nInformation concerning revenues, net income, identifiable assets and related financial information for the Regulated segment and Other and eliminations for 2015, 2014, and 2013 is set forth in Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and in Note 17 \u2013 Segment Information in the Notes to Consolidated Financial Statements from the portions of our 2015 Annual Report to Shareholders filed as Exhibit 13.1 to this Form 10-K, which is incorporated by reference herein.\nThe following table summarizes our operating revenues, by utility customer class, for the Regulated segment and Other and eliminations for the year ended December 31, 2015:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 233,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Operating Revenues (000's)",
+     "",
+     "Operating Revenues (%)"
+    ],
+    [
+     "Residential water",
+     "$",
+     "477,773",
+     "58.7%"
+    ],
+    [
+     "Commercial water",
+     "",
+     "126,677",
+     "15.6%"
+    ],
+    [
+     "Fire protection",
+     "",
+     "29,735",
+     "3.7%"
+    ],
+    [
+     "Industrial water",
+     "",
+     "28,021",
+     "3.4%"
+    ],
+    [
+     "Other water",
+     "",
+     "27,262",
+     "3.3%"
+    ],
+    [
+     "Water",
+     "",
+     "689,468",
+     "84.7%"
+    ],
+    [
+     "Wastewater",
+     "",
+     "79,399",
+     "9.8%"
+    ],
+    [
+     "Other utility",
+     "",
+     "10,746",
+     "1.3%"
+    ],
+    [
+     "Regulated segment total",
+     "",
+     "779,613",
+     "95.8%"
+    ],
+    [
+     "Other and eliminations",
+     "",
+     "34,591",
+     "4.2%"
+    ],
+    [
+     "Consolidated",
+     "$",
+     "814,204",
+     "100.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 264,
+    "end_line": 283
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Includes our operating subsidiaries in the following states: New Jersey, Indiana, and Virginia.\nInformation concerning revenues, net income, identifiable assets and related financial information for the Regulated segment and Other and eliminations for 2015, 2014, and 2013 is set forth in Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations and in Note 17 \u2013 Segment Information in the Notes to Consolidated Financial Statements from the portions of our 2015 Annual Report to Shareholders filed as Exhibit 13.1 to this Form 10-K, which is incorporated by reference herein.\nThe following table summarizes our operating revenues, by utility customer class, for the Regulated segment and Other and eliminations for the year ended December 31, 2015:",
+   "prose_after": "Our utility customer base is diversified among residential water, commercial water, fire protection, industrial water, other water, wastewater customers, and other utility customers (consisting of operating contracts that are closely associated with the utility operations). Residential water and wastewater customers make up the largest component of our utility customer base, with these customers representing approximately 70% of our water and wastewater revenues. Substantially all of our water customers are metered, which allows us to measure and bill for our customers\u2019 water consumption. Water consumption per customer is affected by local weather conditions during the year, especially during late spring, summer, and early fall. In general, during these seasons, an extended period of dry weather increases consumption, while above average rainfall decreases consumption. Also, an increase in the average temperature generally causes an increase in water consumption. On occasion, abnormally dry weather in our service areas can result in governmental authorities declaring drought warnings and imposing water use restrictions in the affected areas, which could reduce water consumption. See Water Utility Supplies, and Facilities and Wastewater Utility Facilities for a discussion of water use restrictions that may impact water consumption during abnormally dry weather. The geographic diversity of our utility customer base reduces the effect of our exposure to extreme or unusual weather conditions in any one area of our service territory. Water usage is also affected by changing consumption patterns by our customers, resulting from such causes as increased water conservation and the installation of water saving devices and appliances that can result in decreased water usage. It is estimated that in the event we experience a 0.50% decrease in residential water consumption it would result in a decrease in annual residential water revenue of approximately $2,000,000, and would likely be partially offset by a reduction in incremental water production expenses such as chemicals and power.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 260,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "",
+     "Utility Customer Growth Rate"
+    ],
+    [
+     "2015",
+     "",
+     "1.9%"
+    ],
+    [
+     "2014",
+     "",
+     "1.3%"
+    ],
+    [
+     "2013",
+     "",
+     "1.3%"
+    ],
+    [
+     "2012",
+     "",
+     "7.2%"
+    ],
+    [
+     "2011",
+     "",
+     "1.0%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 290,
+    "end_line": 299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Our utility customer base is diversified among residential water, commercial water, fire protection, industrial water, other water, wastewater customers, and other utility customers (consisting of operating contracts that are closely associated with the utility operations). Residential water and wastewater customers make up the largest component of our utility customer base, with these customers representing approximately 70% of our water and wastewater revenues. Substantially all of our water customers are metered, which allows us to measure and bill for our customers\u2019 water consumption. Water consumption per customer is affected by local weather conditions during the year, especially during late spring, summer, and early fall. In general, during these seasons, an extended period of dry weather increases consumption, while above average rainfall decreases consumption. Also, an increase in the average temperature generally causes an increase in water consumption. On occasion, abnormally dry weather in our service areas can result in governmental authorities declaring drought warnings and imposing water use restrictions in the affected areas, which could reduce water consumption. See Water Utility Supplies, and Facilities and Wastewater Utility Facilities for a discussion of water use restrictions that may impact water consumption during abnormally dry weather. The geographic diversity of our utility customer base reduces the effect of our exposure to extreme or unusual weather conditions in any one area of our service territory. Water usage is also affected by changing consumption patterns by our customers, resulting from such causes as increased water conservation and the installation of water saving devices and appliances that can result in decreased water usage. It is estimated that in the event we experience a 0.50% decrease in residential water consumption it would result in a decrease in annual residential water revenue of approximately $2,000,000, and would likely be partially offset by a reduction in incremental water production expenses such as chemicals and power.\nOur growth in revenues over the past five years is primarily a result of increases in water and wastewater rates and customer growth through our acquisition strategy. See Economic Regulation for a discussion of water and wastewater rates. The majority of the increase in our utility customer base has been due to customers added through acquisitions and other growth ventures (excluding dispositions) as shown below:",
+   "prose_after": "In 2015, our customer count increased by 17,747 customers, primarily due to utility systems that we acquired and natural growth. Overall, for the five-year period of 2011 through 2015, our utility customer base, adjusted to exclude customers associated with utility system dispositions, increased at an annual compound rate of 2.4%. During the five-year period ended December 31, 2015, our utility customer base including customers associated with utility system acquisitions and dispositions decreased from 966,136 at December 31, 2011 to 957,866 at December 31, 2015.\nAcquisitions and Other Growth Ventures\nAccording to the U.S. Environmental Protection Agency (\u201cEPA\u201d), approximately 85% of the U.S. population obtains its water from community water systems, and 15% of the U.S. population obtains its water from private wells. With approximately 53,000 community water systems in the U.S. (82% of which serve less than 3,300 customers), the water industry is the most fragmented of the major utility industries (telephone, natural gas, electric, water and wastewater). The majority of these community water systems are government-owned, and the balance of the systems are privately-owned (or investor-owned). The nation\u2019s water systems range in size from large government-owned systems, such as the New York City water system which serves approximately 8.5 million people, to small systems, where a few customers share a common well. In the states where we operate regulated utilities, we believe there are approximately 14,500 community water systems of widely-varying size, with the majority of the population being served by government-owned water systems.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 286,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "State",
+     "Utility Commission"
+    ],
+    [
+     "",
+     "Pennsylvania",
+     "Pennsylvania Public Utility Commission"
+    ],
+    [
+     "",
+     "Ohio",
+     "The Public Utilities Commission of Ohio"
+    ],
+    [
+     "",
+     "Texas",
+     "Texas Public Utility Commission"
+    ],
+    [
+     "",
+     "Illinois",
+     "Illinois Commerce Commission"
+    ],
+    [
+     "",
+     "North Carolina",
+     "North Carolina Utilities Commission"
+    ],
+    [
+     "",
+     "New Jersey",
+     "New Jersey Board of Public Utilities"
+    ],
+    [
+     "",
+     "Indiana",
+     "Indiana Utility Regulatory Commission"
+    ],
+    [
+     "",
+     "Virginia",
+     "Virginia State Corporation Commission"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 350,
+    "end_line": 361
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Most of our water and wastewater utility operations are subject to regulation by their respective state utility commissions, which have broad administrative power and authority to regulate billing rates, determine franchise areas and conditions of service, approve acquisitions and authorize the issuance of securities. The utility commissions also establish uniform systems of accounts and approve the terms of contracts with affiliates and customers, business combinations with other utility systems, and loans and other financings. The policies of the utility commissions often differ from state to state, and may change over time. A small number of our operations are subject to rate regulation by county or city governments. The profitability of our utility operations is influenced to a great extent by the timeliness and adequacy of rate allowances we are granted by the respective utility commissions or authorities in the various states in which we operate.\nAccordingly, we maintain a rate case management capability, the objective of which is to provide that the tariffs of our utility operations reflect, to the extent practicable, the timely recovery of increases in costs of operations, capital expenditures, interest expense, taxes, energy, materials, and compliance with environmental regulations. We file rate increase requests to recover and earn a fair return on the infrastructure investments that we make in improving or replacing our facilities and to recover expenses. In the states in which we operate, we are primarily subject to economic regulation by the following state utility commissions:",
+   "prose_after": "Our water and wastewater operations are comprised of 52 rate divisions, each of which requires a separate rate filing for the evaluation of the cost of service, including the recovery of investments, in connection with the establishment of rates for that rate division. When feasible and beneficial to our utility customers, we will seek approval from the applicable state regulatory commission to consolidate rate divisions to achieve a more even distribution of costs over a larger customer base. All of the states in which we operate permit us to file a revenue requirement for some form of consolidated rates for the rate divisions in that state.\nIn some regulatory jurisdictions, we may seek authorization to bill our utility customers in accordance with a rate filing that is pending before the respective regulatory commission. Furthermore, some utility commissions authorize the use of expense deferrals and amortization in order to provide for an impact on our operating income by an amount that approximates the requested amount in a rate request. In these states the additional revenue billed and collected prior to the final regulatory commission ruling is subject to refund to customers based on the outcome of the ruling. The revenue recognized and the expenses deferred by us reflect an estimate as to the final outcome of the ruling. If the request is denied completely or in part, we could be required to refund to customers some or all of the revenue billed to date, and write-off some or all of the deferred expenses.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 342,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 368,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Net Property, Plant and Equipment",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pennsylvania",
+     "$",
+     "2,977,427",
+     "",
+     "63.5%"
+    ],
+    [
+     "Ohio",
+     "",
+     "409,420",
+     "",
+     "8.7%"
+    ],
+    [
+     "Illinois",
+     "",
+     "333,208",
+     "",
+     "7.1%"
+    ],
+    [
+     "North Carolina",
+     "",
+     "293,476",
+     "",
+     "6.3%"
+    ],
+    [
+     "Texas",
+     "",
+     "262,040",
+     "",
+     "5.6%"
+    ],
+    [
+     "Other (1)",
+     "",
+     "413,354",
+     "",
+     "8.8%"
+    ],
+    [
+     "Consolidated",
+     "$",
+     "4,688,925",
+     "",
+     "100.0%"
+    ]
+   ],
+   "caption_stack": [
+    "Net Property, Plant and Equipment"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Properties"
+    },
+    "note": null
+   },
+   "prose_before": "Our properties consist of water transmission and distribution mains and wastewater collection pipelines, water and wastewater treatment plants, pumping facilities, wells, tanks, meters, pipes, dams, reservoirs, buildings, vehicles, land, easements, rights-of-way, and other facilities and equipment used for the operation of our systems, including the collection, treatment, storage, and distribution of water and the collection and treatment of wastewater. Substantially all of our treatment, storage, and distribution properties are owned by our subsidiaries, and a substantial portion of our property is subject to liens of mortgage or indentures. These liens secure bonds, notes and other evidences of long-term indebtedness of our subsidiaries. For some properties that we acquired through the exercise of the power of eminent domain and other properties we purchased, we hold title for water supply purposes only. We own, operate and maintain over twelve thousand miles of transmission and distribution mains, 20 surface water treatment plants, many well treatment stations, and 183 wastewater treatment plants. A small portion of the properties are leased under long-term leases.\nThe following table indicates our net property, plant and equipment, in thousands of dollars, as of December 31, 2015 in the principal states where we operate:",
+   "prose_after": "(1) Consists primarily of our operating subsidiaries in the following states: New Jersey, Indiana, and Virginia.\nWe believe that our properties are generally maintained in good condition and in accordance with current standards of good water and wastewater industry practice. We believe that our facilities are adequate and suitable for the conduct of our business and to meet customer requirements under normal circumstances.\nOur corporate offices are leased from our subsidiary, Aqua Pennsylvania, and are located in Bryn Mawr, Pennsylvania.\nItem 3. Legal Proceedings\nThere are various legal proceedings in which we are involved. Although the results of legal proceedings cannot be predicted with certainty, there are no pending legal proceedings, other than as set forth below, to which we or any of our subsidiaries is a party or to which any of our properties is the subject that we believe are material or are expected to materially harm our business, operating results or financial condition.\nFor any legal proceedings which were concluded during the first nine months of 2015, refer to our respective 2015 Form 10-Q filings for disclosure of the conclusion of these legal proceedings.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 698,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "First Quarter",
+     "",
+     "Second Quarter",
+     "",
+     "Third Quarter",
+     "",
+     "Fourth Quarter",
+     "",
+     "Year",
+     ""
+    ],
+    [
+     "2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend paid per common share",
+     "$",
+     "0.165",
+     "$",
+     "0.165",
+     "$",
+     "0.178",
+     "$",
+     "0.178",
+     "$",
+     "0.686"
+    ],
+    [
+     "Dividend declared per common share",
+     "",
+     "0.165",
+     "",
+     "0.165",
+     "",
+     "0.178",
+     "",
+     "0.178",
+     "",
+     "0.686"
+    ],
+    [
+     "Price range of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- high",
+     "",
+     "28.13",
+     "",
+     "27.53",
+     "",
+     "27.10",
+     "",
+     "31.09",
+     "",
+     "31.09"
+    ],
+    [
+     "- low",
+     "",
+     "25.42",
+     "",
+     "24.40",
+     "",
+     "24.45",
+     "",
+     "26.20",
+     "",
+     "24.40"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend paid per common share",
+     "$",
+     "0.152",
+     "$",
+     "0.152",
+     "$",
+     "0.165",
+     "$",
+     "0.165",
+     "$",
+     "0.634"
+    ],
+    [
+     "Dividend declared per common share",
+     "",
+     "0.152",
+     "",
+     "0.152",
+     "",
+     "0.165",
+     "",
+     "0.165",
+     "",
+     "0.634"
+    ],
+    [
+     "Price range of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "- high",
+     "",
+     "25.56",
+     "",
+     "26.27",
+     "",
+     "26.29",
+     "",
+     "28.22",
+     "",
+     "28.22"
+    ],
+    [
+     "- low",
+     "",
+     "22.40",
+     "",
+     "24.25",
+     "",
+     "23.12",
+     "",
+     "23.26",
+     "",
+     "22.40"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 750,
+    "end_line": 769
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for the Registrant's Common Stock, Related Stockholder Matters and Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "There are various legal proceedings in which we are involved. Although the results of legal proceedings cannot be predicted with certainty, there are no pending legal proceedings, other than as set forth below, to which we or any of our subsidiaries is a party or to which any of our properties is the subject that we believe are material or are expected to materially harm our business, operating results or financial condition.\nFor any legal proceedings which were concluded during the first nine months of 2015, refer to our respective 2015 Form 10-Q filings for disclosure of the conclusion of these legal proceedings.\nItem 4. Mine Safety Disclosures\nNot applicable.\nPART II\nItem 5. Market for the Registrant's Common Stock, Related Stockholder Matters and Purchases of Equity Securities\nOur common stock is traded on the New York Stock Exchange under the ticker symbol WTR. As of February 10, 2016, there were approximately 25,247 holders of record of our common stock.\nThe following table shows the high and low intraday sales prices for our common stock as reported on the New York Stock Exchange composite transactions reporting system and the cash dividends paid per share for the periods indicated:",
+   "prose_after": "We have paid dividends consecutively for 71 years. On August 4, 2015, our Board of Directors authorized an increase of 7.9% in the September 1, 2015 quarterly dividend over the dividend Aqua America paid in the previous quarter. As a result of this authorization, beginning with the dividend payment in September 2015, the annualized dividend rate increased to $0.712 per share. This is the 25th dividend increase in the past 24 years and the 17th consecutive year that we have increased our dividend in excess of five percent. We presently intend to pay quarterly cash dividends in the future, on March 1, June 1, September 1, and December 1, subject to our earnings and financial condition, restrictions set forth in our debt instruments, regulatory requirements and such other factors as our Board of Directors may deem relevant. During the past five years, our dividends paid have averaged 51.9% of net income attributable to common shareholders.\nThe following table summarizes the Company\u2019s purchases of its common stock for the quarter ending December 31, 2015:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 736,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Issuer Purchases of Equity Securities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Period",
+     "Total Number of Shares Purchased (1)",
+     "Average Price Paid per Share",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "Maximum Number of Shares that May Yet Be Purchased Under the Plan or Programs (2)"
+    ],
+    [
+     "October 1-31, 2015",
+     "174,374",
+     "$",
+     "26.56",
+     "161,000",
+     "320,348"
+    ],
+    [
+     "November 1-30, 2015",
+     "10,508",
+     "$",
+     "28.89",
+     "-",
+     "320,348"
+    ],
+    [
+     "December 1-31, 2015",
+     "1,257",
+     "$",
+     "29.31",
+     "-",
+     "720,348"
+    ],
+    [
+     "Total",
+     "186,139",
+     "$",
+     "26.71",
+     "161,000",
+     "720,348"
+    ]
+   ],
+   "caption_stack": [
+    "Issuer Purchases of Equity Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 776,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for the Registrant's Common Stock, Related Stockholder Matters and Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "We have paid dividends consecutively for 71 years. On August 4, 2015, our Board of Directors authorized an increase of 7.9% in the September 1, 2015 quarterly dividend over the dividend Aqua America paid in the previous quarter. As a result of this authorization, beginning with the dividend payment in September 2015, the annualized dividend rate increased to $0.712 per share. This is the 25th dividend increase in the past 24 years and the 17th consecutive year that we have increased our dividend in excess of five percent. We presently intend to pay quarterly cash dividends in the future, on March 1, June 1, September 1, and December 1, subject to our earnings and financial condition, restrictions set forth in our debt instruments, regulatory requirements and such other factors as our Board of Directors may deem relevant. During the past five years, our dividends paid have averaged 51.9% of net income attributable to common shareholders.\nThe following table summarizes the Company\u2019s purchases of its common stock for the quarter ending December 31, 2015:",
+   "prose_after": "(1) These amounts include the following: (a) 473 shares we acquired from employees associated with the withholding of shares to pay certain withholding taxes upon the vesting of restricted stock units; and (b) 24,666 shares we acquired from our employees who elected to pay the exercise price of their stock options (and then hold shares of the stock), upon exercise, by delivering to us shares of our common stock in accordance with the terms of our equity compensation plan that was previously approved by our shareholders and disclosed in our proxy statements. These features of our equity compensation plan are available to all employees who receive stock-based compensation under the plan. We purchased these shares at their fair market value, as determined by reference to the closing price of our common stock on the day of vesting of the restricted stock unit or on the day prior to the option exercise.\n(2) In December 2014, our Board of Directors authorized a share buyback program of up to 1,000,000 shares to minimize share dilution through timely and orderly share repurchases. In December 2015, our Board of Directors added 400,000 shares to this program. This program expires on the earliest of December 31, 2016 or when all authorized repurchases have been made.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "2017",
+     "",
+     "2018",
+     "",
+     "2019",
+     "",
+     "2020",
+     "",
+     "Thereafter",
+     "",
+     "Total",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "Long-term debt:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fixed rate",
+     "$",
+     "35,593",
+     "$",
+     "103,007",
+     "$",
+     "103,878",
+     "$",
+     "89,636",
+     "$",
+     "49,419",
+     "$",
+     "1,337,672",
+     "$",
+     "1,719,205",
+     "$",
+     "1,845,393"
+    ],
+    [
+     "Variable rate",
+     "",
+     "-",
+     "",
+     "60,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "60,000",
+     "",
+     "60,000"
+    ],
+    [
+     "Total",
+     "$",
+     "35,593",
+     "$",
+     "163,007",
+     "$",
+     "103,878",
+     "$",
+     "89,636",
+     "$",
+     "49,419",
+     "$",
+     "1,337,672",
+     "$",
+     "1,779,205",
+     "$",
+     "1,905,393"
+    ],
+    [
+     "Weighted average interest rate*",
+     "",
+     "4.85%",
+     "",
+     "2.63%",
+     "",
+     "4.25%",
+     "",
+     "4.93%",
+     "",
+     "5.06%",
+     "",
+     "4.62%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 808,
+    "end_line": 819
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "Quantitative and Qualitative Disclosures About Market Risk"
+    },
+    "note": null
+   },
+   "prose_before": "The information appearing in the section captioned Management's Discussion and Analysis of Financial Condition and Results of Operations from the portions of our 2015 Annual Report to Shareholders filed as Exhibit 13.1 to this Form 10-K is incorporated by reference herein.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nWe are subject to market risks in the normal course of business, including changes in interest rates and equity prices. The exposure to changes in interest rates is a result of financings through the issuance of fixed rate long-term debt. Such exposure is typically related to financings between utility rate increases, since generally our rate increases include a revenue level to allow recovery of our current cost of capital. Interest rate risk is managed through the use of a combination of long-term debt, which is at fixed interest rates, and short-term debt, which is at floating interest rates. As of December 31, 2015, the debt maturities by period, in thousands of dollars, and the weighted average interest rate for long-term debt are as follows:",
+   "prose_after": "*Weighted average interest rate of 2017 long-term debt maturity is as follows: fixed rate debt of 4.57% and variable rate debt of 0.99%.\nFrom time to time, we make investments in marketable equity securities. As a result, we are exposed to the risk of changes in equity prices for the \u201cavailable-for-sale\u201d marketable equity securities. As of December 31, 2015, the carrying value of these investments, which reflects market value, in thousands of dollars, was $196.\nItem 8. Financial Statements and Supplementary Data\nInformation appearing under the captions Consolidated Statements of Net Income, Consolidated Statements of Comprehensive Income, Consolidated Balance Sheets, Consolidated Statements of Cash Flows, Consolidated Statements of Capitalization, Consolidated Statements of Equity and Notes to Consolidated Financial Statements from the portions of our 2015 Annual Report to Shareholders filed as Exhibit 13.1 to this Form 10-K is incorporated by reference herein. Also, the information appearing in the sections captioned Management\u2019s Report on Internal Control Over Financial Reporting and Report of Independent Registered Public Accounting Firm from the portions of our 2015 Annual Report to Shareholders filed as Exhibit 13.1 to this Form 10-K is incorporated by reference herein.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position with Aqua America (1)"
+    ],
+    [
+     "Christopher H. Franklin",
+     "51",
+     "President and Chief Executive Officer (July 2015 to present); Executive Vice President and President and Chief Operating Officer, Regulated Operations (January 2012 to July 2015); Regional President \u2013 Midwest and Southern Operations and Senior Vice President, Corporate and Public Affairs (January 2010 to January 2012); Regional President, Aqua America \u2013 Southern Operations and Senior Vice President, Public Affairs and Customer Operations (January 2007 to January 2010); Vice President, Public Affairs and Customer Operations (July 2002 to January 2007); Vice President, Corporate and Public Affairs (February 1997 to July 2002); Director of Public Affairs (January 1993 to February 1997)"
+    ],
+    [
+     "David P. Smeltzer",
+     "57",
+     "Executive Vice President and Chief Financial Officer (January 2012 to present); Chief Financial Officer (February 2007 to January 2012); Senior Vice President - Finance and Chief Financial Officer (December 1999 to February 2007); Vice President - Finance and Chief Financial Officer (May 1999 to December 1999); Vice President - Rates and Regulatory Relations, Philadelphia Suburban Water Company (March 1991 to May 1999); Vice President - Controller of Philadelphia Suburban Water Company (March 1986 to March 1991)"
+    ],
+    [
+     "Richard S. Fox",
+     "54",
+     "Chief Operating Officer (July 2015 to present); Regional President, Regulated Utilities (January 2012 to July 2015); President Aqua Utilities, Florida, Inc. (August 2011 to January 2012); Vice President, Customer Service (June 2002 to August 2011)"
+    ],
+    [
+     "Christopher P. Luning",
+     "48",
+     "Senior Vice President, General Counsel, and Secretary (April 2012 to present); Vice President Corporate Development and Corporate Counsel (June 2008 to April 2012); Vice President and Deputy General Counsel (May 2005 to June 2008); Assistant General Counsel (March 2003 to May 2005)"
+    ],
+    [
+     "William C. Ross",
+     "70",
+     "Senior Vice President, Engineering and Environmental Affairs (January 2012 to present); Vice President, Engineering and Environmental Affairs (February 2001 to January 2012); Senior Manager Planning and Engineering Philadelphia Suburban Water Company (February 1998 to February 2001)"
+    ],
+    [
+     "Robert A. Rubin",
+     "53",
+     "Senior Vice President, Controller and Chief Accounting Officer (January 2012 to present); Vice President, Controller and Chief Accounting Officer (May 2005 to January 2012); Controller and Chief Accounting Officer (March 2004 to May 2005); Controller (March 1999 to March 2004); Assistant Controller (June 1994 to March 1999); Accounting Manager (June 1989 to June 1994)"
+    ],
+    [
+     "Daniel J. Schuller",
+     "46",
+     "Executive Vice President, Strategy and Corporate Development (July 2015 to present); Investment Principal \u2013 J.P. Morgan Asset Management \u2013 Infrastructure Investments Group (2007 to 2015)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 864,
+    "end_line": 887
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "The information appearing in the sections captioned Information Regarding Nominees and Directors, Corporate Governance \u2013 Code of Ethics, \u2013 Board and Board Committees, and Section 16(a) Beneficial Ownership Reporting Compliance of the definitive Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.\nWe make available free of charge within the Corporate Governance portion of the investor relations section of our web site, at www.aquaamerica.com, our Corporate Governance Guidelines, the Charters of each Committee of our Board of Directors, and our Code of Ethical Business Conduct (the \u201cCode\u201d). Amendments to the Code, and any grant of a waiver from a provision of the Code requiring disclosure under applicable SEC rules, will be disclosed on our web site. The reference to our web site is intended to be an inactive textual reference only, and the contents of such web site are not incorporated by reference herein and should not be considered part of this or any other report that we file with or furnish to the SEC.\nOur Executive Officers\nThe following table and the notes thereto set forth information with respect to our executive officers, including their names, ages, positions with Aqua America and business experience during the last five years:",
+   "prose_after": "Prior to January 16, 2004, Aqua Pennsylvania was known as Philadelphia Suburban Water Company.\n(1) In addition to the capacities indicated, the individuals named in the above table hold other offices or directorships with subsidiaries of the Company. Officers serve at the discretion of the Board of Directors.\nItem 11. Executive Compensation\nThe information appearing in the sections captioned Executive Compensation and Director Compensation of the definitive Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nOwnership of Common Stock - The information appearing in the section captioned Ownership of Common Stock of the Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights",
+     "",
+     "Weighted-average exercise price of outstanding options, warrants and rights",
+     "",
+     "Number of securities remaining available for future issuance under equity compensation plans (excluding securities reflected in column (a))"
+    ],
+    [
+     "Plan Category",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders",
+     "1,259,169",
+     "(1)",
+     "$16.62",
+     "(2)",
+     "4,212,079"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Total",
+     "1,259,169",
+     "",
+     "$16.62",
+     "",
+     "4,212,079"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "(1) In addition to the capacities indicated, the individuals named in the above table hold other offices or directorships with subsidiaries of the Company. Officers serve at the discretion of the Board of Directors.\nItem 11. Executive Compensation\nThe information appearing in the sections captioned Executive Compensation and Director Compensation of the definitive Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nOwnership of Common Stock - The information appearing in the section captioned Ownership of Common Stock of the Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.\nSecurities Authorized for Issuance under Equity Compensation Plans - The following table provides information for our equity compensation plans as of December 31, 2015:\nEquity Compensation Plan Information",
+   "prose_after": "(1) Consists of 659,533 shares issuable upon exercise of outstanding options, 511,283 shares issuable upon conversion of outstanding performance share units, and 88,353 shares issuable upon conversion of outstanding restricted share units.\n(2) Calculated based upon outstanding options of 659,533 shares of our common stock.\nItem 13. Certain Relationships and Related Transactions, and Director Independence\nThe information appearing in the sections captioned Corporate Governance \u2013 Director Independence and \u2013 Policies and Procedures For Approval of Related Person Transactions of the definitive Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.\nItem 14. Principal Accountant Fees and Services\nThe information appearing in the section captioned Proposal No. 2 \u2013 Services and Fees of the definitive Proxy Statement relating to our May 6, 2016, annual meeting of shareholders, to be filed within 120 days after the end of the fiscal year covered by this Form 10-K, is incorporated by reference herein.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 890,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 935,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Title"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Christopher H. Franklin",
+     "",
+     ""
+    ],
+    [
+     "Christopher H. Franklin",
+     "",
+     "President and Chief Executive Officer, Director (Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David P. Smeltzer",
+     "",
+     ""
+    ],
+    [
+     "David P. Smeltzer",
+     "",
+     "Executive Vice President and Chief Financial Officer (Principal Financial Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert A. Rubin",
+     "",
+     ""
+    ],
+    [
+     "Robert A. Rubin",
+     "",
+     "Senior Vice President, Controller and Chief Accounting Officer (Principal Accounting Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael L. Browne",
+     "",
+     ""
+    ],
+    [
+     "Michael L. Browne",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Nicholas DeBenedictis",
+     "",
+     ""
+    ],
+    [
+     "Nicholas DeBenedictis",
+     "",
+     "Chairman and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard H. Glanton",
+     "",
+     ""
+    ],
+    [
+     "Richard H. Glanton",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Lon R. Greenberg",
+     "",
+     ""
+    ],
+    [
+     "Lon R. Greenberg",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ William P. Hankowsky",
+     "",
+     ""
+    ],
+    [
+     "William P. Hankowsky",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Wendell F. Holland",
+     "",
+     ""
+    ],
+    [
+     "Wendell F. Holland",
+     "",
+     "Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ellen T. Ruff",
+     "",
+     ""
+    ],
+    [
+     "Ellen T. Ruff",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 983,
+    "end_line": 1027
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Schedule 1. \u2013 Condensed Parent Company Financial Statements. All other schedules are omitted because they are not applicable or not required, or because the required information is included in the consolidated financial statements or notes thereto.\nExhibits, Including Those Incorporated by Reference. A list of exhibits filed as part of this Form 10-K is set forth in the Exhibit Index hereto which is incorporated by reference herein. Where so indicated, exhibits which were previously filed are incorporated by reference. For exhibits incorporated by reference, the location of the exhibit in the previous filing is indicated in the exhibit index.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nAQUA AMERICA, INC.\n/s/ Christopher H. Franklin Christopher H. Franklin President and Chief Executive Officer\nDate: February 26, 2016\nPursuant to the requirements of the Securities and Exchange Act of 1934, this report on Form 10-K has been signed below by the following persons on behalf of the Registrant on February 26, 2016 in the capacities indicated below.",
+   "prose_after": "Condensed Balance Sheets\n(In thousands of dollars)\nDecember 31, 2015 and 2014",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1028,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014"
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "$",
+     "382",
+     "$",
+     "346"
+    ],
+    [
+     "Accounts receivable - affiliates",
+     "",
+     "28,423",
+     "",
+     "19,852"
+    ],
+    [
+     "Income tax receivable",
+     "",
+     "219",
+     "",
+     "581"
+    ],
+    [
+     "Deferred income taxes",
+     "",
+     "-",
+     "",
+     "22,456"
+    ],
+    [
+     "Prepayments and other current assets",
+     "",
+     "3,545",
+     "",
+     "3,366"
+    ],
+    [
+     "Total current assets",
+     "",
+     "32,569",
+     "",
+     "46,601"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred charges and other assets, net",
+     "",
+     "21,313",
+     "",
+     "19,180"
+    ],
+    [
+     "Notes receivable - affiliates",
+     "",
+     "331,604",
+     "",
+     "300,932"
+    ],
+    [
+     "Accounts receivable - affiliates",
+     "",
+     "103,891",
+     "",
+     "98,647"
+    ],
+    [
+     "Deferred income tax asset",
+     "",
+     "85,089",
+     "",
+     "72,407"
+    ],
+    [
+     "Investment in subsidiaries",
+     "",
+     "1,745,634",
+     "",
+     "1,664,768"
+    ],
+    [
+     "Total assets",
+     "$",
+     "2,320,100",
+     "$",
+     "2,202,535"
+    ],
+    [
+     "Liabilities and Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity",
+     "$",
+     "1,725,927",
+     "$",
+     "1,655,343"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt, excluding current portion",
+     "",
+     "420,350",
+     "",
+     "378,400"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current portion of long-term debt",
+     "",
+     "16,050",
+     "",
+     "18,000"
+    ],
+    [
+     "Accrued interest",
+     "",
+     "2,495",
+     "",
+     "2,603"
+    ],
+    [
+     "Accounts payable - affiliates",
+     "",
+     "21,465",
+     "",
+     "22,003"
+    ],
+    [
+     "Other accrued liabilities",
+     "",
+     "16,169",
+     "",
+     "10,986"
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "56,179",
+     "",
+     "53,592"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "117,644",
+     "",
+     "115,200"
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "2,320,100",
+     "$",
+     "2,202,535"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying condensed notes are an integral part of these condensed financial statements.",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1082
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Balance Sheets\n(In thousands of dollars)\nDecember 31, 2015 and 2014",
+   "prose_after": "Condensed Statements of Income and Comprehensive Income\n(In thousands, except per share amounts)\nYears ended December 31, 2015, 2014, and 2013",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1030,
+     "token": "REPEATING_HEADER",
+     "id": 34,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1083,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013"
+    ],
+    [
+     "Other income",
+     "$",
+     "3,034",
+     "$",
+     "4,228",
+     "$",
+     "6,936"
+    ],
+    [
+     "Operating expense and other expenses",
+     "",
+     "1,440",
+     "",
+     "627",
+     "",
+     "2,941"
+    ],
+    [
+     "Gain on sale of utility systems",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(400)"
+    ],
+    [
+     "Operating income",
+     "",
+     "1,594",
+     "",
+     "3,601",
+     "",
+     "4,395"
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "1,833",
+     "",
+     "2,160",
+     "",
+     "4,208"
+    ],
+    [
+     "Other expense",
+     "",
+     "-",
+     "",
+     "443",
+     "",
+     "139"
+    ],
+    [
+     "Income (loss) before equity in earnings of subsidiaries and income taxes",
+     "",
+     "(239)",
+     "",
+     "998",
+     "",
+     "48"
+    ],
+    [
+     "Equity in earnings of subsidiaries",
+     "",
+     "201,003",
+     "",
+     "230,209",
+     "",
+     "220,675"
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "200,764",
+     "",
+     "231,207",
+     "",
+     "220,723"
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "(1,026)",
+     "",
+     "(2,032)",
+     "",
+     "(577)"
+    ],
+    [
+     "Net income attributable to common shareholders",
+     "$",
+     "201,790",
+     "$",
+     "233,239",
+     "$",
+     "221,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "$",
+     "201,689",
+     "$",
+     "233,681",
+     "$",
+     "221,531"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "1.14",
+     "$",
+     "1.32",
+     "$",
+     "1.26"
+    ],
+    [
+     "Diluted",
+     "$",
+     "1.14",
+     "$",
+     "1.31",
+     "$",
+     "1.25"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average common shares outstanding during the period:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "176,788",
+     "",
+     "176,864",
+     "",
+     "176,140"
+    ],
+    [
+     "Diluted",
+     "",
+     "177,517",
+     "",
+     "177,763",
+     "",
+     "176,814"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying condensed notes are an integral part of these condensed financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1093,
+    "end_line": 1130
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Statements of Income and Comprehensive Income\n(In thousands, except per share amounts)\nYears ended December 31, 2015, 2014, and 2013",
+   "prose_after": "Condensed Statements of Cash Flows\n(In thousands of dollars)\nYears ended December 31, 2015, 2014, and 2013",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1085,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1131,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013"
+    ],
+    [
+     "Net cash flows from operating activities",
+     "$",
+     "152,916",
+     "$",
+     "114,465",
+     "$",
+     "159,144"
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions of utility systems and other, net",
+     "",
+     "(26,722)",
+     "",
+     "(9,329)",
+     "",
+     "(266)"
+    ],
+    [
+     "Decrease (increase) in investment of subsidiary",
+     "",
+     "(27,596)",
+     "",
+     "744",
+     "",
+     "50,337"
+    ],
+    [
+     "Other",
+     "",
+     "(1,031)",
+     "",
+     "(733)",
+     "",
+     "(267)"
+    ],
+    [
+     "Net cash flows (used in) from investing activities",
+     "",
+     "(55,349)",
+     "",
+     "(9,318)",
+     "",
+     "49,804"
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from long-term debt",
+     "",
+     "298,879",
+     "",
+     "170,790",
+     "",
+     "98,956"
+    ],
+    [
+     "Repayments of long-term debt",
+     "",
+     "(259,158)",
+     "",
+     "(156,000)",
+     "",
+     "(230,600)"
+    ],
+    [
+     "Proceeds from issuing common stock",
+     "",
+     "677",
+     "",
+     "-",
+     "",
+     "10,290"
+    ],
+    [
+     "Proceeds from exercised stock options",
+     "",
+     "7,540",
+     "",
+     "7,296",
+     "",
+     "25,698"
+    ],
+    [
+     "Share-based compensation windfall tax benefits",
+     "",
+     "1,843",
+     "",
+     "1,422",
+     "",
+     "2,420"
+    ],
+    [
+     "Repurchase of common stock",
+     "",
+     "(25,247)",
+     "",
+     "(15,756)",
+     "",
+     "(12,823)"
+    ],
+    [
+     "Dividends paid on common stock",
+     "",
+     "(121,248)",
+     "",
+     "(112,106)",
+     "",
+     "(102,889)"
+    ],
+    [
+     "Other",
+     "",
+     "(853)",
+     "",
+     "(793)",
+     "",
+     "-"
+    ],
+    [
+     "Net cash flows used in financing activities",
+     "",
+     "(97,567)",
+     "",
+     "(105,147)",
+     "",
+     "(208,948)"
+    ],
+    [
+     "Net change in cash and cash equivalents",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Cash and cash equivalents at beginning of year",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of year",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "See Note 1 - Basis of Presentation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "The accompanying condensed notes are an integral part of these condensed financial statements.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1141,
+    "end_line": 1176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Condensed Statements of Cash Flows\n(In thousands of dollars)\nYears ended December 31, 2015, 2014, and 2013",
+   "prose_after": "Notes to Condensed Parent Company Financial Statements\n(In thousands of dollars)\nNote 1 \u2013 Basis of Presentation \u2013 The accompanying condensed financial statements of Aqua America, Inc. (the \u201cParent\u201d) should be read in conjunction with the consolidated financial statements and notes thereto of Aqua America, Inc. and subsidiaries (collectively, the \u201cRegistrant\u201d) incorporated by reference into Part II, Item 8 of the Form 10-K. The Parent\u2019s significant accounting policies are consistent with those of the Registrant.\nThe Parent borrows from third parties and provides funds to its subsidiaries, in support of their operations. Amounts owed to the Parent for borrowings under this facility are reflected as inter-company receivables on the condensed balance sheets. The interest rate charged to the subsidiaries is sufficient to cover the Parent\u2019s interest costs under its associated borrowings.\nAs of December 31, 2015 and 2014, the Parent had a current accounts receivable \u2013 affiliates balance of $28,423 and $19,852. As of December 31, 2015 and 2014, the Parent had a notes receivable \u2013 affiliates balance of $331,604 and $300,932. The changes in these balances represent non-cash adjustments that are recorded through the Parent\u2019s investment in subsidiaries.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1133,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year",
+     "",
+     "Debt Maturity"
+    ],
+    [
+     "2016",
+     "$",
+     "16,050"
+    ],
+    [
+     "2017",
+     "",
+     "26,050"
+    ],
+    [
+     "2018",
+     "",
+     "20,800"
+    ],
+    [
+     "2019",
+     "",
+     "50,000"
+    ],
+    [
+     "2020",
+     "",
+     "28,200"
+    ],
+    [
+     "Thereafter",
+     "",
+     "235,300"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1197,
+    "end_line": 1207
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "As of December 31, 2015 and 2014, the Parent had a current accounts receivable \u2013 affiliates balance of $28,423 and $19,852. As of December 31, 2015 and 2014, the Parent had a notes receivable \u2013 affiliates balance of $331,604 and $300,932. The changes in these balances represent non-cash adjustments that are recorded through the Parent\u2019s investment in subsidiaries.\nIn the ordinary course of business, the Parent indemnifies a third-party for surety bonds issued on behalf of subsidiary companies, guarantees the performance of one of its regulated utilities in a jurisdiction that requires such guarantees, and guarantees several projects associated with the treatment of water in a jurisdiction.\nNote 2 \u2013 Dividends from subsidiaries \u2013 Dividends in the amount of $74,866, $30,972, and $18,075 were paid to the Parent by its wholly-owned subsidiaries during the years ended December 31, 2015, 2014, and 2013, respectively.\nNote 3 \u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:",
+   "prose_after": "The Parent had a short-term line of credit of $15,000, which expired on December 31, 2015. Funds borrowed under this line are classified as loans payable and is used to provide working capital. The short-term borrowing activity for the last three years is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1179,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1220,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2013",
+     ""
+    ],
+    [
+     "Balance outstanding at December 31,",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Interest rate at December 31,",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Average borrowings outstanding",
+     "$",
+     "-",
+     "$",
+     "583",
+     "$",
+     "-"
+    ],
+    [
+     "Weighted-average interest rate",
+     "",
+     "-",
+     "",
+     "0.78%",
+     "",
+     "-"
+    ],
+    [
+     "Maximum amount outstanding",
+     "$",
+     "-",
+     "$",
+     "7,000",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1219
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "The Parent had a short-term line of credit of $15,000, which expired on December 31, 2015. Funds borrowed under this line are classified as loans payable and is used to provide working capital. The short-term borrowing activity for the last three years is as follows:",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1179,
+     "token": "REPEATING_HEADER",
+     "id": 40,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1220,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Description",
+     "Incorporated by Reference to",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Form",
+     "File No.",
+     "Exhibit(s)",
+     "Filing Date"
+    ],
+    [
+     "2.1",
+     "Stock Purchase Agreement, dated as of July 26, 2011, by and between Aqua America, Inc. and Connecticut Water Service, Inc.",
+     "10-Q",
+     "001-06659",
+     "2.1",
+     "November 4, 2011"
+    ],
+    [
+     "2.2",
+     "Stock Purchase Agreement, dated as of July 8, 2011, by and among American Water Works Company, Inc., Ohio-American Water Company and Aqua Ohio, Inc.",
+     "10-Q",
+     "001-06659",
+     "2.2",
+     "November 4, 2011"
+    ],
+    [
+     "2.3",
+     "Stock Purchase Agreement, dated as of July 8, 2011, by and among Aqua Utilities, Inc., Aqua New York, Inc. and American Water Works Company, Inc.",
+     "10-Q",
+     "001-06659",
+     "2.3",
+     "May 8, 2014"
+    ],
+    [
+     "2.4",
+     "Utility System Asset Acquisition Agreement as of December 28, 2012 by and among Florida Governmental Utility Authority, as buyer and Aqua Utilities Florida, Inc., and Crystal River Utilities, Inc., as sellers",
+     "10-K",
+     "001-06659",
+     "2.4",
+     "February 28, 2013"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Articles of Incorporation of Aqua America, Inc., dated as of May 10, 2012",
+     "8-K",
+     "001-06659",
+     "3.1",
+     "May 11, 2012"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Aqua America, Inc. (as amended effective as of May 10, 2012)",
+     "8-K",
+     "001-06659",
+     "3.2",
+     "May 11, 2012"
+    ],
+    [
+     "4.1.1",
+     "Indenture of Mortgage dated as of January 1, 1941 between Aqua Pennsylvania, Inc. (f/k/a Philadelphia Suburban Water Company) and The Bank of New York Mellon Trust Company, as successor trustee to First Pennsylvania Bank, N.A. (f/k/a The Pennsylvania Company for Insurance on Lives and Granting Annuities)",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "4.1.2",
+     "Twenty-fourth Supplemental Indenture dated as of June 1, 1988",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "4.1.3",
+     "Twenty-sixth Supplemental Indenture dated as of November1, 1991",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "4.1.4",
+     "Twenty-ninth Supplemental Indenture dated as of March 30, 1995",
+     "10-Q",
+     "001-06659",
+     "4.17",
+     "May 10, 1995"
+    ],
+    [
+     "4.1.5",
+     "Thirty-third Supplemental Indenture, dated as of November 15, 1999",
+     "10-K",
+     "001-06659",
+     "4.27",
+     "March 29, 2000"
+    ],
+    [
+     "4.1.6",
+     "Thirty-fifth Supplemental Indenture, dated as of January 1, 2002",
+     "10-K",
+     "001-06659",
+     "4.22",
+     "March 20, 2002"
+    ],
+    [
+     "4.1.7",
+     "Forty-first Supplemental Indenture, dated as of January 1, 2007",
+     "10-Q",
+     "001-06659",
+     "4.1",
+     "May 8, 2007"
+    ],
+    [
+     "4.1.8",
+     "Forty-second Supplemental Indenture, dated as of December 1, 2007",
+     "10-K",
+     "001-06659",
+     "4.36",
+     "February 27, 2008"
+    ],
+    [
+     "4.1.9",
+     "Forty-third Supplemental Indenture, dated as of December 1, 2008",
+     "10-K",
+     "001-06659",
+     "4.37",
+     "February 27, 2009"
+    ],
+    [
+     "4.1.10",
+     "Forty-fourth Supplemental Indenture, dated as of July 1, 2009",
+     "10-Q",
+     "001-06659",
+     "4.38",
+     "August 6, 2009"
+    ],
+    [
+     "4.1.11",
+     "Forty-fifth Supplemental Indenture, dated as of October 15, 2009",
+     "10-K",
+     "001-06659",
+     "4.39",
+     "February 26, 2010"
+    ],
+    [
+     "4.1.12",
+     "Forty-sixth Supplemental Indenture, dated as of October 15, 2010",
+     "10-K",
+     "001-06659",
+     "4.35",
+     "February 25, 2011"
+    ],
+    [
+     "4.1.13",
+     "Forty-seventh Supplemental Indenture, dated as of October 15, 2012",
+     "10-K",
+     "001-06659",
+     "4.24",
+     "February 28, 2013"
+    ],
+    [
+     "4.1.14",
+     "Forty-eighth Supplemental Indenture, dated as of October 1, 2013",
+     "10-K",
+     "001-06659",
+     "4.1.17",
+     "March 3, 2014"
+    ],
+    [
+     "4.1.15",
+     "Form of Supplemental Indenture during and after 2014",
+     "^",
+     "^",
+     "^",
+     "^"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1224,
+    "end_line": 1279
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1220,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "4.1.15.1",
+     "Schedule of Outstanding Supplemental Indentures during and after 2014",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "4.2",
+     "Note Purchase Agreement, dated July 31, 2003, by and among the Aqua America, Inc. and the note purchasers thereto",
+     "10-Q",
+     "001-06659",
+     "4.27",
+     "November 13, 2003"
+    ],
+    [
+     "4.3",
+     "Bond Purchase Agreement, dated December 21, 2006, by and among the Chester County Industrial Development Authority, Aqua Pennsylvania, Inc. and Sovereign Securities Corporation, LLC",
+     "10-Q",
+     "001-06659",
+     "10.2",
+     "May 8, 2007"
+    ],
+    [
+     "4.4",
+     "Bond Purchase Agreement, dated December 12, 2007, by and among the Montgomery County Industrial Development Authority, Aqua Pennsylvania, Inc. and Sovereign Securities Corporation, LLC",
+     "10-K",
+     "001-06659",
+     "10.34",
+     "February 27, 2008"
+    ],
+    [
+     "4.5",
+     "Bond Purchase Agreement, dated December 4, 2008, by and among the Pennsylvania Economic Development Financing Authority, Aqua Pennsylvania, Inc. and Sovereign Securities Corporation, LLC",
+     "10-K",
+     "001-06659",
+     "10.35",
+     "February 27, 2009"
+    ],
+    [
+     "4.6",
+     "Bond Purchase Agreement, dated June 30, 2009, by and among the Pennsylvania Economic Development Financing Authority, Aqua Pennsylvania, Inc., Jeffries and Company, Inc., and Janney Montgomery Scott LLC",
+     "10-Q",
+     "001-06659",
+     "10.52",
+     "August 6, 2009"
+    ],
+    [
+     "4.7",
+     "Bond Purchase Agreement , dated October 20, 2009, by and among the Pennsylvania Economic Development Financing Authority, Aqua Pennsylvania, Inc., Jeffries and Company, Inc., Janney Montgomery Scott LLC, and PNC Capital Markets LLC",
+     "10-K",
+     "001-06659",
+     "10.59",
+     "February 26, 2010"
+    ],
+    [
+     "4.8",
+     "Bond Purchase Agreement, dated October 27, 2010, by and among the Pennsylvania Economic Development Financing Authority, Aqua Pennsylvania, Inc., Jeffries and Company, Inc., PNC Capital Markets LLC, and TD Securities (USA) LLC",
+     "10-K",
+     "001-06659",
+     "10.51",
+     "February 25, 2011"
+    ],
+    [
+     "4.9",
+     "Bond Purchase Agreement , dated November 8, 2012, by and among Aqua Pennsylvania, Inc., Teachers Insurance and Annuity Association, John Hancock Life Insurance Company, John Hancock Life Insurance Company of New York, John Hancock Life & Health Insurance Company, The Lincoln National Life Insurance Company, Lincoln Life & Annuity Company of New York, New York Life Insurance Company, New York Life Insurance and Annuity Corporation, Minnesota Life Insurance Company, United Health Care Insurance Company, American Republic Insurance Company, Western Fraternal Life Association",
+     "10-K",
+     "001-06659",
+     "10.54",
+     "February 28, 2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1284,
+    "end_line": 1315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1282,
+     "token": "REPEATING_HEADER",
+     "id": 43,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1316,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "4.10",
+     "Bond Purchase Agreement, dated October 24, 2013, by and among Aqua Pennsylvania, Inc., John Hancock Life Insurance Company (U.S.A), John Hancock Life Insurance Company of New York, John Hancock Life & Health Insurance Company, The Lincoln National Life Insurance Company, Thrivent Financial for Lutherans, United Insurance Company of America, Equitable Life & Casualty Insurance Company, Catholic United Financial, and Great Western Insurance Company",
+     "10-K",
+     "001-06659",
+     "10.45",
+     "March 3, 2014"
+    ],
+    [
+     "4.11",
+     "Bond Purchase Agreement, dated December 29, 2014, by and among Aqua Pennsylvania, Inc., Thrivent Financial for Lutherans, State Farm Life Insurance Company, John Hancock Life Insurance Company (U.S.A), Phoenix Life Insurance Company, PHL Variable Insurance Company, United of Omaha Life Insurance Company, Mutual of Omaha Insurance Company, and Companion Life Insurance Company",
+     "10-K",
+     "001-06659",
+     "10.58",
+     "February 27, 2015"
+    ],
+    [
+     "4.12",
+     "Bond Purchase Agreement, dated December 3, 2015 by and among Aqua Pennsylvania, Inc., Thrivent Financial for Lutherans, State Farm Life Insurance Company, John Hancock Life Insurance Company (U.S.A), The Lincoln National Life Insurance Company, Teachers Insurance And Annuity Association Of America, CMFG Life Insurance Company, Genworth Life Insurance Company, Phoenix Life Insurance Company, PHL Variable Insurance Company, United Of Omaha Life Insurance Company, The State Life Insurance Company, Pioneer Mutual Life Insurance Company, MONY Life Insurance Company",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.1",
+     "Revolving Credit Agreement, dated as of November 30, 2010, between Aqua Pennsylvania, Inc. and PNC Bank, National Association, TD Bank, N.A., and Citizens Bank of Pennsylvania",
+     "10-K",
+     "001-06659",
+     "4.34",
+     "February 25, 2011"
+    ],
+    [
+     "10.1.1",
+     "First Amendment to Revolving Credit Agreement,  dated as of November 28, 2011, between Aqua Pennsylvania, Inc. and PNC Bank, National Association, TD Bank, N.A., Citizens Bank of Pennsylvania, and Huntington National Bank",
+     "10-K",
+     "001-06659",
+     "4.25",
+     "February 27, 2012"
+    ],
+    [
+     "10.1.2",
+     "Second Amendment to Revolving Credit Agreement, dated as of November 26, 2012, between Aqua Pennsylvania, Inc. and PNC Bank, National Association, TD Bank, N.A., Citizens Bank of Pennsylvania, and Huntington National Bank",
+     "10-K",
+     "001-06659",
+     "10.53",
+     "February 28, 2013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1320,
+    "end_line": 1348
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1318,
+     "token": "REPEATING_HEADER",
+     "id": 45,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1349,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.1.3",
+     "Third Amendment to Revolving Credit Agreement,  dated as of November 25, 2013, between Aqua Pennsylvania, Inc. and PNC Bank, National Association, TD Bank, N.A., Citizens Bank of Pennsylvania, and Huntington National Bank",
+     "10-K",
+     "001-06659",
+     "10.34",
+     "March 3, 2014"
+    ],
+    [
+     "10.1.4",
+     "Fourth Amendment to Revolving Credit Agreement dated as of September 29, 2014, between Aqua Pennsylvania, Inc. and PNC Bank, National Association, TD Bank, N.A., Citizens Bank of Pennsylvania, and Huntington National Bank",
+     "10-K",
+     "001-06659",
+     "10.57",
+     "February 27, 2015"
+    ],
+    [
+     "10.2",
+     "Revolving Credit Agreement, dated as of March 23, 2012, between Aqua America, Inc. and PNC Bank, National Association, CoBank, ACB, and Huntington National Bank",
+     "10-Q",
+     "001-06659",
+     "10.60",
+     "May 7, 2012"
+    ],
+    [
+     "10.2.1",
+     "First Amendment to Revolving Credit Agreement , dated as of January 31, 2013, between Aqua America, Inc. and PNC Bank, National Association, CoBank, ACB, and Huntington National Bank",
+     "10-Q",
+     "001-06659",
+     "10.53",
+     "November 6, 2014"
+    ],
+    [
+     "10.2.2",
+     "Second Amendment to Revolving Credit Agreement, dated as of August 20, 2014, between Aqua America, Inc. and PNC Bank, National Association, CoBank, ACB, and Huntington National Bank",
+     "10-Q",
+     "001-06659",
+     "10.54",
+     "November 6, 2014"
+    ],
+    [
+     "10.3",
+     "Aqua America, Inc. Deferred Compensation Plan Master Trust Agreement with PNC Bank, National Association, dated as of December 31, 1996*",
+     "10-K",
+     "001-06659",
+     "10.24",
+     "March 25, 1997"
+    ],
+    [
+     "10.3.1",
+     "Amendment 2008-1 to the Aqua America, Inc. Deferred Compensation Plan Master Trust Agreement, dated as of December 15, 2008*",
+     "10-K",
+     "001-06659",
+     "10.50",
+     "February 27, 2009"
+    ],
+    [
+     "10.4",
+     "Aqua America, Inc. 2009 Executive Deferral Plan (as amended and restated effective January 1, 2009)*",
+     "S-8",
+     "333-156047",
+     "4.1",
+     "December 10, 2008"
+    ],
+    [
+     "10.5",
+     "Aqua America, Inc. Supplemental Executive Retirement Plan for Nicholas DeBenedictis (as amended and restated effective January 1, 2011)*",
+     "10-K",
+     "001-06659",
+     "10.59",
+     "February 27, 2012"
+    ],
+    [
+     "10.6",
+     "Aqua America, Inc. Supplemental Pension Benefit Plan for Salaried Employees (as amended and restated effective January 1, 2011)*",
+     "10-K",
+     "001-06659",
+     "10.58",
+     "February 27, 2012"
+    ],
+    [
+     "10.7",
+     "Aqua America, Inc. Dividend Reinvestment and Direct Stock Purchase Plan*",
+     "S-3",
+     "333-197805",
+     "N/A",
+     "August 1, 2014"
+    ],
+    [
+     "10.8",
+     "Aqua America, Inc. 2004 Equity Compensation Plan (as amended and restated as of January 1, 2009)*",
+     "10-K",
+     "001-06659",
+     "10.36",
+     "February 27, 2009"
+    ],
+    [
+     "10.8.1",
+     "Form of Incentive Stock Option and Dividend Equivalent Grant Agreement*",
+     "10-K",
+     "001-06659",
+     "10.49",
+     "February 27, 2009"
+    ],
+    [
+     "10.8.2",
+     "Form of Amendment to Incentive Stock Option and Dividend Equivalent Grant Agreements for executive officers *",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.9",
+     "Aqua America, Inc. 2009 Omnibus Equity Compensation Plan (as amended effective February 27, 2014) *",
+     "8-K",
+     "001-06659",
+     "10.1",
+     "May 12, 2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1353,
+    "end_line": 1394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1351,
+     "token": "REPEATING_HEADER",
+     "id": 47,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1395,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.9.1",
+     "Form of Performance-Based Share Unit Grant for Chief Executive Officer*",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.9.2",
+     "Performance-Based Share Unit Grant Terms and Conditions for Chief Executive Officer*",
+     "10-Q",
+     "001-06659",
+     "10.51(B)",
+     "May 8, 2014"
+    ],
+    [
+     "10.9.3",
+     "Form of Performance-Based Share Unit Grant for all other executive officers*",
+     "10-Q",
+     "001-06659",
+     "10.36",
+     "May 6, 2015"
+    ],
+    [
+     "10.9.4",
+     "Performance-Based Share Unit Grant Terms and Conditions for all other executive officers*",
+     "10-Q",
+     "001-06659",
+     "10.37",
+     "May 6, 2015"
+    ],
+    [
+     "10.9.5",
+     "Form of Restricted Stock Unit Grant for Chief Executive Officer*",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.9.6",
+     "Restricted Stock Unit Grant Terms and Conditions for Chief Executive Officer*",
+     "10-Q",
+     "001-06659",
+     "10.52(B)",
+     "May 8, 2014"
+    ],
+    [
+     "10.9.7",
+     "Form of Restricted Stock Unit Grant for all other executive officers*",
+     "10-Q",
+     "001-06659",
+     "10.40",
+     "May 6, 2015"
+    ],
+    [
+     "10.9.8",
+     "Restricted Stock Unit Grant Terms and Conditions for all other executive officers*",
+     "10-Q",
+     "001-06659",
+     "10.41",
+     "May 6, 2015"
+    ],
+    [
+     "10.10",
+     "Aqua America, Inc. 2012 Employee Stock Purchase Plan*",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.11",
+     "Aqua America, Inc. and Subsidiaries Annual Cash Incentive Compensation Plan (adopted February 26, 2013)*",
+     "10-K",
+     "001-06659",
+     "10.56",
+     "February 28, 2013"
+    ],
+    [
+     "10.12",
+     "Form of Change in Control Agreement between the Company and executive officers*",
+     "10-Q",
+     "001-06659",
+     "10.1",
+     "November 6, 2015"
+    ],
+    [
+     "10.12.1",
+     "Schedule of Change in Control Agreement between the Company and executive officers*",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.13",
+     "Change in Control Agreement, dated December 31, 2008, between Aqua America, Inc. and Christopher H. Franklin*",
+     "10-K",
+     "001-06659",
+     "10.46",
+     "February 27, 2009"
+    ],
+    [
+     "10.14",
+     "Change in Control and Severance Agreement, dated December 31, 2008, between Aqua America, Inc. and Nicholas DeBenedictis*",
+     "10-K",
+     "001-06659",
+     "10.42",
+     "February 27, 2009"
+    ],
+    [
+     "10.15",
+     "Non-Employee Directors\u2019 Compensation for 2015*",
+     "10-K",
+     "001-06659",
+     "10.8",
+     "February 27, 2015"
+    ],
+    [
+     "10.16",
+     "Non-Employee Directors\u2019 Compensation for 2016*",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "10.17",
+     "Employment Agreement, dated June 2, 2015, between Aqua America, Inc. and Christopher Franklin*",
+     "8-K",
+     "001-06659",
+     "10.1",
+     "June 3, 2015"
+    ],
+    [
+     "10.18",
+     "Employment Agreement dated January 31, 2010, between Aqua America, Inc. and Nicholas DeBenedictis *",
+     "8-K",
+     "001-06659",
+     "10.1",
+     "February 4, 2010"
+    ],
+    [
+     "10.18.1",
+     "Amendment to Employment Agreement dated December 6, 2011, between Aqua America, Inc. and Nicholas DeBenedictis*",
+     "10-K",
+     "001-06659",
+     "10.56",
+     "February 27, 2012"
+    ],
+    [
+     "10.18.2",
+     "Amendment to Employment Agreement, dated June 30, 2015, between Aqua America, Inc. and Nicholas DeBenedictis*",
+     "8-K",
+     "001-06659",
+     "10.1",
+     "July 7, 2015"
+    ],
+    [
+     "13.1",
+     "Selected portions of Annual Report to Shareholders for the year ended December 31, 2015 incorporated by reference in Annual Report on Form 10-K for the year ended December 31, 2015",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "21.1",
+     "Subsidiaries of Aqua America, Inc.",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm \u2013 PricewaterhouseCoopers LLP",
+     "^",
+     "^",
+     "^",
+     "^"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1399,
+    "end_line": 1449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1397,
+     "token": "REPEATING_HEADER",
+     "id": 49,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1450,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "Certification of Chief Executive Officer, pursuant to Rule 13a-14(a) under the Securities and Exchange Act of 1934",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer, pursuant to Rule 13a-14(a) under the Securities and Exchange Act of 1934",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer, pursuant to 18 U.S.C. Section 1350",
+     "^^",
+     "^^",
+     "^^",
+     "^^"
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer, pursuant to 18 U.S.C. Section 1350",
+     "^^",
+     "^^",
+     "^^",
+     "^^"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "^",
+     "^",
+     "^",
+     "^"
+    ],
+    [
+     "101.PRES",
+     "XBRL Taxonomy Extension Presentation Linkbase Document",
+     "^",
+     "^",
+     "^",
+     "^"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Long-term debt \u2013 the Parent has long-term debt under unsecured note purchase agreements with investors in addition to its $200,000 revolving credit agreement. Excluding amounts due under the revolving credit agreement, the debt maturities of the Parent\u2019s long-term debt are as follows:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "In accordance with Item 601(b)(4)(iii)(A) of Regulation S-K, copies of specific instruments defining the rights of holders of long-term debt of the Company or its subsidiaries are not filed herewith. Pursuant to this regulation, we hereby agree to furnish a copy of any such instrument to the SEC upon request.\n*Indicates management contract or compensatory plan or arrangement\n^ Filed herewith\n^^Furnished herewith",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1452,
+     "token": "REPEATING_HEADER",
+     "id": 51,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

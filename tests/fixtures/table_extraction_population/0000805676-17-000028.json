@@ -1,0 +1,683 @@
+{
+ "accession": "0000805676-17-000028",
+ "cik": "0000805676",
+ "form": "10-K",
+ "filing_date": "2017-02-21",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "prk-20161231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Ohio",
+     "31-1179518"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "50 North Third Street, P.O. Box 3500, Newark, Ohio",
+     "43058-3500"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n[X]    ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2016\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________ to ____________\nCommission file number: 1-13006\nPark National Corporation\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "(740) 349-8451\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Common Shares, without par value",
+     "NYSE MKT"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(740) 349-8451\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the Registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\n[X] Yes [ ] No\nIndicate by check mark if the Registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the Registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the Registrant was required to submit and post such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Outstanding at February 17, 2017"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Common Shares, without par value",
+     "15,290,709 common shares"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 79,
+    "end_line": 85
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-accelerated filer [ ]                      Smaller reporting company [ ]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Act).\n[ ] Yes [X] No\nState the aggregate market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the Registrant\u2019s most recently completed second fiscal quarter: As of June 30, 2016, the aggregate market value of the Registrant\u2019s common shares (the only common equity of the Registrant) held by non-affiliates of the Registrant was $1,379,303,140 based on the closing sale price as reported on NYSE MKT. For this purpose, executive officers and directors of the Registrant are considered affiliates.\nIndicate the number of shares outstanding of each of the Registrant\u2019s classes of common stock, as of the latest practicable date.",
+   "prose_after": "DOCUMENTS INCORPORATED BY REFERENCE",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Document",
+     "Parts Into Which Incorporated"
+    ],
+    [
+     "Portions of the Registrant\u2019s 2016 Annual Report",
+     "Parts I and II"
+    ],
+    [
+     "Portions of the Registrant\u2019s Definitive Proxy Statement for the Annual Meeting of Shareholders to be held on April 24, 2017",
+     "Part III"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "DOCUMENTS INCORPORATED BY REFERENCE",
+   "prose_after": "Exhibit Index on Page E-1\nPART I\nITEM 1. BUSINESS.\nGeneral\nPark National Corporation (\u201cPark\u201d) is a financial holding company subject to regulation under the Bank Holding Company Act of 1956, as amended (the \u201cBank Holding Company Act\u201d). Park was initially incorporated under Delaware law in 1986 and began operations as a bank holding company in 1987. In 1992, Park changed its state of incorporation to Ohio. Park\u2019s principal executive offices are located at 50 North Third Street, Newark, Ohio 43055, and its telephone number is (740) 349-8451. Park\u2019s common shares, each without par value (the \u201cCommon Shares\u201d), are listed on NYSE MKT, under the symbol \u201cPRK.\u201d\nPark maintains an Internet site which can be accessed at http://www.parknationalcorp.com. Information contained in Park\u2019s Internet site does not constitute part of, and is not incorporated into, this Annual Report on Form 10-K. Park makes available free of charge on or through its Internet site Park\u2019s annual reports on Form 10-K, quarterly reports on Form 10-Q, current reports on Form 8-K, and amendments to those reports filed or furnished pursuant to Section 13(a) or 15(d) of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), as well as Park\u2019s definitive proxy statements filed pursuant to Section 14 of the Exchange Act, as soon as reasonably practicable after Park electronically files such material with, or furnishes it to, the Securities and Exchange Commission (the \u201cSEC\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Common Shares Purchased",
+     "Average Price Paid per Common Share",
+     "Total Number of Common Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "Maximum Number of Common Shares that May Yet Be Purchased under the Plans or Programs (1)"
+    ],
+    [
+     "October 1 through October 31, 2016",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "488,050"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "November 1 through November 30, 2016",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "488,050"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 1 through December 31, 2016",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "488,050"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 753,
+    "end_line": 768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES."
+    },
+    "note": null
+   },
+   "prose_before": "As of December 31, 2016, the Company had accrued charges of approximately $2.3 million for legal contingencies related to various legal and other adversary proceedings.\nITEM 4. MINE SAFETY DISCLOSURES.\nNot applicable.\nPART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.\nThe information called for in this Item 5 by Items 201(a) through 201(c) of SEC Regulation S-K is incorporated herein by reference from \u201cTable 41 \u2013 Market and Dividend Information\u201d and the accompanying disclosure in the section of Park\u2019s 2016 Annual Report captioned \u201cMANAGEMENT'S DISCUSSION AND ANALYSIS.\u201d\nThe following table provides information regarding purchases of Park's Common Shares made by or on behalf of Park or any \"affiliated purchaser\" as defined in Rule 10b-18(a)(3) under the Exchange Act during the fiscal quarter ended December 31, 2016. The table also provides information concerning the maximum number of Common Shares that may be purchased under Park\u2019s previously-announced stock repurchase authorization to fund the Park National Corporation 2013 Long-Term Incentive Plan (the \"2013 Incentive Plan\"):",
+   "prose_after": "(1) The number shown represents, as of the end of each period, the maximum number of Common Shares that may yet be purchased as part of Park\u2019s publicly announced stock repurchase authorization to fund the 2013 Incentive Plan which became effective on April 22, 2013.\nAt the 2013 Annual Meeting of Shareholders held on April 22, 2013, Park's shareholders approved the 2013 Incentive Plan. The aggregate number of Common Shares with respect to which awards may be granted under the 2013 Incentive Plan will be 600,000. The Common Shares to be issued and delivered under the 2013 Incentive Plan may consist of either Common Shares currently held or Common Shares subsequently acquired by Park as treasury shares. No newly-issued Common Shares will be delivered under the 2013 Incentive Plan. On April 22, 2013, Park's Board of Directors authorized the purchase, from time to time, of up to 600,000 Park Common Shares to be held as treasury shares for subsequent issuance and delivery under the 2013 Incentive Plan. As of December 31, 2016, 111,950 Common Shares had been purchased for this purpose.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 775,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PARK NATIONAL CORPORATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: February 21, 2017",
+     "By:",
+     "/s/ David L. Trautman"
+    ],
+    [
+     "",
+     "",
+     "David L. Trautman,"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and President"
+    ]
+   ],
+   "caption_stack": [
+    "PARK NATIONAL CORPORATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 931,
+    "end_line": 939
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "All schedules for which provision is made in the applicable accounting regulations of the SEC are not required under the related instructions or are inapplicable and have been omitted.\n(a)(3) Exhibits.\nThe documents listed in the Index to Exhibits that follows the Signatures page of this Annual Report on Form 10-K are filed/furnished with this Annual Report on Form 10-K as exhibits or incorporated into this Annual Report on Form 10-K by reference. Each management contract or compensatory plan or arrangement is identified as such in the Index to Exhibits.\n(b) The documents listed in the Index to Exhibits that follows the Signatures page of this Annual Report on Form 10-K are filed/furnished with this Annual Report on Form 10-K as exhibits or incorporated into this Annual Report on Form 10-K by reference.\n(c) Financial Statement Schedules\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the Registrant and in the capacities indicated on the 21st day of February, 2017.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Capacity"
+    ],
+    [
+     "/s/ David L. Trautman David L. Trautman",
+     "Chief Executive Officer, President and Director"
+    ],
+    [
+     "/s/ C. Daniel DeLawder\nC. Daniel DeLawder",
+     "Chairman of the Board and Director"
+    ],
+    [
+     "/s/ Brady T. Burt Brady T. Burt",
+     "Chief Financial Officer, Secretary and Treasurer"
+    ],
+    [
+     "/s/ Matthew R. Miller Matthew R. Miller",
+     "Chief Accounting Officer"
+    ],
+    [
+     "/s/ Donna M. Alvarado* Donna M. Alvarado",
+     "Director"
+    ],
+    [
+     "/s/ James R. DeRoberts* James R. DeRoberts",
+     "  Director"
+    ],
+    [
+     "/s/ F. William Englefield IV*\nF. William Englefield IV",
+     "Director"
+    ],
+    [
+     "/s/ Alicia J. Hupp* Alicia J. Hupp",
+     "  Director"
+    ],
+    [
+     "/s/ Stephen J. Kambeitz* Stephen J. Kambeitz",
+     "Director"
+    ],
+    [
+     "/s/ Timothy S. McLain* Timothy S. McLain",
+     "Director"
+    ],
+    [
+     "/s/ Robert E. O\u2019Neill* Robert E. O\u2019Neill",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 942,
+    "end_line": 958
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this Report has been signed below by the following persons on behalf of the Registrant and in the capacities indicated on the 21st day of February, 2017.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 926,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Capacity"
+    ],
+    [
+     "/s/ Julia A. Sloat* Julia A. Sloat",
+     "  Director"
+    ],
+    [
+     "/s/ Rick R. Taylor* Rick R. Taylor",
+     "Director"
+    ],
+    [
+     "/s/ Leon Zazworsky* Leon Zazworsky",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 960,
+    "end_line": 966
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "__________________________\n* The above-named directors of the Registrant sign this Annual Report on Form 10-K by David L. Trautman, their attorney-in-fact, pursuant to Powers of Attorney signed by the above-named directors, which Powers of Attorney are filed with this Annual Report on Form 10-K as exhibits, in the capacities indicated and on the 21st day of February, 2017.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ David L. Trautman"
+    ],
+    [
+     "",
+     "David L. Trautman"
+    ],
+    [
+     "",
+     "Chief Executive Officer and President"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "__________________________\n* The above-named directors of the Registrant sign this Annual Report on Form 10-K by David L. Trautman, their attorney-in-fact, pursuant to Powers of Attorney signed by the above-named directors, which Powers of Attorney are filed with this Annual Report on Form 10-K as exhibits, in the capacities indicated and on the 21st day of February, 2017.",
+   "prose_after": "INDEX TO EXHIBITS\nExhibit No. Description of Exhibit\n3.1(a) Articles of Incorporation of Park National Corporation as filed with the Ohio Secretary of State on March 24, 1992 (incorporated herein by reference to Exhibit 3(a) to Park National Corporation's Form 8-B, filed on May 20, 1992 (File No. 0-18772) (\u201cPark's Form 8-B\u201d))\n3.1(b) Certificate of Amendment to the Articles of Incorporation of Park National Corporation as filed with the Ohio Secretary of State on May 6, 1993 (incorporated herein by reference to Exhibit 3(b) to Park National Corporation's Annual Report on Form 10-K for the fiscal year ended December 31, 1993 (File No. 0-18772))\n3.1(c) Certificate of Amendment to the Articles of Incorporation of Park National Corporation as filed with the Ohio Secretary of State on April 16, 1996 (incorporated herein by reference to Exhibit 3(a) to Park National Corporation's Quarterly Report on Form 10-Q for the quarterly period ended March 31, 1996 (File No. 1-13006))\n3.1(d) Certificate of Amendment by Shareholders to the Articles of Incorporation of Park National Corporation as filed with the Ohio Secretary of State on April 22, 1997 (incorporated herein by reference to Exhibit 3(a)(1) to Park National Corporation's Quarterly Report on Form 10-Q for the quarterly period ended June 30, 1997 (File No. 1-13006) (\u201cPark's June 30, 1997 Form 10-Q\u201d))",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

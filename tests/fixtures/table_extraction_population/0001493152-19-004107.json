@@ -1,0 +1,7281 @@
+{
+ "accession": "0001493152-19-004107",
+ "cik": "0001534708",
+ "form": "10-K",
+ "filing_date": "2019-03-28",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "20-3937596"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "S. SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2018\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ___________ to _____________\nCommission File Number 000-54959\nEASTSIDE DISTILLING, INC.\n(Name of small business issuer as specified in its charter)",
+   "prose_after": "1001 SE Water Avenue, Suite 390\nPortland, Oregon 97214\n(Address of principal executive offices, including zip code)\nRegistrant\u2019s telephone number, including area code: (971) 888-4264\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common Stock, $0.0001 par value",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "(Title of Each Class)",
+     "(Name of Each Exchange on Which Registered)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1001 SE Water Avenue, Suite 390\nPortland, Oregon 97214\n(Address of principal executive offices, including zip code)\nRegistrant\u2019s telephone number, including area code: (971) 888-4264\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Act: Yes [ ] No [X]\nIndicate by check mark whether the registrant(1) has filed all reports required by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 day. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2017 (Nasdaq and OTC Markets* - through August 10, 2017)",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First quarter*",
+     "$",
+     "7.50",
+     "$",
+     "4.35"
+    ],
+    [
+     "Second quarter*",
+     "",
+     "6.75",
+     "",
+     "4.00"
+    ],
+    [
+     "Third quarter*",
+     "",
+     "6.72",
+     "",
+     "3.40"
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "5.69",
+     "",
+     "3.91"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 526,
+    "end_line": 534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Item 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nOur common stock trades on the Nasdaq Capital Market (\u201cNasdaq\u201d) under the symbol \u201cEAST.\u201d Limited trading of our common stock has occurred during the past two years; therefore, only limited historical price information is available. The following table sets forth the high and low closing prices of our common stock (USD) for the last two fiscal years, as reported by both Nasdaq and OTC Markets Group Inc. (where information regarding the bid and asked prices of our stock were previously reported during part of 2017) and represents inter dealer quotations, without retail mark-up, mark-down or commission and may not be reflective of actual transactions.\nWe consider our stock to be \u201cthinly traded\u201d and any reported sale prices may not be a true market-based valuation of our stock. The bid quotations from the OTC Bulletin Board (prior to August 2017) set forth below may reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2018 (Nasdaq)",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "7.75",
+     "$",
+     "3.87"
+    ],
+    [
+     "Second quarter",
+     "",
+     "9.25",
+     "",
+     "6.60"
+    ],
+    [
+     "Third quarter",
+     "",
+     "8.59",
+     "",
+     "7.10"
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "8.44",
+     "",
+     "5.99"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 535,
+    "end_line": 543
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Shareholders\nOur shares of common stock are issued in registered form. The registrar and transfer agent for our shares of common stock is Transfer Online, Inc. 512 SE Salmon Street, Portland, OR 97214 (Telephone: (503) 227-2950.\nAs of March 28, 2019, there were 9,102,297 shares of our common stock outstanding, which were held by approximately 102 record stockholders. The number of record holders was determined from the records of our transfer agent and does not include beneficial owners of shares of common stock whose shares are held in the names of various security brokers, dealers, and registered clearing agencies.\nDividend Policy\nWe have not paid cash dividends on our common stock since our inception, and we do not contemplate paying dividends in the foreseeable future.\nThe previous Series A convertible preferred stock accrued dividends at a rate of 8% per annum, cumulative. All remaining preferred shares were converted in the first quarter of 2017, and no dividends are due.\nRecent Sales of Unregistered Securities",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wholesale",
+     "$",
+     "4,354,351",
+     "50",
+     "%",
+     "$",
+     "1,947,431",
+     "51",
+     "%"
+    ],
+    [
+     "Private Label (Co-packing)",
+     "",
+     "1,636,183",
+     "34",
+     "%",
+     "",
+     "324,525",
+     "9",
+     "%"
+    ],
+    [
+     "Retail / Special Events",
+     "",
+     "1,213,768",
+     "16",
+     "%",
+     "",
+     "1,519,426",
+     "40",
+     "%"
+    ],
+    [
+     "  Total",
+     "$",
+     "7,204,302",
+     "100",
+     "%",
+     "$",
+     "3,791,382",
+     "100",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 629,
+    "end_line": 638
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Product Development Platform. We believe we further enhanced our platform through formula development with our internal blending and distilling team, marketing and branding with Sandstrom Partners, and additions to our production capabilities to enable us to accelerate our new product development activities.\nWe believe we have built a strong foundation and are well positioned to continue our expansion efforts and drive further successes for shareholders. While we have become the third largest spirits company in Oregon, there remains substantial opportunities and we expect Oregon, our largest market, to continue to grow at a strong pace. In addition, as we continue to work closely with major distributors and focus on our new Redneck Riviera product, we expect both our national and international sales efforts to increase at a rapid pace and become a larger percentage of our overall business. We also expect our new canning abilities to further add to our growth in 2019.\nYear Ended December 31, 2018 Compared to the Year Ended December 31, 2017\nOur sales for the year ended December 31, 2018 increased to $7,204,302, or approximately 90%, from $3,791,382 for the year ended December 31, 2017.",
+   "prose_after": "Increases in wholesale sales and co-packing primarily contributed to our overall 2018 sales increase. Wholesale sales benefited from the rapid launch of the new Redneck Riviera Whiskey product as well as continued strong sales traction within the Pacific Northwest. Our private label business experienced increased activity from our new canning capabilities, and also benefited from our periodic bulk spirit sales during the year. Lastly, our retail operations experienced a decline due to a reduction in event activities and relocation of a store.\nExcise taxes, customer programs and incentives for the year ended December 31, 2018 decreased to $1,080,792, or approximately 8%, from $1,180,386 for the comparable 2017 period. The decrease is attributable to the lower federal excise tax rate implemented during the year, which was offset by higher customer programs and incentives due to our increased distribution.\nDuring the year ended December 31, 2018, cost of sales increased to $3,813,309, or approximately 133%, from $1,634,069 for the year ended December 31, 2017. Cost of sales consists of the costs of ingredients utilized in the production of spirits, manufacturing labor and overhead, warehousing rent, packaging, and inbound freight charges. Ingredients account for the largest portion of the cost of sales, followed by packaging and production costs. Gross margin is gross profits stated as a percentage of net sales. The increase is primarily attributable to the costs associated with our increased liquor sales in the year. The cost of sales we reported in both 2018 and 2017, are based on small production lots. Our objective is to achieve economies of scale as we continue to scale our operations and therefore drive improvement in our per unit cost of sales.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 609,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "2,310",
+     "",
+     "$",
+     "977",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "38",
+     "%",
+     "",
+     "37",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 650,
+    "end_line": 658
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "During the year ended December 31, 2018, cost of sales increased to $3,813,309, or approximately 133%, from $1,634,069 for the year ended December 31, 2017. Cost of sales consists of the costs of ingredients utilized in the production of spirits, manufacturing labor and overhead, warehousing rent, packaging, and inbound freight charges. Ingredients account for the largest portion of the cost of sales, followed by packaging and production costs. Gross margin is gross profits stated as a percentage of net sales. The increase is primarily attributable to the costs associated with our increased liquor sales in the year. The cost of sales we reported in both 2018 and 2017, are based on small production lots. Our objective is to achieve economies of scale as we continue to scale our operations and therefore drive improvement in our per unit cost of sales.\nGross profit is calculated by subtracting the cost of products sold from net sales.\nThe following table compares our gross profit (in thousands of dollars) and gross margin in the years ended December 31, 2018 and 2017:",
+   "prose_after": "Our gross margin of 38% of net sales in the year ended December 31, 2018 increased from our gross margin of 37% for the year ended December 31, 2017 primarily due to the lower federal excise tax rate, which was offset by certain low margin private-label transactions, an increase in our production facilities (resulting in lower relative utilization rates) and higher raw material costs experienced during the year (especially in the fourth quarter of 2018).\nAdvertising, promotional and selling expenses for the year ended December 31, 2018 increased to $4,345,210 or approximately 96% from $2,219,168 for the year ended December 31, 2017. This increase is primarily due to our efforts to expand our product sales nationally.\nGeneral and administrative expenses for the year ended December 31, 2018 increased to $6,225,998, or approximately 76%, from $3,546,659 for the year ended December 31, 2017. This increase is primarily due to added headcount and other expenses to support our planned expansion along with higher non-cash expenses (such as stock-based comp and depreciation and amortization costs).",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 641,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Net cash flows provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(13,918,429)",
+     "",
+     "$",
+     "(7,011,741)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "$",
+     "(1,296,410)",
+     "",
+     "$",
+     "(652,936)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "$",
+     "23,271,401",
+     "",
+     "$",
+     "9,162,926",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 684,
+    "end_line": 692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "We have a $3,000,000 credit facility under a Credit and Security Agreement secured by all of our bulk whiskey, bourbon and rye inventory held in third-party storage facilities (\u201cSpecified Inventory\u201d), This secured credit facility allows us to borrow 80% of the value of the Specified Inventory we are able to purchase with this line. We must maintain a current market value of Specified Inventory of at least 120% of the loan balance. At December 31, 2018, we had less than $100,000 available under the secured credit facility.\nAt December 31, 2018, we had approximately $10.6 million of cash on hand with a positive working capital of $21.1 million. While the Company has successfully raised equity and debt funding in the recent past, management is also heavily focused on meeting the ongoing operating cash needs by generating improved operating cash flow, primarily through rapidly increased sales, improved profit margins and controlling expenses. We believe the recent addition of Craft Canning (in January 2019) will further help achieve this key objective.\nThe Company\u2019s cash flow related information for the years 2018 and 2017 are as follows:",
+   "prose_after": "Operating Activities\nIn 2018, the net loss plus non-cash adjustments resulted in cash used of approximately $6.4 million compared to using $3.6 million in 2017. Total operating cash used was $13.9 million compared to $7.0 million in 2017. The increase in cash usage can be primarily attributed to a $7.0 million inventory build, a $0.7 million accounts receivable build and a $0.2 million increase in accrued liabilities partially offset by a $0.7 million increase in accounts payable.\nIn 2017, the inventory build was $3.0 million, prepaid expenses increased $0.6 million and accrued liabilities decreased $0.6 million which was partially offset by a $0.8 million increase in accounts payable.\nInvesting Activities\nCash used in investing activities consists primarily of purchases of property and equipment. We incurred capital expenditures of $1.3 million and $657,477 in 2018 and 2017 respectively. The increase in cash usage can largely be attributed to further buildout and equipment additions to our primary production facility in Milwaukie, Oregon.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "10,642,877",
+     "",
+     "$",
+     "2,586,315",
+     ""
+    ],
+    [
+     "  Trade receivables",
+     "",
+     "1,064,078",
+     "",
+     "",
+     "315,321",
+     ""
+    ],
+    [
+     "  Inventories",
+     "",
+     "11,017,459",
+     "",
+     "",
+     "4,051,282",
+     ""
+    ],
+    [
+     "  Prepaid expenses and current assets",
+     "",
+     "765,146",
+     "",
+     "",
+     "649,749",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "23,489,560",
+     "",
+     "",
+     "7,602,667",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "1,758,130",
+     "",
+     "",
+     "728,506",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "285,676",
+     "",
+     "",
+     "325,668",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "28,182",
+     "",
+     "",
+     "28,182",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "796,260",
+     "",
+     "",
+     "343,942",
+     ""
+    ],
+    [
+     "    Total Assets",
+     "$",
+     "26,357,808",
+     "",
+     "$",
+     "9,028,965",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "1,984,690",
+     "",
+     "$",
+     "1,267,189",
+     ""
+    ],
+    [
+     "  Accrued liabilities",
+     "",
+     "386,166",
+     "",
+     "",
+     "156,163",
+     ""
+    ],
+    [
+     "  Deferred revenue",
+     "",
+     "1,728",
+     "",
+     "",
+     "1,579",
+     ""
+    ],
+    [
+     "  Current portion of notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "293,726",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "2,372,584",
+     "",
+     "",
+     "1,718,657",
+     ""
+    ],
+    [
+     "Secured trade credit facility, net of debt issuance costs",
+     "",
+     "2,934,106",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes payable - less current portion and debt discount",
+     "",
+     "2,300,000",
+     "",
+     "",
+     "2,161,760",
+     ""
+    ],
+    [
+     "    Total liabilities",
+     "",
+     "7,606,690",
+     "",
+     "",
+     "3,880,417",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 12)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series A convertible preferred stock, $0.0001 par value; 3,000 shares authorized; 0 and 0 shares issued and outstanding at December 31, 2018 and 2017",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Common stock, $0.0001 par value; 15,000,000 shares authorized; 8,764,085 and 4,889,745 shares issued and outstanding at December 31, 2018 and 2017, respectively",
+     "",
+     "876",
+     "",
+     "",
+     "489",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "45,888,872",
+     "",
+     "",
+     "23,223,435",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(27,138,630)",
+     "",
+     "",
+     "(18,090,961)",
+     ""
+    ],
+    [
+     "    Total Eastside Distilling, Inc. Stockholders\u2019 Equity",
+     "",
+     "18,751,118",
+     "",
+     "",
+     "5,132,963",
+     ""
+    ],
+    [
+     "  Noncontrolling interests",
+     "",
+     "-",
+     "",
+     "",
+     "15,585",
+     ""
+    ],
+    [
+     "    Total Stockholders\u2019 Equity",
+     "",
+     "18,751,118",
+     "",
+     "",
+     "5,148,548",
+     ""
+    ],
+    [
+     "    Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "26,357,808",
+     "",
+     "$",
+     "9,028,965",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 818,
+    "end_line": 869
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ M&K CPAS, PLLC\nWe have served as the Company\u2019s auditor since 2017.\nHouston, TX\nMarch 28, 2019\nConsolidated Balance Sheets\nDecember 31, 2018 and 2017",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Sales",
+     "$",
+     "7,204,302",
+     "",
+     "$",
+     "3,791,382",
+     ""
+    ],
+    [
+     "Less excise taxes, customer programs and incentives",
+     "",
+     "1,080,792",
+     "",
+     "",
+     "1,180,386",
+     ""
+    ],
+    [
+     "  Net sales",
+     "",
+     "6,123,510",
+     "",
+     "",
+     "2,610,996",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "3,813,309",
+     "",
+     "",
+     "1,634,069",
+     ""
+    ],
+    [
+     "  Gross profit",
+     "",
+     "2,310,201",
+     "",
+     "",
+     "976,927",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Advertising, promotional and selling expenses",
+     "",
+     "4,345,210",
+     "",
+     "",
+     "2,219,168",
+     ""
+    ],
+    [
+     "  General and administrative expenses",
+     "",
+     "6,225,998",
+     "",
+     "",
+     "3,546,659",
+     ""
+    ],
+    [
+     "  Loss on disposal of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "40,975",
+     ""
+    ],
+    [
+     "    Total operating expenses",
+     "",
+     "10,571,208",
+     "",
+     "",
+     "5,806,802",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(8,261,007)",
+     "",
+     "",
+     "(4,829,875)",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(789,362)",
+     "",
+     "",
+     "(235,053)",
+     ""
+    ],
+    [
+     "  Other income (expense)",
+     "",
+     "2,700",
+     "",
+     "",
+     "(212,989)",
+     ""
+    ],
+    [
+     "  Total other expense, net",
+     "",
+     "(786,662)",
+     "",
+     "",
+     "(448,042)",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(9,047,669)",
+     "",
+     "",
+     "(5,277,917)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(9,047,669)",
+     "",
+     "",
+     "(5,277,917)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) attributable to noncontrolling interests",
+     "",
+     "-",
+     "",
+     "",
+     "601",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to Eastside Distilling, Inc. common shareholders",
+     "$",
+     "(9,047,669)",
+     "",
+     "$",
+     "(5,277,316)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "$",
+     "(1.49)",
+     "",
+     "$",
+     "(1.42)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common shares outstanding",
+     "",
+     "6,074,489",
+     "",
+     "",
+     "3,717,956",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 878,
+    "end_line": 922
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholder\u2019s (Deficit) Equity",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 876,
+     "token": "REPEATING_HEADER",
+     "id": 33,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 925,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Convertible Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019 Equity",
+     "",
+     "",
+     "Non-controlling interest in consolidated",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     "",
+     "entities",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2016",
+     "",
+     "300",
+     "",
+     "$",
+     "245,838",
+     "",
+     "",
+     "2,542,504",
+     "$",
+     "254",
+     "$",
+     "13,699,785",
+     "",
+     "$",
+     "(12,813,044)",
+     "",
+     "$",
+     "1,132,833",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,132,833",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "15,001",
+     "",
+     "2",
+     "",
+     "58,498",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "58,500",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "58,500",
+     ""
+    ],
+    [
+     "Issuance of common stock, net of issuance costs of $1,120,323, with detachable warrants",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,780,019",
+     "",
+     "177",
+     "",
+     "6,669,401",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,669,578",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "6,669,578",
+     ""
+    ],
+    [
+     "Issuance of common stock from warrant exercise for cash",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "40,834",
+     "",
+     "4",
+     "",
+     "159,246",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "159,250",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "159,250",
+     ""
+    ],
+    [
+     "Issuance of common stock for services by third parties",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "107,340",
+     "",
+     "11",
+     "",
+     "479,903",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "479,914",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "479,914",
+     ""
+    ],
+    [
+     "Issuance of common stock for services by employees",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "59,538",
+     "",
+     "6",
+     "",
+     "253,649",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "253,655",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "253,655",
+     ""
+    ],
+    [
+     "Stock option exercises",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,260",
+     "",
+     "1",
+     "",
+     "50,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,001",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "50,001",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "563,356",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "563,356",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "563,356",
+     ""
+    ],
+    [
+     "Issuance of common stock for acquisition of MotherLode, net of issuance costs of $5,580",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "86,667",
+     "",
+     "9",
+     "",
+     "371,411",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "371,420",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "371,420",
+     ""
+    ],
+    [
+     "Issuance of common stock for 90% acquisition of Big Bottom Distilling, net of issuance costs of $14,400",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "28,096",
+     "",
+     "3",
+     "",
+     "120,455",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "120,458",
+     "",
+     "",
+     "14,984",
+     "",
+     "",
+     "135,442",
+     ""
+    ],
+    [
+     "Shares issued for payoff of long-term notes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "120,154",
+     "",
+     "12",
+     "",
+     "561,866",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "561,878",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "561,878",
+     ""
+    ],
+    [
+     "Cumulative dividend on Series A preferred",
+     "",
+     "-",
+     "",
+     "",
+     "5,037",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,037",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,037",
+     ""
+    ],
+    [
+     "Common shares issued for preferred conversion",
+     "",
+     "(300)",
+     "",
+     "",
+     "(250,875)",
+     "",
+     "",
+     "100,001",
+     "",
+     "10",
+     "",
+     "235,865",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(15,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(15,000)",
+     ""
+    ],
+    [
+     "Adjustment of shares for reverse stock-split",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "331",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net profit attributable to noncontrolling interests",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "601",
+     "",
+     "",
+     "601",
+     ""
+    ],
+    [
+     "Net loss attributable to common shareholders",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(5,277,917)",
+     "",
+     "",
+     "(5,277,917)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,277,917)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2017",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "4,889,745",
+     "$",
+     "489",
+     "$",
+     "23,223,435",
+     "",
+     "$",
+     "(18,090,961)",
+     "",
+     "$",
+     "5,132,963",
+     "",
+     "$",
+     "15,585",
+     "",
+     "$",
+     "5,148,548",
+     ""
+    ],
+    [
+     "Issuance of common stock, net of expenses.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,480,250",
+     "",
+     "148",
+     "",
+     "8,678,975",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,679,123",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,679,123",
+     ""
+    ],
+    [
+     "Issuance of common stock from warrant exercise for cash, net of expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,521,312",
+     "",
+     "152",
+     "",
+     "8,004,029",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,004,181",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "8,004,181",
+     ""
+    ],
+    [
+     "Issuance of common stock for services by third parties",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "81,708",
+     "",
+     "8",
+     "",
+     "412,823",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "412,831",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "412,831",
+     ""
+    ],
+    [
+     "Issuance of common stock for services by employees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "79,734",
+     "",
+     "8",
+     "",
+     "712,461",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "712,469",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "712,469",
+     ""
+    ],
+    [
+     "Issuance of common stock in exchange of debt",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "672,273",
+     "",
+     "67",
+     "",
+     "3,722,821",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,722,888",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,722,888",
+     ""
+    ],
+    [
+     "Issuance of common stock for purchase of remaining 10% of Big Bottom LLC",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,122",
+     "",
+     "-",
+     "",
+     "19,294",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "19,294",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "19,294",
+     ""
+    ],
+    [
+     "Acquisition of remaining non-controlling interest in Big Bottom Distilling, Inc",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(15,585)",
+     "",
+     "",
+     "(15,585)",
+     ""
+    ],
+    [
+     "Issuance of detachable warrants on notes payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "351,548",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "351,548",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "351,548",
+     ""
+    ],
+    [
+     "Stock option exercises",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "35,941",
+     "",
+     "4",
+     "",
+     "105,940",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "105,944",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "105,944",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "863,262",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "863,262",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "863,262",
+     ""
+    ],
+    [
+     "Net issuance to settle RSUs",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(205,716)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(205,716)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(205,716)",
+     ""
+    ],
+    [
+     "Net loss attributable to common shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(9,047,669)",
+     "",
+     "",
+     "(9,047,669)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(9,047,669",
+     ""
+    ],
+    [
+     "Balance December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8,764,085",
+     "$",
+     "876",
+     "$",
+     "45,888,872",
+     "",
+     "$",
+     "(27,138,630)",
+     "",
+     "$",
+     "18,751,118",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "18,751,118",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 931,
+    "end_line": 997
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Stockholder\u2019s (Deficit) Equity",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 929,
+     "token": "REPEATING_HEADER",
+     "id": 35,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows From Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(9,047,669)",
+     "",
+     "$",
+     "(5,277,917)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "364,813",
+     "",
+     "",
+     "92,016",
+     ""
+    ],
+    [
+     "    Loss on disposal of property and equipment",
+     "",
+     "-",
+     "",
+     "",
+     "40,975",
+     ""
+    ],
+    [
+     "    Amortization of debt issuance costs",
+     "",
+     "392,230",
+     "",
+     "",
+     "92,156",
+     ""
+    ],
+    [
+     "    Impairment of goodwill and intangible assets",
+     "",
+     "-",
+     "",
+     "",
+     "218,374",
+     ""
+    ],
+    [
+     "    Issuance of common stock in exchange for services for related parties",
+     "",
+     "712,469",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Issuance of common stock in exchange for services for 3rd parties",
+     "",
+     "412,831",
+     "",
+     "",
+     "642,309",
+     ""
+    ],
+    [
+     "    Stock-based compensation",
+     "",
+     "657,546",
+     "",
+     "",
+     "563,356",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Trade receivables",
+     "",
+     "(748,757)",
+     "",
+     "",
+     "35,858",
+     ""
+    ],
+    [
+     "      Inventories",
+     "",
+     "(6,966,177)",
+     "",
+     "",
+     "(3,037,835)",
+     ""
+    ],
+    [
+     "      Prepaid expenses and other assets",
+     "",
+     "(625,750)",
+     "",
+     "",
+     "(612,977)",
+     ""
+    ],
+    [
+     "      Accounts payable",
+     "",
+     "721,209",
+     "",
+     "",
+     "804,976",
+     ""
+    ],
+    [
+     "      Accrued liabilities",
+     "",
+     "208,677",
+     "",
+     "",
+     "(572,485)",
+     ""
+    ],
+    [
+     "      Deferred revenue",
+     "",
+     "149",
+     "",
+     "",
+     "(547)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(13,918,429)",
+     "",
+     "",
+     "(7,011,741)",
+     ""
+    ],
+    [
+     "Cash Flows From Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash acquired in acquisition",
+     "",
+     "-",
+     "",
+     "",
+     "4,541",
+     ""
+    ],
+    [
+     "  Purchases of property and equipment",
+     "",
+     "(1,296,410)",
+     "",
+     "",
+     "(657,477)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,296,410)",
+     "",
+     "",
+     "(652,936)",
+     ""
+    ],
+    [
+     "Cash Flows From Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stock issuance cost related to acquisitions",
+     "",
+     "-",
+     "",
+     "",
+     "(19,980)",
+     ""
+    ],
+    [
+     "  Stock issuance cost related to common shares issued for preferred conversion",
+     "",
+     "-",
+     "",
+     "",
+     "(9,361)",
+     ""
+    ],
+    [
+     "  Proceeds from common stock, net of issuance costs of $1,120,323 and $23,762, respectively, with detachable warrants",
+     "",
+     "",
+     "",
+     "",
+     "6,728,079",
+     ""
+    ],
+    [
+     "  Proceeds from common stock, net of issuance costs",
+     "",
+     "8,679,123",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from option exercise",
+     "",
+     "105,944",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from warrant exercise",
+     "",
+     "8,004,181",
+     "",
+     "",
+     "159,250",
+     ""
+    ],
+    [
+     "  Payments on conversion of note payable",
+     "",
+     "-",
+     "",
+     "",
+     "(90,000)",
+     ""
+    ],
+    [
+     "  Payments of principal on notes payable",
+     "",
+     "(514,867)",
+     "",
+     "",
+     "(106,902)",
+     ""
+    ],
+    [
+     "  Proceeds from notes payable, net of issuance costs",
+     "",
+     "3,630,000",
+     "",
+     "",
+     "2,501,840",
+     ""
+    ],
+    [
+     "  Proceeds from notes payable, warrants issued",
+     "",
+     "447,020",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Proceeds from secured credit facility, net of issuance costs of $80,000",
+     "",
+     "2,920,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "23,271,401",
+     "",
+     "",
+     "9,162,926",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "8,056,562",
+     "",
+     "",
+     "1,498,249",
+     ""
+    ],
+    [
+     "Cash - beginning of year",
+     "",
+     "2,586,315",
+     "",
+     "",
+     "1,088,066",
+     ""
+    ],
+    [
+     "Cash - end of year",
+     "$",
+     "10,642,877",
+     "",
+     "$",
+     "2,586,315",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Cash Flow Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid during the year for interest",
+     "$",
+     "293,342",
+     "",
+     "$",
+     "103,293",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosure of Non-Cash Financing Activity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of common stock for the acquisition of MotherLode Craft Distillery, LLC",
+     "$",
+     "-",
+     "",
+     "$",
+     "377,000",
+     ""
+    ],
+    [
+     "  Acquisition of remaining non-controlling interest in Big Bottom Distilling, LLC",
+     "$",
+     "15,585",
+     "",
+     "$",
+     "134,858",
+     ""
+    ],
+    [
+     "  Common stock issued in exchange of notes payable",
+     "$",
+     "3,722,888",
+     "",
+     "$",
+     "558,137",
+     ""
+    ],
+    [
+     "  Issuance of debt discount",
+     "$",
+     "351,548",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1006,
+    "end_line": 1071
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\n1. Description of Business\nWe are an Oregon-based producer and marketer of craft spirits, founded in 2008. Our products span several alcoholic beverage categories, including bourbon, American whiskey, vodka, gin and rum. Unlike many distillers, we operate several retail tasting rooms in Oregon to market our brands directly to consumers. Our strategy for growth is to build on our local base in the Pacific Northwest and expand selectively to other markets, using major spirits distributors. In December 2016, we retained Sandstrom Partners, an internationally-known spirit branding firm that branded St-Germain and Bulleit Bourbon, to guide our marketing strategy and branding. Sandstrom Partners subsequently became an investor in our company. With the assistance of Sandstrom Partners and using our in-house spirits expertise, during 2017, we created Redneck Riviera Whiskey (\u201cRRW\u201d), in collaboration with Country Music superstar John Rich, of the duo \u201cBig & Rich.\u201d Supported by John Rich\u2019s marketing efforts, we launched RRW in the Southeastern and Gulf States in early 2018 primarily through Republic National Distributing Company (\u201cRNDC\u201d). During 2018, its first year on the market, RRW generated strong commercial progress and results, and we have focused our sales efforts outside of Oregon on RRW. We believe RRW will be a key growth engine in 2019 and will also provide a \u201ccoattail\u201d effect for our other brands, helping them to achieve improved national recognition and success.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1004,
+     "token": "REPEATING_HEADER",
+     "id": 37,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1074,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1:",
+     "Fair value of the asset or liability is determined using cash or unadjusted quoted prices in active markets for identical assets or liabilities."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 2:",
+     "Fair value of the asset or liability is determined using inputs other than quoted prices that are observable for the applicable asset or liability, either directly or indirectly, such as quoted prices for similar (as opposed to identical) assets or liabilities in active markets and quoted prices for identical or similar assets or liabilities in markets that are not active."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 3:",
+     "Fair value of the asset or liability is determined using unobservable inputs that are significant to the fair value measurement and reflect management\u2019s own assumptions regarding the applicable asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1149,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Financial instruments that potentially subject the Company to concentrations of credit risk consist principally of trade receivables. At December 31, 2018, two customers represented 34% of trade receivables. At December 31, 2017, two customers represented 79% of trade receivables. Sales to one and two distributors accounted for approximately 42% and 35% of consolidated sales for the years ended December 31, 2018 and 2017, respectively.\nFair Value Measurements\nGAAP defines fair value, establishes a framework for measuring fair value, and requires certain disclosures about fair value measurements. GAAP permits an entity to choose to measure many financial instruments and certain other items at fair value and contains financial statement presentation and disclosure requirements for assets and liabilities for which the fair value option is elected. At December 31, 2018 and December 31, 2017, management has not elected to report any of the Company\u2019s assets or liabilities at fair value under the \u201cfair value option\u201d provided by GAAP.\nThe hierarchy of fair value valuation techniques under GAAP provides for three levels: Level 1 provides the most reliable measure of fair value, whereas Level 3, if applicable, generally would require significant management judgment. The three levels for categorizing assets and liabilities under GAAP\u2019s fair value measurement requirements are as follows:",
+   "prose_after": "None of the Company\u2019s assets or liabilities were measured at fair value at December 31, 2018 and 2017. However, GAAP requires the disclosure of fair value information about financial instruments that are not measured at fair value. Financial instruments consist principally of trade receivables, accounts payable, accrued liabilities, note payable, and convertible note payable. The estimated fair value of trade receivables, accounts payable, and accrued liabilities approximates their carrying value due to the short period of time to their maturities. At December 31, 2018 and 2017, the Company\u2019s note payable, convertible notes payable and secured credit facility balances outstanding are at fixed rates and their carrying value approximates fair value.\nItems Measured at Fair Value on a Nonrecurring Basis\nCertain assets and liabilities acquired in a business acquisition are valued at fair value at the date of acquisition.\nInventories\nInventories primarily consist of bulk and bottled liquor and merchandise and are stated at the lower of cost or market. Cost is determined using an average costing methodology, which approximates cost under the first-in, first-out (FIFO) method. A portion of inventory is held by certain independent distributors on consignment until it is sold to a third party. The Company regularly monitors inventory quantities on hand and records write-downs for excess and obsolete inventories based primarily on the Company\u2019s estimated forecast of product demand and production requirements. Such write-downs establish a new cost basis of accounting for the related inventory. The Company has recorded no write-downs of inventory for the years ended December 31, 2018 and 2017.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1125,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1166,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration given:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  86,667 shares of common stock valued at $4.35 per share",
+     "$",
+     "377,000",
+     ""
+    ],
+    [
+     "Assets and liabilities acquired:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "",
+     "7,062",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "103,488",
+     ""
+    ],
+    [
+     "  Property and equipment",
+     "",
+     "46,250",
+     ""
+    ],
+    [
+     "  Intangible assets - customer list and license",
+     "",
+     "376,431",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "28,182",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "",
+     "(5,180)",
+     ""
+    ],
+    [
+     "  Customer deposits",
+     "",
+     "(179,233)",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "377,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Consideration given:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1247,
+    "end_line": 1263
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Business Acquisitions"
+    }
+   },
+   "prose_before": "During the fiscal year 2017, the Company completed the following acquisitions:\nMotherLode Craft Distillery, LLC\nOn March 8, 2017, the Company completed the acquisition of MotherLode Craft Distillery, LLC (\u201cMotherLode\u201d), a small Portland, Oregon-based provider of bottling services and production support to craft distilleries. The Company\u2019s condensed consolidated financial statements for fiscal 2018 include MotherLode\u2019s results of operations. The Company\u2019s condensed consolidated financial statements for fiscal 2017 include MotherLode\u2019s results of operations from the acquisition date of March 8, 2017 through December 31, 2017. The Company\u2019s condensed consolidated financial statements reflect the final purchase accounting adjustments in accordance with ASC 805 \u201cBusiness Combinations\u201d, whereby the purchase price was allocated to the assets acquired and liabilities assumed based upon their estimated fair values on the acquisition date.\nThe following allocation of the purchase price is as follows:",
+   "prose_after": "Intangible assets are recorded at estimated fair value, as determined by management based on available information. The fair value assigned to the customer list intangible asset was determined through the use of the income approach, specifically the relief from royalty and the multi-period excess earning methods. The major assumptions used in arriving at the estimated identifiable intangible asset value included management\u2019s estimates of future cash flows, discounted at an appropriate rate of return which is based on the weighted average cost of capital for both the Company and other market participants, projected customer attrition rates, as well as applicable royalty rates for comparable assets. The useful lives for intangible assets were determined based upon the remaining useful economic lives of the tangible assets that are expected to contribute directly or indirectly to future cash flows. The customer relationships estimated useful life is seven years. The fair values assigned to the license intangible asset were determined through the use of the cost approach. The license has an indefinite life and will not be amortized.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Consideration given:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  28,096 shares of common stock valued at $4.80 per share for 90%",
+     "$",
+     "134,858",
+     ""
+    ],
+    [
+     "  Non-controlling interests",
+     "",
+     "14,984",
+     ""
+    ],
+    [
+     "    Total value of acquisition",
+     "$",
+     "149,842",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets and liabilities acquired:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash (overdraft)",
+     "$",
+     "(2,521)",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "6,224",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "129,922",
+     ""
+    ],
+    [
+     "  Property and equipment",
+     "",
+     "22,717",
+     ""
+    ],
+    [
+     "  Intangible assets - license",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "193,374",
+     ""
+    ],
+    [
+     "  Accrued liabilities",
+     "",
+     "(52,841)",
+     ""
+    ],
+    [
+     "  Notes payable",
+     "",
+     "(172,033)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "149,842",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Consideration given:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1272,
+    "end_line": 1289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Business Acquisitions"
+    }
+   },
+   "prose_before": "Intangible assets are recorded at estimated fair value, as determined by management based on available information. The fair value assigned to the customer list intangible asset was determined through the use of the income approach, specifically the relief from royalty and the multi-period excess earning methods. The major assumptions used in arriving at the estimated identifiable intangible asset value included management\u2019s estimates of future cash flows, discounted at an appropriate rate of return which is based on the weighted average cost of capital for both the Company and other market participants, projected customer attrition rates, as well as applicable royalty rates for comparable assets. The useful lives for intangible assets were determined based upon the remaining useful economic lives of the tangible assets that are expected to contribute directly or indirectly to future cash flows. The customer relationships estimated useful life is seven years. The fair values assigned to the license intangible asset were determined through the use of the cost approach. The license has an indefinite life and will not be amortized.\nBig Bottom Distillery, LLC\nOn May 1, 2017, the Company acquired 90% of the ownership of Big Bottom Distillery, LLC (\u201cBBD\u201d), a Hillsboro, Oregon-based distiller of super-premium spirits. The Company\u2019s condensed consolidated financial statements for the fiscal year 2018 include BBD\u2019s results. The Company\u2019s condensed consolidated financial statements for the fiscal year 2017 include BBD\u2019s results of operations from the acquisition date of May 1, 2017 through December 31, 2017. The Company\u2019s condensed consolidated financial statements reflect the final purchase accounting adjustments in accordance with ASC 805 \u201cBusiness Combinations\u201d, whereby the purchase price was allocated to the assets acquired and liabilities assumed based upon their estimated fair values on the acquisition date.\nThe following allocation of the 90% purchase price on May 1, 2017 is as follows:",
+   "prose_after": "Intangible assets are recorded at estimated fair value, as determined by management based on available information. The fair value assigned to the license intangible asset was determined through the use of the cost approach. The license has an indefinite life and will not be amortized. For the year ended December 31, 2017, the Company recognized an impairment of $218,374 for the intangible asset\n\u2013 license and the goodwill originally recorded as part of the purchase price allocation for BBD.\nAt December 31, 2018, the Company acquired the remaining 10% of BBD. The consideration given was 3,122 shares of common stock valued at the December 31, 2018 closing price of $6.18 per share, for a purchase price of $19,294.\n5. Inventories\nInventories consist of the following at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1243,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "10,347,616",
+     "$",
+     "3,755,477"
+    ],
+    [
+     "Finished goods",
+     "",
+     "669,843",
+     "",
+     "295,805"
+    ],
+    [
+     "Total inventories",
+     "$",
+     "11,017,459",
+     "$",
+     "4,051,282"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1301,
+    "end_line": 1310
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "Intangible assets are recorded at estimated fair value, as determined by management based on available information. The fair value assigned to the license intangible asset was determined through the use of the cost approach. The license has an indefinite life and will not be amortized. For the year ended December 31, 2017, the Company recognized an impairment of $218,374 for the intangible asset\n\u2013 license and the goodwill originally recorded as part of the purchase price allocation for BBD.\nAt December 31, 2018, the Company acquired the remaining 10% of BBD. The consideration given was 3,122 shares of common stock valued at the December 31, 2018 closing price of $6.18 per share, for a purchase price of $19,294.\n5. Inventories\nInventories consist of the following at December 31:",
+   "prose_after": "6. Property and Equipment\nProperty and equipment consists of the following at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "$",
+     "1,148,540",
+     "",
+     "$",
+     "326,088",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "477,184",
+     "",
+     "",
+     "56,410",
+     ""
+    ],
+    [
+     "Vehicles",
+     "",
+     "49,483",
+     "",
+     "",
+     "49,483",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "425,851",
+     "",
+     "",
+     "372,667",
+     ""
+    ],
+    [
+     "Total cost",
+     "",
+     "2,101,058",
+     "",
+     "",
+     "804,648",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "(342,928)",
+     "",
+     "",
+     "(76,142)",
+     ""
+    ],
+    [
+     "Total property and equipment, net",
+     "$",
+     "1,758,130",
+     "",
+     "$",
+     "728,506",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1315,
+    "end_line": 1329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "6. Property and Equipment\nProperty and equipment consists of the following at December 31:",
+   "prose_after": "Depreciation and amortization expense totaled $266,786 and $41,253 for the years ended December 31, 2018 and 2017, respectively.\n7. Intangible Assets and Goodwill\nAt December 31, 2018, intangible assets and goodwill consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     "",
+     "Life",
+     ""
+    ],
+    [
+     "Permits and licenses",
+     "$",
+     "25,000",
+     "",
+     "$",
+     "25,000",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Customer lists",
+     "",
+     "351,430",
+     "",
+     "",
+     "351,432",
+     "",
+     "",
+     "7 years"
+    ],
+    [
+     "Goodwill",
+     "",
+     "28,182",
+     "",
+     "",
+     "28,182",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Total intangible assets and goodwill",
+     "",
+     "404,614",
+     "",
+     "",
+     "404,614",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(90,754)",
+     "",
+     "",
+     "(50,764)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible assets and goodwill - net",
+     "$",
+     "313,858",
+     "",
+     "$",
+     "353,850",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1336,
+    "end_line": 1349
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Intangible Assets and Goodwill"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense totaled $266,786 and $41,253 for the years ended December 31, 2018 and 2017, respectively.\n7. Intangible Assets and Goodwill\nAt December 31, 2018, intangible assets and goodwill consist of the following:",
+   "prose_after": "Amortization expense totaled $39,990 and $50,764 for the years ended December 31, 2018 and 2017, respectively.\n8. Other Assets\nOther assets consist of the following at December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1295,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     ""
+    ],
+    [
+     "Product branding",
+     "$",
+     "525,000",
+     "",
+     "$",
+     "285,000"
+    ],
+    [
+     "Investment in online company",
+     "",
+     "300,000",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Deposits",
+     "",
+     "29,297",
+     "",
+     "",
+     "53,942"
+    ],
+    [
+     "Total other assets",
+     "",
+     "854,297",
+     "",
+     "",
+     "343,942"
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "(58,037)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Other assets - net",
+     "$",
+     "796,260",
+     "",
+     "$",
+     "343,942"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1358,
+    "end_line": 1371
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Other Assets"
+    }
+   },
+   "prose_before": "Amortization expense totaled $39,990 and $50,764 for the years ended December 31, 2018 and 2017, respectively.\n8. Other Assets\nOther assets consist of the following at December 31:",
+   "prose_after": "As of December 31, 2018, the Company had $525,000 of capitalized costs related to services provided for the rebranding of its existing product lines and branding for new product lines. This amount will be amortized over a seven-year life. In December 2018, the Company invested in an online (direct-to-consumer) business and intends to begin selling select products through this platform. The deposits of $29,297 represent office and retail space lease deposits.\nAs of December 31, 2017, $285,000 represented rebranding the Burnside product line, $40,000 represented deposits on future product rebranding and $13,942 represented office and retail spaces lease deposits.\nAmortization expense totaled $58,037 and $0 for the years ended December 31, 2018 and 2017, respectively.\n9. Notes Payable\nNotes payable consists of the following at December 31, 2018 and December 31, 2017:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2018",
+     "",
+     "December 31, 2017",
+     "",
+     ""
+    ],
+    [
+     "Notes payable bearing interest at 5.00%. The notes\u2019 principal, plus any accrued and unpaid interest is due May 1, 2021. Interest is paid monthly.",
+     "",
+     "2,300,000",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Notes payable bearing interest at 8.00%. The notes have a 2-year maturity, are due either June 30, 2018 or June 30, 2019 and pay interest-only on a monthly basis.",
+     "",
+     "-",
+     "",
+     "407,500",
+     ""
+    ],
+    [
+     "Note payable bearing interest at 2.74%. The note is payable in monthly principal plus interest payments of $100 through December 2019.",
+     "",
+     "-",
+     "",
+     "2,306",
+     ""
+    ],
+    [
+     "Note payable bearing interest at 4.00%. The note is payable in quarterly principal plus interest payments of $9,614 through March 2019.",
+     "",
+     "-",
+     "",
+     "56,341",
+     ""
+    ],
+    [
+     "Convertible notes payable bearing interest at 4.00%. The notes principal plus accrued interest is due in full at various dates between April 3, 2020 \u2013 September 30, 2020. The notes have an automatic conversion feature upon the closing (or first in a series of closings) of the next equity financing in which the Company sells shares of its equity securities for an aggregate consideration of at least $4,000,000 at a purchase price of at least $7.50. The outstanding principal and unpaid accrued interest on the notes shall be automatically converted into equity securities at a price equal to 80% of the price paid per share by the investors in the next equity financing or $6.00, whichever is lower, provided, however, that in no event shall the conversion price be less than $6.00. The note has a voluntary conversion feature where the investor may convert, in whole or in part, at any time at the conversion price of $6.00.",
+     "",
+     "-",
+     "",
+     "927,192",
+     ""
+    ],
+    [
+     "Promissory notes payable bearing interest at 8.00%. The notes\u2019 principal is due on June 30, 2019. Interest is paid monthly.",
+     "",
+     "-",
+     "",
+     "1,101,840",
+     ""
+    ],
+    [
+     "Total notes payable",
+     "",
+     "2,300,000",
+     "",
+     "2,495,179",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "-",
+     "",
+     "(293,726)",
+     ""
+    ],
+    [
+     "Less debt discount for detachable warrant",
+     "",
+     "-",
+     "",
+     "(39,693)",
+     ""
+    ],
+    [
+     "Long-term portion of notes payable",
+     "$",
+     "2,300,000",
+     "$",
+     "2,161,760",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1382,
+    "end_line": 1406
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "As of December 31, 2018, the Company had $525,000 of capitalized costs related to services provided for the rebranding of its existing product lines and branding for new product lines. This amount will be amortized over a seven-year life. In December 2018, the Company invested in an online (direct-to-consumer) business and intends to begin selling select products through this platform. The deposits of $29,297 represent office and retail space lease deposits.\nAs of December 31, 2017, $285,000 represented rebranding the Burnside product line, $40,000 represented deposits on future product rebranding and $13,942 represented office and retail spaces lease deposits.\nAmortization expense totaled $58,037 and $0 for the years ended December 31, 2018 and 2017, respectively.\n9. Notes Payable\nNotes payable consists of the following at December 31, 2018 and December 31, 2017:",
+   "prose_after": "During 2018 we used $514,867 in cash and $3,722,888 in stock to retire the outstanding notes from 2017. The ending 2018 note balance reflects the new notes entered into during 2018. We paid $189,552 and $103,293 in interest on notes during 2018 and 2017 respectively.\nMaturities on notes payable as of December 31, 2018, are as follows:\nYear ending December 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2019",
+     "$",
+     ""
+    ],
+    [
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "2021",
+     "",
+     "2,300,000"
+    ],
+    [
+     "2022",
+     "",
+     "-"
+    ],
+    [
+     "Thereafter",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "2,300,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1413,
+    "end_line": 1423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "During 2018 we used $514,867 in cash and $3,722,888 in stock to retire the outstanding notes from 2017. The ending 2018 note balance reflects the new notes entered into during 2018. We paid $189,552 and $103,293 in interest on notes during 2018 and 2017 respectively.\nMaturities on notes payable as of December 31, 2018, are as follows:\nYear ending December 31:",
+   "prose_after": "10. Secured Credit Facility\nOn May 10, 2018, Eastside Distilling, Inc. (the \u201cCompany\u201d) entered into a credit and security agreement (the \u201cCredit and Security Agreement\u201d), by and between the Company and The KFK Children\u2019s Trust, Jeffrey Anderson \u2013 Trustee (the \u201cLender\u201d). Pursuant to the Credit and Security Agreement, the Lender will make loans to the Company in an aggregate principal amount not to exceed $3,000,000 (the \u201cLoans\u201d). The Loans are secured by all of the Company\u2019s bulk whiskey, bourbon and rye inventory held in third-party storage facilities (\u201cSpecified Inventory\u201d), The Company may borrow 80% of the value of the Specified Inventory it is able to purchase under the Credit and Security Agreement.\nThe proceeds of the Loans are to be used by the Company to purchase the Specified Inventory for use in distilling and producing its spirits products, and for no other purpose.\nThe Loans have an annual interest rate of 7.00%. The Company will pay accrued and unpaid interest on the Loans, for the period commencing on the date each such Loan is made and continuing until each such Loan is paid in full. During 2018, The Company paid $103,790 in interest on the Loans. The Company must pay the outstanding principal amount of the Loans in a one-time payment on the termination date of the Credit and Security Agreement (June 10, 2021), or earlier pursuant to other provisions thereof. The Company may prepay the Loans or any portion thereof at any time, and from time to time, without premium or penalty. As of December 31, 2018, the Company has borrowed the full $3 million available under the agreement.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "  Expected federal income tax benefit",
+     "$",
+     "(1,774,610)",
+     "",
+     "$",
+     "(1,794,492)",
+     ""
+    ],
+    [
+     "  State income taxes after credits",
+     "",
+     "(597,146)",
+     "",
+     "",
+     "(348,343)",
+     ""
+    ],
+    [
+     "  Change in valuation allowance",
+     "",
+     "2,371,756",
+     "",
+     "",
+     "2,142,835",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total provision for income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1440,
+    "end_line": 1451
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The Loans have an annual interest rate of 7.00%. The Company will pay accrued and unpaid interest on the Loans, for the period commencing on the date each such Loan is made and continuing until each such Loan is paid in full. During 2018, The Company paid $103,790 in interest on the Loans. The Company must pay the outstanding principal amount of the Loans in a one-time payment on the termination date of the Credit and Security Agreement (June 10, 2021), or earlier pursuant to other provisions thereof. The Company may prepay the Loans or any portion thereof at any time, and from time to time, without premium or penalty. As of December 31, 2018, the Company has borrowed the full $3 million available under the agreement.\nThe current market value of the Company\u2019s bulk whiskey, bourbon and rye inventories must be at least 120% of the outstanding Loan balance. In addition, the Credit and Security Agreement contains other customary covenants including, among other things, certain restrictions on incurring indebtedness.\n11. Income Taxes\nThe provision for income taxes results in effective tax rates which are different than the federal income tax statutory rate. The provision (benefit) for income taxes for the years ended December 31, 2017 and 2018 were as follows, assuming a 35% and 21% federal effective tax rate, respectively. The Company also has a state tax rate for Oregon, of 6.6% for both December 31, 2017 and 2018.",
+   "prose_after": "The components of the net deferred tax assets and liabilities at December 31 consisted of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1476,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net operating loss carryforwards",
+     "$",
+     "7,780,105",
+     "",
+     "",
+     "5,489,143",
+     ""
+    ],
+    [
+     "  Stock-based compensation",
+     "",
+     "623,386",
+     "",
+     "",
+     "563,356",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "8,403,491",
+     "",
+     "",
+     "6,052,499",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "(208,864)",
+     "",
+     "",
+     "(92,016)",
+     ""
+    ],
+    [
+     "Total deferred tax liabilities",
+     "",
+     "(208,864)",
+     "",
+     "",
+     "(92,016)",
+     ""
+    ],
+    [
+     "  Valuation allowance",
+     "",
+     "(8,194,627)",
+     "",
+     "",
+     "(5,960,483)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1454,
+    "end_line": 1475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The components of the net deferred tax assets and liabilities at December 31 consisted of the following:",
+   "prose_after": "At December 31, 2018, the Company has a cumulative net operating loss carryforward (NOL) of approximately $8.6 million, to offset against future income for federal and state tax purposes. These federal and state NOLs can be carried forward for 20 and 15 years, respectively. The federal NOLs begin to expire in 2034, and the state NOLs begin to expire in 2029. The utilization of the net operating loss carryforwards may be subject to substantial annual limitation due to ownership change provisions of the Internal Revenue Code of 1986 (as amended, the Internal Revenue Code) and similar state provisions. In general, if the Company experiences a greater than 50 percentage aggregate change in ownership of certain significant stockholders over a three-year period (a \u201cSection 382 ownership change\u201d), utilization of its pre-change NOL carryforwards are subject to an annual limitation under Section 382 of the Internal Revenue Code (and similar state laws). The annual limitation generally is determined by multiplying the value of the Company\u2019s stock at the time of such ownership change (subject to certain adjustments) by the applicable long-term tax-exempt rate. Such limitations may result in expiration of a portion of the NOL carryforwards before utilization and may be substantial.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1424,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1476,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2019",
+     "$",
+     "547,411"
+    ],
+    [
+     "2020",
+     "",
+     "435,958"
+    ],
+    [
+     "2021",
+     "",
+     "117,683"
+    ],
+    [
+     "2022",
+     "",
+     "37,153"
+    ],
+    [
+     "2023",
+     "",
+     "38,267"
+    ],
+    [
+     "Total",
+     "$",
+     "1,176,472"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1494,
+    "end_line": 1504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "In assessing the realizability of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon generation of future taxable income during the periods in which those temporary differences become deductible. Due to the uncertainty of the realizability of the deferred tax assets, management has determined a full valuation allowance is appropriate.\n12. Commitments and Contingencies\nOperating Leases\nThe Company leases its corporate office, warehouse, kiosks and tasting room space under operating lease agreements which expire at various dates through December 2023. Monthly lease payments range from $1,857 to $25,175 over the terms of the leases. For operating leases which contain fixed escalations in rental payments, the Company records the total rent expense on a straight-line basis over the lease term. The difference between the expense computed on a straight-line basis and actual payments for rent represents deferred rent which is included within accrued liabilities on the accompanying consolidated balance sheets. Retail spaces under lease are subject to monthly percentage rent adjustments when gross sales exceed certain minimums.\nAt December 31, 2018, future minimum lease payments required under the operating leases are approximately as follows:\nFor year ending December 31st:",
+   "prose_after": "Total rent expense was approximately $459,147 and $362,000 for the years ended December 31, 2018 and 2017, respectively.\nLegal Matters\nWe are not currently subject to any material legal proceedings, however, we could be subject to legal proceedings and claims from time to time in the ordinary course of our business. Regardless of the outcome, litigation can, among other things, be time consuming and expensive to resolve, and divert management resources.\n13. Net Loss per Common Share\nBasic loss per common share is computed by dividing net loss by the weighted average number of common shares outstanding during the period, without considering any dilutive items. Diluted net loss per common share is computed by dividing net loss by the sum of the weighted average number of common shares outstanding and the potential number of any dilutive common shares outstanding during the period. Potentially dilutive securities consist of the incremental common stock issuable upon exercise of stock options and convertible notes. Potentially dilutive securities are excluded from the computation if their effect is anti-dilutive. There were no dilutive common shares at December 31, 2018 and 2017. The numerators and denominators used in computing basic and diluted net loss per common share in 2018 and 2017 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1488,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2018",
+     "",
+     "",
+     "2017",
+     "",
+     ""
+    ],
+    [
+     "Net loss available to common shareholders (numerator)",
+     "$",
+     "(9,047,669)",
+     "",
+     "$",
+     "(5,277,316)",
+     ""
+    ],
+    [
+     "Weighted average shares (denominator)",
+     "",
+     "6,074,489",
+     "",
+     "",
+     "3,717,956",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "$",
+     "(1.49)",
+     "",
+     "$",
+     "(1.42)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1515,
+    "end_line": 1524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "We are not currently subject to any material legal proceedings, however, we could be subject to legal proceedings and claims from time to time in the ordinary course of our business. Regardless of the outcome, litigation can, among other things, be time consuming and expensive to resolve, and divert management resources.\n13. Net Loss per Common Share\nBasic loss per common share is computed by dividing net loss by the weighted average number of common shares outstanding during the period, without considering any dilutive items. Diluted net loss per common share is computed by dividing net loss by the sum of the weighted average number of common shares outstanding and the potential number of any dilutive common shares outstanding during the period. Potentially dilutive securities consist of the incremental common stock issuable upon exercise of stock options and convertible notes. Potentially dilutive securities are excluded from the computation if their effect is anti-dilutive. There were no dilutive common shares at December 31, 2018 and 2017. The numerators and denominators used in computing basic and diluted net loss per common share in 2018 and 2017 are as follows:",
+   "prose_after": "14. Stockholder\u2019s Equity\nReverse Stock Splits\nAll shares related and per share information in these financial statements has been adjusted to give effect to the 3-for-1 reverse stock split of the Company\u2019s common stock effected on June 15, 2017.\nIssuance of Common Stock\nOn December 31, 2018, the Company issued 3,122 shares in connection with the purchase of the remaining 10% interest in BBD.\nOn November 20, 2018, the Company issued 1,235,000 shares of common stock at $6.50 per share in connection with an underwritten public offering for net proceeds of approximately $7.2 million. On December 19, 2018 an additional 185,250 shares were issued as part of the overallotment for additional proceeds of approximately $1.1 million.\nDuring 2018, the Company issued 1,345,978 shares of common stock at $5.40 per share in connection with the exercise of warrants for cash proceeds of $7,268,281, and 500,000 shares of common stock at $5.40 per share in connection with the exercise of warrants in exchange for a reduction in outstanding note principal of $2,700,000.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1488,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1525,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "# of Options",
+     "",
+     "",
+     "Weighted- Average Exercise Price",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2016",
+     "",
+     "173,750",
+     "",
+     "$",
+     "9.25"
+    ],
+    [
+     "  Options granted",
+     "",
+     "243,667",
+     "",
+     "",
+     "4.34"
+    ],
+    [
+     "  Options exercised",
+     "",
+     "(9,260)",
+     "",
+     "",
+     "5.40"
+    ],
+    [
+     "  Options canceled",
+     "",
+     "(39,151)",
+     "",
+     "",
+     "5.39"
+    ],
+    [
+     "Outstanding at December 31, 2017",
+     "",
+     "369,006",
+     "",
+     "$",
+     "6.47"
+    ],
+    [
+     "  Options granted",
+     "",
+     "654,000",
+     "",
+     "",
+     "5.47"
+    ],
+    [
+     "  Options exercised",
+     "",
+     "(48,715)",
+     "",
+     "",
+     "4.56"
+    ],
+    [
+     "  Options canceled",
+     "",
+     "(78,433)",
+     "",
+     "",
+     "4.86"
+    ],
+    [
+     "Outstanding at December 31, 2018",
+     "",
+     "895,858",
+     "",
+     "$",
+     "5.62"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at December 31, 2018",
+     "",
+     "406,464",
+     "",
+     "$",
+     "5.80"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1610,
+    "end_line": 1631
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "On September 8, 2016, the Company adopted the 2016 Equity Incentive Plan (the \u201c2016 Plan\u201d). The total number of shares available for the grant of either stock options or compensation stock under the 2016 Plan was initially set at 166,667 shares, subject to adjustment. On January 1, 2017 and pursuant to the plan provisions, the number of shares available for grant under the 2016 Plan increased to 307,139 shares, equal to 8% of the number of outstanding shares of the Company\u2019s capital stock, calculated on an as-converted basis, on December 31 of the preceding calendar year. On October 18, 2017, the Board of Directors (the \u201cBoard\u201d) approved amendments to the 2016 Plan to (i) increase the number of shares of the common stock that may be issued under the 2016 Plan (the \u201cAggregate Limit\u201d) by an additional 192,861 shares of common stock, for a total of 500,000 shares of common stock, (ii) increase the number of shares of common stock that may be granted to any participant pursuant to options to purchase common stock and stock appreciation rights under the 2016 Plan in any one year period (the \u201cIndividual Option Limit\u201d) from 8,333 shares to 200,000 shares, (iii) increase the number of shares of common stock that may be granted to any participant pursuant to other awards (the \u201cIndividual Award Limit\u201d) under the 2016 Plan in any one year period from 8,333 shares to 200,000 shares and (iv) increase the number of shares of common stock that may be paid to any one participant under the 2016 Plan for a performance period pursuant to performance compensation awards under the 2016 Plan (the \u201cIndividual Performance Award Limit\u201d) from 8,333 shares to 200,000 shares, which amendments were adopted and approved at the December 2017 meeting of stockholders. On January 1, 2018, pursuant to the plan provisions, the number of shares available for grant under the 2016 Plan further increased to 1,131,880 shares. The exercise price per share of each stock option shall not be less than 100 percent of the fair market value of the Company\u2019s common stock on the date of grant. At December 31, 2018, there were 904,249 options and 225,780 restricted stock units (\u201cRSUs\u201d) issued under the 2016 Plan with vesting schedules varying between immediate and five (5) years from the grant date.\nOn January 29, 2015, our Board of Directors adopted the 2015 Stock Incentive Plan (the \u201c2015 Plan\u201d). The total number of shares available for the grant of either stock options or compensation stock under the plan is 50,000 shares, subject to adjustment. At December 31, 2018, there were 49,584 options issued under the Plan outstanding, with vesting schedules varying between immediate and one (1) year from the grant date, which options vest at the rate of at least 25% in the first year, starting 6-months after the grant date, and 75% in year two.\nA summary of all stock option activity at and for the years ended December 31, 2018 and 2017 is presented below:",
+   "prose_after": "The aggregate intrinsic value of options outstanding at December 31, 2018 was $558,278, compared to $28,962 at December 31, 2017.\nAt December 31, 2018, there were 489,393 unvested options with an aggregate grant date fair value of $1,322,193. The unvested options will vest in accordance with the vesting schedule in each respective option agreement, which varies between immediate and five\n(5) years from the grant date. The aggregate intrinsic value of unvested options at December 31, 2018 was $344,232. During the year ended December 31, 2018, 255,182 options vested.\nThe Company uses the Black-Scholes valuation model to measure the grant-date fair value of stock options. The grant-date fair value of stock options issued to employees is recognized on a straight-line basis over the requisite service period. Stock-based awards issued to nonemployees are recorded at fair value on the measurement date and are subject to periodic market adjustments as the underlying stock-based awards vest.\nTo determine the fair value of stock options using the Black-Scholes valuation model, the calculation takes into consideration the effect of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1600,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "2.65",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "6.28",
+     ""
+    ],
+    [
+     "Dividend yield",
+     "-",
+     ""
+    ],
+    [
+     "Expected volatility",
+     "56",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1653,
+    "end_line": 1659
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "\u25cf Fair value of the Company\u2019s common stock on the date of grant\n\u25cf Expected term of the option\n\u25cf Expected volatility over the expected term of the option\n\u25cf Risk-free interest rate for the expected term of the option\nThe calculation includes several assumptions that require management\u2019s judgment. The expected term of the options is calculated using the simplified method described in GAAP. The simplified method defines the expected term as the average of the contractual term and the vesting period. Estimated volatility is derived from volatility calculated using historical closing prices of common shares of similar entities whose share prices are publicly available for the expected term of the options. The risk-free interest rate is based on the U.S. Treasury constant maturities in effect at the time of grant for the expected term of the options.\nThe following weighted-average assumptions were used in the Black-Scholes valuation model for options granted during the year ended December 31, 2018:",
+   "prose_after": "The weighted-average grant-date fair value per share of stock options granted during the year ended December 31, 2018 was $2.64. The aggregate grant date fair value of the 641,000 options granted during the year ended December 31, 2018 was $1,689,398.\nFor the twelve months ended December 31, 2018, net compensation expense related to stock options was $657,546. At December 31, 2018, the total compensation expense related to stock options not yet recognized is approximately $1,088,420, which is expected to be recognized over a weighted-average period of approximately 2.18 years.\nWarrants\nDuring the twelve months ended December 31, 2018, the Company issued an aggregate of 500,000 common stock warrants in connection with the issuance of $5,000,000 in notes payable, and 10,000 common stock warrants to a consultant. The Company has determined the warrants should be classified as equity on the condensed consolidated balance sheet as of December 31, 2018. The estimated fair value of the warrants at issuance was $2,110,997, based on a combination of closing market trading price on the date of issuance for the public offering warrants, and the Black-Scholes option-pricing model using the weighted-average assumptions below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Volatility",
+     "",
+     "48",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "2.59",
+     "%"
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "4.0",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Fair value of common stock",
+     "$",
+     "7.95",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1668,
+    "end_line": 1675
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "The weighted-average grant-date fair value per share of stock options granted during the year ended December 31, 2018 was $2.64. The aggregate grant date fair value of the 641,000 options granted during the year ended December 31, 2018 was $1,689,398.\nFor the twelve months ended December 31, 2018, net compensation expense related to stock options was $657,546. At December 31, 2018, the total compensation expense related to stock options not yet recognized is approximately $1,088,420, which is expected to be recognized over a weighted-average period of approximately 2.18 years.\nWarrants\nDuring the twelve months ended December 31, 2018, the Company issued an aggregate of 500,000 common stock warrants in connection with the issuance of $5,000,000 in notes payable, and 10,000 common stock warrants to a consultant. The Company has determined the warrants should be classified as equity on the condensed consolidated balance sheet as of December 31, 2018. The estimated fair value of the warrants at issuance was $2,110,997, based on a combination of closing market trading price on the date of issuance for the public offering warrants, and the Black-Scholes option-pricing model using the weighted-average assumptions below:",
+   "prose_after": "A total of 1,961,312 warrants were exercised during the fiscal year 2018 for cash proceeds of $7,885,285 and a $2,700,000 reduction of outstanding note principal. In addition, 54,308 warrants were exercised during the twelve month period at an average of approximately $4.07 per share in exchange for services rendered.\nA summary of activity in warrants is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1639,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Warrants",
+     "",
+     "",
+     "Weighted Average Remaining Life",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2017",
+     "",
+     "2,623,077",
+     "",
+     "",
+     "3.62 years",
+     "$",
+     "5.96",
+     "$",
+     "54,880"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Twelve months ended December 31, 2018:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Granted",
+     "",
+     "510,000",
+     "",
+     "",
+     "4.47 years",
+     "$",
+     "5.42",
+     "$",
+     "387,600"
+    ],
+    [
+     "  Exercised",
+     "",
+     "(2,015,620)",
+     "",
+     "",
+     "",
+     "$",
+     "5.36",
+     "",
+     "-"
+    ],
+    [
+     "  Forfeited and cancelled",
+     "",
+     "(34,022)",
+     "",
+     "",
+     "4.25 years",
+     "$",
+     "5.40",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2018",
+     "",
+     "1,083,435",
+     "",
+     "",
+     "1.04 years",
+     "$",
+     "6.83",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1682,
+    "end_line": 1699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Net Loss per Common Share"
+    }
+   },
+   "prose_before": "A total of 1,961,312 warrants were exercised during the fiscal year 2018 for cash proceeds of $7,885,285 and a $2,700,000 reduction of outstanding note principal. In addition, 54,308 warrants were exercised during the twelve month period at an average of approximately $4.07 per share in exchange for services rendered.\nA summary of activity in warrants is as follows:",
+   "prose_after": "15. Related Party Transactions\nThe following is a description of transactions since January 1, 2017 as to which the amount involved exceeds the lesser of $120,000 or one percent (1%) of the average of our total assets at year-end for the last two completed fiscal years which was $176,934 and in which any related person has or will have a direct or indirect material interest, other than equity, compensation, termination and other arrangements.\nOn June 2, 2017, Mr. Wickersham purchased 15,189 units at $3.90 per unit, with each unit consisting of one share of common stock and one three-year common stock purchase warrant exercisable at $7.50 per share (subject to adjustment), for total proceeds of $59,237 in cash.\nOn August 10, 2017, Mr. Wickersham and his affiliates purchased 55,555 units at $4.50 per unit, with each unit consisting of one share of common stock and one Public Warrant, for total proceeds of approximately $250,000 in cash. On August 9, 2018, Mr. Wickersham and his affiliates exercised the 55,555 warrants associated with the 2017 unit offering at an exercise price of $5.40 per share, for total proceeds of approximately $300,000.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1678,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Grover T. Wickersham",
+     "70",
+     "Chief Executive Officer, Chairman of the Board, Director"
+    ],
+    [
+     "Patrick Crowley(3)",
+     "71",
+     "Director"
+    ],
+    [
+     "Trent D. Davis (2)(3)",
+     "50",
+     "Director"
+    ],
+    [
+     "Michael M. Fleming (1)(2)(3)",
+     "70",
+     "Director"
+    ],
+    [
+     "David Holmes",
+     "45",
+     "Director"
+    ],
+    [
+     "Jack Peterson",
+     "54",
+     "Director"
+    ],
+    [
+     "Matthew Szot (1)(2)",
+     "44",
+     "Director"
+    ],
+    [
+     "Robert Manfredonia",
+     "54",
+     "President"
+    ],
+    [
+     "Steven Shum",
+     "48",
+     "Chief Financial Officer"
+    ],
+    [
+     "Melissa Heim",
+     "35",
+     "Executive Vice President Operations and Master Distiller"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1764,
+    "end_line": 1779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of our independent registered public accounting firm regarding internal control over financial reporting. We were not required to have, nor have we, engaged our independent registered public accounting firm to perform an audit of internal control over financial reporting pursuant to the rules of the Securities and Exchange Commission that permit us to provide only management\u2019s report in this annual report.\nChanges in Internal Control Over Financial Reporting\nNo changes in the Company\u2019s internal control over financial reporting occurred during the quarter ended December 31, 2018 that have materially affected, or are reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nItem 9B. OTHER INFORMATION\nNone.\nPART III\nItem 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE\nThe following is a brief description of the principal occupation and recent business experience of each of our executive officers and directors and their ages as of March 28, 2019:",
+   "prose_after": "(1) Member of the audit committee.\n(2) Member of the compensation committee.\n(3) Member of the nominating and corporate governance committee.\nOur board of directors currently consists of seven members. All directors hold office until their successors have been elected and qualified or until their earlier death, resignation, disqualification, or removal. Board vacancies and newly created directorships resulting from any increase in the authorized number of directors may be filled by a majority vote of the directors then in office, even if less than a quorum, or by a sole remaining director. Our board may establish the authorized number of directors from time to time by resolution.\nOur executive officers are each appointed by the board and serve at the board\u2019s discretion.\nThere are no family relationships among our officers or directors.\nExecutive Officers\nGrover Wickersham was appointed to our Board of Directors and as our Chairman in July 2016, and as our chief executive officer in November 2016. Mr. Wickersham currently serves on the boards of directors of Verseon Corporation, a London AIM-listed pharmaceutical development company; and Arbor Vita Corporation, a private company that has developed a test for cervical cancer. Mr. Wickersham has been a director and portfolio advisor of Glenbrook Capital Management, the general partner of a partnership that invests primarily in the securities of public companies, from 1996 to the present. For more than five years, Mr. Wickersham has served as the Chairman of the board of trustees of Purisima Fund, a mutual fund advised by Fisher Investments of Woodside, California, which fund has assets under management of approximately $375 million. Between 1976 and 1981, Mr. Wickersham served as a staff attorney, and then as a branch chief, of the U.S. Securities and Exchange Commission (the \u201cSEC\u201d). He holds a B.A. from the University of California at Berkeley, an M.B.A. from Harvard Business School and a J.D. from University of California, Hastings College of Law. We believe that Mr. Wickersham is qualified to serve as a member of our Board of Directors because of his experience and knowledge of corporate finance and legal matters, his experience and knowledge of operational matters gained as a past and present director of other public and private companies, and his knowledge of our company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1757,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1796,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2018 Summary Compensation Table",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Position",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards",
+     "",
+     "",
+     "Option Awards",
+     "",
+     "",
+     "All Other Compensation",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Grover T. Wickersham",
+     "",
+     "2018",
+     "$",
+     "120,000",
+     "$",
+     "123,750",
+     "",
+     "$ 164,314",
+     "(3)",
+     "",
+     "$ 318,545",
+     "(1)",
+     "$",
+     "",
+     "$",
+     "726,609"
+    ],
+    [
+     "Chief Executive Officer, Director (Since November 2016)",
+     "",
+     "2017",
+     "$",
+     "20,769",
+     "$",
+     "50,000",
+     "",
+     "$ 188,350",
+     "(4)",
+     "",
+     "$ 156,740",
+     "(2)",
+     "$",
+     "",
+     "$",
+     "415,859"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Manfredonia",
+     "",
+     "2018",
+     "$",
+     "109,615",
+     "$",
+     "\u2014",
+     "",
+     "$ 50,000",
+     "(6)",
+     "",
+     "$ 204,625",
+     "(5)",
+     "$",
+     "",
+     "$",
+     "364,240"
+    ],
+    [
+     "President (Since December 2018)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Steve Shum",
+     "",
+     "2018",
+     "$",
+     "135,000",
+     "$",
+     "132,250",
+     "",
+     "$ 164,314",
+     "(9)",
+     "",
+     "$ 318,545",
+     "(7)",
+     "$",
+     "",
+     "$",
+     "750,109"
+    ],
+    [
+     "Chief Financial Officer, (Since October 1, 2015)",
+     "",
+     "2017",
+     "$",
+     "135,000",
+     "$",
+     "63,461",
+     "",
+     "$ 59,390",
+     "(10)",
+     "",
+     "$ 5,095",
+     "(8)",
+     "$",
+     "",
+     "$",
+     "262,946"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Melissa Heim",
+     "",
+     "2018",
+     "$",
+     "87,289",
+     "$",
+     "10,000",
+     "",
+     "$ 19,950",
+     "(13)",
+     "",
+     "$ 68,575",
+     "(11)",
+     "$",
+     "",
+     "$",
+     "185,814"
+    ],
+    [
+     "Executive V.P. Operations and Master Distiller",
+     "",
+     "2017",
+     "$",
+     "85,000",
+     "$",
+     "34,297",
+     "",
+     "$ 57,906",
+     "(14)",
+     "",
+     "$ 30,915",
+     "(12)",
+     "$",
+     "",
+     "$",
+     "208,118"
+    ]
+   ],
+   "caption_stack": [
+    "2018 Summary Compensation Table"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1881,
+    "end_line": 1903
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We have adopted a code of business conduct and ethics that applies to all of our employees, officers and directors. We will provide to any person without charge, upon request, a copy of our code of business conduct and ethics. Requests may be directed to our principal executive offices at 1001 SE Water Avenue, Suite 390, Portland, Oregon 97214. Also, a copy of our code of business conduct and ethics is available on our website. We will disclose, on our website, any amendment to, or a waiver from, a provision of our Code of Business Conduct and Ethics that applies to our principal executive officer, principal financial officer, principal accounting officer or controller, or persons performing similar functions and that relates to any element of the Code of Business Conduct and Ethics enumerated in applicable rules of the SEC.\nItem 11. EXECUTIVE COMPENSATION\nThe following table sets forth the compensation awarded to, earned by or paid to our Named Executive Officers for services rendered during the fiscal years ended December 31, 2018, and 2017.",
+   "prose_after": "(1) Amounts reflect the aggregate grant date fair value of the 115,000 shares of common stock underlying the stock options granted on three separate dates of grant (with exercise prices of $3.92, $3.99 and $7.87 per share, respectively) without regards to forfeitures, computed in accordance with FASB ASC Topic 718, Compensation\u2014Stock Compensation (\u201cASC 718\u201d). This amount does not reflect the actual economic value realized by the named executive officer. The options issued vest monthly over a 2 or 3-year period. The assumptions used to calculate the value of the stock options are set forth in Note 14 in the Notes to Consolidated Financial Statements on page 52.\n(2) Amounts reflect the aggregate grant date fair value of the 53,333 shares of common stock underlying the stock options granted on two separate dates of grant (with exercise prices of $4.80 and $3.78 per share, respectively) without regards to forfeitures, computed in accordance with ASC 718. This amount does not reflect the actual economic value realized by the named executive officer. The options issued vest monthly over a 3-year period. The assumptions used to calculate the value of the stock options are set forth in Note 13 in the Notes to Consolidated Financial Statements on page 46 of the Company\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2017, filed with the SEC on April 2, 2018.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1876,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "All Other Stock Awards:",
+     "",
+     "",
+     "All Other Option Awards:",
+     "",
+     "",
+     "All Other Option Awards:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "Number of Shares of Stock or Units (#)",
+     "",
+     "",
+     "Number of Securities Underlying Options (#)",
+     "",
+     "",
+     "Exercise or Base Price of Option Awards ($/Share)",
+     "",
+     "Grant Date Fair Value of Stock and Option Awards (1)",
+     ""
+    ],
+    [
+     "Grover T. Wickersham",
+     "01/08/2018",
+     "",
+     "",
+     "",
+     "",
+     "50,000",
+     "(2)",
+     "$",
+     "3.92",
+     "$",
+     "130,650"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/11/2018",
+     "",
+     "",
+     "",
+     "",
+     "25,000",
+     "(4)",
+     "$",
+     "3.99",
+     "$",
+     "68,575"
+    ],
+    [
+     "",
+     "01/11/2018",
+     "",
+     "5,000",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "19,950"
+    ],
+    [
+     "",
+     "04/17/2018",
+     "",
+     "5,000",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "35,950"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "08/18/2018",
+     "",
+     "14,098",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "103,620"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/15/2018",
+     "",
+     "\u2014",
+     "",
+     "",
+     "40,000",
+     "(4)",
+     "$",
+     "7.87",
+     "$",
+     "119,320"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Melissa Heim",
+     "01/11/2018",
+     "",
+     "",
+     "",
+     "",
+     "25,000",
+     "(4)",
+     "$",
+     "3.99",
+     "$",
+     "68,575"
+    ],
+    [
+     "",
+     "",
+     "",
+     "5,000",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "19,950"
+    ],
+    [
+     "Steve Shum",
+     "01/08/2018",
+     "",
+     "\u2014",
+     "",
+     "",
+     "50,000",
+     "(2)",
+     "$",
+     "3.92",
+     "$",
+     "130,650"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/11/2018",
+     "",
+     "",
+     "",
+     "",
+     "25,000",
+     "(4)",
+     "$",
+     "3.99",
+     "$",
+     "68,575"
+    ],
+    [
+     "",
+     "",
+     "",
+     "5,000",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "19,950"
+    ],
+    [
+     "",
+     "04/17/2018",
+     "",
+     "5,000",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "35,950"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "08/18/2018",
+     "",
+     "14,098",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "103,620"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/15/2018",
+     "",
+     "",
+     "",
+     "",
+     "40,000",
+     "(4)",
+     "$",
+     "7.87",
+     "$",
+     "119,320"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Manfredonia",
+     "4/02/2018",
+     "",
+     "",
+     "",
+     "",
+     "50,000",
+     "(4)",
+     "$",
+     "7.05",
+     "$",
+     "130,050"
+    ],
+    [
+     "",
+     "",
+     "",
+     "3,547",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "25,000"
+    ],
+    [
+     "",
+     "10/04/2018",
+     "",
+     "3,149",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "25,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/15/2018",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,000",
+     "(4)",
+     "$",
+     "7.87",
+     "$",
+     "74,575"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1930,
+    "end_line": 1963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(12) Amounts reflect the aggregate grant date fair value of the 11,667 shares of common stock underlying the stock options granted on two separate dates of grant (with an exercise price of $4.50 and $3.78 per share, respectively) without regards to forfeitures, computed in accordance with ASC 718. This amount does not reflect the actual economic value realized by the named executive officer. The options issued vest monthly over a 3-year period. The assumptions used to calculate the value of the stock options are set forth in Note 13 in the Notes to Consolidated Financial Statements on page 46 of the Company\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2017, filed with the SEC on April 2, 2018.\n(13) Amounts reflect the aggregate grant date fair value of 5,000 restricted stock units calculated based on the closing sales price reported on the Nasdaq Capital Market on the dates of grant ($3.99 per share) without regards to forfeitures.\n(14) Amounts reflect the aggregate grant date fair value of 5,548 restricted stock units calculated based on the closing sales price reported on the Nasdaq Capital Market on the respective dates of grant ($3.78 and $4.33 per share, respectively) without regards to forfeitures.\nAll Other Compensation\nNone\n2018 Grants of Plan-Based Awards\nThe following table sets forth information concerning the number of shares of common stock underlying restricted stock unit awards and stock options granted to the Named Executive Officers in the year ended December 31, 2018.",
+   "prose_after": "(1) Represents the grant date fair value of each equity award calculated in accordance with ASC 718.\n(2) Options vest quarterly over a 2-year period.\n(3) RSUs vested immediately.\n(4) Options vest quarterly over a 3-year period.\nOutstanding Equity Awards at 2018 Fiscal Year-End\nThe following table sets forth all outstanding equity awards made to each of the Named Executive Officers that are outstanding as of December 31, 2018.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1925,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 65
+    },
+    "after": {
+     "line": 1969,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 66
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards (1)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "Number of Securities Underlying Unexercised Options (#) Exercisable",
+     "",
+     "Number of Securities Underlying Unexercised Options (#) Unexercisable",
+     "",
+     "Option Exercise Price ($)",
+     "Option Expiration Date"
+    ],
+    [
+     "Grover T.\nWickersham",
+     "10/13/2016",
+     "35,000",
+     "(1)",
+     "\u2014",
+     "$",
+     "5.40",
+     "10/13/2026"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "04/05/2017",
+     "29,167",
+     "(2)",
+     "4,167",
+     "$",
+     "4.80",
+     "04/05/2027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "09/15/2017",
+     "10,000",
+     "(3)",
+     "10,000",
+     "$",
+     "3.78",
+     "09/15/2027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/08/2018",
+     "25,000",
+     "(2)",
+     "25,000",
+     "$",
+     "3.92",
+     "01/08/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/11/2018",
+     "8,333",
+     "(3)",
+     "16,667",
+     "$",
+     "3.99",
+     "01/08/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/15/2018",
+     "3,333",
+     "(3)",
+     "36,667",
+     "$",
+     "7.87",
+     "10/15/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Melissa Heim",
+     "03/25/2015",
+     "417",
+     "(3)",
+     "\u2014",
+     "$",
+     "105.00",
+     "03/25/2025"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "09/20/2016",
+     "7,500",
+     "(3)",
+     "2,500",
+     "$",
+     "4.80",
+     "09/20/2026"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "12/30/2016",
+     "2,223",
+     "(3)",
+     "1,111",
+     "$",
+     "5.94",
+     "12/30/2016"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "03/14/2017",
+     "972",
+     "(3)",
+     "695",
+     "$",
+     "4.50",
+     "03/14/2027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "09/15/2017",
+     "5,000",
+     "(3)",
+     "5,000",
+     "$",
+     "3.78",
+     "09/15/2027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/11/2018",
+     "8,333",
+     "(3)",
+     "16,667",
+     "$",
+     "3.99",
+     "01/11/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Steven Shum",
+     "10/1/2015",
+     "14,167",
+     "(4)",
+     "\u2014",
+     "$",
+     "27.00",
+     "10/1/2020"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "9/20/2016",
+     "15,000",
+     "(3)",
+     "5,000",
+     "$",
+     "4.80",
+     "10/1/2026"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "03/14/2017",
+     "972",
+     "(3)",
+     "695",
+     "$",
+     "4.50",
+     "03/14/2027"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/08/2018",
+     "25,000",
+     "(2)",
+     "25,000",
+     "$",
+     "3.92",
+     "01/08/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "01/11/2018",
+     "8,333",
+     "(3)",
+     "16,667",
+     "$",
+     "3.99",
+     "01/08/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/15/2018",
+     "3,333",
+     "(3)",
+     "36,667",
+     "$",
+     "7.87",
+     "10/15/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert Manfredonia",
+     "04/02/2018",
+     "16,667",
+     "(3)",
+     "33,333",
+     "$",
+     "7.05",
+     "04/02/2028"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "10/15/2018",
+     "2,083",
+     "(3)",
+     "22,917",
+     "$",
+     "7.87",
+     "10/15/2028"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards (1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1974,
+    "end_line": 2022
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Represents the grant date fair value of each equity award calculated in accordance with ASC 718.\n(2) Options vest quarterly over a 2-year period.\n(3) RSUs vested immediately.\n(4) Options vest quarterly over a 3-year period.\nOutstanding Equity Awards at 2018 Fiscal Year-End\nThe following table sets forth all outstanding equity awards made to each of the Named Executive Officers that are outstanding as of December 31, 2018.",
+   "prose_after": "(1) Options vest monthly over a 6-month period.\n(2) Options vest quarterly over 2-year period\n(3) Options vest quarterly over 3-year period\n(4) Options vest over a 2-year period with 25% vesting in the first year following date of grant, with no options vesting during the first 6-months and 1/24th per month and 75% vesting in the second year following date of grant (3/48th/month).\nEmployment Agreements\nWe have agreements with certain of our named executive officers, which include provisions regarding post-termination compensation. We do not have a formal severance policy or plan applicable to our executive officers as a group. The following summaries of the employment agreements are qualified in their entirety by reference to the text of the employment agreements, as amended, which have been filed as.\nEmployment Agreement with Steve Shum\nIn 2015, we entered into an employment agreement with Mr. Shum, which was amended in 2016. The agreement annually renews for one-year terms.\nThe agreement contains the following provisions among other terms: (i) reimbursement for all reasonable travel and other out-of-pocket expenses incurred in connection with his employment; (ii) vacation leave; (iii) medical, dental and life insurance benefits; (iv) 36-month non-compete/non-solicitation terms; and (v) a severance payment equal to six months of base salary upon termination without cause (as defined in the agreement). Mr. Shum is not entitled to increased severance in connection with a change of control.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1969,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Potential Payment upon Termination Without Cause\n(1)",
+     "",
+     ""
+    ],
+    [
+     "Steven Shum",
+     "$",
+     "75,000",
+     "(2)"
+    ],
+    [
+     "Robert Manfredonia",
+     "$",
+     "75,000",
+     "(3)"
+    ],
+    [
+     "Melissa Heim",
+     "$",
+     "42,500",
+     "(4)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2056,
+    "end_line": 2064
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Effective December 6, 2018, the Company entered into an Amended and Restated Employment Agreement with Mr. Manfredonia. The agreement is for an initial term ending on December 5, 2021 and provides for an annual base salary during the term of the agreement of $150,000. Mr. Manfredonia is eligible to receive a bonus of $100,000 per annum, which would be subject to Company results and individual performance. In addition, the Company will recommend to the compensation committee that it grant Mr. Manfredonia $37,500 worth of restricted stock units within the first 5 days of the completion of each quarter. Each award will be immediately vested and will be subject to the terms and conditions of the 2016 Equity Incentive Plan. Further, Mr. Manfredonia may be eligible to receive stock option grants pursuant to the 2016 Equity Incentive Plan, subject to the discretion of compensation committee. The agreement also contains the following provisions: (i) reimbursement for all reasonable travel and other out-of-pocket expenses incurred in connection with his employment, along with a $500 per month car allowance; (ii) benefits and perquisites available to other senior executives of the Company; and (iii) a severance payment upon termination without cause.\nPotential Payments upon Termination\nUnder the terms of the employment agreements for Mr. Shum, Ms. Heim and Mr. Manfredonia, they are each entitled to a severance payment of six (6) month\u2019s salary at the then-applicable base salary rate in the event that we terminate their employment without cause.\nThe following table sets forth quantitative information with respect to potential payments to be made to Mr. Shum, Ms. Heim and Mr. Manfredonia upon termination without cause. The potential payments are based on the terms of Mr. Shum\u2019s, Ms. Heim\u2019s and Mr. Manfredonia\u2019s employment agreements discussed above. For a more detailed description of the employment agreements for Mr. Shum, Ms. Heim and Mr. Manfredonia, see the \u201cEmployment Agreements\u201d section above.",
+   "prose_after": "(1) Employee entitled to six months\u2019 severance at the then applicable base salary rate.\n(2) Based on Mr. Shum\u2019s current annual base salary of $150,000.\n(3) Based on Mr. Manfredonia\u2019s current annual base salary of $150,000.\n(4) Based on Ms. Heim\u2019s current annual base salary.\nCompensation of Directors\n2018 Director Compensation\nDuring 2018, the Board of Directors established an annual compensation program for the directors that includes; 1) an annual retainer of $16,000 paid in cash in quarterly installments, 2) $5,000 in stock awards per quarter, 3) $2,500 cash payment for each board chair, which will be paid annually at the beginning of the year, 4) 1,000 for in-person board meetings and $500 for telephonic board meetings and 5) 5,000 stock options per year. The following table sets forth information regarding compensation earned by or paid to our non-employee directors during the year ended December 31, 2018.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2049,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 69
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash\n\n\n\n($)",
+     "",
+     "Stock Awards\n\n\n\n($)",
+     "",
+     "",
+     "Option Awards\n\n\n\n($)",
+     "",
+     "",
+     "Total ($)",
+     ""
+    ],
+    [
+     "Trent D. Davis",
+     "$",
+     "35,250",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "28,243",
+     "(3)",
+     "$",
+     "68,493"
+    ],
+    [
+     "Michael M. Fleming",
+     "$",
+     "25,250",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "28,243",
+     "(3)",
+     "$",
+     "58,493"
+    ],
+    [
+     "Jack Peterson",
+     "$",
+     "20,700",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "28,243",
+     "(3)",
+     "$",
+     "53,943"
+    ],
+    [
+     "Shelly A. Saunders(1)",
+     "$",
+     "23,000",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "28,243",
+     "(3)",
+     "$",
+     "56,243"
+    ],
+    [
+     "Matthew Szot",
+     "$",
+     "13,625",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "11,405",
+     "(4)",
+     "$",
+     "30,030"
+    ],
+    [
+     "Patrick Crowley",
+     "$",
+     "5,000",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "11,190",
+     "(4)",
+     "$",
+     "21,190"
+    ],
+    [
+     "David Holmes",
+     "$",
+     "5,500",
+     "$",
+     "5,000",
+     "(2)",
+     "$",
+     "11,190",
+     "(4)",
+     "$",
+     "21,690"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2076,
+    "end_line": 2089
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Employee entitled to six months\u2019 severance at the then applicable base salary rate.\n(2) Based on Mr. Shum\u2019s current annual base salary of $150,000.\n(3) Based on Mr. Manfredonia\u2019s current annual base salary of $150,000.\n(4) Based on Ms. Heim\u2019s current annual base salary.\nCompensation of Directors\n2018 Director Compensation\nDuring 2018, the Board of Directors established an annual compensation program for the directors that includes; 1) an annual retainer of $16,000 paid in cash in quarterly installments, 2) $5,000 in stock awards per quarter, 3) $2,500 cash payment for each board chair, which will be paid annually at the beginning of the year, 4) 1,000 for in-person board meetings and $500 for telephonic board meetings and 5) 5,000 stock options per year. The following table sets forth information regarding compensation earned by or paid to our non-employee directors during the year ended December 31, 2018.",
+   "prose_after": "(1) Resigned from Board of Directors effective March 19, 2019.\n(2) Represents the aggregate-grant date fair value of 810 RSUs, valued using the closing stock price as reported on the Nasdaq Capital Market on the respective dates of grant. As of December 31, 2018, the RSU\u2019s granted were fully vested. As of December 31, 2018, there were no unvested RSUs held by each non-employee directors.\n(3) Represents the aggregate-grant date fair value of non-qualified stock options under the 2016 Plan. This includes two separate grants during the year, for the purchase up to 7,500 shares of common stock at an exercise price of $3.99 per share and for the purchase of up to 5,000 shares of common stock at an exercise price of $7.87 per share as of January 11, 2018 and October 15, 2018 respectively without regards to forfeitures, computed in accordance with ASC Topic 718 \u2013 Stock Compensation (\u201cASC 718\u201d). The assumptions used to calculate the value of the stock options are set forth in Note 14 in the Notes to Consolidated Financial Statements on page 52. As of December 31, 2018, the total number of shares of outstanding stock options held by each non-employee director were as follows: Mr. Davis, 19,537; Mr. Fleming, 19,537; Mr. Peterson, 20,000; Ms. Saunders, 20,000; Mr. Szot, 5,000; Mr. Crowley, 5,000; and Mr. Holmes 5,000.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2049,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 68
+    },
+    "after": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 69
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name And",
+     "Beneficially",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "Address (1)",
+     "Owned",
+     "",
+     "",
+     "Owned",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "5% Stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glenbrook Capital (2)",
+     "",
+     "811,729",
+     "",
+     "",
+     "8.79",
+     "%"
+    ],
+    [
+     "Orca Investment Management (3)",
+     "",
+     "649,018",
+     "",
+     "",
+     "7.13",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officers and Directors:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Grover T. Wickersham (4)",
+     "",
+     "757,246",
+     "(5)",
+     "",
+     "8.09",
+     "%"
+    ],
+    [
+     "Michael Fleming",
+     "",
+     "44,644",
+     "(6)",
+     "",
+     "0.49",
+     "%"
+    ],
+    [
+     "Trent Davis",
+     "",
+     "36,977",
+     "(7)",
+     "",
+     "0.41",
+     "%"
+    ],
+    [
+     "Jack Peterson",
+     "",
+     "72,444",
+     "(8)",
+     "",
+     "0.79",
+     "%"
+    ],
+    [
+     "Matthew Szot",
+     "",
+     "5,810",
+     "(9)",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "David Holmes",
+     "",
+     "3,310",
+     "(10)",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Patrick Crowley",
+     "",
+     "3,310",
+     "(11)",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Melissa Heim",
+     "",
+     "42,663",
+     "(12)",
+     "",
+     "0.47",
+     "%"
+    ],
+    [
+     "Robert Manfredonia",
+     "",
+     "28,270",
+     "(13)",
+     "",
+     "0.31",
+     "%"
+    ],
+    [
+     "Steven Shum",
+     "",
+     "108,175",
+     "(14)",
+     "",
+     "1.18",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and officers as a group (10 persons)",
+     "",
+     "1,102,849",
+     "",
+     "",
+     "11.87",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Number of",
+    "Common",
+    "Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2104,
+    "end_line": 2132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "The following table sets forth information as of March 28, 2019 as to each person or group who is known to us to be the beneficial owner of more than 5% of our outstanding voting securities and as to the security and percentage ownership of each of our executive officers and directors and of all of our officers and directors as a group. As of March 28, 2019, we had 9,102,297 shares of common stock outstanding.\nBeneficial ownership is determined under the rules of the SEC and generally includes voting or investment power over securities. Except in cases where community property laws apply or as indicated in the footnotes to this table, we believe that each stockholder identified in the table possesses sole voting and investment power over all shares of common stock shown as beneficially owned by the stockholder.\nShares of common stock subject to options or warrants that are currently exercisable or exercisable within 60 days of the date of March 28, 2019 are considered outstanding and beneficially owned by the person holding the options for the purpose of computing the percentage ownership of that person but are not treated as outstanding for the purpose of computing the percentage ownership of any other person.",
+   "prose_after": "(1) Unless otherwise noted, the address is c/o Eastside Distilling, Inc., 1002 SE Water Avenue, Suite 390., Portland, Oregon 97214.\n(2) The address is 430 Cambridge Avenue, Suite #100, Palo Alto, California 94306. Glenbrook Capital, L.P. (\u201cGlenbrook\u201d) is a Nevada limited partnership, the general partner of which is Glenbrook Capital Management, a Nevada corporation (\u201cGCM\u201d). Glenbrook is overseen by its executive officers and a board of directors consisting of four directors. Grover T. Wickersham, our Chairman and Chief Executive Officer, is the owner of GCM. However, he does not direct the voting or disposition of the shares owned by Glenbrook. GCM disclaims beneficial ownership of the securities owned by Glenbrook Limited Partnership except to the extent of its pecuniary interest in the limited partnership.\n(3) The address is 2250 Aviation Drive, Suite 3, Roseburg, Oregon 97470\n(4) The shares of common stock include (i) 157,037 shares held directly; (ii) 238,728 shares owned by an employee profit sharing plan of Mr. Wickersham\u2019s former law firm, for which he formerly served as trustee; (iii) 60,370 shares owned by a charitable remainder trust, for which he serves as co-trustee and a beneficiary; and (iv) 45,856 shares owned by his minor daughter\u2019s irrevocable trust, for which he serves as trustee.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2101,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 69
+    },
+    "after": {
+     "line": 2152,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 70
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(a)",
+     "",
+     "(b)",
+     "",
+     "(c)",
+     ""
+    ],
+    [
+     "Plan Category",
+     "Number of\n\n\n\nsecurities to be\n\n\n\nissued upon\n\n\n\nexercise of\n\n\n\noutstanding\n\n\n\noptions,\n\n\n\nwarrants and\n\n\n\nrights",
+     "",
+     "Weighted-\n\n\n\naverage exercise\n\n\n\nprice of\n\n\n\noutstanding\n\n\n\noptions, warrants\n\n\n\nand rights",
+     "",
+     "Number of\n\n\n\nsecurities\n\n\n\nremaining\n\n\n\navailable for future\n\n\n\nissuance under\n\n\n\nequity\n\n\n\ncompensation\n\n\n\nplans (excluding\n\n\n\nsecurities reflected\n\n\n\nin column (a))",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by security holders (1) (2)",
+     "",
+     "895,858",
+     "$",
+     "5.62",
+     "",
+     "2,267"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "",
+     "895,858",
+     "$",
+     "5.62",
+     "",
+     "2,267"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2157,
+    "end_line": 2184
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "(i) 9,400 shares of common stock held directly or indirectly by Mr. Peterson and (ii) 46,169 shares of common stock owned by Sandstrom Partners, of which Mr. Peterson is the current CEO (iii) 16,875 shares of common stock issuable upon exercise of stock options exercisable on or before May 27, 2019.\n(9) Includes 5,000 shares issuable upon exercise of stock options exercisable on or before May 27, 2019.\n(10) Includes 2,500 shares issuable upon exercise of stock options exercisable on or before May 27, 2019.\n(11) Includes 2,500 shares issuable upon exercise of stock options exercisable on or before May 27, 2019.\n(12) Includes 28,613 shares issuable upon exercise of stock options exercisable on or before May 27, 2019.\n(13) Includes 25,000 shares issuable upon exercise of stock options exercisable on or before May 27, 2019.\n(14) Includes 80,279 shares issuable upon exercise of stock options exercisable on or before May 27, 2019.\nSecurities Authorized for Issuance Under Equity Compensation Plans. The following provides information concerning compensation plans under which our equity securities are authorized for issuance as of December 31, 2018:\nEquity Compensation Plan Information",
+   "prose_after": "(1) 2015 Stock Incentive Plan. On January 29, 2015, our Board of Directors adopted the 2015 Stock Incentive Plan (the \u201c2015 Plan\u201d). The total number of shares available for the grant of either stock options or compensation stock under the 2015 Plan is 50,000 shares, subject to adjustment. At December 31, 2018, there were 49,584 options issued under the Plan outstanding, with vesting schedules varying between immediate and, one (1) year from the grant date, which options vest at the rate of at least 25 percent in the first year, starting six months after the grant date, and 75% in year two.\n(2) 2016 Stock Incentive Plan. On September 8, 2016, the Company adopted the 2016 Equity Incentive Plan (the \u201c2016 Plan\u201d). The total number of shares available for the grant of either stock options or compensation stock under the 2016 Plan was initially set at 166,667 shares, subject to adjustment. On January 1, 2017 and pursuant to the plan provisions, the number of shares available for grant under the 2016 Plan reset to 307,139 shares, equal to 8% of the number of outstanding shares of the Company\u2019s capital stock, calculated on an as-converted basis, on December 31 of the preceding calendar year. On October 18, 2017, the Board of Directors approved amendments to the 2016 Plan to (i) increase the number of shares of the common stock that may be issued under the 2016 Plan (the \u201cAggregate Limit\u201d) by an additional 192,861 shares of common stock, for a total of 500,000 shares of common stock, (ii) increase the number of shares of common stock that may be granted to any participant pursuant to options to purchase common stock and stock appreciation rights under the 2016 Plan in any one year period (the \u201cIndividual Option Limit\u201d) from 8,333 shares to 200,000 shares, (iii) increase the number of shares of common stock that may be granted to any participant pursuant to other awards (the \u201cIndividual Award Limit\u201d) under the 2016 Plan in any one year period from 8,333 shares to 200,000 shares and (iv) increase the number of shares of common stock that may be paid to any one participant under the 2016 Plan for a performance period pursuant to performance compensation awards under the 2016 Plan (the \u201cIndividual Performance Award Limit\u201d) from 8,333 shares to 200,000 shares, which amendments were adopted and approved at the December 2017 meeting of stockholders. On January 1, 2018, pursuant to the plan provisions, the number of shares available for grant under the 2016 Plan further reset to 1,131,880 shares. The exercise price per share of each stock option shall not be less than 100 percent of the fair market value of the Company\u2019s common stock on the date of grant. At December 31, 2018, there were 904,249 options and 225,780 restricted stock units (\u201cRSUs\u201d) issued under the 2016 Plan, with vesting schedules varying between immediate and five (5) years from the grant date.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2152,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 70
+    },
+    "after": {
+     "line": 2188,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 71
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\n\n\nNumber",
+     "",
+     "Description of Document"
+    ],
+    [
+     "3.1",
+     "",
+     "Amended and Restated Articles of Incorporation of the Registrant, as presently in effect, filed as Exhibit 3.1 to the Registration Statement on Form S-1 filed on November 14, 2011 (File No. 333-177918) and incorporated by reference herein."
+    ],
+    [
+     "3.2",
+     "",
+     "Articles of Merger, filed as Exhibit 2.1 to the Registrant\u2019s Current Report on Form 8-K dated November 19, 2014 and filed on November 25, 2019 and incorporated by reference herein."
+    ],
+    [
+     "3.3",
+     "",
+     "Certificate of Designation \u2013 Series A Preferred Stock, filed as Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K dated March 9, 2016 and filed on March 11, 2016 and incorporated by reference herein."
+    ],
+    [
+     "3.4",
+     "",
+     "Amendment to Certificate of Designation After Issuance of Class or Series, filed as Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K dated June 1, 2016 and filed on June 9, 2016 and incorporated by reference herein."
+    ],
+    [
+     "3.5",
+     "",
+     "Certificate of Change, filed as Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K dated October 6, 2016 and filed on October 11, 2016 and incorporated by reference herein."
+    ],
+    [
+     "3.6",
+     "",
+     "Certificate of Change, filed as Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K dated June 14, 2017 and filed on June 15, 2017 and incorporated by reference herein."
+    ],
+    [
+     "3.7",
+     "",
+     "Amended and Restated Bylaws of the Registrant, filed as Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K dated October 13, 2016 and filed on October 19, 2016 and incorporated by reference herein."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2237,
+    "end_line": 2257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "We have implemented pre-approval policies and procedures related to the provision of audit and non-audit services. Under these procedures, our audit committee pre-approves all services to be provided by M&K LLP and the estimated fees related to these services.\nAll audit, audit related, and tax services were pre-approved by the audit committee, which concluded that the provision of such services by M&K LLP was compatible with the maintenance of that firm\u2019s independence in the conduct of its auditing functions. Our pre-approval policies and procedures provide for the audit committee\u2019s pre-approval of specifically described audit, audit-related, and tax services on an annual basis, but individual engagements anticipated to exceed pre-established thresholds must be separately approved. The policies and procedures also require specific approval by the audit committee if total fees for audit-related and tax services would exceed total fees for audit services in any fiscal year. The policies and procedures authorize the audit committee to delegate to one or more of its members pre-approval authority with respect to permitted services.\nItem 15. EXHIBITS.\n(a) Exhibits\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2216,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 2258,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "4.1",
+     "",
+     "Form of the Registrant\u2019s common stock certificate, filed as Exhibit 4.1 to Amendment No. 2 to Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-215848) (the \u201c2017 S-1 Registration Statement\u201d) filed on July 7, 2017 and incorporated by reference herein."
+    ],
+    [
+     "4.3",
+     "",
+     "Form of Warrant to purchase common stock (included as Exhibit A to Exhibit 4.2), filed as Exhibit 4.2 to the Registrant\u2019s Current Report on Form 8-K filed on July 7, 2016 and incorporated by reference herein."
+    ],
+    [
+     "4.4",
+     "",
+     "Common Stock Purchase Warrant, filed as Exhibit 4.3 to the Registrant\u2019s Current Report on Form 8-K filed on August 10, 2017 and incorporated by reference herein."
+    ],
+    [
+     "4.5",
+     "",
+     "Form of Underwriter Warrant, filed as Exhibit 4.1 to the Registrant\u2019s Current Report on Form 8-K filed on November 21, 2018 and incorporated by reference herein."
+    ],
+    [
+     "10.1+",
+     "",
+     "Eastside Distilling, Inc. 2016 Equity Incentive Plan, filed as Exhibit 99.1 to the Registrant\u2019s Registration Statement on Form S-8 filed on February 28, 2019 and incorporated by reference herein."
+    ],
+    [
+     "10.5+",
+     "",
+     "Employment Agreement dated October 5, 2015 between Steven Shum and the Registrant, filed as Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K dated October 1, 2015 and filed on October 6, 2015 and incorporated by reference herein."
+    ],
+    [
+     "10.6+",
+     "",
+     "First Amendment to Employment Agreement dated November 4,2016 between Steven Shum and the Registrant, filed as Exhibit 10.2 to the Registrant\u2019s Current Report on Form 8-K dated November 4, 2016 and filed on November 10, 2016 and incorporated by reference herein."
+    ],
+    [
+     "10.7+",
+     "",
+     "Employment Agreement dated February 27, 2015 between Melissa Heim and the Registrant, filed as Exhibit 10.7 to the Registrant\u2019s 2017 Registration Statement, filed on February 1, 2017 and incorporated by reference herein."
+    ],
+    [
+     "10.8",
+     "",
+     "Lease Agreement dated February 1st, 2017 between NW Flex Space LLC and the Registrant *"
+    ],
+    [
+     "10.9",
+     "",
+     "Lease Amendment dated October 30, 2018 between NW Flex Space LLC and the Registrant *"
+    ],
+    [
+     "10.10",
+     "",
+     "Lease Agreement dated September 21, 2017 between Eastbank Commerce Center, LLC and the Registrant *"
+    ],
+    [
+     "10.14",
+     "",
+     "Purchase and Assignment of Membership Interests, Assumption of Obligations, Agreement to be Bound by Limited Liability Company Agreement and Admission of Substituted Member among the Registrant, Allen Barteld and MotherLode, LLC, dated as of March 8, 2017, filed as Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K and filed on March 14, 2017 and incorporated by reference herein."
+    ],
+    [
+     "10.16",
+     "",
+     "Employment Agreement between the Registrant and Jarrett Catalani dated as of July 1, 2017, filed as Exhibit 10.16 to Amendment No. 3 to the Registrant\u2019s 2017 Registration Statement, filed on July 21, 2017 and incorporated by reference herein."
+    ],
+    [
+     "10.17",
+     "",
+     "Underwriting Agreement between the Registrant and Roth Capital Partners, as representative of the several underwriters, dated August 10, 2017, filed as Exhibit 1.1 to the Registrant\u2019s Current Report on Form 8-K, filed on August 10, 2017 and incorporated by reference herein."
+    ],
+    [
+     "10.18",
+     "",
+     "Amended and Restated Redneck Riviera License Agreement dated May 31, 2018, filed as Exhibit 10.2 to the Registrant\u2019s Quarterly Report on Form 10-Q, filed on August 13, 2018 and incorporated by reference herein. **"
+    ],
+    [
+     "10.19",
+     "",
+     "Form of Eastside Distilling, Inc. 5% Promissory Note dated March 2018*"
+    ],
+    [
+     "10.20",
+     "",
+     "Credit and Security Agreement dated May 10, 2018 between the Registrant and the KFK Children\u2019s Trust - Jeffrey Anderson - Trustee, filed as Exhibit 10.1 to the Registrant\u2019s Quarterly Report on Form 10-Q, filed on May 14, 2018 and incorporated by reference herein."
+    ],
+    [
+     "10.21",
+     "",
+     "Underwriting Agreement, dated November 20, 2018 between the Registrant and Roth Capital Partners, LLC as representative of the underwriters set forth on Schedule I thereto, filed as Exhibit 1.1 to the Registrant\u2019s Current Report on Form 8-K, filed on November 21, 2018 and incorporated by reference herein."
+    ],
+    [
+     "10.22",
+     "",
+     "Merger Agreement, dated January 11, 2019 between the Registrant, Craft Acquisition Co LLC, Craft Canning LLC, Owen Lingley, and the other parties thereto, filed as Exhibit 1.1 to the Registrant\u2019s Current Report on Form 8-K, filed on January 14, 2019 and incorporated by reference herein."
+    ],
+    [
+     "10.23+",
+     "",
+     "Amended and Restated Employment Agreement with Robert Manfredonia *"
+    ],
+    [
+     "14",
+     "",
+     "Code of Ethics, filed as Exhibit 14 to the Registration Statement on Form S-1 (File No. 333-202033), filed on February 11, 2015 and incorporated by reference herein."
+    ],
+    [
+     "21.1",
+     "",
+     "Subsidiaries of the Registrant *"
+    ],
+    [
+     "23.2",
+     "",
+     "Consent of M&K CPAS, PLLC, independent registered public accounting firm.*"
+    ],
+    [
+     "31.1",
+     "",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a).*"
+    ],
+    [
+     "31.2",
+     "",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a).*"
+    ],
+    [
+     "32.1",
+     "",
+     "Certification of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2259,
+    "end_line": 2302
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "101.INS* XBRL Instance Document 101.SCH* XBRL Taxonomy Schema Linkbase Document 101.CAL* XBRL Taxonomy Calculation Linkbase Document 101.DEF* XBRL Taxonomy Definition Linkbase Document 101.LAB* XBRL Taxonomy Labels Linkbase Document 101.PRE* XBRL Taxonomy Presentation Linkbase Document",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2258,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 74
+    },
+    "after": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 75
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "*\n\n\n\n**",
+     "Filed herewith.\n\n\n\nConfidential status has been requested for certain portions of this exhibit pursuant to a Confidential Treatment Request filed April 2, 2017. Such provisions have been separately filed with the Commission."
+    ],
+    [
+     "+",
+     "Indicates a management contract or compensatory plan."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2305,
+    "end_line": 2312
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "101.INS* XBRL Instance Document 101.SCH* XBRL Taxonomy Schema Linkbase Document 101.CAL* XBRL Taxonomy Calculation Linkbase Document 101.DEF* XBRL Taxonomy Definition Linkbase Document 101.LAB* XBRL Taxonomy Labels Linkbase Document 101.PRE* XBRL Taxonomy Presentation Linkbase Document",
+   "prose_after": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant caused this amended report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2258,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 74
+    },
+    "after": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 75
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "EASTSIDE DISTILLING, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Grover Wickersham"
+    ],
+    [
+     "",
+     "Grover Wickersham"
+    ],
+    [
+     "",
+     "Chief Executive Officer, Director"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Steve Shum"
+    ],
+    [
+     "",
+     "Steve Shum"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "EASTSIDE DISTILLING, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2318,
+    "end_line": 2333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant caused this amended report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this amended report has been signed below by the following persons on behalf of the registrant and in the capacities indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 2374,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Grover Wickersham",
+     "Chief Executive Officer,",
+     "March 28, 2019"
+    ],
+    [
+     "Grover Wickersham",
+     "and Director",
+     ""
+    ],
+    [
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Steve Shum",
+     "Chief Financial Officer",
+     "March 28, 2019"
+    ],
+    [
+     "Steve Shum",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Mick Fleming",
+     "Director",
+     "March 28, 2019"
+    ],
+    [
+     "Mick Fleming",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Trent Davis",
+     "Director",
+     "March 28, 2019"
+    ],
+    [
+     "Trent Davis",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Matthew Szot",
+     "Director",
+     "March 28, 2019"
+    ],
+    [
+     "Matthew Szot",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Patrick Crowley",
+     "Director",
+     "March 28, 2019"
+    ],
+    [
+     "Patrick Crowley",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ David Holmes",
+     "Director",
+     "March 28, 2019"
+    ],
+    [
+     "David Holmes",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jack Peterson",
+     "Director",
+     "March 28, 2019"
+    ],
+    [
+     "Jack Peterson",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2336,
+    "end_line": 2373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, as amended, this amended report has been signed below by the following persons on behalf of the registrant and in the capacities indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2313,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 75
+    },
+    "after": {
+     "line": 2374,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 76
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

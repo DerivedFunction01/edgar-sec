@@ -1,0 +1,1329 @@
+{
+ "accession": "0001571804-14-000015",
+ "cik": "0001571804",
+ "form": "10-K",
+ "filing_date": "2014-04-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "10_kanytrans.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada\n\n\n\n(State or Other Jurisdiction of Incorporation or Organization)",
+     "7380\n\n\n\n (Primary Standard Industrial Classification Number)",
+     "98-1060941\n\n\n\n (IRS Employer\n\n\n\nIdentification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "_________________________\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended January 31, 2014\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15 (d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ----------------- to -----------------\nCommission File No. 333-188358\n________________________\nAnyTranslation Corp.\n(Name of small business issuer in its charter)",
+   "prose_after": "2620 S. Maryland Parkway #14-857\nLas Vegas, NV\n89109 (702) 997-2269\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\n____________________________\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for shorter period that the registrant as required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART 1",
+     ""
+    ],
+    [
+     "ITEM 1",
+     "Description of Business",
+     "4"
+    ],
+    [
+     "ITEM 1A",
+     "Risk Factors",
+     "5"
+    ],
+    [
+     "ITEM 2",
+     "Description of Property",
+     "5"
+    ],
+    [
+     "ITEM 3",
+     "Legal Proceedings",
+     "5"
+    ],
+    [
+     "ITEM 4",
+     "Mine Safety Disclosures",
+     "5"
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "ITEM 5",
+     "Market for Common Equity and Related Stockholder Matters",
+     "6"
+    ],
+    [
+     "ITEM 6",
+     "Selected Financial Data",
+     "6"
+    ],
+    [
+     "ITEM 7",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "6"
+    ],
+    [
+     "ITEM 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "8"
+    ],
+    [
+     "ITEM 8",
+     "Financial Statements and Supplementary Data",
+     "8"
+    ],
+    [
+     "ITEM 9",
+     "Changes In and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "18"
+    ],
+    [
+     "ITEM 9A (T)",
+     "Controls and Procedures",
+     "18"
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "ITEM 10",
+     "Directors, Executive Officers, Promoters and Control Persons of the Company",
+     "18"
+    ],
+    [
+     "ITEM 11",
+     "Executive Compensation",
+     "19"
+    ],
+    [
+     "ITEM 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "20"
+    ],
+    [
+     "ITEM 13",
+     "Certain Relationships and Related Transactions",
+     "20"
+    ],
+    [
+     "ITEM 14",
+     "Principal Accountant Fees and Services",
+     "20"
+    ],
+    [
+     "",
+     "PART IV",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "Exhibits",
+     "21"
+    ]
+   ],
+   "caption_stack": [
+    "PART 1"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 69,
+    "end_line": 116
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for shorter period that the registrant as required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of registrant's knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K. Yes [ ] No [X]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \"accelerated filer and large accelerated filer\" in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ] Accelerated filer [ ]\nNon-accelerated filer [ ] Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act) Yes [X] No [ ]\nAs of April 30, 2014, there were 6,079,000 shares of Common Stock of the issuer outstanding.\nTABLE OF CONTENTS",
+   "prose_after": "PART I\nItem 1. Description of Business\nFORWARD-LOOKING STATEMENTS\nThis annual report contains forward-looking statements. These statements relate to future events or our future financial performance. These statements often can be identified by the use of terms such as \"may,\" \"will,\" \"expect,\" \"believe,\" \"anticipate,\" \"estimate,\" \"approximate\" or \"continue,\" or the negative thereof. We intend that such forward-looking statements be subject to the safe harbors for such statements. We wish to caution readers not to place undue reliance on any such forward-looking statements, which speak only as of the date made. Any forward-looking statements represent management's best judgment as to what may occur in the future. However, forward-looking statements are subject to risks, uncertainties and important factors beyond our control that could cause actual results and events to differ materially from historical results of operations and events and those presently anticipated or projected. We disclaim any obligation subsequently to revise any forward-looking statements to reflect events or circumstances after the date of such statement or to reflect the occurrence of anticipated or unanticipated events.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "2014",
+     "2013"
+    ],
+    [
+     "Current Assets",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$\n\n\n\n20,009",
+     "$\n\n\n\n2,879"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$\n\n\n\n20,009",
+     "$\n\n\n\n2,879"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Advances from director",
+     "$\n\n\n\n  5,678",
+     "$\n\n\n\n678"
+    ],
+    [
+     "Total current liabilities",
+     "5,678",
+     "678"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "5,678",
+     "678"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001; 75,000,000 shares authorized, 6,079,000 and 5,000,000 shares issued and outstanding, respectively",
+     "6,079",
+     "5,000"
+    ],
+    [
+     "Additional paid in capital",
+     "20,501",
+     "-"
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "(12,249)",
+     "(2,799)"
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "14,331",
+     "2,201"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$\n\n\n\n20,009",
+     "$\n\n\n\n2,879"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 391,
+    "end_line": 433
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LANGUAGES"
+    }
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of AnyTranslation Corp. as of January 31, 2014 and 2013, and the results of its operations and its cash flows for the year ended January 31, 2014 and for the periods from July 5, 2012 (Inception) through January 31, 2014 and 2013 in conformity with accounting principles generally accepted in the United States of America.\nAs discussed in Note 7 to the financial statements, the Company's absence of significant revenues, recurring losses from operations, and its need for additional financing in order to fund its projected loss in 2015 raise substantial doubt about its ability to continue as a going concern. The 2014 financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ LBB & Associates Ltd., LLP\nLBB & Associates Ltd., LLP\nHouston, Texas\nApril 28, 2014\nBALANCE SHEETS\nAS OF JANUARY 31, 2014 AND 2013",
+   "prose_after": "STATEMENTS OF OPERATIONS\nFOR THE YEAR ENDED JANUARY 31, 2014\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2013\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2014",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 434,
+     "token": "REPEATING_FOOTER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended January 31, 2014",
+     "Period from July 5, 2012 (Inception) to January 31, 2013",
+     "Period from July 5, 2012 (Inception) to January 31, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$\n\n\n\n3,990",
+     "$\n\n\n\n-",
+     "$\n\n\n\n3,990"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General expenses",
+     "13,440",
+     "2,799",
+     "16,239"
+    ],
+    [
+     "TOTAL OPERATING EXPENSES",
+     "13,440",
+     "2,799",
+     "16,239"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$\n\n\n\n(9,450)",
+     "$\n\n\n\n(2,799)",
+     "$\n\n\n\n(12,249)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS PER SHARE: BASIC AND DILUTED",
+     "$\n\n\n\n(0.00)",
+     "$\n\n\n\n(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF SHARES OUTSTANDING: BASIC AND DILUTED",
+     "5,151,532",
+     "4,738,095",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 448,
+    "end_line": 477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LANGUAGES"
+    }
+   },
+   "prose_before": "STATEMENTS OF OPERATIONS\nFOR THE YEAR ENDED JANUARY 31, 2014\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2013\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2014",
+   "prose_after": "See accompanying notes to financial statements\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2014",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 438,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "  Additional Paid-in",
+     "Deficit Accumulated during the Development",
+     "Total Stockholders\u2019"
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "Capital",
+     "Stage",
+     "Equity"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inception, July 5, 2012",
+     "-",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for cash at $0.001 per share",
+     "5,000,000",
+     "5,000",
+     "-",
+     "-",
+     "5,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "(2,799)",
+     "(2,799)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 31, 2013",
+     "5,000,000",
+     "5,000",
+     "-",
+     "(2,799)",
+     "2,201"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued for cash at $0.02 per share",
+     "1,079,000",
+     "1,079",
+     "20,501",
+     "-",
+     "21,580"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "-",
+     "-",
+     "-",
+     "(9,450)",
+     "(9,450)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 31, 2014",
+     "6,079,000",
+     "$\n\n\n\n6,079",
+     "$\n\n\n\n20,501",
+     "$\n\n\n\n(12,249)",
+     "$\n\n\n\n14,331"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 488,
+    "end_line": 516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LANGUAGES"
+    }
+   },
+   "prose_before": "See accompanying notes to financial statements\nSTATEMENTS OF STOCKHOLDERS\u2019 EQUITY\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2014",
+   "prose_after": "STATEMENTS OF CASH FLOWS\nFOR THE YEAR ENDED JANUARY 31, 2014\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2013\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2014",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 482,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 517,
+     "token": "REPEATING_FOOTER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended January 31, 2014",
+     "Period from July 5, 2012 (Inception) to January 31, 2013",
+     "Period from July 5, 2012 (Inception) to January 31, 2014"
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$\n\n\n\n(9,450)",
+     "$\n\n\n\n(2,799)",
+     "$\n\n\n\n(12,249)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash (used in) operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities: None",
+     "-",
+     "-",
+     "-"
+    ],
+    [
+     "Net Cash Used in Operating Activities",
+     "(9,450)",
+     "(2,799)",
+     "(12,249)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "21,580",
+     "5,000",
+     "26,580"
+    ],
+    [
+     "Proceeds from advances from director",
+     "5,000",
+     "678",
+     "5,678"
+    ],
+    [
+     "Net Cash Provided by Financing Activities",
+     "26,580",
+     "5,678",
+     "32,258"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase in Cash",
+     "17,130",
+     "2,879",
+     "20,009"
+    ],
+    [
+     "Cash, beginning of period",
+     "2,879",
+     "-",
+     "-"
+    ],
+    [
+     "Cash, end of period",
+     "$\n\n\n\n20,009",
+     "$\n\n\n\n2,879",
+     "$\n\n\n\n20,009"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest paid",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-"
+    ],
+    [
+     "Income taxes paid",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-",
+     "$\n\n\n\n-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 531,
+    "end_line": 570
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "LANGUAGES"
+    }
+   },
+   "prose_before": "STATEMENTS OF CASH FLOWS\nFOR THE YEAR ENDED JANUARY 31, 2014\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2013\nFOR THE PERIOD FROM JULY 5, 2012 (INCEPTION) TO JANUARY 31, 2014",
+   "prose_after": "NOTES TO THE FINANCIAL STATEMENTS\nJANUARY 31, 2014\nNOTE 1 \u2013 ORGANIZATION AND NATURE OF BUSINESS\nAnyTranslation Corp. (the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada on July 5, 2012. We are in the business of translation and interpretation. The Company will undertake translation and interpretation projects for various fields from business, economics, to science issues. All operating projects are customer tailored with freelancers that operate in their mother tongue.\nNOTE 2 \u2013 SUMMARY OF SIGNIFCANT ACCOUNTING POLICIES\nDevelopment Stage Company\nThe accompanying financial statements have been prepared in accordance with generally accepted accounting principles related to development stage companies. A development-stage company is one in which planned principal operations have not commenced or if its operations have commenced, there has been no significant revenues there from.\nBasis of Presentation\nThe financial statements of the Company have been prepared in accordance with generally accepted accounting principles in the United States of America and are presented in US dollars.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 571,
+     "token": "REPEATING_FOOTER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "2013"
+    ],
+    [
+     "Federal income tax benefit attributable to:",
+     "",
+     ""
+    ],
+    [
+     "Current Operations",
+     "$         3,213",
+     "$         950"
+    ],
+    [
+     "Less: valuation allowance",
+     "(3,213)",
+     "(950)"
+    ],
+    [
+     "Net provision for Federal income taxes",
+     "$                -",
+     "$                -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 661,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The Company neither owns nor leases any real or personal property. An officer has provided office services without charge. There is no obligation for the officer to continue this arrangement. Such costs are immaterial to the financial statements and accordingly are not reflected herein. The officers and directors are involved in other business activities and most likely will become involved in other business activities in the future.\nNOTE 6 \u2013 INCOME TAXES\nAs of January 31, 2014, the Company had net operating loss carry forwards of approximately $12,000 that may be available to reduce future years\u2019 taxable income in varying amounts through 2034. Future tax benefits which may arise as a result of these losses have not been recognized in these financial statements, as their realization is determined not likely to occur and accordingly, the Company has recorded a valuation allowance for the deferred tax asset relating to these tax loss carry-forwards.\nThe provision for Federal income tax consists of the following for the periods ended January 31:",
+   "prose_after": "The cumulative tax effect at the expected rate of 34% of significant items comprising our net deferred tax amount is as follows as of January 31:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 653,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2014",
+     "2013"
+    ],
+    [
+     "Deferred tax asset attributable to:",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryover",
+     "$         4,163",
+     "$         950"
+    ],
+    [
+     "Less: valuation allowance",
+     "(4,163)",
+     "(950)"
+    ],
+    [
+     "Net deferred tax asset",
+     "$                -",
+     "$                -"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 INCOME TAXES"
+    }
+   },
+   "prose_before": "The cumulative tax effect at the expected rate of 34% of significant items comprising our net deferred tax amount is as follows as of January 31:",
+   "prose_after": "The Company\u2019s net operating loss carry forwards of approximately $12,000, for Federal income tax reporting purposes, are subject to annual limitations, which will start to expire in 2034. Should a change in ownership occur, net operating loss carry forwards may be limited to use in future years.\nNOTE 7 \u2013 GOING CONCERN\nThe financial statements have been prepared on a going concern basis which assumes the Company will be able to realize its assets and discharge its liabilities in the normal course of business for the foreseeable future. The Company has incurred losses since Inception (July 5, 2012) resulting in an accumulated deficit of $12,249 as of January 31, 2014 and further losses are anticipated in the development of its business raising substantial doubt about the Company\u2019s ability to continue as a going concern. The ability to continue as a going concern is dependent upon the Company generating profitable operations in the future and, or, to obtain the necessary financing to meet its obligations and repay its liabilities arising from normal business operations when they come due. Management intends to finance operating costs over the next twelve months with existing cash on hand and loans from directors and, or, private placement of common stock. These financials do not include any adjustments relating to the recoverability and reclassification of recorded asset amounts, or amounts and classifications of liabilities that might result from this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 653,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 695,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Executive\n\n\n\n   Officer and/or Director",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrei Catalin Ispas\n\n\n\n2620 S Maryland Parkway, #14-857, Las Vegas, NV, 89109",
+     "",
+     "34",
+     "",
+     "President, Secretary, Treasurer and Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 739,
+    "end_line": 749
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters and Control Persons of the Company"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONCENTRATIONS OF CREDIT RISK"
+    }
+   },
+   "prose_before": "Changes in Internal Control over Financial Reporting\nThere has been no change in our internal control over financial reporting identified in connection with our evaluation we conducted of the effectiveness of our internal control over financial reporting as of January 31, 2014, that occurred during our fourth fiscal quarter that has materially affected, or is reasonably likely to materially affect, our internal control over financial reporting.\nThis annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to temporary rules of the SEC that permit the Company to provide only management\u2019s report in this annual report.\nPART III\nItem 10. Directors, Executive Officers, Promoters and Control Persons of the Company\nDIRECTORS AND EXECUTIVE OFFICERS\nThe name, address and position of our present officers and directors are set forth below:",
+   "prose_after": "The following is a brief description of the business experience of our executive officers, director and significant employees:\nAndrei Catalin Ispas has acted as our President, Secretary, Treasurer and sole Director since our incorporation on July 5, 2012. Our president will be devoting approximately 40% of his business time to our operations. Once we expand operations, and are able to attract more customers to purchase our services, Mr. Ispas has agreed to commit more time as required. Because Mr. Ispas will only be devoting limited time to our operations, our operations may be sporadic and occur at times which are convenient to him. As a result, operations may be periodically interrupted or suspended which could result in a lack of revenues and a cessation of operations.\nOur Director\u2019s Biography\nCatalin Ispas has studied languages, from 1993 to 1996, at the Scoala Profesionala Dimitrie Ghika. From 2002 to 2011, specializing in German, French and Romanian, he has worked as an independent translator in the field of translation of official immigration documents in his native city of Comanesti, Romania.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and \n\n\n\nPrincipal\n\n\n\nPosition",
+     "Year",
+     "Salary\n\n\n\n($)",
+     "",
+     "Bonus\n\n\n\n($)",
+     "",
+     "Stock\n\n\n\nAwards\n\n\n\n($)",
+     "",
+     "Option\n\n\n\nAwards\n\n\n\n($)",
+     "",
+     "Non-Equity\n\n\n\nIncentive Plan\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "Nonqualified\n\n\n\nDeferred\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "All Other\n\n\n\nCompensation\n\n\n\n($)",
+     "",
+     "Total\n\n\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrei Catalin Ispas, President, Treasurer and Secretary",
+     "July 5, 2012to January 31, 2013",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 780,
+    "end_line": 793
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONCENTRATIONS OF CREDIT RISK"
+    }
+   },
+   "prose_before": "Mr. Ispas\u2019s experience and training as a translator, and his in our business as its founder, has led to our conclusion that Mr. Ispas should be serving as a member of our board of director in light of our business and structure.\nCOMMITTEES OF THE BOARD OF DIRECTORS\nOur Board of Directors has no committees. We do not have a standing nominating, compensation or audit committee.\nSIGNIFICANT EMPLOYEES\nWe have no employees. Our sole officer and director, Andrei Catalin Ispas, is an independent contractor to us and currently devotes approximately twenty hours per week to company matters. After receiving funding pursuant to our business plan, Mr. Ispas intends to devote as much time as the Board of Directors deems necessary to manage the affairs of the company.\nItem 12.\nEXECUTIVE COMPENSATION\nThe following tables set forth certain information about compensation paid, earned or accrued for services by our President, and Secretary and all other executive officers (collectively, the \u201cNamed Executive Officers\u201d) from inception on July 5, 2012 until January 31, 2014:\nSummary Compensation Table",
+   "prose_after": "There are no current employment agreements between the company and its officers.\nItem 13. Certain Relationships and Related Transactions\nDuring the year ended January 31, 2014, we had not entered into any transactions with our sole officer or director, or persons nominated for these positions, beneficial owners of 5% or more of our common stock, or family members of these persons wherein the amount involved in the transaction or a series of similar transactions exceeded the lesser of $120,000 or 1% of the average of our total assets for the last three fiscal years.\nItem 14. Principal Accountant Fees and Services\nDuring fiscal year ended January 31, 2013, we paid $2,000 in fees to our principal independent accountants for professional services rendered in connection with the audit of our financial statements.\nDuring fiscal year ended January 31, 2014, we paid $9,531 in fees to our principal independent accountants for professional services rendered in connection with the audit of our fiscal year end financial statements and quarterly reviews.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 758,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 796,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "",
+     "Title",
+     "",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Andrei Catalin Ispas",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Andrei Catalin Ispas",
+     "",
+     "President, Treasurer, Secretary and Director",
+     "",
+     "April 30, 2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 842
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 CONCENTRATIONS OF CREDIT RISK"
+    }
+   },
+   "prose_before": "The following exhibits are filed as part of this Annual Report.\nExhibits:\n31.1\nCertification of Chief Executive Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act\n31.2\nCertification of Chief Financial Officer pursuant to Section 302(a) of the Sarbanes-Oxley Act\n32.1\nCertification of Chief Executive Officer and Chief Financial Officer Under Section 1350 as Adopted Pursuant Section 906 of the Sarbanes-Oxley Act\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 828,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 843,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

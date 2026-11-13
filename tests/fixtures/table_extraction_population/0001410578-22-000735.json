@@ -1,0 +1,3324 @@
+{
+ "accession": "0001410578-22-000735",
+ "cik": "0001853021",
+ "form": "10-K",
+ "filing_date": "2022-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "mtal-20211231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cayman Islands",
+     "98-1589041"
+    ],
+    [
+     "(State or Other Jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "Incorporation or Organization)",
+     "Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number 001-40685\nMETALS ACQUISITION CORP\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "425 Houston Street, Suite 400 Fort Worth, TX",
+     "76102"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(817) 698-9901\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Each Class",
+     "Trading Symbol(s)",
+     "Name of each Exchange on which Registered"
+    ],
+    [
+     "Units, each consisting of one Class A ordinary share, $0.0001 par value, and one-third of one redeemable warrant",
+     "MTAL.U",
+     "New York Stock Exchange"
+    ],
+    [
+     "Class A ordinary shares included as part of the units",
+     "MTAL",
+     "New York Stock Exchange"
+    ],
+    [
+     "Redeemable warrants included as part of the units, each whole warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+     "MTAL WS",
+     "New York Stock Exchange"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(817) 698-9901\n(Registrant\u2019s Telephone Number, Including Area Code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes \u25fb No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. Yes \u25fb No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Exchange Act of 1934 during the past 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. Yes [X] No \u25fb\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No \u25fb\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "2"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "26"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "61"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "61"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "61"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "61"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "62"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Shareholder Matters and Issuer Purchases of Equity Securities",
+     "62"
+    ],
+    [
+     "Item 6.",
+     "[RESERVED]",
+     "64"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "64"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "70"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "70"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosures",
+     "71"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "71"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "72"
+    ],
+    [
+     "Item 9C.",
+     "Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "72"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "73"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "73"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "79"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters",
+     "79"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "84"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "85"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "87"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "87"
+    ],
+    [
+     "Item 16.",
+     "Form 10-K Summary",
+     "89"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 84,
+    "end_line": 119
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u25fb\nIndicate by check mark whether the registrant has filed a report on and attestation to its management's assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. \u25fb\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No \u25fb\nAs of June 30, 2021, the last business day of the registrant's most recently completed second fiscal quarter, the registrant's Class A ordinary shares were not publicly traded. Accordingly, there was no market value for the registrant's Class A ordinary shares on such date.\nAs of March 31, 2022, 26,514,780 Class A ordinary shares, par value $0.0001 per share, and 6,628,695 Class B ordinary shares, par value $0.0001 per share, were issued and outstanding, respectively.\nDocuments Incorporated by Reference:\nNone.\nFORM 10-K\nTABLE OF CONTENTS",
+   "prose_after": "1\nPART I\nItem 1.Business.\nIn this Annual Report on Form 10-K (the \u201cForm 10-K\u201d), references to \u201cMetals\u201d or the \u201cCompany\u201d and to \u201cwe,\u201d \u201cus\u201d and \u201cour\u201d refer to Metals Acquisition Corp.\nCompany Overview\nWe are a blank check company incorporated in the Cayman Islands on March 11, 2021 for the purpose of effecting a merger, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses (the \u201cBusiness Combination\u201d). Our Sponsor is Green Mountain Metals LLC, a Delaware limited liability company (the \u201cSponsor\u201d).\nWhile we may pursue an initial business combination target in any industry or geographic region, we intend to focus our search on green-economy-focused metals and mining businesses in high quality, stable jurisdictions that would benefit from access to the deep and highly-liquid U.S. public markets along with the additional capital that may be secured through those markets to unlock value. Our team\u2019s strong M&A and operational backgrounds will enable our company to identify and execute on value accretive transactions for our shareholders.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 121,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class A ordinary shares held by public shareholders",
+     "",
+     "",
+     "26,514,780",
+     "shares"
+    ],
+    [
+     "Class B ordinary shares held by our sponsor",
+     "",
+     "",
+     "6,628,695",
+     "shares"
+    ],
+    [
+     "Total ordinary shares",
+     "",
+     "",
+     "33,143,475",
+     "shares"
+    ],
+    [
+     "Total funds in trust at the initial business combination",
+     "",
+     "$",
+     "265,147,800",
+     ""
+    ],
+    [
+     "Public shareholders\u2019 investment per Class A ordinary share (1)",
+     "",
+     "$",
+     "10.00",
+     ""
+    ],
+    [
+     "Our sponsor\u2019s investment per Class B ordinary share (2)",
+     "",
+     "$",
+     "0.003",
+     ""
+    ],
+    [
+     "Implied value per Class A ordinary share upon the initial business combination (3)",
+     "",
+     "$",
+     "8.00",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 882,
+    "end_line": 891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors."
+    },
+    "note": null
+   },
+   "prose_before": "The following table shows the public shareholders\u2019 and our sponsor\u2019s investment per share and how these compare to the implied value of one Class A ordinary share upon the completion of our initial business combination. The following table assumes that (i) our valuation is $265,147,800 (which is the amount we have in the trust account from our initial business combination), (ii) no interest is earned on the funds held in the trust account, (iii) no public shares are redeemed in connection with our initial business combination and (iv) all founder shares are held by our initial shareholders upon completion of our initial business combination, and does not take into account other potential impacts on our valuation at the time of the initial business combination such as (i) the value of our public and private placement warrants, (ii) the trading price of our Class A ordinary shares, (iii) the initial business combination transaction costs\n(including payment of $9,280,173 of deferred underwriting commissions), (iv) any equity issued or cash paid to the target\u2019s sellers, (v) any equity issued to other third party investors, or (vi) the target\u2019s business itself.",
+   "prose_after": "(1) While the public shareholders\u2019 investment is in both the public shares and the public warrants, for purposes of this table, the full investment amount is ascribed to the public shares only.\n(2) The sponsor\u2019s total investment in the equity of the company, inclusive of the founder shares and the sponsor\u2019s $8,302,956 investment in the private placement warrants including the over-allotment, is $8,327,956. For purposes of this table, the full investment amount is ascribed to the founder shares only.\n(3) All founder shares held by our sponsor would automatically convert into Class A ordinary shares upon completion of our initial business combination.\nBased on these assumptions, each Class A ordinary share would have an implied value of $8.00 per share upon completion of our initial business combination, representing a 20% decrease from the initial implied value of $10.00 per public share. While the implied value of $8.00 per Class A ordinary share upon completion of our initial business combination would represent a dilution to our public shareholders, this would represent a significant increase in value for our sponsor relative to the price it paid for each founder share. At $8.00 per Class A ordinary share, the 6,628,695 Class A ordinary shares that the sponsor owns upon completion of our initial business combination (after automatic conversion of the sponsor\u2019s 6,628,695 founder shares) would have an aggregate implied value of $53,029,560. As a result, even if the trading price of our Class A ordinary share significantly declines, the value of the founder shares held by our sponsor will be significantly greater than the amount our sponsor paid to purchase such shares. In addition, our sponsor could potentially recoup its entire investment in our company even if the trading price of our Class A ordinary shares after the initial business combination is as low as $0.038 per share. As a result, our sponsor is likely to earn a substantial profit on its investment in us upon disposition of its Class A ordinary shares even if the trading price of our Class A ordinary shares declines after we complete our initial business combination even if the value of the public shares declines significantly. Our sponsor may therefore be economically incentivized to complete an initial business combination with a riskier, weaker-performing or less-established target business than would be the case if our sponsor had paid the same per share price for the founder shares as our public shareholders paid for their public shares.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 904,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "Michael (Mick) James McMullen",
+     "",
+     "51",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "Marthinus (Jaco) J. Crouse",
+     "",
+     "44",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "Dan Vujcic",
+     "",
+     "43",
+     "",
+     "Chief Development Officer"
+    ],
+    [
+     "Patrice E. Merrin",
+     "",
+     "73",
+     "",
+     "Chair"
+    ],
+    [
+     "Rasmus Kristoffer Gerdeman",
+     "",
+     "46",
+     "",
+     "Director, Audit Chair"
+    ],
+    [
+     "Neville Joseph Power",
+     "",
+     "63",
+     "",
+     "Director"
+    ],
+    [
+     "John Rhett Miles Bennett",
+     "",
+     "40",
+     "",
+     "Director"
+    ],
+    [
+     "Charles D. McConnell",
+     "",
+     "66",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1501,
+    "end_line": 1513
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "There were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) during the most recent fiscal year that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting, as the circumstances that led to the restatement of our previously filed financial statements described above had been identified. In light of the restatement of the previously filed financial statements, we plan to enhance our processes to identify and appropriately apply applicable accounting requirements to better evaluate and understand the nuances of the complex accounting standards that apply to our financial statements. Our plans currently include providing enhanced access to accounting literature, research materials and documents and increased communication among our personnel and third-party professionals with whom we consult regarding complex accounting applications. The elements of our remediation plan can only be accomplished over time, and we can offer no assurance that these initiatives will ultimately have the intended effects.\nItem 9B. Other Information.\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections\nNot applicable.\nPART III\nItem 10.Directors, Executive Officers and Corporate Governance.\nDirectors and Executive Officers\nOur current directors and executive officers are as follows:",
+   "prose_after": "Michael (Mick) James McMullen (CEO and director) brings more than 29 years of senior leadership experience in the exploration, financing, development, and operations of mining companies globally. Mr. McMullen most recently served as the CEO and President at Detour Gold Corporation (\u201cDetour\u201d), a 600,000 ounce per annum gold producer in Canada from May 2019 to January 2020. During his tenure, Mr. McMullen took the market capitalization from C$2.1 billion to C$4.9 billion over 7 months (date of deal announcement), which represented an internal rate of return of 208%, leading to the acquisition by Kirkland Lake Gold Ltd. in 2020. Through his strong technical background and commercial acumen, Mr. McMullen established and led a team that reduced all-in-sustaining costs (\u201cAISC\u201d, a mining metric that estimates all direct and recurring costs required to mine a unit of ore) by approximately US$250/oz over that period in a business that had historically been viewed as an underperforming asset. Mr. McMullen also improved safety performance and repaired relations with its First Nations partners, enabling a large increase in operations to be permitted, which was fundamental to the increase in market value of the company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1492,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Amount",
+     "",
+     "Approximate",
+     ""
+    ],
+    [
+     "",
+     "",
+     "and Nature",
+     "",
+     "Percentage of",
+     ""
+    ],
+    [
+     "",
+     "",
+     "of Beneficial",
+     "",
+     "Outstanding",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owner",
+     "",
+     "Ownership(1)",
+     "",
+     "Ordinary Shares",
+     ""
+    ],
+    [
+     "Green Mountain Metals LLC(2)(3)",
+     "",
+     "6,628,695",
+     "",
+     "20",
+     "%"
+    ],
+    [
+     "Michael James McMullen(2)(4)",
+     "",
+     "410,000",
+     "",
+     "1.2",
+     "%"
+    ],
+    [
+     "Marthinus (Jaco) J. Crouse(2)",
+     "",
+     "75,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Dan Vujcic(2)(5)",
+     "",
+     "100,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Patrice E. Merrin(2)",
+     "",
+     "50,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Rasmus Kristoffer Gerdeman(2)",
+     "",
+     "75,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Neville Joseph Power(2)(6)",
+     "",
+     "50,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "John Rhett Miles Bennett(2)(7)",
+     "",
+     "190,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Charles D. McConnell(2)",
+     "",
+     "50,000",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Capital Management(8)",
+     "",
+     "2,475,000",
+     "",
+     "7.5",
+     "%"
+    ],
+    [
+     "Capital Management GP(8)",
+     "",
+     "2,475,000",
+     "",
+     "7.5",
+     "%"
+    ],
+    [
+     "Management Holdings(8)",
+     "",
+     "2,475,000",
+     "",
+     "7.5",
+     "%"
+    ],
+    [
+     "Management Holdings GP(8)",
+     "",
+     "2,475,000",
+     "",
+     "7.4",
+     "%"
+    ],
+    [
+     "Adage Capital Partners, L.P.(9)",
+     "",
+     "2,250,000",
+     "",
+     "6.8",
+     "%"
+    ],
+    [
+     "Titanium Funding, LLC(10)",
+     "",
+     "2,475,000",
+     "",
+     "7.5",
+     "%"
+    ],
+    [
+     "Atalaya Capital Management LP(11)",
+     "",
+     "2,059,688",
+     "",
+     "6.2",
+     "%"
+    ],
+    [
+     "Polar Asset Management Partners Inc(12)",
+     "",
+     "2,174,058",
+     "",
+     "6.6",
+     "%"
+    ],
+    [
+     "Millennium Management LLC(13)",
+     "",
+     "1,678,338",
+     "",
+     "5.1",
+     "%"
+    ],
+    [
+     "Millennium Group Management LLC(13)",
+     "",
+     "1,678,338",
+     "",
+     "5.1",
+     "%"
+    ],
+    [
+     "Israel A. Englander(13)",
+     "",
+     "1,678,338",
+     "",
+     "5.1",
+     "%"
+    ],
+    [
+     "Wellington Management Group LLP(14)",
+     "",
+     "2,510,689",
+     "",
+     "7.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1657,
+    "end_line": 1685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "Since our formation, we have not granted any shares options or shares appreciation rights or any other awards under long-term incentive plans to any of our executive officers or directors.\nItem 12.Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters.\nThe following table sets forth information regarding the beneficial ownership of our ordinary shares as of March 31, 2022 by:\n\u25cf each person known by us to be the beneficial owner of more than 5% of our outstanding ordinary shares;\n\u25cf each of our officers and directors; and\n\u25cf all of our officers and directors as a group.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all ordinary shares beneficially owned by them. The following table does not reflect record of beneficial ownership of any ordinary shares issuable upon exercise of warrants as such securities are not exercisable or convertible within 60 days. Information based on 33,143,475 ordinary shares outstanding as of March 31, 2022, of which 26,514,780 were Class A ordinary shares and 6,628,695 were Class B ordinary shares.",
+   "prose_after": "* Less than one percent.\n(1) Interests shown include Class A ordinary shares and founder shares, classified as Class B ordinary shares. The Class B ordinary shares will automatically convert into Class A ordinary shares at the time of our initial business combination as described in Exhibit 4.5 \u201cDescription of Registrant's Securities\u201d attached to this Annual Report on Form 10-K.\n(2) The business address of each corresponding entity and individual is 425 Houston Street, Suite 400, Fort Worth, TX 76102.\n(3) The shares reported herein are held in the name of our sponsor. There are three managers of our sponsor\u2019s board of managers, Michael (Mick) James McMullen, John Rhett Miles Bennett, and Ashley Elizabeth Zumwalt-Forbes. Each manager has one vote, and the approval of two of the three members of the board of managers is required to approve an action of our sponsor. Under the so-called \u201crule of three,\u201d if voting and dispositive decisions regarding an entity\u2019s securities are made by two or more individuals, and a voting and dispositive decision requires the approval of a majority of those individuals, then none of the individuals is deemed a beneficial owner of the entity\u2019s securities. This is the situation with regard to our sponsor. Based upon the foregoing analysis, no individual manager of our sponsor exercises voting or dispositive control over any of the securities held by our sponsor, even those in which he directly holds a pecuniary interest. Accordingly, none of them will be deemed to have or share beneficial ownership of such shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1654,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 1692,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Mr. Atchinson nor Mr. Gross directly own any Class A Ordinary Shares. By reason of the provisions of Rule 13d-3 of the Act, each may be deemed to beneficially own the shares beneficially owned by ACP. The address of the business office of each of the Reporting Persons is 200 Clarendon Street, 52nd Floor, Boston, Massachusetts 02116."
+    ]
+   ],
+   "caption_stack": [
+    "Mr. Atchinson nor Mr. Gross directly own any Class A Ordinary Shares. By reason of the provisions of Rule 13d-3 of the Act, each may be deemed to beneficially own the shares beneficially owned by ACP. The address of the business office of each of the Reporting Persons is 200 Clarendon Street, 52nd Floor, Boston, Massachusetts 02116."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1700,
+    "end_line": 1704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "(9) According to Schedule 13G filed with the SEC on August 12, 2021 by Adage Capital Partners, L.P., a Delaware limited partnership (\"ACP\"), Adage Capital Partners GP, L.L.C., a limited liability company organized under the laws of the State of Delaware (\"ACPGP\"), Adage Capital Advisors, L.L.C., a limited liability company organized under the laws of the State of Delaware (\"ACA\"), Robert Atchinson and Phillip Gross (together, the \u201cReporting Persons\u201d). ACP has the power to dispose of and the power to vote the Class A Ordinary Shares beneficially owned by it, which power may be exercised by its general partner, ACPGP. ACA, as managing member of ACPGP, directs ACPGP's operations. Neither ACPGP nor ACA directly own any Class A Ordinary Shares. By reason of the provisions of Rule 13d-3 of the Securities Exchange Act of 1934 (the \"Act\"), ACPGP and ACA may be deemed to beneficially own the shares owned by ACP. Messrs. Atchinson and Gross, as managing members of ACA, have shared power to vote the Class A Ordinary Shares beneficially owned by ACP. Neither",
+   "prose_after": "(10) According to Schedule 13G filed with the SEC on February 14, 2021 by Titanium Funding, LLC, a Delaware limited liability company (\u201cTF LLC\u201d), Farallon Capital Management, L.L.C., a Delaware limited liability company (the \u201cManagement Company\u201d), Philip D. Dreyfuss (\u201cDreyfuss\u201d); Michael B. Fisch (\u201cFisch\u201d); Richard B. Fried (\u201cFried\u201d); Varun N. Gehani (\u201cGehani\u201d); Nicolas Giauque (\u201cGiauque\u201d); David T. Kim (\u201cKim\u201d); Michael G. Linn (\u201cLinn\u201d); Rajiv A. Patel (\u201cPatel\u201d); Thomas G. Roberts, Jr. (\u201cRoberts\u201d); William Seybold (\u201cSeybold\u201d); Andrew J. M. Spokes (\u201cSpokes\u201d); John R. Warren (\u201cWarren\u201d); and Mark C. Wehrly (\u201cWehrly, together with Dreyfuss, Fisch, Fried, Gehani, Giauque, Kim, Linn, Patel, Roberts, Seybold, Spokes and Warren, the \u201cFarrallon Individual Reporting Persons\u201d). The Shares reported for TF LLC are held directly by TF LLC. The Management Company, as the manager of TF LLC, may be deemed to be a beneficial owner of such shares held by TF LLC. Each of the Farallon Individual Reporting Persons, as a manager or senior manager, as the case may be, of the Management Company, in each case with the power to exercise investment discretion, may be deemed to be a beneficial owner of such Shares held by TF LLC. Each of the Management Company and the Farallon Individual Reporting Persons disclaimed any beneficial ownership of any such Shares. The citizenship of each of TF LLC and the Management Company is set forth above. Each of the Farallon Individual Reporting Persons, other than Giauque and Spokes, is a citizen of the United States. Giauque is a citizen of France. Spokes is a citizen of the United Kingdom. The address of the principal business office of each of the Reporting Persons is c/o Farallon Capital Management, L.L.C., One Maritime Plaza, Suite 2100, San Francisco, California 94111.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1699,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 81
+    },
+    "after": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 82
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Wellington Investment Advisors Holdings LLP, a Delaware limited partnership (\u201cWIAH\u201d), and Wellington Management Company LLP, a Delaware limited partnership (\u201cWMC\u201d, and collectively with WMG, WGH, and WIAH, the \u201cReporting Person\u201d). According to such schedule 13G, WMG, WGH and WIAH are deemed to beneficially own 2,510,689 shares and WMC is deemed to beneficially own 2,473,648 shares. The address of the principal business office of the Reporting Person is c/o Wellington Management Company LLP, 280 Congress Street, Boston, MA 02210."
+    ]
+   ],
+   "caption_stack": [
+    "Wellington Investment Advisors Holdings LLP, a Delaware limited partnership (\u201cWIAH\u201d), and Wellington Management Company LLP, a Delaware limited partnership (\u201cWMC\u201d, and collectively with WMG, WGH, and WIAH, the \u201cReporting Person\u201d). According to such schedule 13G, WMG, WGH and WIAH are deemed to beneficially own 2,510,689 shares and WMC is deemed to beneficially own 2,473,648 shares. The address of the principal business office of the Reporting Person is c/o Wellington Management Company LLP, 280 Congress Street, Boston, MA 02210."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1711,
+    "end_line": 1717
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Shareholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "(13) According to Schedule 13G filed with the SEC on March 22, 2022, by Millennium Management LLC, a limited liability company organized under the laws of the State of Delaware (\u201cMM\u201d), Millennium Group Management LLC, a limited liability company organized under the laws of the State of Delaware (\u201cMGM\u201d), and Israel A. Englander (collectively, with MM and MGM, the \u201cReporting Person\u201d). The securities disclosed therein as potentially beneficially owned by Millennium Management LLC, Millennium Group Management LLC and Mr. Englander are held by entities subject to voting control and investment discretion by Millennium Management LLC and/or other investment managers that may be controlled by Millennium Group Management LLC (the managing member of Millennium Management LLC) and Mr. Englander (the sole voting trustee of the managing member of Millennium Group Management LLC). The foregoing should not be construed in and of itself as an admission by Millennium Management LLC, Millennium Group Management LLC or Mr. Englander as to beneficial ownership of the securities held by such entities. The address of the business office of the Reporting Person is 399 Park Avenue, New York, New York 10022.\n(14) According to Schedule 13G filed with the SEC on February 4, 2022, by Wellington Management Group LLP, a Massachusetts limited partnership (\u201cWMG\u201d), Wellington Group Holdings LLP, a Delaware limited partnership (WGH\u201d),",
+   "prose_after": "Our initial shareholders beneficially own 20% of the then issued and outstanding ordinary shares and will have the right to appoint all of our directors prior to the completion of our initial business combination, and to vote to continue our company in a jurisdiction outside the Cayman Islands prior to the completion of our initial business combination. Holders of our public shares will not have the right to appoint any directors to our board of directors prior to our initial business combination. Because of this ownership block, our initial shareholders may be able to effectively influence the outcome of all other matters requiring approval by our shareholders, including amendments to our amended and restated memorandum and articles of association and approval of significant corporate transactions including our initial business combination.\nOur sponsor, directors and officers have entered into an agreement with us, pursuant to which they have agreed to waive their redemption rights with respect to their founder shares and any public shares purchased during or after our initial public offering in connection with (i) the completion of our initial business combination and (ii) a shareholder vote to approve an amendment to our amended and restated memorandum and articles of association (A) that would modify the substance or timing of our obligation to provide holders of our Class A ordinary shares the right to have their shares redeemed in connection with our initial business combination or to redeem 100% of our public shares if we do not complete our initial business combination within 24 months from the closing of our initial public offering, or (B) with respect to any other provision relating to the rights of holders of our Class A ordinary shares or pre-initial business combination activity. Further, our sponsor and each member of our team have agreed to vote their founder shares and public shares in favor of our initial business combination.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 1728,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Balance Sheets",
+     "F-4"
+    ],
+    [
+     "Statements of Operations",
+     "F-5"
+    ],
+    [
+     "Statements of Changes in Shareholders\u2019 Equity",
+     "F-6"
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-7"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1791,
+    "end_line": 1802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Tax Fees. We did not pay Marcum for tax planning and tax advice during the year ended December 31, 2021.\nAll Other Fees. We did not pay Marcum for other services during the year ended December 31, 2021.\nAudit Committee Approval\nOur audit committee was formed upon the consummation of the Initial Public Offering. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nItem 15.Exhibits and Financial Statement Schedules.\n(a) The following documents are filed as part of this Form 10-K:\n(1) Financial Statements:",
+   "prose_after": "Our independent registered public accounting firm is Marcum LLP (PCAOB ID Number 688) of Houston, Texas.\n(2) Financial Statement Schedules:\nNone.\n(3) The following exhibits are filed as part of this Form 10-K:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1783,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 86
+    },
+    "after": {
+     "line": 1809,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 87
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "",
+     "Description"
+    ],
+    [
+     "2.1\u2020",
+     "",
+     "Share Sale Agreement, dated as of March 17, 2022, by and among Glencore Operations Australia Pty Limited, Metals Acquisition Corp. (Australia) Pty Ltd. and Metals Acquisition Corp. (incorporated by reference to Exhibit 2.1 to the Company\u2019s Current Report on Form 8-K filed on March 17, 2022)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "",
+     "Amended and restated memorandum and articles of association (incorporated by reference to Exhibit 3.2 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "",
+     "Specimen Unit Certificate (incorporated by reference to Exhibit 4.1 to the Company\u2019s Registration Statement on Form S-1, File No. - 257854, filed on July 12, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "",
+     "Specimen Ordinary Share Certificate (incorporated by reference to Exhibit 4.2 to the Company\u2019s Registration Statement on Form S-1, File No. 333- 257854, filed on July 12, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "",
+     "Specimen Warrant Certificate (incorporated by reference to Exhibit 4.3 to the Company\u2019s Registration Statement on Form S-1, File No. 333- 257854, filed on July 12, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "",
+     "Warrant Agreement, dated July 28, 2021, between Continental Stock Transfer & Trust Company and the Company (incorporated by reference to Exhibit 4.4 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "",
+     "Description of Registrant\u2019s Securities."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "",
+     "Warrant Purchase Agreement, dated July 28, 2021, between the Company and Green Mountain Metals LLC (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "",
+     "Investment Management Trust Account Agreement, dated July 28, 2021, between Continental Stock Transfer & Trust Company and the Company (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Registration and Shareholder Rights Agreement, dated July 28, 2021, among the Company, the Sponsor and the other Holders (as defined therein) signatory thereto (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021).",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Letter Agreement, dated July 28, 2021, among the Company, the Sponsor, certain investors in the Sponsor and each of the initial shareholders, directors and officers of the Company (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021).",
+     ""
+    ],
+    [
+     "10.5",
+     "Form of Indemnification Agreement, dated July 28, 2021, between the Company and each of the officers and directors of the Company (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed on August 3, 2021).",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1812,
+    "end_line": 1858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Our independent registered public accounting firm is Marcum LLP (PCAOB ID Number 688) of Houston, Texas.\n(2) Financial Statement Schedules:\nNone.\n(3) The following exhibits are filed as part of this Form 10-K:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1809,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 87
+    },
+    "after": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 88
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.INS",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (Embedded within the Inline XBRL document and included in Exhibit)"
+    ],
+    [
+     "\u2020",
+     "Portions of this exhibit (indicated by asterisks) have been redacted in compliance with Regulation S-K 601(b)(2)(ii)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1860,
+    "end_line": 1870
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Item 16.Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of the Section 13 or 15 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on the 31st day of March, 2022.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1859,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 88
+    },
+    "after": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 89
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "METALS ACQUISITION CORP",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Michael James McMullen"
+    ],
+    [
+     "",
+     "",
+     "Michael James McMullen"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal executive officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Marthinus (Jaco) J. Crouse"
+    ],
+    [
+     "",
+     "",
+     "Marthinus (Jaco) J. Crouse"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal financial and accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "METALS ACQUISITION CORP"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1880,
+    "end_line": 1895
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Item 16.Form 10-K Summary\nNone.\nSIGNATURES\nPursuant to the requirements of the Section 13 or 15 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized on the 31st day of March, 2022.",
+   "prose_after": "POWER OF ATTORNEY\nIn accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 89
+    },
+    "after": {
+     "line": 1936,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 90
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "/s/ Michael James McMullen",
+     "Chief Executive Officer and Director",
+     "March 31, 2022"
+    ],
+    [
+     "Michael James McMullen",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Marthinus (Jaco) J. Crouse",
+     "Chief Financial Officer",
+     "March 31, 2022"
+    ],
+    [
+     "Marthinus (Jaco) J. Crouse",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dan Vujcic",
+     "Chief Development Officer",
+     "March 31, 2022"
+    ],
+    [
+     "Dan Vujcic",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Patrice E. Merrin",
+     "Chair",
+     "March 31, 2022"
+    ],
+    [
+     "Patrice E. Merrin",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Rasmus Kristoffer Gerdeman",
+     "Director, Audit Chair",
+     "March 31, 2022"
+    ],
+    [
+     "Rasmus Kristoffer Gerdeman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Neville Joseph Power",
+     "Director",
+     "March 31, 2022"
+    ],
+    [
+     "Neville Joseph Power\n\n\n\n/s/ John Rhett Miles Bennett",
+     "\n\n\n\nDirector",
+     "\n\n\n\nMarch 31, 2022"
+    ],
+    [
+     "John Rhett Miles Bennett\n\n\n\n/s/ Charles D. McConnell",
+     "\n\n\n\nDirector",
+     "\n\n\n\nMarch 31, 2022"
+    ],
+    [
+     "Charles D. McConnell",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1900,
+    "end_line": 1935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "POWER OF ATTORNEY\nIn accordance with the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "Metals Acquisition Corp.\nIndex to Financial Statements",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1875,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 89
+    },
+    "after": {
+     "line": 1936,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 90
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 688)",
+     ""
+    ],
+    [
+     "",
+     "Balance Sheet",
+     "F-4"
+    ],
+    [
+     "",
+     "Statement of Operations",
+     "F-5"
+    ],
+    [
+     "",
+     "Statement of Changes in Shareholders\u2019 Equity (Deficit)",
+     "F-6"
+    ],
+    [
+     "",
+     "Statement of Cash Flows",
+     "F-7"
+    ],
+    [
+     "",
+     "Notes to Financial Statements",
+     "F-8"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1941,
+    "end_line": 1952
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Metals Acquisition Corp.\nIndex to Financial Statements",
+   "prose_after": "Our independent registered public accounting firm is Marcum LLP (PCAOB ID Number 688) of Houston, Texas.\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and Board of Directors of\nMetals Acquisition Corp.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Metals Acquisition Corp. (the \u201cCompany\u201d) as of December 31, 2021, the related statements of operations, changes in shareholders\u2019 deficit and cash flows for the period from March 11, 2021 (inception) through December 31, 2021, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021, and the results of its operations and its cash flows for the period from March 11, 2021 (inception) through December 31, 2021, in conformity with accounting principles generally accepted in the United States of America.\nExplanatory Paragraph \u2013 Going Concern",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1936,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 90
+    },
+    "after": {
+     "line": 1954,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "954,974",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "",
+     "340,271",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "",
+     "1,295,245",
+     ""
+    ],
+    [
+     "Long-term prepaid expenses",
+     "",
+     "",
+     "186,988",
+     ""
+    ],
+    [
+     "Marketable securities held in Trust Account",
+     "",
+     "",
+     "265,155,619",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "$",
+     "266,637,852",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities, Class A Ordinary Shares Subject to Possible Redemption, and Shareholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued offering costs and expenses",
+     "",
+     "$",
+     "604,474",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "604,474",
+     ""
+    ],
+    [
+     "Warrant liability",
+     "",
+     "",
+     "8,440,008",
+     ""
+    ],
+    [
+     "Deferred underwriting discount",
+     "",
+     "",
+     "9,280,173",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "18,324,655",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A ordinary shares subject to possible redemption, 26,514,780 shares at redemption value",
+     "",
+     "",
+     "265,147,800",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholders' Deficit:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preference shares, $0.0001 par value; 1,000,000 shares authorized; none issued and outstanding",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A ordinary shares, $0.0001 par value; 200,000,000 shares authorized; none issued and outstanding (excluding 26,514,780 shares subject to possible redemption)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B ordinary shares, $0.0001 par value; 20,000,000 shares authorized; 6,628,695 shares issued and outstanding",
+     "",
+     "",
+     "663",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(16,835,266)",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 deficit",
+     "",
+     "",
+     "(16,834,603)",
+     ""
+    ],
+    [
+     "Total Liabilities, Class A Ordinary Shares Subject to Possible Redemption, and Shareholders\u2019 Deficit",
+     "",
+     "$",
+     "266,637,852",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2021",
+    "Assets",
+    "Current assets:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1990,
+    "end_line": 2032
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company's internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Marcum LLP\nMarcum LLP\nWe have served as the Company\u2019s auditor since 2021.\nHouston, TX\nMarch 31, 2022\nBALANCE SHEET",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\n<TABLE>\nFor the period from\nMarch 11, 2021\n(Inception) to\nDecember 31,\n-------------------\nFormation and operating costs                                                                         $ 1,122,004\n-------------------",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1986,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2034,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the period from",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 11, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Inception) to",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Formation and operating costs",
+     "",
+     "$",
+     "1,122,004"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "(1,122,004)"
+    ],
+    [
+     "Other income/(expense)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in fair value of warrants",
+     "",
+     "",
+     "14,982,447"
+    ],
+    [
+     "Excess value of Private Placement Warrants",
+     "",
+     "",
+     "(1,066,666)"
+    ],
+    [
+     "Offering expenses related to warrant issuance",
+     "",
+     "",
+     "(1,984,130)"
+    ],
+    [
+     "Trust interest income",
+     "",
+     "",
+     "7,819"
+    ],
+    [
+     "Bank fee",
+     "",
+     "",
+     "(2,448)"
+    ],
+    [
+     "Total other income/(expense)",
+     "",
+     "",
+     "11,937,022"
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "10,815,018"
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, ordinary shares subject to redemption",
+     "",
+     "",
+     "13,451,926"
+    ],
+    [
+     "Basic and diluted net income per share",
+     "",
+     "$",
+     "0.55"
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding",
+     "",
+     "",
+     "6,403,525"
+    ],
+    [
+     "Basic and diluted net income per ordinary share",
+     "",
+     "$",
+     "0.54"
+    ]
+   ],
+   "caption_stack": [
+    "For the period from",
+    "March 11, 2021",
+    "(Inception) to",
+    "December 31,",
+    "2021"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 17,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Ordinary Shares",
+     "",
+     "",
+     "",
+     "",
+     "Ordinary Shares",
+     "",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Shareholders'",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     ""
+    ],
+    [
+     "Balance as of March 11, 2021 (Inception)",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Class B ordinary shares issued to Sponsor",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "7,187,500",
+     "",
+     "",
+     "719",
+     "",
+     "",
+     "24,281",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,000"
+    ],
+    [
+     "Capital contribution for sale of Class B shares to Anchor Investors",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "11,107,653",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "11,107,653"
+    ],
+    [
+     "Forfeiture of 558,805 founder shares",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(558,805)",
+     "",
+     "",
+     "(56)",
+     "",
+     "",
+     "56",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in Class A ordinary shares subject to possible redemption",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(11,131,990)",
+     "",
+     "",
+     "(27,650,284)",
+     "",
+     "",
+     "(38,782,274)"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,815,018",
+     "",
+     "",
+     "10,815,018"
+    ],
+    [
+     "Balance as of December 31, 2021",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "6,628,695",
+     "",
+     "$",
+     "663",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(16,835,266)",
+     "",
+     "$",
+     "(16,834,603)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2077,
+    "end_line": 2093
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Basic and diluted net income per share                                                                     $ 0.55\n===================\nBasic and diluted weighted average shares outstanding                                                   6,403,525\n===================\nBasic and diluted net income per ordinary share                                                            $ 0.54\n===================\n</TABLE>\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDERS\u2019 DEFICIT\nFOR THE PERIOD FROM MARCH 11, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2071,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2095,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the period from",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 11, 2021",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Inception) to",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Cash flows from Operating Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "10,815,018"
+    ],
+    [
+     "Adjustments to reconcile net income to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Formation costs paid by sponsor in exchange for issuance of Class B ordinary shares",
+     "",
+     "",
+     "6,894"
+    ],
+    [
+     "Offering expenses related to warrant issuance",
+     "",
+     "",
+     "1,984,130"
+    ],
+    [
+     "Excess value of Private Placement Warrants",
+     "",
+     "",
+     "1,066,666"
+    ],
+    [
+     "Interest earned on marketable securities held in Trust Account",
+     "",
+     "",
+     "(7,819)"
+    ],
+    [
+     "Decrease in fair value of warrants",
+     "",
+     "",
+     "(14,982,447)"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "",
+     "(527,259)"
+    ],
+    [
+     "Accrued offering costs and expenses",
+     "",
+     "",
+     "604,474"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(1,040,343)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment held in Trust Account",
+     "",
+     "",
+     "(265,147,800)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "(265,147,800)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from Financing Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from Initial Public Offering, net of underwriters' fees",
+     "",
+     "",
+     "259,844,844"
+    ],
+    [
+     "Proceeds from private placement",
+     "",
+     "",
+     "8,302,958"
+    ],
+    [
+     "Advances from related parties",
+     "",
+     "",
+     "150,000"
+    ],
+    [
+     "Payments to related parties",
+     "",
+     "",
+     "(150,000)"
+    ],
+    [
+     "Payments of offering costs",
+     "",
+     "",
+     "(1,004,685)"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "267,143,117"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "",
+     "954,974"
+    ],
+    [
+     "Cash, beginning of the period",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Cash, end of the period",
+     "",
+     "$",
+     "954,974"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of noncash investing and financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred underwriting commissions charged to additional paid in capital",
+     "",
+     "$",
+     "9,280,173"
+    ],
+    [
+     "Fair value of capital contribution by Sponsor to Anchor Investors",
+     "",
+     "$",
+     "11,107,653"
+    ],
+    [
+     "Forfeiture of 558,805 founder shares",
+     "",
+     "",
+     "56"
+    ],
+    [
+     "Deferred offering costs paid by Sponsor in exchange for issuance of Class B ordinary shares",
+     "",
+     "$",
+     "18,104"
+    ],
+    [
+     "Initial classification of warrant liability",
+     "",
+     "$",
+     "23,422,455"
+    ],
+    [
+     "Remeasurement of Class A ordinary shares subject to redemption",
+     "",
+     "$",
+     "38,782,274"
+    ]
+   ],
+   "caption_stack": [
+    "For the period from",
+    "March 11, 2021",
+    "(Inception) to",
+    "December 31, 2021",
+    "Cash flows from Operating Activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2099,
+    "end_line": 2156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNote 1 - Organization and Business Operations and Going Concern and Management\u2019s Plan\nMetals Acquisition Corp (the \u201cCompany\u201d) is a blank check company incorporated as a Cayman Islands exempted company on March 11, 2021.The Company was incorporated for the purpose of effecting a merger, share exchange, asset acquisition, share purchase, reorganization or similar business combination with one or more businesses (the \u201cBusiness Combination\u201d).\nAs of December 31, 2021, the Company had not commenced any operations. All activity for the period from March 11, 2021 (inception) through December 31, 2021, relates to the Company's formation, operating costs, and the initial public offering (the \"IPO\"), described below and activities related to seeking an acquisition target. The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company generates non-operating income in the form of interest income on investments in the trust account derived from the IPO. The Company has selected December 31 as its fiscal year end.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2095,
+     "token": "PAGE_BREAK",
+     "id": 98,
+     "namespace": "F",
+     "page_number": 6
+    },
+    "after": {
+     "line": 2158,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross proceeds from IPO",
+     "",
+     "$",
+     "265,147,800"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to Public Warrants, net of offering costs",
+     "",
+     "",
+     "(14,052,833)"
+    ],
+    [
+     "Ordinary share issuance costs",
+     "",
+     "",
+     "(24,729,441)"
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Remeasurement adjustment of carrying value to redemption value",
+     "",
+     "",
+     "38,782,274"
+    ],
+    [
+     "Ordinary shares subject to possible redemption",
+     "",
+     "$",
+     "265,147,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2312,
+    "end_line": 2323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant Accounting Policies"
+    }
+   },
+   "prose_before": "If it is probable that the equity instrument will become redeemable, the Company has the option to either accrete changes in the redemption value over the period from the date of issuance (or from the date that it becomes probable that the instrument will become redeemable, if later) to the earliest redemption date of the instrument or to recognize changes in the redemption value immediately as they occur and adjust the carrying amount of the instrument to equal the redemption value at the end of each reporting period. The Company recognizes changes in redemption value immediately as they occur. Immediately upon the closing of the IPO, the Company recognized the remeasurement adjustment from initial carrying amount to redemption book value and subsequently adjusted the redemption book value as of the IPO date for the earnings in the Trust Account. The change in the carrying value of redeemable ordinary share resulted in charges against additional paid-in capital and accumulated deficit.\nAs of December 31, 2021, the ordinary shares subject to possible redemption reflected on the balance sheet are reconciled in the following table:",
+   "prose_after": "Net Income Per Share\nThe Company has two classes of ordinary shares, which are referred to as Class A ordinary shares and Class B ordinary shares. Earnings and losses are shared pro rata between the two classes of shares. Private and public warrants to purchase 14,373,564 Class A ordinary shares at $11.50 per share were issued on August 2, 2021, and September 3, 2021. No warrants were exercised during the period from March 11, 2021 (inception) through December 31, 2021. The calculation of diluted income per common share does not consider the effect of the warrants issued in connection with the (i) IPO, (ii) exercise of over-allotment, or (iii) Private Placement since the exercise of the warrants is contingent upon the occurrence of future events. As a result, diluted net income per ordinary share is the same as basic net income per ordinary share for the periods. Accretion associated with the redeemable Class A ordinary shares is excluded from earnings per share as the redemption value approximates fair value.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2299,
+     "token": "PAGE_BREAK",
+     "id": 106,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 2323,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the period from March 11, 2021",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(inception) through",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net income",
+     "",
+     "$",
+     "7,354,212",
+     "",
+     "$",
+     "3,460,806"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted-average shares outstanding",
+     "",
+     "",
+     "13,451,926",
+     "",
+     "",
+     "6,403,525"
+    ],
+    [
+     "Basic and diluted net income per share",
+     "",
+     "$",
+     "0.55",
+     "",
+     "$",
+     "0.54"
+    ]
+   ],
+   "caption_stack": [
+    "For the period from March 11, 2021",
+    "(inception) through",
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2328,
+    "end_line": 2343
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company has two classes of ordinary shares, which are referred to as Class A ordinary shares and Class B ordinary shares. Earnings and losses are shared pro rata between the two classes of shares. Private and public warrants to purchase 14,373,564 Class A ordinary shares at $11.50 per share were issued on August 2, 2021, and September 3, 2021. No warrants were exercised during the period from March 11, 2021 (inception) through December 31, 2021. The calculation of diluted income per common share does not consider the effect of the warrants issued in connection with the (i) IPO, (ii) exercise of over-allotment, or (iii) Private Placement since the exercise of the warrants is contingent upon the occurrence of future events. As a result, diluted net income per ordinary share is the same as basic net income per ordinary share for the periods. Accretion associated with the redeemable Class A ordinary shares is excluded from earnings per share as the redemption value approximates fair value.",
+   "prose_after": "Income Taxes\nThe Company follows the asset and liability method of accounting for income taxes under FASB ASC 740, \u201cIncome Taxes\u201d (\u201cASC 740\u201d). Deferred tax assets and liabilities are recognized for the estimated future tax consequences attributable to differences between the financial statements carrying amounts of existing assets and liabilities and their respective tax bases. Deferred tax assets and liabilities are measured using enacted tax rates expected to apply to taxable income in the years in which those temporary differences are expected to be recovered or settled. The effect on deferred tax assets and liabilities of a change in tax rates is recognized in income in the period that included the enactment date. Valuation allowances are established, when necessary, to reduce deferred tax assets to the amount expected to be realized.\nASC 740 prescribes a recognition threshold and a measurement attribute for the financial statement recognition and measurement of tax positions taken or expected to be taken in a tax return. For those benefits to be recognized, a tax position must be more likely than not to be sustained upon examination by taxing authorities. The Company\u2019s management determined that the Cayman Islands is the Company\u2019s major tax jurisdiction. The Company recognizes accrued interest and penalties related to unrecognized tax benefits as income tax expense. As of December 31, 2021, there were no unrecognized tax benefits and no amounts accrued for interest and penalties. The Company is currently not aware of any issues under review that could result in significant payments, accruals, or material deviation from its position. The Company\u2019s management does not expect that the total amount of unrecognized tax benefits will materially change over the next 12 months.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2323,
+     "token": "PAGE_BREAK",
+     "id": 107,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 2351,
+     "token": "PAGE_BREAK",
+     "id": 108,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Money Market held in Trust Account",
+     "",
+     "$",
+     "265,155,619",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "265,155,619",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Public Warrants",
+     "",
+     "$",
+     "5,214,574",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Private Placement Warrants",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,265,830"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "5,214,574",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,265,830"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2441,
+    "end_line": 2456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014 Recurring Fair Value Measurements"
+    }
+   },
+   "prose_before": "The Company\u2019s warrant liability for the Private Placement Warrants is based on a valuation model utilizing inputs from observable and unobservable markets with less volume and transaction frequency than active markets. The fair value of the Private Placement Warrant liability units is classified within Level 3 of the fair value hierarchy.\nOn September 20, 2021, the Company\u2019s Public Warrants began trading on the New York Stock Exchange. As such, the Company\u2019s warrant liability for the Public Warrants is based on unadjusted quoted prices in an active market (the New York Stock Exchange) for identical assets or liabilities that the Company can access. The fair value of the Public Warrant liability is classified within Level 1 of the fair value hierarchy.\nAll of the Company\u2019s trust assets on the balance sheet consist of U. S. Money Market funds which are classified as cash equivalents. Fair values of these investments are determined by Level 1 inputs utilizing quoted prices (unadjusted) in active markets for identical assets.\nThe following table presents information about the Company\u2019s assets and liabilities that were measured at fair value on a recurring basis as of December 31, 2021 and indicates the fair value hierarchy of the valuation techniques the Company utilized to determine such fair value.",
+   "prose_after": "The Company established the initial fair value for the Warrants on August 2, 2021, the date of the consummation of the Company\u2019s IPO and September 3, 2021, the date of the Underwriter\u2019s partial exercise of its over-allotment option, respectively. The Company used a Black-Scholes model to value the Public and Private Warrants.\nThe following table provides quantitative information regarding Level 3 fair value measurements:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2424,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2458,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "August 2,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Share price",
+     "",
+     "$",
+     "9.69",
+     "",
+     "$",
+     "10.00"
+    ],
+    [
+     "Strike price",
+     "",
+     "$",
+     "11.50",
+     "",
+     "$",
+     "11.50"
+    ],
+    [
+     "Term (in years)",
+     "",
+     "",
+     "5.50",
+     "",
+     "",
+     "5.84"
+    ],
+    [
+     "Volatility",
+     "",
+     "",
+     "10.7",
+     "%",
+     "",
+     "24.0"
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "",
+     "1.30",
+     "%",
+     "",
+     "1.01"
+    ],
+    [
+     "Dividend yield",
+     "",
+     "",
+     "0",
+     "%",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2461,
+    "end_line": 2472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014 Recurring Fair Value Measurements"
+    }
+   },
+   "prose_before": "The Company established the initial fair value for the Warrants on August 2, 2021, the date of the consummation of the Company\u2019s IPO and September 3, 2021, the date of the Underwriter\u2019s partial exercise of its over-allotment option, respectively. The Company used a Black-Scholes model to value the Public and Private Warrants.\nThe following table provides quantitative information regarding Level 3 fair value measurements:",
+   "prose_after": "The following table provides a reconciliation of changes in fair value liability of the beginning and ending balances for the Company\u2019s Warrants as Level 3:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2458,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2502,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fair value at March 11, 2021 (inception)",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Initial fair value",
+     "",
+     "",
+     "23,422,455"
+    ],
+    [
+     "Public Warrants reclassified to level 1(1)",
+     "",
+     "",
+     "(6,196,163)"
+    ],
+    [
+     "Change in fair value",
+     "",
+     "",
+     "(13,960,462)"
+    ],
+    [
+     "Fair Value at December 31, 2021",
+     "",
+     "$",
+     "3,265,830"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2475,
+    "end_line": 2482
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014 Recurring Fair Value Measurements"
+    }
+   },
+   "prose_before": "The following table provides a reconciliation of changes in fair value liability of the beginning and ending balances for the Company\u2019s Warrants as Level 3:",
+   "prose_after": "(1) Assumes the Public Warrants were reclassified on September 30, 2021.\nExcept for the transfer from Level 3 to Level 1 for the Public Warrants, there were no other transfers between Levels 1, 2 or 3 during the period from March 11, 2021 (inception) to December 31, 2021.\nNote 7 \u2014 Commitments\nRegistration Rights\nThe holders of the (i) founder shares (which were issued in a private placement prior to the closing of the IPO), (ii) Private Placement Warrants (which were issued in a private placement simultaneously with the closing of the IPO) and (iii) Private Placement Warrants (that may be issued upon conversion of Working Capital Loans) will have registration rights to require the Company to register a sale of any of the securities held by them pursuant to a registration rights agreement to be signed prior to or on the effective date of the IPO. The holders of these securities are entitled to make up to three demands, excluding short form demands, that the Company register such securities. In addition, the holders have certain \u201cpiggy-back\u201d registration rights with respect to registration statements filed after the completion of the initial Business Combination. The Company will bear the expenses incurred in connection with the filing of any such registration statements.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2458,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2502,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

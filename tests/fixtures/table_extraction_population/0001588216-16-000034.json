@@ -1,0 +1,7392 @@
+{
+ "accession": "0001588216-16-000034",
+ "cik": "0001588216",
+ "form": "10-Q",
+ "filing_date": "2016-11-01",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "rspp2016093010q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "90-1022997"
+    ],
+    [
+     "State or other jurisdiction of incorporation or organization",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3141 Hood Street, Suite 500 Dallas, Texas",
+     "75219"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark one)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2016\n[ ][ ]\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-36264\nRSP Permian, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(214) 252-2700\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted to its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Registration S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Glossary of Certain Terms and Conventions Used Herein",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cautionary Statement Concerning Forward-Looking Statements",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets as of September 30, 2016 and December 31, 2015 (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the Three and Nine Months Ended September 30, 2016 and 2015 (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Changes in Stockholders' Equity for the Nine Months Ended September 30, 2016 (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the Nine Months Ended September 30, 2016 and 2015 (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements (Unaudited)",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "35"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "36"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "36"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "36"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 52,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted to its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Registration S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [X]                                                        Accelerated filer [ ]\nNon-accelerated filer    [ ] (Do not check if a smaller reporting company)  Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.): Yes [ ] No [X]\nThe registrant had 126,943,737 shares of common stock outstanding at November 1, 2016.\nTABLE OF CONTENTS",
+   "prose_after": "GLOSSARY OF CERTAIN TERMS AND CONVENTIONS USED HEREIN\nThe following are abbreviations and definitions of certain terms used in this Quarterly Report on Form 10-Q:\n\u201cBbl.\u201d A standard barrel containing 42 U.S. gallons.\n\u201cBoe.\u201d One barrel of oil equivalent, calculated by converting natural gas to oil equivalent barrels at a ratio of six Mcf of natural gas to one Bbl of oil.\n\u201cBoe/d.\u201d One Boe per day.\n\u201cBtu.\u201d One British thermal unit, which is the quantity of heat required to raise the temperature of a one-pound mass of water by one degree Fahrenheit.\n\u201cCompletion.\u201d The process of treating a drilled well followed by the installation of permanent equipment for the production of oil or natural gas or, in the case of a dry hole, the reporting of abandonment to the appropriate agency.\n\u201cDevelopment well.\u201d A well drilled within the proved area of an oil or natural gas reservoir to the depth of a stratigraphic horizon known to be productive.\n\u201cDifferential.\u201d An adjustment to the price of oil or natural gas from an established spot market price to reflect differences in the quality and/or location of oil or natural gas.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "22,376",
+     "",
+     "$",
+     "142,741",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "57,470",
+     "",
+     "",
+     "36,323",
+     "",
+     ""
+    ],
+    [
+     "Derivative instruments",
+     "4,879",
+     "",
+     "",
+     "8,452",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "35",
+     "",
+     "",
+     "24",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "84,760",
+     "",
+     "",
+     "187,540",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY, PLANT AND EQUIPMENT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil and natural gas properties, successful efforts method",
+     "3,341,592",
+     "",
+     "",
+     "3,076,051",
+     "",
+     ""
+    ],
+    [
+     "Accumulated depletion",
+     "(501,930)",
+     "",
+     "",
+     "(357,524)",
+     "",
+     ""
+    ],
+    [
+     "Total oil and natural gas properties, net",
+     "2,839,662",
+     "",
+     "",
+     "2,718,527",
+     "",
+     ""
+    ],
+    [
+     "Other property and equipment, net",
+     "38,308",
+     "",
+     "",
+     "40,103",
+     "",
+     ""
+    ],
+    [
+     "Total property, plant and equipment",
+     "2,877,970",
+     "",
+     "",
+     "2,758,630",
+     "",
+     ""
+    ],
+    [
+     "OTHER LONG-TERM ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash",
+     "152",
+     "",
+     "",
+     "152",
+     "",
+     ""
+    ],
+    [
+     "Other long-term assets",
+     "11,938",
+     "",
+     "",
+     "21,111",
+     "",
+     ""
+    ],
+    [
+     "Total other long-term assets",
+     "12,090",
+     "",
+     "",
+     "21,263",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "2,974,820",
+     "",
+     "$",
+     "2,967,433",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "7,687",
+     "",
+     "$",
+     "15,569",
+     ""
+    ],
+    [
+     "Accounts payable, related party",
+     "\u2014",
+     "",
+     "",
+     "6,459",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "33,737",
+     "",
+     "",
+     "39,231",
+     "",
+     ""
+    ],
+    [
+     "Interest payable",
+     "23,722",
+     "",
+     "",
+     "12,149",
+     "",
+     ""
+    ],
+    [
+     "Derivative instruments",
+     "7,309",
+     "",
+     "",
+     "3,994",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "72,455",
+     "",
+     "",
+     "77,402",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other long term liabilities",
+     "11,455",
+     "",
+     "",
+     "7,063",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "722,724",
+     "",
+     "",
+     "686,512",
+     "",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "328,000",
+     "",
+     "",
+     "337,872",
+     "",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "1,062,179",
+     "",
+     "",
+     "1,031,447",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "1,134,634",
+     "",
+     "",
+     "1,108,849",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value; 300,000,000 shares authorized, 101,644,060 shares issued and outstanding at September 30, 2016; 100,807,286 shares issued and outstanding at December 31, 2015",
+     "1,016",
+     "",
+     "",
+     "1,008",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "1,881,160",
+     "",
+     "",
+     "1,873,332",
+     "",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(41,990)",
+     "",
+     "",
+     "(15,756)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "1,840,186",
+     "",
+     "",
+     "1,858,584",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "2,974,820",
+     "",
+     "$",
+     "2,967,433",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 178,
+    "end_line": 234
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Certain statements in this Report, including, without limitation, statements containing the words \u201cbelieve,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201cplan,\u201d \u201cintend,\u201d \u201cforesee,\u201d \u201cwill,\u201d \u201cmay,\u201d \u201cshould,\u201d \u201cwould,\u201d \u201ccould\u201d or other similar expressions, and statements regarding the Company's business strategy and plans, constitute \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995, Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d) and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These forward-looking statements are based on our current expectations and beliefs concerning future developments and their potential effect on us. While management believes that these forward-looking statements are reasonable as and when made, there can be no assurance that future developments affecting us will be those that we anticipate. All comments concerning our expectations for future revenues and operating results are based on our forecasts for our existing operations and do not include the potential impact of any future acquisitions. Our forward-looking statements involve significant risks and uncertainties (some of which are beyond our control) and assumptions that could cause actual results to differ materially from our historical experience and our present expectations or projections. Important known factors that could cause actual results to differ materially from those in the forward-looking statements include, but are not limited to, the volatility of commodity prices, product supply and demand, competition, access to and cost of capital, uncertainties about estimates of reserves and resource potential and the ability to add proved reserves in the future, the ability to assimilate acquisitions into our operations, the assumptions underlying production forecasts, the quality of technical data, environmental and weather risks, including the possible impacts of climate change, the ability to obtain environmental and other permits and the timing thereof, government regulation or action, the costs and results of drilling and operations, the availability of equipment, services, resources and personnel required to complete the Company\u2019s operating activities, access to and availability of transportation, processing and refining facilities, the financial strength of counterparties to the Company\u2019s credit facility and derivative contracts and the purchasers of the Company\u2019s production and service providers to the Company, and acts of war or terrorism. For additional information regarding known material factors that could cause our actual results to differ from our projected results, please see \u201cPart I, Item 1A. Risk Factors\u201d in our Annual Report on Form 10-K for the year ended December 31, 2015.\nReaders are cautioned not to place undue reliance on forward-looking statements, which speak only as of the date hereof. We undertake no obligation to publicly update or revise any forward-looking statements after the date they are made, whether as a result of new information, future events or otherwise.\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements.\nCONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 174,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 237,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil sales",
+     "$",
+     "84,722",
+     "",
+     "$",
+     "74,746",
+     "",
+     "$",
+     "211,212",
+     "",
+     "$",
+     "195,968",
+     ""
+    ],
+    [
+     "Natural gas sales",
+     "3,901",
+     "",
+     "",
+     "3,283",
+     "",
+     "",
+     "8,841",
+     "",
+     "",
+     "7,544",
+     "",
+     ""
+    ],
+    [
+     "NGL sales",
+     "4,998",
+     "",
+     "",
+     "2,615",
+     "",
+     "",
+     "10,869",
+     "",
+     "",
+     "6,972",
+     "",
+     ""
+    ],
+    [
+     "Total revenues",
+     "93,621",
+     "",
+     "",
+     "80,644",
+     "",
+     "",
+     "230,922",
+     "",
+     "",
+     "210,484",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease operating expenses",
+     "$",
+     "14,174",
+     "",
+     "$",
+     "14,274",
+     "",
+     "$",
+     "41,359",
+     "",
+     "$",
+     "41,578",
+     ""
+    ],
+    [
+     "Production and ad valorem taxes",
+     "5,872",
+     "",
+     "",
+     "4,674",
+     "",
+     "",
+     "14,985",
+     "",
+     "",
+     "14,273",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "50,022",
+     "",
+     "",
+     "43,031",
+     "",
+     "",
+     "141,877",
+     "",
+     "",
+     "114,152",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligation accretion",
+     "118",
+     "",
+     "",
+     "84",
+     "",
+     "",
+     "354",
+     "",
+     "",
+     "252",
+     "",
+     ""
+    ],
+    [
+     "Impairment of unproved properties",
+     "971",
+     "",
+     "",
+     "4,238",
+     "",
+     "",
+     "4,322",
+     "",
+     "",
+     "4,238",
+     "",
+     ""
+    ],
+    [
+     "Exploration expenses",
+     "359",
+     "",
+     "",
+     "218",
+     "",
+     "",
+     "828",
+     "",
+     "",
+     "2,285",
+     "",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "8,857",
+     "",
+     "",
+     "6,678",
+     "",
+     "",
+     "25,997",
+     "",
+     "",
+     "19,913",
+     "",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "80,373",
+     "",
+     "",
+     "73,197",
+     "",
+     "",
+     "229,722",
+     "",
+     "",
+     "196,691",
+     "",
+     ""
+    ],
+    [
+     "  Loss on sale of assets",
+     "\u2014",
+     "",
+     "",
+     "4",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4",
+     "",
+     ""
+    ],
+    [
+     "OPERATING INCOME",
+     "13,248",
+     "",
+     "",
+     "7,443",
+     "",
+     "",
+     "1,200",
+     "",
+     "",
+     "13,789",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "$",
+     "310",
+     "",
+     "$",
+     "66",
+     "",
+     "$",
+     "587",
+     "",
+     "$",
+     "227",
+     ""
+    ],
+    [
+     "Net gain (loss) on derivative instruments",
+     "(2,934)",
+     "",
+     "",
+     "18,098",
+     "",
+     "",
+     "(6,222)",
+     "",
+     "",
+     "17,467",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "(13,146)",
+     "",
+     "",
+     "(11,680)",
+     "",
+     "",
+     "(39,041)",
+     "",
+     "",
+     "(30,363)",
+     "",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "(15,770)",
+     "",
+     "",
+     "6,484",
+     "",
+     "",
+     "(44,676)",
+     "",
+     "",
+     "(12,669)",
+     "",
+     ""
+    ],
+    [
+     "INCOME (LOSS) BEFORE TAXES",
+     "(2,522)",
+     "",
+     "",
+     "13,927",
+     "",
+     "",
+     "(43,476)",
+     "",
+     "",
+     "1,120",
+     "",
+     ""
+    ],
+    [
+     "INCOME TAX BENEFIT (EXPENSE)",
+     "3,507",
+     "",
+     "",
+     "(4,953)",
+     "",
+     "",
+     "17,242",
+     "",
+     "",
+     "1,378",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME (LOSS)",
+     "$",
+     "985",
+     "",
+     "$",
+     "8,974",
+     "",
+     "$",
+     "(26,234)",
+     "",
+     "$",
+     "2,498",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income (loss) per common share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.01",
+     "",
+     "0.10",
+     "",
+     "",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.01",
+     "",
+     "0.10",
+     "",
+     "",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "100,234",
+     "",
+     "",
+     "87,245",
+     "",
+     "",
+     "100,161",
+     "",
+     "",
+     "82,841",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "100,234",
+     "",
+     "",
+     "87,245",
+     "",
+     "",
+     "100,161",
+     "",
+     "",
+     "82,841",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 245,
+    "end_line": 291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share data)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 241,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 294,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Issued Shares of Common Stock",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total Stockholders\u2019 Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE AT DECEMBER 31, 2015",
+     "100,807",
+     "",
+     "$",
+     "1,008",
+     "",
+     "$",
+     "1,873,332",
+     "",
+     "$",
+     "(15,756)",
+     "",
+     "$",
+     "1,858,584",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repurchase and retirement of common stock",
+     "(98)",
+     "",
+     "(1)",
+     "",
+     "",
+     "(2,712)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,713)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity-based compensation",
+     "935",
+     "",
+     "9",
+     "",
+     "",
+     "10,540",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,549",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(26,234)",
+     "",
+     "",
+     "(26,234)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BALANCE AT SEPTEMBER 30, 2016",
+     "101,644",
+     "",
+     "$",
+     "1,016",
+     "",
+     "$",
+     "1,881,160",
+     "",
+     "$",
+     "(41,990)",
+     "",
+     "$",
+     "1,840,186",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 302,
+    "end_line": 320
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(In thousands)",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 298,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 323,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (loss)",
+     "$",
+     "(26,234)",
+     "",
+     "$",
+     "2,498",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "141,877",
+     "",
+     "",
+     "114,152",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligation accretion",
+     "354",
+     "",
+     "",
+     "252",
+     "",
+     ""
+    ],
+    [
+     "Impairment of unproved properties",
+     "4,322",
+     "",
+     "",
+     "4,238",
+     "",
+     ""
+    ],
+    [
+     "Equity-based compensation",
+     "10,549",
+     "",
+     "",
+     "6,974",
+     "",
+     ""
+    ],
+    [
+     "Amortization of loan fees",
+     "1,969",
+     "",
+     "",
+     "1,604",
+     "",
+     ""
+    ],
+    [
+     "Deferred income taxes",
+     "(9,873)",
+     "",
+     "",
+     "(3,431)",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "230",
+     "",
+     "",
+     "78",
+     "",
+     ""
+    ],
+    [
+     "Net loss (gain) on derivative instruments",
+     "6,222",
+     "",
+     "",
+     "(17,467)",
+     "",
+     ""
+    ],
+    [
+     "Net cash receipts from settled derivatives",
+     "9,963",
+     "",
+     "",
+     "67,844",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "(29,719)",
+     "",
+     "",
+     "(21,542)",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "9,225",
+     "",
+     "",
+     "(12,645)",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accounts payable to related parties",
+     "(13,117)",
+     "",
+     "",
+     "(24,304)",
+     "",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "2,424",
+     "",
+     "",
+     "(1,034)",
+     "",
+     ""
+    ],
+    [
+     "Interest payable",
+     "11,573",
+     "",
+     "",
+     "14,218",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "119,765",
+     "",
+     "$",
+     "131,435",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Development of oil and natural gas properties",
+     "(207,437)",
+     "",
+     "",
+     "(318,522)",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions of oil and natural gas properties",
+     "(62,430)",
+     "",
+     "",
+     "(315,647)",
+     "",
+     ""
+    ],
+    [
+     "Additions to other property and equipment",
+     "(1,750)",
+     "",
+     "",
+     "(13,664)",
+     "",
+     ""
+    ],
+    [
+     "Investment in unconsolidated subsidiary",
+     "(800)",
+     "",
+     "",
+     "(2,703)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "\u2014",
+     "",
+     "",
+     "212",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "$",
+     "(272,417)",
+     "",
+     "$",
+     "(650,324)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "\u2014",
+     "",
+     "",
+     "325,358",
+     "",
+     ""
+    ],
+    [
+     "Payment of deferred loan costs",
+     "\u2014",
+     "",
+     "",
+     "(2,185)",
+     "",
+     ""
+    ],
+    [
+     "Borrowings under long-term debt",
+     "35,000",
+     "",
+     "",
+     "65,000",
+     "",
+     ""
+    ],
+    [
+     "Payments on long-term debt",
+     "\u2014",
+     "",
+     "",
+     "(65,000)",
+     "",
+     ""
+    ],
+    [
+     "Issuance of senior unsecured notes",
+     "\u2014",
+     "",
+     "",
+     "198,500",
+     "",
+     ""
+    ],
+    [
+     "Repurchase and retirement of common stock",
+     "(2,713)",
+     "",
+     "",
+     "(1,822)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "32,287",
+     "",
+     "$",
+     "519,851",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH",
+     "$",
+     "(120,365)",
+     "",
+     "$",
+     "962",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "$",
+     "142,741",
+     "",
+     "$",
+     "56,292",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "22,376",
+     "",
+     "$",
+     "57,254",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "25,463",
+     "",
+     "$",
+     "19,189",
+     ""
+    ],
+    [
+     "Cash paid for taxes",
+     "$",
+     "2,000",
+     "",
+     "$",
+     "2,700",
+     ""
+    ],
+    [
+     "NON-CASH ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligation acquired",
+     "$",
+     "342",
+     "",
+     "652",
+     "",
+     ""
+    ],
+    [
+     "Change in accrued capital expenditures",
+     "$",
+     "(7,918)",
+     "",
+     "$",
+     "(6,376)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 329,
+    "end_line": 389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTE 1\u2014NATURE OF OPERATIONS AND BASIS OF PRESENTATION\nOrganization and Description of the Business\nRSP Permian, Inc. (\"RSP Inc.\" or the \"Company\") was formed on September 30, 2013, pursuant to the laws of the state of Delaware to be a holding company for RSP Permian, L.L.C., a Delaware limited liability company (\u201cRSP LLC\u201d). RSP LLC was formed on October 18, 2010, by its management team and affiliates of Natural Gas Partners, a family of energy-focused private equity investment funds (\u201cNGP\u201d). The Company is engaged in the acquisition, exploration, development and production of unconventional oil and associated liquids-rich natural gas reserves in the Permian Basin of West Texas. The Company priced its initial public offering (\"IPO\") and began trading on the New York Stock Exchange under the ticker RSPP in January 2014. Additional background on the Company, its IPO and subsequent public stock offerings, along with details of the ownership of the Company, are available in the Company's Annual Report on Form 10-K for the year ended December 31, 2015 and other documents filed with the Securities and Exchange Commission (\"SEC\").",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 327,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 392,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of September 30, 2016",
+     "",
+     "As of December 31, 2015",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of oil, natural gas and natural gas liquids",
+     "$",
+     "36,325",
+     "$",
+     "22,166"
+    ],
+    [
+     "Joint interest owners",
+     "12,180",
+     "",
+     "5,596",
+     ""
+    ],
+    [
+     "Derivatives - settled, but uncollected",
+     "\u2014",
+     "",
+     "8,561",
+     ""
+    ],
+    [
+     "Federal income tax receivable",
+     "8,965",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total accounts receivable",
+     "$",
+     "57,470",
+     "$",
+     "36,323"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 422,
+    "end_line": 434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The preparation of the consolidated financial statements requires management to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenues and expenses and the disclosure of contingent assets and liabilities in the financial statements and accompanying notes. Although management believes these estimates are reasonable, actual results could differ from these estimates. Changes in estimates are recorded prospectively. Significant assumptions are required in the valuation of proved oil and natural gas reserves that may affect the amount at which oil and natural gas properties are recorded. Estimation of asset retirement obligations (\u201cAROs\u201d) and valuations of derivative instruments also require significant\nassumptions. It is possible that these estimates could be revised at future dates and these revisions could be material. Depletion of oil and natural gas properties are determined using estimates of proved oil and natural gas reserves. There are numerous uncertainties inherent in the estimation of quantities of proved reserves and in the projection of future rates of production and the timing of development expenditures. Similarly, evaluations for impairment of proved and unproved oil and natural gas properties are subject to numerous uncertainties including, among others, estimates of future recoverable reserves and commodity price estimates.\nAccounts Receivable",
+   "prose_after": "Accounts receivable, which are primarily from the sale of oil, natural gas and natural gas liquids (\u201cNGLs\u201d), are accrued based on estimates of the volumetric sales and prices the Company believes it will receive. In addition, settled but uncollected derivative contracts, receivables related to joint interest billings and income tax receivables are included in accounts receivable. The Company routinely reviews outstanding balances, assesses the financial strength of its customers and records a reserve for amounts not expected to be fully recovered. The need for an allowance is determined based upon reviews of individual accounts, historical losses, existing economic conditions and other pertinent factors. Bad debt expense was zero for each of the nine months ended September 30, 2016 and 2015, respectively.\nOil and Natural Gas Properties\nThe Company uses the successful efforts method of accounting for its oil and natural gas exploration and production activities. Costs incurred by the Company related to the acquisition of oil and natural gas properties and the cost of drilling development wells and successful exploratory wells are capitalized, while the costs of unsuccessful exploratory wells are expensed when determined to be unsuccessful.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proved oil and natural gas properties",
+     "$",
+     "2,474,572",
+     "",
+     "$",
+     "2,197,056",
+     ""
+    ],
+    [
+     "Unproved oil and natural gas properties",
+     "867,020",
+     "",
+     "",
+     "878,995",
+     "",
+     ""
+    ],
+    [
+     "Total oil and natural gas properties",
+     "3,341,592",
+     "",
+     "",
+     "3,076,051",
+     "",
+     ""
+    ],
+    [
+     "Less: Accumulated depletion",
+     "(501,930)",
+     "",
+     "",
+     "(357,524)",
+     "",
+     ""
+    ],
+    [
+     "Total oil and natural gas properties, net",
+     "$",
+     "2,839,662",
+     "",
+     "$",
+     "2,718,527",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company may capitalize interest on expenditures for significant exploration and development projects that last more than six months, while activities are in progress to bring the assets to their intended use. The Company has not capitalized any interest as projects generally lasted less than six months. Costs incurred to maintain wells and related equipment, lease and well operating costs and other exploration costs are expensed as incurred. Gains and losses arising from the sale of properties are generally included in operating income.\nCapitalized acquisition costs attributable to proved oil and natural gas properties and leasehold costs are depleted on a field level, based on proved reserves, using the unit-of-production method. Capitalized exploration well costs and development costs, including AROs, are depleted on a field level, based on proved developed reserves. For the three months ended September 30, 2016 and 2015, depletion expense for oil and natural gas producing property was $49.6 million and $42.6 million, respectively. For the nine months ended September 30, 2016 and 2015, depletion expense for oil and natural gas producing property was $140.7 million and $113.3 million, respectively. Depletion expense is included in depreciation, depletion and amortization in the accompanying consolidated statements of operations.\nThe Company\u2019s oil and natural gas properties as of September 30, 2016 and December 31, 2015 consisted of the following:",
+   "prose_after": "In some circumstances, it may be uncertain whether proved commercial reserves have been found when drilling has been completed. Such exploratory well drilling costs may continue to be capitalized if the anticipated reserve quantity is sufficient to justify its completion as a producing well and sufficient progress in assessing the reserves and the economic and operating viability of the project is being made. As of September 30, 2016 and December 31, 2015, there were no costs capitalized in connection with exploratory wells in progress.\nCapitalized costs are evaluated for impairment whenever events or changes in circumstances indicate that an asset\u2019s carrying amount may not be recoverable. To determine if a field is impaired, the Company compares the carrying value of the field to the undiscounted future net cash flows by applying estimates of future oil and natural gas prices to the estimated future production of oil and natural gas reserves over the economic life of the property and deducting future costs. Future net cash flows are based upon our reservoir engineers\u2019 estimates of proved reserves.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 417,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30, 2016",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligation at beginning of period",
+     "$",
+     "7,063",
+     ""
+    ],
+    [
+     "Liabilities incurred or assumed",
+     "2,106",
+     "",
+     ""
+    ],
+    [
+     "Liabilities settled",
+     "(28)",
+     "",
+     ""
+    ],
+    [
+     "Accretion expense",
+     "354",
+     "",
+     ""
+    ],
+    [
+     "Asset retirement obligation at end of period",
+     "$",
+     "9,495",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30, 2016",
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 484,
+    "end_line": 497
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company estimates a fair value of the obligation on each well in which it owns an interest by identifying costs associated with the future down-hole plugging, dismantlement and removal of production equipment and facilities, and the restoration and reclamation of the surface acreage to a condition similar to that existing before oil and natural gas extraction began.\nIn general, the amount of ARO and the costs capitalized will be equal to the estimated future cost to satisfy the abandonment obligation using current prices that are escalated by an assumed inflation factor up to the estimated settlement date which is then discounted back to the date that the abandonment obligation was incurred using an estimated credit adjusted rate. If the estimated ARO changes, an adjustment is recorded to both the ARO liability and the long-lived asset. Revisions to estimated AROs can result from changes in retirement cost estimates, revisions to estimated inflation rates and changes in the estimated timing of abandonment.\nAfter recording these amounts, the ARO liability is accreted to its future estimated value using the same assumed credit adjusted rate and the associated capitalized costs are depreciated on a unit-of-production basis.\nThe ARO liability consisted of the following for the period indicated:",
+   "prose_after": "Income Taxes\nThe following is an analysis of the Company\u2019s consolidated income tax benefit (expense) for the periods indicated:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current (1)",
+     "$",
+     "7,369",
+     "",
+     "$",
+     "(518)",
+     "",
+     "$",
+     "7,369",
+     "$",
+     "1,859",
+     ""
+    ],
+    [
+     "Deferred (1)",
+     "$",
+     "(3,862)",
+     "",
+     "(4,435)",
+     "",
+     "",
+     "9,873",
+     "",
+     "(481)",
+     "",
+     ""
+    ],
+    [
+     "Income Tax Benefit (Expense)",
+     "$",
+     "3,507",
+     "",
+     "$",
+     "(4,953)",
+     "",
+     "$",
+     "17,242",
+     "$",
+     "1,378",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 502,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "Income Taxes\nThe following is an analysis of the Company\u2019s consolidated income tax benefit (expense) for the periods indicated:",
+   "prose_after": "(1) In the third quarter of 2016, the Company recorded a return to provision adjustment which incorporated both a tax provision benefit and a reserve for an uncertain tax position. These adjustments resulted in a $7.4 million current tax benefit offset by a $5.0 million deferred tax expense.\nDeferred taxes are determined based on the estimated future tax effects of differences between the financial statement and tax basis of assets and liabilities, given the provisions of enacted tax laws. Tax positions are evaluated for recognition using a more-likely-than-not threshold, and those tax positions requiring recognition are measured as the largest amount of tax benefit that is greater than fifty percent likely of being realized upon ultimate settlement with a taxing authority that has full knowledge of all relevant information. The Company\u2019s policy is to record interest and penalties relating to uncertain tax positions in income tax expense. At September 30, 2016, the Company had a long-term tax payable related to uncertain tax positions totaling $2.0 million. This amount is recorded in other long term liabilities on the consolidated balance sheet.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 481,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Contracts expiring quarter ending:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "March 31, 2017",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Crude Oil Collars:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "120,000",
+     "",
+     "",
+     "675,000",
+     "",
+     "",
+     "795,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average ceiling price ($/Bbl)(1)",
+     "$",
+     "74.41",
+     "",
+     "$",
+     "54.25",
+     "",
+     "$",
+     "57.29",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "$",
+     "55.00",
+     "",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "46.51",
+     ""
+    ],
+    [
+     "Weighted average short put price ($/Bbl)(1)",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "35.00",
+     "",
+     "$",
+     "36.51",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Premium Puts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "1,125,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,125,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "$",
+     "45.00",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "45.00",
+     ""
+    ],
+    [
+     "Weighted average deferred premium ($/Bbl) (2)",
+     "$",
+     "(2.74)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(2.74)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Premium Put Spreads:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "",
+     "",
+     "",
+     "675,000",
+     "",
+     "",
+     "675,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "",
+     "",
+     "",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "45.00",
+     ""
+    ],
+    [
+     "Weighted average short put price ($/Bbl)(1)",
+     "",
+     "",
+     "",
+     "$",
+     "35.00",
+     "",
+     "$",
+     "35.00",
+     ""
+    ],
+    [
+     "Weighted average deferred premium ($/Bbl) (2)",
+     "",
+     "",
+     "",
+     "$",
+     "(2.32)",
+     "",
+     "$",
+     "(2.32)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Contracts expiring quarter ending:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "Each collar transaction has an established price floor and ceiling, and certain collar transactions also include a short put as well. When the settlement price is below the price floor established by these collars, the Company receives an amount from its counterparty equal to the difference between the settlement price and the price floor multiplied by the hedged contract volume. When the settlement price is above the price ceiling established by these collars, the Company pays its counterparty an amount equal to the difference between the settlement price and the price ceiling multiplied by the hedged contract volume. When the settlement price is below the short put price, the Company pays its counterparty an amount equal to the difference between the settlement price and the short put price.\nEach deferred premium put option has an established floor price. When the settlement price is below the floor price, the Company receives the difference between the floor price and the settlement price multiplied by the hedged contract volume less the cost of the premium for the option. When the settlement price is at or above the floor price, the Company receives no proceeds and pays the cost of the premium for the option. In either case, whether the settlement price is below or above the floor price, the Company pays the premium for the option at the expiration of the option.\nThe following table summarizes all open positions as of September 30, 2016:",
+   "prose_after": "___________________________\n(1) The crude oil derivative contracts are settled based on the month\u2019s average daily NYMEX price of West Texas Intermediate Light Sweet Crude.\n(2) The deferred premium is not paid until the expiration date, aligning cash inflows and outflows with the settlement of the derivative contract.\nIn October 2016, the Company entered into additional hedging contracts, the following table summarizes all open positions as of November 1, 2016:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 553,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Contracts expiring quarter ending:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31, 2016",
+     "",
+     "",
+     "March 31, 2017",
+     "",
+     "",
+     "June 30, 2017",
+     "",
+     "",
+     "September 30, 2017",
+     "",
+     "",
+     "December 31, 2017",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Crude Oil Collars:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "120,000",
+     "",
+     "",
+     "675,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "795,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average ceiling price ($/Bbl)(1)",
+     "$",
+     "74.41",
+     "",
+     "$",
+     "54.25",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "57.29",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "$",
+     "55.00",
+     "",
+     "$",
+     "45.00",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "46.51",
+     ""
+    ],
+    [
+     "Weighted average short put price ($/Bbl)(1)",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "35.00",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "36.51",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Crude Oil Costless Collars:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "",
+     "",
+     "",
+     "450,000",
+     "",
+     "",
+     "1,137,500",
+     "",
+     "",
+     "1,150,000",
+     "",
+     "",
+     "1,150,000",
+     "",
+     "",
+     "3,887,500",
+     "",
+     ""
+    ],
+    [
+     "Weighted average ceiling price ($/Bbl)(1)",
+     "",
+     "",
+     "",
+     "$",
+     "59.75",
+     "",
+     "$",
+     "60.05",
+     "",
+     "$",
+     "60.05",
+     "",
+     "$",
+     "60.05",
+     "",
+     "$",
+     "60.02",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "",
+     "",
+     "",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "45.00",
+     "",
+     "$",
+     "45.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Crude oil Deferred Premium Puts:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "1,125,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "910,000",
+     "",
+     "",
+     "920,000",
+     "",
+     "",
+     "920,000",
+     "",
+     "",
+     "3,875,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "$",
+     "45.00",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "48.50",
+     "",
+     "$",
+     "48.50",
+     "",
+     "$",
+     "48.50",
+     "",
+     "$",
+     "47.48",
+     ""
+    ],
+    [
+     "Weighted average deferred premium ($/Bbl) (2)",
+     "$",
+     "(2.74)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(4.00)",
+     "",
+     "$",
+     "(4.00)",
+     "",
+     "$",
+     "(4.00)",
+     "",
+     "$",
+     "(3.63)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred Premium Put Spreads:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (Bbl)",
+     "",
+     "",
+     "",
+     "675,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "675,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/Bbl)(1)",
+     "",
+     "",
+     "",
+     "$",
+     "45.00",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "45.00",
+     ""
+    ],
+    [
+     "Weighted average short put price ($/Bbl)(1)",
+     "",
+     "",
+     "",
+     "$",
+     "35.00",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "35.00",
+     ""
+    ],
+    [
+     "Weighted average deferred premium ($/Bbl) (2)",
+     "",
+     "",
+     "",
+     "$",
+     "(2.32)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(2.32)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Natural Gas Costless Collars:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notional volume (MMBtu)",
+     "",
+     "",
+     "",
+     "900,000",
+     "",
+     "",
+     "910,000",
+     "",
+     "",
+     "920,000",
+     "",
+     "",
+     "920,000",
+     "",
+     "",
+     "3,650,000",
+     "",
+     ""
+    ],
+    [
+     "Weighted average ceiling price ($/MMbtu)(3)",
+     "",
+     "",
+     "",
+     "$",
+     "3.64",
+     "",
+     "$",
+     "3.64",
+     "",
+     "$",
+     "3.64",
+     "",
+     "$",
+     "3.64",
+     "",
+     "$",
+     "3.64",
+     ""
+    ],
+    [
+     "Weighted average floor price ($/MMbtu)(3)",
+     "",
+     "",
+     "",
+     "$",
+     "3.00",
+     "",
+     "$",
+     "3.00",
+     "",
+     "$",
+     "3.00",
+     "",
+     "$",
+     "3.00",
+     "",
+     "$",
+     "3.00",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Contracts expiring quarter ending:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 637
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "___________________________\n(1) The crude oil derivative contracts are settled based on the month\u2019s average daily NYMEX price of West Texas Intermediate Light Sweet Crude.\n(2) The deferred premium is not paid until the expiration date, aligning cash inflows and outflows with the settlement of the derivative contract.\nIn October 2016, the Company entered into additional hedging contracts, the following table summarizes all open positions as of November 1, 2016:",
+   "prose_after": "___________________________\n(1) The crude oil derivative contracts are settled based on the month\u2019s average daily NYMEX price of West Texas Intermediate Light Sweet Crude.\n(2) The deferred premium is not paid until the expiration date, aligning cash inflows and outflows with the settlement of the derivative contract.\n(3) The natural gas derivative contracts are settled based on the last trading day\u2019s closing price for the front month contract relevant to each period.\nDerivative Fair Values and Gains (Losses)\nThe following table presents the fair value of derivative instruments. The Company\u2019s derivatives are presented as separate line items in its consolidated balance sheets as current and noncurrent derivative instrument assets and liabilities based on the expected settlement dates of the instruments. The fair value amounts are presented on a gross basis and do not reflect the netting of asset and liability positions permitted under the terms of the Company\u2019s master netting arrangements. See Note 5 for further discussion related to the fair value of the Company's derivatives.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 596,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Assets",
+     "",
+     "",
+     "",
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2016",
+     "",
+     "December 31, 2015",
+     "",
+     "September 30, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative Instruments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current amounts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity contracts",
+     "$",
+     "4,879",
+     "$",
+     "8,452",
+     "$",
+     "(7,309)",
+     "",
+     "$",
+     "(3,994)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total derivative instruments",
+     "$",
+     "4,879",
+     "$",
+     "8,452",
+     "$",
+     "(7,309)",
+     "",
+     "$",
+     "(3,994)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "(1) The crude oil derivative contracts are settled based on the month\u2019s average daily NYMEX price of West Texas Intermediate Light Sweet Crude.\n(2) The deferred premium is not paid until the expiration date, aligning cash inflows and outflows with the settlement of the derivative contract.\n(3) The natural gas derivative contracts are settled based on the last trading day\u2019s closing price for the front month contract relevant to each period.\nDerivative Fair Values and Gains (Losses)\nThe following table presents the fair value of derivative instruments. The Company\u2019s derivatives are presented as separate line items in its consolidated balance sheets as current and noncurrent derivative instrument assets and liabilities based on the expected settlement dates of the instruments. The fair value amounts are presented on a gross basis and do not reflect the netting of asset and liability positions permitted under the terms of the Company\u2019s master netting arrangements. See Note 5 for further discussion related to the fair value of the Company's derivatives.",
+   "prose_after": "Gains and losses on derivatives are reported in the consolidated statements of operations.\nThe following represents the Company\u2019s reported gains (losses) on derivative instruments for the periods presented:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on derivative instruments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity derivative instruments",
+     "$",
+     "(2,934)",
+     "",
+     "$",
+     "18,098",
+     "$",
+     "(6,222)",
+     "",
+     "$",
+     "17,467"
+    ],
+    [
+     "Total",
+     "$",
+     "(2,934)",
+     "",
+     "$",
+     "18,098",
+     "$",
+     "(6,222)",
+     "",
+     "$",
+     "17,467"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 670,
+    "end_line": 683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "Gains and losses on derivatives are reported in the consolidated statements of operations.\nThe following represents the Company\u2019s reported gains (losses) on derivative instruments for the periods presented:",
+   "prose_after": "Offsetting of Derivative Assets and Liabilities\nThe following table presents the Company\u2019s gross and net derivative assets and liabilities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Gross Amount Presented on Balance Sheet",
+     "",
+     "",
+     "Netting Adjustments(a)",
+     "",
+     "",
+     "Net Amount",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 30, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative instrument assets with right of offset or master netting agreements",
+     "$",
+     "4,879",
+     "",
+     "$",
+     "(4,879)",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Derivative instrument liabilities with right of offset or master netting agreements",
+     "$",
+     "(7,309)",
+     "",
+     "$",
+     "4,879",
+     "",
+     "$",
+     "(2,430)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative instrument assets with right of offset or master netting agreements",
+     "$",
+     "8,452",
+     "",
+     "$",
+     "(3,994)",
+     "",
+     "$",
+     "4,458",
+     ""
+    ],
+    [
+     "Derivative instrument liabilities with right of offset or master netting agreements",
+     "$",
+     "(3,994)",
+     "",
+     "$",
+     "3,994",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 688,
+    "end_line": 701
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014DERIVATIVE INSTRUMENTS"
+    }
+   },
+   "prose_before": "Offsetting of Derivative Assets and Liabilities\nThe following table presents the Company\u2019s gross and net derivative assets and liabilities.",
+   "prose_after": "_______________________________________\n(a) With all of the Company\u2019s financial trading counterparties, the Company has agreements in place that allow for the financial right of offset for derivative assets and derivative liabilities at settlement or in the event of a default under the agreements.\nCredit-Risk Related Contingent Features in Derivatives\nNone of the Company\u2019s derivative instruments contain credit-risk related contingent features. No amounts of collateral were posted by the Company related to net positions as of September 30, 2016 and December 31, 2015.\nNOTE 5\u2014FAIR VALUE MEASUREMENTS\nThe book values of cash and cash equivalents, accounts receivable, accounts payable and accrued liabilities approximate fair value due to the short-term nature of these instruments. The book value of the Company\u2019s credit facilities approximate fair value as the interest rates are variable. The book value of the Company's senior notes approximates the fair value as the current trading value of the notes was slightly above par value. If the Company recorded the notes at fair value they would be Level 1 in our fair value hierarchy as they are traded in an active market with quoted prices for identical instruments. The fair value of derivative financial instruments is determined utilizing industry standard models using assumptions and inputs which are substantially observable in active markets throughout the full term of the instruments. These include market price curves, contract terms and prices, credit risk adjustments, implied market volatility and discount factors.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "",
+     "Level 3",
+     "",
+     "Total fair value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of September 30, 2016:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity derivative instruments",
+     "$",
+     "\u2014",
+     "$",
+     "(2,430)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(2,430)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "\u2014",
+     "$",
+     "(2,430)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(2,430)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 731,
+    "end_line": 742
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "\u2022Level 3\u2014Assets and liabilities recorded at fair value for which values are based on prices or valuation techniques that require inputs that are both unobservable and significant to the overall fair value measurement. Unobservable inputs that are not corroborated by market data. These inputs reflect management\u2019s own assumptions about the assumptions a market participant would use in pricing the asset or liability.\nValuation techniques that maximize the use of observable inputs are favored. Assets and liabilities are classified in their entirety based on the lowest priority level of input that is significant to the fair value measurement. The assessment of the significance of a particular input to the fair value measurement requires judgment and may affect the placement of assets and liabilities within the levels of the fair value hierarchy.\nFair Value Measurement on a Recurring Basis\nThe following table presents, by level within the fair value hierarchy, the Company\u2019s assets and liabilities that are measured at fair value on a recurring basis.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 757,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total fair value",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of December 31, 2015:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity derivative instruments",
+     "$",
+     "\u2014",
+     "$",
+     "4,458",
+     "$",
+     "\u2014",
+     "$",
+     "4,458"
+    ],
+    [
+     "Total",
+     "$",
+     "\u2014",
+     "$",
+     "4,458",
+     "$",
+     "\u2014",
+     "$",
+     "4,458"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 754
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Significant Level 2 assumptions used to measure the fair value of the commodity derivative instruments include implied volatility factors, appropriate risk adjusted discount rates, as well as other relevant data.\nReclassifications of fair value among Level 1, Level 2 and Level 3 of the fair value hierarchy, if applicable, are made at the end of each quarter. There were no transfers among Level 1, Level 2 or Level 3 during the nine months ended September 30, 2016 and the year ended December 31, 2015.\nNonfinancial Assets and Liabilities\nAssets and liabilities acquired in business combinations are recorded at their fair value on the date of acquisition. Significant Level 3 assumptions associated with the calculation of future cash flows used in the analysis of fair value of the oil and natural gas property acquired include the Company\u2019s estimate of future commodity prices, production costs, development expenditures, production, risk-adjusted discount rates and other relevant data. Additionally, fair value is used to determine the inception value of the Company\u2019s AROs. The inputs used to determine such fair value are primarily based upon costs incurred historically for similar work, as well as estimates from independent third parties for costs that would be incurred to restore leased property to the contractually stipulated condition. Additions to the Company\u2019s AROs represent a nonrecurring Level 3 measurement.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 712,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 757,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In millions)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revolving credit facility",
+     "$",
+     "35.0",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "6.625% Senior Notes",
+     "$",
+     "700.0",
+     "",
+     "$",
+     "700.0",
+     ""
+    ],
+    [
+     "Less: Discount",
+     "$",
+     "(1.2)",
+     "",
+     "$",
+     "(1.4)",
+     ""
+    ],
+    [
+     "Less: Debt issuance costs",
+     "$",
+     "(11.1)",
+     "",
+     "$",
+     "(12.1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "722.7",
+     "",
+     "$",
+     "686.5",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 770,
+    "end_line": 786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014LONG-TERM DEBT"
+    }
+   },
+   "prose_before": "Assets and liabilities acquired in business combinations are recorded at their fair value on the date of acquisition. Significant Level 3 assumptions associated with the calculation of future cash flows used in the analysis of fair value of the oil and natural gas property acquired include the Company\u2019s estimate of future commodity prices, production costs, development expenditures, production, risk-adjusted discount rates and other relevant data. Additionally, fair value is used to determine the inception value of the Company\u2019s AROs. The inputs used to determine such fair value are primarily based upon costs incurred historically for similar work, as well as estimates from independent third parties for costs that would be incurred to restore leased property to the contractually stipulated condition. Additions to the Company\u2019s AROs represent a nonrecurring Level 3 measurement.\nThe Company reviews its proved oil and natural gas properties for impairment purposes by comparing the expected undiscounted future cash flows at a producing field level to the unamortized capitalized cost of the asset. Significant assumptions associated with the calculation of future cash flows used in the impairment analysis include the estimate of future commodity prices, production costs, development expenditures, production, risk-adjusted discount rates and other relevant data. As such, the fair value of oil and natural gas properties used in estimating impairment represents a nonrecurring Level 3 measurement.\nNOTE 6\u2014LONG-TERM DEBT\nLong-term debt consists of the following:",
+   "prose_after": "Credit Agreement\nThe Company's revolving credit facility requires it to maintain the following three financial ratios:\n\u2022a working capital ratio, which is the ratio of consolidated current assets (includes unused commitments under its revolving credit facility and excludes restricted cash and derivative assets) to consolidated current liabilities (excluding the current portion of long-term debt under the credit facility and derivative liabilities), of not less than 1.0 to 1.0;\n\u2022a leverage ratio, which is the ratio of the sum of all of the Company\u2019s debt to the consolidated EBITDAX (as defined in the credit agreement) for the four fiscal quarters then ended, of not greater than 4.5 to 1.0; and\n\u2022a senior secured leverage ratio, which is the ratio of the sum of all the Company's debt that is (i) secured and (ii) not subordinated to obligations under the revolving credit facility to the consolidated EBITDAX (as defined in the credit agreement) for the four fiscal quarters then ended, of not greater than 3.5 to 1.0.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 757,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 801,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Weighted Average Fair Value",
+     "",
+     "Shares",
+     "",
+     "Weighted Average Fair Value",
+     ""
+    ],
+    [
+     "Restricted shares outstanding, beginning of period",
+     "499,529",
+     "",
+     "$",
+     "25.99",
+     "477,767",
+     "",
+     "$",
+     "23.71"
+    ],
+    [
+     "Restricted shares granted",
+     "442,835",
+     "",
+     "19.78",
+     "",
+     "278,723",
+     "",
+     "27.18",
+     ""
+    ],
+    [
+     "Restricted shares canceled",
+     "(13,551)",
+     "",
+     "21.61",
+     "",
+     "(4,289)",
+     "",
+     "26.07",
+     ""
+    ],
+    [
+     "Restricted shares vested",
+     "(268,957)",
+     "",
+     "25.25",
+     "",
+     "(248,348)",
+     "",
+     "22.96",
+     ""
+    ],
+    [
+     "Restricted shares outstanding, end of period",
+     "659,856",
+     "",
+     "$",
+     "22.21",
+     "503,853",
+     "",
+     "$",
+     "25.98"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 848,
+    "end_line": 861
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014EQUITY-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Equity-based compensation expense for awards under the LTIP was $1.9 million and $1.6 million for the three months ended September 30, 2016 and 2015, respectively. This same expense was $6.0 million and $4.8 million for the nine months ended September 30, 2016 and 2015, respectively.\nThe Company views restricted stock awards with graded vesting as single awards with an expected life equal to the average expected life and amortize the awards on a straight-line basis over the life of the awards.\nThe compensation expense for these awards was determined based on the market price of the Company\u2019s common stock at the date of grant applied to the total number of shares that were anticipated to fully vest. As of September 30, 2016, the Company had unrecognized compensation expense of $10.4 million related to restricted stock awards which is expected to be recognized over a weighted average period of 1.8 years.\nThe following table represents restricted stock award activity for the nine months ended September 30:",
+   "prose_after": "Performance-Based Restricted Stock Awards\nIn June 2014, performance-based restricted stock awards were granted containing predetermined market conditions with a cliff vesting period of 2.75 years. We granted 134,400 of these shares at a 100% of target payout while the conditions of the grants allow for a payout ranging between no payout and 200% of target. In March 2015, an additional grant of performance-based restricted stock awards were granted containing predetermined market conditions with a cliff vesting period of 2.83 years. We granted 159,932 of these shares at a 100% of target payout while the conditions of the grants allow for a payout ranging between no payout and 200% of target. In February 2016, an additional grant of performance-based restricted stock awards were granted containing predetermined market conditions with a cliff vesting period of 2.92 years. We granted 484,650 of these shares at a 100% of target payout while the conditions of the grants allow for a payout ranging from no payout and 100% of target payout.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 847,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Weighted Average Fair Value",
+     "",
+     "Shares",
+     "Weighted Average Fair Value",
+     ""
+    ],
+    [
+     "Restricted shares outstanding, beginning of period",
+     "294,332",
+     "",
+     "$",
+     "31.41",
+     "134,400",
+     "$",
+     "28.14"
+    ],
+    [
+     "Restricted shares granted",
+     "484,650",
+     "",
+     "13.53",
+     "",
+     "159,932",
+     "31.74",
+     ""
+    ],
+    [
+     "Restricted shares vested",
+     "(31,108)",
+     "",
+     "$",
+     "31.39",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Restricted shares outstanding, end of period",
+     "747,874",
+     "",
+     "$",
+     "19.82",
+     "294,332",
+     "$",
+     "31.41"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 872,
+    "end_line": 884
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014EQUITY-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "In June 2014, performance-based restricted stock awards were granted containing predetermined market conditions with a cliff vesting period of 2.75 years. We granted 134,400 of these shares at a 100% of target payout while the conditions of the grants allow for a payout ranging between no payout and 200% of target. In March 2015, an additional grant of performance-based restricted stock awards were granted containing predetermined market conditions with a cliff vesting period of 2.83 years. We granted 159,932 of these shares at a 100% of target payout while the conditions of the grants allow for a payout ranging between no payout and 200% of target. In February 2016, an additional grant of performance-based restricted stock awards were granted containing predetermined market conditions with a cliff vesting period of 2.92 years. We granted 484,650 of these shares at a 100% of target payout while the conditions of the grants allow for a payout ranging from no payout and 100% of target payout.\nEquity-based compensation for these awards was $1.3 million and $0.8 million for the three months ended September 30, 2016 and 2015, respectively. This equity-based compensation expense was $4.5 million and $2.2 million for the nine months ended September 30, 2016 and 2015, respectively.\nThe compensation expense for these performance based awards is based on a per share value using a Monte-Carlo simulation. The payout level is calculated based on actual total shareholder return performance achieved during the performance period compared to a defined peer group of comparable public companies. The unrecognized compensation expense related to these shares is approximately $7.5 million as of September 30, 2016 and is expected to be recognized over the next 1.76 years.\nThe following table represents performance-based restricted stock award activity for the nine months ended September 30:",
+   "prose_after": "NOTE 9\u2014EARNINGS PER SHARE\nThe Company\u2019s basic earnings per share amounts have been computed using the two-class method based on the weighted-average number of shares of common stock outstanding for the period. Because the Company recognized a net loss for the nine months ended September 30, 2016, all unvested restricted share awards were not recognized in diluted earnings per share calculations for this period as they would be antidilutive. A reconciliation of the components of basic and diluted earnings per common share is presented in the table below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 847,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income available to stockholders",
+     "$",
+     "985",
+     "$",
+     "8,974"
+    ],
+    [
+     "Basic net income allocable to participating securities (1)",
+     "7",
+     "",
+     "54",
+     ""
+    ],
+    [
+     "Income available to stockholders",
+     "$",
+     "978",
+     "$",
+     "8,920"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic",
+     "100,234",
+     "",
+     "87,245",
+     ""
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted stock",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - diluted",
+     "100,234",
+     "",
+     "87,245",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income per share:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.01",
+     "$",
+     "0.10"
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.01",
+     "$",
+     "0.10"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 890,
+    "end_line": 914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "NOTE 9\u2014EARNINGS PER SHARE\nThe Company\u2019s basic earnings per share amounts have been computed using the two-class method based on the weighted-average number of shares of common stock outstanding for the period. Because the Company recognized a net loss for the nine months ended September 30, 2016, all unvested restricted share awards were not recognized in diluted earnings per share calculations for this period as they would be antidilutive. A reconciliation of the components of basic and diluted earnings per common share is presented in the table below:",
+   "prose_after": "_______________________________________\n(1) Restricted share awards that contain non-forfeitable rights to dividends are participating securities and, therefore, are included in computing earnings using the two-class method. Participating securities, however, do not participate in undistributed net losses.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) available to stockholders",
+     "$",
+     "(26,234)",
+     "",
+     "$",
+     "2,498"
+    ],
+    [
+     "Basic net income (loss) allocable to participating securities (1)",
+     "\u2014",
+     "",
+     "",
+     "15",
+     ""
+    ],
+    [
+     "Income (loss) available to stockholders",
+     "$",
+     "(26,234)",
+     "",
+     "$",
+     "2,483"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - basic",
+     "100,161",
+     "",
+     "",
+     "82,841",
+     ""
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted stock",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding - diluted",
+     "100,161",
+     "",
+     "",
+     "82,841",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "0.03"
+    ],
+    [
+     "Diluted",
+     "$",
+     "(0.26)",
+     "",
+     "$",
+     "0.03"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 919,
+    "end_line": 944
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "_______________________________________\n(1) Restricted share awards that contain non-forfeitable rights to dividends are participating securities and, therefore, are included in computing earnings using the two-class method. Participating securities, however, do not participate in undistributed net losses.",
+   "prose_after": "_______________________________________\n(1) Restricted share awards that contain non-forfeitable rights to dividends are participating securities and, therefore, are included in computing earnings using the two-class method. Participating securities, however, do not participate in undistributed net losses.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nThe following discussion and analysis of our financial condition and results of operations should be read in conjunction with our consolidated financial statements and related notes in \u201cPart I, Item 1. Financial Statements.\u201d The following discussion and analysis contains forward-looking statements, including, without limitation, statements relating to our plans, strategies, objectives, expectations, intentions and resources. Please see \u201cCautionary Statement Concerning Forward-Looking Statements\u201d elsewhere in this Quarterly Report on Form 10-Q and \u201cPart I, Item 1A. Risk Factors\u201d in our Annual Report on Form 10-K for the year ended December 31, 2015.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 889,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "Silver Hill is comprised of two privately held entities that collectively own oil and gas producing properties and undeveloped acreage in Loving and Winkler counties in Texas."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 969,
+    "end_line": 972
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "\u2022 Increased our average daily production rate 24% for the third quarter of 2016 as compared to the same period in 2015, and 13% as compared to the second quarter of 2016.\n\u2022 Decreased our cash operating costs on a per Boe basis 11% from $10.50 to $9.36 for the third quarter of 2016 as compared to the same period in 2015, and these costs were 6% lower as compared to the second quarter of 2016. These costs include lease operating expense, production and ad valorem taxes, and general and administrative expense excluding equity based compensation expense.\n\u2022 Acquired approximately $62.4 million of additional oil and gas properties in the Midland Basin.\nRecent significant events that occurred in October 2016 include the following:\n\u2022 Entered into definitive agreements to acquire Silver Hill Energy Partners, LLC (\"SHEP I\") and Silver Hill Energy Partners II, LLC (\"SHEP II\", and together with SHEP I, \"Silver Hill\") for $1.25 billion of cash and 31.0 million shares of RSP common stock in aggregate, implying a total purchase price of approximately $2.4 billion (based on a 20-day volume weighted average price of RSP Inc. common stock as of October 12, 2016).",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "\u25e6",
+     "The SHEP I acquisition is expected to close in the fourth quarter of 2016 and the SHEP II acquisition is expected to close in the first quarter of 2017, subject to shareholder approval."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 972,
+    "end_line": 976
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "\u2022 Completed an underwritten public offering of 25.3 million shares of RSP Inc. common stock, including the exercise of the underwriter's option to purchase additional shares, raising approximately $1 billion in net proceeds after deducting underwriting discounts and commissions and estimated offering expenses paid by the Company. The proceeds from the equity offering are expected to be used to fund a portion of the cash purchase price of the Silver Hill acquisitions.\nOur average daily production rate during the third quarter of 2016 was 29,761 Boe/d, a 24% increase from our third quarter 2015 average daily production of 24,000 Boe/d, and a 13% increase from our second quarter 2016 average daily production of 26,407 Boe/d. Oil production was 73% of total production on a volumetric basis and 91% of our total revenues in the third quarter of 2016.\nDuring the third quarter of 2016, we participated in the drilling of 17 horizontal wells (10 operated) and participated in the completion of 30 horizontal wells (17 operated). In our vertical drilling program, we drilled 3 operated wells and completed 1 operated vertical well.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 949,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Revenues (in thousands, except percentages):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil sales",
+     "$",
+     "84,722",
+     "$",
+     "74,746",
+     "$",
+     "9,976",
+     "",
+     "13",
+     "%"
+    ],
+    [
+     "Natural gas sales",
+     "3,901",
+     "",
+     "3,283",
+     "",
+     "618",
+     "",
+     "",
+     "19",
+     "%"
+    ],
+    [
+     "NGL sales",
+     "4,998",
+     "",
+     "2,615",
+     "",
+     "2,383",
+     "",
+     "",
+     "91",
+     "%"
+    ],
+    [
+     "Total revenues",
+     "$",
+     "93,621",
+     "$",
+     "80,644",
+     "$",
+     "12,977",
+     "",
+     "16",
+     "%"
+    ],
+    [
+     "Average sales prices:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil (per Bbl) (excluding impact of cash settled derivatives)",
+     "$",
+     "42.60",
+     "$",
+     "44.84",
+     "$",
+     "(2.24)",
+     "",
+     "(5)",
+     "%"
+    ],
+    [
+     "Oil (per Bbl) (after impact of cash settled derivatives)",
+     "41.46",
+     "",
+     "57.36",
+     "",
+     "(15.90)",
+     "",
+     "",
+     "(28)",
+     "%"
+    ],
+    [
+     "Natural gas (per Mcf)",
+     "2.27",
+     "",
+     "2.27",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Natural gas (per Mcf) (after impact of cash settled derivatives)",
+     "2.27",
+     "",
+     "2.27",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "NGLs (per Bbl)",
+     "10.82",
+     "",
+     "8.72",
+     "",
+     "2.10",
+     "",
+     "",
+     "24",
+     "%"
+    ],
+    [
+     "Total (per Boe) (excluding impact of cash settled derivatives)",
+     "$",
+     "34.19",
+     "$",
+     "36.52",
+     "$",
+     "(2.33)",
+     "",
+     "(6)",
+     "%"
+    ],
+    [
+     "Total (per Boe) (after impact of cash settled derivatives)",
+     "$",
+     "33.37",
+     "$",
+     "45.98",
+     "$",
+     "(12.61)",
+     "",
+     "(27)",
+     "%"
+    ],
+    [
+     "Production:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil (MBbls)",
+     "1,989",
+     "",
+     "1,667",
+     "",
+     "322",
+     "",
+     "",
+     "19",
+     "%"
+    ],
+    [
+     "Natural gas (MMcf)",
+     "1,720",
+     "",
+     "1,448",
+     "",
+     "272",
+     "",
+     "",
+     "19",
+     "%"
+    ],
+    [
+     "NGLs (MBbls)",
+     "462",
+     "",
+     "300",
+     "",
+     "162",
+     "",
+     "",
+     "54",
+     "%"
+    ],
+    [
+     "Total (MBoe)",
+     "2,738",
+     "",
+     "2,208",
+     "",
+     "530",
+     "",
+     "",
+     "24",
+     "%"
+    ],
+    [
+     "Average daily production volume:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total (Boe/d)",
+     "29,761",
+     "",
+     "24,000",
+     "",
+     "5,761",
+     "",
+     "",
+     "24",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1011,
+    "end_line": 1045
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "The Company's updated capital budget for drilling, completion, and infrastructure for 2016 is approximately $295 to $315 million as a result of continued strong well performance from the Company's existing asset base and as a result of the anticipated closing in the fourth quarter of the SHEP I acquisition. The Company anticipates operating three horizontal rigs through the end of 2016, with two additional horizontal rigs anticipated to be added to the newly acquired Silver Hill properties when the SHEP I acquisition is closed. In addition, we plan on operating one dedicated completion crew for the rest of 2016. We will continue to monitor commodity prices, our cash flow and returns to determine any adjustments to our capital budget. We intend to complete a majority of our drilled but uncompleted well inventory in 2016, which will enable us to have a higher completion count than typically associated with our 2016 rig program.\nOur 2016 capital budget excludes acquisitions and additions to leasehold and is subject to change depending upon a number of factors, including prevailing and anticipated prices for oil, NGLs and natural gas, results of horizontal drilling and completions, economic and industry conditions at the time of drilling, the availability of sufficient capital resources for drilling prospects, our financial results and the availability of lease extensions and renewals on reasonable terms.\nResults of Operations\nThree Months Ended September 30, 2016 Compared to the Three Months Ended September 30, 2015\nOil, NGLs and Natural Gas Sales Revenues. The following table provides the components of our revenues for the periods indicated, as well as each period\u2019s respective average prices and production volumes:",
+   "prose_after": "The following table shows the relationship between our average realized oil price as a percentage of the average NYMEX price and the relationship between our average realized natural gas price as a percentage of the average NYMEX price for the periods indicated. Management uses the realized price to NYMEX margin analysis to analyze trends in our oil and natural gas revenues. The NYMEX WTI futures price is a widely used benchmark in the pricing of domestic and imported oil in the United States. The actual prices realized from the sale of oil differ from the quoted NYMEX WTI price as a result of quality and location differentials. For example, the prices we realize on the oil we produce are affected by the ability to transport crude oil to the Cushing, Oklahoma transport hub and the Gulf Coast refineries. The NYMEX Henry Hub price of natural gas is a widely used benchmark for the pricing of natural gas in the United States. Similar to oil, the actual prices realized from the sale of natural gas differ from the quoted NYMEX Henry Hub price as a result of quality and location differentials. For example, depending on pricing, liquids\u2011rich natural gas with a high Btu content may sell at a premium to low Btu content dry natural gas because it yields a greater quantity of NGLs. Location differentials to NYMEX Henry Hub prices result from variances in transportation costs based on the natural gas\u2019 proximity to the major consuming markets to which it is ultimately delivered. Also affecting the differential is the processing fee deduction retained by the natural gas processing plant generally in the form of percentage of proceeds.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1004,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2016",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Average realized oil price ($/Bbl)",
+     "$",
+     "42.60",
+     "",
+     "$",
+     "44.84",
+     ""
+    ],
+    [
+     "Average NYMEX ($/Bbl)",
+     "44.94",
+     "",
+     "",
+     "46.43",
+     "",
+     ""
+    ],
+    [
+     "Differential to NYMEX",
+     "(2.34)",
+     "",
+     "",
+     "(1.59)",
+     "",
+     ""
+    ],
+    [
+     "Average realized oil price to NYMEX percentage",
+     "95",
+     "",
+     "%",
+     "97",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average realized natural gas price ($/Mcf)",
+     "$",
+     "2.27",
+     "",
+     "$",
+     "2.27",
+     ""
+    ],
+    [
+     "Average NYMEX ($/Mcf)",
+     "2.81",
+     "",
+     "",
+     "2.77",
+     "",
+     ""
+    ],
+    [
+     "Differential to NYMEX",
+     "(0.54)",
+     "",
+     "",
+     "(0.50)",
+     "",
+     ""
+    ],
+    [
+     "Average realized natural gas price to NYMEX percentage",
+     "81",
+     "",
+     "%",
+     "82",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average realized NGL price ($/Bbl)",
+     "$",
+     "10.82",
+     "",
+     "$",
+     "8.72",
+     ""
+    ],
+    [
+     "Average NYMEX oil price ($/Bbl)",
+     "44.94",
+     "",
+     "",
+     "46.43",
+     "",
+     ""
+    ],
+    [
+     "Average realized NGL price to NYMEX oil price percentage",
+     "24",
+     "",
+     "%",
+     "19",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1049,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "The following table shows the relationship between our average realized oil price as a percentage of the average NYMEX price and the relationship between our average realized natural gas price as a percentage of the average NYMEX price for the periods indicated. Management uses the realized price to NYMEX margin analysis to analyze trends in our oil and natural gas revenues. The NYMEX WTI futures price is a widely used benchmark in the pricing of domestic and imported oil in the United States. The actual prices realized from the sale of oil differ from the quoted NYMEX WTI price as a result of quality and location differentials. For example, the prices we realize on the oil we produce are affected by the ability to transport crude oil to the Cushing, Oklahoma transport hub and the Gulf Coast refineries. The NYMEX Henry Hub price of natural gas is a widely used benchmark for the pricing of natural gas in the United States. Similar to oil, the actual prices realized from the sale of natural gas differ from the quoted NYMEX Henry Hub price as a result of quality and location differentials. For example, depending on pricing, liquids\u2011rich natural gas with a high Btu content may sell at a premium to low Btu content dry natural gas because it yields a greater quantity of NGLs. Location differentials to NYMEX Henry Hub prices result from variances in transportation costs based on the natural gas\u2019 proximity to the major consuming markets to which it is ultimately delivered. Also affecting the differential is the processing fee deduction retained by the natural gas processing plant generally in the form of percentage of proceeds.",
+   "prose_after": "Our average realized oil price as a percentage of the average NYMEX price was 95% and 97% for the three months ended September 30, 2016 and 2015, respectively. All of our oil contracts are impacted by the Midland-Cushing differential, which was a negative $0.31 per Bbl for the third quarter of 2016 and a positive $0.72 per Bbl in the comparable 2015 period.\nOil revenues increased 13% to $84.7 million for the three months ended September 30, 2016 from $74.7 million for the 2015 period as a result of an increase in oil production volumes of 322 MBbls, or 19%, partially offset by an $2.24 per Bbl decrease, or 5%, in our average realized price for oil.\nNatural gas revenues increased 19% and were $3.9 million and $3.3 million for the three months ended September 30, 2016 and 2015, respectively. Natural gas production volumes increased by 272 MMcf, or 19%.\nNGL revenues increased 91% to $5.0 million for the three months ended September 30, 2016 from $2.6 million for the 2015 period as a result of a $2.10 per Bbl increase, or 24%, in our average realized NGL price and an increase in NGL production volumes of 162 MBbls, or 54%.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1046,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Operating expenses (in thousands, except percentages):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease operating expenses",
+     "$",
+     "14,174",
+     "$",
+     "14,274",
+     "$",
+     "(100)",
+     "",
+     "(1)",
+     "%"
+    ],
+    [
+     "Production and ad valorem taxes",
+     "5,872",
+     "",
+     "4,674",
+     "",
+     "1,198",
+     "",
+     "",
+     "26",
+     "%"
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "50,022",
+     "",
+     "43,031",
+     "",
+     "6,991",
+     "",
+     "",
+     "16",
+     "%"
+    ],
+    [
+     "Asset retirement obligation accretion",
+     "118",
+     "",
+     "84",
+     "",
+     "34",
+     "",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "  Impairment of unproved properties",
+     "971",
+     "",
+     "4,238",
+     "",
+     "(3,267)",
+     "",
+     "",
+     "(77)",
+     "%"
+    ],
+    [
+     "Exploration expense",
+     "359",
+     "",
+     "218",
+     "",
+     "141",
+     "",
+     "",
+     "65",
+     "%"
+    ],
+    [
+     "General and administrative expenses",
+     "8,857",
+     "",
+     "6,678",
+     "",
+     "2,179",
+     "",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "Total operating expenses before loss (gain) on sale of assets",
+     "$",
+     "80,373",
+     "$",
+     "73,197",
+     "$",
+     "7,176",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "Expenses per Boe:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease operating expenses (excluding gathering and transportation)",
+     "$",
+     "4.67",
+     "$",
+     "6.08",
+     "(1.41)",
+     "",
+     "",
+     "(23)",
+     "%"
+    ],
+    [
+     "Gathering and transportation",
+     "0.51",
+     "",
+     "0.38",
+     "",
+     "0.13",
+     "",
+     "",
+     "34",
+     "%"
+    ],
+    [
+     "Production and ad valorem taxes",
+     "2.14",
+     "",
+     "2.12",
+     "",
+     "0.02",
+     "",
+     "",
+     "1",
+     "%"
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "18.27",
+     "",
+     "19.49",
+     "",
+     "(1.22)",
+     "",
+     "",
+     "(6)",
+     "%"
+    ],
+    [
+     "Asset retirement obligation accretion",
+     "0.04",
+     "",
+     "0.04",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Impairment",
+     "0.35",
+     "",
+     "1.92",
+     "",
+     "(1.57)",
+     "",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Exploration expense",
+     "0.13",
+     "",
+     "0.10",
+     "",
+     "0.03",
+     "",
+     "",
+     "30",
+     "%"
+    ],
+    [
+     "General and administrative - cash component",
+     "2.04",
+     "",
+     "1.92",
+     "",
+     "0.12",
+     "",
+     "",
+     "6",
+     "%"
+    ],
+    [
+     "General and administrative - recurring stock comp (1)",
+     "1.20",
+     "",
+     "0.95",
+     "",
+     "0.25",
+     "",
+     "",
+     "26",
+     "%"
+    ],
+    [
+     "General and administrative - non-recurring stock comp (2)",
+     "\u2014",
+     "",
+     "0.15",
+     "",
+     "(0.15)",
+     "",
+     "",
+     "(100)",
+     "%"
+    ],
+    [
+     "Total operating expenses per Boe",
+     "$",
+     "29.35",
+     "$",
+     "33.15",
+     "$",
+     "(3.80)",
+     "",
+     "(11)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1082,
+    "end_line": 1114
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Oil revenues increased 13% to $84.7 million for the three months ended September 30, 2016 from $74.7 million for the 2015 period as a result of an increase in oil production volumes of 322 MBbls, or 19%, partially offset by an $2.24 per Bbl decrease, or 5%, in our average realized price for oil.\nNatural gas revenues increased 19% and were $3.9 million and $3.3 million for the three months ended September 30, 2016 and 2015, respectively. Natural gas production volumes increased by 272 MMcf, or 19%.\nNGL revenues increased 91% to $5.0 million for the three months ended September 30, 2016 from $2.6 million for the 2015 period as a result of a $2.10 per Bbl increase, or 24%, in our average realized NGL price and an increase in NGL production volumes of 162 MBbls, or 54%.\nOur higher production volumes for all products were primarily a result of increased production from our drilling program, along with the full period impact of our acquisitions that closed in 2015.\nOperating Expenses. The following table summarizes our expenses for the years indicated:",
+   "prose_after": "(1) Represents non-cash compensation expense related to restricted stock awards and performance share awards granted as part of the Company's ongoing compensation and retention program.\n(2) Non-recurring 2015 amounts include compensation expense related to the successful completion of the Company's IPO. These one-time awards vested over time for retention purposes.\nLease Operating Expenses. Lease operating expenses remained flat at $14.2 million for the three months ended September 30, 2016 from $14.3 million for the 2015 period despite a significant increase in production. On a per Boe basis, lease operating expense, excluding gathering and transportation costs, decreased 23% from $6.08 per Boe in 2015 to $4.67 per Boe in 2016. The decrease was primarily attributable to increased operating efficiencies and cost reduction efforts in 2016. Gathering and transportation costs, which are included in lease operating expenses, were $1.4 million for the three months ended September 30, 2016 and $0.8 million for the 2015 period. On a per Boe basis, our gathering and transportation costs were $0.51 and $0.38 for the three months ended September 30, 2016 and 2015 respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1079,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Other income (expense) (in thousands, except percentages):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "$",
+     "310",
+     "",
+     "$",
+     "66",
+     "",
+     "$",
+     "244",
+     "",
+     "370",
+     "%"
+    ],
+    [
+     "Net gain (loss) on derivative instruments",
+     "(2,934)",
+     "",
+     "",
+     "18,098",
+     "",
+     "",
+     "(21,032)",
+     "",
+     "",
+     "(116)",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "(13,146)",
+     "",
+     "",
+     "(11,680)",
+     "",
+     "",
+     "(1,466)",
+     "",
+     "",
+     "13",
+     "%"
+    ],
+    [
+     "Total other income (expense)",
+     "$",
+     "(15,770)",
+     "",
+     "$",
+     "6,484",
+     "",
+     "$",
+     "(22,254)",
+     "",
+     "(343)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1136,
+    "end_line": 1150
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "impairments in the future due to acreage expirations and changes in development plans. We may incur proved property impairments in the future if commodity prices remain low. The possibility and amount of any future impairment is difficult to predict, and will depend, in part, upon future oil and gas prices, estimates of proved reserves and future capital expenditures and production costs.\nExploration Expense. Exploration expense increased from $0.2 million for the three months ended September 30, 2015 to $0.4 million for the 2016 period due to an increase in expenditures on geological and geophysical activity in 2016.\nGeneral and Administrative Expenses. General and administrative expenses increased to $8.9 million for the three months ended September 30, 2016, from $6.7 million for the 2015 period primarily due to increases in employee headcount and related expense including equity-based compensation. Equity-based compensation expense, which was recorded in general and administrative expenses, was $3.3 million for the three months ended September 30, 2016 and $2.4 million for the 2015 period.\nOther Income and Expenses. The following table summarizes our other income and expenses:",
+   "prose_after": "Other Income. Other income was minimal for both the three months ended September 30, 2016 and 2015.\nNet Gain (Loss) on Derivative Instruments. During the three months ended September 30, 2016, we recorded a $2.9 million net loss as compared to an $18.1 million net gain in the 2015 period. The change was a result of expiring contracts on derivative positions over the last year and the future commodity price outlook as of September 30, 2016 as compared to September 30, 2015.\nInterest Expense. During the three months ended September 30, 2016, we recorded $13.2 million of interest expense as compared to $11.7 million in the 2015 period. Interest expense was higher than the prior-year period as a result of the issuance of additional senior notes in August 2015.\nIncome Tax Benefit. During the three months ended September 30, 2016, we recorded $3.5 million of income tax benefit compared to $5.0 million of income tax expense in the 2015 period. In the third quarter of 2016, the Company recorded a return to provision adjustment which incorporated both a tax provision benefit and a reserve for an uncertain tax position which resulted in a net tax benefit of $2.3 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Revenues (in thousands, except percentages):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil sales",
+     "$",
+     "211,212",
+     "$",
+     "195,968",
+     "$",
+     "15,244",
+     "",
+     "8",
+     "%"
+    ],
+    [
+     "Natural gas sales",
+     "8,841",
+     "",
+     "7,544",
+     "",
+     "1,297",
+     "",
+     "",
+     "17",
+     "%"
+    ],
+    [
+     "NGL sales",
+     "10,869",
+     "",
+     "6,972",
+     "",
+     "3,897",
+     "",
+     "",
+     "56",
+     "%"
+    ],
+    [
+     "Total revenues",
+     "$",
+     "230,922",
+     "$",
+     "210,484",
+     "$",
+     "20,438",
+     "",
+     "10",
+     "%"
+    ],
+    [
+     "Average sales prices:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil (per Bbl) (excluding impact of cash settled derivatives)",
+     "$",
+     "38.74",
+     "$",
+     "47.54",
+     "$",
+     "(8.80)",
+     "",
+     "(19)",
+     "%"
+    ],
+    [
+     "Oil (per Bbl) (after impact of cash settled derivatives)",
+     "38.86",
+     "",
+     "64.28",
+     "",
+     "(25.42)",
+     "",
+     "",
+     "(40)",
+     "%"
+    ],
+    [
+     "Natural gas (per Mcf)",
+     "1.80",
+     "",
+     "2.19",
+     "",
+     "(0.39)",
+     "",
+     "",
+     "(18)",
+     "%"
+    ],
+    [
+     "Natural gas (per Mcf) (after impact of cash settled derivatives)",
+     "1.80",
+     "",
+     "2.19",
+     "",
+     "(0.39)",
+     "",
+     "",
+     "(18)",
+     "%"
+    ],
+    [
+     "NGLs (per Bbl)",
+     "9.80",
+     "",
+     "9.22",
+     "",
+     "0.58",
+     "",
+     "",
+     "6",
+     "%"
+    ],
+    [
+     "Total (per Boe) (excluding impact of cash settled derivatives)",
+     "$",
+     "31.29",
+     "$",
+     "38.61",
+     "$",
+     "(7.32)",
+     "",
+     "(19)",
+     "%"
+    ],
+    [
+     "Total (per Boe) (after impact of cash settled derivatives)",
+     "$",
+     "31.38",
+     "$",
+     "51.27",
+     "$",
+     "(19.89)",
+     "",
+     "(39)",
+     "%"
+    ],
+    [
+     "Production:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Oil (MBbls)",
+     "5,452",
+     "",
+     "4,122",
+     "",
+     "1,330",
+     "",
+     "",
+     "32",
+     "%"
+    ],
+    [
+     "Natural gas (MMcf)",
+     "4,910",
+     "",
+     "3,437",
+     "",
+     "1,473",
+     "",
+     "",
+     "43",
+     "%"
+    ],
+    [
+     "NGLs (MBbls)",
+     "1,109",
+     "",
+     "756",
+     "",
+     "353",
+     "",
+     "",
+     "47",
+     "%"
+    ],
+    [
+     "Total (MBoe)",
+     "7,379",
+     "",
+     "5,451",
+     "",
+     "1,928",
+     "",
+     "",
+     "35",
+     "%"
+    ],
+    [
+     "Average daily production volume:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total (Boe/d)",
+     "26,931",
+     "",
+     "19,967",
+     "",
+     "6,964",
+     "",
+     "",
+     "35",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1166,
+    "end_line": 1200
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Interest Expense. During the three months ended September 30, 2016, we recorded $13.2 million of interest expense as compared to $11.7 million in the 2015 period. Interest expense was higher than the prior-year period as a result of the issuance of additional senior notes in August 2015.\nIncome Tax Benefit. During the three months ended September 30, 2016, we recorded $3.5 million of income tax benefit compared to $5.0 million of income tax expense in the 2015 period. In the third quarter of 2016, the Company recorded a return to provision adjustment which incorporated both a tax provision benefit and a reserve for an uncertain tax position which resulted in a net tax benefit of $2.3 million.\nResults of Operations\nNine Months Ended September 30, 2016 Compared to the Nine Months Ended September 30, 2015\nOil, NGLs and Natural Gas Sales Revenues. The following table provides the components of our revenues for the periods indicated, as well as each period\u2019s respective average prices and production volumes:",
+   "prose_after": "The following table shows the relationship between our average realized oil price as a percentage of the average NYMEX price and the relationship between our average realized natural gas price as a percentage of the average NYMEX price for the periods indicated. Management uses the realized price to NYMEX margin analysis to analyze trends in our oil and natural gas revenues. The NYMEX WTI futures price is a widely used benchmark in the pricing of domestic and imported oil in the United States. The actual prices realized from the sale of oil differ from the quoted NYMEX WTI price as a result of quality and location differentials. For example, the prices we realize on the oil we produce are affected by the ability to transport crude oil to the Cushing, Oklahoma transport hub and the Gulf Coast refineries. The NYMEX Henry Hub price of natural gas is a widely used benchmark for the pricing of natural gas in the United States. Similar to oil, the actual prices realized from the sale of natural gas differ from the quoted NYMEX Henry Hub price as a result of quality and location differentials. For example, depending on pricing, liquids\u2011rich natural gas with a high Btu content may sell at a premium to low Btu content dry natural gas because it yields a greater quantity of NGLs. Location differentials to NYMEX Henry Hub prices result from variances in transportation costs based on the natural gas\u2019 proximity to the major consuming markets to which it is ultimately delivered. Also affecting the differential is the processing fee deduction retained by the natural gas processing plant generally in the form of percentage of proceeds.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1159,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Average realized oil price ($/Bbl)",
+     "$",
+     "38.74",
+     "",
+     "$",
+     "47.54",
+     ""
+    ],
+    [
+     "Average NYMEX ($/Bbl)",
+     "41.33",
+     "",
+     "",
+     "51.00",
+     "",
+     ""
+    ],
+    [
+     "Differential to NYMEX",
+     "(2.59)",
+     "",
+     "",
+     "(3.46)",
+     "",
+     ""
+    ],
+    [
+     "Average realized oil price to NYMEX percentage",
+     "94",
+     "",
+     "%",
+     "93",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average realized natural gas price ($/Mcf)",
+     "$",
+     "1.80",
+     "",
+     "$",
+     "2.19",
+     ""
+    ],
+    [
+     "Average NYMEX ($/Mcf)",
+     "2.28",
+     "",
+     "",
+     "2.80",
+     "",
+     ""
+    ],
+    [
+     "Differential to NYMEX",
+     "(0.48)",
+     "",
+     "",
+     "(0.61)",
+     "",
+     ""
+    ],
+    [
+     "Average realized natural gas price to NYMEX percentage",
+     "79",
+     "",
+     "%",
+     "78",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average realized NGL price ($/Bbl)",
+     "$",
+     "9.80",
+     "",
+     "$",
+     "9.22",
+     ""
+    ],
+    [
+     "Average NYMEX oil price ($/Bbl)",
+     "41.33",
+     "",
+     "",
+     "51.00",
+     "",
+     ""
+    ],
+    [
+     "Average realized NGL price to NYMEX oil price percentage",
+     "24",
+     "",
+     "%",
+     "18",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1204,
+    "end_line": 1223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "The following table shows the relationship between our average realized oil price as a percentage of the average NYMEX price and the relationship between our average realized natural gas price as a percentage of the average NYMEX price for the periods indicated. Management uses the realized price to NYMEX margin analysis to analyze trends in our oil and natural gas revenues. The NYMEX WTI futures price is a widely used benchmark in the pricing of domestic and imported oil in the United States. The actual prices realized from the sale of oil differ from the quoted NYMEX WTI price as a result of quality and location differentials. For example, the prices we realize on the oil we produce are affected by the ability to transport crude oil to the Cushing, Oklahoma transport hub and the Gulf Coast refineries. The NYMEX Henry Hub price of natural gas is a widely used benchmark for the pricing of natural gas in the United States. Similar to oil, the actual prices realized from the sale of natural gas differ from the quoted NYMEX Henry Hub price as a result of quality and location differentials. For example, depending on pricing, liquids\u2011rich natural gas with a high Btu content may sell at a premium to low Btu content dry natural gas because it yields a greater quantity of NGLs. Location differentials to NYMEX Henry Hub prices result from variances in transportation costs based on the natural gas\u2019 proximity to the major consuming markets to which it is ultimately delivered. Also affecting the differential is the processing fee deduction retained by the natural gas processing plant generally in the form of percentage of proceeds.",
+   "prose_after": "Our average realized oil price as a percentage of the average NYMEX price was 94% and 93% for the nine months ended September 30, 2016 and 2015, respectively. All of our oil contracts are impacted by the Midland-Cushing differential, which was a negative $0.11 per Bbl for the nine months ended September 30, 2016 and a negative $0.62 per Bbl in the comparable 2015 period.\nOil revenues increased 8% to $211.2 million for the nine months ended September 30, 2016 from $196.0 million for the 2015 period as a result of an increase in oil production volumes of 1,330 MBbls, or 32%, partially offset by a $8.80 per Bbl decrease, or 19%, in our average realized price for oil.\nNatural gas revenues increased 17% and were $8.8 million and $7.5 million for the nine months ended September 30, 2016 and 2015, respectively. Natural gas prices production volumes increased by 1,473 MMcf, or 43%, partially offset by a decrease in natural gas prices of $0.39 per Mcf, or 18%.\nNGL revenues increased 56% to $10.9 million for the nine months ended September 30, 2016 from $7.0 million for the 2015 period as a result of an increase in NGL production volumes of 353 MBbls, or 47%, and an increase of $0.58 per Bbl, or 6%, in our average realized NGL price.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1201,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Operating expenses (in thousands, except percentages):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease operating expenses",
+     "$",
+     "41,359",
+     "$",
+     "41,578",
+     "$",
+     "(219)",
+     "",
+     "(1)",
+     "%"
+    ],
+    [
+     "Production and ad valorem taxes",
+     "14,985",
+     "",
+     "14,273",
+     "",
+     "712",
+     "",
+     "",
+     "5",
+     "%"
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "141,877",
+     "",
+     "114,152",
+     "",
+     "27,725",
+     "",
+     "",
+     "24",
+     "%"
+    ],
+    [
+     "Asset retirement obligation accretion",
+     "354",
+     "",
+     "252",
+     "",
+     "102",
+     "",
+     "",
+     "40",
+     "%"
+    ],
+    [
+     "  Impairment of unproved properties",
+     "4,322",
+     "",
+     "4,238",
+     "",
+     "84",
+     "",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "Exploration expense",
+     "828",
+     "",
+     "2,285",
+     "",
+     "(1,457)",
+     "",
+     "",
+     "(64)",
+     "%"
+    ],
+    [
+     "General and administrative expenses",
+     "25,997",
+     "",
+     "19,913",
+     "",
+     "6,084",
+     "",
+     "",
+     "31",
+     "%"
+    ],
+    [
+     "Total operating expenses before loss (gain) on sale of assets",
+     "$",
+     "229,722",
+     "$",
+     "196,691",
+     "$",
+     "33,031",
+     "",
+     "17",
+     "%"
+    ],
+    [
+     "Expenses per Boe:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease operating expenses (excluding gathering and transportation)",
+     "$",
+     "5.16",
+     "$",
+     "7.16",
+     "(2.00)",
+     "",
+     "",
+     "(28)",
+     "%"
+    ],
+    [
+     "Gathering and transportation",
+     "0.44",
+     "",
+     "0.47",
+     "",
+     "(0.03)",
+     "",
+     "",
+     "(6)",
+     "%"
+    ],
+    [
+     "Production and ad valorem taxes",
+     "2.03",
+     "",
+     "2.62",
+     "",
+     "(0.59)",
+     "",
+     "",
+     "(23)",
+     "%"
+    ],
+    [
+     "Depreciation, depletion and amortization",
+     "19.23",
+     "",
+     "20.94",
+     "",
+     "(1.71)",
+     "",
+     "",
+     "(8)",
+     "%"
+    ],
+    [
+     "Asset retirement obligation accretion",
+     "0.05",
+     "",
+     "0.05",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Impairment",
+     "0.59",
+     "",
+     "0.78",
+     "",
+     "(0.19)",
+     "",
+     "",
+     "(32)",
+     "%"
+    ],
+    [
+     "Exploration expense",
+     "0.11",
+     "",
+     "0.42",
+     "",
+     "(0.31)",
+     "",
+     "",
+     "(74)",
+     "%"
+    ],
+    [
+     "General and administrative - cash component",
+     "2.09",
+     "",
+     "2.37",
+     "",
+     "(0.28)",
+     "",
+     "",
+     "(12)",
+     "%"
+    ],
+    [
+     "General and administrative - recurring stock comp (1)",
+     "1.34",
+     "",
+     "1.07",
+     "",
+     "0.27",
+     "",
+     "",
+     "25",
+     "%"
+    ],
+    [
+     "General and administrative - non-recurring stock comp (2)",
+     "0.09",
+     "",
+     "0.21",
+     "",
+     "(0.12)",
+     "",
+     "",
+     "(57)",
+     "%"
+    ],
+    [
+     "Total operating expenses per Boe",
+     "$",
+     "31.13",
+     "$",
+     "36.09",
+     "$",
+     "(4.96)",
+     "",
+     "(14)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1237,
+    "end_line": 1269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Oil revenues increased 8% to $211.2 million for the nine months ended September 30, 2016 from $196.0 million for the 2015 period as a result of an increase in oil production volumes of 1,330 MBbls, or 32%, partially offset by a $8.80 per Bbl decrease, or 19%, in our average realized price for oil.\nNatural gas revenues increased 17% and were $8.8 million and $7.5 million for the nine months ended September 30, 2016 and 2015, respectively. Natural gas prices production volumes increased by 1,473 MMcf, or 43%, partially offset by a decrease in natural gas prices of $0.39 per Mcf, or 18%.\nNGL revenues increased 56% to $10.9 million for the nine months ended September 30, 2016 from $7.0 million for the 2015 period as a result of an increase in NGL production volumes of 353 MBbls, or 47%, and an increase of $0.58 per Bbl, or 6%, in our average realized NGL price.\nOur higher production volumes for all products were primarily a result of increased production from our drilling program, along with the full period impact of our acquisitions closed in 2015.\nOperating Expenses. The following table summarizes our expenses for the years indicated:",
+   "prose_after": "(1) Represents non-cash compensation expense related to restricted stock awards and performance share awards granted as part of the Company's ongoing compensation and retention program.\n(2) Non-recurring 2015 amounts include compensation expense related to the successful completion of the Company's IPO. These one-time awards vested over time for retention purposes. The non-recurring 2016 amount is a compensation charge associated with the retirement of an officer of the Company.\nLease Operating Expenses. Lease operating expenses remained flat at $41.4 million for the nine months ended September 30, 2016 compared to $41.6 million for the 2015 period despite a significant increase in production. On a per Boe basis, lease operating expense, excluding gathering and transportation costs, decreased from $7.16 per Boe in 2015 to $5.16 per Boe in 2016. The decrease was primarily attributable to higher production, increased operating efficiencies, and cost reduction efforts in the 2016 period. Gathering and transportation costs, which are included in lease operating expenses, were $3.2 million for the nine months ended September 30, 2016 and $2.6 million for the 2015 period. On a per Boe basis, our gathering and transportation costs were $0.44 and $0.47 for the nine months ended September 30, 2016 and 2015, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1234,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "$ Change",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Other income (expense) (in thousands, except percentages):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income, net",
+     "$",
+     "587",
+     "",
+     "$",
+     "227",
+     "",
+     "$",
+     "360",
+     "",
+     "159",
+     "%"
+    ],
+    [
+     "Net gain (loss) on derivative instruments",
+     "(6,222)",
+     "",
+     "",
+     "17,467",
+     "",
+     "",
+     "(23,689)",
+     "",
+     "",
+     "(136)",
+     "%"
+    ],
+    [
+     "Interest expense",
+     "(39,041)",
+     "",
+     "",
+     "(30,363)",
+     "",
+     "",
+     "(8,678)",
+     "",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "Total other income (expense)",
+     "$",
+     "(44,676)",
+     "",
+     "$",
+     "(12,669)",
+     "",
+     "$",
+     "(32,007)",
+     "",
+     "253",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1289,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Impairment of Unproved Properties. We incurred $4.3 million of impairment expense on our unproved property for the nine months ended September 30, 2016 and $4.2 million for the 2015 period. The impairment related to upcoming acreage lease expirations that the Company does not intend to extend or to develop. We may incur additional unproved property impairments in the future due to acreage expirations and changes in development plans. We may incur proved property impairments in the future if commodity prices remain low. The possibility and amount of any future impairment is difficult to predict, and will depend, in part, upon future oil and gas prices, estimates of proved reserves and future capital expenditures and production costs.\nExploration Expense. Exploration expense decreased from $2.3 million for the nine months ended September 30, 2015 to $0.8 million for the 2016 period due to less expenditures on geological and geophysical activity in 2016.\nGeneral and Administrative Expenses. General and administrative expenses increased to $26.0 million for the nine months ended September 30, 2016, from $20.0 million for the 2015 period primarily due to increases in employee headcount and related expense including equity-based compensation. Equity-based compensation expense, which was recorded in general and administrative expenses, was $10.5 million for the nine months ended September 30, 2016 and $7.0 million for the 2015 period.\nOther Income and Expenses. The following table summarizes our other income and expenses:",
+   "prose_after": "Other Income. Other income was minimal for both the nine months ended September 30, 2016 and 2015.\nNet Gain (Loss) on Derivative Instruments. During the nine months ended September 30, 2016, we recorded a $6.2 million net loss as compared to $17.5 million of net gains in the 2015 period. The change was a result of expiring contracts on derivative positions over the last year and the future commodity price outlook as of September 30, 2016 as compared to September 30, 2015.\nInterest Expense. During the nine months ended September 30, 2016, we recorded $39.0 million of interest expense as compared to $30.4 million in the 2015 period. Interest expense was higher than the prior-year period as a result of the issuance of additional senior notes in August 2015.\nIncome Tax Benefit. During the nine months ended September 30, 2016, we recorded $17.2 million of income tax benefit compared to $1.4 million of income tax benefit in the 2015 period. In 2016, the Company recorded a return to provision adjustment which incorporated both a tax provision benefit and a reserve for an uncertain tax position which resulted in a net tax benefit of $2.3 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1280,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1318,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "119,765",
+     "",
+     "$",
+     "131,435",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(272,417)",
+     "",
+     "",
+     "(650,324)",
+     "",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "32,287",
+     "",
+     "",
+     "519,851",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1344,
+    "end_line": 1355
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Our working capital, which we define as current assets minus current liabilities, totaled $12.3 million and $110.1 million at September 30, 2016 and December 31, 2015, respectively. Our collection of receivables has historically been timely, and losses associated with uncollectible receivables have historically not been significant. Our cash balances totaled $22.4 million and $142.7 million at September 30, 2016 and December 31, 2015, respectively. Due to the amounts that accrue related to our drilling program, we may incur working capital deficits in the future. We expect that our cash flows from operating activities and availability under our revolving credit facility will be sufficient to fund our working capital needs excluding any acquisitions we may consummate. We expect that our pace of development, production volumes, commodity prices and differentials to NYMEX prices for our oil, NGL and natural gas production will be the largest variables affecting our working capital.\nContractual Obligations\nWe had no material changes in our contractual commitments and obligations from amounts listed under \"Part II, Item 7. Management's Discussion and Analysis of Financial Condition and Results of Operations - Capital Requirements and Sources of Liquidity - Contractual Obligations\" in our Annual Report on Form 10-K for the year ended December 31, 2015.\nOff-Balance Sheet Arrangements\nAs of September 30, 2016, we did not have any off-balance sheet arrangements that have or are reasonably likely to have a current or future effect on our financial condition, changes in financial condition, revenues or expenses, results of operations, liquidity, capital expenditures or capital resources and would be considered material to investors.\nCash Flows\nThe following table summarizes our cash flows for the periods indicated:",
+   "prose_after": "Net cash provided by operating activities was approximately $119.8 million and $131.4 million for the nine months ended September 30, 2016 and 2015, respectively. The decrease in net cash provided by operating activities for the nine months ended September 30, 2016, as compared to the 2015 period, was primarily due a reduction in amounts received from our settled derivative contracts in the 2016 period\n.\nNet cash used in investing activities was approximately $272.4 million and $650.3 million for the nine months ended September 30, 2016 and 2015, respectively. The decrease in cash used in investing activities was due to acquisitions in the 2015 period.\nNet cash provided by financing activities was approximately $32.3 million for the nine months ended September 30, 2016 and $519.9 million for the nine months ended September 30, 2015. The 2015 period includes capital received in a follow-on stock offering as well as an issuance of senior notes.\nOur Revolving Credit Facility\nOur credit agreement has a borrowing base of $600 million, lenders\u2019 maximum facility commitments of $1.0 billion, and a maturity date of August 29, 2019. The credit agreement permits RSP LLC to make payments to the Company to enable it to pay principal, premium (if any) and interest on our existing notes, provided no default has occurred, and to allow RSP LLC to guarantee the existing notes.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1343,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1397,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares Purchased (1)",
+     "Average Price Paid per Share",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "Approximate Dollar Value of Shares that May Yet Be Purchased under the Plans or Programs",
+     ""
+    ],
+    [
+     "July 2016",
+     "2,009",
+     "$",
+     "35.47",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "August 2016",
+     "393",
+     "$",
+     "35.03",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "September 2016",
+     "485",
+     "$",
+     "38.67",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "2,887",
+     "$",
+     "35.95",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "'(1) These shares were withheld from employees to satisfy tax obligations arising upon the vesting of restricted shares.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1463,
+    "end_line": 1477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "From time to time, we are party to ongoing legal proceedings in the ordinary course of business, including workers\u2019 compensation claims and employment related disputes. While the outcome of these proceedings cannot be predicted with certainty, we do not believe the results of these proceedings, individually or in the aggregate, will have a material adverse effect on our business, financial condition, results of operations or liquidity.\nItem 1A. Risk Factors.\nIn addition to the other information set forth in this Quarterly Report on Form 10-Q, you should carefully consider the factors discussed in \u201cPart I, Item 1A. Risk Factors\u201d in our Annual Report on Form 10-K for the year ended December 31, 2015, which could materially affect our business, financial condition or future results. Additional risks and uncertainties not currently known to us or that we currently deem to be immaterial also may materially adversely affect our business, financial condition or results of operations.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\nPurchases of Equity Securities by the Issuer and Affiliated Purchasers\nThe following table summarizes the Company's repurchase of our common stock during the three months ended September 30, 2016:",
+   "prose_after": "Item 6. Exhibits.\nSee Exhibit Index on page 38 of this Quarterly Report on Form 10-Q.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "RSP PERMIAN, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Scott McNeill"
+    ],
+    [
+     "",
+     "Scott McNeill"
+    ],
+    [
+     "",
+     "Chief Financial Officer and Director"
+    ],
+    [
+     "",
+     "(Principal Financial Officer)"
+    ],
+    [
+     "Date:",
+     "November 1, 2016"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Barry S. Turcotte"
+    ],
+    [
+     "",
+     "Barry S. Turcotte"
+    ],
+    [
+     "",
+     "Chief Accounting Officer"
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)"
+    ],
+    [
+     "Date:",
+     "November 1, 2016"
+    ]
+   ],
+   "caption_stack": [
+    "RSP PERMIAN, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1487,
+    "end_line": 1504
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "Item 6. Exhibits.\nSee Exhibit Index on page 38 of this Quarterly Report on Form 10-Q.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1482,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation of RSP Permian, Inc. (incorporated by reference to Exhibit 3.1 of the Company's Current Report on Form 8-K (File No. 001-36264) filed with the Commission on January 29, 2014)."
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of RSP Permian, Inc. (incorporated by reference to Exhibit 3.2 of the Company\u2019s Current Report on Form 8-K (File No. 001-36264) filed with the Commission on January 29, 2014)."
+    ],
+    [
+     "4.1",
+     "Registration Rights Agreement, dated as of January 23, 2014, among RSP Permian, Inc., RSP Permian Holdco, L.L.C., Ted Collins, Jr., Wallace Family Partnership, LP, ACTOIL, LLC, Rising Star Energy Development Co., L.L.C. and Pecos Energy Partners, L.P. (incorporated by reference to Exhibit 4.2 of the Company\u2019s Current Report on Form 8-K (File No. 001-36273) filed with the Commission on January 29, 2014)."
+    ],
+    [
+     "4.2",
+     "Stockholders\u2019 Agreement, dated as of January 23, 2014, among RSP Permian, Inc., RSP Permian Holdco, L.L.C., Ted Collins, Jr., Wallace Family Partnership, LP, Rising Star Energy Development Co., L.L.C. and Pecos Energy Partners, L.P. (incorporated by reference to Exhibit 4.1 of the Company\u2019s Current Report on Form 8-K (File No. 001-36273) filed with the Commission on January 29, 2014)."
+    ],
+    [
+     "4.3",
+     "Indenture, dated as of September 26, 2014, by and among the Company, RSP Permian, L.L.C. and U.S. Bank National Association, as trustee (incorporated by reference to Exhibit 4.1 of the Company's Current Report on Form 8-K (File No. 001-36264) filed with the Commission on October 2, 2014)."
+    ],
+    [
+     "31.1(a)",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, Rule 13a-14(a)/15d-14(a), by Chief Executive Officer."
+    ],
+    [
+     "31.2(a)",
+     "Certification pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, Rule 13a-14(a)/15d-14(a), by Chief Financial Officer."
+    ],
+    [
+     "32.1(b)",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, by Chief Executive Officer."
+    ],
+    [
+     "32.2(b)",
+     "Certification pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, by Chief Financial Officer."
+    ],
+    [
+     "101.INS(a)",
+     "XBRL Instance Document."
+    ],
+    [
+     "101.SCH(a)",
+     "XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "101.CAL(a)",
+     "XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "101.DEF(a)",
+     "XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "101.LAB(a)",
+     "XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "101.PRE(a)",
+     "XBRL Taxonomy Extension Presentation Linkbase Document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1508,
+    "end_line": 1534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014EARNINGS PER SHARE"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "_______________________________________\n(a) Filed herewith.\n(b) Furnished herewith. Pursuant to SEC Release No. 33-8212, this certification will be treated as \u201caccompanying\u201d this report and not \u201cfiled\u201d as part of such report for purposes of Section 18 of the Exchange Act or otherwise subject to the liability of Section 18 of the Exchange Act, and this certification will not be deemed to be incorporated by reference into any filing under the Securities Act of 1933, except to the extent that the registrant specifically incorporates it by reference.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1505,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

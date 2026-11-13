@@ -1,0 +1,5775 @@
+{
+ "accession": "0001564590-23-002354",
+ "cik": "0001367306",
+ "form": "10-K",
+ "filing_date": "2023-02-24",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "dbo-10k_20221231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "87-0778062"
+    ],
+    [
+     "(State or Other Jurisdiction of\n\n\n\nIncorporation or Organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "c/o Invesco Capital Management LLC\n\n\n\n3500 Lacey Road, Suite 700\n\n\n\nDowners Grove, Illinois",
+     "60515"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 37
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2022\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 001-33242\nINVESCO DB OIL FUND\n(A Series of Invesco DB Multi-Sector Commodity Trust)\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (800) 983-0903\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Units of Beneficial Interest",
+     "DBO",
+     "NYSE Arca, Inc."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (800) 983-0903\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "BUSINESS",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 2.",
+     "PROPERTIES",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 6.",
+     "RESERVED",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 9C.",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "54"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     "55"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "55"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "57"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "58"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "58"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "58"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     "59"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "59"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 82,
+    "end_line": 133
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant's executive o\ufb03cers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nState the market value of the voting and non-voting common equity held by non-affiliates computed by reference to the price at which the common equity was last sold, or the average bid and asked price of such common equity, as of the last business day of the registrant\u2019s most recently completed second fiscal quarter: $508,896,000\nNumber of Common Units of Beneficial Interest outstanding as of January 31, 2023: 19,600,000\nTABLE OF CONTENTS",
+   "prose_after": "i\nCAUTIONARY STATEMENT CONCERNING FORWARD-LOOKING INFORMATION\nThis Report includes forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), that involve substantial risks and uncertainties. The matters discussed throughout this Report that are not historical facts are forward-looking statements. These forward-looking statements are based on the Fund\u2019s and Invesco Capital Management LLC\u2019s (the \u201cManaging Owner\u201d) current expectations, estimates and projections about the future results, performance, prospects and opportunities of the Fund and the Fund\u2019s business and industry and their beliefs and assumptions about future events and speak only as of the date on which they are made. Words such as \u201canticipate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cbelieve,\u201d \u201cseek,\u201d \u201coutlook\u201d and \u201cestimate,\u201d as well as similar words and phrases, signify forward-looking statements. Forward-looking statements are not guarantees of future results. Future economic and industry trends that could potentially impact the Fund and its performance are difficult to predict. Conditions and important factors, risks and uncertainties in the markets for financial instruments that the Fund trades, in the markets for related physical commodities, in the legal and regulatory regimes applicable to the Managing Owner, the Fund, and the Fund\u2019s service providers, in the broader economy and in global politics may cause actual results to differ materially from those expressed by such forward-looking statements. There can be no assurance that the forward-looking statements included in this Report will prove to be accurate. These forward-looking statements are subject to a number of risks, uncertainties and other factors including, but not limited to, those described in this Report, including in Part I, Item 1A. \u201cRisk Factors\u201d and Part II, Item 7, \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operation\u201d (\u201cMD&A\u201d), and other Securities and Exchange Commission (\u201cSEC\u201d) filings by the Fund that could cause the actual results, performance, prospects or opportunities of the Fund to differ materially from those expressed in, or implied by, these forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period of Redemption",
+     "Total Number of\n\n\n\nShares Redeemed",
+     "",
+     "Average Price\n\n\n\nPaid per Share",
+     ""
+    ],
+    [
+     "October 1, 2022 to October 31, 2022",
+     "",
+     "400,000",
+     "$",
+     "16.28"
+    ],
+    [
+     "November 1, 2022 to November 30, 2022",
+     "",
+     "700,000",
+     "",
+     "15.85"
+    ],
+    [
+     "December 1, 2022 to December 31, 2022",
+     "",
+     "2,300,000",
+     "",
+     "15.34"
+    ],
+    [
+     "Total",
+     "",
+     "3,400,000",
+     "$",
+     "15.55"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 703,
+    "end_line": 715
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "PART II\nITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES\nMarket Information\nThe Shares have been trading on the NYSE Arca since November 25, 2008 under the symbol \u201cDBO.\u201d\nHolders\nAs of January 31, 2023, the Fund had 93 holders of record of its Shares.\nSales of Unregistered Securities and Use of Proceeds of Registered Securities\n(a) There have been no unregistered sales of the Shares. No Shares are authorized for issuance by the Fund under equity compensation plans.\n(b) Not applicable.\n(c) Although the Fund did not redeem Shares directly from its shareholders, the Fund redeemed Creation Units from Authorized Participants during the three months ended December 31, 2022 as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ITEM 6.",
+     "RESERVED"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 716,
+    "end_line": 719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nThis information should be read in conjunction with the financial statements and notes included in Item 8 of Part II of this Report. The discussion and analysis which follows may contain trend analysis and other forward-looking statements. See \u201cCautionary Statement Concerning Forward-Looking Information\u201d above.\nYou should not place undue reliance on any forward-looking statements. Except as expressly required by the Federal securities laws, the Fund and the Managing Owner undertake no obligation to publicly update or revise any forward-looking statements or the risks, uncertainties or other factors described in this Report, as a result of new information, future events or changed circumstances or for any other reason after the date of this Report.\nOverview/Introduction\nInvesco DB Oil Fund (the \u201cFund\u201d), a separate series of Invesco DB Multi-Sector Commodity Trust (the \u201cTrust\u201d), a Delaware statutory trust organized in seven separate series, was formed on August 3, 2006. The term of the Fund is perpetual (unless terminated earlier in certain circumstances) as provided for in the Fifth Amended and Restated Declaration of Trust and Trust Agreement of the Fund, as amended (the \u201cTrust Agreement\u201d). The Fund has an unlimited number of shares authorized for issuance.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Underlying Index",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     ""
+    ],
+    [
+     "DB Light Sweet Crude Oil (WTI) Indices",
+     "",
+     "14.72",
+     "%",
+     "",
+     "60.89",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 859,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "The Index is intended to reflect the change in market value of the Index Commodity. In turn, the Index is intended to reflect the oil sector. The DBIQ Optimum Yield Crude Oil Index Total Return\u2122 (the \u201cDBIQ-OY CL TR\u2122\u201d) consists of the Index plus 3-month United States Treasury Obligations returns. Past results of the DBIQ-OY CL TR\u2122 are not necessarily indicative of future changes, positive or negative, in the closing levels of the DBIQ-OY CL TR\u2122. Past Index results are not necessarily indicative of future changes, positive or negative, in the Index closing levels.\nThe section \u201cSummary of the DBIQ-OY CL TR\u2122 and Underlying Index Commodity Returns for the Years Ended December 31, 2022 and 2021.\u201d below provides an overview of the changes in the closing levels of DBIQ-OY CL TR\u2122 by disclosing the change in market value of the underlying component Index Commodity through a \u201csurrogate\u201d (and analogous) index plus 3-month United States Treasury Obligations returns. Please note also that the Fund\u2019s objective is to track the Index (not the DBIQ-OY CL TR\u2122), and the Fund does not attempt to outperform or underperform the Index. The Index employs the optimum yield roll method with the objective of mitigating the negative effects of contango, the condition in which distant delivery prices for futures exceed spot prices, and maximizing the positive effects of backwardation, a condition opposite of contango.\nSummary of the DBIQ-OY CL TR\u2122 and Underlying Index Commodity Returns for the\nYears Ended December 31, 2022 and 2021",
+   "prose_after": "If the Fund\u2019s Treasury Income, Money Market Income and T-Bill ETF Income were to exceed the Fund\u2019s fees and expenses, the aggregate return on an investment in the Fund would be expected to outperform the Index and underperform the DBIQ-OY CL TR\u2122. The only difference between (i) the Index (the \u201cExcess Return Index\u201d) and (ii) the DBIQ-OY CL TR \u2122 (the \u201cTotal Return Index\u201d) is that the Excess Return Index does not include interest income from fixed income securities while the Total Return Index does include such a component. Thus, the difference between the Excess Return Index and the Total Return Index is attributable entirely to the interest income attributable to the fixed income securities reflected in the Total Return Index. The Total Return Index does not actually hold any fixed income securities. If the Fund\u2019s Treasury Income, Money Market Income and T-Bill ETF Income, if any, exceeds the Fund\u2019s fees and expenses, then the amount of such excess is expected to be distributed periodically. The market price of the Shares is expected to closely track the Excess Return Index. The aggregate return on an investment in the Fund over any period is the sum of the capital appreciation or depreciation of the Shares over the period, plus the amount of any distributions during the period. Consequently, the Fund\u2019s aggregate return is expected to outperform the Excess Return Index by the amount of the excess, if any, of the Fund\u2019s Treasury Income, Money Market Income and T-Bill ETF Income over its fees and expenses. As a result of the Fund\u2019s fees and expenses, however, the aggregate return on the Fund is expected to underperform the Total Return Index. If the Fund\u2019s fees and expenses were to exceed the Fund\u2019s Treasury Income, Money Market Income and T-Bill ETF Income, if any, the aggregate return on an investment in the Fund is expected to underperform the Excess Return Index.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 877,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "Description",
+     "Net Assets",
+     "",
+     "Daily Volatility",
+     "",
+     "",
+     "VaR*\n\n\n\n(99 Percentile)",
+     "",
+     "Number of times\n\n\n\nVaR Exceeded",
+     ""
+    ],
+    [
+     "Invesco DB Oil Fund",
+     "$",
+     "303,570,293",
+     "",
+     "2.09",
+     "%",
+     "$",
+     "14,786,959",
+     "",
+     "16"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "December 31, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 925,
+    "end_line": 934
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": null
+   },
+   "prose_before": "Value at Risk (\u201cVaR\u201d) is a statistical measure of the value of losses that would not be expected to be exceeded over a given time horizon and at a given probability level arising from movement of underlying risk factors. Loss is measured as a decline in the fair value of the portfolio as a result of changes in any of the material variables by which fair values are determined. VaR is measured over a specified holding period (one day) and to a specified level of statistical confidence (99th percentile). However, the inherent uncertainty in the markets in which the Fund trades and the recurrence in the markets traded by the Fund of market movements far exceeding expectations could result in actual trading or non-trading losses far beyond the indicated VaR or the Fund\u2019s experience to date (i.e., \u201crisk of ruin\u201d). In light of these considerations, as well as the risks and uncertainties intrinsic to all future projections, the following VaR presentation does not constitute any assurance or representation that the Fund\u2019s losses in any market sector will be limited to VaR.\nTHE FUND\u2019S TRADING VALUE AT RISK\nThe Fund calculates VaR using the actual historical market movements of the Fund\u2019s net assets.\nThe following table indicates the trading VaR associated with the Fund\u2019s net assets as of December 31, 2022.",
+   "prose_after": "The following table indicates the trading VaR associated with the Fund\u2019s net assets as of December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Year Ended",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Description",
+     "Net Assets",
+     "",
+     "Daily Volatility",
+     "",
+     "",
+     "VaR*\n\n\n\n(99 Percentile)",
+     "",
+     "Number of times\n\n\n\nVaR Exceeded",
+     ""
+    ],
+    [
+     "Invesco DB Oil Fund",
+     "$",
+     "434,588,053",
+     "",
+     "1.69",
+     "%",
+     "$",
+     "17,114,509",
+     "",
+     "7"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended",
+    "December 31, 2021"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 937,
+    "end_line": 946
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7A",
+     "title": "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK"
+    },
+    "note": null
+   },
+   "prose_before": "The following table indicates the trading VaR associated with the Fund\u2019s net assets as of December 31, 2021.",
+   "prose_after": "* The VaR represents the one day downside risk, under normal market conditions, with a 99% confidence level. It is calculated using historical market moves of the Fund\u2019s net assets and uses a one year look back.\nTHE FUND\u2019S NON-TRADING MARKET RISK\nThe Fund has non-trading market risk as a result of investing in short-term United States Treasury Obligations, T-Bill ETFs and money market mutual funds. The market risk represented by these investments is not expected to be material. Although the Fund purchases and sells shares of T-Bill ETFs on an exchange, it does not establish or liquidate those positions for trading purposes.\nQUALITATIVE DISCLOSURES REGARDING PRIMARY TRADING MARKET RISK EXPOSURES\nThe following qualitative disclosures regarding the Fund\u2019s market risk exposures\u2014except for those disclosures that are statements of historical fact\u2014constitute forward-looking statements within the meaning of Section 27A of the Securities Act and Section 21E of the Exchange Act. The Fund\u2019s primary market risk exposures are subject to numerous uncertainties, contingencies and risks. Government interventions, defaults and expropriations, illiquid markets, the emergence of dominant fundamental factors, political upheavals, changes in historical price relationships, an influx of new market participants, increased regulation and many other factors could result in material losses as well as in material changes to the risk exposures of the Fund. The Fund\u2019s current market exposure may change materially. Investors may lose all or substantially all of their investment in the Fund.",
+   "structured_location": {
+    "item": "ITEM 7A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 910,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Documents",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Management on Internal Control Over Financial Reporting",
+     "32"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm (PCAOB ID 238)",
+     "33"
+    ],
+    [
+     "Statements of Financial Condition as of December 31, 2022 and 2021",
+     "35"
+    ],
+    [
+     "Schedule of Investments as of December 31, 2022",
+     "36"
+    ],
+    [
+     "Schedule of Investments as of December 31, 2021",
+     "37"
+    ],
+    [
+     "Statements of Income and Expenses for the Years Ended December 31, 2022, 2021 and 2020",
+     "38"
+    ],
+    [
+     "Statement of Changes in Shareholders\u2019 Equity for the Year Ended December 31, 2022",
+     "39"
+    ],
+    [
+     "Statement of Changes in Shareholders\u2019 Equity for the Year Ended December 31, 2021",
+     "40"
+    ],
+    [
+     "Statement of Changes in Shareholders\u2019 Equity for the Year Ended December 31, 2020",
+     "41"
+    ],
+    [
+     "Statements of Cash Flows for the Years Ended December 31, 2022, 2021 and 2020",
+     "42"
+    ],
+    [
+     "Notes to Financial Statements",
+     "43"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 977,
+    "end_line": 993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "QUALITATIVE DISCLOSURES REGARDING NON-TRADING MARKET RISK EXPOSURE\nAs noted above, the Fund has non-trading market risk as a result of investing in short-term United States Treasury Obligations, T-Bill ETFs and money market mutual funds. The market risk represented by these investments is not expected to be material.\nQUALITATIVE DISCLOSURES REGARDING MEANS OF MANAGING RISK EXPOSURE\nUnder ordinary circumstances, the Managing Owner\u2019s exercise of discretionary power is limited to determining whether the Fund will make a distribution. Under emergency or extraordinary circumstances, the Managing Owner\u2019s use of its discretionary powers may increase. These special circumstances, for example, include the unavailability of the Index or certain natural or manmade disasters. The Managing Owner does not actively manage the Fund to avoid losses. The Fund only takes long positions in investments and does not employ \u201cstop-loss\u201d techniques.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nIndex to Financial Statements",
+   "prose_after": "Report of Management on Internal Control\nOver Financial Reporting\nManagement of Invesco Capital Management LLC, as managing owner (the \u201cManaging Owner\u201d) of Invesco DB Oil Fund (the \u201cFund\u201d), is responsible for establishing and maintaining adequate internal control over financial reporting, as defined in Rules 13a-15(f) and 15d-15(f) of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). Internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles\nBecause of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 972,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/S/    ANNA PAGLIA"
+    ],
+    [
+     "Name:",
+     "Anna Paglia"
+    ],
+    [
+     "Title:",
+     "Principal Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/S/    KELLI GALLEGOS"
+    ],
+    [
+     "Name:",
+     "Kelli Gallegos"
+    ],
+    [
+     "Title:",
+     "Principal Financial and Accounting Officer,\n\n\n\nInvestment Pools"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1007,
+    "end_line": 1020
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Because of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.\nWe, Anna Paglia, Principal Executive Officer, and Kelli Gallegos, Principal Financial and Accounting Officer, Investment Pools, of the Managing Owner, assessed the effectiveness of the Fund\u2019s internal control over financial reporting as of December 31, 2022. In making this assessment, we used the criteria set forth by the Committee of Sponsoring Organizations of the Treadway Commission (\u201cCOSO\u201d) in Internal Control\u2014Integrated Framework (2013). Based on our assessment and those criteria, we have concluded that the Fund maintained effective internal control over financial reporting as of December 31, 2022.\nThe Fund\u2019s independent registered public accounting firm, PricewaterhouseCoopers LLP, has audited the Fund\u2019s internal control over financial reporting as of December 31, 2022, as stated in their report on page 33 of the Fund\u2019s Annual Report on Form 10-K.",
+   "prose_after": "February 23, 2023\nReport of Independent Registered Public Accounting Firm\nTo the Board of Managers of Invesco Capital Management LLC (as Managing Owner of Invesco DB Multi-Sector Commodity Trust) and Shareholders of Invesco DB Oil Fund\nOpinions on the Financial Statements and Internal Control over Financial Reporting\nWe have audited the accompanying statements of financial condition, including the schedules of investments, of Invesco DB Oil Fund (one of the funds constituting Invesco DB Multi-Sector Commodity Trust, hereafter referred to as the \u201cFund\u201d) as of December 31, 2022 and 2021, and the related statements of income and expenses, of changes in shareholders\u2019 equity and of cash flows for each of the three years in the period ended December 31, 2022, including the related notes (collectively referred to as the \u201cfinancial statements\u201d). We also have audited the Fund's internal control over financial reporting as of December 31, 2022, based on criteria established in Internal Control - Integrated Framework (2013) issued by the Committee of Sponsoring Organizations of the Treadway Commission (COSO).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1023,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States Treasury Obligations, at value (cost $137,565,846 and $83,007,439, respectively)",
+     "$",
+     "137,598,060",
+     "$",
+     "83,008,558"
+    ],
+    [
+     "Affiliated Investments, at value (cost $159,226,834 and $362,050,622, respectively)",
+     "",
+     "159,154,074",
+     "",
+     "361,947,746"
+    ],
+    [
+     "Other investments:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Variation margin receivable- Commodity Futures Contracts",
+     "",
+     "6,560,320",
+     "\u2014",
+     ""
+    ],
+    [
+     "Receivable for:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends from affiliates",
+     "",
+     "445,382",
+     "",
+     "6,405"
+    ],
+    [
+     "Total assets",
+     "$",
+     "303,757,836",
+     "$",
+     "444,962,709"
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other investments:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Variation margin payable- Commodity Futures Contracts",
+     "$",
+     "\u2014",
+     "$",
+     "10,101,140"
+    ],
+    [
+     "Payable for:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management fees",
+     "",
+     "182,768",
+     "",
+     "268,440"
+    ],
+    [
+     "Brokerage commissions and fees",
+     "",
+     "4,775",
+     "",
+     "5,076"
+    ],
+    [
+     "Total liabilities",
+     "",
+     "187,543",
+     "",
+     "10,374,656"
+    ],
+    [
+     "Commitments and Contingencies (Note 10)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholder's equity\u2014General Shares",
+     "",
+     "607",
+     "",
+     "540"
+    ],
+    [
+     "Shareholders' equity\u2014Shares",
+     "",
+     "303,569,686",
+     "",
+     "434,587,513"
+    ],
+    [
+     "Total shareholders' equity",
+     "",
+     "303,570,293",
+     "",
+     "434,588,053"
+    ],
+    [
+     "Total liabilities and equity",
+     "$",
+     "303,757,836",
+     "$",
+     "444,962,709"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General Shares outstanding",
+     "40",
+     "",
+     "",
+     "40"
+    ],
+    [
+     "Shares outstanding",
+     "",
+     "20,000,000",
+     "",
+     "32,200,000"
+    ],
+    [
+     "Net asset value per share",
+     "",
+     "15.18",
+     "$",
+     "13.50"
+    ],
+    [
+     "Market value per share",
+     "$",
+     "15.21",
+     "$",
+     "13.57"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1067,
+    "end_line": 1106
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "A company\u2019s internal control over financial reporting is a process designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with generally accepted accounting principles. A company\u2019s internal control over financial reporting includes those policies and procedures that (i) pertain to the maintenance of records that, in reasonable detail, accurately and fairly reflect the transactions and dispositions of the assets of the company; (ii) provide reasonable assurance that transactions are recorded as necessary to permit preparation of financial statements in accordance with generally accepted accounting principles, and that receipts and expenditures of the company are being made only in accordance with authorizations of management and directors of the company; and (iii) provide reasonable assurance regarding prevention or timely detection of unauthorized acquisition, use, or disposition of the company\u2019s assets that could have a material effect on the financial statements.\nBecause of its inherent limitations, internal control over financial reporting may not prevent or detect misstatements. Also, projections of any evaluation of effectiveness to future periods are subject to the risk that controls may become inadequate because of changes in conditions, or that the degree of compliance with the policies or procedures may deteriorate.\nCritical Audit Matters\nCritical audit matters are matters arising from the current period audit of the financial statements that were communicated or required to be communicated to the audit committee and that (i) relate to accounts or disclosures that are material to the financial statements and (ii) involved our especially challenging, subjective, or complex judgments. We determined there are no critical audit matters.\n/s/PricewaterhouseCoopers LLP\nChicago, Illinois\nFebruary 23, 2023\nWe have served as the Fund\u2019s auditor since 2013.\nStatements of Financial Condition\nDecember 31, 2022 and 2021",
+   "prose_after": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.\nSchedule of Investments\nDecember 31, 2022",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1061,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1109,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Percentage of\n\n\n\nShareholders'\n\n\n\nEquity",
+     "",
+     "",
+     "Value",
+     "",
+     "Principal Value",
+     ""
+    ],
+    [
+     "United States Treasury Obligations (a)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury Bill, 3.340% due January 5, 2023",
+     "",
+     "27.99",
+     "%",
+     "$",
+     "84,982,858",
+     "$",
+     "85,000,000"
+    ],
+    [
+     "U.S. Treasury Bill, 4.285% due March 2, 2023",
+     "",
+     "8.18",
+     "",
+     "",
+     "24,829,469",
+     "",
+     "25,000,000"
+    ],
+    [
+     "U.S. Treasury Bill, 4.270% due March 9, 2023",
+     "",
+     "9.15",
+     "",
+     "",
+     "27,785,733",
+     "",
+     "28,000,000"
+    ],
+    [
+     "Total United States Treasury Obligations (cost $137,565,846)",
+     "",
+     "45.32",
+     "%",
+     "$",
+     "137,598,060",
+     "",
+     ""
+    ],
+    [
+     "Affiliated Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     ""
+    ],
+    [
+     "Exchange-Traded Fund",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Treasury Collateral ETF (cost $53,954,170)(b)(c)",
+     "",
+     "17.75",
+     "%",
+     "",
+     "53,881,410",
+     "",
+     "511,500"
+    ],
+    [
+     "Money Market Mutual Fund",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Government & Agency Portfolio,\n\n\n\n   Institutional Class, 4.22% (cost $105,272,664)(b)(d)",
+     "",
+     "34.68",
+     "",
+     "",
+     "105,272,664",
+     "",
+     "105,272,664"
+    ],
+    [
+     "Total Affiliated Investments (cost $159,226,834)",
+     "",
+     "52.43",
+     "%",
+     "$",
+     "159,154,074",
+     "",
+     ""
+    ],
+    [
+     "Total Investments in Securities (cost $296,792,680)",
+     "",
+     "97.75",
+     "%",
+     "$",
+     "296,752,134",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1115,
+    "end_line": 1142
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.\nSchedule of Investments\nDecember 31, 2022",
+   "prose_after": "(a) Security may be traded on a discount basis. The interest rate shown represents the discount rate at the most recent auction date of the security prior to period end.\n(b) Affiliated issuer. The issuer and/or the Fund is a wholly-owned subsidiary of Invesco Ltd., or is affiliated by having an investment adviser that is under common control of Invesco Ltd. See Note 8.\n(c) All or a portion of the value was pledged as collateral to cover margin requirements for open futures contracts. See Note 2J.\n(d) The rate shown is the 7-day SEC standardized yield as of December 31, 2022.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1109,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Open Commodity Futures Contracts",
+     "Number of Contracts",
+     "",
+     "Expiration Date",
+     "Notional\n\n\n\nValue",
+     "",
+     "Value(e)",
+     "",
+     "Unrealized\n\n\n\nAppreciation\n\n\n\n(Depreciation)(e)",
+     ""
+    ],
+    [
+     "Long Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NYMEX WTI Crude",
+     "",
+     "3,952",
+     "December - 2023",
+     "$",
+     "303,474,080",
+     "$",
+     "12,206,370",
+     "$",
+     "12,206,370"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1151,
+    "end_line": 1163
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "(a) Security may be traded on a discount basis. The interest rate shown represents the discount rate at the most recent auction date of the security prior to period end.\n(b) Affiliated issuer. The issuer and/or the Fund is a wholly-owned subsidiary of Invesco Ltd., or is affiliated by having an investment adviser that is under common control of Invesco Ltd. See Note 8.\n(c) All or a portion of the value was pledged as collateral to cover margin requirements for open futures contracts. See Note 2J.\n(d) The rate shown is the 7-day SEC standardized yield as of December 31, 2022.",
+   "prose_after": "(e) Unrealized Appreciation (Depreciation) and Value are presented above, net by contract.\nSee accompanying Notes to Financial Statements which are an integral part of the financial statements.\nSchedule of Investments\nDecember 31, 2021",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1109,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Percentage of\n\n\n\nShareholders'\n\n\n\nEquity",
+     "",
+     "",
+     "Value",
+     "",
+     "Principal Value",
+     ""
+    ],
+    [
+     "United States Treasury Obligations (a)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. Treasury Bills, 0.040% due January 6, 2022 (b)",
+     "",
+     "7.13",
+     "%",
+     "$",
+     "31,000,003",
+     "$",
+     "31,000,000"
+    ],
+    [
+     "U.S. Treasury Bills, 0.050% due January 13, 2022 (b)",
+     "",
+     "4.60",
+     "%",
+     "$",
+     "19,999,944",
+     "$",
+     "20,000,000"
+    ],
+    [
+     "U.S. Treasury Bills, 0.050% due February 3, 2022 (b)",
+     "",
+     "7.38",
+     "",
+     "",
+     "32,008,611",
+     "",
+     "32,009,300"
+    ],
+    [
+     "Total United States Treasury Obligations (cost $83,007,439)",
+     "",
+     "19.11",
+     "%",
+     "$",
+     "83,008,558",
+     "",
+     ""
+    ],
+    [
+     "Affiliated Investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     ""
+    ],
+    [
+     "Exchange-Traded Fund",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Treasury Collateral ETF (cost $44,053,438)(c)",
+     "",
+     "10.11",
+     "%",
+     "",
+     "43,950,562",
+     "",
+     "416,100"
+    ],
+    [
+     "Money Market Mutual Fund",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Government & Agency Portfolio,\n\n\n\n   Institutional Class, 0.03% (cost $317,997,184)(c)(d)",
+     "",
+     "73.17",
+     "",
+     "",
+     "317,997,184",
+     "",
+     "317,997,184"
+    ],
+    [
+     "Total Affiliated Investments (cost $362,050,622)",
+     "",
+     "83.28",
+     "%",
+     "$",
+     "361,947,746",
+     "",
+     ""
+    ],
+    [
+     "Total Investments in Securities (cost $445,058,061)",
+     "",
+     "102.39",
+     "%",
+     "$",
+     "444,956,304",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1174,
+    "end_line": 1201
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "(e) Unrealized Appreciation (Depreciation) and Value are presented above, net by contract.\nSee accompanying Notes to Financial Statements which are an integral part of the financial statements.\nSchedule of Investments\nDecember 31, 2021",
+   "prose_after": "(a) Security may be traded on a discount basis. The interest rate shown represents the discount rate at the most recent auction date of the security prior to period end.\n(b) United States Treasury Obligations of $80,991,900 are on deposit with the Commodity Broker and held as maintenance margin for open futures contracts.\n(c) Affiliated company. The issuer and/or the Fund is a wholly-owned subsidiary of Invesco Ltd., or is affiliated by having an investment adviser that is under common control of Invesco Ltd. See Note 8.\n(d) The rate shown is the 7-day SEC standardized yield as of December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Open Commodity Futures Contracts",
+     "Number of Contracts",
+     "",
+     "Expiration Date",
+     "Notional\n\n\n\nValue",
+     "",
+     "Value(e)",
+     "",
+     "Unrealized\n\n\n\nAppreciation\n\n\n\n(Depreciation)(e)",
+     ""
+    ],
+    [
+     "Long Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NYMEX WTI Crude",
+     "",
+     "6,274",
+     "December - 2022",
+     "$",
+     "434,662,720",
+     "$",
+     "21,028,832",
+     "$",
+     "21,028,832"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1222
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "(a) Security may be traded on a discount basis. The interest rate shown represents the discount rate at the most recent auction date of the security prior to period end.\n(b) United States Treasury Obligations of $80,991,900 are on deposit with the Commodity Broker and held as maintenance margin for open futures contracts.\n(c) Affiliated company. The issuer and/or the Fund is a wholly-owned subsidiary of Invesco Ltd., or is affiliated by having an investment adviser that is under common control of Invesco Ltd. See Note 8.\n(d) The rate shown is the 7-day SEC standardized yield as of December 31, 2020.",
+   "prose_after": "(e) Unrealized Appreciation (Depreciation) and Value are presented above, net by contract.\nSee accompanying Notes to Financial Statements which are an integral part of the financial statements.\nStatements of Income and Expenses\nFor the Years Ended December 31, 2022, 2021 and 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1168,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Income",
+     "$",
+     "2,344,706",
+     "",
+     "$",
+     "82,478",
+     "",
+     "$",
+     "697,320",
+     ""
+    ],
+    [
+     "Dividends from Affiliates",
+     "",
+     "3,098,635",
+     "",
+     "",
+     "76,192",
+     "",
+     "",
+     "537,097",
+     ""
+    ],
+    [
+     "Total Income",
+     "",
+     "5,443,341",
+     "",
+     "",
+     "158,670",
+     "",
+     "",
+     "1,234,417",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Management Fee",
+     "",
+     "3,290,210",
+     "",
+     "",
+     "3,619,439",
+     "",
+     "",
+     "2,896,197",
+     ""
+    ],
+    [
+     "Brokerage Commissions and Fees",
+     "",
+     "35,103",
+     "",
+     "",
+     "103,966",
+     "",
+     "",
+     "96,352",
+     ""
+    ],
+    [
+     "Interest Expense",
+     "",
+     "74,310",
+     "",
+     "",
+     "13,470",
+     "",
+     "",
+     "23,876",
+     ""
+    ],
+    [
+     "Total Expenses",
+     "",
+     "3,399,623",
+     "",
+     "",
+     "3,736,875",
+     "",
+     "",
+     "3,016,425",
+     ""
+    ],
+    [
+     "Less: Waivers",
+     "",
+     "(175,148)",
+     "",
+     "",
+     "(99,518)",
+     "",
+     "",
+     "(298,442)",
+     ""
+    ],
+    [
+     "Net Expenses",
+     "",
+     "3,224,475",
+     "",
+     "",
+     "3,637,357",
+     "",
+     "",
+     "2,717,983",
+     ""
+    ],
+    [
+     "Net Investment Income (Loss)",
+     "",
+     "2,218,866",
+     "",
+     "",
+     "(3,478,687)",
+     "",
+     "",
+     "(1,483,566)",
+     ""
+    ],
+    [
+     "Net Realized and Net Change in Unrealized Gain (Loss) on\n\n\n\n   United States Treasury Obligations, Affiliated Investments\n\n\n\n   and Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Realized Gain (Loss) on",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States Treasury Obligations",
+     "",
+     "(1)",
+     "",
+     "",
+     "1,505",
+     "",
+     "",
+     "2,548",
+     ""
+    ],
+    [
+     "Affiliated Investments",
+     "",
+     "(100,756)",
+     "",
+     "",
+     "(19,162)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Capital gain distributions from Affiliated Investments",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,452",
+     "",
+     "",
+     "24,612",
+     ""
+    ],
+    [
+     "Commodity Futures Contracts",
+     "",
+     "83,926,816",
+     "",
+     "",
+     "352,665,440",
+     "",
+     "",
+     "(74,450,122)",
+     ""
+    ],
+    [
+     "Net Realized Gain (Loss)",
+     "",
+     "83,826,059",
+     "",
+     "",
+     "352,655,235",
+     "",
+     "",
+     "(74,422,962)",
+     ""
+    ],
+    [
+     "Net Change in Unrealized Gain (Loss) on",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States Treasury Obligations",
+     "",
+     "31,095",
+     "",
+     "",
+     "(8,206)",
+     "",
+     "",
+     "(46,618)",
+     ""
+    ],
+    [
+     "Affiliated Investments",
+     "",
+     "30,116",
+     "",
+     "",
+     "(1,007)",
+     "",
+     "",
+     "(109,735)",
+     ""
+    ],
+    [
+     "Commodity Futures Contracts",
+     "",
+     "(8,822,462)",
+     "",
+     "",
+     "(120,422,535)",
+     "",
+     "",
+     "119,289,041",
+     ""
+    ],
+    [
+     "Net Change in Unrealized Gain (Loss)",
+     "",
+     "(8,761,251)",
+     "",
+     "",
+     "(120,431,748)",
+     "",
+     "",
+     "119,132,688",
+     ""
+    ],
+    [
+     "Net Realized and Net Change in Unrealized Gain (Loss) on\n\n\n\n   United States Treasury Obligations, Affiliated\n\n\n\n   Investments and Commodity Futures Contracts",
+     "",
+     "75,064,808",
+     "",
+     "",
+     "232,223,487",
+     "",
+     "",
+     "44,709,726",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "77,283,674",
+     "",
+     "$",
+     "228,744,800",
+     "",
+     "$",
+     "43,226,160",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1233,
+    "end_line": 1283
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "(e) Unrealized Appreciation (Depreciation) and Value are presented above, net by contract.\nSee accompanying Notes to Financial Statements which are an integral part of the financial statements.\nStatements of Income and Expenses\nFor the Years Ended December 31, 2022, 2021 and 2020",
+   "prose_after": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1227,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1286,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "General Shares",
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Total\n\n\n\nEquity",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Total\n\n\n\nEquity",
+     "",
+     "",
+     "Shareholders'\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "40",
+     "",
+     "",
+     "540",
+     "",
+     "",
+     "32,200,000",
+     "",
+     "",
+     "434,587,513",
+     "",
+     "$",
+     "434,588,053",
+     ""
+    ],
+    [
+     "Purchases of Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,500,000",
+     "",
+     "",
+     "88,640,859",
+     "",
+     "",
+     "88,640,859",
+     ""
+    ],
+    [
+     "Redemption of Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(17,700,000)",
+     "",
+     "",
+     "(294,877,963)",
+     "",
+     "",
+     "(294,877,963)",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) due to Share Transactions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(12,200,000)",
+     "",
+     "",
+     "(206,237,104)",
+     "",
+     "",
+     "(206,237,104)",
+     ""
+    ],
+    [
+     "Return of Capital Distributions",
+     "",
+     "",
+     "",
+     "(4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,064,326)",
+     "",
+     "",
+     "(2,064,330)",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Investment Income (Loss)",
+     "",
+     "",
+     "",
+     "4",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,218,862",
+     "",
+     "",
+     "2,218,866",
+     ""
+    ],
+    [
+     "Net Realized Gain (Loss) on United States Treasury\n\n\n\n   Obligations, Affiliated Investments and\n\n\n\n   Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "75",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "83,825,984",
+     "",
+     "",
+     "83,826,059",
+     ""
+    ],
+    [
+     "Net Change in Unrealized Gain (Loss) on United\n\n\n\n   States Treasury Obligations, Affiliated Investments\n\n\n\n   and Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "(8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(8,761,243)",
+     "",
+     "",
+     "(8,761,251)",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "",
+     "",
+     "71",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "77,283,603",
+     "",
+     "",
+     "77,283,674",
+     ""
+    ],
+    [
+     "Net Change in Shareholders' Equity",
+     "",
+     "\u2014",
+     "",
+     "67",
+     "",
+     "",
+     "(12,200,000)",
+     "",
+     "",
+     "(131,017,827)",
+     "",
+     "",
+     "(131,017,760)",
+     ""
+    ],
+    [
+     "Balance at December 31, 2022",
+     "40",
+     "",
+     "$",
+     "607",
+     "",
+     "",
+     "20,000,000",
+     "",
+     "$",
+     "303,569,686",
+     "",
+     "$",
+     "303,570,293",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1288,
+    "end_line": 1322
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.",
+   "prose_after": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1286,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "General Shares",
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Total\n\n\n\nEquity",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Total\n\n\n\nEquity",
+     "",
+     "",
+     "Shareholders'\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "40",
+     "",
+     "$",
+     "338",
+     "",
+     "",
+     "51,300,000",
+     "",
+     "$",
+     "433,845,433",
+     "",
+     "$",
+     "433,845,771",
+     ""
+    ],
+    [
+     "Purchases of Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6,600,000",
+     "",
+     "",
+     "83,951,741",
+     "",
+     "",
+     "83,951,741",
+     ""
+    ],
+    [
+     "Redemption of Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(25,700,000)",
+     "",
+     "",
+     "(311,954,259)",
+     "",
+     "",
+     "(311,954,259)",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) due to Share Transactions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(19,100,000)",
+     "",
+     "",
+     "(228,002,518)",
+     "",
+     "",
+     "(228,002,518)",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Investment Income (Loss)",
+     "",
+     "",
+     "",
+     "(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3,478,684)",
+     "",
+     "",
+     "(3,478,687)",
+     ""
+    ],
+    [
+     "Net Realized Gain (Loss) on United States Treasury\n\n\n\n   Obligations, Affiliated Investments and\n\n\n\n   Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "311",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "352,654,924",
+     "",
+     "",
+     "352,655,235",
+     ""
+    ],
+    [
+     "Net Change in Unrealized Gain (Loss) on United\n\n\n\n   States Treasury Obligations, Affiliated Investments\n\n\n\n   and Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "(106)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(120,431,642)",
+     "",
+     "",
+     "(120,431,748)",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "",
+     "",
+     "202",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "228,744,598",
+     "",
+     "",
+     "228,744,800",
+     ""
+    ],
+    [
+     "Net Change in Shareholders' Equity",
+     "",
+     "\u2014",
+     "",
+     "202",
+     "",
+     "",
+     "(19,100,000)",
+     "",
+     "",
+     "742,080",
+     "",
+     "",
+     "742,282",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "40",
+     "",
+     "$",
+     "540",
+     "",
+     "",
+     "32,200,000",
+     "",
+     "$",
+     "434,587,513",
+     "",
+     "$",
+     "434,588,053",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1327,
+    "end_line": 1360
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.",
+   "prose_after": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1325,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "General Shares",
+     "",
+     "",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Total\n\n\n\nEquity",
+     "",
+     "",
+     "Shares",
+     "",
+     "",
+     "Total\n\n\n\nEquity",
+     "",
+     "",
+     "Shareholders'\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "",
+     "40",
+     "$",
+     "427",
+     "",
+     "",
+     "23,000,000",
+     "",
+     "$",
+     "245,314,950",
+     "",
+     "$",
+     "245,315,377",
+     ""
+    ],
+    [
+     "Purchases of Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "64,900,000",
+     "",
+     "",
+     "398,097,510",
+     "",
+     "",
+     "398,097,510",
+     ""
+    ],
+    [
+     "Redemption of Shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(36,600,000)",
+     "",
+     "",
+     "(252,793,276)",
+     "",
+     "",
+     "(252,793,276)",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) due to Share Transactions",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "28,300,000",
+     "",
+     "",
+     "145,304,234",
+     "",
+     "",
+     "145,304,234",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Investment Income (Loss)",
+     "",
+     "",
+     "",
+     "(0)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,483,569)",
+     "",
+     "",
+     "(1,483,566)",
+     ""
+    ],
+    [
+     "Net Realized Gain (Loss) on United States Treasury\n\n\n\n   Obligations, Affiliated Investments and\n\n\n\n   Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "(89)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(74,423,115)",
+     "",
+     "",
+     "(74,422,962)",
+     ""
+    ],
+    [
+     "Net Change in Unrealized Gain (Loss) on United\n\n\n\n    States Treasury Obligations, Affiliated Investments\n\n\n\n    and Commodity Futures Contracts",
+     "",
+     "",
+     "",
+     "0",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "119,132,933",
+     "",
+     "",
+     "119,132,688",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "",
+     "",
+     "",
+     "(89)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "43,226,249",
+     "",
+     "",
+     "43,226,160",
+     ""
+    ],
+    [
+     "Net Change in Shareholders' Equity",
+     "",
+     "\u2014",
+     "",
+     "(89)",
+     "",
+     "",
+     "28,300,000",
+     "",
+     "",
+     "188,530,483",
+     "",
+     "",
+     "188,530,394",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "",
+     "40",
+     "$",
+     "338",
+     "",
+     "",
+     "51,300,000",
+     "",
+     "$",
+     "433,845,433",
+     "",
+     "$",
+     "433,845,771",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1365,
+    "end_line": 1398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.",
+   "prose_after": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.\nStatements of Cash Flows\nFor the Years Ended December 31, 2022, 2021 and 2020",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1363,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1401,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (Loss)",
+     "$",
+     "77,283,674",
+     "",
+     "$",
+     "228,744,800",
+     "",
+     "$",
+     "43,226,160",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income (loss) to net cash provided by (used\n\n\n\nin) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of securities purchased",
+     "",
+     "(448,273,047)",
+     "",
+     "",
+     "(362,948,416)",
+     "",
+     "",
+     "(594,839,253)",
+     ""
+    ],
+    [
+     "Proceeds from securities sold and matured",
+     "",
+     "396,009,300",
+     "",
+     "",
+     "444,999,764",
+     "",
+     "",
+     "588,987,571",
+     ""
+    ],
+    [
+     "Cost of affiliated investments purchased",
+     "",
+     "(1,254,833,145)",
+     "",
+     "",
+     "(1,075,598,134)",
+     "",
+     "",
+     "(1,450,272,197)",
+     ""
+    ],
+    [
+     "Proceeds from affiliated investments sold",
+     "",
+     "1,457,556,177",
+     "",
+     "",
+     "978,344,199",
+     "",
+     "",
+     "1,275,080,413",
+     ""
+    ],
+    [
+     "Net accretion of discount on United States Treasury Obligations",
+     "",
+     "(2,294,661)",
+     "",
+     "",
+     "(82,478)",
+     "",
+     "",
+     "(693,443)",
+     ""
+    ],
+    [
+     "Net realized (gain) loss on United States Treasury Obligations and\n\n\n\n   Affiliated Investments",
+     "",
+     "100,757",
+     "",
+     "",
+     "17,657",
+     "",
+     "",
+     "(2,548)",
+     ""
+    ],
+    [
+     "Net change in unrealized (gain) loss on United States Treasury\n\n\n\n   Obligations and Affiliated Investments",
+     "",
+     "(61,211)",
+     "",
+     "",
+     "9,213",
+     "",
+     "",
+     "156,353",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Variation margin- Commodity Futures Contracts",
+     "",
+     "(16,661,460)",
+     "",
+     "",
+     "11,260,870",
+     "",
+     "",
+     "(3,863,850)",
+     ""
+    ],
+    [
+     "Dividends from affiliates",
+     "",
+     "(438,977)",
+     "",
+     "",
+     "(2,823)",
+     "",
+     "",
+     "56,924",
+     ""
+    ],
+    [
+     "Management fees",
+     "",
+     "(85,672)",
+     "",
+     "",
+     "14,188",
+     "",
+     "",
+     "102,892",
+     ""
+    ],
+    [
+     "Brokerage commissions and fees",
+     "",
+     "(301)",
+     "",
+     "",
+     "333",
+     "",
+     "",
+     "89",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) operating activities",
+     "",
+     "208,301,434",
+     "",
+     "",
+     "224,759,173",
+     "",
+     "",
+     "(142,060,889)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Distributions paid to shareholders",
+     "",
+     "(2,064,330)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from purchases of Shares",
+     "",
+     "88,640,859",
+     "",
+     "",
+     "83,951,741",
+     "",
+     "",
+     "398,097,510",
+     ""
+    ],
+    [
+     "Redemption of Shares",
+     "",
+     "(294,877,963)",
+     "",
+     "",
+     "(311,954,259)",
+     "",
+     "",
+     "(252,793,276)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) financing activities",
+     "",
+     "(208,301,434)",
+     "",
+     "",
+     "(228,002,518)",
+     "",
+     "",
+     "145,304,234",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,243,345)",
+     "",
+     "",
+     "3,243,345",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,243,345",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,243,345",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "74,310",
+     "",
+     "$",
+     "13,470",
+     "",
+     "$",
+     "23,876",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1407,
+    "end_line": 1450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.\nStatements of Cash Flows\nFor the Years Ended December 31, 2022, 2021 and 2020",
+   "prose_after": "See accompanying Notes to Financial Statements which are an integral part of the financial statements.\nNotes to Financial Statements\nDecember 31, 2022\nNote 1 - Organization\nInvesco DB Oil Fund (the \u201cFund\u201d), a separate series of Invesco DB Multi-Sector Commodity Trust (the \u201cTrust\u201d), a Delaware statutory trust organized in seven separate series was formed on August 3, 2006. The term of the Fund is perpetual (unless terminated earlier in certain circumstances) as provided for in the Fifth Amended and Restated Declaration of Trust and Trust Agreement of the Fund, as amended (the \u201cTrust Agreement\u201d). The Fund has an unlimited number of shares authorized for issuance.\nInvesco Capital Management LLC (\u201cInvesco\u201d) has served as the managing owner (the \u201cManaging Owner\u201d), commodity pool operator and commodity trading advisor of the Fund, since February 23, 2015. The Managing Owner holds 40 general shares (the \u201cGeneral Shares\u201d) of the Fund. The fiscal year end of the Fund is December 31st.\nThe Fund seeks to track changes, whether positive or negative, in the level of the DBIQ Optimum Yield Crude Oil Index Excess Return\u2122 (the \u201cIndex\u201d) over time, plus the excess, if any, of the sum of the Fund\u2019s interest income from its holdings of United States Treasury Obligations (\u201cTreasury Income\u201d), dividends from its holdings in money market mutual funds (affiliated or otherwise) (\u201cMoney Market Income\u201d) and dividends or distributions of capital gains from its holdings of T-Bill ETFs (as defined below) (\u201cT-Bill ETF Income\u201d) over the expenses of the Fund. The Fund invests in futures contracts in an attempt to track its Index. The Index is intended to reflect the change in market value of the crude oil sector. The single commodity comprising the Index is Light Sweet Crude Oil (WTI) (the \u201cIndex Commodity\u201d).",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1401,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1453,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31.",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Distributions per General Share",
+     "$",
+     "0.10021",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Distributions per Share",
+     "$",
+     "0.10021",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Distributions paid to General Shares",
+     "$",
+     "4",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Distributions paid to Shares",
+     "$",
+     "2,064,326",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1524,
+    "end_line": 1534
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Pursuant to the Trust Agreement, income and expenses are allocated pro rata to the Managing Owner as holder of the General Shares and to the Shareholders monthly based on their respective percentage interests as of the close of the last trading day of the preceding month. Distributions (other than redemption of units) may be made at the sole discretion of the Managing Owner on a pro rata basis in accordance with the respective capital balances of the shareholders.\nThe Managing Owner has sole discretion in determining what distributions, if any, the Fund will make to shareholders. A distribution for the year ended December 31, 2022 was paid on December 23, 2022 to holders of record as of December 20, 2022 at a rate of $0.10021 for each General Share and Share for a total distribution of $4 to General Shares and $2,064,326 to Shares. No\ndistributions were paid for the years ended December 31, 2021 and 2020.\nThe table below shows distributions per General Share and Share in total for the years presented:",
+   "prose_after": "F. Routine Operational, Administrative and Other Ordinary Expenses\nThe Managing Owner is responsible for all routine operational, administrative and other ordinary expenses of the Fund, including, but not limited to, computer services, the fees and expenses of the Trustee, legal and accounting fees and expenses, tax preparation expenses, filing fees and printing, mailing and duplication costs. The Fund does not reimburse the Managing Owner for the routine operational, administrative and other ordinary expenses of the Fund. Accordingly, such expenses are not reflected in the Statements of Income and Expenses of the Fund.\nG. Non-Recurring Fees and Expenses\nThe Fund pays all non-recurring and unusual fees and expenses, if any, of itself, as determined by the Managing Owner. Non-recurring and unusual fees and expenses include fees and expenses, such as legal claims and liabilities, litigation costs, indemnification expenses or other non-routine expenses. Non-recurring and unusual fees and expenses, by their nature, are unpredictable in terms of timing and amount. For the years ended December 31, 2022, 2021 and 2020, the Fund did not incur such expenses.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1489,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1539,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Investments in Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States Treasury Obligations",
+     "$",
+     "\u2014",
+     "$",
+     "137,598,060",
+     "$",
+     "\u2014",
+     "$",
+     "137,598,060"
+    ],
+    [
+     "Exchange-Traded Fund",
+     "",
+     "53,881,410",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "53,881,410"
+    ],
+    [
+     "Money Market Mutual Fund",
+     "",
+     "105,272,664",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "105,272,664"
+    ],
+    [
+     "Total Investments in Securities",
+     "",
+     "159,154,074",
+     "",
+     "137,598,060",
+     "",
+     "\u2014",
+     "",
+     "296,752,134"
+    ],
+    [
+     "Other Investments - Assets(a)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity Futures Contracts",
+     "",
+     "12,206,370",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "12,206,370"
+    ],
+    [
+     "Total Investments",
+     "$",
+     "171,360,444",
+     "$",
+     "137,598,060",
+     "$",
+     "\u2014",
+     "$",
+     "308,958,504"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1635,
+    "end_line": 1651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Additional Valuation Information"
+    }
+   },
+   "prose_before": "Level 2: Prices are determined using other significant observable inputs. Observable inputs are inputs that other market participants may use in pricing a security. These may include quoted prices for similar securities, interest rates, prepayment speeds, credit risk, yield curves, loss severities, default rates, discount rates, volatilities and others.\nLevel 3: Prices are determined using significant unobservable inputs. In situations where quoted prices or observable inputs are unavailable (for example, when there is little or no market activity for an investment at the end of the period), unobservable inputs may be used. Unobservable inputs reflect the Fund\u2019s own assumptions about the factors market participants would use in determining fair value of the securities or instruments and would be based on the best available information.\nThe levels assigned to the securities valuations may not be an indication of the risk or liquidity associated with investing in those securities. Because of the inherent uncertainties of valuation, the values reflected in the financial statements may materially differ from the value received upon actual sale of those investments.\nThe following is a summary of the tiered valuation input levels as of December 31, 2022:",
+   "prose_after": "(a) Unrealized appreciation (depreciation).\nThe following is a summary of the tiered valuation input levels as of December 31, 2021:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Investments in Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States Treasury Obligations",
+     "$",
+     "\u2014",
+     "$",
+     "83,008,558",
+     "$",
+     "\u2014",
+     "$",
+     "83,008,558"
+    ],
+    [
+     "Exchange-Traded Fund",
+     "",
+     "43,950,562",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "43,950,562"
+    ],
+    [
+     "Money Market Mutual Fund",
+     "",
+     "317,997,184",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "317,997,184"
+    ],
+    [
+     "Total Investments in Securities",
+     "",
+     "361,947,746",
+     "",
+     "83,008,558",
+     "",
+     "\u2014",
+     "",
+     "444,956,304"
+    ],
+    [
+     "Other Investments - Assets(a)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity Futures Contracts",
+     "",
+     "21,028,832",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "21,028,832"
+    ],
+    [
+     "Total Investments",
+     "$",
+     "382,976,578",
+     "$",
+     "83,008,558",
+     "$",
+     "\u2014",
+     "$",
+     "465,985,136"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1656,
+    "end_line": 1672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Additional Valuation Information"
+    }
+   },
+   "prose_before": "(a) Unrealized appreciation (depreciation).\nThe following is a summary of the tiered valuation input levels as of December 31, 2021:",
+   "prose_after": "(a) Unrealized appreciation (depreciation).\nNote 7 \u2013 Derivative Instruments\nThe Fair Value of Derivative Instruments is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk Exposure/Derivative Type (a)",
+     "Assets",
+     "",
+     "Liabilities",
+     "",
+     "Assets",
+     "",
+     "Liabilities",
+     ""
+    ],
+    [
+     "Commodity risk",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity Futures Contracts",
+     "$",
+     "12,206,370",
+     "$",
+     "\u2014",
+     "$",
+     "21,028,832",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1679,
+    "end_line": 1689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Derivative Instruments"
+    }
+   },
+   "prose_before": "(a) Unrealized appreciation (depreciation).\nNote 7 \u2013 Derivative Instruments\nThe Fair Value of Derivative Instruments is as follows:",
+   "prose_after": "(a) Includes cumulative appreciation (depreciation) of commodity futures contracts. Only the current day\u2019s variation margin receivable (payable) is reported in the December 31, 2022 and December 31, 2021 Statements of Financial Condition.\nThe Effect of Derivative Instruments on the Statements of Income and Expenses is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Location of Gain or (Loss) on Derivatives",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Risk Exposure/Derivative Type",
+     "Recognized in Income",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Commodity risk",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commodity Futures Contracts",
+     "Net Realized Gain (Loss)",
+     "$",
+     "83,926,816",
+     "",
+     "$",
+     "352,665,440",
+     "",
+     "$",
+     "(74,450,122)",
+     ""
+    ],
+    [
+     "",
+     "Net Change in Unrealized Gain (Loss)",
+     "",
+     "(8,822,462)",
+     "",
+     "",
+     "(120,422,535)",
+     "",
+     "",
+     "119,289,041",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "75,104,354",
+     "",
+     "$",
+     "232,242,905",
+     "",
+     "$",
+     "44,838,919",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1694,
+    "end_line": 1706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Derivative Instruments"
+    }
+   },
+   "prose_before": "(a) Includes cumulative appreciation (depreciation) of commodity futures contracts. Only the current day\u2019s variation margin receivable (payable) is reported in the December 31, 2022 and December 31, 2021 Statements of Financial Condition.\nThe Effect of Derivative Instruments on the Statements of Income and Expenses is as follows:",
+   "prose_after": "The table below summarizes the average monthly notional value of futures contracts outstanding during the period:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Average Notional Value",
+     "$",
+     "430,084,320",
+     "$",
+     "473,457,458",
+     "$",
+     "383,268,320"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1709,
+    "end_line": 1716
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Derivative Instruments"
+    }
+   },
+   "prose_before": "The table below summarizes the average monthly notional value of futures contracts outstanding during the period:",
+   "prose_after": "Note 8 - Investments in Affiliates\nThe Invesco Treasury Collateral ETF is an investment company registered under the Investment Company Act of 1940, as amended, whose shares are primarily purchased and sold on a national securities exchange. In seeking its investment objective, the Invesco Treasury Collateral ETF primarily holds U.S. Treasury Obligations that: (i) are issued in U.S. Dollars; (ii) have a minimum remaining maturity of at least one month and a maximum remaining maturity of 12 months at the time of rebalance; and (iii) have a minimum amount outstanding of $300 million. Because it is advised by the Managing Owner, the Invesco Treasury Collateral ETF is an affiliate of the Fund.\nThe Invesco Premier U.S. Government Money Portfolio, Invesco Government & Agency Portfolio and the Fund are advised by investment advisers under common control of Invesco Ltd., and therefore the Invesco Premier U.S. Government Money Portfolio and Invesco Government & Agency Portfolio are considered to be affiliated with the Fund.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1632,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Value 12/31/2021",
+     "",
+     "Purchases at Cost",
+     "",
+     "Proceeds from Sales",
+     "",
+     "",
+     "Change in Unrealized Appreciation\n\n\n\n(Depreciation)",
+     "",
+     "Realized Gain\n\n\n\n(Loss)",
+     "",
+     "",
+     "Value 12/31/2022",
+     "",
+     "Dividend Income",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Treasury\n\n\n\n   Collateral ETF",
+     "$",
+     "43,950,562",
+     "$",
+     "29,994,540",
+     "$",
+     "(19,993,052)",
+     "",
+     "$",
+     "30,116",
+     "$",
+     "(100,756)",
+     "",
+     "$",
+     "53,881,410",
+     "$",
+     "369,623"
+    ],
+    [
+     "Investments in Affiliated Money\n\n\n\n   Market Funds:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Government &\n\n\n\n   Agency Portfolio,\n\n\n\n   Institutional Class",
+     "",
+     "317,997,184",
+     "",
+     "1,224,838,605",
+     "",
+     "(1,437,563,125)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "105,272,664",
+     "",
+     "2,729,012"
+    ],
+    [
+     "Total",
+     "$",
+     "361,947,746",
+     "$",
+     "1,254,833,145",
+     "$",
+     "(1,457,556,177)",
+     "",
+     "$",
+     "30,116",
+     "$",
+     "(100,756)",
+     "",
+     "$",
+     "159,154,074",
+     "$",
+     "3,098,635"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1726,
+    "end_line": 1748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Investments in Affiliates"
+    }
+   },
+   "prose_before": "The Invesco Treasury Collateral ETF is an investment company registered under the Investment Company Act of 1940, as amended, whose shares are primarily purchased and sold on a national securities exchange. In seeking its investment objective, the Invesco Treasury Collateral ETF primarily holds U.S. Treasury Obligations that: (i) are issued in U.S. Dollars; (ii) have a minimum remaining maturity of at least one month and a maximum remaining maturity of 12 months at the time of rebalance; and (iii) have a minimum amount outstanding of $300 million. Because it is advised by the Managing Owner, the Invesco Treasury Collateral ETF is an affiliate of the Fund.\nThe Invesco Premier U.S. Government Money Portfolio, Invesco Government & Agency Portfolio and the Fund are advised by investment advisers under common control of Invesco Ltd., and therefore the Invesco Premier U.S. Government Money Portfolio and Invesco Government & Agency Portfolio are considered to be affiliated with the Fund.\nThe following is a summary of the transactions in, and earnings from, investments in affiliates for the year ended December 31, 2022.",
+   "prose_after": "The following is a summary of the transactions in, and earnings from, investments in affiliates for the year ended December 31, 2021.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1775,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Value 12/31/2020",
+     "",
+     "Purchases at Cost",
+     "",
+     "Proceeds from Sales",
+     "",
+     "",
+     "Change in Unrealized Appreciation\n\n\n\n(Depreciation)",
+     "",
+     "",
+     "Realized Gain\n\n\n\n(Loss)",
+     "",
+     "",
+     "",
+     "Value 12/31/2021",
+     "",
+     "Dividend Income",
+     ""
+    ],
+    [
+     "Invesco Treasury\n\n\n\n  Collateral ETF",
+     "$",
+     "59,967,725",
+     "$",
+     "\u2014",
+     "$",
+     "(15,996,994)",
+     "",
+     "$",
+     "(1,007)",
+     "",
+     "$",
+     "(11,710)",
+     "",
+     "",
+     "$",
+     "43,950,562",
+     "$",
+     "9,710"
+    ],
+    [
+     "Investments in Affiliated Money\n\n\n\n   Market Funds:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Premier U.S.\n\n\n\n   Government Money\n\n\n\n   Portfolio, Institutional Class",
+     "",
+     "204,746,255",
+     "",
+     "1,075,598,134",
+     "",
+     "(962,347,205)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "317,997,184",
+     "",
+     "66,482"
+    ],
+    [
+     "Total",
+     "$",
+     "264,713,980",
+     "$",
+     "1,075,598,134",
+     "$",
+     "(978,344,199)",
+     "",
+     "$",
+     "(1,007)",
+     "",
+     "$",
+     "(11,710)",
+     "",
+     "(a)",
+     "$",
+     "361,947,746",
+     "$",
+     "76,192"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1751,
+    "end_line": 1772
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Investments in Affiliates"
+    }
+   },
+   "prose_before": "The following is a summary of the transactions in, and earnings from, investments in affiliates for the year ended December 31, 2021.",
+   "prose_after": "(a)Includes $7,452 of capital gains distributions from Invesco Treasury Collateral ETF.\nThe following is a summary of the transactions in, and earnings from, investments in affiliates for the year ended December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1717,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1775,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Value 12/31/2019",
+     "",
+     "Purchases at Cost",
+     "",
+     "Proceeds from Sales",
+     "",
+     "",
+     "Change in Unrealized Appreciation\n\n\n\n(Depreciation)",
+     "",
+     "",
+     "Realized Gain\n\n\n\n(Loss)",
+     "",
+     "",
+     "Value 12/31/2020",
+     "",
+     "Dividend Income",
+     ""
+    ],
+    [
+     "Invesco Treasury\n\n\n\n  Collateral ETF",
+     "$",
+     "5,013,150",
+     "$",
+     "55,064,310",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(109,735)",
+     "",
+     "$",
+     "24,612",
+     "",
+     "$",
+     "59,967,725",
+     "$",
+     "124,031"
+    ],
+    [
+     "Investments in Affiliated Money\n\n\n\n   Market Funds:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Invesco Government &\n\n\n\n  Agency Portfolio,\n\n\n\n  Institutional Class",
+     "",
+     "\u2014",
+     "",
+     "472,150,815",
+     "",
+     "(267,404,560)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "204,746,255",
+     "",
+     "7,885"
+    ],
+    [
+     "Invesco Premier U.S.\n\n\n\n   Government Money\n\n\n\n   Portfolio, Institutional Class",
+     "",
+     "84,618,781",
+     "",
+     "923,057,072",
+     "",
+     "(1,007,675,853)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "405,181"
+    ],
+    [
+     "Total",
+     "$",
+     "89,631,931",
+     "$",
+     "1,450,272,197",
+     "$",
+     "(1,275,080,413)",
+     "",
+     "$",
+     "(109,735)",
+     "",
+     "$",
+     "24,612",
+     "(a)",
+     "$",
+     "264,713,980",
+     "$",
+     "537,097"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1778,
+    "end_line": 1804
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Investments in Affiliates"
+    }
+   },
+   "prose_before": "(a)Includes $7,452 of capital gains distributions from Invesco Treasury Collateral ETF.\nThe following is a summary of the transactions in, and earnings from, investments in affiliates for the year ended December 31, 2020.",
+   "prose_after": "(a)Includes $24,612 of capital gains distributions from Invesco Treasury Collateral ETF.\nNote 9 - Share Purchases and Redemptions\n(a) Purchases\nOn any business day, an Authorized Participant may place an order with the Transfer Agent to create one or more Creation Units. Each Creation Unit consists of a block of 100,000 Shares. For purposes of processing both creation and redemption orders, a \u201cbusiness day\u201d means any day other than a day when banks in New York City are required or permitted to be closed. Creation orders must be placed by 10:00 a.m., Eastern Time. The day on which the Transfer Agent receives a valid creation order is the creation order date. The day on which a creation order is settled is the creation order settlement date. Cash settlement occurs at the creation order settlement date. As provided below, the creation order settlement date may occur up to two business days after the creation order date. By placing a creation order, and prior to delivery of such Creation Units, an Authorized Participant\u2019s Depository Trust Company (\u201cDTC\u201d) account is charged the non-refundable transaction fee due for the creation order.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1775,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1823,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "",
+     "2021",
+     "",
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net asset value per Share, beginning of period",
+     "$",
+     "13.50",
+     "",
+     "$",
+     "8.46",
+     "",
+     "$",
+     "10.67",
+     ""
+    ],
+    [
+     "Net realized and change in unrealized gain (loss) on\n\n\n\n   United States Treasury Obligations, Affiliated Investments\n\n\n\n   and Commodity Futures Contracts (a)",
+     "",
+     "1.69",
+     "",
+     "",
+     "5.13",
+     "",
+     "",
+     "(2.18)",
+     ""
+    ],
+    [
+     "Net investment income (loss) (b)",
+     "",
+     "0.09",
+     "",
+     "",
+     "(0.09)",
+     "",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "",
+     "1.78",
+     "",
+     "",
+     "5.04",
+     "",
+     "",
+     "(2.21)",
+     ""
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Return of capital distributions",
+     "",
+     "(0.10)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net asset value per Share, end of period",
+     "$",
+     "15.18",
+     "",
+     "$",
+     "13.50",
+     "",
+     "$",
+     "8.46",
+     ""
+    ],
+    [
+     "Market value per Share, beginning of period (c)",
+     "$",
+     "13.57",
+     "",
+     "$",
+     "8.44",
+     "",
+     "$",
+     "10.68",
+     ""
+    ],
+    [
+     "Market value per Share, end of period (c)",
+     "$",
+     "15.21",
+     "",
+     "$",
+     "13.57",
+     "",
+     "$",
+     "8.44",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ratio to average Net Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "",
+     "0.51",
+     "%",
+     "",
+     "(0.72)",
+     "%",
+     "",
+     "(0.38)",
+     "%"
+    ],
+    [
+     "Expenses, after waivers",
+     "",
+     "0.74",
+     "%",
+     "",
+     "0.75",
+     "%",
+     "",
+     "0.70",
+     "%"
+    ],
+    [
+     "Expenses, prior to waivers",
+     "",
+     "0.77",
+     "%",
+     "",
+     "0.77",
+     "%",
+     "",
+     "0.78",
+     "%"
+    ],
+    [
+     "Total Return, at net asset value (d)",
+     "",
+     "13.23",
+     "%",
+     "",
+     "59.57",
+     "%",
+     "",
+     "(20.71)",
+     "%"
+    ],
+    [
+     "Total Return, at market value (d)",
+     "",
+     "12.86",
+     "%",
+     "",
+     "60.78",
+     "%",
+     "",
+     "(20.97)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1840,
+    "end_line": 1878
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "The Managing Owner, either in its own capacity or in its capacity as the Managing Owner and on behalf of the Fund, has entered into various service agreements that contain a variety of representations, or provide indemnification provisions related to certain risks service providers undertake in performing services for the Fund. The Trust Agreement provides for the Fund to indemnify the Managing Owner and any affiliate of the Managing Owner that provides services to the Fund to the maximum extent permitted by applicable law, subject to certain exceptions for disqualifying conduct by the Managing Owner or such an affiliate. The Fund's maximum exposure under these arrangements is unknown as this would involve future claims that may be made against the Fund that have not yet occurred. Further, the Fund has not had prior claims or losses pursuant to these contracts. Accordingly, the Managing Owner expects the risk of loss to be remote.\nNote 11 - Financial Highlights\nThe Fund is presenting the following NAV and financial highlights related to investment performance for a Share outstanding for the years ended December 31, 2022, 2021 and 2020. An individual investor\u2019s return and ratios may vary based on the timing of capital transactions.\nNAV per Share is the NAV of the Fund divided by the number of outstanding Shares at the date of each respective period presented.",
+   "prose_after": "(a) Net realized and change in unrealized gain (loss) on United States Treasury Obligations, Affiliated Investments and Commodity Futures Contracts per share may not correlate with the Fund's net realized and unrealized gain (loss) due to timing of shareholder transactions in relation to the fluctuating market values of the Fund's investments.\n(b) Based on average shares outstanding.\n(c) The mean between the last bid and ask prices.\n(d) Total Return, at NAV is calculated assuming an initial investment made at the NAV at the beginning of the period, reinvestment of all dividends and distributions at NAV during the period, and redemption of Shares at NAV on the last day of the period. Total Return, at NAV includes adjustments in accordance with U.S. GAAP and as such, the NAV for financial reporting purposes and the returns based upon those NAVs may differ from the NAVs and returns for shareholder transactions. Total Return, at market value is calculated assuming an initial investment made at the market value at the beginning of the period, reinvestment of all dividends and distributions at market value during the period, and redemption of Shares at the market value on the last day of the period. Not annualized for periods less than one year, if applicable.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1833,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 52
+    },
+    "after": {
+     "line": 1887,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 53
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Capacity",
+     ""
+    ],
+    [
+     "Anna Paglia (1)",
+     "",
+     "Chief Executive Officer, Board of Managers"
+    ],
+    [
+     "Peter Hubbard",
+     "",
+     "Vice President and Director of Portfolio Management"
+    ],
+    [
+     "Jordan Krugman (1)",
+     "",
+     "Board of Managers"
+    ],
+    [
+     "Terry Gibson Vacheron",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "Kelli Gallegos (1)",
+     "",
+     "Principal Financial and Accounting Officer, Investment Pools"
+    ],
+    [
+     "Melanie Zimdars",
+     "",
+     "Chief Compliance Officer"
+    ],
+    [
+     "John Zerr (1)",
+     "",
+     "Board of Managers"
+    ],
+    [
+     "Brian Hartigan",
+     "",
+     "Global Head of ETF Investments"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1929,
+    "end_line": 1941
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "The Fund\u2019s independent registered public accounting firm, PricewaterhouseCoopers LLP, has audited the Fund\u2019s internal control over financial reporting as of December 31, 2022, as stated in their report on page 33 of this Form 10-K.\nITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nBoard of Directors and Principal Officers\nThe Fund has no directors or principal officers and also does not have any employees. It is managed by the Managing Owner.\nA person is a principal of a CFTC registrant based on the person\u2019s role or position with a registrant, ability to control a registrant\u2019s business activities or ownership or financial stake in a registrant. As of December 31, 2022, the following principals serve in the below capacities on behalf of the Managing Owner and, unless otherwise indicated, are not executive officers of the Fund:",
+   "prose_after": "1. Executive officer, within the meaning of Rule 3b-7 under the Exchange Act, of the Fund.\nInvesco Group Services Inc. is also a principal of the Managing Owner.\nThe Managing Owner is managed by a Board of Managers. The Board of Managers is composed of Ms. Paglia and Messrs. Krugman and Zerr.\nThe Board of Managers has established an Audit Committee with the following members: Ms. Paglia and Messrs. Krugman and Zerr. The overall purpose of the Audit Committee is to assist the Board of Managers with overseeing the Fund's financial statements, the Fund's compliance with legal and regulatory requirements, the qualifications and independence of the Fund's independent registered public accounting firm (the \u201cindependent auditor\u201d), the performance of the internal audit function for the Fund, and the performance of the independent auditor.\nThe Managing Owner has designated Mr. Hubbard as the trading principal of the Fund.\nAnna Paglia (48) has been Chief Executive Officer of the Managing Owner since June 2020. In this role, she has general oversight responsibilities for all of the Managing Owner\u2019s business. Ms. Paglia has been a Member of the Board of Managers of the Managing Owner since June 2020. Additionally, Ms. Paglia is a Managing Director and Global Head of ETFs and Indexed Strategies of Invesco Ltd., a position in which she first began serving in June 2020. In these roles she is responsible for the management of the Managing Owner\u2019s exchange traded fund business with direct functional reporting responsibilities for the Managing Owner\u2019s portfolio management, products, marketing and capital markets teams. In such capacity, Ms. Paglia also is responsible for managing the operations of the Invesco Funds. Previously, Ms. Paglia was Head of Legal, US ETFs at Invesco, beginning in September 2010. In that role, she was responsible for the registration and listing of ETFs, as well as providing support to the US ETF Board, serving as a global ETF expert and resource to the US ETF Board and personnel of the Managing Owner and providing day-to-day support to the Managing Owner. In addition, she was a team leader for, and provided legal support to, Invesco\u2019s unit investment trusts. Ms. Paglia earned a JD from L.U.I.S.S. Law School in Rome, a law school certificate from Kingston University School of Law in London and a master\u2019s degree from Northwestern University School of Law in Chicago. She is admitted to practice law in Illinois and New York. Ms. Paglia was listed as a principal of the Managing Owner on June 11, 2020.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1918,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1958,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of Class",
+     "Name and Address of Beneficial Owner",
+     "Amount and Nature of\n\n\n\nBeneficial Ownership",
+     "",
+     "Percent\n\n\n\nof Class",
+     ""
+    ],
+    [
+     "General Shares",
+     "Invesco Capital Management LLC\n\n\n\n3500 Lacey Road, Suite 700\n\n\n\nDowners Grove, Illinois 60515",
+     "",
+     "40",
+     "100%",
+     ""
+    ],
+    [
+     "Shares",
+     "Directors and Officers of Invesco Capital\n\n\n\nManagement LLC as a group",
+     "",
+     "\u2014",
+     "",
+     "Less than 0.01%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2001,
+    "end_line": 2016
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "For the year ended December 31, 2021, the Fund incurred brokerage commissions of $103,966 of which $98,890 had been paid at December 31, 2021. Brokerage commissions of $5,076 were unpaid at December 31, 2021 and are reported as a liability on the Statements of Financial Condition.\nFor the year ended December 31, 2020, the Fund incurred Management Fees of $2,896,197 of which $2,641,945 had been paid at December 31, 2020. Management Fees of $254,252 were unpaid at December 31, 2020 and are reported as a liability on the Statements of Financial Condition.\nFor the year ended December 31, 2020, the Fund incurred brokerage commissions of $96,352 of which $91,609 had been paid at December 31, 2020. Brokerage commissions of $4,743 were unpaid at December 31, 2020 and are reported as a liability on the Statements of Financial Condition.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe Fund has no officers or directors. The following table sets forth certain information regarding beneficial ownership of the Fund\u2019s General Shares and Shares as of January 31, 2023, as known by management. No person is known by the Managing Owner to own beneficially more than 5% of the outstanding shares of such class.",
+   "prose_after": "The Fund has no securities authorized for issuance under equity compensation plans.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nSee Item 11.\nITEM 14.PRINCIPAL ACCOUNTANT FEES AND SERVICES\nAudit and Non-Audit Fees\nThe following table sets forth the fees for professional services rendered by PricewaterhouseCoopers LLP, the Fund\u2019s independent registered public accounting firm for the years ended December 31, 2022 and 2021.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1996,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Years Ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "81,410",
+     "",
+     "$",
+     "78,660"
+    ],
+    [
+     "Audit-Related Fees (1)",
+     "\u2014",
+     "",
+     "",
+     "7,500"
+    ],
+    [
+     "Tax Fees (2)",
+     "203,387",
+     "",
+     "",
+     "240,274"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "284,797",
+     "$",
+     "326,434"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2029,
+    "end_line": 2042
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "The Fund has no securities authorized for issuance under equity compensation plans.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nSee Item 11.\nITEM 14.PRINCIPAL ACCOUNTANT FEES AND SERVICES\nAudit and Non-Audit Fees\nThe following table sets forth the fees for professional services rendered by PricewaterhouseCoopers LLP, the Fund\u2019s independent registered public accounting firm for the years ended December 31, 2022 and 2021.",
+   "prose_after": "(1) Audit-Related Fees for the fiscal year ended December 31, 2021 include fees billed for reviewing regulatory filings.\n(2) Tax Fees for the fiscal years ended December 31, 2022 and 2021 include fees billed for preparing tax forms.\nApproval of Independent Registered Public Accounting Firm Services and Fees\nThe Managing Owner approved all of the services provided by PricewaterhouseCoopers LLP to the Fund described above. The Managing Owner pre-approved all audit and allowed non-audit services of the Fund\u2019s independent registered public accounting firm, including all engagement fees and terms.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a)(1) Financial Statements\nSee financial statements commencing on page 31 hereof.\n(a)(2) Financial Statement Schedules\nNo financial statement schedules are filed herewith because (i) such schedules are not required or (ii) the information required has been presented in the aforementioned financial statements.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1996,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Fifth Amended and Restated Declaration of Trust and Trust Agreement of the Registrant (1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1.1",
+     "Amendment No. 1 to the Fifth Amended and Restated Declaration of Trust and Trust Agreement of the Registrant (2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1.2",
+     "Amendment No. 2 to the Fifth Amended and Restated Declaration of Trust and Trust Agreement of the Registrant (3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Form of Participant Agreement (4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2.1",
+     "Amendment to Form of Participant Agreement (4)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Description of Common Units of Beneficial (5)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Customer Agreement (6)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Administration Agreement (7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Form of Global Custody Agreement (7)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Form of Transfer Agency and Service Agreement (8)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Distribution Services Agreement (9)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of PricewaterhouseCoopers LLP (filed herewith)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification required under Exchange Act Rules 13a-14 and 15d-14 (filed herewith)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification required under Exchange Act Rules 13a-14 and 15d-14 (filed herewith)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (furnished herewith)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101",
+     "Interactive data file pursuant to Rule 405 of Regulation S-T: (i) the Statements of Financial Condition of Invesco DB Oil Fund\u2014 December 31, 2022 and December 31, 2021, (ii) the Schedule of Investments of Invesco DB Oil Fund\u2014 December 31, 2022, (iii) the Schedule of Investments of Invesco DB Oil Fund\u2014 December 31, 2021, (iv) the Statements of Income and Expenses of Invesco DB Oil Fund\u2014 Years Ended December 31, 2022, 2021 and 2020, (v) the Statement of Changes in Shareholders\u2019 Equity of Invesco DB Oil Fund\u2014 Year Ended December 31, 2022, (vi) the Statement of Changes in Shareholders\u2019 Equity of Invesco DB Oil Fund\u2014 Year Ended December 31, 2021, (vii) the Statement of Changes in Shareholders\u2019 Equity of Invesco DB Oil Fund\u2014 Year Ended December 31, 2020, (viii) the Statements of Cash Flows of Invesco DB Oil Fund\u2014Years Ended December 31, 2022, 2021 and 2020, and (ix) Notes to Financial Statements of Invesco DB Oil Fund."
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document \u2013 The instance document does not appear in the interactive data file because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2068,
+    "end_line": 2120
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "Approval of Independent Registered Public Accounting Firm Services and Fees\nThe Managing Owner approved all of the services provided by PricewaterhouseCoopers LLP to the Fund described above. The Managing Owner pre-approved all audit and allowed non-audit services of the Fund\u2019s independent registered public accounting firm, including all engagement fees and terms.\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a)(1) Financial Statements\nSee financial statements commencing on page 31 hereof.\n(a)(2) Financial Statement Schedules\nNo financial statement schedules are filed herewith because (i) such schedules are not required or (ii) the information required has been presented in the aforementioned financial statements.\n(a)(3) Exhibits\nThe following documents (unless otherwise indicated) are filed herewith and made a part of this Annual Report:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2051,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 2121,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "The cover page of the Fund's Annual Report on Form 10-K for the year ended December 31, 2022, formatted in Inline XBRL"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2122,
+    "end_line": 2129
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "1 Previously filed as an exhibit to Form 8-K on February 25, 2015 and incorporated herein by reference.\n2 Previously filed as an exhibit to Form 8-K on June 20, 2016 and incorporated herein by reference.\n3 Previously filed as an exhibit to Form 8-K on June 4, 2018 and incorporated herein by reference.\n4 Previously filed as an exhibit to Form 10-Q on November 6, 2020 and incorporated herein by reference.\n5 Previously filed as an exhibit to Form 10-K on February 28, 2020 and incorporated herein by reference.\n6 Previously filed as an exhibit to Form 8-K on February 26, 2015 and incorporated herein by reference.\n7 Previously filed as an exhibit to Form 8-K on October 1, 2019 and incorporated herein by reference.\n8 Previously filed as an exhibit to Pre-Effective Amendment No. 2 to a Registration Statement on Form S-1 on December 14, 2006 and incorporated herein by reference.\n9 Previously filed as an exhibit to Form 8-K on May 19, 2020 and incorporated herein by reference.\nSIGNATURES",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2121,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 2148,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Invesco DB Multi-Sector Commodity Trust on its own behalf and with respect to Invesco DB Oil Fund",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "Invesco Capital Management LLC,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "its Managing Owner",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: February 23, 2023",
+     "",
+     "By:",
+     "/S/    ANNA PAGLIA"
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Anna Paglia"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Principal Executive Officer"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: February 23, 2023",
+     "",
+     "By:",
+     "/S/    KELLI GALLEGOS"
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Kelli Gallegos"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Principal Financial and Accounting Officer, Investment Pools"
+    ]
+   ],
+   "caption_stack": [
+    "Invesco DB Multi-Sector Commodity Trust on its own behalf and with respect to Invesco DB Oil Fund"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2153,
+    "end_line": 2170
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "2 Previously filed as an exhibit to Form 8-K on June 20, 2016 and incorporated herein by reference.\n3 Previously filed as an exhibit to Form 8-K on June 4, 2018 and incorporated herein by reference.\n4 Previously filed as an exhibit to Form 10-Q on November 6, 2020 and incorporated herein by reference.\n5 Previously filed as an exhibit to Form 10-K on February 28, 2020 and incorporated herein by reference.\n6 Previously filed as an exhibit to Form 8-K on February 26, 2015 and incorporated herein by reference.\n7 Previously filed as an exhibit to Form 8-K on October 1, 2019 and incorporated herein by reference.\n8 Previously filed as an exhibit to Pre-Effective Amendment No. 2 to a Registration Statement on Form S-1 on December 14, 2006 and incorporated herein by reference.\n9 Previously filed as an exhibit to Form 8-K on May 19, 2020 and incorporated herein by reference.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on\nbehalf of the registrant and in the capacities* and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2148,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Capacity*",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ JORDAN KRUGMAN\n\n\n\n \n\n\n\nJordan Krugman",
+     "Manager",
+     "February 23, 2023"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ JOHN ZERR\n\n\n\n \n\n\n\nJohn Zerr",
+     "Manager",
+     "February 23, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2175,
+    "end_line": 2190
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Financial Highlights"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on\nbehalf of the registrant and in the capacities* and on the dates indicated.",
+   "prose_after": "* The registrant is a trust and the persons are signing in their capacities as officers or directors of Invesco Capital Management LLC, the Managing Owner of the registrant.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2148,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

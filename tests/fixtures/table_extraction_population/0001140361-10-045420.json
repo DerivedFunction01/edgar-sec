@@ -1,0 +1,2631 @@
+{
+ "accession": "0001140361-10-045420",
+ "cik": "0000876343",
+ "form": "10-Q",
+ "filing_date": "2010-11-15",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "California",
+     "94-3127919"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __ to\nCommission file number 1-12830\nBioTime, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1301 Harbor Bay Parkway, Suite 100\nAlameda, California 94502\n(Address of principal executive offices)\n(510) 521-3390\n(Registrant's telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] N [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]                                                 Accelerated filer          [ ]\nNon-accelerated filer    [ ]  (Do not check if a smaller reporting company)  Smaller reporting company  [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "September 30,\n\n2010\n\n(unaudited)",
+     "",
+     "",
+     "December 31,\n\n2009",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "25,421,594",
+     "",
+     "$",
+     "12,189,081",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "49,478",
+     "",
+     "",
+     "38,384",
+     ""
+    ],
+    [
+     "Notes receivable",
+     "",
+     "252,608",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "983,933",
+     "",
+     "",
+     "138,547",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "26,707,613",
+     "",
+     "",
+     "12,366,012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equipment, net of accumulated depreciation of $698,390 and $54,291, respectively",
+     "",
+     "353,292",
+     "",
+     "",
+     "131,133",
+     ""
+    ],
+    [
+     "Deferred license and consulting fees",
+     "",
+     "1,971,638",
+     "",
+     "",
+     "880,000",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "51,900",
+     "",
+     "",
+     "55,926",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "983,790",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Intangible assets, net",
+     "",
+     "11,224,113",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "41,292,526",
+     "",
+     "$",
+     "13,433,071",
+     ""
+    ],
+    [
+     "LIABILITIES AND EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "$",
+     "712,184",
+     "",
+     "$",
+     "530,958",
+     ""
+    ],
+    [
+     "Deferred grant income",
+     "",
+     "263,397",
+     "",
+     "",
+     "263,397",
+     ""
+    ],
+    [
+     "Deferred license revenue, current portion",
+     "",
+     "323,823",
+     "",
+     "",
+     "367,904",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "1,299,404",
+     "",
+     "",
+     "1,162,259",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred license revenue, net of current portion",
+     "",
+     "1,085,225",
+     "",
+     "",
+     "1,223,823",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Shares, no par value, authorized 1,000,000 shares; none issued",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common shares, no par value, authorized 75,000,000 shares; issued and outstanding shares: 45,326,154 and 33,667,659 at September 30, 2010 and December 31, 2009, respectively",
+     "",
+     "96,050,102",
+     "",
+     "",
+     "59,722,318",
+     ""
+    ],
+    [
+     "Contributed capital",
+     "",
+     "93,972",
+     "",
+     "",
+     "93,972",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "",
+     "(2,363)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(60,984,987)",
+     "",
+     "",
+     "(52,769,891)",
+     ""
+    ],
+    [
+     "Total shareholders\u2019 equity",
+     "",
+     "35,156,724",
+     "",
+     "",
+     "7,046,399",
+     ""
+    ],
+    [
+     "Noncontrolling interest",
+     "",
+     "3,751,173",
+     "",
+     "",
+     "4,000,590",
+     ""
+    ],
+    [
+     "Total equity",
+     "",
+     "38,907,897",
+     "",
+     "",
+     "11,046,989",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND EQUITY",
+     "$",
+     "41,292,526",
+     "",
+     "$",
+     "13,433,071",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 64,
+    "end_line": 115
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). [ ] Yes [X] N [ ]\nAPPLICABLE ONLY TO CORPORATE ISSUERS:\nIndicate the number of shares outstanding of each of the issuer's classes of common stock, as of the latest practicable date: 47,596,130 common shares, no par value, as of November 5, 2010.\nPART 1--FINANCIAL INFORMATION\nStatements made in this Report that are not historical facts may constitute forward-looking statements that are subject to risks and uncertainties that could cause actual results to differ materially from those discussed. Such risks and uncertainties include but are not limited to those discussed in this report under Item 1 of the Notes to Financial Statements, and in BioTime's Annual Report on Form 10-K filed with the Securities and Exchange Commission. Words such as \u201cexpects,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201canticipates,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cbelieves,\u201d \u201cseeks,\u201d \u201cestimates,\u201d and similar expressions identify forward-looking statements.\nItem 1. Financial Statements\nBIOTIME, INC.\nCONDENSED CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "See accompanying notes to the condensed consolidated interim financial statements.\nBIOTIME, INC.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 117,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,\n\n2010",
+     "",
+     "",
+     "September 30,\n\n2009",
+     "",
+     "",
+     "September 30,\n\n2010",
+     "",
+     "",
+     "September 30,\n\n2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "License fees",
+     "$",
+     "73,255",
+     "",
+     "$",
+     "73,226",
+     "",
+     "$",
+     "204,439",
+     "",
+     "$",
+     "219,678",
+     ""
+    ],
+    [
+     "Royalties from product sales",
+     "",
+     "215,094",
+     "",
+     "",
+     "225,518",
+     "",
+     "",
+     "727,388",
+     "",
+     "",
+     "799,910",
+     ""
+    ],
+    [
+     "Grant income",
+     "",
+     "418,412",
+     "",
+     "",
+     "144,899",
+     "",
+     "",
+     "1,208,602",
+     "",
+     "",
+     "151,699",
+     ""
+    ],
+    [
+     "Sale of research products",
+     "",
+     "108,523",
+     "",
+     "",
+     "3,350",
+     "",
+     "",
+     "120,946",
+     "",
+     "",
+     "4,540",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "815,284",
+     "",
+     "",
+     "446,993",
+     "",
+     "",
+     "2,261,375",
+     "",
+     "",
+     "1,175,827",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "(1,808,357)",
+     "",
+     "",
+     "(744,201)",
+     "",
+     "",
+     "(4,397,109)",
+     "",
+     "",
+     "(1,909,619)",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "(1,464,631)",
+     "",
+     "",
+     "(2,637,133)",
+     "",
+     "",
+     "(3,961,375)",
+     "",
+     "",
+     "(4,520,317)",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "(3,272,988)",
+     "",
+     "",
+     "(3,381,334)",
+     "",
+     "",
+     "(8,358,484)",
+     "",
+     "",
+     "(6,429,936)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(2,457,704)",
+     "",
+     "",
+     "(2,934,341)",
+     "",
+     "",
+     "(6,097,109)",
+     "",
+     "",
+     "(5,254,109)",
+     ""
+    ],
+    [
+     "OTHER INCOME/(EXPENSES):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense, net",
+     "",
+     "(127)",
+     "",
+     "",
+     "(653,664)",
+     "",
+     "",
+     "(285)",
+     "",
+     "",
+     "(1,326,367)",
+     ""
+    ],
+    [
+     "Gain/(loss) on sale of fixed assets",
+     "",
+     "950",
+     "",
+     "",
+     "(1,159)",
+     "",
+     "",
+     "950",
+     "",
+     "",
+     "(1,159)",
+     ""
+    ],
+    [
+     "Modification cost of warrants",
+     "",
+     "(2,142,201)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,142,201)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other income/(loss)",
+     "",
+     "(202,224)",
+     "",
+     "",
+     "14,409",
+     "",
+     "",
+     "(225,868)",
+     "",
+     "",
+     "17,296",
+     ""
+    ],
+    [
+     "Total other income/(expenses), net",
+     "",
+     "(2,343,602)",
+     "",
+     "",
+     "(640,414)",
+     "",
+     "",
+     "(2,367,404)",
+     "",
+     "",
+     "(1,310,230)",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "(4,801,306)",
+     "",
+     "",
+     "(3,574,755)",
+     "",
+     "",
+     "(8,464,513)",
+     "",
+     "",
+     "(6,564,339)",
+     ""
+    ],
+    [
+     "Less: Net loss attributable to the noncontrolling interest",
+     "$",
+     "130,144",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "249,417",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss attributable to BioTime, Inc.",
+     "$",
+     "(4,671,162)",
+     "",
+     "$",
+     "(3,574,755)",
+     "",
+     "$",
+     "(8,215,096)",
+     "",
+     "$",
+     "(6,564,339)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation gain/(loss)",
+     "",
+     "3,548",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,363)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMPREHENSIVE NET LOSS",
+     "$",
+     "(4,667,614)",
+     "",
+     "$",
+     "(3,574,755)",
+     "",
+     "$",
+     "(8,217,459)",
+     "",
+     "$",
+     "(6,564,339)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED LOSS PER COMMON SHARE",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.22)",
+     "",
+     "$",
+     "(0.24)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "WEIGHTED AVERAGE NUMBER OF COMMON SHARES OUTSTANDING: BASIC AND DILUTED",
+     "",
+     "42,653,125",
+     "",
+     "",
+     "31,283,312",
+     "",
+     "",
+     "38,010,958",
+     "",
+     "",
+     "27,912,812",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 126,
+    "end_line": 176
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated interim financial statements.\nBIOTIME, INC.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated interim financial statements.\nBIOTIME, INC.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 119,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 178,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30,\n\n2010",
+     "",
+     "",
+     "September 30,\n\n2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(8,215,096)",
+     "",
+     "$",
+     "(6,564,339)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization of capital leased assets",
+     "",
+     "63,893",
+     "",
+     "",
+     "24,904",
+     ""
+    ],
+    [
+     "Loss on write off of fixed asset",
+     "",
+     "-",
+     "",
+     "",
+     "1,159",
+     ""
+    ],
+    [
+     "Write-off of old receivables",
+     "",
+     "-",
+     "",
+     "",
+     "2,538",
+     ""
+    ],
+    [
+     "Reclassification of licensing fees expensed in prior year",
+     "",
+     "-",
+     "",
+     "",
+     "(10,000)",
+     ""
+    ],
+    [
+     "Amortization of deferred license revenues",
+     "",
+     "(301,462)",
+     "",
+     "",
+     "(219,678)",
+     ""
+    ],
+    [
+     "Amortization of deferred finance cost on lines of credit",
+     "",
+     "-",
+     "",
+     "",
+     "762,644",
+     ""
+    ],
+    [
+     "Amortization of deferred consulting fees",
+     "",
+     "326,150",
+     "",
+     "",
+     "65,766",
+     ""
+    ],
+    [
+     "Amortization of deferred grant revenues",
+     "",
+     "-",
+     "",
+     "",
+     "(20,000)",
+     ""
+    ],
+    [
+     "Amortization of deferred rent",
+     "",
+     "(5,681)",
+     "",
+     "",
+     "(2,076)",
+     ""
+    ],
+    [
+     "Beneficial conversion feature",
+     "",
+     "-",
+     "",
+     "",
+     "302,953",
+     ""
+    ],
+    [
+     "Stock appreciation rights compensation liability",
+     "",
+     "-",
+     "",
+     "",
+     "2,200,325",
+     ""
+    ],
+    [
+     "Amortization of intangible asset",
+     "",
+     "320,833",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "429,435",
+     "",
+     "",
+     "124,458",
+     ""
+    ],
+    [
+     "Options issued as independent director compensation",
+     "",
+     "313,328",
+     "",
+     "",
+     "141,907",
+     ""
+    ],
+    [
+     "Warrants issued as compensation for consulting services",
+     "",
+     "-",
+     "",
+     "",
+     "78,584",
+     ""
+    ],
+    [
+     "Warrants issued in lieu of interest as part of Line of Credit exchange offer",
+     "",
+     "-",
+     "",
+     "",
+     "190,845",
+     ""
+    ],
+    [
+     "Modification cost of warrants",
+     "",
+     "2,142,201",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Share in net loss from investment in nonconsolidated company",
+     "",
+     "255,054",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss allocable to noncontrolling interest",
+     "",
+     "(249,417)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable, net",
+     "",
+     "(23,489)",
+     "",
+     "",
+     "(134,638)",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(11,094)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "17,625",
+     "",
+     "",
+     "(74,872)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "(55,561)",
+     "",
+     "",
+     "(241,691)",
+     ""
+    ],
+    [
+     "Interest on lines of credit",
+     "",
+     "-",
+     "",
+     "",
+     "(43,158)",
+     ""
+    ],
+    [
+     "Deferred revenues",
+     "",
+     "37,500",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(4,955,781)",
+     "",
+     "",
+     "(3,414,369)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of equipment",
+     "",
+     "(166,447)",
+     "",
+     "",
+     "(34,671)",
+     ""
+    ],
+    [
+     "Loan to nonconsolidated company",
+     "",
+     "(250,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Payment of license fees",
+     "",
+     "(215,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash paid as part of acquisition of ESI",
+     "",
+     "(80,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Security deposit received (paid)",
+     "",
+     "3,997",
+     "",
+     "",
+     "(5,926)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(707,450)",
+     "",
+     "",
+     "(40,597)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee options exercised",
+     "",
+     "106,640",
+     "",
+     "",
+     "653,750",
+     ""
+    ],
+    [
+     "Director options exercised",
+     "",
+     "19,672",
+     "",
+     "",
+     "57,199",
+     ""
+    ],
+    [
+     "Outside consultant options exercised",
+     "",
+     "417,350",
+     "",
+     "",
+     "137,500",
+     ""
+    ],
+    [
+     "Warrants exercised",
+     "",
+     "18,129,530",
+     "",
+     "",
+     "518,640",
+     ""
+    ],
+    [
+     "Repayment of line of credit",
+     "",
+     "-",
+     "",
+     "",
+     "(263,825)",
+     ""
+    ],
+    [
+     "Borrowings under lines of credit",
+     "",
+     "-",
+     "",
+     "",
+     "2,310,000",
+     ""
+    ],
+    [
+     "Deferred finance cost on lines of credit",
+     "",
+     "-",
+     "",
+     "",
+     "(28,000)",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common shares for cash",
+     "",
+     "-",
+     "",
+     "",
+     "8,000,000",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "18,673,192",
+     "",
+     "",
+     "11,385,264",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash and cash equivalents",
+     "",
+     "(9,299)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH AND CASH EQUIVALENTS:",
+     "",
+     "13,000,662",
+     "",
+     "",
+     "7,930,298",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "12,420,932",
+     "",
+     "",
+     "12,279",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "25,421,594",
+     "",
+     "$",
+     "7,942,577",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for interest",
+     "$",
+     "264",
+     "",
+     "$",
+     "415,290",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL SCHEDULE OF NON-CASH FINANCING AND INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued as part of acquisition of ESI",
+     "$",
+     "11,011,864",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Common shares issued for accounts payable",
+     "",
+     "-",
+     "",
+     "",
+     "229,500",
+     ""
+    ],
+    [
+     "Common shares issued for deferred license fees",
+     "",
+     "-",
+     "",
+     "",
+     "120,000",
+     ""
+    ],
+    [
+     "Issuance of common stock related to line of credit agreement",
+     "",
+     "-",
+     "",
+     "",
+     "144,024",
+     ""
+    ],
+    [
+     "Common shares issued for line of credit conversion",
+     "",
+     "-",
+     "",
+     "",
+     "3,974,574",
+     ""
+    ],
+    [
+     "Common shares issued for line of credit extension",
+     "",
+     "-",
+     "",
+     "",
+     "160,157",
+     ""
+    ],
+    [
+     "Issuance of warrants  related to line of credit agreement",
+     "",
+     "-",
+     "",
+     "",
+     "207,703",
+     ""
+    ],
+    [
+     "Issuance of warrants for Line of Credit conversions",
+     "",
+     "-",
+     "",
+     "",
+     "190,845",
+     ""
+    ],
+    [
+     "Warrants issued as part of acquisition of ESI",
+     "",
+     "1,778,727",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Warrants issued for services",
+     "",
+     "1,846,948",
+     "",
+     "",
+     "93,303",
+     ""
+    ],
+    [
+     "Right to exchange promissory notes for stock feature on notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "304,400",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 187,
+    "end_line": 271
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated interim financial statements.\nBIOTIME, INC.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated interim financial statements.\nBIOTIME, INC.\nNOTES TO THE CONDENSED CONSOLIDATED INTERIM FINANCIAL STATEMENTS\n(UNAUDITED)\n1. Organization, Basis of Presentation, and Summary of Select Significant Accounting Policies\nGeneral - BioTime is a biotechnology company engaged in two areas of biomedical research and product development. BioTime has historically developed blood plasma volume expanders and related technology for use in surgery, emergency trauma treatment, and other applications. Beginning in 2007, BioTime entered the regenerative medicine business, focused on human embryonic stem (\u201chES\u201d) cell and induced pluripotent stem (\u201ciPS\u201d) cell technology. Products for the research market are being developed and marketed through BioTime\u2019s wholly-owned subsidiary, Embryome Sciences, Inc. (\u201cEmbryome Sciences\u201d). BioTime plans to develop stem cell products for therapeutic use to treat cancer through its new subsidiary, OncoCyte Corporation (\u201cOncoCyte\u201d), to develop therapies to treat cancer and other diseases through BioTime Asia, Limited (\u201cBioTime Asia\u201d), a subsidiary formed as a Hong Kong corporation, and to develop therapeutic applications of stem cells to treat orthopedic diseases and injuries through its newly formed subsidiary OrthoCyte Corporation (\u201cOrthoCyte\u201d). On May 3, 2010, BioTime also acquired ES Cell International Pte. Ltd. (\u201cESI\u201d), a Singapore private limited company. Established in 2000, ESI focuses on hES technology, and is a distributor of hES cell lines to the research community. At September 30, 2010, ESI held over 49% of the shares of Cell Cure Neurosciences Ltd. (\u201cCell Cure\u201d), an Israel-based biotechnology company focused on developing stem cell-based therapies for retinal and neurological disorders, including the development of retinal pigment epithelial cells for the treatment of macular degeneration, and treatments for multiple sclerosis. See Note 5 for additional information about this acquisition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 180,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 273,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Components of the purchase price:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BioTime common shares",
+     "$",
+     "11,011,864",
+     ""
+    ],
+    [
+     "BioTime warrants",
+     "",
+     "1,778,727",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "80,000",
+     ""
+    ],
+    [
+     "Total purchase price",
+     "$",
+     "12,870,591",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preliminary allocation of purchase price:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets acquired and Liabilities assumed:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "222,766",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "",
+     "65,005",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "96,661",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "983,970",
+     ""
+    ],
+    [
+     "Intangible assets",
+     "",
+     "11,800,000",
+     ""
+    ],
+    [
+     "Current liabilities",
+     "",
+     "(297,811)",
+     ""
+    ],
+    [
+     "Net assets acquired",
+     "$",
+     "12,870,591",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Components of the purchase price:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 374,
+    "end_line": 395
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisition of ES Cell International Pte Ltd"
+    }
+   },
+   "prose_before": "The Acquisition is being accounted for under the acquisition method of accounting, after giving effect to certain pro forma adjustments. The pro forma adjustments are preliminary and are based on BioTime management\u2019s estimates of the fair values and useful lives of the assets acquired and liabilities assumed, and were prepared to illustrate the estimated effect of the Acquisition. In accordance with Accounting Standards Codification 805, Business Combinations (\u201cASC 805\u201d), the total purchase consideration is allocated to the net tangible and identifiable intangible assets acquired and liabilities assumed based on their estimated fair values as of May 3, 2010. BioTime amortizes intangibles over their estimated useful lives. In accordance with ASC 805, BioTime does not amortize goodwill. The purchase price was allocated using the information currently available, and may be adjusted after obtaining more information regarding, among other things, asset valuations, liabilities assumed, and revisions of preliminary estimates.\nThe total purchase price for the Acquisition is $12,870,591. It is being allocated as indicated:",
+   "prose_after": "The fair value of the shares issued was based on the closing price per BioTime common share on the NYSE Amex on May 3, 2010, which was $7.96. The fair value of the warrants issued was computed using a Black Scholes Merton option pricing model, which utilized the following assumptions: expected term of four years, which is equal to the contractual life of the warrants; risk-free rate of 2.015%; 0% expected dividend yield; 118.20% expected volatility; a stock price of $7.96; and an exercise price of $10.\n6. Unaudited Pro Forma Interim Financial Information \u2013 Nine and Three Months Ended September 30, 2010 and 2009\nThe following unaudited pro forma information gives effect to the acquisition of ES Cell International Pte Ltd as if the acquisition took place on January 1, 2009. The pro forma information does not necessarily reflect the results of operations that would have occurred had the entities been a single company during the periods presented.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 397,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2010",
+     "",
+     "",
+     "September 30, 2009",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "2,728,962",
+     "",
+     "$",
+     "1,083,235",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) available to common shareholders",
+     "$",
+     "(9,422,190)",
+     "",
+     "$",
+     "(4,971,599)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per common share \u2013 basic",
+     "$",
+     "(0.24)",
+     "",
+     "$",
+     "(0.17)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per common share \u2013 diluted",
+     "$",
+     "(0.24)",
+     "",
+     "$",
+     "(0.17)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 404,
+    "end_line": 417
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisition of ES Cell International Pte Ltd"
+    }
+   },
+   "prose_before": "The fair value of the shares issued was based on the closing price per BioTime common share on the NYSE Amex on May 3, 2010, which was $7.96. The fair value of the warrants issued was computed using a Black Scholes Merton option pricing model, which utilized the following assumptions: expected term of four years, which is equal to the contractual life of the warrants; risk-free rate of 2.015%; 0% expected dividend yield; 118.20% expected volatility; a stock price of $7.96; and an exercise price of $10.\n6. Unaudited Pro Forma Interim Financial Information \u2013 Nine and Three Months Ended September 30, 2010 and 2009\nThe following unaudited pro forma information gives effect to the acquisition of ES Cell International Pte Ltd as if the acquisition took place on January 1, 2009. The pro forma information does not necessarily reflect the results of operations that would have occurred had the entities been a single company during the periods presented.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 399,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "(Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2010",
+     "",
+     "",
+     "September 30, 2009",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "815,284",
+     "",
+     "$",
+     "906,613",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) available to common shareholders",
+     "$",
+     "(4,671,162)",
+     "",
+     "$",
+     "(3,432,172)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per common share \u2013 basic",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income (loss) per common share \u2013 diluted",
+     "$",
+     "(0.11)",
+     "",
+     "$",
+     "(0.11)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 418,
+    "end_line": 431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Acquisition of ES Cell International Pte Ltd"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "7. Subsequent Events\nOn October 18, 2010, BioTime completed the acquisition of 104,027 ordinary shares of Cell Cure by paying $4,100,000 including $3,847,392 in cash and by converting into Cell Cure shares a $250,000 loan that we previously made to Cell Cure. Two other Cell Cure shareholders, Teva Pharmaceutical Industries Ltd. (\u201cTeva\u201d) and Hadasit Bio-Holdings, Ltd (\u201cHBL\u201d) concurrently completed their acquisition of Cell Cure Shares. Teva acquired 49,975 Cell Cure shares for $2,000,000 in cash, and HBL acquired 25,625 Cell Cure shares for $897,962 in cash and by converting into Cell Cure shares a $100,000 loan previously made to Cell Cure. As a result of the share purchase, we now own, directly and through our wholly-owned subsidiary ESI, approximately 53.6% of the outstanding ordinary shares of Cell Cure, HBL owns approximately 26.3% of the outstanding Cell Cure ordinary shares and Teva owns approximately 19.9% of the Cell Cure ordinary shares. As of September 30, 2010, Cell Cure was accounted through the equity method on BioTime\u2019s consolidated financial statements. However, as of December 31, 2010, due to the additional investment made during October 2010, Cell Cure will be consolidated with BioTime with the recognition of noncontrolling interest for the percentage not owned by BioTime.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 399,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CIRM sponsored ACTCellerate technology",
+     "$",
+     "1,722"
+    ],
+    [
+     "OncoCyte cancer therapy",
+     "",
+     "824"
+    ],
+    [
+     "OrthoCyte orthopedic therapy",
+     "",
+     "568"
+    ],
+    [
+     "IPS technology",
+     "",
+     "502"
+    ],
+    [
+     "Plasma Expanders",
+     "",
+     "445"
+    ],
+    [
+     "ESI embryonic stem cell technology",
+     "",
+     "250"
+    ],
+    [
+     "Other",
+     "",
+     "86"
+    ],
+    [
+     "",
+     "$",
+     "4,397"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 576,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management's Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "Research and development expenses were $1,808,357 for the three months ended September 30, 2010, compared to $744,201 for the three months ended September 30, 2009. This increase is primarily attributable to an increase of $216,396 in employee compensation and related costs allocated to research and development expense, an increase of $78,329 of travelling and related costs allocated to research and development expenses, an increase of $76,260 in scientific consulting fees, an increase of $73,678 in stock-based compensation allocated to research and development expense, an increase of $261,992 in outside research and laboratory costs, and an increase of $140,456 in expenditures made to cover laboratory expenses and supplies.\nResearch and development expenses were $4,397,109 for the nine months ended September 30, 2010, compared to $1,909,619 for the nine months ended September 30, 2009. This increase is primarily attributable to an increase of $700,405 in employee compensation and related costs allocated to research and development expense, an increase of $203,596 in scientific consulting fees, an increase of $265,725 in stock-based compensation allocated to research and development expense, an increase of $85,296 of travelling and related costs allocated to research and development expenses, an increase of $543,603 in outside research and laboratory costs, and an increase of $366,443 in expenditures made to cover laboratory expenses and supplies.\nResearch and development expenses by project can be summarized for the nine months ended September 30, 2010 as follows (in thousands).",
+   "prose_after": "Research and development expenses include laboratory expenses, employee compensation, rent, insurance, and consultants\u2019 fees.\nGeneral and administrative expenses decreased to $1,464,631for the three months ended September 30, 2010, from $2,637,133 for the three months ended September 30, 2009. This decrease is primarily attributable decrease of $1,695,607 in stock appreciation rights compensation liability, a decrease of $39,570 in investor and public relations expenses, decrease of $33,517 in annual report and meeting expenses, and a decrease of $26,272 in legal fees and general and administrative patent expenses. These decreases were offset in part by an increase of $199,315 in employee compensation and related costs allocated to general and administrative expenses.\nGeneral and administrative expenses decreased to $3,961,375 for the nine months ended September 30, 2010, from $4,520,317 for the nine months ended September 30, 2009. This decrease is primarily attributable to decrease of $2,200,325 in stock appreciation rights compensation liability offset by an increase of $434,816 in employee compensation and related costs allocated to general and administrative expense, an increase of $315,966 in cash and stock-based compensation paid to our independent directors, an increase of $262,992 in legal fees and general and administrative patent expenses.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 567,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 593,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Numbers",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation with all amendments. 24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "By-Laws, As Amended. 2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen of Common Share Certificate. 1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Form of Warrant Agreement between BioTime, Inc. and American Stock Transfer & Trust Company. 3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of Amendment to Warrant Agreement between BioTime, Inc. and American Stock Transfer & Trust Company. 4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Form of Warrant. 4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Warrant Agreement between BioTime, Inc., Broadwood Partners, L.P., and George Karfunkel. 22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Form of Warrant. 22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.7",
+     "Warrant Agreement between BioTime, Inc. and Biomedical Sciences Investment Fund Pte Ltd 25"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 668,
+    "end_line": 690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "It is management\u2019s responsibility to establish and maintain adequate internal control over all financial reporting pursuant to Rule 13a-15 under the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d). Our management, including our principal executive officer, our principal operations officer, and our principal financial officer, have reviewed and evaluated the effectiveness of our disclosure controls and procedures as of a date within ninety (90) days of the filing date of this Form 10-Q quarterly report. Following this review and evaluation , management collectively determined that our disclosure controls and procedures are effective to ensure that information required to be disclosed by us in reports that we file or submit under the Exchange Act (i) is recorded, processed, summarized, and reported within the time periods specified in SEC rules and forms, and (ii) is accumulated and communicated to management, including our chief executive officer, our chief operations officer, and our chief financial officer, as appropriate to allow timely decisions regarding required disclosure.\nChanges in Internal Controls\nThere were no changes in our internal control over financial reporting that occurred during the period covered by this Quarterly Report on Form 10-Q that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nPART II - OTHER INFORMATION\nItem 6. Exhibits",
+   "prose_after": "10.1 Intellectual Property Agreement between BioTime, Inc. and Hal Sternberg. 1 10.2 Intellectual Property Agreement between BioTime, Inc. and Harold Waitz. 1 10.3 Intellectual Property Agreement between BioTime, Inc. and Judith Segall. 1 10.4 Intellectual Property Agreement between BioTime, Inc. and Steven Seinberg. 7 10.5 Agreement between CMSI and BioTime Officers Releasing Employment Agreements, Selling Shares, and Transferring Non-Exclusive License. 1 10.6 Agreement for Trans Time, Inc. to Exchange CMSI Common Stock for BioTime, Inc. Common Shares. 1 10.7 2002 Stock Option Plan, as amended. 24 10.8 Exclusive License Agreement between Abbott Laboratories and BioTime, Inc. (Portions of this exhibit have been omitted pursuant to a request for confidential treatment). 5 10.9 Modification of Exclusive License Agreement between Abbott Laboratories and BioTime, Inc. (Portions of this exhibit have been omitted pursuant to a request for confidential treatment). 6 10.10 Exclusive License Agreement between BioTime, Inc. and CJ Corp. 8 10.11 Hextend and PentaLyte Collaboration Agreement between BioTime, Inc. and Summit Pharmaceuticals International Corporation. 9 10.12 Lease dated as of May 4, 2005 between BioTime, Inc. and Hollis R& D Associates. 10 10.13 Addendum to Hextend and PentaLyte Collaboration Agreement Between BioTime Inc. and Summit Pharmaceuticals International Corporation. 11 10.14 Amendment to Exclusive License Agreement Between BioTime, Inc. and Hospira, Inc. 12 10.15 Hextend and PentaLyte China License Agreement Between BioTime, Inc. and Summit Pharmaceuticals International Corporation. 13 10.16 Employment Agreement, dated October 10, 2007, between BioTime, Inc. and Michael D. West. 17 10.17 Commercial License and Option Agreement between BioTime and Wisconsin Alumni Research Foundation. 14 10.18 Form of Amended and Restated Revolving Credit Note. 15",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.37",
+     "Co-Exclusive OEM Supply Agreement, date July 7, 2009, between Embryome Sciences, Inc. and Millipore Corporation (Portions of this exhibit have been omitted pursuant to a request for confidential treatment). 23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.38",
+     "Stock Purchase Agreement between OncoCyte Corporation and George Karfunkel. 24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.39",
+     "Registration Rights Agreement between OncoCyte Corporation and George Karfunkel. 24"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.40",
+     "Employment Agreement, dated August 3, 2009, between BioTime, Inc. and Walter Funk. 25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.41",
+     "Equity and Note Purchase Agreement entered into as of April 28, 2010 by and between ES Cell Australia Limited, Pharmbio Growth Fund Pte Ltd., and Biomedical Sciences Investment Fund Pte Ltd. 25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.42",
+     "Registration Rights Agreement, dated May 3, 2010, between BioTime, Inc. and the security holders named therein, 25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.43",
+     "Transfer Agreement dated May 3, 2010 between BioTime, Inc. and certain shareholders of ES Cell International Pte Ltd. 25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.44",
+     "Escrow Agreement dated May 3, 2010 among BioTime, Inc., ES Cell Australia Limited, Pharmbio Growth Fund Pte Ltd., Biomedical Sciences Investment Fund Pte Ltd., and Wells Fargo Bank, National Association. 25"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.45",
+     "Sublease Agreement for 20 Biopolis #05-05/06 Centros, Singapore between Bioprocessing Technology Institute, Biomedical Sciences Institutes and ES Cell International Pte Ltd. 26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.46",
+     "Memorandum of Tenancy of Biopolis office space, and letters of offer, amendment, and acceptance dated January 2010 between ES Cell International Pte Ltd and JTC Corporation. 26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.47",
+     "OrthoCyte Corporation 2010 Stock Option Plan. 26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.48",
+     "Share Purchase Agreement, dated October 7, 2010, by and among Cell Cure Neurosciences, Limited, Teva Pharmaceutical Industries, Ltd, HBL-Hadasit Bio-Holdings, Ltd., and BioTime, Inc. 27"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31",
+     "Rule 13a-14(a)/15d-14(a) Certification. *"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Section 1350 Certification.*"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1",
+     "Incorporated by reference to Registration Statement on Form S-1, File Number 33-44549 filed with the Securities and Exchange Commission on December 18, 1991, and Amendment No. 1 and Amendment No. 2 thereto filed with the Securities and Exchange Commission on February 6, 1992 and March 7, 1992, respectively."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2",
+     "Incorporated by reference to Registration Statement on Form S-1, File Number 33-48717 and Post-Effective Amendment No. 1 thereto filed with the Securities and Exchange Commission on June 22, 1992, and August 27, 1992, respectively."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "BIOTIME, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: November 12, 2010",
+     "/s/ Michael D. West"
+    ],
+    [
+     "",
+     "Michael D. West"
+    ],
+    [
+     "",
+     "Chief Executive Officer"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: November 12, 2010",
+     "/s/ Robert W. Peabody"
+    ],
+    [
+     "",
+     "Robert W. Peabody"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "BIOTIME, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 758,
+    "end_line": 771
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent Events"
+    }
+   },
+   "prose_before": "3 Incorporated by reference to Registration Statement on Form S-2, File Number 333-109442, filed with the Securities and Exchange Commission on October 3, 2003, and Amendment No.1 thereto filed with the Securities and Exchange Commission on November 13, 2003. 4 Incorporated by reference to Registration Statement on Form S-2, File Number 333-128083, filed with the Securities and Exchange Commission on September 2, 2005. 5 Incorporated by reference to BioTime\u2019s Form 8-K, filed April 24, 1997. 6 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended June 30, 1999. 7 Incorporated by reference to BioTime\u2019s Form 10-K for the year ended December 31, 2001. 8 Incorporated by reference to BioTime\u2019s Form 10-K/A-1 for the year ended December 31, 2002. 9 Incorporated by reference to BioTime\u2019s Form 8-K, filed December 30, 2004. 10 Incorporated by reference to Post-Effective Amendment No. 3 to Registration Statement on Form S-2 File Number 333-109442, filed with the Securities and Exchange Commission on May 24, 2005. 11 Incorporated by reference to BioTime\u2019s Form 8-K, filed December 20, 2005. 12 Incorporated by reference to BioTime\u2019s Form 8-K, filed January 13, 2006. 13 Incorporated by reference to BioTime\u2019s Form 8-K, filed March 30, 2006. 14 Incorporated by reference to BioTime\u2019s Form 8-K, filed January 9, 2008. 15 Incorporated by reference to BioTime\u2019s Form 8-K, filed March 10, 2008. 16 Incorporated by reference to BioTime\u2019s Form 8-K filed April 4, 2008. 17 Incorporated by reference to BioTime\u2019s Form 10-KSB for the year ended December 31, 2007. 18 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended June 30, 2008. 19 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended September 30, 2008. 20 Incorporated by reference to BioTime\u2019s Form 10-K for the year ended December 31, 2008.\n21 Incorporated by reference to BioTime\u2019s Form 8-K filed April 17, 2009. 22 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended March 31, 2009. 23 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended June 30, 2009. 24 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended September 30, 2009. 25 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended March 31, 2010. 26 Incorporated by reference to BioTime\u2019s Form 10-Q for the quarter ended June 30, 2010. 27 Incorporated by reference to BioTime\u2019s Form 8-K filed October 19, 2010.\n* Filed herewith.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 753,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 772,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

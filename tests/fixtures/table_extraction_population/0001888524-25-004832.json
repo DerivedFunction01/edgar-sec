@@ -1,0 +1,110 @@
+{
+ "accession": "0001888524-25-004832",
+ "cik": "0001630690",
+ "form": "10-K",
+ "filing_date": "2025-03-18",
+ "era": "ixbrl",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "jpc15c27_10k-2024.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York (State or other jurisdiction of incorporation or organization of\n\n\n\nthe issuing entity)",
+     "38-3952111\n\n\n\n38-3952112\n\n\n\n38-7127951\n\n\n\n(I.R.S. Employer\n\n\n\nIdentification Numbers)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 59,
+    "end_line": 70
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001682523\nStarwood Mortgage Funding II LLC\n(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001567746\nAspire HEI, Inc. (formerly known as Redwood Commercial Mortgage Corporation)\n(exact name of the sponsor as specified in its charter)\nCentral Index Key Number of the sponsor: 0001587045\nRAIT Funding, LLC\n(exact name of the sponsor as specified in its charter)",
+   "prose_after": "c/o Computershare Trust Company, National Association, as agent for\nWells Fargo Bank, National Association\nas Certificate Administrator\n9062 Old Annapolis Road\nColumbia, MD\n(Address of principal executive offices of the issuing entity)\n21045\n(Zip Code)\nRegistrant\u2019s telephone number, including area code:\n(212) 834-5467",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 93,
+    "end_line": 99
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Wells Fargo Bank, National Association\nas Certificate Administrator\n9062 Old Annapolis Road\nColumbia, MD\n(Address of principal executive offices of the issuing entity)\n21045\n(Zip Code)\nRegistrant\u2019s telephone number, including area code:\n(212) 834-5467\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] N [ ]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] N [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] N [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (Section 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

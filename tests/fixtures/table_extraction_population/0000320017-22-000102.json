@@ -1,0 +1,4893 @@
+{
+ "accession": "0000320017-22-000102",
+ "cik": "0000320017",
+ "form": "10-Q",
+ "filing_date": "2022-11-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "clbs-20220930.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "22-2343568"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "110 Allen Road, 2nd Floor, Basking Ridge, New Jersey",
+     "07920"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended September 30, 2022\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from __________________ to _________________________\nCommission File Number 001-33650\nLISATA THERAPEUTICS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: 908-842-0100\nCaladrius Biosciences, Inc.\n(Former name or former address, if changed since last report)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:",
+     "",
+     ""
+    ],
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.001 per share",
+     "LSTA",
+     "The Nasdaq Capital Market"
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Act:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: 908-842-0100\nCaladrius Biosciences, Inc.\n(Former name or former address, if changed since last report)",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Class",
+     "Outstanding as of November 10, 2022",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value per share",
+     "7,859,684",
+     "shares"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 61,
+    "end_line": 66
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definition of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nIndicate the number of shares outstanding of each of the issuer's classes of common stock, as of the latest practicable date.",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis quarterly report (this \u201cQuarterly Report\u201d) contains \u201cforward-looking\u201d statements within the meaning of the Private Securities Litigation Reform Act of 1995, as well as historical information. When used in this Quarterly Report, statements that are not statements of current or historical fact may be deemed to be forward-looking statements, including, without limitation, all statements related to any expectations of revenues, expenses, cash flows, earnings or losses from operations, cash required to maintain current and planned operations, capital or other financial items; any statements of the plans, strategies and objectives of management for future operations; any plans or expectations with respect to product research, development and commercialization, including regulatory approvals; any other statements of expectations, plans, intentions or beliefs; and any statements of assumptions underlying any of the foregoing. Without limiting the foregoing, the words \u201cplan,\u201d \u201cproject,\u201d \u201cforecast,\u201d \u201coutlook,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cexpect,\u201d \u201canticipate,\u201d \u201clikely,\u201d \u201cbelieve,\u201d \u201ccould,\u201d \u201canticipate,\u201d \u201cestimate,\u201d \u201ccontinue,\u201d \u201ctarget\u201d or similar expressions or other variations or comparable terminology are intended to identify such forward-looking statements, although some forward-looking statements are expressed differently. We remind readers that forward-looking statements are merely predictions and therefore inherently subject to uncertainties and other factors and involve known and unknown risks that could cause the actual results, performance, levels of activity or our achievements or industry results, to be materially different from any future results, performance, levels of activity or our achievements or industry results expressed or implied by such forward-looking statements. Factors that could cause our actual results to differ materially from anticipated results expressed or implied by forward-looking statements include, among others:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 66,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "PART I- FINANCIAL INFORMATION",
+     "Page No."
+    ],
+    [
+     "Item 1.",
+     "Financial Statements:",
+     "5"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets at September 30, 2022 (unaudited) and December 31, 2021",
+     "5"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the three and nine months ended September 30, 2022 and 2021 (unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "Consolidated Statements of Comprehensive Loss for the three and nine months ended September 30, 2022 and 2021 (unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "Consolidated Statements of Equity for the three and nine months ended September 30, 2022 and 2021 (unaudited)",
+     "8"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the nine months ended September 30, 2022 and 2021 (unaudited)",
+     "10"
+    ],
+    [
+     "",
+     "Notes to Unaudited Consolidated Financial Statements",
+     "11"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "26"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "35"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "35"
+    ],
+    [
+     "",
+     "PART II- OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "37"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "37"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "37"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "37"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "37"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "37"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "37"
+    ],
+    [
+     "",
+     "Signatures",
+     "38"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 106,
+    "end_line": 128
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u2022other factors discussed in \u201cRisk Factors\u201d in our Annual Report on Form 10-K filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on March 22, 2022 (our \u201c2021 Form 10-K\u201d), in our Quarterly Reports on Form 10-Q for the periods ended March 31, 2022 and June 30, 2022 and in Exhibit 99.2 to our Amendment No. 1 to Current Report on Form 8-K/A filed on October 4, 2022.\nThe factors discussed herein, including those risks described in \u201cItem 1A. Risk Factors\u201d and elsewhere in our 2021 Form 10-K and in our other periodic filings with the SEC, which are available for review at www.sec.gov, could cause actual results and developments to be materially different from those expressed or implied by such statements. All forward-looking statements attributable to us are expressly qualified in their entirety by these and other factors. Readers are cautioned not to place undue reliance on these forward-looking statements, which speak only as of the date they were made. Except as required by law, we undertake no obligation to update any forward-looking statements, whether as a result of new information, future events or otherwise.\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 129,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "ASSETS",
+     "(Unaudited)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "31,478",
+     "$",
+     "24,647"
+    ],
+    [
+     "Marketable securities",
+     "44,052",
+     "",
+     "70,323",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "1,760",
+     "",
+     "1,212",
+     ""
+    ],
+    [
+     "Total current assets",
+     "77,290",
+     "",
+     "96,182",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "299",
+     "",
+     "62",
+     ""
+    ],
+    [
+     "Acquired license - intangible",
+     "352",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other assets",
+     "588",
+     "",
+     "764",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "78,529",
+     "$",
+     "97,008"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "974",
+     "$",
+     "1,934"
+    ],
+    [
+     "Accrued liabilities",
+     "5,417",
+     "",
+     "2,589",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "6,391",
+     "",
+     "4,523",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "367",
+     "",
+     "485",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "6,758",
+     "",
+     "5,008",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 13)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, authorized, 20,000,000 shares Series B convertible redeemable preferred stock liquidation value, 0.000067 share of common stock, $0.01 par value; 825,000 shares designated; issued and outstanding, 10,000 shares at September 30, 2022 and December 31, 2021, respectively",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, authorized 33,333,333 shares; issued 7,863,340 and 3,986,719 shares at September 30, 2022 and December 31, 2021, respectively; and outstanding, 7,862,602 and 3,985,981 shares at September 30, 2022 and December 31, 2021, respectively",
+     "8",
+     "",
+     "4",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "574,066",
+     "",
+     "546,044",
+     ""
+    ],
+    [
+     "Treasury stock, at cost; 738 shares at September 30, 2022 and December 31, 2021",
+     "(708)",
+     "",
+     "(708)",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "(501,251)",
+     "",
+     "(453,016)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive loss",
+     "(90)",
+     "",
+     "(70)",
+     ""
+    ],
+    [
+     "Total Lisata Therapeutics, Inc. stockholders' equity",
+     "72,025",
+     "",
+     "92,254",
+     ""
+    ],
+    [
+     "Non-controlling interests",
+     "(254)",
+     "",
+     "(254)",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "71,771",
+     "",
+     "92,000",
+     ""
+    ],
+    [
+     "Total liabilities, non-controlling interests and stockholders' equity",
+     "$",
+     "78,529",
+     "$",
+     "97,008"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 141,
+    "end_line": 188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCONSOLIDATED BALANCE SHEETS\n(In thousands, except share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 135,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 189,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "3,380",
+     "$",
+     "4,125",
+     "$",
+     "9,898",
+     "$",
+     "13,530"
+    ],
+    [
+     "In-process research and development",
+     "30,393",
+     "",
+     "\u2014",
+     "",
+     "30,393",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "General and administrative",
+     "3,947",
+     "",
+     "2,843",
+     "",
+     "10,770",
+     "",
+     "8,671",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "37,720",
+     "",
+     "6,968",
+     "",
+     "51,061",
+     "",
+     "22,201",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "(37,720)",
+     "",
+     "(6,968)",
+     "",
+     "(51,061)",
+     "",
+     "(22,201)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment income, net",
+     "337",
+     "",
+     "41",
+     "",
+     "496",
+     "",
+     "111",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(149)",
+     "",
+     "(90)",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "337",
+     "",
+     "41",
+     "",
+     "347",
+     "",
+     "21",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss before benefit from income taxes and noncontrolling interests",
+     "(37,383)",
+     "",
+     "(6,927)",
+     "",
+     "(50,714)",
+     "",
+     "(22,180)",
+     ""
+    ],
+    [
+     "Benefit from income taxes",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,479)",
+     "",
+     "(1,508)",
+     ""
+    ],
+    [
+     "Net loss attributable to Lisata Therapeutics, Inc. common stockholders",
+     "$",
+     "(37,383)",
+     "$",
+     "(6,927)",
+     "$",
+     "(48,235)",
+     "$",
+     "(20,672)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lisata Therapeutics, Inc. common stockholders",
+     "$",
+     "(7.88)",
+     "$",
+     "(1.74)",
+     "$",
+     "(11.28)",
+     "$",
+     "(5.76)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted shares",
+     "4,747",
+     "",
+     "3,974",
+     "",
+     "4,276",
+     "",
+     "3,587",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 199,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF OPERATIONS\n(In thousands, except per share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 195,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 233,
+     "token": "REPEATING_FOOTER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(37,383)",
+     "$",
+     "(6,927)",
+     "$",
+     "(48,235)",
+     "$",
+     "(20,672)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive loss:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Available for sale securities - net unrealized gain (loss)",
+     "5",
+     "",
+     "(47)",
+     "",
+     "5",
+     "",
+     "(51)",
+     ""
+    ],
+    [
+     "Cumulative translation adjustment arising during the period",
+     "(25)",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total other comprehensive loss",
+     "(20)",
+     "",
+     "(47)",
+     "",
+     "(20)",
+     "",
+     "(51)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive loss attributable to Lisata Therapeutics, Inc. common stockholders",
+     "$",
+     "(37,403)",
+     "$",
+     "(6,974)",
+     "$",
+     "(48,255)",
+     "$",
+     "(20,723)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 241,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 239,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 258,
+     "token": "REPEATING_FOOTER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Series B Convertible Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Treasury Stock",
+     "",
+     "Total Lisata Therapeutics, Inc.\nStockholders' Equity",
+     "",
+     "Non- Controlling Interest in Subsidiary",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2022",
+     "\u2014",
+     "$",
+     "\u2014",
+     "4,038",
+     "$",
+     "4",
+     "$",
+     "547,032",
+     "$",
+     "(70)",
+     "$",
+     "(463,868)",
+     "$",
+     "(708)",
+     "$",
+     "82,391",
+     "$",
+     "(254)",
+     "$",
+     "82,137"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(37,383)",
+     "",
+     "\u2014",
+     "",
+     "(37,383)",
+     "",
+     "\u2014",
+     "",
+     "(37,383)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "52",
+     "\u2014",
+     "",
+     "940",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "939",
+     "",
+     "\u2014",
+     "",
+     "939",
+     ""
+    ],
+    [
+     "Issuance of common stock in connection with merger",
+     "\u2014",
+     "\u2014",
+     "",
+     "3,773",
+     "4",
+     "",
+     "26,094",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "26,098",
+     "",
+     "\u2014",
+     "",
+     "26,098",
+     ""
+    ],
+    [
+     "Unrealized gain on marketable securities",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5",
+     "",
+     "\u2014",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2022",
+     "\u2014",
+     "$",
+     "\u2014",
+     "7,863",
+     "$",
+     "8",
+     "$",
+     "574,066",
+     "$",
+     "(90)",
+     "$",
+     "(501,251)",
+     "$",
+     "(708)",
+     "$",
+     "72,025",
+     "$",
+     "(254)",
+     "$",
+     "71,771"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Series B Convertible Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Treasury Stock",
+     "",
+     "Total Lisata Therapeutics, Inc.\nStockholders' Equity",
+     "",
+     "Non- Controlling Interest in Subsidiary",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2021",
+     "\u2014",
+     "$",
+     "\u2014",
+     "3,986",
+     "$",
+     "4",
+     "$",
+     "546,044",
+     "$",
+     "(70)",
+     "$",
+     "(453,016)",
+     "$",
+     "(708)",
+     "$",
+     "92,254",
+     "$",
+     "(254)",
+     "$",
+     "92,000"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(48,235)",
+     "",
+     "\u2014",
+     "",
+     "(48,235)",
+     "",
+     "\u2014",
+     "",
+     "(48,235)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "100",
+     "\u2014",
+     "",
+     "1,899",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,899",
+     "",
+     "\u2014",
+     "",
+     "1,899",
+     ""
+    ],
+    [
+     "Net proceeds from issuances of common stock",
+     "\u2014",
+     "\u2014",
+     "",
+     "4",
+     "\u2014",
+     "",
+     "29",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "29",
+     "",
+     "\u2014",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Issuance of common stock in connection with merger",
+     "\u2014",
+     "\u2014",
+     "",
+     "3,773",
+     "4",
+     "",
+     "26,094",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "26,098",
+     "",
+     "\u2014",
+     "",
+     "26,098",
+     ""
+    ],
+    [
+     "Unrealized gain on marketable securities",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5",
+     "",
+     "\u2014",
+     "",
+     "5",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     "",
+     "\u2014",
+     "",
+     "(25)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2022",
+     "\u2014",
+     "$",
+     "\u2014",
+     "7,863",
+     "$",
+     "8",
+     "$",
+     "574,066",
+     "$",
+     "(90)",
+     "$",
+     "(501,251)",
+     "$",
+     "(708)",
+     "$",
+     "72,025",
+     "$",
+     "(254)",
+     "$",
+     "71,771"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 266,
+    "end_line": 301
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF EQUITY",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 264,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Series B Convertible Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Treasury Stock",
+     "",
+     "Total Lisata Therapeutics, Inc.\nStockholders' Equity",
+     "",
+     "Non- Controlling Interest in Subsidiary",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at June 30, 2021",
+     "\u2014",
+     "$",
+     "\u2014",
+     "3,967",
+     "$",
+     "4",
+     "$",
+     "544,949",
+     "$",
+     "(17)",
+     "$",
+     "(439,295)",
+     "$",
+     "(708)",
+     "$",
+     "104,933",
+     "$",
+     "(254)",
+     "$",
+     "104,679"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,927)",
+     "",
+     "\u2014",
+     "",
+     "(6,927)",
+     "",
+     "\u2014",
+     "",
+     "(6,927)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "19",
+     "\u2014",
+     "",
+     "708",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "708",
+     "",
+     "\u2014",
+     "",
+     "708",
+     ""
+    ],
+    [
+     "Unrealized loss on marketable securities",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(47)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(47)",
+     "",
+     "\u2014",
+     "",
+     "(47)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2021",
+     "\u2014",
+     "$",
+     "\u2014",
+     "3,986",
+     "$",
+     "4",
+     "$",
+     "545,657",
+     "$",
+     "(64)",
+     "$",
+     "(446,222)",
+     "$",
+     "(708)",
+     "$",
+     "98,667",
+     "$",
+     "(254)",
+     "$",
+     "98,413"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Series B Convertible Preferred Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "Accumulated Deficit",
+     "",
+     "Treasury Stock",
+     "",
+     "Total Lisata Therapeutics, Inc.\nStockholders' Equity",
+     "",
+     "Non- Controlling Interest in Subsidiary",
+     "",
+     "Total Equity",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "Shares",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2020",
+     "\u2014",
+     "$",
+     "\u2014",
+     "1,292",
+     "$",
+     "1",
+     "$",
+     "458,766",
+     "$",
+     "(13)",
+     "$",
+     "(425,550)",
+     "$",
+     "(708)",
+     "$",
+     "32,496",
+     "$",
+     "(254)",
+     "$",
+     "32,242"
+    ],
+    [
+     "Net loss",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(20,672)",
+     "",
+     "\u2014",
+     "",
+     "(20,672)",
+     "",
+     "\u2014",
+     "",
+     "(20,672)",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "\u2014",
+     "\u2014",
+     "",
+     "36",
+     "\u2014",
+     "",
+     "1,391",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,391",
+     "",
+     "\u2014",
+     "",
+     "1,391",
+     ""
+    ],
+    [
+     "Net proceeds from issuances of common stock and warrants",
+     "\u2014",
+     "\u2014",
+     "",
+     "2,658",
+     "3",
+     "",
+     "85,476",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "85,479",
+     "",
+     "\u2014",
+     "",
+     "85,479",
+     ""
+    ],
+    [
+     "Proceeds from option exercises",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "24",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "24",
+     "",
+     "\u2014",
+     "",
+     "24",
+     ""
+    ],
+    [
+     "Unrealized loss on marketable securities",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(51)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(51)",
+     "",
+     "\u2014",
+     "",
+     "(51)",
+     ""
+    ],
+    [
+     "Balance at September 30, 2021",
+     "\u2014",
+     "$",
+     "\u2014",
+     "3,986",
+     "$",
+     "4",
+     "$",
+     "545,657",
+     "$",
+     "(64)",
+     "$",
+     "(446,222)",
+     "$",
+     "(708)",
+     "$",
+     "98,667",
+     "$",
+     "(254)",
+     "$",
+     "98,413"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 304,
+    "end_line": 335
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 336,
+     "token": "REPEATING_FOOTER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(48,235)",
+     "$",
+     "(20,672)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Share-based compensation",
+     "2,168",
+     "",
+     "1,639",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "22",
+     "",
+     "47",
+     ""
+    ],
+    [
+     "In process research and development expenses",
+     "30,393",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Accretion on marketable securities",
+     "893",
+     "",
+     "1,925",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "29",
+     "",
+     "(1,199)",
+     ""
+    ],
+    [
+     "Other assets",
+     "178",
+     "",
+     "252",
+     ""
+    ],
+    [
+     "Accounts payable, accrued liabilities and other liabilities",
+     "(150)",
+     "",
+     "367",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "(14,702)",
+     "",
+     "(17,641)",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of marketable securities",
+     "(68,481)",
+     "",
+     "(137,329)",
+     ""
+    ],
+    [
+     "Sale of marketable securities",
+     "93,865",
+     "",
+     "66,035",
+     ""
+    ],
+    [
+     "Asset acquisition costs, net of cash acquired related to merger with Cend",
+     "(3,320)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "(259)",
+     "",
+     "(60)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "21,805",
+     "",
+     "(71,354)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from exercise of options",
+     "\u2014",
+     "",
+     "24",
+     ""
+    ],
+    [
+     "Tax withholding payments on net share settlement equity awards",
+     "(267)",
+     "",
+     "(248)",
+     ""
+    ],
+    [
+     "Net proceeds from issuance of common stock",
+     "29",
+     "",
+     "85,479",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "(238)",
+     "",
+     "85,255",
+     ""
+    ],
+    [
+     "  Effect of exchange rate changes on cash",
+     "(34)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "6,831",
+     "",
+     "(3,740)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "24,647",
+     "",
+     "16,512",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "31,478",
+     "$",
+     "12,772"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of noncash investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock in connection with merger",
+     "$",
+     "23,580",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Incremental fair value of Cend's fully vested stock options assumed",
+     "$",
+     "2,136",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 344,
+    "end_line": 390
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "NOTES TO UNAUDITED CONSOLIDATED FINANCIAL STATEMENTS\nNote 1 \u2013 The Business\nOverview\nLisata Therapeutics, Inc. (together with its subsidiaries, \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d \u201cLisata\u201d or the \u201cCompany\u201d) is a clinical-stage pharmaceutical company dedicated to the discovery, development and commercialization of innovative therapies for the treatment of solid tumors and other major diseases. Lisata\u2019s lead investigational product candidate, LSTA1 (formerly known as CEND-1), is designed to activate a novel uptake pathway that allows anti-cancer drugs to penetrate solid tumors more effectively. LSTA1 actuates this active transport system in a tumor-specific manner, resulting in systemically co-administered anti-cancer drugs more efficiently penetrating and accumulating in the tumor, while normal tissues are not affected. LSTA1 also has the potential to modify the tumor microenvironment (\u201cTME\u201d), making tumors more susceptible to immunotherapies. LSTA1 has demonstrated favorable safety, tolerability, and activity to date in completed and ongoing clinical trials to enhance delivery of standard-of-care chemotherapy for pancreatic cancer. Lisata and its collaborators have also amassed significant non-clinical data demonstrating enhanced delivery of a range of emerging anti-cancer therapies, including immunotherapies and RNA-based therapeutics. Lisata is exploring the potential of LSTA1 to enable a variety of treatment modalities to treat a range of solid tumors more effectively. In addition, Lisata also has clinical development programs based on its autologous CD34+ cell therapy technology platform.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 342,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 391,
+     "token": "REPEATING_FOOTER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Furniture and fixtures",
+     "10 years"
+    ],
+    [
+     "Computer equipment",
+     "3 years"
+    ],
+    [
+     "Software",
+     "3 years"
+    ],
+    [
+     "Leasehold improvements",
+     "Life of lease"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 477,
+    "end_line": 483
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company determines the appropriate classification of its marketable securities at the time of purchase and reevaluates such designation at each balance sheet date. All of the Company's marketable securities are considered as available-for-sale and carried at estimated fair values and reported in cash equivalents and marketable securities. Unrealized gains and losses on available-for-sale securities are excluded from net income and reported in accumulated other comprehensive income (loss) as a separate component of stockholders' equity. Other income (expense), net includes interest, dividends, amortization of purchase premiums and discounts, realized gains and losses on sales of securities and other-than-temporary declines in the fair value of securities, if any. The cost of securities sold is based on the specific identification method. The Company regularly reviews all of its investments for other-than-temporary declines in fair value. The Company's review includes the consideration of the cause of the impairment, including the creditworthiness of the security issuers, the number of securities in an unrealized loss position, the severity and duration of the unrealized losses, whether the Company has the intent to sell the securities and whether it is more likely than not that it will be required to sell the securities before the recovery of their amortized cost basis. When the Company determines that the decline in fair value of an investment is below its accounting basis and this decline is other-than-temporary, it reduces the carrying value of the security it holds and records a loss for the amount of such decline.\nProperty and Equipment\nThe cost of property and equipment is depreciated over the estimated useful lives of the related assets. Depreciation is computed on the straight-line method. Repairs and maintenance expenditures that do not extend original asset lives are charged to expense as incurred. The estimated useful lives of property and equipment are as follows:",
+   "prose_after": "Long-lived Assets\nLong-lived assets consist of property and equipment and intangibles. The assets are amortized on a straight line basis over their respective useful lives. The Company reviews long-lived assets for impairment whenever events or changes in circumstances indicate that the carrying amount of an asset exceeds the fair value of the asset. If other events or changes in circumstances indicate that the carrying amount of an asset that the Company expects to hold and use may not be recoverable, the Company will estimate the undiscounted future cash flows expected to result from the use of the asset and/or its eventual disposition, and recognize an impairment loss, if any. The impairment loss, if determined to be necessary, would be measured as the amount by which the carrying amount of the assets exceeds the fair value of the assets.\nShare-Based Compensation\nThe Company expenses all share-based payment awards to employees, directors, and consultants, including grants of stock options, warrants, and restricted stock, over the requisite service period based on the grant date fair value of the awards. Consultant awards are remeasured each reporting period through vesting. For awards with performance-based vesting criteria, the Company estimates the probability of achievement of the performance criteria and recognizes compensation expense related to those awards expected to vest. The Company determines the fair value of option awards using the Black-Scholes option-pricing model which uses both historical and current market data to estimate the fair value. This method incorporates various assumptions such as the risk-free interest rate, expected volatility, expected dividend yield and expected life of the options or warrants. Stock based compensation expense also includes an estimate, which is made at the time of the grant, of the number of awards that are expected to be forfeited. The fair value of the Company\u2019s restricted stock and restricted stock units is based on the closing market price of the Company\u2019s common stock on the date of grant.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 465,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 496,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Number of common shares of the combined company owned by Cend stockholders",
+     "3,772,768"
+    ],
+    [
+     "Multiplied by the fair value per share of Lisata common stock on September 15, 2022",
+     "$6.25"
+    ],
+    [
+     "Total",
+     "$23,580"
+    ],
+    [
+     "Carrying value of Lisata's cost method investment in Cend",
+     "10,000"
+    ],
+    [
+     "Incremental fair value of Cend's fully vested stock options",
+     "2,136"
+    ],
+    [
+     "Lisata transaction costs",
+     "382"
+    ],
+    [
+     "Total purchase price",
+     "$36,098"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 536,
+    "end_line": 549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Merger"
+    }
+   },
+   "prose_before": "For arrangements that include sales-based royalties, including milestone payments based on the level of sales, and for which the license is deemed to be the predominant item to which the royalties relate, the Company recognizes revenue at the later of (i) when the related sales occur, or (ii) when the performance obligation to which some or all of the royalty has been allocated has been satisfied (or partially satisfied). To date, the Company has not recognized any royalty revenue from any collaborative arrangement.\nNote 3 \u2013 Merger\nThe Merger was accounted for as an asset acquisition as substantially all of the fair value was concentrated in IPR&D. Cend\u2019s assets (except for cash and working capital) were measured and recognized as an allocation of the transaction price based on their relative fair values as of the transaction date with any value associated with IPR&D being expensed. The fair value of total consideration was $36.1 million. The following table is a summary of the purchase price calculation (in thousands except per share data).",
+   "prose_after": "The allocation of the purchase price was as follows (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Cash and cash equivalents",
+     "$7,062"
+    ],
+    [
+     "Net working capital (excluding cash)",
+     "(1,690)"
+    ],
+    [
+     "Other liabilities",
+     "(22)"
+    ],
+    [
+     "Acquired in-process research and development",
+     "30,393"
+    ],
+    [
+     "License",
+     "355"
+    ],
+    [
+     "Net assets acquired",
+     "$36,098"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 552,
+    "end_line": 562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Merger"
+    }
+   },
+   "prose_before": "The allocation of the purchase price was as follows (amounts in thousands):",
+   "prose_after": "Note 4 \u2013 Available-for-Sale-Securities\nThe following table is a summary of available-for-sale securities recorded in cash and cash equivalents or marketable securities in our Consolidated Balance Sheets (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 522,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Estimated Fair Value",
+     "",
+     "Cost",
+     "",
+     "Gross Unrealized Gains",
+     "",
+     "Gross Unrealized Losses",
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "Corporate debt securities",
+     "$",
+     "39,311",
+     "$",
+     "\u2014",
+     "$",
+     "(65)",
+     "$",
+     "39,246",
+     "$",
+     "53,135",
+     "$",
+     "\u2014",
+     "$",
+     "(65)",
+     "$",
+     "53,070"
+    ],
+    [
+     "Commercial paper",
+     "14,459",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "14,459",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Money market funds",
+     "13,457",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "13,457",
+     "",
+     "18,124",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "18,124",
+     ""
+    ],
+    [
+     "Municipal debt securities",
+     "170",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "170",
+     "",
+     "20,263",
+     "",
+     "\u2014",
+     "",
+     "(5)",
+     "",
+     "20,258",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "67,397",
+     "$",
+     "\u2014",
+     "$",
+     "(65)",
+     "$",
+     "67,332",
+     "$",
+     "91,522",
+     "$",
+     "\u2014",
+     "$",
+     "(70)",
+     "$",
+     "91,452"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 582
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Available-for-Sale-Securities"
+    }
+   },
+   "prose_before": "Note 4 \u2013 Available-for-Sale-Securities\nThe following table is a summary of available-for-sale securities recorded in cash and cash equivalents or marketable securities in our Consolidated Balance Sheets (in thousands):",
+   "prose_after": "Estimated fair values of available-for-sale securities are generally based on prices obtained from commercial pricing services. The following table summarizes the classification of the available-for-sale securities in our Consolidated Balance Sheets (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Cash equivalents",
+     "$",
+     "23,280",
+     "$",
+     "21,129"
+    ],
+    [
+     "Marketable securities",
+     "44,052",
+     "",
+     "70,323",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "67,332",
+     "$",
+     "91,452"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 585,
+    "end_line": 594
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Available-for-Sale-Securities"
+    }
+   },
+   "prose_before": "Estimated fair values of available-for-sale securities are generally based on prices obtained from commercial pricing services. The following table summarizes the classification of the available-for-sale securities in our Consolidated Balance Sheets (in thousands):",
+   "prose_after": "The following table summarizes our portfolio of available-for-sale securities by contractual maturity (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amortized Cost",
+     "",
+     "Estimated Fair Value",
+     ""
+    ],
+    [
+     "Less than one year",
+     "$",
+     "67,397",
+     "$",
+     "67,332"
+    ],
+    [
+     "Greater than one year",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "67,397",
+     "$",
+     "67,332"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2022"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 597,
+    "end_line": 609
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Available-for-Sale-Securities"
+    }
+   },
+   "prose_before": "The following table summarizes our portfolio of available-for-sale securities by contractual maturity (in thousands):",
+   "prose_after": "Note 5 \u2013 Income (Loss) Per Share\nFor the nine months ended September 30, 2022 and 2021, the Company incurred net losses and therefore no common stock equivalents were utilized in the calculation of diluted loss per share as they are anti-dilutive. At September 30, 2022 and 2021, the Company excluded the following potentially dilutive securities (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "2021"
+    ],
+    [
+     "Stock Options",
+     "1,399",
+     "142"
+    ],
+    [
+     "Warrants",
+     "1,424",
+     "1,424"
+    ],
+    [
+     "Restricted Stock Units",
+     "48",
+     "53"
+    ]
+   ],
+   "caption_stack": [
+    "September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 614,
+    "end_line": 623
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Income (Loss) Per Share"
+    }
+   },
+   "prose_before": "Note 5 \u2013 Income (Loss) Per Share\nFor the nine months ended September 30, 2022 and 2021, the Company incurred net losses and therefore no common stock equivalents were utilized in the calculation of diluted loss per share as they are anti-dilutive. At September 30, 2022 and 2021, the Company excluded the following potentially dilutive securities (in thousands):",
+   "prose_after": "Note 6 \u2013 Fair Value Measurements\nThe fair value of financial assets and liabilities that are being measured and reported are defined as the exchange price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants in the principal market at the measurement date (exit price). The Company is required to classify fair value measurements in one of the following categories:\nLevel 1 inputs are defined as quoted prices (unadjusted) in active markets for identical assets or liabilities that the reporting entity has the ability to access at the measurement date.\nLevel 2 inputs are defined as inputs other than quoted prices included within Level 1 that are observable for the assets or liabilities, either directly or indirectly.\nLevel 3 inputs are defined as unobservable inputs for the assets or liabilities. Financial assets and liabilities are classified based on the lowest level of input that is significant to the fair value measurement. The Company\u2019s assessment of the significance of a particular input to the fair value measurement requires judgment and may affect the valuation of the fair value of assets and liabilities and their placement within the fair value hierarchy levels.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 563,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "December 31, 2021",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities - available for sale",
+     "$",
+     "\u2014",
+     "$",
+     "44,052",
+     "$",
+     "\u2014",
+     "$",
+     "44,052",
+     "$",
+     "\u2014",
+     "$",
+     "70,323",
+     "$",
+     "\u2014",
+     "$",
+     "70,323"
+    ],
+    [
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "44,052",
+     "$",
+     "\u2014",
+     "$",
+     "44,052",
+     "$",
+     "\u2014",
+     "$",
+     "70,323",
+     "$",
+     "\u2014",
+     "$",
+     "70,323"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Fair Value Measurements"
+    }
+   },
+   "prose_before": "Level 1 inputs are defined as quoted prices (unadjusted) in active markets for identical assets or liabilities that the reporting entity has the ability to access at the measurement date.\nLevel 2 inputs are defined as inputs other than quoted prices included within Level 1 that are observable for the assets or liabilities, either directly or indirectly.\nLevel 3 inputs are defined as unobservable inputs for the assets or liabilities. Financial assets and liabilities are classified based on the lowest level of input that is significant to the fair value measurement. The Company\u2019s assessment of the significance of a particular input to the fair value measurement requires judgment and may affect the valuation of the fair value of assets and liabilities and their placement within the fair value hierarchy levels.\nThe following table sets forth by level within the fair value hierarchy the Company's financial assets that were accounted for at fair value on a recurring basis as of September 30, 2022 and December 31, 2021 (in thousands).",
+   "prose_after": "Note 7 \u2013 Accrued Liabilities\nAccrued liabilities as of September 30, 2022 and December 31, 2021 were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Salaries, employee benefits and related taxes",
+     "$",
+     "2,147",
+     "$",
+     "2,034"
+    ],
+    [
+     "Operating lease liabilities \u2014 current",
+     "203",
+     "",
+     "229",
+     ""
+    ],
+    [
+     "Clinical and R&D related liabilities",
+     "2,338",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "729",
+     "",
+     "326",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "5,417",
+     "$",
+     "2,589"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Accrued Liabilities"
+    }
+   },
+   "prose_before": "Note 7 \u2013 Accrued Liabilities\nAccrued liabilities as of September 30, 2022 and December 31, 2021 were as follows (in thousands):",
+   "prose_after": "Note 8 \u2013 Operating Leases\nThe Company has operating leases for two offices with terms that expire in 2023 and 2025, respectively. The Company estimates its incremental borrowing rate at lease commencement to determine the present value of lease payments as most of the Company's leases do not provide an implicit rate of return. The Company recognizes lease expense on a straight-line basis over the lease term. For lease agreements entered into or reassessed after the adoption of Topic 842, the Company elected to account for non-lease components associated with its leases and lease components as a single lease component. Each of the Company's leases includes options for the Company to extend the lease term and/or sub-lease space in whole or in part.\nOperating lease liabilities and right-of-use assets were recorded in the following captions of our balance sheet were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 630,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2022",
+     "",
+     "December 31, 2021",
+     ""
+    ],
+    [
+     "Right-of Use Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other assets",
+     "$",
+     "548",
+     "$",
+     "724"
+    ],
+    [
+     "Total Right-of-Use Asset",
+     "$",
+     "548",
+     "$",
+     "724"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Lease Liabilities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "$",
+     "203",
+     "$",
+     "229"
+    ],
+    [
+     "Other long-term liabilities",
+     "345",
+     "",
+     "485",
+     ""
+    ],
+    [
+     "Total Operating Lease Liabilities",
+     "$",
+     "548",
+     "$",
+     "714"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 690
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Operating Leases"
+    }
+   },
+   "prose_before": "Note 8 \u2013 Operating Leases\nThe Company has operating leases for two offices with terms that expire in 2023 and 2025, respectively. The Company estimates its incremental borrowing rate at lease commencement to determine the present value of lease payments as most of the Company's leases do not provide an implicit rate of return. The Company recognizes lease expense on a straight-line basis over the lease term. For lease agreements entered into or reassessed after the adoption of Topic 842, the Company elected to account for non-lease components associated with its leases and lease components as a single lease component. Each of the Company's leases includes options for the Company to extend the lease term and/or sub-lease space in whole or in part.\nOperating lease liabilities and right-of-use assets were recorded in the following captions of our balance sheet were as follows (in thousands):",
+   "prose_after": "As of September 30, 2022, the weighted average remaining lease term for our operating leases was 1.8 years, and the weighted average discount rate for our operating leases was 9.625%. Future minimum lease payments under the lease agreements as of September 30, 2022 were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ended",
+     "Operating Leases",
+     ""
+    ],
+    [
+     "2022",
+     "75",
+     ""
+    ],
+    [
+     "2023",
+     "217",
+     ""
+    ],
+    [
+     "2024",
+     "190",
+     ""
+    ],
+    [
+     "2025",
+     "143",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "625",
+     ""
+    ],
+    [
+     "Less: Amounts representing interest",
+     "(77)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "548"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 693,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Operating Leases"
+    }
+   },
+   "prose_before": "As of September 30, 2022, the weighted average remaining lease term for our operating leases was 1.8 years, and the weighted average discount rate for our operating leases was 9.625%. Future minimum lease payments under the lease agreements as of September 30, 2022 were as follows (in thousands):",
+   "prose_after": "Note 9 \u2013 Stockholders' Equity\nReverse Stock Split\nOn September 14, 2022, in connection with the merger, we implemented the Reverse Stock Split, as described in Note 1. All share and per share amounts of common stock, options and warrants in the accompanying financial statements have been restated for all periods presented to give retroactive effect to the Reverse Stock Split. Accordingly, the consolidated statements of equity reflect the impact of the Reverse Stock Split by reclassifying from \u201ccommon stock\u201d to \u201cadditional paid-in capital\u201d in an amount equal to the par value of the decreased shares resulting from the Reverse Stock Split.\nEquity Issuances\nPurchase Agreement\nIn March 2019, the Company and Lincoln Park Capital Fund, LLC (\u201cLincoln Park\u201d) entered into a purchase agreement (the \u201cPurchase Agreement\u201d) and a registration rights agreement (the \u201cRegistration Rights Agreement\u201d), pursuant to which the Company has the right to sell to Lincoln Park shares of the Company\u2019s common stock having an aggregate value of up to $26.0 million, subject to certain limitations and conditions set forth in the Purchase Agreement (the \u201cOffering\u201d). As consideration for entering into the Purchase Agreement, the Company issued to Lincoln Park an additional 181,510 shares of common stock as commitment shares.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 670,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 722,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Stock Options",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Warrants",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (Years)",
+     "Aggregate Intrinsic Value (In Thousands)",
+     "",
+     "Shares",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contractual Term (Years)",
+     "Aggregate Intrinsic Value (In Thousands)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2021",
+     "142,041",
+     "$",
+     "84.60",
+     "7.97",
+     "$",
+     "\u2014",
+     "1,423,774",
+     "$",
+     "42.57",
+     "4.37",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes during the period:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "37,458",
+     "13.49",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assumed through merger",
+     "1,227,776",
+     "3.77",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(2,910)",
+     "19.96",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "(5,388)",
+     "352.31",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at September 30, 2022",
+     "1,398,977",
+     "$",
+     "10.83",
+     "7.30",
+     "$",
+     "\u2014",
+     "1,423,774",
+     "$",
+     "42.57",
+     "3.63",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested at September 30, 2022 or expected to vest in the future",
+     "1,396,921",
+     "$",
+     "10.83",
+     "7.30",
+     "$",
+     "\u2014",
+     "1,423,774",
+     "$",
+     "42.57",
+     "3.63",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested at September 30, 2022",
+     "1,110,635",
+     "$",
+     "11.82",
+     "6.97",
+     "$",
+     "\u2014",
+     "1,423,774",
+     "$",
+     "42.57",
+     "3.63",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 746,
+    "end_line": 770
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Stockholders' Equity"
+    }
+   },
+   "prose_before": "On June 4, 2021, the Company entered into an At The Market Offering Agreement (the \u201cATM Agreement\u201d) with H.C. Wainwright & Co., LLC, as sales agent, in connection with an \u201cat the market offering\u201d under which the Company from time to time may offer and sell shares of its common stock, having an aggregate offering price of up to $50.0 million. During the nine months ended September 30, 2022 and since inception, the Company has not issued any shares under the ATM Agreement.\nCommon Stock\nIn connection with the Merger close, the Company issued an aggregate of 3,772,768 shares of common stock, based on the Exchange Ratio, to holders of Cend, in exchange for all of the Cend capital stock outstanding immediately prior to the closing of the Merger.\nStock Options and Warrants\nIn connection with the Merger and after giving effect to the Reverse Stock Split, the Company assumed 1,227,776 options outstanding from Cend. The options granted from the Cend Plan are exercisable at various dates as determined upon grant and will expire no more than ten years from their original date of grant. The Cend Plan stock options generally vest over a four-year term. The following table summarizes the activity for stock options and warrants for the nine months ended September 30, 2022:",
+   "prose_after": "Restricted Stock\nDuring the nine months ended September 30, 2022 and 2021, the Company issued restricted stock for services as follows ($ in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Number of restricted stock issued",
+     "70,740",
+     "",
+     "40,863",
+     ""
+    ],
+    [
+     "Value of restricted stock issued",
+     "$",
+     "973",
+     "$",
+     "878"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 775,
+    "end_line": 785
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Stockholders' Equity"
+    }
+   },
+   "prose_before": "Restricted Stock\nDuring the nine months ended September 30, 2022 and 2021, the Company issued restricted stock for services as follows ($ in thousands):",
+   "prose_after": "The vesting terms of restricted stock issuances are generally between one and four years.\nRestricted Stock Units\nDuring the nine months ended September 30, 2022 and 2021, the Company issued restricted stock units for services as follows ($ in thousands, except share data):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Number of restricted stock units issued",
+     "111,170",
+     "",
+     "30,549",
+     ""
+    ],
+    [
+     "Value of restricted stock units issued",
+     "$",
+     "1,386",
+     "$",
+     "729"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 792,
+    "end_line": 802
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2013 Stockholders' Equity"
+    }
+   },
+   "prose_before": "The vesting terms of restricted stock issuances are generally between one and four years.\nRestricted Stock Units\nDuring the nine months ended September 30, 2022 and 2021, the Company issued restricted stock units for services as follows ($ in thousands, except share data):",
+   "prose_after": "The weighted average estimated fair value of restricted stock issued for services in the nine months ended September 30, 2022 and 2021 was $12.46 and $23.85 per share, respectively. The fair value of the restricted stock units was determined using the Company\u2019s closing stock price on the date of issuance. The vesting terms of restricted stock unit issuances are generally one year, or upon the achievement of performance-based milestones.\nNote 10 \u2013 Share-Based Compensation\nShare-Based Compensation\nWe utilize share-based compensation in the form of stock options, restricted stock, and restricted stock units. The following table summarizes the components of share-based compensation expense for the three and nine months ended September 30, 2022 and 2021 (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 740,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "271",
+     "$",
+     "523",
+     "$",
+     "631",
+     "$",
+     "643"
+    ],
+    [
+     "General and administrative",
+     "769",
+     "",
+     "250",
+     "",
+     "1,537",
+     "",
+     "996",
+     ""
+    ],
+    [
+     "Total share-based compensation expense",
+     "$",
+     "1,040",
+     "$",
+     "773",
+     "$",
+     "2,168",
+     "$",
+     "1,639"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 813,
+    "end_line": 823
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "The weighted average estimated fair value of restricted stock issued for services in the nine months ended September 30, 2022 and 2021 was $12.46 and $23.85 per share, respectively. The fair value of the restricted stock units was determined using the Company\u2019s closing stock price on the date of issuance. The vesting terms of restricted stock unit issuances are generally one year, or upon the achievement of performance-based milestones.\nNote 10 \u2013 Share-Based Compensation\nShare-Based Compensation\nWe utilize share-based compensation in the form of stock options, restricted stock, and restricted stock units. The following table summarizes the components of share-based compensation expense for the three and nine months ended September 30, 2022 and 2021 (in thousands):",
+   "prose_after": "Total compensation cost related to non-vested awards not yet recognized and the weighted-average periods over which the awards were expected to be recognized at September 30, 2022 were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Stock Options",
+     "",
+     "Restricted Stock Units",
+     "",
+     "Restricted Stock",
+     ""
+    ],
+    [
+     "Unrecognized compensation cost",
+     "$",
+     "1,577",
+     "$",
+     "168",
+     "$",
+     "722"
+    ],
+    [
+     "Expected weighted-average period in years of compensation cost to be recognized",
+     "1.66",
+     "",
+     "2.16",
+     "",
+     "1.83",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "Total compensation cost related to non-vested awards not yet recognized and the weighted-average periods over which the awards were expected to be recognized at September 30, 2022 were as follows (in thousands):",
+   "prose_after": "Total fair value of shares vested and the weighted average estimated fair values of shares granted for the nine months ended September 30, 2022 and 2021 were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stock Options",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Total fair value of shares vested",
+     "$",
+     "853",
+     "$",
+     "757"
+    ],
+    [
+     "Weighted average estimated fair value of shares granted",
+     "$",
+     "1.23",
+     "$",
+     "13.59"
+    ]
+   ],
+   "caption_stack": [
+    "Stock Options",
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 836,
+    "end_line": 846
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Share-Based Compensation"
+    }
+   },
+   "prose_before": "Total fair value of shares vested and the weighted average estimated fair values of shares granted for the nine months ended September 30, 2022 and 2021 were as follows (in thousands):",
+   "prose_after": "Valuation Assumptions\nThe fair value of stock options and warrants at the date of grant was estimated using the Black-Scholes option pricing model. The expected volatility is based upon historical volatility of the Company\u2019s common stock. The expected term for the options is based upon observation of actual time elapsed between date of grant and exercise of options for all employees. The expected term for the warrants is based upon the contractual term of the warrants.\nNote 11 \u2013 Income Taxes\nIn assessing the realizability of deferred tax assets, including the net operating loss carryforwards (\u201cNOLs\u201d), the Company assesses the available positive and negative evidence to estimate if sufficient future taxable income will be generated to utilize its existing deferred tax assets. Based on its assessment, the Company has provided a full valuation allowance against its net deferred tax assets as their future utilization remains uncertain at this time.\nAs of December 31, 2021 and 2020, the Company had approximately $281 million and $264 million, respectively, of federal NOLs available to offset future taxable income expiring from 2030 through 2036. The Company performed an analysis and determined that it had an ownership change of greater than 50% over a 3-year testing period on January 25, 2021. As a result, $169 million of the $281 million of federal NOLs will expire unutilized. The Company wrote off that portion of the deferred tax asset and reduced the corresponding valuation allowance resulting in $112 million of remaining federal NOL. The write off of the deferred tax asset and the corresponding reduction in valuation allowance has no impact to the balance sheet or income statement. Losses incurred before the ownership change on January 25, 2021 will be subject to an annual limitation of $173 thousand under Internal Revenue Code Section 382, while losses incurred after January 25, 2021 will not be subject to limitations. The Company may be able to utilize additional NOLs of approximately $1.1 million per year for the first five years after this ownership change as a result of the application of the Net Unrealized Built-in Gain rules.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 805,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 857,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Research and development",
+     "$",
+     "3,380",
+     "$",
+     "4,125",
+     "$",
+     "(745)"
+    ],
+    [
+     "  In-process research and development",
+     "30,393",
+     "",
+     "\u2014",
+     "",
+     "30,393",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "3,947",
+     "",
+     "2,843",
+     "",
+     "1,104",
+     ""
+    ],
+    [
+     "    Total operating expenses",
+     "37,720",
+     "",
+     "6,968",
+     "",
+     "30,752",
+     ""
+    ],
+    [
+     "  Loss from operations",
+     "(37,720)",
+     "",
+     "(6,968)",
+     "",
+     "(30,752)",
+     ""
+    ],
+    [
+     "Total other income",
+     "337",
+     "",
+     "41",
+     "",
+     "296",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(37,383)",
+     "$",
+     "(6,927)",
+     "$",
+     "(30,456)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1027,
+    "end_line": 1044
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Research Collaboration and License Agreement"
+    }
+   },
+   "prose_before": "Beyond its impact on our development pipeline described above, the extent to which COVID-19 ultimately impacts our business, results of operations and financial condition will depend on future developments, which remain highly uncertain and cannot be predicted with confidence, such as the duration of the outbreak, the emergence of new variants, new information that may emerge concerning the severity of COVID-19 or the effectiveness of actions taken to contain COVID-19 or treat its impact, including vaccination campaigns, among others. If we or any of the third parties with whom we engage, however, were to experience any additional shutdowns or other prolonged business disruptions, our ability to conduct our business in the manner and on the timelines presently planned could be materially or negatively affected, which could have a material adverse impact on our business, financial condition and results of operations. It is possible that our clinical development timelines could\ncontinue to be negatively affected by COVID-19, which could materially and adversely affect our business, financial condition and results of operations. See \u201cRisk Factors\u201d in our 2021 Form 10-K for additional discussion of the potential adverse impact of the COVID-19 pandemic on our business, financial condition and results of operations.\nResults of Operations\nThree Months Ended September 30, 2022 Compared to Three Months Ended September 30, 2021\nThe following table summarizes our results of operations for the three months ended September 30, 2022 and September 30, 2021:",
+   "prose_after": "Overall, net losses were $37.4 million for the three months ended September 30, 2022, compared to $6.9 million for the three months ended September 30, 2021.\nOperating Expenses\nFor the three months ended September 30, 2022, operating expenses totaled $37.7 million compared to $7.0 million for the three months ended September 30, 2021, representing an increase of 441.3%. Excluding the in-process research and development expense of $30.4 million relating to the Merger, operating expenses increased by $0.4 million, or 5.2% compared to the three months ended September 30, 2021 . Operating expenses comprised the following:\n\u2022Research and development expenses were approximately $3.4 million for the three months ended September 30, 2022, compared to $4.1 million for the three months ended September 30, 2021, representing a decrease of $0.7 million or 18.1%. This was primarily due to a decrease in expenses associated with our XOWNA\u00ae Phase 2b study (the FREEDOM Trial) as a result of the suspension in enrollment which commenced in the second quarter of 2022 and study close out activities in the third quarter of 2022, a decrease in expenses associated with HONEDRA\u00ae in Japan related to study close out costs partially offset by the addition of Chemistry, Manufacturing, and Controls (\u201cCMC\u201d) activities for LSTA1 and enrollment activities for Australasian Gastrointestinal Trials Group (\u201cAGITG\u201d) ASCEND study. Research and development in both periods related to:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1017,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Operating Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Research and development",
+     "$",
+     "9,898",
+     "$",
+     "13,530",
+     "$",
+     "(3,632)"
+    ],
+    [
+     "  In-process research and development",
+     "30,393",
+     "",
+     "\u2014",
+     "",
+     "30,393",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "10,770",
+     "",
+     "8,671",
+     "",
+     "2,099",
+     ""
+    ],
+    [
+     "    Total operating expenses",
+     "51,061",
+     "",
+     "22,201",
+     "",
+     "28,860",
+     ""
+    ],
+    [
+     "  Loss from operations",
+     "(51,061)",
+     "",
+     "(22,201)",
+     "",
+     "(28,860)",
+     ""
+    ],
+    [
+     "Total other income (expense)",
+     "347",
+     "",
+     "21",
+     "",
+     "326",
+     ""
+    ],
+    [
+     "Benefit from income taxes",
+     "(2,479)",
+     "",
+     "(1,508)",
+     "",
+     "971",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(48,235)",
+     "$",
+     "(20,672)",
+     "$",
+     "(27,563)"
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1077,
+    "end_line": 1098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Research Collaboration and License Agreement"
+    }
+   },
+   "prose_before": "\u2022General and administrative expenses were approximately $3.9 million for the three months ended September 30, 2022, compared to $2.8 million for the three months ended September 30, 2021, representing an increase of 39.0%. This increase was primarily due to an increase in equity expense as a result of performance stock unit vesting, Merger option assumption expense and departing board member restricted stock unit vesting in addition to an increase in\nexpenses associated with our annual stockholder meeting. Our general and administrative expenses focus on general corporate-related activities.\nHistorically, to minimize our use of cash, we have used a variety of equity and equity-linked instruments to compensate employees, consultants and other service providers. The use of these instruments has resulted in charges to the results of operations, which have been significant in the past.\nOther Income\nTotal other income is comprised of investment income on cash, cash equivalents and marketable securities.\nNine Months Ended September 30, 2022 Compared to Nine Months Ended September 30, 2021\nThe following table summarizes our results of operations for the nine months ended September 30, 2022 and September 30, 2021:",
+   "prose_after": "Overall, net losses were $48.2 million for the nine months ended September 30, 2022, compared to $20.7 million for the nine months ended September 30, 2021.\nFor the nine months ended September 30, 2022, operating expenses totaled $51.1 million compared to $22.2 million for the nine months ended September 30, 2021, representing an increase of 130.0%. Excluding the one-off in-process research and development expense of $30.4 million, operating expenses decreased by $1.5 million or 6.9% compared to the nine months ended September 30, 2021. Operating expenses comprised the following:\n\u2022Research and development expenses were approximately $9.9 million for the nine months ended September 30, 2022, compared to $13.5 million for the nine months ended September 30, 2021, representing a decrease of $3.6 million or 26.8%. This was primarily due to a decrease in expenses associated with our XOWNA\u00ae Phase 2b study (the FREEDOM Trial) as a result of the suspension in enrollment which commenced in the second quarter of 2022 and study close out activities in the third quarter of 2022, a decrease in expenses associated with HONEDRA\u00ae in Japan related to study close out costs and one off recruiting expenses and interim CMO consulting expenses in the prior year partially offset by the addition of CMC activities for LSTA1 and enrollment activities for AGITG ASCEND study. Research and development in both periods related to:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1113,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended September 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "2021",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(14,702)",
+     "$",
+     "(17,641)"
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "21,805",
+     "",
+     "(71,354)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by financing activities",
+     "(238)",
+     "",
+     "85,255",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended September 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1137,
+    "end_line": 1146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Research Collaboration and License Agreement"
+    }
+   },
+   "prose_before": "In February 2022, we received final approval from the New Jersey Economic Development Authority (\u201cNJEDA\u201d) under the Technology Business Tax Certificate Transfer Program (\u201cProgram\u201d) to sell a percentage of our NJ NOLs, which were subsequently sold to a qualifying and approved buyer pursuant to the Program for net proceeds of $2.3 million. The $2.5 million of our NJ NOL Tax Benefits have been recorded as a benefit from income taxes and the loss on sale of $0.1 million recorded in other income (expense).\nAnalysis of Liquidity and Capital Resources\nAs of September 30, 2022, we had cash, cash equivalents and marketable securities of approximately $75.5 million, working capital of approximately $70.9 million, and stockholders\u2019 equity of approximately $72.0 million.\nDuring the nine months ended September 30, 2022, we met our immediate cash requirements through existing cash balances. Additionally, we used equity and equity-linked instruments to pay for services and compensation.\nNet cash used in or provided by, operating, investing and financing activities were as follows (in thousands):",
+   "prose_after": "Operating Activities\nOur cash used in operating activities during the nine months ended September 30, 2022 was $14.7 million, which is comprised of (i) our net loss of $48.2 million, adjusted for non-cash expenses totaling $33.5 million (which includes adjustments for equity-based compensation, depreciation and amortization, in process research and development expenses, and amortization/accretion of marketable securities), and (ii) changes in operating assets and liabilities providing approximately $0.1 million.\nOur cash used in operating activities during the nine months ended September 30, 2021 was $17.6 million, which is comprised of (i) our net loss of $20.7 million, adjusted for non-cash expenses totaling $3.6 million (which includes adjustments for equity-based compensation, depreciation and amortization, and amortization/accretion of marketable securities) and (ii) changes in operating assets and liabilities using approximately $0.6 million.\nInvesting Activities\nOur cash provided by investing activities during the nine months ended September 30, 2022 totaled $21.8 million and was primarily due to net sales of marketable securities (net of purchases of marketable securities) partially offset by the asset acquisition costs, net of cash acquired related to the Merger with Cend.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1127,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "LISATA THERAPEUTICS, INC."
+    ],
+    [
+     "November 10, 2022",
+     "By: /s/ David J. Mazzo, PhD Name: David J. Mazzo, PhD Title: Chief Executive Officer (Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "LISATA THERAPEUTICS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1247,
+    "end_line": 1252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Research Collaboration and License Agreement"
+    }
+   },
+   "prose_before": "ITEM 3. DEFAULTS UPON SENIOR SECURITIES\nNone.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS\nThe Exhibit Index appearing immediately after the signature page to this Form 10-Q is incorporated herein by reference.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "LISATA THERAPEUTICS, INC.\nFORM 10-Q\nExhibit Index",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1241,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "2.1",
+     "",
+     "Agreement and Plan of Merger and Reorganization, dated April 26, 2022, among Caladrius Biosciences, Inc., CS Cedar Merger Sub, Inc., and Cend Therapeutics, Inc. (filed as Exhibit 2.1 to the Company's Current Report on Form 8-K, filed with the SEC on April 27, 2022)."
+    ],
+    [
+     "2.2",
+     "",
+     "Form of Support Agreement, by and between Caladrius Biosciences, Inc. and certain securityholders of Cend Therapeutics, Inc. (filed as Exhibit 2.2 to the Company's Current Report on Form 8-K, filed with the SEC on April 27, 2022)."
+    ],
+    [
+     "2.3",
+     "",
+     "Form of Support Agreement, by and between Cend Therapeutics, Inc. and certain securityholders of Caladrius Biosciences, Inc. (filed as Exhibit 2.3 to the Company's Current Report on Form 8-K, filed with the SEC on April 27, 2022)."
+    ],
+    [
+     "2.4",
+     "",
+     "Form of Lock-Up Agreement, by and between Caladrius Biosciences, Inc. and certain securityholders of Caladrius Biosciences, Inc. and Cend Therapeutics, Inc. (filed as Exhibit 2.4 to the Company's Current Report on Form 8-K, filed with the SEC on April 27, 2022)."
+    ],
+    [
+     "3.1",
+     "",
+     "Certificate of Amendment (Reverse Stock Split) to the Amended and Restated Certificate of Incorporation, dated September 14, 2022 (filed as Exhibit 3.1 to the Company's Current Report on Form 8-K, filed with the SEC on September 15, 2022)."
+    ],
+    [
+     "3.2",
+     "",
+     "Certificate of Amendment (Name Change) to the Amended and Restated Certificate of Incorporation, dated September 15, 2022 (filed as Exhibit 3.2 of the Company's Current Report on Form 8-K, filed with the SEC on September 15, 2022)."
+    ],
+    [
+     "10.1",
+     "",
+     "Series D Preferred Stock Purchase Agreement, dated April 26, 2022, among Caladrius Biosciences, Inc. and Cend Therapeutics, Inc. (filed as Exhibit 10.1 to the Company's Current Report on Form 8-K, filed with the SEC on April 27, 2022)."
+    ],
+    [
+     "10.2",
+     "",
+     "Collaboration Agreement, dated April 26, 2022, between Caladrius Biosciences, Inc. and Cend Therapeutics, Inc. (filed as Exhibit 10.2 to the Company's Current Report on Form 8-K, filed with the SEC on April 27, 2022)."
+    ],
+    [
+     "10.3",
+     "#",
+     "Employment Agreement, dated as of September 15, 2022, by and between the Company and David Slack (filed as Exhibit 10.1 to the Company's Current Report on Form 8-K, filed with the SEC on September 15, 2022)."
+    ],
+    [
+     "10.4",
+     "#",
+     "Form of Indemnification Agreement between the Company and each of its directors and officers (filed as Exhibit 10.2 to the Company's Current Report on Form 8-K, filed with the SEC on September 15, 2022)."
+    ],
+    [
+     "10.5",
+     "#",
+     "Cend 2016 Equity Incentive Plan, including all amendments thereto (filed as Exhibit 99.1 to the Company's Registration Statement on Form S-8, filed with the SEC on October 17, 2022)."
+    ],
+    [
+     "31.1",
+     "*",
+     "Certification of Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32",
+     "**",
+     "Certification of Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase"
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1261,
+    "end_line": 1295
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Research Collaboration and License Agreement"
+    }
+   },
+   "prose_before": "LISATA THERAPEUTICS, INC.\nFORM 10-Q\nExhibit Index",
+   "prose_after": "_______________",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "*",
+     "Filed herewith."
+    ],
+    [
+     "**",
+     "Furnished herewith."
+    ],
+    [
+     "#",
+     "Management contract or compensatory plans or arrangements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1298,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Research Collaboration and License Agreement"
+    }
+   },
+   "prose_before": "_______________",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1253,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 38
+    },
+    "after": {
+     "line": 1304,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

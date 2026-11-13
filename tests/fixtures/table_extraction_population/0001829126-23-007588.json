@@ -1,0 +1,4116 @@
+{
+ "accession": "0001829126-23-007588",
+ "cik": "0001301991",
+ "form": "10-Q",
+ "filing_date": "2023-11-20",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "smartmetric_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "05-0543557"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 30, 2023\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________.\nCommission file number: 000-54853\nSMARTMETRIC, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3960 Howard Hughes Parkway, Suite 500, Las Vegas, NV",
+     "89169"
+    ],
+    [
+     "Address of Principal Executive Offices",
+     "Zip Code"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(702) 990-3687"
+    ],
+    [
+     "Registrant\u2019s telephone number, including area code"
+    ]
+   ],
+   "caption_stack": [
+    "(702) 990-3687",
+    "Registrant\u2019s telephone number, including area code"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 35,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "N/A",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I.",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "Condensed consolidated balance sheets as of September 30.2023 (unaudited) and June 30, 2023",
+     "1"
+    ],
+    [
+     "",
+     "Condensed consolidated statements of operations for the three months ended September 30, 2023 (unaudited) and 2022",
+     "2"
+    ],
+    [
+     "",
+     "Condensed consolidated statements of stockholders\u2019 deficit for the three months ended September 30, 2023 and 2022 (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "Condensed consolidated statements of cash flows for the three months ended September 30, 2023 and 2022 (unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "Notes to condensed consolidated financial statements (unaudited)",
+     "5"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "20"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "22"
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "22"
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "22"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "22"
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "25"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 94
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company  [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe number of shares outstanding of the registrant\u2019s common stock, $0.001 par value per share, as of September 30, 2023 was 2,401,186,371.\nSMARTMETRIC, INC.\nTABLE OF CONTENTS\nINDEX",
+   "prose_after": "i\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nIn this Quarterly Report on Form 10-Q, references to \u201cSmartMetric, Inc.,\u201d \u201cSmartMetric,\u201d \u201cSMME,\u201d the \u201cCompany,\u201d \u201cwe,\u201d \u201cus,\u201d and \u201cour\u201d refer to SmartMetric, Inc. Also, any reference to \u201ccommon shares,\u201d or \u201ccommon stock\u201d refers to our $0.001 par value common stock.\nThis Quarterly Report contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended and Section 21E of the Securities Exchange Act of 1934, as amended. These statements relate to our business development plans, timing strategies, expectations, anticipated expense levels, business prospects, business outlook, technology spending and various other matters (including contingent liabilities and obligations and changes in accounting policies, standards and interpretations). These statements express our current intentions, beliefs, expectations, strategies or predictions as well as historical information. Words such as \u201cexpects,\u201d \u201canticipates,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cbelieves,\u201d \u201cseeks,\u201d \u201cestimates,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201ccould,\u201d \u201ccontinue,\u201d and similar expressions or variations of such words are intended to identify forward-looking statements, but are not deemed to represent an all-inclusive means of identifying forward-looking statements as denoted in this Quarterly Report. Additionally, statements concerning future matters are forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30,",
+     "",
+     "",
+     "June 30,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2023",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "15,750",
+     "",
+     "$",
+     "20,012",
+     ""
+    ],
+    [
+     "Notes payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "5,417",
+     "",
+     "",
+     "8,667",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "21,167",
+     "",
+     "",
+     "28,679",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-current assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patent costs (net of amortization)",
+     "",
+     "36,177",
+     "",
+     "",
+     "33,750",
+     ""
+    ],
+    [
+     "Discount",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred financing costs",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "57,344",
+     "",
+     "$",
+     "62,429",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "1,271,661",
+     "",
+     "$",
+     "1,233,488",
+     ""
+    ],
+    [
+     "Liability for stock to be issued",
+     "",
+     "88,530",
+     "",
+     "",
+     "3,080",
+     ""
+    ],
+    [
+     "Deferred Officer\u2019s salary",
+     "",
+     "785,142",
+     "",
+     "",
+     "769,309",
+     ""
+    ],
+    [
+     "Related party interest payable",
+     "",
+     "319,550",
+     "",
+     "",
+     "305,949",
+     ""
+    ],
+    [
+     "Dividends payable",
+     "",
+     "1,858",
+     "",
+     "",
+     "1,858",
+     ""
+    ],
+    [
+     "Due to shareholders",
+     "",
+     "52,927",
+     "",
+     "",
+     "52,927",
+     ""
+    ],
+    [
+     "Covid19 SBA loan",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Convertible note payable, net of discount",
+     "",
+     "242,525",
+     "",
+     "",
+     "400,660",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Convertible interest payable",
+     "",
+     "22,200",
+     "",
+     "",
+     "22,200",
+     ""
+    ],
+    [
+     "Interest payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Shareholder loan",
+     "",
+     "12,342",
+     "",
+     "",
+     "13,814",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,796,735",
+     "",
+     "",
+     "2,803,285",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "2,796,735",
+     "",
+     "",
+     "2,803,285",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (See note 4)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Series C mandatory redeemable convertible preferred stock, net of discount, authorized 1,000,000 shares, 17,300 and 65,425 shares issued and outstanding, respectively",
+     "",
+     "15,728",
+     "",
+     "",
+     "15,728",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 deficit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class B Preferred stock, $.001 par value; 5,000,000 shares authorized, 610,000 and 610,000 shares issued and outstanding",
+     "",
+     "610",
+     "",
+     "",
+     "610",
+     ""
+    ],
+    [
+     "Class A Preferred stock, $.001 par value; 50,000,000 shares authorized 0 and 0 shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $.001 par value; 2,400,000,000 shares authorized, 2,401,186,371 and 2,222,951,485 shares issued and outstanding, respectively",
+     "",
+     "2,401,187",
+     "",
+     "",
+     "2,222,952",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "26,445,192",
+     "",
+     "",
+     "26,451,292",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(31,602,108)",
+     "",
+     "",
+     "(31,431,438)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 deficit",
+     "",
+     "(2,755,119)",
+     "",
+     "",
+     "(2,756,584)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 deficit",
+     "$",
+     "57,344",
+     "",
+     "$",
+     "62,429",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 133,
+    "end_line": 196
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf maintain and protect our intellectual property;\n\u25cf obtain patents based on our current and/or future patent applications;\n\u25cf obtain and maintain other rights to technology required or desirable to conduct or expand our business; and\n\u25cf manage any other factors, if any, discussed in this report and in the section titled \u201cRisk Factors\u201d in our most recent Annual Report on Form 10-K.\nWe undertake no obligation to revise or update any forward-looking statements in order to reflect any event or circumstance that may arise after the date of this Quarterly Report, except as required by federal securities laws. Readers are urged to carefully review and consider the various disclosures made throughout the entirety of this Quarterly Report, which are designed to advise interested parties of the risks and factors that may affect our business, financial condition, results of operations and prospects.\nii\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCondensed consolidated Balance Sheet\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements Of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 127,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 199,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2023",
+     "",
+     "",
+     "Three Months Ended September 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officer\u2019s salary",
+     "",
+     "47,500",
+     "",
+     "",
+     "47,500",
+     ""
+    ],
+    [
+     "Advertising costs",
+     "",
+     "43,821",
+     "",
+     "",
+     "73,636",
+     ""
+    ],
+    [
+     "Legal and professional fees",
+     "",
+     "1,350",
+     "",
+     "",
+     "67,978",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "38,032",
+     "",
+     "",
+     "74,136",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "25,739",
+     "",
+     "",
+     "16,050",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "563",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "157,005",
+     "",
+     "",
+     "279,300",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations before income taxes",
+     "",
+     "(157,005)",
+     "",
+     "",
+     "(279,300)",
+     ""
+    ],
+    [
+     "Interest & Financing Expense",
+     "",
+     "(13,666)",
+     "",
+     "",
+     "(13,047)",
+     ""
+    ],
+    [
+     "Gain on PPP loan forgiveness",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain (loss) on conversions",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other income (expenses)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(170,671)",
+     "",
+     "",
+     "(292,347)",
+     ""
+    ],
+    [
+     "Preferred stock dividends",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss available for common stockholders",
+     "$",
+     "(170,671)",
+     "",
+     "$",
+     "(292,347)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share, basic and diluted",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding, basic and diluted",
+     "",
+     "2,327,075,095",
+     "",
+     "",
+     "749,049,088",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 203,
+    "end_line": 236
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed Consolidated Statements Of Operations",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed consolidated Statements of Changes In Stockholders\u2019 (Deficit)\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 199,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Series C",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stock",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2022",
+     "",
+     "610,000",
+     "610",
+     "",
+     "647,886,336",
+     "647,886",
+     "",
+     "27,546,376",
+     "",
+     "",
+     "(30,496,043)",
+     "",
+     "",
+     "(2,301,170)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued of common stock and warrants for cash",
+     "",
+     "",
+     "",
+     "",
+     "271,525,383",
+     "271,525",
+     "",
+     "(8,295)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "263,230",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares converted from Preferred C shares to common",
+     "",
+     "",
+     "",
+     "",
+     "14,335,488",
+     "14,335",
+     "",
+     "29,415",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "43,750",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for services",
+     "",
+     "",
+     "",
+     "",
+     "22,750,000",
+     "22,750",
+     "",
+     "4,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "27,250",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for equity funding conversions",
+     "",
+     "",
+     "",
+     "",
+     "867,657,908",
+     "867,658",
+     "",
+     "342,045",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,209,704",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued against liability",
+     "",
+     "",
+     "",
+     "",
+     "153,992,825",
+     "153,993",
+     "",
+     "(1,217,945)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(1,063,951)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued against warrants",
+     "",
+     "",
+     "",
+     "",
+     "244,803,545",
+     "244,804",
+     "",
+     "(244,804)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for period",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(935,396)",
+     "",
+     "",
+     "(935,396)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance June 30, 2023",
+     "",
+     "610,000",
+     "610",
+     "",
+     "2,222,951,485",
+     "2,222,951",
+     "",
+     "26,451,292",
+     "",
+     "",
+     "(31,431,439)",
+     "",
+     "",
+     "(2,756,584)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued of common stock and warrants for cash",
+     "",
+     "",
+     "",
+     "",
+     "20,100,000",
+     "20,100",
+     "",
+     "(6,100)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "14,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares converted from Preferred C shares to common",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for services",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares issued for equity funding conversions",
+     "",
+     "",
+     "",
+     "",
+     "158,134,886",
+     "158,135",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "158,135",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued against liability",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued against warrants",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for period",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(170,671)",
+     "",
+     "",
+     "(170,671)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance September 30, 2023",
+     "",
+     "610,000",
+     "610",
+     "",
+     "2,401,186,371",
+     "2,401,186",
+     "",
+     "26,445,192",
+     "",
+     "",
+     "(31,602,110)",
+     "",
+     "",
+     "(2,755,119)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 245,
+    "end_line": 289
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed consolidated Statements of Changes In Stockholders\u2019 (Deficit)\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed consolidated Statements Of Cash Flows\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 239,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2023",
+     "",
+     "",
+     "Three Months Ended September 30, 2022",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(170,671)",
+     "",
+     "",
+     "(292,347)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued and issuable for services",
+     "",
+     "-",
+     "",
+     "",
+     "22,250",
+     ""
+    ],
+    [
+     "Non cash financing expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on fair value of derivative liability",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "563",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Amortization of debt discount",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Gain on PPP forgiveness",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase (Decrease) in prepaid expenses and other current assets",
+     "",
+     "4,333",
+     "",
+     "",
+     "9,750",
+     ""
+    ],
+    [
+     "Increase in accounts payable and accrued expenses",
+     "",
+     "38,173",
+     "",
+     "",
+     "72,177",
+     ""
+    ],
+    [
+     "(Decrease) in deferred officer salary",
+     "",
+     "15,833",
+     "",
+     "",
+     "(15,833)",
+     ""
+    ],
+    [
+     "Increase in due to shareholder",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Decrease in note payable",
+     "",
+     "(158,135)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in Convertible interest payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in interest payable",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in related party interest payable",
+     "",
+     "13,601",
+     "",
+     "",
+     "13,047",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(256,303)",
+     "",
+     "",
+     "(190,956)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patent cost",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans from related parties",
+     "",
+     "(2,555)",
+     "",
+     "",
+     "6,810",
+     ""
+    ],
+    [
+     "Proceeds from sale of common stock",
+     "",
+     "254,596",
+     "",
+     "",
+     "291,410",
+     ""
+    ],
+    [
+     "Change in stock liability",
+     "",
+     "-",
+     "",
+     "",
+     "(33,250)",
+     ""
+    ],
+    [
+     "Proceeds from sale of Series C Preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Conversions of Series C Preferred Stock",
+     "",
+     "-",
+     "",
+     "",
+     "43,750",
+     ""
+    ],
+    [
+     "Unlocated",
+     "",
+     "-",
+     "",
+     "",
+     "(299)",
+     ""
+    ],
+    [
+     "Proceeds from equity funding conversions",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Repayment of AJB Note",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "252,041",
+     "",
+     "",
+     "308,421",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH",
+     "",
+     "(4,262)",
+     "",
+     "",
+     "117,465",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH BEGINNING OF PERIOD",
+     "",
+     "20,012",
+     "",
+     "",
+     "126,791",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "END OF PERIOD",
+     "",
+     "15,750",
+     "",
+     "",
+     "244,256",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "$",
+     "43,750",
+     "",
+     "$",
+     "43,750",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH PAID DURING THE PERIOD FOR:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 298,
+    "end_line": 359
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCondensed consolidated Statements Of Cash Flows\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nSMARTMETRIC, INC. AND SUBSIDIARY NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS (UNAUDITED)\nNOTE 1 - ORGANIZATION AND BASIS OF PRESENTATION\nSmartMetric, Inc. (the \u201cCompany\u201d or \u201cSmartMetric\u201d) was incorporated in the State of Nevada on December 18, 2002. SmartMetric\u2019s main product is a fingerprint sensor-activated credit/debit card with a finger sensor onboard the card and a built-in rechargeable battery for portable biometric identification and card activation. This card may be referred to as a biometric credit and or debit card or the SmartMetric Biometric credit card. SmartMetric has completed development of its card along with pre-mass manufacturing cards and is now in the final stages of production of its credit/debit biometric card. The release of this card is imminent.\nThe accompanying unaudited condensed consolidated financial statements have been prepared in accordance with generally accepted accounting principles for interim financial information and with the instructions to Form 10-Q and Regulation S-X. Accordingly, they do not include all the information and footnotes required by generally accepted accounting principles for complete financial statements. In the opinion of management of the Company, the accompanying unaudited financial statements contain all the adjustments (which are of a normal recurring nature) necessary for a fair presentation. Operating results for the three months ended September 30, 2023 are not necessarily indicative of the results that may be expected for the year ending June 30, 2024. For further information, refer to the financial statements and the footnotes thereto contained in the Company\u2019s Annual Report on Form 10-K for the year ended June 30, 2023, as amended, as filed with the Securities and Exchange Commission on October 13, 2023. The consolidated balance sheet as of June 30, 2023, has been derived from the audited financial statements at that date, but does not include all the information and footnotes required by US GAAP for complete financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 292,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 362,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of share based compensation warrant activity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Range of Exercise Prices",
+     "Number of Warrants Outstanding",
+     "",
+     "Weighted- Average Contractual Life Remaining in Years",
+     "",
+     "Weighted- Average Exercise Price",
+     "",
+     "Number Exercisable",
+     "",
+     "Weighted- Average Exercise Price",
+     ""
+    ],
+    [
+     "Warrants Outstanding and Exercisable at September 30, 2023:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$0.70 - $1.00",
+     "",
+     "16,935,352",
+     "",
+     "1.08",
+     "$",
+     "0.21",
+     "",
+     "16,935,352",
+     "$",
+     "0.21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants Outstanding and Exercisable at June 30, 2023:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$0.10 - $0.20",
+     "",
+     "16,935,352",
+     "",
+     "1.01",
+     "$",
+     "0.23",
+     "",
+     "16,935,352",
+     "$",
+     "0.23"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of share based compensation warrant activity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 552,
+    "end_line": 564
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCKHOLDERS\u2019 DEFICIT"
+    }
+   },
+   "prose_before": "Concurrently with the execution of the Equity Financing Agreement, the Company entered into a convertible promissory note, for the principal balance of $35,000. Per the terms of the convertible promissory note, the Company agreed to pay GHS interest at the rate of ten percent (10%) until it became due on December 5, 2020. The holder of the convertible promissory note shall have the right at any time to convert all or any part of the outstanding and unpaid principal and interest at a fixed conversion price of $0.0175. See Note 5. The principal balance of $35,000 was been recognized as deferred financing costs in current assets on the accompanying Consolidated Balance Sheet, and was charged against the gross proceeds of each put when received. As of the date of this filing, the note has been paid in full.\nWarrants\nFrom time to time the Company granted warrants in connection with private placements of securities, as described herein.\nAs of September 30, 2023, and June 30, 2023, the following is a breakdown of the warrant activity:",
+   "prose_after": "Warrant Activity:\nSeptember 30, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "equity_statement",
+    "aligned_family": "equity_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of warrant activity",
+     ""
+    ],
+    [
+     "Outstanding - June 30, 2023",
+     "16,935,352"
+    ],
+    [
+     "Issued",
+     "199,000,000"
+    ],
+    [
+     "Exercised",
+     "-"
+    ],
+    [
+     "Expired",
+     "-"
+    ],
+    [
+     "Outstanding - September 30, 2023",
+     "215,935,352"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of warrant activity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 569,
+    "end_line": 579
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCKHOLDERS\u2019 DEFICIT"
+    }
+   },
+   "prose_before": "Warrant Activity:\nSeptember 30, 2023:",
+   "prose_after": "September 30, 2022:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Outstanding - June 30, 2022",
+     "45,997,852",
+     ""
+    ],
+    [
+     "Issued",
+     "-",
+     ""
+    ],
+    [
+     "Exercised",
+     "-",
+     ""
+    ],
+    [
+     "Expired",
+     "(13,125,000)",
+     ""
+    ],
+    [
+     "Outstanding - September 30, 2022",
+     "32,872,852",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 582,
+    "end_line": 592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "STOCKHOLDERS\u2019 DEFICIT"
+    }
+   },
+   "prose_before": "September 30, 2022:",
+   "prose_after": "At September 30, 2023, all 215,935,352 warrants are vested and all 215,935,352 warrants expire at various times prior to July 9, 2023.\nNOTE 7 - MANDATORY REDEEMABLE CONVERTIBLE PREFERRED STOCK\nIssuances of Series C Convertible Preferred Stock\nOn January 10, 2019, the Board of Directors of the Company adopted a resolution pursuant to the Company\u2019s Certificate of Incorporation, as amended, providing for the designations, preferences and relative, participating, optional and other rights, and the qualifications, limitations and restrictions, of the Series C Convertible Preferred Stock.\nOn January 14, 2019, the Company filed a Certificate of Designations for its Series C Convertible Preferred Stock. The authorized number of Series C Convertible Preferred Stock is 1,000,000 shares, par value 0.001. The Series C Convertible Preferred Stock will, with respect to dividend rights and rights upon liquidation, winding-up or dissolution, rank: (a) senior with respect to dividends and right of liquidation with the Company\u2019s common stock, (b) junior with respect to dividends and right of liquidation with respect to the Company\u2019s Series B Preferred Stock, and (c) junior with respect to dividends and right of liquidation to all existing indebtedness of the Company. The Series C Convertible Preferred Stock will carry an annual ten percent (10%) cumulative dividend, compounded daily, payable solely upon redemption, liquidation or conversion. The Company will have a right, at any time in the period of 180 days from the date of the issuance, at the Company\u2019s option, to redeem all or any portion of the Series C Preferred Stock at prices ranging from 105% to 130%, based on the passage of time.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 595,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Schedule of derivative liability",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total"
+    ],
+    [
+     "Derivative liability",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ]
+   ],
+   "caption_stack": [
+    "Schedule of derivative liability"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "DERIVATIVE LIABILITIES"
+    }
+   },
+   "prose_before": "The carrying value of the Series C Convertible Preferred Stock at September 30, 2023 and June 30, 2023 was $15,728 and $15,728 net of discount, respectively. There were 0 shares of Series C Preferred Stock issued for net proceeds of $0, and 0 shares of Series C Preferred Stock converted to 0 shares of common stock for the three months ended September 30, 2023.\nNOTE 8 - DERIVATIVE LIABILITIES\nThe conversion rates of the convertible notes and Series C Convertible Preferred Stock are convertible at a variable rate. Accordingly, the Company concluded there is an embedded derivative which was required to be bifurcated and accounted for as a derivative liability. The Company chose to use the Black Scholes model to calculate the derivative liability. The assumptions in the derivative liability calculation included the price of the Company\u2019s common stock of $0.0141 at the valuation date, term of zero, a risk-free rate of between $0.0010 and $0.0011 and a volatility rate of between 150% and 341%. The Company has recorded the embedded derivative liability at its\u2019 fair value utilizing the Black Scholes Merton option pricing model, as follows:",
+   "prose_after": "NOTE 9 - INCOME TAXES\nThe Company provides for income taxes at the end of each interim period based on the estimated effective tax rate for the full fiscal year. Cumulative adjustments to the Company\u2019s estimate are recorded in the interim period in which a change in the estimated annual effective rate is determined.\nThe Company has estimated its effective tax rate to be 0%, based primarily on losses incurred and the uncertainty of realization of the tax benefit of such losses.\nNOTE 10 - SUBSEQUENT EVENTS\nIn accordance with ASC 855-10, the Company has reviewed its operations subsequent to September 30, 2023 to the date these financial statements were issued. Between September 30, 2023 and November 20, 2023, other than as described in \u201cRecent Developments\u201d in Part I, Item 2 of this Quarterly Report, there were no subsequent events.\nITEM 2. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nYou should read the following discussion of our financial condition and results of operations in conjunction with our condensed consolidated financial statements and the related notes included elsewhere in this Quarterly Report on Form 10-Q and with our audited consolidated financial statements included in our Annual Report on Form 10-K for the year ended June 30, 2023, as filed with the Securities and Exchange Commission. In addition to our historical condensed consolidated financial information, the following discussion contains forward-looking statements that reflect our plans, estimates, and beliefs. Our actual results could differ materially from those discussed in the forward-looking statements. Factors that could cause or contribute to these differences include those discussed below and elsewhere in this Quarterly Report on Form 10-Q, particularly in Part II, Item 1A, \u201cRisk Factors.\u201d",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarter Ended September 30,",
+     "",
+     "",
+     "",
+     "Change in 2023 Versus 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "2022",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Operating expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Officer salary",
+     "$",
+     "47,500",
+     "$",
+     "47,500",
+     "$",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "%"
+    ],
+    [
+     "Advertising costs",
+     "",
+     "43,821",
+     "",
+     "73,636",
+     "",
+     "(29,815)",
+     "",
+     "",
+     "(40.5)",
+     "%"
+    ],
+    [
+     "Legal & professional fees",
+     "",
+     "1,350",
+     "",
+     "67,978",
+     "",
+     "(66,628)",
+     "",
+     "",
+     "(98.0)",
+     "%"
+    ],
+    [
+     "Research and development",
+     "",
+     "25,739",
+     "",
+     "16,050",
+     "",
+     "9,689",
+     "",
+     "",
+     "60.4",
+     "%"
+    ],
+    [
+     "Amortization expense",
+     "",
+     "563",
+     "",
+     "-",
+     "",
+     "563",
+     "",
+     "",
+     "-0-",
+     "%"
+    ],
+    [
+     "General and administrative",
+     "",
+     "38,032",
+     "",
+     "74,136",
+     "",
+     "(36,104)",
+     "",
+     "",
+     "(48.7)",
+     "%"
+    ],
+    [
+     "Total operating expense",
+     "$",
+     "157,005",
+     "$",
+     "279,300",
+     "$",
+     "(122,295)",
+     "",
+     "",
+     "(43.8)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 712,
+    "end_line": 729
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Research and development costs are charged to expense as incurred. Our research and development expenses consist primarily of expenditures for electronics design and engineering, software design and engineering, component sourcing, component engineering, manufacturing, product trials, compensation and consulting costs. Due to the small size of the Company\u2019s research & development staff as well as the lack of any long term research and development-related contracts, we do not believe that the use of this critical accounting estimate will have a material impact on the results of financial operations.\nResults of Operations\nComparison of the Three Months Ended September 30, 2023 and 2023\nOur results of operations have varied significantly from year to year and quarter to quarter and may vary significantly in the future. We did not have revenue for the three months ending September 30, 2023 and 2022. Net loss for the three months ended September 30, 2023, and net income (attributable to common shareholders) for September 30, 2022 were $170,671 and $292,347 respectively, resulting from the operational activities described below.\nOperating Expenses\nOperating expense totaled $158,088 and $279,300 during the three months ended September 30, 2023 and 2022, respectively. The decrease in operating expenses is the result of lower consulting expenses and legal expenses.",
+   "prose_after": "Research and Development\nResearch and development expenses totaled $25,739 and $16,050 for the three months ended September 30, 2023 and 2022, respectively. The increase of $9,689, or 60.4%, in 2023 compared to 2022 was primarily attributable to increased engineering expenses. Our research and development expenses consist primarily of expenditures related to engineering.\nGeneral and Administrative\nGeneral and administrative expenses totaled $38,032 and $74,136 for the three months ended September 30, 2023 and 2022, respectively. The decrease of $36,104, or 48.7%, in 2023 compared to 2022 was primarily the result of a decrease in consulting and legal expenses. Our general and administrative expenses consist primarily of expenditures related to employee compensation, legal, accounting and tax, other professional services, and general operating expenses.\nOther Expense\nOther income (expense) totaled ($13,666) and ($13,047) for the three months ended September 30, 2023 and 2022, respectively.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Quarter Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change in 2023 Versus 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Gain (loss) on change in derivatives",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "$",
+     "-0-",
+     "",
+     "",
+     "(-",
+     ")"
+    ],
+    [
+     "Gain (loss) on conversions",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "(0)",
+     "%"
+    ],
+    [
+     "Gain (loss) on derivative liabilities",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "(0)",
+     "%"
+    ],
+    [
+     "Gain on PPP loan forgiveness",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "(0)",
+     "%"
+    ],
+    [
+     "Interest Expense",
+     "",
+     "(13,666)",
+     "",
+     "",
+     "(13,047)",
+     "",
+     "",
+     "(619)",
+     "",
+     "",
+     "(4.7)",
+     "%"
+    ],
+    [
+     "Other income (expense)",
+     "",
+     "-0-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other (income) expense",
+     "$",
+     "(13,666)",
+     "",
+     "$",
+     "(13,047)",
+     "",
+     "$",
+     "(619)",
+     "",
+     "",
+     "(4.7)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 742,
+    "end_line": 758
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Research and Development\nResearch and development expenses totaled $25,739 and $16,050 for the three months ended September 30, 2023 and 2022, respectively. The increase of $9,689, or 60.4%, in 2023 compared to 2022 was primarily attributable to increased engineering expenses. Our research and development expenses consist primarily of expenditures related to engineering.\nGeneral and Administrative\nGeneral and administrative expenses totaled $38,032 and $74,136 for the three months ended September 30, 2023 and 2022, respectively. The decrease of $36,104, or 48.7%, in 2023 compared to 2022 was primarily the result of a decrease in consulting and legal expenses. Our general and administrative expenses consist primarily of expenditures related to employee compensation, legal, accounting and tax, other professional services, and general operating expenses.\nOther Expense\nOther income (expense) totaled ($13,666) and ($13,047) for the three months ended September 30, 2023 and 2022, respectively.",
+   "prose_after": "Interest income (expense)\nWe had net interest expense of ($13,666) in the three months ended September 30, 2023, compared to ($13,047) net interest expense for the three months ended September 30, 2023. The increase of $619 was attributable to higher interest on deferred officer salary.\nGain (loss) on change in derivatives\nWe had a gain (loss) on change in derivatives of $0 in the three months ended September 30, 2023, compared to a $0 gain on change in derivatives for the three months ended September 30, 2022.\nGain on PPP loan forgiveness\nWe recognized $0 on the forgiveness of a PPP loan during the three months ended September 30, 2023, compared to $0 for the three months ended September 30, 2022.\nLiquidity and Capital Resources\nWe have incurred losses since our inception as a result of significant expenditures for operations and research and development and the lack of any revenue. We have an accumulated deficit of $31,603,191 as of September 30, 2023, and anticipate that we will continue to incur additional losses for the foreseeable future. Through September 30, 2023, we have funded our operations through the private sale of our equity securities and exercises of options and warrants, resulting in gross proceeds of approximately $28.8 million from inception through September 30, 2023.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change in 2023 Versus 2022",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "$",
+     "20,012",
+     "",
+     "$",
+     "126,791",
+     "",
+     "$",
+     "(106,779)",
+     "",
+     "",
+     "(84.2)",
+     "%"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(256,303)",
+     "",
+     "",
+     "(190,956)",
+     "",
+     "",
+     "(65,347)",
+     "",
+     "",
+     "(34.2)",
+     "%"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "-0-",
+     "",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "252,041",
+     "",
+     "",
+     "308,421",
+     "",
+     "",
+     "(56,380)",
+     "",
+     "",
+     "(18.3)",
+     "%"
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "15,750",
+     "",
+     "$",
+     "244,256",
+     "",
+     "$",
+     "(228,506)",
+     "",
+     "",
+     "(93.6)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 776,
+    "end_line": 790
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Gain (loss) on change in derivatives\nWe had a gain (loss) on change in derivatives of $0 in the three months ended September 30, 2023, compared to a $0 gain on change in derivatives for the three months ended September 30, 2022.\nGain on PPP loan forgiveness\nWe recognized $0 on the forgiveness of a PPP loan during the three months ended September 30, 2023, compared to $0 for the three months ended September 30, 2022.\nLiquidity and Capital Resources\nWe have incurred losses since our inception as a result of significant expenditures for operations and research and development and the lack of any revenue. We have an accumulated deficit of $31,603,191 as of September 30, 2023, and anticipate that we will continue to incur additional losses for the foreseeable future. Through September 30, 2023, we have funded our operations through the private sale of our equity securities and exercises of options and warrants, resulting in gross proceeds of approximately $28.8 million from inception through September 30, 2023.",
+   "prose_after": "Net Cash Used in Operating Activities\nNet cash used in operating activities was $256,303 and $190,956 for the three months ended September 30, 2023 and 2022, respectively. The decrease of $65,347 in cash used during 2023 compared to 2022 was primarily attributable to an increase in proceeds from private placements, loss from conversion of notes to shares, offset by change in fair value of derivative liability.\nNet Cash Used in Investing Activities\nCash used in investing activities was $0 and $0 for the three months ended September 30, 2023 and 2022, respectively.\nNet Cash Provided by Financing Activities\nDuring the three months ended September 30, 2023, net cash provided by financing activities was $252,041, compared to $308,421 for the three months ended September 30, 2023. The decrease of $56,380 was due to lower sales of the Company\u2019s securities in private placements. We continue to seek funding through private placement sales of equity to fund our continued operations, sales and marketing and ongoing research and development programs.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 759,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Filed or Furnished",
+     "Incorporated by Reference",
+     "",
+     ""
+    ],
+    [
+     "Exhibit No.",
+     "Description",
+     "Herewith",
+     "Form",
+     "Exhibit No.",
+     "Filing Date"
+    ],
+    [
+     "3.01",
+     "Articles of Incorporation of SmartMetric, Inc. 12/18/02",
+     "",
+     "SB-2",
+     "3.1",
+     "09/03/04"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.02",
+     "Amendment to Articles of Incorporation dated 12/11/09",
+     "",
+     "8-K",
+     "3.1",
+     "12/18/09"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.03",
+     "Amendment to Articles of Incorporation dated 06/08/16",
+     "",
+     "10-K",
+     "3.5",
+     "09/28/16"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.04",
+     "Amendment to Articles of Incorporation dated 10/17/19",
+     "",
+     "8-K",
+     "3.1",
+     "12/11/19"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.05",
+     "Amendment to Articles of Incorporation dated 05/24/21",
+     "",
+     "8-K",
+     "3.1",
+     "05/28/21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.06",
+     "Series B Preferred Stock Certificate of Designations dated 12/11/09",
+     "",
+     "8-K",
+     "3.2",
+     "12/18/09"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.07",
+     "Amendment to Series B Preferred Stock Certificate of Designation dated 11/05/14",
+     "",
+     "10-Q",
+     "3.1",
+     "11/14/14"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.08",
+     "Amendment to Series B Preferred Stock Certificate of Designation dated 06/08/16",
+     "",
+     "10-K",
+     "3.4",
+     "09/28/16"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.09",
+     "Series C Preferred Stock Certificate of Designations dated 01/14/19",
+     "",
+     "8-K",
+     "3.1",
+     "01/18/19"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.10",
+     "Series D Preferred Stock Certificate of Designations dated 07/27/21",
+     "",
+     "8-K",
+     "3.1",
+     "07/29/21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.11",
+     "Amended and Restated Bylaws of SmartMetric",
+     "",
+     "8-K",
+     "3.1",
+     "04/26/16"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.12",
+     "Amended and Restated Bylaws of SmartMetric",
+     "",
+     "8-K",
+     "3.1",
+     "04/29/21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Promissory Note in the principal amount of $300,000 dated 07/23/21",
+     "",
+     "8-K",
+     "4.1",
+     "07/29/21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Common Stock Purchase Warrant dated 07/23/21",
+     "",
+     "8-K",
+     "4.2",
+     "07/29/21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Form of Promissory Note dated 01/27/22",
+     "",
+     "8-K",
+     "4.1",
+     "02/03/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.4",
+     "Form of Common Stock Purchase Warrant dated 01/27/22",
+     "",
+     "8-K",
+     "4.2",
+     "02/03/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Form of Common Stock Purchase Warrant dated 03/08/22",
+     "",
+     "S-1",
+     "4.13",
+     "05/23/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Promissory Note in the principal amount of $250,000 dated 03/15/22",
+     "",
+     "8-K",
+     "4.1",
+     "03/21/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.7",
+     "Common Stock Purchase Warrant dated 03/15/22",
+     "",
+     "8-K",
+     "4.2",
+     "03/21/22"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 887,
+    "end_line": 930
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "20,100,000 of these shares were issued for cash received in prior quarters from private placement investors and were charged against stock liability.\n158,134,886 of these shares were issued in conjunction with securities purchase agreements with Mast Hill Fund, LP.\nITEM 3. DEFAULTS UPON SENIOR SECURITIES\nN/A.\nITEM 4. MINE SAFETY DISCLOSURES\nNot Applicable.\nITEM 5. OTHER INFORMATION\nNone.\nITEM 6. EXHIBITS\nINDEX TO EXHIBITS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 882,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.1",
+     "Securities Purchase Agreement dated 07/23/21",
+     "",
+     "8-K",
+     "10.1",
+     "07/29/21"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Securities Purchase Agreement dated 01/27/22",
+     "",
+     "8-K",
+     "10.1",
+     "02/03/22"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 932,
+    "end_line": 937
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.3",
+     "Equity Purchase Agreement dated 03/08/22",
+     "",
+     "S-1",
+     "10.19",
+     "05/23/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Registration Rights Agreement dated 03/08/22",
+     "",
+     "S-1",
+     "10.20",
+     "05/23/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Securities Purchase Agreement dated 03/15/22",
+     "",
+     "8-K",
+     "10.1",
+     "03/21/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.6**",
+     "Waiver and Consent Agreement dated 11/03/21",
+     "",
+     "10-Q",
+     "10.2",
+     "02/15/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Employment Agreement with Chaya Hendrick dated 05/13/22",
+     "",
+     "S-1",
+     "10.7",
+     "05/23/22"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification by the Principal Executive Officer of Registrant pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (Rule 13a-14(a) or Rule 15d-14(a)).",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification by the Principal Financial Officer of Registrant pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (Rule 13a-14(a) or Rule 15d-14(a)).",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification by the Principal Executive Officer pursuant to 18 U.S.C. 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*.",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification by the Principal Financial Officer pursuant to 18 U.S.C. 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002*.",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as inline XBRL with applicable taxonomy extension information contained in Exhibits 101).",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 938,
+    "end_line": 975
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "* In accordance with SEC Release 33-8238, Exhibits 32.1 and 32.2 are being furnished and not filed.\n** Certain schedules, exhibits and similar attachments have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The Company hereby undertakes to furnish copies of such omitted materials supplementally upon request by the SEC.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 931,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SMARTMETRIC, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: November 20, 2023",
+     "By:",
+     "/s/ Chaya Hendrick"
+    ],
+    [
+     "",
+     "",
+     "Chaya Hendrick,"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer and Chairman"
+    ],
+    [
+     "",
+     "",
+     "(Principal Executive Officer)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: November 20, 2023",
+     "By:",
+     "/s/ Jay Needelman"
+    ],
+    [
+     "",
+     "",
+     "Jay Needelman,"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "",
+     "(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "SMARTMETRIC, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 984,
+    "end_line": 999
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "* In accordance with SEC Release 33-8238, Exhibits 32.1 and 32.2 are being furnished and not filed.\n** Certain schedules, exhibits and similar attachments have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The Company hereby undertakes to furnish copies of such omitted materials supplementally upon request by the SEC.\nSIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 979,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1000,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

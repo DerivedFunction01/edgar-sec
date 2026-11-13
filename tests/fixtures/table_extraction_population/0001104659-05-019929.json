@@ -1,0 +1,6757 @@
+{
+ "accession": "0001104659-05-019929",
+ "cik": "0001006424",
+ "form": "10-Q",
+ "filing_date": "2005-05-03",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a05-7811_110q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Texas",
+     "71-0785261"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1401 Highway 62-65 North Harrison, Arkansas",
+     "72601"
+    ],
+    [
+     "(Address of principal executive office)",
+     "(Zip Code)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "(870) 741-7641",
+     ""
+    ],
+    [
+     "(Registrant\u2019s telephone number, including area code)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n---  ----------------------------------------------------------------------------------------\nFor the quarterly period ended March 31, 2005\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from                   to\nCommission File Number 0-28312\nFIRST FEDERAL BANCSHARES OF ARKANSAS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant is an accelerated filer (as defined in Rule 12b-2 of the Exchange Act).\nYes [X] No [ ]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: As of April 15, 2005, there were issued and outstanding 5,084,408 shares of the Registrant\u2019s Common Stock, par value $.01 per share.\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 44,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I.",
+     "Financial Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Financial Condition as of March 31, 2005 and December 31, 2004 (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Income for the three months ended March 31, 2005 and 2004 (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statement of Stockholders\u2019 Equity for the three months ended March 31, 2005 (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the three months ended March 31, 2005 and 2004 (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Unaudited Consolidated Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II.",
+     "[ ]ther Informatio\u2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Changes in Securities, Use of Proceeds, and Issuer Purchases of Equity Securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibits",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer pursuant to Rule 13a-14(a) of Exchange Act, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer pursuant to Rule 13a-14(a) of Exchange Act, as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Section 906 Certification of the CEO",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Section 906 Certification of the CFO",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 49,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant is an accelerated filer (as defined in Rule 12b-2 of the Exchange Act).\nYes [X] No [ ]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date: As of April 15, 2005, there were issued and outstanding 5,084,408 shares of the Registrant\u2019s Common Stock, par value $.01 per share.\nTABLE OF CONTENTS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF FINANCIAL CONDITION\n(In thousands, except share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 46,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "13,097",
+     "",
+     "$",
+     "16,003",
+     ""
+    ],
+    [
+     "Investment securities held to maturity",
+     "",
+     "55,445",
+     "",
+     "",
+     "56,660",
+     "",
+     ""
+    ],
+    [
+     "Federal Home Loan Bank stock",
+     "",
+     "5,958",
+     "",
+     "",
+     "4,876",
+     "",
+     ""
+    ],
+    [
+     "Loans receivable, net",
+     "",
+     "666,140",
+     "",
+     "",
+     "634,217",
+     "",
+     ""
+    ],
+    [
+     "Accrued interest receivable",
+     "",
+     "5,074",
+     "",
+     "",
+     "4,427",
+     "",
+     ""
+    ],
+    [
+     "Real estate acquired in settlement of loans, net",
+     "",
+     "458",
+     "",
+     "",
+     "563",
+     "",
+     ""
+    ],
+    [
+     "Office properties and equipment, net",
+     "",
+     "16,011",
+     "",
+     "",
+     "15,295",
+     "",
+     ""
+    ],
+    [
+     "Cash surrender value of life insurance",
+     "",
+     "18,094",
+     "",
+     "",
+     "17,897",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "1,756",
+     "",
+     "",
+     "1,727",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "782,033",
+     "",
+     "$",
+     "751,665",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "$",
+     "588,758",
+     "",
+     "$",
+     "582,424",
+     ""
+    ],
+    [
+     "Federal Home Loan Bank advances",
+     "",
+     "113,889",
+     "",
+     "",
+     "89,756",
+     "",
+     ""
+    ],
+    [
+     "Advance payments by borrowers for taxes and insurance",
+     "",
+     "938",
+     "",
+     "",
+     "757",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "2,880",
+     "",
+     "",
+     "3,427",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "706,465",
+     "",
+     "",
+     "676,364",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, no par value, 5,000,000 shares authorized, none issued",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $.01 par value, 20,000,000 shares authorized, 10,307,502 shares issued, 5,084,408 and 5,094,020 shares outstanding at March 31, 2005 and December 31, 2004, respectively",
+     "",
+     "103",
+     "",
+     "",
+     "103",
+     "",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "55,124",
+     "",
+     "",
+     "54,427",
+     "",
+     ""
+    ],
+    [
+     "Employee stock benefit plans",
+     "",
+     "(472)",
+     "",
+     "",
+     "(582)",
+     "",
+     ""
+    ],
+    [
+     "Retained earnings-substantially restricted",
+     "",
+     "79,615",
+     "",
+     "",
+     "78,261",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "134,370",
+     "",
+     "",
+     "132,209",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 5,223,094 and 5,213,482 shares at March 31, 2005 and December 31, 2004, respectively",
+     "",
+     "(58,802)",
+     "",
+     "",
+     "(56,908)",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "75,568",
+     "",
+     "",
+     "75,301",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "$",
+     "782,033",
+     "",
+     "$",
+     "751,665",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 106,
+    "end_line": 155
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF FINANCIAL CONDITION\n(In thousands, except share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF INCOME\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 104,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 156,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INTEREST INCOME:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans receivable",
+     "",
+     "$",
+     "9,884",
+     "",
+     "$",
+     "8,329",
+     ""
+    ],
+    [
+     "Investment securities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Taxable",
+     "",
+     "518",
+     "",
+     "",
+     "794",
+     "",
+     ""
+    ],
+    [
+     "Nontaxable",
+     "",
+     "180",
+     "",
+     "",
+     "166",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "13",
+     "",
+     "",
+     "91",
+     "",
+     ""
+    ],
+    [
+     "Total interest income",
+     "",
+     "10,595",
+     "",
+     "",
+     "9,380",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INTEREST EXPENSE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "3,283",
+     "",
+     "",
+     "3,187",
+     "",
+     ""
+    ],
+    [
+     "Other borrowings",
+     "",
+     "844",
+     "",
+     "",
+     "319",
+     "",
+     ""
+    ],
+    [
+     "Total interest expense",
+     "",
+     "4,127",
+     "",
+     "",
+     "3,506",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INTEREST INCOME",
+     "",
+     "6,468",
+     "",
+     "",
+     "5,874",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROVISION FOR LOAN LOSSES",
+     "",
+     "249",
+     "",
+     "",
+     "259",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INTEREST INCOME AFTER PROVISION FOR LOAN LOSSES",
+     "",
+     "6,219",
+     "",
+     "",
+     "5,615",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NONINTEREST INCOME:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposit fee income",
+     "",
+     "1,008",
+     "",
+     "",
+     "770",
+     "",
+     ""
+    ],
+    [
+     "Earnings on life insurance policies",
+     "",
+     "197",
+     "",
+     "",
+     "211",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale of loans",
+     "",
+     "134",
+     "",
+     "",
+     "127",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "231",
+     "",
+     "",
+     "324",
+     "",
+     ""
+    ],
+    [
+     "Total noninterest income",
+     "",
+     "1,570",
+     "",
+     "",
+     "1,432",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NONINTEREST EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and employee benefits",
+     "",
+     "3,003",
+     "",
+     "",
+     "2,679",
+     "",
+     ""
+    ],
+    [
+     "Net occupancy expense",
+     "",
+     "499",
+     "",
+     "",
+     "492",
+     "",
+     ""
+    ],
+    [
+     "Data processing",
+     "",
+     "341",
+     "",
+     "",
+     "408",
+     "",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "114",
+     "",
+     "",
+     "108",
+     "",
+     ""
+    ],
+    [
+     "Advertising and public relations",
+     "",
+     "241",
+     "",
+     "",
+     "128",
+     "",
+     ""
+    ],
+    [
+     "Postage and supplies",
+     "",
+     "190",
+     "",
+     "",
+     "179",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "508",
+     "",
+     "",
+     "480",
+     "",
+     ""
+    ],
+    [
+     "Total noninterest expenses",
+     "",
+     "4,896",
+     "",
+     "",
+     "4,474",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME BEFORE INCOME TAXES",
+     "",
+     "2,893",
+     "",
+     "",
+     "2,573",
+     "",
+     ""
+    ],
+    [
+     "INCOME TAX PROVISION",
+     "",
+     "929",
+     "",
+     "",
+     "813",
+     "",
+     ""
+    ],
+    [
+     "NET INCOME",
+     "",
+     "$",
+     "1,964",
+     "",
+     "$",
+     "1,760",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EARNINGS PER SHARE:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "$",
+     "0.39",
+     "",
+     "$",
+     "0.34",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "$",
+     "0.37",
+     "",
+     "$",
+     "0.32",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Dividends Declared",
+     "",
+     "$",
+     "0.12",
+     "",
+     "$",
+     "0.10",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 168,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF INCOME\n(In thousands, except share data)",
+   "prose_after": "CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2005\n(In thousands, except share data)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 166,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 238,
+     "token": "REPEATING_FOOTER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Issued Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-In",
+     "",
+     "",
+     "Employee Stock Benefit",
+     "",
+     "",
+     "Retained",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Plans",
+     "",
+     "",
+     "Earnings",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2004",
+     "",
+     "10,307,502",
+     "",
+     "$",
+     "103",
+     "",
+     "$",
+     "54,427",
+     "",
+     "$",
+     "(582)",
+     "",
+     "$",
+     "78,261",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,964",
+     "",
+     ""
+    ],
+    [
+     "Release of ESOP shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "389",
+     "",
+     "",
+     "104",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax effect of stock compensation plan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "481",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury shares reissued due to exercise of stock options",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(173)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of treasury stock, at cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "MRP shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividends paid",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(610)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2005",
+     "",
+     "10,307,502",
+     "",
+     "$",
+     "103",
+     "",
+     "$",
+     "55,124",
+     "",
+     "$",
+     "(472)",
+     "",
+     "$",
+     "79,615",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 252,
+    "end_line": 272
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 EQUITY\nFOR THE THREE MONTHS ENDED MARCH 31, 2005\n(In thousands, except share data)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 250,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 294,
+     "token": "REPEATING_FOOTER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2004",
+     "",
+     "5,213,482",
+     "",
+     "$",
+     "(56,908)",
+     "",
+     "$",
+     "75,301",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,964",
+     "",
+     ""
+    ],
+    [
+     "Release of ESOP shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "493",
+     "",
+     ""
+    ],
+    [
+     "Tax effect of stock compensation plan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "481",
+     "",
+     ""
+    ],
+    [
+     "Treasury shares reissued due to exercise of stock options",
+     "",
+     "(126,388)",
+     "",
+     "1,397",
+     "",
+     "",
+     "1,224",
+     "",
+     ""
+    ],
+    [
+     "Purchase of treasury stock, at cost",
+     "",
+     "136,000",
+     "",
+     "(3,291)",
+     "",
+     "",
+     "(3,291)",
+     "",
+     ""
+    ],
+    [
+     "MRP shares",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "6",
+     "",
+     ""
+    ],
+    [
+     "Dividends paid",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(610)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, March 31, 2005",
+     "",
+     "5,223,094",
+     "",
+     "$",
+     "(58,802)",
+     "",
+     "$",
+     "75,568",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 273,
+    "end_line": 293
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In Thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 250,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 294,
+     "token": "REPEATING_FOOTER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "$",
+     "1,964",
+     "",
+     "$",
+     "1,760",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for loan losses",
+     "",
+     "249",
+     "",
+     "",
+     "259",
+     "",
+     ""
+    ],
+    [
+     "Provision for real estate losses",
+     "",
+     "24",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax provision (benefit)",
+     "",
+     "(50)",
+     "",
+     "",
+     "43",
+     "",
+     ""
+    ],
+    [
+     "Accretion of discounts on investment securities, net",
+     "",
+     "(3)",
+     "",
+     "",
+     "(33)",
+     "",
+     ""
+    ],
+    [
+     "Federal Home Loan Bank stock dividends",
+     "",
+     "(39)",
+     "",
+     "",
+     "(14)",
+     "",
+     ""
+    ],
+    [
+     "Gain on disposition of office properties and equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(34)",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale of repossessed assets, net",
+     "",
+     "(5)",
+     "",
+     "",
+     "(6)",
+     "",
+     ""
+    ],
+    [
+     "Originations of loans held for sale",
+     "",
+     "(9,446)",
+     "",
+     "",
+     "(10,604)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales of loans",
+     "",
+     "9,742",
+     "",
+     "",
+     "10,613",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale of loans originated to sell",
+     "",
+     "(134)",
+     "",
+     "",
+     "(127)",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "294",
+     "",
+     "",
+     "298",
+     "",
+     ""
+    ],
+    [
+     "Amortization of deferred loan fees, net",
+     "",
+     "38",
+     "",
+     "",
+     "3",
+     "",
+     ""
+    ],
+    [
+     "Release of ESOP shares",
+     "",
+     "493",
+     "",
+     "",
+     "429",
+     "",
+     ""
+    ],
+    [
+     "MRP compensation expense",
+     "",
+     "6",
+     "",
+     "",
+     "7",
+     "",
+     ""
+    ],
+    [
+     "Earnings on life insurance policies",
+     "",
+     "(197)",
+     "",
+     "",
+     "(211)",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued interest receivable",
+     "",
+     "(647)",
+     "",
+     "",
+     "(235)",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "(13)",
+     "",
+     "",
+     "323",
+     "",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "(16)",
+     "",
+     "",
+     "298",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "2,260",
+     "",
+     "",
+     "2,769",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of investment securities held to maturity",
+     "",
+     "(100)",
+     "",
+     "",
+     "(63,878)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from maturities/calls of investment securities held to maturity",
+     "",
+     "1,318",
+     "",
+     "",
+     "55,879",
+     "",
+     ""
+    ],
+    [
+     "Purchase of FHLB stock",
+     "",
+     "(1,043)",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Loan participations sold",
+     "",
+     "1,787",
+     "",
+     "",
+     "2,709",
+     "",
+     ""
+    ],
+    [
+     "Loan originations, net of repayments",
+     "",
+     "(34,231)",
+     "",
+     "",
+     "(24,404)",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales of repossessed assets",
+     "",
+     "142",
+     "",
+     "",
+     "215",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from sales of office properties and equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "546",
+     "",
+     ""
+    ],
+    [
+     "Purchases of office properties and equipment",
+     "",
+     "(1,010)",
+     "",
+     "",
+     "(958)",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(33,137)",
+     "",
+     "",
+     "(29,891)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in deposits",
+     "",
+     "6,334",
+     "",
+     "",
+     "7,267",
+     "",
+     ""
+    ],
+    [
+     "Advances from FHLB",
+     "",
+     "45,900",
+     "",
+     "",
+     "2,033",
+     "",
+     ""
+    ],
+    [
+     "Repayment of advances from FHLB",
+     "",
+     "(21,767)",
+     "",
+     "",
+     "(4,105)",
+     "",
+     ""
+    ],
+    [
+     "Net increase in advance payments by borrowers for taxes and insurance",
+     "",
+     "181",
+     "",
+     "",
+     "162",
+     "",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "",
+     "(3,291)",
+     "",
+     "",
+     "(2,045)",
+     "",
+     ""
+    ],
+    [
+     "Reissued treasury stock",
+     "",
+     "1,224",
+     "",
+     "",
+     "714",
+     "",
+     ""
+    ],
+    [
+     "Dividends paid",
+     "",
+     "(610)",
+     "",
+     "",
+     "(532)",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "27,971",
+     "",
+     "",
+     "3,494",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(2,906)",
+     "",
+     "",
+     "(23,628)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 306,
+    "end_line": 366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS\n(In Thousands)",
+   "prose_after": "(Continued)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 304,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "",
+     "$",
+     "16,003",
+     "",
+     "$",
+     "56,201",
+     ""
+    ],
+    [
+     "End of period",
+     "",
+     "$",
+     "13,097",
+     "",
+     "$",
+     "32,573",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "$",
+     "4,023",
+     "",
+     "$",
+     "3,489",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "$",
+     "2",
+     "",
+     "$",
+     "168",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL SCHEDULE OF NONCASH INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Real estate and other assets acquired in settlement of loans",
+     "",
+     "$",
+     "72",
+     "",
+     "$",
+     "151",
+     ""
+    ],
+    [
+     "Loans to facilitate sales of real estate owned",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "197",
+     ""
+    ],
+    [
+     "Investment securities traded, recorded in investments not yet settled in cash",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "250",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 371,
+    "end_line": 398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "(Continued)",
+   "prose_after": "(Concluded)\nNOTES TO UNAUDITED CONSOLIDATED FINANCIAL STATEMENTS\nNote 1 - Basis of Presentation and Principles of Consolidation\nFirst Federal Bancshares of Arkansas, Inc. (the \u201cCompany\u201d) is a unitary holding company which owns all of the stock of First Federal Bank of Arkansas, FA (the \u201cBank\u201d). The Bank provides a broad line of financial products to individuals and small- to medium-sized businesses in Northwest and Northcentral Arkansas. The unaudited consolidated financial statements also include the accounts of the Bank\u2019s wholly-owned subsidiary, First Harrison Service Corporation (\u201cFHSC\u201d), which is inactive.\nThe accompanying unaudited consolidated financial statements of the Company have been prepared in accordance with instructions to Form 10-Q. Accordingly, they do not include all of the information and footnotes required by generally accepted accounting principles for complete financial statements. However, such information reflects all adjustments which are, in the opinion of management, necessary for a fair statement of results for the interim periods.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 399,
+     "token": "REPEATING_FOOTER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three months ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "2004",
+     ""
+    ],
+    [
+     "Basic weighted - average shares",
+     "",
+     "4,987,228",
+     "",
+     "5,146,747",
+     ""
+    ],
+    [
+     "Effect of dilutive securities",
+     "",
+     "280,357",
+     "",
+     "345,290",
+     ""
+    ],
+    [
+     "Diluted weighted - average shares",
+     "",
+     "5,267,585",
+     "",
+     "5,492,037",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three months ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 425,
+    "end_line": 436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "The accompanying unaudited consolidated financial statements of the Company have been prepared in accordance with instructions to Form 10-Q. Accordingly, they do not include all of the information and footnotes required by generally accepted accounting principles for complete financial statements. However, such information reflects all adjustments which are, in the opinion of management, necessary for a fair statement of results for the interim periods.\nThe accompanying unaudited consolidated financial statements include the accounts of the Company and the Bank. All material intercompany transactions have been eliminated in consolidation.\nThe results of operations for the three months ended March 31, 2005, are not necessarily indicative of the results to be expected for the year ending December 31, 2005. The unaudited consolidated financial statements and notes thereto should be read in conjunction with the audited financial statements and notes thereto for the year ended December 31, 2004, contained in the Company\u2019s 2004 Annual Report to Stockholders.\nCertain amounts in the March 31, 2004, unaudited consolidated financial statements have been reclassified to conform to the classifications adopted for reporting in 2005.\nNote 2 - Earnings per Share\nThe weighted average number of common shares used to calculate earnings per share for the periods ended March 31, 2005 and 2004 were as follows:",
+   "prose_after": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS\nOF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nCRITICAL ACCOUNTING POLICIES\nVarious elements of our accounting policies, by their nature, are inherently subject to estimation techniques, valuation assumptions and other subjective assessments. In particular, the methodology for the determination of our allowance for loan losses, due to the judgments, estimates and assumptions inherent in that policy, is critical to preparation of our financial statements. This policy and the judgments, estimates and assumptions are described in greater detail in subsequent sections of Management\u2019s Discussion and Analysis and in the notes to the unaudited financial statements included herein. We believe that the judgments, estimates and assumptions used in the preparation of our financial statements are appropriate given the factual circumstances at the time. However, given the sensitivity of our financial statements to this critical accounting policy, the use of other judgments, estimates and assumptions could result in material differences in our financial condition or results of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 405,
+     "token": "REPEATING_HEADER",
+     "id": 21,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "",
+     "December 31, 2004",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     "",
+     "Percentage Change",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "13,097",
+     "",
+     "$",
+     "16,003",
+     "",
+     "$",
+     "(2,906)",
+     "",
+     "(18.2)",
+     "%"
+    ],
+    [
+     "Investment securities held to maturity",
+     "",
+     "55,445",
+     "",
+     "",
+     "56,660",
+     "",
+     "",
+     "(1,215)",
+     "",
+     "",
+     "(2.1)",
+     "%"
+    ],
+    [
+     "Loans receivable, net",
+     "",
+     "666,140",
+     "",
+     "",
+     "634,217",
+     "",
+     "",
+     "31,923",
+     "",
+     "",
+     "5.0",
+     "%"
+    ],
+    [
+     "Federal Home Loan Bank stock",
+     "",
+     "5,958",
+     "",
+     "",
+     "4,876",
+     "",
+     "",
+     "1,082",
+     "",
+     "",
+     "22.2",
+     "%"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "41,393",
+     "",
+     "",
+     "39,909",
+     "",
+     "",
+     "1,484",
+     "",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "782,033",
+     "",
+     "$",
+     "751,665",
+     "",
+     "$",
+     "30,368",
+     "",
+     "4.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "$",
+     "588,758",
+     "",
+     "$",
+     "582,424",
+     "",
+     "$",
+     "6,334",
+     "",
+     "1.1",
+     "%"
+    ],
+    [
+     "Other borrowings",
+     "",
+     "113,889",
+     "",
+     "",
+     "89,756",
+     "",
+     "",
+     "24,133",
+     "",
+     "",
+     "26.9",
+     "%"
+    ],
+    [
+     "Other liabilities",
+     "",
+     "3,818",
+     "",
+     "",
+     "4,184",
+     "",
+     "",
+     "(366)",
+     "",
+     "",
+     "(8.7)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "706,465",
+     "",
+     "",
+     "676,364",
+     "",
+     "",
+     "30,101",
+     "",
+     "",
+     "4.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "75,568",
+     "",
+     "",
+     "75,301",
+     "",
+     "",
+     "267",
+     "",
+     "",
+     "0.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL",
+     "",
+     "$",
+     "782,033",
+     "",
+     "$",
+     "751,665",
+     "",
+     "$",
+     "30,368",
+     "",
+     "4.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "BOOK VALUE PER SHARE",
+     "",
+     "$",
+     "14.86",
+     "",
+     "$",
+     "14.78",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EQUITY TO ASSETS",
+     "",
+     "9.7",
+     "",
+     "%",
+     "10.0",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 453,
+    "end_line": 489
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Various elements of our accounting policies, by their nature, are inherently subject to estimation techniques, valuation assumptions and other subjective assessments. In particular, the methodology for the determination of our allowance for loan losses, due to the judgments, estimates and assumptions inherent in that policy, is critical to preparation of our financial statements. This policy and the judgments, estimates and assumptions are described in greater detail in subsequent sections of Management\u2019s Discussion and Analysis and in the notes to the unaudited financial statements included herein. We believe that the judgments, estimates and assumptions used in the preparation of our financial statements are appropriate given the factual circumstances at the time. However, given the sensitivity of our financial statements to this critical accounting policy, the use of other judgments, estimates and assumptions could result in material differences in our financial condition or results of operations.\nIn estimating the amount of credit losses inherent in our loan portfolio, various judgments and assumptions are made. For example, when assessing the condition of the overall economic environment, assumptions are made regarding future market conditions and their impact on the loan portfolio. In the event the national economy were to sustain a prolonged downturn, the loss factors applied to our portfolios may need to be revised, which may significantly impact the measurement of the allowance for loan losses. For impaired loans that are collateral-dependent, the estimated fair value of the collateral may deviate significantly from the proceeds received when the collateral is sold.\nCHANGES IN FINANCIAL CONDITION\nChanges in financial condition between March 31, 2005 and December 31, 2004 are presented in the following table (dollars in thousands). Material changes between periods will be discussed in the sections which follow the table.",
+   "prose_after": "Loans Receivable. Changes in loan composition between March 31, 2005 and December 31, 2004 are presented in the following table (dollars in thousands).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 437,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "",
+     "December 31, 2004",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     "",
+     "Percentage Change",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "One- to four-family residential",
+     "",
+     "$",
+     "282,947",
+     "",
+     "$",
+     "282,144",
+     "",
+     "$",
+     "803",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Multi-family residential",
+     "",
+     "14,429",
+     "",
+     "",
+     "9,454",
+     "",
+     "",
+     "4,975",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commercial real estate",
+     "",
+     "150,348",
+     "",
+     "",
+     "145,909",
+     "",
+     "",
+     "4,439",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Construction",
+     "",
+     "182,977",
+     "",
+     "",
+     "159,111",
+     "",
+     "",
+     "23,866",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total first mortgage loans",
+     "",
+     "630,701",
+     "",
+     "",
+     "596,618",
+     "",
+     "",
+     "34,083",
+     "",
+     "",
+     "5.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commercial",
+     "",
+     "29,679",
+     "",
+     "",
+     "27,545",
+     "",
+     "",
+     "2,134",
+     "",
+     "",
+     "7.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Home equity and second mortgage",
+     "",
+     "48,089",
+     "",
+     "",
+     "45,256",
+     "",
+     "",
+     "2,833",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Automobile",
+     "",
+     "18,399",
+     "",
+     "",
+     "19,101",
+     "",
+     "",
+     "(702)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "11,323",
+     "",
+     "",
+     "10,685",
+     "",
+     "",
+     "638",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total consumer",
+     "",
+     "77,811",
+     "",
+     "",
+     "75,042",
+     "",
+     "",
+     "2,769",
+     "",
+     "",
+     "3.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total loans receivable",
+     "",
+     "738,191",
+     "",
+     "",
+     "699,205",
+     "",
+     "",
+     "38,986",
+     "",
+     "",
+     "5.6",
+     "%"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Undisbursed loan funds",
+     "",
+     "(69,732)",
+     "",
+     "",
+     "(62,661)",
+     "",
+     "",
+     "(7,071)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unearned discounts and net deferred loan fees",
+     "",
+     "(369)",
+     "",
+     "",
+     "(481)",
+     "",
+     "",
+     "112",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for loan losses",
+     "",
+     "(1,950)",
+     "",
+     "",
+     "(1,846)",
+     "",
+     "",
+     "(104)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total loans receivable, net",
+     "",
+     "$",
+     "666,140",
+     "",
+     "$",
+     "634,217",
+     "",
+     "$",
+     "31,923",
+     "",
+     "5.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 528
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Loans Receivable. Changes in loan composition between March 31, 2005 and December 31, 2004 are presented in the following table (dollars in thousands).",
+   "prose_after": "The Bank continued to experience demand for multi-family loans, commercial real estate loans, construction loans, and commercial loans. Generally, the Bank\u2019s construction loans were for the purpose of constructing single-family residential properties. The interest rate environment and robust economy of our market area provided continued demand and opportunity for our other loan products as well. In recent years, the Bank has placed an increased emphasis on commercial real estate lending, construction lending, and commercial lending to diversify its loan portfolio, take advantage of market opportunities in these types of loans, and help the Bank transition to a more full-service community bank, as well as to provide opportunities to cross-sell its other banking products.\nAsset Quality. The following table sets forth the amounts and categories of the Bank\u2019s nonperforming assets at the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 490,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "",
+     "December 31, 2004",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Dollars in Thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nonaccrual loans:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "One- to four-family residential",
+     "",
+     "$",
+     "2,216",
+     "",
+     "$",
+     "2,619",
+     ""
+    ],
+    [
+     "Construction loans",
+     "",
+     "639",
+     "",
+     "",
+     "634",
+     "",
+     ""
+    ],
+    [
+     "Commercial real estate",
+     "",
+     "574",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Commercial loans",
+     "",
+     "573",
+     "",
+     "",
+     "186",
+     "",
+     ""
+    ],
+    [
+     "Consumer loans",
+     "",
+     "603",
+     "",
+     "",
+     "723",
+     "",
+     ""
+    ],
+    [
+     "Total nonaccrual loans",
+     "",
+     "4,605",
+     "",
+     "",
+     "4,162",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restructured loans",
+     "",
+     "3,746",
+     "",
+     "",
+     "3,790",
+     "",
+     ""
+    ],
+    [
+     "Real estate owned",
+     "",
+     "458",
+     "",
+     "",
+     "563",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Nonperforming assets",
+     "",
+     "$",
+     "8,809",
+     "",
+     "$",
+     "8,515",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total nonaccrual and restructured loans as a percentage of total loans receivable",
+     "",
+     "1.13",
+     "",
+     "%",
+     "1.14",
+     "",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total nonperforming assets as a percentage of total assets",
+     "",
+     "1.13",
+     "",
+     "%",
+     "1.13",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 535,
+    "end_line": 562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "The Bank continued to experience demand for multi-family loans, commercial real estate loans, construction loans, and commercial loans. Generally, the Bank\u2019s construction loans were for the purpose of constructing single-family residential properties. The interest rate environment and robust economy of our market area provided continued demand and opportunity for our other loan products as well. In recent years, the Bank has placed an increased emphasis on commercial real estate lending, construction lending, and commercial lending to diversify its loan portfolio, take advantage of market opportunities in these types of loans, and help the Bank transition to a more full-service community bank, as well as to provide opportunities to cross-sell its other banking products.\nAsset Quality. The following table sets forth the amounts and categories of the Bank\u2019s nonperforming assets at the dates indicated.",
+   "prose_after": "Restructured loans reported at March 31, 2005 and December 31, 2004, were comprised of a group of loans to related borrowers. At those dates the loans were not over 90 days past due.\nAllowance for Loan Losses. A summary of the activity in the allowance for loan losses is as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "",
+     "$",
+     "1,846",
+     "",
+     "$",
+     "1,621",
+     ""
+    ],
+    [
+     "Provisions for estimated losses",
+     "",
+     "249",
+     "",
+     "",
+     "259",
+     "",
+     ""
+    ],
+    [
+     "Recoveries",
+     "",
+     "25",
+     "",
+     "",
+     "24",
+     "",
+     ""
+    ],
+    [
+     "Losses charged off",
+     "",
+     "(170)",
+     "",
+     "",
+     "(201)",
+     "",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "",
+     "$",
+     "1,950",
+     "",
+     "$",
+     "1,703",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 567,
+    "end_line": 581
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Restructured loans reported at March 31, 2005 and December 31, 2004, were comprised of a group of loans to related borrowers. At those dates the loans were not over 90 days past due.\nAllowance for Loan Losses. A summary of the activity in the allowance for loan losses is as follows (in thousands):",
+   "prose_after": "Changes in the composition of the allowance for loan losses between March 31, 2005 and December 31, 2004 are presented in the following table (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "",
+     "December 31, 2004",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "General",
+     "",
+     "$",
+     "1,558",
+     "",
+     "$",
+     "1,476",
+     "",
+     "$",
+     "82",
+     ""
+    ],
+    [
+     "Specific",
+     "",
+     "306",
+     "",
+     "",
+     "318",
+     "",
+     "",
+     "(12)",
+     "",
+     ""
+    ],
+    [
+     "Unallocated",
+     "",
+     "86",
+     "",
+     "",
+     "52",
+     "",
+     "",
+     "34",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$",
+     "1,950",
+     "",
+     "$",
+     "1,846",
+     "",
+     "$",
+     "104",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Changes in the composition of the allowance for loan losses between March 31, 2005 and December 31, 2004 are presented in the following table (in thousands):",
+   "prose_after": "The allowance for loan losses is evaluated on a regular basis by management and is based upon management\u2019s periodic review of the collectibility of the loans in light of historical experience, the nature and volume of the loan portfolio, adverse situations that may affect the borrower\u2019s ability to repay, the estimated value of any underlying collateral and prevailing economic conditions. This evaluation is inherently subjective as it requires estimates that are susceptible to significant revision as conditions change and more information becomes available.\nThe allowance consists of specific, general and unallocated components. The specific component relates to loans that are classified as loss, doubtful, substandard or special mention. For such loans that are also classified as impaired, an allowance is established when the discounted cash flows (or collateral value or observable market\nprice) of the impaired loan is lower than the carrying value of that loan. The general component covers non-classified loans and is based primarily on historical loss experience. An unallocated component is maintained to cover uncertainties that could affect management\u2019s estimate of probable losses. The unallocated component of the allowance reflects the margin of imprecision inherent in the underlying assumptions used in the methodologies for estimating specific and general losses in the portfolio.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 600,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "",
+     "December 31, 2004",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "",
+     "$",
+     "2,000",
+     "",
+     "$",
+     "3,000",
+     "",
+     "$",
+     "(1,000)",
+     ""
+    ],
+    [
+     "U.S. Government and agency obligations",
+     "",
+     "37,756",
+     "",
+     "",
+     "37,821",
+     "",
+     "",
+     "(65)",
+     "",
+     ""
+    ],
+    [
+     "Municipal securities",
+     "",
+     "15,689",
+     "",
+     "",
+     "15,839",
+     "",
+     "",
+     "(150)",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "55,445",
+     "",
+     "$",
+     "56,660",
+     "",
+     "$",
+     "(1,215)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 616,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "In estimating the amount of credit losses inherent in our loan portfolio, various judgments and assumptions are made. For example, when assessing the condition of the overall economic environment, assumptions are made regarding future market conditions and their impact on the loan portfolio. In the event the national economy were to sustain a prolonged downturn, the loss factors applied to our portfolios may need to be revised, which may significantly impact the measurement of the allowance for loan losses. For impaired loans that are collateral-dependent, the estimated fair value of the collateral may deviate significantly from the proceeds received when the collateral is sold.\nAlthough we consider the allowance for loan losses of $2.0 million appropriate and adequate to cover losses inherent in our loan portfolio at March 31, 2005, no assurance can be given that we will not sustain loan losses that are significantly different from the amount provided, or that subsequent evaluations of the loan portfolio, in light of factors then prevailing, would not result in a significant change in the allowance for loan losses.\nInvestment Securities. Changes in the composition of investment securities held to maturity between March 31, 2005 and December 31, 2004 are presented in the following table (in thousands).",
+   "prose_after": "During the first quarter of 2005, investment securities totaling $100,000 were purchased and $1.3 million matured or were called. The decrease in certificates of deposit and municipal securities was due to calls and maturities in excess of purchases.\nAt March 31, 2005, estimated fair values of investment securities held to maturity were as follows (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Amortized Cost",
+     "",
+     "",
+     "Fair Value",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Certificates of deposit",
+     "",
+     "$",
+     "2,000",
+     "",
+     "$",
+     "2,000",
+     ""
+    ],
+    [
+     "U.S. Government and agency obligations",
+     "",
+     "37,756",
+     "",
+     "",
+     "36,905",
+     "",
+     ""
+    ],
+    [
+     "Municipal securities",
+     "",
+     "15,689",
+     "",
+     "",
+     "15,745",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "55,445",
+     "",
+     "$",
+     "54,650",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 632,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "During the first quarter of 2005, investment securities totaling $100,000 were purchased and $1.3 million matured or were called. The decrease in certificates of deposit and municipal securities was due to calls and maturities in excess of purchases.\nAt March 31, 2005, estimated fair values of investment securities held to maturity were as follows (in thousands):",
+   "prose_after": "Federal Home Loan Bank Stock. Federal Home Loan Bank (\u201cFHLB\u201d) stock increased by approximately $1.1 million due to required purchases related to the increase in FHLB advances.\nDeposits. Changes in the composition of deposits between March 31, 2005 and December 31, 2004 are presented in the following table (dollars in thousands).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "",
+     "December 31, 2004",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     "",
+     "Percentage Change",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DDA and NOW accounts",
+     "",
+     "$",
+     "113,636",
+     "",
+     "$",
+     "109,772",
+     "",
+     "$",
+     "3,864",
+     "",
+     "3.5",
+     "%"
+    ],
+    [
+     "Money market accounts",
+     "",
+     "93,943",
+     "",
+     "",
+     "106,063",
+     "",
+     "",
+     "(12,120)",
+     "",
+     "",
+     "(11.4)",
+     "%"
+    ],
+    [
+     "Savings accounts",
+     "",
+     "31,961",
+     "",
+     "",
+     "31,611",
+     "",
+     "",
+     "350",
+     "",
+     "",
+     "1.1",
+     "%"
+    ],
+    [
+     "Certificates of deposit",
+     "",
+     "349,218",
+     "",
+     "",
+     "334,978",
+     "",
+     "",
+     "14,240",
+     "",
+     "",
+     "4.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total deposits",
+     "",
+     "$",
+     "588,758",
+     "",
+     "$",
+     "582,424",
+     "",
+     "$",
+     "6,334",
+     "",
+     "1.1",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 648,
+    "end_line": 662
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Federal Home Loan Bank Stock. Federal Home Loan Bank (\u201cFHLB\u201d) stock increased by approximately $1.1 million due to required purchases related to the increase in FHLB advances.\nDeposits. Changes in the composition of deposits between March 31, 2005 and December 31, 2004 are presented in the following table (dollars in thousands).",
+   "prose_after": "The Bank experienced a shift in the mix of deposits from money market accounts to certificates of deposit during the quarter. Certificates of deposit increased as interest rates began to rise. Further, the Bank has advertised several CD products with special rates and terms ranging from 7 to 40 months. The cost of deposit funds increased from 2.26% at December 31, 2004 to 2.33% at March 31, 2005. The Bank will continue to aggressively promote checking accounts with plans to expand its promotion of checking accounts by targeting small- and medium-sized business accounts with its direct mail campaign and \u201cthank you\u201d gifts beginning in the second quarter. Checking accounts are an attractive source of funds for the Bank as they offer low-interest deposits, fee income potential, and the opportunity to cross-sell other financial services.\nFederal Home Loan Bank Advances. The Bank experienced $24.1 million or 26.9% growth in FHLB of Dallas advances during the quarter. The advances were used to fund loan growth during the quarter. The balance of advances at March 31, 2005 of $113.9 million consisted of $66.7 million of fixed rate advances with an average cost of 3.69% and $47.2 million of floating rate advances with an average cost of 2.87%.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 612,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Quarter Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2004",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "March 31, 2005",
+     "",
+     "Average Balance",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Average Yield/ Cost",
+     "",
+     "Average Balance",
+     "",
+     "",
+     "Interest",
+     "",
+     "",
+     "Average Yield/ Cost",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Yield/Cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(Dollars in Thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest-earning assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans receivable(1)",
+     "",
+     "6.15",
+     "%",
+     "$",
+     "651,582",
+     "",
+     "$",
+     "9,884",
+     "",
+     "6.07",
+     "%",
+     "$",
+     "520,908",
+     "",
+     "$",
+     "8,329",
+     "",
+     "6.40",
+     "%"
+    ],
+    [
+     "Investment securities(2)",
+     "",
+     "4.49",
+     "",
+     "61,783",
+     "",
+     "",
+     "698",
+     "",
+     "",
+     "4.52",
+     "",
+     "88,051",
+     "",
+     "",
+     "960",
+     "",
+     "",
+     "4.36",
+     ""
+    ],
+    [
+     "Other interest-earning assets",
+     "",
+     "2.75",
+     "",
+     "2,348",
+     "",
+     "",
+     "13",
+     "",
+     "",
+     "2.31",
+     "",
+     "41,057",
+     "",
+     "",
+     "91",
+     "",
+     "",
+     "0.89",
+     ""
+    ],
+    [
+     "Total interest-earning assets",
+     "",
+     "6.00",
+     "",
+     "715,713",
+     "",
+     "",
+     "10,595",
+     "",
+     "",
+     "5.92",
+     "",
+     "650,016",
+     "",
+     "",
+     "9,380",
+     "",
+     "",
+     "5.77",
+     ""
+    ],
+    [
+     "Noninterest-earning assets",
+     "",
+     "",
+     "",
+     "50,914",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "46,961",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "",
+     "",
+     "$",
+     "766,627",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "696,977",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest-bearing liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "2.33",
+     "",
+     "$",
+     "582,420",
+     "",
+     "3,283",
+     "",
+     "",
+     "2.25",
+     "",
+     "$",
+     "577,829",
+     "",
+     "3,187",
+     "",
+     "",
+     "2.21",
+     ""
+    ],
+    [
+     "Other borrowings",
+     "",
+     "3.35",
+     "",
+     "103,542",
+     "",
+     "",
+     "844",
+     "",
+     "",
+     "3.26",
+     "",
+     "38,490",
+     "",
+     "",
+     "319",
+     "",
+     "",
+     "3.31",
+     ""
+    ],
+    [
+     "Total interest-bearing liabilities",
+     "",
+     "2.49",
+     "",
+     "685,962",
+     "",
+     "",
+     "4,127",
+     "",
+     "",
+     "2.41",
+     "",
+     "616,319",
+     "",
+     "",
+     "3,506",
+     "",
+     "",
+     "2.27",
+     ""
+    ],
+    [
+     "Noninterest-bearing liabilities",
+     "",
+     "",
+     "",
+     "5,173",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "5,192",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "",
+     "",
+     "691,135",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "621,511",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "75,492",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "75,466",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "$",
+     "766,627",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "696,977",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net interest income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "6,468",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "5,874",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earning assets",
+     "",
+     "",
+     "",
+     "$",
+     "29,751",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "33,697",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate spread",
+     "",
+     "3.51",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3.51",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3.50",
+     "%"
+    ],
+    [
+     "Net interest margin",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3.61",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3.61",
+     "%"
+    ],
+    [
+     "Ratio of interest-earning assets to interest-bearing liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "104.34",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "105.47",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Quarter Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 677,
+    "end_line": 723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Stockholders\u2019 Equity. Stockholders\u2019 equity increased $267,000 from December 31, 2004 to March 31, 2005. The increase in stockholders\u2019 equity was primarily due to net income of $2.0 million and the issuance of treasury stock due to exercise of stock options of $1.2 million, offset by the purchase of treasury stock totaling $3.3 million during the first quarter of 2005. In addition, during the quarter ended March 31, 2005 cash dividends of $610,000 were paid. See the Unaudited Consolidated Statement of Stockholders\u2019 Equity for the three months ended March 31, 2005 for more detail.\nAverage Balance Sheets\nThe following table sets forth certain information relating to the Company\u2019s average balance sheets and reflects the average yield on assets and average cost of liabilities for the periods indicated and the yields earned and rates paid at March 31, 2005. Such yields and costs are derived by dividing income or expense by the average balance of assets or liabilities, respectively, for the periods presented and outstanding balances at March 31, 2005. Average balances are based on daily balances during the period.",
+   "prose_after": "(1) Includes nonaccrual loans.\n(2) Includes FHLB stock.\nRate/Volume Analysis\nThe table below sets forth certain information regarding changes in interest income and interest expense of the Company for the periods indicated. For each category of interest-earning assets and interest-bearing liabilities, information is provided on changes attributable to (i) changes in volume (changes in average volume multiplied by prior rate); (ii) changes in rate (change in rate multiplied by prior average volume); (iii) changes in rate-volume (changes in rate multiplied by the change in average volume); and (iv) the net change.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 669,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 723,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Quarter Ended March 31, 2005 vs. 2004",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Increase (Decrease)\nDue to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Volume",
+     "",
+     "",
+     "Rate",
+     "",
+     "",
+     "Rate/ Volume",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(In Thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans receivable",
+     "",
+     "$",
+     "2,089",
+     "",
+     "$",
+     "(427)",
+     "",
+     "$",
+     "(107)",
+     "",
+     "$",
+     "1,555",
+     ""
+    ],
+    [
+     "Investment securities",
+     "",
+     "(286)",
+     "",
+     "",
+     "35",
+     "",
+     "",
+     "(11)",
+     "",
+     "",
+     "(262)",
+     "",
+     ""
+    ],
+    [
+     "Other interest-earning assets",
+     "",
+     "(86)",
+     "",
+     "",
+     "145",
+     "",
+     "",
+     "(137)",
+     "",
+     "",
+     "(78)",
+     "",
+     ""
+    ],
+    [
+     "Total interest-earning assets",
+     "",
+     "1,717",
+     "",
+     "",
+     "(247)",
+     "",
+     "",
+     "(255)",
+     "",
+     "",
+     "1,215",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "25",
+     "",
+     "",
+     "70",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "96",
+     "",
+     ""
+    ],
+    [
+     "Other borrowings",
+     "",
+     "539",
+     "",
+     "",
+     "(5)",
+     "",
+     "",
+     "(9)",
+     "",
+     "",
+     "525",
+     "",
+     ""
+    ],
+    [
+     "Total interest-bearing liabilities",
+     "",
+     "564",
+     "",
+     "",
+     "65",
+     "",
+     "",
+     "(8)",
+     "",
+     "",
+     "621",
+     "",
+     ""
+    ],
+    [
+     "Net change in net interest income",
+     "",
+     "$",
+     "1,153",
+     "",
+     "$",
+     "(312)",
+     "",
+     "$",
+     "(247)",
+     "",
+     "$",
+     "594",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Quarter Ended March 31, 2005 vs. 2004"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 734,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "(1) Includes nonaccrual loans.\n(2) Includes FHLB stock.\nRate/Volume Analysis\nThe table below sets forth certain information regarding changes in interest income and interest expense of the Company for the periods indicated. For each category of interest-earning assets and interest-bearing liabilities, information is provided on changes attributable to (i) changes in volume (changes in average volume multiplied by prior rate); (ii) changes in rate (change in rate multiplied by prior average volume); (iii) changes in rate-volume (changes in rate multiplied by the change in average volume); and (iv) the net change.",
+   "prose_after": "CHANGES IN RESULTS OF OPERATIONS\nThe table below presents a comparison of results of operations for the three months ended March 31, 2005 and 2004 (dollars in thousands). Specific changes in captions will be discussed below the table.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 728,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     "",
+     "Percentage Change",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     "",
+     "2005 vs 2004",
+     "",
+     "",
+     "2005 vs 2004",
+     ""
+    ],
+    [
+     "Interest income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans receivable",
+     "",
+     "$",
+     "9,884",
+     "",
+     "$",
+     "8,329",
+     "",
+     "$",
+     "1,555",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment securities",
+     "",
+     "698",
+     "",
+     "",
+     "960",
+     "",
+     "",
+     "(262)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "13",
+     "",
+     "",
+     "91",
+     "",
+     "",
+     "(78)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total interest income",
+     "",
+     "10,595",
+     "",
+     "",
+     "9,380",
+     "",
+     "",
+     "1,215",
+     "",
+     "",
+     "13.0",
+     "%"
+    ],
+    [
+     "Interest expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "",
+     "3,283",
+     "",
+     "",
+     "3,187",
+     "",
+     "",
+     "96",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other borrowings",
+     "",
+     "844",
+     "",
+     "",
+     "319",
+     "",
+     "",
+     "525",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total interest expense",
+     "",
+     "4,127",
+     "",
+     "",
+     "3,506",
+     "",
+     "",
+     "621",
+     "",
+     "",
+     "17.7",
+     "%"
+    ],
+    [
+     "Net interest income before provision for loan losses",
+     "",
+     "6,468",
+     "",
+     "",
+     "5,874",
+     "",
+     "",
+     "594",
+     "",
+     "",
+     "10.1",
+     "%"
+    ],
+    [
+     "Provision for loan losses",
+     "",
+     "249",
+     "",
+     "",
+     "259",
+     "",
+     "",
+     "(10)",
+     "",
+     "",
+     "(3.9)",
+     "%"
+    ],
+    [
+     "Net interest income after provision for loan losses",
+     "",
+     "6,219",
+     "",
+     "",
+     "5,615",
+     "",
+     "",
+     "604",
+     "",
+     "",
+     "10.8",
+     "%"
+    ],
+    [
+     "Noninterest income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposit fee income",
+     "",
+     "1,008",
+     "",
+     "",
+     "770",
+     "",
+     "",
+     "238",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale of loans",
+     "",
+     "134",
+     "",
+     "",
+     "127",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings on life insurance policies",
+     "",
+     "197",
+     "",
+     "",
+     "211",
+     "",
+     "",
+     "(14)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "231",
+     "",
+     "",
+     "324",
+     "",
+     "",
+     "(93)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total noninterest income",
+     "",
+     "1,570",
+     "",
+     "",
+     "1,432",
+     "",
+     "",
+     "138",
+     "",
+     "",
+     "9.6",
+     "%"
+    ],
+    [
+     "Noninterest expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries and employee benefits",
+     "",
+     "3,003",
+     "",
+     "",
+     "2,679",
+     "",
+     "",
+     "324",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net occupancy expense",
+     "",
+     "499",
+     "",
+     "",
+     "492",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Data processing",
+     "",
+     "341",
+     "",
+     "",
+     "408",
+     "",
+     "",
+     "(67)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advertising and public relations",
+     "",
+     "241",
+     "",
+     "",
+     "128",
+     "",
+     "",
+     "113",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "812",
+     "",
+     "",
+     "767",
+     "",
+     "",
+     "45",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total noninterest expenses",
+     "",
+     "4,896",
+     "",
+     "",
+     "4,474",
+     "",
+     "",
+     "422",
+     "",
+     "",
+     "9.4",
+     "%"
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "2,893",
+     "",
+     "",
+     "2,573",
+     "",
+     "",
+     "320",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "929",
+     "",
+     "",
+     "813",
+     "",
+     "",
+     "116",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "1,964",
+     "",
+     "",
+     "1,760",
+     "",
+     "",
+     "204",
+     "",
+     "",
+     "11.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share",
+     "",
+     "$",
+     "0.39",
+     "",
+     "$",
+     "0.34",
+     "",
+     "$",
+     "0.05",
+     "",
+     "14.7",
+     "%"
+    ],
+    [
+     "Diluted earnings per share",
+     "",
+     "$",
+     "0.37",
+     "",
+     "$",
+     "0.32",
+     "",
+     "$",
+     "0.05",
+     "",
+     "15.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest rate spread",
+     "",
+     "3.51",
+     "",
+     "%",
+     "3.50",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net interest margin",
+     "",
+     "3.61",
+     "",
+     "%",
+     "3.61",
+     "",
+     "%",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Full-time equivalents",
+     "",
+     "252",
+     "",
+     "",
+     "248",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Full-service offices",
+     "",
+     "15",
+     "",
+     "",
+     "15",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 768,
+    "end_line": 830
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "CHANGES IN RESULTS OF OPERATIONS\nThe table below presents a comparison of results of operations for the three months ended March 31, 2005 and 2004 (dollars in thousands). Specific changes in captions will be discussed below the table.",
+   "prose_after": "Net Interest Income. Net interest income is determined by the Company\u2019s interest rate spread (i.e., the difference between the yields earned on its interest-earning assets and the rates paid on its interest-bearing liabilities) and the relative amounts of interest-earning assets and interest-bearing liabilities.\nINTEREST INCOME AND INTEREST EXPENSE\nDollar changes in interest income and interest expense for the comparison periods are presented in the rate/volume analysis table which appears on page 13.\nInterest Income. The increase in interest income was primarily due to an increase in the average balance of loans, partially offset by a decrease in the average yield earned on loans and a decrease in the average balance of investment securities. The decrease in the average yield earned on loans was primarily due to the Company\u2019s efforts to increase variable rate loans, which typically have lower rates at origination than those charged for fixed rate loans. The average balance of loans increased primarily due to increased construction loan origination activity. The average balance of investment securities decreased due to calls and maturities.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 833,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "",
+     "2004",
+     "",
+     "",
+     "2005 vs 2004",
+     "",
+     ""
+    ],
+    [
+     "Salaries",
+     "",
+     "$",
+     "",
+     "1,977",
+     "",
+     "$",
+     "1,868",
+     "",
+     "$",
+     "109",
+     ""
+    ],
+    [
+     "Payroll taxes",
+     "",
+     "234",
+     "",
+     "",
+     "",
+     "220",
+     "",
+     "",
+     "14",
+     "",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "147",
+     "",
+     "",
+     "",
+     "144",
+     "",
+     "",
+     "3",
+     "",
+     ""
+    ],
+    [
+     "ESOP expense (1)",
+     "",
+     "481",
+     "",
+     "",
+     "",
+     "410",
+     "",
+     "",
+     "71",
+     "",
+     ""
+    ],
+    [
+     "MRP expense (2)",
+     "",
+     "7",
+     "",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Defined benefit plan contribution",
+     "",
+     "122",
+     "",
+     "",
+     "",
+     "(8)",
+     "",
+     "",
+     "130",
+     "",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "35",
+     "",
+     "",
+     "",
+     "38",
+     "",
+     "",
+     "(3)",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "3,003",
+     "",
+     "",
+     "$",
+     "2,679",
+     "",
+     "$",
+     "324",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 853,
+    "end_line": 870
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "While the loan portfolio has increased by $39.0 million since December 31, 2004, the estimated allowance for loan losses did not increase significantly since the majority of the growth was in real estate loans, which have lower estimated loss rates than consumer and commercial loans. There were no changes in loss factors applied to pooled loans during the quarter.\nNoninterest Income. Deposit fee income increased as a result of the Bank\u2019s continued promotion of Bounce ProtectionTM overdraft service as well as an increase in the number of checking accounts and a change in the insufficient funds fee structure. The number of checking accounts increased approximately 9.6% from March 31, 2004 to March 31, 2005. The Bank plans to continue to aggressively promote checking accounts in 2005 through direct mail campaigns to further expand its checking accounts and increase deposit fee income.\nNoninterest Expense\nSalaries and Employee Benefits. The changes in the composition of this line item are presented below (in thousands):",
+   "prose_after": "(1) Employee Stock Ownership Plan\n(2) Management Recognition and Retention Plan\nThe increase in salaries was due primarily to normal salary and merit increases. Payroll taxes increased due to the increase in salaries. The increase in employee stock ownership plan expense was due to an increase in the Company\u2019s average stock price from $20.60 for the quarter ended March 31, 2004 to $23.71 for the same quarter in 2005. Defined benefit plan expense increased due to the unusual credit during the first quarter of 2004.\nData processing expense. Data processing expense decreased primarily due to the renegotiation of the Bank\u2019s contract with its service provider.\nAdvertising and public relations. Advertising and public relations increased for the quarter ended March 31, 2005 compared to the same period in 2004 primarily due to costs associated with the new checking account marketing program, including direct mail, \u201cthank you\u201d gifts, marketing brochures, posters and billboards.\nOther expenses. The changes in the composition of this line item are presented below (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 833,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2005",
+     "",
+     "",
+     "2004",
+     "",
+     "",
+     "2005 vs 2004",
+     "",
+     ""
+    ],
+    [
+     "Consultant and management fees",
+     "",
+     "$",
+     "27",
+     "",
+     "$",
+     "93",
+     "",
+     "$",
+     "(66)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "785",
+     "",
+     "",
+     "674",
+     "",
+     "",
+     "111",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "812",
+     "",
+     "$",
+     "767",
+     "",
+     "$",
+     "45",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 885,
+    "end_line": 897
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "The increase in salaries was due primarily to normal salary and merit increases. Payroll taxes increased due to the increase in salaries. The increase in employee stock ownership plan expense was due to an increase in the Company\u2019s average stock price from $20.60 for the quarter ended March 31, 2004 to $23.71 for the same quarter in 2005. Defined benefit plan expense increased due to the unusual credit during the first quarter of 2004.\nData processing expense. Data processing expense decreased primarily due to the renegotiation of the Bank\u2019s contract with its service provider.\nAdvertising and public relations. Advertising and public relations increased for the quarter ended March 31, 2005 compared to the same period in 2004 primarily due to costs associated with the new checking account marketing program, including direct mail, \u201cthank you\u201d gifts, marketing brochures, posters and billboards.\nOther expenses. The changes in the composition of this line item are presented below (in thousands):",
+   "prose_after": "Other expenses increased approximately $45,000 on a net basis, consisting of increases in a variety of expense accounts, the largest of which was a $24,000 increase in the loss provision on real estate owned. These increases were offset by a decrease in consultant and management fees of approximately $66,000. The decrease in consultant and management fees was primarily due to fees paid to a consulting firm in 2004 for assistance in promotion of checking accounts. Fees paid to a third party vendor related to the Bounce ProtectionTM program also decreased due to the end of the contractual payment period in May 2004.\nIncome Taxes.\nThe increase in income tax expense was primarily due to an increase in taxable income and, to a lesser extent, an increase in the effective tax rate.\nOFF-BALANCE SHEET ARRANGEMENTS\nThe Company, in the normal course of business, makes commitments to buy or sell assets or to incur or fund liabilities. Commitments include, but are not limited to:\n\u2022 the origination, purchase or sale of loans;",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 875,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 930,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Item 1.",
+     "Legal Proceedings"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Neither the Company nor the Bank is involved in any pending legal proceedings other than non-material legal proceedings occurring in the ordinary course of business."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Changes in Securities, Use of Proceeds, and Issuer Purchases of Equity Securities"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 984,
+    "end_line": 991
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Consolidated Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "Our management evaluated, with the participation of our Chief Executive Officer and Chief Financial Officer, the effectiveness of the design and operation of our disclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) under the Securities Exchange Act of 1934) as of the end of the period covered by this report. Based on such evaluation, our Chief Executive Officer and Chief Financial Officer have concluded that our disclosure controls and procedures are designed to ensure that information required to be disclosed by us in the reports that we file or submit under the Securities Exchange Act of 1934 is recorded, processed, summarized and reported within the time periods specified in the SEC\u2019s rules and regulations and are operating in an effective manner.\nNo change in the Company\u2019s internal control over financial reporting (as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act) occurred during the fiscal quarter ended March 31, 2005 that has materially affected, or is reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nPart II",
+   "prose_after": "ISSUER PURCHASES OF EQUITY SECURITIES",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "(a) Total Number of Shares Purchased",
+     "",
+     "(b) Average Price Paid per Share",
+     "",
+     "",
+     "(c) Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "",
+     "(d) Maximum Number of Shares that May Yet Be Purchased Under the Plans or Programs",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "February 1, to February 28, 2005",
+     "",
+     "108,000",
+     "",
+     "$",
+     "23.93",
+     "",
+     "108,000",
+     "",
+     "192,792",
+     ""
+    ],
+    [
+     "March 1, to March 31, 2005",
+     "",
+     "28,000",
+     "",
+     "$",
+     "25.23",
+     "",
+     "28,000",
+     "",
+     "164,792",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 994,
+    "end_line": 1003
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Changes in Securities, Use of Proceeds, and Issuer Purchases of Equity Securities"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "ISSUER PURCHASES OF EQUITY SECURITIES",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "The Company is in its 17th announced repurchase program, which was approved by the board of directors on November 30, 2004, and publicly announced on February 8, 2005. Total shares approved to be purchased in this program are 251,801, of which 87,009 have been purchased as of March 31, 2005. All treasury stock purchases are made under publicly announced repurchase programs."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Not applicable."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Submission of Matters to a Vote of Security Holders"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Not applicable."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "None."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit 31.1 \u2013 Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. 1350)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit 31.2 \u2013 Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. 1350)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit 32.1 \u2013 Certification of Chief Executive Officer, Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. 1350)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit 32.2 \u2013 Certification of Chief Financial Officer, Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (18 U.S.C. 1350)"
+    ]
+   ],
+   "caption_stack": [
+    "The Company is in its 17th announced repurchase program, which was approved by the board of directors on November 30, 2004, and publicly announced on February 8, 2005. Total shares approved to be purchased in this program are 251,801, of which 87,009 have been purchased as of March 31, 2005. All treasury stock purchases are made under publicly announced repurchase programs."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1004,
+    "end_line": 1031
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Changes in Securities, Use of Proceeds, and Issuer Purchases of Equity Securities"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 980,
+     "token": "REPEATING_HEADER",
+     "id": 38,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "FIRST FEDERAL BANCSHARES OF ARKANSAS, INC.",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 27, 2005",
+     "",
+     "By:",
+     "/s/Larry J. Brandt",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Larry J. Brandt",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "President/CEO",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 27, 2005",
+     "",
+     "By:",
+     "/s/Sherri R. Billings",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Sherri R. Billings",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "EVP/CFO",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "FIRST FEDERAL BANCSHARES OF ARKANSAS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1038,
+    "end_line": 1051
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Other Information"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Earnings per Share"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1032,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

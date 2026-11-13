@@ -1,0 +1,3230 @@
+{
+ "accession": "0001558370-23-009133",
+ "cik": "0001875558",
+ "form": "10-Q",
+ "filing_date": "2023-05-10",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tmb-20230331x10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "86-2405608"
+    ],
+    [
+     "(State or Other Jurisdiction of Incorporation or Organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1 Bridge Plaza, Suite 275",
+     ""
+    ],
+    [
+     "Fort Lee, NJ 07024",
+     "07024"
+    ],
+    [
+     "(Address of Principal Executive Offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Quarterly Period Ended March 31, 2023\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period from to .\nCommission File Number 001-41264\nNUVECTIS PHARMA, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(201) 614-3150\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Trading Symbol(s)",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $0.00001 per share",
+     "",
+     "NVCT",
+     "",
+     "NASDAQ Capital Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 45
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(201) 614-3150\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class of Common Stock",
+     "Outstanding Shares as of May 01, 2023"
+    ],
+    [
+     "Common Stock, $0.00001 par value",
+     "16,007,425"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 64,
+    "end_line": 70
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act:\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [X]  Smaller reporting company  [X]\nEmerging growth company    [X]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nIndicate the number of shares outstanding of each of the registrant\u2019s classes of common stock, as of the latest practicable date.",
+   "prose_after": "FORM 10-Q\nFOR THE QUARTER ENDED MARCH 31, 2023\nTABLE OF CONTENTS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "FINANCIAL INFORMATION",
+     "3"
+    ],
+    [
+     "Item 1",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "Unaudited Condensed Balance Sheets as of March 31, 2023 and December 31, 2022",
+     "3"
+    ],
+    [
+     "",
+     "Unaudited Condensed Statements of Operations for the Three Months Ended March 31, 2023 and 2022",
+     "4"
+    ],
+    [
+     "",
+     "Unaudited Condensed Statements of Changes in Stockholders\u2019 Equity for the Three Months Ended March 31, 2023 and 2022",
+     "5"
+    ],
+    [
+     "",
+     "Unaudited Condensed Statements of Cash Flows for the Three Months Ended March 31, 2023 and 2022",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Unaudited Condensed Financial Statements",
+     "7"
+    ],
+    [
+     "Item 2",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "20"
+    ],
+    [
+     "Item 4",
+     "Controls and Procedures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     "22"
+    ],
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "22"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "22"
+    ],
+    [
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "22"
+    ],
+    [
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "22"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "22"
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "22"
+    ],
+    [
+     "Item 6",
+     "Exhibits",
+     "23"
+    ],
+    [
+     "",
+     "Signatures",
+     "24"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 78,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\nFOR THE QUARTER ENDED MARCH 31, 2023\nTABLE OF CONTENTS",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED BALANCE SHEETS\n(USD in thousands, except per share and share amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 71,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "15,468",
+     "",
+     "$",
+     "19,993",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "",
+     "740",
+     "",
+     "",
+     "412",
+     ""
+    ],
+    [
+     "TOTAL CURRENT ASSETS",
+     "",
+     "",
+     "16,208",
+     "",
+     "",
+     "20,405",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "",
+     "$",
+     "16,208",
+     "",
+     "$",
+     "20,405",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payables",
+     "",
+     "$",
+     "2,096",
+     "",
+     "$",
+     "2,910",
+     ""
+    ],
+    [
+     "Payable offering costs",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "450",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "",
+     "156",
+     "",
+     "",
+     "445",
+     ""
+    ],
+    [
+     "Employee compensation and benefits",
+     "",
+     "",
+     "1,682",
+     "",
+     "",
+     "2,381",
+     ""
+    ],
+    [
+     "TOTAL CURRENT LIABILITIES",
+     "",
+     "",
+     "3,934",
+     "",
+     "",
+     "6,186",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "",
+     "3,934",
+     "",
+     "",
+     "6,186",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES, see Note 3",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY: see Note 4",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock, $0.00001 par value \u2013 60,000,000 shares authorized as of March 31, 2023, and December 31, 2022, 15,886,139, and 15,190,720 shares issued and outstanding as of March 31, 2023 and December 31, 2022, respectively",
+     "",
+     "",
+     "*",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "",
+     "48,308",
+     "",
+     "",
+     "46,204",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(36,034)",
+     "",
+     "",
+     "(31,985)",
+     ""
+    ],
+    [
+     "TOTAL STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "12,274",
+     "",
+     "",
+     "14,219",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "$",
+     "16,208",
+     "",
+     "$",
+     "20,405",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 116,
+    "end_line": 157
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED BALANCE SHEETS\n(USD in thousands, except per share and share amounts)",
+   "prose_after": "* Represents an amount lower than $1,000 USD.\nThe accompanying notes are an integral part of these unaudited condensed financial statements.\nCONDENSED STATEMENTS OF OPERATIONS\n(USD in thousands, except per share and share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 114,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 162,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "$",
+     "2,367",
+     "",
+     "$",
+     "1,805",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "",
+     "1,734",
+     "",
+     "",
+     "1,140",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "",
+     "(4,101)",
+     "",
+     "",
+     "(2,945)",
+     ""
+    ],
+    [
+     "Finance income",
+     "",
+     "",
+     "52",
+     "",
+     "",
+     "2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "$",
+     "(4,049)",
+     "",
+     "$",
+     "(2,943)",
+     ""
+    ],
+    [
+     "NET LOSS ATTRIBUTABLE TO COMMON STOCKHOLDERS",
+     "",
+     "$",
+     "(4,049)",
+     "",
+     "$",
+     "(2,943)",
+     ""
+    ],
+    [
+     "BASIC AND DILUTED NET LOSS PER COMMON STOCK OUTSTANDING, see Note 6",
+     "",
+     "$",
+     "(0.27)",
+     "",
+     "$",
+     "(0.32)",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average number of common stock outstanding",
+     "",
+     "",
+     "14,724,249",
+     "",
+     "",
+     "9,159,139",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 170,
+    "end_line": 194
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": null
+   },
+   "prose_before": "* Represents an amount lower than $1,000 USD.\nThe accompanying notes are an integral part of these unaudited condensed financial statements.\nCONDENSED STATEMENTS OF OPERATIONS\n(USD in thousands, except per share and share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(USD in thousands, except share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 168,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 197,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Notes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Redeemable Convertible",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "received",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "from",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total"
+    ],
+    [
+     "",
+     "",
+     "$0.00001 Par Value",
+     "",
+     "",
+     "",
+     "",
+     "$0.00001 Par Value",
+     "",
+     "",
+     "",
+     "Common",
+     "",
+     "Paid-In",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "Stockholders\u2019"
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "stock",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity/(Deficit)",
+     ""
+    ],
+    [
+     "BALANCES AT DECEMBER 31, 2021",
+     "",
+     "5,012,280",
+     "",
+     "",
+     "15,246",
+     "",
+     "4,505,514",
+     "",
+     "*",
+     "",
+     "*",
+     "",
+     "1,892",
+     "",
+     "$",
+     "(12,900)",
+     "",
+     "$",
+     "(11,008)"
+    ],
+    [
+     "Conversion of Series A redeemable convertible preferred shares",
+     "",
+     "(5,012,280)",
+     "",
+     "",
+     "(15,246)",
+     "",
+     "5,012,280",
+     "",
+     "*",
+     "",
+     "\u2014",
+     "",
+     "15,246",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,246"
+    ],
+    [
+     "Issuance of common stock upon initial public offering, net of offering costs of $2,892",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "3,200,000",
+     "",
+     "*",
+     "",
+     "",
+     "",
+     "13,108",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "13,108"
+    ],
+    [
+     "Share based payments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "156",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(2,943)",
+     "",
+     "",
+     "(2,943)"
+    ],
+    [
+     "BALANCES AT MARCH 31, 2022",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "12,717,794",
+     "",
+     "*",
+     "",
+     "*",
+     "",
+     "30,402",
+     "",
+     "$",
+     "(15,843)",
+     "",
+     "$",
+     "14,559"
+    ]
+   ],
+   "caption_stack": [
+    "Notes"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 205,
+    "end_line": 223
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\n(USD in thousands, except share amounts)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 203,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Notes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Redeemable Convertible",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "received",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "from",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "$0.00001 Par Value",
+     "",
+     "",
+     "",
+     "",
+     "$0.00001 Par Value",
+     "",
+     "",
+     "",
+     "Common",
+     "",
+     "Paid-In",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "stock",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "BALANCES AT DECEMBER 31, 2022",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "-",
+     "",
+     "15,190,720",
+     "",
+     "*",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "46,204",
+     "",
+     "$",
+     "(31,985)",
+     "",
+     "$",
+     "14,219"
+    ],
+    [
+     "Share based payments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,402",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,402"
+    ],
+    [
+     "Issuance of restricted stock awards",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "585,499",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exercise of preferred investment options",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4,000",
+     "",
+     "*",
+     "",
+     "",
+     "",
+     "",
+     "39",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "39"
+    ],
+    [
+     "Exercise of warrants",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "105,920",
+     "",
+     "*",
+     "",
+     "",
+     "",
+     "",
+     "663",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "663"
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,049)",
+     "",
+     "",
+     "(4,049)"
+    ],
+    [
+     "BALANCES AT MARCH 31, 2023",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "15,886,139",
+     "",
+     "*",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "48,308",
+     "",
+     "$",
+     "(36,034)",
+     "",
+     "$",
+     "12,274"
+    ]
+   ],
+   "caption_stack": [
+    "Notes"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 224,
+    "end_line": 243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Represents an amount lower than $1,000 USD.\nThe accompanying notes are an integral part of these unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CASH FLOWS\n(USD in thousands, except per share and share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 203,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 248,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(4,049)",
+     "",
+     "$",
+     "(2,943)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile loss to net cash used in operating activities:\nCost of stock-based payments",
+     "",
+     "",
+     "1,402",
+     "",
+     "",
+     "156",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in other current assets",
+     "",
+     "",
+     "(328)",
+     "",
+     "",
+     "(831)",
+     ""
+    ],
+    [
+     "(Decrease)/increase in accounts payable, accrued compensation and benefits, and accrued liabilities",
+     "",
+     "",
+     "(1,802)",
+     "",
+     "",
+     "542",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "$",
+     "(4,777)",
+     "",
+     "$",
+     "(3,076)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock upon initial public offering",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "16,000",
+     ""
+    ],
+    [
+     "Issuance costs related to initial public offering",
+     "",
+     "",
+     "(341)",
+     "",
+     "",
+     "(1,973)",
+     ""
+    ],
+    [
+     "Proceeds from exercise of warrants/preferred investment option",
+     "",
+     "",
+     "702",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Issuance costs related to private placement",
+     "",
+     "",
+     "(109)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "$",
+     "252",
+     "",
+     "$",
+     "14,027",
+     ""
+    ],
+    [
+     "(DECREASE)/INCREASE IN CASH AND CASH EQUIVALENTS",
+     "",
+     "$",
+     "(4,525)",
+     "",
+     "$",
+     "10,951",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS AT BEGINNING OF PERIOD",
+     "",
+     "$",
+     "19,993",
+     "",
+     "$",
+     "5,742",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS AT END OF PERIOD",
+     "",
+     "$",
+     "15,468",
+     "",
+     "$",
+     "16,693",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental noncash disclosure of investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unpaid deferred offering costs",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "97",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 256,
+    "end_line": 292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": null
+   },
+   "prose_before": "* Represents an amount lower than $1,000 USD.\nThe accompanying notes are an integral part of these unaudited condensed financial statements.\nCONDENSED STATEMENTS OF CASH FLOWS\n(USD in thousands, except per share and share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed financial statements.\nNotes to the Unaudited Condensed Financial Statements\nNOTE 1 \u2013 GENERAL:\na. Nuvectis Pharma, Inc. (formerly Centry Pharma Inc.) (hereafter \u2013 the \u201cCompany\u201d) was incorporated under the laws of the State of Delaware on July 27, 2020 and commenced its principal operations in May 2021. The Company\u2019s principal executive offices are located at Fort Lee in the state of New Jersey.\nThe Company is a biopharmaceutical company focused on the development of innovative precision medicines for the treatment of serious conditions of unmet medical need in oncology.\nb. In May 2021, the Company entered into a worldwide, exclusive license agreement with the CRT Pioneer Fund (\u201cCRT\u201d) (see Note 3a).\nc. In August 2021, the Company entered into a worldwide, exclusive license agreement with the University of Edinburgh, Scotland for the Company\u2019s second drug candidate (see Note 3a).\nd. In February 2022, the Company\u2019s shares began trading on the NASDAQ under the symbol \u201cNVCT\u201d.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 254,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "4.09",
+     "%"
+    ],
+    [
+     "Common stock price",
+     "",
+     "$",
+     "7.51",
+     ""
+    ],
+    [
+     "Expected dividend yield",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Expected term (in years)",
+     "",
+     "",
+     "2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 404,
+    "end_line": 410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SHARE BASED PAYMENTS:"
+    }
+   },
+   "prose_before": "In January 2023, the Company granted to a service provider 43,500 options which become exercisable between January 19, 2023, and January 18, 2025, into common stock with an exercise price of $7.51 per share based on the achievement of service condition, market condition or performance condition. As of March 31, 2023, 12,000 options were exercisable. Service condition options totaled 22,500, had an estimated value based on Black-Scholes of approximately $74,000 and were not exercisable as of March 31, 2023. Performance condition options totaled 12,000, had an estimated value based on Black-Scholes of approximately $39,000 and were exercisable as of March 31, 2023. Market condition options totaling 9,000 options have a market condition which was not achieved by March 31, 2023, and an estimated value of $20,000 based on a Monte Carlo model. No options have been exercised as of March 31, 2023. The fair value of options was evaluated at the grant date using a Black-Scholes Option Pricing Model for various possible scenarios.\nThe following table summarizes assumptions used for the Black-Scholes model at the grant date:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 374,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expected volatility",
+     "",
+     "",
+     "75",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 413,
+    "end_line": 416
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SHARE BASED PAYMENTS:"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "In February 2022, the Company granted to the underwriter of the IPO, 128,000 fully vested warrants upon the IPO, exercisable into common stock with an exercise price of $6.25 per share for 5 years after the grant date. The 128,000 fully vested warrants have an estimated value (based on Black-Scholes model) of approximately $458,000 and were recognized as a reduction from gross proceeds of the IPO. IPO warrants totaling 105,920 were exercised and the Company received $0.7 million as of March 31, 2023.\nb. 2021 Global Equity Incentive Plan (\u201cIncentive Plan\u201d)\nThe following table summarizes the Company\u2019s stock option activity in the Incentive Plan for the three months ended March 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "Weighted average",
+     "",
+     "average",
+     "",
+     "Aggregated"
+    ],
+    [
+     "",
+     "",
+     "shares under",
+     "",
+     "Exercise price per",
+     "",
+     "remaining",
+     "",
+     "Intrinsic value"
+    ],
+    [
+     "",
+     "",
+     "option",
+     "",
+     "Option",
+     "",
+     "Life",
+     "",
+     "(in thousands)"
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "311,590",
+     "",
+     "4.20",
+     "",
+     "8.79",
+     "",
+     "1,042"
+    ],
+    [
+     "Granted",
+     "",
+     "34,500",
+     "",
+     "7.51",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding \u2013 March 31, 2023",
+     "",
+     "346,090",
+     "",
+     "4.53",
+     "",
+     "8.67",
+     "",
+     "2,969"
+    ],
+    [
+     "Exercisable \u2013 March 31, 2023",
+     "",
+     "87,582",
+     "",
+     "3.66",
+     "",
+     "8.55",
+     "",
+     ""
+    ],
+    [
+     "Expected to vest \u2013 March 31, 2023",
+     "",
+     "346,090",
+     "",
+     "4.53",
+     "",
+     "8.67",
+     "",
+     "2,969"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 423,
+    "end_line": 441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SHARE BASED PAYMENTS:"
+    }
+   },
+   "prose_before": "In February 2022, the Company granted to the underwriter of the IPO, 128,000 fully vested warrants upon the IPO, exercisable into common stock with an exercise price of $6.25 per share for 5 years after the grant date. The 128,000 fully vested warrants have an estimated value (based on Black-Scholes model) of approximately $458,000 and were recognized as a reduction from gross proceeds of the IPO. IPO warrants totaling 105,920 were exercised and the Company received $0.7 million as of March 31, 2023.\nb. 2021 Global Equity Incentive Plan (\u201cIncentive Plan\u201d)\nThe following table summarizes the Company\u2019s stock option activity in the Incentive Plan for the three months ended March 31, 2023:",
+   "prose_after": "As of March 31, 2023, there was $0.7 million of unrecognized stock-based compensation expense related to unvested stock options that is expected to be recognized over a weighted-average period of 1.92 years.\nRestricted Stock Awards\nRestricted stock awards (\u201cRSAs\u201d) have been granted to employees. The value of an RSA award is based on the Company\u2019s stock price on the date of grant. The Company granted RSAs pursuant to the Incentive Plan.\nThe following table summarizes the Company\u2019s RSA activity for the three months ended March 31, 2023, as described above from the Incentive Plan:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "Weighted average",
+     "",
+     "Aggregated"
+    ],
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "average grant",
+     "",
+     "contractual term",
+     "",
+     "Intrinsic value"
+    ],
+    [
+     "",
+     "",
+     "shares",
+     "",
+     "date fair value",
+     "",
+     "(in years)",
+     "",
+     "(in thousands)"
+    ],
+    [
+     "Balance, December 31, 2022",
+     "",
+     "338,807",
+     "",
+     "7.15",
+     "",
+     "2.22",
+     "",
+     "2,541"
+    ],
+    [
+     "Granted",
+     "",
+     "585,499",
+     "",
+     "7.56",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested",
+     "",
+     "(24,250)",
+     "",
+     "8.98",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding \u2013 March 31, 2023",
+     "",
+     "900,056",
+     "",
+     "7.44",
+     "",
+     "2.51",
+     "",
+     "11,800"
+    ],
+    [
+     "Expected to vest \u2013 March 31, 2023",
+     "",
+     "900,056",
+     "",
+     "7.44",
+     "",
+     "2.51",
+     "",
+     "11,800"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 450,
+    "end_line": 464
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 SHARE BASED PAYMENTS:"
+    }
+   },
+   "prose_before": "As of March 31, 2023, there was $0.7 million of unrecognized stock-based compensation expense related to unvested stock options that is expected to be recognized over a weighted-average period of 1.92 years.\nRestricted Stock Awards\nRestricted stock awards (\u201cRSAs\u201d) have been granted to employees. The value of an RSA award is based on the Company\u2019s stock price on the date of grant. The Company granted RSAs pursuant to the Incentive Plan.\nThe following table summarizes the Company\u2019s RSA activity for the three months ended March 31, 2023, as described above from the Incentive Plan:",
+   "prose_after": "As of March 31, 2023, there was $4.6 million of total unrecognized compensation cost related to RSAs expected to be recognized over a weighted average period of 2.51 years.\nOn January 3, 2023, the Company issued 145,499 RSAs to employees and other service providers with a determined fair value of $1.1 million. These RSAs vest over three years with 1/3 vesting on each anniversary of the date of the grant.\nOn January 12, 2023, the Company issued 210,000 RSAs to Mr. Ron Bentsur and 115,000 RSAs to each of Dr. Enrique Poradosu and Mr. Shay Shemesh. These RSAs vest over three years with 1/3 vesting on each anniversary of the date of the grant. The fair value of these RSAs was determined to be $3.3 million.\nOn April 1, 2022, the Company issued 120,000 RSAs to Mr. Ron Bentsur and 60,000 RSAs to each of Dr. Enrique Poradosu and Mr. Shay Shemesh. These RSAs vest over three years with 1/3 vesting on each anniversary of the date of the grant. On March 29, 2023, the vesting of the first 1/3 of the grant was extended to January 11, 2024, the second vesting extended to April 2, 2024 and the third vesting extended to April 2, 2025.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 411,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the three months",
+     "",
+     "",
+     "For the three months",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "ended March 31, 2023",
+     "",
+     "",
+     "ended March 31, 2022",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss attributable to common stockholders",
+     "",
+     "$",
+     "(4,049)",
+     "",
+     "$",
+     "(2,943)",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "",
+     "",
+     "(0.27)",
+     "",
+     "",
+     "(0.32)",
+     ""
+    ],
+    [
+     "Weighted average of common share outstanding",
+     "",
+     "",
+     "14,724,249",
+     "",
+     "",
+     "9,159,139",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 487,
+    "end_line": 496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 NET LOSS PER SHARE:"
+    }
+   },
+   "prose_before": "On April 1, 2022, the Company issued 120,000 RSAs to Mr. Ron Bentsur and 60,000 RSAs to each of Dr. Enrique Poradosu and Mr. Shay Shemesh. These RSAs vest over three years with 1/3 vesting on each anniversary of the date of the grant. On March 29, 2023, the vesting of the first 1/3 of the grant was extended to January 11, 2024, the second vesting extended to April 2, 2024 and the third vesting extended to April 2, 2025.\nOn July 27, 2021, Mr. Ron Bentsur, Dr. Enrique Poradosu, and Mr. Shay Shemesh were granted 96,759 RSAs, 48,399 RSAs and 48,399 RSAs, respectively, which were not part of the Company\u2019s Incentive Plan and excluded from the table above. On March 29, 2023, the vesting of these grants was extended to January 11, 2024.\nShare Compensation Expense\nFor the three months ended March 31, 2023, the Company recognized expenses of $0.7 million as part of general and administrative expenses and $0.7 million as part of research and development expenses. For the three months ended March 31, 2022, the Company recognized expenses of $0.1 million as part of general and administrative expenses and $0.1 million as part of research and development expenses.\nNOTE 6 \u2013 NET LOSS PER SHARE:\na. Basic\nBasic net loss per share is calculated by dividing the net loss attributable to the Company\u2019s stockholders by the weighted average number of common stock outstanding.",
+   "prose_after": "Basic loss per share is calculated by dividing the result attributable to equity holders of the Company by the weighted average number of shares of common stock in issue during the year.\nThe calculation of the loss per share includes 1,924,689 pre-funded warrants/shares issued as part of the private placement, as the Company considers these shares to be exercised for no additional consideration. As of March 31, 2023 the amount of pre-funded warrants/shares issued were 1,924,689, and as of March 31, 2022, zero.\nb. Diluted\nThe following potentially dilutive securities were excluded from the calculation of diluted net loss per common share because their effect would have been anti-dilutive for the years presented:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 467,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "March 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022"
+    ],
+    [
+     "Common stock issuable in relation to:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Warrants",
+     "",
+     "238,974",
+     "",
+     "228,893"
+    ],
+    [
+     "Options",
+     "",
+     "346,090",
+     "",
+     "226,590"
+    ],
+    [
+     "Unvested RSAs *",
+     "",
+     "1,093,613",
+     "",
+     "270,137"
+    ]
+   ],
+   "caption_stack": [
+    "March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 507,
+    "end_line": 517
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements                                                                                                        3"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 NET LOSS PER SHARE:"
+    }
+   },
+   "prose_before": "Basic loss per share is calculated by dividing the result attributable to equity holders of the Company by the weighted average number of shares of common stock in issue during the year.\nThe calculation of the loss per share includes 1,924,689 pre-funded warrants/shares issued as part of the private placement, as the Company considers these shares to be exercised for no additional consideration. As of March 31, 2023 the amount of pre-funded warrants/shares issued were 1,924,689, and as of March 31, 2022, zero.\nb. Diluted\nThe following potentially dilutive securities were excluded from the calculation of diluted net loss per common share because their effect would have been anti-dilutive for the years presented:",
+   "prose_after": "* includes 193,557 of RSAs granted outside of the Incentive Plan\nNOTE 7 \u2013 RELATED PARTY TRANSACTIONS:\na. See note 5\nNOTE 8 \u2013 SUBSEQUENT EVENTS:\na. During April and May 2023, a certain investor exercised 34,000 Preferred Investment Options granted in July 2022 in association with the Securities Purchase Agreement. Gross proceeds from the exercise of these options were approximately $0.3 million.\nItem 2.Management\u2019s Discussion and Analysis of the Results of Operations\nYou should read the following discussion and analysis of our financial condition and results of operations together with our financial statements and related notes appearing elsewhere in this report. The following discussion and analysis contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d), including, without limitation, statements regarding our expectations, beliefs, intentions or future strategies that are signified by the words \u201cexpect,\u201d \u201canticipate,\u201d \u201cintend,\u201d \u201cbelieve,\u201d \u201cmay,\u201d \u201cplan,\u201d \u201cseek\u201d or similar language. All forward-looking statements included in this document are based on information available to us on the date hereof and we assume no obligation to update any such forward-looking statements. For such forward-looking statements, we claim the protection of the safe harbor for forward-looking statements contained in the Private Securities Litigation Reform Act of 1995. Our business and financial performance are subject to substantial risks and uncertainties. Actual results could differ materially from those projected in the forward-looking statements. In evaluating our business, you should carefully consider the information set forth under the heading \u201cRisk Factors\u201d herein and in our Annual Report on Form 10-K for the year ended December 31, 2022. As used below, the words \u201cwe,\u201d \u201cus\u201d and \u201cour\u201d may refer to Nuvectis Pharma, Inc.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Three Months Ended March 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "Change"
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and Development",
+     "",
+     "$",
+     "2,367",
+     "",
+     "$",
+     "1,805",
+     "",
+     "$",
+     "562"
+    ],
+    [
+     "General and Administrative",
+     "",
+     "",
+     "1,734",
+     "",
+     "",
+     "1,140",
+     "",
+     "",
+     "594"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING LOSS",
+     "",
+     "",
+     "(4,101)",
+     "",
+     "",
+     "(2,945)",
+     "",
+     "",
+     "(1,156)"
+    ],
+    [
+     "Finance Income",
+     "",
+     "",
+     "52",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "50"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "",
+     "$",
+     "(4,049)",
+     "",
+     "$",
+     "(2,943)",
+     "",
+     "$",
+     "(1,106)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 579,
+    "end_line": 596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of the Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS:"
+    }
+   },
+   "prose_before": "Product candidates in later stages of clinical development generally have higher development costs than those in earlier stages of clinical development, primarily due to the increased size and duration of later-stage clinical trials. We expect that our research and development expenses will increase substantially in connection with our ongoing and planned preclinical and clinical development activities in the near term and in the future. The successful development of our product candidates is highly uncertain. At this time, we cannot accurately estimate or know the nature, timing and costs of the efforts that will be necessary to complete the preclinical and clinical development of any of our product candidates and we may never succeed in obtaining regulatory approval for any of our product candidates.\nGeneral and Administrative Expenses\nGeneral and administrative expenses consist primarily of salaries and personnel-related costs, including stock-based compensation, for our personnel in executive, finance and accounting, and other administrative functions. General and administrative expenses also include legal fees relating to patent and corporate matters; professional fees paid for accounting, auditing, consulting, and tax services; insurance costs; travel expenses; and facility costs not otherwise included in research and development expenses.\nWe anticipate that our general and administrative expenses will increase in the future as we increase our headcount to support our continued research and development activities.\nThe following table summarizes our results of operations expenses for the three months ended March 31, 2023 and 2022: (in thousands)",
+   "prose_after": "Research and Development Expenses\nThe following table summarizes our research and development expenses for the three months ended March 31, 2023 and 2022: (in thousands)",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the three months ended March 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase/"
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "(Decrease)"
+    ],
+    [
+     "Employee Compensation and Benefits",
+     "",
+     "$",
+     "1,343",
+     "",
+     "$",
+     "467",
+     "",
+     "",
+     "876"
+    ],
+    [
+     "Clinical Expense",
+     "",
+     "",
+     "627",
+     "",
+     "",
+     "444",
+     "",
+     "",
+     "183"
+    ],
+    [
+     "Manufacturing",
+     "",
+     "",
+     "354",
+     "",
+     "",
+     "304",
+     "",
+     "",
+     "50"
+    ],
+    [
+     "License Fee",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "400",
+     "",
+     "",
+     "(400)"
+    ],
+    [
+     "Professional services and other",
+     "",
+     "",
+     "43",
+     "",
+     "",
+     "190",
+     "",
+     "",
+     "(147)"
+    ],
+    [
+     "Total research and development expenses",
+     "",
+     "$",
+     "2,367",
+     "",
+     "$",
+     "1,805",
+     "",
+     "$",
+     "562"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 601,
+    "end_line": 614
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of the Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS:"
+    }
+   },
+   "prose_before": "Research and Development Expenses\nThe following table summarizes our research and development expenses for the three months ended March 31, 2023 and 2022: (in thousands)",
+   "prose_after": "Research and development expenses increased by $0.6 million, during the three months ended March 31, 2023 compared to the same period in 2022. The increase in research and development expense during the three months ended March 31, 2023 was primarily driven by a $0.9 million increase in employee compensation and benefits including $0.4 million in stock based compensation, $0.2 million in clinical expenses paid out in connection with our product candidates NXP800 and NXP900, $0.1 million in manufacturing expenses including $0.2 million associated with one-time expenses associated with our process development of NXP900, partially offset by a $0.4 million decrease in license fees paid during 2022 to UoE for NXP900 net of fees owed to the UoE associated with our 2022 IPO and $0.1 million in professional services and other expenses associated with our drug product programs.\nGeneral and Administrative Expenses\nThe following table summarizes our general and administrative expenses for the three months ended March 31, 2023 and 2022: (in thousands)",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the three months ended March 31",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Increase/"
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     "",
+     "",
+     "",
+     "(Decrease)"
+    ],
+    [
+     "Professional and consulting services",
+     "",
+     "$",
+     "850",
+     "",
+     "$",
+     "683",
+     "",
+     "$",
+     "167"
+    ],
+    [
+     "Employee Compensation and Benefits",
+     "",
+     "",
+     "508",
+     "",
+     "",
+     "179",
+     "",
+     "",
+     "329"
+    ],
+    [
+     "Insurance and Other",
+     "",
+     "",
+     "376",
+     "",
+     "",
+     "278",
+     "",
+     "",
+     "98"
+    ],
+    [
+     "Total general and administrative expenses",
+     "",
+     "$",
+     "1,734",
+     "",
+     "$",
+     "1,140",
+     "",
+     "$",
+     "594"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 621,
+    "end_line": 633
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of the Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS:"
+    }
+   },
+   "prose_before": "Research and development expenses increased by $0.6 million, during the three months ended March 31, 2023 compared to the same period in 2022. The increase in research and development expense during the three months ended March 31, 2023 was primarily driven by a $0.9 million increase in employee compensation and benefits including $0.4 million in stock based compensation, $0.2 million in clinical expenses paid out in connection with our product candidates NXP800 and NXP900, $0.1 million in manufacturing expenses including $0.2 million associated with one-time expenses associated with our process development of NXP900, partially offset by a $0.4 million decrease in license fees paid during 2022 to UoE for NXP900 net of fees owed to the UoE associated with our 2022 IPO and $0.1 million in professional services and other expenses associated with our drug product programs.\nGeneral and Administrative Expenses\nThe following table summarizes our general and administrative expenses for the three months ended March 31, 2023 and 2022: (in thousands)",
+   "prose_after": "General and administrative expenses increased by $0.6 million, during the three months ended March 31, 2023 compared to the same period in 2022. The increase in general and administrative expenses for the three months ended March 31, 2023, was primarily driven by $0.3 million in employee compensation including $0.2 million in stock compensation expense, an increase of $0.2 million in professional and consulting fees paid to third-party providers including $0.4 million in stock compensation expense and $0.1 million in insurance and other due to public company expenses.\nAs a result of the foregoing, our loss from operations for the three months ended March 31, 2023, increased $1.1 million, compared to the same period in 2022 primarily driven by employee compensation and benefits, clinical trial expenses, and manufacturing expenses.\nLiquidity and Capital Resources\nAs of March 31, 2023, we had $15.5 million of cash and cash equivalents. For the three months ended March 31, 2023, and 2022, we had net losses of $4.0 million and $2.9 million, respectively. As of March 31, 2023, we had an accumulated deficit of $36 million.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 578,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the three months ended March 31",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "$",
+     "(4,777)",
+     "",
+     "$",
+     "(3,076)"
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "252",
+     "",
+     "",
+     "14,027"
+    ]
+   ],
+   "caption_stack": [
+    "For the three months ended March 31"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 689,
+    "end_line": 697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of the Results of Operations"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS:"
+    }
+   },
+   "prose_before": "Until such time, if ever, as we can generate substantial product revenue, we expect to finance our operations through a combination of public or private equity offerings, debt financings, governmental funding, collaborations, strategic partnerships and alliances or marketing, distribution or licensing arrangements with third parties. To the extent that we raise additional capital through the sale of equity or convertible debt securities, your ownership interest may be materially diluted, and the terms of such securities could include liquidation or other preferences that adversely affect your rights as a common stockholder. Debt financing and preferred equity financing, if available, may involve agreements that include restrictive covenants limiting or restricting our ability to take specific actions, such as incurring additional debt, making capital expenditures or declaring dividends. In addition, debt financing would result in fixed payment obligations.\nIf we raise additional funds through governmental funding, collaborations, strategic partnerships and alliances or marketing, distribution or licensing arrangements with third parties, we may have to relinquish valuable rights to our technologies, future revenue streams, research programs or product candidates or grant licenses on terms that may not be favorable to us. If we are unable to raise additional funds through equity or debt financings or other arrangements when needed, we may be required to delay, limit, reduce or terminate our research, product development or future commercialization efforts or grant rights to develop and market product candidates that we would otherwise prefer to develop and market ourselves.\nCash Flows\nThe following table provides information regarding our cash flows for the periods presented: (in thousands)",
+   "prose_after": "Operating Activities\nDuring the three months ended March 31, 2023, $4.8 million of cash was used in operating activities. This was primarily attributable to our net loss of $4.0 million, partially offset by non-cash charges of $1.4 million. The change in our operating assets and liabilities was primarily due to $0.7 million payment of employee compensation and benefits, $0.5 million payment for our director and officer insurance of deferred offering costs, and $0.5 million payments related to public company operations.\nDuring the three months ended March 31, 2022, $3.0 million of cash was used in operating activities. This was primarily attributable to our net loss of $2.9 million, partially offset by non-cash charges of $0.2 million. The change in our operating assets and liabilities was primarily due to an increase of $0.8 million in prepaid and other assets, which was primarily due to $1.1 million payment for our director and officer insurance, partially offset by $0.5 million increase in accounts payable and accrued expense, due to growth in our business, the advancement of our research programs, and the timing of vendor invoicing and payments.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 684,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 720,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "4.1",
+     "Form of Indenture, filed as exhibit 4.6 to the Form S-3 filed on March 17, 2023 and incorporated herein by reference."
+    ],
+    [
+     "10.1",
+     "At the Market Offering Agreement between Nuvectis Pharma, Inc. and H.C. Wainwright & Co., LLC dated March 17, 2023, filed as exhibit 1.2 to the Form S-3 filed on March 17, 2023 and incorporated herein by reference."
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer of Nuvectis Pharma, Inc. pursuant to Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, dated May 10, 2023."
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer of Nuvectis Pharma, Inc. pursuant to Rule 13a-14(a)/15d-14(a), as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, dated May 10, 2023."
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer of Nuvectis Pharma, Inc. pursuant to 18 U.S.C. \u00a71350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, dated May 10, 2023."
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer of Nuvectis Pharma, Inc. pursuant to 18 U.S.C. \u00a71350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002, dated May 10, 2023."
+    ],
+    [
+     "101",
+     "The following financial information from the Company\u2019s quarterly report on Form 10-Q for the period ended March 31, 2023, formatted in Inline Extensible Business Reporting Language (XBRL): (i) the Condensed Consolidated Balance Sheets, (ii) the Condensed Consolidated Statements of Operations, (iii) the Condensed Consolidated Statement of Stockholders\u2019 Equity, (iv) the Condensed Consolidated Statements of Cash Flows, and (v) Notes to the Condensed Consolidated Financial Statements (filed herewith)."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 806,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS:"
+    }
+   },
+   "prose_before": "On August 24, 2022, our registration statement on Form S-1 (File No. 333-266857), which was filed on August 15, 2022, was declared effective by the SEC. Pursuant to such registration statement, we sold an aggregate of 1,015,598 shares of our common stock at a price of $8.25, and 909,091 of pre-funded warrants to purchase one share of common stock at $8.25 per share for aggregate net cash proceeds of approximately $14.3 million, which amount is net of $1.4 million in placement agent fees, and $0.3 million of other expenses incurred in connection with the offering. We closed the private placement on July 29, 2022. In this offering, we also issued to the investors who participated in the offering preferred investment options to purchase up to an aggregate of 1,924,689 shares of common stock, at an exercise price of $9.65 per share with a term of three and one-half years from the date of issuance.\nWe intend to use the net proceeds of these offerings to fund the Phase 1/2 development of NXP800, the preclinical and clinical development of NXP800 and NXP900, to continue development and sponsored research related to our current product candidates or any future product candidate, hiring of additional personnel, capital expenditures, costs of operating as a public company and other general corporate purposes.\nThere has been no material change in the expected use of the net proceeds from our initial public offering as described in our final prospectuses filed with the SEC on February 8, 2022 and August 15, 2022, respectively, pursuant to Rule 424(b) under the Securities Act. We invested the funds received in an interest-bearing money market account.\nItem 3.Defaults Upon Senior Securities.\nNone.\nItem 4.Mine Safety Disclosures.\nNot applicable.\nItem 5.Other Information.\nNone.\nItem 6. Exhibits",
+   "prose_after": "Signatures\nPursuant to the requirements of the Securities Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of Fort Lee, State of New Jersey, on this 10th day of May 2023.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 803,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nuvectis Pharma, Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Ron Bentsur",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Ron Bentsur"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Chairman, Chief Executive Officer and President"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Michael J Carson",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name:",
+     "Michael J Carson"
+    ],
+    [
+     "",
+     "",
+     "Title:",
+     "Vice President of Finance\n\n(Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Nuvectis Pharma, Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 832,
+    "end_line": 847
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 SUBSEQUENT EVENTS:"
+    }
+   },
+   "prose_before": "Signatures\nPursuant to the requirements of the Securities Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, in the City of Fort Lee, State of New Jersey, on this 10th day of May 2023.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 848,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

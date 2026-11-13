@@ -1,0 +1,1435 @@
+{
+ "accession": "0001558370-21-013760",
+ "cik": "0001834376",
+ "form": "10-K/A",
+ "filing_date": "2021-10-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tmb-20210630x10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "81-0710819"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "8950 E. Lowry Boulevard\n\nDenver, Colorado\n\n(Address of Principal Executive Offices)",
+     "80230\n\n(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K/A\n(Amendment No. 1)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2021\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 001-40159\nInnovAge Holding Corp.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "(844) 803-8745\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Securities Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which is registered"
+    ],
+    [
+     "Common Stock, $0.001 par value",
+     "INNV",
+     "The Nasdaq Stock Market LLC\n\n(Nasdaq Global Select Market)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 51
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(844) 803-8745\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Securities Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Securities Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15 (d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "6"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "12"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "18"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "20"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financials Statement Schedules",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "Part III"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 89,
+    "end_line": 101
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As of October 21, 2021, there were 135,516,513 shares of the registrant\u2019s common stock outstanding.\nDocuments Incorporated by Reference\nNone.\nEXPLANATORY NOTE\nInnovAge Holding Corp. (the \u201cCompany,\u201d \u201cInnovAge,\u201d \u201cwe\u201d or \u201cus\u201d) is filing this Amendment No. 1 (this \u201cAmendment\u201d) to its Annual Report on Form 10-K for the year ended June 30, 2021 (the \u201cOriginal Report\u201d) to include Items 10, 11, 12, 13 and 14 of Part III of Form 10-K. In addition, in Item 15, the Company is providing new certifications of our principal executive officer and principal financial officer pursuant to Section 302 of the Sarbanes Oxley Act of 2002, as required by the rules of the Securities and Exchange Commission (the \u201cSEC\u201d).\nExcept as described above, no other changes have been made to the Original Report. The Original Report continues to speak as of the date of the Original Report, and we have not updated the disclosures contained therein to reflect any events which occurred at a date subsequent to the filing of the Original Report.\nTABLE OF CONTENTS",
+   "prose_after": "3\nCautionary Statement Regarding Forward-Looking Statements\nThis Amendment includes \u201cforward-looking statements\u201d within the meaning of the U.S. Private Securities Litigation Reform Act of 1995, Section 27A of the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d) and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These forward-looking statements are subject to risks and uncertainties. All statements other than statements of historical fact included in this Amendment are forward-looking statements. Forward-looking statements give our current expectations and projections relating to our financial condition, results of operations, plans, objectives, future performance and business. You can identify forward-looking statements by the fact that they do not relate strictly to historical or current facts. These statements may include words such as \u201canticipate,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cproject,\u201d \u201cplan,\u201d \u201cintend,\u201d \u201cbelieve,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cshould,\u201d \u201ccan have,\u201d \u201clikely\u201d and other words and terms of similar meaning in connection with any discussion of the timing or nature of future operating or financial performance or other events. For example, all statements we make relating to our estimated and projected costs, expenditures, cash flows, growth rates and financial results, our plans and objectives for future operations, growth or initiatives, strategies or the expected outcome or impact of pending or threatened litigation are forward-looking statements. All forward-looking statements are subject to risks and uncertainties (many of which may be amplified on account of the novel coronavirus disease (\u201cCOVID-19\u201d) pandemic) that may cause actual results to differ materially from those that we expected, including:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 86,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 103,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Class",
+     "Age",
+     "Position",
+     "Director Since",
+     "Current Term Expires"
+    ],
+    [
+     "Andrew Cavanna",
+     "I",
+     "47",
+     "Chair of the Board",
+     "2021",
+     "2022"
+    ],
+    [
+     "Maureen Hewitt",
+     "I",
+     "60",
+     "Chief Executive Officer and Director",
+     "2021",
+     "2022"
+    ],
+    [
+     "Thomas Scully",
+     "I",
+     "63",
+     "Director",
+     "2021",
+     "2022"
+    ],
+    [
+     "Marilyn Tavenner",
+     "I",
+     "70",
+     "Director",
+     "2021",
+     "2022"
+    ],
+    [
+     "Caroline Dechert",
+     "II",
+     "33",
+     "Director",
+     "2021",
+     "2023"
+    ],
+    [
+     "Pavithra Mahesh",
+     "II",
+     "31",
+     "Director",
+     "2021",
+     "2023"
+    ],
+    [
+     "Richard Zoretic",
+     "II",
+     "63",
+     "Director",
+     "2021",
+     "2023"
+    ],
+    [
+     "John Ellis \u201cJeb\u201d Bush",
+     "III",
+     "68",
+     "Director",
+     "2021",
+     "2024"
+    ],
+    [
+     "Edward Kennedy, Jr.",
+     "III",
+     "60",
+     "Director",
+     "2021",
+     "2024"
+    ],
+    [
+     "Sean Traynor",
+     "III",
+     "52",
+     "Director",
+     "2021",
+     "2024"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 161,
+    "end_line": 175
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "We caution you that the important factors referenced above may not contain all of the factors that are important to you. In addition, we cannot assure you that we will realize the results or developments we expect or anticipate or, even if substantially realized, that they will result in the consequences or affect us or our operations in the way we expect. The forward-looking statements included in this Amendment are made only as of the date hereof. We undertake no obligation to update or revise any forward-looking statement as a result of new information, future events or otherwise, except as otherwise required by law.\nPART III\nItem 10.Directors, Executive Officers and Corporate Governance\nDirectors\nOur business and affairs are managed under the direction of our Board, which is composed of ten directors. Our Second Amended and Restated Certificate of Incorporation (our \u201cCertificate\u201d) provides that the authorized number of directors may be changed only by resolution of our Board. Our Certificate also provides that our Board will be divided into three classes of directors, with the classes as nearly equal in number as possible. At each annual meeting of shareholders, a class of directors will be elected for a three-year term to succeed the class whose term is then expiring.\nThe following table sets forth the director class, name, age as of October 21, 2021, and other information for each member of our Board:",
+   "prose_after": "Andrew Cavanna, Chair, began serving on our Board in March 2021 and as chair of our Board in June 2021. Mr. Cavanna has served as a Partner at Apax on its healthcare team since 2017. Prior to joining Apax, Mr. Cavanna spent eleven years at Vestar Capital Partners where he was a Managing Director and Co-Head of the Healthcare Sector. Mr. Cavanna currently serves as the chair of the board of directors of Kepro, a provider of care management and quality assurance services in the United States. Previously, Mr. Cavanna served as a member of the board for Institutional Shareholder Services from May 2014 to July 2017, and for Press Ganey Associates from March 2008 to October 2016, when the company was taken private. Mr. Cavanna earned a Bachelor\u2019s Degree from Cornell University and a Master of Business Administration from Columbia Business School.\nWe determined that Mr. Cavanna\u2019s experience in finance and the healthcare industry qualifies him to serve as a director of our Board.\nMaureen Hewitt has served as our President and Chief Executive Officer since 2006 and was appointed to serve on our Board in 2020. Previously, Ms. Hewitt led for-profit and nonprofit healthcare organizations for 25 years, including companies such as Total Community Options, Inc., Summit Healthcare, Ocadian and Episcopal Homes, which focused on post-acute care, acute care, long-term care, and senior housing. Ms. Hewitt earned a Bachelor\u2019s Degree from Western University and a Master\u2019s Degree in Administration with an emphasis in healthcare administration and policy from Wayne State University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 150,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 186,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Maureen Hewitt",
+     "60",
+     "President and Chief Executive Officer"
+    ],
+    [
+     "Barbara Gutierrez",
+     "59",
+     "Chief Financial Officer"
+    ],
+    [
+     "Maria Lozzano",
+     "42",
+     "Corporate Chief Operating Officer"
+    ],
+    [
+     "Melissa Welch",
+     "61",
+     "Chief Medical Officer"
+    ],
+    [
+     "Nicole D\u2019Amato",
+     "42",
+     "Chief Legal Officer and Corporate Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 224,
+    "end_line": 233
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "We determined that Mr. Kennedy\u2019s expertise in legal matters and experience in the healthcare industry qualifies him to serve as a director of our Board.\nSean Traynor began serving on our Board in March 2021. Mr. Traynor joined WCAS in 1999 and currently serves as a General Partner in the healthcare group. Currently, Mr. Traynor serves on the board of directors of Amerisafe , Inc. (Nasdaq: AMSF), a holding company that markets and underwriters workers\u2019 compensation insurance through its insurance subsidiaries. Mr. Traynor earned a Bachelor of Science in Accounting at Villanova University and a Master of Business Administration from the Wharton School at University of Pennsylvania. Mr. Traynor currently serves on the board of directors and compensation committee of Amerisafe, Inc.\nWe determined that Mr. Traynor\u2019s experience in finance and the healthcare industry qualifies him to serve as a director of our Board.\nExecutive Officers\nBelow is a list of the names, ages, positions, and a brief account of the business experience of the individuals who serve as executive officers of the Company as of October 21, 2021:",
+   "prose_after": "Maureen Hewitt is our President and Chief Executive Officer. Her biography can be found above under \u201c\u2014Directors.\u201d\nBarbara Gutierrez has served as our Chief Financial Officer since 2017. Prior to joining InnovAge, Ms. Gutierrez was the Chief Financial Officer and Chief People Services Officer for Hero DVO, LLC, a healthcare practice management company. Previously, she held leadership roles at Strad Energy Services Ltd., including Senior Vice President of Corporate Services and Senior Vice President of Finance and Administration. Ms. Gutierrez has prior experience as Chief Financial Officer for the Jones Knowledge Group and for PhyCor of Denver. Ms. Gutierrez earned a Bachelor of Science in Accounting from the University of Denver, and she is a Certified Public Accountant.\nMaria Lozzano has served as our Corporate Chief Operating Officer since 2020, previously serving as the Chief Operating Officer of our Western Region since 2018. Prior to her position at InnovAge, Ms. Lozzano was the Chief Operating Officer at VNA California from 2016 to 2018, a home health, palliative and hospice healthcare provider. Ms. Lozzano was also the Chief Operating Officer of a private medical retreat center from 2011 to 2016. From 2007 to 2016, Ms. Lozzano served as Vice President of Operations at Premier Infusion Care, a home healthcare service provider. Ms. Lozzano earned a Bachelor of Science in Business Management from Western Governors University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 211,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 242,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Board Member",
+     "Audit Committee",
+     "Compensation, Nominating and Governance Committee",
+     "Quality and Compliance Committee"
+    ],
+    [
+     "Andrew Cavanna, Chair",
+     "",
+     "X",
+     "X"
+    ],
+    [
+     "Maureen Hewitt",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jeb Bush",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Caroline Dechert",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ted Kennedy, Jr.",
+     "",
+     "X",
+     ""
+    ],
+    [
+     "Pavithra Mahesh",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Thomas Scully",
+     "",
+     "X (Chair)",
+     "X"
+    ],
+    [
+     "Marilyn Tavenner",
+     "X",
+     "",
+     "X (Chair)"
+    ],
+    [
+     "Sean Traynor",
+     "X",
+     "",
+     ""
+    ],
+    [
+     "Richard Zoretic",
+     "X (Chair)",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance"
+    },
+    "note": null
+   },
+   "prose_before": "For the year ended June 30, 2021, our Board held 8 meetings, the Audit Committee held 7 meetings, the Compensation, Nominating and Governance Committee held 4 meetings, and the Quality and Compliance Committee held 4 meetings. Directors are expected to attend the annual meeting of shareholders and all or substantially all of the Board meetings and meetings of committees on which they serve. In fiscal 2021, each director attended at least 75% of the meetings of the Board during such director\u2019s tenure and the total number of meetings held by any of the committees of the Board on which the director served.\nOur Board has an Audit Committee, a Compensation, Nominating, and Governance Committee and a Quality and Compliance Committee. The composition, duties and responsibilities of these committees are as set forth below. Each of the committees is subject to a written charter which is available at our corporate website at https://investor.innovage.com. Our website is not part of this Amendment or the Original Report. In the future, our Board may establish other committees, as it deems appropriate, to assist it with its responsibilities.",
+   "prose_after": "Audit Committee\nThe Audit Committee is responsible for, among other matters:\n1. appointing, approving the compensation of, and assessing the qualifications, performance and independence of our independent registered public accounting firm;\n2. pre-approving audit and permissible non-audit services, and the terms of such services, to be provided by our independent registered public accounting firm;\n3. discussing the scope and results of the audits with our independent registered public accounting firm and reviewing, with management and that accounting firm, our interim and year-end operating results;\n4. reviewing our policies on risk assessment and risk management;\n5. reviewing and discussing with management and the independent registered public accounting firm our annual and quarterly financial statements and related disclosures as well as critical accounting policies and practices used by us;\n6. reviewing the adequacy of our internal control over financial reporting;\n7. establishing policies and procedures for the receipt and retention of accounting-related complaints and concerns;",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 242,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 276,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Fiscal Year",
+     "Salary(1) ($)",
+     "Bonus(2) ($)",
+     "Option Awards(3) ($)",
+     "Non-Equity Incentive Plan Compensation(4) ($)",
+     "Nonqualified deferred compensation earnings(5) ($)",
+     "All Other Compensation(6) ($)",
+     "Total($)"
+    ],
+    [
+     "Maureen Hewitt,",
+     "2021",
+     "817,527",
+     "675,428",
+     "3,674,372",
+     "445,577",
+     "114,120",
+     "35,162,515",
+     "40,889,539"
+    ],
+    [
+     "President and Chief Executive Officer",
+     "2020",
+     "820,615",
+     "352,306",
+     "\u2014",
+     "430,000",
+     "13,663",
+     "30,147",
+     "1,646,731"
+    ],
+    [
+     "Barbara Gutierrez,",
+     "2021",
+     "393,273",
+     "140,922",
+     "1,469,749",
+     "111,061",
+     "25,562",
+     "7,542,995",
+     "9,683,562"
+    ],
+    [
+     "Chief Financial Officer",
+     "2020",
+     "367,457",
+     "190,922",
+     "233,839",
+     "107,827",
+     "3,034",
+     "29,566",
+     "932,645"
+    ],
+    [
+     "Maria Lozzano(7),",
+     "2021",
+     "376,839",
+     "212,573",
+     "1,714,707",
+     "108,146",
+     "\u2014",
+     "1,342,767",
+     "3,755,032"
+    ],
+    [
+     "Corporate Chief Operating Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 350,
+    "end_line": 362
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive and Director Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "This section discusses the material components of the executive compensation program for our Chief Executive Officer and our two most highly compensated officers other than our current Chief Executive Officer (collectively, our \u201cNamed Executive Officers\u201d). For the fiscal year ended June 30, 2021, our Named Executive Officers and their positions were as follows:\n\u25cf Maureen Hewitt, President and Chief Executive Officer;\n\u25cf Barbara Gutierrez, Chief Financial Officer; and\n\u25cf Maria Lozzano, Corporate Chief Operating Officer.\nHistorically, the compensation of our Named Executive Officers has consisted of a base salary, annual cash bonus opportunities, long-term incentive compensation in the form of equity awards and other benefits, as described below. As described below, our Named Executive Officers are also eligible to receive certain payments and benefits upon a termination of employment under certain circumstances in accordance with the terms of their employment agreements.\nSummary Compensation Table\nThe following table summarizes the compensation paid to, awarded to, or earned by the Named Executive Officers for our last two most recently completed fiscal years.",
+   "prose_after": "(1) Amounts in this column reflect (i) the actual base salaries paid to our Named Executive Officers for fiscal years 2021 and 2020 ($731,814 and $720,999 for Ms. Hewitt and $364,814 and $359,422 for Ms. Gutierrez for 2021 and 2020, respectively, and $355,236 for Ms. Lozzano for 2021) and (ii) the amounts paid to our Named Executive Officers in fiscal years 2021 and 2020 in lieu of accrued paid time off not taken ($85,712.94 and $99,615.71 for Ms. Hewitt and $28,459.50 and $8,035.16 for Ms. Gutierrez for 2021 and 2020, respectively, and $21,603.14 for Ms. Lozzano for 2021).\n(2) Amounts in this column reflect (i) bonuses awarded to our Named Executive Officers in connection with dividends paid by the Company in respect of its common stock for fiscal years 2021 and 2020 ($352,306 for Ms. Hewitt for 2020, $140,922 and $140,922 for Ms. Gutierrez for 2021 and 2020, respectively, and $37,573 and for Ms. Lozzano for 2021), (ii) in 2021 for Ms. Hewitt only, in connection with Apax\u2019s investment in the Company, a transaction bonus of $675,427.72, (iii) in 2020 for Ms. Gutierrez only, the discretionary component of her annual bonus (i.e., $50,000), and (iv) in 2021 for Ms. Lozzano only, a special one-time cash payment of $175,000 paid in lieu of receipt of an equity award granted by our parent at the time, TCO Group Holdings, L.P.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 345,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Fiscal Year",
+     "401(k)\nContributions(a) ($)",
+     "Deferred Compensation Plan Contributions(b) ($)",
+     "Option Cancellation(c) ($)",
+     "Option Redemption(d) ($)",
+     "Total($)"
+    ],
+    [
+     "Maureen Hewitt,",
+     "2021",
+     "5,700",
+     "21,500",
+     "30,750,989",
+     "4,384,326",
+     "35,162,515"
+    ],
+    [
+     "President and Chief Executive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Barbara Gutierrez,",
+     "2021",
+     "4,352",
+     "26,111",
+     "6,474,420",
+     "1,038,112",
+     "7,542,995"
+    ],
+    [
+     "Chief Financial Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maria Lozzano,",
+     "2021",
+     "6,594",
+     "\u2014",
+     "1,128,551",
+     "207,622",
+     "1,342,767"
+    ],
+    [
+     "Corporate Chief Operating Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 372,
+    "end_line": 383
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive and Director Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "(5) Amounts in this column reflect above-market returns earned on our Named Executive Officers\u2019 account balances under the Deferred Compensation Plan (as defined and described below) during fiscal years 2021 and 2020, which account balances are deemed invested in various funds, all of which have varying rates of return. For each Named Executive Officer, the amount above reflect the excess of (i) such Named Executive Officer\u2019s actual account earnings ($122,487.42 and $24,668.35 for Ms. Hewitt and $27,997.79 and $3,967.80 for Ms. Gutierrez for 2021 and 2020, respectively) for fiscal years 2021 and 2020, over (ii) the amount that would have been earned on the Named Executive Officer\u2019s account balance at 120% of the applicable federal long-term rate as of July 1, 2020 and July 1, 2019, with monthly compounding (i.e., 1.40% with respect to 2020 and 2.53% with respect to 2019) ($8,366.98 and $11,005.35 for Ms. Hewitt and $2,435.52 and $934.12 for Ms. Gutierrez for 2021 and 2020).\n(6) Amounts in this column are represented in the table below:",
+   "prose_after": "(a) Amounts in this column reflect the amount of Company contributions made in respect of fiscal year 2021 to each Named Executive Officer\u2019s account under our 401(k) plan.\n(b) Amounts in this column reflect the amount of Company contributions made in respect of fiscal year 2021 to each Named Executive Officer\u2019s account under our Deferred Contribution Plan.\n(c) Amounts in this column reflect the option cancellation amounts paid to our Named Executive Officers in exchange for the cancellation of our Named Executive Officers\u2019 options in connection with Apax\u2019s investment in the Company in July 2020.\n(d) Amounts in this column reflect the additional $0.59 per share paid to our Named Executive Officers as an incentive to participate in the redemption of our Named Executive Officers\u2019 shares in connection with Apax\u2019s investment in the Company.\n(7) Ms. Lozzano became an executive officer in fiscal year 2021.\nNarrative Disclosure to Summary Compensation Table\nBase Salary\nEach employment agreement with our Named Executive Officers provides for the payment of an annualized base salary. The base salary payable to each Named Executive Officer is intended to provide a fixed component of compensation reflecting each Named Executive Officer\u2019s skill set, experience, role, responsibilities and contributions. As of the end of fiscal year 2021, annualized base salary amounts for our Named Executive Officers were as follows: $731,814 for Ms. Hewitt, and $364,814 for Ms. Gutierrez and $355,236 for Ms. Lozzano.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 369,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 405,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards(1)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name",
+     "Grant Date",
+     "Number of Securities Underlying Unexercised Options (#)\nExercisable",
+     "Number of Securities Underlying Unexercised Options (#)\nUnexercisable",
+     "Option Exercise Price ($)",
+     "Option Expiration Date"
+    ],
+    [
+     "Maureen Hewitt",
+     "9/22/2020(2)",
+     "\u2014",
+     "3,972,295",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "Barbara Gutierrez",
+     "9/22/2020(3)",
+     "\u2014",
+     "1,588,918",
+     "N/A",
+     "N/A"
+    ],
+    [
+     "Maria Lozzano",
+     "9/22/2020(4)",
+     "\u2014",
+     "1,853,737",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards(1)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive and Director Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "In addition, we maintain, and the Named Executive Officers participate in, a 401(k) plan, which is intended to be qualified under Section 401(a) of the Internal Revenue Code of 1986, as amended (the \u201cCode\u201d), and provides eligible employees with an opportunity to save for retirement on a tax-advantaged basis, and we match 50% of an employee\u2019s contributions up to 4% of the employee\u2019s eligible earnings. Employees\u2019 pre-tax contributions and our matching contributions are allocated to each participant\u2019s individual account and are then invested in selected investment alternatives according to the participant\u2019s directions.\nWe also maintain the InnovAge Deferred Compensation Plan (the \u201cDeferred Compensation Plan\u201d), which is a nonqualified deferred compensation plan subject to Section 409A of the Code. Pursuant to the Deferred Compensation Plan, an eligible employee may elect to defer up to 100% of his or her base salary and annual bonus award. All participant deferrals of compensation are 100% vested at all times, and plan assets are distributed upon the participant\u2019s separation from service, either in a lump sum or over a five-year period, as elected by the participant in a manner compliant with Section 409A of the Code. The Deferred Compensation Plan provides for a discretionary employer match up to a maximum of 5% of the participant\u2019s base salary.\nOutstanding Equity Awards at Fiscal Year End\nThe following reflects information regarding outstanding equity-based awards held by our Named Executive Officers as of June 30, 2021.",
+   "prose_after": "(1) This table reflects information regarding Profits Interests granted to our Named Executive Officers that were outstanding as of June 30, 2021. For more information on these Profits Interests, see \u201c\u2014Profits Interests\u201d below. The Profits Interests are not traditional options, and therefore, there is no exercise price, but rather the Profits Interests participate in distributions attributable to the appreciation in the fair market value of the Company after their respective dates of grant. The Profits Interests have no expiration date.\n(2) Represents an award of 3,972,295 Profits Interests, with 1,986,147.5 Profits Interests subject to time-vesting and 1,986,147.5 Profits Interests subject to performance-vesting. The time-vesting Profits Interests vest 25% on each of the first four anniversaries of July 27, 2020. The performance-vesting Profits Interests vest upon the consummation of a change of control, subject to satisfying certain performance hurdles.\n(3) Represents an award of 1,588,918 Profits Interests, with 794,459 Profits Interests subject to time-vesting and 794,459 Profits Interests subject to performance-vesting. The time-vesting Profits Interests vest 25% on each of the first four anniversaries of July 27, 2020. The performance-vesting Profits Interests vest upon the consummation of a change of control, subject to satisfying certain performance hurdles.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 405,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 436,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees Earned or Paid in Cash ($)(1)",
+     "",
+     "Option Awards ($)(2)",
+     "All Other Compensation ($)(3)",
+     "Total ($)"
+    ],
+    [
+     "Jeb Bush",
+     "$",
+     "50,000",
+     "\u2014",
+     "\u2014",
+     "50,000"
+    ],
+    [
+     "Edward Kennedy, Jr.",
+     "$",
+     "100,000",
+     "116,480",
+     "515,478",
+     "731,958"
+    ],
+    [
+     "Marilyn Tavenner",
+     "$",
+     "105,000",
+     "116,480",
+     "515,478",
+     "736,958"
+    ],
+    [
+     "Richard Zoretic",
+     "$",
+     "105,000",
+     "116,480",
+     "\u2014",
+     "221,480"
+    ],
+    [
+     "Andrew Cavanna(4)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Caroline Dechert(4)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Pavithra Mahesh(4)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Thomas Scully(4)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Sean Traynor(4)",
+     "$",
+     "\u2014",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 479,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive and Director Compensation"
+    },
+    "note": null
+   },
+   "prose_before": "The time-vesting Profits Interests are subject to (A) pro-rata vesting upon a termination without Cause, due to death or Disability or for Good Reason (in each case, as defined in the 2020 Equity Incentive Plan) that occurs prior to the one-year anniversary of the vesting commencement date, and (B) 100% acceleration upon a Change of Control (as defined in the 2020 Equity Incentive Plan), and the performance-vesting Profits Interests remain eligible to vest for 120 days following a termination without Cause, due to death or Disability or for Good Reason that precedes the execution of a definitive agreement that ultimately results in a Change of Control.\nDirector Compensation\nThe following table presents the total compensation for each person who served as a non-employee member of our Board during fiscal year 2021. Following our initial public offering, our non-employee directors received $25,000 per Board meeting attended. In addition, each chairperson is entitled to a $20,000 payment in connection with their duties. Our non-employee directors do not currently receive equity compensation. Ms. Hewitt served as director during fiscal year 2021 but did not receive any additional compensation for such service; all amounts paid to Ms. Hewitt in respect of her services as an employee of the Company for such period are reported above in the Summary Compensation Table. We also reimbursed our non-employee directors for their business expenses incurred in connection with their performance of services.",
+   "prose_after": "(1) Following our IPO, we paid our non-employee directors cash fees consistent with the amounts as described above. In connection with services rendered to the Company prior to our IPO, Mr. Bush received $0, Mr. Kennedy received $75,000, Ms. Tavenner received $75,000 and Mr. Zoretic received $75,000. In connection with services rendered to the Company following our IPO, Mr. Bush received $50,000, Mr. Kennedy received $25,000, Ms. Tavenner received $30,000 and Mr. Zoretic received $30,000.\n(2) Amounts in this column reflect the aggregate grant date fair value of the Profits Interests awarded to our directors on September 22, 2020, computed in accordance with FASB ASC Topic 718. The Profits Interests are not traditional options, and therefore, there is no exercise price, but rather the Profits Interests participate in distributions attributable to the appreciation in the fair market value of the Company after their respective dates of grant. The Profits Interests have no expiration date. For each of our directors, none of the Profits Interests were vested as of June 30, 2021. These Profits Interests vest 25% on each of the first four anniversaries of the date of grant.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 474,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 507,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of Beneficial Owner",
+     "Number of Shares Beneficially Owned",
+     "Percentage of Shares Outstanding",
+     ""
+    ],
+    [
+     "5% Shareholders",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TCO Group Holdings, L.P.(1)",
+     "116,520,612",
+     "86.0",
+     "%"
+    ],
+    [
+     "Named Executive Officers and Directors",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maureen Hewitt(2)",
+     "9,350",
+     "*",
+     ""
+    ],
+    [
+     "Maria Lozzano",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Barbara Gutierrez",
+     "2,000",
+     "*",
+     ""
+    ],
+    [
+     "Andrew Cavanna",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Jeb Bush",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Caroline Dechert",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Ted Kennedy, Jr.",
+     "23,000",
+     "*",
+     ""
+    ],
+    [
+     "Pavithra Mahesh",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thomas Scully",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Marilyn Tavenner",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Sean Traynor",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Richard Zoretic",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "All Directors and Executive Officers as a Group (14 individuals)",
+     "34,350",
+     "*",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 514,
+    "end_line": 535
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Beneficial ownership for the purposes of the following table is determined in accordance with the rules and regulations of the SEC. These rules generally provide that a person is the beneficial owner of securities if such person has or shares the power to vote or direct the voting thereof, or to dispose or direct the disposition thereof or has the right to acquire such powers within 60 days. Common stock subject to options or restricted stock units (\u201cRSUs\u201d) that are currently exercisable or exercisable or will vest within 60 days of October 21, 2021 are deemed to be outstanding and beneficially owned by the person holding the options or RSUs. These shares, however, are not deemed outstanding for the purposes of computing the percentage ownership of any other person. Except as disclosed in the footnotes to this table and subject to applicable community property laws, we believe that each shareholder identified in the table possesses sole voting and investment power over all common stock shown as beneficially owned by the shareholder.\nUnless otherwise noted below, the address of each beneficial owner listed on the table is c/o InnovAge Holding Corp., 8950 E. Lowry Boulevard, Denver, Colorado 80230.",
+   "prose_after": "* Indicates less than 1%\n(1) Represents 116,520,612 shares of common stock held by TCO Group Holdings, L.P., which is the legal name of the investment vehicle of the Principal Shareholders (as defined below under \u201cCertain Relationships and Related Transactions, and Director Independence\u2014Director Nomination Agreement\u201d) and the other existing holders, including certain directors and members of management. Voting and dispositive power with respect to the common stock held by TCO Group Holdings, L.P. is exercised by a committee of limited partners (the \u201cLP Board\u201d), pursuant to a delegation of authority from its limited partners. The LP Board is to be comprised of up to seven persons with six persons currently serving, including Maureen Hewitt, our President and Chief Executive Officer, Caroline Dechert, Thomas Scully and Sean Traynor (the \u201cWCAS Designees\u201d) and Andrew Cavanna and Pavithra Mahesh (the \u201cApax Designees\u201d). The LP Board exercises its voting and dispositive power by majority vote, so long as one WCAS Designee and one Apax Designee comprise the majority.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 507,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "",
+     "2020",
+     ""
+    ],
+    [
+     "Audit Fees(1)",
+     "$",
+     "1,977,996",
+     "$",
+     "339,581"
+    ],
+    [
+     "Audit-Related Fees",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Tax Fees",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "All Other Fees",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "$",
+     "1,977,996",
+     "$",
+     "339,581"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 611,
+    "end_line": 622
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf nominees to our Board are to be selected, or recommended for the Board\u2019s selection, either by: (a) independent directors constituting a majority of the Board\u2019s independent directors in a vote in which only independent directors participate; or (b) a nominations committee comprised solely of independent directors.\nWe currently rely on this exemption. As a result, we do not have a majority of independent directors on our Board. In addition, our Audit Committee and Compensation, Nominating, and Governance Committee does not consist entirely of independent directors. Accordingly, you may not have the same protections afforded to shareholders of companies that are subject to all of the Nasdaq corporate governance requirements.\nItem 14.Principal Accounting Fees and Services\nServices provided to the Company and its subsidiaries by Deloitte & Touche LLP for the year ended June 30, 2021 are described below.\nFees and Services\nThe following table summarizes the aggregate fees for professional audit services and other services rendered by Deloitte & Touche LLP for the years ended June 30, 2021 and 2020:",
+   "prose_after": "(1)Consist of fees for the audit and other procedures in connection with the Annual Report on Form 10-K for the year ended June 30, 2021, the audit of our financial statements for the year ended June 30, 2020, and certain procedures conducted in connection with the IPO.\nIn considering the nature of the services provided by the independent auditor, the Audit Committee determined that such services are compatible with the provision of independent audit services. The Audit Committee discussed these services with the independent auditor and the Company\u2019s management to determine that they are permitted under the rules and regulations concerning auditor independence promulgated by the SEC to implement the Sarbanes-Oxley Act of 2002, as well as the American Institute of Certified Public Accountants.\nThe Audit Committee has adopted a policy that requires advance approval of all audit services as well as non-audit services to the extent required by the Exchange Act and the Sarbanes-Oxley Act of 2002. Unless the specific service has been previously pre-approved with respect to that year, the Audit Committee must approve the permitted service before the independent auditor is engaged to perform it. Each year, the Audit Committee will pre-approve audit services, audit-related services and tax services to be used by the Company. The Audit Committee approved all services provided by Deloitte & Touche LLP during the indicated periods.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 625,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "31.3",
+     "Certification of the Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, relating to the Company\u2019s Amendment No. 1 to Annual Report on Form 10-K for the year ended June 30, 2021."
+    ],
+    [
+     "31.4",
+     "Certification of the Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002, relating to the Company\u2019s Amendment No. 1 to Annual Report on Form 10-K for the year ended June 30, 2021."
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File - the cover page XBRL tags are embedded with the Inline XBRL document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 636,
+    "end_line": 645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "In considering the nature of the services provided by the independent auditor, the Audit Committee determined that such services are compatible with the provision of independent audit services. The Audit Committee discussed these services with the independent auditor and the Company\u2019s management to determine that they are permitted under the rules and regulations concerning auditor independence promulgated by the SEC to implement the Sarbanes-Oxley Act of 2002, as well as the American Institute of Certified Public Accountants.\nThe Audit Committee has adopted a policy that requires advance approval of all audit services as well as non-audit services to the extent required by the Exchange Act and the Sarbanes-Oxley Act of 2002. Unless the specific service has been previously pre-approved with respect to that year, the Audit Committee must approve the permitted service before the independent auditor is engaged to perform it. Each year, the Audit Committee will pre-approve audit services, audit-related services and tax services to be used by the Company. The Audit Committee approved all services provided by Deloitte & Touche LLP during the indicated periods.\nPART IV\nItem 15.Exhibits, Financial Statement Schedules\nThe following exhibits are filed or furnished as part of this Amendment No. 1 to Form 10-K:.",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Section 13 or Section 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized on October 28, 2021.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 625,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "INNOVAGE HOLDING CORP.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Barbara Gutierrez"
+    ],
+    [
+     "",
+     "",
+     "Barbara Gutierrez"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer"
+    ]
+   ],
+   "caption_stack": [
+    "INNOVAGE HOLDING CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 659
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Section 13 or Section 15(d) of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized on October 28, 2021.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 660,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

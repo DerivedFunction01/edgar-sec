@@ -1,0 +1,1751 @@
+{
+ "accession": "0000930413-24-001178",
+ "cik": "0001838028",
+ "form": "10-K",
+ "filing_date": "2024-03-28",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "c107824_10k-ixbrl.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-6811021"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n[X]    ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from                     to\nCommission File Number: 001-41908\nVanEck Bitcoin Trust\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "c/o VanEck Digital Assets, LLC Jonathan R. Simon, Esq. Matthew A. Babinsky, Esq. 666 Third Avenue, 9th Floor New York, New York 10017 (Address of principal executive offices)(Zip Code)\n(212) 293-2000\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Shares",
+     "HODL",
+     "Cboe BZX Exchange, Inc."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 34,
+    "end_line": 41
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "c/o VanEck Digital Assets, LLC Jonathan R. Simon, Esq. Matthew A. Babinsky, Esq. 666 Third Avenue, 9th Floor New York, New York 10017 (Address of principal executive offices)(Zip Code)\n(212) 293-2000\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [ ] No [X]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 46,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "22"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "75"
+    ],
+    [
+     "Item 1C. Cybersecurity",
+     "75"
+    ],
+    [
+     "Item 2. Properties",
+     "77"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "77"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "77"
+    ],
+    [
+     "PART II",
+     "77"
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "77"
+    ],
+    [
+     "Item 6. [Reserved]",
+     "77"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "77"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "79"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "79"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "79"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "79"
+    ],
+    [
+     "Item 9B. Other Information",
+     "80"
+    ],
+    [
+     "Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "80"
+    ],
+    [
+     "PART III",
+     "80"
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "80"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "81"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "81"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "81"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services",
+     "81"
+    ],
+    [
+     "Part IV",
+     "82"
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules",
+     "82"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "83"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 113,
+    "end_line": 142
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "\u25cf If regulatory changes or interpretations of a financial firm that is authorized to purchase or redeem Shares with the Trust (known as \u201cAuthorized Participants\u201d), a third party selected by the Sponsor to purchase bitcoin from (such third party, a \u201cLiquidity Provider\u201d), the Trust\u2019s or the Sponsor\u2019s activities require the regulation of an Authorized Participant, Liquidity Provider, the Trust or the Sponsor as a money service business under the regulations promulgated by the U.S. Department of Treasury Financial Crimes Enforcement Network (\u201cFinCEN\u201d) under the authority of the U.S. Bank Secrecy Act or as a money transmitter or digital asset business under state regimes for the licensing of such businesses, an Authorized Participant, Liquidity Provider, the Trust or the Sponsor may be required to register and comply with such regulations, which could result in extraordinary, recurring and/or nonrecurring expenses to the Authorized Participant, Trust or Sponsor or increased commissions for the Authorized Participant\u2019s clients, thereby reducing the liquidity of the shares.\n\u25cf The treatment of digital currency for U.S. federal income tax purposes is uncertain.\n\u25cf Potential conflicts of interest may arise among the Sponsor or its affiliates and the Trust. The Sponsor and its affiliates have no fiduciary duties to the Trust and its Shareholders other than as provided in the Trust Agreement, which may permit them to favor their own interests to the detriment of the Trust and its Shareholders.\nTable of Contents",
+   "prose_after": "PART I\nItem 1. Business.\nSummary\nThe VanEck Bitcoin Trust (the \u201cTrust\u201d) was formed as a Delaware statutory trust on December 17, 2020. The Trust operates pursuant to the Third Amended and Restated Trust Agreement dated as of March 1, 2024 (the \u201cTrust Agreement\u201d). The purpose of the Trust is to own bitcoin transferred to the Trust in exchange for shares issued by the Trust (the \u201cShares\u201d). Each Share represents a fractional undivided beneficial interest in and ownership of the Trust. The assets of the Trust consist primarily of bitcoin held by a third-party custodian.\nThe Trust is managed and controlled by the sponsor VanEck Digital Assets, LLC (the \u201cSponsor\u201d), a Delaware limited liability company. The Sponsor is a wholly-owned subsidiary of Van Eck Associates Corporation (\u201cVanEck\u201d). Delaware Trust Company, a Delaware trust company, is the Delaware trustee of the Trust (the \u201cTrustee\u201d). Gemini Trust Company, LLC is the custodian of the Trust (the \u201cBitcoin Custodian\u201d), who holds all of the Trust\u2019s bitcoin on the Trust\u2019s behalf. State Street Bank and Trust Company (\u201cState Street\u201d) serves as the Trust\u2019s administrator (the \u201cAdministrator\u201d), the transfer agent for the Trust (the \u201cTransfer Agent\u201d) and the cash custodian of the Trust (the \u201cCash Custodian\u201d).",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "roman",
+     "page_number": 4
+    },
+    "after": {
+     "line": 143,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "roman",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Bitcoin Exchanges included in the MarketVectorTM Bitcoin Benchmark Rate as of February 29, 2024",
+     "Average Daily Volume (in thousands of USD)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bitstamp",
+     "$",
+     "60,751,371.12"
+    ],
+    [
+     "Coinbase",
+     "$",
+     "439,593,456.10"
+    ],
+    [
+     "itBit",
+     "$",
+     "10,190,354.97"
+    ],
+    [
+     "LMAX",
+     "$",
+     "79,890,041.55"
+    ],
+    [
+     "Kraken",
+     "$",
+     "98,679,706.67"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 206,
+    "end_line": 216
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "The value of bitcoin is determined by the value that various market participants place on bitcoin through their transactions. The most common means of determining the value of a bitcoin is by surveying one or more bitcoin trading platforms where bitcoin is traded publicly and transparently. The price of bitcoin on the bitcoin market has exhibited periods of extreme volatility, which could have a negative impact on the performance of the Trust. For example, between November 2021 and November 2022, the price of bitcoin fell from an all-time high of $68,789 to $15,460. As of February 29, 2024, the price of bitcoin has increased to $61,179. (source: Coinbase).\nOn exchanges, bitcoin is traded with publicly disclosed valuations for each executed trade, measured by one or more fiat currencies such as the U.S. dollar or Euro. OTC dealers or market makers do not typically disclose their trade data.\nCurrently, there are many exchanges operating worldwide, representing a substantial percentage of bitcoin buying and selling activity, and providing the most data with respect to prevailing valuations of bitcoins. The below table reflects the average daily trading volume (in thousands of USD) of each of the bitcoin trading platforms included in the MarketVectorTM Bitcoin Benchmark Rate as of February 29, 2024 using data reported by MarketVector from December 31, 2022 to February 29, 2024:",
+   "prose_after": "The market share for BTC/USD trading of the five constituent trading platforms over the past four calendar quarters is shown in the table below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 189,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Period",
+     "itBit",
+     "",
+     "LMAX",
+     "",
+     "Bitstamp",
+     "",
+     "Coinbase",
+     "",
+     "Kraken",
+     "",
+     "Others"
+    ],
+    [
+     "2023 Q1",
+     "0.69%",
+     "",
+     "10.23%",
+     "",
+     "5.45%",
+     "",
+     "46.64%",
+     "",
+     "10.06%",
+     "",
+     "25.75%"
+    ],
+    [
+     "2023 Q2",
+     "1.08%",
+     "",
+     "11.85%",
+     "",
+     "7.31%",
+     "",
+     "44.69%",
+     "",
+     "12.77%",
+     "",
+     "20.87%"
+    ],
+    [
+     "2023 Q3",
+     "1.05%",
+     "",
+     "9.94%",
+     "",
+     "8.84%",
+     "",
+     "56.82%",
+     "",
+     "10.83%",
+     "",
+     "10.64%"
+    ],
+    [
+     "2023 Q4",
+     "0.34%",
+     "",
+     "7.45%",
+     "",
+     "8.75%",
+     "",
+     "63.36%",
+     "",
+     "14.88%",
+     "",
+     "5.23%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 220,
+    "end_line": 232
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business."
+    },
+    "note": null
+   },
+   "prose_before": "The market share for BTC/USD trading of the five constituent trading platforms over the past four calendar quarters is shown in the table below:",
+   "prose_after": "* Source: MarketVector\nCompetition\nThe Trust and the Sponsor face competition with respect to the creation of competing products, including with respect to the creation of competing exchange-traded bitcoin products. There can be no assurance that the Trust will grow to or maintain an economically viable size.\nIn addition, commercial banks and other financial institutions have a number of initiatives that incorporate new technologies, including blockchain and similar technologies, into their payments and settlement activities, which could compete with, or reduce the demand for, bitcoin. The Trust competes with direct investments in bitcoin, other cryptocurrencies, futures contracts for bitcoin (\u201cBitcoin Futures\u201d), and other potential financial vehicles, possibly including securities backed by or linked to cryptocurrency and other investment vehicles that focus on other digital assets.\nThe MarketVectorTM Bitcoin Benchmark Rate\nMarketVector is the index sponsor and index administrator for the Index. MarketVector is a wholly-owned subsidiary of VanEck. CryptoCompare Data Limited is the calculation agent for the MarketVectorTM Bitcoin Benchmark Rate and an affiliate of VanEck.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 217,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 249,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "20,000"
+    ],
+    [
+     "Audit-related Fees",
+     "$",
+     "0"
+    ],
+    [
+     "Tax fees",
+     "$",
+     "0"
+    ],
+    [
+     "All other fees",
+     "$",
+     "0"
+    ],
+    [
+     "Total",
+     "$",
+     "20,000"
+    ]
+   ],
+   "caption_stack": [
+    "2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1679,
+    "end_line": 1689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nSecurities Authorized for Issuance under Equity Compensation Plans\nNot applicable.\nSecurity Ownership of Certain Beneficial Owners and Management\nNot applicable.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nSee Item 11 above.\nItem 14. Principal Accounting Fees and Services.\nAudit and Non-Audit Fees\nThe table below summarizes the fees for services performed by Cohen & Company, Ltd. for the year ended December 31, 2023.",
+   "prose_after": "Approval of Independent Registered Public Accounting Firm Services and Fees\nThe Trust has no board of directors, and as a result, has no audit committee or pre-approval policy with respect to fees paid to its principal accounting firm. Such determinations are made by the Sponsor.\nPart IV\nItem 15. Exhibits, Financial Statement Schedules.\nFinancial Statements\nSee Index to Financial Statements on Page F-1 for a list of the financial statements being filed as part of this report.\nFinancial Statement Schedules\nSchedules have been omitted since they are either not required, not applicable or the information has otherwise been included.\nExhibits\nThe following documents are filed herewith or incorporated herein and made a part of this Report:",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1650,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1694,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Certificate of Trust incorporated by reference to Exhibit 3.1 of the Registration Statement on Form S-1 filed by the Registrant on December 30, 2020"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Third Amended and Restated Declaration of Trust and Trust Agreement incorporated by reference to Exhibit 4.1 of the Current Report on Form 8-K filed by the Registrant on March 1, 2024"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2*",
+     "Description of the Registrant\u2019s Securities Registered Under Section 12 of the Securities Exchange Act of 1934"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Authorized Participant Agreement by reference to Exhibit 10.1 of the Registration Statement on Form S-1 filed by the Registrant on December 29, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Marketing Agent Agreement incorporated by reference to Exhibit 10.2 of the Registration Statement on Form S-1 filed by the Registrant on October 27, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Form of Custodial Services Agreement incorporated by reference to Exhibit 10.3 of the Registration Statement on Form S-1 filed by the Registrant on October 27, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Trust Administration and Accounting Agreement incorporated by reference to Exhibit 10.4 of the Registration Statement on Form S-1 filed by the Registrant on December 29, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Transfer Agency Agreement incorporated by reference to Exhibit 10.5 of the Registration Statement on Form S-1 filed by the Registrant on December 29, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6",
+     "Form of Index Sub-Licensing Agreement incorporated by reference to Exhibit 10.6 of the Registration Statement on Form S-1 filed by the Registrant on October 27, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Cash Custody Agreement incorporated by reference to Exhibit 10.7 of the Registration Statement on Form S-1 filed by the Registrant on December 29, 2023"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Subscription Agreement incorporated by reference to Exhibit 10.8 of the Registration Statement on Form S-1 filed by the Registrant on December 29, 2023"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1711,
+    "end_line": 1739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Approval of Independent Registered Public Accounting Firm Services and Fees\nThe Trust has no board of directors, and as a result, has no audit committee or pre-approval policy with respect to fees paid to its principal accounting firm. Such determinations are made by the Sponsor.\nPart IV\nItem 15. Exhibits, Financial Statement Schedules.\nFinancial Statements\nSee Index to Financial Statements on Page F-1 for a list of the financial statements being filed as part of this report.\nFinancial Statement Schedules\nSchedules have been omitted since they are either not required, not applicable or the information has otherwise been included.\nExhibits\nThe following documents are filed herewith or incorporated herein and made a part of this Report:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1694,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 81
+    },
+    "after": {
+     "line": 1740,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 82
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.9",
+     "Clearing Agreement incorporated by reference to Exhibit 10.9 of the Registration Statement on Form S-1 filed by the Registrant on January 8, 2024"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification by Principal Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification by Principal Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification by Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification by Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "97.1*",
+     "Executive Officer Incentive-Based Compensation Clawback Policy"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document the instance document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104*",
+     "Cover Page Interactive Data File included as Exhibit 101 (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1741,
+    "end_line": 1768
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "* Filed herewith.\nItem 16. Form 10-K Summary.\nNone.\nVANECK BITCOIN TRUST FINANCIAL STATEMENTS INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1740,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 82
+    },
+    "after": {
+     "line": 1775,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 83
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Assets and Liabilities",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Changes in Net Assets",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1778,
+    "end_line": 1791
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.\nItem 16. Form 10-K Summary.\nNone.\nVANECK BITCOIN TRUST FINANCIAL STATEMENTS INDEX",
+   "prose_after": "Financial Statements and Report of Independent Registered Public Accounting Firm\nFor the period December 21, 2023 (Date of Seeding) through December 31, 2023\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Sponsor and Shareholder of VanEck Bitcoin Trust\nOpinion on the Financial Statements\nWe have audited the accompanying statement of assets and liabilities of VanEck Bitcoin Trust (the \u201cTrust\u201d) as of December 31, 2023, and the related statements of operations and changes in net assets, including the related notes, for the period December 21, 2023 (date of seeding) through December 31, 2023 (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Trust as of December 31, 2023, and the results of its operations and changes in its net assets for the period December 21, 2023 (date of seeding) through December 31, 2023, in conformity with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1775,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 83
+    },
+    "after": {
+     "line": 1791,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "100,000"
+    ],
+    [
+     "Total assets",
+     "",
+     "100,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies (Note 6)",
+     "",
+     "\u2013"
+    ],
+    [
+     "Net Assets",
+     "$",
+     "100,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued and outstanding (no par value, unlimited amount authorized)",
+     "",
+     "2,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Asset Value per Share (Note 2)",
+     "$",
+     "50.00"
+    ]
+   ],
+   "caption_stack": [
+    "Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1827,
+    "end_line": 1848
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Trust is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Trust\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit includes performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures include examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our procedures included confirmation of cash owned as of December 31, 2023, by correspondence with the custodian. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\nWe have served as the Trust\u2019s auditor since 2023.\nCOHEN & COMPANY, LTD.\nHunt Valley, Maryland\nMarch 28, 2024\nStatement of Assets and Liabilities",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatement of Operations\nFor the Period December 21, 2023 (Date of Seeding) to December 31, 2023",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1825,
+     "token": "REPEATING_HEADER",
+     "id": 93,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1850,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Investment Income",
+     "",
+     ""
+    ],
+    [
+     "Total investment income",
+     "$",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "\u2013"
+    ],
+    [
+     "Net investment income (loss)",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss) and change in unrealized appreciation (depreciation)",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss) on:",
+     "",
+     ""
+    ],
+    [
+     "Investments",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total realized gain (loss)",
+     "",
+     "\u2013"
+    ],
+    [
+     "Net change in unrealized appreciation (depreciation) on:",
+     "",
+     ""
+    ],
+    [
+     "Investments",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total net change in unrealized appreciation (depreciation)",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net realized gain (loss) and unrealized appreciation (depreciation)",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "$",
+     "\u2013"
+    ]
+   ],
+   "caption_stack": [
+    "Investment Income"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1856,
+    "end_line": 1887
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatement of Operations\nFor the Period December 21, 2023 (Date of Seeding) to December 31, 2023",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nStatement of Changes in Net Assets\nFor the Period December 21, 2023 (Date of Seeding) to December 31, 2023",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1850,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1889,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Net Increase (Decrease) in net assets from operations",
+     "",
+     ""
+    ],
+    [
+     "Net investment income (loss)",
+     "$",
+     "\u2013"
+    ],
+    [
+     "Net realized gain (loss)",
+     "",
+     "\u2013"
+    ],
+    [
+     "Change in net unrealized appreciation (depreciation)",
+     "",
+     "\u2013"
+    ],
+    [
+     "Net increase (decrease) in net assets resulting from operations",
+     "",
+     "\u2013"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Share Transactions",
+     "",
+     ""
+    ],
+    [
+     "Capital contributions",
+     "",
+     "100,000"
+    ],
+    [
+     "Capital withdrawals",
+     "",
+     "\u2013"
+    ],
+    [
+     "Total capital share transactions",
+     "",
+     "100,000"
+    ],
+    [
+     "Net increase (decrease) in net assets",
+     "",
+     "100,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Assets",
+     "",
+     ""
+    ],
+    [
+     "Beginning of period",
+     "",
+     "\u2013"
+    ],
+    [
+     "End of period",
+     "$",
+     "100,000"
+    ]
+   ],
+   "caption_stack": [
+    "Net Increase (Decrease) in net assets from operations"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1895,
+    "end_line": 1919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nStatement of Changes in Net Assets\nFor the Period December 21, 2023 (Date of Seeding) to December 31, 2023",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNotes to Financial Statements\n1. Organization:\nThe VanEck Bitcoin Trust (the \u201cTrust\u201d), a Delaware statutory trust, is an exchange-traded fund that issues common shares of beneficial interest in an ownership of the Trust. The shares are traded on the Cboe BZX Exchange, Inc. (the \u201cExchange\u201d). The Trust\u2019s investment objective is to reflect the performance of bitcoin less the operating expenses of the Trust. The Trust is managed and controlled by VanEck Digital Assets, LLC (the \u201cSponsor\u201d), a wholly-owned subsidiary of Van Eck Associates Corporation (\u201cVanEck\u201d). The Delaware Trust Company, is the \u201cTrustee\u201d of the Trust. The Trust had no operations other than the initial seed transaction.\n2. Significant Accounting Policies:\nA. Basis of Preparation and Use Estimates The preparation of financial statements in conformity with U.S. generally accepted accounting principles (\u201cGAAP\u201d) requires management to make estimates and assumptions that affect the reported amounts and disclosures in the financial statements. Actual results could differ from those estimates. The Trust qualifies as an investment company solely for accounting purposes and not for any other purpose and follows accounting and reporting requirements of Accounting Standards Codification (\u201cASC\u201d) 946 Financial Services\u2014Investment Companies, but is not registered, and is not required to be registered, as an investment company under the Investment Company Act of 1940, as amended.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1889,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1921,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 0.6,
+   "rows": [
+    [
+     "Level 1 \u2013 Unadjusted quoted prices in active markets for identical assets or liabilities;"
+    ],
+    [
+     ""
+    ],
+    [
+     "Level 2 \u2013 Inputs other than quoted prices included within Level 1 that are observable for the asset or liability either directly or indirectly, including quoted prices for similar assets or liabilities in active markets, quoted prices for identical or similar assets or liabilities in markets that are not considered to be"
+    ]
+   ],
+   "caption_stack": [
+    "Level 1 \u2013 Unadjusted quoted prices in active markets for identical assets or liabilities;"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1937,
+    "end_line": 1943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "C. Investment Valuation The Trust values its investments in bitcoin and other assets and liabilities at fair value, daily. Fair value is the price that would be received to sell an asset or paid to transfer a liability in an orderly transaction between market participants on the measurement date. The Trust identifies and determines the bitcoin principal market (or in the absence of a principal market, the most advantageous market) for GAAP purposes consistent with the application of fair value measurement framework in Financial Accounting Standards Board (\u201cFASB\u201d) Accounting Standards Codification (\u201cASC\u201d) 820-10 as of 4:00 p.m. Eastern time. Under ASC 820-10, a principal market is the market with the greatest volume and activity level for the asset or liability. The determination of the principal market will be based on the market with the greatest volume and level of activity that can be accessed. The Sponsor on behalf of the Trust will determine in its sole discretion the valuation sources and policies used to prepare the Trust\u2019s financial statements in accordance with GAAP. Various inputs are used in determining the fair value of assets and liabilities. Inputs may be based on independent market data (observable inputs) or they may be internally developed (unobservable inputs). These inputs are categorized into a disclosure hierarchy consisting of three broad levels for financial reporting purposes. The three levels of the fair value hierarchy are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1930,
+     "token": "REPEATING_HEADER",
+     "id": 98,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 0.6,
+   "rows": [
+    [
+     "active, inputs other than quoted prices that are observable for the asset or liability, and inputs that are derived principally from or corroborated by observable market data by correlation or other means; and"
+    ],
+    [
+     ""
+    ],
+    [
+     "Level 3 \u2013 Unobservable inputs where there are little or no market activity for the asset or liability, including the Trust\u2019s assumptions used in determining the fair value of investments."
+    ]
+   ],
+   "caption_stack": [
+    "active, inputs other than quoted prices that are observable for the asset or liability, and inputs that are derived principally from or corroborated by observable market data by correlation or other means; and"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1945,
+    "end_line": 1952
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "D. Bitcoin Bitcoin transactions are accounted for on trade date. Realized gains and losses on sale of bitcoin are determined based on the average cost method. Proceeds received by the Trust from the issuance of creation baskets consist of bitcoin. Such deposits are held by the custodian on behalf of the Trust until (i) delivered out in connection with redemptions of creation baskets or (ii) sold by the Sponsor, which may be facilitated by the custodian, to pay fees due to the Sponsor and Trust expenses and liabilities not assumed by the Sponsor. For accounting purposes only, the Trust is an investment company and, therefore, will apply the specialized accounting and reporting guidance ASC Topic 946. Under ASC Topic 946, the average cost method is an accepted method to determine realized gains and losses on the sale of bitcoin. At December 31, 2023, all Trust assets were held in U.S. Cash, there was no Bitcoin held.\nE. Calculation of Net Asset Value On each business day, at 4:00 p.m. EST, the net asset value of the Trust is obtained by subtracting all accrued fees, expenses and other liabilities of the Trust from the fair value of total assets held by the Trust. The administrator computes the net asset value per Share by dividing the net asset value of the Trust by the number of Shares outstanding on the date the computation is made.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 99,
+     "namespace": "F",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1967,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     ""
+    ],
+    [
+     "Shares issued",
+     "",
+     "2,000",
+     "(a)",
+     "$",
+     "100,000"
+    ],
+    [
+     "Shares redeemed",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net increase",
+     "",
+     "2,000",
+     "",
+     "$",
+     "100,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1991,
+    "end_line": 2000
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Capital Share Transactions"
+    }
+   },
+   "prose_before": "The Trust continuously offers the Trust Shares in creation baskets consisting of 50,000 Shares to authorized participants. Authorized participants pay a transaction fee for each order they place to create or redeem one or more creation baskets. The Administrator calculates the cost to purchase (or sell in the case of a redemption order) the amount of bitcoin represented by the baskets being created (or redeemed); the amount of bitcoin represented is equal to the combined NAV of the number of Shares included in the baskets being created (or redeemed).\nThe Trust creates and redeems Shares, but only in one or more creation baskets. Creation baskets are only made in exchange for delivery to the Trust or the distribution by the Trust of the amount of bitcoin represented by the baskets being created or redeemed, the amount of which is equal to the combined NAV of the number of Shares included in the baskets being created or redeemed determined as of 4:00 p.m. EST on the day the order to create or redeem baskets is properly received. Only authorized participants may place orders to create and redeem baskets through the transfer agent. The transfer agent will coordinate with the Trust\u2019s custodian in order to facilitate settlement of the Shares and bitcoin.\nShare activity is as follows:",
+   "prose_after": "(a) Van Eck Associates Corporation is the sole shareholder as of December 31, 2023.\nNote\n6. Commitments and Contingent Liabilities\nIn the normal course of business, the Trust enters into contracts that contain a variety of general indemnifications. The Trust\u2019s maximum exposure under these agreements is unknown as this would involve future claims that may be made against the Trust that have not yet occurred. However, the Sponsor believes the risk of loss under these arrangements to be remote.\n7. Concentration Risk\nSubstantially all of the Trust\u2019s assets are holdings of bitcoin, which creates a concentration risk associated with fluctuations in the value of bitcoin due to number of factors. Accordingly, a decline in the value of bitcoin will have an adverse effect on the value of the Shares of the Trust. Factors that may have the effect of causing a decline in the value of bitcoin include high volatility, which could have a negative impact on the performance of the Trust. Bitcoin exchanges are relatively new and, in some cases, unregulated, and, therefore, may be more exposed to fraud and security breaches than established, regulated exchanges for other financial assets or instruments, which could have a negative impact on the performance of the Trust. The value of the Shares depends on the development and acceptance of the Bitcoin network. The slowing or stopping of the development or acceptance of the Bitcoin network may adversely affect an investment in the Trust. The price of bitcoin on the bitcoin market has exhibited periods of extreme volatility. Digital assets such as bitcoin were only introduced within the past decade, and the medium-to-long term value of the Shares is subject to a number of factors relating to the capabilities and development of block-chain technologies and to the fundamental investment characteristics of digital assets that are uncertain and difficult to evaluate. The Trust is subject to risks due to its concentration of investments in a single asset class. Possible illiquid markets may exacerbate losses or increase the variability between the Trust\u2019s NAV and its market price. The amount of bitcoin represented by the Shares may decline over time.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1967,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "F",
+     "page_number": 8
+    },
+    "after": {
+     "line": 2006,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "F",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "VanEck Digital Assets, LLC, as Sponsor of the Trust (registrant)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Jonathan R. Simon"
+    ],
+    [
+     "",
+     "Name: Jonathan R. Simon"
+    ],
+    [
+     "",
+     "Title: Senior Vice President, General Counsel and Secretary"
+    ],
+    [
+     "Date:",
+     "March 28, 2024"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2038,
+    "end_line": 2046
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Subsequent Event Review"
+    }
+   },
+   "prose_before": "On January 4, 2024, the Seed Shares were redeemed for cash and the Seed Capital Investor purchased the \u201cSeed Creation Baskets,\u201d comprising of 1,450,000 Shares at a per-Share price of $50.00. Total proceeds to the Trust from the sale of the Seed Creation Baskets were $72,500,000, which resulted in the Trust receiving 1,640.92489329 bitcoin.\nOn January 11, 2024, the Trust commenced operations.\nEffective February 21, 2024, the Trust changed its Sponsor fee from 0.25% to 0.20%.\nEffective March 4, 2024 the Trust changed its Creation Unit size from 50,000 units to 25,000 units.\nDuring the period commencing on March 12, 2024 and ending on March 31, 2025, the Sponsor will waive the entire Sponsor Fee for the first $1.5 billion of the Trust\u2019s assets. If the Trust\u2019s assets exceed $1.5 billion prior to March 31, 2025, the Sponsor Fee charged on assets over $1.5 billion will be 0.20%. All investors will incur the same Sponsor Fee which is the weighted average of those fee rates. After March 31, 2025, the Sponsor Fee will be 0.20%.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Report to be signed on its behalf by the undersigned in the capacities* indicated thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1933, this Report has been signed by the following persons in the capacities* and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2036,
+     "token": "REPEATING_HEADER",
+     "id": 103,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Jan F. van Eck",
+     ""
+    ],
+    [
+     "/s/ Jan F. van Eck",
+     "President and Chief Executive Officer",
+     "March 28, 2024"
+    ],
+    [
+     "",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "John J. Crimmins",
+     ""
+    ],
+    [
+     "/s/ John J. Crimmins",
+     "Vice President, Chief Financial",
+     "March 28, 2024"
+    ],
+    [
+     "",
+     "Officer and Treasurer",
+     ""
+    ],
+    [
+     "",
+     "(Principal Financial Officer and",
+     ""
+    ],
+    [
+     "",
+     "Principal Accounting Officer)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2049,
+    "end_line": 2065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Subsequent Event Review"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1933, this Report has been signed by the following persons in the capacities* and on the dates indicated.",
+   "prose_after": "* The registrant is a trust and the persons are signing in their capacities as officers of VanEck Digital Assets, LLC, the Sponsor of the registrant.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2036,
+     "token": "REPEATING_HEADER",
+     "id": 103,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

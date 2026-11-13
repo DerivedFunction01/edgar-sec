@@ -1,0 +1,1463 @@
+{
+ "accession": "0001741830-25-000018",
+ "cik": "0001741830",
+ "form": "10-K/A",
+ "filing_date": "2025-04-25",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "kron-20241231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "82-1895605"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Amendment No. 1)\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2024\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______to _______\nCommission file number: 001-39592\nKronos Bio, Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1300 So. El Camino Real, Suite 400\nSan Mateo, California 94402\n(650) 781-5200\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common stock, $0.001 par value per share",
+     "KRON",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 42,
+    "end_line": 49
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1300 So. El Camino Real, Suite 400\nSan Mateo, California 94402\n(650) 781-5200\n(Address, including zip code, and telephone number, including area code, of registrant\u2019s principal executive offices)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X].\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X].\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No.\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No.\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d, \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance.",
+     "1"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation.",
+     "5"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owner and Management and Related Stockholder Matters.",
+     "13"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence.",
+     "16"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services.",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules.",
+     "19"
+    ]
+   ],
+   "caption_stack": [
+    "PART III"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "In addition, as required by Section 302 of the Sarbanes-Oxley Act of 2002 and Rule 12b-15 of the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d), as amended, an updated certification of the Company\u2019s principal executive and financial officer is included as Exhibit 31.2 hereto. Because no financial statements have been included in this Amendment No. 1 and this Amendment No. 1 does not contain or amend any disclosure with respect to Items 307 and 308 of Regulation S-K, paragraphs 3, 4, and 5 of the certifications have been omitted. We are not including the certifications under Section 906 of the Sarbanes-Oxley Act of 2002 as no financial statements are being filed with this Amendment No. 1.\nNo other changes have been made to the Form 10-K other than those described above. This Amendment No. 1 does not reflect subsequent events occurring after the original filing date of the Form 10-K or modify or update in any way the financial statements, consents or any other items or disclosures made in the Form 10-K in any way other than as required to reflect the amendments discussed above. Accordingly, this Amendment No. 1 should be read in conjunction with the Form 10-K and the Company\u2019s other filings with the SEC subsequent to the filing of the Form 10-K.\nTABLE OF CONTENTS",
+   "prose_after": "PART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nDirectors\nSet forth below is certain information regarding each of the Company\u2019s current directors, including the qualifications, experience and selected other biographical information for each director. There are no arrangements or understandings between a director and any other person pursuant to which such director was or is to be selected as a director or nominee.\nArie S. Belldegrun, M.D., 75, has served as the Chairman of our Board of Directors since November 2017. Dr. Belldegrun has had a distinguished tenure in the life sciences, having been closely involved with the founding and advancement of several successful biopharmaceutical companies. Dr. Belldegrun is a co-founder of Allogene Therapeutics, Inc., a public biopharmaceutical company, and has served as Executive Chairman of its board of directors since November 2017. From March 2014 until October 2017, Dr. Belldegrun served as the President and Chief Executive Officer of Kite Pharma, Inc. and as a member of its board of directors from June 2009 until October 2017. Dr. Belldegrun currently serves as Chairman of Bellco Capital LLC (since 2004); Chairman of UroGen Pharma Ltd. (since December 2012); Chairman and Partner of Two River (since June 2009); Co-Chairman of Breakthrough Properties LLC and Breakthrough Services, L.L. C. (since April 2019); Co-chairman of Symbiotic Capital (since June 2023); and Director of ByHeart, Inc. (since October 2019). He was a director of Ginkgo Bioworks, Inc., from September 2021 to November 2024. Dr. Belldegrun is also Senior Managing Director of Vida Ventures, LLC (since November 2017). Dr. Belldegrun is a Research Professor, holds the Roy and Carol Doumani Chair in Urologic Oncology, and is Founder and Director of the UCLA Institute of Urologic Oncology at the David Geffen School of Medicine at UCLA. Prior to joining UCLA, Dr. Belldegrun was at the National Cancer Institute/NIH as a research fellow in surgical oncology and immunotherapy under Dr. Steven A. Rosenberg. He completed his MD at the Hebrew University Hadassah Medical School in Jerusalem, his postgraduate studies in Immunology at the Weizmann Institute of Science, and his residency in urologic surgery at Harvard Medical School. He has authored several books on oncology and more than 500 scientific and medical papers related to urological cancers, immunotherapy, gene therapy and cancer vaccines. He is certified by the American Board of Urology and the American Association of Genitourinary Surgeons. Dr. Belldegrun is qualified to serve on our Board due to his experience as a senior executive and as a director of several life sciences companies, and because of his knowledge of our industry.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "Salary ($)",
+     "Stock awards ($)(1)",
+     "Option awards ($)(2)",
+     "Non-equity incentive plan compensation ($)(3)",
+     "All other compensation ($)(4)",
+     "Total ($)"
+    ],
+    [
+     "Deborah Knobelman, Ph.D.\nPresident, Interim Chief Executive Officer, Chief Operating Officer and Chief Financial Officer",
+     "2024",
+     "281,042",
+     "\u2014",
+     "183,561",
+     "58,438",
+     "\u2014",
+     "523,040"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Norbert Bischofberger, Ph.D.\nFormer President and Chief Executive Officer(5)",
+     "2024",
+     "536,500",
+     "291,966",
+     "1,439,737(6)",
+     "\u2014",
+     "17,133(7)",
+     "2,285,336"
+    ],
+    [
+     "",
+     "2023",
+     "580,000",
+     "\u2014",
+     "849,337",
+     "319,000",
+     "13,200",
+     "1,761,537"
+    ],
+    [
+     "Allison Frisbee Former Chief Administrative Officer(8)",
+     "2024",
+     "410,000",
+     "41,106",
+     "227,443",
+     "88,000",
+     "13,800",
+     "780,349"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Charles Lin, Ph.D.\nFormer Chief Scientific Officer(8)",
+     "2024",
+     "404,250",
+     "42,411",
+     "227,443",
+     "90,000",
+     "11,622",
+     "775,725"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 175,
+    "end_line": 193
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "The Company has adopted an Insider Trading Policy governing the purchase, sale, and/or other dispositions of the Company\u2019s securities by directors, officers and employees that is designed to promote compliance with insider trading laws, rules and regulations, as well as procedures designed to further the foregoing purposes. A copy of our insider trading policy is filed as an exhibit to this Annual Report on Form 10-K. In addition, it is the Company\u2019s intent to comply with applicable laws and regulations relating to insider trading.\nItem 11. Executive Compensation.\nNamed Executive Officers\nOur named executive officers for the year ended December 31, 2024 are:\n\u2022Deborah Knobelman, Ph.D., President, Interim Chief Executive Officer, Chief Operating Officer and Chief Financial Officer;\n\u2022Norbert Bischofberger, Ph.D., former President and Chief Executive Officer;\n\u2022Allison Frisbee, former Chief Administrative Officer; and\n\u2022Charles Lin, Ph.D., former Chief Scientific Officer.\n2024 Summary Compensation Table\nThe table below summarizes the total compensation of our named executive officers for the fiscal years indicated. Other than Dr. Bischofberger, none of the individuals in the table below were named executive officers in 2023.",
+   "prose_after": "(1) The dollar amounts reported in this column reflect the aggregate grant date fair value of restricted stock units granted during the year based on the closing market price of the Company\u2019s common stock on the date of grant.\n(2) In accordance with SEC rules, this column reflects the aggregate grant date fair value or modification date fair value of the awards granted or modified during each year computed in accordance with Financial Accounting Standard Board Accounting Standards Codification Topic 718 for stock-based compensation transactions (\u201cASC 718\u201d). Assumptions used in the calculation of these amounts are included in Note 10 to our financial statements in this Annual Report on Form 10-K for the year ended December 31, 2024. These amounts do not reflect the actual economic value that will be realized by our named executive officers upon the vesting, exercise, or sale of the shares of common stock underlying such awards.\n(3) The dollar amounts in this column represent the portion of the annual performance-based bonuses attributable to the corporate goals achieved in each year. For more information, see section titled \u201cAnnual Bonus Opportunity.\u201d",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 156,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 198,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "",
+     "Option Awards (1)",
+     "",
+     "",
+     "",
+     "",
+     "Stock Awards",
+     "",
+     ""
+    ],
+    [
+     "Executive Name",
+     "Grant date",
+     "Number of Securities Underlying Unexercised Options Exercisable (#)",
+     "Number of Securities Underlying Unexercised Options Unexercisable (#)",
+     "",
+     "Option Exercise Price ($) (2)",
+     "Option Expiration Date",
+     "Number of Shares or Units of Stock That Have Not Vested (#)",
+     "",
+     "Market Value of Shares or Units of Stock That Have Not Vested ($)"
+    ],
+    [
+     "Deborah Knobelman, Ph.D.",
+     "6/3/2024",
+     "\u2014",
+     "246,390",
+     "(3)",
+     "0.75",
+     "6/3/2034",
+     "164,260",
+     "(4)",
+     "156,047"
+    ],
+    [
+     "Norbert Bischofberger, Ph.D.",
+     "12/10/2020",
+     "297,186",
+     "\u2014",
+     "(5)",
+     "30.78",
+     "12/10/2030",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/16/2022",
+     "283,333",
+     "116,667",
+     "(5)",
+     "7.30",
+     "2/16/2032",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/15/2023",
+     "261,647",
+     "309,221",
+     "(5)",
+     "2.09",
+     "2/15/2033",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/15/2024",
+     "145,791",
+     "554,009",
+     "(5)",
+     "1.08",
+     "2/15/2034",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Allison Frisbee",
+     "9/14/2020",
+     "29,751",
+     "\u2014",
+     "(6)",
+     "13.35",
+     "9/15/2030",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/16/2021",
+     "27,301",
+     "1,187",
+     "(5)",
+     "28.82",
+     "2/16/2031",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/15/2022",
+     "23,375",
+     "9,625",
+     "(5)",
+     "7.08",
+     "2/15/2032",
+     "7,334",
+     "(7)",
+     "6,967"
+    ],
+    [
+     "",
+     "7/11/2022",
+     "13,291",
+     "8,709",
+     "(5)",
+     "4.32",
+     "7/11/2032",
+     "4,889",
+     "(7)",
+     "4,645"
+    ],
+    [
+     "",
+     "7/25/2022",
+     "23,967",
+     "5,784",
+     "(8)",
+     "5.02",
+     "7/25/2032",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/15/2023",
+     "38,463",
+     "45,457",
+     "(5)",
+     "2.09",
+     "2/15/2033",
+     "37,298",
+     "(7)",
+     "35,433"
+    ],
+    [
+     "",
+     "2/15/2024",
+     "30,373",
+     "115,422",
+     "(5)",
+     "1.08",
+     "2/15/2034",
+     "97,195",
+     "(7)",
+     "92,335"
+    ],
+    [
+     "",
+     "10/15/2024",
+     "3,037",
+     "69,863",
+     "(5)",
+     "0.96",
+     "10/16/2034",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Charles Lin, Ph.D.",
+     "12/20/2019",
+     "152,975",
+     "\u2014",
+     "(9)",
+     "2.53",
+     "12/19/2029",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/16/2021",
+     "35,487",
+     "1,543",
+     "(5)",
+     "28.82",
+     "2/16/2031",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "2/15/2022",
+     "40,729",
+     "16,771",
+     "(5)",
+     "7.08",
+     "2/15/2032",
+     "12,842",
+     "(7)",
+     "12,200"
+    ],
+    [
+     "",
+     "2/15/2023",
+     "37,546",
+     "44,374",
+     "(5)",
+     "2.09",
+     "2/14/2033",
+     "36,409",
+     "(7)",
+     "34,589"
+    ],
+    [
+     "",
+     "2/15/2024",
+     "30,373",
+     "115,422",
+     "(5)",
+     "1.08",
+     "2/14/2034",
+     "97,195",
+     "(7)",
+     "92,335"
+    ],
+    [
+     "",
+     "10/15/2024",
+     "3,037",
+     "69,863",
+     "(5)",
+     "0.96",
+     "10/15/2034",
+     "\u2014",
+     "",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 260,
+    "end_line": 291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Generally, equity awards are granted when an executive officer commences employment with us. Thereafter, equity awards may be granted at varying times and in varying amounts at the discretion of our Compensation Committee or, if awards are being granted to the CEO, at the discretion of the Board. Grants are generally made once a year, unless such executive officer is promoted or to recognize outstanding performance. None of our executive officers is currently a party to an employment agreement that provides for an automatic grant of stock options or other equity awards.\nBefore approving equity awards, the Compensation Committee receives preliminary recommendations for equity awards from our CEO for executive officers (other than himself) for annual awards and awards made in connection with an executive\u2019s hire or promotion. The Compensation Committee then reviews our compensation consultant\u2019s market-based recommendations based on our peer group and survey data, and approves equity awards for our executive officers, with the exception of our CEO whose grant is reviewed and approved by the Board once it receives the recommendation of the Compensation Committee.\nOutstanding Equity Awards at Fiscal Year-End Table\nThe following table presents information concerning equity awards held by our named executive officers as of December 31, 2024. The market value for the stock awards was calculated by multiplying the number of shares of our common stock subject to each award by $0.95 , which was the closing market price of our common stock on December 31, 2024.",
+   "prose_after": "(1) Option awards with grant dates prior to October 9, 2020 were granted under the 2017 Equity Incentive Plan. Stock and option awards with grant dates on or after October 9, 2020 were granted under the 2020 Equity Incentive Plan (the \u201c2020 Plan\u201d).\n(2) These options awards were granted with a per share exercise price equal to the closing fair market value of our common stock on the grant date.\n(3) These shares vest over four years with 1/4 vesting on June 6, 2025 and the remainder vesting in 36 equal monthly installments, subject to continued service through each vesting date.\n(4) Fifty percent of these restricted stock units will vest on the 12-month anniversary of the grant date; the remaining fifty percent will vest on the 18-month anniversary of the grant date.\n(5) These shares vest monthly over four years commencing on the grant date, subject to continued service through each such vesting date.\n(6) These shares vest over four years with 1/4 vesting on September 30, 2021 and the remainder vesting in 36 equal monthly installments, subject to continued service through each vesting date.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 255,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 308,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Name",
+     "Fees earned or paid in cash ($)",
+     "Stock awards ($) (1)",
+     "Option awards ($)(2)",
+     "All Other Compensation ($) (3)",
+     "Total ($)"
+    ],
+    [
+     "Arie Belldegrun, M.D.",
+     "84,000",
+     "",
+     "22,644",
+     "25,200",
+     "131,844"
+    ],
+    [
+     "Roshawn Blunt",
+     "45,625",
+     "",
+     "22,644",
+     "",
+     "68,269"
+    ],
+    [
+     "Roger Dansey, M.D.",
+     "44,000",
+     "",
+     "22,644",
+     "",
+     "66,644"
+    ],
+    [
+     "Joshua Kazam",
+     "40,000",
+     "",
+     "22,644",
+     "",
+     "62,644"
+    ],
+    [
+     "Elena Ridloff, CFA",
+     "55,000",
+     "10,710",
+     "11,322",
+     "",
+     "77,032"
+    ],
+    [
+     "Katherine Vega Stultz",
+     "61,875",
+     "",
+     "22,644",
+     "21,600",
+     "106,119"
+    ],
+    [
+     "David Tanen",
+     "40,000",
+     "",
+     "22,644",
+     "22,000",
+     "84,644"
+    ],
+    [
+     "Taiyin Yang, Ph.D",
+     "55,500",
+     "",
+     "22,644",
+     "",
+     "78,144"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 352,
+    "end_line": 364
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "\u2022an annual equity grant with a fair market value of $335,000 on the date of grant, subject to a fixed share cap of 34,000 option equivalents, vesting on the earlier of (a) the one-year anniversary of the date of grant and (b) the date of the next annual meeting of stockholders, with the director designating the equity vehicles as either 100% options, 100% RSUs, or 50% options and 50% RSUs.\nThe annual grants will be made on the date of each annual meeting of stockholders. The stock options and restricted stock unit awards will be granted under our 2020 Plan. Each of the equity awards described above will vest and become exercisable subject to the non-employee director\u2019s continuous service with us through each applicable vesting date, provided that each option and restricted stock unit award will vest in full upon a change in control of the Company, as defined under our 2020 Plan.\n2024 Director Compensation Table\nThe following table shows for the fiscal year ended December 31, 2024 certain information with respect to the compensation of all non-employee directors of the Company who served during 2024, other than Dr. Bischofberger whose compensation is presented in the Summary Compensation Table above:",
+   "prose_after": "(1) The dollar amounts reported in this column reflect the aggregate grant date fair value of restricted stock units granted based on the closing market price of the Company's common stock on the date of grant. As of December 31, 2024, the aggregate number of shares outstanding under all restricted stock units held by our non-employee directors were: Ms. Ridloff: 11,333.\n(2) The dollar amounts reported in this column represent the aggregate grant date fair value of stock option awards granted during the year. These amounts have been computed in accordance with FASB ASC 718, using the Black-Scholes option pricing model. For a discussion of valuation assumptions, see Note 10 \u201cStockholders\u2019 Equity and Stock-based Compensation\u201d to our financial statements included in our Annual Report on Form 10-K for the year ended December 31, 2024. As of December 31, 2024, the aggregate number of shares outstanding under all option awards held by our non-employee directors were: Dr. Belldegrun: 122,600, Ms. Blunt: 143,200, Dr. Dansey: 107,868, Mr. Kazam: 122,600, Ms. Ridloff: 136,200, Mr. Tanen: 228,100, and Ms. Stultz: 109,079.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 329,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 371,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Greater than 5% Stockholders",
+     "Number of Shares Beneficially Owned",
+     "Percentage Beneficially Owned"
+    ],
+    [
+     "Bischofberger Trust (1)",
+     "10,802,138",
+     "17.7%"
+    ],
+    [
+     "Named Executive Officers and Directors:",
+     "",
+     ""
+    ],
+    [
+     "Norbert W. Bischofberger, Ph.D. (2)",
+     "13,019,124",
+     "21.0%"
+    ],
+    [
+     "Arie S. Belldegrun, M.D. (3)",
+     "3,533,489",
+     "5.8%"
+    ],
+    [
+     "David M. Tanen (4)",
+     "1,107,883",
+     "1.8%"
+    ],
+    [
+     "Joshua Kazam (5)",
+     "455,103",
+     "*"
+    ],
+    [
+     "Elena Ridloff, CFA (6)",
+     "133,163",
+     "*"
+    ],
+    [
+     "Roshawn Blunt (7)",
+     "109,200",
+     "*"
+    ],
+    [
+     "Taiyin Yang, Ph.D. (8)",
+     "108,683",
+     "*"
+    ],
+    [
+     "Katherine Vega Stultz (9)",
+     "52,413",
+     "*"
+    ],
+    [
+     "Roger Dansey, M.D. (10)",
+     "51,202",
+     "*"
+    ],
+    [
+     "Deborah Knobelman, Ph.D.",
+     "\u2014",
+     "*"
+    ],
+    [
+     "Charles Lin, Ph.D. (11)",
+     "729,288",
+     "*"
+    ],
+    [
+     "Allison Frisbee (12)",
+     "592,469",
+     "*"
+    ],
+    [
+     "All current executive officers and directors as a group (10 persons)(13)",
+     "18,570,260",
+     "29.5%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 410
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "The table is based upon information supplied by officers and directors, and a review of Schedules 13Ds and 13Gs filed with the SEC. Unless otherwise indicated in the footnotes to this table and subject to community property laws where applicable, the Company believes that each of the stockholders named in this table has sole voting and investment power with respect to the shares indicated as beneficially owned. Applicable percentages are based on 60,969,214 shares outstanding on March 31, 2025, adjusted as required by rules promulgated by the SEC. The number of shares of common stock used to calculate the percentage ownership of each listed beneficial owner includes the shares of common stock underlying options or convertible securities held by such beneficial owner that are exercisable or convertible within 60 days following March 31, 2025. Unless otherwise indicated, the address for each person or entity listed in the table is c/o Kronos Bio, Inc., 1300 So. El Camino Real, Suite 400, San Mateo, California 94402.",
+   "prose_after": "* Represents beneficial ownership of less than 1%.\n(1) Consists of 10,802,138 shares of common stock held by the Norbert W. & Inger A. Bischofberger Revocable Inter Vivos Trust, dtd August 29, 1994 (Bischofberger Revocable Trust). Dr. Bischofberger is a co-trustee of the Bischofberger Revocable Trust. The address of the Bischofberger Revocable Trust is Pillsbury Winthrop, Four Embarcadero Center, 22nd Floor, San Francisco, CA 94111, Attn: Timothy Burgh.\n(2) Consists of (i) the 10,802,138 shares described in note (1) above,(ii) 1,161,986 shares of common stock that Dr. Bischofberger has the right to acquire from us within 60 days of March 31, 2025 pursuant to the exercise of stock options and (iv) 263,750 shares of common stock held by each of (a) Norbert W. Bischofberger and Inger A. Bischofberger, Trustees of the Irene Alisha Bischofberger Dynasty GST Exempt Trust dated April 29, 2020, (b) Norbert W. Bischofberger and Inger A. Bischofberger, Trustees of The Irene Alisha Bischofberger Dynasty GST Non-Exempt Trust dated April 29, 2020, (c) Norbert W. Bischofberger and Inger A. Bischofberger, Trustees of The David Michael Anthony Dynasty GST Exempt Trust dated April 29, 2020, and (d) Norbert W. Bischofberger and Inger A. Bischofberger, Trustees of the Dave Michael Anthony Dynasty GST Non-Exempt Trust dated April 29, 2020 (collectively, the Bischofberger Dynasty Trusts). Dr. Bischofberger is co-trustee of the Bischofberger Dynasty Trusts and may therefore be deemed to be the beneficial owner of the common shares held by the Bischofberger Dynasty Trusts. The address of the Bischofberger Dynasty Trusts is Pillsbury Winthrop, Four Embarcadero Center, 22nd Floor, San Francisco, CA 94111, Attn: Timothy Burgh.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 416,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of securities to be issued upon exercise of outstanding options, warrants and rights\n(a)",
+     "Weighted-average exercise price of outstanding options, warrants and rights\n(b) ($) (1)",
+     "Number of securities remaining available for issuance under equity compensation plans (excluding securities reflected in column (a)) (c)"
+    ],
+    [
+     "Equity compensation plans approved by security holders:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2017 Equity Incentive Plan (2)",
+     "1,736,229",
+     "3.75",
+     "\u2014"
+    ],
+    [
+     "2020 Equity Incentive Plan (3)",
+     "8,645,791",
+     "7.20",
+     "6,457,092"
+    ],
+    [
+     "2020 Employee Stock Purchase Plan (4)",
+     "\u2014",
+     "\u2014",
+     "1,930,436"
+    ],
+    [
+     "Equity compensation plans not approved by security holders",
+     "\u2014",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Total",
+     "10,382,020",
+     "6.53",
+     "8,387,528"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 450
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "(9) Consists of 52,413 shares of common stock that Katherine Vega Stultz has the right to acquire from us within 60 days of March 31, 2025 pursuant to the exercise of stock options.\n(10) Consists of 51,202 shares of common stock that Roger Dansey has the right to acquire from us within 60 days of March 31, 2025 pursuant to the exercise of stock options.\n(11) Consists of (i) 181,168 shares of common stock held by Dr. Lin, and (ii) 548,120 shares of common stock that Dr. Lin has the right to acquire from us within 60 days of March 31, 2025 pursuant to the exercise of stock options. Dr. Lin\u2019s employment with us terminated on January 3, 2025.\n(12) Consists of (i) 146,864 shares of common stock held by Allison Frisbee, and (ii) 445,605 shares of common stock that Ms. Frisbee has the right to acquire from us within 60 days of March 31, 2025 pursuant to the exercise of stock options. Ms. Frisbee\u2019s employment with us terminated on January 31, 2025.\n(13) Consists of the shares described in notes 3 through 10 above.\nEquity Compensation Plan Information\nThe following table sets forth the aggregate information on our equity compensation plans in effect as of December 31, 2024.",
+   "prose_after": "(1) The weighted-average exercise price is calculated based solely on outstanding stock options. It does not take into account the shares of our common stock underlying restricted stock units, which have no exercise price.\n(2) Consists solely of outstanding stock options.\n(3) In October 2020, we adopted our 2020 Equity Incentive Plan (the \u201c2020 Plan\u201d) which replaced the Prior Plan. Initially, the aggregate number of shares of our common stock that may be issued under the 2020 Plan was 11,938,152. Additionally, in each year, commencing in 2021 and ending in 2030, the number of shares authorized for issuance under the 2020 Plan is automatically increased by a number equal to: (a) 5% of the total number of shares of capital stock outstanding on December 31 of the preceding calendar year; or (b) such lesser number of shares of common stock as is determined by our Board or a designated committee thereof for the applicable year. As of December 31, 2024, under our 2020 Plan the number of outstanding awards under column (a) includes: (1) 7,241,580 shares to be issued upon the exercise of outstanding options (including options that are immediately exercisable) at a weighted-average exercise price of $7.20; and (2) 1,404,211 shares issuable upon the vesting of outstanding restricted stock units. On January 1, 2025, the number of shares authorized for issuance under the 2020 Plan was 23,364,521 shares.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 429,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 459,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "2023"
+    ],
+    [
+     "",
+     "(in thousands)",
+     ""
+    ],
+    [
+     "Fee Category",
+     "",
+     ""
+    ],
+    [
+     "Audit fees (1)",
+     "$1,251",
+     "$1,270"
+    ],
+    [
+     "Audit-related fees",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Tax fees",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "All other fees",
+     "\u2014",
+     "\u2014"
+    ],
+    [
+     "Total fees",
+     "$1,251",
+     "$1,270"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 504,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "Consistent with these considerations, after review of all relevant identified transactions or relationships between each director, or any of his or her family members, and the Company, its senior management and its independent registered public accounting firm, the Board has affirmatively determined that all of our directors other than Dr. Bischofberger, Mr. Kazam and Mr. Tanen are independent directors, as defined by Rule 5605(a)(2) of the Nasdaq Listing Rules. In making this determination, the Board took into account the payments reflected in the \u201cAll Other Compensation\u201d column of the 2024 Director Compensation table under Item 11, above.\nItem 14. Principal Accounting Fees and Services.\nOur independent registered public accounting firm is Ernst & Young LLP, San Mateo, California, Auditor Firm ID: 42.\nThe following table represents aggregate fees billed to the Company for the fiscal years ended December 31, 2024 and December 31, 2023 by Ernst & Young LLP, the Company\u2019s principal accountant.",
+   "prose_after": "(1) Audit Fees consist of fees for professional services provided in connection with the audit of our annual financial statements, the review of our quarterly financial statements, additional billings included in the year in which services are performed and services that are normally provided by independent registered public accounting firms in connection with regulatory filings.\nAll fees described above were pre-approved by the Audit Committee.\nPre-Approval Policies and Procedures\nPursuant to its charter, the Audit Committee must review and approve, in advance, the scope and plans for the audits and the audit fees and approve in advance (or, where permitted under the rules and regulations of the SEC, subsequently) all non-audit services to be performed by the independent registered public accounting firm that are not otherwise prohibited by law and any associated fees. The Audit Committee may delegate to one or more members of the committee the authority to pre-approve audit and permissible non-audit services, as long as this pre-approval is presented to the full committee at scheduled meetings.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 497,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Description Of Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1\u2021*",
+     "Asset Purchase Agreement, by and between the registrant and Gilead Sciences, Inc., dated July 14, 2020 (incorporated by reference to Exhibit 2.1 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on September 18, 2020)."
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation (incorporated by reference to Exhibit 3.1 to the registrant\u2019s Current Report on Form 8-K, filed with the SEC on October 14, 2020)."
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws (incorporated by reference to Exhibit 3.2 to the registrant\u2019s Current Report on Form 8-K, filed with the SEC on October 14, 2020)."
+    ],
+    [
+     "4.1",
+     "Reference is made to Exhibits 3.1 and 3.2."
+    ],
+    [
+     "4.2",
+     "Form of Common Stock Certificate of the registrant (incorporated by reference to Exhibit 4.1 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on October 5, 2020)."
+    ],
+    [
+     "4.3",
+     "Amended and Restated Investors\u2019 Rights Agreement, by and among the registrant and certain of its stockholders, dated July 1, 2019, as amended on August 20, 2020 (incorporated by reference to Exhibit 4.2 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on September 18, 2020)."
+    ],
+    [
+     "4.4",
+     "Description of Registrant\u2019s Common Stock (incorporated by reference to Exhibit 4.4 to the registrant\u2019s Annual Report on Form 10-K (File No. 001-39592), filed with the SEC on February 24, 2022)."
+    ],
+    [
+     "10.1+",
+     "Form of Indemnity Agreement, by and between the registrant and its directors and officers (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on October 5, 2020)."
+    ],
+    [
+     "10.2+",
+     "Kronos Bio, Inc. 2017 Equity Incentive Plan, as amended, and Forms of Option Agreement, Notice of Exercise, Notice of Early Exercise, Restricted Stock Grant Notice and Restricted Stock Award Agreement thereunder (incorporated by reference to Exhibit 10.2 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on September 18, 2020)."
+    ],
+    [
+     "10.3+",
+     "Kronos Bio, Inc. 2020 Equity Incentive Plan, and Forms of Option Grant Notice, Option Agreement, Notice of Exercise, Restricted Stock Unit Grant Notice and Restricted Stock Unit Agreement thereunder (incorporated by reference to Exhibit 99.2 to the Registrant\u2019s Registration Statement on Form S-8 (File No. 333-249424), filed with the SEC on October 9, 2020)"
+    ],
+    [
+     "10.4+",
+     "Kronos Bio, Inc. 2020 Employee Stock Purchase Plan (incorporated by reference to Exhibit 99.3 to the Registrant\u2019s Registration Statement on Form S-8 (File No. 333-249424), filed with the SEC on October 9, 2020)."
+    ],
+    [
+     "10.5+",
+     "Kronos Bio, Inc. Severance and Change in Control Plan with amended form of Participation Agreement thereunder (incorporated by reference to Exhibit 10.3 to the registrant\u2019s Quarterly Report on Form 10-Q/A (File No. 001-39592), filed with the SEC on September 9, 2022)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 543,
+    "end_line": 573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to its charter, the Audit Committee must review and approve, in advance, the scope and plans for the audits and the audit fees and approve in advance (or, where permitted under the rules and regulations of the SEC, subsequently) all non-audit services to be performed by the independent registered public accounting firm that are not otherwise prohibited by law and any associated fees. The Audit Committee may delegate to one or more members of the committee the authority to pre-approve audit and permissible non-audit services, as long as this pre-approval is presented to the full committee at scheduled meetings.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) 1. Financial Statements.\nThe response to this portion of Item 15 is set forth under Part II, Item 8 of the Form 10-K.\n(a) 2. Financial Statement Schedules.\nAll schedules have been omitted because they are not required or because the required information is given in the financial statements or notes thereto set forth under Part II, Item 8 above.\n(a) 3. Exhibits",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 528,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "10.6+",
+     "Non-Employee Director Compensation Policy (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Quarterly report on form 10-Q/A (File No 001-39592), filed with the SEC on September 9, 2022)."
+    ],
+    [
+     "",
+     "10.7+\u2021",
+     "Letter Agreement, by and between the registrant and Norbert Bischofberger, Ph.D., dated April 30, 2018, as amended (incorporated by reference to Exhibit 10.5 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on October 5, 2020)."
+    ],
+    [
+     "",
+     "10.8",
+     "Office Lease, by and between the registrant and MPVCA SAN MATEO LLC, a California limited liability company (as successor in interest to DWF IV 1300 S El Camino LLC), dated July 19, 2018, as amended (incorporated by reference to Exhibit 10.9 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on September 18, 2020)."
+    ],
+    [
+     "",
+     "10.9",
+     "Second Amendment to Office Lease, dated February 8, 2021, by and between the registrant and MPVCA San Mateo LLC (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Quarterly Report on Form 10-Q (File No. 001-39592), filed with the SEC on May 11, 2021)."
+    ],
+    [
+     "",
+     "10.10",
+     "Lease, by and between the registrant and BMR-Rogers Street LLC, dated February 28, 2020 (incorporated by reference to Exhibit 10.10 to the registrant\u2019s Registration Statement on Form S-1 (File No. 333-248925), as amended, filed with the SEC on September 18, 2020)."
+    ],
+    [
+     "",
+     "10.11*\u2021",
+     "Collaboration and License Agreement between the registrant and Genentech, Inc. and F. Hoffmann-La Roche Ltd., dated January 6, 2023 (incorporated by reference to Exhibit 10.16 to the registrant\u2019s Annual Report on Form 10-K (File No. 001-39592), filed with the SEC on March 15, 2023)."
+    ],
+    [
+     "",
+     "10.12\u2021",
+     "Executive Employment Agreement, by and between the Company and Deborah Knobelman, dated May 20, 2024 and effective June 3, 2024 (incorporated by reference to Exhibit 10.1 to the registrant\u2019s Current Report on Form 8-K, filed with the SEC on May 21, 2024)."
+    ],
+    [
+     "",
+     "10.13*+ \u2126",
+     "Transition Agreement and Mutual General Release, dated December 20, 2024, by and between the registrant and Genentech, Inc. and F. Hoffmann-La Roche Ltd."
+    ],
+    [
+     "",
+     "19.1 \u2126",
+     "Kronos Bio, Inc. Insider Trading Policy"
+    ],
+    [
+     "",
+     "23.1 \u2126",
+     "Consent of Independent Registered Public Accounting Firm."
+    ],
+    [
+     "",
+     "24.1 \u2126",
+     "Power of Attorney. Reference is made to the signature page of the Form 10-K."
+    ],
+    [
+     "",
+     "31.1 \u2126",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Rule 13a-14(a) or Rule 15d-14(a) of the Exchange Act."
+    ],
+    [
+     "",
+     "31.2",
+     "Certification of Principal Executive and Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934."
+    ],
+    [
+     "",
+     "32.1 \u2126",
+     "Certification of Principal Executive Officer and Principal Financial Officer pursuant to Rule 13a-14(b) of the Exchange Act, and 18 U.S.C. Section 1350."
+    ],
+    [
+     "",
+     "97+",
+     "Incentive Compensation Recoupment Policy (incorporated by reference to Exhibit 97 to the registrant\u2019s Annual Report on Form 10-K (File No. 001-39592), filed with the SEC on March 21, 2024)."
+    ],
+    [
+     "",
+     "101.INS",
+     "Inline XBRL Instance Document (this document does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document)."
+    ],
+    [
+     "",
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "",
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "",
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "",
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "",
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "",
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "\u2021",
+     "Schedules have been omitted pursuant to Item 601(a)(5) of Regulation S-K. The registrant undertakes to furnish supplemental copies of any of the omitted schedules upon request by the SEC.",
+     ""
+    ],
+    [
+     "+",
+     "Indicates management contract or compensatory plan.",
+     ""
+    ],
+    [
+     "*",
+     "Certain portions of this exhibit are omitted pursuant to Item 601(b)(10)(iv) of Regulation S-K.",
+     ""
+    ],
+    [
+     "\u2126",
+     "Previously filed with the Form 10-K.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 575,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this Amendment No. 1 to the report to be signed on its behalf by the undersigned, thereunto duly authorized.\nKRONOS BIO, INC.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 574,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date: April 25, 2025",
+     "By:",
+     "/s/ Deborah Knobelman"
+    ],
+    [
+     "",
+     "",
+     "Deborah Knobelman, Ph.D."
+    ],
+    [
+     "",
+     "",
+     "President, Interim Chief Executive Officer, Chief Financial Officer and Chief Operating Officer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 623,
+    "end_line": 629
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, as amended, the registrant has duly caused this Amendment No. 1 to the report to be signed on its behalf by the undersigned, thereunto duly authorized.\nKRONOS BIO, INC.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 616,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": null
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

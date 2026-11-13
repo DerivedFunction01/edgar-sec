@@ -1,0 +1,1370 @@
+{
+ "accession": "0000892626-15-000260",
+ "cik": "0000814046",
+ "form": "10-Q",
+ "filing_date": "2015-08-13",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "alp-20150630.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the quarter ended June 30, 2015",
+     "Commission file #0-16976"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 13
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "United States SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\nQuarterly Report under Section 13 or 15(d)\nof the Securities Exchange Act of 1934",
+   "prose_after": "ALP LIQUIDATING TRUST\n(Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 44,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware\n\n\n\n(State of organization)",
+     "36-6044597\n\n\n\n(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "900 N. Michigan Ave., Chicago, Illinois\n\n\n\n(Address of principal executive office)",
+     "60611\n\n\n\n(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "ALP LIQUIDATING TRUST\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant's telephone number, including area code 312-915-1987\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 (the \"Exchange Act\") during the preceding 12 months (or for such a shorter period that registrant was required to file such reports), and\n(2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \"accelerated filer and large accelerated filer\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting Company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 44,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I   FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Consolidated Condensed Financial Statements (unaudited)",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4T.",
+     "Controls and Procedures",
+     "15"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II  OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "17"
+    ]
+   ],
+   "caption_stack": [
+    "Part I   FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 46,
+    "end_line": 63
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant's telephone number, including area code 312-915-1987\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 (the \"Exchange Act\") during the preceding 12 months (or for such a shorter period that registrant was required to file such reports), and\n(2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \"accelerated filer and large accelerated filer\" in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [ ]\nNon-accelerated filer    [ ]  Smaller reporting Company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]",
+   "prose_after": "2\nPart I. Financial Information\nItem 1. Financial Statements\nConsolidated Condensed Balance Sheets\n<TABLE>\nJune 30,          December 31,\n2015                2014\n------------------  ------------------\nAssets\nCash and cash equivalents                                                                                  $ 14,362,491        $ 14,987,426",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 44,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "June 30,\n\n\n\n2015",
+     "",
+     "",
+     "December 31,\n\n\n\n2014",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "",
+     "$",
+     "14,362,491",
+     "",
+     "$",
+     "14,987,426"
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "",
+     "58,161",
+     "",
+     "",
+     "58,161"
+    ],
+    [
+     "  Total assets",
+     "",
+     "$",
+     "14,420,652",
+     "",
+     "$",
+     "15,045,587"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Unit Holders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "$",
+     "1,103,307",
+     "",
+     "$",
+     "482,733"
+    ],
+    [
+     "  Total liabilities",
+     "",
+     "",
+     "1,103,307",
+     "",
+     "",
+     "482,733"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unit Holders\u2019 equity (442,010 beneficial interest units     at June 30, 2015 and December 31, 2014)",
+     "",
+     "",
+     "13,280,483",
+     "",
+     "",
+     "14,525,932"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non controlling interest",
+     "",
+     "",
+     "36,862",
+     "",
+     "",
+     "36,922"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total equity",
+     "",
+     "",
+     "13,317,345",
+     "",
+     "",
+     "14,562,854"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total liabilities and Unit Holders\u2019 equity",
+     "",
+     "$",
+     "14,420,652",
+     "",
+     "$",
+     "15,045,587"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Six Months Ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest and other income",
+     "$",
+     "0",
+     "",
+     "$",
+     "613",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "1,649",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Professional services",
+     "",
+     "297,886",
+     "",
+     "",
+     "126,035",
+     "",
+     "",
+     "1,014,010",
+     "",
+     "",
+     "663,767",
+     ""
+    ],
+    [
+     "  General and administrative",
+     "",
+     "99,718",
+     "",
+     "",
+     "72,159",
+     "",
+     "",
+     "225,699",
+     "",
+     "",
+     "168,702",
+     ""
+    ],
+    [
+     "  Other",
+     "",
+     "5,196",
+     "",
+     "",
+     "8,898",
+     "",
+     "",
+     "5,800",
+     "",
+     "",
+     "9,086",
+     ""
+    ],
+    [
+     "",
+     "",
+     "402,800",
+     "",
+     "",
+     "207,092",
+     "",
+     "",
+     "1,245,509",
+     "",
+     "",
+     "841,555",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net loss",
+     "",
+     "(402,800)",
+     "",
+     "",
+     "(206,479)",
+     "",
+     "",
+     "(1,245,509)",
+     "",
+     "",
+     "(839,906)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Less: Net loss        attributable to non-        controlling interests",
+     "",
+     "(40)",
+     "",
+     "",
+     "(15)",
+     "",
+     "",
+     "(60)",
+     "",
+     "",
+     "(26)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net loss attributable         to Unit Holders",
+     "$",
+     "(402,760)",
+     "",
+     "$",
+     "(206,464)",
+     "",
+     "$",
+     "(1,245,449)",
+     "",
+     "$",
+     "(839,880)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net loss per beneficial         interest unit",
+     "$",
+     "(0.91)",
+     "",
+     "$",
+     "(0.47)",
+     "",
+     "$",
+     "(2.82)",
+     "",
+     "$",
+     "(1.90)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash distributions per         beneficial interest unit",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     "",
+     "$",
+     "0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 123,
+    "end_line": 156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "Non controlling interest                                                                                         36,862              36,922\n------------------  ------------------\nTotal equity                                                                                               13,317,345          14,562,854\n------------------  ------------------\nTotal liabilities and Unit Holders\u2019 equity                                                               $ 14,420,652        $ 15,045,587\n==================  ==================\n</TABLE>\nThe accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Condensed Statements of Operations\nFor the Three and Six Months Ended June 30, 2015 and 2014",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Condensed Statement of Changes in Unitholders\u2019 Equity\nFor the Six Months Ended June 30, 2015",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 121,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 159,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total",
+     "",
+     "Unit\n\n\n\nHolders",
+     "",
+     "Non-Controlling\n\n\n\nInterests",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, January 1, 2015",
+     "$",
+     "14,562,854",
+     "$",
+     "14,525,932",
+     "$",
+     "36,922"
+    ],
+    [
+     "Net loss",
+     "",
+     "(1,245,509)",
+     "",
+     "(1,245,449)",
+     "",
+     "(60)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2015",
+     "$",
+     "13,317,345",
+     "$",
+     "13,280,483",
+     "$",
+     "36,862"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 167,
+    "end_line": 180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Condensed Statement of Changes in Unitholders\u2019 Equity\nFor the Six Months Ended June 30, 2015",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Condensed Statements of Cash Flows\nFor the Six Months Ended June 30, 2015 and 2014",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 165,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 183,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "",
+     "$",
+     "(1,245,509)",
+     "",
+     "",
+     "$",
+     "(839,906)",
+     ""
+    ],
+    [
+     "  Changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued expenses",
+     "",
+     "",
+     "620,574",
+     "",
+     "",
+     "",
+     "95,170",
+     ""
+    ],
+    [
+     "      Net cash used in operating activities",
+     "",
+     "",
+     "(624,935)",
+     "",
+     "",
+     "",
+     "(744,736)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Decrease in cash and cash equivalents",
+     "",
+     "",
+     "(624,935)",
+     "",
+     "",
+     "",
+     "(744,736)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Cash and cash equivalents, beginning of period",
+     "",
+     "",
+     "14,987,426",
+     "",
+     "",
+     "",
+     "16,442,738",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Cash and cash equivalents, end of period",
+     "",
+     "$",
+     "14,362,491",
+     "",
+     "",
+     "$",
+     "15,698,002",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 191,
+    "end_line": 210
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Condensed Statements of Cash Flows\nFor the Six Months Ended June 30, 2015 and 2014",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNotes to Consolidated Condensed Financial Statements\nJune 30, 2015\nOperations\nOn September 30, 2005, Arvida/JMB Partners, L.P. (the \"Partnership\") completed its liquidation by contributing all of its remaining assets to ALP Liquidating Trust (\"ALP\"), subject to all of the Partnership's obligations and liabilities. Arvida Company (\"Arvida\"), an affiliate of the general partner of the Partnership, acts as Administrator (the \"Administrator\") of ALP.\nIn connection with its formation, ALP issued a total of 448,794 beneficial interest units to the partners of the Partnership (\"Unit Holders\"). In the liquidation, each partner in the Partnership received a beneficial interest in ALP for each interest the partner held in the Partnership. As a result, a partner's percentage interest in ALP remained the same as that person's percentage interest was in the Partnership immediately prior to its liquidation.\nUpon completion of the liquidation of the Partnership, pursuant to Rule 12g-3(a) under the Securities Exchange Act of 1934, as amended (the \"Exchange Act\"), ALP elected to become the successor issuer to the Partnership for reporting purposes under the Exchange Act and elect to report under the Exchange Act effective September 30, 2005. ALP has assumed all reports filed by the Partnership prior to liquidation of the Partnership under the Exchange Act. Throughout this quarterly report, references to ALP shall be deemed to include activities of the Partnership prior to September 30, 2005.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 189,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 213,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(a)",
+     "Exhibits",
+     ""
+    ],
+    [
+     "",
+     "4.1",
+     "Liquidating Trust Agreement of ALP Liquidating Trust, dated as of September 30, 2005, by and among, Arvida/JMB Partners, L.P., Arvida Company, as Administrator, and Wilmington Trust Company, as Resident Trustee."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "31.1",
+     "Certification of the Principal Executive Officer pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act of 1934, as amended, is filed herewith."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "31.2",
+     "Certification of the Principal Financial Officer pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act of 1934, as amended, is filed herewith."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "32",
+     "Certifications of Chief Executive Officer and Chief Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 are furnished herewith."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "(b)",
+     "No reports on Form 8-K were filed since the beginning of the last quarter of the period covered by this report.",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 365,
+    "end_line": 379
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to Section 302 of the Sarbanes-Oxley Act and Rule 13a-15 of the Securities Exchange Act of 1934 (the \"Exchange Act\") promulgated thereunder, the principal executive officer and the principal financial officer of the Liquidating Trust have evaluated the effectiveness of the Liquidating Trust's disclosure controls and procedures as of the end of the period covered by this report. Based on such evaluation, the principal executive officer and the principal financial officer have concluded that the Liquidating Trust's disclosure controls and procedures were effective as of the end of the period covered by this report to ensure that information required to be disclosed in this report was recorded, processed, summarized and reported within the time period specified in the applicable rules and form of the Securities and Exchange Commission for this report.\nChanges in Internal Control over Financial Reporting\nThere were no significant changes to our internal control over financial reporting (as defined in Rule 13a-15(f) or Rule 15d-15(f) of the Securities Exchange Act of 1934) during the six months ended June 30, 2015 that have materially affected, or are reasonable likely to materially affect, our internal control over financial reporting.\nPart II. Other Information\nItem 1. Legal Proceedings\nSee Item 1 of the Financial Statements included in Part I of this report.\nItem 6. Exhibits",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Partnership has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 355,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ALP LIQUIDATING TRUST.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "Arvida Company\n\n\n\nas Administrator"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "GAILEN J. HULL"
+    ],
+    [
+     "By:",
+     "Gailen J. Hull, Vice President"
+    ],
+    [
+     "Date:",
+     "August 13, 2015"
+    ]
+   ],
+   "caption_stack": [
+    "ALP LIQUIDATING TRUST."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 386,
+    "end_line": 398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Partnership has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed on behalf of ALP Liquidating Trust by the following person in the capacities and on the date indicated.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "GAILEN J. HULL"
+    ],
+    [
+     "",
+     "By:",
+     "Gailen J. Hull, Chief Financial Officer\n\n\n\nand Principal Accounting Officer"
+    ],
+    [
+     "",
+     "Date:",
+     "August 13, 2015"
+    ]
+   ],
+   "caption_stack": [
+    "GAILEN J. HULL"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 401,
+    "end_line": 409
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed on behalf of ALP Liquidating Trust by the following person in the capacities and on the date indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

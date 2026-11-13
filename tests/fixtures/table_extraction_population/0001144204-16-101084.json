@@ -1,0 +1,2621 @@
+{
+ "accession": "0001144204-16-101084",
+ "cik": "0001279704",
+ "form": "10-Q",
+ "filing_date": "2016-05-12",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v439107_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the quarterly period ended: March 31, 2016"
+    ]
+   ],
+   "caption_stack": [
+    "For the quarterly period ended: March 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 8,
+    "end_line": 11
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "U.S. SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-Q\n[mark one]\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________ to ______________\nCommission File Number 1-36598\nCELLECTAR BIOSCIENCES, INC. (Exact name of registrant as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "DELAWARE",
+     "",
+     "04-3321804"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "",
+     "(IRS Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(D) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________ to ______________\nCommission File Number 1-36598\nCELLECTAR BIOSCIENCES, INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "3301 Agriculture Drive\nMadison, Wisconsin 53716\n(Address of principal executive offices)\n(608) 441-8120\n(Registrant\u2019s telephone number, including area code)\n(Former name, former address and former fiscal year, if changed since last report)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I.  FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "15"
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "21"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "21"
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "PART I.  FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 72
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\n(Check one):\nLarge accelerated filer  [ ]                                               Accelerated filer          [ ]\nNon-accelerated filer    [ ](Do not check if a smaller reporting company)  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nNumber of shares outstanding of the issuer\u2019s common stock as of the latest practicable date: 3,832,405 shares of common stock, $0.00001 par value per share, as of May 10, 2016.\nFORM 10-Q INDEX",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS (UNAUDITED)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 54,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 74,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2016",
+     "",
+     "",
+     "December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "1,908,375",
+     "",
+     "$",
+     "3,857,791",
+     ""
+    ],
+    [
+     "  Restricted cash",
+     "",
+     "55,000",
+     "",
+     "",
+     "55,000",
+     ""
+    ],
+    [
+     "  Prepaid expenses and other current assets",
+     "",
+     "281,440",
+     "",
+     "",
+     "267,783",
+     ""
+    ],
+    [
+     "    Total current assets",
+     "",
+     "2,244,815",
+     "",
+     "",
+     "4,180,574",
+     ""
+    ],
+    [
+     "FIXED ASSETS, NET",
+     "",
+     "1,637,698",
+     "",
+     "",
+     "1,728,471",
+     ""
+    ],
+    [
+     "GOODWILL",
+     "",
+     "1,675,462",
+     "",
+     "",
+     "1,675,462",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "11,872",
+     "",
+     "",
+     "11,872",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "5,569,847",
+     "",
+     "$",
+     "7,596,379",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current maturities of notes payable",
+     "$",
+     "244,809",
+     "",
+     "$",
+     "243,590",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued liabilities",
+     "",
+     "608,668",
+     "",
+     "",
+     "675,924",
+     ""
+    ],
+    [
+     "  Derivative liability",
+     "",
+     "1,956,360",
+     "",
+     "",
+     "4,781,082",
+     ""
+    ],
+    [
+     "  Capital lease obligations",
+     "",
+     "2,515",
+     "",
+     "",
+     "2,449",
+     ""
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "2,812,352",
+     "",
+     "",
+     "5,703,045",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Notes payable, less current maturities",
+     "",
+     "24,885",
+     "",
+     "",
+     "86,632",
+     ""
+    ],
+    [
+     "  Deferred rent",
+     "",
+     "148,599",
+     "",
+     "",
+     "148,924",
+     ""
+    ],
+    [
+     "  Capital lease obligation, less current portion",
+     "",
+     "7,321",
+     "",
+     "",
+     "7,975",
+     ""
+    ],
+    [
+     "    Total long-term liabilities",
+     "",
+     "180,805",
+     "",
+     "",
+     "243,531",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES",
+     "",
+     "2,993,157",
+     "",
+     "",
+     "5,946,576",
+     ""
+    ],
+    [
+     "COMMITMENTS AND CONTINGENCIES (Note 8)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS\u2019 EQUITY:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Preferred stock, $0.00001 par value; 7,000 shares authorized; none issued and outstanding as of March 31, 2016 and December 31, 2015",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Common stock, $0.00001 par value; 40,000,000 shares authorized; 858,013 and 858,140 shares issued and outstanding at March 31, 2016 and December 31, 2015, respectively",
+     "",
+     "9",
+     "",
+     "",
+     "9",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "66,358,818",
+     "",
+     "",
+     "66,256,494",
+     ""
+    ],
+    [
+     "  Deficit accumulated",
+     "",
+     "(63,782,137)",
+     "",
+     "",
+     "(64,606,700)",
+     ""
+    ],
+    [
+     "    Total stockholders\u2019 equity",
+     "",
+     "2,576,690",
+     "",
+     "",
+     "1,649,803",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "5,569,847",
+     "",
+     "$",
+     "7,596,379",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 83,
+    "end_line": 132
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS (UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 79,
+     "token": "REPEATING_HEADER",
+     "id": 3,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  COSTS AND EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Research and development",
+     "$",
+     "1,039,454",
+     "",
+     "$",
+     "1,643,994",
+     ""
+    ],
+    [
+     "    General and administrative",
+     "",
+     "961,254",
+     "",
+     "",
+     "943,433",
+     ""
+    ],
+    [
+     "    Total costs and expenses",
+     "",
+     "2,000,708",
+     "",
+     "",
+     "2,587,427",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(2,000,708)",
+     "",
+     "",
+     "(2,587,427)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Gain on revaluation of derivative warrants",
+     "",
+     "2,824,722",
+     "",
+     "",
+     "288,251",
+     ""
+    ],
+    [
+     "    Interest income (expense), net",
+     "",
+     "549",
+     "",
+     "",
+     "(1,980)",
+     ""
+    ],
+    [
+     "    Total other income, net",
+     "",
+     "2,825,271",
+     "",
+     "",
+     "286,271",
+     ""
+    ],
+    [
+     "      NET INCOME (LOSS)",
+     "$",
+     "824,563",
+     "",
+     "$",
+     "(2,301,156)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  BASIC NET INCOME (LOSS) PER COMMON SHARE",
+     "$",
+     "0.96",
+     "",
+     "$",
+     "(3.04)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  SHARES USED IN COMPUTING BASIC NET INCOME (LOSS) PER COMMON SHARE",
+     "",
+     "858,107",
+     "",
+     "",
+     "756,276",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  FULLY DILUTED NET INCOME (LOSS) PER COMMON SHARE",
+     "$",
+     "0.91",
+     "",
+     "",
+     "(3.04)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  SHARES USED IN COMPUTING FULLY DILUTED NET INCOME (LOSS) PER COMMON SHARE",
+     "",
+     "906,381",
+     "",
+     "",
+     "756,276",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 141,
+    "end_line": 178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 135,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 181,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income (loss)",
+     "$",
+     "824,563",
+     "",
+     "$",
+     "(2,301,156)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net income (loss) to cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "90,773",
+     "",
+     "",
+     "90,044",
+     ""
+    ],
+    [
+     "    Stock-based compensation expense",
+     "",
+     "102,918",
+     "",
+     "",
+     "191,790",
+     ""
+    ],
+    [
+     "    Loss on disposal of fixed assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "858",
+     ""
+    ],
+    [
+     "    Gain on revaluation of derivative warrants",
+     "",
+     "(2,824,722)",
+     "",
+     "",
+     "(288,251)",
+     ""
+    ],
+    [
+     "  Changes in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued liabilities",
+     "",
+     "(67,256)",
+     "",
+     "",
+     "(109,748)",
+     ""
+    ],
+    [
+     "    Prepaid expenses and other current assets",
+     "",
+     "55,793",
+     "",
+     "",
+     "49,586",
+     ""
+    ],
+    [
+     "    Other assets and liabilities",
+     "",
+     "(325)",
+     "",
+     "",
+     "539",
+     ""
+    ],
+    [
+     "      Cash used in operating activities",
+     "",
+     "(1,818,256)",
+     "",
+     "",
+     "(2,366,338)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchases of fixed assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(25,466)",
+     ""
+    ],
+    [
+     "      Cash used in investing activities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(25,466)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid for issuance costs",
+     "",
+     "(69,450)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Reverse stock split fractional shares",
+     "",
+     "(594)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Payments on long-term obligations",
+     "",
+     "(60,528)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Payments on capital lease obligations",
+     "",
+     "(588)",
+     "",
+     "",
+     "(1,211)",
+     ""
+    ],
+    [
+     "      Cash used in financing activities",
+     "",
+     "(131,160)",
+     "",
+     "",
+     "(1,211)",
+     ""
+    ],
+    [
+     "NET DECREASE IN CASH AND EQUIVALENTS",
+     "",
+     "(1,949,416)",
+     "",
+     "",
+     "(2,393,015)",
+     ""
+    ],
+    [
+     "CASH AND EQUIVALENTS AT BEGINNING OF PERIOD",
+     "",
+     "3,857,791",
+     "",
+     "",
+     "9,422,627",
+     ""
+    ],
+    [
+     "CASH AND EQUIVALENTS AT END OF PERIOD",
+     "$",
+     "1,908,375",
+     "",
+     "$",
+     "7,029,612",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest expense",
+     "$",
+     "1,467",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 187,
+    "end_line": 228
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS (UNAUDITED)\n1. NATURE OF BUSINESS, ORGANIZATION AND GOING CONCERN\nCellectar Biosciences, Inc. (the \u201cCompany\u201d) is a biopharmaceutical company developing compounds for the treatment and imaging of cancer. The Company\u2019s headquarters are located in Madison, Wisconsin.\nThe Company is subject to a number of risks similar to those of other small pharmaceutical companies. Principal among these risks are dependence on key individuals, competition from substitute products and larger companies, the successful development and marketing of its products in a highly regulated environment and the need to obtain additional financing necessary to fund future operations.\nThe accompanying financial statements have been prepared on a basis that assumes that the Company will continue as a going concern and that contemplates the continuity of operations, realization of assets and the satisfaction of liabilities and commitments in the normal course of business. The Company has devoted substantially all of its efforts toward research and development and has, during the three months ended March 31, 2016, generated an operating loss of approximately $2,001,000. The Company expects that it will continue to generate operating losses for the foreseeable future. The Company\u2019s ability to execute its operating plan depends on its ability to obtain additional funding via the sale of equity and/or debt securities, a strategic transaction or otherwise. The Company plans to continue to actively pursue financing alternatives, but there can be no assurance that it will obtain the necessary funding. On April 20, 2016 the Company completed a financing (See Note 10). The accompanying financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 181,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 231,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "March 31, 2016",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  February 2013 Public Offering Warrants",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "102,000",
+     "$",
+     "102,000"
+    ],
+    [
+     "  August 2014 Warrants",
+     "",
+     "\u2014",
+     "",
+     "492,000",
+     "",
+     "\u2014",
+     "",
+     "492,000"
+    ],
+    [
+     "  October 2015 Warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,362,000",
+     "",
+     "1,362,000"
+    ],
+    [
+     "  Total",
+     "$",
+     "\u2014",
+     "$",
+     "492,000",
+     "$",
+     "1,464,000",
+     "$",
+     "1,956,000"
+    ]
+   ],
+   "caption_stack": [
+    "March 31, 2016"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 286,
+    "end_line": 300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FAIR VALUE"
+    }
+   },
+   "prose_before": "The Company issued warrants to purchase an aggregate of 82,500 common shares in a February 2013 public offering (the \u201cFebruary 2013 Public Offering Warrants\u201d). On February 20, 2014, 27,500 of the February 2013 Public Offering Warrants expired. The remaining 55,000 warrants are classified within the Level 3 hierarchy. The 494,315 August 2014 Warrants are listed on the Nasdaq Capital Market under the symbol \u201cCLRBW,\u201d however, there are certain periods where trading volume is low; therefore, they are classified within the Level 2 hierarchy.\nOn October 1, 2015, the Company issued Series A warrants to purchase an aggregate of 150,003 shares of our common stock at an exercise price of $28.30 per share, and Series B pre-funded warrants to purchase an aggregate of 48,274 shares of our common stock at an offering price of $22.00 per share. These warrants are classified within the Level 3 hierarchy.\nThe following tables set forth the Company\u2019s financial instruments carried at fair value using the lowest level of input applicable to each financial instrument as of March 31, 2016 and December 31, 2015:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 269,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  February 2013 Public Offering Warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "209,000",
+     "",
+     "209,000"
+    ],
+    [
+     "  August 2014 Warrants",
+     "",
+     "\u2014",
+     "",
+     "2,714,000",
+     "",
+     "\u2014",
+     "",
+     "2,714,000"
+    ],
+    [
+     "  October 2015 Warrants",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,858,000",
+     "",
+     "1,858,000"
+    ],
+    [
+     "  Total",
+     "$",
+     "\u2014",
+     "$",
+     "2,714,000",
+     "$",
+     "2,067,000",
+     "$",
+     "4,781,000"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 301,
+    "end_line": 315
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FAIR VALUE"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "In order to estimate the value of the February 2013 Public Offering Warrants considered to be derivative instruments the Company uses a modified option-pricing model together with assumptions that consider, among other variables, the fair value of the underlying stock, risk-free interest rates, volatility, the contractual term of the warrants, future financing requirements and dividend rates. The future financing estimates are based on the Company\u2019s estimates of anticipated cash requirements over the term of the warrants as well as the frequency of required financings based on its assessment of its historical financing trends and anticipated future events. Due to the nature of these inputs and the valuation technique utilized, these warrants are classified within the Level 3 hierarchy.\nThe following table summarizes the modified option-pricing assumptions used:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 269,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2016",
+     "",
+     "",
+     "Twelve Months Ended December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "92.72",
+     "%",
+     "",
+     "87.3-90.0",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "0.73",
+     "%",
+     "",
+     "0.82-1.10",
+     "%"
+    ],
+    [
+     "Expected life (years)",
+     "",
+     "1.89",
+     "",
+     "",
+     "2.14-2.89",
+     ""
+    ],
+    [
+     "Dividend",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 321,
+    "end_line": 329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FAIR VALUE"
+    }
+   },
+   "prose_before": "In order to estimate the value of the February 2013 Public Offering Warrants considered to be derivative instruments the Company uses a modified option-pricing model together with assumptions that consider, among other variables, the fair value of the underlying stock, risk-free interest rates, volatility, the contractual term of the warrants, future financing requirements and dividend rates. The future financing estimates are based on the Company\u2019s estimates of anticipated cash requirements over the term of the warrants as well as the frequency of required financings based on its assessment of its historical financing trends and anticipated future events. Due to the nature of these inputs and the valuation technique utilized, these warrants are classified within the Level 3 hierarchy.\nThe following table summarizes the modified option-pricing assumptions used:",
+   "prose_after": "In order to estimate the value of the October 2015 Warrants considered to be derivative instruments, the Company uses a modified option-pricing model together with assumptions that consider, among other variables, the fair value of the underlying stock, risk-free interest rate, volatility, the contractual term of the warrants, future financing requirements and dividend rates. The future financing estimates are based on the Company\u2019s estimates of anticipated cash requirements over the term of the warrants as well as the frequency of required financings based on its assessment of its historical financing trends and anticipated future events. Due to the nature of these inputs and the valuation technique utilized, these warrants are also classified within the Level 3 hierarchy.\nThe following table summarizes the modified option-pricing assumptions used:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2016",
+     "",
+     "",
+     "Twelve Months Ended December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "89.73",
+     "%",
+     "",
+     "97.57",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.17-1.65",
+     "%",
+     "",
+     "1.70",
+     "%"
+    ],
+    [
+     "Expected life (years)",
+     "",
+     "4.5",
+     "",
+     "",
+     "4.75",
+     ""
+    ],
+    [
+     "Dividend",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 334,
+    "end_line": 342
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FAIR VALUE"
+    }
+   },
+   "prose_before": "In order to estimate the value of the October 2015 Warrants considered to be derivative instruments, the Company uses a modified option-pricing model together with assumptions that consider, among other variables, the fair value of the underlying stock, risk-free interest rate, volatility, the contractual term of the warrants, future financing requirements and dividend rates. The future financing estimates are based on the Company\u2019s estimates of anticipated cash requirements over the term of the warrants as well as the frequency of required financings based on its assessment of its historical financing trends and anticipated future events. Due to the nature of these inputs and the valuation technique utilized, these warrants are also classified within the Level 3 hierarchy.\nThe following table summarizes the modified option-pricing assumptions used:",
+   "prose_after": "The following table summarizes the changes in the fair market value of the Company\u2019s warrants which are classified within the Level 3 fair value hierarchy.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31, 2016",
+     "",
+     "",
+     "Twelve Months Ended December 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance \u2013 Fair value",
+     "$",
+     "2,067,000",
+     "",
+     "$",
+     "1,127,500",
+     ""
+    ],
+    [
+     "Fair value of warrants issued in connection with the October 2015 offering",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,272,000",
+     ""
+    ],
+    [
+     "Gain on derivatives resulting from change in fair value",
+     "",
+     "(603,000)",
+     "",
+     "",
+     "(2,332,500)",
+     ""
+    ],
+    [
+     "Ending balance \u2013 Fair value",
+     "$",
+     "1,464,000",
+     "",
+     "$",
+     "2,067,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 345,
+    "end_line": 356
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FAIR VALUE"
+    }
+   },
+   "prose_before": "The following table summarizes the changes in the fair market value of the Company\u2019s warrants which are classified within the Level 3 fair value hierarchy.",
+   "prose_after": "To estimate the fair value of the August 2014 Warrants, the Company calculated the weighted average closing price for the trailing 10 day period with trades that ended on the balance sheet date.\n3. STOCKHOLDERS\u2019 EQUITY\n2016 Reverse Stock Split and Recapitalization\nAt a special meeting held on February 8, 2016, the Company\u2019s stockholders approved an amendment to the Company\u2019s certificate of incorporation to effect a reverse split of the Company\u2019s common stock at a ratio between 1:5 to 1:10 in order to ensure that adequate authorized but unissued shares would be available for anticipated future financings, and to satisfy requirements for the continued listing of the Company\u2019s common stock on the Nasdaq Capital Market. In addition, the proposal approved by the stockholders provided that if the reverse split was effected, the number of shares of common stock that the Company is authorized to issue remained unchanged at 40,000,000. The Company\u2019s stockholders further authorized the board of directors to determine the ratio at which the reverse split would be effected by filing an appropriate amendment to the Company\u2019s certificate of incorporation. The board of directors authorized the ratio of the reverse split and corresponding reduction in authorized shares on February 24, 2016, and effective at the close of business on March 4, 2016, the Company\u2019s certificate of incorporation was amended to effect a 1-for-10 reverse split of the Company\u2019s common stock (the \u201c2016 Reverse Split\u201d). All share and per share numbers included in these consolidated financial statements give effect to the 2016 Reverse Split.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 359,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Offering",
+     "Number of Shares Issuable Upon Exercise of Outstanding Warrants",
+     "",
+     "Exercise Price",
+     "",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 2015 Private Placement (1)",
+     "",
+     "150,003",
+     "$",
+     "28.30",
+     "April 1, 2021"
+    ],
+    [
+     "October 2015 Registered Offering (2)",
+     "",
+     "48,274",
+     "$",
+     "\u2014",
+     "October 1, 2020"
+    ],
+    [
+     "October 2015 Offering \u2013 Placement Agent",
+     "",
+     "3,750",
+     "$",
+     "28.30",
+     "October 1, 2020"
+    ],
+    [
+     "August 2014 Public Offering (1)",
+     "",
+     "504,019",
+     "$",
+     "46.80",
+     "August 20, 2019"
+    ],
+    [
+     "February 2013 Public Offering (1)",
+     "",
+     "55,000",
+     "$",
+     "22.00",
+     "February 20, 2018"
+    ],
+    [
+     "February 2013 Public Offering \u2013 Placement Agents",
+     "",
+     "3,854",
+     "$",
+     "125.00",
+     "February 4, 2018"
+    ],
+    [
+     "November 2012 Private Placement",
+     "",
+     "5,000",
+     "$",
+     "250.00",
+     "November 2, 2017"
+    ],
+    [
+     "June 2012 Public Offering",
+     "",
+     "14,910",
+     "$",
+     "250.00",
+     "June 13, 2017"
+    ],
+    [
+     "December 2011 Underwritten Offering",
+     "",
+     "46,246",
+     "$",
+     "120.00",
+     "December 6, 2016"
+    ],
+    [
+     "Total",
+     "",
+     "831,056",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "FAIR VALUE"
+    }
+   },
+   "prose_before": "In connection with certain securities purchase agreements the Company is required to keep the related registration statements continuously effective under the Securities Act of 1933, as amended (the \u201cSecurities Act\u201d), until the earlier of the date when all the registrable securities covered by the registration statement have been sold or such time as all the registrable securities covered by the registration statement can be sold under Rule 144 without any volume limitations. The Company will be allowed to suspend the use of the registration statement for not more than 30 consecutive days on not more than two occasions in any 12-month period (the \u201cAllowed Delay\u201d). If the Company suspends the use of the registration for longer than the Allowed Delay, it may be required to pay to the purchasers liquidated damages equal to 1.5% per month (pro-rated on a daily basis for any period of less than a full month) of the aggregate purchase price of the units purchased until the use of the registration statement is no longer suspended, not to exceed 5% of the aggregate purchase price. As of March 31, 2016, and through the date of this filing, the Company has not concluded that it is probable that damages will become due; therefore, no accrual for damages has been recorded.\nAdditionally, in connection with certain registered offerings of common stock and warrants, the Company has entered into certain securities purchase agreements which require the Company to use commercially reasonable efforts to keep the applicable registration statements effective for the issuance of shares of common stock pursuant to the exercise of warrants issued in the offering as long as the warrants remain outstanding.\nCommon Stock Warrants\nThe following table summarizes information with regard to outstanding warrants to purchase common stock as of March 31, 2016.",
+   "prose_after": "(1) These warrants have a certain type of cash settlement feature or their exercise prices are subject to adjustment for \u201cdown-rounds\u201d and the warrants have been accounted for as derivative instruments as described in Note 3, with the exception of 9,704 warrants issued in August 2014.\n(2) These warrants are pre-funded, and the number of shares for which the warrant may be exercised are subject to adjustment for \u201cdown-rounds\u201d and the warrants have been accounted for as derivative instruments as described in Note\n3.\n4. NOTES PAYABLE\nThe notes payable balance at March 31, 2016 consists of two loans with initial principal amounts totaling $450,000 from the Wisconsin Economic Development Corporation dated September 15, 2010.\n5. STOCK-BASED COMPENSATION\nAccounting for Stock-Based Compensation\nThe following table summarizes amounts charged to expense for stock-based compensation related to employee and director stock option grants and recorded in connection with stock options granted to non-employee consultants:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Employee and director stock option grants:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Research and development",
+     "$",
+     "11,035",
+     "",
+     "$",
+     "43,356"
+    ],
+    [
+     "  General and administrative",
+     "",
+     "92,249",
+     "",
+     "",
+     "145,336"
+    ],
+    [
+     "",
+     "",
+     "103,284",
+     "",
+     "",
+     "188,692"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-employee consultant stock option grants:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Research and development",
+     "",
+     "(366)",
+     "",
+     "",
+     "3,098"
+    ],
+    [
+     "",
+     "",
+     "(366)",
+     "",
+     "",
+     "3,098"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total stock-based compensation",
+     "$",
+     "102,918",
+     "",
+     "$",
+     "191,790"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 424,
+    "end_line": 447
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "(1) These warrants have a certain type of cash settlement feature or their exercise prices are subject to adjustment for \u201cdown-rounds\u201d and the warrants have been accounted for as derivative instruments as described in Note 3, with the exception of 9,704 warrants issued in August 2014.\n(2) These warrants are pre-funded, and the number of shares for which the warrant may be exercised are subject to adjustment for \u201cdown-rounds\u201d and the warrants have been accounted for as derivative instruments as described in Note\n3.\n4. NOTES PAYABLE\nThe notes payable balance at March 31, 2016 consists of two loans with initial principal amounts totaling $450,000 from the Wisconsin Economic Development Corporation dated September 15, 2010.\n5. STOCK-BASED COMPENSATION\nAccounting for Stock-Based Compensation\nThe following table summarizes amounts charged to expense for stock-based compensation related to employee and director stock option grants and recorded in connection with stock options granted to non-employee consultants:",
+   "prose_after": "Assumptions Used In Determining Fair Value\nValuation and amortization method. The fair value of each stock award is estimated on the grant date using the Black-Scholes option-pricing model. The estimated fair value of employee stock options is amortized to expense using the straight-line method over the vesting period. The estimated fair value of the non-employee options is amortized to expense over the period during which a non-employee is required to provide services for the award (usually the vesting period).\nVolatility. The Company estimates volatility based on an average of (1) the Company\u2019s historical volatility since its common stock has been publicly traded and (2) review of volatility estimates of publicly held drug development companies with similar market capitalizations.\nRisk-free interest rate. The risk-free interest rate is based on the U.S. Treasury yield curve in effect at the time of grant commensurate with the expected term assumption.\nExpected term. The expected term of stock options granted is based on an estimate of when options will be exercised in the future. The Company applied the simplified method of estimating the expected term of the options, as described in the SEC\u2019s Staff Accounting Bulletins 107 and 110, as the historical experience is not indicative of the expected behavior in the future. The expected term, calculated under the simplified method, is applied to groups of stock options that have similar contractual terms. Using this method, the expected term is determined using the average of the vesting period and the contractual life of the stock options granted. The Company applied the simplified method to non-employees who have a truncation of term based on termination of service and utilizes the contractual life of the stock options granted for those non-employee grants which do not have a truncation of service.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares Issuable Upon Exercise of Outstanding Options",
+     "",
+     "",
+     "Weighted Average Exercise Price",
+     "",
+     "Weighted Average Remaining Contracted Term in Years",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2015",
+     "",
+     "70,933",
+     "",
+     "$",
+     "78.63",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "(1,461)",
+     "",
+     "$",
+     "134.92",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "(890)",
+     "",
+     "$",
+     "36.44",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at March 31, 2016",
+     "",
+     "68,582",
+     "",
+     "$",
+     "75.57",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vested, March 31, 2016",
+     "",
+     "23,429",
+     "",
+     "$",
+     "166.14",
+     "",
+     "5.53",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Unvested, March 31, 2016",
+     "",
+     "45,153",
+     "",
+     "$",
+     "28.58",
+     "",
+     "9.12",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Exercisable at March 31, 2016",
+     "",
+     "23,429",
+     "",
+     "$",
+     "166.14",
+     "",
+     "5.53",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 467,
+    "end_line": 487
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "STOCK-BASED COMPENSATION"
+    }
+   },
+   "prose_before": "Expected term. The expected term of stock options granted is based on an estimate of when options will be exercised in the future. The Company applied the simplified method of estimating the expected term of the options, as described in the SEC\u2019s Staff Accounting Bulletins 107 and 110, as the historical experience is not indicative of the expected behavior in the future. The expected term, calculated under the simplified method, is applied to groups of stock options that have similar contractual terms. Using this method, the expected term is determined using the average of the vesting period and the contractual life of the stock options granted. The Company applied the simplified method to non-employees who have a truncation of term based on termination of service and utilizes the contractual life of the stock options granted for those non-employee grants which do not have a truncation of service.\nForfeitures. The Company records stock-based compensation expense only for those awards that are expected to vest. A forfeiture rate is estimated at the time of grant and revised, if necessary, in subsequent periods if actual forfeitures differ from initial estimates. An annual forfeiture rate of 2% was applied to all unvested options for employees and directors, respectively, for the three months ended March 31, 2016 and for the year ended December 31, 2015. Ultimately, the actual expense recognized over the vesting period will be for only those shares that vest.\nThere were no stock option grants during the three months ended March 31, 2016. Exercise prices for all grants made during the three months ended March 31, 2015 were equal to the market value of the Company\u2019s common stock on the date of grant.\nStock Option Activity\nA summary of stock option activity is as follows:",
+   "prose_after": "The aggregate intrinsic value of options outstanding is calculated based on the positive difference between the estimated per-share fair value of common stock at the end of the respective period and the exercise price of the underlying options. There have been no option exercises to date. Shares of common stock issued upon the exercise of options are from authorized but unissued shares.\nAs of March 31, 2016, there was approximately $886,000 of total unrecognized compensation cost related to unvested stock-based compensation arrangements. Of this total amount, the Company expects to recognize approximately $308,000, $282,000, $206,000, and $90,000 during 2016, 2017, 2018, and 2019, respectively. The Company expects all unvested options to vest in the future. The weighted-average grant-date fair value of vested and unvested options outstanding at March 31, 2016 was $122.06 and $23.39, respectively.\n6. INCOME TAXES\nThe Company accounts for income taxes in accordance with the liability method of accounting. Deferred tax assets or liabilities are computed based on the difference between the financial statement and income tax basis of assets and liabilities, and net operating loss carryforwards, (NOLs) using the enacted tax rates. Deferred income tax expense or benefit is based on changes in the asset or liability from period to period. The GAAP gain on revaluation of derivative warrants is not recognized for tax purposes. The Company did not record a provision or benefit for federal, state or foreign income taxes for the three months ended March 31, 2016 or 2015 because the Company has experienced losses on a tax basis since inception. Because of the limited operating history, continuing losses and uncertainty associated with the utilization of the NOLs in the future, management has provided a full allowance against the value of its gross deferred tax asset.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 462,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended March 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2016",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Warrants",
+     "",
+     "782,782",
+     "",
+     "660,409"
+    ],
+    [
+     "Stock options",
+     "",
+     "68,582",
+     "",
+     "82,966"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 505,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Basic net income (loss) per share is computed by dividing net income (loss) by the weighted average number of shares of common stock outstanding during the period. Diluted net income per share for the three months ended March 31, 2016 is computed by dividing net income, as adjusted, by the sum of the weighted average number of shares of common stock and the dilutive potential common stock equivalents then outstanding. Potential common stock equivalents consist of stock options and warrants. The 2015 Pre-Funded Warrants, of which there were 48,274 outstanding during the entire first quarter of 2016, were included in the fully diluted calculation, as they do not require any payment to be exercised. Since there is a net loss attributable to common stockholders for the three months ended March 31, 2015, the inclusion of common stock equivalents in the computation for those periods would be antidilutive.\nThe following potentially dilutive securities have been excluded from the computation of diluted net income (loss) per share since their inclusion would be antidilutive:",
+   "prose_after": "8. COMMITMENTS AND CONTINGENCIES\nThe Company is involved in legal matters and disputes in the ordinary course of business. We do not anticipate that the outcome of such matters and disputes will materially affect the Company\u2019s financial statements.\n9. RELATED PARTY TRANSACTIONS\nThe Company\u2019s Chief Scientific Officer and principal founder of Cellectar, who is a director and shareholder of the Company, is a faculty member at the University of Wisconsin-Madison (\u201cUW\u201d). During the three months ended March 31, 2016, the Company incurred approximately $71,000 in expenses from UW for costs associated with clinical trial agreements. The Company had accrued liabilities to UW of approximately $128,000 as of March 31, 2016.\n10. SUBSEQUENT EVENTS\n2016 Underwritten Offering\nOn April 15, 2016 the Company entered into an Underwriting Agreement with Ladenburg Thalmann & Co., Inc. in connection with the Company\u2019s Registration Statement on Form S-1. Pursuant to the Underwriting Agreement, the Company agreed to sell to the Underwriter 1,378,364 shares of common stock, Series B pre-funded warrants to purchase 1,908,021 shares of common stock and Series A warrants to purchase 3,286,385 shares of common stock, plus up to an additional 492,957 shares of common stock and Series A warrants to purchase up to an additional 492,957 shares of common stock in the event of the exercise by the Underwriter of its over-allotment option. The public offering price of a share of common stock together with a Series A warrant to purchase one share of common stock was $2.13. The public offering price of a Series B pre-funded warrant to purchase one share of common stock together with a Series A warrant to purchase one share of common stock was $2.12. The Series B pre-funded warrants have an exercise price of $0.01 per share, are immediately exercisable and do not expire. The Series A warrants have an exercise price of $3.04 per share, are exercisable for five years from the date of issuance, and are callable by the Company under certain circumstances.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 536,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Filed with",
+     "Incorporation by Reference",
+     "",
+     ""
+    ],
+    [
+     "Exhibit No.",
+     "Description",
+     "this Form 10-Q",
+     "Form",
+     "Filing Date",
+     "Exhibit No."
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Agreement and Plan of Merger by and among Novelos Therapeutics, Inc., Cell Acquisition Corp. and Cellectar, Inc. dated April 8, 2011",
+     "",
+     "8-K",
+     "April 11, 2011",
+     "2.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Second Amended and Restated Certificate of Incorporation",
+     "",
+     "8-K",
+     "April 11, 2011",
+     "3.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1.1",
+     "Amendment to the Second Amended and Restated Certificate of Incorporation",
+     "",
+     "8-K",
+     "June 13, 2014",
+     "3.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.1.2",
+     "Amendment to Second Amended and Restated Certificate of Incorporation",
+     "",
+     "8-K",
+     "March 4, 2016",
+     "3.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated By-laws",
+     "",
+     "8-K",
+     "June 1, 2011",
+     "3.1"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of chief executive officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of chief financial officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of chief executive officer and chief financial officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002",
+     "X",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "101",
+     "Interactive Data Files",
+     "X",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "We have incurred net losses and negative cash flows since inception. We currently have no product revenues, and may not succeed in developing or commercializing any products that will generate product or licensing revenues. We do not expect to have any products on the market for several years. Our primary activity to date has been research and development and conducting clinical trials. Development of our product candidates requires a process of preclinical and clinical testing, during which our product candidates could fail. We may not be able to enter into agreements with one or more companies experienced in the manufacturing and marketing of therapeutic drugs and, to the extent that we are unable to do so, we may not be able to market our product candidates. Whether we achieve profitability or not will depend on our success in developing, manufacturing, and marketing our product candidates. We have experienced net losses and negative cash flows from operating activities since inception and we expect such losses and negative cash flows to continue for the foreseeable future. As of March 31, 2016, we had a stockholders\u2019 equity of approximately $2,577,000. The operating loss for the three months ended March 31, 2016 was approximately ($2,001,000), and we may never achieve profitability.\nItem 6. Exhibits",
+   "prose_after": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 663,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CELLECTAR BIOSCIENCES, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:  May 12, 2016",
+     "By:",
+     "/s/ James V. Caruso"
+    ],
+    [
+     "",
+     "",
+     "James V. Caruso"
+    ],
+    [
+     "",
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "CELLECTAR BIOSCIENCES, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 698,
+    "end_line": 706
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nIn accordance with the requirements of the Exchange Act, the registrant caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 693,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 707,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

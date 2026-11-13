@@ -1,0 +1,7977 @@
+{
+ "accession": "0001387131-20-002583",
+ "cik": "0001360565",
+ "form": "10-K",
+ "filing_date": "2020-03-05",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "wfcf-10k_123119.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "43-1802805"
+    ],
+    [
+     "(State of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2019\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________ to _____________\nCommission File No. 333-133624\nWHERE FOOD COMES FROM, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "202 6th Street, Suite 400\nCastle Rock, CO 80104\n(Address of principal executive offices, including zip code)\nRegistrant's telephone number, including area code:\n(303) 895-3002\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, $0.001 par value\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "PART I",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "BUSINESS",
+     "3"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "10"
+    ],
+    [
+     "ITEM 1B.",
+     "UNRESOLVED STAFF COMMENTS",
+     "17"
+    ],
+    [
+     "ITEM 2.",
+     "PROPERTIES",
+     "17"
+    ],
+    [
+     "ITEM 3.",
+     "LEGAL PROCEEDINGS",
+     "18"
+    ],
+    [
+     "ITEM 4.",
+     "MINE SAFETY DISCLOSURES",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "19"
+    ],
+    [
+     "ITEM 6.",
+     "SELECTED FINANCIAL DATA",
+     "20"
+    ],
+    [
+     "ITEM 7.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "20"
+    ],
+    [
+     "ITEM 7A.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "30"
+    ],
+    [
+     "ITEM 8.",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "30"
+    ],
+    [
+     "ITEM 9.",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "69"
+    ],
+    [
+     "ITEM 9A.",
+     "CONTROLS AND PROCEDURES",
+     "69"
+    ],
+    [
+     "ITEM 9B.",
+     "OTHER INFORMATION",
+     "70"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "71"
+    ],
+    [
+     "ITEM 11.",
+     "EXECUTIVE COMPENSATION",
+     "71"
+    ],
+    [
+     "ITEM 12.",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS",
+     "71"
+    ],
+    [
+     "ITEM 13.",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "71"
+    ],
+    [
+     "ITEM 14.",
+     "PRINCIPAL ACCOUNTING FEES AND SERVICES",
+     "71"
+    ],
+    [
+     "ITEM 15.",
+     "EXHIBITS, FINANCIAL STATEMENT SCHEDULES",
+     "72"
+    ],
+    [
+     "ITEM 16.",
+     "FORM 10-K SUMMARY",
+     "73"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "SIGNATURES",
+     "74"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 77,
+    "end_line": 111
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nThe aggregate market value of the voting stock held by non-affiliates of the registrant on June 28, 2019, the last business day of our most recently completed second fiscal quarter, was $21,689,707, based on the closing stock price on June 28, 2019 of $1.77.\nThe number of shares of the registrant\u2019s common stock, $0.001 par value per share, outstanding as of February 20, 2020 was 25,049,462.\nDOCUMENTS INCORPORATED BY REFERENCE: Part III is incorporated by reference from the registrant\u2019s Definitive Proxy Statement for its 2020 Annual Meeting of Shareholders to be filed, pursuant to Regulation 14A, within 120 days after the close of the registrant\u2019s 2019 fiscal year.",
+   "prose_after": "2\nPART I\nITEM 1. BUSINESS\nGENERAL\nWhere Food Comes From, Inc. and its subsidiaries (\u201cWFCF,\u201d the \u201cCompany,\u201d \u201cour,\u201d \u201cwe,\u201d or \u201cus\u201d) is a leading trusted resource for third-party verification of food production practices in North America. The Company supports more than 15,000 farmers, ranchers, vineyards, wineries, processors, retailers, distributors, trade associations, consumer brands and restaurants with a wide variety of value-added services provided through its family of verifiers, including IMI Global, International Certification Services, Validus Verification Services, Sterling Solutions, and A Bee Organic. In order to have credibility, product claims such as gluten-free, non-GMO, non-hormone treated, humane handling, and others require verification by an independent third-party such as WFCF. The Company\u2019s principal business is conducting both on-site and desk audits to verify that claims being made about livestock, crops and other food products are accurate.\nThrough our more recent acquisitions, including SureHarvest Services LLC; Sow Organic, LLC; and JVF Consulting, LLC, we provide sustainability programs, compliance management and farming information management solutions to drive sustainable value creation. We employ a software-as-a-service (\u201cSaaS\u201d) revenue model that bundles annual software licenses with ongoing software enhancements and upgrades and a wide range of professional services that generate incremental revenue specific to the food and agricultural industry.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 76,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 113,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Cost of Shares",
+     "",
+     "Average Cost per Share",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares purchased - October 2019",
+     "",
+     "46,323",
+     "$",
+     "77,637",
+     "$",
+     "1.68"
+    ],
+    [
+     "Shares purchased - November 2019",
+     "",
+     "43,009",
+     "",
+     "67,885",
+     "$",
+     "1.58"
+    ],
+    [
+     "Shares purchased - December 2019",
+     "",
+     "21,900",
+     "",
+     "38,688",
+     "$",
+     "1.77"
+    ],
+    [
+     "Total",
+     "",
+     "111,232",
+     "$",
+     "184,210",
+     "$",
+     "1.66"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 496,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "The issuances of the shares of our common stock described above were pursuant to the exemption from registration provided by Section 4(a)(2) of the Securities Act of 1933, as amended and related state private offering exemptions. All of the investors were Accredited Investors as defined in the Securities Act who took their shares for investments purposes without a view to distribution and had access to information concerning the Company and its business prospects, as required by the Securities Act. In addition, there was no general solicitation or advertising for these shares. All certificates for these shares issued pursuant to Section 4(a)(2) contain a restrictive legend. Finally, our stock transfer agent has been instructed not to transfer any of such shares, unless such shares are registered for resale or there is an exemption with respect to their transfer.\nIssuer Purchases of Equity Securities\nOn September 30, 2019, our Board of Directors approved a plan to buy back up to ten million additional shares of our common stock from the open market (\u201cStock Buyback Plan\u201d). Our Stock Buyback Plan has been and will be used to return capital to shareholders and to minimize the dilutive impact of stock options and other share-based awards. In the future, we may consider additional share repurchases under our plan based on several factors, including our cash position, share price, operational liquidity, and planned investment and financing needs.\nActivity for the quarter ended December 31, 2019 is as follows:",
+   "prose_after": "ITEM 6. SELECTED FINANCIAL DATA\nNot applicable.\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nCautionary Note Regarding Forward-Looking Statements\nThis Annual Report on Form 10-K and other publicly available documents, including the documents incorporated herein and therein by reference, contain \u201cforward-looking statements\u201d within the meaning of the safe harbor provisions of the U.S. Private Securities Litigation Reform Act of 1995. Additionally, our officers and representatives may from time to time make forward-looking statements. Forward-looking statements can be identified by words such as \u201canticipate,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cgoal,\u201d \u201cseek,\u201d \u201cbelieve,\u201d \u201cproject,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cstrategy,\u201d \u201cfuture,\u201d \u201clikely,\u201d \u201cmay,\u201d \u201cshould,\u201d \u201cwill\u201d and similar references to future periods. Examples of forward-looking statements include, among others, statements we make regarding:\n\u25cf our expectations and beliefs about the market and industry and competitive landscape;",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 493,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year ended December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Verification and Certification Segment",
+     "",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "",
+     "Eliminations and Other",
+     "",
+     "",
+     "Consolidated Totals",
+     "",
+     "Verification and Certification Segment",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "",
+     "Eliminations and Other",
+     "",
+     "",
+     "Consolidated Totals",
+     "",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible and other assets, net",
+     "$",
+     "1,303,795",
+     "",
+     "$",
+     "1,943,900",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "3,247,695",
+     "$",
+     "1,464,435",
+     "$",
+     "2,387,686",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "3,852,121",
+     ""
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,133,122",
+     "",
+     "",
+     "1,812,613",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,945,735",
+     "",
+     "1,133,122",
+     "",
+     "2,010,612",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,143,734",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "13,236,311",
+     "",
+     "",
+     "5,001,150",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "18,237,461",
+     "",
+     "9,178,009",
+     "",
+     "5,285,929",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "14,463,938",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Verification and certification service revenue",
+     "$",
+     "15,564,411",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "15,564,411",
+     "$",
+     "13,743,311",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "13,743,311",
+     ""
+    ],
+    [
+     "Product sales",
+     "",
+     "3,300,799",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,300,799",
+     "",
+     "2,266,771",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,266,771",
+     ""
+    ],
+    [
+     "Software license, maintenance and support services revenue",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,273,820",
+     "",
+     "",
+     "(207,277)",
+     "",
+     "",
+     "1,066,543",
+     "",
+     "\u2014",
+     "",
+     "993,161",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "993,161",
+     ""
+    ],
+    [
+     "Software-related consulting service revenue",
+     "",
+     "\u2014",
+     "",
+     "",
+     "947,524",
+     "",
+     "",
+     "(104,861)",
+     "",
+     "",
+     "842,663",
+     "",
+     "\u2014",
+     "",
+     "800,316",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "800,316",
+     ""
+    ],
+    [
+     "Total revenues",
+     "$",
+     "18,865,210",
+     "",
+     "$",
+     "2,221,344",
+     "",
+     "$",
+     "(312,138)",
+     "",
+     "$",
+     "20,774,416",
+     "$",
+     "16,010,082",
+     "$",
+     "1,793,477",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "17,803,559",
+     ""
+    ],
+    [
+     "Costs of revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs of verification and certification services",
+     "",
+     "8,628,292",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(183,983)",
+     "",
+     "",
+     "8,444,309",
+     "",
+     "7,564,946",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,564,946",
+     ""
+    ],
+    [
+     "Costs of products",
+     "",
+     "2,148,564",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,148,564",
+     "",
+     "1,438,648",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,438,648",
+     ""
+    ],
+    [
+     "Costs of software license, maintenance and support services",
+     "",
+     "\u2014",
+     "",
+     "",
+     "615,248",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "615,248",
+     "",
+     "\u2014",
+     "",
+     "644,746",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "644,746",
+     ""
+    ],
+    [
+     "Costs of software-related consulting services",
+     "",
+     "\u2014",
+     "",
+     "",
+     "486,880",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "486,880",
+     "",
+     "\u2014",
+     "",
+     "411,468",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "411,468",
+     ""
+    ],
+    [
+     "Total costs of revenues",
+     "",
+     "10,776,856",
+     "",
+     "",
+     "1,102,128",
+     "",
+     "",
+     "(183,983)",
+     "",
+     "",
+     "11,695,001",
+     "",
+     "9,003,594",
+     "",
+     "1,056,214",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,059,808",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "8,088,354",
+     "",
+     "",
+     "1,119,216",
+     "",
+     "",
+     "(128,155)",
+     "",
+     "",
+     "9,079,415",
+     "",
+     "7,006,488",
+     "",
+     "737,263",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,743,751",
+     ""
+    ],
+    [
+     "Depreciation & amortization",
+     "",
+     "373,583",
+     "",
+     "",
+     "722,877",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,096,460",
+     "",
+     "320,094",
+     "",
+     "622,324",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "942,418",
+     ""
+    ],
+    [
+     "Other operating expenses",
+     "",
+     "5,624,489",
+     "",
+     "",
+     "934,250",
+     "",
+     "",
+     "(128,155)",
+     "",
+     "",
+     "6,430,584",
+     "",
+     "5,245,707",
+     "",
+     "681,073",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,926,780",
+     ""
+    ],
+    [
+     "Segment operating (loss)/income",
+     "$",
+     "2,090,282",
+     "",
+     "$",
+     "(537,911)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,552,371",
+     "$",
+     "1,440,687",
+     "$",
+     "(566,134)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "874,553",
+     ""
+    ],
+    [
+     "Other items to reconcile segment operating income (loss) to net income attributable to WFCF:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income)",
+     "",
+     "(92,584)",
+     "",
+     "",
+     "161,985",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "69,401",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(109,433)",
+     "",
+     "",
+     "(109,433)",
+     ""
+    ],
+    [
+     "Income tax (benefit)/expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "460,000",
+     "",
+     "",
+     "460,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "309,008",
+     "",
+     "",
+     "309,008",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "322,195",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "322,195",
+     "",
+     "\u2014",
+     "",
+     "125,758",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "125,758",
+     ""
+    ],
+    [
+     "Net (loss)/income attributable to WFCF",
+     "$",
+     "2,182,866",
+     "",
+     "$",
+     "(377,701)",
+     "",
+     "$",
+     "(460,000)",
+     "",
+     "$",
+     "1,345,165",
+     "$",
+     "1,440,687",
+     "$",
+     "(440,376)",
+     "",
+     "$",
+     "(199,575)",
+     "",
+     "$",
+     "800,736",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 551,
+    "end_line": 602
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf developments and changes in laws and regulations, including increased regulation of the livestock and food industry through legislative action and revised rules and standards;\n\u25cf strategic actions, including acquisitions and our success in integrating acquired businesses;\n\u25cf enforceability of our patents, trademarks and other intellectual property rights;\n\u25cf continued service of key senior management personnel; and\n\u25cf such other factors as discussed throughout Part II, \u201cItem 7. \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations\u201d and in Part I, Item 1A. \u201cRisk Factors.\u201d\nAny forward-looking statement made by us in this Annual Report on Form 10-K is based only on information currently available to us and speaks only as of the date on which it is made. We undertake no obligation to publicly update any forward-looking statement, whether written or oral, that may be made from time to time, whether as a result of new information, future developments or otherwise.\nRESULTS OF OPERATIONS\nYear Ended December 31, 2019 Compared to Year Ended December 31, 2018\nThe following table shows information for reportable operating business segments:",
+   "prose_after": "Verification and Certification Segment\nVerification and certification service revenues consist of fees charged for verification audits and other verification and certification related services that the Company performs for customers. Fees earned from our WFCF labeling program are also included in our verification and certification revenues as it represents a value-added extension of our source verification. Verification and certification service revenue for the year ended December 31, 2019 increased approximately $1.82 million, or 13.3% compared to 2018. Overall, the increase is due to an increase in new verification customers, as well as an increase in product offerings. We continue to see increased demand from cattle producers in response to the re-opening of the export market to China as discussed in Item 1. \u201cBusiness - Industry Background - Current Marketplace Opportunities.\u201d\nOur product sales are an ancillary part of our verification and certification services and represent sales of cattle identification ear tags. Product sales for the year ended December 31, 2019 increased approximately $1.0 million, or 45.6% compared to 2018. Overall, our product sales have increased primarily in response to the re-opening of the China export market and the requirement for source and age verification using an identification tag at birth for cattle.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 527,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 603,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firms",
+     "31"
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2019 and 2018",
+     "33"
+    ],
+    [
+     "Consolidated Statements of Income for the years ended December 31, 2019 and December 31, 2018",
+     "34"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2019 and December 31, 2018",
+     "35"
+    ],
+    [
+     "Consolidated Statements of Equity for the years ended December 31, 2019 and December 31, 2018",
+     "36"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "37"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Financial Statements:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 801,
+    "end_line": 811
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Additionally, when acquiring a company that has recorded deferred revenue in its historical, pre-acquisition financial statements, we are required as part of purchase accounting to re-measure the deferred revenue as of the acquisition date. Deferred revenue is re-measured to represent solely the cost that relates to the associated legal performance obligation which we assumed as part of the acquisition, plus a normal profit margin representing the level of effort or assumption of risk assumed. Legal performance obligations that simply relate to the passage of time would not result in recognized deferred revenue as there is little to no associated cost.\nRECENT ACCOUNTING PRONOUNCEMENTS\nSee Note 2 to our consolidated financial statements set forth in Item 8 of this Annual Report on Form 10-K for a detailed description of recent accounting pronouncements.\nITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK\nNot applicable.\nITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA\nIndex to Financial Statements",
+   "prose_after": "Report of Independent Registered Public Accounting Firm\nTo the Board of Directors and Stockholders of\nCastle Rock, Colorado\nOPINION ON THE FINANCIAL STATEMENTS\nWe have audited the accompanying consolidated balance sheet of Where Food Comes From, Inc. and its subsidiaries (the \u201cCompany\u201d) as of December 31, 2019, and the related consolidated statements of operations, equity, and cash flows, for the year ended December 31, 2019, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2019 and the results of its operations and its cash flows for the year ended December 31, 2019, in conformity with accounting principles generally accepted in the United States of America.\nBASIS FOR OPINION\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "2,637,665",
+     "",
+     "$",
+     "1,482,391",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance",
+     "",
+     "2,515,244",
+     "",
+     "",
+     "2,205,162",
+     ""
+    ],
+    [
+     "Short-term investments in certificates of deposit",
+     "",
+     "258,097",
+     "",
+     "",
+     "245,597",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "450,346",
+     "",
+     "",
+     "439,424",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "5,861,352",
+     "",
+     "",
+     "4,372,574",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "1,545,294",
+     "",
+     "",
+     "1,675,472",
+     ""
+    ],
+    [
+     "Right-of-use assets",
+     "",
+     "3,268,343",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Long-term investments in certificates of deposit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "252,999",
+     ""
+    ],
+    [
+     "Investment in Progressive Beef",
+     "",
+     "991,115",
+     "",
+     "",
+     "991,115",
+     ""
+    ],
+    [
+     "Intangible and other assets, net",
+     "",
+     "3,247,695",
+     "",
+     "",
+     "3,852,121",
+     ""
+    ],
+    [
+     "Goodwill, net",
+     "",
+     "2,945,734",
+     "",
+     "",
+     "3,143,734",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "",
+     "377,928",
+     "",
+     "",
+     "175,923",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "18,237,461",
+     "",
+     "$",
+     "14,463,938",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,022,835",
+     "",
+     "$",
+     "533,925",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "673,768",
+     "",
+     "",
+     "492,601",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "797,033",
+     "",
+     "",
+     "654,872",
+     ""
+    ],
+    [
+     "Current portion of notes payable",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,173",
+     ""
+    ],
+    [
+     "Current portion of finance lease obligations",
+     "",
+     "8,317",
+     "",
+     "",
+     "11,309",
+     ""
+    ],
+    [
+     "Current portion of operating lease obligations",
+     "",
+     "239,519",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,741,472",
+     "",
+     "",
+     "1,702,880",
+     ""
+    ],
+    [
+     "Notes payable, net of current portion",
+     "",
+     "\u2014",
+     "",
+     "",
+     "32,220",
+     ""
+    ],
+    [
+     "Finance lease obligations, net of current portion",
+     "",
+     "21,405",
+     "",
+     "",
+     "32,747",
+     ""
+    ],
+    [
+     "Operating lease obligation, net of current portion",
+     "",
+     "3,525,462",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Deferred rent liability",
+     "",
+     "\u2014",
+     "",
+     "",
+     "119,187",
+     ""
+    ],
+    [
+     "Lease incentive obligation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "362,088",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "6,288,339",
+     "",
+     "",
+     "2,249,122",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contingently redeemable non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,449,007",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value; 5,000,000 shares authorized; none issued or outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value; 95,000,000 shares authorized; 25,802,066 (2019) and 25,473,115 (2018) shares issued, and 24,977,344 (2019) and 24,968,256 (2018) shares outstanding",
+     "",
+     "25,802",
+     "",
+     "",
+     "25,473",
+     ""
+    ],
+    [
+     "Additional paid-in-capital",
+     "",
+     "11,424,512",
+     "",
+     "",
+     "11,031,264",
+     ""
+    ],
+    [
+     "Treasury stock of 824,722 (2019) and 504,859 (2018) shares",
+     "",
+     "(1,664,490)",
+     "",
+     "",
+     "(1,109,061)",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "2,163,298",
+     "",
+     "",
+     "818,133",
+     ""
+    ],
+    [
+     "Total equity",
+     "",
+     "11,949,122",
+     "",
+     "",
+     "10,765,809",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "18,237,461",
+     "",
+     "$",
+     "14,463,938",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 874,
+    "end_line": 933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Crowe LLP\nWe served as the Company\u2019s auditors from 2018 to 2019.\nDenver, Colorado\nMarch 29, 2019\nConsolidated Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 870,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Verification and certification service revenue",
+     "$",
+     "15,564,411",
+     "",
+     "$",
+     "13,743,311",
+     ""
+    ],
+    [
+     "Product sales",
+     "",
+     "3,300,799",
+     "",
+     "",
+     "2,266,771",
+     ""
+    ],
+    [
+     "Software license, maintenance and support services revenue",
+     "",
+     "1,066,543",
+     "",
+     "",
+     "993,161",
+     ""
+    ],
+    [
+     "Software-related consulting service revenue",
+     "",
+     "842,663",
+     "",
+     "",
+     "800,316",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "20,774,416",
+     "",
+     "",
+     "17,803,559",
+     ""
+    ],
+    [
+     "Costs of revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs of verification and certification services",
+     "",
+     "8,444,309",
+     "",
+     "",
+     "7,564,946",
+     ""
+    ],
+    [
+     "Costs of products",
+     "",
+     "2,148,564",
+     "",
+     "",
+     "1,438,648",
+     ""
+    ],
+    [
+     "Costs of software license, maintenance and support services",
+     "",
+     "615,248",
+     "",
+     "",
+     "644,746",
+     ""
+    ],
+    [
+     "Costs of software-related consulting services",
+     "",
+     "486,880",
+     "",
+     "",
+     "411,468",
+     ""
+    ],
+    [
+     "Total costs of revenues",
+     "",
+     "11,695,001",
+     "",
+     "",
+     "10,059,808",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "9,079,415",
+     "",
+     "",
+     "7,743,751",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "7,527,044",
+     "",
+     "",
+     "6,869,198",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "1,552,371",
+     "",
+     "",
+     "874,553",
+     ""
+    ],
+    [
+     "Other expense (income):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend income from Progressive Beef",
+     "",
+     "(120,000)",
+     "",
+     "",
+     "(100,000)",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "",
+     "(9,326)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Impairment of goodwill",
+     "",
+     "198,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other income, net",
+     "",
+     "(9,330)",
+     "",
+     "",
+     "(14,270)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "10,057",
+     "",
+     "",
+     "4,837",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "1,482,970",
+     "",
+     "",
+     "983,986",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "460,000",
+     "",
+     "",
+     "309,008",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "1,022,970",
+     "",
+     "",
+     "674,978",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest",
+     "",
+     "322,195",
+     "",
+     "",
+     "125,758",
+     ""
+    ],
+    [
+     "Net income attributable to Where Food Comes From, Inc.",
+     "$",
+     "1,345,165",
+     "",
+     "$",
+     "800,736",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Per share - net income attributable to Where Food Comes From, Inc.:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "$",
+     "0.05",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "Diluted",
+     "$",
+     "0.05",
+     "",
+     "$",
+     "0.03",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average number of common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "24,850,409",
+     "",
+     "",
+     "24,825,933",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "25,027,247",
+     "",
+     "",
+     "24,989,457",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 940,
+    "end_line": 993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 936,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 996,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,022,970",
+     "",
+     "$",
+     "674,978",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "1,096,460",
+     "",
+     "",
+     "942,418",
+     ""
+    ],
+    [
+     "Impairment of goodwill",
+     "",
+     "198,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Lease incentive obligation",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(15,321)",
+     ""
+    ],
+    [
+     "Deferred rent liability",
+     "",
+     "\u2014",
+     "",
+     "",
+     "119,187",
+     ""
+    ],
+    [
+     "Write-off beneficial lease arrangement",
+     "",
+     "\u2014",
+     "",
+     "",
+     "56,457",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "",
+     "(9,326)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "162,405",
+     "",
+     "",
+     "161,128",
+     ""
+    ],
+    [
+     "Deferred tax benefit",
+     "",
+     "(97,645)",
+     "",
+     "",
+     "(96,301)",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "27,295",
+     "",
+     "",
+     "30,000",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities, net of effect from acquisitions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable",
+     "",
+     "(337,377)",
+     "",
+     "",
+     "(336,412)",
+     ""
+    ],
+    [
+     "Short-term investments",
+     "",
+     "(12,500)",
+     "",
+     "",
+     "(5,390)",
+     ""
+    ],
+    [
+     "Prepaid expenses and other assets",
+     "",
+     "(10,922)",
+     "",
+     "",
+     "(194,351)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "488,910",
+     "",
+     "",
+     "76,618",
+     ""
+    ],
+    [
+     "Accrued expenses and other current liabilities",
+     "",
+     "181,167",
+     "",
+     "",
+     "(108,814)",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "142,161",
+     "",
+     "",
+     "(150,027)",
+     ""
+    ],
+    [
+     "Right of use assets and liabilities, net",
+     "",
+     "23,333",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "2,874,931",
+     "",
+     "",
+     "1,154,170",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisition of Sow Organic",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(450,000)",
+     ""
+    ],
+    [
+     "Acquisition of JVF Consulting",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(500,000)",
+     ""
+    ],
+    [
+     "Acquisition of non-controlling interest in SureHarvest Services, LLC, net of tax effect",
+     "",
+     "(1,000,000)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Investment in Progressive Beef",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(900,000)",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "",
+     "1,000",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Purchases of property, equipment and software development costs",
+     "",
+     "(369,200)",
+     "",
+     "",
+     "(366,691)",
+     ""
+    ],
+    [
+     "Proceeds from maturity of short-term investments",
+     "",
+     "252,999",
+     "",
+     "",
+     "250,000",
+     ""
+    ],
+    [
+     "Redemption (purchases) of other long-term assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(8,131)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(1,115,201)",
+     "",
+     "",
+     "(1,974,822)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Repayments of notes payable",
+     "",
+     "(42,393)",
+     "",
+     "",
+     "(9,505)",
+     ""
+    ],
+    [
+     "Repayments of finance lease obligations",
+     "",
+     "(6,634)",
+     "",
+     "",
+     "(8,699)",
+     ""
+    ],
+    [
+     "Stock repurchase under Stock Buyback Plan",
+     "",
+     "(555,429)",
+     "",
+     "",
+     "(384,531)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(604,456)",
+     "",
+     "",
+     "(402,735)",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "1,155,274",
+     "",
+     "",
+     "(1,223,387)",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "1,482,391",
+     "",
+     "",
+     "2,705,778",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "2,637,665",
+     "",
+     "$",
+     "1,482,391",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1000,
+    "end_line": 1056
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Equity\nYears ended December 31, 2018 and 2019",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 996,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Retained",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Earnings",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 1, 2018",
+     "",
+     "24,652,895",
+     "",
+     "$",
+     "24,972",
+     "$",
+     "10,353,037",
+     "",
+     "$",
+     "(724,530)",
+     "",
+     "$",
+     "17,397",
+     "$",
+     "9,670,876",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of acquisition fair value adjustment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(321,937)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(321,937)",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "161,128",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "161,128",
+     ""
+    ],
+    [
+     "Issuance of common shares in acquisition of Sow Organic LLC",
+     "",
+     "217,654",
+     "",
+     "",
+     "218",
+     "",
+     "432,913",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "433,131",
+     ""
+    ],
+    [
+     "Issuance of common shares for investment in Progressive Beef LLC",
+     "",
+     "50,340",
+     "",
+     "",
+     "50",
+     "",
+     "91,065",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "91,115",
+     ""
+    ],
+    [
+     "Issuance of common shares in acquisition of JVF Consulting LLC",
+     "",
+     "158,437",
+     "",
+     "",
+     "159",
+     "",
+     "315,132",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "315,291",
+     ""
+    ],
+    [
+     "Repurchase of common shares under Stock Buyback Plan",
+     "",
+     "(185,070)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(384,531)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(384,531)",
+     ""
+    ],
+    [
+     "Vesting of restricted shares issued to employees",
+     "",
+     "74,000",
+     "",
+     "",
+     "74",
+     "",
+     "(74)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income attributable to Where Food Comes From, Inc.",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "800,736",
+     "",
+     "800,736",
+     ""
+    ],
+    [
+     "Balance at December 31, 2018",
+     "",
+     "24,968,256",
+     "",
+     "$",
+     "25,473",
+     "$",
+     "11,031,264",
+     "",
+     "$",
+     "(1,109,061)",
+     "",
+     "$",
+     "818,133",
+     "$",
+     "10,765,809",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "162,405",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "162,405",
+     ""
+    ],
+    [
+     "Acquisition of non-controlling interest in SureHarvest Services, LLC, net of tax effect",
+     "",
+     "303,951",
+     "",
+     "",
+     "304",
+     "",
+     "230,868",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "231,172",
+     ""
+    ],
+    [
+     "Repurchase of common shares under Stock Buyback Plan",
+     "",
+     "(319,863)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(555,429)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(555,429)",
+     ""
+    ],
+    [
+     "Vesting of restricted shares to Employees",
+     "",
+     "25,000",
+     "",
+     "",
+     "25",
+     "",
+     "(25)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income attributable to Where Food Comes From, Inc.",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,345,165",
+     "",
+     "1,345,165",
+     ""
+    ],
+    [
+     "Balance at December 31, 2019",
+     "",
+     "24,977,344",
+     "",
+     "$",
+     "25,802",
+     "$",
+     "11,424,512",
+     "",
+     "$",
+     "(1,664,490)",
+     "",
+     "$",
+     "2,163,298",
+     "$",
+     "11,949,122",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1065,
+    "end_line": 1094
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nConsolidated Statement of Equity\nYears ended December 31, 2018 and 2019",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nWhere Food Comes From, Inc. Notes to the Consolidated Financial Statements\nNote 1 - The Company and Basis of Presentation\nBusiness Overview\nWhere Food Comes From, Inc. is a Colorado corporation based in Castle Rock, Colorado (\u201cWFCF\u201d, the \u201cCompany,\u201d \u201cour,\u201d \u201cwe,\u201d or \u201cus\u201d). We are an independent, third-party food verification company conducting both on-site and desk audits to verify that claims being made about livestock, food, other high-value specialty crops and agricultural products are accurate. We care about food and other agricultural products, how it is grown and raised, the quality of what we eat, what farmers and ranchers do, and authentically telling that story to the consumer. Our team visits farms and ranches and looks at their plants, animals, and records, and compares the information we collect to specific standards or claims that farms and ranches want to make about how they are producing food. We strive to ensure that everyone involved in the food business - from growers and farmers to retailers and shoppers \u2013 can count on WFCF to provide authentic and transparent information about the food we eat and how, where, and by whom it is produced.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1059,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1097,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year ended December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Verification and Certification Segment",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "Eliminations and Other",
+     "",
+     "",
+     "Consolidated Totals",
+     "",
+     "Verification and Certification Segment",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "Eliminations and Other",
+     "",
+     "Consolidated Totals",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Verification and certification service revenue",
+     "$",
+     "15,564,411",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "15,564,411",
+     "$",
+     "13,743,311",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "13,743,311"
+    ],
+    [
+     "Product sales",
+     "",
+     "3,300,799",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,300,799",
+     "",
+     "2,266,771",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,266,771"
+    ],
+    [
+     "Software license, maintenance and support services revenue",
+     "",
+     "\u2014",
+     "",
+     "1,273,820",
+     "",
+     "(207,277)",
+     "",
+     "",
+     "1,066,543",
+     "",
+     "\u2014",
+     "",
+     "993,161",
+     "",
+     "\u2014",
+     "",
+     "993,161"
+    ],
+    [
+     "Software-related consulting service revenue",
+     "",
+     "\u2014",
+     "",
+     "947,524",
+     "",
+     "(104,861)",
+     "",
+     "",
+     "842,663",
+     "",
+     "\u2014",
+     "",
+     "800,316",
+     "",
+     "\u2014",
+     "",
+     "800,316"
+    ],
+    [
+     "Total revenues",
+     "$",
+     "18,865,210",
+     "$",
+     "2,221,344",
+     "$",
+     "(312,138)",
+     "",
+     "$",
+     "20,774,416",
+     "$",
+     "16,010,082",
+     "$",
+     "1,793,477",
+     "$",
+     "\u2014",
+     "$",
+     "17,803,559"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1267,
+    "end_line": 1283
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "In addition, we utilize a third-party to provide web-hosting services in the provision of our SaaS arrangements. In this scenario, we are primarily responsible for fulfilling the promise to provide web-hosting services to the customer, and we establish the fee that the customer is charged for the web-hosting services. Consequently, we have also concluded that we are the principal in the provision of web-hosting services under our SaaS arrangements. As such, we present revenue on a gross basis, with consideration received from our customer for the web-hosting service recorded as revenue and the cost paid to the third-party to provide those web-hosting services recorded as an expense.\nDisaggregation of Revenue\nWe have identified four material revenue categories in our business: (i) verification and certification service revenue, (ii) product sales, (iii) software license, maintenance and support services revenue and (iv) software-related consulting service revenue.\nRevenue attributable to each of our identified revenue categories is disaggregated in the table below.",
+   "prose_after": "Transaction Price Allocated to Remaining Performance Obligations\nWe generally enter into revenue contracts with a one-year term. In certain instances, we have concluded that our contract term is less than one year because: (i) the termination provisions present in the contract impact the contract term under ASC 606 or (ii) a contract under ASC 606 arises at the time our customer requests the provision of a good or service that is delivered within or over a few days to a couple of weeks. As a result of our short-term contract structures, we have utilized the practical expedient in ASC 606-10-50-14 that exempts us from disclosure of the transaction price allocated to remaining performance obligations if the performance obligation is part of a contract that has an original expected duration of one year or less.\nWhere Food Comes From, Inc. Notes to the Consolidated Financial Statements\nContract Balances\nUnder our animal verification and certification services contracts, we invoice customers once the performance obligation for the provision of a site or location audit has been satisfied, at which point payment is unconditional. In addition, any product sales are invoiced upon delivery to the customer, at which point payment is also unconditional. Accordingly, our animal verification and certification services contracts do not give rise to a contract asset under ASC 606; rather, invoiced amounts reflect accounts receivable.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1252,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 43
+    },
+    "after": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Deferred revenue:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unearned revenue January 1, 2019",
+     "$",
+     "654,873",
+     ""
+    ],
+    [
+     "Unearned billings",
+     "",
+     "2,683,647",
+     ""
+    ],
+    [
+     "Revenue recognized",
+     "",
+     "(2,541,487)",
+     ""
+    ],
+    [
+     "Unearned revenue December 31, 2019",
+     "$",
+     "797,033",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Deferred revenue:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Our software subscriptions, web-hosting, and support services are paid by our customers upfront on a nonrefundable basis. That is, payment is made in advance of the provision of these services to our customers. As a result, we recognize deferred revenue upon receipt of the upfront payment from our customers for software subscriptions, web-hosting and maintenance and support services. Revenue is subsequently recognized, and the related deferred revenue is reduced, on a straight-line basis during the annual contract term that these stand-ready services are provided to customer.\nSoftware-related consulting services are invoiced monthly on a time-incurred basis, at which point we have an enforceable right to payment for those services. Because payment is unconditional upon invoicing, our software-related consulting services are reflected as accounts receivable.\nAs of December 31, 2019, and January 1, 2019, accounts receivable from contracts with customers, net of allowance for doubtful accounts, were approximately $2.5 million and $2.2 million, respectively.\nAs of December 31, 2019, and January 1, 2019, deferred revenue from contracts with customers were approximately $0.8 million and $0.7 million, respectively. The balance of the contract liabilities at December 31, 2018 was recognized as revenue in 2019 and the balance at December 31, 2019 is expected to be recognized as revenue during 2020.\nThe following table reflects the changes in our contract liabilities during the year ended December 31, 2019:",
+   "prose_after": "Where Food Comes From, Inc. Notes to the Consolidated Financial Statements\nCosts to fulfill a contract\nPrior to August 2018, we incurred a fixed cost, payable to JVF Consulting, LLC, a third-party provider, to perform set-up activities for new (or first-year) customers that contract for our software subscription and hosting services. As discussed in Note 3, on August 30, 2018, we acquired JVF Consulting, which included three key employees. We concluded that those set-up activities performed by JVF did not transfer a good or service as defined in ASC 606 to our customers.\nWe capitalize fixed set-up costs as an asset on the following basis: (i) the fixed set-up costs incurred relate specifically to a customer contract for our software subscription and hosting service, (ii) the fixed set-up costs incurred are expected to be recovered via provision of the software subscription and hosting service to that customer and (iii) the set-up costs generate or enhance resources of the Company by permitting us to provide software subscription and hosting services to our customer, which, in turn, generates revenues.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1288,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1317,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Under ASC",
+     "",
+     "Under ASC",
+     "",
+     "Increase /",
+     "",
+     ""
+    ],
+    [
+     "",
+     "606",
+     "",
+     "605",
+     "",
+     "(Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Verification and certification service revenue",
+     "$",
+     "\u2014",
+     "$",
+     "170,340",
+     "$",
+     "(170,340)",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of verification and certification services",
+     "$",
+     "\u2014",
+     "$",
+     "170,340",
+     "$",
+     "(170,340)",
+     ""
+    ],
+    [
+     "Gross profit",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net income (loss)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31, 2018"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1463,
+    "end_line": 1479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Financial Accounting Standards Board (FASB) Accounting Standards Codification is the sole source of authoritative GAAP other than SEC issued rules and regulations that apply only to SEC registrants. The FASB issues an Accounting Standards Update (ASU) to communicate changes to the codification. The Company considers the applicability and impact of all ASU\u2019s. ASU\u2019s not listed below were assessed and determined to be either not applicable or are not expected to have a material impact on the consolidated financial statements.\nRecently Adopted Accounting Pronouncements\nOn January 1, 2018, the Company adopted Accounting Standards Update, Topic 606, Revenue from Contracts with Customers (ASC 606) using the modified retrospective method of transition. Under this method of transition, we applied ASU 606 to all new contracts entered into on or after January 1, 2018 and all existing contracts for which all (or substantially all) of the revenue attributable to a contract had not been recognized under legacy revenue guidance as of January 1, 2018.\nASU 606 supersedes nearly all existing revenue recognition guidance under U.S. GAAP and includes a five-step process to recognize revenue when promised goods or services are transferred to customers in an amount that reflects the consideration to which an entity expects to be entitled for those goods or services.\nThe impact of adoption on our current period results is as follows:",
+   "prose_after": "Where Food Comes From, Inc. Notes to the Consolidated Financial Statements\nChanges to verification and certification service revenue and costs of verification and certification services are due to the conclusion that fees collected on behalf of the Non-GMO Project related to the Company\u2019s Non-GMO verification services should be excluded from the transaction price (and, thus, revenue), as these amounts are collected on behalf of a third-party. This represents a change from our accounting practice under legacy revenue guidance of presenting these amounts on a gross basis in verification and certification service revenue, with an offsetting amount presented as an expense in costs of verification and certification services.\nOn January 1, 2018 we adopted ASU No. 2016-01 which requires an entity to: (i) measure equity investments at fair value through net income, with certain exceptions; (ii) present the changes in instrument-specific credit risk for financial liabilities measured using the fair value option in Other Comprehensive Income; (iii) present financial assets and financial liabilities by measurement category and form of financial asset; (iv) calculate the fair value of financial instruments for disclosure purposes based on an exit price and; (v) assess a valuation allowance on deferred tax assets related to unrealized losses of available-for-sale debt securities in combination with other deferred tax assets. The Update provides an election to subsequently measure certain nonmarketable equity investments at cost less any impairment and adjusted for certain observable price changes. The update also requires a qualitative impairment assessment of such equity investments and amends certain fair value disclosure requirements. The adoption of this update did not have a material impact on our Consolidated Financial Statements.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1442,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1480,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Sow Organic, LLC:",
+     "May 16, 2018 (as reported)",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "May 16, 2018 (as adjusted)",
+     ""
+    ],
+    [
+     "Software acquired",
+     "$",
+     "445,000",
+     "",
+     "(289,000)",
+     "",
+     "$",
+     "156,000"
+    ],
+    [
+     "Identifiable intangible assets:",
+     "",
+     "143,754",
+     "",
+     "(143,754)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Tradenames and trademarks",
+     "",
+     "\u2014",
+     "",
+     "48,000",
+     "",
+     "",
+     "48,000"
+    ],
+    [
+     "Non-compete agreements",
+     "",
+     "\u2014",
+     "",
+     "84,000",
+     "",
+     "",
+     "84,000"
+    ],
+    [
+     "Customer relationships",
+     "",
+     "\u2014",
+     "",
+     "162,000",
+     "",
+     "",
+     "162,000"
+    ],
+    [
+     "Goodwill",
+     "",
+     "294,377",
+     "",
+     "138,754",
+     "",
+     "",
+     "433,131"
+    ],
+    [
+     "Total consideration",
+     "$",
+     "883,131",
+     "",
+     "",
+     "",
+     "$",
+     "883,131"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1516,
+    "end_line": 1530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Business Acquisitions"
+    }
+   },
+   "prose_before": "On May 16, 2018, we acquired substantially all of the assets of Sow Organic for $450,000 in cash and 217,654 shares of common stock of WFCF valued at approximately $433,100. We believe the transaction further diversifies our offerings by adding complementary solutions and services available to new and existing customers. Sow Organic\u2019s software as a service (SaaS) model allows organic certification bodies to automate and accelerate new customer onboarding by converting traditional paper-based processes to digital format, resulting in lower costs, improved workflow management and increased productivity. Sow Organic\u2019s unique design allows certification bodies to digitize any certification scheme. Likewise, the software affords producers and handlers a more efficient way to become certified and to digitally manage their records on an ongoing basis, including completing annual certification requirements fully online. We intend to further develop the organic business opportunity and collaborate on a broader rollout of the solution to other certification markets where the tool is equally suited to improve efficiencies and reduce costs in the certification process. This transaction further strengthens our intellectual property portfolio, which we believe represents a distinct competitive advantage for the Company.\nWe believe the impacts on proforma revenue and earnings are immaterial. The following table summarizes the final fair values assigned to the assets and liabilities acquired in addition to the excess of the purchase price over the net assets acquired at the acquisition date. Measurement period adjustments were completed in 2018 and reflect new information obtained about facts and circumstances that existed as of the Acquisition Date. Accordingly, the carrying amounts were retrospectively adjusted as of May 16, 2018. The impact of the retrospective adjustments was not material to the Company\u2019s results of operations or cash flows for the period from the Acquisition Date through December 31, 2018.",
+   "prose_after": "Excess attributable to goodwill reflects the excess over the identifiable intangible assets acquired based on the final allocation of the purchase price. Goodwill is primarily attributable to the operational and financial benefits expected to be realized from the acquisition, including cost saving synergies from operating efficiencies, future growth in bundling opportunities across divisions and brands, realized savings from a more sophisticated information technology infrastructure, and strategic advances from expansion of our intellectual property.\nJVF Consulting Acquisition\nOn August 30, 2018, we acquired substantially all of the assets of JVF Consulting, LLC (\u201cSeller\u201d or \u201cJVF\u201d) for $500,000 in cash and 158,437 shares of common stock of WFCF valued at approximately $315,300. We believe the transaction adds value to certain of our existing software solutions which are based on intellectual property built and owned by the Seller. JVF is currently the largest technology provider to our SureHarvest division. With this acquisition, WFCF controls the intellectual property associated with its current Software as a Service (SaaS) offerings. Additionally, WFCF employed three of the Seller\u2019s employees who enhance our ability to address new markets and services with our SaaS Solutions.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1554,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "JVF Consulting, LLC:",
+     "August 30, 2018",
+     "",
+     "Adjustments",
+     "",
+     "",
+     "August 30, 2018 (as adjusted)",
+     ""
+    ],
+    [
+     "Software acquired",
+     "$",
+     "250,000",
+     "",
+     "(43,000)",
+     "",
+     "$",
+     "207,000"
+    ],
+    [
+     "Identifiable intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tradenames and trademarks",
+     "",
+     "5,290",
+     "",
+     "81,710",
+     "",
+     "",
+     "87,000"
+    ],
+    [
+     "Non-compete agreements",
+     "",
+     "10,000",
+     "",
+     "27,000",
+     "",
+     "",
+     "37,000"
+    ],
+    [
+     "Customer relationships",
+     "",
+     "100,000",
+     "",
+     "4,000",
+     "",
+     "",
+     "104,000"
+    ],
+    [
+     "Goodwill",
+     "",
+     "450,000",
+     "",
+     "(69,710)",
+     "",
+     "",
+     "380,290"
+    ],
+    [
+     "Total consideration",
+     "$",
+     "815,290",
+     "",
+     "",
+     "",
+     "$",
+     "815,290"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1539,
+    "end_line": 1553
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Business Acquisitions"
+    }
+   },
+   "prose_before": "On August 30, 2018, we acquired substantially all of the assets of JVF Consulting, LLC (\u201cSeller\u201d or \u201cJVF\u201d) for $500,000 in cash and 158,437 shares of common stock of WFCF valued at approximately $315,300. We believe the transaction adds value to certain of our existing software solutions which are based on intellectual property built and owned by the Seller. JVF is currently the largest technology provider to our SureHarvest division. With this acquisition, WFCF controls the intellectual property associated with its current Software as a Service (SaaS) offerings. Additionally, WFCF employed three of the Seller\u2019s employees who enhance our ability to address new markets and services with our SaaS Solutions.\nWe believe the impacts on proforma revenue and earnings are immaterial. The following table summarizes the final fair values assigned to the assets and liabilities acquired in addition to the excess of the purchase price over the net assets acquired at the acquisition date. Measurement period adjustments were completed in 2018 and reflect new information obtained about facts and circumstances that existed as of the Acquisition Date. Accordingly, the carrying amounts were retrospectively adjusted as of August 30, 2018. The impact of the retrospective adjustments was not material to the Company\u2019s results of operations or cash flows for the period from the Acquisition Date through December 31, 2018.",
+   "prose_after": "Excess attributable to goodwill reflects the excess over the identifiable intangible assets acquired based on the final allocation of the purchase price. Goodwill is primarily attributable to the operational and financial benefits expected to be realized from the acquisition, including cost saving synergies from operating efficiencies, future growth in bundling opportunities across divisions and brands, realized savings from a more sophisticated information technology infrastructure, and strategic advances from expansion of our intellectual property.\nSureHarvest Consulting, LLC\nOn December 17, 2019 the Company exercised its option to acquire the remaining 40% membership interest in SureHarvest for $1,000,000 in cash and 303,951 shares of common stock of WFCF valued at approximately $547,000 based on the closing price of our stock on December 17, 2019 of $1.80 per share. The Additional Paid-In Capital amount reflected on the Consolidated Statement of Equity includes adjustments for deferred income tax of approximately $102,000 and reversal of the previously recorded allocation of net losses attributable to the non-controlling interest of approximately $420,000.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1512,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 53
+    },
+    "after": {
+     "line": 1554,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 54
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Automobiles",
+     "$",
+     "115,127",
+     "$",
+     "130,841"
+    ],
+    [
+     "Furniture and office equipment",
+     "",
+     "539,122",
+     "",
+     "419,014"
+    ],
+    [
+     "Software and tools",
+     "",
+     "1,449,216",
+     "",
+     "1,299,454"
+    ],
+    [
+     "Website development and other enhancements",
+     "",
+     "183,385",
+     "",
+     "183,385"
+    ],
+    [
+     "Building and leasehold improvements",
+     "",
+     "992,386",
+     "",
+     "984,058"
+    ],
+    [
+     "Land",
+     "",
+     "2,436",
+     "",
+     "2,436"
+    ],
+    [
+     "",
+     "",
+     "3,281,672",
+     "",
+     "3,019,188"
+    ],
+    [
+     "Less accumulated depreciation",
+     "",
+     "1,736,378",
+     "",
+     "1,343,716"
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "1,545,294",
+     "$",
+     "1,675,472"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1566,
+    "end_line": 1583
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "Excess attributable to goodwill reflects the excess over the identifiable intangible assets acquired based on the final allocation of the purchase price. Goodwill is primarily attributable to the operational and financial benefits expected to be realized from the acquisition, including cost saving synergies from operating efficiencies, future growth in bundling opportunities across divisions and brands, realized savings from a more sophisticated information technology infrastructure, and strategic advances from expansion of our intellectual property.\nSureHarvest Consulting, LLC\nOn December 17, 2019 the Company exercised its option to acquire the remaining 40% membership interest in SureHarvest for $1,000,000 in cash and 303,951 shares of common stock of WFCF valued at approximately $547,000 based on the closing price of our stock on December 17, 2019 of $1.80 per share. The Additional Paid-In Capital amount reflected on the Consolidated Statement of Equity includes adjustments for deferred income tax of approximately $102,000 and reversal of the previously recorded allocation of net losses attributable to the non-controlling interest of approximately $420,000.\nNote 4 - Property and Equipment\nThe major categories of property and equipment are as follows as of December 31st:",
+   "prose_after": "Total depreciation expense for the years ended December 31, 2019 and 2018 was approximately $472,600 and $372,300, respectively. Depreciation expense for assets recorded under finance leases was approximately $22,000 and $8,967 for the years ended December 31, 2019 and 2018, respectively.\nNote 5 - Investment in Progressive Beef, LLC\nOn August 9, 2018, the Company purchased a ten percent membership interest in Progressive Beef, LLC (\u201cProgressive Beef\u201d) for an aggregate purchase price of approximately $991,000. The purchase price was payable in cash of $900,000 and 50,340 shares of common stock of WFCF valued at approximately $91,100 based upon the closing price of our stock on August 9, 2018, of $1.81 per share. Where Food Comes From is the primary certifier for Progressive Beef. As of December 31, 2019 and 2018, the Company received dividend income of approximately $120,000 and $100,000, respectively, from Progressive Beef representing a distribution of their earnings. The income is reflected within the \u201cother (expense) income\u201d section of the Company\u2019s Consolidated Statement of Income for the years ended December 31, 2019 and 2018. The investment is accounted for as a financial instrument under ASC 321 and the Company has elected to apply the practical expedient to value the investment at cost minus impairment, if any, plus or minus changes resulting from observable price changes in orderly transactions for the identical or similar investment of the same issuer. The Company completed a qualitative assessment and determined that there were no impairment indicators as of December 31, 2019 and 2018.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1554,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 54
+    },
+    "after": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 55
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     "",
+     "Estimated"
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "Useful Life"
+    ],
+    [
+     "Intangible assets subject to amortization:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tradenames and trademarks",
+     "$",
+     "417,307",
+     "$",
+     "417,307",
+     "2.5 - 8.0 years"
+    ],
+    [
+     "Accreditations",
+     "",
+     "85,395",
+     "",
+     "85,395",
+     "5.0 years"
+    ],
+    [
+     "Customer relationships",
+     "",
+     "3,350,551",
+     "",
+     "3,350,551",
+     "3.0 - 15.0 years"
+    ],
+    [
+     "Patents",
+     "",
+     "970,100",
+     "",
+     "970,100",
+     "4.0 years"
+    ],
+    [
+     "Non-compete agreements",
+     "",
+     "121,000",
+     "",
+     "121,000",
+     "5.0 years"
+    ],
+    [
+     "",
+     "",
+     "4,944,353",
+     "",
+     "4,944,353",
+     ""
+    ],
+    [
+     "Less accumulated amortization",
+     "",
+     "2,181,984",
+     "",
+     "1,577,558",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,762,369",
+     "",
+     "3,366,795",
+     ""
+    ],
+    [
+     "Tradenames/trademarks (not subject to amortization)",
+     "",
+     "465,000",
+     "",
+     "465,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "3,227,369",
+     "",
+     "3,831,795",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "20,326",
+     "",
+     "20,326",
+     ""
+    ],
+    [
+     "Intangible and other assets:",
+     "$",
+     "3,247,695",
+     "$",
+     "3,852,121",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1596,
+    "end_line": 1619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Intangible and Other Assets"
+    }
+   },
+   "prose_before": "On August 9, 2018, the Company purchased a ten percent membership interest in Progressive Beef, LLC (\u201cProgressive Beef\u201d) for an aggregate purchase price of approximately $991,000. The purchase price was payable in cash of $900,000 and 50,340 shares of common stock of WFCF valued at approximately $91,100 based upon the closing price of our stock on August 9, 2018, of $1.81 per share. Where Food Comes From is the primary certifier for Progressive Beef. As of December 31, 2019 and 2018, the Company received dividend income of approximately $120,000 and $100,000, respectively, from Progressive Beef representing a distribution of their earnings. The income is reflected within the \u201cother (expense) income\u201d section of the Company\u2019s Consolidated Statement of Income for the years ended December 31, 2019 and 2018. The investment is accounted for as a financial instrument under ASC 321 and the Company has elected to apply the practical expedient to value the investment at cost minus impairment, if any, plus or minus changes resulting from observable price changes in orderly transactions for the identical or similar investment of the same issuer. The Company completed a qualitative assessment and determined that there were no impairment indicators as of December 31, 2019 and 2018.\nNote 6 \u2013 Intangible and Other Assets\nThe following table summarizes our intangible assets as of:",
+   "prose_after": "We reviewed our long-lived assets for indicators of impairment in 2019 and 2018 and concluded in each year that no impairments exist.\nAmortization expense for the years ended December 31, 2019 and 2018 was approximately $604,400 and $570,100, respectively.\nAs of December 31, 2019, future scheduled amortization of intangible assets is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal year ending December 31:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "",
+     "",
+     "579,925"
+    ],
+    [
+     "2021",
+     "",
+     "",
+     "330,666"
+    ],
+    [
+     "2022",
+     "",
+     "",
+     "318,106"
+    ],
+    [
+     "2023",
+     "",
+     "",
+     "277,636"
+    ],
+    [
+     "2024",
+     "",
+     "",
+     "266,403"
+    ],
+    [
+     "Thereafter",
+     "",
+     "",
+     "989,634"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "2,762,370"
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal year ending December 31:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1626,
+    "end_line": 1640
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2013 Intangible and Other Assets"
+    }
+   },
+   "prose_before": "We reviewed our long-lived assets for indicators of impairment in 2019 and 2018 and concluded in each year that no impairments exist.\nAmortization expense for the years ended December 31, 2019 and 2018 was approximately $604,400 and $570,100, respectively.\nAs of December 31, 2019, future scheduled amortization of intangible assets is as follows:",
+   "prose_after": "Beneficial Lease Arrangement\nIn connection with our acquisition of ICS in 2012, we recorded a beneficial lease arrangement of $120,200 related to a 2,300-square foot building located on approximately \u00be acre in Medina, North Dakota. On January 12, 2018, the Company purchased the 2,300-square foot building and terminated the lease. The net book value of the beneficial lease arrangement at December 31, 2017 was approximately $56,500 and was fully amortized in January 2018.\nNote 7 \u2013 Goodwill\nChanges in the net carrying value of goodwill by segment are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1590,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 55
+    },
+    "after": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 56
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Verification and Certification Segment",
+     "",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "",
+     "Consolidated",
+     "",
+     ""
+    ],
+    [
+     "January 1, 2018",
+     "$",
+     "1,279,762",
+     "",
+     "$",
+     "1,372,488",
+     "",
+     "$",
+     "2,652,250",
+     ""
+    ],
+    [
+     "Additions",
+     "",
+     "\u2014",
+     "",
+     "",
+     "813,421",
+     "",
+     "",
+     "813,421",
+     ""
+    ],
+    [
+     "Adjustments",
+     "",
+     "(146,640)",
+     "",
+     "",
+     "(175,297)",
+     "",
+     "",
+     "(321,937)",
+     ""
+    ],
+    [
+     "December 31, 2018",
+     "$",
+     "1,133,122",
+     "",
+     "$",
+     "2,010,612",
+     "",
+     "$",
+     "3,143,734",
+     ""
+    ],
+    [
+     "Additions",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(198,000)",
+     "",
+     "",
+     "(198,000)",
+     ""
+    ],
+    [
+     "December 31, 2019",
+     "$",
+     "1,133,122",
+     "",
+     "$",
+     "1,812,612",
+     "",
+     "$",
+     "2,945,734",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1651,
+    "end_line": 1665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2013 Goodwill"
+    }
+   },
+   "prose_before": "Beneficial Lease Arrangement\nIn connection with our acquisition of ICS in 2012, we recorded a beneficial lease arrangement of $120,200 related to a 2,300-square foot building located on approximately \u00be acre in Medina, North Dakota. On January 12, 2018, the Company purchased the 2,300-square foot building and terminated the lease. The net book value of the beneficial lease arrangement at December 31, 2017 was approximately $56,500 and was fully amortized in January 2018.\nNote 7 \u2013 Goodwill\nChanges in the net carrying value of goodwill by segment are as follows:",
+   "prose_after": "Annual Impairment Test of Goodwill\nWe performed a qualitative assessment on our ICS and Validus reporting units (within our reportable operating segment: Verification and Certification Segment) for our 2019 annual test and concluded that it was more-likely-than-not that the fair value of the reporting unit exceeded its carrying value and, therefore, a two-step impairment test was not necessary. The qualitative assessment compares current performance, expectations and other indicators against what was expected as part of the most recent Step 1 valuation. Consequently, the key estimates and assumptions related to the most recent Step 1 valuation pertaining to this reporting unit had not changed since our previous annual report.\nFor our 2019 annual test, we performed a quantitative assessment on our SureHarvest reporting unit. SureHarvest, which includes Sow Organic and JVF Consulting, is the sole operating segment within the Software Sales and Related Consulting segment. We estimated the SureHarvest reporting unit\u2019s fair value using a 14-year projection of discounted cash flows which incorporates planned growth rates, market-based discount rates and estimates of residual value. Additionally, we used a market-based, weighted-average cost of capital of 20.1% to discount the projected cash flows of those operations. Estimating the fair value of an individual reporting unit requires us to make assumptions and estimates regarding our future plans, industry and economic conditions and our actual results and conditions may differ over time. If the carrying value of a reporting unit\u2019s net assets exceeds its fair value, the second step is applied to measure the difference between the carrying value and implied fair value of goodwill. If the carrying value of goodwill exceeds its implied fair value, the goodwill is considered impaired and reduced to its implied fair value. In connection with our testing, we noted the SureHarvest reporting unit was more sensitive to near-term changes in discounted cash flow assumptions. As of December 31, 2019, the fair value did not exceed the carrying value of net assets by approximately 4.0%. An impairment of goodwill of approximately $198,000 was recognized as of December 31, 2019.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1645,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 56
+    },
+    "after": {
+     "line": 1672,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 57
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "December 31, 2018",
+     ""
+    ],
+    [
+     "Income and sales taxes payable",
+     "$",
+     "170,850",
+     "$",
+     "19,978"
+    ],
+    [
+     "Payroll related accruals",
+     "",
+     "201,015",
+     "",
+     "147,798"
+    ],
+    [
+     "Customer deposits",
+     "",
+     "62,305",
+     "",
+     "72,982"
+    ],
+    [
+     "Professional fees and other expenses",
+     "",
+     "239,598",
+     "",
+     "251,843"
+    ],
+    [
+     "",
+     "$",
+     "673,768",
+     "$",
+     "492,601"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1678,
+    "end_line": 1689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Accrued Expenses and Other Current Liabilities"
+    }
+   },
+   "prose_before": "For our 2019 annual test, we performed a quantitative assessment on our SureHarvest reporting unit. SureHarvest, which includes Sow Organic and JVF Consulting, is the sole operating segment within the Software Sales and Related Consulting segment. We estimated the SureHarvest reporting unit\u2019s fair value using a 14-year projection of discounted cash flows which incorporates planned growth rates, market-based discount rates and estimates of residual value. Additionally, we used a market-based, weighted-average cost of capital of 20.1% to discount the projected cash flows of those operations. Estimating the fair value of an individual reporting unit requires us to make assumptions and estimates regarding our future plans, industry and economic conditions and our actual results and conditions may differ over time. If the carrying value of a reporting unit\u2019s net assets exceeds its fair value, the second step is applied to measure the difference between the carrying value and implied fair value of goodwill. If the carrying value of goodwill exceeds its implied fair value, the goodwill is considered impaired and reduced to its implied fair value. In connection with our testing, we noted the SureHarvest reporting unit was more sensitive to near-term changes in discounted cash flow assumptions. As of December 31, 2019, the fair value did not exceed the carrying value of net assets by approximately 4.0%. An impairment of goodwill of approximately $198,000 was recognized as of December 31, 2019.\nNote 8 \u2013 Accrued Expenses and Other Current Liabilities\nThe following table summarizes our accrued expenses and other current liabilities as of:",
+   "prose_after": "Note 9 - Notes Payable and Lease Obligations\nEquipment Note",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1672,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "December 31, 2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Vehicle note",
+     "$",
+     "\u2014",
+     "$",
+     "42,393",
+     ""
+    ],
+    [
+     "Less current portion of notes payable and other long-term debt",
+     "",
+     "\u2014",
+     "",
+     "(10,173)",
+     ""
+    ],
+    [
+     "Notes payable and other long-term debt",
+     "$",
+     "\u2014",
+     "$",
+     "32,220",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1694,
+    "end_line": 1704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable and Lease Obligations"
+    }
+   },
+   "prose_before": "Note 9 - Notes Payable and Lease Obligations\nEquipment Note",
+   "prose_after": "In September 2017, we entered into a note payable of $54,165 for the purchase of a vehicle. Interest and principal payments are due in equal monthly installments of $1,087 over five years beginning October 2017. This note bears an interest rate of 7.44% per annum and is fully secured by the vehicle. The Company paid the balance of the note in full during 2019.\nUnison Revolving Line of Credit\nThe Company has a revolving line of credit (\u201cLOC\u201d) agreement which matures on April 12, 2020. The LOC provides for $75,080 in working capital. The interest rate is at the Wall Street Journal prime rate plus 1.50% and is adjusted daily. Principal and interest are payable upon demand, but if demand is not made, then annual payments of accrued interest only are due, with the principal balance due upon maturity. As of December 31, 2019 and 2018, the effective interest rate was 6.25% and 7.0%, respectively. The LOC is collateralized by all the business assets of ICS. As of December 31, 2019 and 2018, there were no amounts outstanding under this LOC.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1672,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 57
+    },
+    "after": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 58
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2019",
+     ""
+    ],
+    [
+     "Operating lease cost",
+     "$",
+     "469,231"
+    ],
+    [
+     "Finance lease cost",
+     "",
+     ""
+    ],
+    [
+     "Amortization of assets",
+     "",
+     "8,406"
+    ],
+    [
+     "Interest on finance lease obligations",
+     "",
+     "7,298"
+    ],
+    [
+     "Variable lease cost",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total net lease cost",
+     "$",
+     "484,935"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1719,
+    "end_line": 1731
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable and Lease Obligations"
+    }
+   },
+   "prose_before": "In September 2017, we entered into a note payable of $54,165 for the purchase of a vehicle. Interest and principal payments are due in equal monthly installments of $1,087 over five years beginning October 2017. This note bears an interest rate of 7.44% per annum and is fully secured by the vehicle. The Company paid the balance of the note in full during 2019.\nUnison Revolving Line of Credit\nThe Company has a revolving line of credit (\u201cLOC\u201d) agreement which matures on April 12, 2020. The LOC provides for $75,080 in working capital. The interest rate is at the Wall Street Journal prime rate plus 1.50% and is adjusted daily. Principal and interest are payable upon demand, but if demand is not made, then annual payments of accrued interest only are due, with the principal balance due upon maturity. As of December 31, 2019 and 2018, the effective interest rate was 6.25% and 7.0%, respectively. The LOC is collateralized by all the business assets of ICS. As of December 31, 2019 and 2018, there were no amounts outstanding under this LOC.\nLease Obligations\nWe have operating and finance leases for corporate offices, other regional offices, and certain equipment. Our leases have remaining lease terms of 1 year to 15 years, some of which include multiple options to extend the leases for up to 5 years each.\nThe components of lease expense were as follows:",
+   "prose_after": "Included in the table above, is approximately $339,500 for the year ended December 31, 2019, respectively, of operating lease cost for our corporate headquarters. This space is being leased from The Move, LLC. Our CEO and President, each a related party to WFCF, have a 24.3% jointly-held ownership interest in The Move, LLC.\nRent and lease expense for the years ended December 31, 2019 and 2018 was $614,300 and $548,300, respectively.\nSupplemental balance sheet information related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases:",
+     "Related Party",
+     "",
+     "Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Right of use asset",
+     "$",
+     "2,932,803",
+     "$",
+     "314,433",
+     "$",
+     "3,247,236"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operating lease liabilities",
+     "",
+     "158,306",
+     "",
+     "81,213",
+     "",
+     "239,519"
+    ],
+    [
+     "Noncurrent operating lease liabilities",
+     "",
+     "3,259,509",
+     "",
+     "265,954",
+     "",
+     "3,525,462"
+    ],
+    [
+     "Total operating lease liabilities",
+     "$",
+     "3,417,815",
+     "$",
+     "347,167",
+     "$",
+     "3,764,981"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1738,
+    "end_line": 1752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable and Lease Obligations"
+    }
+   },
+   "prose_before": "Included in the table above, is approximately $339,500 for the year ended December 31, 2019, respectively, of operating lease cost for our corporate headquarters. This space is being leased from The Move, LLC. Our CEO and President, each a related party to WFCF, have a 24.3% jointly-held ownership interest in The Move, LLC.\nRent and lease expense for the years ended December 31, 2019 and 2018 was $614,300 and $548,300, respectively.\nSupplemental balance sheet information related to leases was as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Finance leases:",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use asset, at cost",
+     "$",
+     "43,041",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated amortization",
+     "",
+     "(21,934)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use asset, net",
+     "$",
+     "21,107",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current obligations of finance leases",
+     "$",
+     "8,317",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance leases, net of current obligations",
+     "",
+     "21,405",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total finance lease liabilities",
+     "$",
+     "29,722",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term (in years):",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "11.0",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "3.0",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average discount rate:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     "5.8",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Finance leases",
+     "",
+     "20.8",
+     "%",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1753,
+    "end_line": 1776
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable and Lease Obligations"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Supplemental cash flow and other information related to leases was as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1715,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 58
+    },
+    "after": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 59
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2019",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "$",
+     "430,359"
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "$",
+     "7,298"
+    ],
+    [
+     "Financing cash flows from finance leases",
+     "$",
+     "6,634"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right of use assets obtained in exchange for lease liabilities:",
+     "",
+     ""
+    ],
+    [
+     "Operating leases",
+     "$",
+     "3,513,347"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31, 2019",
+    "Cash paid for amounts included in the measurement of lease liabilities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1781,
+    "end_line": 1792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable and Lease Obligations"
+    }
+   },
+   "prose_before": "Supplemental cash flow and other information related to leases was as follows:",
+   "prose_after": "Maturities of lease liabilities were as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ending December 31st,",
+     "Operating Leases",
+     "",
+     "",
+     "Finance Leases",
+     "",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "448,992",
+     "",
+     "$",
+     "13,597",
+     ""
+    ],
+    [
+     "2021",
+     "",
+     "461,657",
+     "",
+     "",
+     "12,355",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "465,759",
+     "",
+     "",
+     "10,051",
+     ""
+    ],
+    [
+     "2023",
+     "",
+     "461,310",
+     "",
+     "",
+     "4,514",
+     ""
+    ],
+    [
+     "2024",
+     "",
+     "407,133",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "2,901,022",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "",
+     "5,145,873",
+     "",
+     "",
+     "40,517",
+     ""
+    ],
+    [
+     "Less amount representing interest",
+     "",
+     "(1,380,892)",
+     "",
+     "",
+     "(10,795)",
+     ""
+    ],
+    [
+     "Total lease obligations",
+     "",
+     "3,764,981",
+     "",
+     "",
+     "29,722",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "(239,519)",
+     "",
+     "",
+     "(8,317)",
+     ""
+    ],
+    [
+     "Long-term lease obligations",
+     "$",
+     "3,525,462",
+     "",
+     "$",
+     "21,405",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1795,
+    "end_line": 1815
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Notes Payable and Lease Obligations"
+    }
+   },
+   "prose_before": "Maturities of lease liabilities were as follows:",
+   "prose_after": "Note 10 - Income Taxes\nThe provision for income taxes consists of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Current income tax expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "438,528",
+     "",
+     "$",
+     "334,526",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "81,681",
+     "",
+     "",
+     "70,783",
+     ""
+    ],
+    [
+     "Total current income tax expense",
+     "",
+     "520,209",
+     "",
+     "",
+     "405,309",
+     ""
+    ],
+    [
+     "Deferred income tax benefit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "(51,419)",
+     "",
+     "",
+     "(82,241)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(8,790)",
+     "",
+     "",
+     "(14,060)",
+     ""
+    ],
+    [
+     "Total deferred income tax benefit",
+     "",
+     "(60,209)",
+     "",
+     "",
+     "(96,301)",
+     ""
+    ],
+    [
+     "Total income tax expense",
+     "$",
+     "460,000",
+     "",
+     "$",
+     "309,008",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1820,
+    "end_line": 1839
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Note 10 - Income Taxes\nThe provision for income taxes consists of the following:",
+   "prose_after": "The reconciliation of income taxes calculated at the statutory rates to our effective tax rate is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1777,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 59
+    },
+    "after": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 60
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Expected tax expense",
+     "$",
+     "320,808",
+     "",
+     "$",
+     "196,428"
+    ],
+    [
+     "State tax provision, net",
+     "",
+     "54,843",
+     "",
+     "",
+     "41,227"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "11,030",
+     "",
+     "",
+     "6,765"
+    ],
+    [
+     "Minority interest",
+     "",
+     "75,785",
+     "",
+     "",
+     "30,924"
+    ],
+    [
+     "Other, net",
+     "",
+     "(2,466)",
+     "",
+     "",
+     "33,664"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total income tax expense",
+     "$",
+     "460,000",
+     "",
+     "$",
+     "309,008"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1844,
+    "end_line": 1858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The reconciliation of income taxes calculated at the statutory rates to our effective tax rate is as follows:",
+   "prose_after": "The income tax effects of temporary differences that give rise to significant portions of deferred tax assets (liabilities) are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets (liabilities):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accruals, stock-based compensation and other",
+     "$",
+     "181,062",
+     "",
+     "$",
+     "162,430",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "",
+     "(14,654)",
+     "",
+     "",
+     "(67,676)",
+     ""
+    ],
+    [
+     "Intangibles assets",
+     "",
+     "211,520",
+     "",
+     "",
+     "81,169",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "",
+     "377,928",
+     "",
+     "",
+     "175,923",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1861,
+    "end_line": 1873
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The income tax effects of temporary differences that give rise to significant portions of deferred tax assets (liabilities) are as follows:",
+   "prose_after": "Note 11 \u2013 Stock Buyback Plan\nOn January 7, 2008, we announced our intention to buy back up to one million shares of our common stock from the open market at the quoted market price on the date of repurchase. On September 30, 2019, our Board of Directors approved a new plan to buyback up to ten million additional shares of our common stock from the open market (\u201cStock Buyback Plan\u201d). Activity under the Stock Buyback Plan by year is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Cost of Shares",
+     "",
+     "Average Cost per Share",
+     ""
+    ],
+    [
+     "Balance, January 1, 2018",
+     "",
+     "319,789",
+     "$",
+     "724,530",
+     "$",
+     "2.27"
+    ],
+    [
+     "Shares purchased during 2018",
+     "",
+     "185,070",
+     "",
+     "384,531",
+     "",
+     "2.08"
+    ],
+    [
+     "Balance, December 31, 2018",
+     "",
+     "504,859",
+     "",
+     "1,109,061",
+     "",
+     "2.20"
+    ],
+    [
+     "Shares purchased during 2019",
+     "",
+     "319,863",
+     "",
+     "555,429",
+     "",
+     "1.74"
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "824,722",
+     "$",
+     "1,664,490",
+     "$",
+     "2.02"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1878,
+    "end_line": 1891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Stock Buyback Plan"
+    }
+   },
+   "prose_before": "Note 11 \u2013 Stock Buyback Plan\nOn January 7, 2008, we announced our intention to buy back up to one million shares of our common stock from the open market at the quoted market price on the date of repurchase. On September 30, 2019, our Board of Directors approved a new plan to buyback up to ten million additional shares of our common stock from the open market (\u201cStock Buyback Plan\u201d). Activity under the Stock Buyback Plan by year is as follows:",
+   "prose_after": "The repurchased shares are recorded as part of treasury stock and are accounted for under the cost method.\nOur Stock Buyback Plan has been and will be used to return capital to shareholders and to minimize the dilutive impact of stock options and other share-based awards. In the future, we may consider additional share repurchases under our plan based on several factors, including our cash position, share price, operational liquidity, and planned investment and financing needs.\nNote 12 \u2013 Stock-Based Compensation\nIn addition to cash compensation, the Company may compensate certain service providers, including employees, directors, consultants, and other advisors, with equity-based compensation in the form of stock options and restricted stock awards. The Company recognizes all equity-based compensation as stock-based compensation expense based on the fair value of the compensation measured at the grant date. For stock options, fair value is calculated at the date of grant using the Black-Scholes-Merton option-pricing model. For restricted stock awards, fair value is the closing stock price for the Company\u2019s common stock on the grant date. The expense is recognized over the vesting period of the grant. For the periods presented, all stock-based compensation expense was classified as a component within selling, general and administrative expense in the Company\u2019s consolidated statements of income.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1840,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 60
+    },
+    "after": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Stock options",
+     "$",
+     "146,731",
+     "$",
+     "94,751"
+    ],
+    [
+     "Restricted stock awards",
+     "",
+     "15,674",
+     "",
+     "66,377"
+    ],
+    [
+     "Total",
+     "$",
+     "162,405",
+     "$",
+     "161,128"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1904,
+    "end_line": 1914
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Our Stock Buyback Plan has been and will be used to return capital to shareholders and to minimize the dilutive impact of stock options and other share-based awards. In the future, we may consider additional share repurchases under our plan based on several factors, including our cash position, share price, operational liquidity, and planned investment and financing needs.\nNote 12 \u2013 Stock-Based Compensation\nIn addition to cash compensation, the Company may compensate certain service providers, including employees, directors, consultants, and other advisors, with equity-based compensation in the form of stock options and restricted stock awards. The Company recognizes all equity-based compensation as stock-based compensation expense based on the fair value of the compensation measured at the grant date. For stock options, fair value is calculated at the date of grant using the Black-Scholes-Merton option-pricing model. For restricted stock awards, fair value is the closing stock price for the Company\u2019s common stock on the grant date. The expense is recognized over the vesting period of the grant. For the periods presented, all stock-based compensation expense was classified as a component within selling, general and administrative expense in the Company\u2019s consolidated statements of income.\nThe amount of stock-based compensation expense is as follows:",
+   "prose_after": "As of December 31, 2019, the estimated unrecognized compensation cost from unvested awards which will be recognized ratably over the remaining vesting phase is as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ended December 31st:",
+     "Unvested stock options",
+     "",
+     "Unvested restricted stock awards",
+     "",
+     "Total unrecognized compensation expense",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "113,378",
+     "$",
+     "4,251",
+     "$",
+     "117,629"
+    ],
+    [
+     "2021",
+     "",
+     "70,896",
+     "",
+     "706",
+     "",
+     "71,602"
+    ],
+    [
+     "2022",
+     "",
+     "3,722",
+     "",
+     "\u2014",
+     "",
+     "3,722"
+    ],
+    [
+     "2023",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "$",
+     "187,996",
+     "$",
+     "4,957",
+     "$",
+     "192,953"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1917,
+    "end_line": 1929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Stock-Based Compensation"
+    }
+   },
+   "prose_before": "As of December 31, 2019, the estimated unrecognized compensation cost from unvested awards which will be recognized ratably over the remaining vesting phase is as follows:",
+   "prose_after": "The Company estimated the fair value of stock options using the Black-Scholes-Merton option-pricing model with the following assumptions:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Number of options awarded to purchase common shares",
+     "",
+     "10,000",
+     "",
+     "183,750"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "1.50%",
+     "",
+     "2.6% - 3.0%"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "100.3%",
+     "",
+     "115.9 - 154.3%"
+    ],
+    [
+     "Assumed dividend yield",
+     "",
+     "N/A",
+     "",
+     "N/A"
+    ],
+    [
+     "Expected life of options from the date of grant",
+     "",
+     "9.8 years",
+     "",
+     "9.8 years"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1932,
+    "end_line": 1942
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The Company estimated the fair value of stock options using the Black-Scholes-Merton option-pricing model with the following assumptions:",
+   "prose_after": "Equity Incentive Plans\nOur 2006 Equity Incentive Plan (the \u201c2006 Plan\u201d) and 2016 Equity Incentive Plan (the \u201c2016 Plan,\u201d and together with the 2006 Plan, the \u201cPlans\u201d) provide for the issuance of stock-based awards to employees, officers, directors and consultants. The Plans permit the granting of stock awards and stock options. The vesting of stock-based awards is generally subject to the passage of time and continued employment through the vesting period.\nOur 2006 Plan provided for the issuance of a maximum of 3,000,000 shares of our common stock. The 2006 Plan terminated in September 2016. As of December 31, 2019, the 2006 Plan had 168,751 awards outstanding.\nOur 2016 Plan was ratified by our shareholders in May 2016 and provides for the issuance of a maximum of 5,000,000 shares of our common stock, of which 4,712,375 shares were still available for issuance as of December 31, 2019.\nStock Option Activity\nThe Company generally grants stock options to directors, eligible employees and officers as a part of its equity incentive plan. Restrictions and vesting periods for the stock option grants are set forth in the award agreements. A stock option grant represents an option to purchase a defined number of shares of the Company\u2019s common stock to be released from restrictions upon completion of the vesting period. The awards typically vest in equal increments over one to three years. Stock option activity during 2019 and 2017 is summarized as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 61
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 62
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of awards",
+     "",
+     "",
+     "Weighted avg. exercise price per share",
+     "",
+     "Weighted avg. grant date fair value per share",
+     "",
+     "Weighted avg. remaining contractual life (in years)",
+     "",
+     "Aggregate intrinsic value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, January 1, 2018",
+     "",
+     "266,585",
+     "",
+     "$",
+     "1.23",
+     "$",
+     "1.22",
+     "",
+     "6.06",
+     "$",
+     "462,508"
+    ],
+    [
+     "Granted",
+     "",
+     "183,750",
+     "",
+     "$",
+     "1.91",
+     "$",
+     "1.85",
+     "",
+     "9.68",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Expired/Forfeited",
+     "",
+     "(15,884)",
+     "",
+     "$",
+     "1.85",
+     "$",
+     "1.83",
+     "",
+     "7.86",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2018",
+     "",
+     "434,451",
+     "",
+     "$",
+     "1.49",
+     "$",
+     "1.47",
+     "",
+     "6.91",
+     "$",
+     "230,039"
+    ],
+    [
+     "Granted",
+     "",
+     "10,000",
+     "",
+     "$",
+     "1.71",
+     "$",
+     "1.53",
+     "",
+     "9.80",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Expired/Forfeited",
+     "",
+     "(7,325)",
+     "",
+     "$",
+     "1.86",
+     "$",
+     "1.83",
+     "",
+     "7.55",
+     "",
+     ""
+    ],
+    [
+     "Outstanding, December 31, 2019",
+     "",
+     "437,126",
+     "",
+     "$",
+     "1.46",
+     "$",
+     "1.49",
+     "",
+     "5.97",
+     "$",
+     "150,417"
+    ],
+    [
+     "Exercisable, December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "310,728"
+    ],
+    [
+     "Unvested, December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "126,398"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1957,
+    "end_line": 1981
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Our 2006 Plan provided for the issuance of a maximum of 3,000,000 shares of our common stock. The 2006 Plan terminated in September 2016. As of December 31, 2019, the 2006 Plan had 168,751 awards outstanding.\nOur 2016 Plan was ratified by our shareholders in May 2016 and provides for the issuance of a maximum of 5,000,000 shares of our common stock, of which 4,712,375 shares were still available for issuance as of December 31, 2019.\nStock Option Activity\nThe Company generally grants stock options to directors, eligible employees and officers as a part of its equity incentive plan. Restrictions and vesting periods for the stock option grants are set forth in the award agreements. A stock option grant represents an option to purchase a defined number of shares of the Company\u2019s common stock to be released from restrictions upon completion of the vesting period. The awards typically vest in equal increments over one to three years. Stock option activity during 2019 and 2017 is summarized as follows:",
+   "prose_after": "The aggregate intrinsic value of stock options represents the total pre-tax intrinsic value (the aggregate difference between the closing stock price of our common stock on December 31, 2019 and the exercise price for in-the-money options) that would have been received by the option holders if all in-the-money options had been exercised on December 31, 2019.\nDuring the year ended December 31, 2019, a total of 7,325 options were forfeited, 3,365 of which were unvested. The options were forfeited upon the employees\u2019 termination from the Company. During the year ended December 31, 2018, a total of 15,884 options were forfeited, 8,318 of which were unvested.\nRestricted Stock Activity\nThe Company grants shares of restricted stock to directors, eligible employees and officers as a part of its equity incentive plan. Restrictions and vesting periods for the awards are set forth in the award agreements. Each share of restricted stock represents one share of the Company\u2019s common stock to be released from restrictions upon completion of the vesting period. The awards typically vest in equal increments over one to three years. Shares of restricted stock are valued at the closing price of the Company\u2019s common stock on the grant date and are recognized as selling, general and administrative expense over the vesting period of the award.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 62
+    },
+    "after": {
+     "line": 1986,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of options",
+     "",
+     "",
+     "Weighted avg. grant date fair value",
+     ""
+    ],
+    [
+     "Non-vested restricted shares, January 1, 2018",
+     "",
+     "99,000",
+     "",
+     "$",
+     "2.56"
+    ],
+    [
+     "Granted",
+     "",
+     "5,000",
+     "",
+     "$",
+     "2.55"
+    ],
+    [
+     "Vested",
+     "",
+     "(74,000)",
+     "",
+     "$",
+     "2.63"
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Non-vested restricted shares, December 31, 2018",
+     "",
+     "30,000",
+     "",
+     "$",
+     "2.38"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "",
+     "(25,000)",
+     "",
+     "$",
+     "2.35"
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Non-vested restricted shares, December 31, 2019",
+     "",
+     "5,000",
+     "",
+     "$",
+     "2.55"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1994,
+    "end_line": 2011
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "\u2013 Stock-Based Compensation"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2019, a total of 7,325 options were forfeited, 3,365 of which were unvested. The options were forfeited upon the employees\u2019 termination from the Company. During the year ended December 31, 2018, a total of 15,884 options were forfeited, 8,318 of which were unvested.\nRestricted Stock Activity\nThe Company grants shares of restricted stock to directors, eligible employees and officers as a part of its equity incentive plan. Restrictions and vesting periods for the awards are set forth in the award agreements. Each share of restricted stock represents one share of the Company\u2019s common stock to be released from restrictions upon completion of the vesting period. The awards typically vest in equal increments over one to three years. Shares of restricted stock are valued at the closing price of the Company\u2019s common stock on the grant date and are recognized as selling, general and administrative expense over the vesting period of the award.\nThe following table summarizes activity for restricted stock awards for the fiscal years presented:",
+   "prose_after": "Note 13 - Basic and Diluted Net Income per Share\nBasic net income per share was computed by dividing income available to common shareholders by the weighted average number of common shares outstanding during the period. Diluted net income per share is based on the assumption that all dilutive convertible shares and stock options were converted or exercised. Dilution is computed by applying the treasury stock method. Under this method, options and restricted stock awards are assumed to be exercised at the beginning of the period (or at the time of issuance, if later), and as if funds plus unrecognized stock-based compensation obtained thereby were used by the Company to purchase common stock at the average market price during the period.\nThe following is a reconciliation of the share data used in the basic and diluted income per share computations:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1986,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Basic:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "24,850,409",
+     "",
+     "24,825,933"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding",
+     "",
+     "24,850,409",
+     "",
+     "24,825,933"
+    ],
+    [
+     "Weighted average effects of dilutive securities",
+     "",
+     "176,838",
+     "",
+     "163,524"
+    ],
+    [
+     "Total",
+     "",
+     "25,027,247",
+     "",
+     "24,989,457"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Antidilutive securities:",
+     "",
+     "283,459",
+     "",
+     "270,700"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2018,
+    "end_line": 2037
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Basic and Diluted Net Income per Share"
+    }
+   },
+   "prose_before": "Note 13 - Basic and Diluted Net Income per Share\nBasic net income per share was computed by dividing income available to common shareholders by the weighted average number of common shares outstanding during the period. Diluted net income per share is based on the assumption that all dilutive convertible shares and stock options were converted or exercised. Dilution is computed by applying the treasury stock method. Under this method, options and restricted stock awards are assumed to be exercised at the beginning of the period (or at the time of issuance, if later), and as if funds plus unrecognized stock-based compensation obtained thereby were used by the Company to purchase common stock at the average market price during the period.\nThe following is a reconciliation of the share data used in the basic and diluted income per share computations:",
+   "prose_after": "The effect of the inclusion of the antidilutive shares would have resulted in an increase in earnings per share. Accordingly, the weighted average shares outstanding have not been adjusted for antidilutive shares.\nNote 14 - Related Party Transactions\nIn 2019 and 2018, we recorded total net revenue of approximately $5,000 and $7,900, respectively, from related parties. The related parties consisted of a business owned by the father of Leann Saunders, our President, and businesses owned by members of our Board of Directors.\nThe Company leases its corporate headquarters from a company in which our CEO and President have a 24.3% jointly-held ownership interest (Note 15). Under the related party arrangement, approximately $464,500 and $490,600 was paid in rent and CAM for our corporate headquarters was included in the consolidated statements of income for the years ended December 31, 2019 and 2018, respectively.\nNote 15 \u2013 Commitments and Contingencies\nOperating Leases & Lease Incentive Obligation",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1986,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance, January 1, 2018",
+     "$",
+     "1,574,765",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest in SureHarvest for the year to date period ended December 31, 2018",
+     "",
+     "(125,758)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "$",
+     "1,449,007",
+     ""
+    ],
+    [
+     "Net loss attributable to non-controlling interest in SureHarvest for the year to date period ended December 17, 2019",
+     "",
+     "(322,195)",
+     ""
+    ],
+    [
+     "Acquisition of non-controlling interest in SureHarvest on December 17, 2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid",
+     "",
+     "(1,000,000)",
+     ""
+    ],
+    [
+     "Fair market value of stock",
+     "",
+     "(547,112)",
+     ""
+    ],
+    [
+     "Adjustment to additional paid-in capital",
+     "",
+     "420,300",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2090,
+    "end_line": 2104
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "\u2013 Commitments and Contingencies"
+    }
+   },
+   "prose_before": "On December 28, 2016, we entered into an Asset Purchase Agreement (the \u201cSureHarvest Purchase Agreement\u201d), by and among the Company, SureHarvest Services LLC (the \u201cBuyer\u201d or \u201cSureHarvest\u201d); and SureHarvest, Inc., a California corporation (the \u201cSeller\u201d). We purchased the business assets of the Seller for total consideration of approximately $2.66 million, comprised of approximately $1,122,000 in cash and 850,852 shares of common stock of WFCF valued at approximately $1,534,900. Additionally, we issued the Seller a 40% membership interest in SureHarvest, with the Company holding a 60% interest.\nBecause SureHarvest, Inc. at its option, could require the Company to purchase its 40% interest in SureHarvest, the SureHarvest non-controlling interest met the definition of a contingently redeemable non-controlling interest. Redeemable non-controlling interests are presented at the greater of their carrying amount or redemption value at the end of each reporting period and are shown as a separate caption between liabilities and equity (mezzanine section) in the accompanying consolidated balance sheet.\nOn December 17, 2019 the Company exercised its option to acquire the remaining 40% membership interest in SureHarvest for $1,000,000 in cash and 303,951 shares of common stock of WFCF valued at approximately $547,000 based on the closing price of our stock on December 17, 2019 of $1.80 per share. Accordingly, the redeemable non-controlling interest is presented as zero at December 31, 2019.\nThe table below reflects the activity of the contingently redeemable non-controlling interest:",
+   "prose_after": "Note 16 \u2013 Supplemental Cash Flow Information",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2086,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2133,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Cash paid during the year:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest expense",
+     "$",
+     "10,057",
+     "$",
+     "4,837"
+    ],
+    [
+     "Income taxes",
+     "$",
+     "343,818",
+     "$",
+     "759,300"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activites:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued in connection with acquisition of non-controlling interest in SureHarvest Services, LLC",
+     "$",
+     "547,112",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Common stock issued in connection with acquisition of Sow Organic",
+     "$",
+     "\u2014",
+     "$",
+     "433,131"
+    ],
+    [
+     "Common stock issued in connection with investment in Progressive Beef",
+     "$",
+     "\u2014",
+     "$",
+     "91,115"
+    ],
+    [
+     "Common Stock issued in connection with acquisition of JVF Consulting",
+     "$",
+     "\u2014",
+     "$",
+     "315,291"
+    ],
+    [
+     "Equipment acquired under a capital lease",
+     "$",
+     "\u2014",
+     "$",
+     "19,809"
+    ],
+    [
+     "Lease incentive obligation",
+     "$",
+     "\u2014",
+     "$",
+     "230,220"
+    ]
+   ],
+   "caption_stack": [
+    "Year ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2107,
+    "end_line": 2124
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "\u2013 Supplemental Cash Flow Information"
+    }
+   },
+   "prose_before": "Note 16 \u2013 Supplemental Cash Flow Information",
+   "prose_after": "Note 17 - Segments\nWith each acquisition, we assess the need to disclose discrete information related to our operating segments. Because of the similarities of certain of our acquisitions that provide certification and verification services, we aggregate operations into one verification and certification reportable segment. The operating segments included in the aggregated verification and certification segment include IMI Global, ICS, and Validus. The factors considered in determining this aggregated reporting segment include the economic similarity of the businesses, the nature of services provided, production processes, types of customers and distribution methods.\nThe Company also determined that it has a software sales and related consulting reportable segment. SureHarvest, which includes Sow Organic and JVF Consulting, is the sole operating segment. This segment includes software license, maintenance, support and software-related consulting service revenues.\nThe Company\u2019s chief operating decision maker (the Company\u2019s CEO) allocates resources and assesses the performance of its operating segments. Segment management makes decisions, measures performance, and manages the business utilizing internal reporting operating segment information. Performance of operating segments are based on net sales, gross profit, selling, general and administrative expenses and most importantly, operating income.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2086,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 66
+    },
+    "after": {
+     "line": 2133,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 67
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year ended December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year ended December 31, 2018",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Verification and Certification Segment",
+     "",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "",
+     "Eliminations and Other",
+     "",
+     "",
+     "Consolidated Totals",
+     "",
+     "Verification and Certification Segment",
+     "",
+     "Software Sales and Related Consulting Segment",
+     "",
+     "",
+     "Eliminations and Other",
+     "",
+     "Consolidated Totals",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Intangible and other assets, net",
+     "$",
+     "1,303,795",
+     "",
+     "$",
+     "1,943,900",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "3,247,695",
+     "$",
+     "1,464,435",
+     "$",
+     "2,387,686",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "3,852,121"
+    ],
+    [
+     "Goodwill",
+     "",
+     "1,133,122",
+     "",
+     "",
+     "1,812,613",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2,945,735",
+     "",
+     "1,133,122",
+     "",
+     "2,010,612",
+     "",
+     "",
+     "\u2014",
+     "",
+     "3,143,734"
+    ],
+    [
+     "Total assets",
+     "",
+     "13,236,311",
+     "",
+     "",
+     "5,001,150",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "18,237,461",
+     "",
+     "9,178,009",
+     "",
+     "5,285,929",
+     "",
+     "",
+     "\u2014",
+     "",
+     "14,463,938"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Verification and certification service revenue",
+     "$",
+     "15,564,411",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "15,564,411",
+     "$",
+     "13,743,311",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "13,743,311"
+    ],
+    [
+     "Product sales",
+     "",
+     "3,300,799",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,300,799",
+     "",
+     "2,266,771",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "2,266,771"
+    ],
+    [
+     "Software license, maintenance and support services revenue",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,273,820",
+     "",
+     "",
+     "(207,277)",
+     "",
+     "",
+     "1,066,543",
+     "",
+     "\u2014",
+     "",
+     "993,161",
+     "",
+     "",
+     "\u2014",
+     "",
+     "993,161"
+    ],
+    [
+     "Software-related consulting service revenue",
+     "",
+     "\u2014",
+     "",
+     "",
+     "947,524",
+     "",
+     "",
+     "(104,861)",
+     "",
+     "",
+     "842,663",
+     "",
+     "\u2014",
+     "",
+     "800,316",
+     "",
+     "",
+     "\u2014",
+     "",
+     "800,316"
+    ],
+    [
+     "Total revenues",
+     "$",
+     "18,865,210",
+     "",
+     "$",
+     "2,221,344",
+     "",
+     "$",
+     "(312,138)",
+     "",
+     "$",
+     "20,774,416",
+     "$",
+     "16,010,082",
+     "$",
+     "1,793,477",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "17,803,559"
+    ],
+    [
+     "Costs of revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs of verification and certification services",
+     "",
+     "8,628,292",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(183,983)",
+     "",
+     "",
+     "8,444,309",
+     "",
+     "7,564,946",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "7,564,946"
+    ],
+    [
+     "Costs of products",
+     "",
+     "2,148,564",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,148,564",
+     "",
+     "1,438,648",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1,438,648"
+    ],
+    [
+     "Costs of software license, maintenance and support services",
+     "",
+     "\u2014",
+     "",
+     "",
+     "615,248",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "615,248",
+     "",
+     "\u2014",
+     "",
+     "644,746",
+     "",
+     "",
+     "\u2014",
+     "",
+     "644,746"
+    ],
+    [
+     "Costs of software-related consulting services",
+     "",
+     "\u2014",
+     "",
+     "",
+     "486,880",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "486,880",
+     "",
+     "\u2014",
+     "",
+     "411,468",
+     "",
+     "",
+     "\u2014",
+     "",
+     "411,468"
+    ],
+    [
+     "Total costs of revenues",
+     "",
+     "10,776,856",
+     "",
+     "",
+     "1,102,128",
+     "",
+     "",
+     "(183,983)",
+     "",
+     "",
+     "11,695,001",
+     "",
+     "9,003,594",
+     "",
+     "1,056,214",
+     "",
+     "",
+     "\u2014",
+     "",
+     "10,059,808"
+    ],
+    [
+     "Gross profit",
+     "",
+     "8,088,354",
+     "",
+     "",
+     "1,119,216",
+     "",
+     "",
+     "(128,155)",
+     "",
+     "",
+     "9,079,415",
+     "",
+     "7,006,488",
+     "",
+     "737,263",
+     "",
+     "",
+     "\u2014",
+     "",
+     "7,743,751"
+    ],
+    [
+     "Depreciation & amortization",
+     "",
+     "373,583",
+     "",
+     "",
+     "722,877",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,096,460",
+     "",
+     "320,094",
+     "",
+     "622,324",
+     "",
+     "",
+     "\u2014",
+     "",
+     "942,418"
+    ],
+    [
+     "Other operating expenses",
+     "",
+     "5,624,489",
+     "",
+     "",
+     "934,250",
+     "",
+     "",
+     "(128,155)",
+     "",
+     "",
+     "6,430,584",
+     "",
+     "5,245,707",
+     "",
+     "681,073",
+     "",
+     "",
+     "\u2014",
+     "",
+     "5,926,780"
+    ],
+    [
+     "Segment operating (loss)/income",
+     "$",
+     "2,090,282",
+     "",
+     "$",
+     "(537,911)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "1,552,371",
+     "$",
+     "1,440,687",
+     "$",
+     "(566,134)",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "874,553"
+    ],
+    [
+     "Other items to reconcile segment operating income (loss) to net income attributable to WFCF:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense (income)",
+     "",
+     "(92,584)",
+     "",
+     "",
+     "161,985",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "69,401",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(109,433)",
+     "",
+     "(109,433)"
+    ],
+    [
+     "Income tax (benefit)/expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "460,000",
+     "",
+     "",
+     "460,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "309,008",
+     "",
+     "309,008"
+    ],
+    [
+     "Net loss attributable to non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "",
+     "322,195",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "322,195",
+     "",
+     "\u2014",
+     "",
+     "125,758",
+     "",
+     "",
+     "\u2014",
+     "",
+     "125,758"
+    ],
+    [
+     "Net (loss)/income attributable to WFCF",
+     "$",
+     "2,182,866",
+     "",
+     "$",
+     "(377,701)",
+     "",
+     "$",
+     "(460,000)",
+     "",
+     "$",
+     "1,345,165",
+     "$",
+     "1,440,687",
+     "$",
+     "(440,376)",
+     "",
+     "$",
+     "(199,575)",
+     "$",
+     "800,736"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2137,
+    "end_line": 2188
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Segments"
+    }
+   },
+   "prose_before": "With each acquisition, we assess the need to disclose discrete information related to our operating segments. Because of the similarities of certain of our acquisitions that provide certification and verification services, we aggregate operations into one verification and certification reportable segment. The operating segments included in the aggregated verification and certification segment include IMI Global, ICS, and Validus. The factors considered in determining this aggregated reporting segment include the economic similarity of the businesses, the nature of services provided, production processes, types of customers and distribution methods.\nThe Company also determined that it has a software sales and related consulting reportable segment. SureHarvest, which includes Sow Organic and JVF Consulting, is the sole operating segment. This segment includes software license, maintenance, support and software-related consulting service revenues.\nThe Company\u2019s chief operating decision maker (the Company\u2019s CEO) allocates resources and assesses the performance of its operating segments. Segment management makes decisions, measures performance, and manages the business utilizing internal reporting operating segment information. Performance of operating segments are based on net sales, gross profit, selling, general and administrative expenses and most importantly, operating income.\nThe Company eliminates intercompany transfers between segments for management reporting purposes. The following table shows information for reportable operating segments:",
+   "prose_after": "Note 18 \u2013 Subsequent Events\nOn February 21, 2020 the Company acquired all of the stock of privately held Postelsia Holdings, Ltd. (\u201cPostelsia\u201d) for $300,000 in cash. Postelsia, based in Victoria, British Columbia, is a leader in the emerging field of environmental and social sustainability programs for the seafood industry. Postelsia provides a range of programs and consulting services designed to improve and promote sustainable practices, including environmental conservation, worker care, and food safety compliance. Postelsia will operate as a wholly owned subsidiary of the Company.\nITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE\nNone.\nITEM 9A. CONTROLS AND PROCEDURES\nEvaluation of Disclosure Controls and Procedures\nOur Chief Executive Officer and Chief Financial Officer, after evaluating the effectiveness of the Company\u2019s \u201cdisclosure controls and procedures\u201d (as defined in the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d) Rules 13a-15(e) or 15d-15(e)) as of the end of the period covered by this annual report, have concluded that our disclosure controls and procedures are effective based on their evaluation of these controls and procedures as required by paragraph (b) of the Exchange Act Rules 13a-15 or 15d-15.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2133,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 67
+    },
+    "after": {
+     "line": 2193,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 68
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Document Name",
+     ""
+    ],
+    [
+     "2.1",
+     "Asset Purchase and Contribution Agreement, dated as of September 16, 2013, by and among Praedium Ventures, LLC; the Members of Praedium Ventures, LLC; Where Food Comes From, Inc. and Validus Verification Services LLC",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed September 19, 2013"
+    ],
+    [
+     "2.2",
+     "Asset Purchase Agreement, dated as of December 28, 2016, by and among Where Food Comes From, Inc., SureHarvest Services, LLC, SureHarvest, Inc. and Jeff Dlott",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed December 30, 2016"
+    ],
+    [
+     "2.3",
+     "Asset Purchase Agreement, dated as of May 16, 2018, between Where Food Comes From, Inc. and Sow Organic, LLC",
+     "Incorporated by reference from Registrant\u2019s Quarterly Report on Form 10-Q filed August 14, 2018"
+    ],
+    [
+     "2.4",
+     "Purchase Agreement, dated as of August 9, 2018, between Where Food Comes From, Inc. and Progressive Beef, LLC",
+     "Incorporated by reference from Registrant\u2019s Quarterly Report on Form 10-Q filed November 13, 2018"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation",
+     "Incorporated by reference from Registrant\u2019s Registration Statement on Form SB-2 filed April 28, 2006"
+    ],
+    [
+     "3.2",
+     "Articles of Amendment",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed December 5, 2012"
+    ],
+    [
+     "3.3",
+     "By-laws of the Registrant",
+     "Incorporated by reference from Registrant\u2019s Registration Statement on Form SB-2 filed April 28, 2006"
+    ],
+    [
+     "4.1",
+     "Form of the Registrant\u2019s Common Stock Certificate",
+     "Incorporated by reference from Registrant\u2019s Registration Statement on Form SB-2 filed June 22, 2006"
+    ],
+    [
+     "10.1",
+     "2006 Equity Incentive Plan*",
+     "Incorporated by reference from Registrant\u2019s Registration Statement on Form SB-2 filed April 28, 2006"
+    ],
+    [
+     "10.2",
+     "2016 Equity Incentive Plan*",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed May 10, 2016"
+    ],
+    [
+     "10.3",
+     "Employment Agreement dated January 1, 2006 between the Registrant and John K. Saunders *",
+     "Incorporated by reference from Registrant\u2019s Registration Statement on Form SB-2 filed April 28, 2006"
+    ],
+    [
+     "10.4",
+     "Employment Agreement dated January 1, 2006 between the Registrant and Leann Saunders *",
+     "Incorporated by reference from Registrant\u2019s Registration Statement on Form SB-2 filed April 28, 2006"
+    ],
+    [
+     "10.5",
+     "Purchase and Exchange Agreement, dated as of February 29, 2012, by and among Integrated Management Information, Inc. and International Certification Services, Inc.",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed March 2, 2012"
+    ],
+    [
+     "10.6",
+     "Shareholders\u2019 Agreement, dated as of February 29, 2012, by and among Integrated Management Information, Inc. and International Certification Services, Inc. and the selling shareholders.",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed March 2, 2012"
+    ],
+    [
+     "10.7",
+     "Amended and Restated Operating Agreement of Validus Verification Services LLC, dated as of September 16, 2013",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed September 19, 2013"
+    ],
+    [
+     "10.8",
+     "Lease Agreement between Move LLC and Where Food Comes From, Inc.",
+     "Incorporated by reference from Registrant\u2019s Annual Report on Form 10-K filed February 28, 2017"
+    ],
+    [
+     "10.9",
+     "First Amendment to Lease Agreement between Move LLC and Where Food Comes From, Inc.",
+     "Incorporated by reference from Registrant\u2019s Annual Report on Form 10-K filed April 2, 2018"
+    ],
+    [
+     "10.10",
+     "Employment Agreement, effective December 28, 2016, by and between SureHarvest Services, LLC and Jeff Dlott *",
+     "Incorporated by reference from Registrant\u2019s Current Report on Form 8-K filed December 30, 2016"
+    ],
+    [
+     "21.1",
+     "Subsidiaries of the Registrant",
+     "Filed herewith"
+    ],
+    [
+     "23.1",
+     "Consent of Causey Demgen & Moore, P.C.",
+     "Filed herewith"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2269,
+    "end_line": 2314
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "ITEM 11. EXECUTIVE COMPENSATION\nThis information will be included in our Proxy Statement, which will be filed within 120 days after the close of the 2019 fiscal year, and is hereby incorporated by reference.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThis information will be included in our Proxy Statement, which will be filed within 120 days after the close of the 2019 fiscal year, and is hereby incorporated by reference.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nThis information will be included in our Proxy Statement, which will be filed within 120 days after the close of the 2019 fiscal year, and is hereby incorporated by reference.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThis information will be included in our Proxy Statement, which will be filed within 120 days after the close of the 2019 fiscal year, and is hereby incorporated by reference.\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2266,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 71
+    },
+    "after": {
+     "line": 2315,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 72
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 42,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "23.2",
+     "Consent of Crowe LLP",
+     "Filed herewith"
+    ],
+    [
+     "31.1",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "31.2",
+     "Certification Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002",
+     "Filed herewith"
+    ],
+    [
+     "32.1",
+     "Certification Pursuant to 18 U.S.C. Section 1350 as adopted by Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Furnished herewith"
+    ],
+    [
+     "32.2",
+     "Certification Pursuant to 18 U.S.C. Section 1350 as adopted by Section 906 of the Sarbanes-Oxley Act of 2002",
+     "Furnished herewith"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document",
+     "Filed herewith"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document",
+     "Filed herewith"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document",
+     "Filed herewith"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document",
+     "Filed herewith"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document",
+     "Filed herewith"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document",
+     "Filed herewith"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "* Indicates a management contract or compensatory plan or arrangement in which directors or executive officers are eligible to participate.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2316,
+    "end_line": 2332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2315,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 2337,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 42,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 43,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 5, 2020",
+     "Where Food Comes From, Inc.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ John K. Saunders",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Name: John K. Saunders\n\n\n\nTitle: Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2342,
+    "end_line": 2351
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "ITEM 16. FORM 10-K SUMMARY\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2337,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 2399,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 43,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 44,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John K. Saunders",
+     "Chairman and CEO\n\n\n\n(Principal Executive Officer)",
+     "March 5, 2020"
+    ],
+    [
+     "John K. Saunders",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Leann Saunders",
+     "President and Director",
+     "March 5, 2020"
+    ],
+    [
+     "Leann Saunders",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Dannette Henning",
+     "Chief Financial Officer\n\n\n\n(Principal Financial Officer)",
+     "March 5, 2020"
+    ],
+    [
+     "Dannette Henning",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Tom Heinen",
+     "Director",
+     "March 5, 2020"
+    ],
+    [
+     "Tom Heinen",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Pete Lapaseotes",
+     "Director",
+     "March 5, 2020"
+    ],
+    [
+     "Pete Lapaseotes",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Adam Larson",
+     "Director",
+     "March 5, 2020"
+    ],
+    [
+     "Adam Larson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Graeme P. Rein",
+     "Director",
+     "March 5, 2020"
+    ],
+    [
+     "Graeme P. Rein",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael D. Smith",
+     "Director",
+     "March 5, 2020"
+    ],
+    [
+     "Michael D. Smith",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert VanSchoick",
+     "Director",
+     "March 5, 2020"
+    ],
+    [
+     "Robert VanSchoick",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2354,
+    "end_line": 2398
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 18,
+     "label": "NOTE 18",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 18
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2337,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 73
+    },
+    "after": {
+     "line": 2399,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 74
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 44,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

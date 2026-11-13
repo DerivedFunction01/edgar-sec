@@ -1,0 +1,6266 @@
+{
+ "accession": "0001214659-12-000335",
+ "cik": "0001173738",
+ "form": "10-K",
+ "filing_date": "2012-01-30",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a12612110k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "52-2336836"
+    ],
+    [
+     "(State or other jurisdiction of    \n\nincorporation or organization)",
+     "(I.R.S. Employer\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n[X]  Annual Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the fiscal year ended October 31, 2011\n[ ]  Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934\nFor the transition period from __________ to __________\nCommission File Number 000-49845\nCDEX INC.\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "4555 South Palo Verde Road, Suite 123\nTucson, Arizona, 85714\n520-745-5172\n(Address of principal executive offices and registrant's phone number)\nSecurities registered under Section 12(b) of the Exchange Act: None.\nSecurities registered under Section 12(g) of the Exchange Act:\nClass A Common stock, $.005 par value per share.\n(Title of Class)\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "6"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "11"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "11"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "11"
+    ],
+    [
+     "Item 4.",
+     "(Removed and Reserved)",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer",
+     ""
+    ],
+    [
+     "",
+     "Purchases of Equity Securities",
+     "12"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "13"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "16"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "16"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "16"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "16"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "18"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "21"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and",
+     ""
+    ],
+    [
+     "",
+     "Related Stockholder Matters",
+     "25"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "26"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "27"
+    ],
+    [
+     "Signatures",
+     "",
+     "30"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 104
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-accelerated filer [ ]                      Smaller reporting company [X]\n(Do not check if a smaller reporting company)\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nThe aggregate market value of the Class A common stock held by non-affiliates was approximately $2,789,000 on April 30, 2011 (the last day of the registrant\u2019s most recently completed second quarter) based on the last reported sale price of the registrant's Class A common stock on the Over-the-Counter Bulletin Board (OTCBB).\nThe number of Common Shares of the Registrant outstanding as of January 17, 2012 was 109,996,717.\nDOCUMENTS INCORPORATED BY REFERENCE \u2013 None\nANNUAL REPORT ON FORM 10-K\nFOR THE YEAR ENDED OCTOBER 31, 2011",
+   "prose_after": "i\nPART I\nCAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS\nThis document contains forward-looking statements as that term is defined in the federal securities laws. Forward-looking statements can be identified by the use of words such as \"expects,\" \"plans,\" \"may,\" \"anticipates,\" \"believes,\" \"should,\" \"intends,\" \"estimates,\" and other words of similar meaning. These statements are subject to risks and uncertainties that cannot be predicted or quantified and, consequently, actual results may differ materially from those expressed or implied by such forward-looking statements. Such risks and uncertainties include, without limitation, the ability of the Company to raise capital to finance the development of its products, the effectiveness, profitability and the marketability of those products, the ability of the Company to protect its proprietary information, the establishment of an efficient corporate operating structure as the Company grows and, other risks detailed from time-to-time in our filings with the Securities and Exchange Commission. The Company undertakes no obligation to publicly update any forward-looking statements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 104,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Fiscal Year Ended October 31, 2011:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "0.07",
+     "$",
+     "0.04"
+    ],
+    [
+     "Second quarter",
+     "",
+     "0.06",
+     "",
+     "0.04"
+    ],
+    [
+     "Third quarter",
+     "",
+     "0.06",
+     "",
+     "0.03"
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "0.05",
+     "",
+     "0.02"
+    ],
+    [
+     "Fiscal Year Ended October 31, 2010:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First quarter",
+     "$",
+     "0.19",
+     "$",
+     "0.05"
+    ],
+    [
+     "Second quarter",
+     "",
+     "0.09",
+     "",
+     "0.05"
+    ],
+    [
+     "Third quarter",
+     "",
+     "0.08",
+     "",
+     "0.04"
+    ],
+    [
+     "Fourth quarter",
+     "",
+     "0.09",
+     "",
+     "0.03"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 380,
+    "end_line": 394
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "Our common stock may be subject to the low-priced security or so called \"penny stock\" rules that impose additional sales practice requirements on broker-dealers who sell such securities. The Securities Enforcement and Penny Stock Reform Act of 1990 (\"Reform Act\") requires additional disclosure in connection with any trades involving a stock defined as a \"penny stock\" (generally defined as, according to recent regulations adopted by the U.S. Securities and Exchange Commission, any equity security that has a market price of less than $5.00 per share, subject to certain exceptions), including the delivery, prior to any penny stock transaction, of a disclosure schedule explaining the penny stock market and the risks associated therewith. The regulations governing low-priced or penny stocks sometimes may limit the ability of broker-dealers to sell our common stock and thus, ultimately, the ability of the investors to sell their securities in the secondary market. Prices for CDEX shares will be determined in the marketplace and may be influenced by many factors, including the depth and liquidity of the market for the shares, our results of operations, what investors think of CDEX and the chemical detection and validation industry, changes in economic conditions in the industry and general economic and market conditions. Market fluctuations could have a material adverse impact on the trading price of our shares.\nIf CDEX is unable to maintain NASD registered broker/dealers as market makers, the liquidity of our common stock could be impaired, not only in the number of shares of common stock that could be bought and sold, but also through possible delays in the timing of transactions, and lower prices for our common stock than might otherwise prevail. Furthermore, a lack of market makers could result in CDEX shareholders being unable to buy or sell shares of our common stock on any secondary market. We may be unable to maintain such market makers.\nThe table below sets forth the high and low sales price for our Class A common stock as reported on the OTCBB for each of our last two fiscal years:",
+   "prose_after": "As the foregoing are over-the-counter market quotations, they reflect inter-dealer prices, without retail markup, markdown, or commissions, and may not represent actual transactions.\nStockholders\nAs of January 17, 2012, there were approximately 1,500 holders of record of our Class A common stock. However, a large number of our shareholders hold their shares in \"street name\" in brokerage accounts and, therefore, do not appear on the shareholder list maintained by our transfer agent.\nDividends\nWe have paid no cash dividends on our common stock and we do not anticipate paying any cash dividends in the foreseeable future.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nThe following table details information regarding our existing equity compensation plans as of October 31, 2011:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 365,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 396,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Equity Compensation Plan Information",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "Weighted-",
+     "",
+     "Number of securities",
+     ""
+    ],
+    [
+     "",
+     "securities to be",
+     "",
+     "average exercise",
+     "",
+     "remaining available for",
+     ""
+    ],
+    [
+     "",
+     "issued upon",
+     "",
+     "price of",
+     "",
+     "future issuance under equity",
+     ""
+    ],
+    [
+     "",
+     "exercise of",
+     "",
+     "outstanding",
+     "",
+     "compensation plans",
+     ""
+    ],
+    [
+     "Plan category",
+     "outstanding",
+     "",
+     "options",
+     "",
+     "(excluding securities",
+     ""
+    ],
+    [
+     "",
+     "options",
+     "",
+     "",
+     "",
+     "reflected in column (a))",
+     ""
+    ],
+    [
+     "Equity compensation plans\n\napproved by security holders",
+     "",
+     "9,780,000",
+     "$",
+     "0.05",
+     "",
+     "51,529,767"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "9,780,000",
+     "$",
+     "0.05",
+     "",
+     "51,529,767"
+    ]
+   ],
+   "caption_stack": [
+    "Equity Compensation Plan Information"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 411,
+    "end_line": 432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES"
+    },
+    "note": null
+   },
+   "prose_before": "As the foregoing are over-the-counter market quotations, they reflect inter-dealer prices, without retail markup, markdown, or commissions, and may not represent actual transactions.\nStockholders\nAs of January 17, 2012, there were approximately 1,500 holders of record of our Class A common stock. However, a large number of our shareholders hold their shares in \"street name\" in brokerage accounts and, therefore, do not appear on the shareholder list maintained by our transfer agent.\nDividends\nWe have paid no cash dividends on our common stock and we do not anticipate paying any cash dividends in the foreseeable future.\nSecurities Authorized for Issuance Under Equity Compensation Plans\nThe following table details information regarding our existing equity compensation plans as of October 31, 2011:",
+   "prose_after": "Sales of Unregistered Securities and Use of Proceeds\nDuring the fourth quarter of fiscal year 2011, as a part of the Company\u2019s Board of Director 2010 Compensation Plan, the Company granted 224,344 restricted Class A common shares each to its directors Robert H. Foglesong and Frank E. Wren and 199,344 restricted Class A common shares each to its directors and Brian M. Jenkins and James G. Stevenson. Additionally, as a part of the Oncology Distribution Agreement, the Company issued 230,100 unrestricted Class A common shares and 613,600 restricted Class A common shares to the holders of the Oncology Distribution agreements for the quarterly 3% required equity distribution and 8,670,000 restricted Class A common shares to the holders of the Oncology Distribution agreements on the termination of the agreements.\nITEM 6. SELECTED FINANCIAL DATA\nWe are a smaller reporting company as defined by Rule 12b-2 of the Securities Exchange Act of 1934 and are not required to provide the information under this item.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 398,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 448,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended October 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Percent of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Percent of",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "Revenue",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "516,322",
+     "",
+     "",
+     "100.0",
+     "%",
+     "$",
+     "408,774",
+     "",
+     "",
+     "100.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "173,193",
+     "",
+     "",
+     "33.5",
+     "",
+     "",
+     "61,724",
+     "",
+     "",
+     "15.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "343,129",
+     "",
+     "",
+     "66.5",
+     "",
+     "",
+     "347,050",
+     "",
+     "",
+     "84.9",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "839,394",
+     "",
+     "",
+     "162.6",
+     "",
+     "",
+     "1,204,546",
+     "",
+     "",
+     "294.7",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "146,718",
+     "",
+     "",
+     "28.4",
+     "",
+     "",
+     "109,952",
+     "",
+     "",
+     "26.9",
+     ""
+    ],
+    [
+     "Termination of oncology agreement - net",
+     "",
+     "68,667",
+     "",
+     "",
+     "13.3",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,054,779",
+     "",
+     "",
+     "204.3",
+     "",
+     "",
+     "1,314,498",
+     "",
+     "",
+     "321.6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "$",
+     "(711,650)",
+     "",
+     "",
+     "(137.8",
+     ") %",
+     "$",
+     "(967,448)",
+     "",
+     "",
+     "(236.7",
+     ") %"
+    ]
+   ],
+   "caption_stack": [
+    "For the year ended October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 451,
+    "end_line": 476
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": null
+   },
+   "prose_before": "During the fourth quarter of fiscal year 2011, as a part of the Company\u2019s Board of Director 2010 Compensation Plan, the Company granted 224,344 restricted Class A common shares each to its directors Robert H. Foglesong and Frank E. Wren and 199,344 restricted Class A common shares each to its directors and Brian M. Jenkins and James G. Stevenson. Additionally, as a part of the Oncology Distribution Agreement, the Company issued 230,100 unrestricted Class A common shares and 613,600 restricted Class A common shares to the holders of the Oncology Distribution agreements for the quarterly 3% required equity distribution and 8,670,000 restricted Class A common shares to the holders of the Oncology Distribution agreements on the termination of the agreements.\nITEM 6. SELECTED FINANCIAL DATA\nWe are a smaller reporting company as defined by Rule 12b-2 of the Securities Exchange Act of 1934 and are not required to provide the information under this item.\nITEM 7. MANAGEMENT'S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nYou should read the following discussion in conjunction with our audited financial statements and related notes included elsewhere in this document. The following discussion (as well as other discussions in this document) contains forward-looking statements. Please see \u201cCautionary Statement Regarding Forward-Looking Statements\u201d for a discussion of uncertainties, risks and assumptions associated with these statements.\nResults of Operations\nThe following table summarizes our operating results for fiscal 2011 compared to fiscal 2010:",
+   "prose_after": "Revenue was $516,322 and $408,774 for the fiscal years ended October 31, 2011 and 2010, respectively, an increase of $107,548 or 26%. This increase was primarily attributable to amortized income from the oncology licensing agreement, an increase in sales of our ID2 Meth Scanner and an increase in our Pay Per Use revenue, partially offset by a decrease in sales of our ValiMed product and the associated installation and training revenue.\nCost of revenue was $173,193 and $61,724 for the fiscal years ended October 31, 2011 and 2010, respectively, an increase of $111,469 or 181%. This increase was primarily attributable to the amortization of non-cash costs of our oncology licensing agreement and higher material costs of our products. Gross profit margins decreased to 67% in fiscal 2011 from 85% in fiscal 2010.\nTermination of oncology agreement is the revenue earned upon the termination of the Oncology Distribution Agreement of $364,833 netted against the non-cash expense associated with the termination of $433,500.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 450,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 492,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "AGE",
+     "POSITION",
+     "SINCE"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jeffrey K. Brumfield",
+     "50",
+     "Chariman of the Board of Directors and",
+     "August 30, 2010"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen A. McCommon",
+     "62",
+     "Chief Financial Officer and",
+     "November 11, 2008"
+    ],
+    [
+     "",
+     "",
+     "VP of Finance",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert H. Foglesong",
+     "66",
+     "Director",
+     "August 30, 2010"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brian M. Jenkins",
+     "69",
+     "Director",
+     "August 30, 2010"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Frank E. Wren",
+     "53",
+     "Director",
+     "August 30, 2010"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James G. Stevenson",
+     "54",
+     "Director",
+     "December 15, 2010"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 579,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Disclosure controls are controls and procedures that are designed to ensure that information required to be disclosed in our reports filed under the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d) is recorded, processed, summarized and reported, within the time periods specified in the SEC's rules and forms. Disclosure controls and procedures include, without limitation, controls and procedures designed to ensure that information required to be disclosed by a company in the reports that it files or submits under the Exchange Act is accumulated and communicated to the company's management, including its principal executive and principal financial officers, or persons performing similar functions, as appropriate to allow timely decisions regarding required disclosure. Our management carried out an evaluation under the supervision and with the participation of our CEO and CFO, of the effectiveness of the design and operation of our disclosure controls and procedures pursuant to Rules 13a-15(e) and 15d-15(e) under the Exchange Act. Based upon that evaluation, the Company's CEO and CFO have concluded that the Company's disclosure controls and procedures were effective at the reasonable assurance level as of October 31, 2011.\nChanges in Internal Controls Over Financial Reporting\nThere has been no change in CDEX\u2019 internal control over financial reporting for the quarter ended October 31, 2011 that materially affected, or is reasonably likely to materially affect our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth information regarding our executive officers and directors as of January 17, 2012:",
+   "prose_after": "TERM OF OFFICE\nAll of our Directors hold office until the next annual general meeting of the stockholders or until their successors are elected and qualified. We ask our Directors to be willing to serve on the Board for a minimum of three years. Our officers are appointed by our board of Directors and hold office until their earlier death, retirement, resignation or removal.\nThe following is a summary of the business experience of each of our executive officers and directors:\nJeffrey K. Brumfield has been our Chairman of the Board of Directors and Chief Executive Officer since August 30, 2010.\n\u2022 Mr. Brumfield has over 30 years business development experience founding and operating multiple businesses in several industries including: real-estate development, mortgage brokerage business, commercial and residential construction and retail merchandise.\n\u2022 Mr. Brumfield has been an investor in CDEX since 2004.\n\u2022 Mr. Brumfield is an avid philanthropist and supporter of the Boys and Girls Club of America.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 572,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Fiscal\n\nYear",
+     "Salary",
+     "",
+     "Option Awards (4)",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jeffrey K. Brumfield (1)",
+     "2011",
+     "$",
+     "125,385",
+     "",
+     "232,462",
+     "$",
+     "357,847"
+    ],
+    [
+     "Chief Executive Officer and",
+     "2010",
+     "$",
+     "18,462",
+     "",
+     "-",
+     "$",
+     "18,462"
+    ],
+    [
+     "Chairman of the Board of Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Donald W. Strickland (2)",
+     "2010",
+     "$",
+     "22,846",
+     "",
+     "31,432",
+     "$",
+     "54,278"
+    ],
+    [
+     "Former Chief Executive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Malcolm H. Philips, Jr. (3)",
+     "2010",
+     "$",
+     "19,440",
+     "",
+     "6,900",
+     "$",
+     "26,340"
+    ],
+    [
+     "Former Chief Executive Officer",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 726,
+    "end_line": 742
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Frank E. Wren (Chair), Brian M. Jenkins and James G. Stevenson are members of the Executive Compensation Committee. The committee is responsible for establishing and maintaining executive compensation practices designed to encourage company profitability and enhance long-term shareholder value.\nCorporate Governance and Nominating Committee\nThe Corporate Governance and Nominating Committee is comprised of Jeffrey K. Brumfield (Chair), Robert H. Foglesong and Brain M. Jenkins. The Committee is responsible for establishing and maintaining corporate governance practices designed to aid the long-term success of CDEX.\nITEM 11. EXECUTIVE COMPENSATION\nThe following table discloses for the periods presented the compensation for the persons who served as our Chief Executive Officer and our two most highly compensated other executive officers (not including the Chief Executive Officer) or significant employee whose total individual compensation exceeded $100,000 for the fiscal years October 31, 2011 and 2010 (the \"Named Executives\"):\nSummary Compensation Table",
+   "prose_after": "(1) Mr. Brumfield was appointed to his position of Chief Executive Officer and Chairman of the Board on August 30, 2010. During fiscal 2011, Mr. Brumfield deferred $50,000 of his salary. In December 2011, Mr. Brumfield refunded to the Company all of the 2011 salary compensation that he had been paid.\n(2) Mr. Strickland was the Company\u2019s Chief Executive officer from April 19, 2010 to August 30, 2010.\n(3) Mr. Philips was the Company\u2019s Chief Executive officer from June 11, 2007 to April 19, 2010.\n(4) The amounts included in the \"Option Awards\" column represent the aggregate grant date fair value of awards computed in accordance with FASB ASC Topic 718, Compensation \u2014 Stock Compensation (disregarding forfeiture assumptions). The fair value of each stock option award is estimated on the date of grant using the Black-Scholes option valuation. For a discussion of valuation assumptions, see Note 8 of our 2011 Financial Statements. In January 2011, as a part of his employment agreement, the Company granted Mr. Brumfield 8,000,000 stock options which will vest 1/2 on the effective date of the agreement, and the remaining 1/2 over the next six years subject to the attainment of certain performance goals. In April 2010, the Company granted 360,000 options to Mr. Strickland. Additionally, in June 2010, the Company modified all outstanding non-performance-based options to employees and active consultants to adjust the exercise prices to $0.0515 per share and to extend the life of the options to 10 years. The amounts reported for the fiscal year 2010 include the incremental fair value computed as of the modification date in accordance with FASB ASC Topic 718, with respect to the modified awards.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 754,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Option Awards",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NAME",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions\n\nExercisable (#)",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions\n\nUnexercisable (#)",
+     "Option Exercise\n\nPrice ($)",
+     "Option\n\nExpiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Jeffrey K. Brumfield",
+     "4,000,000",
+     "4,000,000",
+     "0.0500",
+     "1/21/2017"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Donald W. Strickland",
+     "120,000",
+     "-",
+     "0.0515",
+     "7/17/2012"
+    ],
+    [
+     "",
+     "140,000",
+     "-",
+     "0.0515",
+     "4/16/2013"
+    ],
+    [
+     "",
+     "120,000",
+     "-",
+     "0.0515",
+     "8/30/2012"
+    ]
+   ],
+   "caption_stack": [
+    "Option Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 765,
+    "end_line": 787
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Effective April 19, 2010, the Board of Directors appointed Mr. Strickland as the Company\u2019s Chief Executive Officer. Mr. Strickland has been a Director since February 3, 2006. Mr. Strickland\u2019s employment agreement is renewable annually and includes a salary of $60,000 per year. Additionally, Mr. Strickland received 360,000 options to purchase shares of Class A common stock which vest 1/12 each month beginning on the 19th of May 2010 as long as the agreement is in effect. The exercise price of the options was the closing stock price of CDEX on the effective date. In addition, beginning on May 19, 2011 and continuing on the 19th day of each month thereafter, the Company agrees to provide to the Mr. Strickland 30,000 options to purchase shares of Class A common stock. The exercise price of these options shall be the closing price of the stock on the day of grant. Mr. Strickland will have two years from the date of termination or five years, whichever is earlier, to exercise the options granted under his employment agreement, irrespective of his employment status. Mr. Strickland resigned his position as Director and CEO effective of August 30, 2010.\nOutstanding Equity Awards at Fiscal Year-End\nThe following table discloses unexercised options held by the Named Executives at October 31, 2011",
+   "prose_after": "Stock Incentive Plans\n2002 Stock Incentive Plan\nOn May 27, 2002, our Board of Directors adopted the 2002 Stock Incentive Plan, under which stock options and restricted stock may be granted to such of our officers, directors, employees or other persons providing services to CDEX as our Board of Directors, or a committee designated by them for this purpose, selects. The plan was approved by our stockholders on July 1, 2002.\nStock options granted under this plan may be nonqualified stock options or incentive stock options, as provided in the plan. Incentive stock options are to be issued in accordance with Section 422 of the Internal Revenue Code of 1986, as amended. As such, incentive stock options may only be issued to employees of CDEX or any subsidiary of CDEX, must have an exercise price of no less than the fair market value of the common stock on the date of the grant; provided, however, that in the event the grantee is a ten percent stockholder, the exercise price shall not be less than 110% of fair market value of the common stock on the date of the grant. The aggregate fair market value of the underlying shares cannot exceed $100,000 for any individual option holder during any calendar year. Incentive stock options granted to a ten percent stockholder must expire no later than five years from the date of grant. Non-incentive options are not subject to the restrictions contained in Section 422, except that pursuant to the plan, such options cannot be exercisable at less than 85% of fair market value and must expire no later than ten years from the date of grant. The options are non-transferable and may not be assigned except that non-incentive options may, in certain cases be assigned to family members of the grantee.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 793,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "NAME",
+     "Stock Awards (1)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert H. Foglesong",
+     "$",
+     "26,257",
+     "(2)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brian M. Jenkins",
+     "$",
+     "25,257",
+     "(3)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Frank E. Wren",
+     "$",
+     "27,057",
+     "(4)"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James G. Stevenson",
+     "$",
+     "30,962",
+     "(5)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 814,
+    "end_line": 826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "On July 1, 2003, our shareholders adopted the 2003 Stock Incentive Plan, which has substantially the same terms as the 2002 Stock Incentive Plan. At the annual meeting of stockholders held on June 30, 2004, the shareholders authorized 10,000,000 shares in the aggregate for issuance under both the 2002 and 2003 plans, including 3,000,000 available for the Board of Directors to allocate at their discretion. At the annual meeting of the stockholders held on March 17, 2006, the shareholders approved an amendment to the 2003 Stock Incentive Plan increasing the number of Class A common stock available for issuance by an additional 3,500,000 shares. This amendment increased the aggregate number of shares available for issuance under both the 2002 and 2003 Stock Incentive Plans to 13,500,000. The 2003 Stock Incentive Plan provides for a pro rata increase in the number of shares permitted to be granted or issued for an increase in the authorized shares approved by the shareholders. At a special shareholders' meeting held on January 9, 2007, the shareholders approved an increase in the number of authorized shares from 50.2 million to 100 million. This shareholder action resulted in an automatic increase in the number of shares permitted to be issued or granted under the 2003 Stock Incentive Plan to approximately 26.9 million. At the annual meeting of shareholders on April 9, 2008, the shareholders approved to limit the number of shares issuable under the Company's Stock Incentive Plans to 25% of the authorized shares of the Company. This action resulted in limiting the number of shares issuable under the plans to 25,000,000. At the annual meeting of stockholders held on August 18, 2011, the stockholders approved an increase in the number of authorized shares from 100 million to 300 million. This shareholder action resulted in an automatic increase in the number of shares permitted to be issued or granted under the 2003 Stock Incentive Plan up to 75 million.\nCompensation of Directors\nThe following table discloses our director compensation for the fiscal year ended October 31, 2010:\nDirectors Compensation",
+   "prose_after": "(1) The amounts included in the \"Stock Awards\" column represent the aggregate grant date fair value in fiscal 2011 related to restricted stock grants to directors, computed in accordance with FASB ASC Topic 718. For a discussion of valuation assumptions, see Note 8 to our 2011 Financial Statements.\n(2) Represents 628,966 restricted Class A common stock grants to Gen. Foglesong to vest six months from date of grant.\n(3) Represents 603,966 restricted Class A common stock grants to Mr. Jenkins to vest six months from date of grant.\n(4) Represents 648,966 restricted Class A common stock grants to Mr. Wren to vest six months from date of grant.\n(5) Represents 722,064 restricted Class A common stock grants to Mr. Stevenson to vest six months from date of grant. Of this total, 200,000 share grants represent Mr. Stevenson\u2019s acceptance of position one-time grant.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth information regarding the beneficial ownership of the Company's Class A common stock, based on information provided by the persons named below in publicly available filings, as of January 17, 2012:",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 807,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 836,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name And Address Of Beneficial\n\nOwner",
+     "Position",
+     "Amount Of\n\nBeneficial\n\nOwnership",
+     "",
+     "Percent Of\n\nClass (1)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gemini Master Fund, Ltd.",
+     "Investor",
+     "9,182,513",
+     "(2)",
+     "8.3%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Mr. Jeffery K. Brumfield",
+     "Executive Officer and Director",
+     "9,113,970",
+     "(3)",
+     "8.0%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Frank E. Wren",
+     "DirectorF",
+     "1,262,779",
+     "(4)",
+     "1.1%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert H. Foglesong",
+     "Director",
+     "889,566",
+     "(5)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James G. Stevenson",
+     "Director",
+     "872,064",
+     "(6)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brian M. Jenkins",
+     "Director",
+     "850,280",
+     "(7)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stephen A. McCommon",
+     "Executive Officer",
+     "593,778",
+     "(8)",
+     "*"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All directors and officers as a group (6 persons)",
+     "",
+     "13,582,437",
+     "",
+     "11.8%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "* Less than 1%",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 851,
+    "end_line": 877
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "Unless otherwise indicated, the address of each beneficial owner is care of CDEX Inc., 4555 South Palo Verde Road, Suite 123, Tucson, Arizona 85714. Unless otherwise indicated, the Company believes that all persons named in the following table have sole voting and investment power with respect to all shares of common stock that they beneficially own.\nFor purposes of this table, a person is deemed to be the beneficial owner of the securities if that person has the right to acquire such securities within 60 days of January 17, 2012 upon the exercise of options or warrants. In determining the percentage ownership of the persons in the table below, we assumed in each case that the person exercised all options and warrants and converted all notes which are currently held by that person and which are exercisable/convertible within such 60 day period, but that options and warrants and convertible notes held by all other persons were not exercised or converted, and based the percentage ownership on 109,996,717 shares outstanding on January 17, 2012.",
+   "prose_after": "(1) Computed based upon the total number of shares of Class A common stock, shares of common stock underlying options and shares of common stock underlying warrants held by that person that are exercisable within 60 days of January 17, 2012.\n(2) Based on information contained in a report on Schedule 13G filed with the SEC on June 9, 2011: The address of Gemini Master Fund, Ltd. (\u201cGemini\u201d) is One Market Plaza, Stuart Street Tower, Suite 2700, San Francisco, CA 94105. All of the reported are owned directly by Gemini Master Fund, Ltd. Gemini Strategies, LLC is the investment manager of Gemini Master Fund, Ltd., and Steven Winters is the sole managing member of Gemini Strategies, LLC. Gemini Strategies, LLC and Steven Winters expressly disclaim any equitable or beneficial ownership of such securities. The Reporting Persons own a total of 9,182,513 shares of Common Stock, all of which are owned of record by Gemini Master Fund, Ltd. (\u201cGemini\u201d). Gemini also holds (i) an aggregate of $785,237.42 in principal amount of convertible debentures (\u201cDebentures\u201d) issued to Gemini by the issuer which are convertible into shares of common stock at a conversion price of $0.05, and (ii) 8,000,000 shares of Common Stock issuable upon exercise of a warrant originally issued to Gemini on or about June 25, 2008 and amended on April 29, 2011 (\u201cWarrant\u201d). The number of shares of Common Stock into which the Debentures are convertible and the Warrant is exercisable at any point in time is limited, pursuant to the terms of such instruments, to that number of shares of Common Stock which would result in the Reporting Persons having beneficial ownership of 4.9% of the total issued and outstanding shares of Common Stock (the \"Ownership Limitation\"). The Reporting Persons disclaim beneficial ownership of any and all shares of Common Stock that would cause any Reporting Person's beneficial ownership to exceed the Ownership Limitation. Therefore, the Debentures and Warrant are not currently convertible or exercisable.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 838,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 879,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit related fees",
+     "$",
+     "26,976",
+     "$",
+     "23,900"
+    ],
+    [
+     "All other fees",
+     "",
+     "-",
+     "",
+     "500"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "26,976",
+     "$",
+     "24,400"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 916,
+    "end_line": 927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTING FEES AND SERVICES"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 In May 2011, Gemini converted $480,000 principal and accrued interest of its 10% convertible notes of into 9,600,000 shares of the Company\u2019s common stock. The notes were converted at the rate of $0.05 a share.\nDirector Independence\nFour of our directors, Gen. Robert H. Foglesong, Mr. Brian M. Jenkins, Mr. Frank E. Wren and Dr. James G. Stevenson, are independent directors as that term is defined by the applicable rules of the SEC and the Financial Industry Regulatory Authority (\u201cFINRA\u201d). However, because our stock trades on the OTC Bulletin Board, we are not required to have independent directors. If we ever become a listed issuer whose securities are listed on a national securities exchange or on an automated inter-dealer quotation system of a national securities association, which has independent director requirements, we intend to comply with all applicable requirements relating to director independence.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nThe following is a summary of fees billed to us by S.E. Clark and Co., our independent registered public accounting firm, for professional services rendered for the fiscal years ended October 31, 2011 and 2010:",
+   "prose_after": "Fees for audit services include fees associated with the annual audit of the Company and the review of our quarterly reports on Form 10-Q.\nPre-Approval Policies and Procedures\nThe Audit Committee approves all audit services, audit-related services, tax services and other services provided by our auditors. Any services provided by our auditors that are not specifically included within the scope of the audit must be pre-approved by the Audit Committee in advance of any engagement. Under the Sarbanes-Oxley Act of 2002, audit committees are permitted to approve certain fees for audit-related services, tax services and other services, pursuant to a de minimis exception prior to the completion of an audit engagement. In fiscal 2011 and 2010, none of the fees paid to S.E. Clark and Co. were approved pursuant to the de minimis exception.\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\nConsolidated Financial Statements\n(1) Financial Statements\n\u2022 Report of Independent Registered Public Accounting Firm",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 911,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Jeffrey K. Brumfield",
+     "Chief Executive Officer and Chairman of the\n\nBoard of Directors",
+     "January 27, 2012"
+    ],
+    [
+     "Jeffrey K. Brumfield",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Stephen A. McCommon",
+     "Chief Financial Officer and",
+     "January 27, 2012"
+    ],
+    [
+     "Stephen A. McCommon",
+     "Vice President of Finance",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert H. Foglesong",
+     "Director",
+     "January 25, 2012"
+    ],
+    [
+     "Robert H. Foglesong",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Brian M. Jenkins",
+     "Director",
+     ""
+    ],
+    [
+     "Brian M. Jenkins",
+     "",
+     "January 25, 2012"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Frank E. Wren",
+     "Director",
+     "January 26, 2012"
+    ],
+    [
+     "Frank E. Wren",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ James G. Stevenson",
+     "Director",
+     "January 24, 2012"
+    ],
+    [
+     "James G. Stevenson",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 984,
+    "end_line": 1014
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "10.6 Form of Common Stock Purchase Warrant Agreement with Gemini Master Fund, Ltd. dated June 25, 2008 (incorporated by reference to the comparable exhibit filed with the Registrant's form 8-K filed with the SEC on June 30, 2008) 10.7 Form of Waiver and Amendment with Gemini Master Fund, Ltd. dated December 18, 2008 (incorporated by reference to the comparable exhibit filed with the Registrant's form 10-KSB/A filed with the SEC on March 13, 2009). 10.8 Form of Second Waiver and Amendment with Gemini Master Fund, Ltd. dated February 10, 2009 (incorporated by reference to the comparable exhibit filed with the Registrant's form 10-KSB/A filed with the SEC on March 13, 2009). 10.9 Form of Third Waiver and Amendment with Gemini Master Fund, Ltd. dated February 10, 2009 (incorporated by reference to the comparable exhibit filed with the Registrant's form 8-K filed with the SEC on May 5, 2009). 10.10 Form of Fourth Waiver and Amendment with Gemini Master Fund, Ltd. dated February 10, 2009 (incorporated by reference to the comparable exhibit filed with the Registrant's form 8-K filed with the SEC on June 9, 2009). 10.11 Form of Fifth Waiver and Amendment with Gemini Master Fund, Ltd. dated February 10, 2009 (incorporated by reference to the comparable exhibit filed with the Registrant's form 8-K filed with the SEC on October 27, 2009). 10.12 Form of Note, Warrant Amendment and Amendment and Conversion Agreement with Gemini Master Fund, Ltd. effective April 29, 2011 (incorporated by reference to the comparable exhibit filed with the Registrant's form 8-K filed with the SEC on May 5, 2011). 10.13 Form of Exclusive Oncology Agreement dated August 20, 2010 (incorporated by reference to the comparable exhibit filed with the Registrant's form 8-K filed with the SEC on September 1, 2010). 31.1 Certification of Chief Executive Officer (filed herewith). 31.2 Certification of Chief Financial Officer (filed herewith). 32.1 Section 1350 Certification of Chief Executive Officer (filed herewith). 32.2 Section 1350 Certification of Chief Financial Officer (filed herewith). 101.INS XBRL Instance Document 101.SCH XBRL Schema Document 101.CAL XBRL Calculation Linkbase Document 101.DEF XBRL Definition Linkbase Document 101.LAB XBRL Label Linkbase Document 101.PRE XBRL Presentation Linkbase Document\nSignatures\nPursuant to the requirements of the Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Report to be signed on its behalf by the undersigned, thereunto duly authorized on January 27, 2012,\n/s/ Jeffrey K. Brumfield Jeffrey K. Brumfield Chairman of the Board of Directors and Chief Executive Officer\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below on the dates indicated by the following persons on behalf of the registrant and in the capacities indicated,",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 978,
+     "token": "REPEATING_HEADER",
+     "id": 63,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1014,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Balance Sheets",
+     "F-3"
+    ],
+    [
+     "Statements of Operations",
+     "F-4"
+    ],
+    [
+     "Statements of Stockholders' Equity",
+     "F-5"
+    ],
+    [
+     "Statements of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1019,
+    "end_line": 1027
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "S.E.Clark & Company, P.C.\nRegistered Firm: Public Company Accounting Oversight Board\nReport of Independent Registered Public Accounting Firm\nBoard of Directors\nand Stockholders\nCDEX Inc.\nTucson, Arizona\nWe have audited the accompanying balance sheets of CDEX Inc. (the \u201cCompany\u201d) as of October 31, 2011 and 2010 and the related statements of operations, changes in stockholders\u2019 deficit, and cash flows for the years then ended. These financial statements are the responsibility of the Company's management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1016,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "45,514",
+     "",
+     "$",
+     "312,844",
+     ""
+    ],
+    [
+     "Accounts receivable - net",
+     "",
+     "17,330",
+     "",
+     "",
+     "22,301",
+     ""
+    ],
+    [
+     "Inventory - net",
+     "",
+     "218,768",
+     "",
+     "",
+     "212,585",
+     ""
+    ],
+    [
+     "Deferred costs",
+     "",
+     "10,708",
+     "",
+     "",
+     "10,890",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "292,320",
+     "",
+     "",
+     "558,620",
+     ""
+    ],
+    [
+     "Property and equipment - net",
+     "",
+     "81,382",
+     "",
+     "",
+     "45,948",
+     ""
+    ],
+    [
+     "Patents - net",
+     "",
+     "62,794",
+     "",
+     "",
+     "70,418",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "1,399",
+     "",
+     "",
+     "41,673",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "437,895",
+     "",
+     "$",
+     "716,659",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities and stockholders' deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "$",
+     "413,550",
+     "",
+     "$",
+     "413,285",
+     ""
+    ],
+    [
+     "Notes payable and accrued interest",
+     "",
+     "2,017,819",
+     "",
+     "",
+     "113,449",
+     ""
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "83,614",
+     "",
+     "",
+     "513,084",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "2,514,983",
+     "",
+     "",
+     "1,039,818",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable and accrued interest - net",
+     "",
+     "-",
+     "",
+     "",
+     "3,067,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "2,514,983",
+     "",
+     "",
+     "4,107,291",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock - undesignated - $.005 par value per share,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "350,000 shares authorized and none outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred stock - Series A - $.005 par value per share,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "150,000 shares authorized and 6,675 outstanding at",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 31, 2011 and October 31, 2010",
+     "",
+     "33",
+     "",
+     "",
+     "33",
+     ""
+    ],
+    [
+     "Class A common stock - $.005 par value per share, 300,000,000",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares authorized and 109,971,343 outstanding at October 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2011 and  66,453,462 outstanding at October 31, 2010",
+     "",
+     "549,858",
+     "",
+     "",
+     "332,242",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "30,297,427",
+     "",
+     "",
+     "27,644,626",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(32,924,406)",
+     "",
+     "",
+     "(31,367,533)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders' deficit",
+     "",
+     "(2,077,088)",
+     "",
+     "",
+     "(3,390,632)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders' deficit",
+     "$",
+     "437,895",
+     "",
+     "$",
+     "716,659",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1063,
+    "end_line": 1119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion the financial statements referred to above present fairly, in all material respects, the financial position of CDEX Inc. as of October 31, 2011 and 2010 and the results of its operations and its cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 14 to the financial statements, the accumulation of losses and shortage of capital raise substantial doubt about its ability to continue as a going concern. Management's plans concerning these matters are also described in Note 14 The financial statements do not include any adjustments relating to the recoverability and classification of asset carrying amounts or the amount and classification of liabilities that might result should the Company be unable to continue as a going concern.\n/s/ S.E.Clark & Company, P.C.\nTucson, Arizona\nJanuary 26, 2012\n744 N. Country Club Road, Tucson, AZ 85716 (520) 323-7774, Fax (520) 323-8174, seclarkcpa@aol.com\nBALANCE SHEETS\nAS OF OCTOBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements.\nSTATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED OCTOBER 31,",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "516,322",
+     "",
+     "$",
+     "408,774",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "173,193",
+     "",
+     "",
+     "61,724",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "343,129",
+     "",
+     "",
+     "347,050",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "839,394",
+     "",
+     "",
+     "1,204,546",
+     ""
+    ],
+    [
+     "Research and development",
+     "",
+     "146,718",
+     "",
+     "",
+     "109,952",
+     ""
+    ],
+    [
+     "Termination of oncology agreement - net",
+     "",
+     "68,667",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,054,779",
+     "",
+     "",
+     "1,314,498",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(711,650)",
+     "",
+     "",
+     "(967,448)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (expenses):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note discount amortization",
+     "",
+     "(569,911)",
+     "",
+     "",
+     "(495,448)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(275,312)",
+     "",
+     "",
+     "(262,161)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "(845,223)",
+     "",
+     "",
+     "(757,609)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(1,556,873)",
+     "",
+     "$",
+     "(1,725,057)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "per common share:",
+     "$",
+     "(0.02)",
+     "",
+     "$",
+     "(0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "common shares outstanding",
+     "",
+     "84,236,351",
+     "",
+     "",
+     "65,215,210",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1167
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Financial Statements.\nSTATEMENTS OF OPERATIONS\nFOR THE YEARS ENDED OCTOBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1121,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Series A Preferred Stock",
+     "",
+     "",
+     "",
+     "Class A Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, October 31, 2009",
+     "",
+     "6,675",
+     "$",
+     "33",
+     "",
+     "64,239,634",
+     "$",
+     "321,202",
+     "$",
+     "26,511,356",
+     "$",
+     "(29,642,476)",
+     "",
+     "$",
+     "(2,809,885)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of notes payable",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,000,000",
+     "",
+     "5,000",
+     "",
+     "45,000",
+     "",
+     "-",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,213,828",
+     "",
+     "6,040",
+     "",
+     "84,247",
+     "",
+     "-",
+     "",
+     "",
+     "90,287",
+     ""
+    ],
+    [
+     "Warrants and beneficial conversion\n\n   feature on notes payable",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,004,023",
+     "",
+     "-",
+     "",
+     "",
+     "1,004,023",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,725,057)",
+     "",
+     "",
+     "(1,725,057)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, October 31, 2010",
+     "",
+     "6,675",
+     "",
+     "33",
+     "",
+     "66,453,462",
+     "",
+     "332,242",
+     "",
+     "27,644,626",
+     "",
+     "(31,367,533)",
+     "",
+     "",
+     "(3,390,632)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Conversion of notes payable",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "30,115,818",
+     "",
+     "150,579",
+     "",
+     "1,834,883",
+     "",
+     "-",
+     "",
+     "",
+     "1,985,462",
+     ""
+    ],
+    [
+     "Share-based compensation expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,888,363",
+     "",
+     "19,467",
+     "",
+     "294,067",
+     "",
+     "-",
+     "",
+     "",
+     "313,534",
+     ""
+    ],
+    [
+     "Fair value of warrants issued",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "95,736",
+     "",
+     "-",
+     "",
+     "",
+     "95,736",
+     ""
+    ],
+    [
+     "Shares issued for oncology agreement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "9,513,700",
+     "",
+     "47,570",
+     "",
+     "428,115",
+     "",
+     "-",
+     "",
+     "",
+     "475,685",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,556,873)",
+     "",
+     "",
+     "(1,556,873)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, October 31, 2011",
+     "",
+     "6,675",
+     "$",
+     "33",
+     "",
+     "109,971,343",
+     "$",
+     "549,858",
+     "$",
+     "30,297,427",
+     "$",
+     "(32,924,406)",
+     "",
+     "$",
+     "(2,077,088)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1173,
+    "end_line": 1203
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Financial Statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements.\nSTATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED OCTOBER 31,",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1169,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(1,556,873)",
+     "",
+     "$",
+     "(1,725,057)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to cash used by",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Depreciation and amortization",
+     "",
+     "38,074",
+     "",
+     "",
+     "30,881",
+     ""
+    ],
+    [
+     "",
+     "Note discount amortization",
+     "",
+     "569,911",
+     "",
+     "",
+     "495,449",
+     ""
+    ],
+    [
+     "",
+     "Share-based compensation",
+     "",
+     "313,534",
+     "",
+     "",
+     "90,287",
+     ""
+    ],
+    [
+     "",
+     "Shares issued under oncology agreement",
+     "",
+     "475,685",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "Provision (benefit) for doubtful accounts",
+     "",
+     "-",
+     "",
+     "",
+     "(2,325)",
+     ""
+    ],
+    [
+     "",
+     "Negotiated settlements on accounts payable",
+     "",
+     "-",
+     "",
+     "",
+     "(31,637)",
+     ""
+    ],
+    [
+     "",
+     "Loss recognized on extinguishment of debt",
+     "",
+     "-",
+     "",
+     "",
+     "41,699",
+     ""
+    ],
+    [
+     "",
+     "Loss recognized on disposal of equipment",
+     "",
+     "15,304",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "Noncash interest expense",
+     "",
+     "275,312",
+     "",
+     "",
+     "262,161",
+     ""
+    ],
+    [
+     "",
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Accounts receivable",
+     "",
+     "4,971",
+     "",
+     "",
+     "52,784",
+     ""
+    ],
+    [
+     "",
+     "Inventory",
+     "",
+     "(25,378)",
+     "",
+     "",
+     "47,629",
+     ""
+    ],
+    [
+     "",
+     "Prepaid expenses and other assets",
+     "",
+     "(5,283)",
+     "",
+     "",
+     "(21,825)",
+     ""
+    ],
+    [
+     "",
+     "Current liabilities",
+     "",
+     "(429,205)",
+     "",
+     "",
+     "83,214",
+     ""
+    ],
+    [
+     "",
+     "Proceeds from oncology agreement",
+     "",
+     "-",
+     "",
+     "",
+     "483,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used by operating activities",
+     "",
+     "",
+     "(323,948)",
+     "",
+     "",
+     "(193,240)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of property and equipment",
+     "",
+     "",
+     "(17,368)",
+     "",
+     "",
+     "(12,449)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used by investing activities",
+     "",
+     "",
+     "(17,368)",
+     "",
+     "",
+     "(12,449)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of convertible notes payable",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "514,950",
+     ""
+    ],
+    [
+     "Repayment of notes payable",
+     "",
+     "",
+     "(26,014)",
+     "",
+     "",
+     "(4,186)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "",
+     "73,986",
+     "",
+     "",
+     "510,764",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash",
+     "",
+     "",
+     "(267,330)",
+     "",
+     "",
+     "305,075",
+     ""
+    ],
+    [
+     "Cash, beginning of the year",
+     "",
+     "",
+     "312,844",
+     "",
+     "",
+     "7,769",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of the year",
+     "",
+     "$",
+     "45,514",
+     "",
+     "$",
+     "312,844",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash payments for interest",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash payments for taxes",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Conversion of notes payable and accrued interest\n\n     to common stock",
+     "",
+     "",
+     "1,985,462",
+     "",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Conversion of accrued expenses and accounts\n\n     payable into notes payable",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,466,432",
+     ""
+    ],
+    [
+     "Warrants issued for Oncology Agreement",
+     "",
+     "",
+     "8,886",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Warrant incremental value on renegotiated debt",
+     "",
+     "",
+     "86,850",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Transfer from inventory to fixed assets",
+     "",
+     "",
+     "15,050",
+     "",
+     "",
+     "9,900",
+     ""
+    ],
+    [
+     "Transfer from fixed assets to inventory",
+     "",
+     "",
+     "4,145",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Debt discount on notes payable",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,004,023",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1211,
+    "end_line": 1275
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these Financial Statements.\nSTATEMENTS OF CASH FLOWS\nFOR THE YEARS ENDED OCTOBER 31,",
+   "prose_after": "The accompanying notes are an integral part of these Financial Statements.\nNOTES TO FINANCIAL STATEMENTS\nFOR THE YEARS ENDED OCTOBER 31, 2011 and 2010\n1. Organization of Business and Basis of Presentation\nCDEX Inc. (\u201cCDEX\u201d, \u201cwe\u201d, \u201cus\u201d, \u201cour\u201d or the \u201cCompany\u201d) is a technology development company incorporated in the State of Nevada on July 6, 2001 with a corporate office and research and development facility in Tucson, Arizona. Our Class A common stock is currently being traded on the OTCBB under the symbol \"CEXI.OB.\" Our long term strategic plans focus on applying our patented and patents pending chemical detection technologies to develop products in various markets including the healthcare, security and brand protection markets, as addressed below:\n1. Healthcare - Validation of medications, training and quality assurance (e.g., validation of prescription and compounded medications to provide for patient safety, training of medical staff regarding compounding practices and detection of the diversion of narcotics and controlled substances);",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1205,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended October 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of the year",
+     "$",
+     "2,810",
+     "",
+     "$",
+     "34,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments charged to reserves",
+     "",
+     "-",
+     "",
+     "",
+     "(2,325)",
+     ""
+    ],
+    [
+     "Bad debts charged to reserves",
+     "",
+     "(2,810)",
+     "",
+     "",
+     "(28,965)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, end of the year",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,810",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1312,
+    "end_line": 1326
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Sales revenues are recognized when persuasive evidence of an agreement with the customer exists, products are shipped and installation, if necessary, completed, title passes pursuant to the terms of the agreement with the customer, the amount due from the customer is fixed or determinable, collectability is reasonably assured and there are no significant future performance obligations. Service revenues are recognized at the time of performance. Service maintenance revenues are typically recognized ratably over the term of the agreement. Deferred revenue represents amounts invoiced or received but not recognized as revenue if the above revenue recognition terms are not met.\nAllowance for Doubtful Accounts\nWe maintain an allowance for doubtful accounts based on the expected collectability of our accounts receivable. We perform credit evaluations of significant customers and establish an allowance for doubtful accounts based on the aging of receivables, payment performance factors, historical trends and other information. In general, we reserve a portion of those receivables outstanding more than 90 days and 100% of those outstanding more than 120 days. We evaluate and revise our reserve on a monthly basis based on a review of specific accounts outstanding and our history of uncollectible accounts. The changes to the allowance for doubtful accounts for the years ended October 31, 2011 and 2010 are as follows:",
+   "prose_after": "Inventory\nInventory is valued at the lower of actual cost based on a first-in, first-out basis, or market. Inventory includes the cost of component raw materials and manufacturing. Due to the nature of our inventory, we analyze inventory on an item-by-item basis for obsolescence. The changes to obsolescence reserve for the years ended October 31, 2011 and 2010 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1298,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, beginning of the year",
+     "$",
+     "8,838",
+     "$",
+     "8,838"
+    ],
+    [
+     "Inventory obsolescence adjustments",
+     "",
+     "4,655",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, end of the year",
+     "$",
+     "13,493",
+     "$",
+     "8,838"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1331,
+    "end_line": 1344
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Inventory\nInventory is valued at the lower of actual cost based on a first-in, first-out basis, or market. Inventory includes the cost of component raw materials and manufacturing. Due to the nature of our inventory, we analyze inventory on an item-by-item basis for obsolescence. The changes to obsolescence reserve for the years ended October 31, 2011 and 2010 are as follows:",
+   "prose_after": "FOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\nProperty and Equipment\nProperty and equipment are recorded at historical cost and are depreciated using the straight-line method over the estimated useful lives of the related assets, which range from two to seven years. Depreciation expense was $21,564 and $22,240 for the years ended October 31, 2011 and 2010, respectively.\nBeneficial Conversion Features\nThe intrinsic value of a beneficial conversion feature inherent to a convertible note payable, which is not bifurcated and accounted for separately from the convertible note payable and may not be settled in cash upon conversion, is treated as a discount to the convertible note payable. This discount is amortized over the period from the date of issuance to the date the note is due using the effective interest method. If the note payable is retired prior to the end of its contractual term, the unamortized discount is expensed in the period of retirement to interest expense. In general, the beneficial conversion feature is measured by comparing the effective conversion price, after considering the relative fair value of detachable instruments included in the financing transaction, if any, to the fair value of the common shares at the commitment date to be received upon conversion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1298,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "120,409",
+     "",
+     "$",
+     "119,958",
+     ""
+    ],
+    [
+     "Finished goods",
+     "",
+     "111,852",
+     "",
+     "",
+     "101,465",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Subtotal",
+     "",
+     "232,261",
+     "",
+     "",
+     "221,423",
+     ""
+    ],
+    [
+     "Obsolescence reserve",
+     "",
+     "(13,493)",
+     "",
+     "",
+     "(8,838)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total inventory",
+     "$",
+     "218,768",
+     "",
+     "$",
+     "212,585",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1406,
+    "end_line": 1421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "In September 2011, the FASB issued ASU 2011-08, Intangibles\u2014Goodwill and Other (Topic 350), Testing Goodwill for Impairment (\u201cASU 2011-08\u201d), to allow entities to use a qualitative approach to test goodwill for impairment. ASU 2011-08 permits an entity to first perform a qualitative assessment to determine whether it is more likely than not that the fair value of a reporting unit is less than its carrying value. If it is concluded that this is the case, it is necessary to perform the currently prescribed two-step goodwill impairment test. Otherwise, the two-step goodwill impairment test is not required. ASU 2011-08 is effective for the Company beginning October 1, 2012, and earlier adoption is permitted. The Company is currently evaluating the impact of the pending adoption of ASU 2011-08 and does not expect the adoption to have a material impact on its consolidated financial statements on its consolidated financial statements.\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\n3. Inventory\nInventory consisted of the following at October 31, 2011 and 2010:",
+   "prose_after": "4. Property and Equipment\nProperty and equipment consisted of the following at October 31, 2011 and 2010:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1398,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture, fixtures and leasehold improvements",
+     "$",
+     "2,931",
+     "",
+     "$",
+     "2,931",
+     ""
+    ],
+    [
+     "Equipment",
+     "",
+     "707,500",
+     "",
+     "",
+     "677,803",
+     ""
+    ],
+    [
+     "Leased equipment",
+     "",
+     "70,654",
+     "",
+     "",
+     "67,348",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "781,085",
+     "",
+     "",
+     "748,082",
+     ""
+    ],
+    [
+     "Less: Accumulated depreciation",
+     "",
+     "(699,703)",
+     "",
+     "",
+     "(702,134)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment - net",
+     "$",
+     "81,382",
+     "",
+     "$",
+     "45,948",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1426,
+    "end_line": 1443
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "4. Property and Equipment\nProperty and equipment consisted of the following at October 31, 2011 and 2010:",
+   "prose_after": "5. Patents\nPatents consisted of the following at October 31, 2011 and 2010:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1398,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "100,000",
+     ""
+    ],
+    [
+     "Less: Accumulated amortization",
+     "",
+     "(37,206)",
+     "",
+     "",
+     "(29,582)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Patents - net",
+     "$",
+     "62,794",
+     "",
+     "$",
+     "70,418",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1448,
+    "end_line": 1460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Patents"
+    }
+   },
+   "prose_before": "5. Patents\nPatents consisted of the following at October 31, 2011 and 2010:",
+   "prose_after": "Future amortization expense for our patents for the next five fiscal years is as follows:\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1398,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Five-Year Projected Patent Amortization",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal Years Ending October 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "8,791"
+    ],
+    [
+     "2013",
+     "",
+     "6,518"
+    ],
+    [
+     "2014",
+     "",
+     "5,752"
+    ],
+    [
+     "2015",
+     "",
+     "5,075"
+    ],
+    [
+     "2016",
+     "",
+     "4,478"
+    ]
+   ],
+   "caption_stack": [
+    "Five-Year Projected Patent Amortization"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1466,
+    "end_line": 1477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Patents"
+    }
+   },
+   "prose_before": "Future amortization expense for our patents for the next five fiscal years is as follows:\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010",
+   "prose_after": "6. Accounts Payable and Accrued Expenses\nAccounts payable and accrued expenses consisted of the following at October 31, 2011 and 2010:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1518,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "195,925",
+     "$",
+     "252,951"
+    ],
+    [
+     "Deferred compensation",
+     "",
+     "168,986",
+     "",
+     "118,986"
+    ],
+    [
+     "Legal fees",
+     "",
+     "29,854",
+     "",
+     "31,508"
+    ],
+    [
+     "Accrued payable to a distributor",
+     "",
+     "18,785",
+     "",
+     "9,840"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "413,550",
+     "$",
+     "413,285"
+    ]
+   ],
+   "caption_stack": [
+    "October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1482,
+    "end_line": 1496
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Accounts Payable and Accrued Expenses"
+    }
+   },
+   "prose_before": "6. Accounts Payable and Accrued Expenses\nAccounts payable and accrued expenses consisted of the following at October 31, 2011 and 2010:",
+   "prose_after": "7. Income Taxes\nThe benefit from income taxes reflected in the accompanying financial statements, all of which is deferred, varies from the amounts that would have been computed using statutory rates as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1518,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended October 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal income taxes at the  maximum statutory rate",
+     "$",
+     "529,337",
+     "",
+     "$",
+     "586,519",
+     ""
+    ],
+    [
+     "State income taxes, net of  federal tax effect",
+     "",
+     "71,616",
+     "",
+     "",
+     "79,353",
+     ""
+    ],
+    [
+     "Permanent differences",
+     "",
+     "10,421",
+     "",
+     "",
+     "9,889",
+     ""
+    ],
+    [
+     "Increase in valuation allowance",
+     "",
+     "(611,374)",
+     "",
+     "",
+     "(675,761)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Benefit from income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1501,
+    "end_line": 1516
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "7. Income Taxes\nThe benefit from income taxes reflected in the accompanying financial statements, all of which is deferred, varies from the amounts that would have been computed using statutory rates as follows:",
+   "prose_after": "Deferred income taxes consisted of the following as of October 31, 2011 and 2010:\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1462,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1518,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "$",
+     "253,260",
+     "",
+     "$",
+     "218,409",
+     ""
+    ],
+    [
+     "Fixed asset basis difference",
+     "",
+     "92,046",
+     "",
+     "",
+     "89,217",
+     ""
+    ],
+    [
+     "Receivables excluded from income for income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "tax reporting purposes",
+     "",
+     "6,689",
+     "",
+     "",
+     "8,608",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses deducted for financial",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "statement purposes, but not for income tax reporting",
+     "",
+     "159,630",
+     "",
+     "",
+     "113,599",
+     ""
+    ],
+    [
+     "Net operating loss carryforwards",
+     "",
+     "7,441,713",
+     "",
+     "",
+     "6,920,254",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax asset",
+     "",
+     "7,953,338",
+     "",
+     "",
+     "7,350,087",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(7,953,338)",
+     "",
+     "",
+     "(7,350,087)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1522,
+    "end_line": 1542
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "Deferred income taxes consisted of the following as of October 31, 2011 and 2010:\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010",
+   "prose_after": "For income tax purposes, the Company has net operating loss carryforwards of approximately $19.3 million at October 31, 2011 that, subject to applicable limitations, may be applied against future taxable income. If not utilized, the net operating loss carryforwards will expire between 2022 and 2026.\n8. Share-Based Payments\nStock Options and Stock Grants\nThe Company has a 2002 Stock Incentive Plan and a 2003 Stock Incentive Plan (the \u201cPlans\u201d). The Plans provide for the issuance of stock options and stock grants. The 2002 Stock Incentive Plan permits the issuance of up to 3,500,000 shares through May 27, 2012. The 2003 Stock Incentive Plan permits the issuance of up to 75,000,000 shares through July 1, 2013, after subtracting any shares issued under the 2002 Plan. The 2003 Plan also provides for specific numbers of shares to be awarded upon the achievement of defined performance based milestones. As of October 31, 2011, there are 51,529,767 shares available for grant from the Plans.\nDuring the year ended October 31, 2011, the Company granted stock options for the purchase of 8,000,000 Class A Common Shares with an aggregate grant date fair value of $232,462. During the year ended October 31, 2010, the Company granted stock options for the purchase of 1,210,000 Class A Common Shares with an aggregate grant date fair value of $92,812. We have a practice of issuing new stock to satisfy the exercises of stock options. Stock options were granted with an exercise price equal to the market price of the stock at the date of grant. Options granted were exercisable pursuant to vesting schedules from immediate to six years.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1518,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1554,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Weighted",
+     "",
+     "",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "Average",
+     "",
+     "Remaining",
+     "",
+     "Aggregate",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Exercise",
+     "",
+     "Contractual",
+     "",
+     "Intrinsic",
+     ""
+    ],
+    [
+     "",
+     "Issuable",
+     "",
+     "",
+     "Price",
+     "",
+     "Term (Years)",
+     "",
+     "Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at October 31, 2009",
+     "",
+     "4,453,750",
+     "",
+     "",
+     "0.18",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options granted",
+     "",
+     "1,210,000",
+     "",
+     "",
+     "0.06",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options cancelled/forfeited",
+     "",
+     "(1,498,750)",
+     "",
+     "",
+     "0.09",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options expired",
+     "",
+     "(1,155,000)",
+     "",
+     "",
+     "0.11",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at October 31, 2010",
+     "",
+     "3,010,000",
+     "",
+     "",
+     "0.09",
+     "",
+     "2.36",
+     "$",
+     "167,746"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options Granted",
+     "",
+     "8,000,000",
+     "",
+     "",
+     "0.05",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options Cancelled/Forfeited",
+     "",
+     "(25,000)",
+     "",
+     "",
+     "0.04",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options Expired",
+     "",
+     "(1,205,000)",
+     "",
+     "",
+     "0.06",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at October 31, 2011",
+     "",
+     "9,780,000",
+     "",
+     "",
+     "0.05",
+     "",
+     "4.67",
+     "$",
+     "250"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at October 31, 2011",
+     "",
+     "5,746,667",
+     "",
+     "",
+     "0.05",
+     "",
+     "4.26",
+     "$",
+     "250"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1560,
+    "end_line": 1592
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Share-Based Payments"
+    }
+   },
+   "prose_before": "During the year ended October 31, 2011, the Company awarded 2,653,962 restricted shares of Class A Common Shares to its Board of Directors. The restricted stock awards vest over six months and have an aggregate grant date fair value of $112,033. During the year ended October 31, 2010, the Company awarded 1,213,828 restricted shares of Class A Common Shares to its Board of Directors. The restricted stock awards vest over six months and have an aggregate grant date fair value of $60,968. We have a practice of issuing new stock to satisfy restricted stock grants. At December 31, 2011, there were approximately $36,000 of unrecognized compensation costs related to unvested restricted stock awards, and approximately $33,000 of unrecognized compensation costs related to unvested stock options. These costs are expected to be recognized on a weighted-average basis over periods of less than one year for both restricted stock awards for unvested stock options.\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\nStock option activity for fiscal years 2011 and 2010 under the Plans is as follows:",
+   "prose_after": "Total compensation expense related to stock awards for employees and consultants was $313,534 and $90,287 for the years ended October 31, 2011 and 2010, respectively. As of October 31, 2010, there were 625,000 options outstanding that were held by external consultants.\nThe fair value of restricted stock was estimated using the closing price of our Class A Common Stock on the date of award and fully recognized upon vesting.\nThe fair value of option awards was estimated using the Black-Scholes option pricing model with the following assumptions and weighted average fair values:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1554,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1611,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average grant date fair value",
+     "$",
+     "0.03",
+     "$",
+     "0.08"
+    ],
+    [
+     "Expected volatility",
+     "",
+     "75%",
+     "",
+     "75%"
+    ],
+    [
+     "Expected dividends",
+     "",
+     "0%",
+     "",
+     "0%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "3.0 - 4.17",
+     "",
+     "1.0 - 5.75"
+    ],
+    [
+     "Risk free rate",
+     "",
+     "0.0005",
+     "",
+     "0.30% - 3.14%"
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1599,
+    "end_line": 1611
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Share-Based Payments"
+    }
+   },
+   "prose_before": "Total compensation expense related to stock awards for employees and consultants was $313,534 and $90,287 for the years ended October 31, 2011 and 2010, respectively. As of October 31, 2010, there were 625,000 options outstanding that were held by external consultants.\nThe fair value of restricted stock was estimated using the closing price of our Class A Common Stock on the date of award and fully recognized upon vesting.\nThe fair value of option awards was estimated using the Black-Scholes option pricing model with the following assumptions and weighted average fair values:",
+   "prose_after": "FOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\nWarrants\nIn 2011, we issued 100,000 warrants as compensation to an outside contractor, which vest in one (1) year and are exercisable for a period of (2) three years thereafter, we issued 481,174 warrants from the conversion of our notes payable, which are exercisable for a period of seven (7) years and we amended the warrants associated with an existing debt from 5,000,000 to 8,000,000 shares of common stock. The following summarizes activity for fiscal years 2011 and 2010 for warrants to purchase our common stock:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1554,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1611,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Weighted"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "",
+     "Average"
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "Average",
+     "",
+     "",
+     "Remaining"
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Exercise",
+     "",
+     "",
+     "Contractual"
+    ],
+    [
+     "",
+     "Issuable",
+     "",
+     "",
+     "Price",
+     "",
+     "",
+     "Term (Years)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding and exercisable at October 31, 2009",
+     "",
+     "6,734,386",
+     "",
+     "$",
+     "0.24",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "1,245,781",
+     "",
+     "$",
+     "(0.04)",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "(2,233,608)",
+     "",
+     "$",
+     "0.31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding and exercisable at October 31, 2010",
+     "",
+     "5,746,559",
+     "",
+     "$",
+     "0.15",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issued",
+     "",
+     "5,385,002",
+     "",
+     "$",
+     "0.05",
+     "",
+     ""
+    ],
+    [
+     "Expired",
+     "",
+     "(1,783,387)",
+     "",
+     "$",
+     "0.22",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at October 31, 2011",
+     "",
+     "9,348,174",
+     "",
+     "$",
+     "0.08",
+     "",
+     "3.64"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercisable at October 31, 2011",
+     "",
+     "9,248,174",
+     "",
+     "$",
+     "0.08",
+     "",
+     "3.65"
+    ]
+   ],
+   "caption_stack": [
+    "Weighted"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1619,
+    "end_line": 1648
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Share-Based Payments"
+    }
+   },
+   "prose_before": "FOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\nWarrants\nIn 2011, we issued 100,000 warrants as compensation to an outside contractor, which vest in one (1) year and are exercisable for a period of (2) three years thereafter, we issued 481,174 warrants from the conversion of our notes payable, which are exercisable for a period of seven (7) years and we amended the warrants associated with an existing debt from 5,000,000 to 8,000,000 shares of common stock. The following summarizes activity for fiscal years 2011 and 2010 for warrants to purchase our common stock:",
+   "prose_after": "9. Deferred Revenue\nDuring the fourth quarter of fiscal year 2010, the Company received approximately $483,000 under our Exclusive Distribution Agreement (\u201cAgreement\u201d) effective August 20, 2010, with a number of signatories including PEMCO, LLC and Messrs. Peter Maina, Thomas Payne (a former Director of the Company), Robert Stewart, and Scott Newby (\u201cthe \u201cSignatories\u201d). The Agreement grants exclusive United States distribution rights for all products developed by CDEX for application in the field of Oncology. The Agreement was terminated in the fourth quarter of 2011 and all of the then deferred revenue under the Agreement was recognized. 8,670,000 shares of restricted Common stock, valued at $433,500 were issued to terminate the agreement. The termination is reflected net of the remaining previously unrecognized deferred revenue of $364,833 in the statement of operations. The agreement was terminated to enable the unrestricted marketing of the new G4 ValiMed unit.\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1611,
+     "token": "PAGE_BREAK",
+     "id": 81,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1652,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gemini Master Fund, Ltd.10% to 12% convertible note with warrants,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "net of discount of $141,214 and $561,323 as of October 31, 2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and 2010, respectively",
+     "$",
+     "766,305",
+     "$",
+     "671,143"
+    ],
+    [
+     "Notes payable to Malcolm H. Philips, Jr. and entities controlled by Mr. Philips -",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "interest at 9% to 10%,convertible with warrants net of discount of",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "$13,238 and $66,191 as of October 31, 2011 and 2010, respectively",
+     "",
+     "493,775",
+     "",
+     "697,042"
+    ],
+    [
+     "Convertible 10% notes payable to Mr. George Cohen",
+     "",
+     "44,805",
+     "",
+     "67,302"
+    ],
+    [
+     "Convertible 10% notes payable to 17 entities due February 1, 2012",
+     "",
+     "691,903",
+     "",
+     "1,699,287"
+    ],
+    [
+     "Noninterest bearing notes to 5 individuals",
+     "",
+     "21,031",
+     "",
+     "46,148"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Notes payable",
+     "",
+     "2,017,819",
+     "",
+     "3,180,922"
+    ],
+    [
+     "Less: Current portion",
+     "",
+     "2,017,819",
+     "",
+     "113,449"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term portion",
+     "$",
+     "-",
+     "$",
+     "3,067,473"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1660,
+    "end_line": 1683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "During the fourth quarter of fiscal year 2010, the Company received approximately $483,000 under our Exclusive Distribution Agreement (\u201cAgreement\u201d) effective August 20, 2010, with a number of signatories including PEMCO, LLC and Messrs. Peter Maina, Thomas Payne (a former Director of the Company), Robert Stewart, and Scott Newby (\u201cthe \u201cSignatories\u201d). The Agreement grants exclusive United States distribution rights for all products developed by CDEX for application in the field of Oncology. The Agreement was terminated in the fourth quarter of 2011 and all of the then deferred revenue under the Agreement was recognized. 8,670,000 shares of restricted Common stock, valued at $433,500 were issued to terminate the agreement. The termination is reflected net of the remaining previously unrecognized deferred revenue of $364,833 in the statement of operations. The agreement was terminated to enable the unrestricted marketing of the new G4 ValiMed unit.\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\n10. Notes Payable\nOur notes payable consisted of the following at October 31, 2011 and 2010:",
+   "prose_after": "During the three months ended January 31, 2011, Gemini Master Fund Ltd. (\u201cGemini\u201d) converted $42,860 of accrued interest on their note into 857,205 shares of CDEX Class A common stock.\nDuring the three months ended April 30, 2011, two holders of our 10% convertible notes converted approximately $528,000 of accrued interest and principal into 6,855,506 shares of CDEX Class A common stock. Also, the Company entered into a Term Note (\u201cNote\u201d) and a Warrant Amendment with Gemini Master Fund Ltd. (\u201cGemini\u201d). The Note is for $100,000 with an interest rate of 10.5% and is convertible into CDEX common stock at the rate of $0.05 a share and is due March 1, 2012 (subject to acceleration). The Warrant Amendment modifies the Gemini\u2019s existing warrant by increasing the number of shares under the warrant from 5,000,000 to 8,000,000 shares and reduces the exercise price from $0.08 a share to $0.05 a share. The effect of the Warrant Amendment increased the incremental relative fair value of the warrant by approximately $87,000, which the Company has recognized as a discount to the Note and will amortize over the remaining life of the Note. The Company also entered into an Amendment and Conversion Agreement with Gemini which amends the $1,151,000 February 15, 2010 note issued to Gemini by changing the conversion price to $0.05 a share and specifying certain circumstances under which Gemini will be required to convert a portion of its note.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1652,
+     "token": "PAGE_BREAK",
+     "id": 82,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1691,
+     "token": "PAGE_BREAK",
+     "id": 83,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Years Ending October 31,",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "",
+     "2,172,272",
+     ""
+    ],
+    [
+     "Discount",
+     "",
+     "(154,453)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,017,819",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1712,
+    "end_line": 1723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Notes Payable"
+    }
+   },
+   "prose_before": "In August and September 2010, employees and former employees who are owed approximately $470,000 of deferred compensation, out of a total of $589,000, agreed to have their balances rolled into convertible notes payables similar to that issued to Gemini. This total includes $267,000 owed to Malcolm H. Philips, Jr. and $28,000 owed to our CFO. The notes will bear interest at 10% and will be convertible into Class A common stock at the rate of $0.08 per share. The notes mature on February 1, 2012, but have accelerated payment provisions and a contingent security interest, if certain financial milestones are not met.\nIn August 2009, four former employees and one former contractor (\u201cClaimants\u201d) filed demands for arbitration with the American Arbitration Association related to deferred wages of approximately $89,000 and to the ownership of certain equipment. A decision was issued by the Arbitrator which the Company received on June 11, 2010. The decision awarded the Claimants three times their deferred wages, plus attorney fees, totaling approximately $270,000. In September 2010, the Company settled with the Claimants where approximately $50,000 of the judgment was converted into two-year non-interest bearing notes, with monthly payouts, and where approximately $190,000 of the judgment was converted into 10% convertible notes due February 2012 similar to the Gemini note from the February Financing.\nFOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\nThe following table provides information relative to the contractual maturities of our outstanding notes payable as of October 31, 2011:",
+   "prose_after": "11. Stockholders\u2019 Equity\nDuring the three months ended January 31, 2011 Gemini Master Fund Ltd. (\u201cGemini\u201d) converted $42,860 of accrued interest on their note into 857,205 unrestricted shares of CDEX Class A common stock, or approximately $0.05 per share. Also, 260,600 shares of restricted stock awards were returned to the Company and cancelled from Thomas Payne, who had resigned from the Board. Additionally, the Company issued 50,000 shares of restricted common stock, with a grant date fair value of $2,500, to a consultant for services performed\nDuring the three months ended April 30, 2011, two holders of our 10% convertible notes converted approximately $528,000 of accrued interest and principal into 6,855,506 shares of CDEX Class A common stock. Additionally, the Company issued 1,500,000 shares of stock, with a grant date fair value of $58,000, to an independent contractor for services performed.\nIn May 2011, Gemini converted a portion of our 10% convertible notes of $480,000 principal and accrued interest into 9,600,000 shares of the Company\u2019s common stock. Also in May 2011, entities controlled by Malcolm H. Philips, Jr. converted approximately $317,000 principal and accrued interest of our 10% convertible notes into 4,541,645 shares of the Company\u2019s common stock. Additionally, other holders of our notes converted approximately $598,000 principal and interest of our 10% notes into 8,012,782 shares of the Company\u2019s common stock. The notes were converted at the rates of $0.05 to $0.08 a share. In June 2011, a holder of our notes with a principal and accrued interest balance of approximately $20,000 converted the note into 248,680 shares of the Company\u2019s common stock at the rate $0.08 a share.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1706,
+     "token": "PAGE_BREAK",
+     "id": 84,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1739,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended October 31, 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "First",
+     "",
+     "",
+     "Second",
+     "",
+     "",
+     "Third",
+     "",
+     "",
+     "Fourth",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "125,254",
+     "",
+     "$",
+     "95,935",
+     "",
+     "$",
+     "231,693",
+     "",
+     "$",
+     "63,440",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "76,081",
+     "",
+     "",
+     "46,029",
+     "",
+     "",
+     "194,851",
+     "",
+     "",
+     "26,168",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(246,638)",
+     "",
+     "",
+     "(155,965)",
+     "",
+     "",
+     "(44,708)",
+     "",
+     "",
+     "(264,339)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(464,292)",
+     "",
+     "",
+     "(366,019)",
+     "",
+     "",
+     "(257,892)",
+     "",
+     "",
+     "(468,670)",
+     ""
+    ],
+    [
+     "Basic and diluted net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "loss per common share",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.003)",
+     "",
+     "",
+     "(0.004)",
+     ""
+    ],
+    [
+     "Basic and diluted weighted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "average common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares outstanding",
+     "",
+     "67,232,383",
+     "",
+     "",
+     "69,628,099",
+     "",
+     "",
+     "95,291,618",
+     "",
+     "",
+     "104,793,305",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Fiscal Year Ended October 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "First",
+     "",
+     "",
+     "Second",
+     "",
+     "",
+     "Third",
+     "",
+     "",
+     "Fourth",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     "",
+     "Quarter",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "65,546",
+     "",
+     "$",
+     "64,949",
+     "",
+     "$",
+     "202,381",
+     "",
+     "$",
+     "75,898",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "49,956",
+     "",
+     "",
+     "52,608",
+     "",
+     "",
+     "185,713",
+     "",
+     "",
+     "58,773",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(197,243)",
+     "",
+     "",
+     "(176,476)",
+     "",
+     "",
+     "(347,617)",
+     "",
+     "",
+     "(246,112)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(311,532)",
+     "",
+     "",
+     "(403,355)",
+     "",
+     "",
+     "(537,314)",
+     "",
+     "",
+     "(472,856)",
+     ""
+    ],
+    [
+     "Basic and diluted net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "loss per common share",
+     "",
+     "(0.005)",
+     "",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.01)",
+     ""
+    ],
+    [
+     "Basic and diluted weighted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "average common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "shares outstanding",
+     "",
+     "64,406,301",
+     "",
+     "",
+     "65,239,634",
+     "",
+     "",
+     "65,239,634",
+     "",
+     "",
+     "65,975,272",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended October 31, 2011"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1759,
+    "end_line": 1792
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The Company leases approximately 3,000 square feet of office and laboratory space in Tucson, Arizona on a month-to-month basis. Monthly rent as of October 31, 2010 is approximately $1,500. Total rent expense was approximately $32,000 and $49,000 for the years ended October 31, 2011 and 2010, respectively.\nLitigation\nWe may from time to time be involved in legal proceedings arising from the normal course of business. As of the date of this report, we have not received notice of any new legal proceedings.\nDue to the lack of liquidity, the Company is in arrears on a substantial number of its financial obligations. To date, most creditors have been willing to renegotiate the obligations as they become due or forestall any recourse they may have to collect their debts. However, should any of these creditors pursue recourse, the Company may not be able to continue as a going concern.\n13. Selected Quarterly Financial Data (Unaudited)\nThe following table summarizes the unaudited quarterly results of operations as reported for fiscal 2011 and 2010:",
+   "prose_after": "FOR THE YEARS ENDED OCTOBER 31, 2011 AND 2010\n14. Going Concern\nThe Company has incurred losses since its inception of approximately $33.0 million and has had limited product sales from its inception through fiscal 2011. The Company plans to raise cash to fund its operations and pay its outstanding obligations from credit facilities or the sale of its securities in the future. Nonetheless, there can be no guarantee that the Company will be able to raise cash or maintain its current workforce through any of these plans.\nThe accompanying financial statements have been prepared assuming the Company will continue as a going concern, which contemplates the realization of assets and the satisfaction of liabilities in the normal course of business. The Company's ability to continue as a going concern and meet its obligations as they come due is dependent upon its ability to raise sufficient cash as discussed above. The Company's continued operations, as well as the implementation of our business plan, will depend upon its ability to raise additional funds through bank borrowings, equity or debt financing. The Company continues to seek prospective investors who may provide some of this funding. The Company also anticipates it will need to maintain its current workforce to achieve commercially viable sales levels. There can be no guarantee that these needs will be met or that sufficient cash will be raised to permit operations to continue. Should the Company be unable to raise sufficient cash to continue operations at a level necessary to achieve commercially viable sales levels, the liquidation value of the Company's assets may be substantially less than the balances reflected in the financial statements and the Company may be unable to pay its creditors. There is no assurance that the Company will succeed in these fund-raising efforts. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1739,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1792,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

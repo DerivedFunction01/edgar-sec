@@ -1,0 +1,3512 @@
+{
+ "accession": "0001615774-16-004886",
+ "cik": "0001610785",
+ "form": "10-K",
+ "filing_date": "2016-04-11",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "s102972_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "47-1363493"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549\nFORM 10-K (Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2015\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____ to _____\nCommission file number 000-55226\nT.A.G. ACQUISITIONS LTD. (Exact name of registrant as specified in its charter)\nSURPRISE VALLEY ACQUISITION CORPORATION (Former Name of Registrant as Specified in its charter)",
+   "prose_after": "130 East Route 59 Suite #6 Spring Valley, New York, 10977 (Address of principal executive offices) (zip code)\nRegistrant\u2019s telephone number, including area code: 845-517-3673\nSecurities registered pursuant to Section 12(b) of the Act:\nNone\nSecurities registered pursuant to Section 12(g) of the Act:\nCommon Stock, $.0001 par value per share (Title of class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n[ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 70,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2015",
+     "",
+     "",
+     "December 31, 2014",
+     "",
+     "Increase / (Decrease)",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "$",
+     "1,763,427",
+     "",
+     "$",
+     "-",
+     "$",
+     "1,763,427",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "$",
+     "5,676,365",
+     "",
+     "$",
+     "-",
+     "$",
+     "5,676,365",
+     ""
+    ],
+    [
+     "Working Capital (Deficit)",
+     "$",
+     "(3,912,938)",
+     "",
+     "$",
+     "-",
+     "$",
+     "(3,912,938)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 252,
+    "end_line": 262
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Interest expense for the year ended December 31, 2015, was $131,838 compared to $0 for the period from May 20, 2014 (inception) to December 31, 2014, an increase of $131,838, attributable to notes payable obtained in 2015, principally the notes for the acquisition and renovation of the Georgia properties.\nNet Loss\nFor the year ended December 31, 2015, the Company had sustained a net loss of $796,231, as compared to a net loss of $707 for the period from May 20, 2014 (inception) to December 31, 2014. The increase in net loss is attributed to the factors described above.\nLiquidity and Capital Resources\nWe have financed our operations since inception from capital contributions and advances from our majority stockholder and proceeds from notes payable. During the year ended December 31, 2015, we received an advance and a capital contribution from our majority stockholder of $260,190 and $80,383, respectively. We also received notes payable for aggregate proceeds of $4,151,990.\nThe following table summarizes working capital at December 31, 2015, compared to December 31, 2014.",
+   "prose_after": "Contractual Obligations\nOur significant contractual obligations as of December 31, 2015, are as follows:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 245,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 287,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "More than",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Less than",
+     "",
+     "One to three",
+     "",
+     "Three to five",
+     "",
+     "Five",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "One Year",
+     "",
+     "Years",
+     "",
+     "Years",
+     "",
+     "Years",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Notes payable",
+     "$",
+     "5,448,990",
+     "$",
+     "12,000",
+     "$",
+     "8,000",
+     "$",
+     "-",
+     "$",
+     "5,468,990"
+    ],
+    [
+     "Advances from stockholder",
+     "",
+     "260,190",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "260,190"
+    ],
+    [
+     "Total",
+     "$",
+     "5,709,180",
+     "$",
+     "12,000",
+     "$",
+     "8,000",
+     "$",
+     "-",
+     "$",
+     "5,729,180"
+    ]
+   ],
+   "caption_stack": [
+    "More than"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 267,
+    "end_line": 278
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": null
+   },
+   "prose_before": "Contractual Obligations\nOur significant contractual obligations as of December 31, 2015, are as follows:",
+   "prose_after": "Off-Balance Sheet Arrangements\nAt December 31, 2015, we had no off-balance sheet arrangements.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nNot required by a smaller reporting company.\nItem 8. Financial Statements and Supplementary Data\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES\nCONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2015 AND 2014\nTable of Contents",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 245,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 287,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Balance Sheets as of December 31, 2015 and 2014",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Operations for the Year Ended December 31, 2015 and for the period from May 24, 2014 (Inception) to December 31, 2014",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Stockholders\u2019 Deficit for the Year Ended December 31, 2015 and for the period from May 24, 2014 (Inception) to December 31, 2014",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Consolidated Statements of Cash Flows for the Year Ended December 31, 2015 and for the period from May 24, 2014 (Inception) to December 31, 2014",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Notes to Consolidated Financial Statements",
+     "F-6"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 298,
+    "end_line": 316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "Off-Balance Sheet Arrangements\nAt December 31, 2015, we had no off-balance sheet arrangements.\nItem 7A. Quantitative and Qualitative Disclosures about Market Risk\nNot required by a smaller reporting company.\nItem 8. Financial Statements and Supplementary Data\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES\nCONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2015 AND 2014\nTable of Contents",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nT.A.G. Acquisitions LTD\nWe have audited the accompanying balance sheets of T.A.G. Acquisitions LTD (the \"Company\") as of December 31, 2015 and 2014, and the related statement of operations, stockholders' deficit, and cash flows for the year ended December 31, 2015 and for the period from May 20, 2014 (Inception) through December 31, 2014. T.A.G. Acquisitions LTD's management is responsible for these financial statements. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the company's internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 287,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 317,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash",
+     "$",
+     "553,427",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "    Prepaid interest",
+     "",
+     "1,210,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Total current assets",
+     "",
+     "1,763,427",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Investments in real estate",
+     "",
+     "3,293,840",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Deposits",
+     "",
+     "73,250",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    TOTAL ASSETS",
+     "$",
+     "5,130,517",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts payable",
+     "$",
+     "26,629",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "    Accrued expenses",
+     "",
+     "15,184",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accrued payroll",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accrued payroll to stockholder",
+     "",
+     "121,383",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Notes payable, net of discount of $196,011",
+     "",
+     "5,252,979",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Advances from stockholder",
+     "",
+     "260,190",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Total current liabilities",
+     "",
+     "5,676,365",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Notes payable, net of current portion",
+     "",
+     "20,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    TOTAL LIABILITIES",
+     "$",
+     "5,696,365",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  STOCKHOLDERS' DEFICIT:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred stock, $0.0001 par value, 20,000,000 shares authorized, 0 shares issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Common stock, $0.0001 par value, 100,000,000 shares authorized, 6,300,000 and 3,500,000 shares issued and outstanding",
+     "",
+     "630",
+     "",
+     "",
+     "350",
+     ""
+    ],
+    [
+     "    Additional paid-in capital",
+     "",
+     "230,460",
+     "",
+     "",
+     "357",
+     ""
+    ],
+    [
+     "    Accumulated deficit",
+     "",
+     "(796,938)",
+     "",
+     "",
+     "(707)",
+     ""
+    ],
+    [
+     "    Total stockholders' deficit",
+     "",
+     "(565,848)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    TOTAL LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "$",
+     "5,130,517",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 342,
+    "end_line": 388
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "In our opinion, the financial statements referred to above present fairly, in all material respects, the financial position of T.A.G. Acquisitions LTD as of December 31, 2015 and 2014, and the results of its operations and its cash flows for the year ended December 31, 2015 and for the period from May 20, 2014 (Inception) through December 31, 2014, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 3 to the financial statements, the Company has had no significant revenues and no income since inception. These conditions, among others, raise substantial doubt about the Company's ability to continue as a going concern. Management's plans concerning these matters are also described in Note 3, which includes the raising of additional equity financing or merger with another entity. The financial statements do not include any adjustments that might result from the outcome of this uncertainty.\n/s/ Anton & Chia, LLP\nNewport Beach, CA\nApril 11, 2016\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 339,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "For the Period from",
+     "",
+     ""
+    ],
+    [
+     "",
+     "For the",
+     "",
+     "",
+     "May 20, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "(Inception) to",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "10,134",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  General and administrative expenses",
+     "",
+     "674,527",
+     "",
+     "",
+     "707",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(664,393)",
+     "",
+     "",
+     "(707)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(131,838)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(796,231)",
+     "",
+     "",
+     "(707)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(796,231)",
+     "",
+     "$",
+     "(707)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "",
+     "5,361,644",
+     "",
+     "",
+     "16,787,611",
+     ""
+    ],
+    [
+     "  Diluted",
+     "",
+     "5,361,644",
+     "",
+     "",
+     "16,787,611",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss per share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Basic",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "  Diluted",
+     "$",
+     "(0.15)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Period from"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 393,
+    "end_line": 434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEAR ENDED DECEMBER 31, 2015 AND FOR THE PERIOD FROM MAY 20, 2014 (INCEPTION) TO DECEMBER 31, 2014",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 390,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 436,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     ""
+    ],
+    [
+     "Balance, May 20, 2014 (Inception)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common stock",
+     "",
+     "23,000,000",
+     "",
+     "",
+     "2,300",
+     "",
+     "",
+     "(2,300)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Redemption of common stock",
+     "",
+     "(19,500,000)",
+     "",
+     "",
+     "(1,950)",
+     "",
+     "",
+     "1,950",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Capital contribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "707",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "707",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(707)",
+     "",
+     "",
+     "(707)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2014",
+     "",
+     "3,500,000",
+     "",
+     "$",
+     "350",
+     "",
+     "$",
+     "357",
+     "",
+     "$",
+     "(707)",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock to founder",
+     "",
+     "2,500,000",
+     "",
+     "",
+     "250",
+     "",
+     "",
+     "(250)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Issuance of common stock for Waydell 32-38 LLC",
+     "",
+     "300,000",
+     "",
+     "",
+     "30",
+     "",
+     "",
+     "149,970",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "150,000",
+     ""
+    ],
+    [
+     "Capital contribution",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "80,383",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "80,383",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(796,231)",
+     "",
+     "",
+     "(796,231)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2015",
+     "",
+     "6,300,000",
+     "",
+     "$",
+     "630",
+     "",
+     "$",
+     "230,460",
+     "",
+     "$",
+     "(796,938)",
+     "",
+     "$",
+     "(565,848)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 441,
+    "end_line": 466
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED STATEMENT OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEAR ENDED DECEMBER 31, 2015 AND FOR THE PERIOD FROM MAY 20, 2014 (INCEPTION) TO DECEMBER 31, 2014",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 436,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended December 31, 2015",
+     "",
+     "",
+     "For the Period from May 20, 2014 (Inception) to  December 31, 2014",
+     "",
+     ""
+    ],
+    [
+     "OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(796,231)",
+     "",
+     "$",
+     "(707)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Amortization of debt issuance costs",
+     "",
+     "23,989",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Change in current assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Prepaid interest",
+     "",
+     "110,000",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts payable",
+     "",
+     "26,629",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accrued expenses",
+     "",
+     "15,184",
+     "",
+     "",
+     "707",
+     ""
+    ],
+    [
+     "      Accrued payroll",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accrued payroll to stockholder",
+     "",
+     "121,383",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net cash used in operating activities",
+     "",
+     "(499,046)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Payments for investments in real estate",
+     "",
+     "(3,143,840)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Payments for deposits",
+     "",
+     "(73,250)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net cash used in investing activities",
+     "",
+     "(3,217,090)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Advances from stockholder",
+     "",
+     "260,190",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from issuance of notes payable",
+     "",
+     "4,151,990",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Payment of debt issuance costs",
+     "",
+     "(220,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Payments on notes payable",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Proceeds from issuance of common stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Capital contribution by stockholder",
+     "",
+     "80,383",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net cash provided by financing activities",
+     "",
+     "4,269,563",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET INCREASE IN CASH",
+     "",
+     "553,427",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, BEGINNING BALANCE",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH, ENDING BALANCE",
+     "$",
+     "553,427",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH PAID FOR:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Income taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of common stock for real estate",
+     "$",
+     "150,000",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Issuance of note payable for prepaid interest",
+     "$",
+     "1,320,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 471,
+    "end_line": 527
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these financial statements\nT.A.G. ACQUISITIONS LTD. AND SUBSIDIARIES\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nDECEMBER 31, 2015 AND 2014\nNote 1 \u2013 Organization and Basis of Presentation\nDescription of Business\nT.A.G. Acquisitions Ltd. (the \u201cCompany\u201d) (formerly Surprise Valley Acquisition Corporation) was incorporated on May 20, 2014 under the laws of the State of Delaware to engage in any lawful corporate undertaking, including, but not limited to, selected mergers and acquisitions. On November 17, 2014, the Company changed its name to T.A.G. Acquisitions, Ltd. and filed the amendment with the State of Delaware.\nThe Company is in the business of seeking out exceptional conversion opportunities, large multi-family and commercial office properties (as opposed to hospitality, retail, or industrial investment properties), for which significant value and profitability can be realized through the carefully managed aesthetic improvements, strategic marketing, and restructured management. The Company calls this \u201crepositioning.\u201d The Company\u2019s sales and marketing strategies are also focusing on ways in which \u201cpricing concepts are marketed\u201d to its customers. Perks, privileges, tie-ins to strategic marketing partners, packages, discounts, and loyalty rewards for longer-term lessees are all under consideration as techniques to acquire new lessees and drive revenue.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 468,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 529,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2015",
+     ""
+    ],
+    [
+     "Waydell",
+     "32-38 Waydell Street Newark, NJ",
+     "$",
+     "165,325"
+    ],
+    [
+     "Creekside",
+     "3000 Ember Drive Decatur, GA",
+     "",
+     "2,633,766"
+    ],
+    [
+     "Tall Pines",
+     "3200 Cushman Circle Atlanta, GA",
+     "",
+     "494,749"
+    ],
+    [
+     "",
+     "",
+     "$",
+     "3,293,840"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 618,
+    "end_line": 629
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2013 Investments in Real Estate"
+    }
+   },
+   "prose_before": "On November 20, 2015, through its newly created subsidiaries, Creekside and Tall Pines, the Company purchased properties in Decatur, GA and Atlanta, GA respectively. Both of these properties are in need of significant renovations and did not have any significant operating activities prior to the acquisition and as a result no pro forma financial disclosures have been provided. The initial purchase price for the Creekside and Tall Pines properties was $1,820,000 and $480,000, respectively. The purchases were financed from the issuance of notes payable (See Note 5). Both of these properties are being renovated and the cost to renovate the properties is being capitalized. In addition, the Company has issued notes payable to financing the initial purchase of the properties and the renovations; and therefore has capitalized interest on these properties. Total capitalized interest included in Investments in Real Estate at December 31, 2015 was $29,854. Chester Meisels, the CEO for the Company, personally guaranteed repayment of the loans. The Company estimates the cost of the renovations to the properties to range between $6,000,000 and $7,500,000.\nA summary of the Company\u2019s real estate holdings is below;",
+   "prose_after": "Waydell currently has no results of operations and as a result no pro forma financial disclosures are required.\nCreekside and Tall Pines have no results of operations and as a result no pro forma financial disclosures are required.\nNote 5 \u2013 Notes Payable\nNotes payable consist of the following:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Note payable dated June 5, 2015; unsecured; interest at 0% per annum; due June 5, 2016",
+     "$",
+     "20,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable dated April 15, 2015; unsecured; interest at 0% per annum; monthly payments of $500; due April 15,2020",
+     "",
+     "26,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable dated July 15, 2015; unsecured; interest at 10% per annum;  due July 1, 2016",
+     "",
+     "28,600",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable dated October 1, 2015; unsecured; interest at 10% per annum;  due October  1, 2016",
+     "",
+     "74,390",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable to Sharestates Investing, LLC, an unrelated party, dated November 20, 2015; secured by Creekside and Tall Pines properties and guaranteed by the Company's CEO; interest at 12% per annum;  due November 30, 2016",
+     "",
+     "5,320,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "5,468,990",
+     ""
+    ],
+    [
+     "Note discount",
+     "",
+     "(196,011)",
+     ""
+    ],
+    [
+     "Net amount",
+     "",
+     "5,272,979",
+     ""
+    ],
+    [
+     "Less current portion",
+     "",
+     "(5,252,979)",
+     ""
+    ],
+    [
+     "Long-term portion",
+     "$",
+     "20,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 663
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Notes Payable"
+    }
+   },
+   "prose_before": "Waydell currently has no results of operations and as a result no pro forma financial disclosures are required.\nCreekside and Tall Pines have no results of operations and as a result no pro forma financial disclosures are required.\nNote 5 \u2013 Notes Payable\nNotes payable consist of the following:",
+   "prose_after": "The Company issued four commercial promissory notes and four commercial non-revolving line of credit promissory notes to Sharestates Investing, LLC for an aggregate of $11,000,000 in connection with the purchase of the Creekside and Tall Pines properties. The interest rate for all the notes is 12% and all the notes are due on November 30, 2016. The four commercial promissory notes were issued at closing and totaled $5,320,000. The aggregate of the four commercial non-revolving line of credit promissory notes of $5,680,000 is available for the Company to draw down for the renovations of the Creekside and Tall Pines properties.\nIn connection with the issuances of these notes totaling $11,000,000, the Company was required to pay debt issuance costs of 2% of the total balance or $220,000. These debt issuance costs are shown as a note discount and amortized over the term of the notes. During the year ended December 31, 2015, the Company amortized $23,989 of the debt issuance costs which is included in interest expense.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 615,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31,",
+     "",
+     ""
+    ],
+    [
+     "2016",
+     "$",
+     "5,252,979"
+    ],
+    [
+     "2017",
+     "",
+     "6,000"
+    ],
+    [
+     "2018",
+     "",
+     "6,000"
+    ],
+    [
+     "2019",
+     "",
+     "6,000"
+    ],
+    [
+     "2020",
+     "",
+     "2,000"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,272,979"
+    ]
+   ],
+   "caption_stack": [
+    "Year ending December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 672,
+    "end_line": 685
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Notes Payable"
+    }
+   },
+   "prose_before": "The Company issued four commercial promissory notes and four commercial non-revolving line of credit promissory notes to Sharestates Investing, LLC for an aggregate of $11,000,000 in connection with the purchase of the Creekside and Tall Pines properties. The interest rate for all the notes is 12% and all the notes are due on November 30, 2016. The four commercial promissory notes were issued at closing and totaled $5,320,000. The aggregate of the four commercial non-revolving line of credit promissory notes of $5,680,000 is available for the Company to draw down for the renovations of the Creekside and Tall Pines properties.\nIn connection with the issuances of these notes totaling $11,000,000, the Company was required to pay debt issuance costs of 2% of the total balance or $220,000. These debt issuance costs are shown as a note discount and amortized over the term of the notes. During the year ended December 31, 2015, the Company amortized $23,989 of the debt issuance costs which is included in interest expense.\nAlso, the Company was required to prepay interest for one year or $1,320,000 on the entire $11,000,000 credit facilities. During the year ended December 31, 2015, the Company amortized $110,000 of the prepaid interest to interest expense. As of December 31, 2015, the prepaid interest balance was $1,210,000.\nAggregate future maturities of notes payable at December 31, 2015 are as follows:",
+   "prose_after": "Note 6 \u2013 Advances from stockholder\nAt December 31, 2015 the Company had advances from its majority stockholder of $260,190. These advances are non-interest bearing and payable upon demand.\nNote 7 \u2013 Stockholders\u2019 Equity\nOn May 20, 2014, the Company issued 20,000,000 common shares to two directors and officers at a discount of $2,000.\nOn November 17, 2014 the Company redeemed an aggregate of 19,500,000 of the then 20,000,000 shares of common stock. On November 18, 2014, the Company issued 3,000,000 shares of its common stock to a director and officer.\nOn April 20, 2015, the Company issued 2,500,000 founder shares to its Chief Executive officer.\nOn August 13, 2015, the Company issued 300,000 shares of common stock to Moses Schwartz in connection with the acquisition of Waydell. The shares were valued at $150,000 which is the amount paid for the only asset owned by Waydell that was recently purchased on June 25, 2015 \u2014 real property located at 32-38 Waydell Street, Newark, New Jersey.\nThe Company is authorized to issue 100,000,000 shares of common stock and 20,000,000 shares of preferred stock. As of December 31, 2015, 6,300,000 shares of common stock and no preferred stock were issued and outstanding.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 665,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 703,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Amount",
+     "",
+     "",
+     "Percent",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Percent",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory rates",
+     "$",
+     "(270,719)",
+     "",
+     "",
+     "34.0",
+     "%",
+     "$",
+     "(240)",
+     "",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "State income taxes",
+     "",
+     "(39,812)",
+     "",
+     "",
+     "5.0",
+     "%",
+     "",
+     "(35)",
+     "",
+     "",
+     "5.0",
+     "%"
+    ],
+    [
+     "Permanent differences",
+     "",
+     "9,119",
+     "",
+     "",
+     "-1.1",
+     "%",
+     "",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Valuation allowance against net deferred tax assets",
+     "",
+     "301,411",
+     "",
+     "",
+     "-37.9",
+     "%",
+     "",
+     "276",
+     "",
+     "",
+     "-39.0",
+     "%"
+    ],
+    [
+     "Effective rate",
+     "$",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%",
+     "$",
+     "-",
+     "",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 724
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "During the year ended December 31, 2015, the Company\u2019s majority stockholder and Chief Executive Officer made capital contributions totaling $80,383.\nNote 8 \u2013 Income Taxes\nDeferred income taxes reflect the net tax effects of temporary differences between the carrying amounts of assets and liabilities for financial reporting purposes and the amounts used for income tax purposes. A full valuation allowance is established against all net deferred tax assets as of December 31, 2015 and 2014 based on estimates of recoverability. While the Company has optimistic plans for its business strategy, it determined that such a valuation allowance was necessary given the current and expected near term losses and the uncertainty with respect to its ability to generate sufficient profits from its new business model. Because of the impacts of the valuation allowance, there was no income tax expense or benefit for the years ended December 31, 2015 and 2014.\nA reconciliation of the differences between the effective and statutory income tax rates for years ended December 31:",
+   "prose_after": "At December 31, 2015 and 2014, the significant components of the deferred tax assets are summarized below:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 703,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 754,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred income tax asset",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net operation loss carryforwards",
+     "",
+     "301,686",
+     "",
+     "",
+     "276",
+     ""
+    ],
+    [
+     "    Total deferred income tax asset",
+     "",
+     "301,686",
+     "",
+     "",
+     "276",
+     ""
+    ],
+    [
+     "  Less: valuation allowance",
+     "",
+     "(301,686)",
+     "",
+     "",
+     "(276)",
+     ""
+    ],
+    [
+     "Total deferred income tax asset",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 727,
+    "end_line": 740
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2013 Income Taxes"
+    }
+   },
+   "prose_before": "At December 31, 2015 and 2014, the significant components of the deferred tax assets are summarized below:",
+   "prose_after": "The valuation allowance increased by $301,411 and $276 in 2015 and 2014 as a result of the Company generating additional net operating losses.\nThe Company has recorded as of December 31, 2015 and 2014 a valuation allowance of $301,686 and $276, respectively, as it believes that it is more likely than not that the deferred tax assets will not be realized in future years. Management has based its assessment on the Company\u2019s lack of profitable operating history.\nThe Company annually conducts an analysis of its tax positions and has concluded that it has no uncertain tax positions as of December 31, 2015 and 2014.\nNote 9 \u2013 Agreements to Purchase Real Estate\nOn December 15, 2015, the Company entered into an agreement to purchase property located at 81 Clay Street, Newark, New Jersey for $4,000,000. The Company paid a deposit of $50,000 prior to December 31, 2015 and is expected to close on or before May 1, 2016\nNote 10 \u2013 Subsequent Events\nOn February 23, 2016, the Company entered into an Agreement of Assignment Bid that gives the Company the right to purchase a property in Holliswood, New York for $999,500, plus finders\u2019 fees of $200,500, for an aggregate purchase price of $1.2 million.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 703,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 754,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position",
+     "Director / Officer Since"
+    ],
+    [
+     "Chester Meisels",
+     "38",
+     "Chief Executive Officer\n\n\n\nPresident",
+     "November 18, 2014"
+    ],
+    [
+     "",
+     "",
+     "Treasurer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Secretary",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Director",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Etel Halpert",
+     "65",
+     "Chief Financial Officer",
+     "January 1, 2015"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 786,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, and Corporate Governance"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "This annual report does not include an attestation report of the Company's registered public accounting firm regarding internal control over financial reporting. Management's report was not subject to attestation by the Company's registered public accounting firm pursuant to a permanent exemption of the Securities and Exchange Commission that permit the Company to provide only management's report in this annual report. Accordingly, our management's assessment of the effectiveness of our internal control over financial reporting as of December 31, 2015 has not been audited by our auditors, Anton & Chia, LLP, or any other independent registered accounting firm.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting, as defined in Rules 13a-15(f) and 15d-15(f) under the Exchange Act, during our most recently completed fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers, and Corporate Governance\nThe Directors and Officers of the Company are as follows:",
+   "prose_after": "Chester Meisels serves as the Chief Executive Officer, President, Secretary and Treasurer and the sole director of T.A.G. Acquisitions Ltd. During the previous five years, Mr. Meisels has been the principal of Smithtown Management LLC, New York, New York, which advises real estate portfolios on purchasing, permitting, construction and renting or selling real property holdings. Mr. Meisels also is a member of the board of directors at Raymond and Mott Fund LLC, as well as the Company\u2019s three subsidiaries, Waydell 32-38 LLC, Creekside by TAG LLC and Tall Pines by TAG LLC.\nEtel Halpert serves as the Chief Financial Officer of T.A.G. Acquisitions Ltd. In 2009, after 14 successful years as the Fiscal Director at Head Start of Rockland County, Ms. Halpert return to real estate financial management and entered SWE Realty LLC where she supervised all finances, advised operational leaders regarding the impact of any decisions on overall financial stability and P&L. Ms. Halpert joined the Company in January 2015, where she used her financial expertise as a key member of the executive team to drive the financial planning and accounting operations of the Company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 779,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards",
+     "",
+     "Option Awards",
+     "",
+     "Nonequity incentive plan compensation",
+     "",
+     "Nonqualified deferred compensation earnings",
+     "",
+     "All other compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "C. Meisels",
+     "",
+     "2015",
+     "$",
+     "208,250",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "208,250"
+    ],
+    [
+     "CEO",
+     "",
+     "2014",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "E. Halpert (1)",
+     "",
+     "2015",
+     "$",
+     "67,500",
+     "$",
+     "3,173",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "70,673"
+    ],
+    [
+     "CFO",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 834,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Corporate Governance. For reasons similar to those described above, the Company does not have a nominating nor audit committee of the board of directors. The Company has generated minimal revenue since its inception. At such time that the Company enters into a business combination and/or has additional shareholders and a larger board of directors and increases activities, the Company will propose creating committees of its board of directors, including both a nominating and an audit committee. Because there are only four shareholders of the Company, there is no established process by which shareholders of the Company can nominate members to the Company\u2019s board of directors. However, at such time as the Company has more shareholders and an expanded board of directors, the new management of the Company may review and implement, as necessary, procedures for shareholder nomination of members to the Company\u2019s board of directors.\nItem 11. Executive Compensation\nMr. Meisels, the Company\u2019s Chief Executive Officer, President, Secretary and Treasurer, has a written one year employment agreement with the Company. Mr. Meisels receives base salary of $208,250 per year. Mr. Meisels does not receive payment for his services as director.\nMs. Halpert, the Company\u2019s Chief Financial Officer, has a written one year employment agreement with the Company. Ms. Halpert receives a base salary of $67,500 per year. No former officer or director received any compensation in the past.\nNo retirement, pension, profit sharing, stock option or insurance programs or other similar programs have been adopted by the Company for the benefit of its employees.\nThe Company does not have a compensation committee for the same reasons as described above.",
+   "prose_after": "(1) Ms. Halpert joined the Company in January 2015.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth, as of March 27, 2016, each person known by the Company to be the officer or director of the Company or a beneficial owner of five percent or more of the Company\u2019s common stock. The Company does not have any compensation plans and has not authorized any securities for future issuance. Except as noted, the holder thereof has sole voting and investment power with respect to the shares shown.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 871,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner",
+     "Amount of Beneficial Ownership",
+     "",
+     "",
+     "Percent of Outstanding Stock (1)",
+     "",
+     ""
+    ],
+    [
+     "Chester Meisels 130 East Route 59 Suite #6 Spring Valley, New York, 10977",
+     "",
+     "5,500,000",
+     "",
+     "",
+     "87",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Executive Officers and Directors as a Group (1 Person)",
+     "",
+     "5,500,000",
+     "",
+     "",
+     "87",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James Cassidy 215 Apolena Avenue Newport Beach, CA 92662",
+     "",
+     "250,000",
+     "",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James McKillop 9454 Wilshire Boulevard Beverly Hills, California 90212",
+     "",
+     "250,000",
+     "",
+     "",
+     "4.1",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Moses Schwartz 607 North Orange Drive, Apt 102 Los Angeles, CA 90036",
+     "",
+     "300,000",
+     "(2)",
+     "",
+     "4.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 850,
+    "end_line": 863
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "(1) Ms. Halpert joined the Company in January 2015.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nThe following table sets forth, as of March 27, 2016, each person known by the Company to be the officer or director of the Company or a beneficial owner of five percent or more of the Company\u2019s common stock. The Company does not have any compensation plans and has not authorized any securities for future issuance. Except as noted, the holder thereof has sole voting and investment power with respect to the shares shown.",
+   "prose_after": "(1) Based on 6,300,000 outstanding shares at March 27, 2016.\n(2) On August 13, 2015, the Company issued 300,000 shares of common stock to Moses Schwartz in connection with the acquisition of Waydell. The shares were valued at $150,000 which is the amount paid for the only asset owned by Waydell \u2014 real property located at 32-38 Waydell Street, Newark, New Jersey.\nItem 13. Certain Relationships and Related Transactions and Director Independence\nChester Meisels is a shareholder of the Company and also serves as its Chief Executive Officer, President, Secretary and Treasurer and sole director.\nAs the organizers and developers of Surprise Valley Acquisition Corporation the predecessor name to the Company, James Cassidy and James McKillop may be considered promoters. Mr. Cassidy provided services to the Company without charge consisting of preparing and filing the charter corporate documents and preparing its registration statement on Form 10. Tiber Creek Corporation, a company of which Mr. Cassidy is the sole director, officer and shareholder, paid all expenses incurred by the Company until November 17, 2014 the date of the change in control, without repayment.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 831,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 871,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fee Category",
+     "Fiscal Year Ended December 31, 2015",
+     "",
+     "Period from May 20, 2014 (inception) to December 31, 2014",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "8,000",
+     "$",
+     "5,000"
+    ],
+    [
+     "Audit Related Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Tax Fees",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "All Other Fees",
+     "",
+     "9,100",
+     "",
+     "-"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "17,100",
+     "$",
+     "5,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 880,
+    "end_line": 892
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accounting Fees and Services."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "As the organizers and developers of Surprise Valley Acquisition Corporation the predecessor name to the Company, James Cassidy and James McKillop may be considered promoters. Mr. Cassidy provided services to the Company without charge consisting of preparing and filing the charter corporate documents and preparing its registration statement on Form 10. Tiber Creek Corporation, a company of which Mr. Cassidy is the sole director, officer and shareholder, paid all expenses incurred by the Company until November 17, 2014 the date of the change in control, without repayment.\nThe Company is not currently required to maintain an independent director as defined by Rule 4200 of the Nasdaq Capital Market nor does it anticipate that it will be applying for listing of its securities on an exchange in which an independent directorship is required. It is likely Mr. Meisels would not be considered an independent director if it were to do so.\nItem 14. Principal Accounting Fees and Services.\nThe following is a summary of the fees paid by us to Anton & Chia, LLP for professional services rendered for the fiscal year ended December 31, 2015 and the period from May 20, 2014 (inception) to December 31, 2014:",
+   "prose_after": "Audit Fees. Consists of the aggregate fees billed for professional services rendered for the audit of our financial statements and review of interim financial statements included in quarterly reports and services that are normally provided by Anton & Chia, LLP in connection with statutory and regulatory filings or engagements in fiscal year ended December 31, 2015 and the period from May 20, 2014 (inception) to December 31, 2014, respectively.\nAudit Related Fees. Consists of fees billed for accounting, assurance and related services that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \u201cAudit Fees\u201d.\nTax Fees. Tax Fees consist of the aggregate fees billed for professional services rendered by our principal accountants for tax compliance, tax advice, and tax planning. These services include preparation for federal and state income tax returns.\nAll Other Fees. We did not incur any other fees billed by our principal accountants for services rendered to our Company, other than the services listed above for the fiscal years ended December 31, 2015 and the period from May 20, 2014 (inception) to December 31, 2014, respectively.",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 871,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1 *",
+     "Certificate of Incorporation of the Company (conformed copy)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2 *",
+     "Certificate of Amendment to Certificate of Incorporation of the Company (conformed copy)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "By-laws of the Company (conformed copy) (incorporated by reference to Exhibit 3(ii)(A) to the Company\u2019s Form 10-K (SEC File No. 000-55226) filed with the SEC on June 18, 2014)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Securities Purchase Agreement (conformed copy) (incorporated by reference to Exhibit 10(ii)(C)(A) to the Company\u2019s Form 10-K (SEC File No. 000-55226) filed with the SEC on December 1, 2015)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2.1*",
+     "Agreement of Purchase and Sale, dated September 25, 2015 between SBS 276, LLC and T.A.G. ACQUISITIONS LTD."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2.2*",
+     "First Amendment to Agreement of Purchase and Sale, dated October 15, 2015 between SBS 276, LLC and T.A.G. ACQUISITIONS LTD."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3.1*",
+     "Agreement of Purchase and Sale, dated September 25, 2015 between SBS Holdings at Tall Pines, LLC and T. A. G. ACQUISITIONS LTD."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3.2*",
+     "First Amendment to Agreement of Purchase and Sale, dated October 15, 2015 between SBS Holdings at Tall Pines, LLC and T. A. G. ACQUISITIONS LTD."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4*+",
+     "Loan Agreement and Commercial Promissory Note between CREEKSIDE by TAG LLC, a subsidiary of T.A.G. Acquisitions Ltd. and SHARESTATES INVESTMENTS, LLC, dated November 20, 2015 (the \u201cCreekside Agreements 1\u201d)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5*++",
+     "Loan Agreement and Commercial Non-Revolving Line of Credit Promissory Note between CREEKSIDE by TAG LLC, a subsidiary of T.A.G. Acquisitions Ltd. and SHARESTATES INVESTMENTS, LLC, dated November 20, 2015 (the \u201cCreekside Agreements 2\u201d)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6*",
+     "Contract for Sale of Commercial Property dated December 15, 2015 between Clay Associates, LLC and T.A.G. Acquisitions Ltd."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7*",
+     "Employment Agreement between Cheskel (Chester) Meisels and T.A.G. Acquisitions LTD dated January 1, 2015"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8*",
+     "Employment Agreement between Etel Halpert and T.A.G. Acquisitions LTD dated November 1, 2015"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21 *",
+     "Subsidiaries of the registrant"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 949
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Tax Fees. Tax Fees consist of the aggregate fees billed for professional services rendered by our principal accountants for tax compliance, tax advice, and tax planning. These services include preparation for federal and state income tax returns.\nAll Other Fees. We did not incur any other fees billed by our principal accountants for services rendered to our Company, other than the services listed above for the fiscal years ended December 31, 2015 and the period from May 20, 2014 (inception) to December 31, 2014, respectively.\nThe Company does not currently have an audit committee serving and as a result its board of directors performs the duties of an audit committee. The board of directors will evaluate and approve in advance, the scope and cost of the engagement of an auditor before the auditor renders audit and non-audit services. The Company does not rely on pre- approval policies and procedures.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules\n(a) Documents filed as part of this Annual Report or incorporated by reference:\n(1) Our financial statements are provided under Item 8 of this Annual Report.\n(b) The following exhibits are filed with this Annual Report or incorporated by reference, as indicated:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1 *",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2 *",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32 *",
+     "Certification of the Chief Executive Officer and Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Definition"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 951,
+    "end_line": 970
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "*Filed herewith\n+ Includes a schedule of three additional agreements, with SHARESTATES INVESTMENTS, LLC that are substantially identical in all material respects to the Creekside Agreements 1, except as identified in such schedule, and are not being filed herewith pursuant to Instruction 2 to Item 601 of Regulation S-K.\n++ Includes a schedule of three additional agreements, with SHARESTATES INVESTMENTS, LLC that are substantially identical in all material respects to the Creekside Agreements 2, except as identified in such schedule, and are not being filed herewith pursuant to Instruction 2 to Item 601 of Regulation S-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 950,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "T.A.G. ACQUISITIONS LTD.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: April 11, 2016",
+     "By:",
+     "By:",
+     "/s/ Chester Meisels"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chester Meisels"
+    ],
+    [
+     "",
+     "",
+     "",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "T.A.G. ACQUISITIONS LTD."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 982,
+    "end_line": 990
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "*Filed herewith\n+ Includes a schedule of three additional agreements, with SHARESTATES INVESTMENTS, LLC that are substantially identical in all material respects to the Creekside Agreements 1, except as identified in such schedule, and are not being filed herewith pursuant to Instruction 2 to Item 601 of Regulation S-K.\n++ Includes a schedule of three additional agreements, with SHARESTATES INVESTMENTS, LLC that are substantially identical in all material respects to the Creekside Agreements 2, except as identified in such schedule, and are not being filed herewith pursuant to Instruction 2 to Item 601 of Regulation S-K.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Chester Meisels",
+     "Chief Executive Officer (Principal Executive Officer)",
+     "April 11, 2016"
+    ],
+    [
+     "Chester Meisels",
+     "President, Secretary, Treasurer",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Etel Halpert",
+     "Chief Financial Officer",
+     "April 11, 2016"
+    ],
+    [
+     "Etel Halpert",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Chester Meisels",
+     "Director",
+     "April 11, 2016"
+    ],
+    [
+     "Chester Meisels",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 993,
+    "end_line": 1009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 977,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1010,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

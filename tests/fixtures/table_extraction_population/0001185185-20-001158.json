@@ -1,0 +1,4041 @@
+{
+ "accession": "0001185185-20-001158",
+ "cik": "0001138476",
+ "form": "10-Q",
+ "filing_date": "2020-08-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "pacifichco20200630_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Quarterly Period Ended June 30, 2020"
+    ]
+   ],
+   "caption_stack": [
+    "For the Quarterly Period Ended June 30, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 9,
+    "end_line": 12
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, DC 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period From ________ to _________\nCommission File Number 000-50009",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PACIFIC HEALTH CARE ORGANIZATION, INC.",
+     ""
+    ],
+    [
+     "(Exact name of registrant as specified in its charter)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Utah",
+     "87-0285238"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer I.D. No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "1201 Dove Street, Suite 300",
+     ""
+    ],
+    [
+     "Newport Beach, California",
+     "92660"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [
+    "PACIFIC HEALTH CARE ORGANIZATION, INC.",
+    "(Exact name of registrant as specified in its charter)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 32
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the Transition Period From ________ to _________\nCommission File Number 000-50009",
+   "prose_after": "(949) 721-8272\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "N/A",
+     "N/A"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 47
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(949) 721-8272\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for any shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files.) Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 7,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I \u2014 FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.  Condensed Consolidated Financial Statements",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited) Balance Sheets as of June 30, 2020 and December 31, 2019",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited) Statements of Operations for the Three and Six Months Ended June 30, 2020 and 2019",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited) Statements of Stockholders\u2019 Equity for the Three and Six Months Ended June 30, 2020 and 2019",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited) Statements of Cash Flows for the Six Months Ended June 30, 2020 and 2019",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.  Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.  Quantitative and Qualitative Disclosure about Market Risk",
+     "",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.  Controls and Procedures",
+     "",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2014 OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.  Risk Factors",
+     "",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.  Exhibits",
+     "",
+     "22"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "23"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2014 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 71,
+    "end_line": 102
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files.) Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [ ]\nNon-accelerated filer [X]    Smaller reporting company [X]\nEmerging growth company [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.) Yes [ ] No [X]\nAs of August 12, 2020, the registrant had 12,800,000 shares of common stock, par value $0.001, issued and outstanding.\nFORM 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Information\nCondensed Consolidated Balance Sheets\n(Unaudited)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 102,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "8,966,825",
+     "",
+     "$",
+     "8,104,164",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance of $11,427 and $30,525",
+     "",
+     "1,014,845",
+     "",
+     "",
+     "1,114,725",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "22,819",
+     "",
+     "",
+     "22,819",
+     ""
+    ],
+    [
+     "Prepaid income tax",
+     "",
+     "68,993",
+     "",
+     "",
+     "158,641",
+     ""
+    ],
+    [
+     "Receivable \u2013 other",
+     "",
+     "10,400",
+     "",
+     "",
+     "14,900",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "126,558",
+     "",
+     "",
+     "128,343",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "10,210,440",
+     "",
+     "",
+     "9,543,592",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and Equipment, net",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Computer equipment",
+     "",
+     "506,828",
+     "",
+     "",
+     "464,388",
+     ""
+    ],
+    [
+     "Furniture and fixtures",
+     "",
+     "216,097",
+     "",
+     "",
+     "215,960",
+     ""
+    ],
+    [
+     "Office equipment",
+     "",
+     "9,556",
+     "",
+     "",
+     "9,556",
+     ""
+    ],
+    [
+     "Total property and equipment",
+     "",
+     "732,481",
+     "",
+     "",
+     "689,904",
+     ""
+    ],
+    [
+     "Less: accumulated depreciation and amortization",
+     "",
+     "(597,871)",
+     "",
+     "",
+     "(565,277)",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "",
+     "134,610",
+     "",
+     "",
+     "124,627",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets, net",
+     "",
+     "433,481",
+     "",
+     "",
+     "558,945",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "26,788",
+     "",
+     "",
+     "26,788",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "10,805,319",
+     "",
+     "$",
+     "10,253,952",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "82,015",
+     "",
+     "$",
+     "52,275",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "216,439",
+     "",
+     "",
+     "249,904",
+     ""
+    ],
+    [
+     "Deferred rent expense",
+     "",
+     "17,091",
+     "",
+     "",
+     "29,947",
+     ""
+    ],
+    [
+     "Dividend payable",
+     "",
+     "37,000",
+     "",
+     "",
+     "37,000",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current portion",
+     "",
+     "250,900",
+     "",
+     "",
+     "266,480",
+     ""
+    ],
+    [
+     "Paycheck protection program loans, current portion",
+     "",
+     "181,486",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Unearned revenue",
+     "",
+     "49,061",
+     "",
+     "",
+     "46,066",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "833,992",
+     "",
+     "",
+     "681,672",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long Term Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease liabilities, long-term portion",
+     "",
+     "182,581",
+     "",
+     "",
+     "292,465",
+     ""
+    ],
+    [
+     "Paycheck protection program loans, long-term portion",
+     "",
+     "279,214",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total long-term liabilities",
+     "",
+     "461,795",
+     "",
+     "",
+     "292,465",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "1,295,787",
+     "",
+     "",
+     "974,137",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock; 5,000,000 shares authorized at $0.001 par value of which 40,000 shares are designated as Series A preferred and 16,000 shares issued and outstanding at June 30, 2020 and December 31, 2019",
+     "$",
+     "16",
+     "",
+     "$",
+     "16",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value, 800,000,000 shares authorized,\n\n\n\n12,800,000 shares issued and outstanding at June 30, 2020 and December 31, 2019",
+     "",
+     "12,800",
+     "",
+     "",
+     "12,800",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "416,057",
+     "",
+     "",
+     "416,057",
+     ""
+    ],
+    [
+     "Retained earnings",
+     "",
+     "9,080,659",
+     "",
+     "",
+     "8,850,942",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "9,509,532",
+     "",
+     "",
+     "9,279,815",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "10,805,319",
+     "",
+     "$",
+     "10,253,952",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 114,
+    "end_line": 185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Information\nCondensed Consolidated Balance Sheets\n(Unaudited)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 108,
+     "token": "REPEATING_HEADER",
+     "id": 7,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For three months ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For six months ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HCO fees",
+     "$",
+     "325,247",
+     "",
+     "$",
+     "400,840",
+     "",
+     "$",
+     "651,912",
+     "",
+     "$",
+     "771,182",
+     ""
+    ],
+    [
+     "MPN fees",
+     "",
+     "118,317",
+     "",
+     "",
+     "127,113",
+     "",
+     "",
+     "239,066",
+     "",
+     "",
+     "250,978",
+     ""
+    ],
+    [
+     "Utilization review",
+     "",
+     "251,728",
+     "",
+     "",
+     "286,555",
+     "",
+     "",
+     "547,783",
+     "",
+     "",
+     "579,238",
+     ""
+    ],
+    [
+     "Medical bill review",
+     "",
+     "82,083",
+     "",
+     "",
+     "125,080",
+     "",
+     "",
+     "165,162",
+     "",
+     "",
+     "260,077",
+     ""
+    ],
+    [
+     "Medical case management",
+     "",
+     "587,318",
+     "",
+     "",
+     "799,349",
+     "",
+     "",
+     "1,264,530",
+     "",
+     "",
+     "1,580,963",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "101,813",
+     "",
+     "",
+     "76,382",
+     "",
+     "",
+     "150,962",
+     "",
+     "",
+     "156,319",
+     ""
+    ],
+    [
+     "Total revenues",
+     "",
+     "1,466,506",
+     "",
+     "",
+     "1,815,319",
+     "",
+     "",
+     "3,019,415",
+     "",
+     "",
+     "3,598,757",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "15,363",
+     "",
+     "",
+     "17,989",
+     "",
+     "",
+     "32,594",
+     "",
+     "",
+     "36,873",
+     ""
+    ],
+    [
+     "Bad debt provision",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "101",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Consulting fees",
+     "",
+     "61,664",
+     "",
+     "",
+     "70,007",
+     "",
+     "",
+     "137,357",
+     "",
+     "",
+     "149,642",
+     ""
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "797,738",
+     "",
+     "",
+     "781,836",
+     "",
+     "",
+     "1,543,727",
+     "",
+     "",
+     "1,535,541",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "67,542",
+     "",
+     "",
+     "101,251",
+     "",
+     "",
+     "154,768",
+     "",
+     "",
+     "179,216",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "88,230",
+     "",
+     "",
+     "86,922",
+     "",
+     "",
+     "183,023",
+     "",
+     "",
+     "160,305",
+     ""
+    ],
+    [
+     "Outsource service fees",
+     "",
+     "137,679",
+     "",
+     "",
+     "136,671",
+     "",
+     "",
+     "243,793",
+     "",
+     "",
+     "261,480",
+     ""
+    ],
+    [
+     "Data maintenance",
+     "",
+     "13,084",
+     "",
+     "",
+     "57,319",
+     "",
+     "",
+     "52,812",
+     "",
+     "",
+     "67,619",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "137,022",
+     "",
+     "",
+     "217,566",
+     "",
+     "",
+     "351,875",
+     "",
+     "",
+     "425,001",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "1,318,322",
+     "",
+     "",
+     "1,469,561",
+     "",
+     "",
+     "2,700,050",
+     "",
+     "",
+     "2,815,677",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "148,184",
+     "",
+     "",
+     "345,758",
+     "",
+     "",
+     "319,365",
+     "",
+     "",
+     "783,080",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before taxes",
+     "",
+     "148,184",
+     "",
+     "",
+     "345,758",
+     "",
+     "",
+     "319,365",
+     "",
+     "",
+     "783,080",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "",
+     "(41,595)",
+     "",
+     "",
+     "(97,054)",
+     "",
+     "",
+     "(89,648)",
+     "",
+     "",
+     "(219,813)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "106,589",
+     "",
+     "$",
+     "248,704",
+     "",
+     "$",
+     "229,717",
+     "",
+     "$",
+     "563,267",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share amount",
+     "$",
+     "0.01",
+     "",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.04",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "12,800,000",
+     "",
+     "",
+     "12,800,000",
+     "",
+     "",
+     "12,800,000",
+     "",
+     "",
+     "12,800,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fully diluted earnings per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings per share amount",
+     "$",
+     "0.01",
+     "",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.02",
+     "",
+     "$",
+     "0.04",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "12,816,000",
+     "",
+     "",
+     "12,816,000",
+     "",
+     "",
+     "12,816,000",
+     "",
+     "",
+     "12,816,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 193,
+    "end_line": 242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Operations",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Stockholders' Equity",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 191,
+     "token": "REPEATING_HEADER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 244,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Additional paid-in",
+     "",
+     "Retained",
+     "",
+     "Total stockholder\u2019s",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "capital",
+     "",
+     "earnings",
+     "",
+     "equity",
+     ""
+    ],
+    [
+     "Balances at December 31, 2018",
+     "",
+     "16,000",
+     "$",
+     "16",
+     "",
+     "12,800,000",
+     "$",
+     "12,800",
+     "$",
+     "416,057",
+     "$",
+     "7,652,882",
+     "$",
+     "8,081,755"
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "314,563",
+     "",
+     "314,563"
+    ],
+    [
+     "Balances at March 31, 2019",
+     "",
+     "16,000",
+     "$",
+     "16",
+     "",
+     "12,800,000",
+     "$",
+     "12,800",
+     "$",
+     "416,057",
+     "$",
+     "7,967,445",
+     "$",
+     "8,396,318"
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "248,704",
+     "",
+     "248,704"
+    ],
+    [
+     "Balances at June 30, 2019",
+     "",
+     "16,000",
+     "$",
+     "16",
+     "",
+     "12,800,000",
+     "$",
+     "12,800",
+     "$",
+     "416,057",
+     "$",
+     "8,216,149",
+     "$",
+     "8,645,022"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balances at December 31, 2019",
+     "",
+     "16,000",
+     "$",
+     "16",
+     "",
+     "12,800,000",
+     "$",
+     "12,800",
+     "$",
+     "416,057",
+     "$",
+     "8,850,942",
+     "$",
+     "9,279,815"
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "123,128",
+     "",
+     "123,128"
+    ],
+    [
+     "Balances at March 31, 2020",
+     "",
+     "16,000",
+     "$",
+     "16",
+     "",
+     "12,800,000",
+     "$",
+     "12,800",
+     "$",
+     "416,057",
+     "$",
+     "8,974,070",
+     "$",
+     "9,402,943"
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "106,589",
+     "",
+     "106,589"
+    ],
+    [
+     "Balances at June 30, 2020",
+     "",
+     "16,000",
+     "$",
+     "16",
+     "",
+     "12,800,000",
+     "$",
+     "12,800",
+     "$",
+     "416,057",
+     "$",
+     "9,080,659",
+     "$",
+     "9,509,532"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 250,
+    "end_line": 276
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Stockholders' Equity",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 248,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 278,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Six Months Ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "229,717",
+     "",
+     "$",
+     "563,267",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "32,594",
+     "",
+     "",
+     "36,873",
+     ""
+    ],
+    [
+     "Bad debt provision",
+     "",
+     "101",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Decrease (increase) in accounts receivable",
+     "",
+     "99,779",
+     "",
+     "",
+     "(141,062)",
+     ""
+    ],
+    [
+     "Decrease in prepaid expenses",
+     "",
+     "1,785",
+     "",
+     "",
+     "52,119",
+     ""
+    ],
+    [
+     "Decrease (increase) in prepaid income tax",
+     "",
+     "89,648",
+     "",
+     "",
+     "(9,287)",
+     ""
+    ],
+    [
+     "Decrease (increase) in receivables other",
+     "",
+     "4,500",
+     "",
+     "",
+     "(3,751)",
+     ""
+    ],
+    [
+     "Increase (decrease) in accounts payable",
+     "",
+     "29,740",
+     "",
+     "",
+     "(23,051)",
+     ""
+    ],
+    [
+     "(Decrease) increase in deferred rent expense",
+     "",
+     "(12,856)",
+     "",
+     "",
+     "15,307",
+     ""
+    ],
+    [
+     "(Decrease) increase in accrued expenses",
+     "",
+     "(33,465)",
+     "",
+     "",
+     "4,941",
+     ""
+    ],
+    [
+     "Increase in unearned revenue",
+     "",
+     "2,995",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "444,538",
+     "",
+     "",
+     "495,356",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of furniture and office equipment",
+     "",
+     "(42,577)",
+     "",
+     "",
+     "(15,247)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(42,577)",
+     "",
+     "",
+     "(15,247)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from paycheck protection program loans",
+     "",
+     "460,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "460,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Increase in cash",
+     "",
+     "862,661",
+     "",
+     "",
+     "480,109",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of period",
+     "",
+     "8,104,164",
+     "",
+     "",
+     "7,072,507",
+     ""
+    ],
+    [
+     "Cash at end of period",
+     "$",
+     "8,966,825",
+     "",
+     "$",
+     "7,552,616",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Income taxes paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "229,100",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Initial recognition of operating lease right-of-use assets and operating lease liabilities",
+     "$",
+     "-",
+     "",
+     "$",
+     "719,861",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Six Months Ended\n\n\n\nJune 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 284,
+    "end_line": 334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCondensed Consolidated Statements of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nFor the Six Months Ended June 30, 2020\nNOTE 1 - BASIS OF FINANCIAL STATEMENT PRESENTATION\nThe accompanying unaudited condensed consolidated financial statements have been prepared by the Company pursuant to the rules and regulations of the Securities and Exchange Commission (the \u201cCommission\u201d) and in accordance with accounting principles generally accepted in the United States (\u201cGAAP\u201d). Certain information and footnote disclosures normally included in consolidated financial statements have been condensed or omitted in accordance with GAAP rules and regulations. The information furnished in these interim condensed consolidated financial statements includes normal recurring adjustments and reflects all adjustments, which, in the opinion of management, are necessary for a fair presentation of such financial statements. The preparation of condensed consolidated financial statements in accordance with GAAP requires management to make estimates and assumptions that affect both the recorded values of assets and liabilities at the date of the condensed consolidated financial statements and the revenues recognized and expenses incurred during the reporting period. These estimates and assumptions affect the Company\u2019s recognition of deferred expenses, bad debts, income taxes, the carrying value of its long-lived assets and its provision for certain contingencies. The reasonableness of these estimates and assumptions is evaluated continually based on a combination of historical and other information that comes to the Company\u2019s attention that may vary its outlook for the future. While management believes the disclosures and information presented are adequate to make the information not misleading, the Company recommends these interim condensed consolidated financial statements be read in conjunction with its audited financial statements and notes thereto included in its annual report on Form 10-K for the year ended December 31, 2019. Operating results for the six months ended June 30, 2020, are not necessarily indicative of the results to be expected for the year ending December 31, 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 282,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 336,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "6/30/2020",
+     "",
+     "",
+     "12/31/2019",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "21",
+     "%",
+     "",
+     "18",
+     "%"
+    ],
+    [
+     "Customer B",
+     "",
+     "12",
+     "%",
+     "",
+     "8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 363,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "BASIS OF FINANCIAL STATEMENT PRESENTATION"
+    }
+   },
+   "prose_before": "Accounts Receivables and Bad Debt Allowance \u2013 In the normal course of business the Company extends credit to its customers on a short-term basis. Although the credit risk associated with these customers is minimal, the Company routinely reviews its accounts receivable balances and makes provisions for doubtful accounts. The Company ages its receivables by date of invoice. Management reviews bad debt reserves quarterly and reserves specific accounts as warranted or sets up a general reserve based on amounts over 90 days past due. When an account is deemed uncollectible, the Company charges off the receivable against the bad debt reserve. A considerable amount of judgment is required in assessing the realization of these receivables including the current creditworthiness of each customer and related aging of the past-due balances, including any billing disputes. In order to assess the collectability of these receivables, the Company performs ongoing credit evaluations of its customers\u2019 financial condition. Through these evaluations, the Company may become aware of a situation where a customer may not be able to meet its financial obligations due to deterioration of its financial viability, credit rating or bankruptcy. The allowance for doubtful accounts is based on the best information available to the Company and is reevaluated and adjusted as additional information is received. We evaluate the allowance based on historical write-off experience, the size of the individual customer balances, past-due amounts and the overall national economy. At June 30, 2020 and December 31, 2019, bad debt reserves of $11,427 and $30,525, respectively, was a general reserve for certain balances over 90 days past due and for accounts that are potentially uncollectible.\nThe percentages of the amounts due from major customers to total accounts receivable as of June 30, 2020 and December 31, 2019, are as follows:",
+   "prose_after": "Significant Customers - We provide services to insurers, third party administrators, self-administered employers, municipalities and other industries. We are able to provide our full range of services to virtually any size employer in the state of California. We are also able to provide utilization review, medical bill review and medical case management services outside the state of California.\nDuring the period ended June 30, 2020 and 2019, we had two customers that accounted for more than 10% of our total sales. The following table sets forth details regarding the percentage of total sales attributable to our significant customers in the past two years:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "6/30/2020",
+     "",
+     "",
+     "6/30/2019",
+     "",
+     ""
+    ],
+    [
+     "Customer A",
+     "",
+     "22",
+     "%",
+     "",
+     "29",
+     "%"
+    ],
+    [
+     "Customer B",
+     "",
+     "13",
+     "%",
+     "",
+     "14",
+     "%"
+    ],
+    [
+     "Customer C",
+     "",
+     "9",
+     "%",
+     "",
+     "11",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 374,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "BASIS OF FINANCIAL STATEMENT PRESENTATION"
+    }
+   },
+   "prose_before": "Significant Customers - We provide services to insurers, third party administrators, self-administered employers, municipalities and other industries. We are able to provide our full range of services to virtually any size employer in the state of California. We are also able to provide utilization review, medical bill review and medical case management services outside the state of California.\nDuring the period ended June 30, 2020 and 2019, we had two customers that accounted for more than 10% of our total sales. The following table sets forth details regarding the percentage of total sales attributable to our significant customers in the past two years:",
+   "prose_after": "Leases - Effective January 1, 2019, the Company adopted the guidance of ASC 842, Leases, which requires an entity to recognize a right-of-use asset and a lease liability for virtually all leases. The Company adopted ASC 842 using a modified retrospective approach. The adoption of ASC 842 on January 1, 2019 resulted in the recognition of operating lease right-of-use assets of $719,861, lease liabilities for operating leases of $719,861, and a zero cumulative-effect adjustment to accumulated deficit. The Company elected to exclude from its balance sheets recognition of leases having a term of 12 months or less (\u201cshort-term leases\u201d). Lease expense is recognized on a straight-line basis over the lease term. See Note 2 for further information regarding the impact of the adoption of ASC 842 on the Company\u2019s financial statements.\nNOTE 2 - OPERATING LEASES\nIn July 2015, the Company entered a 79-month lease to lease approximately 9,439 square feet of office space that commenced in September 2015. This office space serves as the Company\u2019s principal executive offices, as well as, the principal offices of our operating subsidiaries. In March 2017, the Company entered a 39-month operating lease for an office copy machine with scanner with monthly payment at $1,723, commencing in April 2017 and ending in June 2020.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 357,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nJune 30, 2020",
+     "",
+     "",
+     "Six Months Ended\n\n\n\nJune 30, 2020",
+     "",
+     ""
+    ],
+    [
+     "Lease Cost",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating lease cost (included in general and administrative in the Company\u2019s condensed consolidated statement of operations)",
+     "$",
+     "77,466",
+     "",
+     "$",
+     "153,217",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities for the three and six months ended June 30, 2020",
+     "$",
+     "77,466",
+     "",
+     "$",
+     "153,217",
+     ""
+    ],
+    [
+     "Weighted average remaining lease term \u2013 operating leases (in years)",
+     "1.83 years",
+     "",
+     "",
+     "1.83 years",
+     "",
+     ""
+    ],
+    [
+     "Average discount rate \u2013 operating leases",
+     "",
+     "5.75",
+     "%",
+     "",
+     "5.75",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 393,
+    "end_line": 408
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "OPERATING LEASES"
+    }
+   },
+   "prose_before": "In July 2015, the Company entered a 79-month lease to lease approximately 9,439 square feet of office space that commenced in September 2015. This office space serves as the Company\u2019s principal executive offices, as well as, the principal offices of our operating subsidiaries. In March 2017, the Company entered a 39-month operating lease for an office copy machine with scanner with monthly payment at $1,723, commencing in April 2017 and ending in June 2020.\nOperating lease right-of-use (\u201cROU\u201d) assets and liabilities are recognized at commencement date based on the present value of lease payments over the lease term. ROU assets represent our right to use an underlying asset for the lease term and lease liabilities represent our obligation to make lease payments arising from the lease. Generally, the implicit rate of interest in arrangements is not readily determinable and the Company utilizes its incremental borrowing rate in determining the present value of lease payments. The Company\u2019s incremental borrowing rate is a hypothetical rate based on its understanding of what its credit rating would be. The operating lease ROU asset includes any lease payments made and excludes lease incentives.\nThe components of lease expense and supplemental cash flow information related to leases for the period are as follows:",
+   "prose_after": "The supplemental balance sheet information related to leases for the period is as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "At June 30, 2020",
+     ""
+    ],
+    [
+     "Operating leases",
+     "",
+     ""
+    ],
+    [
+     "Long-term right-of-use assets",
+     "$",
+     "433,481"
+    ],
+    [
+     "Short-term operating lease liabilities",
+     "$",
+     "250,900"
+    ],
+    [
+     "Long-term operating lease liabilities",
+     "",
+     "182,581"
+    ],
+    [
+     "Total operating lease liabilities",
+     "$",
+     "433,481"
+    ]
+   ],
+   "caption_stack": [
+    "At June 30, 2020",
+    "Operating leases"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 411,
+    "end_line": 423
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "OPERATING LEASES"
+    }
+   },
+   "prose_before": "The supplemental balance sheet information related to leases for the period is as follows:",
+   "prose_after": "Maturities of the Company\u2019s lease liabilities are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ending",
+     "Operating Leases",
+     "",
+     ""
+    ],
+    [
+     "2020 (remaining 6 months)",
+     "$",
+     "136,488",
+     ""
+    ],
+    [
+     "2021",
+     "",
+     "257,024",
+     ""
+    ],
+    [
+     "2022",
+     "",
+     "71,359",
+     ""
+    ],
+    [
+     "Total lease payments",
+     "",
+     "464,871",
+     ""
+    ],
+    [
+     "Less: Imputed interest/present value discount",
+     "",
+     "(31,390)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "433,481",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 426,
+    "end_line": 438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Information"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "OPERATING LEASES"
+    }
+   },
+   "prose_before": "Maturities of the Company\u2019s lease liabilities are as follows:",
+   "prose_after": "Lease expenses were $77,466 and $68,153 during the three months ended June 30, 2020 and 2019, respectively, and $153,217 and $159,820 during the six months ended June 30, 2020 and 2019, respectively.\nNOTE 3 - PAYROLL PROTECTION PROGRAM LOANS\nIn April and May 2020 Pacific Health Care Organization, Inc. (\u201cPHCO\u201d), Medex Managed Care, Inc. (\u201cMMC\u201d) and Medex Medical Management, Inc. (\u201cMMM\u201d) received loans pursuant to the Coronavirus Aid, Relief and Economic Security (\u201cCARES\u201d) Act Payroll Protection Program.\nPHCO received a loan in the amount of $133,400 (the \u201cPHCO PPP Loan\u201d) from Pacific Western Bank. The PHCO PPP Loan is in the form of a Note dated April 21, 2020, issued by PHCO, which matures on April 21, 2022. The PHCO PPP Loan bears interest at a rate of 1% per annum and is payable monthly commencing on November 21, 2020. The monthly principal payment for the PHCO PPP Loan will be $7,507.\nMMM and MMC received loans of $267,700 and $59,600 respectively, from First Citizens Bank, (collectively the \u201cMedex Companies PPP Loans\u201d). The Medex Companies PPP Loans are also in the form of Notes dated April 30, 2020 and May 11, 2020, issued by MMM and MMC respectively, and mature on April 30, 2022 and May 11, 2022, respectively. The Medex Companies PPP Loans bear interest at a rate of 1.0% per annum and are payable monthly commencing on November 30, 2020 for the MMM loan and December 11, 2020 for the MMC loan. The combined monthly principal payments for the Medex Companies PPP Loans will be $18,419.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 387,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 444,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For three months ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Amount Change",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HCO fees",
+     "$",
+     "325,247",
+     "",
+     "$",
+     "400,840",
+     "",
+     "$",
+     "(75,593)",
+     "",
+     "",
+     "(19",
+     "%)"
+    ],
+    [
+     "MPN fees",
+     "",
+     "118,317",
+     "",
+     "",
+     "127,113",
+     "",
+     "",
+     "(8,796)",
+     "",
+     "",
+     "(7",
+     "%)"
+    ],
+    [
+     "Utilization review",
+     "",
+     "251,728",
+     "",
+     "",
+     "286,555",
+     "",
+     "",
+     "(34,827)",
+     "",
+     "",
+     "(12",
+     "%)"
+    ],
+    [
+     "Medical bill review",
+     "",
+     "82,083",
+     "",
+     "",
+     "125,080",
+     "",
+     "",
+     "(42,997)",
+     "",
+     "",
+     "(34",
+     "%)"
+    ],
+    [
+     "Medical case management",
+     "",
+     "587,318",
+     "",
+     "",
+     "799,349",
+     "",
+     "",
+     "(212,031)",
+     "",
+     "",
+     "(27",
+     "%)"
+    ],
+    [
+     "Other",
+     "",
+     "101,813",
+     "",
+     "",
+     "76,382",
+     "",
+     "",
+     "25,431",
+     "",
+     "",
+     "33",
+     "%"
+    ],
+    [
+     "Total revenues",
+     "",
+     "1,466,506",
+     "",
+     "",
+     "1,815,319",
+     "",
+     "",
+     "(348,813)",
+     "",
+     "",
+     "(19",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "15,363",
+     "",
+     "",
+     "17,989",
+     "",
+     "",
+     "(2,626)",
+     "",
+     "",
+     "(15",
+     "%)"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "61,664",
+     "",
+     "",
+     "70,007",
+     "",
+     "",
+     "(8,343)",
+     "",
+     "",
+     "(12",
+     "%)"
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "797,738",
+     "",
+     "",
+     "781,836",
+     "",
+     "",
+     "15,902",
+     "",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "Professional fees",
+     "",
+     "67,542",
+     "",
+     "",
+     "101,251",
+     "",
+     "",
+     "(33,709)",
+     "",
+     "",
+     "(33",
+     "%)"
+    ],
+    [
+     "Insurance",
+     "",
+     "88,230",
+     "",
+     "",
+     "86,922",
+     "",
+     "",
+     "1,308",
+     "",
+     "",
+     "2",
+     "%"
+    ],
+    [
+     "Outsource service fees",
+     "",
+     "137,679",
+     "",
+     "",
+     "136,671",
+     "",
+     "",
+     "1,008",
+     "",
+     "",
+     "1",
+     "%"
+    ],
+    [
+     "Data maintenance",
+     "",
+     "13,084",
+     "",
+     "",
+     "57,319",
+     "",
+     "",
+     "(44,235)",
+     "",
+     "",
+     "(77",
+     "%)"
+    ],
+    [
+     "General and administrative",
+     "",
+     "137,022",
+     "",
+     "",
+     "217,566",
+     "",
+     "",
+     "(80,544)",
+     "",
+     "",
+     "(37",
+     "%)"
+    ],
+    [
+     "Total expenses",
+     "",
+     "1,318,322",
+     "",
+     "",
+     "1,469,561",
+     "",
+     "",
+     "(151,239)",
+     "",
+     "",
+     "(10",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "148,184",
+     "",
+     "",
+     "345,758",
+     "",
+     "",
+     "(197,574)",
+     "",
+     "",
+     "(57",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before taxes",
+     "",
+     "148,184",
+     "",
+     "",
+     "345,758",
+     "",
+     "",
+     "(197,574)",
+     "",
+     "",
+     "(57",
+     "%)"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "(41,595)",
+     "",
+     "",
+     "(97,054)",
+     "",
+     "",
+     "55,459",
+     "",
+     "",
+     "(57",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "106,589",
+     "",
+     "$",
+     "248,704",
+     "",
+     "$",
+     "(142,115)",
+     "",
+     "",
+     "(57",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "For three months ended\n\n\n\nJune 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 506,
+    "end_line": 546
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Statements and Results of Operations"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In addressing the risk of COVID-19 cases and Workers\u2019 Compensation claims within the Company, we have also implemented onsite measures recommended by national, state, and local health authorities to reduce the chances of transmission among our employees. These measures include an office reopening plan, phased policy measures based on local and state orders and our own risk assessment, compliance with ventilation and other building-level recommendations as made possible by the building owner, physical barriers and signage, limited onsite presence, pre-shift symptom screening, and other measures that as of the date of this report are recommended to reduce the risk of transmission of COVID-19 in office spaces.\nResults of Operations\nComparison of the three months ended June 30, 2020 and 2019\nThe following represents selected components of our consolidated results of operations, for the three-month periods ended June 30, 2020 and 2019, respectively, together with changes from period-to-period:",
+   "prose_after": "Revenue\nTotal revenues during the three-month periods ended June 30, 2020 and 2019 decreased 19% to $1,466,506 from $1,815,319.\nDuring the second quarter 2020, other fees increased 33%, while HCO, MPN, utilization review, medical bill review and medical case management fees decreased by 19%, 7%, 12%, 34%, and 27%, respectively. Other revenues consisted of revenues derived primarily from network access, claims repricing services, lien representation services, legal support services, workers\u2019 compensation carve-out revenues and Medicare set-aside revenues.\nIn the second quarter of 2020, the State mandated stay-at home orders prompted many of our customers\u2019 to temporarily close their workplaces. Employers that stayed open, did so with a reduction in employees. We generate our revenues on employee counts, workplace injuries and medical provider care and the stay-at-home orders directly impacted our revenues.\nHCO Fees\nDuring the three-month periods ended June 30, 2020 and 2019, HCO fee revenues were $325,247 and $400,840, respectively. The decrease was due to the loss of a customer and due to COVID-19 workplace restrictions that caused customers\u2019 workplace closures and restructuring of customers\u2019 workforces. As a result, fees generated to enroll employees into our HCO networks, monthly HCO program administration fees, and claim network fees for workplace injuries decreased, partially offset by an increase in revenue from an existing customer adding a custom provider network. HCO revenue is generated largely from fees charged to our employer customers for access to our HCO networks, per claim fees, notification fees and fees for other ancillary services the employer customers using our HCO networks may select. HCO notifications are mailed out annually and handed out by the employer for all new hires during the month. We prepare the mailings no earlier than three months prior to the end of the previous year\u2019s enrollment so that our employers are able to prepare their employee rosters. Delays in the employer providing accurate and timely employee rosters can delay the notification process causing changes to when we record the revenues.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 493,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For six months ended\n\n\n\nJune 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "Amount Change",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Revenues:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "HCO fees",
+     "$",
+     "651,912",
+     "",
+     "$",
+     "771,182",
+     "",
+     "$",
+     "(119,270)",
+     "",
+     "",
+     "(15",
+     "%)"
+    ],
+    [
+     "MPN fees",
+     "",
+     "239,066",
+     "",
+     "",
+     "250,978",
+     "",
+     "",
+     "(11,912)",
+     "",
+     "",
+     "(5",
+     "%)"
+    ],
+    [
+     "Utilization review",
+     "",
+     "547,783",
+     "",
+     "",
+     "579,238",
+     "",
+     "",
+     "(31,455)",
+     "",
+     "",
+     "(5",
+     "%)"
+    ],
+    [
+     "Medical bill review",
+     "",
+     "165,162",
+     "",
+     "",
+     "260,077",
+     "",
+     "",
+     "(94,915)",
+     "",
+     "",
+     "(36",
+     "%)"
+    ],
+    [
+     "Medical case management",
+     "",
+     "1,264,530",
+     "",
+     "",
+     "1,580,963",
+     "",
+     "",
+     "(316,433)",
+     "",
+     "",
+     "(20",
+     "%)"
+    ],
+    [
+     "Other",
+     "",
+     "150,962",
+     "",
+     "",
+     "156,319",
+     "",
+     "",
+     "(5,357)",
+     "",
+     "",
+     "(3",
+     "%)"
+    ],
+    [
+     "Total revenues",
+     "",
+     "3,019,415",
+     "",
+     "",
+     "3,598,757",
+     "",
+     "",
+     "(579,342)",
+     "",
+     "",
+     "(16",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "32,594",
+     "",
+     "",
+     "36,873",
+     "",
+     "",
+     "(4,279)",
+     "",
+     "",
+     "(12",
+     "%)"
+    ],
+    [
+     "Bad debt provision",
+     "",
+     "101",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "101",
+     "",
+     "",
+     "-",
+     "%"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "137,357",
+     "",
+     "",
+     "149,642",
+     "",
+     "",
+     "(12,285)",
+     "",
+     "",
+     "(8",
+     "%)"
+    ],
+    [
+     "Salaries and wages",
+     "",
+     "1,543,727",
+     "",
+     "",
+     "1,535,541",
+     "",
+     "",
+     "8,186",
+     "",
+     "",
+     "1",
+     "%"
+    ],
+    [
+     "Professional fees",
+     "",
+     "154,768",
+     "",
+     "",
+     "179,216",
+     "",
+     "",
+     "(24,448)",
+     "",
+     "",
+     "(14",
+     "%)"
+    ],
+    [
+     "Insurance",
+     "",
+     "183,023",
+     "",
+     "",
+     "160,305",
+     "",
+     "",
+     "22,718",
+     "",
+     "",
+     "14",
+     "%"
+    ],
+    [
+     "Outsource service fees",
+     "",
+     "243,793",
+     "",
+     "",
+     "261,480",
+     "",
+     "",
+     "(17,687)",
+     "",
+     "",
+     "(7",
+     "%)"
+    ],
+    [
+     "Data maintenance",
+     "",
+     "52,812",
+     "",
+     "",
+     "67,619",
+     "",
+     "",
+     "(14,807)",
+     "",
+     "",
+     "(22",
+     "%)"
+    ],
+    [
+     "General and administrative",
+     "",
+     "351,875",
+     "",
+     "",
+     "425,001",
+     "",
+     "",
+     "(73,126)",
+     "",
+     "",
+     "(17",
+     "%)"
+    ],
+    [
+     "Total expenses",
+     "",
+     "2,700,050",
+     "",
+     "",
+     "2,815,677",
+     "",
+     "",
+     "(115,627)",
+     "",
+     "",
+     "(4",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "319,365",
+     "",
+     "",
+     "783,080",
+     "",
+     "",
+     "(463,715)",
+     "",
+     "",
+     "(59",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before taxes",
+     "",
+     "319,365",
+     "",
+     "",
+     "783,080",
+     "",
+     "",
+     "(463,715)",
+     "",
+     "",
+     "(59",
+     "%)"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "(89,648)",
+     "",
+     "",
+     "(219,813)",
+     "",
+     "",
+     "130,165",
+     "",
+     "",
+     "(59",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "229,717",
+     "",
+     "$",
+     "563,267",
+     "",
+     "$",
+     "(333,550)",
+     "",
+     "",
+     "(59",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "For six months ended\n\n\n\nJune 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Statements and Results of Operations"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As a result of the $348,813 decrease in total revenue during the three-month period ended June 30, 2020, and the $151,239 decrease in total expenses during the same period, our income from operations decreased $197,574, or 57%, during the three-month period ended June 30, 2020, when compared to the same period in 2019.\nIncome Tax Provision\nWe realized a $55,459, or 57%, decrease in our income tax provision during the three-month period ended June 30, 2020, compared to the three-month period ended June 30, 2019 because of the decrease in net income realized in the 2020 period.\nNet Income\nDuring the three-month period ended June 30, 2020, we realized a 19% decrease in total revenues which was only partially offset by a 10% decrease in total expenses and a 57% decrease in our provision for income tax when compared to the same period in 2019. As a result, we realized a net decrease of $142,115, or 57%, in net income during the three-month period ended June 30, 2020 compared to the three-month period ended June 30, 2019.\nComparison of six months ended June 30, 2020 and 2019\nThe following represents selected components of our consolidated results of operations, for the six-month periods ended June 30, 2020 and 2019, respectively, together with changes from period-to-period:",
+   "prose_after": "Revenue\nTotal revenues during the six-month period ended June 30, 2020, decreased 16% to $3,019,415 compared to $3,598,757 during the six-month period ended June 30, 2019.\nDuring the first six months of 2020, HCO, MPN, utilization review, medical bill review, medical case management and other fees decreased 15%, 5%, 5%, 36%, 20%, and 3% respectively. Other revenues consisted of revenues derived primarily from network claims repricing services, lien representation services, legal support services, workers\u2019 compensation carve-out revenues and Medicare set-aside revenues.\nHCO Fees\nDuring the six-month periods ended June 30, 2020 and 2019, HCO fee revenues were $651,912 and $771,182 respectively. The 15% decrease in HCO revenue was primarily attributable to the loss of three customers, a decrease in the number of HCO notifications for existing customers due to employee reductions made by our customers in the first quarter, coupled with customers\u2019 reducing their workforce and fewer workplace injuries during the stay-at-home orders, and revenue from HCO employee notifications that was recognized in the first quarter in 2019 being shifted to the second quarter in 2020. These decreases were partially offset by an increase in the number of claims, renegotiation of certain deliverables to an existing customer and the addition of a new customer in the first quarter of 2020.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 626,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the six months ended June 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020\n\n\n\n(unaudited)",
+     "",
+     "",
+     "2019\n\n\n\n(unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "444,538",
+     "",
+     "$",
+     "495,356",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "(42,577)",
+     "",
+     "",
+     "(15,247)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "460,700",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "$",
+     "862,661",
+     "",
+     "$",
+     "480,109",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the six months ended June 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 764,
+    "end_line": 779
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Statements and Results of Operations"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "As the impact of the COVID-19 pandemic continues to play out throughout our industry and the broader economy, we believe our strong cash position, could allow us to identify and capitalize on potential opportunities to expand our business either through the acquisition of existing businesses that may have insufficient resources to overcome the impacts of the pandemic, including, expansion into the insurance industry or through the creation of new lines of business. Depending upon the nature of the opportunities we identify, such acquisitions or expansion could require greater capital resources than we currently possess. Should we need additional capital resources, we could seek to obtain such through debt and/or equity financing. We do not currently possess an institutional source of financing and there is no assurance that we could be successful in obtaining equity or debt financing when needed on favorable terms, or at all. We could also use shares of our capital stock as consideration for a business acquisition transaction, but there is also no assurance that there would be significant market interest in our capital stock.\nCash Flow\nDuring the six months ended June 30, 2020, cash was primarily used to fund operations. We had a net increase in cash of $862,661 during the six months ended June 30, 2020. See below for additional information.",
+   "prose_after": "During the six months ended June 30, 2020 and 2019, net cash provided by operating activities was $444,538 and $495,356, respectively. As discussed herein, we realized net income of $229,717 during the six months ended June 30, 2020, compared to net income of $563,267 during the six months ended June 30, 2019.\nThe decrease in cash flow from operating activities was primarily the result of decreases in net income, deferred rent expense, accrued expenses, offset primarily by increases in allowance for depreciation, accounts payable, unearned revenue and decreases in prepaid expenses, accounts receivable, receivable \u2013 other, and prepaid income tax.\nNet cash used by investing activities was $42,577 and $15,247 during the six-month periods ended June 30, 2020 and 2019, respectively. During the six-month period ended June 30, 2020 and 2019, net cash was used in investing activities to purchase computers, furniture and equipment.\nNet cash provided by financing activities during the six months ended June 30, 2020 was $460,700 in for three PPP loans for PHCO, MMC and MMM in the amounts of $133,400, $59,600, and $267,700 respectively. We didn\u2019t engage in financing activities in 2019.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 745,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 783,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Title of Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 31.1",
+     "Certification of Principal Executive Officer pursuant to Rule 13a-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 31.2",
+     "Certification of Principal Financial Officer pursuant to Rule 13a-14(a) as adopted pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 32.1",
+     "Certification pursuant to 18 U.S.C. Section 1350 as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "The following materials from Pacific Health Care Organization, Inc.\u2019s Quarterly Report on Form 10-Q for the period ended June 30, 2020, formatted in XBRL (eXtensible Business Reporting Language): (i) the Unaudited Condensed Consolidated Balance Sheets, (ii) the Unaudited Condensed Consolidated Statements of Operations, (iii) the Unaudited Condensed Consolidated Statements of Cash Flows, and (iv) Notes to the Unaudited Condensed Consolidated Financial Statements."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 830,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Our management, under the supervision and with the participation of our principal executive officer and principal financial officer, conducted an evaluation the effectiveness of our disclosure controls and procedures as of the end of the period covered by this quarterly report on Form 10-Q. Based on the evaluation of our disclosure controls and procedures as of June 30, 2020, the end of the period covered by this report, our Chief Executive Officer and Chief Financial Officer concluded that our disclosure controls and procedures were effective at a reasonable assurance level.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting during the quarter ended June 30, 2020, that materially affected or are reasonably likely to materially affect, our internal control over financial reporting.\nPART II. OTHER INFORMATION\nItem 1A. Risk Factors\nManagement does not believe there have been any material changes to the risk factors listed in Part I, \u201cItem 1A, Risk Factors\u201d in our annual report on Form 10-K for the year ended December 31, 2019. These risk factors should be carefully considered with the information provided elsewhere in this report, which could materially adversely affect our business, financial condition or results of operations.\nItem 6. Exhibits\nExhibits. The following exhibits are filed or furnished, as applicable, as part of this report:",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "PACIFIC HEALTH CARE ORGANIZATION, INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date:",
+     "August 13, 2020",
+     "/s/ Tom Kubota",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Tom Kubota\n\n\n\nChief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "PACIFIC HEALTH CARE ORGANIZATION, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 849,
+    "end_line": 858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date:",
+     "August 13, 2020",
+     "/s/ Fred Odaka",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Fred Odaka\n\n\n\nChief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 859,
+    "end_line": 866
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 844,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 867,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

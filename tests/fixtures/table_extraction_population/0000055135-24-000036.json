@@ -1,0 +1,8574 @@
+{
+ "accession": "0000055135-24-000036",
+ "cik": "0000055135",
+ "form": "10-Q",
+ "filing_date": "2024-11-07",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "kelya-20240929.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Delaware",
+     "38-1510762"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 27
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended September 29, 2024\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nCommission File Number 0-1088\nKELLY SERVICES, INC.\n---------------------------------------------------------------------\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "999 West Big Beaver Road, Troy, Michigan 48084\n-------------------------------------------------------------------------------\n(Address of principal executive offices) (Zip Code)\n(248) 362-4444\n----------------------------------------------------------------------\n(Registrant\u2019s telephone number, including area code)\nNo Change\n-----------------------------------------------------------------------\n(Former name, former address and former fiscal year, if changed since last report.)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbols",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Class A Common",
+     "KELYA",
+     "NASDAQ Global Market"
+    ],
+    [
+     "Class B Common",
+     "KELYB",
+     "NASDAQ Global Market"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 47,
+    "end_line": 52
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "999 West Big Beaver Road, Troy, Michigan 48084\n-------------------------------------------------------------------------------\n(Address of principal executive offices) (Zip Code)\n(248) 362-4444\n----------------------------------------------------------------------\n(Registrant\u2019s telephone number, including area code)\nNo Change\n-----------------------------------------------------------------------\n(Former name, former address and former fiscal year, if changed since last report.)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for shorter period that the registrant was required to submit and post such files).\nYes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 63,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Page Number"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Financial Statements (unaudited).",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Earnings",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Comprehensive Income (Loss)",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders' Equity",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "9"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "11"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations.",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Quantitative and Qualitative Disclosures About Market Risk.",
+     "47"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Controls and Procedures.",
+     "48"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "49"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Legal Proceedings.",
+     "49"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1A. Risk Factors.",
+     "49"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 2. Unregistered Sales of Equity Securities and Use of Proceeds.",
+     "50"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 3. Defaults Upon Senior Securities.",
+     "50"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 4. Mine Safety Disclosures.",
+     "50"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Other Information.",
+     "50"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 6. Exhibits.",
+     "50"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "52"
+    ]
+   ],
+   "caption_stack": [
+    "Page Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 73,
+    "end_line": 117
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]  Accelerated filer          [X]\nNon-accelerated filer    [ ]  Smaller reporting company  [ ]\nEmerging growth company  [ ]\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAt October 28, 2024, 32,313,991 shares of Class A and 3,295,841 shares of Class B common stock of the Registrant were outstanding.",
+   "prose_after": "3\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements.\nCONSOLIDATED STATEMENTS OF EARNINGS\n(In millions of dollars except per share data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 72,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 119,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "13 Weeks Ended",
+     "",
+     "",
+     "",
+     "39 Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     ""
+    ],
+    [
+     "Revenue from services",
+     "$",
+     "1,038.1",
+     "$",
+     "1,118.0",
+     "$",
+     "3,140.7",
+     "$",
+     "3,603.5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of services",
+     "816.4",
+     "",
+     "889.5",
+     "",
+     "2,499.6",
+     "",
+     "2,880.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit",
+     "221.7",
+     "",
+     "228.5",
+     "",
+     "641.1",
+     "",
+     "723.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "219.0",
+     "",
+     "228.4",
+     "",
+     "601.0",
+     "",
+     "703.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset impairment charge",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "5.5",
+     "",
+     "2.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale of EMEA staffing operations",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss (gain) on sale of assets",
+     "0.1",
+     "",
+     "\u2014",
+     "",
+     "(5.4)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from operations",
+     "2.6",
+     "",
+     "0.1",
+     "",
+     "41.6",
+     "",
+     "17.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on forward contract",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.2",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "(4.4)",
+     "",
+     "1.6",
+     "",
+     "(9.1)",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) before taxes",
+     "(1.8)",
+     "",
+     "1.7",
+     "",
+     "33.7",
+     "",
+     "20.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "(2.6)",
+     "",
+     "(4.9)",
+     "",
+     "2.5",
+     "",
+     "(5.0)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "$",
+     "0.8",
+     "$",
+     "6.6",
+     "$",
+     "31.2",
+     "$",
+     "25.0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share",
+     "$",
+     "0.02",
+     "$",
+     "0.18",
+     "$",
+     "0.86",
+     "$",
+     "0.68"
+    ],
+    [
+     "Diluted earnings per share",
+     "$",
+     "0.02",
+     "$",
+     "0.18",
+     "$",
+     "0.85",
+     "$",
+     "0.67"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average shares outstanding (millions):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "35.6",
+     "",
+     "35.4",
+     "",
+     "35.5",
+     "",
+     "36.2",
+     ""
+    ],
+    [
+     "Diluted",
+     "36.0",
+     "",
+     "35.8",
+     "",
+     "35.9",
+     "",
+     "36.5",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 134,
+    "end_line": 178
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "3\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements.\nCONSOLIDATED STATEMENTS OF EARNINGS\n(In millions of dollars except per share data)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 130,
+     "token": "REPEATING_HEADER",
+     "id": 5,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 179,
+     "token": "REPEATING_FOOTER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "13 Weeks Ended",
+     "",
+     "",
+     "",
+     "39 Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     ""
+    ],
+    [
+     "Net earnings",
+     "$",
+     "0.8",
+     "$",
+     "6.6",
+     "$",
+     "31.2",
+     "$",
+     "25.0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments, net of tax benefit of $0.1, $0.0, $0.1 and $0.1, respectively",
+     "1.2",
+     "",
+     "(4.3)",
+     "",
+     "(1.3)",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Less: Reclassification adjustments included in net earnings",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "1.2",
+     "",
+     "(4.3)",
+     "",
+     "(1.9)",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pension liability adjustments, net of tax benefit of $0.4",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Less: Reclassification adjustments included in net earnings",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Pension liability adjustments",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "1.2",
+     "",
+     "(4.3)",
+     "",
+     "(1.5)",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income (loss)",
+     "$",
+     "2.0",
+     "$",
+     "2.3",
+     "$",
+     "29.7",
+     "$",
+     "25.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 187,
+    "end_line": 212
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (LOSS)",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS\n(In millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 185,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 213,
+     "token": "REPEATING_FOOTER",
+     "id": 9,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and equivalents",
+     "$",
+     "32.8",
+     "$",
+     "125.8"
+    ],
+    [
+     "Trade accounts receivable, less allowances of $8.6 and $10.9, respectively",
+     "1,248.6",
+     "",
+     "1,160.6",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "76.1",
+     "",
+     "48.9",
+     ""
+    ],
+    [
+     "Assets held for sale",
+     "\u2014",
+     "",
+     "291.3",
+     ""
+    ],
+    [
+     "Total current assets",
+     "1,357.5",
+     "",
+     "1,626.6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property and equipment",
+     "138.9",
+     "",
+     "138.1",
+     ""
+    ],
+    [
+     "Accumulated depreciation",
+     "(112.4)",
+     "",
+     "(113.5)",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "26.5",
+     "",
+     "24.6",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "55.2",
+     "",
+     "47.1",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "308.4",
+     "",
+     "321.1",
+     ""
+    ],
+    [
+     "Retirement plan assets",
+     "259.2",
+     "",
+     "230.3",
+     ""
+    ],
+    [
+     "Goodwill",
+     "374.0",
+     "",
+     "151.1",
+     ""
+    ],
+    [
+     "Intangibles, net",
+     "264.3",
+     "",
+     "137.7",
+     ""
+    ],
+    [
+     "Other assets",
+     "43.8",
+     "",
+     "43.1",
+     ""
+    ],
+    [
+     "Total noncurrent assets",
+     "1,331.4",
+     "",
+     "955.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "2,688.9",
+     "$",
+     "2,581.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 222,
+    "end_line": 252
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS\n(In millions)",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS\n(In millions)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 219,
+     "token": "REPEATING_HEADER",
+     "id": 11,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 253,
+     "token": "REPEATING_FOOTER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "December 31, 2023",
+     ""
+    ],
+    [
+     "Liabilities and Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Short-term borrowings",
+     "$",
+     "0.2",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "604.7",
+     "",
+     "646.1",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "11.9",
+     "",
+     "8.4",
+     ""
+    ],
+    [
+     "Accrued payroll and related taxes",
+     "184.5",
+     "",
+     "156.2",
+     ""
+    ],
+    [
+     "Accrued workers\u2019 compensation and other claims",
+     "18.1",
+     "",
+     "22.1",
+     ""
+    ],
+    [
+     "Income and other taxes",
+     "21.6",
+     "",
+     "17.2",
+     ""
+    ],
+    [
+     "Liabilities held for sale",
+     "\u2014",
+     "",
+     "169.9",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "841.0",
+     "",
+     "1,019.9",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent Liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "228.2",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Operating lease liabilities",
+     "51.8",
+     "",
+     "42.9",
+     ""
+    ],
+    [
+     "Accrued workers\u2019 compensation and other claims",
+     "33.7",
+     "",
+     "40.9",
+     ""
+    ],
+    [
+     "Accrued retirement benefits",
+     "243.3",
+     "",
+     "217.4",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "9.0",
+     "",
+     "6.8",
+     ""
+    ],
+    [
+     "Total noncurrent liabilities",
+     "566.0",
+     "",
+     "308.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies (see Contingencies footnote)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital stock, $1.00 par value",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock, 100.0 million shares authorized; 35.2 million shares issued at 2024 and 2023",
+     "35.2",
+     "",
+     "35.2",
+     ""
+    ],
+    [
+     "Class B common stock, 10.0 million shares authorized; 3.3 million shares issued at 2024 and 2023",
+     "3.3",
+     "",
+     "3.3",
+     ""
+    ],
+    [
+     "Treasury stock, at cost",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock, 2.9 million shares at 2024 and 3.2 million shares at 2023",
+     "(51.4)",
+     "",
+     "(56.7)",
+     ""
+    ],
+    [
+     "Class B common stock",
+     "(0.6)",
+     "",
+     "(0.6)",
+     ""
+    ],
+    [
+     "Paid-in capital",
+     "32.0",
+     "",
+     "30.6",
+     ""
+    ],
+    [
+     "Earnings invested in the business",
+     "1,264.7",
+     "",
+     "1,241.7",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "(1.3)",
+     "",
+     "0.2",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "1,281.9",
+     "",
+     "1,253.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "2,688.9",
+     "$",
+     "2,581.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 262,
+    "end_line": 304
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED BALANCE SHEETS\n(In millions)",
+   "prose_after": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 259,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 305,
+     "token": "REPEATING_FOOTER",
+     "id": 15,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "13 Weeks Ended",
+     "",
+     "",
+     "",
+     "39 Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     ""
+    ],
+    [
+     "Capital Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "$",
+     "35.2",
+     "$",
+     "35.2",
+     "$",
+     "35.2",
+     "$",
+     "35.1"
+    ],
+    [
+     "Conversions from Class B",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "35.2",
+     "",
+     "35.2",
+     "",
+     "35.2",
+     "",
+     "35.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class B common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "3.3",
+     "",
+     "3.3",
+     "",
+     "3.3",
+     "",
+     "3.4",
+     ""
+    ],
+    [
+     "Conversions to Class A",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "3.3",
+     "",
+     "3.3",
+     "",
+     "3.3",
+     "",
+     "3.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "(51.7)",
+     "",
+     "(50.7)",
+     "",
+     "(56.7)",
+     "",
+     "(19.5)",
+     ""
+    ],
+    [
+     "Net issuance of stock awards and other",
+     "0.3",
+     "",
+     "1.3",
+     "",
+     "5.3",
+     "",
+     "4.9",
+     ""
+    ],
+    [
+     "Purchase of treasury stock",
+     "\u2014",
+     "",
+     "(7.4)",
+     "",
+     "\u2014",
+     "",
+     "(42.2)",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "(51.4)",
+     "",
+     "(56.8)",
+     "",
+     "(51.4)",
+     "",
+     "(56.8)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class B common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "(0.6)",
+     "",
+     "(0.6)",
+     "",
+     "(0.6)",
+     "",
+     "(0.6)",
+     ""
+    ],
+    [
+     "Net issuance of stock awards",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "(0.6)",
+     "",
+     "(0.6)",
+     "",
+     "(0.6)",
+     "",
+     "(0.6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paid-in Capital",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "29.5",
+     "",
+     "29.0",
+     "",
+     "30.6",
+     "",
+     "28.0",
+     ""
+    ],
+    [
+     "Net issuance of stock awards",
+     "2.5",
+     "",
+     "0.3",
+     "",
+     "1.4",
+     "",
+     "1.3",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "32.0",
+     "",
+     "29.3",
+     "",
+     "32.0",
+     "",
+     "29.3",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings Invested in the Business",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "1,266.7",
+     "",
+     "1,229.1",
+     "",
+     "1,241.7",
+     "",
+     "1,216.3",
+     ""
+    ],
+    [
+     "Net earnings",
+     "0.8",
+     "",
+     "6.6",
+     "",
+     "31.2",
+     "",
+     "25.0",
+     ""
+    ],
+    [
+     "Dividends",
+     "(2.8)",
+     "",
+     "(2.7)",
+     "",
+     "(8.2)",
+     "",
+     "(8.3)",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "1,264.7",
+     "",
+     "1,233.0",
+     "",
+     "1,264.7",
+     "",
+     "1,233.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accumulated Other Comprehensive Income (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at beginning of period",
+     "(2.5)",
+     "",
+     "(3.4)",
+     "",
+     "0.2",
+     "",
+     "(8.5)",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax",
+     "1.2",
+     "",
+     "(4.3)",
+     "",
+     "(1.5)",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Balance at end of period",
+     "(1.3)",
+     "",
+     "(7.7)",
+     "",
+     "(1.3)",
+     "",
+     "(7.7)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity at end of period",
+     "$",
+     "1,281.9",
+     "$",
+     "1,235.7",
+     "$",
+     "1,281.9",
+     "$",
+     "1,235.7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 313,
+    "end_line": 369
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 311,
+     "token": "REPEATING_HEADER",
+     "id": 17,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 370,
+     "token": "REPEATING_FOOTER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "39 Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "$",
+     "31.2",
+     "$",
+     "25.0"
+    ],
+    [
+     "Adjustments to reconcile net earnings to net cash from operating activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Asset impairment charge",
+     "5.5",
+     "",
+     "2.4",
+     ""
+    ],
+    [
+     "Gain on sale of EMEA staffing operations",
+     "(1.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on sale of assets",
+     "(5.4)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "28.7",
+     "",
+     "25.6",
+     ""
+    ],
+    [
+     "Operating lease asset amortization",
+     "7.7",
+     "",
+     "12.4",
+     ""
+    ],
+    [
+     "Provision for credit losses and sales allowances",
+     "0.6",
+     "",
+     "1.4",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "8.5",
+     "",
+     "7.9",
+     ""
+    ],
+    [
+     "Gain on sale of equity securities",
+     "\u2014",
+     "",
+     "(2.0)",
+     ""
+    ],
+    [
+     "Gain on forward contract",
+     "(1.2)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other, net",
+     "\u2014",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities, net of acquisition",
+     "(62.1)",
+     "",
+     "(39.8)",
+     ""
+    ],
+    [
+     "Net cash from operating activities",
+     "11.9",
+     "",
+     "33.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "(9.1)",
+     "",
+     "(12.4)",
+     ""
+    ],
+    [
+     "Proceeds from sale of EMEA staffing operations, net of cash disposed",
+     "77.1",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of assets",
+     "4.3",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Acquisition of company, net of cash received",
+     "(427.4)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payment for settlement of forward contract",
+     "(2.4)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from company-owned life insurance",
+     "1.7",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from equity securities",
+     "\u2014",
+     "",
+     "2.0",
+     ""
+    ],
+    [
+     "Other investing activities",
+     "0.3",
+     "",
+     "(0.4)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "(355.5)",
+     "",
+     "(10.8)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in short-term borrowings",
+     "0.6",
+     "",
+     "(0.7)",
+     ""
+    ],
+    [
+     "Proceeds from long-term debt",
+     "849.0",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Payments on long-term debt",
+     "(620.8)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Financing lease payments",
+     "\u2014",
+     "",
+     "(1.0)",
+     ""
+    ],
+    [
+     "Dividend payments",
+     "(8.2)",
+     "",
+     "(8.3)",
+     ""
+    ],
+    [
+     "Payments of tax withholding for stock awards",
+     "(2.3)",
+     "",
+     "(1.7)",
+     ""
+    ],
+    [
+     "Buyback of common shares",
+     "\u2014",
+     "",
+     "(42.2)",
+     ""
+    ],
+    [
+     "Contingent consideration payments",
+     "\u2014",
+     "",
+     "(2.5)",
+     ""
+    ],
+    [
+     "Other financing activities",
+     "(1.0)",
+     "",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Net cash from (used in) financing activities",
+     "217.3",
+     "",
+     "(56.6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rates on cash, cash equivalents and restricted cash",
+     "(0.9)",
+     "",
+     "(1.9)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net change in cash, cash equivalents and restricted cash",
+     "(127.2)",
+     "",
+     "(35.9)",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at beginning of period",
+     "167.6",
+     "",
+     "162.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at end of period (1)",
+     "$",
+     "40.4",
+     "$",
+     "126.5"
+    ]
+   ],
+   "caption_stack": [
+    "39 Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 377,
+    "end_line": 438
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "CONSOLIDATED STATEMENTS OF CASH FLOWS (continued)\n(1) The following table provides a reconciliation of cash, cash equivalents and restricted cash to the amounts reported in our consolidated balance sheets:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 376,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 439,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "39 Weeks Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 29, 2024",
+     "",
+     "October 1, 2023",
+     ""
+    ],
+    [
+     "Reconciliation of cash, cash equivalents and restricted cash:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "32.8",
+     "$",
+     "117.2"
+    ],
+    [
+     "Restricted cash included in prepaid expenses and other current assets",
+     "0.7",
+     "",
+     "0.9",
+     ""
+    ],
+    [
+     "Noncurrent assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Restricted cash included in other assets",
+     "6.9",
+     "",
+     "8.4",
+     ""
+    ],
+    [
+     "Cash, cash equivalents and restricted cash at end of period",
+     "$",
+     "40.4",
+     "$",
+     "126.5"
+    ]
+   ],
+   "caption_stack": [
+    "39 Weeks Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "CONSOLIDATED STATEMENTS OF CASH FLOWS (continued)\n(1) The following table provides a reconciliation of cash, cash equivalents and restricted cash to the amounts reported in our consolidated balance sheets:",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS\n1. Basis of Presentation\nThe accompanying unaudited consolidated financial statements of Kelly Services, Inc. (the \u201cCompany,\u201d \u201cKelly,\u201d \u201cwe\u201d or \u201cus\u201d) have been prepared in accordance with Rule 10-01 of Regulation S-X and do not include all the information and notes required by generally accepted accounting principles (\u201cGAAP\u201d) for complete financial statements. In the opinion of management, all adjustments, including normal recurring adjustments, necessary for a fair statement of the results of the interim periods, have been made. The results of operations for such interim periods are not necessarily indicative of results of operations for a full year. The unaudited consolidated financial statements should be read in conjunction with the Company\u2019s consolidated financial statements and notes thereto for the fiscal year ended December 31, 2023, included in the Company\u2019s Annual Report on Form 10-K filed with the Securities and Exchange Commission on February 20, 2024 (the 2023 consolidated financial statements). There were no changes in accounting policies as disclosed in the Form 10-K. The Company\u2019s third fiscal quarter ended on September 29, 2024 and October 1, 2023, each of which contained 13 weeks. The corresponding September year-to-date periods for 2024 and 2023 each contained 39 weeks.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 463,
+     "token": "REPEATING_FOOTER",
+     "id": 23,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Staffing services",
+     "$",
+     "243.5",
+     "$",
+     "250.2",
+     "$",
+     "708.0",
+     "$",
+     "774.1"
+    ],
+    [
+     "Permanent placement",
+     "2.6",
+     "",
+     "3.4",
+     "",
+     "7.6",
+     "",
+     "11.7",
+     ""
+    ],
+    [
+     "Outcome-based services",
+     "124.3",
+     "",
+     "124.4",
+     "",
+     "370.9",
+     "",
+     "385.6",
+     ""
+    ],
+    [
+     "Total Professional & Industrial",
+     "370.4",
+     "",
+     "378.0",
+     "",
+     "1,086.5",
+     "",
+     "1,171.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Staffing services",
+     "267.0",
+     "",
+     "197.7",
+     "",
+     "686.2",
+     "",
+     "601.2",
+     ""
+    ],
+    [
+     "Permanent placement",
+     "10.2",
+     "",
+     "4.3",
+     "",
+     "20.2",
+     "",
+     "14.1",
+     ""
+    ],
+    [
+     "Outcome-based services",
+     "116.3",
+     "",
+     "93.7",
+     "",
+     "304.6",
+     "",
+     "288.2",
+     ""
+    ],
+    [
+     "Talent solutions",
+     "11.7",
+     "",
+     "\u2014",
+     "",
+     "15.7",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total Science, Engineering & Technology",
+     "405.2",
+     "",
+     "295.7",
+     "",
+     "1,026.7",
+     "",
+     "903.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Education",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Staffing services",
+     "141.4",
+     "",
+     "126.6",
+     "",
+     "678.7",
+     "",
+     "578.3",
+     ""
+    ],
+    [
+     "Permanent placement",
+     "0.7",
+     "",
+     "1.5",
+     "",
+     "4.4",
+     "",
+     "5.6",
+     ""
+    ],
+    [
+     "Total Education",
+     "142.1",
+     "",
+     "128.1",
+     "",
+     "683.1",
+     "",
+     "583.9",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Talent solutions",
+     "121.0",
+     "",
+     "114.1",
+     "",
+     "346.0",
+     "",
+     "342.4",
+     ""
+    ],
+    [
+     "Total Outsourcing & Consulting",
+     "121.0",
+     "",
+     "114.1",
+     "",
+     "346.0",
+     "",
+     "342.4",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Staffing services",
+     "\u2014",
+     "",
+     "197.6",
+     "",
+     "\u2014",
+     "",
+     "588.3",
+     ""
+    ],
+    [
+     "Permanent placement",
+     "\u2014",
+     "",
+     "5.4",
+     "",
+     "\u2014",
+     "",
+     "16.4",
+     ""
+    ],
+    [
+     "Total International",
+     "\u2014",
+     "",
+     "203.0",
+     "",
+     "\u2014",
+     "",
+     "604.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Intersegment",
+     "(0.6)",
+     "",
+     "(0.9)",
+     "",
+     "(1.6)",
+     "",
+     "(2.4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Revenue from Services",
+     "$",
+     "1,038.1",
+     "$",
+     "1,118.0",
+     "$",
+     "3,140.7",
+     "$",
+     "3,603.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 487,
+    "end_line": 530
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Revenue"
+    }
+   },
+   "prose_before": "In 2024, Kelly has four operating segments: Professional & Industrial (\u201cP&I\u201d), Science, Engineering & Technology (\u201cSET\u201d), Education, and Outsourcing & Consulting Group (\"Outsourcing & Consulting,\" \"OCG\"). Prior to 2024, the Company also had an International operating segment (see Segment Disclosures footnote). Following the sale of the Company's EMEA staffing operations in January 2024 (see Acquisition and Disposition footnote), the Mexico operations, which were previously in our International segment, are now included in our P&I segment. The 2023 P&I segment information has been recast to conform to the new structure. Other than OCG, each segment delivers talent through staffing services, permanent placement or outcome-based services. Our OCG and SET segments, following the acquisition of Motion Recruitment Partners, LLC, which is included in the SET segment (see Acquisition and Disposition footnote), deliver talent solutions including managed service provider (\"MSP\"), payroll process outsourcing (\"PPO\"), recruitment process outsourcing (\"RPO\"), and talent advisory services.\nThe following table presents our segment revenues disaggregated by service type (in millions of dollars):",
+   "prose_after": "Revenue Disaggregated by Geography\nOur operations are subject to different economic and regulatory environments depending on geographic location. Our P&I and Education segments operate in the Americas region, our SET segment operates in the Americas and Europe regions, and OCG operates in the Americas, Europe and Asia-Pacific regions. In 2023, our International segment included our staffing operations in Europe, as well as operations in Mexico, which is part of the Americas region.\nThe below table presents our revenues disaggregated by geography (in millions of dollars):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 477,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Americas",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "United States",
+     "$",
+     "923.6",
+     "$",
+     "795.5",
+     "$",
+     "2,801.4",
+     "$",
+     "2,647.1"
+    ],
+    [
+     "Canada",
+     "49.3",
+     "",
+     "50.9",
+     "",
+     "141.1",
+     "",
+     "142.2",
+     ""
+    ],
+    [
+     "Puerto Rico",
+     "26.6",
+     "",
+     "26.5",
+     "",
+     "79.7",
+     "",
+     "81.1",
+     ""
+    ],
+    [
+     "Mexico",
+     "12.7",
+     "",
+     "18.4",
+     "",
+     "47.0",
+     "",
+     "55.1",
+     ""
+    ],
+    [
+     "Total Americas Region",
+     "1,012.2",
+     "",
+     "891.3",
+     "",
+     "3,069.2",
+     "",
+     "2,925.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Europe",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Switzerland",
+     "0.8",
+     "",
+     "57.0",
+     "",
+     "2.9",
+     "",
+     "165.9",
+     ""
+    ],
+    [
+     "France",
+     "0.1",
+     "",
+     "47.0",
+     "",
+     "0.1",
+     "",
+     "145.0",
+     ""
+    ],
+    [
+     "Portugal",
+     "\u2014",
+     "",
+     "48.6",
+     "",
+     "\u2014",
+     "",
+     "142.3",
+     ""
+    ],
+    [
+     "Italy",
+     "\u2014",
+     "",
+     "16.1",
+     "",
+     "\u2014",
+     "",
+     "49.5",
+     ""
+    ],
+    [
+     "Other",
+     "9.2",
+     "",
+     "47.1",
+     "",
+     "28.7",
+     "",
+     "142.4",
+     ""
+    ],
+    [
+     "Total Europe Region",
+     "10.1",
+     "",
+     "215.8",
+     "",
+     "31.7",
+     "",
+     "645.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Asia-Pacific Region",
+     "15.8",
+     "",
+     "10.9",
+     "",
+     "39.8",
+     "",
+     "32.9",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Kelly Services, Inc.",
+     "$",
+     "1,038.1",
+     "$",
+     "1,118.0",
+     "$",
+     "3,140.7",
+     "$",
+     "3,603.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 539,
+    "end_line": 567
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Revenue"
+    }
+   },
+   "prose_before": "Revenue Disaggregated by Geography\nOur operations are subject to different economic and regulatory environments depending on geographic location. Our P&I and Education segments operate in the Americas region, our SET segment operates in the Americas and Europe regions, and OCG operates in the Americas, Europe and Asia-Pacific regions. In 2023, our International segment included our staffing operations in Europe, as well as operations in Mexico, which is part of the Americas region.\nThe below table presents our revenues disaggregated by geography (in millions of dollars):",
+   "prose_after": "The below table presents revenues from our SET and OCG segments as well as our former International segment, which previously included our Mexico operations, disaggregated by geographic region, (in millions of dollars):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 531,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Americas",
+     "$",
+     "402.8",
+     "$",
+     "292.0",
+     "$",
+     "1,018.4",
+     "$",
+     "891.4"
+    ],
+    [
+     "Europe",
+     "2.4",
+     "",
+     "3.7",
+     "",
+     "8.3",
+     "",
+     "12.1",
+     ""
+    ],
+    [
+     "Total Science, Engineering & Technology",
+     "$",
+     "405.2",
+     "$",
+     "295.7",
+     "$",
+     "1,026.7",
+     "$",
+     "903.5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Americas",
+     "$",
+     "97.5",
+     "$",
+     "94.1",
+     "$",
+     "282.8",
+     "$",
+     "281.2"
+    ],
+    [
+     "Europe",
+     "7.7",
+     "",
+     "9.1",
+     "",
+     "23.4",
+     "",
+     "28.3",
+     ""
+    ],
+    [
+     "Asia-Pacific",
+     "15.8",
+     "",
+     "10.9",
+     "",
+     "39.8",
+     "",
+     "32.9",
+     ""
+    ],
+    [
+     "Total Outsourcing & Consulting",
+     "$",
+     "121.0",
+     "$",
+     "114.1",
+     "$",
+     "346.0",
+     "$",
+     "342.4"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Europe",
+     "$",
+     "\u2014",
+     "$",
+     "203.0",
+     "$",
+     "\u2014",
+     "$",
+     "604.7"
+    ],
+    [
+     "Total International",
+     "$",
+     "\u2014",
+     "$",
+     "203.0",
+     "$",
+     "\u2014",
+     "$",
+     "604.7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 595
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Revenue"
+    }
+   },
+   "prose_before": "The below table presents revenues from our SET and OCG segments as well as our former International segment, which previously included our Mexico operations, disaggregated by geographic region, (in millions of dollars):",
+   "prose_after": "Deferred Costs\nDeferred fulfillment costs, which are included in prepaid expenses and other current assets in the consolidated balance sheet, were $2.1 million as of third quarter-end 2024 and $3.4 million as of year-end 2023. Amortization expense for the deferred costs in the third quarter and September year-to-date 2024 was $1.3 million and $5.4 million, respectively. Amortization expense for the deferred costs in the third quarter and September year-to-date 2023 was $1.7 million and $5.5 million, respectively.\n3. Credit Losses\nThe rollforward of our allowance for credit losses related to trade accounts receivable, which is recorded in trade accounts receivable, less allowance in the consolidated balance sheet, is as follows (in millions of dollars):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 621,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Allowance for credit losses:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "8.0",
+     "$",
+     "7.7"
+    ],
+    [
+     "Current period provision",
+     "1.0",
+     "",
+     "1.4",
+     ""
+    ],
+    [
+     "Currency exchange effects",
+     "(0.2)",
+     "",
+     "0.1",
+     ""
+    ],
+    [
+     "Disposition of EMEA staffing operations",
+     "(2.4)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Write-offs",
+     "(0.7)",
+     "",
+     "(1.5)",
+     ""
+    ],
+    [
+     "Ending balance",
+     "$",
+     "5.7",
+     "$",
+     "7.7"
+    ]
+   ],
+   "caption_stack": [
+    "September Year to Date"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 603,
+    "end_line": 618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Credit Losses"
+    }
+   },
+   "prose_before": "Deferred Costs\nDeferred fulfillment costs, which are included in prepaid expenses and other current assets in the consolidated balance sheet, were $2.1 million as of third quarter-end 2024 and $3.4 million as of year-end 2023. Amortization expense for the deferred costs in the third quarter and September year-to-date 2024 was $1.3 million and $5.4 million, respectively. Amortization expense for the deferred costs in the third quarter and September year-to-date 2023 was $1.7 million and $5.5 million, respectively.\n3. Credit Losses\nThe rollforward of our allowance for credit losses related to trade accounts receivable, which is recorded in trade accounts receivable, less allowance in the consolidated balance sheet, is as follows (in millions of dollars):",
+   "prose_after": "Write-offs are presented net of recoveries, which were not material for third quarter-end 2024 or 2023. As of third quarter-end 2024, the Company has a receivable of $17.6 million related to the sale of our EMEA staffing operations (see Acquisition and Disposition footnote). The Company has determined that no credit loss provision is required on this receivable as it is considered collectible. No other allowances related to other receivables were material as of third quarter-end 2024 or 2023.\n4. Acquisition and Disposition\nAcquisition\nOn May 31, 2024, the Company indirectly acquired 100% of the equity interests in Motion Recruitment Partners, LLC (\"MRP\") by way of a merger with MRP Merger Sub, Inc. (\"Merger Sub\"), a newly-formed, wholly owned subsidiary of the Company, with and into MRP Topco (\"Topco\"), the indirect parent company of MRP and Littlejohn Fund V, L.P. (\"Littlejohn\"), with Topco surviving the merger (the \"Merger\"). MRP is a parent company to a group of leading global talent solutions providers and the acquisition is expected to strengthen the scale and capabilities of Kelly's solutions portfolio. Under terms of the merger agreement, the $425.0 million purchase price was adjusted for estimated cash held by MRP at the closing date and estimated working capital adjustments, resulting in the Company paying cash of $440.0 million. The acquisition was funded with cash on hand and available credit facilities (see Debt footnote). Total consideration included $3.4 million of contingent consideration related to an earnout payment with a maximum potential cash payment of $60.0 million in the event certain financial metrics are met per the terms of the agreement. The earnout payment is based on a multiple of gross profit in excess of an agreed-upon amount during the earnout period, defined as the 12 months ending March 31, 2025, and any necessary payment is due to the seller in the second quarter of 2025. The initial fair value of the earnout was established using a Monte Carlo simulation model and is reassessed on a quarterly basis (see Fair Value Measurements footnote). In the third quarter of 2024, the Company recorded a payable in accounts payable and accrued liabilities in the consolidated balance sheet for a post-close net working capital adjustment of $1.4 million which will be paid in the fourth quarter of 2024. The merger agreement contains representations and warranties and covenants customary for a transaction of this nature. The total consideration is as follows (in millions of dollars):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 568,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 621,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash consideration paid",
+     "$",
+     "425.0"
+    ],
+    [
+     "Estimated cash acquired",
+     "13.6",
+     ""
+    ],
+    [
+     "Estimated net working capital adjustment",
+     "1.4",
+     ""
+    ],
+    [
+     "Total cash consideration",
+     "440.0",
+     ""
+    ],
+    [
+     "Additional consideration payable",
+     "3.4",
+     ""
+    ],
+    [
+     "Net working capital adjustment",
+     "1.4",
+     ""
+    ],
+    [
+     "Total consideration",
+     "$",
+     "444.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 629,
+    "end_line": 641
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisition and Disposition"
+    }
+   },
+   "prose_before": "On May 31, 2024, the Company indirectly acquired 100% of the equity interests in Motion Recruitment Partners, LLC (\"MRP\") by way of a merger with MRP Merger Sub, Inc. (\"Merger Sub\"), a newly-formed, wholly owned subsidiary of the Company, with and into MRP Topco (\"Topco\"), the indirect parent company of MRP and Littlejohn Fund V, L.P. (\"Littlejohn\"), with Topco surviving the merger (the \"Merger\"). MRP is a parent company to a group of leading global talent solutions providers and the acquisition is expected to strengthen the scale and capabilities of Kelly's solutions portfolio. Under terms of the merger agreement, the $425.0 million purchase price was adjusted for estimated cash held by MRP at the closing date and estimated working capital adjustments, resulting in the Company paying cash of $440.0 million. The acquisition was funded with cash on hand and available credit facilities (see Debt footnote). Total consideration included $3.4 million of contingent consideration related to an earnout payment with a maximum potential cash payment of $60.0 million in the event certain financial metrics are met per the terms of the agreement. The earnout payment is based on a multiple of gross profit in excess of an agreed-upon amount during the earnout period, defined as the 12 months ending March 31, 2025, and any necessary payment is due to the seller in the second quarter of 2025. The initial fair value of the earnout was established using a Monte Carlo simulation model and is reassessed on a quarterly basis (see Fair Value Measurements footnote). In the third quarter of 2024, the Company recorded a payable in accounts payable and accrued liabilities in the consolidated balance sheet for a post-close net working capital adjustment of $1.4 million which will be paid in the fourth quarter of 2024. The merger agreement contains representations and warranties and covenants customary for a transaction of this nature. The total consideration is as follows (in millions of dollars):",
+   "prose_after": "The purchase price allocation for this acquisition is preliminary and could change.\nThe following table summarizes the estimated fair values of the assets acquired and liabilities assumed as of the date of the acquisition (in millions of dollars):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 621,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash and equivalents",
+     "$",
+     "12.6"
+    ],
+    [
+     "Trade accounts receivable",
+     "89.1",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "8.5",
+     ""
+    ],
+    [
+     "Net property and equipment",
+     "3.1",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "11.9",
+     ""
+    ],
+    [
+     "Goodwill",
+     "222.9",
+     ""
+    ],
+    [
+     "Intangibles, net",
+     "145.9",
+     ""
+    ],
+    [
+     "Other assets, noncurrent",
+     "10.6",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities, current",
+     "(12.1)",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current",
+     "(4.0)",
+     ""
+    ],
+    [
+     "Accrued payroll and related taxes, current",
+     "(15.9)",
+     ""
+    ],
+    [
+     "Income and other taxes, current",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Operating lease liabilities, noncurrent",
+     "(9.0)",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "(18.3)",
+     ""
+    ],
+    [
+     "Total consideration, including working capital adjustments",
+     "$",
+     "444.8"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 648,
+    "end_line": 667
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisition and Disposition"
+    }
+   },
+   "prose_before": "The purchase price allocation for this acquisition is preliminary and could change.\nThe following table summarizes the estimated fair values of the assets acquired and liabilities assumed as of the date of the acquisition (in millions of dollars):",
+   "prose_after": "The fair value of the acquired receivables represents the contractual value net of the allowance for potentially uncollectible accounts. Included in the assets purchased in the MRP acquisition was $145.9 million of intangible assets, made up of $88.1 million in customer relationships, $56.5 million associated with MRP's trade names, and $1.3 million for non-compete agreements. The customer relationships are amortized over 15 years with no residual value, the trade names are amortized over 10-15 years with no residual value, and the non-compete agreements are amortized over four years with no residual value. Goodwill generated from the acquisition was primarily attributable to expanding market potential and the expected revenue and operational synergies and was assigned to the SET operating segment (see Goodwill footnote). None of the goodwill generated from the acquisition is expected to be deductible for tax purposes.\nMRP's results of operations are included in the SET segment. For the third quarter-end 2024, our consolidated revenues and net earnings include $124.6 million and $2.3 million from MRP, respectively. For September year-to-date 2024, our consolidated revenues and net earnings include $164.6 million and $3.9 million from MRP, respectively.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Pro forma revenues",
+     "$",
+     "1,038.1",
+     "$",
+     "1,254.0",
+     "$",
+     "3,361.1",
+     "$",
+     "4,023.9"
+    ],
+    [
+     "Pro forma net earnings",
+     "$",
+     "1.9",
+     "$",
+     "6.8",
+     "$",
+     "25.1",
+     "$",
+     "19.2"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 676,
+    "end_line": 684
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisition and Disposition"
+    }
+   },
+   "prose_before": "The fair value of the acquired receivables represents the contractual value net of the allowance for potentially uncollectible accounts. Included in the assets purchased in the MRP acquisition was $145.9 million of intangible assets, made up of $88.1 million in customer relationships, $56.5 million associated with MRP's trade names, and $1.3 million for non-compete agreements. The customer relationships are amortized over 15 years with no residual value, the trade names are amortized over 10-15 years with no residual value, and the non-compete agreements are amortized over four years with no residual value. Goodwill generated from the acquisition was primarily attributable to expanding market potential and the expected revenue and operational synergies and was assigned to the SET operating segment (see Goodwill footnote). None of the goodwill generated from the acquisition is expected to be deductible for tax purposes.\nMRP's results of operations are included in the SET segment. For the third quarter-end 2024, our consolidated revenues and net earnings include $124.6 million and $2.3 million from MRP, respectively. For September year-to-date 2024, our consolidated revenues and net earnings include $164.6 million and $3.9 million from MRP, respectively.\nPro Forma Information\nThe following unaudited pro forma information presents a summary of the operating results as if the MRP acquisition had been completed as of January 2, 2023 (in millions of dollars):",
+   "prose_after": "The pro forma results for the periods above include adjustments to amortization expense for the intangible assets, reversal of MRP's interest expense on credit facilities that were settled upon completion of the acquisition, interest expense and associated amortization of debt issuance costs for financing the acquisition, reclassification of transaction expenses to the appropriate period, and applicable taxes. The unaudited pro forma information presented has been prepared for comparative purposes only\nand is not necessarily indicative of the results of operations as they would have been had the acquisition occurred on the assumed date, nor is it necessarily an indication of future operating results.\nDisposition of EMEA Staffing Operations\nOn January 2, 2024, the Company completed the sale of its EMEA staffing operations (\"disposal group\"), which was included in the Company's International operating segment, to Gi Group Holdings S.P.A. (\"Gi\"). Upon closing, the Company received cash proceeds of $110.6 million, or $77.1 million net of cash disposed, which is included in investing activities in the consolidated statements of cash flows. The Company expects to receive additional net cash proceeds to reflect the cash-free, debt-free transaction basis, as well as working capital and other adjustments. The Company does not expect to receive any proceeds from the contingent consideration opportunity associated with the transaction. In the first quarter of 2024, the Company recorded a euro-denominated receivable from Gi of $26.9 million representing the adjustments that were determinable and expected to be received. In the second quarter of 2024, the Company recorded negative working capital and other adjustments of $10.1 million, which reduced the net receivable from Gi to $16.8 million. As of the third quarter-end 2024, the net receivable is $17.6 million, with the change of $0.8 million from the second quarter reflecting the foreign currency remeasurement. The Company is actively reconciling the receivable in accordance with the purchase agreement and expects it to be settled upon completion of this process. The receivable is included in prepaid expenses and other current assets in the consolidated balance sheet and included in the gain on the transaction. The total gain on the transaction through third quarter-end 2024 is $1.6 million, which is recorded in the gain on sale of EMEA staffing operations in the consolidated statements of earnings.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 644,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Assets divested",
+     "",
+     ""
+    ],
+    [
+     "Cash and equivalents",
+     "$",
+     "33.5"
+    ],
+    [
+     "Trade accounts receivable, net",
+     "202.8",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "29.0",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "4.2",
+     ""
+    ],
+    [
+     "Operating lease right-of-use assets",
+     "14.2",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "4.1",
+     ""
+    ],
+    [
+     "Other assets",
+     "5.4",
+     ""
+    ],
+    [
+     "Assets divested",
+     "293.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities divested",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "(24.5)",
+     ""
+    ],
+    [
+     "Operating lease liabilities, current",
+     "(5.7)",
+     ""
+    ],
+    [
+     "Accrued payroll and related taxes",
+     "(91.6)",
+     ""
+    ],
+    [
+     "Income and other taxes",
+     "(32.9)",
+     ""
+    ],
+    [
+     "Operating lease liabilities, noncurrent",
+     "(8.9)",
+     ""
+    ],
+    [
+     "Accrued retirement benefits",
+     "(1.7)",
+     ""
+    ],
+    [
+     "Other long-term liabilities",
+     "(4.6)",
+     ""
+    ],
+    [
+     "Liabilities divested",
+     "(169.9)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Disposal group, net",
+     "$",
+     "123.3"
+    ]
+   ],
+   "caption_stack": [
+    "Assets divested"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 699,
+    "end_line": 726
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Acquisition and Disposition"
+    }
+   },
+   "prose_before": "On January 2, 2024, the Company completed the sale of its EMEA staffing operations (\"disposal group\"), which was included in the Company's International operating segment, to Gi Group Holdings S.P.A. (\"Gi\"). Upon closing, the Company received cash proceeds of $110.6 million, or $77.1 million net of cash disposed, which is included in investing activities in the consolidated statements of cash flows. The Company expects to receive additional net cash proceeds to reflect the cash-free, debt-free transaction basis, as well as working capital and other adjustments. The Company does not expect to receive any proceeds from the contingent consideration opportunity associated with the transaction. In the first quarter of 2024, the Company recorded a euro-denominated receivable from Gi of $26.9 million representing the adjustments that were determinable and expected to be received. In the second quarter of 2024, the Company recorded negative working capital and other adjustments of $10.1 million, which reduced the net receivable from Gi to $16.8 million. As of the third quarter-end 2024, the net receivable is $17.6 million, with the change of $0.8 million from the second quarter reflecting the foreign currency remeasurement. The Company is actively reconciling the receivable in accordance with the purchase agreement and expects it to be settled upon completion of this process. The receivable is included in prepaid expenses and other current assets in the consolidated balance sheet and included in the gain on the transaction. The total gain on the transaction through third quarter-end 2024 is $1.6 million, which is recorded in the gain on sale of EMEA staffing operations in the consolidated statements of earnings.\nThe disposal group did not meet the requirements to be classified as discontinued operations as the sale did not have a material effect on the Company's operations and did not represent a strategic shift in the Company's strategy. Our consolidated earnings from operations for the third quarter 2023 and September year-to-date 2023 included earnings of $0.8 million and a loss of $1.1 million, respectively, from the EMEA staffing operations.\nThe major classes of divested assets and liabilities were as follows (in millions of dollars):",
+   "prose_after": "5. Fair Value Measurements\nTrade accounts receivable, short-term borrowings, accounts payable, accrued liabilities and accrued payroll and related taxes approximate their fair values due to the short-term maturities of these assets and liabilities.\nAssets and Liabilities Measured at Fair Value on a Recurring Basis\nThe following tables present assets and liabilities measured at fair value on a recurring basis as of third quarter-end 2024 and year-end 2023 in the consolidated balance sheet by fair value hierarchy level, as described below.\nLevel 1 measurements consist of unadjusted quoted prices in active markets for identical assets or liabilities. Level 2 measurements include quoted prices in markets that are not active or model inputs that are observable either directly or indirectly for substantially the full term of the asset or liability. Level 3 measurements include significant unobservable inputs.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of Third Quarter-End 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Total",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "6.9",
+     "$",
+     "6.9",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "6.9",
+     "$",
+     "6.9",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency forward contract, net",
+     "$",
+     "(0.6)",
+     "$",
+     "\u2014",
+     "$",
+     "(0.6)",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Interest rate swaps",
+     "(0.8)",
+     "",
+     "\u2014",
+     "",
+     "(0.8)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Brazil indemnification",
+     "(2.7)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2.7)",
+     ""
+    ],
+    [
+     "EMEA staffing indemnification",
+     "(2.1)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2.1)",
+     ""
+    ],
+    [
+     "MRP earnout",
+     "(3.4)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(3.4)",
+     ""
+    ],
+    [
+     "Total liabilities at fair value",
+     "$",
+     "(9.6)",
+     "$",
+     "\u2014",
+     "$",
+     "(1.4)",
+     "$",
+     "(8.2)"
+    ]
+   ],
+   "caption_stack": [
+    "As of Third Quarter-End 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 739,
+    "end_line": 759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "5. Fair Value Measurements\nTrade accounts receivable, short-term borrowings, accounts payable, accrued liabilities and accrued payroll and related taxes approximate their fair values due to the short-term maturities of these assets and liabilities.\nAssets and Liabilities Measured at Fair Value on a Recurring Basis\nThe following tables present assets and liabilities measured at fair value on a recurring basis as of third quarter-end 2024 and year-end 2023 in the consolidated balance sheet by fair value hierarchy level, as described below.\nLevel 1 measurements consist of unadjusted quoted prices in active markets for identical assets or liabilities. Level 2 measurements include quoted prices in markets that are not active or model inputs that are observable either directly or indirectly for substantially the full term of the asset or liability. Level 3 measurements include significant unobservable inputs.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of Year-End 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Description",
+     "Total",
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds",
+     "$",
+     "42.5",
+     "$",
+     "42.5",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "42.5",
+     "$",
+     "42.5",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Brazil indemnification",
+     "$",
+     "(3.0)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "(3.0)"
+    ],
+    [
+     "Foreign currency forward contract, net",
+     "(3.6)",
+     "",
+     "\u2014",
+     "",
+     "(3.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total liabilities at fair value",
+     "$",
+     "(6.6)",
+     "$",
+     "\u2014",
+     "$",
+     "(3.6)",
+     "$",
+     "(3.0)"
+    ]
+   ],
+   "caption_stack": [
+    "As of Year-End 2023"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 760,
+    "end_line": 777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Fair Value Measurements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Money market funds\nMoney market funds represent investments in money market funds that hold government securities, of which $6.9 million as of third quarter-end 2024 and $8.0 million as of year-end 2023 are restricted as to use and are included in other assets in the consolidated balance sheet. The money market funds that are restricted as to use account for the majority of our restricted cash balance and represents cash balances that are required to be maintained to fund disability claims in California. The remaining money market funds as of year-end 2023 are included in cash and equivalents in the consolidated balance sheet. The valuations of money market funds are based on quoted market prices of those accounts as of the respective period end.\nForward contracts\nOn February 8, 2024, the Company entered into a foreign currency forward contract with a notional amount of \u20ac17.0 million to manage the foreign currency risk associated with expected additional proceeds related to the sale of our EMEA staffing operations (see Acquisition and Disposition footnote). The expected proceeds are recorded as a euro-denominated receivable",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 786,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September Year-to-Date 2024",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Severance Costs",
+     "",
+     "Transformation Costs",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "0.4",
+     "$",
+     "\u2014",
+     "$",
+     "0.4"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "0.3",
+     "",
+     "\u2014",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "0.5",
+     "",
+     "\u2014",
+     "",
+     "0.5",
+     ""
+    ],
+    [
+     "Corporate",
+     "2.1",
+     "",
+     "3.1",
+     "",
+     "5.2",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "3.3",
+     "$",
+     "3.1",
+     "$",
+     "6.4"
+    ]
+   ],
+   "caption_stack": [
+    "September Year-to-Date 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 826,
+    "end_line": 841
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Restructuring and Transformation Activities"
+    }
+   },
+   "prose_before": "The Company had no restructuring or transformation charges during the third quarter of 2024. Restructuring and transformation charges for the nine months ended September 29, 2024 were $6.4 million as a continuation of the actions that were announced in the second quarter of 2023 as part of the comprehensive transformation initiative. The transformation activities consisted of $3.3 million of severance charges and $3.1 million of costs to execute the transformation. The severance and transformation costs are recorded in selling, general and administrative (\"SG&A\") expenses in the consolidated statements of earnings.\nAdditionally, in the second quarter of 2024, the Company recognized an impairment charge of $5.5 million for certain right-of-use assets related to our leased headquarters facility reflecting adjustments as to how we are utilizing the building as a part of our ongoing transformation efforts. The impairment charge related to the right-of-use assets was recorded in the asset impairment charge in the consolidated statements of earnings.\nThe restructuring and transformation costs included in SG&A are detailed below for September year-to-date 2024 (in millions of dollars):",
+   "prose_after": "2023 Actions\nIn the first quarter of 2023, the Company undertook restructuring actions to further our cost management efforts in response to the demand levels and to reflect a repositioning of our P&I staffing business to better capitalize on opportunities in local markets. Restructuring costs incurred in the first quarter of 2023 totaled $6.6 million and were recorded entirely in SG&A expenses in the consolidated statements of earnings.\nIn the second quarter of 2023, the Company announced a comprehensive transformation initiative that included actions to further streamline the Company's operating model to enhance organizational efficiency and effectiveness. The total costs incurred related to these transformation activities in the second quarter of 2023 totaled $8.0 million. The transformation activities included $4.5 million of costs to execute the transformation initiatives through the use of an external consultant, a $2.4 million impairment charge for right-of-use assets related to an unoccupied office space lease and additional severance of $1.1 million, net of adjustments. The impairment charge related to the right-of-use assets was recorded in the asset impairment charge in the consolidated statements of earnings. The costs to execute and severance were included in the $5.6 million of restructuring costs incurred in the second quarter of 2023, net of prior period adjustments, and were recorded in SG&A expenses in the consolidated statements of earnings, as detailed further below.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 802,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter 2023",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September Year-to-Date 2023",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Severance Costs",
+     "",
+     "Lease Termination Costs, Transformation and Other",
+     "",
+     "Total",
+     "",
+     "Severance Costs",
+     "",
+     "Lease Termination Costs, Transformation and Other",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "3.6",
+     "$",
+     "0.4",
+     "$",
+     "4.0",
+     "$",
+     "6.6",
+     "$",
+     "0.7",
+     "$",
+     "7.3"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "0.6",
+     "",
+     "0.1",
+     "",
+     "0.7",
+     "",
+     "1.0",
+     "",
+     "0.2",
+     "",
+     "1.2",
+     ""
+    ],
+    [
+     "Education",
+     "0.6",
+     "",
+     "\u2014",
+     "",
+     "0.6",
+     "",
+     "1.0",
+     "",
+     "\u2014",
+     "",
+     "1.0",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "1.8",
+     "",
+     "\u2014",
+     "",
+     "1.8",
+     "",
+     "2.3",
+     "",
+     "\u2014",
+     "",
+     "2.3",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.6",
+     "",
+     "\u2014",
+     "",
+     "0.6",
+     ""
+    ],
+    [
+     "Corporate",
+     "3.8",
+     "",
+     "4.5",
+     "",
+     "8.3",
+     "",
+     "4.6",
+     "",
+     "10.6",
+     "",
+     "15.2",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "10.4",
+     "$",
+     "5.0",
+     "$",
+     "15.4",
+     "$",
+     "16.1",
+     "$",
+     "11.5",
+     "$",
+     "27.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 854,
+    "end_line": 871
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Restructuring and Transformation Activities"
+    }
+   },
+   "prose_before": "In the second quarter of 2023, the Company announced a comprehensive transformation initiative that included actions to further streamline the Company's operating model to enhance organizational efficiency and effectiveness. The total costs incurred related to these transformation activities in the second quarter of 2023 totaled $8.0 million. The transformation activities included $4.5 million of costs to execute the transformation initiatives through the use of an external consultant, a $2.4 million impairment charge for right-of-use assets related to an unoccupied office space lease and additional severance of $1.1 million, net of adjustments. The impairment charge related to the right-of-use assets was recorded in the asset impairment charge in the consolidated statements of earnings. The costs to execute and severance were included in the $5.6 million of restructuring costs incurred in the second quarter of 2023, net of prior period adjustments, and were recorded in SG&A expenses in the consolidated statements of earnings, as detailed further below.\nIn the third quarter of 2023, the Company incurred $15.4 million of restructuring charges and transformation fees as a continuation of the actions that were announced in the second quarter of 2023 as part of the comprehensive transformation initiative. The third quarter transformation activities included $10.4 million of additional severance, $4.5 million of costs to execute the transformation through the use of an external consultant, and $0.5 million of lease termination costs. The severance, costs to execute, and lease termination costs were recorded in SG&A expenses in the consolidated statements of earnings.\nThe restructuring and transformation costs included in SG&A are detailed below for the third quarter and September year-to-date 2023 (in millions of dollars):",
+   "prose_after": "Accrual Summary\nA summary of the global restructuring balance sheet accrual, included in accrued payroll and related taxes and accounts payable and accrued liabilities in the consolidated balance sheet, is detailed below (in millions of dollars):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Balance as of year-end 2023",
+     "$",
+     "15.1"
+    ],
+    [
+     "Accruals",
+     "2.3",
+     ""
+    ],
+    [
+     "Reductions for cash payments",
+     "(11.0)",
+     ""
+    ],
+    [
+     "Disposition of EMEA staffing operations",
+     "(1.5)",
+     ""
+    ],
+    [
+     "Accrual adjustments",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Balance as of first quarter-end 2024",
+     "4.7",
+     ""
+    ],
+    [
+     "Accruals",
+     "4.3",
+     ""
+    ],
+    [
+     "Reductions for cash payments",
+     "(4.4)",
+     ""
+    ],
+    [
+     "Balance as of second quarter-end 2024",
+     "4.6",
+     ""
+    ],
+    [
+     "Reductions for cash payments",
+     "(2.0)",
+     ""
+    ],
+    [
+     "Accrual adjustments",
+     "(0.2)",
+     ""
+    ],
+    [
+     "Balance as of third quarter-end 2024",
+     "$",
+     "2.4"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 878,
+    "end_line": 896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Restructuring and Transformation Activities"
+    }
+   },
+   "prose_before": "Accrual Summary\nA summary of the global restructuring balance sheet accrual, included in accrued payroll and related taxes and accounts payable and accrued liabilities in the consolidated balance sheet, is detailed below (in millions of dollars):",
+   "prose_after": "The remaining balance of $2.4 million as of third quarter-end 2024 primarily represents the costs to execute the transformation initiatives and severance costs, and the majority is expected to be paid by the end of 2024. No material adjustments are expected to be recorded.\n7. Goodwill\nThe changes in the carrying amount of goodwill through September year-to-date 2024 are included in the table below (in millions of dollars). The goodwill of $221.5 million resulting from the acquisition of MRP during the second quarter of 2024 was allocated to the SET reportable segment. During the third quarter of 2024, the company recorded a $1.4 million liability for a net working capital adjustment related to the acquisition of MRP. The adjustment resulted in a $1.4 million addition of goodwill, which was allocated to the SET reportable segment (see Acquisition and Disposition footnote).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "As of Year-End 2023",
+     "",
+     "Additions to Goodwill",
+     "",
+     "Impairment Adjustments",
+     "",
+     "As of Third Quarter-End 2024",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology",
+     "$",
+     "111.3",
+     "$",
+     "222.9",
+     "$",
+     "\u2014",
+     "$",
+     "334.2"
+    ],
+    [
+     "Education",
+     "39.8",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "39.8",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "151.1",
+     "$",
+     "222.9",
+     "$",
+     "\u2014",
+     "$",
+     "374.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 903,
+    "end_line": 912
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Goodwill"
+    }
+   },
+   "prose_before": "The remaining balance of $2.4 million as of third quarter-end 2024 primarily represents the costs to execute the transformation initiatives and severance costs, and the majority is expected to be paid by the end of 2024. No material adjustments are expected to be recorded.\n7. Goodwill\nThe changes in the carrying amount of goodwill through September year-to-date 2024 are included in the table below (in millions of dollars). The goodwill of $221.5 million resulting from the acquisition of MRP during the second quarter of 2024 was allocated to the SET reportable segment. During the third quarter of 2024, the company recorded a $1.4 million liability for a net working capital adjustment related to the acquisition of MRP. The adjustment resulted in a $1.4 million addition of goodwill, which was allocated to the SET reportable segment (see Acquisition and Disposition footnote).",
+   "prose_after": "8. Debt\nRevolving Credit Facility\nOn May 29, 2024, the Company entered into an agreement with its lenders to amend and restate its existing $200.0 million, five-year revolving credit facility (the \"Facility\"), with a termination date of May 29, 2029. The amendment (i) decreased the current borrowing capacity to $150.0 million, (ii) added the ability to increase the borrowing capacity to an aggregate of $300.0 million and (iii) changed certain of the terms and conditions. The Facility is available to be used to fund working capital, acquisitions and general corporate needs. The Facility is secured by certain assets of the Company, excluding U.S. trade accounts receivable.\nAt the end of the third quarter of 2024, there were $40.0 million of long-term borrowings on the term benchmark line under the Facility and a remaining borrowing capacity of $110.0 million. The rate for these borrowings, which varies based on the Company's leverage ratio as defined in the agreement, includes either (i) the Prime rate plus the applicable margin for the",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 872,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "(2.5)",
+     "$",
+     "(2.3)",
+     "$",
+     "0.6",
+     "$",
+     "(7.4)"
+    ],
+    [
+     "Other comprehensive income (loss) before reclassifications",
+     "1.2",
+     "",
+     "(4.3)",
+     "",
+     "(1.3)",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.6)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net current-period other comprehensive income (loss)",
+     "1.2",
+     "",
+     "(4.3)",
+     "",
+     "(1.9)",
+     "",
+     "0.8",
+     ""
+    ],
+    [
+     "Ending balance",
+     "(1.3)",
+     "",
+     "(6.6)",
+     "",
+     "(1.3)",
+     "",
+     "(6.6)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Pension liability adjustments:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "\u2014",
+     "",
+     "(1.1)",
+     "",
+     "(0.4)",
+     "",
+     "(1.1)",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss) before reclassifications",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Amounts reclassified from accumulated other comprehensive income (loss)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net current-period other comprehensive income (loss)",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "0.4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Ending balance",
+     "\u2014",
+     "",
+     "(1.1)",
+     "",
+     "\u2014",
+     "",
+     "(1.1)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total accumulated other comprehensive income (loss)",
+     "$",
+     "(1.3)",
+     "$",
+     "(7.7)",
+     "$",
+     "(1.3)",
+     "$",
+     "(7.7)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 953,
+    "end_line": 980
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Debt"
+    }
+   },
+   "prose_before": "The Receivables Entity\u2019s sole business consists of the purchase or acceptance through capital contributions of trade accounts receivable and related rights from the Company. As described above, the Receivables Entity may retransfer these receivables or grant a security interest in those receivables under the terms and conditions of the Receivables Purchase Agreement. The Receivables Entity is a separate legal entity with its own creditors who would be entitled, if it were ever liquidated, to be satisfied out of its assets prior to any assets or value in the Receivables Entity becoming available to its equity holders, the Company. The assets of the Receivables Entity are not available to pay creditors of the Company or any of its other subsidiaries, until the creditors of the Receivables Entity have been satisfied. The assets and liabilities of the Receivables Entity are included in the consolidated financial statements of the Company.\nLocal Credit Facilities\nThe Company had total unsecured, uncommitted short-term local credit facilities of $3.2 million at the end of the third quarter of 2024. The Company had $0.2 million of borrowings under these lines at the end of the third quarter of 2024, as compared to no borrowings under these lines at year-end 2023. The weighted average interest rate for these borrowings, which was related to Malaysia, was 5.10% at the end of the third quarter of 2024.\n9. Accumulated Other Comprehensive Income (Loss)\nThe changes in accumulated other comprehensive income (loss) by component, net of tax, for the third quarter and September year-to-date 2024 and 2023 are included in the table below. Amounts in parentheses indicate debits.",
+   "prose_after": "10. Earnings Per Share\nThe reconciliation of basic and diluted earnings per share on common stock for the third quarter and September year-to-date 2024 and 2023 follows (in millions of dollars except per share data):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 943,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "Net earnings",
+     "$",
+     "0.8",
+     "$",
+     "6.6",
+     "$",
+     "31.2",
+     "$",
+     "25.0"
+    ],
+    [
+     "Less: earnings allocated to participating securities",
+     "(0.1)",
+     "",
+     "(0.1)",
+     "",
+     "(0.8)",
+     "",
+     "(0.5)",
+     ""
+    ],
+    [
+     "Net earnings available to common shareholders",
+     "$",
+     "0.7",
+     "$",
+     "6.5",
+     "$",
+     "30.4",
+     "$",
+     "24.5"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average shares outstanding (millions):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "35.6",
+     "",
+     "35.4",
+     "",
+     "35.5",
+     "",
+     "36.2",
+     ""
+    ],
+    [
+     "Dilutive share awards",
+     "0.4",
+     "",
+     "0.4",
+     "",
+     "0.4",
+     "",
+     "0.3",
+     ""
+    ],
+    [
+     "Diluted",
+     "36.0",
+     "",
+     "35.8",
+     "",
+     "35.9",
+     "",
+     "36.5",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per share",
+     "$",
+     "0.02",
+     "$",
+     "0.18",
+     "$",
+     "0.86",
+     "$",
+     "0.68"
+    ],
+    [
+     "Diluted earnings per share",
+     "$",
+     "0.02",
+     "$",
+     "0.18",
+     "$",
+     "0.85",
+     "$",
+     "0.67"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 987,
+    "end_line": 1008
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Earnings Per Share"
+    }
+   },
+   "prose_before": "10. Earnings Per Share\nThe reconciliation of basic and diluted earnings per share on common stock for the third quarter and September year-to-date 2024 and 2023 follows (in millions of dollars except per share data):",
+   "prose_after": "Potentially dilutive share awards are related to deferred common stock related to the non-employee directors deferred compensation plan and performance shares for the third quarter and September year-to-date 2024 and 2023 (see Stock-Based Compensation footnote for a description of performance shares). Dividends paid per share for Class A and Class B common stock were $0.075 for the third quarter of 2024 and 2023 and $0.225 for September year-to-date 2024 and 2023.\nIn November 2022, the Company's board of directors authorized a $50.0 million Class A share repurchase program, which was completed in August 2023. The Company repurchased 414,534 shares for $7.4 million during the third quarter of 2023 and 2,496,827 shares for $42.2 million through September year-to-date 2023. A total of 2,971,471 shares were repurchased under the share repurchase program at an average price of $16.83 per share.\n11. Stock-Based Compensation\nFor the third quarter of 2024, the Company recognized stock compensation expense of $3.3 million and a related tax benefit of $0.7 million. For the third quarter of 2023, the Company recognized stock compensation expense of $2.3 million and a related tax benefit of $0.4 million. For September year-to-date 2024, the Company recognized stock compensation expense of $8.5 million and a related tax benefit of $2.0 million. For September year-to-date 2023, the Company recognized stock compensation expense of $7.9 million and a related tax benefit of $1.1 million.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 981,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Financial Measure Performance Shares",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "Weighted Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Nonvested at year-end 2023",
+     "674",
+     "$",
+     "17.49"
+    ],
+    [
+     "Granted",
+     "170",
+     "19.96",
+     ""
+    ],
+    [
+     "Vested",
+     "(136)",
+     "18.88",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(33)",
+     "17.99",
+     ""
+    ],
+    [
+     "Vesting adjustment",
+     "(107)",
+     "16.52",
+     ""
+    ],
+    [
+     "Nonvested at third quarter-end 2024",
+     "568",
+     "$",
+     "18.66"
+    ]
+   ],
+   "caption_stack": [
+    "Financial Measure Performance Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1033,
+    "end_line": 1047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "beginning in fiscal 2022 through the third quarter of 2024, with each goal having a unique projected achievement date. Each goal can be earned independent of the other two goals. Any shares earned during the performance period will cliff-vest three years after achievement of the respective performance goals and approval of the financial results by the Compensation Committee. On May 7, 2024, the Compensation Committee confirmed the actual performance achievement for the final financial goal related to the 2021 retention-based grant, which was not achieved before the end of the performance period and resulted in no payout.\nA summary of the status of all nonvested performance shares at target as of third quarter-end 2024 and September year-to-date 2024 changes is presented as follows below (in thousands of shares except per share data). The vesting adjustment in the table below represents 2021 financial measure performance shares that did not vest because actual achievement was below the threshold level or was not achieved, and resulted in no payout.",
+   "prose_after": "Restricted Stock\nA summary of the status of nonvested restricted stock as of third quarter-end 2024 and September year-to-date 2024 changes is presented as follows below (in thousands of shares except per share data).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Shares",
+     "Weighted Average Grant Date Fair Value",
+     ""
+    ],
+    [
+     "Nonvested at year-end 2023",
+     "784",
+     "$",
+     "18.52"
+    ],
+    [
+     "Granted",
+     "430",
+     "20.89",
+     ""
+    ],
+    [
+     "Vested",
+     "(255)",
+     "18.45",
+     ""
+    ],
+    [
+     "Forfeited",
+     "(71)",
+     "19.01",
+     ""
+    ],
+    [
+     "Nonvested at third quarter-end 2024",
+     "888",
+     "$",
+     "19.65"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1051,
+    "end_line": 1062
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "Restricted Stock\nA summary of the status of nonvested restricted stock as of third quarter-end 2024 and September year-to-date 2024 changes is presented as follows below (in thousands of shares except per share data).",
+   "prose_after": "12. Sale of Assets\nOn June 10, 2024, the Company sold Ayers Group, a division of our OCG segment, for a purchase price of $7.5 million, subject to final closing adjustments. The Company received cash proceeds of $4.5 million in the second quarter of 2024 for assets sold with a net carrying value of $1.0 million. In the third quarter of 2024, a post-close net working capital adjustment of $0.1 million was recorded in loss (gain) on sale of assets in the consolidated statements of earnings for the third quarter of 2024. A gain of $5.4 million was recorded in loss (gain) on sale of assets for the nine months ended September 29, 2024 in the consolidated statements of earnings. The sale was a part of the Company's ongoing strategy to further optimize its operating model.\n13. Other Income (Expense), Net\nIncluded in other income (expense), net for the third quarter and September year-to-date 2024 and 2023 are the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1027,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "$",
+     "1.3",
+     "$",
+     "2.1",
+     "$",
+     "6.4",
+     "$",
+     "4.8"
+    ],
+    [
+     "Interest expense",
+     "(4.5)",
+     "",
+     "(1.0)",
+     "",
+     "(7.1)",
+     "",
+     "(2.4)",
+     ""
+    ],
+    [
+     "Foreign exchange gains (losses)",
+     "(0.9)",
+     "",
+     "0.5",
+     "",
+     "(0.2)",
+     "",
+     "(1.5)",
+     ""
+    ],
+    [
+     "Other",
+     "(0.3)",
+     "",
+     "\u2014",
+     "",
+     "(8.2)",
+     "",
+     "2.1",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "$",
+     "(4.4)",
+     "$",
+     "1.6",
+     "$",
+     "(9.1)",
+     "$",
+     "3.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1073,
+    "end_line": 1087
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Sale of Assets"
+    }
+   },
+   "prose_before": "12. Sale of Assets\nOn June 10, 2024, the Company sold Ayers Group, a division of our OCG segment, for a purchase price of $7.5 million, subject to final closing adjustments. The Company received cash proceeds of $4.5 million in the second quarter of 2024 for assets sold with a net carrying value of $1.0 million. In the third quarter of 2024, a post-close net working capital adjustment of $0.1 million was recorded in loss (gain) on sale of assets in the consolidated statements of earnings for the third quarter of 2024. A gain of $5.4 million was recorded in loss (gain) on sale of assets for the nine months ended September 29, 2024 in the consolidated statements of earnings. The sale was a part of the Company's ongoing strategy to further optimize its operating model.\n13. Other Income (Expense), Net\nIncluded in other income (expense), net for the third quarter and September year-to-date 2024 and 2023 are the following:",
+   "prose_after": "The increase in Interest expense for the third quarter of 2024 reflects the increase in the Company's long-term debt (see Debt footnote). Included in Other for September year-to-date 2024 is $7.8 million of transaction costs related to the acquisition of MRP (see Acquisition and Disposition footnote). Included in Other for September year-to-date 2023 is a gain of $2.0 million for the receipt of earnout proceeds in connection with an investment that was sold in 2021.\n14. Income Taxes\nIncome tax benefit was $2.6 million for the third quarter of 2024 and income tax benefit was $4.9 million for the third quarter of 2023. Income tax expense was $2.5 million for September year-to-date 2024 and income tax benefit was $5.0 million for September year-to-date 2023. The quarterly and year-to-date changes are primarily driven by the release of Germany\u2019s valuation allowance in the third quarter of 2023.\nOur tax expense is affected by recurring items, such as the amount of pretax income and its mix by jurisdiction, U.S. work opportunity credits and the change in cash surrender value of tax-exempt investments in life insurance policies. It is also affected by discrete items that may occur in any given period but are not consistent from period to period, such as tax law changes, changes in judgment regarding the realizability of deferred tax assets and the tax effects of stock compensation.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1063,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1098,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue from Services:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "370.4",
+     "$",
+     "378.0",
+     "$",
+     "1,086.5",
+     "$",
+     "1,171.4"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "405.2",
+     "",
+     "295.7",
+     "",
+     "1,026.7",
+     "",
+     "903.5",
+     ""
+    ],
+    [
+     "Education",
+     "142.1",
+     "",
+     "128.1",
+     "",
+     "683.1",
+     "",
+     "583.9",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "121.0",
+     "",
+     "114.1",
+     "",
+     "346.0",
+     "",
+     "342.4",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "203.0",
+     "",
+     "\u2014",
+     "",
+     "604.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less: Intersegment revenue",
+     "(0.6)",
+     "",
+     "(0.9)",
+     "",
+     "(1.6)",
+     "",
+     "(2.4)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consolidated Total",
+     "$",
+     "1,038.1",
+     "$",
+     "1,118.0",
+     "$",
+     "3,140.7",
+     "$",
+     "3,603.5"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1126,
+    "end_line": 1146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Segment Disclosures"
+    }
+   },
+   "prose_before": "In addition to the change in our segment structure in the first quarter of 2024, we reassessed the allocation of corporate expenses to the operating segments and allocated additional costs which are attributable to the business from corporate.\nIn the first quarter of 2024, the Company changed the primary segment profitability measure from earnings from operations to a business unit profit measure that excludes depreciation and amortization. This change provides management greater visibility into the financial performance of the segments and how they contribute to the Company's overall performance.\nPrior periods have been recast to reflect the current period allocation method and new segment profitability measurement. The update had no impact on the consolidated financial information.\nThe following tables present information about the reported revenue from services and gross profit of the Company by reportable segment, along with a reconciliation to earnings before taxes, for the third quarter and September year-to-date 2024 and 2023. Asset information by reportable segment is not presented, since the Company does not produce such information internally nor does it use such information to manage its business.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1112,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Business Unit Profit (Loss):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial gross profit",
+     "$",
+     "66.5",
+     "$",
+     "69.1",
+     "$",
+     "192.7",
+     "$",
+     "209.8"
+    ],
+    [
+     "Professional & Industrial SG&A expenses excluding depreciation and amortization",
+     "(56.3)",
+     "",
+     "(63.4)",
+     "",
+     "(169.7)",
+     "",
+     "(201.8)",
+     ""
+    ],
+    [
+     "Professional & Industrial asset impairment charge",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.3)",
+     ""
+    ],
+    [
+     "Professional & Industrial Profit (Loss)",
+     "10.2",
+     "",
+     "5.7",
+     "",
+     "23.0",
+     "",
+     "7.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology gross profit",
+     "99.1",
+     "",
+     "68.0",
+     "",
+     "240.8",
+     "",
+     "207.4",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology SG&A expenses excluding depreciation and amortization",
+     "(74.1)",
+     "",
+     "(47.3)",
+     "",
+     "(173.1)",
+     "",
+     "(150.2)",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology asset impairment charge",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(0.1)",
+     ""
+    ],
+    [
+     "Science, Engineering & Technology Profit (Loss)",
+     "25.0",
+     "",
+     "20.7",
+     "",
+     "67.7",
+     "",
+     "57.1",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Education gross profit",
+     "19.7",
+     "",
+     "19.8",
+     "",
+     "98.7",
+     "",
+     "91.6",
+     ""
+    ],
+    [
+     "Education SG&A expenses excluding depreciation and amortization",
+     "(23.0)",
+     "",
+     "(22.3)",
+     "",
+     "(71.2)",
+     "",
+     "(69.4)",
+     ""
+    ],
+    [
+     "Education Profit (Loss)",
+     "(3.3)",
+     "",
+     "(2.5)",
+     "",
+     "27.5",
+     "",
+     "22.2",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting gross profit",
+     "36.4",
+     "",
+     "41.5",
+     "",
+     "108.9",
+     "",
+     "124.4",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting SG&A expenses excluding depreciation and amortization",
+     "(34.1)",
+     "",
+     "(40.0)",
+     "",
+     "(105.4)",
+     "",
+     "(120.8)",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting asset impairment charge",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2.0)",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting Profit (Loss)",
+     "2.3",
+     "",
+     "1.5",
+     "",
+     "3.5",
+     "",
+     "1.6",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International gross profit",
+     "\u2014",
+     "",
+     "30.1",
+     "",
+     "\u2014",
+     "",
+     "90.0",
+     ""
+    ],
+    [
+     "International SG&A expenses excluding depreciation and amortization",
+     "\u2014",
+     "",
+     "(28.7)",
+     "",
+     "\u2014",
+     "",
+     "(89.3)",
+     ""
+    ],
+    [
+     "International Profit (Loss)",
+     "\u2014",
+     "",
+     "1.4",
+     "",
+     "\u2014",
+     "",
+     "0.7",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate",
+     "(17.0)",
+     "",
+     "(16.7)",
+     "",
+     "(44.4)",
+     "",
+     "(42.6)",
+     ""
+    ],
+    [
+     "Asset impairment charge",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(5.5)",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Gain on sale of EMEA staffing operations",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.6",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "(Loss) gain on sale of assets",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "5.4",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "(14.5)",
+     "",
+     "(10.0)",
+     "",
+     "(37.2)",
+     "",
+     "(29.7)",
+     ""
+    ],
+    [
+     "Consolidated earnings from operations",
+     "2.6",
+     "",
+     "0.1",
+     "",
+     "41.6",
+     "",
+     "17.0",
+     ""
+    ],
+    [
+     "Gain on forward contract",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1.2",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "(4.4)",
+     "",
+     "1.6",
+     "",
+     "(9.1)",
+     "",
+     "3.0",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings before taxes",
+     "$",
+     "(1.8)",
+     "$",
+     "1.7",
+     "$",
+     "33.7",
+     "$",
+     "20.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1149,
+    "end_line": 1199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Segment Disclosures"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Depreciation and amortization expense is included in SG&A expenses in our consolidated statements of earnings. Depreciation and amortization expense amounts below include amortization of implementation costs for hosted software, which are excluded in the presentation of depreciation and amortization in our consolidated statements of cash flows. The depreciation and amortization amounts by segment are as follows:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "2024",
+     "",
+     "2023",
+     ""
+    ],
+    [
+     "",
+     "(In millions of dollars)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation and amortization:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "2.5",
+     "$",
+     "2.0",
+     "$",
+     "7.6",
+     "$",
+     "5.9"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "8.1",
+     "",
+     "4.0",
+     "",
+     "18.0",
+     "",
+     "11.9",
+     ""
+    ],
+    [
+     "Education",
+     "2.1",
+     "",
+     "2.0",
+     "",
+     "6.2",
+     "",
+     "5.8",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "1.8",
+     "",
+     "1.4",
+     "",
+     "5.4",
+     "",
+     "4.3",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "0.6",
+     "",
+     "\u2014",
+     "",
+     "1.8",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1204,
+    "end_line": 1218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Segment Disclosures"
+    }
+   },
+   "prose_before": "Depreciation and amortization expense is included in SG&A expenses in our consolidated statements of earnings. Depreciation and amortization expense amounts below include amortization of implementation costs for hosted software, which are excluded in the presentation of depreciation and amortization in our consolidated statements of cash flows. The depreciation and amortization amounts by segment are as follows:",
+   "prose_after": "17. New Accounting Pronouncements\nNot Yet Adopted\nIn November 2024, the FASB issued ASU 2024-03, Comprehensive income (Topic 220): Disaggregation of Income Statement Expenses. This ASU requires additional information about certain expense categories in the notes to financial statements. The new guidance will be effective for annual periods beginning after December 15, 2026, with early adoption permitted. We are currently evaluating the impact of the new guidance on our consolidated financial statements and related disclosures.\nIn October 2023, the FASB issued Accounting Standards Update (\"ASU\") 2023-06, Disclosure Improvements: Codification Amendments in Response to the SEC's Disclosure Update and Simplification Initiative, which modifies several disclosure and presentation requirements in the FASB accounting standard codification to align them with the SEC regulations. The effective date for each amendment will be the date on which the SEC's removal of that related disclosure from Regulation S-X or Regulation S-K becomes effective, with early adoption permitted, by June 30, 2027. For any amendments in which the SEC has not yet removed the applicable requirement from their regulations by June 30, 2027, the pending content of the related amendment in the FASB codification will not be effective. We do not expect this update to have a material impact to our consolidated financial statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1200,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1233,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "% Change",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Revenue from services",
+     "$",
+     "1,038.1",
+     "",
+     "$",
+     "1,118.0",
+     "",
+     "(7.1)",
+     "%",
+     "$",
+     "3,140.7",
+     "",
+     "$",
+     "3,603.5",
+     "",
+     "(12.8)",
+     "%"
+    ],
+    [
+     "Gross profit",
+     "221.7",
+     "",
+     "",
+     "228.5",
+     "",
+     "",
+     "(3.0)",
+     "",
+     "641.1",
+     "",
+     "",
+     "723.2",
+     "",
+     "",
+     "(11.4)",
+     ""
+    ],
+    [
+     "SG&A expenses excluding restructuring, depreciation, and amortization",
+     "204.7",
+     "",
+     "",
+     "203.0",
+     "",
+     "",
+     "0.8",
+     "",
+     "557.4",
+     "",
+     "",
+     "646.5",
+     "",
+     "",
+     "(13.8)",
+     ""
+    ],
+    [
+     "Restructuring charges",
+     "(0.2)",
+     "",
+     "",
+     "15.4",
+     "",
+     "",
+     "(101.4)",
+     "",
+     "6.4",
+     "",
+     "",
+     "27.6",
+     "",
+     "",
+     "(76.9)",
+     ""
+    ],
+    [
+     "Total SG&A expenses excluding depreciation and amortization",
+     "204.5",
+     "",
+     "",
+     "218.4",
+     "",
+     "",
+     "(6.4)",
+     "",
+     "563.8",
+     "",
+     "",
+     "674.1",
+     "",
+     "",
+     "(16.3)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "14.5",
+     "",
+     "",
+     "10.0",
+     "",
+     "",
+     "45.2",
+     "",
+     "37.2",
+     "",
+     "",
+     "29.7",
+     "",
+     "",
+     "25.0",
+     ""
+    ],
+    [
+     "Total SG&A expenses",
+     "219.0",
+     "",
+     "",
+     "228.4",
+     "",
+     "",
+     "(4.1)",
+     "",
+     "601.0",
+     "",
+     "",
+     "703.8",
+     "",
+     "",
+     "(14.6)",
+     ""
+    ],
+    [
+     "Gain on sale of EMEA staffing operations",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     "",
+     "(1.6)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Loss (gain) on sale of assets",
+     "0.1",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     "",
+     "(5.4)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Asset impairment charge",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     "",
+     "5.5",
+     "",
+     "",
+     "2.4",
+     "",
+     "",
+     "124.1",
+     ""
+    ],
+    [
+     "Earnings from operations",
+     "2.6",
+     "",
+     "",
+     "0.1",
+     "",
+     "",
+     "NM",
+     "",
+     "41.6",
+     "",
+     "",
+     "17.0",
+     "",
+     "",
+     "144.5",
+     ""
+    ],
+    [
+     "Gain on forward contract",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     "",
+     "1.2",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "(4.4)",
+     "",
+     "",
+     "1.6",
+     "",
+     "",
+     "(375.9)",
+     "",
+     "(9.1)",
+     "",
+     "",
+     "3.0",
+     "",
+     "",
+     "(405.5)",
+     ""
+    ],
+    [
+     "Earnings (loss) before taxes",
+     "(1.8)",
+     "",
+     "",
+     "1.7",
+     "",
+     "",
+     "NM",
+     "",
+     "33.7",
+     "",
+     "",
+     "20.0",
+     "",
+     "",
+     "68.3",
+     ""
+    ],
+    [
+     "Income tax expense (benefit)",
+     "(2.6)",
+     "",
+     "",
+     "(4.9)",
+     "",
+     "",
+     "46.5",
+     "",
+     "2.5",
+     "",
+     "",
+     "(5.0)",
+     "",
+     "",
+     "149.4",
+     ""
+    ],
+    [
+     "Net earnings",
+     "$",
+     "0.8",
+     "",
+     "$",
+     "6.6",
+     "",
+     "(88.4)",
+     "%",
+     "$",
+     "31.2",
+     "",
+     "$",
+     "25.0",
+     "",
+     "24.6",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit rate",
+     "21.4",
+     "",
+     "%",
+     "20.4",
+     "",
+     "%",
+     "1.0",
+     "pts.",
+     "20.4",
+     "",
+     "%",
+     "20.1",
+     "",
+     "%",
+     "0.3",
+     "pts."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1267,
+    "end_line": 1297
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "EBITDA (earnings before interest, taxes, depreciation and amortization) and EBITDA margin (EBITDA divided by revenue from services) are measures used for understanding the Company's ability to generate cash flow and for judging overall operating performance. EBITDA measures are non-GAAP (Generally Accepted Accounting Principles) measures and are used to supplement measures in accordance with GAAP. Our non-GAAP measures may be calculated differently from those provided by other companies, limiting their usefulness for comparison purposes. Non-GAAP measures should not be considered a substitute for, or superior to, measures of financial performance prepared in accordance with GAAP.\nDays sales outstanding (\u201cDSO\u201d) represents the number of days that sales remain unpaid for the period being reported. DSO is calculated by dividing average net sales per day (based on a rolling three-month period) into trade accounts receivable, net of allowances at the period end. Although secondary supplier revenues are recorded on a net basis (net of secondary supplier expense), secondary supplier revenue is included in the daily sales calculation in order to properly reflect the gross revenue amounts billed to the customer.\nNM (not meaningful) in the following tables is used in place of percentage changes where: the change is in excess of 500%, the change involves a comparison between earnings and loss amounts, or the comparison amount is zero.\nResults of Operations\nTotal Company\n(Dollars in millions)",
+   "prose_after": "Third Quarter Results\nRevenue from services in the third quarter decreased 7.1%, which primarily reflects the January 2, 2024 sale of our EMEA staffing operations, partially offset by an increase related to the acquisition of MRP in May 2024. Excluding the impact from the sale and the acquisition, revenue from services was flat year-over-year with decreases in the Science, Engineering & Technology and Professional & Industrial segments offset by increases in the Education and Outsourcing & Consulting segments. Compared to the third quarter of 2023 and excluding the impact from the sale and acquisition, revenue from staffing services was flat to the prior year and revenue from outcome-based services decreased 2.2%. In addition, revenue from talent solutions increased 6.0% and permanent placement revenue decreased 30.8% from the prior year, excluding the impact from the sale and the acquisition.\nGross profit decreased 3.0% largely driven by the sale of our EMEA staffing operations, partially offset by an increase related to the acquisition of MRP. Excluding the impact from the sale and the acquisition, gross profit decreased 6.4%. The gross profit rate increased 100 basis points to 21.4% and was favorably impacted by the sale of our EMEA staffing operations and the acquisition of MRP. Excluding the impact from the sale and acquisition, the gross profit rate declined 140 basis points. These decreases are due primarily to business mix and a decrease in permanent placement revenue, partially offset by a decrease in employee-related costs. Permanent placement revenue has very low direct costs of services and has a disproportionate impact on gross profit rates. The gross profit rate decreased in all segments excluding the sale and the acquisition.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1306,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "% Change",
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Revenue from Services:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "370.4",
+     "$",
+     "378.0",
+     "(2.0)",
+     "%",
+     "$",
+     "1086.5",
+     "$",
+     "1,171.4",
+     "(7.3)",
+     "%"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "405.2",
+     "",
+     "295.7",
+     "",
+     "37.1",
+     "",
+     "1026.7",
+     "",
+     "903.5",
+     "",
+     "13.6",
+     ""
+    ],
+    [
+     "Education",
+     "142.1",
+     "",
+     "128.1",
+     "",
+     "10.9",
+     "",
+     "683.1",
+     "",
+     "583.9",
+     "",
+     "17.0",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "121.0",
+     "",
+     "114.1",
+     "",
+     "6.0",
+     "",
+     "346.0",
+     "",
+     "342.4",
+     "",
+     "1.1",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "203.0",
+     "",
+     "(100.0)",
+     "",
+     "\u2014",
+     "",
+     "604.7",
+     "",
+     "(100.0)",
+     ""
+    ],
+    [
+     "Less: Intersegment revenue",
+     "(0.6)",
+     "",
+     "(0.9)",
+     "",
+     "29.2",
+     "",
+     "(1.6)",
+     "",
+     "(2.4)",
+     "",
+     "30.3",
+     ""
+    ],
+    [
+     "Consolidated Total",
+     "$",
+     "1,038.1",
+     "$",
+     "1,118.0",
+     "(7.1)",
+     "%",
+     "$",
+     "3,140.7",
+     "$",
+     "3,603.5",
+     "(12.8)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1341,
+    "end_line": 1357
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Earnings from operations for the first nine months of 2024 totaled $41.6 million, compared to $17.0 million in the first nine months of 2023. The increase is primarily related to the impact of lower SG&A compared to the prior year, the gain on sale of Ayers Group and the gain on sale of our EMEA staffing operations, partially offset by higher asset impairment charges and the impact of lower revenue compared to the prior year.\nGain on forward contract of $1.2 million represents the gain recognized in the first quarter of 2024 for the settlement of the foreign currency forward contract in January 2024 that was entered into in 2023 relating to the sale of the EMEA staffing operations.\nIncome tax expense was $2.5 million for the first nine months of 2024 compared to an income tax benefit of $5.0 million for the first nine months of 2023. The change primarily relates to changes in pre-tax income and the impact of a deferred tax valuation allowance release in 2023.\nThe net earnings for the period were $31.2 million, compared to $25.0 million for the first nine months of 2023.\nOperating Results By Segment\n(Dollars in millions)",
+   "prose_after": "Third Quarter Results\nProfessional & Industrial revenue from services decreased 2.0%. The decrease was due primarily to a 2.7% decline in revenue from staffing services resulting from lower hours volume, partially offset by higher bill rates. Revenue from outcome-based services was flat year-over-year while revenue from permanent placement fees declined 24.1% as a result of continued lower market demand.\nScience, Engineering & Technology revenue from services increased 37.1%. The revenue increase was primarily driven by the acquisition of MRP. Excluding the acquisition, revenue from services decreased 5.1%, primarily due to declines in hours volume in our staffing specialties, partially offset by higher bill rates. Excluding the acquisition, revenue in our outcome-based services decreased 4.9% and permanent placement fees decreased 30.5%, reflecting continued lower market demand.\nEducation revenue from services increased 10.9%, driven by increased demand for our services as compared to a year ago, reflecting the impact of net new customer wins and the impact of higher fill rates.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1336,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1380,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "Change",
+     "",
+     "2024",
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Gross Profit:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "66.5",
+     "",
+     "$",
+     "69.1",
+     "",
+     "(3.8)",
+     "%",
+     "$",
+     "192.7",
+     "",
+     "$",
+     "209.8",
+     "",
+     "(8.2)",
+     "%"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "99.1",
+     "",
+     "",
+     "68.0",
+     "",
+     "",
+     "45.5",
+     "",
+     "240.8",
+     "",
+     "",
+     "207.4",
+     "",
+     "",
+     "16.1",
+     ""
+    ],
+    [
+     "Education",
+     "19.7",
+     "",
+     "",
+     "19.8",
+     "",
+     "",
+     "(0.2)",
+     "",
+     "98.7",
+     "",
+     "",
+     "91.6",
+     "",
+     "",
+     "7.8",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "36.4",
+     "",
+     "",
+     "41.5",
+     "",
+     "",
+     "(12.2)",
+     "",
+     "108.9",
+     "",
+     "",
+     "124.4",
+     "",
+     "",
+     "(12.5)",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "",
+     "30.1",
+     "",
+     "",
+     "(100.0)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "90.0",
+     "",
+     "",
+     "(100.0)",
+     ""
+    ],
+    [
+     "Consolidated Total",
+     "$",
+     "221.7",
+     "",
+     "$",
+     "228.5",
+     "",
+     "(3.0)",
+     "%",
+     "$",
+     "641.1",
+     "",
+     "$",
+     "723.2",
+     "",
+     "(11.4)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Profit Rate:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "17.9",
+     "",
+     "%",
+     "18.3",
+     "",
+     "%",
+     "(0.4)",
+     "pts.",
+     "17.7",
+     "",
+     "%",
+     "17.9",
+     "",
+     "%",
+     "(0.2)",
+     "pts."
+    ],
+    [
+     "Science, Engineering & Technology",
+     "24.4",
+     "",
+     "",
+     "23.0",
+     "",
+     "",
+     "1.4",
+     "",
+     "23.4",
+     "",
+     "",
+     "23.0",
+     "",
+     "",
+     "0.4",
+     ""
+    ],
+    [
+     "Education",
+     "13.9",
+     "",
+     "",
+     "15.5",
+     "",
+     "",
+     "(1.6)",
+     "",
+     "14.5",
+     "",
+     "",
+     "15.7",
+     "",
+     "",
+     "(1.2)",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "30.1",
+     "",
+     "",
+     "36.4",
+     "",
+     "",
+     "(6.3)",
+     "",
+     "31.5",
+     "",
+     "",
+     "36.3",
+     "",
+     "",
+     "(4.8)",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "",
+     "14.8",
+     "",
+     "",
+     "(14.8)",
+     "",
+     "\u2014",
+     "",
+     "",
+     "14.9",
+     "",
+     "",
+     "(14.9)",
+     ""
+    ],
+    [
+     "Consolidated Total",
+     "21.4",
+     "",
+     "%",
+     "20.4",
+     "",
+     "%",
+     "1.0",
+     "pts.",
+     "20.4",
+     "",
+     "%",
+     "20.1",
+     "",
+     "%",
+     "0.3",
+     "pts."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1388,
+    "end_line": 1412
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Science, Engineering & Technology revenue from services increased 13.6%. The increase was primarily driven by the acquisition of MRP in May 2024. Excluding the acquisition, revenue from services decreased 4.6%, primarily due to declines in hours volume in our staffing specialties, partially offset by higher bill rates. Excluding the acquisition, permanent placement fees were down 24.6% reflecting continued lower market demand and revenues from outcome-based services decreased 6.7%.\nEducation revenue from services increased 17.0%, reflecting an increased demand for our services as compared to a year ago. Increased demand for our services reflects new customer wins and an increased fill rate related to demand of existing customers.\nOutsourcing & Consulting revenue from services increased 1.1% as revenue increased in PPO, partially offset by declines in RPO and MSP.\nInternational reflects the sale of our EMEA staffing operations in January 2024 and the transfer of our Mexico operations to our P&I segment. The P&I segment information for 2023 has been recast to conform to the new structure.\nOperating Results By Segment (continued)\n(Dollars in millions)",
+   "prose_after": "Third Quarter Results\nGross profit for the Professional & Industrial segment decreased on lower revenue volume. In comparison to the prior year, the gross profit rate decreased by 40 basis points primarily due to declines in permanent placement revenues and business mix which were partially offset by lower employee-related costs.\nThe Science, Engineering & Technology gross profit increased primarily as a result of the acquisition of MRP. The gross profit rate increased 190 basis points due to the acquisition of MRP which generates higher gross profit rates. This impact was partially offset by a 50 basis point decrease in the gross profit rate in other SET specialties reflecting lower permanent placement fees and business mix, partially offset by lower employee-related costs.\nGross profit for the Education segment was flat year-over-year despite higher revenue volume. The gross profit rate decreased 160 basis points due primarily to lower permanent placement fees, customer mix, and higher employee-related costs.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1383,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1431,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "% Change",
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "SG&A Expenses (excluding depreciation and amortization):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "56.3",
+     "$",
+     "63.4",
+     "(11.2)",
+     "%",
+     "$",
+     "169.7",
+     "$",
+     "201.8",
+     "(15.9)",
+     "%"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "74.1",
+     "",
+     "47.3",
+     "",
+     "56.6",
+     "",
+     "173.1",
+     "",
+     "150.2",
+     "",
+     "15.3",
+     ""
+    ],
+    [
+     "Education",
+     "23.0",
+     "",
+     "22.3",
+     "",
+     "3.3",
+     "",
+     "71.2",
+     "",
+     "69.4",
+     "",
+     "2.6",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "34.1",
+     "",
+     "40.0",
+     "",
+     "(14.8)",
+     "",
+     "105.4",
+     "",
+     "120.8",
+     "",
+     "(12.7)",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "28.7",
+     "",
+     "(100.0)",
+     "",
+     "\u2014",
+     "",
+     "89.3",
+     "",
+     "(100.0)",
+     ""
+    ],
+    [
+     "Corporate expenses",
+     "17.0",
+     "",
+     "16.7",
+     "",
+     "1.5",
+     "",
+     "44.4",
+     "",
+     "42.6",
+     "",
+     "4.2",
+     ""
+    ],
+    [
+     "Consolidated Total",
+     "$",
+     "204.5",
+     "$",
+     "218.4",
+     "(6.4)",
+     "%",
+     "$",
+     "563.8",
+     "$",
+     "674.1",
+     "(16.3)",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1445,
+    "end_line": 1461
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "the gross profit rate in other components of SET reflecting business mix and lower permanent placement fees, partially offset by lower employee-related costs.\nGross profit for the Education segment increased on higher revenue volume. The gross profit rate decreased 120 basis points due primarily to lower permanent placement fees, customer mix, and higher employee-related costs.\nThe Outsourcing & Consulting gross profit decreased with a decrease in the gross profit rate. The gross profit rate decreased 480 basis points primarily due to a change in business mix within this segment and higher employee-related costs in PPO. The unfavorable business mix was primarily driven by declines in revenue in RPO and MSP, which generates higher margins and improving PPO revenue which generates lower margins.\nInternational reflects the sale of our EMEA staffing operations in January 2024 and the transfer of our Mexico operations to our P&I segment. The P&I segment information for 2023 has been recast to conform to the new structure.\nOperating Results By Segment (continued)\n(Dollars in millions)",
+   "prose_after": "Third Quarter Results\nTotal SG&A expenses excluding depreciation and amortization in Professional & Industrial decreased 11.2% from the prior year. The decrease is primarily due to lower employee-related costs as a result of cost management in response to lower revenue volume compared to the prior year.\nTotal SG&A expenses excluding depreciation and amortization in Science, Engineering & Technology increased 56.6% primarily as a result of the acquisition of MRP. Excluding the acquisition, expenses decreased 5.9% from the prior year primarily due to lower employee-related costs reflecting the response to lower revenue volume compared to the prior year.\nTotal SG&A expenses excluding depreciation and amortization in Education increased 3.3% from the prior year primarily related to increased year-over-year revenue levels.\nTotal SG&A expenses excluding depreciation and amortization in Outsourcing & Consulting decreased 14.8% from the prior year, primarily due to lower employee-related expenses as compared to the prior year including lower employee compensation costs and cost management in response to lower revenue volume in the MSP and RPO solutions.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1440,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1484,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "September Year to Date",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "% Change",
+     "",
+     "2024",
+     "",
+     "2023",
+     "",
+     "% Change",
+     ""
+    ],
+    [
+     "Business Unit Profit (Loss)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional & Industrial",
+     "$",
+     "10.2",
+     "$",
+     "5.7",
+     "78.4",
+     "%",
+     "$",
+     "23.0",
+     "$",
+     "7.7",
+     "198.4",
+     "%"
+    ],
+    [
+     "Science, Engineering & Technology",
+     "25.0",
+     "",
+     "20.7",
+     "",
+     "20.3",
+     "",
+     "67.7",
+     "",
+     "57.1",
+     "",
+     "18.3",
+     ""
+    ],
+    [
+     "Education",
+     "(3.3)",
+     "",
+     "(2.5)",
+     "",
+     "(30.7)",
+     "",
+     "27.5",
+     "",
+     "22.2",
+     "",
+     "24.0",
+     ""
+    ],
+    [
+     "Outsourcing & Consulting",
+     "2.3",
+     "",
+     "1.5",
+     "",
+     "58.4",
+     "",
+     "3.5",
+     "",
+     "1.6",
+     "",
+     "112.5",
+     ""
+    ],
+    [
+     "International",
+     "\u2014",
+     "",
+     "1.4",
+     "",
+     "(100.0)",
+     "",
+     "\u2014",
+     "",
+     "0.7",
+     "",
+     "(100.0)",
+     ""
+    ],
+    [
+     "Business Unit Profit (Loss)",
+     "34.2",
+     "",
+     "26.8",
+     "",
+     "27.6",
+     "",
+     "121.7",
+     "",
+     "89.3",
+     "",
+     "36.1",
+     ""
+    ],
+    [
+     "Corporate",
+     "(17.0)",
+     "",
+     "(16.7)",
+     "",
+     "1.5",
+     "",
+     "(44.4)",
+     "",
+     "(42.6)",
+     "",
+     "4.2",
+     ""
+    ],
+    [
+     "Asset impairment charge",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "NM",
+     "",
+     "(5.5)",
+     "",
+     "\u2014",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Gain on sale of EMEA staffing operations",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "NM",
+     "",
+     "1.6",
+     "",
+     "\u2014",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Gain (loss) on sale of assets",
+     "(0.1)",
+     "",
+     "\u2014",
+     "",
+     "NM",
+     "",
+     "5.4",
+     "",
+     "\u2014",
+     "",
+     "NM",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "(14.5)",
+     "",
+     "(10.0)",
+     "",
+     "45.2",
+     "",
+     "(37.2)",
+     "",
+     "(29.7)",
+     "",
+     "25.0",
+     ""
+    ],
+    [
+     "Consolidated Total Earnings from Operations",
+     "$",
+     "2.6",
+     "$",
+     "0.1",
+     "NM",
+     "%",
+     "$",
+     "41.6",
+     "$",
+     "17.0",
+     "144.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1496,
+    "end_line": 1518
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Total SG&A expenses excluding depreciation and amortization in Education increased 2.6% from the prior year. Costs related to increased year-over-year revenue levels were partially offset by the impact of transformation-related actions.\nTotal SG&A expenses excluding depreciation and amortization in Outsourcing & Consulting decreased 12.7% from the prior year, primarily due to lower employee-related costs including employee compensation costs as well as the result of transformation-related actions.\nInternational reflects the sale of our EMEA staffing operations in January 2024 and the transfer of our Mexico operations to our P&I segment. The P&I segment information for 2023 has been recast to conform to the new structure.\nCorporate expenses increased 4.2% compared to the prior year, or decreased 16.9% excluding transaction and integration costs of $16.4 million and restructuring and transformation charges of $5.2 million in the first nine months of 2024 and restructuring and transformation charges of $15.2 million in the first nine months of 2023. This decrease primarily reflects lower legal settlement costs and employee compensation costs.\nOperating Results By Segment (continued)\n(Dollars in millions)",
+   "prose_after": "Third Quarter Results\nProfessional & Industrial reported profit of $10.2 million for the quarter, compared to $5.7 million from a year ago. The increase in earnings was primarily due to lower SG&A expenses, partially offset by lower revenue and gross profit.\nScience, Engineering & Technology reported profit of $25.0 million for the quarter, including $6.0 million of business unit profit from the acquisition of MRP, compared to $20.7 million a year ago. Excluding the acquisition impact, the decrease in earnings was primarily due to declines in revenue and gross profit partially offset by lower SG&A expenses.\nEducation reported a loss of $3.3 million for the quarter, compared to a loss of $2.5 million a year ago. The change was primarily driven by flat gross profit despite revenue growth and an increase in SG&A expenses.\nOutsourcing & Consulting reported a profit of $2.3 million for the quarter, compared to $1.5 million a year ago. The increase is primarily due to increased revenue and lower SG&A expenses partially offset by declines in gross profit.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1491,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1541,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Period",
+     "Total Number of Shares (or Units)\nPurchased",
+     "Average Price Paid per Share (or Unit)",
+     "",
+     "Total Number of Shares (or Units) Purchased as Part of Publicly Announced Plans or Programs",
+     "Maximum Number (or Approximate Dollar Value) of Shares (or Units)\nThat May Yet Be Purchased Under the Plans or Programs (in millions of dollars)",
+     ""
+    ],
+    [
+     "July 1, 2024 through August 4, 2024",
+     "63",
+     "$",
+     "21.33",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 5, 2024 through September 1, 2024",
+     "6,465",
+     "20.16",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "September 2, 2024 through September 29, 2024",
+     "294",
+     "21.14",
+     "",
+     "\u2014",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "6,822",
+     "$",
+     "20.21",
+     "\u2014",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1672,
+    "end_line": 1689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "In January 2018, the Hungarian Competition Authority (the \"Authority\") initiated proceedings against a local industry trade association and its members, due to alleged infringement of national competition regulations. The Authority announced its decision on December 18, 2020, levying a fine against the trade association with joint and several secondary liability placed on the 20 member companies. The Authority apportioned secondary liability against us as a member company to be approximately $300,000. Certain member companies exercised their right to challenge the decision in Court. On or about October 3, 2023, the Court issued its decision which repealed the Authority's decision and ordered a repeated procedure to determine the amount of the imposed fine as well as the allocation between the parties. Although Kelly's staffing operations in Hungary was sold to Gi Group Holdings S.P.A. (\"Gi\") in January 2024, we have agreed to indemnify Gi for any liability resulting from this matter. The Company does not believe that resolution of this matter will have a material adverse effect upon the Company\u2019s competitive position, results of operations, cash flows or financial position.\nItem 1A. Risk Factors.\nThere have been no material changes in the Company's risk factors previously disclosed in Part I, Item 1A of the Company's Annual Report filed on Form 10-K for the year ended December 31, 2023.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds.\n(a) Sales of Equity Securities Not Registered Under the Securities Exchange Act of 1933\nNone.\n(c) Issuer Repurchases of Equity Securities\nDuring the third quarter of 2024, we reacquired shares of our common stock as follows:",
+   "prose_after": "We may reacquire shares sold to cover employee tax withholdings due upon the vesting of restricted stock held by employees. Accordingly, 6,822 shares were reacquired during the Company\u2019s third quarter of 2024.\nItem 3. Defaults Upon Senior Securities.\nNot applicable.\nItem 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nSecurities Trading Plans of Directors and Executive Officers\nDuring the third quarter ended September 29, 2024, none of the Company's directors or executive officers adopted, modified or terminated any contract, instruction or written plan for the purchase or sale of Company securities that was intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) or any \"non-Rule 10b5-1 trading arrangement.\"\nItem 6. Exhibits.\nSee Index to Exhibits required by Item 601, Regulation S-K, set forth on page 51 of this filing.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1662,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "10.1*",
+     "Offer Letter between Kelly Services, Inc. and Troy R. Anderson (Reference is made to Exhibit 10.1 to the Form 8-K filed with the Commission on September 12, 2024, which is incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1*",
+     "Termination Agreement dated as of September 18, 2024 between Kelly Services Outsourcing and Consulting Group S\u00e0rl and Olivier Thirot (Reference is made to Exhibit 10.1 to the Form 8-K filed with the Commission on September 20, 2024, which is incorporated herein by reference)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification Pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act, as amended."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification Pursuant to Rule 13a-14(a)/15d-14(a) of the Securities Exchange Act, as amended."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "Inline XBRL Instance Document - the instance document does not appear in the Interactive Data file because its XBRL tags are embedded within the Inline XBRL document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "Inline XBRL Taxonomy Extension Schema Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1717,
+    "end_line": 1747
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Item 4. Mine Safety Disclosures.\nNot applicable.\nItem 5. Other Information.\nSecurities Trading Plans of Directors and Executive Officers\nDuring the third quarter ended September 29, 2024, none of the Company's directors or executive officers adopted, modified or terminated any contract, instruction or written plan for the purchase or sale of Company securities that was intended to satisfy the affirmative defense conditions of Rule 10b5-1(c) or any \"non-Rule 10b5-1 trading arrangement.\"\nItem 6. Exhibits.\nSee Index to Exhibits required by Item 601, Regulation S-K, set forth on page 51 of this filing.\nINDEX TO EXHIBITS\nREQUIRED BY ITEM 601,\nREGULATION S-K",
+   "prose_after": "* Indicates a management contract or compensatory plan or arrangement.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1710,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1750,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 51
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "",
+     "KELLY SERVICES, INC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: November 7, 2024",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Olivier G. Thirot"
+    ],
+    [
+     "",
+     "Olivier G. Thirot"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Executive Vice President and"
+    ],
+    [
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "",
+     "(Principal Financial Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "KELLY SERVICES, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1754,
+    "end_line": 1766
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "* Indicates a management contract or compensatory plan or arrangement.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1750,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1778,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 41,
+   "header_row_count": 0,
+   "confidence": 0.8,
+   "rows": [
+    [
+     "Date: November 7, 2024",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Laura S. Lockhart"
+    ],
+    [
+     "",
+     "Laura S. Lockhart"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     "Vice President, Corporate Controller"
+    ],
+    [
+     "",
+     "and Chief Accounting Officer"
+    ],
+    [
+     "",
+     "(Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "Date: November 7, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1767,
+    "end_line": 1777
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "New Accounting Pronouncements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1750,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 51
+    },
+    "after": {
+     "line": 1778,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 52
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 41,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

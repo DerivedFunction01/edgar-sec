@@ -1,0 +1,5014 @@
+{
+ "accession": "0001477932-14-001739",
+ "cik": "0001458868",
+ "form": "10-K",
+ "filing_date": "2014-04-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "hyrr_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "7370",
+     "26-2007556"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(Primary Standard Industrial\n\nClassification Code Number)",
+     "IRS I.D."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2013\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________ to _____________\nCommission file number 333-163035\nHyperera, Inc. (Name of small business issuer in our charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2316 S Wentworth Ave\n\nChicago, IL",
+     "",
+     "60616"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 32,
+    "end_line": 39
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number: 312-842-2288\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [X] No [ ]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Description of Business",
+     "4"
+    ],
+    [
+     "Item 2.",
+     "Description of Property",
+     "8"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "8"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Common Equity and Related Stockholder Matters and Small Business Issuer Purchases of Equity Securities",
+     "9"
+    ],
+    [
+     "Item 6.",
+     "Consolidated Financial Data",
+     "10"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "10"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "15"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements",
+     "F-1"
+    ],
+    [
+     "Item 9.",
+     "Changes In and Disagreements With Accountants on Accounting and Financial Disclosures",
+     "16"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "16"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance with Section 16(a) of the Exchange Act",
+     "17"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "19"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "21"
+    ],
+    [
+     "Item 13.",
+     "It Certain Relationships and Related Transactions, and Director Independence.",
+     "22"
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "24"
+    ],
+    [
+     "Item 15.",
+     "Exhibits",
+     "25"
+    ]
+   ],
+   "caption_stack": [
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 98
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act.) Yes [ ] No [X]\nThe aggregate market value of the Registrant\u2019s Common Stock held by non-affiliates of the Registrant (based upon the closing price of the Registrant\u2019s Common Stock as of June 30, 2013) was approximately $2,136 (based on 17,804,000 shares of common stock outstanding held by non-affiliates and a price of $.12 per share on such date). Shares of the Registrant\u2019s Common Stock held by each executive officer and director and by each entity or person that, to the Registrant\u2019s knowledge, owned 5% or more of the Registrant\u2019s outstanding Common Stock as of June 30, 2013 have been excluded in that such persons may be deemed to be affiliates of the Registrant. This determination of affiliate status is not necessarily a conclusive determination for other purposes.\nThe number of outstanding shares of Registrant\u2019s Common Stock, $0.001 par value, was 40,104,000 shares as of March 31, 2014.\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY STATEMENT REGARDING FORWARD-LOOKING STATEMENTS AND INFORMATION\nThis Annual Report on Form 10-K, the other reports, statements, and information that we have previously filed or that we may subsequently file with the Securities and Exchange Commission, or SEC, and public announcements that we have previously made or may subsequently make include, may include, incorporate by reference or may incorporate by reference certain statements that may be deemed to be \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995 and are intended to enjoy the benefits of that act. Unless the context is otherwise, the forward-looking statements included or incorporated by reference in this Form 10-K and those reports, statements, information and announcements address activities, events or developments that Hyperera, Inc. (hereinafter referred to as \u201cwe,\u201d \u201cus,\u201d \u201cour,\u201d \u201cour Company\u201d or \u201cHyperera\u201d) expects or anticipates, will or may occur in the future. Any statements in this document about expectations, beliefs, plans, objectives, assumptions or future events or performance are not historical facts and are forward-looking statements. These statements are often, but not always, made through the use of words or phrases such as \u201cmay,\u201d \u201cshould,\u201d \u201ccould,\u201d \u201cpredict,\u201d \u201cpotential,\u201d \u201cbelieve,\u201d \u201cwill likely result,\u201d \u201cexpect,\u201d \u201cwill continue,\u201d \u201canticipate,\u201d \u201cseek,\u201d \u201cestimate,\u201d \u201cintend,\u201d \u201cplan,\u201d \u201cprojection,\u201d \u201cwould\u201d and \u201coutlook,\u201d and similar expressions. Accordingly, these statements involve estimates, assumptions and uncertainties, which could cause actual results to differ materially from those expressed in them. Any forward-looking statements are qualified in their entirety by reference to the factors discussed throughout this document. All forward-looking statements concerning economic conditions, rates of growth, rates of income or values as may be included in this document are based on information available to us on the dates noted, and we assume no obligation to update any such forward-looking statements. It is important to note that our actual results may differ materially from those in such forward-looking statements due to fluctuations in interest rates, inflation, government regulations, economic conditions and competitive product and pricing pressures in the geographic and business areas in which we conduct operations, including our plans, objectives, expectations and intentions and other factors discussed elsewhere in this Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 98,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[ ]",
+     "Address: City/State/Zip: is located at No. 17 Dongsanhuan Routh Rd., Kingwing Tower, Suite 11A, Block B, Chaoyang District, Beijing, China 100021"
+    ],
+    [
+     "[ ]",
+     "Number of Square Feet: 1200 Square Feet"
+    ],
+    [
+     "[ ]",
+     "Name of Landlord: Beijing Kingwing Tower Real Estate Management Co., Ltd."
+    ],
+    [
+     "[ ]",
+     "Term of Lease: One Year, renwed (from March , 2013 to March 25, 2015)"
+    ],
+    [
+     "[ ]",
+     "Monthly Rental: RMB24,731.76"
+    ],
+    [
+     "[ ]",
+     "Adequate for current needs: \u221a Yes"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 231,
+    "end_line": 239
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property."
+    },
+    "note": null
+   },
+   "prose_before": "Operations \u2013 7\nManagement \u2013 1\nSales \u20134\nOther [Software Engineer] \u20135\nWe have no collective bargaining agreement with our employees. We consider our relationship with our employees to be excellent.\nAdditional Information\nWe are a public company and file annual, quarterly and special reports and other information with the SEC. We are not required to, and do not intend to, deliver an annual report to security holders. You may read and copy any document we file at the SEC\u2019s public reference room at 100 F Street, N.E., Washington, D.C. 20549. You can request copies of these documents by writing to the SEC and paying a fee for the copying cost. Please call the SEC at 1-800-SEC-0330 for more information about the operation of the public reference room. Our filings are also available, at no charge, to the public at http://www.sec.gov.\nItem 2. Description of Property.\nWe rent the following properties:\nHyperera Technology (Beijing) Co., Ltd. (started on July 3, 2009)",
+   "prose_after": "Effective on July 1, 2009, Hyperera Technologies (Beijing) Co., Limited entered into an office lease agreement for one year, renewable term with Kingwing Real Estate Co., Ltd\u2019, the current monthly rent is RMB 17,552. The lease was signed right after the Hyperera Technologies (Beijing) Co., Limited was established in July 2009. The lease was part of approving process for setting up Hyperera Technologies (Beijng). And the lease secures the Company with a relatively stable location at central Beijing which may benefit the Company\u2019s overall operation, marketing and financing activities. We believe that secure a renewable lease term may affects on our operation and such factor may be significant.\nHyperera, Inc.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 224,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "[ ]",
+     "Address: City/State/Zip: is located at 2316 S. Wentworth Ave, Chicago, IL 60616"
+    ],
+    [
+     "[ ]",
+     "Number of Square Feet: 350 Square Feet"
+    ],
+    [
+     "[ ]",
+     "Name of Landlord: Simon Bai"
+    ],
+    [
+     "[ ]",
+     "Term of Lease: Three year from March 1, 2012 to Feb 28, 2014 (renewed for two additional years)"
+    ],
+    [
+     "[ ]",
+     "Monthly Rental: $600.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 244,
+    "end_line": 251
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Description of Property."
+    },
+    "note": null
+   },
+   "prose_before": "Effective on July 1, 2009, Hyperera Technologies (Beijing) Co., Limited entered into an office lease agreement for one year, renewable term with Kingwing Real Estate Co., Ltd\u2019, the current monthly rent is RMB 17,552. The lease was signed right after the Hyperera Technologies (Beijing) Co., Limited was established in July 2009. The lease was part of approving process for setting up Hyperera Technologies (Beijng). And the lease secures the Company with a relatively stable location at central Beijing which may benefit the Company\u2019s overall operation, marketing and financing activities. We believe that secure a renewable lease term may affects on our operation and such factor may be significant.\nHyperera, Inc.",
+   "prose_after": "We do not intend to renovate, improve, or develop properties. We are not subject to competitive conditions for property and currently have no property to insure. We have no policy with respect to investments in real estate or interests in real estate and no policy with respect to investments in real estate mortgages. Further, we have no policy with respect to investments in securities of or interests in persons primarily engaged in real estate activities.\nItem 3. Legal Proceedings.\nWe are not a party to any material legal proceedings nor are we aware of any circumstance that may reasonably lead any third party to initiate material legal proceedings against us.\nItem 4. Mine Safety Disclosures.\nNone\nPART II\nItem 5. Market for Common Equity and Related Stockholder Matters and Small Business Issuer Purchases of Equity Securities.\nTrading History\nOur common stock is quoted on the Over-The-Counter Bulletin Board under the symbol \u201cHYRR.\u201d\n(HYRR was effective in July 2010)",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 224,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 261,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Bid Information*",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financial Quarter Ended",
+     "High Bid",
+     "",
+     "Low Bid",
+     ""
+    ],
+    [
+     "December 31, 2013",
+     "",
+     "1.00",
+     "",
+     "0.30"
+    ],
+    [
+     "September 30, 2013",
+     "",
+     "0.06",
+     "",
+     "0.02"
+    ],
+    [
+     "June 30, 2013",
+     "",
+     "0.12",
+     "",
+     "0.12"
+    ],
+    [
+     "March 31, 2013",
+     "",
+     "0.50",
+     "",
+     "0.25"
+    ],
+    [
+     "December 31, 2012",
+     "",
+     "0.50",
+     "",
+     "0.25"
+    ],
+    [
+     "September 30, 2012",
+     "",
+     "0.50",
+     "",
+     "0.15"
+    ],
+    [
+     "June 30, 2012",
+     "",
+     "0.60",
+     "",
+     "0.20"
+    ],
+    [
+     "March 31, 2012",
+     "",
+     "0.50",
+     "",
+     "0.25"
+    ]
+   ],
+   "caption_stack": [
+    "Bid Information*"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 274,
+    "end_line": 288
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Common Equity and Related Stockholder Matters and Small Business Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "We do not intend to renovate, improve, or develop properties. We are not subject to competitive conditions for property and currently have no property to insure. We have no policy with respect to investments in real estate or interests in real estate and no policy with respect to investments in real estate mortgages. Further, we have no policy with respect to investments in securities of or interests in persons primarily engaged in real estate activities.\nItem 3. Legal Proceedings.\nWe are not a party to any material legal proceedings nor are we aware of any circumstance that may reasonably lead any third party to initiate material legal proceedings against us.\nItem 4. Mine Safety Disclosures.\nNone\nPART II\nItem 5. Market for Common Equity and Related Stockholder Matters and Small Business Issuer Purchases of Equity Securities.\nTrading History\nOur common stock is quoted on the Over-The-Counter Bulletin Board under the symbol \u201cHYRR.\u201d\n(HYRR was effective in July 2010)",
+   "prose_after": "________________\n* The quotation do not reflect inter-dealer prices, without retail mark-up, mark-down or commission and may not represent actual transactions.\nDividends\nWe have never declared or paid any cash dividends on our common stock. For the foreseeable future, we intend to retain any earnings to finance the development and expansion of our business, and we do not anticipate paying any cash dividends on our common stock. Any future determination to pay dividends will be at the discretion of the Board of Directors and will be dependent upon then existing conditions, including our financial condition and results of operations, capital requirements, contractual restrictions, business prospects and other factors that the Board of Directors considers relevant.\nThere are no restrictions in our articles of incorporation or bylaws that prevent us from declaring dividends. The Nevada Revised Statutes, however, prohibit us from declaring dividends where, after giving effect to the distribution of the dividend:",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 263,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "At December 31,",
+     "",
+     "At December 31,",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Ratio*",
+     "",
+     "1.11",
+     "",
+     "4.96"
+    ],
+    [
+     "Cash",
+     "$",
+     "129,009",
+     "$",
+     "34,896"
+    ],
+    [
+     "Working Capital***",
+     "$",
+     "28,263",
+     "$",
+     "249,743"
+    ],
+    [
+     "Total Assets",
+     "$",
+     "1,846,336",
+     "$",
+     "1,877,954"
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "248,068",
+     "$",
+     "63,118"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Equity",
+     "$",
+     "1,598,268",
+     "$",
+     "1,814,836"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Debt/Equity**",
+     "",
+     "0.16",
+     "",
+     "0.03"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 449
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation."
+    },
+    "note": null
+   },
+   "prose_before": "However, because of the continuing difficulties in collecting on this loan, the Company asked Chinese legal counsel to furnish a legal opinion as to the status of this loan. This opinion has been filed as an exhibit to this Form 10-K along with the Amended Greensaver Agreement. Chinese counsel has consented to the opinion being attached to this Form 10-K in writing and to a discussion of the opinion and subsequent correspondence with the Company\u2019s US legal counsel. In essence, China legal counsel indicates that it is his opinion that the Amendment is valid and lawful and that the Company still has a valid claim to the principal amount of the loan. In a subsequent e-mail to US counsel, China counsel indicated: \u201cRegarding the chance of collection for Hyperera, on the base of present conditions, it is impossible to give a accurate rate of chance of collection. But I can confirm that there is a reasonable likelihood, that Hyperera will have chance to collect part or whole loan on the claim.\u201d\nNotwithstanding any of the foregoing, based upon the history of this transaction, the Company urges any investor making an investment decision in the stock of the company to exercise extreme caution if that decision is based in any in in whole or in part, no matter how small the part, on the assumption that the Company will ever collect anything on this loan.\nLiquidity and Capital Resources",
+   "prose_after": "___________________\n*CurrentRatio = Current Assets /Current Liabilities\n**Total Debt / Equity = Total Liabilities / Total Shareholders\u2019 Equity.\n***Working Capital = Current Assets \u2013 Current Liabilities\nThe Company had cash and cash equivalents of $ 129,009 at December 31, 2013 and the working capital of $ 28,263, and cash and cash equivalent of $ 34,896 at December 31, 2012 and the working capital of $249,743.\nThe Company\u2019s related party transactions, the short-term loans to related party supplier, may raise substantial doubt about its ability to carry out its operational business plan and cause uncertainty about its cash flows, such related party borrows or withdraws may raise substantial doubt about the Company\u2019s ability to continue as going concerns.\nConclusion\nThere is no guarantee that the Company will be able to raise enough capital or generate revenues to sustain its operations and carry out its business plan. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include adjustments that might result from the outcome of this uncertainty and if the Company is unable to generate significant revenue or secure financing, then the Company may be required to cease or curtail its operation.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 423,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 465,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Independent Auditor\u2019s Report on the Financial Statements",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheet",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Loss",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Statement of Shareholders Equity",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Cash Flow",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit A",
+     "F-21"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 510,
+    "end_line": 525
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "On July 1, 2013, additional 400,000 shares were issued to 1 shareholder, Chinese citizens, at $ 0.20 per share for $ 80,000.\nOn August 30, 2013, additional 1,500,000 shares were issued to 2 shareholders, Chinese citizens, at $ 0.20 per share for $ 300,000.\nTherefore, as of December 31, 2013, the total outstanding common shares were 40,104,000.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nNot required.\nItem 8. Financial Statements.\n(A Development Stage Enterprise)\nAudited Financial Statements\nAs of December 31, 2013, and 2012\nTable of Contents",
+   "prose_after": "Independent Registered Public Accounting Firm\u2019s Auditor\u2019s Report on the Consolidated Financial Statements\nBoard of Directors and Shareholders of Hyperera, Inc.\nWe have audited the accompanying consolidated balance sheets of Hyperera, Inc. as of December 31, 2013, 2012, and the related consolidated statements of loss, shareholders\u2019 equity, and cash flows for the year 2013, 2012, and the cumulative period from February 19, 2008 (date of inception ) through December 31, 2013. These financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on these consolidated financial statements based on our audit.\nWe conducted our audit in accordance with auditing standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provides a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 500,
+     "token": "REPEATING_HEADER",
+     "id": 31,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 525,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "129,009",
+     "",
+     "$",
+     "34,896",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "$",
+     "129,009",
+     "",
+     "$",
+     "34,896",
+     ""
+    ],
+    [
+     "Other current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid Expenses",
+     "$",
+     "10,328",
+     "",
+     "$",
+     "13",
+     ""
+    ],
+    [
+     "Loans to related supplier",
+     "",
+     "135,232",
+     "",
+     "",
+     "5,873",
+     ""
+    ],
+    [
+     "Accrued interest",
+     "",
+     "1,762",
+     "",
+     "",
+     "272,079",
+     ""
+    ],
+    [
+     "Total Other Current Assets",
+     "$",
+     "147,322",
+     "",
+     "$",
+     "277,965",
+     ""
+    ],
+    [
+     "Fixed assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture & Equipment, Net",
+     "$",
+     "31,543",
+     "",
+     "$",
+     "26,631",
+     ""
+    ],
+    [
+     "Total Fixed Assets",
+     "$",
+     "31,543",
+     "",
+     "$",
+     "26,631",
+     ""
+    ],
+    [
+     "Other assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loans to Greensaver Corp",
+     "",
+     "1,538,462",
+     "",
+     "",
+     "1,538,462",
+     ""
+    ],
+    [
+     "Total Other Current Assets",
+     "$",
+     "1,538,462",
+     "",
+     "$",
+     "1,538,462",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "1,846,336",
+     "",
+     "$",
+     "1,877,954",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Account payable",
+     "$",
+     "1,800",
+     "",
+     "$",
+     "28,200",
+     ""
+    ],
+    [
+     "Loan from shareholders",
+     "",
+     "3,346",
+     "",
+     "",
+     "32,753",
+     ""
+    ],
+    [
+     "Loan from others",
+     "",
+     "241,734",
+     "",
+     "",
+     "2,165",
+     ""
+    ],
+    [
+     "Payroll liabilities",
+     "",
+     "1,188",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "$",
+     "248,068",
+     "",
+     "$",
+     "63,118",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.001 par value;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "200,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "40,104,000 shares issued and outstanding.",
+     "$",
+     "40,104",
+     "",
+     "$",
+     "38,204",
+     ""
+    ],
+    [
+     "Paid-in capital",
+     "",
+     "2,722,464",
+     "",
+     "",
+     "2,344,364",
+     ""
+    ],
+    [
+     "Deficit accumulated during the development stage",
+     "",
+     "(856,211)",
+     "",
+     "",
+     "(596,012)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income (loss)",
+     "",
+     "(308,089)",
+     "",
+     "",
+     "28,280",
+     ""
+    ],
+    [
+     "Total stockholders' equity",
+     "$",
+     "1,598,268",
+     "",
+     "$",
+     "1,814,836",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES & EQUITY",
+     "$",
+     "1,846,336",
+     "",
+     "$",
+     "1,877,954",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 548,
+    "end_line": 597
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "As discussed in Note E, The Company\u2019s short-term loan to the company Greensaver Corp. raises substantial doubt about Company\u2019s ability to carry out it\u2019s operational business plan and cause significant uncertainty about its cash flows immediately, such borrows or withdraws raises substantial doubt about the Company\u2019s ability to continue as going concern immediately. There is no guarantee that the Company will be able to raise enough capital or generate revenues to sustain its operations and carry out its business activities. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include adjustments that might result from the outcome of this uncertainty and if the Company is unable to generate revenue or secure financing, then the Company may be required to cease or curtail its operation immediately.\n/s/ Enterprise CPAs, Ltd.\nEnterprise CPAs, Ltd.\nChicago, IL\nApril 14, 2014\nHYPERERA, INC (A Development Stage Enterprise) CONSOLIDATED BALANCE SHEETS",
+   "prose_after": "HYPERERA, INC (A Development Stage Enterprise) CONSOLIDATED STATEMENTS OF LOSS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 545,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Year Ended",
+     "",
+     "",
+     "Cumulative from February 19, 2008 (Date of Inception) Through",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,\n\n2013",
+     "",
+     "",
+     "December 31,\n\n2012",
+     "",
+     "",
+     "December 31,\n\n2013",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "228,858",
+     ""
+    ],
+    [
+     "Cost of Goods Sold",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "207,998",
+     ""
+    ],
+    [
+     "Gross Profit",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "20,860",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "399,473",
+     "",
+     "",
+     "346,404",
+     "",
+     "",
+     "1,283,803",
+     ""
+    ],
+    [
+     "Depreciation and amortization expenses",
+     "",
+     "16,458",
+     "",
+     "",
+     "12,427",
+     "",
+     "",
+     "38,121",
+     ""
+    ],
+    [
+     "Total Operating Expenses",
+     "$",
+     "415,931",
+     "",
+     "$",
+     "358,831",
+     "",
+     "$",
+     "1,321,924",
+     ""
+    ],
+    [
+     "Operating Loss",
+     "$",
+     "(415,931)",
+     "",
+     "$",
+     "(358,831)",
+     "",
+     "$",
+     "(1,301,064)",
+     ""
+    ],
+    [
+     "Investment income, net",
+     "$",
+     "155,732",
+     "",
+     "$",
+     "158,849",
+     "",
+     "$",
+     "445,120",
+     ""
+    ],
+    [
+     "Interest Expense, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "267",
+     "",
+     "$",
+     "267",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "$",
+     "(260,199)",
+     "",
+     "$",
+     "(200,249)",
+     "",
+     "$",
+     "(856,211)",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(260,199)",
+     "",
+     "$",
+     "(200,249)",
+     "",
+     "$",
+     "(856,211)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss per common share- Basics",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.02)",
+     ""
+    ],
+    [
+     "Net loss per common share- Diluted",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.01)",
+     "",
+     "$",
+     "(0.02)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss), net of tax:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Uncollectible interest receivable write off",
+     "",
+     "(339,726)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(339,726)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustments",
+     "",
+     "3,357",
+     "",
+     "",
+     "(459)",
+     "",
+     "",
+     "31,637",
+     ""
+    ],
+    [
+     "Other comprehensive income (loss)",
+     "$",
+     "(336,369)",
+     "",
+     "$",
+     "(459)",
+     "",
+     "$",
+     "(308,089)",
+     ""
+    ],
+    [
+     "Comprehensive Income (Loss)",
+     "$",
+     "(596,568)",
+     "",
+     "$",
+     "(200,708)",
+     "",
+     "$",
+     "(1,164,300)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 600,
+    "end_line": 643
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "HYPERERA, INC (A Development Stage Enterprise) CONSOLIDATED STATEMENTS OF LOSS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 597,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "HYPERERA, INC"
+    ],
+    [
+     "(A Development Stage Enterprise)"
+    ],
+    [
+     "STATEMENT OF STOCKHOLDERS EQUITY"
+    ],
+    [
+     "The Period February 19, 2008 ( Date of Inception) through December 31, 2013"
+    ]
+   ],
+   "caption_stack": [
+    "HYPERERA, INC",
+    "(A Development Stage Enterprise)",
+    "STATEMENT OF STOCKHOLDERS EQUITY",
+    "The Period February 19, 2008 ( Date of Inception) through December 31, 2013"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 644,
+    "end_line": 650
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "During the",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Development",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Stage",
+     "",
+     "",
+     "Income (Loss)",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2008",
+     "",
+     "27,939,000",
+     "$",
+     "27,939",
+     "$",
+     "230,231",
+     "$",
+     "(51,611)",
+     "",
+     "$",
+     "(311)",
+     "",
+     "$",
+     "206,248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2009",
+     "",
+     "27,999,000",
+     "$",
+     "27,999",
+     "$",
+     "242,171",
+     "$",
+     "(90,244)",
+     "",
+     "$",
+     "(453)",
+     "",
+     "$",
+     "179,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31 30, 2010",
+     "",
+     "35,984,000",
+     "$",
+     "35,984",
+     "$",
+     "1,831,186",
+     "$",
+     "(281,478)",
+     "",
+     "$",
+     "22,561",
+     "",
+     "$",
+     "1,608,253",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31 30, 2011",
+     "",
+     "38,204,000",
+     "$",
+     "38,204",
+     "$",
+     "2,344,364",
+     "$",
+     "(395,763)",
+     "",
+     "$",
+     "28,739",
+     "",
+     "$",
+     "2,015,544",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustment for Rate Exchange",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(459)",
+     "",
+     "$",
+     "(459)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period ended December 31, 2012",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(200,249)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(200,249)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31 30, 2012",
+     "",
+     "38,204,000",
+     "$",
+     "38,204",
+     "$",
+     "2,344,364",
+     "$",
+     "(596,012)",
+     "",
+     "$",
+     "28,280",
+     "",
+     "$",
+     "1,814,836",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stocks to shareholder @0.2 per share on July 01, 2013",
+     "",
+     "400,000",
+     "$",
+     "400",
+     "$",
+     "79,600",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "80,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stocks to shareholders @0.20 per share on August 30, 2013",
+     "",
+     "1,500,000",
+     "$",
+     "1,500",
+     "$",
+     "298,500",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "300,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustment for Rate Exchange",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "3,357",
+     "",
+     "$",
+     "3,357",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Write off Interest Receivable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(339,726)",
+     "",
+     "$",
+     "(339,726)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period ended December 31, 2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(260,199)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(260,199)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31 30, 2013",
+     "",
+     "40,104,000",
+     "$",
+     "40,104",
+     "$",
+     "2,722,464",
+     "$",
+     "(856,211)",
+     "",
+     "$",
+     "(308,089)",
+     "",
+     "$",
+     "1,598,268",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Deficit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 651,
+    "end_line": 694
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "HYPERERA, INC (A Development Stage Enterprise) STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 643,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "Year Ended\n\nDecember 31,",
+     "",
+     "",
+     "Cumulative from\n\nFebruary 19, 2008\n\n (Date of Inception) to\n\nDecember 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2013",
+     "",
+     "",
+     "2012",
+     "",
+     "",
+     "2013",
+     "",
+     ""
+    ],
+    [
+     "Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(260,199)",
+     "",
+     "$",
+     "(200,249)",
+     "",
+     "$",
+     "(856,211)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash portion of share based legal fee expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,170",
+     ""
+    ],
+    [
+     "Non-cash portion of share based consulting fee expense",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "16,458",
+     "",
+     "",
+     "12,427",
+     "",
+     "",
+     "38,120",
+     ""
+    ],
+    [
+     "Accrued interest receivable",
+     "",
+     "270,317",
+     "",
+     "",
+     "(142,416)",
+     "",
+     "",
+     "(1,762)",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "(10,315)",
+     "",
+     "",
+     "(13)",
+     "",
+     "",
+     "(10,328)",
+     ""
+    ],
+    [
+     "Account payable",
+     "",
+     "(26,400)",
+     "",
+     "",
+     "25,200",
+     "",
+     "",
+     "1,800",
+     ""
+    ],
+    [
+     "Payroll liabilities",
+     "",
+     "1,188",
+     "",
+     "",
+     "(5,048)",
+     "",
+     "",
+     "1,188",
+     ""
+    ],
+    [
+     "Loan from others",
+     "",
+     "239,569",
+     "",
+     "",
+     "2,165",
+     "",
+     "",
+     "241,734",
+     ""
+    ],
+    [
+     "Loan from shareholders",
+     "",
+     "(29,407)",
+     "",
+     "",
+     "24,867",
+     "",
+     "",
+     "3,346",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "$",
+     "201,211",
+     "",
+     "$",
+     "(283,067)",
+     "",
+     "$",
+     "(557,943)",
+     ""
+    ],
+    [
+     "Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Furniture & Equipment, Net",
+     "$",
+     "(21,370)",
+     "",
+     "$",
+     "(5,291)",
+     "",
+     "$",
+     "(69,663)",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "$",
+     "(21,370)",
+     "",
+     "$",
+     "(5,291)",
+     "",
+     "$",
+     "(69,663)",
+     ""
+    ],
+    [
+     "Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "$",
+     "380,000",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,738,398",
+     ""
+    ],
+    [
+     "Loans Greensaver Corp",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,538,462)",
+     ""
+    ],
+    [
+     "Loans to related supplier",
+     "",
+     "(129,359)",
+     "",
+     "",
+     "310,116",
+     "",
+     "",
+     "(135,232)",
+     ""
+    ],
+    [
+     "Prepaid for stock purchase",
+     "",
+     "-",
+     "",
+     "",
+     "(100,000)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "250,641",
+     "",
+     "$",
+     "210,116",
+     "",
+     "$",
+     "1,064,704",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of Exchange Rate on Cash",
+     "$",
+     "3,357",
+     "",
+     "$",
+     "(459)",
+     "",
+     "$",
+     "31,637",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Uncollectible interest receivable write off",
+     "$",
+     "(339,726)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(339,726)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "$",
+     "94,113",
+     "",
+     "$",
+     "(78,701)",
+     "",
+     "$",
+     "129,009",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of the year",
+     "$",
+     "34,896",
+     "",
+     "$",
+     "113,597",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Cash and cash equivalents aht end of year",
+     "$",
+     "129,009",
+     "",
+     "$",
+     "34,896",
+     "",
+     "$",
+     "129,009",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 744
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "HYPERERA, INC (A Development Stage Enterprise) STATEMENT OF CASH FLOWS",
+   "prose_after": "NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (Unaudited)\nNOTE A \u2013 BUSINESS DESCRIPTION\nHyperera, Inc. (the \u201cCompany\u201d), incorporated under the laws of Nevada on February 19, 2008. Hyperera, Inc. operates its business in the U.S. as Hyperera USA, Inc. the Company\u2019 s wholly owned branch located in the State of Illinois and has principal office at 2316 South Wentworth Avenue, Chicago, IL 60616.\nIn addition to the U.S. operation, the Company had one representative office in China, which was established on April 2, 2008; the representative office was closed effective on July 1, 2009. In order to developing and operating more efficiently, in the mean time, Hyperera, Inc established a subsidiary Hyperera Technology (Beijing) Co, Ltd in China in July 3, 2009 to replace the representative office to conduct and operate the business of trading services, distribution, and marketing of the surgery anesthesia clinic management software and ICU management system software and hardware system in Asia.\nHyperera Technology (Beijing) Co, Ltd, as the wholly owned subsidiary, is registered on July 3, 2009 in China. Hyperera Technology (Beijing), Ltd is located at Room 11A, Block B, Kingwing Hotel, No. 17 Dongsanhuan South Road, Chaoyang District, Beijing, China 100021.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 744,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Pronouncement",
+     "Issued",
+     "Title"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASC 855",
+     "May 2009",
+     "Subsequent Events"
+    ],
+    [
+     "ASC 105",
+     "June 2009",
+     "The FASB Accounting Standards Codification and the Hierarchy of Generally Accepted Accounting Principles\u2014a replacement of FASB Statement No. 162"
+    ],
+    [
+     "ASC 820",
+     "August 2009",
+     "Fair Value Measurements and Disclosures \u2013 Measuring Liabilities at Fair Value"
+    ],
+    [
+     "ASC 260",
+     "September 2009",
+     "Earnings per Share \u2013 Amendments to Section 260-10-S99"
+    ],
+    [
+     "ASC 820",
+     "September 2009",
+     "Investments in Certain Entities that Calculate Net Asset Value per Share (or Its Equivalent)"
+    ],
+    [
+     "ASC 605",
+     "October 2009",
+     "Revenue Recognition (Topic 605): Multiple-Deliverable Revenue Arrangements \u2013 a consensus of the FASB Emerging Issues Task Force"
+    ],
+    [
+     "ASC 470",
+     "October 2009",
+     "Accounting for Own-Share Lending Arrangements in Contemplation of Convertible Debt Issuance or Other Financing \u2013 a consensus of the FASB Emerging Issues Task Force"
+    ],
+    [
+     "ASC 860",
+     "December 2009",
+     "Transfers and Servicing (Topic 860): Accounting for Transfers of Financial Assets"
+    ],
+    [
+     "ASC 505",
+     "January 2010",
+     "Accounting for Distributions to Shareholders with Components of Stock and Cash \u2013 a consensus of the FASB Emerging Issues Task Force"
+    ],
+    [
+     "ASC 810",
+     "January 2010",
+     "Consolidation (Topic 810): Accounting and Reporting for Decreases in Ownership of a Subsidiary \u2013 a Scope Clarification"
+    ],
+    [
+     "ASC 718",
+     "January 2010",
+     "Compensation \u2013 Stock Compensation (Topic 718): Escrowed Share Arrangements and the Presumption of Compensation"
+    ],
+    [
+     "ASC 820",
+     "January 2010",
+     "Fair Value Measurements and Disclosures (Topic 820): Improving Disclosures about Fair Value Measurements"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 932
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The company\u2019s comprehensive income (loss) is comprised of net income (loss), unrealized gains and losses on marketable securities classified foreign currency translation adjustments, and unrealized gains and losses on derivative financial instruments related to foreign currency hedging, and the write off of the uncollectible interest receivable. Based on the legal opinion of local Chinese law firm, United Law Office, Beijing China, as Greensaver is in reorganization under the local Chinese laws, If there is a lawsuit between Hyperera (Beijing) and Greensaver, the principal of loan amount of $1,538,462 [10,000,000 RMB] shall be protected by Chinese law but not the interest of loan. Accordingly, the accumulated interest receivable of $339,726 from Greensaver was written off at December 31, 2013.\nFor the fiscal years ended December 31, 2013, and 2012, the company has $336,369 and $459 comprehensive loss. For the cumulative period from February 19, 2008 to December 31, 2013, the company has accumulated comprehensive loss of $308,089.\nNOTE B \u2013 SIGNIFICANT ACCOUNTING POLICIES (Continued)\nIncome Tax\nThe Company filed extension for corporate tax return Form 1120 to Internal Revenue Service and IL 1120 to the State of Illinois for the year 2013. There is no income tax for the State of Nevada.\nHyperera Technology (Beijing) Co., Ltd. Filed annual report to Beijing local tax bureau, and no income tax dues were paid to Chinese government.\nNew Pronouncement:",
+   "prose_after": "NOTE B \u2013 SIGNIFICANT ACCOUNTING POLICIES (Continued)",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 903,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASC 855",
+     "February 2010",
+     "Subsequent Events (Topic 855): Amendments to Certain Recognition and Disclosure Requirements"
+    ],
+    [
+     "ASC 810",
+     "February 2010",
+     "Consolidation (Topic 810): Amendments for Certain Investment Funds"
+    ],
+    [
+     "ASC 815",
+     "March 2010",
+     "Derivatives and Hedging (Topic 815): Scope Exception Related to Embedded Credit Derivatives"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 935,
+    "end_line": 940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "NOTE B \u2013 SIGNIFICANT ACCOUNTING POLICIES (Continued)",
+   "prose_after": "Management assessed that the new accounting pronouncements listed above will have a material impact on our financial statements. The Company shall adopt the ASC 605 for revenue recognition of multiple elements arrangement for sales of customized information system software.\nNOTE C \u2013 RELATED PARTY TRANSACTIONS\nCommon Shares Issued to Executive and Non-Executive Officers and Directors\nAs of December 31, 2013, total 20,400,000 shares were issued to officers and directors were not changed. But, the total outstanding shares were changed to 40,104,000; the percentage of common shares issued to executive and non-executive officers and directors have been changed accordingly. Please see the Table below for details:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Share QTY",
+     "",
+     "Amount",
+     "",
+     "Date",
+     "% of Common Share*",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "Chairman",
+     "",
+     "10,000,000",
+     "$",
+     "10,000.00",
+     "2/19/2008",
+     "",
+     "24.94",
+     "%"
+    ],
+    [
+     "Wei Wu",
+     "President",
+     "",
+     "5,000,000",
+     "$",
+     "5,000.00",
+     "2/19/2008",
+     "",
+     "12.47",
+     "%"
+    ],
+    [
+     "Hui Tao Zhou",
+     "Director",
+     "",
+     "5,000,000",
+     "$",
+     "5,000.00",
+     "2/19/2008",
+     "",
+     "12.47",
+     "%"
+    ],
+    [
+     "Jian Wu Zhang",
+     "Director",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Ming Liu",
+     "Director",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Hong Tao Bai",
+     "Vice-President",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Nan Su",
+     "CT[ ]",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Simon Bai",
+     "CF[ ]",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "20,400,000",
+     "$",
+     "32,000.00",
+     "",
+     "",
+     "50.87",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 949,
+    "end_line": 965
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "Management assessed that the new accounting pronouncements listed above will have a material impact on our financial statements. The Company shall adopt the ASC 605 for revenue recognition of multiple elements arrangement for sales of customized information system software.\nNOTE C \u2013 RELATED PARTY TRANSACTIONS\nCommon Shares Issued to Executive and Non-Executive Officers and Directors\nAs of December 31, 2013, total 20,400,000 shares were issued to officers and directors were not changed. But, the total outstanding shares were changed to 40,104,000; the percentage of common shares issued to executive and non-executive officers and directors have been changed accordingly. Please see the Table below for details:",
+   "prose_after": "* The percentage was based on the total outstanding shares of 40,104,000 as of December 31, 2013.\nNOTE C \u2013 RELATED PARTY TRANSACTIONS (Continue)\nLoans from Shareholders\nOn March 2, 2008, founder of the Company, Mr. Zhiyong Li opened a bank account at Chicago branch with CitiBank. Mr. Zhiyong Li loaned $500.00 to the Company to open the bank account, and the same amount have returned back to him on March, 2009. In the year of 2009, the Company\u2019s founder and CEO, Mr. Zhiyong Li have loaned $53,631 to Beijing subsidiary, Hyperera Technology (Beijing) Co. Ltd for operating and administrating expenses.\nIn 2010, the Company repaid the loan balance to Mr. Li Zhiyong. As of December 31, 2010, there was travel related expense of $985 paid by Mr. Li Zhiyong, which was accounted as loans from shareholders.\nFrom January to December 31, 2011, Mr. Zhiyong Li advanced additional amount of $6,901 to the Company. The loans would be repaid as request without interest. As of December 31, 2011, the balance of loan from Shareholder was $7,886.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 932,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 967,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended\n\nDecember 31,\n\n2013",
+     "",
+     "Year Ended\n\nDecember 31,\n\n2012",
+     "",
+     "Cumulative from February 19, 2008\n\n(Date of\n\nInception) to\n\nDecember 31,\n\n2013",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Automobile Expenses",
+     "",
+     "15,622",
+     "",
+     "5,665",
+     "",
+     "30,066"
+    ],
+    [
+     "Administration Expense",
+     "",
+     "225",
+     "",
+     "-",
+     "",
+     "225"
+    ],
+    [
+     "Bank Service Charges",
+     "",
+     "889",
+     "",
+     "989",
+     "",
+     "4,253"
+    ],
+    [
+     "Computer and Internet Expenses",
+     "",
+     "582",
+     "",
+     "91",
+     "",
+     "826"
+    ],
+    [
+     "Depreciation",
+     "",
+     "16,458",
+     "",
+     "12,427",
+     "",
+     "38,120"
+    ],
+    [
+     "Employees Welfare Expense",
+     "",
+     "6,620",
+     "",
+     "1,385",
+     "",
+     "8,005"
+    ],
+    [
+     "Gift and promotion Expense",
+     "",
+     "1,860",
+     "",
+     "5,173",
+     "",
+     "7,034"
+    ],
+    [
+     "Small tools and equipment",
+     "",
+     "-",
+     "",
+     "150",
+     "",
+     "150"
+    ],
+    [
+     "Dues and Subscriptions",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "110"
+    ],
+    [
+     "Insurance Expense",
+     "",
+     "12,925",
+     "",
+     "4,706",
+     "",
+     "23,115"
+    ],
+    [
+     "License & Registration",
+     "",
+     "3,019",
+     "",
+     "-",
+     "",
+     "15,363"
+    ],
+    [
+     "Meals and Entertainment",
+     "",
+     "12,009",
+     "",
+     "1,820",
+     "",
+     "26,820"
+    ],
+    [
+     "Meeting & Conference",
+     "",
+     "23,478",
+     "",
+     "-",
+     "",
+     "27,334"
+    ],
+    [
+     "Office Supplies",
+     "",
+     "31,782",
+     "",
+     "2,458",
+     "",
+     "62,821"
+    ],
+    [
+     "Research & development expense",
+     "",
+     "3,960",
+     "",
+     "-",
+     "",
+     "3,960"
+    ],
+    [
+     "Supplies",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,307"
+    ],
+    [
+     "Payroll Expenses",
+     "",
+     "136,437",
+     "",
+     "68,284",
+     "",
+     "303,387"
+    ],
+    [
+     "Postage",
+     "",
+     "559",
+     "",
+     "825",
+     "",
+     "2,536"
+    ],
+    [
+     "Professional Fees",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Legal Fee",
+     "",
+     "15,300",
+     "",
+     "32,500",
+     "",
+     "108,553"
+    ],
+    [
+     "Consulting Fees",
+     "",
+     "-",
+     "",
+     "59,741",
+     "",
+     "102,741"
+    ],
+    [
+     "Accounting & Auditing",
+     "",
+     "26,923",
+     "",
+     "26,615",
+     "",
+     "110,443"
+    ],
+    [
+     "SEC Filing Fee",
+     "",
+     "6,709",
+     "",
+     "11,568",
+     "",
+     "36,339"
+    ],
+    [
+     "Professional Fees - Other",
+     "",
+     "1,880",
+     "",
+     "52,948",
+     "",
+     "69,799"
+    ],
+    [
+     "Professional Fees",
+     "",
+     "50,812",
+     "",
+     "183,372",
+     "",
+     "427,876"
+    ],
+    [
+     "Rent Expense",
+     "",
+     "69,503",
+     "",
+     "44,022",
+     "",
+     "222,654"
+    ],
+    [
+     "Tax-China Office Operation",
+     "",
+     "-",
+     "",
+     "10,166",
+     "",
+     "11,466"
+    ],
+    [
+     "Telephone Expense",
+     "",
+     "406",
+     "",
+     "-",
+     "",
+     "1,619"
+    ],
+    [
+     "Travel Expense",
+     "",
+     "23,536",
+     "",
+     "13,805",
+     "",
+     "86,844"
+    ],
+    [
+     "Utilities",
+     "",
+     "5,249",
+     "",
+     "3,494",
+     "",
+     "16,034"
+    ],
+    [
+     "Total Expense",
+     "$",
+     "415,931",
+     "$",
+     "358,831",
+     "$",
+     "1,321,924"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1064,
+    "end_line": 1111
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements."
+    },
+    "note": null
+   },
+   "prose_before": "The Company\u2019s loans to GreenSaver Corp. of $1,538,462 raised substantial doubt about it\u2019s ability to carry out it\u2019s operational business plan and cause uncertainty about its cash flows immediately, such borrows or withdraws may raise substantial doubt about the Company\u2019s ability to continue as going concern immediately. The Company amended the loan agreement with new management of the Greensaver Corp and new management of Greensaver Corp will start paying the principal and interest to the Company over the next 3 years, the loan balance will be paid off by July 31, 2015 based on the amended loan agreement signed on March 2013. Due to GreenSaver Corp is in reorganization under the Chinese laws, there will be uncertainty about the Greesaver Corp. The risk of the loan in default is significant high. If the loan is in default, then the Company will be required to cease or curtail its operation immediately.\nNOTE E \u2013 GOING CONCERN (Continue)\nThere is no guarantee that the Company will be able to raise enough capital or generate revenues to sustain its operations and carry out its business plan. These conditions raise substantial doubt about the Company\u2019s ability to continue as a going concern. The financial statements do not include adjustments that might result from the outcome of this uncertainty and if the Company is unable to generate significant revenue or secure financing, then the Company may be required to cease or curtail its operation.\nExhibit A",
+   "prose_after": "Item 9. Changes In and Disagreements With Accountants on Accounting and Financial Disclosures.\nNone\nItem 9A. Controls and Procedures.\nEvaluation of Disclosure Controls and Procedures\nThe Company\u2019s Chief Executive Officer and Chief Financial Officer have evaluated the effectiveness of the Company\u2019s disclosure controls and procedures (as defined in Rules 13a-15(e) and 15d-15(e) under the Exchange Act) as of December 31, 2013. Based upon such evaluation, the Chief Executive Officer and Chief Financial Officer have concluded that, as of December 31, 2013, the Company\u2019s disclosure controls and procedures were not effective. This conclusion by the Company\u2019s Chief Executive Officer and Chief Financial Officer does not relate to reporting periods after December 31, 2013.\nManagement\u2019s Report on Internal Control Over Financial Reporting\nUnder the supervision and with the participation of our management, including our Chief Executive Officer and Chief Financial Officer, we conducted an evaluation of the effectiveness of our internal control over financial reporting as of December 31, 2013 based on the framework stated by the Committee of Sponsoring Organizations of the Treadway Commission.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1111,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "51",
+     "Chairman of the Board, CEO"
+    ],
+    [
+     "Wei Wu",
+     "56",
+     "Director, President, COO"
+    ],
+    [
+     "Simon Bai",
+     "55",
+     "Chief Financial Officer"
+    ],
+    [
+     "Huitao Zhou",
+     "63",
+     "Director"
+    ],
+    [
+     "Hong Tao Bai",
+     "39",
+     "Vice President"
+    ],
+    [
+     "JianWu Zhang",
+     "51",
+     "Director"
+    ],
+    [
+     "Ming Liu",
+     "56",
+     "Director"
+    ],
+    [
+     "Nan Su",
+     "41",
+     "CT[ ]"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1156,
+    "end_line": 1169
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance with Section 16(a) of the Exchange Act."
+    },
+    "note": null
+   },
+   "prose_before": "In order to mitigate these material weaknesses to the fullest extent possible, all work of the CFO is reviewed by the CEO. All unexpected results are investigated. At any time, if it appears that any control can be implemented to continue to mitigate such weaknesses, it will be immediately implemented.\nChanges in Internal Control Over Financial Reporting\nNo change in the Company\u2019s internal control over financial reporting occurred during the period ended December 31, 2013, that materially affected, or is reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nPART III\nItem 10. Directors, Executive Officers, Promoters, Control Persons and Corporate Governance; Compliance with Section 16(a) of the Exchange Act.\nDirectors and Officers\nThe board of directors elects our executive officers annually. A majority vote of the directors who are in office is required to fill vacancies. Each director shall be elected for the term of one year, and until his successor is elected and qualified, or until his earlier resignation or removal. Our directors and executive officers are as follows:",
+   "prose_after": "Zhi Yong Li joined us in February, 2008, founder of Hyperera, Inc., and has been Chairman and CEO since then. In June 1982, he received a Business Administration Associated Degree at Beijing Ren Min University of China. In year 1987 to 1990, he was a Qinggongye department manager of Food Industry Company. In year 1991 to 1993, he was the Vice-manager of Country Construct Material Company. In year 1994 to 2000, he was the manager of Beijing Zhichengjingmao Trading company. In year 2001 to 2003, he was the president of Beijing Zhishichengke Corporation. In 2004 to January 2008, he was the General Manager of Beijing Chaoranchuangshi Technology & Trade Co. Accordingly, as a member of the board, Mr. Li contributes the benefits of his executive leadership and management experience as well as his relationship with one of our suppliers. As co-founder, he also contributes his knowledge of the company and a deep understanding of all aspects of our business, products and markets, as well substantial experience developing corporate strategy, assessing emerging industry trends, and business operations.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1177,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Year",
+     "Salary",
+     "",
+     "Bonus",
+     "",
+     "Stock\n\nawards",
+     "",
+     "Option\n\nawards",
+     "",
+     "N[ ]\u2022\n\nequity\n\nincentive\n\nplan\n\ncompensation",
+     "",
+     "N[ ]\u2022\n\nqualified\n\ndeferred\n\ncompensation",
+     "",
+     "All other\n\ncompensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "Chairman",
+     "2013",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wei Wu",
+     "President",
+     "2011",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "2012",
+     "$",
+     "5,294.12",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "$",
+     "5,294.12"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Simon Bai",
+     "CF[ ]",
+     "2013",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "",
+     "",
+     "2012",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1228,
+    "end_line": 1249
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "\u25cf Having any administrative proceeding been threatened against you related to their involvement in any type of business, securities, or banking activity.\nCode of Ethics\nWe do not currently have a Code of Ethics applicable to our principal executive, financial or accounting officer.\nCompliance with Section 16(a) of the Exchange Act\nCompliance is not required.\nItem 11. Executive Compensation.\nSummary Compensation Table\nSummary Compensation Table\nThe table below summarizes all compensation awarded to, earned by, or paid to our Principal Executive Officer, our two most highly compensated executive officers other than our PEO who occupied such position at the end of our latest fiscal year and up to two additional executive officers who would have been included in the table below except for the fact that they were not executive officers at the end of our latest fiscal year, by us, or by any third party where the purpose of a transaction was to furnish compensation, for all services rendered in all capacities to us for the years ended December 31, 2013 and 2012.",
+   "prose_after": "Summary Equity Awards Table\nThe following table sets forth certain information for our executive officers concerning unexercised options, stock that has not vested, and\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END DECEMBER 31, 2013",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1211,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1249,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions\n\n(#)\n\nExercisable",
+     "",
+     "Number of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nOptions\n\n(#)\n\nUnexercisable",
+     "",
+     "Equity\n\nIncentive\n\nPlan\n\nAwards:\n\nNumber of\n\nSecurities\n\nUnderlying\n\nUnexercised\n\nUnearned\n\nOptions\n\n(#)",
+     "",
+     "Option\n\nExercise\n\nPrice\n\n($)",
+     "",
+     "Option\n\nExpiration\n\nDate",
+     "",
+     "Number of\n\nShares\n\n[ ][ ] Units [ ]f\n\nStock\n\nThat\n\nHave\n\nN[ ]t\n\nVested\n\n(#)",
+     "",
+     "Market\n\nValue [ ]f\n\nShares [ ][ ]\n\nUnits [ ]f\n\nStock\n\nThat\n\nHave\n\nN[ ]t\n\nVested\n\n($)",
+     "",
+     "Equity\n\nIncentive\n\nPlan\n\nAwards:\n\nNumber of\n\nUnearned\n\nShares,\n\nUnits or\n\nOther\n\nRights\n\nThat Have\n\nN[ ]t Vested \n\n(#)",
+     "",
+     "Equity\n\nIncentive\n\nPlan\n\nAwards:\n\nMarket\n\n[ ][ ] Payout\n\nValue of\n\nUnearned\n\nShares,\n\nUnits or\n\nOther\n\nRights\n\nThat Have\n\nN[ ]t Vested\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Wei Wu",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Simon Bai",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1258,
+    "end_line": 1294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "Summary Equity Awards Table\nThe following table sets forth certain information for our executive officers concerning unexercised options, stock that has not vested, and\nOUTSTANDING EQUITY AWARDS AT FISCAL YEAR-END DECEMBER 31, 2013",
+   "prose_after": "Narrative disclosure to summary compensation and option tables\nWe have an oral agreement to pay Wei Wu a monthly salary of $734 to June 30, 2009. Beginning on October, 2010, we have an oral agreement to pay Wei Wu a monthly salary of $1470.59. Beginning on January 2011, we had an oral agreement to pay Wei Wu monthly salary of $ 1323.53. In May 2011 this agreement was suspended and we have no agreement to pay Wei Wu any salary. We have no other agreements concerning employment or compensation of our executive officers. Compensation decisions concerning our executive officers are made by the Board of Directors annually.\nAt no time during the last fiscal year with respect to any person listed in the Table above was there:\n\u25cf any outstanding option or other equity-based award repriced or otherwise materially modified (such as by extension of exercise periods, the change of vesting or forfeiture conditions, the change or elimination of applicable performance criteria, or the change of the bases upon which returns are determined;",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Fees\n\nearned\n\nor paid\n\nin cash\n\n($)",
+     "",
+     "Stock\n\nawards\n\n($)",
+     "",
+     "Option\n\nawards\n\n($)",
+     "",
+     "Non-equity\n\nincentive\n\nplan\n\ncompensation\n\n($)",
+     "",
+     "Nonqualified\n\ndeferred\n\ncompensation\n\nearnings\n\n($)",
+     "",
+     "All other\n\ncompensation\n\n($)",
+     "",
+     "Total\n\n($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li,",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Huitao Zhou,",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "JianWu Zhang,",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Ming Liu",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1315,
+    "end_line": 1336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "Executive Compensation."
+    },
+    "note": null
+   },
+   "prose_before": "We have an oral agreement to pay Wei Wu a monthly salary of $734 to June 30, 2009. Beginning on October, 2010, we have an oral agreement to pay Wei Wu a monthly salary of $1470.59. Beginning on January 2011, we had an oral agreement to pay Wei Wu monthly salary of $ 1323.53. In May 2011 this agreement was suspended and we have no agreement to pay Wei Wu any salary. We have no other agreements concerning employment or compensation of our executive officers. Compensation decisions concerning our executive officers are made by the Board of Directors annually.\nAt no time during the last fiscal year with respect to any person listed in the Table above was there:\n\u25cf any outstanding option or other equity-based award repriced or otherwise materially modified (such as by extension of exercise periods, the change of vesting or forfeiture conditions, the change or elimination of applicable performance criteria, or the change of the bases upon which returns are determined;\n\u25cf any waiver or modification of any specified performance target, goal or condition to payout with respect to any amount included in non-stock incentive plan compensation or payouts;\n\u25cf any option or equity grant;\n\u25cf any non-equity incentive plan award made to a named executive officer;\n\u25cf any nonqualified deferred compensation plans including nonqualified defined contribution plans; or\n\u25cf any payment for any item to be included under All Other Compensation (column (i)) in the Summary Compensation Table.\nBoard of Directors\nDirector Compensation for year ended December 31, 2013",
+   "prose_after": "We have no compensation arrangements (such as fees for retainer, committee service, service as chairman of the board or a committee, and meeting attendance) with directors.\nItem 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe following tables set forth the ownership, as of the date of this prospectus, of our common stock by each person known by us to be the beneficial owner of more than 5% of our outstanding common stock, our directors, and our executive officers and directors as a group. To the best of our knowledge, the persons named have sole voting and investment power with respect to such shares, except as otherwise noted. There are not any pending or anticipated arrangements that may cause a change in control.\nThe information presented below regarding beneficial ownership of our voting securities has been presented in accordance with the rules of the Securities and Exchange Commission and is not necessarily indicative of ownership for any other purpose. Under these rules, a person is deemed to be a \"beneficial owner\" of a security if that person has or shares the power to vote or direct the voting of the security or the power to dispose or direct the disposition of the security. A person is deemed to own beneficially any security as to which such person has the right to acquire sole or shared voting or investment power within 60 days through the conversion or exercise of any convertible security, warrant, option or other right. More than one person may be deemed to be a beneficial owner of the same securities. The percentage of beneficial ownership by any person as of a particular date is calculated by dividing the number of shares beneficially owned by such person, which includes the number of shares as to which such person has the right to acquire voting or investment power within 60 days, by the sum of the number of shares outstanding as of such date plus the number of shares as to which such person has the right to acquire voting or investment power within 60 days. Consequently, the denominator used for calculating such percentage may be different for each beneficial owner. Except as otherwise indicated below and under applicable community property laws, we believe that the beneficial owners of our common stock listed below have sole voting and investment power with respect to the shares shown. The business address of the shareholders is 2316 South Wentworth Avenue, Chicago, IL 60616, USA.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1310,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 1344,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Number of\n\nShares",
+     "",
+     "% of\n\nCommon\n\nShare",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "Chairman",
+     "",
+     "10,000,000",
+     "",
+     "24.94%"
+    ],
+    [
+     "Wei Wu",
+     "President",
+     "",
+     "5,000,000",
+     "",
+     "12.47%"
+    ],
+    [
+     "Hui Tao Zhou",
+     "Director",
+     "",
+     "5,000,000",
+     "",
+     "12.47%"
+    ],
+    [
+     "Jian Wu Zhang",
+     "Director",
+     "",
+     "100,000",
+     "",
+     "0.25%"
+    ],
+    [
+     "Ming Liu",
+     "Director",
+     "",
+     "100,000",
+     "",
+     "0.25%"
+    ],
+    [
+     "Hong Tao Bai",
+     "Vice-President",
+     "",
+     "100,000",
+     "",
+     "0.25%"
+    ],
+    [
+     "Nan Su",
+     "CT[ ]",
+     "",
+     "100,000",
+     "",
+     "0.25%"
+    ],
+    [
+     "All officers and directors as a group [8 persons]",
+     "",
+     "",
+     "20,400,000",
+     "",
+     "50.87%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1347,
+    "end_line": 1366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "The information presented below regarding beneficial ownership of our voting securities has been presented in accordance with the rules of the Securities and Exchange Commission and is not necessarily indicative of ownership for any other purpose. Under these rules, a person is deemed to be a \"beneficial owner\" of a security if that person has or shares the power to vote or direct the voting of the security or the power to dispose or direct the disposition of the security. A person is deemed to own beneficially any security as to which such person has the right to acquire sole or shared voting or investment power within 60 days through the conversion or exercise of any convertible security, warrant, option or other right. More than one person may be deemed to be a beneficial owner of the same securities. The percentage of beneficial ownership by any person as of a particular date is calculated by dividing the number of shares beneficially owned by such person, which includes the number of shares as to which such person has the right to acquire voting or investment power within 60 days, by the sum of the number of shares outstanding as of such date plus the number of shares as to which such person has the right to acquire voting or investment power within 60 days. Consequently, the denominator used for calculating such percentage may be different for each beneficial owner. Except as otherwise indicated below and under applicable community property laws, we believe that the beneficial owners of our common stock listed below have sole voting and investment power with respect to the shares shown. The business address of the shareholders is 2316 South Wentworth Avenue, Chicago, IL 60616, USA.",
+   "prose_after": "This table is based upon information derived from our stock records. Unless otherwise indicated in the footnotes to this table and subject to community property laws where applicable, each of the shareholders named in this table has sole or shared voting and investment power with respect to the shares indicated as beneficially owned. Except as set forth above, applicable percentages are based upon 40,104,000 shares of common stock outstanding as of March 31, 2014.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nAs of December 31, 2013, total 20,400,000 shares were issued to officers and directors were not changed. But, the total outstanding shares were changed to 40,104,000; the percentage of common shares issued to executive and non-executive officers and directors have been changed accordingly. Please see the Table below for details:",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Share QTY",
+     "",
+     "Amount",
+     "",
+     "Date",
+     "% of Common Share*",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "Chairman",
+     "",
+     "10,000,000",
+     "$",
+     "10,000.00",
+     "2/19/2008",
+     "",
+     "24.94",
+     "%"
+    ],
+    [
+     "Wei Wu",
+     "President",
+     "",
+     "5,000,000",
+     "$",
+     "5,000.00",
+     "2/19/2008",
+     "",
+     "12.47",
+     "%"
+    ],
+    [
+     "Hui Tao Zhou",
+     "Director",
+     "",
+     "5,000,000",
+     "$",
+     "5,000.00",
+     "2/19/2008",
+     "",
+     "12.47",
+     "%"
+    ],
+    [
+     "Jian Wu Zhang",
+     "Director",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Ming Liu",
+     "Director",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Hong Tao Bai",
+     "Vice-President",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Nan Su",
+     "CT[ ]",
+     "",
+     "100,000",
+     "$",
+     "3,000.00",
+     "3/31/2008",
+     "",
+     "0.25",
+     "%"
+    ],
+    [
+     "Simon Bai",
+     "CF[ ]",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "0.00",
+     "%"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "20,400,000",
+     "$",
+     "32,000.00",
+     "",
+     "",
+     "50.87",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1373,
+    "end_line": 1389
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "Certain Relationships and Related Transactions, and Director Independence."
+    },
+    "note": null
+   },
+   "prose_before": "This table is based upon information derived from our stock records. Unless otherwise indicated in the footnotes to this table and subject to community property laws where applicable, each of the shareholders named in this table has sole or shared voting and investment power with respect to the shares indicated as beneficially owned. Except as set forth above, applicable percentages are based upon 40,104,000 shares of common stock outstanding as of March 31, 2014.\nItem 13. Certain Relationships and Related Transactions, and Director Independence.\nAs of December 31, 2013, total 20,400,000 shares were issued to officers and directors were not changed. But, the total outstanding shares were changed to 40,104,000; the percentage of common shares issued to executive and non-executive officers and directors have been changed accordingly. Please see the Table below for details:",
+   "prose_after": "* The percentage was based on the total outstanding shares of 40,104,000 as of December 31, 2013.\nOn March 2, 2008, founder of the Company, Mr. Zhiyong Li opened a bank account at Chicago branch with CitiBank. Mr. Zhiyong Li loaned $500.00 to the Company to open the bank account, and the same amount have returned back to him on March, 2009. In the year of 2009, the Company\u2019s founder and CEO, Mr. Zhiyong Li have loaned $53,631 to Beijing subsidiary, Hyperera Technology (Beijing) Co. Ltd for operating and administrating expenses.\nIn 2010, the Company repaid the loan balance to Mr. Li Zhiyong. As of December 31, 2010, there was travel related expense of $985 paid by Mr. Li Zhiyong, which was accounted as loans from shareholders.\nFrom January to December 31, 2011, Mr. Zhiyong Li advanced additional amount of $6,901 to the Company. The loans would be repaid as request without interest. As of December 31, 2011, the balance of loan from Shareholder was $7,886.\nIn 2012, Mr. Zhiyong Li advanced additional $24,867 to the Company. Therefore, as of December 31, 2012, the balance of loan from Shareholder was $32,753. The loans would be repaid as request without interest.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1346,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2013",
+     "",
+     "2012",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Audit Fees",
+     "$",
+     "20,000",
+     "$",
+     "20,000"
+    ],
+    [
+     "Audit-Related Fees",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tax Fees",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "All Other Fees",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "20,000",
+     "$",
+     "20,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1430,
+    "end_line": 1442
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "Principal Accountant Fees and Services."
+    },
+    "note": null
+   },
+   "prose_before": "On April 15, 2011, Beijing Chaoran returned the loan amount of $1,538,462 to the Company; the Company signed a loan agreement with un-related party Greensaver Corporation to advance loan amount of $1,538,462 at annual interest rate of 10%. The loan term is for short-term 6 months.\nAs of December 31, 2012, the balance of loan amount to Related Party Supplier-Beijing Chaoran was $5,873, and the interest incomes from Beijng Chaoran were based on annual interest rate of 3% in year 2012.\nAs of December 31, 2013, the balance of loan amount to Related Party Supplier-Beijing Chaoran is $135,232, and the interest incomes from Beijng Chaoran were based on annual interest rate of 3%.\nDirector Independence\nOur board of directors has determined that we do not have a board member that qualifies as \u201cindependent\u201d as the term is used in Item 7(d)(3)(iv)(B) of Schedule 14A under the Securities Exchange Act of 1934, as amended, and as defined by Rule 4200(a)(15) of the NASDAQ Marketplace Rules.\nItem 14. Principal Accountant Fees and Services.\nEnterprise CPA was our independent auditors for the fiscal years ended December 31, 2013 and 2012.\nThe following table shows the fees paid or accrued by us for the audit and other services provided by our auditor for fiscal 2013 and 2012.",
+   "prose_after": "As defined by the SEC, (i) \u201caudit fees\u201d are fees for professional services rendered by our principal accountant for the audit of our annual financial statements and review of financial statements included in our Form 10-Q, or for services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for those fiscal years; (ii) \u201caudit-related fees\u201d are fees for assurance and related services by our principal accountant that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \u201caudit fees;\u201d (iii) \u201ctax fees\u201d are fees for professional services rendered by our principal accountant for tax compliance, tax advice, and tax planning [No fees of this sort were billed by Salberg & Co., our principal accountant during 2011 and 2012] ; and (iv) \u201call other fees\u201d are fees for products and services provided by our principal accountant, other than the services reported under \u201caudit fees,\u201d \u201caudit-related fees,\u201d and \u201ctax fees.\u201d",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1413,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1444,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Document Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "5.1",
+     "Opinion of China Counsel on Greensaver Transaction"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Loan Modification Agreement, Greensaver Transaction"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "CERTIFICATION of CEO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 302 OF THE SARBANES-OXLEY ACT OF 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "CERTIFICATION of CFO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 302 OF THE SARBANES-OXLEY ACT OF 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1 *",
+     "CERTIFICATION of CEO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 906 OF THE SARBANES-OXLEYACT OF 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2 *",
+     "CERTIFICATION of CFO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 906 OF THE SARBANES-OXLEYACT OF 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "Interactive data files formatted in XBRL (eXtensible Business Reporting Language): (i) the Consolidated Balance Sheets, (ii) the Consolidated Statements of Operations, (iii) the Consolidated Statements of Cash Flows, and (iv) the Notes to the Consolidated Financial Statements.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document**"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1449,
+    "end_line": 1480
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "As defined by the SEC, (i) \u201caudit fees\u201d are fees for professional services rendered by our principal accountant for the audit of our annual financial statements and review of financial statements included in our Form 10-Q, or for services that are normally provided by the accountant in connection with statutory and regulatory filings or engagements for those fiscal years; (ii) \u201caudit-related fees\u201d are fees for assurance and related services by our principal accountant that are reasonably related to the performance of the audit or review of our financial statements and are not reported under \u201caudit fees;\u201d (iii) \u201ctax fees\u201d are fees for professional services rendered by our principal accountant for tax compliance, tax advice, and tax planning [No fees of this sort were billed by Salberg & Co., our principal accountant during 2011 and 2012] ; and (iv) \u201call other fees\u201d are fees for products and services provided by our principal accountant, other than the services reported under \u201caudit fees,\u201d \u201caudit-related fees,\u201d and \u201ctax fees.\u201d\nItem 15. Exhibits.",
+   "prose_after": "* This exhibit shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934 or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933 of the Securities Exchange Act of 1934, whether made before or after the date hereof and irrespective of any general incorporation language in any filings.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1446,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1484,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Hyperera, Inc., a Nevada corporation",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Date: April 14, 2014",
+     "By:",
+     "/s/ Zhi Yong Li",
+     ""
+    ],
+    [
+     "",
+     "Name:",
+     "Zhi Yong Li",
+     ""
+    ],
+    [
+     "",
+     "Title:",
+     "Principal Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Hyperera, Inc., a Nevada corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1491,
+    "end_line": 1499
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "* This exhibit shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934 or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933 of the Securities Exchange Act of 1934, whether made before or after the date hereof and irrespective of any general incorporation language in any filings.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Signature",
+     "Position",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Zhi Yong Li",
+     "/s/ Zhi Yong Li",
+     "Principal Executive Officer and Director",
+     "April 14, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Wei Wu",
+     "/s/ Wei Wu",
+     "Director, President, COO",
+     "April 14, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Simon Bai",
+     "/s/ Simon Bai",
+     "Principal Financial Officer and Principal Accounting Officer",
+     "April 14, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Huitao Zhou",
+     "/s/ Huitao Zhou",
+     "Director",
+     "April 14, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "JianWu Zhang",
+     "/s/ JianWu Zhang",
+     "Director",
+     "April 14, 2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ming Liu",
+     "/s/ Ming Liu",
+     "Director",
+     "April 14, 2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1502,
+    "end_line": 1524
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons on behalf of the registrant and in the capacities and on the dates indicated:",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1486,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1524,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Document Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "5.1",
+     "Opinion of China Counsel on Greensaver Transaction"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Loan Modification Agreement, Greensaver Transaction"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "CERTIFICATION of CEO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 302 OF THE SARBANES-OXLEY ACT OF 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "CERTIFICATION of CFO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 302 OF THE SARBANES-OXLEY ACT OF 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1 *",
+     "CERTIFICATION of CEO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 906 OF THE SARBANES-OXLEYACT OF 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2 *",
+     "CERTIFICATION of CFO PURSUANT TO 18 U.S.C. SECTION 1350, AS ADOPTED PURSUANT TO SECTION 906 OF THE SARBANES-OXLEYACT OF 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Exhibit 101",
+     "Interactive data files formatted in XBRL (eXtensible Business Reporting Language): (i) the Consolidated Balance Sheets, (ii) the Consolidated Statements of Operations, (iii) the Consolidated Statements of Cash Flows, and (iv) the Notes to the Consolidated Financial Statements.**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document**"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document**"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1529,
+    "end_line": 1560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits."
+    },
+    "note": null
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "* This exhibit shall not be deemed \u201cfiled\u201d for purposes of Section 18 of the Securities Exchange Act of 1934 or otherwise subject to the liabilities of that section, nor shall it be deemed incorporated by reference in any filing under the Securities Act of 1933 of the Securities Exchange Act of 1934, whether made before or after the date hereof and irrespective of any general incorporation language in any filings.\n** XBRL (Extensible Business Reporting Language) information is furnished and not filed or a part of a registration statement or prospectus for purposes of Sections 11 or 12 of the Securities Act of 1933, as amended, is deemed not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, and otherwise is not subject to liability under these sections.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1526,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 1565,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

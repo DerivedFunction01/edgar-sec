@@ -1,0 +1,7539 @@
+{
+ "accession": "0001437749-20-001794",
+ "cik": "0000088948",
+ "form": "10-Q",
+ "filing_date": "2020-02-05",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "senea20200124_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "For the Quarter Ended December 28, 2019",
+     "Commission File Number 0-01989"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 10,
+    "end_line": 13
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D. C. 20549\nForm 10-Q\nQUARTERLY REPORT UNDER SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934",
+   "prose_after": "Seneca Foods Corporation\n(Exact name of Company as specified in its charter)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "New York",
+     "16-0733425"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I. R. S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Seneca Foods Corporation\n(Exact name of Company as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3736 South Main Street, Marion, New York",
+     "14505"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Company's telephone number, including area code 315/926-8100\nNot Applicable\nFormer name, former address and former fiscal year, if changed since last report\nIndicate by check mark whether the Company (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Company was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No [ ]\nIndicate by check mark whether the Company is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company\" and an emerging growth company in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Name of Exchange on"
+    ],
+    [
+     "Title of Each Class",
+     "Trading Symbol",
+     "Which Registered"
+    ],
+    [
+     "Common Stock Class A, $.25 Par",
+     "SENEA",
+     "NASDAQ Global Market"
+    ],
+    [
+     "Common Stock Class B, $.25 Par",
+     "SENEB",
+     "NASDAQ Global Market"
+    ]
+   ],
+   "caption_stack": [
+    "Name of Exchange on"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 54,
+    "end_line": 60
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically, every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\nYes [X] No [ ]\nIndicate by check mark whether the Company is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company or an emerging growth company. See the definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company\" and an emerging growth company in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ]  Accelerated filer [X]  Non-accelerated filer [ ]  Smaller reporting company [X]\nEmerging growth company [ ]\nIndicate by check mark whether the Company is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nIf an emerging growth company, indicate by checkmark if the Company has elected not to use the extended transition period for complying with any new or revised financial accounting standards pursuant to Section 13(a) of the Exchange Act [ ]",
+   "prose_after": "The number of shares outstanding of each of the issuer's classes of common stock at the latest practical date are:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Class",
+     "Shares Outstanding at January 24, 2020"
+    ],
+    [
+     "Common Stock Class A, $.25 Par",
+     "7,418,535"
+    ],
+    [
+     "Common Stock Class B, $.25 Par",
+     "1,735,636"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 63,
+    "end_line": 69
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The number of shares outstanding of each of the issuer's classes of common stock at the latest practical date are:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Seneca Foods Corporation",
+     "",
+     ""
+    ],
+    [
+     "Quarterly Report on Form 10-Q",
+     "",
+     ""
+    ],
+    [
+     "Table of Contents",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART 1",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets-December 28, 2019, December 29, 2018 and March 31, 2019",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Net Earnings-Three and Nine Months Ended December 28, 2019 and , December 29, 2018",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Comprehensive Income-Three and Nine Months Ended December 28, 2019 and , December 29, 2018",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows-Nine Months Ended December 28, 2019 and , December 29, 2018",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statement of Stockholders' Equity-Three and Nine Months Ended December 28, 2019",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Management's Discussion and Analysis of Financial Condition and Results of Operations",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "23"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Controls and Procedures",
+     "24"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Defaults Upon Senior Securities",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6",
+     "Exhibits",
+     "25"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "26"
+    ]
+   ],
+   "caption_stack": [
+    "Seneca Foods Corporation",
+    "Quarterly Report on Form 10-Q",
+    "Table of Contents"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 118
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED BALANCE SHEETS (In Thousands, Except Per Share Data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 69,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Unaudited",
+     "",
+     "",
+     "Unaudited",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "",
+     "March 31,\n\n\n\n2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents",
+     "$",
+     "13,858",
+     "",
+     "$",
+     "12,828",
+     "",
+     "$",
+     "11,480",
+     ""
+    ],
+    [
+     "Accounts Receivable, Net",
+     "",
+     "79,040",
+     "",
+     "",
+     "82,892",
+     "",
+     "",
+     "84,122",
+     ""
+    ],
+    [
+     "Contracts Receivable",
+     "",
+     "7,620",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current Assets Held For Sale",
+     "",
+     "-",
+     "",
+     "",
+     "20,339",
+     "",
+     "",
+     "1,568",
+     ""
+    ],
+    [
+     "Current Assets Held For Sale-Discontinued Operations",
+     "",
+     "98",
+     "",
+     "",
+     "12,063",
+     "",
+     "",
+     "98",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "493,065",
+     "",
+     "",
+     "575,935",
+     "",
+     "",
+     "501,684",
+     ""
+    ],
+    [
+     "Refundable Income Taxes",
+     "",
+     "-",
+     "",
+     "",
+     "1,422",
+     "",
+     "",
+     "1,221",
+     ""
+    ],
+    [
+     "Other Current Assets",
+     "",
+     "6,272",
+     "",
+     "",
+     "4,520",
+     "",
+     "",
+     "3,075",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "599,953",
+     "",
+     "",
+     "709,999",
+     "",
+     "",
+     "603,248",
+     ""
+    ],
+    [
+     "Property, Plant and Equipment, Net",
+     "",
+     "219,311",
+     "",
+     "",
+     "246,014",
+     "",
+     "",
+     "239,273",
+     ""
+    ],
+    [
+     "Right-of-Use Assets Operating Net",
+     "",
+     "67,915",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Right-of-Use Assets Financing, Net",
+     "",
+     "34,784",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Deferred Income Taxes, Net",
+     "",
+     "-",
+     "",
+     "",
+     "1,417",
+     "",
+     "",
+     "2,417",
+     ""
+    ],
+    [
+     "Noncurrent Assets Held For Sale-Discontinued Operations",
+     "",
+     "1,054",
+     "",
+     "",
+     "1,739",
+     "",
+     "",
+     "1,143",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "9,643",
+     "",
+     "",
+     "2,890",
+     "",
+     "",
+     "2,801",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "932,660",
+     "",
+     "$",
+     "962,059",
+     "",
+     "$",
+     "848,882",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable",
+     "$",
+     "84,295",
+     "",
+     "$",
+     "93,586",
+     "",
+     "$",
+     "61,024",
+     ""
+    ],
+    [
+     "Deferred Revenue",
+     "",
+     "12,105",
+     "",
+     "",
+     "6,829",
+     "",
+     "",
+     "4,098",
+     ""
+    ],
+    [
+     "Accrued Vacation",
+     "",
+     "11,898",
+     "",
+     "",
+     "11,404",
+     "",
+     "",
+     "11,678",
+     ""
+    ],
+    [
+     "Accrued Payroll",
+     "",
+     "6,157",
+     "",
+     "",
+     "5,350",
+     "",
+     "",
+     "5,105",
+     ""
+    ],
+    [
+     "Other Accrued Expenses",
+     "",
+     "19,903",
+     "",
+     "",
+     "22,194",
+     "",
+     "",
+     "19,363",
+     ""
+    ],
+    [
+     "Income Taxes Payable",
+     "",
+     "4,869",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current Liabilities Held For Sale",
+     "",
+     "-",
+     "",
+     "",
+     "142",
+     "",
+     "",
+     "61",
+     ""
+    ],
+    [
+     "Current Liabilities Held For Sale-Discontinued Operations",
+     "",
+     "2,744",
+     "",
+     "",
+     "8,697",
+     "",
+     "",
+     "4,285",
+     ""
+    ],
+    [
+     "Current Portion of Operating Lease Obligations",
+     "",
+     "24,430",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current Portion of Financing Lease Obligations",
+     "",
+     "6,584",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Current Portion of Capital Lease Obligations",
+     "",
+     "-",
+     "",
+     "",
+     "5,922",
+     "",
+     "",
+     "6,418",
+     ""
+    ],
+    [
+     "Current Portion of Long-Term Debt",
+     "",
+     "-",
+     "",
+     "",
+     "314,657",
+     "",
+     "",
+     "345",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "172,985",
+     "",
+     "",
+     "468,781",
+     "",
+     "",
+     "112,377",
+     ""
+    ],
+    [
+     "Long-Term Debt, Less Current Portion",
+     "",
+     "225,337",
+     "",
+     "",
+     "10,715",
+     "",
+     "",
+     "265,900",
+     ""
+    ],
+    [
+     "Operating Lease Obligations, Less Current Portion",
+     "",
+     "47,965",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Financing Lease Obligations, Less Current Portion",
+     "",
+     "27,007",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Capital Lease Obligations, Less Current Portion",
+     "",
+     "-",
+     "",
+     "",
+     "29,730",
+     "",
+     "",
+     "31,286",
+     ""
+    ],
+    [
+     "Pension Liabilities",
+     "",
+     "19,463",
+     "",
+     "",
+     "27,356",
+     "",
+     "",
+     "17,349",
+     ""
+    ],
+    [
+     "Deferred Income Taxes, Net",
+     "",
+     "866",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Noncurrent Liabilities Held For Sale",
+     "",
+     "-",
+     "",
+     "",
+     "593",
+     "",
+     "",
+     "305",
+     ""
+    ],
+    [
+     "Other Long-Term Liabilities",
+     "",
+     "3,852",
+     "",
+     "",
+     "4,851",
+     "",
+     "",
+     "4,180",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "497,475",
+     "",
+     "",
+     "542,026",
+     "",
+     "",
+     "431,397",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred Stock",
+     "",
+     "703",
+     "",
+     "",
+     "707",
+     "",
+     "",
+     "707",
+     ""
+    ],
+    [
+     "Common Stock, $.25 Par Value Per Share",
+     "",
+     "3,040",
+     "",
+     "",
+     "3,038",
+     "",
+     "",
+     "3,039",
+     ""
+    ],
+    [
+     "Additional Paid-in Capital",
+     "",
+     "98,338",
+     "",
+     "",
+     "98,236",
+     "",
+     "",
+     "98,260",
+     ""
+    ],
+    [
+     "Treasury Stock, at Cost",
+     "",
+     "(87,194)",
+     "",
+     "",
+     "(74,896)",
+     "",
+     "",
+     "(75,740)",
+     ""
+    ],
+    [
+     "Accumulated Other Comprehensive Loss",
+     "",
+     "(18,285)",
+     "",
+     "",
+     "(25,186)",
+     "",
+     "",
+     "(18,285)",
+     ""
+    ],
+    [
+     "Retained Earnings",
+     "",
+     "438,583",
+     "",
+     "",
+     "418,134",
+     "",
+     "",
+     "409,504",
+     ""
+    ],
+    [
+     "Total Stockholders' Equity",
+     "",
+     "435,185",
+     "",
+     "",
+     "420,033",
+     "",
+     "",
+     "417,485",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders\u2019 Equity",
+     "$",
+     "932,660",
+     "",
+     "$",
+     "962,059",
+     "",
+     "$",
+     "848,882",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 121,
+    "end_line": 192
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "SENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED BALANCE SHEETS (In Thousands, Except Per Share Data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF NET EARNINGS (Unaudited) (In Thousands, Except Per Share Data)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 118,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "392,971",
+     "",
+     "$",
+     "372,238",
+     "",
+     "$",
+     "1,027,898",
+     "",
+     "$",
+     "936,991",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Product Sold",
+     "",
+     "340,694",
+     "",
+     "",
+     "374,334",
+     "",
+     "",
+     "932,392",
+     "",
+     "",
+     "911,291",
+     ""
+    ],
+    [
+     "Selling, General and Administrative",
+     "",
+     "19,986",
+     "",
+     "",
+     "19,389",
+     "",
+     "",
+     "53,936",
+     "",
+     "",
+     "55,432",
+     ""
+    ],
+    [
+     "Plant Restructuring Charge",
+     "",
+     "793",
+     "",
+     "",
+     "1,396",
+     "",
+     "",
+     "6,745",
+     "",
+     "",
+     "2,279",
+     ""
+    ],
+    [
+     "Other Operating (Income) Loss",
+     "",
+     "(1,617)",
+     "",
+     "",
+     "776",
+     "",
+     "",
+     "(8,618)",
+     "",
+     "",
+     "(3,498)",
+     ""
+    ],
+    [
+     "Total Costs and Expenses",
+     "",
+     "359,856",
+     "",
+     "",
+     "395,895",
+     "",
+     "",
+     "984,455",
+     "",
+     "",
+     "965,504",
+     ""
+    ],
+    [
+     "Operating Income (Loss)",
+     "",
+     "33,115",
+     "",
+     "",
+     "(23,657)",
+     "",
+     "",
+     "43,443",
+     "",
+     "",
+     "(28,513)",
+     ""
+    ],
+    [
+     "Other Income",
+     "",
+     "(1,656)",
+     "",
+     "",
+     "(607)",
+     "",
+     "",
+     "(5,263)",
+     "",
+     "",
+     "(2,649)",
+     ""
+    ],
+    [
+     "Interest Expense, Net",
+     "",
+     "2,690",
+     "",
+     "",
+     "3,864",
+     "",
+     "",
+     "9,183",
+     "",
+     "",
+     "11,587",
+     ""
+    ],
+    [
+     "Earnings (Loss) From Continuing Operations Before Income Taxes",
+     "",
+     "32,081",
+     "",
+     "",
+     "(26,914)",
+     "",
+     "",
+     "39,523",
+     "",
+     "",
+     "(37,451)",
+     ""
+    ],
+    [
+     "Income Taxes (Benefit) From Continuing Operations",
+     "",
+     "7,653",
+     "",
+     "",
+     "(6,874)",
+     "",
+     "",
+     "9,357",
+     "",
+     "",
+     "(9,617)",
+     ""
+    ],
+    [
+     "Earnings (Loss) From Continuing Operations",
+     "",
+     "24,428",
+     "",
+     "",
+     "(20,040)",
+     "",
+     "",
+     "30,166",
+     "",
+     "",
+     "(27,834)",
+     ""
+    ],
+    [
+     "Earnings From Discontinued Operations (net of income taxes)",
+     "",
+     "955",
+     "",
+     "",
+     "34,056",
+     "",
+     "",
+     "955",
+     "",
+     "",
+     "42,211",
+     ""
+    ],
+    [
+     "Net Earnings",
+     "$",
+     "25,383",
+     "",
+     "$",
+     "14,016",
+     "",
+     "$",
+     "31,121",
+     "",
+     "$",
+     "14,377",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic Earnings (Loss) per Common Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing Operations",
+     "$",
+     "2.65",
+     "",
+     "$",
+     "(2.07)",
+     "",
+     "$",
+     "3.23",
+     "",
+     "$",
+     "(2.86)",
+     ""
+    ],
+    [
+     "Discontinued Operations",
+     "$",
+     "0.10",
+     "",
+     "$",
+     "3.52",
+     "",
+     "$",
+     "0.10",
+     "",
+     "$",
+     "4.34",
+     ""
+    ],
+    [
+     "Net Basic Earnings per Common Share",
+     "$",
+     "2.75",
+     "",
+     "$",
+     "1.45",
+     "",
+     "$",
+     "3.33",
+     "",
+     "$",
+     "1.48",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted Earnings (Loss) per Common Share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Continuing Operations",
+     "$",
+     "2.63",
+     "",
+     "$",
+     "(2.07)",
+     "",
+     "$",
+     "3.20",
+     "",
+     "$",
+     "(2.86)",
+     ""
+    ],
+    [
+     "Discontinued Operations",
+     "$",
+     "0.10",
+     "",
+     "$",
+     "3.50",
+     "",
+     "$",
+     "0.10",
+     "",
+     "$",
+     "4.31",
+     ""
+    ],
+    [
+     "Net Diluted Earnings per Common Share",
+     "$",
+     "2.73",
+     "",
+     "$",
+     "1.43",
+     "",
+     "$",
+     "3.31",
+     "",
+     "$",
+     "1.45",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 197,
+    "end_line": 237
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF NET EARNINGS (Unaudited) (In Thousands, Except Per Share Data)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) (In Thousands)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 259,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "$",
+     "25,383",
+     "$",
+     "14,016",
+     "$",
+     "31,121",
+     "$",
+     "14,377"
+    ],
+    [
+     "Change in pension, post retirement benefits and other (net of tax)",
+     "",
+     "-",
+     "",
+     "17",
+     "",
+     "-",
+     "",
+     "119"
+    ],
+    [
+     "Total",
+     "$",
+     "25,383",
+     "$",
+     "14,033",
+     "$",
+     "31,121",
+     "$",
+     "14,496"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 242,
+    "end_line": 257
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) (In Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (In Thousands)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 194,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 259,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Earnings (Loss) From Continuing Operations",
+     "$",
+     "30,166",
+     "",
+     "$",
+     "(27,834)",
+     ""
+    ],
+    [
+     "Net Earnings From Discontinued Operations (Net of Tax)",
+     "",
+     "955",
+     "",
+     "",
+     "42,211",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to Reconcile Net Earnings (Loss) to",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Cash Provided By Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation & Amortization",
+     "",
+     "22,644",
+     "",
+     "",
+     "23,550",
+     ""
+    ],
+    [
+     "Gain on the Sale of Assets",
+     "",
+     "(9,049)",
+     "",
+     "",
+     "(55,863)",
+     ""
+    ],
+    [
+     "Provision for Restructuring and Impairment",
+     "",
+     "5,573",
+     "",
+     "",
+     "6,537",
+     ""
+    ],
+    [
+     "Deferred Income Tax Benefit",
+     "",
+     "3,283",
+     "",
+     "",
+     "4,159",
+     ""
+    ],
+    [
+     "Changes in Operating Assets and Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "",
+     "(2,538)",
+     "",
+     "",
+     "(5,537)",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "8,619",
+     "",
+     "",
+     "52,836",
+     ""
+    ],
+    [
+     "Other Current Assets",
+     "",
+     "(3,197)",
+     "",
+     "",
+     "(8,353)",
+     ""
+    ],
+    [
+     "Income Taxes",
+     "",
+     "6,763",
+     "",
+     "",
+     "(280)",
+     ""
+    ],
+    [
+     "Accounts Payable, Accrued Expenses and Other Liabilities",
+     "",
+     "52,101",
+     "",
+     "",
+     "15,004",
+     ""
+    ],
+    [
+     "Net Cash Provided By Operations",
+     "",
+     "115,320",
+     "",
+     "",
+     "46,430",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additions to Property, Plant and Equipment",
+     "",
+     "(47,681)",
+     "",
+     "",
+     "(30,468)",
+     ""
+    ],
+    [
+     "Proceeds from the Sale of Assets",
+     "",
+     "22,175",
+     "",
+     "",
+     "84,975",
+     ""
+    ],
+    [
+     "Net Cash (Used In) Provided By Investing Activities",
+     "",
+     "(25,506)",
+     "",
+     "",
+     "54,507",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-Term Borrowing",
+     "",
+     "401,053",
+     "",
+     "",
+     "419,102",
+     ""
+    ],
+    [
+     "Payments on Long-Term Debt and Lease Obligations",
+     "",
+     "(465,099)",
+     "",
+     "",
+     "(517,187)",
+     ""
+    ],
+    [
+     "Other Assets",
+     "",
+     "(7,125)",
+     "",
+     "",
+     "226",
+     ""
+    ],
+    [
+     "Payments on Financing Leases",
+     "",
+     "(4,799)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase of Treasury Stock",
+     "",
+     "(11,454)",
+     "",
+     "",
+     "(5,340)",
+     ""
+    ],
+    [
+     "Dividends",
+     "",
+     "(12)",
+     "",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "Net Cash Used In Financing Activities",
+     "",
+     "(87,436)",
+     "",
+     "",
+     "(103,211)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Increase (Decrease) in Cash and Cash Equivalents",
+     "",
+     "2,378",
+     "",
+     "",
+     "(2,274)",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, Beginning of the Period",
+     "",
+     "11,480",
+     "",
+     "",
+     "15,102",
+     ""
+    ],
+    [
+     "Cash and Cash Equivalents, End of the Period",
+     "$",
+     "13,858",
+     "",
+     "$",
+     "12,828",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Disclosures of Cash Flow Information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncash Transactions:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Property, Plant and Equipment Purchased Under Lease Obligations",
+     "$",
+     "9,782",
+     "",
+     "$",
+     "258",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 262,
+    "end_line": 316
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (In Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY (Unaudited) (In Thousands)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 259,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Preferred",
+     "",
+     "",
+     "Common",
+     "",
+     "Paid-In",
+     "",
+     "Treasury",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Retained",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Stock",
+     "",
+     "",
+     "Stock",
+     "",
+     "Capital",
+     "",
+     "Stock",
+     "",
+     "",
+     "Loss",
+     "",
+     "",
+     "Earnings",
+     "",
+     ""
+    ],
+    [
+     "First Quarter FY 2020:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2019",
+     "$",
+     "707",
+     "",
+     "$",
+     "3,039",
+     "$",
+     "98,260",
+     "$",
+     "(75,740)",
+     "",
+     "$",
+     "(18,285)",
+     "",
+     "$",
+     "409,504",
+     ""
+    ],
+    [
+     "Net earnings",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,103",
+     ""
+    ],
+    [
+     "Cash dividends paid on preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "Equity incentive program",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase treasury stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,744)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Operating lease impairment adjustment upon the adoption of ASU 2016-02 \"Leases\" (net of tax)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(2,019)",
+     ""
+    ],
+    [
+     "Balance June 29, 2019",
+     "$",
+     "707",
+     "",
+     "$",
+     "3,039",
+     "$",
+     "98,285",
+     "$",
+     "(78,484)",
+     "",
+     "$",
+     "(18,285)",
+     "",
+     "$",
+     "408,576",
+     ""
+    ],
+    [
+     "Second Quarter FY 2020:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "4,635",
+     ""
+    ],
+    [
+     "Equity incentive program",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Preferred stock conversion",
+     "",
+     "(4)",
+     "",
+     "",
+     "1",
+     "",
+     "3",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase treasury stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(5,836)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance September 28, 2019",
+     "$",
+     "703",
+     "",
+     "$",
+     "3,040",
+     "$",
+     "98,313",
+     "$",
+     "(84,320)",
+     "",
+     "$",
+     "(18,285)",
+     "",
+     "$",
+     "413,211",
+     ""
+    ],
+    [
+     "Third Quarter FY 2020:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "25,383",
+     ""
+    ],
+    [
+     "Cash dividends paid on preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "Equity incentive program",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase treasury stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(2,874)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance December 28, 2019",
+     "$",
+     "703",
+     "",
+     "$",
+     "3,040",
+     "$",
+     "98,338",
+     "$",
+     "(87,194)",
+     "",
+     "$",
+     "(18,285)",
+     "",
+     "$",
+     "438,583",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter FY 2019:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2018",
+     "$",
+     "707",
+     "",
+     "$",
+     "3,038",
+     "$",
+     "98,161",
+     "$",
+     "(69,556)",
+     "",
+     "$",
+     "(25,067)",
+     "",
+     "$",
+     "403,780",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(8,755)",
+     ""
+    ],
+    [
+     "Cash dividends paid on preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(12)",
+     ""
+    ],
+    [
+     "Equity incentive program",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in pension, post retirement benefits, other (net of tax)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(51)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance June 30, 2018",
+     "$",
+     "707",
+     "",
+     "$",
+     "3,038",
+     "$",
+     "98,186",
+     "$",
+     "(69,556)",
+     "",
+     "$",
+     "(25,118)",
+     "",
+     "$",
+     "395,013",
+     ""
+    ],
+    [
+     "Second Quarter FY 2019:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "9,116",
+     ""
+    ],
+    [
+     "Equity incentive program",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase treasury stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,579)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in pension, post retirement benefits, other (net of tax)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(51)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance September 29, 2018",
+     "$",
+     "707",
+     "",
+     "$",
+     "3,038",
+     "$",
+     "98,211",
+     "$",
+     "(71,135)",
+     "",
+     "$",
+     "(25,169)",
+     "",
+     "$",
+     "404,129",
+     ""
+    ],
+    [
+     "Third Quarter FY 2019:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net earnings",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "14,016",
+     ""
+    ],
+    [
+     "Cash dividends paid on preferred stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(11)",
+     ""
+    ],
+    [
+     "Equity incentive program",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "25",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Purchase treasury stock",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(3,761)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Change in pension, post retirement benefits, other (net of tax)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(17)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Balance December 29, 2018",
+     "$",
+     "707",
+     "",
+     "$",
+     "3,038",
+     "$",
+     "98,236",
+     "$",
+     "(74,896)",
+     "",
+     "$",
+     "(25,186)",
+     "",
+     "$",
+     "418,134",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Accumulated"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 321,
+    "end_line": 381
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nSENECA FOODS CORPORATION AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY (Unaudited) (In Thousands)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 318,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "6%",
+     "",
+     "10%",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cumulative Par",
+     "",
+     "Cumulative Par",
+     "",
+     "",
+     "",
+     "2003 Series",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Value $.25",
+     "",
+     "Value $.025",
+     "",
+     "Participating",
+     "",
+     "Participating",
+     "",
+     "Class A",
+     "",
+     "Class B",
+     ""
+    ],
+    [
+     "",
+     "Callable at Par",
+     "",
+     "Convertible",
+     "",
+     "Convertible Par",
+     "",
+     "Convertible Par",
+     "",
+     "Common Stock",
+     "",
+     "Common Stock",
+     ""
+    ],
+    [
+     "",
+     "Voting",
+     "",
+     "Voting",
+     "",
+     "Value $.025",
+     "",
+     "Value $.025",
+     "",
+     "Par Value $.25",
+     "",
+     "Par Value $.25",
+     ""
+    ],
+    [
+     "Shares authorized and designated:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 28, 2019",
+     "",
+     "200,000",
+     "",
+     "1,400,000",
+     "",
+     "37,155",
+     "",
+     "500",
+     "",
+     "20,000,000",
+     "",
+     "10,000,000"
+    ],
+    [
+     "Shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "December 28, 2019",
+     "",
+     "200,000",
+     "",
+     "807,240",
+     "",
+     "37,155",
+     "",
+     "500",
+     "",
+     "7,416,735",
+     "",
+     "1,735,636"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 382,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n1. Unaudited Condensed Consolidated Financial Statements\nIn the opinion of management, the accompanying unaudited condensed consolidated financial statements contain all adjustments, which are normal and recurring in nature, necessary to present fairly the financial position of Seneca Foods Corporation (the \u201cCompany\u201d) as of December 28, 2019 and December 29, 2018 results of its operations and its cash flows for the interim periods presented. All significant intercompany transactions and accounts have been eliminated in consolidation. The March 31, 2019 balance sheet was derived from the audited consolidated financial statements.\nThe results of operations for the three and nine month periods ended December 28, 2019 are not necessarily indicative of the results to be expected for the full year.\nDuring the nine months ended December 28, 2019, the Company sold on a gross basis including casing and labeling and future warehousing $116,515,000 of Green Giant finished goods inventory to B&G Foods, Inc. for cash, on a bill and hold basis, as compared to $65,741,000 for the nine months ended December 29, 2018. Under the terms of the bill and hold agreement, title to the specified inventory transferred to B&G. Under the new revenue recognition standard, this contract qualifies for bill and hold accounting treatment as the Company has concluded that control of the unlabeled products transfers to the customer at the time title transfers and the Company has the right to payment (prior to physical delivery), which results in earlier revenue recognition. Labeling and storage services that are provided after control of the goods has transferred to the customer are accounted for as separate performance obligations for which revenue is deferred until the services are performed.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 381,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 401,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 28",
+     "",
+     "December 29",
+     "",
+     "March 31",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "2018",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Accounts Receivable",
+     "$",
+     "-",
+     "$",
+     "1,441",
+     "$",
+     "-"
+    ],
+    [
+     "Inventories",
+     "",
+     "-",
+     "",
+     "4,645",
+     "",
+     "-"
+    ],
+    [
+     "Other Current Assets",
+     "",
+     "98",
+     "",
+     "5,977",
+     "",
+     "98"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets Held For Sale-Discontinued Operations",
+     "$",
+     "98",
+     "$",
+     "12,063",
+     "$",
+     "98"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Assets",
+     "$",
+     "1,054",
+     "$",
+     "1,739",
+     "$",
+     "1,143"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncurrent Assets Held For Sale-Discontinued Operations",
+     "$",
+     "1,054",
+     "$",
+     "1,739",
+     "$",
+     "1,143"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts Payable and Accrued Expenses",
+     "$",
+     "2,744",
+     "$",
+     "8,697",
+     "$",
+     "4,285"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current Liabilities Held For Sale-Discontinued Operations",
+     "$",
+     "2,744",
+     "$",
+     "8,697",
+     "$",
+     "4,285"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 430,
+    "end_line": 454
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "On July 13, 2018, the Company executed a nonbinding letter of intent with a perspective buyer of the Modesto facility. On October 9, 2018, the Company closed on the sale of the facility to this outside buyer with net proceeds of $63,326,000. During the second quarter of fiscal 2019, the Company ceased use of the Modesto facility. Based on its magnitude of revenue to the Company (approximately 15%) and because the Company was exiting the production of peaches, this sale represented a significant strategic shift that has a material effect on the Company\u2019s operations and financial results. Accordingly, the Company has applied discontinued operations treatment for this sale as required by Accounting Standards Codification 210-05\u2014Discontinued Operations. This business we are exiting is part of the Fruit and Vegetable segment.\nThe following table presents information related to the major classes of assets and liabilities of Modesto that are classified as Held For Sale-Discontinued Operations in the Company's Consolidated Condensed balance sheets (in thousands):",
+   "prose_after": "The operating results of the discontinued operations that are reflected in the Unaudited Condensed Consolidated Statements of Net Earnings (Loss) from discontinued operations are as follows (in thousands):",
+   "structured_location": {
+    "item": null,
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 426,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28",
+     "",
+     "",
+     "December 29",
+     "",
+     "",
+     "December 28",
+     "",
+     "",
+     "December 29",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Sales",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,644",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "111,693",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Costs and Expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Product Sold",
+     "",
+     "57",
+     "",
+     "",
+     "5,796",
+     "",
+     "",
+     "57",
+     "",
+     "",
+     "129,872",
+     ""
+    ],
+    [
+     "Selling, General and Administrative",
+     "",
+     "-",
+     "",
+     "",
+     "137",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,135",
+     ""
+    ],
+    [
+     "Plant Restructuring (Credit) Charge (a)",
+     "",
+     "(902)",
+     "",
+     "",
+     "854",
+     "",
+     "",
+     "(902)",
+     "",
+     "",
+     "4,350",
+     ""
+    ],
+    [
+     "Interest Expense (b)",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,077",
+     ""
+    ],
+    [
+     "Total cost and expenses",
+     "",
+     "(845)",
+     "",
+     "",
+     "6,787",
+     "",
+     "",
+     "(845)",
+     "",
+     "",
+     "136,434",
+     ""
+    ],
+    [
+     "Loss From Discontinued Operations Before Income Taxes",
+     "",
+     "845",
+     "",
+     "",
+     "(5,143)",
+     "",
+     "",
+     "845",
+     "",
+     "",
+     "(24,741)",
+     ""
+    ],
+    [
+     "Gain on the Sale of Assets Before Income Taxes (c) (d)",
+     "",
+     "(430)",
+     "",
+     "",
+     "(50,411)",
+     "",
+     "",
+     "(430)",
+     "",
+     "",
+     "(80,677)",
+     ""
+    ],
+    [
+     "Income Tax Expense",
+     "",
+     "320",
+     "",
+     "",
+     "11,212",
+     "",
+     "",
+     "320",
+     "",
+     "",
+     "13,725",
+     ""
+    ],
+    [
+     "Net Earnings From Discontinued Operations, Net of Tax",
+     "$",
+     "955",
+     "",
+     "$",
+     "34,056",
+     "",
+     "$",
+     "955",
+     "",
+     "$",
+     "42,211",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental Information on Discontinued Operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital Expenditures",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,937",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "7",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,302",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 457,
+    "end_line": 486
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "The operating results of the discontinued operations that are reflected in the Unaudited Condensed Consolidated Statements of Net Earnings (Loss) from discontinued operations are as follows (in thousands):",
+   "prose_after": "(a) Includes $902,000 credit for pension termination in both the three and nine month periods of the current year. Includes $278,000 and $3,579,000 of Modesto severance in the three and nine month periods of prior year, respectively.\n(b) Includes interest on debt directly related to Modesto including the building mortgage and equipment capital leases and an allocation of the Company's line of credit facilty.\n(c) Includes a $24,211,000 gain from LIFO layer liquidations from the disposal of the inventory for both prior three and nine months.\n(d) Includes a $4,975,000 gain on the sale of bins for the prior nine months period.\n3. Revenue Recognition\nIn the following table, segment revenue is disaggregated by product category groups (in millions).",
+   "structured_location": {
+    "item": null,
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 426,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     ""
+    ],
+    [
+     "Canned Vegetables",
+     "$",
+     "251.4",
+     "$",
+     "259.5",
+     "$",
+     "657.3",
+     "$",
+     "631.1"
+    ],
+    [
+     "B&G*",
+     "",
+     "48.7",
+     "",
+     "27.7",
+     "",
+     "117.5",
+     "",
+     "66.7"
+    ],
+    [
+     "Frozen",
+     "",
+     "27.8",
+     "",
+     "29.7",
+     "",
+     "72.3",
+     "",
+     "87.5"
+    ],
+    [
+     "Fruit Products",
+     "",
+     "32.2",
+     "",
+     "27.2",
+     "",
+     "81.8",
+     "",
+     "70.7"
+    ],
+    [
+     "Chip Products",
+     "",
+     "2.9",
+     "",
+     "2.5",
+     "",
+     "8.9",
+     "",
+     "7.7"
+    ],
+    [
+     "Prepared Foods",
+     "",
+     "25.5",
+     "",
+     "22.0",
+     "",
+     "78.9",
+     "",
+     "59.2"
+    ],
+    [
+     "Other",
+     "",
+     "4.5",
+     "",
+     "3.6",
+     "",
+     "11.2",
+     "",
+     "14.1"
+    ],
+    [
+     "",
+     "$",
+     "393.0",
+     "$",
+     "372.2",
+     "$",
+     "1,027.9",
+     "$",
+     "937.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 497,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Revenue Recognition"
+    }
+   },
+   "prose_before": "(a) Includes $902,000 credit for pension termination in both the three and nine month periods of the current year. Includes $278,000 and $3,579,000 of Modesto severance in the three and nine month periods of prior year, respectively.\n(b) Includes interest on debt directly related to Modesto including the building mortgage and equipment capital leases and an allocation of the Company's line of credit facilty.\n(c) Includes a $24,211,000 gain from LIFO layer liquidations from the disposal of the inventory for both prior three and nine months.\n(d) Includes a $4,975,000 gain on the sale of bins for the prior nine months period.\n3. Revenue Recognition\nIn the following table, segment revenue is disaggregated by product category groups (in millions).",
+   "prose_after": "*B&G includes both canned and frozen vegetable sales exclusively for B&G.\n4. Inventories\nFirst-In, First-Out (\u201cFIFO\u201d) based inventory costs exceeded LIFO based inventory costs by $153,884,000 as of the end of the third quarter of fiscal 2020 as compared to $160,727,000 as of the end of the third quarter of fiscal 2019. The change in the LIFO Reserve for the three months ended December 28, 2019 was a decrease of $11,337,000 as compared to an increase of $25,776,000 for the three months ended December 29, 2018.\nThe change in the LIFO Reserve for the nine months ended December 28, 2019 was a decrease of $7,457,000 as compared to an increase of $15,722,000 for the nine months ended December 29, 2018. The prior year-to-date decrease includes a decrease of $24,211,000 related to the LIFO impact of gain on sale of Modesto Fruit which is included in Other Operating Income under Discontinued Operations. The $15,722,000 also includes an increase of $39,933,000 related to Continuing Operations included in Cost of Product Sold. This reflects the projected impact of the disposal of Modesto Fruit partially offset by an overall cost increase expected in fiscal 2020 versus fiscal 2019.",
+   "structured_location": {
+    "item": null,
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "March 31,\n\n\n\n2019",
+     ""
+    ],
+    [
+     "In Thousands",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finished products",
+     "$",
+     "465,306",
+     "$",
+     "557,652",
+     "$",
+     "454,920"
+    ],
+    [
+     "In process",
+     "",
+     "34,685",
+     "",
+     "41,100",
+     "",
+     "42,045"
+    ],
+    [
+     "Raw materials and supplies",
+     "",
+     "146,958",
+     "",
+     "137,910",
+     "",
+     "166,060"
+    ],
+    [
+     "",
+     "",
+     "646,949",
+     "",
+     "736,662",
+     "",
+     "663,025"
+    ],
+    [
+     "Less excess of FIFO cost over LIFO cost",
+     "",
+     "153,884",
+     "",
+     "160,727",
+     "",
+     "161,341"
+    ],
+    [
+     "Total inventories",
+     "$",
+     "493,065",
+     "$",
+     "575,935",
+     "$",
+     "501,684"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 524,
+    "end_line": 541
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Inventories"
+    }
+   },
+   "prose_before": "First-In, First-Out (\u201cFIFO\u201d) based inventory costs exceeded LIFO based inventory costs by $153,884,000 as of the end of the third quarter of fiscal 2020 as compared to $160,727,000 as of the end of the third quarter of fiscal 2019. The change in the LIFO Reserve for the three months ended December 28, 2019 was a decrease of $11,337,000 as compared to an increase of $25,776,000 for the three months ended December 29, 2018.\nThe change in the LIFO Reserve for the nine months ended December 28, 2019 was a decrease of $7,457,000 as compared to an increase of $15,722,000 for the nine months ended December 29, 2018. The prior year-to-date decrease includes a decrease of $24,211,000 related to the LIFO impact of gain on sale of Modesto Fruit which is included in Other Operating Income under Discontinued Operations. The $15,722,000 also includes an increase of $39,933,000 related to Continuing Operations included in Cost of Product Sold. This reflects the projected impact of the disposal of Modesto Fruit partially offset by an overall cost increase expected in fiscal 2020 versus fiscal 2019.",
+   "prose_after": "5. Leases\nThe Company determines if an arrangement is a lease at inception of the agreement. Operating leases are included in right-of-use operating assets, and current and noncurrent operating lease obligations in the Company\u2019s Condensed Consolidated Balance Sheets. Lease assets represent the Company\u2019s right to use an underlying asset for the lease term and lease liabilities represent our obligation to make lease payments arising from the lease. Lease assets and liabilities are recognized at commencement date based on the present value of lease payments over the lease term. If the lease does not provide an implicit rate, the Company uses an incremental borrowing rate based on the information available at commencement date in determining the present value of lease payments. The right-of-use operating lease assets also include in its calculation any prepaid lease payments made and excludes any lease incentives received from the arrangement. The Company\u2019s lease terms may include options to extend or terminate the lease, and the impact of these options are included in the lease liability and lease asset calculations when the exercise of the option is at the Company\u2019s sole discretion and it is reasonably certain that the Company will exercise that option. The Company will not separate lease and nonlease components for its leases when it is impractical to separate the two, such as leases with variable payment arrangements. Leases with an initial term of 12 months or less are not recorded on the balance sheet.",
+   "structured_location": {
+    "item": null,
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 491,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 541,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months",
+     "",
+     "Nine Months",
+     ""
+    ],
+    [
+     "",
+     "December 28, 2019",
+     "",
+     "December 28, 2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease cost:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of right of use asset",
+     "$",
+     "1,084",
+     "$",
+     "3,191"
+    ],
+    [
+     "Interest on lease liabilities",
+     "",
+     "321",
+     "",
+     "1,033"
+    ],
+    [
+     "Finance lease cost",
+     "",
+     "1,405",
+     "",
+     "4,224"
+    ],
+    [
+     "Operating lease cost",
+     "",
+     "7,545",
+     "",
+     "23,234"
+    ],
+    [
+     "Total lease cost",
+     "$",
+     "8,950",
+     "$",
+     "27,458"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for amounts included in the measurement of lease liabilities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating cash flows from finance leases",
+     "",
+     "",
+     "$",
+     "1,033"
+    ],
+    [
+     "Operating cash flows from operating leases",
+     "",
+     "",
+     "",
+     "24,531"
+    ],
+    [
+     "Financing cash flows from finance leases",
+     "",
+     "",
+     "",
+     "4,799"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "$",
+     "30,363"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new finance lease liabilities",
+     "",
+     "",
+     "$",
+     "3,697"
+    ],
+    [
+     "Right-of-use assets obtained in exchange for new operating lease liabilities",
+     "",
+     "",
+     "$",
+     "6,085"
+    ],
+    [
+     "Weighted-average lease term (years):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing leases",
+     "",
+     "",
+     "",
+     "5.4"
+    ],
+    [
+     "Operating leases",
+     "",
+     "",
+     "",
+     "3.9"
+    ],
+    [
+     "Weighted-average discount rate (percentage):",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing leases",
+     "",
+     "",
+     "",
+     "4.2"
+    ],
+    [
+     "Operating leases",
+     "",
+     "",
+     "",
+     "4.6"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 554,
+    "end_line": 587
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "The Company has operating leases for land, machinery and equipment. The Company also has finance leases for machinery and equipment. The commencement date used for the calculation of the lease obligation is the latter of the commencement date of the new standard (April 1, 2019) or the lease start date. Certain of the leases have options to extend the life of the lease, which are included in the liability calculation when the option is at the sole discretion of the Company and it is reasonably certain that the Company will exercise the option. In addition, the Company has certain leases that have variable payments based solely on output or usage of the leased asset. These variable operating lease assets are excluded from the Company\u2019s balance sheet presentation and expensed as incurred. Leases with an initial term of 12 months or less are not material. The Company currently has finance leases which were accounted for as capital leases under the previous standard and were unchanged as a result of this standard implementation.\nUpon adoption of ASU 2016-02, the Company determined its right-of-use assets related to the operating leases for its plant equipment in Sunnyside, Washington were partially impaired and therefore were reduced with a corresponding charge to retained earnings of $2,019,000 (which is net of tax). The estimated lives of these assets will be shortened due to the planned closure of the facility after the year\u2019s pack.\nLease expense for lease payments is recognized on a straight-line basis over the lease term. The components of lease expense were as follows (In thousands):",
+   "prose_after": "Undiscounted future lease payments under non-cancelable operating leases and financial leases, along with a reconciliation of undiscounted cash flows to operating and financing lease liabilities, respectively, as of December 28, 2019 (in thousands) were as follows:",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 550,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending March 31:",
+     "Operating",
+     "",
+     "Financing",
+     ""
+    ],
+    [
+     "Balance of 2020",
+     "$",
+     "5,435",
+     "$",
+     "1,945"
+    ],
+    [
+     "2021",
+     "",
+     "26,301",
+     "",
+     "7,782"
+    ],
+    [
+     "2022",
+     "",
+     "19,683",
+     "",
+     "7,782"
+    ],
+    [
+     "2023",
+     "",
+     "13,446",
+     "",
+     "7,782"
+    ],
+    [
+     "2024",
+     "",
+     "6,496",
+     "",
+     "6,064"
+    ],
+    [
+     "2025-2031",
+     "",
+     "7,516",
+     "",
+     "6,161"
+    ],
+    [
+     "Total minimum payment required",
+     "$",
+     "78,877",
+     "$",
+     "37,516"
+    ],
+    [
+     "Less interest",
+     "",
+     "6,481",
+     "",
+     "3,926"
+    ],
+    [
+     "Present value of minimum lease payments",
+     "",
+     "72,396",
+     "",
+     "33,590"
+    ],
+    [
+     "Amount due within one year",
+     "",
+     "24,430",
+     "",
+     "6,584"
+    ],
+    [
+     "Long-term capital lease obligation",
+     "$",
+     "47,966",
+     "$",
+     "27,006"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 591,
+    "end_line": 611
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Undiscounted future lease payments under non-cancelable operating leases and financial leases, along with a reconciliation of undiscounted cash flows to operating and financing lease liabilities, respectively, as of December 28, 2019 (in thousands) were as follows:",
+   "prose_after": "As the Company has not restated prior year information for its adoption of ASC Topic 842, the following presents its future minimum lease payments for operating and capital leases under ASC Topic 840 on March 31, 2019:",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years ending March 31:",
+     "Operating",
+     "",
+     "Capital",
+     ""
+    ],
+    [
+     "2020",
+     "$",
+     "28,689",
+     "$",
+     "7,827"
+    ],
+    [
+     "2021",
+     "",
+     "24,938",
+     "",
+     "7,827"
+    ],
+    [
+     "2022",
+     "",
+     "17,526",
+     "",
+     "7,827"
+    ],
+    [
+     "2023",
+     "",
+     "12,062",
+     "",
+     "7,827"
+    ],
+    [
+     "2024",
+     "",
+     "5,950",
+     "",
+     "6,102"
+    ],
+    [
+     "2025-2031",
+     "",
+     "6,927",
+     "",
+     "5,267"
+    ],
+    [
+     "Total minimum payment required",
+     "$",
+     "96,092",
+     "$",
+     "42,677"
+    ],
+    [
+     "Less interest",
+     "",
+     "",
+     "",
+     "4,973"
+    ],
+    [
+     "Present value of minimum lease payments",
+     "",
+     "",
+     "",
+     "37,704"
+    ],
+    [
+     "Amount due within one year",
+     "",
+     "",
+     "",
+     "6,418"
+    ],
+    [
+     "Long-term capital lease obligation",
+     "",
+     "",
+     "$",
+     "31,286"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 614,
+    "end_line": 634
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "As the Company has not restated prior year information for its adoption of ASC Topic 842, the following presents its future minimum lease payments for operating and capital leases under ASC Topic 840 on March 31, 2019:",
+   "prose_after": "6. Revolving Credit Facility\nThe Company has a five-year revolving credit facility (\u201cRevolver\u201d) with maximum borrowings totaling $400,000,000 from April through July and $500,000,000 from August through March and the Revolver matures on July 5, 2021. The Revolver balance as of December 28, 2019 was $114,689,000 and is included in Long-Term Debt in the accompanying Condensed Consolidated Balance Sheet. The Company utilizes its Revolver for general corporate purposes, including seasonal working capital needs, to pay debt principal and interest obligations, and to fund capital expenditures and acquisitions. Seasonal working capital needs are affected by the growing cycles of the vegetables and fruits the Company processes. The majority of vegetable and fruit inventories are produced during the months of June through November and are then sold over the following year. Payment terms for vegetable and fruit produce are generally three months but can vary from a few days to seven months. Accordingly, the Company\u2019s need to draw on the Revolver may fluctuate significantly throughout the year.",
+   "structured_location": {
+    "item": null,
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Third Quarter",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Year-to-Date",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reported end of period:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding borrowings",
+     "$",
+     "114,689",
+     "",
+     "$",
+     "214,161",
+     "",
+     "$",
+     "114,689",
+     "",
+     "$",
+     "214,161",
+     ""
+    ],
+    [
+     "Weighted average interest rate",
+     "",
+     "3.27",
+     "%",
+     "",
+     "4.02",
+     "%",
+     "",
+     "3.27",
+     "%",
+     "",
+     "4.02",
+     "%"
+    ],
+    [
+     "Reported during the period:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Maximum amount of borrowings",
+     "$",
+     "137,418",
+     "",
+     "$",
+     "242,947",
+     "",
+     "$",
+     "151,477",
+     "",
+     "$",
+     "294,062",
+     ""
+    ],
+    [
+     "Average outstanding borrowings",
+     "$",
+     "115,626",
+     "",
+     "$",
+     "192,323",
+     "",
+     "$",
+     "127,078",
+     "",
+     "$",
+     "225,345",
+     ""
+    ],
+    [
+     "Weighted average interest rate",
+     "",
+     "3.40",
+     "%",
+     "",
+     "3.86",
+     "%",
+     "",
+     "3.75",
+     "%",
+     "",
+     "3.64",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 646,
+    "end_line": 660
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Revolving Credit Facility"
+    }
+   },
+   "prose_before": "The Company has a five-year revolving credit facility (\u201cRevolver\u201d) with maximum borrowings totaling $400,000,000 from April through July and $500,000,000 from August through March and the Revolver matures on July 5, 2021. The Revolver balance as of December 28, 2019 was $114,689,000 and is included in Long-Term Debt in the accompanying Condensed Consolidated Balance Sheet. The Company utilizes its Revolver for general corporate purposes, including seasonal working capital needs, to pay debt principal and interest obligations, and to fund capital expenditures and acquisitions. Seasonal working capital needs are affected by the growing cycles of the vegetables and fruits the Company processes. The majority of vegetable and fruit inventories are produced during the months of June through November and are then sold over the following year. Payment terms for vegetable and fruit produce are generally three months but can vary from a few days to seven months. Accordingly, the Company\u2019s need to draw on the Revolver may fluctuate significantly throughout the year.\nThe decrease in the reported average outstanding Revolver borrowings during the first nine months of fiscal 2020 compared to the first nine months of fiscal 2019 was attributable to the sale of various Company facilities during the period.\nGeneral terms of the Revolver include payment of interest at LIBOR plus a defined spread.\nThe following table documents the quantitative data for Revolver borrowings during the third quarter and year-to-date of fiscal 2020 and fiscal 2019:",
+   "prose_after": "7. Stockholders\u2019 Equity\nDuring the nine-month period ended December 28, 2019 the Company repurchased $7,571,000 of its Class A Common Stock and $3,883,000 of Class B Common Stock as Treasury Stock. As of December 28, 2019, there are 3,008,762 shares or $87,194,000 of repurchased stock. These shares are not considered outstanding.\n8. Retirement Plans\nThe net periodic benefit cost for the Company\u2019s pension plan consisted of:",
+   "structured_location": {
+    "item": null,
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Service Cost",
+     "$",
+     "2,283",
+     "",
+     "$",
+     "1,831",
+     "",
+     "$",
+     "6,848",
+     "",
+     "$",
+     "6,716",
+     ""
+    ],
+    [
+     "Interest Cost",
+     "",
+     "2,316",
+     "",
+     "",
+     "2,362",
+     "",
+     "",
+     "6,947",
+     "",
+     "",
+     "6,848",
+     ""
+    ],
+    [
+     "Expected Return on Plan Assets",
+     "",
+     "(3,957)",
+     "",
+     "",
+     "(3,593)",
+     "",
+     "",
+     "(11,870)",
+     "",
+     "",
+     "(10,785)",
+     ""
+    ],
+    [
+     "Amortization of Prior Service Cost",
+     "",
+     "30",
+     "",
+     "",
+     "30",
+     "",
+     "",
+     "90",
+     "",
+     "",
+     "90",
+     ""
+    ],
+    [
+     "Amortization of Net Loss",
+     "",
+     "29",
+     "",
+     "",
+     "593",
+     "",
+     "",
+     "87",
+     "",
+     "",
+     "1,198",
+     ""
+    ],
+    [
+     "Net Periodic Benefit Cost",
+     "$",
+     "701",
+     "",
+     "$",
+     "1,223",
+     "",
+     "$",
+     "2,102",
+     "",
+     "$",
+     "4,067",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 669,
+    "end_line": 686
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Retirement Plans"
+    }
+   },
+   "prose_before": "7. Stockholders\u2019 Equity\nDuring the nine-month period ended December 28, 2019 the Company repurchased $7,571,000 of its Class A Common Stock and $3,883,000 of Class B Common Stock as Treasury Stock. As of December 28, 2019, there are 3,008,762 shares or $87,194,000 of repurchased stock. These shares are not considered outstanding.\n8. Retirement Plans\nThe net periodic benefit cost for the Company\u2019s pension plan consisted of:",
+   "prose_after": "There were no contributions to the pension plan in the three and nine month periods ended December 28, 2019 and December 29, 2018, respectively.\nEffective January 1, 2020, the Company closed its defined benefit pension plan to new participants. Employees excluded from the pension plan have a 3% match opportunity in the 401(k) plan.\n9. Plant Restructuring\nThe following table summarizes the rollforward of continuing restructuring charges and related asset impairment charges recorded and the accruals established:",
+   "structured_location": {
+    "item": null,
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Restructuring Payable",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Severance",
+     "",
+     "",
+     "Other Costs",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2019",
+     "$",
+     "225",
+     "",
+     "$",
+     "1",
+     "",
+     "$",
+     "226",
+     ""
+    ],
+    [
+     "First quarter charge",
+     "",
+     "586",
+     "",
+     "",
+     "4,220",
+     "",
+     "",
+     "4,806",
+     ""
+    ],
+    [
+     "Second quarter charge",
+     "",
+     "386",
+     "",
+     "",
+     "760",
+     "",
+     "",
+     "1,146",
+     ""
+    ],
+    [
+     "Third quarter charge",
+     "",
+     "28",
+     "",
+     "",
+     "765",
+     "",
+     "",
+     "793",
+     ""
+    ],
+    [
+     "Cash payments/write offs",
+     "",
+     "(1,145)",
+     "",
+     "",
+     "(5,746)",
+     "",
+     "",
+     "(6,891)",
+     ""
+    ],
+    [
+     "Balance December 28, 2019",
+     "$",
+     "80",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "80",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Restructuring Payable"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 696,
+    "end_line": 712
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Plant Restructuring"
+    }
+   },
+   "prose_before": "There were no contributions to the pension plan in the three and nine month periods ended December 28, 2019 and December 29, 2018, respectively.\nEffective January 1, 2020, the Company closed its defined benefit pension plan to new participants. Employees excluded from the pension plan have a 3% match opportunity in the 401(k) plan.\n9. Plant Restructuring\nThe following table summarizes the rollforward of continuing restructuring charges and related asset impairment charges recorded and the accruals established:",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Severance",
+     "",
+     "",
+     "Other Costs",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance March 31, 2018",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "First quarter charge",
+     "",
+     "110",
+     "",
+     "",
+     "(72)",
+     "",
+     "",
+     "38",
+     ""
+    ],
+    [
+     "Second quarter charge",
+     "",
+     "845",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "845",
+     ""
+    ],
+    [
+     "Third quarter charge",
+     "",
+     "378",
+     "",
+     "",
+     "1,018",
+     "",
+     "",
+     "1,396",
+     ""
+    ],
+    [
+     "Cash payments/write offs",
+     "",
+     "(976)",
+     "",
+     "",
+     "72",
+     "",
+     "",
+     "(904)",
+     ""
+    ],
+    [
+     "Balance December 29, 2018",
+     "$",
+     "357",
+     "",
+     "$",
+     "1,018",
+     "",
+     "$",
+     "1,375",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 713,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Plant Restructuring"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "During the nine months ended December 28, 2019 the Company recorded a restructuring charge of $6,745,000 related to the closing of plants in the Midwest and Northwest of which $5,266,000 was for accelerated amortization of right-of-use operating lease assets, $2,354,000 was mostly related to equipment moves and $1,000,000 was related to severance. The Company also recorded a credit of $1,875,000 for the reduced lease liability of previously impaired leases.\nDuring the nine months ended December 29, 2018, the Company recorded a restructuring charge of $2,279,000 related to the closing and sale of plants in the East and Northwest of which $1,333,000 was related to severance cost, and $946,000 which was related to other costs (mostly equipment moves).\n10. Other Operating Income and Expense\nDuring the nine months ended December 28, 2019 the Company recorded a gain on the partial sale of a plant in the Midwest of $3,742,000 and a gain on the partial sale of a plant in the Northwest of $1,737,000. The Company also recorded a gain of on the sale of unused fixed assets of $3,139,000.",
+   "structured_location": {
+    "item": null,
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 737,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Q U A R T E R",
+     "",
+     "",
+     "",
+     "",
+     "Y E A R T O D A T E",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Thousands, except per share amounts)",
+     "Fiscal 2020",
+     "",
+     "Fiscal 2019",
+     "",
+     "",
+     "Fiscal 2020",
+     "",
+     "Fiscal 2019",
+     "",
+     ""
+    ],
+    [
+     "Continuing Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) from continuing operations",
+     "$",
+     "24,428",
+     "$",
+     "(20,040)",
+     "",
+     "$",
+     "30,166",
+     "$",
+     "(27,834)",
+     ""
+    ],
+    [
+     "Deduct preferred stock dividends paid",
+     "",
+     "6",
+     "",
+     "6",
+     "",
+     "",
+     "17",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Undistributed earnings (loss) from continuing operations",
+     "",
+     "24,422",
+     "",
+     "(20,046)",
+     "",
+     "",
+     "30,149",
+     "",
+     "(27,851)",
+     ""
+    ],
+    [
+     "Earnings (loss) from continuing operations attributable to participating preferred",
+     "",
+     "100",
+     "",
+     "(79)",
+     "",
+     "",
+     "122",
+     "",
+     "(109)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) from continuing operations attributable to common shareholders",
+     "$",
+     "24,322",
+     "$",
+     "(19,967)",
+     "",
+     "$",
+     "30,027",
+     "$",
+     "(27,742)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "9,176",
+     "",
+     "9,625",
+     "",
+     "",
+     "9,307",
+     "",
+     "9,694",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings (loss) per common share from continuing operations",
+     "$",
+     "2.65",
+     "$",
+     "(2.07)",
+     "",
+     "$",
+     "3.23",
+     "$",
+     "(2.86)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) from continuing operations attributable to common shareholders",
+     "$",
+     "24,322",
+     "$",
+     "(19,967)",
+     "",
+     "$",
+     "30,027",
+     "$",
+     "(27,742)",
+     ""
+    ],
+    [
+     "Add dividends on convertible preferred stock",
+     "",
+     "5",
+     "",
+     "-",
+     "",
+     "",
+     "15",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings (loss) from continuing operations attributable to common stock on a diluted basis",
+     "$",
+     "24,327",
+     "$",
+     "(19,967)",
+     "",
+     "$",
+     "30,042",
+     "$",
+     "(27,742)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding-basic",
+     "",
+     "9,176",
+     "",
+     "9,625",
+     "",
+     "",
+     "9,307",
+     "",
+     "9,694",
+     ""
+    ],
+    [
+     "Additional shares issued related to the equity compensation plan",
+     "",
+     "2",
+     "",
+     "-",
+     "",
+     "",
+     "2",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Additional shares to be issued under full conversion of preferred stock",
+     "",
+     "67",
+     "",
+     "-",
+     "",
+     "",
+     "67",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shares for diluted",
+     "",
+     "9,245",
+     "",
+     "9,625",
+     "",
+     "",
+     "9,376",
+     "",
+     "9,694",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted earnings (loss) per common share from continuing operations",
+     "$",
+     "2.63",
+     "$",
+     "(2.07)",
+     "",
+     "$",
+     "3.20",
+     "$",
+     "(2.86)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 752,
+    "end_line": 797
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Earnings per Common Share From Continuing Operations"
+    }
+   },
+   "prose_before": "In August 2018, the FASB issued ASU No. 2018-14, Compensation\u2014Retirement Benefits\u2014Defined Benefit Plans\u2014General (Topic 715-20): Disclosure Framework\u2014Changes to the Disclosure Requirements for Defined Benefit Plans, which modifies the disclosure requirements for defined benefit pension plans and other postretirement plans. ASU 2018-14 is effective for annual periods beginning after December 15, 2020, with early adoption permitted. The amendments in this ASU should be applied on a retrospective basis to all periods presented. We are currently evaluating the effect that ASU 2018-14 will have on our condensed consolidated financial statements and related disclosures.\nThere were no other recently issued accounting pronouncements that impacted the Company\u2019s condensed consolidated financial statements. In addition, the Company did not adopt any other new accounting pronouncements during the quarter ended December 28, 2019.\n12. Earnings per Common Share From Continuing Operations\nEarnings per share for the three and nine months ended December 28, 2019 and December 29, 2018 are as follows:",
+   "prose_after": "Note: For fiscal 2019 addbacks for equity compensation and additional shares that were anti-dilutive were excluded.\nEarnings per Common Share From Discontinued Operations",
+   "structured_location": {
+    "item": null,
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Q U A R T E R",
+     "",
+     "",
+     "",
+     "Y E A R T O D A T E",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Thousands, except per share amounts)",
+     "Fiscal 2020",
+     "",
+     "Fiscal 2019",
+     "",
+     "Fiscal 2020",
+     "",
+     "Fiscal 2019",
+     ""
+    ],
+    [
+     "Discontinued Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from discontinued operations",
+     "$",
+     "955",
+     "$",
+     "34,056",
+     "$",
+     "955",
+     "$",
+     "42,211"
+    ],
+    [
+     "Deduct preferred stock dividends paid",
+     "",
+     "6",
+     "",
+     "6",
+     "",
+     "17",
+     "",
+     "17"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Undistributed earnings from discontinued operations",
+     "",
+     "949",
+     "",
+     "34,050",
+     "",
+     "938",
+     "",
+     "42,194"
+    ],
+    [
+     "Earnings from discontinued operations attributable to participating preferred",
+     "",
+     "4",
+     "",
+     "134",
+     "",
+     "4",
+     "",
+     "165"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from discontinued operations attributable to common shareholders",
+     "$",
+     "945",
+     "$",
+     "33,916",
+     "$",
+     "934",
+     "$",
+     "42,029"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "9,176",
+     "",
+     "9,625",
+     "",
+     "9,307",
+     "",
+     "9,694"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic earnings per common share from discontinued operations",
+     "$",
+     "0.10",
+     "$",
+     "3.52",
+     "$",
+     "0.10",
+     "$",
+     "4.34"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from discontinued operations attributable to common shareholders",
+     "$",
+     "945",
+     "$",
+     "33,916",
+     "$",
+     "934",
+     "$",
+     "42,029"
+    ],
+    [
+     "Add dividends on convertible preferred stock",
+     "",
+     "5",
+     "",
+     "5",
+     "",
+     "15",
+     "",
+     "15"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Earnings from discontinued operations attributable to common stock on a diluted basis",
+     "$",
+     "950",
+     "$",
+     "33,921",
+     "$",
+     "949",
+     "$",
+     "42,044"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding-basic",
+     "",
+     "9,176",
+     "",
+     "9,625",
+     "",
+     "9,307",
+     "",
+     "9,694"
+    ],
+    [
+     "Additional shares issued related to the equity compensation plan",
+     "",
+     "2",
+     "",
+     "2",
+     "",
+     "2",
+     "",
+     "2"
+    ],
+    [
+     "Additional shares to be issued under full conversion of preferred stock",
+     "",
+     "67",
+     "",
+     "67",
+     "",
+     "67",
+     "",
+     "67"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total shares for diluted",
+     "",
+     "9,245",
+     "",
+     "9,694",
+     "",
+     "9,376",
+     "",
+     "9,763"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted earnings per common share from discontinued operations",
+     "$",
+     "0.10",
+     "$",
+     "3.50",
+     "$",
+     "0.10",
+     "$",
+     "4.31"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 848
+   },
+   "preceding": {
+    "section": null,
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Earnings per Common Share From Continuing Operations"
+    }
+   },
+   "prose_before": "Note: For fiscal 2019 addbacks for equity compensation and additional shares that were anti-dilutive were excluded.\nEarnings per Common Share From Discontinued Operations",
+   "prose_after": "Note: For fiscal 2019, add backs for equity compensation and additional shares that were anti-dilutive were excluded.\n13. Fair Value of Financial Instruments\nAs required by Accounting Standards Codification (\"ASC\") 825, \u201cFinancial Instruments,\u201d the Company estimates the fair values of financial instruments on a quarterly basis. The estimated fair value for long-term debt (classified as Level 2 in the fair value hierarchy) is determined by the quoted market prices for similar debt (comparable to the Company\u2019s financial strength) or current rates offered to the Company for debt with the same maturities. Long-term debt, including current portion had a carrying amount of $225,337,000 and an estimated fair value of $225,287,000 as of December 28, 2019. Long-term debt, including current portion had a carrying amount of $325,373,000 and an estimated fair value of $325,276,000 as of December 29, 2018. As of March 31, 2019, the carrying amount was $266,245,000 and the estimated fair value was $266,140,000. The fair values of all the other financial instruments approximate their carrying value due to their short-term nature.",
+   "structured_location": {
+    "item": null,
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 858,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "December 29,\n\n\n\n2018",
+     ""
+    ],
+    [
+     "Canned Vegetables",
+     "$",
+     "251.4",
+     "$",
+     "259.5",
+     "$",
+     "657.3",
+     "$",
+     "631.1"
+    ],
+    [
+     "B&G*",
+     "",
+     "48.7",
+     "",
+     "27.7",
+     "",
+     "117.5",
+     "",
+     "66.7"
+    ],
+    [
+     "Frozen",
+     "",
+     "27.8",
+     "",
+     "29.7",
+     "",
+     "72.3",
+     "",
+     "87.5"
+    ],
+    [
+     "Fruit Products",
+     "",
+     "32.2",
+     "",
+     "27.2",
+     "",
+     "81.8",
+     "",
+     "70.7"
+    ],
+    [
+     "Chip Products",
+     "",
+     "2.9",
+     "",
+     "2.5",
+     "",
+     "8.9",
+     "",
+     "7.7"
+    ],
+    [
+     "Prepared Foods",
+     "",
+     "25.5",
+     "",
+     "22.0",
+     "",
+     "78.9",
+     "",
+     "59.2"
+    ],
+    [
+     "Other",
+     "",
+     "4.5",
+     "",
+     "3.6",
+     "",
+     "11.2",
+     "",
+     "14.1"
+    ],
+    [
+     "",
+     "$",
+     "393.0",
+     "$",
+     "372.2",
+     "$",
+     "1,027.9",
+     "$",
+     "937.0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 886,
+    "end_line": 904
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENTS DISCUSSION AND ANALYSIS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The third fiscal quarter 2020 results include net continuing sales of $392,971,000, which represents a 5.6% increase, or $20,733,000, from the third quarter of fiscal 2019. The net increase in sales is higher selling prices/sales mix of $23,937,000 partially offset by a sales volume decrease of $3,204,000. The increase in sales is primarily from a $20,980,000 increase in B&G sales, a $4,924,000 increase in other Canned Fruit sales, a $3,506,000 increase in Prepared Food sales, an $877,000 increase in Other sales, and a $429,000 increase in Snack sales which was partially offset by a $8,050,000 decrease in Canned Vegetable sales, and a $1,933,000 decrease in Frozen sales.\nThe nine months ended 2020 results include net continuing sales of $1,027,898,000, which represents a 9.7% increase, or $90,907,000, from the third quarter of fiscal 2019. The net increase in sales is higher selling prices/sales mix of $57,967,000 and a sales volume increase of $32,940,000. The increase in sales is primarily from a $50,875,000 increase in B&G sales, a $26,205,000 increase in Canned Vegetable sales, a $19,713,000 increase in Prepared Food sales, a $11,012,000 increase in Canned Fruit sales, a $1,224,000 increase in Snack sales which was partially offset by and a $15,273,000 decrease in Frozen sales a $2,849,000 decrease in Other sales.\nITEM 2 MANAGEMENTS DISCUSSION AND ANALYSIS\nThe following table presents continuing sales by product category (in millions):",
+   "prose_after": "*B&G includes canned and frozen vegetable sales exclusively for B&G.\nOperating Income: The following table presents components of continuing operating income as a percentage of net sales:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 882,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     "",
+     "December 28,\n\n\n\n2019",
+     "",
+     "",
+     "December 29,\n\n\n\n2018",
+     "",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "13.3",
+     "%",
+     "",
+     "-0.6",
+     "%",
+     "",
+     "9.3",
+     "%",
+     "",
+     "2.7",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling",
+     "",
+     "2.4",
+     "%",
+     "",
+     "2.6",
+     "%",
+     "",
+     "2.5",
+     "%",
+     "",
+     "2.8",
+     "%"
+    ],
+    [
+     "Administrative",
+     "",
+     "2.7",
+     "%",
+     "",
+     "2.6",
+     "%",
+     "",
+     "2.8",
+     "%",
+     "",
+     "3.1",
+     "%"
+    ],
+    [
+     "Plant Restructuring",
+     "",
+     "0.2",
+     "%",
+     "",
+     "0.4",
+     "%",
+     "",
+     "0.7",
+     "%",
+     "",
+     "0.2",
+     "%"
+    ],
+    [
+     "Other Operating Income",
+     "",
+     "-0.4",
+     "%",
+     "",
+     "0.2",
+     "%",
+     "",
+     "-0.8",
+     "%",
+     "",
+     "-0.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Income",
+     "",
+     "8.4",
+     "%",
+     "",
+     "-6.4",
+     "%",
+     "",
+     "4.2",
+     "%",
+     "",
+     "-3.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest Expense, Net",
+     "",
+     "0.7",
+     "%",
+     "",
+     "1.0",
+     "%",
+     "",
+     "0.9",
+     "%",
+     "",
+     "1.2",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 909,
+    "end_line": 929
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENTS DISCUSSION AND ANALYSIS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "*B&G includes canned and frozen vegetable sales exclusively for B&G.\nOperating Income: The following table presents components of continuing operating income as a percentage of net sales:",
+   "prose_after": "For the three month period ended December 28, 2019, the gross margin increased from the prior year quarter from (0.6)% to 13.3% due primarily to a lower LIFO charge in the third quarter of 2020. The LIFO credit for continuing operations for the third quarter ended December 28, 2019 was $11,337,000 or 2.9% of sales as compared to a charge of $25,776,000 or 6.9% of sales for the third quarter ended December 29, 2018 and reflects the impact on the quarter of lower cost increases and lower yields for certain commodities in fiscal 2020, compared with fiscal 2019. On an after-tax basis, LIFO net earnings increased by $8,503,000 for the quarter ended December 28, 2019 and LIFO net earnings decreased by $19,332,000 for the quarter ended December 29, 2018, based on the historical statutory federal income tax rate.\nFor the nine month period ended December 28, 2019, the gross margin increased from the prior year period from 2.7% to 9.3% due primarily to a lower LIFO charge in the current year. The LIFO credit for the first nine months ended December 28, 2019 was $7,457,000 or 0.7% of sales as compared to a charge of $39,933,000 or 4.3% of sales for the nine months ended December 29, 2018 and reflects the impact on the nine months of lower cost increases and lower yields for certain commodities in fiscal 2020, compared with fiscal 2019. On an after-tax basis, LIFO net earnings increased by $5,593,000 for the nine months ended December 29, 2018 and LIFO net earnings decreased by $29,950,000 for the nine months ended December 29, 2018, based on the historical statutory federal income tax rate.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 882,
+     "token": "REPEATING_HEADER",
+     "id": 22,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 933,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 28,",
+     "",
+     "",
+     "December 29,",
+     "",
+     "",
+     "March 31,",
+     "",
+     "March 31,",
+     ""
+    ],
+    [
+     "",
+     "2019",
+     "",
+     "",
+     "2018",
+     "",
+     "",
+     "2019",
+     "",
+     "2018",
+     ""
+    ],
+    [
+     "Working Capital:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance",
+     "$",
+     "426,968",
+     "",
+     "$",
+     "241,218",
+     "",
+     "$",
+     "490,871",
+     "$",
+     "602,504"
+    ],
+    [
+     "Change in Quarter",
+     "",
+     "(10,305)",
+     "",
+     "",
+     "(313,541)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Portion of Long-Term Debt and Capital Lease Obligations",
+     "",
+     "-",
+     "",
+     "",
+     "314,657",
+     "",
+     "",
+     "6,763",
+     "",
+     "7,468"
+    ],
+    [
+     "Long-Term Debt, Less Current Portion",
+     "",
+     "225,337",
+     "",
+     "",
+     "10,715",
+     "",
+     "",
+     "265,900",
+     "",
+     "407,733"
+    ],
+    [
+     "Operating Lease Obligations, Less Current Portion",
+     "",
+     "47,965",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Financing Lease Obligations, Less Current Portion",
+     "",
+     "27,007",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Capital Lease Obligations, Less Current Portion",
+     "",
+     "-",
+     "",
+     "",
+     "29,730",
+     "",
+     "",
+     "31,286",
+     "",
+     "34,331"
+    ],
+    [
+     "Total Stockholders' Equity Per Equivalent",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Share (see Note below)",
+     "",
+     "47.01",
+     "",
+     "",
+     "43.39",
+     "",
+     "",
+     "43.27",
+     "",
+     "41.73"
+    ],
+    [
+     "Stockholders' Equity Per Common Share",
+     "",
+     "47.47",
+     "",
+     "",
+     "43.79",
+     "",
+     "",
+     "43.67",
+     "",
+     "42.11"
+    ],
+    [
+     "Current Ratio",
+     "",
+     "3.47",
+     "",
+     "",
+     "1.52",
+     "",
+     "",
+     "5.37",
+     "",
+     "5.35"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 962,
+    "end_line": 979
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENTS DISCUSSION AND ANALYSIS"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The effective tax rate from continuing operations was 23.7% and 25.7% for the nine month periods ended December 28, 2019 and December 29, 2018, respectively. The 2.0 percentage point decrease in the effective tax rate is due primarily to federal income tax credits and incentives. The dollar amount of the federal credits and incentives did not change significantly from 2019 to 2020. The decrease is the result of having a pre-tax loss in 2018 and pre-tax income in 2019. The 2018 federal credits and incentives created a tax benefit which increased the tax rate because of the pre-tax loss. The 2019 federal credits and incentives also created a tax benefit. However, in 2019 the tax benefit decreased the tax rate because of the pre-tax income.\nEarnings (Loss) per Share:\nContinuing basic earnings (loss) per share were $2.65 and $(2.07) for the three months ended December 28, 2019 and December 29, 2018, respectively. Continuing diluted earnings (loss) per share were $2.63 and $(2.07) for the three months ended December 28, 2019 and December 29, 2018, respectively. Continuing basic earnings (loss) per share were $3.23 and $(2.86) for the nine months ended December 28, 2019 and December 29, 2018, respectively. Continuing diluted earnings (loss) per share were $3.20 and $(2.86) for the nine months ended December 28, 2019 and December 29, 2018, respectively. For details of the calculation of these amounts, refer to footnote 12 of the Notes to Condensed Consolidated Financial Statements.\nITEM 2 MANAGEMENTS DISCUSSION AND ANALYSIS\nLiquidity and Capital Resources:\nThe financial condition of the Company is summarized in the following table and explanatory review:",
+   "prose_after": "Note: Equivalent common shares are either common shares or, for convertible preferred shares, the number of common shares that the preferred shares are convertible into. See Note 9 of the Notes to Consolidated Financial Statements of the Company\u2019s 2019 Annual Report on Form 10-K for conversion details.\nAs shown in the Condensed Consolidated Statements of Cash Flows, net cash provided by operating activities was $115,320,000 in the first nine months of fiscal 2020, compared to $46,430,000 in the first nine months of fiscal 2019. The $68,890,000 increase in cash provided is primarily attributable to the following items: an increase in cash provided by net earnings from continuing operations of $58,000,000, a $37,097,000 increase in cash provided by accounts payable, accrued expenses and other liabilities, a $7,043,000 increase in cash provided by income taxes, a $5,156,000 increase in cash provided by other current assets, and a $2,999,000 increase in cash provided by account receivable. These increases were offset by a $44,217,000 decrease in cash provided by inventory.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 956,
+     "token": "REPEATING_HEADER",
+     "id": 26,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 989,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Number of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Average Price Paid",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total Number",
+     "",
+     "",
+     "Maximum Number",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares Purchased",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "per Share",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "of Shares",
+     "",
+     "",
+     "(or Approximate",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Purchased as",
+     "",
+     "",
+     "Dollar Value) of",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Part of Publicly",
+     "",
+     "",
+     "Shares that May",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Announced",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Yet Be Purchased",
+     "",
+     "",
+     "Announced",
+     "",
+     "Yet Be Purchased",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Class A",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "Plans or",
+     "",
+     "",
+     "Under the Plans or",
+     "",
+     ""
+    ],
+    [
+     "Period",
+     "Common",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "Programs",
+     "",
+     "",
+     "Programs",
+     "",
+     ""
+    ],
+    [
+     "10/01/2019 \u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "10/31/2019",
+     "",
+     "32,144",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "32.80",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "32,144",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "11/01/2019 \u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "11/30/2019 (1)",
+     "",
+     "20,700",
+     "",
+     "",
+     "10,000",
+     "",
+     "$",
+     "34.79",
+     "",
+     "$",
+     "35.72",
+     "",
+     "",
+     "13,800",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12/01/2019 \u2013",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "12/31/2019 (2)",
+     "",
+     "19,000",
+     "",
+     "",
+     "-",
+     "",
+     "$",
+     "38.41",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "71,844",
+     "",
+     "",
+     "10,000",
+     "",
+     "$",
+     "34.86",
+     "",
+     "$",
+     "35.72",
+     "",
+     "",
+     "45,944",
+     "",
+     "",
+     "539,063",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1068,
+    "end_line": 1096
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "An evaluation was performed under the supervision and with the participation of our management, including our Chief Executive Officer and Chief Financial Officer, of the effectiveness of the design and operation of our disclosure controls and procedures (as defined in Rule 13a-15(e) under the Securities and Exchange Act of 1934, as amended) as of the end of the period covered by this report. Based upon that evaluation, the Chief Executive Officer and the Chief Financial Officer concluded that, as of December 28, 2019, our disclosure controls and procedures were effective. The Company continues to examine, refine and formalize its disclosure controls and procedures and to monitor ongoing developments in this area.\nThere have been no changes during the period covered by this report to the Company's internal control over financial reporting that has materially affected, or is reasonably likely to materially affect, the Company\u2019s internal control over financial reporting.\nPART II \u2013 OTHER INFORMATION\nItem 1. Legal Proceedings\nRefer to footnote 15 to the Consolidated Financial Statements included in Part II Item 8 of the Annual Report on Form 10-K.\nItem 1A. Risk Factors\nThere have been no material changes to the risk factors disclosed in the Company\u2019s Form 10-K for the period ended March 31, 2019 except to the extent factual information disclosed elsewhere in this Form 10-Q relates to such risk factors.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+   "prose_after": "Note 1: 16,900 of these shares were purchased in open market transactions by the trustees under the Seneca Foods Corporation Employees' Savings Plan 401(k) Retirement Savings Plan to provide employee matching contributions under the plan.\nNote 2: These shares were purchased in open market transactions by the trustees under the Seneca Foods Corporation Employees' Savings Plan 401(k) Retirement Savings Plan to provide employee matching contributions under the plan.\nItem 3. Defaults Upon Senior Securities\nNone.\nItem 4. Mine Safety Disclosures\nNone.\nItem 5. Other Information\nNone.\nItem 6. Exhibits\n31.1 Certification of Kraig H. Kayser pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1055,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Seneca Foods Corporation",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "(Company)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "/s/ Kraig H. Kayser",
+     "",
+     ""
+    ],
+    [
+     "February 5, 2020",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Kraig H. Kayser",
+     "",
+     ""
+    ],
+    [
+     "",
+     "President and",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Chief Executive Officer",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Seneca Foods Corporation",
+    "(Company)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1138
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "31.1 Certification of Kraig H. Kayser pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)\n31.2 Certification of Timothy J. Benjamin pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 (filed herewith)\n32 Certifications pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 (filed herewith)\n101 The following materials from Seneca Foods Corporation\u2019s Quarterly Report on Form 10-Q for the nine months ended December 28, 2019, formatted in XBRL (eXtensible Business Reporting Language): (i) condensed consolidated balance sheets, (ii) condensed consolidated statements of net earnings, (iii) condensed consolidated statements of comprehensive income, (iv) condensed consolidated statements of cash flows, (v) condensed consolidated statement of stockholders\u2019 equity and (vi) the notes to condensed consolidated financial statements.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Company has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "/s/ Timothy J. Benjamin",
+     ""
+    ],
+    [
+     "February 5, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Timothy J. Benjamin",
+     ""
+    ],
+    [
+     "",
+     "Chief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Timothy J. Benjamin",
+    "February 5, 2020",
+    "Timothy J. Benjamin",
+    "Chief Financial Officer"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1139,
+    "end_line": 1146
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1122,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1147,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

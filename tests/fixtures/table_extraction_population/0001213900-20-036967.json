@@ -1,0 +1,2258 @@
+{
+ "accession": "0001213900-20-036967",
+ "cik": "0001619096",
+ "form": "10-K",
+ "filing_date": "2020-11-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2020_summitnetworks.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "35-2511257"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended July 31, 2020\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ____________________ to _____________________\nCommission file number 333-199108\nSUMMIT NETWORKS INC\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "205-1571 West 57th Avenue, Vancouver, Canada",
+     "V6P 0H7"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 29,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number, including area code (604) 269-4052\nSecurities registered under Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "None",
+     "N/A"
+    ],
+    [
+     "Title of each class",
+     "Name of each exchange on which registered"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 39,
+    "end_line": 44
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code (604) 269-4052\nSecurities registered under Section 12(b) of the Act:",
+   "prose_after": "Securities registered under Section 12(g) of the Act:\nCommon Stock, $0.001 par value\n(Title of class)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "None",
+     "None",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 53,
+    "end_line": 59
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Securities registered under Section 12(g) of the Act:\nCommon Stock, $0.001 par value\n(Title of class)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Indicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Explanatory Note",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cautionary Statement Regarding Forward Looking Statements",
+     "ii"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Property",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "2"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operation",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosure About Market Risk",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "F-1"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management  and Related Stockholder Matters",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accountant Fees and Services",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, and Financial Statement Schedules",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "13"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Explanatory Note"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 144
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nThe aggregate market value of the voting and non-voting common stock held by non-affiliates computed by reference to the average bid and asked price of such shares on the OTC markets as of January 31, 2020 was approximately $0.40.\nAs of November 13, 2020, the registrant had 64,049,990 shares of common stock, par value $0.001 per share issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nList hereunder the following documents if incorporated by reference and the Part of the Form 10-K (e.g., Part I, Part II, etc.) into which the document is incorporated: (1) any annual report to security holders; (2) any proxy or information statement; and (3) any prospectus filed pursuant to Rule 424(b) or (c) of the Securities Act of 1933. The listed documents should be clearly described for identification purposes (e.g., annual report to security holders for fiscal year ended December 24, 1980). Not Applicable\nTable of Contents",
+   "prose_after": "i\nCAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K (the \u201cReport\u201d), including, without limitation, statements under the heading \u201cManagement\u2019s Discussion and Analysis of Financial Condition and Results of Operations,\u201d includes forward-looking statements within the meaning of Section 27A of the Securities Act of 1933 and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d). These forward-looking statements can be identified by the use of forward-looking terminology, including the words \u201cbelieves,\u201d \u201cestimates,\u201d \u201canticipates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201cmay,\u201d \u201cwill,\u201d \u201cpotential,\u201d \u201cprojects,\u201d \u201cpredicts,\u201d \u201ccontinue,\u201d or \u201cshould,\u201d or, in each case, their negative or other variations or comparable terminology. There can be no assurance that actual results will not materially differ from expectations. Such statements include, but are not limited to, any statements relating to our ability to consummate any acquisition or other business combination and any other statements that are not statements of current or historical facts. These statements are based on management\u2019s current expectations, but actual results may differ materially due to various factors, including, but not limited to:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "July 31,",
+     "",
+     "",
+     "July 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash & Cash Equivalents",
+     "$",
+     "304,796",
+     "",
+     "$",
+     "553",
+     ""
+    ],
+    [
+     "  Prepaid Expenses",
+     "",
+     "5,470",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "310,266",
+     "",
+     "",
+     "553",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "310,266",
+     "",
+     "$",
+     "553",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable and accrued expenses",
+     "$",
+     "9,525",
+     "",
+     "$",
+     "34,252",
+     ""
+    ],
+    [
+     "  Due to related party",
+     "",
+     "518,607",
+     "",
+     "",
+     "52,642",
+     ""
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "528,132",
+     "",
+     "",
+     "86,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value, 10,000,000 shares authorized; 0 share issued and outstanding",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock, $0.001 par value, 500,000,000 shares authorized; 64,049,990 and 61,049,990 shares issued and outstanding as of July 31 , 2020, and July 31, 2019",
+     "",
+     "64,050",
+     "",
+     "",
+     "61,050",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Additional Paid in Capital",
+     "",
+     "361,867",
+     "",
+     "",
+     "364,867",
+     ""
+    ],
+    [
+     "Accumulated Deficit",
+     "",
+     "(643,783)",
+     "",
+     "",
+     "(512,258)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "(217,866)",
+     "",
+     "",
+     "(86,341)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES & STOCKHOLDERS\u2019 DEFICIT",
+     "$",
+     "310,266",
+     "",
+     "$",
+     "553",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 358,
+    "end_line": 397
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ Prager Metis CPA\u2019s LLC\nWe have served as the Company\u2019s auditor since 2020\nHackensack, New Jersey\nNovember 13, 2020\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 354,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 399,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the year ended",
+     "",
+     "",
+     "For the year ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "July 31,",
+     "",
+     "",
+     "July 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and Administrative Expenses",
+     "",
+     "131,525",
+     "",
+     "",
+     "370,900",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(131,525)",
+     "",
+     "",
+     "(370,900)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss on disposal of subsidiary",
+     "",
+     "-",
+     "",
+     "",
+     "(5,092)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(131,525)",
+     "",
+     "",
+     "(375,992)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Provision for Income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Loss",
+     "$",
+     "(131,525)",
+     "",
+     "$",
+     "(375,992)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted earnings per share",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.06)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted Weighted average number of common shares outstanding",
+     "",
+     "62,738,515",
+     "",
+     "",
+     "61,049,990",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 403,
+    "end_line": 434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 DEFICIT",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 399,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 436,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, July 31, 2018",
+     "",
+     "61,049,990",
+     "$",
+     "61,050",
+     "$",
+     "12,457",
+     "",
+     "$",
+     "(136,266)",
+     "",
+     "$",
+     "(62,759)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(375,992)",
+     "",
+     "",
+     "(375,992)",
+     ""
+    ],
+    [
+     "Disposal of Real Capital Ltd.",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "3,643",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "3,643",
+     ""
+    ],
+    [
+     "Debt forgiven by related parties",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "348,767",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "348,767",
+     ""
+    ],
+    [
+     "Balance, July 31, 2019",
+     "",
+     "61,049,990",
+     "",
+     "61,050",
+     "",
+     "364,867",
+     "",
+     "",
+     "(512,258)",
+     "",
+     "",
+     "(86,341)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common shares, in connection with acquisition",
+     "",
+     "3,000,000",
+     "",
+     "3,000",
+     "",
+     "(3,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(131,525)",
+     "",
+     "",
+     "(131,525)",
+     ""
+    ],
+    [
+     "Balance, July 31, 2020",
+     "",
+     "64,049,990",
+     "$",
+     "64,050",
+     "$",
+     "361,867",
+     "",
+     "$",
+     "(643,783)",
+     "",
+     "$",
+     "(217,866)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 462
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements\nCONSOLIDATED STATEMENT OF STOCKHOLDERS\u2019 DEFICIT",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 436,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year July 31,",
+     "",
+     "",
+     "For the Year July 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net loss",
+     "$",
+     "(131,525)",
+     "",
+     "$",
+     "(375,992)",
+     ""
+    ],
+    [
+     "    Adjustments to reconcile net loss to net cash provided by (used in) operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Impairment",
+     "",
+     "-",
+     "",
+     "",
+     "11,172",
+     ""
+    ],
+    [
+     "    Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Receivable",
+     "",
+     "-",
+     "",
+     "",
+     "4,556",
+     ""
+    ],
+    [
+     "      Prepaid expenses",
+     "",
+     "(5,470)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Accounts payable and accrued expenses",
+     "",
+     "(24,727)",
+     "",
+     "",
+     "22,884",
+     ""
+    ],
+    [
+     "    Net cash used in operating activities",
+     "",
+     "(161,722)",
+     "",
+     "",
+     "(337,380)",
+     ""
+    ],
+    [
+     "  CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Debt forgiven by related parties",
+     "",
+     "-",
+     "",
+     "",
+     "348,767",
+     ""
+    ],
+    [
+     "      Advance from related party",
+     "",
+     "465,965",
+     "",
+     "",
+     "(28,563)",
+     ""
+    ],
+    [
+     "    Net cash provided by financing activities",
+     "",
+     "465,965",
+     "",
+     "",
+     "(320,204)",
+     ""
+    ],
+    [
+     "    Net increase(decrease) in cash",
+     "",
+     "304,243",
+     "",
+     "",
+     "(17,176)",
+     ""
+    ],
+    [
+     "    Cash at beginning of year",
+     "",
+     "553",
+     "",
+     "",
+     "17,729",
+     ""
+    ],
+    [
+     "    Cash at end of year",
+     "$",
+     "304,796",
+     "",
+     "$",
+     "553",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash paid during year for :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "    Income Taxes",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non-cash financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Forgiveness of debt from related parties - contributed to additional paid-in capital",
+     "$",
+     "-",
+     "",
+     "$",
+     "348,767",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 468,
+    "end_line": 506
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENT OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\nJuly 31, 2020\nNOTE\n1. ORGANIZATION AND DESCRIPTION OF BUSINESS\nSummit Networks Inc. (together with its subsidiary, the \u201cCompany\u201d) was incorporated under the laws of the State of Nevada on July 8, 2014. Originally, the Company was formed to engage in the development and operation of a business engaged in the distribution of glass craft products produced in China. On May 8, 2018, the Company acquired Real Capital Limited, a Hong Kong company (\u201cReal Capital\u201d), to seek opportunities in the food and beverage industry. On March 31, 2019, the Company entered into a Share Purchase Agreement (the \u201cReal Capital SPA\u201d) pursuant to which it sold its interests in Real Capital. The closing of the Real Capital SPA occurred on April 10, 2019.\nOn April 9, 2019, the Company entered into a Share Exchange Agreement (the \u201cMoralArrival Share Exchange Agreement\u201d) with MoralArrival Environmental and Blockchain Technology Services Limited, a British Virgin Islands company (\u201cMoralArrival\u201d), and the sole shareholder of MoralArrival, which was Shuhua Liu, Ms. Liu. The acquisition of MoralArrival was with a related party as Ms. Liu controls The Hass Group, Inc., the Company\u2019s largest stockholder, and it was accounted for as acquisition of entity under common control. Under the terms of the MoralArrival Share Exchange Agreement, the Company agreed to exchange 3,000,000 shares of its common stock for all the outstanding shares of common stock of MoralArrival. As a result of this transaction, MoralArrival has become a wholly-owned subsidiary of the Company. MoralArrival had no business activity as of the date of acquisition. MoralArrival changed its name to Goodwill Motion Enterprises, Inc. (\u201cGoodwill\u201d) on May 4, 2020.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 464,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 508,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "21",
+     "%",
+     "",
+     "21",
+     "%"
+    ],
+    [
+     "Income tax benefit at statutory rate",
+     "$",
+     "(25,755)",
+     "",
+     "$",
+     "(78,958)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "25,755",
+     "",
+     "",
+     "78,958",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended July 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 607,
+    "end_line": 619
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "On July 8, 2019, the Company filed an Amended and Restated Articles of Incorporation (the \u201cRestated Charter\u201d) with the Secretary of State of the State of Nevada. Pursuant to the Restated Charter, the Company\u2019s capital stock consists of 510,000,000 shares, of which 500,000,000 are designated common stock and 10,000,000 are designated as preferred stock.\nOn July 17, 2019, the Company received FINRA approval to effect a 10-for-1 stock dividend to holders of its common stock as of June 1, 2019, the record date for the dividend. As a result, common stock figures, share capital, additional paid in capital, and earnings per share information have been retroactively adjusted for all periods presented to reflect the stock dividend.\nIn connection with the MoralArrival Share Exchange Agreement, the Company issued 3,000,000 shares of common stock to Ms. Liu on January 7, 2020. See Note 1 and Note 4 above.\nAs of July 31, 2020, the Company had 64,049,990 shares of common stock issued and outstanding.\nNOTE 6 - INCOME TAXES\nThe reconciliation of income tax benefit at the U.S. statutory rate of 21% for the years ended July 31, 2020 and 2019 to the Company\u2019s effective tax rate is as follows:",
+   "prose_after": "The tax effects of temporary differences that give rise to the Company\u2019s net deferred tax assets as of July 31, 2020 and 2019 are as follows:",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "July 31",
+     "",
+     "",
+     "July 31",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "$",
+     "134,399",
+     "",
+     "$",
+     "108,643",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(134,399)",
+     "",
+     "",
+     "(108,643)",
+     ""
+    ],
+    [
+     "Net deferred tax assets",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 622,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The tax effects of temporary differences that give rise to the Company\u2019s net deferred tax assets as of July 31, 2020 and 2019 are as follows:",
+   "prose_after": "As of July 31, 2020, the Company has approximately $639,993 of net operating losses (\u201cNOL\u201d) carryovers to offset taxable income, if any, in future years. Of the net operating loss from the Company\u2019s operations, $141,356 can be carried forward for a period of twenty years from the year of the initial loss and $498,637 can be carried forward with no time limit from the year of the initial loss pursuant to relevant US laws and regulations. In assessing the realization of deferred tax assets, management considers whether it is more likely than not that some portion or all of the deferred tax assets will be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which those temporary differences become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. Based on the assessment, management has established a full valuation allowance against all of the deferred tax assets relating to the NOL period because it is more likely than not that all of the deferred tax assets will not be realized.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 587,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 632,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Positions",
+     "Date First Appointed"
+    ],
+    [
+     "Shuhua Liu",
+     "49",
+     "Chairwoman of the Board, Chief Executive Officer",
+     "June 17, 2019"
+    ],
+    [
+     "Chao Long Huang",
+     "68",
+     "Chief Financial Officer and Director",
+     "March 9, 2020"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 691,
+    "end_line": 697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "As of the end of the period covered by this report, there have been no changes in the internal controls over financial reporting during the quarter ended July 31, 2020, that materially affected, or are reasonably likely to materially affect, our internal control over financial reporting subsequent to the date of management\u2019s last evaluation.\nITEM 9B. OTHER INFORMATION\nOn November 11, 2020, the Company entered into a Mutual Rescission Agreement (the \u201cGoodwill Rescission Agreement\u201d) with Goodwill and Shuhua Liu, the shareholder of Goodwill. Under the Goodwill Rescission Agreement, Shuhua Liu agreed to deliver to the Company 3,000,000 shares of its common stock that were issued to Liu under the MoralArrival Share Exchange Agreement, which the Company agreed to cancel upon such delivery by Shuhua Liu. Under the terms of the Goodwill Rescission Agreement, the obligations of all parties to the MoralArrival Share Exchange Agreement shall be terminated and the transactions contemplated thereby unwound and voided as if the MoralArrival Share Exchange Agreement was never entered into and the transactions contemplated thereby never occurred.\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE\nThe following table sets forth information regarding directors and officers:",
+   "prose_after": "Shuhua Liu, age 49, has served as a Director of the Company since June 2019. She has also been serving as the President of Hebei Jingxin Group, a construction company in China, since 2015. Prior to that, Ms. Liu served as the Executive Deputy General Manager of Hebei Jingxin Group from 2010 to 2015. Ms. Liu received her Bachelor of Arts degree from National Open University in 2016, China and MBA degree from Business School Netherlands of Tsinghua University of Beijing in 2017.\nChao Long (Charlene) Huang, age 68, has served as Chief Financial Officer of the Company since May 2019. Ms. Huang has also been serving as Chief Executive Officer of Zenox Enterprises Ltd., a trading company based in Canada, since 2005. From 1993 to 2016, Ms. Huang served as Chief Executive Officer for various companies, including Shanghai Wellson Welding Materials Import & Export Co. Ltd., Shanghai Flying Dragon Mineral Products Co. Ltd. and Shanghai Starlink Forwarding Co. Ltd. Ms. Huang received an associate degree from China Anhui Huangshan Forestry College in 1975 and a Bachelor of Arts degree from China Nanjing Teacher-training University in 1991.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 666,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 700,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Percentage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "of Shares",
+     "",
+     ""
+    ],
+    [
+     "Name and Address",
+     "Shares Owned",
+     "",
+     "",
+     "Owned",
+     "",
+     ""
+    ],
+    [
+     "5% Stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Hass Group, Inc.",
+     "",
+     "42,753,504",
+     "(1)",
+     "",
+     "66.72",
+     "%"
+    ],
+    [
+     "Super Dragon Shipping & Trading Limited",
+     "",
+     "4,328,496",
+     "",
+     "",
+     "6.76",
+     "%"
+    ],
+    [
+     "Directors and Officers",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shuhua Liu",
+     "",
+     "3,000,000",
+     "",
+     "",
+     "4.68",
+     "%"
+    ],
+    [
+     "Chao Long Huang",
+     "",
+     "1,671,732",
+     "",
+     "",
+     "2.61",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Percentage"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 731,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "There are no current employment agreements between us and our directors and officers. We have never paid any compensation to any of our executive officers or directors. Our current officer has agreed to work with no remuneration until such time as we commence business operations and receive sufficient revenues necessary to provide management salaries. At this time, we cannot accurately estimate when sufficient revenues will occur to implement this compensation, or what the amount of the compensation will be. There are no annuity, pension or retirement benefits proposed to be paid to the officer or director or employees in the event of retirement at normal retirement date pursuant to any presently existing plan provided or contributed to by our company.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information, regarding the beneficial ownership of our common stock as of the date of this Annual Report by\n(i) each stockholder known by us to be the beneficial owner of more than 5% of our common stock, (ii) by each director and executive officer of our company and (iii) by all executive officers and directors of our company as a group. Each of the persons named in the table has sole voting and investment power with respect to common stock beneficially owned. The business address of each person listed below is 205-1571 West 57th Avenue, Vancouver, BC V6P 0H7, Canada.",
+   "prose_after": "(1) Juli Enterprises Inc., a company organized under the laws of British Virgin Islands, owns 100% of the shares of the Hass Group, Inc. Shuhua Liu, a citizen of people\u2019s Republic of China, servers as the sole director of Juli Enterprises Inc. As such, both Juli Enterprises Inc. and Shuhua Liu may be deemed to be the beneficial owners of all shares of common stock held by the Hass Group, Inc.\nITEM 13. CERTAIN RELATIONSHIPS, RELATED TRANSACTIONS AND DIRECTOR INDEPENDENCE\nOn April 9, 2019, the Company entered into MoralArrival Share Exchange Agreement with MoralArrival, a British Virgin Islands company, and the sole shareholder of MoralArrival was Shuhua Liu. The acquisition of MoralArrival was with a related party, as Ms. Liu controls The Hass Group, Inc., the Company\u2019s largest stockholder and it was accounted for as acquisition of entity under common control. Under the terms of that MoralArival Share Exchange Agreement, the Company agreed to exchange 3,000,000 shares of its common stock for all the outstanding shares of common stock of MoralArrival. As a result of this transaction, MoralArrival has become a wholly-owned subsidiary of the Company. The Company issued 3,000,000 shares of common stock to Ms. Liu in January 2020.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "July 31, 2020",
+     "",
+     "July 31, 2019",
+     ""
+    ],
+    [
+     "Audit fees",
+     "$",
+     "9,500",
+     "$",
+     "1,650"
+    ],
+    [
+     "Audit-related fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Tax fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "All other fees",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Total Fees",
+     "$",
+     "9,500",
+     "$",
+     "1,650"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 763,
+    "end_line": 774
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 14",
+     "title": "PRINCIPAL ACCOUNTANT FEES AND SERVICES"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "On November 11, 2020, the Company entered into a Mutual Rescission Agreement (the \u201cGoodwill Rescission Agreement\u201d) with Goodwill and Shuhua Liu, the shareholder of Goodwill. Under the Goodwill Rescission Agreement, Shuhua Liu agreed to deliver to the Company 3,000,000 shares of its common stock that were issued to Liu under the MoralArrival Share Exchange Agreement, which the Company agreed to cancel upon such delivery by Shuhua Liu. Under the terms of the Goodwill Rescission Agreement, the obligations of all parties to the MoralArrival Share Exchange Agreement shall be terminated and the transactions contemplated thereby unwound and voided as if the MoralArrival Share Exchange Agreement was never entered into and the transactions contemplated thereby never occurred.\nOur Board of Directors is responsible to approve all related party transactions. We have not adopted written policies and procedures specifically for related person transactions.\nITEM 14. PRINCIPAL ACCOUNTANT FEES AND SERVICES\nThe following table presents the fees for professional audit services for the audit of our annual financial statements for the fiscal years ended July 31, 2020 and 2019 and fees billed for other services during those periods.\nDuring the year ended July 31, 2020, Prager Metis\u2019s fees for the annual audit of our financial statements and the periodic reviews of the financial statements were $9,500. During the year ended July 31, 2019, Zia Masood Kiani & Co.\u2019s fees for the annual audit of our financial statements and the periodic reviews of the financial statements were $1,650.",
+   "prose_after": "ITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES\n(a) The following documents are filed as part of this Report: The following documents are filed as part of this Report:\n(1) Financial Statements\n(2) Financial Statements Schedule\nAll financial statement schedules are omitted because they are not applicable or the amounts are immaterial and not required, or the required information is presented in the financial statements and notes thereto in is Item 15 of Part IV below.\n(3) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index. Exhibits which are incorporated herein by reference can be retrieved from SEC website at www.sec.gov.\nITEM 16. FORM 10-K SUMMARY\nNot applicable.\nEXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 14",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 756,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 787,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "SUMMIT NETWORKS INC.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By",
+     "/s/ Shuhua Liu"
+    ],
+    [
+     "",
+     "",
+     "Shuhua Liu"
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By",
+     "/s/ Chao Long Huang"
+    ],
+    [
+     "",
+     "",
+     "Chao Long Huang"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer and Director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Date:",
+     "  November 13, 2020"
+    ]
+   ],
+   "caption_stack": [
+    "SUMMIT NETWORKS INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 803,
+    "end_line": 818
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "FORM 10-K SUMMARY"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Subsequent events"
+    }
+   },
+   "prose_before": "3.1 Amended and Restated Articles of Incorporation, incorporated by reference to Exhibit 3 to Form DEF 14C, filed with the Commission on June 18, 2019. 3.2 Bylaws, incorporated herein by reference to Exhibit 3.2 to Form S-1, filed with the Commission on October 1, 2014 10.1 Share Purchase Agreement, dated March 31, 2019, between the Company and Hang Dennis Cheung, incorporated herein by reference to Exhibit 10.1 to Form 8-K, filed with the Commission on April 11, 2019 10.2 Share Exchange Agreement, dated April 9, 2019, among the Company, MoralArrival Environmental and Blockchain Technology Services Limited and Shuhua Liu, incorporated herein by reference to Exhibit 10.1 to Form 8-K, filed with the Commission on April 11, 2019 10.3* Mutual Rescission Agreement, dated November 11, 2020, among the Company, Goodwill Motion Enterprises, Inc. and Shuhua Liu 10.4* Loan Agreement, dated June 15, 2020, among the Company, Shuhua Liu and Chiu Kin Wong 10.5* Loan Agreement, dated June 15, 2020, between the Company and Shuhua Liu 10.6* Loan Agreement, dated June 15, 2020, between the Company and Chiu Kin Wong 31.1* Certification of the Chief Executive Officer required by Rule 13a-14(a) or Rule 15d-14(a). 31.2* Certification of the Chief Financial Officer required by Rule 13a-14(a) or Rule 15d-14(a). 32.1** Certification of the Chief Executive Officer required by Rule 13a-14(b) or Rule 15d-14(b) and 18 U.S.C. 1350. 32.2** Certification of the Chief Financial Officer required by Rule 13a-14(b) or Rule 15d-14(b) and 18 U.S.C. 1350.\n* Filed herewith ** Furnished herewith\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 798,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 819,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

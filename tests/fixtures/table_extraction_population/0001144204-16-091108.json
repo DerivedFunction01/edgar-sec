@@ -1,0 +1,5158 @@
+{
+ "accession": "0001144204-16-091108",
+ "cik": "0001094139",
+ "form": "10-K",
+ "filing_date": "2016-03-30",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "v434344_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Colorado",
+     "34-1480558"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 29
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n[X] Annual Report Pursuant to Section 13 or 15(d)\nOf the Securities Exchange Act of 1934\nFor the fiscal year ended December 31, 2015\nOR\n[ ] Transition Report Pursuant to Section 13 or 15(d)\nof the Securities Exchange Act of 1934\nCommission file number: 000-31279\nOurPet\u2019s Company\n(Exact Name of Registrant as Specified in Its Charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "1300 East Street, Fairport Harbor, OH",
+     "44077"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 30,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Registrant\u2019s telephone number:\n(440) 354-6500\nSecurities registered pursuant to Section 12(b) of the Exchange Act: None\nSecurities registered pursuant to Section 12(g) of the Exchange Act: Common Stock, no par value\nIndicate by check mark whether the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or 15(d) of the Exchange Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant:\n(1) filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "10"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statement Schedules",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Signatures",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Exhibit 11",
+     "51"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Certifications",
+     "52"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 75,
+    "end_line": 132
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Non-Accelerated Filer  [ ]    Smaller Reporting Company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act) [ ] Yes [X] No\nRegistrant\u2019s revenues for the fiscal year ended December 31, 2015 were $23,819,189. The aggregate market value of the common stock of the registrant, no par value per share (the \u201cCommon Stock\u201d), held by non-affiliates of registrant was $4,967,749 as of June 30, 2015. As of February 15, 2016, the registrant had 17,625,739 shares of Common Stock outstanding.\nDocuments Incorporated by Reference.\nPortions of the registrant\u2019s definitive proxy statement for the 2016 Annual Meeting of shareholders of OurPet\u2019s Company are incorporated by reference into Part III of this Form 10-K. Except as otherwise stated, the information in this Form 10-K is as of December 31, 2015.\nwww.ourpets.com\nOURPET\u2019S COMPANY\nFORM 10-K\nFor The Fiscal Year Ended December 31, 2015\nINDEX",
+   "prose_after": "2\nForward-Looking Statements\nThis report on the Form 10-K (this \u201cReport\u201d) contains forward-looking statements within the meaning of Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d), including, without limitation, statements regarding our cash needs and ability to fund our requirements, building of our market presence and ability to succeed as planned and our ability to successfully obtain and protect our patents. Such forward-looking statements involve known and unknown risks, uncertainties and other factors which may cause the actual results, performance or achievements of the Company or industry results to be materially different from any future results, performance, or achievements expressed or implied by such forward-looking statements. See \u201cItem 1A. Risk Factors\u201d for a discussion of these risks. When used in this Report, statements that are not statements of historical fact may be deemed to be forward-looking statements. Without limiting the foregoing, the words \u201canticipates,\u201d \u201cplans,\u201d \u201cintends,\u201d \u201cexpects,\u201d and similar expressions are intended to identify such forward-looking statements. Readers are cautioned not to place undue reliance on these forward-looking statements, which speak only as of the date of this Report. Although we believe that the expectations reflected in the forward-looking statements are reasonable, we cannot guarantee future results, levels of activity, performance or achievements.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 134,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Quarter Ended",
+     "High",
+     "",
+     "Low",
+     ""
+    ],
+    [
+     "March 31, 2014",
+     "",
+     "1.33",
+     "",
+     "0.91"
+    ],
+    [
+     "June 30, 2014",
+     "",
+     "1.20",
+     "",
+     "0.91"
+    ],
+    [
+     "September 30, 2014",
+     "",
+     "1.04",
+     "",
+     "0.72"
+    ],
+    [
+     "December 31, 2014",
+     "",
+     "0.85",
+     "",
+     "0.68"
+    ],
+    [
+     "March 31, 2015",
+     "",
+     "0.85",
+     "",
+     "0.70"
+    ],
+    [
+     "June 30, 2015",
+     "",
+     "0.80",
+     "",
+     "0.65"
+    ],
+    [
+     "September 30, 2015",
+     "",
+     "0.77",
+     "",
+     "0.63"
+    ],
+    [
+     "December 31, 2015",
+     "",
+     "1.00",
+     "",
+     "0.65"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 324,
+    "end_line": 336
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters, and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "In the normal course of conducting our business, we may become involved in litigation matters, including, but not limited to, preference claims by debtors in bankruptcy proceedings and patent infringement. We are not a party to any litigation or governmental proceeding which our management or legal representatives believe could result in any judgments or fines against us that would have a material adverse effect or impact in our financial position, liquidity, or results of operation.\nItem 4. Mine Safety Disclosures\nNot Applicable.\nPART II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters, and Issuer Purchases of Equity Securities.\nOur Common Stock is quoted on the OTC Markets OTCQX under the symbol \u201cOPCO\u201d and has traded under the symbol \u201cOPCO\u201d since December 13, 2001. The following table sets forth, for each of the quarters indicated, the high and low bid quotations per share of Common Stock in the over-the-counter market (according to the Nasdaq Stock Chart). The bid quotations in the over-the-counter market represent prices between securities dealers, do not include retail markups, markdowns, or commissions, and may not represent actual transactions.",
+   "prose_after": "As of March 10, 2016, we had approximately 816 holders of record of our Common Stock.\nEach share of Common Stock has an equal right to receive dividends when and if the Board of Directors decides to declare a dividend after payment of any accrued dividends on the Preferred Stock. We have never paid any cash dividends nor do we intend, in the foreseeable future, to make any cash distributions to our common stockholders as dividends. We cannot currently distribute cash dividends to common stockholders without violating our loan agreement with our bank.\nThere are no conversion rights or redemption or sinking fund provisions with respect to the Common Stock. All of the outstanding shares of Common Stock are fully paid and non-assessable.\nOn January 28, 2010, and February 1, 2010, OurPet\u2019s sold an aggregate of 123,616 shares of its Series 2009 Preferred Stock in a private placement to a total of 15 accredited investors. All shares in the private placement were sold at a price of $7.00 a share for a total of $865,312. Payment for the shares comprised of $595,000 in cash and $270,312 in converted debt (including accrued interest). All were previously reported in Form 8-K filed February 2, 2010 except for 6,572 shares totaling $46,004 purchased by two additional accredited investors on February 1, 2010. All shares are convertible at any time into Common Stock shares at a conversion price of $.70 per common share, subject to adjustment for stock splits, combinations, and similar transactions. All shares receive a 6% ($.42) cash dividend payable on December 1 of each year provided that payment may be deferred if necessary for our compliance with our loan covenants. We have the limited right to convert the shares into Common Stock at any time after the trading price of our Common Stock reaches $1.50 per share for twenty (20) consecutive days. In accordance with the above provisions, in December 2015 and 2014, the Company paid $51,919 each year in cash dividends to holders of this Series 2009 Preferred Stock.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 317,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 351,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Debt",
+     "Interest Rate",
+     "Balance",
+     ""
+    ],
+    [
+     "  Bank line of credit - $5,000,000",
+     "30 Day Libor plus 2.25%",
+     "$",
+     "3,267,170"
+    ],
+    [
+     "  Bank term note ($1,000,000 original balance)",
+     "30 Day Libor plus 3.0%",
+     "",
+     "950,000"
+    ],
+    [
+     "  Note Payable to Molor Products",
+     "Non-interest bearing",
+     "",
+     "83,358"
+    ],
+    [
+     "  Lake County Economic Development Loan ($125,000 original balance)",
+     "5.0%",
+     "",
+     "66,393"
+    ],
+    [
+     "  Ohio 166 note ($225,000 original balance)",
+     "3.25%",
+     "",
+     "39,882"
+    ],
+    [
+     "  Capitalized leases",
+     "11.88% and 9.9%",
+     "",
+     "13,505"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 389,
+    "end_line": 399
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "\u00b7 On August 24, 2015, the Company entered into a financing commitment with First Merit Bank for a five year term loan in the amount of $1,000,000. The Company used $410,000 of the funds borrowed to pay off the $350,000 of Subordinated Debt and $60,000 of related accrued interest that would have been due in November of 2015. The balance of $590,000 was used to fund capital expenditures.\nLiquidity and Capital Resources\nOur operating activities provide cash from the sale of our products to customers. The principal use of such cash is for payments to suppliers that manufacture our products and for freight charges for shipments to our warehouse and our customers. Our investing activities use cash primarily for the acquisition of equipment such as product molds, warehouse equipment, computers, and software. Our financing activities provide cash, if needed, under our line of credit with our bank, which had $1,732,830 in available funds at December 31, 2015, based upon the balance of accounts receivable and inventories at that date.\nAs of December 31, 2015, we had $4,420,308 in principal amount of indebtedness consisting of:",
+   "prose_after": "The bank line of credit indebtedness of $3,267,170 is comprised of a single line of credit under which we can borrow up to a total of $5,000,000 based on the level of qualifying accounts receivable and inventories. Total eligible collateral at December 31, 2015 was $5,272,805. The $5,000,000 line of credit is a two-year revolver and therefore is classified as a long-term liability on our balance sheet. Currently the $5,000,000 line of credit has been renewed by the bank through June 30, 2017. Under our agreement with the bank we are required to: (1) maintain a debt service coverage ratio of at least 1.00 to 1.15 measured quarterly on a trailing 12 month basis; (2) maintain a tangible net worth of no less than $6,000,000 tested at the end of each quarter; and (3) obtain the bank\u2019s permission to incur additional indebtedness, make any expenditures for property and equipment in excess of $750,000 in any fiscal year, redeem any of our capital stock, or pay cash dividends other than dividends on our preferred stock (subject to meeting the debt service coverage ratio). As of December 31, 2015, we were in compliance with the covenant and default provisions under the agreement with the bank. We had a debt service coverage ratio of 2.39 and a tangible net worth of $7,858,185.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 412,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Payments Due By Period",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Contractual Obligation",
+     "Total",
+     "",
+     "Less than 1 year",
+     "",
+     "1-3 years",
+     "",
+     "4-5 years",
+     "",
+     "After 5 years",
+     ""
+    ],
+    [
+     "Short and Long Term Debt",
+     "$",
+     "4,406,803",
+     "$",
+     "265,450",
+     "$",
+     "3,707,995",
+     "$",
+     "433,358",
+     "$",
+     "-"
+    ],
+    [
+     "Capital Lease Obligations",
+     "",
+     "13,505",
+     "",
+     "11,440",
+     "",
+     "2,065",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Purchase Obligations",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Other Long Term Liabilities",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Operating Leases",
+     "",
+     "4,055,228",
+     "",
+     "545,754",
+     "",
+     "1,116,755",
+     "",
+     "1,162,727",
+     "",
+     "1,229,992"
+    ],
+    [
+     "Total Contractual Cash Obligations",
+     "$",
+     "8,475,536",
+     "$",
+     "822,644",
+     "$",
+     "4,826,815",
+     "$",
+     "1,596,085",
+     "$",
+     "1,229,992"
+    ]
+   ],
+   "caption_stack": [
+    "Payments Due By Period"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 417,
+    "end_line": 431
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "On August 24, 2015, the Company entered into a financing commitment with First Merit Bank for a term loan in the amount of $1,000,000. The $1,000,000 note has a five-year term and a monthly variable interest rate of 30 day LIBOR plus 300 basis points. We make monthly payments in the amount of $16,667 in principal plus accrued interest at the current interest rate. The loan is secured by a cross-collateralized, first position lien on all business assets of OurPet\u2019s currently securing our existing revolving line of credit. There are no personal guarantees required and no prepayment penalty. There are no changes in the financial covenants other than the adjusted tangible capital requirement, which was increased to a minimum of $6,000,000 effective September 30, 2015. The Company used $410,000 of the funds borrowed to pay off the $350,000 of Subordinated Debt and $60,000 of related accrued interest that would have been due in November of 2015. The balance of $590,000 was used to fund capital expenditures comprised mostly of new product molds/tooling, warehouse equipment, computer software and a new phone system.\nThe term loan of $500,000, which was borrowed on December 7, 2012 from First Merit Bank, was paid off with scheduled payments during 2015.\nOur short-term and long-term liquidity will continue to depend on our ability to achieve positive cash-flow on our operations and to increase sales of our products. In 2014 and 2015, we funded our operating cash requirements primarily with our working capital line of credit. In 2016, we will likely continue to rely on our working capital line of credit as we reduce inventory. Based on our bank\u2019s amended loan covenants we expect to comply with the debt service coverage ratio and tangible net worth required by our bank to maintain our line of credit through the end of 2016.\nWe have no material commitments for capital expenditures.\nA schedule of our contractual obligations as of December 31, 2015 is as follows:",
+   "prose_after": "Net cash used by operating activities for the year ended December 31, 2015 was $128,877. Cash was provided by the net operating income for the year of $1,336,912, as well as the non-cash charges for depreciation of $619,647, amortization of $76,341, stock option expense of $14,211, and loss on fixed assets written off of $25,157. Cash was decreased by $2,201,145 due to the following changes in our operating assets and liabilities:",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 412,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Accounts receivable increase",
+     "$",
+     "(1,178,362)",
+     ""
+    ],
+    [
+     "Inventories increase",
+     "",
+     "(1,020,498)",
+     ""
+    ],
+    [
+     "Prepaid expenses increase",
+     "",
+     "(104,083)",
+     ""
+    ],
+    [
+     "Amortizable Intangible Asset increase",
+     "",
+     "(49,619)",
+     ""
+    ],
+    [
+     "Accounts payable increase",
+     "",
+     "92,867",
+     ""
+    ],
+    [
+     "Accrued expenses increase",
+     "",
+     "6,367",
+     ""
+    ],
+    [
+     "Deferred Tax liability increase",
+     "",
+     "52,183",
+     ""
+    ],
+    [
+     "Net change",
+     "$",
+     "(2,201,145)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 434,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Net cash used by operating activities for the year ended December 31, 2015 was $128,877. Cash was provided by the net operating income for the year of $1,336,912, as well as the non-cash charges for depreciation of $619,647, amortization of $76,341, stock option expense of $14,211, and loss on fixed assets written off of $25,157. Cash was decreased by $2,201,145 due to the following changes in our operating assets and liabilities:",
+   "prose_after": "Accounts receivable increased by approximately $1,200,000 primarily due to renegotiated payment terms with our largest customer and partly due to increased sales. Inventories increased by approximately $1,020,000 due to bringing in product to for our new dual brand strategy. Prepaid expenses increased by approximately $104,000 due to increased prepayments for shows, income taxes, investor relations, and inventory. Amortizable intangible assets increased by approximately 50,000 due to obtaining more patents. Accounts payable increased by approximately $93,000 primarily due to the increase in inventories.\nNet cash used in investing activities for the year ended December 31, 2015 was $663,516. The funds were used primarily for the acquisition of tooling and molds for our \u201cBarking Bistro\u201d and \u201cFlappy\u201d products, a new telephone system, and software for forecasting.\nNet cash provided by financing activities in 2015 was $699,945. Net borrowings on the bank line of credit amounted to $405,138. The new term loan borrowed from First Merit Bank provided $1,000,000 in cash. Approximately $653,000 was used to reduce term loan principal and capital leases. The cash dividend paid on Preferred Stock accounted for approximately $52,000.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 412,
+     "token": "PAGE_BREAK",
+     "id": 12,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Net revenue increase of 4.6%",
+     "$",
+     "1,048,627",
+     ""
+    ],
+    [
+     "  Cost of goods sold increase of 1.9%",
+     "",
+     "(310,073)",
+     ""
+    ],
+    [
+     "  Gross profit increase of 10.8%",
+     "",
+     "738,554",
+     ""
+    ],
+    [
+     "  Selling, general, and administrative expenses decrease of 3.9 %",
+     "",
+     "219,037",
+     ""
+    ],
+    [
+     "  Other expense/income decrease",
+     "",
+     "(23,405)",
+     ""
+    ],
+    [
+     "  Interest expense decrease of 8.7%",
+     "",
+     "11,036",
+     ""
+    ],
+    [
+     "  Income tax expense increase",
+     "",
+     "(377,585)",
+     ""
+    ],
+    [
+     "  Increase in profitability",
+     "$",
+     "567,637",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 502,
+    "end_line": 515
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Interest expense for 2015 was $115,735, a decrease of $11,036, or 8.7%, from $126,771 in 2014. Even though our average line of credit balance increased by approximately $301,000, interest expense on the line only increased by approximately $300 as a result of us decreasing the interest rate. The interest rate is now based on the 30 day LIBOR rate plus 2.25% instead of the bank\u2019s prime rate. Interest expense on the $500,000 term loan with First Merit Bank decreased by approximately $6,700 from 2014 to 2015 due to paying off the outstanding principal balance of this loan. Interest expense on subordinated debt decreased by approximately $5,100 due to paying off these balances, part in 2014 and the remainder in 2015. The new term loan agreement for $1,000,000 that was entered into with First Merit Bank in August resulted in additional interest expense of approximately $11,300. Finally, miscellaneous items comprised the remaining $10,800 reduction in interest expense, including the pay-off of the loans to Beachcraft L.P. and Over the Hill Ltd. at the end of 2014.\nIncome tax expense in 2015 increased to $750,592 from $373,007 in 2014. The $377,585 increase was due to (1) an increase in the estimate for federal income tax expense due of approximately $342,000, (2) an increase in the estimate of local income tax expense due of approximately $20,000, and (3) a change in the deferred tax account of approximately $16,000. The increase in tax due was a result of the increase in income for 2015 over 2014. The increase in the deferred tax account was a result of increasing the amount of fixed assets that qualified as Section 179 property.\nNet income increased by $567,637, from $769,275 in 2014 to $1,336,912 in 2015. This increase was as a result of the following changes from 2014 to 2015:",
+   "prose_after": "Critical Accounting Policies/Estimates\nWe prepare our consolidated financial statements in accordance with United States generally accepted accounting principles. We have identified the accounting policies below as critical to our business operations and understanding of our results of operations. For a detailed discussion on the application of these and other accounting policies, see the Summary of Significant Accounting Policies footnote to our audited consolidated financial statements included elsewhere in this Annual Report on Form 10-K. The application of these policies may require management to make judgments and estimates that affect the reported amount of assets and liabilities, disclosure of contingent assets and liabilities at the date of our financial statements, and the reported amounts of revenue and expenses during the reporting period. Management uses historical experience and all available information to make these estimates and judgments, and different amounts could be reported using different assumptions and estimates.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 499,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 536,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page No."
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "29"
+    ],
+    [
+     "Consolidated Balance Sheets",
+     "30-31"
+    ],
+    [
+     "Consolidated Statements of Operations",
+     "32"
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity",
+     "33"
+    ],
+    [
+     "Consolidated Statements of Cash Flows",
+     "34"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "35-48"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 545,
+    "end_line": 555
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 8",
+     "title": "Financial Statements and Supplementary Data."
+    },
+    "note": null
+   },
+   "prose_before": "Revenue Recognition. With respect to revenue from product sales, revenue is recognized only upon shipment of products to customers. The Company derives its revenues from the sale of proprietary pet products under the OurPet\u2019s\u00ae, PetZone\u00ae, SmartScoop\u00ae, EcoPure Naturals\u00ae, Play-N-Squeak\u00ae, Durapet\u00ae, Flappy\u00ae, Go! Cat! Go\u00ae!, Eat\u00ae , Smarter Toys\u00ae, Festiva\u00ae and Clipnosis\u00ae brand names. Net revenue is comprised of gross sales less discounts given to distributors, returns and allowances.\nOff-Balance Sheet Arrangements\nWe have no off-balance sheet arrangements that have or are likely to have a current or future effect on our financial condition, revenues or expenses, results of operations, liquidity, capital expenditures, or capital resources.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk.\nWe are a smaller reporting company as defined by Rule 12b-2 under the Exchange Act and are not required to provide the information required under this item.\nItem 8. Financial Statements and Supplementary Data.\nThe financial statements of OurPet\u2019s Company as of December 31, 2015 and 2014, and for the years then ended, together with the Report of Independent Registered Public Accounting Firm are included in this Form 10-K on the pages indicated below.",
+   "prose_after": "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.\nNone\nItem 9A. Controls and Procedures.\nEvaluation of Controls and Procedures\nAs of December 31, 2015, we carried out an evaluation, under the supervision of, and with the participation of, our management, including our President and Chief Executive Officer, along with our Chief Financial Officer, of the effectiveness of the design and operation of our disclosure controls and procedures as defined in Rule 13a-15(e) of the Securities Exchange Act of 1934 (the \u201cExchange Act\u201d). Based upon that evaluation, our President and Chief Executive Officer and our Chief Financial Officer each concluded that our disclosure controls and procedures were effective as of December 31, 2015.\nManagement\u2019s Report on Internal Control Over Financial Reporting\nOurPet\u2019s management is responsible for establishing and maintaining an adequate system of internal control over financial reporting as such term is defined in Rule 13a-15(f) of the Exchange Act. Our internal control over financial reporting is designed to provide reasonable assurance regarding the reliability of financial reporting and the preparation of our consolidated financial statements for external purposes in accordance with U.S. generally accepted accounting principles defined in the Exchange Act.",
+   "structured_location": {
+    "item": "ITEM 8",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 536,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 576,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "11",
+     "Statement of Computation of Net Income Per Share."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14",
+     "OurPet\u2019s Code of Ethics.(3)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21",
+     "Subsidiaries of the Registrant.(1)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of the Chief Executive Officer pursuant to 17 CFR Section 240.13a-14(a) of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of the Principal Financial Officer pursuant to 17 CFR Section 240.13a-14(a) of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of the President and Chief Executive Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of the Principal Financial Officer pursuant to 18 U.S.C. Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 649,
+    "end_line": 676
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "10.59 Lease Agreement dated August 10, 2012, between OurPet\u2019s Company and Senk Properties LLC.(28) 10.60 Form of Promissory Note issued by OurPet\u2019s Company on November 8, 2012.(29) 10.61 Form of Warrant issued by OurPet\u2019s Company on November 8, 2012.(29) 10.62 Covenant Waiver issued by FirstMerit Bank to OurPet\u2019s Company on November 5, 2012.(29) 10.63 Business Loan Agreement (Asset Based), dated December 7, 2012, between OurPet\u2019s Company and FirstMerit Bank, N.A.(30) 10.64 Amendment to Note, dated December 7, 2012, between OurPet\u2019s Company, SMP Company, Incorporated, Virtu Company and FirstMerit Bank, N.A.(30) 10.65 Promissory Note, dated December 7, 2012, executed by OurPet\u2019s Company, SMP Company, Incorporated and Virtu Company in favor of FirstMerit Bank, N.A.(30) 10.66 Commercial Security Agreement, dated December 7, 2012, by and among OurPet\u2019s Company, as Grantor, and FirstMerit Bank, N.A., as Lender.(30) 10.67 Commercial Security Agreement, dated December 7, 2012, by and among SMP Company, Incorporated, as Grantor, and FirstMerit Bank, N.A., as Lender.(30) 10.68 Commercial Security Agreement, dated December 7, 2012, by and among Virtu Company, as Grantor, and FirstMerit Bank, N.A., as Lender.(30) 10.69 Form of Warrant issued by OurPet\u2019s Company on December 7, 2012.(30) 10.70 Employment Agreement dated May 31, 2013 between Scott R. Mendes and OurPet\u2019s Company. (31) 10.71 Employment Agreement dated May 31, 2013, 2013 between Konstantine S. Tsengas and OurPet\u2019s Company. (31) 10.72 Loan Agreement, dated June 20, 2013, between OurPet\u2019s Company and the Board of Lake County Commissioners. (32) 10.73 Cognovit Promissory Note, dated June 20, 2013, executed by OurPet\u2019s Company in favor of the Board of Lake County Commissioners. (32) 10.74 Security Agreement, dated December June 20, 2013, between OurPet\u2019s Company and the Board of Lake County Commissioners. (32) 10.75 Amendment to Note, dated November 12, 2013, between OurPet\u2019s Company, SMP Company, Incorporated, Virtu Company and FirstMerit Bank, N.A. (33) 10.76 Business Loan Agreement (Asset Based), dated April 16, 2014, between OurPet\u2019s Company, SMP Company, Incorporated, Virtu Company and FirstMerit Bank, N.A.(34) 10.77 Promissory Note in the principal amount of $5,000,000, dated April 16, 2014, executed by OurPet\u2019s Company, SMP Company, Incorporated, Virtu Company. (34) 10.78 Promissory Note in the principal amount of $277,777.92, dated April 16, 2014, executed by OurPet\u2019s Company, SMP Company, Incorporated, Virtu Company. (34) 10.79 Amended Promissory Note, dated September 4, 2014, between OurPet\u2019s Company, SMP Company, Incorporated, Virtu Company and FirstMerit Bank, N.A. (35) 10.80 Business Loan Agreement (Asset Based), dated May 27, 2015, between OurPet\u2019s Company, Virtu Company, SMP Company, Incorporated, and FirstMerit Bank, N.A.(36) 10.81 Promissory Note in the principal amount of $5,000,000, dated May 27, 2015, executed by OurPet\u2019s Company, Virtu Company, and SMP Company, Incorporated.(36)",
+   "prose_after": "(1) Incorporated by reference to the exhibits to the Company\u2019s Registration Statement on Form 10SB/A filed on May 31, 2001.\n(2) Incorporated by reference to the exhibits to the Company\u2019s Annual Report on Form 10-KSB filed on March 26, 2002.\n(3) Incorporated by reference to the exhibits to the Company\u2019s Annual Report on Form 10-KSB filed on March 26, 2004.\n(4) Incorporated by reference to the exhibits to the Company\u2019s Annual Report on Form 10-KSB filed on March 30, 2005.\n(5) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on January 6, 2006.\n(6) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on August 18, 2006.\n(7) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on August 25, 2006.\n(8) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on October 23, 2006.\n(9) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on January 19, 2006.\n(10) Incorporated by reference to the exhibits to the Company\u2019s Annual Report of Form 10-KSB filed on March 28, 2007.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 648,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 705,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "OURPET\u2019S COMPANY",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/S/ STEVEN TSENGAS"
+    ],
+    [
+     "",
+     "Steven Tsengas"
+    ],
+    [
+     "",
+     "Chairman and Chief"
+    ],
+    [
+     "",
+     "Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "OURPET\u2019S COMPANY"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 758,
+    "end_line": 767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(31) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on June 3, 2013.\n(32) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on June 25, 2013.\n(33) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on November 18, 2013.\n(34) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on April 17, 2014.\n(35) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on September 8, 2014.\n(36) Incorporated by reference to the exhibits to the Company\u2019s Form 8-K filed on May 29, 2015.\nAll other Exhibits filed herewith.\nSIGNATURES\nIn accordance with Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nDated: March 30, 2016",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/    STEVEN TSENGAS",
+     "Chairman, Chief Executive Officer and",
+     "March 30, 2016"
+    ],
+    [
+     "Steven Tsengas",
+     "  Director (Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/    SCOTT R. MENDES",
+     "Chief Financial Officer",
+     "March 30, 2016"
+    ],
+    [
+     "Scott R. Mendes",
+     "  (Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/    JOSEPH T. AVENI",
+     "Director",
+     "March 30, 2016"
+    ],
+    [
+     "Joseph T. Aveni",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/    WILLIAM L. LECHTNER",
+     "Director",
+     "March 30, 2016"
+    ],
+    [
+     "William L. Lechtner",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/    CHARLES C. MACMILLAN",
+     "Director",
+     "March 30, 2016"
+    ],
+    [
+     "Charles C. MacMillan",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/S/    JOHN W. SPIRK, JR.",
+     "Director",
+     "March 30, 2016"
+    ],
+    [
+     "John W. Spirk, Jr.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 770,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "OURPET\u2019S COMPANY AND SUBSIDIARIES\nFAIRPORT HARBOR, OHIO\nFINANCIAL STATEMENTS\nDECEMBER 31, 2015\nand\nDECEMBER 31, 2014\nFINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 751,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 799,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Number"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "29"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2015 and December 31, 2014",
+     "30 \u2013 31"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2015 and December 31, 2014",
+     "32"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity for the years ended December 31, 2015 and December 31, 2014",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2015 and December 31, 2014",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "35 - 48"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Number"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 816,
+    "end_line": 833
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "OURPET\u2019S COMPANY AND SUBSIDIARIES\nFAIRPORT HARBOR, OHIO\nFINANCIAL STATEMENTS\nDECEMBER 31, 2015\nand\nDECEMBER 31, 2014\nFINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders\nWe have audited the accompanying consolidated balance sheets of OurPet\u2019s Company and Subsidiaries (the \u201cCompany\u201d), a Colorado corporation, as of December 31, 2015 and 2014, and the related consolidated statements of operations, stockholders\u2019 equity, and cash flows for each of the years in the two-year period ended December 31, 2015. OurPet\u2019s Company and Subsidiaries\u2019 management is responsible for these consolidated financial statements. Our responsibility is to express an opinion on these consolidated financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 812,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 834,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents",
+     "$",
+     "100,000",
+     "$",
+     "192,448"
+    ],
+    [
+     "  Accounts receivable - trade, less allowance for doubtful accounts of $37,824 and $39,539",
+     "",
+     "4,294,810",
+     "",
+     "3,116,448"
+    ],
+    [
+     "  Inventories net of reserve",
+     "",
+     "7,914,613",
+     "",
+     "6,894,115"
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "582,676",
+     "",
+     "478,593"
+    ],
+    [
+     "    Total current assets",
+     "",
+     "12,892,099",
+     "",
+     "10,681,604"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PROPERTY AND EQUIPMENT",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Computers and office equipment",
+     "",
+     "930,094",
+     "",
+     "883,163"
+    ],
+    [
+     "  Warehouse equipment",
+     "",
+     "561,173",
+     "",
+     "567,816"
+    ],
+    [
+     "  Leasehold improvements",
+     "",
+     "291,597",
+     "",
+     "276,952"
+    ],
+    [
+     "  Tooling",
+     "",
+     "4,334,257",
+     "",
+     "3,885,401"
+    ],
+    [
+     "  Construction in progress",
+     "",
+     "222,259",
+     "",
+     "157,031"
+    ],
+    [
+     "    Total",
+     "",
+     "6,339,380",
+     "",
+     "5,770,363"
+    ],
+    [
+     "  Less accumulated depreciation",
+     "",
+     "4,466,120",
+     "",
+     "4,000,815"
+    ],
+    [
+     "    Net property and equipment",
+     "",
+     "1,873,260",
+     "",
+     "1,769,548"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER ASSETS",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortizable Intangible Assets, less amortization of $493,690 and $417,349",
+     "",
+     "357,341",
+     "",
+     "384,063"
+    ],
+    [
+     "  Intangible Assets",
+     "",
+     "461,000",
+     "",
+     "461,000"
+    ],
+    [
+     "  Goodwill",
+     "",
+     "67,511",
+     "",
+     "67,511"
+    ],
+    [
+     "  Deposits and other assets",
+     "",
+     "18,003",
+     "",
+     "18,003"
+    ],
+    [
+     "    Total other assets",
+     "",
+     "903,855",
+     "",
+     "930,577"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total assets",
+     "$",
+     "15,669,214",
+     "$",
+     "13,381,729"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 858,
+    "end_line": 899
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the consolidated financial position of OurPet\u2019s Company and Subsidiaries as of December 31, 2015 and 2014, and the consolidated results of their operations and its cash flows for each of the years in the two year period ended December 31, 2015 in conformity with accounting principles generally accepted in the United States of America.\n/s/ NMS, Inc. Certified Public Accountants\nMentor, Ohio\nMarch 25, 2016\nOURPET'S COMPANY AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED BALANCE SHEETS (CONTINUED)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    },
+    "after": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current maturities of long-term debt",
+     "$",
+     "276,890",
+     "$",
+     "601,632"
+    ],
+    [
+     "  Accounts payable - trade",
+     "",
+     "1,582,849",
+     "",
+     "1,489,982"
+    ],
+    [
+     "  Other accrued expenses",
+     "",
+     "571,858",
+     "",
+     "565,491"
+    ],
+    [
+     "    Total current liabilities",
+     "",
+     "2,431,597",
+     "",
+     "2,657,105"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LONG-TERM LIABILITIES",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Long-term debt - less current portion above",
+     "",
+     "876,248",
+     "",
+     "119,780"
+    ],
+    [
+     "  Revolving Line of Credit",
+     "",
+     "3,267,170",
+     "",
+     "2,862,032"
+    ],
+    [
+     "  Deferred Income Taxes",
+     "",
+     "333,834",
+     "",
+     "281,651"
+    ],
+    [
+     "    Total long term liabilities",
+     "",
+     "4,477,252",
+     "",
+     "3,263,463"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities",
+     "",
+     "6,908,849",
+     "",
+     "5,920,568"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "COMMON STOCK",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  No par value; 50,000,000 shares authorized, 17,625,739 and 17,553,007 shares issued and outstanding at December 31, 2015 and December 31, 2014 respectively",
+     "",
+     "5,082,566",
+     "",
+     "5,031,766"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CONVERTIBLE PREFERRED STOCK",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  No par value; convertible into Common Stock at the rate of 10 common shares for each preferred share; 4,825,000 shares authorized, 63,500 shares issued and outstanding at December 31, 2015 and December 31, 2014 respectively",
+     "",
+     "579,850",
+     "",
+     "579,850"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Series 2009 no par value; convertible into Common Stock at the rate of 10 common shares for each preferred share; 175,000 shares authorized, 123,616 shares issued and outstanding at December 31, 2015 and December 31, 2014",
+     "",
+     "865,312",
+     "",
+     "865,312"
+    ],
+    [
+     "PAID-IN CAPITAL",
+     "",
+     "67,518",
+     "",
+     "53,307"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ACCUMULATED EARNINGS",
+     "",
+     "2,165,119",
+     "",
+     "930,926"
+    ],
+    [
+     "    Total stockholders' equity",
+     "",
+     "8,760,365",
+     "",
+     "7,461,161"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities and stockholders' equity",
+     "$",
+     "15,669,214",
+     "$",
+     "13,381,729"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 906,
+    "end_line": 952
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED BALANCE SHEETS (CONTINUED)",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 902,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 955,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year Ended Dec. 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net revenue",
+     "$",
+     "23,819,189",
+     "",
+     "$",
+     "22,770,562",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of goods sold",
+     "",
+     "16,269,676",
+     "",
+     "",
+     "15,959,603",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit on sales",
+     "",
+     "7,549,513",
+     "",
+     "",
+     "6,810,959",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "5,389,897",
+     "",
+     "",
+     "5,608,934",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "2,159,616",
+     "",
+     "",
+     "1,202,025",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (income) and expense, net",
+     "",
+     "(43,623)",
+     "",
+     "",
+     "(67,028)",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "115,735",
+     "",
+     "",
+     "126,771",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income before income taxes",
+     "",
+     "2,087,504",
+     "",
+     "",
+     "1,142,282",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "750,592",
+     "",
+     "",
+     "373,007",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "$",
+     "1,336,912",
+     "",
+     "$",
+     "769,275",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted Earnings Per Common Share After Dividend Requirements For Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net Income",
+     "$",
+     "0.07",
+     "",
+     "$",
+     "0.04",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average number of common shares outstanding used to calculate basic earnings per share",
+     "",
+     "17,569,744",
+     "",
+     "",
+     "17,046,577",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average number of common and equivalent shares outstanding used to calculate diluted earnings per share",
+     "",
+     "19,262,742",
+     "",
+     "",
+     "18,159,204",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Year Ended Dec. 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 959,
+    "end_line": 998
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2015 AND DECEMBER 31, 2014",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 955,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "Series 2009 Preferred Stock",
+     "",
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     "",
+     "Paid-In",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Earnings (Deficit)",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2013",
+     "",
+     "63,500",
+     "$",
+     "579,850",
+     "",
+     "123,616",
+     "$",
+     "865,312",
+     "",
+     "16,657,660",
+     "$",
+     "4,901,563",
+     "$",
+     "19,498",
+     "$",
+     "256,750",
+     "",
+     "$",
+     "6,622,973",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock issued upon exercise of stock options and warrants",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "831,847",
+     "",
+     "87,023",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "87,023",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "769,275",
+     "",
+     "",
+     "769,275",
+     ""
+    ],
+    [
+     "Common Stock issued in payment of Preferred Stock dividend",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "63,500",
+     "",
+     "43,180",
+     "",
+     "-",
+     "",
+     "(43,180)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash Dividend paid on Preferred Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(51,919)",
+     "",
+     "",
+     "(51,919)",
+     ""
+    ],
+    [
+     "Stock-Based compensation expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "33,809",
+     "",
+     "-",
+     "",
+     "",
+     "33,809",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2014",
+     "",
+     "63,500",
+     "$",
+     "579,850",
+     "",
+     "123,616",
+     "$",
+     "865,312",
+     "",
+     "17,553,007",
+     "$",
+     "5,031,766",
+     "$",
+     "53,307",
+     "$",
+     "930,926",
+     "",
+     "$",
+     "7,461,161",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common Stock issued upon exercise of stock options",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "9,232",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,336,912",
+     "",
+     "",
+     "1,336,912",
+     ""
+    ],
+    [
+     "Common Stock issued in payment of Preferred Stock dividend",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "63,500",
+     "",
+     "50,800",
+     "",
+     "-",
+     "",
+     "(50,800)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Cash Dividend paid on Preferred Stock",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(51,919)",
+     "",
+     "",
+     "(51,919)",
+     ""
+    ],
+    [
+     "Stock-Based compensation expense",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "14,211",
+     "",
+     "-",
+     "",
+     "",
+     "14,211",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at December 31, 2015",
+     "",
+     "63,500",
+     "$",
+     "579,850",
+     "",
+     "123,616",
+     "$",
+     "865,312",
+     "",
+     "17,625,739",
+     "$",
+     "5,082,566",
+     "$",
+     "67,518",
+     "$",
+     "2,165,119",
+     "",
+     "$",
+     "8,760,365",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1007,
+    "end_line": 1035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENT OF STOCKHOLDERS' EQUITY\nFOR THE YEARS ENDED DECEMBER 31, 2015 AND DECEMBER 31, 2014",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1001,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income",
+     "$",
+     "1,336,912",
+     "",
+     "$",
+     "769,275",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Loss on Fixed Assets Written Off",
+     "",
+     "25,157",
+     "",
+     "",
+     "52,633",
+     ""
+    ],
+    [
+     "    Depreciation expense",
+     "",
+     "619,647",
+     "",
+     "",
+     "571,587",
+     ""
+    ],
+    [
+     "    Amortization expense",
+     "",
+     "76,341",
+     "",
+     "",
+     "79,353",
+     ""
+    ],
+    [
+     "    Stock option expense",
+     "",
+     "14,211",
+     "",
+     "",
+     "33,809",
+     ""
+    ],
+    [
+     "    Increase in assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts receivable - trade",
+     "",
+     "(1,178,362)",
+     "",
+     "",
+     "(305,309)",
+     ""
+    ],
+    [
+     "      Inventories",
+     "",
+     "(1,020,498)",
+     "",
+     "",
+     "(1,017,391)",
+     ""
+    ],
+    [
+     "      Prepaid expenses",
+     "",
+     "(104,083)",
+     "",
+     "",
+     "(81,325)",
+     ""
+    ],
+    [
+     "      Amortizable Intangible Asset Additions",
+     "",
+     "(49,619)",
+     "",
+     "",
+     "(92,566)",
+     ""
+    ],
+    [
+     "    Increase (decrease) in liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Accounts payable - trade",
+     "",
+     "92,867",
+     "",
+     "",
+     "320,057",
+     ""
+    ],
+    [
+     "      Accrued expenses",
+     "",
+     "6,367",
+     "",
+     "",
+     "(295,519)",
+     ""
+    ],
+    [
+     "      Deferred tax liabilities",
+     "",
+     "52,183",
+     "",
+     "",
+     "35,876",
+     ""
+    ],
+    [
+     "      Net cash provided by (used in) operating activities",
+     "",
+     "(128,877)",
+     "",
+     "",
+     "70,480",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Acquisition of property and equipment",
+     "",
+     "(663,516)",
+     "",
+     "",
+     "(502,559)",
+     ""
+    ],
+    [
+     "      Net cash used in investing activities",
+     "",
+     "(663,516)",
+     "",
+     "",
+     "(502,559)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Principal payments on long-term debt",
+     "",
+     "(653,274)",
+     "",
+     "",
+     "(497,552)",
+     ""
+    ],
+    [
+     "  Principal borrowings of long-term debt",
+     "",
+     "1,000,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Net borrowing on bank line of credit",
+     "",
+     "405,138",
+     "",
+     "",
+     "1,029,000",
+     ""
+    ],
+    [
+     "  Issuances of Common Stock",
+     "",
+     "-",
+     "",
+     "",
+     "87,023",
+     ""
+    ],
+    [
+     "  Dividends paid on Preferred Stock",
+     "",
+     "(51,919)",
+     "",
+     "",
+     "(51,919)",
+     ""
+    ],
+    [
+     "      Net cash provided by financing activities",
+     "",
+     "699,945",
+     "",
+     "",
+     "566,552",
+     ""
+    ],
+    [
+     "      Net increase (decrease) in cash",
+     "",
+     "(92,448)",
+     "",
+     "",
+     "134,473",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH AT BEGINNING OF PERIOD",
+     "",
+     "192,448",
+     "",
+     "",
+     "57,975",
+     ""
+    ],
+    [
+     "CASH AT END OF PERIOD",
+     "$",
+     "100,000",
+     "",
+     "$",
+     "192,448",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOW INFORMATION",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "160,812",
+     "",
+     "$",
+     "144,112",
+     ""
+    ],
+    [
+     "  Income taxes paid",
+     "$",
+     "737,975",
+     "",
+     "$",
+     "520,909",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF NON CASH TRANSACTIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non cash exercise of stock options/ warrants",
+     "$",
+     "6,933",
+     "",
+     "$",
+     "539,128",
+     ""
+    ],
+    [
+     "  Common Stock issued in payment of Preferred Stock Dividend",
+     "$",
+     "50,800",
+     "",
+     "$",
+     "43,180",
+     ""
+    ],
+    [
+     "  Tooling Obtained through Asset Purchase",
+     "$",
+     "85,000",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1042,
+    "end_line": 1098
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nOrganization and Nature of Operations \u2013 OurPet\u2019s Company (the \u201cCompany\u201d) management originally founded Napro, Inc. (\u201cNapro\u201d), an Ohio corporation, in 1985 as an enterprise for launching new ventures and acquiring companies in various lines of business. In February 1996 Napro formed a wholly-owned Ohio subsidiary, Virtu Company (\u201cVirtu\u201d), to market proprietary products to the retail pet business under the OurPet\u2019s label. Napro then changed its name to OurPet\u2019s Company effective March 19, 1998. In August 1998, the Company merged into Manticus, Inc., a Colorado corporation and, ultimately, Manticus changed its name to OurPet\u2019s Company.\nThe accompanying consolidated financial statements have been prepared in accordance with U.S. generally accepted accounting principles and include the accounts of the Company and its wholly owned subsidiaries. Intercompany transactions and balances have been eliminated in consolidation.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1038,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Finished goods",
+     "$",
+     "6,676,172",
+     "",
+     "$",
+     "5,590,995",
+     ""
+    ],
+    [
+     "Components, packaging and work in process",
+     "",
+     "1,452,192",
+     "",
+     "",
+     "1,462,196",
+     ""
+    ],
+    [
+     "Inventory reserve",
+     "",
+     "(213,751)",
+     "",
+     "",
+     "(159,076)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "7,914,613",
+     "",
+     "$",
+     "6,894,115",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1118,
+    "end_line": 1127
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "\u2013 For purposes of the financial statements, cash equivalents include time deposits, certificates of deposit and all highly liquid debt instruments with original maturities of three months or less when purchased.\nAccounts Receivable \u2013 Accounts receivable have been adjusted for all known uncollectible accounts. An allowance for possible bad debts was established at December 31, 2015 and 2014 in the amount of $37,824 and $39,539, respectively. Management reviews accounts receivable on a regular basis, based on contracted terms and how recently payments have been received, to determine if any such amounts will potentially be uncollected. After all attempts to collect a receivable have failed, the receivable is written off. In 2013, the Company purchased a credit risk insurance policy that covers most of its international customers.\nInventory \u2013 Inventories are carried at the lower of cost or estimated net realizable value. Costs for finished goods, components, packaging, and work in process are determined under the first-in, first-out method.\nInventories at December 31, 2015 and December 31, 2014 consist of:",
+   "prose_after": "All inventories are pledged as collateral for bank loans.\nChanges to the inventory reserve during 2015 and 2014 are shown below:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Beginning Balance",
+     "$",
+     "159,076",
+     "",
+     "$",
+     "134,989",
+     ""
+    ],
+    [
+     "Increases to Reserve",
+     "",
+     "237,399",
+     "",
+     "",
+     "192,097",
+     ""
+    ],
+    [
+     "Write Offs against Reserve",
+     "",
+     "(182,724)",
+     "",
+     "",
+     "(168,010)",
+     ""
+    ],
+    [
+     "Ending Balance",
+     "$",
+     "213,751",
+     "",
+     "$",
+     "159,076",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1132,
+    "end_line": 1141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "All inventories are pledged as collateral for bank loans.\nChanges to the inventory reserve during 2015 and 2014 are shown below:",
+   "prose_after": "Monthly accruals as a percentage of net sales are made to account for obsolete and excess inventory. Throughout the year, inventory identified as obsolete or excess is written off against the reserve. On a quarterly basis, the Company reviews inventory levels and the amounts reserved to determine if additional adjustments are needed.\nThe Company will continue its policy of regularly reviewing inventory quantities on hand based on related service levels and functionality. Carrying cost will be reduced to estimated net realizable value for inventories in which their cost exceeds their utility due to changes in marketing and sales strategies, obsolescence, changes in price levels or other causes. Furthermore, if future demand or market conditions for the Company\u2019s products are less favorable than forecasted or if unforeseen technological changes negatively impact the utility of certain products or component inventory, the Company may be required to record additional inventory reserves, which would negatively affect its results of operations in the period when the inventory reserve adjustments are recorded.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1101,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Computers and office equipment",
+     "3 to 7 years"
+    ],
+    [
+     "Leasehold improvements",
+     "7 to 39 years"
+    ],
+    [
+     "Tooling",
+     "3 to 7 years"
+    ],
+    [
+     "Warehouse equipment",
+     "3 to 7 years"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1153,
+    "end_line": 1159
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The Company will continue its policy of regularly reviewing inventory quantities on hand based on related service levels and functionality. Carrying cost will be reduced to estimated net realizable value for inventories in which their cost exceeds their utility due to changes in marketing and sales strategies, obsolescence, changes in price levels or other causes. Furthermore, if future demand or market conditions for the Company\u2019s products are less favorable than forecasted or if unforeseen technological changes negatively impact the utility of certain products or component inventory, the Company may be required to record additional inventory reserves, which would negatively affect its results of operations in the period when the inventory reserve adjustments are recorded.\nImpairments \u2013 Assets are evaluated for impairment when events change or a change in circumstances indicates that the carrying amounts of the assets may not be recoverable. When any such impairment exists, the related assets are written down to fair value.\nProperty and Equipment\n\u2013 Property and equipment are reported at cost. Depreciation and amortization are provided by using the straight-line over the estimated useful lives of the assets. Amortization of leasehold improvements is provided on a straight-line basis over the lesser of the useful lives of the related assets or the terms of the leases. The estimated useful lives of the assets are as follows:",
+   "prose_after": "Total depreciation expenses for the years ended December 31, 2015 and December 31, 2014 were $619,647 and $571,587, respectively. All property and equipment are pledged as collateral for bank loans.\nIntangible Assets \u2013 The Company adopted the provisions of ASC Topic 350 \u201cGoodwill and Other Intangible Assets\u201d which states that intangible assets that are subject to amortization are reviewed for potential impairment whenever events or circumstances indicate that carrying amounts may not be recoverable. Assets not subject to amortization are tested for impairment annually. For the years ended December 31, 2015 and December 31, 2014, there were no impairments of intangible assets.\nThe Company has filed for patents and trademarks for its proprietary products. The costs incurred of $49,619 for the year ended December 31, 2015 and $66,016 for the year ended December 31, 2014 have been capitalized and are being amortized over 15 years on a straight-line basis. In 2014, costs were also incurred for the development of our website in the amount of $26,550. These costs are being amortized over 5 years on a straight line basis.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1144,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1172,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Dec. 31- 2015",
+     "",
+     "Dec. 31- 2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revolving note payable - Bank, under line of credit facility of up to $5,000,000 with interest at 30 day LIBOR plus 2.25%.   The note is secured by accounts receivable, equipment, inventory, trademarks, patents and the personal guarantee of certain stockholders.",
+     "$",
+     "3,267,170",
+     "$",
+     "2,862,032"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable - Bank, loan of $1,000,000 incurred in August 2015 with interest at 30 day LIBOR plus 3.0%.   It has a five year term, maturing on 9-1-2020, with monthly payments of $16,667 in principal plus accrued interest. The note is secured by a cross-collateralized, first position lien on all business assets currently securing the existing revolving line of credit.",
+     "",
+     "950,000",
+     "",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note Payable - Molor Products - The note is part of a purchase agreement signed in April 2015 and maturing in June 2020.  It is to be paid down based on a 3% royalty of product sales over the next five years with payments made on a quarterly basis. Loan is secured by the assets acquired.",
+     "",
+     "83,358",
+     "",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note Payable- Lake County Economic Development Loan Program \u2013 due in 60 monthly principal and interest installments of $2,359 including interest at a fixed rate of 5% beginning July 2013 and maturing June 2018.  Loan is secured by IT equipment and tooling.",
+     "",
+     "66,393",
+     "",
+     "90,716"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 Ohio 166 Program due in 60 monthly principal and interest installments of $4,043 beginning November 1, 2011 through October 1, 2016 at an interest rate of 3.00% plus an annual servicing fee of .25%.  This note is secured by certain tooling.",
+     "",
+     "39,882",
+     "",
+     "86,445"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capitalized Lease \u2013 due May 2017 in 48 monthly payments of $527 including interest of 9.9%.  Lease is secured by the truck which was financed by this lease.",
+     "",
+     "7,868",
+     "",
+     "13,126"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capitalized Lease \u2013 due in monthly payments of $838 including interest of 11.88% through June 2016.  Lease is secured by equipment which was financed by this lease.",
+     "",
+     "5,637",
+     "",
+     "14,437"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Notes payable \u2013 directors, shareholders and investors - Interest calculated monthly at prime plus 3% (6.25% at December 31, 2014). These notes were subordinated to the bank loans and paid off in August of 2015.",
+     "",
+     "0",
+     "",
+     "350,000"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Note payable \u2013 Bank, loan of $500,000 with interest at LIBOR plus 2.25%, This note was renegotiated in 2014 with the final monthly payment made in December of 2015.  This note was secured by all inventory, chattel paper, accounts, equipment, and general intangibles.",
+     "",
+     "0",
+     "",
+     "166,688"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1242,
+    "end_line": 1274
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "In January 2016, the FASB issued ASU 2016-01, \u201cRecognition and Measurement of Financial Assets and Financial Liabilities.\u201d This update revises an entity's accounting related to the classification and measurement of investments in equity securities (except those accounted for under the equity method of accounting or those that result in consolidation of the investee), changes the presentation of certain fair value changes relating to instrument specific credit risk for financial liabilities and amends certain disclosure requirements associated with the fair value of financial instruments. This update is effective for the first interim and annual periods beginning after December 15, 2017 with early adoption permitted for certain provisions of the update. The Company is currently evaluating the impact of adopting this new standard.\nIn February 2016, the FASB issued ASU 2016-02, \u201cLeases (Topic 842).\u201d This update revises an entity\u2019s accounting for operating leases by a lessee, among other changes, and requires a lessee to recognize a liability to make lease payments and an asset representing its right to use the underlying asset for the lease term in the statement of financial position. The distinction between finance and operating leases has not changed and the update does not significantly change the effect of finance and operating leases on the statement of cash flows. Additionally, this update requires both qualitative and specific quantitative disclosures. This update is effective for the first interim and annual periods beginning after December 15, 2018, with early adoption permitted. At adoption, this update will be applied using a modified retrospective approach. The Company is currently evaluating the impact of adopting this new standard.\nNotes Payable and Long Term Debt \u2013",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Total Notes Payable and Long Term Debt",
+     "",
+     "4,420,308",
+     "",
+     "",
+     "3,583,444",
+     ""
+    ],
+    [
+     "Less Current Portion of Long-Term Debt",
+     "",
+     "(276,890)",
+     "",
+     "",
+     "(601,632)",
+     ""
+    ],
+    [
+     "Long-term debt",
+     "$",
+     "4,143,418",
+     "",
+     "$",
+     "2,981,812",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1275,
+    "end_line": 1282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Future maturities of notes payable and long-term debt are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1238,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 40
+    },
+    "after": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ending December 31,",
+     "Amount",
+     ""
+    ],
+    [
+     "2016",
+     "$",
+     "276,890"
+    ],
+    [
+     "2017",
+     "",
+     "3,496,111"
+    ],
+    [
+     "2018",
+     "",
+     "213,949"
+    ],
+    [
+     "2019",
+     "",
+     "200,000"
+    ],
+    [
+     "2020",
+     "",
+     "233,358"
+    ],
+    [
+     "",
+     "$",
+     "4,420,308"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1287,
+    "end_line": 1299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Future maturities of notes payable and long-term debt are as follows:",
+   "prose_after": "The bank loan agreements contain various restrictive and customary covenants and default provisions under which the Company must obtain permission from its lender to (i) purchase or retire any of its capital stock; (ii) pay dividends in cash on any of its capital stock other than dividends on our Preferred Stock subject to meeting the debt service coverage ratio; (iii) exceed $750,000 annually for capital expenditures; and\n(iv) pay principal on subordinated notes due to officers and directors. In addition, the Company must follow certain other requirements as to maintaining a minimum debt service coverage ratio of at least 1.15 and an adjusted tangible net worth of at least $6,000,000.\nAt December 31, 2015, the Company was in compliance with all bank financial covenants. Our debt service coverage ratio calculated at 2.39 versus the required 1.15. Our tangible net worth calculated at $7,858,185 versus the required $6,000,000. We were also in compliance with the bank\u2019s $750,000 maximum capital expenditure covenant as our capital expenditures were approximately $664,000.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "As of December 31, 2015",
+     "",
+     "",
+     "",
+     "As of December 31, 2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Cost",
+     "",
+     "Amortization",
+     "",
+     "Cost",
+     "",
+     "Amortization",
+     ""
+    ],
+    [
+     "Amortized intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Patents and trademarks",
+     "$",
+     "738,054",
+     "$",
+     "425,405",
+     "$",
+     "688,435",
+     "$",
+     "377,395"
+    ],
+    [
+     "  Website Development Costs",
+     "$",
+     "77,600",
+     "$",
+     "47,867",
+     "$",
+     "77,600",
+     "$",
+     "26,611"
+    ],
+    [
+     "  Brands and Logos",
+     "$",
+     "35,377",
+     "$",
+     "20,418",
+     "$",
+     "35,377",
+     "$",
+     "13,343"
+    ],
+    [
+     "Unamortized intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Domain names",
+     "$",
+     "16,328",
+     "",
+     "N/A",
+     "$",
+     "16,328",
+     "",
+     "N/A"
+    ],
+    [
+     "  Cosmic Pet assets",
+     "$",
+     "461,000",
+     "",
+     "N/A",
+     "$",
+     "461,000",
+     "",
+     "N/A"
+    ],
+    [
+     "  Goodwill-PetZone",
+     "$",
+     "67,511",
+     "",
+     "N/A",
+     "$",
+     "67,511",
+     "",
+     "N/A"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amortization expense for year ended 12/31",
+     "$",
+     "76,341",
+     "",
+     "",
+     "$",
+     "79,353",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Estimated amortization expense:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  For year ending 12/31/16",
+     "$",
+     "67,388",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  For year ending 12/31/17",
+     "$",
+     "72,427",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  For year ending 12/31/18",
+     "$",
+     "71,689",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  For year ending 12/31/19",
+     "$",
+     "67,082",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  For year ending 12/31/20",
+     "$",
+     "73,791",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1309,
+    "end_line": 1332
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(iv) pay principal on subordinated notes due to officers and directors. In addition, the Company must follow certain other requirements as to maintaining a minimum debt service coverage ratio of at least 1.15 and an adjusted tangible net worth of at least $6,000,000.\nAt December 31, 2015, the Company was in compliance with all bank financial covenants. Our debt service coverage ratio calculated at 2.39 versus the required 1.15. Our tangible net worth calculated at $7,858,185 versus the required $6,000,000. We were also in compliance with the bank\u2019s $750,000 maximum capital expenditure covenant as our capital expenditures were approximately $664,000.\nAt December 31, 2014, the Company was in compliance with all bank financial covenants. Our debt service coverage ratio calculated at 1.41 versus the required 1.15. Our tangible net worth calculated at $6,878,465 versus the required $4,500,000. We were also in compliance with the bank\u2019s $750,000 maximum capital expenditure covenant as our capital expenditures were approximately $503,000.\nIntangible Assets \u2013",
+   "prose_after": "Related Party Transactions \u2013\nThe Company leases warehouse and office facilities located in Fairport Harbor, Ohio from a related entity, Senk Properties, LLC, at a current monthly rental of $29,013 plus real estate taxes and insurance. The Company entered into a ten year lease with Senk Properties which was effective upon completion of the 36,000 square foot warehouse expansion on June 1, 2007. On August 10, 2012, the Company executed a new ten and one half year lease that reduced monthly payments effective September 1, 2012. The new lease\u2019s payment schedule was set at $27,250 per month for the first two years, $29,013 per month for the next two years, $30,827 for the next three years, $32,587 for the next two years and lastly, $34,347 for the final eighteen months, all plus real estate taxes and insurance. The Company has the option to extend the lease for an additional ten years at a rental amount to be mutually agreed upon.\nOn December 30, 2011 the Company entered into a second lease with Senk Properties, LLC for a 26,000 square foot production, warehouse and office facility in Mentor, Ohio with payments due on the first day of each month starting on January 1, 2012. The monthly rental rate was set at $8,542 for the first two years, $9,083 for the next two years, $9,732 for the next two years, $10,056 for the next year, $10,597 for the next two years and $10,813 for the last year, all plus real estate taxes and insurance. The Company has the option to extend the lease for an additional ten years at a rent amount to be mutually agreed upon.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1283,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 41
+    },
+    "after": {
+     "line": 1333,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 42
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Exercise Price",
+     "",
+     "Expiration Date"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2012 Director for guarantee",
+     "",
+     "379,216",
+     "",
+     "0.4153",
+     "December 7, 2017"
+    ],
+    [
+     "2012 Notes payable to contributors",
+     "",
+     "353,943",
+     "",
+     "0.4944",
+     "November 8, 2017"
+    ],
+    [
+     "2013 Director for guarantee",
+     "",
+     "126,413",
+     "",
+     "0.5438",
+     "October 10, 2018"
+    ],
+    [
+     "2013 Payment for services",
+     "",
+     "15,171",
+     "",
+     "0.5933",
+     "October 18, 2018"
+    ],
+    [
+     "Total",
+     "",
+     "874,743",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Weighted Average Exercise Price",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at January 1, 2014",
+     "",
+     "1,400,208",
+     "",
+     ".42"
+    ],
+    [
+     "  Granted",
+     "",
+     "89,500",
+     "",
+     "1.06"
+    ],
+    [
+     "  Exercised",
+     "",
+     "787,500",
+     "",
+     ".31"
+    ],
+    [
+     "  Forfeited",
+     "",
+     "79,000",
+     "",
+     ".56"
+    ],
+    [
+     "  Expired",
+     "",
+     "0",
+     "",
+     "0"
+    ],
+    [
+     "Outstanding at December 31, 2014",
+     "",
+     "623,208",
+     "",
+     ".64"
+    ],
+    [
+     "  Granted",
+     "",
+     "91,000",
+     "",
+     ".72"
+    ],
+    [
+     "  Exercised",
+     "",
+     "39,999",
+     "",
+     ".58"
+    ],
+    [
+     "  Forfeited",
+     "",
+     "59,833",
+     "",
+     ".59"
+    ],
+    [
+     "  Expired",
+     "",
+     "30,016",
+     "",
+     ".75"
+    ],
+    [
+     "Outstanding at December 31, 2015",
+     "",
+     "584,360",
+     "",
+     ".66"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1399,
+    "end_line": 1421
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "On December 4, 1999, the Board of Directors approved the 1999 Stock Option Plan, which was approved by the shareholders on August 5, 2000. On May 2, 2008, the Board of Directors approved the 2008 Stock Option Plan, which was approved by the shareholders on May 30, 2008. The 2008 Plan supersedes the 1999 Plan and no further options will be granted under the 1999 Plan. Stock options may be granted at the discretion of the Board of Directors for which the Company has reserved 1,750,000 shares of its Common Stock for issuance upon the exercise of options granted under the 2008 Plan. The 2008 Plan originally reserved 1,000,000 shares and was increased to 1,750,000 on May 25, 2012. Generally, the options vest one-third on each of the second, third and fourth anniversaries of the date of grant and expire on the fifth anniversary of the date of grant. Options granted to directors vest immediately. The Company grants stock options at exercise prices equal to or greater than the fair market value of the Company\u2019s Common Stock on the date of grant. On May 8, 2003, the Board of Directors approved the adjustment of the exercise price of unexercised stock options to the higher of 50% of the existing exercise price or the current market price on May 8, 2003. On February 11, 2009, the Board of Directors approved the adjustment of the expiration date for all options expiring in 2009 for an additional five years from the original expiration date. The following table summarizes activity in options under the Plans:",
+   "prose_after": "The following table summarizes options outstanding at December 31, 2015:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1393,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Options Outstanding",
+     "",
+     "",
+     "Options Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Weighted",
+     "",
+     "Weighted",
+     "",
+     "",
+     "Weighted",
+     ""
+    ],
+    [
+     "",
+     "Average",
+     "",
+     "",
+     "",
+     "Average",
+     "Average",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "Exercise",
+     "",
+     "Remaining",
+     "Number",
+     "",
+     "Exercise",
+     ""
+    ],
+    [
+     "Range",
+     "Outstanding",
+     "",
+     "Price",
+     "",
+     "Contractual Life",
+     "Exercisable",
+     "",
+     "Price",
+     ""
+    ],
+    [
+     "$0.41-$0.58",
+     "",
+     "234,668",
+     "$",
+     "0.48",
+     "1.7 Years",
+     "",
+     "148,288",
+     "$",
+     "0.47"
+    ],
+    [
+     "$0.59-$0.91",
+     "",
+     "249,692",
+     "$",
+     "0.68",
+     "2.9 Years",
+     "",
+     "151,782",
+     "$",
+     "0.68"
+    ],
+    [
+     "$0.92-$1.27",
+     "",
+     "100,000",
+     "$",
+     "1.04",
+     "2.8 Years",
+     "",
+     "57,000",
+     "$",
+     "1.06"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1424,
+    "end_line": 1436
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The following table summarizes options outstanding at December 31, 2015:",
+   "prose_after": "There were 357,070 and 235,835 options exercisable at December 31, 2015 and December 31, 2014, respectively. The weighted average exercise price of options granted in 2015 and 2014 was $0.72 and $1.06, respectively. The weighted average exercise price of options exercised in 2015 and 2014 was $.58 and $.31, respectively.\n401-K Plan \u2013\nThe Company sponsors a defined contribution 401-K plan whereby it matches up to 1% (25% of the employees\u2019 contribution up to 4%). Company matching contributions to the plan for 2015 and 2014 were $17,851 and $14,397, respectively.\nOperating Leases \u2013\nMinimum future lease payments under operating leases as of December 31, 2015 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1393,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2016",
+     "$",
+     "545,754"
+    ],
+    [
+     "2017",
+     "",
+     "557,642"
+    ],
+    [
+     "2018",
+     "",
+     "559,113"
+    ],
+    [
+     "2019",
+     "",
+     "573,629"
+    ],
+    [
+     "2020",
+     "",
+     "589,098"
+    ],
+    [
+     "Thereafter",
+     "",
+     "1,229,992"
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "4,055,228"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1449,
+    "end_line": 1460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "There were 357,070 and 235,835 options exercisable at December 31, 2015 and December 31, 2014, respectively. The weighted average exercise price of options granted in 2015 and 2014 was $0.72 and $1.06, respectively. The weighted average exercise price of options exercised in 2015 and 2014 was $.58 and $.31, respectively.\n401-K Plan \u2013\nThe Company sponsors a defined contribution 401-K plan whereby it matches up to 1% (25% of the employees\u2019 contribution up to 4%). Company matching contributions to the plan for 2015 and 2014 were $17,851 and $14,397, respectively.\nOperating Leases \u2013\nMinimum future lease payments under operating leases as of December 31, 2015 are as follows:",
+   "prose_after": "Total rent expenses including real estate taxes for the Company for the years ended December 31, 2015 and December 31, 2014 were $691,136 and $623,575, respectively.\nCapital Leases \u2013\nTotal amount under capital lease was $59,855 for the years ended December 31, 2015 and December 31, 2014. Accumulated depreciation amounts for capital lease assets were $36,903 for the year ended December 31, 2015 and $24,932 for the year ended December 31, 2014.\nMinimum future lease payments under capital leases as of December 31, 2015 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2016",
+     "",
+     "11,440"
+    ],
+    [
+     "2017",
+     "",
+     "2,065"
+    ],
+    [
+     "2018",
+     "",
+     "0"
+    ],
+    [
+     "2019",
+     "",
+     "0"
+    ],
+    [
+     "Total minimum lease payments",
+     "$",
+     "13,505"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1469,
+    "end_line": 1478
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Total rent expenses including real estate taxes for the Company for the years ended December 31, 2015 and December 31, 2014 were $691,136 and $623,575, respectively.\nCapital Leases \u2013\nTotal amount under capital lease was $59,855 for the years ended December 31, 2015 and December 31, 2014. Accumulated depreciation amounts for capital lease assets were $36,903 for the year ended December 31, 2015 and $24,932 for the year ended December 31, 2014.\nMinimum future lease payments under capital leases as of December 31, 2015 are as follows:",
+   "prose_after": "Income Taxes \u2013\nAt December 31, 2015, the Company did not have any unrecognized tax benefits. The year subject to potential audit\nvaries depending on the tax jurisdiction. Generally, the Company\u2019s statutes are open for tax years ended December 31,\n2012 and forward. The Company\u2019s major taxing jurisdictions include the United States, Ohio, Maryland, and other state\nand local jurisdictions.\nFor the year ended December 31, 2015 there was a provision for income tax expense of $750,592 which came from i) an increase of approximately $52,200 in deferred tax liabilities, and ii) approximately $698,000 of federal and local income tax expense payable.\nFor the year ended December 31, 2014 there was a provision for income tax expense of $373,007 which came from i) an increase of approximately $36,300 in deferred tax liabilities, and ii) approximately $337,000 of federal and local income tax expense payable.\nFollowing is a reconciliation of the expected income tax expense to the amount based on the U.S. statutory rate of 34% for the years ended December 31, 2015 and December 31, 2014.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1439,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Income tax expense based on US statutory rate",
+     "$",
+     "709,751",
+     "",
+     "$",
+     "388,376",
+     ""
+    ],
+    [
+     "State/Local income tax, net of federal tax benefit",
+     "",
+     "27,609",
+     "",
+     "",
+     "12,975",
+     ""
+    ],
+    [
+     "Nondeductible items",
+     "",
+     "14,970",
+     "",
+     "",
+     "20,873",
+     ""
+    ],
+    [
+     "Deduction for amortization of intangible asset",
+     "",
+     "(4,995)",
+     "",
+     "",
+     "(4,995)",
+     ""
+    ],
+    [
+     "Deductible items",
+     "",
+     "(2,089)",
+     "",
+     "",
+     "(34,053)",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "5,346",
+     "",
+     "",
+     "(10,169)",
+     ""
+    ],
+    [
+     "Provision for Income Taxes",
+     "$",
+     "750,592",
+     "",
+     "$",
+     "373,007",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1497,
+    "end_line": 1510
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "At December 31, 2015, the Company did not have any unrecognized tax benefits. The year subject to potential audit\nvaries depending on the tax jurisdiction. Generally, the Company\u2019s statutes are open for tax years ended December 31,\n2012 and forward. The Company\u2019s major taxing jurisdictions include the United States, Ohio, Maryland, and other state\nand local jurisdictions.\nFor the year ended December 31, 2015 there was a provision for income tax expense of $750,592 which came from i) an increase of approximately $52,200 in deferred tax liabilities, and ii) approximately $698,000 of federal and local income tax expense payable.\nFor the year ended December 31, 2014 there was a provision for income tax expense of $373,007 which came from i) an increase of approximately $36,300 in deferred tax liabilities, and ii) approximately $337,000 of federal and local income tax expense payable.\nFollowing is a reconciliation of the expected income tax expense to the amount based on the U.S. statutory rate of 34% for the years ended December 31, 2015 and December 31, 2014.",
+   "prose_after": "The significant components of the Company\u2019s deferred liability are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1540,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Deferred tax liability:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Section 179 Properties",
+     "$",
+     "333,834",
+     "$",
+     "281,651"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1513,
+    "end_line": 1522
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "The significant components of the Company\u2019s deferred liability are as follows:",
+   "prose_after": "Product Warranties \u2013\nIn 2013, we established a reserve to fund warranty related expenses for certain higher priced products. Warranty\nprotection for these products is for one to two years from the date of purchase.\nChanges to the reserve during 2015 are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1540,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Beginning Balance",
+     "$",
+     "27,221",
+     ""
+    ],
+    [
+     "Accruals for warranties",
+     "",
+     "42,200",
+     ""
+    ],
+    [
+     "Payments made",
+     "",
+     "(39,421)",
+     ""
+    ],
+    [
+     "Ending Balance",
+     "$",
+     "30,000",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1531,
+    "end_line": 1539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Product Warranties \u2013\nIn 2013, we established a reserve to fund warranty related expenses for certain higher priced products. Warranty\nprotection for these products is for one to two years from the date of purchase.\nChanges to the reserve during 2015 are as follows:",
+   "prose_after": "Litigation \u2013\nOn January 23, 2012, we received a Notice of Impending Legal Action by Law Enforcement from the Office of the District Attorney for the County of Solano, California in connection with our waste management PIK-Up Bags. The notice cited a violation of California Public Resources Code 42357(b) which prohibits any person from selling any plastic bag in the State of California that claims to be \u201cbiodegradable,\u201d \u201cdegradable,\u201d or \u201cdecomposable,\u201d if it does not break down, fragment, biodegrade or decompose in a landfill or other environment. While our \u201cPIK-up bags\u201d packaging stated they were biodegradable \u201cexcept as defined by the State of California,\u201d we were required to cease selling all such product from the State of California. The matter remained pending as to any possible financial fines from 2012 through most of 2014. During the third quarter of 2014, we agreed to settle the matter by paying the State of California $37,500.\nIn addition to the above matter and in the normal course of conducting its business, the Company may become involved in various other litigation, including, but not limited to, preference claims by debtors in bankruptcy proceedings and patent infringement. The Company is not a party to any litigation or governmental proceeding which management or legal representatives believe could result in any judgments or fines against the Company that would have a material adverse effect or impact in the Company\u2019s financial position, liquidity or results of operation.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1479,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1540,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

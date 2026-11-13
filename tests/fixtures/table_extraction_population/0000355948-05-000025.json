@@ -1,0 +1,82 @@
+{
+ "accession": "0000355948-05-000025",
+ "cik": "0000355948",
+ "form": "10-K/A",
+ "filing_date": "2005-05-18",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10ka2.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By: /s/      Edward J. Richardson     \n\n\n\n       Edward J. Richardson,        Chairman of the Board and        Chief Executive Officer",
+     "By: /s/      Kelly Phillips                \n\n\n\n           Kelly Phillips            Chief Financial Officer"
+    ],
+    [
+     "",
+     "Date: May 17, 2005"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 82,
+    "end_line": 88
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules, and Reports on Form 8-K"
+    },
+    "note": null
+   },
+   "prose_before": "Richardson Electronics, Ltd. (the \"Company\") is filing this Amendment 2 to its Annual Report on Form 10-K/A for the fiscal year ended May 29, 2004, originally filed May 17, 2005, to file new Exhibits 31.1 and 31.2 that conform to the form of certification required pursuant to Section 302 of the Sarbanes-Oxley Act of 2002. This Form 10-K/A speaks as of the original filing date and has not been updated to relect events occuring subsequent to the original filing date.\nThe following is the item of the annual report amended hereby:\nPART IV\nItem 15. Exhibits, Financial Statement Schedules, and Reports on Form 8-K\n(c) Exhibit Index.\n31.1 - Certification of Edward J. Richardson pursuant to Section 302 of the Sarbanes-Oxley Act of 2002\n31.2 - Certification of Kelly Phillips pursuant to Section 302 of the Sarbanes-Oxley Act of 2002\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nRICHARDSON ELECTRONICS, LTD.",
+   "prose_after": "2",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 59,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 90,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

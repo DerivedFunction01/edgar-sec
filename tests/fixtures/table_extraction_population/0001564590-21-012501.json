@@ -1,0 +1,5345 @@
+{
+ "accession": "0001564590-21-012501",
+ "cik": "0001341235",
+ "form": "10-K",
+ "filing_date": "2021-03-11",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "aldx-10k_20201231.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "20-1968197"
+    ],
+    [
+     "(State or other jurisdiction\n\n\n\nof incorporation)",
+     "(IRS Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 24,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Form 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor transition period from to\nCommission File Number 001-36332\nALDEYRA THERAPEUTICS, INC.\n(Exact name of Registrant as specified in its charter)",
+   "prose_after": "131 Hartwell Avenue, Suite 320\nLexington, MA 02421\n(Address of principal executive offices)\n(781) 761-4904\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Common Stock, $0.001 par value per share",
+     "ALDX",
+     "The Nasdaq Stock Market, LLC"
+    ],
+    [
+     "(Title of each class)",
+     "(Trading Symbol)",
+     "(Name of each exchange on which registered)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "131 Hartwell Avenue, Suite 320\nLexington, MA 02421\n(Address of principal executive offices)\n(781) 761-4904\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act:\nNone\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "Part I",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Special Note Regarding Forward-Looking Statements; Industry and Market Data",
+     "3"
+    ],
+    [
+     "Item 1.",
+     "Business",
+     "5"
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "32"
+    ],
+    [
+     "Item 1B.",
+     "Unresolved Staff Comments",
+     "75"
+    ],
+    [
+     "Item 2.",
+     "Properties",
+     "75"
+    ],
+    [
+     "Item 3.",
+     "Legal Proceedings",
+     "75"
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "75"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part II",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "76"
+    ],
+    [
+     "Item 6.",
+     "Selected Financial Data",
+     "76"
+    ],
+    [
+     "Item 7.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "77"
+    ],
+    [
+     "Item 7A.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "87"
+    ],
+    [
+     "Item 8.",
+     "Financial Statements and Supplementary Data",
+     "88"
+    ],
+    [
+     "Item 9.",
+     "Changes in and Disagreements With Accountants on Accounting and Financial Disclosure",
+     "88"
+    ],
+    [
+     "Item 9A.",
+     "Controls and Procedures",
+     "88"
+    ],
+    [
+     "Item 9B.",
+     "Other Information",
+     "89"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part III",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 10.",
+     "Directors, Executive Officers and Corporate Governance",
+     "90"
+    ],
+    [
+     "Item 11.",
+     "Executive Compensation",
+     "90"
+    ],
+    [
+     "Item 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "90"
+    ],
+    [
+     "Item 13.",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "91"
+    ],
+    [
+     "Item 14.",
+     "Principal Accounting Fees and Services",
+     "91"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Part IV",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 15.",
+     "Exhibits, Financial Statements Schedules",
+     "92"
+    ],
+    [
+     "Item 16",
+     "Form 10-K Summary",
+     "95"
+    ],
+    [
+     "Signatures",
+     "",
+     "96"
+    ],
+    [
+     "",
+     "",
+     "97"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 88,
+    "end_line": 127
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As of June 30, 2020, the last business day of the registrant\u2019s last completed second quarter, the aggregate market value of the registrant\u2019s Common Stock held by non-affiliates of the registrant was approximately $127,661,057, based on the closing price of the registrant\u2019s Common Stock, as reported by The Nasdaq Capital Market. Shares of Common Stock held by each executive officer, director and stockholders known by the registrant to be affiliated with such individuals based on public filings and other information known to the registrant have been excluded since such persons may be deemed affiliates. This determination of affiliate status is not necessarily a conclusive determination for other purposes.\nAs of March 8, 2021 there were 47,246,847 shares of the registrant\u2019s Common Stock issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nSpecified portions of the registrant\u2019s proxy statement with respect to the registrant\u2019s 2020 Annual Meeting of Stockholders, which is to be filed pursuant to Regulation 14A within 120 days after the end of the registrant\u2019s fiscal year ended December 31, 2020, are incorporated by reference into Part III of this Annual Report on Form 10-K.\nAnnual Report on Form 10-K\nFor the Fiscal Year Ended December 31, 2020\nTable of Contents",
+   "prose_after": "2\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nVarious statements throughout this report are \u201cforward-looking statements\u201d within the meaning of the Private Securities Litigation Reform Act of 1995. Forward-looking statements involve substantial risks and uncertainties. All statements, other than statements of historical facts, included in this report regarding our strategy, future operations, future financial position, future revenues, projected costs, prospects, plans and objectives of management are forward-looking statements. These statements are subject to risks and uncertainties and are based on information currently available to our management. Words such as, but not limited to, \u201canticipate,\u201d \u201cbelieve,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cplan,\u201d \u201ccontemplates,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201ctarget,\u201d \u201clikely,\u201d \u201cpotential,\u201d \u201ccontinue,\u201d \u201congoing,\u201d \u201cdesign,\u201d \u201cmight,\u201d \u201cobjective,\u201d \u201cwill,\u201d \u201cwould,\u201d \u201cshould,\u201d \u201ccould,\u201d or the negative of these terms and similar expressions or words, identify forward-looking statements. These statements reflect our current views with respect to future events and are based on assumptions and subject to risks and uncertainties. Given these uncertainties, you should not place undue reliance on these forward-looking statements. The events and circumstances reflected in our forward-looking statements may not occur and actual results could differ materially from those projected in our forward-looking statements. Meaningful factors which could cause actual results to differ include, but are not limited to:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 129,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Indication",
+     "Competitive Products"
+    ],
+    [
+     "Dry Eye Disease",
+     "Topical immunomodulators, such as cyclosporine (0.05% as Restasis\u00ae or 0.09% as CequaTM) and lifitegrast (5% as Xiidra\u00ae); topical corticosteroids, such as loteprednol (0.25% as EysuvisTM) and other generic steroids; and artificial tear solutions"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Allergic Conjunctivitis",
+     "Topical antihistamines and corticosteroids, which may be generic or sold over-the-counter; nonsteroidal anti-inflammatory drugs (NSAIDs); and mast cell stabilizers"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Proliferative Vitreoretinopathy",
+     "None"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 283,
+    "end_line": 294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "BUSINESS"
+    },
+    "note": null
+   },
+   "prose_before": "A myriad of new treatments have been or are being developed to treat inflammatory diseases, and have been used, or in theory could be used, for the treatment of the diseases that our product candidates are intended to target. Immune-modulating products include cytokine inhibitors, immune cell receptor inhibitors, complement inhibitors, phosphodiesterase inhibitors, and Janus kinase inhibitors. Companies that currently market such therapies include Abbvie, Inc., Johnson & Johnson, UCB Inc. and UCB S.A., Amgen, Inc., Bristol-Myers Squibb Co., and Pfizer, Inc. Currently marketed products may manifest efficacy and safety advantages over our product candidates, and may be used to treat the diseases for which we are developing our product candidates. In addition, CHP inhibitors other than ADX-1612 are in development for the treatment of cancer, and such compounds could theoretically be used for the treatment of immune-mediated diseases. Methotrexate, the active drug substance of ADX-2191, is generically available and has been used as a chemotherapeutic and immune modulating agent, and other formulations or application methods of methotrexate could be developed for the treatment of retinal diseases.\nCompetitive Product Candidates by Indication\nWe believe the primary competitors by indication with respect to our current programs in late stage-clinical testing are as follows:\nCompetitive Pharmaceuticals by Indication",
+   "prose_after": "We believe that there is significant unmet medical need for the diseases that we intend to target. If proven to be safe and effective, we believe that our product candidates could be used in place of, or in addition to, current therapies. Currently available therapies for the treatment of DED are generally considered by physicians and patients to be inadequate, may require weeks or months of treatment to achieve even moderate clinical benefit, and have not demonstrated clinical activity in AC, a common comorbidity. There is no approved therapy for PVR or PVRL.\nMany drugs are in development for AC and DED. In addition, generic versions of Restasis\u00ae are also expected to become available in the U.S. in the near future. We believe that there are currently no drugs in development for both DED and AC; PVR; or PVRL. For the diseases we intend to study, there may be other developmental therapies of which we are not aware.\nOur ability to compete successfully will depend in part on our ability to utilize our drug development expertise to identify, develop, secure rights to, and obtain regulatory approvals for promising pharmaceutical products before others are able to develop competitive products. Our ability to compete successfully will also depend on our ability to attract and retain skilled and experienced personnel. Additionally, our ability to compete may be diminished by insurers and other third-party payors, which often encourage the use of cheaper, non-innovative, or generic products.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 266,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 295,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(37,493,455)",
+     "",
+     "$",
+     "(44,984,226)",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "29,023,910",
+     "",
+     "",
+     "18,476,851",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "41,902,026",
+     "",
+     "",
+     "23,575,733",
+     ""
+    ],
+    [
+     "Net increase (decrease) in cash and cash equivalents",
+     "$",
+     "33,432,481",
+     "",
+     "$",
+     "(2,931,642)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1923,
+    "end_line": 1935
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 9B",
+     "title": "Other Information"
+    },
+    "note": null
+   },
+   "prose_before": "We may need or desire to obtain additional capital to finance our operations through debt, equity, or alternative financing arrangements. We may also seek capital through collaborations or partnerships with other companies. The issuance of debt could require us to grant additional liens on certain of our assets that may limit our flexibility. If we raise additional capital by issuing equity securities, the terms and prices for these financings may be much more favorable to the new investors than the terms obtained by our existing stockholders. These financings also may significantly dilute the ownership of our existing stockholders. In addition, the disruption in the capital markets caused by the COVID-19 pandemic could make any financing more challenging, and there can be no assurance that we will be able to obtain such financing on commercially reasonable terms or at all. If we are unable to obtain additional financing, we may be required to reduce the scope of our future activities, which could harm our business, financial condition, and operating results. There can be no assurance that any additional financing required in the future will be available on acceptable terms, if at all.\nWe will continue to incur costs as a public company including, but not limited to, costs and expenses for directors fees; increased directors and officers insurance; investor relations fees; expenses for compliance with the Sarbanes-Oxley Act of 2002 and rules implemented by the SEC and Nasdaq, on which our common stock is listed; and various other costs. The Sarbanes-Oxley Act of 2002 requires that we maintain effective disclosure controls and procedures and internal controls. The following table summarizes our cash flows for the years ended December 31, 2020 and 2019:",
+   "prose_after": "Operating Activities. Net cash used in operating activities was $37.5 million in 2020, compared to net cash used in operating activities of $45.0 million in 2019. The primary use of cash was to fund our operations. The decrease in the amount of cash used in operating activities for 2020 as compared to 2019 was primarily due to the timing of payments for research and development expenses and lower research and development expenses, including clinical and manufacturing activities.\nInvesting Activities. Net cash provided by investing activities in 2020 was $29.0 million, related primarily to the sales and maturities of marketable securities partially offset by the purchase of marketable securities. Net cash provided by investing activities in 2019 of $18.5 million, related primarily to the sales and maturities of marketable securities partially offset by the purchase of marketable securities.\nFinancing Activities. Net cash provided by financing activities was $41.9 million for the year ended December 31, 2020, related primarily the Jefferies Sales Agreement, under which we sold an aggregate of 9.4 million shares of our common stock resulting in $40.7 million in proceeds after deducting commissions and other offering costs, and proceeds from the exercise of stock options. Net cash provided by financing activities of $23.6 million for year ended 2019, related primarily to our Hercules Credit Facility, under which $15.0 million is currently outstanding, the Jefferies Sales Agreement, under which we sold an aggregate of 1.3 million shares of our common stock resulting in $8.0 million in proceeds after deducting commissions and other offering costs, and proceeds from the exercise of stock options.",
+   "structured_location": {
+    "item": "ITEM 9B",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1904,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 85
+    },
+    "after": {
+     "line": 1940,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 86
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "A",
+     "",
+     "",
+     "B",
+     "",
+     "",
+     "C",
+     "",
+     ""
+    ],
+    [
+     "Plan Category",
+     "Number of\n\n\n\nSecurities to\n\n\n\nbe Issued\n\n\n\nUpon Exercise\n\n\n\nof Outstanding\n\n\n\nOptions, Warrants,\n\n\n\nand Rights",
+     "",
+     "",
+     "Weighted-\n\n\n\nAverage\n\n\n\nExercise Price of\n\n\n\nOutstanding\n\n\n\nOptions,\n\n\n\nWarrants, and\n\n\n\nRights",
+     "",
+     "",
+     "Number of\n\n\n\nSecurities\n\n\n\nRemaining\n\n\n\nAvailable\n\n\n\nfor Future\n\n\n\nIssuance\n\n\n\nUnder Equity\n\n\n\nCompensation\n\n\n\nPlans (Excluding\n\n\n\nSecurities\n\n\n\nReflected in\n\n\n\nColumn (A)",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans\n\n\n\n   approved by security holders",
+     "",
+     "5,535,500",
+     "(1)",
+     "$",
+     "5.73",
+     "(2)",
+     "",
+     "2,082,311",
+     "(3)"
+    ],
+    [
+     "Equity compensation plans not\n\n\n\n   approved by security holders",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "5,535,500",
+     "(1)",
+     "",
+     "5.73",
+     "(2)",
+     "",
+     "2,082,311",
+     "(3)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2020,
+    "end_line": 2057
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters"
+    },
+    "note": null
+   },
+   "prose_before": "Our board of directors adopted a code of ethics and business conduct that applies to each of our directors, officers and employees. The full text of our code of business conduct is posted on the Investors portion of our website at http://ir.aldeyra.com. Any waiver of the code of ethics and business conduct for an executive officer or director may be granted only by our board of directors or a committee thereof and must be timely disclosed as required by applicable law. We have implemented whistleblower procedures that establish format protocols for receiving and handling complaints from employees. Any concerns regarding accounting or auditing matters reported under these procedures will be communicated promptly to the audit committee.\nITEM 11. Executive Compensation\nOther than with respect to the Securities Authorized for Issuance under Equity Incentive Plans contained below, the information required by this item will be contained in the Proxy Statement and is incorporated in this annual report on Form 10-K by reference.\nITEM 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters\nSecurities Authorized for Issuance under Equity Incentive Plans\nThe following table provides information as of December 31, 2020, with respect to shares of our common stock that may be issued, subject to certain vesting requirements, under our existing equity compensation plans, including our 2013 Equity Incentive Plan (\u201c2013 Plan\u201d), 2010 Employee, Director and Consultant Equity Incentive Plan (\u201c2010 Plan\u201d), 2004 Employee, Director and Consultant Stock Plan (\u201c2004 Plan\u201d) and our 2016 Employee Stock Purchase Plan (\u201c2016 ESPP\u201d).",
+   "prose_after": "(1) Of these shares, 927,189 were underlying then outstanding restricted stock unit awards and 4,209,764 were subject to options then outstanding under the 2013 Plan, 398,547 were subject to options then outstanding under the 2010 Plan and none were subject to options then outstanding under the 2004 Plan.\n(2) Does not take into account restricted stock units, which have no exercise price.\n(3) Represents 1,224,865 shares of common stock available for issuance under our 2013 Plan and 857,446 shares of common stock available for issuance under our 2016 ESPP. No shares are available for future issuance under the 2010 Plan or 2004 Plan. Our 2013 Plan provides for annual increases in the number of shares available for issuance thereunder on the first day of each fiscal year equal to the lower of: (1) 6% of the total number of shares of common stock outstanding at that time; or (2) such other amount as our board of directors may determine. Our 2016 ESPP provides for annual increases in the number of shares available for issuance thereunder on the first day of each fiscal year equal to the lesser of: (1) 1% of the shares of common stock outstanding at that time; and (2) such other amount as our board of directors may determine. On January 1, 2021, an additional 2,329,221 shares became available for future issuance under the 2013 Plan and an additional 388,203 shares became available for future issuance under the 2016 ESPP. The additional shares from the annual increase on January 1, 2021 are not included in the table above.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1999,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "arabic",
+     "page_number": 89
+    },
+    "after": {
+     "line": 2060,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "arabic",
+     "page_number": 90
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Restated Certificate of Incorporation of Registrant, (filed as Exhibit 3.1 to the Registrant\u2019s Current Report on Form 8-K as filed on May 7, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of the Registrant (filed as Exhibit 3.2 to the Registrant\u2019s Current Report on Form 8-K as filed on May 7, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen stock certificate evidencing the shares of common stock (filed as Exhibit 4.1 to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Amended & Restated Investor Rights Agreement dated as of December 20, 2012 (filed as Exhibit 4.2 to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.6",
+     "Description of Securities (filed as Exhibit 4.6 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2019 (as filed on March  12, 2020, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Form of Indemnity Agreement for Directors and Officers (filed as Exhibit 10.1 to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2\u2020",
+     "Offer Letter, effective as of August 1, 2013, between the Registrant and Todd C. Brady, M.D., Ph.D. (filed as Exhibit 10.2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on January 6, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4\u2020",
+     "Offer Letter, effective November 29, 2013 between the Registrant and Todd C. Brady, M.D., Ph.D. (filed as Exhibit 10.4 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on January 6, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4(a)\u2020",
+     "Offer Letter Amendment, effective February 19, 2014 between the Registrant and Todd C. Brady, M.D., Ph.D. (filed as Exhibit 10.4(a) to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6\u2020",
+     "2004 Employee, Director and Consultant Stock Plan, as amended, and form of option agreement thereunder (filed as Exhibit 10.6 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on January 6, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7\u2020",
+     "2010 Employee, Director and Consultant Equity Incentive Plan, as amended, and form of option agreement thereunder (filed as Exhibit 10.7 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on January 6, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8\u2020",
+     "2013 Equity Incentive Plan and form of option agreement thereunder (filed as Exhibit 10.8 to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2082,
+    "end_line": 2122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "(3) Represents 1,224,865 shares of common stock available for issuance under our 2013 Plan and 857,446 shares of common stock available for issuance under our 2016 ESPP. No shares are available for future issuance under the 2010 Plan or 2004 Plan. Our 2013 Plan provides for annual increases in the number of shares available for issuance thereunder on the first day of each fiscal year equal to the lower of: (1) 6% of the total number of shares of common stock outstanding at that time; or (2) such other amount as our board of directors may determine. Our 2016 ESPP provides for annual increases in the number of shares available for issuance thereunder on the first day of each fiscal year equal to the lesser of: (1) 1% of the shares of common stock outstanding at that time; and (2) such other amount as our board of directors may determine. On January 1, 2021, an additional 2,329,221 shares became available for future issuance under the 2013 Plan and an additional 388,203 shares became available for future issuance under the 2016 ESPP. The additional shares from the annual increase on January 1, 2021 are not included in the table above.\nITEM 13. Certain Relationships and Related Party Transactions, and Director Independence\nThe information required by this item will be contained in the Proxy Statement and is incorporated in this annual report on Form 10-K by reference.\nITEM 14. Principal Accounting Fees and Services\nThe information required by this item will be contained in the Proxy Statement and is incorporated in this annual report on Form 10-K by reference.\nPART IV\nITEM 15. Exhibits and Financial Statements Schedules\nThe financial statements filed as part of this annual report on Form 10-K are listed in the Index to Financial Statements. Certain schedules are omitted because they are not applicable, or not required, or because the required information is included in the financial statements or notes thereto. The Exhibits are listed in the Exhibit Index below.\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2073,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "arabic",
+     "page_number": 91
+    },
+    "after": {
+     "line": 2123,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 92
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8.(a)\u2020",
+     "Form Notice of Stock Option Grant under the 2013 Equity Incentive Plan (filed as Exhibit 10.8(a) to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8(b)\u2020",
+     "Form Notice of Stock Unit Award under the 2013 Equity Incentive Plan (filed as Exhibit 10.8(b) to Amendment No. 2 to the Registrant\u2019s Registration Statement on Form S-1 (SEC File No. 333-193204), as filed on March 17, 2014, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "Sublease dated September 12, 2014 between the Registrant and MacLean Power L.L.C. (filed as Exhibit 10.15 to the Registrant\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2014 (as filed on November 12, 2014, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.23",
+     "Sublease dated as of March 7, 2016 between Planck, LLC and the Registrant and Master Lease dated June 3, 2014 between WLC Three VI, L.L.C. and Plank, LLC (filed as Exhibit 10.24 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2015 (as filed on March 30, 2016, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.24\u2020",
+     "Aldeyra Management Cash Incentive Plan (filed as Exhibit 10.25 to the Registrant\u2019s Current Report on Form 8-K as filed on March 18, 2016, and incorporated herein by reference)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.25\u2020",
+     "Aldeyra Therapeutics, Inc. Change in Control Plan (filed as Exhibit 10.25 to the Registrant\u2019s Annual Report on Form 10-K (as filed on March 30, 2017, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.27",
+     "Lease Agreement by and between WLC Three VI, L.L.C. and the Registrant, dated as of September 11, 2017 (filed as Exhibit 10.27 to the Registrant\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2017 (as filed on November 9, 2017, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.28",
+     "First Amendment to Lease between WLC Three VI, L.L.C. and the Registrant, dated as of November 27, 2017 (filed as Exhibit 10.28 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2018 (as filed on March 29, 2018, and incorporated herein by reference))."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.29",
+     "Second Amendment to Lease between WLC Three VI, L.L.C. and the Registrant, dated as of October 7, 2020 (filed as Exhibit 10.33 to the Registrant\u2019s Quarterly Report on Form 10-Q for the quarter ended September 30, 2020 (as filed on November 5, 2020 and incorporated herein by reference))."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.30\u2020",
+     "Amendment No. 2 to the Aldeyra Therapeutics, Inc. 2013 Equity Incentive Plan (filed as Exhibit 10.29 to the Registrant\u2019s Quarterly Form 10-Q (as filed on August 9, 2018, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.31\u2020",
+     "Offer Letter, effective as of July 30, 2018, between the Registrant and Joshua Reed (filed as Exhibit 10.30 to the Registrant\u2019s Quarterly Form 10-Q (as filed on November 14, 2018, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.32\u2020",
+     "Amendment No. 1 to the Aldeyra Therapeutics, Inc. 2013 Equity Incentive Plan (filed as Exhibit 10.26 to the Registrant\u2019s Quarterly Report on Form 10-Q (as filed on August 10, 2016, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.33\u2020",
+     "Aldeyra Therapeutics, Inc. 2016 Employee Stock Purchase Plan (filed as Exhibit 10.27 to the Registrant\u2019s Quarterly Report on Form 10-Q (as filed on August 10, 2016, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.34",
+     "Agreement and Plan of Merger, dated as of January 24, 2019, by and among Aldeyra Therapeutics, Inc., Helio Vision, Inc., Halo Merger Sub, Inc., Halo Merger Sub, LLC and Josef von Rickenbach, as the Securityholder Representative (filed as Exhibit 2.1 to the Registrant\u2019s Current Report on Form 8-K (as filed on January 29, 2019, and incorporated herein by reference))"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2124,
+    "end_line": 2172
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2123,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "arabic",
+     "page_number": 92
+    },
+    "after": {
+     "line": 2173,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 93
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit Number",
+     "Exhibit Title"
+    ],
+    [
+     "10.35\u2020",
+     "Offer Letter, effective as of April 19, 2018, between the Registrant and David McMullin (filed as Exhibit 10.35 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2018 (as filed on March 8, 2019, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.36\u2021",
+     "License Agreement, dated as of December 26, 2016, by and between Registrant and Madrigal Pharmaceuticals, Inc. (filed as Exhibit 99.2 to the Registrant\u2019s Current Report on Form 8-K (as filed on September 25, 2018, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.38",
+     "Loan and Security Agreement, dated as of March 25, 2019, by and among the Registrant, certain subsidiaries of the Registrant from time to time party thereto, the several banks and other financial institutions or entities from time to time parties thereto and Hercules Capital, Inc. (filed as Exhibit 10.1 to the Registrant\u2019s Current Report on Form 8-K (as filed on March 26, 2019, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.39 **",
+     "Exclusive License Agreement, effective as of July 7, 2016, between the Massachusetts Eye and Ear Infirmary and Helio Vision, Inc. (filed as Exhibit 10.39 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2019 (as filed on March  12, 2020, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.40**",
+     "Amendment Number 1 and Waiver Agreement  dated December 20, 2018 by and between Helio Vision, Inc. and the Massachusetts Eye and Ear Infirmary (filed as Exhibit 10.40 to the Registrant\u2019s Annual Report on Form 10-K for the fiscal year ended December 31, 2019 (as filed on March  12, 2020, and incorporated herein by reference))"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1*",
+     "Consent of BDO USA, LLP, independent registered public accounting firm"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of the Chief Executive Officer, as required by Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of the Chief Financial Officer as required by Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certifications of the Chief Executive Officer and Chief Financial Officer as required by 18 U.S.C. 1350"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.INS*",
+     "Inline XBRL Instance Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.SCH*",
+     "Inline XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.CAL*",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.DEF*",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.LAB*",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "101.PRE*",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (embedded within the Inline XBRL document)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2174,
+    "end_line": 2214
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statements Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "\u2020 Compensation Arrangement.\n\u2021 Confidential treatment has been granted with respect to certain portions of this document.\n* Filed herewith.\n** In accordance with Item 601(b)(2)(ii) of Regulation S-K, certain information (indicated by \u201c*****\u201d) has been excluded from this exhibit because it is both not material and would likely cause competitive harm to the Company if publicly disclosed.\nThe Exhibits listed in the Exhibit Index are filed as part of this annual report on Form 10-K.\nITEM 16. Form 10-K Summary\nNone.\nSignatures\nPursuant to the requirements of Section 13 and 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this annual report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized, in the Commonwealth of Massachusetts, on March 11, 2021.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2173,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "arabic",
+     "page_number": 93
+    },
+    "after": {
+     "line": 2225,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "arabic",
+     "page_number": 94
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ALDEYRA THERAPEUTICS, INC.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Todd C. Brady, M.D., Ph.D."
+    ],
+    [
+     "",
+     "Todd C. Brady, M.D., Ph.D."
+    ],
+    [
+     "",
+     "President and Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "ALDEYRA THERAPEUTICS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2235,
+    "end_line": 2243
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "\u2020 Compensation Arrangement.\n\u2021 Confidential treatment has been granted with respect to certain portions of this document.\n* Filed herewith.\n** In accordance with Item 601(b)(2)(ii) of Regulation S-K, certain information (indicated by \u201c*****\u201d) has been excluded from this exhibit because it is both not material and would likely cause competitive harm to the Company if publicly disclosed.\nThe Exhibits listed in the Exhibit Index are filed as part of this annual report on Form 10-K.\nITEM 16. Form 10-K Summary\nNone.\nSignatures\nPursuant to the requirements of Section 13 and 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this annual report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized, in the Commonwealth of Massachusetts, on March 11, 2021.",
+   "prose_after": "Pursuant to the requirements of the Securities Act of 1934, this annual report on Form 10-K has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2230,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 95
+    },
+    "after": {
+     "line": 2283,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 96
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Todd C. Brady, M.D., Ph.D.",
+     "Chief Executive Officer and Director",
+     "March 11, 2021"
+    ],
+    [
+     "Todd C. Brady, M.D., Ph.D.",
+     "(principal executive officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Joshua Reed",
+     "Chief Financial Officer",
+     "March 11, 2021"
+    ],
+    [
+     "Joshua Reed",
+     "(principal financial and accounting officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Richard H. Douglas, Ph. D.",
+     "Chairman of the Board of Directors",
+     "March 11, 2021"
+    ],
+    [
+     "Richard H. Douglas, Ph.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Ben Bronstein, M.D.",
+     "Director",
+     "March 11, 2021"
+    ],
+    [
+     "Ben Bronstein, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Martin J. Joyce",
+     "Director",
+     "March 11, 2021"
+    ],
+    [
+     "Martin J. Joyce",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Nancy Miller-Rich",
+     "Director",
+     "March 11, 2021"
+    ],
+    [
+     "Nancy Miller-Rich",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Gary Phillips, M.D.",
+     "Director",
+     "March 11, 2021"
+    ],
+    [
+     "Gary Phillips, M.D.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Neal Walker, D.O.",
+     "Director",
+     "March 11, 2021"
+    ],
+    [
+     "Neal Walker, D.O.",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2246,
+    "end_line": 2282
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Act of 1934, this annual report on Form 10-K has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2230,
+     "token": "PAGE_BREAK",
+     "id": 95,
+     "namespace": "arabic",
+     "page_number": 95
+    },
+    "after": {
+     "line": 2283,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 96
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "Reports of Independent Registered Public Accounting Firm",
+     "98"
+    ],
+    [
+     "",
+     "Consolidated Balance Sheets at December 31, 2020 and 2019",
+     "100"
+    ],
+    [
+     "",
+     "Consolidated Statements of Operations for the years ended December 31, 2020 and 2019",
+     "101"
+    ],
+    [
+     "",
+     "Consolidated Statements of Comprehensive Loss for the years ended December 31, 2020 and 2019",
+     "102"
+    ],
+    [
+     "",
+     "Consolidated Statements of Stockholders\u2019 Equity for the years ended December 31, 2020 and 2019",
+     "103"
+    ],
+    [
+     "",
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2020 and 2019",
+     "104"
+    ],
+    [
+     "",
+     "Notes to Consolidated Financial Statements",
+     "105"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2287,
+    "end_line": 2299
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nStockholders and Board of Directors\nLexington, Massachusetts\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Aldeyra Therapeutics, Inc. and subsidiaries (the \u201cCompany\u201d) as of December 31, 2020 and 2019, the related consolidated statements of operations, comprehensive loss, stockholders\u2019 equity, and cash flows for each of the two years in the period ended December 31, 2020, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company and subsidiaries at December 31, 2020 and 2019, and the results of their operations and their cash flows for each of the two years in the period ended December 31, 2020, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese consolidated financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s consolidated financial statements based on our audits. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2283,
+     "token": "PAGE_BREAK",
+     "id": 96,
+     "namespace": "arabic",
+     "page_number": 96
+    },
+    "after": {
+     "line": 2300,
+     "token": "PAGE_BREAK",
+     "id": 97,
+     "namespace": "arabic",
+     "page_number": 97
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "52,858,311",
+     "",
+     "$",
+     "16,425,830",
+     ""
+    ],
+    [
+     "Cash equivalent - reverse repurchase agreements",
+     "",
+     "25,000,000",
+     "",
+     "",
+     "28,000,000",
+     ""
+    ],
+    [
+     "Marketable securities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "28,938,545",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "5,200,957",
+     "",
+     "",
+     "1,804,450",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "83,059,268",
+     "",
+     "",
+     "75,168,825",
+     ""
+    ],
+    [
+     "Fixed assets, net",
+     "",
+     "59,925",
+     "",
+     "",
+     "148,449",
+     ""
+    ],
+    [
+     "Right-of-use assets",
+     "",
+     "233,310",
+     "",
+     "",
+     "201,007",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "83,352,503",
+     "",
+     "$",
+     "75,518,281",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "381,638",
+     "",
+     "$",
+     "808,302",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "8,134,765",
+     "",
+     "",
+     "11,873,122",
+     ""
+    ],
+    [
+     "Current portion of credit facility",
+     "",
+     "3,659,776",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "",
+     "233,310",
+     "",
+     "",
+     "226,328",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "12,409,489",
+     "",
+     "",
+     "12,907,752",
+     ""
+    ],
+    [
+     "Long-term debt, net of current portion",
+     "",
+     "11,434,456",
+     "",
+     "",
+     "14,528,212",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "23,843,945",
+     "",
+     "",
+     "27,435,964",
+     ""
+    ],
+    [
+     "Commitments and contingencies (Note 14)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders' equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.001 par value, 15,000,000 shares authorized, none\n\n\n\n   issued and outstanding",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, voting, $0.001 par value; 150,000,000 authorized and\n\n\n\n   38,667,491 and 28,656,832 shares issued and outstanding, respectively",
+     "",
+     "38,667",
+     "",
+     "",
+     "28,657",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "296,385,619",
+     "",
+     "",
+     "247,409,793",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "\u2014",
+     "",
+     "",
+     "5,866",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(236,915,728)",
+     "",
+     "",
+     "(199,361,999)",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "59,508,558",
+     "",
+     "",
+     "48,082,317",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "83,352,503",
+     "",
+     "$",
+     "75,518,281",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2354,
+    "end_line": 2400
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "\u2022 Testing the completeness and accuracy of the underlying data received from the contract research organization used in determining the clinical trial accrual, including corroborating against invoices received and payments made to the contract research organization.\n\u2022 For certain clinical trial studies, we assessed the Company's estimates of the activities completed to date by (i) inspecting change orders and original contract terms, including the timeline and budget, and comparing them to the Company's estimated research activities completed to date, (ii) inspecting executed clinical trial agreements and agreeing relevant rates to the Company's calculation (iii) obtaining third party reports detailing site visit and patient information and agreeing the inputs to the Company's calculation, and (iv) confirming clinical trial progress directly with the contract research organizations and comparing the reported amounts to the Company's estimates.\n/s/ BDO USA, LLP\nWe have served as the Company\u2019s auditor since 2013.\nBoston, Massachusetts\nMarch 11, 2021\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2350,
+     "token": "PAGE_BREAK",
+     "id": 100,
+     "namespace": "arabic",
+     "page_number": 99
+    },
+    "after": {
+     "line": 2403,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 100
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Research and development",
+     "$",
+     "24,681,301",
+     "",
+     "$",
+     "44,351,851",
+     ""
+    ],
+    [
+     "Acquired in-process research and development",
+     "",
+     "1,754,265",
+     "",
+     "",
+     "6,567,754",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "9,985,454",
+     "",
+     "",
+     "12,154,702",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(36,421,020)",
+     "",
+     "",
+     "(63,074,307)",
+     ""
+    ],
+    [
+     "Other income (expense):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "292,224",
+     "",
+     "",
+     "1,541,349",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "(1,904,198)",
+     "",
+     "",
+     "(603,846)",
+     ""
+    ],
+    [
+     "Total other income (expense), net",
+     "",
+     "(1,611,974)",
+     "",
+     "",
+     "937,503",
+     ""
+    ],
+    [
+     "Loss before income taxes",
+     "",
+     "(38,032,994)",
+     "",
+     "",
+     "(62,136,804)",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "479,265",
+     "",
+     "",
+     "1,309,973",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(37,553,729)",
+     "",
+     "$",
+     "(60,826,831)",
+     ""
+    ],
+    [
+     "Net loss per share - basic and diluted",
+     "$",
+     "(1.11)",
+     "",
+     "$",
+     "(2.24)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding - basic and diluted",
+     "",
+     "33,965,955",
+     "",
+     "",
+     "27,111,840",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2407,
+    "end_line": 2435
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2403,
+     "token": "PAGE_BREAK",
+     "id": 101,
+     "namespace": "arabic",
+     "page_number": 100
+    },
+    "after": {
+     "line": 2438,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 101
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(37,553,729)",
+     "",
+     "$",
+     "(60,826,831)",
+     ""
+    ],
+    [
+     "Other comprehensive (loss)/income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Unrealized (loss)/gain on marketable securities",
+     "",
+     "(5,866)",
+     "",
+     "",
+     "15,090",
+     ""
+    ],
+    [
+     "Total other comprehensive (loss)/income",
+     "$",
+     "(5,866)",
+     "",
+     "$",
+     "15,090",
+     ""
+    ],
+    [
+     "Comprehensive loss",
+     "$",
+     "(37,559,595)",
+     "",
+     "$",
+     "(60,811,741)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2442,
+    "end_line": 2456
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2438,
+     "token": "PAGE_BREAK",
+     "id": 102,
+     "namespace": "arabic",
+     "page_number": 101
+    },
+    "after": {
+     "line": 2459,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 102
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": "equity_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Stockholders' Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Voting Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Additional\n\n\n\nPaid-in Capital",
+     "",
+     "",
+     "Other\n\n\n\nComprehensive\n\n\n\nIncome/(Loss),\n\n\n\nnet of tax",
+     "",
+     "",
+     "Accumulated\n\n\n\nDeficit",
+     "",
+     "",
+     "Total\n\n\n\nStockholders'\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "Balance, December 31, 2018",
+     "",
+     "26,244,435",
+     "$",
+     "26,244",
+     "$",
+     "225,136,127",
+     "",
+     "$",
+     "(9,224)",
+     "",
+     "$",
+     "(138,535,168)",
+     "",
+     "$",
+     "86,617,979",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "8,082,751",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,082,751",
+     ""
+    ],
+    [
+     "Issuance of common stock, acquisition of Helio Vision, Inc.",
+     "",
+     "733,972",
+     "",
+     "733",
+     "",
+     "4,943,676",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,944,409",
+     ""
+    ],
+    [
+     "Issuance of common stock, net of\n\n\n\n   issuance costs",
+     "",
+     "1,347,156",
+     "",
+     "1,348",
+     "",
+     "7,890,330",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,891,678",
+     ""
+    ],
+    [
+     "Issuance of common stock, exercise of stock options",
+     "",
+     "232,004",
+     "",
+     "232",
+     "",
+     "1,162,160",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,162,392",
+     ""
+    ],
+    [
+     "Issuance of common stock, employee\n\n\n\n   stock purchase plan",
+     "",
+     "34,253",
+     "",
+     "35",
+     "",
+     "194,814",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "194,849",
+     ""
+    ],
+    [
+     "Issuance of common stock, vested\n\n\n\n   restricted stock awards",
+     "",
+     "65,012",
+     "",
+     "65",
+     "",
+     "(65)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other comprehensive income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,090",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "15,090",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(60,826,831)",
+     "",
+     "",
+     "(60,826,831)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2019",
+     "",
+     "28,656,832",
+     "",
+     "28,657",
+     "",
+     "247,409,793",
+     "",
+     "",
+     "5,866",
+     "",
+     "",
+     "(199,361,999)",
+     "",
+     "",
+     "48,082,317",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,083,810",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "7,083,810",
+     ""
+    ],
+    [
+     "Release of restrictions on Helio founders\u2019 shares",
+     "",
+     "273,616",
+     "",
+     "273",
+     "",
+     "(273)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Issuance of common stock, net of\n\n\n\n   issuance costs",
+     "",
+     "9,351,749",
+     "",
+     "9,352",
+     "",
+     "40,707,192",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "40,716,544",
+     ""
+    ],
+    [
+     "Issuance of common stock, exercise of stock options",
+     "",
+     "219,244",
+     "",
+     "219",
+     "",
+     "1,058,297",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,058,516",
+     ""
+    ],
+    [
+     "Issuance of common stock, employee\n\n\n\n   stock purchase plan",
+     "",
+     "30,254",
+     "",
+     "30",
+     "",
+     "126,936",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "126,966",
+     ""
+    ],
+    [
+     "Issuance of common stock, vested\n\n\n\n   restricted stock awards",
+     "",
+     "135,796",
+     "",
+     "136",
+     "",
+     "(136)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other comprehensive loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,866)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,866)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(37,553,729)",
+     "",
+     "",
+     "(37,553,729)",
+     ""
+    ],
+    [
+     "Balance, December 31, 2020",
+     "",
+     "38,667,491",
+     "$",
+     "38,667",
+     "$",
+     "296,385,619",
+     "",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "(236,915,728)",
+     "",
+     "$",
+     "59,508,558",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Stockholders' Equity"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2463,
+    "end_line": 2512
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2459,
+     "token": "PAGE_BREAK",
+     "id": 103,
+     "namespace": "arabic",
+     "page_number": 102
+    },
+    "after": {
+     "line": 2515,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 103
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(37,553,729)",
+     "",
+     "$",
+     "(60,826,831)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquired in-process research and development",
+     "",
+     "1,754,265",
+     "",
+     "",
+     "6,567,754",
+     ""
+    ],
+    [
+     "Deferred taxes",
+     "",
+     "(479,265)",
+     "",
+     "",
+     "(1,309,973)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "7,083,810",
+     "",
+     "",
+     "8,082,751",
+     ""
+    ],
+    [
+     "Non-cash interest expense",
+     "",
+     "566,020",
+     "",
+     "",
+     "248,567",
+     ""
+    ],
+    [
+     "Net amortization of premium on debt securities available for sale",
+     "",
+     "(91,231)",
+     "",
+     "",
+     "(583,701)",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "56,221",
+     "",
+     "",
+     "96,305",
+     ""
+    ],
+    [
+     "Change in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "(3,396,507)",
+     "",
+     "",
+     "(454,429)",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "(426,664)",
+     "",
+     "",
+     "(2,846,142)",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "(5,006,375)",
+     "",
+     "",
+     "6,041,473",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(37,493,455)",
+     "",
+     "",
+     "(44,984,226)",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Acquisitions of fixed assets",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(9,529)",
+     ""
+    ],
+    [
+     "Cash acquired in Helio asset acquisition",
+     "",
+     "\u2014",
+     "",
+     "",
+     "609,464",
+     ""
+    ],
+    [
+     "Purchases of marketable securities",
+     "",
+     "(5,776,090)",
+     "",
+     "",
+     "(57,768,084)",
+     ""
+    ],
+    [
+     "Sales of marketable securities",
+     "",
+     "34,800,000",
+     "",
+     "",
+     "75,645,000",
+     ""
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "29,023,910",
+     "",
+     "",
+     "18,476,851",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock",
+     "",
+     "40,716,544",
+     "",
+     "",
+     "7,891,678",
+     ""
+    ],
+    [
+     "Proceeds from exercise of stock options",
+     "",
+     "1,058,516",
+     "",
+     "",
+     "1,162,392",
+     ""
+    ],
+    [
+     "Proceeds from employee stock purchase plan",
+     "",
+     "126,966",
+     "",
+     "",
+     "194,849",
+     ""
+    ],
+    [
+     "Proceeds from long-term debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "14,450,000",
+     ""
+    ],
+    [
+     "Debt issuance costs paid in cash",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(123,186)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "41,902,026",
+     "",
+     "",
+     "23,575,733",
+     ""
+    ],
+    [
+     "NET INCREASE (DECREASE) IN CASH AND CASH EQUIVALENTS",
+     "",
+     "33,432,481",
+     "",
+     "",
+     "(2,931,642)",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, BEGINNING OF PERIOD",
+     "",
+     "44,425,830",
+     "",
+     "",
+     "47,357,472",
+     ""
+    ],
+    [
+     "CASH AND CASH EQUIVALENTS, END OF PERIOD",
+     "$",
+     "77,858,311",
+     "",
+     "$",
+     "44,425,830",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF CASH FLOW INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid during the period for:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "$",
+     "1,387,750",
+     "",
+     "$",
+     "238,491",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURES OF NONCASH ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Helio acquisition:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets acquired",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "75,632",
+     ""
+    ],
+    [
+     "Liabilities acquired",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "637,994",
+     ""
+    ],
+    [
+     "Fair value of securities issued",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "4,944,409",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2519,
+    "end_line": 2575
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of these consolidated financial statements.\nNOTES TO THE CONSOLIDATED FINANCIAL STATEMENTS\n1. NATURE OF BUSINESS\nAldeyra Therapeutics, Inc. (\u201cAldeyra\u201d, \u201cCompany\u201d, \u201cwe\u201d, \u201cus\u201d and \u201cour\u201d) was incorporated in the state of Delaware on August 13, 2004 as Neuron Systems, Inc. On December 20, 2012, the Company changed its name to Aldexa Therapeutics, Inc. and, on March 17, 2014, the Company changed its name to Aldeyra Therapeutics, Inc. Aldeyra, together with its wholly-owned subsidiaries, is developing next-generation medicines to improve the lives of patients with immune-mediated diseases.\nThe Company\u2019s principal activities to date include raising capital and research and development activities.\n2. BASIS OF PRESENTATION AND SIGNIFICANT ACCOUNTING POLICIES\nBasis of Presentation \u2013 The accompanying consolidated financial statements were prepared in conformity with accounting principles generally accepted in the United States of America (\u201cUS GAAP\u201d).\nRisks and Uncertainties \u2013The ongoing research and development activities will be subject to extensive regulation by numerous governmental authorities in the United States. Prior to marketing in the United States, any drug developed by the Company must undergo rigorous preclinical and clinical testing and an extensive regulatory approval process implemented by the United States Food and Drug Administration (\u201cFDA\u201d) under the Food, Drug and Cosmetic Act. The Company has limited experience in conducting and managing the preclinical and clinical testing necessary to obtain regulatory approval. There can be no assurance that the Company will not encounter problems in the clinical trials that will cause the Company or the FDA to delay or suspend clinical trials.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2515,
+     "token": "PAGE_BREAK",
+     "id": 104,
+     "namespace": "arabic",
+     "page_number": 103
+    },
+    "after": {
+     "line": 2578,
+     "token": "PAGE_BREAK",
+     "id": 105,
+     "namespace": "arabic",
+     "page_number": 104
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Options to purchase common stock",
+     "",
+     "4,608,311",
+     "",
+     "4,193,814"
+    ],
+    [
+     "Restricted stock units",
+     "",
+     "927,189",
+     "",
+     "430,425"
+    ],
+    [
+     "Nonvested founder shares (1)",
+     "",
+     "152,856",
+     "",
+     "426,472"
+    ],
+    [
+     "Total of common stock equivalents",
+     "",
+     "5,688,356",
+     "",
+     "5,050,711"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2660,
+    "end_line": 2672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "NET LOSS PER SHARE"
+    }
+   },
+   "prose_before": "The Company assessed the acquisition of Helio under the FASB ASC Topic 805, Business Combinations (\u201cASC 805\u201d). Under ASC 805, the Company determined that the acquired assets did not constitute a business since substantially all the assets acquired were related to ADX-2191 and that the transaction would be accounted for as an asset acquisition. The asset and development program acquired from Helio are at an early stage of development and will require a significant investment of time and capital for development. There is no assurance that the Company will be successful in developing such asset, and a failure to successfully develop such asset could diminish the Company\u2019s prospects. Under ASC 805, the asset acquired is considered to have no alternative future uses, since the future economic benefit of the acquired asset at the date of acquisition and December 31,2020 is highly uncertain. The fair value of the assets was determined using the quoted market price of the Company\u2019s common stock on the closing date and was fully expensed as in-process research and development. Additionally, the Company assessed the Helio acquisition under ASC 740. The acquisition and Milestone IPR&D resulted in an income tax benefit of $1.3 million and $0.5 million for the years ended December 31, 2019 and 2020, respectively. The expense resulted from the reduction in the Company\u2019s valuation allowance due to the deferred tax liability created as a result of the book and tax basis difference. During the year ended December 31, 2019, the Company recorded $6.6 million of IPR&D expense related to the fair value of consideration given which includes transaction costs and the deferred tax impact of the Helio acquisition. During the year ended December 31, 2020, the company recorded $1.8 million of IPR&D expense related to the Milestone IPR&D and the corresponding deferred tax impact.\n4. NET LOSS PER SHARE\nFor the years ended December 31, 2020 and 2019, diluted weighted-average common shares outstanding is equal to basic weighted-average common shares due to the Company\u2019s net loss position.\nThe following potentially dilutive securities outstanding have been excluded from the computation of diluted weighted-average shares outstanding, because such securities had an antidilutive impact:",
+   "prose_after": "(1) Represents 152,856 shares of common stock that are issued and outstanding but were subject to vesting based on service requirements at December 31, 2020 and are not included in stockholders\u2019 equity pursuant to US GAAP.\n5. CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES\nAt December 31, 2020, cash and cash equivalents were comprised of:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2649,
+     "token": "PAGE_BREAK",
+     "id": 109,
+     "namespace": "arabic",
+     "page_number": 108
+    },
+    "after": {
+     "line": 2675,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": 109
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Carrying\n\n\n\nAmount",
+     "",
+     "Unrecognized\n\n\n\nGain",
+     "",
+     "Unrecognized\n\n\n\nLoss",
+     "",
+     "Estimated Fair\n\n\n\nValue",
+     "",
+     "Cash and Cash\n\n\n\nEquivalents",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "23,494,920",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "23,494,920",
+     "$",
+     "23,494,920"
+    ],
+    [
+     "Money market funds",
+     "",
+     "29,363,391",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "29,363,391",
+     "",
+     "29,363,391"
+    ],
+    [
+     "Reverse repurchase agreements",
+     "",
+     "25,000,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "25,000,000",
+     "",
+     "25,000,000"
+    ],
+    [
+     "Total Cash and cash equivalents",
+     "",
+     "77,858,311",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "77,858,311",
+     "",
+     "77,858,311"
+    ],
+    [
+     "Total Cash and cash equivalents",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "77,858,311"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2680,
+    "end_line": 2695
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "(1) Represents 152,856 shares of common stock that are issued and outstanding but were subject to vesting based on service requirements at December 31, 2020 and are not included in stockholders\u2019 equity pursuant to US GAAP.\n5. CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES\nAt December 31, 2020, cash and cash equivalents were comprised of:",
+   "prose_after": "At December 31, 2019, cash, cash equivalents and marketable securities were comprised of:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2675,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": 109
+    },
+    "after": {
+     "line": 2736,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 110
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Carrying\n\n\n\nAmount",
+     "",
+     "Unrecognized\n\n\n\nGain",
+     "",
+     "Unrecognized\n\n\n\nLoss",
+     "",
+     "Estimated Fair\n\n\n\nValue",
+     "",
+     "Cash and Cash\n\n\n\nEquivalents",
+     "",
+     "Current\n\n\n\nMarketable\n\n\n\nSecurities",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "15,363,462",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "15,363,462",
+     "$",
+     "15,363,462",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Money market funds",
+     "",
+     "1,062,368",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,062,368",
+     "",
+     "1,062,368",
+     "",
+     "\u2014"
+    ],
+    [
+     "Reverse repurchase agreements",
+     "",
+     "28,000,000",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "28,000,000",
+     "",
+     "28,000,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "Total Cash and cash equivalents",
+     "",
+     "44,425,830",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "44,425,830",
+     "",
+     "44,425,830",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "U.S. government agency securities",
+     "",
+     "28,932,679",
+     "",
+     "5,866",
+     "",
+     "\u2014",
+     "",
+     "28,938,545",
+     "",
+     "\u2014",
+     "",
+     "28,938,545"
+    ],
+    [
+     "Available for Sale (1)",
+     "",
+     "28,932,679",
+     "",
+     "5,866",
+     "",
+     "\u2014",
+     "",
+     "28,938,545",
+     "",
+     "\u2014",
+     "",
+     "28,938,545"
+    ],
+    [
+     "Total Cash, cash equivalents and\n\n\n\n   current marketable securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "44,425,830",
+     "$",
+     "28,938,545"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2698,
+    "end_line": 2721
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "CASH, CASH EQUIVALENTS AND MARKETABLE SECURITIES"
+    }
+   },
+   "prose_before": "At December 31, 2019, cash, cash equivalents and marketable securities were comprised of:",
+   "prose_after": "(1) Available for sale securities are reported at fair value with unrealized gains and losses reported net of taxes, if material, in other comprehensive income.\nThe contractual maturities of all available for sale securities are less than one year at December 31, 2019.\n6. FAIR VALUE MEASUREMENTS\nFair value is defined as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. Valuation techniques used to measure fair value are performed in a manner to maximize the use of observable inputs and minimize the use of unobservable inputs. ASC 820, Fair Value Measurements, establishes a fair value hierarchy based on three levels of inputs, of which the first two are considered observable and the last unobservable, that may be used to measure fair value, which are the following:\nLevel 1 \u2013 Quoted prices in active markets that are accessible at the market date for identical unrestricted assets or liabilities.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2675,
+     "token": "PAGE_BREAK",
+     "id": 110,
+     "namespace": "arabic",
+     "page_number": 109
+    },
+    "after": {
+     "line": 2736,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 110
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2020",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds (a)",
+     "$",
+     "29,363,391",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "29,363,391"
+    ],
+    [
+     "Reverse repurchase agreements (b)",
+     "",
+     "\u2014",
+     "",
+     "25,000,000",
+     "",
+     "\u2014",
+     "",
+     "25,000,000"
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "29,363,391",
+     "$",
+     "25,000,000",
+     "$",
+     "\u2014",
+     "$",
+     "54,363,391"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2741,
+    "end_line": 2753
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Fair value is defined as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. Valuation techniques used to measure fair value are performed in a manner to maximize the use of observable inputs and minimize the use of unobservable inputs. ASC 820, Fair Value Measurements, establishes a fair value hierarchy based on three levels of inputs, of which the first two are considered observable and the last unobservable, that may be used to measure fair value, which are the following:\nLevel 1 \u2013 Quoted prices in active markets that are accessible at the market date for identical unrestricted assets or liabilities.\nLevel 2 \u2013 Inputs other than Level 1 that are observable, either directly or indirectly, such as quoted prices for similar assets or liabilities; quoted prices in markets that are not active; or other inputs for which all significant inputs are observable or can be corroborated by observable market data for substantially the full term of the assets or liabilities.\nLevel 3 \u2013 Unobservable inputs that are supported by little or no market activity and that are significant to the fair value of the assets or liabilities.\nThere were no liabilities measured at fair value at December 31, 2020 or 2019, respectively.\nThe following table presents information about the Company\u2019s assets measured at fair value at December 31, 2020 and December 31, 2019:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2736,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 110
+    },
+    "after": {
+     "line": 2804,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 111
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2019",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Money market funds (a)",
+     "$",
+     "1,062,368",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "1,062,368"
+    ],
+    [
+     "Reverse repurchase agreements (b)",
+     "",
+     "\u2014",
+     "",
+     "28,000,000",
+     "",
+     "\u2014",
+     "",
+     "28,000,000"
+    ],
+    [
+     "U.S. government agency securities (b)",
+     "",
+     "\u2014",
+     "",
+     "28,938,545",
+     "",
+     "\u2014",
+     "",
+     "28,938,545"
+    ],
+    [
+     "Total assets at fair value",
+     "$",
+     "1,062,368",
+     "$",
+     "56,938,545",
+     "$",
+     "\u2014",
+     "$",
+     "58,000,913"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2019"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2754,
+    "end_line": 2767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(a) Money market funds included in cash and cash equivalents in the consolidated balance sheets, are valued at quoted market prices in active markets.\n(b) Reverse repurchase agreements and U.S. government agency securities are recorded at fair market values, which are determined based on the most recent observable inputs for similar instruments in active markets or quoted prices for identical or similar instruments in markets that are not active or are directly or indirectly observable.\n7. PREPAID EXPENSES AND OTHER CURRENT ASSETS\nPrepaid expenses and other current assets at December 31, 2020 and 2019 were:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2736,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 110
+    },
+    "after": {
+     "line": 2804,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 111
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Deferred research and development expenses",
+     "$",
+     "4,793,794",
+     "$",
+     "1,403,117"
+    ],
+    [
+     "Miscellaneous prepaid expenses and other current assets",
+     "",
+     "407,163",
+     "",
+     "401,333"
+    ],
+    [
+     "Total prepaid expenses and other current assets",
+     "$",
+     "5,200,957",
+     "$",
+     "1,804,450"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2776,
+    "end_line": 2786
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "PREPAID EXPENSES AND OTHER CURRENT ASSETS"
+    }
+   },
+   "prose_before": "(a) Money market funds included in cash and cash equivalents in the consolidated balance sheets, are valued at quoted market prices in active markets.\n(b) Reverse repurchase agreements and U.S. government agency securities are recorded at fair market values, which are determined based on the most recent observable inputs for similar instruments in active markets or quoted prices for identical or similar instruments in markets that are not active or are directly or indirectly observable.\n7. PREPAID EXPENSES AND OTHER CURRENT ASSETS\nPrepaid expenses and other current assets at December 31, 2020 and 2019 were:",
+   "prose_after": "8. ACCRUED EXPENSES\nAccrued expenses at December 31, 2020 and 2019 were:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2736,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 110
+    },
+    "after": {
+     "line": 2804,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 111
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Accrued compensation",
+     "$",
+     "1,323,138",
+     "$",
+     "1,489,475"
+    ],
+    [
+     "Contingent consideration payable in stock",
+     "",
+     "2,500,000",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accrued research and development",
+     "",
+     "3,944,094",
+     "",
+     "9,493,093"
+    ],
+    [
+     "Accrued general and administrative",
+     "",
+     "367,533",
+     "",
+     "890,554"
+    ],
+    [
+     "Accrued expenses",
+     "$",
+     "8,134,765",
+     "$",
+     "11,873,122"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2791,
+    "end_line": 2803
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "ACCRUED EXPENSES"
+    }
+   },
+   "prose_before": "8. ACCRUED EXPENSES\nAccrued expenses at December 31, 2020 and 2019 were:",
+   "prose_after": "9. CREDIT FACILITY\nThe Company\u2019s long-term debt obligation consists of amounts the Company is obligated to repay under its credit facility with Hercules Capital, Inc. (\u201cHercules\u201d). In March 2019, the Company entered into a Loan and Security Agreement with Hercules and the several banks and other financial institutions or entities, from time-to-time parties thereto (collectively, referred to as \u201cLender\u201d), providing for a term loan of up to $60.0 million that is secured by a lien covering all of the Company\u2019s assets, other than the Company\u2019s intellectual property (the \u201cLoan and Security Agreement\u201d or the \u201cHercules Credit Facility\u201d). The Loan and Security Agreement provided for (i) an initial term loan advance of up to $5.0 million at the Company\u2019s option, which expired unutilized on April 15, 2019; (ii) three additional term loan advances of up to $15.0 million each, at the Company\u2019s option, available to the Company upon the occurrence of certain funding conditions prior to September 30, 2019 (the \u201c2019 Tranche\u201d), March 31, 2020 (the \u201c2020 Tranche\u201d), and March 31, 2021 (the \u201c2021 Tranche\u201d); and (iii) a final additional term loan advance of up to $10.0 million prior to December 31, 2021, at the Company\u2019s option, subject to approval by the Lender\u2019s investment committee. The 2019 Tranche was drawn down in full by the Company in September 2019 and the 2020 Tranche expired unutilized prior to the Company satisfying the funding conditions for such tranche. As of December 31, 2020, $15.0 million was outstanding under the Hercules Credit Facility. As of December 31, 2020, the Company was in material compliance with all covenants of the Hercules Credit Facility.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2736,
+     "token": "PAGE_BREAK",
+     "id": 111,
+     "namespace": "arabic",
+     "page_number": 110
+    },
+    "after": {
+     "line": 2804,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 111
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Term loan payable",
+     "$",
+     "15,000,000",
+     "",
+     "$",
+     "15,000,000",
+     ""
+    ],
+    [
+     "End of term charge",
+     "",
+     "445,464",
+     "",
+     "",
+     "89,093",
+     ""
+    ],
+    [
+     "Unamortized debt issuance costs",
+     "",
+     "(351,232)",
+     "",
+     "",
+     "(560,881)",
+     ""
+    ],
+    [
+     "Less: current portion",
+     "",
+     "(3,659,776)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total long-term debt",
+     "$",
+     "11,434,456",
+     "",
+     "$",
+     "14,528,212",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2813,
+    "end_line": 2825
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "CREDIT FACILITY"
+    }
+   },
+   "prose_before": "The term loan bears interest at an annual rate equal to the greater of (i) 9.10% and (ii) the prime rate (as reported in the Wall Street Journal or any successor publication thereto) plus 3.10%. The Loan and Security Agreement provides for interest-only payments until May 1, 2021, with an option to extend the interest-only period to May 1, 2022 based upon the achievement of certain milestones. Repayment of the aggregate outstanding principal balance of the term loan, in monthly installments, starts upon expiration of the interest-only period and continues through October 1, 2023 (the \u201cMaturity Date\u201d). Associated with this debt facility, the Company incurred a commitment charge of $25,000, transaction costs of $273,186, a fee of $375,000 upon closing, and is required to pay a fee (\u201cEnd of Term Charge\u201d) of 6.95% multiplied by the aggregate amount of advances under the Loan and Security Agreement at maturity. The fees, transaction costs and end of term charge are amortized to interest expense through the Maturity Date using the effective interest method. The effective interest rate was 12.9% at December 31, 2020. At the Company\u2019s option, the Company may elect to prepay all, but not less than all, of the outstanding term loan by paying the entire principal balance and all accrued and unpaid interest thereon plus all fees and other amounts due under the Loan and Security Agreement, including a prepayment charge equal to the following percentage of the principal amount being prepaid: 3% if the term loan is prepaid prior to March 25, 2021 and 1.5% if the term loan is prepaid any time thereafter, but prior to March 25, 2022.\nLong-term debt consisted of the following:",
+   "prose_after": "Future principal payments, including the End of Term Charge, are as follows for the years ending December 31:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2804,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 111
+    },
+    "after": {
+     "line": 2839,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "arabic",
+     "page_number": 112
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2021",
+     "$",
+     "3,659,776"
+    ],
+    [
+     "",
+     "2022",
+     "",
+     "5,931,718"
+    ],
+    [
+     "",
+     "2023",
+     "",
+     "6,451,006"
+    ],
+    [
+     "Total",
+     "",
+     "$",
+     "16,042,500"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2828,
+    "end_line": 2836
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "CREDIT FACILITY"
+    }
+   },
+   "prose_before": "Future principal payments, including the End of Term Charge, are as follows for the years ending December 31:",
+   "prose_after": "The Loan and Security Agreement also contains certain events of default, representations, warranties and non-financial covenants of the Company. In addition, the Company granted the Lender the right to purchase up to an\naggregate of $2.0 million of the Company\u2019s equity securities, or instruments exercisable for or convertible into equity securities, sold to investors in financings upon the same terms and conditions afforded to such other investors.\n10. STOCKHOLDERS\u2019 EQUITY\nCommon Stock\nEach share of common stock is entitled to one vote. The holders of common stock are also entitled to receive dividends whenever funds are legally available and when declared by the board of directors, subject to the prior rights of holders of all classes of stock outstanding. As of December 31, 2020, a total of 4,608,311, 1,224,865, and 857,446, shares of common stock were reserved for issuance upon (i) the exercise of outstanding stock options, (ii) the issuance of stock awards under the Company\u2019s Amended 2013 Plan, and (iii) the issuance of shares under the 2016 ESPP, respectively.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2804,
+     "token": "PAGE_BREAK",
+     "id": 112,
+     "namespace": "arabic",
+     "page_number": 111
+    },
+    "after": {
+     "line": 2839,
+     "token": "PAGE_BREAK",
+     "id": 113,
+     "namespace": "arabic",
+     "page_number": 112
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Deferred Tax Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal & state NOL carryforward",
+     "$",
+     "48,273,248",
+     "",
+     "$",
+     "37,752,925",
+     ""
+    ],
+    [
+     "Federal & state R&D credit\n\n\n\n   carryforward",
+     "",
+     "6,375,229",
+     "",
+     "",
+     "4,840,115",
+     ""
+    ],
+    [
+     "Intangibles \u2013 net",
+     "",
+     "78,378",
+     "",
+     "",
+     "120,318",
+     ""
+    ],
+    [
+     "Accounts payable and accrued\n\n\n\n   expenses",
+     "",
+     "192,200",
+     "",
+     "",
+     "2,898,710",
+     ""
+    ],
+    [
+     "Stock options",
+     "",
+     "3,762,247",
+     "",
+     "",
+     "4,527,462",
+     ""
+    ],
+    [
+     "Other items",
+     "",
+     "94,020",
+     "",
+     "",
+     "80,812",
+     ""
+    ],
+    [
+     "Gross deferred tax assets",
+     "",
+     "58,775,322",
+     "",
+     "",
+     "50,220,342",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(58,711,582)",
+     "",
+     "",
+     "(50,165,427)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net",
+     "$",
+     "63,740",
+     "",
+     "$",
+     "54,915",
+     ""
+    ],
+    [
+     "Deferred Tax Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lease liability",
+     "",
+     "(63,740)",
+     "",
+     "",
+     "(54,915)",
+     ""
+    ],
+    [
+     "TOTAL",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2871,
+    "end_line": 2898
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "On December 22, 2017, the Tax Cuts and Jobs Act of 2017 (\u201cTax Act\u201d) was enacted into law making significant changes to the Internal Revenue Code. The main provision impacting the Company is the reduction in the U.S. statutory corporate tax rate to 21% for years beginning after December 31, 2017. On the same day, the SEC staff issued Staff Accounting Bulletin No. 118, or SAB 118, which provides guidance for companies that have not completed their accounting for the income tax effects of the Tax Act in the period of enactment, allowing for a measurement period of up to one year after the enactment date to finalize the recording of the related tax impacts. The net impact of the change in tax rate was zero due to the Company\u2019s full valuation allowance.\nThe Coronavirus Aid, Relief and Economic Security (\u201cCARES\u201d) Act was enacted in the United States on March 27, 2020. CARES includes several income tax provisions such as NOL carryback and carryforward benefits and other tax deduction benefits. As noted previously, the Company\u2019s U.S. deferred tax asset has a full valuation allowance, accordingly these NOL and other benefit provisions have no impact on the Company\u2019s financial statements for the period ended December 31, 2020.\nSignificant components of the Company\u2019s deferred tax assets and liabilities at December 31, 2020 and 2019 are as follows:",
+   "prose_after": "The change in valuation allowance of $8.5 million from December 31, 2019 to December 31, 2020 was primarily the result of an increase in net operating losses and tax credits.\nThe components of the income tax benefit for the years ended December 31, 2020 and 2019, are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2862,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "arabic",
+     "page_number": 113
+    },
+    "after": {
+     "line": 2916,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 114
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "2019",
+     "",
+     ""
+    ],
+    [
+     "Deferred Taxes",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "(338,924)",
+     "",
+     "$",
+     "(1,205,175)",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "(140,341)",
+     "",
+     "",
+     "(104,798)",
+     ""
+    ],
+    [
+     "Total income tax benefit",
+     "$",
+     "(479,265)",
+     "",
+     "$",
+     "(1,309,973)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2903,
+    "end_line": 2915
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "The change in valuation allowance of $8.5 million from December 31, 2019 to December 31, 2020 was primarily the result of an increase in net operating losses and tax credits.\nThe components of the income tax benefit for the years ended December 31, 2020 and 2019, are as follows:",
+   "prose_after": "Under Section 382 of the Internal Revenue Code of 1986, as amended, a corporation that undergoes an \u201cownership change\u201d is subject to limitations on its ability to utilize its pre-change NOLs and certain other tax assets to offset future taxable income. In general, an ownership change occurs if the aggregate stock ownership of certain stockholders increases by more than 50 percentage points over such stockholders\u2019 lowest percentage ownership during the testing period (generally three years). Transactions involving the Company\u2019s common stock within the testing period, even those outside the Company\u2019s control such as purchases or sales by investors, could result in an ownership change. A limitation on the Company\u2019s ability to utilize some or all its NOLs or credits could have a material adverse effect on the Company\u2019s results of operations and cash flows. Prior to December 31, 2017, the Company believes it underwent three ownership changes, however, management believes that sufficient \u201cBuilt-In-Gains\u201d will offset any Section 382 limitation generated by such ownership changes. Any future ownership changes, including those resulting from our recent or future financing activities, may cause our existing tax attributes to have additional limitations. The Company reevaluated its analysis performed earlier in 2020 and determined that no ownership changes occurred in the year ended December 31, 2020, and therefore, all of the Company\u2019s tax attributes remain available for use, subject to annual limitations.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2862,
+     "token": "PAGE_BREAK",
+     "id": 114,
+     "namespace": "arabic",
+     "page_number": 113
+    },
+    "after": {
+     "line": 2916,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 114
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "",
+     "",
+     "2019",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory tax rate",
+     "",
+     "21.00",
+     "",
+     "%",
+     "",
+     "21.00",
+     "",
+     "%"
+    ],
+    [
+     "State taxes, net of federal benefits",
+     "",
+     "5.06",
+     "",
+     "%",
+     "",
+     "5.62",
+     "",
+     "%"
+    ],
+    [
+     "Federal research and development credits",
+     "",
+     "3.28",
+     "",
+     "%",
+     "",
+     "1.44",
+     "",
+     "%"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(22.76)",
+     "",
+     "%",
+     "",
+     "(25.44)",
+     "",
+     "%"
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "(5.85)",
+     "",
+     "%",
+     "",
+     "(0.81)",
+     "",
+     "%"
+    ],
+    [
+     "Other",
+     "",
+     "0.55",
+     "",
+     "%",
+     "",
+     "0.30",
+     "",
+     "%"
+    ],
+    [
+     "Effective tax rate",
+     "",
+     "1.28",
+     "",
+     "%",
+     "",
+     "2.11",
+     "",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2925,
+    "end_line": 2940
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "INCOME TAXES"
+    }
+   },
+   "prose_before": "Under Section 382 of the Internal Revenue Code of 1986, as amended, a corporation that undergoes an \u201cownership change\u201d is subject to limitations on its ability to utilize its pre-change NOLs and certain other tax assets to offset future taxable income. In general, an ownership change occurs if the aggregate stock ownership of certain stockholders increases by more than 50 percentage points over such stockholders\u2019 lowest percentage ownership during the testing period (generally three years). Transactions involving the Company\u2019s common stock within the testing period, even those outside the Company\u2019s control such as purchases or sales by investors, could result in an ownership change. A limitation on the Company\u2019s ability to utilize some or all its NOLs or credits could have a material adverse effect on the Company\u2019s results of operations and cash flows. Prior to December 31, 2017, the Company believes it underwent three ownership changes, however, management believes that sufficient \u201cBuilt-In-Gains\u201d will offset any Section 382 limitation generated by such ownership changes. Any future ownership changes, including those resulting from our recent or future financing activities, may cause our existing tax attributes to have additional limitations. The Company reevaluated its analysis performed earlier in 2020 and determined that no ownership changes occurred in the year ended December 31, 2020, and therefore, all of the Company\u2019s tax attributes remain available for use, subject to annual limitations.\nSubject to annual limitations, Federal net operating losses generated in years 2018 and beyond will have an indefinite carryforward period and will not expire. Federal NOLs generated in December 31, 2017 and prior, as well as state NOLs, will expire at various dates through 2040. Future changes in federal and state tax laws pertaining to net operating loss carryforwards may also cause limitations or restrictions from us claiming such net operating losses. If the net operating loss carryforwards become unavailable to us or are fully utilized, our future taxable income will not be shielded from federal and state income taxation absent certain U.S. federal and state tax credits, and the funds otherwise available for general corporate purposes would be reduced.\nAll tax years are open for examination by the taxing authorities for both federal and state purposes.\nA reconciliation of the federal statutory tax rate of 21% to the Company\u2019s effective income tax rates are as follows:",
+   "prose_after": "12. STOCK INCENTIVE PLAN\nThe Company approved the 2010 Employee, Director and Consultant Equity Incentive Plan (the \u201c2010 Plan\u201d) in September 2010 to replace the 2004 Plan. The 2010 Plan provided for the granting of stock options and restricted stock awards. The 2010 Plan terminated upon the Company\u2019s initial public offering in May 2014. However, grants made under the 2010 Plan are still governed by that plan. As of December 31, 2020, options to purchase 398,547 shares of common stock at a weighted average exercise price of $1.52 per share remained outstanding under the 2010 Plan.\nThe Company approved the 2013 Equity Incentive Plan in October 2013. The 2013 Equity Incentive Plan became effective immediately on adoption although no awards were to be made under it until the effective date of the registration statement for the Company\u2019s initial public offering. The 2013 Equity Incentive Plan was amended in June 2016 and June 2018, (the \u201cAmended 2013 Plan\u201d). The Amended 2013 Plan provides for the granting of stock options, restricted stock, stock appreciation rights, stock units, and performance cash awards to certain employees, members of the board of directors and consultants of the Company. On January 1 of each year the aggregate number of common shares that may be issued under the Amended 2013 Plan shall automatically increase by a number of shares equal to the lower of (a) 6% of the total number of shares of common stock outstanding on the last calendar day of the prior fiscal year, or (b) a number of shares of common stock determined by the Company\u2019s board of directors. As of December 31, 2020, options to purchase 4,209,764 shares of common stock at a weighted average exercise price of $6.13 per share and 927,189 shares of common stock underlying restricted stock units remained outstanding under the Amended 2013 Plan. As of December 31, 2020, there were 1,224,865 shares of common stock available for grant under the Amended 2013 Plan. As of January 1, 2020, the number of shares of common stock that may be issued under the Amended 2013 Plan was automatically increased by 2,329,221 shares, increasing the number of shares of common stock available for issuance under the Amended 2013 Plan to 3,554,086.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2916,
+     "token": "PAGE_BREAK",
+     "id": 115,
+     "namespace": "arabic",
+     "page_number": 114
+    },
+    "after": {
+     "line": 2941,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 115
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Years ended December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     "2019",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "$",
+     "3,798,141",
+     "$",
+     "4,635,864"
+    ],
+    [
+     "General and administrative expenses",
+     "$",
+     "3,285,669",
+     "$",
+     "3,446,887"
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "7,083,810",
+     "$",
+     "8,082,751"
+    ]
+   ],
+   "caption_stack": [
+    "Years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2950,
+    "end_line": 2961
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "The Company approved the 2013 Equity Incentive Plan in October 2013. The 2013 Equity Incentive Plan became effective immediately on adoption although no awards were to be made under it until the effective date of the registration statement for the Company\u2019s initial public offering. The 2013 Equity Incentive Plan was amended in June 2016 and June 2018, (the \u201cAmended 2013 Plan\u201d). The Amended 2013 Plan provides for the granting of stock options, restricted stock, stock appreciation rights, stock units, and performance cash awards to certain employees, members of the board of directors and consultants of the Company. On January 1 of each year the aggregate number of common shares that may be issued under the Amended 2013 Plan shall automatically increase by a number of shares equal to the lower of (a) 6% of the total number of shares of common stock outstanding on the last calendar day of the prior fiscal year, or (b) a number of shares of common stock determined by the Company\u2019s board of directors. As of December 31, 2020, options to purchase 4,209,764 shares of common stock at a weighted average exercise price of $6.13 per share and 927,189 shares of common stock underlying restricted stock units remained outstanding under the Amended 2013 Plan. As of December 31, 2020, there were 1,224,865 shares of common stock available for grant under the Amended 2013 Plan. As of January 1, 2020, the number of shares of common stock that may be issued under the Amended 2013 Plan was automatically increased by 2,329,221 shares, increasing the number of shares of common stock available for issuance under the Amended 2013 Plan to 3,554,086.\nThe Company recognizes stock-based compensation expense over the requisite service period. The Company\u2019s share-based awards are accounted for as equity instruments. The amounts included in the consolidated statements of operations relating to stock-based compensation associated with the two equity incentive plans and Helio founders\u2019 shares are as follows:",
+   "prose_after": "Stock Options\nTerms of stock option agreements, including vesting requirements, are determined by the board of directors or its compensation committee, subject to the provisions of the respective plan from which they were granted. Options granted by the Company typically vest over a four year period. The options are subject to acceleration of vesting in the event of certain change of control transactions. The options may be granted for a term of up to ten years from the date of grant. The exercise price for options granted under the Amended 2013 Plan must be at a price no less than 100% of the fair market value of a common share on the date of grant.\nThe following table summarizes option activity under the incentive plans for the year ended December 31, 2020:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2941,
+     "token": "PAGE_BREAK",
+     "id": 116,
+     "namespace": "arabic",
+     "page_number": 115
+    },
+    "after": {
+     "line": 2966,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": 116
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of\n\n\n\nShares",
+     "",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nExercise\n\n\n\nPrice",
+     "",
+     "Weighted\n\n\n\nAverage\n\n\n\nContractual\n\n\n\nTerm",
+     "",
+     "Aggregate\n\n\n\nIntrinsic\n\n\n\nValue(a)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2019",
+     "",
+     "4,193,814",
+     "",
+     "$",
+     "6.62",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "1,669,023",
+     "",
+     "",
+     "3.91",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cancelled/Forfeited",
+     "",
+     "(1,035,282)",
+     "",
+     "",
+     "6.59",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "",
+     "(219,244)",
+     "",
+     "",
+     "4.83",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2020",
+     "",
+     "4,608,311",
+     "",
+     "$",
+     "5.73",
+     "",
+     "7.17",
+     "$",
+     "7,492,474"
+    ],
+    [
+     "Exercisable at December 31, 2020",
+     "",
+     "2,942,694",
+     "",
+     "$",
+     "5.94",
+     "",
+     "6.26",
+     "$",
+     "4,363,684"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2969,
+    "end_line": 2988
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "Stock Options\nTerms of stock option agreements, including vesting requirements, are determined by the board of directors or its compensation committee, subject to the provisions of the respective plan from which they were granted. Options granted by the Company typically vest over a four year period. The options are subject to acceleration of vesting in the event of certain change of control transactions. The options may be granted for a term of up to ten years from the date of grant. The exercise price for options granted under the Amended 2013 Plan must be at a price no less than 100% of the fair market value of a common share on the date of grant.\nThe following table summarizes option activity under the incentive plans for the year ended December 31, 2020:",
+   "prose_after": "(a) The aggregate intrinsic value in this table was calculated on the positive difference, if any, between the closing price per share of the Company\u2019s common stock on December 31, 2020 of $6.86 and the per share exercise price of the underlying options.\nThe Company records stock-based compensation related to stock options granted at fair value. During the years ended December 31, 2020 and 2019, the Company used the Black-Scholes option-pricing model to estimate the fair value of stock option grants and to determine the related compensation expense. The assumptions used in calculating the fair value of stock-based payment awards represent management\u2019s best estimates. The weighted-average fair value of options granted was $2.57 and $5.23 for the years ended December 31, 2020 and 2019, respectively. The assumptions used in determining fair value of the employee stock options for the years ended December 2020 and 2019, are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2966,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": 116
+    },
+    "after": {
+     "line": 3008,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 117
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n\n\n2020",
+     "December 31,\n\n\n\n2019"
+    ],
+    [
+     "Expected dividend yield",
+     "0%",
+     "0%"
+    ],
+    [
+     "Anticipated volatility",
+     "75.83% - 82.83%",
+     "74.65% - 77.12%"
+    ],
+    [
+     "Stock price",
+     "$2.98 - $6.77",
+     "$5.16 - $8.76"
+    ],
+    [
+     "Exercise price",
+     "$2.98 - $6.77",
+     "$5.16 - $8.76"
+    ],
+    [
+     "Expected life (years)",
+     "5.50 - 6.25",
+     "5.50 - 6.08"
+    ],
+    [
+     "Risk free interest rate",
+     "0.39% - 1.71%",
+     "1.59% - 2.62%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2993,
+    "end_line": 3005
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "(a) The aggregate intrinsic value in this table was calculated on the positive difference, if any, between the closing price per share of the Company\u2019s common stock on December 31, 2020 of $6.86 and the per share exercise price of the underlying options.\nThe Company records stock-based compensation related to stock options granted at fair value. During the years ended December 31, 2020 and 2019, the Company used the Black-Scholes option-pricing model to estimate the fair value of stock option grants and to determine the related compensation expense. The assumptions used in calculating the fair value of stock-based payment awards represent management\u2019s best estimates. The weighted-average fair value of options granted was $2.57 and $5.23 for the years ended December 31, 2020 and 2019, respectively. The assumptions used in determining fair value of the employee stock options for the years ended December 2020 and 2019, are as follows:",
+   "prose_after": "The dividend yield of zero is based on the fact that the Company has never paid cash dividends and have no present intention to pay cash dividends. Expected volatility is estimated using the historical volatility of the Company. The Company has estimated the expected life of our employee stock options using the \u201csimplified\u201d method, whereby, the expected life equals the average of the vesting term and the original contractual term of the option for service-based awards since the Company doesn\u2019t have sufficient historical or implied data of its own. The risk-free interest rates for periods within the expected life of the option are based on the yields of zero-coupon United States Treasury securities.\nAt December 31, 2020, there is approximately $5.3 million of unrecognized compensation cost relating to stock options outstanding, which the Company expects to recognize over a weighted average period of 2.17 years. Total unrecognized compensation cost will be adjusted for future forfeitures, if necessary.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2966,
+     "token": "PAGE_BREAK",
+     "id": 117,
+     "namespace": "arabic",
+     "page_number": 116
+    },
+    "after": {
+     "line": 3008,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 117
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number\n\n\n\nof Shares",
+     "",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2019",
+     "",
+     "430,425",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "635,188",
+     ""
+    ],
+    [
+     "Cancelled/Forfeited",
+     "",
+     "(2,628)",
+     ""
+    ],
+    [
+     "Vested/released",
+     "",
+     "(135,796)",
+     ""
+    ],
+    [
+     "Outstanding at December 31, 2020",
+     "",
+     "927,189",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Number\n\n\n\nof Shares"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 3015,
+    "end_line": 3028
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "The dividend yield of zero is based on the fact that the Company has never paid cash dividends and have no present intention to pay cash dividends. Expected volatility is estimated using the historical volatility of the Company. The Company has estimated the expected life of our employee stock options using the \u201csimplified\u201d method, whereby, the expected life equals the average of the vesting term and the original contractual term of the option for service-based awards since the Company doesn\u2019t have sufficient historical or implied data of its own. The risk-free interest rates for periods within the expected life of the option are based on the yields of zero-coupon United States Treasury securities.\nAt December 31, 2020, there is approximately $5.3 million of unrecognized compensation cost relating to stock options outstanding, which the Company expects to recognize over a weighted average period of 2.17 years. Total unrecognized compensation cost will be adjusted for future forfeitures, if necessary.\nRestricted Stock Units\nTerms of restricted stock unit (\u201cRSUs\u201d) agreements, including vesting requirements, are determined by the board of directors or its compensation committee, subject to the provisions of the Amended 2013 Plan. RSUs granted by the Company typically vest over a four year period. In the event that the employees\u2019 employment with the Company terminates any unvested shares are forfeited and revert to the Company. Restricted stock units are not included in issued and outstanding common stock until the shares are vested and released. The table below summarizes activity relating to RSUs for the year ended December 31, 2020 :",
+   "prose_after": "The weighted-average fair value of RSUs granted was $3.78 and $8.05 per share for the years ended December 31, 2020 and 2019, respectively. As of December 31, 2020, the outstanding restricted stock units had unamortized stock-based compensation of $3.2 million with a weighted-average remaining recognition period of 2.49 years and an aggregate intrinsic value of $4.0 million.\nEmployee Stock Purchase Plan\nIn March 2016, the Company\u2019s board of directors approved the 2016 Employee Stock Purchase Plan (\u201c2016 ESPP\u201d), which became effective in June 2016 following the approval of the Company\u2019s stockholders. The 2016 ESPP authorizes the issuance of up to a total of 414,639 shares of the Company\u2019s common stock to participating employees. The number of shares reserved for issuance under the 2016 ESPP automatically increases on the first business day of each fiscal year, commencing in 2017, by a number equal to the lower of (i) 1% of the shares of common stock outstanding on the last business day of the prior fiscal year; or (ii) the number of shares determined by the Company\u2019s Board of Directors. Unless otherwise determined by the administrator of the 2016 ESPP, two offering periods of six months\u2019 duration will begin each year on January 1 and July 1. Participating employees purchase stock under the 2016 ESPP at a price equal to the lower of 85% of the closing price on the applicable offering commencement date or 85% of the closing price on the applicable offering termination date. The fair value of the purchase rights granted under this plan was estimated on the date of grant using the Black-Scholes option-pricing model using assumptions as shown below:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3008,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 117
+    },
+    "after": {
+     "line": 3048,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 118
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n\n\n2020",
+     "December 31,\n\n\n\n2019"
+    ],
+    [
+     "Expected dividend yield",
+     "0%",
+     "0%"
+    ],
+    [
+     "Anticipated volatility",
+     "80.66% - 82.61%",
+     "70.55% - 76.02%"
+    ],
+    [
+     "Stock price",
+     "$4.17 - $5.96",
+     "$6.12 - $8.51"
+    ],
+    [
+     "Exercise price",
+     "$4.17 - $5.96",
+     "$6.12 - $8.51"
+    ],
+    [
+     "Expected life (years)",
+     "0.50",
+     "0.50"
+    ],
+    [
+     "Risk free interest rate",
+     "0.17% - 1.57%",
+     "2.10% - 2.56%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3035,
+    "end_line": 3047
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "In March 2016, the Company\u2019s board of directors approved the 2016 Employee Stock Purchase Plan (\u201c2016 ESPP\u201d), which became effective in June 2016 following the approval of the Company\u2019s stockholders. The 2016 ESPP authorizes the issuance of up to a total of 414,639 shares of the Company\u2019s common stock to participating employees. The number of shares reserved for issuance under the 2016 ESPP automatically increases on the first business day of each fiscal year, commencing in 2017, by a number equal to the lower of (i) 1% of the shares of common stock outstanding on the last business day of the prior fiscal year; or (ii) the number of shares determined by the Company\u2019s Board of Directors. Unless otherwise determined by the administrator of the 2016 ESPP, two offering periods of six months\u2019 duration will begin each year on January 1 and July 1. Participating employees purchase stock under the 2016 ESPP at a price equal to the lower of 85% of the closing price on the applicable offering commencement date or 85% of the closing price on the applicable offering termination date. The fair value of the purchase rights granted under this plan was estimated on the date of grant using the Black-Scholes option-pricing model using assumptions as shown below:",
+   "prose_after": "At December 31, 2020, the Company has 857,446 shares available for issuance under the 2016 ESPP. A summary of the weighted-average grant-date fair value, shares issued and total stock-based compensation expense recognized related to the 2016 ESPP for the years ended December 31, 2020 and 2019 are as follows:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3008,
+     "token": "PAGE_BREAK",
+     "id": 118,
+     "namespace": "arabic",
+     "page_number": 117
+    },
+    "after": {
+     "line": 3048,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 118
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,\n\n\n\n2020",
+     "",
+     "December 31,\n\n\n\n2019",
+     ""
+    ],
+    [
+     "Weighted-average grant-date fair value\n\n\n\n   per share",
+     "$",
+     "2.13",
+     "$",
+     "2.79"
+    ],
+    [
+     "Total shares issued",
+     "",
+     "30,254",
+     "",
+     "34,253"
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "34,224",
+     "$",
+     "91,790"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3051,
+    "end_line": 3062
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "STOCK INCENTIVE PLAN"
+    }
+   },
+   "prose_before": "At December 31, 2020, the Company has 857,446 shares available for issuance under the 2016 ESPP. A summary of the weighted-average grant-date fair value, shares issued and total stock-based compensation expense recognized related to the 2016 ESPP for the years ended December 31, 2020 and 2019 are as follows:",
+   "prose_after": "13. STOCK PURCHASE WARRANTS\nIn connection with the Initial Public Offering, the Company issued the underwriters\u2019 of the offering warrants to purchase up to 60,000 shares of common stock. The warrants were exercisable beginning on May 1, 2015 for cash, or on a cashless basis, at a per share price of $10.00. Unexercised warrants to purchase up to 40,300 shares of common stock expired on May 1, 2019 pursuant to their terms and as of December 31, 2020, none of these warrants were outstanding.\n14. COMMITMENTS AND CONTINGENCIES\nGuarantees and Indemnifications As permitted under Delaware law, the Company indemnifies its officers and directors for certain events or occurrences while the officer or director is, or was, serving at the Company\u2019s request in such capacity. The term of the indemnification is for the officer\u2019s or director\u2019s lifetime. Through December 31, 2020, the Company had not experienced any losses related to these indemnification obligations and no material claims were outstanding. The Company does not expect significant claims related to these indemnification obligations, and consequently, concluded that the fair value of these obligations is negligible, and no related reserves were established.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3048,
+     "token": "PAGE_BREAK",
+     "id": 119,
+     "namespace": "arabic",
+     "page_number": 118
+    },
+    "after": {
+     "line": 3081,
+     "token": "PAGE_BREAK",
+     "id": 120,
+     "namespace": "arabic",
+     "page_number": 119
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "2021 remaining total lease payments",
+     "$",
+     "243,126",
+     ""
+    ],
+    [
+     "Less: effect of discounting",
+     "",
+     "(9,816)",
+     ""
+    ],
+    [
+     "Present value of lease liabilities",
+     "$",
+     "233,310",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current operating lease liabilities",
+     "$",
+     "233,310",
+     ""
+    ],
+    [
+     "Non-current operating lease liabilities",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "233,310",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3105,
+    "end_line": 3119
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The Company currently leases an office used to conduct business. The exercise of lease renewal options is at our discretion and the renewal to extend the lease terms are not included in the Company\u2019s Right-Of-Use assets and lease liabilities as they are not reasonably certain of exercise. The Company regularly evaluates the renewal options and when they are reasonably certain of exercise, the Company includes the renewal period in its lease term. As the Company\u2019s lease does not provide an implicit rate, the Company uses its incremental borrowing rate based on the information available at the lease commencement date in determining the present value of the lease payments. In\nOctober 2020, the Company entered into a lease amendment extending the lease by 1 year through December 31, 2021.\nAs of December 31, 2020, the Company maintained an unamortized Right-Of-Use asset with a corresponding operating lease liability of approximately $0.2 million based on the present value of the minimum rental payments in accordance with ASC Topic 842, Leases. The weighted average discount rate used for leases as of December 31, 2020 is 9.1%. The weighted average lease term as of December 31, 2020 is 1.0 years. The operating lease expense for the year ended December 31, 2020 was $212,351. Maturities and balance sheet presentation of our lease liabilities for all operating leases as of December 31, 2020 is as follows:",
+   "prose_after": "The Company\u2019s gross future minimum payments under all non-cancelable operating leases as of December 31, 2020 are:",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "arabic",
+     "page_number": 120
+    },
+    "after": {
+     "line": 3133,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "arabic",
+     "page_number": 121
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total",
+     "",
+     "2021",
+     "",
+     "2022",
+     "",
+     "2023",
+     "",
+     "2024",
+     ""
+    ],
+    [
+     "Operating lease obligations",
+     "$",
+     "243,126",
+     "$",
+     "243,126",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 3122,
+    "end_line": 3128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "LEASES"
+    }
+   },
+   "prose_before": "The Company\u2019s gross future minimum payments under all non-cancelable operating leases as of December 31, 2020 are:",
+   "prose_after": "16. SUBSEQUENT EVENTS\nNone.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 3100,
+     "token": "PAGE_BREAK",
+     "id": 121,
+     "namespace": "arabic",
+     "page_number": 120
+    },
+    "after": {
+     "line": 3133,
+     "token": "PAGE_BREAK",
+     "id": 122,
+     "namespace": "arabic",
+     "page_number": 121
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

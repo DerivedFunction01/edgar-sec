@@ -1,0 +1,5636 @@
+{
+ "accession": "0001104659-24-046607",
+ "cik": "0001864531",
+ "form": "10-K",
+ "filing_date": "2024-04-12",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "dhacu-20231231x10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "86-2970927"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "incorporation or organization)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "980 N Federal Hwy #304 Boca Raton, FL",
+     "33432"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 31
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2023\nor\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _____________ to ________________\nCommission file number: 001 - 41015\nDIGITAL HEALTH ACQUISITION CORP. (Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (561) 672-7068\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "",
+     "Trading Symbol",
+     "",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units, each consisting of one share of Common Stock and one Redeemable Warrant",
+     "",
+     "DHACU",
+     "",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Common Stock, par value $0.0001 per share",
+     "",
+     "DHAC",
+     "",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Redeemable Warrants, each whole warrant exercisable for one share of Common Stock at an exercise price of $11.50",
+     "",
+     "DHACW",
+     "",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 36,
+    "end_line": 43
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (561) 672-7068\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     "",
+     "",
+     "4"
+    ],
+    [
+     "ITEM 1.",
+     "",
+     "BUSINESS",
+     "",
+     "4"
+    ],
+    [
+     "ITEM 1A.",
+     "",
+     "RISK FACTORS",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 1B.",
+     "",
+     "UNRESOLVED STAFF COMMENTS",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 1C",
+     "",
+     "CYBERSECURITY",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 2.",
+     "",
+     "PROPERTIES",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 3.",
+     "",
+     "LEGAL PROCEEDINGS",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 4.",
+     "",
+     "MINE SAFETY DISCLOSURES",
+     "",
+     "6"
+    ],
+    [
+     "PART II",
+     "",
+     "",
+     "",
+     "7"
+    ],
+    [
+     "ITEM 5.",
+     "",
+     "MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED SHAREHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES",
+     "",
+     "7"
+    ],
+    [
+     "ITEM 6.",
+     "",
+     "[RESERVED]",
+     "",
+     "8"
+    ],
+    [
+     "ITEM 7.",
+     "",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "",
+     "8"
+    ],
+    [
+     "ITEM 7A.",
+     "",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "",
+     "18"
+    ],
+    [
+     "ITEM 8.",
+     "",
+     "FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA",
+     "",
+     "18"
+    ],
+    [
+     "ITEM 9.",
+     "",
+     "CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE",
+     "",
+     "18"
+    ],
+    [
+     "ITEM 9A.",
+     "",
+     "CONTROLS AND PROCEDURES",
+     "",
+     "19"
+    ],
+    [
+     "ITEM 9B.",
+     "",
+     "OTHER INFORMATION",
+     "",
+     "20"
+    ],
+    [
+     "ITEM 9C.",
+     "",
+     "DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS",
+     "",
+     "20"
+    ],
+    [
+     "PART III",
+     "",
+     "",
+     "",
+     "21"
+    ],
+    [
+     "ITEM 10.",
+     "",
+     "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE",
+     "",
+     "21"
+    ],
+    [
+     "ITEM 11.",
+     "",
+     "EXECUTIVE COMPENSATION",
+     "",
+     "24"
+    ],
+    [
+     "ITEM 12.",
+     "",
+     "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED SHAREHOLDER MATTERS",
+     "",
+     "26"
+    ],
+    [
+     "ITEM 13.",
+     "",
+     "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE",
+     "",
+     "27"
+    ],
+    [
+     "ITEM 14.",
+     "",
+     "PRINCIPAL ACCOUNTANT FEES AND SERVICES",
+     "",
+     "32"
+    ],
+    [
+     "PART IV",
+     "",
+     "",
+     "",
+     "33"
+    ],
+    [
+     "ITEM 15.",
+     "",
+     "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES",
+     "",
+     "33"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 81,
+    "end_line": 111
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of June 30, 2023, the aggregate market value of the registrant\u2019s common stock held by non-affiliates of the registrant was $8,750,583.\nAs of April 12, 2024, there were 3,603,966 shares of common stock, par value $0.0001 per share, issued and outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nAnnual Report on Form 10-K for the Year Ended December 31, 2023",
+   "prose_after": "CERTAIN TERMS\nReferences to \u201cthe Company,\u201d \u201cDHAC,\u201d \u201cour,\u201d \u201cus\u201d or \u201cwe\u201d refer to Digital Health Acquisition Corp., a blank check company incorporated in Delaware on March 30, 2021. References to our \u201cSponsor\u201d refer to Digital Health Sponsor LLC, a Delaware limited liability company. References to our \u201cIPO\u201d refer to the initial public offering of Digital Health Acquisition Corp., which closed on November 8, 2021.\nSPECIAL NOTE REGARDING FORWARD-LOOKING STATEMENTS\nThis Annual Report on Form 10-K contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, or the Securities Act, and Section 21E of the Securities Exchange Act of 1934, or the Exchange Act. The statements contained in this report that are not purely historical are forward-looking statements. Our forward-looking statements include, but are not limited to, statements regarding our or our management\u2019s expectations, hopes, beliefs, intentions or strategies regarding the future. In addition, any statements that refer to projections, forecasts or other characterizations of future events or circumstances, including any underlying assumptions, are forward-looking statements. The words \u201canticipates,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions may identify forward-looking statements, but the absence of these words does not mean that a statement is not forward-looking. Forward-looking statements in this report may include, for example, statements about our:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 77,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 115,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "Scott Wolf",
+     "",
+     "58",
+     "",
+     "Chief Executive Officer, Corporate Secretary, and Chairman"
+    ],
+    [
+     "Daniel Sullivan",
+     "",
+     "65",
+     "",
+     "Chief Financial Officer"
+    ],
+    [
+     "Kevin Lowdermilk",
+     "",
+     "60",
+     "",
+     "Director"
+    ],
+    [
+     "Frank Ciufo",
+     "",
+     "63",
+     "",
+     "Director"
+    ],
+    [
+     "George McNellage",
+     "",
+     "63",
+     "",
+     "Director"
+    ],
+    [
+     "Scott Metzger",
+     "",
+     "56",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 509,
+    "end_line": 519
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "This Annual Report on Form 10-K does not include an attestation report of our independent registered public accounting firm due to our status as an emerging growth company under the JOBS Act.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) of the Exchange Act) during the most recent fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER INFORMATION\nNone.\nITEM 9C. DISCLOSURE REGARDING FOREIGN JURISDICTIONS THAT PREVENT INSPECTIONS\nNot applicable.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE\nThe following table sets forth information about our directors and executive officers.",
+   "prose_after": "Scott Wolf has served as our chief executive officer (\u201cCEO\u201d), corporate secretary and Chairman of our board of directors since May of 2021. Dr. Wolf is a prolific medical device entrepreneur across a broad range of therapeutic areas. Dr. Wolf founded Aerin Medical, Inc. to create non-surgical therapies to meet the enormous need of patients with the most common nasal airway problems, including nasal obstruction. Prior to founding Aerin Medical, he founded Zeltiq Aesthetics, Inc. the maker of CoolSculpting, the leading non- invasive method of fat reduction for bodysculpting. Dr. Wolf \u2018s other startups include Endogastric Solutions, Inc. and Cardiac Dimensions Pty Ltd.. He was previously a partner at Prospect Venture Partners and a vice-president at Frazier Healthcare Ventures, both leading life science venture capital firms. Dr. Wolf received his M.D. from George Washington University and his B.A. from the University of Pennsylvania.\nDaniel Sullivan has served as our chief financial officer (\u201cCFO\u201d) since May of 2021. Mr. Sullivan has been the President of PCN Enterprises, Inc. since 2003, which provides accounting related consulting services to public companies. He is also the Chief Financial Officer for Spectrum Global Solutions, Inc. Mr. Sullivan received his B.S in accounting from the University of Massachusetts and an MBA from Southern New Hampshire University.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 502,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 530,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Number of",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares of DHAC",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Beneficially",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Name and Address of Beneficial Owner",
+     "",
+     "Owned",
+     "",
+     "% of Class",
+     ""
+    ],
+    [
+     "Five Percent Holders of DHAC",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Digital Health Sponsor LLC (our sponsor)(1)",
+     "",
+     "3,187,250",
+     "(2)",
+     "76.60",
+     "%"
+    ],
+    [
+     "SCS Capital Partners, LLC(3)",
+     "",
+     "500,000",
+     "",
+     "13.87",
+     "%"
+    ],
+    [
+     "Alto Opportunity Master Fund, SPC \u2013 Segregated Master Portfolio B(4)",
+     "",
+     "200,000",
+     "",
+     "5.55",
+     "%"
+    ],
+    [
+     "Directors and Named Executive Officers of DHAC(5)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Scott Wolf(6)",
+     "",
+     "175,000",
+     "",
+     "4.86",
+     "%"
+    ],
+    [
+     "Daniel Sullivan",
+     "",
+     "75,000",
+     "",
+     "2.08",
+     "%"
+    ],
+    [
+     "Frank Ciufo",
+     "",
+     "8,625",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "George McNellage",
+     "",
+     "8,625",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Scott Metzger",
+     "",
+     "8,625",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Kevin Lowdermilk",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All Directors and Executive Officers of DHAC as a Group (6 individuals)",
+     "",
+     "275,875",
+     "",
+     "7.65",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Number of",
+    "Shares of DHAC",
+    "Common Stock",
+    "Beneficially"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 653,
+    "end_line": 673
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "In November 2023, the Board of Directors adopted a clawback policy (the \u201cClawback Policy\u201d) that may be applied in the event of a material financial restatement. The Clawback Policy is also filed as an exhibit to this Annual Report. The Clawback Policy covers current and former executive officers and includes all incentive compensation. Specifically, in the event of an accounting restatement, the Company must recover, reasonably promptly, any excess incentive compensation during the three completed fiscal years immediately preceding the date on which the Company is required to prepare an accounting restatement. Compensation that may be recoverable under the policy includes cash or equity-based compensation for which the grant, payment or vesting is or was based wholly or in part on the attainment of a financial reporting measure. The amount to be recovered will be the excess of the incentive compensation paid based on the erroneous data over the incentive compensation that would have been paid had it been based on the restated results.\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth as of April 12, 2024 the number of shares of common stock beneficially owned by (i) each person who is known by us to be the beneficial owner of more than five percent of our issued and outstanding shares of common stock (ii) each of our officers and directors; and (iii) all of our officers and directors as a group. As of April 12, 2024, we had 3,603,966 shares of common stock issued and outstanding.\nUnless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all shares of common stock beneficially owned by them. The following table does not reflect record of beneficial ownership of any shares of common stock issuable upon exercise of the warrants, as the warrants are not exercisable within 60 days of April 12, 2024.",
+   "prose_after": "*Less than one percent.\n(1) Our sponsor is the record holder of the shares of common stock reported herein. Our affiliate, Mr. Lawrence Sands, is the manager of our sponsor and as such may be deemed to have sole voting and investment discretion with respect to the common stock held by our sponsor. Mr. Sands disclaims any beneficial ownership of the securities held by Digital Health Sponsor LLC other than to the extent of any pecuniary interest he may have therein, directly or indirectly. The business address of the Sponsor is c/o Digital Health Acquisition Corp., 980 N Federal Hwy #304, Boca Raton, FL 33432.\n(2) Consists of 2,073,250 founder shares, 557,000 shares of DHAC Common Stock underlying the Private Placement Units, and 557,000 warrants for DHAC Common Stock underlying the Private Placement Units at an exercise price of $11.50.\n(3) SCS Capital Partners, LLC is the record holder of the shares of common stock reported herein. Our affiliate, Mr. Lawrence Sands, is the manager and member of SCS Capital Partners, LLC and as such may be deemed to have sole voting and investment discretion with respect to the common stock held by SCS Capital Partners, LLC. The business address of SCS Capital Partners, LLC is c/o Digital Health Acquisition Corp., 980 N Federal Hwy #304, Boca Raton, FL 33432.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 646,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Initial",
+     "",
+     "",
+     "",
+     "Current"
+    ],
+    [
+     "Initial Stockholders",
+     "",
+     "Founder Shares",
+     "",
+     "Forfeited Shares",
+     "",
+     "Founder Shares"
+    ],
+    [
+     "Digital Health Sponsor LLC(1)(2)(3)",
+     "",
+     "3,044,500",
+     "",
+     "971,250",
+     "",
+     "2,073,250"
+    ],
+    [
+     "Scott Wolf",
+     "",
+     "230,000",
+     "",
+     "55,000",
+     "",
+     "175,000"
+    ],
+    [
+     "Daniel Sullivan",
+     "",
+     "86,250",
+     "",
+     "11,250",
+     "",
+     "75,000"
+    ],
+    [
+     "SCS Capital Partners, LLC(2)",
+     "",
+     "900,000",
+     "",
+     "400,000",
+     "",
+     "500,000"
+    ],
+    [
+     "Brent Willis",
+     "",
+     "8,625",
+     "",
+     "\u2014",
+     "",
+     "8,625"
+    ],
+    [
+     "Frank Ciufo",
+     "",
+     "8,625",
+     "",
+     "\u2014",
+     "",
+     "8,625"
+    ],
+    [
+     "George McNellage",
+     "",
+     "8,625",
+     "",
+     "\u2014",
+     "",
+     "8,625"
+    ],
+    [
+     "Scott Metzger",
+     "",
+     "8,625",
+     "",
+     "\u2014",
+     "",
+     "8,625"
+    ],
+    [
+     "Andrew Singer",
+     "",
+     "5,750",
+     "",
+     "\u2014",
+     "",
+     "5,750"
+    ],
+    [
+     "Lane Ostrow",
+     "",
+     "5,750",
+     "",
+     "\u2014",
+     "",
+     "5,750"
+    ],
+    [
+     "Basil Harris",
+     "",
+     "5,750",
+     "",
+     "\u2014",
+     "",
+     "5,750"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 691,
+    "end_line": 707
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 13",
+     "title": "CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE"
+    },
+    "note": null
+   },
+   "prose_before": "(5) The business address of each of the individuals is c/o Digital Health Acquisition Corp., 980 N Federal Hwy #304, Boca Raton, FL 33432.\n(6) All common stock owned of record by the Scott J. and Kelley H. Wolf Family Trust. Mr. Wolf and his wife, Kelley H. Wolf, are trustees of the Scott J. and Kelley H. Wolf Family Trust and may be deemed to have shared voting and investment discretion with respect to shares of common stock held by the Scott J. and Kelley H. Wolf Family Trust. The address of the Scott J. and Kelley H. Wolf Family Trust is 319 Trenton Way, Menlo Park, CA 94025.\nITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE\nFounder Shares\nOn June 7, 2021, Digital Health Sponsor, LLC, our sponsor (\u201cSponsor\u201d), and certain of our directors, officers and advisors set forth below (the \u201cInitial Stockholders\u201d) purchased 4,312,500 of our common shares (\u201cfounder shares\u201d) for an aggregate purchase price of $25,000. On October 26, 2021, our Sponsor and certain of the Initial Stockholders set forth below forfeited an aggregate of 1,437,500 founder shares.",
+   "prose_after": "(1) Marc Munro, through his ownership of Tidewater Ventures, LLC (\u201cTidewater\u201d) and Whacky Ventures LLC (\u201cWhacky\u201d) beneficially owns 66.35% of the Sponsor and will beneficially own 344,500 shares of Common Stock held by affiliates of Sponsor, consisting of 292,500 shares of Common Stock and 520 shares of Series A Preferred Stock to be received upon conversion of notes held by such entities controlled by him.\n(2) Lawrence Sands, through his ownership of SCS, LLC and SCS Capital Partners LLC beneficially owns 500,000 founder shares and 33% of the Quantum Investor, and will beneficially own 591,800 shares of Common Stock held by affiliates of Sponsor, consisting of 500,000 founder shares and 918 shares of Series A Preferred Stock to be received upon conversion of notes held by such entities controlled by him.\n(3) The Bridge Investor owns 4.91% of the Sponsor and 33% of the Quantum Investor.\nPrior to the initial investment in DHAC of $25,000 by our Initial Stockholders, we had no assets, tangible or intangible. Simultaneously with the consummation of the IPO, DHAC sold 557,000 Private Placement Shares to the Sponsor at $10.00 per unit for a total purchase price of $5,570,000 on a private placement basis simultaneously with the consummation of the IPO. Since the underwriters exercised the overallotment option in full, none of the Founder Shares are subject to forfeiture any longer.",
+   "structured_location": {
+    "item": "ITEM 13",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 681,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 718,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2023 and 2022",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficit for the years ended December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7 to F-39"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 835,
+    "end_line": 844
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "All Other Fees. For the years ended December 31, 2023 and 2022, there were no fees billed for products and services provided by our independent registered public accounting firm other than those set forth above.\nPre-Approval Policy\nOur audit committee was formed upon the consummation of our Initial Public Offering. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nITEM 15. EXHIBITS AND FINANCIAL STATEMENT SCHEDULES\n(a)The following documents are filed as part of this Form 10-K:\n(1) Financial Statements:",
+   "prose_after": "(2) Financial Statement Schedules:\nNone.\n(4) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index. Exhibits which are incorporated herein by reference can be inspected and copied at the public reference facilities maintained by the SEC, 100 F Street, N.E., Room 1580, Washington, D.C. 20549. Copies of such material can also be obtained from the Public Reference Section of the SEC, 100 F Street, N.E., Washington, D.C. 20549, at prescribed rates or on the SEC website at www.sec.gov.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 827,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.1",
+     "Third Amended and Restated Business Combination Agreement, dated as of November 21, 2023, by and among Digital Health Acquisition Corp., DHAC Merger Sub I, Inc., DHAC Merger Sub II, Inc., VSee Lab, Inc., and iDoc Virtual Telehealth Solutions, Inc. (incorporated by reference to Exhibit 2.1 filed with the Form 8-K filed by the Registrant on November 22, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "2.2",
+     "First Amendment to the Third Amended and Restated Business Combination Agreement, dated as of February 13, 2024, by and among Digital Health Acquisition Corp., DHAC Merger Sub I, Inc., DHAC Merger Sub II, Inc., VSee Lab, Inc., and iDoc Virtual Telehealth Solutions, Inc. (incorporated by reference to Exhibit 2.1 filed with the Form 8 K filed by the Registrant on February 13, 2024)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Amended and Restated Certificate of Incorporation (incorporated by reference to Exhibit 3.1 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Certificate of Amendment (incorporated by reference to Exhibit 3.1 filed with the Form 8-K filed by the Registrant on October 26, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Amendment to the Amended and Restated Certificate of Incorporation of Digital Health Acquisition Corp. filed on September 8, 2023 (incorporated by reference to Exhibit 3.1 filed with the Form 8 \u2013 K filed by the Registrant on September 11, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.5",
+     "By Laws (incorporated by reference to Exhibit 3.3 filed with the Form S-1/A filed by the Registrant on October 28, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate (incorporated by reference to Exhibit 4.1 filed with the Form S-1/A filed by the Registrant on October 28, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.2",
+     "Specimen Common Stock Certificate (incorporated by reference to Exhibit 4.2 filed with the Form S-1/A filed by the Registrant on October 28, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate (incorporated by reference to Exhibit 4.3 filed with the Form S-1/A filed by the Registrant on October 28, 2021)."
+    ],
+    [
+     "4.4",
+     "Warrant Agreement, dated November 3, 2021, by and between the Company and Continental Stock Transfer & Trust Company, LLC (incorporated by reference to Exhibit 4.1 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "4.5",
+     "Description of Securities."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Unit Subscription Agreement, dated November 3, 2021, by and between the Company and the Sponsor (incorporated by reference to Exhibit 10.4 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "Form of Promissory Note (incorporated by reference to Exhibit 10.3 filed with the Form S-1/A filed by the Registrant on October 28, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Letter Agreement, dated November 3, 2021, by and among the Company, its officers, directors, and advisors, the Company\u2019s sponsor, Digital Health Sponsor LLC (the \u201cSponsor\u201d), and A.G.P./Alliance Global Partners, (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4",
+     "Investment Management Trust Agreement, dated November 3, 2021, by and between the Company and Continental Stock Transfer & Trust Company, LLC as trustee (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5",
+     "Amendment to Investment Management Trust Agreement, dated October 26, 2022 (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on October 26, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.7",
+     "Stock Escrow Agreement, dated November 3, 2021, by and between the Company, Continental Stock Transfer & Trust Company, LLC, and certain security holders (incorporated by reference to Exhibit 10.5 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.8",
+     "Registration Rights Agreement, dated November 3, 2021, by and among the Company and certain security holders, a copy of which is attached as Exhibit 10.3 hereto and incorporated herein by reference (incorporated by reference to Exhibit 10.3 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 854,
+    "end_line": 905
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules:\nNone.\n(4) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index. Exhibits which are incorporated herein by reference can be inspected and copied at the public reference facilities maintained by the SEC, 100 F Street, N.E., Room 1580, Washington, D.C. 20549. Copies of such material can also be obtained from the Public Reference Section of the SEC, 100 F Street, N.E., Washington, D.C. 20549, at prescribed rates or on the SEC website at www.sec.gov.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    },
+    "after": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.9",
+     "Administrative Support Agreement, dated November 3, 2021, by and between the Company and Digital Health Sponsor LLC (incorporated by reference to Exhibit 10.7 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.10",
+     "Indemnification Agreements, dated November 3, 2021, by and between the Company and each of the officers and directors of the Company (incorporated by reference to Exhibit 10.6 filed with the Form 8-K filed by the Registrant on November 8, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.11",
+     "Second Amended and Restated Transaction Support Agreement dated October 6, 2022 by and among Digital Health Acquisition Corp., VSee Lab, Inc., iDoc Virtual Telehealth Solutions, Inc. and certain stockholders of VSee and iDoc. (incorporated by reference to Exhibit 10.5 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.12",
+     "Third Amended and Restated Transaction Support Agreement, dated as of November 21, 2023, by and among Digital Health Acquisition Corp., Milton Chen, Imoigele Aisiku, and certain stockholders of VSee Lab, Inc., and iDoc Virtual Telehealth Solutions, Inc. (incorporated by reference to Exhibit 10.1 filed with the Form 8 \u2013 K filed by the Registrant on November 21, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.13",
+     "Support Agreement dated June 15, 2022 by and among Digital Health Sponsor LLC, certain other stockholders of Digital Health Acquisition Corp., Digital Health Acquisition Corp., VSee Lab, Inc., and iDoc Virtual Telehealth Solutions, Inc. (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on June 16, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.14",
+     "Leak-Out Agreement dated August 9, 2022 by and among Digital Health Acquisition Corp., and certain stockholders named therein (incorporated by reference to Exhibit 10.10 filed with the Form 8-K filed by the Registrant on August 11, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.15",
+     "First Amendment to Leak-Out Agreement dated October 6, 2022 by and among Digital Health Acquisition Corp., and certain stockholders named therein (incorporated by reference to Exhibit 10.6 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.16",
+     "Second Amendment to Leak-Out Agreement, dated November 21, 2023, by and between DHAC and certain stockholders of VSee Lab, Inc. (incorporated by reference to Exhibit 10.2 filed with the Form 8-K filed by the Registrant on November 21, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.17",
+     "Securities Purchase Agreement dated October 5, 2022 by and among Digital Health Acquisition Corp., VSee Lab, Inc. and iDoc Virtual Telehealth Solutions, Inc., and the Bridge investor named therein (incorporated by reference to Exhibit 10.7 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.18",
+     "Promissory Note dated October 5, 2022 issued to the investor named therein (incorporated by reference to Exhibit 10.8 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.21",
+     "Warrant dated October 5, 2022 in favor the investor named therein (incorporated by reference to Exhibit 10.9 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.22",
+     "Registration Rights Agreement dated October 5, 2022 by and among Digital Health Acquisition Corp. and the investor named therein (incorporated by reference to Exhibit 10.10 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.23",
+     "Lock-Up Agreement in connection with the bridge financing transaction dated October 5, 2022 with investor named therein (incorporated by reference to Exhibit 10.11 filed with the Form 8-K filed by the Registrant on October 7, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.28",
+     "Security Agreement dated October 5, 2022 by and among Digital Health Acquisition Corp., VSee Lab, Inc. and iDoc Virtual Telehealth Solutions, Inc., and the investor named therein (incorporated by reference to Exhibit 10.29 filed with the Form S-4 filed by the Registrant on November 4, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.29",
+     "Subsidiary Guaranty Agreement dated October 5, 2022 by and among Digital Health Acquisition Corp., VSee Lab, Inc., iDoc Virtual Telehealth Solutions, Inc., the subsidiaries named therein and the investor named therein (incorporated by reference to Exhibit 10.30 filed with the Form S-4 filed by the Registrant on November 4, 2022)."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 907,
+    "end_line": 960
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 906,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.30",
+     "Securities Purchase Agreement dated November 3, 2022 by and between Digital Health Acquisition Corp. and A.G.P/Alliance Global Partners (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on November 3, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.31",
+     "First Amendment to Securities Purchase Agreement, dated November 21, 2023, by and between Digital Health Acquisition Corp. and A.G.P. / Alliance Global Partners (incorporated by reference to Exhibit 10.9 filed with the Form 8-K filed by the Registrant on November 21, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.32",
+     "Form of Securities Purchase Agreement, dated as of May 5, 2023, by and among Digital Health Acquisition Corp. and the investor named therein (incorporated by reference to Exhibit 10.1 filed with the Form 8-K filed by the Registrant on May 8, 2023)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14",
+     "Code of Ethics (incorporated by reference to Exhibit 14 filed with the Registration Statement on Form S-1/A filed by the Registrant on October 28, 2021)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "List of Subsidiaries (incorporated by reference to Exhibit 21.1 filed with the Registration Statement on Form 10-K filed by the Registrant on March 29, 2022)."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Principal Executive Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Principal Financial Officer Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Principal Executive Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "97.1",
+     "Clawback Policy"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File \u2014 the cover page interactive data file does not appear in the Interactive Data File because its XBRL tags are embedded within the Inline XBRL document."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 962,
+    "end_line": 993
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 961,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Dated: April 12, 2024",
+     "DIGITAL HEALTH ACQUISITION CORP.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Scott Wolf"
+    ],
+    [
+     "",
+     "Name:",
+     "Scott Wolf"
+    ],
+    [
+     "",
+     "Title:",
+     "Chief Executive Officer and Chairman"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 999,
+    "end_line": 1007
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Exchange Act of 1934, the registrant caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1039,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Scott Wolf",
+     "Chief Executive Officer and Chairman",
+     "April 12, 2024"
+    ],
+    [
+     "Scott Wolf",
+     "(Principal Executive Officer) and Secretary",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Daniel Sullivan",
+     "Chief Financial Officer",
+     "April 12, 2024"
+    ],
+    [
+     "Daniel Sullivan",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Kevin Lowdermilk",
+     "Director",
+     "April 12, 2024"
+    ],
+    [
+     "Kevin Lowdermilk",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Frank Ciufo",
+     "Director",
+     "April 12, 2024"
+    ],
+    [
+     "Frank Ciufo",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ George McNellage",
+     "Director",
+     "April 12, 2024"
+    ],
+    [
+     "George McNellage",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Scott Metzger",
+     "Director",
+     "April 12, 2024"
+    ],
+    [
+     "Scott Metzger",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1010,
+    "end_line": 1038
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the registrant and in the capacities and on the dates indicated.",
+   "prose_after": "TABLE OF CONTENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 994,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1039,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of December 31, 2023 and 2022",
+     "F-3"
+    ],
+    [
+     "Consolidated Statements of Operations for the years ended December 31, 2023 and 2022",
+     "F-4"
+    ],
+    [
+     "Consolidated Statements of Changes in Stockholders\u2019 Deficit for the years ended December 31, 2023 and 2022",
+     "F-5"
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the years ended December 31, 2023 and 2022",
+     "F-6"
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7 to F-39"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1043,
+    "end_line": 1052
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "TABLE OF CONTENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Stockholders and the Board of Directors of Digital Health Acquisition Corp.:\nOpinion on the Consolidated Financial Statements\nWe have audited the accompanying consolidated balance sheets of Digital Health Acquisition Corp. (the \u201cCompany\u201d) as of December 31, 2023 and 2022, and the related consolidated statements of operations, changes in stockholders\u2019 deficit, and cash flows for the years then ended, and the related notes (collectively referred to as the \u201cconsolidated financial statements\u201d). In our opinion, the consolidated financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2023 and 2022, and the results of its operations and its cash flows for the years then ended in conformity with accounting principles generally accepted in the United States of America.\nGoing Concern\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 2 to the consolidated financial statements, if the Company is unable to raise additional funds to alleviate liquidity needs as well as complete a Business Combination by the close of business on November 8, 2024, then the Company will cease all operations except for the purpose of liquidating. This date for mandatory liquidation, subsequent dissolution and liquidity condition raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regard to these matters are also described in Note 2. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1039,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 37
+    },
+    "after": {
+     "line": 1052,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "December 31,",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "",
+     "$",
+     "1,863",
+     "",
+     "$",
+     "106,998"
+    ],
+    [
+     "Total Current Assets",
+     "",
+     "",
+     "1,863",
+     "",
+     "",
+     "106,998"
+    ],
+    [
+     "Investments held in Trust Account",
+     "",
+     "",
+     "1,368,637",
+     "",
+     "",
+     "7,527,369"
+    ],
+    [
+     "Total Assets",
+     "",
+     "$",
+     "1,370,500",
+     "",
+     "$",
+     "7,634,367"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "$",
+     "3,303,836",
+     "",
+     "$",
+     "1,886,312"
+    ],
+    [
+     "Excise tax payable",
+     "",
+     "",
+     "72,396",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "",
+     "187,225",
+     "",
+     "",
+     "187,225"
+    ],
+    [
+     "Advances from related parties",
+     "",
+     "",
+     "117,871",
+     "",
+     "",
+     "43,900"
+    ],
+    [
+     "Bridge Note, net of discount",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "292,800"
+    ],
+    [
+     "Accrued interest on Exchange Note",
+     "",
+     "",
+     "23,964",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Additional Bridge Promissory note, net of discount",
+     "",
+     "",
+     "102,726",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Promissory note \u2013 M2B",
+     "",
+     "",
+     "167,958",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Exchange Note",
+     "",
+     "",
+     "2,621,558",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "ELOC",
+     "",
+     "",
+     "203,720",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Promissory note \u2013 related party",
+     "",
+     "",
+     "926,500",
+     "",
+     "",
+     "350,000"
+    ],
+    [
+     "Extension Note, net of discount",
+     "",
+     "",
+     "233,774",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Bridge Note \u2013 Bifurcated Derivative",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "364,711"
+    ],
+    [
+     "Extension Note - Bifurcated Derivative",
+     "",
+     "",
+     "22,872",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "PIPE Forward Contract Derivative",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "170,666"
+    ],
+    [
+     "Total Current Liabilities",
+     "",
+     "",
+     "7,984,400",
+     "",
+     "",
+     "3,295,614"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred underwriting fee payable",
+     "",
+     "",
+     "4,370,000",
+     "",
+     "",
+     "4,370,000"
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "",
+     "12,354,400",
+     "",
+     "",
+     "7,665,614"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value, subject to possible redemption; 114,966 and 694,123 shares issued and outstanding at redemption value of $11.15 and $10.65 per share as of December 31, 2023 and 2022, respectively",
+     "",
+     "",
+     "1,281,957",
+     "",
+     "",
+     "7,395,349"
+    ],
+    [
+     "Stockholders\u2019 Deficit",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 50,000,000 shares authorized; 3,489,000 and 3,462,000 shares issued and outstanding (excluding 114,966 and 694,123 shares subject to redemption) as of December 31, 2023 and 2022, respectively",
+     "",
+     "",
+     "350",
+     "",
+     "",
+     "347"
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "550,246",
+     "",
+     "",
+     "292,973"
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(12,816,453)",
+     "",
+     "",
+     "(7,719,916)"
+    ],
+    [
+     "Total Stockholders\u2019 Deficit",
+     "",
+     "",
+     "(12,265,857)",
+     "",
+     "",
+     "(7,426,596)"
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 DEFICIT",
+     "",
+     "$",
+     "1,370,500",
+     "",
+     "$",
+     "7,634,367"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1086,
+    "end_line": 1139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audits, we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audits included performing procedures to assess the risks of material misstatement of the consolidated financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the consolidated financial statements. Our audits also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the consolidated financial statements. We believe that our audits provide a reasonable basis for our opinion.\n/s/ WithumSmith+Brown, PC\nWe have served as the Company\u2019s auditor since 2021.\nNew York, New York\nApril 12, 2024\nPCAOB ID Number 100\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1082,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1141,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Years Ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "General and administrative expenses",
+     "",
+     "$",
+     "2,593,765",
+     "",
+     "$",
+     "3,594,967"
+    ],
+    [
+     "Loss from operations",
+     "",
+     "",
+     "(2,593,765)",
+     "",
+     "",
+     "(3,594,967)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other (expense) income:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Default interest expense \u2013 Bridge Note",
+     "",
+     "",
+     "(1,579,927)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Interest expense \u2013 Bridge Note",
+     "",
+     "",
+     "(429,007)",
+     "",
+     "",
+     "(125,980)"
+    ],
+    [
+     "Interest expense \u2013 Additional Bridge",
+     "",
+     "",
+     "(12,642)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Interest expense \u2013 M2B",
+     "",
+     "",
+     "(22,958)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Interest expense - Extension Note",
+     "",
+     "",
+     "(133,748)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Initial fair value of Additional Bridge Note",
+     "",
+     "",
+     "11,111",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Initial fair value of ELOC",
+     "",
+     "",
+     "(204,039)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of Additional Bridge Note",
+     "",
+     "",
+     "(2,726)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of Exchange Note",
+     "",
+     "",
+     "(97,814)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of ELOC",
+     "",
+     "",
+     "319",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of Bridge Note - Bifurcated Derivative",
+     "",
+     "",
+     "120,267",
+     "",
+     "",
+     "(86,307)"
+    ],
+    [
+     "Change in fair value of Extension Note - Bifurcated Derivative",
+     "",
+     "",
+     "1,630",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of PIPE Forward Contract Derivative",
+     "",
+     "",
+     "170,666",
+     "",
+     "",
+     "(170,666)"
+    ],
+    [
+     "Interest earned on investments held in Trust Account",
+     "",
+     "",
+     "358,767",
+     "",
+     "",
+     "922,644"
+    ],
+    [
+     "Total other (expense) income",
+     "",
+     "",
+     "(1,820,101)",
+     "",
+     "",
+     "539,691"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "",
+     "(4,413,866)",
+     "",
+     "",
+     "(3,055,276)"
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(187,225)"
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(4,413,866)",
+     "",
+     "$",
+     "(3,242,501)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common shares outstanding",
+     "",
+     "",
+     "4,096,353",
+     "",
+     "",
+     "12,741,219"
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "",
+     "$",
+     "(1.08)",
+     "",
+     "$",
+     "(0.25)"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1145,
+    "end_line": 1185
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2023 AND 2022",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1141,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1187,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Stockholders\u2019",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2021",
+     "",
+     "3,432,000",
+     "",
+     "$",
+     "344",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "(3,334,812)",
+     "",
+     "$",
+     "(3,334,468)"
+    ],
+    [
+     "Accretion of common stock subject to redemption value",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,142,603)",
+     "",
+     "",
+     "(1,142,603)"
+    ],
+    [
+     "Issuance of 30,000 shares issued with Bridge Note, net of offering cost",
+     "",
+     "30,000",
+     "",
+     "",
+     "3",
+     "",
+     "",
+     "284,421",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "284,424"
+    ],
+    [
+     "Issuance of 173,913 warrants issued with Bridge Note, net of offering cost",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,552",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "8,552"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(3,242,501)",
+     "",
+     "",
+     "(3,242,501)"
+    ],
+    [
+     "Balance \u2013 December 31, 2022",
+     "",
+     "3,462,000",
+     "",
+     "",
+     "347",
+     "",
+     "",
+     "292,973",
+     "",
+     "",
+     "(7,719,916)",
+     "",
+     "",
+     "(7,426,596)"
+    ],
+    [
+     "Issuance of 20,000 shares issued to settle legal claim",
+     "",
+     "20,000",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "214,198",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "214,200"
+    ],
+    [
+     "Issuance of 7,000 shares and warrants issued with Extension Note, net of offering costs",
+     "",
+     "7,000",
+     "",
+     "",
+     "1",
+     "",
+     "",
+     "115,471",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "115,472"
+    ],
+    [
+     "Excise tax payable attributable to redemption of common stock",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(72,396)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(72,396)"
+    ],
+    [
+     "Accretion of common stock subject to redemption value",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(682,671)",
+     "",
+     "",
+     "(682,671)"
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(4,413,866)",
+     "",
+     "",
+     "(4,413,866)"
+    ],
+    [
+     "Balance \u2013 December 31, 2023",
+     "",
+     "3,489,000",
+     "",
+     "$",
+     "350",
+     "",
+     "$",
+     "550,246",
+     "",
+     "$",
+     "(12,816,453)",
+     "",
+     "$",
+     "(12,265,857)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1193,
+    "end_line": 1215
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 DEFICIT\nFOR THE YEARS ENDED DECEMBER 31, 2023 AND 2022",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1187,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the Years Ended",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(4,413,866)",
+     "",
+     "$",
+     "(3,242,501)"
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest earned on investments held in Trust Account",
+     "",
+     "",
+     "(358,767)",
+     "",
+     "",
+     "(922,644)"
+    ],
+    [
+     "Initial loss on and change in fair value of ELOC",
+     "",
+     "",
+     "203,720",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Initial gain on fair value of Additional Bridge Note",
+     "",
+     "",
+     "(11,111)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of Exchange Note",
+     "",
+     "",
+     "97,814",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of Additional Bridge Note",
+     "",
+     "",
+     "2,726",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of Bridge Note \u2013 Bifurcated Derivative",
+     "",
+     "",
+     "(120,267)",
+     "",
+     "",
+     "86,307"
+    ],
+    [
+     "Change in fair value of Extension Note \u2013 Bifurcated Derivative",
+     "",
+     "",
+     "(1,630)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in fair value of PIPE Forward Contract Derivative",
+     "",
+     "",
+     "(170,666)",
+     "",
+     "",
+     "170,666"
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepaid and other current assets",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "457,605"
+    ],
+    [
+     "Accounts payable and accrued expenses",
+     "",
+     "",
+     "1,631,724",
+     "",
+     "",
+     "1,746,149"
+    ],
+    [
+     "Default interest on Bridge Note",
+     "",
+     "",
+     "1,579,927",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accrued interest \u2013 Bridge Note",
+     "",
+     "",
+     "429,006",
+     "",
+     "",
+     "125,980"
+    ],
+    [
+     "Accrued interest \u2013 Additional Bridge Note",
+     "",
+     "",
+     "12,642",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accrued interest \u2013 M2B Note",
+     "",
+     "",
+     "22,958",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accrued interest \u2013 Extension Note",
+     "",
+     "",
+     "133,748",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "187,225"
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "(962,042)",
+     "",
+     "",
+     "(1,391,213)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment of cash into Trust Account",
+     "",
+     "",
+     "(350,000)",
+     "",
+     "",
+     "(350,000)"
+    ],
+    [
+     "Cash withdrawn from Trust Account to pay franchise and income taxes",
+     "",
+     "",
+     "71,436",
+     "",
+     "",
+     "110,472,253"
+    ],
+    [
+     "Cash withdrawn from Trust Account in connection with redemption",
+     "",
+     "",
+     "6,796,063",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Net cash provided by investing activities",
+     "",
+     "",
+     "6,517,499",
+     "",
+     "",
+     "110,122,253"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Advances from related party",
+     "",
+     "",
+     "95,037",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Repayment of advances from related party",
+     "",
+     "",
+     "(21,066)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Proceeds from Bridge Note",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "800,000"
+    ],
+    [
+     "Proceeds from M2B Note",
+     "",
+     "",
+     "145,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Payment of Financing Cost in Bridge Note",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(61,800)"
+    ],
+    [
+     "Proceeds from promissory note \u2013 related party",
+     "",
+     "",
+     "576,500",
+     "",
+     "",
+     "350,000"
+    ],
+    [
+     "Proceeds from promissory note",
+     "",
+     "",
+     "240,000",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Redemption of common stock",
+     "",
+     "",
+     "(6,796,063)",
+     "",
+     "",
+     "(110,472,254)"
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "",
+     "(5,660,592)",
+     "",
+     "",
+     "(109,384,054)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "",
+     "(105,135)",
+     "",
+     "",
+     "(653,014)"
+    ],
+    [
+     "Cash \u2013 Beginning of year",
+     "",
+     "",
+     "106,998",
+     "",
+     "",
+     "760,012"
+    ],
+    [
+     "Cash \u2013 End of year",
+     "",
+     "$",
+     "1,863",
+     "",
+     "$",
+     "106,998"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock issued for legal settlement",
+     "",
+     "$",
+     "214,200",
+     "",
+     "$",
+     "284,424"
+    ],
+    [
+     "Financing costs included in Extension Note",
+     "",
+     "$",
+     "60,000",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Warrants issued as financing cost in Extension Note",
+     "",
+     "$",
+     "40,130",
+     "",
+     "$",
+     "8,552"
+    ],
+    [
+     "Bridge Promissory note, net of discount \u2013 settled with Exchange Note",
+     "",
+     "$",
+     "2,279,300",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Bridge Note \u2013 Embedded Derivative \u2013 settled with Exchange Note",
+     "",
+     "$",
+     "244,444",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Excise tax attributable to redemption of common stock",
+     "",
+     "$",
+     "72,396",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Common stock issued as financing cost in Extension Note",
+     "",
+     "$",
+     "78,349",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "For the Years Ended",
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1221,
+    "end_line": 1294
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of the consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The accompanying notes are an integral part of the consolidated financial statements.\nNOTE 1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nDigital Health Acquisition Corp. (the \u201cCompany\u201d or \u201cDHAC\u201d) is a blank check company incorporated as a Delaware corporation on March 30, 2021. The Company was incorporated for the purpose of effecting a merger, share exchange, asset acquisition, share purchase, reorganization or similar Business Combination with one or more businesses (the \u201cBusiness Combination\u201d).\nOn June 9, 2022, DHAC Merger Sub I, Inc. (\u201cMerger Sub I\u201d), a Delaware corporation and a wholly owned subsidiary of the Company, was formed. On June 9, 2022, DHAC Merger Sub II, Inc. (\u201cMerger Sub II\u201d), a Texas corporation and a wholly owned subsidiary of the Company, was formed.\nAs of December 31, 2023, the Company had not commenced any significant operations. All activity for the period from inception, the date which operations commenced, through December 31, 2023 relates to the Company\u2019s formation, the Company\u2019s Initial Public Offering (as defined below), and identifying a target company for a Business Combination. The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company generates non-operating income in the form of interest income from the proceeds derived from the Initial Public Offering (as defined below).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1217,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1296,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Gross proceeds",
+     "",
+     "$",
+     "115,000,000"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds allocated to public warrants",
+     "",
+     "",
+     "(12,483,555)"
+    ],
+    [
+     "Common stock issuance costs",
+     "",
+     "",
+     "(6,923,767)"
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "",
+     "21,132,322"
+    ],
+    [
+     "Common stock subject to possible redemption, December 31, 2021",
+     "",
+     "",
+     "116,725,000"
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "",
+     "1,142,603"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemptions",
+     "",
+     "",
+     "(110,472,254)"
+    ],
+    [
+     "Common stock subject to possible redemption, December 31, 2022",
+     "",
+     "",
+     "7,395,349"
+    ],
+    [
+     "Plus:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of carrying value to redemption value",
+     "",
+     "",
+     "682,671"
+    ],
+    [
+     "Less:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redemptions",
+     "",
+     "",
+     "(6,796,063)"
+    ],
+    [
+     "Common stock subject to possible redemption, December 31, 2023",
+     "",
+     "$",
+     "1,281,957"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1409,
+    "end_line": 1432
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company accounts for its common stock subject to possible redemption in accordance with the guidance in ASC Topic 480, \u201cDistinguishing Liabilities from Equity.\u201d Common stock subject to mandatory redemption is classified as a liability instrument and is measured at fair value. Conditionally redeemable common stock (including common stock that features redemption rights that are either within the control of the holder or subject to redemption upon the occurrence of uncertain events not solely within the Company\u2019s control) is classified in temporary equity. At all other times, common stock is classified as stockholders\u2019 deficit. The Company\u2019s common stock sold in the Initial Public Offering features certain redemption rights that are considered to be outside of the Company\u2019s control and subject to occurrence of uncertain future events. Accordingly, at December 31, 2023 and 2022, common stock subject to possible redemption is presented at redemption value as temporary equity, outside of the stockholders\u2019 deficit section of the Company\u2019s consolidated balance sheets.\nThe Company recognizes changes in redemption value immediately as they occur and adjusts the carrying value of redeemable common stock to equal the redemption value at the end of each reporting period. This method would view the end of the reporting period as if it were also the redemption date for the security. Immediately upon the closing of the Initial Public Offering, increases or decreases in the carrying amount of redeemable common stock are affected by charges against additional paid-in capital and accumulated deficit.\nAt December 31, 2023 and 2022, the common stock subject to possible redemption reflected in the consolidated balance sheets is reconciled in the following table:",
+   "prose_after": "Income Taxes\nThe Company accounts for income taxes under ASC 740, \u201cIncome Taxes.\u201d ASC 740 requires the recognition of deferred tax assets and liabilities for both the expected impact of differences between the unaudited condensed consolidated financial statements and tax basis of assets and liabilities and for the expected future tax benefit to be derived from tax loss and tax credit carry forwards. ASC 740 additionally requires a valuation allowance to be established when it is more likely than not that all or a portion of deferred tax assets\nwill not be realized. ASC 740-270-25-2 requires that an annual effective tax rate be determined, and such annual effective rate applied to year to date income in interim periods under ASC 740-270-30-5. As of December 31, 2023 and 2022, the Company\u2019s deferred tax asset had a full valuation allowance recorded against it.\nASC 740-270-25-2 requires that an annual effective tax rate be determined and such annual effective rate applied to year to date income in interim periods under ASC 740-270-30-5. The Company\u2019s effective tax rate was 0.0% and 6.1% for the years ended December 31, 2023 and 2022, respectively. The effective tax rate differs from the statutory tax rate of 21.0% for the years ended December 31, 2023 and 2022 due to the valuation allowance on the deferred tax assets.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1391,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "F",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1436,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "F",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Common Stock",
+     "",
+     "",
+     "Common Stock",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per of common stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allocation of net loss",
+     "",
+     "$",
+     "(4,413,866)",
+     "",
+     "$",
+     "(3,242,501)"
+    ],
+    [
+     "Denominator:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average common shares outstanding",
+     "",
+     "",
+     "4,096,353",
+     "",
+     "",
+     "12,741,219"
+    ],
+    [
+     "Basic and diluted net loss per common share",
+     "",
+     "$",
+     "(1.08)",
+     "",
+     "$",
+     "(0.25)"
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1457,
+    "end_line": 1472
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company complies with accounting and disclosure requirements of FASB ASC Topic 260, \u201cEarnings Per Share.\u201d Net loss per common stock is computed by dividing net loss by the weighted average number of common stocks outstanding for the period. Accretion associated with the redeemable shares of common stock is excluded from net loss per common stock as the redemption value approximates fair value.\nThe calculation of diluted loss per share does not consider the effect of the warrants issued in connection with the (i) Initial Public Offering, and (ii) the private placement (iii) the Bridge Notes and the Extension Note because the exercise of the warrants is contingent upon the occurrence of future events and the inclusion of such warrants would be anti-dilutive. The warrants are exercisable to purchase 12,256,999 shares of common stock in the aggregate. As of December 31, 2023 and 2022, the Company did not have any dilutive securities or other contracts that could, potentially, be exercised or converted into common stock and then share in the earnings of the Company. As a result, diluted net loss per common stock is the same as basic net loss per common stock for the periods presented.\nThe following table reflects the calculation of basic and diluted net loss per common stock (in dollars, except per share amounts):",
+   "prose_after": "Concentration of Credit Risk\nThe Company has significant cash balances at a financial institutions which throughout the year regularly exceeded the federally insured limited of $250,000. Any loss incurred or a lack of access to such funds could have a significant adverse impact on the Company\u2019s financial condition, results of operations, and cash flows.\nWarrant Instruments\nThe Company accounts for warrants as either equity-classified or liability-classified instruments based on an assessment of the warrant\u2019s specific terms and applicable authoritative guidance in FASB ASC 480, \u201cDistinguishing Liabilities from Equity\u201d (\u201cASC 480\u201d), and ASC 815, \u201cDerivatives and Hedging\u201d (\u201cASC 815\u201d). The assessment considers whether the warrants are freestanding financial instruments pursuant to ASC 480, meet the definition of a liability pursuant to ASC 480, and whether the warrants meet all of the requirements for equity classification under ASC 815, including whether the warrants are indexed to the Company\u2019s own common stock, among other conditions for equity classification. This assessment, which requires the use of professional judgment, is conducted at the time of warrant issuance and as of each subsequent quarterly period end date while the warrants are outstanding.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1453,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1490,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net operating loss carryforward",
+     "",
+     "$",
+     "461,882",
+     "",
+     "$",
+     "(379)"
+    ],
+    [
+     "Start-up/organization expenses",
+     "",
+     "",
+     "1,622,610",
+     "",
+     "",
+     "962,297"
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "",
+     "2,084,492",
+     "",
+     "",
+     "961,918"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "",
+     "(2,084,492)",
+     "",
+     "",
+     "(961,918)"
+    ],
+    [
+     "Deferred tax assets, net of allowance",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1857,
+    "end_line": 1872
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "(g) In case any event shall occur as to which the other provisions above are not strictly applicable or the failure to make any adjustment would result in an unfair enlargement or dilution of the purchase rights represented by the Extension Warrants in accordance with the essential intent and principles hereof, then, in each such case, the independent auditors of the Company shall give an opinion as to the adjustment, if any, on a basis consistent with the essential intent and principles above, necessary to preserve, without enlargement or dilution, the purchase rights presented by the Extension Warrants. Upon receipt of such opinion, the Company shall promptly make the adjustment described therein.\nThe Extension Warrants are governed by, and construed in accordance with, the laws of the State of Delaware, without regard to principles of conflicts of law. The Company and the holders of the Extension Warrants consent to the exclusive jurisdiction of the federal courts of the United States sitting in Delaware.\nNOTE 9. INCOME TAX\nThe Company\u2019s net deferred tax assets were offset with a valuation allowance resulting in zero deferred tax assets, net of allowance as of December 31, 2023 and 2022.\nThe Company\u2019s net deferred tax assets are as follows:",
+   "prose_after": "The income tax provision consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1849,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "For the years ended December 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "187,225"
+    ],
+    [
+     "Deferred",
+     "",
+     "",
+     "(926,728)",
+     "",
+     "",
+     "(741,805)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Deferred",
+     "",
+     "",
+     "(191,524)",
+     "",
+     "",
+     "(153,306)"
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "",
+     "1,118,252",
+     "",
+     "",
+     "895,111"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "187,225"
+    ]
+   ],
+   "caption_stack": [
+    "For the years ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1875,
+    "end_line": 1892
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "The income tax provision consists of the following:",
+   "prose_after": "As of December 31, 2023 and 2022, the Company has $1,822,738 and $0 of U.S. federal and state net operating loss carryovers available to offset future taxable income, respectively.\nIn assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the years ended December 31, 2023 and 2022, the change in the valuation allowance was $1,118,252 and $895,111, respectively.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1849,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "F",
+     "page_number": 33
+    },
+    "after": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 34
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "deferred_tax",
+    "aligned_family": "deferred_tax",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2023",
+     "",
+     "2022",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.0",
+     "%",
+     "21.0",
+     "%"
+    ],
+    [
+     "State taxes, net of federal tax benefit",
+     "",
+     "4.3",
+     "%",
+     "4.3",
+     "%"
+    ],
+    [
+     "Change in fair value of Bridge Note - bifurcated derivative",
+     "",
+     "0.7",
+     "%",
+     "(0.7)",
+     "%"
+    ],
+    [
+     "Change in fair value of PIPE forward contract derivative",
+     "",
+     "1.0",
+     "%",
+     "(1.4)",
+     "%"
+    ],
+    [
+     "Initial fair value of ELOC",
+     "",
+     "(1.2)",
+     "%",
+     "\u2014",
+     ""
+    ],
+    [
+     "Initial fair value of Additional Bridge",
+     "",
+     "0.1",
+     "%",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of Exchange Note",
+     "",
+     "(0.6)",
+     "%",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of ELOC",
+     "",
+     "0.0",
+     "%",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in fair value of Additional Bridge Note",
+     "",
+     "0.0",
+     "%",
+     "\u2014",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "(25.3)",
+     "%",
+     "(29.3)",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "0.0",
+     "%",
+     "(6.1)",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1900,
+    "end_line": 1919
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the years ended December 31, 2023 and 2022, the change in the valuation allowance was $1,118,252 and $895,111, respectively.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate at December 31, 2023 and 2022 is as follows:",
+   "prose_after": "The Company files income tax returns in the U.S. federal jurisdiction in various state and local jurisdictions and is subject to examination by the various taxing authorities.\nNOTE 10. FAIR VALUE MEASUREMENTS\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "tax_reconciliation",
+    "aligned_family": "tax_reconciliation",
+    "provenance": "signature",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Trading Securities",
+     "",
+     "Level",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "December 31, 2023",
+     "",
+     "Money Market Funds",
+     "",
+     "1",
+     "",
+     "$",
+     "1,368,637"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1932,
+    "end_line": 1937
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "On December 31, 2023, assets held in the Trust Account were comprised of $1,368,637 in money market funds primarily invested in U.S. Treasury securities. During the year ended December 31, 2023, the Company did withdrew an amount of $71,436 from the Trust Account to pay tax obligations and $6,796,063 in connection with redemptions.\nOn December 31, 2022, assets held in the Trust Account were comprised of $7,527,369 in money market funds primarily invested in U.S. Treasury securities. During the year ended December 31, 2022, the Company withdrew $110,472,254 as a result of an aggregate of 10,805,877 shares of common stock redeemed on October 20, 2022 and the Company did not withdraw any interest income from the Trust Account.\nThe following table presents information about the Company\u2019s assets that are measured at fair value on a recurring basis on December 31, 2023 and 2022 and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value. The fair value of securities held in the Trust on December 31, 2023 and , 2022 are as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Trading Securities",
+     "",
+     "Level",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "December 31, 2022",
+     "",
+     "Money Market Funds",
+     "",
+     "1",
+     "",
+     "$",
+     "7,527,369"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1938,
+    "end_line": 1943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The following table presents fair value information as of December 31, 2023 and 2022 of the Company\u2019s financial liabilities that were accounted for at fair value on a recurring basis and indicates the fair value hierarchy of the valuation techniques the Company utilized to determine such fair value:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1896,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "F",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2023",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "(Level 1)",
+     "",
+     "",
+     "(Level 2)",
+     "",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Extension Note \u2013 Bifurcated Derivative",
+     "",
+     "$",
+     "22,872",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "22,872"
+    ],
+    [
+     "ELOC",
+     "",
+     "$",
+     "203,720",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "203,720"
+    ],
+    [
+     "Additional Bridge Note",
+     "",
+     "$",
+     "102,726",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "102,726"
+    ],
+    [
+     "Exchange Note",
+     "",
+     "$",
+     "2,621,558",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "2,621,558"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1947,
+    "end_line": 1956
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following table presents fair value information as of December 31, 2023 and 2022 of the Company\u2019s financial liabilities that were accounted for at fair value on a recurring basis and indicates the fair value hierarchy of the valuation techniques the Company utilized to determine such fair value:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1990,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "December 31, 2022",
+     "",
+     "Fair Value",
+     "",
+     "",
+     "(Level 1)",
+     "",
+     "",
+     "(Level 2)",
+     "",
+     "",
+     "(Level 3)",
+     ""
+    ],
+    [
+     "Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PIPE Forward Contract",
+     "",
+     "$",
+     "170,666",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "170,666"
+    ],
+    [
+     "Bridge Note \u2013 Bifurcated Derivative",
+     "",
+     "$",
+     "364,711",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "364,711"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1957,
+    "end_line": 1964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Measurement\nBridge Note Bifurcated Derivative\nThe Company established the initial fair value for the Bridge Note Bifurcated Derivative as of October 5, 2022, which was the date the Bridge Note was executed. On December 31, 2022, the fair value was remeasured. As such, the Company used a Probability Weighted Expected Return Method (\u201cPWERM\u201d) that fair values the early termination/repayment features of the debt. The PWERM is a multi-step process in which value is estimated based on the probability-weighted present value of various future outcomes. The PWERM was used to value the Bridge Note Bifurcated Derivative for the initial periods and subsequent measurement periods. As a result of the Exchange Agreement on November 21, 2023, the Bridge Note was extinguished and the Derivative no longer exists.\nThe Bridge Note Bifurcated Derivative was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2022 due to the use of unobservable inputs. The key inputs into PWERM for the Bridge Note Bifurcated Derivative at the termination date of November 21, 2023 and as of December 31, 2022 were as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1990,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "November 21, 2023",
+     "",
+     "",
+     "December 31, 2022",
+     ""
+    ],
+    [
+     "CCC bond rates",
+     "",
+     "",
+     "n/a",
+     "",
+     "15.09",
+     "%"
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "5.38",
+     "%",
+     "n/a",
+     ""
+    ],
+    [
+     "Stock price",
+     "",
+     "$",
+     "12.64",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "",
+     "0.1",
+     "%",
+     "n/a",
+     ""
+    ],
+    [
+     "Weighted term",
+     "",
+     "",
+     "0.61",
+     "",
+     "n/a",
+     ""
+    ],
+    [
+     "Probability of early termination/repayment - business combination not completed",
+     "",
+     "",
+     "\u2014",
+     "%",
+     "5",
+     "%"
+    ],
+    [
+     "Probability of early termination/repayment - business combination completed, or PIPE completed",
+     "",
+     "",
+     "\u2014",
+     "%",
+     "95",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by March 31, 2023",
+     "",
+     "",
+     "\u2014",
+     "%",
+     "50",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by June 30, 2023",
+     "",
+     "",
+     "\u2014",
+     "%",
+     "50",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1973,
+    "end_line": 1986
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company established the initial fair value for the Bridge Note Bifurcated Derivative as of October 5, 2022, which was the date the Bridge Note was executed. On December 31, 2022, the fair value was remeasured. As such, the Company used a Probability Weighted Expected Return Method (\u201cPWERM\u201d) that fair values the early termination/repayment features of the debt. The PWERM is a multi-step process in which value is estimated based on the probability-weighted present value of various future outcomes. The PWERM was used to value the Bridge Note Bifurcated Derivative for the initial periods and subsequent measurement periods. As a result of the Exchange Agreement on November 21, 2023, the Bridge Note was extinguished and the Derivative no longer exists.\nThe Bridge Note Bifurcated Derivative was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2022 due to the use of unobservable inputs. The key inputs into PWERM for the Bridge Note Bifurcated Derivative at the termination date of November 21, 2023 and as of December 31, 2022 were as follows:",
+   "prose_after": "Extension Note Bifurcated Derivative\nThe Company established the initial fair value for the Extension Note Bifurcated Derivative as of May 5, 2023, which was the date the Extension Note was executed. On December 31, 2023, the fair value was remeasured. As such, the Company used a Discounted Cash Flow model (\u201cDCF\u201d) that fair values the early termination/repayment features of the debt. The DCF was used to value the Extension Note Bifurcated Derivative for the initial periods and subsequent measurement periods.\nThe Extension Note Bifurcated Derivative was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of May 5, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the DCF model for the Extension Note Bifurcated Derivative were as follows at May 5, 2023, initial value, and at December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1943,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "F",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1990,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "May 5, 2023",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "\u2014",
+     "%",
+     "5.13",
+     "%"
+    ],
+    [
+     "CCC bond rates",
+     "",
+     "12.96",
+     "%",
+     "14.69",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "0.25",
+     "",
+     "0.38",
+     ""
+    ],
+    [
+     "Probability of completing a business combination by August 30, 2023",
+     "",
+     "\u2014",
+     "%",
+     "25",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by September 30, 2023",
+     "",
+     "\u2014",
+     "%",
+     "75",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by December 31, 2023",
+     "",
+     "\u2014",
+     "%",
+     "\u2014",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by March 31, 2024",
+     "",
+     "100",
+     "%",
+     "\u2014",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1994,
+    "end_line": 2005
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Extension Note Bifurcated Derivative\nThe Company established the initial fair value for the Extension Note Bifurcated Derivative as of May 5, 2023, which was the date the Extension Note was executed. On December 31, 2023, the fair value was remeasured. As such, the Company used a Discounted Cash Flow model (\u201cDCF\u201d) that fair values the early termination/repayment features of the debt. The DCF was used to value the Extension Note Bifurcated Derivative for the initial periods and subsequent measurement periods.\nThe Extension Note Bifurcated Derivative was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of May 5, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the DCF model for the Extension Note Bifurcated Derivative were as follows at May 5, 2023, initial value, and at December 31, 2023:",
+   "prose_after": "PIPE Forward Contract\nThe Company established the initial fair value for the PIPE Forward Contract as of October 6, 2022, which was the date of the PIPE Securities Purchase Agreement was executed. On December 31, 2022, the fair value was remeasured. As such, the Company utilizing a PWERM. The PWERM is a multistep process in which value is estimated based on the probability-weighted present value of various future outcomes to value the PIPE Forward Contract for the initial periods and subsequent measurement periods. On July 11, 2023, each of the PIPE Investors provided notice to the Company that since the Outside Date Closing Condition was not met, the PIPE Investors were under no obligation to close the PIPE Financing. As a result, the forward contract is terminated and derecognized as of July 11, 2023.\nThe PIPE Forward Contract was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of December 31, 2022 due to the use of unobservable inputs. As a result of the termination of the PIPE Forward Contract on July 11, 2023, the PIPE Forward Contract was derecognized. The key inputs into the PWERM for the PIPE Forward Contract were as follows at June 30, 2023 (as there were no significant transactions or events related to the close of the business combination that would effect the valuation between June 30, 2023 and July 11, 2023, the date the contract was terminated) and December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1990,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 36
+    },
+    "after": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "June 30, 2023",
+     "",
+     "December 31, 2022",
+     "",
+     "October 6, 2022",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "5.43",
+     "%",
+     "4.76",
+     "%",
+     "4.00",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "0.23",
+     "",
+     "0.37",
+     "",
+     "0.61",
+     ""
+    ],
+    [
+     "Probability of completing a business combination",
+     "",
+     "75",
+     "%",
+     "95",
+     "%",
+     "90",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2012,
+    "end_line": 2019
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company established the initial fair value for the PIPE Forward Contract as of October 6, 2022, which was the date of the PIPE Securities Purchase Agreement was executed. On December 31, 2022, the fair value was remeasured. As such, the Company utilizing a PWERM. The PWERM is a multistep process in which value is estimated based on the probability-weighted present value of various future outcomes to value the PIPE Forward Contract for the initial periods and subsequent measurement periods. On July 11, 2023, each of the PIPE Investors provided notice to the Company that since the Outside Date Closing Condition was not met, the PIPE Investors were under no obligation to close the PIPE Financing. As a result, the forward contract is terminated and derecognized as of July 11, 2023.\nThe PIPE Forward Contract was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of December 31, 2022 due to the use of unobservable inputs. As a result of the termination of the PIPE Forward Contract on July 11, 2023, the PIPE Forward Contract was derecognized. The key inputs into the PWERM for the PIPE Forward Contract were as follows at June 30, 2023 (as there were no significant transactions or events related to the close of the business combination that would effect the valuation between June 30, 2023 and July 11, 2023, the date the contract was terminated) and December 31, 2022:",
+   "prose_after": "Additional Bridge Note\nThe Company established the initial fair value for the Additional Bridge as of November 21, 2023, which was the date the initial Additional Bridge Note was executed. On December 31, 2023, the fair value was remeasured. As such, the Company used a Monte Carlo model (\u201cMCM\u201d) that fair values the early termination/repayment features of the debt. The MCM was used to value the Additional Bridge Note for the initial periods and subsequent measurement periods.\nThe Additional Bridge Note was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the MCM model for the Additional Bridge Note were as follows at November 21, 2023, initial value, and at December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1990,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 36
+    },
+    "after": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "November 21, 2023",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "5.40",
+     "%",
+     "",
+     "5.48",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "",
+     "0.25",
+     "",
+     "",
+     "0.36",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "",
+     "95",
+     "%",
+     "",
+     "95",
+     "%"
+    ],
+    [
+     "Stock price",
+     "",
+     "$",
+     "2.00",
+     "",
+     "$",
+     "2.00",
+     ""
+    ],
+    [
+     "Debt discount rate",
+     "",
+     "",
+     "39.7",
+     "%",
+     "",
+     "41.5",
+     "%"
+    ],
+    [
+     "Probability of early termination/repayment - business combination not completed",
+     "",
+     "",
+     "20",
+     "%",
+     "",
+     "20",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by March 31, 2024",
+     "",
+     "",
+     "80",
+     "%",
+     "",
+     "80",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2026,
+    "end_line": 2037
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Additional Bridge Note\nThe Company established the initial fair value for the Additional Bridge as of November 21, 2023, which was the date the initial Additional Bridge Note was executed. On December 31, 2023, the fair value was remeasured. As such, the Company used a Monte Carlo model (\u201cMCM\u201d) that fair values the early termination/repayment features of the debt. The MCM was used to value the Additional Bridge Note for the initial periods and subsequent measurement periods.\nThe Additional Bridge Note was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the MCM model for the Additional Bridge Note were as follows at November 21, 2023, initial value, and at December 31, 2023:",
+   "prose_after": "Exchange Note\nThe Company established the initial fair value for the Exchange Note as of November 21, 2023, which was the date the Exchange Note was executed. On December 31, 2023, the fair value was remeasured. As such, the Company using the MCM that fair values the early termination/repayment features of the debt. The MCM was used to value the Exchange Note for the initial periods and subsequent measurement periods.\nThe Exchange Note was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the MCM model for the Exchange Note were as follows at November 21, 2023, initial value, and at December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1990,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 36
+    },
+    "after": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 37
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "November 21, 2023",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "5.21",
+     "%",
+     "",
+     "5.48",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "",
+     "0.71",
+     "",
+     "",
+     "0.61",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "",
+     "95",
+     "%",
+     "",
+     "96",
+     "%"
+    ],
+    [
+     "Stock price",
+     "",
+     "$",
+     "2.00",
+     "",
+     "$",
+     "2.00",
+     ""
+    ],
+    [
+     "Debt discount rate",
+     "",
+     "",
+     "47.54",
+     "%",
+     "",
+     "49.17",
+     "%"
+    ],
+    [
+     "Probability of completing a business combination by March 31, 2024",
+     "",
+     "",
+     "80",
+     "%",
+     "",
+     "80",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2045,
+    "end_line": 2055
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Exchange Note\nThe Company established the initial fair value for the Exchange Note as of November 21, 2023, which was the date the Exchange Note was executed. On December 31, 2023, the fair value was remeasured. As such, the Company using the MCM that fair values the early termination/repayment features of the debt. The MCM was used to value the Exchange Note for the initial periods and subsequent measurement periods.\nThe Exchange Note was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the MCM model for the Exchange Note were as follows at November 21, 2023, initial value, and at December 31, 2023:",
+   "prose_after": "ELOC/Equity Financing\nThe Company established the initial fair value for the ELOC as of November 21, 2023, which was the date the ELOC Equity Purchase Agreement was executed. On December 31, 2023, the fair value was remeasured. As such, the Company using the MCM that fair values the early termination/repayment features of the debt. The MCM was used to value the ELOC for the initial periods and subsequent measurement periods.\nThe ELOC was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the MCM model for the ELOC were as follows at November 21, 2023, initial value, and at December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2092,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "December 31, 2023",
+     "",
+     "",
+     "November 21, 2023",
+     ""
+    ],
+    [
+     "Risk-free interest rate",
+     "",
+     "",
+     "3.99",
+     "%",
+     "",
+     "4.57",
+     "%"
+    ],
+    [
+     "Expected term (years)",
+     "",
+     "",
+     "3.25",
+     "",
+     "",
+     "3.36",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "",
+     "96.4",
+     "%",
+     "",
+     "96.4",
+     "%"
+    ],
+    [
+     "Stock price",
+     "",
+     "$",
+     "2.00",
+     "",
+     "$",
+     "2.00",
+     ""
+    ],
+    [
+     "Probability of completing a business combination by March 31, 2024",
+     "",
+     "",
+     "80",
+     "%",
+     "",
+     "80",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2062,
+    "end_line": 2071
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "ELOC/Equity Financing\nThe Company established the initial fair value for the ELOC as of November 21, 2023, which was the date the ELOC Equity Purchase Agreement was executed. On December 31, 2023, the fair value was remeasured. As such, the Company using the MCM that fair values the early termination/repayment features of the debt. The MCM was used to value the ELOC for the initial periods and subsequent measurement periods.\nThe ELOC was classified within Level 3 of the fair value hierarchy at the initial measurement dates and as of November 21, 2023 and December 31, 2023 due to the use of unobservable inputs. The key inputs into the MCM model for the ELOC were as follows at November 21, 2023, initial value, and at December 31, 2023:",
+   "prose_after": "Level 3 Changes in Fair Value\nThe change in the fair value of the Level 3 financial liabilities for the period from contract inception through December 31, 2023 and 2022 is summarized as follows:\nLevel 3 Changes in Fair Value of Derivatives for the year ended December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2092,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Bridge Note -",
+     "",
+     "",
+     "Extension Note -",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Forward",
+     "",
+     "",
+     "Bifurcated",
+     "",
+     "",
+     "Bifurcated",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Contract",
+     "",
+     "",
+     "Derivative",
+     "",
+     "",
+     "Derivative",
+     ""
+    ],
+    [
+     "Fair value as of December 31, 2022",
+     "",
+     "$",
+     "170,666",
+     "",
+     "$",
+     "364,711",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Initial value of Extension Note \u2013 Bifurcated Derivative May 5, 2023",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "24,502"
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "",
+     "529,840",
+     "",
+     "",
+     "(120,267)",
+     "",
+     "",
+     "(1,630)"
+    ],
+    [
+     "Derecognized value at termination date",
+     "",
+     "",
+     "(700,506)",
+     "",
+     "",
+     "(244,444)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Fair value as of December 31, 2023",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "22,872"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2078,
+    "end_line": 2092
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Level 3 Changes in Fair Value\nThe change in the fair value of the Level 3 financial liabilities for the period from contract inception through December 31, 2023 and 2022 is summarized as follows:\nLevel 3 Changes in Fair Value of Derivatives for the year ended December 31, 2023:",
+   "prose_after": "Level 3 Change in Fair Value of Notes for the year ended December 31, 2023:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2037,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "F",
+     "page_number": 37
+    },
+    "after": {
+     "line": 2092,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 38
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Exchange",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Note",
+     "",
+     "",
+     "Bridge Note",
+     "",
+     "",
+     "ELOC",
+     ""
+    ],
+    [
+     "Fair value as of January 1, 2023",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Initial value of Extension Note, Additional Bridge Note and ELOC November 21, 2023",
+     "",
+     "",
+     "2,523,744",
+     "",
+     "",
+     "100,000",
+     "",
+     "",
+     "204,039"
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "",
+     "(97,814)",
+     "",
+     "",
+     "2,726",
+     "",
+     "",
+     "(318)"
+    ],
+    [
+     "Fair value as of December 31, 2023",
+     "",
+     "$",
+     "2,621,558",
+     "",
+     "$",
+     "102,726",
+     "",
+     "$",
+     "203,720"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2096,
+    "end_line": 2107
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Level 3 Change in Fair Value of Notes for the year ended December 31, 2023:",
+   "prose_after": "Level 3 Changes in Fair Value of Derivatives for the year ended December 31, 2022:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2092,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2141,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Bridge Note -",
+     "",
+     "",
+     "Extension Note -",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Forward",
+     "",
+     "",
+     "Bifurcated",
+     "",
+     "",
+     "Bifurcated",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Contract",
+     "",
+     "",
+     "Derivative",
+     "",
+     "",
+     "Derivative",
+     ""
+    ],
+    [
+     "Fair value at October 5, 2022 (Initial measurement)",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "278,404",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Fair value at October 6, 2022 (Initial measurement)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Change in valuation inputs or other assumptions",
+     "",
+     "",
+     "170,666",
+     "",
+     "",
+     "86,307",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Fair value as of December 31, 2022",
+     "",
+     "$",
+     "170,666",
+     "",
+     "$",
+     "364,711",
+     "",
+     "$",
+     "\u2014"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2110,
+    "end_line": 2123
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS AND FINANCIAL STATEMENT SCHEDULES"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "Level 3 Changes in Fair Value of Derivatives for the year ended December 31, 2022:",
+   "prose_after": "Transfers to/from Levels 1, 2 and 3 are recognized at the end of the reporting period in which a change in valuation technique or methodology occurs. There were no transfers to or from the various Levels for the years ended December 31, 2023 and 2022.\nNOTE 11. SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the consolidated balance sheet date up to the date that the consolidated financial statements were issued. Based upon this review, except as disclosed below, the Company did not identify any subsequent events that would have required adjustment or disclosure in the consolidated financial statements.\nOn January 22, 2024, the Company amended an unsecured promissory note in the aggregate principal amount of $165,000 to M2B Funding Corp., an affiliate of the Sponsor. As a result of the amendment, the Company was to repay the remaining amount due by February 8, 2024. On January 31, 2024, the note was paid in full for a total of $190,750.\nOn January 22, 2024, the Company and the Bridge Investor entered into a side letter to the registration rights agreement with the Bridge Investor dated October 5, 2022 whereby the Company agreed to register the shares of common stock underlying the Bridge Notes and the Additional Bridge Notes.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2092,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 38
+    },
+    "after": {
+     "line": 2141,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 39
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

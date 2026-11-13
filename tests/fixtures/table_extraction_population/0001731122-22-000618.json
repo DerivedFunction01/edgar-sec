@@ -1,0 +1,1930 @@
+{
+ "accession": "0001731122-22-000618",
+ "cik": "0001873964",
+ "form": "10-K",
+ "filing_date": "2022-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "e3645_10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cayman Islands",
+     "001-41274",
+     "N/A 00-0000000"
+    ],
+    [
+     "(State or other jurisdiction of incorporation)",
+     "(Commission File Number)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 20,
+    "end_line": 25
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2021\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______________ to _______________\nCounter Press Acquisition Corporation\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1981 Marcus Avenue, Suite 227\nLake Success, NY 11042\n(Address of principal executive offices and Zip Code)\n(718) 775-3013\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Units, each consisting of one Class A ordinary share and one-half of one redeemable warrant",
+     "CPAQU",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Class A ordinary shares, par value $0.0001 per share",
+     "CPAQ",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Redeemable warrants, each warrant exercisable for one Class A ordinary share at an exercise price of $11.50",
+     "CPAQW",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 38,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "1981 Marcus Avenue, Suite 227\nLake Success, NY 11042\n(Address of principal executive offices and Zip Code)\n(718) 775-3013\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Exchange Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant\n(1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 57,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page1"
+    ],
+    [
+     "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS",
+     "iv"
+    ],
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "Item 1. Business",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors",
+     "15"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments",
+     "54"
+    ],
+    [
+     "Item 2. Properties",
+     "54"
+    ],
+    [
+     "Item 3. Legal Proceedings",
+     "54"
+    ],
+    [
+     "Item 4. Mine Safety Disclosures",
+     "54"
+    ],
+    [
+     "PART II",
+     "55"
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "55"
+    ],
+    [
+     "Item 6. [Reserved]",
+     "57"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "57"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures About Market Risk",
+     "62"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data",
+     "63"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "63"
+    ],
+    [
+     "Item 9A. Controls and Procedures",
+     "63"
+    ],
+    [
+     "Item 9B. Other Information",
+     "63"
+    ],
+    [
+     "Item 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections",
+     "63"
+    ],
+    [
+     "PART III",
+     "64"
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance",
+     "64"
+    ],
+    [
+     "Item 11. Executive Compensation",
+     "73"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "73"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence",
+     "76"
+    ],
+    [
+     "Item 14. Principal Accountant Fees and Services",
+     "78"
+    ],
+    [
+     "PART IV",
+     "79"
+    ],
+    [
+     "Item 15. Exhibits and Financial Statement Schedules",
+     "79"
+    ],
+    [
+     "Item 16. Form 10-K Summary",
+     "80"
+    ],
+    [
+     "",
+     "F-1"
+    ]
+   ],
+   "caption_stack": [
+    "Page1"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Public shares",
+     "",
+     "",
+     "8,625,000"
+    ],
+    [
+     "Founder shares",
+     "",
+     "",
+     "2,156,250"
+    ],
+    [
+     "Underwriter Founder shares(1)",
+     "",
+     "",
+     "38,750"
+    ],
+    [
+     "Private shares",
+     "",
+     "",
+     "471,875"
+    ],
+    [
+     "Total shares",
+     "",
+     "",
+     "11,291,875"
+    ],
+    [
+     "Total funds in trust available for initial business combination (less deferred underwriting commissions)",
+     "",
+     "$",
+     "84,525,000"
+    ],
+    [
+     "Initial implied value per public share",
+     "",
+     "$",
+     "10.00"
+    ],
+    [
+     "Implied value per share upon consummation of initial business combination",
+     "",
+     "$",
+     "7.48"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 779,
+    "end_line": 789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors."
+    },
+    "note": null
+   },
+   "prose_before": "We offered our units at an offering price of $10.00 per unit and the amount deposited in our trust account is initially anticipated to be $10.00 per public share, implying an initial value of $10.00 per public share. However, prior to our initial public offering, our sponsor paid a nominal aggregate purchase price of $25,000 for the founders shares, or approximately $0.0116 per share. As a result, the value of your public shares may be significantly diluted upon the consummation of our initial business combination, when the founder shares are converted into public shares. For example, the following table shows the dilutive effect of the founders shares on the implied value of the public shares upon the consummation of our initial business combination, assuming that our equity value at that time is $87,543,750, which is the amount in cash we would have for our initial business combination in the trust account after giving effect to the payment of $3,018,750 of deferred underwriting commissions, no interest is earned on the funds held in the trust account, and no public shares are redeemed in connection with our initial business combination, and without taking into account any other potential impacts on our valuation at such time, such as the trading price of our public shares, the business combination transaction costs any equity issued or cash paid to the target\u2019s equityholders or other third parties, or the target\u2019s business itself, including its assets, liabilities, management and prospects, or the impact of our public and private warrants. At such valuation, each Class A ordinary share would have an implied value of $7.48 per share upon consummation of our initial business combination, which would be a 25.2% decrease as compared to the initial implied value per public share of $10.00 (the price per unit in our initial public offering, assuming no value is ascribed to the public warrants).",
+   "prose_after": "(1) We issued these underwriter founder shares to BTIG and EarlyBirdCapital prior to the consummation of the IPO.\nOur independent directors have a financial interest in our founder shares, either directly or through our sponsor. They acquired that interest at no cost. As a result, our independent directors have a financial interest in consummating an initial business combination, even if our shares decline in value after that business combination and our public shareholders experience losses in connection with their investment. However, if we do not consummate our initial business combination, the founder shares would be worthless. The financial interest of our independent directors in the founder shares may give rise to a potential conflict of interest in considering potential target businesses. You should consider this potential conflict of interest in deciding whether to invest in our initial public offering and whether to redeem your shares at the time of our initial business combination.",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 778,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Directors and executive officers name",
+     "Age",
+     "",
+     "Title"
+    ],
+    [
+     "Paul Conway",
+     "",
+     "52",
+     "Chief Executive Officer, Director"
+    ],
+    [
+     "Michael Kalt",
+     "",
+     "47",
+     "Chief Financial Officer, Director"
+    ],
+    [
+     "Randy Frankel",
+     "",
+     "65",
+     "Chairman"
+    ],
+    [
+     "Andrew Friedman",
+     "",
+     "45",
+     "Director"
+    ],
+    [
+     "Julie Uhrman",
+     "",
+     "47",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1364,
+    "end_line": 1375
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "This Report does not include a report of management\u2019s assessment regarding internal control over financial reporting or an attestation report of our independent registered public accounting firm due to a transition period established by rules of the SEC for newly public companies.\nChanges in Internal Control over Financial Reporting\nThere were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) of the Exchange Act) during the most recent fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nItem 9B. Other Information.\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNot applicable.\nPART III\nItem 10. Directors, Executive Officers and Corporate Governance.\nOur directors and executive officers are as follows:",
+   "prose_after": "Paul Conway is the Co-Founder of Pacific Media Group, a leading financier and distributor of content, such as Ad Astra, which it recently produced. Other films financed includes The Martian, The Greatest Showman, War of the Planet of the Apes, X-Men Apocalypse and Alien: Covenant. Pacific Media Group owns a leading animated content library in China including rights for the popular series Wild Kratts, Gigantosaurus and Garfield.\nPacific Media Group is also a leading investor in European football. In June 2016, Mr. Conway was one of the leaders of a group that acquired OGC Nice. At OGC Nice, under Conway\u2019s leadership, significant player trading profits were generated and reinvested in the squad, making it more competitive within France and internationally, including the club\u2019s first appearance in the UEFA Champions League. As a result of the significant improvements to OGC Nice, PMG was able to exit the club in August 2019.\nIn December 2017, Mr. Conway led the acquisition of Barnsley Football Club and brought the same strategy of commitment to youth, data analytics and commercialization to England. In the first full year of ownership, the club was automatically promoted to the English Championship. In the 2020-21 English Championship season, Barnsley secured a place in the playoff for promotion to the English Premier League with the youngest squad in the league. Mr. Conway currently serves as Co-Chairman of Barnsley Football Club.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1357,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 63
+    },
+    "after": {
+     "line": 1390,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 64
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "Number of Ordinary Shares Beneficially Owned",
+     "",
+     "",
+     "Approximate Percentage of Issued and Outstanding Ordinary Shares(2)",
+     "",
+     ""
+    ],
+    [
+     "5% or Greater Shareholders(3)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Counter Press Sponsor LLC(4)",
+     "",
+     "2,592,666",
+     "(5)",
+     "",
+     "22.9",
+     "%"
+    ],
+    [
+     "Directors and Executive Officers",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paul Conway (4)",
+     "",
+     "2,592,666",
+     "(5)",
+     "",
+     "22.9",
+     "%"
+    ],
+    [
+     "Michael Kalt(4)",
+     "",
+     "2,592,666",
+     "(5)",
+     "",
+     "22.9",
+     "%"
+    ],
+    [
+     "Randy Frankel",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Andrew Friedman",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Julie Uhrman",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "All officers and director as a group (five individuals)",
+     "",
+     "2,592,666",
+     "(5)",
+     "",
+     "22.9",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1631,
+    "end_line": 1645
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters."
+    },
+    "note": null
+   },
+   "prose_before": "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.\nThe following table sets forth information regarding the beneficial ownership of our Class A ordinary shares as of the date of this Annual Report by:\n\u25cf each person known by us to be the beneficial owner of more than 5% of our issued and outstanding Class A ordinary shares;\n\u25cf each of our officers and directors; and\n\u25cf all our officers and directors as a group.\nBeneficial ownership is presented in accordance with Rule 13d-3 under the Securities Exchange Act of 1934, as amended, and generally reflects voting and/or investment power with respect to our ordinary shares. Unless otherwise indicated, we believe that all persons named in the table have sole voting and investment power with respect to all ordinary shares beneficially owned by them. The following table does not reflect record or beneficial ownership of public or private warrants, as those warrants are not exercisable within 60 days of the date of this Annual Report.",
+   "prose_after": "* Less than one percent.\n(1) Unless otherwise noted, the business address of each of the following entities or individuals is c/o 1981 Marcus Avenue, Suite 227, Lake Success, NY 11042.\n(2) Beneficial ownership percentage is calculated on the basis of 11,291,875 ordinary shares as of March 30, 2022.\n(3) Certain additional shareholders that have filed statements of beneficial ownership on Schedule 13G may be deemed to be the beneficial owners of 5% or more of our issued and outstanding Class A ordinary shares, including: Beryl Capital Management LLC and affiliated persons/entities (beneficially owning 745,000 Class A ordinary shares) and 683 Capital Management, LLC and affiliated persons/entities (beneficially owning 745,000 Class A ordinary shares).\n(4) Counter Press Sponsor LLC, our sponsor, is the record holder of the shares reported herein. Paul Conway and Michael Kalt have voting and dispositive power over the shares owned by our sponsor.\n(5) These shares consist of 2,156,250 founders shares and 436,416 private shares contained in the private units being purchased by the sponsor and/or its affiliates in a private placement that is occurring concurrently with the closing of our initial public offering.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1608,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 72
+    },
+    "after": {
+     "line": 1650,
+     "token": "PAGE_BREAK",
+     "id": 80,
+     "namespace": "arabic",
+     "page_number": 73
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Balance Sheet",
+     "F-3"
+    ],
+    [
+     "Statement of Operations",
+     "F-4"
+    ],
+    [
+     "Statement of Changes in Shareholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "Statement of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1777,
+    "end_line": 1789
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "All Other Fees. We did not pay UHY for other services for the period from May 19, 2021 (inception) through December 31, 2021.\nPre-Approval Policy\nOur audit committee was formed upon the effectiveness of our initial registration statement under the Securities Act. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nItem 15. Exhibits and Financial Statement Schedules.\n(a) The following documents are filed as part of this Form 10-K:\n(1) Financial Statements:",
+   "prose_after": "(2) Financial Statement Schedules:\nNone.\n(3) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1768,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 78
+    },
+    "after": {
+     "line": 1827,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 79
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "1.1",
+     "Underwriting Agreement, dated February 8, 2022, by and between the Company and BTIG, LLC and EarlyBirdCapital, Inc., as underwriters.(1)"
+    ],
+    [
+     "3.1",
+     "Amended and Restated Memorandum and Articles of Association of the Company.(2)"
+    ],
+    [
+     "4.1",
+     "Specimen Unit Certificate.(3)"
+    ],
+    [
+     "4.2",
+     "Specimen Class A Ordinary Share Certificate.(4)"
+    ],
+    [
+     "4.3",
+     "Specimen Warrant Certificate.(5)"
+    ],
+    [
+     "4.4",
+     "Warrant Agreement, dated February 8, 2022, by and between the Company and Continental Stock Transfer & Trust Company, as warrant agent.(6)"
+    ],
+    [
+     "4.5",
+     "Description of Securities Registered Pursuant to Section 12 of the Securities Exchange Act of 1934, as amended*"
+    ],
+    [
+     "10.1",
+     "Letter Agreement, dated February 8, 2022, by and among the Company, the Sponsor and the Company\u2019s officers and directors.(7)"
+    ],
+    [
+     "10.2",
+     "Investment Management Trust Agreement, dated February 8, 2022, by and between the Company and Continental Stock Transfer & Trust Company, as trustee.(8)"
+    ],
+    [
+     "10.3",
+     "Registration Rights Agreement, dated February 8, 2022, by and among the Company, the Sponsor and certain other security holders named therein.(9)"
+    ],
+    [
+     "10.4",
+     "Administrative Services Agreement, dated February 8, 2022, by and between the Company and the Sponsor.(10)"
+    ],
+    [
+     "10.5.1",
+     "Private Units Purchase Agreement, dated February 8, 2022, by and between the Company and the Sponsor.(11)"
+    ],
+    [
+     "10.5.2",
+     "Private Units Purchase Agreement, dated February 8, 2022, by and between the Company and BTIG, LLC.(12)"
+    ],
+    [
+     "10.5.3",
+     "Private Units Purchase Agreement, dated February 8, 2022, by and between the Company and EarlyBirdCapital, Inc.(13)"
+    ],
+    [
+     "10.6",
+     "Indemnity Agreement, dated February 8, 2022, between the Company and Paul Conway.(14)"
+    ],
+    [
+     "10.7",
+     "Indemnity Agreement, dated February 8, 2022, between the Company and Michael Kalt.(15)"
+    ],
+    [
+     "10.8",
+     "Indemnity Agreement, dated February 8, 2022, between the Company and Randy Frankel.(16)"
+    ],
+    [
+     "10.9",
+     "Indemnity Agreement, dated February 8, 2022, between the Company and Andrew Friedman.(17)"
+    ],
+    [
+     "10.10",
+     "Indemnity Agreement, dated February 8, 2022, between the Company and Julie Uhrman.(18)"
+    ],
+    [
+     "10.11",
+     "Promissory Note, executed on June 21, 2021, issued by the Registrant to Counter Press Sponsor LLC.(19)"
+    ],
+    [
+     "10.12",
+     "First Amendment to Promissory Note, executed on December 17, 2021, issued by the Registrant to Counter Press Sponsor LLC.(20)"
+    ],
+    [
+     "10.13",
+     "Form of Share Purchase Agreement, between the Registrant and BTIG, LLC.(21)"
+    ],
+    [
+     "10.14",
+     "Form of Share Purchase Agreement, between the Registrant and EarlyBirdCapital, Inc.(22)"
+    ],
+    [
+     "14.1",
+     "Code of Ethics*"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1798,
+    "end_line": 1826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules:\nNone.\n(3) Exhibits\nWe hereby file as part of this Report the exhibits listed in the attached Exhibit Index.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1768,
+     "token": "PAGE_BREAK",
+     "id": 85,
+     "namespace": "arabic",
+     "page_number": 78
+    },
+    "after": {
+     "line": 1827,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 79
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "31.1",
+     "Certification of the Registrant\u2019s Chief Executive Officer (Principal Executive Officer) Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "31.2",
+     "Certification of the Registrant\u2019s Chief Financial Officer (Principal Financial and Accounting Officer) Pursuant to Rules 13a-14(a) and 15d-14(a) under the Securities Exchange Act of 1934, as Adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002.*"
+    ],
+    [
+     "32.1",
+     "Certification of the Registrant\u2019s Chief Executive Officer (Principal Executive Officer) Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.**"
+    ],
+    [
+     "32.2",
+     "Certification of the Registrant\u2019s Chief Financial Officer (Principal Financial and Accounting Officer) Pursuant to 18 U.S.C. Section 1350, as Adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002.**"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Label Linkbase"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase"
+    ],
+    [
+     "104",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1828,
+    "end_line": 1845
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(1) Incorporated herein by reference to Exhibit 1.1 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on February 14, 2022.\n(2) Incorporated herein by reference to Exhibit 3.1 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on February 14, 2022.\n(3) Incorporated herein by reference to Exhibit 4.1 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n(4) Incorporated herein by reference to Exhibit 4.2 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n(5) Incorporated herein by reference to Exhibit 4.3 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n(6) Incorporated herein by reference to Exhibit 4.1 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on February 14, 2022.\n(7) Incorporated herein by reference to Exhibit 10.1 of the Registrant\u2019s Current Report on Form 8-K filed with the SEC on February 14, 2022.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1827,
+     "token": "PAGE_BREAK",
+     "id": 86,
+     "namespace": "arabic",
+     "page_number": 79
+    },
+    "after": {
+     "line": 1876,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 80
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Counter Press Acquisition Corporation",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Paul Conway"
+    ],
+    [
+     "Name:",
+     "Paul Conway"
+    ],
+    [
+     "Title:",
+     "Chief Executive Officer"
+    ]
+   ],
+   "caption_stack": [
+    "Counter Press Acquisition Corporation"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1881,
+    "end_line": 1889
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "(19) Incorporated herein by reference to Exhibit 10.1 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n(20) Incorporated herein by reference to Exhibit 10.8 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n(21) Incorporated herein by reference to Exhibit 10.9 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n(22) Incorporated herein by reference to Exhibit 10.10 of the Registrant\u2019s Registrant Statement on Form S-1 (Registration No. 333- 261788) filed with the SEC on January 27, 2022.\n* Filed herewith.\n** Furnished herewith.\nItem 16. Form 10-K Summary.\nNone.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Act of 1934, as amended, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized, on March 30, 2022.",
+   "prose_after": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1876,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1917,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Position",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Paul Conway",
+     "Chief Executive Officer",
+     "March 30, 2021"
+    ],
+    [
+     "Paul Conway",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael Kalt",
+     "Chief Financial Officer",
+     "March 30, 2021"
+    ],
+    [
+     "Michael Kalt",
+     "(Principal Financial and Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Julie Uhrman",
+     "Director",
+     "March 30, 2021"
+    ],
+    [
+     "Julie Uhrman",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Randy Frankel",
+     "Director",
+     "March 30, 2021"
+    ],
+    [
+     "Randy Frankel",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Andrew Friedman",
+     "Director",
+     "March 30, 2021"
+    ],
+    [
+     "Andrew Friedman",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1892,
+    "end_line": 1916
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "Pursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed by the following persons in the capacities and on the dates indicated.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1876,
+     "token": "PAGE_BREAK",
+     "id": 87,
+     "namespace": "arabic",
+     "page_number": 80
+    },
+    "after": {
+     "line": 1917,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 81
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "Balance Sheet",
+     "F-3"
+    ],
+    [
+     "Statement of Operations",
+     "F-4"
+    ],
+    [
+     "Statement of Changes in Shareholder\u2019s Equity",
+     "F-5"
+    ],
+    [
+     "Statement of Cash Flows",
+     "F-6"
+    ],
+    [
+     "Notes to Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1921,
+    "end_line": 1933
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Shareholder of Counter Press Acquisition Corporation\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Counter Press Acquisition Corporation (the \u201cCompany\u201d) as of December 31, 2021, and the related statements of operations, shareholder\u2019s equity, and cash flows as of and for the period from May 19, 2021 (inception) to December 31, 2021, and the related notes (collectively referred to as the financial statements). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2021, and the results of its operations and its cash flows for the period from May 19, 2021 (inception) to December 31, 2021, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1917,
+     "token": "PAGE_BREAK",
+     "id": 88,
+     "namespace": "arabic",
+     "page_number": 81
+    },
+    "after": {
+     "line": 1933,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ UHY LLP",
+     ""
+    ],
+    [
+     "We have served as the Company\u2019s auditor since 2021.",
+     ""
+    ],
+    [
+     "Melville, New York",
+     ""
+    ],
+    [
+     "March 30, 2022",
+     ""
+    ],
+    [
+     "PCAOB ID Number 1195",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ UHY LLP",
+    "We have served as the Company\u2019s auditor since 2021.",
+    "Melville, New York",
+    "March 30, 2022",
+    "PCAOB ID Number 1195"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1950,
+    "end_line": 1957
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB and in accordance with auditing standards generally accepted in the United States of America. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit, we are required to obtain an understanding of internal control over financial reporting, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.",
+   "prose_after": "BALANCE SHEET\nDECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1933,
+     "token": "PAGE_BREAK",
+     "id": 89,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1957,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering costs",
+     "",
+     "$",
+     "109,064",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "$",
+     "109,064",
+     ""
+    ],
+    [
+     "Liabilities and Shareholder\u2019s Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Promissory Note - Related Party",
+     "",
+     "$",
+     "52,879",
+     ""
+    ],
+    [
+     "Accrued offering costs and expenses",
+     "",
+     "",
+     "38,102",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "",
+     "90,981",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shareholder\u2019s Equity",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preference shares, $0.0001 par value;1,000,000 shares authorized; none issued and outstanding",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A ordinary shares, $0.0001 par value; 200,000,000 shares authorized; none issued and outstanding (1)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B ordinary shares, $0.0001 par value; 20,000,000 shares authorized; 2,156,250 shares issued and outstanding (2)",
+     "",
+     "",
+     "216",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "",
+     "24,784",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "",
+     "(6,917)",
+     ""
+    ],
+    [
+     "Total shareholder\u2019s equity",
+     "",
+     "",
+     "18,083",
+     ""
+    ],
+    [
+     "Total Liabilities and Shareholder\u2019s Equity",
+     "",
+     "$",
+     "109,064",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1963,
+    "end_line": 1988
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "BALANCE SHEET\nDECEMBER 31, 2021",
+   "prose_after": "(1) This number does not include 38,750 Class A ordinary shares (\u201cUnderwriter Founder Shares\u201d) granted to the underwriters in advance of the IPO but subsequent to the date of these financial statements (see Notes 7 and 8).\n(2) This number includes an aggregate of up to 281,250 Class B ordinary shares subject to forfeiture if the over-allotment option is not exercised in full or in part by the underwriters (see Note 5). The underwriter founder shares are not subject to forfeiture if the underwriters\u2019 over-allotment option is not exercised.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\nFOR THE PERIOD FROM MAY 19, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1957,
+     "token": "PAGE_BREAK",
+     "id": 90,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1993,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Formation cost",
+     "",
+     "$",
+     "6,917",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(6,917)",
+     ""
+    ],
+    [
+     "Weighted average ordinary shares outstanding, basic and diluted (1)",
+     "",
+     "",
+     "1,875,000",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1999,
+    "end_line": 2009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": ")."
+    }
+   },
+   "prose_before": "(1) This number does not include 38,750 Class A ordinary shares (\u201cUnderwriter Founder Shares\u201d) granted to the underwriters in advance of the IPO but subsequent to the date of these financial statements (see Notes 7 and 8).\n(2) This number includes an aggregate of up to 281,250 Class B ordinary shares subject to forfeiture if the over-allotment option is not exercised in full or in part by the underwriters (see Note 5). The underwriter founder shares are not subject to forfeiture if the underwriters\u2019 over-allotment option is not exercised.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\nFOR THE PERIOD FROM MAY 19, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "(1) This number excludes an aggregate of up to 281,250 Class B ordinary shares subject to forfeiture if the over-allotment option is not exercised in full or in part by the underwriters (see Note 5). It also excludes 38,750 Underwriter Founder Shares issued to the underwriters in advance of the IPO but subsequent to the date of these financial statements (see Notes 7 and 8). The underwriter founder shares are not subject to forfeiture if the underwriters\u2019 over-allotment option is not exercised.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDER\u2019S EQUITY\nFOR THE PERIOD FROM MAY 19, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1993,
+     "token": "PAGE_BREAK",
+     "id": 91,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 2013,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A",
+     "",
+     "",
+     "",
+     "Class B",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ordinary Shares",
+     "",
+     "",
+     "",
+     "Ordinary Shares",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Shareholder\u2019s",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Shares(1)",
+     "",
+     "Amounts",
+     "",
+     "Shares(2)",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     ""
+    ],
+    [
+     "Balance as of May 19, 2021 (inception)",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class B ordinary shares issued to Sponsor",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,156,250",
+     "",
+     "216",
+     "",
+     "24,784",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,000",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(6,917)",
+     "",
+     "",
+     "(6,917)",
+     ""
+    ],
+    [
+     "Balance as of December 31, 2021",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "2,156,250",
+     "$",
+     "216",
+     "$",
+     "24,784",
+     "$",
+     "(6,917)",
+     "",
+     "",
+     "18,083",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2019,
+    "end_line": 2033
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": ")."
+    }
+   },
+   "prose_before": "(1) This number excludes an aggregate of up to 281,250 Class B ordinary shares subject to forfeiture if the over-allotment option is not exercised in full or in part by the underwriters (see Note 5). It also excludes 38,750 Underwriter Founder Shares issued to the underwriters in advance of the IPO but subsequent to the date of these financial statements (see Notes 7 and 8). The underwriter founder shares are not subject to forfeiture if the underwriters\u2019 over-allotment option is not exercised.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN SHAREHOLDER\u2019S EQUITY\nFOR THE PERIOD FROM MAY 19, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "(1) This number does not include 38,750 Class A ordinary shares (\u201cUnderwriter Founder Shares\u201d) granted to the underwriters in advance of the IPO (see Notes 7 and 8).\n(2) This number includes an aggregate of up to 281,250 Class B ordinary shares subject to forfeiture if the over-allotment option is not exercised in full or in part by the underwriters (see Note 5). The underwriter founder shares are not subject to forfeiture if the underwriters\u2019 over-allotment option is not exercised.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE PERIOD FROM MAY 19, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2013,
+     "token": "PAGE_BREAK",
+     "id": 92,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "$",
+     "(6,917)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Formation cost paid by the Sponsor",
+     "",
+     "",
+     "6,917",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net change in cash",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash, end of the period",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Supplemental disclosure of non-cash investing and financing activities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deferred offering costs paid by Sponsor in exchange for issuance of Class B ordinary shares",
+     "",
+     "$",
+     "18,323",
+     ""
+    ],
+    [
+     "Deferred offering costs included in accrued offerings costs and expenses",
+     "",
+     "$",
+     "38,102",
+     ""
+    ],
+    [
+     "Deferred offering costs paid by Sponsor under the promissory note",
+     "",
+     "",
+     "52,879",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash Flows from Operating Activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2044,
+    "end_line": 2065
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": ")."
+    }
+   },
+   "prose_before": "(1) This number does not include 38,750 Class A ordinary shares (\u201cUnderwriter Founder Shares\u201d) granted to the underwriters in advance of the IPO (see Notes 7 and 8).\n(2) This number includes an aggregate of up to 281,250 Class B ordinary shares subject to forfeiture if the over-allotment option is not exercised in full or in part by the underwriters (see Note 5). The underwriter founder shares are not subject to forfeiture if the underwriters\u2019 over-allotment option is not exercised.\nThe accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE PERIOD FROM MAY 19, 2021 (INCEPTION) THROUGH DECEMBER 31, 2021",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nNOTES TO FINANCIAL STATEMENTS\nNote 1\u2014Organization, Business Operation and Going Concern\nCounter Press Acquisition Corporation (the \u201cCompany\u201d) is a blank check company incorporated as a Cayman Islands exempted company on May 19, 2021 whose purpose is to enter into a merger, share exchange, asset acquisition, share purchase, recapitalization, reorganization or other similar Business Combination with one or more businesses or entities (the \u201cBusiness Combination\u201d). The Company has not selected any specific Business Combination target and it has not (nor has anyone on its behalf), initiated any substantive discussions, directly or indirectly, with any Business Combination target.\nAs of December 31, 2021, the Company had not commenced any operations. All activity for the period from May 19, 2021 (inception) through December 31, 2021 relates to the Company\u2019s formation and the initial public Offering (\u201cInitial Public Offering\u201d or \u201cIPO\u201d). The Company will not generate any operating revenues until after the completion of its initial Business Combination, at the earliest. The Company will generate non-operating income in the form of interest income on cash and cash equivalents from the proceeds derived from the Initial Public Offering.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2038,
+     "token": "PAGE_BREAK",
+     "id": 93,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 2067,
+     "token": "PAGE_BREAK",
+     "id": 94,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  }
+ ]
+}

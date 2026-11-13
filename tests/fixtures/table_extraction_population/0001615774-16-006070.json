@@ -1,0 +1,7313 @@
+{
+ "accession": "0001615774-16-006070",
+ "cik": "0001472847",
+ "form": "10-K/A",
+ "filing_date": "2016-06-24",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "s103547_10ka.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Nevada",
+     "26-2883037"
+    ],
+    [
+     "(State or jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 24
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-K/A\nAmendment No. 1\n(Mark One)\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 or 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended June 30, 2015\n[ ] TRANSITION REPORT UNDER SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nHARRISON VICKERS AND WATERMAN INC. (Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "712 U.S. Highway 1,\n\n\n\nSuite 200\n\n\n\nNorth Palm Beach, FL 33408",
+     "(561) 227-2727"
+    ],
+    [
+     "Address of registrant\u2019s Principal executive offices including Area code",
+     "Registrant\u2019s telephone number"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 34
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Securities registered under Section 12(b) of the Exchange Act:\nNone\nSecurities registered under Section 12(g) of the Exchange Act:\nCommon stock, par value $.0001 per share\n(Title of Class)\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act.\nYes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\nYes [ ] No [X]\nIndicate by check mark whether the issuer",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Business",
+     "4"
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "10"
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "21"
+    ],
+    [
+     "Item 2",
+     "Properties",
+     "21"
+    ],
+    [
+     "Item 3",
+     "Legal Proceedings",
+     "21"
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 5.",
+     "Market for Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "22"
+    ],
+    [
+     "ITEM 6.",
+     "Selected Financial Data",
+     "25"
+    ],
+    [
+     "ITEM 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "25"
+    ],
+    [
+     "ITEM 7A.",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "29"
+    ],
+    [
+     "ITEM 8.",
+     "Financial Statements and Supplementary Data",
+     "29"
+    ],
+    [
+     "ITEM 9.",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "29"
+    ],
+    [
+     "ITEM 9A.",
+     "Controls and Procedures",
+     "29"
+    ],
+    [
+     "ITEM 9B.",
+     "Other Matters",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 10.",
+     "Directors, Executive Officers, and Corporate Governance",
+     "31"
+    ],
+    [
+     "ITEM 11.",
+     "Executive Compensation",
+     "32"
+    ],
+    [
+     "ITEM 12.",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "33"
+    ],
+    [
+     "ITEM 13.",
+     "Certain Relationships and Related Transactions and Director Independence",
+     "34"
+    ],
+    [
+     "ITEM 14.",
+     "Principal Accounting Fees and Services",
+     "34"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 15",
+     "Exhibits, Financial Statement Schedules",
+     "35"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "36"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 83,
+    "end_line": 120
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer  [ ]                                                 Accelerated filer          [ ]\nNon-accelerated filer    [ ]  (Do not check if a smaller reporting company)  Smaller reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nAggregate market value of the voting and non-voting common equity held by non-affiliates of the registrant as of the last business day of the most recently completed second fiscal quarter (December 31, 2014) was approximately $99,703 based on $.0026, the price at which the registrant\u2019s common stock was last sold as of that date.\nAs of September 14, 2015, the registrant had 126,337,367 shares of common stock outstanding in which an affiliate owned 87,990,000 shares.\nTransitional Small Business Disclosure Format (check one): Yes [ ] No [X]\nDocuments incorporated by reference: None\nTABLE OF CONTENTS",
+   "prose_after": "As used in this Form 10-K, references to \u201cthe Company,\u201d \u201cwe,\u201d \u201cour,\u201d \u201cours\u201d and \u201cus\u201d refers to Harrison Vickers and Waterman, Inc., unless otherwise indicated. In addition, references to \u201cfinancial statements\u201d are to our financial statements except as the context otherwise requires.\nPART I.\nEXPLANATORY NOTE\nThis amendment Number 1 on Form 10-K/A amends the Annual Report on Form 10-K for the fiscal year ended June 30, 2015 which the Registrant previously filed with the Securities Exchange Commission (SEC) on September 15, 2015. The Registrant is filing the amendment for the purpose of correcting the acquisition entries of Attitude Beer Holding Co. (ABH) on April 21, 2015. Previously recorded goodwill has been eliminated, and all expenditures associated with the financing that were previously recorded as deferred financing costs have been eliminated and recorded to expense. In addition, we are required to report the Statement of Operations for the acquired ABH from ABA\u2019s inception date of December 1, 2014 instead of the acquired April 21, 2015 sale date.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 123,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Restated",
+     "",
+     "",
+     "Previous",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance",
+     "",
+     "",
+     "Balance",
+     "",
+     "",
+     "Changes",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance Sheet",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Deferred financing costs",
+     "",
+     "-",
+     "",
+     "",
+     "67,889",
+     "",
+     "",
+     "(67,889)",
+     ""
+    ],
+    [
+     "  Goodwill",
+     "",
+     "-",
+     "",
+     "",
+     "4,038,945",
+     "",
+     "",
+     "(4,038,945)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Assets",
+     "",
+     "2,594,045",
+     "",
+     "",
+     "6,700,879",
+     "",
+     "",
+     "(4,106,834)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Additional paid-in capital",
+     "",
+     "637,267",
+     "",
+     "",
+     "1,667,868",
+     "",
+     "",
+     "(1,030,601)",
+     ""
+    ],
+    [
+     "  Accumulated deficit",
+     "",
+     "(4,159,946)",
+     "",
+     "",
+     "(1,948,727)",
+     "",
+     "",
+     "(2,211,219)",
+     ""
+    ],
+    [
+     "    Non-controlling interest (was Previously reported as a liability under minority interest).  Now it will be recorded near the stockholders' deficit section",
+     "",
+     "17,995",
+     "",
+     "",
+     "883,009",
+     "",
+     "",
+     "(865,014)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statement of Operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation and amortization",
+     "",
+     "24,735",
+     "",
+     "",
+     "31,935",
+     "",
+     "",
+     "(7,200)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total operating expenses",
+     "",
+     "581,308",
+     "",
+     "",
+     "588,508",
+     "",
+     "",
+     "(7,200)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Other (expense)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest expense",
+     "",
+     "(1,409,531)",
+     "",
+     "",
+     "(295,103)",
+     "",
+     "",
+     "(1,114,428)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Other (expense), net",
+     "",
+     "(3,422,604)",
+     "",
+     "",
+     "(2,308,176)",
+     "",
+     "",
+     "(1,114,428)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Loss before income tax and non- controlling interest",
+     "",
+     "(3,520,342)",
+     "",
+     "",
+     "(2,413,114)",
+     "",
+     "",
+     "(1,107,228)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Non -controlling interest (expense)",
+     "",
+     "(34,827)",
+     "",
+     "",
+     "1,069,164",
+     "",
+     "",
+     "(1,103,991)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "",
+     "(3,555,169)",
+     "",
+     "",
+     "(1,343,950)",
+     "",
+     "",
+     "(2,211,219)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 132,
+    "end_line": 174
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "As used in this Form 10-K, references to \u201cthe Company,\u201d \u201cwe,\u201d \u201cour,\u201d \u201cours\u201d and \u201cus\u201d refers to Harrison Vickers and Waterman, Inc., unless otherwise indicated. In addition, references to \u201cfinancial statements\u201d are to our financial statements except as the context otherwise requires.\nPART I.\nEXPLANATORY NOTE\nThis amendment Number 1 on Form 10-K/A amends the Annual Report on Form 10-K for the fiscal year ended June 30, 2015 which the Registrant previously filed with the Securities Exchange Commission (SEC) on September 15, 2015. The Registrant is filing the amendment for the purpose of correcting the acquisition entries of Attitude Beer Holding Co. (ABH) on April 21, 2015. Previously recorded goodwill has been eliminated, and all expenditures associated with the financing that were previously recorded as deferred financing costs have been eliminated and recorded to expense. In addition, we are required to report the Statement of Operations for the acquired ABH from ABA\u2019s inception date of December 1, 2014 instead of the acquired April 21, 2015 sale date.\nHere is a reconciliation of the changes for key reported items between the amended results as compared to the previous results:",
+   "prose_after": "This amendment does not modify or update those disclosures affected by subsequent events and exhibits, except as specifically referenced herein with respect to the restatements. Information not affected by the restatements is unchanged and reflects the disclosures made at the time of the original filing of the June 30, 2015 Form 10-K. Accordingly this Amendment 1 should be read in conjunction with the June 30, 2015 Form 10-K and the Company\u2019s filings with the SEC subsequent to the filing of the June 30, 2015 Form 10-K. The Company will also file an amended Quarterly Report on Form 10-Q for the quarters ended September 30. 2015 and December 31, 2016 regarding the above described corrections. Once these are done, the Company will file its Form 10-Q for the nine months ended March 31, 2016 which will enable the Company to be current in its SEC filings.\nAs such the following items were changed:\nITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS\nCONSOLIDATED BALANCE SHEET",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 123,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 175,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "QUARTER",
+     "HIGH STOCK PRICE",
+     "",
+     "LOW STOCK PRICE",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal year \u2013 2014/2015",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "0.35",
+     "$",
+     "0.15"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "0.15",
+     "$",
+     "0.0026"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "0.014",
+     "$",
+     "0.013"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "0.0355",
+     "$",
+     "0.013"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 694,
+    "end_line": 704
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "Commencing April 21, 2015, our principal offices are located at 712 US Highway 1. Suite 200, North Palm Beach, FL 33408. From February 2014 until April 2015, we were located at 4224 White Plains Road, Bronx, New York 10466 and prior to that on 129 Glenwood Road, Glenwood Landings, NY 11545.\nITEM 3. LEGAL PROCEEDINGS\nJames Giordano, our previous CEO, filed a lawsuit on August 26, 2015 in the State of Connecticut in Hartford County. The claim is in a total amount of no less than $220,833 for past salaries. The Company does not agree with this complaint and will respond as soon as practical. The Company has recorded a liability of $175,000 in regards to the disputed claim.\nITEM 4. MINE SAFETY DISCLOSURES\nNot applicable\nPART II.\nITEM 5. MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS\nOur common stock began trading on the OTCBB on July 17, 2014. Prior to that time, there was no public market for our common stock. As a result, we have only close to one year\u2019s information with respect to high and low prices for our common stock which are shown below:",
+   "prose_after": "Dividend Policy\nWe have never paid any cash dividends on our common stock to date and do not anticipate paying such cash dividends in the foreseeable future. Whether we declare and pay dividends is determined by our Board of Directors at their discretion, subject to certain limitations imposed under Nevada corporate law. The timing, amount and form of dividends, if any, will depend on, among other things, our results of operations, financial condition, cash requirements and other factors deemed relevant by our Board of Directors.\nRecent Sales of Unregistered Securities\nOn September 6, 2013, we issued to HVW LLC an aggregate 32,300 shares of its Series A, 8% Convertible Preferred Stock which pursuant to the terms thereof will be convertible into 32,300,000 shares of the Company\u2019s common stock. In addition, on September 6, 2013 we issued 46,500 shares of its Series A 8% Convertible Preferred Stock to our former president, Robert Sharp and 16,200 shares to an investor. These issuances were not registered under the Securities Act of 1933, as amended (the \u201cSecurities Act\u2019) and were deemed to be exempt from registration under the Securities Act in reliance upon Section 4(a)(2) as transactions by an issuer not involving any public offering. The recipients of the securities represented their intentions to acquire the securities for investment only and not with a view to or for sale in connection with any distribution thereof, and appropriate legends were placed upon the stock certificates issued in these transactions.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 687,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Plan Category",
+     "Number of Securities to be Issued Upon Exercise of Outstanding Options",
+     "",
+     "Weighted-Average Exercise Price of Outstanding Options",
+     "",
+     "Number of Securities Remaining Available for Future Issuance Under Equity Compensation Plans",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans approved by stockholders:",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,000,000"
+    ],
+    [
+     "2013 Equity Incentive Plan",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity compensation plans not approved by stockholder",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "5,000,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 720,
+    "end_line": 732
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "MARKET FOR COMMON EQUITY AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "On April 21, 2015, we issued to (i) Attitude Beer 51 shares of our Series B, Preferred Stock which pursuant to the terms thereof has 51% voting rights but can be converted into 51,000 shares of common stock of the Company; (ii) to Alpha, a secured convertible note due April 20, 2017 (the \u201cSecured Convertible Note\u201d) in the principal amount of $1,619,375, a seven year warrant (the \u201cAlpha Warrant\u201d), to purchase 1,295,500,500, shares of Common Stock at an exercise price of $0.0025 per share (subject to customary anti-dilution adjustments), and an additional investment right (\u201cAIR\u201d) to purchase up to $3,750,000 in additional notes (the \u201cAIR Note\u201d) and corresponding warrants (\u201cthe \u201cAIR Warrant\u201d); and (iii) to Tarpon, a Secured Convertible Note in the principal amount of $554,792, a seven year warrant (the \u201cTarpon Warrant\u201d) to purchase 443,833,333 shares of Common Stock at an exercise price of $0.0025 per share (subject to customary anti-dilution adjustments), and an AIR to purchase up to $1,250,000 in additional notes and corresponding AIR Warrants.\nCompensation Plan Information\nOn October 5, 2013, we adopted a 2013 Equity Incentive Plan that allows for the grant of up to 5,000,000 awards. The following table contains information about our equity compensation plans as of June 30, 2015.",
+   "prose_after": "Limitations on Directors\u2019 Liability\nAs permitted by the provisions of the Nevada Revised Statutes, we have the power to indemnify any person made a party to an action, suit or proceeding by reason of the fact that they are or were a director, officer, employee or agent of our company, against expenses, judgments, fines and amounts paid in settlement actually and reasonably incurred by them in connection with any such action, suit or proceeding if they acted in good faith and in a manner which they reasonably believed to be in, or not opposed to, our best interest and, in any criminal action or proceeding, they had no reasonable cause to believe their conduct was unlawful. Termination of any action, suit or proceeding by judgment, order, settlement, conviction, or upon a plea of nolo contendere or its equivalent, does not, of itself, create a presumption that the person did not act in good faith and in a manner which they reasonably believed to be in or not opposed to our best interests, and, in any criminal action or proceeding, they had no reasonable cause to believe their conduct was unlawful.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 715,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 755,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Restaurant",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "1,611,320",
+     "$",
+     "-0-"
+    ],
+    [
+     "Cost of Goods sold",
+     "",
+     "451,146",
+     "",
+     "-0-"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "1,160,174",
+     "",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commercial Lending",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "162,455",
+     "",
+     "148,830"
+    ],
+    [
+     "Cost of Goods sold",
+     "",
+     "162,455",
+     "",
+     "148,830"
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "1,773,775",
+     "",
+     "148,830"
+    ],
+    [
+     "Cost of Goods sold",
+     "",
+     "613,601",
+     "",
+     "148,830"
+    ],
+    [
+     "Gross Margin",
+     "$",
+     "1,160,174",
+     "$",
+     "-0-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 831,
+    "end_line": 858
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "In September 2013, we shifted our focus to the commercial real industry and on September 6, 2013, we purchased from HVW LLC certain real estate loans in the amount of $1,800,000 in exchange for a secured promissory note in the principal amount of $1,800,000 that was due on December 31, 2014. As of June 30, 2015, $850,000 of the real estate loans were repaid with interest, and we repaid that portion of the loan owed to Harrison Vickers. To date, $950,000 are owed under loans that we have acquired or issued, and we have not derived any net income revenues from the commercial lending business.\nAccordingly, we may be required to raise cash from sources other than our operations in order to continue our business plan. We may raise this additional capital either through debt or equity. No assurance can be given that such efforts will be successful. We have no specific plans at present for raising additional capital.\nResults of Operations for the Year Ended June 30, 2015 As Compared to June 30, 2014\nCommensurate with the change in business model described, under \u201cGeneral\u201d above, the Company now has operations in the restaurant and tavern and commercial lending businesses. All discussion items will show each line separately\nRevenues and Gross Margin",
+   "prose_after": "Restaurant and Tavern\nThe Restaurant and Tavern segment includes the results of the purchase of ABH from its opening date of late January, 2015 through June 30, 2015. It currently consists of one restaurant. We have plans to add additional facilities in the future.\nRevenue in the restaurant and tavern segment was $1,611,320 for the year ended June 30, 2015 due to sales at our West Hartford World of Beer location for the period from its opening date in late January, 2015 through June 30, 2015. Cost of goods sold was 28% of revenues and consists principally of the cost of beer, food and maintenance of the restaurant. There were no revenues or cost of goods sold in the same period in 2014 as we were not in that line of business in 2014.\nCommercial Lending\nRevenues in the commercial lending segment consist of interest income on loans incurred offset by interest expense. Revenues were $13,625 greater in fiscal 2015 as the revenues for fiscal 2015 include a full year of revenue as opposed to fiscal 2014 which included revenue from September 2013, the date of commencement of our operations in the commercial lending business, through in the year ended June 30, 2014",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 820,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 869,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "Restaurants/taverns",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "$",
+     "-0-",
+     "$",
+     "-0-"
+    ],
+    [
+     "Compensation",
+     "",
+     "626,919",
+     "",
+     "-0-"
+    ],
+    [
+     "Compensation-Officer (in-dispute)",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Management Fees",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "67,855",
+     "",
+     "-0-"
+    ],
+    [
+     "General and administrative",
+     "",
+     "321,588",
+     "",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,016,362",
+     "$",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commercial Lending",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "$",
+     "39,500",
+     "$",
+     "11,750"
+    ],
+    [
+     "Compensation",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Compensation-Officer (undisputed)",
+     "",
+     "-0-",
+     "",
+     "208,788"
+    ],
+    [
+     "Compensation-Officer (in-dispute)",
+     "",
+     "75,000",
+     "",
+     "100,000"
+    ],
+    [
+     "Management Fees",
+     "",
+     "-0-",
+     "",
+     "145,879"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "-0-",
+     "",
+     "72,474"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "General and administrative",
+     "",
+     "12,884",
+     "",
+     "23,210"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "127,384",
+     "$",
+     "562,101"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Corporate",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "$",
+     "71,456",
+     "$",
+     "-0-"
+    ],
+    [
+     "Compensation",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Compensation-Officer (in-dispute)",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Management Fees",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "-0-",
+     "",
+     "-0-"
+    ],
+    [
+     "General and administrative",
+     "",
+     "547",
+     "",
+     "-0-"
+    ],
+    [
+     "",
+     "",
+     "72,003",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "",
+     "$",
+     "-0-"
+    ],
+    [
+     "Total",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Professional Fees",
+     "$",
+     "110.956",
+     "$",
+     "11,750"
+    ],
+    [
+     "Compensation",
+     "",
+     "626,919",
+     "",
+     "208,788"
+    ],
+    [
+     "Compensation-Officer (in-dispute)",
+     "",
+     "75,000",
+     "",
+     "100,000"
+    ],
+    [
+     "Management Fees",
+     "",
+     "-0-",
+     "",
+     "145,879"
+    ],
+    [
+     "Consulting fees",
+     "",
+     "-0-",
+     "",
+     "72,474"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "67,855",
+     "",
+     "-0-"
+    ],
+    [
+     "General and administrative",
+     "",
+     "335,019",
+     "",
+     "23,210"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "1,215,749",
+     "$",
+     "562,101"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 872,
+    "end_line": 927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "The Restaurant and Tavern segment includes the results of the purchase of ABH from its opening date of late January, 2015 through June 30, 2015. It currently consists of one restaurant. We have plans to add additional facilities in the future.\nRevenue in the restaurant and tavern segment was $1,611,320 for the year ended June 30, 2015 due to sales at our West Hartford World of Beer location for the period from its opening date in late January, 2015 through June 30, 2015. Cost of goods sold was 28% of revenues and consists principally of the cost of beer, food and maintenance of the restaurant. There were no revenues or cost of goods sold in the same period in 2014 as we were not in that line of business in 2014.\nCommercial Lending\nRevenues in the commercial lending segment consist of interest income on loans incurred offset by interest expense. Revenues were $13,625 greater in fiscal 2015 as the revenues for fiscal 2015 include a full year of revenue as opposed to fiscal 2014 which included revenue from September 2013, the date of commencement of our operations in the commercial lending business, through in the year ended June 30, 2014\nOperating Expenses",
+   "prose_after": "Restaurant and tavern\nOperating expenses increased by $1,016,362 due to the initiation of the World of Beer business in January, 2015\nCompensation expense of $626,919 was for the operations of the World of Beer franchise location in West Hartford, Connecticut since its opening in January, 2015.\nDepreciation and amortization was related to the following:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 869,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Depreciation of property, plant and equipment at the West Hartford WOB",
+     "$",
+     "67,855"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Depreciation and amortization expense",
+     "$",
+     "67,8555"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 936,
+    "end_line": 943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "SELECTED FINANCIAL DATA"
+    },
+    "note": null
+   },
+   "prose_before": "Restaurant and tavern\nOperating expenses increased by $1,016,362 due to the initiation of the World of Beer business in January, 2015\nCompensation expense of $626,919 was for the operations of the World of Beer franchise location in West Hartford, Connecticut since its opening in January, 2015.\nDepreciation and amortization was related to the following:",
+   "prose_after": "General and Administrative Expense of $321,588 was incurred at the West Hartford, Connecticut World of Beer location principally for rents, royalties and the cost of operations.\nCommercial Lending\nProfessional fees of $39,500 for the fiscal year ended June 30, 2015 were $27,750 higher than the $11,750 balance from the fiscal year ended June 30, 2014 primarily due to increased legal fees.\nCompensation expense- Officer (undisputed) decreased $208,788 for the fiscal year ended June 30, 2015 due to the issuance to James Giordano, our former Chairman and Chief Executive Officer of Series A Preferred Stock in the prior period for services rendered of $208,788.\nCompensation Expense- Officer (disputed) decreased $25,000 for the fiscal year ended June 30, 2015. Commensurate with Mr. Giordano leaving the Company, he sold all his common shares to ABH in April, 2015. The payment he received for those shares was to be for complete compensation for his services to our company. Accordingly, in our fiscal third quarter, we reversed the liability to Mr. Giordano for his salary. Mr. Giordano disputes this arrangement and accordingly, we have reestablished the liability. No formal legal action has been commenced by either party at this time.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 869,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 26
+    },
+    "after": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 27
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Position"
+    ],
+    [
+     "Roy Warren",
+     "60",
+     "  Chairman, Chief Executive Officer and President"
+    ],
+    [
+     "Tommy Kee",
+     "66",
+     "  Chief Financial Officer"
+    ],
+    [
+     "Isaac Onn",
+     "64",
+     "  Director"
+    ],
+    [
+     "Conrad Huss",
+     "66",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1066,
+    "end_line": 1074
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE"
+    },
+    "note": null
+   },
+   "prose_before": "Our management, including our Chief Executive Officer and Chief Financial Officer, does not expect that our disclosure controls and procedures and our internal control processes will prevent all error and all fraud. A control system, no matter how well conceived and operated, can provide only reasonable, not absolute, assurance that the objectives of the control system are met. Further, the design of a control system must reflect the fact that there are resource constraints, and the benefits of controls must be considered relative to their costs. Because of the inherent limitations in all control systems, no evaluation of controls can provide absolute assurance that all control issues and instances of error or fraud, if any, within our company have been detected. These inherent limitations include the realities that judgments in decision-making can be faulty, and that the breakdowns can occur because of simple error or mistake. Additionally, controls can be circumvented by the individual acts of some persons, by collusion of two or more people, or by management override of the control. The design of any system of controls also is based in part upon certain assumptions about the likelihood of future events, and there can be no assurance that any design will succeed in achieving its stated goals under all potential future conditions. Over time, controls may become inadequate because of changes in conditions, or the degree of compliance with the policies or procedures may deteriorate. Because of the inherent limitations in a cost-effective control system, misstatements due to error or fraud may occur and may not be detected. However, these inherent limitations are known features of the financial reporting process. Therefore, it is possible to design into the process safeguards to reduce, though not eliminate, this risk.\nChanges in Internal Control Over Financial Reporting\nThere were no changes during our last fiscal quarter ended June 30, 2015 that materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nITEM 9B. OTHER MATTERS\nNone\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS, AND CORPORATE GOVERNANCE\nDirectors and Executive Officers\nSet forth below is certain information relating to our directors and executive officers, including their names, ages, and business experience.",
+   "prose_after": "Mr. Roy Warren - Chairman, Chief Executive Officer and President since April, 2015\nMr. Warren serves as our Chairman of the Board, Chief Executive Officer and President. As Chief Executive Officer, Mr. Warren provides overall company leadership and strategy. Mr. Warren also serves as Chairman of the Board and Chief Executive Officer for Attitude Drinks Incorporated which is the majority owner of the Company. For 15 years from 1981 through 1996, Mr. Warren was in the securities brokerage industry. During those years, Mr. Warren acted as executive officer, principal, securities broker and partner with brokerage firms in Florida, most notably Kemper Financial Companies, Alex Brown & Sons and Laffer Warren & Company. From 1999 to 2007, Mr. Warren was Chief Executive Officer of Bravo! Brands, Inc. in Florida, a public company which was a beverage brand-development company, similar to Attitude Drinks Incorporated. Mr. Warren\u2019s experience in the beverage industry as well as with a public company led to the conclusion that he should serve as a director of the Company.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1049,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1083,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Principal Position",
+     "Year",
+     "",
+     "Salary",
+     "",
+     "",
+     "Bonus",
+     "",
+     "Stock Awards",
+     "",
+     "Option Awards",
+     "",
+     "Non-Equity Incentive Plan Compensation",
+     "",
+     "Non-qualified Deferred Compensation Earnings",
+     "",
+     "All Other Compensation",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "($)",
+     "",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     "",
+     "($)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "James Giordano,",
+     "",
+     "2014",
+     "",
+     "100,000",
+     "*",
+     "",
+     "\u2013",
+     "",
+     "208,088",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "308,088"
+    ],
+    [
+     "CEO and CFO",
+     "",
+     "2015",
+     "",
+     "75,000",
+     "*",
+     "",
+     "\u2013",
+     "",
+     "-",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "\u2013",
+     "",
+     "75,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1100,
+    "end_line": 1109
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 11",
+     "title": "EXECUTIVE COMPENSATION"
+    },
+    "note": null
+   },
+   "prose_before": "Mr. Huss, 66, serves on the Board of Directors. Mr. Huss is a financial professional with over 25 years of investment banking and operating experience. Most recently, he was with Ocean Cross Capital Markets, as Senior Managing Director. Previously, he was a Senior Managing Director at Southridge Investment Group.\nSection 16(a) Beneficial Ownership Reporting Compliance\nSection 16(a) of the Securities Exchange Act of 1934 requires our executive officers, directors and persons who beneficially own more than 10 percent of a registered class of our equity securities, to file with the SEC initial reports of ownership and reports of changes in ownership of our common stock. Such officers, directors and persons are required by SEC regulation to furnish us with copies of all Section 16(a) forms that they file with the SEC.\nBased solely on a review of the copies of such forms that were received by us, or written representations from certain reporting persons that no Form 5s were required for those persons, we are not aware of any failures to file reports or report transactions in a timely manner during the year ended June 30, 2015 other than late Form 3s filed by Roy Warren, Conrad Huss and Isaac Onn upon their appointments as Directors.\nITEM 11. EXECUTIVE COMPENSATION",
+   "prose_after": "* Amount accrued are under dispute as James Giordano is no longer an employee of the Company.\n(1) Mr. Giordano resigned from all positions with our company in April 2015.\nThere are no corporate employees as we utilize the services of 4 employees of Attitude Drinks, the majority owner of our outstanding stock.\nDirector Compensation\nTo date, we have not paid any directors compensation for their services as directors\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding beneficial ownership of our capital stock as of the date hereof by (i) each person whom we know to beneficially own more than five percent of any class of our common stock, and (ii) our sole director and sole executive officer. The individual listed below has sole voting and investment power with respect to the shares beneficially owned.\nAs of September 14, 2015 we had 126,337,367 shares of common stock outstanding which are held by 11 record holders. The chart below sets forth the ownership of our common stock, or claimed ownership, of certain individuals.",
+   "structured_location": {
+    "item": "ITEM 11",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1083,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner (1)",
+     "Amount and Nature Of Beneficial Ownership Common Stock Included",
+     "",
+     "",
+     "Percent of Common Stock Beneficially Owned (2)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Roy Warren (1)",
+     "",
+     "224,478,340",
+     "*",
+     "",
+     "85.41",
+     "%"
+    ],
+    [
+     "Alpha Capital Anstalt (2)",
+     "",
+     "216,878,858",
+     "",
+     "",
+     "9.99",
+     "%"
+    ],
+    [
+     "Tarpon Bay Partners LLC (3)",
+     "",
+     "81,994,220",
+     "",
+     "",
+     "9.99",
+     "%"
+    ],
+    [
+     "Southridge Partners II LP (4)",
+     "",
+     "26,153,683",
+     "",
+     "",
+     "9.99",
+     "%"
+    ],
+    [
+     "Robert J. Sharp (5)",
+     "",
+     "10,000,000",
+     "",
+     "",
+     "7.3",
+     "%"
+    ],
+    [
+     "Attitude Drinks Incorporated(1)",
+     "",
+     "224,478,140",
+     "",
+     "",
+     "85.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1127,
+    "end_line": 1139
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Mr. Giordano resigned from all positions with our company in April 2015.\nThere are no corporate employees as we utilize the services of 4 employees of Attitude Drinks, the majority owner of our outstanding stock.\nDirector Compensation\nTo date, we have not paid any directors compensation for their services as directors\nITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS\nThe following table sets forth certain information regarding beneficial ownership of our capital stock as of the date hereof by (i) each person whom we know to beneficially own more than five percent of any class of our common stock, and (ii) our sole director and sole executive officer. The individual listed below has sole voting and investment power with respect to the shares beneficially owned.\nAs of September 14, 2015 we had 126,337,367 shares of common stock outstanding which are held by 11 record holders. The chart below sets forth the ownership of our common stock, or claimed ownership, of certain individuals.",
+   "prose_after": "* Includes all of the issued and convertible shares of Series B Preferred Stock as well as warrants.\nName of Owner of Series A and B Convertible Preferred Stock",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1158,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Alpha Capital Anstalt",
+     "65,000 shares of Series A Convertible Preferred Stock",
+     "65% total of Series A"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Tarpon Bay Partners LLC",
+     "25,000 shares of Series A Convertible Preferred Stock",
+     "25% total of Series A"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Robert J. Sharp",
+     "15,000 shares of Series A Convertible Preferred Stock",
+     "10% total of Series A"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Attitude Drinks Incorporated",
+     "51 shares of Series B Convertible Preferred Stock",
+     "100% total of Series B"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1144,
+    "end_line": 1153
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS"
+    },
+    "note": null
+   },
+   "prose_before": "* Includes all of the issued and convertible shares of Series B Preferred Stock as well as warrants.\nName of Owner of Series A and B Convertible Preferred Stock",
+   "prose_after": "(1) Consists of: (i) 87,990,000 shares of Common Stock, (ii) a warrant to purchase 5,000,000 shares of common stock, and (iii) 51 shares of Series B Preferred Stock that has the right to 131,488,340 votes, all 51 shares are owned by Attitude Drinks. Mr. Warren is deemed to share beneficial ownership of these securities with ADI due to his ownership of ADI securities that represents approximately 51% of the voting power of ADI and due to his position as the Chairman, Chief Executive Officer and President of ADI. Each share of the Series B Preferred Stock has voting rights equal to (x) (i) 0.019607 multiplied by the aggregate total of: (A) the issued and outstanding shares of Common Stock eligible to vote at the time of the respective vote, plus (B) the number of votes which all other series or classes of securities other that the Series B Preferred Stock are entitled to cast together with the other holders of Common Stock at the time of the relevant vote divided by (ii) 0.49, minus (y) the numerator. The voting rights are subject to adjustment for any stock splits, stock dividends, reorganizations, recapitalizations and the like. As a result, the 51 shares of Series B Preferred Stock currently equal the power to vote 131,488,340 shares of common stock. The business address of Attitude Drinks is 712 U.S. Highway 1, Suite 200, North Palm Beach, Florida 33408.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1120,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1158,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     ""
+    ],
+    [
+     "Number",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation (1)"
+    ],
+    [
+     "3.2",
+     "Bylaws (1)"
+    ],
+    [
+     "4.1",
+     "Specimen Common Stock Certificate (1)"
+    ],
+    [
+     "10.1",
+     "Form of Subscription Agreement (2)"
+    ],
+    [
+     "10.1A",
+     "Subscription Agreement, including Investor Questionnaire (2)"
+    ],
+    [
+     "10.2",
+     "LLC Contribution Agreement (1)"
+    ],
+    [
+     "10.3",
+     "Management Agreement with HVW Holdings LLC (3)_"
+    ],
+    [
+     "10.4",
+     "Securities Purchase Agreement with HVW Holdings LLC (3)"
+    ],
+    [
+     "10.5",
+     "Certificate of Designation of Rights and Preferences for Series A 8% Convertible Preferred Stock (4)"
+    ],
+    [
+     "10.6",
+     "Certificate of Amendment (5)"
+    ],
+    [
+     "10.7",
+     "2013 Equity Incentive Plan (5)"
+    ],
+    [
+     "10.8",
+     "Certificate of Designation of Series B Convertible Preferred Stock (6)"
+    ],
+    [
+     "10.9",
+     "A Warrant issued to Alpha Capital Anstalt (6)"
+    ],
+    [
+     "10.10",
+     "A Warrant issued to Tarpon Bay Partners LLC (6)"
+    ],
+    [
+     "10.11",
+     "B Warrant issued to Attitude Drinks Incorporated (6)"
+    ],
+    [
+     "10.12",
+     "Secured Convertible Note due 2017 issued to Alpha Capital Anstalt (6)"
+    ],
+    [
+     "10.13",
+     "Secured Convertible Note due 2017 issued to Tarpon Partners LLC (6)"
+    ],
+    [
+     "10.14",
+     "Additional Investment Right issued to Alpha Capital Anstalt (6)"
+    ],
+    [
+     "10.15",
+     "Additional Investment Right issued to Tarpon Bay Partners LLC (6)"
+    ],
+    [
+     "10.16",
+     "Asset Purchase Agreement (6)"
+    ],
+    [
+     "10.17",
+     "Stock Pledge Agreement (6)"
+    ],
+    [
+     "10.18",
+     "Guaranty \u2013 Attitude Beer Holding Co. (6)"
+    ],
+    [
+     "10.19",
+     "Guaranty \u2013 Attitude Drinks Incorporated (6)"
+    ],
+    [
+     "10.20",
+     "Purchase Agreement \u2013 Alpha Capital Anstalt (6)"
+    ],
+    [
+     "10.21",
+     "Purchase Agreement \u2013 Attitude Drinks Incorporated (6)"
+    ],
+    [
+     "10.22",
+     "Draft Operating Agreement"
+    ],
+    [
+     "10.23",
+     "Note issued to Alpha Capital Anstalt on July 29, 2015"
+    ],
+    [
+     "10.24",
+     "Warrant to Alpha Capital Anstalt issued July 29, 2015"
+    ],
+    [
+     "21.1",
+     "Subsidiary of Registrant**"
+    ],
+    [
+     "31.1",
+     "Certification Pursuant To Section 302 Of The Sarbanes-Oxley Act And Rule 13a-14(A) Or 15d-14(A) Under The Securities Exchange Act Of 1934"
+    ],
+    [
+     "32.1",
+     "Certification Pursuant To 18 U.S.C. Section 1350, As Adopted Pursuant To Section 906 Of The Sarbanes-Oxley Act Of 2002"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Extension Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Extension Labels Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Extension Presentation Linkbase Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1196,
+    "end_line": 1238
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "During April 21, 2015, HVW sold its 32,300 shares of Series A Convertible Preferred Stock to Alpha Capital Anstalt and 87,990,000 shares of its common stock of the Company to Attitude Drinks Incorporated. As such, HVW is no longer considered having any related transactions with the Company.\nDue to the fact that Attitude Drinks Incorporated owns the majority of the common stock and voting rights and has common control, (ADI) is considered a related party.\nITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES\nScrudato and Company CPAs has been our principal auditing firm since April, 2015.\nAudit Fees\nAn aggregate of $6,500 was billed by our auditors for the following professional services: audit of our annual financial statement for the fiscal year ended June 30, 2015 including the review of our interim financial statements.\nAn aggregate of $9,500 was billed by our auditors for the following professional services: audit of our annual financial statement for the fiscal year ended June 30, 2014 including the review of our interim financial statements.\nPART IV\nITEM 15. EXHIBIT INDEX",
+   "prose_after": "(1) Filed with Registration Statement on Form S-1 (File No. 333-162072) filed on September 23, 2009\n(2) Filed with Registration Statement on Form S-1/A (File No. 333-162072) filed on March 12, 2010\n(3) Filed as an exhibit on Form 8-K on September 6, 2013 (SEC Accession No. 0001078782-13-001812)\n(4) Filed as an exhibit on Form 8-K on September 18, 2013 (SEC Accession No. 0001078782-13-001871)\n(5) Filed as an exhibit on Form 8-K on October 25, 2013 (SEC Accession No. 0001078782-13-002087)\n(6) Filed as an exhibit on Form 8-K on April 27, 2015 (SEC Accession No. 0001144204-15-025280)\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1191,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 34
+    },
+    "after": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Roy G. Warren",
+     ""
+    ],
+    [
+     "Roy G. Warren",
+     "",
+     ""
+    ],
+    [
+     "President and Chief Executive Officer",
+     "",
+     ""
+    ],
+    [
+     "June 23, 2016",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1256,
+    "end_line": 1264
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "(1) Filed with Registration Statement on Form S-1 (File No. 333-162072) filed on September 23, 2009\n(2) Filed with Registration Statement on Form S-1/A (File No. 333-162072) filed on March 12, 2010\n(3) Filed as an exhibit on Form 8-K on September 6, 2013 (SEC Accession No. 0001078782-13-001812)\n(4) Filed as an exhibit on Form 8-K on September 18, 2013 (SEC Accession No. 0001078782-13-001871)\n(5) Filed as an exhibit on Form 8-K on October 25, 2013 (SEC Accession No. 0001078782-13-002087)\n(6) Filed as an exhibit on Form 8-K on April 27, 2015 (SEC Accession No. 0001144204-15-025280)\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Tommy E. Kee",
+     ""
+    ],
+    [
+     "Tommy E. Kee",
+     "",
+     ""
+    ],
+    [
+     "Chief Financial Officer and Principal Accounting Officer",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 23, 2016",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1265,
+    "end_line": 1275
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Conrad Huss",
+     ""
+    ],
+    [
+     "Conrad Huss",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ],
+    [
+     "June 23, 2016",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1276,
+    "end_line": 1283
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "By:",
+     "/s/ Isaac Onn",
+     ""
+    ],
+    [
+     "Isaac Onn",
+     "",
+     ""
+    ],
+    [
+     "Director",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 23, 2016",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1284,
+    "end_line": 1292
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Harrison Vickers and Waterman, Inc.\nJune 30, 2015 and 2014\nIndex to the consolidated financial statements",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1251,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Contents",
+     "Page"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Reports of Independent Registered Public Accounting Firms (current and previous auditors)",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets at June 30, 2015 and 2014 (amended)",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Fiscal Years Ended June 30, 2015 and 2014 (amended)",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statement of Stockholders\u2019 Equity (Deficit) for the Fiscal Years Ended June 30, 2015 and 2014 (amended)",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Fiscal Years Ended June 30, 2015 and 2014 (amended)",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to the Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1300,
+    "end_line": 1316
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "Harrison Vickers and Waterman, Inc.\nJune 30, 2015 and 2014\nIndex to the consolidated financial statements",
+   "prose_after": "Scrudato & Co., PA\nCERTIFIED PUBLIC ACCOUNTING FIRM\nREPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Board of Directors and Stockholders of\nHarrison Vickers and Waterman, Inc.\n712 U.S. Highway 1,\nSuite 200\nNorth Palm Beach, FL 33408\nWe have audited the accompanying balance sheet of Harrison, Vickers and Waterman, Inc. as of June 30, 2015 and the related consolidated statements of operations, changes in stockholders\u2019 equity and cash flows for the year then ended. These financial statements are the responsibility of the Company management. Our responsibility is to express an opinion on these financial statements based on our audit.\nWe conducted our audit in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audits to obtain reasonable assurance about whether the consolidated financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit also includes examining, on a test basis, evidence supporting the amounts and disclosures in the consolidated financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audit provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1293,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 36
+    },
+    "after": {
+     "line": 1316,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/ Li and Company, PC",
+     ""
+    ],
+    [
+     "Li and Company, PC",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Skillman, New Jersey",
+     ""
+    ],
+    [
+     "October 9, 2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "/s/ Li and Company, PC",
+    "Li and Company, PC"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1365,
+    "end_line": 1373
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audits included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts and disclosures in the financial statements. An audit also includes assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the consolidated financial statements referred to above present fairly, in all material respects, the financial position of the Company as of June 30, 2014 and 2013, and the related statements of its operations and its cash flows for the fiscal years then ended, in conformity with accounting principles generally accepted in the United States of America.\nThe accompanying consolidated financial statements have been prepared assuming that the Company will continue as a going concern. As discussed in Note 3 to the consolidated financial statements, the Company had an accumulated deficit at June 30, 2014 and a net loss for the reporting period then ended. These factors raise substantial doubt about the Company\u2019s ability to continue as a going concern. Management\u2019s plans in regards to these matters are also described in Note 3. The consolidated financial statements do not include any adjustments that might result from the outcome of this uncertainty.",
+   "prose_after": "Consolidated Balance Sheet",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1316,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "F",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1373,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "June 30, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "226,088",
+     "",
+     "$",
+     "361",
+     ""
+    ],
+    [
+     "  Inventory",
+     "",
+     "81,049",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Real estate loans receivable",
+     "",
+     "950,000",
+     "",
+     "",
+     "1,470,000",
+     ""
+    ],
+    [
+     "  Receivable from Attitude Drinks, Inc.",
+     "",
+     "131,423",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Prepaid Expenses",
+     "",
+     "44,192",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Total Current Assets",
+     "",
+     "1,432,752",
+     "",
+     "",
+     "1,470,361",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Property, Plant and Equipment (net of accumulated depreciation)",
+     "",
+     "962,470",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Capitalized costs (net of accumulated depreciation)",
+     "",
+     "198,823",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Non-Current Assets",
+     "",
+     "1,161,293",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Assets",
+     "$",
+     "2,594,045",
+     "",
+     "$",
+     "1,470,361",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts payable",
+     "$",
+     "367,974",
+     "",
+     "$",
+     "9,437",
+     ""
+    ],
+    [
+     "  Accrued expenses- in dispute",
+     "",
+     "175,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "  Promissory note payable",
+     "",
+     "950,000",
+     "",
+     "",
+     "1,470,000",
+     ""
+    ],
+    [
+     "  Convertible notes payable - investor, net of discount",
+     "",
+     "144,699",
+     "",
+     "",
+     "65,472",
+     ""
+    ],
+    [
+     "  Derivative liability",
+     "",
+     "4,237,890",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "      Total Current Liabilities",
+     "",
+     "5,875,563",
+     "",
+     "",
+     "1,644,909",
+     ""
+    ],
+    [
+     "NON-CURRENT LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Notes payable - investor-non-current",
+     "",
+     "210,522",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Non-Current Liabilities",
+     "",
+     "210,522",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Liabilities",
+     "",
+     "6,086,085",
+     "",
+     "",
+     "1,644,909",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred stock par value $0.0001: 1,000,000 shares authorized; 100,000 shares designated as Series A 8% Convertible Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Series A 8% Convertible preferred stock par value $0.0001: stated value $1,000 per share; 100,000 and 95,000 shares issued and outstanding at June 30, 2015 and June 30, 2014, respectively",
+     "",
+     "10",
+     "",
+     "",
+     "10",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Series B Convertible Preferred stock, par value $.0001, stated value of $1,000 per share; 51 and -0- shares outstanding at June 30, 2015 and June 30, 2014, respectively",
+     "",
+     "",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Common stock par value $0.0001: 2,000,000,000 shares authorized; 126,337,367 and 124,337,367 shares issued and outstanding at June 30, 2015 and June 30, 2014, respectively",
+     "",
+     "12,634",
+     "",
+     "",
+     "12,434",
+     ""
+    ],
+    [
+     "    Additional paid-in capital",
+     "",
+     "637,267",
+     "",
+     "",
+     "417,785",
+     ""
+    ],
+    [
+     "    Accumulated deficit",
+     "",
+     "(4,159,946)",
+     "",
+     "",
+     "(604,777)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Stockholders' Deficit",
+     "",
+     "(3,510,035)",
+     "",
+     "",
+     "(174,548)",
+     ""
+    ],
+    [
+     "      Non-controlling interest",
+     "",
+     "17,995",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Total Liabilities,StockholdersDeficit and Non \u2013Controlling Interest",
+     "$",
+     "2,594,045",
+     "",
+     "$",
+     "1,470,361",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1377,
+    "end_line": 1445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Balance Sheet",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statement of Operations",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1373,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "F",
+     "page_number": 2
+    },
+    "after": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year",
+     "",
+     "",
+     "For the Year",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "June 30, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(restated)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES AND GROSS MARGIN",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Restaurant:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Revenues",
+     "$",
+     "1,611,320",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "    Cost of goods sold",
+     "",
+     "(451,146)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Gross margin",
+     "",
+     "1,160,174",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Real Estate Loans",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Interest income earned",
+     "",
+     "162,455",
+     "",
+     "",
+     "148,830",
+     ""
+    ],
+    [
+     "    Interest expense incurred",
+     "",
+     "(162,455)",
+     "",
+     "",
+     "(148,830)",
+     ""
+    ],
+    [
+     "    Gross Margin",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total Gross margin",
+     "",
+     "1,160,174",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OPERATING EXPENSES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Professional fees",
+     "",
+     "110,956",
+     "",
+     "",
+     "11,750",
+     ""
+    ],
+    [
+     "  Compensation",
+     "",
+     "626,919",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Compensation - officer (undisputed)",
+     "",
+     "-",
+     "",
+     "",
+     "208,788",
+     ""
+    ],
+    [
+     "  Compensation - officer (in-dispute)",
+     "",
+     "75,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "  Management fees",
+     "",
+     "-",
+     "",
+     "",
+     "145,879",
+     ""
+    ],
+    [
+     "  Consulting fees",
+     "",
+     "-",
+     "",
+     "",
+     "72,474",
+     ""
+    ],
+    [
+     "  Depreciation and Amortization Expense",
+     "",
+     "67,855",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  General and administrative expenses",
+     "",
+     "335,019",
+     "",
+     "",
+     "23,210",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total operating expenses",
+     "",
+     "1,215,749",
+     "",
+     "",
+     "562,101",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LOSS FROM OPERATIONS",
+     "",
+     "(55,575)",
+     "",
+     "",
+     "(562,101)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest expense",
+     "",
+     "(1,439,790)",
+     "",
+     "",
+     "(2,276)",
+     ""
+    ],
+    [
+     "  Derivative Expense",
+     "",
+     "(2,058,493)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Change in Fair Market Value of Derivative liability",
+     "",
+     "48,020",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  (Loss) on retirement of debt",
+     "",
+     "(2,600)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Other (expense), net",
+     "",
+     "(3,452,863)",
+     "",
+     "",
+     "(2,276)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  LOSS BEFORE INCOME TAX PROVISION AND NON-CONTROLLING INTEREST",
+     "",
+     "(3,508,438)",
+     "",
+     "",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "INCOME TAX PROVISION",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS BEFORE NON-CONTROLLING INTEREST",
+     "",
+     "(3,508,438)",
+     "",
+     "",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CONTROLLING INTEREST",
+     "",
+     "(46,731)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(3,555,169)",
+     "",
+     "$",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EARNINGS PER COMMON SHARE",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  - basic and diluted",
+     "$",
+     "(0.03)",
+     "",
+     "$",
+     "(0.00)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average common shares outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    - basic and diluted",
+     "",
+     "124,868,874",
+     "",
+     "",
+     "124,986,367",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1451,
+    "end_line": 1520
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statement of Operations",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statement of Stockholders\u2019 Deficit\nFor the Period June 30, 2012 through June 30, 2015\n(restated)",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1447,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Series A Preferred Stock Par Value $0.0001",
+     "",
+     "",
+     "",
+     "Series B Preferred Stock Par Value $0.0001",
+     "",
+     "",
+     "",
+     "Common Stock Par Value $0.0001",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional paid-in Capital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total Stockholders' Deficit",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of Shares",
+     "",
+     "Amount",
+     "",
+     "Number of Shares",
+     "",
+     "Amount",
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2012",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "1,634,993,250",
+     "",
+     "$",
+     "163,499",
+     "",
+     "$",
+     "(159,649)",
+     "",
+     "$",
+     "(35,085)",
+     "",
+     "$",
+     "(31,235)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(5,315)",
+     "",
+     "",
+     "(5,315)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2013",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "1,634,993,250",
+     "",
+     "",
+     "163,499",
+     "",
+     "",
+     "(159,649)",
+     "",
+     "",
+     "(40,400)",
+     "",
+     "",
+     "(36,550)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Retirement of common shares",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(1,610,006,750)",
+     "",
+     "",
+     "(161,000)",
+     "",
+     "",
+     "161,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common shares for compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "99,999,867",
+     "",
+     "",
+     "10,000",
+     "",
+     "",
+     "(8,621)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,379",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Series A Preferred Stock for compensation",
+     "",
+     "95,000",
+     "",
+     "10",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "424,990",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "425,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares returned to Treasury",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(649,000)",
+     "",
+     "",
+     "(65)",
+     "",
+     "",
+     "65",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(564,377)",
+     "",
+     "",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2014",
+     "",
+     "95,000",
+     "",
+     "10",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "124,337,367",
+     "",
+     "",
+     "12,434",
+     "",
+     "",
+     "417,785",
+     "",
+     "",
+     "(604,777)",
+     "",
+     "",
+     "(174,548)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares issued upon conversion of debt",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "2,000,000",
+     "",
+     "",
+     "200",
+     "",
+     "",
+     "5,000",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "5,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Series A Preferred",
+     "",
+     "5,000",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "40,549",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "40,549",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Series B Preferred",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "51",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of Warrants",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "173,933",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "173,933",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,555,169)",
+     "",
+     "",
+     "(3,555,169)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, June 30, 2015",
+     "",
+     "100,000",
+     "$",
+     "10",
+     "",
+     "51",
+     "$",
+     "-",
+     "",
+     "126,337,367",
+     "",
+     "$",
+     "12,634",
+     "",
+     "$",
+     "637,267",
+     "",
+     "$",
+     "(4,159,946)",
+     "",
+     "$",
+     "(3,510,035)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1530,
+    "end_line": 1573
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statement of Stockholders\u2019 Deficit\nFor the Period June 30, 2012 through June 30, 2015\n(restated)",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nConsolidated Statement of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1522,
+     "token": "PAGE_BREAK",
+     "id": 40,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1575,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Year",
+     "",
+     "",
+     "For the Year",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Ended",
+     "",
+     "",
+     "Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "June 30, 2014",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,555,169)",
+     "",
+     "$",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash provided by (used in) operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Common stock issued for compensation",
+     "",
+     "-",
+     "",
+     "",
+     "1,314",
+     ""
+    ],
+    [
+     "  Series A Preferred Stock issued for compensation",
+     "",
+     "-",
+     "",
+     "",
+     "425,065",
+     ""
+    ],
+    [
+     "  Depreciation and amortization expense",
+     "",
+     "67,855",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Amortization of Discount on Notes Payable",
+     "",
+     "241,313",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Derivative Expense",
+     "",
+     "2,058,493",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Change in Fair Market Value of Derivative liability",
+     "",
+     "(48,020)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Non-controlling Interest",
+     "",
+     "46,731",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Issuance of non-cash convertible notes, warrants and preferred stock for purchase",
+     "",
+     "939,739",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Gain (loss) on conversion of debt",
+     "",
+     "2,600",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Real estate loans",
+     "",
+     "-",
+     "",
+     "",
+     "330,000",
+     ""
+    ],
+    [
+     "    Inventory",
+     "",
+     "(81,049)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Prepaid Expenses",
+     "",
+     "(37,737)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Deposits and other assets",
+     "",
+     "(6,455)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued expenses",
+     "",
+     "323,673",
+     "",
+     "",
+     "104,808",
+     ""
+    ],
+    [
+     "    Accounts payable and accrued expenses- in dispute",
+     "",
+     "75,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "    Accrued interest converted to debt",
+     "",
+     "25,384",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY OPERATING ACTIVITIES",
+     "",
+     "52,358",
+     "",
+     "",
+     "296,810",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of Property, Plant and Equipment and other capitalized costs",
+     "",
+     "(1,234,563)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH USED IN INVESTING ACTIVITIES",
+     "",
+     "(1,234,563)",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Amounts received from related party -net",
+     "",
+     "50,182",
+     "",
+     "",
+     "2,001",
+     ""
+    ],
+    [
+     "  Issuance of notes payable -investor",
+     "",
+     "1,357,750",
+     "",
+     "",
+     "28,844",
+     ""
+    ],
+    [
+     "  Payment on secured promissory note",
+     "",
+     "-",
+     "",
+     "",
+     "(330,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CASH PROVIDED BY (USED IN) FINANCING ACTIVITIES",
+     "",
+     "1,407,932",
+     "",
+     "",
+     "(299,155)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET CHANGE IN CASH",
+     "",
+     "225,727",
+     "",
+     "",
+     "(2,345)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at beginning of reporting period",
+     "",
+     "361",
+     "",
+     "",
+     "2,706",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash at end of reporting period",
+     "$",
+     "226,088",
+     "",
+     "$",
+     "361",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "SUPPLEMENTAL DISCLOSURE OF CASH FLOWS INFORMATION:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "  Income tax paid",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NON-CASH INVESTING AND FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Purchase of real estate loans for debt, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,800,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of convertible notes, warrants and preferred stock for purchase",
+     "$",
+     "939,739",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1579,
+    "end_line": 1651
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the consolidated financial statements.\nConsolidated Statement of Cash Flows",
+   "prose_after": "See accompanying notes to the consolidated financial statements.\nJune 30, 2015 and 2014\nNotes to the Consolidated Financial Statements\nNote 1 \u2212 Organization and Operations\nSharp Performance, Inc.\nSharp Performance Associates LLC (\u201cLLC\u201d or \u201cPredecessor\u201d) was organized as a Limited Liability Company on September 5, 2008 under the laws of the State of Nevada. Sharp Performance, Inc. (the \u201cSharp\u201d) was incorporated on the same date under the laws of the State of Nevada for the sole purpose of acquiring all of the outstanding membership units of Sharp Performance Associates LLC.\nApril 2015 Material definitive Agreement\nOn April 21, 2015, the Company entered into a Purchase Agreement (the \u201cPurchase Agreement\u201d), with the three original shareholders of Attitude Beer Holding Co., a Delaware corporation (\u201cABH\u201d), namely, Attitude Drinks, Incorporated, a Delaware corporation (\u201cAttitude Drinks\u201d), Alpha Capital Anstalt, a company organized under the laws of Liechtenstein (\u201cAlpha\u201d) and Tarpon Bay Partners LLC, a Florida limited liability company (\u201cTarpon Bay\u201d), pursuant to which the shareholders sold to the Company all of the outstanding shares of stock of ABH and ABH thereupon became a wholly owned subsidiary of the Company. In consideration for the purchase of the shares of common stock of ABH, the Company issued: (i) to Attitude Drinks, 51 shares of a newly created Series B Preferred Stock of the Company (the \u201cSeries B Preferred Stock\u201d) and a seven year warrant (the \u201cB Warrant\u201d) to purchase 5,000,000 shares of the Company\u2019s common stock, par value $.0001 per share (the \u201cCommon Stock\u201d), at an exercise price of $0.075 per share (subject to customary anti-dilution adjustments); (ii) to Alpha, a secured convertible note due April 20, 2017 (the \u201cSecured Convertible Note\u201d) in the principal amount of $1,619,375 a seven year warrant (the \u201cAlpha Warrant\u201d), to purchase 1,295,500,500, shares of Common Stock at an exercise price of $0.0025 per share (subject to customary anti-dilution adjustments), and an additional investment right (\u201cAIR\u201d) to purchase up to $3,750,000 in additional notes (the \u201cAIR Note\u201d) and corresponding warrants (\u201cthe \u201cAIR Warrant\u201d); and (iii) to Tarpon, a Secured Convertible Note in the principal amount of $554,792, a seven year warrant (the \u201cTarpon Warrant\u201d) to purchase 443,833,333 shares of Common Stock at an exercise price of $0.0025 per share (subject to customary anti-dilution adjustments), and an AIR to purchase up to $1,250,000 in additional notes and corresponding AIR Warrants. In addition, Alpha acquired 32,300 shares of the Company\u2019s Series A Preferred Stock (convertible into 32,300,000 shares of the Company\u2019s Common Stock) from HVW Holdings LLC (an entity of which Mr. James Giordano, the Company\u2019s prior Chief Executive Officer and Chairman of the Board, is the managing member), subject to the terms of a Purchase Agreement (the \u201cSeries A Purchase Agreement\u201d). Attitude Drinks purchased 87,990,000 shares of Common Stock from HVW Holdings LLC at a price of $65,000, subject to the terms of a Purchase Agreement (the \u201cCommon Stock Purchase Agreement\u201d). The Alpha Warrant and the Tarpon Warrant are collectively referred to herein as the \u201cA Warrants\u201d and the B Warrant and the A Warrants are collectively referred to herein as the \u201cWarrants.\u201d",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1575,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1653,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name of consolidated subsidiary or entity",
+     "State or other jurisdiction of incorporation or organization",
+     "Date of incorporation or formation (date of acquisition, if applicable)",
+     "Attributable interest"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Attitude Beer Holding Co.",
+     "The State of Delaware",
+     "April 21, 2015",
+     "100%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1732,
+    "end_line": 1739
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2212 Significant and Critical Accounting Policies and Practices"
+    }
+   },
+   "prose_before": "The Company applies the guidance of Topic 810 \u201cConsolidation\u201d of the FASB Accounting Standards Codification (\"ASC\") to determine whether and how to consolidate another entity. Pursuant to ASC Paragraph 810-10-15-10 all majority-owned subsidiaries\u2014all entities in which a parent has a controlling financial interest\u2014shall be consolidated except (1) when control does not rest with the parent, the majority owner; (2) if the parent is a broker-dealer within the scope of Topic 940 and control is likely to be temporary; (3) consolidation by an investment company within the scope of Topic 946 of a non-investment-company investee. Pursuant to ASC Paragraph 810-10-15-8, the usual condition for a controlling financial interest is ownership of a majority voting interest, and, therefore, as a general rule ownership by one reporting entity, directly or indirectly, of more than 50 percent of the outstanding voting shares of another entity is a condition pointing toward consolidation. The power to control may also exist with a lesser percentage of ownership, for example, by contract, lease, agreement with other stockholders or by court decree. The Company consolidates all less-than-majority-owned subsidiaries, if any, in which the parent\u2019s power to control exists.\nThe Company's consolidated subsidiaries and/or entities are as follows:",
+   "prose_after": "The consolidated financial statements of the Company include all accounts of the Company and its wholly owned subsidiary, Attitude Beer Holding Co.\nAll intercompany balances and transactions have been eliminated.\nFair Value of Financial Instruments\nThe Company follows paragraph 820-10-35-37 of the FASB Accounting Standards Codification (\u201cParagraph 820-10-35-37\u201d) to measure the fair value of its financial instruments and paragraph 825-10-50-10 of the FASB Accounting Standards Codification for disclosures about fair value of its financial instruments. Paragraph 820-10-35-37 establishes a framework for measuring fair value in accounting principles generally accepted in the United States of America (U.S. GAAP), and expands disclosures about fair value measurements. To increase consistency and comparability in fair value measurements and related disclosures, Paragraph 820-10-35-37 establishes a fair value hierarchy which prioritizes the inputs to valuation techniques used to measure fair value into three (3) broad levels. The three (3) levels of fair value hierarchy defined by Paragraph 820-10-35-37 are described below:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1712,
+     "token": "PAGE_BREAK",
+     "id": 45,
+     "namespace": "F",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1",
+     "Quoted market prices available in active markets for identical assets or liabilities as of the reporting date."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1748,
+    "end_line": 1751
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2212 Significant and Critical Accounting Policies and Practices"
+    }
+   },
+   "prose_before": "The consolidated financial statements of the Company include all accounts of the Company and its wholly owned subsidiary, Attitude Beer Holding Co.\nAll intercompany balances and transactions have been eliminated.\nFair Value of Financial Instruments\nThe Company follows paragraph 820-10-35-37 of the FASB Accounting Standards Codification (\u201cParagraph 820-10-35-37\u201d) to measure the fair value of its financial instruments and paragraph 825-10-50-10 of the FASB Accounting Standards Codification for disclosures about fair value of its financial instruments. Paragraph 820-10-35-37 establishes a framework for measuring fair value in accounting principles generally accepted in the United States of America (U.S. GAAP), and expands disclosures about fair value measurements. To increase consistency and comparability in fair value measurements and related disclosures, Paragraph 820-10-35-37 establishes a fair value hierarchy which prioritizes the inputs to valuation techniques used to measure fair value into three (3) broad levels. The three (3) levels of fair value hierarchy defined by Paragraph 820-10-35-37 are described below:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1784,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 2",
+     "Pricing inputs other than quoted prices in active markets included in Level 1, which are either directly or indirectly observable as of the reporting date."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1752,
+    "end_line": 1755
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2212 Significant and Critical Accounting Policies and Practices"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1784,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 3",
+     "Pricing inputs that are generally observable inputs and not corroborated by market data."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1756,
+    "end_line": 1759
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2212 Significant and Critical Accounting Policies and Practices"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Financial assets are considered Level 3 when their fair values are determined using pricing models, discounted cash flow methodologies or similar techniques and at least one significant model assumption or input is unobservable.\nThe fair value hierarchy gives the highest priority to quoted prices (unadjusted) in active markets for identical assets or liabilities and the lowest priority to unobservable inputs. If the inputs used to measure the financial assets and liabilities fall within more than one level described above, the categorization is based on the lowest level input that is significant to the fair value measurement of the instrument.\nThe carrying amounts of the Company\u2019s financial assets and liabilities, such as cash and accrued expenses approximate their fair values because of the short maturity of these instruments.\nTransactions involving related parties cannot be presumed to be carried out on an arm's-length basis, as the requisite conditions of competitive, free-market dealings may not exist. Representations about transactions with related parties, if made, shall not imply that the related party transactions were consummated on terms equivalent to those that prevail in arm's-length transactions unless such representations can be substantiated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1747,
+     "token": "PAGE_BREAK",
+     "id": 46,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1784,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Bottled beer",
+     "$",
+     "46,190"
+    ],
+    [
+     "Other alcoholic beverages",
+     "",
+     "11,141"
+    ],
+    [
+     "Food items",
+     "",
+     "11,399"
+    ],
+    [
+     "Other items",
+     "",
+     "12,319"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total inventory at June 30, 2015",
+     "$",
+     "81,049"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1886,
+    "end_line": 1896
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Allocate the transaction price to the performance obligations in the contract"
+    }
+   },
+   "prose_before": "The Company is attempting to further implement its business plan and generate sufficient revenue; however, the Company\u2019s cash position may not be sufficient to support its daily operations. While the Company believes in the viability of its strategy to further implement its business plan and generate sufficient revenue and in its ability to raise additional funds by way of a public or private offering, there can be no assurances to that effect. The ability of the Company to continue as a going concern is dependent upon its ability to further implement its business plan and generate sufficient revenue and its ability to raise additional funds by way of a public or private offering.\nThe consolidated financial statements do not include any adjustments related to the recoverability and classification of reported asset amounts or the amounts and classification of liabilities that might be necessary should the Company be unable to continue as a going concern.\nNote 4- Inventory\nInventory consists of the following at the West Hartford, Connecticut World of Beer location:",
+   "prose_after": "There was no inventory at June 30, 2014.\nNote 5 \u2013 Real Estate Loans Receivable and Related Promissory Note Payable\nEffective September 6, 2013 the Company entered into a Securities Purchase Agreement (the \u201cAgreement\u201d) with Harrison Vickers and Waterman, LLC (\u201cHarrison Vickers\u201d). Pursuant to the Agreement the Company agreed to purchase from Harrison Vickers certain assets held by Harrison Vickers in the form of real estate loans (the \u201cLoans\u201d). The purchase price was paid by the Company via the issuance of a secured promissory note in the principal amount of $1,800,000 (the \u201cNote\u201d) due March 31, 2015.\nFour loans, $1,800,000 in aggregate, were purchased with one loan of $180,000 being collected during the interim period ending December 31, 2013. The remaining three loans of $520,000, $550,000 and $550,000 were issued on April 2, 2013, May 15, 2013 and July 15, 2013, respectively. They all bear interest at 12% per annum and are due one year from the date of issuance. The loans are secured by a first lien.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1865,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "F",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "June 30, 2014",
+     ""
+    ],
+    [
+     "Balance Outstanding",
+     "$",
+     "950,000",
+     "$",
+     "1,470,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1915,
+    "end_line": 1921
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2013 Real Estate Loans Receivable and Related Promissory Note Payable"
+    }
+   },
+   "prose_before": "Four loans, $1,800,000 in aggregate, were purchased with one loan of $180,000 being collected during the interim period ending December 31, 2013. The remaining three loans of $520,000, $550,000 and $550,000 were issued on April 2, 2013, May 15, 2013 and July 15, 2013, respectively. They all bear interest at 12% per annum and are due one year from the date of issuance. The loans are secured by a first lien.\nThe Note is secured by a Pledge Agreement (the \u201cPledge Agreement\u201d) entered into between the Company and Harrison Vickers, whereby the proceeds of the Loans are pledged as security for the repayment of the Note.\nDuring the interim period ended December 31, 2013, the Company received payment on and paid down $330,000 of the Loans.\nThe $550,000 loan was reduced to $400,000 during the year ended June 30, 2014 with a corresponding reduction in the promissory note payable. The balance of $400,000 is being disputed by the property owner, but the Company is fully insured by Title Insurance for this amount.\nOn February 10, 2015, the note for $520,000 was fully repaid.\nThe current balance outstanding is $950,000.",
+   "prose_after": "Note 6- Receivable from Attitude Drinks Incorporated\nAttitude Drinks Incorporated is the majority owner of the Company. Occasionally, cash is forwarded to and from the entities, and a receivable/payable balance is established. As of the report date, the Company had a receivable of $131,423 that is due from Attitude Drinks Incorporated.\nNote 7- Property Plant and Equipment\nProperty, plant and equipment relate to the fixtures at the West Hartford, Connecticut World of Beer location which are as follows (in $000):",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1965,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property Description",
+     "Amount",
+     "",
+     "",
+     "Depreciable life"
+    ],
+    [
+     "Tenant Improvements",
+     "$",
+     "490",
+     "",
+     "20 years"
+    ],
+    [
+     "Bar equipment",
+     "",
+     "236",
+     "",
+     "10 years"
+    ],
+    [
+     "Communications Equipment",
+     "",
+     "88",
+     "",
+     "5 years"
+    ],
+    [
+     "Capitalized permitting and fees",
+     "",
+     "46",
+     "",
+     "15 years"
+    ],
+    [
+     "Other",
+     "",
+     "162",
+     "",
+     "5-7 years"
+    ],
+    [
+     "Accumulated Depreciation",
+     "",
+     "(60)",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "962",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1930,
+    "end_line": 1943
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Property Plant and Equipment"
+    }
+   },
+   "prose_before": "Note 6- Receivable from Attitude Drinks Incorporated\nAttitude Drinks Incorporated is the majority owner of the Company. Occasionally, cash is forwarded to and from the entities, and a receivable/payable balance is established. As of the report date, the Company had a receivable of $131,423 that is due from Attitude Drinks Incorporated.\nNote 7- Property Plant and Equipment\nProperty, plant and equipment relate to the fixtures at the West Hartford, Connecticut World of Beer location which are as follows (in $000):",
+   "prose_after": "Note 8- Capitalized Costs\nCapitalized costs represent all costs incurred at the West Harford, Connecticut World of Beer location prior to its opening date. Such costs in thousands include:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1965,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Property Description",
+     "Amount",
+     "",
+     ""
+    ],
+    [
+     "Pre-opening labor costs",
+     "$",
+     "67",
+     ""
+    ],
+    [
+     "Franchise fees",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Training fees",
+     "",
+     "29",
+     ""
+    ],
+    [
+     "Legal fees",
+     "",
+     "23",
+     ""
+    ],
+    [
+     "Start-up costs",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "24",
+     ""
+    ],
+    [
+     "Accumulated Depreciation",
+     "",
+     "(9)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "199",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1948,
+    "end_line": 1963
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Capitalized Costs"
+    }
+   },
+   "prose_before": "Note 8- Capitalized Costs\nCapitalized costs represent all costs incurred at the West Harford, Connecticut World of Beer location prior to its opening date. Such costs in thousands include:",
+   "prose_after": "All costs are amortized over fifteen years.\nNote 9- Accrued Expenses- in dispute\nUpon the signing of the April 2015 Material Definitive agreement (see Note 1 above), Mr. James Giordano resigned as our Chief Executive Officer. At that time, his shares in the Company were purchased, and all liabilities to him extinguished. Mr. Girodano disputes this and believes he is entitled to his back salary of which $175,000 was accrued. The Company disputes this assertion but has reaccrued the liability. No legal action by either party has been initiated at this time.\nNote 10- Note Payable-investor\nNotes payable \u2013 investor is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1910,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "F",
+     "page_number": 15
+    },
+    "after": {
+     "line": 1965,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "F",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "June 30, 2014",
+     ""
+    ],
+    [
+     "On October 9, 2013, the Company issued a promissory note in consideration for $2,500 received from an investor. The note matured on June 30, 2014 and bears interest at ten percent per annum, compounded monthly. The note is currently in default. The note balance with the accrued interest included is $3,188 at June 30, 2015 and $2,938 at June 30, 2014.",
+     "$",
+     "3,188",
+     "$",
+     "2,938"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "On October 23, 2013, the Company issued a promissory note in consideration for $5,000 received from an investor. The Note matured on June 30, 2014 and bears interest at ten percent per annum, compounded monthly. The note is currently in default. The note balance with the accrued interest included is $6,027 at June 30, 2015 and $5,527 at June 30, 2014.",
+     "",
+     "6,027",
+     "",
+     "5,527"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "On January 31, 2014, the Company issued a promissory note in consideration for $5,000 received from an investor. The Note matured on January 31, 2015 and bears interest at ten percent per annum, compounded monthly. The note is currently in default. The note balance with the accrued interest included is $5,992 at June 30, 2015 and $5,212 at June 30, 2014.",
+     "",
+     "5,992",
+     "",
+     "5,212"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "On May 15, 2014, the Company issued a promissory note in consideration for $5,000 received from an investor. The Note matured on November 15, 2014 and bears interest at ten percent per annum, compounded monthly. The note is currently in default. The note balance with the accrued interest included is $5,542 at June 30, 2015 and $5,042 at June 30, 2014.",
+     "",
+     "5,542",
+     "",
+     "5,042"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "On May 30, 2014, the Company issued a promissory note in consideration for $10,000 received from an investor. The Note matured on December 31, 2014 and bears interest at ten percent per annum, compounded monthly. The note is currently in default. The note balance with the accrued interest included is $11,628 at June 30, 2015 and $10,125 at June 30, 2014.",
+     "",
+     "11,628",
+     "",
+     "10,125"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Since inception, the Company had received advances from its former Chairman and Chief Executive Officer, Robert J Sharp, for working capital purposes. Mr. Sharp advanced the Company $36,628. On September 1, 2013, Mr. Sharp assigned his rights to the advances to an investor. On January 2, 2015, the Company and the investor agreed to adjust the note such that the note (a) became immediately convertible; (b) converts into common stock at a 50% discount from the lowest closing bid price for the prior thirty trading days; (c) bears interest at a rate of 10% per year. On March 25, 2015, the investor converted $2,600 worth of debt into 2,000,000 shares. The note balance with accrued interest is $35,775 at June 30, 2015 and $36,628 at June 30, 2014.",
+     "",
+     "35,775",
+     "",
+     "36,628"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1974,
+    "end_line": 2003
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Note Payable-investor"
+    }
+   },
+   "prose_before": "All costs are amortized over fifteen years.\nNote 9- Accrued Expenses- in dispute\nUpon the signing of the April 2015 Material Definitive agreement (see Note 1 above), Mr. James Giordano resigned as our Chief Executive Officer. At that time, his shares in the Company were purchased, and all liabilities to him extinguished. Mr. Girodano disputes this and believes he is entitled to his back salary of which $175,000 was accrued. The Company disputes this assertion but has reaccrued the liability. No legal action by either party has been initiated at this time.\nNote 10- Note Payable-investor\nNotes payable \u2013 investor is as follows:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1969,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "F",
+     "page_number": 17
+    },
+    "after": {
+     "line": 2003,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "On October 1, 2014, the Company issued a promissory note in consideration for $25,000 received from an investor. The Note matures on June 30, 2015 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest is $26,863 at June 30, 2015.",
+     "26,863",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "On October 24, 2014, the Company issued a promissory note in consideration for $5,000 received from an investor. The Note matures on July 31, 2015 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest is $5,073 at June 30, 2015.",
+     "5,073",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "On March 15, 2015, the Company issued a promissory note in consideration for $2,500 received from an investor. The Note matures on July 31, 2015 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest is $2,573 at June 30, 2015.",
+     "2,573",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "On April 21, 2015, the Company issued a promissory note in consideration for $1,619,375 received from an investor. The Note matures on April 20, 2017 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest at June 30, 2015 is $1,650,432.",
+     "1,650,432",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "On April 21, 2015, the Company issued a promissory note in consideration for $554,792 received from an investor. The Note matures on April 20, 2017 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest at June 30, 2015 is $565,432.",
+     "565,432",
+     "-"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "On April 27, 2015, the Company issued a promissory note in consideration for $13,250 received from an investor. The Note matures on July 31, 2015 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest at June 30, 2015 is $13,482.",
+     "13,482",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2004,
+    "end_line": 2035
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Note Payable-investor"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2003,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "F",
+     "page_number": 18
+    },
+    "after": {
+     "line": 2035,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "On May 8, 2015, the Company issued a promissory note in consideration for $7,500 received from an investor. The Note matures on July 31, 2015 and bears interest at ten percent per annum. The investor is entitled at his option to convert all or any lesser portion of the amounts due from the Company for additional shares. The conversion price is an amount equal to fifty percent (50%) of the lowest closing bid price in the thirty days prior to the day that the Investor requests conversion. The balance of the note with accrued interest at June 30, 2015 is $7,609.",
+     "",
+     "7,609",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total face value of notes plus accrued interest",
+     "",
+     "2,339,616",
+     "",
+     "65,472"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Discount on Notes Payable",
+     "",
+     "1,984,395",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net debt",
+     "",
+     "355,221",
+     "",
+     "65,472"
+    ],
+    [
+     "Less: long term portion",
+     "",
+     "210,522",
+     "",
+     "-"
+    ],
+    [
+     "Current portion",
+     "$",
+     "144,699",
+     "$",
+     "65,472"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2036,
+    "end_line": 2054
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Note Payable-investor"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 11 \u2013 Derivative Liabilities:\nFair Value Measurement\nValuation Hierarchy\nASC 820, \u201cFair Value Measurements and Disclosures,\u201d establishes a valuation hierarchy for disclosure of the inputs to valuation used to measure fair value. This hierarchy prioritizes the inputs into three broad levels as follows. Level 1 inputs are quoted prices (unadjusted) in active markets for identical assets or liabilities. Level 2 inputs are quoted prices for similar assets and liabilities in active markets or inputs that are observable for the asset or liability, either directly or indirectly through market corroboration, for substantially the full term of the financial instrument. Level 3 inputs are unobservable inputs based on the Company\u2019s own assumptions used to measure assets and liabilities at fair value. A financial asset or liability\u2019s classification within the hierarchy is determined based on the lowest level input that is significant to the fair value measurement.\nThe following table provides the liabilities carried at fair value measured on a recurring basis as of June 30, 2015:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2035,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "Fair Value Measurements at June 30, 2015",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Total\n\n\n\nCarrying\n\n\n\nValue at\n\n\n\nJune 30, 2015",
+     "",
+     "Quoted\n\n\n\nprices in\n\n\n\nactive\n\n\n\nmarkets\n\n\n\n(Level 1)",
+     "",
+     "Significant\n\n\n\nother\n\n\n\nobservable\n\n\n\ninputs\n\n\n\n(Level 2)",
+     "",
+     "Significant\n\n\n\nunobservable\n\n\n\ninputs \n\n\n\n(Level 3)",
+     ""
+    ],
+    [
+     "Conversion feature liability",
+     "$",
+     "4,237,890",
+     "$",
+     "\u2013",
+     "$",
+     "\u2013",
+     "$",
+     "4,237,890"
+    ]
+   ],
+   "caption_stack": [
+    "Fair Value Measurements at June 30, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2065,
+    "end_line": 2080
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2013 Derivative Liabilities:"
+    }
+   },
+   "prose_before": "ASC 820, \u201cFair Value Measurements and Disclosures,\u201d establishes a valuation hierarchy for disclosure of the inputs to valuation used to measure fair value. This hierarchy prioritizes the inputs into three broad levels as follows. Level 1 inputs are quoted prices (unadjusted) in active markets for identical assets or liabilities. Level 2 inputs are quoted prices for similar assets and liabilities in active markets or inputs that are observable for the asset or liability, either directly or indirectly through market corroboration, for substantially the full term of the financial instrument. Level 3 inputs are unobservable inputs based on the Company\u2019s own assumptions used to measure assets and liabilities at fair value. A financial asset or liability\u2019s classification within the hierarchy is determined based on the lowest level input that is significant to the fair value measurement.\nThe following table provides the liabilities carried at fair value measured on a recurring basis as of June 30, 2015:",
+   "prose_after": "The carrying amounts of cash, accounts receivable, prepaid expenses, accounts payable, and accrued liabilities approximate their fair value due to their short maturities. The Company measures the fair value of financial assets and liabilities based on the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date. The Company maximizes the use of observable inputs and minimizes the use of unobservable inputs when measuring fair value.\nLevel 3 liabilities are valued using unobservable inputs to the valuation methodology that are significant to the measurement of the fair value of the derivative liabilities. For fair value measurements categorized within Level 3 of the fair value hierarchy, the Company\u2019s accounting department, who reports to the Principal Financial Officer, determines its valuation policies and procedures. The development and determination of the unobservable inputs for Level 3 fair value measurements and fair value calculations are the responsibility of the Company\u2019s accounting department and are approved by the Principal Financial Officer.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2035,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 19
+    },
+    "after": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "June 30, 2015",
+     "",
+     "",
+     "June 30, 2014",
+     "",
+     ""
+    ],
+    [
+     "Net deferred tax assets \u2013 non-current:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Expected income tax benefit from NOL carry-forwards",
+     "$",
+     "306,202",
+     "",
+     "$",
+     "205,624",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Less valuation allowance",
+     "",
+     "(306,202)",
+     "",
+     "",
+     "(205,624)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Deferred tax assets, net of valuation allowance",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2109,
+    "end_line": 2122
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Income Tax Provision"
+    }
+   },
+   "prose_before": "At June 30, 2015, the Company had net operating loss (\u201cNOL\u201d) carry\u2013forwards for Federal income tax purposes of $1,944,010 that may be offset against future taxable income through 2034. No tax benefit has been reported with respect to these net operating loss carry-forwards in the consolidated financial statements because the Company believes that the realization of the Company\u2019s net deferred tax assets of approximately $680,404 was not considered more likely than not and accordingly, the potential tax benefits of the net loss carry-forwards are offset by a full valuation allowance.\nDeferred tax assets consist primarily of the tax effect of NOL carry-forwards. The Company has provided a full valuation allowance on the deferred tax assets because of the uncertainty regarding its realization. The valuation allowance increased approximately $468,732 and $191,888 for the fiscal year ended June 30, 2015 and 2014, respectively.\nComponents of deferred tax assets and valuation allowance are as follows:",
+   "prose_after": "Income Tax Provision in the Consolidated Statements of Operations\nA reconciliation of the federal statutory income tax rate and the effective income tax rate as a percentage of income before income taxes is as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2141,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Fiscal Year Ended\n\n\n\nJune 30, 2015",
+     "",
+     "",
+     "For the Fiscal Year Ended\n\n\n\nJune 30, 2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal statutory income tax rate",
+     "",
+     "34.0",
+     "%",
+     "",
+     "34.0",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance on net operating loss carry-forwards",
+     "",
+     "(34.0)",
+     "%",
+     "",
+     "(34.0)",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effective income tax rate",
+     "",
+     "0.0",
+     "%",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 2127,
+    "end_line": 2141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2013 Income Tax Provision"
+    }
+   },
+   "prose_before": "Income Tax Provision in the Consolidated Statements of Operations\nA reconciliation of the federal statutory income tax rate and the effective income tax rate as a percentage of income before income taxes is as follows:",
+   "prose_after": "Note 14 \u2013 Stockholders\u2019 Deficit\nShares Authorized\nUpon formation, the total number of shares of all classes of stock which the Company is authorized to issue is Seventy Five Million (75,000,000) shares of which One Million (1,000,000) shares shall be Preferred Stock, par value $0.0001 per share, and Seventy Four Million (74,000,000) shares shall be Common Stock, par value $0.0001 per share.\nOn October 24, 2013 the Company filed a Certificate of Amendment to amend its Articles of Incorporation (the \u201cActions\u201d) to: (i) change the name of the Company to Harrison Vickers & Waterman Inc.; (ii) increase the number of shares of authorized common stock of the Company from 74,000,000 to 2,000,000,000 shares; and (iii) effectuate a forward stock split of our common stock at a ratio determined by our Board of Directors of 324.5 for 1.\nAll shares and per share amounts in the consolidated financial statements have been adjusted to give retroactive effect to the Stock Split and the change in authorized stock.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2088,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "F",
+     "page_number": 20
+    },
+    "after": {
+     "line": 2141,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "F",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Harrison Vickers and Waterman, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Segment Reporting",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restaurants/ Tavern",
+     "",
+     "",
+     "Commercial Lending",
+     "",
+     "",
+     "Corporate overhead And Eliminations",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Net Revenues",
+     "$",
+     "1,611,320",
+     "",
+     "$",
+     "162,455",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,773,775",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods sold",
+     "",
+     "(451.146)",
+     "",
+     "",
+     "(162,455)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(613,601)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "1,160,174",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,160,174",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "1,016,362",
+     "",
+     "",
+     "127,384",
+     "",
+     "",
+     "72,003",
+     "",
+     "",
+     "1,215,749",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "(5,353)",
+     "",
+     "",
+     "(39,948)",
+     "",
+     "",
+     "(3,407,562)",
+     "",
+     "",
+     "(3,452,863)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (loss) before Non-controlling interest",
+     "",
+     "138,459",
+     "",
+     "",
+     "(167,332)",
+     "",
+     "",
+     "(3,479,565)",
+     "",
+     "",
+     "(3,508,438)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-controlling interest",
+     "",
+     "-()",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(46,731)",
+     "",
+     "",
+     "(46.731)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "138,459",
+     "",
+     "",
+     "(167,332)",
+     "",
+     "",
+     "(3,526,296)",
+     "",
+     "",
+     "(3,555,169)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current assets",
+     "",
+     "333,964",
+     "",
+     "",
+     "950,000",
+     "",
+     "",
+     "148,788",
+     "",
+     "",
+     "1,432,752",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "1,498,997",
+     "",
+     "",
+     "950,000",
+     "",
+     "",
+     "145,048",
+     "",
+     "",
+     "2,594,045",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "330,337",
+     "",
+     "$",
+     "1,254,180",
+     "",
+     "$",
+     "4,501,568",
+     "",
+     "$",
+     "6,086,085",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Harrison Vickers and Waterman, Inc.",
+    "Segment Reporting",
+    "June 30, 2015"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2204,
+    "end_line": 2234
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "No shares have been issued as of June 30, 2015, and all of the 5,000,000 shares are available for issuance under the 2013 Plan.\nNote 15 \u2013 Non-Controlling Interest\nThe Company owns 51% of the West Hartford World of Beer location as we record the elimination of 49% of the net profit for this location. We consolidate 100% of the total assets and statement of operations for this location.\nNote 16 \u2013 Concentrations and Credit Risk\nCustomers Concentrations\nThe Company\u2019s net revenues come from restaurant and bar operations, and it has been determined that there is no concentration of revenues from any one customer.\nNote 17- Segment Reporting\nThe Company operates in two segments which are consistent with its internal organization. The major segments are restaurants/taverns and commercial lending.\nRevenues, expenses and assets not explicitly attributed to a segment are deemed to be unallocated.\nSee below for a summary:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2195,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 23
+    },
+    "after": {
+     "line": 2234,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 5,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Harrison Vickers and Waterman, Inc.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Segment Reporting",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "June 30, 2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Restaurants/ Tavern",
+     "",
+     "Commercial Lending",
+     "",
+     "",
+     "Corporate overhead",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Net Revenues",
+     "$",
+     "-",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cost of Goods sold",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating Expenses",
+     "",
+     "-",
+     "",
+     "562,101",
+     "",
+     "",
+     "-",
+     "",
+     "562,101",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Other Income (Expense)",
+     "",
+     "-",
+     "",
+     "(2,276)",
+     "",
+     "",
+     "-",
+     "",
+     "(2,276)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income (loss) before minority interest",
+     "",
+     "-",
+     "",
+     "(564,377)",
+     "",
+     "",
+     "-",
+     "",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Minority interest",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "-",
+     "",
+     "(564,377)",
+     "",
+     "",
+     "-",
+     "",
+     "(564,377)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Current assets",
+     "",
+     "-",
+     "",
+     "1,470,361",
+     "",
+     "",
+     "-",
+     "",
+     "1,470,361",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Assets",
+     "",
+     "-",
+     "",
+     "1,470,361",
+     "",
+     "",
+     "-",
+     "",
+     "1,470,361",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "$",
+     "-",
+     "$",
+     "1,644,909",
+     "",
+     "$",
+     "-",
+     "$",
+     "1,644,909",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Harrison Vickers and Waterman, Inc.",
+    "Segment Reporting",
+    "June 30, 2014"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 2235,
+    "end_line": 2265
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBIT INDEX"
+    },
+    "note": {
+     "number": 17,
+     "label": "NOTE 17",
+     "title": "Segment Reporting"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Note 18 \u2013 Subsequent Events\nThe Company has evaluated all events that occurred after the balance sheet date through the date when the consolidated financial statements were issued to determine if they must be reported. Here is the subsequent event:\nOn July 29, 2015, we issued a convertible note payable for $80,000 with a two year maturity at an interest rate of ten percent per annum. We also issued a warrant to purchase up to 64,000 shares of our common stock at a price of $.0025 with an expiration date of June 29, 2022.\nOn August 18, 2015, we filed a DEF 14C report whereas the Company obtained the approval by written consent of one shareholders that has 85.4% of the voting power of the Company as well as the Board of Directors to amend the Company\u2019s Articles of Incorporation to (1) increase the Company\u2019s authorized shares of common stock from 2,000,000,000 to 7,500,000,000, (2) change the name of the Company to Attitude Beer, Inc. and (3) to adopt the 2015 Stock Incentive Plan. Effective date will be September 8, 2015.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 17
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 2234,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 24
+    },
+    "after": {
+     "line": 2273,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

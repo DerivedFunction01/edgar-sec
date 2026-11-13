@@ -1,0 +1,1286 @@
+{
+ "accession": "0001575705-22-000023",
+ "cik": "0001871890",
+ "form": "10-Q",
+ "filing_date": "2022-01-05",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10q-galaxyenterprises.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Wyoming",
+     "86-1370102"
+    ],
+    [
+     "State or other jurisdiction of incorporation or organization",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X] QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended October 31, 2021\nor\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number: 333-258034\nGalaxy Enterprises Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "1701 Charles Iam Court\nLas Vegas, Nevada 89117\n(Address of principal executive offices) (Zip Code)\n(702) 596-9628\nRegistrant\u2019s telephone number, including area code\nN/A\n(Former name, former address and former fiscal year, if changed since last report)\nSecurities registered under Section 12(b) of the Exchange Act:\nNone\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "INDEX",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "PART I",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements (unaudited)",
+     ""
+    ],
+    [
+     "",
+     "BALANCE SHEETS as of October 31, 2021 and July 31, 2021",
+     "2"
+    ],
+    [
+     "",
+     "STATEMENTS OF OPERATIONS for the three months ended October 31, 2021",
+     "3"
+    ],
+    [
+     "",
+     "STATEMENTS OF CASH FLOWS for the three months ended October 31, 2021",
+     "5"
+    ],
+    [
+     "",
+     "NOTES TO THE UNAUDITED INTERIM FINANCIAL STATEMENTS",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "11"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities.",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Mine Safety Disclosures",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "13"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "15"
+    ]
+   ],
+   "caption_stack": [
+    "INDEX"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 68,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer                        [ ]  Accelerated filer          [ ]\nNon-accelerated filer                          [ ]  Smaller reporting company  [X]\n(Do not check if a smaller reporting company)\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\n4,170,000 shares of common stock are issued and outstanding as of December 29, 2021.\nTable of Contents",
+   "prose_after": "i\nPART I FINANCIAL INFORMATION\nCertain information and footnote disclosures required under accounting principles generally accepted in the United States of America have been condensed or omitted from the following financial statements pursuant to the rules and regulations of the Securities and Exchange Commission. It is suggested that the following financial statements be read in conjunction with the year-end financial statements and notes thereto included in the Company\u2019s Annual Report on Form 10K for the year ended July 31, 2021 In the opinion of management, all adjustments considered necessary for a fair presentation of the results of operations and financial position have been included and all such adjustments are of a normal recurring nature.\nThe results of operations for the three months ended October 31, 2021 are not necessarily indicative of the results for the entire fiscal year or for any other period.\nUNAUDITED BALANCE SHEET",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 65,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 107,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31, 2021",
+     "",
+     "",
+     "July 31, 2021",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "42,263",
+     "",
+     "$",
+     "40,863",
+     ""
+    ],
+    [
+     "Prepayment & deposits",
+     "",
+     "15,000",
+     "",
+     "",
+     "15,000",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "57,263",
+     "",
+     "",
+     "55,863",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "",
+     "57,263",
+     "",
+     "",
+     "55,863",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES & STOCKHOLDER\u2019S EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "24,920",
+     "",
+     "",
+     "6,470",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "24,920",
+     "",
+     "",
+     "6,470",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Liabilities",
+     "",
+     "24,920",
+     "",
+     "",
+     "6,470",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDER\u2019S EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock: $0.0001 par value, 500,000,000 authorized, 4,170,000 issued and outstanding as of July 31, 2021",
+     "",
+     "417",
+     "",
+     "",
+     "417",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "82,983",
+     "",
+     "",
+     "82,983",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(51,057)",
+     "",
+     "",
+     "(34,007)",
+     ""
+    ],
+    [
+     "Total stockholder\u2019s equity",
+     "",
+     "32,343",
+     "",
+     "",
+     "49,393",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholder\u2019s equity",
+     "",
+     "57,263",
+     "",
+     "",
+     "55,863",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 118,
+    "end_line": 160
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "i\nPART I FINANCIAL INFORMATION\nCertain information and footnote disclosures required under accounting principles generally accepted in the United States of America have been condensed or omitted from the following financial statements pursuant to the rules and regulations of the Securities and Exchange Commission. It is suggested that the following financial statements be read in conjunction with the year-end financial statements and notes thereto included in the Company\u2019s Annual Report on Form 10K for the year ended July 31, 2021 In the opinion of management, all adjustments considered necessary for a fair presentation of the results of operations and financial position have been included and all such adjustments are of a normal recurring nature.\nThe results of operations for the three months ended October 31, 2021 are not necessarily indicative of the results for the entire fiscal year or for any other period.\nUNAUDITED BALANCE SHEET",
+   "prose_after": "(The accompanying notes are an integral part of these unaudited financial statements)\nUNAUDITED STATEMENT OF COMPREHENSIVE LOSS\nFor the period from August 1, 2021 to October 31, 2021",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 114,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 163,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Expenses",
+     "",
+     "",
+     ""
+    ],
+    [
+     "General and administrative",
+     "$",
+     "17,050",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "(17,050)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Comprehensive Loss",
+     "",
+     "(17,050)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share \u2013 basic and diluted",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding \u2013 basic and diluted",
+     "",
+     "4,170,000",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Expenses"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 169,
+    "end_line": 184
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(The accompanying notes are an integral part of these unaudited financial statements)\nUNAUDITED STATEMENT OF COMPREHENSIVE LOSS\nFor the period from August 1, 2021 to October 31, 2021",
+   "prose_after": "(The accompanying notes are an integral part of these unaudited financial statements)\nUNAUDITED STATEMENT OF STOCKHOLDERS\u2019 EQUITY\nFor the period from August 1, 2021 to October 31, 2021",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 163,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Paid in",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number",
+     "",
+     "Par Value",
+     "",
+     "Capital",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "$",
+     "",
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Opening Balance, July 31, 2021",
+     "",
+     "4,170,000",
+     "",
+     "417",
+     "",
+     "82,983",
+     "",
+     "(34,007)",
+     "",
+     "",
+     "49,393",
+     ""
+    ],
+    [
+     "Common Stock issued for Cash",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other Comprehensive Income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "(17,050)",
+     "",
+     "",
+     "(17,050)",
+     ""
+    ],
+    [
+     "Closing Balance, October 31, 2021",
+     "",
+     "4,170,000",
+     "",
+     "417",
+     "",
+     "82,983",
+     "",
+     "(51,057)",
+     "",
+     "",
+     "32,343",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Additional"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 193,
+    "end_line": 208
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(The accompanying notes are an integral part of these unaudited financial statements)\nUNAUDITED STATEMENT OF STOCKHOLDERS\u2019 EQUITY\nFor the period from August 1, 2021 to October 31, 2021",
+   "prose_after": "UNAUDITED STATEMENT OF CASH FLOWS\nFor the period from August 1, 2021 to October 31, 2021",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 187,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "$",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss for the period",
+     "",
+     "(17,050)",
+     ""
+    ],
+    [
+     "Change in operating assets and liabilities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Prepayments & deposits",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "18,450",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "1,400",
+     ""
+    ],
+    [
+     "Cash flows from financing activities",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in cash",
+     "",
+     "1,400",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash \u2013 beginning of period",
+     "",
+     "40,863",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash \u2013 end of period",
+     "",
+     "42,263",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental cash flow disclosures",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid For:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Interest",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Income tax",
+     "",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "$",
+    "Cash flows from operating activities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 215,
+    "end_line": 247
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNAUDITED STATEMENT OF CASH FLOWS\nFor the period from August 1, 2021 to October 31, 2021",
+   "prose_after": "(The accompanying notes are an integral part of these unaudited financial statements)\nGALAXY ENTERPRISES INC.\nNOTES TO UNAUDITED FINANCIAL STATEMENTS\nOctober 31, 2021\n1. NATURE AND CONTINUANCE OF OPERATIONS\nGalaxy Enterprises Inc. (the \u201cCompany\u201d) was incorporated in the state of Wyoming on March 24, 2021. The Company is a development stage company that intends to commence business operations by offering real estate management services for clients that focus on cost-efficient operations and tenant retention on a range of properties including Class A, B, and C office space, as well as industrial, manufacturing, retail, and warehousing facilities. The Company\u2019s fiscal year-end is July 31.\n2. GOING CONCERN\nThese financial statements have been prepared on a going concern basis which assumes the Company will be able to realize its assets and discharge its liabilities in the normal course of business for the foreseeable future. The Company has incurred losses since inception resulting in an accumulated deficit of $(51,057). For the three months ended October 31, 2021, the Company incurred a net loss of $(17,050) and operating cash outflows of $1,400. Further losses are anticipated in the development of its business raising substantial doubt about the Company\u2019s ability to continue as a going concern for a period no less than 12 months from the date of this report. In order to remain in business, the Company will need to raise capital in the next twelve months. The ability to continue as a going concern is dependent upon the Company generating profitable operations in the future and/or obtaining the necessary financing to meet its obligations and repay its liabilities arising from normal business operations when they come due. Management intends to finance operating costs over the next twelve months with existing cash on hand and proceeds from its public offering. The Company has no written or verbal commitments from shareholders, director or officer to provide the Company with any form of cash advances, loans or other sources of liquidity to meet its working capital needs. The accompanying financial statements do not include any adjustments to reflect the possible future effects on the recoverability and classification of assets or the amounts and classifications of liabilities that may result from the possible inability of the Company to continue as a going concern.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 250,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "SEC Ref. No.",
+     "Title of Document"
+    ],
+    [
+     "101.INS",
+     "XBRL Instance Document"
+    ],
+    [
+     "101.SCH",
+     "XBRL Taxonomy Extension Schema Document"
+    ],
+    [
+     "101.CAL",
+     "XBRL Taxonomy Calculation Linkbase Document"
+    ],
+    [
+     "101.DEF",
+     "XBRL Taxonomy Extension Definition Linkbase Document"
+    ],
+    [
+     "101.LAB",
+     "XBRL Taxonomy Label Linkbase Document"
+    ],
+    [
+     "101.PRE",
+     "XBRL Taxonomy Presentation Linkbase Document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 443,
+    "end_line": 453
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Item 3. Defaults Upon Senior Securities.\nNone.\nItem 4. Mine Safety\nNot Applicable.\nItem 5. Other Information\nNone.\nPART II\nItem 6. Exhibits.\n31.1 Section 302 Certification by Principal Executive Officer 31.2 Section 302 Certification by Principal Accounting Officer and Principal Financial Officer 32.1 Section 906 Certification by Principal Executive Officer 32.2 Section 906 Certification by Principal Accounting Officer and Principal Financial Officer\nCopies of the following documents are included as exhibits to this report pursuant to Item 601 of Regulation S-K.",
+   "prose_after": "The XBRL related information in Exhibits 101 to this Annual Report on Form 10-K shall not be deemed \u201cfiled\u201d or a part of a registration statement or prospectus for purposes of Section 11 or 12 of the Securities Act of 1933, as amended, and is not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of those sections.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 434,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Privacy and Value Inc.",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dated: December 29, 2021",
+     "By:",
+     "/s/ Gregory Navone"
+    ],
+    [
+     "",
+     "",
+     "Gregory Navone"
+    ],
+    [
+     "",
+     "",
+     "President, Chief Executive Officer, and director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ James C. Shaw"
+    ],
+    [
+     "",
+     "",
+     "James C. Shaw"
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer, Treasury, Secretary and director"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ Kurt Strakaluse"
+    ],
+    [
+     "",
+     "",
+     "Kurt Strakaluse"
+    ],
+    [
+     "",
+     "",
+     "Director"
+    ]
+   ],
+   "caption_stack": [
+    "Privacy and Value Inc."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 461,
+    "end_line": 479
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The XBRL related information in Exhibits 101 to this Annual Report on Form 10-K shall not be deemed \u201cfiled\u201d or a part of a registration statement or prospectus for purposes of Section 11 or 12 of the Securities Act of 1933, as amended, and is not filed for purposes of Section 18 of the Securities Exchange Act of 1934, as amended, or otherwise subject to the liabilities of those sections.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 456,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 480,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

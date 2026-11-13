@@ -1,0 +1,4598 @@
+{
+ "accession": "0001193125-06-107601",
+ "cik": "0000907254",
+ "form": "10-Q",
+ "filing_date": "2006-05-10",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "Accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Maryland",
+     "52-1833074"
+    ],
+    [
+     "(State or other jurisdiction of\n\n\n\nincorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 16,
+    "end_line": 22
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\nQUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR QUARTER ENDED March 31, 2006\nCOMMISSION FILE NUMBER 1-12254\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "7501 Wisconsin Avenue, Bethesda, Maryland 20814\n(Address of principal executive office) (Zip Code)\nRegistrant\u2019s telephone number, including area code (301) 986-6200\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15 (d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \u201caccelerated filer and large accelerated filer\u201d in Rule 12b 2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ] Accelerated filer [X] Non-accelerated filer [ ].\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nNumber of shares of common stock, par value $0.01 per share outstanding as of May 9, 2006: 17,007,000",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 15,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 28,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page"
+    ],
+    [
+     "PART I. FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Item 1. Financial Statements (Unaudited)",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (a)     Consolidated Balance Sheets as of March 31, 2006 and December 31, 2005",
+     "4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (b)     Consolidated Statements of Operations for the three months ended March 31, 2006 and 2005",
+     "5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (c)     Consolidated Statements of Stockholders\u2019 Equity as of March 31, 2006 and December 31, 2005.",
+     "6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (d)     Consolidated Statements of Cash Flows for the three months ended March 31, 2006 and 2005.",
+     "7"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (e)     Notes to Consolidated Financial Statements",
+     "8"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (a)     Critical Accounting Policies",
+     "26"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (b)     Results of Operations\n\n\n\n          Three months ended March 31, 2006 compared to three months ended March 31, 2005.",
+     "28"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "    (c)     Liquidity and Capital Resources",
+     "30"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Item 3. Quantitative and Qualitative Disclosures About Market Risk",
+     "41"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Item 4. Controls and Procedures",
+     "41"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Item 1. Legal Proceedings",
+     "42"
+    ],
+    [
+     "  Item 1A. Risk Factors",
+     ""
+    ],
+    [
+     "  Item 2. Unregistered Sales of Equity Securities and Use of Proceeds",
+     "42"
+    ],
+    [
+     "  Item 3. Defaults Upon Senior Securities",
+     "42"
+    ],
+    [
+     "  Item 4. Submission of Matters to a Vote of Security Holders",
+     "42"
+    ],
+    [
+     "  Item 5. Other Information",
+     "42"
+    ],
+    [
+     "  Item 6. Exhibits",
+     "43"
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 41,
+    "end_line": 82
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "(Address of principal executive office) (Zip Code)\nRegistrant\u2019s telephone number, including area code (301) 986-6200\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15 (d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirement for the past 90 days. YES [X] NO [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, or a non-accelerated filer. See definition of \u201caccelerated filer and large accelerated filer\u201d in Rule 12b 2 of the Exchange Act. (Check one):\nLarge accelerated filer [ ] Accelerated filer [X] Non-accelerated filer [ ].\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). YES [ ] NO [X]\nNumber of shares of common stock, par value $0.01 per share outstanding as of May 9, 2006: 17,007,000\nTable of Contents",
+   "prose_after": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nBasis of Presentation\nIn the opinion of management, the accompanying consolidated financial statements reflect all adjustments necessary for the fair presentation of the financial position and results of operations of Saul Centers, Inc. for the interim periods. All such adjustments are of a normal recurring nature. These consolidated financial statements and the accompanying notes should be read in conjunction with the audited consolidated financial statements of Saul Centers, Inc. for the year ended December 31, 2005, which are included in its Annual Report on Form 10-K. The results of operations for interim periods are not necessarily indicative of results to be expected for the year.\nCONSOLIDATED BALANCE SHEETS",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 38,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 83,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Dollars in thousands,\n\n\n\nexcept per share amounts)",
+     "March 31, 2006",
+     "",
+     "",
+     "December 31, 2005",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(Unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Real estate investments",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Land",
+     "$",
+     "145,760",
+     "",
+     "$",
+     "139,421",
+     ""
+    ],
+    [
+     "    Buildings and equipment",
+     "",
+     "595,728",
+     "",
+     "",
+     "575,504",
+     ""
+    ],
+    [
+     "    Construction in progress",
+     "",
+     "50,376",
+     "",
+     "",
+     "47,868",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "791,864",
+     "",
+     "",
+     "762,793",
+     ""
+    ],
+    [
+     "    Accumulated depreciation",
+     "",
+     "(200,267)",
+     "",
+     "",
+     "(195,376)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "591,597",
+     "",
+     "",
+     "567,417",
+     ""
+    ],
+    [
+     "    Cash and cash equivalents",
+     "",
+     "7,754",
+     "",
+     "",
+     "8,007",
+     ""
+    ],
+    [
+     "    Accounts receivable and accrued income, net",
+     "",
+     "23,505",
+     "",
+     "",
+     "23,410",
+     ""
+    ],
+    [
+     "    Leasing costs, net",
+     "",
+     "20,212",
+     "",
+     "",
+     "19,834",
+     ""
+    ],
+    [
+     "    Prepaid expenses, net",
+     "",
+     "2,293",
+     "",
+     "",
+     "2,540",
+     ""
+    ],
+    [
+     "    Deferred debt costs, net",
+     "",
+     "5,916",
+     "",
+     "",
+     "5,875",
+     ""
+    ],
+    [
+     "    Other assets",
+     "",
+     "6,918",
+     "",
+     "",
+     "4,386",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total assets",
+     "$",
+     "658,195",
+     "",
+     "$",
+     "631,469",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Liabilities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Mortgage notes payable",
+     "$",
+     "490,519",
+     "",
+     "$",
+     "471,931",
+     ""
+    ],
+    [
+     "    Revolving credit facility outstanding",
+     "",
+     "10,500",
+     "",
+     "",
+     "10,500",
+     ""
+    ],
+    [
+     "    Dividends and distributions payable",
+     "",
+     "11,379",
+     "",
+     "",
+     "11,319",
+     ""
+    ],
+    [
+     "    Accounts payable, accrued expenses and other liabilities",
+     "",
+     "17,818",
+     "",
+     "",
+     "13,679",
+     ""
+    ],
+    [
+     "    Deferred income",
+     "",
+     "10,601",
+     "",
+     "",
+     "9,558",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities",
+     "",
+     "540,817",
+     "",
+     "",
+     "516,987",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Minority interests",
+     "",
+     "4,606",
+     "",
+     "",
+     "3,068",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Series A Cumulative Redeemable Preferred stock, 1,000,000 shares authorized and 40,000 shares issued and outstanding",
+     "",
+     "100,000",
+     "",
+     "",
+     "100,000",
+     ""
+    ],
+    [
+     "    Common stock, $0.01 par value, 30,000,000 shares authorized, 16,964,561 and 16,877,244 shares issued and outstanding, respectively",
+     "",
+     "170",
+     "",
+     "",
+     "169",
+     ""
+    ],
+    [
+     "    Additional paid-in capital",
+     "",
+     "126,115",
+     "",
+     "",
+     "123,339",
+     ""
+    ],
+    [
+     "    Accumulated deficit",
+     "",
+     "(113,513)",
+     "",
+     "",
+     "(112,094)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total stockholders\u2019 equity",
+     "",
+     "112,772",
+     "",
+     "",
+     "111,414",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total liabilities and stockholders\u2019 equity",
+     "$",
+     "658,195",
+     "",
+     "$",
+     "631,469",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 156
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nBasis of Presentation\nIn the opinion of management, the accompanying consolidated financial statements reflect all adjustments necessary for the fair presentation of the financial position and results of operations of Saul Centers, Inc. for the interim periods. All such adjustments are of a normal recurring nature. These consolidated financial statements and the accompanying notes should be read in conjunction with the audited consolidated financial statements of Saul Centers, Inc. for the year ended December 31, 2005, which are included in its Annual Report on Form 10-K. The results of operations for interim periods are not necessarily indicative of results to be expected for the year.\nCONSOLIDATED BALANCE SHEETS",
+   "prose_after": "The accompanying notes are an integral part of these statements\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 95,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 159,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Dollars in thousands,\n\n\n\nexcept per share amounts)",
+     "For The Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "",
+     "2005",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Base rent",
+     "$",
+     "26,900",
+     "",
+     "$",
+     "24,132",
+     ""
+    ],
+    [
+     "    Expense recoveries",
+     "",
+     "5,513",
+     "",
+     "",
+     "4,980",
+     ""
+    ],
+    [
+     "    Percentage rent",
+     "",
+     "326",
+     "",
+     "",
+     "504",
+     ""
+    ],
+    [
+     "    Other",
+     "",
+     "728",
+     "",
+     "",
+     "691",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total revenue",
+     "",
+     "33,467",
+     "",
+     "",
+     "30,307",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Property operating expenses",
+     "",
+     "3,968",
+     "",
+     "",
+     "3,773",
+     ""
+    ],
+    [
+     "    Provision for credit losses",
+     "",
+     "80",
+     "",
+     "",
+     "54",
+     ""
+    ],
+    [
+     "    Real estate taxes",
+     "",
+     "3,052",
+     "",
+     "",
+     "2,583",
+     ""
+    ],
+    [
+     "    Interest expense and amortization of deferred debt",
+     "",
+     "8,019",
+     "",
+     "",
+     "7,409",
+     ""
+    ],
+    [
+     "    Depreciation and amortization of leasing costs",
+     "",
+     "6,376",
+     "",
+     "",
+     "5,615",
+     ""
+    ],
+    [
+     "    General and administrative",
+     "",
+     "2,463",
+     "",
+     "",
+     "2,234",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total operating expenses",
+     "",
+     "23,958",
+     "",
+     "",
+     "21,668",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Operating income before minority interests",
+     "",
+     "9,509",
+     "",
+     "",
+     "8,639",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Minority interests",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Minority share of income",
+     "",
+     "(1,802)",
+     "",
+     "",
+     "(1,593)",
+     ""
+    ],
+    [
+     "    Distributions in excess of earnings",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(436)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total minority interests",
+     "",
+     "(1,802)",
+     "",
+     "",
+     "(2,029)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income",
+     "",
+     "7,707",
+     "",
+     "",
+     "6,610",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred dividends",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income available to common stockholders",
+     "$",
+     "5,707",
+     "",
+     "$",
+     "4,610",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Per share net income available to common stockholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Basic",
+     "$",
+     "0.34",
+     "",
+     "$",
+     "0.28",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Diluted",
+     "$",
+     "0.33",
+     "",
+     "$",
+     "0.28",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Distributions declared per common share outstanding",
+     "$",
+     "0.42",
+     "",
+     "$",
+     "0.39",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 167,
+    "end_line": 225
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements\nCONSOLIDATED STATEMENTS OF OPERATIONS",
+   "prose_after": "The accompanying notes are an integral part of these statements\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 165,
+     "token": "REPEATING_HEADER",
+     "id": 13,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 228,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Dollars in thousands,\n\n\n\nexcept per share amounts)",
+     "Preferred Stock",
+     "",
+     "Common Stock",
+     "",
+     "Additional Paid-in Capital",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Balance, December 31, 2005",
+     "$",
+     "100,000",
+     "$",
+     "169",
+     "$",
+     "123,339",
+     "$",
+     "(112,094)",
+     "",
+     "$",
+     "111,414",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Issuance of 87,317 shares of common stock:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  43,404 shares due to dividend reinvestment plan",
+     "",
+     "\u2014",
+     "",
+     "1",
+     "",
+     "1,557",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,558",
+     ""
+    ],
+    [
+     "  43,913 shares due to employee stock options and directors\u2019 deferred stock plan and stock option awards",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,219",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,219",
+     ""
+    ],
+    [
+     "  Net income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "7,707",
+     "",
+     "",
+     "7,707",
+     ""
+    ],
+    [
+     "  Distributions payable preferred stock ($50.00 per share)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "  Distributions payable common stock ($0.42 per share)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(7,126)",
+     "",
+     "",
+     "(7,126)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Balance, March 31, 2006",
+     "$",
+     "100,000",
+     "$",
+     "170",
+     "$",
+     "126,115",
+     "$",
+     "(113,513)",
+     "",
+     "$",
+     "112,772",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 236,
+    "end_line": 256
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY",
+   "prose_after": "The accompanying notes are an integral part of these statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 234,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 259,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For The Three Months Ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(Dollars in thousands)",
+     "2006",
+     "",
+     "",
+     "2005",
+     "",
+     ""
+    ],
+    [
+     "  Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net income",
+     "$",
+     "7,707",
+     "",
+     "$",
+     "6,610",
+     ""
+    ],
+    [
+     "    Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Minority interests",
+     "",
+     "1,802",
+     "",
+     "",
+     "2,029",
+     ""
+    ],
+    [
+     "    Depreciation and amortization of leasing costs",
+     "",
+     "6,376",
+     "",
+     "",
+     "5,615",
+     ""
+    ],
+    [
+     "    Amortization of deferred debt costs",
+     "",
+     "268",
+     "",
+     "",
+     "314",
+     ""
+    ],
+    [
+     "    Non cash compensation costs from stock grants and options",
+     "",
+     "231",
+     "",
+     "",
+     "190",
+     ""
+    ],
+    [
+     "    Provision for credit losses",
+     "",
+     "80",
+     "",
+     "",
+     "54",
+     ""
+    ],
+    [
+     "    Increase in accounts receivable and accrued income",
+     "",
+     "(138)",
+     "",
+     "",
+     "(597)",
+     ""
+    ],
+    [
+     "    Increase in leasing costs",
+     "",
+     "(549)",
+     "",
+     "",
+     "(606)",
+     ""
+    ],
+    [
+     "    Decrease in prepaid expenses",
+     "",
+     "247",
+     "",
+     "",
+     "559",
+     ""
+    ],
+    [
+     "    Increase in other assets",
+     "",
+     "(2,532)",
+     "",
+     "",
+     "(1,946)",
+     ""
+    ],
+    [
+     "    Increase in accounts payable, accrued expenses and other liabilities",
+     "",
+     "1,164",
+     "",
+     "",
+     "1,605",
+     ""
+    ],
+    [
+     "    Decrease in deferred income",
+     "",
+     "(175)",
+     "",
+     "",
+     "(5)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash provided by operating activities",
+     "",
+     "14,481",
+     "",
+     "",
+     "13,822",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Acquisitions of real estate investments, net*",
+     "",
+     "(6,481)",
+     "",
+     "",
+     "(19,137)",
+     ""
+    ],
+    [
+     "    Additions to real estate investments",
+     "",
+     "(3,839)",
+     "",
+     "",
+     "(1,138)",
+     ""
+    ],
+    [
+     "    Additions to development and redevelopment activities",
+     "",
+     "(4,574)",
+     "",
+     "",
+     "(4,087)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash used in investing activities",
+     "",
+     "(14,894)",
+     "",
+     "",
+     "(24,362)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Proceeds from notes payable",
+     "",
+     "10,500",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Repayments on notes payable",
+     "",
+     "(3,246)",
+     "",
+     "",
+     "(2,770)",
+     ""
+    ],
+    [
+     "    Additions to deferred debt costs",
+     "",
+     "(309)",
+     "",
+     "",
+     "(1,396)",
+     ""
+    ],
+    [
+     "    Proceeds from the issuance of :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Common stock",
+     "",
+     "2,546",
+     "",
+     "",
+     "3,155",
+     ""
+    ],
+    [
+     "    Convertible limited partnership units in the Operating Partnership",
+     "",
+     "1,989",
+     "",
+     "",
+     "83",
+     ""
+    ],
+    [
+     "    Distributions to :",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred stockholders",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "    Common stockholders",
+     "",
+     "(7,089)",
+     "",
+     "",
+     "(6,397)",
+     ""
+    ],
+    [
+     "    Convertible limited partnership unitholders in the Operating Partnership",
+     "",
+     "(2,231)",
+     "",
+     "",
+     "(2,028)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Net cash (used) provided by financing activities",
+     "",
+     "160",
+     "",
+     "",
+     "(11,353)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net decrease in cash and cash equivalents",
+     "",
+     "(253)",
+     "",
+     "",
+     "(21,893)",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents, beginning of period",
+     "",
+     "8,007",
+     "",
+     "",
+     "33,561",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash and cash equivalents, end of period",
+     "$",
+     "7,754",
+     "",
+     "$",
+     "11,668",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For The Three Months Ended March 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 267,
+    "end_line": 323
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these statements\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "* Supplemental discussion of non-cash investing and financing activities:\nThe $6,481,000 2006 real estate acquisition cost is presented exclusive of a mortgage loan assumed. On January 27, 2006, the Company paid the $17,815,000 acquisition cost of Smallwood Village Center by assuming a $11,334,000 mortgage loan and paying cash of $6,481,000.\nThe accompanying notes are an integral part of these statements\n1. Organization, Formation and Structure\nOrganization\nSaul Centers, Inc. (\u201cSaul Centers\u201d) was incorporated under the Maryland General Corporation Law on June 10, 1993. Saul Centers operates as a real estate investment trust (a \u201cREIT\u201d) under the Internal Revenue Code of 1986, as amended (the \u201cCode\u201d). Saul Centers generally will not be subject to federal income tax, provided it annually distributes at least 90% of its REIT taxable income to its stockholders and meets certain organizational and other requirements. Saul Centers has made and intends to continue to make regular quarterly distributions to its stockholders. Saul Centers, together with its wholly owned subsidiaries and the limited partnerships of which Saul Centers or one of its subsidiaries is the sole general partner, are referred to collectively as the \u201cCompany\u201d. B. Francis Saul II serves as Chairman of the Board of Directors and Chief Executive Officer of Saul Centers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 265,
+     "token": "REPEATING_HEADER",
+     "id": 19,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 323,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "March 31, 2006",
+     "",
+     "December 31, 2005",
+     ""
+    ],
+    [
+     "  Clarendon Center",
+     "$",
+     "17,087",
+     "$",
+     "16,629"
+    ],
+    [
+     "  Lansdowne Town Center",
+     "",
+     "15,074",
+     "",
+     "10,348"
+    ],
+    [
+     "  Ashland Square",
+     "",
+     "7,480",
+     "",
+     "7,262"
+    ],
+    [
+     "  Olde Forte Village",
+     "",
+     "\u2014",
+     "",
+     "5,667"
+    ],
+    [
+     "  Broadlands Village III",
+     "",
+     "5,206",
+     "",
+     "3,638"
+    ],
+    [
+     "  Lexington",
+     "",
+     "2,183",
+     "",
+     "1,972"
+    ],
+    [
+     "  Ravenwood",
+     "",
+     "1,445",
+     "",
+     "607"
+    ],
+    [
+     "  Other",
+     "",
+     "1,901",
+     "",
+     "1,745"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "50,376",
+     "$",
+     "47,868"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 402,
+    "end_line": 418
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Certain initial direct costs incurred by the Company in negotiating and consummating a successful lease are capitalized and amortized over the initial base term of the lease. These costs total $20,212,000 and $19,834,000, net of accumulated amortization of $12,028,000 and $11,392,000, as of March 31, 2006 and December 31, 2005, respectively. Amortization expense, included in depreciation and amortization in the consolidated statements of operations, totaled $1,423,000 and $1,151,000, for the three months ended March 31, 2006 and 2005, respectively. Capitalized leasing costs consist of commissions paid to third party leasing agents as well as internal direct costs such as employee compensation and payroll related fringe benefits directly related to time spent performing leasing related activities for successful leases. Such activities include evaluating the prospective tenant\u2019s financial condition, evaluating and recording guarantees, collateral and other security arrangements, negotiating lease terms, preparing lease documents and closing the transaction. The carrying amount of costs is written-off to expense if the applicable lease is terminated prior to expiration of the initial lease term.\nConstruction In Progress\nConstruction in progress includes preconstruction costs and development costs of active projects. Preconstruction costs associated with these active projects include legal, zoning and permitting costs and other project carrying costs incurred prior to the commencement of construction. Development costs include direct construction costs and indirect costs incurred subsequent to the start of construction such as architectural, engineering, construction management and carrying costs consisting of interest, real estate taxes and insurance. Construction in progress balances as of March 31, 2006 and December 31, 2005 are as follows:\nConstruction in Progress",
+   "prose_after": "Accounts Receivable, Accrued Income and Allowance for Doubtful Accounts\nAccounts receivable primarily represent amounts currently due from tenants in accordance with the terms of the respective leases. Receivables are reviewed monthly and when, in the opinion of management, collection of the entire receivable is doubtful, revenue accrual is discontinued and an allowance for doubtful accounts is established. Accounts receivable in the accompanying financial statements are shown net of an allowance for doubtful accounts of $309,000 and $430,000, at March 31, 2006 and December 31, 2005, respectively.\nIn addition to rents due currently, accounts receivable include $15,270,000 and $14,701,000, at March 31, 2006 and December 31, 2005, respectively, representing minimum rental income accrued on a straight-line basis to be paid by tenants over the remaining term of their respective leases. These amounts are presented after netting allowances of $40,000 and $64,000, respectively, for tenants whose rent payment history or financial condition cast doubt upon the tenant\u2019s ability to perform under its lease obligations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 394,
+     "token": "REPEATING_HEADER",
+     "id": 30,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 425,
+     "token": "PAGE_BREAK",
+     "id": 31,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands, except per share data)",
+     "Three months ended March 31,",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "2005"
+    ],
+    [
+     "  Weighted average common shares outstanding \u2013 Basic",
+     "16,911",
+     "16,468"
+    ],
+    [
+     "  Effect of dilutive options",
+     "152",
+     "89"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Weighted average common shares outstanding \u2013 Diluted",
+     "17,063",
+     "16,557"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 492
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "Saul Centers is the sole general partner of the Operating Partnership, owning a 76.0% common interest as of March 31, 2006. Minority Interests in the Operating Partnership are comprised of limited partnership units owned by The Saul Organization. Minority Interests as reflected on the Balance Sheets are increased for earnings allocated to limited partnership interests, distributions reinvested in additional units and in certain situations for distributions to minority interests in excess of earnings allocated, and are decreased for limited partner distributions. Minority Interests as reflected on the Statements of Operations represent earnings allocated to limited partnership interests. Amounts distributed in excess of the limited partners\u2019 share of earnings, net of limited partner reinvestments of distributions, also increase minority interests expense in the respective period and are classified on the Statements of Operations as Distributions in excess of earnings to the extent such distributions in excess of earnings exceed the carrying amount of minority interests.\nPer Share Data\nPer share data is calculated in accordance with SFAS No. 128, \u201cEarnings Per Share.\u201d Per share data for net income (basic and diluted) is computed using weighted average shares of common stock. Convertible limited partnership units and employee stock options are the Company\u2019s potentially dilutive securities. For all periods presented, the convertible limited partnership units are anti-dilutive. The options are currently dilutive because the average share price of the Company\u2019s common stock exceeds the exercise prices. The treasury share method was used to measure the effect of the dilution.\nBasic and Diluted Shares Outstanding",
+   "prose_after": "Reclassifications\nCertain reclassifications have been made to the prior year financial statements to conform to the current year presentation. The reclassifications have no impact on operating results previously reported.\nLegal Contingencies\nThe Company is subject to various legal proceedings and claims that arise in the ordinary course of business. These matters are generally covered by insurance. Once it has been determined that a loss is probable to occur, the estimated amount of the loss is recorded in the financial statements.\nRecent Accounting Pronouncements\nThe Emerging Issues Task Force (\u201cEITF\u201d) issued EITF 04-5, last updated on July 15, 2005, \u201cInvestors Accounting for an Investment in a Limited Partnership when the Investor is the General Partner and the Limited Partners have Certain Rights (\u201cEITF 04-5\u201d), which addresses the General Partner in a limited partnership who is presumed to control the partnership unless the Limited Partners have the ability, through a majority vote, to remove the General Partner without cause or the ability to effectively participate in significant decisions that would be expected to be made in the ordinary course of business. EITF 04-5 is effective as of June 29, 2005 for new limited partnerships and existing limited partnerships where the partnership agreement has been modified after that date or for fiscal periods beginning after December 15, 2005. The Company has adopted EITF 04-5 with respect to existing agreements and has determined that the adoption of EITF 04-5 does not materially impact its financial condition or results of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 467,
+     "token": "REPEATING_HEADER",
+     "id": 36,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 493,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "  April 1 through December 31, 2006",
+     "$",
+     "10,050"
+    ],
+    [
+     "2007",
+     "",
+     "14,335"
+    ],
+    [
+     "2008",
+     "",
+     "25,880"
+    ],
+    [
+     "2009",
+     "",
+     "16,565"
+    ],
+    [
+     "2010",
+     "",
+     "17,810"
+    ],
+    [
+     "2011",
+     "",
+     "81,386"
+    ],
+    [
+     "  Thereafter",
+     "",
+     "334,993"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "501,019"
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 586,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Mortgage Notes Payable, Revolving Credit Facility, Interest and Amortization of Deferred Debt Costs"
+    }
+   },
+   "prose_before": "On January 27, 2006, the Company assumed the obligation of a secured mortgage obligation in conjunction with the acquisition of Smallwood Village Center. The outstanding balance on the loan was $11,333,000 at settlement. The loan matures January 2013, requires equal monthly principal and interest payments of $71,000, based upon a 6.12% interest rate and 30-year principal amortization, and requires a final payment of $10,071,000 at maturity.\nAt December 31, 2005, the Company\u2019s outstanding debt totaled $482,431,000, of which $471,931,000 was fixed rate mortgage debt and $10,500,000 was variable rate debt outstanding on the Company\u2019s $150 million unsecured revolving credit facility. Operating income from the Company\u2019s unencumbered properties, as of December 31, 2005, supported line availability of $83,000,000 leaving $72,500,000 available for working capital uses. An additional $67,000,000 was available for funding working capital and operating property acquisitions supported by the unencumbered properties\u2019 internal cash flow growth and operating income of future acquisitions.\nAt March 31, 2006, the scheduled maturities of all debt, including scheduled principal amortization, for years ending December 31, were as follows:\nDebt Maturity Schedule",
+   "prose_after": "Interest expense and amortization of deferred debt costs for the quarter ended March 31, 2006 and 2005, respectively were as follows:\nInterest Expense and Amortization of Deferred Debt Costs",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "Quarter ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "",
+     "2005",
+     "",
+     ""
+    ],
+    [
+     "  Interest incurred",
+     "$",
+     "8,506",
+     "",
+     "$",
+     "7,935",
+     ""
+    ],
+    [
+     "  Amortization of deferred debt costs",
+     "",
+     "268",
+     "",
+     "",
+     "314",
+     ""
+    ],
+    [
+     "  Capitalized interest",
+     "",
+     "(755)",
+     "",
+     "",
+     "(840)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "8,019",
+     "",
+     "$",
+     "7,409",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 618
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Mortgage Notes Payable, Revolving Credit Facility, Interest and Amortization of Deferred Debt Costs"
+    }
+   },
+   "prose_before": "Interest expense and amortization of deferred debt costs for the quarter ended March 31, 2006 and 2005, respectively were as follows:\nInterest Expense and Amortization of Deferred Debt Costs",
+   "prose_after": "6. Stockholders\u2019 Equity (Deficit) and Minority Interests\nThe Consolidated Statement of Operations for the three months ended March 31, 2006 includes a charge for minority interests of $1,802,000, representing The Saul Organization\u2019s limited partnership interest share of net income for the quarter. The minority interests charge for the three months ended March 31, 2005 of $2,029,000 consists of $1,593,000 related to The Saul Organization\u2019s share of net income for the quarter, and $436,000 related to distributions to minority interests in excess of allocated net income for the quarter.\n7. Related Party Transactions\nChevy Chase Bank, an affiliate of The Saul Organization, leases space in 15 of the Company\u2019s properties. Total rental income from Chevy Chase Bank amounted to $521,000 and $432,000, for the three months ended March 31, 2006 and 2005, respectively.\nThe Company utilizes Chevy Chase Bank for its various checking and short-term investment accounts. As of March 31, 2006, approximately $7,608,000 was held in deposit in these accounts.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 580,
+     "token": "REPEATING_HEADER",
+     "id": 46,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 623,
+     "token": "PAGE_BREAK",
+     "id": 47,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Officers",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Directors",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Grant date",
+     "",
+     "05/23/2003",
+     "",
+     "",
+     "04/26/2004",
+     "",
+     "",
+     "05/06/2005",
+     "",
+     "",
+     "04/26/2004",
+     "",
+     "",
+     "05/06/2005",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total grant",
+     "",
+     "220,000",
+     "",
+     "",
+     "122,500",
+     "",
+     "",
+     "132,500",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "535,000"
+    ],
+    [
+     "Vested",
+     "",
+     "110,000",
+     "",
+     "",
+     "30,625",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "200,625"
+    ],
+    [
+     "Exercised",
+     "",
+     "51,922",
+     "",
+     "",
+     "9,375",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "61,297"
+    ],
+    [
+     "Remaining unexercised",
+     "",
+     "168,078",
+     "",
+     "",
+     "113,125",
+     "",
+     "",
+     "132,500",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "30,000",
+     "",
+     "",
+     "473,703"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exercise price",
+     "$",
+     "24.91",
+     "",
+     "$",
+     "25.78",
+     "",
+     "$",
+     "33.22",
+     "",
+     "$",
+     "25.78",
+     "",
+     "$",
+     "33.22",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Volatility",
+     "",
+     "0.175",
+     "",
+     "",
+     "0.183",
+     "",
+     "",
+     "0.207",
+     "",
+     "",
+     "0.183",
+     "",
+     "",
+     "0.198",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expected life (years)",
+     "",
+     "7.0",
+     "",
+     "",
+     "7.0",
+     "",
+     "",
+     "8.0",
+     "",
+     "",
+     "5.0",
+     "",
+     "",
+     "10.0",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assumed yield",
+     "",
+     "7.00",
+     "%",
+     "",
+     "5.75",
+     "%",
+     "",
+     "6.37",
+     "%",
+     "",
+     "5.75",
+     "%",
+     "",
+     "6.91",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "4.00",
+     "%",
+     "",
+     "4.05",
+     "%",
+     "",
+     "4.15",
+     "%",
+     "",
+     "3.57",
+     "%",
+     "",
+     "4.28",
+     "%",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total value",
+     "$",
+     "332,200",
+     "",
+     "$",
+     "292,775",
+     "",
+     "$",
+     "413,400",
+     "",
+     "$",
+     "66,600",
+     "",
+     "$",
+     "71,100",
+     "",
+     "$",
+     "1,176,075"
+    ],
+    [
+     "Expensed during the quarter ended March 31, 2006",
+     "$",
+     "20,763",
+     "",
+     "$",
+     "18,297",
+     "",
+     "$",
+     "25,839",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "64,899"
+    ],
+    [
+     "Future expense",
+     "$",
+     "96,894",
+     "",
+     "$",
+     "152,475",
+     "",
+     "$",
+     "318,672",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "568,041"
+    ],
+    [
+     "Weighted average term of future expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2.2 yrs"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 659,
+    "end_line": 679
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock Option Plans"
+    }
+   },
+   "prose_before": "On January 12, 2006 the Company agreed to final terms of a contract to purchase a 10.4 acre site in Frederick, Maryland, from a subsidiary of Chevy Chase Bank, a related party, for $5,000,000. The Company plans to develop this property into a retail center. The purchase price of the property was determined by the average of two independent third party appraisals which were contracted, one on behalf of the Company and one on behalf of Chevy Chase Bank. The parties anticipate closing on the transaction within the next twelve months.\n8. Stock Option Plans\nThe Company has established two stock incentive plans, the 1993 plan and the 2004 plan (together, the \u201cPlans\u201d). Under the Plans, options were granted at an exercise price not less than the market value of the common stock on the date of grant and expire ten years from the date of grant. Officer options vest ratably over four years following the grant and are expensed straight-line over the vesting period. Director options vest immediately and are expensed as of the date of grant. The following table summarizes the amount and activity of each grant, the total value and variables used in the computation and the amount expensed and included in general and administrative expense in the Consolidated Statements of Operations for the quarter ended March 31, 2006:",
+   "prose_after": "The table below summarizes the option activity for the quarter ended March 31, 2006:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 657,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "Wtd Avg Exercise Price/sh",
+     "",
+     "Aggregate Intrinsic Value",
+     ""
+    ],
+    [
+     "Outstanding at January 1",
+     "513,125",
+     "$",
+     "27.80",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Exercised",
+     "39,422",
+     "",
+     "25.08",
+     "$",
+     "714,597"
+    ],
+    [
+     "Expired/Forfeited",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "Outstanding March 31",
+     "473,703",
+     "",
+     "28.02",
+     "",
+     "7,525,463"
+    ],
+    [
+     "Exercisable at March 31",
+     "139,328",
+     "",
+     "27.02",
+     "",
+     "2,353,345"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 682,
+    "end_line": 692
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Stock Option Plans"
+    }
+   },
+   "prose_before": "The table below summarizes the option activity for the quarter ended March 31, 2006:",
+   "prose_after": "The intrinsic value presented in the table above measures the price difference between the options\u2019 exercise price and the closing share price quoted by the New York Stock Exchange as of the date of measurement. At March 31, 2006, the weighted average remaining contractual life of the Company\u2019s exercisable and outstanding options is 7.9 and 8.1 years, respectively.\n9. Commitments and Contingencies\nNeither the Company nor the Current Portfolio Properties are subject to any material litigation, nor, to management\u2019s knowledge, is any material litigation currently threatened against the Company, other than routine litigation and administrative proceedings arising in the ordinary course of business. Management believes that these items, individually or in the aggregate, will not have a material adverse impact on the Company or the Current Portfolio Properties.\n10. Business Segments\nThe Company has two reportable business segments: Shopping Centers and Office Properties. The accounting policies for the segments presented below are the same as those described in the summary of significant accounting policies (see Note 2). The Company evaluates performance based upon net operating income for properties in each segment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 657,
+     "token": "REPEATING_HEADER",
+     "id": 52,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 699,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Dollars in thousands)",
+     "Shopping Centers",
+     "",
+     "",
+     "Office Properties",
+     "",
+     "",
+     "Corporate and Other",
+     "",
+     "",
+     "Consolidated Totals",
+     "",
+     ""
+    ],
+    [
+     "Quarter ended March 31, 2006",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Real estate rental operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Revenue",
+     "$",
+     "24,539",
+     "",
+     "$",
+     "8,860",
+     "",
+     "$",
+     "68",
+     "",
+     "$",
+     "33,467",
+     ""
+    ],
+    [
+     "    Expenses",
+     "",
+     "(4,892)",
+     "",
+     "",
+     "(2,208)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,100)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Income from real estate",
+     "",
+     "19,647",
+     "",
+     "",
+     "6,652",
+     "",
+     "",
+     "68",
+     "",
+     "",
+     "26,367",
+     ""
+    ],
+    [
+     "    Interest expense & amortization of debt expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(8,019)",
+     "",
+     "",
+     "(8,019)",
+     ""
+    ],
+    [
+     "    General and administrative",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,463)",
+     "",
+     "",
+     "(2,463)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Subtotal",
+     "",
+     "19,647",
+     "",
+     "",
+     "6,652",
+     "",
+     "",
+     "(10,414)",
+     "",
+     "",
+     "15,885",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "(4,427)",
+     "",
+     "",
+     "(1,949)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,376)",
+     ""
+    ],
+    [
+     "    Minority interests",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,802)",
+     "",
+     "",
+     "(1,802)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income",
+     "$",
+     "15,220",
+     "",
+     "$",
+     "4,703",
+     "",
+     "$",
+     "(12,216)",
+     "",
+     "$",
+     "7,707",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Capital investment",
+     "$",
+     "14,740",
+     "",
+     "$",
+     "154",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "14,894",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total assets",
+     "$",
+     "495,211",
+     "",
+     "$",
+     "133,654",
+     "",
+     "$",
+     "29,330",
+     "",
+     "$",
+     "658,195",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Quarter ended March 31, 2005",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Real estate rental operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Revenue",
+     "$",
+     "21,360",
+     "",
+     "$",
+     "8,803",
+     "",
+     "$",
+     "144",
+     "",
+     "$",
+     "30,307",
+     ""
+    ],
+    [
+     "    Expenses",
+     "",
+     "(4,255)",
+     "",
+     "",
+     "(2,155)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(6,410)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Income from real estate",
+     "",
+     "17,105",
+     "",
+     "",
+     "6,648",
+     "",
+     "",
+     "144",
+     "",
+     "",
+     "23,897",
+     ""
+    ],
+    [
+     "    Interest expense & amortization of debt expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7,409)",
+     "",
+     "",
+     "(7,409)",
+     ""
+    ],
+    [
+     "    General and administrative",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,234)",
+     "",
+     "",
+     "(2,234)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Subtotal",
+     "",
+     "17,105",
+     "",
+     "",
+     "6,648",
+     "",
+     "",
+     "(9,499)",
+     "",
+     "",
+     "14,254",
+     ""
+    ],
+    [
+     "    Depreciation and amortization",
+     "",
+     "(3,666)",
+     "",
+     "",
+     "(1,949)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(5,615)",
+     ""
+    ],
+    [
+     "    Minority interests",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,029)",
+     "",
+     "",
+     "(2,029)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net income",
+     "$",
+     "13,439",
+     "",
+     "$",
+     "4,699",
+     "",
+     "$",
+     "(11,528)",
+     "",
+     "$",
+     "6,610",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Capital investment",
+     "$",
+     "23,759",
+     "",
+     "$",
+     "603",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "24,362",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Total assets",
+     "$",
+     "415,791",
+     "",
+     "$",
+     "137,802",
+     "",
+     "$",
+     "31,207",
+     "",
+     "$",
+     "584,800",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 707,
+    "end_line": 760
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "The intrinsic value presented in the table above measures the price difference between the options\u2019 exercise price and the closing share price quoted by the New York Stock Exchange as of the date of measurement. At March 31, 2006, the weighted average remaining contractual life of the Company\u2019s exercisable and outstanding options is 7.9 and 8.1 years, respectively.\n9. Commitments and Contingencies\nNeither the Company nor the Current Portfolio Properties are subject to any material litigation, nor, to management\u2019s knowledge, is any material litigation currently threatened against the Company, other than routine litigation and administrative proceedings arising in the ordinary course of business. Management believes that these items, individually or in the aggregate, will not have a material adverse impact on the Company or the Current Portfolio Properties.\n10. Business Segments\nThe Company has two reportable business segments: Shopping Centers and Office Properties. The accounting policies for the segments presented below are the same as those described in the summary of significant accounting policies (see Note 2). The Company evaluates performance based upon net operating income for properties in each segment.",
+   "prose_after": "Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThis section should be read in conjunction with the consolidated financial statements of the Company and the accompanying notes in \u201cItem 1. Financial Statements\u201d of this report and the more detailed information contained in our Form 10-K for the year ended December 31, 2005. Historical results and percentage relationships set forth in Item 1 and this section should not be taken as indicative of future operations of the Company. Capitalized terms used but not otherwise defined in this section, have the meanings given to them in Item 1 of this Form 10-Q.\nForward-Looking Statements\nThis Form 10-Q contains forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended, and Section 21E of the Securities Exchange Act of 1934, as amended. These statements are generally characterized by terms such as \u201cbelieve\u201d, \u201cexpect\u201d and \u201cmay\u201d.\nAlthough the Company believes that the expectations reflected in such forward-looking statements are based upon reasonable assumptions, the Company\u2019s actual results could differ materially from those given in the forward-looking statements as a result of changes in factors which include among others, the following:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 701,
+     "token": "REPEATING_HEADER",
+     "id": 54,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 761,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(dollars in thousands)",
+     "For the quarters ended March 31,",
+     "",
+     "",
+     "",
+     "2006 to 2005 Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "2005",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "  Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Base rent",
+     "$",
+     "26,900",
+     "$",
+     "24,132",
+     "$",
+     "2,768",
+     "",
+     "11.5",
+     "%"
+    ],
+    [
+     "    Expense recoveries",
+     "",
+     "5,513",
+     "",
+     "4,980",
+     "",
+     "533",
+     "",
+     "10.7",
+     "%"
+    ],
+    [
+     "    Percentage rent",
+     "",
+     "326",
+     "",
+     "504",
+     "",
+     "(178)",
+     "",
+     "(35.3)",
+     "%"
+    ],
+    [
+     "    Other",
+     "",
+     "728",
+     "",
+     "691",
+     "",
+     "37",
+     "",
+     "5.4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total",
+     "$",
+     "33,467",
+     "$",
+     "30,307",
+     "$",
+     "3,160",
+     "",
+     "10.4",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 841,
+    "end_line": 856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "Accounts receivable primarily represent amounts currently due from tenants in accordance with the terms of the respective leases. Receivables are reviewed monthly and reserves are established with a charge to current period operations when, in the opinion of management, collection of the receivable is doubtful. In addition to rents due currently, accounts receivable include amounts representing minimum rental income accrued on a straight-line basis to be paid by tenants over the remaining term of their respective leases. Reserves are established with a charge to income for tenants whose rent payment history or financial condition casts doubt upon the tenant\u2019s ability to perform under its lease obligations.\nLegal Contingencies\nThe Company is subject to various legal proceedings and claims that arise in the ordinary course of business. These matters are generally covered by insurance. While the resolution of these matters cannot be predicted with certainty, the Company believes the final outcome of such matters will not have a material adverse effect on the financial position or the results of operations. Once it has been determined that a loss is probable to occur, the estimated amount of the loss is recorded in the financial statements. Both the amount of the loss and the point at which its occurrence is considered probable can be difficult to determine.\nResults of Operations\nQuarter ended March 31, 2006 compared to quarter ended March 31, 2005\nRevenue",
+   "prose_after": "Total revenue increased 10.4% in the quarter ended March 31, 2006 compared to the prior year\u2019s quarter, primarily as a result of a newly developed property and acquisition properties whose operating results are included in the current quarter\u2019s results but not fully in the previous year\u2019s results, which contributed $2,010,000 (63.6% of the increase). The development property (Kentlands Place) and the acquisition properties (Palm Springs Center, Jamestown Place, Seabreeze Plaza and Smallwood Village Center) are defined as the \u201cDevelopment and Acquisition Properties\u201d. A discussion of the components of revenue follows.\nBase rent. The increase in base rent for the 2006 quarter versus the 2005 quarter was primarily attributable (57.8% or approximately $1,600,000) to leases in effect at the Development and Acquisition Properties and the lease-up of space at Shops at Monocacy, The Glen, Olde Forte Village, Great Eastern Plaza and Southside Plaza (26.8% or approximately $741,000) substantially accounted for the balance of the increase.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 829,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(dollars in thousands)",
+     "For the quarters ended\n\n\n\nMarch 31,",
+     "",
+     "",
+     "",
+     "2006 to 2005 Change",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "2005",
+     "",
+     "$",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "  Operating Expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Property operating expenses",
+     "$",
+     "3,968",
+     "$",
+     "3,773",
+     "$",
+     "195",
+     "5.2",
+     "%"
+    ],
+    [
+     "    Provision for credit losses",
+     "",
+     "80",
+     "",
+     "54",
+     "",
+     "26",
+     "48.1",
+     "%"
+    ],
+    [
+     "    Real estate taxes",
+     "",
+     "3,052",
+     "",
+     "2,583",
+     "",
+     "469",
+     "18.2",
+     "%"
+    ],
+    [
+     "    Interest and amortization of deferred debt expense",
+     "",
+     "8,019",
+     "",
+     "7,409",
+     "",
+     "610",
+     "8.2",
+     "%"
+    ],
+    [
+     "    Depreciation and amortization.",
+     "",
+     "6,376",
+     "",
+     "5,615",
+     "",
+     "761",
+     "13.6",
+     "%"
+    ],
+    [
+     "    General and administrative",
+     "",
+     "2,463",
+     "",
+     "2,234",
+     "",
+     "229",
+     "10.3",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total",
+     "$",
+     "23,958",
+     "$",
+     "21,668",
+     "$",
+     "2,290",
+     "10.6",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 873,
+    "end_line": 891
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "Percentage rent. Percentage rent is rental revenue calculated on the portion of a tenant\u2019s sales revenue that exceeds a specified breakpoint. Percentage rent for the 2006 quarter decreased due to timing differences in the submission of sales reports used to calculate percentage rent by a tenant at 601 Pennsylvania Avenue (approximately $176,000).\nOther revenue. Other revenue consists primarily of parking revenue at three of the Office Properties, temporary leases and payments associated with early termination of leases and interest income from the investment of cash balances. Other revenue increased during the 2006 quarter versus the 2005 quarter as a result of increased parking revenue at the Company\u2019s office properties ($151,000), which was offset in part by decreased interest income from short-term investments ($73,000). Parking revenue recorded in the 2005 quarter was reduced by the temporary curtailment of available parking spaces at 601 Pennsylvania Avenue while the parking deck was being refurbished.\nOperating Expenses",
+   "prose_after": "Increases in operating expenses resulted primarily from the operation of the Development and Acquisition Properties and to a lesser extent, nominal price increases of services required to operate the Company\u2019s other operating properties.\nProperty operating expenses. Property operating expenses consist primarily of repairs and maintenance, utilities, payroll, insurance and other property related expenses. The increase in property operating expenses was caused by the operation of the Development and Acquisition Properties (approximately $292,000) offset in part by reduced operating expenses, primarily repairs and maintenance, at the remainder of the operating properties (approximately $97,000).\nProvision for credit losses. The provision for credit losses represents the Company\u2019s estimation that amounts previously included in income and owed by tenants may not be collectible. The provision for credit losses totals less than three tenths of one percent (0.3%) of total revenue for each period, a reflection of the relative credit quality of the Company\u2019s tenants.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 863,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 896,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(dollars in thousands)",
+     "Three months ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "",
+     "2005",
+     "",
+     ""
+    ],
+    [
+     "  Cash provided by operating activities",
+     "$",
+     "14,481",
+     "",
+     "$",
+     "13,822",
+     ""
+    ],
+    [
+     "  Cash used in investing activities",
+     "",
+     "(14,894)",
+     "",
+     "",
+     "(24,362)",
+     ""
+    ],
+    [
+     "  Cash (used) provided by financing activities",
+     "",
+     "160",
+     "",
+     "",
+     "(11,353)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Decrease in cash",
+     "$",
+     "(253)",
+     "",
+     "$",
+     "(21,893)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 914,
+    "end_line": 927
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "Interest and amortization of deferred debt expense. Interest expense increased in the 2006 quarter versus the 2005 quarter due to increased borrowing as the Company financed selected Development and Acquisition Properties. The increase in average outstanding borrowings of approximately $45,900,000 resulted from financing the Development and Acquisition Properties (approximately $820,000 increase in interest expense). Offsetting the increase in interest expense was an approximately 19 basis point decrease in the average interest rate for the loan portfolio as the Company financed the new borrowings at interest rates lower than the average existing mortgage debt (approximately $240,000 decrease in interest expense). Interest was capitalized as a cost of construction and development projects during the 2006 and 2005 quarters in the amount of $755,000 and $840,000, respectively (approximately $85,000 increase in interest expense). Deferred debt cost amortization was $268,000 and $314,000, for the 2006 and 2005 quarters, respectively (approximately $46,000 decrease).\nDepreciation and amortization. The increase in depreciation and amortization expense resulted primarily from the Development and Acquisition Properties placed in service during the 2005 and 2006 quarters.\nGeneral and administrative. General and administrative expenses consist of payroll, administrative and other overhead expenses. The increase in general and administrative expenses for the 2006 quarter versus the 2005 quarter was attributable primarily to the payment of increased local and state income taxes to the District of Columbia and Kentucky (79.9% or $183,000).\nLiquidity and Capital Resources\nCash and cash equivalents were $7,754,000 and $11,668,000 at March 31, 2006 and 2005, respectively. The Company\u2019s cash flow is affected by its operating, investing and financing activities, as described below.",
+   "prose_after": "Operating Activities\nCash provided by operating activities represents cash received primarily from rental income, plus other income, less property operating expenses, normal recurring general and administrative expenses and interest payments on debt outstanding.\nInvesting Activities\nCash used in investing activities includes property acquisitions, developments, redevelopments, tenant improvements and other property capital expenditures. Investing activities for 2006 primarily reflect the acquisition of properties (Smallwood Village Center), the construction costs of new developments (Lansdowne Towne Center and Broadlands Village III), and the construction costs of redevelopments (Ravenwood). Investing activities for 2005 primarily reflect the acquisition of properties (Palm Springs Center, Lansdowne Town Center land and New Market land), the construction costs of new developments (Kentlands Place), and the construction costs of redevelopments (Olde Forte Village and Briggs Chaney MarketPlace).",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 912,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 952,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(In thousands)",
+     "",
+     ""
+    ],
+    [
+     "  April 1 through December 31, 2006",
+     "$",
+     "10,050"
+    ],
+    [
+     "2007",
+     "",
+     "14,335"
+    ],
+    [
+     "2008",
+     "",
+     "25,880"
+    ],
+    [
+     "2009",
+     "",
+     "16,565"
+    ],
+    [
+     "2010",
+     "",
+     "17,810"
+    ],
+    [
+     "2011",
+     "",
+     "81,386"
+    ],
+    [
+     "  Thereafter",
+     "",
+     "334,993"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "501,019"
+    ]
+   ],
+   "caption_stack": [
+    "(In thousands)"
+   ],
+   "scale": {
+    "phrase": "In thousands",
+    "unit": "thousands"
+   },
+   "location": {
+    "start_line": 990,
+    "end_line": 1004
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "Long-term liquidity requirements consisted primarily of obligations under our long-term debt and dividends paid to our preferred shareholders. The Company anticipates that long-term liquidity requirements will also include amounts required for property acquisitions and developments. The Company expects to meet long-term liquidity requirements through cash provided from operations, long-term secured and unsecured borrowings, private or public offerings of debt or equity securities and proceeds from the sales of properties. Borrowings may be at the Saul Centers, Operating Partnership or Subsidiary Partnership level, and securities offerings may include (subject to certain limitations) the issuance of additional limited partnership interests in the Operating Partnership which can be converted into shares of Saul Centers common stock. The availability and terms of any such financing will depend upon market and other conditions.\nAs of March 31, 2006, the scheduled maturities, including scheduled principal amortization, of all debt for years ended December 31, are as follows:\nDebt Maturity Schedule",
+   "prose_after": "Management believes that the Company\u2019s capital resources, which at March 31, 2006 included cash balances of approximately $7.8 million and borrowing availability of $139.5 million on its revolving line of credit, will be sufficient to meet its liquidity needs for the foreseeable future.\nPreferred Stock Issue\nThe Company has preferred stock outstanding of 4,000,000 depositary shares, each representing 1/100th of a share of 8% Series A Cumulative Redeemable Preferred Stock. The depositary shares may be redeemed, in whole or in part, at the $25.00 per depositary share liquidation preference at the Company\u2019s option on or after November 5, 2008. The depositary shares will pay an annual dividend of $2.00 per share, equivalent to 8% of the $25.00 per depositary share liquidation preference. The Series A preferred stock has no stated maturity, is not subject to any sinking fund or mandatory redemption and is not convertible into any other\nsecurities of the Company. Investors in the depositary shares generally have no voting rights, but will have limited voting rights if the Company fails to pay dividends for six or more quarters (whether or not declared or consecutive) and in certain other events.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 982,
+     "token": "PAGE_BREAK",
+     "id": 63,
+     "namespace": "arabic",
+     "page_number": 32
+    },
+    "after": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 64,
+     "namespace": "arabic",
+     "page_number": 33
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(Amounts in thousands)",
+     "For the quarters ended March 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2006",
+     "",
+     "",
+     "2005",
+     "",
+     ""
+    ],
+    [
+     "  Net income",
+     "$",
+     "7,707",
+     "",
+     "$",
+     "6,610",
+     ""
+    ],
+    [
+     "    Add:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Minority interests",
+     "",
+     "1,802",
+     "",
+     "",
+     "2,029",
+     ""
+    ],
+    [
+     "    Depreciation and amortization of real property",
+     "",
+     "6,376",
+     "",
+     "",
+     "5,615",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  FF[ ]",
+     "",
+     "15,885",
+     "",
+     "",
+     "14,254",
+     ""
+    ],
+    [
+     "    Subtract:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Preferred stock dividends",
+     "",
+     "(2,000)",
+     "",
+     "",
+     "(2,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  FFO Available to Common Shareholders",
+     "$",
+     "13,885",
+     "",
+     "$",
+     "12,254",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Average Shares and Units Used to Compute FFO per Share",
+     "",
+     "22,410",
+     "",
+     "",
+     "21,758",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1059,
+    "end_line": 1081
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "In December 2005, the Company entered into a rate lock agreement and made application for a 15-year, $40,000,000 fixed-rate mortgage loan to be collateralized by Lansdowne Town Center. The loan application was approved as a commitment in March 2006. The rate lock agreement set the interest rate at 5.62%, contingent upon meeting certain construction and leasing criteria prior to loan funding, projected to occur in February 2007. The Company paid a loan deposit fee of $850,000 which is refundable at closing.\nOff-Balance Sheet Arrangements\nThe Company has no off-balance sheet arrangements that are reasonably likely to have a current or future material effect on the Company\u2019s financial condition, revenue or expenses, results of operations, liquidity, capital expenditures or capital resources.\nFunds From Operations\nFor the quarter ended March 31, 2006, the Company reported Funds From Operations (FFO)(1) available to common shareholders of $13,885,000, representing a 13.3%, increase over the 2005 quarter\u2019s FFO available to common shareholders, respectively. The following table presents a reconciliation from net income to FFO available to common stockholders for the periods indicated:\nFunds From Operations Schedule",
+   "prose_after": "(1) FFO is a widely accepted non-GAAP financial measure of operating performance for REITs. FFO is defined by the National Association of Real Estate Investment Trusts as net income, computed in accordance with GAAP, plus minority interests, extraordinary items and real estate depreciation and amortization, excluding gains or losses from property sales. FFO does not represent cash generated from operating activities in accordance with GAAP and is not necessarily indicative of cash available to fund cash needs, which is disclosed in the Consolidated Statements of Cash Flows for the applicable periods. There are no material legal or functional restrictions on the use of FFO. FFO should not be considered as an alternative to net income, its most directly comparable GAAP measure, as an indicator of the Company\u2019s operating performance, or as an alternative to cash flows as a measure of liquidity. Management considers FFO a supplemental measure of operating performance and along with cash flow from operating activities, financing activities and investing activities, it provides investors with an indication of the ability of the Company to incur and service debt, to make capital expenditures and to fund other cash needs. FFO may not be comparable to similarly titled measures employed by other REITs.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1047,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 35
+    },
+    "after": {
+     "line": 1081,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Total Properties",
+     "",
+     "Total Square Footage",
+     "",
+     "Percent Leased",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of\n\n\n\nMarch 31,",
+     "Shopping Centers",
+     "Office",
+     "Shopping Centers",
+     "Office",
+     "Shopping Centers",
+     "",
+     "Office",
+     ""
+    ],
+    [
+     "2006",
+     "40",
+     "5",
+     "6,371,000",
+     "1,206,000",
+     "96.7",
+     "%",
+     "96.9",
+     "%"
+    ],
+    [
+     "2005",
+     "36",
+     "5",
+     "6,139,000",
+     "1,205,000",
+     "91.7",
+     "%",
+     "95.5",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1172,
+    "end_line": 1182
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "On September 29, 2005, the Company announced the resolution of a land use dispute at Lexington Mall, allowing increased flexibility in future development rights for its property. The Company and the land owner of the adjacent 16 acre site, have resolved a dispute arising from a reciprocal easement agreement governing land use between the two owners. The parties have now executed a new land use agreement which grants each other the flexibility to improve its property. The Company also reached an agreement with Dillard\u2019s to terminate its lease, without consideration exchanged by either party. The Dillard\u2019s store closed during October 2005. During the past several years, the Company has not been renewing small shop leases pending settlement with the adjacent owner. The departure of Dillard\u2019s now leaves the mall vacant and combined with the new land use agreement, expands potential redevelopment options. The Company has engaged land planners and assembled a team to proceed with conceptual designs.\nClarendon\nThe Company owns an assemblage of land parcels (including its Clarendon and Clarendon Station operating properties) totaling approximately 1.5 acres adjacent to the Clarendon Metro Station in Arlington, Virginia. The Company is continuing to pursue zoning approvals for a significant mixed-use development project.\nPortfolio Leasing Status\nThe following chart sets forth certain information regarding the operating portfolio for the periods ended March 31, 2006 and 2005, respectively.",
+   "prose_after": "The increase in the shopping center portfolio\u2019s leasing percentage in 2006 resulted from the lease-up of space at Great Eastern Plaza, Southside Plaza and Olde Forte Village and the removal from service of 133,000 square feet of vacant mall space at Lexington Mall which the Company had not leased in 2005 in anticipation of redeveloping the shopping center.\nItem 3. Quantitative and Qualitative Disclosures About Market Risk\nThe Company is exposed to certain financial market risks, the most predominant being fluctuations in interest rates. Interest rate fluctuations are monitored by management as an integral part of the Company\u2019s overall risk management program, which recognizes the unpredictability of financial markets and seeks to reduce the potentially adverse effect on the Company\u2019s results of operations. The Company does not enter into financial instruments for trading purposes.\nThe Company is exposed to interest rate fluctuations primarily as a result of its variable rate debt used to finance the Company\u2019s development and acquisition activities and for general corporate purposes. As of March 31, 2006, the Company had variable rate indebtedness totaling $10,500,000. Interest rate fluctuations will affect the Company\u2019s annual interest expense on its variable rate debt. If the interest rate on the Company\u2019s variable rate debt instruments outstanding at March 31, 2006 had been one percent higher, our annual interest expense relating to these debt instruments would have increased by $105,000, based on those balances. Interest rate fluctuations will also affect the fair value of the Company\u2019s fixed rate debt instruments. As of March 31, 2006, the Company had fixed rate indebtedness totaling $490,519,000. If interest rates on the Company\u2019s fixed rate debt instruments at March 31, 2006 had been one percent higher, the fair value of those debt instruments on that date would have decreased by approximately $26,763,000.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1156,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 1185,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "3.",
+     "(a)",
+     "First Amended and Restated Articles of Incorporation of Saul Centers, Inc. filed with the Maryland Department of Assessments and Taxation on August 23, 1994 and filed as Exhibit 3.(a) of the 1993 Annual Report of the Company on Form 10-K are hereby incorporated by reference. Articles of Amendment to the First Amended and Restated Articles of Incorporation of Saul Centers, Inc., filed with the Maryland Department of Assessments and Taxation on May 28, 2004 and filed as Exhibit 3.(a) of the June 30, 2004 Quarterly Report of the Company is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(b)",
+     "Amended and Restated Bylaws of Saul Centers, Inc. as in effect at and after August 24, 1993 and as of August 26, 1993 and filed as Exhibit 3.(b) of the 1993 Annual Report of the Company on Form 10-K are hereby incorporated by reference. The First Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Subsidiary I Limited Partnership, the Second Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Subsidiary I Limited Partnership, the Third Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Subsidiary I Limited Partnership and the Fourth Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Subsidiary I Limited Partnership as filed as Exhibit 3.(b) of the 1997 Annual Report of the Company on Form 10-K are hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(c)",
+     "Articles Supplementary to First Amended and Restated Articles of Incorporation of the Company, dated October 30, 2003, filed as Exhibit 2 to the Company\u2019s Current Report on Form 8-A dated October 31, 2003, is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "4.",
+     "(a)",
+     "Deposit Agreement, dated November 5, 2003, among the Company, Continental Stock Transfer & Trust Company, as Depositary, and the holders of depositary receipts, each representing 1/100th of a share of 8% Series A Cumulative Redeemable Preferred Stock of Saul Centers, Inc. and filed as Exhibit 4 to the Registration Statement on Form 8-A on October 31, 2003 is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(b)",
+     "Form specimen of receipt representing the depositary shares, each representing 1/100th of a share of 8% Series A Cumulative Redeemable Preferred Stock of Saul Centers, Inc. and included as part of Exhibit 4 to the Registration Statement on Form 8-A on October 31, 2003 is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "10.",
+     "(a)",
+     "First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership filed as Exhibit No. 10.1 to Registration Statement No. 33-64562 is hereby incorporated by reference. The First"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1229,
+    "end_line": 1255
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "None\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\n16,277 shares were acquired at a price of $35.89 per share, by B. Francis Saul II, the Company\u2019s Chairman of the Board and Chief Executive Officer, and various individuals and entities affiliated with Mr. Saul, through participation in the Company\u2019s Dividend Reinvestment and Stock Purchase Plan for the January 31, 2006 dividend distribution.\nItem 3. Defaults Upon Senior Securities\nNone\nItem 4. Submission of Matters to a Vote of Security Holders\nNone\nItem 5. Other Information\nNone\nItem 6. Exhibits",
+   "prose_after": "Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership, the Second Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership, and the Third Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership filed as Exhibit 10.(a) of the 1995 Annual Report of the Company on Form 10-K is hereby incorporated by reference. The Fourth Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership filed as Exhibit 10.(a) of the March 31, 1997 Quarterly Report of the Company is hereby incorporated by reference. The Fifth Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership filed as Exhibit 4.(c) to Registration Statement No. 333-41436, is hereby incorporated by reference. The Sixth Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership filed as Exhibit 10.(a) of the September 30, 2003 Quarterly Report of the Company on Form 10-Q is hereby incorporated by reference. The Seventh Amendment to the First Amended and Restated Agreement of Limited Partnership of Saul Holdings Limited Partnership filed as Exhibit 10.(a) of the December 31, 2003 Annual Report of the Company on Form 10-K is hereby incorporated by reference.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1225,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 42
+    },
+    "after": {
+     "line": 1256,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 43
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "National Association, Wells Fargo Bank, National Association, Compass Bank, Sovereign Bank and First Horizon Bank, as Lenders, as filed as Exhibit 10.(q) of the Current Report of the Company on Form 8-K filed with the Commission on February 9, 2005, is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(p)",
+     "Guaranty, dated as of February 1, 2005, by and between Saul Centers, Inc., as Guarantor, and U.S. Bank National Association, as Administrative Agent and Sole Lead Arranger for itself and other financial institutions as Lenders, as filed as Exhibit 10.(r) of the Current Report of the Company on Form 8-K filed with the Commission on February 9, 2005, is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(q)",
+     "The Saul Centers, Inc. 2004 Stock Plan, as filed as Annex A to the Proxy Statement of the Company for its 2004 Annual Meeting of Stockholders, is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(r)",
+     "Form of Director Stock Option Agreements, as filed as Exhibit 10.(j) of the September 30, 2004 Quarterly Report of the Company, is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(s)",
+     "Form of Officer Stock Option Grant Agreements, as filed as Exhibit 10.(k) of the September 30, 2004 Quarterly Report of the Company, is hereby incorporated by reference."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.",
+     "",
+     "Rule 13a-14(a)/15d-14(a) Certifications of Chief Executive Officer and Chief Financial Officer (filed herewith)"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "32.",
+     "",
+     "Section 1350 Certifications of Chief Executive Officer and Chief Financial Officer (filed herewith)."
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "99.",
+     "",
+     "Schedule of Portfolio Properties"
+    ]
+   ],
+   "caption_stack": [
+    "National Association, Wells Fargo Bank, National Association, Compass Bank, Sovereign Bank and First Horizon Bank, as Lenders, as filed as Exhibit 10.(q) of the Current Report of the Company on Form 8-K filed with the Commission on February 9, 2005, is hereby incorporated by reference."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1279,
+    "end_line": 1300
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Business Segments"
+    }
+   },
+   "prose_before": "(l) Loan Agreement dated as of October 1, 1997 between Saul Subsidiary I Limited Partnership as Borrower and Nomura Asset Capital Corporation as Lender filed as Exhibit 10.(p) of the 1997 Annual Report of the Company on Form 10-K is hereby incorporated by reference.\n(m) Guaranty dated as of August 30, 2002 by and between Saul Centers, Inc. as Guarantor and U.S. Bank National Association, as administrative agent and sole lead arranger for itself and other financial institutions, the Lenders, as filed as Exhibit 10.(p) of the September 30, 2002 Quarterly Report of the Company, is hereby incorporated by reference.\n(n) Amended and Restated Promissory Note dated January 13, 2003 by and between Saul Holdings Limited Partnership as Borrower and Metropolitan Life Insurance Company as lender, as filed as Exhibit 10.(p) of the December 31, 2002 Annual Report of the Company on Form 10-K, is hereby incorporated by reference.\n(o) Revolving Credit Agreement, dated as of January 28, 2005, by and among Saul Holdings Limited Partnership as Borrower; U.S. Bank National Association, as Administrative Agent and Sole Lead Arranger; Wells Fargo Bank, National Association, as Syndication Agent; and U.S. Bank",
+   "prose_after": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1277,
+     "token": "PAGE_BREAK",
+     "id": 77,
+     "namespace": "arabic",
+     "page_number": 45
+    },
+    "after": {
+     "line": 1301,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 46
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "  SAUL CENTERS, INC."
+    ],
+    [
+     "",
+     "  (Registrant)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 9, 2006",
+     "/s/ B. Francis Saul III"
+    ],
+    [
+     "",
+     "    B. Francis Saul III,\n\n\n\nPresident"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 9, 2006",
+     "/s/ Scott V. Schneider"
+    ],
+    [
+     "",
+     "  Scott V. Schneider"
+    ],
+    [
+     "",
+     "  Senior Vice President, Chief Financial Officer"
+    ],
+    [
+     "",
+     "  (principal financial officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: May 9, 2006",
+     "/s/ Kenneth D. Shoop"
+    ],
+    [
+     "",
+     "  Kenneth D. Shoop"
+    ],
+    [
+     "",
+     "  Vice President, Chief Accounting Officer"
+    ],
+    [
+     "",
+     "  (principal accounting officer)"
+    ]
+   ],
+   "caption_stack": [
+    "SAUL CENTERS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1307,
+    "end_line": 1329
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 99,
+     "label": "NOTE 99",
+     "title": "Schedule of Portfolio Properties"
+    }
+   },
+   "prose_before": "SIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 99
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1301,
+     "token": "PAGE_BREAK",
+     "id": 78,
+     "namespace": "arabic",
+     "page_number": 46
+    },
+    "after": {
+     "line": 1330,
+     "token": "PAGE_BREAK",
+     "id": 79,
+     "namespace": "arabic",
+     "page_number": 47
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

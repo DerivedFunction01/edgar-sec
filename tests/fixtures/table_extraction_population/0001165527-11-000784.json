@@ -1,0 +1,2681 @@
+{
+ "accession": "0001165527-11-000784",
+ "cik": "0001343257",
+ "form": "10-Q",
+ "filing_date": "2011-08-26",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "g5391.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "47-0948014"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(IRS Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended November 30, 2009\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from ______________ to _____________\nCommission file number: 333-130344\nBCM ENERGY PARTNERS, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "301 St. Charles Av., Fl 3\nNew Orleans, LA 70130\n(Address of principal executive offices)\n(504) 525-8299\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ] Not applicable.\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "PART I. FINANCIAL INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of November 30, 2009 (Unaudited) and May 31, 2009",
+     "3"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations and Comprehensive Loss for the Three and Six Months Ended November 30, 2009 and November 30, 2008 (Unaudited)",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Changes in Stockholders\u2019 Deficit for the Six Months Ended November 30, 2009 (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Six Months Ended November 30, 2009 and November 30, 2008 (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (Unaudited)",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "14"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "Controls and Procedures",
+     "18"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II. OTHER INFORMATION",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1",
+     "Legal Proceedings",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A",
+     "Risk Factors",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3",
+     "Defaults upon Senior Securities",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4",
+     "(Removed and Reserved)",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5",
+     "Other Information",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6",
+     "Exhibits",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "22"
+    ]
+   ],
+   "caption_stack": [
+    "PART I. FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 54,
+    "end_line": 93
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [ ] No [ ] Not applicable.\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act. (Check one):\nLarge accelerated filer  [ ]  Accelerated filer  [ ]\nNon-accelerated filer    [ ]  Small reporting company  [X]\nIndicate by check mark whether the registrant is a shell company (as defined by Rule 12b-2 of the Exchange Act). Yes [X] No [ ]\nAs of August 12, 2011, there were 103,265,019 shares of the issuer\u2019s common stock outstanding.\nBCM ENERGY PARTNERS, INC.\nINDEX",
+   "prose_after": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Balance Sheets",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 49,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 93,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "November 30,",
+     "",
+     "",
+     "May 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(unaudited)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CURRENT ASSETS:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bank overdraft",
+     "$",
+     "58",
+     "",
+     "$",
+     "13",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "55,000",
+     "",
+     "",
+     "55,000",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "8,145",
+     "",
+     "",
+     "2,715",
+     ""
+    ],
+    [
+     "Convertible notes payable",
+     "",
+     "127,861",
+     "",
+     "",
+     "86,546",
+     ""
+    ],
+    [
+     "Derivative liability",
+     "",
+     "69,692",
+     "",
+     "",
+     "101,407",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "260,756",
+     "",
+     "",
+     "245,681",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Long-term convertible notes",
+     "",
+     "-",
+     "",
+     "",
+     "11,539",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "260,756",
+     "",
+     "",
+     "257,220",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "STOCKHOLDERS' DEFICIT",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $.0001 par value; 20,000,000 shares authorized",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock, $.0001 par value; 150,000,000 shares authorized;",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2,153,173 shares issued and outstanding as of November 30, 2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "and May 31, 2009.",
+     "",
+     "215",
+     "",
+     "",
+     "215",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "1,162,089",
+     "",
+     "",
+     "1,162,089",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(1,423,060)",
+     "",
+     "",
+     "(1,419,524)",
+     ""
+    ],
+    [
+     "Total Stockholders' Deficit",
+     "",
+     "(260,756)",
+     "",
+     "",
+     "(257,220)",
+     ""
+    ],
+    [
+     "Total Liabilities and Stockholders' Deficit",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 104,
+    "end_line": 144
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "PART I \u2013 FINANCIAL INFORMATION\nItem 1. Financial Statements\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Balance Sheets",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Statements of Operations and Comprehensive Loss\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 95,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 2
+    },
+    "after": {
+     "line": 146,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "November 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "November 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "REVENUES",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EXPENSES",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "-",
+     "",
+     "",
+     "149",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "214",
+     ""
+    ],
+    [
+     "General and administrative",
+     "",
+     "2,706",
+     "",
+     "",
+     "25,601",
+     "",
+     "",
+     "5,475",
+     "",
+     "",
+     "95,596",
+     ""
+    ],
+    [
+     "Professional fees",
+     "",
+     "-",
+     "",
+     "",
+     "66,143",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "123,744",
+     ""
+    ],
+    [
+     "Total expenses",
+     "",
+     "2,706",
+     "",
+     "",
+     "91,893",
+     "",
+     "",
+     "5,475",
+     "",
+     "",
+     "219,554",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS FROM CONTINUING OPERATIONS",
+     "",
+     "(2,706)",
+     "",
+     "",
+     "(91,893)",
+     "",
+     "",
+     "(5,475)",
+     "",
+     "",
+     "(219,554)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "OTHER INCOME (EXPENSE)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of discount on convertible note",
+     "",
+     "(15,244)",
+     "",
+     "",
+     "(9,110)",
+     "",
+     "",
+     "(29,776)",
+     "",
+     "",
+     "(17,410)",
+     ""
+    ],
+    [
+     "Gain (loss) on change in fair value of conversion feature",
+     "",
+     "10,057",
+     "",
+     "",
+     "(179,191)",
+     "",
+     "",
+     "31,715",
+     "",
+     "",
+     "(145,769)",
+     ""
+    ],
+    [
+     "Loss on settlement of lawsuit",
+     "",
+     "-",
+     "",
+     "",
+     "(6,500)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(6,500)",
+     ""
+    ],
+    [
+     "Total other expense",
+     "",
+     "(5,187)",
+     "",
+     "",
+     "(194,801)",
+     "",
+     "",
+     "1,939",
+     "",
+     "",
+     "(169,679)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS BEFORE DISCONTINUED OPERATIONS",
+     "",
+     "(7,893)",
+     "",
+     "",
+     "(286,694)",
+     "",
+     "",
+     "(3,536)",
+     "",
+     "",
+     "(389,233)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "DISCONTINUED OPERATIONS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "99,971",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "119,562",
+     ""
+    ],
+    [
+     "Gain on discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "99,971",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "119,562",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(7,893)",
+     "",
+     "$",
+     "(186,723)",
+     "",
+     "$",
+     "(3,536)",
+     "",
+     "$",
+     "(269,671)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share, from continuing operations",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.16)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.22)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted income per share, from discontinued operations",
+     "$",
+     "-",
+     "",
+     "$",
+     "0.06",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "0.07",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding - basic and diluted",
+     "",
+     "2,153,173",
+     "",
+     "",
+     "1,753,600",
+     "",
+     "",
+     "2,153,173",
+     "",
+     "",
+     "1,746,200",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NET LOSS",
+     "$",
+     "(7,893)",
+     "",
+     "$",
+     "(186,723)",
+     "",
+     "$",
+     "(3,536)",
+     "",
+     "$",
+     "(269,671)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "-",
+     "",
+     "",
+     "(12,002)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "23,091",
+     ""
+    ],
+    [
+     "COMPREHENSIVE LOSS",
+     "$",
+     "(7,893)",
+     "",
+     "$",
+     "(198,725)",
+     "",
+     "$",
+     "(3,536)",
+     "",
+     "$",
+     "(246,580)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 155,
+    "end_line": 207
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Statements of Operations and Comprehensive Loss\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Statements of Changes in Stockholders\u2019 Deficit\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 148,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional",
+     "",
+     "",
+     "Common",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Other",
+     "",
+     "",
+     "Stockholders'",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "Preferred Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Comprehensive",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Subscribed",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "(Deficit)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 May 31, 2008",
+     "",
+     "1,733,170",
+     "$",
+     "173",
+     "",
+     "19,000,000",
+     "",
+     "$",
+     "1,900",
+     "",
+     "$",
+     "1,137,743",
+     "",
+     "$",
+     "45,000",
+     "",
+     "$",
+     "(1,636,749)",
+     "",
+     "$",
+     "(26,581)",
+     "",
+     "$",
+     "(478,514)",
+     ""
+    ],
+    [
+     "Reverse split of common 1:20",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(313)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(313)",
+     ""
+    ],
+    [
+     "Common stock issued for cash",
+     "",
+     "20,496",
+     "",
+     "2",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "44,998",
+     "",
+     "",
+     "(45,000)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued for settlement of debt",
+     "",
+     "199,507",
+     "",
+     "20",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "41,849",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "41,869",
+     ""
+    ],
+    [
+     "Common stock issued pursuant to asset purchase agreement",
+     "",
+     "200,000",
+     "",
+     "20",
+     "",
+     "(19,000,000)",
+     "",
+     "",
+     "(1,900)",
+     "",
+     "",
+     "35,980",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "34,100",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "11,336",
+     "",
+     "",
+     "11,336",
+     ""
+    ],
+    [
+     "Gain on debt settlement",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(98,168)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(98,168)",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "217,225",
+     "",
+     "",
+     "15,245",
+     "",
+     "",
+     "232,470",
+     ""
+    ],
+    [
+     "Balance \u2013 May 31, 2009",
+     "",
+     "2,153,173",
+     "",
+     "215",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,162,089",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,419,524)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(257,220)",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,536)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(3,536)",
+     ""
+    ],
+    [
+     "Balance \u2013 November 30, 2009",
+     "",
+     "2,153,173",
+     "$",
+     "215",
+     "",
+     "-",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "1,162,089",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(1,423,060)",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "(260,756)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Total"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 218,
+    "end_line": 242
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Statements of Changes in Stockholders\u2019 Deficit\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 211,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 244,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "November 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(3,536)",
+     "",
+     "$",
+     "(269,671)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accretion of discount on convertible notes",
+     "",
+     "29,776",
+     "",
+     "",
+     "17,410",
+     ""
+    ],
+    [
+     "Amortization",
+     "",
+     "-",
+     "",
+     "",
+     "214",
+     ""
+    ],
+    [
+     "Change in fair value of conversion feature on convertible notes",
+     "",
+     "(31,715)",
+     "",
+     "",
+     "145,769",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "-",
+     "",
+     "",
+     "(21,696)",
+     ""
+    ],
+    [
+     "Accounts payable and accrued liabilities",
+     "",
+     "5,430",
+     "",
+     "",
+     "56,517",
+     ""
+    ],
+    [
+     "Bank overdraft",
+     "",
+     "45",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other liabilities",
+     "",
+     "-",
+     "",
+     "",
+     "38,792",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "-",
+     "",
+     "",
+     "(32,665)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from the issuance of promissory note",
+     "",
+     "-",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "-",
+     "",
+     "",
+     "20,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of exchange rate changes on cash",
+     "",
+     "-",
+     "",
+     "",
+     "22,142",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash",
+     "",
+     "-",
+     "",
+     "",
+     "9,477",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, beginning of period",
+     "",
+     "-",
+     "",
+     "",
+     "20,806",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash, end of period",
+     "$",
+     "-",
+     "",
+     "$",
+     "30,283",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Six Months Ended",
+    "November 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 253,
+    "end_line": 291
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)",
+   "prose_after": "See accompanying notes to the condensed consolidated financial statements.\nBCM ENERGY PARTNERS, INC.\nNotes to Condensed Consolidated Financial Statements\nNote 1 \u2013 Description of the Business and Summary of Significant Accounting Policies\nAeon Holdings, Inc. was incorporated as Novori Inc., in the State of Delaware, United States on July 26, 2004. Effective July 27, 2004, the Company incorporated a wholly-owned subsidiary, Novori Marketing Inc., in the Province of British Columbia, Canada. Effective October 20, 2008, the Company incorporated a wholly-owned subsidiary, Novori Jewelry Inc., in the State of Delaware. Effective December 22, 2008, the Company incorporated a wholly-owned subsidiary, Aeon Holdings, Inc., in the State of Delaware. On January 6, 2009, the Company merged its operations with its subsidiary, Aeon Holdings, Inc., and changed its name to Aeon Holdings, Inc.\nOn February 10, 2009, the Company entered into a purchase agreement (the \u201cPurchase Agreement\u201d) with Green Star Energies, Inc. (\"Green Star\") to acquire Green Star's interest in a number of oil and gas leases located in Beaver County, Pennsylvania. This acquisition is more fully described in Note 10 to the Company\u2019s Condensed Consolidated Financial Statements. As of the filing date of this Report, the Company had not received title to the oil and gas leases from Green Star and considers the Purchase Agreement to be void. The Company is currently seeking to recover the consideration given to Green Star and its related parties, as they failed to deliver on the terms of the Purchase Agreement. On February 10, 2009, the Company also sold its only subsidiaries, Novori Marketing, Inc. and Novori Jewelry, Inc. The Company has no remaining interest in them.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 246,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 293,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "November 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "November 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "2008",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(7,893)",
+     "",
+     "$",
+     "(186,723)",
+     "",
+     "$",
+     "(3,536)",
+     "",
+     "$",
+     "(269,671)",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding",
+     "",
+     "2,153,173",
+     "",
+     "",
+     "1,753,600",
+     "",
+     "",
+     "2,153,173",
+     "",
+     "",
+     "1,746,200",
+     ""
+    ],
+    [
+     "Earnings (loss) per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share, from continuing operations",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.16)",
+     "",
+     "$",
+     "(0.00)",
+     "",
+     "$",
+     "(0.22)",
+     ""
+    ],
+    [
+     "Basic and diluted income per share, from discontinued operations",
+     "$",
+     "-",
+     "",
+     "$",
+     "0.06",
+     "",
+     "$",
+     "-",
+     "",
+     "$",
+     "0.07",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 354,
+    "end_line": 366
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2013 Description of the Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company's reporting currency is the United States dollar. Monetary assets and liabilities denominated in foreign currencies were translated using the exchange rate prevailing at the balance sheet date. Translation gains (losses) were recorded in accumulated other comprehensive income (loss) as a component of stockholders' deficit. Gains and losses arising on translation or settlement of foreign currency denominated transactions or balances were included in the determination of income (loss). Foreign currency transactions were primarily undertaken in Canadian dollars. As of November 30, 2009 and November 30, 2008, the Company had not entered into derivative instruments to offset the impact of foreign currency fluctuations.\nBasic and Diluted Net Income (Loss) per Share\nFASB Codification topic 260, Earnings per share, requires dual presentation of basic and diluted earnings per share (EPS) with a reconciliation of the numerator and denominator of the EPS computations. Basic earnings per share amounts are based on the weighted average shares of common stock outstanding. If applicable, diluted earnings per share would assume the conversion, exercise or issuance of all potential common stock instruments such as options, warrants and convertible securities, unless the effect is to reduce a loss or increase earnings per share. Diluted net income (loss) per share on the potential exercise of the equity-based financial instruments is not presented where anti-dilutive.\nThe table below shows the earnings per share, basic and diluted, for the three and six months ended November 30, 2009 and 2008:",
+   "prose_after": "Income Taxes\nIncome taxes are provided in accordance with FASB Codification topic 740, Accounting for Income Taxes. A deferred tax asset or liability is recorded for all temporary differences between financial and tax reporting and net operating loss-carry forwards.\nDeferred tax assets are reduced by a valuation allowance when, in the opinion of management, it is more likely than not that, some portion or all of the deferred tax asset will not be realized. Deferred tax assets and liabilities are adjusted for the effect of changes in tax laws and rates on the date of enactment.\nStock-based Compensation\nThe Company adopted the fair value recognition provisions of FASB Codification topic 740 Stock Compensation\u201d under which the Company records stock-based compensation expense for warrants and stock options granted to employees, directors and officers using the fair value method. Under this method, stock-based compensation is recorded over the vesting period of the warrant and option based on the fair value of the warrant and option as the grant date. The fair value of each warrant and option granted is estimated using the Black-Scholes option pricing model that takes into account on the grant date, the exercise price, expected life of the warrant and/or option, the price of the underlying security, the expected volatility, expected dividends on the underlying security, and the risk-free interest rate. Transactions in which goods or services are received from non-employees in exchange for the issuance of equity instruments are accounted for based on the fair value of the consideration received or the fair value of the equity instruments issued, whichever is more reliably measurable.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 347,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 382,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Six Months Ended",
+     "",
+     "",
+     "For the Six Months Ended",
+     "",
+     ""
+    ],
+    [
+     "",
+     "November 30, 2009",
+     "",
+     "",
+     "November 30, 2008",
+     "",
+     ""
+    ],
+    [
+     "Weighted average volatility",
+     "",
+     "45",
+     "%",
+     "",
+     "173",
+     "%"
+    ],
+    [
+     "Expected dividends",
+     "",
+     "0",
+     "%",
+     "",
+     "0",
+     "%"
+    ],
+    [
+     "Expected term",
+     "1.4 years",
+     "",
+     "",
+     "1 year",
+     "",
+     ""
+    ],
+    [
+     "Risk-free rate",
+     "",
+     "0.27",
+     "%",
+     "",
+     "0.90",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 405,
+    "end_line": 414
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2013 Convertible Notes and Derivative Liability"
+    }
+   },
+   "prose_before": "On February 10, 2009, the Company issued $180,975 of convertible notes payable to two different note holders, bearing interest at 6% per annum, requiring payment of principal and interest monthly. Any outstanding balance plus accrued interest could be converted into the Company's common stock at a 20% discount to the market at the day of conversion. The conversion features was analyzed under FASB Codification Topic 815, Derivatives and Hedging. Bifurcation of the conversion option from the host contract and accounting for it separately as a derivative may have been necessary if (a) the conversion feature was not clearly and closely related to the host contract, (b) the hybrid instrument is not accounted for at fair value, and (c) a separate instrument with the same terms as the embedded instrument would qualify as a derivative instrument. To determine if the conversion option was indexed to the Company's own stock, the Company applied the two step approach as defined by ASC 815-40. In assessing step 2, by evaluating the conversion instrument's settlement provisions, the Company concluded that, pursuant to the guidance, the number of shares into which the note was convertible was not fixed and accordingly, the Company determined that the conversion feature of the note met the criteria of an embedded derivative and therefore the conversion feature of the debt needed to be bifurcated and accounted for as a derivative. The debt did not meet the definition of \u201cconventional convertible debt\u201d because the number of shares which could have been issued upon the conversion of the debt was not fixed. Therefore, the conversion feature, pursuant to ASC 815-40, was accounted for as a derivative liability. Pursuant to this guidance, the Company adjusts the carrying value of the conversion feature to its fair value at each reporting date. During the three and six months ended November 30, 2009, the Company recognized a gain on the change in the fair value of the conversion feature of $10,057 and $31,715, respectively, decreasing the carrying value of the derivative liability to $100,919 as of November 30, 2009. For the three and six months ended November 30, 2009, the Company accreted interest expense of $15,244 and $29,776, respectively, increasing the carrying value of the notes to $127,861. During the three and six months ended November 20, 2008, the Company recognized a loss on the change in the fair value of the conversion feature of $179,191 and $145,769, respectively, increasing the carrying value of the derivative liability to $210,174 as of November 30, 2008. For the three and six months ended November 30, 2008, the Company accreted interest expense of $9,110 and $17,410, respectively, increasing the carrying value of the notes to $93,008.\nThe Company calculated the fair value of these instruments using the Black-Scholes pricing model. The significant assumptions used in the calculation of the instruments fair value are detailed in the table below. The initial value of the derivative liability for the embedded conversion features at the date of issuance was $101,509, which was recorded in the accompanying condensed balance sheet. The value of the derivative liability for the embedded conversion features at May 31, 2009 was $101,407. The offset to this entry was recorded to debt discount which will be amortized over the life of the note using the effective interest rate method.",
+   "prose_after": "These derivative liabilities have been measured in accordance with FASB Codification topic 820, Fair Value Measurements. The valuation assumptions are classified within Level 1 inputs and Level 2 inputs.\nThese instruments were not issued with the intent of effectively hedging any future cash flow, the fair value of any asset, any liability or any net investment in a foreign operation. The instruments do not qualify for hedge accounting, and, as such, all future changes in the fair value will be recognized currently in earnings until such time as the instruments are paid down or converted.\nOn December 8, 2010, the Company issued 2,520,000 shares of common stock to settle one of these notes in the amount of $80,975.\nOn August 10, 2011, the Company and the second note holder agreed to settle the remaining $100,000 note for cash in the amount of $25,000.\nNote 3 \u2013 Discontinued Operations\nOn February 10, 2009, the Company entered into an asset purchase agreement with Harold Schaffrick and Mark Neild to sell the Company\u2019s wholly owned subsidiary, Novori Jewelry, Inc. As of that date, the Company discontinued all operations related to the former business of selling diamonds and custom jewelry over the internet.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 402,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 445,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three Months Ended",
+     "",
+     "For the Six Months Ended",
+     ""
+    ],
+    [
+     "",
+     "November 30, 2008",
+     "",
+     "November 30, 2008",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "571,331",
+     "$",
+     "1,084,759"
+    ],
+    [
+     "Cost of sales",
+     "",
+     "421,007",
+     "",
+     "849,435"
+    ],
+    [
+     "Gross profit",
+     "",
+     "150,324",
+     "",
+     "235,324"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Expenses",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Consulting fees",
+     "",
+     "50,353",
+     "",
+     "115,762"
+    ],
+    [
+     "Net income from discontinued operations",
+     "$",
+     "99,971",
+     "$",
+     "119,562"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 429,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "\u2013 Discontinued Operations"
+    }
+   },
+   "prose_before": "These instruments were not issued with the intent of effectively hedging any future cash flow, the fair value of any asset, any liability or any net investment in a foreign operation. The instruments do not qualify for hedge accounting, and, as such, all future changes in the fair value will be recognized currently in earnings until such time as the instruments are paid down or converted.\nOn December 8, 2010, the Company issued 2,520,000 shares of common stock to settle one of these notes in the amount of $80,975.\nOn August 10, 2011, the Company and the second note holder agreed to settle the remaining $100,000 note for cash in the amount of $25,000.\nNote 3 \u2013 Discontinued Operations\nOn February 10, 2009, the Company entered into an asset purchase agreement with Harold Schaffrick and Mark Neild to sell the Company\u2019s wholly owned subsidiary, Novori Jewelry, Inc. As of that date, the Company discontinued all operations related to the former business of selling diamonds and custom jewelry over the internet.\nThe following are the results of operations for the three and six months ended November 30, 2008:",
+   "prose_after": "Note 4 \u2013 Commitments\nOn August 25, 2008, the Company filed a lawsuit against Incentaclick Media Group Inc. (the \u201cPlaintiff\u201d) in the Supreme Court of British Columbia, Canada. The Company is claiming negligence and breach of contract due to failure to provide services as stipulated under an Agreement between the parties that had a term of 18 months commencing December 2006. Pursuant to the Agreement, the Company paid a monthly fee of $15,000 for custom website search engine optimization services. However, the Company claims that such services were never provided. Beginning December 2007 and for the remaining term of the contract, the monthly fee was reduced to $7,500. On July 28, 2008, the Company received a demand letter for payment of the remaining $67,500 outstanding under the Agreement. The Company proposed a settlement which was rejected, and the Plaintiff countersued for breach of contract, claiming damages of $67,500. On September 19, 2008, the parties settled and the Company agreed to pay $55,000 payable in 16 monthly payments of $3,437 commencing September 30, 2008. As of November 30, 2009, the Company has not made any settlement payments to the Plaintiff. The entire $55,000 liability is recorded in accounts payable as of November 30, 2009.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 402,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 445,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "    BCM ENERGY PARTNERS, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "    (Registrant)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 26, 2011",
+     "By",
+     "/s/ Raymond G. Bailey",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Raymond G. Bailey",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "August 26, 2011",
+     "By",
+     "/s/ Charles B. Mathews",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Charles B. Mathews",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Financial Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "BCM ENERGY PARTNERS, INC.",
+    "(Registrant)"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 766,
+    "end_line": 781
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "On August 17, 2011, the Company\u2019s wholly-owned subsidiary, BCM Energy Texas, LLC (\u201cBCM Energy Texas\u201d), entered into a Purchase Agreement with Drum Oil & Gas, Inc. (\u201cDrum O&G\u201d) to acquire 90% of Drum O&G\u2019s 18 net revenue interests in oil and gas wells located in Liberty County, Texas in exchange for $967,742 in cash, subject to ordinary adjustments. Drum O&G also granted to BCM Energy Texas a one-year option to acquire 90% of Drum O&G\u2019s 17 net revenue interests in oil and gas wells located in Liberty County, Texas. In addition, BCM Texas also entered into a Purchase Agreement with Drum Equipment, Inc. to acquire 90% of Drum Equipment\u2019s 27 net revenue interests in oil and gas wells also located in Liberty County, Texas in exchange for $1,617,512 in cash, subject to ordinary adjustments. Drum Equipment also granted to BCM Energy Texas a one-year option to acquire 90% of Drum O&G\u2019s 19 net revenue interests in oil and gas wells located in Liberty County, Texas.\nItem 3. Defaults upon Senior Securities\nNone.\nItem 4. (Removed and Reserved)\nItem 5. Other Information\nNone.\nItem 6. Exhibits\nSee Exhibit Index.\nSIGNATURES\nPursuant to the requirements of the Securities and Exchange Act of 1934, the Registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "Exhibit Index\nThe following exhibits are filed herewith or incorporated herein pursuant to Regulation S-K, Item 601:",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 761,
+     "token": "PAGE_BREAK",
+     "id": 41,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 781,
+     "token": "PAGE_BREAK",
+     "id": 42,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certifications Pursuant to 18 U.S.C. Section 1350-Section 302, signed by Raymond G. Bailey, Chief Executive Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certifications Pursuant to 18 U.S.C. Section 1350-Section 302, signed by Charles B. Mathews, Chief Financial Officer."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32*",
+     "Certification Pursuant to 18 U.S.C. Section 1350-Section 906, signed by Raymond G. Bailey, Chief Executive Officer and Charles B. Mathews, Chief Financial Officer."
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 788,
+    "end_line": 798
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2013 Subsequent Events"
+    }
+   },
+   "prose_before": "Exhibit Index\nThe following exhibits are filed herewith or incorporated herein pursuant to Regulation S-K, Item 601:",
+   "prose_after": "* Filed herewith.",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 783,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 800,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

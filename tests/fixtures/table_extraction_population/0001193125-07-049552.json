@@ -1,0 +1,885 @@
+{
+ "accession": "0001193125-07-049552",
+ "cik": "0001282582",
+ "form": "10-K",
+ "filing_date": "2007-03-08",
+ "era": "pre2010",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "d10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Florida",
+     "65-07714145"
+    ],
+    [
+     "(State or other jurisdiction or incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 25,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-K\n(Mark One)\n[X]  ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2006\nor\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission File Number: 333-119800\nFIRST STATE FINANCIAL CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 24,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 39,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "22 S. Links Avenue, Sarasota, FL",
+     "34236"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 31,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "941-929-9000\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: Common stock, par value $1 per share\nSecurities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark if disclosure of delinquent filers pursuant to Item 405 of Regulation S-K is not contained herein, and will not be contained, to the best of the registrant\u2019s knowledge, in definitive proxy or information statements incorporated by reference in Part III of this Form 10-K or any amendment to this Form 10-K [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 24,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 39,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I",
+     "",
+     ""
+    ],
+    [
+     "  Item 1",
+     "Business",
+     "1"
+    ],
+    [
+     "  Item 1A",
+     "Risk Factors",
+     "8"
+    ],
+    [
+     "  Item 1B",
+     "Unresolved Staff Comments",
+     "11"
+    ],
+    [
+     "  Item 2",
+     "Properties",
+     "12"
+    ],
+    [
+     "  Item 3",
+     "Legal Proceedings",
+     "12"
+    ],
+    [
+     "  Item 4",
+     "Submission of Matters to a Vote of Security Holders",
+     "12"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "",
+     ""
+    ],
+    [
+     "  Item 5",
+     "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities",
+     "13"
+    ],
+    [
+     "  Item 6",
+     "Selected Financial Data",
+     "13"
+    ],
+    [
+     "  Item 7",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "13"
+    ],
+    [
+     "  Item 7A",
+     "Quantitative and Qualitative Disclosures about Market Risk",
+     "14"
+    ],
+    [
+     "  Item 8",
+     "Financial Statements and Supplementary Data",
+     "14"
+    ],
+    [
+     "  Item 9",
+     "Changes in and Disagreements with Accountants on Accounting and Financial Disclosure",
+     "14"
+    ],
+    [
+     "  Item 9A",
+     "Controls and Procedures",
+     "14"
+    ],
+    [
+     "  Item 9B",
+     "Other Information",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "",
+     ""
+    ],
+    [
+     "  Item 10",
+     "Directors, Executive Officers and Corporate Governance",
+     "16"
+    ],
+    [
+     "  Item 11",
+     "Executive Compensation",
+     "16"
+    ],
+    [
+     "  Item 12",
+     "Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters",
+     "16"
+    ],
+    [
+     "  Item 13",
+     "Certain Relationships and Related Transactions, and Director Independence",
+     "16"
+    ],
+    [
+     "  Item 14",
+     "Principal Accountant Fees and Services",
+     "16"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "",
+     ""
+    ],
+    [
+     "  Item 15",
+     "Exhibits and Financial Statement Schedules",
+     "17"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "19"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Exhibit Index",
+     "",
+     "20"
+    ],
+    [
+     "  Material Contract",
+     "",
+     ""
+    ],
+    [
+     "  Subsidiaries of the Registrant",
+     "",
+     ""
+    ],
+    [
+     "  Consent of Independent Registered Public Accounting Firm",
+     "",
+     ""
+    ],
+    [
+     "  Certification of Chief Executive Officer Pursuant to Rule 13a-14(a)",
+     "",
+     ""
+    ],
+    [
+     "  Certification of Chief Financial Officer Pursuant to Rule 13a-14(a)",
+     "",
+     ""
+    ],
+    [
+     "  Certification of Chief Executive Officer Pursuant to Section 1350",
+     "",
+     ""
+    ],
+    [
+     "  Certification of Chief Financial Officer Pursuant to Section 1350",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Part I"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 110
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer or a non-accelerated filer (as defined in Rule 12b-2 of the Exchange Act.)\nLarge Accelerated Filer [ ] Accelerated Filer [X] Non-accelerated Filer [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act.) Yes [ ] No [X]\nThe aggregate market value of common stock of the issuer held by non-affiliates of the issuer (4,274,830 shares) on June 30, 2006 was approximately $77,374,000. This calculation was based on the closing price of the common equity on June 30, 2006.\nThere were 5,874,950 shares of the issuer\u2019s common stock issued and outstanding as of February 26, 2007.\nDOCUMENTS INCORPORATED BY REFERENCE\n1. Certain portions of the Annual Report to Shareholders of First State Financial Corporation for the fiscal year ended December 31, 2006 are incorporated by reference into Part I, Part II and Part II.\n2. Certain portions of the Company\u2019s Proxy Statement for the Annual Meeting of Shareholders to be held on April 9, 2007 are incorporated by reference into Part III.\nTable of Contents",
+   "prose_after": "Part I\nItem 1. Business\nFirst State Financial Corporation\nFirst State Financial Corporation (the \u201cCompany,\u201d \u201cHolding Company,\u201d \u201cwe,\u201d \u201cour\u201d) was incorporated under the laws of the State of Florida on August 13, 1997. We are a registered bank holding company under the Bank Holding Company Act of 1956, as amended. Our wholly-owned subsidiary and principal asset is First State Bank (the \u201cBank\u201d), a state banking association.\nThe Bank is engaged in community-oriented commercial and retail banking, focusing on the needs of individuals and small- to medium-sized businesses in the West Central region of Florida. Our primary source of earnings is derived from income generated by our ownership and operation of the Bank. Unless the context otherwise requires, references herein to the Company includes the Company and the Bank on a consolidated basis.\nThe Company is a legal entity separate and distinct from the Bank, and there are various legal limitations on the ability of the Bank to finance or otherwise supply funds to the Company. In particular, under federal banking law, the Bank may not declare a dividend that exceeds undivided profits. In addition, the approval of the Federal Reserve Bank of Atlanta (\u201cAtlanta FRB\u201d) and Florida Office of Financial Regulation (\u201cFlorida Office\u201d) is required if the total amount of all dividends declared in a calendar year exceeds the Bank\u2019s net profits, as defined, for that year combined with its retained profits for the preceding two years. The Atlanta FRB and the Florida Office also have the authority to limit further the payment of dividends by the Bank under certain circumstances.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 67,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 110,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Year Ended December 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "2006",
+     "",
+     "2005",
+     "",
+     "2004",
+     ""
+    ],
+    [
+     "  Interest and fees on loans",
+     "$",
+     "29,813",
+     "$",
+     "19,771",
+     "$",
+     "13,210"
+    ],
+    [
+     "  Interest and dividends on investment securities",
+     "",
+     "1,008",
+     "",
+     "711",
+     "",
+     "555"
+    ],
+    [
+     "  Other interest and non-interest income",
+     "",
+     "570",
+     "",
+     "299",
+     "",
+     "114"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Total revenues from continuing operations",
+     "$",
+     "31,391",
+     "$",
+     "20,781",
+     "$",
+     "13,879"
+    ]
+   ],
+   "caption_stack": [
+    "Year Ended December 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 142,
+    "end_line": 154
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Business"
+    },
+    "note": null
+   },
+   "prose_before": "Other services offered by the Bank include safe deposit boxes, wire transfers, direct deposit of payroll and social security payments, night depository, travelers\u2019 checks, banking by mail and the internet. The Bank does not presently provide fiduciary or appraisal services.\nThe Bank conducts commercial and consumer banking business, which primarily consists of attracting deposits from the areas served by it offices and using those deposits, together with funds derived from other sources, to originate a variety of commercial, consumer, and real estate loans, including commercial loans collateralized by real estate.\nWe consider the general business of retail banking to be our only operating segment.\nPrincipal Sources of Revenue\nThe Bank\u2019s primary source of revenue is interest income. The table below shows the amount of total consolidated revenues resulting from interest and fees on loans, interest and dividends on investment securities and other interest and non-interest income for each of the last three years.",
+   "prose_after": "Additional information required to be reported under this item regarding the results of operations is within the Management Discussion and Analysis of the Company\u2019s 2006 Annual Report and is incorporated herein by reference.\nCompetition\nThe banking business is highly competitive. We compete with other commercial banks, savings and loans, credit unions, and other financial service companies operating in the West Central region of Florida. As of June 30, 2006 (the most recent date for deposit data compiled by the FDIC), there were approximately 183 banking offices representing 41 financial institutions operating in Sarasota County holding approximately $11.3 billion in deposits. In Pinellas County, there were approximately 329 offices representing 36 financial institutions holding over $19.2 billion in deposits. We believe that our community bank focus, with our emphasis on service to small- to medium-sized businesses, individuals, and professional concerns, gives us opportunities in these markets. Nevertheless, a number of these competitors are well established in the West Central region. Most of them have substantially greater resources and lending limits than we have and offer services that we do not currently provide. As a result of these competitive factors, we may have to pay higher rates of interest to attract deposits.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 136,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 173,
+     "token": "PAGE_BREAK",
+     "id": 10,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Period Ending",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Index",
+     "12/10/04",
+     "12/31/04",
+     "06/30/05",
+     "12/31/05",
+     "06/30/06",
+     "12/31/06"
+    ],
+    [
+     "  First State Financial Corporation",
+     "100.00",
+     "102.36",
+     "98.67",
+     "121.82",
+     "145.56",
+     "137.19"
+    ],
+    [
+     "  NASDAQ Composite",
+     "100.00",
+     "102.28",
+     "97.04",
+     "104.45",
+     "103.32",
+     "115.30"
+    ],
+    [
+     "  SNL NASDAQ Bank Index",
+     "100.00",
+     "102.27",
+     "97.35",
+     "99.15",
+     "103.73",
+     "111.32"
+    ]
+   ],
+   "caption_stack": [
+    "Period Ending"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 437,
+    "end_line": 446
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "No matters were submitted to a vote of First State Financial Corporation security holders during the fourth quarter of the year ended December 31, 2006.\nPart II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities\nInformation required to be reported under this item is set forth in the section entitled \u201cCapital\u201d within the \u201cManagement Discussion and Analysis\u201d of the Company\u2019s 2006 Annual Report and is incorporated herein by reference.\nPERFORMANCE GRAPH\nOur common stock trades in the NASDAQ National Market System under the symbol FSTF. We began trading on the NASDAQ National System on December 10, 2004. Prior to that date there was no public market for our common stock.\nThe following Performance Graph compares the yearly percentage change in the cumulative total shareholder return on our common stock to the cumulative total return on the NASDAQ Composite Index and the SNL NASDAQ Bank Index from December 10, 2004 through December 31, 2006 (assuming a $100 investment on December 10, 2004 and reinvestment of all dividends).\nFirst State Financial Corporation",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Source : SNL Financial LC,",
+     ""
+    ],
+    [
+     "Charlottesville, VA",
+     "434-977-1600"
+    ],
+    [
+     "\u00a9 2007",
+     "www.snl.com"
+    ]
+   ],
+   "caption_stack": [
+    "Source : SNL Financial LC,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 447,
+    "end_line": 452
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Item 6. Selected Financial Data\nInformation required to be reported under this item is set forth in the table entitled, \u201cSelected Five Year Data\u201d in the Company\u2019s 2006 Annual Report and is incorporated herein by reference.\nItem 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nInformation required to be reported under this item is set forth in the \u201cManagement Discussion and Analysis\u201d section of the Company\u2019s 2006 Annual Report and is incorporated herein by reference.\nItem 7A. Quantitative and Qualitative Disclosures About Market Risk\nInformation required to be reported under this item is set forth in the section entitled \u201cAsset/Liability Management and Interest Rate Risk\u201d of the Company\u2019s 2006 Annual Report and is incorporated herein by reference.\nItem 8. Financial Statements and Supplementary Data\nInformation required to be reported under this item is set forth in the Financial Statements of the Company\u2019s 2006 Annual Report and is incorporated by herein by reference.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 421,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signatures",
+     "Title"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Corey J. Coughlin",
+     "President, Chief Executive Officer and Director"
+    ],
+    [
+     "",
+     "(principal executive officer)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert H. Beymer",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Daniel Harrington",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Marshall Reynolds",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Neal Scaggs",
+     "Chairman of the Board and Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Robert L. Shell, Jr.",
+     "Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "/s/ Thomas W. Wright",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 601,
+    "end_line": 627
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "21.1 List of subsidiaries\n23.1 Consent of Independent Registered Public Accounting Firm\n31.1 Certification of the Chief Executive Officer under Section 302 of the Sarbanes-Oxley Act of 2002.\n31.2 Certification of the Chief Financial Officer under Section 302 of the Sarbanes-Oxley Act of 2002.\n32 Chief Executive Officer and Chief Financial Officer\u2019s certification required under Section 906 of Sarbanes-Oxley Act of 2002\nSIGNATURES\nPursuant to the requirements of Section 13 and 15(d) of the Securities Exchange Act of 1934, the Registrant has caused this report to be duly signed on its behalf by the undersigned, thereunto duly authorized.\nFIRST STATE FINANCIAL CORPORATION /s/ Corey J. Coughlin President and Chief Executive Officer /s/ Dennis Grinsteiner Senior Vice President and Chief Financial Officer\nPursuant to the requirements of the Securities Exchange Act of 1934, this report has been signed below by the following persons on behalf of the Registrant and in the capacities and on March 1, 2007.",
+   "prose_after": "Exhibit Index",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 591,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     ""
+    ],
+    [
+     "10.6",
+     "Standard Office Building Lease between Clearwater Retail Partners, LLC and First State Bank dated May 1, 2006."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "13.1",
+     "First State Financial Corporation 2006 Annual Report"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1",
+     "List of subsidiaries"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1",
+     "Consent of Independent Registered Public Accounting Firm"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer under Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer under Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32",
+     "Certification Pursuant to 18 USC Section 1350, as adopted pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [
+    "Exhibit No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 632,
+    "end_line": 649
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": null
+   },
+   "prose_before": "Exhibit Index",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 628,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 650,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

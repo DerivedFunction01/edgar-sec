@@ -1,0 +1,595 @@
+{
+ "accession": "0001104659-26-036939",
+ "cik": "0000032689",
+ "form": "10-K",
+ "filing_date": "2026-03-30",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Large Accelerated",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "tm261242d1_10k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "93-3459519"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "c/o The Empire District Electric Company,",
+     ""
+    ],
+    [
+     "602 S. Joplin Avenue",
+     ""
+    ],
+    [
+     "Joplin, Missouri",
+     "64801"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 28,
+    "end_line": 40
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________________________  to  __________________________\nEMPIRE DISTRICT BONDCO, LLC\n(Exact name of issuing entity as specified in its charter)\nCommission File Number of issuing entity: 333-274815-01\nCentral Index Key Number of issuing entity: 0001994341\nTHE EMPIRE DISTRICT ELECTRIC COMPANY\n(Exact name of depositor and sponsor as specified in its charter)\nCommission File Number of depositor and sponsor: 333-274815\nCentral Index Key Number of depositor and sponsor: 0000032689",
+   "prose_after": "Registrant\u2019s telephone number, including area code: 417 625-5100",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Securities registered pursuant to Section 12(b) of the Act:   none"
+    ],
+    [
+     ""
+    ],
+    [
+     "Securities registered pursuant to Section 12(g) of the Act:   none\n\n\n\n \n\n\n\nIndicate by check mark if the registrant is a well-known seasoned issuer as defined in Rule 405 of the Securities Act.\n\n\n\n[ ] Yes                [X] No\n\n\n\n \n\n\n\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act.\n\n\n\n[ ] Yes                [X] No"
+    ]
+   ],
+   "caption_stack": [
+    "Securities registered pursuant to Section 12(b) of the Act:   none"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 43,
+    "end_line": 56
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: 417 625-5100",
+   "prose_after": "Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\n[X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\n[X] Yes [ ] No\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Auditor Name",
+     "Auditor Location",
+     "Auditor Firm ID"
+    ],
+    [
+     "Ernst & Young LLP",
+     "Toronto, Canada",
+     "(PCAOB ID 1263)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 91,
+    "end_line": 96
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ]\nIf securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\n[ ] Yes [X] No\nDocuments incorporated by reference: none",
+   "prose_after": "PART I\nItem 1. Business.\nOmitted pursuant to General Instruction J of Form 10-K.\nItem 1A. Risk Factors.\nOmitted pursuant to General Instruction J of Form 10-K.\nItem 1B. Unresolved Staff Comments.\nNone.\nItem 1C. Cybersecurity.\nOmitted pursuant to General Instruction J of Form 10-K.\nItem 2. Properties.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 96,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "Title",
+     "Background"
+    ],
+    [
+     "Tim Wilson",
+     "48",
+     "Manager and President",
+     "Tim Wilson was appointed Manager and President of Empire District Bondco, LLC effective as of January 17, 2025. Since July 2023, Mr. Wilson served as President of the Central Region \u2013 Electric for Liberty Utilities Service Corp., an affiliate of The Empire District Electric Company (\u201cEmpire\u201d), for which the Company is a wholly-owned subsidiary. Prior to that, Mr. Wilson served as Vice President of Electric Operations from 2020 to 2023, Vice President of Strategic Projects and Energy Supply from 2019 to 2020, and Central Region Director of Electric Operations \u2013 Services from 2017 to 2019."
+    ],
+    [
+     "Fraser McNamee",
+     "41",
+     "Manager, Treasurer, and Secretary",
+     "Effective September 15, 2025, Fraser McNamee was appointed Manager, Secretary and Treasurer of the Company. Since April 2023, Mr. McNamee has served as Vice-President Finance and Corporate Controller for Algonquin Power & Utilities Corp. (\u201cAlgonquin\u201d), the indirect parent company of the Company. Prior to that, Mr. McNamee served in various roles for Algonquin and its affiliates, including Senior Director Accounting and Reporting from 2022 to 2023 and Director of Finance from 2017 to 2022."
+    ],
+    [
+     "Jennifer A. Schwartz",
+     "52",
+     "Independent Manager",
+     "With 25 years\u2019 U.S. and global capital markets experience, Ms. Schwartz currently serves as Vice President, Assistant Manager and Independent Director/Manager and is responsible for serving as the independent director/manager, springing and/or special member of companies since 2004. Ms. Schwartz is currently appointed to more than 6,000 special purpose entity boards. She is familiar with bankruptcy remote transactions and corporate structures, Delaware statutory trusts, and is experienced in setting up initial appointments, reviewing and execution of corporate documents, attending annual board meetings, price negotiations, invoicing and collections and terminations of services."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 169,
+    "end_line": 195
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "Directors, Executive Officers, and Corporate Governance."
+    },
+    "note": null
+   },
+   "prose_before": "Omitted pursuant to General Instruction J of Form 10-K.\nItem 9A. Controls and Procedures.\nOmitted pursuant to General Instruction J of Form 10-K.\nItem 9B. Other Information.\nNone.\nItem 9C. Disclosure Regarding Foreign Jurisdictions that Prevent Inspections.\nNone.\nPART III\nItem 10. Directors, Executive Officers, and Corporate Governance.\nThe following is a list of the managers of Empire District Bondco, LLC (the \u201cIssuing Entity\u201d) as of the date of this report:",
+   "prose_after": "Code of Ethics\nThe Issuing Entity is a wholly-owned subsidiary of Empire, which in turn is an indirect wholly-owned subsidiary of Algonquin. Algonquin, a Canadian company, is a foreign private issuer reporting pursuant to Exchange Act rules for foreign registrants. Algonquin indirectly owns Liberty Utilities Co., which in turn indirectly owns a portfolio of electrical distribution utility systems (including Empire) and related generation assets, water distribution and wastewater collection utility systems, and natural gas distribution utility systems. Algonquin has adopted a Code of Business Conduct and Ethics which applies to all of its subsidiary entities. The Code of Business Conduct and Ethics is available at Algonquin\u2019s website at https://investors.algonquinpower.com/documents-and-filings/other-documents/default.aspx.\nItem 11. Executive Compensation\nOther than an annual independent manager fee of $2,760 paid to C T Corporation Staffing, Inc., the Issuing Entity does not pay any compensation to its managers or executive officers.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 154,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No.",
+     "Description"
+    ],
+    [
+     "3.1",
+     "Certificate of Formation of Empire District Bondco, LLC (incorporated by reference to the Registration Statement on Form SF-1 of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed on September 29, 2023, Exhibit 3.1)"
+    ],
+    [
+     "3.2",
+     "Amended and Restated Limited Liability Company Agreement of Empire District Bondco, LLC (incorporated by reference to a Current Report on Form 8-K of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed January 22, 2024, Exhibit 3.2)"
+    ],
+    [
+     "4.1",
+     "Indenture between Empire District Bondco, LLC and The Bank of New York Mellon Trust Company, N.A. dated January 30, 2024 (including forms of Securitized Utility Tariff Bonds) (incorporated by reference to a Current Report on Form 8-K of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed January 30, 2024, Exhibit 4.1)"
+    ],
+    [
+     "4.2",
+     "Series Supplement between Empire District Bondco, LLC and The Bank of New York Mellon Trust Company, N.A. dated as of January 30, 2024 (incorporated by reference to a Current Report on Form 8-K of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed January 30, 2024, Exhibit 4.2)"
+    ],
+    [
+     "10.1",
+     "Securitized Utility Tariff Property Servicing Agreement between Empire District Bondco, LLC and The Empire District Electric Company d/b/a Liberty, as Servicer, dated January 30, 2024 (incorporated by reference to a Current Report on Form 8-K of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed January 30, 2024, Exhibit 10.1)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 231,
+    "end_line": 249
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "Information responding to Item 13 is included under Item 10. (Directors, Executive Officers, and Corporate Governance) above.\nItem 14. Principal Accountant Fees and Services.\nOmitted pursuant to General Instruction J of Form 10-K.\nPART IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a)(1) and (a)(2) Omitted pursuant to General Instruction J of Form 10-K.\n(a)(3) and (b) See Exhibit Index included below, which is incorporated herein by reference.\nItem 16. Form 10-K Summary.\nNone.\nEXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 200,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 250,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "10.2",
+     "Securitized Utility Tariff Property Purchase and Sale Agreement between Empire District Bondco, LLC and The Empire District Electric Company d/b/a Liberty, as Seller, dated January 30, 2024 (incorporated by reference to a Current Report on Form 8-K of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed January 30, 2024, Exhibit 10.2)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Administration Agreement between Empire District Bondco, LLC and The Empire District Electric Company d/b/a Liberty, as Administrator, dated January 30, 2024 (incorporated by reference to a Current Report on Form 8-K of The Empire District Electric Company and Empire District Bondco, LLC (File Nos. 333-274815 and 333-274815-01) filed January 30, 2024, Exhibit 10.3)"
+    ],
+    [
+     "31.1",
+     "Certification pursuant to Rule 13a-14(d)/15d-14(d)"
+    ],
+    [
+     "33.1",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities of The Empire District Electric Company d/b/a Liberty, as servicer"
+    ],
+    [
+     "33.2",
+     "Report on assessment of compliance with servicing criteria for asset-backed securities of The Bank of New York Mellon Trust Company, N.A., as indenture trustee"
+    ],
+    [
+     "34.1",
+     "Attestation report on assessment of compliance with servicing criteria for asset backed securities of Ernst & Young LLP on behalf of The Empire District Electric Company d/b/a Liberty, as servicer"
+    ],
+    [
+     "34.2",
+     "Attestation report on assessment of compliance with servicing criteria for asset backed securities of KPMG LLP on behalf of The Bank of New York Mellon Trust Company, N.A., as indenture trustee"
+    ],
+    [
+     "35.1",
+     "Servicer compliance statement of The Empire District Electric Company d/b/a Liberty, as servicer"
+    ],
+    [
+     "104",
+     "Cover Page Integrative Data File \u2013 the cover page XBRL tags are embedded within the Inline XBRL document"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 251,
+    "end_line": 269
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "Item 1112(b). Significant Obligors of Pool Assets.\nNone.\nItem 1114(b)(2). Credit Enhancement and Other Support, Except for Certain Derivatives Instruments.\nNone.\nItem 1115(b). Certain Derivatives Instruments.\nNone.\nItem 1117. Legal Proceedings.\nNo material legal proceedings to be reported.\nItem 1119. Affiliations and Certain Relationships and Related Transactions.\nEmpire District Bondco, LLC is a wholly-owned subsidiary of The Empire District Electric Company d/b/a Liberty.",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 250,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 302,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Date: March 30, 2026",
+     "Empire District Bondco, LLC"
+    ],
+    [
+     "",
+     "(Issuing Entity)"
+    ],
+    [
+     "",
+     "By: The Empire District Electric Company d/b/a Liberty, as Servicer"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 316,
+    "end_line": 321
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "34.2 \u2013 Attestation report on assessment of compliance with servicing criteria for asset backed securities of KPMG LLP (PCAOB ID No. 185, New York, NY) on behalf of The Bank of New York Mellon Trust Company, N.A., as indenture trustee.\nItem 1123. Servicer Compliance Statement.\n35.1 \u2013 Servicer compliance statement of The Empire District Electric Company, as servicer.\nSupplemental Information to be Furnished With Reports Filed Pursuant to Section 15(d) of the Act by Registrants Which Have Not Registered Securities Pursuant to Section 12 of the Act\nNo such annual report, proxy statement, form of proxy or other proxy soliciting material has been sent to the registrant\u2019s security holders. The registrant will not be sending an annual report or proxy material to its security holders subsequent to the filing of this form.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 311,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "By:",
+     "/s/ TIM WILSON"
+    ],
+    [
+     "",
+     "",
+     "Tim Wilson"
+    ],
+    [
+     "",
+     "",
+     "President"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/ FRASER MCNAMEE"
+    ],
+    [
+     "",
+     "",
+     "Fraser McNamee"
+    ],
+    [
+     "",
+     "",
+     "Treasurer and Secretary"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 322,
+    "end_line": 333
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 16",
+     "title": "Form 10-K Summary."
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 16",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 311,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 334,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

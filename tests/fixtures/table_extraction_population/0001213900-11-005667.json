@@ -1,0 +1,6880 @@
+{
+ "accession": "0001213900-11-005667",
+ "cik": "0001463833",
+ "form": "10-K",
+ "filing_date": "2011-10-28",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "f10k2011_ctmmedia.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "26-4831346"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 18,
+    "end_line": 23
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-K\n[ ] Annual report pursuant to section 13 or 15(d) of the securities exchange act of 1934 for the fiscal year ended July 31, 2011, or\n[ ] Transition report pursuant to section 13 or 15(d) of the securities exchange act of 1934.\nCommission File Number: 000-53718\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "11 Largo Drive South, Stamford, CT 06907\n(Address of principal executive offices, zip code)\n(203) 323-5161\n(Registrant\u2019s telephone number, including area code)\nSecurities registered pursuant to Section 12(b) of the Act: None\nSecurities registered pursuant to section 12(g) of the Act:\nClass A common stock, par value $0.01 per share\nClass B common stock, par value $0.01 per share\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 14,
+     "token": "REPEATING_HEADER",
+     "id": 2,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Part I",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 1. Business.",
+     "1"
+    ],
+    [
+     "Item 1A. Risk Factors.",
+     "5"
+    ],
+    [
+     "Item 1B. Unresolved Staff Comments.",
+     "10"
+    ],
+    [
+     "Item 2. Properties.",
+     "10"
+    ],
+    [
+     "Item 3. Legal Proceedings.",
+     "10"
+    ],
+    [
+     "Item 4. (Removed and Reserved).",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part II",
+     "10"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.",
+     "10"
+    ],
+    [
+     "Item 6. Selected Financial Data.",
+     "11"
+    ],
+    [
+     "Item 7. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.",
+     "11"
+    ],
+    [
+     "Item 7A. Quantitative and Qualitative Disclosures about Market Risks.",
+     "20"
+    ],
+    [
+     "Item 8. Financial Statements and Supplementary Data.",
+     "20"
+    ],
+    [
+     "Item 9. Changes in and Disagreements with Accountants on Accounting and Financial Disclosure.",
+     "20"
+    ],
+    [
+     "Item 9A(T). Controls and Procedures.",
+     "21"
+    ],
+    [
+     "Item 9B. Other Information.",
+     "21"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part III",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 10. Directors, Executive Officers and Corporate Governance.",
+     "22"
+    ],
+    [
+     "Item 11. Executive Compensation.",
+     "22"
+    ],
+    [
+     "Item 12. Security Ownership of Certain Beneficial Owners and Management and Related Stockholder Matters.",
+     "22"
+    ],
+    [
+     "Item 13. Certain Relationships and Related Transactions, and Director Independence.",
+     "22"
+    ],
+    [
+     "Item 14. Principal Accounting Fees and Services.",
+     "22"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Part IV",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Item 15. Exhibits, Financial Statement Schedules.",
+     "23"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "24"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 70,
+    "end_line": 105
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "The aggregate market value of the voting and non-voting stock held by non-affiliates of the registrant, based on the closing price on January 31, 2011 (the last business day of the registrant\u2019s most recently completed second fiscal quarter) of the Class A common stock of $2.15 and of the Class B common stock of $2.15 as reported on the Pink OTC Markets, was approximately $5,901,300.\nAs of October 27, 2011, the registrant had outstanding 1,106,468 shares of Class A common stock, 6,126,267 shares of Class B common stock, and 1,090,775 shares of Class C common stock. Excluded from these numbers are 178,517 shares of Class A common stock shares and 797,183 shares of Class B common stock held in treasury by CTM Media Holdings, Inc.\nDOCUMENTS INCORPORATED BY REFERENCE\nThe Information Statement relating to the registrant\u2019s Written Consent in Lieu of an Annual Meeting of Stockholders, is incorporated by reference into Part III of this Form 10-K to the extent described therein.\nIndex\nCTM Media Holdings, Inc.\nAnnual Report on Form 10-K",
+   "prose_after": "Part I\nAs used in this Annual Report, unless the context otherwise requires, the terms \u201cthe Company,\u201d \u201cHoldings,\u201d \u201cwe,\u201d \u201cus,\u201d and \u201cour\u201d refer to CTM Media Holdings, Inc., a Delaware corporation and its subsidiaries, collectively. Each reference to a fiscal year in this Annual Report refers to the fiscal year ending in the calendar year indicated (for example, fiscal 2011 refers to the fiscal year ended July 31, 2011).\nItem 1. Business.\nOVERVIEW\nCTM Media Holdings, Inc., a Delaware corporation, is a holding company consisting of the following principal businesses:\n\u2022 CTM Media Group, Inc., which we refer to as CTM, our brochure distribution company and other advertising-based product initiatives focused on small to medium sized businesses; and\n\u2022 Our approximately 77% interest in Idea and Design Works, LLC, which we refer to as IDW, which is a comic book and graphic novel publisher that creates and licenses intellectual property.\nOur business consists of the following segments: CTM and IDW.\nFinancial information by segment is presented below under the heading \u201cBusiness Segment Information\u201d in the Notes to our Consolidated Financial Statements in this Annual Report.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 64,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 105,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Fiscal year ended July 31, 2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "2.40",
+     "$",
+     "1.50"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.15",
+     "$",
+     "1.40"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "2.45",
+     "$",
+     "1.80"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "2.35",
+     "$",
+     "1.79"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 420,
+    "end_line": 429
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "IDW leases 8,020 square feet (approximately 7,320 square feet of leased office space and approximately 700 square feet of warehouse space) in a stand alone building in San Diego, California under a 4-year lease expiring in March 2015.\nItem 3. Legal Proceedings.\nNone. We are subject to other legal proceedings which arise in the ordinary course of business and have not been finally adjudicated. Although there can be no assurance in this regard, in the opinion of our management, none of the legal proceedings to which we are a party, whether discussed above or otherwise, will have a material adverse effect on our results of operations, cash flows or financial condition.\nItem 4. (Removed and Reserved).\nPart II\nItem 5. Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities.\nPRICE RANGE OF COMMON STOCK AND DIVIDEND POLICY\nOur Class A common stock and Class B common stock are quoted on the Pink OTC Markets and trade under the symbols \u201cCTMMA\u201d and \u201cCTMMB,\u201d respectively.\nThe table below sets forth the high and low sales prices for our Class A common stock as reported on the Pink OTC Markets for the fiscal periods indicated.",
+   "prose_after": "The table below sets forth the high and low sales prices for our Class B common stock as reported on the Pink OTC Markets for the fiscal periods indicated.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Fiscal year ended July 31, 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.29",
+     "$",
+     "0.30"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.00",
+     "$",
+     "0.56"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "2.60",
+     "$",
+     "1.70"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "2.75",
+     "$",
+     "2.00"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 432,
+    "end_line": 441
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "The table below sets forth the high and low sales prices for our Class B common stock as reported on the Pink OTC Markets for the fiscal periods indicated.",
+   "prose_after": "The table below sets forth the high and low sales prices for our Class B common stock as reported on the Pink OTC Markets for the fiscal periods indicated.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 385,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 441,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "High",
+     "",
+     "L[ ]w",
+     ""
+    ],
+    [
+     "Fiscal year ended July 31, 2011",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "2.60",
+     "$",
+     "2.00"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.97",
+     "$",
+     "2.05"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "2.50",
+     "$",
+     "2.00"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "2.40",
+     "$",
+     "1.26"
+    ],
+    [
+     "Fiscal year ended July 31, 2010",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "First Quarter",
+     "$",
+     "1.01",
+     "$",
+     "0.30"
+    ],
+    [
+     "Second Quarter",
+     "$",
+     "2.30",
+     "$",
+     "0.75"
+    ],
+    [
+     "Third Quarter",
+     "$",
+     "2.85",
+     "$",
+     "1.80"
+    ],
+    [
+     "Fourth Quarter",
+     "$",
+     "2.75",
+     "$",
+     "1.62"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 446,
+    "end_line": 460
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 5",
+     "title": "Market for Registrant\u2019s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities."
+    },
+    "note": null
+   },
+   "prose_before": "The table below sets forth the high and low sales prices for our Class B common stock as reported on the Pink OTC Markets for the fiscal periods indicated.",
+   "prose_after": "On October 26, 2011, there were 70 holders of record of our Class A common stock, 116 holders of record of our Class B common stock and 5 holders of our Class C common stock. These numbers do not include the number of persons whose shares are in nominee or in \u201cstreet name\u201d accounts through brokers. All shares of our Class C common stock are beneficially owned by Howard Jonas and there is no established trading market for our Class C common stock. On October 25, 2011, the last sales price reported on the Pink OTC Markets for our Class A common stock was $1.75 per share and for our Class B common stock was $1.85 per share.\nWe paid cash dividends to our stockholders in November 2010 and in March, July and October 2011. On November 9, 2010, we paid a dividend in the amount of $0.12 per share (approximately $1,000,000 in the aggregate) to holders of our Class A, Class B and Class C common stock. On March 17, 2011, July 7, 2011 and October 6, 2011, we paid a dividend in the aggregate amount of $0.06 per share (approximately $500,000 in the aggregate) to holders of our Class A, Class B and Class C common stock. The declaration of any future dividend will be at the discretion of our Board of Directors and will depend on our financial condition, results of operations, capital requirements, business conditions and other factors, as well as a determination by the Board that dividends are in the best interest of our stockholders.",
+   "structured_location": {
+    "item": "ITEM 5",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 443,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 482,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended July 31,",
+     "2011",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "$",
+     "411",
+     ""
+    ],
+    [
+     "Loss before income taxes and net loss.",
+     "",
+     "\u2014",
+     "",
+     "(625)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 593,
+    "end_line": 600
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "On May 5, 2010, we consummated the sale of substantially all of the assets used in our WMET radio station business (other than working capital). WMET 1160 AM is a radio station serving the Washington, D.C. metropolitan area. The sale price for the WMET assets was $4,000,000 in a combination of cash and a promissory note of the buyer that is secured by the assets sold. $1,300,000 of the purchase price was paid in cash by the closing and the remainder is owed pursuant to a two-year promissory note, which is extendable in part to three years at the option of the buyer. The sale met the criteria to be reported as a discontinued operation and accordingly, WMET\u2019s results are classified as part of discontinued operations for all periods presented. In the fourth quarter of fiscal 2010, the company recognized a gain of $1,600,000 in connection with the sale.\nSummary Financial Data of Discontinued Operations\nRevenues, (loss) income before income taxes and net (loss) income of WMET, which are included in discontinued operations, were as follows:",
+   "prose_after": "Consolidated Statements of Operations",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal Year ended July 31,",
+     "2011",
+     "",
+     "2010",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenues",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CTM",
+     "$",
+     "18,448",
+     "$",
+     "18,562",
+     "$",
+     "(114)",
+     "",
+     "(0.61)",
+     ""
+    ],
+    [
+     "IDW",
+     "",
+     "13,871",
+     "",
+     "11,464",
+     "",
+     "2,407",
+     "",
+     "21.0",
+     ""
+    ],
+    [
+     "Total revenues",
+     "$",
+     "32,319",
+     "$",
+     "30,026",
+     "$",
+     "2,293",
+     "",
+     "7.64",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 603,
+    "end_line": 615
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Consolidated Statements of Operations",
+   "prose_after": "Revenues. The increase in consolidated revenues in fiscal 2011 compared to fiscal 2010 was due to an increase in IDW's revenues which were marginally offset by a decline in CTM's revenues. The increase in IDW's revenues was primarily on account of an increase in Publishing Revenues and Digital Publishing Revenues, which were partially offset by a decrease in Creative Services Revenues and Licensing Revenues. The decrease in CTM revenues was primarily due to decreases Printing Revenues, which were partially offset by increases in Distribution Revenues, Publishing Revenues, Right Card Revenues, and Digital Revenues.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal Year  ended July 31,",
+     "2011",
+     "",
+     "2010",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Costs and expenses",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Direct cost of revenues",
+     "$",
+     "14,803",
+     "$",
+     "14,148",
+     "$",
+     "655",
+     "",
+     "4.6",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "14,813",
+     "",
+     "14,218",
+     "",
+     "595",
+     "",
+     "4.2",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "753",
+     "",
+     "859",
+     "",
+     "(106)",
+     "",
+     "(12.3)",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "84",
+     "",
+     "63",
+     "",
+     "21",
+     "",
+     "33.3",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "$",
+     "30,453",
+     "$",
+     "29,288",
+     "$",
+     "1,165",
+     "",
+     "4.0",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 618,
+    "end_line": 632
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Revenues. The increase in consolidated revenues in fiscal 2011 compared to fiscal 2010 was due to an increase in IDW's revenues which were marginally offset by a decline in CTM's revenues. The increase in IDW's revenues was primarily on account of an increase in Publishing Revenues and Digital Publishing Revenues, which were partially offset by a decrease in Creative Services Revenues and Licensing Revenues. The decrease in CTM revenues was primarily due to decreases Printing Revenues, which were partially offset by increases in Distribution Revenues, Publishing Revenues, Right Card Revenues, and Digital Revenues.",
+   "prose_after": "Direct Cost of Revenues. The increase in direct cost of revenues in fiscal 2011 compared to fiscal 2010 was due to an increase in IDW\u2019s Cost of Revenues which was partially offset by a decrease in CTM\u2019s Cost of Revenues. The increase in IDW\u2019s Direct Cost of Revenues was a result of an increase in Direct Costs of Publishing Revenues, Digital Publishing Revenues, Licensing Costs, and Royalty Costs, which were partially offset by a decrease in Cost of Creative Services. The decrease in CTM\u2019s Direct Cost of Revenues was primarily due to a decrease in printing costs as a result of exiting the direct printing business and a marginal decrease in Direct Cost of Publishing Revenues. Direct cost of Revenues also declined due to our cost reduction strategies initiated in the middle of fiscal 2010. Overall gross margin increased from 52.9% in fiscal 2010 to 54.2% in fiscal 2011 due to increases in gross margin percentages at both of our CTM and IDW segments.\nSelling, General and Administrative. The increase in selling, general and administrative expenses in fiscal 2011 compared to fiscal 2010 was due to an increase in the selling, general and administrative expenses of CTM partially offset by a decrease in selling, general and administrative expenses at our IDW segment. Increase in CTM\u2019s selling, general and administrative expenses was primarily due an increase in payroll and payroll related costs, location rent, software development costs, travel, and advertising expenses which were partially offset by decreases in office rent, insurance, and other information technology and network costs. IDW\u2019s selling, general and administrative expenses\u2019 marginal decrease was primarily due to a decrease in allocated expenses to IDW by the Company in fiscal 2011 which were partially offset by an increase in non-allocated Selling, General, and Administrative expenses at our IDW segment. Non-allocated selling, general, and administrative expenses of IDW increased primarily on account of an increase in travel, personnel and, marketing costs which were partially offset by a decrease in advertising expenses. The costs associated with operating as a publicly traded company was $617,000 and stock based compensation costs was $275,000 in fiscal 2011.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 588,
+     "token": "PAGE_BREAK",
+     "id": 32,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 636,
+     "token": "PAGE_BREAK",
+     "id": 33,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal Year ended July 31,",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Income from operations",
+     "$",
+     "1,866",
+     "",
+     "$",
+     "738",
+     "",
+     "$",
+     "1,128",
+     "",
+     "152.8",
+     ""
+    ],
+    [
+     "Interest income(expense), net",
+     "",
+     "57",
+     "",
+     "",
+     "(75)",
+     "",
+     "",
+     "132",
+     "",
+     "(176.0)",
+     ""
+    ],
+    [
+     "Other income(expense), net",
+     "",
+     "58",
+     "",
+     "",
+     "(163)",
+     "",
+     "",
+     "221",
+     "",
+     "(135.6)",
+     ""
+    ],
+    [
+     "Benefit from(provision for) income taxes",
+     "",
+     "2,445",
+     "",
+     "",
+     "(91)",
+     "",
+     "",
+     "2,536",
+     "",
+     "(2786.8)",
+     ""
+    ],
+    [
+     "Net Income from continuing operations",
+     "",
+     "4,426",
+     "",
+     "",
+     "409",
+     "",
+     "",
+     "4,017",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(623)",
+     "",
+     "",
+     "623",
+     "",
+     "100.0",
+     ""
+    ],
+    [
+     "Gain from sale of discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,599",
+     "",
+     "",
+     "(1,599)",
+     "",
+     "(100.0)",
+     ""
+    ],
+    [
+     "Total income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "976",
+     "",
+     "",
+     "(976)",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "4,426",
+     "",
+     "",
+     "1,385",
+     "",
+     "",
+     "3,041",
+     "",
+     "219.6",
+     ""
+    ],
+    [
+     "Less: Net income attributable to non-controlling interest",
+     "",
+     "(305)",
+     "",
+     "",
+     "(137)",
+     "",
+     "",
+     "(168)",
+     "",
+     "122.6",
+     ""
+    ],
+    [
+     "Net income attributable to CTM Media Holdings, Inc.",
+     "$",
+     "4,121",
+     "",
+     "$",
+     "1,248",
+     "",
+     "$",
+     "2,873",
+     "",
+     "230.2",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 647,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "On October 14, 2009, our Board of Directors granted our Chairman and founder, Howard S. Jonas, 1,800,000 restricted shares of our Class B common stock with a value of $1,250,000 on the date of grant in lieu of a cash base salary for the next five years. The restricted shares will vest in equal thirds on each of October 14, 2011, October 14, 2012 and October 14, 2013. Unvested shares would be forfeited if we terminate Mr. Jonas\u2019 employment other than under circumstances where the accelerated vesting applies. The shares are subject to adjustments or acceleration based on certain corporate transactions, changes in capitalization, or termination, death or disability of Mr. Jonas. If Mr. Jonas is terminated by us for cause, a pro rata portion of the shares would vest. This arrangement does not impact Mr. Jonas\u2019 cash compensation from the date of the Spin-Off through the pay period ending on the grant date. Total unrecognized compensation cost on the grant date of $1,250,000 is expected to be recognized over the vesting period from October 14, 2009 through October 14, 2014. During the fiscal year ended July 31, 2011, the Company began recognizing the compensation on a straight-line basis in accordance with ASU 718-10-35-8.\nBad Debt Expense. The increase in the total bad debt expense in fiscal 2011 compared to fiscal 2010 was primarily due to an increase in bad debt expenses at CTM resulting from management\u2019s assessment of aged receivables.\nSummary of Income from Operations and Net Income",
+   "prose_after": "Non-controlling Interests. Non-controlling interests relate to minority owners of IDW. On November 5, 2009, the Company purchased an additional interest in IDW for a purchase price of $400,000 in cash. As a result of the transaction, the Company owns a 76.665% interest in IDW.\nIncome Taxes. The benefit from income taxes in fiscal 2011 was primarily due to reversals of both the valuation allowance and state income tax expense. The Company determined that it was more likely than not that a portion of its deferred income tax assets will be realized based on its income from continuing operations in the United States in fiscal 2011 and fiscal 2010 combined with projections of taxable income for the foreseeable future. Therefore, the Company reversed $2,250,000 of its valuation allowance in fiscal 2011.\nWe and IDT entered into a Tax Separation Agreement, dated as of September 14, 2009, to provide for certain tax matters including the assignment of responsibility for the preparation and filing of tax returns, the payment of and indemnification for taxes, entitlement to tax refunds and the prosecution and defense of any tax controversies. Pursuant to this agreement, IDT indemnified us from all liability for taxes of ours and our subsidiaries for periods ending on or before September 14, 2009, and we indemnified IDT from all liability for taxes of our and our subsidiaries accruing after September 14, 2009. Also, for periods ending on or before September 14, 2009, IDT shall have the right to control the conduct of any audit, examination or other proceeding brought by a taxing authority. We shall have the right to participate jointly in any proceeding that may affect our tax liability unless IDT has indemnified us. Finally, we and our subsidiaries agreed not to carry back any net operating losses, capital losses or credits for any taxable period ending after September 14, 2009 to a taxable period ending on or before September 14, 2009 unless required by applicable law, in which case any refund of taxes attributable to such carry back shall be for the account of IDT.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 638,
+     "token": "PAGE_BREAK",
+     "id": 34,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 678,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Fiscal Year Ended July 31,",
+     "2011",
+     "",
+     "2010",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "18,448",
+     "$",
+     "18,562",
+     "$",
+     "(114)",
+     "",
+     "(0.6)",
+     ""
+    ],
+    [
+     "Direct cost of revenues",
+     "",
+     "6,380",
+     "",
+     "6,804",
+     "",
+     "(424)",
+     "",
+     "(6.2)",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "10,648",
+     "",
+     "9,790",
+     "",
+     "858",
+     "",
+     "8.8",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "721",
+     "",
+     "779",
+     "",
+     "(58)",
+     "",
+     "(7.4)",
+     ""
+    ],
+    [
+     "Bad debt expense",
+     "",
+     "84",
+     "",
+     "63",
+     "",
+     "21",
+     "",
+     "33.3",
+     ""
+    ],
+    [
+     "Income from operations",
+     "$",
+     "615",
+     "$",
+     "1,126",
+     "$",
+     "(511)",
+     "",
+     "(45.4)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 683,
+    "end_line": 697
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "We and IDT entered into a Tax Separation Agreement, dated as of September 14, 2009, to provide for certain tax matters including the assignment of responsibility for the preparation and filing of tax returns, the payment of and indemnification for taxes, entitlement to tax refunds and the prosecution and defense of any tax controversies. Pursuant to this agreement, IDT indemnified us from all liability for taxes of ours and our subsidiaries for periods ending on or before September 14, 2009, and we indemnified IDT from all liability for taxes of our and our subsidiaries accruing after September 14, 2009. Also, for periods ending on or before September 14, 2009, IDT shall have the right to control the conduct of any audit, examination or other proceeding brought by a taxing authority. We shall have the right to participate jointly in any proceeding that may affect our tax liability unless IDT has indemnified us. Finally, we and our subsidiaries agreed not to carry back any net operating losses, capital losses or credits for any taxable period ending after September 14, 2009 to a taxable period ending on or before September 14, 2009 unless required by applicable law, in which case any refund of taxes attributable to such carry back shall be for the account of IDT.\nCTM",
+   "prose_after": "Revenues. The decrease in CTM revenues was primarily due to the decrease in Printing Revenues, which were offset by increases in revenue from Distribution, Digital Products, RightCard\u2122 and Publishing.\nIn the fourth quarter of fiscal 2010 we restructured our low gross margin printing business from a reseller of print services to a commission agent for printing vendors. As a result of this restructuring, our printing revenues consisted only of print referral fees in fiscal 2011. This change to a commission based revenue structure resulted in a decline of $600,000 in revenues in fiscal 2011 compared to fiscal 2010. This decline was principally offset by increases in Distribution Revenue of $203,000, Digital Revenue of $154,000, RightCard\u2122 Revenue of $65,000. The increase in our distribution revenues occurred primarily in the New York, Ohio, Florida/Puerto Rico, offset by weakness in New England, the Mid-West and Canada. The increase in our Digital Products included increases in revenue from the Ettractions.com website and SMS mobile messaging revenue. Increase in digital advertisers, more advertising opportunities, and more traffic of digital messages were all contributing factors.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 680,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Change",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Year ended July 31,",
+     "2011",
+     "",
+     "2010",
+     "",
+     "",
+     "$",
+     "",
+     "",
+     "%",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "13,871",
+     "$",
+     "11,464",
+     "",
+     "$",
+     "2,407",
+     "",
+     "21.0",
+     ""
+    ],
+    [
+     "Direct cost of revenues",
+     "",
+     "8,423",
+     "",
+     "7,344",
+     "",
+     "",
+     "1,079",
+     "",
+     "14.7",
+     ""
+    ],
+    [
+     "Selling, general and administrative",
+     "",
+     "4,165",
+     "",
+     "4,428",
+     "",
+     "",
+     "(263)",
+     "",
+     "(5.9)",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "32",
+     "",
+     "80",
+     "",
+     "",
+     "(48)",
+     "",
+     "(60.0)",
+     ""
+    ],
+    [
+     "Income(loss) from operations",
+     "",
+     "1,251",
+     "$",
+     "(388)",
+     "",
+     "$",
+     "1,639",
+     "",
+     "422.4",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 723
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Direct Cost of Revenues. Direct cost of revenues consist primarily of distribution and fulfillment payroll, warehouse and vehicle distribution expenses, and print and design expenses. The decrease in direct cost of revenues in fiscal 2011 compared to fiscal 2010 is primarily due to decline in printing costs as a result of our exit from the printing line of business and other cost reduction strategies adopted by the Company. CTM\u2019s aggregate gross margin increased marginally in fiscal 2011 to 65.4% from 63.3% in fiscal 2010. The increase was primarily due to the change in mix of products, cost reduction strategies adopted, and the result of our exit from lower margin products beginning in the second half of fiscal 2010.\nSelling, General and Administrative. Selling, general and administrative expenses consist primarily of payroll and related benefits, facilities costs, and insurance. Selling, general and administrative expenses increased in fiscal 2011 compared to fiscal 2010 primarily due to increases in compensation costs, advertising expenses, software development costs, and location rent. This increase was partially offset by decreases in insurance costs, office rent, and general office expenses. Total selling, general and administrative expenses associated with operating as a publicly traded company and stock based compensation, in each case, as allocated to CTM in fiscal 2011, was $617,400 and $275,000. As a percentage of CTM\u2019s aggregate revenues, selling, general and administrative expenses in fiscal 2011 increased to 58.1% from 52.7% in fiscal 2010.\nIDW",
+   "prose_after": "Revenues. The increase in IDW\u2019s revenue in fiscal 2011 compared to fiscal 2010 was due to an increase in publishing revenue and digital publishing revenue which were partially offset by a decline in creative services revenue and advertising revenue. Publishing revenues increased as a result of increased reprints of various titles, better product mix, diversity of titles, and a better economy. These factors also resulted in a less than proportionate increase in returns and allowances. The principal titles that led to an increase in publishing revenues included True Blood, Locke & Key, and Godzilla. Additionally, the acquisition of premier status in IDW\u2019s distributors catalog contributed to increased sales. The increase in digital publishing revenues was mainly attributable to the continued increase and availability of existing titles and hardware. IDW has entered into a number of digital distribution agreements, and IDW\u2019s publications are currently available for purchase via handheld devices, including iPhones, iPod Touch, iPad, PSP, PSP Go, Kindle, Nokia, and Blackberry. IDW titles are also available direct-to-desktop via several websites and are available on Google\u2019s Android and Barnes and Noble\u2019s Nook. The increase in publishing and digital publishing revenues were partially offset by a marginal decline in licensing revenues. Licensing revenues in fiscal 2010 included significant revenues from the licensing of World War Robot option which were not earned in fiscal 2011. We expect IDW\u2019s revenues to be across all lines of business in fiscal 2012.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 680,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 725,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Year ended July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Cash flows provided by (used in):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "2,817",
+     "",
+     "$",
+     "2,624",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "(42)",
+     "",
+     "",
+     "391",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "(2,290)",
+     "",
+     "",
+     "(2,564)",
+     ""
+    ],
+    [
+     "Increase  in cash and cash equivalents from continuing operations",
+     "",
+     "485",
+     "",
+     "",
+     "451",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(415)",
+     ""
+    ],
+    [
+     "Increase  in cash and cash equivalents",
+     "$",
+     "485",
+     "",
+     "$",
+     "36",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 736,
+    "end_line": 752
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 7",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": null
+   },
+   "prose_before": "Selling, General and Administrative. Selling, general and administrative expenses decreased in fiscal 2011 compared to fiscal 2010 primarily due to a decrease in allocated expenses to IDW by the Company in fiscal 2011 which were partially offset by an increase in non-allocated Selling, General, and Administrative expenses of IDW. Non-allocated Selling, General, and Administrative expenses of IDW increased primarily on account of an increase in Travel, Selling and Distribution costs, Personnel, and Marketing Costs which were partially offset by a decrease in advertising expenses, administration expenses, and professional fees. IDW has increased staff in an effort to increase the number of titles sold and establish a footprint into digital distribution. As a percentage of IDW\u2019s aggregate revenues, selling, general and administrative expenses decreased in fiscal 2011 to 29.8% from 37.7% in fiscal 2010, as selling, general and administrative expenses decreased while revenues increased.\nLIQUIDITY AND CAPITAL RESOURCES\nHistorically, we satisfied our cash requirements primarily through cash provided by CTM\u2019s operating activities and funding from IDT.",
+   "prose_after": "Operating Activities\nOur cash flow from operations varies from quarter to quarter and from year to year, depending on our operating results and the timing of operating cash receipts and payments, specifically trade accounts receivable and trade accounts payable.\nInvesting Activities\nOur capital expenditures were $363,000 in fiscal 2011 and $416,000 in fiscal 2010. We currently anticipate that total capital expenditures for all of our divisions in fiscal 2012 will be approximately $1,300,000. Payments received on notes payable for sales of WMET\u2019s assets in fiscal 2011 was $321,000. We expect to fund our capital expenditures with our cash, cash equivalents and short term investment on hand.\nOn November 5, 2009, we purchased an additional 23.335% interest in IDW for a purchase price of approximately $414,000 in cash. As a result of the transaction, we own a 76.665% interest in IDW. We acquired the additional interests as we determined that the purchase price was reasonable as well as to reduce the number of non-controlling interest holders in this business.",
+   "structured_location": {
+    "item": "ITEM 7",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 727,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 764,
+     "token": "PAGE_BREAK",
+     "id": 39,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit\n\nNumber",
+     "Description of Exhibits"
+    ],
+    [
+     "2.1(1)",
+     "Separation and Distribution Agreement, dated September 14, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1*",
+     "Amendment No.1 to the Second Restated Certificate of Incorporation of the Registrant."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2(2)",
+     "By-laws of the Registrant."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1(2)",
+     "2009 Stock Option and Incentive Plan of CTM Media Holdings, Inc.#"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2(1)",
+     "Master Service Agreement, dated September 14, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3(1)",
+     "Tax Separation Agreement, dated September 14, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4(3)",
+     "Restricted Stock Agreement, dated October 14, 2009 between the Company and Howard Jonas. #"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "14.1(1)",
+     "Code of Business Ethics and Conduct, adopted on August 18, 2009."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "21.1*",
+     "Subsidiaries of the Registrant."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "23.1*",
+     "Consent of Zwick & Banyai, PLLC."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1*",
+     "Certification of Chief Executive Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2*",
+     "Certification of Chief Financial Officer pursuant to Section 302 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1*",
+     "Certification of Chief Executive Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2*",
+     "Certification of Chief Financial Officer pursuant to Section 906 of the Sarbanes-Oxley Act of 2002."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 913,
+    "end_line": 946
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Part IV\nItem 15. Exhibits, Financial Statement Schedules.\n(a) The following documents are filed as part of this Report:\n1. Report of Management on Internal Control over Financial Reporting\nReport of Independent Registered Public Accounting Firms on Consolidated Financial Statements\nConsolidated Financial Statements covered by Report of Independent Registered Public Accounting Firm\n2. Financial Statement Schedule.\nAll schedules have been omitted since they are either included in the Notes to Consolidated Financial Statements or not required or not applicable.\n3. The exhibits listed in paragraph (b) of this item.\n(b) Exhibits.",
+   "prose_after": "* Filed herewith.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 892,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "#",
+     "Management contract or compensatory plan or arrangement."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 949,
+    "end_line": 952
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.",
+   "prose_after": "(1) Incorporated by reference to the Company\u2019s Form 10-K filed October 29, 2009.\n(2) Incorporated by reference to the Company\u2019s Form 10-12G/A filed August 10, 2009.\n(3) Incorporated by reference to the Company\u2019s Form 8-K filed October 20, 2009.\nSignatures\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 958,
+     "token": "PAGE_BREAK",
+     "id": 50,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "CTM MEDIA HOLDINGS, INC.",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "By:",
+     "/s/Marc E. Knoller",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Marc E. Knoller",
+     ""
+    ],
+    [
+     "",
+     "",
+     "Chief Executive Officer",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "CTM MEDIA HOLDINGS, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 965,
+    "end_line": 973
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "(1) Incorporated by reference to the Company\u2019s Form 10-K filed October 29, 2009.\n(2) Incorporated by reference to the Company\u2019s Form 10-12G/A filed August 10, 2009.\n(3) Incorporated by reference to the Company\u2019s Form 8-K filed October 20, 2009.\nSignatures\nPursuant to the requirements of Section 13 or 15(d) of the Securities Exchange Act of 1934, the registrant has duly caused this Annual Report on Form 10-K to be signed on its behalf by the undersigned, thereunto duly authorized.",
+   "prose_after": "Date: October 27, 2011\nPursuant to the requirements of the Securities Exchange Act of 1934, this Annual Report on Form 10-K has been signed by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Titles",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Howard S. Jonas",
+     "Chairman of the Board and Director",
+     "October 27, 2011"
+    ],
+    [
+     "Howard S. Jonas",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Marc E. Knoller",
+     "Chief Executive Officer, President and Director",
+     "October 27, 2011"
+    ],
+    [
+     "Marc E. Knoller",
+     "(Principal Executive Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Leslie B. Rozner",
+     "Chief Financial Officer, Treasurer and Corporate Secretary",
+     "October 27, 2011"
+    ],
+    [
+     "Leslie B. Rozner",
+     "(Principal Financial Officer and Principal Accounting Officer)",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Jan Buchsbaum",
+     "Director",
+     "October 27, 2011"
+    ],
+    [
+     "Jan Buchsbaum",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Perry Davis",
+     "Director",
+     "October 27, 2011"
+    ],
+    [
+     "Perry Davis",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/    Irwin Katsof",
+     "Director",
+     "October 27, 2011"
+    ],
+    [
+     "Irwin Katsof",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 977,
+    "end_line": 1005
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Date: October 27, 2011\nPursuant to the requirements of the Securities Exchange Act of 1934, this Annual Report on Form 10-K has been signed by the following persons on behalf of the Registrant and in the capacities and on the dates indicated.",
+   "prose_after": "REPORT OF MANAGEMENT ON INTERNAL CONTROL OVER FINANCIAL REPORTING\nWe, the management of CTM Media Holdings, Inc. (the \u201cCompany\u201d), are responsible for establishing and maintaining adequate internal control over financial reporting of the Company. Management has evaluated internal control over financial reporting by the Company using the criteria for effective internal control established in Internal Control\u2014Integrated Framework issued by the Committee of Sponsoring Organizations of the Treadway Commission.\nManagement has assessed the effectiveness of the Company\u2019s internal controls over financial reporting as of July 31, 2011. Based on this assessment, we believe that the internal control over financial reporting of the Company as of July 31, 2011 was effective and through operation provided reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with accounting principles generally accepted in the United States of America.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 960,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1005,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm on Consolidated Financial Statements",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Balance Sheets as of  July 31, 2011 and 2010",
+     "F-3"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Operations for the Years Ended July 31, 2011 and 2010",
+     "F-4"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Stockholders\u2019 Equity (Deficit) for the Years Ended July 31, 2011 and 2010",
+     "F-5"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Consolidated Statements of Cash Flows for the Years Ended July 31, 2011 and 2010",
+     "F-6"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Notes to Consolidated Financial Statements",
+     "F-7"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1023,
+    "end_line": 1036
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Management has assessed the effectiveness of the Company\u2019s internal controls over financial reporting as of July 31, 2011. Based on this assessment, we believe that the internal control over financial reporting of the Company as of July 31, 2011 was effective and through operation provided reasonable assurance regarding the reliability of financial reporting and the preparation of financial statements for external purposes in accordance with accounting principles generally accepted in the United States of America.\nThis annual report does not include an attestation report of the Company\u2019s registered public accounting firm regarding internal control over financial reporting. Management\u2019s report was not subject to attestation by the Company\u2019s registered public accounting firm pursuant to rules of the Securities and Exchange Commission that permit the Company as a small reporting filer, to provide only management\u2019s report in this annual report.\n/s/ Marc E. Knoller Marc E. Knoller Chief Executive Officer, President and Director (Principal Executive Officer) /s/ Leslie B. Rozner Leslie B. Rozner Chief Financial Officer, Treasurer and Corporate Secretary (Principal Financial Officer and Principal Accounting Officer)\nINDEX TO CONSOLIDATED FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM ON\nCONSOLIDATED FINANCIAL STATEMENTS\nThe Board of Directors and Stockholders of CTM Media Holdings, Inc and Subsidiaries:\nWe have audited the accompanying consolidated balance sheets of CTM Media Holdings, Inc. and Subsidiaries as of July 31, 2011 and 2010, and the related consolidated statements of operations, stockholders\u2019 equity (deficit), and cash flows for each of the years in the two-year period ended July 31, 2011. These financial statements are the responsibility of the CTM Media Holdings, Inc.\u2019s management. Our responsibility is to express an opinion on these financial statements based on our audits.\nWe conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts in the disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1019,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "arabic",
+     "page_number": 25
+    },
+    "after": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "/s/  Zwick & Banyai, PLLC"
+    ],
+    [
+     "Zwick & Banyai, PLLC\n\nSouthfield, Michigan"
+    ],
+    [
+     ""
+    ],
+    [
+     "October 27, 2011"
+    ]
+   ],
+   "caption_stack": [
+    "/s/  Zwick & Banyai, PLLC",
+    "Zwick & Banyai, PLLC\n\nSouthfield, Michigan"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1049,
+    "end_line": 1057
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audits in accordance with the standards of the Public Company Accounting Oversight Board (United States). Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement. The Company is not required, nor were we engaged to perform, an audit of its internal control over financial reporting. Our audit included consideration of internal control over financial reporting as a basis for designing audit procedures that are appropriate in the circumstances, but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion. An audit includes examining, on a test basis, evidence supporting the amounts in the disclosures in the financial statements, assessing the accounting principles used and significant estimates made by management, as well as evaluating the overall financial statement presentation. We believe that our audits provide a reasonable basis for our opinion.\nIn our opinion, the financial statements referred to above present fairly, in all material respects, the consolidated financial position of CTM Media Holdings, Inc. and Subsidiaries as of July 31, 2011 and 2010, and the consolidated results of its operations, stockholders\u2019 equity (deficit), and its cash flows for each of the years in the two-year period ended July 31, 2011, in conformity with generally accepted accounting principles in the United States of America.",
+   "prose_after": "CONSOLIDATED BALANCE SHEETS\n<TABLE>\nFiscal Year Ended July\n31,\n(in thousands, except per share data)                                                                                                                    2011         2010\n---------------------------------------------------------------------------------------------------------------------------------------------------  -----------  -----------\nAssets\nCurrent assets:\nCash and cash equivalents                                                                                                                                $ 7,001      $ 6,516\nShort term investment                                                                                                                                      1,033        1,030",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1036,
+     "token": "PAGE_BREAK",
+     "id": 56,
+     "namespace": "arabic",
+     "page_number": 1
+    },
+    "after": {
+     "line": 1057,
+     "token": "PAGE_BREAK",
+     "id": 57,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year Ended July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share data)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "7,001",
+     "",
+     "$",
+     "6,516",
+     ""
+    ],
+    [
+     "Short term investment",
+     "",
+     "1,033",
+     "",
+     "",
+     "1,030",
+     ""
+    ],
+    [
+     "Trade accounts receivable, net",
+     "",
+     "3,383",
+     "",
+     "",
+     "3,496",
+     ""
+    ],
+    [
+     "Inventory \u2013 finished goods",
+     "",
+     "1,743",
+     "",
+     "",
+     "1,462",
+     ""
+    ],
+    [
+     "Prepaid expenses",
+     "",
+     "938",
+     "",
+     "",
+     "965",
+     ""
+    ],
+    [
+     "Note receivable \u2013 current portion",
+     "",
+     "975",
+     "",
+     "",
+     "321",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "15,073",
+     "",
+     "",
+     "13,790",
+     ""
+    ],
+    [
+     "Property and equipment, net of accumulated depreciation of $7,996 and $7,251 at July 31, 2011 and 2010, respectively",
+     "",
+     "2,021",
+     "",
+     "",
+     "2,013",
+     ""
+    ],
+    [
+     "Licenses and other intangibles, net",
+     "",
+     "36",
+     "",
+     "",
+     "17",
+     ""
+    ],
+    [
+     "Note receivable",
+     "",
+     "1,425",
+     "",
+     "",
+     "2,400",
+     ""
+    ],
+    [
+     "Deferred tax",
+     "",
+     "2,262",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "183",
+     "",
+     "",
+     "181",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "21,000",
+     "",
+     "$",
+     "18,401",
+     ""
+    ],
+    [
+     "Liabilities and stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade accounts payable",
+     "$",
+     "1,117",
+     "",
+     "$",
+     "1,187",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "1,801",
+     "",
+     "",
+     "1,539",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "1,948",
+     "",
+     "",
+     "2,035",
+     ""
+    ],
+    [
+     "Due to IDT Corporation",
+     "",
+     "31",
+     "",
+     "",
+     "38",
+     ""
+    ],
+    [
+     "Income taxes payable",
+     "",
+     "451",
+     "",
+     "",
+     "770",
+     ""
+    ],
+    [
+     "Capital lease obligations\u2014current portion",
+     "",
+     "230",
+     "",
+     "",
+     "227",
+     ""
+    ],
+    [
+     "Other current liabilities",
+     "",
+     "616",
+     "",
+     "",
+     "646",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "6,194",
+     "",
+     "",
+     "6,442",
+     ""
+    ],
+    [
+     "Capital lease obligations\u2014long-term portion",
+     "",
+     "355",
+     "",
+     "",
+     "286",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "",
+     "6,549",
+     "",
+     "",
+     "6,728",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CTM Media Holdings, Inc.  stockholders\u2019 equity (deficit):",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.01 par value; authorized shares\u2014500 and 10,000 shares July 31, 2011 and 2010 respectively; no shares issued",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Class A common stock, $0.01 par value; authorized shares\u20146,000 and 35,000 shares at July 31, 2011 and 2010, respectively; 1,285 shares issued and outstanding at July 31, 2011 and 2010, respectively",
+     "",
+     "13",
+     "",
+     "",
+     "13",
+     ""
+    ],
+    [
+     "Class B common stock, $0.01 par value; authorized shares\u201412,000 and 65,000 shares at July 31, 2011 and 2010, respectively; 6,920 shares issued and outstanding at July 31, 2011 and 2010, respectively",
+     "",
+     "69",
+     "",
+     "",
+     "69",
+     ""
+    ],
+    [
+     "Class C common stock, $0.01 par value; authorized shares\u20142,500 and 15,000 shares at July 31, 2011 and 2010, respectively; 1,091 shares issued and outstanding at July 31, 2011 and, 2010, respectively",
+     "",
+     "11",
+     "",
+     "",
+     "11",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "56,826",
+     "",
+     "",
+     "58,548",
+     ""
+    ],
+    [
+     "Treasury Stock, at cost, consisting of 179 shares of shares of Class A and 797 shares of Class B at July 31, 2011, and 2010, respectively",
+     "",
+     "(1,070)",
+     "",
+     "",
+     "(1,070)",
+     ""
+    ],
+    [
+     "Accumulated other comprehensive income",
+     "",
+     "208",
+     "",
+     "",
+     "117",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(42,114)",
+     "",
+     "",
+     "(46,235)",
+     ""
+    ],
+    [
+     "Total CTM Media Holdings, Inc. stockholders\u2019 equity",
+     "",
+     "13,943",
+     "",
+     "",
+     "11,453",
+     ""
+    ],
+    [
+     "Non-controlling interests",
+     "",
+     "508",
+     "",
+     "",
+     "220",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "14,451",
+     "",
+     "",
+     "11,673",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "21,000",
+     "",
+     "$",
+     "18,401",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year Ended July 31,"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 19,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Year ended July, 31",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(in thousands, except per share data)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "32,319",
+     "",
+     "$",
+     "30,026",
+     ""
+    ],
+    [
+     "Costs and expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Direct cost of revenues",
+     "",
+     "14,803",
+     "",
+     "",
+     "14,148",
+     ""
+    ],
+    [
+     "Selling, general and administrative (i)",
+     "",
+     "14,813",
+     "",
+     "",
+     "14,218",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "753",
+     "",
+     "",
+     "859",
+     ""
+    ],
+    [
+     "Bad debt",
+     "",
+     "84",
+     "",
+     "",
+     "63",
+     ""
+    ],
+    [
+     "Total costs and expenses",
+     "",
+     "30,453",
+     "",
+     "",
+     "29,288",
+     ""
+    ],
+    [
+     "Income from operations",
+     "",
+     "1,866",
+     "",
+     "",
+     "738",
+     ""
+    ],
+    [
+     "Interest income (expense), net",
+     "",
+     "57",
+     "",
+     "",
+     "(75)",
+     ""
+    ],
+    [
+     "Other income (expense), net",
+     "",
+     "58",
+     "",
+     "",
+     "(163)",
+     ""
+    ],
+    [
+     "Income from continuing operations before income taxes",
+     "",
+     "1,981",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "Benefit from (Provision for) income taxes",
+     "",
+     "2,445",
+     "",
+     "",
+     "(91)",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "",
+     "4,426",
+     "",
+     "",
+     "409",
+     ""
+    ],
+    [
+     "Discontinued operations net of tax: (Note 2)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(623)",
+     ""
+    ],
+    [
+     "Gain from sale of discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,599",
+     ""
+    ],
+    [
+     "Total income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "976",
+     ""
+    ],
+    [
+     "Net Income",
+     "",
+     "4,426",
+     "",
+     "",
+     "1,385",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Less - net income attributable to non-controlling interests",
+     "",
+     "(305)",
+     "",
+     "",
+     "(137)",
+     ""
+    ],
+    [
+     "Net income attributable to CTM Media Holdings, Inc.",
+     "",
+     "4,121",
+     "",
+     "",
+     "1,248",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amounts Attributable to CTM Media Holdings common stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "",
+     "4,121",
+     "",
+     "",
+     "272",
+     ""
+    ],
+    [
+     "Income from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "976",
+     ""
+    ],
+    [
+     "Net income attributable to CTM Media Holdings, Inc.",
+     "$",
+     "4,121",
+     "",
+     "$",
+     "1,248",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Year ended July, 31"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 20,
+    "final_family": "income_statement",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Earnings per share attributable to CTM Media Holdings, Inc. common stockholders:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "0.49",
+     "$",
+     "0.04"
+    ],
+    [
+     "Income from discontinued operations",
+     "$",
+     "\u2014",
+     "$",
+     "0.16"
+    ],
+    [
+     "Net Income",
+     "$",
+     "0.49",
+     "$",
+     "0.20"
+    ],
+    [
+     "Weighted-average number of shares used in calculation of basic earnings per share:",
+     "",
+     "8,323",
+     "",
+     "6,188"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "\u2014",
+     "$",
+     "0.03"
+    ],
+    [
+     "Income from discontinued operations",
+     "$",
+     "\u2014",
+     "$",
+     "0.13"
+    ],
+    [
+     "Net Income",
+     "$",
+     "\u2014",
+     "$",
+     "0.16"
+    ],
+    [
+     "Weighted-average number of shares used in calculation of dilutive earnings per share:",
+     "",
+     "\u2014",
+     "",
+     "7,839"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "(i)    Stock-based compensation included in selling, general and administrative expenses",
+     "",
+     "275",
+     "",
+     "357"
+    ]
+   ],
+   "caption_stack": [
+    "Earnings per share attributable to CTM Media Holdings, Inc. common stockholders:",
+    "Basic:"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Class A\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "Class B\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "Class C\n\nCommon Stock",
+     "",
+     "",
+     "",
+     "  Additional\n\nPaid-In",
+     "",
+     "",
+     "  Treasury",
+     "",
+     "",
+     "Accumulated Other\n\nComprehensive\n\nIncome",
+     "",
+     "",
+     "  Accumulated",
+     "",
+     "",
+     "  Noncontrolling",
+     "",
+     "",
+     "  Total\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Capital",
+     "",
+     "",
+     "Stock",
+     "",
+     "",
+     "(Loss)",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Interests",
+     "",
+     "",
+     "(deficit)",
+     "",
+     ""
+    ],
+    [
+     "BALANCE AT JULY 31, 2009",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "33,141",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "124",
+     "",
+     "$",
+     "(47,483)",
+     "",
+     "$",
+     "1,967",
+     "",
+     "$",
+     "(12,251)",
+     ""
+    ],
+    [
+     "Shares issued upon spinoff",
+     "",
+     "1,285",
+     "",
+     "13",
+     "",
+     "5,138",
+     "",
+     "51",
+     "",
+     "1,091",
+     "",
+     "11",
+     "",
+     "(75)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Conversion of amount due to  IDT to APIC",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "25,293",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "25,293",
+     ""
+    ],
+    [
+     "Cash contribution from IDT",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "2,000",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Repurchases of Class A common stock and Class B common stock through repurchase program",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,070)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,070)",
+     ""
+    ],
+    [
+     "Stock-based compensation on restricted stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "1,786",
+     "",
+     "18",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "339",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "357",
+     ""
+    ],
+    [
+     "Dividends ($0.31 per common share)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(2,581)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2,581)",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,039)",
+     "",
+     "",
+     "(1,039)",
+     ""
+    ],
+    [
+     "Repurchase of non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "431",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(845)",
+     "",
+     "",
+     "(414)",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7)",
+     ""
+    ],
+    [
+     "Net income for the year ended July 31, 2010",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,248",
+     "",
+     "",
+     "137",
+     "",
+     "",
+     "1,385",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(7)",
+     "",
+     "",
+     "1,248",
+     "",
+     "",
+     "137",
+     "",
+     "",
+     "1,378",
+     ""
+    ],
+    [
+     "BALANCE AT JULY 31, 2010",
+     "",
+     "1,285",
+     "$",
+     "13",
+     "",
+     "6,924",
+     "$",
+     "69",
+     "",
+     "1,091",
+     "$",
+     "11",
+     "$",
+     "58,548",
+     "",
+     "$",
+     "(1,070)",
+     "",
+     "$",
+     "117",
+     "",
+     "$",
+     "(46,235)",
+     "",
+     "$",
+     "220",
+     "",
+     "$",
+     "11,673",
+     ""
+    ],
+    [
+     "Shares issued upon spinoff",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Conversion of amount due to  IDT to APIC",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash contribution from IDT",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Repurchases of Class A common stock and Class B common stock through repurchase program",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Stock-based compensation on restricted stock",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "275",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "275",
+     ""
+    ],
+    [
+     "Dividends ($0.24 per common share)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(1,997)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,997)",
+     ""
+    ],
+    [
+     "Distributions",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(17)",
+     "",
+     "",
+     "(17)",
+     ""
+    ],
+    [
+     "Repurchase of non-controlling interest",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Foreign currency translation adjustment",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "91",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "91",
+     ""
+    ],
+    [
+     "Net income for the year ended July 31, 2011",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "4,121",
+     "",
+     "",
+     "305",
+     "",
+     "",
+     "4,426",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Comprehensive income",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "91",
+     "",
+     "",
+     "4,121",
+     "",
+     "",
+     "305",
+     "",
+     "",
+     "4,426",
+     ""
+    ],
+    [
+     "BALANCE AT JULY 31, 2011",
+     "",
+     "1,285",
+     "$",
+     "13",
+     "",
+     "6,924",
+     "$",
+     "69",
+     "",
+     "1,091",
+     "$",
+     "11",
+     "$",
+     "56,826",
+     "",
+     "$",
+     "(1,070)",
+     "",
+     "$",
+     "208",
+     "",
+     "$",
+     "(42,114)",
+     "",
+     "$",
+     "508",
+     "",
+     "$",
+     "14,451",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1208,
+    "end_line": 1273
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "Income from discontinued operations                                                              $ \u2014      $ 0.13\n==========  ==========\nNet Income                                                                                       $ \u2014      $ 0.16\n==========  ==========\nWeighted-average number of shares used in calculation of dilutive earnings per share:              \u2014       7,839\n(i)    Stock-based compensation included in selling, general and administrative expenses         275         357\n</TABLE>\nSee accompanying notes to consolidated financial statements.\nCONSOLIDATED STATEMENTS OF STOCKHOLDERS\u2019 EQUITY (DEFICIT)\n(in thousands)",
+   "prose_after": "See accompanying notes to consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1202,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year ended July 31, (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Income",
+     "$",
+     "4,426",
+     "",
+     "$",
+     "1,385",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "623",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "753",
+     "",
+     "",
+     "859",
+     ""
+    ],
+    [
+     "Bad debt",
+     "",
+     "84",
+     "",
+     "",
+     "63",
+     ""
+    ],
+    [
+     "Gain on sale of WMET",
+     "",
+     "-",
+     "",
+     "",
+     "(1,599)",
+     ""
+    ],
+    [
+     "Stock-based compensation",
+     "",
+     "275",
+     "",
+     "",
+     "357",
+     ""
+    ],
+    [
+     "Change in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Trade accounts receivable",
+     "",
+     "(1)",
+     "",
+     "",
+     "221",
+     ""
+    ],
+    [
+     "Inventory, prepaid and other assets",
+     "",
+     "(2,567)",
+     "",
+     "",
+     "(62)",
+     ""
+    ],
+    [
+     "Trade accounts payable, accrued expenses, and other current liabilities",
+     "",
+     "253",
+     "",
+     "",
+     "391",
+     ""
+    ],
+    [
+     "Income tax payable",
+     "",
+     "(319)",
+     "",
+     "",
+     "80",
+     ""
+    ],
+    [
+     "Deferred revenue",
+     "",
+     "(87)",
+     "",
+     "",
+     "306",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "2,817",
+     "",
+     "",
+     "2,624",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Capital expenditures",
+     "",
+     "(363)",
+     "",
+     "",
+     "(416)",
+     ""
+    ],
+    [
+     "Purchase of IDW non-controlling interest",
+     "",
+     "-",
+     "",
+     "",
+     "(414)",
+     ""
+    ],
+    [
+     "Payments received on notes receivable",
+     "",
+     "321",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Proceeds from sale of WMET",
+     "",
+     "-",
+     "",
+     "",
+     "1,221",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(42)",
+     "",
+     "",
+     "391",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dividend paid",
+     "",
+     "(1,997)",
+     "",
+     "",
+     "(2,581)",
+     ""
+    ],
+    [
+     "Repurchases of Class A and Class B common stock",
+     "",
+     "-",
+     "",
+     "",
+     "(1,070)",
+     ""
+    ],
+    [
+     "Distributions to holders of non-controlling interests",
+     "",
+     "(17)",
+     "",
+     "",
+     "(1,039)",
+     ""
+    ],
+    [
+     "Funding provided by IDT Corporation, net",
+     "",
+     "-",
+     "",
+     "",
+     "2,372",
+     ""
+    ],
+    [
+     "Repayments of capital lease obligations",
+     "",
+     "(276)",
+     "",
+     "",
+     "(246)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(2,290)",
+     "",
+     "",
+     "(2,564)",
+     ""
+    ],
+    [
+     "Discontinued operations",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "-",
+     "",
+     "",
+     "(412)",
+     ""
+    ],
+    [
+     "Net cash used in investing activities",
+     "",
+     "-",
+     "",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "Net cash used in discontinued operations",
+     "",
+     "-",
+     "",
+     "",
+     "(415)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net increase in cash and cash equivalents",
+     "",
+     "485",
+     "",
+     "",
+     "36",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "6,516",
+     "",
+     "",
+     "6,480",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "7,001",
+     "",
+     "$",
+     "6,516",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosure of cash flow information",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash payments made for interest",
+     "",
+     "27",
+     "",
+     "",
+     "109",
+     ""
+    ],
+    [
+     "Cash payments made for income taxes",
+     "",
+     "",
+     "",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Supplemental schedule of non cash  investing and financing activities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment through capital lease obligations",
+     "",
+     "351",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Receipt of note receivable as part of sale of WMET",
+     "",
+     "-",
+     "",
+     "",
+     "2,400",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1279,
+    "end_line": 1338
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": null
+   },
+   "prose_before": "See accompanying notes to consolidated financial statements.\nCONSOLIDATED STATEMENTS OF CASH FLOWS",
+   "prose_after": "The effect of exchange rate changes on cash and cash equivalents is not material.\nSee accompanying notes to consolidated financial statements.\nNOTES TO CONSOLIDATED FINANCIAL STATEMENTS\nNote 1\u2014Description of Business and Summary of Significant Accounting Policies\nDescription of Business\nCTM Media Holdings, Inc. (the \u201cCompany\u201d) is a holding company consisting of the following principal businesses:\n\u2022 CTM Media Group (\u201cCTM\u201d), the Company\u2019s brochure distribution company and other advertising-based product initiatives focused on small to medium sized businesses; and\n\u2022 The Company\u2019s approximately 77% interest in Idea and Design Works, LLC (\u201cIDW\u201d), which is a comic book and graphic novel publisher that creates and licenses intellectual property.\nThe Company was formerly a subsidiary of IDT Corporation. On September 14, 2009, the Company was spun-off by IDT Corporation and became an independent public company (the \u201cSpin-Off\u201d). IDT Corporation transferred its ownership in all of the entities that became the Company\u2019s consolidated subsidiaries to the Company prior to the Spin-Off. The entities that became direct or indirect subsidiaries are: CTM; Beltway Acquisition Corporation; IDT Local Media, Inc. (which conducted certain operations related to CTM that are no longer active) and IDT Internet Mobile Group, Inc. (\u201cIIMG\u201d). IIMG owns approximately 76.665% of the equity interests in IDW. All indebtedness owed by any of these entities to IDT Corporation or its affiliates was converted into a capital contribution.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1275,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1342,
+     "token": "PAGE_BREAK",
+     "id": 62,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year ended July 31 (in thousands)",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Basic weighted-average number of shares",
+     "",
+     "8,323",
+     "",
+     "6,188"
+    ],
+    [
+     "Effect of dilutive securities:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-vested restricted common stock",
+     "",
+     "-",
+     "",
+     "1,651"
+    ],
+    [
+     "Diluted weighted-average number of shares",
+     "",
+     "8,323",
+     "",
+     "7,839"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1435,
+    "end_line": 1445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2014Description of Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "The Company accrues for loss contingencies when both (a) information available prior to issuance of the financial statements indicates that it is probable that a liability had been incurred at the date of the financial statements and (b) the amount of loss can reasonably be estimated. When the Company accrues for loss contingencies and the reasonable estimate of the loss is within a range, the Company records its best estimate within the range. When no amount within the range is a better estimate than any other amount, the Company accrues the minimum amount in the range. The Company discloses an estimated possible loss or a range of loss when it is at least reasonably possible that a loss may have been incurred.\nEarnings per Share\nBasic earnings per share is computed by dividing net income attributable to all classes of common stockholders by the weighted average number of shares of all classes of common stock outstanding during the applicable period. Diluted earnings per share is computed in the same manner as basic earnings per share, except that the number of shares is increased to include restricted stock still subject to risk of forfeiture (non-vested) using the treasury stock method, unless the effect of such increase is anti-dilutive.\nThe weighted-average number of shares used in the calculation of basic and diluted earnings per share attributable to the Company\u2019s common stockholders consists of the following:",
+   "prose_after": "Stock-Based Compensation\nThe Company accounted for stock-based compensation granted to its employees by IDT Corporation in accordance with the fair value recognition provisions of \u2018ASC\u2019 718 Share-Based Payment. Under \u2018ASC\u2019 718, compensation cost recognized based on the grant-date fair value. Stock-based compensation is included in selling, general and administrative expense. During the fiscal year ended July 31, 2011, the Company began recognizing the compensation on a straight-line basis in accordance with ASU 718-10-35-8.\nVulnerability Due to Certain Concentrations\nFinancial instruments that potentially subject the Company to concentration of credit risk consist principally of cash, cash equivalents, short term investment and trade accounts receivable. The Company holds cash and cash equivalents at several major financial institutions, which often exceed FDIC insurance limits. Historically, the Company has not experienced any losses due to such concentration of credit risk. The Company\u2019s temporary cash investments policy is to limit the dollar amount of investments with any one financial institution and monitor the credit ratings of those institutions. While the Company may be exposed to credit losses due to the nonperformance of its counterparties, the Company does not expect the settlement of these transactions to have a material effect on its results of operations, cash flows or financial condition.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1423,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "arabic",
+     "page_number": 9
+    },
+    "after": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year ended July 31 (in thousands)",
+     "Balance at\n\nbeginning of\n\nyear",
+     "",
+     "Additions\n\ncharged to\n\nrevenues",
+     "",
+     "Actual returns",
+     "",
+     "",
+     "Balance at\n\nend of year",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from accounts receivable:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for sales returns",
+     "$",
+     "165",
+     "$",
+     "3,565",
+     "$",
+     "(3,480)",
+     "",
+     "$",
+     "250"
+    ],
+    [
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from accounts receivable:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for sales returns",
+     "$",
+     "374",
+     "$",
+     "3,305",
+     "$",
+     "(3,514)",
+     "",
+     "$",
+     "165"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1463,
+    "end_line": 1477
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 1,
+     "label": "NOTE 1",
+     "title": "\u2014Description of Business and Summary of Significant Accounting Policies"
+    }
+   },
+   "prose_before": "IDW has one major customer, Diamond Comic Distributors, Inc., which is the major distributor of comic books in the United States. Revenues from this customer represented approximately 47.3% and 31.1% of the total consolidated revenues for the years ended July 31, 2011 and 2010, respectively. No other single customer accounted for more than 10% of consolidated revenues in fiscal 2011 or fiscal 2010. The receivable balances from this customer represented approximately 30.5% and 17.4% of the total consolidated trade accounts receivable at July 31, 2011 and 2010, respectively. This concentration of customers increases the Company\u2019s risk associated with nonpayment by those customers. For CTM, concentration of credit risk with respect to trade accounts receivable is limited due to the large number of customers in various geographic regions comprising CTM's customer base.\nSales Returns and Allowances\nIDW offers its sole distributor, Diamond Comic Distributors, a right of return with no expiration date. Diamond Comic Distributors then offers this same right of return to its largest chain retailers. IDW records an estimate for sales return reserves from such retailers based on historical sales and return experience and current trends that are expected to continue. In fiscal 2011, estimated returns exceeded actual returns by approximately $108,000.\nThe change in the allowance for sales returns is as follows:",
+   "prose_after": "Allowance for Doubtful Accounts\nThe allowance for doubtful accounts reflects the Company\u2019s best estimate of probable losses inherent in the accounts receivable balance. The allowance is determined based on known troubled accounts, historical experience and other currently available evidence.\nThe change in the allowance for doubtful accounts is as follows:\n<TABLE>\nAdditions\nBalance at                   charged to\nbeginning of                    costs and                                                Balance at\nFiscal Year ended July 31 (in thousands)                               year                  expenses(1)                Deductions(2)                  end of year\n-------------------------------------------  ------------------------------  ---------------------------  ---------------------------  ---------------------------",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 1
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1459,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "arabic",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1496,
+     "token": "PAGE_BREAK",
+     "id": 67,
+     "namespace": "arabic",
+     "page_number": 2010
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year ended July 31 (in thousands)",
+     "Balance at\n\nbeginning of\n\nyear",
+     "",
+     "Additions\n\ncharged to\n\ncosts and\n\nexpenses(1)",
+     "",
+     "Deductions(2)",
+     "",
+     "",
+     "Balance at\n\nend of year",
+     ""
+    ],
+    [
+     "2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from accounts receivable:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "$",
+     "778",
+     "$",
+     "84",
+     "$",
+     "(158)",
+     "",
+     "$",
+     "704"
+    ],
+    [
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Reserves deducted from accounts receivable:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Allowance for doubtful accounts",
+     "$",
+     "673",
+     "$",
+     "277",
+     "$",
+     "(172)",
+     "",
+     "$",
+     "778"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 26,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year Ended July 31,",
+     "2011",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "\u2014",
+     "$",
+     "411",
+     ""
+    ],
+    [
+     "Loss before income taxes and net loss .",
+     "",
+     "-",
+     "",
+     "(623)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1528,
+    "end_line": 1536
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014Discontinued Operations"
+    }
+   },
+   "prose_before": "On May 5, 2010, we consummated the sale of substantially all of the assets used in our WMET radio station business (other than working capital). WMET 1160 AM is a radio station serving the Washington, D.C. metropolitan area. The sale price for the WMET assets was $4,000,000in a combination of cash and a promissory note of the buyer that is secured by the assets sold. $1,300,000 of the purchase price was paid in cash by the closing and the remainder is owed pursuant to a two-year promissory note, which is extendable in part to three years at the option of the buyer. The sale met the criteria to be reported as a discontinued operation and accordingly, WMET\u2019s results are classified as part of discontinued operations for all periods presented. In the fourth quarter of fiscal 2010, the company recognized a gain of $1,600,000 in connection with the sale.\nSummary Financial Data of Discontinued Operations\nRevenues, loss before income taxes and net loss of WMET, which are included in discontinued operations, were as follows:",
+   "prose_after": "There are no assets of WMET as of July 31, 2011.\nNote 3\u2014Stock Repurchase and Cash Dividend\nOn November 17, 2009, the Company commenced a tender offer to purchase up to thirty percent of its outstanding common stock. The Company offered to purchase up to 400,000 shares of its Class A common stock and up to 2,400,000 shares of its Class B common stock, at a price per share of $1.10. The offer expired on December 22, 2009 and pursuant to the offer, the Company repurchased 200,000 shares of Class A common stock and 800,000 shares of Class B common stock for an aggregate purchase price of $1,100,000, representing approximately 14% of its total outstanding capital stock at the time.\nThe Company paid a cash dividend in the amount of $0.25 per share (approximately $2,100,000 in the aggregate), $0.06 per share (approximately $500,000 in the aggregate), and $0.12 per share (approximately $1,000,000 in the aggregate), on March 15, 2010, June 15, 2010 and November 9, 2010, respectively, to stockholders of record as of March 8, 2010, May 3, 2010 and November 1, 2010, respectively, of the Company\u2019s Class A, Class B and Class C common stock.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1514,
+     "token": "PAGE_BREAK",
+     "id": 68,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "July 31 (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Trade accounts receivable",
+     "$",
+     "4,336",
+     "",
+     "$",
+     "4,439",
+     ""
+    ],
+    [
+     "Less allowance for sales returns",
+     "",
+     "(249)",
+     "",
+     "",
+     "(165)",
+     ""
+    ],
+    [
+     "Less allowance for doubtful accounts",
+     "",
+     "(704)",
+     "",
+     "",
+     "(778)",
+     ""
+    ],
+    [
+     "Trade accounts receivable, net",
+     "$",
+     "3,383",
+     "",
+     "$",
+     "3,496",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1558,
+    "end_line": 1568
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "\u2014Trade Accounts Receivable"
+    }
+   },
+   "prose_before": "On February 22, 2011, the Board of Directors, in light of the Company\u2019s cash position, declared the payment of a cash dividend in the amount of $0.06 per share (approximately $500,000 in the aggregate). The Company\u2019s management confirmed there being sufficient surplus and on March 17, 2001, the dividend was paid to stockholders of record as of March 8, 2011 of the Company\u2019s Class A, Class B and Class C common stock.\nOn June 13, 2011, the Board of Directors, in light of the Company\u2019s cash position, declared the payment of a cash dividend in the amount of $0.06 per share (approximately $500,000 in the aggregate) which, subject to confirmation by the Company\u2019s management that there is sufficient surplus as of the proposed payment date. The amount was paid on July 5, 2011 to stockholders of record as of June 28, 2011 of the Company\u2019s Class A common stock, Class B common stock and Class C common stock.\nIn addition, on February 22, 2011 the Board of Directors approved the buyback of up to 1,000,000 shares of either the Company\u2019s Class A common stock or Class B common stock. Any purchases will be made in compliance with applicable regulations. To date, no shares have been purchased since the buyback was approved.\nNote 4\u2014Trade Accounts Receivable\nTrade accounts receivable consists of the following:",
+   "prose_after": "Note 5\u2014Accrued Expenses\nAccrued expenses consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "July 31 (in thousands)",
+     "2011",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Royalty",
+     "$",
+     "337",
+     "$",
+     "505"
+    ],
+    [
+     "Payroll",
+     "",
+     "403",
+     "",
+     "435"
+    ],
+    [
+     "Bonus",
+     "",
+     "430",
+     "",
+     "216"
+    ],
+    [
+     "Other",
+     "",
+     "631",
+     "",
+     "383"
+    ],
+    [
+     "Total",
+     "$",
+     "1,801",
+     "$",
+     "1,539"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1573,
+    "end_line": 1584
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "\u2014Accrued Expenses"
+    }
+   },
+   "prose_before": "Note 5\u2014Accrued Expenses\nAccrued expenses consists of the following:",
+   "prose_after": "Note 6\u2014Property and Equipment\nProperty and equipment consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "July 31 (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Equipment",
+     "$",
+     "6,446",
+     "",
+     "$",
+     "6,094",
+     ""
+    ],
+    [
+     "Vehicles",
+     "",
+     "2,320",
+     "",
+     "",
+     "2,043",
+     ""
+    ],
+    [
+     "Leasehold improvements",
+     "",
+     "292",
+     "",
+     "",
+     "279",
+     ""
+    ],
+    [
+     "Computer software",
+     "",
+     "959",
+     "",
+     "",
+     "848",
+     ""
+    ],
+    [
+     "",
+     "",
+     "10,017",
+     "",
+     "",
+     "9,264",
+     ""
+    ],
+    [
+     "Less accumulated depreciation and amortization",
+     "",
+     "(7,996)",
+     "",
+     "",
+     "(7,251)",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "$",
+     "2,021",
+     "",
+     "$",
+     "2,013",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1589,
+    "end_line": 1603
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "\u2014Property and Equipment"
+    }
+   },
+   "prose_before": "Note 6\u2014Property and Equipment\nProperty and equipment consists of the following:",
+   "prose_after": "During the year, the Company performed an assessment of the value of its assets and concluded that no impairment of property and equipment existed.\nProperty and equipment under capital leases were $1,400,000 and $1,100,000 at July 31, 2011 and 2010, respectively. The accumulated depreciation related to these assets under capital leases was $840,000 and $600,000 at July 31, 2011 and 2010, respectively. Depreciation of fixed assets under capital leases is included in depreciation and amortization expense in the accompanying consolidated statements of operations. Depreciation and amortization expense of property and equipment was $753,000 and $859,000 in fiscal 2011 and 2010, respectively.\nNote 7\u2014Licenses and Other Intangibles\nThe table below presents information on the Company\u2019s licenses and other intangible assets:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1548,
+     "token": "PAGE_BREAK",
+     "id": 69,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Amortization\n\nPeriod",
+     "Gross\n\nCarrying\n\nAmount",
+     "",
+     "Accumulated\n\nAmortization",
+     "",
+     "",
+     "Net\n\nBalance",
+     ""
+    ],
+    [
+     "As of July 31, 2011:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortized intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer lists",
+     "5 years",
+     "$",
+     "25",
+     "$",
+     "(25)",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "Licenses and other intangible assets",
+     "2.5 years",
+     "",
+     "46",
+     "",
+     "(10)",
+     "",
+     "",
+     "36"
+    ],
+    [
+     "Total licenses and other intangibles",
+     "",
+     "$",
+     "71",
+     "$",
+     "(35)",
+     "",
+     "$",
+     "36"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "As of July 31, 2010:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortized intangible assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer lists",
+     "5 years",
+     "$",
+     "25",
+     "$",
+     "(21)",
+     "",
+     "$",
+     "4"
+    ],
+    [
+     "Licenses and other intangible assets",
+     "2.5 years",
+     "",
+     "1,138",
+     "",
+     "(1,125)",
+     "",
+     "",
+     "13"
+    ],
+    [
+     "Total licenses and other intangibles",
+     "",
+     "$",
+     "1,163",
+     "$",
+     "(1,146)",
+     "",
+     "$",
+     "17"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1613,
+    "end_line": 1638
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "\u2014Licenses and Other Intangibles"
+    }
+   },
+   "prose_before": "During the year, the Company performed an assessment of the value of its assets and concluded that no impairment of property and equipment existed.\nProperty and equipment under capital leases were $1,400,000 and $1,100,000 at July 31, 2011 and 2010, respectively. The accumulated depreciation related to these assets under capital leases was $840,000 and $600,000 at July 31, 2011 and 2010, respectively. Depreciation of fixed assets under capital leases is included in depreciation and amortization expense in the accompanying consolidated statements of operations. Depreciation and amortization expense of property and equipment was $753,000 and $859,000 in fiscal 2011 and 2010, respectively.\nNote 7\u2014Licenses and Other Intangibles\nThe table below presents information on the Company\u2019s licenses and other intangible assets:",
+   "prose_after": "Amortization expense of licenses and other intangible assets was $26,000 and $36,000 in fiscal 2011 and 2010, respectively.\nNote 8\u2014Income Taxes\nSignificant components of the Company\u2019s deferred tax assets and deferred tax liabilities consist of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year Ended July 31 (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Bad debt reserve",
+     "$",
+     "42",
+     "",
+     "$",
+     "64",
+     ""
+    ],
+    [
+     "Accrued expenses",
+     "",
+     "86",
+     "",
+     "",
+     "93",
+     ""
+    ],
+    [
+     "Exercise of stock options and lapsing of restrictions on restricted stock",
+     "",
+     "(165)",
+     "",
+     "",
+     "(275)",
+     ""
+    ],
+    [
+     "Impairment",
+     "",
+     "12,609",
+     "",
+     "",
+     "12,609",
+     ""
+    ],
+    [
+     "Net operating loss",
+     "",
+     "2,401",
+     "",
+     "",
+     "4,243",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "14,973",
+     "",
+     "",
+     "16,734",
+     ""
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(12,711)",
+     "",
+     "",
+     "(16,734)",
+     ""
+    ],
+    [
+     "NET DEFERRED TAX ASSETS",
+     "",
+     "2,262",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1645,
+    "end_line": 1661
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "Amortization expense of licenses and other intangible assets was $26,000 and $36,000 in fiscal 2011 and 2010, respectively.\nNote 8\u2014Income Taxes\nSignificant components of the Company\u2019s deferred tax assets and deferred tax liabilities consist of the following:",
+   "prose_after": "The provision for income taxes consists of the following:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year ended July 31 (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Current:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "35",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "State and local",
+     "",
+     "(260)",
+     "",
+     "",
+     "56"
+    ],
+    [
+     "Foreign",
+     "",
+     "30",
+     "",
+     "",
+     "35"
+    ],
+    [
+     "",
+     "$",
+     "(195)",
+     "",
+     "$",
+     "91"
+    ],
+    [
+     "Deferred:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "$",
+     "(1,815)",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "State and local",
+     "",
+     "(435)",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "",
+     "$",
+     "(2,250)",
+     "",
+     "$",
+     "-"
+    ],
+    [
+     "Provision for (benefit from) income taxes",
+     "$",
+     "(2,445)",
+     "",
+     "$",
+     "91"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1664,
+    "end_line": 1683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "The provision for income taxes consists of the following:",
+   "prose_after": "The differences between income taxes expected at the U.S. federal statutory income tax rate and income taxes provided are as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1607,
+     "token": "PAGE_BREAK",
+     "id": 70,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Year ended July 31 (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "U.S. federal income tax at statutory rate",
+     "$",
+     "587",
+     "",
+     "$",
+     "(495)",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "( 2,842)",
+     "",
+     "",
+     "495",
+     ""
+    ],
+    [
+     "Foreign tax rate differential",
+     "",
+     "35",
+     "",
+     "",
+     "35",
+     ""
+    ],
+    [
+     "State and local income tax, net of federal benefit",
+     "",
+     "(260)",
+     "",
+     "",
+     "56",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "35",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "PROVISION FOR INCOME TAXES",
+     "$",
+     "(2,445)",
+     "",
+     "$",
+     "91",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1687,
+    "end_line": 1699
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "The differences between income taxes expected at the U.S. federal statutory income tax rate and income taxes provided are as follows:",
+   "prose_after": "At July 31, 2011, the Company had federal and state net operating loss carry-forwards of approximately $8,800,000. This carry-forward loss is available to offset future U.S. federal and state taxable income. The net operating loss carry-forwards will start to expire in fiscal 2026. The Company has no foreign net operating losses. The utilization of the net operating loss carry-forwards may be subject to certain limitations as a result of the Spin-Off. The Company determined that it was more likely than not that a portion of its deferred income tax assets will be realized based on its income from continuing operations in the United States in fiscal 2011 and fiscal 2010 combined with projections of taxable income for the foreseeable future. Therefore, the Company reversed $2,250,000 of its valuation allowance in fiscal 2011.\nThe Company has not recorded U.S. income tax expense for foreign earnings as such earnings are permanently reinvested outside the U.S. The cumulative undistributed foreign earnings are included in accumulated deficit in the Company\u2019s consolidated balance sheets, and consisted of approximately $1,400,000 at July 31, 2011. Upon distribution of these foreign earnings, the Company may be subject to U.S. income taxes and foreign withholding taxes, however, it is not practicable to determine the amount, if any, which would be paid.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1725,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Year ended July 31 (in thousands)",
+     "2011",
+     "",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Balance at the beginning of the year (excludes interest)",
+     "$",
+     "625",
+     "",
+     "$",
+     "579"
+    ],
+    [
+     "Additions based on tax positions related to the current year",
+     "",
+     "--",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Additions for tax positions of prior years",
+     "",
+     "45",
+     "",
+     "",
+     "46"
+    ],
+    [
+     "Reductions for tax positions of prior years",
+     "",
+     "-",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Settlements",
+     "",
+     "-",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Lapses of statutes of limitations",
+     "",
+     "(330)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Balance at the end of the year",
+     "$",
+     "340",
+     "",
+     "$",
+     "625"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1706,
+    "end_line": 1719
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "\u2014Income Taxes"
+    }
+   },
+   "prose_before": "At July 31, 2011, the Company had federal and state net operating loss carry-forwards of approximately $8,800,000. This carry-forward loss is available to offset future U.S. federal and state taxable income. The net operating loss carry-forwards will start to expire in fiscal 2026. The Company has no foreign net operating losses. The utilization of the net operating loss carry-forwards may be subject to certain limitations as a result of the Spin-Off. The Company determined that it was more likely than not that a portion of its deferred income tax assets will be realized based on its income from continuing operations in the United States in fiscal 2011 and fiscal 2010 combined with projections of taxable income for the foreseeable future. Therefore, the Company reversed $2,250,000 of its valuation allowance in fiscal 2011.\nThe Company has not recorded U.S. income tax expense for foreign earnings as such earnings are permanently reinvested outside the U.S. The cumulative undistributed foreign earnings are included in accumulated deficit in the Company\u2019s consolidated balance sheets, and consisted of approximately $1,400,000 at July 31, 2011. Upon distribution of these foreign earnings, the Company may be subject to U.S. income taxes and foreign withholding taxes, however, it is not practicable to determine the amount, if any, which would be paid.\nThe table below summarizes the change in the balance of unrecognized income tax benefits:",
+   "prose_after": "The Company classifies interest and penalties on income taxes as a component of income tax expense. As of August 1, 2007, accrued interest expense relating to the unrecognized tax benefits was $15,000. In fiscal 2011 and fiscal 2010, the Company recorded additional interest expense of $45,000and $46,000, respectively. As of July 31, 2011 and 2010, accrued interest expense included in current income taxes payable was $109,000 and $110,000, respectively.\nThe Company currently remains subject to examinations of its tax returns as follows: U.S. federal tax returns for fiscal 2009 and 2010, state and local tax returns generally for fiscal 2008 to fiscal 2010 and foreign tax returns generally for fiscal 2008 to fiscal 2010. The IRS audited IDT Corporation\u2019s federal tax returns (of which the Company was a part of the consolidated group), for fiscal years 2005, 2006 and 2007. No changes to the Company resulted from this audit.\nThe Company and IDT Corporation entered into a Tax Separation Agreement, dated as of September 14, 2009, to provide for certain tax matters including the assignment of responsibility for the preparation and filing of tax returns, the payment of and indemnification for taxes, entitlement to tax refunds and the prosecution and defense of any tax controversies. Pursuant to this agreement, IDT Corporation indemnified the Company from all liability for taxes of the Company and its subsidiaries for periods ending on or before September 14, 2009, and the Company indemnified IDT Corporation from all liability for taxes of the Company and its subsidiaries accruing after September 14, 2009. Also, for periods ending on or before September 14, 2009, IDT Corporation shall have the right to control the conduct of any audit, examination or other proceeding brought by a taxing authority. The Company shall have the right to participate jointly in any proceeding that may affect its tax liability unless IDT Corporation has indemnified the Company. Finally, the Company and its subsidiaries agreed not to carry back any net operating losses, capital losses or credits for any taxable period ending after September 14, 2009 to a taxable period ending on or before September 14, 2009 unless required by applicable law, in which case any refund of taxes attributable to such carry back shall be for the account of IDT Corporation.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1683,
+     "token": "PAGE_BREAK",
+     "id": 71,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 1725,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Number of\n\nNonvested Shares",
+     ""
+    ],
+    [
+     "Nonvested shares at July 31, 2010",
+     "",
+     "2,480"
+    ],
+    [
+     "Granted",
+     "",
+     "\u2014"
+    ],
+    [
+     "Vested",
+     "",
+     "\u2014"
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014"
+    ],
+    [
+     "Nonvested shares at July 31, 2011",
+     "",
+     "2,480"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1750,
+    "end_line": 1763
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "\u2014Stock Based Compensation"
+    }
+   },
+   "prose_before": "On October 14, 2009, the Company\u2019s Board of Directors granted its Chairman and founder, Howard S. Jonas, 1,800,000 restricted shares of the Company\u2019s Class B common stock with a value of $1,250,000 on the date of grant in lieu of a cash base salary for the next five years. The restricted shares will vest in equal thirds on each of October 14, 2011, October 14, 2012 and October 14, 2013. Unvested shares would be forfeited if the Company\u2019s terminates Mr. Jonas\u2019 employment other than under circumstances where the accelerated vesting applies. The shares are subject to adjustments or acceleration based on certain corporate transactions, changes in capitalization, or termination, death or disability of Mr. Jonas. If Mr. Jonas is terminated by the Company for cause, a pro rata portion of the shares would vest. This arrangement did not impact Mr. Jonas\u2019 cash compensation from the date of the Spin-Off through the pay period ending on the grant date. Total unrecognized compensation cost on the grant date was $1,250,000. The unrecognized compensation cost is expected to be recognized over the vesting period from October 14, 2009 through October 14, 2014. Unrecognized compensation cost as of July 31, 2011 and 2010 was $618,000 and $893,000, respectively.\nA summary of the status of the Company\u2019s nonvested restricted shares as of July 31, 2011 and changes in fiscal 2011 is presented below:",
+   "prose_after": "The Company Share-Based Compensation Plan\nOn September 3, 2009, the Company\u2019s Compensation Committee ratified the Company\u2019s 2009 Stock Option and Incentive Plan (the \u201cCompany Stock Option and Incentive Plan\u201d), which was previously adopted by the Company\u2019s Board of Directors and approved by IDT Corporation as its sole stockholder, to provide incentives to executive officers, employees, directors and consultants of the Company and/or its subsidiaries. The maximum number of shares of the Company\u2019s Class B common stock reserved for the grant of awards under the Company Stock Option and Incentive Plan shall be 383,020, subject to adjustment. Incentives available under the Company Stock Option and Incentive Plan may include stock options, stock appreciation rights, limited stock appreciation rights, restricted stock, and deferred stock units.\nUnder the Company Stock Option and Incentive Plan, the option price of each option award shall not be less than one hundred percent of the fair market value of the Company\u2019s Class B common stock on the date of grant. Each option agreement shall provide the exercise schedule for the option as determined by the Compensation Committee. The exercise period will be ten years from the date of the grant of the option unless otherwise determined by the Compensation Committee. No awards have been granted under the Company Stock Option and Incentive Plan to date.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1746,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1803,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "Operating\n\nLeases",
+     "",
+     "Capital\n\nLeases",
+     "",
+     ""
+    ],
+    [
+     "Year ending July 31:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "2012",
+     "$",
+     "971",
+     "$",
+     "244",
+     ""
+    ],
+    [
+     "2013",
+     "",
+     "701",
+     "",
+     "164",
+     ""
+    ],
+    [
+     "2014",
+     "",
+     "653",
+     "",
+     "102",
+     ""
+    ],
+    [
+     "2015",
+     "",
+     "611",
+     "",
+     "72",
+     ""
+    ],
+    [
+     "2016",
+     "",
+     "412",
+     "",
+     "25",
+     ""
+    ],
+    [
+     "Thereafter",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Total payments",
+     "$",
+     "3,348",
+     "",
+     "607",
+     ""
+    ],
+    [
+     "Less amount representing interest",
+     "",
+     "",
+     "",
+     "(22)",
+     ""
+    ],
+    [
+     "Less current portion Principal",
+     "",
+     "",
+     "",
+     "(231)",
+     ""
+    ],
+    [
+     "Capital lease obligations\u2014long-term portion Principal",
+     "",
+     "",
+     "$",
+     "354",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1780,
+    "end_line": 1801
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "\u2014Commitments and Contingencies"
+    }
+   },
+   "prose_before": "On September 3, 2009, the Company\u2019s Compensation Committee ratified the Company\u2019s 2009 Stock Option and Incentive Plan (the \u201cCompany Stock Option and Incentive Plan\u201d), which was previously adopted by the Company\u2019s Board of Directors and approved by IDT Corporation as its sole stockholder, to provide incentives to executive officers, employees, directors and consultants of the Company and/or its subsidiaries. The maximum number of shares of the Company\u2019s Class B common stock reserved for the grant of awards under the Company Stock Option and Incentive Plan shall be 383,020, subject to adjustment. Incentives available under the Company Stock Option and Incentive Plan may include stock options, stock appreciation rights, limited stock appreciation rights, restricted stock, and deferred stock units.\nUnder the Company Stock Option and Incentive Plan, the option price of each option award shall not be less than one hundred percent of the fair market value of the Company\u2019s Class B common stock on the date of grant. Each option agreement shall provide the exercise schedule for the option as determined by the Compensation Committee. The exercise period will be ten years from the date of the grant of the option unless otherwise determined by the Compensation Committee. No awards have been granted under the Company Stock Option and Incentive Plan to date.\nNote 10\u2014Commitments and Contingencies\nLegal Proceedings\nNone.\nLease Commitments\nThe future minimum payments for capital and operating leases as of July 31, 2011 are as follows:",
+   "prose_after": "Rental expense under operating leases was $1,100,000 in fiscal 2011 and $1,000,000 in fiscal 2010.\nNote 11\u2014Related Party Transactions\nIn fiscal 2011 and 2010, IDT Corporation, the Company\u2019s former parent company, charged the Company for certain transactions and allocated routine expenses based on company specific items. In addition, in fiscal 2010, IDT Corporation controlled the flow of the Company\u2019s treasury transactions. Expenses allocated to the Company amounted to $1,100,000 in fiscal 2010. In September 2009, IDT Corporation funded the Company with an additional $2,000,000 in cash in advance of the Spin-Off. Also in September 2009, the aggregate $25,300,000 balance of the amount in \u201cDue to IDT Corporation\u201d was converted into a capital contribution. The Company\u2019s liability to IDT Corporation fluctuated primarily due to operating expenses paid by IDT Corporation on behalf of the Company and the transfers of funds. The Company\u2019s liability to IDT Corporation was as follows:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1746,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 1803,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 38,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Fiscal Years ended July 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2011",
+     "",
+     "",
+     "2010",
+     "",
+     ""
+    ],
+    [
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Opening Balance",
+     "$",
+     "38",
+     "",
+     "$",
+     "24,921",
+     ""
+    ],
+    [
+     "Payments and credits",
+     "",
+     "(143)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Billings and Expenses paid by IDT Corporation on behalf of the Company",
+     "",
+     "136",
+     "",
+     "",
+     "1,183",
+     ""
+    ],
+    [
+     "Transfer of funds to IDT Corporation, net",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(773)",
+     ""
+    ],
+    [
+     "Conversion of amount due IDT at Spin-Off",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(27,293)",
+     ""
+    ],
+    [
+     "Contribution from IDT",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2,000",
+     ""
+    ],
+    [
+     "Ending Balance",
+     "",
+     "31",
+     "",
+     "",
+     "38",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Fiscal Years ended July 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1809,
+    "end_line": 1826
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "\u2014Related Party Transactions"
+    }
+   },
+   "prose_before": "Rental expense under operating leases was $1,100,000 in fiscal 2011 and $1,000,000 in fiscal 2010.\nNote 11\u2014Related Party Transactions\nIn fiscal 2011 and 2010, IDT Corporation, the Company\u2019s former parent company, charged the Company for certain transactions and allocated routine expenses based on company specific items. In addition, in fiscal 2010, IDT Corporation controlled the flow of the Company\u2019s treasury transactions. Expenses allocated to the Company amounted to $1,100,000 in fiscal 2010. In September 2009, IDT Corporation funded the Company with an additional $2,000,000 in cash in advance of the Spin-Off. Also in September 2009, the aggregate $25,300,000 balance of the amount in \u201cDue to IDT Corporation\u201d was converted into a capital contribution. The Company\u2019s liability to IDT Corporation fluctuated primarily due to operating expenses paid by IDT Corporation on behalf of the Company and the transfers of funds. The Company\u2019s liability to IDT Corporation was as follows:",
+   "prose_after": "CTM distributes brochures for ETR Brochures, Inc., a brochure distribution firm controlled by Howard S. Jonas. ETR Brochures, Inc. also distributes brochures for CTM. In fiscal 2011, CTM billed ETR Brochures, Inc. approximately $10,000 for distribution services and ETR Brochures, Inc. billed CTM approximately $99,000 for distribution services. In fiscal 2010, CTM billed ETR Brochures, Inc. approximately $13,000 for distribution services and ETR Brochures, Inc. billed CTM approximately $106,000 for distribution services. The balance owed to ETR Brochures, Inc. by CTM was approximately $8,000 and $12,000 as of July 31, 2011 and 2010. The balance owed by ETR Brochures, Inc. to CTM was approximately $1,000 as of July 31, 2011 and 2010, respectively. These transactions were approved in accordance with Related Person Transaction policy described in its 2010 Proxy Statement. The Company intends for the relationship between CTM and ETR Brochures, Inc. to continue in the future.\nNote 12\u2014Defined Contribution Plans",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1803,
+     "token": "PAGE_BREAK",
+     "id": 74,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 38,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 39,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "(in thousands)",
+     "CTM",
+     "",
+     "IDW",
+     "",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Fiscal Year ended July 31, 2011",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "18,448",
+     "$",
+     "13,871",
+     "",
+     "$",
+     "32,319"
+    ],
+    [
+     "Operating income",
+     "",
+     "615",
+     "",
+     "1,251",
+     "",
+     "",
+     "1,866"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "721",
+     "",
+     "32",
+     "",
+     "",
+     "753"
+    ],
+    [
+     "Total assets at July 31, 2011",
+     "$",
+     "18,593",
+     "$",
+     "2,407",
+     "",
+     "$",
+     "21,000"
+    ],
+    [
+     "Fiscal Year ended July 31, 2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "18,562",
+     "$",
+     "11,464",
+     "",
+     "$",
+     "30,026"
+    ],
+    [
+     "Operating income(loss)",
+     "",
+     "1,126",
+     "",
+     "(388)",
+     "",
+     "",
+     "738"
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "779",
+     "",
+     "80",
+     "",
+     "",
+     "859"
+    ],
+    [
+     "Total assets at July 31, 2010",
+     "$",
+     "12,333",
+     "$",
+     "6,068",
+     "",
+     "$",
+     "18,401"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1848,
+    "end_line": 1862
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014Business Segment Information"
+    }
+   },
+   "prose_before": "In fiscal 2011 and fiscal 2010, the Company expensed $91,000 and $0, respectively.\nNote 13\u2014Business Segment Information\nThe Company has the following two reportable business segments: CTM and IDW. CTM consists of the Company\u2019s brochure distribution company and other advertising-based new product initiatives focused on small to medium sized businesses. IDW is a comic book and graphic novel publisher that creates and licenses intellectual property.\nThe Company\u2019s reportable segments are distinguished by types of service, customers and methods used to provide their services. The operating results of these business segments are regularly reviewed by the Company\u2019s chief operating decision maker.\nThe accounting policies of the segments are the same as those described in the summary of significant accounting policies. The Company evaluates the performance of its business segments based primarily on operating income (loss). There are no significant asymmetrical allocations to segments. Operating results for the business segments of the Company are as follows:",
+   "prose_after": "Revenues from customers located outside of the United States represented approximately 8.6% and 9.0% of total consolidated revenues from continuing operations in fiscal 2011 and fiscal 2010, respectively. Revenues by country are determined based on the country where the customer is invoiced. Net long-lived assets and net total assets held outside of the United States, primarily in Canada, totaled approximately 300,000 and $3,900,000, respectively, as of July 31, 2011 and $300,000 and $3,600,000, respectively, as of July 31, 2010.\nNote 14\u2014Selected Quarterly Financial Data (Unaudited)\nThe table below presents selected quarterly financial data of the Company for its fiscal quarters for fiscal 2011 and fiscal 2010:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1901,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 39,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  },
+  {
+   "table_index": 40,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Fiscal Quarter Ended\n\n(in thousands)",
+     "Revenues",
+     "",
+     "Direct cost\n\nof revenues",
+     "",
+     "Income(loss)\n\nfrom\n\noperations",
+     "",
+     "",
+     "Income(loss)\n\nfrom continuing\n\noperations",
+     "",
+     "",
+     "Net\n\nIncome(loss)",
+     "",
+     ""
+    ],
+    [
+     "2011:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 31",
+     "$",
+     "8,649",
+     "$",
+     "3,761",
+     "$",
+     "857",
+     "",
+     "$",
+     "797",
+     "",
+     "$",
+     "710",
+     ""
+    ],
+    [
+     "January 31",
+     "",
+     "7,677",
+     "",
+     "3,712",
+     "",
+     "(32)",
+     "",
+     "",
+     "(28)",
+     "",
+     "",
+     "(144)",
+     ""
+    ],
+    [
+     "April 30",
+     "",
+     "6,791",
+     "",
+     "3,466",
+     "",
+     "(490)",
+     "",
+     "",
+     "(124)",
+     "",
+     "",
+     "(164)",
+     ""
+    ],
+    [
+     "July 31",
+     "",
+     "9,202",
+     "",
+     "3,864",
+     "",
+     "1,531",
+     "",
+     "",
+     "3,781",
+     "",
+     "",
+     "3,719",
+     ""
+    ],
+    [
+     "TOTAL",
+     "$",
+     "32,319",
+     "$",
+     "14,803",
+     "$",
+     "1,866",
+     "",
+     "$",
+     "4,426",
+     "",
+     "$",
+     "4,121",
+     ""
+    ],
+    [
+     "2010:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "October 31",
+     "$",
+     "8,233",
+     "$",
+     "3,749",
+     "$",
+     "1,070",
+     "",
+     "$",
+     "807",
+     "",
+     "$",
+     "518",
+     ""
+    ],
+    [
+     "January 31",
+     "",
+     "6,365",
+     "",
+     "3,233",
+     "",
+     "(681)",
+     "",
+     "",
+     "(603)",
+     "",
+     "",
+     "(719)",
+     ""
+    ],
+    [
+     "April 30",
+     "",
+     "6,832",
+     "",
+     "3,605",
+     "",
+     "(656)",
+     "",
+     "",
+     "(779)",
+     "",
+     "",
+     "(1,059)",
+     ""
+    ],
+    [
+     "July 31",
+     "",
+     "8,596",
+     "",
+     "3,561",
+     "",
+     "1,006",
+     "",
+     "",
+     "984",
+     "",
+     "",
+     "2,508",
+     ""
+    ],
+    [
+     "TOTAL",
+     "$",
+     "30,026",
+     "$",
+     "14,148",
+     "$",
+     "739",
+     "",
+     "$",
+     "409",
+     "",
+     "$",
+     "1,248",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1869,
+    "end_line": 1893
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "Exhibits, Financial Statement Schedules."
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014Selected Quarterly Financial Data (Unaudited)"
+    }
+   },
+   "prose_before": "Revenues from customers located outside of the United States represented approximately 8.6% and 9.0% of total consolidated revenues from continuing operations in fiscal 2011 and fiscal 2010, respectively. Revenues by country are determined based on the country where the customer is invoiced. Net long-lived assets and net total assets held outside of the United States, primarily in Canada, totaled approximately 300,000 and $3,900,000, respectively, as of July 31, 2011 and $300,000 and $3,600,000, respectively, as of July 31, 2010.\nNote 14\u2014Selected Quarterly Financial Data (Unaudited)\nThe table below presents selected quarterly financial data of the Company for its fiscal quarters for fiscal 2011 and fiscal 2010:",
+   "prose_after": "Note 15\u2014Subsequent events\nOn October 18, 2011 the Company announced its intent to suspend its registration under the Securities Exchange of 1934, as amended (the \u201cExchange Act\u201d), thus suspending its filing of periodic reports with the Securities and Exchange Commission (the \u201cSEC\u201d). The Company will continue to make information public by making filings publicly available through the OTC Disclosure & News Service pursuant to OTC Markets Group Guidelines for Providing Adequate Current Information.\nOn October 18, 2011 the Company\u2019s Board of Directors also approved a one-for-twenty reverse split of the Registrant\u2019s Class A common stock, Class B common stock and Class C common stock (the \u201cReverse Split\u201d). Stockholders who otherwise would hold fractional shares because the number of shares of capital stock they held before the Reverse Split would not be evenly divisible based upon the one-for-twenty split ratio will be entitled to cash payments (without interest or deduction) in respect of such fractional shares. Holders of significant shares of the company have indicated their intentions to vote for the reverse stock split. The Company intends for the Reverse stock Split to be effective at the end of November 2011.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1844,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 1901,
+     "token": "PAGE_BREAK",
+     "id": 76,
+     "namespace": "F",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 40,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "derivation"
+   }
+  }
+ ]
+}

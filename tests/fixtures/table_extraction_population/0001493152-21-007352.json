@@ -1,0 +1,2768 @@
+{
+ "accession": "0001493152-21-007352",
+ "cik": "0001823383",
+ "form": "10-K",
+ "filing_date": "2021-03-31",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "<br>Emerging growth company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-k.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 0,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "85-2703418"
+    ],
+    [
+     "(State or other jurisdiction of incorporation or organization)",
+     "(I.R.S. Employer\n\n\n\nIdentification Number)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "805 3rd Avenue, 15th floor",
+     ""
+    ],
+    [
+     "New York, New York",
+     "10022"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 35
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "WASHINGTON, D.C. 20549\nFORM 10-K\n[X] ANNUAL REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the fiscal year ended December 31, 2020\nOR\n[ ] TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFOR THE TRANSITION PERIOD FROM __________ TO ________\nCOMMISSION FILE NUMBER 001-39786\nGLOBIS ACQUISITION CORP.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "Registrant\u2019s telephone number, including area code: (212) 847-3248\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 0,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 1,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbols",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Units, each consisting of one share of common stock, $0.0001 par value, and one redeemable warrant to acquire one share of common stock",
+     "GLAQU",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Common stock, par value $0.0001 per share",
+     "GLAQ",
+     "The Nasdaq Stock Market LLC"
+    ],
+    [
+     "Redeemable warrants, each warrant exercisable for one share of common stock at an exercise price of $11.50 per share",
+     "GLAQW",
+     "The Nasdaq Stock Market LLC"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 40,
+    "end_line": 48
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Registrant\u2019s telephone number, including area code: (212) 847-3248\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to Section 12(g) of the Act: None\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. Yes [ ] No [X]\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. Yes [ ] No [X]\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant (1) has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS",
+     "ii"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SUMMARY RISK FACTORS",
+     "iii"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART I",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1. BUSINESS.",
+     "1"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 1A. RISK FACTORS.",
+     "13"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM IB. UNRESOLVED STAFF COMMENTS.",
+     "33"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 2. PROPERTIES.",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 3. LEGAL PROCEEDINGS.",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 4. MINE SAFETY DISCLOSURES.",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART II",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 5. MARKET FOR REGISTRANT\u2019S COMMON EQUITY, RELATED STOCKHOLDER MATTERS AND ISSUER PURCHASES OF EQUITY SECURITIES.",
+     "34"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 6. SELECTED FINANCIAL DATA.",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 7. MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS.",
+     "35"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 7A. QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK.",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 8. FINANCIAL STATEMENTS AND SUPPLEMENTARY DATA.",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 9. CHANGES IN AND DISAGREEMENTS WITH ACCOUNTANTS ON ACCOUNTING AND FINANCIAL DISCLOSURE.",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 9A. CONTROLS AND PROCEDURES.",
+     "38"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 9B. OTHER INFORMATION.",
+     "39"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART III",
+     "40"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.",
+     "40"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 11. EXECUTIVE COMPENSATION.",
+     "44"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.",
+     "44"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 13. CERTAIN RELATIONSHIPS AND RELATED TRANSACTIONS, AND DIRECTOR INDEPENDENCE.",
+     "46"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 14. PRINCIPAL ACCOUNTING FEES AND SERVICES.",
+     "47"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "PART IV",
+     "48"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "ITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.",
+     "48"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "SIGNATURES",
+     "50"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 82,
+    "end_line": 137
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [X] No [ ]\nThe registrant was not yet formed at June 30, 2020, the last business day of the registrant\u2019s most recently completed second fiscal quarter, and therefore it cannot calculate the aggregate market value of its voting and non-voting common equity held by non-affiliates at such date. The registrant\u2019s units began trading on the Nasdaq Stock Market on December 11, 2020, and the registrant\u2019s common stock began separate trading on the Nasdaq Stock Market on February 5, 2021. The aggregate market value of the registrant\u2019s shares of common stock outstanding, other than shares held by persons who may be deemed affiliates of the registrant, at February 26, 2021, computed by reference to the closing price for the shares of common stock on such date, as reported on the Nasdaq Stock Market, was $13,110,000.\nAs of March 25, 2021, the Registrant had 15,050,833 shares of its common stock, $0.0001 par value per share, outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone.\nTABLE OF CONTENTS",
+   "prose_after": "CAUTIONARY NOTE REGARDING FORWARD-LOOKING STATEMENTS\nSome of the statements contained in this report may constitute \u201cforward looking statements\u201d for purposes of the federal securities laws. Our forward-looking statements include, but are not limited to, statements regarding our or our management team\u2019s expectations, hopes, beliefs, intentions or strategies regarding the future. In addition, any statements that refer to projections, forecasts or other characterizations of future events or circumstances, including any underlying assumptions, are forward looking statements. The words \u201canticipate,\u201d \u201cbelieve,\u201d \u201ccontinue,\u201d \u201ccould,\u201d \u201cestimate,\u201d \u201cexpect,\u201d \u201cintends,\u201d \u201cmay,\u201d \u201cmight,\u201d \u201cplan,\u201d \u201cpossible,\u201d \u201cpotential,\u201d \u201cpredict,\u201d \u201cproject,\u201d \u201cshould,\u201d \u201cwould\u201d and similar expressions may identify forward looking statements, but the absence of these words does not mean that a statement is not forward looking. The forward-looking statements contained in this report are based on our current expectations and beliefs concerning future developments and their potential effects on us. There can be no assurance that future developments affecting us will be those that we have anticipated. These forward-looking statements involve a number of risks, uncertainties (some of which are beyond our control) or other assumptions that may cause actual results or performance to be materially different from those expressed or implied by these forward-looking statements, including, but not limited to:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 80,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 138,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "roman",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Age",
+     "",
+     "Position"
+    ],
+    [
+     "Paul Packer",
+     "",
+     "49",
+     "Chief Executive Officer, Chief Financial Officer and Director"
+    ],
+    [
+     "Claude Benitah",
+     "",
+     "72",
+     "Director"
+    ],
+    [
+     "Michael A. Ferguson",
+     "",
+     "50",
+     "Director"
+    ],
+    [
+     "John M. Horne",
+     "",
+     "54",
+     "Director"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 930,
+    "end_line": 939
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 10",
+     "title": "DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE."
+    },
+    "note": null
+   },
+   "prose_before": "There were no changes in our internal control over financial reporting (as such term is defined in Rules 13a-15(f) and 15d-15(f) of the Exchange Act) during the most recent fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nDisclosure controls and procedures are controls and other procedures that are designed to ensure that information required to be disclosed in our reports filed or submitted under the Exchange Act is recorded, processed, summarized and reported within the time periods specified in the SEC\u2019s rules and forms. Disclosure controls and procedures include, without limitation, controls and procedures designed to ensure that information required to be disclosed in our reports filed or submitted under the Exchange Act is accumulated and communicated to our management, including our Chief Executive Officer and Chief Financial Officer, to allow timely decisions regarding required disclosure.\nITEM 9B. OTHER INFORMATION.\nNone.\nPART III\nITEM 10. DIRECTORS, EXECUTIVE OFFICERS AND CORPORATE GOVERNANCE.\nDirectors and Executive Officers\nOur directors and executive officers are as follows:",
+   "prose_after": "Paul Packer\nMr. Packer, age 49, has been our Chief Executive Officer, Chief Financial Officer and a Director since inception. Mr. Packer has served as the Managing Member of Globis Capital Advisors LLC, an investment advisory firm, since founding the firm in 2001. Since October 2017, Mr. Packer has served as Chairman of The United States Commission for the Preservation of America\u2019s Heritage Abroad, when he was first appointed by President Donald J. Trump. He has served on the board of directors of Zedge, Inc. (NYSE AMERICAN: ZDGE), a provider of content distribution platforms, since April 2020. Mr. Packer also serves as a director on the board of Elementor Ltd., a privately held company that offers an intuitive, front-end site builder for WordPress. Previously, he served on the boards of directors of Wakingapp Ltd., an augmented reality technology company, from October 2014 until its sale to Scope AR in October 2019 and Penguin Digital, Inc., a mobile application developer, before it was acquired by Shutterfly Inc. in 2012. Mr. Packer received a B.A. from Yeshiva University. We believe Mr. Packer\u2019s extensive knowledge of the capital markets, corporate finance, and public company governance practices as a result of his investment experience, together with his significant board experience at companies in the technology sector, makes him well-qualified to serve on our board of directors.",
+   "structured_location": {
+    "item": "ITEM 10",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 921,
+     "token": "PAGE_BREAK",
+     "id": 43,
+     "namespace": "arabic",
+     "page_number": 39
+    },
+    "after": {
+     "line": 948,
+     "token": "PAGE_BREAK",
+     "id": 44,
+     "namespace": "arabic",
+     "page_number": 40
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name and Address of Beneficial Owner(1)",
+     "Amount and Nature of Beneficial Ownership of Common Stock",
+     "",
+     "",
+     "Percentage of Outstanding Shares of Common Stock",
+     "",
+     ""
+    ],
+    [
+     "Directors and Named Executive Officers:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Paul Packer",
+     "",
+     "2,830,000",
+     "(2)",
+     "",
+     "18.8",
+     "%"
+    ],
+    [
+     "Claude Benitah",
+     "",
+     "15,000",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "Michael A. Ferguson",
+     "",
+     "15,000",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "John M. Horne",
+     "",
+     "15,000",
+     "",
+     "",
+     "*",
+     ""
+    ],
+    [
+     "All current directors and executive officers as a group (four individuals)",
+     "",
+     "2,875,000",
+     "",
+     "",
+     "19.1",
+     "%"
+    ],
+    [
+     "Certain Stockholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Polar Asset Management Partners Inc.(3)",
+     "",
+     "950,000",
+     "",
+     "",
+     "6.3",
+     "%"
+    ],
+    [
+     "Hudson Bay Capital Management LP(4)",
+     "",
+     "800,000",
+     "",
+     "",
+     "5.3",
+     "%"
+    ],
+    [
+     "Weiss Asset Management LP(5)",
+     "",
+     "950,000",
+     "",
+     "",
+     "6.3",
+     "%"
+    ],
+    [
+     "The K2 Principal Fund, L.P.(6)",
+     "",
+     "800,000",
+     "",
+     "",
+     "5.3",
+     "%"
+    ],
+    [
+     "Globis SPAC LLC(7)",
+     "",
+     "2,830,000",
+     "",
+     "",
+     "18.8",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1043,
+    "end_line": 1060
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 12",
+     "title": "SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS."
+    },
+    "note": null
+   },
+   "prose_before": "ITEM 12. SECURITY OWNERSHIP OF CERTAIN BENEFICIAL OWNERS AND MANAGEMENT AND RELATED STOCKHOLDER MATTERS.\nWe have no compensation plans under which equity securities are authorized for issuance.\nThe following table sets forth information regarding the beneficial ownership of our ordinary shares as of March 25, 2021, by:\n\u25cf each person known by us to be a beneficial owner of more than 5% of our outstanding ordinary shares of, on an as-converted basis;\n\u25cf each of our officers and directors; and\n\u25cf all of our officers and directors as a group.\nThe following table is based on 15,050,833 shares of common stock outstanding at March 25, 2021. Unless otherwise indicated, it is believed that all persons named in the table below have sole voting and investment power with respect to all ordinary shares beneficially owned by them. This table excludes any shares of common stock issuable upon exercise of the private warrants and the placement warrants, as such warrants are not exercisable within 60 days of March 25, 2021",
+   "prose_after": "(1) Unless otherwise noted, the business address of each of our stockholders listed is 805 3rd Avenue, 15th floor, New York, NY 10022.\n(2) Represents securities directly held by Globis SPAC LLC, of which Mr. Packer is the sole manager.\n(3) As reported on a Schedule 13G filed February 9, 2021. Polar Asset Management Partners Inc. serves as the investment advisor to Polar Multi-Strategy Master Fund (\u201cPMSMF\u201d) and certain managed accounts (together with PMSMF, the \u201cPolar Vehicles\u201d), with respect to the shares directly held by the Polar Vehicles. The business address of Polar Asset Management Partners Inc. is 401 Bay Street, Suite 1900, PO Box 19, Toronto, Ontario M5H 2Y4, Canada.\n(4) As reported on a Schedule 13G filed February 9, 2021. Hudson Bay Capital Management LP serves as the investment manager to HB Strategies LLC, in whose name the securities reported herein are held. As such, Hudson Bay Capital Management LP may be deemed to be the beneficial owner of all securities held by HB Strategies LLC. Sander Gerber serves as the managing member of Hudson Bay Capital GP LLC, which is the general partner of Hudson Bay Capital Management LP. Mr. Gerber disclaims beneficial ownership of these securities. The business address of each of Hudson Bay Capital Management LP and Mr. Gerber is 777 Third Avenue, 30th Floor, New York, NY 10017.",
+   "structured_location": {
+    "item": "ITEM 12",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1040,
+     "token": "PAGE_BREAK",
+     "id": 48,
+     "namespace": "arabic",
+     "page_number": 44
+    },
+    "after": {
+     "line": 1075,
+     "token": "PAGE_BREAK",
+     "id": 49,
+     "namespace": "arabic",
+     "page_number": 45
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Page No."
+    ],
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "  Balance Sheet as of December 31, 2020",
+     "F-3"
+    ],
+    [
+     "  Statement of Operations for the period from August 21, 2020 (inception) through December 31, 2020",
+     "F-4"
+    ],
+    [
+     "  Statement of Changes in Shareholders\u2019 Equity for the period from August 21, 2020 (inception) through December 31, 2020",
+     "F-5"
+    ],
+    [
+     "  Statement of Cash Flows for the period from August 21, 2020 (inception) through December 31, 2020",
+     "F-6"
+    ],
+    [
+     "  Notes to Financial Statements",
+     "F-7 to F-15"
+    ]
+   ],
+   "caption_stack": [
+    "Page No."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1128,
+    "end_line": 1141
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "All Other Fees. We did not pay Marcum for other services for the period from August 21, 2020, (inception) through December 31, 2020.\nPre-Approval Policy\nOur audit committee was formed upon the consummation of our Initial Public Offering. As a result, the audit committee did not pre-approve all of the foregoing services, although any services rendered prior to the formation of our audit committee were approved by our board of directors. Since the formation of our audit committee, and on a going-forward basis, the audit committee has and will pre-approve all auditing services and permitted non-audit services to be performed for us by our auditors, including the fees and terms thereof (subject to the de minimis exceptions for non-audit services described in the Exchange Act which are approved by the audit committee prior to the completion of the audit).\nPART IV\nITEM 15. EXHIBITS, FINANCIAL STATEMENT SCHEDULES.\n(a) The following documents are filed as part of this report:\n(1) Financial Statements",
+   "prose_after": "(2) Financial Statement Schedules\nNone.\n(3) Exhibits\nWe hereby file as part of this report the exhibits listed in the attached Exhibit Index.\nExhibits Index\nThe following exhibits are filed as part of, incorporated by reference into, or furnished with this Annual Report on Form 10-K.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1119,
+     "token": "PAGE_BREAK",
+     "id": 51,
+     "namespace": "arabic",
+     "page_number": 47
+    },
+    "after": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 48
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "No.",
+     "",
+     "Description of Exhibit"
+    ],
+    [
+     "1.1",
+     "",
+     "Underwriting Agreement, dated December 10, 2020, by and among the Company and Chardan Capital Markets, LLC, as representative of the underwriters (incorporated by reference to Exhibit 1.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "3.1",
+     "",
+     "Amended and Restated Certificate of Incorporation (incorporated by reference to Exhibit 3.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "3.2",
+     "",
+     "Amended and Restated Bylaws (incorporated by reference to Exhibit 3.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "4.1",
+     "",
+     "Specimen Unit Certificate (incorporated by reference to Exhibit 4.1 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "4.2",
+     "",
+     "Specimen Common Stock Certificate (incorporated by reference to Exhibit 4.2 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "4.3",
+     "",
+     "Specimen Warrant Certificate (incorporated by reference to Exhibit 4.3 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "4.4",
+     "",
+     "Warrant Agreement, dated December 10, 2020, between the Company and VStock Transfer, LLC (incorporated by reference to Exhibit 4.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "4.5*",
+     "",
+     "Description of Securities."
+    ],
+    [
+     "10.1",
+     "",
+     "Letter Agreement, dated December 10, 2020, among the Company, the Sponsors, Chardan Capital Markets, LLC and each of the officers and directors of the Company (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.2",
+     "",
+     "Investment Management Trust Agreement, dated December 10, 2020, between the Company and Wilmington Trust Company (incorporated by reference to Exhibit 10.2 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.3",
+     "",
+     "Stock Escrow Agreement, dated December 10, 2020 between the Sponsors, Chardan Capital Markets, LLC and VStock Transfer, LLC (incorporated by reference to Exhibit 10.3 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.4",
+     "",
+     "Registration Rights Agreement, dated December 10, 2020, between the Company and the Sponsors (incorporated by reference to Exhibit 10.4 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020."
+    ],
+    [
+     "10.5",
+     "",
+     "Subscription Agreement between the Company and Globis SPAC LLC (incorporated by reference to Exhibit 10.5 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "10.6",
+     "",
+     "Amendment No. 1 to Subscription Agreement between the Company and Globis SPAC LLC (incorporated by reference to Exhibit 10.6 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "10.7",
+     "",
+     "Subscription Agreement between the Company and Up and Up Capital, LLC (incorporated by reference to Exhibit 10.7 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "10.8",
+     "",
+     "Private Placement Warrants Purchase Agreement, dated December 10, 2020, between the Company and Globis SPAC LLC (incorporated by reference to Exhibit 10.5 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.9",
+     "",
+     "Private Placement Warrants Purchase Agreement, dated December 10, 2020, between the Company and Up and Up Capital, LLC (incorporated by reference to Exhibit 10.6 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.10",
+     "",
+     "Unit Subscription Agreement, dated December 10, 2020, between the Company and Up and Up Capital, LLC (incorporated by reference to Exhibit 10.7 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.11\u2020",
+     "",
+     "Form of Indemnity Agreement (incorporated by reference to Exhibit 10.10 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020)."
+    ],
+    [
+     "10.12\u2020",
+     "",
+     "Administrative Services Agreement, dated December 10, 2020, between the Company and an affiliate of Globis SPAC LLC (incorporated by reference to Exhibit 10.8 to the Company\u2019s Current Report on Form 8-K filed with the SEC on December 15, 2020)."
+    ],
+    [
+     "10.13",
+     "",
+     "Promissory Note dated January 11, 2021 (incorporated by reference to Exhibit 10.1 to the Company\u2019s Current Report on Form 8-K filed with the SEC on January 13, 2021)."
+    ],
+    [
+     "14",
+     "",
+     "Code of Ethics (incorporated by reference to Exhibit 14 to the Company\u2019s Registration Statement on Form S-1/A filed with the SEC on December 7, 2020."
+    ],
+    [
+     "31.1*",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer Pursuant to Securities Exchange Act Rules 13a-14(a) and 15(d)-14(a), as adopted Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "32.1**",
+     "",
+     "Certification of Principal Executive Officer and Principal Financial Officer Pursuant to 18 U.S.C. Section 1350, as adopted Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1155,
+    "end_line": 1199
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "(2) Financial Statement Schedules\nNone.\n(3) Exhibits\nWe hereby file as part of this report the exhibits listed in the attached Exhibit Index.\nExhibits Index\nThe following exhibits are filed as part of, incorporated by reference into, or furnished with this Annual Report on Form 10-K.",
+   "prose_after": "* Filed herewith.\n** Furnished. \u2020 Management contract or compensation plan or arrangement.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nMarch 31, 2021",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1150,
+     "token": "PAGE_BREAK",
+     "id": 52,
+     "namespace": "arabic",
+     "page_number": 48
+    },
+    "after": {
+     "line": 1203,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "GLOBIS ACQUISITION CORP.",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "By:",
+     "/s/ Paul Packer"
+    ],
+    [
+     "Name:",
+     "Paul Packer"
+    ],
+    [
+     "Title:",
+     "Chief Executive Officer, Chief Financial Officer and Director (Principal Executive Officer and Principal Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "GLOBIS ACQUISITION CORP."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1210,
+    "end_line": 1218
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "* Filed herewith.\n** Furnished. \u2020 Management contract or compensation plan or arrangement.\nSIGNATURES\nPursuant to the requirements of Section 13 or 15(d) of the Securities and Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nMarch 31, 2021",
+   "prose_after": "POWER OF ATTORNEY\nThe undersigned directors and officers of Globis Acquisition Corp. hereby constitute and appoint Paul Packer, with full power of substitution and resubstitution, our true and lawful attorney-in-fact and agent with full power to execute in our name and behalf in the capacities indicated below any and all amendments to this report and to file the same, with all exhibits and other documents relating thereto, and hereby ratify and confirm all that such attorney-in-fact, or such attorney-in-fact\u2019s substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities and Exchange Act of 1934, this report has been signed below by the following persons in the capacities and on the dates indicated below.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1203,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Name",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Paul Packer",
+     "Chief Executive Officer, Chief Financial Officer and Director (Principal Executive Officer, Principal Financial Officer and Principal Accounting Officer)",
+     "March 31, 2021"
+    ],
+    [
+     "Paul Packer",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Claude Benitah",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Claude Benitah",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Michael A. Ferguson",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "Michael A. Ferguson",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ John M. Horne",
+     "Director",
+     "March 31, 2021"
+    ],
+    [
+     "John M. Horne",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1225,
+    "end_line": 1246
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "POWER OF ATTORNEY\nThe undersigned directors and officers of Globis Acquisition Corp. hereby constitute and appoint Paul Packer, with full power of substitution and resubstitution, our true and lawful attorney-in-fact and agent with full power to execute in our name and behalf in the capacities indicated below any and all amendments to this report and to file the same, with all exhibits and other documents relating thereto, and hereby ratify and confirm all that such attorney-in-fact, or such attorney-in-fact\u2019s substitute, may lawfully do or cause to be done by virtue hereof.\nPursuant to the requirements of the Securities and Exchange Act of 1934, this report has been signed below by the following persons in the capacities and on the dates indicated below.",
+   "prose_after": "INDEX TO FINANCIAL STATEMENTS",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1203,
+     "token": "PAGE_BREAK",
+     "id": 53,
+     "namespace": "arabic",
+     "page_number": 49
+    },
+    "after": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Report of Independent Registered Public Accounting Firm",
+     "F-2"
+    ],
+    [
+     "Financial Statements:",
+     ""
+    ],
+    [
+     "  Balance Sheet",
+     "F-3"
+    ],
+    [
+     "  Statement of Operations",
+     "F-4"
+    ],
+    [
+     "  Statement of Changes in Stockholders\u2019 Equity",
+     "F-5"
+    ],
+    [
+     "  Statement of Cash Flows",
+     "F-6"
+    ],
+    [
+     "  Notes to Financial Statements",
+     "F-7 to F-15"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1251,
+    "end_line": 1260
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "INDEX TO FINANCIAL STATEMENTS",
+   "prose_after": "REPORT OF INDEPENDENT REGISTERED PUBLIC ACCOUNTING FIRM\nTo the Shareholders and Board of Directors of Globis Acquisition Corp.\nOpinion on the Financial Statements\nWe have audited the accompanying balance sheet of Globis Acquisition Corp. (the \u201cCompany\u201d) as of December 31, 2020, the related statements of operations, changes in stockholders\u2019 equity and cash flows for the period from August 21, 2020 (inception) through December 31, 2020, and the related notes (collectively referred to as the \u201cfinancial statements\u201d). In our opinion, the financial statements present fairly, in all material respects, the financial position of the Company as of December 31, 2020, and the results of its operations and its cash flows for the period from August 21, 2020 (inception) through December 31, 2020, in conformity with accounting principles generally accepted in the United States of America.\nBasis for Opinion\nThese financial statements are the responsibility of the Company\u2019s management. Our responsibility is to express an opinion on the Company\u2019s financial statements based on our audit. We are a public accounting firm registered with the Public Company Accounting Oversight Board (United States) (\u201cPCAOB\u201d) and are required to be independent with respect to the Company in accordance with the U.S. federal securities laws and the applicable rules and regulations of the Securities and Exchange Commission and the PCAOB.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1247,
+     "token": "PAGE_BREAK",
+     "id": 54,
+     "namespace": "arabic",
+     "page_number": 50
+    },
+    "after": {
+     "line": 1260,
+     "token": "PAGE_BREAK",
+     "id": 55,
+     "namespace": "F",
+     "page_number": 1
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "ASSETS",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Cash",
+     "$",
+     "202,068",
+     ""
+    ],
+    [
+     "  Prepaid expenses",
+     "",
+     "283,333",
+     ""
+    ],
+    [
+     "    Total Current Assets",
+     "",
+     "485,401",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities held in Trust Account",
+     "",
+     "116,150,000",
+     ""
+    ],
+    [
+     "TOTAL ASSETS",
+     "$",
+     "116,635,401",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities - accrued expenses",
+     "$",
+     "65,628",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption 11,046,512 shares at redemption value",
+     "",
+     "111,569,772",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, $0.0001 par value; 1,000,000 shares authorized; no shares issued and outstanding",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.0001 par value; 100,000,000 shares authorized; 4,004,321 shares issued and outstanding (excluding 11,046,512 shares subject to possible redemption)",
+     "",
+     "400",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "5,089,487",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(89,886)",
+     ""
+    ],
+    [
+     "Total Stockholders\u2019 Equity",
+     "",
+     "5,000,001",
+     ""
+    ],
+    [
+     "TOTAL LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "$",
+     "116,635,401",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "ASSETS",
+    "Current Assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1292,
+    "end_line": 1324
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "We conducted our audit in accordance with the standards of the PCAOB. Those standards require that we plan and perform the audit to obtain reasonable assurance about whether the financial statements are free of material misstatement, whether due to error or fraud. The Company is not required to have, nor were we engaged to perform, an audit of its internal control over financial reporting. As part of our audit we are required to obtain an understanding of internal control over financial reporting but not for the purpose of expressing an opinion on the effectiveness of the Company\u2019s internal control over financial reporting. Accordingly, we express no such opinion.\nOur audit included performing procedures to assess the risks of material misstatement of the financial statements, whether due to error or fraud, and performing procedures that respond to those risks. Such procedures included examining, on a test basis, evidence regarding the amounts and disclosures in the financial statements. Our audit also included evaluating the accounting principles used and significant estimates made by management, as well as evaluating the overall presentation of the financial statements. We believe that our audit provides a reasonable basis for our opinion.\n/s/ Marcum LLP\nMarcum LLP\nWe have served as the Company\u2019s auditor since 2020.\nMelville, NY\nMarch 31, 2021\nBALANCE SHEET",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\nFOR THE PERIOD FROM AUGUST 21, 2020 (INCEPTION) THROUGH DECEMBER 31, 2020",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1290,
+     "token": "REPEATING_HEADER",
+     "id": 57,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1326,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Formation and operational costs",
+     "$",
+     "89,886",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(89,886)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, Common stock subject to possible redemption",
+     "",
+     "11,054,662",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share, Common stock subject to possible redemption",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, Non-redeemable common stock",
+     "",
+     "2,717,799",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share, Non-redeemable common stock",
+     "$",
+     "(0.03)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1332,
+    "end_line": 1350
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF OPERATIONS\nFOR THE PERIOD FROM AUGUST 21, 2020 (INCEPTION) THROUGH DECEMBER 31, 2020",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE PERIOD FROM AUGUST 21, 2020 (INCEPTION) THROUGH DECEMBER 31, 2020",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1326,
+     "token": "PAGE_BREAK",
+     "id": 58,
+     "namespace": "F",
+     "page_number": 3
+    },
+    "after": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Additional Paid-in",
+     "",
+     "",
+     "Accumulated",
+     "",
+     "",
+     "Total Stockholders\u2019",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "",
+     "Deficit",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 August 21, 2020",
+     "",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Issuance of common stock to Sponsors",
+     "",
+     "3,047,500",
+     "",
+     "",
+     "305",
+     "",
+     "",
+     "26,195",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "26,500",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of 11,500,000 Units, net of underwriting discount and offering expenses",
+     "",
+     "11,500,000",
+     "",
+     "",
+     "1,150",
+     "",
+     "",
+     "112,482,009",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "112,483,159",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of 100,833 Placement Units",
+     "",
+     "100,833",
+     "",
+     "",
+     "10",
+     "",
+     "",
+     "1,008,320",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,008,330",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Sale of 4,188,889 Private Warrants",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,141,670",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "3,141,670",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Equity participation shares",
+     "",
+     "402,500",
+     "",
+     "",
+     "40",
+     "",
+     "",
+     "(40)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption",
+     "",
+     "(11,046,512)",
+     "",
+     "",
+     "(1,105)",
+     "",
+     "",
+     "(111,568,667)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(111,569,772)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(89,886)",
+     "",
+     "",
+     "(89,886)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance \u2013 December 31, 2020",
+     "",
+     "4,004,321",
+     "",
+     "$",
+     "400",
+     "",
+     "$",
+     "5,089,487",
+     "",
+     "$",
+     "(89,886)",
+     "",
+     "$",
+     "5,000,001",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1358,
+    "end_line": 1385
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THE PERIOD FROM AUGUST 21, 2020 (INCEPTION) THROUGH DECEMBER 31, 2020",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE PERIOD FROM AUGUST 21, 2020 (INCEPTION) THROUGH DECEMBER 31, 2020",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1352,
+     "token": "PAGE_BREAK",
+     "id": 59,
+     "namespace": "F",
+     "page_number": 4
+    },
+    "after": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash Flows from Operating Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(89,886)",
+     ""
+    ],
+    [
+     "  Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Changes in operating assets and liabilities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Prepaid expenses",
+     "",
+     "(283,333)",
+     ""
+    ],
+    [
+     "    Accrued expenses",
+     "",
+     "65,628",
+     ""
+    ],
+    [
+     "      Net cash used in operating activities",
+     "",
+     "(307,591)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Investing Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment of cash in Trust Account",
+     "",
+     "(116,150,000)",
+     ""
+    ],
+    [
+     "      Net cash used in investing activities",
+     "",
+     "(116,150,000)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash Flows from Financing Activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Proceeds from issuance of common stock to Sponsors",
+     "",
+     "26,500",
+     ""
+    ],
+    [
+     "Proceeds from sale of Units, net of underwriting discounts paid",
+     "",
+     "112,700,000",
+     ""
+    ],
+    [
+     "Proceeds from sale of Placement Units",
+     "",
+     "1,008,330",
+     ""
+    ],
+    [
+     "Proceeds from sale of Private Warrants",
+     "",
+     "3,141,670",
+     ""
+    ],
+    [
+     "Advances from related party",
+     "",
+     "50,000",
+     ""
+    ],
+    [
+     "Repayment of advances from related party",
+     "",
+     "(50,000)",
+     ""
+    ],
+    [
+     "Payment of offering costs",
+     "",
+     "(216,841)",
+     ""
+    ],
+    [
+     "      Net cash provided by financing activities",
+     "",
+     "116,659,659",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net Change in Cash",
+     "",
+     "202,068",
+     ""
+    ],
+    [
+     "Cash \u2013 Beginning of period",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Cash \u2013 End of period",
+     "$",
+     "202,068",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Cash investing and financing activities:",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Initial classification of common stock subject to possible redemption",
+     "$",
+     "111,652,086",
+     ""
+    ],
+    [
+     "Change in value of common stock subject to possible redemption",
+     "$",
+     "(82,314)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Cash Flows from Operating Activities:"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1393,
+    "end_line": 1434
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these financial statements.\nSTATEMENT OF CASH FLOWS\nFOR THE PERIOD FROM AUGUST 21, 2020 (INCEPTION) THROUGH DECEMBER 31, 2020",
+   "prose_after": "The accompanying notes are an integral part of these financial statements.\n1. DESCRIPTION OF ORGANIZATION AND BUSINESS OPERATIONS\nGlobis Acquisition Corp. (the \u201cCompany\u201d) was incorporated in Delaware on August 21, 2020. The Company is a blank check company formed for the purpose of entering into a merger, capital stock exchange, asset acquisition, stock purchase, reorganization or similar business combination with one or more businesses or entities (the \u201cBusiness Combination\u201d).\nThe Company is an early stage and emerging growth company and, as such, the Company is subject to all of the risks associated with early stage and emerging growth companies.\nAs of December 31, 2020, the Company had not commenced any operations. All activity for the period from August 21, 2020 (inception) through December 31, 2020 relates to the Company\u2019s formation and the initial public offering (\u201cInitial Public Offering\u201d), which is described below. The Company will not generate any operating revenues until after the completion of a Business Combination, at the earliest. The Company will generate non-operating income in the form of interest income from the proceeds derived from the Initial Public Offering.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1387,
+     "token": "PAGE_BREAK",
+     "id": 60,
+     "namespace": "F",
+     "page_number": 5
+    },
+    "after": {
+     "line": 1436,
+     "token": "PAGE_BREAK",
+     "id": 61,
+     "namespace": "F",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Period from\n\n\n\nAugust 21, 2020 (inception) through\n\n\n\nDecember 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "Common stock subject to possible redemption",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator: Earnings allocable to Common stock subject to possible redemption",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Interest earned on marketable securities held in Trust Account",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Net income attributable to Common stock subject to possible redemption",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "Denominator: Weighted Average Common stock subject to possible redemption",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, common stock subject to possible redemption",
+     "",
+     "11,054,662",
+     ""
+    ],
+    [
+     "Basic and diluted net income per share, common stock subject to possible redemption",
+     "$",
+     "0.00",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Redeemable Common Stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Numerator: Net Loss minus Net Earnings",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net loss",
+     "$",
+     "(89,886)",
+     ""
+    ],
+    [
+     "  Net income allocable to Common stock subject to possible redemption",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Non-Redeemable Net Loss",
+     "$",
+     "(89,886)",
+     ""
+    ],
+    [
+     "Denominator: Weighted Average Non-redeemable common stock",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted weighted average shares outstanding, Non-redeemable common stock",
+     "",
+     "2,717,799",
+     ""
+    ],
+    [
+     "Basic and diluted net loss per share, Non-redeemable common stock",
+     "$",
+     "(0.03)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "For the Period from\n\n\n\nAugust 21, 2020 (inception) through\n\n\n\nDecember 31, 2020",
+    "Common stock subject to possible redemption",
+    "Numerator: Earnings allocable to Common stock subject to possible redemption"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1539,
+    "end_line": 1571
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "\u2014 SUMMARY OF SIGNIFICANT ACCOUNTING POLICIES"
+    }
+   },
+   "prose_before": "The Company\u2019s statement of operations includes a presentation of income (loss) per share for common shares subject to possible redemption in a manner similar to the two-class method of income (loss) per share. Net income (loss) per common share, basic and diluted, for Common stock subject to possible redemption is calculated by dividing the proportionate share of income or loss on marketable securities held by the Trust Account, net of applicable franchise and income taxes, by the weighted average number of Common stock subject to possible redemption outstanding since original issuance.\nNet income (loss) per share, basic and diluted, for non-redeemable common stock is calculated by dividing the net income (loss), adjusted for income or loss on marketable securities attributable to Common stock subject to possible redemption, by the weighted average number of non-redeemable common stock outstanding for the period.\nNon-redeemable common stock includes Founder Shares and non-redeemable shares of common stock as these shares do not have any redemption features. Non-redeemable common stock participates in the income or loss on marketable securities based on non-redeemable shares\u2019 proportionate interest.\nThe following table reflects the calculation of basic and diluted net income (loss) per common share (in dollars, except per share amounts):",
+   "prose_after": "Concentration of Credit Risk\nFinancial instruments that potentially subject the Company to concentrations of credit risk consist of a cash account in a financial institution which, at times may exceed the Federal Depository Insurance Coverage of $250,000. The Company has not experienced losses on this account and management believes the Company is not exposed to significant risks on such account.\nFair Value of Financial Instruments\nThe fair value of the Company\u2019s assets and liabilities, which qualify as financial instruments under ASC Topic 820, \u201cFair Value Measurement,\u201d approximates the carrying amounts represented in the accompanying balance sheet, primarily due to their short-term nature.\nRecent Accounting Standards\nManagement does not believe that any recently issued, but not yet effective, accounting standards, if currently adopted, would have a material effect on the accompanying financial statements.\nNOTE\n3. INITIAL PUBLIC OFFERING\nPursuant to the Initial Public Offering, the Company sold 11,500,000 Units, which included a full exercise by the underwriters of their over-allotment option in the amount of 1,500,000 Units, at a price of $10.00 per Unit. Each Unit consists of one share of common stock and one redeemable warrant (\u201cPublic Warrant\u201d). Each Public Warrant entitles the holder to purchase one share of common stock at a price of $11.50 per share, subject to adjustment (see Note 7).",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1523,
+     "token": "PAGE_BREAK",
+     "id": 65,
+     "namespace": "F",
+     "page_number": 10
+    },
+    "after": {
+     "line": 1593,
+     "token": "PAGE_BREAK",
+     "id": 66,
+     "namespace": "F",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Deferred tax assets",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Net operating loss carryforward",
+     "$",
+     "2,586",
+     ""
+    ],
+    [
+     "  Startup and organizational costs",
+     "",
+     "16,290",
+     ""
+    ],
+    [
+     "Total deferred tax assets",
+     "",
+     "18,876",
+     ""
+    ],
+    [
+     "Valuation Allowance",
+     "",
+     "(18,876)",
+     ""
+    ],
+    [
+     "Deferred tax assets, net valuation allowance",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2020",
+    "Deferred tax assets"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1664,
+    "end_line": 1679
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "In addition, if (x) the Company issues additional common stock or equity-linked securities for capital raising purposes in connection with the closing of a Business Combination at an issue price or effective issue price of less than $9.50 per share of common stock (with such issue price or effective issue price to be determined in good faith by the Company\u2019s board of directors and, in the case of any such issuance to the Sponsors or their affiliates, without taking into account any Founder Shares held by the Sponsor or such affiliates, as applicable, prior to such issuance) (the \u201cNewly Issued Price\u201d), (y) the aggregate gross proceeds from such issuances represent more than 60% of the total equity proceeds, and interest thereon, available for the funding of a Business Combination on the date of the consummation of a Business Combination (net of redemptions), and (z) the volume weighted average trading price of the common stock during the 10 trading day period starting on the trading day prior the day on which the Company consummates a Business Combination (such price, the \u201cMarket Value\u201d) is below $9.50 per share, then the exercise price of the warrants will be adjusted (to the nearest cent) to be equal to 115% of the higher of the Market Value and the Newly Issued Price, and the $16.50 per share redemption trigger price will be adjusted (to the nearest cent) to be equal to 165% of the higher of the Market Value and the Newly Issued Price.\nThe Private Warrants and Placement Warrants are identical to the Public Warrants underlying the Units sold in the Initial Public Offering, except that the Private Warrants and the Placement Warrants are exercisable on a cashless basis, non-redeemable and holders of the Private Warrants and the Placement Warrants have the option to calculate the fair market value based upon the last reported sale price of the shares of common stock for the trading day prior to the date of exercise in lieu of the average reported last sale price of the shares of common stock for the 10 trading days ending on the third trading day prior to the date of exercise.\n8. INCOME TAX\nThe Company\u2019s net deferred tax assets are as follows:",
+   "prose_after": "The income tax provision consists of the following:\n<TABLE>\nDecember 31,\n------------\nFederal\nCurrent                               $ \u2014\nDeferred                         (18,876)\nState and Local\nCurrent                                 \u2014\nDeferred                                \u2014",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1659,
+     "token": "REPEATING_HEADER",
+     "id": 71,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1684,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 2020
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2020",
+     "",
+     ""
+    ],
+    [
+     "Federal",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Deferred",
+     "",
+     "(18,876)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "State and Local",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Deferred",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Change in valuation allowance",
+     "",
+     "18,876",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income tax provision",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "December 31,",
+    "2020",
+    "Federal"
+   ],
+   "scale": null,
+   "location": null,
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": null
+   },
+   "issues": [
+    "geometry-not-located"
+   ],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2020",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Statutory federal income tax rate",
+     "",
+     "21.0",
+     "%"
+    ],
+    [
+     "State taxes, net of federal tax benefit",
+     "",
+     "0.0",
+     "%"
+    ],
+    [
+     "Valuation allowance",
+     "",
+     "(21.0)",
+     "%"
+    ],
+    [
+     "Income tax provision",
+     "",
+     "0.0",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2020"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 1707,
+    "end_line": 1718
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "INCOME TAX"
+    }
+   },
+   "prose_before": "In assessing the realization of the deferred tax assets, management considers whether it is more likely than not that some portion of all of the deferred tax assets will not be realized. The ultimate realization of deferred tax assets is dependent upon the generation of future taxable income during the periods in which temporary differences representing net future deductible amounts become deductible. Management considers the scheduled reversal of deferred tax liabilities, projected future taxable income and tax planning strategies in making this assessment. After consideration of all of the information available, management believes that significant uncertainty exists with respect to future realization of the deferred tax assets and has therefore established a full valuation allowance. For the period from August 21, 2020 (inception) through December 31, 2020, the change in the valuation allowance was $18,876.\nA reconciliation of the federal income tax rate to the Company\u2019s effective tax rate is as follows:",
+   "prose_after": "The Company files income tax returns in the U.S. federal jurisdiction and is subject to examination by the various taxing authorities. The Company\u2019s tax returns since inception remain open to examination by the taxing authorities. The Company considers New York to be a significant state tax jurisdiction.\n9. FAIR VALUE MEASUREMENTS\nThe Company follows the guidance in ASC 820 for its financial assets and liabilities that are re-measured and reported at fair value at each reporting period, and non-financial assets and liabilities that are re-measured and reported at fair value at least annually.\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1684,
+     "token": "PAGE_BREAK",
+     "id": 72,
+     "namespace": "arabic",
+     "page_number": 2020
+    },
+    "after": {
+     "line": 1718,
+     "token": "PAGE_BREAK",
+     "id": 73,
+     "namespace": "F",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Level 1:",
+     "Quoted prices in active markets for identical assets or liabilities. An active market for an asset or liability is a market in which transactions for the asset or liability occur with sufficient frequency and volume to provide pricing information on an ongoing basis."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 2:",
+     "Observable inputs other than Level 1 inputs. Examples of Level 2 inputs include quoted prices in active markets for similar assets or liabilities and quoted prices for identical assets or liabilities in markets that are not active."
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Level 3:",
+     "Unobservable inputs based on our assessment of the assumptions that market participants would use in pricing the asset or liability."
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1729,
+    "end_line": 1738
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The Company follows the guidance in ASC 820 for its financial assets and liabilities that are re-measured and reported at fair value at each reporting period, and non-financial assets and liabilities that are re-measured and reported at fair value at least annually.\nThe fair value of the Company\u2019s financial assets and liabilities reflects management\u2019s estimate of amounts that the Company would have received in connection with the sale of the assets or paid in connection with the transfer of the liabilities in an orderly transaction between market participants at the measurement date. In connection with measuring the fair value of its assets and liabilities, the Company seeks to maximize the use of observable inputs (market data obtained from independent sources) and to minimize the use of unobservable inputs (internal assumptions about how market participants would price assets and liabilities). The following fair value hierarchy is used to classify assets and liabilities based on the observable inputs and unobservable inputs used in order to value the assets and liabilities:",
+   "prose_after": "The following table presents information about the Company\u2019s assets that are measured at fair value on a recurring basis at December 31, 2020, and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1722,
+     "token": "REPEATING_HEADER",
+     "id": 74,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1755,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Description",
+     "Level",
+     "",
+     "December 31, 2020",
+     ""
+    ],
+    [
+     "Assets:",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Marketable securities held in Trust Account",
+     "",
+     "1",
+     "$",
+     "116,150,000"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1741,
+    "end_line": 1748
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 15",
+     "title": "EXHIBITS, FINANCIAL STATEMENT SCHEDULES."
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "FAIR VALUE MEASUREMENTS"
+    }
+   },
+   "prose_before": "The following table presents information about the Company\u2019s assets that are measured at fair value on a recurring basis at December 31, 2020, and indicates the fair value hierarchy of the valuation inputs the Company utilized to determine such fair value:",
+   "prose_after": "NOTE\n10. SUBSEQUENT EVENTS\nThe Company evaluated subsequent events and transactions that occurred after the balance sheet date up to the date that the financial statements were issued. Based upon this review, other than as described below, the Company did not identify any subsequent events that would have required adjustment or disclosure in the financial statements.\nOn January 11, 2021, the Company issued the Note to the Lender, which provides for borrowings from time to time of up to an aggregate of $1,000,000. The Note bears no interest and is due and payable upon the date on which the Company consummates its initial Business Combination. At the election of the Lender, all or a portion of the unpaid principal amount of the Note may be converted upon the consummation of the Company\u2019s initial Business Combination into a number of warrants of the Company, with each warrant being exercisable for one share of common stock of the Company (the \u201cConversion Warrants\u201d), equal to: (x) the portion of the principal amount of the Note being converted, divided by (y) $0.75, rounded up to the nearest whole number of warrants. The Conversion Warrants are identical to the Private Warrants issued. On February 2, 2021, the Company borrowed 100,000 in accordance with the Note.",
+   "structured_location": {
+    "item": "ITEM 15",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1722,
+     "token": "REPEATING_HEADER",
+     "id": 74,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 1755,
+     "token": "PAGE_BREAK",
+     "id": 75,
+     "namespace": "F",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

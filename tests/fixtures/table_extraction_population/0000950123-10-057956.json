@@ -1,0 +1,4565 @@
+{
+ "accession": "0000950123-10-057956",
+ "cik": "0000022252",
+ "form": "10-Q",
+ "filing_date": "2010-06-14",
+ "era": "y2010s",
+ "is_xbrl": false,
+ "filer_category": "",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "a56453e10vq.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "California",
+     "95-2088894"
+    ],
+    [
+     "(State or other jurisdiction",
+     "(I.R.S. Employer"
+    ],
+    [
+     "of incorporation or organization)",
+     "Identification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 23,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended APRIL 30, 2010\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _______________ to _______________\nCommission file number 0-5449\nCOMARCO, INC.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "25541 Commercentre Drive, Lake Forest, California 92630 (Address of principal executive offices and zip code)\n(949) 599-7400 (Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant: (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.\nYes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\nYes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 0,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page",
+     ""
+    ],
+    [
+     "PART I \u2014 FINANCIAL INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "FINANCIAL STATEMENTS (Unaudited)",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Condensed Consolidated Balance Sheets as of April 30, 2010 and January 31, 2010",
+     "",
+     "3"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Operations for the Three Months Ended April 30, 2010 and 2009",
+     "",
+     "4"
+    ],
+    [
+     "",
+     "Condensed Consolidated Statements of Cash Flows for the Three Months Ended April 30, 2010 and 2009",
+     "",
+     "5"
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements",
+     "",
+     "6"
+    ],
+    [
+     "ITEM 2.",
+     "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS",
+     "",
+     "15"
+    ],
+    [
+     "ITEM 3.",
+     "QUANTITATIVE AND QUALITATIVE DISCLOSURES ABOUT MARKET RISK",
+     "",
+     "23"
+    ],
+    [
+     "ITEM 4.",
+     "CONTROLS AND PROCEDURES",
+     "",
+     "24"
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II \u2014 OTHER INFORMATION",
+     "",
+     "",
+     ""
+    ],
+    [
+     "ITEM 1.",
+     "LEGAL PROCEEDINGS",
+     "",
+     "25"
+    ],
+    [
+     "ITEM 1A.",
+     "RISK FACTORS",
+     "",
+     "25"
+    ],
+    [
+     "ITEM 2.",
+     "UNREGISTERED SALES OF EQUITY SECURITIES AND USE OF PROCEEDS",
+     "",
+     "26"
+    ],
+    [
+     "ITEM 3.",
+     "DEFAULTS UPON SENIOR SECURITIES",
+     "",
+     "26"
+    ],
+    [
+     "ITEM 4.",
+     "REMOVED AND RESERVED",
+     "",
+     "26"
+    ],
+    [
+     "ITEM 5.",
+     "OTHER INFORMATION",
+     "",
+     "26"
+    ],
+    [
+     "ITEM 6.",
+     "EXHIBITS",
+     "",
+     "27"
+    ],
+    [
+     "SIGNATURES",
+     "",
+     "",
+     "28"
+    ],
+    [
+     "EX-10.3",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-31.1",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-31.2",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-32.1",
+     "",
+     "",
+     ""
+    ],
+    [
+     "EX-32.2",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Page",
+    "PART I \u2014 FINANCIAL INFORMATION"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 58,
+    "end_line": 86
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files).\nYes [ ] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, or a smaller reporting company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d and \u201csmaller reporting company in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]  Accelerated filer [ ]  Non-accelerated filer [ ] (Do not check if a smaller reporting company)  Smaller reporting company [X]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes [ ] No [X]\nThe registrant had 7,326,569 shares of common stock outstanding as of June 3, 2010.\nCOMARCO, INC. AND SUBSIDIARIES\nQUARTERLY REPORT ON FORM 10-Q FOR THE THREE MONTHS ENDED APRIL 30, 2010\nTABLE OF CONTENTS",
+   "prose_after": "2\nPART I \u2014 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCOMARCO, INC. AND SUBSIDIARIES CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) (In thousands, except share amounts)",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 50,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "January 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2010 (A)",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "8,984",
+     "",
+     "$",
+     "10,127",
+     ""
+    ],
+    [
+     "Accounts receivable due from customers and suppliers, net of reserves of $153 and $136",
+     "",
+     "11,372",
+     "",
+     "",
+     "11,489",
+     ""
+    ],
+    [
+     "Inventory, net of reserves of $1,617 and $1,650",
+     "",
+     "1,180",
+     "",
+     "",
+     "935",
+     ""
+    ],
+    [
+     "Other current assets",
+     "",
+     "527",
+     "",
+     "",
+     "280",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "22,063",
+     "",
+     "",
+     "22,831",
+     ""
+    ],
+    [
+     "Property and equipment, net",
+     "",
+     "950",
+     "",
+     "",
+     "1,072",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "23,013",
+     "",
+     "$",
+     "23,903",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current Liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "1,641",
+     "",
+     "$",
+     "1,134",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "11,525",
+     "",
+     "",
+     "12,212",
+     ""
+    ],
+    [
+     "Line of credit",
+     "",
+     "1,000",
+     "",
+     "",
+     "1,000",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "14,166",
+     "",
+     "",
+     "14,346",
+     ""
+    ],
+    [
+     "Tax liability",
+     "",
+     "33",
+     "",
+     "",
+     "33",
+     ""
+    ],
+    [
+     "Deferred rent, net of current portion",
+     "",
+     "32",
+     "",
+     "",
+     "63",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "14,231",
+     "",
+     "$",
+     "14,442",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and Contingencies",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Preferred stock, no par value, 10,000,000 shares authorized; no shares issued or outstanding at April 30, 2010 and January 31, 2010, respectively",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Common stock, $0.10 par value, 50,625,000 shares authorized; 7,326,569 shares issued and outstanding at April 30, 2010 and January 31, 2010, respectively",
+     "",
+     "733",
+     "",
+     "",
+     "733",
+     ""
+    ],
+    [
+     "Additional paid-in capital",
+     "",
+     "15,022",
+     "",
+     "",
+     "14,967",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(6,973)",
+     "",
+     "",
+     "(6,239)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total stockholders\u2019 equity",
+     "",
+     "8,782",
+     "",
+     "",
+     "9,461",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "23,013",
+     "",
+     "$",
+     "23,903",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 96,
+    "end_line": 145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I \u2014 FINANCIAL INFORMATION\nITEM 1. FINANCIAL STATEMENTS\nCOMARCO, INC. AND SUBSIDIARIES CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) (In thousands, except share amounts)",
+   "prose_after": "(A) Derived from the audited consolidated financial statements as of January 31, 2010.\nThe accompanying notes are an integral part of these condensed consolidated financial statements.\nCOMARCO, INC. AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In thousands, except per share amounts)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 3,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "balance_sheet",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "7,514",
+     "",
+     "$",
+     "2,022",
+     ""
+    ],
+    [
+     "Cost of revenue",
+     "",
+     "5,912",
+     "",
+     "",
+     "2,336",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross profit (loss)",
+     "",
+     "1,602",
+     "",
+     "",
+     "(314)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses",
+     "",
+     "1,407",
+     "",
+     "",
+     "1,686",
+     ""
+    ],
+    [
+     "Engineering and support expenses",
+     "",
+     "902",
+     "",
+     "",
+     "870",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "2,309",
+     "",
+     "",
+     "2,556",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "",
+     "(707)",
+     "",
+     "",
+     "(2,870)",
+     ""
+    ],
+    [
+     "Other expense, net",
+     "",
+     "(19)",
+     "",
+     "",
+     "(10)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations before income taxes",
+     "",
+     "(726)",
+     "",
+     "",
+     "(2,880)",
+     ""
+    ],
+    [
+     "Income tax benefit",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "",
+     "(726)",
+     "",
+     "",
+     "(2,880)",
+     ""
+    ],
+    [
+     "Income (loss) from discontinued operations, net of income taxes",
+     "",
+     "(8)",
+     "",
+     "",
+     "39",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(734)",
+     "",
+     "$",
+     "(2,841)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted loss per share:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "(0.39)",
+     ""
+    ],
+    [
+     "Net income (loss) from discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(0.10)",
+     "",
+     "$",
+     "(0.39)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average common shares outstanding:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic",
+     "",
+     "7,327",
+     "",
+     "",
+     "7,327",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted",
+     "",
+     "7,327",
+     "",
+     "",
+     "7,327",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common shares outstanding",
+     "",
+     "7,327",
+     "",
+     "",
+     "7,327",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 153,
+    "end_line": 206
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "(A) Derived from the audited consolidated financial statements as of January 31, 2010.\nThe accompanying notes are an integral part of these condensed consolidated financial statements.\nCOMARCO, INC. AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited) (In thousands, except per share amounts)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCOMARCO, INC. AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (in thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 149,
+     "token": "PAGE_BREAK",
+     "id": 4,
+     "namespace": "arabic",
+     "page_number": 3
+    },
+    "after": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM OPERATING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss from continuing operations",
+     "$",
+     "(726)",
+     "",
+     "$",
+     "(2,880)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss from continuing operations to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation",
+     "",
+     "193",
+     "",
+     "",
+     "199",
+     ""
+    ],
+    [
+     "Loss on sale/retirement of property and equipment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "6",
+     ""
+    ],
+    [
+     "Stock based compensation expense",
+     "",
+     "55",
+     "",
+     "",
+     "66",
+     ""
+    ],
+    [
+     "Loan origination fees",
+     "",
+     "14",
+     "",
+     "",
+     "43",
+     ""
+    ],
+    [
+     "Provision for doubtful accounts",
+     "",
+     "17",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Provision for obsolete inventory",
+     "",
+     "(33)",
+     "",
+     "",
+     "16",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts receivable due from customers and suppliers",
+     "",
+     "100",
+     "",
+     "",
+     "1,900",
+     ""
+    ],
+    [
+     "Inventory",
+     "",
+     "(212)",
+     "",
+     "",
+     "528",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "(205)",
+     "",
+     "",
+     "277",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "",
+     "507",
+     "",
+     "",
+     "(455)",
+     ""
+    ],
+    [
+     "Deferred rent",
+     "",
+     "(31)",
+     "",
+     "",
+     "(29)",
+     ""
+    ],
+    [
+     "Accrued liabilities",
+     "",
+     "(687)",
+     "",
+     "",
+     "(1,236)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in continuing operating activities",
+     "",
+     "(1,008)",
+     "",
+     "",
+     "(1,565)",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) discontinued operating activities",
+     "",
+     "(8)",
+     "",
+     "",
+     "39",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "",
+     "(1,016)",
+     "",
+     "",
+     "(1,526)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM INVESTING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchases of property and equipment",
+     "",
+     "(71)",
+     "",
+     "",
+     "(58)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in continuing investing activities",
+     "",
+     "(71)",
+     "",
+     "",
+     "(58)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "CASH FLOWS FROM FINANCING ACTIVITIES:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loan origination fees",
+     "",
+     "(56)",
+     "",
+     "",
+     "(43)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(56)",
+     "",
+     "",
+     "(43)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net decrease in cash and cash equivalents",
+     "",
+     "(1,143)",
+     "",
+     "",
+     "(1,627)",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "10,127",
+     "",
+     "",
+     "14,144",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "8,984",
+     "",
+     "$",
+     "12,517",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Supplemental disclosures of cash flow information:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for interest",
+     "$",
+     "14",
+     "",
+     "$",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for income taxes",
+     "$",
+     "2",
+     "",
+     "$",
+     "14",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 213,
+    "end_line": 271
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCOMARCO, INC. AND SUBSIDIARIES CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS (Unaudited) (in thousands)",
+   "prose_after": "The accompanying notes are an integral part of these condensed consolidated financial statements.\nCOMARCO, INC. AND SUBSIDIARIES NOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS (UNAUDITED)\n1. Organization\nComarco, Inc., through its subsidiary Comarco Wireless Technologies, Inc. (collectively, \u201cwe,\u201d \u201cComarco,\u201d or the \u201cCompany\u201d), is a leading designer of external mobile power adapters used to power and charge notebook computers, mobile phones, BlackBerry\u00ae smartphones, iPods\u00ae, and many other portable, rechargeable handheld devices. Our operations consist solely of the operations of Comarco Wireless Technologies, Inc. (\u201cCWT\u201d), which was incorporated in the State of Delaware in September 1993. Comarco, Inc. is a California corporation.\n2. Summary of Significant Accounting Policies\nFuture Operations, Liquidity and Capital Resources:\nThe Company has experienced substantial pre-tax losses from operations for the first fiscal quarters of fiscal 2011 and 2010 totaling $0.7 million and $2.9 million, respectively. Further, during the fourth quarter of fiscal 2010, the Company recorded an accrual of $4.6 million related to a product safety recall (the \u201cRecall\u201d). In addition, the Company did not generate a positive gross margin on the sale of its ChargeSource\u00ae products until the second quarter of fiscal 2010. The Company\u2019s future is highly dependent on its ability to return to, and sustain, overall profitability. To accomplish this, the Company must increase the sales volumes of its current and newly designed ChargeSource\u00ae products. The Company believes that it has begun to address this concern with its Strategic Product Development and Supply Agreement (the \u201cTargus Agreement\u201d) with Targus Group International, Inc., (\u201cTargus\u201d) dated March 16, 2009, pursuant to which the Company began shipment of ChargeSource\u00ae products to Targus during the second quarter of fiscal 2010. Further, the Company continually negotiates with its contract manufacturers and other suppliers in its efforts to reduce its unit costs. Although certain cost reductions have been achieved, the Company continues to vigilantly compare component prices and availability among approved vendors in its efforts to achieve profitability objectives, as the pricing, availability and sourcing of components remain challenging as can be the case with many technology products. The inability of the Company to successfully achieve these objectives will have a material adverse effect on the Company\u2019s operations and financial condition.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 209,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 274,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "cash_flow",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Total stock-based compensation expense",
+     "$",
+     "55",
+     "$",
+     "66"
+    ],
+    [
+     "Less: Amounts reflected in discontinued operations",
+     "",
+     "\u2014",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Compensation expense from continuing operations",
+     "$",
+     "55",
+     "$",
+     "66"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Impact on basic and diluted earnings per share",
+     "",
+     "0.01",
+     "",
+     "0.01"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 336,
+    "end_line": 351
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The Company accounts for stock-based compensation using the modified prospective method, which requires measurement of compensation cost for all stock awards at fair value on date of grant and recognition of compensation over the service period for awards expected to vest. The fair value of stock options is determined using a Lattice Binomial model for options with performance-based vesting tied to the Company\u2019s stock price and the Black-Scholes valuation model for options with ratable term vesting. Both the Lattice Binomial and Black-Scholes valuation models require the input of subjective assumptions. These assumptions include estimating the length of time employees will retain their vested stock options before exercising them (the \u201cexpected term\u201d), the estimated volatility of our common stock price over the expected term, and the number of awards that will ultimately not complete their vesting requirements (\u201cforfeitures\u201d). Changes in these subjective assumptions can materially affect the estimate of fair value of stock-based compensation and, consequently, the related amount recognized as an expense on the consolidated statements of operations. As required under the accounting rules, the Company reviews its valuation assumptions at each grant date and, as a result, is likely to change its valuation assumptions used to value employee stock-based awards granted in future periods. The values derived from using either the Lattice Binomial or the Black-Scholes model are recognized as expense over the vesting period, net of estimated forfeitures. The estimation of stock awards that will ultimately vest requires significant judgment. Actual results, and future changes in estimates, may differ from the Company\u2019s current estimates.\nThe compensation expense recognized is summarized in the table below (in thousands, except per share amounts):",
+   "prose_after": "The total compensation cost related to nonvested awards not yet recognized is approximately $506,000, which will be expensed over a weighted average remaining life of 30.6 months.\nFor the first quarters of fiscal 2011 and 2010, no stock options were granted.\nComarco, Inc. has stock-based compensation plans under which outside directors and certain employees receive stock options. The employee stock option plans and a director stock option plan provide that officers, key employees, and directors may be granted options to purchase up to 2,562,500 shares of common stock of the Company at not less than 100 percent of the fair market value at the date of grant, unless the optionee is a 10 percent shareholder of the Company, in which case the price must not be less than 110 percent of the fair market value.\nThe Company\u2019s Director Stock Option Plan (the \u201cDirector Plan\u201d) expires in December 2010, and the Company\u2019s former employee stock option plan (the \u201cEmployee Plan\u201d) expired during May 2005. These plans provide for 637,500 and 825,000 shares issuable, respectively. During December 2005, the Board of Directors approved and adopted the Company\u2019s 2005 Equity Incentive Plan (the \u201c2005 Plan\u201d) covering 450,000 shares of common stock. The 2005 Plan",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 324,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 360,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Outstanding Awards",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Number of",
+     "",
+     "",
+     "Weighted-Average",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "Balance, January 31, 2010",
+     "",
+     "1,157,704",
+     "",
+     "$",
+     "3.85"
+    ],
+    [
+     "Options granted",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Options canceled or expired",
+     "",
+     "(31,500)",
+     "",
+     "",
+     "23.67"
+    ],
+    [
+     "Options exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance, April 30, 2010",
+     "",
+     "1,126,204",
+     "",
+     "$",
+     "3.29"
+    ]
+   ],
+   "caption_stack": [
+    "Outstanding Awards"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 370,
+    "end_line": 384
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "was approved by the Company\u2019s shareholders at its annual shareholders\u2019 meeting in June 2006, and subsequently amended at its annual shareholders meeting in June 2008 to increase the number of shares issuable under the plan from 450,000 to 1,100,000 shares.\nUnder the 2005 Plan, the Company may grant stock options, stock appreciation rights, restricted stock, restricted stock units, and performance based awards. Under all plans, awards vest or become exercisable in installments determined by the compensation committee of the Company\u2019s Board of Directors; however, no employee option may be exercised prior to one year following the grant of the option. The options granted under the Director Plan and the Employee Plan expire as determined by the compensation committee, but no later than ten years and one week after the date of grant (five years for 10 percent shareholders). The options granted under the 2005 Plan expire as determined by the committee, but no later than ten years after the date of grant (five years for 10 percent shareholders).\nTransactions and other information related to these plans for the three months ended April 30, 2010 are summarized below:",
+   "prose_after": "As of April 30, 2010, the stock options outstanding have an intrinsic value of $1,097,000 based on a closing market price of $2.52 per share on April 30, 2010. The following table summarizes information about the Company\u2019s stock awards outstanding at April 30, 2010:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 362,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Awards Outstanding",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Awards Exercisable",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Weighted-Avg.",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Range of",
+     "Number",
+     "",
+     "Remaining",
+     "",
+     "Weighted-Avg.",
+     "",
+     "Number",
+     "",
+     "Weighted-Avg.",
+     ""
+    ],
+    [
+     "Exercise Prices",
+     "Outstanding",
+     "",
+     "Contractual Life",
+     "",
+     "Exercise Price",
+     "",
+     "Exercisable",
+     "",
+     "Exercise Price",
+     ""
+    ],
+    [
+     "$1.09 to 4.90",
+     "",
+     "867,704",
+     "",
+     "7.8",
+     "$",
+     "1.35",
+     "",
+     "143,826",
+     "$",
+     "1.58"
+    ],
+    [
+     "6.19 to 9.89",
+     "",
+     "166,000",
+     "",
+     "4.6",
+     "",
+     "7.77",
+     "",
+     "158,500",
+     "",
+     "7.84"
+    ],
+    [
+     "10.43 to 11.60",
+     "",
+     "60,000",
+     "",
+     "5.0",
+     "",
+     "10.72",
+     "",
+     "52,500",
+     "",
+     "10.76"
+    ],
+    [
+     "15.07 to 20.04",
+     "",
+     "32,500",
+     "",
+     "0.5",
+     "",
+     "18.51",
+     "",
+     "32,500",
+     "",
+     "18.51"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "1,126,204",
+     "7.0 years",
+     "",
+     "",
+     "3.29",
+     "",
+     "387,326",
+     "",
+     "6.81"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 387,
+    "end_line": 403
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "As of April 30, 2010, the stock options outstanding have an intrinsic value of $1,097,000 based on a closing market price of $2.52 per share on April 30, 2010. The following table summarizes information about the Company\u2019s stock awards outstanding at April 30, 2010:",
+   "prose_after": "Stock options exercisable at April 30, 2010 were 387,326 at a weighted-average exercise price of $6.81. At April 30, 2010, shares available for future grants under the 2005 Plan were 131,796 and under the director stock option plan were 625.\n4. Recent Accounting Pronouncements\nIn February 2010, the FASB issued amended guidance on subsequent events. Under this amended guidance, SEC filers are no longer required to disclose the date through which subsequent events have been evaluated in originally issued and revised financial statements. This guidance was effective immediately and we adopted these new requirements upon issuance of this guidance.\n5. Discontinued Operations\nCall Box\nOn July 10, 2008, the Company executed an asset purchase agreement to sell the assets of its Call Box business for $2.7 million in cash. The transaction closed on July 10, 2008. During the first quarter of fiscal 2010, the Company recorded very minor expenses related to the discontinued operations of the Call Box business and incurred no similar expenses during the first quarter of fiscal 2011.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 362,
+     "token": "REPEATING_HEADER",
+     "id": 12,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 410,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from discontinued operations:",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale, net of taxes of $0",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "43"
+    ],
+    [
+     "Loss from discontinued operations, before taxes",
+     "",
+     "(8)",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "Income tax expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total income (loss) from discontinued operations",
+     "$",
+     "(8)",
+     "",
+     "$",
+     "43"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 428,
+    "end_line": 445
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "On July 10, 2008, the Company executed an asset purchase agreement to sell the assets of its Call Box business for $2.7 million in cash. The transaction closed on July 10, 2008. During the first quarter of fiscal 2010, the Company recorded very minor expenses related to the discontinued operations of the Call Box business and incurred no similar expenses during the first quarter of fiscal 2011.\nWireless Test Solutions\nThe Company entered into an Asset Purchase Agreement on September 26, 2008 with Ascom Holding AG (\u201cAscom\u201d) and its subsidiary Ascom Inc. to sell the Wireless Test Solutions (\u201cWTS\u201d) business and related assets. Comarco\u2019s shareholders approved the transaction on November 26, 2008 with approximately 85 percent of the Company\u2019s shareholders voting in favor of the transaction. The transaction closed on January 6, 2009.\nThe aggregate purchase price paid to Comarco in connection with the transaction was $12,750,000 in cash, with $1,275,000 of the proceeds placed in escrow for one year from the closing date as security for general indemnification rights. The proceeds placed in escrow were released in January 2010.\nOperating results of the WTS discontinued operations are as follows (in thousands):",
+   "prose_after": "The $43,000 incurred in fiscal 2010 relates primarily to adjustments to the acquired assets and liabilities assumed by Ascom.\n6. Loss Per Share\nThe Company calculates basic loss per share by dividing net loss by the weighted-average number of common shares outstanding during the reporting period. Diluted earnings per share reflects the effects of potentially dilutive securities. Since the Company incurred a net loss for the three months ended April 30, 2010 and 2009, basic and diluted net loss per share for both such periods were the same because the inclusion of 290,583 and of 68,717 potentially dilutive securities related to outstanding stock options, respectively, would have been antidilutive.\n7. Customer and Supplier Concentrations\nA significant portion of the Company\u2019s revenue is derived from a limited number of customers. The customers providing 10 percent or more of the Company\u2019s revenues for either quarter ended April 30, 2010 or 2009 are listed below (in thousands).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 412,
+     "token": "REPEATING_HEADER",
+     "id": 14,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 452,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 10
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total revenue",
+     "$",
+     "7,514",
+     "100",
+     "%",
+     "$",
+     "2,022",
+     "100",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer concentration:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lenovo Information Products Co., Ltd.",
+     "$",
+     "1,805",
+     "24",
+     "%",
+     "$",
+     "2,006",
+     "99",
+     "%"
+    ],
+    [
+     "Targus Group International, Inc.",
+     "",
+     "5,638",
+     "75",
+     "%",
+     "",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "7,443",
+     "99",
+     "%",
+     "$",
+     "2,006",
+     "99",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 460,
+    "end_line": 475
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Customer and Supplier Concentrations"
+    }
+   },
+   "prose_before": "The $43,000 incurred in fiscal 2010 relates primarily to adjustments to the acquired assets and liabilities assumed by Ascom.\n6. Loss Per Share\nThe Company calculates basic loss per share by dividing net loss by the weighted-average number of common shares outstanding during the reporting period. Diluted earnings per share reflects the effects of potentially dilutive securities. Since the Company incurred a net loss for the three months ended April 30, 2010 and 2009, basic and diluted net loss per share for both such periods were the same because the inclusion of 290,583 and of 68,717 potentially dilutive securities related to outstanding stock options, respectively, would have been antidilutive.\n7. Customer and Supplier Concentrations\nA significant portion of the Company\u2019s revenue is derived from a limited number of customers. The customers providing 10 percent or more of the Company\u2019s revenues for either quarter ended April 30, 2010 or 2009 are listed below (in thousands).",
+   "prose_after": "The Company\u2019s revenues by geographic area, as determined by the \u201cship to\u201d address, consisted of the following (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     ""
+    ],
+    [
+     "North America",
+     "$",
+     "5,597",
+     "$",
+     "41"
+    ],
+    [
+     "Europe",
+     "",
+     "55",
+     "",
+     "9"
+    ],
+    [
+     "Asia",
+     "",
+     "1,862",
+     "",
+     "1,972"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "7,514",
+     "$",
+     "2,022"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended",
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 478,
+    "end_line": 491
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Customer and Supplier Concentrations"
+    }
+   },
+   "prose_before": "The Company\u2019s revenues by geographic area, as determined by the \u201cship to\u201d address, consisted of the following (in thousands):",
+   "prose_after": "The customers and suppliers comprising 10 percent or more of the Company\u2019s gross accounts receivable due from customers and suppliers at either April 30, 2010 or January 31, 2010 are listed below (in thousands).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30, 2010",
+     "",
+     "",
+     "",
+     "January 31, 2010",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total gross accounts receivable due from customers and suppliers",
+     "$",
+     "11,525",
+     "100",
+     "%",
+     "$",
+     "11,625",
+     "100",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Customer concentration:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Eurostyle Corporation",
+     "$",
+     "1,485",
+     "13",
+     "%",
+     "$",
+     "\u2014",
+     "\u2014",
+     ""
+    ],
+    [
+     "Lenovo Information Products Co., Ltd.",
+     "",
+     "1,836",
+     "16",
+     "%",
+     "",
+     "2,730",
+     "24",
+     "%"
+    ],
+    [
+     "Targus Group International, Inc.",
+     "",
+     "7,643",
+     "66",
+     "%",
+     "",
+     "7,917",
+     "68",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "10,964",
+     "95",
+     "%",
+     "$",
+     "10,647",
+     "92",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 494,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Customer and Supplier Concentrations"
+    }
+   },
+   "prose_before": "The customers and suppliers comprising 10 percent or more of the Company\u2019s gross accounts receivable due from customers and suppliers at either April 30, 2010 or January 31, 2010 are listed below (in thousands).",
+   "prose_after": "On March 16, 2009, the Company entered into the Targus Agreement with Targus. Under the Targus Agreement, Comarco will sell certain current and future mobile power supply products exclusively to Targus, and Targus will purchase such products and any products substantially similar to such products exclusively from Comarco; provided, however, that the Targus Agreement does not prohibit Comarco from selling any mobile power supply products covered by the Targus Agreement to original equipment manufacturers that sell such products under their own name as long as such products do not incorporate any intellectual property of Targus. The Company began shipments to Targus under this agreement during the second quarter of fiscal 2010.\nEurostyle Corporation is an affiliate of Edac Power Electronics Co. Ltd., and has been both a supplier and a customer, as oftentimes we are able to source components locally that we later sell to our contract manufacturers and\nother suppliers who build the finished goods. This is especially the case when new products are initially introduced into production. Sales to our contract manufacturers are excluded from revenue and are recorded as a reduction to cost of revenue. At April 30, 2010 and January 31, 2010, approximately $1.8 million and $0.8 million, respectively, of the Company\u2019s accounts receivable due from customers and suppliers were due from various suppliers.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 454,
+     "token": "REPEATING_HEADER",
+     "id": 16,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 513,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 11
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "January 31,",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2010",
+     ""
+    ],
+    [
+     "Raw materials",
+     "$",
+     "202",
+     "$",
+     "574"
+    ],
+    [
+     "Finished goods",
+     "",
+     "978",
+     "",
+     "361"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "1,180",
+     "$",
+     "935"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 529,
+    "end_line": 539
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 8,
+     "label": "NOTE 8",
+     "title": "Inventory"
+    }
+   },
+   "prose_before": "At April 30, 2010 and January 31, 2010, approximately $276,000 or 17 percent and $534,000 or 47 percent, respectively, of the Company\u2019s accounts payable of $1.6 million and $1.1 million, respectively, was payable to Flextronics Electronics. Additionally at April 30, 2010 and January 31, 2010, approximately $323,000 or 20 percent and $266,000 or 24 percent, respectively of the Company\u2019s accounts payable was payable to Chicony Power Technology Co. Ltd.\nAdditionally, at April 30, 2010, approximately $4.4 million or 77 percent of total uninvoiced materials and services of $5.7 million, included in accrued liabilities were payable to Chicony Power Technology, Co. Ltd., Flextronics Electronics and Edac Power Electronics Co. Ltd. At January 31, 2010 approximately $5.0 million or 92 percent of total uninvoiced materials and services of $5.4 million, included in accrued liabilities were payable to Chicony Power Technology, Co. Ltd., Flextronics Electronics and Edac Power Electronics Co. Ltd.\n8. Inventory\nInventory, net of reserves, consists of the following (in thousands):",
+   "prose_after": "As of April 30, 2010 and January 31, 2010, approximately $91,000 and $208,000 of total inventory, respectively, was located at our corporate headquarters. Additionally, as of April 30, 2010, approximately $0.6 million of finished goods relates to recall returns that are currently being reworked at a local contract manufacturer. The remaining balances as of April 30, 2010 and January 31, 2010 were located at various contract manufacturer locations in China.\n9. Warranty Arrangements\nThe Company records an accrual for estimated warranty costs as products are sold. These amounts are recorded in accrued liabilities in the unaudited interim condensed consolidated balance sheets. Warranty costs are estimated based on periodic analysis of historical experience. Changes in the estimated warranty accruals are recorded when the change in estimate is identified. During the fourth quarter of fiscal 2010, the Company recorded an accrual of $4.6 million related to the Recall announced on April 30, 2010. Approximately 500,000 Targus branded 90-watt universal AC power adapters for laptops are affected by the Recall. A summary of the warranty accrual activity is shown in the table below (in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 8
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 515,
+     "token": "REPEATING_HEADER",
+     "id": 18,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 546,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "Beginning balance",
+     "$",
+     "4,759",
+     "",
+     "$",
+     "86",
+     ""
+    ],
+    [
+     "Accruals for warranties issued during the period",
+     "",
+     "105",
+     "",
+     "",
+     "20",
+     ""
+    ],
+    [
+     "Utilization",
+     "",
+     "(433)",
+     "",
+     "",
+     "(36)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "4,431",
+     "",
+     "$",
+     "70",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 550,
+    "end_line": 562
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "FINANCIAL STATEMENTS"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Warranty Arrangements"
+    }
+   },
+   "prose_before": "As of April 30, 2010 and January 31, 2010, approximately $91,000 and $208,000 of total inventory, respectively, was located at our corporate headquarters. Additionally, as of April 30, 2010, approximately $0.6 million of finished goods relates to recall returns that are currently being reworked at a local contract manufacturer. The remaining balances as of April 30, 2010 and January 31, 2010 were located at various contract manufacturer locations in China.\n9. Warranty Arrangements\nThe Company records an accrual for estimated warranty costs as products are sold. These amounts are recorded in accrued liabilities in the unaudited interim condensed consolidated balance sheets. Warranty costs are estimated based on periodic analysis of historical experience. Changes in the estimated warranty accruals are recorded when the change in estimate is identified. During the fourth quarter of fiscal 2010, the Company recorded an accrual of $4.6 million related to the Recall announced on April 30, 2010. Approximately 500,000 Targus branded 90-watt universal AC power adapters for laptops are affected by the Recall. A summary of the warranty accrual activity is shown in the table below (in thousands):",
+   "prose_after": "The Company believes that the balance remaining as of April 30, 2010 is adequate to cover additional product recall costs expected to be incurred as well as standard warranty costs. However, actual amounts incurred as a result of the Recall may differ materially from the amounts in the reserves the Company established as a result of the Recall. Actual amounts may differ materially from the Company\u2019s current estimates based on many factors, including the number of qualifying 90-watt universal power adapters returned to Comarco by Targus and their customers, primarily consumer electronics retailers and end-user consumers in connection with the Recall.\n10. Loan Agreement\nOn February 11, 2009, the Company entered into a Loan and Security Agreement (the \u201cLoan Agreement\u201d) with Silicon Valley Bank (\u201cSVB\u201d). The credit facility was renewed on February 9, 2010 and matures, on February 10, 2011, at which time, any outstanding principal balance is payable in full.\nUnder the Loan Agreement, the Company may borrow up to (a) the lesser of (i) $10,000,000 or",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 548,
+     "token": "REPEATING_HEADER",
+     "id": 20,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 580,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "2010 over 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Revenue",
+     "$",
+     "7,514",
+     "",
+     "",
+     "100",
+     "%",
+     "$",
+     "2,022",
+     "",
+     "",
+     "100",
+     "%",
+     "",
+     "272",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating loss",
+     "$",
+     "(707)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(2,870)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from continuing operations",
+     "$",
+     "(726)",
+     "",
+     "",
+     "",
+     "",
+     "$",
+     "(2,880)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 654,
+    "end_line": 671
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations is based upon our unaudited interim condensed consolidated financial statements, which have been prepared in accordance with accounting principles generally accepted in the United States of America. The preparation of these unaudited interim condensed consolidated financial statements requires management to make estimates and assumptions that affect the reported amounts of assets, liabilities, revenue, and expenses, and related disclosure of contingent assets and liabilities. Management bases its estimates on historical experience and on various other assumptions that it believes to be reasonable under the circumstances. The results of these estimates form the basis for making judgments about the carrying values of assets and liabilities that are not readily apparent from other sources. Actual results may differ materially from our estimates.\nAn accounting policy is deemed to be critical if it requires an accounting estimate to be made based on assumptions about matters that are highly uncertain at the time the estimate is made, and if different estimates that reasonably could have been used or changes in the accounting estimate that are reasonably likely to occur could materially change the financial statements. Management believes there have been no significant changes during the three months ended April 30, 2010 to the items that we disclosed as our critical accounting policies and estimates in Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations in our annual report on Form 10-K for the fiscal year ended January 31, 2010.\nResults of Operations\nThe following tables set forth certain items as a percentage of revenue from our unaudited interim condensed consolidated statements of operations for the three months ended April 30, 2010 and 2009:\nRevenue",
+   "prose_after": "Revenue by Geographic Region",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "2010 over 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "North America",
+     "$",
+     "5,597",
+     "$",
+     "41",
+     "",
+     "13,551",
+     "%"
+    ],
+    [
+     "Europe",
+     "",
+     "55",
+     "",
+     "9",
+     "",
+     "511",
+     "%"
+    ],
+    [
+     "Asia",
+     "",
+     "1,862",
+     "",
+     "1,972",
+     "",
+     "(6",
+     "%)"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "7,514",
+     "$",
+     "2,022",
+     "",
+     "272",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 674,
+    "end_line": 689
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Revenue by Geographic Region",
+   "prose_after": "Revenue by Customer",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 640,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "2010 over 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "2009",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Lenovo",
+     "$",
+     "1,805",
+     "$",
+     "2,006",
+     "",
+     "(10",
+     "%)"
+    ],
+    [
+     "Targus",
+     "",
+     "5,638",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Other",
+     "",
+     "71",
+     "",
+     "16",
+     "",
+     "344",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "7,514",
+     "$",
+     "2,022",
+     "",
+     "272",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 694,
+    "end_line": 709
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Revenue by Customer",
+   "prose_after": "Revenue\nThe increase in revenue of $5.5 million for the first quarter of fiscal 2011 compared with the first quarter of fiscal 2010 is attributable to shipments to Targus under the Targus Agreement. Revenue from shipments to Lenovo decreased $0.2 million or 10 percent in the first quarter of fiscal 2011 compared to the corresponding prior year period.\nCost of Revenue and Gross Margin",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "(In thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "2010 over 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "",
+     "",
+     "Total",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Cost of revenue:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product costs",
+     "$",
+     "5,002",
+     "",
+     "85",
+     "%",
+     "$",
+     "1,619",
+     "",
+     "69",
+     "%",
+     "",
+     "209",
+     "%"
+    ],
+    [
+     "Fixed supply chain overhead",
+     "",
+     "796",
+     "",
+     "13",
+     "%",
+     "",
+     "605",
+     "",
+     "26",
+     "%",
+     "",
+     "32",
+     "%"
+    ],
+    [
+     "Inventory reserve and scrap charges",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "112",
+     "",
+     "5",
+     "%",
+     "",
+     "(100",
+     "%)"
+    ],
+    [
+     "Freight, expedite, and other charges",
+     "",
+     "114",
+     "",
+     "2",
+     "%",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "100",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "5,912",
+     "",
+     "100",
+     "%",
+     "$",
+     "2,336",
+     "",
+     "100",
+     "%",
+     "",
+     "153",
+     "%"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 716,
+    "end_line": 734
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Revenue\nThe increase in revenue of $5.5 million for the first quarter of fiscal 2011 compared with the first quarter of fiscal 2010 is attributable to shipments to Targus under the Targus Agreement. Revenue from shipments to Lenovo decreased $0.2 million or 10 percent in the first quarter of fiscal 2011 compared to the corresponding prior year period.\nCost of Revenue and Gross Margin",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "2010 over 2009",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "ppt Change",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gross margin",
+     "",
+     "21",
+     "%",
+     "",
+     "(16",
+     "%)",
+     "",
+     "37"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 735,
+    "end_line": 743
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "The first quarter of fiscal 2011 increase in cost of revenue of $3.6 million compared to the first quarter of fiscal 2010 was primarily attributable to the 272 percent increase in revenue compared to the first quarter of fiscal 2010. During the first quarter of fiscal 2011, our fixed supply chain overhead increased by $0.2 million or 32 percent. This increase is due to additional personnel needed to assist with procurement of component inventory that has become increasingly difficult to source at our desired prices and within our desired lead times. We also have added staff to assist with the management of our growing number of contract manufacturers. During the first quarter of fiscal 2010 we incurred scrap charges of $0.1 million relating to engineering design changes. We did not incur any similar charges during the first quarter of fiscal 2011.\nOperating Costs and Expenses",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "",
+     "",
+     "2009",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "",
+     "",
+     "% of",
+     "",
+     "",
+     "2010 over 2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "",
+     "",
+     "Revenue",
+     "",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general, and administrative expenses, excluding corporate overhead",
+     "$",
+     "404",
+     "",
+     "5",
+     "%",
+     "$",
+     "815",
+     "",
+     "40",
+     "%",
+     "",
+     "(50",
+     "%)"
+    ],
+    [
+     "Corporate overhead",
+     "",
+     "1,003",
+     "",
+     "13",
+     "%",
+     "",
+     "871",
+     "",
+     "43",
+     "%",
+     "",
+     "15",
+     "%"
+    ],
+    [
+     "Engineering and support expenses",
+     "",
+     "902",
+     "",
+     "12",
+     "%",
+     "",
+     "870",
+     "",
+     "43",
+     "%",
+     "",
+     "4",
+     "%"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "2,309",
+     "",
+     "31",
+     "%",
+     "$",
+     "2,556",
+     "",
+     "126",
+     "%",
+     "",
+     "(10",
+     "%)"
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 750,
+    "end_line": 767
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The first quarter of fiscal 2011 increase in cost of revenue of $3.6 million compared to the first quarter of fiscal 2010 was primarily attributable to the 272 percent increase in revenue compared to the first quarter of fiscal 2010. During the first quarter of fiscal 2011, our fixed supply chain overhead increased by $0.2 million or 32 percent. This increase is due to additional personnel needed to assist with procurement of component inventory that has become increasingly difficult to source at our desired prices and within our desired lead times. We also have added staff to assist with the management of our growing number of contract manufacturers. During the first quarter of fiscal 2010 we incurred scrap charges of $0.1 million relating to engineering design changes. We did not incur any similar charges during the first quarter of fiscal 2011.\nOperating Costs and Expenses",
+   "prose_after": "Selling, general, and administrative expenses decreased by $0.4 million during the first quarter of fiscal 2011, compared to the same period of the prior year, primarily as a result of a reduction in legal expense of $0.4 million incurred during the first quarter of the prior year relating to the certain litigation which was dismissed in May 2009.\nCorporate overhead consists of salaries and other personnel-related expenses of our accounting and finance, human resources and benefits, and other administrative personnel, as well as professional fees, directors\u2019 fees, and other costs and expenses attributable to being a public company. The increase in corporate overhead of $0.1 million during the first quarter of fiscal 2011 compared to the same period of the prior year relates primarily to fiscal 2011 bonus accruals as well as additional staffing costs in the accounting department.\nEngineering and support expenses generally consist of salaries, employer paid benefits, and other personnel related costs of our engineers and testing personnel, as well as facility and IT costs, professional and consulting fees, lab costs, material usages, and travel and related costs incurred in the development and support of our products. The engineering costs remained relatively constant in the first quarter of the current year compared to the first quarter of fiscal 2010.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 746,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     "Year over Year",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     "% Change",
+     "",
+     ""
+    ],
+    [
+     "Revenues",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Income from discontinued operations:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Gain on sale, net of income taxes of $0",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "43",
+     "",
+     "(100",
+     "%)"
+    ],
+    [
+     "Income (loss) from discontinued operations, before taxes",
+     "",
+     "(8)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Income tax expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total income (loss) from discontinued operations",
+     "$",
+     "(8)",
+     "",
+     "$",
+     "43",
+     "",
+     "(119",
+     "%)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 792,
+    "end_line": 808
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "Significant management judgment is required in determining our provision for income taxes, our deferred tax assets and liabilities, and any required valuation allowance. The Company continues to have a fully valued deferred tax asset. This valuation allowance was previously established based on management\u2019s overall assessment of risks and uncertainties related to our future ability to realize, and hence, utilize certain deferred tax assets, primarily consisting of net operating losses and carry forward temporary differences. Due to the losses incurred during the first quarter of fiscal 2011, the adjusted net deferred tax assets remain fully reserved as of April 30, 2010.\nDiscontinued Operations, net of income taxes\nIncome from Discontinued Operations \u2014 Call Box\nThe sale of the Call Box business was completed on July 10, 2008, which resulted in a pre-tax gain of $490,000 during fiscal 2009. During the first quarter of fiscal 2010, the Company recorded very minor expenses related to the discontinued operations of the Call Box business and incurred no similar expenses during the first quarter of fiscal 2011.\nIncome (Loss) from Discontinued Operations \u2014 Wireless Test Solutions (in thousands except change)",
+   "prose_after": "The sale of the wireless test solutions business was completed on January 6, 2009, which resulted in a pre-tax gain of $5.9 million recorded in fiscal 2009. The $43,000 recorded during the first quarter of fiscal 2010 relates primarily to adjustments to the acquired assets and liabilities assumed by Ascom.\nLiquidity and Capital Resources\nCash and cash equivalents at April 30, 2010 decreased $1.1 million to $9.0 million as compared to $10.1 million at January 31, 2010. The following table is a summary of our Condensed Consolidated Statements of Cash Flows.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended April 30,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2010",
+     "",
+     "",
+     "2009",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(in thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash used in:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating activities",
+     "$",
+     "(1,016)",
+     "",
+     "$",
+     "(1,526)",
+     ""
+    ],
+    [
+     "Investing activities",
+     "",
+     "(71)",
+     "",
+     "",
+     "(58)",
+     ""
+    ],
+    [
+     "Financing activities",
+     "",
+     "(56)",
+     "",
+     "",
+     "(43)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months Ended April 30,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 815,
+    "end_line": 827
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "MANAGEMENT\u2019S DISCUSSION AND ANALYSIS OF FINANCIAL CONDITION AND RESULTS OF OPERATIONS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "The sale of the wireless test solutions business was completed on January 6, 2009, which resulted in a pre-tax gain of $5.9 million recorded in fiscal 2009. The $43,000 recorded during the first quarter of fiscal 2010 relates primarily to adjustments to the acquired assets and liabilities assumed by Ascom.\nLiquidity and Capital Resources\nCash and cash equivalents at April 30, 2010 decreased $1.1 million to $9.0 million as compared to $10.1 million at January 31, 2010. The following table is a summary of our Condensed Consolidated Statements of Cash Flows.",
+   "prose_after": "Operating Activities\nCash used in operating activities of $1.0 million for the first quarter of fiscal 2011 was primarily attributable to our net loss from continuing operations of $0.7 million and an increase in other assets of $0.2 million. Additionally, accrued liabilities decreased $0.7 million and inventory increased by $0.2 million. These uses of cash are offset by an increase in accounts payable of $0.5 million and non-cash depreciation of $0.2 million.\nCash used in operating activities of $1.5 million for the first quarter of fiscal 2010 was primarily attributable to our net loss from continuing operations of $2.9 million and a decrease in accrued liabilities of $1.2 million offset by collection of receivables of $1.9 million and a decrease in inventory balances of $0.5 million. The decrease in accrued liabilities was primarily related to payments made to Ascom of $0.9 million which represent Comarco collections of accounts receivable balances sold to Ascom offset by payments made on behalf of Ascom for trade payables assumed in conjunction with the sale of WTS.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 788,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 842,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "COMARCO, INC."
+    ],
+    [
+     "Date: June 14, 2010",
+     "/s/ SAMUEL M. INMAN, III"
+    ],
+    [
+     "",
+     "Samuel M. Inman, III"
+    ],
+    [
+     "",
+     "President and Chief Executive Officer (Principal Executive Officer), Director"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Date: June 14, 2010",
+     "/s/ WINSTON E. HICKMAN"
+    ],
+    [
+     "",
+     "Winston E. Hickman"
+    ],
+    [
+     "",
+     "Vice President and Chief Financial Officer (Principal Financial and Accounting Officer)"
+    ]
+   ],
+   "caption_stack": [
+    "COMARCO, INC."
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 952,
+    "end_line": 964
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "3.1 Articles of Incorporation of Comarco, Inc., as amended (incorporated by reference to Exhibit 3.1 to our Quarterly Report on Form 10-Q, filed on December 15, 2000) 3.2 Amended and Restated Bylaws of Comarco, Inc. (incorporated by reference to Exhibit 3.2 to our Quartery Report on Form 10-Q, filed on September 14, 2009) 3.3 Certificate of Determination of Series A Participating Preferred Stock (incorporated by reference to Exhibit 99.2 to our Registration Statement on Form 8-A, filed on February 6, 2003) 10.1 Loan and Security Agreement, dated as of February 12, 2009, by and among Comarco, Inc., Comarco Wireless Technologies, Inc. and Silicon Valley Bank (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed on February 18, 2009) 10.2 First Amendment to the Loan and Security Agreement, dated as of February 9, 2010, by and among Comarco, Inc., Comarco Wireless Technologies, Inc. and Silicon Valley Bank (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed on February 16, 2010) 10.3 Forbearance to Loan and Security Agreement dated as of June 11, 2010 by and among Comarco, Inc., Comarco Wireless Technologies, Inc. and Silicon Valley Bank 10.4* Comarco, Inc. Executive Incentive Bonus Plan (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed March 25, 2010) 10.5* Executed Employment Agreement dated May 1, 2010 between the Company and Samuel M. Inman, III (incorporated by reference to Exhibit 10.12 to our Annual Report on Form 10-K, filed May 3, 2010) 10.6* Executed Employment Agreement dated May 1, 2010 between the Company and Winston E. Hickman (incorporated by reference to Exhibit 10.13 to our Annual Report on Form 10-K, filed May 3, 2010) 31.1 Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 31.2 Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002 32.1 Certification of Chief Executive Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002 32.2 Certification of Chief Financial Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the Registrant has duly caused this Report to be signed on its behalf by the undersigned thereunto duly authorized.",
+   "prose_after": "EXHIBIT INDEX",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 946,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 27
+    },
+    "after": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit",
+     "Description"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.1",
+     "Articles of Incorporation of Comarco, Inc., as amended (incorporated by reference to Exhibit 3.1 to our Quarterly Report on Form 10-Q, filed on December 15, 2000)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.2",
+     "Amended and Restated Bylaws of Comarco, Inc. (incorporated by reference to Exhibit 3.2 to our Quarterly Report on Form 10-Q, filed on September 14, 2009)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "3.3",
+     "Certificate of Determination of Series A Participating Preferred Stock (incorporated by reference to Exhibit 99.2 to our Registration Statement on Form 8-A, filed on February 6, 2003)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.1",
+     "Loan and Security Agreement, dated as of February 12, 2009, by and among Comarco, Inc., Comarco Wireless Technologies, Inc. and Silicon Valley Bank (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed on February 18, 2009)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.2",
+     "First Amendment to the Loan and Security Agreement, dated as of February 9, 2010, by and among Comarco, Inc., Comarco Wireless Technologies, Inc. and Silicon Valley Bank (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed on February 16, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.3",
+     "Forbearance to Loan and Security Agreement dated as of June 11, 2010 by and among Comarco, Inc., Comarco Wireless Technologies, Inc. and Silicon Valley Bank"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.4*",
+     "Comarco, Inc. Executive Incentive Bonus Plan (incorporated by reference to Exhibit 10.1 to our Current Report on Form 8-K, filed March 25, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.5*",
+     "Executed Employment Agreement dated May 1, 2010 between the Company and Samuel M. Inman, III (incorporated by reference to Exhibit 10.12 to our Annual Report on Form 10-K, filed May 3, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "10.6*",
+     "Executed Employment Agreement dated May 1, 2010 between the Company and Winston E. Hickman (incorporated by reference to Exhibit 10.13 to our Annual Report on Form 10-K, filed May 3, 2010)"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "Certification of Chief Executive Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "31.2",
+     "Certification of Chief Financial Officer Pursuant to Section 302 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.1",
+     "Certification of Chief Executive Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "32.2",
+     "Certification of Chief Financial Officer Pursuant to Section 906 of the Sarbanes-Oxley Act of 2002"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 969,
+    "end_line": 1004
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "EXHIBITS"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Commitments and Contingencies"
+    }
+   },
+   "prose_before": "EXHIBIT INDEX",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 965,
+     "token": "PAGE_BREAK",
+     "id": 38,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1005,
+     "token": "REPEATING_FOOTER",
+     "id": 39,
+     "namespace": null,
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  }
+ ]
+}

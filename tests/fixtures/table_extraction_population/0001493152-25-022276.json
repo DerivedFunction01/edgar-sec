@@ -1,0 +1,7030 @@
+{
+ "accession": "0001493152-25-022276",
+ "cik": "0000855683",
+ "form": "10-Q",
+ "filing_date": "2025-11-13",
+ "era": "ixbrl",
+ "is_xbrl": true,
+ "filer_category": "Non-accelerated filer<br>Smaller reporting company",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "form10-q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "13-3545623"
+    ],
+    [
+     "State or other jurisdiction\n\n\n\nof Incorporation or organization",
+     "(I.R.S. Employer\n\n\n\nIdentification No.)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 22,
+    "end_line": 28
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Washington, D.C. 20549\nFORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarter ended September 30, 2025\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from to\nCommission file number 001-14053\nMilestone Scientific Inc.\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "425 Eagle Rock Avenue Suite 403, Roseland, NJ 07068\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code: 973-535-2717.\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 3,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Title of each class",
+     "Trading Symbol(s)",
+     "Name of each exchange on which registered"
+    ],
+    [
+     "Common Stock, par value $.001 per share",
+     "MLSS",
+     "NYSE American"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 37,
+    "end_line": 42
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "425 Eagle Rock Avenue Suite 403, Roseland, NJ 07068\n(Address of principal executive offices)\nRegistrant\u2019s telephone number, including area code: 973-535-2717.\nSecurities registered pursuant to Section 12(b) of the Act:",
+   "prose_after": "Securities registered pursuant to section 12(g) of the Act: NONE.\nIndicate by check mark if the registrant is a well-known seasoned issuer, as defined in Rule 405 of the Securities Act. [ ] Yes [X] No\nIndicate by check mark if the registrant is not required to file reports pursuant to Section 13 or Section 15(d) of the Act. [ ] Yes [X] No\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. [X] Yes [ ] No\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). [X] Yes [ ] No",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 3,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "PART I\u2014FINANCIAL INFORMATION",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Condensed Consolidated Financial Statements",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Balance Sheets as of September 30, 2025 (Unaudited) and December 31, 2024",
+     "4"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Operations for the three and nine months ended September 30, 2025 and 2024 (Unaudited)",
+     "5"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Changes in Stockholders\u2019 Equity for the three and nine months ended September 30, 2025 and 2024 (Unaudited)",
+     "6"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Statements of Cash Flows for the nine months ended September 30, 2025 and 2024 (Unaudited)",
+     "8"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Notes to Condensed Consolidated Financial Statements (Unaudited)",
+     "9"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "20"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "26"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "PART II\u2014OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1B",
+     "Unresolved Staff Comments",
+     "27"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1C",
+     "Cybersecurity",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults Upon Senior Securities",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "28"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "29"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Signatures",
+     "",
+     "30"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 85,
+    "end_line": 128
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "If securities are registered pursuant to Section 12(b) of the Act, indicate by check mark whether the financial statements of the registrant included in the filing reflect the correction of an error to previously issued financial statements. [ ]\nIndicate by check mark whether any of those error corrections are restatements that required a recovery analysis of incentive-based compensation received by any of the registrant\u2019s executive officers during the relevant recovery period pursuant to \u00a7240.10D-1(b). [ ]\nIndicate by check mark whether the registrant has filed a report on and attestation to its management\u2019s assessment of the effectiveness of its internal control over financial reporting under Section 404(b) of the Sarbanes-Oxley Act (15 U.S.C. 7262(b)) by the registered public accounting firm that prepared or issued its audit report. [ ].\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Act). Yes [ ] No [X]\nAs of November 12, 2025, the registrant has a total of 78,628,913 shares of Common Stock, $0.001 par value outstanding.\nDOCUMENTS INCORPORATED BY REFERENCE\nNone\nMILESTONE SCIENTIFIC INC.\nForm 10-Q\nTABLE OF CONTENTS",
+   "prose_after": "FORWARD-LOOKING STATEMENTS\nWhen used in this Quarterly Report on Form 10-Q, the words \u201cmay\u201d, \u201cwill\u201d, \u201cshould\u201d, \u201cexpect\u201d, \u201cbelieve\u201d, \u201canticipate\u201d, \u201ccontinue\u201d, \u201cestimate\u201d, \u201cproject\u201d, \u201cintend\u201d and similar expressions are intended to identify forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d) regarding events, conditions and financial trends that may affect Milestone Scientific\u2019s future plans of operations, business strategy, results of operations and financial condition. Milestone Scientific wishes to ensure that such statements are accompanied by meaningful cautionary statements pursuant to the safe harbor established in the Private Securities Litigation Reform Act of 1995. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. Milestone Scientific\u2019s plans and objectives are based, in part, on assumptions involving the continued expansion of its business. Assumptions relating to the foregoing involve judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond the control of Milestone Scientific. Although Milestone Scientific believes that its assumptions underlying the forward-looking statements are reasonable, any of the assumptions could prove inaccurate. Considering the significant uncertainties inherent in the forward-looking statements included herein, our history of operating losses that are expected to continue, requiring additional funding which we may be unable to raise capital when needed (which may force us to delay, curtail or eliminate commercialization efforts of our CompuFlo Epidural Computer Controlled Anesthesia System), the early stage operations of and relative lack of acceptance of our medical products, relying exclusively on two third parties to manufacture our products, changes to our distribution arrangements exposes us to risks of interruption of marketing efforts and building new marketing channels, changes in our informal manufacturing arrangements made by the manufacturer of our products and disruptions at the manufacturing facility of our manufacturers, including shortages of or delays in obtaining chips and other components, exposes us to risks that may harm our business, raising additional funds by issuing securities or through licensing or lending arrangements may cause dilution to our existing stockholders, restrict our operations or require us to relinquish proprietary rights, if physicians do not accept or use our CompuFlo Epidural Computer Controlled Anesthesia System, our ability to generate revenue from sales will be materially impaired, exposure to the risks inherent in international sales and operations, including China, the changing tariff and trade policies of the United States and China, and developments by competitors may render our products or technologies obsolete or non-competitive, the inclusion of such information should not be regarded as a representation by Milestone Scientific or any other person that the objectives and plans of Milestone Scientific will be achieved. Prospective investors are cautioned that any forward-looking statements are not guarantees of future performance and are subject to risks and uncertainties and the actual results may differ materially from those included within the forward-looking statements because of various factors. Except as required by the federal securities laws, Milestone Scientific undertakes no obligation to revise or update any forward-looking statements, whether as a result of new information, future events or otherwise, to reflect events or circumstances occurring after the date of this Annual Report on Form 10-K. Milestone Scientific is the owner of the following registered U.S. trademarks: CompuDent\u00ae CompuMed\u00ae CompuFlo\u00ae DPS Dynamic Pressure Sensing technology\u00ae Milestone Scientific \u00ae CathCheck\u00ae the Milestone logo \u00ae SafetyWand\u00ae STA Single Tooth Anesthesia Device\u00ae and The Wand \u00ae.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 78,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 129,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": 2
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "December 31, 2024",
+     "",
+     ""
+    ],
+    [
+     "ASSETS",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash and cash equivalents",
+     "$",
+     "1,345,301",
+     "",
+     "$",
+     "3,258,058",
+     ""
+    ],
+    [
+     "Accounts receivable, net of allowance for credit losses of $10,000, respectively",
+     "",
+     "706,924",
+     "",
+     "",
+     "475,376",
+     ""
+    ],
+    [
+     "Accounts receivable, related party",
+     "",
+     "9,612",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Prepaid expenses and other current assets",
+     "",
+     "506,574",
+     "",
+     "",
+     "564,645",
+     ""
+    ],
+    [
+     "Inventories",
+     "",
+     "4,126,988",
+     "",
+     "",
+     "3,713,215",
+     ""
+    ],
+    [
+     "Advances on contracts",
+     "",
+     "1,414,702",
+     "",
+     "",
+     "1,275,260",
+     ""
+    ],
+    [
+     "Total current assets",
+     "",
+     "8,110,101",
+     "",
+     "",
+     "9,286,554",
+     ""
+    ],
+    [
+     "Furniture, fixtures and equipment, net",
+     "",
+     "18,254",
+     "",
+     "",
+     "12,921",
+     ""
+    ],
+    [
+     "Intangibles, net",
+     "",
+     "96,039",
+     "",
+     "",
+     "148,404",
+     ""
+    ],
+    [
+     "Right of use assets finance lease",
+     "",
+     "59,228",
+     "",
+     "",
+     "67,201",
+     ""
+    ],
+    [
+     "Right of use assets operating lease",
+     "",
+     "178,251",
+     "",
+     "",
+     "257,842",
+     ""
+    ],
+    [
+     "Other assets",
+     "",
+     "24,150",
+     "",
+     "",
+     "24,150",
+     ""
+    ],
+    [
+     "Total assets",
+     "$",
+     "8,486,023",
+     "",
+     "$",
+     "9,797,072",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "LIABILITIES AND STOCKHOLDERS\u2019 EQUITY",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accounts payable",
+     "$",
+     "2,012,867",
+     "",
+     "$",
+     "1,021,393",
+     ""
+    ],
+    [
+     "Accounts payable, related party",
+     "",
+     "1,027,360",
+     "",
+     "",
+     "493,313",
+     ""
+    ],
+    [
+     "Accrued expenses and other payables",
+     "",
+     "1,179,893",
+     "",
+     "",
+     "1,796,319",
+     ""
+    ],
+    [
+     "Accrued expenses, related party",
+     "",
+     "662,770",
+     "",
+     "",
+     "304,293",
+     ""
+    ],
+    [
+     "Current portion of finance lease liabilities",
+     "",
+     "23,919",
+     "",
+     "",
+     "12,530",
+     ""
+    ],
+    [
+     "Current portion of operating lease liabilities",
+     "",
+     "126,722",
+     "",
+     "",
+     "116,279",
+     ""
+    ],
+    [
+     "Total current liabilities",
+     "",
+     "5,033,531",
+     "",
+     "",
+     "3,744,127",
+     ""
+    ],
+    [
+     "Non-current portion of finance lease liabilities",
+     "",
+     "34,170",
+     "",
+     "",
+     "54,672",
+     ""
+    ],
+    [
+     "Non-current portion of operating lease liabilities",
+     "",
+     "68,927",
+     "",
+     "",
+     "165,573",
+     ""
+    ],
+    [
+     "Convertible notes payable, related parties",
+     "",
+     "800,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total liabilities",
+     "$",
+     "5,936,628",
+     "",
+     "$",
+     "3,964,372",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Commitments and contingencies",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stockholders\u2019 equity",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Common stock, par value $0.001; authorized 100,000,000 shares; 78,592,480 shares issued and 78,559,147 shares outstanding as of September 30, 2025; 78,047,798 shares issued and 78,014,465 shares outstanding as of December 31, 2024;",
+     "",
+     "78,592",
+     "",
+     "",
+     "78,048",
+     ""
+    ],
+    [
+     "Additional paid in capital",
+     "",
+     "136,067,080",
+     "",
+     "",
+     "134,719,274",
+     ""
+    ],
+    [
+     "Accumulated deficit",
+     "",
+     "(132,684,761)",
+     "",
+     "",
+     "(128,053,106)",
+     ""
+    ],
+    [
+     "Treasury stock, at cost, 33,333 shares",
+     "",
+     "(911,516)",
+     "",
+     "",
+     "(911,516)",
+     ""
+    ],
+    [
+     "Total Milestone Scientific, Inc. stockholders\u2019 equity",
+     "",
+     "2,549,395",
+     "",
+     "",
+     "5,832,700",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total liabilities and stockholders\u2019 equity",
+     "$",
+     "8,486,023",
+     "",
+     "$",
+     "9,797,072",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 145,
+    "end_line": 198
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": null
+   },
+   "prose_before": "When used in this Quarterly Report on Form 10-Q, the words \u201cmay\u201d, \u201cwill\u201d, \u201cshould\u201d, \u201cexpect\u201d, \u201cbelieve\u201d, \u201canticipate\u201d, \u201ccontinue\u201d, \u201cestimate\u201d, \u201cproject\u201d, \u201cintend\u201d and similar expressions are intended to identify forward-looking statements within the meaning of Section 27A of the Securities Act of 1933, as amended and Section 21E of the Securities Exchange Act of 1934, as amended (the \u201cExchange Act\u201d) regarding events, conditions and financial trends that may affect Milestone Scientific\u2019s future plans of operations, business strategy, results of operations and financial condition. Milestone Scientific wishes to ensure that such statements are accompanied by meaningful cautionary statements pursuant to the safe harbor established in the Private Securities Litigation Reform Act of 1995. The forward-looking statements included herein are based on current expectations that involve numerous risks and uncertainties. Milestone Scientific\u2019s plans and objectives are based, in part, on assumptions involving the continued expansion of its business. Assumptions relating to the foregoing involve judgments with respect to, among other things, future economic, competitive and market conditions and future business decisions, all of which are difficult or impossible to predict accurately and many of which are beyond the control of Milestone Scientific. Although Milestone Scientific believes that its assumptions underlying the forward-looking statements are reasonable, any of the assumptions could prove inaccurate. Considering the significant uncertainties inherent in the forward-looking statements included herein, our history of operating losses that are expected to continue, requiring additional funding which we may be unable to raise capital when needed (which may force us to delay, curtail or eliminate commercialization efforts of our CompuFlo Epidural Computer Controlled Anesthesia System), the early stage operations of and relative lack of acceptance of our medical products, relying exclusively on two third parties to manufacture our products, changes to our distribution arrangements exposes us to risks of interruption of marketing efforts and building new marketing channels, changes in our informal manufacturing arrangements made by the manufacturer of our products and disruptions at the manufacturing facility of our manufacturers, including shortages of or delays in obtaining chips and other components, exposes us to risks that may harm our business, raising additional funds by issuing securities or through licensing or lending arrangements may cause dilution to our existing stockholders, restrict our operations or require us to relinquish proprietary rights, if physicians do not accept or use our CompuFlo Epidural Computer Controlled Anesthesia System, our ability to generate revenue from sales will be materially impaired, exposure to the risks inherent in international sales and operations, including China, the changing tariff and trade policies of the United States and China, and developments by competitors may render our products or technologies obsolete or non-competitive, the inclusion of such information should not be regarded as a representation by Milestone Scientific or any other person that the objectives and plans of Milestone Scientific will be achieved. Prospective investors are cautioned that any forward-looking statements are not guarantees of future performance and are subject to risks and uncertainties and the actual results may differ materially from those included within the forward-looking statements because of various factors. Except as required by the federal securities laws, Milestone Scientific undertakes no obligation to revise or update any forward-looking statements, whether as a result of new information, future events or otherwise, to reflect events or circumstances occurring after the date of this Annual Report on Form 10-K. Milestone Scientific is the owner of the following registered U.S. trademarks: CompuDent\u00ae CompuMed\u00ae CompuFlo\u00ae DPS Dynamic Pressure Sensing technology\u00ae Milestone Scientific \u00ae CathCheck\u00ae the Milestone logo \u00ae SafetyWand\u00ae STA Single Tooth Anesthesia Device\u00ae and The Wand \u00ae.\nPart I- Financial Information\nItem 1. Financial Statements\nCONDENSED CONSOLIDATED BALANCE SHEETS\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 139,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 201,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "balance_sheet",
+    "aligned_family": "balance_sheet",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended\n\n\n\nSeptember 30, 2025",
+     "",
+     "",
+     "Three Months Ended\n\n\n\nSeptember 30, 2024",
+     "",
+     "",
+     "Nine Months Ended\n\n\n\nSeptember 30, 2025",
+     "",
+     "",
+     "Nine Months Ended\n\n\n\nSeptember 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "$",
+     "2,360,117",
+     "",
+     "$",
+     "2,513,805",
+     "",
+     "$",
+     "6,916,003",
+     "",
+     "$",
+     "6,616,414",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "",
+     "719,247",
+     "",
+     "",
+     "677,585",
+     "",
+     "",
+     "2,010,092",
+     "",
+     "",
+     "1,692,888",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "1,640,870",
+     "",
+     "",
+     "1,836,220",
+     "",
+     "",
+     "4,905,911",
+     "",
+     "",
+     "4,923,526",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "2,739,011",
+     "",
+     "",
+     "3,064,769",
+     "",
+     "",
+     "9,026,691",
+     "",
+     "",
+     "8,968,226",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "",
+     "16,226",
+     "",
+     "",
+     "232,056",
+     "",
+     "",
+     "437,135",
+     "",
+     "",
+     "641,235",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "20,104",
+     "",
+     "",
+     "8,574",
+     "",
+     "",
+     "59,040",
+     "",
+     "",
+     "28,735",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "2,775,341",
+     "",
+     "",
+     "3,305,399",
+     "",
+     "",
+     "9,522,866",
+     "",
+     "",
+     "9,638,196",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,134,471)",
+     "",
+     "",
+     "(1,469,179)",
+     "",
+     "",
+     "(4,616,955)",
+     "",
+     "",
+     "(4,714,670)",
+     ""
+    ],
+    [
+     "Interest (expense) income, net",
+     "",
+     "(19,488)",
+     "",
+     "",
+     "8,008",
+     "",
+     "",
+     "(14,700)",
+     "",
+     "",
+     "53,513",
+     ""
+    ],
+    [
+     "Gain on sale of net operating losses",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "1,983,095",
+     ""
+    ],
+    [
+     "Loss before provision for income taxes",
+     "",
+     "(1,153,959)",
+     "",
+     "",
+     "(1,461,171)",
+     "",
+     "",
+     "(4,631,655)",
+     "",
+     "",
+     "(2,678,062)",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(1,153,959)",
+     "",
+     "",
+     "(1,461,171)",
+     "",
+     "",
+     "(4,631,655)",
+     "",
+     "",
+     "(2,678,062)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss per share applicable to common stockholders\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and Diluted",
+     "",
+     "(0.01)",
+     "",
+     "",
+     "(0.02)",
+     "",
+     "",
+     "(0.06)",
+     "",
+     "",
+     "(0.03)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding and to be issued\u2014",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic and diluted",
+     "",
+     "82,322,910",
+     "",
+     "",
+     "79,966,833",
+     "",
+     "",
+     "82,008,336",
+     "",
+     "",
+     "80,165,181",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 207,
+    "end_line": 240
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THREE AND NINE MONTHS ENDED SEPTEMBER 30, 2025 AND 2024\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 201,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 4
+    },
+    "after": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "income_statement",
+    "aligned_family": "income_statement",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock\n\n\n\nShares",
+     "",
+     "Common Stock\n\n\n\nAmount",
+     "",
+     "Additional\n\n\n\nPaid in\n\n\n\nCapital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Total Stockholder\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "Balance as of January 1, 2025",
+     "",
+     "78,047,798",
+     "$",
+     "78,048",
+     "$",
+     "134,719,274",
+     "",
+     "$",
+     "(128,053,106)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "5,832,700",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "330,787",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "330,787",
+     ""
+    ],
+    [
+     "Common stock to be issued to employees for bonuses",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "293,551",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "293,551",
+     ""
+    ],
+    [
+     "Common stock issued to board of directors for services",
+     "",
+     "182,584",
+     "",
+     "182",
+     "",
+     "(182)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,994,586)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,994,586)",
+     ""
+    ],
+    [
+     "Balance March 31, 2025",
+     "",
+     "78,230,382",
+     "$",
+     "78,230",
+     "$",
+     "135,343,430",
+     "",
+     "$",
+     "(130,047,692)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "4,462,452",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "159,679",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "159,679",
+     ""
+    ],
+    [
+     "Common stock issued for payment of consulting services",
+     "",
+     "207,604",
+     "",
+     "208",
+     "",
+     "201,043",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "201,251",
+     ""
+    ],
+    [
+     "Common stock issued to board of directors for services",
+     "",
+     "154,494",
+     "",
+     "154",
+     "",
+     "(154)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,483,110)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,483,110)",
+     ""
+    ],
+    [
+     "Balance June 30,2025",
+     "",
+     "78,592,480",
+     "$",
+     "78,592",
+     "$",
+     "135,703,998",
+     "",
+     "$",
+     "(131,530,802)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "3,340,272",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "$",
+     "363,082",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "363,082",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "$",
+     "(1,153,959)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,153,959)",
+     ""
+    ],
+    [
+     "Balance September 30, 2025",
+     "",
+     "78,592,480",
+     "$",
+     "78,592",
+     "$",
+     "136,067,080",
+     "",
+     "$",
+     "(132,684,761)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "2,549,395",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 251,
+    "end_line": 280
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS\u2019 EQUITY\nFOR THREE AND NINE MONTHS ENDED SEPTEMBER 30, 2025 AND 2024\n(UNAUDITED)",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 243,
+     "token": "PAGE_BREAK",
+     "id": 6,
+     "namespace": "arabic",
+     "page_number": 5
+    },
+    "after": {
+     "line": 281,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Common Stock\n\n\n\nShares",
+     "",
+     "Common Stock\n\n\n\nAmount",
+     "",
+     "Additional\n\n\n\nPaid in\n\n\n\nCapital",
+     "",
+     "",
+     "Accumulated Deficit",
+     "",
+     "",
+     "Treasury Stock",
+     "",
+     "",
+     "Total Stockholder\n\n\n\nEquity",
+     "",
+     ""
+    ],
+    [
+     "Balance January 1, 2024",
+     "",
+     "75,881,840",
+     "$",
+     "75,881",
+     "$",
+     "132,187,656",
+     "",
+     "$",
+     "(123,339,509)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "8,012,512",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "313,505",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "313,505",
+     ""
+    ],
+    [
+     "Common stock issued in public offering net of issuance cost of $42,273",
+     "",
+     "372,110",
+     "",
+     "372",
+     "",
+     "191,784",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "192,156",
+     ""
+    ],
+    [
+     "Common Stock issued exercised warrants",
+     "",
+     "103,500",
+     "",
+     "104",
+     "",
+     "51,647",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "51,751",
+     ""
+    ],
+    [
+     "Common stock issued for payment of consulting services",
+     "",
+     "90,170",
+     "",
+     "90",
+     "",
+     "65,971",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "66,061",
+     ""
+    ],
+    [
+     "Common stock to be issued to employees for bonuses",
+     "",
+     "30,165",
+     "",
+     "31",
+     "",
+     "264,922",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "264,953",
+     ""
+    ],
+    [
+     "Common stock issued to board of directors for services",
+     "",
+     "154,494",
+     "",
+     "154",
+     "",
+     "(154)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "(1,440,529)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "(1,440,529)",
+     ""
+    ],
+    [
+     "Balance at March 31, 2024",
+     "",
+     "76,632,279",
+     "$",
+     "76,632",
+     "$",
+     "133,075,331",
+     "",
+     "$",
+     "(124,780,038)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "7,460,409",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "207,690",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "207,690",
+     ""
+    ],
+    [
+     "Common stock issued for payment of consulting services",
+     "",
+     "99,063",
+     "",
+     "99",
+     "",
+     "62,041",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "62,140",
+     ""
+    ],
+    [
+     "Common stock to be issued to employees for bonuses",
+     "",
+     "322,937",
+     "",
+     "324",
+     "",
+     "(324)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Restricted common stock issued to employees",
+     "",
+     "18,939",
+     "",
+     "19",
+     "",
+     "(19)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Common stock issued to board of directors for services",
+     "",
+     "154,496",
+     "",
+     "154",
+     "",
+     "(154)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "223,638",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "223,638",
+     ""
+    ],
+    [
+     "Balance at June 30, 2024",
+     "",
+     "77,227,714",
+     "$",
+     "77,228",
+     "$",
+     "133,344,565",
+     "",
+     "$",
+     "(124,556,400)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "7,953,877",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "-",
+     "$",
+     "-",
+     "$",
+     "484,078",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "484,078",
+     ""
+    ],
+    [
+     "Common stock issued for payment of consulting services",
+     "",
+     "299,198",
+     "$",
+     "299",
+     "$",
+     "244,401",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "244,700",
+     ""
+    ],
+    [
+     "Common stock issued to board of directors for services",
+     "",
+     "182,543",
+     "$",
+     "183",
+     "$",
+     "(183)",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "-",
+     "$",
+     "-",
+     "",
+     "-",
+     "",
+     "$",
+     "(1,461,171)",
+     "",
+     "$",
+     "-",
+     "",
+     "",
+     "(1,461,171)",
+     ""
+    ],
+    [
+     "Balance September 30, 2024",
+     "",
+     "77,709,455",
+     "$",
+     "77,710",
+     "$",
+     "134,072,861",
+     "",
+     "$",
+     "(126,017,571)",
+     "",
+     "$",
+     "(911,516)",
+     "",
+     "$",
+     "7,221,484",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 282,
+    "end_line": 319
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR NINE MONTHS ENDED\n(UNAUDITED)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 281,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 6
+    },
+    "after": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "September 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net loss",
+     "$",
+     "(4,631,655)",
+     "",
+     "$",
+     "(2,678,062)",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net loss to net cash used in operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Depreciation expense",
+     "",
+     "6,675",
+     "",
+     "",
+     "5,355",
+     ""
+    ],
+    [
+     "Amortization of intangibles",
+     "",
+     "52,365",
+     "",
+     "",
+     "23,380",
+     ""
+    ],
+    [
+     "Stock based compensation",
+     "",
+     "853,548",
+     "",
+     "",
+     "1,005,273",
+     ""
+    ],
+    [
+     "Employees paid in stock",
+     "",
+     "293,551",
+     "",
+     "",
+     "264,953",
+     ""
+    ],
+    [
+     "Expense paid in stock",
+     "",
+     "201,251",
+     "",
+     "",
+     "372,901",
+     ""
+    ],
+    [
+     "Bad Debt",
+     "",
+     "8,525",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amortization of right-of-use asset",
+     "",
+     "76,330",
+     "",
+     "",
+     "72,149",
+     ""
+    ],
+    [
+     "Changes in operating assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Increase in accounts receivable",
+     "",
+     "(240,073)",
+     "",
+     "",
+     "(238,305)",
+     ""
+    ],
+    [
+     "Increase in accounts receivable, related parties",
+     "",
+     "(9,612)",
+     "",
+     "",
+     "(3,013)",
+     ""
+    ],
+    [
+     "Increase in inventories",
+     "",
+     "(413,773)",
+     "",
+     "",
+     "(1,073,450)",
+     ""
+    ],
+    [
+     "(Increase) decrease in advances on contracts",
+     "",
+     "(139,442)",
+     "",
+     "",
+     "360,242",
+     ""
+    ],
+    [
+     "Decrease (increase) prepaid expenses and other current assets",
+     "",
+     "58,071",
+     "",
+     "",
+     "(128,345)",
+     ""
+    ],
+    [
+     "Increase in accounts payable",
+     "",
+     "991,474",
+     "",
+     "",
+     "448,461",
+     ""
+    ],
+    [
+     "Increase in accounts payable, related party",
+     "",
+     "534,047",
+     "",
+     "",
+     "329,504",
+     ""
+    ],
+    [
+     "Decrease in accrued expenses",
+     "",
+     "(616,426)",
+     "",
+     "",
+     "(243,999)",
+     ""
+    ],
+    [
+     "Increase in accrued expenses, related party",
+     "",
+     "358,477",
+     "",
+     "",
+     "144,758",
+     ""
+    ],
+    [
+     "Decrease operating right of use lease asset",
+     "",
+     "(73,831)",
+     "",
+     "",
+     "(70,189)",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(2,690,498)",
+     "",
+     "$",
+     "(1,408,387)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Purchase of furniture, fixtures, and equipment",
+     "",
+     "(12,008)",
+     "",
+     "",
+     "(6,596)",
+     ""
+    ],
+    [
+     "Sale of marketable securities",
+     "",
+     "-",
+     "",
+     "",
+     "2,976,573",
+     ""
+    ],
+    [
+     "Net cash used in provided by investing activities",
+     "$",
+     "(12,008)",
+     "",
+     "$",
+     "2,969,977",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net proceeds from public placement offering",
+     "",
+     "-",
+     "",
+     "",
+     "192,156",
+     ""
+    ],
+    [
+     "Proceeds from issuances of convertible notes, related parties",
+     "",
+     "800,000",
+     "",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Net Proceeds exercise of warrants",
+     "",
+     "-",
+     "",
+     "",
+     "51,751",
+     ""
+    ],
+    [
+     "Payments finance lease obligations",
+     "",
+     "(10,251)",
+     "",
+     "",
+     "(7,613)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "$",
+     "789,749",
+     "",
+     "$",
+     "236,294",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "",
+     "(1,912,757)",
+     "",
+     "",
+     "1,797,884",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at beginning of period",
+     "",
+     "3,258,058",
+     "",
+     "",
+     "2,977,713",
+     ""
+    ],
+    [
+     "Cash and cash equivalents at end of period",
+     "$",
+     "1,345,301",
+     "",
+     "$",
+     "4,775,597",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 330,
+    "end_line": 377
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nCONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS\nFOR NINE MONTHS ENDED\n(UNAUDITED)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited condensed consolidated financial statements.\nMILESTONE SCIENTIFIC, INC.\nNOTES TO CONDENSED CONSOLIDATED FINANCIAL STATEMENTS\n(UNAUDITED)\nNOTE 1 \u2014 ORGANIZATION AND BUSINESS\nAll references in this report to \u201cMilestone Scientific,\u201d \u201cus,\u201d \u201cour,\u201d \u201cwe,\u201d the \u201cCompany\u201d or \u201cMilestone\u201d refer to Milestone Scientific Inc., and its consolidated subsidiaries, Wand Dental, Inc., and Milestone Innovations Inc. and Milestone Education LLC (all described below), unless the context otherwise indicates. Milestone Scientific is the owner of the following registered U.S. trademarks: CompuDent\u00ae; CompuMed\u00ae; CompuFlo\u00ae; DPS Dynamic Pressure Sensing technology\u00ae; Milestone Scientific \u00ae; the Milestone logo \u00ae; SafetyWand\u00ae; STA Single Tooth Anesthesia System\u00ae; and The Wand \u00ae.\nMilestone Scientific was incorporated in the State of Delaware in August 1989. Milestone Scientific has developed a proprietary, computer-controlled anesthetic delivery device, using The Wand\u00ae, a single use disposable handpiece. The device is marketed in dentistry under the trademarks CompuDent\u00ae and STA Single Tooth Anesthesia System\u00ae, and in medicine under the trademark CompuMed\u00ae. CompuDent\u00ae is suitable for all dental procedures that require a local anesthetic. CompuMed\u00ae is suitable for many medical procedures regularly performed in plastic surgery, hair restoration surgery, podiatry, colorectal surgery, dermatology, orthopedics, and many other disciplines. The dental devices are sold in the United States, Canada, and 49 other countries. Specific medical devices have obtained CE mark approval and can be marketed and sold in most European countries. In June 2017, Milestone Scientific received 510(k) marketing clearance from the U.S. Food and Drug Administration (FDA) on the CompuFlo\u00ae Epidural Computer Controlled Anesthesia System (\u201cEpidural\u201d).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 322,
+     "token": "PAGE_BREAK",
+     "id": 8,
+     "namespace": "arabic",
+     "page_number": 7
+    },
+    "after": {
+     "line": 380,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 8
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2025",
+     "",
+     "December 31, 2024",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Dental finished goods",
+     "$",
+     "3,921,747",
+     "$",
+     "3,640,391"
+    ],
+    [
+     "Medical finished goods",
+     "",
+     "120,721",
+     "",
+     "-"
+    ],
+    [
+     "Component parts and other materials",
+     "",
+     "84,520",
+     "",
+     "72,824"
+    ],
+    [
+     "Total inventories",
+     "$",
+     "4,126,988",
+     "$",
+     "3,713,215"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 497,
+    "end_line": 508
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "In November 2023, FASB issued ASU 2023-07, Segment Reporting (Topic 280), Improvements to Reportable Segment Disclosures, which provides improvements to reportable segment disclosure requirements, primarily through enhanced disclosures around segment expenses. ASU 2023-07 requires us to disclose significant segment expenses that are regularly provided to the chief operating decision maker (\u201cCODM\u201d) and included within each reported measure of segment profit or loss. ASU 2023-07 also requires that the Company disclose an amount for other segment items by reportable segment, a description of their composition and provide all annual disclosures about a reportable segment\u2019s profit or loss and assets pursuant to Topic 280 during interim periods. The Company must also disclose the CODM\u2019s title and position, as well as specific information around the measures used by the CODM and an explanation of how the CODM uses the reported measures in assessing segment performance and deciding how to allocate resources. Public entities with a single reportable segment must provide all the disclosures required pursuant to ASU 2023-07 and all existing segment disclosures under Topic 280. The amendments of ASU 2023-07 are effective for us for annual periods beginning January 1, 2024, and effective for interim periods beginning January 1, 2025. Early adoption is permitted for annual financial statements that have not yet been issued or made available for issuance. As of January 1, 2024, the Company adopted ASU 2023-07 within its consolidated financial statements. See Note 10 for more information.\nNOTE 4 \u2014 INVENTORIES\nInventories consist of the following:\nSCHEDULE OF INVENTORIES",
+   "prose_after": "The Company had an allowance on slow moving Medical finished goods due to the slow adoption of the epidural instruments and handpieces for approximately $1.1 million as of September 30, 2025, and December 31, 2024, respectively.\nNOTE 5 \u2014 ADVANCES ON CONTRACTS\nThe advances on contracts represent funding of future STA devices, epidural instruments, and epidural replacements parts. The balance of advances as of September 30, 2025 and December 31, 2024 is approximately $1.4 million and $1.3 million, respectively. The advance is classified as current based on the estimated annual usage of the underlying inventory.\nNOTE 6 \u2014 CONVERITBLE NOTE PAYABLE, RELATED PARTY\nOn April 9, 2025, the Company issued a series of promissory notes (the \u201cNotes\u201d) in the aggregate amount of $800,000, to Mr. Neal Goldman, Ms. Benedetta Casamento, and Dr. Didier Demesmin, each of whom is a director of the Company. The Notes are due April 9, 2028, and bear interest at the annual rate of prime less 2.50%, payable annually. All principal and interest shall be payable in cash and/or shares of common stock at the sole discretion of the Company.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 486,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2025",
+     "",
+     "September 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Shares-to-be-issued, outstanding January 1, 2025 and 2024, respectively",
+     "",
+     "3,393,017",
+     "",
+     "3,098,917",
+     ""
+    ],
+    [
+     "Granted in current period",
+     "",
+     "315,646",
+     "",
+     "438,868",
+     ""
+    ],
+    [
+     "Issued in current period",
+     "",
+     "-",
+     "",
+     "(353,102)",
+     ""
+    ],
+    [
+     "Shares-to be issued outstanding September 30, 2025 and 2024, respectively",
+     "",
+     "3,708,663",
+     "",
+     "3,184,683",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 538,
+    "end_line": 549
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "On January 12, 2024 the underwriter exercised its over-allotment option as to 372,110 shares of common stock for net proceeds after discounts and commission of $192,156.\nSHARES TO BE ISSUED\nAs of September 30, 2025 and 2024, there were 3,076,871 and 2,657,058, respectively, shares to be issued whose issuance has been deferred under the terms of employment and consulting agreements with officers and directors and other employees of Milestone Scientific. Such shares will be issued to each party upon termination of their employment or other relationship with the Company.\nAs of September 30, 2025 and 2024, there were 631,792 and 527,625, respectively, shares to be issued to non-employees, that will be issued to non-employees for services rendered. The number of shares was fixed by contract before the date of grant, subject to performance, and were fully earned upon the grant date.\nThe following table summarizes information about shares to be issued for the nine month periods ending September 30, 2025 and 2024.\nSCHEDULE OF SHARES TO BE ISSUED",
+   "prose_after": "NOTE 8 \u2014 STOCK OPTION PLANS\nMilestone Scientific Inc., the Amended and Restated 2020 Equity Incentive Plan, provides for awards of restricted common, stock restricted stock units, options to purchase and other awards. On June 28, 2023 the plan was amended and restated (the \u201c2020 Plan\u201d) to increase the maximum shares that can be issued thereunder to 11,500,000 shares of common stock. The plan expires in June 2031. Options may be granted to employees, directors, and consultants of Milestone Scientific for the purchase of shares of common stock at a price not less than the fair market value of common stock on the date of grant. Generally, options become exercisable over three years from the grant date and expire five years after the date of grant.\nMilestone Scientific recognizes compensation expenses over the requisite service period and in the case of performance-based options over the period of the expected performance. For the three and nine months ended September 30, 2025, Milestone Scientific recognized approximately $362,000 and $691,000 of total employee compensation cost, respectively, recorded in general and administrative expenses on the statement of operations. For the three and nine months ended September 30, 2024, Milestone Scientific recognized approximately $172,000 and $530,000 of total employee compensation cost, respectively, recorded in general and administrative expenses on the statement of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "",
+     "Weighted Averaged Exercise Price $",
+     "",
+     "Weighted Average Remaining Contractual Life (Years)",
+     "",
+     "Aggregate Intrinsic Options\n\n\n\nValue $",
+     ""
+    ],
+    [
+     "Options outstanding at January 1, 2025",
+     "",
+     "2,951,989",
+     "",
+     "",
+     "2.29",
+     "",
+     "4.54",
+     "",
+     "-"
+    ],
+    [
+     "Granted during 2025",
+     "",
+     "4,000,000",
+     "",
+     "",
+     "0.48",
+     "",
+     "9.85",
+     "",
+     "-"
+    ],
+    [
+     "Exercised during 2025",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Forfeited or expired during 2025",
+     "",
+     "(216,296)",
+     "",
+     "",
+     "1.52",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Options outstanding September 30, 2025",
+     "",
+     "6,735,693",
+     "",
+     "",
+     "1.25",
+     "",
+     "7.53",
+     "",
+     "-"
+    ],
+    [
+     "Exercisable, September 30, 2025",
+     "",
+     "2,735,694",
+     "",
+     "",
+     "2.10",
+     "",
+     "4.76",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 562,
+    "end_line": 576
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Milestone Scientific recognizes compensation expenses over the requisite service period and in the case of performance-based options over the period of the expected performance. For the three and nine months ended September 30, 2025, Milestone Scientific recognized approximately $362,000 and $691,000 of total employee compensation cost, respectively, recorded in general and administrative expenses on the statement of operations. For the three and nine months ended September 30, 2024, Milestone Scientific recognized approximately $172,000 and $530,000 of total employee compensation cost, respectively, recorded in general and administrative expenses on the statement of operations.\nAs of September 30, 2025, there was $1.6 million of total unrecognized compensation cost related to non-vested options. Milestone Scientific expects to recognize these costs over a weighted average period of 0.50 years.\nA summary of option activity for employees under the plans and changes during the nine months ended September 30, 2025 is presented below:\nSCHEDULE OF STOCK OPTION ACTIVITY",
+   "prose_after": "The Company used the following assumptions to calculate the fair value of the stock option grants using the Black-Scholes option pricing model on the measurement date during the nine month period ended September 30, 2025 risk free interest rate of 1.75%, Volatility of 86.6% (which is based on the Company\u2019s historical volatility over the expected term), expected term of 5 years, 0% dividend rate and closing price of the stock of $0.45-$0.50.\nA summary of option activity for non-employees under the plans and changes during the nine months ended September 30, 2025 is presented below:\nSCHEDULE OF STOCK OPTION ACTIVITY",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 521,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Options",
+     "",
+     "",
+     "Weighted Averaged Exercise Price $",
+     "",
+     "Weighted Average Remaining Contractual Life (Years)",
+     "",
+     "Aggregate Intrinsic Options Value $",
+     ""
+    ],
+    [
+     "Options outstanding at January 1, 2025",
+     "",
+     "99,996",
+     "",
+     "",
+     "1.74",
+     "",
+     "2.12",
+     "",
+     "5,750"
+    ],
+    [
+     "Granted during 2025",
+     "",
+     "16,666",
+     "",
+     "",
+     "0.94",
+     "",
+     "4.69",
+     "",
+     ""
+    ],
+    [
+     "Exercised during 2025",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Forfeited or expired during 2025",
+     "",
+     "(24,999)",
+     "",
+     "",
+     "1.70",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Options outstanding September 30, 2025",
+     "",
+     "91,663",
+     "",
+     "",
+     "1.60",
+     "",
+     "2.42",
+     "",
+     "0"
+    ],
+    [
+     "Exercisable, September 30, 2025",
+     "",
+     "72,214",
+     "",
+     "",
+     "1.79",
+     "",
+     "1.97",
+     "",
+     "0"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 584,
+    "end_line": 596
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "The Company used the following assumptions to calculate the fair value of the stock option grants using the Black-Scholes option pricing model on the measurement date during the nine month period ended September 30, 2025 risk free interest rate of 1.75%, Volatility of 86.6% (which is based on the Company\u2019s historical volatility over the expected term), expected term of 5 years, 0% dividend rate and closing price of the stock of $0.45-$0.50.\nA summary of option activity for non-employees under the plans and changes during the nine months ended September 30, 2025 is presented below:\nSCHEDULE OF STOCK OPTION ACTIVITY",
+   "prose_after": "The fair value of the non-employee options was estimated on the date of grant using the Black Scholes option-pricing model at the date of grant. For the three and nine months ended September 30, 2025, Milestone Scientific recognized approximately $1,300 and $9,300 expenses related to non-employee options, respectively. For the three and nine months ended September 30, 2024, Milestone Scientific recognized approximately $7,000 and $9,200, respectively of expense related to non-employee options.\nThe Company used the following assumptions to calculate the fair value of the stock option grants using the Black-Scholes option pricing model on the measurement date during the nine month period ended September 30, 2025 risk free interest rate of 1% , Volatility of 85.79%-86.29% (which is based on the Company\u2019s historical volatility over the expected term), expected term of 5 years, 0% dividend rate and closing price of the stock of $0.93-$0.94.\nA summary of the restricted stock under the plans and changes during the nine months ended September 30, 2025 is presented below:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Number of Shares",
+     "",
+     "",
+     "Weighted Average Grant-Date Fair Value per Award",
+     ""
+    ],
+    [
+     "Non-vested as January 1, 2025",
+     "",
+     "365,171",
+     "",
+     "",
+     "0.89"
+    ],
+    [
+     "Granted",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ],
+    [
+     "Vested",
+     "",
+     "(337,081)",
+     "",
+     "",
+     "0.89"
+    ],
+    [
+     "Cancelled",
+     "",
+     "(28,090)",
+     "",
+     "",
+     "0.89"
+    ],
+    [
+     "Non-vested as September 30, 2025",
+     "",
+     "-",
+     "",
+     "",
+     "-"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 605,
+    "end_line": 616
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "The fair value of the non-employee options was estimated on the date of grant using the Black Scholes option-pricing model at the date of grant. For the three and nine months ended September 30, 2025, Milestone Scientific recognized approximately $1,300 and $9,300 expenses related to non-employee options, respectively. For the three and nine months ended September 30, 2024, Milestone Scientific recognized approximately $7,000 and $9,200, respectively of expense related to non-employee options.\nThe Company used the following assumptions to calculate the fair value of the stock option grants using the Black-Scholes option pricing model on the measurement date during the nine month period ended September 30, 2025 risk free interest rate of 1% , Volatility of 85.79%-86.29% (which is based on the Company\u2019s historical volatility over the expected term), expected term of 5 years, 0% dividend rate and closing price of the stock of $0.93-$0.94.\nA summary of the restricted stock under the plans and changes during the nine months ended September 30, 2025 is presented below:\nSCHEDULE OF RESTRICTED STOCK",
+   "prose_after": "The Company granted 730,340 restricted stock awards with a fair market value of $0.89 per share. Such restricted stock vests as follows: 25% on the grant date in June 2024, and 25% quarterly, on the first day of the following months: October 2024, January 2025, and April 2025. These awards vest immediately upon a change of control as defined in the agreements. For the nine months ended September 30, 2025, the Company recognized approximately $0 and $155,500, respectively, for restricted stock expenses recorded in general and administrative expenses on the statement of operations. As of September 30, 2025, there was no unrecognized compensation expense.\nNOTE 9 \u2014 INCOME TAXES\nThe utilization of Milestone Scientific\u2019s net operating losses may be subject to a substantial limitation due to the \u201cchange of ownership provisions\u201d under Section 382 of the Internal Revenue Code and similar state provisions. Such limitations may result in the expiration of the net operating loss carry forwards before their utilization. Milestone Scientific has established a 100% valuation allowance for all its deferred tax assets due to uncertainty as to their future realization.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 579,
+     "token": "PAGE_BREAK",
+     "id": 15,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months ending September 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate",
+     "",
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "",
+     "Grand Total",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,318,993",
+     "$",
+     "41,124",
+     "",
+     "$",
+     "2,360,117",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "",
+     "-",
+     "",
+     "",
+     "718,481",
+     "",
+     "766",
+     "",
+     "",
+     "719,247",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-",
+     "",
+     "",
+     "1,600,512",
+     "",
+     "40,358",
+     "",
+     "",
+     "1,640,870",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries & employee benefits",
+     "",
+     "387,591",
+     "",
+     "",
+     "440,807",
+     "",
+     "170,429",
+     "",
+     "",
+     "998,827",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "363,084",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "363,084",
+     ""
+    ],
+    [
+     "Royalties",
+     "",
+     "-",
+     "",
+     "",
+     "116,540",
+     "",
+     "2,065",
+     "",
+     "",
+     "118,605",
+     ""
+    ],
+    [
+     "Marketing",
+     "",
+     "21,321",
+     "",
+     "",
+     "32,980",
+     "",
+     "9,249",
+     "",
+     "",
+     "63,550",
+     ""
+    ],
+    [
+     "Rent & occupancy costs",
+     "",
+     "22,805",
+     "",
+     "",
+     "12,521",
+     "",
+     "7,826",
+     "",
+     "",
+     "43,152",
+     ""
+    ],
+    [
+     "Consultants and professional services fees",
+     "",
+     "550,229",
+     "",
+     "",
+     "37,633",
+     "",
+     "65,633",
+     "",
+     "",
+     "653,495",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "40,907",
+     "",
+     "",
+     "45,051",
+     "",
+     "39,969",
+     "",
+     "",
+     "125,927",
+     ""
+    ],
+    [
+     "Warehousing expense",
+     "",
+     "2,885",
+     "",
+     "",
+     "107,564",
+     "",
+     "7,465",
+     "",
+     "",
+     "117,914",
+     ""
+    ],
+    [
+     "Regulatory expense",
+     "",
+     "42,446",
+     "",
+     "",
+     "18,192",
+     "",
+     "3,862",
+     "",
+     "",
+     "64,500",
+     ""
+    ],
+    [
+     "Travel expense",
+     "",
+     "23,364",
+     "",
+     "",
+     "4,518",
+     "",
+     "9,178",
+     "",
+     "",
+     "37,060",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "-",
+     "",
+     "",
+     "15,401",
+     "",
+     "825",
+     "",
+     "",
+     "16,226",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "20,104",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "20,104",
+     ""
+    ],
+    [
+     "Other Segments items",
+     "",
+     "76,116",
+     "",
+     "",
+     "75,913",
+     "",
+     "868",
+     "",
+     "",
+     "152,897",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,550,852",
+     "",
+     "",
+     "907,120",
+     "",
+     "317,369",
+     "",
+     "",
+     "2,775,341",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "$",
+     "(1,550,852)",
+     "",
+     "$",
+     "693,392",
+     "$",
+     "(277,011)",
+     "",
+     "$",
+     "(1,134,471)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months ending September 30, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 638,
+    "end_line": 665
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "Operating segments are reported in a manner consistent with the internal reporting provided to the chief operating decision maker. The chief operating decision maker, who is responsible for allocating resources and assessing performance of operating segments, has been identified as the Chief Executive Officer (the \u201cCODM\u201d). The Company conducts its business through two reportable segments: Dental and Medical. These segments offer different products and services to various customer base. The CODM assesses the financial performance of the segment and decides how to allocate resources based on Product sales, net, and operating income (loss). Certain reclassifications have been made to the 2025 unaudited condensed consolidated financial statements to conform to the 2024 unaudited condensed consolidated financial statement presentation. These reclassifications had no effect on net loss or cash flows as previously reported.\nThe Company provides general corporate services to its segments; however, these services are not considered when making operating decisions and assessing segment performance. These services are reported under \u201cCorporate Services\u201d below and these include costs associated with executive management, investor relations, patents, trademarks, licensing agreements, new instruments developments, financing activities and public company compliance.\nThe following tables present information about our reportable and operating segments for the three and nine months ended September 30, 2025, and 2024:\nSCHEDULE OF REPORTABLE AND OPERATING SEGMENTS",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months ending September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate",
+     "",
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "",
+     "Grand Total",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "2,468,205",
+     "$",
+     "45,600",
+     "",
+     "$",
+     "2,513,805",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "",
+     "-",
+     "",
+     "",
+     "674,164",
+     "",
+     "3,421",
+     "",
+     "",
+     "677,585",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-",
+     "",
+     "",
+     "1,794,041",
+     "",
+     "42,179",
+     "",
+     "",
+     "1,836,220",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries & employee benefits",
+     "",
+     "427,416",
+     "",
+     "",
+     "396,533",
+     "",
+     "200,992",
+     "",
+     "",
+     "1,024,941",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "484,077",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "484,077",
+     ""
+    ],
+    [
+     "Royalties",
+     "",
+     "-",
+     "",
+     "",
+     "124,178",
+     "",
+     "2,370",
+     "",
+     "",
+     "126,548",
+     ""
+    ],
+    [
+     "Marketing",
+     "",
+     "20,348",
+     "",
+     "",
+     "80,316",
+     "",
+     "13,943",
+     "",
+     "",
+     "114,607",
+     ""
+    ],
+    [
+     "Rent & occupancy costs",
+     "",
+     "15,501",
+     "",
+     "",
+     "12,243",
+     "",
+     "7,652",
+     "",
+     "",
+     "35,396",
+     ""
+    ],
+    [
+     "Consultants and professional services fees",
+     "",
+     "520,204",
+     "",
+     "",
+     "42,850",
+     "",
+     "107,170",
+     "",
+     "",
+     "670,224",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "140,021",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "140,021",
+     ""
+    ],
+    [
+     "Warehousing expense",
+     "",
+     "3,615",
+     "",
+     "",
+     "106,723",
+     "",
+     "7,459",
+     "",
+     "",
+     "117,797",
+     ""
+    ],
+    [
+     "Regulatory expense",
+     "",
+     "91,881",
+     "",
+     "",
+     "10,977",
+     "",
+     "7,964",
+     "",
+     "",
+     "110,822",
+     ""
+    ],
+    [
+     "Travel expense",
+     "",
+     "11,425",
+     "",
+     "",
+     "17,492",
+     "",
+     "25,141",
+     "",
+     "",
+     "54,058",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "",
+     "",
+     "",
+     "232,056",
+     "",
+     "-",
+     "",
+     "",
+     "232,056",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "8,574",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "8,574",
+     ""
+    ],
+    [
+     "Other Segments items",
+     "",
+     "91,425",
+     "",
+     "",
+     "92,355",
+     "",
+     "2,498",
+     "",
+     "",
+     "186,278",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "1,814,487",
+     "",
+     "",
+     "1,115,723",
+     "",
+     "375,189",
+     "",
+     "",
+     "3,305,399",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "$",
+     "(1,814,487)",
+     "",
+     "$",
+     "678,318",
+     "$",
+     "(333,010)",
+     "",
+     "$",
+     "(1,469,179)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Three Months ending September 30, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 666,
+    "end_line": 693
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 633,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months ending September 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate",
+     "",
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "",
+     "Grand Total",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "6,791,353",
+     "$",
+     "124,650",
+     "",
+     "$",
+     "6,916,003",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "",
+     "-",
+     "",
+     "",
+     "2,008,242",
+     "",
+     "1,850",
+     "",
+     "",
+     "2,010,092",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-",
+     "",
+     "",
+     "4,783,111",
+     "",
+     "122,800",
+     "",
+     "",
+     "4,905,911",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries & employee benefits",
+     "",
+     "711,476",
+     "",
+     "",
+     "1,322,768",
+     "",
+     "569,276",
+     "",
+     "",
+     "2,603,520",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "853,550",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "853,550",
+     ""
+    ],
+    [
+     "Royalties",
+     "",
+     "-",
+     "",
+     "",
+     "344,642",
+     "",
+     "6,233",
+     "",
+     "",
+     "350,875",
+     ""
+    ],
+    [
+     "Marketing",
+     "",
+     "35,738",
+     "",
+     "",
+     "164,656",
+     "",
+     "53,476",
+     "",
+     "",
+     "253,870",
+     ""
+    ],
+    [
+     "Rent & occupancy costs",
+     "",
+     "57,216",
+     "",
+     "",
+     "38,894",
+     "",
+     "24,309",
+     "",
+     "",
+     "120,419",
+     ""
+    ],
+    [
+     "Consultants and professional services fees",
+     "",
+     "2,333,311",
+     "",
+     "",
+     "178,428",
+     "",
+     "326,992",
+     "",
+     "",
+     "2,838,731",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "124,282",
+     "",
+     "",
+     "139,273",
+     "",
+     "122,483",
+     "",
+     "",
+     "386,038",
+     ""
+    ],
+    [
+     "Warehousing expense",
+     "",
+     "9,123",
+     "",
+     "",
+     "326,564",
+     "",
+     "33,426",
+     "",
+     "",
+     "369,113",
+     ""
+    ],
+    [
+     "Regulatory expense",
+     "",
+     "371,267",
+     "",
+     "",
+     "101,186",
+     "",
+     "9,261",
+     "",
+     "",
+     "481,714",
+     ""
+    ],
+    [
+     "Travel expense",
+     "",
+     "39,843",
+     "",
+     "",
+     "62,056",
+     "",
+     "74,470",
+     "",
+     "",
+     "176,369",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "-",
+     "",
+     "",
+     "427,297",
+     "",
+     "9,838",
+     "",
+     "",
+     "437,135",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "59,040",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "59,040",
+     ""
+    ],
+    [
+     "Other Segments items",
+     "",
+     "229,071",
+     "",
+     "",
+     "349,148",
+     "",
+     "14,273",
+     "",
+     "",
+     "592,492",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "4,823,917",
+     "",
+     "",
+     "3,454,912",
+     "",
+     "1,244,037",
+     "",
+     "",
+     "9,522,866",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "$",
+     "(4,823,917)",
+     "",
+     "$",
+     "1,328,199",
+     "$",
+     "(1,121,237)",
+     "",
+     "$",
+     "(4,616,955)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months ending September 30, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 695,
+    "end_line": 722
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months ending September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Corporate",
+     "",
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "",
+     "Grand Total",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "$",
+     "-",
+     "",
+     "$",
+     "6,544,394",
+     "$",
+     "72,020",
+     "",
+     "$",
+     "6,616,414",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "",
+     "-",
+     "",
+     "",
+     "1,685,119",
+     "",
+     "7,769",
+     "",
+     "",
+     "1,692,888",
+     ""
+    ],
+    [
+     "Gross Margin",
+     "",
+     "-",
+     "",
+     "",
+     "4,859,275",
+     "",
+     "64,251",
+     "",
+     "",
+     "4,923,526",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Salaries & employee benefits",
+     "",
+     "985,315",
+     "",
+     "",
+     "1,150,945",
+     "",
+     "599,802",
+     "",
+     "",
+     "2,736,062",
+     ""
+    ],
+    [
+     "Stock compensation",
+     "",
+     "1,003,192",
+     "",
+     "",
+     "-",
+     "",
+     "2,078",
+     "",
+     "",
+     "1,005,270",
+     ""
+    ],
+    [
+     "Royalties",
+     "",
+     "-",
+     "",
+     "",
+     "333,499",
+     "",
+     "3,691",
+     "",
+     "",
+     "337,190",
+     ""
+    ],
+    [
+     "Marketing",
+     "",
+     "68,694",
+     "",
+     "",
+     "297,753",
+     "",
+     "31,660",
+     "",
+     "",
+     "398,107",
+     ""
+    ],
+    [
+     "Rent & occupancy costs",
+     "",
+     "51,300",
+     "",
+     "",
+     "36,729",
+     "",
+     "22,956",
+     "",
+     "",
+     "110,985",
+     ""
+    ],
+    [
+     "Consultants and professional services fees",
+     "",
+     "1,642,583",
+     "",
+     "",
+     "126,902",
+     "",
+     "593,932",
+     "",
+     "",
+     "2,363,417",
+     ""
+    ],
+    [
+     "Insurance",
+     "",
+     "343,903",
+     "",
+     "",
+     "44,913",
+     "",
+     "33,598",
+     "",
+     "",
+     "422,414",
+     ""
+    ],
+    [
+     "Warehousing expense",
+     "",
+     "9,769",
+     "",
+     "",
+     "333,426",
+     "",
+     "27,331",
+     "",
+     "",
+     "370,526",
+     ""
+    ],
+    [
+     "Regulatory expense",
+     "",
+     "329,698",
+     "",
+     "",
+     "16,040",
+     "",
+     "14,296",
+     "",
+     "",
+     "360,034",
+     ""
+    ],
+    [
+     "Travel expense",
+     "",
+     "39,051",
+     "",
+     "",
+     "66,706",
+     "",
+     "72,295",
+     "",
+     "",
+     "178,052",
+     ""
+    ],
+    [
+     "Research and development expense",
+     "",
+     "-",
+     "",
+     "",
+     "638,226",
+     "",
+     "3,009",
+     "",
+     "",
+     "641,235",
+     ""
+    ],
+    [
+     "Depreciation and amortization",
+     "",
+     "28,735",
+     "",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "",
+     "28,735",
+     ""
+    ],
+    [
+     "Other Segments items",
+     "",
+     "388,639",
+     "",
+     "",
+     "288,116",
+     "",
+     "9,414",
+     "",
+     "",
+     "686,169",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "4,890,879",
+     "",
+     "",
+     "3,333,255",
+     "",
+     "1,414,062",
+     "",
+     "",
+     "9,638,196",
+     ""
+    ],
+    [
+     "Operating income (loss)",
+     "$",
+     "(4,890,879)",
+     "",
+     "$",
+     "1,526,020",
+     "$",
+     "(1,349,811)",
+     "",
+     "$",
+     "(4,714,670)",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months ending September 30, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 723,
+    "end_line": 750
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "Corporate",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "6,504,045",
+     "$",
+     "376,246",
+     "$",
+     "1,605,732",
+     "$",
+     "8,486,023"
+    ],
+    [
+     "",
+     "",
+     "6,504,045",
+     "",
+     "376,246",
+     "",
+     "1,605,732",
+     "",
+     "8,486,023"
+    ]
+   ],
+   "caption_stack": [
+    "September 30, 2025"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 751,
+    "end_line": 761
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "December 31, 2024",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "Corporate",
+     "",
+     "Total",
+     ""
+    ],
+    [
+     "Total Assets",
+     "$",
+     "5,359,734",
+     "$",
+     "444,513",
+     "$",
+     "3,992,825",
+     "$",
+     "9,797,072"
+    ],
+    [
+     "",
+     "",
+     "5,359,734",
+     "",
+     "444,513",
+     "",
+     "3,992,825",
+     "",
+     "9,797,072"
+    ]
+   ],
+   "caption_stack": [
+    "December 31, 2024"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 762,
+    "end_line": 772
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Recent Accounting Pronouncements"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "NOTE 11\u2013 CONCENTRATIONS\nMilestone Scientific has informal arrangements with third-party U.S. manufacturers of the STA devices, and epidural instruments pursuant to which they manufacture these products under specific purchase orders which contains advance payments for long lead items for production. Advances on contracts have been classified as current at September 30, 2025 and December 31, 2024. The termination of the manufacturing relationship with any of these manufacturers could have a material adverse effect on Milestone Scientific\u2019s ability to produce and sell its products. Although alternate sources of supply exist, and new manufacturing relationships could be established, Milestone Scientific would need to recover its existing tools or have new tools produced. Establishing new manufacturing relationships could involve significant expense and delay. Any curtailment or interruption of the supply, because of termination of such a relationship, would have a material adverse effect on Milestone Scientific\u2019s financial condition, business, and results of operations.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 694,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 777,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months",
+     "",
+     "",
+     "",
+     "Nine Months",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "September 30, 2025",
+     "",
+     "September 30, 2024",
+     "",
+     "September 30, 2025",
+     "",
+     "",
+     "September 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "Cash paid for operating lease liabilities",
+     "$",
+     "31,882",
+     "$",
+     "30,373",
+     "$",
+     "95,645",
+     "",
+     "$",
+     "95,645",
+     ""
+    ],
+    [
+     "Cash paid for finance lease liabilities",
+     "",
+     "3,417",
+     "",
+     "2,685",
+     "",
+     "10,251",
+     "",
+     "",
+     "8,055",
+     ""
+    ],
+    [
+     "Weighted Average Remaining Lease Term",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Finance leases (years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "4.50 years",
+     "",
+     "",
+     "0.29 years",
+     ""
+    ],
+    [
+     "Operating leases (years)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1.5 years",
+     "",
+     "",
+     "2.50 years",
+     ""
+    ],
+    [
+     "Weighted-average discount rate \u2013 operating leases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "9.20",
+     "%",
+     "",
+     "9.20",
+     "%"
+    ],
+    [
+     "Weighted-average discount rate \u2013 finance leases",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "9.20",
+     "%",
+     "",
+     "9.20",
+     "%"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 843,
+    "end_line": 856
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Condensed Consolidated Financial Statements                                                                                      4"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "\u2014 COMMITMENTS"
+    }
+   },
+   "prose_before": "Milestone Scientific has informal arrangements with third-party manufacturers of the STA devices and epidural instruments pursuant to which they manufacture these products under specific purchase orders but without any long-term contract or minimum purchase commitment. The Company has a purchase commitment for the delivery of 2,000 STA instruments as of September 30, 2025. As of September 30, 2025, the purchase order commitment was approximately $2.3 million, and approximately $1.1 million was paid and reported in advance on contracts in the unaudited consolidated balance sheet. As of September 30, 2025 the Company recorded approximately $306,000 for the development of the next generation instrument in advances on contracts in the unaudited consolidated balance sheet. As of December 31, 2024, the purchase order commitment was approximately $3.2 million, and approximately $932,000 was paid and reported in advance on contracts in the consolidated balance sheet. The advances in contracts represent funding for future epidural instruments and epidural replacement parts. As of September 30, 2025, and December 31, 2024, the company also has advances on an open purchase order for long lead items for a future purchase order for the manufacturing of Epidural instruments of approximately $34,000 and $168,000, respectively.\n(2) Operating Leases\nThe Company identified and assessed the following significant assumptions in recognizing its right-of-use assets and corresponding lease liabilities:\n\u25cf As the Company\u2019s leases do not provide an implicit rate, the Company estimated the incremental borrowing rate in calculating the present value of the lease payments. The Company has utilized its incremental borrowing rate based on the long-term borrowing costs of comparable companies in the Medical Device industry.\n\u25cf Since the Company elected to account for each lease component and its associated non-lease components as a single combined lease component, all contract consideration was allocated to the combined lease component.\n\u25cf The expected lease terms include non-cancellable lease periods. Renewal option periods are not included in the determination of the lease terms as they were not reasonably certain to be exercised.\nThe components of lease expense were as follows:\nSCHEDULE OF COMPONENTS OF LEASE EXPENSE",
+   "prose_after": "NOTE 14\u2014 SUBSEQUENT EVENTS\nOn November 7, 2025, Mr. Osser resigned from the Board of Directors. Mr. Osser will continue as Managing Director of China, and consultant under his U.S. Asian agreement.\nITEM 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\nThe following discussions of the financial condition and results of operations should be read in conjunction with the financial statements and the notes to those statements contained in this report and in connection with management\u2019s discussion and analysis and the audited consolidated financial statements and notes thereto included in our Annual Report on Form 10-K for the year ended December 31, 2024, which was filed with the Securities and Exchange Commission, or SEC on April 15, 2025. Certain statements in this discussion and elsewhere in this report constitute forward-looking statements, within the meaning of Section 21E of the Exchange Act, which involve risks and uncertainties. The actual results may differ materially from those anticipated in these forward-looking statements.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 806,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 861,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Three months ended September 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Three months ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Domestic: US",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "Grand Total",
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "Grand Total",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "113,401",
+     "$",
+     "-",
+     "$",
+     "113,401",
+     "$",
+     "156,700",
+     "$",
+     "1,000",
+     "$",
+     "157,700"
+    ],
+    [
+     "Handpieces",
+     "",
+     "988,089",
+     "",
+     "31,124",
+     "",
+     "1,019,213",
+     "",
+     "1,072,163",
+     "",
+     "9,600",
+     "",
+     "1,081,763"
+    ],
+    [
+     "Accessories",
+     "",
+     "7,546",
+     "",
+     "-",
+     "",
+     "7,546",
+     "",
+     "5,501",
+     "",
+     "-",
+     "",
+     "5,501"
+    ],
+    [
+     "Grand Total",
+     "$",
+     "1,109,036",
+     "$",
+     "31,124",
+     "$",
+     "1,140,160",
+     "$",
+     "1,234,364",
+     "$",
+     "10,600",
+     "$",
+     "1,244,964"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International: Rest of World",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "240,416",
+     "$",
+     "-",
+     "$",
+     "240,416",
+     "$",
+     "261,465",
+     "$",
+     "32,500",
+     "$",
+     "293,965"
+    ],
+    [
+     "Handpieces",
+     "",
+     "765,733",
+     "",
+     "10,000",
+     "",
+     "775,733",
+     "",
+     "942,842",
+     "",
+     "2,500",
+     "",
+     "945,342"
+    ],
+    [
+     "Accessories",
+     "",
+     "3,808",
+     "",
+     "",
+     "",
+     "3,808",
+     "",
+     "29,534",
+     "",
+     "-",
+     "",
+     "29,534"
+    ],
+    [
+     "Grand Total",
+     "$",
+     "1,009,957",
+     "$",
+     "10,000",
+     "$",
+     "1,019,957",
+     "$",
+     "1,233,841",
+     "$",
+     "35,000",
+     "$",
+     "1,268,841"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International: China",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Handpieces",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Accessories",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Grand Total",
+     "$",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "200,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Product Sales",
+     "$",
+     "2,318,993",
+     "$",
+     "41,124",
+     "$",
+     "2,360,117",
+     "$",
+     "2,468,205",
+     "$",
+     "45,600",
+     "$",
+     "2,513,805"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 897,
+    "end_line": 928
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "In May 2022, the Company received a chronology-specific CPT code for its technology from the American Medical Association, marking an important milestone. Effective January 1, 2023, this temporary tracking code enables clinicians to submit reimbursement claims to healthcare insurers for epidural sterile injections in the lumbar, thoracic, and cervical thoracic junction regions of the spine. This CPT code significantly expands the reimbursement potential for epidural procedures in pain management utilizing the CompuFlo\u00ae Epidural System, supporting broader clinical adoption.\nThe following table shows a breakdown of Milestone Scientific\u2019s product sales (net), domestically and internationally, by business segment product category Certain reclassifications have been made to the 2025 unaudited condensed consolidated financial statements to conform to the 2024 unaudited condensed consolidated financial statement presentation. These reclassifications had no effect on net loss or cash flows as previously reported.:",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 884,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 929,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "For the Nine months ended September 30, 2025",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "For the Nine months ended September 30, 2024",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Domestic: US",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "Grand Total",
+     "",
+     "Dental",
+     "",
+     "Medical",
+     "",
+     "Grand Total",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "474,466",
+     "$",
+     "5,000",
+     "$",
+     "479,466",
+     "$",
+     "485,355",
+     "$",
+     "2,000",
+     "$",
+     "487,355"
+    ],
+    [
+     "Handpieces",
+     "",
+     "3,088,983",
+     "",
+     "105,650",
+     "",
+     "3,194,633",
+     "",
+     "3,388,815",
+     "",
+     "33,600",
+     "",
+     "3,422,415"
+    ],
+    [
+     "Accessories",
+     "",
+     "31,759",
+     "",
+     "-",
+     "",
+     "31,759",
+     "",
+     "37,168",
+     "",
+     "-",
+     "",
+     "37,168"
+    ],
+    [
+     "Grand Total",
+     "$",
+     "3,595,208",
+     "$",
+     "110,650",
+     "$",
+     "3,705,858",
+     "$",
+     "3,911,338",
+     "$",
+     "35,600",
+     "$",
+     "3,946,938"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International: Rest of World",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "585,230",
+     "$",
+     "-",
+     "$",
+     "585,230",
+     "$",
+     "668,728",
+     "$",
+     "32,500",
+     "$",
+     "701,228"
+    ],
+    [
+     "Handpieces",
+     "",
+     "2,273,798",
+     "",
+     "14,000",
+     "",
+     "2,287,798",
+     "",
+     "1,927,236",
+     "",
+     "3,920",
+     "",
+     "1,931,156"
+    ],
+    [
+     "Accessories",
+     "",
+     "27,117",
+     "",
+     "",
+     "",
+     "27,117",
+     "",
+     "37,092",
+     "",
+     "-",
+     "",
+     "37,092"
+    ],
+    [
+     "Grand Total",
+     "$",
+     "2,886,145",
+     "$",
+     "14,000",
+     "$",
+     "2,900,145",
+     "$",
+     "2,633,056",
+     "$",
+     "36,420",
+     "$",
+     "2,669,476"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "International: China",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Instruments",
+     "$",
+     "310,000",
+     "$",
+     "-",
+     "$",
+     "310,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "Handpieces",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Accessories",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-"
+    ],
+    [
+     "Grand Total",
+     "$",
+     "310,000",
+     "$",
+     "-",
+     "$",
+     "310,000",
+     "$",
+     "-",
+     "$",
+     "-",
+     "$",
+     "-"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Total Product Sales",
+     "$",
+     "6,791,353",
+     "$",
+     "124,650",
+     "$",
+     "6,916,003",
+     "$",
+     "6,544,394",
+     "$",
+     "72,020",
+     "$",
+     "6,616,414"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 930,
+    "end_line": 962
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "Current Product Platform\nSee Note 1, \u201cOrganization and Business\u201d.\nResults of Operations\nThe following table sets forth the consolidated results of operations for the three and nine months ended September 30, 2025 and 2024, respectively. The trends suggested by this table may not be indicative of future operating results:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 929,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended September 30, 2025",
+     "",
+     "",
+     "Three Months Ended September 30, 2024",
+     "",
+     "",
+     "Nine\n\nMonths Ended September 30, 2025",
+     "",
+     "",
+     "Nine Months Ended September 30, 2024",
+     "",
+     ""
+    ],
+    [
+     "Operating results:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product sales, net",
+     "$",
+     "2,360,117",
+     "",
+     "$",
+     "2,513,805",
+     "",
+     "$",
+     "6,916,003",
+     "",
+     "$",
+     "6,616,414",
+     ""
+    ],
+    [
+     "Cost of products sold",
+     "",
+     "719,247",
+     "",
+     "$",
+     "677,585",
+     "",
+     "",
+     "2,010,092",
+     "",
+     "",
+     "1,692,888",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "1,640,870",
+     "",
+     "",
+     "1,836,220",
+     "",
+     "",
+     "4,905,911",
+     "",
+     "",
+     "4,923,526",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Operating expenses:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "2,739,011",
+     "",
+     "",
+     "3,064,769",
+     "",
+     "",
+     "9,026,691",
+     "",
+     "",
+     "8,968,226",
+     ""
+    ],
+    [
+     "Research and development expenses",
+     "",
+     "16,226",
+     "",
+     "",
+     "232,056",
+     "",
+     "",
+     "437,135",
+     "",
+     "",
+     "641,235",
+     ""
+    ],
+    [
+     "Depreciation and amortization expense",
+     "",
+     "20,104",
+     "",
+     "",
+     "8,574",
+     "",
+     "",
+     "59,040",
+     "",
+     "",
+     "28,735",
+     ""
+    ],
+    [
+     "Total operating expenses",
+     "",
+     "2,775,341",
+     "",
+     "",
+     "3,305,399",
+     "",
+     "",
+     "9,522,866",
+     "",
+     "",
+     "9,638,196",
+     ""
+    ],
+    [
+     "Loss from operations",
+     "",
+     "(1,134,471)",
+     "",
+     "",
+     "(1,469,179)",
+     "",
+     "",
+     "(4,616,955)",
+     "",
+     "",
+     "(4,714,670)",
+     ""
+    ],
+    [
+     "Gain on sale of net operating losses",
+     "",
+     "-",
+     "",
+     "",
+     "-",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,983,095",
+     ""
+    ],
+    [
+     "Interest income",
+     "",
+     "(19,488)",
+     "",
+     "",
+     "8,008",
+     "",
+     "",
+     "(14,700)",
+     "",
+     "",
+     "53,513",
+     ""
+    ],
+    [
+     "Net loss",
+     "",
+     "(1,153,959)",
+     "",
+     "",
+     "(1,461,171)",
+     "",
+     "",
+     "(4,631,655)",
+     "",
+     "",
+     "(2,678,062)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 971,
+    "end_line": 995
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Current Product Platform\nSee Note 1, \u201cOrganization and Business\u201d.\nResults of Operations\nThe following table sets forth the consolidated results of operations for the three and nine months ended September 30, 2025 and 2024, respectively. The trends suggested by this table may not be indicative of future operating results:",
+   "prose_after": "Three months ended September 30, 2025, compared to three months ended September 30, 2024\nNet sales for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 929,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": "income_statement",
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "2,318,993",
+     "$",
+     "2,468,205",
+     "$",
+     "(149,212)",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "41,124",
+     "",
+     "45,600",
+     "",
+     "(4,476)",
+     ""
+    ],
+    [
+     "Total sales, net",
+     "$",
+     "2,360,117",
+     "$",
+     "2,513,805",
+     "$",
+     "(153,688)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1000,
+    "end_line": 1009
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Three months ended September 30, 2025, compared to three months ended September 30, 2024\nNet sales for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated revenue for the three months ended September 30, 2025, was approximately $2.4 million, compared to $2.5 million for the same period in 2024, representing a decrease of approximately $154,000, or 6%. The decline in total revenue was primarily attributable to lower international and e-commerce dental sales, partially offset by new contributions from the Company\u2019s re-entry into the China market and modest growth in institutional sales.\nRevenue from Dental Service Organizations (DSOs), government agencies, and dental schools increased slightly to approximately $83,000 for the three months ended September 30, 2025, compared to $81,000 in the prior-year period, reflecting steady institutional demand.\nE-commerce dental revenue totaled approximately $1.0 million for the three months ended September 30, 2025, compared to $1.1 million for the same period in 2024, a decrease of approximately $105,000, or 9%. The decline was primarily driven by reduced order volume from certain online distributors and the timing of promotional campaigns during the quarter.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 929,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 21
+    },
+    "after": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "1,600,512",
+     "$",
+     "1,794,041",
+     "$",
+     "(195,529)",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "40,358",
+     "",
+     "42,179",
+     "",
+     "(1,821)",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "1,640,870",
+     "$",
+     "1,836,220",
+     "$",
+     "(195,350)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1025,
+    "end_line": 1034
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "International dental revenue decreased to approximately $1.0 million in the third quarter of 2025, compared to $1.2 million in the third quarter of 2024, a reduction of approximately $242,000, or 20%. The decrease was largely the result of slower distributor purchasing activity in certain European markets, partially offset by resumed sales in China.\nSales in China for the three months ended September 30, 2025, were approximately $200,000, compared to no sales in the same period of 2024. The increase reflects the Company\u2019s successful efforts to reestablish operations and distribution channels in the region following prior-year market disruptions.\nRevenue from the medical segment totaled approximately $41,000 for the three months ended September 30, 2025, compared to $47,000 in the same period of 2024, a decrease of approximately $6,000, or 13%. The decline was primarily related to the timing of equipment sales and ongoing efforts to expand awareness and adoption of the Company\u2019s CompuFlo\u00ae Epidural and CathCheck\u00ae Systems within the U.S. pain management market.\nGross Profit for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated gross profit for the three months ended September 30, 2025, was approximately $1.6 million, compared to $1.8 million for the same period in 2024, representing a decrease of approximately $195,000, or 11%. The decline in gross profit was primarily attributable to lower revenue levels during the quarter, particularly within international and e-commerce dental sales, as well as a slight shift in the sales mix toward lower-margin products and markets. Gross margin remained strong overall, reflecting the Company\u2019s continued focus on cost management and operational efficiency.\nSelling, general and administrative expenses for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "891,719",
+     "$",
+     "883,666",
+     "$",
+     "8,053",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "316,544",
+     "",
+     "375,189",
+     "",
+     "(58,645)",
+     ""
+    ],
+    [
+     "Corporate",
+     "",
+     "1,530,748",
+     "",
+     "1,805,914",
+     "",
+     "(275,166)",
+     ""
+    ],
+    [
+     "Total selling, general and administrative expenses",
+     "$",
+     "2,739,011",
+     "$",
+     "3,064,769",
+     "$",
+     "(325,758)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1039,
+    "end_line": 1049
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated gross profit for the three months ended September 30, 2025, was approximately $1.6 million, compared to $1.8 million for the same period in 2024, representing a decrease of approximately $195,000, or 11%. The decline in gross profit was primarily attributable to lower revenue levels during the quarter, particularly within international and e-commerce dental sales, as well as a slight shift in the sales mix toward lower-margin products and markets. Gross margin remained strong overall, reflecting the Company\u2019s continued focus on cost management and operational efficiency.\nSelling, general and administrative expenses for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated selling, general, and administrative (SG&A) expenses for the three months ended September 30, 2025, were approximately $2.7 million, compared to $3.1 million for the same period in 2024, representing a decrease of approximately $325,000, or 10%. The reduction primarily reflects management\u2019s continued focus on cost containment and operational efficiency.\nEmployee salaries and benefits decreased by approximately $147,000 for the three months ended September 30, 2025, compared to the same period in 2024, primarily due to workforce realignment and headcount optimization. In addition, the Company achieved further savings of approximately $178,000 through reductions in marketing, consulting, professional service fees, insurance, royalties, regulatory, travel, and other general administrative expenses.\nThese cost reduction measures are part of management\u2019s ongoing initiatives to streamline operations, align expenses with current revenue levels, and support the Company\u2019s transition toward sustainable profitability",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "15,401",
+     "$",
+     "232,056",
+     "$",
+     "(216,655)",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "825",
+     "",
+     "-",
+     "",
+     "825",
+     ""
+    ],
+    [
+     "Corporate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total research and development",
+     "$",
+     "16,226",
+     "$",
+     "232,056",
+     "$",
+     "(215,830)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1058,
+    "end_line": 1068
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated selling, general, and administrative (SG&A) expenses for the three months ended September 30, 2025, were approximately $2.7 million, compared to $3.1 million for the same period in 2024, representing a decrease of approximately $325,000, or 10%. The reduction primarily reflects management\u2019s continued focus on cost containment and operational efficiency.\nEmployee salaries and benefits decreased by approximately $147,000 for the three months ended September 30, 2025, compared to the same period in 2024, primarily due to workforce realignment and headcount optimization. In addition, the Company achieved further savings of approximately $178,000 through reductions in marketing, consulting, professional service fees, insurance, royalties, regulatory, travel, and other general administrative expenses.\nThese cost reduction measures are part of management\u2019s ongoing initiatives to streamline operations, align expenses with current revenue levels, and support the Company\u2019s transition toward sustainable profitability\nResearch and Development for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated research and development (R&D) expenses for the three months ended September 30, 2025, were approximately $16,000, compared to approximately $232,000 for the same period in 2024, representing a decrease of approximately $216,000, or 93%. The decrease reflects management\u2019s strategic decision to delay development activities related to the next-generation STA Single Tooth Anesthesia System\u00ae instrument.\nThis temporary reduction in R&D spending allows the Company to focus financial resources on the commercial expansion of existing products and the continued global rollout of its CompuFlo\u00ae and CathCheck\u00ae Systems, while maintaining flexibility to resume development activities at a later date based on market conditions and strategic priorities.\nProfit (Loss) from Operations for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": null,
+    "aligned_family": null,
+    "provenance": null,
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "693,392",
+     "",
+     "$",
+     "678,318",
+     "",
+     "$",
+     "15,074"
+    ],
+    [
+     "Medical",
+     "",
+     "(277,011)",
+     "",
+     "",
+     "(333,010)",
+     "",
+     "",
+     "55,999"
+    ],
+    [
+     "Corporate",
+     "",
+     "(1,550,852)",
+     "",
+     "",
+     "(1,814,487)",
+     "",
+     "",
+     "263,635"
+    ],
+    [
+     "Total loss from operations",
+     "$",
+     "(1,134,471)",
+     "",
+     "$",
+     "(1,469,179)",
+     "",
+     "$",
+     "334,708"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1075,
+    "end_line": 1085
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated research and development (R&D) expenses for the three months ended September 30, 2025, were approximately $16,000, compared to approximately $232,000 for the same period in 2024, representing a decrease of approximately $216,000, or 93%. The decrease reflects management\u2019s strategic decision to delay development activities related to the next-generation STA Single Tooth Anesthesia System\u00ae instrument.\nThis temporary reduction in R&D spending allows the Company to focus financial resources on the commercial expansion of existing products and the continued global rollout of its CompuFlo\u00ae and CathCheck\u00ae Systems, while maintaining flexibility to resume development activities at a later date based on market conditions and strategic priorities.\nProfit (Loss) from Operations for 2025 and 2024 were as follows:",
+   "prose_after": "The loss from operations for the three months ended September 30, 2025, was approximately $1.1 million, compared to $1.5 million for the same period in 2024, representing an improvement of approximately $335,000, or 22%. The reduction in operating loss was primarily attributable to lower selling, general, and administrative (SG&A) expenses and reduced research and development (R&D) expenditures during the quarter.\nManagement\u2019s ongoing cost-control initiatives, combined with the Company\u2019s focus on operational efficiency and disciplined spending, contributed to the improvement in quarterly operating performance despite a modest decline in consolidated revenue.\nNine months ended September 30, 2025 compared to nine months ended September 30, 2024\nNet sales for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1022,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "segment_reporting",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "6,791,353",
+     "$",
+     "6,544,394",
+     "$",
+     "246,959"
+    ],
+    [
+     "Medical",
+     "",
+     "124,650",
+     "",
+     "72,020",
+     "",
+     "52,630"
+    ],
+    [
+     "Total sales, net",
+     "$",
+     "6,916,003",
+     "$",
+     "6,616,414",
+     "$",
+     "299,589"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1095,
+    "end_line": 1104
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The loss from operations for the three months ended September 30, 2025, was approximately $1.1 million, compared to $1.5 million for the same period in 2024, representing an improvement of approximately $335,000, or 22%. The reduction in operating loss was primarily attributable to lower selling, general, and administrative (SG&A) expenses and reduced research and development (R&D) expenditures during the quarter.\nManagement\u2019s ongoing cost-control initiatives, combined with the Company\u2019s focus on operational efficiency and disciplined spending, contributed to the improvement in quarterly operating performance despite a modest decline in consolidated revenue.\nNine months ended September 30, 2025 compared to nine months ended September 30, 2024\nNet sales for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated revenue for the nine months ended September 30, 2025, was approximately $6.9 million, compared to $6.6 million for the same period in 2024, representing an increase of approximately $300,000, or 5%. The year-over-year improvement was primarily driven by higher international and medical sales, partially offset by declines in e-commerce and institutional dental revenue.\nRevenue from Dental Service Organizations (DSOs), government agencies, and dental schools totaled approximately $277,000 for the nine months ended September 30, 2025, compared to $316,000 in the prior-year period, reflecting a decrease of approximately $39,000, or 12%.\nE-commerce dental revenue decreased to approximately $3.3 million for the nine months ended September 30, 2025, from $3.5 million for the same period in 2024, a decline of approximately $239,000, or 7%. The reduction was primarily attributable to lower order volumes and timing differences in recurring purchases from certain online distributors.\nInternational revenue for the nine months ended September 30, 2025, was approximately $2.9 million compared to $2.7 million for the same period in 2024, an increase of approximately $211,000, or 8%.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 32,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "4,783,111",
+     "$",
+     "4,859,275",
+     "$",
+     "(76,164)",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "122,800",
+     "",
+     "64,251",
+     "",
+     "58,549",
+     ""
+    ],
+    [
+     "Total gross profit",
+     "$",
+     "4,905,911",
+     "$",
+     "4,923,526",
+     "$",
+     "(17,615)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1119,
+    "end_line": 1128
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "E-commerce dental revenue decreased to approximately $3.3 million for the nine months ended September 30, 2025, from $3.5 million for the same period in 2024, a decline of approximately $239,000, or 7%. The reduction was primarily attributable to lower order volumes and timing differences in recurring purchases from certain online distributors.\nInternational revenue for the nine months ended September 30, 2025, was approximately $2.9 million compared to $2.7 million for the same period in 2024, an increase of approximately $211,000, or 8%.\nSales in China for the nine months ended September 30, 2025, were approximately $310,000, compared to no sales in the same period of 2024. The increase reflects the Company\u2019s successful efforts to reestablish operations and distribution channels in the region following prior-year market disruptions.\nMedical revenue also increased, totaling approximately $125,000 for the nine months ended September 30, 2025, compared to $74,000 in the prior-year period, representing an increase of approximately $51,000, or 69%. The increase primarily reflects ongoing progress in expanding the clinical use and adoption of the CompuFlo\u00ae Epidural and CathCheck\u00ae Systems within the pain management and anesthesia markets.\nGross Profit for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated gross profit for the nine months ended September 30, 2025, and 2024 was approximately $4.9 million for each period, reflecting no material change year over year. Stable gross profit performance was primarily the result of consistent product margins, favorable manufacturing cost management, and a balanced sales mix between domestic and international markets.\nDespite modest fluctuations in regional and product-level revenue, the Company maintained gross margin stability through ongoing operational efficiencies, disciplined pricing strategies, and continued supply chain optimization.\nSelling, general and administrative expenses for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 32,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 33,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "3,027,615",
+     "$",
+     "2,695,029",
+     "$",
+     "332,586",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "1,234,199",
+     "",
+     "1,411,053",
+     "",
+     "(176,854)",
+     ""
+    ],
+    [
+     "Corporate",
+     "",
+     "4,764,877",
+     "",
+     "4,862,144",
+     "",
+     "(97,267)",
+     ""
+    ],
+    [
+     "Total selling, general and administrative expenses",
+     "$",
+     "9,026,691",
+     "$",
+     "8,968,226",
+     "$",
+     "58,465",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1135,
+    "end_line": 1145
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated gross profit for the nine months ended September 30, 2025, and 2024 was approximately $4.9 million for each period, reflecting no material change year over year. Stable gross profit performance was primarily the result of consistent product margins, favorable manufacturing cost management, and a balanced sales mix between domestic and international markets.\nDespite modest fluctuations in regional and product-level revenue, the Company maintained gross margin stability through ongoing operational efficiencies, disciplined pricing strategies, and continued supply chain optimization.\nSelling, general and administrative expenses for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated selling, general, and administrative (SG&A) expenses for the nine months ended September 30, 2025, and 2024 were approximately $9.0 million in both periods, reflecting a slight net increase of approximately $58,000 year over year. The modest change primarily resulted from higher consulting, professional, and regulatory expenses totaling approximately $611,000, which were largely offset by reductions in employee salaries and benefits, marketing, warehousing, and travel expenses amounting to approximately $552,000.\nThe overall stability in SG&A spending demonstrates management\u2019s ongoing focus on expense control, operational efficiency, and resource optimization, while continuing to support the Company\u2019s commercial initiatives and regulatory compliance activities\nResearch and Development for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 33,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 34,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "2024",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "427,297",
+     "$",
+     "638,226",
+     "$",
+     "(210,929)",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "9,838",
+     "",
+     "3,009",
+     "",
+     "6,829",
+     ""
+    ],
+    [
+     "Corporate",
+     "",
+     "-",
+     "",
+     "-",
+     "",
+     "-",
+     ""
+    ],
+    [
+     "Total research and development",
+     "$",
+     "437,135",
+     "$",
+     "641,235",
+     "$",
+     "(204,100)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1152,
+    "end_line": 1162
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated selling, general, and administrative (SG&A) expenses for the nine months ended September 30, 2025, and 2024 were approximately $9.0 million in both periods, reflecting a slight net increase of approximately $58,000 year over year. The modest change primarily resulted from higher consulting, professional, and regulatory expenses totaling approximately $611,000, which were largely offset by reductions in employee salaries and benefits, marketing, warehousing, and travel expenses amounting to approximately $552,000.\nThe overall stability in SG&A spending demonstrates management\u2019s ongoing focus on expense control, operational efficiency, and resource optimization, while continuing to support the Company\u2019s commercial initiatives and regulatory compliance activities\nResearch and Development for 2025 and 2024 were as follows:",
+   "prose_after": "Consolidated research and development (R&D) expenses for the nine months ended September 30, 2025, were approximately $437,000, compared to $641,000 for the same period in 2024, representing a decrease of approximately $204,000, or 32%. The decrease primarily reflects the Company\u2019s decision to delay development activities related to the next-generation STA Single Tooth Anesthesia System\u00ae.\nThis strategic decision allows the Company to conserve resources and prioritize commercialization efforts for its existing product portfolio, including the continued expansion of the CompuFlo\u00ae Epidural and CathCheck\u00ae Systems, while maintaining the flexibility to resume product development as market conditions and business priorities warrant.\nProfit (Loss) from Operations for 2025 and 2024 were as follows:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1090,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 34,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 35,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "2025",
+     "",
+     "",
+     "2024",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Dental",
+     "$",
+     "1,328,199",
+     "",
+     "$",
+     "1,526,020",
+     "",
+     "$",
+     "(197,821)",
+     ""
+    ],
+    [
+     "Medical",
+     "",
+     "(1,121,237)",
+     "",
+     "",
+     "(1,349,811)",
+     "",
+     "",
+     "228,574",
+     ""
+    ],
+    [
+     "Corporate",
+     "",
+     "(4,823,917)",
+     "",
+     "",
+     "(4,890,879)",
+     "",
+     "",
+     "66,962",
+     ""
+    ],
+    [
+     "Total loss from operations",
+     "$",
+     "(4,616,955)",
+     "",
+     "$",
+     "(4,714,670)",
+     "",
+     "$",
+     "97,715",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1170,
+    "end_line": 1180
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "Consolidated research and development (R&D) expenses for the nine months ended September 30, 2025, were approximately $437,000, compared to $641,000 for the same period in 2024, representing a decrease of approximately $204,000, or 32%. The decrease primarily reflects the Company\u2019s decision to delay development activities related to the next-generation STA Single Tooth Anesthesia System\u00ae.\nThis strategic decision allows the Company to conserve resources and prioritize commercialization efforts for its existing product portfolio, including the continued expansion of the CompuFlo\u00ae Epidural and CathCheck\u00ae Systems, while maintaining the flexibility to resume product development as market conditions and business priorities warrant.\nProfit (Loss) from Operations for 2025 and 2024 were as follows:",
+   "prose_after": "The loss from operations for the nine months ended September 30, 2025, was approximately $4.6 million, compared to $4.7 million for the same period in 2024, representing an improvement of approximately $98,000, or 2%. The modest improvement primarily reflects lower research and development (R&D) expenses during the period, partially offset by slightly higher consulting, professional, and regulatory costs within selling, general, and administrative (SG&A) expenses.\nManagement remains focused on further improving operating results through disciplined expense management, cost optimization initiatives, and the continued expansion of higher-margin product sales across both the dental and medical segments\nLiquidity and Capital Resources\nCash Flows\nThe following table summarizes our sources and uses of cash for the nine months ended:",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1229,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 35,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 36,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Cash flow:",
+     "September 30, 2025",
+     "",
+     "",
+     "September 30, 2024",
+     "",
+     "",
+     "Change",
+     "",
+     ""
+    ],
+    [
+     "Net cash used in operating activities",
+     "$",
+     "(2,690,498)",
+     "",
+     "$",
+     "(1,408,387)",
+     "",
+     "$",
+     "(1,282,111)",
+     ""
+    ],
+    [
+     "Net cash (used in) provided by investing activities",
+     "",
+     "(12,008)",
+     "",
+     "",
+     "2,969,977",
+     "",
+     "",
+     "(2,981,985)",
+     ""
+    ],
+    [
+     "Net cash provided by financing activities",
+     "",
+     "789,749",
+     "",
+     "",
+     "236,294",
+     "",
+     "",
+     "553,455",
+     ""
+    ],
+    [
+     "",
+     "$",
+     "(1,912,757)",
+     "",
+     "$",
+     "1,797,884",
+     "",
+     "$",
+     "(3,710,641)",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1191,
+    "end_line": 1202
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "The loss from operations for the nine months ended September 30, 2025, was approximately $4.6 million, compared to $4.7 million for the same period in 2024, representing an improvement of approximately $98,000, or 2%. The modest improvement primarily reflects lower research and development (R&D) expenses during the period, partially offset by slightly higher consulting, professional, and regulatory costs within selling, general, and administrative (SG&A) expenses.\nManagement remains focused on further improving operating results through disciplined expense management, cost optimization initiatives, and the continued expansion of higher-margin product sales across both the dental and medical segments\nLiquidity and Capital Resources\nCash Flows\nThe following table summarizes our sources and uses of cash for the nine months ended:",
+   "prose_after": "Operating Activities\nNet cash used in operating activities increased by approximately $1.3 million for the nine months ended September 30, 2025, compared to the same period in 2024. The increase was primarily driven by a higher net loss of $4.6 million during the period, partially offset by non-cash adjustments and changes in working capital items. Management continues to monitor cash usage closely and implement measures aimed at improving operational efficiency and aligning expenses with revenue growth.\nIn April 2024, we received approximately $2.0 million, net of expenses, from the sale of New Jersey net operating losses (\u201cNOL\u201d), that were eligible for purchase under the State of New Jersey\u2019s Economic Development Authority\u2019s New Jersey Technology Business Tax Certificate Transfer Program (\u201c NJEDA Program\u201d). For the nine months ended September 30, 2024, the Company recorded approximately $2.0 million in gain on sale of net operating losses within the unaudited condensed consolidated statement of operations.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1167,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 24
+    },
+    "after": {
+     "line": 1229,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 25
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 36,
+    "final_family": "cash_flow",
+    "aligned_family": "cash_flow",
+    "provenance": "aligned",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 37,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Exhibit No",
+     "",
+     "Description"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "31.1",
+     "",
+     "Rule 13a-14(a) Certification-Chief Executive Officer and Chief Accounting Officer*"
+    ],
+    [
+     "32.1",
+     "",
+     "Section 1350 Certifications-Chief Executive Officer and Chief Accounting Officer**"
+    ],
+    [
+     "101.INS",
+     "",
+     "Inline XBRL Instance Document*"
+    ],
+    [
+     "101.SCH",
+     "",
+     "Inline XBRL Taxonomy Extension Schema Document*"
+    ],
+    [
+     "101.CAL",
+     "",
+     "Inline XBRL Taxonomy Extension Calculation Linkbase Document*"
+    ],
+    [
+     "101.LAB",
+     "",
+     "Inline XBRL Taxonomy Extension Label Linkbase Document*"
+    ],
+    [
+     "101.PRE",
+     "",
+     "Inline XBRL Taxonomy Extension Presentation Linkbase Document*"
+    ],
+    [
+     "101.DEF",
+     "",
+     "Inline XBRL Taxonomy Extension Definition Linkbase Document*"
+    ],
+    [
+     "104",
+     "",
+     "Cover Page Interactive Data File (formatted as Inline XBRL and contained in Exhibit 101)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1289,
+    "end_line": 1303
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits and Financial Statement Schedules"
+    },
+    "note": {
+     "number": 14,
+     "label": "NOTE 14",
+     "title": "\u2014 SUBSEQUENT EVENTS"
+    }
+   },
+   "prose_before": "None.\nItem 2. Unregistered Sales of Equity Securities and use of proceeds\nNot applicable.\nItem 3. Default upon Senior Securities\nNot applicable.\nItem 4. Mine Safety Disclosure\nNot applicable.\nItem 5. Other Information\nNot applicable.\nItem 6. Exhibits and Financial Statement Schedules",
+   "prose_after": "* Filed herewith.\n** Furnished herewith and not filed, in accordance with item 601(32) (ii) of Regulation S-K.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned thereunto duly authorized.\nMILESTONE SCIENTIFIC INC. /s/ Eric Hines Eric Hines Chief Executive Officer (Principal Executive Officer) /s/ Keisha Harcum Keisha Harcum Vice President of Finance (Principal Financial and Accounting Officer) November 13, 2025",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 14
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1286,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 28
+    },
+    "after": {
+     "line": 1308,
+     "token": "PAGE_BREAK",
+     "id": 30,
+     "namespace": "arabic",
+     "page_number": 29
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 37,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  }
+ ]
+}

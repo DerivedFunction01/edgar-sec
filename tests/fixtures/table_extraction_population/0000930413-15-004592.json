@@ -1,0 +1,5514 @@
+{
+ "accession": "0000930413-15-004592",
+ "cik": "0000744187",
+ "form": "10-Q",
+ "filing_date": "2015-12-03",
+ "era": "y2010s",
+ "is_xbrl": true,
+ "filer_category": "Large accelerated filer",
+ "population": "step9-3000",
+ "status": "ok",
+ "error": null,
+ "builder": {
+  "tool": "tools/table_extraction_corpus",
+  "policy": "annotate",
+  "tree": "1e08859d342f90b0f246764767e98d4962aa76ee",
+  "primary_document": "c83127_10q.htm",
+  "primary_source": "spec",
+  "labelling": "xbrl-alignment (tools label.py); audited=False until the Step 9 adjudication finalize"
+ },
+ "geometries": [
+  {
+   "table_index": 1,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Delaware",
+     "",
+     "31-1095548"
+    ],
+    [
+     "(State or other jurisdiction of",
+     "",
+     "(I.R.S. Employer"
+    ],
+    [
+     "incorporation or organization)",
+     "",
+     "Identification Number)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 21,
+    "end_line": 26
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "FORM 10-Q\n(Mark One)\n[X]  QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended October 31, 2015\nOR\n[ ]  TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from _________ to _________\nCommission File Number 001-09097\nREX AMERICAN RESOURCES CORPORATION\n(Exact name of registrant as specified in its charter)",
+   "prose_after": "",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 1,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 2,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "7720 Paragon Road, Dayton, Ohio",
+     "45459"
+    ],
+    [
+     "(Address of principal executive offices)",
+     "(Zip Code)"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 26,
+    "end_line": 30
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "",
+   "prose_after": "(937) 276-3931\n(Registrant\u2019s telephone number, including area code)\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes [X] No [ ]\nIndicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See definition of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": null,
+    "after": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 2,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 4,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "",
+     "Page"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART I.",
+     "FINANCIAL INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Financial Statements",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Consolidated Condensed Balance Sheets",
+     "3"
+    ],
+    [
+     "",
+     "Consolidated Condensed Statements of Operations",
+     "4"
+    ],
+    [
+     "",
+     "Consolidated Condensed Statements of Equity",
+     "5"
+    ],
+    [
+     "",
+     "Consolidated Condensed Statements of Cash Flows",
+     "6"
+    ],
+    [
+     "",
+     "Notes to Consolidated Condensed Financial Statements",
+     "7"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations",
+     "21"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Quantitative and Qualitative Disclosures About Market Risk",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Controls and Procedures",
+     "30"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "PART II.",
+     "OTHER INFORMATION",
+     ""
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1.",
+     "Legal Proceedings",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 1A.",
+     "Risk Factors",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 2.",
+     "Unregistered Sales of Equity Securities and Use of Proceeds",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 3.",
+     "Defaults upon Senior Securities",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 4.",
+     "Mine Safety Disclosures",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 5.",
+     "Other Information",
+     "31"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "Item 6.",
+     "Exhibits",
+     "31"
+    ]
+   ],
+   "caption_stack": [
+    "Page"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 51,
+    "end_line": 86
+   },
+   "preceding": {
+    "section": null,
+    "note": null
+   },
+   "prose_before": "Indicate by check mark whether the registrant has submitted electronically and posted on its corporate Web site, if any, every Interactive Data File required to be submitted and posted pursuant to Rule 405 of Regulation S-T during the preceding 12 months (or for such shorter period that the registrant was required to submit and post such files). Yes [X] No [ ]\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer or a smaller reporting company. See definition of \u201clarge accelerated filer\u201d, \u201caccelerated filer\u201d and \u201csmaller reporting company\u201d in Rule 12b-2 of the Exchange Act.\nLarge accelerated filer [ ]                                                 Accelerated filer [X]\nNon-accelerated filer   [ ]  (Do not check if a smaller reporting company)  Smaller reporting company [ ]\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes [ ] No [X]\nAt the close of business on December 2, 2015 the registrant had 6,858,002 shares of Common Stock, par value $.01 per share, outstanding.\nINDEX",
+   "prose_after": "2\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Condensed Balance Sheets",
+   "structured_location": {
+    "item": null,
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 47,
+     "token": "PAGE_BREAK",
+     "id": 1,
+     "namespace": "arabic",
+     "page_number": null
+    },
+    "after": {
+     "line": 88,
+     "token": "PAGE_BREAK",
+     "id": 2,
+     "namespace": "arabic",
+     "page_number": null
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 4,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 5,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     "January 31,",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2015",
+     "",
+     ""
+    ],
+    [
+     "Assets",
+     "(In Thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current assets:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Cash and cash equivalents",
+     "$",
+     "136,626",
+     "",
+     "$",
+     "137,697",
+     ""
+    ],
+    [
+     "    Restricted cash",
+     "",
+     "20",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "    Accounts receivable",
+     "",
+     "13,289",
+     "",
+     "",
+     "8,794",
+     ""
+    ],
+    [
+     "    Inventory",
+     "",
+     "23,556",
+     "",
+     "",
+     "18,062",
+     ""
+    ],
+    [
+     "    Refundable income taxes",
+     "",
+     "1,935",
+     "",
+     "",
+     "3,019",
+     ""
+    ],
+    [
+     "    Prepaid expenses and other",
+     "",
+     "7,134",
+     "",
+     "",
+     "5,810",
+     ""
+    ],
+    [
+     "    Deferred taxes, net",
+     "",
+     "2,363",
+     "",
+     "",
+     "2,363",
+     ""
+    ],
+    [
+     "      Total current assets",
+     "",
+     "184,923",
+     "",
+     "",
+     "175,745",
+     ""
+    ],
+    [
+     "  Property and equipment, net",
+     "",
+     "189,126",
+     "",
+     "",
+     "194,447",
+     ""
+    ],
+    [
+     "  Other assets",
+     "",
+     "8,131",
+     "",
+     "",
+     "6,366",
+     ""
+    ],
+    [
+     "  Equity method investments",
+     "",
+     "41,088",
+     "",
+     "",
+     "80,389",
+     ""
+    ],
+    [
+     "    Total assets",
+     "$",
+     "423,268",
+     "",
+     "$",
+     "456,947",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Liabilities and equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Current liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Accounts payable, trade",
+     "$",
+     "14,535",
+     "",
+     "$",
+     "9,210",
+     ""
+    ],
+    [
+     "    Accrued expenses and other current liabilities",
+     "",
+     "9,189",
+     "",
+     "",
+     "10,347",
+     ""
+    ],
+    [
+     "      Total current liabilities",
+     "",
+     "23,724",
+     "",
+     "",
+     "19,557",
+     ""
+    ],
+    [
+     "  Long-term liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    Deferred taxes",
+     "",
+     "34,690",
+     "",
+     "",
+     "42,768",
+     ""
+    ],
+    [
+     "    Other long-term liabilities",
+     "",
+     "\u2014",
+     "",
+     "",
+     "1,658",
+     ""
+    ],
+    [
+     "      Total long-term liabilities",
+     "",
+     "34,690",
+     "",
+     "",
+     "44,426",
+     ""
+    ],
+    [
+     "  Equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "    REX shareholders\u2019 equity:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "      Common stock",
+     "",
+     "299",
+     "",
+     "",
+     "299",
+     ""
+    ],
+    [
+     "      Paid-in capital",
+     "",
+     "144,814",
+     "",
+     "",
+     "144,791",
+     ""
+    ],
+    [
+     "      Retained earnings",
+     "",
+     "472,188",
+     "",
+     "",
+     "444,438",
+     ""
+    ],
+    [
+     "      Treasury stock",
+     "",
+     "(299,668)",
+     "",
+     "",
+     "(239,557)",
+     ""
+    ],
+    [
+     "      Total REX shareholders\u2019 equity",
+     "",
+     "317,633",
+     "",
+     "",
+     "349,971",
+     ""
+    ],
+    [
+     "    Noncontrolling interests",
+     "",
+     "47,221",
+     "",
+     "",
+     "42,993",
+     ""
+    ],
+    [
+     "    Total equity",
+     "",
+     "364,854",
+     "",
+     "",
+     "392,964",
+     ""
+    ],
+    [
+     "    Total liabilities and equity",
+     "$",
+     "423,268",
+     "",
+     "$",
+     "456,947",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 99,
+    "end_line": 149
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "2\nPART I. FINANCIAL INFORMATION\nItem 1. Financial Statements\nConsolidated Condensed Balance Sheets",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nConsolidated Condensed Statements Of Operations",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 97,
+     "token": "REPEATING_HEADER",
+     "id": 4,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 152,
+     "token": "PAGE_BREAK",
+     "id": 5,
+     "namespace": "arabic",
+     "page_number": 3
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 5,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 6,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In Thousands, Except Per Share Amounts)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales and revenue",
+     "$",
+     "110,584",
+     "",
+     "$",
+     "138,424",
+     "",
+     "$",
+     "329,261",
+     "",
+     "$",
+     "444,580",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "96,311",
+     "",
+     "",
+     "101,934",
+     "",
+     "",
+     "287,585",
+     "",
+     "",
+     "332,612",
+     ""
+    ],
+    [
+     "Gross profit",
+     "",
+     "14,273",
+     "",
+     "",
+     "36,490",
+     "",
+     "",
+     "41,676",
+     "",
+     "",
+     "111,968",
+     ""
+    ],
+    [
+     "Selling, general and administrative expenses",
+     "",
+     "(4,720)",
+     "",
+     "",
+     "(4,350)",
+     "",
+     "",
+     "(15,629)",
+     "",
+     "",
+     "(15,369)",
+     ""
+    ],
+    [
+     "Gain on sale of investment",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "10,385",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Equity in income of unconsolidated affiliates",
+     "",
+     "1,314",
+     "",
+     "",
+     "8,780",
+     "",
+     "",
+     "7,857",
+     "",
+     "",
+     "24,322",
+     ""
+    ],
+    [
+     "Gain on disposal of property and equipment, net",
+     "",
+     "1",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "496",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Interest and other income",
+     "",
+     "199",
+     "",
+     "",
+     "107",
+     "",
+     "",
+     "524",
+     "",
+     "",
+     "242",
+     ""
+    ],
+    [
+     "Interest expense",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(454)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,737)",
+     ""
+    ],
+    [
+     "Income from continuing operations before income taxes",
+     "",
+     "11,067",
+     "",
+     "",
+     "40,573",
+     "",
+     "",
+     "45,309",
+     "",
+     "",
+     "119,426",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "(1,634)",
+     "",
+     "",
+     "(12,124)",
+     "",
+     "",
+     "(12,726)",
+     "",
+     "",
+     "(40,053)",
+     ""
+    ],
+    [
+     "Income from continuing operations",
+     "",
+     "9,433",
+     "",
+     "",
+     "28,449",
+     "",
+     "",
+     "32,583",
+     "",
+     "",
+     "79,373",
+     ""
+    ],
+    [
+     "Income (loss) from discontinued operations, net of tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "2",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(2)",
+     ""
+    ],
+    [
+     "Gain on disposal of discontinued operations, net of tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "138",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "136",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "9,433",
+     "",
+     "",
+     "28,589",
+     "",
+     "",
+     "32,583",
+     "",
+     "",
+     "79,507",
+     ""
+    ],
+    [
+     "Net income attributable to noncontrolling interests",
+     "",
+     "(1,977)",
+     "",
+     "",
+     "(5,249)",
+     "",
+     "",
+     "(4,833)",
+     "",
+     "",
+     "(12,518)",
+     ""
+    ],
+    [
+     "Net income attributable to REX common shareholders",
+     "$",
+     "7,456",
+     "",
+     "$",
+     "23,340",
+     "",
+     "$",
+     "27,750",
+     "",
+     "$",
+     "66,989",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding \u2013 basic",
+     "",
+     "6,915",
+     "",
+     "",
+     "8,170",
+     "",
+     "",
+     "7,460",
+     "",
+     "",
+     "8,157",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income per share from continuing operations attributable to REX common shareholders",
+     "$",
+     "1.08",
+     "",
+     "$",
+     "2.84",
+     "",
+     "$",
+     "3.72",
+     "",
+     "$",
+     "8.19",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic income per share on disposal of discontinued operations attributable to REX common shareholders",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.02",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.02",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Basic net income per share attributable to REX common shareholders",
+     "$",
+     "1.08",
+     "",
+     "$",
+     "2.86",
+     "",
+     "$",
+     "3.72",
+     "",
+     "$",
+     "8.21",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Weighted average shares outstanding \u2013 diluted",
+     "",
+     "6,931",
+     "",
+     "",
+     "8,170",
+     "",
+     "",
+     "7,469",
+     "",
+     "",
+     "8,168",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income per share from continuing operations attributable to REX common shareholders",
+     "$",
+     "1.08",
+     "",
+     "$",
+     "2.84",
+     "",
+     "$",
+     "3.72",
+     "",
+     "$",
+     "8.18",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income per share on disposal of discontinued operations attributable to REX common shareholders",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.02",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "0.02",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted net income per share attributable to REX common shareholders",
+     "$",
+     "1.08",
+     "",
+     "$",
+     "2.86",
+     "",
+     "$",
+     "3.72",
+     "",
+     "$",
+     "8.20",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Amounts attributable to REX common shareholders:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Income from continuing operations, net of tax",
+     "$",
+     "7,456",
+     "",
+     "$",
+     "23,200",
+     "",
+     "$",
+     "27,750",
+     "",
+     "$",
+     "66,855",
+     ""
+    ],
+    [
+     "  Income from discontinued operations, net of tax",
+     "",
+     "\u2014",
+     "",
+     "",
+     "140",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "134",
+     ""
+    ],
+    [
+     "  Net income",
+     "$",
+     "7,456",
+     "",
+     "$",
+     "23,340",
+     "",
+     "$",
+     "27,750",
+     "",
+     "$",
+     "66,989",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 158,
+    "end_line": 219
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nConsolidated Condensed Statements Of Operations",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nConsolidated Condensed Statements Of Equity\n(In Thousands)",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 156,
+     "token": "REPEATING_HEADER",
+     "id": 6,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 222,
+     "token": "PAGE_BREAK",
+     "id": 7,
+     "namespace": "arabic",
+     "page_number": 4
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 6,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 7,
+   "header_row_count": 4,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "REX Shareholders",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Common Shares Issued",
+     "",
+     "",
+     "",
+     "Treasury",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Paid-in",
+     "",
+     "Retained",
+     "",
+     "Noncontrolling",
+     "",
+     "",
+     "Total",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Shares",
+     "",
+     "Amount",
+     "",
+     "Shares",
+     "",
+     "",
+     "Amount",
+     "",
+     "",
+     "Capital",
+     "",
+     "Earnings",
+     "",
+     "Interests",
+     "",
+     "",
+     "Equity",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 31, 2015",
+     "",
+     "29,853",
+     "$",
+     "299",
+     "",
+     "21,954",
+     "",
+     "$",
+     "(239,557)",
+     "",
+     "$",
+     "144,791",
+     "$",
+     "444,438",
+     "$",
+     "42,993",
+     "",
+     "$",
+     "392,964",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "27,750",
+     "",
+     "4,833",
+     "",
+     "",
+     "32,583",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock acquired",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,044",
+     "",
+     "",
+     "(60,116)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(60,116)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation expense",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(3)",
+     "",
+     "",
+     "5",
+     "",
+     "",
+     "23",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "28",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncontrolling interests distribution and other",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(605)",
+     "",
+     "",
+     "(605)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2015",
+     "",
+     "29,853",
+     "$",
+     "299",
+     "",
+     "22,995",
+     "",
+     "$",
+     "(299,668)",
+     "",
+     "$",
+     "144,814",
+     "$",
+     "472,188",
+     "$",
+     "47,221",
+     "",
+     "$",
+     "364,854",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at January 31, 2014",
+     "",
+     "29,853",
+     "$",
+     "299",
+     "",
+     "21,753",
+     "",
+     "$",
+     "(222,170)",
+     "",
+     "$",
+     "144,051",
+     "$",
+     "357,101",
+     "$",
+     "31,472",
+     "",
+     "$",
+     "310,753",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "66,989",
+     "",
+     "12,518",
+     "",
+     "",
+     "79,507",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Treasury stock acquired",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "123",
+     "",
+     "",
+     "(8,412)",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(8,412)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Stock based compensation and related tax effects",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "(83)",
+     "",
+     "",
+     "851",
+     "",
+     "",
+     "740",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "1,591",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Noncontrolling interests distribution and other",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "(39)",
+     "",
+     "",
+     "(39)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Balance at October 31, 2014",
+     "",
+     "29,853",
+     "$",
+     "299",
+     "",
+     "21,793",
+     "",
+     "$",
+     "(229,731)",
+     "",
+     "$",
+     "144,791",
+     "$",
+     "424,090",
+     "$",
+     "43,951",
+     "",
+     "$",
+     "383,400",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "REX Shareholders"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 230,
+    "end_line": 267
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nConsolidated Condensed Statements Of Equity\n(In Thousands)",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nConsolidated Condensed Statements Of Cash Flows",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 226,
+     "token": "REPEATING_HEADER",
+     "id": 8,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 270,
+     "token": "PAGE_BREAK",
+     "id": 9,
+     "namespace": "arabic",
+     "page_number": 5
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 7,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 8,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31,",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "(In Thousands)",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Cash flows from operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net income including noncontrolling interests",
+     "$",
+     "32,583",
+     "",
+     "$",
+     "79,507",
+     ""
+    ],
+    [
+     "Adjustments to reconcile net income to net cash provided by operating activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Depreciation, impairment charges and amortization",
+     "",
+     "14,193",
+     "",
+     "",
+     "12,480",
+     ""
+    ],
+    [
+     "  Income from equity method investments",
+     "",
+     "(7,857)",
+     "",
+     "",
+     "(24,322)",
+     ""
+    ],
+    [
+     "  Gain on sale of investment",
+     "",
+     "(10,385)",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Gain on disposal of real estate and property and equipment, net",
+     "",
+     "(496)",
+     "",
+     "",
+     "(209)",
+     ""
+    ],
+    [
+     "  Dividends received from equity method investees",
+     "",
+     "7,643",
+     "",
+     "",
+     "19,881",
+     ""
+    ],
+    [
+     "  Derivative financial instruments",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(1,141)",
+     ""
+    ],
+    [
+     "  Deferred income tax",
+     "",
+     "(8,078)",
+     "",
+     "",
+     "5,323",
+     ""
+    ],
+    [
+     "  Stock based compensation expense",
+     "",
+     "23",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Excess tax benefit from stock option exercises",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(441)",
+     ""
+    ],
+    [
+     "Changes in assets and liabilities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Accounts receivable",
+     "",
+     "(2,307)",
+     "",
+     "",
+     "5,900",
+     ""
+    ],
+    [
+     "  Inventories",
+     "",
+     "(5,494)",
+     "",
+     "",
+     "7,874",
+     ""
+    ],
+    [
+     "  Other assets",
+     "",
+     "(51)",
+     "",
+     "",
+     "728",
+     ""
+    ],
+    [
+     "  Accounts payable, trade",
+     "",
+     "4,913",
+     "",
+     "",
+     "2,075",
+     ""
+    ],
+    [
+     "  Other liabilities",
+     "",
+     "(2,849)",
+     "",
+     "",
+     "7,406",
+     ""
+    ],
+    [
+     "Net cash provided by operating activities",
+     "",
+     "21,838",
+     "",
+     "",
+     "115,061",
+     ""
+    ],
+    [
+     "Cash flows from investing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Capital expenditures",
+     "",
+     "(9,852)",
+     "",
+     "",
+     "(8,107)",
+     ""
+    ],
+    [
+     "  Restricted cash",
+     "",
+     "(20)",
+     "",
+     "",
+     "500",
+     ""
+    ],
+    [
+     "  Restricted investments and deposits",
+     "",
+     "250",
+     "",
+     "",
+     "273",
+     ""
+    ],
+    [
+     "  Proceeds from sale of investment",
+     "",
+     "45,476",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "  Proceeds from sale of real estate and property and equipment, net",
+     "",
+     "1,936",
+     "",
+     "",
+     "596",
+     ""
+    ],
+    [
+     "  Other",
+     "",
+     "17",
+     "",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Net cash provided by (used in) investing activities",
+     "",
+     "37,807",
+     "",
+     "",
+     "(6,738)",
+     ""
+    ],
+    [
+     "Cash flows from financing activities:",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Payments of long-term debt",
+     "",
+     "\u2014",
+     "",
+     "",
+     "(42,226)",
+     ""
+    ],
+    [
+     "  Stock options exercised",
+     "",
+     "\u2014",
+     "",
+     "",
+     "931",
+     ""
+    ],
+    [
+     "  Purchase of stock from noncontrolling interests holders",
+     "",
+     "(605)",
+     "",
+     "",
+     "(39)",
+     ""
+    ],
+    [
+     "  Excess tax benefit from stock option exercises",
+     "",
+     "\u2014",
+     "",
+     "",
+     "441",
+     ""
+    ],
+    [
+     "  Treasury stock acquired",
+     "",
+     "(60,111)",
+     "",
+     "",
+     "(8,312)",
+     ""
+    ],
+    [
+     "Net cash used in financing activities",
+     "",
+     "(60,716)",
+     "",
+     "",
+     "(49,205)",
+     ""
+    ],
+    [
+     "Net (decrease) increase in cash and cash equivalents",
+     "",
+     "(1,071)",
+     "",
+     "",
+     "59,118",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, beginning of period",
+     "",
+     "137,697",
+     "",
+     "",
+     "105,149",
+     ""
+    ],
+    [
+     "Cash and cash equivalents, end of period",
+     "$",
+     "136,626",
+     "",
+     "$",
+     "164,267",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non cash investing activities \u2013 Accrued capital expenditures",
+     "$",
+     "1,216",
+     "",
+     "$",
+     "615",
+     ""
+    ],
+    [
+     "Non cash investing activities \u2013 Loan receivable granted in connection with sale of real estate",
+     "$",
+     "\u2014",
+     "",
+     "$",
+     "475",
+     ""
+    ]
+   ],
+   "caption_stack": [
+    "Nine Months Ended",
+    "October 31,"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 276,
+    "end_line": 334
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": null
+   },
+   "prose_before": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nConsolidated Condensed Statements Of Cash Flows",
+   "prose_after": "The accompanying notes are an integral part of these unaudited consolidated condensed financial statements.\nNOTES TO UNAUDITED CONSOLIDATED CONDENSED FINANCIAL STATEMENTS\nOctober 31, 2015\nNote 1. Consolidated Condensed Financial Statements\nThe consolidated condensed financial statements included in this report have been prepared by the Company, without audit, pursuant to the rules and regulations of the Securities and Exchange Commission and include, in the opinion of management, all adjustments necessary to state fairly the information set forth therein. Any such adjustments were of a normal recurring nature. Certain information and footnote disclosures normally included in financial statements prepared in accordance with accounting principles generally accepted in the United States of America have been omitted pursuant to such rules and regulations, although the Company believes that the disclosures are adequate to make the information presented not misleading. Financial information as of January 31, 2015 included in these financial statements has been derived from the audited consolidated financial statements included in the Company\u2019s Annual Report on Form 10-K for the year ended January 31, 2015 (fiscal year 2014). It is suggested that these unaudited consolidated condensed financial statements be read in conjunction with the consolidated financial statements and the notes thereto included in the Company\u2019s Annual Report on Form 10-K for the year ended January 31, 2015. The results of operations for the interim periods are not necessarily indicative of the results to be expected for the year.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": null
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 274,
+     "token": "REPEATING_HEADER",
+     "id": 10,
+     "namespace": null,
+     "page_number": null
+    },
+    "after": {
+     "line": 337,
+     "token": "PAGE_BREAK",
+     "id": 11,
+     "namespace": "arabic",
+     "page_number": 6
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 8,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 9,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "January 31, 2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ethanol and other finished goods",
+     "$",
+     "5,614",
+     "$",
+     "3,039"
+    ],
+    [
+     "Work in process",
+     "",
+     "2,599",
+     "",
+     "2,609"
+    ],
+    [
+     "Grain and other raw materials",
+     "",
+     "15,343",
+     "",
+     "12,414"
+    ],
+    [
+     "Total",
+     "$",
+     "23,556",
+     "$",
+     "18,062"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 391,
+    "end_line": 402
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 2,
+     "label": "NOTE 2",
+     "title": "Accounting Policies"
+    }
+   },
+   "prose_before": "As of October 31, 2015, there were no unrecognized tax benefits nor any accrued penalties and interest. On a quarterly and annual basis, the Company accrues for the effects of open uncertain tax positions and the related potential penalties and interest.\nInventories\nInventories are carried at the lower of cost or market on a first-in, first-out basis. Inventory includes direct production costs and certain overhead costs such as depreciation, property taxes and utilities related to producing ethanol and related by-products. Inventory is permanently written down for instances when cost exceeds estimated net realizable value; such write-downs are based primarily upon commodity prices as the market value of inventory is often dependent upon changes in commodity prices. There were no significant permanent write-downs of inventory at October 31, 2015 and January 31, 2015. Fluctuations in the write-down of inventory generally relate to the levels and composition of such inventory at a given point in time. The components of inventory are as follows as of the dates presented (amounts in thousands):",
+   "prose_after": "Property and Equipment\nProperty and equipment is recorded at cost. Depreciation is computed using the straight-line method. Estimated useful lives are 15 to 40 years for buildings and improvements, and 3 to 20 years for fixtures and equipment.\nIn accordance with ASC 360-10 \u201cImpairment or Disposal of Long-Lived Assets\u201d, the carrying value of long-lived assets is assessed for recoverability by management when changes in circumstances indicate that the carrying amount may not be recoverable, based on an analysis of undiscounted future expected cash flows from the use and ultimate disposition of the asset. There were approximately $125,000 and $68,000 of impairment charges in the first nine months of fiscal years 2015 and 2014, respectively. Fiscal year 2015 impairment charges are included in cost of sales while fiscal year 2014 impairment charges are included in discontinued operations in the Consolidated Condensed Statements of Operations as a result of the prospective adoption of Accounting Standard Update (\u201cASU\u201d) No. 2014-08 (\u201cASU 2014-08\u201d), \u201cReporting Discontinued Operations and Disclosures of Disposals of Components of an Entity\u201d. These impairment charges are related to unfavorable changes in real estate conditions in local markets. Impairment charges result from the Company\u2019s management performing cash flow analysis and represent management\u2019s estimate of the excess of net book value over fair value. Fair value is estimated using expected future cash flows on a discounted basis or appraisals of specific properties as appropriate. Long-lived assets are tested for recoverability whenever events or changes in circumstances indicate that its carrying amount may not be recoverable. Given the nature of the Company\u2019s business, events and changes in circumstances include, but are not limited to, a significant decline in estimated future cash flows, a sustained decline in market prices for similar assets, or a significant adverse change in legal or regulatory factors or the business climate. A significant decline in estimated future cash flows is represented by a greater than 25% annual decline in expected future cash flows (for real estate asset groups) or a change in the spread between ethanol and grain prices that would result in greater than six consecutive months of estimated or actual significant negative cash flows (for alternative energy asset groups).",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 2
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 378,
+     "token": "PAGE_BREAK",
+     "id": 13,
+     "namespace": "arabic",
+     "page_number": 8
+    },
+    "after": {
+     "line": 403,
+     "token": "PAGE_BREAK",
+     "id": 14,
+     "namespace": "arabic",
+     "page_number": 9
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 9,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 10,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Years Ended January 31,",
+     "",
+     "Minimum Rentals",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Remainder of 2016",
+     "",
+     "$",
+     "1,851"
+    ],
+    [
+     "2017",
+     "",
+     "",
+     "7,340"
+    ],
+    [
+     "2018",
+     "",
+     "",
+     "6,575"
+    ],
+    [
+     "2019",
+     "",
+     "",
+     "5,845"
+    ],
+    [
+     "2020",
+     "",
+     "",
+     "4,341"
+    ],
+    [
+     "  Thereafter",
+     "",
+     "",
+     "6,947"
+    ],
+    [
+     "  Total",
+     "",
+     "$",
+     "32,899"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 440,
+    "end_line": 454
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 3,
+     "label": "NOTE 3",
+     "title": "Leases"
+    }
+   },
+   "prose_before": "Effective February 1, 2015, the Company was required to adopt ASU 2014-08. Under this new guidance, only disposals of a component that represent a strategic shift that has (or will have) a major effect on an entity\u2019s operations and financial results are to be classified as a discontinued operation. The adoption of ASU 2014-08 resulted in the Company classifying sales of individual real estate properties as continuing operations instead of discontinued operations as the sale of individual properties does not represent a strategic shift for the Company (for sales occurring subsequent to January 31, 2015).\nEffective February 1, 2017, the Company will be required to adopt the amended guidance in Accounting Standards Codification Topic 330, \u201cInventory: Simplifying the Measurement of Inventory\u201d. This amended guidance requires inventory to be measured at the lower of cost or net realizable value. Net realizable value is defined as the estimated selling prices in the ordinary course of business, less reasonably predictable costs of completion, disposal and transportation. The amended guidance will be applied prospectively. The Company has not yet determined the effect of this amended guidance on its consolidated financial statements and related disclosures.\nNote 3. Leases\nAt October 31, 2015, the Company has lease agreements, as lessee, for rail cars and a natural gas pipeline. All of the leases are accounted for as operating leases. The following table is a summary of future minimum rentals on such leases (amounts in thousands):",
+   "prose_after": "Note 4. Fair Value\nThe Company applies ASC 820, \u201cFair Value Measurements and Disclosures\u201d, (\u201cASC 820\u201d) which provides a framework for measuring fair value under accounting principles generally accepted in the United States of America. This accounting standard defines fair value as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date.\nThe Company determines the fair market values of its financial instruments based on the fair value hierarchy established by ASC 820 which requires an entity to maximize the use of observable inputs and minimize the use of unobservable inputs when measuring fair value. The standard describes three levels of inputs that may be used to measure fair values which are provided below. The Company carries an investment in cooperative at fair value.\nThe fair values of property and equipment, as applicable, are determined by using various models that discount future expected cash flows. Estimation risk is greater for vacant properties as the probability of expected cash flows from the use of vacant properties is difficult to predict.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 3
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 431,
+     "token": "PAGE_BREAK",
+     "id": 16,
+     "namespace": "arabic",
+     "page_number": 11
+    },
+    "after": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 10,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 11,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Derivative financial instruments (1)",
+     "$",
+     "446",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "446"
+    ],
+    [
+     "Investment in cooperative (2)",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     "333",
+     "",
+     "333"
+    ],
+    [
+     "Total assets",
+     "$",
+     "446",
+     "$",
+     "\u2014",
+     "$",
+     "333",
+     "$",
+     "779"
+    ],
+    [
+     "Forward purchase contract liability (3)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "414",
+     "$",
+     "414"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 466,
+    "end_line": 478
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value"
+    }
+   },
+   "prose_before": "The Company applies ASC 820, \u201cFair Value Measurements and Disclosures\u201d, (\u201cASC 820\u201d) which provides a framework for measuring fair value under accounting principles generally accepted in the United States of America. This accounting standard defines fair value as the exchange price that would be received for an asset or paid to transfer a liability (an exit price) in the principal or most advantageous market for the asset or liability in an orderly transaction between market participants on the measurement date.\nThe Company determines the fair market values of its financial instruments based on the fair value hierarchy established by ASC 820 which requires an entity to maximize the use of observable inputs and minimize the use of unobservable inputs when measuring fair value. The standard describes three levels of inputs that may be used to measure fair values which are provided below. The Company carries an investment in cooperative at fair value.\nThe fair values of property and equipment, as applicable, are determined by using various models that discount future expected cash flows. Estimation risk is greater for vacant properties as the probability of expected cash flows from the use of vacant properties is difficult to predict.\nFinancial assets and liabilities measured at fair value on a recurring basis at October 31, 2015 are summarized below (amounts in thousands):",
+   "prose_after": "Financial assets and liabilities measured at fair value on a recurring basis at January 31, 2015 are summarized below (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 11,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 12,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Level 1",
+     "",
+     "Level 2",
+     "",
+     "Level 3",
+     "",
+     "Fair Value",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Investment in cooperative (2)",
+     "$",
+     "\u2014",
+     "$",
+     "\u2014",
+     "$",
+     "333",
+     "$",
+     "333"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 481,
+    "end_line": 488
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 4,
+     "label": "NOTE 4",
+     "title": "Fair Value"
+    }
+   },
+   "prose_before": "Financial assets and liabilities measured at fair value on a recurring basis at January 31, 2015 are summarized below (amounts in thousands):",
+   "prose_after": "(1) The derivative financial instruments are included in \u201cPrepaid expenses and other current assets\u201d on the accompanying Consolidated Condensed Balance Sheets.\n(2) The investment in cooperative is included in \u201cOther assets\u201d on the accompanying Consolidated Condensed Balance Sheets.\n(3) The forward purchase contract liability is included in \u201cAccrued expenses and other current liabilities\u201d on the accompanying Consolidated Condensed Balance Sheets.\nThe Company determined the fair value of derivative financial instruments by obtaining unadjusted quoted prices in active markets for identical assets.\nThe Company determined the fair value of the investment in cooperative by using a discounted cash flow analysis on the expected cash flows. Inputs used in the analysis include the face value of the allocated equity amount, the projected term for repayment based upon a historical trend, and a risk adjusted discount rate based on the expected compensation participants would demand because of the uncertainty of the future cash flows. The inherent risk and uncertainty associated with unobservable inputs could have a significant effect on the actual fair value of the investment.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 4
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 461,
+     "token": "PAGE_BREAK",
+     "id": 17,
+     "namespace": "arabic",
+     "page_number": 12
+    },
+    "after": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 12,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 13,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "",
+     "January 31, 2015",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Land and improvements",
+     "$",
+     "21,598",
+     "",
+     "$",
+     "20,844",
+     ""
+    ],
+    [
+     "Buildings and improvements",
+     "",
+     "24,519",
+     "",
+     "",
+     "27,069",
+     ""
+    ],
+    [
+     "Machinery, equipment and fixtures",
+     "",
+     "232,249",
+     "",
+     "",
+     "231,422",
+     ""
+    ],
+    [
+     "Construction in progress",
+     "",
+     "6,715",
+     "",
+     "",
+     "1,290",
+     ""
+    ],
+    [
+     "",
+     "",
+     "285,081",
+     "",
+     "",
+     "280,625",
+     ""
+    ],
+    [
+     "Less:  accumulated depreciation",
+     "",
+     "(95,955)",
+     "",
+     "",
+     "(86,178)",
+     ""
+    ],
+    [
+     "Total",
+     "$",
+     "189,126",
+     "",
+     "$",
+     "194,447",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 508,
+    "end_line": 523
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 5,
+     "label": "NOTE 5",
+     "title": "Property and Equipment"
+    }
+   },
+   "prose_before": "The Company determined the fair value of the investment in cooperative by using a discounted cash flow analysis on the expected cash flows. Inputs used in the analysis include the face value of the allocated equity amount, the projected term for repayment based upon a historical trend, and a risk adjusted discount rate based on the expected compensation participants would demand because of the uncertainty of the future cash flows. The inherent risk and uncertainty associated with unobservable inputs could have a significant effect on the actual fair value of the investment.\nThe Company determined the fair value of the forward purchase contracts by comparing the fixed purchase price included in the contracts to an equivalent purchase price published on commodity exchanges. Inputs used in the analysis include the quantity of corn to purchase and the delivery date of such corn. The inherent risk and uncertainty associated with unobservable inputs could have a significant effect on the actual fair value of the investment.\nThere were no assets measured at fair value on a non-recurring basis at October 31, 2015 or January 31, 2015.\nNote 5. Property and Equipment\nThe components of property and equipment are as follows for the periods presented (amounts in thousands):",
+   "prose_after": "Note 6. Other Assets\nThe components of other assets are as follows for the periods presented (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 5
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 13,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 14,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "January 31, 2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Deposits",
+     "$",
+     "664",
+     "$",
+     "914"
+    ],
+    [
+     "Real estate taxes refundable",
+     "",
+     "4,395",
+     "",
+     "4,395"
+    ],
+    [
+     "Proceeds from sale of investment held in escrow (1)",
+     "",
+     "2,188",
+     "",
+     "\u2014"
+    ],
+    [
+     "Other",
+     "",
+     "884",
+     "",
+     "1,057"
+    ],
+    [
+     "Total",
+     "$",
+     "8,131",
+     "$",
+     "6,366"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 528,
+    "end_line": 540
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 6,
+     "label": "NOTE 6",
+     "title": "Other Assets"
+    }
+   },
+   "prose_before": "Note 6. Other Assets\nThe components of other assets are as follows for the periods presented (amounts in thousands):",
+   "prose_after": "(1) Excludes approximately $2.2 million of proceeds from sale of investment held in escrow that are expected to be collected within twelve months.\nNote 7. Accrued Expenses and Other Current Liabilities\nThe components of accrued expenses and other current liabilities are as follows for the periods presented (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 6
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 501,
+     "token": "PAGE_BREAK",
+     "id": 18,
+     "namespace": "arabic",
+     "page_number": 13
+    },
+    "after": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 14,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 15,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "January 31, 2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Accrued utility charges",
+     "$",
+     "1,775",
+     "$",
+     "3,085"
+    ],
+    [
+     "Accrued payroll and related items",
+     "",
+     "3,364",
+     "",
+     "3,798"
+    ],
+    [
+     "Accrued income taxes",
+     "",
+     "1,751",
+     "",
+     "\u2014"
+    ],
+    [
+     "Accrued real estate taxes",
+     "",
+     "1,089",
+     "",
+     "2,507"
+    ],
+    [
+     "Other",
+     "",
+     "1,210",
+     "",
+     "957"
+    ],
+    [
+     "Total",
+     "$",
+     "9,189",
+     "$",
+     "10,347"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 547,
+    "end_line": 560
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 7,
+     "label": "NOTE 7",
+     "title": "Accrued Expenses and Other Current Liabilities"
+    }
+   },
+   "prose_before": "(1) Excludes approximately $2.2 million of proceeds from sale of investment held in escrow that are expected to be collected within twelve months.\nNote 7. Accrued Expenses and Other Current Liabilities\nThe components of accrued expenses and other current liabilities are as follows for the periods presented (amounts in thousands):",
+   "prose_after": "Note 8. Revolving Lines of Credit\nEffective April 1, 2015, One Earth and NuGen each entered into $10.0 million revolving loan facilities that mature April 1, 2016. Any borrowings will be secured by the inventory and accounts receivable of One Earth or NuGen, specific to which entity borrows money under these facilities. These revolving loan facilities are recourse only to One Earth and NuGen and not to REX American Resources Corporation or any of its other subsidiaries. Borrowings under these facilities bear interest at the one month LIBOR rate plus 250 basis points. Neither One Earth nor NuGen had outstanding borrowings on the revolving loans during the nine months ended October 31, 2015. One Earth and NuGen are also subject to certain financial covenants under the revolving loan facilities, including working capital requirements, should they borrow on the loans.\nNote 9. Stock-Based Compensation\nThe Company has a stock-based compensation plan, approved by its shareholders, which reserves a total of 550,000 shares of common stock for issuance pursuant to its terms. The plan provides for the granting of shares of stock, including options to purchase shares of common stock, stock appreciation rights tied to the value of common stock, restricted stock, and restricted stock unit awards to eligible employees, non-employee directors and consultants. The Company measures share-based compensation grants at fair value on the grant date, adjusted for estimated forfeitures. The Company records noncash compensation expense related to equity awards in its consolidated financial statements over the requisite service period on a straight-line basis. All of the Company\u2019s existing share-based compensation awards have been determined to be equity awards. As a component of their compensation, restricted stock has been granted to directors at the market price of REX common stock on the date of the grant. In addition one third of executives\u2019 incentive compensation is payable by an award of restricted stock based on the then market price of REX common stock.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 7
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 542,
+     "token": "PAGE_BREAK",
+     "id": 19,
+     "namespace": "arabic",
+     "page_number": 14
+    },
+    "after": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 15,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 16,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Non-Vested Shares",
+     "",
+     "Weighted- Average Grant Date Fair Value (in thousands)",
+     "",
+     "Weighted- Average Vesting Term (in years)",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Non-Vested at January 31, 2015",
+     "",
+     "\u2014",
+     "$",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Granted",
+     "",
+     "3,168",
+     "",
+     "200",
+     "",
+     ""
+    ],
+    [
+     "Forfeited",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Vested",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "Non-Vested at October 31, 2015",
+     "",
+     "3,168",
+     "$",
+     "200",
+     "",
+     "3"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 572,
+    "end_line": 585
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 9,
+     "label": "NOTE 9",
+     "title": "Stock-Based Compensation"
+    }
+   },
+   "prose_before": "The Company has a stock-based compensation plan, approved by its shareholders, which reserves a total of 550,000 shares of common stock for issuance pursuant to its terms. The plan provides for the granting of shares of stock, including options to purchase shares of common stock, stock appreciation rights tied to the value of common stock, restricted stock, and restricted stock unit awards to eligible employees, non-employee directors and consultants. The Company measures share-based compensation grants at fair value on the grant date, adjusted for estimated forfeitures. The Company records noncash compensation expense related to equity awards in its consolidated financial statements over the requisite service period on a straight-line basis. All of the Company\u2019s existing share-based compensation awards have been determined to be equity awards. As a component of their compensation, restricted stock has been granted to directors at the market price of REX common stock on the date of the grant. In addition one third of executives\u2019 incentive compensation is payable by an award of restricted stock based on the then market price of REX common stock.\nThe following table summarizes non-vested stock award activity for the nine months ended October 31, 2015:",
+   "prose_after": "At October 31, 2015, unrecognized compensation cost related to nonvested restricted stock was approximately $172,000.\nNote 10. Income Per Share from Continuing Operations Attributable to REX Common Shareholders\nThe following table reconciles the computation of basic and diluted net income per share from continuing operations for the periods presented (in thousands, except per share amounts):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 9
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 16,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 17,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Three Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "October 31, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Income",
+     "",
+     "Shares",
+     "",
+     "Per Share",
+     "",
+     "Income",
+     "",
+     "Shares",
+     "",
+     "Per Share",
+     ""
+    ],
+    [
+     "Basic income per share from continuing operations attributable to REX common shareholders",
+     "$",
+     "7,456",
+     "",
+     "6,915",
+     "$",
+     "1.08",
+     "$",
+     "23,200",
+     "",
+     "8,170",
+     "$",
+     "2.84"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of restricted stock",
+     "",
+     "\u2014",
+     "",
+     "16",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "\u2014",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income per share from continuing operations attributable to REX common shareholders",
+     "$",
+     "7,456",
+     "",
+     "6,931",
+     "$",
+     "1.08",
+     "$",
+     "23,200",
+     "",
+     "8,170",
+     "$",
+     "2.84"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 592,
+    "end_line": 607
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Per Share from Continuing Operations Attributable to REX Common Shareholders"
+    }
+   },
+   "prose_before": "At October 31, 2015, unrecognized compensation cost related to nonvested restricted stock was approximately $172,000.\nNote 10. Income Per Share from Continuing Operations Attributable to REX Common Shareholders\nThe following table reconciles the computation of basic and diluted net income per share from continuing operations for the periods presented (in thousands, except per share amounts):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 569,
+     "token": "PAGE_BREAK",
+     "id": 20,
+     "namespace": "arabic",
+     "page_number": 15
+    },
+    "after": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 17,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 18,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "October 31, 2015",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "October 31, 2014",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Income",
+     "",
+     "Shares",
+     "",
+     "Per Share",
+     "",
+     "Income",
+     "",
+     "Shares",
+     "",
+     "Per Share",
+     ""
+    ],
+    [
+     "Basic income per share from continuing operations attributable to REX common shareholders",
+     "$",
+     "27,750",
+     "",
+     "7,460",
+     "$",
+     "3.72",
+     "$",
+     "66,855",
+     "",
+     "8,157",
+     "$",
+     "8.19"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Effect of restricted stock",
+     "",
+     "\u2014",
+     "",
+     "9",
+     "",
+     "",
+     "",
+     "\u2014",
+     "",
+     "11",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Diluted income per share from continuing operations attributable to REX common shareholders",
+     "$",
+     "27,750",
+     "",
+     "7,469",
+     "$",
+     "3.72",
+     "$",
+     "66,855",
+     "",
+     "8,168",
+     "$",
+     "8.18"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 609,
+    "end_line": 624
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 10,
+     "label": "NOTE 10",
+     "title": "Income Per Share from Continuing Operations Attributable to REX Common Shareholders"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "For the three and nine months ended October 31, 2015, there were no shares subject to outstanding options. For the three and nine months ended October 31, 2015, and 2014 all shares subject to outstanding restricted stock awards and options were dilutive.\nNote 11. Investments\nThe following table summarizes equity method investments at October 31, 2015 and January 31, 2015 (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 10
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 18,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 19,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Entity",
+     "Ownership Percentage",
+     "",
+     "",
+     "Carrying Amount October 31, 2015",
+     "",
+     "Carrying Amount January 31, 2015",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Big River",
+     "",
+     "9.7",
+     "%",
+     "$",
+     "41,088",
+     "$",
+     "40,188"
+    ],
+    [
+     "  Patriot (sold June 1, 2015)",
+     "",
+     "N/A",
+     "",
+     "",
+     "\u2014",
+     "",
+     "40,201"
+    ],
+    [
+     "  Total Equity Method Investments",
+     "",
+     "",
+     "",
+     "$",
+     "41,088",
+     "$",
+     "80,389"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 631,
+    "end_line": 642
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "For the three and nine months ended October 31, 2015, there were no shares subject to outstanding options. For the three and nine months ended October 31, 2015, and 2014 all shares subject to outstanding restricted stock awards and options were dilutive.\nNote 11. Investments\nThe following table summarizes equity method investments at October 31, 2015 and January 31, 2015 (amounts in thousands):",
+   "prose_after": "The following table summarizes income recognized from equity method investments for the periods presented (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 19,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 20,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 31,",
+     "",
+     "",
+     "",
+     "Nine Months Ended October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Big River",
+     "$",
+     "1,314",
+     "$",
+     "4,574",
+     "$",
+     "4,910",
+     "$",
+     "14,353"
+    ],
+    [
+     "Patriot (sold June 1, 2015)",
+     "",
+     "\u2014",
+     "",
+     "4,206",
+     "",
+     "2,947",
+     "",
+     "9,969"
+    ],
+    [
+     "Total",
+     "$",
+     "1,314",
+     "$",
+     "8,780",
+     "$",
+     "7,857",
+     "$",
+     "24,322"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 645,
+    "end_line": 656
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "The following table summarizes income recognized from equity method investments for the periods presented (amounts in thousands):",
+   "prose_after": "Undistributed earnings totaled approximately $21.1 million and $41.9 million at October 31, 2015 (Big River) and January 31, 2015 (Big River and Patriot), respectively. During the first nine months of fiscal years 2015 and 2014, the Company received dividends from equity method investees of approximately $7.6 million and $19.9 million, respectively.\nSummarized financial information for each of the Company\u2019s equity method investees is presented in the following table for the periods presented (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 608,
+     "token": "PAGE_BREAK",
+     "id": 21,
+     "namespace": "arabic",
+     "page_number": 16
+    },
+    "after": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 20,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 21,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 31, 2015",
+     "",
+     "",
+     "",
+     "Three Months Ended October 31, 2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Patriot (1)",
+     "",
+     "Big River",
+     "",
+     "Patriot (1)",
+     "",
+     "Big River",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales and revenue",
+     "$",
+     "\u2014",
+     "$",
+     "215,902",
+     "$",
+     "93,056",
+     "$",
+     "260,908"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "\u2014",
+     "$",
+     "22,078",
+     "$",
+     "17,597",
+     "$",
+     "59,426"
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "\u2014",
+     "$",
+     "13,540",
+     "$",
+     "15,843",
+     "$",
+     "47,114"
+    ],
+    [
+     "Net income",
+     "$",
+     "\u2014",
+     "$",
+     "13,540",
+     "$",
+     "15,843",
+     "$",
+     "47,114"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 662,
+    "end_line": 672
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "Undistributed earnings totaled approximately $21.1 million and $41.9 million at October 31, 2015 (Big River) and January 31, 2015 (Big River and Patriot), respectively. During the first nine months of fiscal years 2015 and 2014, the Company received dividends from equity method investees of approximately $7.6 million and $19.9 million, respectively.\nSummarized financial information for each of the Company\u2019s equity method investees is presented in the following table for the periods presented (amounts in thousands):",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 21,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 22,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Nine Months Ended October 31, 2015",
+     "",
+     "",
+     "",
+     "Nine Months Ended October 31, 2014",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "Patriot (1)",
+     "",
+     "Big River",
+     "",
+     "Patriot (1)",
+     "",
+     "Big River",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Net sales and revenue",
+     "$",
+     "115,614",
+     "$",
+     "623,900",
+     "$",
+     "252,592",
+     "$",
+     "854,174"
+    ],
+    [
+     "Gross profit",
+     "$",
+     "14,424",
+     "$",
+     "71,345",
+     "$",
+     "42,626",
+     "$",
+     "183,736"
+    ],
+    [
+     "Income from continuing operations",
+     "$",
+     "11,100",
+     "$",
+     "50,580",
+     "$",
+     "37,549",
+     "$",
+     "147,853"
+    ],
+    [
+     "Net income",
+     "$",
+     "11,100",
+     "$",
+     "50,580",
+     "$",
+     "37,549",
+     "$",
+     "147,853"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 673,
+    "end_line": 683
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 11,
+     "label": "NOTE 11",
+     "title": "Investments"
+    }
+   },
+   "prose_before": "",
+   "prose_after": "(1) For Patriot, results are for the five month period ended May 31, 2015 as the Company\u2019s equity interest in Patriot was sold June 1, 2015.\nBig River has debt agreements that limit amounts the Company can pay in the form of dividends or advances to owners. The restricted net assets of Big River at October 31, 2015 and January 31, 2015 are approximately $337.3 million and $322.1 million, respectively.\nOn June 1, 2015, Patriot and a subsidiary of CHS Inc. (\u201cCHS\u201d) completed a merger that resulted in CHS acquiring 100% of the ownership interest in Patriot. The Company received a cash payment of approximately $45.5 million at the closing, representing its proportionate share of the merger consideration for its 27% ownership interest. The total merger consideration was approximately $196 million in cash subject to certain adjustments and certain escrow holdbacks. In connection with this transaction, the Company recognized a gain of approximately $10.4 million. At October 31, 2015, the Company has approximately $2.2 million in accounts receivable and approximately $2.2 million in other long term assets on the accompanying Consolidated Condensed Balance Sheets related to estimated escrow proceeds that were recognized as income. The Company recorded approximately $45.5 million as a cash investing activity in the Consolidated Condensed Statements of Cash Flows. The estimated escrow proceeds of approximately $4.4 million is a non-cash investing activity. The Company expects that a determination of the final payment of escrowed proceeds to be received will occur by December 1, 2016.",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 11
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 659,
+     "token": "PAGE_BREAK",
+     "id": 22,
+     "namespace": "arabic",
+     "page_number": 17
+    },
+    "after": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 22,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 23,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Unrecognized tax benefits, January 31, 2015",
+     "$",
+     "1,658",
+     ""
+    ],
+    [
+     "Changes for prior years\u2019 tax positions",
+     "",
+     "(1,658)",
+     ""
+    ],
+    [
+     "Changes for current year tax positions",
+     "",
+     "\u2014",
+     ""
+    ],
+    [
+     "Unrecognized tax benefits, October 31, 2015",
+     "$",
+     "\u2014",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 697,
+    "end_line": 705
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 12,
+     "label": "NOTE 12",
+     "title": "Income Taxes"
+    }
+   },
+   "prose_before": "The effective tax rate on consolidated pre-tax income from continuing operations was 14.8% for the three months ended October 31, 2015, and 29.9% for the three months ended October 31, 2014. The effective tax rate on consolidated pre-tax income from continuing operations was 28.1% for the nine months ended October 31, 2015, and 33.5% for the nine months ended October 31, 2014. The fluctuations in the effective tax rate primarily relate to the release of valuation allowances against capital loss carryforwards, the domestic production activities deduction, a change in the apportionment of income to certain states, the expiration of statutes for years with uncertain tax positions and a decrease in state income tax rates. These items reduced the effective tax rate approximately 17% for the quarter ended October 31, 2015 and approximately 7% for the nine months ended October 31, 2015.\nThe Company files a U.S. federal income tax return and income tax returns in various states. In general, the Company is no longer subject to U.S. federal, state or local income tax examinations by tax authorities for years ended January 31, 2010 and prior. A reconciliation of the beginning and ending amount of unrecognized tax benefits, including interest and penalties, is as follows (amounts in thousands):",
+   "prose_after": "Note 13. Discontinued Operations\nDuring fiscal year 2009, the Company completed the exit of its retail business. Accordingly, certain of the Company\u2019s former retail operations and certain sold properties had been classified as discontinued operations prior to the prospective adoption of ASU 2014-08 effective February 1, 2015. Below is a table reflecting certain items of the Consolidated Condensed Statement of Operations that were reclassified as discontinued operations for the periods presented (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 12
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 730,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 23,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 24,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 31,",
+     "",
+     "",
+     "",
+     "",
+     "Nine Months Ended October 31,",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     ""
+    ],
+    [
+     "Net sales and revenue",
+     "$",
+     "\u2014",
+     "$",
+     "30",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "42",
+     ""
+    ],
+    [
+     "Cost of sales",
+     "",
+     "\u2014",
+     "",
+     "26",
+     "",
+     "",
+     "\u2014",
+     "",
+     "45",
+     ""
+    ],
+    [
+     "Income (loss) before income taxes",
+     "",
+     "\u2014",
+     "",
+     "4",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(3)",
+     ""
+    ],
+    [
+     "(Provision) benefit for income taxes",
+     "",
+     "\u2014",
+     "",
+     "(2)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "1",
+     ""
+    ],
+    [
+     "Income (loss) from discontinued operations, net of tax",
+     "$",
+     "\u2014",
+     "$",
+     "2",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "(2)",
+     ""
+    ],
+    [
+     "Gain on disposal",
+     "$",
+     "\u2014",
+     "$",
+     "210",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "217",
+     ""
+    ],
+    [
+     "Provision for income taxes",
+     "",
+     "\u2014",
+     "",
+     "(72)",
+     "",
+     "",
+     "\u2014",
+     "",
+     "(81)",
+     ""
+    ],
+    [
+     "Gain on disposal of discontinued operations, net of tax",
+     "$",
+     "\u2014",
+     "$",
+     "138",
+     "",
+     "$",
+     "\u2014",
+     "$",
+     "136",
+     ""
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 710,
+    "end_line": 727
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 13,
+     "label": "NOTE 13",
+     "title": "Discontinued Operations"
+    }
+   },
+   "prose_before": "Note 13. Discontinued Operations\nDuring fiscal year 2009, the Company completed the exit of its retail business. Accordingly, certain of the Company\u2019s former retail operations and certain sold properties had been classified as discontinued operations prior to the prospective adoption of ASU 2014-08 effective February 1, 2015. Below is a table reflecting certain items of the Consolidated Condensed Statement of Operations that were reclassified as discontinued operations for the periods presented (amounts in thousands):",
+   "prose_after": "The cash flows from the discontinued operations were immaterial for all periods presented.\nNote 14. Commitments and Contingencies\nThe Company is involved in various legal actions arising in the normal course of business. After taking into consideration legal counsels\u2019 evaluations of such actions, management is of the opinion that their outcome will not have a material effect on the Company\u2019s Consolidated Condensed Financial Statements.\nOne Earth and NuGen have combined forward purchase contracts for approximately 5.3 million bushels of corn, the principal raw material for their ethanol plants. They expect to take delivery of the grain through April 2016.\nOne Earth and NuGen have combined sales commitments for approximately 55.5 million gallons of ethanol, approximately 55,000 tons of distillers grains and approximately 6.4 million pounds of non-food grade corn oil. They expect to deliver the ethanol, distillers grains and non-food grade corn oil through June 2016.\nNote 15. Net Sales and Revenue",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 13
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 690,
+     "token": "PAGE_BREAK",
+     "id": 23,
+     "namespace": "arabic",
+     "page_number": 18
+    },
+    "after": {
+     "line": 730,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 24,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 25,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 31,",
+     "",
+     "",
+     "",
+     "Nine Months Ended October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product or Service Category",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Ethanol",
+     "$",
+     "82,767",
+     "$",
+     "110,178",
+     "$",
+     "248,329",
+     "$",
+     "347,896"
+    ],
+    [
+     "Dried distillers grains",
+     "",
+     "22,518",
+     "",
+     "23,108",
+     "",
+     "64,354",
+     "",
+     "79,946"
+    ],
+    [
+     "Non-food grade corn oil",
+     "",
+     "3,994",
+     "",
+     "4,340",
+     "",
+     "12,002",
+     "",
+     "12,999"
+    ],
+    [
+     "Modified distillers grains",
+     "",
+     "1,108",
+     "",
+     "603",
+     "",
+     "4,109",
+     "",
+     "2,884"
+    ],
+    [
+     "Other",
+     "",
+     "197",
+     "",
+     "195",
+     "",
+     "467",
+     "",
+     "855"
+    ],
+    [
+     "Total",
+     "$",
+     "110,584",
+     "$",
+     "138,424",
+     "$",
+     "329,261",
+     "$",
+     "444,580"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 743,
+    "end_line": 757
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1",
+     "title": "Financial Statements"
+    },
+    "note": {
+     "number": 15,
+     "label": "NOTE 15",
+     "title": "Net Sales and Revenue"
+    }
+   },
+   "prose_before": "Note 14. Commitments and Contingencies\nThe Company is involved in various legal actions arising in the normal course of business. After taking into consideration legal counsels\u2019 evaluations of such actions, management is of the opinion that their outcome will not have a material effect on the Company\u2019s Consolidated Condensed Financial Statements.\nOne Earth and NuGen have combined forward purchase contracts for approximately 5.3 million bushels of corn, the principal raw material for their ethanol plants. They expect to take delivery of the grain through April 2016.\nOne Earth and NuGen have combined sales commitments for approximately 55.5 million gallons of ethanol, approximately 55,000 tons of distillers grains and approximately 6.4 million pounds of non-food grade corn oil. They expect to deliver the ethanol, distillers grains and non-food grade corn oil through June 2016.\nNote 15. Net Sales and Revenue\nThe following table summarizes sales for each product and service group for the periods presented (amounts in thousands):",
+   "prose_after": "Note 16. Related-Party Transactions\nDuring the third quarters of fiscal year 2015 and 2014, One Earth and NuGen purchased approximately $38.1 million and $38.9 million, respectively, of corn from minority equity investors and board members of those subsidiaries. Such purchases totaled approximately $114.4 million and approximately $124.1 million for the nine months ended October 31, 2015 and 2014, respectively.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nAt October 31, 2015, we had equity investments in three ethanol limited liability companies, two of which we have a majority ownership interest in. The following table is a summary of ethanol gallons shipped at our plants:",
+   "structured_location": {
+    "item": "ITEM 1",
+    "note": 15
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 730,
+     "token": "PAGE_BREAK",
+     "id": 24,
+     "namespace": "arabic",
+     "page_number": 19
+    },
+    "after": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 25,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 26,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Entity",
+     "Trailing 12 Months Ethanol Gallons Shipped",
+     "REX\u2019s Current Ownership Interest",
+     "",
+     "Current Effective Ownership of Trailing 12 Months Ethanol Gallons Shipped"
+    ],
+    [
+     "One Earth Energy, LLC",
+     "111.5 M",
+     "74.7",
+     "%",
+     "83.3 M"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "NuGen Energy, LLC",
+     "117.4 M",
+     "99.5",
+     "%",
+     "116.7 M"
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Big River Resources W Burlington, LLC",
+     "106.0 M",
+     "9.7",
+     "%",
+     "10.3 M"
+    ],
+    [
+     "Big River Resources Galva, LLC",
+     "115.8 M",
+     "9.7",
+     "%",
+     "11.2 M"
+    ],
+    [
+     "Big River United Energy, LLC",
+     "123.7 M",
+     "4.9",
+     "%",
+     "6.1 M"
+    ],
+    [
+     "Big River Resources Boyceville, LLC",
+     "56.9 M",
+     "9.7",
+     "%",
+     "5.5 M"
+    ],
+    [
+     "Total",
+     "631.3 M",
+     "",
+     "",
+     "233.1 M"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 767,
+    "end_line": 784
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Related-Party Transactions"
+    }
+   },
+   "prose_before": "Note 16. Related-Party Transactions\nDuring the third quarters of fiscal year 2015 and 2014, One Earth and NuGen purchased approximately $38.1 million and $38.9 million, respectively, of corn from minority equity investors and board members of those subsidiaries. Such purchases totaled approximately $114.4 million and approximately $124.1 million for the nine months ended October 31, 2015 and 2014, respectively.\nItem 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations.\nAt October 31, 2015, we had equity investments in three ethanol limited liability companies, two of which we have a majority ownership interest in. The following table is a summary of ethanol gallons shipped at our plants:",
+   "prose_after": "Our ethanol operations are highly dependent on commodity prices, especially prices for corn, ethanol, distillers grains, non-food grade corn oil and natural gas. As a result of price volatility for these commodities, our operating results can fluctuate substantially. The price and availability of corn is subject to significant fluctuations depending upon a number of factors that affect commodity prices in general, including crop conditions, weather, federal policy and foreign trade. Because the market price of ethanol is not always directly related to corn prices, at times ethanol prices may lag movements in corn prices and, in an environment of higher corn prices or lower ethanol prices, reduce the overall margin structure at the plants. As a result, at times, we may operate our plants at negative or marginally positive operating margins.\nWe expect our ethanol plants to produce approximately 2.8 gallons of denatured ethanol for each bushel of grain processed in the production cycle. We refer to the difference between the price per gallon of ethanol and the price per bushel of grain (divided by 2.8) as the \u201ccrush spread\u201d. Should the crush spread decline, it is possible that our ethanol plants will generate operating results that do not provide adequate cash flows for sustained periods of time. In such cases, production at the ethanol plants may be reduced or stopped altogether in order to minimize variable costs at individual plants.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 762,
+     "token": "PAGE_BREAK",
+     "id": 25,
+     "namespace": "arabic",
+     "page_number": 20
+    },
+    "after": {
+     "line": 795,
+     "token": "PAGE_BREAK",
+     "id": 26,
+     "namespace": "arabic",
+     "page_number": 21
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 26,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 27,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 31,",
+     "",
+     "",
+     "",
+     "Nine Months Ended October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Average selling price per gallon of ethanol",
+     "$",
+     "1.44",
+     "$",
+     "1.89",
+     "$",
+     "1.45",
+     "$",
+     "2.06"
+    ],
+    [
+     "Gallons of ethanol sold (in millions)",
+     "",
+     "57.3",
+     "",
+     "58.4",
+     "",
+     "171.0",
+     "",
+     "168.6"
+    ],
+    [
+     "Average selling price per ton of dried distillers grains",
+     "$",
+     "146.64",
+     "$",
+     "145.87",
+     "$",
+     "152.69",
+     "$",
+     "181.54"
+    ],
+    [
+     "Tons of dried distillers grains sold",
+     "",
+     "153,560",
+     "",
+     "158,409",
+     "",
+     "421,461",
+     "",
+     "440,386"
+    ],
+    [
+     "Average selling price per pound of non-food grade corn oil",
+     "$",
+     "0.26",
+     "$",
+     "0.31",
+     "$",
+     "0.27",
+     "$",
+     "0.33"
+    ],
+    [
+     "Pounds of non-food grade corn oil sold (in millions)",
+     "",
+     "15.4",
+     "",
+     "13.9",
+     "",
+     "43.8",
+     "",
+     "39.7"
+    ],
+    [
+     "Average selling price per ton of modified distillers grains",
+     "$",
+     "56.40",
+     "$",
+     "41.78",
+     "$",
+     "70.99",
+     "$",
+     "68.19"
+    ],
+    [
+     "Tons of modified distillers grains sold",
+     "",
+     "19,645",
+     "",
+     "14,439",
+     "",
+     "57,891",
+     "",
+     "42,297"
+    ],
+    [
+     "Average cost per bushel of grain",
+     "$",
+     "3.62",
+     "$",
+     "3.64",
+     "$",
+     "3.64",
+     "$",
+     "4.14"
+    ],
+    [
+     "Average cost of natural gas (per mmbtu)",
+     "$",
+     "3.21",
+     "$",
+     "4.69",
+     "$",
+     "3.82",
+     "$",
+     "6.41"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 815,
+    "end_line": 831
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Related-Party Transactions"
+    }
+   },
+   "prose_before": "We have agreed to fund direct patent expenses relating to patent applications and defense, annual annuity fees and maintenance on a country by country basis, with the right to terminate funding and transfer related patent rights to Hytken. We may also fund, through loans, all costs relating to new intellectual property, consultants, and future research and development, pilot field tests and equipment purchases for commercialization stage of the patents. We have paid approximately $1,613,000 cumulatively, including $135,000 in fiscal year 2015 for our ownership interest, patent and other expenses. Results of the formation and year to date operations of Future Energy, LLC were immaterial to the Consolidated Condensed Financial Statements.\nCritical Accounting Policies and Estimates\nDuring the nine months ended October 31, 2015, we did not change any of our critical accounting policies as disclosed in our 2014 Annual Report on Form 10-K as filed with the Securities and Exchange Commission on March 31, 2015 except for the adoption of ASU 2014-08 and recording certain forward purchase contracts at fair value. All other accounting policies used in preparing our interim fiscal year 2015 Consolidated Condensed Financial Statements are the same as those described in our Form 10-K.\nFiscal Year\nAll references in this report to a particular fiscal year are to REX\u2019s fiscal year ended January 31. For example, \u201cfiscal year 2015\u201d means the period February 1, 2015 to January 31, 2016.\nResults of Operations\nComparison of Three Months and Nine Months Ended October 31, 2015 and 2014\nThe following table summarizes selected data from our consolidated operations for the periods presented:",
+   "prose_after": "Net sales and revenue in the quarter ended October 31, 2015 were approximately $110.6 million compared to approximately $138.4 million in the prior year\u2019s third quarter, representing a decrease of approximately $27.8 million.\nThe following table summarizes sales of our consolidated operations for each major product and service group for the periods presented (amounts in thousands):",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 27,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 28,
+   "header_row_count": 2,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "",
+     "Three Months Ended October 31,",
+     "",
+     "",
+     "",
+     "Nine Months Ended October 31,",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Product Category",
+     "2015",
+     "",
+     "2014",
+     "",
+     "2015",
+     "",
+     "2014",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "  Ethanol",
+     "$",
+     "82,767",
+     "$",
+     "110,178",
+     "$",
+     "248,329",
+     "$",
+     "347,896"
+    ],
+    [
+     "  Dried distillers grains",
+     "",
+     "22,518",
+     "",
+     "23,108",
+     "",
+     "64,354",
+     "",
+     "79,946"
+    ],
+    [
+     "  Non-food grade corn oil",
+     "",
+     "3,994",
+     "",
+     "4,340",
+     "",
+     "12,002",
+     "",
+     "12,999"
+    ],
+    [
+     "  Modified distillers grains",
+     "",
+     "1,108",
+     "",
+     "603",
+     "",
+     "4,109",
+     "",
+     "2,884"
+    ],
+    [
+     "  Other",
+     "",
+     "197",
+     "",
+     "195",
+     "",
+     "467",
+     "",
+     "855"
+    ],
+    [
+     "  Total",
+     "$",
+     "110,584",
+     "$",
+     "138,424",
+     "$",
+     "329,261",
+     "$",
+     "444,580"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 836,
+    "end_line": 850
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Related-Party Transactions"
+    }
+   },
+   "prose_before": "Net sales and revenue in the quarter ended October 31, 2015 were approximately $110.6 million compared to approximately $138.4 million in the prior year\u2019s third quarter, representing a decrease of approximately $27.8 million.\nThe following table summarizes sales of our consolidated operations for each major product and service group for the periods presented (amounts in thousands):",
+   "prose_after": "Ethanol sales decreased from approximately $110.2 million in the third quarter of fiscal year 2014 to approximately $82.8 million in the third quarter of fiscal year 2015, primarily a result of a $0.45 decline in the price per gallon sold. Dried distillers grains sales, non-food grade corn oil sales and modified\ndistillers grains sales in the third quarter of fiscal year 2015 were consistent with sales in the third quarter of fiscal year 2014.\nEthanol sales decreased from approximately $347.9 million in the first nine months of fiscal year 2014 to approximately $248.3 million in the first nine months of fiscal year 2015, primarily a result of a $0.61 decline in the price per gallon sold. Dried distillers grains sales decreased from approximately $79.9 million in the first nine months of fiscal year 2014 to approximately $64.4 million in the first nine months of fiscal year 2015, primarily a result of a $28.85 decline in the price per ton sold. Non-food grade corn oil sales in the first nine months of fiscal year 2015 were consistent with sales in the first nine months of fiscal year 2014. Modified distillers grains sales increased from approximately $2.9 million in the first nine months of fiscal year 2014 to approximately $4.1 million in the first nine months of fiscal year 2015 primarily a result of a 37% increase in tons sold.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 808,
+     "token": "PAGE_BREAK",
+     "id": 27,
+     "namespace": "arabic",
+     "page_number": 22
+    },
+    "after": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 28,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 29,
+   "header_row_count": 0,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Product",
+     "Annual Sales Quantity"
+    ],
+    [
+     "",
+     ""
+    ],
+    [
+     "Ethanol",
+     "215 million to 240 million gallons"
+    ],
+    [
+     "Dried distillers grains",
+     "550,000 to 650,000 tons"
+    ],
+    [
+     "Non-food grade corn oil",
+     "45 million to 65 million pounds"
+    ],
+    [
+     "Modified distillers grains",
+     "50,000 to 80,000 tons"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 860,
+    "end_line": 868
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 2",
+     "title": "Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Related-Party Transactions"
+    }
+   },
+   "prose_before": "Ethanol sales decreased from approximately $347.9 million in the first nine months of fiscal year 2014 to approximately $248.3 million in the first nine months of fiscal year 2015, primarily a result of a $0.61 decline in the price per gallon sold. Dried distillers grains sales decreased from approximately $79.9 million in the first nine months of fiscal year 2014 to approximately $64.4 million in the first nine months of fiscal year 2015, primarily a result of a $28.85 decline in the price per ton sold. Non-food grade corn oil sales in the first nine months of fiscal year 2015 were consistent with sales in the first nine months of fiscal year 2014. Modified distillers grains sales increased from approximately $2.9 million in the first nine months of fiscal year 2014 to approximately $4.1 million in the first nine months of fiscal year 2015 primarily a result of a 37% increase in tons sold.\nWe expect that sales in future periods will be based upon the following (One Earth and NuGen only):",
+   "prose_after": "This expectation assumes that One Earth and NuGen will continue to operate at or above capacity, which is dependent upon the crush spread realized. We may vary the amounts of dried and modified distillers grains production, and resulting sales, based upon market conditions.\nGross profit for the third quarter of fiscal year 2015 was approximately $14.3 million (12.9% of net sales and revenue) which was approximately $22.2 million lower compared to approximately $36.5 million of gross profit (26.4% of net sales and revenue) for the third quarter of fiscal year 2014. The crush spread for the third quarter of fiscal year 2015 was approximately $0.19 per gallon of ethanol sold compared to the third quarter of fiscal year 2014 which was approximately $0.59 per gallon of ethanol sold. Grain accounted for approximately 77% ($73.6 million) of our cost of sales during the third quarter of fiscal year 2015 compared to approximately 74% ($75.7 million) during the third quarter of fiscal year 2014. Natural gas accounted for approximately 5% ($4.9 million) of our cost of sales during the third quarter of fiscal year 2015 compared to approximately 7% ($7.3 million) during the third quarter of fiscal year 2014.",
+   "structured_location": {
+    "item": "ITEM 2",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 853,
+     "token": "PAGE_BREAK",
+     "id": 28,
+     "namespace": "arabic",
+     "page_number": 23
+    },
+    "after": {
+     "line": 875,
+     "token": "PAGE_BREAK",
+     "id": 29,
+     "namespace": "arabic",
+     "page_number": 24
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 29,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "aligned_negative",
+    "audited": false,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 30,
+   "header_row_count": 3,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Issuer Purchases of Equity Securities",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     "",
+     ""
+    ],
+    [
+     "Period",
+     "Total Number of Shares Purchased",
+     "",
+     "Average Price Paid per Share",
+     "",
+     "Total Number of Shares Purchased as Part of Publicly Announced Plans or Programs",
+     "",
+     "Maximum Number of Shares that May Yet Be Purchased Under the Plans or Programs (1)",
+     ""
+    ],
+    [
+     "August 1-31, 2015",
+     "",
+     "233,243",
+     "$",
+     "49.80",
+     "",
+     "233,243",
+     "",
+     "500,000"
+    ],
+    [
+     "September 1-30, 2015",
+     "",
+     "46,591",
+     "",
+     "48.96",
+     "",
+     "46,591",
+     "",
+     "453,409"
+    ],
+    [
+     "October 1-31, 2015",
+     "",
+     "600",
+     "",
+     "48.77",
+     "",
+     "600",
+     "",
+     "452,809"
+    ],
+    [
+     "Total",
+     "",
+     "280,434",
+     "$",
+     "49.66",
+     "",
+     "280,434",
+     "",
+     "452,809"
+    ]
+   ],
+   "caption_stack": [
+    "Issuer Purchases of Equity Securities"
+   ],
+   "scale": null,
+   "location": {
+    "start_line": 976,
+    "end_line": 990
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 1A",
+     "title": "Risk Factors"
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Related-Party Transactions"
+    }
+   },
+   "prose_before": "There were no changes in our internal control over financial reporting that occurred during our last fiscal quarter that have materially affected, or are reasonably likely to materially affect, our internal control over financial reporting.\nPART II. OTHER INFORMATION\nItem 1. Legal Proceedings\nWe are not party to any legal proceedings that we believe would, individually or in the aggregate, have a material adverse effect on our financial condition, results of operations or cash flows.\nItem 1A. Risk Factors\nDuring the quarter ended October 31, 2015, there have been no material changes to the risk factors discussed in our Annual Report on Form 10-K for the year ended January 31, 2015.\nItem 2. Unregistered Sales of Equity Securities and Use of Proceeds\nDividend Policy\nREX did not pay dividends in the current or prior years. We currently have no restrictions on the payment of dividends. Our consolidated and unconsolidated ethanol subsidiaries have certain restrictions on their ability to pay dividends to us. During the first nine months of fiscal year 2015, neither One Earth nor NuGen paid dividends.",
+   "prose_after": "(1) On August 26, 2015, our Board of Directors increased our share repurchase authorization by an additional 500,000 shares. At October 31, 2015, a total of 452,809 shares remained available to purchase under this authorization.\nItem 3. Defaults upon Senior Securities\nNone\nItem 4. Mine Safety Disclosures\nNone\nItem 5. Other Information\nNone\nItem 6. Exhibits.\nThe following exhibits are filed with this report:\n31 Rule 13a-14(a)/15d-14(a) Certifications 32 Section 1350 Certifications 101 The following information from REX American Resources Corporation Quarterly Report on Form 10-Q for the quarter ended October 31, 2015, formatted in XBRL:",
+   "structured_location": {
+    "item": "ITEM 1A",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 959,
+     "token": "PAGE_BREAK",
+     "id": 35,
+     "namespace": "arabic",
+     "page_number": 30
+    },
+    "after": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 30,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  },
+  {
+   "table_index": 31,
+   "header_row_count": 1,
+   "confidence": 1.0,
+   "rows": [
+    [
+     "Signature",
+     "Title",
+     "Date"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Zafar Rizvi",
+     "  Chief Executive Officer and President",
+     ""
+    ],
+    [
+     "(Zafar Rizvi)",
+     "    (Chief Executive Officer)",
+     "December 3, 2015"
+    ],
+    [
+     "",
+     "",
+     ""
+    ],
+    [
+     "/s/ Douglas L. Bruggeman",
+     "  Vice President, Finance and Treasurer",
+     ""
+    ],
+    [
+     "(Douglas L. Bruggeman)",
+     "    (Chief Financial Officer)",
+     "December 3, 2015"
+    ]
+   ],
+   "caption_stack": [],
+   "scale": null,
+   "location": {
+    "start_line": 1020,
+    "end_line": 1032
+   },
+   "preceding": {
+    "section": {
+     "item": "ITEM 6",
+     "title": "Exhibits."
+    },
+    "note": {
+     "number": 16,
+     "label": "NOTE 16",
+     "title": "Related-Party Transactions"
+    }
+   },
+   "prose_before": "Item 5. Other Information\nNone\nItem 6. Exhibits.\nThe following exhibits are filed with this report:\n31 Rule 13a-14(a)/15d-14(a) Certifications 32 Section 1350 Certifications 101 The following information from REX American Resources Corporation Quarterly Report on Form 10-Q for the quarter ended October 31, 2015, formatted in XBRL:\n(i) Consolidated Condensed Balance Sheets, (ii) Consolidated Condensed Statements of Operations, (iii) Consolidated Condensed Statements of Equity, (iv) Consolidated Condensed Statements of Cash Flows and (v) Notes to Consolidated Condensed Financial Statements.\nSIGNATURES\nPursuant to the requirements of the Securities Exchange Act of 1934, the registrant has duly caused this report to be signed on its behalf by the undersigned, thereunto duly authorized.\nREX American Resources Corporation\nRegistrant",
+   "prose_after": "",
+   "structured_location": {
+    "item": "ITEM 6",
+    "note": 16
+   },
+   "breaks": {
+    "inside": [],
+    "before": {
+     "line": 1011,
+     "token": "PAGE_BREAK",
+     "id": 36,
+     "namespace": "arabic",
+     "page_number": 31
+    },
+    "after": {
+     "line": 1033,
+     "token": "PAGE_BREAK",
+     "id": 37,
+     "namespace": "arabic",
+     "page_number": 32
+    }
+   },
+   "issues": [],
+   "label": {
+    "table_index": 31,
+    "final_family": "other",
+    "aligned_family": null,
+    "provenance": "adjudicated",
+    "audited": true,
+    "split": "heldout"
+   }
+  }
+ ]
+}
